@@ -1,129 +1,98 @@
-// Datos de equipos - Temporada 2024-2025
-// La Liga y Segunda División
+// ============================================================
+// PC FÚTBOL WEB - EQUIPOS LaLiga TEMPORADA 25/26
+// Datos reales de Transfermarkt (enero 2026)
+// ============================================================
 
-export const LEAGUES = {
-  laliga: {
-    id: 'laliga',
-    name: 'La Liga EA Sports',
-    country: 'España',
-    level: 1,
-    teams: 20
-  },
-  segunda: {
-    id: 'segunda',
-    name: 'La Liga Hypermotion',
-    country: 'España',
-    level: 2,
-    teams: 22
-  },
-  primeraRFEF: {
-    id: 'primeraRFEF',
-    name: 'Primera RFEF',
-    country: 'España',
-    level: 3,
-    teams: 20
-  },
-  segundaRFEF: {
-    id: 'segundaRFEF',
-    name: 'Segunda RFEF',
-    country: 'España',
-    level: 4,
-    teams: 20
-  },
-  premierLeague: {
-    id: 'premierLeague',
-    name: 'Premier League',
-    country: 'Inglaterra',
-    level: 1,
-    teams: 20
-  },
-  ligue1: {
-    id: 'ligue1',
-    name: 'Ligue 1',
-    country: 'Francia',
-    level: 1,
-    teams: 18
-  },
-  bundesliga: {
-    id: 'bundesliga',
-    name: 'Bundesliga',
-    country: 'Alemania',
-    level: 1,
-    teams: 18
-  },
-  serieA: {
-    id: 'serieA',
-    name: 'Serie A',
-    country: 'Italia',
-    level: 1,
-    teams: 20
-  },
-  eredivisie: {
-    id: 'eredivisie',
-    name: 'Eredivisie',
-    country: 'Países Bajos',
-    level: 1,
-    teams: 18
-  },
-  primeiraLiga: {
-    id: 'primeiraLiga',
-    name: 'Primeira Liga',
-    country: 'Portugal',
-    level: 1,
-    teams: 18
-  }
-};
+// Helpers para cálculos
+function calcOverall(valueM, age) {
+  let ovr;
+  if (valueM >= 150) ovr = 92;
+  else if (valueM >= 100) ovr = 90;
+  else if (valueM >= 70) ovr = 88;
+  else if (valueM >= 50) ovr = 86;
+  else if (valueM >= 35) ovr = 84;
+  else if (valueM >= 25) ovr = 82;
+  else if (valueM >= 15) ovr = 80;
+  else if (valueM >= 10) ovr = 78;
+  else if (valueM >= 6) ovr = 76;
+  else if (valueM >= 3) ovr = 74;
+  else if (valueM >= 1.5) ovr = 72;
+  else if (valueM >= 0.5) ovr = 70;
+  else if (valueM >= 0.2) ovr = 68;
+  else ovr = 66;
+  if (age <= 21) ovr += 1;
+  else if (age >= 35) ovr -= 2;
+  else if (age >= 33) ovr -= 1;
+  return Math.max(62, Math.min(94, ovr));
+}
 
-// Posiciones
-export const POSITIONS = {
-  GK: 'Portero',
-  CB: 'Central',
-  LB: 'Lateral Izquierdo',
-  RB: 'Lateral Derecho',
-  CDM: 'Mediocentro Defensivo',
-  CM: 'Centrocampista',
-  CAM: 'Mediapunta',
-  LW: 'Extremo Izquierdo',
-  RW: 'Extremo Derecho',
-  ST: 'Delantero Centro'
-};
+function calcSalary(valueM, age) {
+  const annual = valueM * 1000000 * 0.12;
+  const weekly = annual / 52;
+  const mult = age >= 32 ? 1.3 : (age >= 28 ? 1.1 : 1.0);
+  return Math.max(20000, Math.round(weekly * mult));
+}
 
-// Equipos de La Liga 2024-2025
-export const LALIGA_TEAMS = [
-  {
-    id: 'real_madrid',
-    name: 'Real Madrid',
+function createPlayer(name, position, age, valueM) {
+  return {
+    name,
+    position,
+    age,
+    overall: calcOverall(valueM, age),
+    value: valueM * 1000000,
+    salary: calcSalary(valueM, age),
+    contract: age >= 32 ? 1 : (age >= 28 ? 2 : 3),
+    morale: 75,
+    fitness: 100
+  };
+}
+
+// ============================================================
+// EQUIPOS LaLiga 2025/26
+// ============================================================
+
+export const teams = {
+  // ========== REAL MADRID CF ==========
+  real_madrid: {
+    name: 'Real Madrid CF',
     shortName: 'RMA',
     city: 'Madrid',
     stadium: 'Santiago Bernabéu',
     stadiumCapacity: 81044,
     budget: 250000000,
     reputation: 95,
-    colors: { primary: '#FFFFFF', secondary: '#000000' },
+    colors: { primary: '#FFFFFF', secondary: '#000000', accent: '#EE9B00' },
     players: [
-      { name: 'Thibaut Courtois', position: 'GK', overall: 89, age: 32, value: 35000000, salary: 300000 },
-      { name: 'Dani Carvajal', position: 'RB', overall: 87, age: 32, value: 20000000, salary: 250000 },
-      { name: 'Éder Militão', position: 'CB', overall: 86, age: 26, value: 70000000, salary: 200000 },
-      { name: 'Antonio Rüdiger', position: 'CB', overall: 86, age: 31, value: 35000000, salary: 220000 },
-      { name: 'Ferland Mendy', position: 'LB', overall: 83, age: 29, value: 30000000, salary: 180000 },
-      { name: 'Eduardo Camavinga', position: 'CM', overall: 84, age: 21, value: 100000000, salary: 180000 },
-      { name: 'Aurélien Tchouaméni', position: 'CDM', overall: 86, age: 24, value: 100000000, salary: 200000 },
-      { name: 'Jude Bellingham', position: 'CAM', overall: 90, age: 21, value: 180000000, salary: 350000 },
-      { name: 'Vinícius Júnior', position: 'LW', overall: 92, age: 24, value: 200000000, salary: 400000 },
-      { name: 'Rodrygo', position: 'RW', overall: 86, age: 23, value: 110000000, salary: 250000 },
-      { name: 'Kylian Mbappé', position: 'ST', overall: 93, age: 25, value: 180000000, salary: 500000 },
-      { name: 'Lunin', position: 'GK', overall: 80, age: 25, value: 15000000, salary: 80000 },
-      { name: 'Lucas Vázquez', position: 'RB', overall: 79, age: 33, value: 8000000, salary: 150000 },
-      { name: 'Fran García', position: 'LB', overall: 78, age: 25, value: 15000000, salary: 100000 },
-      { name: 'Luka Modrić', position: 'CM', overall: 85, age: 39, value: 10000000, salary: 400000 },
-      { name: 'Federico Valverde', position: 'CM', overall: 88, age: 26, value: 120000000, salary: 280000 },
-      { name: 'Arda Güler', position: 'CAM', overall: 79, age: 19, value: 50000000, salary: 100000 },
-      { name: 'Brahim Díaz', position: 'RW', overall: 80, age: 25, value: 30000000, salary: 120000 },
-      { name: 'Endrick', position: 'ST', overall: 76, age: 18, value: 60000000, salary: 150000 }
+      createPlayer('Thibaut Courtois', 'GK', 33, 18),
+      createPlayer('Andriy Lunin', 'GK', 26, 15),
+      createPlayer('Fran González', 'GK', 20, 1),
+      createPlayer('Dean Huijsen', 'CB', 20, 70),
+      createPlayer('Éder Militão', 'CB', 28, 30),
+      createPlayer('Raúl Asencio', 'CB', 22, 30),
+      createPlayer('Antonio Rüdiger', 'CB', 32, 12),
+      createPlayer('David Alaba', 'CB', 33, 4),
+      createPlayer('Álvaro Carreras', 'LB', 22, 60),
+      createPlayer('Fran García', 'LB', 26, 15),
+      createPlayer('Ferland Mendy', 'LB', 30, 8),
+      createPlayer('Trent Alexander-Arnold', 'RB', 27, 70),
+      createPlayer('Daniel Carvajal', 'RB', 34, 7),
+      createPlayer('Aurélien Tchouaméni', 'CDM', 26, 75),
+      createPlayer('Federico Valverde', 'CM', 27, 120),
+      createPlayer('Eduardo Camavinga', 'CM', 23, 50),
+      createPlayer('Dani Ceballos', 'CM', 29, 8),
+      createPlayer('Jude Bellingham', 'CAM', 22, 160),
+      createPlayer('Arda Güler', 'CAM', 20, 90),
+      createPlayer('Vinícius Júnior', 'LW', 25, 150),
+      createPlayer('Rodrygo', 'RW', 25, 60),
+      createPlayer('Franco Mastantuono', 'RW', 18, 50),
+      createPlayer('Brahim Díaz', 'RW', 26, 35),
+      createPlayer('Kylian Mbappé', 'ST', 27, 200),
+      createPlayer('Gonzalo García', 'ST', 21, 15)
     ]
   },
-  {
-    id: 'barcelona',
+
+  // ========== FC BARCELONA ==========
+  barcelona: {
     name: 'FC Barcelona',
     shortName: 'BAR',
     city: 'Barcelona',
@@ -131,29 +100,36 @@ export const LALIGA_TEAMS = [
     stadiumCapacity: 99354,
     budget: 180000000,
     reputation: 93,
-    colors: { primary: '#004D98', secondary: '#A50044' },
+    colors: { primary: '#004D98', secondary: '#A50044', accent: '#EDBB00' },
     players: [
-      { name: 'Marc-André ter Stegen', position: 'GK', overall: 88, age: 32, value: 35000000, salary: 280000 },
-      { name: 'Jules Koundé', position: 'RB', overall: 85, age: 25, value: 60000000, salary: 200000 },
-      { name: 'Pau Cubarsí', position: 'CB', overall: 78, age: 17, value: 60000000, salary: 50000 },
-      { name: 'Ronald Araújo', position: 'CB', overall: 86, age: 25, value: 75000000, salary: 180000 },
-      { name: 'Alejandro Balde', position: 'LB', overall: 81, age: 20, value: 50000000, salary: 100000 },
-      { name: 'Marc Casadó', position: 'CDM', overall: 76, age: 21, value: 30000000, salary: 40000 },
-      { name: 'Pedri', position: 'CM', overall: 88, age: 21, value: 150000000, salary: 300000 },
-      { name: 'Gavi', position: 'CM', overall: 84, age: 20, value: 90000000, salary: 200000 },
-      { name: 'Dani Olmo', position: 'CAM', overall: 85, age: 26, value: 70000000, salary: 250000 },
-      { name: 'Raphinha', position: 'RW', overall: 84, age: 27, value: 70000000, salary: 220000 },
-      { name: 'Lamine Yamal', position: 'RW', overall: 81, age: 17, value: 150000000, salary: 100000 },
-      { name: 'Robert Lewandowski', position: 'ST', overall: 87, age: 36, value: 15000000, salary: 400000 },
-      { name: 'Iñaki Peña', position: 'GK', overall: 75, age: 25, value: 8000000, salary: 50000 },
-      { name: 'Andreas Christensen', position: 'CB', overall: 81, age: 28, value: 25000000, salary: 180000 },
-      { name: 'Frenkie de Jong', position: 'CM', overall: 85, age: 27, value: 60000000, salary: 350000 },
-      { name: 'Fermín López', position: 'CM', overall: 77, age: 21, value: 35000000, salary: 60000 },
-      { name: 'Ferran Torres', position: 'LW', overall: 80, age: 24, value: 30000000, salary: 200000 }
+      createPlayer('Joan García', 'GK', 24, 30),
+      createPlayer('Wojciech Szczęsny', 'GK', 35, 0.9),
+      createPlayer('Pau Cubarsí', 'CB', 19, 80),
+      createPlayer('Eric García', 'CB', 25, 30),
+      createPlayer('Ronald Araujo', 'CB', 26, 25),
+      createPlayer('Andreas Christensen', 'CB', 29, 10),
+      createPlayer('Alejandro Balde', 'LB', 22, 60),
+      createPlayer('Gerard Martín', 'LB', 23, 20),
+      createPlayer('Jules Koundé', 'RB', 27, 65),
+      createPlayer('João Cancelo', 'RB', 31, 10),
+      createPlayer('Marc Casadó', 'CDM', 22, 25),
+      createPlayer('Marc Bernal', 'CDM', 18, 10),
+      createPlayer('Pedri', 'CM', 23, 140),
+      createPlayer('Frenkie de Jong', 'CM', 28, 45),
+      createPlayer('Gavi', 'CM', 21, 40),
+      createPlayer('Fermín López', 'CAM', 22, 70),
+      createPlayer('Dani Olmo', 'CAM', 27, 60),
+      createPlayer('Raphinha', 'LW', 29, 80),
+      createPlayer('Marcus Rashford', 'LW', 28, 40),
+      createPlayer('Lamine Yamal', 'RW', 18, 200),
+      createPlayer('Roony Bardghji', 'RW', 20, 10),
+      createPlayer('Ferran Torres', 'ST', 25, 50),
+      createPlayer('Robert Lewandowski', 'ST', 37, 9)
     ]
   },
-  {
-    id: 'atletico_madrid',
+
+  // ========== ATLÉTICO DE MADRID ==========
+  atletico_madrid: {
     name: 'Atlético de Madrid',
     shortName: 'ATM',
     city: 'Madrid',
@@ -161,124 +137,33 @@ export const LALIGA_TEAMS = [
     stadiumCapacity: 70460,
     budget: 150000000,
     reputation: 88,
-    colors: { primary: '#CE3524', secondary: '#FFFFFF' },
+    colors: { primary: '#CE3524', secondary: '#FFFFFF', accent: '#272E61' },
     players: [
-      { name: 'Jan Oblak', position: 'GK', overall: 88, age: 31, value: 35000000, salary: 300000 },
-      { name: 'Nahuel Molina', position: 'RB', overall: 82, age: 26, value: 30000000, salary: 150000 },
-      { name: 'José María Giménez', position: 'CB', overall: 84, age: 29, value: 35000000, salary: 200000 },
-      { name: 'Robin Le Normand', position: 'CB', overall: 83, age: 27, value: 40000000, salary: 150000 },
-      { name: 'Reinildo', position: 'LB', overall: 79, age: 30, value: 12000000, salary: 100000 },
-      { name: 'Rodrigo De Paul', position: 'CM', overall: 84, age: 30, value: 35000000, salary: 200000 },
-      { name: 'Koke', position: 'CM', overall: 82, age: 32, value: 15000000, salary: 250000 },
-      { name: 'Pablo Barrios', position: 'CM', overall: 77, age: 21, value: 35000000, salary: 60000 },
-      { name: 'Antoine Griezmann', position: 'CAM', overall: 85, age: 33, value: 25000000, salary: 350000 },
-      { name: 'Julián Álvarez', position: 'ST', overall: 85, age: 24, value: 90000000, salary: 250000 },
-      { name: 'Alexander Sørloth', position: 'ST', overall: 81, age: 28, value: 30000000, salary: 150000 },
-      { name: 'Samuel Lino', position: 'LW', overall: 79, age: 24, value: 25000000, salary: 80000 },
-      { name: 'Conor Gallagher', position: 'CM', overall: 80, age: 24, value: 45000000, salary: 180000 },
-      { name: 'Axel Witsel', position: 'CB', overall: 79, age: 35, value: 5000000, salary: 200000 }
+      createPlayer('Jan Oblak', 'GK', 33, 17),
+      createPlayer('Juan Musso', 'GK', 31, 3),
+      createPlayer('Dávid Hancko', 'CB', 28, 30),
+      createPlayer('Robin Le Normand', 'CB', 29, 30),
+      createPlayer('Marc Pubill', 'CB', 22, 15),
+      createPlayer('José María Giménez', 'CB', 31, 14),
+      createPlayer('Clément Lenglet', 'CB', 30, 6),
+      createPlayer('Matteo Ruggeri', 'LB', 23, 15),
+      createPlayer('Marcos Llorente', 'RB', 30, 22),
+      createPlayer('Nahuel Molina', 'RB', 27, 15),
+      createPlayer('Johnny Cardoso', 'CDM', 24, 22),
+      createPlayer('Pablo Barrios', 'CM', 22, 60),
+      createPlayer('Koke', 'CM', 34, 7),
+      createPlayer('Álex Baena', 'LW', 24, 55),
+      createPlayer('Nico González', 'LW', 27, 24),
+      createPlayer('Thiago Almada', 'LW', 24, 20),
+      createPlayer('Giuliano Simeone', 'RW', 23, 40),
+      createPlayer('Antoine Griezmann', 'CAM', 34, 11),
+      createPlayer('Julián Alvarez', 'ST', 25, 100),
+      createPlayer('Alexander Sørloth', 'ST', 30, 20)
     ]
   },
-  {
-    id: 'sevilla',
-    name: 'Sevilla FC',
-    shortName: 'SEV',
-    city: 'Sevilla',
-    stadium: 'Ramón Sánchez-Pizjuán',
-    stadiumCapacity: 43883,
-    budget: 80000000,
-    reputation: 82,
-    colors: { primary: '#FFFFFF', secondary: '#D4021D' },
-    players: [
-      { name: 'Ørjan Nyland', position: 'GK', overall: 76, age: 33, value: 5000000, salary: 80000 },
-      { name: 'Jesús Navas', position: 'RB', overall: 76, age: 39, value: 2000000, salary: 150000 },
-      { name: 'Loïc Badé', position: 'CB', overall: 80, age: 24, value: 25000000, salary: 100000 },
-      { name: 'Tanguy Nianzou', position: 'CB', overall: 77, age: 22, value: 18000000, salary: 80000 },
-      { name: 'Adrià Pedrosa', position: 'LB', overall: 77, age: 24, value: 12000000, salary: 60000 },
-      { name: 'Nemanja Gudelj', position: 'CDM', overall: 77, age: 33, value: 5000000, salary: 100000 },
-      { name: 'Lucien Agoumé', position: 'CM', overall: 76, age: 22, value: 15000000, salary: 60000 },
-      { name: 'Saúl Ñíguez', position: 'CM', overall: 77, age: 29, value: 12000000, salary: 150000 },
-      { name: 'Dodi Lukébakio', position: 'RW', overall: 78, age: 27, value: 18000000, salary: 100000 },
-      { name: 'Youssef En-Nesyri', position: 'ST', overall: 79, age: 27, value: 25000000, salary: 120000 },
-      { name: 'Isaac Romero', position: 'ST', overall: 75, age: 24, value: 10000000, salary: 40000 }
-    ]
-  },
-  {
-    id: 'real_betis',
-    name: 'Real Betis',
-    shortName: 'BET',
-    city: 'Sevilla',
-    stadium: 'Benito Villamarín',
-    stadiumCapacity: 60720,
-    budget: 70000000,
-    reputation: 80,
-    colors: { primary: '#00954C', secondary: '#FFFFFF' },
-    players: [
-      { name: 'Rui Silva', position: 'GK', overall: 79, age: 30, value: 12000000, salary: 80000 },
-      { name: 'Héctor Bellerín', position: 'RB', overall: 75, age: 29, value: 5000000, salary: 100000 },
-      { name: 'Marc Bartra', position: 'CB', overall: 77, age: 33, value: 5000000, salary: 150000 },
-      { name: 'Diego Llorente', position: 'CB', overall: 78, age: 31, value: 10000000, salary: 100000 },
-      { name: 'Ricardo Rodríguez', position: 'LB', overall: 76, age: 31, value: 5000000, salary: 80000 },
-      { name: 'William Carvalho', position: 'CDM', overall: 78, age: 32, value: 8000000, salary: 120000 },
-      { name: 'Johnny Cardoso', position: 'CM', overall: 78, age: 23, value: 25000000, salary: 80000 },
-      { name: 'Giovani Lo Celso', position: 'CAM', overall: 80, age: 28, value: 25000000, salary: 150000 },
-      { name: 'Isco', position: 'CAM', overall: 79, age: 32, value: 8000000, salary: 200000 },
-      { name: 'Abde Ezzalzouli', position: 'LW', overall: 76, age: 22, value: 15000000, salary: 60000 },
-      { name: 'Ayoze Pérez', position: 'RW', overall: 78, age: 31, value: 10000000, salary: 100000 },
-      { name: 'Vitor Roque', position: 'ST', overall: 76, age: 19, value: 30000000, salary: 80000 }
-    ]
-  },
-  {
-    id: 'villarreal',
-    name: 'Villarreal CF',
-    shortName: 'VIL',
-    city: 'Villarreal',
-    stadium: 'Estadio de la Cerámica',
-    stadiumCapacity: 23500,
-    budget: 85000000,
-    reputation: 82,
-    colors: { primary: '#FFE114', secondary: '#005CA7' },
-    players: [
-      { name: 'Diego Conde', position: 'GK', overall: 76, age: 25, value: 8000000, salary: 50000 },
-      { name: 'Kiko Femenía', position: 'RB', overall: 76, age: 33, value: 3000000, salary: 80000 },
-      { name: 'Logan Costa', position: 'CB', overall: 78, age: 23, value: 20000000, salary: 60000 },
-      { name: 'Eric Bailly', position: 'CB', overall: 76, age: 30, value: 5000000, salary: 100000 },
-      { name: 'Alfonso Pedraza', position: 'LB', overall: 79, age: 28, value: 15000000, salary: 80000 },
-      { name: 'Dani Parejo', position: 'CM', overall: 82, age: 35, value: 8000000, salary: 200000 },
-      { name: 'Álex Baena', position: 'CAM', overall: 82, age: 23, value: 50000000, salary: 100000 },
-      { name: 'Santi Comesaña', position: 'CM', overall: 77, age: 28, value: 12000000, salary: 70000 },
-      { name: 'Yeremy Pino', position: 'RW', overall: 80, age: 22, value: 45000000, salary: 100000 },
-      { name: 'Ilias Akhomach', position: 'LW', overall: 75, age: 20, value: 15000000, salary: 40000 },
-      { name: 'Ayoze Pérez', position: 'ST', overall: 78, age: 31, value: 10000000, salary: 100000 },
-      { name: 'Gerard Moreno', position: 'ST', overall: 81, age: 32, value: 15000000, salary: 180000 }
-    ]
-  },
-  {
-    id: 'real_sociedad',
-    name: 'Real Sociedad',
-    shortName: 'RSO',
-    city: 'San Sebastián',
-    stadium: 'Reale Arena',
-    stadiumCapacity: 39500,
-    budget: 75000000,
-    reputation: 83,
-    colors: { primary: '#003DA5', secondary: '#FFFFFF' },
-    players: [
-      { name: 'Álex Remiro', position: 'GK', overall: 82, age: 29, value: 25000000, salary: 100000 },
-      { name: 'Hamari Traoré', position: 'RB', overall: 76, age: 32, value: 5000000, salary: 80000 },
-      { name: 'Robin Le Normand', position: 'CB', overall: 83, age: 27, value: 40000000, salary: 100000 },
-      { name: 'Igor Zubeldia', position: 'CB', overall: 78, age: 27, value: 15000000, salary: 70000 },
-      { name: 'Aihen Muñoz', position: 'LB', overall: 77, age: 26, value: 12000000, salary: 60000 },
-      { name: 'Martín Zubimendi', position: 'CDM', overall: 84, age: 25, value: 70000000, salary: 120000 },
-      { name: 'Mikel Merino', position: 'CM', overall: 82, age: 28, value: 50000000, salary: 100000 },
-      { name: 'Brais Méndez', position: 'CAM', overall: 80, age: 27, value: 30000000, salary: 100000 },
-      { name: 'Takefusa Kubo', position: 'RW', overall: 82, age: 23, value: 60000000, salary: 100000 },
-      { name: 'Mikel Oyarzabal', position: 'LW', overall: 82, age: 27, value: 40000000, salary: 150000 },
-      { name: 'Umar Sadiq', position: 'ST', overall: 77, age: 27, value: 15000000, salary: 100000 }
-    ]
-  },
-  {
-    id: 'athletic_bilbao',
+
+  // ========== ATHLETIC CLUB ==========
+  athletic_bilbao: {
     name: 'Athletic Club',
     shortName: 'ATH',
     city: 'Bilbao',
@@ -286,114 +171,197 @@ export const LALIGA_TEAMS = [
     stadiumCapacity: 53289,
     budget: 90000000,
     reputation: 82,
-    colors: { primary: '#EE2523', secondary: '#FFFFFF' },
+    colors: { primary: '#EE2523', secondary: '#FFFFFF', accent: '#000000' },
     players: [
-      { name: 'Unai Simón', position: 'GK', overall: 84, age: 27, value: 40000000, salary: 120000 },
-      { name: 'Óscar de Marcos', position: 'RB', overall: 77, age: 35, value: 3000000, salary: 100000 },
-      { name: 'Yeray Álvarez', position: 'CB', overall: 79, age: 29, value: 15000000, salary: 80000 },
-      { name: 'Vivian', position: 'CB', overall: 80, age: 24, value: 30000000, salary: 80000 },
-      { name: 'Yuri Berchiche', position: 'LB', overall: 77, age: 34, value: 3000000, salary: 100000 },
-      { name: 'Oihan Sancet', position: 'CM', overall: 81, age: 24, value: 40000000, salary: 80000 },
-      { name: 'Mikel Vesga', position: 'CDM', overall: 77, age: 31, value: 8000000, salary: 80000 },
-      { name: 'Ander Herrera', position: 'CM', overall: 76, age: 35, value: 3000000, salary: 150000 },
-      { name: 'Nico Williams', position: 'LW', overall: 84, age: 22, value: 80000000, salary: 100000 },
-      { name: 'Iñaki Williams', position: 'RW', overall: 81, age: 30, value: 30000000, salary: 150000 },
-      { name: 'Gorka Guruzeta', position: 'ST', overall: 79, age: 28, value: 25000000, salary: 80000 }
+      createPlayer('Unai Simón', 'GK', 28, 25),
+      createPlayer('Álex Padilla', 'GK', 22, 3),
+      createPlayer('Dani Vivian', 'CB', 26, 30),
+      createPlayer('Aitor Paredes', 'CB', 25, 18),
+      createPlayer('Aymeric Laporte', 'CB', 31, 9),
+      createPlayer('Yeray Álvarez', 'CB', 31, 1),
+      createPlayer('Adama Boiro', 'LB', 23, 3),
+      createPlayer('Yuri Berchiche', 'LB', 35, 1.2),
+      createPlayer('Jesús Areso', 'RB', 26, 10),
+      createPlayer('Andoni Gorosabel', 'RB', 29, 4),
+      createPlayer('Mikel Vesga', 'CDM', 32, 1.5),
+      createPlayer('Mikel Jauregizar', 'CM', 22, 30),
+      createPlayer('Beñat Prados', 'CM', 24, 18),
+      createPlayer('Iñigo Ruiz de Galarreta', 'CM', 32, 2.5),
+      createPlayer('Oihan Sancet', 'CAM', 25, 40),
+      createPlayer('Unai Gómez', 'CAM', 22, 5),
+      createPlayer('Nico Williams', 'LW', 23, 60),
+      createPlayer('Álex Berenguer', 'LW', 30, 5),
+      createPlayer('Iñaki Williams', 'RW', 31, 10),
+      createPlayer('Robert Navarro', 'RW', 23, 6),
+      createPlayer('Gorka Guruzeta', 'ST', 29, 5),
+      createPlayer('Maroan Sannadi', 'ST', 24, 5)
     ]
   },
-  {
-    id: 'valencia',
-    name: 'Valencia CF',
-    shortName: 'VAL',
-    city: 'Valencia',
-    stadium: 'Mestalla',
-    stadiumCapacity: 49430,
-    budget: 50000000,
+
+  // ========== REAL SOCIEDAD ==========
+  real_sociedad: {
+    name: 'Real Sociedad',
+    shortName: 'RSO',
+    city: 'San Sebastián',
+    stadium: 'Reale Arena',
+    stadiumCapacity: 39500,
+    budget: 70000000,
+    reputation: 80,
+    colors: { primary: '#0067B1', secondary: '#FFFFFF', accent: '#000000' },
+    players: [
+      createPlayer('Álex Remiro', 'GK', 30, 12),
+      createPlayer('Marton Dani', 'GK', 26, 1.5),
+      createPlayer('Nayef Aguerd', 'CB', 30, 8),
+      createPlayer('Aritz Elustondo', 'CB', 28, 6),
+      createPlayer('Mikel González', 'CB', 36, 0.3),
+      createPlayer('Hamari Traoré', 'CB', 32, 0.3),
+      createPlayer('Sergio Gómez', 'LB', 26, 7),
+      createPlayer('Unai Garcés', 'LB', 19, 2),
+      createPlayer('Nayel Mehssatou', 'RB', 22, 15),
+      createPlayer('Álvaro Odriozola', 'RB', 30, 5),
+      createPlayer('Martín Zubimendi', 'CDM', 26, 75),
+      createPlayer('Luka Sucic', 'CM', 23, 30),
+      createPlayer('Brais Méndez', 'CM', 28, 25),
+      createPlayer('Ander Guevara', 'CM', 28, 6),
+      createPlayer('Mikel Oyarzabal', 'LW', 28, 30),
+      createPlayer('Takefusa Kubo', 'RW', 24, 50),
+      createPlayer('Bryan Zaragoza', 'RW', 24, 3),
+      createPlayer('Orri Óskarsson', 'ST', 21, 25),
+      createPlayer('Ander Barrenetxea', 'ST', 23, 12),
+      createPlayer('Umar Sadiq', 'ST', 28, 4)
+    ]
+  },
+
+  // ========== VILLARREAL CF ==========
+  villarreal: {
+    name: 'Villarreal CF',
+    shortName: 'VIL',
+    city: 'Villarreal',
+    stadium: 'Estadio de la Cerámica',
+    stadiumCapacity: 23500,
+    budget: 65000000,
     reputation: 78,
-    colors: { primary: '#FFFFFF', secondary: '#FF4500' },
+    colors: { primary: '#FFE114', secondary: '#005187', accent: '#005187' },
     players: [
-      { name: 'Giorgi Mamardashvili', position: 'GK', overall: 82, age: 24, value: 40000000, salary: 80000 },
-      { name: 'Thierry Correia', position: 'RB', overall: 76, age: 25, value: 10000000, salary: 60000 },
-      { name: 'Mouctar Diakhaby', position: 'CB', overall: 76, age: 27, value: 8000000, salary: 80000 },
-      { name: 'Yarek Gasiorowski', position: 'CB', overall: 74, age: 19, value: 15000000, salary: 30000 },
-      { name: 'José Gayà', position: 'LB', overall: 81, age: 29, value: 20000000, salary: 150000 },
-      { name: 'Javi Guerra', position: 'CM', overall: 77, age: 21, value: 30000000, salary: 40000 },
-      { name: 'Pepelu', position: 'CM', overall: 77, age: 26, value: 15000000, salary: 60000 },
-      { name: 'Hugo Duro', position: 'ST', overall: 77, age: 25, value: 18000000, salary: 70000 },
-      { name: 'Diego López', position: 'LW', overall: 75, age: 22, value: 12000000, salary: 40000 }
+      createPlayer('Filip Jörgensen', 'GK', 23, 20),
+      createPlayer('Luiz Júnior', 'GK', 24, 3),
+      createPlayer('Eric Bertrand', 'CB', 23, 7),
+      createPlayer('Logan Costa', 'CB', 24, 5),
+      createPlayer('Jan Zimmermann', 'CB', 26, 2.5),
+      createPlayer('Aïssa Mandi', 'CB', 33, 1.5),
+      createPlayer('Alfonso Pedraza', 'LB', 29, 18),
+      createPlayer('Mikel Villanueva', 'LB', 27, 3),
+      createPlayer('Kiko Femenía', 'RB', 34, 0.8),
+      createPlayer('Dani Parejo', 'CDM', 37, 2.5),
+      createPlayer('Santi Comesaña', 'CDM', 28, 2),
+      createPlayer('Aleix García', 'CM', 28, 15),
+      createPlayer('Fabio Silva', 'CM', 23, 8),
+      createPlayer('Thierno Barry', 'LW', 22, 15),
+      createPlayer('Yeremy Pino', 'RW', 23, 30),
+      createPlayer('Nicolas Pépé', 'RW', 30, 2),
+      createPlayer('Gerard Moreno', 'ST', 33, 7),
+      createPlayer('Ayoze Pérez', 'ST', 32, 3.5)
     ]
   },
-  {
-    id: 'girona',
+
+  // ========== REAL BETIS ==========
+  real_betis: {
+    name: 'Real Betis Balompié',
+    shortName: 'BET',
+    city: 'Sevilla',
+    stadium: 'Benito Villamarín',
+    stadiumCapacity: 60720,
+    budget: 60000000,
+    reputation: 77,
+    colors: { primary: '#00954C', secondary: '#FFFFFF', accent: '#00954C' },
+    players: [
+      createPlayer('Rui Silva', 'GK', 31, 6),
+      createPlayer('Adrián San Miguel', 'GK', 39, 0.3),
+      createPlayer('Marc Bartra', 'CB', 35, 0.8),
+      createPlayer('Diego Llorente', 'CB', 32, 6),
+      createPlayer('Natan', 'CB', 24, 4),
+      createPlayer('Ricardo Rodríguez', 'LB', 33, 1.5),
+      createPlayer('Juan Miranda', 'LB', 26, 12),
+      createPlayer('Youssouf Sabaly', 'RB', 32, 2.5),
+      createPlayer('Héctor Bellerín', 'RB', 31, 2.5),
+      createPlayer('Johnny Cardoso', 'CDM', 24, 20),
+      createPlayer('William Carvalho', 'CDM', 33, 1.5),
+      createPlayer('Giovani Lo Celso', 'CM', 29, 20),
+      createPlayer('Sergi Altimira', 'CM', 26, 8),
+      createPlayer('Pablo Fornals', 'CAM', 29, 18),
+      createPlayer('Abde Ezzalzouli', 'LW', 24, 15),
+      createPlayer('Jesús Rodríguez', 'LW', 19, 3.5),
+      createPlayer('Aitor Ruibal', 'RW', 29, 4),
+      createPlayer('Assane Diao', 'RW', 20, 10),
+      createPlayer('Vitor Roque', 'ST', 20, 35),
+      createPlayer('Cédric Bakambu', 'ST', 34, 1.8)
+    ]
+  },
+
+  // ========== SEVILLA FC ==========
+  sevilla: {
+    name: 'Sevilla FC',
+    shortName: 'SEV',
+    city: 'Sevilla',
+    stadium: 'Ramón Sánchez-Pizjuán',
+    stadiumCapacity: 43883,
+    budget: 55000000,
+    reputation: 78,
+    colors: { primary: '#FFFFFF', secondary: '#ED1C24', accent: '#ED1C24' },
+    players: [
+      createPlayer('Orjan Nyland', 'GK', 35, 1.5),
+      createPlayer('Álvaro Fernández', 'GK', 26, 1.2),
+      createPlayer('David Hancko', 'CB', 28, 30),
+      createPlayer('Tanguy Nianzou', 'CB', 23, 8),
+      createPlayer('Loïc Badé', 'CB', 25, 7),
+      createPlayer('Kike Salas', 'CB', 23, 3),
+      createPlayer('Gonzalo Montiel', 'LB', 28, 6),
+      createPlayer('José Ángel Carmona', 'RB', 23, 5),
+      createPlayer('Albert Sambi Lokonga', 'CDM', 26, 10),
+      createPlayer('Lucien Agoumé', 'CDM', 23, 5),
+      createPlayer('Djibril Sow', 'CM', 28, 6),
+      createPlayer('Sambi Saúl', 'CM', 30, 3),
+      createPlayer('Dodi Lukebakio', 'LW', 28, 8),
+      createPlayer('Stanis Idumbo', 'LW', 22, 4),
+      createPlayer('Chidera Ejuke', 'RW', 27, 4.5),
+      createPlayer('Peque', 'RW', 22, 5),
+      createPlayer('Isaac Romero', 'ST', 24, 8),
+      createPlayer('Valentín Barco', 'ST', 21, 3)
+    ]
+  },
+
+  // ========== GIRONA FC ==========
+  girona: {
     name: 'Girona FC',
     shortName: 'GIR',
     city: 'Girona',
     stadium: 'Montilivi',
-    stadiumCapacity: 14624,
-    budget: 45000000,
+    stadiumCapacity: 14286,
+    budget: 50000000,
     reputation: 75,
-    colors: { primary: '#CD2534', secondary: '#FFFFFF' },
+    colors: { primary: '#CD2534', secondary: '#FFFFFF', accent: '#CD2534' },
     players: [
-      { name: 'Paulo Gazzaniga', position: 'GK', overall: 78, age: 32, value: 8000000, salary: 80000 },
-      { name: 'Arnau Martínez', position: 'RB', overall: 77, age: 21, value: 20000000, salary: 40000 },
-      { name: 'David López', position: 'CB', overall: 77, age: 35, value: 2000000, salary: 80000 },
-      { name: 'Daley Blind', position: 'CB', overall: 78, age: 34, value: 5000000, salary: 150000 },
-      { name: 'Miguel Gutiérrez', position: 'LB', overall: 79, age: 23, value: 25000000, salary: 60000 },
-      { name: 'Oriol Romeu', position: 'CDM', overall: 78, age: 33, value: 8000000, salary: 100000 },
-      { name: 'Iván Martín', position: 'CM', overall: 78, age: 25, value: 20000000, salary: 50000 },
-      { name: 'Yangel Herrera', position: 'CM', overall: 78, age: 26, value: 18000000, salary: 60000 },
-      { name: 'Bryan Gil', position: 'LW', overall: 76, age: 23, value: 18000000, salary: 80000 },
-      { name: 'Viktor Tsygankov', position: 'RW', overall: 80, age: 26, value: 25000000, salary: 80000 },
-      { name: 'Abel Ruiz', position: 'ST', overall: 77, age: 24, value: 15000000, salary: 60000 }
+      createPlayer('Paulo Gazzaniga', 'GK', 33, 4),
+      createPlayer('Juan Carlos', 'GK', 33, 0.2),
+      createPlayer('Alejandro Francés', 'CB', 23, 10),
+      createPlayer('Daley Blind', 'CB', 35, 2.5),
+      createPlayer('Juanpe', 'CB', 35, 0.5),
+      createPlayer('Miguel Gutiérrez', 'LB', 24, 30),
+      createPlayer('Arnau Martínez', 'RB', 22, 25),
+      createPlayer('Oriol Romeu', 'CDM', 34, 2),
+      createPlayer('Iván Martín', 'CM', 27, 12),
+      createPlayer('Jhon Solís', 'CM', 24, 7),
+      createPlayer('Yangel Herrera', 'CM', 27, 5),
+      createPlayer('Yaser Asprilla', 'RW', 22, 20),
+      createPlayer('Bryan Gil', 'LW', 24, 10),
+      createPlayer('Viktor Tsygankov', 'RW', 28, 15),
+      createPlayer('Abel Ruiz', 'ST', 26, 10),
+      createPlayer('Stuani', 'ST', 38, 0.3)
     ]
   },
-  {
-    id: 'getafe',
-    name: 'Getafe CF',
-    shortName: 'GET',
-    city: 'Getafe',
-    stadium: 'Coliseum Alfonso Pérez',
-    stadiumCapacity: 17393,
-    budget: 35000000,
-    reputation: 72,
-    colors: { primary: '#004FA3', secondary: '#FFFFFF' },
-    players: [
-      { name: 'David Soria', position: 'GK', overall: 78, age: 31, value: 8000000, salary: 80000 },
-      { name: 'Juan Iglesias', position: 'RB', overall: 75, age: 27, value: 8000000, salary: 50000 },
-      { name: 'Djené', position: 'CB', overall: 78, age: 32, value: 8000000, salary: 100000 },
-      { name: 'Domingos Duarte', position: 'CB', overall: 76, age: 29, value: 8000000, salary: 80000 },
-      { name: 'Diego Rico', position: 'LB', overall: 75, age: 31, value: 5000000, salary: 60000 },
-      { name: 'Luis Milla', position: 'CM', overall: 77, age: 30, value: 10000000, salary: 80000 },
-      { name: 'Mauro Arambarri', position: 'CDM', overall: 77, age: 29, value: 12000000, salary: 80000 },
-      { name: 'Carles Aleñá', position: 'CM', overall: 75, age: 26, value: 8000000, salary: 60000 },
-      { name: 'Borja Mayoral', position: 'ST', overall: 77, age: 27, value: 15000000, salary: 100000 },
-      { name: 'Álvaro Rodríguez', position: 'ST', overall: 74, age: 21, value: 10000000, salary: 40000 }
-    ]
-  },
-  {
-    id: 'osasuna',
-    name: 'CA Osasuna',
-    shortName: 'OSA',
-    city: 'Pamplona',
-    stadium: 'El Sadar',
-    stadiumCapacity: 23576,
-    budget: 40000000,
-    reputation: 73,
-    colors: { primary: '#D91A21', secondary: '#000066' },
-    players: [
-      { name: 'Sergio Herrera', position: 'GK', overall: 77, age: 31, value: 8000000, salary: 60000 },
-      { name: 'Nacho Vidal', position: 'RB', overall: 75, age: 29, value: 5000000, salary: 50000 },
-      { name: 'David García', position: 'CB', overall: 77, age: 30, value: 8000000, salary: 60000 },
-      { name: 'Juan Cruz', position: 'LB', overall: 76, age: 27, value: 8000000, salary: 50000 },
-      { name: 'Lucas Torró', position: 'CDM', overall: 76, age: 30, value: 8000000, salary: 60000 },
-      { name: 'Aimar Oroz', position: 'CAM', overall: 77, age: 22, value: 18000000, salary: 40000 },
-      { name: 'Bryan Zaragoza', position: 'LW', overall: 76, age: 23, value: 15000000, salary: 50000 },
-      { name: 'Ante Budimir', position: 'ST', overall: 78, age: 33, value: 10000000, salary: 100000 },
-      { name: 'Raúl García', position: 'ST', overall: 74, age: 37, value: 1000000, salary: 80000 }
-    ]
-  },
-  {
-    id: 'celta',
+
+  // ========== RC CELTA DE VIGO ==========
+  celta_vigo: {
     name: 'RC Celta de Vigo',
     shortName: 'CEL',
     city: 'Vigo',
@@ -401,2131 +369,463 @@ export const LALIGA_TEAMS = [
     stadiumCapacity: 29000,
     budget: 45000000,
     reputation: 74,
-    colors: { primary: '#8FBCE5', secondary: '#FFFFFF' },
+    colors: { primary: '#8AC3EE', secondary: '#FFFFFF', accent: '#8AC3EE' },
     players: [
-      { name: 'Vicente Guaita', position: 'GK', overall: 77, age: 37, value: 2000000, salary: 80000 },
-      { name: 'Óscar Mingueza', position: 'RB', overall: 77, age: 25, value: 15000000, salary: 60000 },
-      { name: 'Carl Starfelt', position: 'CB', overall: 77, age: 29, value: 12000000, salary: 60000 },
-      { name: 'Unai Núñez', position: 'CB', overall: 76, age: 27, value: 10000000, salary: 60000 },
-      { name: 'Javi Galán', position: 'LB', overall: 78, age: 29, value: 12000000, salary: 70000 },
-      { name: 'Fran Beltrán', position: 'CM', overall: 78, age: 25, value: 18000000, salary: 60000 },
-      { name: 'Hugo Álvarez', position: 'CM', overall: 75, age: 21, value: 12000000, salary: 30000 },
-      { name: 'Iago Aspas', position: 'ST', overall: 82, age: 37, value: 5000000, salary: 200000 },
-      { name: 'Borja Iglesias', position: 'ST', overall: 77, age: 31, value: 10000000, salary: 100000 },
-      { name: 'Swedberg', position: 'LW', overall: 74, age: 21, value: 10000000, salary: 40000 }
+      createPlayer('Iván Villar', 'GK', 28, 2),
+      createPlayer('Vicente Guaita', 'GK', 38, 0.8),
+      createPlayer('Carl Starfelt', 'CB', 30, 3.5),
+      createPlayer('Jailson', 'CB', 31, 1.5),
+      createPlayer('Unai Núñez', 'CB', 28, 1.5),
+      createPlayer('Joseph Aidoo', 'CB', 30, 0.6),
+      createPlayer('Marcos Alonso', 'LB', 34, 1.2),
+      createPlayer('Oscar Mingueza', 'RB', 26, 8),
+      createPlayer('Hugo Álvarez', 'RB', 21, 6),
+      createPlayer('Fran Beltrán', 'CDM', 26, 7),
+      createPlayer('Ilaix Moriba', 'CM', 23, 5),
+      createPlayer('Luca de la Torre', 'CM', 27, 4),
+      createPlayer('Williot Swedberg', 'CM', 22, 3),
+      createPlayer('Franco Cervi', 'LW', 31, 2.5),
+      createPlayer('Iago Aspas', 'RW', 38, 2),
+      createPlayer('Pablo Durán', 'RW', 22, 5),
+      createPlayer('Borja Iglesias', 'ST', 32, 5),
+      createPlayer('Jonathan Bamba', 'ST', 29, 3)
     ]
   },
-  {
-    id: 'rayo',
+
+  // ========== VALENCIA CF ==========
+  valencia: {
+    name: 'Valencia CF',
+    shortName: 'VAL',
+    city: 'Valencia',
+    stadium: 'Mestalla',
+    stadiumCapacity: 49430,
+    budget: 40000000,
+    reputation: 76,
+    colors: { primary: '#FFFFFF', secondary: '#000000', accent: '#FFAA00' },
+    players: [
+      createPlayer('Giorgi Mamardashvili', 'GK', 25, 40),
+      createPlayer('Stole Dimitrievski', 'GK', 32, 2),
+      createPlayer('Cristhian Mosquera', 'CB', 21, 30),
+      createPlayer('Yarek Gasiorowski', 'CB', 20, 12),
+      createPlayer('César Tárrega', 'CB', 23, 4),
+      createPlayer('Hugo Guillamón', 'CB', 25, 3),
+      createPlayer('Mouctar Diakhaby', 'CB', 28, 1.5),
+      createPlayer('Jesús Vázquez', 'LB', 22, 5),
+      createPlayer('José Gayà', 'LB', 31, 3),
+      createPlayer('Thierry Correia', 'RB', 26, 4),
+      createPlayer('Dimitri Foulquier', 'RB', 31, 2.5),
+      createPlayer('Pepelu', 'CDM', 27, 15),
+      createPlayer('André Almeida', 'CM', 26, 8),
+      createPlayer('Enzo Barrenechea', 'CM', 24, 7),
+      createPlayer('Javi Guerra', 'CM', 22, 4.5),
+      createPlayer('Diego López', 'LW', 23, 12),
+      createPlayer('Sergi Canós', 'LW', 28, 3.5),
+      createPlayer('Rafa Mir', 'ST', 28, 4),
+      createPlayer('Hugo Duro', 'ST', 26, 5)
+    ]
+  },
+
+  // ========== UD LAS PALMAS ==========
+  las_palmas: {
+    name: 'UD Las Palmas',
+    shortName: 'LPA',
+    city: 'Las Palmas',
+    stadium: 'Gran Canaria',
+    stadiumCapacity: 32392,
+    budget: 35000000,
+    reputation: 70,
+    colors: { primary: '#FFE000', secondary: '#005BA6', accent: '#005BA6' },
+    players: [
+      createPlayer('Jasper Cillessen', 'GK', 36, 1),
+      createPlayer('Álvaro Valles', 'GK', 27, 10),
+      createPlayer('Sergi Cardona', 'CB', 26, 2.5),
+      createPlayer('Scott McKenna', 'CB', 29, 4),
+      createPlayer('Álex Suárez', 'CB', 32, 1.5),
+      createPlayer('Mika Mármol', 'CB', 25, 3.5),
+      createPlayer('Daley Sinkgraven', 'LB', 30, 1),
+      createPlayer('Marvin Park', 'LB', 24, 2.5),
+      createPlayer('Álex Muñoz', 'RB', 30, 2.5),
+      createPlayer('Viti', 'RB', 23, 1.5),
+      createPlayer('Manu Fuster', 'CDM', 32, 0.7),
+      createPlayer('Kirian Rodríguez', 'CM', 30, 1.8),
+      createPlayer('Enzo Loiodice', 'CM', 24, 2.5),
+      createPlayer('Javi Muñoz', 'CM', 30, 1.5),
+      createPlayer('Alberto Moleiro', 'LW', 22, 18),
+      createPlayer('Sandro Ramírez', 'LW', 30, 0.8),
+      createPlayer('Fabio González', 'RW', 24, 2),
+      createPlayer('Marc Cardona', 'ST', 29, 0.8),
+      createPlayer('Oli McBurnie', 'ST', 29, 3)
+    ]
+  },
+
+  // ========== RAYO VALLECANO ==========
+  rayo_vallecano: {
     name: 'Rayo Vallecano',
     shortName: 'RAY',
     city: 'Madrid',
     stadium: 'Estadio de Vallecas',
     stadiumCapacity: 14708,
     budget: 30000000,
-    reputation: 70,
-    colors: { primary: '#FFFFFF', secondary: '#E53027' },
-    players: [
-      { name: 'Augusto Batalla', position: 'GK', overall: 75, age: 28, value: 5000000, salary: 50000 },
-      { name: 'Iván Balliu', position: 'RB', overall: 75, age: 32, value: 3000000, salary: 50000 },
-      { name: 'Florian Lejeune', position: 'CB', overall: 77, age: 33, value: 5000000, salary: 80000 },
-      { name: 'Abdul Mumin', position: 'CB', overall: 76, age: 26, value: 10000000, salary: 50000 },
-      { name: 'Alfonso Espino', position: 'LB', overall: 76, age: 32, value: 3000000, salary: 50000 },
-      { name: 'Unai López', position: 'CM', overall: 76, age: 29, value: 8000000, salary: 60000 },
-      { name: 'Óscar Valentín', position: 'CDM', overall: 76, age: 30, value: 8000000, salary: 60000 },
-      { name: 'Isi Palazón', position: 'RW', overall: 77, age: 28, value: 12000000, salary: 70000 },
-      { name: 'Álvaro García', position: 'LW', overall: 76, age: 31, value: 8000000, salary: 60000 },
-      { name: 'Raúl de Tomás', position: 'ST', overall: 78, age: 30, value: 15000000, salary: 100000 }
-    ]
-  },
-  {
-    id: 'mallorca',
-    name: 'RCD Mallorca',
-    shortName: 'MLL',
-    city: 'Palma de Mallorca',
-    stadium: 'Mallorca Son Moix',
-    stadiumCapacity: 23142,
-    budget: 35000000,
-    reputation: 72,
-    colors: { primary: '#E30613', secondary: '#000000' },
-    players: [
-      { name: 'Predrag Rajkovic', position: 'GK', overall: 78, age: 28, value: 12000000, salary: 70000 },
-      { name: 'Pablo Maffeo', position: 'RB', overall: 77, age: 27, value: 12000000, salary: 60000 },
-      { name: 'Antonio Raíllo', position: 'CB', overall: 76, age: 33, value: 3000000, salary: 60000 },
-      { name: 'Siebe Van der Heyden', position: 'CB', overall: 75, age: 25, value: 8000000, salary: 40000 },
-      { name: 'Johan Mojica', position: 'LB', overall: 76, age: 32, value: 5000000, salary: 60000 },
-      { name: 'Manu Morlanes', position: 'CM', overall: 76, age: 25, value: 10000000, salary: 50000 },
-      { name: 'Sergi Darder', position: 'CM', overall: 78, age: 30, value: 12000000, salary: 80000 },
-      { name: 'Dani Rodríguez', position: 'CAM', overall: 77, age: 32, value: 5000000, salary: 80000 },
-      { name: 'Vedat Muriqi', position: 'ST', overall: 78, age: 30, value: 15000000, salary: 100000 },
-      { name: 'Cyle Larin', position: 'ST', overall: 76, age: 29, value: 10000000, salary: 70000 }
-    ]
-  },
-  {
-    id: 'las_palmas',
-    name: 'UD Las Palmas',
-    shortName: 'LPA',
-    city: 'Las Palmas de Gran Canaria',
-    stadium: 'Gran Canaria',
-    stadiumCapacity: 32392,
-    budget: 30000000,
-    reputation: 70,
-    colors: { primary: '#FFE600', secondary: '#0000FF' },
-    players: [
-      { name: 'Álvaro Valles', position: 'GK', overall: 78, age: 27, value: 15000000, salary: 60000 },
-      { name: 'Viti Rozada', position: 'RB', overall: 74, age: 26, value: 5000000, salary: 30000 },
-      { name: 'Scott McKenna', position: 'CB', overall: 76, age: 28, value: 8000000, salary: 50000 },
-      { name: 'Álex Suárez', position: 'CB', overall: 75, age: 27, value: 5000000, salary: 40000 },
-      { name: 'Álex Muñoz', position: 'LB', overall: 75, age: 30, value: 5000000, salary: 40000 },
-      { name: 'Javi Muñoz', position: 'CM', overall: 76, age: 29, value: 8000000, salary: 50000 },
-      { name: 'Kirian Rodríguez', position: 'CM', overall: 77, age: 28, value: 10000000, salary: 60000 },
-      { name: 'Alberto Moleiro', position: 'CAM', overall: 77, age: 21, value: 25000000, salary: 40000 },
-      { name: 'Sandro Ramírez', position: 'ST', overall: 75, age: 29, value: 5000000, salary: 60000 },
-      { name: 'Marc Cardona', position: 'ST', overall: 74, age: 29, value: 3000000, salary: 40000 }
-    ]
-  },
-  {
-    id: 'alaves',
-    name: 'Deportivo Alavés',
-    shortName: 'ALA',
-    city: 'Vitoria-Gasteiz',
-    stadium: 'Mendizorroza',
-    stadiumCapacity: 19840,
-    budget: 25000000,
     reputation: 68,
-    colors: { primary: '#003DA5', secondary: '#FFFFFF' },
+    colors: { primary: '#FFFFFF', secondary: '#E53027', accent: '#E53027' },
     players: [
-      { name: 'Antonio Sivera', position: 'GK', overall: 77, age: 28, value: 10000000, salary: 50000 },
-      { name: 'Andoni Gorosabel', position: 'RB', overall: 75, age: 28, value: 5000000, salary: 50000 },
-      { name: 'Abdel Abqar', position: 'CB', overall: 75, age: 25, value: 8000000, salary: 40000 },
-      { name: 'Aleksandar Sedlar', position: 'CB', overall: 74, age: 32, value: 3000000, salary: 40000 },
-      { name: 'Manu Sánchez', position: 'LB', overall: 75, age: 24, value: 8000000, salary: 40000 },
-      { name: 'Antonio Blanco', position: 'CDM', overall: 75, age: 24, value: 8000000, salary: 40000 },
-      { name: 'Jon Guridi', position: 'CM', overall: 75, age: 30, value: 5000000, salary: 50000 },
-      { name: 'Carlos Vicente', position: 'RW', overall: 75, age: 24, value: 8000000, salary: 40000 },
-      { name: 'Kike García', position: 'ST', overall: 76, age: 35, value: 3000000, salary: 60000 }
+      createPlayer('Augusto Batalla', 'GK', 28, 3.5),
+      createPlayer('Dani Cárdenas', 'GK', 26, 0.6),
+      createPlayer('Florian Lejeune', 'CB', 34, 2),
+      createPlayer('Aridane Hernández', 'CB', 36, 0.8),
+      createPlayer('Esteban Saveljich', 'CB', 33, 0.9),
+      createPlayer('Pelayo Fernández', 'CB', 25, 3.5),
+      createPlayer('Andrei Ratiu', 'RB', 27, 18),
+      createPlayer('Alfonso Espino', 'LB', 32, 1),
+      createPlayer('Pathé Ciss', 'RB', 31, 0.6),
+      createPlayer('Óscar Valentín', 'CDM', 30, 3.5),
+      createPlayer('Unai López', 'CM', 30, 3),
+      createPlayer('James Rodríguez', 'CAM', 34, 3),
+      createPlayer('Jorge de Frutos', 'RW', 28, 7),
+      createPlayer('Álvaro García', 'LW', 32, 4),
+      createPlayer('Randy Nteka', 'ST', 26, 4),
+      createPlayer('Sergio Camello', 'ST', 24, 5)
     ]
   },
-  {
-    id: 'leganes',
+
+  // ========== CD LEGANÉS ==========
+  leganes: {
     name: 'CD Leganés',
     shortName: 'LEG',
     city: 'Leganés',
     stadium: 'Butarque',
     stadiumCapacity: 12454,
-    budget: 20000000,
+    budget: 25000000,
     reputation: 65,
-    colors: { primary: '#0032A0', secondary: '#FFFFFF' },
+    colors: { primary: '#005BBF', secondary: '#FFFFFF', accent: '#005BBF' },
     players: [
-      { name: 'Marko Dmitrovic', position: 'GK', overall: 76, age: 32, value: 5000000, salary: 60000 },
-      { name: 'Valery Fernández', position: 'RB', overall: 73, age: 26, value: 5000000, salary: 30000 },
-      { name: 'Jorge Sáenz', position: 'CB', overall: 74, age: 28, value: 5000000, salary: 40000 },
-      { name: 'Sergio González', position: 'CB', overall: 74, age: 29, value: 3000000, salary: 40000 },
-      { name: 'Javi Hernández', position: 'LB', overall: 73, age: 26, value: 5000000, salary: 30000 },
-      { name: 'Dani Raba', position: 'RW', overall: 74, age: 28, value: 5000000, salary: 50000 },
-      { name: 'Óscar Rodríguez', position: 'CM', overall: 74, age: 26, value: 5000000, salary: 50000 },
-      { name: 'Juan Cruz', position: 'ST', overall: 74, age: 25, value: 5000000, salary: 40000 },
-      { name: 'Miguel de la Fuente', position: 'ST', overall: 73, age: 24, value: 5000000, salary: 30000 }
+      createPlayer('Juan Soriano', 'GK', 29, 2.5),
+      createPlayer('Marko Dmitrovic', 'GK', 34, 0.8),
+      createPlayer('Jorge Sáenz', 'CB', 28, 2.5),
+      createPlayer('Jackson Porozo', 'CB', 24, 1.5),
+      createPlayer('Sergio González', 'CB', 34, 0.5),
+      createPlayer('Enric Franquesa', 'LB', 27, 2.5),
+      createPlayer('Valentin Rosier', 'RB', 29, 3),
+      createPlayer('Yvan Neyou', 'CDM', 29, 2.5),
+      createPlayer('Seydouba Cissé', 'CM', 24, 2),
+      createPlayer('Dani Raba', 'CM', 29, 1.5),
+      createPlayer('Óscar Rodríguez', 'CAM', 26, 3),
+      createPlayer('Juan Cruz', 'LW', 27, 5),
+      createPlayer('Diego García', 'RW', 27, 2.5),
+      createPlayer('Miguel de la Fuente', 'ST', 26, 5),
+      createPlayer('Sebastián Haller', 'ST', 31, 4)
     ]
   },
-  {
-    id: 'espanyol',
+
+  // ========== ELCHE CF ==========
+  elche: {
+    name: 'Elche CF',
+    shortName: 'ELC',
+    city: 'Elche',
+    stadium: 'Martínez Valero',
+    stadiumCapacity: 33732,
+    budget: 30000000,
+    reputation: 66,
+    colors: { primary: '#008847', secondary: '#FFFFFF', accent: '#008847' },
+    players: [
+      createPlayer('Iñaki Peña', 'GK', 26, 8),
+      createPlayer('Alejandro Iturbe', 'GK', 22, 2),
+      createPlayer('Matías Dituro', 'GK', 38, 0.2),
+      createPlayer('David Affengruber', 'CB', 24, 9),
+      createPlayer('Víctor Chust', 'CB', 25, 4),
+      createPlayer('John Donald', 'CB', 25, 1),
+      createPlayer('Bambo Diaby', 'CB', 28, 0.8),
+      createPlayer('Adrià Pedrosa', 'LB', 27, 4),
+      createPlayer('Léo Pétrot', 'LB', 28, 1.5),
+      createPlayer('Héctor Fort', 'RB', 19, 12),
+      createPlayer('Álvaro Núñez', 'RB', 25, 6),
+      createPlayer('Federico Redondo', 'CDM', 23, 4),
+      createPlayer('Marc Aguado', 'CDM', 25, 3),
+      createPlayer('Rodrigo Mendoza', 'CM', 20, 15),
+      createPlayer('Martim Neto', 'CM', 23, 5),
+      createPlayer('Aleix Febas', 'CM', 29, 4),
+      createPlayer('Germán Valera', 'LW', 23, 5),
+      createPlayer('Lucas Cepeda', 'LW', 23, 3.2),
+      createPlayer('Grady Diangana', 'RW', 27, 3.5),
+      createPlayer('Rafa Mir', 'ST', 28, 4),
+      createPlayer('Álvaro Rodríguez', 'ST', 21, 4),
+      createPlayer('André Silva', 'ST', 30, 3)
+    ]
+  },
+
+  // ========== RCD ESPANYOL ==========
+  espanyol: {
     name: 'RCD Espanyol',
     shortName: 'ESP',
     city: 'Barcelona',
     stadium: 'RCDE Stadium',
-    stadiumCapacity: 40500,
-    budget: 35000000,
-    reputation: 72,
-    colors: { primary: '#007FC8', secondary: '#FFFFFF' },
+    stadiumCapacity: 40000,
+    budget: 28000000,
+    reputation: 68,
+    colors: { primary: '#007FC8', secondary: '#FFFFFF', accent: '#007FC8' },
     players: [
-      { name: 'Joan García', position: 'GK', overall: 77, age: 23, value: 15000000, salary: 40000 },
-      { name: 'Omar El Hilali', position: 'RB', overall: 75, age: 23, value: 8000000, salary: 40000 },
-      { name: 'Leandro Cabrera', position: 'CB', overall: 76, age: 33, value: 5000000, salary: 60000 },
-      { name: 'Fernando Calero', position: 'CB', overall: 75, age: 30, value: 5000000, salary: 50000 },
-      { name: 'Carlos Romero', position: 'LB', overall: 74, age: 24, value: 8000000, salary: 30000 },
-      { name: 'Edu Expósito', position: 'CM', overall: 76, age: 28, value: 10000000, salary: 50000 },
-      { name: 'José Gragera', position: 'CM', overall: 74, age: 24, value: 8000000, salary: 30000 },
-      { name: 'Javi Puado', position: 'RW', overall: 76, age: 26, value: 12000000, salary: 60000 },
-      { name: 'Jofre Carreras', position: 'LW', overall: 74, age: 24, value: 8000000, salary: 30000 },
-      { name: 'Walid Cheddira', position: 'ST', overall: 75, age: 26, value: 10000000, salary: 50000 }
+      createPlayer('Marko Dmitrovic', 'GK', 34, 0.8),
+      createPlayer('Ángel Fortuño', 'GK', 24, 0.3),
+      createPlayer('Clemens Riedel', 'CB', 22, 5),
+      createPlayer('Fernando Calero', 'CB', 30, 2),
+      createPlayer('Miguel Rubio', 'CB', 27, 2),
+      createPlayer('Leandro Cabrera', 'CB', 34, 1),
+      createPlayer('Carlos Romero', 'LB', 24, 15),
+      createPlayer('José Salinas', 'LB', 25, 2.8),
+      createPlayer('Omar El Hilali', 'RB', 22, 15),
+      createPlayer('Rubén Sánchez', 'RB', 24, 1.5),
+      createPlayer('Urko González', 'CDM', 24, 5),
+      createPlayer('Charles Pickel', 'CDM', 28, 2.5),
+      createPlayer('Pol Lozano', 'CM', 26, 6),
+      createPlayer('Edu Expósito', 'CM', 29, 4),
+      createPlayer('Ramón Terrats', 'CM', 25, 3),
+      createPlayer('Javi Puado', 'LW', 27, 10),
+      createPlayer('Pere Milla', 'LW', 33, 1.2),
+      createPlayer('Tyrhys Dolan', 'RW', 24, 10),
+      createPlayer('Jofre Carreras', 'RW', 24, 3),
+      createPlayer('Roberto Fernández', 'ST', 23, 10),
+      createPlayer('Kike García', 'ST', 36, 0.8)
     ]
   },
-  {
-    id: 'valladolid',
-    name: 'Real Valladolid',
-    shortName: 'VLL',
-    city: 'Valladolid',
-    stadium: 'José Zorrilla',
-    stadiumCapacity: 27618,
+
+  // ========== CA OSASUNA ==========
+  osasuna: {
+    name: 'CA Osasuna',
+    shortName: 'OSA',
+    city: 'Pamplona',
+    stadium: 'El Sadar',
+    stadiumCapacity: 23576,
+    budget: 28000000,
+    reputation: 70,
+    colors: { primary: '#D91A21', secondary: '#001E62', accent: '#001E62' },
+    players: [
+      createPlayer('Sergio Herrera', 'GK', 32, 3),
+      createPlayer('Aitor Fernández', 'GK', 34, 0.6),
+      createPlayer('Enzo Boyomo', 'CB', 24, 20),
+      createPlayer('Jorge Herrando', 'CB', 24, 3.5),
+      createPlayer('Alejandro Catena', 'CB', 31, 2.8),
+      createPlayer('Abel Bretones', 'LB', 25, 4.5),
+      createPlayer('Javi Galán', 'LB', 31, 3.5),
+      createPlayer('Juan Cruz', 'LB', 33, 1.2),
+      createPlayer('Valentin Rosier', 'RB', 29, 3),
+      createPlayer('Lucas Torró', 'CDM', 31, 2.8),
+      createPlayer('Iker Muñoz', 'CDM', 23, 2),
+      createPlayer('Jon Moncayola', 'CM', 27, 7),
+      createPlayer('Asier Osambela', 'CM', 21, 1),
+      createPlayer('Aimar Oroz', 'CAM', 24, 9),
+      createPlayer('Moi Gómez', 'CAM', 31, 1.8),
+      createPlayer('Víctor Muñoz', 'LW', 22, 10),
+      createPlayer('Raúl Moro', 'LW', 23, 7),
+      createPlayer('Sheraldo Becker', 'LW', 30, 1.5),
+      createPlayer('Rubén García', 'RW', 32, 1.8),
+      createPlayer('Raúl García', 'ST', 25, 3),
+      createPlayer('Ante Budimir', 'ST', 34, 3)
+    ]
+  },
+
+  // ========== LEVANTE UD ==========
+  levante: {
+    name: 'Levante UD',
+    shortName: 'LEV',
+    city: 'Valencia',
+    stadium: 'Ciutat de València',
+    stadiumCapacity: 26354,
+    budget: 26000000,
+    reputation: 67,
+    colors: { primary: '#004D98', secondary: '#CE1126', accent: '#FFFFFF' },
+    players: [
+      createPlayer('Mathew Ryan', 'GK', 33, 2),
+      createPlayer('Pablo Campos', 'GK', 23, 1.5),
+      createPlayer('Matías Moreno', 'CB', 22, 4),
+      createPlayer('Alan Matturro', 'CB', 21, 4),
+      createPlayer('Adrián Dela', 'CB', 26, 2),
+      createPlayer('Unai Elgezabal', 'CB', 32, 0.6),
+      createPlayer('Manu Sánchez', 'LB', 25, 6),
+      createPlayer('Diego Pampín', 'LB', 25, 1.2),
+      createPlayer('Jeremy Toljan', 'RB', 31, 2.2),
+      createPlayer('Víctor García', 'RB', 28, 1),
+      createPlayer('Ugo Raghouber', 'CDM', 22, 3),
+      createPlayer('Oriol Rey', 'CDM', 27, 2),
+      createPlayer('Pablo Martínez', 'CM', 27, 2),
+      createPlayer('Unai Vencedor', 'CM', 25, 2),
+      createPlayer('Jon Ander Olasagasti', 'CM', 25, 1.8),
+      createPlayer('Roger Brugué', 'LW', 29, 2),
+      createPlayer('Carlos Álvarez', 'RW', 22, 15),
+      createPlayer('Iker Losada', 'CAM', 24, 1.4),
+      createPlayer('Karl Etta Eyong', 'ST', 22, 20),
+      createPlayer('Iván Romero', 'ST', 24, 7.5),
+      createPlayer('José Luis Morales', 'ST', 38, 0.4)
+    ]
+  },
+
+  // ========== RCD MALLORCA ==========
+  mallorca: {
+    name: 'RCD Mallorca',
+    shortName: 'MLL',
+    city: 'Palma',
+    stadium: 'Son Moix',
+    stadiumCapacity: 23142,
+    budget: 28000000,
+    reputation: 69,
+    colors: { primary: '#E30613', secondary: '#000000', accent: '#FFCD00' },
+    players: [
+      createPlayer('Leo Román', 'GK', 25, 5),
+      createPlayer('Lucas Bergström', 'GK', 23, 1.5),
+      createPlayer('Marash Kumbulla', 'CB', 25, 5),
+      createPlayer('Martin Valjent', 'CB', 30, 4.5),
+      createPlayer('Antonio Raíllo', 'CB', 34, 1.5),
+      createPlayer('Johan Mojica', 'LB', 33, 1.8),
+      createPlayer('Toni Lato', 'LB', 28, 1.5),
+      createPlayer('Pablo Maffeo', 'RB', 28, 5),
+      createPlayer('Mateu Morey', 'RB', 25, 1.5),
+      createPlayer('Samú Costa', 'CDM', 25, 15),
+      createPlayer('Omar Mascarell', 'CDM', 32, 0.8),
+      createPlayer('Sergi Darder', 'CM', 32, 3.5),
+      createPlayer('Antonio Sánchez', 'CM', 28, 2.4),
+      createPlayer('Manu Morlanes', 'CM', 27, 2.4),
+      createPlayer('Pablo Torre', 'CAM', 22, 5),
+      createPlayer('Jan Virgili', 'LW', 19, 12),
+      createPlayer('Takuma Asano', 'RW', 31, 1.8),
+      createPlayer('Vedat Muriqi', 'ST', 31, 4.5),
+      createPlayer('Mateo Joseph', 'ST', 22, 3.5),
+      createPlayer('Abdón Prats', 'ST', 33, 0.9)
+    ]
+  },
+
+  // ========== GETAFE CF ==========
+  getafe: {
+    name: 'Getafe CF',
+    shortName: 'GET',
+    city: 'Getafe',
+    stadium: 'Coliseum Alfonso Pérez',
+    stadiumCapacity: 17393,
     budget: 25000000,
     reputation: 67,
-    colors: { primary: '#660099', secondary: '#FFFFFF' },
+    colors: { primary: '#004999', secondary: '#FFFFFF', accent: '#004999' },
     players: [
-      { name: 'Karl Hein', position: 'GK', overall: 74, age: 22, value: 5000000, salary: 30000 },
-      { name: 'Luis Pérez', position: 'RB', overall: 74, age: 29, value: 3000000, salary: 40000 },
-      { name: 'Javi Sánchez', position: 'CB', overall: 75, age: 27, value: 8000000, salary: 50000 },
-      { name: 'Cenk Özkacar', position: 'CB', overall: 74, age: 24, value: 5000000, salary: 40000 },
-      { name: 'Lucas Rosa', position: 'LB', overall: 73, age: 24, value: 5000000, salary: 30000 },
-      { name: 'Kike Pérez', position: 'CM', overall: 76, age: 26, value: 10000000, salary: 50000 },
-      { name: 'Mario Martín', position: 'CM', overall: 73, age: 21, value: 5000000, salary: 25000 },
-      { name: 'Selim Amallah', position: 'CAM', overall: 75, age: 27, value: 8000000, salary: 50000 },
-      { name: 'Raúl Moro', position: 'LW', overall: 74, age: 22, value: 8000000, salary: 40000 },
-      { name: 'Marcos André', position: 'ST', overall: 74, age: 28, value: 5000000, salary: 60000 }
+      createPlayer('David Soria', 'GK', 32, 3),
+      createPlayer('Jiri Letacek', 'GK', 27, 2),
+      createPlayer('Abdel Abqar', 'CB', 26, 6),
+      createPlayer('Sebastián Boselli', 'CB', 22, 2.8),
+      createPlayer('Zaid Romero', 'CB', 26, 2),
+      createPlayer('Dakonam Djené', 'CB', 34, 1.6),
+      createPlayer('Diego Rico', 'LB', 32, 1.2),
+      createPlayer('Davinchi', 'LB', 18, 1),
+      createPlayer('Juan Iglesias', 'RB', 27, 5),
+      createPlayer('Kiko Femenía', 'RB', 34, 0.8),
+      createPlayer('Allan Nyom', 'RB', 37, 0.2),
+      createPlayer('Mario Martín', 'CDM', 21, 5),
+      createPlayer('Yvan Neyou', 'CDM', 29, 2.5),
+      createPlayer('Mauro Arambarri', 'CM', 30, 10),
+      createPlayer('Luis Milla', 'CM', 31, 3.5),
+      createPlayer('Javi Muñoz', 'CM', 30, 1.5),
+      createPlayer('Adrián Liso', 'LW', 20, 8),
+      createPlayer('Coba da Costa', 'LW', 23, 2.5),
+      createPlayer('Abu Kamara', 'RW', 22, 3),
+      createPlayer('Borja Mayoral', 'ST', 28, 7.5),
+      createPlayer('Martín Satriano', 'ST', 24, 6)
+    ]
+  },
+
+  // ========== DEPORTIVO ALAVÉS ==========
+  alaves: {
+    name: 'Deportivo Alavés',
+    shortName: 'ALA',
+    city: 'Vitoria-Gasteiz',
+    stadium: 'Mendizorroza',
+    stadiumCapacity: 19840,
+    budget: 24000000,
+    reputation: 66,
+    colors: { primary: '#003DA5', secondary: '#FFFFFF', accent: '#003DA5' },
+    players: [
+      createPlayer('Antonio Sivera', 'GK', 29, 6),
+      createPlayer('Raúl Fernández', 'GK', 37, 0.2),
+      createPlayer('Jon Pacheco', 'CB', 25, 5),
+      createPlayer('Moussa Diarra', 'CB', 25, 1.5),
+      createPlayer('Nikola Maras', 'CB', 30, 0.8),
+      createPlayer('Youssef Enríquez', 'LB', 20, 5),
+      createPlayer('Victor Parada', 'LB', 23, 2),
+      createPlayer('Nahuel Tenaglia', 'RB', 29, 3),
+      createPlayer('Jonny Otto', 'RB', 31, 2.5),
+      createPlayer('Antonio Blanco', 'CDM', 25, 10),
+      createPlayer('Carlos Protesoni', 'CDM', 27, 1),
+      createPlayer('Ander Guevara', 'CM', 28, 3),
+      createPlayer('Carles Aleñá', 'CM', 28, 3),
+      createPlayer('Pablo Ibáñez', 'CM', 27, 3),
+      createPlayer('Jon Guridi', 'CM', 30, 2.5),
+      createPlayer('Denis Suárez', 'CAM', 32, 1.2),
+      createPlayer('Abde Rebbach', 'LW', 27, 1.5),
+      createPlayer('Carlos Vicente', 'RW', 26, 7),
+      createPlayer('Lucas Boyé', 'ST', 29, 5),
+      createPlayer('Toni Martínez', 'ST', 28, 3.5),
+      createPlayer('Mariano Díaz', 'ST', 32, 0.8)
+    ]
+  },
+
+  // ========== REAL OVIEDO ==========
+  oviedo: {
+    name: 'Real Oviedo',
+    shortName: 'OVI',
+    city: 'Oviedo',
+    stadium: 'Carlos Tartiere',
+    stadiumCapacity: 30500,
+    budget: 22000000,
+    reputation: 64,
+    colors: { primary: '#005BA6', secondary: '#FFFFFF', accent: '#005BA6' },
+    players: [
+      createPlayer('Horatiu Moldovan', 'GK', 28, 2),
+      createPlayer('Aarón Escandell', 'GK', 30, 2),
+      createPlayer('David Carmo', 'CB', 26, 10),
+      createPlayer('Eric Bailly', 'CB', 31, 1.5),
+      createPlayer('David Costas', 'CB', 30, 1.4),
+      createPlayer('Dani Calvo', 'CB', 31, 1),
+      createPlayer('Javi López', 'LB', 23, 5),
+      createPlayer('Rahim Alhassane', 'LB', 24, 2),
+      createPlayer('Nacho Vidal', 'RB', 31, 1.6),
+      createPlayer('Lucas Ahijado', 'RB', 30, 0.7),
+      createPlayer('Leander Dendoncker', 'CDM', 30, 4),
+      createPlayer('Santiago Colombatto', 'CDM', 29, 3),
+      createPlayer('Alberto Reina', 'CM', 28, 1.5),
+      createPlayer('Kwasi Sibo', 'CM', 27, 1.4),
+      createPlayer('Santi Cazorla', 'CM', 41, 0.2),
+      createPlayer('Luka Ilic', 'CAM', 26, 2),
+      createPlayer('Thiago Fernández', 'LW', 21, 4.5),
+      createPlayer('Ilyas Chaira', 'LW', 24, 4),
+      createPlayer('Josip Brekalo', 'LW', 27, 2.5),
+      createPlayer('Haissem Hassan', 'RW', 23, 5),
+      createPlayer('Federico Viñas', 'ST', 27, 4),
+      createPlayer('Thiago Borbas', 'ST', 23, 4)
     ]
   }
-];
-
-// Segunda División con plantillas
-export const SEGUNDA_TEAMS = [
-  { id: 'racing', name: 'Racing de Santander', shortName: 'RAC', city: 'Santander', stadium: 'El Sardinero', stadiumCapacity: 22222, budget: 10000000, reputation: 60, colors: { primary: '#FFFFFF', secondary: '#00AA00' }, players: generateSegundaPlayers('Racing Santander', 73) },
-  { id: 'sporting', name: 'Sporting de Gijón', shortName: 'SPO', city: 'Gijón', stadium: 'El Molinón', stadiumCapacity: 30000, budget: 12000000, reputation: 62, colors: { primary: '#FF0000', secondary: '#FFFFFF' }, players: generateSegundaPlayers('Sporting Gijón', 74) },
-  { id: 'oviedo', name: 'Real Oviedo', shortName: 'OVI', city: 'Oviedo', stadium: 'Carlos Tartiere', stadiumCapacity: 30500, budget: 12000000, reputation: 62, colors: { primary: '#0066CC', secondary: '#FFFFFF' }, players: generateSegundaPlayers('Real Oviedo', 74) },
-  { id: 'zaragoza', name: 'Real Zaragoza', shortName: 'ZAR', city: 'Zaragoza', stadium: 'La Romareda', stadiumCapacity: 34596, budget: 15000000, reputation: 65, colors: { primary: '#FFFFFF', secondary: '#0000AA' }, players: generateSegundaPlayers('Real Zaragoza', 75) },
-  { id: 'eibar', name: 'SD Eibar', shortName: 'EIB', city: 'Eibar', stadium: 'Ipurua', stadiumCapacity: 8164, budget: 10000000, reputation: 60, colors: { primary: '#990033', secondary: '#003399' }, players: generateSegundaPlayers('SD Eibar', 73) },
-  { id: 'huesca', name: 'SD Huesca', shortName: 'HUE', city: 'Huesca', stadium: 'El Alcoraz', stadiumCapacity: 9535, budget: 8000000, reputation: 58, colors: { primary: '#0000AA', secondary: '#CC0000' }, players: generateSegundaPlayers('SD Huesca', 72) },
-  { id: 'tenerife', name: 'CD Tenerife', shortName: 'TEN', city: 'Santa Cruz de Tenerife', stadium: 'Heliodoro Rodríguez López', stadiumCapacity: 22676, budget: 10000000, reputation: 60, colors: { primary: '#0000FF', secondary: '#FFFFFF' }, players: generateSegundaPlayers('CD Tenerife', 73) },
-  { id: 'granada', name: 'Granada CF', shortName: 'GRA', city: 'Granada', stadium: 'Nuevo Los Cármenes', stadiumCapacity: 19336, budget: 20000000, reputation: 68, colors: { primary: '#CC0000', secondary: '#FFFFFF' }, players: generateSegundaPlayers('Granada CF', 76) },
-  { id: 'levante', name: 'Levante UD', shortName: 'LEV', city: 'Valencia', stadium: 'Ciutat de València', stadiumCapacity: 25354, budget: 18000000, reputation: 66, colors: { primary: '#003399', secondary: '#CC0000' }, players: generateSegundaPlayers('Levante UD', 75) },
-  { id: 'cartagena', name: 'FC Cartagena', shortName: 'CAR', city: 'Cartagena', stadium: 'Cartagonova', stadiumCapacity: 15105, budget: 8000000, reputation: 55, colors: { primary: '#FFFFFF', secondary: '#000000' }, players: generateSegundaPlayers('FC Cartagena', 71) },
-  { id: 'cadiz', name: 'Cádiz CF', shortName: 'CAD', city: 'Cádiz', stadium: 'Nuevo Mirandilla', stadiumCapacity: 20724, budget: 15000000, reputation: 62, colors: { primary: '#FFD700', secondary: '#0000AA' }, players: generateSegundaPlayers('Cádiz CF', 74) },
-  { id: 'almeria', name: 'UD Almería', shortName: 'ALM', city: 'Almería', stadium: 'Power Horse Stadium', stadiumCapacity: 15672, budget: 18000000, reputation: 65, colors: { primary: '#CC0000', secondary: '#FFFFFF' }, players: generateSegundaPlayers('UD Almería', 75) },
-  { id: 'elche', name: 'Elche CF', shortName: 'ELC', city: 'Elche', stadium: 'Martínez Valero', stadiumCapacity: 33732, budget: 12000000, reputation: 60, colors: { primary: '#008000', secondary: '#FFFFFF' }, players: generateSegundaPlayers('Elche CF', 73) },
-  { id: 'castellon', name: 'CD Castellón', shortName: 'CAS', city: 'Castellón', stadium: 'Castalia', stadiumCapacity: 14500, budget: 6000000, reputation: 52, colors: { primary: '#000000', secondary: '#FFFFFF' }, players: generateSegundaPlayers('CD Castellón', 70) },
-  { id: 'eldense', name: 'CD Eldense', shortName: 'ELD', city: 'Elda', stadium: 'Nuevo Pepico Amat', stadiumCapacity: 6600, budget: 4000000, reputation: 48, colors: { primary: '#008000', secondary: '#FFFFFF' }, players: generateSegundaPlayers('CD Eldense', 69) },
-  { id: 'burgos', name: 'Burgos CF', shortName: 'BUR', city: 'Burgos', stadium: 'El Plantío', stadiumCapacity: 12200, budget: 6000000, reputation: 52, colors: { primary: '#800080', secondary: '#FFFFFF' }, players: generateSegundaPlayers('Burgos CF', 70) },
-  { id: 'deportivo', name: 'Deportivo de La Coruña', shortName: 'DEP', city: 'La Coruña', stadium: 'Riazor', stadiumCapacity: 32660, budget: 12000000, reputation: 65, colors: { primary: '#0000FF', secondary: '#FFFFFF' }, players: generateSegundaPlayers('Deportivo', 75) },
-  { id: 'malaga', name: 'Málaga CF', shortName: 'MAL', city: 'Málaga', stadium: 'La Rosaleda', stadiumCapacity: 30044, budget: 8000000, reputation: 58, colors: { primary: '#0066FF', secondary: '#FFFFFF' }, players: generateSegundaPlayers('Málaga CF', 72) },
-  { id: 'cordoba', name: 'Córdoba CF', shortName: 'COR', city: 'Córdoba', stadium: 'El Arcángel', stadiumCapacity: 21822, budget: 5000000, reputation: 50, colors: { primary: '#008000', secondary: '#FFFFFF' }, players: generateSegundaPlayers('Córdoba CF', 70) },
-  { id: 'albacete', name: 'Albacete Balompié', shortName: 'ALB', city: 'Albacete', stadium: 'Carlos Belmonte', stadiumCapacity: 17524, budget: 6000000, reputation: 52, colors: { primary: '#FFFFFF', secondary: '#CC0000' }, players: generateSegundaPlayers('Albacete', 70) },
-  { id: 'mirandes', name: 'CD Mirandés', shortName: 'MIR', city: 'Miranda de Ebro', stadium: 'Municipal de Anduva', stadiumCapacity: 5900, budget: 5000000, reputation: 50, colors: { primary: '#CC0000', secondary: '#000000' }, players: generateSegundaPlayers('CD Mirandés', 70) },
-  { id: 'ferrol', name: 'Racing de Ferrol', shortName: 'FER', city: 'Ferrol', stadium: 'A Malata', stadiumCapacity: 12800, budget: 5000000, reputation: 48, colors: { primary: '#008000', secondary: '#FFFFFF' }, players: generateSegundaPlayers('Racing Ferrol', 69) }
-];
-
-// Generador para Segunda División (medias entre 69-76)
-function generateSegundaPlayers(teamName, baseOverall) {
-  const firstNames = ['Pablo', 'Alejandro', 'David', 'Carlos', 'Javier', 'Miguel', 'Antonio', 'Fernando', 'Luis', 'Sergio', 'Alberto', 'Rubén', 'Adrián', 'Óscar', 'Raúl', 'Diego', 'Álvaro', 'Iván', 'Héctor', 'Marcos', 'Jesús', 'Víctor', 'Dani', 'Álex', 'Jorge', 'Mario', 'Samuel', 'Iker', 'Unai', 'Gorka'];
-  const lastNames = ['García', 'Martínez', 'López', 'Sánchez', 'González', 'Rodríguez', 'Fernández', 'Pérez', 'Gómez', 'Díaz', 'Ruiz', 'Hernández', 'Jiménez', 'Moreno', 'Muñoz', 'Álvarez', 'Romero', 'Navarro', 'Torres', 'Domínguez'];
-  const positions = ['GK', 'RB', 'CB', 'CB', 'LB', 'CDM', 'CM', 'CM', 'CAM', 'RW', 'LW', 'ST', 'ST', 'GK', 'CB', 'CM', 'RW', 'ST'];
-  
-  let seed = teamName.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
-  const seededRandom = () => { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; };
-  
-  return positions.map((pos, i) => {
-    const ovr = Math.max(65, Math.min(80, baseOverall + Math.floor(seededRandom() * 10) - 5));
-    const age = 20 + Math.floor(seededRandom() * 15);
-    const value = Math.round((ovr - 60) * 200000 + seededRandom() * 1000000);
-    const salary = Math.round(value * 0.0015 + 10000);
-    const name = `${firstNames[Math.floor(seededRandom() * firstNames.length)]} ${lastNames[Math.floor(seededRandom() * lastNames.length)]}`;
-    return { name, position: pos, overall: ovr, age, value, salary };
-  });
-}
-
-// Primera RFEF - Tercera categoría (con jugadores realistas)
-export const PRIMERA_RFEF_TEAMS = [
-  { id: 'celta_b', name: 'Celta de Vigo B', shortName: 'CLB', city: 'Vigo', budget: 3000000, reputation: 45,
-    players: [
-      { name: 'Iván Villar', position: 'GK', overall: 70, age: 27, value: 800000, salary: 15000 },
-      { name: 'Pablo Durán', position: 'RB', overall: 67, age: 21, value: 500000, salary: 8000 },
-      { name: 'Carlos Domínguez', position: 'CB', overall: 69, age: 22, value: 700000, salary: 12000 },
-      { name: 'Sergio Carreira', position: 'CB', overall: 68, age: 23, value: 600000, salary: 10000 },
-      { name: 'Manu Sánchez', position: 'LB', overall: 68, age: 22, value: 600000, salary: 10000 },
-      { name: 'Damián Rodríguez', position: 'CDM', overall: 69, age: 21, value: 700000, salary: 12000 },
-      { name: 'Gabri Veiga Jr', position: 'CM', overall: 70, age: 20, value: 900000, salary: 15000 },
-      { name: 'Luca de la Torre', position: 'CM', overall: 68, age: 24, value: 600000, salary: 10000 },
-      { name: 'Iker Losada', position: 'CAM', overall: 71, age: 22, value: 1000000, salary: 18000 },
-      { name: 'Alfon González', position: 'RW', overall: 69, age: 21, value: 700000, salary: 12000 },
-      { name: 'Pablo Martínez', position: 'LW', overall: 68, age: 23, value: 600000, salary: 10000 },
-      { name: 'Borja Iglesias Jr', position: 'ST', overall: 70, age: 22, value: 800000, salary: 15000 },
-      { name: 'Miguel Rodríguez', position: 'ST', overall: 67, age: 20, value: 500000, salary: 8000 }
-    ]},
-  { id: 'cultural', name: 'Cultural Leonesa', shortName: 'CUL', city: 'León', budget: 3000000, reputation: 45,
-    players: [
-      { name: 'Jesús Ruiz', position: 'GK', overall: 69, age: 28, value: 600000, salary: 12000 },
-      { name: 'Dani Pichín', position: 'RB', overall: 67, age: 26, value: 450000, salary: 10000 },
-      { name: 'Aitor Pascual', position: 'CB', overall: 68, age: 27, value: 500000, salary: 11000 },
-      { name: 'Iván González', position: 'CB', overall: 67, age: 25, value: 450000, salary: 10000 },
-      { name: 'Sergio Marcos', position: 'LB', overall: 66, age: 24, value: 400000, salary: 9000 },
-      { name: 'Sergio Benito', position: 'CDM', overall: 68, age: 26, value: 500000, salary: 11000 },
-      { name: 'Dani Pichardo', position: 'CM', overall: 69, age: 27, value: 600000, salary: 12000 },
-      { name: 'Víctor García', position: 'CM', overall: 67, age: 25, value: 450000, salary: 10000 },
-      { name: 'Julen Castañeda', position: 'CAM', overall: 70, age: 24, value: 700000, salary: 14000 },
-      { name: 'Dani Pichel', position: 'RW', overall: 68, age: 26, value: 500000, salary: 11000 },
-      { name: 'Adrián Hernández', position: 'LW', overall: 67, age: 23, value: 450000, salary: 10000 },
-      { name: 'Yac Diori', position: 'ST', overall: 69, age: 25, value: 600000, salary: 12000 },
-      { name: 'Sergio Rodríguez', position: 'ST', overall: 66, age: 28, value: 350000, salary: 9000 }
-    ]},
-  { id: 'unionistas', name: 'Unionistas de Salamanca', shortName: 'UNI', city: 'Salamanca', budget: 2500000, reputation: 42,
-    players: generateRealishPlayers('Unionistas', 66) },
-  { id: 'zamora', name: 'Zamora CF', shortName: 'ZAM', city: 'Zamora', budget: 2000000, reputation: 40,
-    players: generateRealishPlayers('Zamora', 64) },
-  { id: 'tarazona', name: 'SD Tarazona', shortName: 'TAR', city: 'Tarazona', budget: 1500000, reputation: 38,
-    players: generateRealishPlayers('Tarazona', 63) },
-  { id: 'bilbao_ath', name: 'Bilbao Athletic', shortName: 'BIA', city: 'Bilbao', budget: 4000000, reputation: 48,
-    players: [
-      { name: 'Unai Simón Jr', position: 'GK', overall: 72, age: 21, value: 1200000, salary: 20000 },
-      { name: 'Andoni Gorosabel', position: 'RB', overall: 70, age: 22, value: 900000, salary: 16000 },
-      { name: 'Aitor Paredes', position: 'CB', overall: 71, age: 23, value: 1000000, salary: 18000 },
-      { name: 'Unai Núñez Jr', position: 'CB', overall: 70, age: 21, value: 900000, salary: 16000 },
-      { name: 'Jon Magunagoitia', position: 'LB', overall: 69, age: 22, value: 700000, salary: 14000 },
-      { name: 'Beñat Prados', position: 'CDM', overall: 71, age: 22, value: 1000000, salary: 18000 },
-      { name: 'Ander Herrera Jr', position: 'CM', overall: 72, age: 21, value: 1200000, salary: 20000 },
-      { name: 'Unai Gómez', position: 'CM', overall: 70, age: 23, value: 900000, salary: 16000 },
-      { name: 'Nico Serrano', position: 'CAM', overall: 73, age: 20, value: 1500000, salary: 22000 },
-      { name: 'Malcom Adu', position: 'RW', overall: 71, age: 21, value: 1000000, salary: 18000 },
-      { name: 'Nico Williams Jr', position: 'LW', overall: 72, age: 19, value: 1200000, salary: 20000 },
-      { name: 'Gorka Guruzeta Jr', position: 'ST', overall: 71, age: 22, value: 1000000, salary: 18000 },
-      { name: 'Asier Villalibre Jr', position: 'ST', overall: 69, age: 24, value: 700000, salary: 14000 }
-    ]},
-  { id: 'amorebieta', name: 'SD Amorebieta', shortName: 'AMO', city: 'Amorebieta', budget: 2000000, reputation: 40,
-    players: generateRealishPlayers('Amorebieta', 64) },
-  { id: 'barakaldo', name: 'Barakaldo CF', shortName: 'BAR', city: 'Barakaldo', budget: 2000000, reputation: 40,
-    players: generateRealishPlayers('Barakaldo', 64) },
-  { id: 'real_union', name: 'Real Unión Club', shortName: 'RUC', city: 'Irún', budget: 2500000, reputation: 42,
-    players: generateRealishPlayers('Real Unión', 65) },
-  { id: 'sestao', name: 'Sestao River', shortName: 'SES', city: 'Sestao', budget: 1500000, reputation: 38,
-    players: generateRealishPlayers('Sestao', 63) },
-  { id: 'alcoyano', name: 'CD Alcoyano', shortName: 'ALC', city: 'Alcoy', budget: 2500000, reputation: 42,
-    players: generateRealishPlayers('Alcoyano', 65) },
-  { id: 'hercules', name: 'Hércules CF', shortName: 'HER', city: 'Alicante', budget: 3000000, reputation: 48,
-    players: [
-      { name: 'Lucho García', position: 'GK', overall: 70, age: 28, value: 700000, salary: 14000 },
-      { name: 'Javi Sánchez', position: 'RB', overall: 68, age: 26, value: 550000, salary: 11000 },
-      { name: 'Pedro Orfila', position: 'CB', overall: 69, age: 27, value: 600000, salary: 12000 },
-      { name: 'Carlos David', position: 'CB', overall: 68, age: 29, value: 500000, salary: 11000 },
-      { name: 'Ismael Gutiérrez', position: 'LB', overall: 67, age: 25, value: 450000, salary: 10000 },
-      { name: 'Acuña', position: 'CDM', overall: 69, age: 27, value: 600000, salary: 12000 },
-      { name: 'Sergio Ortuño', position: 'CM', overall: 70, age: 26, value: 700000, salary: 14000 },
-      { name: 'Jesús Alfaro', position: 'CM', overall: 68, age: 24, value: 550000, salary: 11000 },
-      { name: 'César Moreno', position: 'CAM', overall: 71, age: 25, value: 800000, salary: 16000 },
-      { name: 'Nico Espinosa', position: 'RW', overall: 69, age: 24, value: 600000, salary: 12000 },
-      { name: 'Raúl Ruiz', position: 'LW', overall: 68, age: 26, value: 550000, salary: 11000 },
-      { name: 'Rubén Mesa', position: 'ST', overall: 70, age: 27, value: 700000, salary: 14000 },
-      { name: 'Chema', position: 'ST', overall: 67, age: 29, value: 400000, salary: 10000 }
-    ]},
-  { id: 'intercity', name: 'CF Intercity', shortName: 'INT', city: 'Alicante', budget: 3500000, reputation: 46,
-    players: generateRealishPlayers('Intercity', 67) },
-  { id: 'sabadell', name: 'CE Sabadell', shortName: 'SAB', city: 'Sabadell', budget: 3000000, reputation: 45,
-    players: generateRealishPlayers('Sabadell', 66) },
-  { id: 'barcelona_b', name: 'FC Barcelona Atlètic', shortName: 'FCB', city: 'Barcelona', budget: 5000000, reputation: 52,
-    players: [
-      { name: 'Ander Astralaga', position: 'GK', overall: 72, age: 21, value: 1500000, salary: 25000 },
-      { name: 'Héctor Fort', position: 'RB', overall: 73, age: 19, value: 2000000, salary: 28000 },
-      { name: 'Mika Faye', position: 'CB', overall: 72, age: 20, value: 1800000, salary: 26000 },
-      { name: 'Sergi Domínguez', position: 'CB', overall: 71, age: 21, value: 1500000, salary: 24000 },
-      { name: 'Gerard Martín', position: 'LB', overall: 71, age: 22, value: 1400000, salary: 22000 },
-      { name: 'Marc Casadó', position: 'CDM', overall: 74, age: 21, value: 3000000, salary: 35000 },
-      { name: 'Marc Bernal', position: 'CM', overall: 73, age: 18, value: 2500000, salary: 30000 },
-      { name: 'Unai Hernández', position: 'CM', overall: 71, age: 20, value: 1500000, salary: 24000 },
-      { name: 'Dani Rodríguez', position: 'CAM', overall: 72, age: 19, value: 1800000, salary: 26000 },
-      { name: 'Pau Víctor', position: 'RW', overall: 74, age: 22, value: 3000000, salary: 35000 },
-      { name: 'Toni Fernández', position: 'LW', overall: 71, age: 20, value: 1500000, salary: 24000 },
-      { name: 'Marc Guiu', position: 'ST', overall: 73, age: 19, value: 2500000, salary: 30000 },
-      { name: 'Noah Darvich', position: 'CAM', overall: 70, age: 18, value: 1200000, salary: 20000 }
-    ]},
-  { id: 'gimnastic', name: 'Gimnàstic de Tarragona', shortName: 'NAS', city: 'Tarragona', budget: 3000000, reputation: 45,
-    players: generateRealishPlayers('Nàstic', 66) },
-  { id: 'teruel', name: 'CD Teruel', shortName: 'TER', city: 'Teruel', budget: 1500000, reputation: 38,
-    players: generateRealishPlayers('Teruel', 63) },
-  { id: 'san_fernando', name: 'San Fernando CD', shortName: 'SFD', city: 'San Fernando', budget: 2000000, reputation: 40,
-    players: generateRealishPlayers('San Fernando', 64) },
-  { id: 'sanluqueno', name: 'Atlético Sanluqueño', shortName: 'SAN', city: 'Sanlúcar de Barrameda', budget: 1500000, reputation: 38,
-    players: generateRealishPlayers('Sanluqueño', 63) },
-  { id: 'antequera', name: 'Antequera CF', shortName: 'ANT', city: 'Antequera', budget: 1500000, reputation: 38,
-    players: generateRealishPlayers('Antequera', 63) }
-];
-
-// Segunda RFEF - Cuarta categoría (con jugadores realistas)
-export const SEGUNDA_RFEF_TEAMS = [
-  { id: 'pontevedra', name: 'Pontevedra CF', shortName: 'PON', city: 'Pontevedra', budget: 1500000, reputation: 38,
-    players: [
-      { name: 'Edu Sousa', position: 'GK', overall: 67, age: 27, value: 400000, salary: 9000 },
-      { name: 'Álex González', position: 'RB', overall: 65, age: 25, value: 300000, salary: 7000 },
-      { name: 'Churre', position: 'CB', overall: 66, age: 28, value: 350000, salary: 8000 },
-      { name: 'Iago Novo', position: 'CB', overall: 65, age: 26, value: 300000, salary: 7000 },
-      { name: 'Álex Fernández', position: 'LB', overall: 64, age: 24, value: 250000, salary: 6500 },
-      { name: 'Yelko Pino', position: 'CDM', overall: 66, age: 26, value: 350000, salary: 8000 },
-      { name: 'Brais Abelenda', position: 'CM', overall: 67, age: 25, value: 400000, salary: 9000 },
-      { name: 'Rufo', position: 'CM', overall: 65, age: 27, value: 300000, salary: 7000 },
-      { name: 'Martín Diz', position: 'CAM', overall: 68, age: 24, value: 450000, salary: 10000 },
-      { name: 'Xisco Campos', position: 'RW', overall: 66, age: 26, value: 350000, salary: 8000 },
-      { name: 'Iago Barro', position: 'LW', overall: 65, age: 23, value: 300000, salary: 7000 },
-      { name: 'Charles', position: 'ST', overall: 67, age: 28, value: 400000, salary: 9000 },
-      { name: 'Dalisson', position: 'ST', overall: 64, age: 25, value: 250000, salary: 6500 }
-    ]},
-  { id: 'compostela', name: 'SD Compostela', shortName: 'COM', city: 'Santiago de Compostela', budget: 1200000, reputation: 35,
-    players: generateRealishPlayers('Compostela', 62) },
-  { id: 'ourense', name: 'CD Ourense', shortName: 'OUR', city: 'Ourense', budget: 1000000, reputation: 32,
-    players: generateRealishPlayers('Ourense', 60) },
-  { id: 'marino', name: 'Marino de Luanco', shortName: 'MAR', city: 'Luanco', budget: 800000, reputation: 30,
-    players: generateRealishPlayers('Marino', 58) },
-  { id: 'langreo', name: 'UP Langreo', shortName: 'LAN', city: 'Langreo', budget: 800000, reputation: 30,
-    players: generateRealishPlayers('Langreo', 58) },
-  { id: 'leonesa_b', name: 'Cultural Leonesa B', shortName: 'CLB', city: 'León', budget: 600000, reputation: 28,
-    players: generateRealishPlayers('Cultural B', 56) },
-  { id: 'numancia', name: 'CD Numancia', shortName: 'NUM', city: 'Soria', budget: 2000000, reputation: 42,
-    players: [
-      { name: 'Javi Jiménez', position: 'GK', overall: 68, age: 29, value: 450000, salary: 10000 },
-      { name: 'Nacho Matador', position: 'RB', overall: 66, age: 27, value: 350000, salary: 8000 },
-      { name: 'Escassi', position: 'CB', overall: 67, age: 28, value: 400000, salary: 9000 },
-      { name: 'Gorka Pérez', position: 'CB', overall: 66, age: 26, value: 350000, salary: 8000 },
-      { name: 'Moha', position: 'LB', overall: 65, age: 25, value: 300000, salary: 7000 },
-      { name: 'Marc Mateu', position: 'CDM', overall: 67, age: 27, value: 400000, salary: 9000 },
-      { name: 'Gus Ledes', position: 'CM', overall: 68, age: 26, value: 450000, salary: 10000 },
-      { name: 'Álex Sánchez', position: 'CM', overall: 66, age: 24, value: 350000, salary: 8000 },
-      { name: 'Natalio', position: 'CAM', overall: 69, age: 25, value: 500000, salary: 11000 },
-      { name: 'Fer Niño', position: 'RW', overall: 67, age: 24, value: 400000, salary: 9000 },
-      { name: 'Curro Sánchez', position: 'LW', overall: 66, age: 26, value: 350000, salary: 8000 },
-      { name: 'Yuri', position: 'ST', overall: 68, age: 27, value: 450000, salary: 10000 },
-      { name: 'Samu Pérez', position: 'ST', overall: 65, age: 23, value: 300000, salary: 7000 }
-    ]},
-  { id: 'guijuelo', name: 'CD Guijuelo', shortName: 'GUI', city: 'Guijuelo', budget: 800000, reputation: 30,
-    players: generateRealishPlayers('Guijuelo', 58) },
-  { id: 'tudelano', name: 'CD Tudelano', shortName: 'TUD', city: 'Tudela', budget: 800000, reputation: 30,
-    players: generateRealishPlayers('Tudelano', 58) },
-  { id: 'gernika', name: 'SD Gernika', shortName: 'GER', city: 'Gernika', budget: 800000, reputation: 30,
-    players: generateRealishPlayers('Gernika', 58) },
-  { id: 'basconia', name: 'CD Basconia', shortName: 'BAS', city: 'Basauri', budget: 600000, reputation: 28,
-    players: generateRealishPlayers('Basconia', 56) },
-  { id: 'portugalete', name: 'Portugalete CF', shortName: 'POR', city: 'Portugalete', budget: 800000, reputation: 30,
-    players: generateRealishPlayers('Portugalete', 58) },
-  { id: 'ontinyent', name: 'Ontinyent 1931 CF', shortName: 'ONT', city: 'Ontinyent', budget: 800000, reputation: 30,
-    players: generateRealishPlayers('Ontinyent', 58) },
-  { id: 'villarreal_c', name: 'Villarreal CF C', shortName: 'VLC', city: 'Villarreal', budget: 1500000, reputation: 38,
-    players: generateRealishPlayers('Villarreal C', 64) },
-  { id: 'atletico_levante', name: 'Atlético Levante', shortName: 'ATL', city: 'Valencia', budget: 1200000, reputation: 35,
-    players: generateRealishPlayers('At. Levante', 62) },
-  { id: 'prat', name: 'AE Prat', shortName: 'PRA', city: 'El Prat de Llobregat', budget: 800000, reputation: 30,
-    players: generateRealishPlayers('Prat', 58) },
-  { id: 'badalona', name: 'CF Badalona Futur', shortName: 'BAD', city: 'Badalona', budget: 1000000, reputation: 32,
-    players: generateRealishPlayers('Badalona', 60) },
-  { id: 'lleida', name: 'Lleida Esportiu', shortName: 'LLE', city: 'Lleida', budget: 1500000, reputation: 38,
-    players: generateRealishPlayers('Lleida', 64) },
-  { id: 'utrera', name: 'CD Utrera', shortName: 'UTR', city: 'Utrera', budget: 800000, reputation: 30,
-    players: generateRealishPlayers('Utrera', 58) },
-  { id: 'xerez', name: 'Xerez CD', shortName: 'XER', city: 'Jerez de la Frontera', budget: 1500000, reputation: 40,
-    players: [
-      { name: 'José Carlos', position: 'GK', overall: 66, age: 28, value: 350000, salary: 8000 },
-      { name: 'Ricky', position: 'RB', overall: 64, age: 26, value: 250000, salary: 6500 },
-      { name: 'Marcelo', position: 'CB', overall: 65, age: 27, value: 300000, salary: 7000 },
-      { name: 'Manu Moreno', position: 'CB', overall: 64, age: 25, value: 250000, salary: 6500 },
-      { name: 'Jesús Camacho', position: 'LB', overall: 63, age: 24, value: 200000, salary: 6000 },
-      { name: 'Josema', position: 'CDM', overall: 65, age: 26, value: 300000, salary: 7000 },
-      { name: 'Pepe Bernal', position: 'CM', overall: 66, age: 27, value: 350000, salary: 8000 },
-      { name: 'Alberto Durán', position: 'CM', overall: 64, age: 25, value: 250000, salary: 6500 },
-      { name: 'Ito', position: 'CAM', overall: 67, age: 24, value: 400000, salary: 9000 },
-      { name: 'Abraham', position: 'RW', overall: 65, age: 26, value: 300000, salary: 7000 },
-      { name: 'Carri', position: 'LW', overall: 64, age: 23, value: 250000, salary: 6500 },
-      { name: 'Máyor', position: 'ST', overall: 66, age: 27, value: 350000, salary: 8000 },
-      { name: 'Charaf', position: 'ST', overall: 63, age: 24, value: 200000, salary: 6000 }
-    ]}
-];
-
-// Generador de plantillas con nombres españoles realistas
-function generateRealishPlayers(teamName, baseOverall) {
-  // Nombres y apellidos comunes en fútbol español
-  const firstNames = ['Pablo', 'Alejandro', 'David', 'Carlos', 'Javier', 'Miguel', 'Antonio', 'Fernando', 'Luis', 'Sergio', 'Alberto', 'Rubén', 'Adrián', 'Óscar', 'Raúl', 'Diego', 'Álvaro', 'Iván', 'Héctor', 'Marcos', 'Jesús', 'Víctor', 'Dani', 'Álex', 'Jorge', 'Mario', 'Samuel', 'Iker', 'Unai', 'Gorka', 'Asier', 'Andoni', 'Jon', 'Mikel', 'Xabi', 'Julen', 'Pere', 'Marc', 'Oriol', 'Pol'];
-  const lastNames = ['García', 'Martínez', 'López', 'Sánchez', 'González', 'Rodríguez', 'Fernández', 'Pérez', 'Gómez', 'Díaz', 'Ruiz', 'Hernández', 'Jiménez', 'Moreno', 'Muñoz', 'Álvarez', 'Romero', 'Navarro', 'Torres', 'Domínguez', 'Ramos', 'Vázquez', 'Castillo', 'Blanco', 'Molina', 'Ortega', 'Delgado', 'Rubio', 'Medina', 'Iglesias'];
-  const nicknames = ['Chema', 'Kiko', 'Manu', 'Rafa', 'Fran', 'Nacho', 'Juanma', 'Curro', 'Paco', 'Quique', 'Toni', 'Guti', 'Capi', 'Nene', 'Zurdo', 'Chato'];
-  
-  const positions = ['GK', 'RB', 'CB', 'CB', 'LB', 'CDM', 'CM', 'CM', 'CAM', 'RW', 'LW', 'ST', 'ST'];
-  
-  // Usar un seed basado en el nombre del equipo para consistencia
-  let seed = teamName.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
-  const seededRandom = () => {
-    seed = (seed * 9301 + 49297) % 233280;
-    return seed / 233280;
-  };
-  
-  return positions.map((pos, i) => {
-    const ovr = Math.max(52, Math.min(72, baseOverall + Math.floor(seededRandom() * 8) - 4));
-    const age = 20 + Math.floor(seededRandom() * 14);
-    const value = Math.round((ovr - 50) * 15000 + seededRandom() * 300000);
-    const salary = Math.round(value * 0.002 + 4000);
-    
-    // 20% de probabilidad de usar un apodo
-    const useNickname = seededRandom() < 0.2;
-    const name = useNickname 
-      ? nicknames[Math.floor(seededRandom() * nicknames.length)]
-      : `${firstNames[Math.floor(seededRandom() * firstNames.length)]} ${lastNames[Math.floor(seededRandom() * lastNames.length)]}`;
-    
-    return { name, position: pos, overall: ovr, age, value, salary };
-  });
-}
-
-// Premier League 2024-2025
-export const PREMIER_LEAGUE_TEAMS = [
-  {
-    id: 'manchester_city',
-    name: 'Manchester City',
-    shortName: 'MCI',
-    city: 'Manchester',
-    stadium: 'Etihad Stadium',
-    stadiumCapacity: 53400,
-    budget: 300000000,
-    reputation: 95,
-    colors: { primary: '#6CABDD', secondary: '#FFFFFF' },
-    players: [
-      { name: 'Ederson', position: 'GK', overall: 88, age: 31, value: 40000000, salary: 280000 },
-      { name: 'Kyle Walker', position: 'RB', overall: 83, age: 34, value: 15000000, salary: 220000 },
-      { name: 'Rúben Dias', position: 'CB', overall: 87, age: 27, value: 75000000, salary: 280000 },
-      { name: 'John Stones', position: 'CB', overall: 85, age: 30, value: 45000000, salary: 250000 },
-      { name: 'Joško Gvardiol', position: 'LB', overall: 84, age: 22, value: 75000000, salary: 200000 },
-      { name: 'Rodri', position: 'CDM', overall: 91, age: 28, value: 130000000, salary: 350000 },
-      { name: 'Kevin De Bruyne', position: 'CM', overall: 90, age: 33, value: 55000000, salary: 400000 },
-      { name: 'Bernardo Silva', position: 'CM', overall: 88, age: 30, value: 70000000, salary: 280000 },
-      { name: 'Phil Foden', position: 'CAM', overall: 88, age: 24, value: 130000000, salary: 300000 },
-      { name: 'Jack Grealish', position: 'LW', overall: 84, age: 29, value: 55000000, salary: 300000 },
-      { name: 'Jeremy Doku', position: 'RW', overall: 82, age: 22, value: 65000000, salary: 180000 },
-      { name: 'Erling Haaland', position: 'ST', overall: 94, age: 24, value: 200000000, salary: 450000 },
-      { name: 'Stefan Ortega', position: 'GK', overall: 79, age: 31, value: 8000000, salary: 80000 },
-      { name: 'Manuel Akanji', position: 'CB', overall: 84, age: 29, value: 40000000, salary: 180000 },
-      { name: 'Nathan Aké', position: 'CB', overall: 82, age: 29, value: 35000000, salary: 150000 },
-      { name: 'Rico Lewis', position: 'RB', overall: 78, age: 20, value: 35000000, salary: 80000 },
-      { name: 'Mateo Kovačić', position: 'CM', overall: 83, age: 30, value: 30000000, salary: 180000 },
-      { name: 'Julián Álvarez', position: 'ST', overall: 85, age: 24, value: 90000000, salary: 200000 }
-    ]
-  },
-  {
-    id: 'arsenal',
-    name: 'Arsenal',
-    shortName: 'ARS',
-    city: 'London',
-    stadium: 'Emirates Stadium',
-    stadiumCapacity: 60704,
-    budget: 200000000,
-    reputation: 92,
-    colors: { primary: '#EF0107', secondary: '#FFFFFF' },
-    players: [
-      { name: 'David Raya', position: 'GK', overall: 85, age: 29, value: 35000000, salary: 180000 },
-      { name: 'Ben White', position: 'RB', overall: 84, age: 27, value: 55000000, salary: 180000 },
-      { name: 'William Saliba', position: 'CB', overall: 87, age: 23, value: 100000000, salary: 200000 },
-      { name: 'Gabriel Magalhães', position: 'CB', overall: 85, age: 26, value: 70000000, salary: 180000 },
-      { name: 'Jurriën Timber', position: 'LB', overall: 82, age: 23, value: 50000000, salary: 150000 },
-      { name: 'Declan Rice', position: 'CDM', overall: 87, age: 25, value: 100000000, salary: 280000 },
-      { name: 'Martin Ødegaard', position: 'CAM', overall: 89, age: 25, value: 110000000, salary: 300000 },
-      { name: 'Thomas Partey', position: 'CM', overall: 83, age: 31, value: 30000000, salary: 200000 },
-      { name: 'Bukayo Saka', position: 'RW', overall: 88, age: 23, value: 130000000, salary: 300000 },
-      { name: 'Gabriel Martinelli', position: 'LW', overall: 84, age: 23, value: 75000000, salary: 200000 },
-      { name: 'Leandro Trossard', position: 'LW', overall: 82, age: 29, value: 40000000, salary: 180000 },
-      { name: 'Kai Havertz', position: 'ST', overall: 83, age: 25, value: 65000000, salary: 250000 },
-      { name: 'Gabriel Jesus', position: 'ST', overall: 82, age: 27, value: 50000000, salary: 220000 },
-      { name: 'Aaron Ramsdale', position: 'GK', overall: 80, age: 26, value: 25000000, salary: 120000 },
-      { name: 'Oleksandr Zinchenko', position: 'LB', overall: 80, age: 27, value: 25000000, salary: 150000 },
-      { name: 'Takehiro Tomiyasu', position: 'RB', overall: 80, age: 25, value: 28000000, salary: 120000 },
-      { name: 'Jorginho', position: 'CM', overall: 80, age: 32, value: 15000000, salary: 180000 }
-    ]
-  },
-  {
-    id: 'liverpool',
-    name: 'Liverpool',
-    shortName: 'LIV',
-    city: 'Liverpool',
-    stadium: 'Anfield',
-    stadiumCapacity: 61276,
-    budget: 180000000,
-    reputation: 93,
-    colors: { primary: '#C8102E', secondary: '#FFFFFF' },
-    players: [
-      { name: 'Alisson', position: 'GK', overall: 89, age: 32, value: 45000000, salary: 300000 },
-      { name: 'Trent Alexander-Arnold', position: 'RB', overall: 87, age: 26, value: 80000000, salary: 280000 },
-      { name: 'Virgil van Dijk', position: 'CB', overall: 88, age: 33, value: 40000000, salary: 350000 },
-      { name: 'Ibrahima Konaté', position: 'CB', overall: 84, age: 25, value: 60000000, salary: 180000 },
-      { name: 'Andy Robertson', position: 'LB', overall: 84, age: 30, value: 35000000, salary: 200000 },
-      { name: 'Alexis Mac Allister', position: 'CM', overall: 85, age: 25, value: 75000000, salary: 200000 },
-      { name: 'Dominik Szoboszlai', position: 'CM', overall: 83, age: 24, value: 70000000, salary: 180000 },
-      { name: 'Ryan Gravenberch', position: 'CM', overall: 81, age: 22, value: 45000000, salary: 150000 },
-      { name: 'Mohamed Salah', position: 'RW', overall: 89, age: 32, value: 60000000, salary: 400000 },
-      { name: 'Luis Díaz', position: 'LW', overall: 85, age: 27, value: 75000000, salary: 200000 },
-      { name: 'Cody Gakpo', position: 'LW', overall: 82, age: 25, value: 55000000, salary: 180000 },
-      { name: 'Darwin Núñez', position: 'ST', overall: 83, age: 25, value: 70000000, salary: 220000 },
-      { name: 'Diogo Jota', position: 'ST', overall: 84, age: 27, value: 55000000, salary: 200000 },
-      { name: 'Caoimhín Kelleher', position: 'GK', overall: 78, age: 25, value: 15000000, salary: 80000 },
-      { name: 'Joe Gomez', position: 'CB', overall: 81, age: 27, value: 30000000, salary: 150000 },
-      { name: 'Wataru Endō', position: 'CDM', overall: 80, age: 31, value: 20000000, salary: 120000 }
-    ]
-  },
-  {
-    id: 'chelsea',
-    name: 'Chelsea',
-    shortName: 'CHE',
-    city: 'London',
-    stadium: 'Stamford Bridge',
-    stadiumCapacity: 40343,
-    budget: 200000000,
-    reputation: 88,
-    colors: { primary: '#034694', secondary: '#FFFFFF' },
-    players: [
-      { name: 'Robert Sánchez', position: 'GK', overall: 80, age: 26, value: 25000000, salary: 150000 },
-      { name: 'Reece James', position: 'RB', overall: 84, age: 24, value: 60000000, salary: 250000 },
-      { name: 'Thiago Silva', position: 'CB', overall: 83, age: 39, value: 5000000, salary: 200000 },
-      { name: 'Levi Colwill', position: 'CB', overall: 80, age: 21, value: 45000000, salary: 120000 },
-      { name: 'Marc Cucurella', position: 'LB', overall: 80, age: 26, value: 35000000, salary: 150000 },
-      { name: 'Moisés Caicedo', position: 'CDM', overall: 83, age: 22, value: 80000000, salary: 200000 },
-      { name: 'Enzo Fernández', position: 'CM', overall: 84, age: 23, value: 85000000, salary: 250000 },
-      { name: 'Cole Palmer', position: 'CAM', overall: 84, age: 22, value: 90000000, salary: 200000 },
-      { name: 'Noni Madueke', position: 'RW', overall: 79, age: 22, value: 40000000, salary: 120000 },
-      { name: 'Mykhailo Mudryk', position: 'LW', overall: 78, age: 23, value: 40000000, salary: 200000 },
-      { name: 'Raheem Sterling', position: 'LW', overall: 82, age: 29, value: 35000000, salary: 300000 },
-      { name: 'Nicolas Jackson', position: 'ST', overall: 79, age: 23, value: 45000000, salary: 150000 },
-      { name: 'Christopher Nkunku', position: 'ST', overall: 84, age: 27, value: 65000000, salary: 250000 },
-      { name: 'Đorđe Petrović', position: 'GK', overall: 78, age: 24, value: 15000000, salary: 80000 },
-      { name: 'Malo Gusto', position: 'RB', overall: 79, age: 21, value: 35000000, salary: 100000 },
-      { name: 'Axel Disasi', position: 'CB', overall: 79, age: 26, value: 30000000, salary: 120000 },
-      { name: 'Benoît Badiashile', position: 'CB', overall: 78, age: 23, value: 30000000, salary: 150000 },
-      { name: 'Romeo Lavia', position: 'CDM', overall: 78, age: 20, value: 40000000, salary: 120000 }
-    ]
-  },
-  {
-    id: 'manchester_united',
-    name: 'Manchester United',
-    shortName: 'MUN',
-    city: 'Manchester',
-    stadium: 'Old Trafford',
-    stadiumCapacity: 74310,
-    budget: 180000000,
-    reputation: 90,
-    colors: { primary: '#DA291C', secondary: '#FFFFFF' },
-    players: [
-      { name: 'André Onana', position: 'GK', overall: 83, age: 28, value: 40000000, salary: 200000 },
-      { name: 'Diogo Dalot', position: 'RB', overall: 82, age: 25, value: 45000000, salary: 150000 },
-      { name: 'Raphaël Varane', position: 'CB', overall: 82, age: 31, value: 20000000, salary: 250000 },
-      { name: 'Lisandro Martínez', position: 'CB', overall: 84, age: 26, value: 60000000, salary: 200000 },
-      { name: 'Luke Shaw', position: 'LB', overall: 82, age: 28, value: 35000000, salary: 200000 },
-      { name: 'Casemiro', position: 'CDM', overall: 84, age: 32, value: 25000000, salary: 350000 },
-      { name: 'Kobbie Mainoo', position: 'CM', overall: 78, age: 19, value: 50000000, salary: 80000 },
-      { name: 'Bruno Fernandes', position: 'CAM', overall: 86, age: 29, value: 70000000, salary: 300000 },
-      { name: 'Mason Mount', position: 'CAM', overall: 81, age: 25, value: 40000000, salary: 250000 },
-      { name: 'Marcus Rashford', position: 'LW', overall: 84, age: 26, value: 70000000, salary: 300000 },
-      { name: 'Alejandro Garnacho', position: 'LW', overall: 80, age: 20, value: 55000000, salary: 100000 },
-      { name: 'Antony', position: 'RW', overall: 79, age: 24, value: 40000000, salary: 200000 },
-      { name: 'Rasmus Højlund', position: 'ST', overall: 80, age: 21, value: 60000000, salary: 180000 },
-      { name: 'Tom Heaton', position: 'GK', overall: 72, age: 38, value: 1000000, salary: 60000 },
-      { name: 'Harry Maguire', position: 'CB', overall: 79, age: 31, value: 15000000, salary: 200000 },
-      { name: 'Victor Lindelöf', position: 'CB', overall: 78, age: 30, value: 12000000, salary: 150000 },
-      { name: 'Christian Eriksen', position: 'CM', overall: 80, age: 32, value: 12000000, salary: 200000 },
-      { name: 'Scott McTominay', position: 'CM', overall: 79, age: 27, value: 25000000, salary: 150000 }
-    ]
-  },
-  {
-    id: 'tottenham',
-    name: 'Tottenham Hotspur',
-    shortName: 'TOT',
-    city: 'London',
-    stadium: 'Tottenham Hotspur Stadium',
-    stadiumCapacity: 62850,
-    budget: 150000000,
-    reputation: 85,
-    colors: { primary: '#FFFFFF', secondary: '#132257' },
-    players: [
-      { name: 'Guglielmo Vicario', position: 'GK', overall: 83, age: 27, value: 40000000, salary: 150000 },
-      { name: 'Pedro Porro', position: 'RB', overall: 82, age: 25, value: 45000000, salary: 150000 },
-      { name: 'Cristian Romero', position: 'CB', overall: 86, age: 26, value: 70000000, salary: 200000 },
-      { name: 'Micky van de Ven', position: 'CB', overall: 82, age: 23, value: 55000000, salary: 150000 },
-      { name: 'Destiny Udogie', position: 'LB', overall: 80, age: 22, value: 40000000, salary: 120000 },
-      { name: 'Yves Bissouma', position: 'CDM', overall: 82, age: 27, value: 40000000, salary: 180000 },
-      { name: 'Rodrigo Bentancur', position: 'CM', overall: 81, age: 27, value: 35000000, salary: 150000 },
-      { name: 'Pape Matar Sarr', position: 'CM', overall: 79, age: 22, value: 35000000, salary: 100000 },
-      { name: 'James Maddison', position: 'CAM', overall: 84, age: 27, value: 55000000, salary: 200000 },
-      { name: 'Dejan Kulusevski', position: 'RW', overall: 82, age: 24, value: 55000000, salary: 180000 },
-      { name: 'Brennan Johnson', position: 'RW', overall: 78, age: 23, value: 35000000, salary: 120000 },
-      { name: 'Son Heung-min', position: 'LW', overall: 87, age: 32, value: 50000000, salary: 300000 },
-      { name: 'Richarlison', position: 'ST', overall: 81, age: 27, value: 45000000, salary: 200000 },
-      { name: 'Fraser Forster', position: 'GK', overall: 74, age: 36, value: 2000000, salary: 60000 },
-      { name: 'Emerson Royal', position: 'RB', overall: 77, age: 25, value: 18000000, salary: 100000 },
-      { name: 'Eric Dier', position: 'CB', overall: 78, age: 30, value: 12000000, salary: 150000 }
-    ]
-  },
-  {
-    id: 'newcastle',
-    name: 'Newcastle United',
-    shortName: 'NEW',
-    city: 'Newcastle',
-    stadium: 'St. James\' Park',
-    stadiumCapacity: 52305,
-    budget: 150000000,
-    reputation: 84,
-    colors: { primary: '#241F20', secondary: '#FFFFFF' },
-    players: [
-      { name: 'Nick Pope', position: 'GK', overall: 83, age: 32, value: 25000000, salary: 150000 },
-      { name: 'Kieran Trippier', position: 'RB', overall: 83, age: 33, value: 18000000, salary: 180000 },
-      { name: 'Sven Botman', position: 'CB', overall: 82, age: 24, value: 50000000, salary: 150000 },
-      { name: 'Fabian Schär', position: 'CB', overall: 81, age: 32, value: 15000000, salary: 120000 },
-      { name: 'Dan Burn', position: 'LB', overall: 78, age: 32, value: 10000000, salary: 100000 },
-      { name: 'Bruno Guimarães', position: 'CM', overall: 86, age: 26, value: 90000000, salary: 200000 },
-      { name: 'Sandro Tonali', position: 'CM', overall: 82, age: 24, value: 55000000, salary: 200000 },
-      { name: 'Joelinton', position: 'CM', overall: 81, age: 27, value: 45000000, salary: 150000 },
-      { name: 'Anthony Gordon', position: 'LW', overall: 82, age: 23, value: 60000000, salary: 150000 },
-      { name: 'Miguel Almirón', position: 'RW', overall: 79, age: 30, value: 25000000, salary: 120000 },
-      { name: 'Harvey Barnes', position: 'LW', overall: 80, age: 26, value: 40000000, salary: 150000 },
-      { name: 'Alexander Isak', position: 'ST', overall: 85, age: 25, value: 90000000, salary: 200000 },
-      { name: 'Callum Wilson', position: 'ST', overall: 79, age: 32, value: 15000000, salary: 150000 },
-      { name: 'Martin Dúbravka', position: 'GK', overall: 77, age: 35, value: 5000000, salary: 80000 },
-      { name: 'Tino Livramento', position: 'RB', overall: 78, age: 21, value: 30000000, salary: 80000 },
-      { name: 'Lewis Hall', position: 'LB', overall: 76, age: 19, value: 20000000, salary: 60000 }
-    ]
-  },
-  {
-    id: 'aston_villa',
-    name: 'Aston Villa',
-    shortName: 'AVL',
-    city: 'Birmingham',
-    stadium: 'Villa Park',
-    stadiumCapacity: 42785,
-    budget: 120000000,
-    reputation: 82,
-    colors: { primary: '#670E36', secondary: '#95BFE5' },
-    players: [
-      { name: 'Emiliano Martínez', position: 'GK', overall: 87, age: 32, value: 45000000, salary: 200000 },
-      { name: 'Matty Cash', position: 'RB', overall: 80, age: 27, value: 30000000, salary: 120000 },
-      { name: 'Ezri Konsa', position: 'CB', overall: 82, age: 26, value: 45000000, salary: 150000 },
-      { name: 'Pau Torres', position: 'CB', overall: 83, age: 27, value: 50000000, salary: 180000 },
-      { name: 'Lucas Digne', position: 'LB', overall: 80, age: 31, value: 18000000, salary: 150000 },
-      { name: 'Boubacar Kamara', position: 'CDM', overall: 82, age: 24, value: 45000000, salary: 150000 },
-      { name: 'Douglas Luiz', position: 'CM', overall: 83, age: 26, value: 55000000, salary: 180000 },
-      { name: 'Youri Tielemans', position: 'CM', overall: 82, age: 27, value: 40000000, salary: 180000 },
-      { name: 'John McGinn', position: 'CM', overall: 82, age: 29, value: 40000000, salary: 180000 },
-      { name: 'Leon Bailey', position: 'RW', overall: 80, age: 27, value: 35000000, salary: 150000 },
-      { name: 'Moussa Diaby', position: 'RW', overall: 82, age: 25, value: 55000000, salary: 180000 },
-      { name: 'Ollie Watkins', position: 'ST', overall: 84, age: 28, value: 65000000, salary: 180000 },
-      { name: 'Jhon Durán', position: 'ST', overall: 76, age: 20, value: 25000000, salary: 80000 },
-      { name: 'Robin Olsen', position: 'GK', overall: 75, age: 34, value: 3000000, salary: 60000 },
-      { name: 'Diego Carlos', position: 'CB', overall: 79, age: 31, value: 18000000, salary: 150000 },
-      { name: 'Álex Moreno', position: 'LB', overall: 78, age: 30, value: 12000000, salary: 100000 }
-    ]
-  },
-  {
-    id: 'brighton',
-    name: 'Brighton & Hove Albion',
-    shortName: 'BHA',
-    city: 'Brighton',
-    stadium: 'Amex Stadium',
-    stadiumCapacity: 31876,
-    budget: 100000000,
-    reputation: 80,
-    colors: { primary: '#0057B8', secondary: '#FFFFFF' },
-    players: [
-      { name: 'Jason Steele', position: 'GK', overall: 76, age: 33, value: 5000000, salary: 60000 },
-      { name: 'Joel Veltman', position: 'RB', overall: 77, age: 32, value: 8000000, salary: 80000 },
-      { name: 'Lewis Dunk', position: 'CB', overall: 81, age: 32, value: 20000000, salary: 120000 },
-      { name: 'Jan Paul van Hecke', position: 'CB', overall: 78, age: 24, value: 25000000, salary: 80000 },
-      { name: 'Pervis Estupiñán', position: 'LB', overall: 81, age: 26, value: 35000000, salary: 120000 },
-      { name: 'Carlos Baleba', position: 'CDM', overall: 77, age: 20, value: 25000000, salary: 60000 },
-      { name: 'Pascal Groß', position: 'CM', overall: 80, age: 33, value: 15000000, salary: 120000 },
-      { name: 'James Milner', position: 'CM', overall: 75, age: 38, value: 2000000, salary: 80000 },
-      { name: 'Kaoru Mitoma', position: 'LW', overall: 82, age: 27, value: 50000000, salary: 150000 },
-      { name: 'Solly March', position: 'RW', overall: 79, age: 30, value: 25000000, salary: 100000 },
-      { name: 'Simon Adingra', position: 'RW', overall: 78, age: 22, value: 30000000, salary: 80000 },
-      { name: 'João Pedro', position: 'ST', overall: 80, age: 22, value: 45000000, salary: 120000 },
-      { name: 'Danny Welbeck', position: 'ST', overall: 77, age: 33, value: 8000000, salary: 100000 },
-      { name: 'Bart Verbruggen', position: 'GK', overall: 78, age: 21, value: 20000000, salary: 60000 },
-      { name: 'Tariq Lamptey', position: 'RB', overall: 77, age: 23, value: 20000000, salary: 80000 },
-      { name: 'Igor Julio', position: 'CB', overall: 77, age: 26, value: 18000000, salary: 80000 }
-    ]
-  },
-  {
-    id: 'west_ham',
-    name: 'West Ham United',
-    shortName: 'WHU',
-    city: 'London',
-    stadium: 'London Stadium',
-    stadiumCapacity: 62500,
-    budget: 120000000,
-    reputation: 80,
-    colors: { primary: '#7A263A', secondary: '#1BB1E7' },
-    players: [
-      { name: 'Alphonse Areola', position: 'GK', overall: 79, age: 31, value: 15000000, salary: 100000 },
-      { name: 'Vladimir Coufal', position: 'RB', overall: 78, age: 31, value: 10000000, salary: 100000 },
-      { name: 'Kurt Zouma', position: 'CB', overall: 80, age: 29, value: 25000000, salary: 150000 },
-      { name: 'Nayef Aguerd', position: 'CB', overall: 80, age: 28, value: 28000000, salary: 120000 },
-      { name: 'Emerson Palmieri', position: 'LB', overall: 78, age: 30, value: 12000000, salary: 120000 },
-      { name: 'Tomáš Souček', position: 'CDM', overall: 81, age: 29, value: 35000000, salary: 150000 },
-      { name: 'Lucas Paquetá', position: 'CM', overall: 83, age: 27, value: 55000000, salary: 200000 },
-      { name: 'James Ward-Prowse', position: 'CM', overall: 80, age: 29, value: 30000000, salary: 150000 },
-      { name: 'Mohammed Kudus', position: 'CAM', overall: 82, age: 24, value: 60000000, salary: 150000 },
-      { name: 'Jarrod Bowen', position: 'RW', overall: 82, age: 27, value: 50000000, salary: 180000 },
-      { name: 'Saïd Benrahma', position: 'LW', overall: 79, age: 29, value: 25000000, salary: 120000 },
-      { name: 'Michail Antonio', position: 'ST', overall: 78, age: 34, value: 10000000, salary: 130000 },
-      { name: 'Danny Ings', position: 'ST', overall: 76, age: 31, value: 8000000, salary: 100000 },
-      { name: 'Łukasz Fabiański', position: 'GK', overall: 76, age: 39, value: 2000000, salary: 80000 },
-      { name: 'Konstantinos Mavropanos', position: 'CB', overall: 78, age: 26, value: 22000000, salary: 100000 },
-      { name: 'Edson Álvarez', position: 'CDM', overall: 81, age: 26, value: 35000000, salary: 150000 }
-    ]
-  },
-  {
-    id: 'wolves',
-    name: 'Wolverhampton Wanderers',
-    shortName: 'WOL',
-    city: 'Wolverhampton',
-    stadium: 'Molineux Stadium',
-    stadiumCapacity: 31750,
-    budget: 80000000,
-    reputation: 76,
-    colors: { primary: '#FDB913', secondary: '#231F20' },
-    players: [
-      { name: 'José Sá', position: 'GK', overall: 81, age: 31, value: 20000000, salary: 100000 },
-      { name: 'Nélson Semedo', position: 'RB', overall: 79, age: 30, value: 18000000, salary: 120000 },
-      { name: 'Max Kilman', position: 'CB', overall: 80, age: 27, value: 30000000, salary: 100000 },
-      { name: 'Craig Dawson', position: 'CB', overall: 77, age: 34, value: 5000000, salary: 80000 },
-      { name: 'Rayan Aït-Nouri', position: 'LB', overall: 80, age: 23, value: 40000000, salary: 100000 },
-      { name: 'João Gomes', position: 'CDM', overall: 79, age: 23, value: 35000000, salary: 100000 },
-      { name: 'Matheus Nunes', position: 'CM', overall: 80, age: 25, value: 40000000, salary: 150000 },
-      { name: 'Mario Lemina', position: 'CM', overall: 79, age: 30, value: 20000000, salary: 120000 },
-      { name: 'Pedro Neto', position: 'RW', overall: 81, age: 24, value: 50000000, salary: 150000 },
-      { name: 'Daniel Podence', position: 'LW', overall: 78, age: 28, value: 20000000, salary: 100000 },
-      { name: 'Pablo Sarabia', position: 'RW', overall: 80, age: 32, value: 15000000, salary: 150000 },
-      { name: 'Matheus Cunha', position: 'ST', overall: 81, age: 25, value: 45000000, salary: 150000 },
-      { name: 'Hwang Hee-chan', position: 'ST', overall: 78, age: 28, value: 25000000, salary: 100000 },
-      { name: 'Daniel Bentley', position: 'GK', overall: 74, age: 30, value: 3000000, salary: 50000 },
-      { name: 'Hugo Bueno', position: 'LB', overall: 76, age: 21, value: 15000000, salary: 50000 },
-      { name: 'Toti Gomes', position: 'CB', overall: 77, age: 25, value: 15000000, salary: 60000 }
-    ]
-  },
-  {
-    id: 'crystal_palace',
-    name: 'Crystal Palace',
-    shortName: 'CRY',
-    city: 'London',
-    stadium: 'Selhurst Park',
-    stadiumCapacity: 25486,
-    budget: 70000000,
-    reputation: 74,
-    colors: { primary: '#1B458F', secondary: '#C4122E' },
-    players: [
-      { name: 'Dean Henderson', position: 'GK', overall: 78, age: 27, value: 18000000, salary: 100000 },
-      { name: 'Nathaniel Clyne', position: 'RB', overall: 74, age: 33, value: 3000000, salary: 60000 },
-      { name: 'Marc Guéhi', position: 'CB', overall: 82, age: 23, value: 55000000, salary: 150000 },
-      { name: 'Joachim Andersen', position: 'CB', overall: 80, age: 28, value: 30000000, salary: 120000 },
-      { name: 'Tyrick Mitchell', position: 'LB', overall: 78, age: 24, value: 25000000, salary: 80000 },
-      { name: 'Adam Wharton', position: 'CM', overall: 78, age: 20, value: 30000000, salary: 60000 },
-      { name: 'Cheick Doucouré', position: 'CDM', overall: 79, age: 24, value: 30000000, salary: 100000 },
-      { name: 'Eberechi Eze', position: 'CAM', overall: 82, age: 26, value: 55000000, salary: 150000 },
-      { name: 'Michael Olise', position: 'RW', overall: 82, age: 22, value: 60000000, salary: 120000 },
-      { name: 'Jeffrey Schlupp', position: 'LW', overall: 75, age: 31, value: 5000000, salary: 80000 },
-      { name: 'Jean-Philippe Mateta', position: 'ST', overall: 79, age: 27, value: 30000000, salary: 100000 },
-      { name: 'Odsonne Édouard', position: 'ST', overall: 77, age: 26, value: 18000000, salary: 100000 },
-      { name: 'Sam Johnstone', position: 'GK', overall: 77, age: 31, value: 8000000, salary: 80000 },
-      { name: 'Chris Richards', position: 'CB', overall: 76, age: 24, value: 15000000, salary: 60000 },
-      { name: 'Will Hughes', position: 'CM', overall: 76, age: 29, value: 10000000, salary: 80000 }
-    ]
-  },
-  {
-    id: 'bournemouth',
-    name: 'AFC Bournemouth',
-    shortName: 'BOU',
-    city: 'Bournemouth',
-    stadium: 'Vitality Stadium',
-    stadiumCapacity: 11364,
-    budget: 60000000,
-    reputation: 72,
-    colors: { primary: '#DA291C', secondary: '#000000' },
-    players: [
-      { name: 'Neto', position: 'GK', overall: 79, age: 35, value: 8000000, salary: 80000 },
-      { name: 'Adam Smith', position: 'RB', overall: 76, age: 33, value: 5000000, salary: 80000 },
-      { name: 'Marcos Senesi', position: 'CB', overall: 79, age: 27, value: 25000000, salary: 100000 },
-      { name: 'Illia Zabarnyi', position: 'CB', overall: 79, age: 21, value: 30000000, salary: 80000 },
-      { name: 'Milos Kerkez', position: 'LB', overall: 77, age: 20, value: 20000000, salary: 60000 },
-      { name: 'Lewis Cook', position: 'CDM', overall: 77, age: 27, value: 18000000, salary: 80000 },
-      { name: 'Tyler Adams', position: 'CM', overall: 78, age: 25, value: 22000000, salary: 100000 },
-      { name: 'Ryan Christie', position: 'CM', overall: 77, age: 29, value: 15000000, salary: 80000 },
-      { name: 'Marcus Tavernier', position: 'CAM', overall: 78, age: 25, value: 25000000, salary: 80000 },
-      { name: 'Antoine Semenyo', position: 'RW', overall: 77, age: 24, value: 22000000, salary: 80000 },
-      { name: 'Justin Kluivert', position: 'LW', overall: 77, age: 25, value: 20000000, salary: 100000 },
-      { name: 'Dominic Solanke', position: 'ST', overall: 79, age: 26, value: 35000000, salary: 120000 },
-      { name: 'Enes Ünal', position: 'ST', overall: 76, age: 27, value: 12000000, salary: 80000 },
-      { name: 'Mark Travers', position: 'GK', overall: 75, age: 25, value: 8000000, salary: 50000 },
-      { name: 'Max Aarons', position: 'RB', overall: 76, age: 24, value: 15000000, salary: 60000 }
-    ]
-  },
-  {
-    id: 'fulham',
-    name: 'Fulham',
-    shortName: 'FUL',
-    city: 'London',
-    stadium: 'Craven Cottage',
-    stadiumCapacity: 25700,
-    budget: 70000000,
-    reputation: 74,
-    colors: { primary: '#FFFFFF', secondary: '#000000' },
-    players: [
-      { name: 'Bernd Leno', position: 'GK', overall: 81, age: 32, value: 15000000, salary: 150000 },
-      { name: 'Kenny Tete', position: 'RB', overall: 78, age: 28, value: 15000000, salary: 80000 },
-      { name: 'Tim Ream', position: 'CB', overall: 77, age: 36, value: 3000000, salary: 80000 },
-      { name: 'Issa Diop', position: 'CB', overall: 77, age: 27, value: 15000000, salary: 80000 },
-      { name: 'Antonee Robinson', position: 'LB', overall: 80, age: 27, value: 30000000, salary: 100000 },
-      { name: 'João Palhinha', position: 'CDM', overall: 84, age: 29, value: 55000000, salary: 180000 },
-      { name: 'Andreas Pereira', position: 'CM', overall: 79, age: 28, value: 25000000, salary: 120000 },
-      { name: 'Harrison Reed', position: 'CM', overall: 77, age: 29, value: 15000000, salary: 80000 },
-      { name: 'Adama Traoré', position: 'RW', overall: 78, age: 28, value: 18000000, salary: 100000 },
-      { name: 'Willian', position: 'RW', overall: 76, age: 35, value: 5000000, salary: 150000 },
-      { name: 'Harry Wilson', position: 'LW', overall: 78, age: 27, value: 20000000, salary: 80000 },
-      { name: 'Rodrigo Muniz', position: 'ST', overall: 78, age: 23, value: 30000000, salary: 80000 },
-      { name: 'Raúl Jiménez', position: 'ST', overall: 78, age: 33, value: 12000000, salary: 150000 },
-      { name: 'Marek Rodák', position: 'GK', overall: 74, age: 27, value: 5000000, salary: 40000 },
-      { name: 'Timothy Castagne', position: 'RB', overall: 78, age: 28, value: 18000000, salary: 100000 },
-      { name: 'Tosin Adarabioyo', position: 'CB', overall: 78, age: 26, value: 20000000, salary: 80000 }
-    ]
-  },
-  {
-    id: 'brentford',
-    name: 'Brentford',
-    shortName: 'BRE',
-    city: 'London',
-    stadium: 'Brentford Community Stadium',
-    stadiumCapacity: 17250,
-    budget: 70000000,
-    reputation: 75,
-    colors: { primary: '#E30613', secondary: '#FFFFFF' },
-    players: [
-      { name: 'Mark Flekken', position: 'GK', overall: 79, age: 30, value: 12000000, salary: 80000 },
-      { name: 'Kristoffer Ajer', position: 'RB', overall: 78, age: 26, value: 20000000, salary: 80000 },
-      { name: 'Ethan Pinnock', position: 'CB', overall: 78, age: 31, value: 18000000, salary: 80000 },
-      { name: 'Ben Mee', position: 'CB', overall: 77, age: 34, value: 5000000, salary: 80000 },
-      { name: 'Rico Henry', position: 'LB', overall: 78, age: 27, value: 20000000, salary: 80000 },
-      { name: 'Christian Nørgaard', position: 'CDM', overall: 79, age: 30, value: 20000000, salary: 100000 },
-      { name: 'Vitaly Janelt', position: 'CM', overall: 78, age: 26, value: 22000000, salary: 80000 },
-      { name: 'Mathias Jensen', position: 'CM', overall: 77, age: 28, value: 18000000, salary: 80000 },
-      { name: 'Bryan Mbeumo', position: 'RW', overall: 81, age: 25, value: 45000000, salary: 120000 },
-      { name: 'Keane Lewis-Potter', position: 'LW', overall: 77, age: 23, value: 22000000, salary: 60000 },
-      { name: 'Yoane Wissa', position: 'LW', overall: 79, age: 27, value: 30000000, salary: 100000 },
-      { name: 'Ivan Toney', position: 'ST', overall: 83, age: 28, value: 60000000, salary: 180000 },
-      { name: 'Kevin Schade', position: 'ST', overall: 76, age: 22, value: 20000000, salary: 60000 },
-      { name: 'Thomas Strakosha', position: 'GK', overall: 76, age: 29, value: 8000000, salary: 60000 },
-      { name: 'Aaron Hickey', position: 'RB', overall: 77, age: 22, value: 22000000, salary: 60000 },
-      { name: 'Nathan Collins', position: 'CB', overall: 78, age: 23, value: 25000000, salary: 80000 }
-    ]
-  },
-  {
-    id: 'everton',
-    name: 'Everton',
-    shortName: 'EVE',
-    city: 'Liverpool',
-    stadium: 'Goodison Park',
-    stadiumCapacity: 39414,
-    budget: 60000000,
-    reputation: 75,
-    colors: { primary: '#003399', secondary: '#FFFFFF' },
-    players: [
-      { name: 'Jordan Pickford', position: 'GK', overall: 82, age: 30, value: 30000000, salary: 150000 },
-      { name: 'Séamus Coleman', position: 'RB', overall: 75, age: 35, value: 2000000, salary: 100000 },
-      { name: 'Jarrad Branthwaite', position: 'CB', overall: 80, age: 21, value: 45000000, salary: 80000 },
-      { name: 'James Tarkowski', position: 'CB', overall: 80, age: 31, value: 18000000, salary: 100000 },
-      { name: 'Vitaliy Mykolenko', position: 'LB', overall: 78, age: 25, value: 22000000, salary: 80000 },
-      { name: 'Amadou Onana', position: 'CDM', overall: 80, age: 22, value: 45000000, salary: 100000 },
-      { name: 'Idrissa Gueye', position: 'CM', overall: 78, age: 34, value: 8000000, salary: 120000 },
-      { name: 'Abdoulaye Doucouré', position: 'CM', overall: 79, age: 31, value: 15000000, salary: 120000 },
-      { name: 'Dwight McNeil', position: 'LW', overall: 78, age: 24, value: 28000000, salary: 80000 },
-      { name: 'Jack Harrison', position: 'LW', overall: 78, age: 27, value: 22000000, salary: 100000 },
-      { name: 'Arnaut Danjuma', position: 'LW', overall: 78, age: 27, value: 22000000, salary: 150000 },
-      { name: 'Dominic Calvert-Lewin', position: 'ST', overall: 78, age: 27, value: 28000000, salary: 120000 },
-      { name: 'Beto', position: 'ST', overall: 76, age: 26, value: 18000000, salary: 80000 },
-      { name: 'João Virgínia', position: 'GK', overall: 73, age: 24, value: 5000000, salary: 40000 },
-      { name: 'Nathan Patterson', position: 'RB', overall: 76, age: 22, value: 15000000, salary: 50000 },
-      { name: 'Michael Keane', position: 'CB', overall: 77, age: 31, value: 10000000, salary: 100000 }
-    ]
-  },
-  {
-    id: 'nottingham_forest',
-    name: 'Nottingham Forest',
-    shortName: 'NFO',
-    city: 'Nottingham',
-    stadium: 'City Ground',
-    stadiumCapacity: 30445,
-    budget: 80000000,
-    reputation: 74,
-    colors: { primary: '#DD0000', secondary: '#FFFFFF' },
-    players: [
-      { name: 'Matz Sels', position: 'GK', overall: 79, age: 32, value: 12000000, salary: 80000 },
-      { name: 'Serge Aurier', position: 'RB', overall: 76, age: 31, value: 8000000, salary: 100000 },
-      { name: 'Murillo', position: 'CB', overall: 79, age: 21, value: 35000000, salary: 80000 },
-      { name: 'Felipe', position: 'CB', overall: 77, age: 35, value: 5000000, salary: 100000 },
-      { name: 'Neco Williams', position: 'LB', overall: 77, age: 23, value: 20000000, salary: 60000 },
-      { name: 'Danilo', position: 'CDM', overall: 78, age: 22, value: 30000000, salary: 80000 },
-      { name: 'Ibrahim Sangaré', position: 'CDM', overall: 79, age: 26, value: 30000000, salary: 100000 },
-      { name: 'Morgan Gibbs-White', position: 'CAM', overall: 80, age: 24, value: 45000000, salary: 120000 },
-      { name: 'Callum Hudson-Odoi', position: 'RW', overall: 78, age: 23, value: 30000000, salary: 100000 },
-      { name: 'Anthony Elanga', position: 'LW', overall: 77, age: 22, value: 25000000, salary: 80000 },
-      { name: 'Brennan Johnson', position: 'RW', overall: 78, age: 23, value: 35000000, salary: 100000 },
-      { name: 'Chris Wood', position: 'ST', overall: 77, age: 32, value: 12000000, salary: 100000 },
-      { name: 'Taiwo Awoniyi', position: 'ST', overall: 77, age: 26, value: 22000000, salary: 100000 },
-      { name: 'Wayne Hennessey', position: 'GK', overall: 73, age: 37, value: 1000000, salary: 50000 },
-      { name: 'Ola Aina', position: 'RB', overall: 77, age: 27, value: 18000000, salary: 80000 },
-      { name: 'Willy Boly', position: 'CB', overall: 76, age: 33, value: 5000000, salary: 80000 }
-    ]
-  },
-  {
-    id: 'luton',
-    name: 'Luton Town',
-    shortName: 'LUT',
-    city: 'Luton',
-    stadium: 'Kenilworth Road',
-    stadiumCapacity: 10356,
-    budget: 40000000,
-    reputation: 68,
-    colors: { primary: '#F78F1E', secondary: '#FFFFFF' },
-    players: [
-      { name: 'Thomas Kaminski', position: 'GK', overall: 77, age: 31, value: 8000000, salary: 60000 },
-      { name: 'Amari\'i Bell', position: 'RB', overall: 73, age: 30, value: 3000000, salary: 40000 },
-      { name: 'Tom Lockyer', position: 'CB', overall: 76, age: 29, value: 10000000, salary: 60000 },
-      { name: 'Gabriel Osho', position: 'CB', overall: 74, age: 24, value: 8000000, salary: 40000 },
-      { name: 'Reece Burke', position: 'CB', overall: 74, age: 27, value: 6000000, salary: 40000 },
-      { name: 'Ross Barkley', position: 'CM', overall: 77, age: 30, value: 12000000, salary: 80000 },
-      { name: 'Marvelous Nakamba', position: 'CDM', overall: 75, age: 30, value: 8000000, salary: 60000 },
-      { name: 'Pelly Ruddock Mpanzu', position: 'CM', overall: 73, age: 30, value: 4000000, salary: 40000 },
-      { name: 'Tahith Chong', position: 'RW', overall: 75, age: 24, value: 12000000, salary: 60000 },
-      { name: 'Andros Townsend', position: 'RW', overall: 75, age: 33, value: 5000000, salary: 80000 },
-      { name: 'Chiedozie Ogbene', position: 'LW', overall: 75, age: 27, value: 10000000, salary: 50000 },
-      { name: 'Elijah Adebayo', position: 'ST', overall: 75, age: 26, value: 12000000, salary: 60000 },
-      { name: 'Carlton Morris', position: 'ST', overall: 75, age: 28, value: 12000000, salary: 60000 },
-      { name: 'Tim Krul', position: 'GK', overall: 74, age: 36, value: 1000000, salary: 50000 },
-      { name: 'Albert Sambi Lokonga', position: 'CM', overall: 75, age: 24, value: 12000000, salary: 60000 }
-    ]
-  },
-  {
-    id: 'burnley',
-    name: 'Burnley',
-    shortName: 'BUR',
-    city: 'Burnley',
-    stadium: 'Turf Moor',
-    stadiumCapacity: 21944,
-    budget: 50000000,
-    reputation: 70,
-    colors: { primary: '#6C1D45', secondary: '#99D6EA' },
-    players: [
-      { name: 'James Trafford', position: 'GK', overall: 76, age: 21, value: 18000000, salary: 60000 },
-      { name: 'Connor Roberts', position: 'RB', overall: 75, age: 28, value: 10000000, salary: 60000 },
-      { name: 'Jordan Beyer', position: 'CB', overall: 76, age: 24, value: 15000000, salary: 60000 },
-      { name: 'Dara O\'Shea', position: 'CB', overall: 77, age: 25, value: 18000000, salary: 60000 },
-      { name: 'Charlie Taylor', position: 'LB', overall: 75, age: 30, value: 8000000, salary: 60000 },
-      { name: 'Sander Berge', position: 'CDM', overall: 78, age: 26, value: 25000000, salary: 100000 },
-      { name: 'Josh Brownhill', position: 'CM', overall: 77, age: 28, value: 18000000, salary: 80000 },
-      { name: 'Josh Cullen', position: 'CM', overall: 76, age: 28, value: 12000000, salary: 60000 },
-      { name: 'Wilson Odobert', position: 'LW', overall: 76, age: 19, value: 20000000, salary: 40000 },
-      { name: 'Luca Koleosho', position: 'RW', overall: 75, age: 19, value: 15000000, salary: 40000 },
-      { name: 'Darko Churlinov', position: 'LW', overall: 74, age: 24, value: 8000000, salary: 40000 },
-      { name: 'Zeki Amdouni', position: 'ST', overall: 76, age: 23, value: 18000000, salary: 60000 },
-      { name: 'Nathan Redmond', position: 'ST', overall: 75, age: 30, value: 8000000, salary: 80000 },
-      { name: 'Arijanet Muric', position: 'GK', overall: 74, age: 25, value: 5000000, salary: 40000 },
-      { name: 'Vitinho', position: 'RB', overall: 74, age: 24, value: 8000000, salary: 40000 },
-      { name: 'Ameen Al-Dakhil', position: 'CB', overall: 74, age: 22, value: 10000000, salary: 40000 }
-    ]
-  },
-  {
-    id: 'sheffield_united',
-    name: 'Sheffield United',
-    shortName: 'SHU',
-    city: 'Sheffield',
-    stadium: 'Bramall Lane',
-    stadiumCapacity: 32050,
-    budget: 45000000,
-    reputation: 68,
-    colors: { primary: '#EE2737', secondary: '#FFFFFF' },
-    players: [
-      { name: 'Wes Foderingham', position: 'GK', overall: 74, age: 33, value: 3000000, salary: 50000 },
-      { name: 'George Baldock', position: 'RB', overall: 75, age: 31, value: 6000000, salary: 60000 },
-      { name: 'Chris Basham', position: 'CB', overall: 74, age: 35, value: 1000000, salary: 50000 },
-      { name: 'John Egan', position: 'CB', overall: 76, age: 31, value: 8000000, salary: 60000 },
-      { name: 'Max Lowe', position: 'LB', overall: 73, age: 27, value: 5000000, salary: 40000 },
-      { name: 'Oliver Norwood', position: 'CDM', overall: 75, age: 33, value: 5000000, salary: 50000 },
-      { name: 'Gustavo Hamer', position: 'CM', overall: 78, age: 27, value: 25000000, salary: 80000 },
-      { name: 'James McAtee', position: 'CAM', overall: 76, age: 21, value: 20000000, salary: 60000 },
-      { name: 'Ben Osborn', position: 'CM', overall: 73, age: 29, value: 4000000, salary: 40000 },
-      { name: 'Oli McBurnie', position: 'ST', overall: 74, age: 28, value: 8000000, salary: 60000 },
-      { name: 'Cameron Archer', position: 'ST', overall: 76, age: 22, value: 20000000, salary: 60000 },
-      { name: 'Rhian Brewster', position: 'ST', overall: 74, age: 24, value: 10000000, salary: 60000 },
-      { name: 'Bénie Traoré', position: 'RW', overall: 75, age: 22, value: 12000000, salary: 50000 },
-      { name: 'Adam Davies', position: 'GK', overall: 72, age: 31, value: 2000000, salary: 40000 },
-      { name: 'Anel Ahmedhodžić', position: 'CB', overall: 76, age: 25, value: 15000000, salary: 60000 },
-      { name: 'Auston Trusty', position: 'CB', overall: 74, age: 25, value: 8000000, salary: 40000 }
-    ]
-  }
-];
-
-// Ligue 1 2024-2025
-export const LIGUE1_TEAMS = [
-  {
-    id: 'psg',
-    name: 'Paris Saint-Germain',
-    shortName: 'PSG',
-    city: 'Paris',
-    stadium: 'Parc des Princes',
-    stadiumCapacity: 47929,
-    budget: 300000000,
-    reputation: 93,
-    colors: { primary: '#004170', secondary: '#DA291C' },
-    players: [
-      { name: 'Gianluigi Donnarumma', position: 'GK', overall: 88, age: 25, value: 55000000, salary: 300000 },
-      { name: 'Achraf Hakimi', position: 'RB', overall: 86, age: 25, value: 65000000, salary: 250000 },
-      { name: 'Marquinhos', position: 'CB', overall: 86, age: 30, value: 40000000, salary: 300000 },
-      { name: 'Lucas Hernández', position: 'CB', overall: 84, age: 28, value: 45000000, salary: 250000 },
-      { name: 'Nuno Mendes', position: 'LB', overall: 83, age: 22, value: 55000000, salary: 180000 },
-      { name: 'Vitinha', position: 'CM', overall: 85, age: 24, value: 70000000, salary: 200000 },
-      { name: 'Warren Zaïre-Emery', position: 'CM', overall: 80, age: 18, value: 60000000, salary: 100000 },
-      { name: 'Fabián Ruiz', position: 'CM', overall: 83, age: 28, value: 45000000, salary: 180000 },
-      { name: 'Ousmane Dembélé', position: 'RW', overall: 85, age: 27, value: 65000000, salary: 250000 },
-      { name: 'Bradley Barcola', position: 'LW', overall: 79, age: 21, value: 45000000, salary: 100000 },
-      { name: 'Randal Kolo Muani', position: 'ST', overall: 82, age: 25, value: 55000000, salary: 200000 },
-      { name: 'Gonçalo Ramos', position: 'ST', overall: 81, age: 23, value: 50000000, salary: 180000 },
-      { name: 'Keylor Navas', position: 'GK', overall: 80, age: 37, value: 5000000, salary: 200000 },
-      { name: 'Milan Škriniar', position: 'CB', overall: 83, age: 29, value: 35000000, salary: 250000 },
-      { name: 'Danilo Pereira', position: 'CDM', overall: 80, age: 32, value: 15000000, salary: 150000 },
-      { name: 'Manuel Ugarte', position: 'CDM', overall: 81, age: 23, value: 50000000, salary: 150000 },
-      { name: 'Lee Kang-in', position: 'CAM', overall: 80, age: 23, value: 40000000, salary: 150000 }
-    ]
-  },
-  {
-    id: 'marseille',
-    name: 'Olympique de Marseille',
-    shortName: 'OM',
-    city: 'Marseille',
-    stadium: 'Orange Vélodrome',
-    stadiumCapacity: 67394,
-    budget: 100000000,
-    reputation: 84,
-    colors: { primary: '#2FAEE0', secondary: '#FFFFFF' },
-    players: [
-      { name: 'Pau López', position: 'GK', overall: 80, age: 29, value: 15000000, salary: 100000 },
-      { name: 'Jonathan Clauss', position: 'RB', overall: 80, age: 31, value: 18000000, salary: 100000 },
-      { name: 'Samuel Gigot', position: 'CB', overall: 78, age: 30, value: 12000000, salary: 80000 },
-      { name: 'Chancel Mbemba', position: 'CB', overall: 79, age: 29, value: 15000000, salary: 100000 },
-      { name: 'Quentin Merlin', position: 'LB', overall: 76, age: 22, value: 12000000, salary: 50000 },
-      { name: 'Geoffrey Kondogbia', position: 'CDM', overall: 79, age: 31, value: 15000000, salary: 120000 },
-      { name: 'Valentin Rongier', position: 'CM', overall: 79, age: 29, value: 18000000, salary: 100000 },
-      { name: 'Jordan Veretout', position: 'CM', overall: 79, age: 31, value: 15000000, salary: 120000 },
-      { name: 'Amine Harit', position: 'CAM', overall: 79, age: 27, value: 20000000, salary: 100000 },
-      { name: 'Iliman Ndiaye', position: 'LW', overall: 79, age: 24, value: 25000000, salary: 80000 },
-      { name: 'Ismaïla Sarr', position: 'RW', overall: 78, age: 26, value: 22000000, salary: 100000 },
-      { name: 'Pierre-Emerick Aubameyang', position: 'ST', overall: 81, age: 35, value: 12000000, salary: 250000 },
-      { name: 'Faris Moumbagna', position: 'ST', overall: 76, age: 23, value: 15000000, salary: 60000 },
-      { name: 'Ruben Blanco', position: 'GK', overall: 76, age: 28, value: 5000000, salary: 50000 },
-      { name: 'Amir Murillo', position: 'RB', overall: 76, age: 28, value: 8000000, salary: 60000 },
-      { name: 'Leonardo Balerdi', position: 'CB', overall: 78, age: 25, value: 18000000, salary: 80000 }
-    ]
-  },
-  {
-    id: 'monaco',
-    name: 'AS Monaco',
-    shortName: 'MON',
-    city: 'Monaco',
-    stadium: 'Stade Louis II',
-    stadiumCapacity: 18523,
-    budget: 120000000,
-    reputation: 82,
-    colors: { primary: '#E30613', secondary: '#FFFFFF' },
-    players: [
-      { name: 'Philipp Köhn', position: 'GK', overall: 78, age: 26, value: 15000000, salary: 80000 },
-      { name: 'Vanderson', position: 'RB', overall: 79, age: 23, value: 30000000, salary: 80000 },
-      { name: 'Guillermo Maripán', position: 'CB', overall: 78, age: 30, value: 15000000, salary: 100000 },
-      { name: 'Mohammed Salisu', position: 'CB', overall: 79, age: 25, value: 25000000, salary: 80000 },
-      { name: 'Caio Henrique', position: 'LB', overall: 80, age: 27, value: 25000000, salary: 100000 },
-      { name: 'Youssouf Fofana', position: 'CDM', overall: 82, age: 25, value: 45000000, salary: 150000 },
-      { name: 'Denis Zakaria', position: 'CM', overall: 79, age: 27, value: 22000000, salary: 150000 },
-      { name: 'Aleksandr Golovin', position: 'CAM', overall: 80, age: 28, value: 25000000, salary: 120000 },
-      { name: 'Takumi Minamino', position: 'RW', overall: 78, age: 29, value: 15000000, salary: 100000 },
-      { name: 'Eliesse Ben Seghir', position: 'LW', overall: 77, age: 19, value: 25000000, salary: 50000 },
-      { name: 'Breel Embolo', position: 'ST', overall: 79, age: 27, value: 22000000, salary: 150000 },
-      { name: 'Wissam Ben Yedder', position: 'ST', overall: 82, age: 33, value: 18000000, salary: 200000 },
-      { name: 'Folarin Balogun', position: 'ST', overall: 78, age: 22, value: 30000000, salary: 80000 },
-      { name: 'Radosław Majecki', position: 'GK', overall: 76, age: 24, value: 8000000, salary: 40000 },
-      { name: 'Ruben Aguilar', position: 'RB', overall: 76, age: 31, value: 8000000, salary: 80000 },
-      { name: 'Thilo Kehrer', position: 'CB', overall: 77, age: 27, value: 15000000, salary: 100000 }
-    ]
-  },
-  {
-    id: 'lille',
-    name: 'Lille OSC',
-    shortName: 'LIL',
-    city: 'Lille',
-    stadium: 'Stade Pierre-Mauroy',
-    stadiumCapacity: 50157,
-    budget: 80000000,
-    reputation: 80,
-    colors: { primary: '#E2001A', secondary: '#FFFFFF' },
-    players: [
-      { name: 'Lucas Chevalier', position: 'GK', overall: 79, age: 22, value: 25000000, salary: 60000 },
-      { name: 'Tiago Santos', position: 'RB', overall: 77, age: 22, value: 18000000, salary: 50000 },
-      { name: 'Leny Yoro', position: 'CB', overall: 79, age: 18, value: 50000000, salary: 60000 },
-      { name: 'Alexsandro', position: 'CB', overall: 77, age: 21, value: 18000000, salary: 50000 },
-      { name: 'Gabriel Gudmundsson', position: 'LB', overall: 77, age: 24, value: 15000000, salary: 60000 },
-      { name: 'Benjamin André', position: 'CDM', overall: 79, age: 33, value: 10000000, salary: 100000 },
-      { name: 'André Gomes', position: 'CM', overall: 76, age: 30, value: 8000000, salary: 100000 },
-      { name: 'Rémy Cabella', position: 'CAM', overall: 77, age: 34, value: 5000000, salary: 100000 },
-      { name: 'Angel Gomes', position: 'CAM', overall: 78, age: 23, value: 22000000, salary: 60000 },
-      { name: 'Jonathan David', position: 'ST', overall: 83, age: 24, value: 65000000, salary: 180000 },
-      { name: 'Mohamed Bayo', position: 'ST', overall: 77, age: 25, value: 18000000, salary: 80000 },
-      { name: 'Edon Zhegrova', position: 'RW', overall: 78, age: 25, value: 22000000, salary: 80000 },
-      { name: 'Adam Ounas', position: 'LW', overall: 76, age: 27, value: 10000000, salary: 80000 },
-      { name: 'Bafodé Diakité', position: 'CB', overall: 77, age: 23, value: 18000000, salary: 60000 },
-      { name: 'Akim Zedadka', position: 'RB', overall: 75, age: 28, value: 8000000, salary: 50000 }
-    ]
-  },
-  {
-    id: 'lyon',
-    name: 'Olympique Lyonnais',
-    shortName: 'OL',
-    city: 'Lyon',
-    stadium: 'Groupama Stadium',
-    stadiumCapacity: 59186,
-    budget: 90000000,
-    reputation: 82,
-    colors: { primary: '#FFFFFF', secondary: '#0000FF' },
-    players: [
-      { name: 'Anthony Lopes', position: 'GK', overall: 80, age: 33, value: 10000000, salary: 150000 },
-      { name: 'Malo Gusto', position: 'RB', overall: 79, age: 21, value: 35000000, salary: 60000 },
-      { name: 'Jake O\'Brien', position: 'CB', overall: 77, age: 23, value: 18000000, salary: 50000 },
-      { name: 'Clinton Mata', position: 'CB', overall: 77, age: 31, value: 10000000, salary: 80000 },
-      { name: 'Nicolás Tagliafico', position: 'LB', overall: 80, age: 31, value: 15000000, salary: 120000 },
-      { name: 'Nemanja Matić', position: 'CDM', overall: 79, age: 35, value: 5000000, salary: 150000 },
-      { name: 'Corentin Tolisso', position: 'CM', overall: 79, age: 29, value: 18000000, salary: 150000 },
-      { name: 'Maxence Caqueret', position: 'CM', overall: 79, age: 24, value: 25000000, salary: 80000 },
-      { name: 'Rayan Cherki', position: 'CAM', overall: 79, age: 20, value: 35000000, salary: 80000 },
-      { name: 'Ainsley Maitland-Niles', position: 'CM', overall: 75, age: 26, value: 8000000, salary: 80000 },
-      { name: 'Ernest Nuamah', position: 'RW', overall: 76, age: 20, value: 15000000, salary: 40000 },
-      { name: 'Alexandre Lacazette', position: 'ST', overall: 81, age: 33, value: 12000000, salary: 200000 },
-      { name: 'Gift Orban', position: 'ST', overall: 76, age: 22, value: 15000000, salary: 50000 },
-      { name: 'Rémy Riou', position: 'GK', overall: 74, age: 36, value: 1000000, salary: 50000 },
-      { name: 'Dejan Lovren', position: 'CB', overall: 77, age: 34, value: 5000000, salary: 120000 },
-      { name: 'Saël Kumbedi', position: 'RB', overall: 75, age: 18, value: 12000000, salary: 30000 }
-    ]
-  },
-  {
-    id: 'nice',
-    name: 'OGC Nice',
-    shortName: 'NIC',
-    city: 'Nice',
-    stadium: 'Allianz Riviera',
-    stadiumCapacity: 36178,
-    budget: 70000000,
-    reputation: 78,
-    colors: { primary: '#000000', secondary: '#FF0000' },
-    players: [
-      { name: 'Marcin Bułka', position: 'GK', overall: 78, age: 24, value: 15000000, salary: 60000 },
-      { name: 'Youcef Atal', position: 'RB', overall: 77, age: 28, value: 12000000, salary: 80000 },
-      { name: 'Jean-Clair Todibo', position: 'CB', overall: 81, age: 24, value: 40000000, salary: 100000 },
-      { name: 'Dante', position: 'CB', overall: 77, age: 40, value: 1000000, salary: 100000 },
-      { name: 'Melvin Bard', position: 'LB', overall: 77, age: 22, value: 15000000, salary: 50000 },
-      { name: 'Pablo Rosario', position: 'CDM', overall: 77, age: 27, value: 12000000, salary: 80000 },
-      { name: 'Khéphren Thuram', position: 'CM', overall: 80, age: 23, value: 40000000, salary: 100000 },
-      { name: 'Sofiane Diop', position: 'CAM', overall: 78, age: 24, value: 22000000, salary: 80000 },
-      { name: 'Jérémie Boga', position: 'LW', overall: 78, age: 27, value: 18000000, salary: 100000 },
-      { name: 'Gaëtan Laborde', position: 'ST', overall: 78, age: 30, value: 15000000, salary: 100000 },
-      { name: 'Terem Moffi', position: 'ST', overall: 77, age: 24, value: 18000000, salary: 80000 },
-      { name: 'Hicham Boudaoui', position: 'CM', overall: 77, age: 24, value: 15000000, salary: 60000 },
-      { name: 'Kasper Schmeichel', position: 'GK', overall: 78, age: 37, value: 3000000, salary: 100000 },
-      { name: 'Jordan Lotomba', position: 'RB', overall: 76, age: 25, value: 12000000, salary: 60000 },
-      { name: 'Badredine Bouanani', position: 'LW', overall: 74, age: 19, value: 8000000, salary: 30000 }
-    ]
-  },
-  {
-    id: 'lens',
-    name: 'RC Lens',
-    shortName: 'LEN',
-    city: 'Lens',
-    stadium: 'Stade Bollaert-Delelis',
-    stadiumCapacity: 38223,
-    budget: 60000000,
-    reputation: 78,
-    colors: { primary: '#FFD700', secondary: '#FF0000' },
-    players: [
-      { name: 'Brice Samba', position: 'GK', overall: 81, age: 30, value: 20000000, salary: 100000 },
-      { name: 'Jonathan Gradit', position: 'RB', overall: 77, age: 31, value: 10000000, salary: 80000 },
-      { name: 'Kevin Danso', position: 'CB', overall: 80, age: 25, value: 30000000, salary: 80000 },
-      { name: 'Facundo Medina', position: 'CB', overall: 78, age: 25, value: 18000000, salary: 60000 },
-      { name: 'Deiver Machado', position: 'LB', overall: 77, age: 30, value: 10000000, salary: 60000 },
-      { name: 'Salis Abdul Samed', position: 'CDM', overall: 79, age: 24, value: 25000000, salary: 60000 },
-      { name: 'Andy Diouf', position: 'CM', overall: 76, age: 20, value: 15000000, salary: 40000 },
-      { name: 'David Pereira da Costa', position: 'CM', overall: 76, age: 23, value: 12000000, salary: 50000 },
-      { name: 'Florian Sotoca', position: 'RW', overall: 78, age: 33, value: 8000000, salary: 80000 },
-      { name: 'Adrien Thomasson', position: 'LW', overall: 77, age: 30, value: 10000000, salary: 80000 },
-      { name: 'Elye Wahi', position: 'ST', overall: 78, age: 21, value: 35000000, salary: 80000 },
-      { name: 'M\'Bala Nzola', position: 'ST', overall: 77, age: 27, value: 15000000, salary: 80000 },
-      { name: 'Jean-Louis Leca', position: 'GK', overall: 74, age: 38, value: 500000, salary: 50000 },
-      { name: 'Jimmy Cabot', position: 'RB', overall: 76, age: 30, value: 8000000, salary: 60000 },
-      { name: 'Massadio Haïdara', position: 'LB', overall: 75, age: 31, value: 5000000, salary: 60000 }
-    ]
-  },
-  {
-    id: 'rennes',
-    name: 'Stade Rennais',
-    shortName: 'REN',
-    city: 'Rennes',
-    stadium: 'Roazhon Park',
-    stadiumCapacity: 29778,
-    budget: 70000000,
-    reputation: 78,
-    colors: { primary: '#FF0000', secondary: '#000000' },
-    players: [
-      { name: 'Steve Mandanda', position: 'GK', overall: 78, age: 39, value: 2000000, salary: 100000 },
-      { name: 'Lorenz Assignon', position: 'RB', overall: 76, age: 24, value: 15000000, salary: 50000 },
-      { name: 'Warmed Omari', position: 'CB', overall: 77, age: 24, value: 18000000, salary: 50000 },
-      { name: 'Christopher Wooh', position: 'CB', overall: 76, age: 23, value: 15000000, salary: 50000 },
-      { name: 'Adrien Truffert', position: 'LB', overall: 78, age: 22, value: 22000000, salary: 60000 },
-      { name: 'Baptiste Santamaria', position: 'CDM', overall: 78, age: 29, value: 15000000, salary: 80000 },
-      { name: 'Azor Matusiwa', position: 'CM', overall: 76, age: 25, value: 12000000, salary: 50000 },
-      { name: 'Désiré Doué', position: 'CAM', overall: 78, age: 19, value: 35000000, salary: 50000 },
-      { name: 'Benjamin Bourigeaud', position: 'RW', overall: 79, age: 30, value: 18000000, salary: 100000 },
-      { name: 'Jérémy Doku', position: 'LW', overall: 82, age: 22, value: 65000000, salary: 100000 },
-      { name: 'Arnaud Kalimuendo', position: 'ST', overall: 78, age: 22, value: 28000000, salary: 80000 },
-      { name: 'Martin Terrier', position: 'ST', overall: 79, age: 27, value: 25000000, salary: 100000 },
-      { name: 'Amine Gouiri', position: 'ST', overall: 79, age: 24, value: 28000000, salary: 100000 },
-      { name: 'Doğan Alemdar', position: 'GK', overall: 74, age: 22, value: 5000000, salary: 30000 },
-      { name: 'Joe Rodon', position: 'CB', overall: 76, age: 26, value: 12000000, salary: 60000 }
-    ]
-  },
-  {
-    id: 'strasbourg',
-    name: 'RC Strasbourg',
-    shortName: 'RCS',
-    city: 'Strasbourg',
-    stadium: 'Stade de la Meinau',
-    stadiumCapacity: 26109,
-    budget: 45000000,
-    reputation: 72,
-    colors: { primary: '#009CDE', secondary: '#FFFFFF' },
-    players: [
-      { name: 'Matz Sels', position: 'GK', overall: 79, age: 32, value: 12000000, salary: 80000 },
-      { name: 'Gerzino Nyamsi', position: 'RB', overall: 75, age: 26, value: 8000000, salary: 50000 },
-      { name: 'Alexander Djiku', position: 'CB', overall: 78, age: 29, value: 15000000, salary: 80000 },
-      { name: 'Maxime Le Marchand', position: 'CB', overall: 75, age: 34, value: 2000000, salary: 60000 },
-      { name: 'Thomas Delaine', position: 'LB', overall: 76, age: 31, value: 8000000, salary: 60000 },
-      { name: 'Jean-Ricner Bellegarde', position: 'CM', overall: 77, age: 26, value: 15000000, salary: 60000 },
-      { name: 'Sanjin Prcić', position: 'CDM', overall: 76, age: 30, value: 8000000, salary: 60000 },
-      { name: 'Habib Diarra', position: 'CM', overall: 76, age: 20, value: 12000000, salary: 40000 },
-      { name: 'Adrien Thomasson', position: 'CAM', overall: 77, age: 30, value: 10000000, salary: 80000 },
-      { name: 'Kevin Gameiro', position: 'ST', overall: 76, age: 37, value: 2000000, salary: 100000 },
-      { name: 'Ludovic Ajorque', position: 'ST', overall: 78, age: 30, value: 15000000, salary: 100000 },
-      { name: 'Dilane Bakwa', position: 'RW', overall: 74, age: 21, value: 8000000, salary: 30000 },
-      { name: 'Eiji Kawashima', position: 'GK', overall: 72, age: 40, value: 500000, salary: 40000 },
-      { name: 'Lucas Perrin', position: 'CB', overall: 76, age: 25, value: 12000000, salary: 50000 }
-    ]
-  },
-  {
-    id: 'montpellier',
-    name: 'Montpellier HSC',
-    shortName: 'MHS',
-    city: 'Montpellier',
-    stadium: 'Stade de la Mosson',
-    stadiumCapacity: 32939,
-    budget: 40000000,
-    reputation: 72,
-    colors: { primary: '#FF7F00', secondary: '#003DA5' },
-    players: [
-      { name: 'Benjamin Lecomte', position: 'GK', overall: 77, age: 33, value: 5000000, salary: 80000 },
-      { name: 'Arnaud Souquet', position: 'RB', overall: 75, age: 32, value: 5000000, salary: 60000 },
-      { name: 'Maxime Estève', position: 'CB', overall: 77, age: 22, value: 18000000, salary: 50000 },
-      { name: 'Mamadou Sakho', position: 'CB', overall: 76, age: 34, value: 3000000, salary: 100000 },
-      { name: 'Enzo Tchato', position: 'LB', overall: 75, age: 21, value: 10000000, salary: 40000 },
-      { name: 'Jordan Ferri', position: 'CM', overall: 76, age: 32, value: 5000000, salary: 80000 },
-      { name: 'Joris Chotard', position: 'CDM', overall: 77, age: 22, value: 18000000, salary: 50000 },
-      { name: 'Téji Savanier', position: 'CAM', overall: 80, age: 32, value: 15000000, salary: 100000 },
-      { name: 'Wahbi Khazri', position: 'CAM', overall: 77, age: 33, value: 5000000, salary: 100000 },
-      { name: 'Elye Wahi', position: 'ST', overall: 78, age: 21, value: 35000000, salary: 60000 },
-      { name: 'Arnaud Nordin', position: 'LW', overall: 76, age: 26, value: 12000000, salary: 60000 },
-      { name: 'Stephy Mavididi', position: 'LW', overall: 77, age: 26, value: 15000000, salary: 80000 },
-      { name: 'Dimitry Bertaud', position: 'GK', overall: 74, age: 25, value: 3000000, salary: 30000 },
-      { name: 'Thibault Tamas', position: 'CB', overall: 74, age: 23, value: 8000000, salary: 40000 },
-      { name: 'Khalil Fayad', position: 'CM', overall: 74, age: 20, value: 8000000, salary: 30000 }
-    ]
-  },
-  {
-    id: 'nantes',
-    name: 'FC Nantes',
-    shortName: 'NAN',
-    city: 'Nantes',
-    stadium: 'Stade de la Beaujoire',
-    stadiumCapacity: 37473,
-    budget: 45000000,
-    reputation: 74,
-    colors: { primary: '#FCE300', secondary: '#00A651' },
-    players: [
-      { name: 'Alban Lafont', position: 'GK', overall: 79, age: 25, value: 18000000, salary: 80000 },
-      { name: 'Sébastien Corchia', position: 'RB', overall: 75, age: 33, value: 3000000, salary: 60000 },
-      { name: 'Jean-Charles Castelletto', position: 'CB', overall: 77, age: 29, value: 12000000, salary: 60000 },
-      { name: 'Nicolas Pallois', position: 'CB', overall: 76, age: 36, value: 1000000, salary: 80000 },
-      { name: 'Quentin Merlin', position: 'LB', overall: 76, age: 22, value: 12000000, salary: 40000 },
-      { name: 'Samuel Moutoussamy', position: 'CDM', overall: 76, age: 27, value: 10000000, salary: 60000 },
-      { name: 'Pedro Chirivella', position: 'CM', overall: 76, age: 27, value: 10000000, salary: 60000 },
-      { name: 'Ludovic Blas', position: 'CAM', overall: 79, age: 26, value: 25000000, salary: 100000 },
-      { name: 'Moses Simon', position: 'LW', overall: 78, age: 28, value: 18000000, salary: 80000 },
-      { name: 'Mostafa Mohamed', position: 'ST', overall: 77, age: 26, value: 18000000, salary: 80000 },
-      { name: 'Ignatius Ganago', position: 'ST', overall: 76, age: 25, value: 12000000, salary: 60000 },
-      { name: 'Fabien Centonze', position: 'RB', overall: 76, age: 28, value: 10000000, salary: 60000 },
-      { name: 'Rémy Descamps', position: 'GK', overall: 74, age: 28, value: 3000000, salary: 40000 },
-      { name: 'Andrei Girotto', position: 'CDM', overall: 76, age: 32, value: 5000000, salary: 60000 }
-    ]
-  },
-  {
-    id: 'toulouse',
-    name: 'Toulouse FC',
-    shortName: 'TFC',
-    city: 'Toulouse',
-    stadium: 'Stadium de Toulouse',
-    stadiumCapacity: 33150,
-    budget: 40000000,
-    reputation: 72,
-    colors: { primary: '#7B2C70', secondary: '#FFFFFF' },
-    players: [
-      { name: 'Guillaume Restes', position: 'GK', overall: 77, age: 19, value: 18000000, salary: 40000 },
-      { name: 'Rasmus Nicolaisen', position: 'RB', overall: 76, age: 26, value: 12000000, salary: 50000 },
-      { name: 'Anthony Rouault', position: 'CB', overall: 77, age: 23, value: 18000000, salary: 50000 },
-      { name: 'Logan Costa', position: 'CB', overall: 78, age: 23, value: 20000000, salary: 60000 },
-      { name: 'Moussa Diarra', position: 'LB', overall: 75, age: 22, value: 10000000, salary: 40000 },
-      { name: 'Stijn Spierings', position: 'CDM', overall: 76, age: 27, value: 10000000, salary: 60000 },
-      { name: 'Branco van den Boomen', position: 'CM', overall: 77, age: 28, value: 12000000, salary: 60000 },
-      { name: 'César Gelabert', position: 'CAM', overall: 76, age: 24, value: 12000000, salary: 50000 },
-      { name: 'Zakaria Aboukhlal', position: 'RW', overall: 76, age: 24, value: 12000000, salary: 50000 },
-      { name: 'Rafael Ratão', position: 'LW', overall: 76, age: 27, value: 10000000, salary: 60000 },
-      { name: 'Thijs Dallinga', position: 'ST', overall: 77, age: 23, value: 18000000, salary: 60000 },
-      { name: 'Yann Gboho', position: 'ST', overall: 74, age: 22, value: 8000000, salary: 40000 },
-      { name: 'Kjetil Haug', position: 'GK', overall: 72, age: 27, value: 2000000, salary: 30000 },
-      { name: 'Mikkel Desler', position: 'RB', overall: 75, age: 28, value: 8000000, salary: 50000 },
-      { name: 'Kevin Keben', position: 'CB', overall: 74, age: 20, value: 8000000, salary: 30000 }
-    ]
-  },
-  {
-    id: 'brest',
-    name: 'Stade Brestois 29',
-    shortName: 'SB29',
-    city: 'Brest',
-    stadium: 'Stade Francis-Le Blé',
-    stadiumCapacity: 15220,
-    budget: 30000000,
-    reputation: 68,
-    colors: { primary: '#FF0000', secondary: '#FFFFFF' },
-    players: [
-      { name: 'Marco Bizot', position: 'GK', overall: 77, age: 33, value: 5000000, salary: 60000 },
-      { name: 'Kenny Lala', position: 'RB', overall: 76, age: 32, value: 5000000, salary: 60000 },
-      { name: 'Brendan Chardonnet', position: 'CB', overall: 76, age: 29, value: 10000000, salary: 50000 },
-      { name: 'Lilian Brassier', position: 'CB', overall: 77, age: 24, value: 18000000, salary: 50000 },
-      { name: 'Bradley Locko', position: 'LB', overall: 75, age: 21, value: 10000000, salary: 40000 },
-      { name: 'Pierre Lees-Melou', position: 'CM', overall: 77, age: 30, value: 10000000, salary: 80000 },
-      { name: 'Hugo Magnetti', position: 'CDM', overall: 76, age: 25, value: 10000000, salary: 50000 },
-      { name: 'Mahdi Camara', position: 'CM', overall: 77, age: 26, value: 12000000, salary: 60000 },
-      { name: 'Romain Del Castillo', position: 'RW', overall: 76, age: 27, value: 10000000, salary: 60000 },
-      { name: 'Jérémy Le Douaron', position: 'LW', overall: 75, age: 25, value: 10000000, salary: 50000 },
-      { name: 'Martin Satriano', position: 'ST', overall: 76, age: 23, value: 15000000, salary: 50000 },
-      { name: 'Steve Mounié', position: 'ST', overall: 75, age: 29, value: 8000000, salary: 80000 },
-      { name: 'Jonas Lössl', position: 'GK', overall: 74, age: 34, value: 1000000, salary: 40000 },
-      { name: 'Achraf Dari', position: 'CB', overall: 75, age: 24, value: 10000000, salary: 40000 }
-    ]
-  },
-  {
-    id: 'reims',
-    name: 'Stade de Reims',
-    shortName: 'REI',
-    city: 'Reims',
-    stadium: 'Stade Auguste-Delaune',
-    stadiumCapacity: 21127,
-    budget: 35000000,
-    reputation: 70,
-    colors: { primary: '#FF0000', secondary: '#FFFFFF' },
-    players: [
-      { name: 'Yehvann Diouf', position: 'GK', overall: 77, age: 24, value: 12000000, salary: 40000 },
-      { name: 'Maxime Busi', position: 'RB', overall: 75, age: 24, value: 8000000, salary: 40000 },
-      { name: 'Emmanuel Agbadou', position: 'CB', overall: 77, age: 26, value: 15000000, salary: 50000 },
-      { name: 'Yunis Abdelhamid', position: 'CB', overall: 77, age: 36, value: 2000000, salary: 80000 },
-      { name: 'Thibault De Smet', position: 'LB', overall: 75, age: 25, value: 8000000, salary: 40000 },
-      { name: 'Marshall Munetsi', position: 'CDM', overall: 77, age: 27, value: 12000000, salary: 60000 },
-      { name: 'Azor Matusiwa', position: 'CM', overall: 76, age: 25, value: 12000000, salary: 50000 },
-      { name: 'Ito', position: 'CAM', overall: 77, age: 26, value: 15000000, salary: 60000 },
-      { name: 'Teddy Teuma', position: 'CM', overall: 76, age: 29, value: 10000000, salary: 60000 },
-      { name: 'Arbër Zeneli', position: 'LW', overall: 76, age: 28, value: 10000000, salary: 60000 },
-      { name: 'Folarin Balogun', position: 'ST', overall: 78, age: 22, value: 30000000, salary: 60000 },
-      { name: 'Junya Ito', position: 'RW', overall: 77, age: 31, value: 12000000, salary: 60000 },
-      { name: 'Patrick Pentz', position: 'GK', overall: 74, age: 26, value: 3000000, salary: 30000 },
-      { name: 'Andrew Gravillon', position: 'CB', overall: 75, age: 26, value: 8000000, salary: 40000 }
-    ]
-  },
-  {
-    id: 'le_havre',
-    name: 'Le Havre AC',
-    shortName: 'HAC',
-    city: 'Le Havre',
-    stadium: 'Stade Océane',
-    stadiumCapacity: 25178,
-    budget: 25000000,
-    reputation: 65,
-    colors: { primary: '#0066CC', secondary: '#FFFFFF' },
-    players: [
-      { name: 'Arthur Desmas', position: 'GK', overall: 74, age: 25, value: 5000000, salary: 30000 },
-      { name: 'Arouna Sangante', position: 'RB', overall: 74, age: 24, value: 5000000, salary: 30000 },
-      { name: 'Isaak Touré', position: 'CB', overall: 75, age: 20, value: 12000000, salary: 40000 },
-      { name: 'Étienne Youté Kinkoué', position: 'CB', overall: 73, age: 27, value: 5000000, salary: 40000 },
-      { name: 'Oussama Targhalline', position: 'LB', overall: 73, age: 25, value: 4000000, salary: 30000 },
-      { name: 'Yoann Salmier', position: 'CDM', overall: 74, age: 28, value: 5000000, salary: 40000 },
-      { name: 'Aimen Moueffek', position: 'CM', overall: 75, age: 22, value: 10000000, salary: 40000 },
-      { name: 'Christopher Opéri', position: 'CAM', overall: 73, age: 28, value: 4000000, salary: 40000 },
-      { name: 'Nabil Alioui', position: 'RW', overall: 74, age: 25, value: 6000000, salary: 40000 },
-      { name: 'Abdoulaye Touré', position: 'LW', overall: 74, age: 29, value: 5000000, salary: 50000 },
-      { name: 'André Ayew', position: 'ST', overall: 75, age: 34, value: 2000000, salary: 80000 },
-      { name: 'Josué Casimir', position: 'ST', overall: 73, age: 21, value: 5000000, salary: 30000 },
-      { name: 'Mathieu Gorgelin', position: 'GK', overall: 72, age: 33, value: 1000000, salary: 30000 },
-      { name: 'Gautier Music', position: 'CB', overall: 72, age: 23, value: 3000000, salary: 25000 }
-    ]
-  },
-  {
-    id: 'metz',
-    name: 'FC Metz',
-    shortName: 'FCM',
-    city: 'Metz',
-    stadium: 'Stade Saint-Symphorien',
-    stadiumCapacity: 30000,
-    budget: 25000000,
-    reputation: 65,
-    colors: { primary: '#8B0000', secondary: '#FFFFFF' },
-    players: [
-      { name: 'Alexandre Oukidja', position: 'GK', overall: 75, age: 35, value: 2000000, salary: 50000 },
-      { name: 'Ismael Traoré', position: 'RB', overall: 74, age: 37, value: 500000, salary: 50000 },
-      { name: 'Kiki Kouyaté', position: 'CB', overall: 76, age: 26, value: 10000000, salary: 40000 },
-      { name: 'Matthieu Udol', position: 'CB', overall: 75, age: 27, value: 8000000, salary: 40000 },
-      { name: 'Fali Candé', position: 'LB', overall: 75, age: 26, value: 8000000, salary: 40000 },
-      { name: 'Lamine Camara', position: 'CDM', overall: 76, age: 20, value: 15000000, salary: 40000 },
-      { name: 'Kevin N\'Doram', position: 'CM', overall: 74, age: 28, value: 5000000, salary: 50000 },
-      { name: 'Boubacar Traoré', position: 'CM', overall: 75, age: 23, value: 10000000, salary: 40000 },
-      { name: 'Ablie Jallow', position: 'RW', overall: 75, age: 25, value: 8000000, salary: 40000 },
-      { name: 'Matthieu Udol', position: 'LW', overall: 74, age: 27, value: 6000000, salary: 40000 },
-      { name: 'Georges Mikautadze', position: 'ST', overall: 76, age: 23, value: 15000000, salary: 50000 },
-      { name: 'Danijel Petković', position: 'GK', overall: 72, age: 31, value: 1000000, salary: 30000 },
-      { name: 'Habib Maïga', position: 'CB', overall: 74, age: 23, value: 5000000, salary: 30000 },
-      { name: 'Joseph N\'Duquidi', position: 'LB', overall: 73, age: 22, value: 4000000, salary: 25000 }
-    ]
-  },
-  {
-    id: 'lorient',
-    name: 'FC Lorient',
-    shortName: 'LOR',
-    city: 'Lorient',
-    stadium: 'Stade du Moustoir',
-    stadiumCapacity: 18500,
-    budget: 30000000,
-    reputation: 68,
-    colors: { primary: '#FF6600', secondary: '#000000' },
-    players: [
-      { name: 'Mvogo', position: 'GK', overall: 76, age: 29, value: 5000000, salary: 50000 },
-      { name: 'Igor Silva', position: 'RB', overall: 74, age: 26, value: 5000000, salary: 40000 },
-      { name: 'Julien Laporte', position: 'CB', overall: 76, age: 30, value: 8000000, salary: 50000 },
-      { name: 'Montassar Talbi', position: 'CB', overall: 76, age: 25, value: 10000000, salary: 50000 },
-      { name: 'Darlin Yongwa', position: 'LB', overall: 74, age: 23, value: 5000000, salary: 30000 },
-      { name: 'Bonke Innocent', position: 'CDM', overall: 75, age: 27, value: 8000000, salary: 50000 },
-      { name: 'Laurent Abergel', position: 'CM', overall: 76, age: 31, value: 5000000, salary: 60000 },
-      { name: 'Romain Faivre', position: 'CAM', overall: 77, age: 25, value: 15000000, salary: 60000 },
-      { name: 'Tévenn Raouf', position: 'RW', overall: 74, age: 22, value: 5000000, salary: 30000 },
-      { name: 'Darlin Yongwa', position: 'LW', overall: 74, age: 23, value: 5000000, salary: 30000 },
-      { name: 'Benjamin Moukandjo', position: 'ST', overall: 74, age: 35, value: 1000000, salary: 60000 },
-      { name: 'Ibrahima Koné', position: 'ST', overall: 76, age: 24, value: 12000000, salary: 50000 },
-      { name: 'Matthieu Dreyer', position: 'GK', overall: 73, age: 34, value: 1000000, salary: 40000 },
-      { name: 'Vincent Le Goff', position: 'LB', overall: 74, age: 34, value: 2000000, salary: 50000 }
-    ]
-  },
-  {
-    id: 'clermont',
-    name: 'Clermont Foot 63',
-    shortName: 'CF63',
-    city: 'Clermont-Ferrand',
-    stadium: 'Stade Gabriel Montpied',
-    stadiumCapacity: 12000,
-    budget: 20000000,
-    reputation: 62,
-    colors: { primary: '#D81E32', secondary: '#012750' },
-    players: [
-      { name: 'Mory Diaw', position: 'GK', overall: 75, age: 30, value: 5000000, salary: 40000 },
-      { name: 'Alidu Seidu', position: 'RB', overall: 75, age: 23, value: 10000000, salary: 40000 },
-      { name: 'Mateusz Wieteska', position: 'CB', overall: 76, age: 27, value: 10000000, salary: 50000 },
-      { name: 'Neto Borges', position: 'CB', overall: 75, age: 27, value: 8000000, salary: 40000 },
-      { name: 'Saïf-Eddine Khaoui', position: 'LB', overall: 74, age: 28, value: 5000000, salary: 50000 },
-      { name: 'Maxime Gonalons', position: 'CDM', overall: 75, age: 35, value: 2000000, salary: 80000 },
-      { name: 'Johan Gastien', position: 'CM', overall: 75, age: 35, value: 2000000, salary: 60000 },
-      { name: 'Muhammed Cham', position: 'CAM', overall: 74, age: 24, value: 5000000, salary: 30000 },
-      { name: 'Jérémy Doku', position: 'RW', overall: 82, age: 22, value: 65000000, salary: 50000 },
-      { name: 'Elbasan Rashani', position: 'LW', overall: 75, age: 30, value: 5000000, salary: 50000 },
-      { name: 'Komnen Andrić', position: 'ST', overall: 75, age: 26, value: 8000000, salary: 50000 },
-      { name: 'Andréa Music', position: 'GK', overall: 71, age: 25, value: 2000000, salary: 25000 },
-      { name: 'Florent Ogier', position: 'CB', overall: 74, age: 34, value: 2000000, salary: 50000 }
-    ]
-  }
-];
-
-// Bundesliga 2024-2025
-export const BUNDESLIGA_TEAMS = [
-  {
-    id: 'bayern_munich',
-    name: 'Bayern München',
-    shortName: 'FCB',
-    city: 'Munich',
-    stadium: 'Allianz Arena',
-    stadiumCapacity: 75024,
-    budget: 280000000,
-    reputation: 94,
-    colors: { primary: '#DC052D', secondary: '#FFFFFF' },
-    players: [
-      { name: 'Manuel Neuer', position: 'GK', overall: 87, age: 38, value: 12000000, salary: 400000 },
-      { name: 'Joshua Kimmich', position: 'RB', overall: 88, age: 29, value: 80000000, salary: 350000 },
-      { name: 'Dayot Upamecano', position: 'CB', overall: 83, age: 25, value: 55000000, salary: 200000 },
-      { name: 'Min-jae Kim', position: 'CB', overall: 86, age: 27, value: 70000000, salary: 250000 },
-      { name: 'Alphonso Davies', position: 'LB', overall: 85, age: 23, value: 70000000, salary: 200000 },
-      { name: 'Leon Goretzka', position: 'CM', overall: 84, age: 29, value: 50000000, salary: 300000 },
-      { name: 'Jamal Musiala', position: 'CAM', overall: 87, age: 21, value: 130000000, salary: 250000 },
-      { name: 'Konrad Laimer', position: 'CM', overall: 81, age: 27, value: 35000000, salary: 150000 },
-      { name: 'Leroy Sané', position: 'RW', overall: 85, age: 28, value: 60000000, salary: 300000 },
-      { name: 'Kingsley Coman', position: 'LW', overall: 84, age: 28, value: 50000000, salary: 250000 },
-      { name: 'Serge Gnabry', position: 'RW', overall: 83, age: 29, value: 45000000, salary: 280000 },
-      { name: 'Harry Kane', position: 'ST', overall: 91, age: 31, value: 100000000, salary: 500000 },
-      { name: 'Thomas Müller', position: 'ST', overall: 83, age: 34, value: 15000000, salary: 350000 },
-      { name: 'Sven Ulreich', position: 'GK', overall: 76, age: 35, value: 2000000, salary: 80000 },
-      { name: 'Matthijs de Ligt', position: 'CB', overall: 83, age: 24, value: 60000000, salary: 250000 },
-      { name: 'Eric Dier', position: 'CB', overall: 78, age: 30, value: 12000000, salary: 150000 },
-      { name: 'Raphael Guerreiro', position: 'LB', overall: 82, age: 30, value: 25000000, salary: 180000 }
-    ]
-  },
-  {
-    id: 'bayer_leverkusen',
-    name: 'Bayer 04 Leverkusen',
-    shortName: 'B04',
-    city: 'Leverkusen',
-    stadium: 'BayArena',
-    stadiumCapacity: 30210,
-    budget: 150000000,
-    reputation: 86,
-    colors: { primary: '#E32221', secondary: '#000000' },
-    players: [
-      { name: 'Lukáš Hrádecký', position: 'GK', overall: 82, age: 34, value: 10000000, salary: 100000 },
-      { name: 'Jeremie Frimpong', position: 'RB', overall: 83, age: 23, value: 55000000, salary: 150000 },
-      { name: 'Jonathan Tah', position: 'CB', overall: 84, age: 28, value: 50000000, salary: 180000 },
-      { name: 'Edmond Tapsoba', position: 'CB', overall: 82, age: 25, value: 40000000, salary: 120000 },
-      { name: 'Alejandro Grimaldo', position: 'LB', overall: 84, age: 28, value: 45000000, salary: 150000 },
-      { name: 'Granit Xhaka', position: 'CM', overall: 84, age: 31, value: 30000000, salary: 200000 },
-      { name: 'Exequiel Palacios', position: 'CM', overall: 81, age: 25, value: 35000000, salary: 120000 },
-      { name: 'Florian Wirtz', position: 'CAM', overall: 86, age: 21, value: 130000000, salary: 180000 },
-      { name: 'Jonas Hofmann', position: 'RW', overall: 82, age: 31, value: 25000000, salary: 150000 },
-      { name: 'Moussa Diaby', position: 'LW', overall: 82, age: 25, value: 55000000, salary: 180000 },
-      { name: 'Victor Boniface', position: 'ST', overall: 81, age: 23, value: 50000000, salary: 120000 },
-      { name: 'Patrik Schick', position: 'ST', overall: 81, age: 28, value: 30000000, salary: 150000 },
-      { name: 'Matěj Kovář', position: 'GK', overall: 76, age: 24, value: 8000000, salary: 40000 },
-      { name: 'Odilon Kossounou', position: 'CB', overall: 79, age: 23, value: 25000000, salary: 80000 },
-      { name: 'Piero Hincapié', position: 'CB', overall: 80, age: 22, value: 35000000, salary: 80000 },
-      { name: 'Robert Andrich', position: 'CDM', overall: 81, age: 29, value: 28000000, salary: 100000 }
-    ]
-  },
-  {
-    id: 'borussia_dortmund',
-    name: 'Borussia Dortmund',
-    shortName: 'BVB',
-    city: 'Dortmund',
-    stadium: 'Signal Iduna Park',
-    stadiumCapacity: 81365,
-    budget: 180000000,
-    reputation: 88,
-    colors: { primary: '#FDE100', secondary: '#000000' },
-    players: [
-      { name: 'Gregor Kobel', position: 'GK', overall: 84, age: 26, value: 40000000, salary: 150000 },
-      { name: 'Julian Ryerson', position: 'RB', overall: 79, age: 26, value: 18000000, salary: 80000 },
-      { name: 'Nico Schlotterbeck', position: 'CB', overall: 82, age: 24, value: 45000000, salary: 150000 },
-      { name: 'Mats Hummels', position: 'CB', overall: 82, age: 35, value: 8000000, salary: 200000 },
-      { name: 'Ramy Bensebaini', position: 'LB', overall: 80, age: 29, value: 22000000, salary: 120000 },
-      { name: 'Emre Can', position: 'CDM', overall: 80, age: 30, value: 18000000, salary: 180000 },
-      { name: 'Marcel Sabitzer', position: 'CM', overall: 81, age: 30, value: 25000000, salary: 180000 },
-      { name: 'Julian Brandt', position: 'CAM', overall: 83, age: 28, value: 45000000, salary: 200000 },
-      { name: 'Marco Reus', position: 'CAM', overall: 82, age: 35, value: 10000000, salary: 250000 },
-      { name: 'Karim Adeyemi', position: 'LW', overall: 80, age: 22, value: 45000000, salary: 100000 },
-      { name: 'Donyell Malen', position: 'RW', overall: 81, age: 25, value: 40000000, salary: 150000 },
-      { name: 'Niclas Füllkrug', position: 'ST', overall: 82, age: 31, value: 30000000, salary: 180000 },
-      { name: 'Sébastien Haller', position: 'ST', overall: 79, age: 29, value: 18000000, salary: 180000 },
-      { name: 'Alexander Meyer', position: 'GK', overall: 76, age: 32, value: 3000000, salary: 50000 },
-      { name: 'Niklas Süle', position: 'CB', overall: 81, age: 28, value: 28000000, salary: 180000 },
-      { name: 'Ian Maatsen', position: 'LB', overall: 79, age: 22, value: 30000000, salary: 80000 },
-      { name: 'Felix Nmecha', position: 'CM', overall: 78, age: 24, value: 25000000, salary: 80000 }
-    ]
-  },
-  {
-    id: 'rb_leipzig',
-    name: 'RB Leipzig',
-    shortName: 'RBL',
-    city: 'Leipzig',
-    stadium: 'Red Bull Arena',
-    stadiumCapacity: 47069,
-    budget: 150000000,
-    reputation: 85,
-    colors: { primary: '#DD0741', secondary: '#FFFFFF' },
-    players: [
-      { name: 'Péter Gulácsi', position: 'GK', overall: 83, age: 34, value: 12000000, salary: 120000 },
-      { name: 'Benjamin Henrichs', position: 'RB', overall: 79, age: 27, value: 20000000, salary: 100000 },
-      { name: 'Willi Orbán', position: 'CB', overall: 81, age: 31, value: 18000000, salary: 120000 },
-      { name: 'Castello Lukeba', position: 'CB', overall: 79, age: 21, value: 35000000, salary: 80000 },
-      { name: 'David Raum', position: 'LB', overall: 81, age: 26, value: 30000000, salary: 120000 },
-      { name: 'Xavi Simons', position: 'CAM', overall: 82, age: 21, value: 80000000, salary: 150000 },
-      { name: 'Dani Olmo', position: 'CAM', overall: 85, age: 26, value: 70000000, salary: 200000 },
-      { name: 'Kevin Kampl', position: 'CM', overall: 79, age: 33, value: 8000000, salary: 150000 },
-      { name: 'Amadou Haidara', position: 'CM', overall: 79, age: 26, value: 28000000, salary: 100000 },
-      { name: 'Lois Openda', position: 'ST', overall: 82, age: 24, value: 60000000, salary: 150000 },
-      { name: 'Benjamin Šeško', position: 'ST', overall: 79, age: 21, value: 50000000, salary: 100000 },
-      { name: 'Christoph Baumgartner', position: 'CAM', overall: 79, age: 24, value: 28000000, salary: 100000 },
-      { name: 'Janis Blaswich', position: 'GK', overall: 76, age: 33, value: 3000000, salary: 50000 },
-      { name: 'Mohamed Simakan', position: 'CB', overall: 80, age: 24, value: 35000000, salary: 100000 },
-      { name: 'Lukas Klostermann', position: 'RB', overall: 79, age: 28, value: 18000000, salary: 100000 },
-      { name: 'Nicolas Seiwald', position: 'CDM', overall: 79, age: 23, value: 30000000, salary: 80000 }
-    ]
-  },
-  {
-    id: 'stuttgart',
-    name: 'VfB Stuttgart',
-    shortName: 'VFB',
-    city: 'Stuttgart',
-    stadium: 'MHPArena',
-    stadiumCapacity: 60449,
-    budget: 100000000,
-    reputation: 80,
-    colors: { primary: '#FFFFFF', secondary: '#E32219' },
-    players: generateEuropeanPlayers('VfB Stuttgart', 80, 'german')
-  },
-  { id: 'frankfurt', name: 'Eintracht Frankfurt', shortName: 'SGE', city: 'Frankfurt', budget: 100000000, reputation: 80, colors: { primary: '#E1000F', secondary: '#000000' }, players: generateEuropeanPlayers('Eintracht Frankfurt', 80, 'german') },
-  { id: 'freiburg', name: 'SC Freiburg', shortName: 'SCF', city: 'Freiburg', budget: 60000000, reputation: 76, colors: { primary: '#000000', secondary: '#FFFFFF' }, players: generateEuropeanPlayers('SC Freiburg', 77, 'german') },
-  { id: 'hoffenheim', name: 'TSG Hoffenheim', shortName: 'TSG', city: 'Sinsheim', budget: 70000000, reputation: 76, colors: { primary: '#1C63B7', secondary: '#FFFFFF' }, players: generateEuropeanPlayers('TSG Hoffenheim', 77, 'german') },
-  { id: 'wolfsburg', name: 'VfL Wolfsburg', shortName: 'WOB', city: 'Wolfsburg', budget: 80000000, reputation: 76, colors: { primary: '#65B32E', secondary: '#FFFFFF' }, players: generateEuropeanPlayers('VfL Wolfsburg', 77, 'german') },
-  { id: 'gladbach', name: 'Borussia Mönchengladbach', shortName: 'BMG', city: 'Mönchengladbach', budget: 70000000, reputation: 78, colors: { primary: '#000000', secondary: '#FFFFFF' }, players: generateEuropeanPlayers('Gladbach', 78, 'german') },
-  { id: 'werder_bremen', name: 'Werder Bremen', shortName: 'SVW', city: 'Bremen', budget: 50000000, reputation: 74, colors: { primary: '#1D9053', secondary: '#FFFFFF' }, players: generateEuropeanPlayers('Werder Bremen', 76, 'german') },
-  { id: 'union_berlin', name: 'Union Berlin', shortName: 'FCU', city: 'Berlin', budget: 50000000, reputation: 74, colors: { primary: '#EB1923', secondary: '#FFFFFF' }, players: generateEuropeanPlayers('Union Berlin', 76, 'german') },
-  { id: 'augsburg', name: 'FC Augsburg', shortName: 'FCA', city: 'Augsburg', budget: 40000000, reputation: 70, colors: { primary: '#BA3733', secondary: '#006633' }, players: generateEuropeanPlayers('FC Augsburg', 74, 'german') },
-  { id: 'mainz', name: 'Mainz 05', shortName: 'M05', city: 'Mainz', budget: 45000000, reputation: 72, colors: { primary: '#C3141E', secondary: '#FFFFFF' }, players: generateEuropeanPlayers('Mainz 05', 75, 'german') },
-  { id: 'koln', name: '1. FC Köln', shortName: 'KOE', city: 'Cologne', budget: 50000000, reputation: 72, colors: { primary: '#ED1C24', secondary: '#FFFFFF' }, players: generateEuropeanPlayers('1. FC Köln', 74, 'german') },
-  { id: 'bochum', name: 'VfL Bochum', shortName: 'BOC', city: 'Bochum', budget: 30000000, reputation: 66, colors: { primary: '#005BA9', secondary: '#FFFFFF' }, players: generateEuropeanPlayers('VfL Bochum', 72, 'german') },
-  { id: 'heidenheim', name: '1. FC Heidenheim', shortName: 'FCH', city: 'Heidenheim', budget: 25000000, reputation: 62, colors: { primary: '#DC0032', secondary: '#002D62' }, players: generateEuropeanPlayers('FC Heidenheim', 70, 'german') },
-  { id: 'darmstadt', name: 'SV Darmstadt 98', shortName: 'D98', city: 'Darmstadt', budget: 20000000, reputation: 60, colors: { primary: '#004B93', secondary: '#FFFFFF' }, players: generateEuropeanPlayers('Darmstadt 98', 68, 'german') }
-];
-
-// Serie A 2024-2025
-export const SERIE_A_TEAMS = [
-  {
-    id: 'inter',
-    name: 'Inter Milan',
-    shortName: 'INT',
-    city: 'Milan',
-    stadium: 'San Siro',
-    stadiumCapacity: 75923,
-    budget: 200000000,
-    reputation: 90,
-    colors: { primary: '#010E80', secondary: '#000000' },
-    players: [
-      { name: 'Yann Sommer', position: 'GK', overall: 85, age: 35, value: 8000000, salary: 150000 },
-      { name: 'Denzel Dumfries', position: 'RB', overall: 82, age: 28, value: 35000000, salary: 150000 },
-      { name: 'Alessandro Bastoni', position: 'CB', overall: 86, age: 25, value: 70000000, salary: 200000 },
-      { name: 'Francesco Acerbi', position: 'CB', overall: 82, age: 36, value: 5000000, salary: 150000 },
-      { name: 'Federico Dimarco', position: 'LB', overall: 84, age: 26, value: 50000000, salary: 180000 },
-      { name: 'Nicolò Barella', position: 'CM', overall: 88, age: 27, value: 90000000, salary: 300000 },
-      { name: 'Hakan Çalhanoğlu', position: 'CM', overall: 85, age: 30, value: 45000000, salary: 250000 },
-      { name: 'Henrikh Mkhitaryan', position: 'CM', overall: 81, age: 35, value: 8000000, salary: 200000 },
-      { name: 'Marcus Thuram', position: 'LW', overall: 84, age: 27, value: 65000000, salary: 200000 },
-      { name: 'Lautaro Martínez', position: 'ST', overall: 88, age: 27, value: 110000000, salary: 350000 },
-      { name: 'Marko Arnautović', position: 'ST', overall: 78, age: 35, value: 5000000, salary: 150000 },
-      { name: 'Josep Martínez', position: 'GK', overall: 78, age: 25, value: 15000000, salary: 60000 },
-      { name: 'Benjamin Pavard', position: 'CB', overall: 82, age: 28, value: 35000000, salary: 180000 },
-      { name: 'Stefan de Vrij', position: 'CB', overall: 81, age: 32, value: 12000000, salary: 180000 },
-      { name: 'Carlos Augusto', position: 'LB', overall: 79, age: 25, value: 22000000, salary: 80000 },
-      { name: 'Davide Frattesi', position: 'CM', overall: 80, age: 24, value: 35000000, salary: 120000 }
-    ]
-  },
-  {
-    id: 'ac_milan',
-    name: 'AC Milan',
-    shortName: 'MIL',
-    city: 'Milan',
-    stadium: 'San Siro',
-    stadiumCapacity: 75923,
-    budget: 180000000,
-    reputation: 88,
-    colors: { primary: '#FB090B', secondary: '#000000' },
-    players: [
-      { name: 'Mike Maignan', position: 'GK', overall: 87, age: 29, value: 55000000, salary: 200000 },
-      { name: 'Davide Calabria', position: 'RB', overall: 79, age: 27, value: 18000000, salary: 120000 },
-      { name: 'Fikayo Tomori', position: 'CB', overall: 83, age: 26, value: 50000000, salary: 180000 },
-      { name: 'Malick Thiaw', position: 'CB', overall: 79, age: 22, value: 30000000, salary: 80000 },
-      { name: 'Theo Hernández', position: 'LB', overall: 87, age: 26, value: 75000000, salary: 250000 },
-      { name: 'Tijjani Reijnders', position: 'CM', overall: 81, age: 26, value: 40000000, salary: 120000 },
-      { name: 'Ismaël Bennacer', position: 'CM', overall: 82, age: 26, value: 40000000, salary: 180000 },
-      { name: 'Christian Pulisic', position: 'RW', overall: 82, age: 25, value: 45000000, salary: 180000 },
-      { name: 'Rafael Leão', position: 'LW', overall: 86, age: 25, value: 100000000, salary: 280000 },
-      { name: 'Samuel Chukwueze', position: 'RW', overall: 80, age: 25, value: 35000000, salary: 150000 },
-      { name: 'Olivier Giroud', position: 'ST', overall: 81, age: 37, value: 5000000, salary: 200000 },
-      { name: 'Noah Okafor', position: 'ST', overall: 78, age: 24, value: 28000000, salary: 100000 },
-      { name: 'Marco Sportiello', position: 'GK', overall: 76, age: 32, value: 3000000, salary: 50000 },
-      { name: 'Pierre Kalulu', position: 'CB', overall: 78, age: 24, value: 22000000, salary: 80000 },
-      { name: 'Yunus Musah', position: 'CM', overall: 78, age: 21, value: 25000000, salary: 80000 },
-      { name: 'Ruben Loftus-Cheek', position: 'CM', overall: 80, age: 28, value: 25000000, salary: 150000 }
-    ]
-  },
-  {
-    id: 'juventus',
-    name: 'Juventus',
-    shortName: 'JUV',
-    city: 'Turin',
-    stadium: 'Allianz Stadium',
-    stadiumCapacity: 41507,
-    budget: 180000000,
-    reputation: 88,
-    colors: { primary: '#000000', secondary: '#FFFFFF' },
-    players: [
-      { name: 'Wojciech Szczęsny', position: 'GK', overall: 84, age: 34, value: 12000000, salary: 250000 },
-      { name: 'Danilo', position: 'RB', overall: 79, age: 32, value: 8000000, salary: 200000 },
-      { name: 'Gleison Bremer', position: 'CB', overall: 84, age: 27, value: 55000000, salary: 200000 },
-      { name: 'Federico Gatti', position: 'CB', overall: 79, age: 25, value: 25000000, salary: 100000 },
-      { name: 'Andrea Cambiaso', position: 'LB', overall: 80, age: 24, value: 35000000, salary: 100000 },
-      { name: 'Manuel Locatelli', position: 'CM', overall: 81, age: 26, value: 30000000, salary: 180000 },
-      { name: 'Adrien Rabiot', position: 'CM', overall: 82, age: 29, value: 30000000, salary: 280000 },
-      { name: 'Weston McKennie', position: 'CM', overall: 79, age: 25, value: 25000000, salary: 150000 },
-      { name: 'Federico Chiesa', position: 'RW', overall: 83, age: 26, value: 50000000, salary: 250000 },
-      { name: 'Kenan Yıldız', position: 'LW', overall: 76, age: 19, value: 30000000, salary: 60000 },
-      { name: 'Dušan Vlahović', position: 'ST', overall: 84, age: 24, value: 80000000, salary: 300000 },
-      { name: 'Arkadiusz Milik', position: 'ST', overall: 79, age: 30, value: 15000000, salary: 180000 },
-      { name: 'Mattia Perin', position: 'GK', overall: 78, age: 31, value: 5000000, salary: 80000 },
-      { name: 'Alex Sandro', position: 'LB', overall: 78, age: 33, value: 5000000, salary: 200000 },
-      { name: 'Nicolò Fagioli', position: 'CM', overall: 78, age: 23, value: 25000000, salary: 80000 },
-      { name: 'Samuel Iling-Junior', position: 'LW', overall: 75, age: 20, value: 15000000, salary: 40000 }
-    ]
-  },
-  {
-    id: 'napoli',
-    name: 'Napoli',
-    shortName: 'NAP',
-    city: 'Naples',
-    stadium: 'Stadio Diego Armando Maradona',
-    stadiumCapacity: 54726,
-    budget: 150000000,
-    reputation: 86,
-    colors: { primary: '#12A0D7', secondary: '#FFFFFF' },
-    players: [
-      { name: 'Alex Meret', position: 'GK', overall: 81, age: 27, value: 22000000, salary: 100000 },
-      { name: 'Giovanni Di Lorenzo', position: 'RB', overall: 84, age: 30, value: 40000000, salary: 180000 },
-      { name: 'Amir Rrahmani', position: 'CB', overall: 81, age: 30, value: 25000000, salary: 150000 },
-      { name: 'Kim Min-jae', position: 'CB', overall: 86, age: 27, value: 70000000, salary: 200000 },
-      { name: 'Mário Rui', position: 'LB', overall: 79, age: 33, value: 8000000, salary: 150000 },
-      { name: 'Frank Zambo Anguissa', position: 'CM', overall: 83, age: 28, value: 40000000, salary: 180000 },
-      { name: 'Stanislav Lobotka', position: 'CDM', overall: 84, age: 29, value: 45000000, salary: 150000 },
-      { name: 'Piotr Zieliński', position: 'CM', overall: 82, age: 30, value: 35000000, salary: 200000 },
-      { name: 'Khvicha Kvaratskhelia', position: 'LW', overall: 86, age: 23, value: 100000000, salary: 200000 },
-      { name: 'Matteo Politano', position: 'RW', overall: 80, age: 30, value: 20000000, salary: 150000 },
-      { name: 'Victor Osimhen', position: 'ST', overall: 88, age: 25, value: 130000000, salary: 300000 },
-      { name: 'Giacomo Raspadori', position: 'ST', overall: 80, age: 24, value: 35000000, salary: 150000 },
-      { name: 'Pierluigi Gollini', position: 'GK', overall: 76, age: 29, value: 5000000, salary: 60000 },
-      { name: 'Juan Jesus', position: 'CB', overall: 77, age: 32, value: 5000000, salary: 100000 },
-      { name: 'Mathías Olivera', position: 'LB', overall: 79, age: 26, value: 22000000, salary: 80000 },
-      { name: 'Jesper Lindstrøm', position: 'CAM', overall: 78, age: 24, value: 25000000, salary: 100000 }
-    ]
-  },
-  {
-    id: 'roma',
-    name: 'AS Roma',
-    shortName: 'ROM',
-    city: 'Rome',
-    stadium: 'Stadio Olimpico',
-    stadiumCapacity: 72698,
-    budget: 120000000,
-    reputation: 84,
-    colors: { primary: '#8E1F2F', secondary: '#F0BC42' },
-    players: [
-      { name: 'Mile Svilar', position: 'GK', overall: 80, age: 24, value: 25000000, salary: 80000 },
-      { name: 'Rick Karsdorp', position: 'RB', overall: 77, age: 29, value: 12000000, salary: 100000 },
-      { name: 'Gianluca Mancini', position: 'CB', overall: 81, age: 27, value: 30000000, salary: 150000 },
-      { name: 'Chris Smalling', position: 'CB', overall: 79, age: 34, value: 5000000, salary: 150000 },
-      { name: 'Leonardo Spinazzola', position: 'LB', overall: 79, age: 31, value: 12000000, salary: 150000 },
-      { name: 'Renato Sanches', position: 'CM', overall: 79, age: 26, value: 20000000, salary: 180000 },
-      { name: 'Bryan Cristante', position: 'CDM', overall: 80, age: 29, value: 25000000, salary: 150000 },
-      { name: 'Lorenzo Pellegrini', position: 'CAM', overall: 83, age: 27, value: 50000000, salary: 200000 },
-      { name: 'Paulo Dybala', position: 'CAM', overall: 85, age: 30, value: 35000000, salary: 350000 },
-      { name: 'Stephan El Shaarawy', position: 'LW', overall: 78, age: 31, value: 10000000, salary: 150000 },
-      { name: 'Romelu Lukaku', position: 'ST', overall: 82, age: 31, value: 28000000, salary: 280000 },
-      { name: 'Tammy Abraham', position: 'ST', overall: 80, age: 26, value: 35000000, salary: 180000 },
-      { name: 'Rui Patrício', position: 'GK', overall: 78, age: 36, value: 3000000, salary: 100000 },
-      { name: 'Evan Ndicka', position: 'CB', overall: 79, age: 24, value: 28000000, salary: 80000 },
-      { name: 'Leandro Paredes', position: 'CM', overall: 80, age: 30, value: 18000000, salary: 180000 }
-    ]
-  },
-  { id: 'atalanta', name: 'Atalanta', shortName: 'ATA', city: 'Bergamo', budget: 100000000, reputation: 82, colors: { primary: '#1B4387', secondary: '#000000' }, players: generateEuropeanPlayers('Atalanta', 82, 'italian') },
-  { id: 'lazio', name: 'Lazio', shortName: 'LAZ', city: 'Rome', budget: 90000000, reputation: 80, colors: { primary: '#87D8F7', secondary: '#FFFFFF' }, players: generateEuropeanPlayers('Lazio', 80, 'italian') },
-  { id: 'fiorentina', name: 'Fiorentina', shortName: 'FIO', city: 'Florence', budget: 80000000, reputation: 78, colors: { primary: '#482E92', secondary: '#FFFFFF' }, players: generateEuropeanPlayers('Fiorentina', 79, 'italian') },
-  { id: 'bologna', name: 'Bologna', shortName: 'BOL', city: 'Bologna', budget: 60000000, reputation: 76, colors: { primary: '#A71930', secondary: '#1A3263' }, players: generateEuropeanPlayers('Bologna', 78, 'italian') },
-  { id: 'torino', name: 'Torino', shortName: 'TOR', city: 'Turin', budget: 50000000, reputation: 74, colors: { primary: '#8B0000', secondary: '#FFFFFF' }, players: generateEuropeanPlayers('Torino', 77, 'italian') },
-  { id: 'monza', name: 'AC Monza', shortName: 'MON', city: 'Monza', budget: 45000000, reputation: 70, colors: { primary: '#FF0000', secondary: '#FFFFFF' }, players: generateEuropeanPlayers('AC Monza', 74, 'italian') },
-  { id: 'udinese', name: 'Udinese', shortName: 'UDI', city: 'Udine', budget: 40000000, reputation: 70, colors: { primary: '#000000', secondary: '#FFFFFF' }, players: generateEuropeanPlayers('Udinese', 74, 'italian') },
-  { id: 'sassuolo', name: 'Sassuolo', shortName: 'SAS', city: 'Sassuolo', budget: 45000000, reputation: 72, colors: { primary: '#00A94E', secondary: '#000000' }, players: generateEuropeanPlayers('Sassuolo', 75, 'italian') },
-  { id: 'empoli', name: 'Empoli', shortName: 'EMP', city: 'Empoli', budget: 30000000, reputation: 66, colors: { primary: '#00529F', secondary: '#FFFFFF' }, players: generateEuropeanPlayers('Empoli', 72, 'italian') },
-  { id: 'genoa', name: 'Genoa', shortName: 'GEN', city: 'Genoa', budget: 35000000, reputation: 68, colors: { primary: '#A71930', secondary: '#091F5E' }, players: generateEuropeanPlayers('Genoa', 73, 'italian') },
-  { id: 'lecce', name: 'Lecce', shortName: 'LEC', city: 'Lecce', budget: 25000000, reputation: 64, colors: { primary: '#FFFF00', secondary: '#FF0000' }, players: generateEuropeanPlayers('Lecce', 71, 'italian') },
-  { id: 'cagliari', name: 'Cagliari', shortName: 'CAG', city: 'Cagliari', budget: 30000000, reputation: 66, colors: { primary: '#A71930', secondary: '#001A70' }, players: generateEuropeanPlayers('Cagliari', 72, 'italian') },
-  { id: 'verona', name: 'Hellas Verona', shortName: 'VER', city: 'Verona', budget: 30000000, reputation: 66, colors: { primary: '#002F6C', secondary: '#FFCC00' }, players: generateEuropeanPlayers('Hellas Verona', 72, 'italian') },
-  { id: 'frosinone', name: 'Frosinone', shortName: 'FRO', city: 'Frosinone', budget: 20000000, reputation: 60, colors: { primary: '#FFFF00', secondary: '#003DA5' }, players: generateEuropeanPlayers('Frosinone', 69, 'italian') },
-  { id: 'salernitana', name: 'Salernitana', shortName: 'SAL', city: 'Salerno', budget: 25000000, reputation: 62, colors: { primary: '#6B0012', secondary: '#FFFFFF' }, players: generateEuropeanPlayers('Salernitana', 70, 'italian') }
-];
-
-// Eredivisie 2024-2025
-export const EREDIVISIE_TEAMS = [
-  {
-    id: 'ajax',
-    name: 'Ajax',
-    shortName: 'AJA',
-    city: 'Amsterdam',
-    stadium: 'Johan Cruyff Arena',
-    stadiumCapacity: 55500,
-    budget: 120000000,
-    reputation: 84,
-    colors: { primary: '#FFFFFF', secondary: '#D2122E' },
-    players: [
-      { name: 'Remko Pasveer', position: 'GK', overall: 78, age: 40, value: 1000000, salary: 80000 },
-      { name: 'Devyne Rensch', position: 'RB', overall: 76, age: 21, value: 18000000, salary: 50000 },
-      { name: 'Josip Šutalo', position: 'CB', overall: 78, age: 24, value: 25000000, salary: 80000 },
-      { name: 'Ahmetcan Kaplan', position: 'CB', overall: 75, age: 21, value: 12000000, salary: 40000 },
-      { name: 'Owen Wijndal', position: 'LB', overall: 77, age: 24, value: 15000000, salary: 60000 },
-      { name: 'Jordan Henderson', position: 'CM', overall: 82, age: 34, value: 10000000, salary: 200000 },
-      { name: 'Kenneth Taylor', position: 'CM', overall: 77, age: 22, value: 22000000, salary: 60000 },
-      { name: 'Steven Berghuis', position: 'CAM', overall: 80, age: 32, value: 12000000, salary: 100000 },
-      { name: 'Steven Bergwijn', position: 'LW', overall: 80, age: 26, value: 30000000, salary: 150000 },
-      { name: 'Mohammed Kudus', position: 'RW', overall: 82, age: 24, value: 60000000, salary: 80000 },
-      { name: 'Brian Brobbey', position: 'ST', overall: 79, age: 22, value: 35000000, salary: 80000 },
-      { name: 'Chuba Akpom', position: 'ST', overall: 77, age: 28, value: 15000000, salary: 100000 },
-      { name: 'Jay Gorter', position: 'GK', overall: 73, age: 23, value: 5000000, salary: 30000 },
-      { name: 'Anton Gaaei', position: 'RB', overall: 74, age: 21, value: 10000000, salary: 30000 },
-      { name: 'Jakov Medić', position: 'CB', overall: 75, age: 25, value: 10000000, salary: 50000 }
-    ]
-  },
-  {
-    id: 'psv',
-    name: 'PSV Eindhoven',
-    shortName: 'PSV',
-    city: 'Eindhoven',
-    stadium: 'Philips Stadion',
-    stadiumCapacity: 35000,
-    budget: 100000000,
-    reputation: 82,
-    colors: { primary: '#ED1C24', secondary: '#FFFFFF' },
-    players: [
-      { name: 'Walter Benítez', position: 'GK', overall: 80, age: 31, value: 12000000, salary: 80000 },
-      { name: 'Jordan Teze', position: 'RB', overall: 78, age: 24, value: 18000000, salary: 60000 },
-      { name: 'André Ramalho', position: 'CB', overall: 78, age: 32, value: 8000000, salary: 80000 },
-      { name: 'Olivier Boscagli', position: 'CB', overall: 79, age: 26, value: 22000000, salary: 80000 },
-      { name: 'Philipp Max', position: 'LB', overall: 78, age: 30, value: 12000000, salary: 80000 },
-      { name: 'Joey Veerman', position: 'CM', overall: 80, age: 25, value: 30000000, salary: 100000 },
-      { name: 'Guus Til', position: 'CM', overall: 78, age: 26, value: 18000000, salary: 80000 },
-      { name: 'Hirving Lozano', position: 'RW', overall: 80, age: 28, value: 25000000, salary: 150000 },
-      { name: 'Cody Gakpo', position: 'LW', overall: 82, age: 25, value: 55000000, salary: 80000 },
-      { name: 'Xavi Simons', position: 'CAM', overall: 82, age: 21, value: 80000000, salary: 80000 },
-      { name: 'Luuk de Jong', position: 'ST', overall: 78, age: 33, value: 5000000, salary: 120000 },
-      { name: 'Ricardo Pepi', position: 'ST', overall: 76, age: 21, value: 15000000, salary: 50000 },
-      { name: 'Boy Waterman', position: 'GK', overall: 72, age: 39, value: 500000, salary: 30000 },
-      { name: 'Mauro Júnior', position: 'LB', overall: 76, age: 25, value: 10000000, salary: 50000 },
-      { name: 'Ismael Saibari', position: 'CAM', overall: 77, age: 23, value: 18000000, salary: 50000 }
-    ]
-  },
-  {
-    id: 'feyenoord',
-    name: 'Feyenoord',
-    shortName: 'FEY',
-    city: 'Rotterdam',
-    stadium: 'De Kuip',
-    stadiumCapacity: 47500,
-    budget: 80000000,
-    reputation: 80,
-    colors: { primary: '#FF0000', secondary: '#FFFFFF' },
-    players: [
-      { name: 'Justin Bijlow', position: 'GK', overall: 80, age: 26, value: 18000000, salary: 80000 },
-      { name: 'Lutsharel Geertruida', position: 'RB', overall: 79, age: 23, value: 25000000, salary: 60000 },
-      { name: 'Dávid Hancko', position: 'CB', overall: 80, age: 26, value: 28000000, salary: 80000 },
-      { name: 'Gernot Trauner', position: 'CB', overall: 79, age: 32, value: 8000000, salary: 80000 },
-      { name: 'Quilindschy Hartman', position: 'LB', overall: 77, age: 23, value: 15000000, salary: 50000 },
-      { name: 'Quinten Timber', position: 'CM', overall: 79, age: 22, value: 25000000, salary: 60000 },
-      { name: 'Mats Wieffer', position: 'CDM', overall: 79, age: 24, value: 30000000, salary: 60000 },
-      { name: 'Orkun Kökçü', position: 'CAM', overall: 81, age: 23, value: 40000000, salary: 80000 },
-      { name: 'Calvin Stengs', position: 'RW', overall: 79, age: 25, value: 22000000, salary: 80000 },
-      { name: 'Igor Paixão', position: 'LW', overall: 78, age: 24, value: 22000000, salary: 60000 },
-      { name: 'Santiago Giménez', position: 'ST', overall: 81, age: 22, value: 45000000, salary: 80000 },
-      { name: 'Ayase Ueda', position: 'ST', overall: 76, age: 25, value: 12000000, salary: 50000 },
-      { name: 'Timon Wellenreuther', position: 'GK', overall: 75, age: 28, value: 5000000, salary: 40000 },
-      { name: 'Marcus Pedersen', position: 'RB', overall: 75, age: 23, value: 10000000, salary: 40000 },
-      { name: 'Javairô Dilrosun', position: 'LW', overall: 76, age: 26, value: 10000000, salary: 60000 }
-    ]
-  },
-  { id: 'az_alkmaar', name: 'AZ Alkmaar', shortName: 'AZA', city: 'Alkmaar', budget: 50000000, reputation: 76, colors: { primary: '#FF0000', secondary: '#FFFFFF' }, players: generateEuropeanPlayers('AZ Alkmaar', 77, 'dutch') },
-  { id: 'twente', name: 'FC Twente', shortName: 'TWE', city: 'Enschede', budget: 40000000, reputation: 74, colors: { primary: '#FF0000', secondary: '#FFFFFF' }, players: generateEuropeanPlayers('FC Twente', 76, 'dutch') },
-  { id: 'utrecht', name: 'FC Utrecht', shortName: 'UTR', city: 'Utrecht', budget: 35000000, reputation: 72, colors: { primary: '#FF0000', secondary: '#FFFFFF' }, players: generateEuropeanPlayers('FC Utrecht', 75, 'dutch') },
-  { id: 'vitesse', name: 'Vitesse', shortName: 'VIT', city: 'Arnhem', budget: 30000000, reputation: 70, colors: { primary: '#FFFF00', secondary: '#000000' }, players: generateEuropeanPlayers('Vitesse', 74, 'dutch') },
-  { id: 'heerenveen', name: 'SC Heerenveen', shortName: 'HEE', city: 'Heerenveen', budget: 25000000, reputation: 68, colors: { primary: '#0066CC', secondary: '#FFFFFF' }, players: generateEuropeanPlayers('SC Heerenveen', 73, 'dutch') },
-  { id: 'nec', name: 'NEC Nijmegen', shortName: 'NEC', city: 'Nijmegen', budget: 20000000, reputation: 66, colors: { primary: '#FF0000', secondary: '#008000' }, players: generateEuropeanPlayers('NEC Nijmegen', 72, 'dutch') },
-  { id: 'sparta', name: 'Sparta Rotterdam', shortName: 'SPA', city: 'Rotterdam', budget: 20000000, reputation: 66, colors: { primary: '#FF0000', secondary: '#FFFFFF' }, players: generateEuropeanPlayers('Sparta Rotterdam', 72, 'dutch') },
-  { id: 'go_ahead', name: 'Go Ahead Eagles', shortName: 'GAE', city: 'Deventer', budget: 15000000, reputation: 64, colors: { primary: '#FF0000', secondary: '#FFFF00' }, players: generateEuropeanPlayers('Go Ahead Eagles', 71, 'dutch') },
-  { id: 'groningen', name: 'FC Groningen', shortName: 'GRO', city: 'Groningen', budget: 20000000, reputation: 66, colors: { primary: '#008000', secondary: '#FFFFFF' }, players: generateEuropeanPlayers('FC Groningen', 72, 'dutch') },
-  { id: 'volendam', name: 'FC Volendam', shortName: 'VOL', city: 'Volendam', budget: 10000000, reputation: 58, colors: { primary: '#FF6600', secondary: '#000000' }, players: generateEuropeanPlayers('FC Volendam', 68, 'dutch') },
-  { id: 'rkc_waalwijk', name: 'RKC Waalwijk', shortName: 'RKC', city: 'Waalwijk', budget: 10000000, reputation: 58, colors: { primary: '#FFFF00', secondary: '#0000FF' }, players: generateEuropeanPlayers('RKC Waalwijk', 68, 'dutch') },
-  { id: 'fortuna', name: 'Fortuna Sittard', shortName: 'FOR', city: 'Sittard', budget: 12000000, reputation: 60, colors: { primary: '#FFFF00', secondary: '#008000' }, players: generateEuropeanPlayers('Fortuna Sittard', 69, 'dutch') },
-  { id: 'excelsior', name: 'Excelsior', shortName: 'EXC', city: 'Rotterdam', budget: 8000000, reputation: 56, colors: { primary: '#FF0000', secondary: '#000000' }, players: generateEuropeanPlayers('Excelsior', 67, 'dutch') },
-  { id: 'pec_zwolle', name: 'PEC Zwolle', shortName: 'PEC', city: 'Zwolle', budget: 12000000, reputation: 60, colors: { primary: '#0066CC', secondary: '#FFFFFF' }, players: generateEuropeanPlayers('PEC Zwolle', 69, 'dutch') },
-  { id: 'almere', name: 'Almere City FC', shortName: 'ALM', city: 'Almere', budget: 8000000, reputation: 55, colors: { primary: '#FF6600', secondary: '#000000' }, players: generateEuropeanPlayers('Almere City', 66, 'dutch') }
-];
-
-// Primeira Liga 2024-2025
-export const PRIMEIRA_LIGA_TEAMS = [
-  {
-    id: 'benfica',
-    name: 'SL Benfica',
-    shortName: 'BEN',
-    city: 'Lisbon',
-    stadium: 'Estádio da Luz',
-    stadiumCapacity: 64642,
-    budget: 150000000,
-    reputation: 86,
-    colors: { primary: '#FF0000', secondary: '#FFFFFF' },
-    players: [
-      { name: 'Odysseas Vlachodimos', position: 'GK', overall: 81, age: 30, value: 15000000, salary: 100000 },
-      { name: 'Alexander Bah', position: 'RB', overall: 79, age: 26, value: 22000000, salary: 80000 },
-      { name: 'Nicolás Otamendi', position: 'CB', overall: 82, age: 36, value: 5000000, salary: 200000 },
-      { name: 'António Silva', position: 'CB', overall: 80, age: 20, value: 50000000, salary: 80000 },
-      { name: 'Álvaro Carreras', position: 'LB', overall: 76, age: 21, value: 15000000, salary: 40000 },
-      { name: 'Florentino Luís', position: 'CDM', overall: 80, age: 24, value: 35000000, salary: 100000 },
-      { name: 'João Neves', position: 'CM', overall: 80, age: 19, value: 60000000, salary: 60000 },
-      { name: 'Fredrik Aursnes', position: 'CM', overall: 79, age: 28, value: 22000000, salary: 80000 },
-      { name: 'Ángel Di María', position: 'RW', overall: 83, age: 36, value: 8000000, salary: 300000 },
-      { name: 'Rafa Silva', position: 'LW', overall: 81, age: 31, value: 18000000, salary: 150000 },
-      { name: 'Gonçalo Ramos', position: 'ST', overall: 81, age: 23, value: 50000000, salary: 100000 },
-      { name: 'Petar Musa', position: 'ST', overall: 77, age: 26, value: 18000000, salary: 60000 },
-      { name: 'Anatoliy Trubin', position: 'GK', overall: 79, age: 22, value: 25000000, salary: 60000 },
-      { name: 'Tomás Araújo', position: 'CB', overall: 76, age: 21, value: 15000000, salary: 40000 },
-      { name: 'João Mário', position: 'CM', overall: 79, age: 31, value: 12000000, salary: 150000 }
-    ]
-  },
-  {
-    id: 'porto',
-    name: 'FC Porto',
-    shortName: 'POR',
-    city: 'Porto',
-    stadium: 'Estádio do Dragão',
-    stadiumCapacity: 50033,
-    budget: 120000000,
-    reputation: 84,
-    colors: { primary: '#003DA5', secondary: '#FFFFFF' },
-    players: [
-      { name: 'Diogo Costa', position: 'GK', overall: 84, age: 24, value: 50000000, salary: 120000 },
-      { name: 'João Mário', position: 'RB', overall: 78, age: 24, value: 22000000, salary: 60000 },
-      { name: 'Pepe', position: 'CB', overall: 80, age: 41, value: 1000000, salary: 200000 },
-      { name: 'David Carmo', position: 'CB', overall: 78, age: 24, value: 22000000, salary: 80000 },
-      { name: 'Wendell', position: 'LB', overall: 78, age: 30, value: 12000000, salary: 100000 },
-      { name: 'Alan Varela', position: 'CDM', overall: 79, age: 22, value: 30000000, salary: 60000 },
-      { name: 'Stephen Eustáquio', position: 'CM', overall: 79, age: 27, value: 22000000, salary: 80000 },
-      { name: 'Marko Grujić', position: 'CM', overall: 78, age: 28, value: 15000000, salary: 100000 },
-      { name: 'Pepê', position: 'RW', overall: 81, age: 27, value: 35000000, salary: 100000 },
-      { name: 'Galeno', position: 'LW', overall: 80, age: 26, value: 30000000, salary: 80000 },
-      { name: 'Mehdi Taremi', position: 'ST', overall: 83, age: 31, value: 30000000, salary: 150000 },
-      { name: 'Evanilson', position: 'ST', overall: 80, age: 24, value: 40000000, salary: 100000 },
-      { name: 'Cláudio Ramos', position: 'GK', overall: 76, age: 32, value: 3000000, salary: 50000 },
-      { name: 'Zaidu Sanusi', position: 'LB', overall: 76, age: 26, value: 10000000, salary: 60000 },
-      { name: 'Francisco Conceição', position: 'RW', overall: 79, age: 21, value: 35000000, salary: 50000 }
-    ]
-  },
-  {
-    id: 'sporting',
-    name: 'Sporting CP',
-    shortName: 'SCP',
-    city: 'Lisbon',
-    stadium: 'Estádio José Alvalade',
-    stadiumCapacity: 50095,
-    budget: 100000000,
-    reputation: 82,
-    colors: { primary: '#008000', secondary: '#FFFFFF' },
-    players: [
-      { name: 'Antonio Adán', position: 'GK', overall: 79, age: 36, value: 3000000, salary: 100000 },
-      { name: 'Jeremiah St. Juste', position: 'RB', overall: 77, age: 27, value: 12000000, salary: 80000 },
-      { name: 'Sebastián Coates', position: 'CB', overall: 81, age: 33, value: 8000000, salary: 150000 },
-      { name: 'Gonçalo Inácio', position: 'CB', overall: 81, age: 22, value: 45000000, salary: 80000 },
-      { name: 'Nuno Santos', position: 'LB', overall: 78, age: 28, value: 15000000, salary: 80000 },
-      { name: 'Hidemasa Morita', position: 'CDM', overall: 79, age: 28, value: 20000000, salary: 80000 },
-      { name: 'Manuel Ugarte', position: 'CDM', overall: 81, age: 23, value: 50000000, salary: 80000 },
-      { name: 'Pedro Gonçalves', position: 'CAM', overall: 82, age: 25, value: 40000000, salary: 120000 },
-      { name: 'Marcus Edwards', position: 'RW', overall: 79, age: 25, value: 25000000, salary: 80000 },
-      { name: 'Francisco Trincão', position: 'LW', overall: 79, age: 24, value: 25000000, salary: 100000 },
-      { name: 'Viktor Gyökeres', position: 'ST', overall: 82, age: 26, value: 55000000, salary: 100000 },
-      { name: 'Paulinho', position: 'ST', overall: 78, age: 31, value: 12000000, salary: 120000 },
-      { name: 'Franco Israel', position: 'GK', overall: 76, age: 24, value: 8000000, salary: 40000 },
-      { name: 'Ricardo Esgaio', position: 'RB', overall: 76, age: 30, value: 8000000, salary: 80000 },
-      { name: 'Matheus Reis', position: 'LB', overall: 77, age: 28, value: 12000000, salary: 60000 }
-    ]
-  },
-  { id: 'braga', name: 'SC Braga', shortName: 'BRA', city: 'Braga', budget: 60000000, reputation: 78, colors: { primary: '#FF0000', secondary: '#FFFFFF' }, players: generateEuropeanPlayers('SC Braga', 78, 'portuguese') },
-  { id: 'guimaraes', name: 'Vitória SC', shortName: 'VSC', city: 'Guimarães', budget: 30000000, reputation: 72, colors: { primary: '#000000', secondary: '#FFFFFF' }, players: generateEuropeanPlayers('Vitória SC', 74, 'portuguese') },
-  { id: 'rio_ave', name: 'Rio Ave FC', shortName: 'RIO', city: 'Vila do Conde', budget: 15000000, reputation: 64, colors: { primary: '#008000', secondary: '#FFFFFF' }, players: generateEuropeanPlayers('Rio Ave', 71, 'portuguese') },
-  { id: 'gil_vicente', name: 'Gil Vicente FC', shortName: 'GIL', city: 'Barcelos', budget: 12000000, reputation: 62, colors: { primary: '#FF0000', secondary: '#0000FF' }, players: generateEuropeanPlayers('Gil Vicente', 70, 'portuguese') },
-  { id: 'boavista', name: 'Boavista FC', shortName: 'BOA', city: 'Porto', budget: 15000000, reputation: 64, colors: { primary: '#000000', secondary: '#FFFFFF' }, players: generateEuropeanPlayers('Boavista', 71, 'portuguese') },
-  { id: 'casa_pia', name: 'Casa Pia AC', shortName: 'CPA', city: 'Lisbon', budget: 10000000, reputation: 58, colors: { primary: '#000080', secondary: '#FFFFFF' }, players: generateEuropeanPlayers('Casa Pia', 69, 'portuguese') },
-  { id: 'famalicao', name: 'FC Famalicão', shortName: 'FAM', city: 'Famalicão', budget: 18000000, reputation: 66, colors: { primary: '#0000FF', secondary: '#FFFFFF' }, players: generateEuropeanPlayers('FC Famalicão', 72, 'portuguese') },
-  { id: 'arouca', name: 'FC Arouca', shortName: 'ARO', city: 'Arouca', budget: 8000000, reputation: 56, colors: { primary: '#FFFF00', secondary: '#008000' }, players: generateEuropeanPlayers('FC Arouca', 68, 'portuguese') },
-  { id: 'vizela', name: 'FC Vizela', shortName: 'VIZ', city: 'Vizela', budget: 8000000, reputation: 56, colors: { primary: '#0066CC', secondary: '#FFFFFF' }, players: generateEuropeanPlayers('FC Vizela', 68, 'portuguese') },
-  { id: 'estoril', name: 'Estoril Praia', shortName: 'EST', city: 'Estoril', budget: 10000000, reputation: 58, colors: { primary: '#FFFF00', secondary: '#0000FF' }, players: generateEuropeanPlayers('Estoril Praia', 69, 'portuguese') },
-  { id: 'farense', name: 'SC Farense', shortName: 'FAR', city: 'Faro', budget: 6000000, reputation: 54, colors: { primary: '#FFFFFF', secondary: '#000000' }, players: generateEuropeanPlayers('SC Farense', 67, 'portuguese') },
-  { id: 'chaves', name: 'GD Chaves', shortName: 'CHA', city: 'Chaves', budget: 8000000, reputation: 56, colors: { primary: '#FF0000', secondary: '#0000FF' }, players: generateEuropeanPlayers('GD Chaves', 68, 'portuguese') },
-  { id: 'moreirense', name: 'Moreirense FC', shortName: 'MOR', city: 'Moreira de Cónegos', budget: 8000000, reputation: 56, colors: { primary: '#008000', secondary: '#FFFFFF' }, players: generateEuropeanPlayers('Moreirense', 68, 'portuguese') },
-  { id: 'portimonense', name: 'Portimonense SC', shortName: 'PRT', city: 'Portimão', budget: 10000000, reputation: 58, colors: { primary: '#000000', secondary: '#FFFF00' }, players: generateEuropeanPlayers('Portimonense', 69, 'portuguese') },
-  { id: 'estrela', name: 'Estrela da Amadora', shortName: 'EAM', city: 'Amadora', budget: 6000000, reputation: 52, colors: { primary: '#FF0000', secondary: '#FFFFFF' }, players: generateEuropeanPlayers('Estrela Amadora', 66, 'portuguese') }
-];
-
-// Generador para ligas europeas
-function generateEuropeanPlayers(teamName, baseOverall, nationality) {
-  const names = {
-    german: {
-      first: ['Florian', 'Maximilian', 'Leon', 'Lukas', 'Felix', 'Jonas', 'Niklas', 'Tim', 'Julian', 'Kai', 'Marco', 'Timo', 'Kevin', 'Dennis', 'Marcel', 'Sven', 'Patrick', 'Christian', 'Michael', 'Thomas'],
-      last: ['Müller', 'Schmidt', 'Schneider', 'Fischer', 'Weber', 'Meyer', 'Wagner', 'Becker', 'Hoffmann', 'Schulz', 'Koch', 'Bauer', 'Richter', 'Klein', 'Wolf', 'Schröder', 'Neumann', 'Schwarz', 'Braun', 'Zimmermann']
-    },
-    italian: {
-      first: ['Marco', 'Matteo', 'Lorenzo', 'Andrea', 'Alessandro', 'Francesco', 'Luca', 'Davide', 'Federico', 'Nicola', 'Simone', 'Fabio', 'Roberto', 'Gianluca', 'Emanuele', 'Pietro', 'Stefano', 'Claudio', 'Daniele', 'Vincenzo'],
-      last: ['Rossi', 'Russo', 'Ferrari', 'Esposito', 'Bianchi', 'Romano', 'Colombo', 'Ricci', 'Marino', 'Greco', 'Bruno', 'Gallo', 'Conti', 'De Luca', 'Mancini', 'Costa', 'Giordano', 'Rizzo', 'Lombardi', 'Moretti']
-    },
-    dutch: {
-      first: ['Daan', 'Sem', 'Jesse', 'Lucas', 'Milan', 'Lars', 'Luuk', 'Thijs', 'Tim', 'Stijn', 'Thomas', 'Ruben', 'Max', 'Finn', 'Julian', 'Bram', 'Sven', 'Joost', 'Nick', 'Jasper'],
-      last: ['de Jong', 'Jansen', 'de Vries', 'van den Berg', 'van Dijk', 'Bakker', 'Visser', 'Smit', 'Meijer', 'de Boer', 'Mulder', 'de Groot', 'Bos', 'Vos', 'Peters', 'Hendriks', 'van Leeuwen', 'Dekker', 'Brouwer', 'de Wit']
-    },
-    portuguese: {
-      first: ['João', 'Miguel', 'Francisco', 'Diogo', 'Rafael', 'André', 'Gonçalo', 'Tiago', 'Pedro', 'Rui', 'Bruno', 'Ricardo', 'Nuno', 'Hugo', 'Luís', 'Paulo', 'Sérgio', 'Carlos', 'António', 'Daniel'],
-      last: ['Silva', 'Santos', 'Ferreira', 'Costa', 'Pereira', 'Oliveira', 'Rodrigues', 'Fernandes', 'Gomes', 'Lopes', 'Marques', 'Almeida', 'Alves', 'Ribeiro', 'Pinto', 'Carvalho', 'Teixeira', 'Sousa', 'Martins', 'Neves']
-    }
-  };
-  
-  const langNames = names[nationality] || names.german;
-  const positions = ['GK', 'RB', 'CB', 'CB', 'LB', 'CDM', 'CM', 'CM', 'CAM', 'RW', 'LW', 'ST', 'ST', 'GK', 'CB', 'CM'];
-  
-  let seed = teamName.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
-  const seededRandom = () => {
-    seed = (seed * 9301 + 49297) % 233280;
-    return seed / 233280;
-  };
-  
-  return positions.map((pos) => {
-    const ovr = Math.max(65, Math.min(85, baseOverall + Math.floor(seededRandom() * 10) - 5));
-    const age = 19 + Math.floor(seededRandom() * 16);
-    const value = Math.round((ovr - 60) * 800000 + seededRandom() * 5000000);
-    const salary = Math.round(value * 0.002 + 20000);
-    const name = `${langNames.first[Math.floor(seededRandom() * langNames.first.length)]} ${langNames.last[Math.floor(seededRandom() * langNames.last.length)]}`;
-    return { name, position: pos, overall: ovr, age, value, salary };
-  });
-}
-
-export const getAllTeams = () => [
-  ...LALIGA_TEAMS, 
-  ...SEGUNDA_TEAMS, 
-  ...PRIMERA_RFEF_TEAMS, 
-  ...SEGUNDA_RFEF_TEAMS,
-  ...PREMIER_LEAGUE_TEAMS,
-  ...LIGUE1_TEAMS,
-  ...BUNDESLIGA_TEAMS,
-  ...SERIE_A_TEAMS,
-  ...EREDIVISIE_TEAMS,
-  ...PRIMEIRA_LIGA_TEAMS
-];
-
-export const getTeamsByLeague = (leagueId) => {
-  const leagueMap = {
-    laliga: LALIGA_TEAMS,
-    segunda: SEGUNDA_TEAMS,
-    primeraRFEF: PRIMERA_RFEF_TEAMS,
-    segundaRFEF: SEGUNDA_RFEF_TEAMS,
-    premierLeague: PREMIER_LEAGUE_TEAMS,
-    ligue1: LIGUE1_TEAMS,
-    bundesliga: BUNDESLIGA_TEAMS,
-    serieA: SERIE_A_TEAMS,
-    eredivisie: EREDIVISIE_TEAMS,
-    primeiraLiga: PRIMEIRA_LIGA_TEAMS
-  };
-  return leagueMap[leagueId] || [];
 };
+
+// ============================================================
+// JUGADORES LIBRES
+// ============================================================
+export const freeAgents = [
+  createPlayer('Ángel Di María', 'RW', 37, 3),
+  createPlayer('Memphis Depay', 'ST', 31, 8),
+  createPlayer('Mario Hermoso', 'CB', 30, 10),
+  createPlayer('Adrien Rabiot', 'CM', 30, 20),
+  createPlayer('Sergio Busquets', 'CDM', 37, 1),
+  createPlayer('Jordi Alba', 'LB', 36, 2),
+  createPlayer('Nacho Fernández', 'CB', 35, 3),
+  createPlayer('Sergio Rico', 'GK', 31, 1.5),
+  createPlayer('Munir El Haddadi', 'ST', 30, 2),
+  createPlayer('Marouane Fellaini', 'CM', 38, 0.3),
+  createPlayer('Ezequiel Garay', 'CB', 38, 0.2),
+  createPlayer('Nani', 'LW', 39, 0.3),
+  createPlayer('Willian', 'RW', 37, 1),
+  createPlayer('Thiago Alcántara', 'CM', 34, 2),
+  createPlayer('Cesc Fàbregas', 'CM', 38, 0.3)
+];
+
+// ============================================================
+// EXPORTAR ARRAY DE EQUIPOS
+// ============================================================
+export const teamsArray = Object.entries(teams).map(([id, team]) => ({
+  id,
+  ...team
+}));
+
+export default teams;

@@ -290,9 +290,9 @@ export function simulateMatch(homeTeamId, awayTeamId, homeTeamData, awayTeamData
   const homeStrength = calculateTeamStrength(homeTeamData, homeFormation, homeTactic);
   const awayStrength = calculateTeamStrength(awayTeamData, awayFormation, awayTactic);
   
-  // Ventaja de local REDUCIDA (el fútbol moderno tiene menos ventaja local)
+  // Ventaja de local - estadios grandes dan más ventaja
   const stadiumCapacity = homeTeamData.stadiumCapacity || 20000;
-  const homeAdvantage = 2 + Math.min(3, stadiumCapacity / 30000); // Máximo 5 en lugar de 8
+  const homeAdvantage = 4 + Math.min(4, stadiumCapacity / 25000); // 4-8 puntos de ventaja
   
   // Factor moral (rachas afectan MÁS)
   const homeMoraleFactor = 0.85 + (homeMorale / 100) * 0.3;
@@ -579,20 +579,28 @@ function simulateMatchMinuteByMinute(homeRating, awayRating, homeStrength, awayS
 
 // Calcular probabilidad de gol por minuto
 function calculateGoalChance(attackRating, defendRating, attackStrength, defendStrength, isHome) {
-  const baseChance = 0.016; // Más goles = menos empates = más puntos
+  // baseChance ajustado para ~2.5 goles por partido
+  const baseChance = 0.032;
   
-  // Factor de ataque y defensa - el nivel SÍ importa
-  const attackFactor = 0.82 + (attackStrength.attack / 80) * 0.22;
-  const defenseFactor = 0.82 + (80 / Math.max(60, defendStrength.defense)) * 0.2;
-  const goalieBlockFactor = 0.85 + (80 / Math.max(60, defendStrength.goalkeeper)) * 0.15;
+  // Factor de ataque - equipos buenos atacan mejor
+  const attackFactor = 0.85 + (attackStrength.attack / 80) * 0.25;
   
-  // Diferencia de rating importa bastante
-  const ratingDiff = (attackRating - defendRating) / 90;
+  // Factor de defensa - defensas débiles conceden más
+  const defenseFactor = 0.85 + (80 / Math.max(55, defendStrength.defense)) * 0.25;
   
-  // Variación moderada por partido - sorpresas posibles pero no constantes
-  const matchVariation = 0.94 + Math.random() * 0.12; // 0.94-1.06
+  // Factor de portero
+  const goalieBlockFactor = 0.88 + (80 / Math.max(55, defendStrength.goalkeeper)) * 0.12;
   
-  return baseChance * attackFactor * defenseFactor * goalieBlockFactor * (1 + ratingDiff) * (isHome ? 1.06 : 1) * matchVariation;
+  // Diferencia de rating importa
+  const ratingDiff = (attackRating - defendRating) / 80;
+  
+  // Variación por partido - permite sorpresas
+  const matchVariation = 0.92 + Math.random() * 0.16; // 0.92-1.08
+  
+  // Ventaja local pronunciada (+15% en casa)
+  const homeFactor = isHome ? 1.15 : 1;
+  
+  return baseChance * attackFactor * defenseFactor * goalieBlockFactor * (1 + ratingDiff) * homeFactor * matchVariation;
 }
 
 // Seleccionar goleador (ponderado por posición y overall)

@@ -123,36 +123,62 @@ export function generateSeasonEndMessage(outcome, teamName, position) {
  */
 export function prepareNewSeason(team, outcome, newLeagueTeams) {
   // Ajustar presupuesto según resultado
+  // MEJORADO: Más generoso para equipos pequeños, más realista
   let budgetMultiplier = 1.0;
   
-  if (outcome.champions) budgetMultiplier = 1.3;
-  else if (outcome.europaLeague) budgetMultiplier = 1.15;
-  else if (outcome.conferenceLeague) budgetMultiplier = 1.08;
-  else if (outcome.promotion) budgetMultiplier = 1.5; // Gran inyección por ascenso
-  else if (outcome.relegation) budgetMultiplier = 0.7; // Pérdida significativa
-  else budgetMultiplier = 1.02; // Ligero aumento inflacionario
+  if (outcome.champions) budgetMultiplier = 1.35;      // Champions = +35%
+  else if (outcome.europaLeague) budgetMultiplier = 1.20;
+  else if (outcome.conferenceLeague) budgetMultiplier = 1.12;
+  else if (outcome.promotion) budgetMultiplier = 1.8;   // ASCENSO = +80% (TV, sponsors, etc.)
+  else if (outcome.relegation) budgetMultiplier = 0.85; // Descenso = -15% (no tan brutal)
+  else budgetMultiplier = 1.05; // Inflación base +5% anual
+  
+  // Bonus por consolidación: si el equipo lleva tiempo en una liga, crece más
+  if (team.seasonsInCurrentLeague && team.seasonsInCurrentLeague >= 3) {
+    budgetMultiplier *= 1.05; // +5% extra por estabilidad
+  }
 
   // Envejecer jugadores
-  const updatedPlayers = team.players.map(p => ({
-    ...p,
-    age: p.age + 1,
-    // Reducir media de veteranos
-    overall: p.age >= 33 ? Math.max(60, p.overall - 1) : p.overall,
-    // Resetear estado
-    injured: false,
-    injuredWeeks: 0,
-    trainingProgress: 0
-  }));
+  const updatedPlayers = team.players.map(p => {
+    let newOverall = p.overall;
+    
+    // Jugadores jóvenes mejoran (potencial)
+    if (p.age <= 24 && Math.random() < 0.4) {
+      newOverall = Math.min(99, newOverall + 1);
+    }
+    // Veteranos decaen más gradualmente
+    else if (p.age >= 32) {
+      const decayChance = (p.age - 31) * 0.15; // 15% a los 32, 30% a los 33, etc.
+      if (Math.random() < decayChance) {
+        newOverall = Math.max(55, newOverall - 1);
+      }
+    }
+    
+    return {
+      ...p,
+      age: p.age + 1,
+      overall: newOverall,
+      // Resetear estado
+      injured: false,
+      injuredWeeks: 0,
+      trainingProgress: 0
+    };
+  });
 
-  // Retirar jugadores muy mayores (>38)
-  const activePlayers = updatedPlayers.filter(p => p.age <= 38);
-  const retiredPlayers = updatedPlayers.filter(p => p.age > 38);
+  // Retirar jugadores muy mayores (>36) con probabilidad
+  const activePlayers = updatedPlayers.filter(p => {
+    if (p.age > 38) return false;
+    if (p.age > 36) return Math.random() > 0.5; // 50% de retirarse
+    return true;
+  });
+  const retiredPlayers = updatedPlayers.filter(p => !activePlayers.includes(p));
 
   return {
     ...team,
     players: activePlayers,
     budget: Math.round(team.budget * budgetMultiplier),
-    retiredPlayers
+    retiredPlayers,
+    seasonsInCurrentLeague: outcome.promotion || outcome.relegation ? 1 : (team.seasonsInCurrentLeague || 1) + 1
   };
 }
 
@@ -177,25 +203,37 @@ export function generateNewSeasonObjectives(team, newLeagueId, previousOutcome) 
 
 /**
  * Simula el playoff de ascenso (simplificado)
+ * MEJORADO: Más equilibrado, tiene en cuenta experiencia
  */
-export function simulatePlayoff(teamPosition, teamOverall) {
+export function simulatePlayoff(teamPosition, teamOverall, playoffExperience = 0) {
   // Probabilidad base de ganar el playoff según posición
+  // AUMENTADAS para que no sea tan frustrante
   const baseProbability = {
-    3: 0.35,
-    4: 0.28,
-    5: 0.22,
-    6: 0.15
+    3: 0.42,  // Era 0.35
+    4: 0.35,  // Era 0.28
+    5: 0.28,  // Era 0.22
+    6: 0.22   // Era 0.15
   };
   
-  const probability = baseProbability[teamPosition] || 0.2;
+  let probability = baseProbability[teamPosition] || 0.25;
   
-  // Ajustar por overall del equipo
-  const adjustedProbability = probability + (teamOverall - 75) * 0.01;
+  // Ajustar por overall del equipo (más impacto)
+  probability += (teamOverall - 70) * 0.015;
   
-  const won = Math.random() < adjustedProbability;
+  // Bonus por experiencia en playoffs (aprendes de los fracasos)
+  probability += Math.min(playoffExperience * 0.05, 0.15); // Hasta +15%
+  
+  // Factor suerte del día (puede ser tu día)
+  const luckFactor = (Math.random() - 0.5) * 0.1; // ±5%
+  probability += luckFactor;
+  
+  // Clamp entre 10% y 60%
+  probability = Math.max(0.10, Math.min(0.60, probability));
+  
+  const won = Math.random() < probability;
   
   return {
     won,
-    probability: Math.round(adjustedProbability * 100)
+    probability: Math.round(probability * 100)
   };
 }
