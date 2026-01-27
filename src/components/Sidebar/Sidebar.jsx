@@ -7,6 +7,7 @@ const menuItems = [
   { id: 'overview', icon: '🏠', label: 'Despacho' },
   { id: 'squad', icon: '👥', label: 'Plantilla' },
   { id: 'formation', icon: '📋', label: 'Alineación' },
+  { id: 'training', icon: '🏋️', label: 'Entrenamiento' },
   { id: 'calendar', icon: '📅', label: 'Calendario' },
   { id: 'table', icon: '🏆', label: 'Clasificación' },
   { id: 'transfers', icon: '💼', label: 'Fichajes' },
