@@ -1,5 +1,5 @@
 // Test de estrés - 100 temporadas rápidas
-import { LALIGA_TEAMS } from './src/data/teams.js';
+import { teamsArray as LALIGA_TEAMS } from './src/data/teams.js';
 import { initializeLeague, simulateMatch, updateTable, getWeekFixtures } from './src/game/leagueEngine.js';
 import { generatePlayerPersonality, evaluateTransferOffer } from './src/game/playerPersonality.js';
 
