@@ -17,7 +17,7 @@ import { initializeLeague } from '../../game/leagueEngine';
 import './TeamSelection.scss';
 
 const COUNTRIES = [
-  { id: 'spain', name: 'España', flag: '🇪🇸', leagues: ['laliga', 'segunda'] },
+  { id: 'spain', name: 'España', flag: '🇪🇸', leagues: ['laliga', 'segunda', 'primeraRFEF', 'segundaRFEF'] },
   { id: 'england', name: 'Inglaterra', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', leagues: ['premierLeague'] },
   { id: 'germany', name: 'Alemania', flag: '🇩🇪', leagues: ['bundesliga'] },
   { id: 'italy', name: 'Italia', flag: '🇮🇹', leagues: ['serieA'] },
@@ -40,8 +40,10 @@ const LEAGUE_TEAMS = {
 };
 
 const LEAGUE_NAMES = {
-  laliga: 'La Liga',
-  segunda: 'Segunda División',
+  laliga: 'La Liga EA Sports',
+  segunda: 'La Liga Hypermotion',
+  primeraRFEF: 'Primera Federación',
+  segundaRFEF: 'Segunda Federación',
   premierLeague: 'Premier League',
   ligue1: 'Ligue 1',
   bundesliga: 'Bundesliga',
