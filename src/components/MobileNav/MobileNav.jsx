@@ -13,6 +13,7 @@ const TABS = [
 const MENU_ITEMS = [
   { id: 'formation', icon: '⚽', label: 'Formación' },
   { id: 'training', icon: '🏋️', label: 'Entrenamiento' },
+  { id: 'objectives', icon: '🎯', label: 'Objetivos' },
   { id: 'calendar', icon: '📅', label: 'Calendario' },
   { id: 'transfers', icon: '💰', label: 'Fichajes' },
   { id: 'renewals', icon: '📝', label: 'Renovaciones' },

@@ -15,6 +15,7 @@ import Facilities from '../Facilities/Facilities';
 import Messages from '../Messages/Messages';
 import MatchDay from '../MatchDay/MatchDay';
 import Training from '../Training/Training';
+import Objectives from '../Objectives/Objectives';
 import './Office.scss';
 
 export default function Office() {
@@ -159,6 +160,8 @@ export default function Office() {
         return <Formation />;
       case 'training':
         return <Training />;
+      case 'objectives':
+        return <Objectives />;
       case 'calendar':
         return <Calendar />;
       case 'table':

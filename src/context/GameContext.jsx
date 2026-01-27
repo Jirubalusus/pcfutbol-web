@@ -76,6 +76,11 @@ const initialState = {
     specialPlayers: []
   },
   
+  // Objectives & Career
+  seasonObjectives: [],
+  managerRating: 50,
+  jobOffers: [],
+  
   // UI State
   currentScreen: 'main_menu'
 };
@@ -293,6 +298,24 @@ function gameReducer(state, action) {
           ...state.training,
           ...action.payload
         }
+      };
+    
+    case 'SET_SEASON_OBJECTIVES':
+      return {
+        ...state,
+        seasonObjectives: action.payload
+      };
+    
+    case 'SET_MANAGER_RATING':
+      return {
+        ...state,
+        managerRating: action.payload
+      };
+    
+    case 'SET_JOB_OFFERS':
+      return {
+        ...state,
+        jobOffers: action.payload
       };
     
     case 'APPLY_TRAINING': {
