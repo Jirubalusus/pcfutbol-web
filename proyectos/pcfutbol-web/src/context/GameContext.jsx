@@ -138,7 +138,7 @@ function gameReducer(state, action) {
       const salaryExpenses = state.team?.players?.reduce((sum, p) => sum + (p.salary || 0), 0) || 0;
       
       // Heal injuries - reduce weeks left by 1
-      const playersWithHealedInjuries = state.team?.players?.map(p => {
+      let updatedPlayers = state.team?.players?.map(p => {
         if (p.injured && p.injuryWeeksLeft > 0) {
           const newWeeksLeft = p.injuryWeeksLeft - 1;
           if (newWeeksLeft <= 0) {
@@ -149,13 +149,55 @@ function gameReducer(state, action) {
         return p;
       }) || [];
       
+      // Generate youth players at end of season (week 38)
+      const newYouthPlayers = [];
+      if (state.currentWeek === 38) {
+        const youthLevel = state.facilities?.youth || 0;
+        const numYouth = 1 + youthLevel; // 1-4 canteranos según nivel
+        const minOverall = [55, 60, 65, 70][youthLevel];
+        const maxOverall = [65, 72, 78, 85][youthLevel];
+        const positions = ['GK', 'CB', 'RB', 'LB', 'CDM', 'CM', 'CAM', 'RW', 'LW', 'ST'];
+        const firstNames = ['Pablo', 'Miguel', 'Carlos', 'David', 'Alejandro', 'Daniel', 'Javier', 'Sergio', 'Adrián', 'Hugo', 'Álvaro', 'Iker', 'Mario', 'Diego', 'Rubén'];
+        const lastNames = ['García', 'Martínez', 'López', 'Sánchez', 'Fernández', 'González', 'Rodríguez', 'Pérez', 'Gómez', 'Ruiz', 'Díaz', 'Moreno', 'Muñoz', 'Jiménez', 'Navarro'];
+        
+        for (let i = 0; i < numYouth; i++) {
+          const position = positions[Math.floor(Math.random() * positions.length)];
+          const overall = Math.floor(Math.random() * (maxOverall - minOverall + 1)) + minOverall;
+          const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+          const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+          
+          newYouthPlayers.push({
+            name: `${firstName} ${lastName}`,
+            position,
+            age: 17 + Math.floor(Math.random() * 3),
+            overall,
+            potential: Math.min(99, overall + Math.floor(Math.random() * 15) + 5),
+            nationality: 'España',
+            salary: Math.round(overall * 5000),
+            value: Math.round(overall * overall * 10000),
+            isYouthProduct: true
+          });
+        }
+        updatedPlayers = [...updatedPlayers, ...newYouthPlayers];
+      }
+      
+      // Generate new messages for youth players
+      const newMessages = newYouthPlayers.length > 0 ? [{
+        id: Date.now(),
+        type: 'youth',
+        title: '🌱 Nuevos canteranos',
+        content: `La cantera ha promocionado ${newYouthPlayers.length} jugador${newYouthPlayers.length > 1 ? 'es' : ''}: ${newYouthPlayers.map(p => `${p.name} (${p.position}, ${p.overall})`).join(', ')}`,
+        date: `Fin Temporada ${state.currentSeason}`
+      }] : [];
+      
       return { 
         ...state, 
         currentWeek: state.currentWeek + 1,
         money: state.money + facilityIncome - salaryExpenses,
         weeklyIncome: facilityIncome,
         weeklyExpenses: salaryExpenses,
-        team: state.team ? { ...state.team, players: playersWithHealedInjuries } : null
+        team: state.team ? { ...state.team, players: updatedPlayers } : null,
+        messages: [...newMessages, ...state.messages].slice(0, 50)
       };
     }
     
