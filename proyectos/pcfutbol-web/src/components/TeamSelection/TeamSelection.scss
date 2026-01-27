@@ -1,577 +1,859 @@
-.team-selection {
-  min-height: 100vh;
-  background: var(--color-bg-primary);
-  padding: 1rem;
+// ============================================================
+// PC FÚTBOL WEB - SELECCIÓN DE EQUIPO (Estilo Vibrante)
+// ============================================================
+
+$pcf-bg-dark: #1a2634;
+$pcf-bg-mid: #243447;
+$pcf-bg-light: #2d4259;
+$pcf-accent: #3498db;
+$pcf-gold: #f1c40f;
+$pcf-orange: #e67e22;
+$pcf-red: #e74c3c;
+$pcf-green: #2ecc71;
+$pcf-white: #ecf0f1;
+$pcf-gray: #95a5a6;
+$pcf-text: #bdc3c7;
+
+.pcf-team-select {
+  height: 100vh;
+  max-height: 100vh;
+  background: linear-gradient(135deg, $pcf-bg-dark 0%, $pcf-bg-mid 50%, $pcf-bg-dark 100%);
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+}
 
-  // Progress Steps
-  &__progress {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-    padding: 1.5rem 1rem;
-    max-width: 400px;
-    margin: 0 auto;
-    width: 100%;
-
-    .step {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.4rem;
-
-      .number {
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        background: var(--color-bg-card);
-        border: 2px solid var(--color-glass-border);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 700;
-        font-size: 0.9rem;
-        color: var(--color-text-tertiary);
-        transition: all 0.3s ease;
-      }
-
-      .label {
-        font-size: 0.7rem;
-        color: var(--color-text-tertiary);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-      }
-
-      &.active .number {
-        background: var(--color-accent);
-        border-color: var(--color-accent);
-        color: #fff;
-        box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
-      }
-
-      &.active .label {
-        color: var(--color-accent);
-      }
-
-      &.completed .number {
-        background: var(--color-success);
-        border-color: var(--color-success);
-        color: #fff;
-      }
-    }
-
-    .line {
-      flex: 1;
-      height: 2px;
-      background: var(--color-glass-border);
-      margin: 0 0.5rem;
-      margin-bottom: 1.5rem;
-    }
+// ============================================================
+// HEADER
+// ============================================================
+.pcf-ts-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1rem;
+  background: linear-gradient(180deg, $pcf-bg-light 0%, $pcf-bg-mid 100%);
+  border-bottom: 2px solid $pcf-accent;
+  flex-shrink: 0;
+  
+  .header-left {
+    flex: 0 0 auto;
   }
-
-  // Header
-  &__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.5rem 0 1.5rem;
-    max-width: 900px;
-    margin: 0 auto;
-    width: 100%;
-
-    .back-btn {
-      padding: 0.6rem 1rem;
-      background: var(--color-bg-card);
-      border: 1px solid var(--color-glass-border);
-      border-radius: var(--border-radius-sm);
-      color: var(--color-text-secondary);
-      cursor: pointer;
-      font-size: 0.9rem;
-      transition: all var(--transition-fast);
-
-      &:hover {
-        background: var(--color-bg-card-hover);
-        color: var(--color-text-primary);
-      }
-    }
-
+  
+  .header-center {
+    flex: 1;
+    text-align: center;
+    
     h1 {
       margin: 0;
-      font-size: 1.4rem;
-      font-weight: 600;
-      text-align: center;
-
-      @media (max-width: 600px) {
-        font-size: 1.1rem;
-      }
-    }
-
-    .spacer {
-      width: 80px;
-    }
-  }
-
-  // Step 1: Countries
-  &__countries {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 1rem;
-    max-width: 700px;
-    margin: 0 auto;
-    width: 100%;
-    padding: 1rem 0;
-
-    @media (max-width: 500px) {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.75rem;
-    }
-
-    .country-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 1.5rem 1rem;
-      background: var(--color-glass);
-      border: 1px solid var(--color-glass-border);
-      border-radius: var(--border-radius-lg);
-      cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      -webkit-tap-highlight-color: transparent;
-
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: $pcf-gold;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+      letter-spacing: 2px;
+      
       @media (max-width: 500px) {
-        padding: 1.25rem 0.75rem;
-      }
-
-      .flag {
-        font-size: 3rem;
-        filter: drop-shadow(0 4px 10px rgba(0,0,0,0.2));
-
-        @media (max-width: 500px) {
-          font-size: 2.5rem;
-        }
-      }
-
-      .name {
-        font-weight: 600;
-        font-size: 1rem;
-      }
-
-      .leagues {
-        font-size: 0.85rem;
-        color: var(--color-text-tertiary);
-      }
-
-      &:active {
-        transform: scale(0.96);
-        background: var(--color-bg-card-hover);
-      }
-
-      @media (hover: hover) {
-        &:hover {
-          transform: translateY(-4px);
-          border-color: var(--color-accent);
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
+        font-size: 0.9rem;
+        letter-spacing: 1px;
       }
     }
   }
+  
+  .header-right {
+    flex: 0 0 auto;
+    
+    .step-indicator {
+      color: $pcf-text;
+      font-size: 0.75rem;
+    }
+  }
+  
+  .btn-back {
+    padding: 0.5rem 0.9rem;
+    background: linear-gradient(180deg, $pcf-red 0%, darken($pcf-red, 15%) 100%);
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    
+    &:hover {
+      background: linear-gradient(180deg, lighten($pcf-red, 5%) 0%, $pcf-red 100%);
+      transform: translateY(-1px);
+    }
+  }
+}
 
-  // Step 2: Leagues
-  &__leagues {
+// ============================================================
+// PROGRESS BAR
+// ============================================================
+.pcf-ts-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1rem;
+  background: $pcf-bg-mid;
+  gap: 0;
+  flex-shrink: 0;
+  
+  .progress-step {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
-    max-width: 500px;
-    margin: 0 auto;
-    width: 100%;
-    padding: 1rem 0;
-
-    .league-card {
+    align-items: center;
+    gap: 0.2rem;
+    
+    .step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: $pcf-bg-dark;
+      border: 2px solid $pcf-bg-light;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.25rem 1.5rem;
-      background: var(--color-glass);
-      border: 1px solid var(--color-glass-border);
-      border-radius: var(--border-radius-lg);
-      cursor: pointer;
-      transition: all 0.3s ease;
-      -webkit-tap-highlight-color: transparent;
-
-      .league-info {
-        display: flex;
-        flex-direction: column;
-        gap: 0.25rem;
-
-        .name {
-          font-weight: 600;
-          font-size: 1.1rem;
-        }
-
-        .teams {
-          font-size: 0.8rem;
-          color: var(--color-text-tertiary);
-        }
-      }
-
-      .arrow {
-        font-size: 1.25rem;
-        color: var(--color-text-tertiary);
-        transition: transform 0.2s ease;
-      }
-
-      &:hover {
-        border-color: var(--color-accent);
-        background: rgba(0, 212, 255, 0.05);
-
-        .arrow {
-          transform: translateX(4px);
-          color: var(--color-accent);
-        }
-      }
-    }
-  }
-
-  // Step 3: Team Selection
-  &__content {
-    display: grid;
-    grid-template-columns: 340px 1fr;
-    gap: 1.5rem;
-    flex: 1;
-    max-width: 1000px;
-    margin: 0 auto;
-    width: 100%;
-
-    @media (max-width: 800px) {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-  }
-
-  &__sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-
-    @media (max-width: 800px) {
-      gap: 0.75rem;
-    }
-
-    .league-badge {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.75rem 1rem;
-      background: var(--color-glass);
-      border: 1px solid var(--color-glass-border);
-      border-radius: var(--border-radius-md);
-
-      .flag { font-size: 1.5rem; }
-      .name { font-weight: 600; font-size: 1.1rem; }
-    }
-
-    .search-box {
-      input {
-        width: 100%;
-        padding: 1rem;
-        background: var(--color-bg-card);
-        border: 1px solid var(--color-glass-border);
-        border-radius: var(--border-radius-md);
-        color: var(--color-text-primary);
-        font-size: 16px;
-
-        &:focus {
-          outline: none;
-          border-color: var(--color-accent);
-        }
-
-        &::placeholder {
-          color: var(--color-text-tertiary);
-        }
-      }
-    }
-
-    .team-list {
-      flex: 1;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      max-height: 50vh;
-      padding-right: 0.5rem;
-
-      @media (max-width: 800px) {
-        max-height: 40vh;
-      }
-    }
-
-    .team-item {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 1rem;
-      background: var(--color-bg-card);
-      border: 1px solid transparent;
-      border-radius: var(--border-radius-md);
-      cursor: pointer;
-      transition: all var(--transition-fast);
-      text-align: left;
-      -webkit-tap-highlight-color: transparent;
-
-      .team-badge {
-        width: 44px;
-        height: 44px;
-        border-radius: var(--border-radius-sm);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 700;
-        font-size: 0.75rem;
-        flex-shrink: 0;
-      }
-
-      .team-info {
-        flex: 1;
-        min-width: 0;
-
-        .name {
-          display: block;
-          font-weight: 600;
-          font-size: 1rem;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-
-        .meta {
-          display: block;
-          font-size: 0.85rem;
-          color: var(--color-text-tertiary);
-        }
-      }
-
-      .difficulty {
-        font-size: 0.8rem;
-        font-weight: 600;
-        text-transform: uppercase;
-      }
-
-      &:active {
-        background: var(--color-bg-card-hover);
-        transform: scale(0.98);
-      }
-
-      &.selected {
-        background: rgba(0, 212, 255, 0.1);
-        border-color: var(--color-accent);
-      }
-    }
-  }
-
-  &__details {
-    @media (max-width: 800px) {
-      order: -1;
-    }
-
-    .placeholder {
-      display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 1rem;
-      height: 200px;
-      background: var(--color-glass);
-      border: 1px dashed var(--color-glass-border);
-      border-radius: var(--border-radius-lg);
-
-      .icon { font-size: 2.5rem; opacity: 0.5; }
-      p { color: var(--color-text-tertiary); margin: 0; font-size: 1.1rem; }
-
-      @media (max-width: 800px) {
-        height: 120px;
-        .icon { font-size: 2rem; }
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: $pcf-gray;
+      transition: all 0.3s;
+    }
+    
+    .step-label {
+      font-size: 0.65rem;
+      color: $pcf-gray;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    
+    &.active {
+      .step-num {
+        background: linear-gradient(135deg, $pcf-green, lighten($pcf-green, 10%));
+        border-color: $pcf-green;
+        color: white;
+        box-shadow: 0 0 12px rgba($pcf-green, 0.5);
+      }
+      
+      .step-label {
+        color: $pcf-white;
       }
     }
-
-    .team-card {
-      background: var(--color-glass);
-      border: 1px solid var(--color-glass-border);
-      border-radius: var(--border-radius-lg);
-      overflow: hidden;
+  }
+  
+  .progress-line {
+    width: 50px;
+    height: 3px;
+    background: $pcf-bg-dark;
+    margin: 0 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 2px;
+    transition: all 0.3s;
+    
+    &.active {
+      background: linear-gradient(90deg, $pcf-green, lighten($pcf-green, 10%));
     }
+    
+    @media (max-width: 500px) {
+      width: 30px;
+    }
+  }
+}
 
-    .team-header {
+// ============================================================
+// CONTENIDO
+// ============================================================
+.pcf-ts-content {
+  flex: 1;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+// ============================================================
+// PAÍSES
+// ============================================================
+.countries-grid {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  overflow: hidden;
+  
+  h2 {
+    text-align: center;
+    color: $pcf-white;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  
+  .countries-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    overflow-y: auto;
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  
+  .country-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(180deg, #2a4a6a 0%, #1a3a5a 100%);
+    border: 2px solid #4a6a8a;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+    flex-shrink: 0;
+    
+    &:hover {
+      background: linear-gradient(180deg, #3a5a7a 0%, #2a4a6a 100%);
+      border-color: $pcf-gold;
+      transform: translateX(5px);
+    }
+    
+    .flag {
+      font-size: 2.5rem;
+    }
+    
+    .info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      
+      .name {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: $pcf-white;
+      }
+      
+      .meta {
+        font-size: 0.8rem;
+        color: $pcf-gray;
+      }
+    }
+    
+    .arrow {
+      font-size: 1.5rem;
+      color: $pcf-gold;
+    }
+  }
+}
+
+// ============================================================
+// LIGAS
+// ============================================================
+.leagues-grid {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  overflow: hidden;
+  
+  h2 {
+    text-align: center;
+    color: $pcf-white;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  
+  .leagues-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    overflow-y: auto;
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  
+  .league-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(180deg, #2a4a6a 0%, #1a3a5a 100%);
+    border: 2px solid #4a6a8a;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+    flex-shrink: 0;
+    
+    &:hover:not(.disabled) {
+      background: linear-gradient(180deg, #3a5a7a 0%, #2a4a6a 100%);
+      border-color: $pcf-gold;
+      transform: translateX(5px);
+    }
+    
+    &.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    
+    .league-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, $pcf-green, #2ecc71);
+      border-radius: 8px;
       display: flex;
       align-items: center;
-      gap: 1rem;
-      padding: 1.25rem;
-      background: linear-gradient(135deg, var(--primary), color-mix(in srgb, var(--primary) 70%, black));
-
-      @media (max-width: 800px) {
-        padding: 1rem;
-      }
-
-      .badge {
-        width: 60px;
-        height: 60px;
-        background: var(--secondary);
-        color: var(--primary);
-        border-radius: var(--border-radius-md);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 900;
-        font-size: 1rem;
-        flex-shrink: 0;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-
-        @media (max-width: 800px) {
-          width: 50px;
-          height: 50px;
-          font-size: 0.85rem;
-        }
-      }
-
-      .info {
-        color: var(--secondary);
-        flex: 1;
-        min-width: 0;
-
-        h2 {
-          margin: 0 0 0.25rem 0;
-          font-size: 1.3rem;
-          font-weight: 700;
-          text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-
-          @media (max-width: 500px) {
-            font-size: 1.1rem;
-          }
-        }
-
-        p {
-          margin: 0;
-          opacity: 0.85;
-          font-size: 0.95rem;
-        }
-      }
+      justify-content: center;
+      font-size: 1.5rem;
     }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1px;
-      background: var(--color-glass-border);
-
-      .stat {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        padding: 1rem;
-        background: var(--color-bg-card);
-
-        .icon {
-          font-size: 1.3rem;
-        }
-
-        .content {
-          .label {
-            display: block;
-            font-size: 0.7rem;
-            color: var(--color-text-tertiary);
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-          }
-
-          .value {
-            display: block;
-            font-weight: 600;
-            font-size: 0.95rem;
-            margin-top: 0.1rem;
-          }
-        }
+    
+    .info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      
+      .name {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: $pcf-white;
       }
-    }
-
-    .squad-preview {
-      padding: 1.25rem;
-      border-top: 1px solid var(--color-glass-border);
-
-      h3 {
-        margin: 0 0 1rem 0;
+      
+      .meta {
         font-size: 0.8rem;
-        color: var(--color-text-tertiary);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-      }
-
-      .players {
-        display: flex;
-        flex-direction: column;
-        gap: 0.4rem;
-      }
-
-      .player {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        padding: 0.5rem 0.75rem;
-        background: var(--color-bg-card);
-        border-radius: var(--border-radius-sm);
-
-        .pos {
-          width: 35px;
-          font-weight: 700;
-          font-size: 0.8rem;
-          color: var(--color-warning);
-        }
-
-        .name {
-          flex: 1;
-          font-size: 0.9rem;
-        }
-
-        .ovr {
-          font-weight: 700;
-          color: var(--color-success);
-        }
-      }
-
-      .total {
-        text-align: center;
-        color: var(--color-text-tertiary);
-        font-size: 0.8rem;
-        margin: 0.75rem 0 0;
+        color: $pcf-gray;
       }
     }
+    
+    .arrow {
+      font-size: 1.5rem;
+      color: $pcf-gold;
+    }
+  }
+}
 
-    .start-btn {
+// ============================================================
+// GRUPOS
+// ============================================================
+.groups-grid {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  overflow: hidden;
+  
+  h2 {
+    text-align: center;
+    color: $pcf-white;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  
+  .groups-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    overflow-y: auto;
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  
+  .group-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(180deg, $pcf-bg-light 0%, $pcf-bg-mid 100%);
+    border: 2px solid $pcf-accent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+    flex-shrink: 0;
+    
+    &:hover {
+      background: linear-gradient(180deg, rgba($pcf-accent, 0.3) 0%, $pcf-bg-light 100%);
+      border-color: $pcf-gold;
+      transform: translateX(5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    
+    .group-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, $pcf-gold, $pcf-orange);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 0 2px 8px rgba($pcf-gold, 0.3);
+    }
+    
+    .info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      
+      .name {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: $pcf-white;
+      }
+      
+      .meta {
+        font-size: 0.85rem;
+        color: $pcf-text;
+      }
+    }
+    
+    .arrow {
+      font-size: 1.5rem;
+      color: $pcf-gold;
+    }
+  }
+}
+
+// ============================================================
+// EQUIPOS
+// ============================================================
+.teams-layout {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  overflow: hidden;
+  
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+  }
+}
+
+.teams-panel {
+  background: $pcf-bg-dark;
+  border-right: 1px solid $pcf-bg-light;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  
+  @media (max-width: 900px) {
+    border-right: none;
+    border-bottom: 1px solid $pcf-bg-light;
+  }
+  
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem 1rem;
+    background: linear-gradient(180deg, $pcf-bg-light 0%, $pcf-bg-mid 100%);
+    border-bottom: 2px solid $pcf-accent;
+    flex-shrink: 0;
+    
+    .league-name {
+      font-weight: 600;
+      color: $pcf-gold;
+      font-size: 0.9rem;
+    }
+    
+    .team-count {
+      color: $pcf-text;
+      font-size: 0.8rem;
+      background: $pcf-bg-dark;
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+    }
+  }
+  
+  .search-box {
+    padding: 0.5rem 0.6rem;
+    background: $pcf-bg-mid;
+    flex-shrink: 0;
+    
+    input {
       width: 100%;
-      padding: 1.25rem;
-      background: linear-gradient(135deg, var(--color-success), #28a745);
-      border: none;
-      color: #fff;
-      font-size: 1.2rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      -webkit-tap-highlight-color: transparent;
-
-      &:active {
-        transform: scale(0.98);
-        filter: brightness(0.9);
+      padding: 0.6rem 0.9rem;
+      background: $pcf-bg-dark;
+      border: 2px solid $pcf-bg-light;
+      border-radius: 6px;
+      color: $pcf-white;
+      font-size: 0.9rem;
+      
+      &::placeholder {
+        color: $pcf-gray;
       }
+      
+      &:focus {
+        outline: none;
+        border-color: $pcf-accent;
+        box-shadow: 0 0 8px rgba($pcf-accent, 0.3);
+      }
+    }
+  }
+  
+  .teams-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0;
+    
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: $pcf-bg-dark;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: $pcf-bg-light;
+      border-radius: 4px;
+      
+      &:hover {
+        background: $pcf-accent;
+      }
+    }
+  }
+  
+  .team-row {
+    display: grid;
+    grid-template-columns: 30px 44px 1fr 50px 80px;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 1rem;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba($pcf-bg-light, 0.5);
+    border-radius: 0;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: left;
+    width: 100%;
+    
+    &:nth-child(even) {
+      background: rgba(0,0,0,0.2);
+    }
+    
+    &:hover {
+      background: rgba($pcf-accent, 0.2);
+    }
+    
+    &.selected {
+      background: linear-gradient(90deg, rgba($pcf-accent, 0.3) 0%, rgba($pcf-accent, 0.15) 100%);
+      box-shadow: inset 4px 0 0 $pcf-gold;
+    }
+    
+    .team-num {
+      color: $pcf-gray;
+      font-size: 0.85rem;
+      text-align: center;
+      font-weight: 600;
+    }
+    
+    .team-badge {
+      width: 40px;
+      height: 40px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.7rem;
+      border: 2px solid rgba(255,255,255,0.3);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .team-info {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      gap: 0.15rem;
+      
+      .name {
+        color: $pcf-white;
+        font-size: 0.95rem;
+        font-weight: 500;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 1.25;
+      }
+      
+      .city {
+        color: $pcf-text;
+        font-size: 0.8rem;
+        line-height: 1.2;
+      }
+    }
+    
+    .team-ovr {
+      color: $pcf-green;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+    
+    .team-diff {
+      font-size: 0.9rem;
+      text-align: right;
+      letter-spacing: 1px;
+    }
+  }
+}
 
-      @media (hover: hover) {
-        &:hover {
-          filter: brightness(1.1);
+// ============================================================
+// DETALLES DEL EQUIPO
+// ============================================================
+.details-panel {
+  background: linear-gradient(180deg, $pcf-bg-mid 0%, $pcf-bg-dark 100%);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  
+  @media (max-width: 900px) {
+    min-height: 350px;
+    max-height: 50vh;
+  }
+}
+
+.team-details {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  
+  .team-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem;
+    background: linear-gradient(135deg, var(--primary), $pcf-bg-dark);
+    border-bottom: 3px solid var(--secondary);
+    flex-shrink: 0;
+    
+    .badge-large {
+      width: 70px;
+      height: 70px;
+      background: var(--primary);
+      border: 3px solid var(--secondary);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--secondary);
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+    
+    .team-title {
+      flex: 1;
+      min-width: 0;
+      
+      h2 {
+        margin: 0;
+        color: $pcf-white;
+        font-size: 1.4rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+      }
+      
+      p {
+        margin: 0.3rem 0 0;
+        color: $pcf-text;
+        font-size: 0.9rem;
+      }
+    }
+  }
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    padding: 0.8rem;
+    background: rgba(0,0,0,0.2);
+    flex-shrink: 0;
+    
+    .stat-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0.6rem;
+      background: $pcf-bg-dark;
+      border-radius: 8px;
+      border: 1px solid $pcf-bg-light;
+      
+      .icon {
+        font-size: 1.2rem;
+        margin-bottom: 0.2rem;
+      }
+      
+      .label {
+        font-size: 0.65rem;
+        color: $pcf-gray;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      
+      .value {
+        font-weight: 600;
+        color: $pcf-white;
+        font-size: 0.9rem;
+        
+        &.highlight {
+          color: $pcf-gold;
+          font-size: 1rem;
+          font-weight: 700;
         }
       }
     }
   }
+  
+  .difficulty-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 1rem;
+    background: $pcf-bg-dark;
+    border-top: 1px solid $pcf-bg-light;
+    border-bottom: 1px solid $pcf-bg-light;
+    flex-shrink: 0;
+    
+    .label {
+      color: $pcf-text;
+      font-size: 0.85rem;
+    }
+    
+    .difficulty-value {
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+  }
+  
+  .squad-preview {
+    flex: 1;
+    padding: 0.8rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    
+    h3 {
+      margin: 0 0 0.5rem;
+      color: $pcf-gold;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+    
+    .players-list {
+      flex: 1;
+      overflow-y: auto;
+      min-height: 0;
+    }
+    
+    .player-row {
+      display: grid;
+      grid-template-columns: 40px 1fr 40px;
+      padding: 0.45rem 0.6rem;
+      background: transparent;
+      border-bottom: 1px solid rgba($pcf-bg-light, 0.5);
+      font-size: 0.85rem;
+      
+      &:nth-child(even) {
+        background: rgba(0,0,0,0.15);
+      }
+      
+      .pos {
+        color: $pcf-accent;
+        font-weight: 700;
+      }
+      
+      .name {
+        color: $pcf-white;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      
+      .ovr {
+        color: $pcf-gold;
+        font-weight: 700;
+        text-align: right;
+      }
+    }
+    
+    .squad-total {
+      margin-top: 0.5rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid $pcf-bg-light;
+      color: $pcf-text;
+      font-size: 0.8rem;
+      text-align: center;
+      flex-shrink: 0;
+    }
+  }
+  
+  .btn-start {
+    margin: 0.8rem;
+    padding: 1rem;
+    background: linear-gradient(180deg, $pcf-green 0%, darken($pcf-green, 15%) 100%);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba($pcf-green, 0.4);
+    
+    &:hover {
+      background: linear-gradient(180deg, lighten($pcf-green, 5%) 0%, $pcf-green 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba($pcf-green, 0.5);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+.no-selection {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: $pcf-text;
+  background: linear-gradient(135deg, rgba($pcf-accent, 0.05) 0%, transparent 100%);
+  
+  .icon {
+    font-size: 4rem;
+    animation: bounce 1.5s ease-in-out infinite;
+    opacity: 0.7;
+  }
+  
+  p {
+    font-size: 1.1rem;
+    color: $pcf-gray;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-10px); }
 }

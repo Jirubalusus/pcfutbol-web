@@ -1,18 +1,17 @@
 import React, { useState, useMemo } from 'react';
 import { useGame } from '../../context/GameContext';
 import { 
-  LALIGA_TEAMS, 
-  SEGUNDA_TEAMS, 
-  PRIMERA_RFEF_TEAMS, 
-  SEGUNDA_RFEF_TEAMS,
-  PREMIER_LEAGUE_TEAMS,
-  LIGUE1_TEAMS,
-  BUNDESLIGA_TEAMS,
-  SERIE_A_TEAMS,
-  EREDIVISIE_TEAMS,
-  PRIMEIRA_LIGA_TEAMS,
-  LEAGUES 
-} from '../../data/teams';
+  getLaLigaTeams,
+  getSegundaTeams,
+  getPrimeraRfefTeams,
+  getSegundaRfefTeams,
+  getPremierTeams,
+  getSerieATeams,
+  getBundesligaTeams,
+  getLigue1Teams,
+  getPrimeraRfefGroups,
+  getSegundaRfefGroups
+} from '../../data/teamsFirestore';
 import { initializeLeague } from '../../game/leagueEngine';
 import { generateSeasonObjectives } from '../../game/objectivesEngine';
 import './TeamSelection.scss';
@@ -23,22 +22,31 @@ const COUNTRIES = [
   { id: 'germany', name: 'Alemania', flag: '🇩🇪', leagues: ['bundesliga'] },
   { id: 'italy', name: 'Italia', flag: '🇮🇹', leagues: ['serieA'] },
   { id: 'france', name: 'Francia', flag: '🇫🇷', leagues: ['ligue1'] },
-  { id: 'netherlands', name: 'Países Bajos', flag: '🇳🇱', leagues: ['eredivisie'] },
-  { id: 'portugal', name: 'Portugal', flag: '🇵🇹', leagues: ['primeiraLiga'] },
 ];
 
-const LEAGUE_TEAMS = {
-  laliga: LALIGA_TEAMS,
-  segunda: SEGUNDA_TEAMS,
-  primeraRFEF: PRIMERA_RFEF_TEAMS,
-  segundaRFEF: SEGUNDA_RFEF_TEAMS,
-  premierLeague: PREMIER_LEAGUE_TEAMS || [],
-  ligue1: LIGUE1_TEAMS || [],
-  bundesliga: BUNDESLIGA_TEAMS || [],
-  serieA: SERIE_A_TEAMS || [],
-  eredivisie: EREDIVISIE_TEAMS || [],
-  primeiraLiga: PRIMEIRA_LIGA_TEAMS || [],
-};
+// Función helper para obtener equipos de una liga
+function getLeagueTeams(leagueId) {
+  switch(leagueId) {
+    case 'laliga': return getLaLigaTeams();
+    case 'segunda': return getSegundaTeams();
+    case 'primeraRFEF': return getPrimeraRfefTeams();
+    case 'segundaRFEF': return getSegundaRfefTeams();
+    case 'premierLeague': return getPremierTeams();
+    case 'serieA': return getSerieATeams();
+    case 'bundesliga': return getBundesligaTeams();
+    case 'ligue1': return getLigue1Teams();
+    default: return [];
+  }
+}
+
+// Función helper para obtener grupos
+function getLeagueGroups(leagueId) {
+  switch(leagueId) {
+    case 'primeraRFEF': return getPrimeraRfefGroups();
+    case 'segundaRFEF': return getSegundaRfefGroups();
+    default: return null;
+  }
+}
 
 const LEAGUE_NAMES = {
   laliga: 'La Liga EA Sports',
@@ -53,23 +61,46 @@ const LEAGUE_NAMES = {
   primeiraLiga: 'Primeira Liga',
 };
 
+// Ligas que tienen grupos
+const LEAGUES_WITH_GROUPS = ['primeraRFEF', 'segundaRFEF'];
+
 export default function TeamSelection() {
   const { dispatch } = useGame();
-  const [step, setStep] = useState(1); // 1: País, 2: Liga, 3: Equipo
+  const [step, setStep] = useState(1);
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [selectedLeague, setSelectedLeague] = useState(null);
+  const [selectedGroup, setSelectedGroup] = useState(null);
   const [selectedTeam, setSelectedTeam] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   
+  // Determinar si la liga seleccionada tiene grupos
+  const hasGroups = selectedLeague && LEAGUES_WITH_GROUPS.includes(selectedLeague);
+  
+  // Calcular el número total de pasos
+  const totalSteps = hasGroups ? 4 : 3;
+  
+  // Obtener equipos según liga y grupo
   const teams = useMemo(() => {
     if (!selectedLeague) return [];
-    return LEAGUE_TEAMS[selectedLeague] || [];
-  }, [selectedLeague]);
+    
+    // Si tiene grupos y hay uno seleccionado, usar equipos del grupo
+    if (hasGroups && selectedGroup) {
+      const groups = getLeagueGroups(selectedLeague);
+      return groups[selectedGroup]?.teams || [];
+    }
+    
+    // Si no tiene grupos, devolver todos los equipos
+    if (!hasGroups) {
+      return getLeagueTeams(selectedLeague);
+    }
+    
+    return [];
+  }, [selectedLeague, selectedGroup, hasGroups]);
 
   const filteredTeams = useMemo(() => {
     if (!searchTerm) return teams;
     return teams.filter(t => 
-      t.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      t.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       t.city?.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }, [teams, searchTerm]);
@@ -81,8 +112,19 @@ export default function TeamSelection() {
       setStep(1);
       setSelectedCountry(null);
       setSelectedLeague(null);
-    } else {
+      setSelectedGroup(null);
+    } else if (step === 3 && hasGroups) {
+      // Volver a selección de grupo
       setStep(2);
+      setSelectedGroup(null);
+      setSelectedTeam(null);
+    } else if (step === 3 && !hasGroups) {
+      // Volver a selección de liga
+      setStep(2);
+      setSelectedTeam(null);
+    } else if (step === 4) {
+      // Volver de equipos a grupos
+      setStep(3);
       setSelectedTeam(null);
     }
   };
@@ -90,8 +132,13 @@ export default function TeamSelection() {
   const handleSelectCountry = (country) => {
     setSelectedCountry(country);
     if (country.leagues.length === 1) {
-      setSelectedLeague(country.leagues[0]);
-      setStep(3);
+      const league = country.leagues[0];
+      setSelectedLeague(league);
+      if (LEAGUES_WITH_GROUPS.includes(league)) {
+        setStep(2); // Ir a grupos
+      } else {
+        setStep(3); // Ir a equipos
+      }
     } else {
       setStep(2);
     }
@@ -99,35 +146,49 @@ export default function TeamSelection() {
 
   const handleSelectLeague = (leagueId) => {
     setSelectedLeague(leagueId);
-    setStep(3);
+    setSelectedGroup(null);
+    if (LEAGUES_WITH_GROUPS.includes(leagueId)) {
+      setStep(3); // Ir a selección de grupo
+    } else {
+      setStep(3); // Ir a equipos directamente
+    }
   };
 
-  const handleSelectTeam = (teamId) => {
-    setSelectedTeam(teamId);
+  const handleSelectGroup = (groupId) => {
+    setSelectedGroup(groupId);
+    setStep(4); // Ir a equipos
+  };
+
+  const handleSelectTeam = (team) => {
+    setSelectedTeam(team);
   };
   
   const handleStartGame = () => {
     if (!selectedTeam || !selectedLeague) return;
     
-    const team = teams.find(t => t.id === selectedTeam);
-    if (!team) return;
+    // Obtener equipos de la liga/grupo para la competición
+    let leagueTeams;
+    if (hasGroups && selectedGroup) {
+      leagueTeams = getLeagueGroups(selectedLeague)?.[selectedGroup]?.teams || [];
+    } else {
+      leagueTeams = getLeagueTeams(selectedLeague);
+    }
     
-    const leagueTeams = LEAGUE_TEAMS[selectedLeague];
-    const leagueData = initializeLeague(leagueTeams, team.id);
+    const leagueData = initializeLeague(leagueTeams, selectedTeam.id);
     
     dispatch({ 
       type: 'NEW_GAME', 
       payload: { 
-        teamId: selectedTeam, 
-        team: { ...team }
+        teamId: selectedTeam.id, 
+        team: { ...selectedTeam },
+        group: selectedGroup
       } 
     });
     
     dispatch({ type: 'SET_LEAGUE_TABLE', payload: leagueData.table });
     dispatch({ type: 'SET_FIXTURES', payload: leagueData.fixtures });
     
-    // Generar objetivos de temporada
-    const objectives = generateSeasonObjectives(team, selectedLeague, leagueData.table);
+    const objectives = generateSeasonObjectives(selectedTeam, selectedLeague, leagueData.table);
     dispatch({ type: 'SET_SEASON_OBJECTIVES', payload: objectives });
     
     dispatch({
@@ -136,13 +197,12 @@ export default function TeamSelection() {
         id: Date.now(),
         type: 'welcome',
         title: '¡Bienvenido al club!',
-        content: `Has sido nombrado nuevo entrenador del ${team.name}. La afición espera grandes cosas de ti.`,
+        content: `Has sido nombrado nuevo entrenador del ${selectedTeam.name}. La afición espera grandes cosas de ti.`,
         date: 'Semana 1'
       }
     });
     
-    // Mensaje de objetivos
-    const criticalObj = objectives.find(o => o.priority === 'critical');
+    const criticalObj = objectives?.find(o => o.priority === 'critical');
     if (criticalObj) {
       dispatch({
         type: 'ADD_MESSAGE',
@@ -157,8 +217,6 @@ export default function TeamSelection() {
     }
   };
   
-  const selectedTeamData = teams.find(t => t.id === selectedTeam);
-  
   const formatMoney = (amount) => {
     if (!amount) return '€0';
     if (amount >= 1000000) return `€${(amount / 1000000).toFixed(0)}M`;
@@ -166,215 +224,347 @@ export default function TeamSelection() {
   };
 
   const getDifficulty = (team) => {
-    if (!team?.budget) return { label: 'Normal', color: '#888' };
-    if (team.budget >= 150000000) return { label: 'Fácil', color: '#30d158' };
-    if (team.budget >= 50000000) return { label: 'Normal', color: '#ffd60a' };
-    if (team.budget >= 20000000) return { label: 'Difícil', color: '#ff9f0a' };
-    return { label: 'Muy difícil', color: '#ff453a' };
+    if (!team?.budget) return { label: 'Normal', color: '#ffd60a', stars: 3 };
+    if (team.budget >= 150000000) return { label: 'Fácil', color: '#30d158', stars: 1 };
+    if (team.budget >= 80000000) return { label: 'Normal', color: '#ffd60a', stars: 2 };
+    if (team.budget >= 40000000) return { label: 'Medio', color: '#ff9f0a', stars: 3 };
+    if (team.budget >= 15000000) return { label: 'Difícil', color: '#ff6b35', stars: 4 };
+    return { label: 'Muy difícil', color: '#ff453a', stars: 5 };
+  };
+
+  const getAvgOverall = (team) => {
+    if (!team?.players?.length) return 0;
+    return Math.round(team.players.reduce((sum, p) => sum + p.overall, 0) / team.players.length);
+  };
+
+  // Determinar qué mostrar en cada paso
+  const getCurrentStepContent = () => {
+    // PASO 1: Países
+    if (step === 1) return 'countries';
+    
+    // PASO 2: Ligas (si hay múltiples) o Grupos (si liga con grupos y 1 liga)
+    if (step === 2) {
+      if (selectedCountry?.leagues.length > 1) return 'leagues';
+      if (hasGroups) return 'groups';
+      return 'leagues';
+    }
+    
+    // PASO 3: Grupos (si aplica) o Equipos
+    if (step === 3) {
+      if (hasGroups && !selectedGroup) return 'groups';
+      return 'teams';
+    }
+    
+    // PASO 4: Equipos (después de grupos)
+    if (step === 4) return 'teams';
+    
+    return 'countries';
+  };
+  
+  const currentContent = getCurrentStepContent();
+
+  // Calcular paso visual para el progress bar
+  const getVisualStep = () => {
+    if (step === 1) return 1;
+    if (step === 2) return 2;
+    if (step === 3) {
+      if (hasGroups && !selectedGroup) return 3;
+      return hasGroups ? 3 : 3;
+    }
+    if (step === 4) return 4;
+    return step;
   };
   
   return (
-    <div className="team-selection">
-      {/* Progress bar */}
-      <div className="team-selection__progress">
-        <div className={`step ${step >= 1 ? 'active' : ''} ${step > 1 ? 'completed' : ''}`}>
-          <span className="number">1</span>
-          <span className="label">País</span>
+    <div className="pcf-team-select">
+      {/* HEADER */}
+      <div className="pcf-ts-header">
+        <div className="header-left">
+          <button className="btn-back" onClick={handleBack}>
+            ← {step === 1 ? 'MENÚ' : 'ATRÁS'}
+          </button>
         </div>
-        <div className="line"></div>
-        <div className={`step ${step >= 2 ? 'active' : ''} ${step > 2 ? 'completed' : ''}`}>
-          <span className="number">2</span>
-          <span className="label">Liga</span>
+        <div className="header-center">
+          <h1>SELECCIÓN DE EQUIPO</h1>
         </div>
-        <div className="line"></div>
-        <div className={`step ${step >= 3 ? 'active' : ''}`}>
-          <span className="number">3</span>
-          <span className="label">Equipo</span>
+        <div className="header-right">
+          <div className="step-indicator">
+            Paso {getVisualStep()} de {totalSteps}
+          </div>
         </div>
       </div>
 
-      {/* Header */}
-      <header className="team-selection__header">
-        <button className="back-btn" onClick={handleBack}>
-          ← {step === 1 ? 'Menú' : 'Atrás'}
-        </button>
-        <h1>
-          {step === 1 && 'Elige un país'}
-          {step === 2 && `${selectedCountry?.flag} Elige una liga`}
-          {step === 3 && `Elige tu equipo`}
-        </h1>
-        <div className="spacer"></div>
-      </header>
-      
-      {/* Step 1: Country Selection */}
-      {step === 1 && (
-        <div className="team-selection__countries">
-          {COUNTRIES.map(country => (
-            <button
-              key={country.id}
-              className="country-card"
-              onClick={() => handleSelectCountry(country)}
-            >
-              <span className="flag">{country.flag}</span>
-              <span className="name">{country.name}</span>
-              <span className="leagues">{country.leagues.length} liga{country.leagues.length > 1 ? 's' : ''}</span>
-            </button>
-          ))}
+      {/* PROGRESS BAR */}
+      <div className="pcf-ts-progress">
+        <div className={`progress-step ${step >= 1 ? 'active' : ''}`}>
+          <div className="step-num">1</div>
+          <div className="step-label">PAÍS</div>
         </div>
-      )}
-
-      {/* Step 2: League Selection */}
-      {step === 2 && selectedCountry && (
-        <div className="team-selection__leagues">
-          {selectedCountry.leagues.map(leagueId => (
-            <button
-              key={leagueId}
-              className="league-card"
-              onClick={() => handleSelectLeague(leagueId)}
-            >
-              <div className="league-info">
-                <span className="name">{LEAGUE_NAMES[leagueId]}</span>
-                <span className="teams">{(LEAGUE_TEAMS[leagueId] || []).length} equipos</span>
-              </div>
-              <span className="arrow">→</span>
-            </button>
-          ))}
+        <div className={`progress-line ${step >= 2 ? 'active' : ''}`}></div>
+        <div className={`progress-step ${step >= 2 ? 'active' : ''}`}>
+          <div className="step-num">2</div>
+          <div className="step-label">LIGA</div>
         </div>
-      )}
-
-      {/* Step 3: Team Selection */}
-      {step === 3 && (
-        <div className="team-selection__content">
-          <aside className="team-selection__sidebar">
-            <div className="league-badge">
-              <span className="flag">{selectedCountry?.flag}</span>
-              <span className="name">{LEAGUE_NAMES[selectedLeague]}</span>
+        <div className={`progress-line ${step >= 3 ? 'active' : ''}`}></div>
+        {hasGroups && (
+          <>
+            <div className={`progress-step ${step >= 3 ? 'active' : ''}`}>
+              <div className="step-num">3</div>
+              <div className="step-label">GRUPO</div>
             </div>
+            <div className={`progress-line ${step >= 4 ? 'active' : ''}`}></div>
+          </>
+        )}
+        <div className={`progress-step ${(hasGroups ? step >= 4 : step >= 3) ? 'active' : ''}`}>
+          <div className="step-num">{hasGroups ? 4 : 3}</div>
+          <div className="step-label">EQUIPO</div>
+        </div>
+      </div>
 
-            <div className="search-box">
-              <input
-                type="text"
-                placeholder="🔍 Buscar equipo..."
-                value={searchTerm}
-                onChange={e => setSearchTerm(e.target.value)}
-              />
-            </div>
-            
-            <div className="team-list">
-              {filteredTeams.map(team => {
-                const difficulty = getDifficulty(team);
+      {/* CONTENIDO */}
+      <div className="pcf-ts-content">
+        {/* PAÍSES */}
+        {currentContent === 'countries' && (
+          <div className="countries-grid">
+            <h2>🌍 Selecciona un país</h2>
+            <div className="countries-list">
+              {COUNTRIES.map(country => {
+                const totalTeams = country.leagues.reduce((sum, l) => sum + (getLeagueTeams(l)?.length || 0), 0);
                 return (
                   <button
-                    key={team.id}
-                    className={`team-item ${selectedTeam === team.id ? 'selected' : ''}`}
-                    onClick={() => handleSelectTeam(team.id)}
+                    key={country.id}
+                    className="country-card"
+                    onClick={() => handleSelectCountry(country)}
                   >
-                    <div 
-                      className="team-badge"
-                      style={{ 
-                        background: team.colors?.primary || '#333',
-                        color: team.colors?.secondary || '#fff'
-                      }}
-                    >
-                      {team.shortName?.slice(0, 3) || team.name.slice(0, 3)}
+                    <span className="flag">{country.flag}</span>
+                    <div className="info">
+                      <span className="name">{country.name}</span>
+                      <span className="meta">
+                        {country.leagues.length} liga{country.leagues.length > 1 ? 's' : ''} • {totalTeams} equipos
+                      </span>
                     </div>
-                    <div className="team-info">
-                      <span className="name">{team.name}</span>
-                      <span className="meta">{team.city}</span>
-                    </div>
-                    <div className="difficulty" style={{ color: difficulty.color }}>
-                      {difficulty.label}
-                    </div>
+                    <span className="arrow">→</span>
                   </button>
                 );
               })}
             </div>
-          </aside>
-          
-          <main className="team-selection__details">
-            {selectedTeamData ? (
-              <div className="team-card">
-                <div 
-                  className="team-header"
-                  style={{
-                    '--primary': selectedTeamData.colors?.primary || '#333',
-                    '--secondary': selectedTeamData.colors?.secondary || '#fff'
-                  }}
+          </div>
+        )}
+
+        {/* LIGAS */}
+        {currentContent === 'leagues' && selectedCountry && (
+          <div className="leagues-grid">
+            <h2>{selectedCountry.flag} Ligas de {selectedCountry.name}</h2>
+            <div className="leagues-list">
+              {selectedCountry.leagues.map(leagueId => {
+                const leagueTeams = getLeagueTeams(leagueId);
+                const hasGroupsForLeague = LEAGUES_WITH_GROUPS.includes(leagueId);
+                const groups = hasGroupsForLeague ? getLeagueGroups(leagueId) : null;
+                const numGroups = groups ? Object.keys(groups).length : 0;
+                
+                return (
+                  <button
+                    key={leagueId}
+                    className={`league-card ${leagueTeams.length === 0 ? 'disabled' : ''}`}
+                    onClick={() => leagueTeams.length > 0 && handleSelectLeague(leagueId)}
+                    disabled={leagueTeams.length === 0}
+                  >
+                    <div className="league-icon">⚽</div>
+                    <div className="info">
+                      <span className="name">{LEAGUE_NAMES[leagueId]}</span>
+                      <span className="meta">
+                        {leagueTeams.length > 0 
+                          ? hasGroupsForLeague 
+                            ? `${numGroups} grupos • ${leagueTeams.length} equipos`
+                            : `${leagueTeams.length} equipos disponibles`
+                          : 'Próximamente'
+                        }
+                      </span>
+                    </div>
+                    <span className="arrow">{leagueTeams.length > 0 ? '→' : '🔒'}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* GRUPOS */}
+        {currentContent === 'groups' && selectedLeague && (
+          <div className="groups-grid">
+            <h2>📋 {LEAGUE_NAMES[selectedLeague]} - Selecciona un grupo</h2>
+            <div className="groups-list">
+              {Object.entries(getLeagueGroups(selectedLeague) || {}).map(([groupId, group]) => (
+                <button
+                  key={groupId}
+                  className="group-card"
+                  onClick={() => handleSelectGroup(groupId)}
                 >
-                  <div className="badge">
-                    {selectedTeamData.shortName || selectedTeamData.name.slice(0, 3)}
-                  </div>
+                  <div className="group-icon">🏆</div>
                   <div className="info">
-                    <h2>{selectedTeamData.name}</h2>
-                    <p>{selectedTeamData.city}, {selectedCountry?.name}</p>
+                    <span className="name">{group.name}</span>
+                    <span className="meta">
+                      {group.region ? `${group.region} • ` : ''}{group.teams.length} equipos
+                    </span>
                   </div>
-                </div>
-
-                <div className="stats-grid">
-                  <div className="stat">
-                    <span className="icon">🏟️</span>
-                    <div className="content">
-                      <span className="label">Estadio</span>
-                      <span className="value">{selectedTeamData.stadium || 'Municipal'}</span>
-                    </div>
-                  </div>
-                  <div className="stat">
-                    <span className="icon">👥</span>
-                    <div className="content">
-                      <span className="label">Capacidad</span>
-                      <span className="value">{(selectedTeamData.stadiumCapacity || 15000).toLocaleString()}</span>
-                    </div>
-                  </div>
-                  <div className="stat">
-                    <span className="icon">💰</span>
-                    <div className="content">
-                      <span className="label">Presupuesto</span>
-                      <span className="value">{formatMoney(selectedTeamData.budget)}</span>
-                    </div>
-                  </div>
-                  <div className="stat">
-                    <span className="icon">⭐</span>
-                    <div className="content">
-                      <span className="label">Reputación</span>
-                      <span className="value">{selectedTeamData.reputation || 70}/100</span>
-                    </div>
-                  </div>
-                </div>
-
-                {selectedTeamData.players && selectedTeamData.players.length > 0 && (
-                  <div className="squad-preview">
-                    <h3>Plantilla destacada</h3>
-                    <div className="players">
-                      {selectedTeamData.players
-                        .sort((a, b) => b.overall - a.overall)
-                        .slice(0, 5)
-                        .map((player, idx) => (
-                          <div key={idx} className="player">
-                            <span className="pos">{player.position}</span>
-                            <span className="name">{player.name}</span>
-                            <span className="ovr">{player.overall}</span>
-                          </div>
-                        ))}
-                    </div>
-                    <p className="total">
-                      {selectedTeamData.players.length} jugadores en plantilla
-                    </p>
-                  </div>
-                )}
-
-                <button className="start-btn" onClick={handleStartGame}>
-                  ⚽ Comenzar con {selectedTeamData.name}
+                  <span className="arrow">→</span>
                 </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* EQUIPOS */}
+        {currentContent === 'teams' && (
+          <div className="teams-layout">
+            {/* Panel izquierdo: Lista de equipos */}
+            <div className="teams-panel">
+              <div className="panel-header">
+                <span className="league-name">
+                  {selectedCountry?.flag} {LEAGUE_NAMES[selectedLeague]}
+                  {selectedGroup && ` - ${getLeagueGroups(selectedLeague)?.[selectedGroup]?.name}`}
+                </span>
+                <span className="team-count">{teams.length} equipos</span>
               </div>
-            ) : (
-              <div className="placeholder">
-                <span className="icon">👈</span>
-                <p>Selecciona un equipo de la lista</p>
+              
+              <div className="search-box">
+                <input
+                  type="text"
+                  placeholder="🔍 Buscar equipo..."
+                  value={searchTerm}
+                  onChange={e => setSearchTerm(e.target.value)}
+                />
               </div>
-            )}
-          </main>
-        </div>
-      )}
+              
+              <div className="teams-list">
+                {filteredTeams.map((team, idx) => {
+                  const difficulty = getDifficulty(team);
+                  const avgOvr = getAvgOverall(team);
+                  const isSelected = selectedTeam?.id === team.id;
+                  
+                  return (
+                    <button
+                      key={team.id}
+                      className={`team-row ${isSelected ? 'selected' : ''}`}
+                      onClick={() => handleSelectTeam(team)}
+                    >
+                      <span className="team-num">{idx + 1}</span>
+                      <div 
+                        className="team-badge"
+                        style={{ 
+                          background: team.colors?.primary || '#1a3a5a',
+                          color: team.colors?.secondary || '#fff'
+                        }}
+                      >
+                        {team.shortName?.slice(0, 3) || team.name?.slice(0, 3)}
+                      </div>
+                      <div className="team-info">
+                        <span className="name">{team.name}</span>
+                        <span className="city">{team.city}</span>
+                      </div>
+                      <span className="team-ovr">{avgOvr || '??'}</span>
+                      <span className="team-diff" style={{ color: difficulty.color }}>
+                        {'★'.repeat(difficulty.stars)}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+            
+            {/* Panel derecho: Detalles del equipo */}
+            <div className="details-panel">
+              {selectedTeam ? (
+                <div className="team-details">
+                  {/* Header del equipo */}
+                  <div 
+                    className="team-header"
+                    style={{ 
+                      '--primary': selectedTeam.colors?.primary || '#1a3a5a',
+                      '--secondary': selectedTeam.colors?.secondary || '#fff'
+                    }}
+                  >
+                    <div className="badge-large">
+                      {selectedTeam.shortName || selectedTeam.name?.slice(0, 3)}
+                    </div>
+                    <div className="team-title">
+                      <h2>{selectedTeam.name}</h2>
+                      <p>{selectedTeam.city}, {selectedCountry?.name}</p>
+                    </div>
+                  </div>
+
+                  {/* Stats */}
+                  <div className="stats-grid">
+                    <div className="stat-card">
+                      <span className="icon">🏟️</span>
+                      <span className="label">Estadio</span>
+                      <span className="value">{selectedTeam.stadium || 'Municipal'}</span>
+                    </div>
+                    <div className="stat-card">
+                      <span className="icon">👥</span>
+                      <span className="label">Capacidad</span>
+                      <span className="value">{(selectedTeam.stadiumCapacity || 15000).toLocaleString()}</span>
+                    </div>
+                    <div className="stat-card">
+                      <span className="icon">💰</span>
+                      <span className="label">Presupuesto</span>
+                      <span className="value highlight">{formatMoney(selectedTeam.budget)}</span>
+                    </div>
+                    <div className="stat-card">
+                      <span className="icon">⭐</span>
+                      <span className="label">Reputación</span>
+                      <span className="value">{selectedTeam.reputation || 70}/100</span>
+                    </div>
+                  </div>
+
+                  {/* Dificultad */}
+                  <div className="difficulty-bar">
+                    <span className="label">Dificultad:</span>
+                    <span 
+                      className="difficulty-value"
+                      style={{ color: getDifficulty(selectedTeam).color }}
+                    >
+                      {getDifficulty(selectedTeam).label} {'★'.repeat(getDifficulty(selectedTeam).stars)}
+                    </span>
+                  </div>
+
+                  {/* Plantilla destacada */}
+                  {selectedTeam.players && selectedTeam.players.length > 0 && (
+                    <div className="squad-preview">
+                      <h3>⭐ Jugadores destacados</h3>
+                      <div className="players-list">
+                        {selectedTeam.players
+                          .sort((a, b) => b.overall - a.overall)
+                          .slice(0, 5)
+                          .map((player, idx) => (
+                            <div key={idx} className="player-row">
+                              <span className="pos">{player.position}</span>
+                              <span className="name">{player.name}</span>
+                              <span className="ovr">{player.overall}</span>
+                            </div>
+                          ))}
+                      </div>
+                      <div className="squad-total">
+                        📋 {selectedTeam.players.length} jugadores en plantilla
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Botón comenzar */}
+                  <button className="btn-start" onClick={handleStartGame}>
+                    ⚽ COMENZAR CON {selectedTeam.name?.toUpperCase()}
+                  </button>
+                </div>
+              ) : (
+                <div className="no-selection">
+                  <span className="icon">👈</span>
+                  <p>Selecciona un equipo de la lista</p>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

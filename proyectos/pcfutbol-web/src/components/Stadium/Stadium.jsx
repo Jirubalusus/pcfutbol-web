@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useGame } from '../../context/GameContext';
-import { LALIGA_TEAMS } from '../../data/teams';
+import { LALIGA_TEAMS } from '../../data/teamsFirestore';
 import './Stadium.scss';
 
 // === CONFIGURACIÓN DEL ESTADIO ===

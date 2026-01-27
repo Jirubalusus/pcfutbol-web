@@ -19,12 +19,12 @@ import {
 } from "../src/data/teams.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCXohQV4AfImbLitInrumH5mTk_6HseyPE",
-  authDomain: "pcfutbol-c136e.firebaseapp.com",
-  projectId: "pcfutbol-c136e",
-  storageBucket: "pcfutbol-c136e.firebasestorage.app",
-  messagingSenderId: "159298941337",
-  appId: "1:159298941337:web:0ae9526db19ded288fa308"
+  apiKey: "AIzaSyBIpJz1ZoZx_roIne3oc0yArVzeo4kDmvw",
+  authDomain: "pcfutbol-web.firebaseapp.com",
+  projectId: "pcfutbol-web",
+  storageBucket: "pcfutbol-web.firebasestorage.app",
+  messagingSenderId: "664376263748",
+  appId: "1:664376263748:web:3ba1fd5d119d021cb5e811"
 };
 
 const app = initializeApp(firebaseConfig);

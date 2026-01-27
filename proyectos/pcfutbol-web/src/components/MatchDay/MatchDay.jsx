@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useGame } from '../../context/GameContext';
-import { LALIGA_TEAMS, SEGUNDA_TEAMS, PRIMERA_RFEF_TEAMS, SEGUNDA_RFEF_TEAMS } from '../../data/teams';
+import { LALIGA_TEAMS, SEGUNDA_TEAMS, PRIMERA_RFEF_TEAMS, SEGUNDA_RFEF_TEAMS } from '../../data/teamsFirestore';
 import { simulateMatch, updateTable, simulateWeekMatches, calculateTeamStrength, FORMATIONS, TACTICS } from '../../game/leagueEngine';
 import './MatchDay.scss';
 
-// Combine all teams for lookup
+// Combine all teams for lookup (se calculará dinámicamente)
 const ALL_TEAMS = [...LALIGA_TEAMS, ...SEGUNDA_TEAMS, ...PRIMERA_RFEF_TEAMS, ...SEGUNDA_RFEF_TEAMS];
 
 export default function MatchDay({ onComplete }) {

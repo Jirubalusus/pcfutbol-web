@@ -1,0 +1,32 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Datos de equipos y ligas - lectura pública, escritura solo admin
+    match /teams/{teamId} {
+      allow read: if true;
+      allow write: if false; // Solo desde scripts con credenciales admin
+    }
+    
+    match /leagues/{leagueId} {
+      allow read: if true;
+      allow write: if false;
+    }
+    
+    match /metadata/{docId} {
+      allow read: if true;
+      allow write: if false;
+    }
+    
+    // Datos de partidas guardadas - solo el usuario autenticado
+    match /saves/{saveId} {
+      allow read, write: if request.auth != null && request.auth.uid == resource.data.userId;
+      allow create: if request.auth != null && request.auth.uid == request.resource.data.userId;
+    }
+    
+    // Bloquear todo lo demás
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

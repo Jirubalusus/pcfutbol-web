@@ -1,16 +1,13 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useGame } from '../../context/GameContext';
 import { 
-  LALIGA_TEAMS, 
-  SEGUNDA_TEAMS,
-  PREMIER_LEAGUE_TEAMS,
-  LIGUE1_TEAMS,
-  BUNDESLIGA_TEAMS,
-  SERIE_A_TEAMS,
-  EREDIVISIE_TEAMS,
-  PRIMEIRA_LIGA_TEAMS,
-  getTeamsByLeague
-} from '../../data/teams';
+  getLaLigaTeams,
+  getSegundaTeams,
+  getPremierTeams,
+  getLigue1Teams,
+  getBundesligaTeams,
+  getSerieATeams
+} from '../../data/teamsFirestore';
 import { 
   PERSONALITIES, 
   SPECIAL_GOALS, 
@@ -21,16 +18,30 @@ import TransferMap from './TransferMap';
 import './Transfers.scss';
 import './TransferMap.scss';
 
-const ALL_TEAMS = [
-  ...LALIGA_TEAMS, 
-  ...SEGUNDA_TEAMS,
-  ...(PREMIER_LEAGUE_TEAMS || []),
-  ...(LIGUE1_TEAMS || []),
-  ...(BUNDESLIGA_TEAMS || []),
-  ...(SERIE_A_TEAMS || []),
-  ...(EREDIVISIE_TEAMS || []),
-  ...(PRIMEIRA_LIGA_TEAMS || [])
-];
+// Función helper para obtener todos los equipos
+function getAllTeams() {
+  return [
+    ...getLaLigaTeams(),
+    ...getSegundaTeams(),
+    ...getPremierTeams(),
+    ...getLigue1Teams(),
+    ...getBundesligaTeams(),
+    ...getSerieATeams()
+  ];
+}
+
+// Función helper para obtener equipos por liga
+function getTeamsByLeague(league) {
+  switch(league) {
+    case 'laliga': return getLaLigaTeams();
+    case 'segunda': return getSegundaTeams();
+    case 'premier': return getPremierTeams();
+    case 'ligue1': return getLigue1Teams();
+    case 'bundesliga': return getBundesligaTeams();
+    case 'seriea': return getSerieATeams();
+    default: return [];
+  }
+}
 
 // === CONSTANTES DEL MERCADO ===
 const TRANSFER_WINDOWS = {
@@ -94,7 +105,7 @@ const calculateAIInterest = (player, week, teamId) => {
   const seed = player.name.length * 100 + week * 10;
   const interestedTeams = [];
   
-  ALL_TEAMS.forEach((team, idx) => {
+  getAllTeams().forEach((team, idx) => {
     if (team.id === teamId) return;
     const teamInterest = seededRandom(seed + idx * 7);
     
@@ -157,7 +168,7 @@ export default function Transfers() {
     const seed = state.currentWeek * 12345 + (state.currentSeason || 1) * 999;
     
     let playerIndex = 0;
-    ALL_TEAMS.forEach(team => {
+    getAllTeams().forEach(team => {
       if (team.id === state.teamId || !team.players) return;
       
       // Determinar la liga del equipo
@@ -319,7 +330,7 @@ export default function Transfers() {
     const targetPlayer = weightedPlayers[targetIndex];
     
     // Seleccionar equipo que hace la oferta (coherente con el nivel del jugador)
-    const suitableTeams = ALL_TEAMS.filter(t => {
+    const suitableTeams = getAllTeams().filter(t => {
       if (t.id === state.teamId) return false;
       const repDiff = Math.abs((t.reputation || 70) - targetPlayer.overall);
       return repDiff < 20 && (t.budget || 50000000) > targetPlayer.value * 0.4;

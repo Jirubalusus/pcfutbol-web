@@ -1,4 +1,5 @@
 import { GameProvider, useGame } from './context/GameContext';
+import { DataProvider } from './context/DataProvider';
 import MainMenu from './components/MainMenu/MainMenu';
 import TeamSelection from './components/TeamSelection/TeamSelection';
 import Office from './components/Office/Office';
@@ -30,9 +31,11 @@ function GameRouter() {
 
 function App() {
   return (
-    <GameProvider>
-      <GameRouter />
-    </GameProvider>
+    <DataProvider>
+      <GameProvider>
+        <GameRouter />
+      </GameProvider>
+    </DataProvider>
   );
 }
 

@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
 import { db } from '../firebase/config';
 import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
-import { LALIGA_TEAMS } from '../data/teams';
+import { LALIGA_TEAMS } from '../data/teamsFirestore';
 
 const GameContext = createContext();
 

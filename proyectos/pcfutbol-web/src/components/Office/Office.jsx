@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useGame } from '../../context/GameContext';
-import { LALIGA_TEAMS } from '../../data/teams';
+import { LALIGA_TEAMS } from '../../data/teamsFirestore';
 import { simulateWeekMatches, simulateMatch, updateTable } from '../../game/leagueEngine';
 import Sidebar from '../Sidebar/Sidebar';
 import MobileNav from '../MobileNav/MobileNav';

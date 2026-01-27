@@ -243,24 +243,28 @@ export const teams = {
     reputation: 78,
     colors: { primary: '#FFE114', secondary: '#005187', accent: '#005187' },
     players: [
-      createPlayer('Filip Jörgensen', 'GK', 23, 20),
-      createPlayer('Luiz Júnior', 'GK', 24, 3),
-      createPlayer('Eric Bertrand', 'CB', 23, 7),
-      createPlayer('Logan Costa', 'CB', 24, 5),
-      createPlayer('Jan Zimmermann', 'CB', 26, 2.5),
-      createPlayer('Aïssa Mandi', 'CB', 33, 1.5),
-      createPlayer('Alfonso Pedraza', 'LB', 29, 18),
-      createPlayer('Mikel Villanueva', 'LB', 27, 3),
-      createPlayer('Kiko Femenía', 'RB', 34, 0.8),
-      createPlayer('Dani Parejo', 'CDM', 37, 2.5),
-      createPlayer('Santi Comesaña', 'CDM', 28, 2),
-      createPlayer('Aleix García', 'CM', 28, 15),
-      createPlayer('Fabio Silva', 'CM', 23, 8),
-      createPlayer('Thierno Barry', 'LW', 22, 15),
-      createPlayer('Yeremy Pino', 'RW', 23, 30),
-      createPlayer('Nicolas Pépé', 'RW', 30, 2),
-      createPlayer('Gerard Moreno', 'ST', 33, 7),
-      createPlayer('Ayoze Pérez', 'ST', 32, 3.5)
+      createPlayer('Filip Jörgensen', 'GK', 23, 22),
+      createPlayer('Luiz Júnior', 'GK', 24, 4),
+      createPlayer('Diego Conde', 'GK', 28, 1),
+      createPlayer('Eric Bertrand', 'CB', 23, 8),
+      createPlayer('Logan Costa', 'CB', 24, 6),
+      createPlayer('Raúl Albiol', 'CB', 39, 0.5),
+      createPlayer('Aïssa Mandi', 'CB', 33, 2),
+      createPlayer('Alfonso Pedraza', 'LB', 29, 20),
+      createPlayer('Álex Baena', 'LB', 24, 40),
+      createPlayer('Sergi Cardona', 'LB', 26, 5),
+      createPlayer('Kiko Femenía', 'RB', 34, 1),
+      createPlayer('Juan Foyth', 'RB', 27, 25),
+      createPlayer('Dani Parejo', 'CDM', 37, 3),
+      createPlayer('Santi Comesaña', 'CDM', 28, 4),
+      createPlayer('Étienne Capoue', 'CDM', 37, 1),
+      createPlayer('Aleix García', 'CM', 28, 18),
+      createPlayer('Gabi Veiga', 'CM', 23, 15),
+      createPlayer('Thierno Barry', 'LW', 22, 18),
+      createPlayer('Yeremy Pino', 'RW', 23, 35),
+      createPlayer('Ilias Akhomach', 'RW', 21, 8),
+      createPlayer('Gerard Moreno', 'ST', 33, 8),
+      createPlayer('Arnaut Danjuma', 'ST', 28, 12)
     ]
   },
 
@@ -275,26 +279,31 @@ export const teams = {
     reputation: 77,
     colors: { primary: '#00954C', secondary: '#FFFFFF', accent: '#00954C' },
     players: [
-      createPlayer('Rui Silva', 'GK', 31, 6),
-      createPlayer('Adrián San Miguel', 'GK', 39, 0.3),
-      createPlayer('Marc Bartra', 'CB', 35, 0.8),
-      createPlayer('Diego Llorente', 'CB', 32, 6),
-      createPlayer('Natan', 'CB', 24, 4),
-      createPlayer('Ricardo Rodríguez', 'LB', 33, 1.5),
-      createPlayer('Juan Miranda', 'LB', 26, 12),
-      createPlayer('Youssouf Sabaly', 'RB', 32, 2.5),
-      createPlayer('Héctor Bellerín', 'RB', 31, 2.5),
-      createPlayer('Johnny Cardoso', 'CDM', 24, 20),
-      createPlayer('William Carvalho', 'CDM', 33, 1.5),
-      createPlayer('Giovani Lo Celso', 'CM', 29, 20),
-      createPlayer('Sergi Altimira', 'CM', 26, 8),
-      createPlayer('Pablo Fornals', 'CAM', 29, 18),
-      createPlayer('Abde Ezzalzouli', 'LW', 24, 15),
-      createPlayer('Jesús Rodríguez', 'LW', 19, 3.5),
-      createPlayer('Aitor Ruibal', 'RW', 29, 4),
-      createPlayer('Assane Diao', 'RW', 20, 10),
-      createPlayer('Vitor Roque', 'ST', 20, 35),
-      createPlayer('Cédric Bakambu', 'ST', 34, 1.8)
+      createPlayer('Rui Silva', 'GK', 31, 8),
+      createPlayer('Fran Vieites', 'GK', 24, 1.5),
+      createPlayer('Álvaro Valles', 'GK', 27, 4),
+      createPlayer('Diego Llorente', 'CB', 32, 8),
+      createPlayer('Natan', 'CB', 24, 6),
+      createPlayer('Noble Okoh', 'CB', 22, 3),
+      createPlayer('Marc Roca', 'CB', 28, 10),
+      createPlayer('Ricardo Rodríguez', 'LB', 33, 2),
+      createPlayer('Juan Miranda', 'LB', 26, 15),
+      createPlayer('Youssouf Sabaly', 'RB', 32, 3),
+      createPlayer('Héctor Bellerín', 'RB', 31, 3),
+      createPlayer('Aitor Ruibal', 'RB', 29, 5),
+      createPlayer('Johnny Cardoso', 'CDM', 24, 25),
+      createPlayer('Marc Roca', 'CDM', 28, 12),
+      createPlayer('Giovani Lo Celso', 'CM', 29, 25),
+      createPlayer('Sergi Altimira', 'CM', 26, 10),
+      createPlayer('Pablo Fornals', 'CAM', 29, 20),
+      createPlayer('Isco', 'CAM', 33, 5),
+      createPlayer('Abde Ezzalzouli', 'LW', 24, 18),
+      createPlayer('Jesús Rodríguez', 'LW', 19, 5),
+      createPlayer('Assane Diao', 'RW', 20, 15),
+      createPlayer('Chimy Ávila', 'RW', 31, 8),
+      createPlayer('Vitor Roque', 'ST', 20, 40),
+      createPlayer('Ayoze Pérez', 'ST', 32, 8),
+      createPlayer('Ez Abde', 'ST', 23, 6)
     ]
   },
 
@@ -309,24 +318,28 @@ export const teams = {
     reputation: 78,
     colors: { primary: '#FFFFFF', secondary: '#ED1C24', accent: '#ED1C24' },
     players: [
-      createPlayer('Orjan Nyland', 'GK', 35, 1.5),
-      createPlayer('Álvaro Fernández', 'GK', 26, 1.2),
-      createPlayer('David Hancko', 'CB', 28, 30),
-      createPlayer('Tanguy Nianzou', 'CB', 23, 8),
-      createPlayer('Loïc Badé', 'CB', 25, 7),
-      createPlayer('Kike Salas', 'CB', 23, 3),
-      createPlayer('Gonzalo Montiel', 'LB', 28, 6),
-      createPlayer('José Ángel Carmona', 'RB', 23, 5),
-      createPlayer('Albert Sambi Lokonga', 'CDM', 26, 10),
-      createPlayer('Lucien Agoumé', 'CDM', 23, 5),
-      createPlayer('Djibril Sow', 'CM', 28, 6),
-      createPlayer('Sambi Saúl', 'CM', 30, 3),
-      createPlayer('Dodi Lukebakio', 'LW', 28, 8),
-      createPlayer('Stanis Idumbo', 'LW', 22, 4),
-      createPlayer('Chidera Ejuke', 'RW', 27, 4.5),
-      createPlayer('Peque', 'RW', 22, 5),
-      createPlayer('Isaac Romero', 'ST', 24, 8),
-      createPlayer('Valentín Barco', 'ST', 21, 3)
+      createPlayer('Orjan Nyland', 'GK', 35, 2),
+      createPlayer('Álvaro Fernández', 'GK', 26, 2),
+      createPlayer('Alberto Flores', 'GK', 22, 0.5),
+      createPlayer('Loïc Badé', 'CB', 25, 20),
+      createPlayer('Tanguy Nianzou', 'CB', 23, 12),
+      createPlayer('Marcão', 'CB', 28, 8),
+      createPlayer('Kike Salas', 'CB', 23, 5),
+      createPlayer('Adrià Pedrosa', 'LB', 27, 8),
+      createPlayer('José Ángel Carmona', 'RB', 23, 6),
+      createPlayer('Gonzalo Montiel', 'RB', 28, 8),
+      createPlayer('Juanlu Sánchez', 'RB', 22, 10),
+      createPlayer('Lucien Agoumé', 'CDM', 23, 8),
+      createPlayer('Sambi Lokonga', 'CDM', 26, 12),
+      createPlayer('Djibril Sow', 'CM', 28, 8),
+      createPlayer('Suso', 'CM', 32, 4),
+      createPlayer('Jesús Navas', 'CM', 40, 0.5),
+      createPlayer('Dodi Lukebakio', 'LW', 28, 12),
+      createPlayer('Stanis Idumbo', 'LW', 22, 6),
+      createPlayer('Chidera Ejuke', 'RW', 27, 6),
+      createPlayer('Peque', 'RW', 22, 7),
+      createPlayer('Isaac Romero', 'ST', 24, 12),
+      createPlayer('Kelechi Iheanacho', 'ST', 29, 8)
     ]
   },
 
@@ -341,22 +354,28 @@ export const teams = {
     reputation: 75,
     colors: { primary: '#CD2534', secondary: '#FFFFFF', accent: '#CD2534' },
     players: [
-      createPlayer('Paulo Gazzaniga', 'GK', 33, 4),
-      createPlayer('Juan Carlos', 'GK', 33, 0.2),
-      createPlayer('Alejandro Francés', 'CB', 23, 10),
-      createPlayer('Daley Blind', 'CB', 35, 2.5),
-      createPlayer('Juanpe', 'CB', 35, 0.5),
-      createPlayer('Miguel Gutiérrez', 'LB', 24, 30),
-      createPlayer('Arnau Martínez', 'RB', 22, 25),
-      createPlayer('Oriol Romeu', 'CDM', 34, 2),
-      createPlayer('Iván Martín', 'CM', 27, 12),
-      createPlayer('Jhon Solís', 'CM', 24, 7),
-      createPlayer('Yangel Herrera', 'CM', 27, 5),
-      createPlayer('Yaser Asprilla', 'RW', 22, 20),
-      createPlayer('Bryan Gil', 'LW', 24, 10),
-      createPlayer('Viktor Tsygankov', 'RW', 28, 15),
-      createPlayer('Abel Ruiz', 'ST', 26, 10),
-      createPlayer('Stuani', 'ST', 38, 0.3)
+      createPlayer('Paulo Gazzaniga', 'GK', 33, 5),
+      createPlayer('Juan Carlos', 'GK', 33, 0.5),
+      createPlayer('Pau López', 'GK', 30, 3),
+      createPlayer('Alejandro Francés', 'CB', 23, 12),
+      createPlayer('David López', 'CB', 35, 1),
+      createPlayer('Ladislav Krejci', 'CB', 26, 8),
+      createPlayer('Santiago Bueno', 'CB', 25, 5),
+      createPlayer('Miguel Gutiérrez', 'LB', 24, 35),
+      createPlayer('Arnau Martínez', 'RB', 22, 28),
+      createPlayer('Yan Couto', 'RB', 23, 20),
+      createPlayer('Oriol Romeu', 'CDM', 34, 3),
+      createPlayer('Donny van de Beek', 'CM', 28, 10),
+      createPlayer('Iván Martín', 'CM', 27, 15),
+      createPlayer('Jhon Solís', 'CM', 24, 8),
+      createPlayer('Yangel Herrera', 'CM', 27, 6),
+      createPlayer('Yaser Asprilla', 'RW', 22, 22),
+      createPlayer('Bryan Gil', 'LW', 24, 12),
+      createPlayer('Viktor Tsygankov', 'RW', 28, 18),
+      createPlayer('Portu', 'RW', 32, 4),
+      createPlayer('Abel Ruiz', 'ST', 26, 12),
+      createPlayer('Arnaut Danjuma', 'ST', 28, 15),
+      createPlayer('Cristhian Stuani', 'ST', 38, 0.5)
     ]
   },
 
@@ -371,24 +390,28 @@ export const teams = {
     reputation: 74,
     colors: { primary: '#8AC3EE', secondary: '#FFFFFF', accent: '#8AC3EE' },
     players: [
-      createPlayer('Iván Villar', 'GK', 28, 2),
-      createPlayer('Vicente Guaita', 'GK', 38, 0.8),
-      createPlayer('Carl Starfelt', 'CB', 30, 3.5),
-      createPlayer('Jailson', 'CB', 31, 1.5),
-      createPlayer('Unai Núñez', 'CB', 28, 1.5),
-      createPlayer('Joseph Aidoo', 'CB', 30, 0.6),
-      createPlayer('Marcos Alonso', 'LB', 34, 1.2),
-      createPlayer('Oscar Mingueza', 'RB', 26, 8),
-      createPlayer('Hugo Álvarez', 'RB', 21, 6),
-      createPlayer('Fran Beltrán', 'CDM', 26, 7),
-      createPlayer('Ilaix Moriba', 'CM', 23, 5),
-      createPlayer('Luca de la Torre', 'CM', 27, 4),
-      createPlayer('Williot Swedberg', 'CM', 22, 3),
-      createPlayer('Franco Cervi', 'LW', 31, 2.5),
-      createPlayer('Iago Aspas', 'RW', 38, 2),
-      createPlayer('Pablo Durán', 'RW', 22, 5),
-      createPlayer('Borja Iglesias', 'ST', 32, 5),
-      createPlayer('Jonathan Bamba', 'ST', 29, 3)
+      createPlayer('Iván Villar', 'GK', 28, 3),
+      createPlayer('Vicente Guaita', 'GK', 38, 1),
+      createPlayer('Giorgi Mamardashvili', 'GK', 25, 2),
+      createPlayer('Carl Starfelt', 'CB', 30, 5),
+      createPlayer('Jailson', 'CB', 31, 2),
+      createPlayer('Unai Núñez', 'CB', 28, 3),
+      createPlayer('Joseph Aidoo', 'CB', 30, 1),
+      createPlayer('Marcos Alonso', 'LB', 34, 2),
+      createPlayer('Manu Sánchez', 'LB', 25, 5),
+      createPlayer('Oscar Mingueza', 'RB', 26, 10),
+      createPlayer('Hugo Álvarez', 'RB', 21, 8),
+      createPlayer('Fran Beltrán', 'CDM', 26, 10),
+      createPlayer('Damián Rodríguez', 'CDM', 23, 5),
+      createPlayer('Ilaix Moriba', 'CM', 23, 8),
+      createPlayer('Luca de la Torre', 'CM', 27, 6),
+      createPlayer('Williot Swedberg', 'CM', 22, 5),
+      createPlayer('Franco Cervi', 'LW', 31, 4),
+      createPlayer('Iago Aspas', 'CAM', 38, 3),
+      createPlayer('Anastasios Douvikas', 'ST', 26, 15),
+      createPlayer('Borja Iglesias', 'ST', 32, 6),
+      createPlayer('Pablo Durán', 'RW', 22, 7),
+      createPlayer('Tasos Douvikas', 'ST', 26, 12)
     ]
   },
 
@@ -469,22 +492,29 @@ export const teams = {
     reputation: 68,
     colors: { primary: '#FFFFFF', secondary: '#E53027', accent: '#E53027' },
     players: [
-      createPlayer('Augusto Batalla', 'GK', 28, 3.5),
-      createPlayer('Dani Cárdenas', 'GK', 26, 0.6),
-      createPlayer('Florian Lejeune', 'CB', 34, 2),
-      createPlayer('Aridane Hernández', 'CB', 36, 0.8),
-      createPlayer('Esteban Saveljich', 'CB', 33, 0.9),
-      createPlayer('Pelayo Fernández', 'CB', 25, 3.5),
-      createPlayer('Andrei Ratiu', 'RB', 27, 18),
-      createPlayer('Alfonso Espino', 'LB', 32, 1),
-      createPlayer('Pathé Ciss', 'RB', 31, 0.6),
-      createPlayer('Óscar Valentín', 'CDM', 30, 3.5),
-      createPlayer('Unai López', 'CM', 30, 3),
-      createPlayer('James Rodríguez', 'CAM', 34, 3),
-      createPlayer('Jorge de Frutos', 'RW', 28, 7),
-      createPlayer('Álvaro García', 'LW', 32, 4),
-      createPlayer('Randy Nteka', 'ST', 26, 4),
-      createPlayer('Sergio Camello', 'ST', 24, 5)
+      createPlayer('Augusto Batalla', 'GK', 28, 4),
+      createPlayer('Dani Cárdenas', 'GK', 26, 1),
+      createPlayer('Diego López', 'GK', 33, 0.5),
+      createPlayer('Florian Lejeune', 'CB', 34, 2.5),
+      createPlayer('Aridane Hernández', 'CB', 36, 1),
+      createPlayer('Esteban Saveljich', 'CB', 33, 1.2),
+      createPlayer('Pelayo Fernández', 'CB', 25, 4),
+      createPlayer('Abdul Mumin', 'CB', 26, 5),
+      createPlayer('Andrei Ratiu', 'RB', 27, 20),
+      createPlayer('Alfonso Espino', 'LB', 32, 1.5),
+      createPlayer('Pathé Ciss', 'RB', 31, 1),
+      createPlayer('Iván Balliu', 'RB', 32, 2),
+      createPlayer('Óscar Valentín', 'CDM', 30, 4),
+      createPlayer('Unai López', 'CM', 30, 4),
+      createPlayer('Óscar Trejo', 'CM', 36, 1),
+      createPlayer('Gonzalo Melero', 'CM', 30, 3),
+      createPlayer('James Rodríguez', 'CAM', 34, 4),
+      createPlayer('Jorge de Frutos', 'RW', 28, 8),
+      createPlayer('Álvaro García', 'LW', 32, 5),
+      createPlayer('Isi Palazón', 'RW', 30, 6),
+      createPlayer('Randy Nteka', 'ST', 26, 5),
+      createPlayer('Sergio Camello', 'ST', 24, 7),
+      createPlayer('Raúl de Tomás', 'ST', 31, 4)
     ]
   },
 
@@ -499,21 +529,29 @@ export const teams = {
     reputation: 65,
     colors: { primary: '#005BBF', secondary: '#FFFFFF', accent: '#005BBF' },
     players: [
-      createPlayer('Juan Soriano', 'GK', 29, 2.5),
-      createPlayer('Marko Dmitrovic', 'GK', 34, 0.8),
-      createPlayer('Jorge Sáenz', 'CB', 28, 2.5),
-      createPlayer('Jackson Porozo', 'CB', 24, 1.5),
-      createPlayer('Sergio González', 'CB', 34, 0.5),
-      createPlayer('Enric Franquesa', 'LB', 27, 2.5),
-      createPlayer('Valentin Rosier', 'RB', 29, 3),
-      createPlayer('Yvan Neyou', 'CDM', 29, 2.5),
-      createPlayer('Seydouba Cissé', 'CM', 24, 2),
-      createPlayer('Dani Raba', 'CM', 29, 1.5),
-      createPlayer('Óscar Rodríguez', 'CAM', 26, 3),
-      createPlayer('Juan Cruz', 'LW', 27, 5),
-      createPlayer('Diego García', 'RW', 27, 2.5),
-      createPlayer('Miguel de la Fuente', 'ST', 26, 5),
-      createPlayer('Sebastián Haller', 'ST', 31, 4)
+      createPlayer('Juan Soriano', 'GK', 29, 3),
+      createPlayer('Marko Dmitrovic', 'GK', 34, 1),
+      createPlayer('Óscar Plano', 'GK', 32, 0.5),
+      createPlayer('Jorge Sáenz', 'CB', 28, 3),
+      createPlayer('Jackson Porozo', 'CB', 24, 2),
+      createPlayer('Sergio González', 'CB', 34, 0.8),
+      createPlayer('Matija Nastasic', 'CB', 32, 2),
+      createPlayer('Enric Franquesa', 'LB', 27, 3),
+      createPlayer('Javi Hernández', 'LB', 29, 2),
+      createPlayer('Valentin Rosier', 'RB', 29, 4),
+      createPlayer('Jon Karrikaburu', 'RB', 26, 2),
+      createPlayer('Yvan Neyou', 'CDM', 29, 3),
+      createPlayer('Renato Tapia', 'CDM', 29, 4),
+      createPlayer('Seydouba Cissé', 'CM', 24, 3),
+      createPlayer('Dani Raba', 'CM', 29, 2),
+      createPlayer('Roberto López', 'CM', 27, 2),
+      createPlayer('Óscar Rodríguez', 'CAM', 26, 4),
+      createPlayer('Juan Cruz', 'LW', 27, 6),
+      createPlayer('Diego García', 'RW', 27, 3),
+      createPlayer('Munir El Haddadi', 'LW', 30, 3),
+      createPlayer('Miguel de la Fuente', 'ST', 26, 6),
+      createPlayer('Sebastián Haller', 'ST', 31, 5),
+      createPlayer('Dani Gómez', 'ST', 26, 4)
     ]
   },
 
@@ -829,24 +867,45 @@ export const teamsArray = Object.entries(teams).map(([id, team]) => ({
 }));
 
 // ============================================================
-// EXPORTS PARA COMPONENTES (compatibilidad)
+// IMPORTS DE OTRAS LIGAS
+// ============================================================
+import { segundaTeamsArray } from './teams-segunda.js';
+import { primeraRFEFTeamsArray, primeraRFEFGroups } from './teams-primera-rfef.js';
+import { segundaRFEFTeamsArray, segundaRFEFGroups } from './teams-segunda-rfef.js';
+import { premierTeamsArray } from './teams-premier.js';
+import { serieATeams } from './teams-seriea.js';
+import { bundesligaTeams } from './teams-bundesliga.js';
+import { ligue1Teams } from './teams-ligue1.js';
+
+// ============================================================
+// EXPORTS PARA COMPONENTES (con datos reales)
 // ============================================================
 
-// La Liga (Primera División)
-export const LALIGA_TEAMS = teamsArray.filter(t => t.league === 'laliga' || t.division === 1);
+// La Liga (Primera División) - 20 equipos
+export const LALIGA_TEAMS = teamsArray;
 
-// Segunda División (placeholder - usar teams-segunda.js para datos completos)
-export const SEGUNDA_TEAMS = [];
+// Segunda División - importar de archivo
+export const SEGUNDA_TEAMS = segundaTeamsArray || [];
 
-// Primera RFEF y Segunda RFEF (placeholder)
-export const PRIMERA_RFEF_TEAMS = [];
-export const SEGUNDA_RFEF_TEAMS = [];
+// Primera RFEF y Segunda RFEF
+export const PRIMERA_RFEF_TEAMS = primeraRFEFTeamsArray || [];
+export const SEGUNDA_RFEF_TEAMS = segundaRFEFTeamsArray || [];
+export const PRIMERA_RFEF_GROUPS = primeraRFEFGroups;
+export const SEGUNDA_RFEF_GROUPS = segundaRFEFGroups;
 
-// Ligas europeas (placeholder - usar archivos específicos)
-export const PREMIER_LEAGUE_TEAMS = [];
-export const LIGUE1_TEAMS = [];
-export const BUNDESLIGA_TEAMS = [];
-export const SERIE_A_TEAMS = [];
+// Premier League
+export const PREMIER_LEAGUE_TEAMS = premierTeamsArray || [];
+
+// Bundesliga
+export const BUNDESLIGA_TEAMS = bundesligaTeams || [];
+
+// Serie A
+export const SERIE_A_TEAMS = serieATeams || [];
+
+// Ligue 1
+export const LIGUE1_TEAMS = ligue1Teams || [];
+
+// Otras ligas (aún no implementadas)
 export const EREDIVISIE_TEAMS = [];
 export const PRIMEIRA_LIGA_TEAMS = [];
 
@@ -863,5 +922,18 @@ export const LEAGUES = {
   eredivisie: { id: 'eredivisie', name: 'Eredivisie', country: 'netherlands', level: 1 },
   primeiraLiga: { id: 'primeiraLiga', name: 'Primeira Liga', country: 'portugal', level: 1 }
 };
+
+// Helper para obtener equipos por liga
+export function getTeamsByLeague(leagueId) {
+  switch (leagueId) {
+    case 'laliga': return LALIGA_TEAMS;
+    case 'segunda': return SEGUNDA_TEAMS;
+    case 'premierLeague': return PREMIER_LEAGUE_TEAMS;
+    case 'bundesliga': return BUNDESLIGA_TEAMS;
+    case 'serieA': return SERIE_A_TEAMS;
+    case 'ligue1': return LIGUE1_TEAMS;
+    default: return [];
+  }
+}
 
 export default teams;
