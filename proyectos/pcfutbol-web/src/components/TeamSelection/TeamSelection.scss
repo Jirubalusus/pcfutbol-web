@@ -621,8 +621,9 @@ $pcf-text: #bdc3c7;
   overflow: hidden;
   
   @media (max-width: 900px) {
-    min-height: 350px;
-    max-height: 50vh;
+    min-height: 300px;
+    max-height: 60vh;
+    overflow-y: auto;
   }
 }
 
@@ -820,6 +821,15 @@ $pcf-text: #bdc3c7;
     transition: all 0.2s;
     flex-shrink: 0;
     box-shadow: 0 4px 12px rgba($pcf-green, 0.4);
+    
+    @media (max-width: 900px) {
+      position: sticky;
+      bottom: 0;
+      margin: 0;
+      padding: 1rem;
+      border-radius: 0;
+      z-index: 10;
+    }
     
     &:hover {
       background: linear-gradient(180deg, lighten($pcf-green, 5%) 0%, $pcf-green 100%);
