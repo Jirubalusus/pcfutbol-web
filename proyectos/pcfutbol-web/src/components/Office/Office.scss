@@ -382,4 +382,106 @@
       color: var(--color-text-tertiary);
     }
   }
+
+  // Objective Preview Widget
+  &__objective-preview {
+    background: var(--color-glass);
+    border: 1px solid var(--color-glass-border);
+    border-radius: var(--border-radius-lg);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    -webkit-tap-highlight-color: transparent;
+
+    &:hover, &:active {
+      border-color: rgba(0, 212, 255, 0.4);
+      background: rgba(0, 212, 255, 0.03);
+    }
+
+    h3 {
+      margin: 0 0 1rem 0;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .objective-item {
+      padding: 1rem;
+      background: var(--color-bg-card);
+      border-radius: var(--border-radius-md);
+      border-left: 4px solid var(--color-text-tertiary);
+      margin-bottom: 0.75rem;
+
+      &--completed {
+        border-left-color: var(--color-success);
+        background: rgba(48, 209, 88, 0.08);
+      }
+
+      &--on-track {
+        border-left-color: var(--color-accent);
+      }
+
+      &--warning {
+        border-left-color: var(--color-warning);
+      }
+
+      &--danger {
+        border-left-color: var(--color-danger);
+        background: rgba(255, 69, 58, 0.08);
+      }
+    }
+
+    .objective-info {
+      margin-bottom: 0.75rem;
+
+      .objective-name {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+      }
+
+      .objective-desc {
+        display: block;
+        font-size: 0.85rem;
+        color: var(--color-text-secondary);
+      }
+    }
+
+    .objective-progress {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+
+      .progress-bar {
+        flex: 1;
+        height: 8px;
+        background: var(--color-bg-tertiary);
+        border-radius: var(--border-radius-pill);
+        overflow: hidden;
+
+        .progress-fill {
+          height: 100%;
+          background: linear-gradient(90deg, var(--color-accent), var(--color-success));
+          border-radius: var(--border-radius-pill);
+          transition: width 0.5s ease;
+        }
+      }
+
+      .progress-text {
+        font-weight: 700;
+        font-size: 0.9rem;
+        min-width: 40px;
+        text-align: right;
+      }
+    }
+
+    .view-all {
+      display: block;
+      text-align: center;
+      color: var(--color-accent);
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-top: 0.5rem;
+    }
+  }
 }

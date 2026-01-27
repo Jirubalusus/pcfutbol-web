@@ -263,6 +263,42 @@ export default function Office() {
           </div>
         </div>
         
+        {/* Objetivo principal */}
+        {state.seasonObjectives?.length > 0 && (
+          <div className="office__objective-preview" onClick={() => setActiveTab('objectives')}>
+            <h3>🎯 Objetivo Principal</h3>
+            {(() => {
+              const criticalObj = state.seasonObjectives.find(o => o.priority === 'critical');
+              if (!criticalObj) return null;
+              
+              // Calcular progreso
+              let progress = 0;
+              if (criticalObj.type === 'league_position') {
+                if (position <= criticalObj.target) progress = 100;
+                else progress = Math.max(0, Math.round((1 - (position - criticalObj.target) / (20 - criticalObj.target)) * 100));
+              }
+              
+              const status = progress >= 100 ? 'completed' : progress >= 70 ? 'on-track' : progress >= 40 ? 'warning' : 'danger';
+              
+              return (
+                <div className={`objective-item objective-item--${status}`}>
+                  <div className="objective-info">
+                    <span className="objective-name">{criticalObj.name}</span>
+                    <span className="objective-desc">{criticalObj.description}</span>
+                  </div>
+                  <div className="objective-progress">
+                    <div className="progress-bar">
+                      <div className="progress-fill" style={{ width: `${progress}%` }} />
+                    </div>
+                    <span className="progress-text">{progress}%</span>
+                  </div>
+                </div>
+              );
+            })()}
+            <span className="view-all">Ver todos los objetivos →</span>
+          </div>
+        )}
+        
         {state.messages.length > 0 && (
           <div className="office__recent-messages">
             <h3>Mensajes Recientes</h3>
