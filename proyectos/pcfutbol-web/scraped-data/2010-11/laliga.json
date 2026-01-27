@@ -1,0 +1,6712 @@
+[
+  {
+    "id": "tm-131",
+    "name": "FC Barcelona",
+    "slug": "fc-barcelona",
+    "transfermarktId": "131",
+    "teamUrl": "https://www.transfermarkt.es/fc-barcelona/startseite/verein/131/saison_id/2010",
+    "marketValueText": "604,70 mill. €",
+    "league": "laliga",
+    "season": "2010-11",
+    "rank": 1,
+    "players": [
+      {
+        "name": "Víctor Valdés",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 20000000,
+        "marketValueText": "20,00 mill. €",
+        "overall": 88
+      },
+      {
+        "name": "Rubén Miño",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 31,
+        "nationality": "España",
+        "marketValue": 1200000,
+        "marketValueText": "1,20 mill. €",
+        "overall": 81
+      },
+      {
+        "name": "Oier Olazábal",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 38,
+        "nationality": "España",
+        "marketValue": 900,
+        "marketValueText": "900 mil €",
+        "overall": 76
+      },
+      {
+        "name": "José Manuel Pinto",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 35,
+        "nationality": "España",
+        "marketValue": 600,
+        "marketValueText": "600 mil €",
+        "overall": 76
+      },
+      {
+        "name": "Gerard Piqué",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 24,
+        "nationality": "España",
+        "marketValue": 35000000,
+        "marketValueText": "35,00 mill. €",
+        "overall": 89
+      },
+      {
+        "name": "Carles Puyol",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 33,
+        "nationality": "España",
+        "marketValue": 20000000,
+        "marketValueText": "20,00 mill. €",
+        "overall": 84
+      },
+      {
+        "name": "Gabriel Milito",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 18,
+        "nationality": "Argentina",
+        "marketValue": 8000000,
+        "marketValueText": "8,00 mill. €",
+        "overall": 81
+      },
+      {
+        "name": "Marc Muniesa",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 19,
+        "nationality": "España",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 79
+      },
+      {
+        "name": "Andreu Fontàs",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 83
+      },
+      {
+        "name": "Marc Bartra",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 32,
+        "nationality": "España",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 81
+      },
+      {
+        "name": "Sergi Gómez",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 33,
+        "nationality": "España",
+        "marketValue": 500,
+        "marketValueText": "500 mil €",
+        "overall": 78
+      },
+      {
+        "name": "Éric Abidal",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 22,
+        "nationality": "Francia",
+        "marketValue": 17000000,
+        "marketValueText": "17,00 mill. €",
+        "overall": 86
+      },
+      {
+        "name": "Adriano",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 21,
+        "nationality": "Brasil",
+        "marketValue": 12000000,
+        "marketValueText": "12,00 mill. €",
+        "overall": 83
+      },
+      {
+        "name": "Maxwell",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 19,
+        "nationality": "Brasil",
+        "marketValue": 10000000,
+        "marketValueText": "10,00 mill. €",
+        "overall": 81
+      },
+      {
+        "name": "Dani Alves",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 28,
+        "nationality": "Brasil",
+        "marketValue": 35000000,
+        "marketValueText": "35,00 mill. €",
+        "overall": 91
+      },
+      {
+        "name": "Martín Montoya",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 40,
+        "nationality": "España",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 77
+      },
+      {
+        "name": "Sergio Busquets",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 16,
+        "nationality": "España",
+        "marketValue": 30000000,
+        "marketValueText": "30,00 mill. €",
+        "overall": 87
+      },
+      {
+        "name": "Javier Mascherano",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 27,
+        "nationality": "Argentina",
+        "marketValue": 25000000,
+        "marketValueText": "25,00 mill. €",
+        "overall": 88
+      },
+      {
+        "name": "Jonathan dos Santos",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 34,
+        "nationality": "México",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 79
+      },
+      {
+        "name": "Oriol Romeu",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 37,
+        "nationality": "España",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 77
+      },
+      {
+        "name": "Andrés Iniesta",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 27,
+        "nationality": "España",
+        "marketValue": 60000000,
+        "marketValueText": "60,00 mill. €",
+        "overall": 94
+      },
+      {
+        "name": "Xavi",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 31,
+        "nationality": "España",
+        "marketValue": 50000000,
+        "marketValueText": "50,00 mill. €",
+        "overall": 92
+      },
+      {
+        "name": "Seydou Keita",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 15,
+        "nationality": "Malí",
+        "marketValue": 14000000,
+        "marketValueText": "14,00 mill. €",
+        "overall": 81
+      },
+      {
+        "name": "Thiago Alcántara",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 30,
+        "nationality": "España",
+        "marketValue": 5000000,
+        "marketValueText": "5,00 mill. €",
+        "overall": 85
+      },
+      {
+        "name": "Sergi Roberto",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 28,
+        "nationality": "España",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 83
+      },
+      {
+        "name": "Ibrahim Afellay",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 20,
+        "nationality": "Países Bajos",
+        "marketValue": 14000000,
+        "marketValueText": "14,00 mill. €",
+        "overall": 81
+      },
+      {
+        "name": "Víctor Vázquez",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 83
+      },
+      {
+        "name": "Nolito",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 27,
+        "nationality": "España",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 83
+      },
+      {
+        "name": "Lionel Messi",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 24,
+        "nationality": "Argentina",
+        "marketValue": 100000000,
+        "marketValueText": "100,00 mill. €",
+        "overall": 95
+      },
+      {
+        "name": "Pedro",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 17,
+        "nationality": "España",
+        "marketValue": 25000000,
+        "marketValueText": "25,00 mill. €",
+        "overall": 84
+      },
+      {
+        "name": "Jeffrén",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 23,
+        "nationality": "Venezuela",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 81
+      },
+      {
+        "name": "Bojan Krkic",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 20,
+        "nationality": "España",
+        "marketValue": 15000000,
+        "marketValueText": "15,00 mill. €",
+        "overall": 84
+      },
+      {
+        "name": "David Villa",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 50000000,
+        "marketValueText": "50,00 mill. €",
+        "overall": 94
+      },
+      {
+        "name": "Zlatan Ibrahimović",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 29,
+        "nationality": "Suecia",
+        "marketValue": 35000000,
+        "marketValueText": "35,00 mill. €",
+        "overall": 91
+      },
+      {
+        "name": "Gerard Deulofeu",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 41,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 76
+      }
+    ],
+    "avgOverall": 84,
+    "marketValue": 604700000
+  },
+  {
+    "id": "tm-418",
+    "name": "Real Madrid CF",
+    "slug": "real-madrid",
+    "transfermarktId": "418",
+    "teamUrl": "https://www.transfermarkt.es/real-madrid/startseite/verein/418/saison_id/2010",
+    "marketValueText": "519,00 mill. €",
+    "league": "laliga",
+    "season": "2010-11",
+    "rank": 2,
+    "players": [
+      {
+        "name": "Iker Casillas",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 30,
+        "nationality": "España",
+        "marketValue": 35000000,
+        "marketValueText": "35,00 mill. €",
+        "overall": 91
+      },
+      {
+        "name": "Antonio Adán",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 24,
+        "nationality": "España",
+        "marketValue": 500,
+        "marketValueText": "500 mil €",
+        "overall": 80
+      },
+      {
+        "name": "Jerzy Dudek",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 25,
+        "nationality": "Polonia",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 80
+      },
+      {
+        "name": "Jesús Fernández",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 28,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 82
+      },
+      {
+        "name": "Fernando Pacheco",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 32,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 80
+      },
+      {
+        "name": "Tomás Mejías",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 40,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 76
+      },
+      {
+        "name": "Sergio Ramos",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 25,
+        "nationality": "España",
+        "marketValue": 30000000,
+        "marketValueText": "30,00 mill. €",
+        "overall": 89
+      },
+      {
+        "name": "Pepe",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 28,
+        "nationality": "Portugal",
+        "marketValue": 22000000,
+        "marketValueText": "22,00 mill. €",
+        "overall": 88
+      },
+      {
+        "name": "Raúl Albiol",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 18,
+        "nationality": "España",
+        "marketValue": 15000000,
+        "marketValueText": "15,00 mill. €",
+        "overall": 84
+      },
+      {
+        "name": "Ricardo Carvalho",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 33,
+        "nationality": "Portugal",
+        "marketValue": 10000000,
+        "marketValueText": "10,00 mill. €",
+        "overall": 81
+      },
+      {
+        "name": "Ezequiel Garay",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 19,
+        "nationality": "Argentina",
+        "marketValue": 10000000,
+        "marketValueText": "10,00 mill. €",
+        "overall": 81
+      },
+      {
+        "name": "David Mateos",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 15,
+        "nationality": "España",
+        "marketValue": 500,
+        "marketValueText": "500 mil €",
+        "overall": 78
+      },
+      {
+        "name": "Jorge Casado",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 34,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 78
+      },
+      {
+        "name": "Nacho Fernández",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 35,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 76
+      },
+      {
+        "name": "Marcelo",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 23,
+        "nationality": "Brasil",
+        "marketValue": 20000000,
+        "marketValueText": "20,00 mill. €",
+        "overall": 86
+      },
+      {
+        "name": "Juankar",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 82
+      },
+      {
+        "name": "Álvaro Arbeloa",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 17,
+        "nationality": "España",
+        "marketValue": 12000000,
+        "marketValueText": "12,00 mill. €",
+        "overall": 81
+      },
+      {
+        "name": "Juanfran Moreno",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 27,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 82
+      },
+      {
+        "name": "Xabi Alonso",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 35000000,
+        "marketValueText": "35,00 mill. €",
+        "overall": 91
+      },
+      {
+        "name": "Lassana Diarra",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 26,
+        "nationality": "Francia",
+        "marketValue": 18000000,
+        "marketValueText": "18,00 mill. €",
+        "overall": 88
+      },
+      {
+        "name": "Fernando Gago",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 25,
+        "nationality": "Argentina",
+        "marketValue": 9000000,
+        "marketValueText": "9,00 mill. €",
+        "overall": 83
+      },
+      {
+        "name": "Mahamadou Diarra",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 30,
+        "nationality": "Malí",
+        "marketValue": 4000000,
+        "marketValueText": "4,00 mill. €",
+        "overall": 83
+      },
+      {
+        "name": "Sami Khedira",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 24,
+        "nationality": "Alemania",
+        "marketValue": 20000000,
+        "marketValueText": "20,00 mill. €",
+        "overall": 86
+      },
+      {
+        "name": "Esteban Granero",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 23,
+        "nationality": "España",
+        "marketValue": 7000000,
+        "marketValueText": "7,00 mill. €",
+        "overall": 83
+      },
+      {
+        "name": "Álex Fernández",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 30,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 82
+      },
+      {
+        "name": "Mandi",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 38,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 76
+      },
+      {
+        "name": "Mesut Özil",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 23,
+        "nationality": "Alemania",
+        "marketValue": 32000000,
+        "marketValueText": "32,00 mill. €",
+        "overall": 89
+      },
+      {
+        "name": "Kaká",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 29,
+        "nationality": "Brasil",
+        "marketValue": 30000000,
+        "marketValueText": "30,00 mill. €",
+        "overall": 91
+      },
+      {
+        "name": "Sergio Canales",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 16,
+        "nationality": "España",
+        "marketValue": 6000000,
+        "marketValueText": "6,00 mill. €",
+        "overall": 81
+      },
+      {
+        "name": "Ángel Di María",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 22,
+        "nationality": "Argentina",
+        "marketValue": 25000000,
+        "marketValueText": "25,00 mill. €",
+        "overall": 86
+      },
+      {
+        "name": "Pedro León",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 21,
+        "nationality": "España",
+        "marketValue": 8000000,
+        "marketValueText": "8,00 mill. €",
+        "overall": 83
+      },
+      {
+        "name": "Pablo Sarabia",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 33,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 78
+      },
+      {
+        "name": "Cristiano Ronaldo",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 26,
+        "nationality": "Portugal",
+        "marketValue": 90000000,
+        "marketValueText": "90,00 mill. €",
+        "overall": 94
+      },
+      {
+        "name": "Gonzalo Higuaín",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 20,
+        "nationality": "Argentina",
+        "marketValue": 38000000,
+        "marketValueText": "38,00 mill. €",
+        "overall": 87
+      },
+      {
+        "name": "Karim Benzema",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 23,
+        "nationality": "Francia",
+        "marketValue": 25000000,
+        "marketValueText": "25,00 mill. €",
+        "overall": 86
+      },
+      {
+        "name": "Emmanuel Adebayor",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 27,
+        "nationality": "Togo",
+        "marketValue": 17000000,
+        "marketValueText": "17,00 mill. €",
+        "overall": 88
+      },
+      {
+        "name": "Joselu",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 39,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 76
+      },
+      {
+        "name": "Álvaro Morata",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 82
+      }
+    ],
+    "avgOverall": 83,
+    "marketValue": 519000000
+  },
+  {
+    "id": "tm-13",
+    "name": "Atlético de Madrid",
+    "slug": "atletico-madrid",
+    "transfermarktId": "13",
+    "teamUrl": "https://www.transfermarkt.es/atletico-madrid/startseite/verein/13/saison_id/2010",
+    "marketValueText": "187,00 mill. €",
+    "league": "laliga",
+    "season": "2010-11",
+    "rank": 3,
+    "players": [
+      {
+        "name": "David de Gea",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 20,
+        "nationality": "España",
+        "marketValue": 12000000,
+        "marketValueText": "12,00 mill. €",
+        "overall": 81
+      },
+      {
+        "name": "Sergio Asenjo",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 22,
+        "nationality": "España",
+        "marketValue": 5000000,
+        "marketValueText": "5,00 mill. €",
+        "overall": 83
+      },
+      {
+        "name": "Joel Robles",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 27,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 83
+      },
+      {
+        "name": "Iago Herrerín",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 23,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 80
+      },
+      {
+        "name": "Diego Godín",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 15,
+        "nationality": "Uruguay",
+        "marketValue": 12000000,
+        "marketValueText": "12,00 mill. €",
+        "overall": 81
+      },
+      {
+        "name": "Álvaro Domínguez",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 18,
+        "nationality": "España",
+        "marketValue": 9000000,
+        "marketValueText": "9,00 mill. €",
+        "overall": 81
+      },
+      {
+        "name": "Tomas Ujfalusi",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 17,
+        "nationality": "República Checa",
+        "marketValue": 3500000,
+        "marketValueText": "3,50 mill. €",
+        "overall": 79
+      },
+      {
+        "name": "Luis Amaranto Perea",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 21,
+        "nationality": "Colombia",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 81
+      },
+      {
+        "name": "Juanito",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 16,
+        "nationality": "España",
+        "marketValue": 900,
+        "marketValueText": "900 mil €",
+        "overall": 78
+      },
+      {
+        "name": "Jorge Pulido",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 43,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 76
+      },
+      {
+        "name": "Filipe Luís",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 25,
+        "nationality": "Brasil",
+        "marketValue": 9000000,
+        "marketValueText": "9,00 mill. €",
+        "overall": 83
+      },
+      {
+        "name": "Antonio López",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 5000000,
+        "marketValueText": "5,00 mill. €",
+        "overall": 85
+      },
+      {
+        "name": "Juanfran Torres",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 20,
+        "nationality": "España",
+        "marketValue": 8000000,
+        "marketValueText": "8,00 mill. €",
+        "overall": 81
+      },
+      {
+        "name": "Juan Valera",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 83
+      },
+      {
+        "name": "Paulo Assunção",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 31,
+        "nationality": "Brasil",
+        "marketValue": 5000000,
+        "marketValueText": "5,00 mill. €",
+        "overall": 83
+      },
+      {
+        "name": "Mario Suárez",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 24,
+        "nationality": "España",
+        "marketValue": 4000000,
+        "marketValueText": "4,00 mill. €",
+        "overall": 81
+      },
+      {
+        "name": "Ignacio Camacho",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 21,
+        "nationality": "España",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 81
+      },
+      {
+        "name": "Tiago Mendes",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 30,
+        "nationality": "Portugal",
+        "marketValue": 8000000,
+        "marketValueText": "8,00 mill. €",
+        "overall": 85
+      },
+      {
+        "name": "Elias",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 26,
+        "nationality": "Brasil",
+        "marketValue": 7000000,
+        "marketValueText": "7,00 mill. €",
+        "overall": 85
+      },
+      {
+        "name": "Fran Mérida",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 21,
+        "nationality": "España",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 81
+      },
+      {
+        "name": "Koke",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 32,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 81
+      },
+      {
+        "name": "José Manuel Jurado",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 25,
+        "nationality": "España",
+        "marketValue": 9500000,
+        "marketValueText": "9,50 mill. €",
+        "overall": 83
+      },
+      {
+        "name": "Raúl García",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 24,
+        "nationality": "España",
+        "marketValue": 6000000,
+        "marketValueText": "6,00 mill. €",
+        "overall": 83
+      },
+      {
+        "name": "Alberto Noguera",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 21,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 80
+      },
+      {
+        "name": "Simão",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 20,
+        "nationality": "Portugal",
+        "marketValue": 9000000,
+        "marketValueText": "9,00 mill. €",
+        "overall": 81
+      },
+      {
+        "name": "Alberto Perea",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 20,
+        "nationality": "España",
+        "marketValue": 100,
+        "marketValueText": "100 mil €",
+        "overall": 78
+      },
+      {
+        "name": "José Antonio Reyes",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 19,
+        "nationality": "España",
+        "marketValue": 12000000,
+        "marketValueText": "12,00 mill. €",
+        "overall": 81
+      },
+      {
+        "name": "Sergio Agüero",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 23,
+        "nationality": "Argentina",
+        "marketValue": 36000000,
+        "marketValueText": "36,00 mill. €",
+        "overall": 89
+      },
+      {
+        "name": "Diego Forlán",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 32,
+        "nationality": "Uruguay",
+        "marketValue": 10000000,
+        "marketValueText": "10,00 mill. €",
+        "overall": 83
+      },
+      {
+        "name": "Diego Costa",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 22,
+        "nationality": "España",
+        "marketValue": 4500000,
+        "marketValueText": "4,50 mill. €",
+        "overall": 81
+      },
+      {
+        "name": "Borja Bastón",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 82
+      }
+    ],
+    "avgOverall": 82,
+    "marketValue": 187000000
+  },
+  {
+    "id": "tm-1049",
+    "name": "Valencia CF",
+    "slug": "fc-valencia",
+    "transfermarktId": "1049",
+    "teamUrl": "https://www.transfermarkt.es/fc-valencia/startseite/verein/1049/saison_id/2010",
+    "marketValueText": "176,60 mill. €",
+    "league": "laliga",
+    "season": "2010-11",
+    "rank": 4,
+    "players": [
+      {
+        "name": "Vicente Guaita",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 24,
+        "nationality": "España",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 81
+      },
+      {
+        "name": "César Sánchez",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 39,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 77
+      },
+      {
+        "name": "Miguel Ángel Moyá",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 25,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 81
+      },
+      {
+        "name": "Saúl Figueroa",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 21,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 80
+      },
+      {
+        "name": "David Navarro",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 31,
+        "nationality": "España",
+        "marketValue": 4000000,
+        "marketValueText": "4,00 mill. €",
+        "overall": 81
+      },
+      {
+        "name": "Ángel Dealbert",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 15,
+        "nationality": "España",
+        "marketValue": 4000000,
+        "marketValueText": "4,00 mill. €",
+        "overall": 79
+      },
+      {
+        "name": "Ricardo Costa",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 20,
+        "nationality": "Portugal",
+        "marketValue": 4000000,
+        "marketValueText": "4,00 mill. €",
+        "overall": 79
+      },
+      {
+        "name": "Marius Stankevicius",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 17,
+        "nationality": "Lituania",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 79
+      },
+      {
+        "name": "Jérémy Mathieu",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 22,
+        "nationality": "Francia",
+        "marketValue": 9000000,
+        "marketValueText": "9,00 mill. €",
+        "overall": 83
+      },
+      {
+        "name": "Jordi Alba",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 28,
+        "nationality": "España",
+        "marketValue": 6000000,
+        "marketValueText": "6,00 mill. €",
+        "overall": 85
+      },
+      {
+        "name": "Miguel",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 23,
+        "nationality": "Portugal",
+        "marketValue": 6000000,
+        "marketValueText": "6,00 mill. €",
+        "overall": 83
+      },
+      {
+        "name": "Bruno Saltor",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 30,
+        "nationality": "España",
+        "marketValue": 4000000,
+        "marketValueText": "4,00 mill. €",
+        "overall": 83
+      },
+      {
+        "name": "Mehmet Topal",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 25,
+        "nationality": "Turquía",
+        "marketValue": 7500000,
+        "marketValueText": "7,50 mill. €",
+        "overall": 83
+      },
+      {
+        "name": "Hedwiges Maduro",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 26,
+        "nationality": "Países Bajos",
+        "marketValue": 6000000,
+        "marketValueText": "6,00 mill. €",
+        "overall": 85
+      },
+      {
+        "name": "David Albelda",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 33,
+        "nationality": "España",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 79
+      },
+      {
+        "name": "Éver Banega",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 21,
+        "nationality": "Argentina",
+        "marketValue": 12000000,
+        "marketValueText": "12,00 mill. €",
+        "overall": 83
+      },
+      {
+        "name": "Tino Costa",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 24,
+        "nationality": "Argentina",
+        "marketValue": 7500000,
+        "marketValueText": "7,50 mill. €",
+        "overall": 83
+      },
+      {
+        "name": "Ángel Montoro",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 45,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 76
+      },
+      {
+        "name": "Iván Rubio",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 35,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 76
+      },
+      {
+        "name": "Juan Mata",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 23,
+        "nationality": "España",
+        "marketValue": 25000000,
+        "marketValueText": "25,00 mill. €",
+        "overall": 86
+      },
+      {
+        "name": "Manuel Fernandes",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 18,
+        "nationality": "Portugal",
+        "marketValue": 8000000,
+        "marketValueText": "8,00 mill. €",
+        "overall": 81
+      },
+      {
+        "name": "Alejandro Domínguez",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 30,
+        "nationality": "Argentina",
+        "marketValue": 5500000,
+        "marketValueText": "5,50 mill. €",
+        "overall": 85
+      },
+      {
+        "name": "Sofiane Feghouli",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 21,
+        "nationality": "Argelia",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 81
+      },
+      {
+        "name": "Ignacio González",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 29,
+        "nationality": "Uruguay",
+        "marketValue": 600,
+        "marketValueText": "600 mil €",
+        "overall": 82
+      },
+      {
+        "name": "Isco",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 82
+      },
+      {
+        "name": "Vicente",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 5000000,
+        "marketValueText": "5,00 mill. €",
+        "overall": 85
+      },
+      {
+        "name": "Pablo Hernández",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 19,
+        "nationality": "España",
+        "marketValue": 13000000,
+        "marketValueText": "13,00 mill. €",
+        "overall": 81
+      },
+      {
+        "name": "Joaquín",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 10000000,
+        "marketValueText": "10,00 mill. €",
+        "overall": 85
+      },
+      {
+        "name": "Jonas",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 18,
+        "nationality": "Brasil",
+        "marketValue": 6000000,
+        "marketValueText": "6,00 mill. €",
+        "overall": 81
+      },
+      {
+        "name": "Roberto Soldado",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 12000000,
+        "marketValueText": "12,00 mill. €",
+        "overall": 85
+      },
+      {
+        "name": "Aritz Aduriz",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 30,
+        "nationality": "España",
+        "marketValue": 9000000,
+        "marketValueText": "9,00 mill. €",
+        "overall": 85
+      },
+      {
+        "name": "Paco Alcácer",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 27,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 82
+      }
+    ],
+    "avgOverall": 82,
+    "marketValue": 176600000
+  },
+  {
+    "id": "tm-368",
+    "name": "Sevilla FC",
+    "slug": "fc-sevilla",
+    "transfermarktId": "368",
+    "teamUrl": "https://www.transfermarkt.es/fc-sevilla/startseite/verein/368/saison_id/2010",
+    "marketValueText": "175,60 mill. €",
+    "league": "laliga",
+    "season": "2010-11",
+    "rank": 5,
+    "players": [
+      {
+        "name": "Javi Varas",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 28,
+        "nationality": "España",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Andrés Palop",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 37,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Dani Jiménez",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 79
+      },
+      {
+        "name": "Martín Cáceres",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 24,
+        "nationality": "Uruguay",
+        "marketValue": 7000000,
+        "marketValueText": "7,00 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Sébastien Squillaci",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 30,
+        "nationality": "Francia",
+        "marketValue": 6000000,
+        "marketValueText": "6,00 mill. €",
+        "overall": 82
+      },
+      {
+        "name": "Gary Medel",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 24,
+        "nationality": "Chile",
+        "marketValue": 5000000,
+        "marketValueText": "5,00 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Alexis Ruano",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 23,
+        "nationality": "España",
+        "marketValue": 4500000,
+        "marketValueText": "4,50 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Sergio Sánchez",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 17,
+        "nationality": "España",
+        "marketValue": 4000000,
+        "marketValueText": "4,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Federico Fazio",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 24,
+        "nationality": "Argentina",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Julien Escudé",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 31,
+        "nationality": "Francia",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Juan Cala",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 28,
+        "nationality": "España",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Ivica Dragutinovic",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 35,
+        "nationality": "Serbia",
+        "marketValue": 600,
+        "marketValueText": "600 mil €",
+        "overall": 73
+      },
+      {
+        "name": "Bernardo Espinosa",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 34,
+        "nationality": "Colombia",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 75
+      },
+      {
+        "name": "Fernando Navarro",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 5000000,
+        "marketValueText": "5,00 mill. €",
+        "overall": 82
+      },
+      {
+        "name": "Antonio Luna",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 27,
+        "nationality": "España",
+        "marketValue": 500,
+        "marketValueText": "500 mil €",
+        "overall": 79
+      },
+      {
+        "name": "Mouhamadou Dabo",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 20,
+        "nationality": "Francia",
+        "marketValue": 5000000,
+        "marketValueText": "5,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Abdoulay Konko",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 24,
+        "nationality": "Francia",
+        "marketValue": 5000000,
+        "marketValueText": "5,00 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Didier Zokora",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 30,
+        "nationality": "Costa de Marfil",
+        "marketValue": 10000000,
+        "marketValueText": "10,00 mill. €",
+        "overall": 82
+      },
+      {
+        "name": "Romaric",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 28,
+        "nationality": "Costa de Marfil",
+        "marketValue": 5000000,
+        "marketValueText": "5,00 mill. €",
+        "overall": 82
+      },
+      {
+        "name": "Luca Cigarini",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 19,
+        "nationality": "Italia",
+        "marketValue": 4500000,
+        "marketValueText": "4,50 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Ivan Rakitic",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 25,
+        "nationality": "Croacia",
+        "marketValue": 10000000,
+        "marketValueText": "10,00 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Tiberio Guarente",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 25,
+        "nationality": "Italia",
+        "marketValue": 5500000,
+        "marketValueText": "5,50 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Renato",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 32,
+        "nationality": "Brasil",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "José Campaña",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 32,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 77
+      },
+      {
+        "name": "Jesús Navas",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 25,
+        "nationality": "España",
+        "marketValue": 25000000,
+        "marketValueText": "25,00 mill. €",
+        "overall": 83
+      },
+      {
+        "name": "José Carlos",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 30,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Luis Alberto",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 79
+      },
+      {
+        "name": "Diego Perotti",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 22,
+        "nationality": "Argentina",
+        "marketValue": 12000000,
+        "marketValueText": "12,00 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Diego Capel",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 16,
+        "nationality": "España",
+        "marketValue": 8000000,
+        "marketValueText": "8,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Alejandro Alfaro",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 15,
+        "nationality": "España",
+        "marketValue": 4000000,
+        "marketValueText": "4,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Lautaro Acosta",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 21,
+        "nationality": "Argentina",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Álvaro Negredo",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 18,
+        "nationality": "España",
+        "marketValue": 16000000,
+        "marketValueText": "16,00 mill. €",
+        "overall": 81
+      },
+      {
+        "name": "Frédéric Kanouté",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 33,
+        "nationality": "Malí",
+        "marketValue": 9000000,
+        "marketValueText": "9,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Luís Fabiano",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 30,
+        "nationality": "Brasil",
+        "marketValue": 7500000,
+        "marketValueText": "7,50 mill. €",
+        "overall": 82
+      },
+      {
+        "name": "Arouna Koné",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 22,
+        "nationality": "Costa de Marfil",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Rodri Ríos",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 31,
+        "nationality": "España",
+        "marketValue": 500,
+        "marketValueText": "500 mil €",
+        "overall": 77
+      }
+    ],
+    "avgOverall": 79,
+    "marketValue": 175600000
+  },
+  {
+    "id": "tm-1050",
+    "name": "Villarreal CF",
+    "slug": "fc-villarreal",
+    "transfermarktId": "1050",
+    "teamUrl": "https://www.transfermarkt.es/fc-villarreal/startseite/verein/1050/saison_id/2010",
+    "marketValueText": "170,60 mill. €",
+    "league": "laliga",
+    "season": "2010-11",
+    "rank": 6,
+    "players": [
+      {
+        "name": "Diego López",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 12000000,
+        "marketValueText": "12,00 mill. €",
+        "overall": 82
+      },
+      {
+        "name": "Juan Carlos",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 25,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Diego Mariño",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 35,
+        "nationality": "España",
+        "marketValue": 700,
+        "marketValueText": "700 mil €",
+        "overall": 73
+      },
+      {
+        "name": "Xavier Oliva",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 35,
+        "nationality": "España",
+        "marketValue": 400,
+        "marketValueText": "400 mil €",
+        "overall": 73
+      },
+      {
+        "name": "Gonzalo Rodríguez",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 27,
+        "nationality": "Argentina",
+        "marketValue": 9000000,
+        "marketValueText": "9,00 mill. €",
+        "overall": 82
+      },
+      {
+        "name": "Carlos Marchena",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 31,
+        "nationality": "España",
+        "marketValue": 7000000,
+        "marketValueText": "7,00 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Mateo Musacchio",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 20,
+        "nationality": "Argentina",
+        "marketValue": 5000000,
+        "marketValueText": "5,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Mario Gaspar",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 27,
+        "nationality": "España",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Kiko Olivas",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 1200000,
+        "marketValueText": "1,20 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Carlos Tomás",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 600,
+        "marketValueText": "600 mil €",
+        "overall": 79
+      },
+      {
+        "name": "Joan Capdevila",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 33,
+        "nationality": "España",
+        "marketValue": 7000000,
+        "marketValueText": "7,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "José Manuel Catalá",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 15,
+        "nationality": "España",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Joan Oriol",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 24,
+        "nationality": "España",
+        "marketValue": 1200000,
+        "marketValueText": "1,20 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Ángel López",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 30,
+        "nationality": "España",
+        "marketValue": 4000000,
+        "marketValueText": "4,00 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Cicinho",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 24,
+        "nationality": "Brasil",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Bruno Soriano",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 21,
+        "nationality": "España",
+        "marketValue": 9000000,
+        "marketValueText": "9,00 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Marcos Senna",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 19,
+        "nationality": "España",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Santi Cazorla",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 18000000,
+        "marketValueText": "18,00 mill. €",
+        "overall": 85
+      },
+      {
+        "name": "Borja Valero",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 20,
+        "nationality": "España",
+        "marketValue": 12000000,
+        "marketValueText": "12,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Mubarak Wakaso",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 43,
+        "nationality": "Ghana",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Javier Matilla",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 17,
+        "nationality": "España",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Marcos Gullón",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 32,
+        "nationality": "España",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Cristóbal Márquez",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 18,
+        "nationality": "España",
+        "marketValue": 1200000,
+        "marketValueText": "1,20 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Natxo Insa",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 31,
+        "nationality": "Malasia",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Gonzalo Castellani",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 34,
+        "nationality": "Argentina",
+        "marketValue": 300,
+        "marketValueText": "300 mil €",
+        "overall": 75
+      },
+      {
+        "name": "Cani",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 8000000,
+        "marketValueText": "8,00 mill. €",
+        "overall": 82
+      },
+      {
+        "name": "Jefferson Montero",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 23,
+        "nationality": "Ecuador",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Iago Falque",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 37,
+        "nationality": "España",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Hernán Pérez",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 33,
+        "nationality": "Paraguay",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Giuseppe Rossi",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 22,
+        "nationality": "Italia",
+        "marketValue": 25000000,
+        "marketValueText": "25,00 mill. €",
+        "overall": 83
+      },
+      {
+        "name": "Nilmar",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 26,
+        "nationality": "Brasil",
+        "marketValue": 20000000,
+        "marketValueText": "20,00 mill. €",
+        "overall": 85
+      },
+      {
+        "name": "Marco Ruben",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 24,
+        "nationality": "Argentina",
+        "marketValue": 3500000,
+        "marketValueText": "3,50 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Jozy Altidore",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 21,
+        "nationality": "Estados Unidos",
+        "marketValue": 2200000,
+        "marketValueText": "2,20 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Nicki Bille",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 23,
+        "nationality": "Dinamarca",
+        "marketValue": 1800000,
+        "marketValueText": "1,80 mill. €",
+        "overall": 78
+      }
+    ],
+    "avgOverall": 78,
+    "marketValue": 170600000
+  },
+  {
+    "id": "tm-621",
+    "name": "Athletic Club",
+    "slug": "athletic-bilbao",
+    "transfermarktId": "621",
+    "teamUrl": "https://www.transfermarkt.es/athletic-bilbao/startseite/verein/621/saison_id/2010",
+    "marketValueText": "112,00 mill. €",
+    "league": "laliga",
+    "season": "2010-11",
+    "rank": 7,
+    "players": [
+      {
+        "name": "Gorka Iraizoz",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 30,
+        "nationality": "España",
+        "marketValue": 4000000,
+        "marketValueText": "4,00 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Raúl Fernández",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 23,
+        "nationality": "España",
+        "marketValue": 600,
+        "marketValueText": "600 mil €",
+        "overall": 77
+      },
+      {
+        "name": "Aitor Fernández",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 30,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 79
+      },
+      {
+        "name": "Javi Martínez",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 24,
+        "nationality": "España",
+        "marketValue": 20000000,
+        "marketValueText": "20,00 mill. €",
+        "overall": 83
+      },
+      {
+        "name": "Fernando Amorebieta",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 26,
+        "nationality": "Venezuela",
+        "marketValue": 8000000,
+        "marketValueText": "8,00 mill. €",
+        "overall": 82
+      },
+      {
+        "name": "Carlos Gurpegui",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 18,
+        "nationality": "España",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Jon Aurtenetxe",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Ustaritz",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 28,
+        "nationality": "España",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Borja Ekiza",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 32,
+        "nationality": "España",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Aitor Ocio",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 20,
+        "nationality": "España",
+        "marketValue": 500,
+        "marketValueText": "500 mil €",
+        "overall": 75
+      },
+      {
+        "name": "Koikili",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 30,
+        "nationality": "España",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Mikel Balenziaga",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 19,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Xabier Castillo",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 22,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Andoni Iraola",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 15,
+        "nationality": "España",
+        "marketValue": 9000000,
+        "marketValueText": "9,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Óscar de Marcos",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 22,
+        "nationality": "España",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Mikel San José",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 22,
+        "nationality": "España",
+        "marketValue": 5000000,
+        "marketValueText": "5,00 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Pablo Orbaiz",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 16,
+        "nationality": "España",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Ander Iturraspe",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 22,
+        "nationality": "España",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "David López",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 28,
+        "nationality": "España",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Iñigo Pérez",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 17,
+        "nationality": "España",
+        "marketValue": 500,
+        "marketValueText": "500 mil €",
+        "overall": 75
+      },
+      {
+        "name": "Igor Gabilondo",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 32,
+        "nationality": "España",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Igor Martínez",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Iker Muniain",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 27,
+        "nationality": "España",
+        "marketValue": 6000000,
+        "marketValueText": "6,00 mill. €",
+        "overall": 82
+      },
+      {
+        "name": "Ibai Gómez",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 28,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 79
+      },
+      {
+        "name": "Markel Susaeta",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 23,
+        "nationality": "España",
+        "marketValue": 6000000,
+        "marketValueText": "6,00 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Gaizka Toquero",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 3500000,
+        "marketValueText": "3,50 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Fernando Llorente",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 20000000,
+        "marketValueText": "20,00 mill. €",
+        "overall": 85
+      },
+      {
+        "name": "Iñigo Díaz de Cerio",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 23,
+        "nationality": "España",
+        "marketValue": 1200000,
+        "marketValueText": "1,20 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Ion Vélez",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 21,
+        "nationality": "España",
+        "marketValue": 800,
+        "marketValueText": "800 mil €",
+        "overall": 77
+      },
+      {
+        "name": "Urko Vera",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 33,
+        "nationality": "España",
+        "marketValue": 400,
+        "marketValueText": "400 mil €",
+        "overall": 75
+      }
+    ],
+    "avgOverall": 79,
+    "marketValue": 112000000
+  },
+  {
+    "id": "tm-714",
+    "name": "RCD Espanyol",
+    "slug": "espanyol-barcelona",
+    "transfermarktId": "714",
+    "teamUrl": "https://www.transfermarkt.es/espanyol-barcelona/startseite/verein/714/saison_id/2010",
+    "marketValueText": "78,40 mill. €",
+    "league": "laliga",
+    "season": "2010-11",
+    "rank": 8,
+    "players": [
+      {
+        "name": "Carlos Kameni",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 27,
+        "nationality": "Camerún",
+        "marketValue": 6000000,
+        "marketValueText": "6,00 mill. €",
+        "overall": 82
+      },
+      {
+        "name": "Cristian Álvarez",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 25,
+        "nationality": "Argentina",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Kiko Casilla",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 24,
+        "nationality": "España",
+        "marketValue": 800,
+        "marketValueText": "800 mil €",
+        "overall": 77
+      },
+      {
+        "name": "Dinu Moldovan",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 26,
+        "nationality": "Rumania",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 79
+      },
+      {
+        "name": "Víctor Ruiz",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 22,
+        "nationality": "España",
+        "marketValue": 8000000,
+        "marketValueText": "8,00 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Juan Forlín",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 18,
+        "nationality": "Argentina",
+        "marketValue": 3500000,
+        "marketValueText": "3,50 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Jordi Amat",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 19,
+        "nationality": "Indonesia",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Raúl Rodríguez",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 32,
+        "nationality": "España",
+        "marketValue": 300,
+        "marketValueText": "300 mil €",
+        "overall": 77
+      },
+      {
+        "name": "David López",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 33,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 75
+      },
+      {
+        "name": "Albert Canal",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 38,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 73
+      },
+      {
+        "name": "Dídac Vilà",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 22,
+        "nationality": "España",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "David García",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 30,
+        "nationality": "España",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Víctor Álvarez",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 34,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 75
+      },
+      {
+        "name": "Felipe Mattioni",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 15,
+        "nationality": "Brasil",
+        "marketValue": 3500000,
+        "marketValueText": "3,50 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Javi Chica",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Ernesto Galán",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 25,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Javi López",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 16,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Raúl Baena",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 22,
+        "nationality": "España",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Aldo Duscher",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 22,
+        "nationality": "Argentina",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Isaías Sánchez",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 40,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 73
+      },
+      {
+        "name": "Luis García",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 30,
+        "nationality": "España",
+        "marketValue": 5500000,
+        "marketValueText": "5,50 mill. €",
+        "overall": 82
+      },
+      {
+        "name": "Javi Márquez",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 25,
+        "nationality": "España",
+        "marketValue": 4000000,
+        "marketValueText": "4,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Manu Molina",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 300,
+        "marketValueText": "300 mil €",
+        "overall": 79
+      },
+      {
+        "name": "Jesús Dátolo",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 23,
+        "nationality": "Argentina",
+        "marketValue": 3500000,
+        "marketValueText": "3,50 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Joan Verdú",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 28,
+        "nationality": "España",
+        "marketValue": 3500000,
+        "marketValueText": "3,50 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Iván de la Peña",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 35,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 73
+      },
+      {
+        "name": "Thievy Bifouma",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 39,
+        "nationality": "Congo",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 73
+      },
+      {
+        "name": "José Callejón",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 24,
+        "nationality": "España",
+        "marketValue": 6500000,
+        "marketValueText": "6,50 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Eric López",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 37,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 73
+      },
+      {
+        "name": "Daniel Osvaldo",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 17,
+        "nationality": "Italia",
+        "marketValue": 10000000,
+        "marketValueText": "10,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Sergio García",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 19,
+        "nationality": "España",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Iván Alonso",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 24,
+        "nationality": "Uruguay",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Ferrán Corominas",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 20,
+        "nationality": "España",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Álvaro Vázquez",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 20,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Rui Fonte",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 35,
+        "nationality": "Portugal",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 73
+      }
+    ],
+    "avgOverall": 77,
+    "marketValue": 78400000
+  },
+  {
+    "id": "tm-3302",
+    "name": "UD Almería",
+    "slug": "ud-almeria",
+    "transfermarktId": "3302",
+    "teamUrl": "https://www.transfermarkt.es/ud-almeria/startseite/verein/3302/saison_id/2010",
+    "marketValueText": "73,60 mill. €",
+    "league": "laliga",
+    "season": "2010-11",
+    "rank": 9,
+    "players": [
+      {
+        "name": "Diego Alves",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 26,
+        "nationality": "Brasil",
+        "marketValue": 12000000,
+        "marketValueText": "12,00 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Esteban",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 36,
+        "nationality": "España",
+        "marketValue": 500,
+        "marketValueText": "500 mil €",
+        "overall": 71
+      },
+      {
+        "name": "Diego García",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 21,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 75
+      },
+      {
+        "name": "Hernán Pellerano",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 27,
+        "nationality": "Argentina",
+        "marketValue": 3500000,
+        "marketValueText": "3,50 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Carlos García",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 21,
+        "nationality": "España",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Michael Jakobsen",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 25,
+        "nationality": "Dinamarca",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Marcelo Silva",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 22,
+        "nationality": "Uruguay",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Santiago Acasiete",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 18,
+        "nationality": "Perú",
+        "marketValue": 700,
+        "marketValueText": "700 mil €",
+        "overall": 73
+      },
+      {
+        "name": "Baltasar Rigo",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 300,
+        "marketValueText": "300 mil €",
+        "overall": 77
+      },
+      {
+        "name": "Antonio Luna",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 20,
+        "nationality": "España",
+        "marketValue": 500,
+        "marketValueText": "500 mil €",
+        "overall": 73
+      },
+      {
+        "name": "Juanma Ortiz",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 17,
+        "nationality": "España",
+        "marketValue": 3500000,
+        "marketValueText": "3,50 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Michel Macedo",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 16,
+        "nationality": "Brasil",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Lillo Castellano",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 40,
+        "nationality": "España",
+        "marketValue": 400,
+        "marketValueText": "400 mil €",
+        "overall": 71
+      },
+      {
+        "name": "Hernán Bernardello",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 25,
+        "nationality": "Argentina",
+        "marketValue": 4000000,
+        "marketValueText": "4,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Modeste M'Bami",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 19,
+        "nationality": "Camerún",
+        "marketValue": 3500000,
+        "marketValueText": "3,50 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Juanito",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 24,
+        "nationality": "España",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Fabián Vargas",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 22,
+        "nationality": "Colombia",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Miguel Ángel Corona",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 15,
+        "nationality": "España",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Miguel Ángel Luque",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 300,
+        "marketValueText": "300 mil €",
+        "overall": 77
+      },
+      {
+        "name": "Cristóbal Gil",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 42,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 71
+      },
+      {
+        "name": "Pablo Piatti",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 22,
+        "nationality": "Argentina",
+        "marketValue": 9000000,
+        "marketValueText": "9,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Sofiane Feghouli",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 21,
+        "nationality": "Argelia",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Diego Váleri",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 25,
+        "nationality": "Argentina",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Albert Crusat",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 4000000,
+        "marketValueText": "4,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Miguel Ángel Nieto",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 25,
+        "nationality": "España",
+        "marketValue": 400,
+        "marketValueText": "400 mil €",
+        "overall": 75
+      },
+      {
+        "name": "José Ortiz",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 33,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Jonathan Zongo",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 43,
+        "nationality": "Burkina Faso",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 71
+      },
+      {
+        "name": "Kalu Uche",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 28,
+        "nationality": "Nigeria",
+        "marketValue": 5000000,
+        "marketValueText": "5,00 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Leonardo Ulloa",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 20,
+        "nationality": "Argentina",
+        "marketValue": 3500000,
+        "marketValueText": "3,50 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Henok Goitom",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 23,
+        "nationality": "Eritrea",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 76
+      }
+    ],
+    "avgOverall": 75,
+    "marketValue": 73600000
+  },
+  {
+    "id": "tm-1084",
+    "name": "Málaga CF",
+    "slug": "fc-malaga",
+    "transfermarktId": "1084",
+    "teamUrl": "https://www.transfermarkt.es/fc-malaga/startseite/verein/1084/saison_id/2010",
+    "marketValueText": "71,05 mill. €",
+    "league": "laliga",
+    "season": "2010-11",
+    "rank": 10,
+    "players": [
+      {
+        "name": "Sergio Asenjo",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 22,
+        "nationality": "España",
+        "marketValue": 5000000,
+        "marketValueText": "5,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Willy Caballero",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 29,
+        "nationality": "Argentina",
+        "marketValue": 1600000,
+        "marketValueText": "1,60 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Rubén Martínez",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 25,
+        "nationality": "España",
+        "marketValue": 1200000,
+        "marketValueText": "1,20 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Galatto",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 28,
+        "nationality": "Brasil",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Francesc Arnau",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 36,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 71
+      },
+      {
+        "name": "Fran Marmolejo",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 28,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 77
+      },
+      {
+        "name": "Martín Demichelis",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 30,
+        "nationality": "Argentina",
+        "marketValue": 5000000,
+        "marketValueText": "5,00 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Weligton",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 31,
+        "nationality": "Brasil",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Kris Stadsgaard",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 25,
+        "nationality": "Dinamarca",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Hélder Rosário",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 31,
+        "nationality": "Portugal",
+        "marketValue": 1400000,
+        "marketValueText": "1,40 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Manu Torres",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 21,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Iván González",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 23,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Javier Malagueño",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 15,
+        "nationality": "Argentina",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Eliseu",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 18,
+        "nationality": "Portugal",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Patrick Mtiliga",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 19,
+        "nationality": "Dinamarca",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Jesús Gámez",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 5000000,
+        "marketValueText": "5,00 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Manolo Gaspar",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 20,
+        "nationality": "España",
+        "marketValue": 800,
+        "marketValueText": "800 mil €",
+        "overall": 73
+      },
+      {
+        "name": "Sandro Silva",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 22,
+        "nationality": "Brasil",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Juanito",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 24,
+        "nationality": "España",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Ignacio Camacho",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 24,
+        "nationality": "España",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Apoño",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 27,
+        "nationality": "España",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Enzo Maresca",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 16,
+        "nationality": "Italia",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Recio",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 45,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 72
+      },
+      {
+        "name": "Edu Ramos",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 16,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 73
+      },
+      {
+        "name": "Cala",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 37,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 71
+      },
+      {
+        "name": "Duda",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 17,
+        "nationality": "Portugal",
+        "marketValue": 6000000,
+        "marketValueText": "6,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Júlio Baptista",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 29,
+        "nationality": "Brasil",
+        "marketValue": 5000000,
+        "marketValueText": "5,00 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Fernando",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 32,
+        "nationality": "España",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Francisco Portillo",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 27,
+        "nationality": "España",
+        "marketValue": 600,
+        "marketValueText": "600 mil €",
+        "overall": 77
+      },
+      {
+        "name": "Quincy Owusu-Abeyie",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 21,
+        "nationality": "Ghana",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Juanmi",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Albert Luque",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 33,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 73
+      },
+      {
+        "name": "Sebastián Fernández",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 26,
+        "nationality": "Uruguay",
+        "marketValue": 3200000,
+        "marketValueText": "3,20 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Salomón Rondón",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 23,
+        "nationality": "Venezuela",
+        "marketValue": 5000000,
+        "marketValueText": "5,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Edinho",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 28,
+        "nationality": "Portugal",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Nabil Baha",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 29,
+        "nationality": "Marruecos",
+        "marketValue": 1250000,
+        "marketValueText": "1,25 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Jonathan Sánchez",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 77
+      }
+    ],
+    "avgOverall": 76,
+    "marketValue": 71050000
+  },
+  {
+    "id": "tm-681",
+    "name": "Real Sociedad",
+    "slug": "real-sociedad-san-sebastian",
+    "transfermarktId": "681",
+    "teamUrl": "https://www.transfermarkt.es/real-sociedad-san-sebastian/startseite/verein/681/saison_id/2010",
+    "marketValueText": "66,70 mill. €",
+    "league": "laliga",
+    "season": "2010-11",
+    "rank": 11,
+    "players": [
+      {
+        "name": "Claudio Bravo",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 28,
+        "nationality": "Chile",
+        "marketValue": 6000000,
+        "marketValueText": "6,00 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Eñaut Zubikarai",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 27,
+        "nationality": "España",
+        "marketValue": 800,
+        "marketValueText": "800 mil €",
+        "overall": 77
+      },
+      {
+        "name": "Toño",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 30,
+        "nationality": "España",
+        "marketValue": 200,
+        "marketValueText": "200 mil €",
+        "overall": 77
+      },
+      {
+        "name": "Mikel González",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 25,
+        "nationality": "España",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Ion Ansotegi",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 15,
+        "nationality": "España",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Vadim Demidov",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 16,
+        "nationality": "Noruega",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Mikel Labaka",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 30,
+        "nationality": "España",
+        "marketValue": 1600000,
+        "marketValueText": "1,60 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Liassine Cadamuro",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 31,
+        "nationality": "Argelia",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 75
+      },
+      {
+        "name": "Alberto de la Bella",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 24,
+        "nationality": "España",
+        "marketValue": 3500000,
+        "marketValueText": "3,50 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Carlos Martínez",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 25,
+        "nationality": "España",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Dani Estrada",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 22,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Gorka Elustondo",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 24,
+        "nationality": "España",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Markel Bergara",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 25,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Asier Illarramendi",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 300,
+        "marketValueText": "300 mil €",
+        "overall": 77
+      },
+      {
+        "name": "David Zurutuza",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 17,
+        "nationality": "España",
+        "marketValue": 4000000,
+        "marketValueText": "4,00 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Mikel Aranburu",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 32,
+        "nationality": "España",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Diego Rivas",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 19,
+        "nationality": "España",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Jeffrey Sarpong",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 22,
+        "nationality": "Países Bajos",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Xabi Prieto",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 27,
+        "nationality": "España",
+        "marketValue": 8000000,
+        "marketValueText": "8,00 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Paco Sutil",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 23,
+        "nationality": "España",
+        "marketValue": 800,
+        "marketValueText": "800 mil €",
+        "overall": 75
+      },
+      {
+        "name": "Antoine Griezmann",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 20,
+        "nationality": "Francia",
+        "marketValue": 8000000,
+        "marketValueText": "8,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Joseba Llorente",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 31,
+        "nationality": "España",
+        "marketValue": 5000000,
+        "marketValueText": "5,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Raúl Tamudo",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 20,
+        "nationality": "España",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Diego Ifrán",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 21,
+        "nationality": "Uruguay",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Imanol Agirretxe",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 24,
+        "nationality": "España",
+        "marketValue": 1200000,
+        "marketValueText": "1,20 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Borja Viguera",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 18,
+        "nationality": "España",
+        "marketValue": 300,
+        "marketValueText": "300 mil €",
+        "overall": 73
+      }
+    ],
+    "avgOverall": 76,
+    "marketValue": 66700000
+  },
+  {
+    "id": "tm-3709",
+    "name": "Getafe CF",
+    "slug": "fc-getafe",
+    "transfermarktId": "3709",
+    "teamUrl": "https://www.transfermarkt.es/fc-getafe/startseite/verein/3709/saison_id/2010",
+    "marketValueText": "66,40 mill. €",
+    "league": "laliga",
+    "season": "2010-11",
+    "rank": 12,
+    "players": [
+      {
+        "name": "Óscar Ustari",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 24,
+        "nationality": "Argentina",
+        "marketValue": 1800000,
+        "marketValueText": "1,80 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Jordi Codina",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 1800000,
+        "marketValueText": "1,80 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Gonzalo",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 31,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 75
+      },
+      {
+        "name": "Cata Díaz",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 31,
+        "nationality": "Argentina",
+        "marketValue": 4000000,
+        "marketValueText": "4,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Iván Marcano",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 23,
+        "nationality": "España",
+        "marketValue": 4000000,
+        "marketValueText": "4,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Rafa López",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 15,
+        "nationality": "España",
+        "marketValue": 2800000,
+        "marketValueText": "2,80 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Mario Abrante",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "İbrahim Kaş",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 24,
+        "nationality": "Turquía",
+        "marketValue": 900,
+        "marketValueText": "900 mil €",
+        "overall": 75
+      },
+      {
+        "name": "Pedro Alcalá",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 35,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 71
+      },
+      {
+        "name": "Alberto Escassi",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 28,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 77
+      },
+      {
+        "name": "Álex Pérez",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 77
+      },
+      {
+        "name": "Mané",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 4000000,
+        "marketValueText": "4,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Adrián Cañas",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 37,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 71
+      },
+      {
+        "name": "Miguel Torres",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 24,
+        "nationality": "España",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Pablo Pintos",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 20,
+        "nationality": "Uruguay",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Derek Boateng",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 18,
+        "nationality": "Ghana",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Borja Fernández",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 30,
+        "nationality": "España",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Javi Casquero",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 22,
+        "nationality": "España",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Dani Parejo",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 22,
+        "nationality": "España",
+        "marketValue": 8000000,
+        "marketValueText": "8,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Víctor Sánchez",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 17,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Pedro Mosquera",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 21,
+        "nationality": "España",
+        "marketValue": 700,
+        "marketValueText": "700 mil €",
+        "overall": 75
+      },
+      {
+        "name": "Juan Albín",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 24,
+        "nationality": "Uruguay",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Jaime Gavilán",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 2600000,
+        "marketValueText": "2,60 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Adrián Sardinero",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 27,
+        "nationality": "España",
+        "marketValue": 300,
+        "marketValueText": "300 mil €",
+        "overall": 77
+      },
+      {
+        "name": "Pedro Ríos",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 16,
+        "nationality": "España",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Manu del Moral",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 27,
+        "nationality": "España",
+        "marketValue": 5500000,
+        "marketValueText": "5,50 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Adrián Colunga",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 4500000,
+        "marketValueText": "4,50 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Miku",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 25,
+        "nationality": "Venezuela",
+        "marketValue": 3500000,
+        "marketValueText": "3,50 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Javier Arizmendi",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 19,
+        "nationality": "España",
+        "marketValue": 3500000,
+        "marketValueText": "3,50 mill. €",
+        "overall": 74
+      }
+    ],
+    "avgOverall": 76,
+    "marketValue": 66400000.00000001
+  },
+  {
+    "id": "tm-897",
+    "name": "RC Deportivo de La Coruña",
+    "slug": "deportivo-la-coruna",
+    "transfermarktId": "897",
+    "teamUrl": "https://www.transfermarkt.es/deportivo-la-coruna/startseite/verein/897/saison_id/2010",
+    "marketValueText": "63,70 mill. €",
+    "league": "laliga",
+    "season": "2010-11",
+    "rank": 13,
+    "players": [
+      {
+        "name": "Daniel Aranzubia",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 31,
+        "nationality": "España",
+        "marketValue": 4000000,
+        "marketValueText": "4,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Manu Fernández",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 25,
+        "nationality": "España",
+        "marketValue": 700,
+        "marketValueText": "700 mil €",
+        "overall": 75
+      },
+      {
+        "name": "Felipe Ramos",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 300,
+        "marketValueText": "300 mil €",
+        "overall": 77
+      },
+      {
+        "name": "Alberto Lopo",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 31,
+        "nationality": "España",
+        "marketValue": 4000000,
+        "marketValueText": "4,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Diego Colotto",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 19,
+        "nationality": "Argentina",
+        "marketValue": 4000000,
+        "marketValueText": "4,00 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Zé Castro",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 28,
+        "nationality": "Portugal",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Aythami Artiles",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 23,
+        "nationality": "España",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "David Rochela",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 27,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 77
+      },
+      {
+        "name": "Claudio Morel Rodríguez",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 33,
+        "nationality": "Paraguay",
+        "marketValue": 1200000,
+        "marketValueText": "1,20 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Knut Olav Rindarøy",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 24,
+        "nationality": "Noruega",
+        "marketValue": 1200000,
+        "marketValueText": "1,20 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Manuel Pablo",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 35,
+        "nationality": "España",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 72
+      },
+      {
+        "name": "Diego Seoane",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 33,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Laure",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 15,
+        "nationality": "España",
+        "marketValue": 900,
+        "marketValueText": "900 mil €",
+        "overall": 73
+      },
+      {
+        "name": "Juan Rodríguez",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 22,
+        "nationality": "España",
+        "marketValue": 3500000,
+        "marketValueText": "3,50 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Juca",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 31,
+        "nationality": "Brasil",
+        "marketValue": 2800000,
+        "marketValueText": "2,80 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Rubén Pérez",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 22,
+        "nationality": "España",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Andrés Guardado",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 18,
+        "nationality": "México",
+        "marketValue": 5000000,
+        "marketValueText": "5,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Antonio Tomás",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 16,
+        "nationality": "España",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Míchel Herrero",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 22,
+        "nationality": "España",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Juan Domínguez",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 28,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Saúl",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 2200000,
+        "marketValueText": "2,20 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Juan Carlos Valerón",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 21,
+        "nationality": "España",
+        "marketValue": 800,
+        "marketValueText": "800 mil €",
+        "overall": 75
+      },
+      {
+        "name": "Yves Desmarets",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 20,
+        "nationality": "Haití",
+        "marketValue": 2800000,
+        "marketValueText": "2,80 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Javito",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 25,
+        "nationality": "España",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Pablo Álvarez",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 31,
+        "nationality": "España",
+        "marketValue": 1800000,
+        "marketValueText": "1,80 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Jonathan Urretaviscaya",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 17,
+        "nationality": "Uruguay",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Adrián López",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 23,
+        "nationality": "España",
+        "marketValue": 3500000,
+        "marketValueText": "3,50 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Riki",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 30,
+        "nationality": "España",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "José Sand",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 24,
+        "nationality": "Argentina",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Lassad Nouioui",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 25,
+        "nationality": "Túnez",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Xisco",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 17,
+        "nationality": "España",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Dioni",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 34,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 73
+      },
+      {
+        "name": "Iago Beceiro",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 39,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 71
+      }
+    ],
+    "avgOverall": 75,
+    "marketValue": 63700000
+  },
+  {
+    "id": "tm-630",
+    "name": "Real Racing Club",
+    "slug": "racing-santander",
+    "transfermarktId": "630",
+    "teamUrl": "https://www.transfermarkt.es/racing-santander/startseite/verein/630/saison_id/2010",
+    "marketValueText": "59,30 mill. €",
+    "league": "laliga",
+    "season": "2010-11",
+    "rank": 14,
+    "players": [
+      {
+        "name": "Toño",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 31,
+        "nationality": "España",
+        "marketValue": 3500000,
+        "marketValueText": "3,50 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Fabio Coltorti",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 30,
+        "nationality": "Suiza",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Mario Fernández",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 25,
+        "nationality": "España",
+        "marketValue": 300,
+        "marketValueText": "300 mil €",
+        "overall": 75
+      },
+      {
+        "name": "Henrique",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 24,
+        "nationality": "Brasil",
+        "marketValue": 5000000,
+        "marketValueText": "5,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Marc Torrejón",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 19,
+        "nationality": "España",
+        "marketValue": 3500000,
+        "marketValueText": "3,50 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Waldo Ponce",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 24,
+        "nationality": "Chile",
+        "marketValue": 800,
+        "marketValueText": "800 mil €",
+        "overall": 75
+      },
+      {
+        "name": "Osmar",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 23,
+        "nationality": "España",
+        "marketValue": 100,
+        "marketValueText": "100 mil €",
+        "overall": 75
+      },
+      {
+        "name": "Álvaro González",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 33,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 73
+      },
+      {
+        "name": "Domingo Cisma",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 3500000,
+        "marketValueText": "3,50 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Bolaño",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 25,
+        "nationality": "España",
+        "marketValue": 1200000,
+        "marketValueText": "1,20 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Francis Pérez",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 15,
+        "nationality": "España",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Pablo Pinillos",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 36,
+        "nationality": "España",
+        "marketValue": 400,
+        "marketValueText": "400 mil €",
+        "overall": 71
+      },
+      {
+        "name": "Mehdi Lacen",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 27,
+        "nationality": "Argelia",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Gonzalo Colsa",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 32,
+        "nationality": "España",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Pape Diop",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 21,
+        "nationality": "Senegal",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Alexandros Tziolis",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 20,
+        "nationality": "Grecia",
+        "marketValue": 2600000,
+        "marketValueText": "2,60 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Tato",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 32,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 75
+      },
+      {
+        "name": "Adrián González",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 23,
+        "nationality": "España",
+        "marketValue": 900,
+        "marketValueText": "900 mil €",
+        "overall": 75
+      },
+      {
+        "name": "Edu Bedia",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 18,
+        "nationality": "España",
+        "marketValue": 500,
+        "marketValueText": "500 mil €",
+        "overall": 73
+      },
+      {
+        "name": "Ramón Arcas",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 28,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 77
+      },
+      {
+        "name": "Julián Luque",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 30,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 77
+      },
+      {
+        "name": "Kennedy",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 16,
+        "nationality": "Suecia",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Óscar Serrano",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Manuel Arana",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Giovani dos Santos",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 17,
+        "nationality": "México",
+        "marketValue": 5000000,
+        "marketValueText": "5,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Pedro Munitis",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 36,
+        "nationality": "España",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 72
+      },
+      {
+        "name": "Mémé Tchité",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 27,
+        "nationality": "Burundi",
+        "marketValue": 4500000,
+        "marketValueText": "4,50 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Markus Rosenberg",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 28,
+        "nationality": "Suecia",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Iván Bolado",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 21,
+        "nationality": "Guinea Ecuatorial",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Ariel Nahuelpán",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 22,
+        "nationality": "Argentina",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 76
+      }
+    ],
+    "avgOverall": 76,
+    "marketValue": 59300000
+  },
+  {
+    "id": "tm-331",
+    "name": "CA Osasuna",
+    "slug": "ca-osasuna",
+    "transfermarktId": "331",
+    "teamUrl": "https://www.transfermarkt.es/ca-osasuna/startseite/verein/331/saison_id/2010",
+    "marketValueText": "57,90 mill. €",
+    "league": "laliga",
+    "season": "2010-11",
+    "rank": 15,
+    "players": [
+      {
+        "name": "Asier Riesgo",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 27,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Ricardo",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 39,
+        "nationality": "España",
+        "marketValue": 500,
+        "marketValueText": "500 mil €",
+        "overall": 71
+      },
+      {
+        "name": "Nacho Zabal",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 100,
+        "marketValueText": "100 mil €",
+        "overall": 77
+      },
+      {
+        "name": "Miguel Flaño",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 5000000,
+        "marketValueText": "5,00 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Sergio Fernández",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 23,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Josetxo",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 34,
+        "nationality": "España",
+        "marketValue": 700,
+        "marketValueText": "700 mil €",
+        "overall": 73
+      },
+      {
+        "name": "Ekhi Senar",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 27,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 77
+      },
+      {
+        "name": "Nacho Monreal",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 25,
+        "nationality": "España",
+        "marketValue": 7000000,
+        "marketValueText": "7,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Juanfran Torres",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 8000000,
+        "marketValueText": "8,00 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Nélson",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 28,
+        "nationality": "Portugal",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Damià Abella",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 24,
+        "nationality": "España",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Javad Nekounam",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 30,
+        "nationality": "Irán",
+        "marketValue": 3500000,
+        "marketValueText": "3,50 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Lolo",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Patxi Puñal",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 35,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 72
+      },
+      {
+        "name": "Oier Sanjurjo",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 15,
+        "nationality": "España",
+        "marketValue": 400,
+        "marketValueText": "400 mil €",
+        "overall": 73
+      },
+      {
+        "name": "Rúper",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 22,
+        "nationality": "España",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Krisztián Vadócz",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 21,
+        "nationality": "Hungría",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "David Timor",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 21,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 75
+      },
+      {
+        "name": "Javier Calleja",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 19,
+        "nationality": "España",
+        "marketValue": 900,
+        "marketValueText": "900 mil €",
+        "overall": 73
+      },
+      {
+        "name": "Fernando Soriano",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 20,
+        "nationality": "España",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Masoud Shojaei",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 27,
+        "nationality": "Irán",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Xavier Annunziata",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 28,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 77
+      },
+      {
+        "name": "Javier Camuñas",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 17,
+        "nationality": "España",
+        "marketValue": 2800000,
+        "marketValueText": "2,80 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Álvaro Cejudo",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 16,
+        "nationality": "España",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Carlos Aranda",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 30,
+        "nationality": "España",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Dejan Lekic",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 26,
+        "nationality": "Serbia",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Walter Pandiani",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 35,
+        "nationality": "Uruguay",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 72
+      },
+      {
+        "name": "Ferrán Corominas",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 28,
+        "nationality": "España",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Kike Sola",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 18,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 74
+      }
+    ],
+    "avgOverall": 76,
+    "marketValue": 57900000
+  },
+  {
+    "id": "tm-142",
+    "name": "Real Zaragoza",
+    "slug": "real-saragossa",
+    "transfermarktId": "142",
+    "teamUrl": "https://www.transfermarkt.es/real-saragossa/startseite/verein/142/saison_id/2010",
+    "marketValueText": "57,00 mill. €",
+    "league": "laliga",
+    "season": "2010-11",
+    "rank": 16,
+    "players": [
+      {
+        "name": "Leo Franco",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 25,
+        "nationality": "Argentina",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Toni Doblas",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 30,
+        "nationality": "España",
+        "marketValue": 500,
+        "marketValueText": "500 mil €",
+        "overall": 77
+      },
+      {
+        "name": "Álex Sánchez",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 30,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 77
+      },
+      {
+        "name": "Pablo Alcolea",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 40,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 71
+      },
+      {
+        "name": "Matteo Contini",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 31,
+        "nationality": "Italia",
+        "marketValue": 2800000,
+        "marketValueText": "2,80 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Paulo da Silva",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 19,
+        "nationality": "Paraguay",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Jiri Jarosik",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 21,
+        "nationality": "República Checa",
+        "marketValue": 1800000,
+        "marketValueText": "1,80 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Maurizio Lanzaro",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 29,
+        "nationality": "Italia",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Ádám Pintér",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 22,
+        "nationality": "Hungría",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Víctor Laguardia",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 21,
+        "nationality": "España",
+        "marketValue": 500,
+        "marketValueText": "500 mil €",
+        "overall": 75
+      },
+      {
+        "name": "Raúl Goni",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 22,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 75
+      },
+      {
+        "name": "Ivan Obradovic",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 24,
+        "nationality": "Serbia",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Javier Paredes",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 28,
+        "nationality": "España",
+        "marketValue": 1400000,
+        "marketValueText": "1,40 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Isma López",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 32,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 75
+      },
+      {
+        "name": "Carlos Diogo",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 27,
+        "nationality": "Uruguay",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Kevin Lacruz",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 700,
+        "marketValueText": "700 mil €",
+        "overall": 77
+      },
+      {
+        "name": "José Ruiz",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 77
+      },
+      {
+        "name": "Leonardo Ponzio",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 23,
+        "nationality": "Argentina",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Guirane N'Daw",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 15,
+        "nationality": "Senegal",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Edmílson",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 34,
+        "nationality": "Brasil",
+        "marketValue": 800,
+        "marketValueText": "800 mil €",
+        "overall": 73
+      },
+      {
+        "name": "Ander Herrera",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 21,
+        "nationality": "España",
+        "marketValue": 7500000,
+        "marketValueText": "7,50 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Gabi",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 27,
+        "nationality": "España",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Saïd Boutahar",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 20,
+        "nationality": "Países Bajos",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Nicolás Bertolo",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 25,
+        "nationality": "Argentina",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Ángel Lafita",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 17,
+        "nationality": "España",
+        "marketValue": 2800000,
+        "marketValueText": "2,80 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Jorge López",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 32,
+        "nationality": "España",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 76
+      },
+      {
+        "name": "Florent Sinama-Pongolle",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 26,
+        "nationality": "Francia",
+        "marketValue": 3500000,
+        "marketValueText": "3,50 mill. €",
+        "overall": 78
+      },
+      {
+        "name": "Ikechukwu Uche",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 27,
+        "nationality": "Nigeria",
+        "marketValue": 5000000,
+        "marketValueText": "5,00 mill. €",
+        "overall": 80
+      },
+      {
+        "name": "Marco Pérez",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 18,
+        "nationality": "Colombia",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 74
+      },
+      {
+        "name": "Braulio Nóbrega",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 16,
+        "nationality": "España",
+        "marketValue": 1200000,
+        "marketValueText": "1,20 mill. €",
+        "overall": 74
+      }
+    ],
+    "avgOverall": 76,
+    "marketValue": 57000000
+  },
+  {
+    "id": "tm-237",
+    "name": "RCD Mallorca",
+    "slug": "rcd-mallorca",
+    "transfermarktId": "237",
+    "teamUrl": "https://www.transfermarkt.es/rcd-mallorca/startseite/verein/237/saison_id/2010",
+    "marketValueText": "53,70 mill. €",
+    "league": "laliga",
+    "season": "2010-11",
+    "rank": 17,
+    "players": [
+      {
+        "name": "Dudu Aouate",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 33,
+        "nationality": "Israel",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 71
+      },
+      {
+        "name": "Germán Lux",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 28,
+        "nationality": "Argentina",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 75
+      },
+      {
+        "name": "Tomeu Nadal",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 30,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 74
+      },
+      {
+        "name": "Iván Ramis",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 4000000,
+        "marketValueText": "4,00 mill. €",
+        "overall": 75
+      },
+      {
+        "name": "José Nunes",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 16,
+        "nationality": "Portugal",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 71
+      },
+      {
+        "name": "Rubén González",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 1200000,
+        "marketValueText": "1,20 mill. €",
+        "overall": 75
+      },
+      {
+        "name": "Martí Crespí",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 21,
+        "nationality": "España",
+        "marketValue": 1200000,
+        "marketValueText": "1,20 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Kevin García",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 75
+      },
+      {
+        "name": "Ayoze Díaz",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 17,
+        "nationality": "España",
+        "marketValue": 1800000,
+        "marketValueText": "1,80 mill. €",
+        "overall": 71
+      },
+      {
+        "name": "Enrique Corrales",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 23,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Pau Cendrós",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 22,
+        "nationality": "España",
+        "marketValue": 1600000,
+        "marketValueText": "1,60 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Edson Ratinho",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 25,
+        "nationality": "Brasil",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Ximo Navarro",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 21,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 72
+      },
+      {
+        "name": "João Victor",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 22,
+        "nationality": "Brasil",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Josep Lluís Martí",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 19,
+        "nationality": "España",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 71
+      },
+      {
+        "name": "Jonathan de Guzmán",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 20,
+        "nationality": "Países Bajos",
+        "marketValue": 5000000,
+        "marketValueText": "5,00 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Sergio Tejera",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 27,
+        "nationality": "España",
+        "marketValue": 800,
+        "marketValueText": "800 mil €",
+        "overall": 74
+      },
+      {
+        "name": "Tomás Pina",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 28,
+        "nationality": "España",
+        "marketValue": 400,
+        "marketValueText": "400 mil €",
+        "overall": 74
+      },
+      {
+        "name": "Chory Castro",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 26,
+        "nationality": "Uruguay",
+        "marketValue": 6000000,
+        "marketValueText": "6,00 mill. €",
+        "overall": 77
+      },
+      {
+        "name": "Michaël Pereira",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 23,
+        "nationality": "Francia",
+        "marketValue": 4000000,
+        "marketValueText": "4,00 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Akihiro Ienaga",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 25,
+        "nationality": "Japón",
+        "marketValue": 1400000,
+        "marketValueText": "1,40 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Tuni",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 15,
+        "nationality": "España",
+        "marketValue": 900,
+        "marketValueText": "900 mil €",
+        "overall": 70
+      },
+      {
+        "name": "Pierre Webó",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 29,
+        "nationality": "Camerún",
+        "marketValue": 4000000,
+        "marketValueText": "4,00 mill. €",
+        "overall": 75
+      },
+      {
+        "name": "Emilio Nsue",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 21,
+        "nationality": "Guinea Ecuatorial",
+        "marketValue": 3500000,
+        "marketValueText": "3,50 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Víctor Casadesús",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 18,
+        "nationality": "España",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 71
+      },
+      {
+        "name": "Fernando Cavenaghi",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 27,
+        "nationality": "Argentina",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 75
+      },
+      {
+        "name": "Sergi Enrich",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 400,
+        "marketValueText": "400 mil €",
+        "overall": 74
+      },
+      {
+        "name": "Abdón Prats",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 18,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 70
+      }
+    ],
+    "avgOverall": 73,
+    "marketValue": 53700000
+  },
+  {
+    "id": "tm-2448",
+    "name": "Real Sporting de Gijón",
+    "slug": "sporting-gijon",
+    "transfermarktId": "2448",
+    "teamUrl": "https://www.transfermarkt.es/sporting-gijon/startseite/verein/2448/saison_id/2010",
+    "marketValueText": "53,40 mill. €",
+    "league": "laliga",
+    "season": "2010-11",
+    "rank": 18,
+    "players": [
+      {
+        "name": "Juan Pablo Colinas",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 32,
+        "nationality": "España",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Iván Cuéllar",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 27,
+        "nationality": "España",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 75
+      },
+      {
+        "name": "Raúl Domínguez",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 27,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 74
+      },
+      {
+        "name": "Alberto Botía",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 22,
+        "nationality": "España",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Grégory Arnolin",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 30,
+        "nationality": "Martinica",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 75
+      },
+      {
+        "name": "Iván Hernández",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 31,
+        "nationality": "España",
+        "marketValue": 900,
+        "marketValueText": "900 mil €",
+        "overall": 72
+      },
+      {
+        "name": "Jorge García",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 27,
+        "nationality": "España",
+        "marketValue": 800,
+        "marketValueText": "800 mil €",
+        "overall": 74
+      },
+      {
+        "name": "Alain Álvarez",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 32,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 72
+      },
+      {
+        "name": "Javi Poves",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 25,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 72
+      },
+      {
+        "name": "Pedro Orfila",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 74
+      },
+      {
+        "name": "Cote",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 21,
+        "nationality": "España",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Roberto Canella",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 15,
+        "nationality": "España",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 71
+      },
+      {
+        "name": "Ayoze García",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 25,
+        "nationality": "España",
+        "marketValue": 900,
+        "marketValueText": "900 mil €",
+        "overall": 72
+      },
+      {
+        "name": "Rafael Sastre",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 22,
+        "nationality": "España",
+        "marketValue": 500,
+        "marketValueText": "500 mil €",
+        "overall": 72
+      },
+      {
+        "name": "Sebastián Eguren",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 19,
+        "nationality": "Uruguay",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 71
+      },
+      {
+        "name": "Sergio Matabuena",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 24,
+        "nationality": "España",
+        "marketValue": 800,
+        "marketValueText": "800 mil €",
+        "overall": 72
+      },
+      {
+        "name": "Sergio Álvarez",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 400,
+        "marketValueText": "400 mil €",
+        "overall": 74
+      },
+      {
+        "name": "Alberto Lora",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 24,
+        "nationality": "España",
+        "marketValue": 3500000,
+        "marketValueText": "3,50 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Alberto Rivera",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 33,
+        "nationality": "España",
+        "marketValue": 1800000,
+        "marketValueText": "1,80 mill. €",
+        "overall": 71
+      },
+      {
+        "name": "Castro",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 16,
+        "nationality": "Portugal",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 71
+      },
+      {
+        "name": "Nacho Cases",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 31,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Cristian Portilla",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 16,
+        "nationality": "España",
+        "marketValue": 400,
+        "marketValueText": "400 mil €",
+        "overall": 70
+      },
+      {
+        "name": "Marcos Landeira",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 21,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 72
+      },
+      {
+        "name": "Carmelo",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 27,
+        "nationality": "España",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 75
+      },
+      {
+        "name": "Juan Muñiz",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 28,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 74
+      },
+      {
+        "name": "Diego Castro",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 17,
+        "nationality": "España",
+        "marketValue": 6000000,
+        "marketValueText": "6,00 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Miguel de las Cuevas",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 20,
+        "nationality": "España",
+        "marketValue": 4000000,
+        "marketValueText": "4,00 mill. €",
+        "overall": 71
+      },
+      {
+        "name": "Nacho Novo",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 32,
+        "nationality": "España",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Gastón Sangoy",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 26,
+        "nationality": "Argentina",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 75
+      },
+      {
+        "name": "Guillermo Méndez",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 30,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 74
+      },
+      {
+        "name": "David Barral",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 23,
+        "nationality": "España",
+        "marketValue": 2400000,
+        "marketValueText": "2,40 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Luis Morán",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 18,
+        "nationality": "España",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 71
+      },
+      {
+        "name": "Mate Bilic",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 30,
+        "nationality": "Croacia",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 75
+      }
+    ],
+    "avgOverall": 73,
+    "marketValue": 53400000
+  },
+  {
+    "id": "tm-7971",
+    "name": "Hércules CF",
+    "slug": "hercules-alicante",
+    "transfermarktId": "7971",
+    "teamUrl": "https://www.transfermarkt.es/hercules-alicante/startseite/verein/7971/saison_id/2010",
+    "marketValueText": "51,70 mill. €",
+    "league": "laliga",
+    "season": "2010-11",
+    "rank": 19,
+    "players": [
+      {
+        "name": "Juan Calatayud",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 31,
+        "nationality": "España",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Piet Velthuizen",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 25,
+        "nationality": "Países Bajos",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Unai Alba",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 33,
+        "nationality": "España",
+        "marketValue": 300,
+        "marketValueText": "300 mil €",
+        "overall": 70
+      },
+      {
+        "name": "Álex Berenguer",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 30,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 74
+      },
+      {
+        "name": "Abraham Paz",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 32,
+        "nationality": "España",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Rodri",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 19,
+        "nationality": "España",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 71
+      },
+      {
+        "name": "Noé Pamarot",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 23,
+        "nationality": "Francia",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Mohamed Sarr",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 27,
+        "nationality": "Senegal",
+        "marketValue": 1800000,
+        "marketValueText": "1,80 mill. €",
+        "overall": 75
+      },
+      {
+        "name": "Paco Peña",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 16,
+        "nationality": "España",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 71
+      },
+      {
+        "name": "Cristian Pulhac",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 26,
+        "nationality": "Rumania",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 75
+      },
+      {
+        "name": "Pepe Sellés",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 31,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 72
+      },
+      {
+        "name": "David Cortés",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 21,
+        "nationality": "España",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Kiko Femenía",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 15,
+        "nationality": "España",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 71
+      },
+      {
+        "name": "Juanra Cabrero",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 31,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Abel Aguilar",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 26,
+        "nationality": "Colombia",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 75
+      },
+      {
+        "name": "Matías Fritzler",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 18,
+        "nationality": "Argentina",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 71
+      },
+      {
+        "name": "Javier Farinós",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 33,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 71
+      },
+      {
+        "name": "Tiago Gomes",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 24,
+        "nationality": "Portugal",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Jesús Pastor",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 26,
+        "nationality": "Venezuela",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 74
+      },
+      {
+        "name": "Royston Drenthe",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 24,
+        "nationality": "Países Bajos",
+        "marketValue": 4500000,
+        "marketValueText": "4,50 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Olivier Thomert",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 22,
+        "nationality": "Martinica",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Tote",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 32,
+        "nationality": "España",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Cristian Hidalgo",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 27,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 75
+      },
+      {
+        "name": "Sendoa Agirre",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 35,
+        "nationality": "España",
+        "marketValue": 800,
+        "marketValueText": "800 mil €",
+        "overall": 68
+      },
+      {
+        "name": "Luis Carlos Martín",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 20,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 70
+      },
+      {
+        "name": "Borja Arlanzón",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 28,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 74
+      },
+      {
+        "name": "Francisco Rufete",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 34,
+        "nationality": "España",
+        "marketValue": 800,
+        "marketValueText": "800 mil €",
+        "overall": 70
+      },
+      {
+        "name": "Javo",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 27,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 74
+      },
+      {
+        "name": "David Trezeguet",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 17,
+        "nationality": "Francia",
+        "marketValue": 6000000,
+        "marketValueText": "6,00 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Nelson Haedo Valdez",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 20,
+        "nationality": "Paraguay",
+        "marketValue": 5000000,
+        "marketValueText": "5,00 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Javier Portillo",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 75
+      },
+      {
+        "name": "Sergio Poveda",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 32,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 72
+      }
+    ],
+    "avgOverall": 73,
+    "marketValue": 51700000
+  },
+  {
+    "id": "tm-3368",
+    "name": "Levante UD",
+    "slug": "ud-levante",
+    "transfermarktId": "3368",
+    "teamUrl": "https://www.transfermarkt.es/ud-levante/startseite/verein/3368/saison_id/2010",
+    "marketValueText": "37,40 mill. €",
+    "league": "laliga",
+    "season": "2010-11",
+    "rank": 20,
+    "players": [
+      {
+        "name": "Manolo Reina",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 75
+      },
+      {
+        "name": "Gustavo Munúa",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 33,
+        "nationality": "Uruguay",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 71
+      },
+      {
+        "name": "Sergio Garabato",
+        "position": "GK",
+        "positionRaw": "Portero",
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 74
+      },
+      {
+        "name": "Nano Rivas",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 30,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 75
+      },
+      {
+        "name": "Héctor Rodas",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 23,
+        "nationality": "España",
+        "marketValue": 800,
+        "marketValueText": "800 mil €",
+        "overall": 72
+      },
+      {
+        "name": "Miquel Robusté",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 700,
+        "marketValueText": "700 mil €",
+        "overall": 74
+      },
+      {
+        "name": "Sergio Ballesteros",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 18,
+        "nationality": "España",
+        "marketValue": 500,
+        "marketValueText": "500 mil €",
+        "overall": 70
+      },
+      {
+        "name": "Antonio López",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 74
+      },
+      {
+        "name": "Asier del Horno",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 15,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 71
+      },
+      {
+        "name": "Juanfran",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 34,
+        "nationality": "España",
+        "marketValue": 600,
+        "marketValueText": "600 mil €",
+        "overall": 70
+      },
+      {
+        "name": "Mossa",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 28,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 74
+      },
+      {
+        "name": "David Cerra",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 27,
+        "nationality": "España",
+        "marketValue": 600,
+        "marketValueText": "600 mil €",
+        "overall": 74
+      },
+      {
+        "name": "Javi Venta",
+        "position": "CB",
+        "positionRaw": "Defensa",
+        "age": 17,
+        "nationality": "España",
+        "marketValue": 600,
+        "marketValueText": "600 mil €",
+        "overall": 70
+      },
+      {
+        "name": "Vicente Iborra",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 23,
+        "nationality": "España",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Xavi Torres",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 24,
+        "nationality": "España",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Miguel Pallardó",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 24,
+        "nationality": "España",
+        "marketValue": 2000000,
+        "marketValueText": "2,00 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Sergio",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 16,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 71
+      },
+      {
+        "name": "Gorka Larrea",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 27,
+        "nationality": "España",
+        "marketValue": 600,
+        "marketValueText": "600 mil €",
+        "overall": 74
+      },
+      {
+        "name": "Miguel Pérez",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 31,
+        "nationality": "España",
+        "marketValue": 600,
+        "marketValueText": "600 mil €",
+        "overall": 72
+      },
+      {
+        "name": "Juanlu",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 20,
+        "nationality": "España",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 71
+      },
+      {
+        "name": "Ignacio González",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 24,
+        "nationality": "Uruguay",
+        "marketValue": 600,
+        "marketValueText": "600 mil €",
+        "overall": 72
+      },
+      {
+        "name": "Adrián Lois",
+        "position": "CM",
+        "positionRaw": "Centrocampista",
+        "age": 27,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 74
+      },
+      {
+        "name": "Jefferson Montero",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 24,
+        "nationality": "Ecuador",
+        "marketValue": 3000000,
+        "marketValueText": "3,00 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Valdo",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 23,
+        "nationality": "Cabo Verde",
+        "marketValue": 1200000,
+        "marketValueText": "1,20 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Xisco Nadal",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 25,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Wellington Silva",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 18,
+        "nationality": "Brasil",
+        "marketValue": 800,
+        "marketValueText": "800 mil €",
+        "overall": 70
+      },
+      {
+        "name": "José Higón",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 30,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 74
+      },
+      {
+        "name": "Rubén Suárez",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 21,
+        "nationality": "España",
+        "marketValue": 1500000,
+        "marketValueText": "1,50 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Xisco Muñoz",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 19,
+        "nationality": "España",
+        "marketValue": 1000000,
+        "marketValueText": "1,00 mill. €",
+        "overall": 71
+      },
+      {
+        "name": "Felipe Caicedo",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 25,
+        "nationality": "Ecuador",
+        "marketValue": 5000000,
+        "marketValueText": "5,00 mill. €",
+        "overall": 75
+      },
+      {
+        "name": "Cristhian Stuani",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 22,
+        "nationality": "Uruguay",
+        "marketValue": 2500000,
+        "marketValueText": "2,50 mill. €",
+        "overall": 73
+      },
+      {
+        "name": "Rafa Jordá",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 27,
+        "nationality": "España",
+        "marketValue": 800,
+        "marketValueText": "800 mil €",
+        "overall": 74
+      },
+      {
+        "name": "Mono",
+        "position": "ST",
+        "positionRaw": "Delantero",
+        "age": 31,
+        "nationality": "España",
+        "marketValue": 0,
+        "marketValueText": "0",
+        "overall": 72
+      }
+    ],
+    "avgOverall": 73,
+    "marketValue": 37400000
+  }
+]

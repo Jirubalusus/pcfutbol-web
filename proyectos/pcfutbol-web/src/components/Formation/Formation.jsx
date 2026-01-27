@@ -121,7 +121,7 @@ const PLAYER_ATTRIBUTES = [
 
 export default function Formation() {
   const { state, dispatch } = useGame();
-  const [lineup, setLineup] = useState({});
+  const [lineup, setLineup] = useState(state.lineup || {});
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [selectedSlot, setSelectedSlot] = useState(null);
@@ -134,15 +134,41 @@ export default function Formation() {
   const players = state.team?.players || [];
   const teamStrength = calculateTeamStrength(state.team, selectedFormation, selectedTactic);
   
+  // Guardar lineup en el estado global cuando cambia
+  useEffect(() => {
+    if (Object.keys(lineup).length > 0) {
+      dispatch({ type: 'SET_LINEUP', payload: lineup });
+    }
+  }, [lineup, dispatch]);
+  
   // Dividir jugadores por categoría
   const categorizedPlayers = useMemo(() => {
-    const lineupIds = Object.values(lineup).map(p => p?.name);
+    const lineupNames = Object.values(lineup).map(p => p?.name).filter(Boolean);
     const titulares = [];
     const convocados = [];
     const noConvocados = [];
     
-    players.forEach((player, idx) => {
-      const isInLineup = lineupIds.includes(player.name);
+    // Orden de posiciones estilo PC Fútbol 5.0: POR → DEF → MED → DEL
+    const posOrder = { 
+      'GK': 0, 
+      'CB': 1, 'RB': 2, 'LB': 3, 'RWB': 4, 'LWB': 5,
+      'CDM': 6, 'CM': 7, 'RM': 8, 'LM': 9, 'CAM': 10,
+      'RW': 11, 'LW': 12, 'CF': 13, 'ST': 14
+    };
+    
+    // Función para ordenar por posición
+    const sortByPosition = (a, b) => {
+      const orderA = posOrder[a.position] ?? 99;
+      const orderB = posOrder[b.position] ?? 99;
+      if (orderA !== orderB) return orderA - orderB;
+      return b.overall - a.overall; // Mismo tipo de posición: por overall
+    };
+    
+    // Ordenar jugadores por overall para mejor distribución inicial
+    const sortedPlayers = [...players].sort((a, b) => b.overall - a.overall);
+    
+    sortedPlayers.forEach((player, idx) => {
+      const isInLineup = lineupNames.includes(player.name);
       const playerWithNumber = { ...player, number: idx + 1 };
       
       if (isInLineup) {
@@ -154,10 +180,22 @@ export default function Formation() {
       }
     });
     
+    // Ordenar TODAS las categorías por posición (estilo PC Fútbol)
+    titulares.sort(sortByPosition);
+    convocados.sort(sortByPosition);
+    noConvocados.sort(sortByPosition);
+    
     return { titulares, convocados, noConvocados };
   }, [players, lineup]);
   
-  // Auto-fill lineup al cargar
+  // Cargar lineup del estado global al montar
+  useEffect(() => {
+    if (state.lineup && Object.keys(state.lineup).length > 0) {
+      setLineup(state.lineup);
+    }
+  }, []);
+  
+  // Auto-fill lineup al cargar (solo si no hay lineup guardado)
   useEffect(() => {
     if (Object.keys(lineup).length === 0 && players.length >= 11) {
       autoFillLineup();
@@ -186,6 +224,8 @@ export default function Formation() {
     });
     
     setLineup(newLineup);
+    // Guardar inmediatamente
+    dispatch({ type: 'SET_LINEUP', payload: newLineup });
   };
   
   const handleSlotClick = (slotId) => {
@@ -204,6 +244,8 @@ export default function Formation() {
       });
       newLineup[selectedSlot] = player;
       setLineup(newLineup);
+      // Guardar inmediatamente en el estado global
+      dispatch({ type: 'SET_LINEUP', payload: newLineup });
     }
     setSelectedPlayer(player);
     setShowModal(false);
@@ -229,6 +271,14 @@ export default function Formation() {
     if (['RB', 'CB', 'LB', 'RWB', 'LWB'].includes(pos)) return '#3498db';
     if (['CDM', 'CM', 'CAM', 'RM', 'LM'].includes(pos)) return '#2ecc71';
     return '#e74c3c';
+  };
+  
+  // Clase CSS según posición (para colores de fila)
+  const getPositionClass = (pos) => {
+    if (pos === 'GK') return 'pos-gk';
+    if (['RB', 'CB', 'LB', 'RWB', 'LWB', 'DF'].includes(pos)) return 'pos-def';
+    if (['CDM', 'CM', 'CAM', 'RM', 'LM', 'MF'].includes(pos)) return 'pos-mid';
+    return 'pos-fwd'; // ST, RW, LW, CF, FW
   };
   
   const getStarRating = (overall) => {
@@ -295,33 +345,11 @@ export default function Formation() {
       
       {/* CONTENIDO PRINCIPAL */}
       <div className="pcf-content">
-        {/* TABLA DE JUGADORES */}
+        {/* TABLA DE JUGADORES - ESTILO PC FÚTBOL CLÁSICO */}
         <div className="pcf-table-container">
-          {/* Tabs */}
-          <div className="pcf-tabs">
-            <button 
-              className={`tab ${activeTab === 'titulares' ? 'active' : ''}`}
-              onClick={() => setActiveTab('titulares')}
-            >
-              Titulares ({categorizedPlayers.titulares.length})
-            </button>
-            <button 
-              className={`tab ${activeTab === 'convocados' ? 'active' : ''}`}
-              onClick={() => setActiveTab('convocados')}
-            >
-              Convocados ({categorizedPlayers.convocados.length})
-            </button>
-            <button 
-              className={`tab ${activeTab === 'noconvocados' ? 'active' : ''}`}
-              onClick={() => setActiveTab('noconvocados')}
-            >
-              No Conv. ({categorizedPlayers.noConvocados.length})
-            </button>
-          </div>
-          
-          {/* Tabla */}
+          {/* TITULARES */}
           <div className="pcf-table">
-            <div className="table-header">
+            <div className="table-header titulares">
               <span className="col-num">Nº</span>
               <span className="col-name">JUGADOR</span>
               {PLAYER_ATTRIBUTES.map(attr => (
@@ -331,18 +359,83 @@ export default function Formation() {
             </div>
             
             <div className="table-body">
-              {(activeTab === 'titulares' ? categorizedPlayers.titulares :
-                activeTab === 'convocados' ? categorizedPlayers.convocados :
-                categorizedPlayers.noConvocados
-              ).map((player, idx) => (
+              {categorizedPlayers.titulares.map((player, idx) => (
                 <div 
                   key={player.name}
-                  className={`table-row ${activeTab} ${selectedPlayer?.name === player.name ? 'selected' : ''} ${player.injured ? 'injured' : ''}`}
+                  className={`table-row titulares ${getPositionClass(player.position)} ${selectedPlayer?.name === player.name ? 'selected' : ''} ${player.injured ? 'injured' : ''}`}
                   onClick={() => handleRowClick(player)}
                 >
                   <span className="col-num">{player.number}</span>
                   <span className="col-name">
-                    {player.injured && <span className="injury-icon">🏥</span>}
+                    {player.injured && <span className="injury-icon">+</span>}
+                    {player.name}
+                  </span>
+                  {PLAYER_ATTRIBUTES.map(attr => (
+                    <span 
+                      key={attr.key} 
+                      className={`col-attr ${
+                        (player[attr.key] || player.overall) >= 80 ? 'high' : 
+                        (player[attr.key] || player.overall) <= 60 ? 'low' : ''
+                      }`}
+                    >
+                      {player[attr.key] || player.overall}
+                    </span>
+                  ))}
+                  <span className="col-pos" style={{ color: getPositionColor(player.position) }}>
+                    {player.position}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          {/* CONVOCADOS */}
+          <div className="pcf-section-header convocados">JUGADORES CONVOCADOS</div>
+          <div className="pcf-table">
+            <div className="table-body">
+              {categorizedPlayers.convocados.map((player, idx) => (
+                <div 
+                  key={player.name}
+                  className={`table-row convocados ${getPositionClass(player.position)} ${selectedPlayer?.name === player.name ? 'selected' : ''} ${player.injured ? 'injured' : ''}`}
+                  onClick={() => handleRowClick(player)}
+                >
+                  <span className="col-num">{player.number}</span>
+                  <span className="col-name">
+                    {player.injured && <span className="injury-icon">+</span>}
+                    {player.name}
+                  </span>
+                  {PLAYER_ATTRIBUTES.map(attr => (
+                    <span 
+                      key={attr.key} 
+                      className={`col-attr ${
+                        (player[attr.key] || player.overall) >= 80 ? 'high' : 
+                        (player[attr.key] || player.overall) <= 60 ? 'low' : ''
+                      }`}
+                    >
+                      {player[attr.key] || player.overall}
+                    </span>
+                  ))}
+                  <span className="col-pos" style={{ color: getPositionColor(player.position) }}>
+                    {player.position}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          {/* NO CONVOCADOS */}
+          <div className="pcf-section-header noconvocados">JUGADORES NO CONVOCADOS</div>
+          <div className="pcf-table">
+            <div className="table-body">
+              {categorizedPlayers.noConvocados.map((player, idx) => (
+                <div 
+                  key={player.name}
+                  className={`table-row noconvocados ${getPositionClass(player.position)} ${selectedPlayer?.name === player.name ? 'selected' : ''} ${player.injured ? 'injured' : ''}`}
+                  onClick={() => handleRowClick(player)}
+                >
+                  <span className="col-num">{player.number}</span>
+                  <span className="col-name">
+                    {player.injured && <span className="injury-icon">+</span>}
                     {player.name}
                   </span>
                   {PLAYER_ATTRIBUTES.map(attr => (

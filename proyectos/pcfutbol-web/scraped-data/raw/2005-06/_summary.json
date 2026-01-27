@@ -1,0 +1,9 @@
+{
+  "leagues": {
+    "laliga": {
+      "teams": 20,
+      "players": 631,
+      "goals": 1098
+    }
+  }
+}

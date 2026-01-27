@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC Fútbol - Dashboard Preview</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --color-bg-primary: #0c1424;
+            --color-bg-secondary: #101a2e;
+            --color-glass: rgba(255, 255, 255, 0.02);
+            --color-glass-border: rgba(255, 255, 255, 0.06);
+            --color-accent: #00d4ff;
+            --color-success: #30d158;
+            --color-text-primary: rgba(255, 255, 255, 0.95);
+            --color-text-secondary: rgba(255, 255, 255, 0.65);
+            --color-text-tertiary: rgba(255, 255, 255, 0.40);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--color-bg-primary);
+            background-image: 
+                radial-gradient(ellipse 80% 60% at 50% -20%, rgba(40, 80, 160, 0.2) 0%, transparent 50%);
+            color: var(--color-text-primary);
+            min-height: 100vh;
+        }
+
+        .layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 260px;
+            background: var(--color-bg-secondary);
+            border-right: 1px solid var(--color-glass-border);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+        }
+
+        .sidebar__logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--color-glass-border);
+            background: linear-gradient(180deg, rgba(0, 212, 255, 0.05) 0%, transparent 100%);
+        }
+
+        .sidebar__logo-icon {
+            width: 28px;
+            height: 28px;
+            color: var(--color-accent);
+            filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.4));
+        }
+
+        .sidebar__logo-text {
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, var(--color-accent) 0%, #00ff88 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+        }
+
+        .sidebar__team {
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid var(--color-glass-border);
+        }
+
+        .sidebar__team-badge {
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 0.85rem;
+            background: linear-gradient(145deg, #2a8a4a, #1e6b38);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.1rem;
+            box-shadow: 
+                0 4px 20px rgba(48, 209, 88, 0.25),
+                inset 0 2px 0 rgba(255, 255, 255, 0.15);
+            border: 3px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar__team-name {
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .sidebar__nav {
+            flex: 1;
+            padding: 0.75rem 0;
+            overflow-y: auto;
+        }
+
+        .sidebar__item {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            width: 100%;
+            padding: 0.85rem 1.5rem;
+            background: none;
+            border: none;
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-align: left;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar__item:hover {
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--color-text-primary);
+        }
+
+        .sidebar__item.active {
+            background: linear-gradient(90deg, rgba(0, 212, 255, 0.12) 0%, transparent 100%);
+            color: var(--color-accent);
+        }
+
+        .sidebar__item.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            bottom: 8px;
+            width: 3px;
+            background: var(--color-accent);
+            border-radius: 0 3px 3px 0;
+            box-shadow: 0 0 12px var(--color-accent);
+        }
+
+        .sidebar__item svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        .sidebar__item.active svg {
+            color: var(--color-accent);
+            filter: drop-shadow(0 0 6px rgba(0, 212, 255, 0.5));
+        }
+
+        .sidebar__badge {
+            margin-left: auto;
+            background: linear-gradient(135deg, #ff453a, #ff6b6b);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.15rem 0.5rem;
+            border-radius: 10px;
+        }
+
+        /* MAIN */
+        .main {
+            flex: 1;
+            margin-left: 260px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* HEADER */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            background: rgba(12, 20, 36, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--color-glass-border);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .header__team h1 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            margin: 0;
+        }
+
+        .header__season {
+            font-size: 0.8rem;
+            color: var(--color-text-tertiary);
+        }
+
+        .header__actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .header__money {
+            display: flex;
+            flex-direction: column;
+            text-align: right;
+            padding-right: 1rem;
+            border-right: 1px solid var(--color-glass-border);
+            margin-right: 0.5rem;
+        }
+
+        .header__money .label {
+            font-size: 0.65rem;
+            color: var(--color-text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+
+        .header__money .value {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--color-success);
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            border: none;
+            transition: all 0.15s ease;
+        }
+
+        .btn--secondary {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--color-glass-border);
+            color: var(--color-text-secondary);
+        }
+
+        .btn--primary {
+            background: linear-gradient(135deg, #0066ff 0%, #00d4ff 100%);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(0, 102, 255, 0.3);
+        }
+
+        .btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* CONTENT */
+        .content {
+            flex: 1;
+            padding: 2rem;
+        }
+
+        .welcome h2 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin: 0 0 0.25rem 0;
+        }
+
+        .welcome p {
+            color: var(--color-text-tertiary);
+            font-weight: 500;
+            margin: 0 0 1.5rem 0;
+        }
+
+        /* CARDS */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            background: var(--color-glass);
+            border: 1px solid var(--color-glass-border);
+            border-radius: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            transform: translateY(-2px);
+        }
+
+        .card__icon {
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+            flex-shrink: 0;
+        }
+
+        .card__icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .card--position .card__icon {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 165, 0, 0.15) 100%);
+            color: #ffd700;
+        }
+
+        .card--points .card__icon {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.15) 0%, rgba(0, 102, 255, 0.15) 100%);
+            color: var(--color-accent);
+        }
+
+        .card--budget .card__icon {
+            background: linear-gradient(135deg, rgba(48, 209, 88, 0.15) 0%, rgba(0, 180, 80, 0.15) 100%);
+            color: var(--color-success);
+        }
+
+        .card--squad .card__icon {
+            background: linear-gradient(135deg, rgba(175, 82, 222, 0.15) 0%, rgba(128, 0, 255, 0.15) 100%);
+            color: #af52de;
+        }
+
+        .card__content .label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--color-text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+            margin-bottom: 0.15rem;
+        }
+
+        .card__content .value {
+            font-size: 1.75rem;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        .card__content .sublabel {
+            font-size: 0.75rem;
+            color: var(--color-text-tertiary);
+            font-weight: 500;
+        }
+
+        /* GRID */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .panel {
+            background: var(--color-glass);
+            border: 1px solid var(--color-glass-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+
+        .panel h3 {
+            font-size: 0.85rem;
+            color: var(--color-text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 700;
+            margin: 0 0 1rem 0;
+        }
+
+        .next-match {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .next-match::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-accent), var(--color-success));
+        }
+
+        .next-match__week {
+            font-size: 0.8rem;
+            color: var(--color-accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .match-preview {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .match-preview .team {
+            flex: 1;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .match-preview .team.home { text-align: right; }
+        .match-preview .team.away { text-align: left; }
+
+        .match-preview .vs {
+            font-size: 1.25rem;
+            font-weight: 900;
+            color: var(--color-text-tertiary);
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+        }
+
+        .form-badges {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .form-badge {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 0.9rem;
+        }
+
+        .form-badge.w { background: linear-gradient(135deg, #30d158, #28a745); }
+        .form-badge.d { background: linear-gradient(135deg, #ffd60a, #ffcc00); color: #000; }
+        .form-badge.l { background: linear-gradient(135deg, #ff453a, #cc362b); }
+
+        .no-results {
+            color: var(--color-text-tertiary);
+            font-style: italic;
+        }
+
+        .objective {
+            padding: 1rem 1.25rem;
+            background: rgba(0, 212, 255, 0.04);
+            border-radius: 12px;
+            border-left: 4px solid var(--color-accent);
+            margin-bottom: 0.75rem;
+        }
+
+        .objective__name {
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .objective__desc {
+            font-size: 0.85rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 4px;
+            overflow: hidden;
+            flex: 1;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-accent), var(--color-success));
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        .objective-progress {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .progress-text {
+            font-weight: 800;
+            font-size: 0.9rem;
+        }
+
+        .view-all {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.25rem;
+            color: var(--color-accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 0.75rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="layout">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar__logo">
+                <svg class="sidebar__logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <rect x="6" y="3" width="12" height="18" rx="2"/>
+                    <line x1="6" y1="8" x2="18" y2="8"/>
+                    <line x1="9" y1="12" x2="9" y2="15"/>
+                    <line x1="15" y1="12" x2="15" y2="15"/>
+                </svg>
+                <span class="sidebar__logo-text">PC Fútbol</span>
+            </div>
+
+            <div class="sidebar__team">
+                <div class="sidebar__team-badge">UE</div>
+                <span class="sidebar__team-name">UE Porreres</span>
+            </div>
+
+            <nav class="sidebar__nav">
+                <button class="sidebar__item active">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+                    Despacho
+                </button>
+                <button class="sidebar__item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    Plantilla
+                </button>
+                <button class="sidebar__item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                    Alineación
+                </button>
+                <button class="sidebar__item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.5 6.5h11v11h-11z"/><path d="M3 12h3.5M17.5 12H21M12 3v3.5M12 17.5V21"/></svg>
+                    Entrenamiento
+                </button>
+                <button class="sidebar__item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+                    Objetivos
+                </button>
+                <button class="sidebar__item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    Calendario
+                </button>
+                <button class="sidebar__item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 22V10a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v12"/><path d="M14 22V10a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v12"/></svg>
+                    Clasificación
+                </button>
+                <button class="sidebar__item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    Fichajes
+                </button>
+                <button class="sidebar__item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+                    Renovaciones
+                </button>
+                <button class="sidebar__item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>
+                    Estadio
+                </button>
+                <button class="sidebar__item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    Instalaciones
+                </button>
+                <button class="sidebar__item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    Mensajes
+                    <span class="sidebar__badge">2</span>
+                </button>
+            </nav>
+        </aside>
+
+        <!-- MAIN -->
+        <main class="main">
+            <header class="header">
+                <div class="header__team">
+                    <h1>UE Porreres</h1>
+                    <span class="header__season">Temporada 1 · Semana 1</span>
+                </div>
+
+                <div class="header__actions">
+                    <div class="header__money">
+                        <span class="label">Presupuesto</span>
+                        <span class="value">€1.6M</span>
+                    </div>
+
+                    <button class="btn btn--secondary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17,21 17,13 7,13 7,21"/><polyline points="7,3 7,8 15,8"/></svg>
+                        Guardar
+                    </button>
+
+                    <button class="btn btn--primary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5,4 15,12 5,20"/><line x1="19" y1="5" x2="19" y2="19"/></svg>
+                        Avanzar Semana
+                    </button>
+
+                    <button class="btn btn--secondary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13,19 22,12 13,5"/><polygon points="2,19 11,12 2,5"/></svg>
+                        Simular
+                    </button>
+                </div>
+            </header>
+
+            <div class="content">
+                <div class="welcome">
+                    <h2>Bienvenido, Míster</h2>
+                    <p>Temporada 1 · Semana 1</p>
+                </div>
+
+                <div class="cards">
+                    <div class="card card--position">
+                        <div class="card__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 22V10a2 2 0 0 0-2-2H6"/><path d="M14 22V10a2 2 0 0 1 2-2h2"/></svg>
+                        </div>
+                        <div class="card__content">
+                            <span class="label">Posición</span>
+                            <span class="value">3º</span>
+                        </div>
+                    </div>
+
+                    <div class="card card--points">
+                        <div class="card__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23,6 13.5,15.5 8.5,10.5 1,18"/><polyline points="17,6 23,6 23,12"/></svg>
+                        </div>
+                        <div class="card__content">
+                            <span class="label">Puntos</span>
+                            <span class="value">0</span>
+                        </div>
+                    </div>
+
+                    <div class="card card--budget">
+                        <div class="card__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>
+                        </div>
+                        <div class="card__content">
+                            <span class="label">Presupuesto</span>
+                            <span class="value">€1.6M</span>
+                        </div>
+                    </div>
+
+                    <div class="card card--squad">
+                        <div class="card__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <div class="card__content">
+                            <span class="label">Plantilla</span>
+                            <span class="value">25</span>
+                            <span class="sublabel">jugadores</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid">
+                    <div>
+                        <div class="panel next-match" style="margin-bottom: 1rem;">
+                            <h3>Próximo Partido</h3>
+                            <span class="next-match__week">Jornada 1</span>
+                            <div class="match-preview">
+                                <span class="team home">UE Porreres</span>
+                                <span class="vs">VS</span>
+                                <span class="team away">Quintanar Rey</span>
+                            </div>
+                        </div>
+
+                        <div class="panel">
+                            <h3>Últimos Resultados</h3>
+                            <div class="form-badges">
+                                <span class="no-results">Sin partidos jugados</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="panel" style="cursor: pointer;">
+                            <h3 style="display: flex; align-items: center; gap: 0.5rem; color: var(--color-text-primary);">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" style="width: 18px; height: 18px;"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+                                Objetivo Principal
+                            </h3>
+                            <div class="objective">
+                                <div class="objective__name">Evitar el descenso</div>
+                                <div class="objective__desc">Mantener la categoría terminando fuera de puestos de descenso</div>
+                                <div class="objective-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill"></div>
+                                    </div>
+                                    <span class="progress-text">100%</span>
+                                </div>
+                            </div>
+                            <div class="view-all">
+                                Ver todos los objetivos
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;"><polyline points="9,18 15,12 9,6"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

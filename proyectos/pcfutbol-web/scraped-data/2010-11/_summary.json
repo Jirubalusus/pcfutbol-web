@@ -1,0 +1,10 @@
+{
+  "season": "2010-11",
+  "leagues": {
+    "laliga": {
+      "teams": 20,
+      "players": 641
+    }
+  },
+  "scrapedAt": "2026-01-27T16:07:03.086Z"
+}

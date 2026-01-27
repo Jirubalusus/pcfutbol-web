@@ -1,0 +1,10 @@
+{
+  "leagues": {
+    "laliga": {
+      "teams": 20,
+      "players": 704,
+      "goals": 1191,
+      "avgOverall": 75
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "season": "2023-24",
+  "leagues": {
+    "laliga": {
+      "teams": 20,
+      "players": 774,
+      "goals": 1268
+    }
+  },
+  "scrapedAt": "2026-01-27T16:18:22.255Z"
+}

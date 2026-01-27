@@ -16,6 +16,17 @@ import Messages from '../Messages/Messages';
 import MatchDay from '../MatchDay/MatchDay';
 import Training from '../Training/Training';
 import Objectives from '../Objectives/Objectives';
+import {
+  Trophy,
+  TrendingUp,
+  Wallet,
+  Users,
+  Target,
+  Save,
+  SkipForward,
+  FastForward,
+  ChevronRight
+} from 'lucide-react';
 import './Office.scss';
 
 export default function Office() {
@@ -33,39 +44,34 @@ export default function Office() {
   };
   
   const handleAdvanceWeek = () => {
-    // Check if there's a match this week for the player
     const weekFixtures = state.fixtures.filter(f => f.week === state.currentWeek && !f.played);
     const playerMatch = weekFixtures.find(f => 
       f.homeTeam === state.teamId || f.awayTeam === state.teamId
     );
     
     if (playerMatch) {
-      // MatchDay will handle simulating all matches
       setShowMatch(true);
     } else {
-      // No player match, simulate other matches and advance
       simulateOtherMatches();
-      dispatch({ type: 'APPLY_TRAINING' }); // Apply weekly training
+      dispatch({ type: 'APPLY_TRAINING' });
       dispatch({ type: 'ADVANCE_WEEK' });
     }
   };
   
   const handleMatchComplete = () => {
     setShowMatch(false);
-    dispatch({ type: 'APPLY_TRAINING' }); // Apply weekly training
+    dispatch({ type: 'APPLY_TRAINING' });
     dispatch({ type: 'ADVANCE_WEEK' });
   };
   
   const simulateOtherMatches = () => {
-    // Get all teams data (combine LALIGA_TEAMS with player's team)
     const allTeams = LALIGA_TEAMS.map(t => {
       if (t.id === state.teamId) {
-        return state.team; // Use player's current team data
+        return state.team;
       }
       return t;
     });
     
-    // Simulate matches for other teams (excluding player's match)
     const result = simulateWeekMatches(
       state.fixtures,
       state.leagueTable,
@@ -74,7 +80,6 @@ export default function Office() {
       allTeams
     );
     
-    // Update state with other teams' results
     dispatch({ type: 'SET_FIXTURES', payload: result.fixtures });
     dispatch({ type: 'SET_LEAGUE_TABLE', payload: result.table });
   };
@@ -83,13 +88,10 @@ export default function Office() {
     setSimulating(true);
     
     for (let i = 0; i < numWeeks; i++) {
-      // Small delay for visual feedback
       await new Promise(resolve => setTimeout(resolve, 100));
-      
-      // Simulate all matches including player's
       simulatePlayerMatch();
       simulateOtherMatches();
-      dispatch({ type: 'APPLY_TRAINING' }); // Apply weekly training
+      dispatch({ type: 'APPLY_TRAINING' });
       dispatch({ type: 'ADVANCE_WEEK' });
       dispatch({ type: 'HEAL_INJURIES' });
     }
@@ -101,7 +103,7 @@ export default function Office() {
       payload: {
         id: Date.now(),
         type: 'simulation',
-        title: `⏩ Simuladas ${numWeeks} semanas`,
+        title: `Simuladas ${numWeeks} semanas`,
         content: `Has avanzado hasta la semana ${state.currentWeek + numWeeks}`,
         date: `Semana ${state.currentWeek + numWeeks}`
       }
@@ -120,8 +122,6 @@ export default function Office() {
     const opponentId = isHome ? playerMatch.awayTeam : playerMatch.homeTeam;
     const opponent = LALIGA_TEAMS.find(t => t.id === opponentId);
     
-    // simulateMatch and updateTable already imported at top
-    
     const homeTeamData = isHome ? state.team : opponent;
     const awayTeamData = isHome ? opponent : state.team;
     
@@ -132,7 +132,6 @@ export default function Office() {
       awayTeamData
     );
     
-    // Update fixtures
     const updatedFixtures = state.fixtures.map(f => {
       if (f.id === playerMatch.id) {
         return { ...f, played: true, homeScore: result.homeScore, awayScore: result.awayScore };
@@ -141,7 +140,6 @@ export default function Office() {
     });
     dispatch({ type: 'SET_FIXTURES', payload: updatedFixtures });
     
-    // Update table
     const newTable = updateTable(
       state.leagueTable,
       playerMatch.homeTeam,
@@ -194,122 +192,142 @@ export default function Office() {
       <div className="office__overview">
         <div className="office__welcome">
           <h2>Bienvenido, Míster</h2>
-          <p>Temporada {state.currentSeason} - Semana {state.currentWeek}</p>
+          <p>Temporada {state.currentSeason} · Semana {state.currentWeek}</p>
         </div>
         
         <div className="office__cards">
-          <div className="office__card">
-            <div className="office__card-icon">🏆</div>
+          <div className="office__card office__card--position">
+            <div className="office__card-icon">
+              <Trophy size={28} strokeWidth={2} />
+            </div>
             <div className="office__card-content">
-              <span className="label">Posición en Liga</span>
+              <span className="label">Posición</span>
               <span className="value">{position}º</span>
             </div>
           </div>
           
-          <div className="office__card">
-            <div className="office__card-icon">📊</div>
+          <div className="office__card office__card--points">
+            <div className="office__card-icon">
+              <TrendingUp size={28} strokeWidth={2} />
+            </div>
             <div className="office__card-content">
               <span className="label">Puntos</span>
               <span className="value">{teamStats?.points || 0}</span>
             </div>
           </div>
           
-          <div className="office__card">
-            <div className="office__card-icon">💰</div>
+          <div className="office__card office__card--budget">
+            <div className="office__card-icon">
+              <Wallet size={28} strokeWidth={2} />
+            </div>
             <div className="office__card-content">
               <span className="label">Presupuesto</span>
-              <span className="value money">{formatMoney(state.money)}</span>
+              <span className="value">{formatMoney(state.money)}</span>
             </div>
           </div>
           
-          <div className="office__card">
-            <div className="office__card-icon">👥</div>
+          <div className="office__card office__card--squad">
+            <div className="office__card-icon">
+              <Users size={28} strokeWidth={2} />
+            </div>
             <div className="office__card-content">
               <span className="label">Plantilla</span>
-              <span className="value">{state.team?.players?.length || 0} jugadores</span>
+              <span className="value">{state.team?.players?.length || 0}</span>
+              <span className="sublabel">jugadores</span>
             </div>
           </div>
         </div>
         
-        {nextMatch && (
-          <div className="office__next-match">
-            <h3>Próximo Partido - Jornada {nextMatch.week}</h3>
-            <div className="office__match-preview">
-              <div className="team home">
-                <span className="name">{nextMatch.homeTeam === state.teamId ? state.team.name : 
-                  state.leagueTable.find(t => t.teamId === nextMatch.homeTeam)?.teamName}</span>
+        <div className="office__grid">
+          <div className="office__grid-left">
+            {nextMatch && (
+              <div className="office__next-match">
+                <h3>Próximo Partido</h3>
+                <span className="office__match-week">Jornada {nextMatch.week}</span>
+                <div className="office__match-preview">
+                  <div className="team home">
+                    <span className="name">{nextMatch.homeTeam === state.teamId ? state.team.name : 
+                      state.leagueTable.find(t => t.teamId === nextMatch.homeTeam)?.teamName}</span>
+                  </div>
+                  <div className="vs">VS</div>
+                  <div className="team away">
+                    <span className="name">{nextMatch.awayTeam === state.teamId ? state.team.name : 
+                      state.leagueTable.find(t => t.teamId === nextMatch.awayTeam)?.teamName}</span>
+                  </div>
+                </div>
               </div>
-              <div className="vs">VS</div>
-              <div className="team away">
-                <span className="name">{nextMatch.awayTeam === state.teamId ? state.team.name : 
-                  state.leagueTable.find(t => t.teamId === nextMatch.awayTeam)?.teamName}</span>
+            )}
+            
+            <div className="office__form">
+              <h3>Últimos Resultados</h3>
+              <div className="office__form-badges">
+                {teamStats?.form && teamStats.form.length > 0 ? (
+                  teamStats.form.map((result, idx) => (
+                    <span key={idx} className={`form-badge ${result.toLowerCase()}`}>
+                      {result}
+                    </span>
+                  ))
+                ) : (
+                  <span className="no-results">Sin partidos jugados</span>
+                )}
               </div>
             </div>
           </div>
-        )}
-        
-        <div className="office__form">
-          <h3>Últimos Resultados</h3>
-          <div className="office__form-badges">
-            {teamStats?.form && teamStats.form.length > 0 ? (
-              teamStats.form.map((result, idx) => (
-                <span key={idx} className={`form-badge ${result.toLowerCase()}`}>
-                  {result}
+          
+          <div className="office__grid-right">
+            {state.seasonObjectives?.length > 0 && (
+              <div className="office__objective-preview" onClick={() => setActiveTab('objectives')}>
+                <h3>
+                  <Target size={18} strokeWidth={2} />
+                  <span>Objetivo Principal</span>
+                </h3>
+                {(() => {
+                  const criticalObj = state.seasonObjectives.find(o => o.priority === 'critical');
+                  if (!criticalObj) return null;
+                  
+                  let progress = 0;
+                  if (criticalObj.type === 'league_position') {
+                    if (position <= criticalObj.target) progress = 100;
+                    else progress = Math.max(0, Math.round((1 - (position - criticalObj.target) / (20 - criticalObj.target)) * 100));
+                  }
+                  
+                  const status = progress >= 100 ? 'completed' : progress >= 70 ? 'on-track' : progress >= 40 ? 'warning' : 'danger';
+                  
+                  return (
+                    <div className={`objective-item objective-item--${status}`}>
+                      <div className="objective-info">
+                        <span className="objective-name">{criticalObj.name}</span>
+                        <span className="objective-desc">{criticalObj.description}</span>
+                      </div>
+                      <div className="objective-progress">
+                        <div className="progress-bar">
+                          <div className="progress-fill" style={{ width: `${progress}%` }} />
+                        </div>
+                        <span className="progress-text">{progress}%</span>
+                      </div>
+                    </div>
+                  );
+                })()}
+                <span className="view-all">
+                  <span>Ver todos los objetivos</span>
+                  <ChevronRight size={16} />
                 </span>
-              ))
-            ) : (
-              <span className="no-results">Sin partidos jugados</span>
+              </div>
+            )}
+            
+            {state.messages.length > 0 && (
+              <div className="office__recent-messages" onClick={() => setActiveTab('messages')}>
+                <h3>Mensajes Recientes</h3>
+                {state.messages.slice(0, 3).map(msg => (
+                  <div key={msg.id} className="office__message-preview">
+                    <span className="title">{msg.title}</span>
+                    <span className="date">{msg.date}</span>
+                  </div>
+                ))}
+              </div>
             )}
           </div>
         </div>
-        
-        {/* Objetivo principal */}
-        {state.seasonObjectives?.length > 0 && (
-          <div className="office__objective-preview" onClick={() => setActiveTab('objectives')}>
-            <h3>🎯 Objetivo Principal</h3>
-            {(() => {
-              const criticalObj = state.seasonObjectives.find(o => o.priority === 'critical');
-              if (!criticalObj) return null;
-              
-              // Calcular progreso
-              let progress = 0;
-              if (criticalObj.type === 'league_position') {
-                if (position <= criticalObj.target) progress = 100;
-                else progress = Math.max(0, Math.round((1 - (position - criticalObj.target) / (20 - criticalObj.target)) * 100));
-              }
-              
-              const status = progress >= 100 ? 'completed' : progress >= 70 ? 'on-track' : progress >= 40 ? 'warning' : 'danger';
-              
-              return (
-                <div className={`objective-item objective-item--${status}`}>
-                  <div className="objective-info">
-                    <span className="objective-name">{criticalObj.name}</span>
-                    <span className="objective-desc">{criticalObj.description}</span>
-                  </div>
-                  <div className="objective-progress">
-                    <div className="progress-bar">
-                      <div className="progress-fill" style={{ width: `${progress}%` }} />
-                    </div>
-                    <span className="progress-text">{progress}%</span>
-                  </div>
-                </div>
-              );
-            })()}
-            <span className="view-all">Ver todos los objetivos →</span>
-          </div>
-        )}
-        
-        {state.messages.length > 0 && (
-          <div className="office__recent-messages">
-            <h3>Mensajes Recientes</h3>
-            {state.messages.slice(0, 3).map(msg => (
-              <div key={msg.id} className="office__message-preview">
-                <span className="title">{msg.title}</span>
-                <span className="date">{msg.date}</span>
-              </div>
-            ))}
-          </div>
-        )}
       </div>
     );
   };
@@ -332,7 +350,7 @@ export default function Office() {
         <header className="office__header">
           <div className="office__team-info">
             <h1>{state.team?.name}</h1>
-            <span className="office__season">Temporada {state.currentSeason} - Semana {state.currentWeek}</span>
+            <span className="office__season">Temporada {state.currentSeason} · Semana {state.currentWeek}</span>
           </div>
           
           <div className="office__actions">
@@ -342,7 +360,8 @@ export default function Office() {
             </div>
             
             <button className="office__save-btn" onClick={saveGame}>
-              💾 Guardar
+              <Save size={18} strokeWidth={2} />
+              <span>Guardar</span>
             </button>
             
             <button 
@@ -350,12 +369,14 @@ export default function Office() {
               onClick={handleAdvanceWeek}
               disabled={simulating}
             >
-              ⏭️ Avanzar Semana
+              <SkipForward size={18} strokeWidth={2} />
+              <span>Avanzar Semana</span>
             </button>
             
             <div className="office__sim-dropdown">
               <button className="office__sim-btn" disabled={simulating}>
-                ⏩ {simulating ? 'Simulando...' : 'Simular'}
+                <FastForward size={18} strokeWidth={2} />
+                <span>{simulating ? 'Simulando...' : 'Simular'}</span>
               </button>
               {!simulating && (
                 <div className="office__sim-options">

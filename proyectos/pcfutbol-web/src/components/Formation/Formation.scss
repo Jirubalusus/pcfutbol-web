@@ -15,13 +15,25 @@ $pcf-red: #c0392b;
 $pcf-white: #f0f0f0;
 $pcf-gray: #7f8c8d;
 
-// Colores de filas
-$row-titular-1: #3d7a3d;
-$row-titular-2: #4a8f4a;
-$row-convocado-1: #7a7a3d;
-$row-convocado-2: #8f8f4a;
-$row-noconv-1: #4a4a4a;
-$row-noconv-2: #5a5a5a;
+// Colores de filas por POSICIÓN (estilo PC Fútbol clásico)
+$row-gk-1: #8a7a20;      // Portero - Amarillo oscuro
+$row-gk-2: #9a8a30;
+$row-def-1: #2a5a8a;     // Defensa - Azul
+$row-def-2: #3a6a9a;
+$row-mid-1: #2a7a4a;     // Medio - Verde
+$row-mid-2: #3a8a5a;
+$row-fwd-1: #8a3a3a;     // Delantero - Rojo
+$row-fwd-2: #9a4a4a;
+
+// Colores de convocados (más apagados)
+$row-conv-gk: #6a5a10;
+$row-conv-def: #1a4a6a;
+$row-conv-mid: #1a5a3a;
+$row-conv-fwd: #6a2a2a;
+
+// Colores de no convocados (grises con tinte)
+$row-noconv-1: #3a3a3a;
+$row-noconv-2: #4a4a4a;
 
 .pcf-formation {
   min-height: 100vh;
@@ -193,6 +205,45 @@ $row-noconv-2: #5a5a5a;
   border: 2px solid #3a5a7a;
   border-radius: 4px;
   overflow: hidden;
+  max-height: calc(100vh - 180px);
+  overflow-y: auto;
+  
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: #1a2a3a;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: #3a5a7a;
+    border-radius: 4px;
+  }
+}
+
+// Separadores de sección estilo PC Fútbol
+.pcf-section-header {
+  padding: 0.4rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  border-top: 2px solid;
+  border-bottom: 1px solid;
+  
+  &.convocados {
+    background: linear-gradient(180deg, #7a6a2a 0%, #5a4a1a 100%);
+    border-color: #9a8a3a;
+    color: #ffd700;
+  }
+  
+  &.noconvocados {
+    background: linear-gradient(180deg, #5a3a3a 0%, #3a2a2a 100%);
+    border-color: #7a4a4a;
+    color: #ff9999;
+  }
 }
 
 .pcf-tabs {
@@ -233,8 +284,13 @@ $row-noconv-2: #5a5a5a;
     grid-template-columns: 35px 1fr repeat(7, 32px) 40px;
     gap: 2px;
     padding: 0.4rem 0.5rem;
-    background: linear-gradient(180deg, #3a5a7a 0%, #2a4a6a 100%);
-    border-bottom: 2px solid #5a7a9a;
+    background: linear-gradient(180deg, #4a7a4a 0%, #2a5a2a 100%);
+    border-bottom: 2px solid #6a9a6a;
+    
+    &.titulares {
+      background: linear-gradient(180deg, #4a7a4a 0%, #2a5a2a 100%);
+      border-bottom-color: #6a9a6a;
+    }
     
     span {
       font-size: 0.65rem;
@@ -280,17 +336,36 @@ $row-noconv-2: #5a5a5a;
     transition: all 0.15s;
     border-bottom: 1px solid rgba(0,0,0,0.2);
     
-    // Colores por categoría
+    // Colores por POSICIÓN (estilo PC Fútbol clásico)
+    // Titulares - colores vivos
     &.titulares {
-      &:nth-child(odd) { background: $row-titular-1; }
-      &:nth-child(even) { background: $row-titular-2; }
+      &.pos-gk { 
+        &:nth-child(odd) { background: $row-gk-1; }
+        &:nth-child(even) { background: $row-gk-2; }
+      }
+      &.pos-def { 
+        &:nth-child(odd) { background: $row-def-1; }
+        &:nth-child(even) { background: $row-def-2; }
+      }
+      &.pos-mid { 
+        &:nth-child(odd) { background: $row-mid-1; }
+        &:nth-child(even) { background: $row-mid-2; }
+      }
+      &.pos-fwd { 
+        &:nth-child(odd) { background: $row-fwd-1; }
+        &:nth-child(even) { background: $row-fwd-2; }
+      }
     }
     
+    // Convocados - colores más apagados
     &.convocados {
-      &:nth-child(odd) { background: $row-convocado-1; }
-      &:nth-child(even) { background: $row-convocado-2; }
+      &.pos-gk { background: $row-conv-gk; }
+      &.pos-def { background: $row-conv-def; }
+      &.pos-mid { background: $row-conv-mid; }
+      &.pos-fwd { background: $row-conv-fwd; }
     }
     
+    // No convocados - grises
     &.noconvocados {
       &:nth-child(odd) { background: $row-noconv-1; }
       &:nth-child(even) { background: $row-noconv-2; }
@@ -302,7 +377,15 @@ $row-noconv-2: #5a5a5a;
     }
     
     &.injured {
-      opacity: 0.6;
+      background: #4a3a3a !important;
+      
+      span {
+        color: #aaa !important;
+      }
+      
+      .col-name .injury-icon {
+        color: #cc0000 !important;
+      }
     }
     
     &:hover:not(.selected) {
@@ -330,8 +413,19 @@ $row-noconv-2: #5a5a5a;
         white-space: nowrap;
         
         .injury-icon {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 14px;
+          height: 14px;
           margin-right: 4px;
+          background: #fff;
+          border: 1px solid #999;
+          border-radius: 2px;
+          color: #cc0000;
           font-size: 0.7rem;
+          font-weight: 900;
+          line-height: 1;
         }
       }
       

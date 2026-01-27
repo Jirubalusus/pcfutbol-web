@@ -14,13 +14,15 @@ import {
 } from '../../data/teamsFirestore';
 import { initializeLeague } from '../../game/leagueEngine';
 import { generateSeasonObjectives } from '../../game/objectivesEngine';
+import EuropeMap from './EuropeMap';
 import './TeamSelection.scss';
+import './EuropeMap.scss';
 
 const COUNTRIES = [
   { id: 'spain', name: 'España', flag: '🇪🇸', leagues: ['laliga', 'segunda', 'primeraRFEF', 'segundaRFEF'] },
   { id: 'england', name: 'Inglaterra', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', leagues: ['premierLeague'] },
-  { id: 'germany', name: 'Alemania', flag: '🇩🇪', leagues: ['bundesliga'] },
   { id: 'italy', name: 'Italia', flag: '🇮🇹', leagues: ['serieA'] },
+  { id: 'germany', name: 'Alemania', flag: '🇩🇪', leagues: ['bundesliga'] },
   { id: 'france', name: 'Francia', flag: '🇫🇷', leagues: ['ligue1'] },
 ];
 
@@ -64,9 +66,20 @@ const LEAGUE_NAMES = {
 // Ligas que tienen grupos
 const LEAGUES_WITH_GROUPS = ['primeraRFEF', 'segundaRFEF'];
 
+// Generar lista de temporadas disponibles (2025-26 → 2004-05)
+const AVAILABLE_SEASONS = Array.from({ length: 22 }, (_, i) => {
+  const startYear = 2025 - i;
+  return {
+    id: `${startYear}-${String(startYear + 1).slice(2)}`,
+    label: `${startYear}/${String(startYear + 1).slice(2)}`,
+    startYear
+  };
+});
+
 export default function TeamSelection() {
   const { dispatch } = useGame();
   const [step, setStep] = useState(1);
+  const [selectedSeason, setSelectedSeason] = useState(AVAILABLE_SEASONS[0]); // Default: 2025-26
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [selectedLeague, setSelectedLeague] = useState(null);
   const [selectedGroup, setSelectedGroup] = useState(null);
@@ -76,8 +89,8 @@ export default function TeamSelection() {
   // Determinar si la liga seleccionada tiene grupos
   const hasGroups = selectedLeague && LEAGUES_WITH_GROUPS.includes(selectedLeague);
   
-  // Calcular el número total de pasos
-  const totalSteps = hasGroups ? 4 : 3;
+  // Calcular el número total de pasos (simplificado a 2)
+  const totalSteps = 2;
   
   // Obtener equipos según liga y grupo
   const teams = useMemo(() => {
@@ -107,56 +120,42 @@ export default function TeamSelection() {
   
   const handleBack = () => {
     if (step === 1) {
-      dispatch({ type: 'SET_SCREEN', payload: 'main_menu' });
+      // Si hay país seleccionado, deseleccionarlo primero (especialmente útil en móvil)
+      if (selectedCountry) {
+        setSelectedCountry(null);
+      } else {
+        dispatch({ type: 'SET_SCREEN', payload: 'main_menu' });
+      }
     } else if (step === 2) {
-      setStep(1);
-      setSelectedCountry(null);
-      setSelectedLeague(null);
-      setSelectedGroup(null);
-    } else if (step === 3 && hasGroups) {
-      // Volver a selección de grupo
-      setStep(2);
-      setSelectedGroup(null);
-      setSelectedTeam(null);
-    } else if (step === 3 && !hasGroups) {
-      // Volver a selección de liga
-      setStep(2);
-      setSelectedTeam(null);
-    } else if (step === 4) {
-      // Volver de equipos a grupos
-      setStep(3);
-      setSelectedTeam(null);
+      // Si estamos viendo equipos después de grupos, volver a grupos
+      if (hasGroups && selectedGroup) {
+        setSelectedGroup(null);
+        setSelectedTeam(null);
+      } else {
+        // Volver al paso 1 (mapa + ligas)
+        setStep(1);
+        setSelectedLeague(null);
+        setSelectedGroup(null);
+        setSelectedTeam(null);
+      }
     }
   };
 
   const handleSelectCountry = (country) => {
     setSelectedCountry(country);
-    if (country.leagues.length === 1) {
-      const league = country.leagues[0];
-      setSelectedLeague(league);
-      if (LEAGUES_WITH_GROUPS.includes(league)) {
-        setStep(2); // Ir a grupos
-      } else {
-        setStep(3); // Ir a equipos
-      }
-    } else {
-      setStep(2);
-    }
+    // Solo selecciona el país, las ligas se muestran en el panel
+    // No avanza de paso
   };
 
   const handleSelectLeague = (leagueId) => {
     setSelectedLeague(leagueId);
     setSelectedGroup(null);
-    if (LEAGUES_WITH_GROUPS.includes(leagueId)) {
-      setStep(3); // Ir a selección de grupo
-    } else {
-      setStep(3); // Ir a equipos directamente
-    }
+    setStep(2); // Ir a paso 2 (grupos o equipos)
   };
 
   const handleSelectGroup = (groupId) => {
     setSelectedGroup(groupId);
-    setStep(4); // Ir a equipos
+    // Se queda en step 2, pero ahora muestra equipos
   };
 
   const handleSelectTeam = (team) => {
@@ -237,42 +236,25 @@ export default function TeamSelection() {
     return Math.round(team.players.reduce((sum, p) => sum + p.overall, 0) / team.players.length);
   };
 
-  // Determinar qué mostrar en cada paso
+  // Determinar qué mostrar en cada paso (simplificado a 2 pasos)
   const getCurrentStepContent = () => {
-    // PASO 1: Países
+    // PASO 1: Mapa con países + panel de ligas
     if (step === 1) return 'countries';
     
-    // PASO 2: Ligas (si hay múltiples) o Grupos (si liga con grupos y 1 liga)
+    // PASO 2: Grupos (si aplica) o Equipos
     if (step === 2) {
-      if (selectedCountry?.leagues.length > 1) return 'leagues';
-      if (hasGroups) return 'groups';
-      return 'leagues';
-    }
-    
-    // PASO 3: Grupos (si aplica) o Equipos
-    if (step === 3) {
       if (hasGroups && !selectedGroup) return 'groups';
       return 'teams';
     }
-    
-    // PASO 4: Equipos (después de grupos)
-    if (step === 4) return 'teams';
     
     return 'countries';
   };
   
   const currentContent = getCurrentStepContent();
 
-  // Calcular paso visual para el progress bar
+  // Calcular paso visual para el progress bar (simplificado)
   const getVisualStep = () => {
-    if (step === 1) return 1;
-    if (step === 2) return 2;
-    if (step === 3) {
-      if (hasGroups && !selectedGroup) return 3;
-      return hasGroups ? 3 : 3;
-    }
-    if (step === 4) return 4;
-    return step;
+    return step === 1 ? 1 : 2;
   };
   
   return (
@@ -281,7 +263,7 @@ export default function TeamSelection() {
       <div className="pcf-ts-header">
         <div className="header-left">
           <button className="btn-back" onClick={handleBack}>
-            ← {step === 1 ? 'MENÚ' : 'ATRÁS'}
+            ← {step === 1 ? (selectedCountry ? 'PAÍSES' : 'MENÚ') : 'ATRÁS'}
           </button>
         </div>
         <div className="header-center">
@@ -294,60 +276,136 @@ export default function TeamSelection() {
         </div>
       </div>
 
-      {/* PROGRESS BAR */}
+      {/* PROGRESS BAR - Solo 2 pasos: País/Liga y Equipo */}
       <div className="pcf-ts-progress">
         <div className={`progress-step ${step >= 1 ? 'active' : ''}`}>
           <div className="step-num">1</div>
-          <div className="step-label">PAÍS</div>
+          <div className="step-label">PAÍS / LIGA</div>
         </div>
         <div className={`progress-line ${step >= 2 ? 'active' : ''}`}></div>
         <div className={`progress-step ${step >= 2 ? 'active' : ''}`}>
           <div className="step-num">2</div>
-          <div className="step-label">LIGA</div>
-        </div>
-        <div className={`progress-line ${step >= 3 ? 'active' : ''}`}></div>
-        {hasGroups && (
-          <>
-            <div className={`progress-step ${step >= 3 ? 'active' : ''}`}>
-              <div className="step-num">3</div>
-              <div className="step-label">GRUPO</div>
-            </div>
-            <div className={`progress-line ${step >= 4 ? 'active' : ''}`}></div>
-          </>
-        )}
-        <div className={`progress-step ${(hasGroups ? step >= 4 : step >= 3) ? 'active' : ''}`}>
-          <div className="step-num">{hasGroups ? 4 : 3}</div>
           <div className="step-label">EQUIPO</div>
         </div>
       </div>
 
       {/* CONTENIDO */}
       <div className="pcf-ts-content">
-        {/* PAÍSES */}
+        {/* PAÍSES - Mapa interactivo */}
         {currentContent === 'countries' && (
-          <div className="countries-grid">
-            <h2>🌍 Selecciona un país</h2>
-            <div className="countries-list">
-              {COUNTRIES.map(country => {
-                const totalTeams = country.leagues.reduce((sum, l) => sum + (getLeagueTeams(l)?.length || 0), 0);
-                return (
-                  <button
-                    key={country.id}
-                    className="country-card"
-                    onClick={() => handleSelectCountry(country)}
-                  >
-                    <span className="flag">{country.flag}</span>
-                    <div className="info">
-                      <span className="name">{country.name}</span>
-                      <span className="meta">
-                        {country.leagues.length} liga{country.leagues.length > 1 ? 's' : ''} • {totalTeams} equipos
-                      </span>
-                    </div>
-                    <span className="arrow">→</span>
-                  </button>
-                );
-              })}
+          <div className="map-selection">
+            {/* Selector de temporada */}
+            <div className="season-selector">
+              <label className="season-selector__label">Temporada</label>
+              <div className="season-selector__wrapper">
+                <button 
+                  className="season-selector__arrow"
+                  onClick={() => {
+                    const idx = AVAILABLE_SEASONS.findIndex(s => s.id === selectedSeason.id);
+                    if (idx < AVAILABLE_SEASONS.length - 1) {
+                      setSelectedSeason(AVAILABLE_SEASONS[idx + 1]);
+                    }
+                  }}
+                  disabled={selectedSeason.id === AVAILABLE_SEASONS[AVAILABLE_SEASONS.length - 1].id}
+                >
+                  ◀
+                </button>
+                <select 
+                  className="season-selector__select"
+                  value={selectedSeason.id}
+                  onChange={(e) => {
+                    const season = AVAILABLE_SEASONS.find(s => s.id === e.target.value);
+                    if (season) setSelectedSeason(season);
+                  }}
+                >
+                  {AVAILABLE_SEASONS.map(season => (
+                    <option key={season.id} value={season.id}>
+                      {season.label}
+                    </option>
+                  ))}
+                </select>
+                <button 
+                  className="season-selector__arrow"
+                  onClick={() => {
+                    const idx = AVAILABLE_SEASONS.findIndex(s => s.id === selectedSeason.id);
+                    if (idx > 0) {
+                      setSelectedSeason(AVAILABLE_SEASONS[idx - 1]);
+                    }
+                  }}
+                  disabled={selectedSeason.id === AVAILABLE_SEASONS[0].id}
+                >
+                  ▶
+                </button>
+              </div>
             </div>
+            
+            {/* Row con mapa y panel */}
+            <div className="map-selection__row">
+              {/* Mapa de Europa */}
+              <div className="map-selection__map">
+                <EuropeMap
+                  countries={COUNTRIES}
+                  selectedCountry={selectedCountry?.id}
+                  onCountryClick={(countryId) => {
+                    const country = COUNTRIES.find(c => c.id === countryId);
+                    if (country) {
+                      setSelectedCountry(country);
+                    }
+                  }}
+                />
+              </div>
+              
+              {/* Panel de ligas del país seleccionado */}
+              <div className="map-selection__panel">
+              {selectedCountry ? (
+                <>
+                  <div className="map-selection__title">
+                    <span className="flag">{selectedCountry.flag}</span>
+                    {selectedCountry.name}
+                  </div>
+                  <div className="map-selection__leagues">
+                    {selectedCountry.leagues.map(leagueId => {
+                      const leagueTeams = getLeagueTeams(leagueId);
+                      const hasGroupsForLeague = LEAGUES_WITH_GROUPS.includes(leagueId);
+                      const groups = hasGroupsForLeague ? getLeagueGroups(leagueId) : null;
+                      const numGroups = groups ? Object.keys(groups).length : 0;
+                      
+                      return (
+                        <button
+                          key={leagueId}
+                          className={`map-selection__league ${leagueTeams.length === 0 ? 'disabled' : ''}`}
+                          onClick={() => leagueTeams.length > 0 && handleSelectLeague(leagueId)}
+                          disabled={leagueTeams.length === 0}
+                        >
+                          <div>
+                            <div className="map-selection__league-name">{LEAGUE_NAMES[leagueId]}</div>
+                            <div className="map-selection__league-info">
+                              {leagueTeams.length > 0 
+                                ? hasGroupsForLeague 
+                                  ? `${numGroups} grupos • ${leagueTeams.length} equipos`
+                                  : `${leagueTeams.length} equipos`
+                                : 'Próximamente'
+                              }
+                            </div>
+                          </div>
+                          <span className="map-selection__league-arrow">
+                            {leagueTeams.length > 0 ? '→' : '🔒'}
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </>
+              ) : (
+                <div className="map-selection__placeholder">
+                  <div className="map-selection__placeholder-icon">🗺️</div>
+                  <div className="map-selection__placeholder-text">
+                    Selecciona un país en el mapa
+                  </div>
+                </div>
+              )}
+            </div>
+            </div>{/* Cierre map-selection__row */}
           </div>
         )}
 

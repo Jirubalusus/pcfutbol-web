@@ -1,4 +1,6 @@
 # HEARTBEAT.md
 
-# Keep this file empty (or with only comments) to skip heartbeat API calls.
-# Add tasks below when you want the agent to check something periodically.
+## Tareas completadas
+- ✅ Scraping Transfermarkt (22 temporadas)
+- ✅ Procesamiento de datos (calculate-overalls)
+- ✅ Subida a Firebase (248 equipos, 5256 jugadores)

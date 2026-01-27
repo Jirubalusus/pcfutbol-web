@@ -1,0 +1,167 @@
+{
+  "scrapedAt": "2026-01-27T19:07:27.099Z",
+  "seasons": {
+    "2021-22": {
+      "leagues": {
+        "laliga": {
+          "teams": 20,
+          "players": 783,
+          "goals": 1216
+        }
+      }
+    },
+    "2020-21": {
+      "leagues": {
+        "laliga": {
+          "teams": 20,
+          "players": 734,
+          "goals": 1193
+        }
+      }
+    },
+    "2019-20": {
+      "leagues": {
+        "laliga": {
+          "teams": 20,
+          "players": 704,
+          "goals": 1191
+        }
+      }
+    },
+    "2018-19": {
+      "leagues": {
+        "laliga": {
+          "teams": 20,
+          "players": 678,
+          "goals": 1247
+        }
+      }
+    },
+    "2017-18": {
+      "leagues": {
+        "laliga": {
+          "teams": 20,
+          "players": 674,
+          "goals": 1270
+        }
+      }
+    },
+    "2016-17": {
+      "leagues": {
+        "laliga": {
+          "teams": 20,
+          "players": 660,
+          "goals": 1399
+        }
+      }
+    },
+    "2015-16": {
+      "leagues": {
+        "laliga": {
+          "teams": 20,
+          "players": 639,
+          "goals": 1349
+        }
+      }
+    },
+    "2014-15": {
+      "leagues": {
+        "laliga": {
+          "teams": 20,
+          "players": 634,
+          "goals": 1290
+        }
+      }
+    },
+    "2013-14": {
+      "leagues": {
+        "laliga": {
+          "teams": 20,
+          "players": 647,
+          "goals": 1301
+        }
+      }
+    },
+    "2012-13": {
+      "leagues": {
+        "laliga": {
+          "teams": 20,
+          "players": 641,
+          "goals": 1319
+        }
+      }
+    },
+    "2011-12": {
+      "leagues": {
+        "laliga": {
+          "teams": 20,
+          "players": 668,
+          "goals": 1319
+        }
+      }
+    },
+    "2010-11": {
+      "leagues": {
+        "laliga": {
+          "teams": 20,
+          "players": 641,
+          "goals": 1272
+        }
+      }
+    },
+    "2009-10": {
+      "leagues": {
+        "laliga": {
+          "teams": 20,
+          "players": 639,
+          "goals": 1195
+        }
+      }
+    },
+    "2008-09": {
+      "leagues": {
+        "laliga": {
+          "teams": 20,
+          "players": 622,
+          "goals": 1283
+        }
+      }
+    },
+    "2007-08": {
+      "leagues": {
+        "laliga": {
+          "teams": 20,
+          "players": 626,
+          "goals": 1254
+        }
+      }
+    },
+    "2006-07": {
+      "leagues": {
+        "laliga": {
+          "teams": 20,
+          "players": 630,
+          "goals": 1158
+        }
+      }
+    },
+    "2005-06": {
+      "leagues": {
+        "laliga": {
+          "teams": 20,
+          "players": 631,
+          "goals": 1098
+        }
+      }
+    },
+    "2004-05": {
+      "leagues": {
+        "laliga": {
+          "teams": 20,
+          "players": 637,
+          "goals": 1131
+        }
+      }
+    }
+  }
+}

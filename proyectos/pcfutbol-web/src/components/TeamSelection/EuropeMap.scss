@@ -1,0 +1,315 @@
+.globe-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  canvas {
+    cursor: grab !important;
+    &:active {
+      cursor: grabbing !important;
+    }
+  }
+}
+
+.globe-hint {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #8899aa;
+  text-align: center;
+}
+
+// Vista móvil - lista de países
+.countries-mobile {
+  width: 100%;
+  padding: 0 1rem;
+  
+  &__title {
+    text-align: center;
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    background: rgba(61, 90, 128, 0.3);
+    border: 2px solid rgba(74, 111, 165, 0.4);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+    
+    &:hover, &:active {
+      background: rgba(61, 90, 128, 0.5);
+      border-color: #4a9fff;
+    }
+    
+    &.selected {
+      background: rgba(0, 255, 136, 0.15);
+      border-color: #00ff88;
+    }
+  }
+  
+  &__flag {
+    font-size: 1.75rem;
+  }
+  
+  &__name {
+    flex: 1;
+    font-weight: 600;
+    color: white;
+    font-size: 1rem;
+  }
+  
+  &__leagues {
+    font-size: 0.85rem;
+    color: #8899aa;
+  }
+}
+
+// Selector de temporada
+.season-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0.75rem 1.5rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(180deg, rgba(0, 102, 255, 0.15) 0%, rgba(0, 212, 255, 0.08) 100%);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 12px;
+  
+  &__label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  &__arrow {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    color: #00d4ff;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    
+    &:hover:not(:disabled) {
+      background: rgba(0, 212, 255, 0.2);
+      border-color: rgba(0, 212, 255, 0.5);
+    }
+    
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+  }
+  
+  &__select {
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #00d4ff;
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(0, 212, 255, 0.4);
+    border-radius: 8px;
+    cursor: pointer;
+    min-width: 120px;
+    text-align: center;
+    appearance: none;
+    -webkit-appearance: none;
+    
+    &:focus {
+      outline: none;
+      border-color: #00d4ff;
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+    }
+    
+    option {
+      background: #1a2634;
+      color: white;
+      padding: 0.5rem;
+    }
+  }
+}
+
+// Layout mapa + panel
+.map-selection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem;
+  
+  &__row {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 1rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+  
+  &__map {
+    flex-shrink: 0;
+    
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+  
+  &__panel {
+    flex: 1;
+    min-width: 280px;
+    max-width: 400px;
+    
+    @media (max-width: 768px) {
+      width: 100%;
+      max-width: 100%;
+      min-width: unset;
+    }
+  }
+  
+  &__leagues {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-height: 40vh;
+    overflow-y: auto;
+    padding-right: 4px;
+    
+    @media (max-width: 768px) {
+      max-height: 35vh;
+    }
+    
+    // Scrollbar styling
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    &::-webkit-scrollbar-track {
+      background: rgba(255,255,255,0.1);
+      border-radius: 3px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.3);
+      border-radius: 3px;
+    }
+  }
+  
+  &__title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    
+    .flag {
+      font-size: 2.5rem;
+    }
+  }
+  
+  &__leagues {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  &__league {
+    background: rgba(61, 90, 128, 0.3);
+    border: 2px solid rgba(74, 111, 165, 0.5);
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    &:hover {
+      background: rgba(61, 90, 128, 0.5);
+      border-color: #00ff88;
+      transform: translateX(5px);
+    }
+    
+    &.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      &:hover {
+        transform: none;
+        border-color: rgba(74, 111, 165, 0.5);
+      }
+    }
+    
+    &-name {
+      font-weight: 600;
+      color: white;
+      font-size: 1.1rem;
+    }
+    
+    &-info {
+      font-size: 0.9rem;
+      color: #8ba3c7;
+      margin-top: 0.25rem;
+    }
+    
+    &-arrow {
+      color: #00ff88;
+      font-size: 1.5rem;
+    }
+  }
+  
+  &__placeholder {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: #6b7c93;
+    background: rgba(61, 90, 128, 0.1);
+    border-radius: 12px;
+    border: 2px dashed rgba(74, 111, 165, 0.3);
+    
+    &-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+    
+    &-text {
+      font-size: 1.1rem;
+    }
+  }
+}

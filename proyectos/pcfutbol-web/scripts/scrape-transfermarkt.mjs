@@ -1,232 +1,289 @@
-// Scraper de Transfermarkt para PC Fútbol Web
-// Scrapea plantillas reales de LaLiga y jugadores libres
+/**
+ * Scraper de Transfermarkt para PC Fútbol Web
+ * Extrae equipos y plantillas de cualquier temporada
+ * 
+ * Uso:
+ *   node scrape-transfermarkt.mjs                    # Todas las ligas, temporada actual
+ *   node scrape-transfermarkt.mjs --season 2010     # Todas las ligas, temporada 2010-11
+ *   node scrape-transfermarkt.mjs laliga            # Solo LaLiga, temporada actual
+ *   node scrape-transfermarkt.mjs laliga --season 2015  # Solo LaLiga 2015-16
+ */
 
-import * as fs from 'fs';
+import fs from 'fs';
+import path from 'path';
 
-const BASE_URL = 'https://www.transfermarkt.es';
+// Temporada actual (año de inicio)
+const CURRENT_SEASON = 2025;
 
-// Mapeo de equipos de LaLiga con IDs de Transfermarkt
-const LALIGA_TEAMS_TM = [
-  { id: 'real_madrid', name: 'Real Madrid CF', shortName: 'RMA', tmId: 418, city: 'Madrid', stadium: 'Santiago Bernabéu', stadiumCapacity: 81044, reputation: 95, colors: { primary: '#FFFFFF', secondary: '#000000' } },
-  { id: 'barcelona', name: 'FC Barcelona', shortName: 'BAR', tmId: 131, city: 'Barcelona', stadium: 'Spotify Camp Nou', stadiumCapacity: 99354, reputation: 93, colors: { primary: '#004D98', secondary: '#A50044' } },
-  { id: 'atletico_madrid', name: 'Atlético de Madrid', shortName: 'ATM', tmId: 13, city: 'Madrid', stadium: 'Cívitas Metropolitano', stadiumCapacity: 70460, reputation: 88, colors: { primary: '#CE3524', secondary: '#FFFFFF' } },
-  { id: 'athletic_bilbao', name: 'Athletic Club', shortName: 'ATH', tmId: 621, city: 'Bilbao', stadium: 'San Mamés', stadiumCapacity: 53289, reputation: 82, colors: { primary: '#EE2523', secondary: '#FFFFFF' } },
-  { id: 'villarreal', name: 'Villarreal CF', shortName: 'VIL', tmId: 1050, city: 'Villarreal', stadium: 'Estadio de la Cerámica', stadiumCapacity: 23500, reputation: 82, colors: { primary: '#FFE114', secondary: '#005CA7' } },
-  { id: 'real_sociedad', name: 'Real Sociedad', shortName: 'RSO', tmId: 681, city: 'San Sebastián', stadium: 'Reale Arena', stadiumCapacity: 39500, reputation: 83, colors: { primary: '#003DA5', secondary: '#FFFFFF' } },
-  { id: 'real_betis', name: 'Real Betis Balompié', shortName: 'BET', tmId: 150, city: 'Sevilla', stadium: 'Benito Villamarín', stadiumCapacity: 60720, reputation: 80, colors: { primary: '#00954C', secondary: '#FFFFFF' } },
-  { id: 'valencia', name: 'Valencia CF', shortName: 'VAL', tmId: 1049, city: 'Valencia', stadium: 'Mestalla', stadiumCapacity: 49430, reputation: 78, colors: { primary: '#FFFFFF', secondary: '#FF4500' } },
-  { id: 'girona', name: 'Girona FC', shortName: 'GIR', tmId: 12321, city: 'Girona', stadium: 'Montilivi', stadiumCapacity: 14624, reputation: 75, colors: { primary: '#CD2534', secondary: '#FFFFFF' } },
-  { id: 'celta', name: 'RC Celta de Vigo', shortName: 'CEL', tmId: 940, city: 'Vigo', stadium: 'Abanca-Balaídos', stadiumCapacity: 29000, reputation: 74, colors: { primary: '#8FBCE5', secondary: '#FFFFFF' } },
-  { id: 'sevilla', name: 'Sevilla FC', shortName: 'SEV', tmId: 368, city: 'Sevilla', stadium: 'Ramón Sánchez-Pizjuán', stadiumCapacity: 43883, reputation: 82, colors: { primary: '#FFFFFF', secondary: '#D4021D' } },
-  { id: 'rayo', name: 'Rayo Vallecano', shortName: 'RAY', tmId: 367, city: 'Madrid', stadium: 'Estadio de Vallecas', stadiumCapacity: 14708, reputation: 70, colors: { primary: '#FFFFFF', secondary: '#E53027' } },
-  { id: 'elche', name: 'Elche CF', shortName: 'ELC', tmId: 1531, city: 'Elche', stadium: 'Martínez Valero', stadiumCapacity: 33732, reputation: 68, colors: { primary: '#008000', secondary: '#FFFFFF' } },
-  { id: 'espanyol', name: 'RCD Espanyol', shortName: 'ESP', tmId: 714, city: 'Barcelona', stadium: 'RCDE Stadium', stadiumCapacity: 40500, reputation: 72, colors: { primary: '#007FC8', secondary: '#FFFFFF' } },
-  { id: 'osasuna', name: 'CA Osasuna', shortName: 'OSA', tmId: 331, city: 'Pamplona', stadium: 'El Sadar', stadiumCapacity: 23576, reputation: 73, colors: { primary: '#D91A21', secondary: '#000066' } },
-  { id: 'levante', name: 'Levante UD', shortName: 'LEV', tmId: 3368, city: 'Valencia', stadium: 'Ciutat de València', stadiumCapacity: 25354, reputation: 70, colors: { primary: '#003399', secondary: '#CC0000' } },
-  { id: 'mallorca', name: 'RCD Mallorca', shortName: 'MLL', tmId: 237, city: 'Palma', stadium: 'Mallorca Son Moix', stadiumCapacity: 23142, reputation: 72, colors: { primary: '#E30613', secondary: '#000000' } },
-  { id: 'getafe', name: 'Getafe CF', shortName: 'GET', tmId: 3709, city: 'Getafe', stadium: 'Coliseum Alfonso Pérez', stadiumCapacity: 17393, reputation: 72, colors: { primary: '#004FA3', secondary: '#FFFFFF' } },
-  { id: 'alaves', name: 'Deportivo Alavés', shortName: 'ALA', tmId: 1108, city: 'Vitoria-Gasteiz', stadium: 'Mendizorroza', stadiumCapacity: 19840, reputation: 68, colors: { primary: '#003DA5', secondary: '#FFFFFF' } },
-  { id: 'oviedo', name: 'Real Oviedo', shortName: 'OVI', tmId: 2497, city: 'Oviedo', stadium: 'Carlos Tartiere', stadiumCapacity: 30500, reputation: 65, colors: { primary: '#0066CC', secondary: '#FFFFFF' } }
-];
-
-// Mapeo de posiciones Transfermarkt -> Juego
-const POSITION_MAP = {
-  'Portero': 'GK',
-  'Defensa central': 'CB',
-  'Lateral izquierdo': 'LB',
-  'Lateral derecho': 'RB',
-  'Pivote': 'CDM',
-  'Mediocentro': 'CM',
-  'Mediocentro ofensivo': 'CAM',
-  'Extremo izquierdo': 'LW',
-  'Extremo derecho': 'RW',
-  'Delantero centro': 'ST',
-  'Mediapunta': 'CAM',
-  'Interior derecho': 'CM',
-  'Interior izquierdo': 'CM',
-  'Medio centro': 'CM',
-  'Medio centro defensivo': 'CDM',
-  'Mediocentro defensivo': 'CDM',
-  'Carrilero derecho': 'RB',
-  'Carrilero izquierdo': 'LB',
-  'Segundo delantero': 'ST'
+const LEAGUES = {
+  // España
+  laliga: { url: 'https://www.transfermarkt.es/laliga/startseite/wettbewerb/ES1', id: 'ES1', country: 'ES' },
+  laliga2: { url: 'https://www.transfermarkt.es/segunda-division/startseite/wettbewerb/ES2', id: 'ES2', country: 'ES' },
+  primeraRfefG1: { url: 'https://www.transfermarkt.es/primera-federacion-grupo-1/startseite/wettbewerb/E3G1', id: 'E3G1', country: 'ES' },
+  primeraRfefG2: { url: 'https://www.transfermarkt.es/primera-federacion-grupo-2/startseite/wettbewerb/E3G2', id: 'E3G2', country: 'ES' },
+  // Europa Top 5
+  premier: { url: 'https://www.transfermarkt.es/premier-league/startseite/wettbewerb/GB1', id: 'GB1', country: 'GB' },
+  bundesliga: { url: 'https://www.transfermarkt.es/bundesliga/startseite/wettbewerb/L1', id: 'L1', country: 'DE' },
+  seriea: { url: 'https://www.transfermarkt.es/serie-a/startseite/wettbewerb/IT1', id: 'IT1', country: 'IT' },
+  ligue1: { url: 'https://www.transfermarkt.es/ligue-1/startseite/wettbewerb/FR1', id: 'FR1', country: 'FR' }
 };
 
-// Calcular overall basado en valor de mercado y edad
-function calculateOverall(marketValue, age, position) {
-  // Valor en millones
-  const valueInM = marketValue / 1000000;
-  
-  // Base overall por valor (logarítmico para no escalar linealmente)
-  let baseOverall;
-  if (valueInM >= 150) baseOverall = 92;
-  else if (valueInM >= 100) baseOverall = 90;
-  else if (valueInM >= 70) baseOverall = 88;
-  else if (valueInM >= 50) baseOverall = 86;
-  else if (valueInM >= 35) baseOverall = 84;
-  else if (valueInM >= 25) baseOverall = 82;
-  else if (valueInM >= 15) baseOverall = 80;
-  else if (valueInM >= 10) baseOverall = 78;
-  else if (valueInM >= 6) baseOverall = 76;
-  else if (valueInM >= 3) baseOverall = 74;
-  else if (valueInM >= 1.5) baseOverall = 72;
-  else if (valueInM >= 0.5) baseOverall = 70;
-  else if (valueInM >= 0.2) baseOverall = 68;
-  else baseOverall = 66;
-  
-  // Ajuste por edad (jugadores en su prime valen más)
-  if (age <= 21) baseOverall += 1; // Jóvenes con potencial
-  else if (age >= 33) baseOverall -= 1; // Veteranos pueden bajar
-  else if (age >= 35) baseOverall -= 2;
-  
-  return Math.max(60, Math.min(94, baseOverall));
+// Ligas históricas de España (antes de Primera RFEF, era Segunda B)
+const HISTORICAL_LEAGUES = {
+  // Segunda División B existió hasta 2020-21, luego se creó Primera RFEF
+  segundaBG1: { url: 'https://www.transfermarkt.es/segunda-division-b-grupo-i-20-21-/startseite/wettbewerb/ES3A', id: 'ES3A', country: 'ES', maxSeason: 2020 },
+  segundaBG2: { url: 'https://www.transfermarkt.es/segunda-division-b-grupo-ii-20-21-/startseite/wettbewerb/ES3B', id: 'ES3B', country: 'ES', maxSeason: 2020 },
+  segundaBG3: { url: 'https://www.transfermarkt.es/segunda-division-b-grupo-iii-20-21-/startseite/wettbewerb/ES3C', id: 'ES3C', country: 'ES', maxSeason: 2020 },
+  segundaBG4: { url: 'https://www.transfermarkt.es/segunda-division-b-grupo-iv-20-21-/startseite/wettbewerb/ES3D', id: 'ES3D', country: 'ES', maxSeason: 2020 },
+};
+
+const HEADERS = {
+  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+  'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'Accept-Language': 'es-ES,es;q=0.9,en;q=0.8'
+};
+
+async function fetchPage(url) {
+  const response = await fetch(url, { headers: HEADERS });
+  if (!response.ok) throw new Error(`HTTP ${response.status}: ${url}`);
+  return response.text();
 }
 
-// Parsear valor de mercado (ej: "70,00 mill. €" -> 70000000)
-function parseMarketValue(valueStr) {
-  if (!valueStr || valueStr === '-') return 500000;
-  
-  const cleaned = valueStr.replace(/[€\s]/g, '').replace(',', '.');
-  
-  if (cleaned.includes('mil mill')) {
-    return parseFloat(cleaned) * 1000000000;
-  } else if (cleaned.includes('mill')) {
-    return parseFloat(cleaned) * 1000000;
-  } else if (cleaned.includes('mil')) {
-    return parseFloat(cleaned) * 1000;
-  }
-  
-  return parseFloat(cleaned) || 500000;
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-// Calcular salario basado en valor
-function calculateSalary(marketValue, age) {
-  // Salario anual aproximado = 10-15% del valor de mercado
-  const baseSalary = marketValue * 0.12;
-  // Dividido entre 52 semanas para salario semanal
-  const weeklySalary = baseSalary / 52;
-  // Ajuste por edad (veteranos cobran más de lo que su valor indica)
-  const ageMultiplier = age >= 32 ? 1.3 : (age >= 28 ? 1.1 : 1.0);
-  return Math.round(weeklySalary * ageMultiplier);
-}
-
-// Scrapear un equipo desde el texto markdown
-function parseTeamFromMarkdown(markdown, teamInfo) {
-  const players = [];
-  const lines = markdown.split('\n');
+// Extraer equipos de la página de liga
+function parseLeagueTeams(html, leagueId, season) {
+  const teams = [];
   
-  let currentNumber = null;
-  let currentName = null;
-  let currentPosition = null;
-  let currentAge = null;
-  let currentValue = null;
+  // Buscar filas de equipos en la tabla
+  const teamRows = html.match(/<tr[^>]*class="[^"]*odd[^"]*"[^>]*>[\s\S]*?<\/tr>|<tr[^>]*class="[^"]*even[^"]*"[^>]*>[\s\S]*?<\/tr>/gi) || [];
   
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i].trim();
+  for (const row of teamRows) {
+    // Extraer nombre y URL del equipo
+    const nameMatch = row.match(/href="\/([^\/]+)\/startseite\/verein\/(\d+)[^"]*"[^>]*>([^<]+)<\/a>/i);
+    if (!nameMatch) continue;
     
-    // Detectar número de camiseta (línea con solo número)
-    if (/^\d{1,2}$/.test(line)) {
-      // Si ya tenemos datos previos, guardar el jugador anterior
-      if (currentName && currentPosition) {
-        const pos = POSITION_MAP[currentPosition] || 'CM';
-        const value = parseMarketValue(currentValue);
-        const overall = calculateOverall(value, currentAge || 25, pos);
-        const salary = calculateSalary(value, currentAge || 25);
-        
-        players.push({
-          name: currentName,
-          position: pos,
-          overall,
-          age: currentAge || 25,
-          value,
-          salary
-        });
-      }
-      
-      currentNumber = parseInt(line);
-      currentName = null;
-      currentPosition = null;
-      currentAge = null;
-      currentValue = null;
-      continue;
-    }
+    const [, slug, teamId, name] = nameMatch;
     
-    // Detectar nombre del jugador (línea con enlace)
-    const nameMatch = line.match(/\[([^\]]+)\]\([^)]+\/profil\/spieler/);
-    if (nameMatch) {
-      currentName = nameMatch[1];
-      continue;
-    }
-    
-    // Detectar posición
-    const posMatch = Object.keys(POSITION_MAP).find(pos => line === pos);
-    if (posMatch) {
-      currentPosition = posMatch;
-      continue;
-    }
-    
-    // Detectar edad (número de 2 dígitos entre 16-45)
-    const ageMatch = line.match(/^(\d{2})$/);
-    if (ageMatch) {
-      const age = parseInt(ageMatch[1]);
-      if (age >= 16 && age <= 45) {
-        currentAge = age;
-      }
-      continue;
-    }
-    
-    // Detectar valor de mercado
-    const valueMatch = line.match(/\[([0-9,.]+ (?:mil )?mill\. €)\]/);
+    // Extraer valor de mercado
+    const valueMatch = row.match(/(\d+(?:,\d+)?)\s*(mil mill\.|mill\.)\s*€/i);
+    let marketValue = 0;
     if (valueMatch) {
-      currentValue = valueMatch[1];
-      continue;
+      const num = parseFloat(valueMatch[1].replace(',', '.'));
+      marketValue = valueMatch[2].includes('mil') ? num * 1000000000 : num * 1000000;
     }
-  }
-  
-  // Guardar el último jugador
-  if (currentName && currentPosition) {
-    const pos = POSITION_MAP[currentPosition] || 'CM';
-    const value = parseMarketValue(currentValue);
-    const overall = calculateOverall(value, currentAge || 25, pos);
-    const salary = calculateSalary(value, currentAge || 25);
     
-    players.push({
-      name: currentName,
-      position: pos,
-      overall,
-      age: currentAge || 25,
-      value,
-      salary
+    // URL de plantilla con temporada
+    const squadUrl = `https://www.transfermarkt.es/${slug}/kader/verein/${teamId}/saison_id/${season}`;
+    
+    teams.push({
+      id: `tm-${teamId}`,
+      name: name.trim(),
+      slug,
+      transfermarktId: teamId,
+      squadUrl,
+      marketValue,
+      league: leagueId,
+      season: `${season}-${(season + 1).toString().slice(-2)}`
     });
   }
   
-  return {
-    ...teamInfo,
-    budget: calculateBudget(players, teamInfo.reputation),
-    players
-  };
+  return teams;
 }
 
-// Calcular presupuesto del equipo
-function calculateBudget(players, reputation) {
-  const totalValue = players.reduce((sum, p) => sum + p.value, 0);
-  // Presupuesto es aproximadamente 30-50% del valor total
-  const budgetRatio = 0.3 + (reputation / 100) * 0.2;
-  return Math.round(totalValue * budgetRatio);
+// Extraer plantilla de un equipo
+function parseSquad(html, teamInfo) {
+  const players = [];
+  
+  // Buscar filas de jugadores
+  const playerRows = html.match(/<tr[^>]*class="[^"]*odd[^"]*"[^>]*>[\s\S]*?<\/tr>|<tr[^>]*class="[^"]*even[^"]*"[^>]*>[\s\S]*?<\/tr>/gi) || [];
+  
+  for (const row of playerRows) {
+    // Nombre del jugador
+    const nameMatch = row.match(/class="hauptlink"[^>]*>[\s\S]*?<a[^>]*>([^<]+)<\/a>/i);
+    if (!nameMatch) continue;
+    
+    // Posición
+    const posMatch = row.match(/<td[^>]*>([^<]*(?:Portero|Defensa|Centrocampista|Mediocentro|Extremo|Delantero|Lateral|Interior|Mediapunta|Pivote)[^<]*)<\/td>/i);
+    
+    // Edad
+    const ageMatch = row.match(/<td[^>]*class="[^"]*zentriert[^"]*"[^>]*>(\d{1,2})<\/td>/i);
+    
+    // Valor de mercado del jugador
+    const valueMatch = row.match(/(\d+(?:,\d+)?)\s*(mill\.|miles)\s*€/i);
+    let marketValue = 0;
+    if (valueMatch) {
+      const num = parseFloat(valueMatch[1].replace(',', '.'));
+      marketValue = valueMatch[2].includes('mill') ? num * 1000000 : num * 1000;
+    }
+    
+    // Nacionalidad
+    const nationMatch = row.match(/title="([^"]+)"[^>]*class="[^"]*flaggenrahmen[^"]*"/i);
+    
+    const name = nameMatch[1].trim();
+    const position = posMatch ? mapPosition(posMatch[1].trim()) : 'CM';
+    const age = ageMatch ? parseInt(ageMatch[1]) : 25;
+    
+    players.push({
+      name,
+      position,
+      age,
+      nationality: nationMatch ? nationMatch[1] : 'Desconocido',
+      marketValue,
+      overall: estimateOverall(marketValue, age, position)
+    });
+  }
+  
+  return players;
 }
 
-// Exportar para uso en consola
-console.log('📋 Configuración de Transfermarkt Scraper lista');
-console.log(`   ${LALIGA_TEAMS_TM.length} equipos de LaLiga configurados`);
-console.log('\nEjecuta desde Node con Puppeteer o usa el browser de Clawdbot para scrapear');
+function mapPosition(posEs) {
+  const pos = posEs.toLowerCase();
+  if (pos.includes('portero')) return 'GK';
+  if (pos.includes('central') || pos.includes('defensa')) return 'CB';
+  if (pos.includes('lateral')) return pos.includes('izquierdo') ? 'LB' : 'RB';
+  if (pos.includes('mediocentro') || pos.includes('pivote')) return 'CDM';
+  if (pos.includes('interior') || pos.includes('centrocampista')) return 'CM';
+  if (pos.includes('mediapunta')) return 'CAM';
+  if (pos.includes('extremo')) return pos.includes('izquierdo') ? 'LW' : 'RW';
+  if (pos.includes('delantero')) return 'ST';
+  return 'CM';
+}
 
-// Exportar funciones para uso externo
-export { 
-  LALIGA_TEAMS_TM, 
-  POSITION_MAP, 
-  parseTeamFromMarkdown, 
-  parseMarketValue, 
-  calculateOverall,
-  calculateSalary,
-  calculateBudget
-};
+function estimateOverall(marketValue, age, position) {
+  // Estimar overall basado en valor de mercado
+  if (marketValue >= 100000000) return Math.min(94, 88 + Math.floor(marketValue / 50000000));
+  if (marketValue >= 50000000) return 82 + Math.floor((marketValue - 50000000) / 10000000);
+  if (marketValue >= 20000000) return 78 + Math.floor((marketValue - 20000000) / 10000000);
+  if (marketValue >= 10000000) return 74 + Math.floor((marketValue - 10000000) / 5000000);
+  if (marketValue >= 5000000) return 70 + Math.floor((marketValue - 5000000) / 2500000);
+  if (marketValue >= 1000000) return 65 + Math.floor((marketValue - 1000000) / 1000000);
+  if (marketValue >= 100000) return 60 + Math.floor(marketValue / 250000);
+  // Sin valor de mercado - estimar por liga/nivel
+  return 58;
+}
+
+async function scrapeLeague(leagueKey, season) {
+  const league = LEAGUES[leagueKey] || HISTORICAL_LEAGUES[leagueKey];
+  if (!league) throw new Error(`Liga desconocida: ${leagueKey}`);
+  
+  // Verificar si la liga existe para esta temporada
+  if (league.maxSeason && season > league.maxSeason) {
+    console.log(`   ⚠️ ${leagueKey} no existe en temporada ${season}-${season+1}`);
+    return null;
+  }
+  if (league.minSeason && season < league.minSeason) {
+    console.log(`   ⚠️ ${leagueKey} no existe en temporada ${season}-${season+1}`);
+    return null;
+  }
+  
+  // URL con temporada
+  const leagueUrl = `${league.url}/plus/?saison_id=${season}`;
+  console.log(`\n📥 Scrapeando ${leagueKey} (${season}-${(season+1).toString().slice(-2)})...`);
+  
+  const html = await fetchPage(leagueUrl);
+  const teams = parseLeagueTeams(html, leagueKey, season);
+  
+  if (teams.length === 0) {
+    console.log(`   ⚠️ No se encontraron equipos (¿temporada no disponible?)`);
+    return null;
+  }
+  
+  console.log(`   Encontrados ${teams.length} equipos`);
+  
+  // Scrapear plantilla de cada equipo (con delay para no saturar)
+  for (let i = 0; i < teams.length; i++) {
+    const team = teams[i];
+    console.log(`   [${i+1}/${teams.length}] ${team.name}...`);
+    
+    try {
+      await sleep(1500); // Respetar rate limit
+      const squadHtml = await fetchPage(team.squadUrl);
+      team.players = parseSquad(squadHtml, team);
+      team.avgOverall = team.players.length > 0 
+        ? Math.round(team.players.reduce((s, p) => s + p.overall, 0) / team.players.length)
+        : 65;
+      console.log(`      ✓ ${team.players.length} jugadores, avg ${team.avgOverall}`);
+    } catch (err) {
+      console.log(`      ✗ Error: ${err.message}`);
+      team.players = [];
+      team.avgOverall = 65;
+    }
+  }
+  
+  return teams;
+}
+
+function parseArgs(args) {
+  const result = { leagues: [], season: CURRENT_SEASON };
+  
+  for (let i = 0; i < args.length; i++) {
+    if (args[i] === '--season' && args[i + 1]) {
+      result.season = parseInt(args[i + 1]);
+      i++;
+    } else if (!args[i].startsWith('--')) {
+      result.leagues.push(args[i]);
+    }
+  }
+  
+  if (result.leagues.length === 0) {
+    result.leagues = Object.keys(LEAGUES);
+  }
+  
+  return result;
+}
+
+async function main() {
+  console.log('🏟️ Transfermarkt Scraper para PC Fútbol Web');
+  console.log('==========================================\n');
+  
+  const { leagues, season } = parseArgs(process.argv.slice(2));
+  const seasonStr = `${season}-${(season + 1).toString().slice(-2)}`;
+  
+  console.log(`📅 Temporada: ${seasonStr}`);
+  console.log(`🏆 Ligas: ${leagues.join(', ')}\n`);
+  
+  // Crear directorio de salida por temporada
+  const outputDir = path.join(process.cwd(), 'scraped-data', seasonStr);
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true });
+  }
+  
+  const summary = { season: seasonStr, leagues: {}, scrapedAt: new Date().toISOString() };
+  
+  for (const leagueKey of leagues) {
+    try {
+      const teams = await scrapeLeague(leagueKey, season);
+      
+      if (!teams) continue;
+      
+      // Guardar JSON
+      const outFile = path.join(outputDir, `${leagueKey}.json`);
+      fs.writeFileSync(outFile, JSON.stringify(teams, null, 2));
+      console.log(`\n   💾 Guardado: ${outFile}`);
+      
+      // Resumen
+      const totalPlayers = teams.reduce((s, t) => s + t.players.length, 0);
+      console.log(`   📊 ${teams.length} equipos, ${totalPlayers} jugadores total`);
+      
+      summary.leagues[leagueKey] = { teams: teams.length, players: totalPlayers };
+      
+    } catch (err) {
+      console.error(`\n❌ Error en ${leagueKey}:`, err.message);
+    }
+    
+    await sleep(3000); // Pausa entre ligas
+  }
+  
+  // Guardar resumen
+  const summaryFile = path.join(outputDir, '_summary.json');
+  fs.writeFileSync(summaryFile, JSON.stringify(summary, null, 2));
+  
+  console.log('\n==========================================');
+  console.log(`✅ Scraping ${seasonStr} completado!`);
+  console.log(`📁 Datos guardados en: ${outputDir}`);
+}
+
+main().catch(console.error);

@@ -185,7 +185,7 @@ export default function MatchDay({ onComplete }) {
       });
     });
     
-    dispatch({ type: 'HEAL_INJURIES' });
+    // HEAL_INJURIES se llama en ADVANCE_WEEK, no aquí
     onComplete();
   };
   
@@ -300,15 +300,26 @@ export default function MatchDay({ onComplete }) {
             </div>
             
             <div className="match-day__score">
-              <div className="team">
-                <span className="name">{isHome ? state.team.shortName : opponent.shortName}</span>
-                <span className="score">{matchResult.homeScore}</span>
-              </div>
-              <span className="separator">-</span>
-              <div className="team">
-                <span className="score">{matchResult.awayScore}</span>
-                <span className="name">{!isHome ? state.team.shortName : opponent.shortName}</span>
-              </div>
+              {(() => {
+                // Calcular marcador según los eventos mostrados hasta ahora
+                const visibleEvents = matchResult.events.slice(0, eventIndex);
+                const homeGoals = visibleEvents.filter(e => e.type === 'goal' && e.team === 'home').length;
+                const awayGoals = visibleEvents.filter(e => e.type === 'goal' && e.team === 'away').length;
+                
+                return (
+                  <>
+                    <div className="team">
+                      <span className="name">{isHome ? state.team.shortName : opponent.shortName}</span>
+                      <span className="score">{homeGoals}</span>
+                    </div>
+                    <span className="separator">-</span>
+                    <div className="team">
+                      <span className="score">{awayGoals}</span>
+                      <span className="name">{!isHome ? state.team.shortName : opponent.shortName}</span>
+                    </div>
+                  </>
+                );
+              })()}
             </div>
             
             <div className="match-day__live-stats">

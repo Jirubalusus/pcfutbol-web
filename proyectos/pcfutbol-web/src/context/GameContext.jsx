@@ -5,6 +5,11 @@ import { LALIGA_TEAMS } from '../data/teamsFirestore';
 
 const GameContext = createContext();
 
+// Check if we should use local storage (dev mode or ?local=true)
+const USE_LOCAL_STORAGE = 
+  window.location.search.includes('local=true') || 
+  window.location.hostname === 'localhost';
+
 const initialState = {
   // User & Save
   saveId: null,
@@ -20,6 +25,8 @@ const initialState = {
   team: null,
   formation: '4-3-3',
   tactic: 'balanced',
+  lineup: {}, // Alineación actual: { slotId: playerName }
+  convocados: [], // Lista de nombres de jugadores convocados
   
   // Finances
   money: 0,
@@ -130,12 +137,25 @@ function gameReducer(state, action) {
       // Calculate weekly salary expenses
       const salaryExpenses = state.team?.players?.reduce((sum, p) => sum + (p.salary || 0), 0) || 0;
       
+      // Heal injuries - reduce weeks left by 1
+      const playersWithHealedInjuries = state.team?.players?.map(p => {
+        if (p.injured && p.injuryWeeksLeft > 0) {
+          const newWeeksLeft = p.injuryWeeksLeft - 1;
+          if (newWeeksLeft <= 0) {
+            return { ...p, injured: false, injuryWeeksLeft: 0, injuryType: null };
+          }
+          return { ...p, injuryWeeksLeft: newWeeksLeft };
+        }
+        return p;
+      }) || [];
+      
       return { 
         ...state, 
         currentWeek: state.currentWeek + 1,
         money: state.money + facilityIncome - salaryExpenses,
         weeklyIncome: facilityIncome,
-        weeklyExpenses: salaryExpenses
+        weeklyExpenses: salaryExpenses,
+        team: state.team ? { ...state.team, players: playersWithHealedInjuries } : null
       };
     }
     
@@ -150,6 +170,12 @@ function gameReducer(state, action) {
     
     case 'SET_TACTIC':
       return { ...state, tactic: action.payload };
+    
+    case 'SET_LINEUP':
+      return { ...state, lineup: action.payload };
+    
+    case 'SET_CONVOCADOS':
+      return { ...state, convocados: action.payload };
     
     case 'ADD_TRANSFER_OFFER':
       return {
@@ -398,6 +424,7 @@ function gameReducer(state, action) {
     
     case 'RESET_GAME':
       localStorage.removeItem('pcfutbol_saveId');
+      localStorage.removeItem('pcfutbol_local_save');
       return {
         ...initialState,
         loaded: true,
@@ -417,23 +444,52 @@ export function GameProvider({ children }) {
     return 'save_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
   };
   
-  // Save game to Firestore
+  // Save game - uses localStorage in dev mode, Firebase in production
   const saveGame = async () => {
     if (!state.gameStarted) return;
     
-    const saveId = state.saveId || generateSaveId();
     const saveData = {
       ...state,
-      saveId,
       lastSaved: new Date().toISOString()
     };
     
+    if (USE_LOCAL_STORAGE) {
+      // Local storage mode
+      try {
+        localStorage.setItem('pcfutbol_local_save', JSON.stringify(saveData));
+        console.log('💾 Game saved to localStorage!');
+      } catch (error) {
+        console.error('Error saving to localStorage:', error);
+      }
+    } else {
+      // Firebase mode
+      const saveId = state.saveId || generateSaveId();
+      saveData.saveId = saveId;
+      
+      try {
+        await setDoc(doc(db, 'saves', saveId), saveData);
+        localStorage.setItem('pcfutbol_saveId', saveId);
+        console.log('☁️ Game saved to Firebase!');
+      } catch (error) {
+        console.error('Error saving game:', error);
+      }
+    }
+  };
+  
+  // Load game from localStorage
+  const loadLocalSave = () => {
     try {
-      await setDoc(doc(db, 'saves', saveId), saveData);
-      localStorage.setItem('pcfutbol_saveId', saveId);
-      console.log('Game saved!');
+      const saved = localStorage.getItem('pcfutbol_local_save');
+      if (saved) {
+        const data = JSON.parse(saved);
+        dispatch({ type: 'LOAD_SAVE', payload: data });
+        console.log('💾 Game loaded from localStorage!');
+        return true;
+      }
+      return false;
     } catch (error) {
-      console.error('Error saving game:', error);
+      console.error('Error loading from localStorage:', error);
+      return false;
     }
   };
   
@@ -458,15 +514,23 @@ export function GameProvider({ children }) {
   useEffect(() => {
     const loadInitialState = async () => {
       try {
-        const existingSaveId = localStorage.getItem('pcfutbol_saveId');
-        if (existingSaveId) {
-          const loaded = await loadGame(existingSaveId);
+        if (USE_LOCAL_STORAGE) {
+          // Try to load from localStorage first
+          const loaded = loadLocalSave();
           if (!loaded) {
-            // Si no se pudo cargar, ir al menú
             dispatch({ type: 'LOAD_SAVE', payload: { loaded: true } });
           }
         } else {
-          dispatch({ type: 'LOAD_SAVE', payload: { loaded: true } });
+          // Try Firebase
+          const existingSaveId = localStorage.getItem('pcfutbol_saveId');
+          if (existingSaveId) {
+            const loaded = await loadGame(existingSaveId);
+            if (!loaded) {
+              dispatch({ type: 'LOAD_SAVE', payload: { loaded: true } });
+            }
+          } else {
+            dispatch({ type: 'LOAD_SAVE', payload: { loaded: true } });
+          }
         }
       } catch (error) {
         console.error('Error loading initial state:', error);
@@ -487,13 +551,21 @@ export function GameProvider({ children }) {
     return () => clearTimeout(timeout);
   }, []);
   
-  // Auto-save every 5 minutes
+  // Auto-save every 2 minutes in local mode, 5 in Firebase
   useEffect(() => {
     if (state.gameStarted) {
-      const interval = setInterval(saveGame, 5 * 60 * 1000);
+      const interval = setInterval(saveGame, USE_LOCAL_STORAGE ? 2 * 60 * 1000 : 5 * 60 * 1000);
       return () => clearInterval(interval);
     }
   }, [state.gameStarted]);
+  
+  // Save on state changes in local mode (debounced)
+  useEffect(() => {
+    if (USE_LOCAL_STORAGE && state.gameStarted) {
+      const timeout = setTimeout(saveGame, 1000);
+      return () => clearTimeout(timeout);
+    }
+  }, [state.currentWeek, state.money, state.team]);
   
   const value = {
     state,
