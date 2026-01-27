@@ -828,4 +828,40 @@ export const teamsArray = Object.entries(teams).map(([id, team]) => ({
   ...team
 }));
 
+// ============================================================
+// EXPORTS PARA COMPONENTES (compatibilidad)
+// ============================================================
+
+// La Liga (Primera División)
+export const LALIGA_TEAMS = teamsArray.filter(t => t.league === 'laliga' || t.division === 1);
+
+// Segunda División (placeholder - usar teams-segunda.js para datos completos)
+export const SEGUNDA_TEAMS = [];
+
+// Primera RFEF y Segunda RFEF (placeholder)
+export const PRIMERA_RFEF_TEAMS = [];
+export const SEGUNDA_RFEF_TEAMS = [];
+
+// Ligas europeas (placeholder - usar archivos específicos)
+export const PREMIER_LEAGUE_TEAMS = [];
+export const LIGUE1_TEAMS = [];
+export const BUNDESLIGA_TEAMS = [];
+export const SERIE_A_TEAMS = [];
+export const EREDIVISIE_TEAMS = [];
+export const PRIMEIRA_LIGA_TEAMS = [];
+
+// Definición de ligas
+export const LEAGUES = {
+  laliga: { id: 'laliga', name: 'La Liga', country: 'spain', level: 1 },
+  segunda: { id: 'segunda', name: 'La Liga 2', country: 'spain', level: 2 },
+  primeraRFEF: { id: 'primeraRFEF', name: 'Primera RFEF', country: 'spain', level: 3 },
+  segundaRFEF: { id: 'segundaRFEF', name: 'Segunda RFEF', country: 'spain', level: 4 },
+  premierLeague: { id: 'premierLeague', name: 'Premier League', country: 'england', level: 1 },
+  bundesliga: { id: 'bundesliga', name: 'Bundesliga', country: 'germany', level: 1 },
+  serieA: { id: 'serieA', name: 'Serie A', country: 'italy', level: 1 },
+  ligue1: { id: 'ligue1', name: 'Ligue 1', country: 'france', level: 1 },
+  eredivisie: { id: 'eredivisie', name: 'Eredivisie', country: 'netherlands', level: 1 },
+  primeiraLiga: { id: 'primeiraLiga', name: 'Primeira Liga', country: 'portugal', level: 1 }
+};
+
 export default teams;
