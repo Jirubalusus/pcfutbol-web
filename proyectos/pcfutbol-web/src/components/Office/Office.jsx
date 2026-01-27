@@ -14,6 +14,7 @@ import Stadium from '../Stadium/Stadium';
 import Facilities from '../Facilities/Facilities';
 import Messages from '../Messages/Messages';
 import MatchDay from '../MatchDay/MatchDay';
+import Training from '../Training/Training';
 import './Office.scss';
 
 export default function Office() {
@@ -43,12 +44,14 @@ export default function Office() {
     } else {
       // No player match, simulate other matches and advance
       simulateOtherMatches();
+      dispatch({ type: 'APPLY_TRAINING' }); // Apply weekly training
       dispatch({ type: 'ADVANCE_WEEK' });
     }
   };
   
   const handleMatchComplete = () => {
     setShowMatch(false);
+    dispatch({ type: 'APPLY_TRAINING' }); // Apply weekly training
     dispatch({ type: 'ADVANCE_WEEK' });
   };
   
@@ -85,6 +88,7 @@ export default function Office() {
       // Simulate all matches including player's
       simulatePlayerMatch();
       simulateOtherMatches();
+      dispatch({ type: 'APPLY_TRAINING' }); // Apply weekly training
       dispatch({ type: 'ADVANCE_WEEK' });
       dispatch({ type: 'HEAL_INJURIES' });
     }
@@ -153,6 +157,8 @@ export default function Office() {
         return <Squad />;
       case 'formation':
         return <Formation />;
+      case 'training':
+        return <Training />;
       case 'calendar':
         return <Calendar />;
       case 'table':

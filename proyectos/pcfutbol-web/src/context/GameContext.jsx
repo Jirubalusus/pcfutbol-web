@@ -69,6 +69,13 @@ const initialState = {
     sfxVolume: 80
   },
   
+  // Training
+  training: {
+    type: 'balanced',
+    intensity: 'normal',
+    specialPlayers: []
+  },
+  
   // UI State
   currentScreen: 'main_menu'
 };
@@ -278,6 +285,93 @@ function gameReducer(state, action) {
           ...action.payload
         }
       };
+    
+    case 'SET_TRAINING':
+      return {
+        ...state,
+        training: {
+          ...state.training,
+          ...action.payload
+        }
+      };
+    
+    case 'APPLY_TRAINING': {
+      // Aplicar efectos del entrenamiento a los jugadores
+      if (!state.team?.players || !state.training) return state;
+      
+      const trainingType = state.training.type || 'balanced';
+      const intensity = state.training.intensity || 'normal';
+      const trainingFacilityLevel = state.facilities?.training || 0;
+      
+      // Modificadores
+      const intensityModifiers = { light: 0.5, normal: 1.0, intense: 1.5 };
+      const facilityBonuses = [0, 0.1, 0.2, 0.35];
+      const injuryRisks = { light: 0.02, normal: 0.05, intense: 0.12 };
+      
+      const intensityMod = intensityModifiers[intensity] || 1.0;
+      const facilityBonus = facilityBonuses[trainingFacilityLevel] || 0;
+      const injuryRisk = injuryRisks[intensity] || 0.05;
+      
+      const trainedPlayers = state.team.players.map(player => {
+        // No entrenar jugadores lesionados
+        if (player.injured) return player;
+        
+        // Factor de edad
+        const ageFactor = player.age <= 21 ? 1.5 : 
+                          player.age <= 25 ? 1.2 : 
+                          player.age <= 29 ? 1.0 : 
+                          player.age <= 33 ? 0.6 : 0.3;
+        
+        // Factor de nivel
+        const levelFactor = player.overall < 70 ? 1.3 :
+                            player.overall < 75 ? 1.1 :
+                            player.overall < 80 ? 1.0 :
+                            player.overall < 85 ? 0.8 : 0.5;
+        
+        // Progresión base
+        const baseProgress = 0.05;
+        const totalProgress = baseProgress * intensityMod * ageFactor * levelFactor * (1 + facilityBonus);
+        
+        // Aplicar progresión (acumulativa)
+        const currentProgress = player.trainingProgress || 0;
+        const newProgress = currentProgress + totalProgress;
+        
+        // Subir media si acumula +1.0
+        let newOverall = player.overall;
+        let remainingProgress = newProgress;
+        
+        if (newProgress >= 1.0) {
+          const pointsToAdd = Math.floor(newProgress);
+          newOverall = Math.min(99, player.overall + pointsToAdd);
+          remainingProgress = newProgress - pointsToAdd;
+        }
+        
+        // Comprobar lesión por entrenamiento
+        const gotInjured = Math.random() < injuryRisk;
+        
+        if (gotInjured && !player.injured) {
+          return {
+            ...player,
+            overall: newOverall,
+            trainingProgress: remainingProgress,
+            injured: true,
+            injuryWeeksLeft: 1 + Math.floor(Math.random() * 2),
+            injuryType: 'training'
+          };
+        }
+        
+        return {
+          ...player,
+          overall: newOverall,
+          trainingProgress: remainingProgress
+        };
+      });
+      
+      return {
+        ...state,
+        team: { ...state.team, players: trainedPlayers }
+      };
+    }
     
     case 'RESET_GAME':
       localStorage.removeItem('pcfutbol_saveId');
