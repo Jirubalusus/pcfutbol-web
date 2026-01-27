@@ -19,26 +19,153 @@ const HEADERS = {
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-// League configurations
+// Seasons to scrape (saison_id in Transfermarkt = first year of season)
+// 2025 = 2025/26, 2024 = 2024/25, etc.
+const SEASONS = [2025, 2024, 2023, 2022, 2021];
+
+// League configurations - Top European leagues
 const LEAGUES = {
+  // ========== ESPAÑA ==========
+  laliga: {
+    name: 'LaLiga',
+    country: 'Spain',
+    startYear: 1928,
+    groups: [
+      { id: 'ES1', name: 'LaLiga', baseUrl: 'https://www.transfermarkt.es/laliga/startseite/wettbewerb/ES1' },
+    ]
+  },
+  laliga2: {
+    name: 'LaLiga 2',
+    country: 'Spain',
+    startYear: 1928,
+    groups: [
+      { id: 'ES2', name: 'LaLiga 2', baseUrl: 'https://www.transfermarkt.es/laliga2/startseite/wettbewerb/ES2' },
+    ]
+  },
   primeraFederacion: {
     name: 'Primera Federación',
+    country: 'Spain',
+    startYear: 2021,
     groups: [
-      { id: 'E3G1', name: 'Grupo 1', url: 'https://www.transfermarkt.es/primera-federacion-grupo-1/startseite/wettbewerb/E3G1' },
-      { id: 'E3G2', name: 'Grupo 2', url: 'https://www.transfermarkt.es/primera-federacion-grupo-2/startseite/wettbewerb/E3G2' },
+      { id: 'E3G1', name: 'Grupo 1', baseUrl: 'https://www.transfermarkt.es/primera-federacion-grupo-1/startseite/wettbewerb/E3G1' },
+      { id: 'E3G2', name: 'Grupo 2', baseUrl: 'https://www.transfermarkt.es/primera-federacion-grupo-2/startseite/wettbewerb/E3G2' },
     ]
   },
   segundaFederacion: {
     name: 'Segunda Federación',
+    country: 'Spain',
+    startYear: 2021,
     groups: [
-      { id: 'E4G1', name: 'Grupo 1', url: 'https://www.transfermarkt.es/segunda-federacion-grupo-1/startseite/wettbewerb/E4G1' },
-      { id: 'E4G2', name: 'Grupo 2', url: 'https://www.transfermarkt.es/segunda-federacion-grupo-2/startseite/wettbewerb/E4G2' },
-      { id: 'E4G3', name: 'Grupo 3', url: 'https://www.transfermarkt.es/segunda-federacion-grupo-3/startseite/wettbewerb/E4G3' },
-      { id: 'E4G4', name: 'Grupo 4', url: 'https://www.transfermarkt.es/segunda-federacion-grupo-4/startseite/wettbewerb/E4G4' },
-      { id: 'E4G5', name: 'Grupo 5', url: 'https://www.transfermarkt.es/segunda-federacion-grupo-5/startseite/wettbewerb/E4G5' },
+      { id: 'E4G1', name: 'Grupo 1', baseUrl: 'https://www.transfermarkt.es/segunda-federacion-grupo-1/startseite/wettbewerb/E4G1' },
+      { id: 'E4G2', name: 'Grupo 2', baseUrl: 'https://www.transfermarkt.es/segunda-federacion-grupo-2/startseite/wettbewerb/E4G2' },
+      { id: 'E4G3', name: 'Grupo 3', baseUrl: 'https://www.transfermarkt.es/segunda-federacion-grupo-3/startseite/wettbewerb/E4G3' },
+      { id: 'E4G4', name: 'Grupo 4', baseUrl: 'https://www.transfermarkt.es/segunda-federacion-grupo-4/startseite/wettbewerb/E4G4' },
+      { id: 'E4G5', name: 'Grupo 5', baseUrl: 'https://www.transfermarkt.es/segunda-federacion-grupo-5/startseite/wettbewerb/E4G5' },
     ]
-  }
+  },
+
+  // ========== ENGLAND ==========
+  premierLeague: {
+    name: 'Premier League',
+    country: 'England',
+    startYear: 1992,
+    groups: [
+      { id: 'GB1', name: 'Premier League', baseUrl: 'https://www.transfermarkt.es/premier-league/startseite/wettbewerb/GB1' },
+    ]
+  },
+  championship: {
+    name: 'Championship',
+    country: 'England',
+    startYear: 2004,
+    groups: [
+      { id: 'GB2', name: 'Championship', baseUrl: 'https://www.transfermarkt.es/championship/startseite/wettbewerb/GB2' },
+    ]
+  },
+  leagueOne: {
+    name: 'League One',
+    country: 'England',
+    startYear: 2004,
+    groups: [
+      { id: 'GB3', name: 'League One', baseUrl: 'https://www.transfermarkt.es/league-one/startseite/wettbewerb/GB3' },
+    ]
+  },
+  leagueTwo: {
+    name: 'League Two',
+    country: 'England',
+    startYear: 2004,
+    groups: [
+      { id: 'GB4', name: 'League Two', baseUrl: 'https://www.transfermarkt.es/league-two/startseite/wettbewerb/GB4' },
+    ]
+  },
+
+  // ========== GERMANY ==========
+  bundesliga: {
+    name: 'Bundesliga',
+    country: 'Germany',
+    startYear: 1963,
+    groups: [
+      { id: 'L1', name: 'Bundesliga', baseUrl: 'https://www.transfermarkt.es/bundesliga/startseite/wettbewerb/L1' },
+    ]
+  },
+  bundesliga2: {
+    name: '2. Bundesliga',
+    country: 'Germany',
+    startYear: 1974,
+    groups: [
+      { id: 'L2', name: '2. Bundesliga', baseUrl: 'https://www.transfermarkt.es/2-bundesliga/startseite/wettbewerb/L2' },
+    ]
+  },
+  liga3: {
+    name: '3. Liga',
+    country: 'Germany',
+    startYear: 2008,
+    groups: [
+      { id: 'L3', name: '3. Liga', baseUrl: 'https://www.transfermarkt.es/3-liga/startseite/wettbewerb/L3' },
+    ]
+  },
+
+  // ========== ITALY ==========
+  serieA: {
+    name: 'Serie A',
+    country: 'Italy',
+    startYear: 1929,
+    groups: [
+      { id: 'IT1', name: 'Serie A', baseUrl: 'https://www.transfermarkt.es/serie-a/startseite/wettbewerb/IT1' },
+    ]
+  },
+  serieB: {
+    name: 'Serie B',
+    country: 'Italy',
+    startYear: 1929,
+    groups: [
+      { id: 'IT2', name: 'Serie B', baseUrl: 'https://www.transfermarkt.es/serie-b/startseite/wettbewerb/IT2' },
+    ]
+  },
+
+  // ========== FRANCE ==========
+  ligue1: {
+    name: 'Ligue 1',
+    country: 'France',
+    startYear: 1932,
+    groups: [
+      { id: 'FR1', name: 'Ligue 1', baseUrl: 'https://www.transfermarkt.es/ligue-1/startseite/wettbewerb/FR1' },
+    ]
+  },
+  ligue2: {
+    name: 'Ligue 2',
+    country: 'France',
+    startYear: 1933,
+    groups: [
+      { id: 'FR2', name: 'Ligue 2', baseUrl: 'https://www.transfermarkt.es/ligue-2/startseite/wettbewerb/FR2' },
+    ]
+  },
 };
+
+// Build URL with season parameter
+function buildSeasonUrl(baseUrl, seasonId) {
+  // Transfermarkt URLs: /startseite/wettbewerb/XXX → /startseite/wettbewerb/XXX/plus/?saison_id=YYYY
+  return `${baseUrl}/plus/?saison_id=${seasonId}`;
+}
 
 async function fetchPage(url) {
   console.log(`  Fetching: ${url}`);
@@ -49,8 +176,9 @@ async function fetchPage(url) {
   return await response.text();
 }
 
-async function scrapeTeamsFromGroup(groupUrl) {
-  const html = await fetchPage(groupUrl);
+async function scrapeTeamsFromGroup(groupUrl, seasonId) {
+  const url = buildSeasonUrl(groupUrl, seasonId);
+  const html = await fetchPage(url);
   const $ = cheerio.load(html);
   const teams = [];
   
@@ -80,6 +208,7 @@ async function scrapeTeamsFromGroup(groupUrl) {
           avgAge,
           foreigners,
           marketValue,
+          seasonId,
           squadUrl: `https://www.transfermarkt.es${teamHref.replace('/startseite/', '/kader/')}`
         });
       }
@@ -89,8 +218,8 @@ async function scrapeTeamsFromGroup(groupUrl) {
   return teams;
 }
 
-async function scrapeSquad(team) {
-  const squadUrl = `https://www.transfermarkt.es/${team.name.toLowerCase().replace(/\s+/g, '-')}/kader/verein/${team.id}/saison_id/2025`;
+async function scrapeSquad(team, seasonId) {
+  const squadUrl = `https://www.transfermarkt.es/${team.name.toLowerCase().replace(/\s+/g, '-')}/kader/verein/${team.id}/saison_id/${seasonId}`;
   
   try {
     const html = await fetchPage(squadUrl);
@@ -190,88 +319,147 @@ function parseMarketValue(valueStr) {
 }
 
 async function main() {
-  console.log('🏈 Football Manager Scraper\n');
+  console.log('⚽ Football Manager Scraper - Multi-Season\n');
+  console.log(`📅 Seasons to scrape: ${SEASONS.map(s => `${s}/${s+1}`).join(', ')}\n`);
   
-  const allData = {
-    leagues: {},
-    teams: {},
-    players: {},
+  // Master data structure - organized by season
+  const masterData = {
+    seasons: {},
     scrapedAt: new Date().toISOString()
   };
   
-  for (const [leagueKey, league] of Object.entries(LEAGUES)) {
-    console.log(`\n📋 ${league.name}`);
-    allData.leagues[leagueKey] = {
-      name: league.name,
-      groups: {}
+  for (const seasonId of SEASONS) {
+    const seasonLabel = `${seasonId}/${seasonId + 1}`;
+    console.log(`\n${'='.repeat(60)}`);
+    console.log(`🗓️  SEASON ${seasonLabel}`);
+    console.log(`${'='.repeat(60)}`);
+    
+    const seasonData = {
+      seasonId,
+      seasonLabel,
+      leagues: {},
+      teams: {},
+      players: {},
+      scrapedAt: new Date().toISOString()
     };
     
-    for (const group of league.groups) {
-      console.log(`\n  📁 ${group.name}`);
-      
-      try {
-        const teams = await scrapeTeamsFromGroup(group.url);
-        console.log(`    Found ${teams.length} teams`);
-        
-        allData.leagues[leagueKey].groups[group.id] = {
-          name: group.name,
-          teamIds: teams.map(t => t.id)
-        };
-        
-        for (const team of teams) {
-          console.log(`\n    🏟️  ${team.name}`);
-          
-          // Store team
-          allData.teams[team.id] = {
-            id: team.id,
-            name: team.name,
-            league: leagueKey,
-            group: group.id,
-            marketValue: parseMarketValue(team.marketValue),
-            marketValueDisplay: team.marketValue,
-            playerIds: []
-          };
-          
-          // Scrape players
-          await delay(1500); // Be nice to the server
-          const players = await scrapeSquad(team);
-          console.log(`      ${players.length} players`);
-          
-          for (const player of players) {
-            allData.players[player.id] = {
-              ...player,
-              teamId: team.id,
-              marketValueNum: parseMarketValue(player.marketValue)
-            };
-            allData.teams[team.id].playerIds.push(player.id);
-          }
-        }
-        
-        // Save progress after each group
-        fs.writeFileSync(
-          path.join(DATA_DIR, 'football-data.json'),
-          JSON.stringify(allData, null, 2)
-        );
-        console.log(`\n    💾 Progress saved`);
-        
-      } catch (error) {
-        console.error(`    Error with ${group.name}: ${error.message}`);
+    for (const [leagueKey, league] of Object.entries(LEAGUES)) {
+      // Skip seasons before the league existed
+      if (seasonId < league.startYear) {
+        console.log(`\n⏭️  Skipping ${league.name} (didn't exist in ${seasonLabel})`);
+        continue;
       }
       
-      await delay(2000);
+      console.log(`\n📋 ${league.name}`);
+      seasonData.leagues[leagueKey] = {
+        name: league.name,
+        groups: {}
+      };
+      
+      for (const group of league.groups) {
+        console.log(`\n  📁 ${group.name}`);
+        
+        try {
+          const teams = await scrapeTeamsFromGroup(group.baseUrl, seasonId);
+          console.log(`    Found ${teams.length} teams`);
+          
+          if (teams.length === 0) {
+            console.log(`    ⚠️  No teams found, skipping group`);
+            continue;
+          }
+          
+          seasonData.leagues[leagueKey].groups[group.id] = {
+            name: group.name,
+            teamIds: teams.map(t => t.id)
+          };
+          
+          for (const team of teams) {
+            console.log(`\n    🏟️  ${team.name}`);
+            
+            // Unique key for team in this season
+            const teamSeasonKey = `${team.id}_${seasonId}`;
+            
+            // Store team
+            seasonData.teams[teamSeasonKey] = {
+              id: team.id,
+              name: team.name,
+              league: leagueKey,
+              group: group.id,
+              seasonId,
+              marketValue: parseMarketValue(team.marketValue),
+              marketValueDisplay: team.marketValue,
+              squadSize: team.squadSize,
+              avgAge: team.avgAge,
+              foreigners: team.foreigners,
+              playerIds: []
+            };
+            
+            // Scrape players
+            await delay(1500); // Be nice to the server
+            const players = await scrapeSquad(team, seasonId);
+            console.log(`      ${players.length} players`);
+            
+            for (const player of players) {
+              // Unique key for player in this season (player can be in multiple seasons)
+              const playerSeasonKey = `${player.id}_${seasonId}`;
+              
+              seasonData.players[playerSeasonKey] = {
+                ...player,
+                seasonId,
+                teamId: team.id,
+                teamSeasonKey,
+                marketValueNum: parseMarketValue(player.marketValue)
+              };
+              seasonData.teams[teamSeasonKey].playerIds.push(playerSeasonKey);
+            }
+          }
+          
+        } catch (error) {
+          console.error(`    ❌ Error with ${group.name}: ${error.message}`);
+        }
+        
+        await delay(2000);
+      }
     }
+    
+    // Store season data
+    masterData.seasons[seasonId] = seasonData;
+    
+    // Save progress after each season (individual file)
+    const seasonFileName = `football-data-${seasonId}.json`;
+    fs.writeFileSync(
+      path.join(DATA_DIR, seasonFileName),
+      JSON.stringify(seasonData, null, 2)
+    );
+    console.log(`\n💾 Season ${seasonLabel} saved to ${seasonFileName}`);
+    
+    // Also save master file with all seasons so far
+    fs.writeFileSync(
+      path.join(DATA_DIR, 'football-data-all.json'),
+      JSON.stringify(masterData, null, 2)
+    );
   }
   
-  // Final save
-  fs.writeFileSync(
-    path.join(DATA_DIR, 'football-data.json'),
-    JSON.stringify(allData, null, 2)
-  );
+  // Generate summary
+  console.log(`\n\n${'='.repeat(60)}`);
+  console.log('✅ SCRAPING COMPLETE!');
+  console.log(`${'='.repeat(60)}`);
   
-  console.log(`\n\n✅ Scraping complete!`);
-  console.log(`   Teams: ${Object.keys(allData.teams).length}`);
-  console.log(`   Players: ${Object.keys(allData.players).length}`);
-  console.log(`   Data saved to: src/data/football-data.json`);
+  let totalTeams = 0;
+  let totalPlayers = 0;
+  
+  for (const [seasonId, data] of Object.entries(masterData.seasons)) {
+    const teams = Object.keys(data.teams).length;
+    const players = Object.keys(data.players).length;
+    totalTeams += teams;
+    totalPlayers += players;
+    console.log(`  ${seasonId}/${parseInt(seasonId)+1}: ${teams} teams, ${players} players`);
+  }
+  
+  console.log(`\n  TOTAL: ${totalTeams} team-seasons, ${totalPlayers} player-seasons`);
+  console.log(`\n  Files saved to: src/data/`);
+  console.log(`    - football-data-YYYY.json (per season)`);
+  console.log(`    - football-data-all.json (combined)`);
 }
 
 main().catch(console.error);
