@@ -11,7 +11,12 @@ import {
   OFFER_STATUS,
   LOAN_TYPES,
   AGENT_TYPES,
-  CLAUSE_TYPES
+  CLAUSE_TYPES,
+  SCOUT_LEVELS,
+  RUMOR_TYPES,
+  SWAP_DEAL_TYPES,
+  FFP_RULES,
+  HIDDEN_GEM_TYPES
 } from './src/game/transferMarket.js';
 import { generatePlayerPersonality, PERSONALITIES } from './src/game/playerPersonality.js';
 
@@ -421,15 +426,222 @@ topPlayers.forEach(id => {
   console.log(`  ${player.name.padEnd(20)} | OVR ${player.overall} | Edad ${player.age} | ${formatMoney(value).padStart(8)} | Cláusula: ${clause}`);
 });
 
+// ============================================================
+// NUEVOS TESTS: SCOUTING, RUMORES, INTERCAMBIOS, FFP, JOYAS
+// ============================================================
+
+// Test 15: Sistema de Scouting
+console.log('\n🔍 TEST 15: Sistema de Scouting');
+console.log('─'.repeat(50));
+
+// Contratar scout
+const scoutResult = market.hireScout('professional', 'spain');
+console.log(`  Contratar scout: ${scoutResult.success ? '✅' : '❌'} ${scoutResult.message || scoutResult.error}`);
+
+if (scoutResult.success) {
+  // Enviar a investigar jugador
+  const scoutingResult = market.scoutPlayer(scoutResult.scout.id, 'p7'); // Lamine Yamal
+  console.log(`  Scout enviado: ${scoutingResult.success ? '✅' : '❌'}`);
+  if (scoutingResult.success) {
+    console.log(`    Días para completar: ${scoutingResult.daysRemaining}`);
+  }
+
+  // Simular que pasa el tiempo (forzar completar)
+  scoutResult.scout.currentAssignment.completesAt = Date.now() - 1000;
+  const reports = market.processScoutingReports();
+  console.log(`  Informes completados: ${reports.length}`);
+  
+  if (reports.length > 0) {
+    const report = reports[0];
+    console.log(`\n  📋 Informe de ${report.playerName}:`);
+    console.log(`     Overall estimado: ${report.overallEstimate.min}-${report.overallEstimate.max}`);
+    console.log(`     Potencial: ${report.potentialEstimate.estimate} (${report.potentialEstimate.growth})`);
+    console.log(`     Valor: ${formatMoney(report.marketValueEstimate.min)}-${formatMoney(report.marketValueEstimate.max)}`);
+    console.log(`     Recomendación: ${report.recommendation.recommendation.toUpperCase()}`);
+    if (report.strengths.length > 0) {
+      console.log(`     Fortalezas: ${report.strengths.map(s => s.attribute).join(', ')}`);
+    }
+  }
+}
+
+// Test 16: Sistema de Rumores Avanzado
+console.log('\n📰 TEST 16: Sistema de Rumores Avanzado');
+console.log('─'.repeat(50));
+
+// Generar rumores manualmente
+const rumor1 = market.generateRumor('interest', {
+  playerId: 'p1',
+  playerName: 'Vinicius Jr',
+  interestedTeam: 'Manchester City'
+}, 'tier2');
+
+const rumor2 = market.generateRumor('unhappy', {
+  playerId: 'p11',
+  playerName: 'Isco',
+  team: 'Real Betis',
+  teamId: 'betis'
+}, 'tier3');
+
+const rumor3 = market.generateRumor('bid', {
+  playerId: 'p2',
+  playerName: 'Bellingham',
+  biddingTeam: 'PSG',
+  amount: 180000000
+}, 'tier1');
+
+console.log('  Rumores generados:');
+[rumor1, rumor2, rumor3].filter(Boolean).forEach(r => {
+  console.log(`    ${r.sourceIcon} [${(r.reliability * 100).toFixed(0)}%] ${r.headline}`);
+});
+
+// Generar rumores automáticos
+const autoRumors = market.generateAutoRumors();
+console.log(`\n  Rumores auto-generados: ${autoRumors.length}`);
+
+// Test 17: Sistema de Intercambios
+console.log('\n🔀 TEST 17: Sistema de Intercambios');
+console.log('─'.repeat(50));
+
+// Proponer intercambio: Isco por Lukebakio
+const swapResult = market.createSwapOffer({
+  player1Id: 'p11',  // Isco (Betis)
+  player2Id: 'p10',  // Lukebakio (Sevilla)
+  cashAdjustment: 5000000,  // +€5M
+  type: 'plusCash'
+});
+
+console.log(`  Propuesta de intercambio: ${swapResult.success ? '✅' : '❌'}`);
+if (swapResult.success) {
+  const offer = swapResult.offer;
+  console.log(`    ${offer.player1Name} (${formatMoney(offer.player1Value)})`);
+  console.log(`    ↔ ${offer.player2Name} (${formatMoney(offer.player2Value)})`);
+  console.log(`    + ${formatMoney(offer.cashAdjustment)}`);
+  console.log(`    Ratio justo: ${(offer.fairnessRatio * 100).toFixed(0)}%`);
+
+  // Evaluar desde perspectiva del otro equipo
+  const evaluation = market.evaluateSwapOffer(offer.id);
+  console.log(`\n  Evaluación del Sevilla:`);
+  console.log(`    Aceptan: ${evaluation.accept ? '✅ SÍ' : '❌ NO'} (${evaluation.probability}%)`);
+  evaluation.reasons.slice(0, 3).forEach(r => {
+    console.log(`      ${r.positive ? '✅' : '❌'} ${r.text}`);
+  });
+}
+
+// Test 18: Joyas Ocultas
+console.log('\n🎰 TEST 18: Joyas Ocultas (Jugadores Tapados)');
+console.log('─'.repeat(50));
+
+// Generar pool de joyas
+const gems = market.generateHiddenGems(15);
+console.log(`  Joyas generadas: ${gems.length}`);
+
+// Mostrar algunos tipos
+const byType = {};
+gems.forEach(g => {
+  byType[g.gemType] = (byType[g.gemType] || 0) + 1;
+});
+Object.entries(byType).forEach(([type, count]) => {
+  const config = HIDDEN_GEM_TYPES[type];
+  console.log(`    ${config.name}: ${count}`);
+});
+
+// Buscar con scout
+if (market.scouts.length > 0) {
+  const searchResult = market.searchForHiddenGems(market.scouts[0].id);
+  console.log(`\n  Búsqueda de talentos: ${searchResult.message}`);
+  
+  if (searchResult.found.length > 0) {
+    console.log('  Talentos descubiertos:');
+    searchResult.found.forEach(g => {
+      console.log(`    ${g.name} (${g.position}, ${g.age} años)`);
+      console.log(`      Overall: ${g.displayOverall.min}-${g.displayOverall.max}`);
+      console.log(`      Potencial: ${g.displayPotential.min}-${g.displayPotential.max}`);
+      console.log(`      Precio: ${formatMoney(g.price)}`);
+    });
+
+    // Intentar fichar una joya
+    const gemToSign = searchResult.found[0];
+    gameState.teams['betis'].budget = 10000000; // Dar presupuesto
+    const signResult = market.signHiddenGem(gemToSign.id, 4);
+    console.log(`\n  Fichaje de joya: ${signResult.success ? '✅' : '❌'}`);
+    if (signResult.success) {
+      console.log(`    ¡${signResult.player.name} fichado!`);
+      console.log(`    Potencial REAL: ${signResult.player.potential}`);
+      console.log(`    Sorpresa: ${signResult.surprise === 'positive' ? '🌟 Mejor de lo esperado!' : 
+                              signResult.surprise === 'negative' ? '😬 Peor de lo esperado' : 'Como se esperaba'}`);
+    }
+  }
+}
+
+// Test 19: Fair Play Financiero
+console.log('\n📊 TEST 19: Fair Play Financiero');
+console.log('─'.repeat(50));
+
+// Dar datos económicos al equipo
+gameState.teams['betis'].reputation = 72;
+const ffpStatus = market.calculateFFPStatus('betis');
+
+if (ffpStatus) {
+  console.log(`  Equipo: ${ffpStatus.teamName}`);
+  console.log(`  Ingresos estimados: ${formatMoney(ffpStatus.revenue)}`);
+  console.log(`  Masa salarial: ${formatMoney(ffpStatus.wages)}`);
+  console.log(`  Ratio salarial: ${(ffpStatus.wageRatio * 100).toFixed(0)}%`);
+  console.log(`  Balance anual: ${formatMoney(ffpStatus.yearlyBalance)}`);
+  console.log(`  Cumple FFP: ${ffpStatus.compliant ? '✅ SÍ' : '❌ NO'}`);
+  console.log(`  Presupuesto disponible FFP: ${formatMoney(ffpStatus.availableBudget)}`);
+  
+  if (ffpStatus.warnings.length > 0) {
+    console.log('  Avisos:');
+    ffpStatus.warnings.forEach(w => {
+      console.log(`    ${w.severity === 'critical' ? '🚨' : '⚠️'} ${w.message}`);
+    });
+  }
+
+  // Verificar una operación
+  const checkResult = market.checkFFPCompliance('betis', 50000000);
+  console.log(`\n  Verificar fichaje de €50M:`);
+  console.log(`    ${checkResult.compliant ? '✅' : '❌'} ${checkResult.message}`);
+}
+
+// Test 20: Información visible de jugador (según scouting)
+console.log('\n👁️ TEST 20: Información Visible según Scouting');
+console.log('─'.repeat(50));
+
+// Jugador no escaneado
+const unknownInfo = market.getPlayerVisibleInfo('p9'); // João Félix
+console.log(`  ${unknownInfo.name} (NO escaneado):`);
+console.log(`    Overall: ${unknownInfo.overall}`);
+console.log(`    Scouting necesario: ${unknownInfo.scoutingNeeded ? 'SÍ' : 'NO'}`);
+
+// Jugador escaneado (Lamine Yamal del test anterior)
+const knownInfo = market.getPlayerVisibleInfo('p7');
+if (knownInfo.scoutingNeeded === false || knownInfo.revealedAttributes) {
+  console.log(`\n  ${knownInfo.name} (ESCANEADO):`);
+  console.log(`    Overall: ${typeof knownInfo.overall === 'object' ? 
+    `${knownInfo.overall.min}-${knownInfo.overall.max}` : knownInfo.overall}`);
+  console.log(`    Atributos revelados: ${knownInfo.revealedAttributes?.length || 0}`);
+  console.log(`    Precisión: ${((knownInfo.accuracy || 0) * 100).toFixed(0)}%`);
+}
+
 // Resumen final
 console.log('\n' + '═'.repeat(70));
-console.log('📊 RESUMEN DEL TEST');
+console.log('📊 RESUMEN DEL TEST COMPLETO');
 console.log('═'.repeat(70));
 console.log(`  ✅ Ofertas creadas: ${market.offers.length}`);
 console.log(`  ✅ Préstamos creados: ${market.loanOffers.length}`);
+console.log(`  ✅ Intercambios creados: ${market.swapOffers.length}`);
 console.log(`  ✅ Rumores generados: ${market.rumors.length}`);
+console.log(`  ✅ Scouts contratados: ${market.scouts.length}`);
+console.log(`  ✅ Informes de scouting: ${market.scoutingReports.length}`);
+console.log(`  ✅ Joyas descubiertas: ${market.discoveredGems.length}`);
 console.log(`  ✅ Fichajes completados: ${market.completedDeals.length}`);
-console.log(`  ✅ Tipos de agente: ${Object.keys(AGENT_TYPES).length}`);
-console.log(`  ✅ Tipos de cláusula: ${Object.keys(CLAUSE_TYPES).length}`);
+console.log('─'.repeat(70));
+console.log(`  📦 Tipos de agente: ${Object.keys(AGENT_TYPES).length}`);
+console.log(`  📦 Tipos de cláusula: ${Object.keys(CLAUSE_TYPES).length}`);
+console.log(`  📦 Niveles de scout: ${Object.keys(SCOUT_LEVELS).length}`);
+console.log(`  📦 Tipos de rumor: ${Object.keys(RUMOR_TYPES).length}`);
+console.log(`  📦 Tipos de intercambio: ${Object.keys(SWAP_DEAL_TYPES).length}`);
+console.log(`  📦 Reglas FFP: ${Object.keys(FFP_RULES).length}`);
+console.log(`  📦 Tipos de joya oculta: ${Object.keys(HIDDEN_GEM_TYPES).length}`);
 
-console.log('\n✅ Test del sistema de fichajes v2 completado');
+console.log('\n✅ Test del sistema de fichajes COMPLETO finalizado');

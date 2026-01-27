@@ -62,6 +62,160 @@ export const CLAUSE_TYPES = {
 };
 
 // ============================================================
+// SISTEMA DE SCOUTING
+// ============================================================
+
+export const SCOUT_LEVELS = {
+  basic: { 
+    name: 'Ojeador local', 
+    cost: 50000, 
+    accuracy: 0.6, 
+    revealAttributes: 3,
+    range: 'domestic',
+    reportTime: 14 // días
+  },
+  regional: { 
+    name: 'Ojeador regional', 
+    cost: 150000, 
+    accuracy: 0.75, 
+    revealAttributes: 5,
+    range: 'continent',
+    reportTime: 10
+  },
+  professional: { 
+    name: 'Scout profesional', 
+    cost: 400000, 
+    accuracy: 0.85, 
+    revealAttributes: 8,
+    range: 'worldwide',
+    reportTime: 7
+  },
+  elite: { 
+    name: 'Scout de élite', 
+    cost: 1000000, 
+    accuracy: 0.95, 
+    revealAttributes: 12,
+    range: 'worldwide',
+    reportTime: 3
+  }
+};
+
+export const SCOUTING_REGIONS = {
+  spain: { name: 'España', leagues: ['laliga', 'segunda', 'primeraRFEF'] },
+  england: { name: 'Inglaterra', leagues: ['premier', 'championship'] },
+  germany: { name: 'Alemania', leagues: ['bundesliga', 'bundesliga2'] },
+  italy: { name: 'Italia', leagues: ['serieA', 'serieB'] },
+  france: { name: 'Francia', leagues: ['ligue1', 'ligue2'] },
+  portugal: { name: 'Portugal', leagues: ['primeiraLiga'] },
+  netherlands: { name: 'Países Bajos', leagues: ['eredivisie'] },
+  southAmerica: { name: 'Sudamérica', leagues: ['argentina', 'brazil'] },
+  restOfWorld: { name: 'Resto del mundo', leagues: ['other'] }
+};
+
+// ============================================================
+// SISTEMA DE RUMORES AVANZADO
+// ============================================================
+
+export const RUMOR_TYPES = {
+  interest: { icon: '👀', reliability: [0.3, 0.6], text: 'interesado en' },
+  talks: { icon: '🗣️', reliability: [0.5, 0.8], text: 'en conversaciones con' },
+  bid: { icon: '💰', reliability: [0.7, 0.9], text: 'ha ofrecido por' },
+  agreement: { icon: '🤝', reliability: [0.8, 0.95], text: 'ha llegado a un acuerdo por' },
+  medical: { icon: '🏥', reliability: [0.9, 0.99], text: 'pasa reconocimiento médico con' },
+  hijack: { icon: '🚨', reliability: [0.4, 0.7], text: 'intenta arrebatar a' },
+  unhappy: { icon: '😤', reliability: [0.5, 0.8], text: 'descontento con su situación en' },
+  wantsOut: { icon: '🚪', reliability: [0.6, 0.85], text: 'quiere salir de' },
+  contract: { icon: '📝', reliability: [0.4, 0.7], text: 'negocia renovación con' },
+  release: { icon: '⚡', reliability: [0.8, 0.95], text: 'podría pagar cláusula de' },
+  loan: { icon: '🔄', reliability: [0.5, 0.8], text: 'pregunta por cesión de' },
+  swap: { icon: '🔀', reliability: [0.3, 0.6], text: 'propone intercambio por' }
+};
+
+export const RUMOR_SOURCES = {
+  tier1: { name: 'Fuente fiable', icon: '✅', bonusReliability: 0.2 },
+  tier2: { name: 'Periodista conocido', icon: '📰', bonusReliability: 0.1 },
+  tier3: { name: 'Medio deportivo', icon: '📺', bonusReliability: 0 },
+  tier4: { name: 'Redes sociales', icon: '📱', bonusReliability: -0.1 },
+  tier5: { name: 'Rumor sin confirmar', icon: '❓', bonusReliability: -0.2 }
+};
+
+// ============================================================
+// INTERCAMBIOS DE JUGADORES
+// ============================================================
+
+export const SWAP_DEAL_TYPES = {
+  straight: { name: 'Intercambio puro', cashAllowed: false },
+  plusCash: { name: 'Jugador + dinero', cashAllowed: true, maxCashRatio: 0.5 },
+  threeWay: { name: 'Intercambio a tres bandas', teamsInvolved: 3 },
+  loanSwap: { name: 'Intercambio de cesiones', temporary: true }
+};
+
+// ============================================================
+// FAIR PLAY FINANCIERO
+// ============================================================
+
+export const FFP_RULES = {
+  laliga: {
+    name: 'Control Económico LaLiga',
+    wageCap: true,          // Límite salarial
+    squadCostLimit: true,   // Límite de coste de plantilla
+    lossLimit: 0.25,        // Max 25% pérdidas sobre ingresos
+    debtRatio: 0.7,         // Deuda max 70% del valor del club
+    transferBan: true       // Puede haber sanción
+  },
+  uefa: {
+    name: 'FFP UEFA',
+    breakEvenRule: true,    // No puedes perder más de 30M en 3 años
+    maxLoss3Years: 30000000,
+    squadSizeLimit: 25,
+    homegrownRequired: 8,   // Jugadores formados en casa
+    sanctions: ['warning', 'fine', 'squadLimit', 'europeBan']
+  },
+  premier: {
+    name: 'Profit & Sustainability',
+    maxLoss3Years: 105000000, // £105M en 3 años
+    anchorYear: true
+  }
+};
+
+// ============================================================
+// JUGADORES DESCONOCIDOS / TAPADOS
+// ============================================================
+
+export const HIDDEN_GEM_TYPES = {
+  wonderkid: { 
+    name: 'Wonderkid oculto', 
+    ageRange: [16, 19], 
+    potentialBonus: [10, 20],
+    discoveryChance: 0.15,
+    priceMultiplier: 0.3
+  },
+  lateBlocker: { 
+    name: 'Florecimiento tardío', 
+    ageRange: [24, 28], 
+    potentialBonus: [5, 12],
+    discoveryChance: 0.10,
+    priceMultiplier: 0.5
+  },
+  roughDiamond: { 
+    name: 'Diamante en bruto', 
+    ageRange: [18, 22], 
+    potentialBonus: [8, 15],
+    discoveryChance: 0.20,
+    priceMultiplier: 0.4,
+    needsDevelopment: true
+  },
+  hiddenVeteran: { 
+    name: 'Veterano infravalorado', 
+    ageRange: [29, 33], 
+    potentialBonus: [0, 3],
+    discoveryChance: 0.25,
+    priceMultiplier: 0.6,
+    experienceBonus: true
+  }
+};
+
+// ============================================================
 // CLASE PRINCIPAL: TransferMarket
 // ============================================================
 
@@ -70,10 +224,28 @@ export class TransferMarket {
     this.gameState = gameState;
     this.offers = [];
     this.loanOffers = [];
+    this.swapOffers = [];
     this.rumors = [];
     this.completedDeals = [];
     this.deadlineDayActive = false;
     this.currentHour = 12; // Para deadline day
+    
+    // Sistema de Scouting
+    this.scouts = [];
+    this.scoutingReports = [];
+    this.scoutedPlayers = new Map(); // playerId -> { revealed: [], accuracy, scoutDate }
+    
+    // Fair Play Financiero
+    this.ffpStatus = {
+      currentBalance: 0,
+      threeYearLosses: [0, 0, 0],
+      warnings: [],
+      sanctions: []
+    };
+    
+    // Jugadores desconocidos
+    this.hiddenGems = [];
+    this.discoveredGems = [];
   }
 
   // ============================================================
@@ -1907,6 +2079,1199 @@ export class TransferMarket {
     }
 
     return needs;
+  }
+
+  // ============================================================
+  // 5. SISTEMA DE SCOUTING
+  // ============================================================
+
+  /**
+   * Contratar un scout
+   */
+  hireScout(scoutLevel, assignedRegion) {
+    const scoutConfig = SCOUT_LEVELS[scoutLevel];
+    if (!scoutConfig) return { success: false, error: 'Nivel de scout inválido' };
+
+    const team = this.getPlayerTeam();
+    if (!team || team.budget < scoutConfig.cost) {
+      return { success: false, error: 'Presupuesto insuficiente' };
+    }
+
+    const scout = {
+      id: `scout_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+      level: scoutLevel,
+      ...scoutConfig,
+      assignedRegion,
+      hiredAt: Date.now(),
+      currentAssignment: null,
+      completedReports: 0
+    };
+
+    team.budget -= scoutConfig.cost;
+    this.scouts.push(scout);
+
+    return { success: true, scout, message: `${scoutConfig.name} contratado` };
+  }
+
+  /**
+   * Enviar scout a investigar jugador
+   */
+  scoutPlayer(scoutId, playerId) {
+    const scout = this.scouts.find(s => s.id === scoutId);
+    if (!scout) return { success: false, error: 'Scout no encontrado' };
+    if (scout.currentAssignment) {
+      return { success: false, error: 'El scout ya tiene una asignación activa' };
+    }
+
+    const player = this.getPlayer(playerId);
+    if (!player) return { success: false, error: 'Jugador no encontrado' };
+
+    // Verificar si ya está completamente escaneado
+    const existing = this.scoutedPlayers.get(playerId);
+    if (existing && existing.revealed.length >= 12) {
+      return { success: false, error: 'Jugador ya completamente analizado' };
+    }
+
+    scout.currentAssignment = {
+      playerId,
+      startedAt: Date.now(),
+      completesAt: Date.now() + scout.reportTime * 24 * 3600000
+    };
+
+    return { 
+      success: true, 
+      message: `Scout enviado a analizar a ${player.name}`,
+      completesIn: scout.reportTime,
+      daysRemaining: scout.reportTime
+    };
+  }
+
+  /**
+   * Procesar informes de scouting completados
+   */
+  processScoutingReports() {
+    const now = Date.now();
+    const completedReports = [];
+
+    for (const scout of this.scouts) {
+      if (!scout.currentAssignment) continue;
+      if (now < scout.currentAssignment.completesAt) continue;
+
+      const player = this.getPlayer(scout.currentAssignment.playerId);
+      if (!player) {
+        scout.currentAssignment = null;
+        continue;
+      }
+
+      // Generar informe
+      const report = this.generateScoutingReport(scout, player);
+      this.scoutingReports.push(report);
+      completedReports.push(report);
+
+      // Actualizar jugadores escaneados
+      const existing = this.scoutedPlayers.get(player.id) || { revealed: [], reports: [] };
+      existing.revealed = [...new Set([...existing.revealed, ...report.revealedAttributes])];
+      existing.reports.push(report.id);
+      existing.lastScoutDate = now;
+      existing.accuracy = Math.max(existing.accuracy || 0, scout.accuracy);
+      this.scoutedPlayers.set(player.id, existing);
+
+      scout.currentAssignment = null;
+      scout.completedReports++;
+    }
+
+    return completedReports;
+  }
+
+  /**
+   * Generar informe de scouting
+   */
+  generateScoutingReport(scout, player) {
+    const allAttributes = [
+      'pace', 'shooting', 'passing', 'dribbling', 'defending', 'physical',
+      'positioning', 'finishing', 'vision', 'composure', 'aggression', 'stamina'
+    ];
+
+    // Seleccionar atributos a revelar
+    const existing = this.scoutedPlayers.get(player.id);
+    const alreadyRevealed = existing?.revealed || [];
+    const available = allAttributes.filter(a => !alreadyRevealed.includes(a));
+    
+    const toReveal = [];
+    const numToReveal = Math.min(scout.revealAttributes, available.length);
+    
+    for (let i = 0; i < numToReveal; i++) {
+      const idx = Math.floor(Math.random() * available.length);
+      toReveal.push(available.splice(idx, 1)[0]);
+    }
+
+    // Aplicar precisión del scout (puede haber error)
+    const revealedValues = {};
+    for (const attr of toReveal) {
+      const realValue = player[attr] || player.overall || 70;
+      const error = Math.random() < scout.accuracy ? 0 : Math.floor((Math.random() - 0.5) * 10);
+      revealedValues[attr] = Math.max(1, Math.min(99, realValue + error));
+    }
+
+    // Evaluación general
+    const potentialEstimate = this.estimatePlayerPotential(player, scout.accuracy);
+    const strengthsWeaknesses = this.analyzeStrengthsWeaknesses(player, toReveal, revealedValues);
+    const recommendation = this.generateScoutRecommendation(player, scout.accuracy, potentialEstimate);
+
+    const report = {
+      id: `report_${Date.now()}`,
+      scoutId: scout.id,
+      scoutName: scout.name,
+      scoutLevel: scout.level,
+      playerId: player.id,
+      playerName: player.name,
+      playerAge: player.age,
+      playerPosition: player.position,
+      playerTeam: this.getTeam(player.teamId)?.name || 'Agente libre',
+      revealedAttributes: toReveal,
+      revealedValues,
+      overallEstimate: {
+        min: Math.max(50, player.overall - (10 - scout.accuracy * 10)),
+        max: Math.min(99, player.overall + (10 - scout.accuracy * 10)),
+        confidence: scout.accuracy
+      },
+      potentialEstimate,
+      marketValueEstimate: this.estimateMarketValue(player, scout.accuracy),
+      strengths: strengthsWeaknesses.strengths,
+      weaknesses: strengthsWeaknesses.weaknesses,
+      recommendation,
+      hiddenGemPotential: this.checkHiddenGemPotential(player),
+      generatedAt: Date.now(),
+      accuracy: scout.accuracy
+    };
+
+    return report;
+  }
+
+  /**
+   * Estimar potencial del jugador
+   */
+  estimatePlayerPotential(player, accuracy) {
+    const realPotential = player.potential || player.overall + 5;
+    const error = Math.random() < accuracy ? 0 : Math.floor((Math.random() - 0.5) * 15);
+    
+    return {
+      estimate: Math.max(player.overall, Math.min(99, realPotential + error)),
+      confidence: accuracy,
+      growth: player.age <= 23 ? 'Alto' : player.age <= 27 ? 'Moderado' : 'Bajo'
+    };
+  }
+
+  /**
+   * Estimar valor de mercado con incertidumbre
+   */
+  estimateMarketValue(player, accuracy) {
+    const realValue = this.calculateMarketValue(player);
+    const errorRange = 1 - accuracy;
+    const minValue = Math.round(realValue * (1 - errorRange * 0.5));
+    const maxValue = Math.round(realValue * (1 + errorRange * 0.5));
+
+    return {
+      min: minValue,
+      max: maxValue,
+      estimate: Math.round((minValue + maxValue) / 2),
+      confidence: accuracy
+    };
+  }
+
+  /**
+   * Analizar fortalezas y debilidades
+   */
+  analyzeStrengthsWeaknesses(player, attributes, values) {
+    const strengths = [];
+    const weaknesses = [];
+
+    for (const attr of attributes) {
+      const value = values[attr];
+      if (value >= 80) {
+        strengths.push({ attribute: attr, value, level: value >= 90 ? 'excepcional' : 'muy bueno' });
+      } else if (value <= 60) {
+        weaknesses.push({ attribute: attr, value, level: value <= 50 ? 'pobre' : 'mejorable' });
+      }
+    }
+
+    return { strengths, weaknesses };
+  }
+
+  /**
+   * Generar recomendación del scout
+   */
+  generateScoutRecommendation(player, accuracy, potentialEstimate) {
+    const value = this.calculateMarketValue(player);
+    const team = this.getPlayerTeam();
+    const teamBudget = team?.budget || 0;
+
+    let recommendation = 'observar';
+    let reasoning = [];
+
+    // Analizar si vale la pena
+    if (player.age <= 23 && potentialEstimate.estimate >= 85) {
+      recommendation = 'fichaje prioritario';
+      reasoning.push('Joven con alto potencial');
+    } else if (player.overall >= 80 && value < teamBudget * 0.3) {
+      recommendation = 'fichaje recomendado';
+      reasoning.push('Buen nivel a precio accesible');
+    } else if (player.age >= 30 && player.overall >= 75) {
+      recommendation = 'opción a corto plazo';
+      reasoning.push('Veterano que puede aportar experiencia');
+    } else if (value > teamBudget * 0.8) {
+      recommendation = 'fuera de presupuesto';
+      reasoning.push('Precio demasiado alto para nuestras posibilidades');
+    }
+
+    // Confianza de la recomendación
+    const confidence = accuracy >= 0.85 ? 'alta' : accuracy >= 0.7 ? 'media' : 'baja';
+
+    return { recommendation, reasoning, confidence };
+  }
+
+  /**
+   * Verificar potencial de joya oculta
+   */
+  checkHiddenGemPotential(player) {
+    for (const [type, config] of Object.entries(HIDDEN_GEM_TYPES)) {
+      if (player.age >= config.ageRange[0] && player.age <= config.ageRange[1]) {
+        if (Math.random() < config.discoveryChance) {
+          return {
+            type,
+            name: config.name,
+            potentialBonus: config.potentialBonus[0] + Math.random() * (config.potentialBonus[1] - config.potentialBonus[0]),
+            priceMultiplier: config.priceMultiplier
+          };
+        }
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Obtener información visible de un jugador (según scouting)
+   */
+  getPlayerVisibleInfo(playerId, fullAccess = false) {
+    const player = this.getPlayer(playerId);
+    if (!player) return null;
+
+    // Si es nuestro jugador o agente libre conocido, acceso completo
+    const team = this.getPlayerTeam();
+    if (fullAccess || player.teamId === team?.id) {
+      return { ...player, fullyRevealed: true };
+    }
+
+    // Si no está escaneado, solo info básica
+    const scouted = this.scoutedPlayers.get(playerId);
+    if (!scouted) {
+      return {
+        id: player.id,
+        name: player.name,
+        age: player.age,
+        position: player.position,
+        teamId: player.teamId,
+        nationality: player.nationality,
+        overall: '??',
+        potential: '??',
+        attributes: {},
+        marketValue: '??',
+        fullyRevealed: false,
+        scoutingNeeded: true
+      };
+    }
+
+    // Info parcial según scouting
+    const visibleAttributes = {};
+    for (const attr of scouted.revealed) {
+      visibleAttributes[attr] = player[attr];
+    }
+
+    const lastReport = this.scoutingReports
+      .filter(r => r.playerId === playerId)
+      .sort((a, b) => b.generatedAt - a.generatedAt)[0];
+
+    return {
+      id: player.id,
+      name: player.name,
+      age: player.age,
+      position: player.position,
+      teamId: player.teamId,
+      nationality: player.nationality,
+      overall: lastReport?.overallEstimate || '??',
+      potential: lastReport?.potentialEstimate || '??',
+      attributes: visibleAttributes,
+      revealedAttributes: scouted.revealed,
+      marketValue: lastReport?.marketValueEstimate || '??',
+      fullyRevealed: scouted.revealed.length >= 12,
+      lastScoutDate: scouted.lastScoutDate,
+      accuracy: scouted.accuracy
+    };
+  }
+
+  // ============================================================
+  // 6. SISTEMA DE RUMORES AVANZADO
+  // ============================================================
+
+  /**
+   * Generar rumor
+   */
+  generateRumor(type, data, source = 'tier3') {
+    const rumorType = RUMOR_TYPES[type];
+    const rumorSource = RUMOR_SOURCES[source];
+    if (!rumorType) return null;
+
+    // Calcular fiabilidad
+    const baseReliability = rumorType.reliability[0] + 
+      Math.random() * (rumorType.reliability[1] - rumorType.reliability[0]);
+    const reliability = Math.max(0.1, Math.min(0.99, baseReliability + rumorSource.bonusReliability));
+
+    // Determinar si el rumor es verdadero
+    const isTrue = Math.random() < reliability;
+
+    const rumor = {
+      id: `rumor_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+      type,
+      typeIcon: rumorType.icon,
+      typeText: rumorType.text,
+      source,
+      sourceIcon: rumorSource.icon,
+      sourceName: rumorSource.name,
+      data,
+      reliability,
+      isTrue, // Esto NO se muestra al jugador
+      createdAt: Date.now(),
+      expiresAt: Date.now() + (7 + Math.random() * 14) * 24 * 3600000, // 7-21 días
+      resolved: false,
+      outcome: null,
+      views: 0
+    };
+
+    // Generar texto del rumor
+    rumor.headline = this.generateRumorHeadline(rumor);
+    rumor.details = this.generateRumorDetails(rumor);
+
+    this.rumors.push(rumor);
+
+    // Efectos del rumor en el juego
+    this.applyRumorEffects(rumor);
+
+    return rumor;
+  }
+
+  /**
+   * Generar titular del rumor
+   */
+  generateRumorHeadline(rumor) {
+    const { type, data, typeIcon, typeText } = rumor;
+    
+    switch (type) {
+      case 'interest':
+        return `${typeIcon} ${data.interestedTeam} ${typeText} ${data.playerName}`;
+      case 'talks':
+        return `${typeIcon} ${data.team1} ${typeText} ${data.team2} por ${data.playerName}`;
+      case 'bid':
+        return `${typeIcon} ${data.biddingTeam} ${typeText} ${data.playerName}: ${this.formatMoney(data.amount)}`;
+      case 'agreement':
+        return `${typeIcon} ${data.team} ${typeText} ${data.playerName}`;
+      case 'medical':
+        return `${typeIcon} ${data.playerName} ${typeText} ${data.team}`;
+      case 'hijack':
+        return `${typeIcon} ${data.team} ${typeText} ${data.playerName} al ${data.originalTeam}`;
+      case 'unhappy':
+        return `${typeIcon} ${data.playerName} ${typeText} ${data.team}`;
+      case 'wantsOut':
+        return `${typeIcon} ${data.playerName} ${typeText} ${data.team}`;
+      case 'release':
+        return `${typeIcon} ${data.team} ${typeText} ${data.playerName} (${this.formatMoney(data.clauseAmount)})`;
+      case 'swap':
+        return `${typeIcon} ${data.team1} ${typeText} ${data.player2Name} con ${data.player1Name}`;
+      default:
+        return `${typeIcon} Rumor sobre ${data.playerName || 'jugador desconocido'}`;
+    }
+  }
+
+  /**
+   * Generar detalles del rumor
+   */
+  generateRumorDetails(rumor) {
+    const phrases = [
+      'Según fuentes cercanas al club,',
+      'Varios medios apuntan a que',
+      'Todo indica que',
+      'Se rumorea que',
+      'Nuestras fuentes confirman que',
+      'Información de última hora:'
+    ];
+
+    const intro = phrases[Math.floor(Math.random() * phrases.length)];
+    
+    // Añadir detalles según fiabilidad
+    let details = intro + ' ' + rumor.headline.replace(rumor.typeIcon, '').trim() + '.';
+
+    if (rumor.reliability >= 0.7) {
+      details += ' La operación podría cerrarse en los próximos días.';
+    } else if (rumor.reliability <= 0.4) {
+      details += ' Sin embargo, hay fuentes que desmienten esta información.';
+    }
+
+    return details;
+  }
+
+  /**
+   * Aplicar efectos del rumor en el juego
+   */
+  applyRumorEffects(rumor) {
+    if (!rumor.isTrue) return; // Solo los rumores verdaderos tienen efectos
+
+    const player = this.getPlayer(rumor.data.playerId);
+    if (!player) return;
+
+    // Efectos según tipo de rumor
+    switch (rumor.type) {
+      case 'interest':
+      case 'talks':
+        // Jugador se inquieta ligeramente
+        if (player.personality) {
+          player.personality.happiness = Math.max(30, (player.personality.happiness || 70) - 5);
+        }
+        break;
+      
+      case 'unhappy':
+      case 'wantsOut':
+        // Moral baja
+        if (player.personality) {
+          player.personality.happiness = Math.max(20, (player.personality.happiness || 70) - 15);
+          player.personality.wantsToLeave = true;
+        }
+        break;
+      
+      case 'agreement':
+      case 'medical':
+        // Jugador prácticamente fuera
+        if (player.personality) {
+          player.personality.wantsToLeave = true;
+          player.personality.happiness = 40;
+        }
+        break;
+    }
+  }
+
+  /**
+   * Obtener rumores activos
+   */
+  getActiveRumors(filters = {}) {
+    const now = Date.now();
+    let filtered = this.rumors.filter(r => !r.resolved && r.expiresAt > now);
+
+    if (filters.playerId) {
+      filtered = filtered.filter(r => r.data.playerId === filters.playerId);
+    }
+    if (filters.teamId) {
+      filtered = filtered.filter(r => 
+        r.data.teamId === filters.teamId || 
+        r.data.team === this.getTeam(filters.teamId)?.name
+      );
+    }
+    if (filters.type) {
+      filtered = filtered.filter(r => r.type === filters.type);
+    }
+    if (filters.minReliability) {
+      filtered = filtered.filter(r => r.reliability >= filters.minReliability);
+    }
+
+    return filtered.sort((a, b) => b.createdAt - a.createdAt);
+  }
+
+  /**
+   * Resolver rumor (confirmar o desmentir)
+   */
+  resolveRumor(rumorId, outcome) {
+    const rumor = this.rumors.find(r => r.id === rumorId);
+    if (!rumor) return null;
+
+    rumor.resolved = true;
+    rumor.outcome = outcome; // 'confirmed', 'denied', 'expired'
+    rumor.resolvedAt = Date.now();
+
+    return rumor;
+  }
+
+  /**
+   * Generar rumores automáticos basados en actividad del mercado
+   */
+  generateAutoRumors() {
+    const generated = [];
+
+    // Rumores sobre ofertas pendientes
+    for (const offer of this.offers.filter(o => o.status === 'pending')) {
+      if (Math.random() < 0.3) { // 30% de generar rumor
+        const reliability = offer.isAIOffer ? 'tier3' : 'tier2';
+        const rumorType = offer.amount > 50000000 ? 'bid' : 'interest';
+        
+        const rumor = this.generateRumor(rumorType, {
+          playerId: offer.playerId,
+          playerName: offer.playerName,
+          biddingTeam: offer.toTeamName,
+          interestedTeam: offer.toTeamName,
+          amount: offer.amount
+        }, reliability);
+        
+        if (rumor) generated.push(rumor);
+      }
+    }
+
+    // Rumores sobre jugadores descontentos
+    const team = this.getPlayerTeam();
+    if (team) {
+      for (const playerId of team.playerIds || []) {
+        const player = this.getPlayer(playerId);
+        if (!player?.personality) continue;
+
+        if (player.personality.happiness <= 40 && Math.random() < 0.2) {
+          const rumor = this.generateRumor('unhappy', {
+            playerId: player.id,
+            playerName: player.name,
+            team: team.name,
+            teamId: team.id
+          }, 'tier4');
+          
+          if (rumor) generated.push(rumor);
+        }
+      }
+    }
+
+    return generated;
+  }
+
+  // ============================================================
+  // 9. SISTEMA DE INTERCAMBIOS
+  // ============================================================
+
+  /**
+   * Crear propuesta de intercambio
+   */
+  createSwapOffer({
+    player1Id, // Jugador que ofrecemos
+    player2Id, // Jugador que queremos
+    cashAdjustment = 0, // Dinero adicional (positivo = nosotros pagamos)
+    type = 'plusCash'
+  }) {
+    const player1 = this.getPlayer(player1Id);
+    const player2 = this.getPlayer(player2Id);
+    const team = this.getPlayerTeam();
+
+    if (!player1 || !player2 || !team) {
+      return { success: false, error: 'Datos inválidos' };
+    }
+
+    if (player1.teamId !== team.id) {
+      return { success: false, error: 'Solo puedes ofrecer tus propios jugadores' };
+    }
+
+    const team2 = this.getTeam(player2.teamId);
+    if (!team2) {
+      return { success: false, error: 'Equipo destino no encontrado' };
+    }
+
+    // Calcular valores
+    const value1 = this.calculateMarketValue(player1);
+    const value2 = this.calculateMarketValue(player2);
+    const valueDifference = value2 - value1;
+
+    // Validar cash adjustment
+    const swapConfig = SWAP_DEAL_TYPES[type];
+    if (swapConfig.cashAllowed && cashAdjustment > 0) {
+      if (cashAdjustment > value2 * swapConfig.maxCashRatio) {
+        return { success: false, error: 'El dinero adicional supera el límite permitido' };
+      }
+      if (team.budget < cashAdjustment) {
+        return { success: false, error: 'Presupuesto insuficiente para el ajuste de dinero' };
+      }
+    }
+
+    const offer = {
+      id: `swap_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+      type: 'swap',
+      swapType: type,
+      player1Id,
+      player1Name: player1.name,
+      player1Value: value1,
+      team1Id: team.id,
+      team1Name: team.name,
+      player2Id,
+      player2Name: player2.name,
+      player2Value: value2,
+      team2Id: team2.id,
+      team2Name: team2.name,
+      cashAdjustment,
+      valueDifference,
+      fairnessRatio: (value1 + Math.max(0, cashAdjustment)) / value2,
+      status: 'pending',
+      createdAt: Date.now(),
+      expiresAt: Date.now() + 7 * 24 * 3600000, // 7 días
+      negotiations: []
+    };
+
+    this.swapOffers.push(offer);
+    
+    // Generar rumor
+    this.generateRumor('swap', {
+      team1: team.name,
+      team2: team2.name,
+      player1Name: player1.name,
+      player2Name: player2.name,
+      playerId: player2Id
+    }, 'tier3');
+
+    return { success: true, offer };
+  }
+
+  /**
+   * Evaluar intercambio (IA)
+   */
+  evaluateSwapOffer(offerId) {
+    const offer = this.swapOffers.find(o => o.id === offerId);
+    if (!offer) return { accept: false, reason: 'Oferta no encontrada' };
+
+    const team2 = this.getTeam(offer.team2Id);
+    const player1 = this.getPlayer(offer.player1Id);
+    const player2 = this.getPlayer(offer.player2Id);
+
+    if (!team2 || !player1 || !player2) {
+      return { accept: false, reason: 'Datos inválidos' };
+    }
+
+    let score = 0;
+    const reasons = [];
+
+    // Factor valor justo
+    if (offer.fairnessRatio >= 1.1) {
+      score += 30;
+      reasons.push({ positive: true, text: 'Oferta económicamente ventajosa' });
+    } else if (offer.fairnessRatio >= 0.95) {
+      score += 15;
+      reasons.push({ positive: true, text: 'Oferta equilibrada' });
+    } else if (offer.fairnessRatio < 0.8) {
+      score -= 30;
+      reasons.push({ positive: false, text: 'Oferta por debajo del valor' });
+    }
+
+    // Factor necesidad posicional
+    if (this.teamNeedsPosition(team2, player1.position)) {
+      score += 25;
+      reasons.push({ positive: true, text: `Necesitamos un ${player1.position}` });
+    }
+    if (!this.teamNeedsPosition(team2, player2.position)) {
+      score -= 10;
+      reasons.push({ positive: false, text: `${player2.name} es importante para nosotros` });
+    }
+
+    // Factor edad
+    const ageDiff = player2.age - player1.age;
+    if (ageDiff > 3) {
+      score += 15;
+      reasons.push({ positive: true, text: 'Recibimos un jugador más joven' });
+    } else if (ageDiff < -3) {
+      score -= 15;
+      reasons.push({ positive: false, text: 'Recibimos un jugador más veterano' });
+    }
+
+    // Factor calidad
+    const overallDiff = player1.overall - player2.overall;
+    if (overallDiff > 3) {
+      score += 20;
+      reasons.push({ positive: true, text: 'Recibimos mejor jugador' });
+    } else if (overallDiff < -3) {
+      score -= 20;
+      reasons.push({ positive: false, text: 'Perdemos calidad' });
+    }
+
+    // Factor cash
+    if (offer.cashAdjustment > 0) {
+      score += Math.min(20, offer.cashAdjustment / 1000000);
+      reasons.push({ positive: true, text: `Recibimos ${this.formatMoney(offer.cashAdjustment)} extra` });
+    } else if (offer.cashAdjustment < 0) {
+      score -= Math.min(15, Math.abs(offer.cashAdjustment) / 1000000);
+    }
+
+    const probability = Math.max(5, Math.min(95, 50 + score));
+    const accept = probability >= 60;
+
+    return {
+      accept,
+      probability,
+      reasons,
+      counterSuggestion: !accept && probability >= 40 ? this.generateSwapCounter(offer, score) : null
+    };
+  }
+
+  /**
+   * Generar contraoferta de intercambio
+   */
+  generateSwapCounter(offer, currentScore) {
+    const gap = 60 - (50 + currentScore);
+    const cashNeeded = gap * 500000; // Aproximadamente €500K por punto
+
+    return {
+      type: 'moreCash',
+      suggestedCash: Math.round(Math.max(0, offer.cashAdjustment + cashNeeded)),
+      message: `Podrían aceptar con ${this.formatMoney(cashNeeded)} adicionales`
+    };
+  }
+
+  /**
+   * Ejecutar intercambio
+   */
+  executeSwap(offerId) {
+    const offer = this.swapOffers.find(o => o.id === offerId);
+    if (!offer || offer.status !== 'pending') {
+      return { success: false, error: 'Oferta no válida' };
+    }
+
+    const player1 = this.getPlayer(offer.player1Id);
+    const player2 = this.getPlayer(offer.player2Id);
+    const team1 = this.getTeam(offer.team1Id);
+    const team2 = this.getTeam(offer.team2Id);
+
+    if (!player1 || !player2 || !team1 || !team2) {
+      return { success: false, error: 'Datos inválidos' };
+    }
+
+    // Mover jugadores
+    team1.playerIds = (team1.playerIds || []).filter(id => id !== player1.id);
+    team2.playerIds = (team2.playerIds || []).filter(id => id !== player2.id);
+    team1.playerIds.push(player2.id);
+    team2.playerIds.push(player1.id);
+
+    player1.teamId = team2.id;
+    player2.teamId = team1.id;
+
+    // Ajuste de dinero
+    if (offer.cashAdjustment > 0) {
+      team1.budget -= offer.cashAdjustment;
+      team2.budget += offer.cashAdjustment;
+    } else if (offer.cashAdjustment < 0) {
+      team2.budget -= Math.abs(offer.cashAdjustment);
+      team1.budget += Math.abs(offer.cashAdjustment);
+    }
+
+    // Resetear estados
+    if (player1.personality) {
+      player1.personality.happiness = 70;
+      player1.personality.wantsToLeave = false;
+    }
+    if (player2.personality) {
+      player2.personality.happiness = 70;
+      player2.personality.wantsToLeave = false;
+    }
+
+    offer.status = 'accepted';
+    this.completedDeals.push({
+      ...offer,
+      completedAt: Date.now()
+    });
+
+    return {
+      success: true,
+      message: `Intercambio completado: ${player1.name} ↔ ${player2.name}`,
+      deal: offer
+    };
+  }
+
+  // ============================================================
+  // 10. JUGADORES DESCONOCIDOS / TAPADOS
+  // ============================================================
+
+  /**
+   * Generar pool de joyas ocultas
+   */
+  generateHiddenGems(count = 20) {
+    const gems = [];
+    const positions = ['GK', 'CB', 'RB', 'LB', 'CDM', 'CM', 'CAM', 'RW', 'LW', 'ST'];
+    const countries = ['España', 'Argentina', 'Brasil', 'Francia', 'Portugal', 'Nigeria', 'Senegal', 'Croacia', 'Serbia', 'Uruguay'];
+    
+    const firstNames = ['Lucas', 'Mateo', 'João', 'Amadou', 'Nikola', 'Federico', 'Bruno', 'Diogo', 'Moussa', 'Ivan'];
+    const lastNames = ['Silva', 'González', 'Fernández', 'Mbeki', 'Kovač', 'Santos', 'Diallo', 'Martínez', 'Camara', 'Petrov'];
+
+    for (let i = 0; i < count; i++) {
+      // Seleccionar tipo de joya
+      const types = Object.entries(HIDDEN_GEM_TYPES);
+      const [gemType, config] = types[Math.floor(Math.random() * types.length)];
+
+      const age = config.ageRange[0] + Math.floor(Math.random() * (config.ageRange[1] - config.ageRange[0] + 1));
+      const position = positions[Math.floor(Math.random() * positions.length)];
+      
+      // Overall base más bajo para que sean "ocultos"
+      const baseOverall = 60 + Math.floor(Math.random() * 15); // 60-75
+      const realPotential = baseOverall + config.potentialBonus[0] + 
+        Math.floor(Math.random() * (config.potentialBonus[1] - config.potentialBonus[0]));
+
+      const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+      const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+
+      const gem = {
+        id: `gem_${Date.now()}_${i}`,
+        name: `${firstName} ${lastName}`,
+        age,
+        position,
+        nationality: countries[Math.floor(Math.random() * countries.length)],
+        overall: baseOverall,
+        potential: Math.min(99, realPotential),
+        realPotential: Math.min(99, realPotential), // El verdadero potencial (oculto)
+        visibleOverall: Math.max(55, baseOverall - 10 + Math.floor(Math.random() * 10)), // Lo que se ve
+        gemType,
+        gemConfig: config,
+        discovered: false,
+        discoveredBy: null,
+        price: Math.round(this.calculateMarketValue({ overall: baseOverall, age, position }) * config.priceMultiplier),
+        marketValue: this.calculateMarketValue({ overall: baseOverall, age, position }),
+        salary: Math.round(1000 + baseOverall * 100 + Math.random() * 5000),
+        teamId: null, // Agente libre o equipo menor
+        league: 'unknown',
+        developmentNeeded: config.needsDevelopment || false,
+        experienceBonus: config.experienceBonus || false
+      };
+
+      gems.push(gem);
+    }
+
+    this.hiddenGems = gems;
+    return gems;
+  }
+
+  /**
+   * Buscar joyas ocultas (requiere scout)
+   */
+  searchForHiddenGems(scoutId, region = 'restOfWorld') {
+    const scout = this.scouts.find(s => s.id === scoutId);
+    if (!scout) {
+      return { success: false, error: 'Scout no encontrado' };
+    }
+
+    // Probabilidad de encontrar basada en nivel del scout
+    const findChance = scout.accuracy * 0.5; // Max 50% con scout élite
+    const found = [];
+
+    const available = this.hiddenGems.filter(g => !g.discovered);
+    
+    for (const gem of available) {
+      if (Math.random() < findChance) {
+        // Revelar parcialmente
+        const revealedGem = {
+          ...gem,
+          discovered: true,
+          discoveredBy: scoutId,
+          discoveredAt: Date.now(),
+          // Solo mostrar overall aproximado
+          displayOverall: {
+            min: Math.max(50, gem.visibleOverall - 5),
+            max: Math.min(99, gem.visibleOverall + 10)
+          },
+          displayPotential: {
+            min: Math.max(gem.visibleOverall, gem.potential - 15),
+            max: Math.min(99, gem.potential + 5)
+          },
+          scoutConfidence: scout.accuracy
+        };
+
+        this.discoveredGems.push(revealedGem);
+        found.push(revealedGem);
+
+        if (found.length >= 3) break; // Max 3 por búsqueda
+      }
+    }
+
+    return {
+      success: true,
+      found,
+      message: found.length > 0 
+        ? `El scout ha encontrado ${found.length} jugador(es) interesante(s)`
+        : 'No se han encontrado nuevos talentos esta vez'
+    };
+  }
+
+  /**
+   * Fichar joya oculta
+   */
+  signHiddenGem(gemId, contractYears = 4) {
+    const gem = this.discoveredGems.find(g => g.id === gemId);
+    if (!gem) {
+      return { success: false, error: 'Jugador no encontrado' };
+    }
+
+    const team = this.getPlayerTeam();
+    if (!team) {
+      return { success: false, error: 'Equipo no encontrado' };
+    }
+
+    if (team.budget < gem.price) {
+      return { success: false, error: 'Presupuesto insuficiente' };
+    }
+
+    // Crear jugador real
+    const player = {
+      id: gem.id,
+      name: gem.name,
+      age: gem.age,
+      position: gem.position,
+      nationality: gem.nationality,
+      overall: gem.overall, // El real, no el visible
+      potential: gem.realPotential,
+      salary: gem.salary,
+      contractYears,
+      teamId: team.id,
+      personality: {
+        type: 'professional',
+        happiness: 80,
+        loyalty: 0,
+        wantsToLeave: false
+      },
+      isHiddenGem: true,
+      gemType: gem.gemType,
+      developmentBonus: gem.developmentNeeded ? 1.2 : 1.0,
+      experienceBonus: gem.experienceBonus
+    };
+
+    // Transacción
+    team.budget -= gem.price;
+    team.playerIds = team.playerIds || [];
+    team.playerIds.push(player.id);
+
+    // Añadir al gameState
+    if (this.gameState.players) {
+      this.gameState.players[player.id] = player;
+    }
+
+    // Remover de gems disponibles
+    this.discoveredGems = this.discoveredGems.filter(g => g.id !== gemId);
+    this.hiddenGems = this.hiddenGems.filter(g => g.id !== gemId);
+
+    this.completedDeals.push({
+      type: 'hidden_gem',
+      playerId: player.id,
+      playerName: player.name,
+      teamId: team.id,
+      teamName: team.name,
+      amount: gem.price,
+      completedAt: Date.now()
+    });
+
+    return {
+      success: true,
+      player,
+      message: `¡${player.name} fichado! Potencial real: ${player.potential}`,
+      surprise: player.potential > gem.displayPotential.max ? 'positive' : 
+                player.potential < gem.displayPotential.min ? 'negative' : 'neutral'
+    };
+  }
+
+  // ============================================================
+  // 11. FAIR PLAY FINANCIERO
+  // ============================================================
+
+  /**
+   * Calcular estado del FFP
+   */
+  calculateFFPStatus(teamId) {
+    const team = this.getTeam(teamId || this.gameState?.playerTeamId);
+    if (!team) return null;
+
+    // Simular ingresos y gastos (en un juego real vendría del motor económico)
+    const revenue = this.estimateTeamRevenue(team);
+    const wages = this.calculateTeamWages(team);
+    const transfers = this.getTeamTransferBalance(team.id);
+
+    const yearlyBalance = revenue - wages - transfers.netSpend;
+
+    // Actualizar histórico de 3 años
+    this.ffpStatus.threeYearLosses.unshift(Math.max(0, -yearlyBalance));
+    this.ffpStatus.threeYearLosses = this.ffpStatus.threeYearLosses.slice(0, 3);
+
+    const totalLosses = this.ffpStatus.threeYearLosses.reduce((a, b) => a + b, 0);
+    const rules = FFP_RULES[team.league] || FFP_RULES.uefa;
+
+    const status = {
+      teamId: team.id,
+      teamName: team.name,
+      revenue,
+      wages,
+      wageRatio: wages / revenue,
+      transfersIn: transfers.in,
+      transfersOut: transfers.out,
+      netSpend: transfers.netSpend,
+      yearlyBalance,
+      threeYearLosses: totalLosses,
+      maxAllowedLoss: rules.maxLoss3Years || 30000000,
+      compliant: totalLosses <= (rules.maxLoss3Years || 30000000),
+      warnings: [],
+      availableBudget: this.calculateAvailableFFPBudget(team, rules, yearlyBalance)
+    };
+
+    // Generar warnings
+    if (status.wageRatio > 0.7) {
+      status.warnings.push({
+        type: 'wage_ratio',
+        severity: status.wageRatio > 0.85 ? 'critical' : 'warning',
+        message: `Ratio salarial del ${(status.wageRatio * 100).toFixed(0)}% (límite recomendado: 70%)`
+      });
+    }
+
+    if (totalLosses > (rules.maxLoss3Years || 30000000) * 0.7) {
+      status.warnings.push({
+        type: 'losses',
+        severity: status.compliant ? 'warning' : 'critical',
+        message: `Pérdidas acumuladas: ${this.formatMoney(totalLosses)} de ${this.formatMoney(rules.maxLoss3Years)}`
+      });
+    }
+
+    if (!status.compliant) {
+      status.warnings.push({
+        type: 'breach',
+        severity: 'critical',
+        message: '⚠️ INCUMPLIMIENTO DEL FAIR PLAY FINANCIERO'
+      });
+      status.possibleSanctions = this.calculatePossibleSanctions(team, rules, totalLosses);
+    }
+
+    return status;
+  }
+
+  /**
+   * Estimar ingresos del equipo
+   */
+  estimateTeamRevenue(team) {
+    const baseRevenue = {
+      95: 800000000,  // Top clubs
+      90: 500000000,
+      85: 300000000,
+      80: 150000000,
+      75: 80000000,
+      70: 40000000,
+      65: 20000000,
+      60: 10000000,
+      50: 5000000
+    };
+
+    const rep = team.reputation || 70;
+    const nearestRep = Object.keys(baseRevenue)
+      .map(Number)
+      .sort((a, b) => Math.abs(a - rep) - Math.abs(b - rep))[0];
+
+    return baseRevenue[nearestRep] || 50000000;
+  }
+
+  /**
+   * Calcular masa salarial
+   */
+  calculateTeamWages(team) {
+    const players = (team.playerIds || []).map(id => this.getPlayer(id)).filter(Boolean);
+    return players.reduce((total, p) => total + (p.salary || 10000) * 52, 0);
+  }
+
+  /**
+   * Obtener balance de fichajes
+   */
+  getTeamTransferBalance(teamId) {
+    const oneYearAgo = Date.now() - 365 * 24 * 3600000;
+    const deals = this.completedDeals.filter(d => d.completedAt > oneYearAgo);
+
+    const incoming = deals.filter(d => d.toTeamId === teamId);
+    const outgoing = deals.filter(d => d.fromTeamId === teamId);
+
+    return {
+      in: incoming.reduce((sum, d) => sum + (d.amount || 0), 0),
+      out: outgoing.reduce((sum, d) => sum + (d.amount || 0), 0),
+      netSpend: incoming.reduce((sum, d) => sum + (d.amount || 0), 0) - 
+                outgoing.reduce((sum, d) => sum + (d.amount || 0), 0)
+    };
+  }
+
+  /**
+   * Calcular presupuesto disponible según FFP
+   */
+  calculateAvailableFFPBudget(team, rules, yearlyBalance) {
+    const maxLoss = rules.maxLoss3Years || 30000000;
+    const currentLosses = this.ffpStatus.threeYearLosses.reduce((a, b) => a + b, 0);
+    const remainingAllowedLoss = maxLoss - currentLosses;
+
+    // El presupuesto disponible es el menor entre:
+    // 1. El presupuesto real del equipo
+    // 2. Lo que podemos gastar sin violar FFP
+    const ffpBudget = Math.max(0, remainingAllowedLoss + yearlyBalance);
+
+    return Math.min(team.budget || 0, ffpBudget);
+  }
+
+  /**
+   * Calcular posibles sanciones
+   */
+  calculatePossibleSanctions(team, rules, totalLosses) {
+    const excess = totalLosses - (rules.maxLoss3Years || 30000000);
+    const sanctions = [];
+
+    if (excess > 0) {
+      sanctions.push({
+        type: 'warning',
+        description: 'Advertencia oficial',
+        likelihood: 100
+      });
+    }
+
+    if (excess > 10000000) {
+      sanctions.push({
+        type: 'fine',
+        description: `Multa estimada: ${this.formatMoney(excess * 0.1)}`,
+        likelihood: 80
+      });
+    }
+
+    if (excess > 30000000) {
+      sanctions.push({
+        type: 'squadLimit',
+        description: 'Límite de plantilla reducido',
+        likelihood: 60
+      });
+    }
+
+    if (excess > 50000000) {
+      sanctions.push({
+        type: 'transferBan',
+        description: 'Posible prohibición de fichajes',
+        likelihood: 40
+      });
+    }
+
+    if (excess > 100000000) {
+      sanctions.push({
+        type: 'europeBan',
+        description: 'Exclusión de competición europea',
+        likelihood: 30
+      });
+    }
+
+    return sanctions;
+  }
+
+  /**
+   * Verificar si una operación cumple FFP
+   */
+  checkFFPCompliance(teamId, proposedAmount) {
+    const status = this.calculateFFPStatus(teamId);
+    if (!status) return { compliant: true };
+
+    const afterOperation = status.availableBudget - proposedAmount;
+    
+    return {
+      compliant: afterOperation >= 0,
+      currentBudget: status.availableBudget,
+      proposedAmount,
+      remaining: afterOperation,
+      warnings: status.warnings,
+      message: afterOperation >= 0 
+        ? 'Operación dentro de los límites del FFP'
+        : `⚠️ Esta operación excedería el límite FFP en ${this.formatMoney(Math.abs(afterOperation))}`
+    };
   }
 
   // Helpers para acceder a datos del juego
