@@ -1,0 +1,944 @@
+.stadium {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+  
+  &__title {
+    h2 { 
+      margin: 0 0 0.25rem 0; 
+      font-weight: 600;
+      font-size: 1.4rem;
+
+      @media (max-width: 768px) {
+        font-size: 1.25rem;
+      }
+    }
+  }
+  
+  &__level {
+    font-size: 0.9rem;
+    color: var(--color-text-tertiary);
+  }
+  
+  &__budget {
+    padding: 0.75rem 1.25rem;
+    background: var(--color-glass);
+    border: 1px solid var(--color-glass-border);
+    border-radius: var(--border-radius-md);
+
+    @media (max-width: 768px) {
+      width: 100%;
+      text-align: center;
+    }
+    
+    .label { 
+      color: var(--color-text-tertiary); 
+      margin-right: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .value { 
+      font-weight: 700; 
+      color: var(--color-success); 
+      font-size: 1.1rem; 
+    }
+  }
+  
+  &__tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    
+    button {
+      padding: 0.75rem 1.1rem;
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-glass-border);
+      border-radius: var(--border-radius-md);
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      font-size: 16px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      -webkit-tap-highlight-color: transparent;
+
+      @media (max-width: 768px) {
+        padding: 0.7rem 1rem;
+        font-size: 0.9rem;
+      }
+      
+      &:active { 
+        transform: scale(0.98);
+      }
+      
+      &.active {
+        background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
+        color: #fff;
+        border-color: transparent;
+      }
+    }
+  }
+  
+  // === OVERVIEW ===
+  &__overview {
+    display: grid;
+    gap: 1.25rem;
+  }
+  
+  &__map {
+    .stadium-visual {
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+      aspect-ratio: 1.4;
+      background: var(--color-bg-card);
+      border-radius: var(--border-radius-lg);
+      padding: 1rem;
+
+      @media (max-width: 500px) {
+        padding: 0.75rem;
+      }
+      
+      .field {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50%;
+        height: 40%;
+        background: linear-gradient(to bottom, #2d5a27, #3d7a37);
+        border-radius: var(--border-radius-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+
+        @media (max-width: 500px) {
+          font-size: 1.5rem;
+        }
+      }
+      
+      .zone {
+        position: absolute;
+        background: var(--color-glass);
+        border: 1px solid var(--color-glass-border);
+        border-radius: var(--border-radius-sm);
+        padding: 0.5rem;
+        text-align: center;
+        font-size: 0.75rem;
+        transition: all 0.3s ease;
+
+        @media (max-width: 500px) {
+          padding: 0.35rem;
+          font-size: 0.65rem;
+        }
+        
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          height: 3px;
+          width: var(--occupancy, 0%);
+          background: var(--color-success);
+          border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
+        }
+        
+        .zone-name { 
+          display: block; 
+          font-weight: 600;
+
+          @media (max-width: 500px) {
+            font-size: 0.6rem;
+          }
+        }
+        .zone-capacity { 
+          font-size: 0.65rem; 
+          color: var(--color-text-tertiary);
+
+          @media (max-width: 500px) {
+            font-size: 0.55rem;
+          }
+        }
+        
+        &.vip {
+          top: 38%;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 45%;
+        }
+        
+        &.tribuna {
+          bottom: 38%;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 45%;
+        }
+        
+        &.lateral.left {
+          top: 50%;
+          left: 5%;
+          transform: translateY(-50%);
+          writing-mode: vertical-rl;
+          text-orientation: mixed;
+        }
+        
+        &.lateral.right {
+          top: 50%;
+          right: 5%;
+          transform: translateY(-50%);
+          writing-mode: vertical-rl;
+          text-orientation: mixed;
+        }
+        
+        &.fondo.top {
+          top: 5%;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 60%;
+        }
+        
+        &.fondo.bottom {
+          bottom: 5%;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 60%;
+        }
+      }
+    }
+  }
+  
+  &__quick-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+
+    @media (min-width: 769px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .stat-card {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem;
+      background: var(--color-glass);
+      border: 1px solid var(--color-glass-border);
+      border-radius: var(--border-radius-lg);
+
+      @media (max-width: 500px) {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+        padding: 0.85rem;
+      }
+      
+      .icon { font-size: 1.5rem; }
+      
+      .info {
+        .value { 
+          display: block; 
+          font-weight: 700; 
+          font-size: 1.1rem;
+
+          @media (max-width: 500px) {
+            font-size: 1rem;
+          }
+        }
+        .label { 
+          font-size: 0.8rem; 
+          color: var(--color-text-tertiary);
+
+          @media (max-width: 500px) {
+            font-size: 0.75rem;
+          }
+        }
+      }
+    }
+  }
+  
+  &__next-match {
+    padding: 1.25rem;
+    background: var(--color-glass);
+    border: 1px solid var(--color-glass-border);
+    border-radius: var(--border-radius-lg);
+
+    @media (max-width: 768px) {
+      padding: 1rem;
+    }
+    
+    h3 { 
+      margin: 0 0 1rem 0; 
+      font-size: 1rem;
+    }
+    
+    .match-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      
+      @media (max-width: 600px) {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
+    
+    .rival {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.25rem;
+
+      @media (max-width: 600px) {
+        text-align: center;
+        align-items: center;
+      }
+      
+      .vs { font-size: 0.8rem; color: var(--color-text-tertiary); }
+      .name { font-size: 1.2rem; font-weight: 700; }
+      .week { font-size: 0.85rem; color: var(--color-text-tertiary); }
+    }
+    
+    .prediction {
+      @media (max-width: 600px) {
+        text-align: center;
+      }
+
+      .attendance-prediction, .income-prediction {
+        display: flex;
+        align-items: baseline;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+
+        @media (max-width: 600px) {
+          justify-content: center;
+        }
+        
+        .label { font-size: 0.85rem; color: var(--color-text-tertiary); }
+        .value { font-size: 1.1rem; font-weight: 700; }
+        .percent { font-size: 0.8rem; color: var(--color-text-tertiary); }
+        
+        &.highlight .value { color: var(--color-success); }
+      }
+      
+      .income-breakdown {
+        display: flex;
+        gap: 1rem;
+        font-size: 0.8rem;
+        color: var(--color-text-tertiary);
+
+        @media (max-width: 600px) {
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+      }
+    }
+  }
+  
+  // === TICKETS ===
+  &__tickets {
+    h3 { margin: 0 0 0.5rem 0; }
+    
+    .hint {
+      color: var(--color-text-tertiary);
+      font-size: 0.9rem;
+      margin-bottom: 1.25rem;
+    }
+    
+    .ticket-zones {
+      display: grid;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+    
+    .ticket-zone {
+      padding: 1rem;
+      background: var(--color-glass);
+      border: 1px solid var(--color-glass-border);
+      border-radius: var(--border-radius-lg);
+      
+      .zone-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+        
+        .icon { font-size: 1.25rem; }
+        .name { font-weight: 600; flex: 1; }
+        .capacity { font-size: 0.85rem; color: var(--color-text-tertiary); }
+      }
+      
+      .price-control {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        margin-bottom: 0.75rem;
+        
+        button {
+          padding: 0.6rem 1rem;
+          background: var(--color-bg-card);
+          border: 1px solid var(--color-glass-border);
+          border-radius: var(--border-radius-md);
+          cursor: pointer;
+          font-weight: 600;
+          font-size: 16px;
+          -webkit-tap-highlight-color: transparent;
+          
+          &:active { transform: scale(0.95); }
+        }
+        
+        .current-price {
+          min-width: 100px;
+          text-align: center;
+          
+          .amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-warning);
+          }
+          
+          .adjustment {
+            display: block;
+            font-size: 0.8rem;
+            
+            &.up { color: var(--color-success); }
+            &.down { color: var(--color-danger); }
+          }
+        }
+      }
+      
+      .price-info {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8rem;
+        color: var(--color-text-tertiary);
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+    }
+    
+    .price-summary {
+      padding: 1rem;
+      background: var(--color-bg-card);
+      border-radius: var(--border-radius-lg);
+      
+      h4 { margin: 0 0 0.75rem 0; font-size: 0.9rem; }
+      
+      .impact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+
+        @media (max-width: 500px) {
+          grid-template-columns: 1fr;
+          gap: 0.75rem;
+        }
+        
+        .impact-item {
+          padding: 0.5rem;
+          background: var(--color-glass);
+          border-radius: var(--border-radius-sm);
+
+          .label { 
+            font-size: 0.85rem; 
+            color: var(--color-text-tertiary); 
+            display: block;
+          }
+          .value { font-weight: 700; font-size: 1.1rem; }
+          .value.warning { color: var(--color-warning); }
+        }
+      }
+    }
+  }
+  
+  // === SEASON TICKETS ===
+  &__season-tickets {
+    h3 { margin: 0 0 0.5rem 0; }
+    
+    .hint {
+      color: var(--color-text-tertiary);
+      font-size: 0.9rem;
+      margin-bottom: 1.25rem;
+    }
+    
+    .season-ticket-zones {
+      display: grid;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+    
+    .season-ticket-zone {
+      padding: 1rem;
+      background: var(--color-glass);
+      border: 1px solid var(--color-glass-border);
+      border-radius: var(--border-radius-lg);
+      
+      .zone-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+        
+        .icon { font-size: 1.25rem; }
+        .name { font-weight: 600; }
+      }
+      
+      .zone-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+        
+        @media (max-width: 600px) {
+          grid-template-columns: 1fr;
+          gap: 0.5rem;
+        }
+        
+        .stat {
+          padding: 0.5rem;
+          background: var(--color-bg-card);
+          border-radius: var(--border-radius-sm);
+          text-align: center;
+
+          @media (min-width: 601px) {
+            text-align: left;
+            background: transparent;
+            padding: 0;
+          }
+
+          .label { 
+            font-size: 0.8rem; 
+            color: var(--color-text-tertiary); 
+            display: block;
+          }
+          .value { font-weight: 600; }
+          .value.highlight { color: var(--color-success); }
+          .discount { 
+            font-size: 0.75rem; 
+            color: var(--color-success); 
+            margin-left: 0.25rem;
+          }
+        }
+      }
+      
+      .zone-controls {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        
+        button {
+          padding: 0.5rem 0.85rem;
+          background: var(--color-bg-card);
+          border: 1px solid var(--color-glass-border);
+          border-radius: var(--border-radius-md);
+          cursor: pointer;
+          font-size: 16px;
+          -webkit-tap-highlight-color: transparent;
+          
+          &:active { transform: scale(0.95); }
+        }
+        
+        .progress-bar {
+          flex: 1;
+          height: 8px;
+          background: var(--color-bg-card);
+          border-radius: var(--border-radius-pill);
+          overflow: hidden;
+          
+          .fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-accent), var(--color-success));
+            border-radius: var(--border-radius-pill);
+            transition: width 0.3s ease;
+          }
+        }
+      }
+    }
+    
+    .season-ticket-summary {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+
+      @media (max-width: 500px) {
+        grid-template-columns: 1fr;
+      }
+      
+      .summary-card {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1rem;
+        background: var(--color-glass);
+        border: 1px solid var(--color-glass-border);
+        border-radius: var(--border-radius-lg);
+        
+        &.highlight {
+          background: rgba(48, 209, 88, 0.1);
+          border-color: rgba(48, 209, 88, 0.3);
+          
+          .value { color: var(--color-success); }
+        }
+        
+        .icon { font-size: 1.5rem; }
+        
+        .info {
+          .value { display: block; font-weight: 700; font-size: 1.15rem; }
+          .label { font-size: 0.8rem; color: var(--color-text-tertiary); }
+        }
+      }
+    }
+  }
+  
+  // === SERVICES ===
+  &__services {
+    h3 { margin: 0 0 0.5rem 0; }
+    
+    .hint {
+      color: var(--color-text-tertiary);
+      font-size: 0.9rem;
+      margin-bottom: 1.25rem;
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+
+      @media (min-width: 600px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    .service-card {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      background: var(--color-glass);
+      border: 1px solid var(--color-glass-border);
+      border-radius: var(--border-radius-lg);
+      
+      &.unlocked {
+        border-color: var(--color-success);
+        background: rgba(48, 209, 88, 0.05);
+      }
+      
+      .service-icon {
+        font-size: 2rem;
+        margin-bottom: 0.75rem;
+      }
+      
+      .service-info {
+        flex: 1;
+        
+        h4 { margin: 0 0 0.5rem 0; }
+        
+        .service-detail {
+          font-size: 0.85rem;
+          color: var(--color-text-tertiary);
+          margin: 0;
+          
+          strong { color: var(--color-success); }
+        }
+      }
+      
+      .service-status {
+        margin-top: 1rem;
+        padding: 0.6rem;
+        text-align: center;
+        border-radius: var(--border-radius-md);
+        font-weight: 600;
+        
+        &.unlocked {
+          background: rgba(48, 209, 88, 0.2);
+          color: var(--color-success);
+        }
+      }
+      
+      .unlock-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 1rem;
+        padding: 0.85rem;
+        background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
+        border: none;
+        border-radius: var(--border-radius-md);
+        color: #fff;
+        font-weight: 600;
+        font-size: 16px;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        
+        &:active { 
+          transform: scale(0.98);
+        }
+        
+        &.disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+        
+        .cost {
+          font-size: 0.85rem;
+          opacity: 0.9;
+        }
+      }
+    }
+    
+    .tour-income {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem;
+      background: rgba(48, 209, 88, 0.1);
+      border: 1px solid rgba(48, 209, 88, 0.3);
+      border-radius: var(--border-radius-lg);
+      flex-wrap: wrap;
+      justify-content: center;
+      text-align: center;
+      
+      .icon { font-size: 1.25rem; }
+      strong { color: var(--color-success); }
+    }
+  }
+  
+  // === UPGRADE ===
+  &__upgrade {
+    h3 { margin: 0 0 1.25rem 0; }
+    
+    .current-stadium, .upgrade-section {
+      margin-bottom: 1.25rem;
+    }
+    
+    .stadium-card {
+      position: relative;
+      display: flex;
+      gap: 1.25rem;
+      padding: 1.25rem;
+      background: var(--color-glass);
+      border: 1px solid var(--color-glass-border);
+      border-radius: var(--border-radius-lg);
+      
+      @media (max-width: 600px) {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+      }
+      
+      &.current {
+        border-color: var(--color-success);
+      }
+      
+      &.next {
+        border-color: var(--color-accent);
+        background: rgba(10, 132, 255, 0.05);
+      }
+      
+      .stadium-visual-small {
+        font-size: 3rem;
+
+        @media (max-width: 600px) {
+          font-size: 2.5rem;
+        }
+      }
+      
+      .stadium-details {
+        flex: 1;
+        
+        h4 { margin: 0 0 0.5rem 0; font-size: 1.1rem; }
+        
+        .capacity {
+          font-size: 1rem;
+          font-weight: 600;
+          color: var(--color-success);
+          margin: 0 0 0.25rem 0;
+        }
+        
+        .maintenance {
+          font-size: 0.85rem;
+          color: var(--color-text-tertiary);
+          margin: 0 0 0.75rem 0;
+        }
+        
+        .features {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+
+          @media (max-width: 600px) {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+          }
+          
+          li {
+            font-size: 0.85rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 0.25rem;
+
+            @media (max-width: 600px) {
+              margin-bottom: 0;
+              padding: 0.25rem 0.5rem;
+              background: var(--color-bg-card);
+              border-radius: var(--border-radius-sm);
+            }
+          }
+        }
+      }
+      
+      .status-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        padding: 0.35rem 0.75rem;
+        background: var(--color-success);
+        color: #fff;
+        border-radius: var(--border-radius-pill);
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+      
+      .upgrade-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 1.5rem;
+        background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
+        border: none;
+        border-radius: var(--border-radius-md);
+        color: #fff;
+        font-weight: 600;
+        font-size: 16px;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        
+        &:active { 
+          transform: scale(0.98);
+        }
+        
+        &.disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+        
+        .cost {
+          font-size: 1.1rem;
+          margin-top: 0.25rem;
+        }
+
+        @media (max-width: 600px) {
+          width: 100%;
+          padding: 1rem;
+        }
+      }
+    }
+    
+    .upgrade-arrow {
+      text-align: center;
+      font-size: 1.5rem;
+      margin: 1rem 0;
+    }
+    
+    .max-level {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 2rem;
+      background: rgba(48, 209, 88, 0.1);
+      border: 1px solid rgba(48, 209, 88, 0.3);
+      border-radius: var(--border-radius-lg);
+      text-align: center;
+      flex-wrap: wrap;
+      
+      .icon { font-size: 2rem; }
+      span { font-size: 1.1rem; font-weight: 600; color: var(--color-success); }
+    }
+    
+    .upgrade-roadmap {
+      margin-top: 1.5rem;
+      
+      h4 { margin: 0 0 1rem 0; font-size: 0.9rem; }
+      
+      .roadmap {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
+        -webkit-overflow-scrolling: touch;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        
+        &::before {
+          content: '';
+          position: absolute;
+          top: 8px;
+          left: 0;
+          right: 0;
+          height: 2px;
+          background: var(--color-glass-border);
+        }
+        
+        .roadmap-item {
+          position: relative;
+          text-align: center;
+          flex-shrink: 0;
+          padding: 0 0.5rem;
+          
+          .roadmap-dot {
+            width: 18px;
+            height: 18px;
+            background: var(--color-bg-card);
+            border: 2px solid var(--color-glass-border);
+            border-radius: 50%;
+            margin: 0 auto 0.5rem;
+            position: relative;
+            z-index: 1;
+          }
+          
+          &.completed .roadmap-dot {
+            background: var(--color-success);
+            border-color: var(--color-success);
+          }
+          
+          &.current .roadmap-dot {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+            box-shadow: 0 0 10px var(--color-accent);
+          }
+          
+          .roadmap-info {
+            .name { display: block; font-size: 0.7rem; font-weight: 600; }
+            .capacity { font-size: 0.65rem; color: var(--color-text-tertiary); }
+          }
+        }
+      }
+    }
+  }
+}

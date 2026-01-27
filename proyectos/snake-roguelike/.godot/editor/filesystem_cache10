@@ -1,0 +1,16 @@
+72322a848ab928aa5c89f0cb78209805
+::res://::1769441489
+export_presets.cfg::TextFile::-1::1769440557::0::1::::<><><>0<>0<><>::
+icon.svg::CompressedTexture2D::3938250691883834090::1769433826::1769433880::1::::<><><>0<>0<>7ce2d987310fc5677c1be79f4e4e678b<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+README.md::TextFile::-1::1769434332::0::1::::<><><>0<>0<><>::
+::res://exports/::1769446509
+::res://resources/::1769433753
+::res://scenes/::1769433820
+main.tscn::PackedScene::-1::1769446580::0::1::::<><><>0<>0<><>::res://scripts/game_data.gd<>res://scripts/game_manager.gd<>res://scripts/touch_input.gd<>res://scripts/virtual_joystick.gd
+::res://scripts/::1769443284
+game_data.gd::GDScript::6140210026478084651::1769434159::0::1::::GameData<>Node<><>0<>0<><>::
+game_manager.gd::GDScript::4976699606836732404::1769446492::0::1::::GameManager<>Node2D<><>0<>0<><>::
+touch_controls.gd::GDScript::5209817705503514014::1769439613::0::1::::TouchControls<>CanvasLayer<><>0<>0<><>::
+touch_input.gd::GDScript::2297839974572081621::1769446466::0::1::::<>Node<><>0<>0<><>::
+ui_manager.gd::GDScript::5062826302936865709::1769434302::0::1::::UIManager<>CanvasLayer<><>0<>0<><>::
+virtual_joystick.gd::GDScript::8389634017146417770::1769446471::0::1::::VirtualJoystick<>Control<><>0<>0<><>::

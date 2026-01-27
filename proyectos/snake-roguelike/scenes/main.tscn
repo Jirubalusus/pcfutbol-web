@@ -1,0 +1,403 @@
+[gd_scene load_steps=8 format=3 uid="uid://main_scene"]
+
+[ext_resource type="Script" path="res://scripts/game_data.gd" id="1_data"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="2_game"]
+[ext_resource type="Script" path="res://scripts/touch_input.gd" id="4_touch"]
+[ext_resource type="Script" path="res://scripts/virtual_joystick.gd" id="5_joystick"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_topbar"]
+bg_color = Color(0.06, 0.06, 0.12, 0.95)
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn"]
+bg_color = Color(0.12, 0.15, 0.22, 0.9)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.25, 0.35, 0.45, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_play"]
+bg_color = Color(0.15, 0.5, 0.25, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.3, 0.8, 0.4, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="Main" type="Node2D"]
+
+[node name="GameData" type="Node" parent="."]
+script = ExtResource("1_data")
+
+[node name="GameManager" type="Node2D" parent="."]
+script = ExtResource("2_game")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="TopBar" type="PanelContainer" parent="UI"]
+offset_right = 720.0
+offset_bottom = 100.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_topbar")
+
+[node name="HBox" type="HBoxContainer" parent="UI/TopBar"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="ScorePanel" type="VBoxContainer" parent="UI/TopBar/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScoreLabel" type="Label" parent="UI/TopBar/HBox/ScorePanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 1, 0.4, 1)
+theme_override_colors/font_outline_color = Color(0, 0.2, 0.05, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 36
+text = "0"
+horizontal_alignment = 1
+
+[node name="ScoreText" type="Label" parent="UI/TopBar/HBox/ScorePanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.5, 0.7, 1)
+theme_override_font_sizes/font_size = 14
+text = "SCORE"
+horizontal_alignment = 1
+
+[node name="LevelPanel" type="VBoxContainer" parent="UI/TopBar/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LevelLabel" type="Label" parent="UI/TopBar/HBox/LevelPanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
+theme_override_colors/font_outline_color = Color(0.3, 0.2, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 36
+text = "1"
+horizontal_alignment = 1
+
+[node name="LevelText" type="Label" parent="UI/TopBar/HBox/LevelPanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.5, 0.7, 1)
+theme_override_font_sizes/font_size = 14
+text = "LEVEL"
+horizontal_alignment = 1
+
+[node name="LivesPanel" type="VBoxContainer" parent="UI/TopBar/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LivesLabel" type="Label" parent="UI/TopBar/HBox/LivesPanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.35, 0.4, 1)
+theme_override_colors/font_outline_color = Color(0.3, 0, 0.05, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 36
+text = "♥0"
+horizontal_alignment = 1
+
+[node name="LivesText" type="Label" parent="UI/TopBar/HBox/LivesPanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.5, 0.7, 1)
+theme_override_font_sizes/font_size = 14
+text = "LIVES"
+horizontal_alignment = 1
+
+[node name="ComboLabel" type="Label" parent="UI/TopBar"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 75.0
+offset_right = 150.0
+offset_bottom = 95.0
+theme_override_colors/font_color = Color(1, 0.6, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = ""
+
+[node name="PauseButton" type="Button" parent="UI/TopBar"]
+layout_mode = 2
+offset_left = 650.0
+offset_top = 10.0
+offset_right = 710.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0.8, 0.8, 0.9, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
+text = "⏸"
+
+[node name="Joystick" type="Control" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+script = ExtResource("5_joystick")
+base_radius = 100.0
+knob_radius = 45.0
+dead_zone = 0.25
+
+[node name="SwipeHint" type="Label" parent="UI"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -100.0
+offset_right = -20.0
+offset_bottom = -60.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.35, 0.35, 0.5, 0.6)
+theme_override_font_sizes/font_size = 14
+text = "👆 Swipe right
+side too!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartScreen" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Background" type="ColorRect" parent="UI/StartScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.02, 0.02, 0.06, 0.97)
+
+[node name="VBox" type="VBoxContainer" parent="UI/StartScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = -300.0
+mouse_filter = 2
+offset_right = 280.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="SnakeIcon" type="Label" parent="UI/StartScreen/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "🐍"
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="UI/StartScreen/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 1, 0.4, 1)
+theme_override_colors/font_outline_color = Color(0.05, 0.25, 0.1, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 56
+text = "SNAKE"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="UI/StartScreen/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
+theme_override_colors/font_outline_color = Color(0.25, 0.2, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 28
+text = "✦ ROGUELIKE ✦"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="UI/StartScreen/VBox"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="UI/StartScreen/VBox"]
+custom_minimum_size = Vector2(260, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0.15, 0.05, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_play")
+text = "▶  PLAY"
+
+[node name="Instructions" type="Label" parent="UI/StartScreen/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.5, 0.7, 1)
+theme_override_font_sizes/font_size = 16
+text = "🕹️ Use JOYSTICK to move
+🍎 Eat food to grow
+⚠️ Avoid walls!"
+horizontal_alignment = 1
+
+[node name="HighScore" type="Label" parent="UI/StartScreen/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.8, 1)
+theme_override_font_sizes/font_size = 18
+text = "🏆 Best: 0"
+horizontal_alignment = 1
+
+[node name="GameOverScreen" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Background" type="ColorRect" parent="UI/GameOverScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.02, 0.02, 0.97)
+
+[node name="VBox" type="VBoxContainer" parent="UI/GameOverScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = -220.0
+offset_right = 280.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="SkullIcon" type="Label" parent="UI/GameOverScreen/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "💀"
+horizontal_alignment = 1
+
+[node name="GameOverLabel" type="Label" parent="UI/GameOverScreen/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.25, 0.3, 1)
+theme_override_colors/font_outline_color = Color(0.25, 0, 0.05, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 44
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="FinalScore" type="Label" parent="UI/GameOverScreen/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 1, 0.4, 1)
+theme_override_colors/font_outline_color = Color(0, 0.2, 0.08, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 56
+text = "0"
+horizontal_alignment = 1
+
+[node name="ScoreText" type="Label" parent="UI/GameOverScreen/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.8, 1)
+theme_override_font_sizes/font_size = 18
+text = "POINTS"
+horizontal_alignment = 1
+
+[node name="StatsLabel" type="Label" parent="UI/GameOverScreen/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.5, 0.7, 1)
+theme_override_font_sizes/font_size = 14
+text = "Level 1 • 0 food"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="UI/GameOverScreen/VBox"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="RetryButton" type="Button" parent="UI/GameOverScreen/VBox"]
+custom_minimum_size = Vector2(260, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_play")
+text = "↻  RETRY"
+
+[node name="PauseScreen" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="UI/PauseScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.02, 0.02, 0.08, 0.92)
+
+[node name="VBox" type="VBoxContainer" parent="UI/PauseScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -90.0
+offset_right = 140.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="PauseIcon" type="Label" parent="UI/PauseScreen/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "⏸"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="UI/PauseScreen/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0.4, 1)
+theme_override_colors/font_outline_color = Color(0.25, 0.25, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 40
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="Hint" type="Label" parent="UI/PauseScreen/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.5, 0.7, 1)
+theme_override_font_sizes/font_size = 16
+text = "Tap ⏸ to continue"
+horizontal_alignment = 1
+
+[node name="TouchInput" type="Node" parent="."]
+script = ExtResource("4_touch")
