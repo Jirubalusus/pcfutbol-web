@@ -274,12 +274,18 @@ function gameReducer(state, action) {
       };
     
     case 'INJURE_PLAYER': {
+      // Centro médico reduce tiempo de lesiones
+      const medicalLevel = state.facilities?.medical || 0;
+      const medicalReduction = [0, 0.20, 0.35, 0.50][medicalLevel]; // 0%, 20%, 35%, 50%
+      const baseWeeks = action.payload.weeksOut;
+      const reducedWeeks = Math.max(1, Math.round(baseWeeks * (1 - medicalReduction)));
+      
       const updatedPlayers = state.team.players.map(p => {
         if (p.name === action.payload.playerName) {
           return {
             ...p,
             injured: true,
-            injuryWeeksLeft: action.payload.weeksOut,
+            injuryWeeksLeft: reducedWeeks,
             injuryType: action.payload.severity
           };
         }
@@ -419,6 +425,44 @@ function gameReducer(state, action) {
       return {
         ...state,
         team: { ...state.team, players: trainedPlayers }
+      };
+    }
+    
+    case 'GENERATE_YOUTH_PLAYER': {
+      // Cantera genera canteranos según nivel
+      const youthLevel = state.facilities?.youth || 0;
+      const maxOverall = [65, 72, 78, 85][youthLevel];
+      const minOverall = [55, 60, 65, 70][youthLevel];
+      
+      // Generar un canterano
+      const positions = ['GK', 'CB', 'RB', 'LB', 'CDM', 'CM', 'CAM', 'RW', 'LW', 'ST'];
+      const position = positions[Math.floor(Math.random() * positions.length)];
+      const overall = Math.floor(Math.random() * (maxOverall - minOverall + 1)) + minOverall;
+      const age = 17 + Math.floor(Math.random() * 3); // 17-19 años
+      
+      const firstNames = ['Pablo', 'Miguel', 'Carlos', 'David', 'Alejandro', 'Daniel', 'Javier', 'Sergio', 'Adrián', 'Hugo'];
+      const lastNames = ['García', 'Martínez', 'López', 'Sánchez', 'Fernández', 'González', 'Rodríguez', 'Pérez', 'Gómez', 'Ruiz'];
+      const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+      const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+      
+      const newPlayer = {
+        name: `${firstName} ${lastName}`,
+        position,
+        age,
+        overall,
+        potential: Math.min(99, overall + Math.floor(Math.random() * 15) + 5),
+        nationality: 'España',
+        salary: Math.round(overall * 5000),
+        value: Math.round(overall * overall * 10000),
+        isYouthProduct: true
+      };
+      
+      return {
+        ...state,
+        team: {
+          ...state.team,
+          players: [...state.team.players, newPlayer]
+        }
       };
     }
     
