@@ -8,6 +8,7 @@ const menuItems = [
   { id: 'squad', icon: '👥', label: 'Plantilla' },
   { id: 'formation', icon: '📋', label: 'Alineación' },
   { id: 'training', icon: '🏋️', label: 'Entrenamiento' },
+  { id: 'objectives', icon: '🎯', label: 'Objetivos' },
   { id: 'calendar', icon: '📅', label: 'Calendario' },
   { id: 'table', icon: '🏆', label: 'Clasificación' },
   { id: 'transfers', icon: '💼', label: 'Fichajes' },

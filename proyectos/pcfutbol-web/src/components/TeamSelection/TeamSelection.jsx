@@ -14,6 +14,7 @@ import {
   LEAGUES 
 } from '../../data/teams';
 import { initializeLeague } from '../../game/leagueEngine';
+import { generateSeasonObjectives } from '../../game/objectivesEngine';
 import './TeamSelection.scss';
 
 const COUNTRIES = [
@@ -125,6 +126,10 @@ export default function TeamSelection() {
     dispatch({ type: 'SET_LEAGUE_TABLE', payload: leagueData.table });
     dispatch({ type: 'SET_FIXTURES', payload: leagueData.fixtures });
     
+    // Generar objetivos de temporada
+    const objectives = generateSeasonObjectives(team, selectedLeague, leagueData.table);
+    dispatch({ type: 'SET_SEASON_OBJECTIVES', payload: objectives });
+    
     dispatch({
       type: 'ADD_MESSAGE',
       payload: {
@@ -135,6 +140,21 @@ export default function TeamSelection() {
         date: 'Semana 1'
       }
     });
+    
+    // Mensaje de objetivos
+    const criticalObj = objectives.find(o => o.priority === 'critical');
+    if (criticalObj) {
+      dispatch({
+        type: 'ADD_MESSAGE',
+        payload: {
+          id: Date.now() + 1,
+          type: 'objectives',
+          title: '🎯 Objetivos de temporada',
+          content: `La directiva espera: ${criticalObj.name}. ${criticalObj.description}.`,
+          date: 'Semana 1'
+        }
+      });
+    }
   };
   
   const selectedTeamData = teams.find(t => t.id === selectedTeam);
