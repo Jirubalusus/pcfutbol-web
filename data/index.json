@@ -1,0 +1,20 @@
+{
+  "version": "2025-26",
+  "source": "Transfermarkt",
+  "lastUpdated": "2026-01-27T19:50:10.205Z",
+  "files": [
+    "laliga.json",
+    "laliga2.json",
+    "premier.json",
+    "seriea.json",
+    "bundesliga.json",
+    "ligue1.json",
+    "free-agents.json",
+    "primera-rfef.json",
+    "segunda-rfef.json"
+  ],
+  "stats": {
+    "totalTeams": 248,
+    "totalPlayers": 5256
+  }
+}
