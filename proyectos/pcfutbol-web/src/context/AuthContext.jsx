@@ -97,6 +97,19 @@ export function AuthProvider({ children }) {
     return refreshedUser?.emailVerified || false;
   };
 
+  // Modo invitado para pruebas
+  const loginAsGuest = () => {
+    const guestUser = {
+      uid: 'guest_' + Date.now(),
+      email: 'invitado@pruebas.local',
+      displayName: 'Invitado',
+      emailVerified: true,
+      isGuest: true
+    };
+    setUser(guestUser);
+    return guestUser;
+  };
+
   const clearError = () => setError(null);
 
   const value = {
@@ -105,8 +118,10 @@ export function AuthProvider({ children }) {
     error,
     isAuthenticated: !!user,
     isEmailVerified: user?.emailVerified || false,
+    isGuest: user?.isGuest || false,
     login,
     loginGoogle,
+    loginAsGuest,
     register,
     logout,
     sendPasswordReset,
