@@ -445,6 +445,17 @@
         &:disabled { opacity: 0.5; cursor: not-allowed; }
       }
 
+      .grass-recovery {
+        margin: 0 0 0.75rem;
+        padding: 0.6rem 0.75rem;
+        background: rgba(48, 209, 88, 0.1);
+        border-radius: 8px;
+        font-size: 0.85rem;
+        color: var(--color-success);
+        
+        span { color: var(--color-text-tertiary); }
+      }
+
       .grass-warning {
         margin: 0;
         padding: 0.75rem;
@@ -694,6 +705,18 @@
       }
     }
 
+    .events-cooldown {
+      margin-bottom: 1rem;
+      padding: 1rem;
+      background: rgba(255, 214, 10, 0.1);
+      border: 1px solid rgba(255, 214, 10, 0.3);
+      border-radius: 12px;
+      color: var(--color-warning);
+      text-align: center;
+      
+      strong { color: #fff; }
+    }
+
     .events-warning {
       margin-top: 1rem;
       padding: 1rem;
@@ -702,6 +725,11 @@
       border-radius: 12px;
       color: var(--color-danger);
       text-align: center;
+    }
+
+    .event-card.disabled {
+      opacity: 0.6;
+      pointer-events: none;
     }
   }
 

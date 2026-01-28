@@ -219,6 +219,25 @@ function gameReducer(state, action) {
         });
       }
       
+      // Stadium: Grass recovery (+5% per week, max 100)
+      const GRASS_RECOVERY_PER_WEEK = 5;
+      const currentGrass = state.stadium?.grassCondition ?? 100;
+      const newGrassCondition = Math.min(100, currentGrass + GRASS_RECOVERY_PER_WEEK);
+      
+      // Stadium: Fan happiness recovery (slow natural recovery if below 70)
+      const currentFanHappiness = state.stadium?.fanHappiness ?? 70;
+      let newFanHappiness = currentFanHappiness;
+      if (currentFanHappiness < 70) {
+        newFanHappiness = Math.min(70, currentFanHappiness + 1); // +1% per week towards 70%
+      }
+      
+      // Update stadium state
+      const updatedStadium = state.stadium ? {
+        ...state.stadium,
+        grassCondition: newGrassCondition,
+        fanHappiness: newFanHappiness
+      } : state.stadium;
+      
       return { 
         ...state, 
         currentWeek: state.currentWeek + 1,
@@ -226,6 +245,7 @@ function gameReducer(state, action) {
         weeklyIncome: facilityIncome,
         weeklyExpenses: salaryExpenses,
         team: state.team ? { ...state.team, players: updatedPlayers } : null,
+        stadium: updatedStadium,
         messages: [...newMessages, ...state.messages].slice(0, 50),
         pendingEvent: newEvent || state.pendingEvent,
         facilityStats: {

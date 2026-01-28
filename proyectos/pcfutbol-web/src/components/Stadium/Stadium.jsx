@@ -32,16 +32,20 @@ const NAMING_SPONSORS = [
   { id: 'global_brand', name: 'GlobalBrand', offer: 12000000, minPrestige: 5, duration: 7 }
 ];
 
-// Eventos especiales
+// Eventos especiales (daño reducido y balanceado)
 const SPECIAL_EVENTS = [
-  { id: 'friendly_local', name: 'Amistoso Regional', icon: '⚽', income: 150000, fanHappiness: 5, grassDamage: 5, minLevel: 0 },
-  { id: 'friendly_euro', name: 'Amistoso Internacional', icon: '🌍', income: 400000, fanHappiness: 10, grassDamage: 10, minLevel: 1 },
-  { id: 'concert_local', name: 'Concierto Local', icon: '🎸', income: 300000, fanHappiness: -5, grassDamage: 25, minLevel: 1 },
-  { id: 'concert_star', name: 'Concierto Estrella', icon: '🎤', income: 800000, fanHappiness: 0, grassDamage: 40, minLevel: 2 },
-  { id: 'corporate', name: 'Evento Corporativo', icon: '💼', income: 200000, fanHappiness: -10, grassDamage: 5, minLevel: 2 },
-  { id: 'festival', name: 'Festival de Música', icon: '🎪', income: 1500000, fanHappiness: -15, grassDamage: 60, minLevel: 3 },
-  { id: 'legends_match', name: 'Partido de Leyendas', icon: '🏆', income: 600000, fanHappiness: 20, grassDamage: 10, minLevel: 2 }
+  { id: 'friendly_local', name: 'Amistoso Regional', icon: '⚽', income: 150000, fanHappiness: 5, grassDamage: 5, minLevel: 0, cooldown: 1 },
+  { id: 'friendly_euro', name: 'Amistoso Internacional', icon: '🌍', income: 400000, fanHappiness: 10, grassDamage: 8, minLevel: 1, cooldown: 2 },
+  { id: 'concert_local', name: 'Concierto Local', icon: '🎸', income: 300000, fanHappiness: -3, grassDamage: 15, minLevel: 1, cooldown: 2 },
+  { id: 'concert_star', name: 'Concierto Estrella', icon: '🎤', income: 800000, fanHappiness: 0, grassDamage: 25, minLevel: 2, cooldown: 3 },
+  { id: 'corporate', name: 'Evento Corporativo', icon: '💼', income: 200000, fanHappiness: -5, grassDamage: 3, minLevel: 2, cooldown: 1 },
+  { id: 'festival', name: 'Festival de Música', icon: '🎪', income: 1500000, fanHappiness: -10, grassDamage: 35, minLevel: 3, cooldown: 4 },
+  { id: 'legends_match', name: 'Partido de Leyendas', icon: '🏆', income: 600000, fanHappiness: 25, grassDamage: 8, minLevel: 2, cooldown: 2 }
 ];
+
+// Constantes de balance
+const GRASS_RECOVERY_PER_WEEK = 5; // El césped se recupera 5% por semana
+const EVENT_COOLDOWN_WEEKS = 2; // Mínimo 2 semanas entre eventos
 
 // Colores de asientos disponibles
 const SEAT_COLORS = [
@@ -86,6 +90,7 @@ export default function Stadium() {
     fanHappiness: 70,
     atmosphere: 50,
     vipBoxes: [], // [{ boxType, company, yearsLeft, yearlyIncome }]
+    lastEventWeek: 0, // Para cooldown entre eventos
     records: {
       maxAttendance: 0,
       maxAttendanceRival: null,
@@ -96,6 +101,10 @@ export default function Stadium() {
     },
     history: [] // [{ type, description, date, income }]
   };
+  
+  // Calcular semanas desde último evento (para cooldown)
+  const weeksSinceLastEvent = (state.currentWeek || 1) - (stadiumState.lastEventWeek || 0);
+  const canHostEvent = weeksSinceLastEvent >= EVENT_COOLDOWN_WEEKS;
   
   const currentLevel = STADIUM_LEVELS[stadiumState.level] || STADIUM_LEVELS[0];
   const nextLevel = STADIUM_LEVELS[stadiumState.level + 1];
@@ -290,6 +299,21 @@ export default function Stadium() {
   };
   
   const handleHostEvent = (event) => {
+    // Verificar cooldown
+    if (!canHostEvent) {
+      dispatch({
+        type: 'ADD_MESSAGE',
+        payload: {
+          id: Date.now(),
+          type: 'warning',
+          title: '⏳ Cooldown activo',
+          content: `Debes esperar ${EVENT_COOLDOWN_WEEKS - weeksSinceLastEvent} semanas más antes de organizar otro evento.`,
+          date: `Semana ${state.currentWeek}`
+        }
+      });
+      return;
+    }
+    
     // Aplicar efectos del evento
     const newGrassCondition = Math.max(0, (stadiumState.grassCondition || 100) - event.grassDamage);
     const newFanHappiness = Math.max(0, Math.min(100, (stadiumState.fanHappiness || 70) + event.fanHappiness));
@@ -298,6 +322,7 @@ export default function Stadium() {
       ...stadiumState,
       grassCondition: newGrassCondition,
       fanHappiness: newFanHappiness,
+      lastEventWeek: state.currentWeek || 1, // Guardar semana del evento
       records: {
         ...stadiumState.records,
         totalEvents: (stadiumState.records?.totalEvents || 0) + 1,
@@ -567,19 +592,28 @@ export default function Stadium() {
               ></div>
             </div>
             
+            {(stadiumState.grassCondition || 100) < 100 && (
+              <p className="grass-recovery">
+                ♻️ Recuperación natural: +{GRASS_RECOVERY_PER_WEEK}%/semana
+                {stadiumState.grassCondition < 100 && (
+                  <span> (100% en ~{Math.ceil((100 - (stadiumState.grassCondition || 100)) / GRASS_RECOVERY_PER_WEEK)} semanas)</span>
+                )}
+              </p>
+            )}
+            
             {stadiumState.grassCondition < 70 && (
               <button 
                 className="repair-btn"
                 onClick={handleRepairGrass}
                 disabled={state.money < 200000}
               >
-                <span>🔧 Renovar césped</span>
+                <span>🔧 Renovar césped (instantáneo)</span>
                 <span className="cost">{formatMoney(200000)}</span>
               </button>
             )}
             
             {stadiumState.grassCondition < 50 && (
-              <p className="grass-warning">⚠️ El mal estado del césped afecta al rendimiento del equipo</p>
+              <p className="grass-warning">⚠️ El mal estado del césped afecta al rendimiento del equipo (-2% factor cancha)</p>
             )}
           </div>
           
@@ -691,15 +725,22 @@ export default function Stadium() {
             Organiza eventos para generar ingresos extra. Cuidado: algunos dañan el césped o molestan a los fans.
           </p>
           
+          {/* Cooldown indicator */}
+          {!canHostEvent && (
+            <div className="events-cooldown">
+              ⏳ Cooldown activo: puedes organizar otro evento en <strong>{EVENT_COOLDOWN_WEEKS - weeksSinceLastEvent} semana(s)</strong>
+            </div>
+          )}
+          
           <div className="events-grid">
             {availableEvents.map(event => (
-              <div key={event.id} className="event-card">
+              <div key={event.id} className={`event-card ${!canHostEvent ? 'disabled' : ''}`}>
                 <div className="event-icon">{event.icon}</div>
                 <div className="event-info">
                   <h4>{event.name}</h4>
                   <div className="event-stats">
                     <span className="income">💰 {formatMoney(event.income)}</span>
-                    <span className={`grass ${event.grassDamage > 20 ? 'warning' : ''}`}>
+                    <span className={`grass ${event.grassDamage > 15 ? 'warning' : ''}`}>
                       🌱 -{event.grassDamage}%
                     </span>
                     <span className={`fans ${event.fanHappiness < 0 ? 'warning' : event.fanHappiness > 0 ? 'positive' : ''}`}>
@@ -710,9 +751,9 @@ export default function Stadium() {
                 <button 
                   className="host-event-btn"
                   onClick={() => handleHostEvent(event)}
-                  disabled={stadiumState.grassCondition < 30}
+                  disabled={!canHostEvent || stadiumState.grassCondition < 30}
                 >
-                  Organizar
+                  {canHostEvent ? 'Organizar' : '⏳ Espera'}
                 </button>
               </div>
             ))}
