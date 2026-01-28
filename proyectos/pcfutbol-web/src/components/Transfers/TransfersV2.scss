@@ -1,0 +1,927 @@
+// ============================================================
+// TRANSFERS V2 - Estilos del Mercado Renovado
+// ============================================================
+
+$primary: #0a84ff;
+$success: #30d158;
+$warning: #ff9f0a;
+$danger: #ff453a;
+$gold: #ffd60a;
+$dark-bg: #0d1117;
+$card-bg: #161b22;
+$card-border: #30363d;
+$text-primary: #f0f6fc;
+$text-secondary: #8b949e;
+
+.transfers-v2 {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: $dark-bg;
+  color: $text-primary;
+  overflow: hidden;
+}
+
+// ============================================================
+// HEADER
+// ============================================================
+
+.transfers-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(180deg, rgba(13, 17, 23, 0.95) 0%, rgba(22, 27, 34, 0.9) 100%);
+  border-bottom: 1px solid $card-border;
+
+  .header-left {
+    h1 {
+      margin: 0 0 0.5rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .window-status {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+
+      &.open {
+        background: rgba($success, 0.15);
+        color: $success;
+        animation: pulse 2s infinite;
+      }
+
+      &.closed {
+        background: rgba($text-secondary, 0.15);
+        color: $text-secondary;
+      }
+    }
+  }
+
+  .header-right {
+    .budget-display {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      background: rgba($success, 0.1);
+      border: 1px solid rgba($success, 0.3);
+      border-radius: 12px;
+
+      .label {
+        color: $text-secondary;
+        font-size: 0.8rem;
+      }
+
+      .amount {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: $success;
+      }
+    }
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+// ============================================================
+// TABS
+// ============================================================
+
+.transfers-tabs {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.75rem 1rem;
+  background: $card-bg;
+  border-bottom: 1px solid $card-border;
+  overflow-x: auto;
+
+  .tab {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1rem;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    color: $text-secondary;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: $text-primary;
+    }
+
+    &.active {
+      background: rgba($primary, 0.15);
+      color: $primary;
+    }
+
+    .badge {
+      padding: 0.15rem 0.5rem;
+      background: $danger;
+      border-radius: 10px;
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+  }
+}
+
+// ============================================================
+// CONTENT
+// ============================================================
+
+.transfers-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+// ============================================================
+// TAB: RESUMEN
+// ============================================================
+
+.tab-resumen {
+  .market-status-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: linear-gradient(135deg, $card-bg 0%, rgba($primary, 0.1) 100%);
+    border: 1px solid $card-border;
+    border-radius: 16px;
+    margin-bottom: 1.5rem;
+
+    .status-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba($primary, 0.2);
+
+      svg.open { color: $success; }
+      svg.closed { color: $text-secondary; }
+    }
+
+    .status-info {
+      h3 { margin: 0 0 0.25rem; }
+      p { margin: 0; color: $text-secondary; font-size: 0.9rem; }
+    }
+  }
+
+  .quick-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+
+    .stat-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1.25rem;
+      background: $card-bg;
+      border: 1px solid $card-border;
+      border-radius: 12px;
+      text-align: center;
+
+      svg { color: $primary; }
+      .stat-value { font-size: 1.5rem; font-weight: 700; }
+      .stat-label { color: $text-secondary; font-size: 0.8rem; }
+    }
+  }
+
+  .section {
+    margin-bottom: 1.5rem;
+
+    h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 0 0 1rem;
+      font-size: 1rem;
+      color: $text-secondary;
+    }
+  }
+
+  .transfers-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .transfer-item {
+      display: grid;
+      grid-template-columns: 2fr 2fr 1fr;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+      background: $card-bg;
+      border: 1px solid $card-border;
+      border-radius: 8px;
+
+      .player-info {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        .position {
+          padding: 0.2rem 0.4rem;
+          background: rgba($primary, 0.2);
+          border-radius: 4px;
+          font-size: 0.7rem;
+          font-weight: 600;
+        }
+
+        .name { font-weight: 500; }
+        .overall { color: $gold; font-weight: 700; }
+      }
+
+      .transfer-flow {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.85rem;
+        color: $text-secondary;
+
+        svg { color: $success; }
+        .to { color: $text-primary; }
+      }
+
+      .price {
+        text-align: right;
+        font-weight: 600;
+        color: $success;
+      }
+    }
+  }
+
+  .rumors-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .rumor-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      background: $card-bg;
+      border: 1px solid $card-border;
+      border-radius: 8px;
+
+      .rumor-text { flex: 1; }
+
+      .reliability {
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 600;
+
+        &.high { background: rgba($success, 0.2); color: $success; }
+        &.medium { background: rgba($warning, 0.2); color: $warning; }
+        &.low { background: rgba($danger, 0.2); color: $danger; }
+      }
+    }
+  }
+
+  .empty-state {
+    padding: 2rem;
+    text-align: center;
+    color: $text-secondary;
+  }
+}
+
+// ============================================================
+// TAB: BUSCAR
+// ============================================================
+
+.tab-buscar {
+  .search-bar {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+
+    .search-input-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1rem;
+      background: $card-bg;
+      border: 1px solid $card-border;
+      border-radius: 10px;
+
+      input {
+        flex: 1;
+        background: transparent;
+        border: none;
+        color: $text-primary;
+        font-size: 0.95rem;
+        outline: none;
+      }
+
+      .clear-btn {
+        background: transparent;
+        border: none;
+        color: $text-secondary;
+        cursor: pointer;
+        padding: 0;
+
+        &:hover { color: $text-primary; }
+      }
+    }
+
+    .filter-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1rem;
+      background: $card-bg;
+      border: 1px solid $card-border;
+      border-radius: 10px;
+      color: $text-secondary;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover, &.active {
+        background: rgba($primary, 0.1);
+        border-color: $primary;
+        color: $primary;
+      }
+    }
+  }
+
+  .filters-panel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+    background: $card-bg;
+    border: 1px solid $card-border;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      label {
+        font-size: 0.85rem;
+        color: $text-secondary;
+      }
+
+      select, input[type="range"] {
+        padding: 0.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid $card-border;
+        border-radius: 6px;
+        color: $text-primary;
+      }
+    }
+  }
+
+  .results-header {
+    margin-bottom: 1rem;
+    color: $text-secondary;
+    font-size: 0.9rem;
+  }
+
+  .players-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+
+    .player-card {
+      background: $card-bg;
+      border: 1px solid $card-border;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover {
+        border-color: $primary;
+        transform: translateY(-2px);
+      }
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem;
+        background: rgba(255, 255, 255, 0.03);
+
+        .position {
+          padding: 0.25rem 0.5rem;
+          border-radius: 4px;
+          font-size: 0.75rem;
+          font-weight: 700;
+
+          &[data-pos="GK"] { background: rgba($gold, 0.3); color: $gold; }
+          &[data-pos="CB"], &[data-pos="RB"], &[data-pos="LB"], &[data-pos="RWB"], &[data-pos="LWB"] { 
+            background: rgba($primary, 0.3); color: $primary; 
+          }
+          &[data-pos="CM"], &[data-pos="CDM"], &[data-pos="CAM"], &[data-pos="RM"], &[data-pos="LM"] { 
+            background: rgba($success, 0.3); color: $success; 
+          }
+          &[data-pos="ST"], &[data-pos="CF"], &[data-pos="RW"], &[data-pos="LW"] { 
+            background: rgba($danger, 0.3); color: $danger; 
+          }
+        }
+
+        .overall {
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: $gold;
+        }
+      }
+
+      .card-body {
+        padding: 0.75rem;
+
+        h4 {
+          margin: 0 0 0.25rem;
+          font-size: 1rem;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .team {
+          margin: 0 0 0.5rem;
+          color: $text-secondary;
+          font-size: 0.8rem;
+        }
+
+        .meta {
+          display: flex;
+          justify-content: space-between;
+          font-size: 0.8rem;
+          color: $text-secondary;
+
+          span:last-child { color: $success; }
+        }
+      }
+    }
+  }
+}
+
+// ============================================================
+// TAB: OFERTAS
+// ============================================================
+
+.tab-ofertas {
+  &.empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    text-align: center;
+
+    .empty-icon {
+      color: $text-secondary;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+    }
+
+    h3 { margin: 0 0 0.5rem; }
+    p { color: $text-secondary; }
+  }
+
+  .offer-card {
+    background: $card-bg;
+    border: 1px solid $card-border;
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+
+    &.incoming { border-left: 3px solid $warning; }
+    &.outgoing { border-left: 3px solid $primary; }
+
+    .offer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+
+      .from-team, .to-team {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 600;
+      }
+
+      .status {
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 600;
+
+        &.pending { background: rgba($warning, 0.2); color: $warning; }
+        &.accepted { background: rgba($success, 0.2); color: $success; }
+        &.rejected { background: rgba($danger, 0.2); color: $danger; }
+        &.countered { background: rgba($primary, 0.2); color: $primary; }
+      }
+    }
+
+    .offer-player {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+
+      .position {
+        padding: 0.25rem 0.5rem;
+        background: rgba($primary, 0.2);
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+
+      .name { font-weight: 500; }
+      .overall { color: $gold; font-weight: 700; }
+    }
+
+    .offer-amount {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: $success;
+      margin-bottom: 1rem;
+    }
+
+    .offer-actions {
+      display: flex;
+      gap: 0.5rem;
+
+      button {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.35rem;
+        padding: 0.6rem;
+        border: none;
+        border-radius: 8px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+
+        &.btn-accept {
+          background: rgba($success, 0.2);
+          color: $success;
+          &:hover { background: rgba($success, 0.3); }
+        }
+
+        &.btn-reject {
+          background: rgba($danger, 0.2);
+          color: $danger;
+          &:hover { background: rgba($danger, 0.3); }
+        }
+
+        &.btn-counter {
+          background: rgba($primary, 0.2);
+          color: $primary;
+          &:hover { background: rgba($primary, 0.3); }
+        }
+      }
+    }
+
+    .offer-status-detail {
+      color: $text-secondary;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+// ============================================================
+// TAB: NOTICIAS
+// ============================================================
+
+.tab-noticias {
+  h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 0 1rem;
+  }
+
+  .news-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    .news-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 1rem;
+      background: $card-bg;
+      border: 1px solid $card-border;
+      border-radius: 10px;
+
+      &.transfer { border-left: 3px solid $success; }
+      &.rumor { border-left: 3px solid $warning; }
+
+      .news-icon {
+        font-size: 1.25rem;
+      }
+
+      .news-content {
+        flex: 1;
+
+        p { margin: 0; }
+
+        .reliability {
+          display: inline-block;
+          margin-top: 0.5rem;
+          padding: 0.15rem 0.4rem;
+          background: rgba($warning, 0.2);
+          border-radius: 4px;
+          font-size: 0.7rem;
+          color: $warning;
+        }
+      }
+    }
+  }
+}
+
+// ============================================================
+// NEWS TICKER
+// ============================================================
+
+.news-ticker {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(90deg, $danger 0%, rgba($danger, 0.8) 100%);
+  color: white;
+  overflow: hidden;
+
+  .ticker-label {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.5rem 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .ticker-content {
+    flex: 1;
+    overflow: hidden;
+
+    .ticker-scroll {
+      display: flex;
+      gap: 3rem;
+      animation: ticker 30s linear infinite;
+      white-space: nowrap;
+
+      .ticker-item {
+        font-size: 0.85rem;
+      }
+    }
+  }
+}
+
+@keyframes ticker {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+// ============================================================
+// PLAYER MODAL
+// ============================================================
+
+.player-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.player-modal {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  background: $card-bg;
+  border: 1px solid $card-border;
+  border-radius: 16px;
+  overflow: hidden;
+
+  .modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem;
+    color: $text-secondary;
+    cursor: pointer;
+    z-index: 10;
+
+    &:hover {
+      background: rgba($danger, 0.3);
+      color: $danger;
+    }
+  }
+
+  .modal-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba($primary, 0.2) 0%, transparent 100%);
+
+    .player-position {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.9rem;
+
+      &[data-pos="GK"] { background: rgba($gold, 0.3); color: $gold; }
+      &[data-pos="CB"], &[data-pos="RB"], &[data-pos="LB"] { background: rgba($primary, 0.3); color: $primary; }
+      &[data-pos="CM"], &[data-pos="CDM"], &[data-pos="CAM"], &[data-pos="RM"], &[data-pos="LM"] { 
+        background: rgba($success, 0.3); color: $success; 
+      }
+      &[data-pos="ST"], &[data-pos="CF"], &[data-pos="RW"], &[data-pos="LW"] { 
+        background: rgba($danger, 0.3); color: $danger; 
+      }
+    }
+
+    .player-info {
+      flex: 1;
+
+      h2 {
+        margin: 0 0 0.25rem;
+        font-size: 1.25rem;
+      }
+
+      p {
+        margin: 0;
+        color: $text-secondary;
+        font-size: 0.9rem;
+      }
+    }
+
+    .player-overall {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: $gold;
+    }
+  }
+
+  .modal-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: rgba(0, 0, 0, 0.2);
+
+    .stat {
+      text-align: center;
+
+      .label {
+        display: block;
+        font-size: 0.75rem;
+        color: $text-secondary;
+        margin-bottom: 0.25rem;
+      }
+
+      .value {
+        font-weight: 600;
+      }
+    }
+  }
+
+  .modal-offer {
+    padding: 1.5rem;
+
+    h4 {
+      margin: 0 0 1rem;
+    }
+
+    .offer-input {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid $card-border;
+      border-radius: 10px;
+      margin-bottom: 0.75rem;
+
+      input {
+        flex: 1;
+        background: transparent;
+        border: none;
+        color: $text-primary;
+        font-size: 1.25rem;
+        font-weight: 600;
+        outline: none;
+      }
+    }
+
+    .offer-comparison {
+      margin-bottom: 1rem;
+      font-size: 0.85rem;
+
+      .low { color: $danger; }
+      .high { color: $warning; }
+      .fair { color: $success; }
+    }
+
+    .insufficient-funds {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem;
+      background: rgba($danger, 0.1);
+      border-radius: 8px;
+      color: $danger;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .btn-make-offer {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.9rem;
+      background: linear-gradient(135deg, $primary 0%, #0066d1 100%);
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba($primary, 0.4);
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+// ============================================================
+// RESPONSIVE
+// ============================================================
+
+@media (max-width: 768px) {
+  .transfers-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .tab-resumen .quick-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .tab-buscar .players-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .news-ticker {
+    display: none; // Ocultar en móvil
+  }
+}

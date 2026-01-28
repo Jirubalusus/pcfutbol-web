@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import { useGame } from '../../context/GameContext';
-import { FACILITY_SPECIALIZATIONS, getMedicalTreatmentsAvailable } from '../../game/facilitiesSystem';
+import { 
+  FACILITY_SPECIALIZATIONS, 
+  getMedicalTreatmentsAvailable,
+  getMedicalSlots,
+  getMedicalHealingWeeks,
+  getMedicalTreatmentCost
+} from '../../game/facilitiesSystem';
 import './Facilities.scss';
 
 const FACILITIES = [
@@ -155,13 +161,17 @@ export default function Facilities() {
   const facilitySpecs = state.facilitySpecs || {};
   const facilityStats = state.facilityStats || {};
   const pendingEvent = state.pendingEvent;
-  const medicalTreatmentsUsed = state.medicalTreatmentsUsed || 0;
   
-  // Get injured players and treatments available
+  // Nuevo sistema de slots médicos
   const medicalLevel = facilities.medical || 0;
-  const treatmentsAvailable = getMedicalTreatmentsAvailable(medicalLevel, medicalTreatmentsUsed);
+  const medicalSlots = state.medicalSlots || []; // Array de nombres de jugadores en tratamiento
+  const totalSlots = getMedicalSlots(medicalLevel);
+  const treatmentsAvailable = getMedicalTreatmentsAvailable(medicalLevel, medicalSlots);
+  const treatmentCost = getMedicalTreatmentCost(medicalLevel);
+  const healingWeeks = getMedicalHealingWeeks(medicalLevel);
   const injuredPlayers = state.team?.players?.filter(p => p.injured && p.injuryWeeksLeft > 0) || [];
-  const treatablePlayers = injuredPlayers.filter(p => !p.treated && p.injuryWeeksLeft > 1);
+  // Solo se puede tratar si no tiene médico asignado
+  const treatablePlayers = injuredPlayers.filter(p => !medicalSlots.includes(p.name));
   
   const formatMoney = (amount) => {
     if (amount >= 1000000) return `€${(amount / 1000000).toFixed(1)}M`;
@@ -226,7 +236,17 @@ export default function Facilities() {
   };
   
   const handleTreatPlayer = (playerName) => {
-    dispatch({ type: 'APPLY_MEDICAL_TREATMENT', payload: playerName });
+    // Verificar que hay slots disponibles y dinero
+    if (treatmentsAvailable <= 0 || state.money < treatmentCost) return;
+    
+    dispatch({ 
+      type: 'APPLY_MEDICAL_TREATMENT', 
+      payload: { 
+        playerName, 
+        healingWeeks,
+        cost: treatmentCost 
+      } 
+    });
   };
   
   const getSpecForFacility = (facilityId) => {
@@ -343,8 +363,13 @@ export default function Facilities() {
             </div>
             <div className="medical-treatments">
               <span className="treatment-badge">
-                💉 {treatmentsAvailable} tratamiento{treatmentsAvailable !== 1 ? 's' : ''} disponible{treatmentsAvailable !== 1 ? 's' : ''}
+                👨‍⚕️ Médicos: {treatmentsAvailable}/{totalSlots} disponibles
               </span>
+              {medicalLevel > 0 && (
+                <span className="treatment-info">
+                  Cura: -{healingWeeks} sem | Coste: {formatMoney(treatmentCost)}
+                </span>
+              )}
             </div>
           </div>
           
@@ -355,11 +380,12 @@ export default function Facilities() {
           ) : (
             <div className="medical-list">
               {injuredPlayers.map(player => {
-                const canTreat = treatmentsAvailable > 0 && !player.treated && player.injuryWeeksLeft > 1;
-                const newWeeks = Math.max(1, Math.ceil(player.injuryWeeksLeft / 2));
+                const hasDoctor = medicalSlots.includes(player.name);
+                const canTreat = treatmentsAvailable > 0 && !hasDoctor && medicalLevel > 0;
+                const newWeeks = Math.max(0, player.injuryWeeksLeft - healingWeeks);
                 
                 return (
-                  <div key={player.name} className={`medical-player ${player.treated ? 'treated' : ''}`}>
+                  <div key={player.name} className={`medical-player ${hasDoctor ? 'treated' : ''}`}>
                     <div className="player-avatar">
                       <span>{player.position}</span>
                     </div>
@@ -369,17 +395,18 @@ export default function Facilities() {
                         🤕 {player.injuryWeeksLeft} sem{player.injuryWeeksLeft > 1 ? 'anas' : 'ana'}
                       </span>
                     </div>
-                    {player.treated ? (
-                      <span className="player-badge treated">✓ Tratado</span>
-                    ) : player.injuryWeeksLeft === 1 ? (
-                      <span className="player-badge minor">Leve</span>
+                    {hasDoctor ? (
+                      <span className="player-badge treated">👨‍⚕️ En tratamiento</span>
+                    ) : medicalLevel === 0 ? (
+                      <span className="player-badge minor">Sin centro médico</span>
                     ) : (
                       <button 
                         className="treat-button"
                         onClick={() => canTreat && handleTreatPlayer(player.name)}
                         disabled={!canTreat}
+                        title={!canTreat ? 'No hay médicos disponibles' : `Reducir a ${newWeeks} semanas`}
                       >
-                        💉 → {newWeeks} sem
+                        💉 → {newWeeks} sem ({formatMoney(treatmentCost)})
                       </button>
                     )}
                   </div>

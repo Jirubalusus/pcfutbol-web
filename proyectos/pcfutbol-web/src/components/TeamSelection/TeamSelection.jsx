@@ -16,7 +16,10 @@ import {
 } from '../../data/teamsFirestore';
 import { getStadiumInfo, getStadiumLevel } from '../../data/stadiumCapacities';
 import { initializeLeague } from '../../game/leagueEngine';
+import { initializeOtherLeagues } from '../../game/multiLeagueEngine';
 import { generateSeasonObjectives } from '../../game/objectivesEngine';
+import { generatePreseasonOptions } from '../../game/seasonManager';
+import { Calendar, Plane, Home, Swords, Sparkles, CheckCircle2, ChevronRight } from 'lucide-react';
 import EuropeMap from './EuropeMap';
 import './TeamSelection.scss';
 import './EuropeMap.scss';
@@ -89,6 +92,9 @@ export default function TeamSelection() {
   const [selectedGroup, setSelectedGroup] = useState(null);
   const [selectedTeam, setSelectedTeam] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [showPreseason, setShowPreseason] = useState(false);
+  const [selectedPreseason, setSelectedPreseason] = useState(null);
+  const [preseasonOptions, setPreseasonOptions] = useState([]);
   
   // Determinar si la liga seleccionada tiene grupos
   const hasGroups = selectedLeague && LEAGUES_WITH_GROUPS.includes(selectedLeague);
@@ -166,8 +172,24 @@ export default function TeamSelection() {
     setSelectedTeam(team);
   };
   
-  const handleStartGame = async () => {
+  // Función para obtener todos los equipos de todas las ligas
+  const getAllTeamsForPreseason = () => [
+    ...getLaLigaTeams(), ...getSegundaTeams(), ...getPrimeraRfefTeams(), ...getSegundaRfefTeams(),
+    ...getPremierTeams(), ...getSerieATeams(), ...getBundesligaTeams(), ...getLigue1Teams()
+  ];
+
+  const handleShowPreseason = () => {
     if (!selectedTeam || !selectedLeague) return;
+    
+    // Generar opciones de pretemporada
+    const allTeams = getAllTeamsForPreseason();
+    const options = generatePreseasonOptions(allTeams, selectedTeam, selectedLeague);
+    setPreseasonOptions(options);
+    setShowPreseason(true);
+  };
+  
+  const handleStartGame = async () => {
+    if (!selectedTeam || !selectedLeague || !selectedPreseason) return;
     
     // Obtener equipos de la liga/grupo para la competición
     let leagueTeams;
@@ -190,12 +212,30 @@ export default function TeamSelection() {
         team: { ...selectedTeam },
         group: selectedGroup,
         stadiumInfo,
-        stadiumLevel
+        stadiumLevel,
+        preseasonMatches: selectedPreseason.matches,
+        preseasonPhase: true
       } 
     });
     
     dispatch({ type: 'SET_LEAGUE_TABLE', payload: leagueData.table });
     dispatch({ type: 'SET_FIXTURES', payload: leagueData.fixtures });
+    dispatch({ type: 'SET_PLAYER_LEAGUE', payload: selectedLeague });
+    
+    // Guardar todos los equipos de la liga para el mercado global
+    const allLeagueTeamsWithData = leagueTeams.map(t => ({
+      ...t,
+      id: t.id,
+      name: t.name,
+      players: t.players || [],
+      budget: t.budget || (t.reputation > 4 ? 100_000_000 : t.reputation > 3 ? 50_000_000 : 20_000_000),
+      leagueId: selectedLeague
+    }));
+    dispatch({ type: 'UPDATE_LEAGUE_TEAMS', payload: allLeagueTeamsWithData });
+    
+    // Inicializar otras ligas para poder verlas en la clasificación
+    const otherLeagues = initializeOtherLeagues(selectedLeague);
+    dispatch({ type: 'SET_OTHER_LEAGUES', payload: otherLeagues });
     
     const objectives = generateSeasonObjectives(selectedTeam, selectedLeague, leagueData.table);
     dispatch({ type: 'SET_SEASON_OBJECTIVES', payload: objectives });
@@ -646,7 +686,7 @@ export default function TeamSelection() {
                   )}
 
                   {/* Botón comenzar */}
-                  <button className="btn-start" onClick={handleStartGame}>
+                  <button className="btn-start" onClick={handleShowPreseason}>
                     ⚽ COMENZAR CON {selectedTeam.name?.toUpperCase()}
                   </button>
                 </div>
@@ -660,6 +700,100 @@ export default function TeamSelection() {
           </div>
         )}
       </div>
+      
+      {/* Modal de Pretemporada */}
+      {showPreseason && (
+        <div className="preseason-modal-overlay">
+          <div className="preseason-modal">
+            <div className="preseason-header">
+              <Calendar size={32} className="header-icon" />
+              <div>
+                <h1>Pretemporada {selectedTeam?.name}</h1>
+                <p>Elige tu plan de preparación antes de comenzar la liga</p>
+              </div>
+            </div>
+            
+            <p className="preseason-intro">
+              Selecciona uno de los siguientes paquetes de amistosos. 
+              El último partido siempre será en casa como presentación del equipo.
+            </p>
+            
+            <div className="preseason-options">
+              {preseasonOptions.map(option => (
+                <div 
+                  key={option.id}
+                  className={`preseason-card ${selectedPreseason?.id === option.id ? 'selected' : ''}`}
+                  onClick={() => setSelectedPreseason(option)}
+                >
+                  <div className="card-header">
+                    {option.id === 'prestige' && <Plane size={24} />}
+                    {option.id === 'balanced' && <Swords size={24} />}
+                    {option.id === 'regional' && <Home size={24} />}
+                    <h3>{option.name}</h3>
+                  </div>
+                  
+                  <p className="card-description">{option.description}</p>
+                  
+                  <div className="card-details">
+                    <span className={`difficulty difficulty--${option.difficulty}`}>
+                      Dificultad: {option.difficulty === 'high' ? 'Alta' : option.difficulty === 'medium' ? 'Media' : 'Baja'}
+                    </span>
+                    <span className="earnings">
+                      Ingresos potenciales: {option.potentialEarnings}
+                    </span>
+                  </div>
+                  
+                  <div className="matches-preview">
+                    <h4>Rivales:</h4>
+                    <ul>
+                      {option.matches.map((match, idx) => (
+                        <li key={idx}>
+                          <span className="match-location">
+                            {match.isHome ? <Home size={14} /> : <Plane size={14} />}
+                          </span>
+                          <span className="opponent-name">{match.opponent?.name || 'TBD'}</span>
+                          <span className="opponent-ovr">{match.opponent?.reputation || '??'} OVR</span>
+                          {match.isPresentationMatch && (
+                            <span className="presentation-badge">
+                              <Sparkles size={12} /> Presentación
+                            </span>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  {selectedPreseason?.id === option.id && (
+                    <div className="selected-indicator">
+                      <CheckCircle2 size={20} /> Seleccionado
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+            
+            <div className="preseason-actions">
+              <button 
+                className="btn-back" 
+                onClick={() => {
+                  setShowPreseason(false);
+                  setSelectedPreseason(null);
+                }}
+              >
+                Volver
+              </button>
+              <button 
+                className="btn-confirm"
+                onClick={handleStartGame}
+                disabled={!selectedPreseason}
+              >
+                Comenzar Temporada
+                <ChevronRight size={20} />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

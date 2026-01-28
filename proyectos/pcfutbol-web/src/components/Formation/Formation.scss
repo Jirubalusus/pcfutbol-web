@@ -15,21 +15,16 @@ $pcf-red: #c0392b;
 $pcf-white: #f0f0f0;
 $pcf-gray: #7f8c8d;
 
-// Colores de filas por POSICIÓN (estilo PC Fútbol clásico)
-$row-gk-1: #8a7a20;      // Portero - Amarillo oscuro
-$row-gk-2: #9a8a30;
-$row-def-1: #2a5a8a;     // Defensa - Azul
-$row-def-2: #3a6a9a;
-$row-mid-1: #2a7a4a;     // Medio - Verde
-$row-mid-2: #3a8a5a;
-$row-fwd-1: #8a3a3a;     // Delantero - Rojo
-$row-fwd-2: #9a4a4a;
+// FILAS: Fondos neutros, solo POS tiene color
+$row-odd: #2a3a4a;           // Gris azulado oscuro (odd)
+$row-even: #1e2e3e;          // Gris azulado más oscuro (even)
+$row-hover: #3a4a5a;         // Hover
 
-// Colores de convocados (más apagados)
-$row-conv-gk: #6a5a10;
-$row-conv-def: #1a4a6a;
-$row-conv-mid: #1a5a3a;
-$row-conv-fwd: #6a2a2a;
+// Colores solo para etiquetas de posición
+$pos-gk: #d4a017;            // Portero - Dorado
+$pos-def: #3498db;           // Defensa - Azul
+$pos-mid: #27ae60;           // Medio - Verde
+$pos-fwd: #e74c3c;           // Delantero - Rojo
 
 // Colores de no convocados (grises con tinte)
 $row-noconv-1: #3a3a3a;
@@ -281,26 +276,26 @@ $row-noconv-2: #4a4a4a;
 .pcf-table {
   .table-header {
     display: grid;
-    grid-template-columns: 35px 1fr repeat(7, 32px) 40px;
-    gap: 2px;
-    padding: 0.4rem 0.5rem;
-    background: linear-gradient(180deg, #4a7a4a 0%, #2a5a2a 100%);
-    border-bottom: 2px solid #6a9a6a;
-    
-    &.titulares {
-      background: linear-gradient(180deg, #4a7a4a 0%, #2a5a2a 100%);
-      border-bottom-color: #6a9a6a;
-    }
+    grid-template-columns: 35px 1fr 50px 50px; // Nº | JUGADOR | MED | POS
+    gap: 4px;
+    padding: 0.5rem 0.75rem;
+    background: linear-gradient(180deg, #1a2a3a 0%, #0a1a2a 100%);
+    border-bottom: 2px solid #3a4a5a;
     
     span {
-      font-size: 0.65rem;
+      font-size: 0.7rem;
       font-weight: 700;
-      color: $pcf-white;
+      color: #8a9aaa;
       text-align: center;
       
       &.col-name {
         text-align: left;
         padding-left: 0.5rem;
+      }
+      
+      &.col-attr {
+        color: $pcf-white;
+        font-size: 0.75rem;
       }
     }
   }
@@ -329,51 +324,54 @@ $row-noconv-2: #4a4a4a;
   
   .table-row {
     display: grid;
-    grid-template-columns: 35px 1fr repeat(7, 32px) 40px;
-    gap: 2px;
-    padding: 0.35rem 0.5rem;
+    grid-template-columns: 35px 1fr 50px 50px; // Nº | JUGADOR | MED | POS
+    gap: 4px;
+    padding: 0.4rem 0.75rem;
     cursor: pointer;
     transition: all 0.15s;
     border-bottom: 1px solid rgba(0,0,0,0.2);
+    align-items: center;
     
-    // Colores por POSICIÓN (estilo PC Fútbol clásico)
-    // Titulares - colores vivos
+    // TODAS las filas: Fondo neutro, solo POS con color
+    &:nth-child(odd) { background: $row-odd; }
+    &:nth-child(even) { background: $row-even; }
+    
+    &:hover:not(.selected) {
+      background: $row-hover;
+    }
+    
+    // Titulares - borde dorado sutil para distinguir
     &.titulares {
-      &.pos-gk { 
-        &:nth-child(odd) { background: $row-gk-1; }
-        &:nth-child(even) { background: $row-gk-2; }
-      }
-      &.pos-def { 
-        &:nth-child(odd) { background: $row-def-1; }
-        &:nth-child(even) { background: $row-def-2; }
-      }
-      &.pos-mid { 
-        &:nth-child(odd) { background: $row-mid-1; }
-        &:nth-child(even) { background: $row-mid-2; }
-      }
-      &.pos-fwd { 
-        &:nth-child(odd) { background: $row-fwd-1; }
-        &:nth-child(even) { background: $row-fwd-2; }
-      }
+      border-left: 3px solid $pcf-gold;
     }
     
-    // Convocados - colores más apagados
+    // Convocados - borde gris
     &.convocados {
-      &.pos-gk { background: $row-conv-gk; }
-      &.pos-def { background: $row-conv-def; }
-      &.pos-mid { background: $row-conv-mid; }
-      &.pos-fwd { background: $row-conv-fwd; }
+      border-left: 3px solid #5a6a7a;
     }
     
-    // No convocados - grises
+    // No convocados - sin borde, más apagado
     &.noconvocados {
-      &:nth-child(odd) { background: $row-noconv-1; }
-      &:nth-child(even) { background: $row-noconv-2; }
+      opacity: 0.7;
     }
     
     &.selected {
-      background: linear-gradient(90deg, $pcf-blue-light, #4a8abc) !important;
-      box-shadow: inset 0 0 10px rgba(255,255,255,0.2);
+      background: linear-gradient(90deg, #d4a017, #e6b422) !important;
+      box-shadow: inset 0 0 10px rgba(255,255,255,0.3), 0 0 8px rgba(212, 160, 23, 0.5);
+      
+      .col-name, .col-num, .col-attr, .col-pos {
+        color: #000 !important;
+        font-weight: 600;
+      }
+    }
+    
+    &.compatible-swap {
+      background: linear-gradient(90deg, rgba(45, 122, 74, 0.6), rgba(45, 122, 74, 0.4)) !important;
+      box-shadow: inset 0 0 8px rgba(45, 200, 100, 0.3);
+      
+      &:hover {
+        background: linear-gradient(90deg, rgba(45, 160, 90, 0.8), rgba(45, 160, 90, 0.6)) !important;
+      }
     }
     
     &.injured {
@@ -430,16 +428,31 @@ $row-noconv-2: #4a4a4a;
       }
       
       &.col-attr {
-        font-weight: 600;
-        font-size: 0.7rem;
+        font-weight: 800;
+        font-size: 0.95rem;
+        color: #fff;
+        background: rgba(0,0,0,0.3);
+        border-radius: 4px;
+        padding: 0.2rem 0.4rem;
+        min-width: 38px;
         
-        &.high { color: #7dff7d; }
-        &.low { color: #ff7d7d; }
+        &.high { 
+          color: #7dff7d; 
+          text-shadow: 0 0 8px rgba(125, 255, 125, 0.5);
+        }
+        &.low { 
+          color: #ff7d7d; 
+          text-shadow: 0 0 8px rgba(255, 125, 125, 0.5);
+        }
       }
       
       &.col-pos {
-        font-weight: 700;
         font-size: 0.7rem;
+        font-weight: 700;
+        padding: 0.3rem 0.5rem;
+        border-radius: 4px;
+        min-width: 44px;
+        // Color de fondo viene del style inline según posición
       }
     }
   }
@@ -629,6 +642,61 @@ $row-noconv-2: #4a4a4a;
       text-align: center;
     }
     
+    .player-role {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 0.25rem;
+      
+      .role-icon {
+        font-size: 1.2rem;
+      }
+      
+      .role-name {
+        font-weight: 600;
+        color: $pcf-white;
+        font-size: 0.9rem;
+      }
+    }
+    
+    .role-desc {
+      font-size: 0.7rem;
+      color: $pcf-gray;
+      text-align: center;
+      font-style: italic;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+    
+    .player-info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      
+      .info-item {
+        text-align: center;
+        padding: 0.3rem;
+        background: rgba(255,255,255,0.05);
+        border-radius: 4px;
+        
+        .label {
+          display: block;
+          font-size: 0.6rem;
+          color: $pcf-gray;
+          text-transform: uppercase;
+        }
+        
+        .value {
+          display: block;
+          font-size: 0.8rem;
+          color: $pcf-white;
+          font-weight: 600;
+        }
+      }
+    }
+    
     .player-bars {
       display: flex;
       flex-direction: column;
@@ -744,15 +812,21 @@ $row-noconv-2: #4a4a4a;
     button {
       width: 28px;
       height: 28px;
-      background: $pcf-red;
-      border: 2px solid #ff6050;
-      border-radius: 4px;
-      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 6px;
+      color: rgba(255, 255, 255, 0.7);
       font-size: 1rem;
       cursor: pointer;
+      transition: all 0.15s ease;
       
       &:hover {
-        background: #ff6050;
+        background: rgba(255, 69, 58, 0.8);
+        border-color: rgba(255, 69, 58, 0.9);
+        color: white;
       }
     }
   }
@@ -824,6 +898,986 @@ $row-noconv-2: #4a4a4a;
       color: $pcf-green-light;
       font-size: 1rem;
       text-align: center;
+    }
+  }
+}
+
+// ============================================================
+// MODALES DE GESTIÓN
+// ============================================================
+
+.pcf-modal--training,
+.pcf-modal--injured,
+.pcf-modal--stats,
+.pcf-modal--tactic {
+  max-width: 500px;
+  width: 95%;
+  
+  .modal-body {
+    padding: 1rem;
+    max-height: 60vh;
+  }
+  
+  .modal-tabs {
+    display: flex;
+    border-bottom: 2px solid $pcf-blue-mid;
+    
+    button {
+      flex: 1;
+      padding: 0.75rem;
+      background: transparent;
+      border: none;
+      color: $pcf-gray;
+      cursor: pointer;
+      transition: all 0.2s;
+      
+      &.active {
+        color: $pcf-gold;
+        border-bottom: 2px solid $pcf-gold;
+        margin-bottom: -2px;
+      }
+      
+      &:hover:not(.active) {
+        color: $pcf-white;
+      }
+    }
+  }
+  
+  .modal-footer {
+    display: flex;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    
+    button {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      border: none;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .btn-cancel {
+      background: #3a4a5a;
+      color: $pcf-white;
+      
+      &:hover {
+        background: #4a5a6a;
+      }
+    }
+    
+    .btn-confirm {
+      background: $pcf-green-light;
+      color: white;
+      
+      &:hover {
+        background: #4ade80; // lighten($pcf-green-light, 10%)
+      }
+    }
+  }
+}
+
+// ENTRENAMIENTO
+.pcf-modal--training {
+  .training-section {
+    margin-bottom: 1.5rem;
+    
+    label {
+      display: block;
+      color: $pcf-gold;
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+  }
+  
+  .training-types {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .training-type {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    grid-template-rows: auto auto;
+    gap: 0 0.75rem;
+    padding: 0.75rem;
+    background: rgba(255,255,255,0.05);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    
+    &:hover {
+      background: rgba(255,255,255,0.1);
+    }
+    
+    &.active {
+      border-color: $pcf-gold;
+      background: rgba($pcf-gold, 0.1);
+    }
+    
+    .icon {
+      grid-row: span 2;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .name {
+      color: $pcf-white;
+      font-weight: 600;
+    }
+    
+    .desc {
+      color: $pcf-gray;
+      font-size: 0.8rem;
+    }
+  }
+  
+  .intensity-options {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .intensity-btn {
+    flex: 1;
+    padding: 0.75rem 0.5rem;
+    background: rgba(255,255,255,0.05);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    
+    &:hover {
+      background: rgba(255,255,255,0.1);
+    }
+    
+    &.active {
+      border-color: $pcf-gold;
+      background: rgba($pcf-gold, 0.1);
+    }
+    
+    .name {
+      display: block;
+      color: $pcf-white;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    
+    .meta {
+      display: block;
+      color: $pcf-gray;
+      font-size: 0.7rem;
+    }
+  }
+  
+  .training-info {
+    padding: 0.75rem;
+    background: rgba($pcf-blue-light, 0.3);
+    border-radius: 6px;
+    color: $pcf-white;
+    font-size: 0.85rem;
+  }
+}
+
+// LESIONADOS
+.pcf-modal--injured {
+  .no-injured {
+    text-align: center;
+    padding: 2rem;
+    
+    .icon {
+      font-size: 3rem;
+      display: block;
+      margin-bottom: 1rem;
+    }
+    
+    p {
+      color: $pcf-white;
+      font-size: 1rem;
+    }
+  }
+  
+  .injured-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem;
+    background: rgba($pcf-blue-light, 0.3);
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    color: $pcf-white;
+  }
+  
+  .injured-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .injured-player {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.75rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    
+    .player-info {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      
+      .pos {
+        background: $pcf-blue-light;
+        color: white;
+        padding: 0.2rem 0.4rem;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+      
+      .name {
+        color: $pcf-white;
+        font-weight: 500;
+      }
+      
+      .ovr {
+        color: $pcf-gold;
+        font-weight: 700;
+      }
+    }
+    
+    .injury-info {
+      .weeks {
+        color: $pcf-red;
+        font-size: 0.85rem;
+      }
+    }
+    
+    .btn-treat {
+      padding: 0.5rem 1rem;
+      background: $pcf-green-light;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      
+      &:hover:not(:disabled) {
+        background: #4ade80; // lighten($pcf-green-light, 10%)
+      }
+      
+      &:disabled {
+        background: $pcf-gray;
+        cursor: not-allowed;
+      }
+    }
+  }
+  
+  .medical-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.75rem;
+    background: rgba($pcf-blue-light, 0.3);
+    border-radius: 6px;
+    
+    span {
+      color: $pcf-white;
+      font-size: 0.85rem;
+    }
+    
+    .hint {
+      color: $pcf-gray;
+      font-size: 0.75rem;
+    }
+  }
+}
+
+// ESTADÍSTICAS
+.pcf-modal--stats {
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+  }
+  
+  .stat-card {
+    background: rgba(255,255,255,0.05);
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    
+    .value {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: $pcf-gold;
+      margin-bottom: 0.25rem;
+    }
+    
+    .label {
+      color: $pcf-gray;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+    }
+  }
+  
+  .season-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+  }
+  
+  .stats-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 6px;
+    
+    .label {
+      color: $pcf-white;
+    }
+    
+    .value {
+      font-weight: 700;
+      color: $pcf-white;
+      
+      &.win { color: $pcf-green-light; }
+      &.draw { color: $pcf-gold; }
+      &.loss { color: $pcf-red; }
+      &.positive { color: $pcf-green-light; }
+      &.negative { color: $pcf-red; }
+    }
+    
+    &.highlight {
+      background: rgba($pcf-gold, 0.1);
+      border: 1px solid rgba($pcf-gold, 0.3);
+    }
+  }
+  
+  .top-players {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+  
+  .top-section {
+    h4 {
+      color: $pcf-gold;
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+  
+  .top-row {
+    display: grid;
+    grid-template-columns: 30px 1fr auto;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 6px;
+    margin-bottom: 0.25rem;
+    
+    .rank {
+      color: $pcf-gold;
+      font-weight: 700;
+    }
+    
+    .name {
+      color: $pcf-white;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    
+    .value {
+      color: $pcf-green-light;
+      font-weight: 600;
+    }
+  }
+}
+
+// TÁCTICA
+.pcf-modal--tactic {
+  .current-info {
+    padding: 0.75rem;
+    background: rgba($pcf-blue-light, 0.3);
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    color: $pcf-white;
+    font-size: 0.9rem;
+    
+    strong {
+      color: $pcf-gold;
+    }
+  }
+  
+  .tactic-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .tactic-option {
+    display: grid;
+    grid-template-columns: 50px 1fr 30px;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(255,255,255,0.05);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    
+    &:hover {
+      background: rgba(255,255,255,0.1);
+    }
+    
+    &.active {
+      border-color: $pcf-gold;
+      background: rgba($pcf-gold, 0.1);
+    }
+    
+    .icon {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+    
+    .info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      
+      .name {
+        color: $pcf-white;
+        font-weight: 600;
+      }
+      
+      .desc {
+        color: $pcf-gray;
+        font-size: 0.8rem;
+      }
+      
+      .style {
+        color: $pcf-blue-light;
+        font-size: 0.75rem;
+        font-style: italic;
+      }
+    }
+    
+    .check {
+      color: $pcf-gold;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+  }
+}
+
+// Selector de formaci�n en modal t�ctica
+.formation-selector {
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  
+  label {
+    display: block;
+    color: #8e8e93;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  
+  .formation-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    
+    .formation-btn {
+      padding: 8px 16px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+      
+      &.active {
+        background: rgba(10, 132, 255, 0.2);
+        border-color: #0a84ff;
+        color: #0a84ff;
+      }
+    }
+  }
+}
+
+// Toast de confirmaci�n
+.tactic-toast {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #30d158, #28a745);
+  color: #fff;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 20px rgba(48, 209, 88, 0.4);
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+// Nuevo dise�o de entrenamiento
+.training-locked {
+  text-align: center;
+  padding: 24px;
+  
+  .locked-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+  }
+  
+  h4 {
+    color: #ff9f0a;
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+  }
+  
+  p {
+    color: #8e8e93;
+    margin-bottom: 8px;
+    
+    strong {
+      color: #fff;
+    }
+  }
+  
+  .hint {
+    font-size: 0.85rem;
+    color: #666;
+  }
+}
+
+.training-hint {
+  color: #8e8e93;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.intensity-options-v2 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+  
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.intensity-card {
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.06);
+  }
+  
+  &.active {
+    border-color: var(--intensity-color);
+    background: rgba(var(--intensity-color), 0.1);
+  }
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    
+    .name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+    }
+    
+    .check {
+      color: var(--intensity-color);
+      font-weight: bold;
+    }
+  }
+  
+  .desc {
+    color: #8e8e93;
+    font-size: 0.8rem;
+    margin-bottom: 12px;
+  }
+  
+  .stats {
+    display: flex;
+    gap: 12px;
+    
+    .stat {
+      font-size: 0.75rem;
+      padding: 4px 8px;
+      border-radius: 6px;
+      
+      &.positive {
+        background: rgba(48, 209, 88, 0.2);
+        color: #30d158;
+      }
+      
+      &.negative {
+        background: rgba(255, 159, 10, 0.2);
+        color: #ff9f0a;
+      }
+    }
+  }
+}
+
+// Mejorar estilo de táctica
+.tactic-option .bonus {
+  font-size: 0.75rem;
+  color: var(--tactic-color, #8e8e93);
+  margin-top: 4px;
+  font-style: italic;
+}
+
+// ============================================================
+// MODAL ENTRENAMIENTO V2 - Rediseñado
+// ============================================================
+.pcf-modal--training-v2 {
+  width: 90%;
+  max-width: 720px;
+  background: linear-gradient(145deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.modal-header-v2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  
+  .header-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    
+    svg {
+      color: #ffd60a;
+    }
+    
+    h3 {
+      margin: 0;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #fff;
+    }
+  }
+  
+  .close-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    &:hover {
+      background: rgba(255, 69, 58, 0.3);
+      color: #ff453a;
+    }
+  }
+}
+
+.modal-body-v2 {
+  padding: 24px;
+}
+
+.training-subtitle {
+  color: #a0a0b0;
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+  line-height: 1.6;
+  text-align: center;
+  
+  strong {
+    color: #ffd60a;
+  }
+}
+
+.intensity-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+  
+  @media (max-width: 700px) {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.intensity-card-v2 {
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  
+  .card-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    opacity: 0.3;
+    transition: all 0.3s;
+  }
+  
+  .card-content {
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .card-icon {
+    margin-bottom: 12px;
+    
+    svg {
+      filter: drop-shadow(0 2px 8px currentColor);
+    }
+  }
+  
+  .card-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  
+  .card-desc {
+    font-size: 0.9rem;
+    color: #8e8e93;
+    margin-bottom: 8px;
+  }
+  
+  .card-details {
+    font-size: 0.8rem;
+    color: #6e6e73;
+    margin-bottom: 16px;
+    line-height: 1.4;
+    min-height: 40px;
+  }
+  
+  .card-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      padding: 6px 10px;
+      border-radius: 8px;
+      
+      &.positive {
+        background: rgba(48, 209, 88, 0.15);
+        color: #30d158;
+      }
+      
+      &.negative {
+        background: rgba(255, 159, 10, 0.15);
+        color: #ff9f0a;
+      }
+    }
+  }
+  
+  .selected-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #30d158;
+    border-radius: 50%;
+    padding: 4px;
+    color: #fff;
+    
+    svg {
+      display: block;
+    }
+  }
+  
+  &:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.15);
+    
+    .card-glow {
+      opacity: 0.6;
+      height: 6px;
+    }
+  }
+  
+  &.active {
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.06);
+    
+    .card-glow {
+      opacity: 1;
+      height: 6px;
+    }
+  }
+}
+
+.training-locked-v2 {
+  text-align: center;
+  padding: 40px 20px;
+  
+  .locked-icon-container {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    svg {
+      color: #8e8e93;
+    }
+  }
+  
+  h4 {
+    color: #fff;
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+  }
+  
+  p {
+    color: #a0a0b0;
+    margin-bottom: 8px;
+    
+    strong {
+      font-weight: 600;
+    }
+  }
+  
+  .hint {
+    color: #6e6e73;
+    font-size: 0.9rem;
+  }
+}
+
+.facility-info-v2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+  color: #8e8e93;
+  font-size: 0.9rem;
+  
+  svg {
+    color: #0a84ff;
+  }
+  
+  strong {
+    color: #fff;
+  }
+  
+  .bonus {
+    color: #30d158;
+    font-weight: 600;
+  }
+}
+
+.modal-footer-v2 {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 16px 24px;
+  background: rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  
+  button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+  }
+  
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+  }
+  
+  .btn-primary {
+    background: linear-gradient(135deg, #0a84ff 0%, #0066cc 100%);
+    color: #fff;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(10, 132, 255, 0.4);
     }
   }
 }

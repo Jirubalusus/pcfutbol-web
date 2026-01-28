@@ -1,221 +1,306 @@
-.calendar {
-  h2 { 
-    margin: 0 0 1.25rem 0;
-    font-weight: 600;
-    font-size: 1.4rem;
+.calendar-v2 {
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
 
-    @media (max-width: 768px) {
-      font-size: 1.2rem;
-      text-align: center;
-    }
-  }
-  
-  &__week-selector {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-bottom: 1rem;
-
-    @media (max-width: 768px) {
-      gap: 1rem;
-    }
-    
-    button {
-      padding: 0.75rem 1.25rem;
-      background: var(--color-bg-card);
-      border: 1px solid var(--color-glass-border);
-      border-radius: var(--border-radius-md);
-      color: var(--color-text-primary);
-      cursor: pointer;
-      transition: all var(--transition-fast);
-      font-size: 1.1rem;
-      -webkit-tap-highlight-color: transparent;
-
-      @media (max-width: 768px) {
-        padding: 0.85rem 1rem;
-      }
-      
-      &:disabled { 
-        opacity: 0.3;
-        cursor: not-allowed;
-      }
-
-      &:active:not(:disabled) { 
-        background: var(--color-bg-card-hover);
-        transform: scale(0.95);
-      }
-    }
-    
-    span {
-      font-size: 1.2rem;
-      font-weight: 600;
-      min-width: 120px;
-      text-align: center;
-
-      @media (max-width: 768px) {
-        font-size: 1.1rem;
-        min-width: 100px;
-      }
-    }
-  }
-  
-  &__week-nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem;
-    margin-bottom: 1.25rem;
-    padding: 1rem;
-    background: var(--color-glass);
-    backdrop-filter: var(--backdrop-blur);
-    border: 1px solid var(--color-glass-border);
-    border-radius: var(--border-radius-lg);
-    justify-content: center;
-
-    @media (max-width: 768px) {
-      padding: 0.75rem;
-      gap: 0.25rem;
-      overflow-x: auto;
-      flex-wrap: nowrap;
-      justify-content: flex-start;
-      -webkit-overflow-scrolling: touch;
-
-      &::-webkit-scrollbar {
-        display: none;
-      }
-    }
-  }
-  
-  &__week-btn {
-    width: 38px;
-    height: 38px;
-    border: none;
-    border-radius: var(--border-radius-sm);
-    background: var(--color-bg-card);
-    color: var(--color-text-secondary);
-    cursor: pointer;
-    font-size: 0.85rem;
-    font-weight: 500;
-    transition: all var(--transition-fast);
-    flex-shrink: 0;
-    -webkit-tap-highlight-color: transparent;
-
-    @media (max-width: 768px) {
-      width: 36px;
-      height: 36px;
-      font-size: 0.8rem;
-    }
-    
-    &:active { 
-      transform: scale(0.95);
-    }
-    
-    &.active { 
-      background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary)); 
-      color: #fff;
-      box-shadow: var(--shadow-glow);
-    }
-    
-    &.current { 
-      border: 2px solid var(--color-warning);
-    }
-    
-    &.past { 
-      color: var(--color-text-tertiary); 
-    }
-  }
-  
-  &__fixtures {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  &__fixture {
+  &__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 1.25rem;
-    background: var(--color-glass);
-    backdrop-filter: var(--backdrop-blur);
-    border: 1px solid var(--color-glass-border);
-    border-radius: var(--border-radius-lg);
-    transition: all var(--transition-fast);
+    margin-bottom: 24px;
 
-    @media (max-width: 768px) {
-      flex-direction: column;
-      gap: 0.75rem;
-      padding: 1rem;
-    }
-    
-    &.player-match {
-      background: rgba(0, 212, 255, 0.08);
-      border-color: rgba(0, 212, 255, 0.25);
-    }
-    
-    .teams {
+    h2 {
       display: flex;
       align-items: center;
-      gap: 1rem;
-      flex: 1;
+      gap: 12px;
+      font-size: 1.5rem;
+      color: #fff;
+      margin: 0;
+
+      svg {
+        color: #0a84ff;
+      }
+    }
+
+    .season-badge {
+      padding: 8px 16px;
+      background: rgba(10, 132, 255, 0.1);
+      border: 1px solid rgba(10, 132, 255, 0.3);
+      border-radius: 20px;
+      color: #0a84ff;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 20px;
+
+    .nav-btn {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
       justify-content: center;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.2s;
 
-      @media (max-width: 768px) {
-        width: 100%;
-        gap: 0.75rem;
-      }
-    }
-    
-    .team {
-      flex: 1;
-      font-size: 1rem;
-      
-      &.home { text-align: right; }
-      &.away { text-align: left; }
-      &.is-player { 
-        color: var(--color-accent);
-        font-weight: 600; 
+      &:hover:not(:disabled) {
+        background: rgba(255, 255, 255, 0.1);
       }
 
-      @media (max-width: 768px) {
-        font-size: 0.9rem;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+      &:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
       }
     }
-    
-    .vs {
-      font-weight: 700;
-      color: var(--color-text-tertiary);
-      min-width: 50px;
+
+    .nav-title {
       text-align: center;
-      padding: 0.25rem 0.5rem;
-      background: var(--color-bg-card);
-      border-radius: var(--border-radius-sm);
-      font-size: 0.9rem;
 
-      @media (max-width: 768px) {
-        min-width: 45px;
-        font-size: 0.85rem;
+      .week-label {
+        display: block;
+        font-size: 0.75rem;
+        color: #8e8e93;
+        text-transform: uppercase;
+      }
+
+      .week-number {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #fff;
       }
     }
-    
-    .status {
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 0.4rem 0.85rem;
-      border-radius: var(--border-radius-pill);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      
-      &.played { 
-        background: rgba(48, 209, 88, 0.15); 
-        color: var(--color-success); 
+  }
+
+  &__weeks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+    margin-bottom: 24px;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+
+    .week-btn {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid transparent;
+      border-radius: 8px;
+      color: #8e8e93;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
       }
-      &.pending { 
-        background: rgba(255, 214, 10, 0.15); 
-        color: var(--color-warning); 
+
+      &.selected {
+        background: #0a84ff;
+        color: #fff;
+        font-weight: 600;
+      }
+
+      &.current {
+        border-color: #ffd60a;
+        color: #ffd60a;
+      }
+
+      &.played {
+        color: #30d158;
+      }
+    }
+  }
+
+  &__fixtures {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .no-fixtures {
+      padding: 48px;
+      text-align: center;
+      color: #8e8e93;
+
+      svg {
+        opacity: 0.3;
+        margin-bottom: 16px;
+      }
+    }
+
+    .fixture-card {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto;
+      gap: 16px;
+      align-items: center;
+      padding: 16px 20px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      transition: all 0.2s;
+
+      @media (max-width: 640px) {
+        grid-template-columns: 1fr auto 1fr;
+        gap: 8px;
+        padding: 12px;
+        
+        .match-status {
+          grid-column: 1 / -1;
+          justify-content: center;
+          margin-top: 8px;
+        }
+      }
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      &.is-player {
+        background: rgba(10, 132, 255, 0.05);
+        border-color: rgba(10, 132, 255, 0.2);
+      }
+
+      .team {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        &.home {
+          justify-content: flex-end;
+          text-align: right;
+        }
+
+        &.away {
+          justify-content: flex-start;
+        }
+
+        &.is-you .team-name {
+          color: #0a84ff;
+          font-weight: 600;
+        }
+
+        .team-badge {
+          width: 36px;
+          height: 36px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: linear-gradient(135deg, #2a2f3e, #1a1f2e);
+          border-radius: 8px;
+          font-size: 0.65rem;
+          font-weight: 700;
+          color: #fff;
+          flex-shrink: 0;
+        }
+
+        .team-name {
+          font-size: 0.9rem;
+          color: #fff;
+          
+          @media (max-width: 640px) {
+            font-size: 0.8rem;
+            max-width: 80px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+        }
+
+        .home-indicator, .away-indicator {
+          display: flex;
+          align-items: center;
+          color: #8e8e93;
+        }
+      }
+
+      .match-center {
+        min-width: 80px;
+        text-align: center;
+
+        .score {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          font-size: 1.25rem;
+          font-weight: 700;
+
+          .separator {
+            color: #555;
+          }
+
+          &.result-w {
+            .home-score, .away-score { color: #fff; }
+          }
+          &.result-l {
+            .home-score, .away-score { color: #ff453a; }
+          }
+          &.result-d {
+            .home-score, .away-score { color: #ffd60a; }
+          }
+        }
+
+        .vs-badge {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+          padding: 6px 12px;
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 8px;
+          color: #8e8e93;
+          font-size: 0.8rem;
+        }
+      }
+
+      .match-status {
+        display: flex;
+        justify-content: flex-end;
+
+        .status-badge {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          padding: 6px 12px;
+          border-radius: 8px;
+          font-size: 0.75rem;
+          font-weight: 500;
+
+          &.played {
+            background: rgba(48, 209, 88, 0.1);
+            color: #30d158;
+          }
+
+          &.pending {
+            background: rgba(255, 214, 10, 0.1);
+            color: #ffd60a;
+          }
+
+          &.upcoming {
+            background: rgba(142, 142, 147, 0.1);
+            color: #8e8e93;
+          }
+
+          &.missed {
+            background: rgba(255, 69, 58, 0.1);
+            color: #ff453a;
+          }
+        }
       }
     }
   }

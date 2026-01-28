@@ -877,3 +877,209 @@ $pcf-text: #bdc3c7;
   0%, 100% { transform: translateX(0); }
   50% { transform: translateX(-10px); }
 }
+
+// Modal de Pretemporada
+.preseason-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.preseason-modal {
+  background: linear-gradient(145deg, #1a1f2e, #141824);
+  border-radius: 20px;
+  padding: 32px;
+  max-width: 1100px; width: calc(100% - 40px);
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.preseason-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  
+  .header-icon { color: #0a84ff; }
+  h1 { font-size: 1.5rem; color: #fff; margin: 0; }
+  p { color: #8e8e93; margin: 4px 0 0; }
+}
+
+.preseason-intro {
+  color: #aaa;
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.preseason-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.preseason-card {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  &.selected {
+    border-color: #0a84ff;
+    background: rgba(10, 132, 255, 0.1);
+  }
+  
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    
+    svg { color: #0a84ff; }
+    h3 { color: #fff; font-size: 1.1rem; margin: 0; }
+  }
+  
+  .card-description {
+    color: #8e8e93;
+    font-size: 0.85rem;
+    margin-bottom: 16px;
+    line-height: 1.4;
+  }
+  
+  .card-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+    
+    .difficulty {
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      border-radius: 12px;
+      width: fit-content;
+      
+      &--high { background: rgba(255, 69, 58, 0.2); color: #ff453a; }
+      &--medium { background: rgba(255, 159, 10, 0.2); color: #ff9f0a; }
+      &--low { background: rgba(48, 209, 88, 0.2); color: #30d158; }
+    }
+    
+    .earnings { font-size: 0.85rem; color: #30d158; }
+  }
+  
+  .matches-preview {
+    h4 {
+      color: #8e8e93;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      margin: 0 0 8px;
+    }
+    
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      
+      li {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        font-size: 0.85rem;
+        
+        &:last-child { border-bottom: none; }
+        .match-location { color: #8e8e93; }
+        .opponent-name { flex: 1; color: #fff; }
+        .opponent-ovr { color: #8e8e93; font-size: 0.75rem; }
+        
+        .presentation-badge {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          padding: 2px 8px;
+          background: rgba(255, 214, 10, 0.2);
+          color: #ffd60a;
+          border-radius: 10px;
+          font-size: 0.7rem;
+        }
+      }
+    }
+  }
+  
+  .selected-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding: 10px;
+    background: rgba(10, 132, 255, 0.2);
+    border-radius: 8px;
+    color: #0a84ff;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+}
+
+.preseason-actions {
+  display: flex;
+  gap: 12px;
+  
+  .btn-back {
+    padding: 14px 24px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    color: #fff;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    
+    &:hover { background: rgba(255, 255, 255, 0.15); }
+  }
+  
+  .btn-confirm {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 24px;
+    background: linear-gradient(135deg, #30d158, #28a745);
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(48, 209, 88, 0.3);
+    }
+    
+    &:disabled { opacity: 0.5; cursor: not-allowed; }
+  }
+}
+

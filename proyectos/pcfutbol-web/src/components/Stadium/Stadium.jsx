@@ -1,6 +1,9 @@
 import React, { useState, useMemo, Suspense } from 'react';
 import { useGame } from '../../context/GameContext';
 import { 
+  getLaLigaTeams, getSegundaTeams, getPremierTeams, getSerieATeams, getBundesligaTeams, getLigue1Teams
+} from '../../data/teamsFirestore';
+import { 
   predictAttendance, 
   calculateMatchIncome,
   calculateSeasonTicketIncome,
@@ -10,6 +13,12 @@ import {
 } from '../../game/stadiumEconomy';
 import './Stadium.scss';
 
+// Función para obtener todos los equipos
+const getAllTeams = () => [
+  ...getLaLigaTeams(), ...getSegundaTeams(), ...getPremierTeams(), 
+  ...getSerieATeams(), ...getBundesligaTeams(), ...getLigue1Teams()
+];
+
 // Lazy load del componente 3D
 const Stadium3D = React.lazy(() => import('../Stadium3D/Stadium3D'));
 
@@ -18,11 +27,11 @@ const HOME_GAMES_PER_SEASON = 19;
 const SEASON_TICKET_DISCOUNT = 0.35; // 35% descuento abonados
 
 const STADIUM_LEVELS = [
-  { name: 'Municipal', capacity: 8000, maintenance: 50000, upgradeCost: null, prestige: 1 },
-  { name: 'Moderno', capacity: 18000, maintenance: 120000, upgradeCost: 8000000, prestige: 2 },
-  { name: 'Grande', capacity: 35000, maintenance: 280000, upgradeCost: 25000000, prestige: 3 },
-  { name: 'Élite', capacity: 55000, maintenance: 450000, upgradeCost: 60000000, prestige: 4 },
-  { name: 'Legendario', capacity: 80000, maintenance: 700000, upgradeCost: 120000000, prestige: 5 }
+  { name: 'Municipal', capacity: 8000, maintenance: 500000, upgradeCost: null, prestige: 1 },      // €500K/año
+  { name: 'Moderno', capacity: 18000, maintenance: 1200000, upgradeCost: 8000000, prestige: 2 },   // €1.2M/año
+  { name: 'Grande', capacity: 35000, maintenance: 2500000, upgradeCost: 25000000, prestige: 3 },   // €2.5M/año
+  { name: 'Élite', capacity: 55000, maintenance: 4000000, upgradeCost: 60000000, prestige: 4 },    // €4M/año
+  { name: 'Legendario', capacity: 80000, maintenance: 6000000, upgradeCost: 120000000, prestige: 5 } // €6M/año
 ];
 
 const NAMING_SPONSORS = [
@@ -95,7 +104,7 @@ export default function Stadium() {
   const lastEventWeek = stadium.lastEventWeek ?? 0;
   const seasonTicketIncome = (seasonTickets || 0) * seasonTicketPrice;
   const namingIncome = naming?.yearlyIncome ?? 0;
-  const maintenanceCost = (currentLevel?.maintenance || 50000) * 52; // Anual
+  const maintenanceCost = currentLevel?.maintenance || 500000; // Ya es anual
   const annualBalance = seasonTicketIncome + namingIncome - maintenanceCost;
   
   // Factor cancha simple (basado en nivel + ocupación)
@@ -163,14 +172,38 @@ export default function Stadium() {
   };
   
   const handleCancelNaming = () => {
+    // Penalización por cancelar: 50% del valor restante del contrato
+    const penalty = naming ? Math.round(naming.yearlyIncome * naming.yearsLeft * 0.5) : 0;
+    
+    if (penalty > 0 && state.money < penalty) {
+      dispatch({
+        type: 'ADD_MESSAGE',
+        payload: {
+          id: Date.now(),
+          type: 'warning',
+          title: '⚠️ Fondos insuficientes',
+          content: `Necesitas €${(penalty / 1000000).toFixed(1)}M para pagar la penalización por cancelar el contrato.`,
+          date: `Semana ${state.currentWeek}`
+        }
+      });
+      return;
+    }
+    
     updateStadium({ naming: null });
+    
+    if (penalty > 0) {
+      dispatch({ type: 'UPDATE_MONEY', payload: -penalty });
+    }
+    
     dispatch({
       type: 'ADD_MESSAGE',
       payload: {
         id: Date.now(),
         type: 'stadium',
         title: '🏟️ Naming cancelado',
-        content: 'El estadio recupera su nombre original',
+        content: penalty > 0 
+          ? `El estadio recupera su nombre original. Penalización pagada: €${(penalty / 1000000).toFixed(1)}M`
+          : 'El estadio recupera su nombre original',
         date: `Semana ${state.currentWeek}`
       }
     });
@@ -226,10 +259,11 @@ export default function Stadium() {
     return `€${Math.round(n)}`;
   };
   
-  // Nombre del estadio (usar nombre real si existe, o naming rights si hay sponsor)
+  // Nombre del estadio (mantener nombre original + naming rights si hay sponsor)
+  const baseStadiumName = stadium.name || state.team?.stadium || `Estadio ${currentLevel.name}`;
   const displayStadiumName = naming 
-    ? `${naming.name} Arena` 
-    : (stadium.name || state.team?.stadium || `Estadio ${currentLevel.name}`);
+    ? `${baseStadiumName} - ${naming.name} Arena` 
+    : baseStadiumName;
   
   // === PRÓXIMO PARTIDO EN CASA ===
   const nextHomeMatch = useMemo(() => {
@@ -245,12 +279,16 @@ export default function Stadium() {
   
   // Obtener datos del rival y predicción
   const matchPrediction = useMemo(() => {
-    if (!nextHomeMatch || !state.allTeams || !state.table) return null;
+    if (!nextHomeMatch) return null;
     
-    const rivalTeam = state.allTeams.find(t => t.id === nextHomeMatch.awayTeam);
-    const rivalEntry = state.table?.find(t => t.teamId === nextHomeMatch.awayTeam);
-    const teamEntry = state.table?.find(t => t.teamId === state.team?.id);
-    const totalTeams = state.table?.length || 20;
+    // Obtener todos los equipos
+    const allTeams = getAllTeams();
+    const table = state.leagueTable || [];
+    
+    const rivalTeam = allTeams.find(t => t.id === nextHomeMatch.awayTeam);
+    const rivalEntry = table.find(t => t.teamId === nextHomeMatch.awayTeam);
+    const teamEntry = table.find(t => t.teamId === state.team?.id);
+    const totalTeams = table.length || 20;
     
     if (!rivalTeam) return null;
     
@@ -268,18 +306,18 @@ export default function Stadium() {
         seasonTickets,
         ticketPrice: matchPrice,
         rivalTeam,
-        rivalPosition: rivalEntry?.played > 0 ? state.table.findIndex(t => t.teamId === rivalTeam.id) + 1 : 10,
-        teamPosition: teamEntry?.played > 0 ? state.table.findIndex(t => t.teamId === state.team?.id) + 1 : 10,
+        rivalPosition: rivalEntry?.played > 0 ? table.findIndex(t => t.teamId === rivalTeam.id) + 1 : 10,
+        teamPosition: teamEntry?.played > 0 ? table.findIndex(t => t.teamId === state.team?.id) + 1 : 10,
         totalTeams,
         streak: teamEntry?.streak || 0,
         morale: teamEntry?.morale || 70,
-        leagueId: state.leagueId || 'laliga',
+        leagueId: state.playerLeagueId || 'laliga',
         homeTeamId: state.team?.id,
         awayTeamId: rivalTeam.id
       }),
       matchPrice
     };
-  }, [nextHomeMatch, state.allTeams, state.table, state.team, state.leagueId, capacity, seasonTickets, ticketPrice, stadium.matchPriceAdjust]);
+  }, [nextHomeMatch, state.leagueTable, state.team, state.playerLeagueId, capacity, seasonTickets, ticketPrice, stadium.matchPriceAdjust]);
   
   // Ajustar precio para el próximo partido
   const handleMatchPriceAdjust = (delta) => {
@@ -335,9 +373,6 @@ export default function Stadium() {
       <div className="stadium-simple__tabs">
         <button className={activeTab === 'general' ? 'active' : ''} onClick={() => setActiveTab('general')}>
           📊 General
-        </button>
-        <button className={activeTab === 'tickets' ? 'active' : ''} onClick={() => setActiveTab('tickets')}>
-          🎟️ Taquilla
         </button>
         <button className={activeTab === 'sponsors' ? 'active' : ''} onClick={() => setActiveTab('sponsors')}>
           💰 Patrocinio
@@ -417,6 +452,27 @@ export default function Stadium() {
               <span className="price-value">€{ticketPrice}</span>
               <button onClick={() => handleTicketPriceChange(5)}>+5€</button>
             </div>
+            
+            {/* Última jornada en casa */}
+            {(stadium.lastMatchAttendance || stadium.lastMatchIncome) && (
+              <div className="last-match-info">
+                <h4>📊 Última jornada en casa</h4>
+                <div className="last-match-stats">
+                  {stadium.lastMatchAttendance && (
+                    <div className="stat-row">
+                      <span className="label">👥 Asistentes</span>
+                      <span className="value">{stadium.lastMatchAttendance.toLocaleString()}</span>
+                    </div>
+                  )}
+                  {stadium.lastMatchIncome && (
+                    <div className="stat-row income">
+                      <span className="label">💰 Ingresos taquilla</span>
+                      <span className="value">{formatMoney(stadium.lastMatchIncome)}</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
           
           {/* Balance */}
@@ -474,155 +530,6 @@ export default function Stadium() {
         </div>
       )}
       
-      {/* TAB: TICKETS - Precios dinámicos */}
-      {activeTab === 'tickets' && (
-        <div className="stadium-simple__tickets">
-          {/* Próximo partido en casa */}
-          {matchPrediction ? (
-            <div className="card next-match-card">
-              <h3>⚽ Próximo partido en casa</h3>
-              <div className="match-info">
-                <span className="match-week">Jornada {matchPrediction.week}</span>
-                <div className="match-teams">
-                  <span className="home-team">{state.team?.shortName || state.team?.name}</span>
-                  <span className="vs">vs</span>
-                  <span className="away-team">{matchPrediction.rivalName}</span>
-                </div>
-                <span className={`attraction-badge ${matchPrediction.prediction.factors.rival >= 1.3 ? 'hot' : ''}`}>
-                  {matchPrediction.prediction.prediction.attractionLevel}
-                </span>
-              </div>
-              
-              {/* Ajuste de precio para este partido */}
-              <div className="match-price-section">
-                <h4>💵 Precio para este partido</h4>
-                <p className="hint">Ajusta el precio según el atractivo del rival</p>
-                
-                <div className="price-adjust">
-                  <button onClick={() => handleMatchPriceAdjust(-5)}>-5€</button>
-                  <button onClick={() => handleMatchPriceAdjust(-2)}>-2€</button>
-                  <div className="price-display">
-                    <span className="base-price">Base: €{ticketPrice}</span>
-                    {(stadium.matchPriceAdjust || 0) !== 0 && (
-                      <span className={`adjust ${stadium.matchPriceAdjust > 0 ? 'up' : 'down'}`}>
-                        {stadium.matchPriceAdjust > 0 ? '+' : ''}{stadium.matchPriceAdjust}€
-                      </span>
-                    )}
-                    <span className="final-price">→ €{matchPrediction.matchPrice}</span>
-                  </div>
-                  <button onClick={() => handleMatchPriceAdjust(2)}>+2€</button>
-                  <button onClick={() => handleMatchPriceAdjust(5)}>+5€</button>
-                </div>
-                {(stadium.matchPriceAdjust || 0) !== 0 && (
-                  <button className="reset-btn" onClick={resetMatchPriceAdjust}>
-                    Restablecer precio base
-                  </button>
-                )}
-              </div>
-              
-              {/* Predicción de asistencia */}
-              <div className="attendance-prediction">
-                <h4>📊 Predicción de asistencia</h4>
-                
-                <div className="prediction-stats">
-                  <div className="prediction-main">
-                    <span className="predicted-number">
-                      {matchPrediction.prediction.prediction.expected.toLocaleString()}
-                    </span>
-                    <span className="prediction-label">espectadores previstos</span>
-                    <span className="prediction-range">
-                      ({matchPrediction.prediction.prediction.low.toLocaleString()} - {matchPrediction.prediction.prediction.high.toLocaleString()})
-                    </span>
-                  </div>
-                  
-                  <div className="fill-rate-bar">
-                    <div 
-                      className="fill" 
-                      style={{ width: `${Math.round(matchPrediction.prediction.fillRate * 100)}%` }}
-                    ></div>
-                    <span className="fill-percent">{Math.round(matchPrediction.prediction.fillRate * 100)}%</span>
-                  </div>
-                </div>
-                
-                {/* Factores */}
-                <div className="factors-breakdown">
-                  <div className="factor">
-                    <span className="factor-name">Rival</span>
-                    <span className={`factor-value ${matchPrediction.prediction.factors.rival > 1.2 ? 'positive' : matchPrediction.prediction.factors.rival < 0.9 ? 'negative' : ''}`}>
-                      {matchPrediction.prediction.factors.rival > 1 ? '+' : ''}{Math.round((matchPrediction.prediction.factors.rival - 1) * 100)}%
-                    </span>
-                  </div>
-                  <div className="factor">
-                    <span className="factor-name">Precio</span>
-                    <span className={`factor-value ${matchPrediction.prediction.factors.price > 1 ? 'positive' : matchPrediction.prediction.factors.price < 0.9 ? 'negative' : ''}`}>
-                      {matchPrediction.prediction.factors.price > 1 ? '+' : ''}{Math.round((matchPrediction.prediction.factors.price - 1) * 100)}%
-                    </span>
-                  </div>
-                  <div className="factor">
-                    <span className="factor-name">Tu racha</span>
-                    <span className={`factor-value ${matchPrediction.prediction.factors.performance > 1 ? 'positive' : matchPrediction.prediction.factors.performance < 0.95 ? 'negative' : ''}`}>
-                      {matchPrediction.prediction.factors.performance > 1 ? '+' : ''}{Math.round((matchPrediction.prediction.factors.performance - 1) * 100)}%
-                    </span>
-                  </div>
-                  {matchPrediction.prediction.factors.derby > 1 && (
-                    <div className="factor derby">
-                      <span className="factor-name">🔥 Derby</span>
-                      <span className="factor-value positive">+30%</span>
-                    </div>
-                  )}
-                </div>
-                
-                {/* Ingresos estimados */}
-                <div className="estimated-income">
-                  <h4>💰 Ingresos estimados</h4>
-                  <div className="income-breakdown">
-                    <div className="income-row">
-                      <span>Taquilla ({matchPrediction.prediction.ticketSales.toLocaleString()} entradas)</span>
-                      <span>{formatMoney(matchPrediction.prediction.ticketSales * matchPrediction.matchPrice)}</span>
-                    </div>
-                    <div className="income-row">
-                      <span>Consumiciones</span>
-                      <span>{formatMoney(matchPrediction.prediction.attendance * (8 + level * 2))}</span>
-                    </div>
-                    <div className="income-row total">
-                      <span>Total partido</span>
-                      <span>{formatMoney(
-                        matchPrediction.prediction.ticketSales * matchPrediction.matchPrice + 
-                        matchPrediction.prediction.attendance * (8 + level * 2)
-                      )}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ) : (
-            <div className="card no-match">
-              <h3>⚽ Sin partidos en casa próximamente</h3>
-              <p>No hay partidos en casa programados esta semana.</p>
-            </div>
-          )}
-          
-          {/* Consejo estratégico */}
-          <div className="card tips-card">
-            <h3>💡 Estrategia de precios</h3>
-            <ul className="tips-list">
-              <li>
-                <strong>Partido contra un grande:</strong> Sube el precio, la demanda aguanta.
-              </li>
-              <li>
-                <strong>Rival modesto:</strong> Mantén o baja precio para llenar.
-              </li>
-              <li>
-                <strong>Racha positiva:</strong> La afición responde, puedes subir.
-              </li>
-              <li>
-                <strong>Derby:</strong> 🔥 Lleno asegurado, maximiza ingresos.
-              </li>
-            </ul>
-          </div>
-        </div>
-      )}
-      
       {/* TAB: SPONSORS */}
       {activeTab === 'sponsors' && (
         <div className="stadium-simple__sponsors">
@@ -637,6 +544,9 @@ export default function Stadium() {
               <button className="cancel-btn" onClick={handleCancelNaming}>
                 Cancelar contrato
               </button>
+              <span className="cancel-warning">
+                ⚠️ Penalización: {formatMoney(Math.round(naming.yearlyIncome * naming.yearsLeft * 0.5))}
+              </span>
             </div>
           ) : (
             <>

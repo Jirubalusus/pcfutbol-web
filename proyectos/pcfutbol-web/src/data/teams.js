@@ -279,31 +279,38 @@ export const teams = {
     reputation: 77,
     colors: { primary: '#00954C', secondary: '#FFFFFF', accent: '#00954C' },
     players: [
-      createPlayer('Rui Silva', 'GK', 31, 8),
-      createPlayer('Fran Vieites', 'GK', 24, 1.5),
-      createPlayer('Álvaro Valles', 'GK', 27, 4),
-      createPlayer('Diego Llorente', 'CB', 32, 8),
-      createPlayer('Natan', 'CB', 24, 6),
-      createPlayer('Noble Okoh', 'CB', 22, 3),
-      createPlayer('Marc Roca', 'CB', 28, 10),
-      createPlayer('Ricardo Rodríguez', 'LB', 33, 2),
-      createPlayer('Juan Miranda', 'LB', 26, 15),
-      createPlayer('Youssouf Sabaly', 'RB', 32, 3),
-      createPlayer('Héctor Bellerín', 'RB', 31, 3),
-      createPlayer('Aitor Ruibal', 'RB', 29, 5),
-      createPlayer('Johnny Cardoso', 'CDM', 24, 25),
-      createPlayer('Marc Roca', 'CDM', 28, 12),
-      createPlayer('Giovani Lo Celso', 'CM', 29, 25),
-      createPlayer('Sergi Altimira', 'CM', 26, 10),
-      createPlayer('Pablo Fornals', 'CAM', 29, 20),
-      createPlayer('Isco', 'CAM', 33, 5),
-      createPlayer('Abde Ezzalzouli', 'LW', 24, 18),
-      createPlayer('Jesús Rodríguez', 'LW', 19, 5),
-      createPlayer('Assane Diao', 'RW', 20, 15),
-      createPlayer('Chimy Ávila', 'RW', 31, 8),
-      createPlayer('Vitor Roque', 'ST', 20, 40),
-      createPlayer('Ayoze Pérez', 'ST', 32, 8),
-      createPlayer('Ez Abde', 'ST', 23, 6)
+      // Porteros
+      createPlayer('Álvaro Valles', 'GK', 28, 2.5),
+      createPlayer('Pau López', 'GK', 31, 2.5),
+      createPlayer('Adrián', 'GK', 39, 0.4),
+      // Defensas centrales
+      createPlayer('Natan', 'CB', 24, 20),
+      createPlayer('Valentín Gómez', 'CB', 22, 12),
+      createPlayer('Diego Llorente', 'CB', 32, 3),
+      createPlayer('Marc Bartra', 'CB', 35, 1),
+      // Laterales
+      createPlayer('Junior Firpo', 'LB', 29, 6),
+      createPlayer('Ricardo Rodríguez', 'LB', 33, 1.5),
+      createPlayer('Ángel Ortiz', 'RB', 21, 4),
+      createPlayer('Héctor Bellerín', 'RB', 30, 2.5),
+      // Centrocampistas
+      createPlayer('Sofyan Amrabat', 'CDM', 29, 12),
+      createPlayer('Marc Roca', 'CDM', 29, 4),
+      createPlayer('Sergi Altimira', 'CM', 24, 20),
+      createPlayer('Nelson Deossa', 'CM', 25, 9),
+      createPlayer('Pablo Fornals', 'CM', 29, 8),
+      createPlayer('Giovani Lo Celso', 'CAM', 29, 15),
+      createPlayer('Isco', 'CAM', 33, 4),
+      // Extremos
+      createPlayer('Abde Ezzalzouli', 'LW', 24, 20),
+      createPlayer('Rodrigo Riquelme', 'LW', 25, 8),
+      createPlayer('Antony', 'RW', 25, 30),
+      createPlayer('Pablo García', 'RW', 19, 10),
+      createPlayer('Aitor Ruibal', 'RW', 29, 3.5),
+      // Delanteros
+      createPlayer('Cucho Hernández', 'ST', 26, 18),
+      createPlayer('Chimy Ávila', 'ST', 31, 1.5),
+      createPlayer('Cédric Bakambu', 'ST', 34, 1.4)
     ]
   },
 

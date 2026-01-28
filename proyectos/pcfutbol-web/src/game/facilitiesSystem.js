@@ -268,22 +268,46 @@ export function generateYouthPlayer(youthLevel, specialization) {
   };
 }
 
-// Calcula tratamientos médicos disponibles según nivel
-export function getMedicalTreatmentsAvailable(medicalLevel, usedThisWeek = 0) {
-  const treatmentsPerLevel = [0, 0, 1, 2]; // Nivel 0-1: 0, Nivel 2: 1, Nivel 3: 2
-  const maxTreatments = treatmentsPerLevel[medicalLevel] || 0;
-  return Math.max(0, maxTreatments - usedThisWeek);
+// Nuevo sistema médico: cada médico se queda con un jugador hasta que se cure
+
+// Slots de médicos por nivel (cada slot = 1 médico)
+export function getMedicalSlots(medicalLevel) {
+  const slotsPerLevel = [0, 1, 2, 2, 3, 3]; // Nivel 0: 0, Nivel 1: 1, Nivel 2-3: 2, Nivel 4-5: 3
+  return slotsPerLevel[medicalLevel] || 0;
 }
 
-// Aplica tratamiento médico a un jugador (reduce lesión a la mitad)
-export function applyMedicalTreatment(player) {
+// Semanas que cura cada tratamiento según nivel
+export function getMedicalHealingWeeks(medicalLevel) {
+  const weeksPerLevel = [0, 1, 2, 3, 4, 5]; // Nivel 1: 1 sem, Nivel 5: 5 sem
+  return weeksPerLevel[medicalLevel] || 0;
+}
+
+// Coste por tratamiento según nivel (más nivel = menos coste)
+export function getMedicalTreatmentCost(medicalLevel) {
+  const costPerLevel = [500000, 500000, 400000, 300000, 200000, 100000]; // €500K a €100K
+  return costPerLevel[medicalLevel] || 500000;
+}
+
+// Calcula tratamientos médicos disponibles (slots totales - slots ocupados)
+export function getMedicalTreatmentsAvailable(medicalLevel, occupiedSlots = []) {
+  const totalSlots = getMedicalSlots(medicalLevel);
+  const usedSlots = Array.isArray(occupiedSlots) ? occupiedSlots.length : 0;
+  return Math.max(0, totalSlots - usedSlots);
+}
+
+// Aplica tratamiento médico a un jugador (reduce semanas según nivel)
+export function applyMedicalTreatment(player, medicalLevel) {
   if (!player.injured || !player.injuryWeeksLeft) return player;
   
-  const newWeeks = Math.max(1, Math.ceil(player.injuryWeeksLeft / 2));
+  const healingWeeks = getMedicalHealingWeeks(medicalLevel);
+  const newWeeks = Math.max(0, player.injuryWeeksLeft - healingWeeks);
+  
   return {
     ...player,
     injuryWeeksLeft: newWeeks,
-    treated: true // Marca que ya fue tratado esta lesión
+    injured: newWeeks > 0,
+    treated: true, // Marca que está siendo tratado
+    treatedBy: true // Tiene médico asignado
   };
 }
 

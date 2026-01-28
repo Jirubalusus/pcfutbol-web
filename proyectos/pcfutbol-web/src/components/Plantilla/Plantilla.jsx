@@ -41,9 +41,9 @@ export default function Plantilla() {
           const bContract = b.contractYears ?? b.personality?.contractYears ?? 2;
           return aContract - bContract;
         case 'ovr':
-          return b.overall - a.overall;
+          return (b.overall || 0) - (a.overall || 0);
         case 'age':
-          return a.age - b.age;
+          return (a.age || 99) - (b.age || 99);
         default:
           return 0;
       }
@@ -110,8 +110,11 @@ export default function Plantilla() {
   
   const handleRelease = (player) => {
     const yearlySaved = (player.salary || 0) * WEEKS_PER_YEAR;
+    const contractYears = player.contractYears ?? player.contract ?? player.personality?.contractYears ?? 2;
+    // Indemnización = salario anual × años restantes de contrato
+    const severanceCost = (player.salary || 0) * WEEKS_PER_YEAR * contractYears;
     setSelectedPlayer(player);
-    setActionModal({ type: 'release', yearlySaved });
+    setActionModal({ type: 'release', yearlySaved, severanceCost, contractYears });
   };
   
   const confirmRenew = () => {
@@ -177,9 +180,17 @@ export default function Plantilla() {
   };
   
   const confirmRelease = () => {
-    if (!selectedPlayer) return;
+    if (!selectedPlayer || !actionModal) return;
     
-    const yearlySaved = (selectedPlayer.salary || 0) * WEEKS_PER_YEAR;
+    const severanceCost = actionModal.severanceCost || 0;
+    
+    // Descontar indemnización del presupuesto
+    if (severanceCost > 0) {
+      dispatch({
+        type: 'UPDATE_MONEY',
+        payload: -severanceCost
+      });
+    }
     
     // Eliminar jugador
     dispatch({
@@ -207,7 +218,9 @@ export default function Plantilla() {
         id: Date.now(),
         type: 'contract',
         title: `👋 ${selectedPlayer.name} ha sido liberado`,
-        content: `Ahorras ${formatMoney(yearlySaved)}/año en salarios`,
+        content: severanceCost > 0 
+          ? `Indemnización pagada: ${formatMoney(severanceCost)}`
+          : `Jugador liberado sin coste`,
         date: `Semana ${state.currentWeek}`
       }
     });
@@ -305,6 +318,7 @@ export default function Plantilla() {
                   <span className="name">
                     {player.name}
                     {isTransferListed && <span className="tag-listed">🏷️ En venta</span>}
+                    {player.retiring && <span className="tag-retiring">🏁 Se retira</span>}
                   </span>
                   <span className="meta">{player.overall} OVR · {player.age} años</span>
                 </div>
@@ -322,7 +336,12 @@ export default function Plantilla() {
               </div>
               
               <div className="player-actions">
-                <button className="btn-renew" onClick={() => handleRenew(player)} title="Renovar">
+                <button 
+                  className="btn-renew" 
+                  onClick={() => handleRenew(player)} 
+                  title={player.retiring ? "El jugador ha anunciado su retiro" : "Renovar"}
+                  disabled={player.retiring}
+                >
                   ✍️
                 </button>
                 <button className="btn-sell" onClick={() => handleSell(player)} title="Poner en venta">
@@ -453,10 +472,17 @@ export default function Plantilla() {
                     <span className="age">{selectedPlayer.age} años</span>
                   </div>
                   
-                  <div className="warning-box">
-                    <span className="warning-icon">⚠️</span>
+                  <div className="warning-box danger">
+                    <span className="warning-icon">💸</span>
                     <span className="warning-text">
-                      El jugador se irá GRATIS. No recibirás dinero por él.
+                      Debes pagar la indemnización por los {actionModal.contractYears} año{actionModal.contractYears > 1 ? 's' : ''} de contrato restantes.
+                    </span>
+                  </div>
+                  
+                  <div className="impact">
+                    <span className="impact-label">💸 Indemnización a pagar:</span>
+                    <span className="impact-value negative">
+                      -{formatMoney(actionModal.severanceCost)}
                     </span>
                   </div>
                   
@@ -473,9 +499,19 @@ export default function Plantilla() {
                     </div>
                   )}
                   
+                  {budget < actionModal.severanceCost && (
+                    <div className="morale-warning">
+                      <span>❌ No tienes suficiente dinero para la indemnización</span>
+                    </div>
+                  )}
+                  
                   <div className="modal-actions">
-                    <button className="btn-confirm danger" onClick={confirmRelease}>
-                      👋 Liberar jugador
+                    <button 
+                      className="btn-confirm danger" 
+                      onClick={confirmRelease}
+                      disabled={budget < actionModal.severanceCost}
+                    >
+                      👋 Pagar y liberar ({formatMoney(actionModal.severanceCost)})
                     </button>
                     <button className="btn-cancel" onClick={closeModal}>
                       Cancelar

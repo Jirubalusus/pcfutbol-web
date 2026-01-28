@@ -1,4 +1,6 @@
 // League Engine v2.0 - Motor de simulación realista
+import { getEffectiveOverall, calculateRoleBonus } from './playerRoles';
+import { simulateMatchV2, calculateMatchStrength, getTeamProfile } from './matchSimulationV2';
 
 // ============== CONFIGURACIÓN DE FORMACIONES ==============
 export const FORMATIONS = {
@@ -37,6 +39,24 @@ export const FORMATIONS = {
     positions: ['GK', 'RB', 'CB', 'CB', 'LB', 'CDM', 'RM', 'CM', 'CM', 'LM', 'ST'],
     style: { attack: 0.9, defense: 1.1, midfield: 1.1 },
     description: 'Compacto y ordenado'
+  },
+  '3-4-3': {
+    name: '3-4-3',
+    positions: ['GK', 'CB', 'CB', 'CB', 'RM', 'CM', 'CM', 'LM', 'RW', 'ST', 'LW'],
+    style: { attack: 1.25, defense: 0.8, midfield: 1.0 },
+    description: 'Ultra ofensivo con 3 delanteros'
+  },
+  '5-4-1': {
+    name: '5-4-1',
+    positions: ['GK', 'RB', 'CB', 'CB', 'CB', 'LB', 'RM', 'CM', 'CM', 'LM', 'ST'],
+    style: { attack: 0.75, defense: 1.3, midfield: 1.0 },
+    description: 'Muralla defensiva'
+  },
+  '4-5-1': {
+    name: '4-5-1',
+    positions: ['GK', 'RB', 'CB', 'CB', 'LB', 'RM', 'CM', 'CDM', 'CM', 'LM', 'ST'],
+    style: { attack: 0.85, defense: 1.05, midfield: 1.2 },
+    description: 'Dominio del centro del campo'
   }
 };
 
@@ -137,7 +157,7 @@ export function generateFixtures(teams) {
 }
 
 // ============== CÁLCULO DE FUERZA DEL EQUIPO ==============
-export function calculateTeamStrength(team, formation = '4-3-3', tactic = 'balanced') {
+export function calculateTeamStrength(team, formation = '4-3-3', tactic = 'balanced', teamMorale = 70) {
   // Si team es undefined o no tiene players, devolver valores por defecto
   if (!team || !team.players || team.players.length === 0) {
     return { overall: team?.reputation || 50, attack: 50, midfield: 50, defense: 50, goalkeeper: 50, lineup: [] };
@@ -155,65 +175,92 @@ export function calculateTeamStrength(team, formation = '4-3-3', tactic = 'balan
   const midPlayers = lineup.filter(p => ['CDM', 'CM', 'CAM', 'RM', 'LM'].includes(p.position));
   const attPlayers = lineup.filter(p => ['ST', 'RW', 'LW', 'CF'].includes(p.position));
   
-  const goalkeeper = gkPlayers.length > 0 
-    ? gkPlayers.reduce((sum, p) => sum + getEffectiveRating(p), 0) / gkPlayers.length 
+  // MEDIA BASE (sin modificadores - para mostrar al usuario)
+  const baseGoalkeeper = gkPlayers.length > 0 
+    ? gkPlayers.reduce((sum, p) => sum + p.overall, 0) / gkPlayers.length 
     : 60;
   
-  const defense = defPlayers.length > 0 
-    ? defPlayers.reduce((sum, p) => sum + getEffectiveRating(p), 0) / defPlayers.length 
+  const baseDefense = defPlayers.length > 0 
+    ? defPlayers.reduce((sum, p) => sum + p.overall, 0) / defPlayers.length 
     : 60;
   
-  const midfield = midPlayers.length > 0 
-    ? midPlayers.reduce((sum, p) => sum + getEffectiveRating(p), 0) / midPlayers.length 
+  const baseMidfield = midPlayers.length > 0 
+    ? midPlayers.reduce((sum, p) => sum + p.overall, 0) / midPlayers.length 
     : 60;
   
-  const attack = attPlayers.length > 0 
-    ? attPlayers.reduce((sum, p) => sum + getEffectiveRating(p), 0) / attPlayers.length 
+  const baseAttack = attPlayers.length > 0 
+    ? attPlayers.reduce((sum, p) => sum + p.overall, 0) / attPlayers.length 
     : 60;
   
-  // Aplicar modificadores de formación y táctica
-  const finalDefense = defense * formationData.style.defense * tacticData.defense;
-  const finalMidfield = midfield * formationData.style.midfield;
-  const finalAttack = attack * formationData.style.attack * tacticData.attack;
+  // MEDIA VISUAL (simple promedio de los 11 titulares)
+  const visualOverall = lineup.length > 0 
+    ? Math.round(lineup.reduce((sum, p) => sum + p.overall, 0) / lineup.length)
+    : 60;
   
-  // Media ponderada para overall
-  const overall = (goalkeeper * 0.15 + finalDefense * 0.25 + finalMidfield * 0.3 + finalAttack * 0.3);
+  // RATINGS EFECTIVOS (para simulación - con roles, táctica, moral)
+  const effectiveGoalkeeper = gkPlayers.length > 0 
+    ? gkPlayers.reduce((sum, p) => sum + getEffectiveRating(p, tactic, lineup, teamMorale), 0) / gkPlayers.length 
+    : 60;
   
-  // Bonus por jugadores estrella (>85 overall)
-  const starPlayers = lineup.filter(p => p.overall >= 85).length;
-  const starBonus = starPlayers * 1.5;
+  const effectiveDefense = defPlayers.length > 0 
+    ? defPlayers.reduce((sum, p) => sum + getEffectiveRating(p, tactic, lineup, teamMorale), 0) / defPlayers.length 
+    : 60;
+  
+  const effectiveMidfield = midPlayers.length > 0 
+    ? midPlayers.reduce((sum, p) => sum + getEffectiveRating(p, tactic, lineup, teamMorale), 0) / midPlayers.length 
+    : 60;
+  
+  const effectiveAttack = attPlayers.length > 0 
+    ? attPlayers.reduce((sum, p) => sum + getEffectiveRating(p, tactic, lineup, teamMorale), 0) / attPlayers.length 
+    : 60;
+  
+  // Aplicar modificadores de formación y táctica (solo para simulación)
+  const finalDefense = effectiveDefense * formationData.style.defense * tacticData.defense;
+  const finalMidfield = effectiveMidfield * formationData.style.midfield;
+  const finalAttack = effectiveAttack * formationData.style.attack * tacticData.attack;
+  
+  // Overall efectivo (para simulación de partidos)
+  const effectiveOverall = (effectiveGoalkeeper * 0.15 + finalDefense * 0.25 + finalMidfield * 0.3 + finalAttack * 0.3);
+  
+  // Bonus por jugadores estrella y sinergias (solo afecta a la simulación)
+  const effectiveStarPlayers = lineup.filter(p => p.overall >= 85).length;
+  const starBonus = effectiveStarPlayers * 1.0;
+  
+  let synergyBonus = 0;
+  lineup.forEach(player => {
+    if (player.role) {
+      const bonus = calculateRoleBonus(player, tactic, lineup);
+      synergyBonus += bonus * 0.1;
+    }
+  });
   
   return {
-    overall: Math.min(99, overall + starBonus),
+    // Para mostrar al usuario
+    overall: visualOverall,
+    // Para simulación de partidos
+    effectiveOverall: Math.min(99, effectiveOverall + starBonus + synergyBonus),
     attack: finalAttack,
     midfield: finalMidfield,
     defense: finalDefense,
-    goalkeeper,
+    goalkeeper: effectiveGoalkeeper,
     lineup,
-    starPlayers
+    starPlayers: effectiveStarPlayers,
+    synergyBonus: Math.round(synergyBonus * 10) / 10
   };
 }
 
-// Rating efectivo considerando fitness, moral, lesiones
-function getEffectiveRating(player) {
-  let rating = player.overall;
-  
+// Rating efectivo considerando fitness, moral, lesiones Y ROLES
+function getEffectiveRating(player, tactic = 'balanced', teammates = [], teamMorale = 70) {
   // Penalización por lesión
-  if (player.injured) return rating * 0.3;
+  if (player.injured) return player.overall * 0.3;
   
-  // Penalización por cansancio (si existe)
-  if (player.fitness !== undefined) {
-    rating *= (0.7 + (player.fitness / 100) * 0.3);
-  }
+  // Usar el sistema de roles para calcular el overall efectivo
+  // Esto incluye: bonus de rol según táctica, sinergias, moral y fitness
+  let rating = getEffectiveOverall(player, tactic, teammates, teamMorale);
   
-  // Bonus/penalización por moral
-  if (player.morale !== undefined) {
-    rating *= (0.9 + (player.morale / 100) * 0.2);
-  }
-  
-  // Penalización por edad extrema
-  if (player.age >= 34) rating *= 0.95;
-  if (player.age >= 36) rating *= 0.92;
+  // Penalización adicional por edad extrema
+  if (player.age >= 34) rating *= 0.97;
+  if (player.age >= 36) rating *= 0.94;
   
   // Bonus por juventud en forma
   if (player.age <= 23 && player.overall >= 75) rating *= 1.02;
@@ -275,7 +322,14 @@ function selectBestLineup(players, requiredPositions) {
 }
 
 // ============== SIMULACIÓN DE PARTIDO ==============
+// Ahora usa el motor V2 más realista
 export function simulateMatch(homeTeamId, awayTeamId, homeTeamData, awayTeamData, context = {}) {
+  // Usar el nuevo motor V2 que respeta jerarquías
+  return simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamData, context);
+}
+
+// ============== SIMULACIÓN DE PARTIDO (LEGACY - para referencia) ==============
+function simulateMatchLegacy(homeTeamId, awayTeamId, homeTeamData, awayTeamData, context = {}) {
   const {
     homeFormation = '4-3-3',
     awayFormation = '4-3-3',
@@ -289,9 +343,9 @@ export function simulateMatch(homeTeamId, awayTeamId, homeTeamData, awayTeamData
     grassCondition = 100 // Estado del césped (0-100), afecta lesiones del local
   } = context;
   
-  // Calcular fuerzas
-  const homeStrength = calculateTeamStrength(homeTeamData, homeFormation, homeTactic);
-  const awayStrength = calculateTeamStrength(awayTeamData, awayFormation, awayTactic);
+  // Calcular fuerzas (pasando la moral para que los roles se calculen correctamente)
+  const homeStrength = calculateTeamStrength(homeTeamData, homeFormation, homeTactic, homeMorale);
+  const awayStrength = calculateTeamStrength(awayTeamData, awayFormation, awayTactic, awayMorale);
   
   // Ventaja de local - depende del tamaño del estadio Y de la asistencia
   const stadiumCapacity = homeTeamData.stadiumCapacity || 20000;
@@ -319,9 +373,9 @@ export function simulateMatch(homeTeamId, awayTeamId, homeTeamData, awayTeamData
   // Los grandes son favoritos pero no invencibles
   const compressStrength = (strength) => 70 + (strength - 70) * 0.7;
   
-  // Fuerza ajustada
-  const adjustedHome = compressStrength(homeStrength.overall + homeAdvantage) * homeMoraleFactor * derbyFactor * homeFormFactor;
-  const adjustedAway = compressStrength(awayStrength.overall) * awayMoraleFactor * derbyFactor * awayFormFactor;
+  // Fuerza ajustada (usa effectiveOverall para simulación, incluye roles y tácticas)
+  const adjustedHome = compressStrength((homeStrength.effectiveOverall || homeStrength.overall) + homeAdvantage) * homeMoraleFactor * derbyFactor * homeFormFactor;
+  const adjustedAway = compressStrength(awayStrength.effectiveOverall || awayStrength.overall) * awayMoraleFactor * derbyFactor * awayFormFactor;
   
   // Simular el partido minuto a minuto
   const matchSimulation = simulateMatchMinuteByMinute(

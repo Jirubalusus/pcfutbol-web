@@ -1,21 +1,33 @@
 import React, { useState } from 'react';
 import { useGame } from '../../context/GameContext';
-import { LALIGA_TEAMS } from '../../data/teamsFirestore';
+import { 
+  getLaLigaTeams, getSegundaTeams, getPrimeraRfefTeams, getSegundaRfefTeams,
+  getPremierTeams, getLigue1Teams, getBundesligaTeams, getSerieATeams
+} from '../../data/teamsFirestore';
 import { simulateWeekMatches, simulateMatch, updateTable } from '../../game/leagueEngine';
+import { simulateOtherLeaguesWeek } from '../../game/multiLeagueEngine';
 import { calculateMatchAttendance } from '../../game/stadiumEconomy';
+
+// Combine all teams for lookup - usando getters para obtener data actualizada
+const getAllTeams = () => [
+  ...getLaLigaTeams(), ...getSegundaTeams(), ...getPrimeraRfefTeams(), ...getSegundaRfefTeams(),
+  ...getPremierTeams(), ...getLigue1Teams(), ...getBundesligaTeams(), ...getSerieATeams()
+];
 import Sidebar from '../Sidebar/Sidebar';
 import MobileNav from '../MobileNav/MobileNav';
 import Plantilla from '../Plantilla/Plantilla';
 import Formation from '../Formation/Formation';
 import Calendar from '../Calendar/Calendar';
 import LeagueTable from '../LeagueTable/LeagueTable';
-import Transfers from '../Transfers/Transfers';
+import Transfers from '../Transfers/TransfersV2';
 import Stadium from '../Stadium/Stadium';
 import Facilities from '../Facilities/Facilities';
 import Messages from '../Messages/Messages';
 import MatchDay from '../MatchDay/MatchDay';
 import Training from '../Training/Training';
 import Objectives from '../Objectives/Objectives';
+import SeasonEnd from '../SeasonEnd/SeasonEnd';
+import { isSeasonOver } from '../../game/seasonManager';
 import {
   Trophy,
   TrendingUp,
@@ -34,7 +46,13 @@ export default function Office() {
   const [activeTab, setActiveTab] = useState('overview');
   const [showMatch, setShowMatch] = useState(false);
   const [simulating, setSimulating] = useState(false);
+  const [showInjuredWarning, setShowInjuredWarning] = useState(false);
+  const [injuredInLineup, setInjuredInLineup] = useState([]);
+  const [showSeasonEnd, setShowSeasonEnd] = useState(false);
   const isMobile = window.innerWidth <= 768;
+  
+  // Detectar si la temporada ha terminado
+  const seasonOver = state.fixtures?.length > 0 && isSeasonOver(state.fixtures, 'laliga');
   
   const formatMoney = (amount) => {
     if (amount >= 1000000) {
@@ -43,16 +61,64 @@ export default function Office() {
     return `€${(amount / 1000).toFixed(0)}K`;
   };
   
+  // Comprobar lesionados en alineación titular
+  const getInjuredInLineup = () => {
+    const lineup = state.lineup || {};
+    const lineupNames = Object.values(lineup).filter(p => p).map(p => p.name);
+    const players = state.team?.players || [];
+    return players.filter(p => 
+      lineupNames.includes(p.name) && p.injured && p.injuryWeeksLeft > 0
+    );
+  };
+
   const handleAdvanceWeek = () => {
+    // Comprobar si la temporada ha terminado
+    if (seasonOver) {
+      setShowSeasonEnd(true);
+      return;
+    }
+    
+    // Comprobar si hay lesionados en la alineación
+    const injured = getInjuredInLineup();
+    if (injured.length > 0) {
+      setInjuredInLineup(injured);
+      setShowInjuredWarning(true);
+      return;
+    }
+    
+    proceedAdvanceWeek();
+  };
+  
+  const proceedAdvanceWeek = () => {
+    // Doble check de fin de temporada
+    if (seasonOver) {
+      setShowSeasonEnd(true);
+      return;
+    }
+    
     const weekFixtures = state.fixtures.filter(f => f.week === state.currentWeek && !f.played);
     const playerMatch = weekFixtures.find(f => 
       f.homeTeam === state.teamId || f.awayTeam === state.teamId
     );
     
+    // DEBUG
+    console.log('handleAdvanceWeek DEBUG:', {
+      teamId: state.teamId,
+      currentWeek: state.currentWeek,
+      totalFixtures: state.fixtures?.length,
+      weekFixturesCount: weekFixtures.length,
+      weekFixtures: weekFixtures.slice(0, 3),
+      playerMatch: playerMatch,
+      allTeamsCount: getAllTeams().length,
+      seasonOver: seasonOver
+    });
+    
     if (playerMatch) {
       setShowMatch(true);
     } else {
-      simulateOtherMatches();
+      const result = simulateOtherMatches();
+      dispatch({ type: 'SET_FIXTURES', payload: result.fixtures });
+      dispatch({ type: 'SET_LEAGUE_TABLE', payload: result.table });
       dispatch({ type: 'APPLY_TRAINING' });
       dispatch({ type: 'ADVANCE_WEEK' });
     }
@@ -64,8 +130,8 @@ export default function Office() {
     dispatch({ type: 'ADVANCE_WEEK' });
   };
   
-  const simulateOtherMatches = () => {
-    const allTeams = LALIGA_TEAMS.map(t => {
+  const simulateOtherMatches = (fixtures = state.fixtures, table = state.leagueTable, week = state.currentWeek) => {
+    const allTeams = getAllTeams().map(t => {
       if (t.id === state.teamId) {
         return state.team;
       }
@@ -73,110 +139,189 @@ export default function Office() {
     });
     
     const result = simulateWeekMatches(
-      state.fixtures,
-      state.leagueTable,
-      state.currentWeek,
+      fixtures,
+      table,
+      week,
       state.teamId,
       allTeams
     );
     
-    dispatch({ type: 'SET_FIXTURES', payload: result.fixtures });
-    dispatch({ type: 'SET_LEAGUE_TABLE', payload: result.table });
+    return result;
   };
   
   const handleSimulateWeeks = async (numWeeks) => {
     setSimulating(true);
     
+    // Copia local del estado para ir actualizando
+    let currentFixtures = [...state.fixtures];
+    let currentTable = [...state.leagueTable];
+    let currentWeek = state.currentWeek;
+    const allTeams = getAllTeams();
+    let weeksSimulated = 0;
+    let seasonEnded = false;
+    
+    // Máxima jornada de la liga (38 para LaLiga)
+    const maxWeek = 38;
+    
     for (let i = 0; i < numWeeks; i++) {
-      await new Promise(resolve => setTimeout(resolve, 100));
-      simulatePlayerMatch();
-      simulateOtherMatches();
+      // Comprobar si la temporada ha terminado
+      if (currentWeek > maxWeek || isSeasonOver(currentFixtures, 'laliga')) {
+        seasonEnded = true;
+        break;
+      }
+      
+      await new Promise(resolve => setTimeout(resolve, 50));
+      weeksSimulated++;
+      
+      // Buscar partido del jugador en esta semana
+      const weekFixtures = currentFixtures.filter(f => f.week === currentWeek && !f.played);
+      const playerMatch = weekFixtures.find(f => 
+        f.homeTeam === state.teamId || f.awayTeam === state.teamId
+      );
+      
+      // Simular partido del jugador si existe
+      if (playerMatch) {
+        const isHome = playerMatch.homeTeam === state.teamId;
+        const opponentId = isHome ? playerMatch.awayTeam : playerMatch.homeTeam;
+        const opponent = allTeams.find(t => t.id === opponentId);
+        
+        if (opponent) {
+          const homeTeamData = isHome ? state.team : opponent;
+          const awayTeamData = isHome ? opponent : state.team;
+          
+          // Calcular asistencia si somos locales
+          let attendanceFillRate = 0.7;
+          if (isHome && state.stadium) {
+            const stadium = state.stadium;
+            const stadiumCapacity = [8000, 18000, 35000, 55000, 80000][stadium.level || 0];
+            const seasonTickets = stadium.seasonTickets ?? Math.floor(stadiumCapacity * 0.3);
+            const ticketPrice = (stadium.ticketPrice ?? 30) + (stadium.matchPriceAdjust || 0);
+            const rivalPosition = currentTable.findIndex(t => t.teamId === opponentId) + 1 || 10;
+            const teamPosition = currentTable.findIndex(t => t.teamId === state.teamId) + 1 || 10;
+            const teamEntry = currentTable.find(t => t.teamId === state.teamId);
+            
+            const attendance = calculateMatchAttendance({
+              stadiumCapacity,
+              seasonTickets,
+              ticketPrice,
+              rivalTeam: opponent,
+              rivalPosition,
+              teamPosition,
+              totalTeams: currentTable.length || 20,
+              streak: teamEntry?.streak || 0,
+              morale: teamEntry?.morale || 70,
+              leagueId: state.leagueId || 'laliga',
+              homeTeamId: state.teamId,
+              awayTeamId: opponentId
+            });
+            attendanceFillRate = attendance.fillRate;
+          }
+          
+          const result = simulateMatch(
+            playerMatch.homeTeam,
+            playerMatch.awayTeam,
+            homeTeamData,
+            awayTeamData,
+            { attendanceFillRate: isHome ? attendanceFillRate : 0.7 }
+          );
+          
+          // Aplicar lesiones del equipo del jugador
+          const playerTeamSide = isHome ? 'home' : 'away';
+          const playerInjuries = result.events?.filter(e => 
+            e.type === 'injury' && e.team === playerTeamSide
+          ) || [];
+          
+          playerInjuries.forEach(injury => {
+            dispatch({
+              type: 'INJURE_PLAYER',
+              payload: {
+                playerName: injury.player,
+                weeksOut: injury.weeksOut,
+                severity: injury.severity
+              }
+            });
+          });
+          
+          // Actualizar fixtures
+          currentFixtures = currentFixtures.map(f => {
+            if (f.id === playerMatch.id) {
+              return { ...f, played: true, homeScore: result.homeScore, awayScore: result.awayScore, events: result.events };
+            }
+            return f;
+          });
+          
+          // Actualizar tabla
+          currentTable = updateTable(
+            currentTable,
+            playerMatch.homeTeam,
+            playerMatch.awayTeam,
+            result.homeScore,
+            result.awayScore
+          );
+        }
+      }
+      
+      // Simular resto de partidos de la semana
+      const teamsWithPlayer = allTeams.map(t => t.id === state.teamId ? state.team : t);
+      const otherResult = simulateWeekMatches(
+        currentFixtures,
+        currentTable,
+        currentWeek,
+        state.teamId,
+        teamsWithPlayer
+      );
+      
+      currentFixtures = otherResult.fixtures;
+      currentTable = otherResult.table;
+      currentWeek++;
+    }
+    
+    // Aplicar todos los cambios de una vez
+    dispatch({ type: 'SET_FIXTURES', payload: currentFixtures });
+    dispatch({ type: 'SET_LEAGUE_TABLE', payload: currentTable });
+    
+    // Simular otras ligas en paralelo (todas las semanas de una vez)
+    if (state.otherLeagues && Object.keys(state.otherLeagues).length > 0) {
+      let updatedOtherLeagues = { ...state.otherLeagues };
+      for (let week = state.currentWeek; week < state.currentWeek + weeksSimulated; week++) {
+        updatedOtherLeagues = simulateOtherLeaguesWeek(updatedOtherLeagues, week);
+      }
+      dispatch({ type: 'SET_OTHER_LEAGUES', payload: updatedOtherLeagues });
+    }
+    
+    // Avanzar semanas (esto también aplica training y healing por cada semana)
+    for (let i = 0; i < weeksSimulated; i++) {
       dispatch({ type: 'APPLY_TRAINING' });
       dispatch({ type: 'ADVANCE_WEEK' });
-      dispatch({ type: 'HEAL_INJURIES' });
     }
     
     setSimulating(false);
     
-    dispatch({
-      type: 'ADD_MESSAGE',
-      payload: {
-        id: Date.now(),
-        type: 'simulation',
-        title: `Simuladas ${numWeeks} semanas`,
-        content: `Has avanzado hasta la semana ${state.currentWeek + numWeeks}`,
-        date: `Semana ${state.currentWeek + numWeeks}`
-      }
-    });
-  };
-  
-  const simulatePlayerMatch = () => {
-    const weekFixtures = state.fixtures.filter(f => f.week === state.currentWeek && !f.played);
-    const playerMatch = weekFixtures.find(f => 
-      f.homeTeam === state.teamId || f.awayTeam === state.teamId
-    );
-    
-    if (!playerMatch) return;
-    
-    const isHome = playerMatch.homeTeam === state.teamId;
-    const opponentId = isHome ? playerMatch.awayTeam : playerMatch.homeTeam;
-    const opponent = LALIGA_TEAMS.find(t => t.id === opponentId);
-    
-    const homeTeamData = isHome ? state.team : opponent;
-    const awayTeamData = isHome ? opponent : state.team;
-    
-    // Calcular asistencia si somos locales
-    let attendanceFillRate = 0.7;
-    if (isHome && state.stadium) {
-      const stadium = state.stadium;
-      const stadiumCapacity = [8000, 18000, 35000, 55000, 80000][stadium.level || 0];
-      const seasonTickets = stadium.seasonTickets ?? Math.floor(stadiumCapacity * 0.3);
-      const ticketPrice = (stadium.ticketPrice ?? 30) + (stadium.matchPriceAdjust || 0);
-      const rivalPosition = state.leagueTable.findIndex(t => t.teamId === opponentId) + 1 || 10;
-      const teamPosition = state.leagueTable.findIndex(t => t.teamId === state.teamId) + 1 || 10;
-      const teamEntry = state.leagueTable.find(t => t.teamId === state.teamId);
-      
-      const attendance = calculateMatchAttendance({
-        stadiumCapacity,
-        seasonTickets,
-        ticketPrice,
-        rivalTeam: opponent,
-        rivalPosition,
-        teamPosition,
-        totalTeams: state.leagueTable.length || 20,
-        streak: teamEntry?.streak || 0,
-        morale: teamEntry?.morale || 70,
-        leagueId: state.leagueId || 'laliga',
-        homeTeamId: state.teamId,
-        awayTeamId: opponentId
+    // Si la temporada terminó, mostrar modal de fin de temporada
+    if (seasonEnded) {
+      setShowSeasonEnd(true);
+      dispatch({
+        type: 'ADD_MESSAGE',
+        payload: {
+          id: Date.now(),
+          type: 'season',
+          title: '🏆 Fin de Temporada',
+          content: `La temporada ha terminado después de ${weeksSimulated} semanas simuladas.`,
+          date: `Semana ${state.currentWeek + weeksSimulated}`
+        }
       });
-      attendanceFillRate = attendance.fillRate;
+    } else {
+      dispatch({
+        type: 'ADD_MESSAGE',
+        payload: {
+          id: Date.now(),
+          type: 'simulation',
+          title: `Simuladas ${weeksSimulated} semanas`,
+          content: `Has avanzado hasta la semana ${state.currentWeek + weeksSimulated}`,
+          date: `Semana ${state.currentWeek + weeksSimulated}`
+        }
+      });
     }
-    
-    const result = simulateMatch(
-      playerMatch.homeTeam,
-      playerMatch.awayTeam,
-      homeTeamData,
-      awayTeamData,
-      { attendanceFillRate: isHome ? attendanceFillRate : 0.7 }
-    );
-    
-    const updatedFixtures = state.fixtures.map(f => {
-      if (f.id === playerMatch.id) {
-        return { ...f, played: true, homeScore: result.homeScore, awayScore: result.awayScore };
-      }
-      return f;
-    });
-    dispatch({ type: 'SET_FIXTURES', payload: updatedFixtures });
-    
-    const newTable = updateTable(
-      state.leagueTable,
-      playerMatch.homeTeam,
-      playerMatch.awayTeam,
-      result.homeScore,
-      result.awayScore
-    );
-    dispatch({ type: 'SET_LEAGUE_TABLE', payload: newTable });
   };
   
   const renderContent = () => {
@@ -361,6 +506,54 @@ export default function Office() {
   
   if (showMatch) {
     return <MatchDay onComplete={handleMatchComplete} />;
+  }
+  
+  // Modal de advertencia de lesionados en alineación
+  if (showInjuredWarning) {
+    return (
+      <div className="office">
+        <div className="injured-warning-modal">
+          <div className="injured-warning-content">
+            <h2>⚠️ Jugadores lesionados en alineación</h2>
+            <p>Tienes {injuredInLineup.length} jugador{injuredInLineup.length > 1 ? 'es' : ''} lesionado{injuredInLineup.length > 1 ? 's' : ''} en tu alineación titular:</p>
+            
+            <ul className="injured-list">
+              {injuredInLineup.map(p => (
+                <li key={p.name}>
+                  <span className="pos">{p.position}</span>
+                  <span className="name">{p.name}</span>
+                  <span className="weeks">🏥 {p.injuryWeeksLeft} semana{p.injuryWeeksLeft > 1 ? 's' : ''}</span>
+                </li>
+              ))}
+            </ul>
+            
+            <p className="warning-hint">Ve a <strong>Alineación</strong> y sustituye a los lesionados antes de continuar.</p>
+            
+            <div className="warning-buttons">
+              <button className="btn-primary" onClick={() => {
+                setShowInjuredWarning(false);
+                setActiveTab('formation');
+              }}>
+                Ir a Alineación
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  
+  // Modal de fin de temporada
+  if (showSeasonEnd) {
+    return (
+      <SeasonEnd 
+        allTeams={getAllTeams()} 
+        onComplete={() => {
+          setShowSeasonEnd(false);
+          // La nueva temporada se iniciará con los nuevos fixtures generados
+        }}
+      />
+    );
   }
   
   return (

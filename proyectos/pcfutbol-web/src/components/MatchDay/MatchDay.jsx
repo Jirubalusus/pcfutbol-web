@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useGame } from '../../context/GameContext';
-import { LALIGA_TEAMS, SEGUNDA_TEAMS, PRIMERA_RFEF_TEAMS, SEGUNDA_RFEF_TEAMS } from '../../data/teamsFirestore';
+import { 
+  getLaLigaTeams, getSegundaTeams, getPrimeraRfefTeams, getSegundaRfefTeams 
+} from '../../data/teamsFirestore';
 import { simulateMatch, updateTable, simulateWeekMatches, calculateTeamStrength, FORMATIONS, TACTICS } from '../../game/leagueEngine';
+import { simulateOtherLeaguesWeek } from '../../game/multiLeagueEngine';
 import { calculateMatchAttendance, calculateMatchIncome } from '../../game/stadiumEconomy';
 import './MatchDay.scss';
 
-// Combine all teams for lookup (se calculará dinámicamente)
-const ALL_TEAMS = [...LALIGA_TEAMS, ...SEGUNDA_TEAMS, ...PRIMERA_RFEF_TEAMS, ...SEGUNDA_RFEF_TEAMS];
+// Función para obtener todos los equipos dinámicamente
+const getAllTeams = () => [
+  ...getLaLigaTeams(), ...getSegundaTeams(), ...getPrimeraRfefTeams(), ...getSegundaRfefTeams()
+];
 
 export default function MatchDay({ onComplete }) {
   const { state, dispatch } = useGame();
@@ -24,7 +29,7 @@ export default function MatchDay({ onComplete }) {
   
   const isHome = playerMatch?.homeTeam === state.teamId;
   const opponentId = isHome ? playerMatch?.awayTeam : playerMatch?.homeTeam;
-  const opponent = ALL_TEAMS.find(t => t.id === opponentId);
+  const opponent = getAllTeams().find(t => t.id === opponentId);
   
   // Get team strengths for preview
   const playerStrength = calculateTeamStrength(state.team, state.formation, state.tactic);
@@ -35,10 +40,14 @@ export default function MatchDay({ onComplete }) {
   const opponentTableEntry = state.leagueTable.find(t => t.teamId === opponentId);
   
   const simulateAndPlay = () => {
-    setPhase('playing');
-    
-    const homeTeamData = isHome ? state.team : opponent;
-    const awayTeamData = isHome ? opponent : state.team;
+    try {
+      console.log('🎮 simulateAndPlay started');
+      setPhase('playing');
+      
+      const homeTeamData = isHome ? state.team : opponent;
+      const awayTeamData = isHome ? opponent : state.team;
+      
+      console.log('🎮 Teams:', { homeTeamData: homeTeamData?.name, awayTeamData: awayTeamData?.name });
     
     // Calcular asistencia si somos locales
     let attendanceFillRate = 0.7; // Default para partidos de IA
@@ -75,6 +84,7 @@ export default function MatchDay({ onComplete }) {
     // Pass formation and tactic context
     const grassCondition = isHome ? (state.stadium?.grassCondition ?? 100) : 100;
     
+    console.log('🎮 About to simulateMatch...');
     const result = simulateMatch(
       playerMatch.homeTeam,
       playerMatch.awayTeam,
@@ -94,12 +104,16 @@ export default function MatchDay({ onComplete }) {
       }
     );
     
+    console.log('🎮 simulateMatch done, result:', result ? 'OK' : 'NULL', result?.homeScore, '-', result?.awayScore);
+    
     // Añadir info de asistencia al resultado si somos locales
     if (matchAttendance) {
       result.attendance = matchAttendance;
     }
     
+    console.log('🎮 Setting matchResult...');
     setMatchResult(result);
+    console.log('🎮 matchResult set, starting animation...');
     
     // Animate minute by minute
     let minute = 0;
@@ -121,6 +135,13 @@ export default function MatchDay({ onComplete }) {
         setTimeout(() => setPhase('result'), 500);
       }
     }, 150);
+    } catch (error) {
+      console.error('🔴 Error in simulateAndPlay:', error);
+      console.error('🔴 Stack:', error.stack);
+      // Fallback: show error state
+      setPhase('preview');
+      alert('Error al simular el partido: ' + error.message);
+    }
   };
   
   const skipToEnd = () => {
@@ -157,7 +178,7 @@ export default function MatchDay({ onComplete }) {
     );
     
     // Simulate other matches
-    const allTeams = ALL_TEAMS.map(t => t.id === state.teamId ? state.team : t);
+    const allTeams = getAllTeams().map(t => t.id === state.teamId ? state.team : t);
     
     const otherMatchesResult = simulateWeekMatches(
       updatedFixtures,
@@ -169,6 +190,12 @@ export default function MatchDay({ onComplete }) {
     
     dispatch({ type: 'SET_FIXTURES', payload: otherMatchesResult.fixtures });
     dispatch({ type: 'SET_LEAGUE_TABLE', payload: otherMatchesResult.table });
+    
+    // Simular otras ligas en paralelo
+    if (state.otherLeagues && Object.keys(state.otherLeagues).length > 0) {
+      const updatedOtherLeagues = simulateOtherLeaguesWeek(state.otherLeagues, state.currentWeek);
+      dispatch({ type: 'SET_OTHER_LEAGUES', payload: updatedOtherLeagues });
+    }
     
     // Add result
     dispatch({
@@ -242,10 +269,15 @@ export default function MatchDay({ onComplete }) {
       
       dispatch({ type: 'UPDATE_MONEY', payload: totalIncome });
       
-      // Resetear ajuste de precio para el próximo partido
+      // Guardar datos de última jornada y resetear ajuste de precio
       dispatch({
         type: 'UPDATE_STADIUM',
-        payload: { ...stadium, matchPriceAdjust: 0 }
+        payload: { 
+          ...stadium, 
+          matchPriceAdjust: 0,
+          lastMatchAttendance: att.attendance,
+          lastMatchIncome: totalIncome
+        }
       });
       
       // Mensaje con detalles de taquilla
@@ -296,10 +328,26 @@ export default function MatchDay({ onComplete }) {
   };
   
   if (!playerMatch || !opponent) {
+    // DEBUG: Mostrar info para diagnosticar el problema
+    const debugInfo = {
+      teamId: state.teamId,
+      currentWeek: state.currentWeek,
+      fixturesCount: state.fixtures?.length || 0,
+      weekFixtures: state.fixtures?.filter(f => f.week === state.currentWeek) || [],
+      allTeamsCount: getAllTeams().length,
+      playerMatchFound: !!playerMatch,
+      opponentFound: !!opponent,
+      opponentId: opponentId
+    };
+    console.error('MatchDay Debug:', debugInfo);
+    
     return (
       <div className="match-day">
         <div className="match-day__no-match">
           <p>No hay partido esta semana</p>
+          <p style={{fontSize: '12px', color: '#888', marginTop: '10px'}}>
+            Debug: teamId={state.teamId}, week={state.currentWeek}, fixtures={state.fixtures?.length || 0}, allTeams={getAllTeams().length}
+          </p>
           <button onClick={onComplete}>Continuar</button>
         </div>
       </div>

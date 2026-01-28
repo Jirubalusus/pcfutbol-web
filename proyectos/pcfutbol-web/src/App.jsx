@@ -1,6 +1,7 @@
 import { GameProvider, useGame } from './context/GameContext';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { DataProvider } from './context/DataProvider';
+import { ToastProvider } from './components/Toast/Toast';
 import MainMenu from './components/MainMenu/MainMenu';
 import TeamSelection from './components/TeamSelection/TeamSelection';
 import Office from './components/Office/Office';
@@ -33,13 +34,15 @@ function GameRouter() {
 
 function App() {
   return (
-    <AuthProvider>
-      <DataProvider>
-        <GameProvider>
-          <GameRouter />
-        </GameProvider>
-      </DataProvider>
-    </AuthProvider>
+    <ToastProvider>
+      <AuthProvider>
+        <DataProvider>
+          <GameProvider>
+            <GameRouter />
+          </GameProvider>
+        </DataProvider>
+      </AuthProvider>
+    </ToastProvider>
   );
 }
 
