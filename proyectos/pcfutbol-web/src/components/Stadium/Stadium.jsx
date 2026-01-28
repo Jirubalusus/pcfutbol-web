@@ -132,7 +132,7 @@ export default function Stadium() {
   
   // Precio entrada partido (afecta asistencia no-abonados) - siempre modificable
   const handleTicketPriceChange = (delta) => {
-    const newPrice = Math.max(10, Math.min(100, ticketPrice + delta));
+    const newPrice = Math.max(5, ticketPrice + delta); // Mínimo 5€, sin máximo
     updateStadium({ ticketPrice: newPrice });
   };
   
