@@ -65,8 +65,8 @@ export default function Stadium() {
   const teamOverall = teamPlayers.length > 0 
     ? Math.round(teamPlayers.reduce((sum, p) => sum + (p.overall || 70), 0) / teamPlayers.length)
     : 70;
-  const teamPosition = state.table?.findIndex(t => t.teamId === state.team?.id) + 1 || 10;
-  const totalTeams = state.table?.length || 20;
+  const teamPosition = state.leagueTable?.findIndex(t => t.teamId === state.team?.id) + 1 || 10;
+  const totalTeams = state.leagueTable?.length || 20;
   const teamReputation = state.team?.reputation || 70;
   
   // Abonados: si campaña cerrada, usar valor fijado; si abierta, calcular previsión
