@@ -51,10 +51,9 @@ export default function Stadium() {
   const nextLevel = STADIUM_LEVELS[level + 1];
   const capacity = currentLevel?.capacity || 8000;
   
-  // Precios
-  const ticketPrice = stadium.ticketPrice ?? 30; // Precio medio por entrada
-  const seasonTicketPricePerMatch = ticketPrice * (1 - SEASON_TICKET_DISCOUNT);
-  const seasonTicketPrice = seasonTicketPricePerMatch * HOME_GAMES_PER_SEASON; // Precio total abono
+  // Precios (dos controles separados)
+  const seasonTicketPrice = stadium.seasonTicketPrice ?? 400; // Precio total del abono de temporada
+  const ticketPrice = stadium.ticketPrice ?? 30; // Precio entrada partido suelto (no abonados)
   
   // Datos del equipo para calcular abonados
   const teamPlayers = state.team?.players || [];
@@ -104,7 +103,14 @@ export default function Stadium() {
     });
   };
   
-  const handlePriceChange = (delta) => {
+  // Precio del abono (afecta abonados)
+  const handleSeasonPriceChange = (delta) => {
+    const newPrice = Math.max(200, Math.min(1000, seasonTicketPrice + delta));
+    updateStadium({ seasonTicketPrice: newPrice });
+  };
+  
+  // Precio entrada partido (afecta asistencia no-abonados)
+  const handleTicketPriceChange = (delta) => {
     const newPrice = Math.max(10, Math.min(100, ticketPrice + delta));
     updateStadium({ ticketPrice: newPrice });
   };
@@ -327,17 +333,29 @@ export default function Stadium() {
             </div>
           </div>
           
-          {/* Precio abono */}
+          {/* Precio abono de temporada */}
           <div className="card">
-            <h3>💵 Precio Abono</h3>
-            <p className="card-hint">Precio por partido (abonados pagan 35% menos). Abono más barato = más abonados</p>
+            <h3>🎫 Precio Abono</h3>
+            <p className="card-hint">Precio total por temporada. Más barato = más abonados</p>
             
             <div className="price-control">
-              <button onClick={() => handlePriceChange(-5)}>-5€</button>
-              <span className="price-value">€{ticketPrice}</span>
-              <button onClick={() => handlePriceChange(5)}>+5€</button>
+              <button onClick={() => handleSeasonPriceChange(-50)}>-50€</button>
+              <span className="price-value">€{seasonTicketPrice}</span>
+              <button onClick={() => handleSeasonPriceChange(50)}>+50€</button>
             </div>
-            <p className="price-detail">Abono temporada: {formatMoney(seasonTicketPrice)} ({HOME_GAMES_PER_SEASON} partidos)</p>
+            <p className="price-detail">{HOME_GAMES_PER_SEASON} partidos → {formatMoney(seasonTicketPrice / HOME_GAMES_PER_SEASON)}/partido</p>
+          </div>
+          
+          {/* Precio entrada partido suelto */}
+          <div className="card">
+            <h3>🎟️ Precio Entrada</h3>
+            <p className="card-hint">Para no abonados. Afecta asistencia en cada partido</p>
+            
+            <div className="price-control">
+              <button onClick={() => handleTicketPriceChange(-5)}>-5€</button>
+              <span className="price-value">€{ticketPrice}</span>
+              <button onClick={() => handleTicketPriceChange(5)}>+5€</button>
+            </div>
           </div>
           
           {/* Balance */}
