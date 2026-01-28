@@ -52,7 +52,8 @@ export default function Stadium() {
   const level = Math.max(0, Math.min(STADIUM_LEVELS.length - 1, rawLevel));
   const currentLevel = STADIUM_LEVELS[level];
   const nextLevel = STADIUM_LEVELS[level + 1];
-  const capacity = currentLevel?.capacity || 8000;
+  // Usar capacidad real si está disponible, sino la del nivel
+  const capacity = stadium.realCapacity || currentLevel?.capacity || 8000;
   
   // Sistema de abonos por temporada
   const currentWeek = state.currentWeek || 1;
@@ -225,8 +226,10 @@ export default function Stadium() {
     return `€${Math.round(n)}`;
   };
   
-  // Nombre del estadio
-  const stadiumName = naming ? `${naming.name} Arena` : (state.team?.stadium || `Estadio ${currentLevel.name}`);
+  // Nombre del estadio (usar nombre real si existe, o naming rights si hay sponsor)
+  const displayStadiumName = naming 
+    ? `${naming.name} Arena` 
+    : (stadium.name || state.team?.stadium || `Estadio ${currentLevel.name}`);
   
   // === PRÓXIMO PARTIDO EN CASA ===
   const nextHomeMatch = useMemo(() => {
@@ -305,7 +308,7 @@ export default function Stadium() {
       {/* Header */}
       <div className="stadium-simple__header">
         <div className="stadium-info">
-          <h1>{stadiumName}</h1>
+          <h1>{displayStadiumName}</h1>
           <p>{currentLevel.name} • {capacity.toLocaleString()} asientos</p>
         </div>
         <div className="stadium-stats">

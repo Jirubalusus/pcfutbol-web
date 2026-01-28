@@ -14,6 +14,7 @@ import {
   getPrimeraRfefGroups,
   getSegundaRfefGroups
 } from '../../data/teamsFirestore';
+import { getStadiumInfo, getStadiumLevel } from '../../data/stadiumCapacities';
 import { initializeLeague } from '../../game/leagueEngine';
 import { generateSeasonObjectives } from '../../game/objectivesEngine';
 import EuropeMap from './EuropeMap';
@@ -178,12 +179,18 @@ export default function TeamSelection() {
     
     const leagueData = initializeLeague(leagueTeams, selectedTeam.id);
     
+    // Obtener información del estadio real
+    const stadiumInfo = getStadiumInfo(selectedTeam.id, selectedTeam.reputation);
+    const stadiumLevel = getStadiumLevel(stadiumInfo.capacity);
+    
     dispatch({ 
       type: 'NEW_GAME', 
       payload: { 
         teamId: selectedTeam.id, 
         team: { ...selectedTeam },
-        group: selectedGroup
+        group: selectedGroup,
+        stadiumInfo,
+        stadiumLevel
       } 
     });
     
