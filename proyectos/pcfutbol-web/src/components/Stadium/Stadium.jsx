@@ -1,1013 +1,430 @@
 import React, { useState, useMemo } from 'react';
 import { useGame } from '../../context/GameContext';
-import { LALIGA_TEAMS } from '../../data/teamsFirestore';
 import './Stadium.scss';
 
-// === CONFIGURACIÓN DEL ESTADIO ===
-const STADIUM_ZONES = {
-  fondo: { name: 'Fondo', icon: '🎫', basePrice: 20, capacityRatio: 0.35, comfort: 1 },
-  lateral: { name: 'Lateral', icon: '🎟️', basePrice: 35, capacityRatio: 0.35, comfort: 2 },
-  tribuna: { name: 'Tribuna', icon: '💺', basePrice: 60, capacityRatio: 0.20, comfort: 3 },
-  vip: { name: 'VIP', icon: '👔', basePrice: 120, capacityRatio: 0.10, comfort: 5 }
-};
-
-const SEASON_TICKET_DISCOUNT = 0.35;
+// === CONFIGURACIÓN ===
 const HOME_GAMES_PER_SEASON = 19;
+const SEASON_TICKET_DISCOUNT = 0.35; // 35% descuento abonados
 
 const STADIUM_LEVELS = [
-  { name: 'Municipal', capacity: 8000, maintenance: 50000, upgradeCost: null, prestige: 1, features: ['Césped natural', 'Vestuarios básicos'] },
-  { name: 'Moderno', capacity: 18000, maintenance: 120000, upgradeCost: 8000000, prestige: 2, features: ['Marcador LED', 'Palcos básicos', 'Tienda oficial'] },
-  { name: 'Grande', capacity: 35000, maintenance: 280000, upgradeCost: 25000000, prestige: 3, features: ['Videomarcador', 'Zona VIP', 'Museo del club'] },
-  { name: 'Élite', capacity: 55000, maintenance: 450000, upgradeCost: 60000000, prestige: 4, features: ['Techo parcial', 'Hospitality premium', 'Parking subterráneo'] },
-  { name: 'Legendario', capacity: 80000, maintenance: 700000, upgradeCost: 120000000, prestige: 5, features: ['Techo retráctil', 'Hotel 5★', 'Centro comercial'] }
+  { name: 'Municipal', capacity: 8000, maintenance: 50000, upgradeCost: null, prestige: 1 },
+  { name: 'Moderno', capacity: 18000, maintenance: 120000, upgradeCost: 8000000, prestige: 2 },
+  { name: 'Grande', capacity: 35000, maintenance: 280000, upgradeCost: 25000000, prestige: 3 },
+  { name: 'Élite', capacity: 55000, maintenance: 450000, upgradeCost: 60000000, prestige: 4 },
+  { name: 'Legendario', capacity: 80000, maintenance: 700000, upgradeCost: 120000000, prestige: 5 }
 ];
 
-// Naming Rights - Patrocinadores
 const NAMING_SPONSORS = [
-  { id: 'local_bank', name: 'Banco Regional', offer: 500000, minPrestige: 1, duration: 3 },
+  { id: 'local', name: 'Banco Regional', offer: 500000, minPrestige: 1, duration: 3 },
   { id: 'telecom', name: 'TeleCom Plus', offer: 1500000, minPrestige: 2, duration: 3 },
-  { id: 'car_brand', name: 'AutoMotor', offer: 3000000, minPrestige: 3, duration: 5 },
+  { id: 'car', name: 'AutoMotor', offer: 3000000, minPrestige: 3, duration: 5 },
   { id: 'airline', name: 'FlyAir', offer: 5000000, minPrestige: 4, duration: 5 },
-  { id: 'tech_giant', name: 'TechCorp', offer: 8000000, minPrestige: 5, duration: 5 },
-  { id: 'global_brand', name: 'GlobalBrand', offer: 12000000, minPrestige: 5, duration: 7 }
+  { id: 'tech', name: 'TechCorp', offer: 8000000, minPrestige: 5, duration: 5 }
 ];
 
-// Eventos especiales (daño reducido y balanceado)
 const SPECIAL_EVENTS = [
-  { id: 'friendly_local', name: 'Amistoso Regional', icon: '⚽', income: 150000, fanHappiness: 5, grassDamage: 5, minLevel: 0, cooldown: 1 },
-  { id: 'friendly_euro', name: 'Amistoso Internacional', icon: '🌍', income: 400000, fanHappiness: 10, grassDamage: 8, minLevel: 1, cooldown: 2 },
-  { id: 'concert_local', name: 'Concierto Local', icon: '🎸', income: 300000, fanHappiness: -3, grassDamage: 15, minLevel: 1, cooldown: 2 },
-  { id: 'concert_star', name: 'Concierto Estrella', icon: '🎤', income: 800000, fanHappiness: 0, grassDamage: 25, minLevel: 2, cooldown: 3 },
-  { id: 'corporate', name: 'Evento Corporativo', icon: '💼', income: 200000, fanHappiness: -5, grassDamage: 3, minLevel: 2, cooldown: 1 },
-  { id: 'festival', name: 'Festival de Música', icon: '🎪', income: 1500000, fanHappiness: -10, grassDamage: 35, minLevel: 3, cooldown: 4 },
-  { id: 'legends_match', name: 'Partido de Leyendas', icon: '🏆', income: 600000, fanHappiness: 25, grassDamage: 8, minLevel: 2, cooldown: 2 }
+  { id: 'friendly', name: 'Amistoso', icon: '⚽', income: 200000, grassDamage: 5, cooldown: 1 },
+  { id: 'concert', name: 'Concierto', icon: '🎤', income: 500000, grassDamage: 20, cooldown: 3 },
+  { id: 'corporate', name: 'Evento Corporativo', icon: '💼', income: 150000, grassDamage: 3, cooldown: 1 },
+  { id: 'legends', name: 'Partido Leyendas', icon: '🏆', income: 400000, grassDamage: 8, cooldown: 2 }
 ];
 
-// Constantes de balance
-const GRASS_RECOVERY_PER_WEEK = 5; // El césped se recupera 5% por semana
-const EVENT_COOLDOWN_WEEKS = 2; // Mínimo 2 semanas entre eventos
-
-// Colores de asientos disponibles
-const SEAT_COLORS = [
-  { id: 'blue', name: 'Azul Clásico', color: '#1a5fb4' },
-  { id: 'red', name: 'Rojo Pasión', color: '#c01c28' },
-  { id: 'green', name: 'Verde Esperanza', color: '#2ec27e' },
-  { id: 'yellow', name: 'Amarillo Sol', color: '#f5c211' },
-  { id: 'purple', name: 'Púrpura Real', color: '#813d9c' },
-  { id: 'orange', name: 'Naranja Fuego', color: '#e66100' },
-  { id: 'white', name: 'Blanco Puro', color: '#f0f0f0' },
-  { id: 'black', name: 'Negro Elegante', color: '#1c1c1c' }
-];
-
-// Palcos VIP
-const VIP_BOXES = [
-  { id: 'standard', name: 'Palco Estándar', capacity: 12, basePrice: 50000, minLevel: 1 },
-  { id: 'premium', name: 'Palco Premium', capacity: 20, basePrice: 100000, minLevel: 2 },
-  { id: 'presidential', name: 'Palco Presidencial', capacity: 30, basePrice: 200000, minLevel: 3 },
-  { id: 'corporate', name: 'Suite Corporativa', capacity: 50, basePrice: 350000, minLevel: 4 }
-];
-
-// === COMPONENTE PRINCIPAL ===
+// === COMPONENTE ===
 export default function Stadium() {
   const { state, dispatch } = useGame();
-  const [activeTab, setActiveTab] = useState('overview');
-  const [showNamingModal, setShowNamingModal] = useState(false);
-  const [showEventModal, setShowEventModal] = useState(false);
-  const [showCustomizeModal, setShowCustomizeModal] = useState(false);
-  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [activeTab, setActiveTab] = useState('general');
   
-  // Estado del estadio con defaults mejorados
-  const stadiumState = state.stadium || {
-    level: 0,
-    seasonTickets: { fondo: 0, lateral: 0, tribuna: 0, vip: 0 },
-    ticketPrices: { fondo: 25, lateral: 45, tribuna: 75, vip: 150 },
-    services: { parking: false, food: false, merchandise: false, tour: false },
-    // Nuevos campos
-    naming: null, // { sponsorId, yearsLeft, yearlyIncome }
-    customName: null, // Nombre personalizado si no hay sponsor
-    seatColor: 'blue',
-    grassCondition: 100,
-    fanHappiness: 70,
-    atmosphere: 50,
-    vipBoxes: [], // [{ boxType, company, yearsLeft, yearlyIncome }]
-    lastEventWeek: 0, // Para cooldown entre eventos
-    records: {
-      maxAttendance: 0,
-      maxAttendanceRival: null,
-      maxAttendanceDate: null,
-      maxIncome: 0,
-      totalEvents: 0,
-      totalIncome: 0
-    },
-    history: [] // [{ type, description, date, income }]
-  };
+  // Estado con defaults seguros
+  const stadium = state.stadium || {};
+  const level = stadium.level ?? 0;
+  const currentLevel = STADIUM_LEVELS[level];
+  const nextLevel = STADIUM_LEVELS[level + 1];
+  const capacity = currentLevel.capacity;
   
-  // Calcular semanas desde último evento (para cooldown)
-  const weeksSinceLastEvent = (state.currentWeek || 1) - (stadiumState.lastEventWeek || 0);
-  const canHostEvent = weeksSinceLastEvent >= EVENT_COOLDOWN_WEEKS;
+  // Abonados por defecto: 30% de capacidad
+  const seasonTickets = stadium.seasonTickets ?? Math.floor(capacity * 0.3);
+  const ticketPrice = stadium.ticketPrice ?? 30; // Precio medio por entrada
+  const grassCondition = stadium.grassCondition ?? 100;
+  const naming = stadium.naming || null;
+  const lastEventWeek = stadium.lastEventWeek ?? 0;
   
-  const currentLevel = STADIUM_LEVELS[stadiumState.level] || STADIUM_LEVELS[0];
-  const nextLevel = STADIUM_LEVELS[stadiumState.level + 1];
+  // Cálculos
+  const maxSeasonTickets = Math.floor(capacity * 0.8); // Max 80% abonados
+  const seasonTicketPrice = ticketPrice * HOME_GAMES_PER_SEASON * (1 - SEASON_TICKET_DISCOUNT);
+  const seasonTicketIncome = seasonTickets * seasonTicketPrice;
+  const namingIncome = naming?.yearlyIncome ?? 0;
+  const maintenanceCost = currentLevel.maintenance * 52; // Anual
+  const annualBalance = seasonTicketIncome + namingIncome - maintenanceCost;
   
-  // Calcular capacidad por zona
-  const zoneCapacities = useMemo(() => {
-    const total = currentLevel.capacity;
-    return {
-      fondo: Math.floor(total * STADIUM_ZONES.fondo.capacityRatio),
-      lateral: Math.floor(total * STADIUM_ZONES.lateral.capacityRatio),
-      tribuna: Math.floor(total * STADIUM_ZONES.tribuna.capacityRatio),
-      vip: Math.floor(total * STADIUM_ZONES.vip.capacityRatio)
-    };
-  }, [currentLevel.capacity]);
+  // Factor cancha simple (basado en nivel + ocupación)
+  const occupancyRate = seasonTickets / capacity;
+  const homeAdvantage = 1 + (currentLevel.prestige * 0.01) + (occupancyRate > 0.5 ? 0.02 : 0);
   
-  // Calcular nombre del estadio
-  const stadiumName = useMemo(() => {
-    if (stadiumState.naming) {
-      const sponsor = NAMING_SPONSORS.find(s => s.id === stadiumState.naming.sponsorId);
-      return `${sponsor?.name || 'Sponsor'} Arena`;
-    }
-    if (stadiumState.customName) {
-      return stadiumState.customName;
-    }
-    return state.team?.stadium || `Estadio ${currentLevel.name}`;
-  }, [stadiumState.naming, stadiumState.customName, state.team?.stadium, currentLevel.name]);
+  // Cooldown eventos
+  const weeksSinceEvent = (state.currentWeek || 1) - lastEventWeek;
+  const canHostEvent = weeksSinceEvent >= 2;
   
-  // Calcular factor cancha (1.00 - 1.15)
-  const homeAdvantage = useMemo(() => {
-    let factor = 1.00;
-    
-    // Base por nivel de estadio
-    factor += currentLevel.prestige * 0.01; // +1% por nivel
-    
-    // Ambiente de la afición
-    factor += (stadiumState.atmosphere / 100) * 0.05; // hasta +5%
-    
-    // Felicidad de fans
-    factor += ((stadiumState.fanHappiness - 50) / 100) * 0.03; // -1.5% a +1.5%
-    
-    // Condición del césped
-    if (stadiumState.grassCondition < 50) {
-      factor -= 0.02; // -2% si césped malo
-    }
-    
-    // Ocupación alta
-    const totalSeasonTickets = Object.values(stadiumState.seasonTickets || {}).reduce((a, b) => a + b, 0);
-    const occupancyRate = totalSeasonTickets / currentLevel.capacity;
-    if (occupancyRate > 0.7) {
-      factor += 0.02; // +2% si más del 70% abonados
-    }
-    
-    return Math.min(1.15, Math.max(1.00, factor));
-  }, [currentLevel, stadiumState]);
-  
-  // Calcular ingresos por abonos
-  const seasonTicketIncome = useMemo(() => {
-    let total = 0;
-    const prices = stadiumState.ticketPrices || { fondo: 25, lateral: 45, tribuna: 75, vip: 150 };
-    Object.entries(stadiumState.seasonTickets || {}).forEach(([zone, count]) => {
-      const fullPrice = prices[zone] * HOME_GAMES_PER_SEASON;
-      const discountedPrice = fullPrice * (1 - SEASON_TICKET_DISCOUNT);
-      total += count * discountedPrice;
-    });
-    return total;
-  }, [stadiumState.seasonTickets, stadiumState.ticketPrices]);
-  
-  // Ingresos anuales por naming rights
-  const namingIncome = stadiumState.naming?.yearlyIncome || 0;
-  
-  // Ingresos por palcos VIP
-  const vipBoxIncome = useMemo(() => {
-    return (stadiumState.vipBoxes || []).reduce((sum, box) => sum + (box.yearlyIncome || 0), 0);
-  }, [stadiumState.vipBoxes]);
-  
-  // Sponsors disponibles para naming rights
-  const availableSponsors = useMemo(() => {
-    return NAMING_SPONSORS.filter(s => s.minPrestige <= currentLevel.prestige);
-  }, [currentLevel.prestige]);
-  
-  // Eventos disponibles
-  const availableEvents = useMemo(() => {
-    return SPECIAL_EVENTS.filter(e => e.minLevel <= stadiumState.level);
-  }, [stadiumState.level]);
+  // Disponibles
+  const availableSponsors = NAMING_SPONSORS.filter(s => s.minPrestige <= currentLevel.prestige && !naming);
   
   // === HANDLERS ===
-  const handleUpgradeStadium = () => {
-    if (!nextLevel || state.money < nextLevel.upgradeCost) return;
-    
-    const newStadiumState = {
-      ...stadiumState,
-      level: stadiumState.level + 1,
-      history: [
-        ...(stadiumState.history || []),
-        {
-          type: 'upgrade',
-          description: `Ampliación a ${nextLevel.name}`,
-          date: `Temporada ${state.season}, Semana ${state.currentWeek}`,
-          income: -nextLevel.upgradeCost
-        }
-      ]
-    };
-    
-    dispatch({ type: 'UPDATE_STADIUM', payload: newStadiumState });
-    dispatch({ type: 'UPDATE_MONEY', payload: -nextLevel.upgradeCost });
-    
+  const updateStadium = (updates) => {
     dispatch({
-      type: 'ADD_MESSAGE',
-      payload: {
-        id: Date.now(),
-        type: 'stadium',
-        title: '🏟️ ¡Ampliación completada!',
-        content: `Tu estadio ahora es ${nextLevel.name}. Capacidad: ${nextLevel.capacity.toLocaleString()} espectadores`,
-        date: `Semana ${state.currentWeek}`
-      }
+      type: 'UPDATE_STADIUM',
+      payload: { ...stadium, ...updates }
     });
+  };
+  
+  const handleSeasonTicketsChange = (delta) => {
+    const newValue = Math.max(0, Math.min(maxSeasonTickets, seasonTickets + delta));
+    updateStadium({ seasonTickets: newValue });
+  };
+  
+  const handlePriceChange = (delta) => {
+    const newPrice = Math.max(10, Math.min(100, ticketPrice + delta));
+    updateStadium({ ticketPrice: newPrice });
   };
   
   const handleAcceptNaming = (sponsor) => {
-    // Calcular penalización de fans según historial del estadio
-    const isHistoric = (state.team?.reputation || 70) > 80;
-    const fanPenalty = isHistoric ? -15 : -5;
-    
-    const newStadiumState = {
-      ...stadiumState,
+    updateStadium({
       naming: {
         sponsorId: sponsor.id,
+        name: sponsor.name,
         yearsLeft: sponsor.duration,
         yearlyIncome: sponsor.offer
-      },
-      fanHappiness: Math.max(0, (stadiumState.fanHappiness || 70) + fanPenalty),
-      history: [
-        ...(stadiumState.history || []),
-        {
-          type: 'naming',
-          description: `Naming rights vendidos a ${sponsor.name}`,
-          date: `Temporada ${state.season || 1}, Semana ${state.currentWeek}`,
-          income: sponsor.offer * sponsor.duration
-        }
-      ]
-    };
-    
-    dispatch({ type: 'UPDATE_STADIUM', payload: newStadiumState });
-    dispatch({ type: 'UPDATE_MONEY', payload: sponsor.offer }); // Primer año
-    
+      }
+    });
+    dispatch({ type: 'UPDATE_MONEY', payload: sponsor.offer });
     dispatch({
       type: 'ADD_MESSAGE',
       payload: {
         id: Date.now(),
         type: 'stadium',
         title: '💰 Naming Rights',
-        content: `El estadio ahora se llama "${sponsor.name} Arena". Ingresos: €${(sponsor.offer / 1000000).toFixed(1)}M/año durante ${sponsor.duration} años.${isHistoric ? ' Los fans históricos no están contentos...' : ''}`,
+        content: `Acuerdo con ${sponsor.name}: €${(sponsor.offer/1000000).toFixed(1)}M/año por ${sponsor.duration} años`,
         date: `Semana ${state.currentWeek}`
       }
     });
-    
-    setShowNamingModal(false);
   };
   
-  const handleRemoveNaming = () => {
-    const fanBonus = (state.team?.reputation || 70) > 80 ? 10 : 3;
-    
-    const newStadiumState = {
-      ...stadiumState,
-      naming: null,
-      fanHappiness: Math.min(100, (stadiumState.fanHappiness || 70) + fanBonus),
-      history: [
-        ...(stadiumState.history || []),
-        {
-          type: 'naming',
-          description: 'Naming rights eliminados - Estadio recupera nombre histórico',
-          date: `Temporada ${state.season || 1}, Semana ${state.currentWeek}`,
-          income: 0
-        }
-      ]
-    };
-    
-    dispatch({ type: 'UPDATE_STADIUM', payload: newStadiumState });
-    
+  const handleCancelNaming = () => {
+    updateStadium({ naming: null });
     dispatch({
       type: 'ADD_MESSAGE',
       payload: {
         id: Date.now(),
         type: 'stadium',
-        title: '🏟️ Nombre restaurado',
-        content: 'El estadio recupera su nombre histórico. ¡Los fans lo celebran!',
+        title: '🏟️ Naming cancelado',
+        content: 'El estadio recupera su nombre original',
         date: `Semana ${state.currentWeek}`
       }
     });
-    
-    setShowNamingModal(false);
   };
   
   const handleHostEvent = (event) => {
-    // Verificar cooldown
-    if (!canHostEvent) {
-      dispatch({
-        type: 'ADD_MESSAGE',
-        payload: {
-          id: Date.now(),
-          type: 'warning',
-          title: '⏳ Cooldown activo',
-          content: `Debes esperar ${EVENT_COOLDOWN_WEEKS - weeksSinceLastEvent} semanas más antes de organizar otro evento.`,
-          date: `Semana ${state.currentWeek}`
-        }
-      });
-      return;
-    }
+    if (!canHostEvent) return;
     
-    // Aplicar efectos del evento
-    const newGrassCondition = Math.max(0, (stadiumState.grassCondition || 100) - event.grassDamage);
-    const newFanHappiness = Math.max(0, Math.min(100, (stadiumState.fanHappiness || 70) + event.fanHappiness));
-    
-    const newStadiumState = {
-      ...stadiumState,
-      grassCondition: newGrassCondition,
-      fanHappiness: newFanHappiness,
-      lastEventWeek: state.currentWeek || 1, // Guardar semana del evento
-      records: {
-        ...stadiumState.records,
-        totalEvents: (stadiumState.records?.totalEvents || 0) + 1,
-        totalIncome: (stadiumState.records?.totalIncome || 0) + event.income
-      },
-      history: [
-        ...(stadiumState.history || []),
-        {
-          type: 'event',
-          description: event.name,
-          date: `Temporada ${state.season || 1}, Semana ${state.currentWeek}`,
-          income: event.income
-        }
-      ]
-    };
-    
-    dispatch({ type: 'UPDATE_STADIUM', payload: newStadiumState });
+    const newGrass = Math.max(0, grassCondition - event.grassDamage);
+    updateStadium({
+      grassCondition: newGrass,
+      lastEventWeek: state.currentWeek || 1
+    });
     dispatch({ type: 'UPDATE_MONEY', payload: event.income });
-    
-    let message = `${event.name} celebrado con éxito. Ingresos: €${(event.income / 1000).toFixed(0)}K`;
-    if (event.grassDamage > 20) {
-      message += `. ⚠️ El césped ha sufrido daños (${event.grassDamage}%)`;
-    }
-    if (event.fanHappiness < 0) {
-      message += `. Los fans puristas no están contentos.`;
-    } else if (event.fanHappiness > 0) {
-      message += `. ¡Los fans están encantados!`;
-    }
-    
     dispatch({
       type: 'ADD_MESSAGE',
       payload: {
         id: Date.now(),
         type: 'stadium',
-        title: `${event.icon} Evento celebrado`,
-        content: message,
+        title: `${event.icon} ${event.name}`,
+        content: `Evento celebrado. Ingresos: €${(event.income/1000).toFixed(0)}K`,
         date: `Semana ${state.currentWeek}`
       }
     });
-    
-    setShowEventModal(false);
-    setSelectedEvent(null);
   };
   
   const handleRepairGrass = () => {
-    const repairCost = 200000;
-    if (state.money < repairCost) return;
-    
-    const newStadiumState = {
-      ...stadiumState,
-      grassCondition: 100
-    };
-    
-    dispatch({ type: 'UPDATE_STADIUM', payload: newStadiumState });
-    dispatch({ type: 'UPDATE_MONEY', payload: -repairCost });
-    
+    const cost = 200000;
+    if (state.money < cost) return;
+    updateStadium({ grassCondition: 100 });
+    dispatch({ type: 'UPDATE_MONEY', payload: -cost });
+  };
+  
+  const handleUpgrade = () => {
+    if (!nextLevel || state.money < nextLevel.upgradeCost) return;
+    updateStadium({ level: level + 1 });
+    dispatch({ type: 'UPDATE_MONEY', payload: -nextLevel.upgradeCost });
     dispatch({
       type: 'ADD_MESSAGE',
       payload: {
         id: Date.now(),
         type: 'stadium',
-        title: '🌱 Césped renovado',
-        content: 'El césped ha sido completamente renovado. Condición: 100%',
+        title: '🏗️ Estadio ampliado',
+        content: `Ahora es ${nextLevel.name} con ${nextLevel.capacity.toLocaleString()} asientos`,
         date: `Semana ${state.currentWeek}`
       }
     });
   };
   
-  const handleChangeSeatColor = (colorId) => {
-    const newStadiumState = {
-      ...stadiumState,
-      seatColor: colorId
-    };
-    dispatch({ type: 'UPDATE_STADIUM', payload: newStadiumState });
-    setShowCustomizeModal(false);
+  const formatMoney = (n) => {
+    if (Math.abs(n) >= 1000000) return `€${(n/1000000).toFixed(1)}M`;
+    if (Math.abs(n) >= 1000) return `€${(n/1000).toFixed(0)}K`;
+    return `€${n}`;
   };
   
-  const handleChangeStadiumName = (newName) => {
-    if (!newName.trim()) return;
-    const newStadiumState = {
-      ...stadiumState,
-      customName: newName.trim(),
-      naming: null // Quitar sponsor si pone nombre custom
-    };
-    dispatch({ type: 'UPDATE_STADIUM', payload: newStadiumState });
-  };
-  
-  const formatMoney = (amount) => {
-    if (amount >= 1000000) return `€${(amount / 1000000).toFixed(1)}M`;
-    if (amount >= 1000) return `€${(amount / 1000).toFixed(0)}K`;
-    return `€${amount}`;
-  };
-  
-  const getSeatColor = () => {
-    const color = SEAT_COLORS.find(c => c.id === stadiumState.seatColor);
-    return color?.color || '#1a5fb4';
-  };
-  
-  // === RENDER ===
+  // Nombre del estadio
+  const stadiumName = naming ? `${naming.name} Arena` : (state.team?.stadium || `Estadio ${currentLevel.name}`);
+
   return (
-    <div className="stadium-v2">
-      {/* Header con vista del estadio */}
-      <div className="stadium-v2__hero">
-        <div className="stadium-v2__visual" style={{ '--seat-color': getSeatColor() }}>
-          <div className="stadium-iso">
-            <div className="stadium-iso__base">
-              <div className="stadium-iso__field">
-                <div className="field-lines"></div>
-              </div>
-              <div className="stadium-iso__stands stands-north">
-                <div className="stand-fill" style={{ height: `${Math.min(100, (stadiumState.atmosphere || 50))}%` }}></div>
-              </div>
-              <div className="stadium-iso__stands stands-south">
-                <div className="stand-fill" style={{ height: `${Math.min(100, (stadiumState.atmosphere || 50))}%` }}></div>
-              </div>
-              <div className="stadium-iso__stands stands-east">
-                <div className="stand-fill" style={{ height: `${Math.min(100, (stadiumState.atmosphere || 50))}%` }}></div>
-              </div>
-              <div className="stadium-iso__stands stands-west">
-                <div className="stand-fill" style={{ height: `${Math.min(100, (stadiumState.atmosphere || 50))}%` }}></div>
-              </div>
-              {stadiumState.level >= 2 && <div className="stadium-iso__roof"></div>}
-              {stadiumState.level >= 3 && <div className="stadium-iso__lights"></div>}
-            </div>
-            <div className="stadium-iso__level-badge">{stadiumState.level + 1}</div>
-          </div>
+    <div className="stadium-simple">
+      {/* Header */}
+      <div className="stadium-simple__header">
+        <div className="stadium-info">
+          <h1>{stadiumName}</h1>
+          <p>{currentLevel.name} • {capacity.toLocaleString()} asientos</p>
         </div>
-        
-        <div className="stadium-v2__info">
-          <h1 className="stadium-name">{stadiumName}</h1>
-          <p className="stadium-type">{currentLevel.name} • {currentLevel.capacity.toLocaleString()} asientos</p>
-          
-          <div className="stadium-v2__quick-stats">
-            <div className="quick-stat">
-              <span className="icon">🔥</span>
-              <span className="value">+{((homeAdvantage - 1) * 100).toFixed(1)}%</span>
-              <span className="label">Factor cancha</span>
-            </div>
-            <div className="quick-stat">
-              <span className="icon">😊</span>
-              <span className="value">{stadiumState.fanHappiness || 70}%</span>
-              <span className="label">Fans</span>
-            </div>
-            <div className="quick-stat">
-              <span className="icon">🌱</span>
-              <span className="value">{stadiumState.grassCondition || 100}%</span>
-              <span className="label">Césped</span>
-            </div>
-            <div className="quick-stat highlight">
-              <span className="icon">💰</span>
-              <span className="value">{formatMoney(state.money)}</span>
-              <span className="label">Presupuesto</span>
-            </div>
+        <div className="stadium-stats">
+          <div className="stat">
+            <span className="value">+{((homeAdvantage - 1) * 100).toFixed(1)}%</span>
+            <span className="label">Factor cancha</span>
+          </div>
+          <div className="stat">
+            <span className="value">{Math.round(occupancyRate * 100)}%</span>
+            <span className="label">Ocupación</span>
+          </div>
+          <div className="stat">
+            <span className="value">{grassCondition}%</span>
+            <span className="label">Césped</span>
+          </div>
+          <div className="stat highlight">
+            <span className="value">{formatMoney(state.money)}</span>
+            <span className="label">Presupuesto</span>
           </div>
         </div>
       </div>
       
-      {/* Tabs */}
-      <div className="stadium-v2__tabs">
-        <button className={activeTab === 'overview' ? 'active' : ''} onClick={() => setActiveTab('overview')}>
-          📊 Resumen
+      {/* Tabs simplificados */}
+      <div className="stadium-simple__tabs">
+        <button className={activeTab === 'general' ? 'active' : ''} onClick={() => setActiveTab('general')}>
+          📊 General
         </button>
-        <button className={activeTab === 'naming' ? 'active' : ''} onClick={() => setActiveTab('naming')}>
+        <button className={activeTab === 'sponsors' ? 'active' : ''} onClick={() => setActiveTab('sponsors')}>
           💰 Patrocinio
         </button>
         <button className={activeTab === 'events' ? 'active' : ''} onClick={() => setActiveTab('events')}>
           🎤 Eventos
         </button>
-        <button className={activeTab === 'vip' ? 'active' : ''} onClick={() => setActiveTab('vip')}>
-          👔 VIP
-        </button>
-        <button className={activeTab === 'customize' ? 'active' : ''} onClick={() => setActiveTab('customize')}>
-          🎨 Personalizar
-        </button>
         <button className={activeTab === 'upgrade' ? 'active' : ''} onClick={() => setActiveTab('upgrade')}>
           🔧 Ampliar
         </button>
-        <button className={activeTab === 'history' ? 'active' : ''} onClick={() => setActiveTab('history')}>
-          📜 Historial
-        </button>
       </div>
       
-      {/* === TAB: OVERVIEW === */}
-      {activeTab === 'overview' && (
-        <div className="stadium-v2__overview">
-          {/* Factor Cancha */}
-          <div className="overview-card atmosphere-card">
-            <div className="card-header">
-              <h3>🔥 Factor Cancha</h3>
-              <span className="factor-value">+{((homeAdvantage - 1) * 100).toFixed(1)}%</span>
-            </div>
-            <p className="card-desc">Bonus a tu equipo en partidos de casa</p>
+      {/* TAB: GENERAL */}
+      {activeTab === 'general' && (
+        <div className="stadium-simple__general">
+          {/* Abonados */}
+          <div className="card">
+            <h3>🎫 Abonados</h3>
+            <p className="card-hint">Más abonados = ingresos fijos garantizados</p>
             
-            <div className="atmosphere-breakdown">
-              <div className="factor-item">
-                <span className="label">Nivel estadio</span>
-                <span className="value">+{currentLevel.prestige}%</span>
+            <div className="abonados-control">
+              <div className="abonados-info">
+                <span className="big-number">{seasonTickets.toLocaleString()}</span>
+                <span className="of-total">/ {maxSeasonTickets.toLocaleString()} máx</span>
               </div>
-              <div className="factor-item">
-                <span className="label">Ambiente afición</span>
-                <span className="value">+{((stadiumState.atmosphere || 50) / 100 * 5).toFixed(1)}%</span>
+              <div className="abonados-buttons">
+                <button onClick={() => handleSeasonTicketsChange(-1000)}>-1000</button>
+                <button onClick={() => handleSeasonTicketsChange(-100)}>-100</button>
+                <button onClick={() => handleSeasonTicketsChange(100)}>+100</button>
+                <button onClick={() => handleSeasonTicketsChange(1000)}>+1000</button>
               </div>
-              <div className="factor-item">
-                <span className="label">Felicidad fans</span>
-                <span className="value">{(((stadiumState.fanHappiness || 70) - 50) / 100 * 3).toFixed(1)}%</span>
+              <div className="progress-bar">
+                <div className="fill" style={{ width: `${(seasonTickets / maxSeasonTickets) * 100}%` }}></div>
               </div>
-              {stadiumState.grassCondition < 50 && (
-                <div className="factor-item negative">
-                  <span className="label">Césped dañado</span>
-                  <span className="value">-2%</span>
-                </div>
-              )}
             </div>
           </div>
           
-          {/* Ingresos */}
-          <div className="overview-card income-card">
-            <div className="card-header">
-              <h3>💵 Ingresos Anuales</h3>
-            </div>
+          {/* Precio entrada */}
+          <div className="card">
+            <h3>💵 Precio Entrada</h3>
+            <p className="card-hint">Precio medio por partido (abonados pagan 35% menos)</p>
             
-            <div className="income-breakdown">
-              <div className="income-item">
-                <span className="icon">🎫</span>
-                <span className="label">Abonos</span>
-                <span className="value">{formatMoney(seasonTicketIncome)}</span>
+            <div className="price-control">
+              <button onClick={() => handlePriceChange(-5)}>-5€</button>
+              <span className="price-value">€{ticketPrice}</span>
+              <button onClick={() => handlePriceChange(5)}>+5€</button>
+            </div>
+            <p className="price-detail">Abono temporada: {formatMoney(seasonTicketPrice)} ({HOME_GAMES_PER_SEASON} partidos)</p>
+          </div>
+          
+          {/* Balance */}
+          <div className="card balance-card">
+            <h3>📈 Balance Anual Estimado</h3>
+            
+            <div className="balance-rows">
+              <div className="balance-row income">
+                <span>Abonados ({seasonTickets.toLocaleString()})</span>
+                <span>{formatMoney(seasonTicketIncome)}</span>
               </div>
               {namingIncome > 0 && (
-                <div className="income-item">
-                  <span className="icon">🏷️</span>
-                  <span className="label">Naming Rights</span>
-                  <span className="value">{formatMoney(namingIncome)}</span>
+                <div className="balance-row income">
+                  <span>Naming Rights</span>
+                  <span>{formatMoney(namingIncome)}</span>
                 </div>
               )}
-              {vipBoxIncome > 0 && (
-                <div className="income-item">
-                  <span className="icon">👔</span>
-                  <span className="label">Palcos VIP</span>
-                  <span className="value">{formatMoney(vipBoxIncome)}</span>
-                </div>
-              )}
-              <div className="income-item maintenance">
-                <span className="icon">🔧</span>
-                <span className="label">Mantenimiento</span>
-                <span className="value negative">-{formatMoney(currentLevel.maintenance * 52)}</span>
+              <div className="balance-row expense">
+                <span>Mantenimiento</span>
+                <span>-{formatMoney(maintenanceCost)}</span>
               </div>
-              <div className="income-total">
-                <span className="label">Balance anual</span>
-                <span className="value">{formatMoney(seasonTicketIncome + namingIncome + vipBoxIncome - currentLevel.maintenance * 52)}</span>
+              <div className={`balance-row total ${annualBalance >= 0 ? 'positive' : 'negative'}`}>
+                <span>Balance</span>
+                <span>{formatMoney(annualBalance)}</span>
               </div>
             </div>
           </div>
           
-          {/* Estado del césped */}
-          <div className="overview-card grass-card">
-            <div className="card-header">
-              <h3>🌱 Estado del Césped</h3>
-              <span className={`grass-value ${stadiumState.grassCondition < 50 ? 'warning' : ''}`}>
-                {stadiumState.grassCondition || 100}%
-              </span>
-            </div>
-            
+          {/* Césped */}
+          <div className="card grass-card">
+            <h3>🌱 Estado del Césped</h3>
             <div className="grass-bar">
-              <div 
-                className="grass-fill" 
-                style={{ width: `${stadiumState.grassCondition || 100}%` }}
-              ></div>
+              <div className="fill" style={{ width: `${grassCondition}%` }}></div>
+              <span className="grass-percent">{grassCondition}%</span>
             </div>
-            
-            {(stadiumState.grassCondition || 100) < 100 && (
-              <p className="grass-recovery">
-                ♻️ Recuperación natural: +{GRASS_RECOVERY_PER_WEEK}%/semana
-                {stadiumState.grassCondition < 100 && (
-                  <span> (100% en ~{Math.ceil((100 - (stadiumState.grassCondition || 100)) / GRASS_RECOVERY_PER_WEEK)} semanas)</span>
-                )}
-              </p>
+            {grassCondition < 100 && (
+              <p className="grass-hint">Recupera +5%/semana automáticamente</p>
             )}
-            
-            {stadiumState.grassCondition < 70 && (
-              <button 
-                className="repair-btn"
-                onClick={handleRepairGrass}
-                disabled={state.money < 200000}
-              >
-                <span>🔧 Renovar césped (instantáneo)</span>
-                <span className="cost">{formatMoney(200000)}</span>
+            {grassCondition < 70 && (
+              <button className="repair-btn" onClick={handleRepairGrass} disabled={state.money < 200000}>
+                🔧 Reparar césped ({formatMoney(200000)})
               </button>
             )}
-            
-            {stadiumState.grassCondition < 50 && (
-              <p className="grass-warning">⚠️ El mal estado del césped afecta al rendimiento del equipo (-2% factor cancha)</p>
-            )}
-          </div>
-          
-          {/* Records */}
-          <div className="overview-card records-card">
-            <div className="card-header">
-              <h3>🏆 Récords del Estadio</h3>
-            </div>
-            
-            <div className="records-grid">
-              <div className="record-item">
-                <span className="record-icon">👥</span>
-                <span className="record-value">{(stadiumState.records?.maxAttendance || 0).toLocaleString()}</span>
-                <span className="record-label">Récord asistencia</span>
-                {stadiumState.records?.maxAttendanceRival && (
-                  <span className="record-detail">vs {stadiumState.records.maxAttendanceRival}</span>
-                )}
-              </div>
-              <div className="record-item">
-                <span className="record-icon">💰</span>
-                <span className="record-value">{formatMoney(stadiumState.records?.maxIncome || 0)}</span>
-                <span className="record-label">Mejor taquilla</span>
-              </div>
-              <div className="record-item">
-                <span className="record-icon">🎪</span>
-                <span className="record-value">{stadiumState.records?.totalEvents || 0}</span>
-                <span className="record-label">Eventos celebrados</span>
-              </div>
-              <div className="record-item">
-                <span className="record-icon">📈</span>
-                <span className="record-value">{formatMoney(stadiumState.records?.totalIncome || 0)}</span>
-                <span className="record-label">Ingresos totales</span>
-              </div>
-            </div>
           </div>
         </div>
       )}
       
-      {/* === TAB: NAMING RIGHTS === */}
-      {activeTab === 'naming' && (
-        <div className="stadium-v2__naming">
-          <div className="naming-current">
-            <h3>🏷️ Nombre actual del estadio</h3>
-            <div className="current-name-card">
-              <span className="name">{stadiumName}</span>
-              {stadiumState.naming && (
-                <div className="naming-details">
-                  <span className="sponsor">Patrocinado por {NAMING_SPONSORS.find(s => s.id === stadiumState.naming.sponsorId)?.name}</span>
-                  <span className="duration">{stadiumState.naming.yearsLeft} años restantes</span>
-                  <span className="income">{formatMoney(stadiumState.naming.yearlyIncome)}/año</span>
-                  <button className="remove-naming-btn" onClick={handleRemoveNaming}>
-                    Rescindir contrato
-                  </button>
-                </div>
-              )}
+      {/* TAB: SPONSORS */}
+      {activeTab === 'sponsors' && (
+        <div className="stadium-simple__sponsors">
+          {naming ? (
+            <div className="current-sponsor">
+              <h3>🏷️ Patrocinador Actual</h3>
+              <div className="sponsor-info">
+                <span className="sponsor-name">{naming.name}</span>
+                <span className="sponsor-income">{formatMoney(naming.yearlyIncome)}/año</span>
+                <span className="sponsor-years">{naming.yearsLeft} años restantes</span>
+              </div>
+              <button className="cancel-btn" onClick={handleCancelNaming}>
+                Cancelar contrato
+              </button>
             </div>
-          </div>
-          
-          {!stadiumState.naming && (
+          ) : (
             <>
               <h3>💰 Ofertas de Naming Rights</h3>
-              <p className="naming-hint">
-                Vende el nombre de tu estadio a un patrocinador. 
-                {(state.team?.reputation || 70) > 80 && (
-                  <span className="warning"> ⚠️ Tu estadio es histórico: los fans se enfadarán si vendes el nombre.</span>
-                )}
-              </p>
+              <p className="hint">Vende el nombre del estadio por ingresos anuales</p>
               
-              <div className="sponsors-grid">
-                {availableSponsors.map(sponsor => (
-                  <div key={sponsor.id} className="sponsor-card">
-                    <div className="sponsor-header">
-                      <span className="sponsor-name">{sponsor.name}</span>
-                      <span className="sponsor-prestige">{'⭐'.repeat(sponsor.minPrestige)}</span>
+              {availableSponsors.length > 0 ? (
+                <div className="sponsors-list">
+                  {availableSponsors.map(sponsor => (
+                    <div key={sponsor.id} className="sponsor-offer">
+                      <div className="offer-info">
+                        <span className="name">{sponsor.name}</span>
+                        <span className="price">{formatMoney(sponsor.offer)}/año</span>
+                        <span className="duration">{sponsor.duration} años</span>
+                      </div>
+                      <button onClick={() => handleAcceptNaming(sponsor)}>Aceptar</button>
                     </div>
-                    <div className="sponsor-offer">
-                      <span className="amount">{formatMoney(sponsor.offer)}</span>
-                      <span className="per-year">/año</span>
-                    </div>
-                    <div className="sponsor-details">
-                      <span>Duración: {sponsor.duration} años</span>
-                      <span>Total: {formatMoney(sponsor.offer * sponsor.duration)}</span>
-                    </div>
-                    <button 
-                      className="accept-sponsor-btn"
-                      onClick={() => handleAcceptNaming(sponsor)}
-                    >
-                      Aceptar oferta
-                    </button>
-                  </div>
-                ))}
-              </div>
-              
-              {availableSponsors.length === 0 && (
-                <div className="no-sponsors">
-                  <p>No hay ofertas disponibles. Mejora tu estadio para atraer patrocinadores.</p>
+                  ))}
                 </div>
+              ) : (
+                <p className="no-offers">Mejora tu estadio para atraer patrocinadores</p>
               )}
             </>
           )}
         </div>
       )}
       
-      {/* === TAB: EVENTS === */}
+      {/* TAB: EVENTS */}
       {activeTab === 'events' && (
-        <div className="stadium-v2__events">
-          <h3>🎤 Eventos Especiales</h3>
-          <p className="events-hint">
-            Organiza eventos para generar ingresos extra. Cuidado: algunos dañan el césped o molestan a los fans.
-          </p>
+        <div className="stadium-simple__events">
+          <h3>🎤 Organizar Eventos</h3>
+          <p className="hint">Genera ingresos extra (requiere 2 semanas entre eventos)</p>
           
-          {/* Cooldown indicator */}
           {!canHostEvent && (
-            <div className="events-cooldown">
-              ⏳ Cooldown activo: puedes organizar otro evento en <strong>{EVENT_COOLDOWN_WEEKS - weeksSinceLastEvent} semana(s)</strong>
+            <div className="cooldown-notice">
+              ⏳ Espera {2 - weeksSinceEvent} semana(s) más
             </div>
           )}
           
-          <div className="events-grid">
-            {availableEvents.map(event => (
-              <div key={event.id} className={`event-card ${!canHostEvent ? 'disabled' : ''}`}>
-                <div className="event-icon">{event.icon}</div>
+          <div className="events-list">
+            {SPECIAL_EVENTS.map(event => (
+              <div key={event.id} className={`event-item ${!canHostEvent ? 'disabled' : ''}`}>
+                <span className="event-icon">{event.icon}</span>
                 <div className="event-info">
-                  <h4>{event.name}</h4>
-                  <div className="event-stats">
-                    <span className="income">💰 {formatMoney(event.income)}</span>
-                    <span className={`grass ${event.grassDamage > 15 ? 'warning' : ''}`}>
-                      🌱 -{event.grassDamage}%
-                    </span>
-                    <span className={`fans ${event.fanHappiness < 0 ? 'warning' : event.fanHappiness > 0 ? 'positive' : ''}`}>
-                      😊 {event.fanHappiness > 0 ? '+' : ''}{event.fanHappiness}%
-                    </span>
-                  </div>
+                  <span className="event-name">{event.name}</span>
+                  <span className="event-details">
+                    {formatMoney(event.income)} • Daño césped: -{event.grassDamage}%
+                  </span>
                 </div>
-                <button 
-                  className="host-event-btn"
-                  onClick={() => handleHostEvent(event)}
-                  disabled={!canHostEvent || stadiumState.grassCondition < 30}
-                >
-                  {canHostEvent ? 'Organizar' : '⏳ Espera'}
+                <button onClick={() => handleHostEvent(event)} disabled={!canHostEvent || grassCondition < 30}>
+                  Organizar
                 </button>
               </div>
             ))}
           </div>
           
-          {stadiumState.grassCondition < 30 && (
-            <div className="events-warning">
-              ⚠️ El césped está muy dañado. Repáralo antes de organizar más eventos.
-            </div>
+          {grassCondition < 30 && (
+            <p className="grass-warning">⚠️ Repara el césped antes de organizar eventos</p>
           )}
         </div>
       )}
       
-      {/* === TAB: VIP === */}
-      {activeTab === 'vip' && (
-        <div className="stadium-v2__vip">
-          <h3>👔 Palcos VIP y Corporativos</h3>
-          <p className="vip-hint">
-            Vende palcos a empresas para ingresos fijos anuales. Mayor prestigio = mejores ofertas.
-          </p>
-          
-          <div className="vip-boxes-grid">
-            {VIP_BOXES.filter(box => box.minLevel <= stadiumState.level).map(box => {
-              const soldBox = (stadiumState.vipBoxes || []).find(b => b.boxType === box.id);
-              const price = box.basePrice * (1 + currentLevel.prestige * 0.2);
-              
-              return (
-                <div key={box.id} className={`vip-box-card ${soldBox ? 'sold' : ''}`}>
-                  <div className="box-header">
-                    <span className="box-name">{box.name}</span>
-                    <span className="box-capacity">{box.capacity} personas</span>
-                  </div>
-                  
-                  {soldBox ? (
-                    <div className="box-sold">
-                      <span className="company">{soldBox.company}</span>
-                      <span className="duration">{soldBox.yearsLeft} años restantes</span>
-                      <span className="income">{formatMoney(soldBox.yearlyIncome)}/año</span>
-                    </div>
-                  ) : (
-                    <div className="box-available">
-                      <span className="price">{formatMoney(price)}/año</span>
-                      <button 
-                        className="sell-box-btn"
-                        onClick={() => {
-                          // Simular venta a empresa aleatoria
-                          const companies = ['Banco Nacional', 'Tech Solutions', 'Grupo Industrial', 'Media Corp', 'Inversiones Global'];
-                          const company = companies[Math.floor(Math.random() * companies.length)];
-                          const years = 3 + Math.floor(Math.random() * 3);
-                          
-                          const newStadiumState = {
-                            ...stadiumState,
-                            vipBoxes: [
-                              ...(stadiumState.vipBoxes || []),
-                              { boxType: box.id, company, yearsLeft: years, yearlyIncome: price }
-                            ]
-                          };
-                          
-                          dispatch({ type: 'UPDATE_STADIUM', payload: newStadiumState });
-                          dispatch({ type: 'UPDATE_MONEY', payload: price });
-                          
-                          dispatch({
-                            type: 'ADD_MESSAGE',
-                            payload: {
-                              id: Date.now(),
-                              type: 'stadium',
-                              title: '👔 Palco VIP vendido',
-                              content: `${company} ha alquilado el ${box.name} por ${years} años. Ingresos: ${formatMoney(price)}/año`,
-                              date: `Semana ${state.currentWeek}`
-                            }
-                          });
-                        }}
-                      >
-                        Vender palco
-                      </button>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-          
-          <div className="vip-summary">
-            <span className="icon">💼</span>
-            <span>Ingresos anuales por palcos: <strong>{formatMoney(vipBoxIncome)}</strong></span>
-          </div>
-        </div>
-      )}
-      
-      {/* === TAB: CUSTOMIZE === */}
-      {activeTab === 'customize' && (
-        <div className="stadium-v2__customize">
-          <h3>🎨 Personalizar Estadio</h3>
-          
-          {/* Color de asientos */}
-          <div className="customize-section">
-            <h4>Color de los asientos</h4>
-            <div className="colors-grid">
-              {SEAT_COLORS.map(color => (
-                <button
-                  key={color.id}
-                  className={`color-option ${stadiumState.seatColor === color.id ? 'selected' : ''}`}
-                  style={{ '--option-color': color.color }}
-                  onClick={() => handleChangeSeatColor(color.id)}
-                >
-                  <span className="color-preview"></span>
-                  <span className="color-name">{color.name}</span>
-                </button>
-              ))}
-            </div>
-          </div>
-          
-          {/* Nombre personalizado */}
-          <div className="customize-section">
-            <h4>Nombre del estadio</h4>
-            <p className="customize-hint">Dale un nombre único a tu estadio (sin patrocinador)</p>
-            <div className="name-input-group">
-              <input
-                type="text"
-                placeholder="Ej: Estadio La Bombonera"
-                defaultValue={stadiumState.customName || ''}
-                maxLength={30}
-              />
-              <button onClick={(e) => {
-                const input = e.target.previousElementSibling;
-                handleChangeStadiumName(input.value);
-              }}>
-                Guardar
-              </button>
-            </div>
-          </div>
-          
-          {/* Características actuales */}
-          <div className="customize-section features-section">
-            <h4>Características del estadio</h4>
-            <div className="features-list">
-              {currentLevel.features.map((feature, i) => (
-                <div key={i} className="feature-item">
-                  <span className="check">✓</span>
-                  <span>{feature}</span>
-                </div>
-              ))}
-              {nextLevel && nextLevel.features.map((feature, i) => (
-                <div key={`next-${i}`} className="feature-item locked">
-                  <span className="lock">🔒</span>
-                  <span>{feature}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-      
-      {/* === TAB: UPGRADE === */}
+      {/* TAB: UPGRADE */}
       {activeTab === 'upgrade' && (
-        <div className="stadium-v2__upgrade">
-          <h3>🔧 Ampliación del Estadio</h3>
+        <div className="stadium-simple__upgrade">
+          <h3>🔧 Ampliar Estadio</h3>
           
-          <div className="upgrade-current">
-            <div className="current-level">
-              <span className="level-number">{stadiumState.level + 1}</span>
-              <div className="level-info">
-                <h4>{currentLevel.name}</h4>
-                <p>{currentLevel.capacity.toLocaleString()} asientos</p>
-              </div>
-              <span className="current-badge">Actual</span>
+          <div className="current-level">
+            <div className="level-badge">{level + 1}</div>
+            <div className="level-info">
+              <span className="level-name">{currentLevel.name}</span>
+              <span className="level-capacity">{currentLevel.capacity.toLocaleString()} asientos</span>
             </div>
+            <span className="current-tag">Actual</span>
           </div>
           
           {nextLevel ? (
-            <div className="upgrade-next">
-              <div className="upgrade-arrow">⬇️</div>
-              <div className="next-level">
-                <span className="level-number">{stadiumState.level + 2}</span>
-                <div className="level-info">
-                  <h4>{nextLevel.name}</h4>
-                  <p>{nextLevel.capacity.toLocaleString()} asientos (+{(nextLevel.capacity - currentLevel.capacity).toLocaleString()})</p>
-                  <ul className="new-features">
-                    {nextLevel.features.map((f, i) => <li key={i}>+ {f}</li>)}
-                  </ul>
-                </div>
-                <button
-                  className={`upgrade-btn ${state.money >= nextLevel.upgradeCost ? '' : 'disabled'}`}
-                  onClick={handleUpgradeStadium}
-                  disabled={state.money < nextLevel.upgradeCost}
-                >
-                  <span>Ampliar</span>
-                  <span className="cost">{formatMoney(nextLevel.upgradeCost)}</span>
-                </button>
+            <div className="next-level">
+              <div className="arrow">⬇️</div>
+              <div className="level-badge">{level + 2}</div>
+              <div className="level-info">
+                <span className="level-name">{nextLevel.name}</span>
+                <span className="level-capacity">{nextLevel.capacity.toLocaleString()} asientos</span>
+                <span className="level-gain">+{(nextLevel.capacity - currentLevel.capacity).toLocaleString()}</span>
               </div>
+              <button 
+                className="upgrade-btn"
+                onClick={handleUpgrade}
+                disabled={state.money < nextLevel.upgradeCost}
+              >
+                <span>Ampliar</span>
+                <span className="cost">{formatMoney(nextLevel.upgradeCost)}</span>
+              </button>
             </div>
           ) : (
-            <div className="max-level-reached">
-              <span className="icon">🏆</span>
-              <span>¡Tu estadio está al máximo nivel!</span>
+            <div className="max-level">
+              🏆 ¡Estadio al máximo nivel!
             </div>
           )}
           
           {/* Roadmap */}
           <div className="upgrade-roadmap">
-            <h4>Niveles de estadio</h4>
-            <div className="roadmap-track">
-              {STADIUM_LEVELS.map((level, idx) => (
-                <div 
-                  key={idx}
-                  className={`roadmap-stop ${idx < stadiumState.level ? 'completed' : idx === stadiumState.level ? 'current' : 'future'}`}
-                >
-                  <div className="stop-dot">
-                    {idx < stadiumState.level ? '✓' : idx + 1}
-                  </div>
-                  <div className="stop-info">
-                    <span className="stop-name">{level.name}</span>
-                    <span className="stop-capacity">{level.capacity.toLocaleString()}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
+            {STADIUM_LEVELS.map((lvl, i) => (
+              <div key={i} className={`roadmap-item ${i < level ? 'done' : i === level ? 'current' : ''}`}>
+                <div className="dot">{i < level ? '✓' : i + 1}</div>
+                <span className="name">{lvl.name}</span>
+                <span className="cap">{(lvl.capacity / 1000).toFixed(0)}K</span>
+              </div>
+            ))}
           </div>
-        </div>
-      )}
-      
-      {/* === TAB: HISTORY === */}
-      {activeTab === 'history' && (
-        <div className="stadium-v2__history">
-          <h3>📜 Historial del Estadio</h3>
-          
-          {(stadiumState.history || []).length > 0 ? (
-            <div className="history-timeline">
-              {[...(stadiumState.history || [])].reverse().map((entry, idx) => (
-                <div key={idx} className={`history-entry ${entry.type}`}>
-                  <div className="entry-icon">
-                    {entry.type === 'upgrade' && '🏗️'}
-                    {entry.type === 'naming' && '🏷️'}
-                    {entry.type === 'event' && '🎪'}
-                    {entry.type === 'record' && '🏆'}
-                  </div>
-                  <div className="entry-content">
-                    <span className="entry-desc">{entry.description}</span>
-                    <span className="entry-date">{entry.date}</span>
-                  </div>
-                  {entry.income !== 0 && (
-                    <span className={`entry-income ${entry.income > 0 ? 'positive' : 'negative'}`}>
-                      {entry.income > 0 ? '+' : ''}{formatMoney(entry.income)}
-                    </span>
-                  )}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="history-empty">
-              <span className="icon">📝</span>
-              <p>El historial del estadio se irá llenando con tus decisiones y logros.</p>
-            </div>
-          )}
         </div>
       )}
     </div>

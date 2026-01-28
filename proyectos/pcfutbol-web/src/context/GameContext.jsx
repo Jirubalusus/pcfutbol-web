@@ -64,14 +64,14 @@ const initialState = {
   // Pending facility event
   pendingEvent: null,
   
-  // Stadium (gestión detallada estilo PC Fútbol)
+  // Stadium (simplificado)
   stadium: {
     level: 0,
-    seasonTickets: { fondo: 0, lateral: 0, tribuna: 0, vip: 0 },
-    ticketPrices: { fondo: 25, lateral: 45, tribuna: 75, vip: 150 },
-    services: { parking: false, food: false, merchandise: false, tour: false },
-    lastMatchIncome: 0,
-    totalSeasonIncome: 0
+    seasonTickets: 2400, // Número de abonados (simplificado)
+    ticketPrice: 30, // Precio medio por entrada
+    grassCondition: 100,
+    naming: null, // { sponsorId, name, yearsLeft, yearlyIncome }
+    lastEventWeek: 0
   },
   
   // League Data
@@ -224,18 +224,10 @@ function gameReducer(state, action) {
       const currentGrass = state.stadium?.grassCondition ?? 100;
       const newGrassCondition = Math.min(100, currentGrass + GRASS_RECOVERY_PER_WEEK);
       
-      // Stadium: Fan happiness recovery (slow natural recovery if below 70)
-      const currentFanHappiness = state.stadium?.fanHappiness ?? 70;
-      let newFanHappiness = currentFanHappiness;
-      if (currentFanHappiness < 70) {
-        newFanHappiness = Math.min(70, currentFanHappiness + 1); // +1% per week towards 70%
-      }
-      
       // Update stadium state
       const updatedStadium = state.stadium ? {
         ...state.stadium,
-        grassCondition: newGrassCondition,
-        fanHappiness: newFanHappiness
+        grassCondition: newGrassCondition
       } : state.stadium;
       
       return { 
