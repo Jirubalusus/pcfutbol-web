@@ -138,8 +138,9 @@ export function generateFixtures(teams) {
 
 // ============== CÁLCULO DE FUERZA DEL EQUIPO ==============
 export function calculateTeamStrength(team, formation = '4-3-3', tactic = 'balanced') {
-  if (!team.players || team.players.length === 0) {
-    return { overall: team.reputation || 50, attack: 50, midfield: 50, defense: 50, goalkeeper: 50 };
+  // Si team es undefined o no tiene players, devolver valores por defecto
+  if (!team || !team.players || team.players.length === 0) {
+    return { overall: team?.reputation || 50, attack: 50, midfield: 50, defense: 50, goalkeeper: 50, lineup: [] };
   }
   
   const formationData = FORMATIONS[formation] || FORMATIONS['4-3-3'];
@@ -633,6 +634,7 @@ function calculateGoalChance(attackRating, defendRating, attackStrength, defendS
 
 // Seleccionar goleador (ponderado por posición y overall)
 function selectScorer(team, lineup) {
+  if (!team) return { name: 'Desconocido' };
   const scorerPositions = ['ST', 'CF', 'RW', 'LW', 'CAM', 'CM'];
   const candidates = (lineup || team.players || []).filter(p => 
     scorerPositions.includes(p.position) || scorerPositions.includes(p.playingPosition)
@@ -701,6 +703,7 @@ function selectSetPieceScorer(team, lineup) {
 
 // Seleccionar jugador para tarjeta
 function selectCardPlayer(team) {
+  if (!team) return { name: 'Desconocido' };
   const cardPositions = ['CDM', 'CB', 'CM', 'RB', 'LB', 'ST'];
   const candidates = (team.players || []).filter(p => cardPositions.includes(p.position));
   
@@ -711,6 +714,7 @@ function selectCardPlayer(team) {
 
 // Seleccionar jugador para lesión
 function selectInjuryPlayer(team) {
+  if (!team) return { name: 'Desconocido' };
   const players = team.players || [];
   if (players.length === 0) return { name: 'Desconocido' };
   return players[Math.floor(Math.random() * players.length)];
