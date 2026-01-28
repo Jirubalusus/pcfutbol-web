@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { useGame } from '../../context/GameContext';
 import { LALIGA_TEAMS } from '../../data/teamsFirestore';
 import { simulateWeekMatches, simulateMatch, updateTable } from '../../game/leagueEngine';
+import { calculateMatchAttendance } from '../../game/stadiumEconomy';
 import Sidebar from '../Sidebar/Sidebar';
 import MobileNav from '../MobileNav/MobileNav';
-import Squad from '../Squad/Squad';
+import Plantilla from '../Plantilla/Plantilla';
 import Formation from '../Formation/Formation';
 import Calendar from '../Calendar/Calendar';
 import LeagueTable from '../LeagueTable/LeagueTable';
 import Transfers from '../Transfers/Transfers';
-import Renewals from '../Renewals/Renewals';
 import Stadium from '../Stadium/Stadium';
 import Facilities from '../Facilities/Facilities';
 import Messages from '../Messages/Messages';
@@ -125,11 +125,40 @@ export default function Office() {
     const homeTeamData = isHome ? state.team : opponent;
     const awayTeamData = isHome ? opponent : state.team;
     
+    // Calcular asistencia si somos locales
+    let attendanceFillRate = 0.7;
+    if (isHome && state.stadium) {
+      const stadium = state.stadium;
+      const stadiumCapacity = [8000, 18000, 35000, 55000, 80000][stadium.level || 0];
+      const seasonTickets = stadium.seasonTickets ?? Math.floor(stadiumCapacity * 0.3);
+      const ticketPrice = (stadium.ticketPrice ?? 30) + (stadium.matchPriceAdjust || 0);
+      const rivalPosition = state.leagueTable.findIndex(t => t.teamId === opponentId) + 1 || 10;
+      const teamPosition = state.leagueTable.findIndex(t => t.teamId === state.teamId) + 1 || 10;
+      const teamEntry = state.leagueTable.find(t => t.teamId === state.teamId);
+      
+      const attendance = calculateMatchAttendance({
+        stadiumCapacity,
+        seasonTickets,
+        ticketPrice,
+        rivalTeam: opponent,
+        rivalPosition,
+        teamPosition,
+        totalTeams: state.leagueTable.length || 20,
+        streak: teamEntry?.streak || 0,
+        morale: teamEntry?.morale || 70,
+        leagueId: state.leagueId || 'laliga',
+        homeTeamId: state.teamId,
+        awayTeamId: opponentId
+      });
+      attendanceFillRate = attendance.fillRate;
+    }
+    
     const result = simulateMatch(
       playerMatch.homeTeam,
       playerMatch.awayTeam,
       homeTeamData,
-      awayTeamData
+      awayTeamData,
+      { attendanceFillRate: isHome ? attendanceFillRate : 0.7 }
     );
     
     const updatedFixtures = state.fixtures.map(f => {
@@ -152,8 +181,8 @@ export default function Office() {
   
   const renderContent = () => {
     switch (activeTab) {
-      case 'squad':
-        return <Squad />;
+      case 'plantilla':
+        return <Plantilla />;
       case 'formation':
         return <Formation />;
       case 'training':
@@ -166,8 +195,6 @@ export default function Office() {
         return <LeagueTable />;
       case 'transfers':
         return <Transfers />;
-      case 'renewals':
-        return <Renewals />;
       case 'stadium':
         return <Stadium />;
       case 'facilities':

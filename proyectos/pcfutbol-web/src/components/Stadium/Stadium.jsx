@@ -1,5 +1,13 @@
 import React, { useState, useMemo } from 'react';
 import { useGame } from '../../context/GameContext';
+import { 
+  predictAttendance, 
+  calculateMatchIncome,
+  calculateSeasonTicketIncome,
+  estimateSeasonTicketDemand,
+  PRICE_CONFIG,
+  BIG_TEAMS
+} from '../../game/stadiumEconomy';
 import './Stadium.scss';
 
 // === CONFIGURACIÓN ===
@@ -36,10 +44,12 @@ export default function Stadium() {
   
   // Estado con defaults seguros
   const stadium = state.stadium || {};
-  const level = stadium.level ?? 0;
+  // Usar nivel de facilities si existe, sino stadium.level, con clamp a rango válido
+  const rawLevel = state.facilities?.stadium ?? stadium.level ?? 0;
+  const level = Math.max(0, Math.min(STADIUM_LEVELS.length - 1, rawLevel));
   const currentLevel = STADIUM_LEVELS[level];
   const nextLevel = STADIUM_LEVELS[level + 1];
-  const capacity = currentLevel.capacity;
+  const capacity = currentLevel?.capacity || 8000;
   
   // Abonados por defecto: 30% de capacidad
   const seasonTickets = stadium.seasonTickets ?? Math.floor(capacity * 0.3);
@@ -48,12 +58,12 @@ export default function Stadium() {
   const naming = stadium.naming || null;
   const lastEventWeek = stadium.lastEventWeek ?? 0;
   
-  // Cálculos
-  const maxSeasonTickets = Math.floor(capacity * 0.8); // Max 80% abonados
+  // Cálculos (con fallbacks seguros)
+  const maxSeasonTickets = Math.floor(capacity * 0.8) || 6400; // Max 80% abonados
   const seasonTicketPrice = ticketPrice * HOME_GAMES_PER_SEASON * (1 - SEASON_TICKET_DISCOUNT);
-  const seasonTicketIncome = seasonTickets * seasonTicketPrice;
+  const seasonTicketIncome = (seasonTickets || 0) * seasonTicketPrice;
   const namingIncome = naming?.yearlyIncome ?? 0;
-  const maintenanceCost = currentLevel.maintenance * 52; // Anual
+  const maintenanceCost = (currentLevel?.maintenance || 50000) * 52; // Anual
   const annualBalance = seasonTicketIncome + namingIncome - maintenanceCost;
   
   // Factor cancha simple (basado en nivel + ocupación)
@@ -173,6 +183,67 @@ export default function Stadium() {
   
   // Nombre del estadio
   const stadiumName = naming ? `${naming.name} Arena` : (state.team?.stadium || `Estadio ${currentLevel.name}`);
+  
+  // === PRÓXIMO PARTIDO EN CASA ===
+  const nextHomeMatch = useMemo(() => {
+    if (!state.fixtures || !state.team) return null;
+    
+    const currentWeek = state.currentWeek || 1;
+    return state.fixtures.find(f => 
+      f.week >= currentWeek && 
+      !f.played && 
+      f.homeTeam === state.team.id
+    );
+  }, [state.fixtures, state.team, state.currentWeek]);
+  
+  // Obtener datos del rival y predicción
+  const matchPrediction = useMemo(() => {
+    if (!nextHomeMatch || !state.allTeams || !state.table) return null;
+    
+    const rivalTeam = state.allTeams.find(t => t.id === nextHomeMatch.awayTeam);
+    const rivalEntry = state.table?.find(t => t.teamId === nextHomeMatch.awayTeam);
+    const teamEntry = state.table?.find(t => t.teamId === state.team?.id);
+    const totalTeams = state.table?.length || 20;
+    
+    if (!rivalTeam) return null;
+    
+    // Precio para este partido (puede tener ajuste)
+    const matchPrice = stadium.matchPriceAdjust 
+      ? ticketPrice + stadium.matchPriceAdjust 
+      : ticketPrice;
+    
+    return {
+      rivalTeam,
+      rivalName: rivalTeam.shortName || rivalTeam.name,
+      week: nextHomeMatch.week,
+      prediction: predictAttendance({
+        stadiumCapacity: capacity,
+        seasonTickets,
+        ticketPrice: matchPrice,
+        rivalTeam,
+        rivalPosition: rivalEntry?.played > 0 ? state.table.findIndex(t => t.teamId === rivalTeam.id) + 1 : 10,
+        teamPosition: teamEntry?.played > 0 ? state.table.findIndex(t => t.teamId === state.team?.id) + 1 : 10,
+        totalTeams,
+        streak: teamEntry?.streak || 0,
+        morale: teamEntry?.morale || 70,
+        leagueId: state.leagueId || 'laliga',
+        homeTeamId: state.team?.id,
+        awayTeamId: rivalTeam.id
+      }),
+      matchPrice
+    };
+  }, [nextHomeMatch, state.allTeams, state.table, state.team, state.leagueId, capacity, seasonTickets, ticketPrice, stadium.matchPriceAdjust]);
+  
+  // Ajustar precio para el próximo partido
+  const handleMatchPriceAdjust = (delta) => {
+    const current = stadium.matchPriceAdjust || 0;
+    const newAdjust = Math.max(-20, Math.min(30, current + delta));
+    updateStadium({ matchPriceAdjust: newAdjust });
+  };
+  
+  const resetMatchPriceAdjust = () => {
+    updateStadium({ matchPriceAdjust: 0 });
+  };
 
   return (
     <div className="stadium-simple">
@@ -207,14 +278,14 @@ export default function Stadium() {
         <button className={activeTab === 'general' ? 'active' : ''} onClick={() => setActiveTab('general')}>
           📊 General
         </button>
+        <button className={activeTab === 'tickets' ? 'active' : ''} onClick={() => setActiveTab('tickets')}>
+          🎟️ Taquilla
+        </button>
         <button className={activeTab === 'sponsors' ? 'active' : ''} onClick={() => setActiveTab('sponsors')}>
           💰 Patrocinio
         </button>
         <button className={activeTab === 'events' ? 'active' : ''} onClick={() => setActiveTab('events')}>
           🎤 Eventos
-        </button>
-        <button className={activeTab === 'upgrade' ? 'active' : ''} onClick={() => setActiveTab('upgrade')}>
-          🔧 Ampliar
         </button>
       </div>
       
@@ -301,6 +372,155 @@ export default function Stadium() {
         </div>
       )}
       
+      {/* TAB: TICKETS - Precios dinámicos */}
+      {activeTab === 'tickets' && (
+        <div className="stadium-simple__tickets">
+          {/* Próximo partido en casa */}
+          {matchPrediction ? (
+            <div className="card next-match-card">
+              <h3>⚽ Próximo partido en casa</h3>
+              <div className="match-info">
+                <span className="match-week">Jornada {matchPrediction.week}</span>
+                <div className="match-teams">
+                  <span className="home-team">{state.team?.shortName || state.team?.name}</span>
+                  <span className="vs">vs</span>
+                  <span className="away-team">{matchPrediction.rivalName}</span>
+                </div>
+                <span className={`attraction-badge ${matchPrediction.prediction.factors.rival >= 1.3 ? 'hot' : ''}`}>
+                  {matchPrediction.prediction.prediction.attractionLevel}
+                </span>
+              </div>
+              
+              {/* Ajuste de precio para este partido */}
+              <div className="match-price-section">
+                <h4>💵 Precio para este partido</h4>
+                <p className="hint">Ajusta el precio según el atractivo del rival</p>
+                
+                <div className="price-adjust">
+                  <button onClick={() => handleMatchPriceAdjust(-5)}>-5€</button>
+                  <button onClick={() => handleMatchPriceAdjust(-2)}>-2€</button>
+                  <div className="price-display">
+                    <span className="base-price">Base: €{ticketPrice}</span>
+                    {(stadium.matchPriceAdjust || 0) !== 0 && (
+                      <span className={`adjust ${stadium.matchPriceAdjust > 0 ? 'up' : 'down'}`}>
+                        {stadium.matchPriceAdjust > 0 ? '+' : ''}{stadium.matchPriceAdjust}€
+                      </span>
+                    )}
+                    <span className="final-price">→ €{matchPrediction.matchPrice}</span>
+                  </div>
+                  <button onClick={() => handleMatchPriceAdjust(2)}>+2€</button>
+                  <button onClick={() => handleMatchPriceAdjust(5)}>+5€</button>
+                </div>
+                {(stadium.matchPriceAdjust || 0) !== 0 && (
+                  <button className="reset-btn" onClick={resetMatchPriceAdjust}>
+                    Restablecer precio base
+                  </button>
+                )}
+              </div>
+              
+              {/* Predicción de asistencia */}
+              <div className="attendance-prediction">
+                <h4>📊 Predicción de asistencia</h4>
+                
+                <div className="prediction-stats">
+                  <div className="prediction-main">
+                    <span className="predicted-number">
+                      {matchPrediction.prediction.prediction.expected.toLocaleString()}
+                    </span>
+                    <span className="prediction-label">espectadores previstos</span>
+                    <span className="prediction-range">
+                      ({matchPrediction.prediction.prediction.low.toLocaleString()} - {matchPrediction.prediction.prediction.high.toLocaleString()})
+                    </span>
+                  </div>
+                  
+                  <div className="fill-rate-bar">
+                    <div 
+                      className="fill" 
+                      style={{ width: `${Math.round(matchPrediction.prediction.fillRate * 100)}%` }}
+                    ></div>
+                    <span className="fill-percent">{Math.round(matchPrediction.prediction.fillRate * 100)}%</span>
+                  </div>
+                </div>
+                
+                {/* Factores */}
+                <div className="factors-breakdown">
+                  <div className="factor">
+                    <span className="factor-name">Rival</span>
+                    <span className={`factor-value ${matchPrediction.prediction.factors.rival > 1.2 ? 'positive' : matchPrediction.prediction.factors.rival < 0.9 ? 'negative' : ''}`}>
+                      {matchPrediction.prediction.factors.rival > 1 ? '+' : ''}{Math.round((matchPrediction.prediction.factors.rival - 1) * 100)}%
+                    </span>
+                  </div>
+                  <div className="factor">
+                    <span className="factor-name">Precio</span>
+                    <span className={`factor-value ${matchPrediction.prediction.factors.price > 1 ? 'positive' : matchPrediction.prediction.factors.price < 0.9 ? 'negative' : ''}`}>
+                      {matchPrediction.prediction.factors.price > 1 ? '+' : ''}{Math.round((matchPrediction.prediction.factors.price - 1) * 100)}%
+                    </span>
+                  </div>
+                  <div className="factor">
+                    <span className="factor-name">Tu racha</span>
+                    <span className={`factor-value ${matchPrediction.prediction.factors.performance > 1 ? 'positive' : matchPrediction.prediction.factors.performance < 0.95 ? 'negative' : ''}`}>
+                      {matchPrediction.prediction.factors.performance > 1 ? '+' : ''}{Math.round((matchPrediction.prediction.factors.performance - 1) * 100)}%
+                    </span>
+                  </div>
+                  {matchPrediction.prediction.factors.derby > 1 && (
+                    <div className="factor derby">
+                      <span className="factor-name">🔥 Derby</span>
+                      <span className="factor-value positive">+30%</span>
+                    </div>
+                  )}
+                </div>
+                
+                {/* Ingresos estimados */}
+                <div className="estimated-income">
+                  <h4>💰 Ingresos estimados</h4>
+                  <div className="income-breakdown">
+                    <div className="income-row">
+                      <span>Taquilla ({matchPrediction.prediction.ticketSales.toLocaleString()} entradas)</span>
+                      <span>{formatMoney(matchPrediction.prediction.ticketSales * matchPrediction.matchPrice)}</span>
+                    </div>
+                    <div className="income-row">
+                      <span>Consumiciones</span>
+                      <span>{formatMoney(matchPrediction.prediction.attendance * (8 + level * 2))}</span>
+                    </div>
+                    <div className="income-row total">
+                      <span>Total partido</span>
+                      <span>{formatMoney(
+                        matchPrediction.prediction.ticketSales * matchPrediction.matchPrice + 
+                        matchPrediction.prediction.attendance * (8 + level * 2)
+                      )}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="card no-match">
+              <h3>⚽ Sin partidos en casa próximamente</h3>
+              <p>No hay partidos en casa programados esta semana.</p>
+            </div>
+          )}
+          
+          {/* Consejo estratégico */}
+          <div className="card tips-card">
+            <h3>💡 Estrategia de precios</h3>
+            <ul className="tips-list">
+              <li>
+                <strong>Partido contra un grande:</strong> Sube el precio, la demanda aguanta.
+              </li>
+              <li>
+                <strong>Rival modesto:</strong> Mantén o baja precio para llenar.
+              </li>
+              <li>
+                <strong>Racha positiva:</strong> La afición responde, puedes subir.
+              </li>
+              <li>
+                <strong>Derby:</strong> 🔥 Lleno asegurado, maximiza ingresos.
+              </li>
+            </ul>
+          </div>
+        </div>
+      )}
+      
       {/* TAB: SPONSORS */}
       {activeTab === 'sponsors' && (
         <div className="stadium-simple__sponsors">
@@ -377,56 +597,6 @@ export default function Stadium() {
         </div>
       )}
       
-      {/* TAB: UPGRADE */}
-      {activeTab === 'upgrade' && (
-        <div className="stadium-simple__upgrade">
-          <h3>🔧 Ampliar Estadio</h3>
-          
-          <div className="current-level">
-            <div className="level-badge">{level + 1}</div>
-            <div className="level-info">
-              <span className="level-name">{currentLevel.name}</span>
-              <span className="level-capacity">{currentLevel.capacity.toLocaleString()} asientos</span>
-            </div>
-            <span className="current-tag">Actual</span>
-          </div>
-          
-          {nextLevel ? (
-            <div className="next-level">
-              <div className="arrow">⬇️</div>
-              <div className="level-badge">{level + 2}</div>
-              <div className="level-info">
-                <span className="level-name">{nextLevel.name}</span>
-                <span className="level-capacity">{nextLevel.capacity.toLocaleString()} asientos</span>
-                <span className="level-gain">+{(nextLevel.capacity - currentLevel.capacity).toLocaleString()}</span>
-              </div>
-              <button 
-                className="upgrade-btn"
-                onClick={handleUpgrade}
-                disabled={state.money < nextLevel.upgradeCost}
-              >
-                <span>Ampliar</span>
-                <span className="cost">{formatMoney(nextLevel.upgradeCost)}</span>
-              </button>
-            </div>
-          ) : (
-            <div className="max-level">
-              🏆 ¡Estadio al máximo nivel!
-            </div>
-          )}
-          
-          {/* Roadmap */}
-          <div className="upgrade-roadmap">
-            {STADIUM_LEVELS.map((lvl, i) => (
-              <div key={i} className={`roadmap-item ${i < level ? 'done' : i === level ? 'current' : ''}`}>
-                <div className="dot">{i < level ? '✓' : i + 1}</div>
-                <span className="name">{lvl.name}</span>
-                <span className="cap">{(lvl.capacity / 1000).toFixed(0)}K</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
     </div>
   );
 }

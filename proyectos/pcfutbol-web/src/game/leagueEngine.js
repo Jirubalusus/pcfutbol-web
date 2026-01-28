@@ -283,16 +283,24 @@ export function simulateMatch(homeTeamId, awayTeamId, homeTeamData, awayTeamData
     homeMorale = 70,
     awayMorale = 70,
     isDerby = false,
-    importance = 'normal' // normal, crucial, final
+    importance = 'normal', // normal, crucial, final
+    attendanceFillRate = 0.7 // Ocupación del estadio (0.0 - 1.0)
   } = context;
   
   // Calcular fuerzas
   const homeStrength = calculateTeamStrength(homeTeamData, homeFormation, homeTactic);
   const awayStrength = calculateTeamStrength(awayTeamData, awayFormation, awayTactic);
   
-  // Ventaja de local - estadios grandes dan más ventaja
+  // Ventaja de local - depende del tamaño del estadio Y de la asistencia
   const stadiumCapacity = homeTeamData.stadiumCapacity || 20000;
-  const homeAdvantage = 4 + Math.min(4, stadiumCapacity / 25000); // 4-8 puntos de ventaja
+  const baseHomeAdvantage = 4 + Math.min(4, stadiumCapacity / 25000); // 4-8 puntos base
+  
+  // La asistencia modula la ventaja local:
+  // - Estadio lleno (100%): 100% del bonus
+  // - Estadio a medias (50%): ~65% del bonus
+  // - Estadio vacío (20%): ~35% del bonus
+  const crowdFactor = 0.3 + (attendanceFillRate * 0.7);
+  const homeAdvantage = baseHomeAdvantage * crowdFactor;
   
   // Factor moral (rachas afectan MÁS)
   const homeMoraleFactor = 0.85 + (homeMorale / 100) * 0.3;

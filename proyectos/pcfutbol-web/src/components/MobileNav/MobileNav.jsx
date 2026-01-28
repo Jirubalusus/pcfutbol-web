@@ -5,7 +5,7 @@ import './MobileNav.scss';
 
 const TABS = [
   { id: 'overview', icon: '🏠', label: 'Inicio' },
-  { id: 'squad', icon: '👥', label: 'Plantilla' },
+  { id: 'plantilla', icon: '👥', label: 'Plantilla' },
   { id: 'table', icon: '📊', label: 'Liga' },
   { id: 'menu', icon: '☰', label: 'Más' },
 ];
@@ -16,7 +16,6 @@ const MENU_ITEMS = [
   { id: 'objectives', icon: '🎯', label: 'Objetivos' },
   { id: 'calendar', icon: '📅', label: 'Calendario' },
   { id: 'transfers', icon: '💰', label: 'Fichajes' },
-  { id: 'renewals', icon: '📝', label: 'Renovaciones' },
   { id: 'stadium', icon: '🏟️', label: 'Estadio' },
   { id: 'facilities', icon: '🏗️', label: 'Instalaciones' },
   { id: 'messages', icon: '📬', label: 'Mensajes' },

@@ -362,6 +362,15 @@ function gameReducer(state, action) {
         }
       };
     
+    case 'REMOVE_PLAYER':
+      return {
+        ...state,
+        team: {
+          ...state.team,
+          players: state.team.players.filter(p => p.name !== action.payload)
+        }
+      };
+    
     case 'INJURE_PLAYER': {
       // Centro médico reduce tiempo de lesiones
       const medicalLevel = state.facilities?.medical || 0;

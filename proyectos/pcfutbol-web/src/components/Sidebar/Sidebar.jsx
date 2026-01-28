@@ -10,7 +10,6 @@ import {
   Calendar,
   Trophy,
   Briefcase,
-  FileSignature,
   Building2,
   Wrench,
   Mail,
@@ -22,14 +21,13 @@ import './Sidebar.scss';
 
 const menuItems = [
   { id: 'overview', icon: Home, label: 'Despacho' },
-  { id: 'squad', icon: Users, label: 'Plantilla' },
+  { id: 'plantilla', icon: Users, label: 'Plantilla' },
   { id: 'formation', icon: ClipboardList, label: 'Alineación' },
   { id: 'training', icon: Dumbbell, label: 'Entrenamiento' },
   { id: 'objectives', icon: Target, label: 'Objetivos' },
   { id: 'calendar', icon: Calendar, label: 'Calendario' },
   { id: 'table', icon: Trophy, label: 'Clasificación' },
   { id: 'transfers', icon: Briefcase, label: 'Fichajes' },
-  { id: 'renewals', icon: FileSignature, label: 'Renovaciones' },
   { id: 'stadium', icon: Building2, label: 'Estadio' },
   { id: 'facilities', icon: Wrench, label: 'Instalaciones' },
   { id: 'messages', icon: Mail, label: 'Mensajes' },

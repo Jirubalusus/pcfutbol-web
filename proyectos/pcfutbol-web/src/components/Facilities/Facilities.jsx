@@ -10,21 +10,23 @@ const FACILITIES = [
     icon: '🏟️', 
     category: 'income',
     color: '#4a9eff',
-    description: 'Aumenta ingresos por taquilla',
+    description: 'Capacidad y factor cancha',
     hasSpec: false,
     levels: [
-      { name: 'Básico', capacity: 25000, income: 500000 },
-      { name: 'Mejorado', capacity: 40000, income: 900000 },
-      { name: 'Moderno', capacity: 60000, income: 1500000 },
-      { name: 'Élite', capacity: 85000, income: 2500000 }
+      { name: 'Municipal', capacity: 8000 },
+      { name: 'Moderno', capacity: 18000 },
+      { name: 'Grande', capacity: 35000 },
+      { name: 'Élite', capacity: 55000 },
+      { name: 'Legendario', capacity: 80000 }
     ],
     benefits: [
-      '25.000 asientos • €500K/sem',
-      '40.000 asientos • €900K/sem',
-      '60.000 asientos • €1.5M/sem',
-      '85.000 asientos • €2.5M/sem'
+      '8.000 asientos',
+      '18.000 asientos',
+      '35.000 asientos',
+      '55.000 asientos',
+      '80.000 asientos'
     ],
-    upgradeCost: [5000000, 15000000, 40000000]
+    upgradeCost: [8000000, 25000000, 60000000, 120000000]
   },
   { 
     id: 'sponsorship', 
@@ -167,16 +169,17 @@ export default function Facilities() {
   };
   
   const calculateWeeklyIncome = () => {
-    const stadiumLevel = facilities.stadium || 0;
+    // Solo patrocinios dan ingreso fijo semanal
+    // El estadio genera ingresos por taquilla (ver pestaña Estadio)
     const sponsorLevel = facilities.sponsorship || 0;
-    const stadiumIncome = FACILITIES[0].levels[stadiumLevel].income;
     const sponsorIncome = FACILITIES[1].levels[sponsorLevel].income;
-    return stadiumIncome + sponsorIncome;
+    return sponsorIncome;
   };
   
   const handleUpgrade = (facility) => {
     const currentLevel = facilities[facility.id] || 0;
-    if (currentLevel >= 3) return;
+    const maxLevel = facility.levels.length - 1;
+    if (currentLevel >= maxLevel) return;
     
     const cost = facility.upgradeCost[currentLevel];
     if (state.money < cost) return;
@@ -185,6 +188,14 @@ export default function Facilities() {
       type: 'UPGRADE_FACILITY',
       payload: { facilityId: facility.id, cost }
     });
+    
+    // Si es el estadio, también actualizar state.stadium.level para sincronizar
+    if (facility.id === 'stadium') {
+      dispatch({
+        type: 'UPDATE_STADIUM',
+        payload: { ...(state.stadium || {}), level: currentLevel + 1 }
+      });
+    }
     
     dispatch({
       type: 'ADD_MESSAGE',
@@ -392,7 +403,8 @@ export default function Facilities() {
             <div className="category-grid">
               {categoryFacilities.map(facility => {
                 const level = facilities[facility.id] || 0;
-                const canUpgrade = level < 3;
+                const maxLevel = facility.levels.length - 1;
+                const canUpgrade = level < maxLevel;
                 const upgradeCost = canUpgrade ? facility.upgradeCost[level] : null;
                 const canAfford = upgradeCost && state.money >= upgradeCost;
                 const spec = getSpecForFacility(facility.id);
@@ -417,7 +429,7 @@ export default function Facilities() {
                         <p className="facility-card__desc">{facility.description}</p>
                         
                         <div className="facility-card__level-bar">
-                          {[0, 1, 2, 3].map(i => (
+                          {facility.levels.map((_, i) => (
                             <div 
                               key={i} 
                               className={`level-segment ${i <= level ? 'filled' : ''}`}
