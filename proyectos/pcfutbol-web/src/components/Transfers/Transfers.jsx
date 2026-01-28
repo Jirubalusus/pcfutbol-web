@@ -173,14 +173,12 @@ export default function Transfers() {
       
       // Determinar la liga del equipo
       const teamLeague = team.leagueId || 
-        (LALIGA_TEAMS.some(t => t.id === team.id) ? 'laliga' :
-         SEGUNDA_TEAMS.some(t => t.id === team.id) ? 'segunda' :
-         PREMIER_LEAGUE_TEAMS?.some(t => t.id === team.id) ? 'premierLeague' :
-         LIGUE1_TEAMS?.some(t => t.id === team.id) ? 'ligue1' :
-         BUNDESLIGA_TEAMS?.some(t => t.id === team.id) ? 'bundesliga' :
-         SERIE_A_TEAMS?.some(t => t.id === team.id) ? 'serieA' :
-         EREDIVISIE_TEAMS?.some(t => t.id === team.id) ? 'eredivisie' :
-         PRIMEIRA_LIGA_TEAMS?.some(t => t.id === team.id) ? 'primeiraLiga' : null);
+        (getLaLigaTeams().some(t => t.id === team.id) ? 'laliga' :
+         getSegundaTeams().some(t => t.id === team.id) ? 'segunda' :
+         getPremierTeams().some(t => t.id === team.id) ? 'premier' :
+         getLigue1Teams().some(t => t.id === team.id) ? 'ligue1' :
+         getBundesligaTeams().some(t => t.id === team.id) ? 'bundesliga' :
+         getSerieATeams().some(t => t.id === team.id) ? 'seriea' : null);
       
       team.players.forEach(player => {
         playerIndex++;

@@ -2,6 +2,7 @@ import React, { createContext, useContext, useReducer, useEffect } from 'react';
 import { db } from '../firebase/config';
 import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import { LALIGA_TEAMS } from '../data/teamsFirestore';
+import { generateFacilityEvent, generateYouthPlayer, applyEventChoice, FACILITY_SPECIALIZATIONS } from '../game/facilitiesSystem';
 
 const GameContext = createContext();
 
@@ -42,6 +43,26 @@ const initialState = {
     scouting: 0,
     sponsorship: 0
   },
+  
+  // Facility Specializations
+  facilitySpecs: {
+    youth: 'offensive',      // offensive, defensive, technical, physical
+    medical: 'recovery',     // prevention, recovery, performance
+    training: 'balanced'     // intensive, balanced, conservative
+  },
+  
+  // Facility Stats (para feedback)
+  facilityStats: {
+    medical: { weeksSaved: 0, injuriesPrevented: 0, treatmentsApplied: 0 },
+    youth: { playersGenerated: 0, totalOvr: 0 },
+    training: { totalProgress: 0 }
+  },
+  
+  // Medical treatments used this week (resets each week)
+  medicalTreatmentsUsed: 0,
+  
+  // Pending facility event
+  pendingEvent: null,
   
   // Stadium (gestión detallada estilo PC Fútbol)
   stadium: {
@@ -142,53 +163,61 @@ function gameReducer(state, action) {
         if (p.injured && p.injuryWeeksLeft > 0) {
           const newWeeksLeft = p.injuryWeeksLeft - 1;
           if (newWeeksLeft <= 0) {
-            return { ...p, injured: false, injuryWeeksLeft: 0, injuryType: null };
+            // Player healed - remove injury flags including treated
+            return { ...p, injured: false, injuryWeeksLeft: 0, injuryType: null, treated: false };
           }
           return { ...p, injuryWeeksLeft: newWeeksLeft };
+        }
+        // Clear resting status
+        if (p.resting && p.restWeeks) {
+          const newRestWeeks = p.restWeeks - 1;
+          if (newRestWeeks <= 0) {
+            return { ...p, resting: false, restWeeks: 0 };
+          }
+          return { ...p, restWeeks: newRestWeeks };
         }
         return p;
       }) || [];
       
-      // Generate youth players at end of season (week 38)
+      // Generate youth players at end of season (week 38) using specialization
       const newYouthPlayers = [];
+      let updatedYouthStats = state.facilityStats?.youth || { playersGenerated: 0, totalOvr: 0 };
+      
       if (state.currentWeek === 38) {
         const youthLevel = state.facilities?.youth || 0;
-        const numYouth = 1 + youthLevel; // 1-4 canteranos según nivel
-        const minOverall = [55, 60, 65, 70][youthLevel];
-        const maxOverall = [65, 72, 78, 85][youthLevel];
-        const positions = ['GK', 'CB', 'RB', 'LB', 'CDM', 'CM', 'CAM', 'RW', 'LW', 'ST'];
-        const firstNames = ['Pablo', 'Miguel', 'Carlos', 'David', 'Alejandro', 'Daniel', 'Javier', 'Sergio', 'Adrián', 'Hugo', 'Álvaro', 'Iker', 'Mario', 'Diego', 'Rubén'];
-        const lastNames = ['García', 'Martínez', 'López', 'Sánchez', 'Fernández', 'González', 'Rodríguez', 'Pérez', 'Gómez', 'Ruiz', 'Díaz', 'Moreno', 'Muñoz', 'Jiménez', 'Navarro'];
+        const youthSpec = state.facilitySpecs?.youth || 'offensive';
+        const numYouth = 1 + youthLevel;
         
         for (let i = 0; i < numYouth; i++) {
-          const position = positions[Math.floor(Math.random() * positions.length)];
-          const overall = Math.floor(Math.random() * (maxOverall - minOverall + 1)) + minOverall;
-          const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
-          const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
-          
-          newYouthPlayers.push({
-            name: `${firstName} ${lastName}`,
-            position,
-            age: 17 + Math.floor(Math.random() * 3),
-            overall,
-            potential: Math.min(99, overall + Math.floor(Math.random() * 15) + 5),
-            nationality: 'España',
-            salary: Math.round(overall * 5000),
-            value: Math.round(overall * overall * 10000),
-            isYouthProduct: true
-          });
+          const newPlayer = generateYouthPlayer(youthLevel, youthSpec);
+          newYouthPlayers.push(newPlayer);
+          updatedYouthStats = {
+            playersGenerated: updatedYouthStats.playersGenerated + 1,
+            totalOvr: updatedYouthStats.totalOvr + newPlayer.overall
+          };
         }
         updatedPlayers = [...updatedPlayers, ...newYouthPlayers];
       }
       
-      // Generate new messages for youth players
-      const newMessages = newYouthPlayers.length > 0 ? [{
-        id: Date.now(),
-        type: 'youth',
-        title: '🌱 Nuevos canteranos',
-        content: `La cantera ha promocionado ${newYouthPlayers.length} jugador${newYouthPlayers.length > 1 ? 'es' : ''}: ${newYouthPlayers.map(p => `${p.name} (${p.position}, ${p.overall})`).join(', ')}`,
-        date: `Fin Temporada ${state.currentSeason}`
-      }] : [];
+      // Generate facility event (15% chance per week if facilities > 0)
+      let newEvent = null;
+      if (!state.pendingEvent) {
+        newEvent = generateFacilityEvent(state.facilities, updatedPlayers, state.currentWeek + 1);
+      }
+      
+      // Generate messages
+      const newMessages = [];
+      
+      if (newYouthPlayers.length > 0) {
+        const specName = FACILITY_SPECIALIZATIONS.youth.options.find(o => o.id === (state.facilitySpecs?.youth || 'offensive'))?.name || 'General';
+        newMessages.push({
+          id: Date.now(),
+          type: 'youth',
+          title: '🌱 Nuevos canteranos',
+          content: `La cantera (${specName}) ha promocionado ${newYouthPlayers.length} jugador${newYouthPlayers.length > 1 ? 'es' : ''}: ${newYouthPlayers.map(p => `${p.name} (${p.position}, ${p.overall})`).join(', ')}`,
+          date: `Fin Temporada ${state.currentSeason}`
+        });
+      }
       
       return { 
         ...state, 
@@ -197,7 +226,13 @@ function gameReducer(state, action) {
         weeklyIncome: facilityIncome,
         weeklyExpenses: salaryExpenses,
         team: state.team ? { ...state.team, players: updatedPlayers } : null,
-        messages: [...newMessages, ...state.messages].slice(0, 50)
+        messages: [...newMessages, ...state.messages].slice(0, 50),
+        pendingEvent: newEvent || state.pendingEvent,
+        facilityStats: {
+          ...state.facilityStats,
+          youth: updatedYouthStats
+        },
+        medicalTreatmentsUsed: 0 // Reset treatments each week
       };
     }
     
@@ -356,6 +391,63 @@ function gameReducer(state, action) {
       };
     }
     
+    case 'APPLY_MEDICAL_TREATMENT': {
+      // Apply treatment to reduce injury time by half
+      const playerName = action.payload;
+      const player = state.team?.players?.find(p => p.name === playerName);
+      
+      if (!player || !player.injured || player.treated) {
+        return state;
+      }
+      
+      // Check if treatments available
+      const medicalLevel = state.facilities?.medical || 0;
+      const treatmentsPerLevel = [0, 0, 1, 2];
+      const maxTreatments = treatmentsPerLevel[medicalLevel];
+      const usedTreatments = state.medicalTreatmentsUsed || 0;
+      
+      if (usedTreatments >= maxTreatments) {
+        return state;
+      }
+      
+      // Calculate weeks saved
+      const oldWeeks = player.injuryWeeksLeft;
+      const newWeeks = Math.max(1, Math.ceil(oldWeeks / 2));
+      const weeksSaved = oldWeeks - newWeeks;
+      
+      const updatedPlayers = state.team.players.map(p => {
+        if (p.name === playerName) {
+          return {
+            ...p,
+            injuryWeeksLeft: newWeeks,
+            treated: true
+          };
+        }
+        return p;
+      });
+      
+      return {
+        ...state,
+        team: { ...state.team, players: updatedPlayers },
+        medicalTreatmentsUsed: usedTreatments + 1,
+        facilityStats: {
+          ...state.facilityStats,
+          medical: {
+            ...state.facilityStats?.medical,
+            weeksSaved: (state.facilityStats?.medical?.weeksSaved || 0) + weeksSaved,
+            treatmentsApplied: (state.facilityStats?.medical?.treatmentsApplied || 0) + 1
+          }
+        },
+        messages: [{
+          id: Date.now(),
+          type: 'medical',
+          title: '💉 Tratamiento aplicado',
+          content: `${playerName} ha recibido tratamiento. Lesión reducida de ${oldWeeks} a ${newWeeks} semanas.`,
+          date: `Semana ${state.currentWeek}`
+        }, ...state.messages].slice(0, 50)
+      };
+    }
+    
     case 'UPDATE_SETTINGS':
       return {
         ...state,
@@ -471,40 +563,53 @@ function gameReducer(state, action) {
     }
     
     case 'GENERATE_YOUTH_PLAYER': {
-      // Cantera genera canteranos según nivel
+      // Usar el sistema de especialización
       const youthLevel = state.facilities?.youth || 0;
-      const maxOverall = [65, 72, 78, 85][youthLevel];
-      const minOverall = [55, 60, 65, 70][youthLevel];
-      
-      // Generar un canterano
-      const positions = ['GK', 'CB', 'RB', 'LB', 'CDM', 'CM', 'CAM', 'RW', 'LW', 'ST'];
-      const position = positions[Math.floor(Math.random() * positions.length)];
-      const overall = Math.floor(Math.random() * (maxOverall - minOverall + 1)) + minOverall;
-      const age = 17 + Math.floor(Math.random() * 3); // 17-19 años
-      
-      const firstNames = ['Pablo', 'Miguel', 'Carlos', 'David', 'Alejandro', 'Daniel', 'Javier', 'Sergio', 'Adrián', 'Hugo'];
-      const lastNames = ['García', 'Martínez', 'López', 'Sánchez', 'Fernández', 'González', 'Rodríguez', 'Pérez', 'Gómez', 'Ruiz'];
-      const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
-      const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
-      
-      const newPlayer = {
-        name: `${firstName} ${lastName}`,
-        position,
-        age,
-        overall,
-        potential: Math.min(99, overall + Math.floor(Math.random() * 15) + 5),
-        nationality: 'España',
-        salary: Math.round(overall * 5000),
-        value: Math.round(overall * overall * 10000),
-        isYouthProduct: true
-      };
+      const youthSpec = state.facilitySpecs?.youth || 'offensive';
+      const newPlayer = generateYouthPlayer(youthLevel, youthSpec);
       
       return {
         ...state,
         team: {
           ...state.team,
           players: [...state.team.players, newPlayer]
+        },
+        facilityStats: {
+          ...state.facilityStats,
+          youth: {
+            playersGenerated: (state.facilityStats?.youth?.playersGenerated || 0) + 1,
+            totalOvr: (state.facilityStats?.youth?.totalOvr || 0) + newPlayer.overall
+          }
         }
+      };
+    }
+    
+    case 'SET_FACILITY_SPEC': {
+      return {
+        ...state,
+        facilitySpecs: {
+          ...state.facilitySpecs,
+          [action.payload.facility]: action.payload.spec
+        }
+      };
+    }
+    
+    case 'SET_PENDING_EVENT': {
+      return {
+        ...state,
+        pendingEvent: action.payload
+      };
+    }
+    
+    case 'HANDLE_EVENT_CHOICE': {
+      if (!state.pendingEvent) return state;
+      return applyEventChoice(state, state.pendingEvent, action.payload);
+    }
+    
+    case 'DISMISS_EVENT': {
+      return {
+        ...state,
+        pendingEvent: null
       };
     }
     

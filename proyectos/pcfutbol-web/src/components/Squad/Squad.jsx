@@ -85,7 +85,7 @@ export default function Squad() {
   // Mobile Detail View
   if (selectedPlayer && window.innerWidth <= 768) {
     const p = selectedPlayer;
-    const isInjured = p.injured && p.injuredWeeks > 0;
+    const isInjured = p.injured && p.injuryWeeksLeft > 0;
     
     return (
       <div className="squad squad--detail">
@@ -107,7 +107,7 @@ export default function Squad() {
 
         {isInjured && (
           <div className="squad__injury-alert">
-            🏥 Lesionado · {p.injuredWeeks} semana{p.injuredWeeks > 1 ? 's' : ''} de baja
+            🏥 Lesionado · {p.injuryWeeksLeft} semana{p.injuryWeeksLeft > 1 ? 's' : ''} de baja
           </div>
         )}
 
@@ -236,7 +236,7 @@ export default function Squad() {
       {/* Lista de jugadores */}
       <div className="squad__list">
         {sortedPlayers.map((player, index) => {
-          const isInjured = player.injured && player.injuredWeeks > 0;
+          const isInjured = player.injured && player.injuryWeeksLeft > 0;
           const isSelected = selectedPlayer?.id === player.id;
           
           return (
@@ -256,7 +256,7 @@ export default function Squad() {
                 <span className="player-name">{player.name}</span>
                 <span className="player-meta">
                   {getPositionName(player.position)}
-                  {isInjured && <span className="injury-tag"> · 🏥 {player.injuredWeeks}s</span>}
+                  {isInjured && <span className="injury-tag"> · 🏥 {player.injuryWeeksLeft}s</span>}
                 </span>
               </div>
               

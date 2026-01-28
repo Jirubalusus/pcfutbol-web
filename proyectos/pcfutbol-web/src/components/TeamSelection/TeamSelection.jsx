@@ -1,5 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { useGame } from '../../context/GameContext';
+import { useAuth } from '../../context/AuthContext';
+import { saveGameToSlot } from '../../firebase/savesService';
 import { 
   getLaLigaTeams,
   getSegundaTeams,
@@ -77,7 +79,8 @@ const AVAILABLE_SEASONS = Array.from({ length: 22 }, (_, i) => {
 });
 
 export default function TeamSelection() {
-  const { dispatch } = useGame();
+  const { state, dispatch } = useGame();
+  const { user, isAuthenticated } = useAuth();
   const [step, setStep] = useState(1);
   const [selectedSeason, setSelectedSeason] = useState(AVAILABLE_SEASONS[0]); // Default: 2025-26
   const [selectedCountry, setSelectedCountry] = useState(null);
@@ -162,7 +165,7 @@ export default function TeamSelection() {
     setSelectedTeam(team);
   };
   
-  const handleStartGame = () => {
+  const handleStartGame = async () => {
     if (!selectedTeam || !selectedLeague) return;
     
     // Obtener equipos de la liga/grupo para la competición
@@ -213,6 +216,33 @@ export default function TeamSelection() {
           date: 'Semana 1'
         }
       });
+    }
+
+    // Si hay un slot pendiente y usuario autenticado, guardar automáticamente
+    const pendingSlot = localStorage.getItem('pcfutbol_pending_slot');
+    if (pendingSlot !== null && isAuthenticated && user) {
+      const slotIndex = parseInt(pendingSlot, 10);
+      localStorage.removeItem('pcfutbol_pending_slot');
+      
+      // Construir el estado inicial para guardar
+      const initialGameState = {
+        gameStarted: true,
+        currentWeek: 1,
+        currentSeason: 1,
+        teamId: selectedTeam.id,
+        team: { ...selectedTeam },
+        money: selectedTeam.budget,
+        leagueTable: leagueData.table,
+        fixtures: leagueData.fixtures,
+        seasonObjectives: objectives
+      };
+      
+      try {
+        await saveGameToSlot(user.uid, slotIndex, initialGameState);
+        console.log(`💾 Partida guardada automáticamente en hueco ${slotIndex + 1}`);
+      } catch (err) {
+        console.error('Error guardando partida inicial:', err);
+      }
     }
   };
   

@@ -160,7 +160,9 @@ export function prepareNewSeason(team, outcome, newLeagueTeams) {
       overall: newOverall,
       // Resetear estado
       injured: false,
-      injuredWeeks: 0,
+      injuryWeeksLeft: 0,
+      injuryType: null,
+      treated: false,
       trainingProgress: 0
     };
   });

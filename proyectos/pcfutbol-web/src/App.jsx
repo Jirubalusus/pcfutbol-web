@@ -1,4 +1,5 @@
 import { GameProvider, useGame } from './context/GameContext';
+import { AuthProvider, useAuth } from './context/AuthContext';
 import { DataProvider } from './context/DataProvider';
 import MainMenu from './components/MainMenu/MainMenu';
 import TeamSelection from './components/TeamSelection/TeamSelection';
@@ -7,8 +8,9 @@ import './index.css';
 
 function GameRouter() {
   const { state } = useGame();
+  const { loading: authLoading } = useAuth();
   
-  if (!state.loaded) {
+  if (!state.loaded || authLoading) {
     return (
       <div className="loading-screen">
         <div className="loading-content">
@@ -31,11 +33,13 @@ function GameRouter() {
 
 function App() {
   return (
-    <DataProvider>
-      <GameProvider>
-        <GameRouter />
-      </GameProvider>
-    </DataProvider>
+    <AuthProvider>
+      <DataProvider>
+        <GameProvider>
+          <GameRouter />
+        </GameProvider>
+      </DataProvider>
+    </AuthProvider>
   );
 }
 

@@ -26,10 +26,15 @@
   
   /* Accent Colors - PS5 Blue + Green */
   --color-accent: #00d4ff;
+  --color-accent-rgb: 0, 212, 255;
   --color-accent-secondary: #0066ff;
+  --color-accent-secondary-rgb: 0, 102, 255;
   --color-success: #30d158;
+  --color-success-rgb: 48, 209, 88;
   --color-warning: #ffd60a;
+  --color-warning-rgb: 255, 214, 10;
   --color-danger: #ff453a;
+  --color-danger-rgb: 255, 69, 58;
   
   /* Text Colors */
   --color-text-primary: rgba(255, 255, 255, 0.95);

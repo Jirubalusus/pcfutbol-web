@@ -9,7 +9,11 @@ $pcf-accent: #3498db;
 $pcf-gold: #f1c40f;
 $pcf-orange: #e67e22;
 $pcf-red: #e74c3c;
+$pcf-red-dark: #b93d30;
+$pcf-red-light: #eb6456;
 $pcf-green: #2ecc71;
+$pcf-green-dark: #25a85c;
+$pcf-green-light: #54d98b;
 $pcf-white: #ecf0f1;
 $pcf-gray: #95a5a6;
 $pcf-text: #bdc3c7;
@@ -69,7 +73,7 @@ $pcf-text: #bdc3c7;
   
   .btn-back {
     padding: 0.5rem 0.9rem;
-    background: linear-gradient(180deg, $pcf-red 0%, darken($pcf-red, 15%) 100%);
+    background: linear-gradient(180deg, $pcf-red 0%, $pcf-red-dark 100%);
     border: none;
     border-radius: 4px;
     color: white;
@@ -80,7 +84,7 @@ $pcf-text: #bdc3c7;
     box-shadow: 0 2px 4px rgba(0,0,0,0.3);
     
     &:hover {
-      background: linear-gradient(180deg, lighten($pcf-red, 5%) 0%, $pcf-red 100%);
+      background: linear-gradient(180deg, $pcf-red-light 0%, $pcf-red 100%);
       transform: translateY(-1px);
     }
   }
@@ -128,7 +132,7 @@ $pcf-text: #bdc3c7;
     
     &.active {
       .step-num {
-        background: linear-gradient(135deg, $pcf-green, lighten($pcf-green, 10%));
+        background: linear-gradient(135deg, $pcf-green, $pcf-green-light);
         border-color: $pcf-green;
         color: white;
         box-shadow: 0 0 12px rgba($pcf-green, 0.5);
@@ -150,7 +154,7 @@ $pcf-text: #bdc3c7;
     transition: all 0.3s;
     
     &.active {
-      background: linear-gradient(90deg, $pcf-green, lighten($pcf-green, 10%));
+      background: linear-gradient(90deg, $pcf-green, $pcf-green-light);
     }
     
     @media (max-width: 500px) {
@@ -810,7 +814,7 @@ $pcf-text: #bdc3c7;
   .btn-start {
     margin: 0.8rem;
     padding: 1rem;
-    background: linear-gradient(180deg, $pcf-green 0%, darken($pcf-green, 15%) 100%);
+    background: linear-gradient(180deg, $pcf-green 0%, $pcf-green-dark 100%);
     border: none;
     border-radius: 8px;
     color: white;
@@ -836,7 +840,7 @@ $pcf-text: #bdc3c7;
     }
     
     &:hover {
-      background: linear-gradient(180deg, lighten($pcf-green, 5%) 0%, $pcf-green 100%);
+      background: linear-gradient(180deg, $pcf-green-light 0%, $pcf-green 100%);
       transform: translateY(-2px);
       box-shadow: 0 6px 16px rgba($pcf-green, 0.5);
     }
