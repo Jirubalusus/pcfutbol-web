@@ -1,6 +1,23 @@
 // Stadium - Simplified Clean Design
 
 .stadium-simple {
+  &__3d-viewer {
+    margin-bottom: 1.5rem;
+    border-radius: 16px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0a1929, #132f4c);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    
+    .stadium-3d-loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 300px;
+      color: var(--color-text-secondary);
+      font-size: 1rem;
+    }
+  }
+  
   &__header {
     display: flex;
     justify-content: space-between;

@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, Suspense } from 'react';
 import { useGame } from '../../context/GameContext';
 import { 
   predictAttendance, 
@@ -9,6 +9,9 @@ import {
   BIG_TEAMS
 } from '../../game/stadiumEconomy';
 import './Stadium.scss';
+
+// Lazy load del componente 3D
+const Stadium3D = React.lazy(() => import('../Stadium3D/Stadium3D'));
 
 // === CONFIGURACIÓN ===
 const HOME_GAMES_PER_SEASON = 19;
@@ -288,6 +291,17 @@ export default function Stadium() {
 
   return (
     <div className="stadium-simple">
+      {/* Visor 3D del estadio */}
+      <div className="stadium-simple__3d-viewer">
+        <Suspense fallback={<div className="stadium-3d-loading">Cargando estadio...</div>}>
+          <Stadium3D 
+            level={level} 
+            naming={naming} 
+            grassCondition={grassCondition} 
+          />
+        </Suspense>
+      </div>
+      
       {/* Header */}
       <div className="stadium-simple__header">
         <div className="stadium-info">
