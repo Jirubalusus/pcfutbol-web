@@ -222,7 +222,7 @@ export default function Stadium() {
   const formatMoney = (n) => {
     if (Math.abs(n) >= 1000000) return `€${(n/1000000).toFixed(1)}M`;
     if (Math.abs(n) >= 1000) return `€${(n/1000).toFixed(0)}K`;
-    return `€${n}`;
+    return `€${Math.round(n)}`;
   };
   
   // Nombre del estadio
