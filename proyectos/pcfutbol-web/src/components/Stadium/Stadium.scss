@@ -338,6 +338,14 @@
           background: linear-gradient(90deg, #c0392b, #f1c40f 30%, #27ae60 60%, #2ecc71);
           border-radius: 12px;
           transition: width 0.3s;
+          
+          &.warning {
+            background: linear-gradient(90deg, #c0392b, #f39c12);
+          }
+          
+          &.danger {
+            background: #c0392b;
+          }
         }
 
         .grass-percent {
@@ -351,11 +359,24 @@
           text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
         }
       }
+      
+      .grass-status {
+        margin-bottom: 0.5rem;
+        
+        .status {
+          font-size: 0.9rem;
+          font-weight: 600;
+          
+          &.good { color: var(--color-success); }
+          &.warning { color: var(--color-warning); }
+          &.danger { color: var(--color-error); }
+        }
+      }
 
       .grass-hint {
         margin: 0;
         font-size: 0.85rem;
-        color: var(--color-success);
+        color: var(--color-text-secondary);
       }
 
       .repair-btn {

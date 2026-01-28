@@ -432,12 +432,22 @@ export default function Stadium() {
           <div className="card grass-card">
             <h3>🌱 Estado del Césped</h3>
             <div className="grass-bar">
-              <div className="fill" style={{ width: `${grassCondition}%` }}></div>
+              <div className={`fill ${grassCondition < 50 ? 'danger' : grassCondition < 70 ? 'warning' : ''}`} style={{ width: `${grassCondition}%` }}></div>
               <span className="grass-percent">{grassCondition}%</span>
             </div>
-            {grassCondition < 100 && (
-              <p className="grass-hint">Recupera +5%/semana automáticamente</p>
-            )}
+            
+            {/* Estado y efecto en lesiones */}
+            <div className="grass-status">
+              {grassCondition >= 80 && <span className="status good">✅ Óptimo</span>}
+              {grassCondition >= 50 && grassCondition < 80 && <span className="status warning">⚠️ Riesgo lesiones +{Math.round((100 - grassCondition) / 2)}%</span>}
+              {grassCondition < 50 && <span className="status danger">❌ Riesgo lesiones +{Math.round((100 - grassCondition))}%</span>}
+            </div>
+            
+            <p className="grass-hint">
+              {grassCondition < 100 ? 'Recupera +5%/semana' : 'En perfectas condiciones'}
+              {grassCondition < 70 && ' • El mal estado aumenta lesiones de TUS jugadores'}
+            </p>
+            
             {grassCondition < 70 && (
               <button className="repair-btn" onClick={handleRepairGrass} disabled={state.money < 200000}>
                 🔧 Reparar césped ({formatMoney(200000)})
