@@ -73,6 +73,8 @@ export default function MatchDay({ onComplete }) {
     }
     
     // Pass formation and tactic context
+    const grassCondition = isHome ? (state.stadium?.grassCondition ?? 100) : 100;
+    
     const result = simulateMatch(
       playerMatch.homeTeam,
       playerMatch.awayTeam,
@@ -87,7 +89,8 @@ export default function MatchDay({ onComplete }) {
         awayMorale: isHome ? (opponentTableEntry?.morale || 70) : (playerTableEntry?.morale || 70),
         isDerby: false, // TODO: implement derby detection
         importance: 'normal',
-        attendanceFillRate: isHome ? attendanceFillRate : 0.7
+        attendanceFillRate: isHome ? attendanceFillRate : 0.7,
+        grassCondition
       }
     );
     
