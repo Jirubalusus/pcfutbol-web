@@ -135,7 +135,7 @@
       grid-template-columns: 1fr;
     }
 
-    .abonados-control {
+    .abonados-display, .abonados-control {
       .abonados-info {
         display: flex;
         align-items: baseline;
@@ -154,36 +154,33 @@
         }
       }
 
-      .abonados-buttons {
-        display: flex;
-        gap: 0.5rem;
-        margin-bottom: 0.75rem;
-
-        button {
-          flex: 1;
-          padding: 0.6rem;
-          background: #243447;
-          border: 1px solid var(--color-glass-border);
-          border-radius: 8px;
-          color: #fff;
-          font-weight: 600;
-          cursor: pointer;
-
-          &:active { transform: scale(0.95); background: #2d4459; }
-        }
-      }
-
       .progress-bar {
         height: 8px;
         background: #243447;
         border-radius: 4px;
         overflow: hidden;
+        margin-bottom: 0.75rem;
 
         .fill {
           height: 100%;
           background: linear-gradient(90deg, var(--color-accent), var(--color-success));
           border-radius: 4px;
           transition: width 0.3s;
+        }
+      }
+      
+      .abonados-factors {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        padding: 0.5rem;
+        background: rgba(255,255,255,0.03);
+        border-radius: 6px;
+        
+        span {
+          font-size: 0.85rem;
+          color: var(--color-text-secondary);
+          cursor: help;
         }
       }
     }

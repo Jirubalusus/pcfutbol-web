@@ -1,0 +1,574 @@
+.plantilla {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1.25rem;
+    background: linear-gradient(135deg, #1a3a5c, #0d1f35);
+    border-radius: 16px;
+    flex-wrap: wrap;
+
+    .header-title {
+      h2 {
+        margin: 0;
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+      .player-count {
+        color: var(--color-text-tertiary);
+        font-size: 0.9rem;
+      }
+    }
+
+    .header-finances {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+
+      .finance-box {
+        padding: 0.75rem 1.25rem;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 12px;
+        text-align: center;
+        min-width: 140px;
+
+        .label {
+          display: block;
+          font-size: 0.75rem;
+          color: var(--color-text-tertiary);
+          text-transform: uppercase;
+          margin-bottom: 0.25rem;
+        }
+
+        .value {
+          display: block;
+          font-size: 1.25rem;
+          font-weight: 700;
+        }
+
+        .yearly {
+          display: block;
+          font-size: 0.8rem;
+          color: var(--color-text-secondary);
+        }
+
+        &.budget .value {
+          color: var(--color-success);
+        }
+
+        &.salary .value {
+          color: var(--color-warning);
+        }
+      }
+    }
+  }
+
+  &__alerts {
+    background: linear-gradient(135deg, rgba(255, 149, 0, 0.15), rgba(255, 69, 58, 0.1));
+    border: 1px solid rgba(255, 149, 0, 0.3);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+
+    .alert-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+
+      .alert-icon {
+        font-size: 1.2rem;
+      }
+
+      .alert-title {
+        font-weight: 600;
+        color: var(--color-warning);
+      }
+    }
+
+    .alert-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+
+      .alert-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 0.75rem;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.15s;
+
+        &:hover {
+          background: rgba(255, 149, 0, 0.2);
+        }
+
+        .pos {
+          font-weight: 700;
+          font-size: 0.8rem;
+        }
+
+        .name {
+          font-weight: 500;
+        }
+
+        .reason {
+          font-size: 0.8rem;
+          color: var(--color-text-secondary);
+        }
+      }
+
+      .more {
+        padding: 0.5rem;
+        color: var(--color-text-tertiary);
+        font-size: 0.85rem;
+      }
+    }
+  }
+
+  &__sort {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+
+    > span {
+      color: var(--color-text-tertiary);
+      font-size: 0.85rem;
+    }
+
+    button {
+      padding: 0.5rem 0.75rem;
+      background: #1c2a3a;
+      border: 1px solid var(--color-glass-border);
+      border-radius: 8px;
+      color: var(--color-text-secondary);
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.15s;
+
+      &:hover {
+        background: #253649;
+      }
+
+      &.active {
+        background: var(--color-accent);
+        color: #fff;
+        border-color: var(--color-accent);
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .player-row {
+      display: grid;
+      grid-template-columns: 1fr auto auto auto;
+      gap: 1rem;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      background: #1c2a3a;
+      border: 1px solid var(--color-glass-border);
+      border-radius: 10px;
+      transition: all 0.15s;
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+
+      &:hover {
+        background: #253649;
+      }
+
+      &.attention {
+        border-color: var(--color-warning);
+        background: rgba(255, 149, 0, 0.05);
+      }
+
+      &.listed {
+        border-color: var(--color-accent);
+        background: rgba(10, 132, 255, 0.05);
+      }
+
+      .player-main {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+
+        .pos {
+          width: 36px;
+          height: 36px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 8px;
+          font-weight: 700;
+          font-size: 0.8rem;
+          color: #fff;
+        }
+
+        .info {
+          .name {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+
+            .tag-listed {
+              font-size: 0.75rem;
+              padding: 0.15rem 0.4rem;
+              background: var(--color-accent);
+              border-radius: 4px;
+              font-weight: 500;
+            }
+          }
+
+          .meta {
+            font-size: 0.8rem;
+            color: var(--color-text-tertiary);
+          }
+        }
+      }
+
+      .player-contract {
+        text-align: right;
+
+        @media (max-width: 768px) {
+          display: flex;
+          justify-content: space-between;
+        }
+
+        .salary {
+          display: block;
+          font-weight: 600;
+          color: var(--color-warning);
+        }
+
+        .yearly {
+          font-size: 0.8rem;
+          color: var(--color-text-tertiary);
+        }
+      }
+
+      .player-status {
+        .contract {
+          font-size: 0.85rem;
+          font-weight: 500;
+        }
+      }
+
+      .player-actions {
+        display: flex;
+        gap: 0.25rem;
+
+        button {
+          width: 36px;
+          height: 36px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: rgba(255, 255, 255, 0.1);
+          border: none;
+          border-radius: 8px;
+          font-size: 1rem;
+          cursor: pointer;
+          transition: all 0.15s;
+
+          &:hover {
+            transform: scale(1.1);
+          }
+
+          &.btn-renew:hover {
+            background: rgba(48, 209, 88, 0.3);
+          }
+
+          &.btn-sell:hover {
+            background: rgba(10, 132, 255, 0.3);
+          }
+
+          &.btn-release:hover {
+            background: rgba(255, 69, 58, 0.3);
+          }
+        }
+      }
+    }
+  }
+
+  // Modal
+  &__modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+  }
+
+  &__modal {
+    background: #1c2a3a;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 400px;
+    overflow: hidden;
+
+    .modal-header {
+      padding: 1.25rem;
+      text-align: center;
+
+      h3 {
+        margin: 0;
+        font-size: 1.1rem;
+      }
+
+      &.renew {
+        background: linear-gradient(135deg, rgba(48, 209, 88, 0.2), rgba(48, 209, 88, 0.1));
+      }
+
+      &.sell {
+        background: linear-gradient(135deg, rgba(10, 132, 255, 0.2), rgba(10, 132, 255, 0.1));
+      }
+
+      &.release {
+        background: linear-gradient(135deg, rgba(255, 69, 58, 0.2), rgba(255, 69, 58, 0.1));
+      }
+    }
+
+    .modal-content {
+      padding: 1.25rem;
+
+      .player-summary {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        margin-bottom: 1.25rem;
+        padding: 0.75rem;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+
+        .pos {
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 8px;
+          font-weight: 700;
+          color: #fff;
+        }
+
+        .ovr {
+          font-size: 1.5rem;
+          font-weight: 700;
+        }
+
+        .age {
+          color: var(--color-text-secondary);
+        }
+      }
+
+      .comparison {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+
+        .current, .new {
+          flex: 1;
+          padding: 0.75rem;
+          background: rgba(0, 0, 0, 0.2);
+          border-radius: 8px;
+          text-align: center;
+
+          .label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--color-text-tertiary);
+            margin-bottom: 0.25rem;
+          }
+
+          .salary {
+            display: block;
+            font-weight: 700;
+            font-size: 1.1rem;
+          }
+
+          .yearly {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--color-text-secondary);
+          }
+
+          .years {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--color-accent);
+            margin-top: 0.25rem;
+          }
+        }
+
+        .current .salary {
+          color: var(--color-text-secondary);
+        }
+
+        .new .salary {
+          color: var(--color-warning);
+        }
+
+        .arrow {
+          font-size: 1.5rem;
+          color: var(--color-text-tertiary);
+        }
+      }
+
+      .sell-info {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+
+        .value-box, .salary-box {
+          flex: 1;
+          padding: 0.75rem;
+          background: rgba(0, 0, 0, 0.2);
+          border-radius: 8px;
+          text-align: center;
+
+          .label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--color-text-tertiary);
+            margin-bottom: 0.25rem;
+          }
+
+          .value {
+            font-weight: 700;
+            font-size: 1.1rem;
+          }
+        }
+
+        .value-box .value {
+          color: var(--color-success);
+        }
+      }
+
+      .impact {
+        padding: 0.75rem;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        text-align: center;
+
+        .impact-label {
+          display: block;
+          font-size: 0.85rem;
+          color: var(--color-text-secondary);
+          margin-bottom: 0.25rem;
+        }
+
+        .impact-value {
+          font-weight: 700;
+          font-size: 1.1rem;
+
+          &.positive {
+            color: var(--color-success);
+          }
+
+          &.negative {
+            color: var(--color-warning);
+          }
+        }
+      }
+
+      .warning-box {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem;
+        background: rgba(255, 69, 58, 0.15);
+        border: 1px solid rgba(255, 69, 58, 0.3);
+        border-radius: 8px;
+        margin-bottom: 1rem;
+
+        .warning-icon {
+          font-size: 1.5rem;
+        }
+
+        .warning-text {
+          font-size: 0.9rem;
+          color: var(--color-error);
+        }
+      }
+
+      .morale-warning {
+        padding: 0.5rem;
+        background: rgba(255, 149, 0, 0.15);
+        border-radius: 6px;
+        text-align: center;
+        font-size: 0.85rem;
+        color: var(--color-warning);
+        margin-bottom: 1rem;
+      }
+
+      .note {
+        font-size: 0.85rem;
+        color: var(--color-text-tertiary);
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+
+      .modal-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        button {
+          padding: 0.875rem;
+          border: none;
+          border-radius: 10px;
+          font-weight: 600;
+          font-size: 0.95rem;
+          cursor: pointer;
+          transition: all 0.15s;
+
+          &:active {
+            transform: scale(0.98);
+          }
+        }
+
+        .btn-confirm {
+          background: var(--color-success);
+          color: #fff;
+
+          &.danger {
+            background: var(--color-error);
+          }
+
+          &:hover {
+            filter: brightness(1.1);
+          }
+        }
+
+        .btn-cancel {
+          background: transparent;
+          border: 1px solid var(--color-glass-border);
+          color: var(--color-text-secondary);
+
+          &:hover {
+            background: rgba(255, 255, 255, 0.05);
+          }
+        }
+      }
+    }
+  }
+}

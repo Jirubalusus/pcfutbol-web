@@ -25,6 +25,53 @@ export const BIG_TEAMS = {
 // === CÁLCULO DE DEMANDA ===
 
 /**
+ * Calcula automáticamente los abonados según el proyecto del equipo
+ * Los abonados dependen de: precio del abono, nivel del equipo, resultados
+ * @param {Object} params
+ * @returns {number} Número de abonados
+ */
+export function calculateSeasonTickets({
+  capacity,
+  seasonTicketPrice, // Precio total del abono (no por partido)
+  teamOverall = 70,
+  leaguePosition = 10,
+  totalTeams = 20,
+  previousSeasonPosition = null,
+  teamReputation = 70
+}) {
+  const maxSeasonTickets = Math.floor(capacity * 0.8); // Máx 80% de capacidad
+  
+  // 1. Base según overall del equipo (40-80% de max)
+  // Overall 60 = 40%, Overall 80 = 65%, Overall 90 = 80%
+  const overallFactor = 0.25 + (teamOverall / 100) * 0.55;
+  
+  // 2. Factor precio del abono (referencia: 500€/temporada)
+  // Precio bajo = más demanda, precio alto = menos
+  const referenceSeasonPrice = 500;
+  const priceFactor = Math.max(0.5, Math.min(1.5, referenceSeasonPrice / seasonTicketPrice));
+  
+  // 3. Factor posición actual (mejor posición = más abonados)
+  const positionRatio = (totalTeams - leaguePosition + 1) / totalTeams;
+  const positionFactor = 0.7 + (positionRatio * 0.4); // 0.7 a 1.1
+  
+  // 4. Factor resultados temporada anterior (si existe)
+  let historyFactor = 1.0;
+  if (previousSeasonPosition !== null) {
+    const prevRatio = (totalTeams - previousSeasonPosition + 1) / totalTeams;
+    historyFactor = 0.85 + (prevRatio * 0.3); // 0.85 a 1.15
+  }
+  
+  // 5. Factor reputación/historia del club
+  const reputationFactor = 0.8 + (teamReputation / 100) * 0.4; // 0.8 a 1.2
+  
+  // Cálculo final
+  const baseTickets = maxSeasonTickets * overallFactor;
+  const finalTickets = baseTickets * priceFactor * positionFactor * historyFactor * reputationFactor;
+  
+  return Math.max(100, Math.min(maxSeasonTickets, Math.round(finalTickets)));
+}
+
+/**
  * Calcula el factor de atractivo del rival
  * @returns {number} 1.0 = normal, hasta 2.0 para partidos top
  */

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useGame } from '../../context/GameContext';
 import { LALIGA_TEAMS, SEGUNDA_TEAMS, PRIMERA_RFEF_TEAMS, SEGUNDA_RFEF_TEAMS } from '../../data/teamsFirestore';
 import { simulateMatch, updateTable, simulateWeekMatches, calculateTeamStrength, FORMATIONS, TACTICS } from '../../game/leagueEngine';
+import { calculateMatchAttendance, calculateMatchIncome } from '../../game/stadiumEconomy';
 import './MatchDay.scss';
 
 // Combine all teams for lookup (se calculará dinámicamente)
@@ -39,6 +40,38 @@ export default function MatchDay({ onComplete }) {
     const homeTeamData = isHome ? state.team : opponent;
     const awayTeamData = isHome ? opponent : state.team;
     
+    // Calcular asistencia si somos locales
+    let attendanceFillRate = 0.7; // Default para partidos de IA
+    let matchAttendance = null;
+    
+    if (isHome && state.stadium) {
+      const stadium = state.stadium;
+      const stadiumCapacity = [8000, 18000, 35000, 55000, 80000][stadium.level || 0];
+      const seasonTickets = stadium.seasonTickets ?? Math.floor(stadiumCapacity * 0.3);
+      const ticketPrice = (stadium.ticketPrice ?? 30) + (stadium.matchPriceAdjust || 0);
+      
+      // Posición del rival en la tabla
+      const rivalPosition = state.leagueTable.findIndex(t => t.teamId === opponentId) + 1 || 10;
+      const teamPosition = state.leagueTable.findIndex(t => t.teamId === state.teamId) + 1 || 10;
+      
+      matchAttendance = calculateMatchAttendance({
+        stadiumCapacity,
+        seasonTickets,
+        ticketPrice,
+        rivalTeam: opponent,
+        rivalPosition,
+        teamPosition,
+        totalTeams: state.leagueTable.length || 20,
+        streak: playerTableEntry?.streak || 0,
+        morale: playerTableEntry?.morale || 70,
+        leagueId: state.leagueId || 'laliga',
+        homeTeamId: state.teamId,
+        awayTeamId: opponentId
+      });
+      
+      attendanceFillRate = matchAttendance.fillRate;
+    }
+    
     // Pass formation and tactic context
     const result = simulateMatch(
       playerMatch.homeTeam,
@@ -53,9 +86,15 @@ export default function MatchDay({ onComplete }) {
         homeMorale: isHome ? (playerTableEntry?.morale || 70) : (opponentTableEntry?.morale || 70),
         awayMorale: isHome ? (opponentTableEntry?.morale || 70) : (playerTableEntry?.morale || 70),
         isDerby: false, // TODO: implement derby detection
-        importance: 'normal'
+        importance: 'normal',
+        attendanceFillRate: isHome ? attendanceFillRate : 0.7
       }
     );
+    
+    // Añadir info de asistencia al resultado si somos locales
+    if (matchAttendance) {
+      result.attendance = matchAttendance;
+    }
     
     setMatchResult(result);
     
@@ -184,6 +223,41 @@ export default function MatchDay({ onComplete }) {
         }
       });
     });
+    
+    // Ingresos por taquilla si jugamos en casa
+    if (isHome && matchResult.attendance) {
+      const att = matchResult.attendance;
+      const stadium = state.stadium || {};
+      const ticketPrice = (stadium.ticketPrice ?? 30) + (stadium.matchPriceAdjust || 0);
+      const stadiumLevel = stadium.level ?? 0;
+      
+      // Calcular ingresos
+      const ticketIncome = att.ticketSales * ticketPrice;
+      const concessionRate = 8 + (stadiumLevel * 2); // €8-18 según nivel
+      const concessionIncome = att.attendance * concessionRate;
+      const totalIncome = ticketIncome + concessionIncome;
+      
+      dispatch({ type: 'UPDATE_MONEY', payload: totalIncome });
+      
+      // Resetear ajuste de precio para el próximo partido
+      dispatch({
+        type: 'UPDATE_STADIUM',
+        payload: { ...stadium, matchPriceAdjust: 0 }
+      });
+      
+      // Mensaje con detalles de taquilla
+      const fillPercent = Math.round(att.fillRate * 100);
+      dispatch({
+        type: 'ADD_MESSAGE',
+        payload: {
+          id: Date.now() + 0.1,
+          type: 'stadium',
+          title: `🎟️ Taquilla: ${att.attendance.toLocaleString()} espectadores (${fillPercent}%)`,
+          content: `Entradas: €${(ticketIncome/1000).toFixed(0)}K | Consumiciones: €${(concessionIncome/1000).toFixed(0)}K | Total: €${(totalIncome/1000).toFixed(0)}K`,
+          date: `Semana ${state.currentWeek}`
+        }
+      });
+    }
     
     // HEAL_INJURIES se llama en ADVANCE_WEEK, no aquí
     onComplete();

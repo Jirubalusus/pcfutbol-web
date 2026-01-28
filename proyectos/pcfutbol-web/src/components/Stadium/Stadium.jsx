@@ -4,7 +4,7 @@ import {
   predictAttendance, 
   calculateMatchIncome,
   calculateSeasonTicketIncome,
-  estimateSeasonTicketDemand,
+  calculateSeasonTickets,
   PRICE_CONFIG,
   BIG_TEAMS
 } from '../../game/stadiumEconomy';
@@ -51,16 +51,35 @@ export default function Stadium() {
   const nextLevel = STADIUM_LEVELS[level + 1];
   const capacity = currentLevel?.capacity || 8000;
   
-  // Abonados por defecto: 30% de capacidad
-  const seasonTickets = stadium.seasonTickets ?? Math.floor(capacity * 0.3);
+  // Precios
   const ticketPrice = stadium.ticketPrice ?? 30; // Precio medio por entrada
+  const seasonTicketPricePerMatch = ticketPrice * (1 - SEASON_TICKET_DISCOUNT);
+  const seasonTicketPrice = seasonTicketPricePerMatch * HOME_GAMES_PER_SEASON; // Precio total abono
+  
+  // Datos del equipo para calcular abonados
+  const teamPlayers = state.team?.players || [];
+  const teamOverall = teamPlayers.length > 0 
+    ? Math.round(teamPlayers.reduce((sum, p) => sum + (p.overall || 70), 0) / teamPlayers.length)
+    : 70;
+  const teamPosition = state.table?.findIndex(t => t.teamId === state.team?.id) + 1 || 10;
+  const totalTeams = state.table?.length || 20;
+  const teamReputation = state.team?.reputation || 70;
+  
+  // Abonados calculados automáticamente (no controlables manualmente)
+  const maxSeasonTickets = Math.floor(capacity * 0.8);
+  const seasonTickets = calculateSeasonTickets({
+    capacity,
+    seasonTicketPrice,
+    teamOverall,
+    leaguePosition: teamPosition,
+    totalTeams,
+    previousSeasonPosition: stadium.previousSeasonPosition || null,
+    teamReputation
+  });
+  
   const grassCondition = stadium.grassCondition ?? 100;
   const naming = stadium.naming || null;
   const lastEventWeek = stadium.lastEventWeek ?? 0;
-  
-  // Cálculos (con fallbacks seguros)
-  const maxSeasonTickets = Math.floor(capacity * 0.8) || 6400; // Max 80% abonados
-  const seasonTicketPrice = ticketPrice * HOME_GAMES_PER_SEASON * (1 - SEASON_TICKET_DISCOUNT);
   const seasonTicketIncome = (seasonTickets || 0) * seasonTicketPrice;
   const namingIncome = naming?.yearlyIncome ?? 0;
   const maintenanceCost = (currentLevel?.maintenance || 50000) * 52; // Anual
@@ -83,11 +102,6 @@ export default function Stadium() {
       type: 'UPDATE_STADIUM',
       payload: { ...stadium, ...updates }
     });
-  };
-  
-  const handleSeasonTicketsChange = (delta) => {
-    const newValue = Math.max(0, Math.min(maxSeasonTickets, seasonTickets + delta));
-    updateStadium({ seasonTickets: newValue });
   };
   
   const handlePriceChange = (delta) => {
@@ -292,32 +306,31 @@ export default function Stadium() {
       {/* TAB: GENERAL */}
       {activeTab === 'general' && (
         <div className="stadium-simple__general">
-          {/* Abonados */}
+          {/* Abonados (solo lectura) */}
           <div className="card">
             <h3>🎫 Abonados</h3>
-            <p className="card-hint">Más abonados = ingresos fijos garantizados</p>
+            <p className="card-hint">Se renuevan según precio, proyecto y resultados</p>
             
-            <div className="abonados-control">
+            <div className="abonados-display">
               <div className="abonados-info">
                 <span className="big-number">{seasonTickets.toLocaleString()}</span>
                 <span className="of-total">/ {maxSeasonTickets.toLocaleString()} máx</span>
               </div>
-              <div className="abonados-buttons">
-                <button onClick={() => handleSeasonTicketsChange(-1000)}>-1000</button>
-                <button onClick={() => handleSeasonTicketsChange(-100)}>-100</button>
-                <button onClick={() => handleSeasonTicketsChange(100)}>+100</button>
-                <button onClick={() => handleSeasonTicketsChange(1000)}>+1000</button>
-              </div>
               <div className="progress-bar">
                 <div className="fill" style={{ width: `${(seasonTickets / maxSeasonTickets) * 100}%` }}></div>
+              </div>
+              <div className="abonados-factors">
+                <span title="Overall medio de la plantilla">⭐ {teamOverall}</span>
+                <span title="Posición en liga">📊 {teamPosition}º</span>
+                <span title="Reputación del club">🏆 {teamReputation}</span>
               </div>
             </div>
           </div>
           
-          {/* Precio entrada */}
+          {/* Precio abono */}
           <div className="card">
-            <h3>💵 Precio Entrada</h3>
-            <p className="card-hint">Precio medio por partido (abonados pagan 35% menos)</p>
+            <h3>💵 Precio Abono</h3>
+            <p className="card-hint">Precio por partido (abonados pagan 35% menos). Abono más barato = más abonados</p>
             
             <div className="price-control">
               <button onClick={() => handlePriceChange(-5)}>-5€</button>
