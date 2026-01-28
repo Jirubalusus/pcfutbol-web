@@ -20,13 +20,14 @@
   }
   
   &__modal {
-    background: var(--color-bg-card);
+    background: #1c2a3a;
     border: 2px solid var(--color-accent);
     border-radius: 16px;
     padding: 1.5rem;
     max-width: 420px;
     width: 100%;
     animation: slideUp 0.3s ease;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
     
     @keyframes slideUp {
       from { transform: translateY(20px); opacity: 0; }
@@ -64,8 +65,8 @@
     .modal-choice {
       width: 100%;
       padding: 1rem;
-      background: var(--color-glass);
-      border: 1px solid var(--color-glass-border);
+      background: #243447;
+      border: 1px solid #3a4a5e;
       border-radius: 10px;
       color: var(--color-text-primary);
       cursor: pointer;
@@ -75,7 +76,7 @@
       
       &:hover {
         border-color: var(--color-accent);
-        background: rgba(var(--color-accent-rgb), 0.1);
+        background: #2d4459;
         transform: translateX(4px);
       }
       
@@ -127,8 +128,8 @@
       align-items: center;
       gap: 0.5rem;
       padding: 1.25rem 1rem;
-      background: var(--color-glass);
-      border: 2px solid var(--color-glass-border);
+      background: #243447;
+      border: 2px solid #3a4a5e;
       border-radius: 12px;
       cursor: pointer;
       text-align: center;
@@ -141,7 +142,7 @@
       
       &.selected {
         border-color: var(--color-success);
-        background: rgba(48, 209, 88, 0.1);
+        background: #1a3a2a;
       }
       
       &__icon { font-size: 2rem; }
