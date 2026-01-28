@@ -5,9 +5,9 @@
 export const PRICE_CONFIG = {
   minPrice: 10,
   maxPrice: 100,
-  referencePrice: 30, // Precio "normal" de referencia (bajado de 35)
-  elasticity: 1.0,    // Cuánto afecta el precio a la demanda (subido de 0.8)
-  baseDemandRate: 0.55, // Demanda base: 55% de asientos disponibles (bajado de 70%)
+  referencePrice: 30, // Precio "normal" de referencia
+  elasticity: 0.75,   // Cuánto afecta el precio a la demanda (suavizado)
+  baseDemandRate: 0.65, // Demanda base: 65% de asientos disponibles
 };
 
 // Equipos "grandes" por liga - atraen más público
@@ -42,27 +42,27 @@ export function calculateSeasonTickets({
   const maxSeasonTickets = Math.floor(capacity * 0.8); // Máx 80% de capacidad
   
   // 1. Base según overall del equipo (40-80% de max)
-  // Overall 60 = 40%, Overall 80 = 65%, Overall 90 = 80%
-  const overallFactor = 0.25 + (teamOverall / 100) * 0.55;
+  // Overall 60 = 45%, Overall 80 = 70%, Overall 90 = 82%
+  const overallFactor = 0.30 + (teamOverall / 100) * 0.52;
   
   // 2. Factor precio del abono (referencia: 500€/temporada)
-  // Precio bajo = más demanda, precio alto = menos
+  // Precio bajo = más demanda, precio alto = menos (suavizado)
   const referenceSeasonPrice = 500;
-  const priceFactor = Math.max(0.5, Math.min(1.5, referenceSeasonPrice / seasonTicketPrice));
+  const priceFactor = Math.max(0.6, Math.min(1.4, referenceSeasonPrice / seasonTicketPrice));
   
-  // 3. Factor posición actual (mejor posición = más abonados)
+  // 3. Factor posición actual (mejor posición = más abonados) - suavizado
   const positionRatio = (totalTeams - leaguePosition + 1) / totalTeams;
-  const positionFactor = 0.7 + (positionRatio * 0.4); // 0.7 a 1.1
+  const positionFactor = 0.80 + (positionRatio * 0.30); // 0.80 a 1.10
   
   // 4. Factor resultados temporada anterior (si existe)
   let historyFactor = 1.0;
   if (previousSeasonPosition !== null) {
     const prevRatio = (totalTeams - previousSeasonPosition + 1) / totalTeams;
-    historyFactor = 0.85 + (prevRatio * 0.3); // 0.85 a 1.15
+    historyFactor = 0.90 + (prevRatio * 0.20); // 0.90 a 1.10
   }
   
   // 5. Factor reputación/historia del club
-  const reputationFactor = 0.8 + (teamReputation / 100) * 0.4; // 0.8 a 1.2
+  const reputationFactor = 0.85 + (teamReputation / 100) * 0.30; // 0.85 a 1.15
   
   // Cálculo final
   const baseTickets = maxSeasonTickets * overallFactor;
@@ -108,30 +108,29 @@ export function calculateRivalAttraction(rivalTeam, rivalPosition, leagueId) {
 export function calculatePriceFactor(ticketPrice, rivalFactor = 1.0) {
   const { referencePrice, elasticity } = PRICE_CONFIG;
   
-  // Factor base: precio/referencia invertido
-  // €15 → factor ~1.4 (más gente)
+  // Factor base (suavizado)
+  // €15 → factor ~1.3 (más gente)
   // €30 → factor 1.0 (normal)
-  // €60 → factor ~0.3 (menos gente)
-  // €100+ → factor ~0 (casi nadie)
+  // €60 → factor ~0.45 (menos gente)
+  // €100 → factor ~0.15
   const priceRatio = ticketPrice / referencePrice;
   
   let factor;
   if (ticketPrice <= referencePrice) {
     // Precios bajos: bonificación moderada
-    factor = 1 + (1 - priceRatio) * elasticity * 0.6;
+    factor = 1 + (1 - priceRatio) * elasticity * 0.5;
   } else {
-    // Precios altos: penalización exponencial
-    // A €60 (2x ref) → ~0.3, a €100+ → casi 0
-    factor = Math.pow(referencePrice / ticketPrice, 1.8);
+    // Precios altos: penalización exponencial (suavizada)
+    factor = Math.pow(referencePrice / ticketPrice, 1.4);
   }
   
   // Los partidos atractivos aguantan mejor precios altos
-  if (rivalFactor > 1.5 && ticketPrice > referencePrice) {
-    const elasticityReduction = (rivalFactor - 1.5) * 0.3;
-    factor = Math.min(factor + elasticityReduction, 0.9);
+  if (rivalFactor > 1.3 && ticketPrice > referencePrice) {
+    const elasticityReduction = (rivalFactor - 1.3) * 0.25;
+    factor = Math.min(factor + elasticityReduction, 0.95);
   }
   
-  return Math.max(0.02, Math.min(1.4, factor)); // Mínimo 2% (casi nadie), máximo 1.4
+  return Math.max(0.08, Math.min(1.3, factor)); // Mínimo 8%, máximo 1.3
 }
 
 /**
