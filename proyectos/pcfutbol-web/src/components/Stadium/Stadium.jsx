@@ -51,9 +51,14 @@ export default function Stadium() {
   const nextLevel = STADIUM_LEVELS[level + 1];
   const capacity = currentLevel?.capacity || 8000;
   
-  // Precios (dos controles separados)
-  const seasonTicketPrice = stadium.seasonTicketPrice ?? 400; // Precio total del abono de temporada
-  const ticketPrice = stadium.ticketPrice ?? 30; // Precio entrada partido suelto (no abonados)
+  // Sistema de abonos por temporada
+  const currentWeek = state.currentWeek || 1;
+  const SEASON_TICKET_DEADLINE = 4; // Semana límite para cerrar campaña (jornada 4)
+  
+  // Estado de la campaña de abonos
+  const seasonTicketsCampaignOpen = stadium.seasonTicketsCampaignOpen ?? (currentWeek <= SEASON_TICKET_DEADLINE);
+  const seasonTicketPrice = stadium.seasonTicketPrice ?? 400; // Precio mientras campaña abierta
+  const ticketPrice = stadium.ticketPrice ?? 30; // Precio entrada partido suelto
   
   // Datos del equipo para calcular abonados
   const teamPlayers = state.team?.players || [];
@@ -64,9 +69,9 @@ export default function Stadium() {
   const totalTeams = state.table?.length || 20;
   const teamReputation = state.team?.reputation || 70;
   
-  // Abonados calculados automáticamente (no controlables manualmente)
+  // Abonados: si campaña cerrada, usar valor fijado; si abierta, calcular previsión
   const maxSeasonTickets = Math.floor(capacity * 0.8);
-  const seasonTickets = calculateSeasonTickets({
+  const calculatedSeasonTickets = calculateSeasonTickets({
     capacity,
     seasonTicketPrice,
     teamOverall,
@@ -75,6 +80,11 @@ export default function Stadium() {
     previousSeasonPosition: stadium.previousSeasonPosition || null,
     teamReputation
   });
+  
+  // Si la campaña está cerrada, usar el valor fijado; si no, mostrar previsión
+  const seasonTickets = seasonTicketsCampaignOpen 
+    ? calculatedSeasonTickets 
+    : (stadium.seasonTicketsFinal ?? calculatedSeasonTickets);
   
   const grassCondition = stadium.grassCondition ?? 100;
   const naming = stadium.naming || null;
@@ -103,13 +113,24 @@ export default function Stadium() {
     });
   };
   
-  // Precio del abono (afecta abonados)
+  // Precio del abono (solo si campaña abierta)
   const handleSeasonPriceChange = (delta) => {
+    if (!seasonTicketsCampaignOpen) return;
     const newPrice = Math.max(200, Math.min(1000, seasonTicketPrice + delta));
     updateStadium({ seasonTicketPrice: newPrice });
   };
   
-  // Precio entrada partido (afecta asistencia no-abonados)
+  // Cerrar campaña de abonos (fijar precio y cantidad)
+  const handleCloseCampaign = () => {
+    if (!seasonTicketsCampaignOpen) return;
+    updateStadium({
+      seasonTicketsCampaignOpen: false,
+      seasonTicketsFinal: calculatedSeasonTickets,
+      seasonTicketPriceFinal: seasonTicketPrice
+    });
+  };
+  
+  // Precio entrada partido (afecta asistencia no-abonados) - siempre modificable
   const handleTicketPriceChange = (delta) => {
     const newPrice = Math.max(10, Math.min(100, ticketPrice + delta));
     updateStadium({ ticketPrice: newPrice });
@@ -312,38 +333,61 @@ export default function Stadium() {
       {/* TAB: GENERAL */}
       {activeTab === 'general' && (
         <div className="stadium-simple__general">
-          {/* Abonados (solo lectura) */}
+          {/* Campaña de abonos */}
           <div className="card">
-            <h3>🎫 Abonados</h3>
-            <p className="card-hint">Se renuevan según precio, proyecto y resultados</p>
-            
-            <div className="abonados-display">
-              <div className="abonados-info">
-                <span className="big-number">{seasonTickets.toLocaleString()}</span>
-                <span className="of-total">/ {maxSeasonTickets.toLocaleString()} máx</span>
-              </div>
-              <div className="progress-bar">
-                <div className="fill" style={{ width: `${(seasonTickets / maxSeasonTickets) * 100}%` }}></div>
-              </div>
-              <div className="abonados-factors">
-                <span title="Overall medio de la plantilla">⭐ {teamOverall}</span>
-                <span title="Posición en liga">📊 {teamPosition}º</span>
-                <span title="Reputación del club">🏆 {teamReputation}</span>
-              </div>
-            </div>
-          </div>
-          
-          {/* Precio abono de temporada */}
-          <div className="card">
-            <h3>🎫 Precio Abono</h3>
-            <p className="card-hint">Precio total por temporada. Más barato = más abonados</p>
-            
-            <div className="price-control">
-              <button onClick={() => handleSeasonPriceChange(-50)}>-50€</button>
-              <span className="price-value">€{seasonTicketPrice}</span>
-              <button onClick={() => handleSeasonPriceChange(50)}>+50€</button>
-            </div>
-            <p className="price-detail">{HOME_GAMES_PER_SEASON} partidos → {formatMoney(seasonTicketPrice / HOME_GAMES_PER_SEASON)}/partido</p>
+            <h3>🎫 Campaña de Abonos</h3>
+            {seasonTicketsCampaignOpen ? (
+              <>
+                <p className="card-hint campaign-open">
+                  📢 Campaña abierta hasta jornada {SEASON_TICKET_DEADLINE} (actual: {currentWeek})
+                </p>
+                
+                {/* Precio del abono */}
+                <div className="season-price-section">
+                  <label>Precio del abono:</label>
+                  <div className="price-control">
+                    <button onClick={() => handleSeasonPriceChange(-50)}>-50€</button>
+                    <span className="price-value">€{seasonTicketPrice}</span>
+                    <button onClick={() => handleSeasonPriceChange(50)}>+50€</button>
+                  </div>
+                  <p className="price-detail">{HOME_GAMES_PER_SEASON} partidos → {formatMoney(seasonTicketPrice / HOME_GAMES_PER_SEASON)}/partido</p>
+                </div>
+                
+                {/* Previsión de abonados */}
+                <div className="season-preview">
+                  <label>Previsión de abonados:</label>
+                  <div className="abonados-info">
+                    <span className="big-number">{calculatedSeasonTickets.toLocaleString()}</span>
+                    <span className="of-total">/ {maxSeasonTickets.toLocaleString()} máx</span>
+                  </div>
+                  <div className="progress-bar">
+                    <div className="fill" style={{ width: `${(calculatedSeasonTickets / maxSeasonTickets) * 100}%` }}></div>
+                  </div>
+                  <div className="abonados-factors">
+                    <span title="Overall medio">⭐ {teamOverall}</span>
+                    <span title="Posición liga">📊 {teamPosition}º</span>
+                    <span title="Reputación">🏆 {teamReputation}</span>
+                  </div>
+                </div>
+                
+                {/* Botón cerrar campaña */}
+                <button className="btn-close-campaign" onClick={handleCloseCampaign}>
+                  ✅ Cerrar campaña y fijar abonados
+                </button>
+              </>
+            ) : (
+              <>
+                <p className="card-hint campaign-closed">🔒 Campaña cerrada para esta temporada</p>
+                
+                <div className="abonados-display">
+                  <div className="abonados-info">
+                    <span className="big-number">{seasonTickets.toLocaleString()}</span>
+                    <span className="of-total">abonados</span>
+                  </div>
+                  <p className="locked-price">Precio fijado: <strong>€{stadium.seasonTicketPriceFinal || seasonTicketPrice}</strong></p>
+                </div>
+              </>
+            )}
           </div>
           
           {/* Precio entrada partido suelto */}

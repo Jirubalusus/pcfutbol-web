@@ -184,6 +184,72 @@
         }
       }
     }
+    
+    // Campaña de abonos
+    .campaign-open {
+      color: var(--color-success) !important;
+      font-weight: 600;
+    }
+    
+    .campaign-closed {
+      color: var(--color-text-tertiary) !important;
+    }
+    
+    .season-price-section {
+      margin-bottom: 1.5rem;
+      
+      label {
+        display: block;
+        font-size: 0.9rem;
+        color: var(--color-text-secondary);
+        margin-bottom: 0.5rem;
+      }
+    }
+    
+    .season-preview {
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background: rgba(255,255,255,0.03);
+      border-radius: 8px;
+      
+      label {
+        display: block;
+        font-size: 0.9rem;
+        color: var(--color-text-secondary);
+        margin-bottom: 0.5rem;
+      }
+    }
+    
+    .btn-close-campaign {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(135deg, var(--color-success), #27ae60);
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s, opacity 0.2s;
+      
+      &:hover {
+        opacity: 0.9;
+      }
+      
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+    
+    .locked-price {
+      text-align: center;
+      color: var(--color-text-secondary);
+      margin-top: 0.5rem;
+      
+      strong {
+        color: var(--color-warning);
+      }
+    }
 
     .price-control {
       display: flex;
