@@ -18,6 +18,13 @@ export default function MainMenu() {
   useEffect(() => {
     setTimeout(() => setAnimateIn(true), 100);
   }, []);
+
+  // Cerrar Auth cuando el usuario se autentique
+  useEffect(() => {
+    if (isAuthenticated && showAuth) {
+      setShowAuth(false);
+    }
+  }, [isAuthenticated, showAuth]);
   
   const handlePlay = () => {
     if (isAuthenticated && isEmailVerified) {

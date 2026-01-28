@@ -61,6 +61,11 @@ export function AuthProvider({ children }) {
 
   const logout = async () => {
     setError(null);
+    // Si es usuario invitado, solo limpiar el estado local
+    if (user?.isGuest) {
+      setUser(null);
+      return;
+    }
     try {
       await authLogout();
     } catch (err) {
