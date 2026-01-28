@@ -109,29 +109,29 @@ export function calculatePriceFactor(ticketPrice, rivalFactor = 1.0) {
   const { referencePrice, elasticity } = PRICE_CONFIG;
   
   // Factor base: precio/referencia invertido
-  // €15 → factor ~1.5 (más gente)
+  // €15 → factor ~1.4 (más gente)
   // €30 → factor 1.0 (normal)
-  // €50 → factor ~0.35 (mucho menos gente)
+  // €60 → factor ~0.3 (menos gente)
+  // €100+ → factor ~0 (casi nadie)
   const priceRatio = ticketPrice / referencePrice;
   
-  // Penalización extra para precios muy altos (curva exponencial suave)
   let factor;
-  if (ticketPrice > referencePrice) {
-    // Precios altos: penalización más agresiva
-    factor = 1 - Math.pow((priceRatio - 1), 1.3) * elasticity;
+  if (ticketPrice <= referencePrice) {
+    // Precios bajos: bonificación moderada
+    factor = 1 + (1 - priceRatio) * elasticity * 0.6;
   } else {
-    // Precios bajos: bonificación lineal
-    factor = 1 + (1 - priceRatio) * elasticity * 0.8;
+    // Precios altos: penalización exponencial
+    // A €60 (2x ref) → ~0.3, a €100+ → casi 0
+    factor = Math.pow(referencePrice / ticketPrice, 1.8);
   }
   
   // Los partidos atractivos aguantan mejor precios altos
-  // Si rivalFactor > 1.5, la gente paga más
   if (rivalFactor > 1.5 && ticketPrice > referencePrice) {
-    const elasticityReduction = (rivalFactor - 1.5) * 0.4;
-    factor = Math.min(factor + elasticityReduction, 1.0);
+    const elasticityReduction = (rivalFactor - 1.5) * 0.3;
+    factor = Math.min(factor + elasticityReduction, 0.9);
   }
   
-  return Math.max(0.25, Math.min(1.4, factor)); // Clamp 0.25-1.4
+  return Math.max(0.02, Math.min(1.4, factor)); // Mínimo 2% (casi nadie), máximo 1.4
 }
 
 /**
