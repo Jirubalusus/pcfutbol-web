@@ -118,7 +118,16 @@ function gameReducer(state, action) {
     case 'LOAD_SAVE':
       return { ...state, ...action.payload, loaded: true };
     
-    case 'NEW_GAME':
+    case 'NEW_GAME': {
+      // Calcular nivel de estadio inicial según reputación del equipo
+      const teamRep = action.payload.team.reputation || 50;
+      let initialStadiumLevel = 0;
+      if (teamRep >= 90) initialStadiumLevel = 4;      // Legendario (80k) - Madrid, Barça
+      else if (teamRep >= 75) initialStadiumLevel = 3; // Élite (55k) - LaLiga medio
+      else if (teamRep >= 60) initialStadiumLevel = 2; // Grande (35k) - Segunda top, LaLiga bajo
+      else if (teamRep >= 45) initialStadiumLevel = 1; // Moderno (18k) - 1ªRFEF, Segunda bajo
+      // else nivel 0: Municipal (8k) - 2ªRFEF
+      
       return { 
         ...initialState, 
         gameStarted: true,
@@ -126,8 +135,18 @@ function gameReducer(state, action) {
         team: action.payload.team,
         money: action.payload.team.budget,
         loaded: true,
-        currentScreen: 'office'
+        currentScreen: 'office',
+        stadium: {
+          ...initialState.stadium,
+          level: initialStadiumLevel,
+          grassCondition: 100
+        },
+        facilities: {
+          ...initialState.facilities,
+          stadium: initialStadiumLevel
+        }
       };
+    }
     
     case 'SET_SCREEN':
       return { ...state, currentScreen: action.payload };
