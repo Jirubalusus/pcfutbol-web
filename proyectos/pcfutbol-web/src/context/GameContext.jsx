@@ -319,7 +319,7 @@ function gameReducer(state, action) {
     case 'UPDATE_STADIUM':
       return {
         ...state,
-        stadium: action.payload
+        stadium: { ...state.stadium, ...action.payload }
       };
     
     case 'RECORD_MATCH_INCOME': {
