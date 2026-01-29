@@ -118,7 +118,7 @@ export function analyzeTeamNeeds(team, scoutingLevel = 0) {
   
   // Ordenar por prioridad
   const priorityOrder = { critical: 0, high: 1, medium: 2, low: 3 };
-  needs.sort((a, b) => priorityOrder[a.priority] - priorityOrder[a.priority]);
+  needs.sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
   
   return { needs, teamAvgOvr };
 }
@@ -346,57 +346,25 @@ function generateRecommendation(player, need, difficulty, scoutingLevel) {
 // ============================================================
 
 export const AVAILABLE_LEAGUES = [
-  { 
-    id: 'laliga', 
-    name: 'La Liga', 
-    country: 'España', 
-    flag: '🇪🇸',
-    color: '#ff4444'
-  },
-  { 
-    id: 'segunda', 
-    name: 'La Liga 2', 
-    country: 'España', 
-    flag: '🇪🇸',
-    color: '#ff8844'
-  },
-  { 
-    id: 'premierLeague', 
-    name: 'Premier League', 
-    country: 'Inglaterra', 
-    flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿',
-    color: '#3d195b'
-  },
-  { 
-    id: 'serieA', 
-    name: 'Serie A', 
-    country: 'Italia', 
-    flag: '🇮🇹',
-    color: '#008c45'
-  },
-  { 
-    id: 'bundesliga', 
-    name: 'Bundesliga', 
-    country: 'Alemania', 
-    flag: '🇩🇪',
-    color: '#dd0000'
-  },
-  { 
-    id: 'ligue1', 
-    name: 'Ligue 1', 
-    country: 'Francia', 
-    flag: '🇫🇷',
-    color: '#091c3e'
-  }
+  { id: 'laliga', name: 'La Liga', country: 'España', flagUrl: 'https://flagcdn.com/es.svg', color: '#ff4444' },
+  { id: 'segunda', name: 'La Liga 2', country: 'España', flagUrl: 'https://flagcdn.com/es.svg', color: '#ff8844' },
+  { id: 'premierLeague', name: 'Premier League', country: 'Inglaterra', flagUrl: 'https://flagcdn.com/gb-eng.svg', color: '#3d195b' },
+  { id: 'serieA', name: 'Serie A', country: 'Italia', flagUrl: 'https://flagcdn.com/it.svg', color: '#008c45' },
+  { id: 'bundesliga', name: 'Bundesliga', country: 'Alemania', flagUrl: 'https://flagcdn.com/de.svg', color: '#dd0000' },
+  { id: 'ligue1', name: 'Ligue 1', country: 'Francia', flagUrl: 'https://flagcdn.com/fr.svg', color: '#091c3e' },
 ];
 
 /**
  * Obtener equipos de una liga
  */
 export function getTeamsByLeague(allTeams, leagueId) {
-  // Por ahora todos están en la misma liga (laliga)
-  // En el futuro se puede filtrar por team.leagueId
-  return (allTeams || []).map(team => ({
+  let teams = allTeams || [];
+  if (leagueId) {
+    teams = teams.filter(t => t.leagueId === leagueId);
+    // Fallback: if no teams match (data doesn't have leagueId yet), return all
+    if (teams.length === 0) teams = allTeams || [];
+  }
+  return teams.map(team => ({
     ...team,
     tier: getClubTier(team.name),
     avgOverall: team.players?.length > 0

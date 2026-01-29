@@ -11,7 +11,9 @@ import { isTransferWindowOpen, formatTransferPrice, calculateMarketValue } from 
 import { 
   getClubTier, getTierData, calculateTransferDifficulty, 
   calculateRequiredSalary, evaluateClubOffer, evaluatePlayerOffer,
-  PLAYER_PERSONALITIES, assignPersonality, NEGOTIATION_STATES
+  PLAYER_PERSONALITIES, assignPersonality, NEGOTIATION_STATES,
+  createFreeAgentNegotiation, createPreContractNegotiation,
+  sendFreeAgentOffer, processFreeAgentResponse
 } from '../../game/transferNegotiation';
 import {
   SCOUTING_LEVELS, generateScoutingSuggestions, analyzeTeamNeeds,
@@ -25,7 +27,7 @@ import './TransfersV2.scss';
 
 export default function TransfersV2() {
   const { state, dispatch } = useGame();
-  const [activeTab, setActiveTab] = useState('resumen');
+  const [activeTab, setActiveTab] = useState('explorar');
   const [searchQuery, setSearchQuery] = useState('');
   const [filters, setFilters] = useState({
     position: 'all',
@@ -50,7 +52,7 @@ export default function TransfersV2() {
   const myPlayers = myTeam?.players || [];
   const allPlayers = useMemo(() => {
     const players = [];
-    // Jugadores de otros equipos (simulado por ahora)
+    // Jugadores de equipos
     (state.leagueTeams || []).forEach(team => {
       if (team.id !== state.teamId) {
         (team.players || []).forEach(p => {
@@ -58,8 +60,12 @@ export default function TransfersV2() {
         });
       }
     });
+    // Jugadores libres (sin equipo)
+    (state.freeAgents || []).forEach(p => {
+      players.push({ ...p, teamName: 'Libre', teamId: null, isFreeAgent: true });
+    });
     return players;
-  }, [state.leagueTeams, state.teamId]);
+  }, [state.leagueTeams, state.teamId, state.freeAgents]);
   
   // Filtrar jugadores
   const filteredPlayers = useMemo(() => {
@@ -76,6 +82,7 @@ export default function TransfersV2() {
       }
       if (p.age < filters.ageMin || p.age > filters.ageMax) return false;
       if (p.overall < filters.ovrMin) return false;
+      if (filters.freeOnly && !p.isFreeAgent) return false;
       return true;
     }).sort((a, b) => b.overall - a.overall);
   }, [allPlayers, searchQuery, filters]);
@@ -85,7 +92,6 @@ export default function TransfersV2() {
 
   // Tabs del mercado
   const tabs = [
-    { id: 'resumen', label: 'Resumen', icon: Newspaper },
     { id: 'explorar', label: 'Explorar', icon: Building2 },
     { id: 'ojeador', label: 'Ojeador', icon: Target },
     { id: 'buscar', label: 'Buscar', icon: Search },
@@ -194,8 +200,8 @@ export default function TransfersV2() {
         
       </div>
 
-      {/* TICKER DE NOTICIAS */}
-      <NewsTicker transfers={marketSummary.recentTransfers} />
+      {/* TICKER DE NOTICIAS - desactivado */}
+      {/* <NewsTicker transfers={marketSummary.recentTransfers} /> */}
 
       {/* MODAL JUGADOR */}
       {selectedPlayer && (
@@ -365,19 +371,25 @@ function BuscarTab({ players, searchQuery, setSearchQuery, filters, setFilters, 
               onChange={e => setFilters({...filters, ovrMin: parseInt(e.target.value)})}
             />
           </div>
+          <div className="filter-group">
+            <label>
+              <input 
+                type="checkbox" 
+                checked={filters.freeOnly || false}
+                onChange={e => setFilters({...filters, freeOnly: e.target.checked})}
+              />
+              Solo jugadores libres
+            </label>
+          </div>
         </div>
       )}
 
       {/* Resultados */}
-      <div className="results-header">
-        <span>{players.length} jugadores encontrados</span>
-      </div>
-
       <div className="players-grid">
         {players.slice(0, 50).map((player, i) => (
           <div 
             key={i} 
-            className="player-card"
+            className={`player-card ${player.isFreeAgent ? 'free-agent' : ''}`}
             onClick={() => onSelectPlayer(player)}
           >
             <div className="card-header">
@@ -386,11 +398,20 @@ function BuscarTab({ players, searchQuery, setSearchQuery, filters, setFilters, 
             </div>
             <div className="card-body">
               <h4>{player.name}</h4>
-              <p className="team">{player.teamName}</p>
+              <p className="team">
+                {player.isFreeAgent ? (
+                  <span className="free-badge">LIBRE</span>
+                ) : (
+                  player.teamName
+                )}
+              </p>
               <div className="meta">
                 <span>{player.age} años</span>
-                <span>{formatTransferPrice(player.value || player.overall * 500000)}</span>
+                <span className="value">{formatTransferPrice(player.value || player.marketValue || player.overall * 500000)}</span>
               </div>
+              {!player.isFreeAgent && (player.contractYears || 0) <= 1 && (
+                <span className="contract-expiring">Fin de contrato</span>
+              )}
             </div>
           </div>
         ))}
@@ -412,6 +433,10 @@ function OfertasRecibidasTab({ offers, myPlayers, dispatch }) {
   
   const handleReject = (offer) => {
     dispatch({ type: 'REJECT_INCOMING_OFFER', payload: offer });
+  };
+  
+  const handleCounter = (offer) => {
+    dispatch({ type: 'COUNTER_INCOMING_OFFER', payload: offer });
   };
   
   if (pendingOffers.length === 0 && pastOffers.length === 0) {
@@ -448,6 +473,9 @@ function OfertasRecibidasTab({ offers, myPlayers, dispatch }) {
           <div className="offer-actions">
             <button className="btn-accept" onClick={() => handleAccept(offer)}>
               <Check size={16} /> Aceptar
+            </button>
+            <button className="btn-counter" onClick={() => handleCounter(offer)}>
+              <ArrowLeftRight size={16} /> Pedir más
             </button>
             <button className="btn-reject" onClick={() => handleReject(offer)}>
               <X size={16} /> Rechazar
@@ -486,9 +514,7 @@ function OfertasRecibidasTab({ offers, myPlayers, dispatch }) {
 // ============================================================
 function MisOfertasTab({ offers, dispatch, budget }) {
   const handleAcceptCounter = (offer) => {
-    // Aceptar contraoferta - procesar como nueva oferta aceptada
-    const updatedOffer = { ...offer, amount: offer.counterAmount, status: 'accepted' };
-    dispatch({ type: 'PROCESS_OUTGOING_OFFER', payload: updatedOffer });
+    dispatch({ type: 'ACCEPT_COUNTER_OFFER', payload: offer });
   };
   
   const handleWithdraw = (offer) => {
@@ -629,7 +655,11 @@ function ExplorarTab({ leagueTeams, myTeamId, onSelectPlayer }) {
               style={{ '--league-color': league.color }}
               onClick={() => setSelectedLeague(league.id)}
             >
-              <span className="league-flag">{league.flag}</span>
+              <img 
+                src={league.flagUrl} 
+                alt={league.country} 
+                className="league-flag-img"
+              />
               <div className="league-info">
                 <span className="league-name">{league.name}</span>
                 <span className="league-country">{league.country}</span>
@@ -652,7 +682,7 @@ function ExplorarTab({ leagueTeams, myTeamId, onSelectPlayer }) {
             <ArrowRight size={18} style={{ transform: 'rotate(180deg)' }} />
           </button>
           <div>
-            <h3>{leagueInfo?.flag} {leagueInfo?.name}</h3>
+            <h3><img src={leagueInfo?.flagUrl} alt="" style={{ width: '24px', height: '16px', objectFit: 'cover', borderRadius: '2px', verticalAlign: 'middle' }} /> {leagueInfo?.name}</h3>
             <p>{teams.length} equipos</p>
           </div>
         </div>
@@ -730,7 +760,6 @@ function OjeadorTab({ myTeam, leagueTeams, scoutingLevel, budget, onSelectPlayer
   const [isLoading, setIsLoading] = useState(false);
   
   const config = SCOUTING_LEVELS[scoutingLevel] || SCOUTING_LEVELS[0];
-  const { needs, teamAvgOvr } = useMemo(() => analyzeTeamNeeds(myTeam, scoutingLevel), [myTeam, scoutingLevel]);
   
   const handleGenerateSuggestions = () => {
     setIsLoading(true);
@@ -740,25 +769,14 @@ function OjeadorTab({ myTeam, leagueTeams, scoutingLevel, budget, onSelectPlayer
       setIsLoading(false);
     }, 1000);
   };
-  
-  const handleUpgrade = () => {
-    if (scoutingLevel >= 3) return;
-    const costs = [2_000_000, 5_000_000, 15_000_000];
-    const cost = costs[scoutingLevel];
-    if (budget >= cost) {
-      dispatch({ type: 'UPGRADE_FACILITY', payload: { facilityId: 'scouting', cost } });
-    }
-  };
-  
-  const upgradeCost = [2_000_000, 5_000_000, 15_000_000][scoutingLevel];
 
   return (
     <div className="tab-ojeador">
-      {/* Header con nivel del ojeador */}
+      {/* Header con nivel */}
       <div className="ojeador-header">
         <div className="ojeador-level">
           <div className="level-icon">
-            <Target size={28} />
+            <Target size={24} />
           </div>
           <div className="level-info">
             <span className="level-name">{config.name}</span>
@@ -766,115 +784,60 @@ function OjeadorTab({ myTeam, leagueTeams, scoutingLevel, budget, onSelectPlayer
           </div>
           <div className="level-badge">Nv. {scoutingLevel}</div>
         </div>
-        
-        {scoutingLevel < 3 && (
-          <button 
-            className="upgrade-btn"
-            onClick={handleUpgrade}
-            disabled={budget < upgradeCost}
-          >
-            <TrendingUp size={16} />
-            Mejorar ({formatTransferPrice(upgradeCost)})
-          </button>
+      </div>
+      
+      {/* Botón generar / refrescar */}
+      <button 
+        className="generate-btn"
+        onClick={handleGenerateSuggestions}
+        disabled={isLoading}
+      >
+        {isLoading ? (
+          <>
+            <RefreshCw size={18} className="spinning" />
+            Analizando mercado...
+          </>
+        ) : suggestions ? (
+          <>
+            <RefreshCw size={18} />
+            Buscar nuevos jugadores
+          </>
+        ) : (
+          <>
+            <Search size={18} />
+            Buscar jugadores
+          </>
         )}
-      </div>
-      
-      {/* Features del nivel actual */}
-      <div className="ojeador-features">
-        {config.features.map((feature, i) => (
-          <span key={i} className="feature-tag">
-            <Check size={12} /> {feature}
-          </span>
-        ))}
-      </div>
-      
-      {/* Análisis de necesidades */}
-      <div className="needs-section">
-        <h4><AlertCircle size={16} /> Necesidades del equipo</h4>
-        <div className="needs-grid">
-          {needs.slice(0, 4).map((need, i) => (
-            <div key={i} className={`need-card ${need.priority}`}>
-              <span className="need-position">{need.group}</span>
-              <span className="need-reason">{need.reason}</span>
-              <span className="need-priority">{
-                need.priority === 'critical' ? '🔴 Crítico' :
-                need.priority === 'high' ? '🟠 Alta' :
-                need.priority === 'medium' ? '🟡 Media' : '🟢 Baja'
-              }</span>
-            </div>
-          ))}
-          {needs.length === 0 && (
-            <div className="no-needs">✅ Plantilla equilibrada</div>
-          )}
-        </div>
-      </div>
-      
-      {/* Botón generar sugerencias */}
-      {!suggestions && (
-        <button 
-          className="generate-btn"
-          onClick={handleGenerateSuggestions}
-          disabled={isLoading}
-        >
-          {isLoading ? (
-            <>
-              <RefreshCw size={18} className="spinning" />
-              Analizando mercado...
-            </>
-          ) : (
-            <>
-              <Search size={18} />
-              Generar {config.maxSuggestions} sugerencias
-            </>
-          )}
-        </button>
-      )}
+      </button>
       
       {/* Lista de sugerencias */}
       {suggestions && (
         <div className="suggestions-section">
           <div className="suggestions-header">
-            <h4><Star size={16} /> Sugerencias del ojeador</h4>
-            <button className="refresh-btn" onClick={handleGenerateSuggestions} disabled={isLoading}>
-              <RefreshCw size={14} className={isLoading ? 'spinning' : ''} />
-            </button>
+            <h4><Star size={16} /> {suggestions.suggestions.length} jugadores encontrados</h4>
           </div>
           
           <div className="suggestions-list">
             {suggestions.suggestions.map((player, i) => (
               <div 
                 key={i}
-                className={`suggestion-card ${player.matchesNeed ? 'matches-need' : ''}`}
+                className="suggestion-card"
                 onClick={() => onSelectPlayer(player)}
               >
-                <div className="suggestion-rank">#{i + 1}</div>
+                <div className="suggestion-pos" data-pos={player.position}>{player.position}</div>
                 <div className="suggestion-main">
-                  <div className="player-header">
-                    <span className="position" data-pos={player.position}>{player.position}</span>
-                    <span className="name">{player.name}</span>
-                    <span className="overall">{player.overall}</span>
-                  </div>
-                  <div className="player-meta">
-                    <span>{player.teamName}</span>
-                    <span>{player.age} años</span>
-                    <span>{formatTransferPrice(player.marketValue)}</span>
-                  </div>
-                  {scoutingLevel >= 2 && player.recommendation && (
-                    <div className="recommendation">{player.recommendation}</div>
-                  )}
+                  <span className="name">{player.name}</span>
+                  <span className="meta">{player.teamName} · {player.age} años</span>
                 </div>
-                <div className="suggestion-side">
-                  <div 
-                    className="difficulty-dot" 
-                    style={{ background: player.difficulty?.color }}
-                    title={player.difficulty?.difficulty}
-                  ></div>
-                  {player.matchesNeed && (
-                    <span className="need-badge" data-priority={player.needPriority}>
-                      {player.needPriority === 'critical' ? '🎯' : '✓'}
-                    </span>
-                  )}
+                <div className="suggestion-stats">
+                  <span className="overall">{player.overall}</span>
+                  <span className="value">{formatTransferPrice(player.marketValue)}</span>
                 </div>
+                <div 
+                  className="difficulty-indicator" 
+                  style={{ background: player.difficulty?.color }}
+                  title={player.difficulty?.difficulty}
+                />
               </div>
             ))}
           </div>
@@ -918,6 +881,7 @@ function NewsTicker({ transfers }) {
 // ============================================================
 function PlayerModal({ player, onClose, budget, dispatch, myTeam }) {
   const { state } = useGame();
+  const windowStatus = isTransferWindowOpen(state.currentWeek || 1);
   
   // Estados de negociación
   const [offerAmount, setOfferAmount] = useState(0);
@@ -928,12 +892,19 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam }) {
   const [clubCounter, setClubCounter] = useState(null);
   const [finalResult, setFinalResult] = useState(null); // null, 'success', 'failed'
   const [failReason, setFailReason] = useState('');
+  const [signingBonus, setSigningBonus] = useState(0);
+  const [usePreContract, setUsePreContract] = useState(false);
   
   // Datos del jugador
   const marketValue = calculateMarketValue(player);
   const currentSalary = player.salary || 50000;
   const personality = player.personality || assignPersonality(player);
   const personalityData = PLAYER_PERSONALITIES[personality];
+  
+  // Tipo de negociación
+  const isFreeAgent = player.isFreeAgent || false;
+  const canPreContract = !isFreeAgent && (player.contractYears || 2) <= 1;
+  const negotiationType = isFreeAgent ? 'free_agent' : canPreContract ? 'pre_contract_available' : 'normal';
   
   // Tiers
   const sellerTier = getClubTier(player.teamName);
@@ -960,7 +931,8 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam }) {
   useEffect(() => {
     setOfferAmount(Math.round(marketValue * 0.95));
     setSalaryOffer(Math.round(requiredSalary * 1.1));
-  }, [marketValue, requiredSalary]);
+    setSigningBonus(isFreeAgent ? Math.round(marketValue * 0.15) : Math.round(marketValue * 0.1));
+  }, [marketValue, requiredSalary, isFreeAgent]);
   
   // Calcular probabilidad del club en tiempo real
   const clubProbability = useMemo(() => {
@@ -984,23 +956,67 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam }) {
   // Calcular probabilidad del jugador en tiempo real
   const playerProbability = useMemo(() => {
     const salaryRatio = salaryOffer / requiredSalary;
-    let prob = difficulty.percentage;
+    let prob = 50; // Base same as evaluatePlayerOffer
     
-    // Ajustar por salario
-    if (salaryRatio >= 1.5) prob += 25;
-    else if (salaryRatio >= 1.2) prob += 15;
-    else if (salaryRatio >= 1.0) prob += 5;
-    else if (salaryRatio >= 0.9) prob -= 10;
-    else if (salaryRatio >= 0.8) prob -= 25;
-    else prob -= 40;
+    // Tier factor (mirrors real function)
+    if (tierDiff > 0) {
+      prob -= tierDiff * 15;
+      const pd = personalityData;
+      if (pd) prob += (pd.tierDownPenalty || 0) * 100;
+    } else if (tierDiff < 0) {
+      prob += Math.abs(tierDiff) * 10;
+      const pd = personalityData;
+      if (pd) prob += (pd.tierUpBonus || 0) * 100;
+    }
     
-    // Ajustar por personalidad
-    if (personality === 'mercenary' && salaryRatio >= 1.2) prob += 15;
-    if (personality === 'ambitious' && tierDiff > 0) prob -= 20;
-    if (personality === 'adventurous') prob += 10;
+    // Salary factor (mirrors real function)
+    const moneyInfluence = personalityData?.moneyInfluence || 0.5;
+    if (salaryRatio >= 1.5) {
+      prob += 30 * moneyInfluence + 15;
+    } else if (salaryRatio >= 1.2) {
+      prob += 20 * moneyInfluence + 10;
+    } else if (salaryRatio >= 1.0) {
+      prob += 10 * moneyInfluence;
+    } else if (salaryRatio >= 0.8) {
+      prob -= 15;
+    } else {
+      prob -= 35;
+    }
     
-    return Math.max(5, Math.min(95, prob));
-  }, [salaryOffer, requiredSalary, difficulty, personality, tierDiff]);
+    // Age factor
+    if (player.age >= 32) prob += 10;
+    if (player.age <= 23) prob += 5;
+    
+    return Math.max(5, Math.min(95, Math.round(prob)));
+  }, [salaryOffer, requiredSalary, tierDiff, personalityData, player.age]);
+  
+  // Probabilidad para agente libre / pre-contrato
+  const freeAgentProbability = useMemo(() => {
+    if (!isFreeAgent && !usePreContract) return 0;
+    const freeAgentMultiplier = isFreeAgent ? 1.3 : 1.15;
+    const expectedSalary = Math.round(requiredSalary * freeAgentMultiplier);
+    const expectedBonus = Math.round(marketValue * (isFreeAgent ? 0.15 : 0.1));
+    
+    const salaryRatio = salaryOffer / expectedSalary;
+    const bonusRatio = expectedBonus > 0 ? signingBonus / expectedBonus : 1;
+    
+    let prob = 50;
+    if (salaryRatio >= 1.2) prob += 25;
+    else if (salaryRatio >= 1.0) prob += 15;
+    else if (salaryRatio >= 0.8) prob -= 10;
+    else prob -= 30;
+    
+    if (bonusRatio >= 1.5) prob += 15;
+    else if (bonusRatio >= 1.0) prob += 10;
+    else if (bonusRatio >= 0.5) prob += 0;
+    else prob -= 15;
+    
+    if (buyerTier >= 3) prob += 15;
+    else if (buyerTier >= 2) prob += 5;
+    else if (buyerTier <= 0) prob -= 15;
+    
+    return Math.max(5, Math.min(95, Math.round(prob)));
+  }, [isFreeAgent, usePreContract, salaryOffer, requiredSalary, marketValue, signingBonus, buyerTier]);
   
   // Enviar oferta al club
   const handleClubOffer = () => {
@@ -1071,6 +1087,104 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam }) {
     setFailReason('');
   };
   
+  // Oferta a jugador libre / pre-contrato
+  const handleFreeAgentOffer = () => {
+    setPlayerStatus('negotiating');
+    
+    setTimeout(() => {
+      const player_data = { ...player, personality, salary: currentSalary };
+      const buyerTierNum = buyerTier;
+      const personalityInfo = PLAYER_PERSONALITIES[personality] || PLAYER_PERSONALITIES.professional;
+      
+      // Salario esperado (libres piden más)
+      const freeAgentMultiplier = isFreeAgent ? 1.3 : 1.15;
+      const expectedSalary = Math.round(requiredSalary * freeAgentMultiplier);
+      const expectedBonus = Math.round(marketValue * (isFreeAgent ? 0.15 : 0.1));
+      
+      const salaryRatio = salaryOffer / expectedSalary;
+      const bonusRatio = expectedBonus > 0 ? signingBonus / expectedBonus : 1;
+      
+      let probability = 0.5;
+      if (salaryRatio >= 1.2) probability += 0.25;
+      else if (salaryRatio >= 1.0) probability += 0.15;
+      else if (salaryRatio >= 0.8) probability -= 0.1;
+      else probability -= 0.3;
+      
+      if (bonusRatio >= 1.5) probability += 0.15;
+      else if (bonusRatio >= 1.0) probability += 0.1;
+      else if (bonusRatio >= 0.5) probability += 0;
+      else probability -= 0.15;
+      
+      if (buyerTierNum >= 3) probability += 0.15;
+      else if (buyerTierNum >= 2) probability += 0.05;
+      else if (buyerTierNum <= 0) probability -= 0.15;
+      
+      probability += personalityInfo.moneyInfluence * (salaryRatio - 1) * 0.3;
+      if (player.overall >= 85 && buyerTierNum < 3) probability -= 0.2;
+      
+      probability = Math.max(0.05, Math.min(0.95, probability));
+      const accepted = Math.random() < probability;
+      
+      if (accepted) {
+        setPlayerStatus('accepted');
+        setFinalResult('success');
+        completeFreeAgentTransfer();
+      } else {
+        setPlayerStatus('rejected');
+        setFinalResult('failed');
+        if (salaryRatio < 0.8) setFailReason('La oferta salarial es insuficiente');
+        else if (bonusRatio < 0.5) setFailReason('Espera una prima de fichaje mayor');
+        else if (buyerTierNum <= 1 && player.overall >= 80) setFailReason('No le convence el nivel del equipo');
+        else setFailReason('No le convence la oferta global');
+      }
+    }, 1200);
+  };
+  
+  // Completar fichaje de agente libre / pre-contrato
+  const completeFreeAgentTransfer = () => {
+    const newPlayer = {
+      ...player,
+      personality,
+      salary: salaryOffer,
+      contractYears,
+      teamId: state.teamId,
+      isFreeAgent: false
+    };
+    
+    dispatch({ 
+      type: 'SIGN_PLAYER', 
+      payload: { player: newPlayer, fee: signingBonus } 
+    });
+    
+    if (isFreeAgent) {
+      dispatch({ type: 'REMOVE_FREE_AGENT', payload: { playerName: player.name } });
+    }
+    
+    if (usePreContract && !isFreeAgent) {
+      const updatedLeagueTeams = (state.leagueTeams || []).map(t => {
+        if (t.id === player.teamId) {
+          return {
+            ...t,
+            players: (t.players || []).filter(p => p.name !== player.name)
+          };
+        }
+        return t;
+      });
+      dispatch({ type: 'UPDATE_LEAGUE_TEAMS', payload: updatedLeagueTeams });
+    }
+    
+    dispatch({
+      type: 'ADD_MESSAGE',
+      payload: {
+        id: Date.now(),
+        type: 'transfer',
+        title: isFreeAgent ? '✅ Agente libre fichado' : '✅ Pre-contrato firmado',
+        content: `${player.name} es nuevo jugador. Prima: ${formatTransferPrice(signingBonus)}, Salario: ${formatTransferPrice(salaryOffer)}/sem`,
+        date: `Semana ${state.currentWeek}`
+      }
+    });
+  };
+  
   // Completar transferencia
   const completeTransfer = () => {
     const newPlayer = {
@@ -1136,7 +1250,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam }) {
                   <h2>¡FICHAJE!</h2>
                   <p className="player-name">{player.name}</p>
                   <div className="result-details">
-                    <span><DollarSign size={16} /> {formatTransferPrice(offerAmount)}</span>
+                    <span><DollarSign size={16} /> {(isFreeAgent || usePreContract) ? formatTransferPrice(signingBonus) : formatTransferPrice(offerAmount)}</span>
                     <span><Calendar size={16} /> {contractYears} años</span>
                     <span><TrendingUp size={16} /> {formatTransferPrice(salaryOffer)}/sem</span>
                   </div>
@@ -1178,7 +1292,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam }) {
               <h3 className="player-name">{player.name}</h3>
               <div className="player-team">
                 <Building2 size={14} />
-                {player.teamName}
+                {isFreeAgent ? <span className="free-badge">AGENTE LIBRE</span> : player.teamName}
               </div>
               <div className="player-tier">
                 <span className="tier-dot" style={{ background: `hsl(${sellerTier * 30 + 120}, 70%, 50%)` }}></span>
@@ -1201,7 +1315,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam }) {
               </div>
               <div className="stat-row">
                 <span className="stat-label">Contrato</span>
-                <span className="stat-value">{player.contractYears || 2} años</span>
+                <span className="stat-value">{isFreeAgent ? 'Sin contrato' : `${player.contractYears || 2} años`}</span>
               </div>
             </div>
             
@@ -1233,149 +1347,57 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam }) {
           
           {/* COLUMNA DERECHA: NEGOCIACIÓN */}
           <div className="negotiation-column">
-            {/* SECCIÓN CLUB */}
-            <div className={`negotiation-section club-section ${clubStatus}`}>
-              <div className="section-header">
-                <div className="section-title">
-                  <Building2 size={18} />
-                  <span>Negociación con el Club</span>
-                </div>
-                <div className={`status-badge ${clubStatus}`}>
-                  {clubStatus === 'pending' && '⏳ Pendiente'}
-                  {clubStatus === 'negotiating' && '⏳ Negociando...'}
-                  {clubStatus === 'accepted' && '✅ Aceptado'}
-                  {clubStatus === 'rejected' && '❌ Rechazado'}
-                  {clubStatus === 'counter' && '🔄 Contraoferta'}
-                </div>
-              </div>
-              
-              <div className="offer-row">
-                <label>Oferta de traspaso</label>
-                <div className="offer-input-wrapper">
-                  <span className="currency">€</span>
-                  <input
-                    type="number"
-                    value={offerAmount}
-                    onChange={e => setOfferAmount(parseInt(e.target.value) || 0)}
-                    disabled={clubStatus !== 'pending'}
-                    step={500000}
-                  />
-                  <span className="unit">M</span>
-                </div>
-              </div>
-              
-              <div className="probability-row">
-                <span className="prob-label">Probabilidad de aceptación</span>
-                <div className="prob-bar-container">
-                  <div 
-                    className="prob-bar" 
-                    style={{ width: `${clubProbability}%`, background: getProbColor(clubProbability) }}
-                  ></div>
-                </div>
-                <span className="prob-value" style={{ color: getProbColor(clubProbability) }}>{clubProbability}%</span>
-              </div>
-              
-              {clubStatus === 'counter' && clubCounter && (
-                <div className="counter-offer-box">
-                  <span className="counter-label">Contraoferta del club:</span>
-                  <span className="counter-amount">{formatTransferPrice(clubCounter)}</span>
-                  <div className="counter-actions">
-                    <button className="btn-counter-reject" onClick={handleRejectCounter}>Rechazar</button>
-                    <button 
-                      className="btn-counter-accept" 
-                      onClick={handleAcceptCounter}
-                      disabled={budget < clubCounter}
-                    >
-                      Aceptar
-                    </button>
-                  </div>
-                </div>
-              )}
-              
-              {clubStatus === 'rejected' && (
-                <div className="rejected-box">
-                  <span>El club rechazó tu oferta. Prueba con una cantidad mayor.</span>
-                  <button className="btn-retry-small" onClick={() => setClubStatus('pending')}>
-                    Reintentar
-                  </button>
-                </div>
-              )}
-              
-              {clubStatus === 'pending' && (
+            {/* OPCIÓN PRE-CONTRATO (si disponible) */}
+            {canPreContract && !isFreeAgent && (
+              <div className="pre-contract-toggle">
                 <button 
-                  className="btn-send-club"
-                  onClick={handleClubOffer}
-                  disabled={!canAfford}
+                  className={`toggle-btn ${!usePreContract ? 'active' : ''}`}
+                  onClick={() => setUsePreContract(false)}
                 >
-                  {!canAfford ? `Presupuesto insuficiente (${formatTransferPrice(budget)})` : 'Enviar oferta al club'}
+                  Traspaso normal
                 </button>
-              )}
-              
-              {clubStatus === 'negotiating' && (
-                <div className="negotiating-indicator">
-                  <RefreshCw size={18} className="spinning" />
-                  <span>Esperando respuesta...</span>
-                </div>
-              )}
-            </div>
-            
-            {/* SECCIÓN JUGADOR */}
-            <div className={`negotiation-section player-section ${playerStatus}`}>
-              <div className="section-header">
-                <div className="section-title">
-                  <UserCheck size={18} />
-                  <span>Negociación con el Jugador</span>
-                </div>
-                <div className={`status-badge ${playerStatus}`}>
-                  {playerStatus === 'locked' && '🔒 Bloqueado'}
-                  {playerStatus === 'pending' && '⏳ Pendiente'}
-                  {playerStatus === 'negotiating' && '⏳ Negociando...'}
-                  {playerStatus === 'accepted' && '✅ Aceptado'}
-                  {playerStatus === 'rejected' && '❌ Rechazado'}
-                </div>
+                <button 
+                  className={`toggle-btn ${usePreContract ? 'active' : ''}`}
+                  onClick={() => { setUsePreContract(true); setClubStatus('pending'); setPlayerStatus('pending'); }}
+                >
+                  Pre-contrato (gratis)
+                </button>
               </div>
-              
-              {playerStatus === 'locked' && (
-                <div className="locked-message">
-                  <span>Primero debes llegar a un acuerdo con el club</span>
-                </div>
-              )}
-              
-              {playerStatus !== 'locked' && (
-                <>
+            )}
+
+            {/* FLUJO NORMAL: CLUB + JUGADOR */}
+            {!isFreeAgent && !usePreContract && (
+              <>
+                {/* SECCIÓN CLUB */}
+                <div className={`negotiation-section club-section ${clubStatus}`}>
+                  <div className="section-header">
+                    <div className="section-title">
+                      <Building2 size={18} />
+                      <span>Negociación con el Club</span>
+                    </div>
+                    <div className={`status-badge ${clubStatus}`}>
+                      {clubStatus === 'pending' && '⏳ Pendiente'}
+                      {clubStatus === 'negotiating' && '⏳ Negociando...'}
+                      {clubStatus === 'accepted' && '✅ Aceptado'}
+                      {clubStatus === 'rejected' && '❌ Rechazado'}
+                      {clubStatus === 'counter' && '🔄 Contraoferta'}
+                    </div>
+                  </div>
+                  
                   <div className="offer-row">
-                    <label>Salario semanal</label>
+                    <label>Oferta de traspaso</label>
                     <div className="offer-input-wrapper">
                       <span className="currency">€</span>
                       <input
                         type="number"
-                        value={salaryOffer}
-                        onChange={e => setSalaryOffer(parseInt(e.target.value) || 0)}
-                        disabled={playerStatus === 'negotiating' || playerStatus === 'accepted'}
-                        step={5000}
+                        value={offerAmount}
+                        onChange={e => setOfferAmount(parseInt(e.target.value) || 0)}
+                        disabled={clubStatus !== 'pending'}
+                        step={500000}
                       />
-                      <span className="unit">/sem</span>
+                      <span className="unit">M</span>
                     </div>
-                    <span className="salary-hint">
-                      Mínimo estimado: {formatTransferPrice(requiredSalary)}/sem
-                      {tierDiff > 0 && ` (+${Math.round((requiredSalary/currentSalary - 1) * 100)}%)`}
-                    </span>
-                  </div>
-                  
-                  <div className="contract-row">
-                    <label>Duración contrato</label>
-                    <div className="contract-buttons">
-                      {[2, 3, 4, 5].map(y => (
-                        <button
-                          key={y}
-                          className={`contract-btn ${contractYears === y ? 'active' : ''}`}
-                          onClick={() => setContractYears(y)}
-                          disabled={playerStatus === 'negotiating' || playerStatus === 'accepted'}
-                        >
-                          {y} años
-                        </button>
-                      ))}
-                    </div>
+                    <span className="formatted-amount">{formatTransferPrice(offerAmount)}</span>
                   </div>
                   
                   <div className="probability-row">
@@ -1383,27 +1405,261 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam }) {
                     <div className="prob-bar-container">
                       <div 
                         className="prob-bar" 
-                        style={{ width: `${playerProbability}%`, background: getProbColor(playerProbability) }}
+                        style={{ width: `${clubProbability}%`, background: getProbColor(clubProbability) }}
                       ></div>
                     </div>
-                    <span className="prob-value" style={{ color: getProbColor(playerProbability) }}>{playerProbability}%</span>
+                    <span className="prob-value" style={{ color: getProbColor(clubProbability) }}>{clubProbability}%</span>
                   </div>
                   
-                  {playerStatus === 'pending' && (
-                    <button className="btn-send-player" onClick={handlePlayerOffer}>
-                      Presentar oferta al jugador
+                  {clubStatus === 'counter' && clubCounter && (
+                    <div className="counter-offer-box">
+                      <span className="counter-label">Contraoferta del club:</span>
+                      <span className="counter-amount">{formatTransferPrice(clubCounter)}</span>
+                      <div className="counter-actions">
+                        <button className="btn-counter-reject" onClick={handleRejectCounter}>Rechazar</button>
+                        <button 
+                          className="btn-counter-accept" 
+                          onClick={handleAcceptCounter}
+                          disabled={budget < clubCounter}
+                        >
+                          Aceptar
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                  
+                  {clubStatus === 'rejected' && (
+                    <div className="rejected-box">
+                      <span>El club rechazó tu oferta. Prueba con una cantidad mayor.</span>
+                      <button className="btn-retry-small" onClick={() => setClubStatus('pending')}>
+                        Reintentar
+                      </button>
+                    </div>
+                  )}
+                  
+                  {clubStatus === 'pending' && (
+                    <button 
+                      className="btn-send-club"
+                      onClick={handleClubOffer}
+                      disabled={!canAfford || !windowStatus.open}
+                    >
+                      {!windowStatus.open ? '🔒 Mercado cerrado' : !canAfford ? `Presupuesto insuficiente (${formatTransferPrice(budget)})` : 'Enviar oferta al club'}
                     </button>
                   )}
                   
-                  {playerStatus === 'negotiating' && (
+                  {clubStatus === 'negotiating' && (
                     <div className="negotiating-indicator">
                       <RefreshCw size={18} className="spinning" />
-                      <span>El jugador evalúa tu oferta...</span>
+                      <span>Esperando respuesta...</span>
                     </div>
                   )}
-                </>
-              )}
-            </div>
+                </div>
+                
+                {/* SECCIÓN JUGADOR */}
+                <div className={`negotiation-section player-section ${playerStatus}`}>
+                  <div className="section-header">
+                    <div className="section-title">
+                      <UserCheck size={18} />
+                      <span>Negociación con el Jugador</span>
+                    </div>
+                    <div className={`status-badge ${playerStatus}`}>
+                      {playerStatus === 'locked' && '🔒 Bloqueado'}
+                      {playerStatus === 'pending' && '⏳ Pendiente'}
+                      {playerStatus === 'negotiating' && '⏳ Negociando...'}
+                      {playerStatus === 'accepted' && '✅ Aceptado'}
+                      {playerStatus === 'rejected' && '❌ Rechazado'}
+                    </div>
+                  </div>
+                  
+                  {playerStatus === 'locked' && (
+                    <div className="locked-message">
+                      <span>Primero debes llegar a un acuerdo con el club</span>
+                    </div>
+                  )}
+                  
+                  {playerStatus !== 'locked' && (
+                    <>
+                      <div className="offer-row">
+                        <label>Salario semanal</label>
+                        <div className="offer-input-wrapper">
+                          <span className="currency">€</span>
+                          <input
+                            type="number"
+                            value={salaryOffer}
+                            onChange={e => setSalaryOffer(parseInt(e.target.value) || 0)}
+                            disabled={playerStatus === 'negotiating' || playerStatus === 'accepted'}
+                            step={5000}
+                          />
+                          <span className="unit">/sem</span>
+                        </div>
+                        <span className="formatted-amount">{formatTransferPrice(salaryOffer)}/sem</span>
+                        <span className="salary-hint">
+                          Mínimo estimado: {formatTransferPrice(requiredSalary)}/sem
+                          {tierDiff > 0 && ` (+${Math.round((requiredSalary/currentSalary - 1) * 100)}%)`}
+                        </span>
+                      </div>
+                      
+                      <div className="contract-row">
+                        <label>Duración contrato</label>
+                        <div className="contract-buttons">
+                          {[2, 3, 4, 5].map(y => (
+                            <button
+                              key={y}
+                              className={`contract-btn ${contractYears === y ? 'active' : ''}`}
+                              onClick={() => setContractYears(y)}
+                              disabled={playerStatus === 'negotiating' || playerStatus === 'accepted'}
+                            >
+                              {y} años
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                      
+                      <div className="probability-row">
+                        <span className="prob-label">Probabilidad de aceptación</span>
+                        <div className="prob-bar-container">
+                          <div 
+                            className="prob-bar" 
+                            style={{ width: `${playerProbability}%`, background: getProbColor(playerProbability) }}
+                          ></div>
+                        </div>
+                        <span className="prob-value" style={{ color: getProbColor(playerProbability) }}>{playerProbability}%</span>
+                      </div>
+                      
+                      {playerStatus === 'pending' && (
+                        <button className="btn-send-player" onClick={handlePlayerOffer}>
+                          Presentar oferta al jugador
+                        </button>
+                      )}
+                      
+                      {playerStatus === 'negotiating' && (
+                        <div className="negotiating-indicator">
+                          <RefreshCw size={18} className="spinning" />
+                          <span>El jugador evalúa tu oferta...</span>
+                        </div>
+                      )}
+                    </>
+                  )}
+                </div>
+              </>
+            )}
+
+            {/* FLUJO LIBRE / PRE-CONTRATO */}
+            {(isFreeAgent || usePreContract) && (
+              <div className={`negotiation-section free-agent-section ${playerStatus}`}>
+                <div className="section-header">
+                  <div className="section-title">
+                    <UserCheck size={18} />
+                    <span>{isFreeAgent ? 'Negociación con Agente Libre' : 'Pre-contrato'}</span>
+                  </div>
+                  <div className={`status-badge ${playerStatus}`}>
+                    {playerStatus === 'pending' && '⏳ Pendiente'}
+                    {playerStatus === 'locked' && '⏳ Pendiente'}
+                    {playerStatus === 'negotiating' && '⏳ Negociando...'}
+                    {playerStatus === 'accepted' && '✅ Aceptado'}
+                    {playerStatus === 'rejected' && '❌ Rechazado'}
+                  </div>
+                </div>
+                
+                {isFreeAgent && (
+                  <div className="free-agent-info">
+                    <span className="free-badge-large">AGENTE LIBRE</span>
+                    <p>No hay que negociar con ningún club. Negocia directamente con el jugador ofreciendo una prima de fichaje y un salario.</p>
+                  </div>
+                )}
+                
+                {usePreContract && !isFreeAgent && (
+                  <div className="free-agent-info pre-contract-info">
+                    <span className="pre-contract-badge">PRE-CONTRATO</span>
+                    <p>Su contrato expira pronto. Puedes negociar directamente con él sin pagar traspaso. Se unirá a tu equipo cuando finalice su contrato.</p>
+                  </div>
+                )}
+                
+                <div className="offer-row">
+                  <label>Prima de fichaje</label>
+                  <div className="offer-input-wrapper">
+                    <span className="currency">€</span>
+                    <input
+                      type="number"
+                      value={signingBonus}
+                      onChange={e => setSigningBonus(parseInt(e.target.value) || 0)}
+                      disabled={playerStatus === 'negotiating' || playerStatus === 'accepted'}
+                      step={500000}
+                    />
+                  </div>
+                  <span className="formatted-amount">{formatTransferPrice(signingBonus)}</span>
+                  <span className="salary-hint">Sugerido: {formatTransferPrice(Math.round(marketValue * (isFreeAgent ? 0.15 : 0.1)))}</span>
+                </div>
+                
+                <div className="offer-row">
+                  <label>Salario semanal</label>
+                  <div className="offer-input-wrapper">
+                    <span className="currency">€</span>
+                    <input
+                      type="number"
+                      value={salaryOffer}
+                      onChange={e => setSalaryOffer(parseInt(e.target.value) || 0)}
+                      disabled={playerStatus === 'negotiating' || playerStatus === 'accepted'}
+                      step={5000}
+                    />
+                    <span className="unit">/sem</span>
+                  </div>
+                  <span className="formatted-amount">{formatTransferPrice(salaryOffer)}/sem</span>
+                  <span className="salary-hint">
+                    Mínimo estimado: {formatTransferPrice(Math.round(requiredSalary * (isFreeAgent ? 1.3 : 1.15)))}/sem
+                  </span>
+                </div>
+                
+                <div className="contract-row">
+                  <label>Duración contrato</label>
+                  <div className="contract-buttons">
+                    {[2, 3, 4, 5].map(y => (
+                      <button
+                        key={y}
+                        className={`contract-btn ${contractYears === y ? 'active' : ''}`}
+                        onClick={() => setContractYears(y)}
+                        disabled={playerStatus === 'negotiating' || playerStatus === 'accepted'}
+                      >
+                        {y} años
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                
+                <div className="probability-row">
+                  <span className="prob-label">Probabilidad de aceptación</span>
+                  <div className="prob-bar-container">
+                    <div 
+                      className="prob-bar" 
+                      style={{ width: `${freeAgentProbability}%`, background: getProbColor(freeAgentProbability) }}
+                    ></div>
+                  </div>
+                  <span className="prob-value" style={{ color: getProbColor(freeAgentProbability) }}>{freeAgentProbability}%</span>
+                </div>
+                
+                <div className="total-cost-row">
+                  <span className="cost-label">Coste total</span>
+                  <span className="cost-value">{formatTransferPrice(signingBonus)} + {formatTransferPrice(salaryOffer)}/sem × {contractYears} años</span>
+                </div>
+                
+                {(playerStatus === 'pending' || playerStatus === 'locked') && (
+                  <button 
+                    className="btn-send-player"
+                    onClick={handleFreeAgentOffer}
+                    disabled={budget < signingBonus}
+                  >
+                    {budget < signingBonus ? `Presupuesto insuficiente (${formatTransferPrice(budget)})` : isFreeAgent ? 'Presentar oferta' : 'Ofrecer pre-contrato'}
+                  </button>
+                )}
+                
+                {playerStatus === 'negotiating' && (
+                  <div className="negotiating-indicator">
+                    <RefreshCw size={18} className="spinning" />
+                    <span>El jugador evalúa tu oferta...</span>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>

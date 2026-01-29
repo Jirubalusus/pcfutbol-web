@@ -403,10 +403,26 @@ $border-color: $card-border;
     }
   }
 
-  .results-header {
-    margin-bottom: 1rem;
-    color: $text-secondary;
-    font-size: 0.9rem;
+  .free-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    background: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .contract-expiring {
+    display: inline-block;
+    padding: 2px 8px;
+    margin-top: 4px;
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 600;
   }
 
   .players-grid {
@@ -421,6 +437,10 @@ $border-color: $card-border;
       overflow: hidden;
       cursor: pointer;
       transition: all 0.2s;
+
+      &.free-agent {
+        border: 1px solid rgba(34, 197, 94, 0.2);
+      }
 
       &:hover {
         border-color: $primary;
@@ -441,10 +461,16 @@ $border-color: $card-border;
           font-weight: 700;
 
           &[data-pos="GK"] { background: rgba($gold, 0.3); color: $gold; }
-          &[data-pos="CB"], &[data-pos="RB"], &[data-pos="LB"], &[data-pos="RWB"], &[data-pos="LWB"] { 
+          &[data-pos="CB"], &[data-pos="RB"], &[data-pos="LB"] { 
             background: rgba($primary, 0.3); color: $primary; 
           }
-          &[data-pos="CM"], &[data-pos="CDM"], &[data-pos="CAM"], &[data-pos="RM"], &[data-pos="LM"] { 
+          &[data-pos="RWB"], &[data-pos="LWB"] { 
+            background: rgba($primary, 0.3); color: $primary; 
+          }
+          &[data-pos="CM"], &[data-pos="CDM"], &[data-pos="CAM"] { 
+            background: rgba($success, 0.3); color: $success; 
+          }
+          &[data-pos="RM"], &[data-pos="LM"] { 
             background: rgba($success, 0.3); color: $success; 
           }
           &[data-pos="ST"], &[data-pos="CF"], &[data-pos="RW"], &[data-pos="LW"] { 
@@ -778,7 +804,11 @@ $border-color: $card-border;
 
       &[data-pos="GK"] { background: rgba($gold, 0.3); color: $gold; }
       &[data-pos="CB"], &[data-pos="RB"], &[data-pos="LB"] { background: rgba($primary, 0.3); color: $primary; }
-      &[data-pos="CM"], &[data-pos="CDM"], &[data-pos="CAM"], &[data-pos="RM"], &[data-pos="LM"] { 
+      &[data-pos="RWB"], &[data-pos="LWB"] { background: rgba($primary, 0.3); color: $primary; }
+      &[data-pos="CM"], &[data-pos="CDM"], &[data-pos="CAM"] { 
+        background: rgba($success, 0.3); color: $success; 
+      }
+      &[data-pos="RM"], &[data-pos="LM"] { 
         background: rgba($success, 0.3); color: $success; 
       }
       &[data-pos="ST"], &[data-pos="CF"], &[data-pos="RW"], &[data-pos="LW"] { 
@@ -1128,7 +1158,9 @@ $border-color: $card-border;
           
           &[data-pos="GK"] { background: #f1c40f33; color: #f1c40f; }
           &[data-pos="CB"], &[data-pos="RB"], &[data-pos="LB"] { background: #3498db33; color: #3498db; }
+          &[data-pos="RWB"], &[data-pos="LWB"] { background: #3498db33; color: #3498db; }
           &[data-pos="CDM"], &[data-pos="CM"], &[data-pos="CAM"] { background: #2ecc7133; color: #2ecc71; }
+          &[data-pos="RM"], &[data-pos="LM"] { background: #2ecc7133; color: #2ecc71; }
           &[data-pos="RW"], &[data-pos="LW"], &[data-pos="ST"], &[data-pos="CF"] { background: #e74c3c33; color: #e74c3c; }
         }
         
@@ -1378,6 +1410,15 @@ $border-color: $card-border;
           color: $text-muted;
           margin-top: 0.35rem;
         }
+        
+        .formatted-amount {
+          display: block;
+          text-align: center;
+          font-size: 0.85rem;
+          font-weight: 600;
+          color: $success;
+          margin-top: 0.25rem;
+        }
       }
       
       .contract-row {
@@ -1574,6 +1615,118 @@ $border-color: $card-border;
       }
     }
   }
+
+  // Pre-contract toggle
+  .pre-contract-toggle {
+    display: flex;
+    gap: 4px;
+    padding: 4px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 10px;
+    margin-bottom: 16px;
+    
+    .toggle-btn {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      background: transparent;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      
+      &.active {
+        background: rgba(59, 130, 246, 0.2);
+        color: #3b82f6;
+      }
+      
+      &:hover:not(.active) {
+        color: rgba(255,255,255,0.7);
+      }
+    }
+  }
+
+  // Free agent info box
+  .free-agent-info {
+    padding: 12px 16px;
+    background: rgba(34, 197, 94, 0.08);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    border-radius: 10px;
+    margin-bottom: 16px;
+    
+    .free-badge-large {
+      display: inline-block;
+      padding: 3px 10px;
+      background: rgba(34, 197, 94, 0.2);
+      color: #22c55e;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    
+    p {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.4;
+      margin: 0;
+    }
+    
+    &.pre-contract-info {
+      background: rgba(245, 158, 11, 0.08);
+      border-color: rgba(245, 158, 11, 0.2);
+      
+      .pre-contract-badge {
+        display: inline-block;
+        padding: 3px 10px;
+        background: rgba(245, 158, 11, 0.2);
+        color: #f59e0b;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+      }
+    }
+  }
+
+  // Total cost row
+  .total-cost-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    
+    .cost-label {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+      font-weight: 600;
+    }
+    
+    .cost-value {
+      font-size: 0.8rem;
+      color: #3b82f6;
+      font-weight: 600;
+    }
+  }
+
+  // Free badge in player card
+  .free-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
 }
 
 @keyframes fadeIn {
@@ -1660,40 +1813,48 @@ $border-color: $card-border;
     .league-card {
       display: flex;
       align-items: center;
-      gap: 1rem;
-      padding: 1rem;
-      background: $surface-light;
+      gap: 16px;
+      padding: 16px 20px;
+      background: rgba(255,255,255,0.04);
       border-radius: 12px;
-      border-left: 4px solid var(--league-color, $primary);
+      border-left: 4px solid var(--league-color, #666);
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.2s ease;
 
       &:hover {
-        background: $surface-lighter;
+        background: rgba(255,255,255,0.08);
         transform: translateX(4px);
       }
 
-      .league-flag {
-        font-size: 2rem;
+      .league-flag-img {
+        width: 40px;
+        height: 28px;
+        object-fit: cover;
+        border-radius: 4px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        flex-shrink: 0;
       }
 
       .league-info {
         flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
 
         .league-name {
-          display: block;
-          font-size: 1rem;
           font-weight: 600;
+          font-size: 1rem;
+          color: #fff;
         }
 
         .league-country {
           font-size: 0.8rem;
-          color: $text-muted;
+          color: rgba(255,255,255,0.5);
         }
       }
 
       .arrow {
-        color: $text-muted;
+        color: rgba(255,255,255,0.3);
       }
     }
   }
@@ -1814,7 +1975,9 @@ $border-color: $card-border;
 
         &[data-pos="GK"] { background: #f1c40f33; color: #f1c40f; }
         &[data-pos="CB"], &[data-pos="RB"], &[data-pos="LB"] { background: #3498db33; color: #3498db; }
+        &[data-pos="RWB"], &[data-pos="LWB"] { background: #3498db33; color: #3498db; }
         &[data-pos="CDM"], &[data-pos="CM"], &[data-pos="CAM"] { background: #2ecc7133; color: #2ecc71; }
+        &[data-pos="RM"], &[data-pos="LM"] { background: #2ecc7133; color: #2ecc71; }
         &[data-pos="RW"], &[data-pos="LW"], &[data-pos="ST"], &[data-pos="CF"] { background: #e74c3c33; color: #e74c3c; }
       }
 
@@ -1854,174 +2017,81 @@ $border-color: $card-border;
   padding: 1rem;
 
   .ojeador-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-    background: linear-gradient(135deg, $surface-light, $surface-lighter);
-    border-radius: 12px;
-    margin-bottom: 1rem;
+    margin-bottom: 20px;
 
     .ojeador-level {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 14px;
+      padding: 16px 20px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
 
-      .level-icon {
-        width: 48px;
-        height: 48px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: $primary;
-        border-radius: 12px;
-        color: white;
-      }
+    .level-icon {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(59, 130, 246, 0.15);
+      border-radius: 10px;
+      color: #3b82f6;
+    }
 
-      .level-info {
-        .level-name {
-          display: block;
-          font-size: 1rem;
-          font-weight: 600;
-        }
+    .level-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
 
-        .level-desc {
-          font-size: 0.8rem;
-          color: $text-muted;
-        }
-      }
-
-      .level-badge {
-        padding: 0.25rem 0.6rem;
-        background: $primary;
-        border-radius: 6px;
-        font-size: 0.75rem;
+      .level-name {
         font-weight: 600;
-        color: white;
+        font-size: 1rem;
+        color: #fff;
+      }
+
+      .level-desc {
+        font-size: 0.8rem;
+        color: rgba(255,255,255,0.5);
       }
     }
 
-    .upgrade-btn {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.6rem 1rem;
-      background: $success;
-      border: none;
-      border-radius: 8px;
-      color: white;
-      font-size: 0.85rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-
-      &:hover:not(:disabled) {
-        background: #3ee067;
-        transform: translateY(-2px);
-      }
-
-      &:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-      }
-    }
-  }
-
-  .ojeador-features {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-
-    .feature-tag {
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-      padding: 0.3rem 0.6rem;
-      background: rgba($primary, 0.15);
-      border-radius: 6px;
+    .level-badge {
+      padding: 4px 12px;
+      background: #3b82f6;
+      border-radius: 20px;
       font-size: 0.75rem;
-      color: $primary;
-    }
-  }
-
-  .needs-section {
-    margin-bottom: 1.25rem;
-
-    h4 {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.9rem;
-      margin-bottom: 0.75rem;
-      color: $text-muted;
-    }
-
-    .needs-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.5rem;
-
-      .need-card {
-        padding: 0.6rem 0.75rem;
-        background: $surface-light;
-        border-radius: 8px;
-        border-left: 3px solid $border-color;
-
-        &.critical { border-color: $danger; }
-        &.high { border-color: $warning; }
-        &.medium { border-color: $gold; }
-
-        .need-position {
-          display: block;
-          font-size: 0.85rem;
-          font-weight: 600;
-        }
-
-        .need-reason {
-          display: block;
-          font-size: 0.75rem;
-          color: $text-muted;
-          margin: 0.15rem 0;
-        }
-
-        .need-priority {
-          font-size: 0.7rem;
-        }
-      }
-
-      .no-needs {
-        grid-column: 1 / -1;
-        padding: 1rem;
-        text-align: center;
-        color: $success;
-      }
+      font-weight: 700;
+      color: #fff;
     }
   }
 
   .generate-btn {
+    width: 100%;
+    padding: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    width: 100%;
-    padding: 1rem;
-    background: $primary;
+    gap: 8px;
+    background: #3b82f6;
+    color: #fff;
     border: none;
     border-radius: 10px;
-    color: white;
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s;
+    margin-bottom: 20px;
 
     &:hover:not(:disabled) {
-      background: #1a94ff;
-      transform: translateY(-2px);
+      background: #2563eb;
     }
 
     &:disabled {
-      opacity: 0.7;
+      opacity: 0.6;
+      cursor: not-allowed;
     }
 
     .spinning {
@@ -2031,152 +2101,109 @@ $border-color: $card-border;
 
   .suggestions-section {
     .suggestions-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 0.75rem;
+      margin-bottom: 12px;
 
       h4 {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
+        gap: 8px;
         font-size: 0.95rem;
+        font-weight: 600;
+        color: rgba(255,255,255,0.8);
       }
+    }
+  }
 
-      .refresh-btn {
-        width: 32px;
-        height: 32px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: $surface-light;
-        border: none;
-        border-radius: 6px;
-        color: $text-muted;
-        cursor: pointer;
+  .suggestions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
 
-        &:hover {
-          background: $surface-lighter;
-          color: $text;
-        }
+  .suggestion-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
 
-        .spinning {
-          animation: spin 1s linear infinite;
-        }
+    &:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    .suggestion-pos {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.7);
+
+      &[data-pos="GK"] { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+      &[data-pos="CB"], &[data-pos="LB"], &[data-pos="RB"], &[data-pos="LWB"], &[data-pos="RWB"] {
+        background: rgba(59, 130, 246, 0.15); color: #3b82f6;
+      }
+      &[data-pos="CM"], &[data-pos="CDM"], &[data-pos="CAM"], &[data-pos="LM"], &[data-pos="RM"], &[data-pos="WM"] {
+        background: rgba(34, 197, 94, 0.15); color: #22c55e;
+      }
+      &[data-pos="ST"], &[data-pos="LW"], &[data-pos="RW"], &[data-pos="CF"], &[data-pos="SS"] {
+        background: rgba(239, 68, 68, 0.15); color: #ef4444;
       }
     }
 
-    .suggestions-list {
+    .suggestion-main {
+      flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
-      max-height: calc(100vh - 450px);
-      overflow-y: auto;
+      gap: 2px;
+      min-width: 0;
 
-      .suggestion-card {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        padding: 0.75rem;
-        background: $surface-light;
-        border-radius: 10px;
-        cursor: pointer;
-        transition: all 0.2s;
-
-        &:hover {
-          background: $surface-lighter;
-          transform: translateX(4px);
-        }
-
-        &.matches-need {
-          border-left: 3px solid $success;
-        }
-
-        .suggestion-rank {
-          width: 28px;
-          height: 28px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: $surface-lighter;
-          border-radius: 6px;
-          font-size: 0.75rem;
-          font-weight: 600;
-          color: $text-muted;
-        }
-
-        .suggestion-main {
-          flex: 1;
-          min-width: 0;
-
-          .player-header {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-
-            .position {
-              padding: 0.15rem 0.4rem;
-              font-size: 0.65rem;
-              font-weight: 600;
-              border-radius: 4px;
-              background: $surface-lighter;
-
-              &[data-pos="GK"] { background: #f1c40f33; color: #f1c40f; }
-              &[data-pos="CB"], &[data-pos="RB"], &[data-pos="LB"] { background: #3498db33; color: #3498db; }
-              &[data-pos="CDM"], &[data-pos="CM"], &[data-pos="CAM"] { background: #2ecc7133; color: #2ecc71; }
-              &[data-pos="RW"], &[data-pos="LW"], &[data-pos="ST"], &[data-pos="CF"] { background: #e74c3c33; color: #e74c3c; }
-            }
-
-            .name {
-              font-size: 0.9rem;
-              font-weight: 500;
-              white-space: nowrap;
-              overflow: hidden;
-              text-overflow: ellipsis;
-            }
-
-            .overall {
-              font-size: 0.85rem;
-              font-weight: 600;
-              color: $primary;
-            }
-          }
-
-          .player-meta {
-            display: flex;
-            gap: 0.75rem;
-            margin-top: 0.25rem;
-            font-size: 0.75rem;
-            color: $text-muted;
-          }
-
-          .recommendation {
-            margin-top: 0.35rem;
-            padding: 0.35rem 0.5rem;
-            background: rgba($primary, 0.1);
-            border-radius: 4px;
-            font-size: 0.7rem;
-            color: $primary;
-          }
-        }
-
-        .suggestion-side {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 0.35rem;
-
-          .difficulty-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-          }
-
-          .need-badge {
-            font-size: 0.9rem;
-          }
-        }
+      .name {
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: #fff;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
+
+      .meta {
+        font-size: 0.75rem;
+        color: rgba(255,255,255,0.4);
+      }
+    }
+
+    .suggestion-stats {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 2px;
+
+      .overall {
+        font-weight: 700;
+        font-size: 1rem;
+        color: #fff;
+      }
+
+      .value {
+        font-size: 0.7rem;
+        color: rgba(255,255,255,0.4);
+      }
+    }
+
+    .difficulty-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
     }
   }
 }

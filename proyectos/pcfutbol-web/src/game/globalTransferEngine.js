@@ -11,28 +11,45 @@ export function calculateMarketValue(player) {
   const overall = player.overall || 70;
   const age = player.age || 25;
   
-  // Base por overall (exponencial)
-  let baseValue = Math.pow(overall / 50, 4) * 1_000_000;
+  // Realistic base values by overall (in millions)
+  const valueTable = {
+    60: 0.2, 62: 0.35, 64: 0.5, 66: 0.8, 68: 1.2,
+    70: 2, 72: 3.5, 74: 6, 76: 10, 78: 18,
+    80: 30, 82: 45, 84: 65, 86: 90, 88: 120,
+    90: 150, 92: 180, 94: 220
+  };
   
-  // Modificador por edad (pico a los 27)
-  const agePeak = 27;
-  const ageDiff = Math.abs(age - agePeak);
+  // Interpolate
+  const clamped = Math.max(60, Math.min(94, overall));
+  const lower = Math.floor(clamped / 2) * 2;
+  const upper = Math.min(94, lower + 2);
+  const frac = (clamped - lower) / 2;
+  const lowerVal = valueTable[lower] || 0.1;
+  const upperVal = valueTable[upper] || lowerVal * 1.5;
+  let baseValue = (lowerVal + (upperVal - lowerVal) * frac) * 1_000_000;
+  
+  // Age modifier (peak at 27)
   let ageMod = 1;
-  if (age < agePeak) {
-    ageMod = 1 + (agePeak - age) * 0.05; // Jóvenes valen más (potencial)
-  } else {
-    ageMod = Math.max(0.3, 1 - (age - agePeak) * 0.08); // Mayores valen menos
-  }
+  if (age <= 18) ageMod = 1.8;
+  else if (age <= 20) ageMod = 1.6;
+  else if (age <= 23) ageMod = 1.4;
+  else if (age <= 26) ageMod = 1.2;
+  else if (age <= 28) ageMod = 1.0;
+  else if (age <= 30) ageMod = 0.8;
+  else if (age <= 32) ageMod = 0.55;
+  else if (age <= 34) ageMod = 0.3;
+  else ageMod = 0.15;
   
-  // Modificador por posición
+  // Position modifier
   const posMod = {
     ST: 1.3, CF: 1.25, RW: 1.2, LW: 1.2,
     CAM: 1.15, CM: 1.0, CDM: 0.95,
     CB: 0.9, RB: 0.85, LB: 0.85,
+    RWB: 0.85, LWB: 0.85, RM: 1.0, LM: 1.0,
     GK: 0.7
   }[player.position] || 1.0;
   
-  // Modificador por contrato
+  // Contract modifier
   const contractYears = player.contractYears || 2;
   let contractMod = 1;
   if (contractYears <= 1) contractMod = 0.5;
@@ -40,8 +57,6 @@ export function calculateMarketValue(player) {
   else if (contractYears >= 5) contractMod = 1.15;
   
   const finalValue = baseValue * ageMod * posMod * contractMod;
-  
-  // Límites: mínimo 100K, máximo 300M
   return Math.round(Math.max(100_000, Math.min(300_000_000, finalValue)));
 }
 

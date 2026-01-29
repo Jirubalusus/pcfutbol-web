@@ -96,6 +96,7 @@ const initialState = {
   // Transfer Market
   transferOffers: [],
   playerMarket: [],
+  freeAgents: [],
   
   // Messages & Events
   messages: [],
@@ -505,8 +506,8 @@ function gameReducer(state, action) {
       // ============================================================
       let newIncomingOffers = [...(state.incomingOffers || [])];
       
-      if (windowStatus.open && state.team?.players && Math.random() < 0.25) {
-        // 25% chance cada semana de recibir una oferta
+      if (windowStatus.open && state.team?.players && Math.random() < 0.40) {
+        // 40% chance cada semana de recibir una oferta
         const myPlayers = state.team.players.filter(p => p.overall >= 70);
         if (myPlayers.length > 0) {
           const targetPlayer = myPlayers[Math.floor(Math.random() * myPlayers.length)];
@@ -521,7 +522,7 @@ function gameReducer(state, action) {
           if (interestedTeams.length > 0) {
             const buyer = interestedTeams[Math.floor(Math.random() * interestedTeams.length)];
             const marketValue = calculateMarketValue(targetPlayer);
-            const offerAmount = Math.round(marketValue * (0.7 + Math.random() * 0.4)); // 70-110% del valor
+            const offerAmount = Math.round(marketValue * (0.85 + Math.random() * 0.35)); // 85-120% del valor
             
             const newOffer = {
               id: `incoming_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`,
@@ -726,6 +727,12 @@ function gameReducer(state, action) {
         leagueTeams: action.payload
       };
     
+    case 'REMOVE_FREE_AGENT':
+      return {
+        ...state,
+        freeAgents: (state.freeAgents || []).filter(p => p.name !== action.payload.playerName)
+      };
+    
     // ============================================================
     // GESTIÓN DE OFERTAS
     // ============================================================
@@ -786,6 +793,42 @@ function gameReducer(state, action) {
           o.id === offer.id ? { ...o, status: 'rejected' } : o
         )
       };
+    }
+    
+    case 'COUNTER_INCOMING_OFFER': {
+      const offer = action.payload;
+      const counterAmount = Math.round(offer.amount * 1.3);
+      // 60% chance the buying team accepts the counter
+      const accepts = Math.random() < 0.6;
+      if (accepts) {
+        return {
+          ...state,
+          incomingOffers: (state.incomingOffers || []).map(o =>
+            o.id === offer.id ? { ...o, amount: counterAmount, status: 'pending', counterAccepted: true } : o
+          ),
+          messages: [{
+            id: Date.now(),
+            type: 'offer',
+            title: '🔄 Contraoferta aceptada',
+            content: `${offer.fromTeam} acepta pagar ${formatTransferPrice(counterAmount)} por ${offer.player.name}`,
+            date: `Semana ${state.currentWeek}`
+          }, ...state.messages].slice(0, 50)
+        };
+      } else {
+        return {
+          ...state,
+          incomingOffers: (state.incomingOffers || []).map(o =>
+            o.id === offer.id ? { ...o, status: 'rejected', counterRejected: true } : o
+          ),
+          messages: [{
+            id: Date.now(),
+            type: 'offer',
+            title: '❌ Contraoferta rechazada',
+            content: `${offer.fromTeam} no acepta tu contraoferta de ${formatTransferPrice(counterAmount)} por ${offer.player.name}`,
+            date: `Semana ${state.currentWeek}`
+          }, ...state.messages].slice(0, 50)
+        };
+      }
     }
     
     case 'PROCESS_OUTGOING_OFFER': {
@@ -875,6 +918,49 @@ function gameReducer(state, action) {
       }
       
       return newState;
+    }
+    
+    case 'ACCEPT_COUNTER_OFFER': {
+      const offer = action.payload;
+      const targetTeam = (state.leagueTeams || []).find(t => t.id === offer.toTeamId);
+      if (!targetTeam) return state;
+      const targetPlayer = (targetTeam.players || []).find(p => p.name === offer.player.name);
+      if (!targetPlayer) return state;
+      const finalAmount = offer.counterAmount || offer.amount;
+      if (state.money < finalAmount) return state;
+      
+      const newPlayer = {
+        ...targetPlayer,
+        teamId: state.teamId,
+        contractYears: 4,
+        role: assignRole(targetPlayer)
+      };
+      
+      return {
+        ...state,
+        team: { ...state.team, players: [...state.team.players, newPlayer] },
+        money: state.money - finalAmount,
+        leagueTeams: (state.leagueTeams || []).map(t => {
+          if (t.id === offer.toTeamId) {
+            return {
+              ...t,
+              players: (t.players || []).filter(p => p.name !== targetPlayer.name),
+              budget: (t.budget || 50_000_000) + finalAmount
+            };
+          }
+          return t;
+        }),
+        outgoingOffers: (state.outgoingOffers || []).map(o =>
+          o.id === offer.id ? { ...o, status: 'accepted', amount: finalAmount } : o
+        ),
+        messages: [{
+          id: Date.now(),
+          type: 'transfer',
+          title: '✅ Fichaje completado',
+          content: `¡${targetPlayer.name} es nuevo jugador del equipo! Coste: ${formatTransferPrice(finalAmount)}`,
+          date: `Semana ${state.currentWeek}`
+        }, ...state.messages].slice(0, 50)
+      };
     }
     
     case 'RECORD_MATCH_INCOME': {

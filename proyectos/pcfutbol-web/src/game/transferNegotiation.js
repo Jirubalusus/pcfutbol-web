@@ -431,7 +431,11 @@ export const NEGOTIATION_STATES = {
   PLAYER_OFFER: 'player_offer', // Negociando con jugador
   PLAYER_COUNTER: 'player_counter', // Jugador quiere más
   COMPLETED: 'completed',       // Fichaje completado
-  FAILED: 'failed'              // Fichaje fallido
+  FAILED: 'failed',             // Fichaje fallido
+  FREE_AGENT_OFFER: 'free_agent_offer',     // Negociando con jugador libre
+  FREE_AGENT_COUNTER: 'free_agent_counter', // Libre pide más
+  PRE_CONTRACT: 'pre_contract',             // Pre-contrato (contrato expira pronto)
+  PRE_CONTRACT_ACCEPTED: 'pre_contract_accepted' // Pre-contrato aceptado
 };
 
 /**
@@ -472,6 +476,211 @@ export function createNegotiation(player, sellingTeam, buyingTeam) {
     history: [],
     createdAt: Date.now()
   };
+}
+
+/**
+ * Crear negociación con jugador libre (sin club)
+ * Solo se negocia prima de fichaje + salario
+ */
+export function createFreeAgentNegotiation(player, buyingTeam) {
+  const marketValue = calculateMarketValue(player);
+  const buyerTier = getClubTier(buyingTeam.name);
+  
+  return {
+    id: `neg_free_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`,
+    type: 'free_agent',
+    player: {
+      name: player.name,
+      position: player.position,
+      overall: player.overall,
+      age: player.age,
+      salary: player.salary || 50000,
+      personality: player.personality || assignPersonality(player),
+      contractYears: 0
+    },
+    sellingTeam: null,
+    buyingTeam: {
+      id: buyingTeam.id,
+      name: buyingTeam.name,
+      tier: buyerTier
+    },
+    marketValue,
+    state: NEGOTIATION_STATES.FREE_AGENT_OFFER,
+    signingBonus: null,
+    playerOffer: null,
+    playerResponse: null,
+    history: [],
+    createdAt: Date.now()
+  };
+}
+
+/**
+ * Crear pre-contrato con jugador cuyo contrato expira
+ * Se negocia directamente con el jugador (legal si contrato <= 6 meses)
+ */
+export function createPreContractNegotiation(player, currentTeam, buyingTeam) {
+  const marketValue = calculateMarketValue(player);
+  const buyerTier = getClubTier(buyingTeam.name);
+  const sellerTier = getClubTier(currentTeam.name);
+  
+  return {
+    id: `neg_pre_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`,
+    type: 'pre_contract',
+    player: {
+      name: player.name,
+      position: player.position,
+      overall: player.overall,
+      age: player.age,
+      salary: player.salary || 50000,
+      personality: player.personality || assignPersonality(player),
+      contractYears: player.contractYears || 1,
+      currentTeamName: currentTeam.name
+    },
+    sellingTeam: {
+      id: currentTeam.id,
+      name: currentTeam.name,
+      tier: sellerTier
+    },
+    buyingTeam: {
+      id: buyingTeam.id,
+      name: buyingTeam.name,
+      tier: buyerTier
+    },
+    marketValue,
+    state: NEGOTIATION_STATES.PRE_CONTRACT,
+    signingBonus: null,
+    playerOffer: null,
+    playerResponse: null,
+    history: [],
+    createdAt: Date.now()
+  };
+}
+
+/**
+ * Enviar oferta a jugador libre o pre-contrato
+ * @param signingBonus - Prima de fichaje (dinero directo al jugador)
+ * @param salary - Salario semanal/mensual
+ * @param contractYears - Duración del contrato
+ */
+export function sendFreeAgentOffer(negotiation, signingBonus, salary, contractYears = 3) {
+  const offer = { signingBonus, salary, contractYears, timestamp: Date.now() };
+  negotiation.playerOffer = offer;
+  negotiation.signingBonus = signingBonus;
+  
+  if (negotiation.type === 'pre_contract') {
+    negotiation.state = NEGOTIATION_STATES.PRE_CONTRACT;
+  } else {
+    negotiation.state = NEGOTIATION_STATES.FREE_AGENT_OFFER;
+  }
+  
+  negotiation.history.push({
+    type: 'free_agent_offer',
+    signingBonus,
+    salary,
+    contractYears,
+    timestamp: Date.now()
+  });
+  
+  return negotiation;
+}
+
+/**
+ * Procesar respuesta de jugador libre / pre-contrato
+ */
+export function processFreeAgentResponse(negotiation, buyingTeamData) {
+  const player = negotiation.player;
+  const offer = negotiation.playerOffer;
+  const personality = PLAYER_PERSONALITIES[player.personality] || PLAYER_PERSONALITIES.professional;
+  const buyerTier = negotiation.buyingTeam.tier;
+  
+  // Salario mínimo que espera el jugador
+  const baseExpectedSalary = calculateRequiredSalary(player, 0, buyerTier);
+  
+  // Jugadores libres esperan más salario (compensar falta de traspaso)
+  const freeAgentMultiplier = negotiation.type === 'free_agent' ? 1.3 : 1.15;
+  const expectedSalary = Math.round(baseExpectedSalary * freeAgentMultiplier);
+  
+  // Prima de fichaje esperada (% del valor de mercado)
+  const expectedBonus = Math.round(negotiation.marketValue * (negotiation.type === 'free_agent' ? 0.15 : 0.1));
+  
+  // Evaluar oferta
+  const salaryRatio = offer.salary / expectedSalary;
+  const bonusRatio = expectedBonus > 0 ? (offer.signingBonus || 0) / expectedBonus : 1;
+  
+  let probability = 0.5;
+  
+  // Salario
+  if (salaryRatio >= 1.2) probability += 0.25;
+  else if (salaryRatio >= 1.0) probability += 0.15;
+  else if (salaryRatio >= 0.8) probability -= 0.1;
+  else probability -= 0.3;
+  
+  // Prima de fichaje
+  if (bonusRatio >= 1.5) probability += 0.15;
+  else if (bonusRatio >= 1.0) probability += 0.1;
+  else if (bonusRatio >= 0.5) probability += 0;
+  else probability -= 0.15;
+  
+  // Tier del equipo comprador
+  if (buyerTier >= 3) probability += 0.15;
+  else if (buyerTier >= 2) probability += 0.05;
+  else if (buyerTier <= 0) probability -= 0.15;
+  
+  // Personalidad
+  probability += personality.moneyInfluence * (salaryRatio - 1) * 0.3;
+  if (player.overall >= 85 && buyerTier < 3) probability -= 0.2;
+  
+  // Contrato largo = más compromiso, jugadores mayores lo ven bien
+  if (offer.contractYears >= 4 && player.age >= 30) probability += 0.1;
+  
+  probability = Math.max(0.05, Math.min(0.95, probability));
+  const accepted = Math.random() < probability;
+  
+  let reason;
+  if (accepted) {
+    if (salaryRatio >= 1.2) reason = 'La oferta económica es excelente';
+    else if (buyerTier >= 3) reason = 'Le entusiasma el proyecto deportivo';
+    else reason = 'Acepta la propuesta';
+  } else {
+    if (salaryRatio < 0.8) reason = 'La oferta salarial es insuficiente';
+    else if (bonusRatio < 0.5) reason = 'Espera una prima de fichaje mayor';
+    else if (buyerTier <= 1 && player.overall >= 80) reason = 'No le convence el nivel del equipo';
+    else reason = 'No le convence la oferta global';
+  }
+  
+  const response = {
+    accepted,
+    reason,
+    probability: Math.round(probability * 100),
+    expectedSalary,
+    expectedBonus,
+    personalityEffect: personality.name
+  };
+  
+  negotiation.playerResponse = response;
+  negotiation.history.push({
+    type: 'free_agent_response',
+    response,
+    timestamp: Date.now()
+  });
+  
+  if (accepted) {
+    if (negotiation.type === 'pre_contract') {
+      negotiation.state = NEGOTIATION_STATES.PRE_CONTRACT_ACCEPTED;
+    } else {
+      negotiation.state = NEGOTIATION_STATES.COMPLETED;
+    }
+  } else {
+    if (offer.salary < expectedSalary * 1.5) {
+      negotiation.state = negotiation.type === 'pre_contract' 
+        ? NEGOTIATION_STATES.PRE_CONTRACT 
+        : NEGOTIATION_STATES.FREE_AGENT_COUNTER;
+    } else {
+      negotiation.state = NEGOTIATION_STATES.FAILED;
+    }
+  }
+  
+  return negotiation;
 }
 
 /**
@@ -660,6 +869,10 @@ export default {
   evaluatePlayerOffer,
   calculateRequiredSalary,
   createNegotiation,
+  createFreeAgentNegotiation,
+  createPreContractNegotiation,
+  sendFreeAgentOffer,
+  processFreeAgentResponse,
   sendClubOffer,
   processClubResponse,
   sendPlayerOffer,
