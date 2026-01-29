@@ -115,7 +115,7 @@ const initialState = {
   // Training
   training: {
     type: 'balanced',
-    intensity: 'normal',
+    intensity: null,
     specialPlayers: []
   },
   

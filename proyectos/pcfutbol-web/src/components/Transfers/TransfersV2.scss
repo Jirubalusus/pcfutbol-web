@@ -1946,9 +1946,82 @@ $border-color: $card-border;
     }
   }
 
+  .teams-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 12px 0;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    max-height: 140px;
+    overflow-y: auto;
+
+    .team-tab {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid transparent;
+      border-radius: 8px;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+
+      &:hover:not(:disabled) {
+        background: rgba(255,255,255,0.1);
+        color: #fff;
+      }
+
+      &.active {
+        background: rgba(59, 130, 246, 0.15);
+        border-color: rgba(59, 130, 246, 0.4);
+        color: #3b82f6;
+        font-weight: 600;
+      }
+
+      &.my-team {
+        opacity: 0.35;
+        cursor: not-allowed;
+      }
+
+      .tab-initial {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255,255,255,0.08);
+        border-radius: 6px;
+        font-weight: 700;
+        font-size: 0.7rem;
+      }
+
+      &.active .tab-initial {
+        background: rgba(59, 130, 246, 0.3);
+      }
+
+      .tab-name {
+        flex: 1;
+      }
+
+      .tab-ovr {
+        font-weight: 700;
+        font-size: 0.75rem;
+        color: rgba(255,255,255,0.4);
+      }
+
+      &.active .tab-ovr {
+        color: #3b82f6;
+      }
+    }
+  }
+
   .squad-list {
     padding: 0.5rem;
-    max-height: calc(100vh - 280px);
+    max-height: calc(100vh - 380px);
     overflow-y: auto;
 
     .squad-player {

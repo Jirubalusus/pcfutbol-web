@@ -32,6 +32,30 @@ export default function MatchDay({ onComplete }) {
   const opponent = getAllTeams().find(t => t.id === opponentId);
   
   // Get team strengths for preview
+  // Guard: si no hay partido o rival, no calcular nada
+  if (!playerMatch || !opponent) {
+    const debugInfo = {
+      teamId: state.teamId,
+      currentWeek: state.currentWeek,
+      fixturesCount: state.fixtures?.length || 0,
+      weekFixtures: state.fixtures?.filter(f => f.week === state.currentWeek) || [],
+      allTeamsCount: getAllTeams().length,
+      playerMatchFound: !!playerMatch,
+      opponentFound: !!opponent,
+      opponentId: opponentId
+    };
+    console.error('MatchDay Debug (early guard):', debugInfo);
+    
+    return (
+      <div className="match-day">
+        <div className="match-day__no-match">
+          <p>No hay partido esta semana</p>
+          <button onClick={onComplete}>Continuar</button>
+        </div>
+      </div>
+    );
+  }
+  
   const playerStrength = calculateTeamStrength(state.team, state.formation, state.tactic);
   const opponentStrength = calculateTeamStrength(opponent, '4-3-3', 'balanced');
   
@@ -327,32 +351,7 @@ export default function MatchDay({ onComplete }) {
     ));
   };
   
-  if (!playerMatch || !opponent) {
-    // DEBUG: Mostrar info para diagnosticar el problema
-    const debugInfo = {
-      teamId: state.teamId,
-      currentWeek: state.currentWeek,
-      fixturesCount: state.fixtures?.length || 0,
-      weekFixtures: state.fixtures?.filter(f => f.week === state.currentWeek) || [],
-      allTeamsCount: getAllTeams().length,
-      playerMatchFound: !!playerMatch,
-      opponentFound: !!opponent,
-      opponentId: opponentId
-    };
-    console.error('MatchDay Debug:', debugInfo);
-    
-    return (
-      <div className="match-day">
-        <div className="match-day__no-match">
-          <p>No hay partido esta semana</p>
-          <p style={{fontSize: '12px', color: '#888', marginTop: '10px'}}>
-            Debug: teamId={state.teamId}, week={state.currentWeek}, fixtures={state.fixtures?.length || 0}, allTeams={getAllTeams().length}
-          </p>
-          <button onClick={onComplete}>Continuar</button>
-        </div>
-      </div>
-    );
-  }
+  // Guard duplicado eliminado — ya se comprueba al inicio del componente
   
   return (
     <div className="match-day">
