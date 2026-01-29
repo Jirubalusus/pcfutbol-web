@@ -69,7 +69,10 @@ export default function MatchDay({ onComplete }) {
   }
   
   const playerStrength = calculateTeamStrength(state.team, state.formation, state.tactic);
-  const opponentStrength = calculateTeamStrength(opponent, '4-3-3', 'balanced');
+  // En pretemporada el opponent puede no tener players completo
+  const opponentStrength = (opponent?.players?.length > 0)
+    ? calculateTeamStrength(opponent, '4-3-3', 'balanced')
+    : { overall: opponent?.reputation || 70, attack: (opponent?.reputation || 70) * 0.9, defense: (opponent?.reputation || 70) * 0.85 };
   
   // Get morale from table
   const playerTableEntry = state.leagueTable.find(t => t.teamId === state.teamId);
@@ -80,8 +83,22 @@ export default function MatchDay({ onComplete }) {
       console.log('🎮 simulateAndPlay started');
       setPhase('playing');
       
-      const homeTeamData = isHome ? state.team : opponent;
-      const awayTeamData = isHome ? opponent : state.team;
+      // En pretemporada el opponent puede no tener players: generar equipo sintético
+      const resolvedOpponent = (opponent?.players?.length > 0) ? opponent : {
+        ...opponent,
+        id: opponent?.id || opponentId,
+        name: opponent?.name || 'Rival',
+        shortName: opponent?.shortName || opponent?.name?.slice(0, 3)?.toUpperCase() || 'RIV',
+        players: Array.from({ length: 18 }, (_, i) => ({
+          name: `Jugador ${i + 1}`,
+          position: ['GK','CB','CB','CB','RB','LB','CM','CM','CDM','CAM','RM','LM','RW','LW','ST','ST','CF','GK'][i],
+          overall: Math.round((opponent?.reputation || 70) + (Math.random() * 10 - 5)),
+          age: 22 + Math.floor(Math.random() * 10),
+          stamina: 80 + Math.floor(Math.random() * 15)
+        }))
+      };
+      const homeTeamData = isHome ? state.team : resolvedOpponent;
+      const awayTeamData = isHome ? resolvedOpponent : state.team;
       
       console.log('🎮 Teams:', { homeTeamData: homeTeamData?.name, awayTeamData: awayTeamData?.name });
     
