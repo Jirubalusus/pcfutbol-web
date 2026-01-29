@@ -13,6 +13,10 @@ import {
   calculateRequiredSalary, evaluateClubOffer, evaluatePlayerOffer,
   PLAYER_PERSONALITIES, assignPersonality, NEGOTIATION_STATES
 } from '../../game/transferNegotiation';
+import {
+  SCOUTING_LEVELS, generateScoutingSuggestions, analyzeTeamNeeds,
+  AVAILABLE_LEAGUES, getTeamsByLeague
+} from '../../game/scoutingSystem';
 import './TransfersV2.scss';
 
 // ============================================================
@@ -76,13 +80,17 @@ export default function TransfersV2() {
     }).sort((a, b) => b.overall - a.overall);
   }, [allPlayers, searchQuery, filters]);
 
+  // Nivel de ojeador (desde facilities)
+  const scoutingLevel = state.facilities?.scouting || 0;
+
   // Tabs del mercado
   const tabs = [
     { id: 'resumen', label: 'Resumen', icon: Newspaper },
+    { id: 'explorar', label: 'Explorar', icon: Building2 },
+    { id: 'ojeador', label: 'Ojeador', icon: Target },
     { id: 'buscar', label: 'Buscar', icon: Search },
-    { id: 'recibidas', label: 'Ofertas Recibidas', icon: Bell, badge: state.incomingOffers?.length },
-    { id: 'enviadas', label: 'Mis Ofertas', icon: Briefcase, badge: state.outgoingOffers?.length },
-    { id: 'noticias', label: 'Noticias', icon: Zap },
+    { id: 'recibidas', label: 'Recibidas', icon: Bell, badge: state.incomingOffers?.filter(o => o.status === 'pending')?.length },
+    { id: 'enviadas', label: 'Enviadas', icon: Briefcase, badge: state.outgoingOffers?.filter(o => o.status === 'pending')?.length },
   ];
 
   return (
@@ -134,6 +142,26 @@ export default function TransfersV2() {
           />
         )}
         
+        {activeTab === 'explorar' && (
+          <ExplorarTab
+            leagueTeams={state.leagueTeams || []}
+            myTeamId={state.teamId}
+            onSelectPlayer={setSelectedPlayer}
+          />
+        )}
+        
+        {activeTab === 'ojeador' && (
+          <OjeadorTab
+            myTeam={myTeam}
+            leagueTeams={state.leagueTeams || []}
+            scoutingLevel={scoutingLevel}
+            budget={state.money}
+            onSelectPlayer={setSelectedPlayer}
+            facilities={state.facilities}
+            dispatch={dispatch}
+          />
+        )}
+        
         {activeTab === 'buscar' && (
           <BuscarTab
             players={filteredPlayers}
@@ -164,12 +192,6 @@ export default function TransfersV2() {
           />
         )}
         
-        {activeTab === 'noticias' && (
-          <NoticiasTab 
-            transfers={marketSummary.recentTransfers}
-            rumors={marketSummary.activeRumors}
-          />
-        )}
       </div>
 
       {/* TICKER DE NOTICIAS */}
@@ -578,6 +600,286 @@ function NoticiasTab({ transfers, rumors }) {
           </div>
         )}
       </div>
+    </div>
+  );
+}
+
+// ============================================================
+// TAB: EXPLORAR LIGAS Y EQUIPOS
+// ============================================================
+function ExplorarTab({ leagueTeams, myTeamId, onSelectPlayer }) {
+  const [selectedLeague, setSelectedLeague] = useState(null);
+  const [selectedTeam, setSelectedTeam] = useState(null);
+  
+  const teams = useMemo(() => getTeamsByLeague(leagueTeams, selectedLeague), [leagueTeams, selectedLeague]);
+  
+  // Vista de ligas
+  if (!selectedLeague) {
+    return (
+      <div className="tab-explorar">
+        <div className="explorar-header">
+          <h3><Building2 size={20} /> Explorar Ligas</h3>
+          <p>Selecciona una liga para ver sus equipos</p>
+        </div>
+        <div className="leagues-grid">
+          {AVAILABLE_LEAGUES.map(league => (
+            <div 
+              key={league.id}
+              className="league-card"
+              style={{ '--league-color': league.color }}
+              onClick={() => setSelectedLeague(league.id)}
+            >
+              <span className="league-flag">{league.flag}</span>
+              <div className="league-info">
+                <span className="league-name">{league.name}</span>
+                <span className="league-country">{league.country}</span>
+              </div>
+              <ChevronRight size={20} className="arrow" />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+  
+  // Vista de equipos
+  if (!selectedTeam) {
+    const leagueInfo = AVAILABLE_LEAGUES.find(l => l.id === selectedLeague);
+    return (
+      <div className="tab-explorar">
+        <div className="explorar-header with-back">
+          <button className="back-btn" onClick={() => setSelectedLeague(null)}>
+            <ArrowRight size={18} style={{ transform: 'rotate(180deg)' }} />
+          </button>
+          <div>
+            <h3>{leagueInfo?.flag} {leagueInfo?.name}</h3>
+            <p>{teams.length} equipos</p>
+          </div>
+        </div>
+        <div className="teams-grid">
+          {teams.map(team => (
+            <div 
+              key={team.id}
+              className={`team-card ${team.id === myTeamId ? 'my-team' : ''}`}
+              onClick={() => team.id !== myTeamId && setSelectedTeam(team)}
+            >
+              <div className="team-badge">{team.name?.charAt(0)}</div>
+              <div className="team-info">
+                <span className="team-name">{team.name}</span>
+                <div className="team-stats">
+                  <span className="stat">
+                    <Users size={12} />
+                    {team.players?.length || 0}
+                  </span>
+                  <span className="stat">
+                    <Star size={12} />
+                    {team.avgOverall}
+                  </span>
+                  <span className="stat tier" data-tier={team.tier}>
+                    T{team.tier}
+                  </span>
+                </div>
+              </div>
+              {team.id !== myTeamId && <ChevronRight size={18} className="arrow" />}
+              {team.id === myTeamId && <span className="my-badge">Tu equipo</span>}
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+  
+  // Vista de plantilla del equipo
+  return (
+    <div className="tab-explorar">
+      <div className="explorar-header with-back">
+        <button className="back-btn" onClick={() => setSelectedTeam(null)}>
+          <ArrowRight size={18} style={{ transform: 'rotate(180deg)' }} />
+        </button>
+        <div>
+          <h3>{selectedTeam.name}</h3>
+          <p>Media: {selectedTeam.avgOverall} | Valor: {formatTransferPrice(selectedTeam.totalValue)}</p>
+        </div>
+      </div>
+      <div className="squad-list">
+        {(selectedTeam.players || [])
+          .sort((a, b) => b.overall - a.overall)
+          .map((player, i) => (
+            <div 
+              key={i}
+              className="squad-player"
+              onClick={() => onSelectPlayer({ ...player, teamName: selectedTeam.name, teamId: selectedTeam.id })}
+            >
+              <span className="player-pos" data-pos={player.position}>{player.position}</span>
+              <span className="player-name">{player.name}</span>
+              <span className="player-age">{player.age} años</span>
+              <span className="player-ovr">{player.overall}</span>
+              <span className="player-value">{formatTransferPrice(calculateMarketValue(player))}</span>
+            </div>
+          ))}
+      </div>
+    </div>
+  );
+}
+
+// ============================================================
+// TAB: OJEADOR (SCOUTING)
+// ============================================================
+function OjeadorTab({ myTeam, leagueTeams, scoutingLevel, budget, onSelectPlayer, facilities, dispatch }) {
+  const [suggestions, setSuggestions] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  
+  const config = SCOUTING_LEVELS[scoutingLevel] || SCOUTING_LEVELS[0];
+  const { needs, teamAvgOvr } = useMemo(() => analyzeTeamNeeds(myTeam, scoutingLevel), [myTeam, scoutingLevel]);
+  
+  const handleGenerateSuggestions = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      const result = generateScoutingSuggestions(myTeam, leagueTeams, scoutingLevel, budget);
+      setSuggestions(result);
+      setIsLoading(false);
+    }, 1000);
+  };
+  
+  const handleUpgrade = () => {
+    if (scoutingLevel >= 3) return;
+    const costs = [2_000_000, 5_000_000, 15_000_000];
+    const cost = costs[scoutingLevel];
+    if (budget >= cost) {
+      dispatch({ type: 'UPGRADE_FACILITY', payload: { facilityId: 'scouting', cost } });
+    }
+  };
+  
+  const upgradeCost = [2_000_000, 5_000_000, 15_000_000][scoutingLevel];
+
+  return (
+    <div className="tab-ojeador">
+      {/* Header con nivel del ojeador */}
+      <div className="ojeador-header">
+        <div className="ojeador-level">
+          <div className="level-icon">
+            <Target size={28} />
+          </div>
+          <div className="level-info">
+            <span className="level-name">{config.name}</span>
+            <span className="level-desc">{config.description}</span>
+          </div>
+          <div className="level-badge">Nv. {scoutingLevel}</div>
+        </div>
+        
+        {scoutingLevel < 3 && (
+          <button 
+            className="upgrade-btn"
+            onClick={handleUpgrade}
+            disabled={budget < upgradeCost}
+          >
+            <TrendingUp size={16} />
+            Mejorar ({formatTransferPrice(upgradeCost)})
+          </button>
+        )}
+      </div>
+      
+      {/* Features del nivel actual */}
+      <div className="ojeador-features">
+        {config.features.map((feature, i) => (
+          <span key={i} className="feature-tag">
+            <Check size={12} /> {feature}
+          </span>
+        ))}
+      </div>
+      
+      {/* Análisis de necesidades */}
+      <div className="needs-section">
+        <h4><AlertCircle size={16} /> Necesidades del equipo</h4>
+        <div className="needs-grid">
+          {needs.slice(0, 4).map((need, i) => (
+            <div key={i} className={`need-card ${need.priority}`}>
+              <span className="need-position">{need.group}</span>
+              <span className="need-reason">{need.reason}</span>
+              <span className="need-priority">{
+                need.priority === 'critical' ? '🔴 Crítico' :
+                need.priority === 'high' ? '🟠 Alta' :
+                need.priority === 'medium' ? '🟡 Media' : '🟢 Baja'
+              }</span>
+            </div>
+          ))}
+          {needs.length === 0 && (
+            <div className="no-needs">✅ Plantilla equilibrada</div>
+          )}
+        </div>
+      </div>
+      
+      {/* Botón generar sugerencias */}
+      {!suggestions && (
+        <button 
+          className="generate-btn"
+          onClick={handleGenerateSuggestions}
+          disabled={isLoading}
+        >
+          {isLoading ? (
+            <>
+              <RefreshCw size={18} className="spinning" />
+              Analizando mercado...
+            </>
+          ) : (
+            <>
+              <Search size={18} />
+              Generar {config.maxSuggestions} sugerencias
+            </>
+          )}
+        </button>
+      )}
+      
+      {/* Lista de sugerencias */}
+      {suggestions && (
+        <div className="suggestions-section">
+          <div className="suggestions-header">
+            <h4><Star size={16} /> Sugerencias del ojeador</h4>
+            <button className="refresh-btn" onClick={handleGenerateSuggestions} disabled={isLoading}>
+              <RefreshCw size={14} className={isLoading ? 'spinning' : ''} />
+            </button>
+          </div>
+          
+          <div className="suggestions-list">
+            {suggestions.suggestions.map((player, i) => (
+              <div 
+                key={i}
+                className={`suggestion-card ${player.matchesNeed ? 'matches-need' : ''}`}
+                onClick={() => onSelectPlayer(player)}
+              >
+                <div className="suggestion-rank">#{i + 1}</div>
+                <div className="suggestion-main">
+                  <div className="player-header">
+                    <span className="position" data-pos={player.position}>{player.position}</span>
+                    <span className="name">{player.name}</span>
+                    <span className="overall">{player.overall}</span>
+                  </div>
+                  <div className="player-meta">
+                    <span>{player.teamName}</span>
+                    <span>{player.age} años</span>
+                    <span>{formatTransferPrice(player.marketValue)}</span>
+                  </div>
+                  {scoutingLevel >= 2 && player.recommendation && (
+                    <div className="recommendation">{player.recommendation}</div>
+                  )}
+                </div>
+                <div className="suggestion-side">
+                  <div 
+                    className="difficulty-dot" 
+                    style={{ background: player.difficulty?.color }}
+                    title={player.difficulty?.difficulty}
+                  ></div>
+                  {player.matchesNeed && (
+                    <span className="need-badge" data-priority={player.needPriority}>
+                      {player.needPriority === 'critical' ? '🎯' : '✓'}
+                    </span>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

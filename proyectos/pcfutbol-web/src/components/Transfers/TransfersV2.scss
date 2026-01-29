@@ -1621,3 +1621,584 @@ $border-color: $card-border;
     }
   }
 }
+
+// ============================================================
+// TAB: EXPLORAR LIGAS Y EQUIPOS
+// ============================================================
+
+.tab-explorar {
+  .explorar-header {
+    padding: 1rem;
+    border-bottom: 1px solid $border-color;
+
+    h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    p {
+      color: $text-muted;
+      font-size: 0.85rem;
+    }
+
+    &.with-back {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+
+      .back-btn {
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $surface-light;
+        border: none;
+        border-radius: 8px;
+        color: $text;
+        cursor: pointer;
+
+        &:hover {
+          background: $surface-lighter;
+        }
+      }
+    }
+  }
+
+  .leagues-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+
+    .league-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: $surface-light;
+      border-radius: 12px;
+      border-left: 4px solid var(--league-color, $primary);
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover {
+        background: $surface-lighter;
+        transform: translateX(4px);
+      }
+
+      .league-flag {
+        font-size: 2rem;
+      }
+
+      .league-info {
+        flex: 1;
+
+        .league-name {
+          display: block;
+          font-size: 1rem;
+          font-weight: 600;
+        }
+
+        .league-country {
+          font-size: 0.8rem;
+          color: $text-muted;
+        }
+      }
+
+      .arrow {
+        color: $text-muted;
+      }
+    }
+  }
+
+  .teams-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    max-height: calc(100vh - 280px);
+    overflow-y: auto;
+
+    .team-card {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem;
+      background: $surface-light;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover:not(.my-team) {
+        background: $surface-lighter;
+      }
+
+      &.my-team {
+        opacity: 0.6;
+        cursor: default;
+        border: 1px dashed $border-color;
+      }
+
+      .team-badge {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, $primary, #0066d1);
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: white;
+      }
+
+      .team-info {
+        flex: 1;
+
+        .team-name {
+          display: block;
+          font-weight: 600;
+          font-size: 0.95rem;
+        }
+
+        .team-stats {
+          display: flex;
+          gap: 0.75rem;
+          margin-top: 0.25rem;
+
+          .stat {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.75rem;
+            color: $text-muted;
+
+            &.tier {
+              padding: 0.1rem 0.4rem;
+              background: $surface-lighter;
+              border-radius: 4px;
+              font-weight: 600;
+
+              &[data-tier="4"] { background: #ffd60a33; color: #ffd60a; }
+              &[data-tier="3"] { background: #30d15833; color: #30d158; }
+              &[data-tier="2"] { background: #0a84ff33; color: #0a84ff; }
+              &[data-tier="1"] { background: #ff9f0a33; color: #ff9f0a; }
+            }
+          }
+        }
+      }
+
+      .my-badge {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.5rem;
+        background: $primary;
+        border-radius: 4px;
+        color: white;
+      }
+    }
+  }
+
+  .squad-list {
+    padding: 0.5rem;
+    max-height: calc(100vh - 280px);
+    overflow-y: auto;
+
+    .squad-player {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.6rem 0.75rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.15s;
+
+      &:hover {
+        background: $surface-light;
+      }
+
+      .player-pos {
+        width: 36px;
+        padding: 0.2rem 0;
+        text-align: center;
+        font-size: 0.7rem;
+        font-weight: 600;
+        border-radius: 4px;
+        background: $surface-lighter;
+
+        &[data-pos="GK"] { background: #f1c40f33; color: #f1c40f; }
+        &[data-pos="CB"], &[data-pos="RB"], &[data-pos="LB"] { background: #3498db33; color: #3498db; }
+        &[data-pos="CDM"], &[data-pos="CM"], &[data-pos="CAM"] { background: #2ecc7133; color: #2ecc71; }
+        &[data-pos="RW"], &[data-pos="LW"], &[data-pos="ST"], &[data-pos="CF"] { background: #e74c3c33; color: #e74c3c; }
+      }
+
+      .player-name {
+        flex: 1;
+        font-size: 0.9rem;
+      }
+
+      .player-age {
+        font-size: 0.8rem;
+        color: $text-muted;
+        width: 55px;
+      }
+
+      .player-ovr {
+        font-size: 0.9rem;
+        font-weight: 600;
+        width: 30px;
+        text-align: center;
+      }
+
+      .player-value {
+        font-size: 0.8rem;
+        color: $success;
+        width: 70px;
+        text-align: right;
+      }
+    }
+  }
+}
+
+// ============================================================
+// TAB: OJEADOR (SCOUTING)
+// ============================================================
+
+.tab-ojeador {
+  padding: 1rem;
+
+  .ojeador-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background: linear-gradient(135deg, $surface-light, $surface-lighter);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+
+    .ojeador-level {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+
+      .level-icon {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $primary;
+        border-radius: 12px;
+        color: white;
+      }
+
+      .level-info {
+        .level-name {
+          display: block;
+          font-size: 1rem;
+          font-weight: 600;
+        }
+
+        .level-desc {
+          font-size: 0.8rem;
+          color: $text-muted;
+        }
+      }
+
+      .level-badge {
+        padding: 0.25rem 0.6rem;
+        background: $primary;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: white;
+      }
+    }
+
+    .upgrade-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.6rem 1rem;
+      background: $success;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover:not(:disabled) {
+        background: #3ee067;
+        transform: translateY(-2px);
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .ojeador-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+
+    .feature-tag {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.3rem 0.6rem;
+      background: rgba($primary, 0.15);
+      border-radius: 6px;
+      font-size: 0.75rem;
+      color: $primary;
+    }
+  }
+
+  .needs-section {
+    margin-bottom: 1.25rem;
+
+    h4 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+      color: $text-muted;
+    }
+
+    .needs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+
+      .need-card {
+        padding: 0.6rem 0.75rem;
+        background: $surface-light;
+        border-radius: 8px;
+        border-left: 3px solid $border-color;
+
+        &.critical { border-color: $danger; }
+        &.high { border-color: $warning; }
+        &.medium { border-color: $gold; }
+
+        .need-position {
+          display: block;
+          font-size: 0.85rem;
+          font-weight: 600;
+        }
+
+        .need-reason {
+          display: block;
+          font-size: 0.75rem;
+          color: $text-muted;
+          margin: 0.15rem 0;
+        }
+
+        .need-priority {
+          font-size: 0.7rem;
+        }
+      }
+
+      .no-needs {
+        grid-column: 1 / -1;
+        padding: 1rem;
+        text-align: center;
+        color: $success;
+      }
+    }
+  }
+
+  .generate-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 1rem;
+    background: $primary;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover:not(:disabled) {
+      background: #1a94ff;
+      transform: translateY(-2px);
+    }
+
+    &:disabled {
+      opacity: 0.7;
+    }
+
+    .spinning {
+      animation: spin 1s linear infinite;
+    }
+  }
+
+  .suggestions-section {
+    .suggestions-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+
+      h4 {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.95rem;
+      }
+
+      .refresh-btn {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $surface-light;
+        border: none;
+        border-radius: 6px;
+        color: $text-muted;
+        cursor: pointer;
+
+        &:hover {
+          background: $surface-lighter;
+          color: $text;
+        }
+
+        .spinning {
+          animation: spin 1s linear infinite;
+        }
+      }
+    }
+
+    .suggestions-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      max-height: calc(100vh - 450px);
+      overflow-y: auto;
+
+      .suggestion-card {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem;
+        background: $surface-light;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.2s;
+
+        &:hover {
+          background: $surface-lighter;
+          transform: translateX(4px);
+        }
+
+        &.matches-need {
+          border-left: 3px solid $success;
+        }
+
+        .suggestion-rank {
+          width: 28px;
+          height: 28px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: $surface-lighter;
+          border-radius: 6px;
+          font-size: 0.75rem;
+          font-weight: 600;
+          color: $text-muted;
+        }
+
+        .suggestion-main {
+          flex: 1;
+          min-width: 0;
+
+          .player-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            .position {
+              padding: 0.15rem 0.4rem;
+              font-size: 0.65rem;
+              font-weight: 600;
+              border-radius: 4px;
+              background: $surface-lighter;
+
+              &[data-pos="GK"] { background: #f1c40f33; color: #f1c40f; }
+              &[data-pos="CB"], &[data-pos="RB"], &[data-pos="LB"] { background: #3498db33; color: #3498db; }
+              &[data-pos="CDM"], &[data-pos="CM"], &[data-pos="CAM"] { background: #2ecc7133; color: #2ecc71; }
+              &[data-pos="RW"], &[data-pos="LW"], &[data-pos="ST"], &[data-pos="CF"] { background: #e74c3c33; color: #e74c3c; }
+            }
+
+            .name {
+              font-size: 0.9rem;
+              font-weight: 500;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+
+            .overall {
+              font-size: 0.85rem;
+              font-weight: 600;
+              color: $primary;
+            }
+          }
+
+          .player-meta {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 0.25rem;
+            font-size: 0.75rem;
+            color: $text-muted;
+          }
+
+          .recommendation {
+            margin-top: 0.35rem;
+            padding: 0.35rem 0.5rem;
+            background: rgba($primary, 0.1);
+            border-radius: 4px;
+            font-size: 0.7rem;
+            color: $primary;
+          }
+        }
+
+        .suggestion-side {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.35rem;
+
+          .difficulty-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+          }
+
+          .need-badge {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

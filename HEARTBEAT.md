@@ -1,7 +1,7 @@
 # HEARTBEAT.md
 
-## Estado: ✅ Todo arreglado y desplegado
-**Última actualización:** 2026-01-29 01:00
+## Estado: ✅ Sistema de fichajes profundo desplegado
+**Última actualización:** 2026-01-29 01:20
 
 ## Tareas completadas
 - ✅ Scraping Transfermarkt (22 temporadas)
@@ -40,3 +40,10 @@
   - ✅ Equipos guardados en leagueTeams al iniciar partida
   - ✅ Ofertas IA entrantes por jugadores del usuario
   - ✅ Respuesta IA a ofertas del usuario (aceptar/rechazar/contraoferta)
+- ✅ **SISTEMA DE FICHAJES PROFUNDO:**
+  - Negociación en fases (Club → Jugador)
+  - Sistema de tiers de clubes (Elite/Top/Primera/Modesto/Menor)
+  - Personalidades de jugadores (Ambicioso/Leal/Mercenario/Familiar/Profesional/Aventurero)
+  - Dificultad basada en prestigio (bajar de tier = muy difícil)
+  - Salario requerido aumenta si baja de nivel (+30-50% por tier)
+  - UI con indicador de fases y probabilidad de éxito
