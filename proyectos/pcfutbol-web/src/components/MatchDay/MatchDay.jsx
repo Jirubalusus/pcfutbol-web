@@ -20,16 +20,28 @@ export default function MatchDay({ onComplete }) {
   const [eventIndex, setEventIndex] = useState(0);
   const [currentMinute, setCurrentMinute] = useState(0);
   
-  // Find player's match
-  const playerMatch = state.fixtures.find(f => 
-    f.week === state.currentWeek && 
-    !f.played && 
-    (f.homeTeam === state.teamId || f.awayTeam === state.teamId)
-  );
-  
+  // Buscar partido: pretemporada o liga
+  let playerMatch;
+  let isPreseason = false;
+
+  if (state.preseasonPhase && state.preseasonMatches?.length > 0) {
+    const preseasonIdx = (state.preseasonWeek || 1) - 1;
+    playerMatch = state.preseasonMatches[preseasonIdx];
+    isPreseason = true;
+  } else {
+    playerMatch = state.fixtures.find(f => 
+      f.week === state.currentWeek && 
+      !f.played && 
+      (f.homeTeam === state.teamId || f.awayTeam === state.teamId)
+    );
+  }
+
   const isHome = playerMatch?.homeTeam === state.teamId;
   const opponentId = isHome ? playerMatch?.awayTeam : playerMatch?.homeTeam;
-  const opponent = getAllTeams().find(t => t.id === opponentId);
+  // En pretemporada el opponent está embebido en el match
+  const opponent = (isPreseason && playerMatch?.opponent) 
+    ? playerMatch.opponent 
+    : getAllTeams().find(t => t.id === opponentId);
   
   // Get team strengths for preview
   // Guard: si no hay partido o rival, no calcular nada
@@ -177,6 +189,8 @@ export default function MatchDay({ onComplete }) {
   };
   
   const handleFinish = () => {
+    // Solo actualizar tabla/fixtures en partidos de liga (no pretemporada)
+    if (!isPreseason) {
     // Update player's match in fixtures
     let updatedFixtures = state.fixtures.map(f => {
       if (f.id === playerMatch.id) {
@@ -232,8 +246,9 @@ export default function MatchDay({ onComplete }) {
         awayScore: matchResult.awayScore
       }
     });
+    } // end if (!isPreseason) — no actualizar liga en amistosos
     
-    // Add message
+    // Add message (pretemporada y liga)
     const playerScore = isHome ? matchResult.homeScore : matchResult.awayScore;
     const opponentScore = isHome ? matchResult.awayScore : matchResult.homeScore;
     const resultText = playerScore > opponentScore ? '¡Victoria!' : 
@@ -244,9 +259,9 @@ export default function MatchDay({ onComplete }) {
       payload: {
         id: Date.now(),
         type: 'match_result',
-        title: `Resultado: ${state.team.name} ${playerScore} - ${opponentScore} ${opponent.name}`,
+        title: `${isPreseason ? '🏟️ Amistoso' : 'Resultado'}: ${state.team.name} ${playerScore} - ${opponentScore} ${opponent.name}`,
         content: resultText,
-        date: `Semana ${state.currentWeek}`
+        date: isPreseason ? `Pretemporada ${state.preseasonWeek}` : `Semana ${state.currentWeek}`
       }
     });
     
@@ -273,13 +288,13 @@ export default function MatchDay({ onComplete }) {
           type: 'injury',
           title: `🏥 Lesión: ${injury.player}`,
           content: `${injury.player} estará ${injury.weeksOut} semanas de baja (${getInjuryText(injury.severity)})`,
-          date: `Semana ${state.currentWeek}`
+          date: isPreseason ? `Pretemporada ${state.preseasonWeek}` : `Semana ${state.currentWeek}`
         }
       });
     });
     
-    // Ingresos por taquilla si jugamos en casa
-    if (isHome && matchResult.attendance) {
+    // Ingresos por taquilla si jugamos en casa (solo liga, no pretemporada)
+    if (!isPreseason && isHome && matchResult.attendance) {
       const att = matchResult.attendance;
       const stadium = state.stadium || {};
       const ticketPrice = (stadium.ticketPrice ?? 30) + (stadium.matchPriceAdjust || 0);
@@ -358,7 +373,7 @@ export default function MatchDay({ onComplete }) {
       <div className="match-day__content">
         {phase === 'preview' && (
           <div className="match-day__preview">
-            <h2>Jornada {state.currentWeek}</h2>
+            <h2>{isPreseason ? `Amistoso ${state.preseasonWeek}/5` : `Jornada ${state.currentWeek}`}</h2>
             
             <div className="match-day__teams">
               <div className={`match-day__team ${isHome ? 'player' : ''}`}>

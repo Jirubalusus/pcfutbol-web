@@ -96,6 +96,19 @@ export default function Office() {
       return;
     }
     
+    // Si estamos en pretemporada, jugar partido amistoso
+    if (state.preseasonPhase) {
+      const preseasonMatch = state.preseasonMatches?.[state.preseasonWeek - 1];
+      if (preseasonMatch) {
+        setShowMatch(true);
+        return;
+      } else {
+        // Pretemporada terminada
+        dispatch({ type: 'END_PRESEASON' });
+        return;
+      }
+    }
+    
     const weekFixtures = state.fixtures.filter(f => f.week === state.currentWeek && !f.played);
     const playerMatch = weekFixtures.find(f => 
       f.homeTeam === state.teamId || f.awayTeam === state.teamId
@@ -126,8 +139,20 @@ export default function Office() {
   
   const handleMatchComplete = () => {
     setShowMatch(false);
-    dispatch({ type: 'APPLY_TRAINING' });
-    dispatch({ type: 'ADVANCE_WEEK' });
+    
+    if (state.preseasonPhase) {
+      // Avanzar semana de pretemporada
+      const nextWeek = (state.preseasonWeek || 1) + 1;
+      if (nextWeek > (state.preseasonMatches?.length || 5)) {
+        // Pretemporada terminada
+        dispatch({ type: 'END_PRESEASON' });
+      } else {
+        dispatch({ type: 'ADVANCE_PRESEASON_WEEK' });
+      }
+    } else {
+      dispatch({ type: 'APPLY_TRAINING' });
+      dispatch({ type: 'ADVANCE_WEEK' });
+    }
   };
   
   const simulateOtherMatches = (fixtures = state.fixtures, table = state.leagueTable, week = state.currentWeek) => {
@@ -150,6 +175,9 @@ export default function Office() {
   };
   
   const handleSimulateWeeks = async (numWeeks) => {
+    // No simular múltiples semanas durante pretemporada
+    if (state.preseasonPhase) return;
+    
     setSimulating(true);
     
     // Copia local del estado para ir actualizando
@@ -364,7 +392,7 @@ export default function Office() {
       <div className="office__overview">
         <div className="office__welcome">
           <h2>Bienvenido, Míster</h2>
-          <p>Temporada {state.currentSeason} · Semana {state.currentWeek}</p>
+          <p>Temporada {state.currentSeason} · {state.preseasonPhase ? `Pretemporada ${state.preseasonWeek}/${state.preseasonMatches?.length || 5}` : `Semana ${state.currentWeek}`}</p>
         </div>
         
         <div className="office__cards">
@@ -570,7 +598,7 @@ export default function Office() {
         <header className="office__header">
           <div className="office__team-info">
             <h1>{state.team?.name}</h1>
-            <span className="office__season">Temporada {state.currentSeason} · Semana {state.currentWeek}</span>
+            <span className="office__season">Temporada {state.currentSeason} · {state.preseasonPhase ? `Pretemporada ${state.preseasonWeek}/${state.preseasonMatches?.length || 5}` : `Semana ${state.currentWeek}`}</span>
           </div>
           
           <div className="office__actions">
@@ -594,11 +622,11 @@ export default function Office() {
             </button>
             
             <div className="office__sim-dropdown">
-              <button className="office__sim-btn" disabled={simulating}>
+              <button className="office__sim-btn" disabled={simulating || state.preseasonPhase}>
                 <FastForward size={18} strokeWidth={2} />
                 <span>{simulating ? 'Simulando...' : 'Simular'}</span>
               </button>
-              {!simulating && (
+              {!simulating && !state.preseasonPhase && (
                 <div className="office__sim-options">
                   <button onClick={() => handleSimulateWeeks(4)}>4 semanas</button>
                   <button onClick={() => handleSimulateWeeks(10)}>10 semanas</button>

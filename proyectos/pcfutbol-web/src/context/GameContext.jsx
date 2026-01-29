@@ -367,6 +367,13 @@ function gameReducer(state, action) {
       };
     }
     
+    case 'ADVANCE_PRESEASON_WEEK': {
+      return {
+        ...state,
+        preseasonWeek: (state.preseasonWeek || 1) + 1
+      };
+    }
+    
     case 'ADVANCE_WEEK': {
       // Calculate weekly income from facilities
       const stadiumLevel = state.facilities?.stadium || 0;
