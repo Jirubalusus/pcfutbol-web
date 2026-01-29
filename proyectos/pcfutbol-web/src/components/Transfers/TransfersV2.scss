@@ -13,6 +13,13 @@ $card-border: #30363d;
 $text-primary: #f0f6fc;
 $text-secondary: #8b949e;
 
+// Aliases para compatibilidad
+$text: $text-primary;
+$text-muted: $text-secondary;
+$surface-light: #21262d;
+$surface-lighter: #30363d;
+$border-color: $card-border;
+
 .transfers-v2 {
   display: flex;
   flex-direction: column;
@@ -923,5 +930,694 @@ $text-secondary: #8b949e;
 
   .news-ticker {
     display: none; // Ocultar en móvil
+  }
+}
+
+// ============================================================
+// MODAL DE NEGOCIACIÓN PROFUNDA
+// ============================================================
+
+.player-modal--negotiation {
+  max-width: 550px;
+  width: 95%;
+  max-height: 90vh;
+  overflow-y: auto;
+
+  .modal-header {
+    .team-tier {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: $text-muted;
+      margin-top: 0.25rem;
+
+      .tier-badge {
+        padding: 0.15rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: white;
+      }
+    }
+  }
+
+  // Indicador de fases
+  .negotiation-phases {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0;
+    margin: 0 1rem;
+    border-bottom: 1px solid $border-color;
+
+    .phase {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+
+      .phase-num {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: $surface-light;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: $text-muted;
+        transition: all 0.3s;
+      }
+
+      .phase-label {
+        font-size: 0.7rem;
+        color: $text-muted;
+      }
+
+      &.active .phase-num {
+        background: $primary;
+        color: white;
+        box-shadow: 0 0 10px rgba($primary, 0.4);
+      }
+
+      &.done .phase-num {
+        background: $success;
+        color: white;
+      }
+    }
+
+    .phase-line {
+      width: 30px;
+      height: 2px;
+      background: $border-color;
+      margin: 0 0.25rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  // Contenido de fases
+  .phase-content {
+    padding: 1rem 1.25rem;
+  }
+
+  // FASE INFO
+  .phase-info {
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+
+      .info-card {
+        padding: 0.75rem;
+        background: $surface-light;
+        border-radius: 8px;
+        text-align: center;
+
+        .label {
+          display: block;
+          font-size: 0.7rem;
+          color: $text-muted;
+          margin-bottom: 0.25rem;
+          text-transform: uppercase;
+        }
+
+        .value {
+          font-size: 1rem;
+          font-weight: 600;
+          color: $text;
+        }
+      }
+    }
+
+    .difficulty-section {
+      margin-bottom: 1.25rem;
+
+      h4 {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.85rem;
+        margin-bottom: 0.75rem;
+        color: $text;
+      }
+
+      .difficulty-bar {
+        height: 8px;
+        background: $surface-light;
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 0.5rem;
+
+        .difficulty-fill {
+          height: 100%;
+          border-radius: 4px;
+          transition: width 0.5s ease;
+        }
+      }
+
+      .difficulty-info {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8rem;
+
+        .difficulty-label {
+          font-weight: 600;
+        }
+
+        .difficulty-detail {
+          color: $text-muted;
+        }
+      }
+    }
+
+    .personality-section {
+      margin-bottom: 1.25rem;
+
+      h4 {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.85rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .personality-card {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem;
+        background: $surface-light;
+        border-radius: 8px;
+
+        .personality-icon {
+          font-size: 1.5rem;
+        }
+
+        .personality-info {
+          .personality-name {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+          }
+
+          .personality-desc {
+            font-size: 0.8rem;
+            color: $text-muted;
+          }
+        }
+      }
+
+      .personality-warning {
+        margin-top: 0.5rem;
+        padding: 0.5rem;
+        background: rgba($danger, 0.1);
+        border-radius: 6px;
+        font-size: 0.8rem;
+        color: $danger;
+      }
+    }
+
+    .tier-comparison {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+
+      .tier-box {
+        flex: 1;
+        padding: 0.75rem;
+        background: $surface-light;
+        border-radius: 8px;
+        text-align: center;
+
+        svg {
+          margin-bottom: 0.25rem;
+          color: $text-muted;
+        }
+
+        .tier-name {
+          display: block;
+          font-size: 0.75rem;
+          color: $text-muted;
+        }
+
+        .team-name {
+          display: block;
+          font-size: 0.85rem;
+          font-weight: 600;
+          margin-top: 0.25rem;
+        }
+
+        &.seller {
+          border: 1px solid rgba($warning, 0.3);
+        }
+
+        &.buyer {
+          border: 1px solid rgba($primary, 0.3);
+        }
+      }
+
+      .tier-arrow {
+        color: $text-muted;
+      }
+    }
+
+    .salary-estimate {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem;
+      background: rgba($primary, 0.1);
+      border-radius: 8px;
+      font-size: 0.85rem;
+      margin-bottom: 1.25rem;
+
+      .salary-note {
+        color: $warning;
+        font-size: 0.75rem;
+      }
+    }
+
+    .btn-next {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.9rem;
+      background: $primary;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover {
+        background: #1a94ff;
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  // FASE CLUB y PLAYER
+  .phase-club, .phase-player {
+    h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .offer-section {
+      margin-bottom: 1rem;
+
+      label {
+        display: block;
+        font-size: 0.85rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+        color: $text;
+      }
+
+      .offer-input-group {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem;
+        background: $surface-light;
+        border-radius: 8px;
+        border: 1px solid $border-color;
+
+        input {
+          flex: 1;
+          background: transparent;
+          border: none;
+          color: $text;
+          font-size: 1.1rem;
+          font-weight: 600;
+          outline: none;
+        }
+      }
+
+      .offer-reference {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        margin-top: 0.5rem;
+        font-size: 0.8rem;
+        color: $text-muted;
+
+        .low { color: $danger; }
+        .high { color: $warning; }
+        .fair { color: $success; }
+      }
+    }
+
+    .contract-section {
+      .contract-options {
+        display: flex;
+        gap: 0.5rem;
+
+        .contract-btn {
+          flex: 1;
+          padding: 0.6rem;
+          background: $surface-light;
+          border: 1px solid $border-color;
+          border-radius: 6px;
+          color: $text;
+          font-size: 0.85rem;
+          cursor: pointer;
+          transition: all 0.2s;
+
+          &:hover {
+            border-color: $primary;
+          }
+
+          &.active {
+            background: $primary;
+            border-color: $primary;
+            color: white;
+          }
+        }
+      }
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+
+      .btn-back {
+        flex: 1;
+        padding: 0.75rem;
+        background: $surface-light;
+        border: 1px solid $border-color;
+        border-radius: 8px;
+        color: $text;
+        font-size: 0.9rem;
+        cursor: pointer;
+
+        &:hover {
+          background: $surface-lighter;
+        }
+      }
+
+      .btn-send-offer {
+        flex: 2;
+        padding: 0.75rem;
+        background: $primary;
+        border: none;
+        border-radius: 8px;
+        color: white;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+
+        &:hover:not(:disabled) {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 15px rgba($primary, 0.3);
+        }
+
+        &:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+      }
+    }
+
+    // Respuesta del club
+    .club-response {
+      .response-card {
+        padding: 1.5rem;
+        border-radius: 12px;
+        text-align: center;
+
+        svg {
+          margin-bottom: 0.75rem;
+        }
+
+        h4 {
+          font-size: 1.1rem;
+          margin-bottom: 0.5rem;
+        }
+
+        p {
+          font-size: 0.9rem;
+          color: $text-muted;
+          margin-bottom: 0.75rem;
+        }
+
+        &.success {
+          background: rgba($success, 0.1);
+          border: 1px solid rgba($success, 0.3);
+
+          svg { color: $success; }
+          h4 { color: $success; }
+
+          .final-price {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: $text;
+          }
+        }
+
+        &.rejected {
+          background: rgba($danger, 0.1);
+          border: 1px solid rgba($danger, 0.3);
+
+          svg { color: $danger; }
+          h4 { color: $danger; }
+
+          .btn-retry {
+            margin-top: 0.75rem;
+            padding: 0.6rem 1.25rem;
+            background: $surface-light;
+            border: 1px solid $border-color;
+            border-radius: 6px;
+            color: $text;
+            cursor: pointer;
+
+            &:hover {
+              background: $surface-lighter;
+            }
+          }
+        }
+
+        &.counter {
+          background: rgba($warning, 0.1);
+          border: 1px solid rgba($warning, 0.3);
+
+          svg { color: $warning; }
+          h4 { color: $warning; }
+
+          .counter-amount {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: $text;
+            margin: 0.75rem 0;
+          }
+
+          .counter-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1rem;
+
+            .btn-reject {
+              flex: 1;
+              padding: 0.6rem;
+              background: transparent;
+              border: 1px solid $border-color;
+              border-radius: 6px;
+              color: $text;
+              cursor: pointer;
+
+              &:hover {
+                background: rgba($danger, 0.1);
+                border-color: $danger;
+              }
+            }
+
+            .btn-accept {
+              flex: 1;
+              padding: 0.6rem;
+              background: $success;
+              border: none;
+              border-radius: 6px;
+              color: white;
+              font-weight: 600;
+              cursor: pointer;
+
+              &:hover:not(:disabled) {
+                background: #3ee067;
+              }
+
+              &:disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // Info de negociación con jugador
+    .player-negotiation-info {
+      margin-bottom: 1rem;
+
+      .personality-reminder {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.6rem 0.75rem;
+        background: $surface-light;
+        border-radius: 6px;
+        font-size: 0.85rem;
+
+        .icon {
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
+
+  // FASE RESULTADO
+  .phase-result {
+    .result-card {
+      padding: 2rem 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+
+      .result-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        color: $text-muted;
+        margin-bottom: 1rem;
+      }
+
+      &.success {
+        background: linear-gradient(135deg, rgba($success, 0.1) 0%, rgba($success, 0.05) 100%);
+        border: 1px solid rgba($success, 0.3);
+
+        h3 { color: $success; }
+
+        .transfer-summary {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 0.75rem;
+          margin: 1.5rem 0;
+          padding: 1rem;
+          background: $surface-light;
+          border-radius: 8px;
+
+          .summary-item {
+            .label {
+              display: block;
+              font-size: 0.7rem;
+              color: $text-muted;
+              text-transform: uppercase;
+            }
+
+            .value {
+              display: block;
+              font-size: 0.95rem;
+              font-weight: 600;
+              margin-top: 0.25rem;
+            }
+          }
+        }
+
+        .btn-close-success {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          width: 100%;
+          padding: 0.9rem;
+          background: $success;
+          border: none;
+          border-radius: 8px;
+          color: white;
+          font-size: 1rem;
+          font-weight: 600;
+          cursor: pointer;
+
+          &:hover {
+            background: #3ee067;
+          }
+        }
+      }
+
+      &.failed {
+        background: linear-gradient(135deg, rgba($danger, 0.1) 0%, rgba($danger, 0.05) 100%);
+        border: 1px solid rgba($danger, 0.3);
+
+        h3 { color: $danger; }
+
+        .failure-details {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          padding: 1rem;
+          background: $surface-light;
+          border-radius: 8px;
+          font-size: 0.85rem;
+          margin-bottom: 1rem;
+
+          .tier-warning {
+            color: $warning;
+          }
+        }
+
+        .action-buttons {
+          display: flex;
+          gap: 0.75rem;
+
+          .btn-back, .btn-close {
+            flex: 1;
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            cursor: pointer;
+          }
+
+          .btn-back {
+            background: $primary;
+            border: none;
+            color: white;
+
+            &:hover {
+              background: #1a94ff;
+            }
+          }
+
+          .btn-close {
+            background: transparent;
+            border: 1px solid $border-color;
+            color: $text;
+
+            &:hover {
+              background: $surface-light;
+            }
+          }
+        }
+      }
+    }
   }
 }

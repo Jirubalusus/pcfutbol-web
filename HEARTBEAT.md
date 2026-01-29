@@ -1,5 +1,8 @@
 # HEARTBEAT.md
 
+## Estado: ✅ Todo arreglado y desplegado
+**Última actualización:** 2026-01-29 01:00
+
 ## Tareas completadas
 - ✅ Scraping Transfermarkt (22 temporadas)
 - ✅ Procesamiento de datos (calculate-overalls)

@@ -4,9 +4,15 @@ import {
   Search, Filter, TrendingUp, TrendingDown, Clock, AlertCircle,
   ChevronRight, X, Check, DollarSign, Calendar, MapPin, Star,
   Users, Newspaper, Target, Zap, ArrowRight, ArrowLeftRight,
-  Building2, Briefcase, Bell, RefreshCw
+  Building2, Briefcase, Bell, RefreshCw, UserCheck, Handshake,
+  ThumbsUp, ThumbsDown, MessageSquare, Crown, Shield
 } from 'lucide-react';
-import { isTransferWindowOpen, formatTransferPrice } from '../../game/globalTransferEngine';
+import { isTransferWindowOpen, formatTransferPrice, calculateMarketValue } from '../../game/globalTransferEngine';
+import { 
+  getClubTier, getTierData, calculateTransferDifficulty, 
+  calculateRequiredSalary, evaluateClubOffer, evaluatePlayerOffer,
+  PLAYER_PERSONALITIES, assignPersonality, NEGOTIATION_STATES
+} from '../../game/transferNegotiation';
 import './TransfersV2.scss';
 
 // ============================================================
@@ -176,6 +182,7 @@ export default function TransfersV2() {
           onClose={() => setSelectedPlayer(null)}
           budget={state.money}
           dispatch={dispatch}
+          myTeam={myTeam}
         />
       )}
     </div>
@@ -605,109 +612,523 @@ function NewsTicker({ transfers }) {
 }
 
 // ============================================================
-// MODAL: DETALLE JUGADOR
+// MODAL: NEGOCIACIÓN DE FICHAJE (Sistema Profundo)
 // ============================================================
-function PlayerModal({ player, onClose, budget, dispatch }) {
-  const [offerAmount, setOfferAmount] = useState(player.value || player.overall * 500000);
-  const estimatedValue = player.value || player.overall * 500000;
-  const canAfford = budget >= offerAmount;
-
-  const handleMakeOffer = () => {
-    if (!canAfford) return;
+function PlayerModal({ player, onClose, budget, dispatch, myTeam }) {
+  const { state } = useGame();
+  
+  // Estados de la negociación
+  const [phase, setPhase] = useState('info'); // info -> club -> player -> result
+  const [offerAmount, setOfferAmount] = useState(0);
+  const [salaryOffer, setSalaryOffer] = useState(0);
+  const [contractYears, setContractYears] = useState(4);
+  const [clubResponse, setClubResponse] = useState(null);
+  const [playerResponse, setPlayerResponse] = useState(null);
+  const [isProcessing, setIsProcessing] = useState(false);
+  
+  // Datos del jugador y equipos
+  const marketValue = calculateMarketValue(player);
+  const currentSalary = player.salary || 50000;
+  const personality = player.personality || assignPersonality(player);
+  const personalityData = PLAYER_PERSONALITIES[personality];
+  
+  // Info de tiers
+  const sellerTier = getClubTier(player.teamName);
+  const buyerTier = getClubTier(myTeam?.name || '');
+  const sellerTierData = getTierData(sellerTier);
+  const buyerTierData = getTierData(buyerTier);
+  
+  // Dificultad del fichaje
+  const difficulty = calculateTransferDifficulty(
+    { ...player, personality },
+    { name: player.teamName },
+    { name: myTeam?.name || '' }
+  );
+  
+  // Salario requerido estimado
+  const requiredSalary = calculateRequiredSalary(
+    { ...player, salary: currentSalary, personality },
+    { name: player.teamName },
+    { name: myTeam?.name || '' }
+  );
+  
+  // Inicializar ofertas con valores por defecto
+  useEffect(() => {
+    setOfferAmount(Math.round(marketValue * 0.9));
+    setSalaryOffer(Math.round(requiredSalary * 1.05));
+  }, [marketValue, requiredSalary]);
+  
+  const canAffordTransfer = budget >= offerAmount;
+  const weeklyWageBudget = (budget * 0.05) / 52; // ~5% del presupuesto anual
+  const canAffordWages = salaryOffer <= weeklyWageBudget * 3;
+  
+  // Enviar oferta al club
+  const handleClubOffer = () => {
+    setIsProcessing(true);
     
-    const newOffer = {
-      id: `offer_${Date.now()}`,
-      player: {
-        name: player.name,
-        position: player.position,
-        overall: player.overall,
-        age: player.age
-      },
-      toTeam: player.teamName,
-      toTeamId: player.teamId,
-      amount: offerAmount,
-      status: 'pending',
-      createdAt: Date.now()
+    setTimeout(() => {
+      const response = evaluateClubOffer(
+        { amount: offerAmount },
+        { ...player, role: { name: 'Titular' } },
+        { name: player.teamName, id: player.teamId },
+        { name: myTeam?.name, id: state.teamId }
+      );
+      
+      setClubResponse(response);
+      setIsProcessing(false);
+      
+      if (response.accepted) {
+        setPhase('player');
+      }
+    }, 1500);
+  };
+  
+  // Aceptar contraoferta del club
+  const handleAcceptCounter = () => {
+    setOfferAmount(clubResponse.counter);
+    setClubResponse({ ...clubResponse, accepted: true });
+    setPhase('player');
+  };
+  
+  // Enviar oferta al jugador
+  const handlePlayerOffer = () => {
+    setIsProcessing(true);
+    
+    setTimeout(() => {
+      const response = evaluatePlayerOffer(
+        { salary: salaryOffer, contractYears },
+        { ...player, personality, salary: currentSalary },
+        { name: player.teamName },
+        { name: myTeam?.name }
+      );
+      
+      setPlayerResponse(response);
+      setIsProcessing(false);
+      setPhase('result');
+      
+      // Si acepta, completar el fichaje
+      if (response.accepted) {
+        completeTransfer();
+      }
+    }, 1500);
+  };
+  
+  // Completar la transferencia
+  const completeTransfer = () => {
+    const newPlayer = {
+      ...player,
+      personality,
+      salary: salaryOffer,
+      contractYears,
+      teamId: state.teamId
     };
     
-    dispatch({ type: 'ADD_OUTGOING_OFFER', payload: newOffer });
+    dispatch({ 
+      type: 'SIGN_PLAYER', 
+      payload: { 
+        player: newPlayer, 
+        fee: clubResponse?.accepted ? (clubResponse.finalPrice || offerAmount) : offerAmount 
+      } 
+    });
     
-    // Simular respuesta de la IA después de 1 segundo
-    setTimeout(() => {
-      dispatch({ type: 'PROCESS_OUTGOING_OFFER', payload: newOffer });
-    }, 1000);
+    // Actualizar leagueTeams
+    const updatedLeagueTeams = (state.leagueTeams || []).map(t => {
+      if (t.id === player.teamId) {
+        return {
+          ...t,
+          players: (t.players || []).filter(p => p.name !== player.name),
+          budget: (t.budget || 50_000_000) + offerAmount
+        };
+      }
+      return t;
+    });
     
-    onClose();
+    dispatch({ type: 'UPDATE_LEAGUE_TEAMS', payload: updatedLeagueTeams });
+    
+    dispatch({
+      type: 'ADD_MESSAGE',
+      payload: {
+        id: Date.now(),
+        type: 'transfer',
+        title: '✅ Fichaje completado',
+        content: `${player.name} es nuevo jugador del equipo. Traspaso: ${formatTransferPrice(offerAmount)}, Salario: ${formatTransferPrice(salaryOffer)}/sem`,
+        date: `Semana ${state.currentWeek}`
+      }
+    });
   };
 
   return (
     <div className="player-modal-overlay" onClick={onClose}>
-      <div className="player-modal" onClick={e => e.stopPropagation()}>
+      <div className="player-modal player-modal--negotiation" onClick={e => e.stopPropagation()}>
         <button className="modal-close" onClick={onClose}>
           <X size={20} />
         </button>
 
+        {/* HEADER CON INFO DEL JUGADOR */}
         <div className="modal-header">
           <div className="player-position" data-pos={player.position}>
             {player.position}
           </div>
           <div className="player-info">
             <h2>{player.name}</h2>
-            <p>{player.teamName}</p>
+            <div className="team-tier">
+              <Building2 size={14} />
+              <span>{player.teamName}</span>
+              <span className="tier-badge" style={{ background: `hsl(${sellerTier * 30 + 120}, 70%, 40%)` }}>
+                {sellerTierData.name}
+              </span>
+            </div>
           </div>
           <div className="player-overall">{player.overall}</div>
         </div>
 
-        <div className="modal-stats">
-          <div className="stat">
-            <span className="label">Edad</span>
-            <span className="value">{player.age} años</span>
+        {/* INDICADOR DE FASE */}
+        <div className="negotiation-phases">
+          <div className={`phase ${phase === 'info' ? 'active' : phase !== 'info' ? 'done' : ''}`}>
+            <span className="phase-num">1</span>
+            <span className="phase-label">Info</span>
           </div>
-          <div className="stat">
-            <span className="label">Valor</span>
-            <span className="value">{formatTransferPrice(estimatedValue)}</span>
+          <div className="phase-line"></div>
+          <div className={`phase ${phase === 'club' ? 'active' : ['player', 'result'].includes(phase) ? 'done' : ''}`}>
+            <span className="phase-num">2</span>
+            <span className="phase-label">Club</span>
           </div>
-          <div className="stat">
-            <span className="label">Salario</span>
-            <span className="value">{formatTransferPrice(player.salary || 50000)}/sem</span>
+          <div className="phase-line"></div>
+          <div className={`phase ${phase === 'player' ? 'active' : phase === 'result' ? 'done' : ''}`}>
+            <span className="phase-num">3</span>
+            <span className="phase-label">Jugador</span>
+          </div>
+          <div className="phase-line"></div>
+          <div className={`phase ${phase === 'result' ? 'active' : ''}`}>
+            <span className="phase-num">4</span>
+            <span className="phase-label">Resultado</span>
           </div>
         </div>
 
-        <div className="modal-offer">
-          <h4>Hacer oferta</h4>
-          <div className="offer-input">
-            <DollarSign size={18} />
-            <input
-              type="number"
-              value={offerAmount}
-              onChange={e => setOfferAmount(parseInt(e.target.value) || 0)}
-              step={100000}
-            />
-          </div>
-          <div className="offer-comparison">
-            <span className={offerAmount < estimatedValue * 0.8 ? 'low' : offerAmount > estimatedValue * 1.2 ? 'high' : 'fair'}>
-              {offerAmount < estimatedValue * 0.8 
-                ? '⚠️ Oferta baja - probable rechazo'
-                : offerAmount > estimatedValue * 1.2 
-                  ? '💰 Oferta generosa'
-                  : '✓ Oferta razonable'}
-            </span>
-          </div>
-          {!canAfford && (
-            <div className="insufficient-funds">
-              <AlertCircle size={16} />
-              Presupuesto insuficiente
+        {/* FASE 1: INFO */}
+        {phase === 'info' && (
+          <div className="phase-content phase-info">
+            <div className="info-grid">
+              <div className="info-card">
+                <span className="label">Valor de mercado</span>
+                <span className="value">{formatTransferPrice(marketValue)}</span>
+              </div>
+              <div className="info-card">
+                <span className="label">Salario actual</span>
+                <span className="value">{formatTransferPrice(currentSalary)}/sem</span>
+              </div>
+              <div className="info-card">
+                <span className="label">Edad</span>
+                <span className="value">{player.age} años</span>
+              </div>
+              <div className="info-card">
+                <span className="label">Contrato</span>
+                <span className="value">{player.contractYears || 2} años</span>
+              </div>
             </div>
-          )}
-          <button 
-            className="btn-make-offer"
-            onClick={handleMakeOffer}
-            disabled={!canAfford}
-          >
-            <Check size={18} />
-            Enviar Oferta
-          </button>
-        </div>
+            
+            {/* DIFICULTAD DEL FICHAJE */}
+            <div className="difficulty-section">
+              <h4><Target size={16} /> Dificultad del fichaje</h4>
+              <div className="difficulty-bar">
+                <div 
+                  className="difficulty-fill" 
+                  style={{ 
+                    width: `${100 - difficulty.percentage}%`,
+                    background: difficulty.color 
+                  }}
+                ></div>
+              </div>
+              <div className="difficulty-info">
+                <span className="difficulty-label" style={{ color: difficulty.color }}>
+                  {difficulty.difficulty}
+                </span>
+                <span className="difficulty-detail">
+                  {difficulty.tierDiff > 0 
+                    ? `⚠️ Bajas ${difficulty.tierDiff} nivel${difficulty.tierDiff > 1 ? 'es' : ''} de prestigio`
+                    : difficulty.tierDiff < 0
+                      ? `✓ Subes ${Math.abs(difficulty.tierDiff)} nivel${Math.abs(difficulty.tierDiff) > 1 ? 'es' : ''}`
+                      : '○ Mismo nivel de prestigio'}
+                </span>
+              </div>
+            </div>
+            
+            {/* PERSONALIDAD DEL JUGADOR */}
+            <div className="personality-section">
+              <h4><UserCheck size={16} /> Personalidad</h4>
+              <div className="personality-card">
+                <span className="personality-icon">{personalityData?.icon || '⚖️'}</span>
+                <div className="personality-info">
+                  <span className="personality-name">{personalityData?.name || 'Profesional'}</span>
+                  <span className="personality-desc">{personalityData?.desc || 'Evalúa todo con equilibrio'}</span>
+                </div>
+              </div>
+              {difficulty.tierDiff > 0 && personalityData?.name === 'Ambicioso' && (
+                <div className="personality-warning">
+                  ⚠️ Este jugador es ambicioso y no querrá dar un paso atrás en su carrera
+                </div>
+              )}
+            </div>
+            
+            {/* COMPARACIÓN DE TIERS */}
+            <div className="tier-comparison">
+              <div className="tier-box seller">
+                <Crown size={16} />
+                <span className="tier-name">{sellerTierData.name}</span>
+                <span className="team-name">{player.teamName}</span>
+              </div>
+              <div className="tier-arrow">
+                <ArrowRight size={20} />
+              </div>
+              <div className="tier-box buyer">
+                <Shield size={16} />
+                <span className="tier-name">{buyerTierData.name}</span>
+                <span className="team-name">{myTeam?.name || 'Tu equipo'}</span>
+              </div>
+            </div>
+            
+            {/* SALARIO ESTIMADO NECESARIO */}
+            <div className="salary-estimate">
+              <MessageSquare size={16} />
+              <span>
+                Salario mínimo estimado: <strong>{formatTransferPrice(requiredSalary)}/sem</strong>
+                {difficulty.tierDiff > 0 && (
+                  <span className="salary-note"> (+{Math.round((requiredSalary / currentSalary - 1) * 100)}% por bajar de nivel)</span>
+                )}
+              </span>
+            </div>
+            
+            <button className="btn-next" onClick={() => setPhase('club')}>
+              Iniciar negociación <ChevronRight size={18} />
+            </button>
+          </div>
+        )}
+
+        {/* FASE 2: OFERTA AL CLUB */}
+        {phase === 'club' && (
+          <div className="phase-content phase-club">
+            <h3><Building2 size={20} /> Negociación con {player.teamName}</h3>
+            
+            {!clubResponse ? (
+              <>
+                <div className="offer-section">
+                  <label>Oferta de traspaso</label>
+                  <div className="offer-input-group">
+                    <DollarSign size={18} />
+                    <input
+                      type="number"
+                      value={offerAmount}
+                      onChange={e => setOfferAmount(parseInt(e.target.value) || 0)}
+                      step={500000}
+                      min={0}
+                    />
+                  </div>
+                  <div className="offer-reference">
+                    <span>Valor de mercado: {formatTransferPrice(marketValue)}</span>
+                    <span className={
+                      offerAmount < marketValue * 0.7 ? 'low' : 
+                      offerAmount > marketValue * 1.2 ? 'high' : 'fair'
+                    }>
+                      {offerAmount < marketValue * 0.7 
+                        ? '⚠️ Muy baja - probable rechazo'
+                        : offerAmount < marketValue * 0.9
+                          ? '⚠️ Baja - posible contraoferta'
+                          : offerAmount > marketValue * 1.2 
+                            ? '💰 Generosa - alta aceptación'
+                            : '✓ Razonable'}
+                    </span>
+                  </div>
+                </div>
+                
+                {!canAffordTransfer && (
+                  <div className="insufficient-funds">
+                    <AlertCircle size={16} />
+                    Presupuesto insuficiente ({formatTransferPrice(budget)} disponible)
+                  </div>
+                )}
+                
+                <div className="action-buttons">
+                  <button className="btn-back" onClick={() => setPhase('info')}>
+                    Volver
+                  </button>
+                  <button 
+                    className="btn-send-offer"
+                    onClick={handleClubOffer}
+                    disabled={!canAffordTransfer || isProcessing}
+                  >
+                    {isProcessing ? 'Enviando...' : 'Enviar oferta al club'}
+                  </button>
+                </div>
+              </>
+            ) : (
+              <div className="club-response">
+                {clubResponse.accepted ? (
+                  <div className="response-card success">
+                    <ThumbsUp size={32} />
+                    <h4>¡Club acepta!</h4>
+                    <p>{clubResponse.reason}</p>
+                    <p className="final-price">Precio acordado: {formatTransferPrice(clubResponse.finalPrice || offerAmount)}</p>
+                  </div>
+                ) : clubResponse.rejected ? (
+                  <div className="response-card rejected">
+                    <ThumbsDown size={32} />
+                    <h4>Oferta rechazada</h4>
+                    <p>{clubResponse.reason}</p>
+                    <button className="btn-retry" onClick={() => setClubResponse(null)}>
+                      Intentar con otra oferta
+                    </button>
+                  </div>
+                ) : (
+                  <div className="response-card counter">
+                    <Handshake size={32} />
+                    <h4>Contraoferta</h4>
+                    <p>{clubResponse.reason}</p>
+                    <p className="counter-amount">Piden: {formatTransferPrice(clubResponse.counter)}</p>
+                    <div className="counter-actions">
+                      <button className="btn-reject" onClick={() => setClubResponse(null)}>
+                        Rechazar
+                      </button>
+                      <button 
+                        className="btn-accept"
+                        onClick={handleAcceptCounter}
+                        disabled={budget < clubResponse.counter}
+                      >
+                        Aceptar contraoferta
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* FASE 3: NEGOCIACIÓN CON JUGADOR */}
+        {phase === 'player' && (
+          <div className="phase-content phase-player">
+            <h3><UserCheck size={20} /> Negociación con {player.name}</h3>
+            
+            <div className="player-negotiation-info">
+              <div className="personality-reminder">
+                <span className="icon">{personalityData?.icon}</span>
+                <span>{personalityData?.name}: {personalityData?.desc}</span>
+              </div>
+            </div>
+            
+            <div className="offer-section">
+              <label>Oferta salarial (semanal)</label>
+              <div className="offer-input-group">
+                <DollarSign size={18} />
+                <input
+                  type="number"
+                  value={salaryOffer}
+                  onChange={e => setSalaryOffer(parseInt(e.target.value) || 0)}
+                  step={5000}
+                  min={0}
+                />
+              </div>
+              <div className="offer-reference">
+                <span>Salario actual: {formatTransferPrice(currentSalary)}/sem</span>
+                <span>Mínimo estimado: {formatTransferPrice(requiredSalary)}/sem</span>
+                <span className={
+                  salaryOffer < requiredSalary * 0.8 ? 'low' : 
+                  salaryOffer > requiredSalary * 1.3 ? 'high' : 'fair'
+                }>
+                  {salaryOffer < requiredSalary * 0.8 
+                    ? '⚠️ Insuficiente'
+                    : salaryOffer < requiredSalary
+                      ? '⚠️ Por debajo del mínimo'
+                      : salaryOffer > requiredSalary * 1.3 
+                        ? '💰 Muy generosa'
+                        : '✓ Aceptable'}
+                </span>
+              </div>
+            </div>
+            
+            <div className="offer-section contract-section">
+              <label>Duración del contrato</label>
+              <div className="contract-options">
+                {[2, 3, 4, 5].map(years => (
+                  <button 
+                    key={years}
+                    className={`contract-btn ${contractYears === years ? 'active' : ''}`}
+                    onClick={() => setContractYears(years)}
+                  >
+                    {years} años
+                  </button>
+                ))}
+              </div>
+            </div>
+            
+            <div className="action-buttons">
+              <button className="btn-back" onClick={() => {
+                setPhase('club');
+                setClubResponse(null);
+              }}>
+                Volver
+              </button>
+              <button 
+                className="btn-send-offer"
+                onClick={handlePlayerOffer}
+                disabled={isProcessing}
+              >
+                {isProcessing ? 'Negociando...' : 'Presentar oferta al jugador'}
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* FASE 4: RESULTADO */}
+        {phase === 'result' && (
+          <div className="phase-content phase-result">
+            {playerResponse?.accepted ? (
+              <div className="result-card success">
+                <div className="result-icon">🎉</div>
+                <h3>¡Fichaje completado!</h3>
+                <p>{player.name} es nuevo jugador de {myTeam?.name}</p>
+                <div className="transfer-summary">
+                  <div className="summary-item">
+                    <span className="label">Traspaso</span>
+                    <span className="value">{formatTransferPrice(offerAmount)}</span>
+                  </div>
+                  <div className="summary-item">
+                    <span className="label">Salario</span>
+                    <span className="value">{formatTransferPrice(salaryOffer)}/sem</span>
+                  </div>
+                  <div className="summary-item">
+                    <span className="label">Contrato</span>
+                    <span className="value">{contractYears} años</span>
+                  </div>
+                </div>
+                <button className="btn-close-success" onClick={onClose}>
+                  <Check size={18} /> Cerrar
+                </button>
+              </div>
+            ) : (
+              <div className="result-card failed">
+                <div className="result-icon">😔</div>
+                <h3>Fichaje fallido</h3>
+                <p>{playerResponse?.reason || 'El jugador ha rechazado la oferta'}</p>
+                <div className="failure-details">
+                  <span>Probabilidad de aceptación: {playerResponse?.probability || 0}%</span>
+                  {playerResponse?.tierDiff > 0 && (
+                    <span className="tier-warning">
+                      ⚠️ El salto de {playerResponse.tierDiff} nivel(es) hacia abajo fue determinante
+                    </span>
+                  )}
+                </div>
+                <div className="action-buttons">
+                  <button className="btn-back" onClick={() => setPhase('player')}>
+                    Mejorar oferta
+                  </button>
+                  <button className="btn-close" onClick={onClose}>
+                    Cerrar
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
