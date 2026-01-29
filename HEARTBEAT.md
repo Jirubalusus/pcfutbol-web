@@ -47,3 +47,12 @@
   - Dificultad basada en prestigio (bajar de tier = muy difícil)
   - Salario requerido aumenta si baja de nivel (+30-50% por tier)
   - UI con indicador de fases y probabilidad de éxito
+- ✅ **EXPLORADOR DE LIGAS:**
+  - Vista visual de ligas (🇪🇸🏴󠁧󠁢󠁥󠁮󠁧󠁿🇮🇹🇩🇪🇫🇷)
+  - Navegar: Liga → Equipo → Plantilla → Jugador
+  - Info de tier, media y valor de cada equipo
+- ✅ **SISTEMA DE OJEADOR:**
+  - 4 niveles (Sin ojeador → Élite)
+  - Analiza necesidades del equipo automáticamente
+  - Genera 10-20 sugerencias de fichajes
+  - Nivel alto = sugerencias más precisas (personalidad, potencial, dificultad)
