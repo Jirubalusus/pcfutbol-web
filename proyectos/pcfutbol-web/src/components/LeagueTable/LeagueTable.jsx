@@ -102,7 +102,7 @@ export default function LeagueTable() {
     
     if (needsInit) {
       console.log('Inicializando otras ligas...');
-      const otherLeagues = initializeOtherLeagues(playerLeagueId);
+      const otherLeagues = initializeOtherLeagues(playerLeagueId, state.playerGroupId);
       
       // Simular hasta la semana actual
       let simulatedLeagues = otherLeagues;

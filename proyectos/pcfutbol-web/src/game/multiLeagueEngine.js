@@ -1058,7 +1058,7 @@ export function initializeNewSeasonWithPromotions(state, playerTeamId, playoffBr
   }
   
   // Para otras ligas europeas, simplemente reiniciamos sin cambios
-  const otherLeagues = initializeOtherLeagues(playerLeagueId);
+  const otherLeagues = initializeOtherLeagues(playerLeagueId, state.playerGroupId);
   const config = LEAGUE_CONFIG[playerLeagueId];
   
   if (config?.isGroupLeague) {

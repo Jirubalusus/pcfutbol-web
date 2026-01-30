@@ -328,7 +328,7 @@ export default function TeamSelection() {
     dispatch({ type: 'UPDATE_LEAGUE_TEAMS', payload: allLeagueTeamsWithData });
     
     // Inicializar otras ligas para poder verlas en la clasificación
-    const otherLeagues = initializeOtherLeagues(selectedLeague);
+    const otherLeagues = initializeOtherLeagues(selectedLeague, hasGroups ? selectedGroup : null);
     dispatch({ type: 'SET_OTHER_LEAGUES', payload: otherLeagues });
     
     const objectives = generateSeasonObjectives(selectedTeam, selectedLeague, leagueData.table);
