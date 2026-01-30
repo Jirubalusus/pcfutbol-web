@@ -588,50 +588,7 @@ export default function TeamSelection() {
         {/* PAÍSES - Mapa interactivo */}
         {currentContent === 'countries' && (
           <div className="map-selection">
-            {/* Selector de temporada */}
-            <div className="season-selector">
-              <label className="season-selector__label">Temporada</label>
-              <div className="season-selector__wrapper">
-                <button 
-                  className="season-selector__arrow"
-                  onClick={() => {
-                    const idx = AVAILABLE_SEASONS.findIndex(s => s.id === selectedSeason.id);
-                    if (idx < AVAILABLE_SEASONS.length - 1) {
-                      setSelectedSeason(AVAILABLE_SEASONS[idx + 1]);
-                    }
-                  }}
-                  disabled={selectedSeason.id === AVAILABLE_SEASONS[AVAILABLE_SEASONS.length - 1].id}
-                >
-                  ◀
-                </button>
-                <select 
-                  className="season-selector__select"
-                  value={selectedSeason.id}
-                  onChange={(e) => {
-                    const season = AVAILABLE_SEASONS.find(s => s.id === e.target.value);
-                    if (season) setSelectedSeason(season);
-                  }}
-                >
-                  {AVAILABLE_SEASONS.map(season => (
-                    <option key={season.id} value={season.id}>
-                      {season.label}
-                    </option>
-                  ))}
-                </select>
-                <button 
-                  className="season-selector__arrow"
-                  onClick={() => {
-                    const idx = AVAILABLE_SEASONS.findIndex(s => s.id === selectedSeason.id);
-                    if (idx > 0) {
-                      setSelectedSeason(AVAILABLE_SEASONS[idx - 1]);
-                    }
-                  }}
-                  disabled={selectedSeason.id === AVAILABLE_SEASONS[0].id}
-                >
-                  ▶
-                </button>
-              </div>
-            </div>
+            {/* TODO: Selector de temporada (desactivado por ahora) */}
             
             {/* Row con mapa y panel */}
             <div className="map-selection__row">
