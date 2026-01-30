@@ -274,6 +274,16 @@ export default function SeasonEnd({ allTeams, onComplete }) {
       });
     }
     
+    // Update player's group ID for group leagues
+    if (newSeasonData.playerLeague?.playerGroup) {
+      dispatch({
+        type: 'SET_PLAYER_GROUP',
+        payload: newSeasonData.playerLeague.playerGroup
+      });
+    } else if (newSeasonData.playerLeague && !newSeasonData.playerLeague.isGroupLeague) {
+      dispatch({ type: 'SET_PLAYER_GROUP', payload: null });
+    }
+    
     // ============================================================
     // EUROPEAN COMPETITIONS — Initialize for next season
     // ============================================================

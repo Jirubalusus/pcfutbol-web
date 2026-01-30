@@ -17,6 +17,15 @@ export const EUROPEAN_SPOTS = {
     playoff: [3, 4, 5, 6],
     relegation: [20, 21, 22]
   },
+  primeraRFEF: {
+    // Group league - per-group zones handled by groupLeagueEngine
+    promotion: [1],       // Per group: champion ascends
+    relegation: []        // Per group: last 2 descend (handled separately)
+  },
+  segundaRFEF: {
+    promotion: [1],       // Per group: champion ascends
+    relegation: []        // No relegation (Tercera not in game)
+  },
   premierLeague: {
     champions: [1, 2, 3, 4],
     europaLeague: [5],

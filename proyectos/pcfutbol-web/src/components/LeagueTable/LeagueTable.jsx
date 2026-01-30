@@ -21,6 +21,21 @@ const LEAGUE_ZONES = {
     relegation: [20, 21, 22],
     teams: 22
   },
+  primeraRFEF: {
+    name: 'Primera Federación',
+    isGroupLeague: true,
+    promotion: [1],
+    relegation: [], // Dynamic based on group size
+    relegationFromBottom: 2, // Last 2 per group
+    teams: 0 // Dynamic
+  },
+  segundaRFEF: {
+    name: 'Segunda Federación',
+    isGroupLeague: true,
+    promotion: [1],
+    relegation: [],
+    teams: 0
+  },
   premierLeague: {
     name: 'Premier League',
     champions: [1, 2, 3, 4],
@@ -59,6 +74,8 @@ const LEAGUE_ZONES = {
 const COUNTRY_FLAGS = {
   laliga: '🇪🇸',
   segunda: '🇪🇸',
+  primeraRFEF: '🇪🇸',
+  segundaRFEF: '🇪🇸',
   premierLeague: '🏴󠁧󠁢󠁥󠁮󠁧󠁿',
   serieA: '🇮🇹',
   bundesliga: '🇩🇪',
@@ -69,6 +86,7 @@ export default function LeagueTable() {
   const { state, dispatch } = useGame();
   const playerLeagueId = state.playerLeagueId || 'laliga';
   const [selectedLeague, setSelectedLeague] = useState(playerLeagueId);
+  const [selectedGroup, setSelectedGroup] = useState(null);
   const [showAllTeams, setShowAllTeams] = useState(false);
   
   // Inicializar otras ligas si no existen (para partidas antiguas)
@@ -77,7 +95,10 @@ export default function LeagueTable() {
     
     // Verificar si necesitamos inicializar otras ligas
     const needsInit = !state.otherLeagues || Object.keys(state.otherLeagues).length === 0 ||
-      Object.values(state.otherLeagues).every(l => !l.table || l.table.length === 0);
+      Object.values(state.otherLeagues).every(l => {
+        if (l.isGroupLeague) return !l.groups || Object.keys(l.groups).length === 0;
+        return !l.table || l.table.length === 0;
+      });
     
     if (needsInit) {
       console.log('Inicializando otras ligas...');
@@ -93,13 +114,57 @@ export default function LeagueTable() {
     }
   }, [state.gameStarted, state.otherLeagues, playerLeagueId, state.currentWeek, dispatch]);
   
+  // Detect if selected league is a group league
+  const isGroupLeague = LEAGUE_ZONES[selectedLeague]?.isGroupLeague || 
+    state.otherLeagues?.[selectedLeague]?.isGroupLeague ||
+    LEAGUE_CONFIG[selectedLeague]?.isGroupLeague;
+  
+  // Get available groups for group leagues
+  const playerGroupId = state.playerGroupId;
+  const availableGroups = useMemo(() => {
+    if (!isGroupLeague) return [];
+    
+    const leagueData = state.otherLeagues?.[selectedLeague];
+    const groups = leagueData?.groups ? Object.keys(leagueData.groups) : [];
+    
+    // If this is the player's league and they have a group, include it
+    if (selectedLeague === playerLeagueId && playerGroupId) {
+      if (!groups.includes(playerGroupId)) {
+        groups.push(playerGroupId);
+      }
+    }
+    
+    return groups.sort();
+  }, [isGroupLeague, selectedLeague, playerLeagueId, playerGroupId, state.otherLeagues]);
+  
+  // Auto-select first group when switching to a group league
+  useEffect(() => {
+    if (isGroupLeague && availableGroups.length > 0 && !availableGroups.includes(selectedGroup)) {
+      setSelectedGroup(availableGroups[0]);
+    } else if (!isGroupLeague) {
+      setSelectedGroup(null);
+    }
+  }, [isGroupLeague, availableGroups, selectedGroup]);
+  
   // Obtener tabla según la liga seleccionada
   const table = useMemo(() => {
+    if (isGroupLeague) {
+      // Player's own group uses leagueTable (most up-to-date)
+      if (selectedLeague === playerLeagueId && selectedGroup === playerGroupId) {
+        return state.leagueTable || [];
+      }
+      
+      // Other groups come from otherLeagues
+      const leagueData = state.otherLeagues?.[selectedLeague];
+      if (!leagueData?.groups || !selectedGroup) return [];
+      return leagueData.groups[selectedGroup]?.table || [];
+    }
+    
     if (selectedLeague === playerLeagueId) {
       return state.leagueTable || [];
     }
     return state.otherLeagues?.[selectedLeague]?.table || [];
-  }, [selectedLeague, playerLeagueId, state.leagueTable, state.otherLeagues]);
+  }, [selectedLeague, selectedGroup, isGroupLeague, playerLeagueId, playerGroupId, state.leagueTable, state.otherLeagues]);
   
   const leagueConfig = LEAGUE_ZONES[selectedLeague] || LEAGUE_ZONES.laliga;
   const isPlayerLeague = selectedLeague === playerLeagueId;
@@ -112,6 +177,10 @@ export default function LeagueTable() {
     if (leagueConfig.promotion?.includes(position)) return 'promotion';
     if (leagueConfig.playoff?.includes(position)) return 'playoff';
     if (leagueConfig.relegation?.includes(position)) return 'relegation';
+    // Dynamic relegation for group leagues (last N teams)
+    if (leagueConfig.relegationFromBottom && table.length > 0) {
+      if (position > table.length - leagueConfig.relegationFromBottom) return 'relegation';
+    }
     return '';
   };
   
@@ -146,14 +215,21 @@ export default function LeagueTable() {
             onChange={(e) => {
               setSelectedLeague(e.target.value);
               setShowAllTeams(false);
+              setSelectedGroup(null);
             }}
           >
-            <option value="laliga">{COUNTRY_FLAGS.laliga} La Liga</option>
-            <option value="segunda">{COUNTRY_FLAGS.segunda} Segunda División</option>
-            <option value="premierLeague">{COUNTRY_FLAGS.premierLeague} Premier League</option>
-            <option value="serieA">{COUNTRY_FLAGS.serieA} Serie A</option>
-            <option value="bundesliga">{COUNTRY_FLAGS.bundesliga} Bundesliga</option>
-            <option value="ligue1">{COUNTRY_FLAGS.ligue1} Ligue 1</option>
+            <optgroup label="🇪🇸 España">
+              <option value="laliga">La Liga</option>
+              <option value="segunda">Segunda División</option>
+              <option value="primeraRFEF">Primera Federación</option>
+              <option value="segundaRFEF">Segunda Federación</option>
+            </optgroup>
+            <optgroup label="🌍 Europa">
+              <option value="premierLeague">{COUNTRY_FLAGS.premierLeague} Premier League</option>
+              <option value="serieA">{COUNTRY_FLAGS.serieA} Serie A</option>
+              <option value="bundesliga">{COUNTRY_FLAGS.bundesliga} Bundesliga</option>
+              <option value="ligue1">{COUNTRY_FLAGS.ligue1} Ligue 1</option>
+            </optgroup>
           </select>
         </div>
       </div>
@@ -174,6 +250,21 @@ export default function LeagueTable() {
         </div>
       )}
       
+      {/* Group tabs for group leagues */}
+      {isGroupLeague && availableGroups.length > 0 && (
+        <div className="league-table-v2__group-tabs">
+          {availableGroups.map(groupId => (
+            <button
+              key={groupId}
+              className={`group-tab ${selectedGroup === groupId ? 'active' : ''}`}
+              onClick={() => { setSelectedGroup(groupId); setShowAllTeams(false); }}
+            >
+              {groupId.replace('grupo', 'Grupo ')}
+            </button>
+          ))}
+        </div>
+      )}
+
       {hasData && (
         <>
           {/* Leyenda de zonas */}

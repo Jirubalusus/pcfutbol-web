@@ -100,6 +100,7 @@ const initialState = {
   
   // Liga actual del jugador
   playerLeagueId: 'laliga',
+  playerGroupId: null, // For group leagues (primeraRFEF, segundaRFEF)
   
   // Transfer Market
   transferOffers: [],
@@ -259,6 +260,9 @@ function gameReducer(state, action) {
     
     case 'SET_PLAYER_LEAGUE':
       return { ...state, playerLeagueId: action.payload };
+    
+    case 'SET_PLAYER_GROUP':
+      return { ...state, playerGroupId: action.payload };
     
     case 'ADD_RESULT':
       return { 

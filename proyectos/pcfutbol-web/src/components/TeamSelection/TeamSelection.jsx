@@ -281,6 +281,11 @@ export default function TeamSelection() {
     dispatch({ type: 'SET_FIXTURES', payload: leagueData.fixtures });
     dispatch({ type: 'SET_PLAYER_LEAGUE', payload: selectedLeague });
     
+    // For group leagues, store the player's group ID
+    if (hasGroups && selectedGroup) {
+      dispatch({ type: 'SET_PLAYER_GROUP', payload: selectedGroup });
+    }
+    
     // Guardar TODOS los equipos de TODAS las ligas para el mercado global y el explorador
     const allLeagueIds = [
       { id: 'laliga', getter: getLaLigaTeams },
