@@ -5,211 +5,289 @@
     "players": [
       {
         "name": "Rui Silva",
-        "position": "POR",
-        "rating": 84,
+        "position": "GK",
         "age": 31,
-        "nationality": "Portugal",
-        "marketValue": 7000000
+        "overall": 84,
+        "value": 7000000,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "João Virgínia",
-        "position": "POR",
-        "rating": 78,
+        "position": "GK",
         "age": 26,
-        "nationality": "Portugal",
-        "marketValue": 1000000
+        "overall": 78,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gonçalo Inácio",
-        "position": "DFC",
-        "rating": 88,
+        "position": "CB",
         "age": 25,
-        "nationality": "Portugal",
-        "marketValue": 45000000
+        "overall": 88,
+        "value": 45000000,
+        "salary": 135000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ousmane Diomande",
-        "position": "DFC",
-        "rating": 88,
+        "position": "CB",
         "age": 26,
-        "nationality": "Costa de Marfil",
-        "marketValue": 45000000
+        "overall": 88,
+        "value": 45000000,
+        "salary": 135000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Zeno Debast",
-        "position": "DFC",
-        "rating": 84,
+        "position": "CB",
         "age": 22,
-        "nationality": "Bélgica",
-        "marketValue": 30000000
+        "overall": 84,
+        "value": 30000000,
+        "salary": 90000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Eduardo Quaresma",
-        "position": "DFC",
-        "rating": 82,
+        "position": "CB",
         "age": 23,
-        "nationality": "Portugal",
-        "marketValue": 15000000
+        "overall": 82,
+        "value": 15000000,
+        "salary": 45000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Maxi Araújo",
-        "position": "DFC",
-        "rating": 81,
+        "position": "CB",
         "age": 20,
-        "nationality": "Uruguay",
-        "marketValue": 22000000
+        "overall": 81,
+        "value": 22000000,
+        "salary": 66000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nuno Santos",
-        "position": "DFC",
-        "rating": 82,
+        "position": "CB",
         "age": 30,
-        "nationality": "Portugal",
-        "marketValue": 5000000
+        "overall": 82,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matheus Reis",
-        "position": "DFC",
-        "rating": 80,
+        "position": "CB",
         "age": 30,
-        "nationality": "Brasil",
-        "marketValue": 4000000
+        "overall": 80,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ricardo Mangas",
-        "position": "DFC",
-        "rating": 80,
+        "position": "CB",
         "age": 27,
-        "nationality": "Portugal",
-        "marketValue": 2500000
+        "overall": 80,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Iván Fresneda",
-        "position": "DFC",
-        "rating": 78,
+        "position": "CB",
         "age": 22,
-        "nationality": "España",
-        "marketValue": 12000000
+        "overall": 78,
+        "value": 12000000,
+        "salary": 36000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Georgios Vagiannidis",
-        "position": "DFC",
-        "rating": 80,
+        "position": "CB",
         "age": 24,
-        "nationality": "Grecia",
-        "marketValue": 11000000
+        "overall": 80,
+        "value": 11000000,
+        "salary": 33000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Morten Hjulmand",
-        "position": "MC",
-        "rating": 87,
+        "position": "CM",
         "age": 42,
-        "nationality": "Dinamarca",
-        "marketValue": 50000000
+        "overall": 87,
+        "value": 50000000,
+        "salary": 150000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Bragança",
-        "position": "MC",
-        "rating": 82,
+        "position": "CM",
         "age": 23,
-        "nationality": "Portugal",
-        "marketValue": 10000000
+        "overall": 82,
+        "value": 10000000,
+        "salary": 30000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hidemasa Morita",
-        "position": "MC",
-        "rating": 81,
+        "position": "CM",
         "age": 30,
-        "nationality": "Japón",
-        "marketValue": 9000000
+        "overall": 81,
+        "value": 9000000,
+        "salary": 27000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Giorgi Kochorashvili",
-        "position": "MC",
-        "rating": 81,
+        "position": "CM",
         "age": 26,
-        "nationality": "Georgia",
-        "marketValue": 6000000
+        "overall": 81,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Geny Catamo",
-        "position": "MC",
-        "rating": 88,
+        "position": "CM",
         "age": 25,
-        "nationality": "Mozambique",
-        "marketValue": 15000000
+        "overall": 88,
+        "value": 15000000,
+        "salary": 45000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "João Simões",
-        "position": "MC",
-        "rating": 81,
+        "position": "CM",
         "age": 19,
-        "nationality": "Portugal",
-        "marketValue": 15000000
+        "overall": 81,
+        "value": 15000000,
+        "salary": 45000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pedro Gonçalves",
-        "position": "DC",
-        "rating": 91,
+        "position": "ST",
         "age": 27,
-        "nationality": "Portugal",
-        "marketValue": 30000000
+        "overall": 91,
+        "value": 30000000,
+        "salary": 90000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alisson Santos",
-        "position": "DC",
-        "rating": 78,
+        "position": "ST",
         "age": 27,
-        "nationality": "Brasil",
-        "marketValue": 4000000
+        "overall": 78,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Geovany Quenda",
-        "position": "DC",
-        "rating": 87,
+        "position": "ST",
         "age": 18,
-        "nationality": "Portugal",
-        "marketValue": 45000000
+        "overall": 87,
+        "value": 45000000,
+        "salary": 135000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Francisco Trincão",
-        "position": "DC",
-        "rating": 85,
+        "position": "ST",
         "age": 17,
-        "nationality": "Portugal",
-        "marketValue": 35000000
+        "overall": 85,
+        "value": 35000000,
+        "salary": 105000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luís Guilherme",
-        "position": "DC",
-        "rating": 76,
+        "position": "ST",
         "age": 31,
-        "nationality": "Brasil",
-        "marketValue": 10000000
+        "overall": 76,
+        "value": 10000000,
+        "salary": 30000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Souleymane Faye",
-        "position": "DC",
-        "rating": 79,
+        "position": "ST",
         "age": 22,
-        "nationality": "Senegal",
-        "marketValue": 1500000
+        "overall": 79,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luis Suárez",
-        "position": "DC",
-        "rating": 90,
+        "position": "ST",
         "age": 28,
-        "nationality": "Colombia",
-        "marketValue": 22000000
+        "overall": 90,
+        "value": 22000000,
+        "salary": 66000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Fotis Ioannidis",
-        "position": "DC",
-        "rating": 84,
+        "position": "ST",
         "age": 26,
-        "nationality": "Grecia",
-        "marketValue": 20000000
+        "overall": 84,
+        "value": 20000000,
+        "salary": 60000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -219,219 +297,300 @@
     "players": [
       {
         "name": "Diogo Costa",
-        "position": "POR",
-        "rating": 88,
+        "position": "GK",
         "age": 26,
-        "nationality": "Portugal",
-        "marketValue": 40000000
+        "overall": 88,
+        "value": 40000000,
+        "salary": 120000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cláudio Ramos",
-        "position": "POR",
-        "rating": 80,
+        "position": "GK",
         "age": 34,
-        "nationality": "Portugal",
-        "marketValue": 1000000
+        "overall": 80,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "João Costa",
-        "position": "POR",
-        "rating": 74,
+        "position": "GK",
         "age": 24,
-        "nationality": "Portugal",
-        "marketValue": 800
+        "overall": 74,
+        "value": 800,
+        "salary": 24000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakub Kiwior",
-        "position": "DFC",
-        "rating": 83,
+        "position": "CB",
         "age": 25,
-        "nationality": "Polonia",
-        "marketValue": 27000000
+        "overall": 83,
+        "value": 27000000,
+        "salary": 81000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nehuén Pérez",
-        "position": "DFC",
-        "rating": 78,
+        "position": "CB",
         "age": 18,
-        "nationality": "Argentina",
-        "marketValue": 13000000
+        "overall": 78,
+        "value": 13000000,
+        "salary": 39000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jan Bednarek",
-        "position": "DFC",
-        "rating": 82,
+        "position": "CB",
         "age": 29,
-        "nationality": "Polonia",
-        "marketValue": 11000000
+        "overall": 82,
+        "value": 11000000,
+        "salary": 33000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dominik Prpić",
-        "position": "DFC",
-        "rating": 77,
+        "position": "CB",
         "age": 21,
-        "nationality": "Croacia",
-        "marketValue": 5000000
+        "overall": 77,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Thiago Silva",
-        "position": "DFC",
-        "rating": 74,
+        "position": "CB",
         "age": 41,
-        "nationality": "Brasil",
-        "marketValue": 600
+        "overall": 74,
+        "value": 600,
+        "salary": 24000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Francisco Moura",
-        "position": "DFC",
-        "rating": 85,
+        "position": "CB",
         "age": 26,
-        "nationality": "Portugal",
-        "marketValue": 15000000
+        "overall": 85,
+        "value": 15000000,
+        "salary": 45000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Zaidu Sanusi",
-        "position": "DFC",
-        "rating": 80,
+        "position": "CB",
         "age": 28,
-        "nationality": "Nigeria",
-        "marketValue": 3000000
+        "overall": 80,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alberto Costa",
-        "position": "DFC",
-        "rating": 82,
+        "position": "CB",
         "age": 20,
-        "nationality": "Portugal",
-        "marketValue": 15000000
+        "overall": 82,
+        "value": 15000000,
+        "salary": 45000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Martim Fernandes",
-        "position": "DFC",
-        "rating": 78,
+        "position": "CB",
         "age": 20,
-        "nationality": "Portugal",
-        "marketValue": 12000000
+        "overall": 78,
+        "value": 12000000,
+        "salary": 36000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alan Varela",
-        "position": "MC",
-        "rating": 86,
+        "position": "CM",
         "age": 22,
-        "nationality": "Argentina",
-        "marketValue": 32000000
+        "overall": 86,
+        "value": 32000000,
+        "salary": 96000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pablo Rosario",
-        "position": "MC",
-        "rating": 82,
+        "position": "CM",
         "age": 29,
-        "nationality": "República Dominicana",
-        "marketValue": 8000000
+        "overall": 82,
+        "value": 8000000,
+        "salary": 24000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tomás Pérez",
-        "position": "MC",
-        "rating": 81,
+        "position": "CM",
         "age": 25,
-        "nationality": "Argentina",
-        "marketValue": 3000000
+        "overall": 81,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Victor Froholdt",
-        "position": "MC",
-        "rating": 86,
+        "position": "CM",
         "age": 19,
-        "nationality": "Dinamarca",
-        "marketValue": 30000000
+        "overall": 86,
+        "value": 30000000,
+        "salary": 90000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stephen Eustaquio",
-        "position": "MC",
-        "rating": 81,
+        "position": "CM",
         "age": 29,
-        "nationality": "Canadá",
-        "marketValue": 7000000
+        "overall": 81,
+        "value": 7000000,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rodrigo Mora",
-        "position": "MC",
-        "rating": 83,
+        "position": "CM",
         "age": 18,
-        "nationality": "Portugal",
-        "marketValue": 40000000
+        "overall": 83,
+        "value": 40000000,
+        "salary": 120000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gabri Veiga",
-        "position": "MC",
-        "rating": 85,
+        "position": "CM",
         "age": 23,
-        "nationality": "España",
-        "marketValue": 23000000
+        "overall": 85,
+        "value": 23000000,
+        "salary": 69000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Borja Sainz",
-        "position": "DC",
-        "rating": 82,
+        "position": "ST",
         "age": 17,
-        "nationality": "España",
-        "marketValue": 23000000
+        "overall": 82,
+        "value": 23000000,
+        "salary": 69000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Oskar Pietuszewski",
-        "position": "DC",
-        "rating": 81,
+        "position": "ST",
         "age": 17,
-        "nationality": "Polonia",
-        "marketValue": 12000000
+        "overall": 81,
+        "value": 12000000,
+        "salary": 36000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yann Karamoh",
-        "position": "DC",
-        "rating": 81,
+        "position": "ST",
         "age": 27,
-        "nationality": "Francia",
-        "marketValue": 1500000
+        "overall": 81,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "William Gomes",
-        "position": "DC",
-        "rating": 81,
+        "position": "ST",
         "age": 19,
-        "nationality": "Brasil",
-        "marketValue": 20000000
+        "overall": 81,
+        "value": 20000000,
+        "salary": 60000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pepê",
-        "position": "DC",
-        "rating": 84,
+        "position": "ST",
         "age": 28,
-        "nationality": "Brasil",
-        "marketValue": 20000000
+        "overall": 84,
+        "value": 20000000,
+        "salary": 60000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Samu Aghehowa",
-        "position": "DC",
-        "rating": 90,
+        "position": "ST",
         "age": 21,
-        "nationality": "España",
-        "marketValue": 50000000
+        "overall": 90,
+        "value": 50000000,
+        "salary": 150000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Deniz Gül",
-        "position": "DC",
-        "rating": 79,
+        "position": "ST",
         "age": 27,
-        "nationality": "Turquía",
-        "marketValue": 6000000
+        "overall": 79,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luuk de Jong",
-        "position": "DC",
-        "rating": 81,
+        "position": "ST",
         "age": 26,
-        "nationality": "Países Bajos",
-        "marketValue": 1500000
+        "overall": 81,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -441,211 +600,289 @@
     "players": [
       {
         "name": "Anatoliy Trubin",
-        "position": "POR",
-        "rating": 78,
+        "position": "GK",
         "age": 24,
-        "nationality": "Ucrania",
-        "marketValue": 28000000
+        "overall": 78,
+        "value": 28000000,
+        "salary": 84000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Samuel Soares",
-        "position": "POR",
-        "rating": 73,
+        "position": "GK",
         "age": 24,
-        "nationality": "Portugal",
-        "marketValue": 4000000
+        "overall": 73,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "António Silva",
-        "position": "DFC",
-        "rating": 82,
+        "position": "CB",
         "age": 22,
-        "nationality": "Portugal",
-        "marketValue": 30000000
+        "overall": 82,
+        "value": 30000000,
+        "salary": 90000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tomás Araújo",
-        "position": "DFC",
-        "rating": 77,
+        "position": "CB",
         "age": 44,
-        "nationality": "Portugal",
-        "marketValue": 28000000
+        "overall": 77,
+        "value": 28000000,
+        "salary": 84000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nicolás Otamendi",
-        "position": "DFC",
-        "rating": 81,
+        "position": "CB",
         "age": 30,
-        "nationality": "Argentina",
-        "marketValue": 1000000
+        "overall": 81,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Samuel Dahl",
-        "position": "DFC",
-        "rating": 82,
+        "position": "CB",
         "age": 26,
-        "nationality": "Suecia",
-        "marketValue": 9000000
+        "overall": 82,
+        "value": 9000000,
+        "salary": 27000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "José Neto",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 17,
-        "nationality": "Portugal",
-        "marketValue": 3000000
+        "overall": 75,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Amar Dedić",
-        "position": "DFC",
-        "rating": 81,
+        "position": "CB",
         "age": 17,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 15000000
+        "overall": 81,
+        "value": 15000000,
+        "salary": 45000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexander Bah",
-        "position": "DFC",
-        "rating": 80,
+        "position": "CB",
         "age": 28,
-        "nationality": "Dinamarca",
-        "marketValue": 9000000
+        "overall": 80,
+        "value": 9000000,
+        "salary": 27000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sidny Lopes Cabral",
-        "position": "DFC",
-        "rating": 78,
+        "position": "CB",
         "age": 15,
-        "nationality": "Cabo Verde",
-        "marketValue": 2000000
+        "overall": 78,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Richard Ríos",
-        "position": "MC",
-        "rating": 81,
+        "position": "CM",
         "age": 20,
-        "nationality": "Colombia",
-        "marketValue": 22000000
+        "overall": 81,
+        "value": 22000000,
+        "salary": 66000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Enzo Barrenechea",
-        "position": "MC",
-        "rating": 81,
+        "position": "CM",
         "age": 24,
-        "nationality": "Argentina",
-        "marketValue": 15000000
+        "overall": 81,
+        "value": 15000000,
+        "salary": 45000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Manu Silva",
-        "position": "MC",
-        "rating": 75,
+        "position": "CM",
         "age": 16,
-        "nationality": "Portugal",
-        "marketValue": 10000000
+        "overall": 75,
+        "value": 10000000,
+        "salary": 30000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Fredrik Aursnes",
-        "position": "MC",
-        "rating": 86,
+        "position": "CM",
         "age": 30,
-        "nationality": "Noruega",
-        "marketValue": 17000000
+        "overall": 86,
+        "value": 17000000,
+        "salary": 51000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Leandro Barreiro",
-        "position": "MC",
-        "rating": 79,
+        "position": "CM",
         "age": 18,
-        "nationality": "Luxemburgo",
-        "marketValue": 15000000
+        "overall": 79,
+        "value": 15000000,
+        "salary": 45000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "João Veloso",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 20,
-        "nationality": "Portugal",
-        "marketValue": 1500000
+        "overall": 74,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Georgiy Sudakov",
-        "position": "MC",
-        "rating": 84,
+        "position": "CM",
         "age": 23,
-        "nationality": "Ucrania",
-        "marketValue": 30000000
+        "overall": 84,
+        "value": 30000000,
+        "salary": 90000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "João Rego",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 20,
-        "nationality": "Portugal",
-        "marketValue": 3000000
+        "overall": 74,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Andreas Schjelderup",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 21,
-        "nationality": "Noruega",
-        "marketValue": 14000000
+        "overall": 74,
+        "value": 14000000,
+        "salary": 42000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bruma",
-        "position": "DC",
-        "rating": 80,
+        "position": "ST",
         "age": 27,
-        "nationality": "Portugal",
-        "marketValue": 5000000
+        "overall": 80,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dodi Lukébakio",
-        "position": "DC",
-        "rating": 85,
+        "position": "ST",
         "age": 28,
-        "nationality": "Bélgica",
-        "marketValue": 20000000
+        "overall": 85,
+        "value": 20000000,
+        "salary": 60000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gianluca Prestianni",
-        "position": "DC",
-        "rating": 77,
+        "position": "ST",
         "age": 25,
-        "nationality": "Argentina",
-        "marketValue": 12000000
+        "overall": 77,
+        "value": 12000000,
+        "salary": 36000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rafa Silva",
-        "position": "DC",
-        "rating": 80,
+        "position": "ST",
         "age": 27,
-        "nationality": "Portugal",
-        "marketValue": 5000000
+        "overall": 80,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vangelis Pavlidis",
-        "position": "DC",
-        "rating": 91,
+        "position": "ST",
         "age": 27,
-        "nationality": "Grecia",
-        "marketValue": 35000000
+        "overall": 91,
+        "value": 35000000,
+        "salary": 105000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Franjo Ivanović",
-        "position": "DC",
-        "rating": 78,
+        "position": "ST",
         "age": 22,
-        "nationality": "Croacia",
-        "marketValue": 20000000
+        "overall": 78,
+        "value": 20000000,
+        "salary": 60000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Henrique Araújo",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 39,
-        "nationality": "Portugal",
-        "marketValue": 2000000
+        "overall": 68,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -655,227 +892,311 @@
     "players": [
       {
         "name": "Lukas Hornicek",
-        "position": "POR",
-        "rating": 77,
+        "position": "GK",
         "age": 23,
-        "nationality": "República Checa",
-        "marketValue": 10000000
+        "overall": 77,
+        "value": 10000000,
+        "salary": 30000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alaa Bellaarouch",
-        "position": "POR",
-        "rating": 73,
+        "position": "GK",
         "age": 36,
-        "nationality": "Marruecos",
-        "marketValue": 400
+        "overall": 73,
+        "value": 400,
+        "salary": 23000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tiago Sá",
-        "position": "POR",
-        "rating": 77,
+        "position": "GK",
         "age": 31,
-        "nationality": "Portugal",
-        "marketValue": 300
+        "overall": 77,
+        "value": 300,
+        "salary": 27000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sikou Niakaté",
-        "position": "DFC",
-        "rating": 80,
+        "position": "CB",
         "age": 26,
-        "nationality": "Malí",
-        "marketValue": 8000000
+        "overall": 80,
+        "value": 8000000,
+        "salary": 24000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bright Arrey-Mbi",
-        "position": "DFC",
-        "rating": 80,
+        "position": "CB",
         "age": 26,
-        "nationality": "Alemania",
-        "marketValue": 7000000
+        "overall": 80,
+        "value": 7000000,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gustaf Lagerbielke",
-        "position": "DFC",
-        "rating": 78,
+        "position": "CB",
         "age": 25,
-        "nationality": "Suecia",
-        "marketValue": 5000000
+        "overall": 78,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adrian Leon Barisic",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 37,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 4000000
+        "overall": 73,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jonatás Noro",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 20,
-        "nationality": "Portugal",
-        "marketValue": 1000000
+        "overall": 75,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Paulo Oliveira",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 15,
-        "nationality": "Portugal",
-        "marketValue": 500
+        "overall": 73,
+        "value": 500,
+        "salary": 23000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Leonardo Lelo",
-        "position": "DFC",
-        "rating": 79,
+        "position": "CB",
         "age": 25,
-        "nationality": "Portugal",
-        "marketValue": 8000000
+        "overall": 79,
+        "value": 8000000,
+        "salary": 24000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Víctor Gómez",
-        "position": "DFC",
-        "rating": 78,
+        "position": "CB",
         "age": 25,
-        "nationality": "España",
-        "marketValue": 7000000
+        "overall": 78,
+        "value": 7000000,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gabriel Moscardo",
-        "position": "MC",
-        "rating": 75,
+        "position": "CM",
         "age": 17,
-        "nationality": "Brasil",
-        "marketValue": 7000000
+        "overall": 75,
+        "value": 7000000,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Demir Ege Tıknaz",
-        "position": "MC",
-        "rating": 76,
+        "position": "CM",
         "age": 21,
-        "nationality": "Turquía",
-        "marketValue": 6000000
+        "overall": 76,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vítor Carvalho",
-        "position": "MC",
-        "rating": 78,
+        "position": "CM",
         "age": 28,
-        "nationality": "Brasil",
-        "marketValue": 4000000
+        "overall": 78,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Florian Grillitsch",
-        "position": "MC",
-        "rating": 79,
+        "position": "CM",
         "age": 27,
-        "nationality": "Austria",
-        "marketValue": 2000000
+        "overall": 79,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yanis da Rocha",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 41,
-        "nationality": "Portugal",
-        "marketValue": 200
+        "overall": 71,
+        "value": 200,
+        "salary": 21000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rodrigo Zalazar",
-        "position": "MC",
-        "rating": 85,
+        "position": "CM",
         "age": 26,
-        "nationality": "Uruguay",
-        "marketValue": 20000000
+        "overall": 85,
+        "value": 20000000,
+        "salary": 60000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gorby",
-        "position": "MC",
-        "rating": 80,
+        "position": "CM",
         "age": 29,
-        "nationality": "Francia",
-        "marketValue": 7000000
+        "overall": 80,
+        "value": 7000000,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Diego Rodrigues",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 20,
-        "nationality": "Portugal",
-        "marketValue": 4500000
+        "overall": 74,
+        "value": 4500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "João Moutinho",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 39,
-        "nationality": "Portugal",
-        "marketValue": 500
+        "overall": 72,
+        "value": 500,
+        "salary": 22000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mario Dorgeles",
-        "position": "MC",
-        "rating": 76,
+        "position": "CM",
         "age": 20,
-        "nationality": "Costa de Marfil",
-        "marketValue": 10000000
+        "overall": 76,
+        "value": 10000000,
+        "salary": 30000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ricardo Horta",
-        "position": "DC",
-        "rating": 80,
+        "position": "ST",
         "age": 21,
-        "nationality": "Portugal",
-        "marketValue": 10000000
+        "overall": 80,
+        "value": 10000000,
+        "salary": 30000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gabri Martínez",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 23,
-        "nationality": "España",
-        "marketValue": 3500000
+        "overall": 74,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sandro Vidigal",
-        "position": "DC",
-        "rating": 73,
+        "position": "ST",
         "age": 18,
-        "nationality": "Portugal",
-        "marketValue": 1500000
+        "overall": 73,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pau Víctor",
-        "position": "DC",
-        "rating": 77,
+        "position": "ST",
         "age": 18,
-        "nationality": "España",
-        "marketValue": 10000000
+        "overall": 77,
+        "value": 10000000,
+        "salary": 30000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Fran Navarro",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 39,
-        "nationality": "España",
-        "marketValue": 4500000
+        "overall": 71,
+        "value": 4500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Amine El Ouazzani",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 24,
-        "nationality": "Marruecos",
-        "marketValue": 3500000
+        "overall": 74,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Samy Jr. Merheg",
-        "position": "DC",
-        "rating": 76,
+        "position": "ST",
         "age": 19,
-        "nationality": "Líbano",
-        "marketValue": 1000000
+        "overall": 76,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -885,211 +1206,289 @@
     "players": [
       {
         "name": "Lazar Carević",
-        "position": "POR",
-        "rating": 75,
+        "position": "GK",
         "age": 25,
-        "nationality": "Montenegro",
-        "marketValue": 3000000
+        "overall": 75,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ivan Zlobin",
-        "position": "POR",
-        "rating": 76,
+        "position": "GK",
         "age": 28,
-        "nationality": "Rusia",
-        "marketValue": 1500000
+        "overall": 76,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Léo Realpe",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 24,
-        "nationality": "Ecuador",
-        "marketValue": 4000000
+        "overall": 75,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Justin de Haas",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 16,
-        "nationality": "Países Bajos",
-        "marketValue": 4000000
+        "overall": 73,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Renan Santana",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 20,
-        "nationality": "Brasil",
-        "marketValue": 1000000
+        "overall": 73,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ibrahima Ba",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 20,
-        "nationality": "Senegal",
-        "marketValue": 1000000
+        "overall": 72,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pedro Bondo",
-        "position": "DFC",
-        "rating": 77,
+        "position": "CB",
         "age": 28,
-        "nationality": "Angola",
-        "marketValue": 2000000
+        "overall": 77,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rafa Soares",
-        "position": "DFC",
-        "rating": 77,
+        "position": "CB",
         "age": 30,
-        "nationality": "Portugal",
-        "marketValue": 1000000
+        "overall": 77,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rodrigo Pinheiro",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 17,
-        "nationality": "Portugal",
-        "marketValue": 3500000
+        "overall": 73,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Garcia",
-        "position": "DFC",
-        "rating": 74,
+        "position": "CB",
         "age": 24,
-        "nationality": "Brasil",
-        "marketValue": 2000000
+        "overall": 74,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tom van de Looi",
-        "position": "MC",
-        "rating": 77,
+        "position": "CM",
         "age": 26,
-        "nationality": "Países Bajos",
-        "marketValue": 2000000
+        "overall": 77,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mathias de Amorim",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 21,
-        "nationality": "Portugal",
-        "marketValue": 6000000
+        "overall": 74,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marcos Peña",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 21,
-        "nationality": "España",
-        "marketValue": 1500000
+        "overall": 72,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Otar Mamageishvili",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 15,
-        "nationality": "Georgia",
-        "marketValue": 700
+        "overall": 71,
+        "value": 700,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gustavo Sá",
-        "position": "MC",
-        "rating": 77,
+        "position": "CM",
         "age": 20,
-        "nationality": "Portugal",
-        "marketValue": 16000000
+        "overall": 77,
+        "value": 16000000,
+        "salary": 48000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Otso Liimatta",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 21,
-        "nationality": "Finlandia",
-        "marketValue": 800
+        "overall": 72,
+        "value": 800,
+        "salary": 22000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sorriso",
-        "position": "DC",
-        "rating": 76,
+        "position": "ST",
         "age": 24,
-        "nationality": "Brasil",
-        "marketValue": 5000000
+        "overall": 76,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Óscar Aranda",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 23,
-        "nationality": "España",
-        "marketValue": 4000000
+        "overall": 75,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Antoine Joujou",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 22,
-        "nationality": "Francia",
-        "marketValue": 2000000
+        "overall": 72,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Roméo Beney",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 18,
-        "nationality": "Suiza",
-        "marketValue": 1500000
+        "overall": 74,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rochinha",
-        "position": "DC",
-        "rating": 77,
+        "position": "ST",
         "age": 30,
-        "nationality": "Portugal",
-        "marketValue": 600
+        "overall": 77,
+        "value": 600,
+        "salary": 27000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gil Dias",
-        "position": "DC",
-        "rating": 77,
+        "position": "ST",
         "age": 23,
-        "nationality": "Portugal",
-        "marketValue": 1500000
+        "overall": 77,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pedro Santos",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 22,
-        "nationality": "Portugal",
-        "marketValue": 600
+        "overall": 71,
+        "value": 600,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yassir Zabiri",
-        "position": "DC",
-        "rating": 73,
+        "position": "ST",
         "age": 21,
-        "nationality": "Marruecos",
-        "marketValue": 4000000
+        "overall": 73,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Simon Elisor",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 26,
-        "nationality": "Francia",
-        "marketValue": 1500000
+        "overall": 75,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Umar Abubakar",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 19,
-        "nationality": "Nigeria",
-        "marketValue": 600
+        "overall": 70,
+        "value": 600,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1099,219 +1498,300 @@
     "players": [
       {
         "name": "Cezary Miszta",
-        "position": "POR",
-        "rating": 72,
+        "position": "GK",
         "age": 24,
-        "nationality": "Polonia",
-        "marketValue": 3000000
+        "overall": 72,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kevin Chamorro",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 22,
-        "nationality": "Costa Rica",
-        "marketValue": 300
+        "overall": 70,
+        "value": 300,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alfonso Pastor",
-        "position": "POR",
-        "rating": 76,
+        "position": "GK",
         "age": 29,
-        "nationality": "España",
-        "marketValue": 200
+        "overall": 76,
+        "value": 200,
+        "salary": 26000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Andreas Ntoi",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 22,
-        "nationality": "Grecia",
-        "marketValue": 4000000
+        "overall": 73,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jonathan Panzo",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 25,
-        "nationality": "Inglaterra",
-        "marketValue": 1500000
+        "overall": 75,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Francisco Petrasso",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 23,
-        "nationality": "Argentina",
-        "marketValue": 1500000
+        "overall": 75,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nelson Abbey",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 22,
-        "nationality": "Inglaterra",
-        "marketValue": 1000000
+        "overall": 73,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakub Brabec",
-        "position": "DFC",
-        "rating": 76,
+        "position": "CB",
         "age": 32,
-        "nationality": "República Checa",
-        "marketValue": 600
+        "overall": 76,
+        "value": 600,
+        "salary": 26000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Julien Lomboto",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 23,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 73,
+        "value": 400,
+        "salary": 23000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Omar Richards",
-        "position": "DFC",
-        "rating": 77,
+        "position": "CB",
         "age": 27,
-        "nationality": "Inglaterra",
-        "marketValue": 2000000
+        "overall": 77,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nikolaos Athanasiou",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 24,
-        "nationality": "Grecia",
-        "marketValue": 1000000
+        "overall": 75,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marios Vrousai",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 17,
-        "nationality": "Grecia",
-        "marketValue": 2500000
+        "overall": 73,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "João Tomé",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 20,
-        "nationality": "Portugal",
-        "marketValue": 400
+        "overall": 71,
+        "value": 400,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Georgios Liavas",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 24,
-        "nationality": "Grecia",
-        "marketValue": 900
+        "overall": 73,
+        "value": 900,
+        "salary": 23000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tamás Nikitscher",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 44,
-        "nationality": "Hungría",
-        "marketValue": 500
+        "overall": 69,
+        "value": 500,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Brandon Aguilera",
-        "position": "MC",
-        "rating": 75,
+        "position": "CM",
         "age": 22,
-        "nationality": "Costa Rica",
-        "marketValue": 2000000
+        "overall": 75,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "João Graça",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 21,
-        "nationality": "Portugal",
-        "marketValue": 300
+        "overall": 71,
+        "value": 300,
+        "salary": 21000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ole Pohlmann",
-        "position": "MC",
-        "rating": 75,
+        "position": "CM",
         "age": 24,
-        "nationality": "Alemania",
-        "marketValue": 1500000
+        "overall": 75,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Antonis Papakanellos",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 19,
-        "nationality": "Grecia",
-        "marketValue": 500
+        "overall": 71,
+        "value": 500,
+        "salary": 21000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tobías Medina",
-        "position": "DC",
-        "rating": 76,
+        "position": "ST",
         "age": 27,
-        "nationality": "Argentina",
-        "marketValue": 800
+        "overall": 76,
+        "value": 800,
+        "salary": 26000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Diogo Bezerra",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 23,
-        "nationality": "Brasil",
-        "marketValue": 1800000
+        "overall": 75,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rafael Lobato",
-        "position": "DC",
-        "rating": 77,
+        "position": "ST",
         "age": 25,
-        "nationality": "Brasil",
-        "marketValue": 1200000
+        "overall": 77,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dario Špikić",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 18,
-        "nationality": "Croacia",
-        "marketValue": 1000000
+        "overall": 72,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Amine Rehmi",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 23,
-        "nationality": "Países Bajos",
-        "marketValue": 100
+        "overall": 74,
+        "value": 100,
+        "salary": 24000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Clayton",
-        "position": "DC",
-        "rating": 81,
+        "position": "ST",
         "age": 27,
-        "nationality": "Brasil",
-        "marketValue": 8000000
+        "overall": 81,
+        "value": 8000000,
+        "salary": 24000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Karem Zoabi",
-        "position": "DC",
-        "rating": 73,
+        "position": "ST",
         "age": 19,
-        "nationality": "Israel",
-        "marketValue": 800
+        "overall": 73,
+        "value": 800,
+        "salary": 23000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marc Gual",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 28,
-        "nationality": "España",
-        "marketValue": 700
+        "overall": 75,
+        "value": 700,
+        "salary": 25000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1321,187 +1801,256 @@
     "players": [
       {
         "name": "Gabriel Batista",
-        "position": "POR",
-        "rating": 77,
+        "position": "GK",
         "age": 27,
-        "nationality": "Brasil",
-        "marketValue": 4000000
+        "overall": 77,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Neneca",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 22,
-        "nationality": "Brasil",
-        "marketValue": 400
+        "overall": 70,
+        "value": 400,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cristian",
-        "position": "POR",
-        "rating": 74,
+        "position": "GK",
         "age": 25,
-        "nationality": "Brasil",
-        "marketValue": 75
+        "overall": 74,
+        "value": 75,
+        "salary": 24000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "MT",
-        "position": "DFC",
-        "rating": 77,
+        "position": "CB",
         "age": 32,
-        "nationality": "Brasil",
-        "marketValue": 4500000
+        "overall": 77,
+        "value": 4500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sidney Lima",
-        "position": "DFC",
-        "rating": 77,
+        "position": "CB",
         "age": 23,
-        "nationality": "Brasil",
-        "marketValue": 3500000
+        "overall": 77,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Frederico Venâncio",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 21,
-        "nationality": "Portugal",
-        "marketValue": 500
+        "overall": 72,
+        "value": 500,
+        "salary": 22000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pedro Pacheco",
-        "position": "DFC",
-        "rating": 76,
+        "position": "CB",
         "age": 29,
-        "nationality": "Portugal",
-        "marketValue": 400
+        "overall": 76,
+        "value": 400,
+        "salary": 26000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luís Rocha",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 39,
-        "nationality": "Portugal",
-        "marketValue": 100
+        "overall": 70,
+        "value": 100,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Paulo Victor",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 24,
-        "nationality": "Brasil",
-        "marketValue": 1000000
+        "overall": 75,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lucas Soares",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 42,
-        "nationality": "Brasil",
-        "marketValue": 1500000
+        "overall": 71,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Diogo Calila",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 27,
-        "nationality": "Mozambique",
-        "marketValue": 500
+        "overall": 75,
+        "value": 500,
+        "salary": 25000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adriano Firmino",
-        "position": "MC",
-        "rating": 77,
+        "position": "CM",
         "age": 26,
-        "nationality": "Brasil",
-        "marketValue": 2500000
+        "overall": 77,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pedro Ferreira",
-        "position": "MC",
-        "rating": 77,
+        "position": "CM",
         "age": 28,
-        "nationality": "Portugal",
-        "marketValue": 2000000
+        "overall": 77,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Serginho",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 35,
-        "nationality": "Portugal",
-        "marketValue": 1500000
+        "overall": 72,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gustavo Klismahn",
-        "position": "MC",
-        "rating": 76,
+        "position": "CM",
         "age": 26,
-        "nationality": "Brasil",
-        "marketValue": 500
+        "overall": 76,
+        "value": 500,
+        "salary": 26000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gabriel Silva",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 23,
-        "nationality": "Brasil",
-        "marketValue": 4000000
+        "overall": 75,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vinícius Lopes",
-        "position": "DC",
-        "rating": 78,
+        "position": "ST",
         "age": 26,
-        "nationality": "Brasil",
-        "marketValue": 2500000
+        "overall": 78,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Brenner",
-        "position": "DC",
-        "rating": 73,
+        "position": "ST",
         "age": 24,
-        "nationality": "Brasil",
-        "marketValue": 1300000
+        "overall": 73,
+        "value": 1300000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Welinton Torrão",
-        "position": "DC",
-        "rating": 76,
+        "position": "ST",
         "age": 26,
-        "nationality": "Brasil",
-        "marketValue": 350
+        "overall": 76,
+        "value": 350,
+        "salary": 26000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Wendel",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 29,
-        "nationality": "Brasil",
-        "marketValue": 2000000
+        "overall": 75,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Elias Manoel",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 24,
-        "nationality": "Brasil",
-        "marketValue": 1500000
+        "overall": 72,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gonçalo Paciência",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 31,
-        "nationality": "Portugal",
-        "marketValue": 700
+        "overall": 70,
+        "value": 700,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "João Costa",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 17,
-        "nationality": "Portugal",
-        "marketValue": 400
+        "overall": 70,
+        "value": 400,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1511,195 +2060,267 @@
     "players": [
       {
         "name": "Joel Robles",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 35,
-        "nationality": "España",
-        "marketValue": 400
+        "overall": 70,
+        "value": 400,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Martin Turk",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 16,
-        "nationality": "Eslovenia",
-        "marketValue": 300
+        "overall": 68,
+        "value": 300,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Diogo Dias",
-        "position": "POR",
-        "rating": 74,
+        "position": "GK",
         "age": 31,
-        "nationality": "Portugal",
-        "marketValue": 200
+        "overall": 74,
+        "value": 200,
+        "salary": 24000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kévin Boma",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 44,
-        "nationality": "Togo",
-        "marketValue": 4000000
+        "overall": 69,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Felix Bacher",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 25,
-        "nationality": "Austria",
-        "marketValue": 2000000
+        "overall": 73,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Antef Tsoungui",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 23,
-        "nationality": "Bélgica",
-        "marketValue": 650
+        "overall": 71,
+        "value": 650,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ferro",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 28,
-        "nationality": "Portugal",
-        "marketValue": 600
+        "overall": 73,
+        "value": 600,
+        "salary": 23000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Or Israelov",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 18,
-        "nationality": "Israel",
-        "marketValue": 200
+        "overall": 70,
+        "value": 200,
+        "salary": 20000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pedro Amaral",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 24,
-        "nationality": "Portugal",
-        "marketValue": 1000000
+        "overall": 73,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tiago Parente",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 22,
-        "nationality": "Portugal",
-        "marketValue": 500
+        "overall": 69,
+        "value": 500,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gonçalo Costa",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 20,
-        "nationality": "Portugal",
-        "marketValue": 400
+        "overall": 70,
+        "value": 400,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ricard Sánchez",
-        "position": "DFC",
-        "rating": 74,
+        "position": "CB",
         "age": 25,
-        "nationality": "España",
-        "marketValue": 2000000
+        "overall": 74,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pedro Carvalho",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 22,
-        "nationality": "Portugal",
-        "marketValue": 500
+        "overall": 69,
+        "value": 500,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jordan Holsgrove",
-        "position": "MC",
-        "rating": 77,
+        "position": "CM",
         "age": 26,
-        "nationality": "Escocia",
-        "marketValue": 3500000
+        "overall": 77,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jandro Orellana",
-        "position": "MC",
-        "rating": 75,
+        "position": "CM",
         "age": 25,
-        "nationality": "España",
-        "marketValue": 1000000
+        "overall": 75,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Xeka",
-        "position": "MC",
-        "rating": 75,
+        "position": "CM",
         "age": 31,
-        "nationality": "Portugal",
-        "marketValue": 1000000
+        "overall": 75,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nodar Lominadze",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 23,
-        "nationality": "Georgia",
-        "marketValue": 700
+        "overall": 71,
+        "value": 700,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "João Carvalho",
-        "position": "MC",
-        "rating": 79,
+        "position": "CM",
         "age": 28,
-        "nationality": "Portugal",
-        "marketValue": 3000000
+        "overall": 79,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pizzi",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 21,
-        "nationality": "Portugal",
-        "marketValue": 300
+        "overall": 69,
+        "value": 300,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "André Lacximicant",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 19,
-        "nationality": "Portugal",
-        "marketValue": 800
+        "overall": 71,
+        "value": 800,
+        "salary": 21000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rafik Guitane",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 26,
-        "nationality": "Argelia",
-        "marketValue": 3500000
+        "overall": 75,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yanis Begraoui",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 24,
-        "nationality": "Marruecos",
-        "marketValue": 4000000
+        "overall": 75,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alejandro Marqués",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 25,
-        "nationality": "Venezuela",
-        "marketValue": 1500000
+        "overall": 74,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Khayon Edwards",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 22,
-        "nationality": "Jamaica",
-        "marketValue": 350
+        "overall": 72,
+        "value": 350,
+        "salary": 22000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1709,235 +2330,322 @@
     "players": [
       {
         "name": "André Gomes",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 21,
-        "nationality": "Portugal",
-        "marketValue": 2500000
+        "overall": 70,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matheus Mendes",
-        "position": "POR",
-        "rating": 73,
+        "position": "GK",
         "age": 31,
-        "nationality": "Brasil",
-        "marketValue": 300
+        "overall": 73,
+        "value": 300,
+        "salary": 23000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mateus",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 23,
-        "nationality": "Brasil",
-        "marketValue": 100
+        "overall": 69,
+        "value": 100,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "André Paulo",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 23,
-        "nationality": "Portugal",
-        "marketValue": 100
+        "overall": 69,
+        "value": 100,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bastien Meupiyou",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 33,
-        "nationality": "Francia",
-        "marketValue": 4000000
+        "overall": 70,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Naves",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 23,
-        "nationality": "Brasil",
-        "marketValue": 2500000
+        "overall": 73,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Julián Martínez",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 22,
-        "nationality": "Honduras",
-        "marketValue": 500
+        "overall": 70,
+        "value": 500,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sergi Gómez",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 33,
-        "nationality": "España",
-        "marketValue": 500
+        "overall": 69,
+        "value": 500,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Steven Baseya",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 21,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 69,
+        "value": 400,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Chissumba",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 20,
-        "nationality": "Portugal",
-        "marketValue": 5000000
+        "overall": 72,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Isaac James",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 21,
-        "nationality": "Nigeria",
-        "marketValue": 350
+        "overall": 69,
+        "value": 350,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vasco Moreira",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 17,
-        "nationality": "Portugal",
-        "marketValue": 850
+        "overall": 70,
+        "value": 850,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sabit Abdulai",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 21,
-        "nationality": "Ghana",
-        "marketValue": 700
+        "overall": 70,
+        "value": 700,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tomás Mendes",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 16,
-        "nationality": "Guinea-Bissau",
-        "marketValue": 500
+        "overall": 71,
+        "value": 500,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Abderrahmane Soumare",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 30,
-        "nationality": "Mauritania",
-        "marketValue": 0
+        "overall": 74,
+        "value": 0,
+        "salary": 24000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Davy Gui",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 19,
-        "nationality": "Costa de Marfil",
-        "marketValue": 600
+        "overall": 69,
+        "value": 600,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Zakaria Kassary",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 20,
-        "nationality": "Marruecos",
-        "marketValue": 150
+        "overall": 70,
+        "value": 150,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nabil Touaizi",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 24,
-        "nationality": "Marruecos",
-        "marketValue": 500
+        "overall": 72,
+        "value": 500,
+        "salary": 22000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lincoln",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 18,
-        "nationality": "Brasil",
-        "marketValue": 3500000
+        "overall": 72,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Chiquinho",
-        "position": "DC",
-        "rating": 76,
+        "position": "ST",
         "age": 25,
-        "nationality": "Portugal",
-        "marketValue": 2000000
+        "overall": 76,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Léo Chú",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 25,
-        "nationality": "Brasil",
-        "marketValue": 1500000
+        "overall": 75,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Figueiredo",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 20,
-        "nationality": "Brasil",
-        "marketValue": 1000000
+        "overall": 72,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cédric Nuozzi",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 20,
-        "nationality": "Bélgica",
-        "marketValue": 800
+        "overall": 68,
+        "value": 800,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stéphane Diarra",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 25,
-        "nationality": "Costa de Marfil",
-        "marketValue": 500
+        "overall": 74,
+        "value": 500,
+        "salary": 24000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Fabrício Garcia",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 24,
-        "nationality": "Cabo Verde",
-        "marketValue": 400
+        "overall": 72,
+        "value": 400,
+        "salary": 22000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marko Milovanović",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 22,
-        "nationality": "Serbia",
-        "marketValue": 2000000
+        "overall": 74,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mathis Clairicia",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 19,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 71,
+        "value": 400,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sandro Lima",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 35,
-        "nationality": "Brasil",
-        "marketValue": 150
+        "overall": 65,
+        "value": 150,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Felipe Lima",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 19,
-        "nationality": "Brasil",
-        "marketValue": 0
+        "overall": 71,
+        "value": 0,
+        "salary": 21000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1947,211 +2655,289 @@
     "players": [
       {
         "name": "André Ferreira",
-        "position": "POR",
-        "rating": 74,
+        "position": "GK",
         "age": 29,
-        "nationality": "Portugal",
-        "marketValue": 600
+        "overall": 74,
+        "value": 600,
+        "salary": 24000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mika",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 16,
-        "nationality": "Portugal",
-        "marketValue": 100
+        "overall": 69,
+        "value": 100,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Caio Secco",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 22,
-        "nationality": "Brasil",
-        "marketValue": 100
+        "overall": 69,
+        "value": 100,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Michel",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 22,
-        "nationality": "Brasil",
-        "marketValue": 800
+        "overall": 70,
+        "value": 800,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Maracás",
-        "position": "DFC",
-        "rating": 74,
+        "position": "CB",
         "age": 26,
-        "nationality": "Brasil",
-        "marketValue": 800
+        "overall": 74,
+        "value": 800,
+        "salary": 24000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gilberto Batista",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 22,
-        "nationality": "Guinea-Bissau",
-        "marketValue": 400
+        "overall": 69,
+        "value": 400,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kiko",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 27,
-        "nationality": "Portugal",
-        "marketValue": 1500000
+        "overall": 75,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Álvaro Martínez",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 17,
-        "nationality": "España",
-        "marketValue": 400
+        "overall": 69,
+        "value": 400,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dinis Pinto",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 25,
-        "nationality": "Portugal",
-        "marketValue": 3000000
+        "overall": 75,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Diogo Travassos",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 21,
-        "nationality": "Portugal",
-        "marketValue": 2500000
+        "overall": 71,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Fabiano",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 25,
-        "nationality": "Brasil",
-        "marketValue": 1700000
+        "overall": 73,
+        "value": 1700000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Leandro Santos",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 20,
-        "nationality": "Portugal",
-        "marketValue": 1000000
+        "overall": 71,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mateja Stjepanović",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 21,
-        "nationality": "Serbia",
-        "marketValue": 2500000
+        "overall": 71,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Afonso Assis",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 25,
-        "nationality": "Portugal",
-        "marketValue": 300
+        "overall": 73,
+        "value": 300,
+        "salary": 23000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vasco Sousa",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 15,
-        "nationality": "Portugal",
-        "marketValue": 2500000
+        "overall": 71,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nile John",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 22,
-        "nationality": "Inglaterra",
-        "marketValue": 350
+        "overall": 72,
+        "value": 350,
+        "salary": 22000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rodri Alonso",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 21,
-        "nationality": "España",
-        "marketValue": 300
+        "overall": 69,
+        "value": 300,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jimi Gower",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 30,
-        "nationality": "Inglaterra",
-        "marketValue": 100
+        "overall": 73,
+        "value": 100,
+        "salary": 23000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alan",
-        "position": "MC",
-        "rating": 77,
+        "position": "CM",
         "age": 25,
-        "nationality": "Brasil",
-        "marketValue": 4000000
+        "overall": 77,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Benny",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 20,
-        "nationality": "Portugal",
-        "marketValue": 1000000
+        "overall": 70,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gabrielzinho",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 29,
-        "nationality": "Brasil",
-        "marketValue": 1000000
+        "overall": 75,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Landerson",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 19,
-        "nationality": "Brasil",
-        "marketValue": 1000000
+        "overall": 69,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cedric Teguia",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 24,
-        "nationality": "España",
-        "marketValue": 800
+        "overall": 69,
+        "value": 800,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kiko Bondoso",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 30,
-        "nationality": "Portugal",
-        "marketValue": 800
+        "overall": 72,
+        "value": 800,
+        "salary": 22000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yan Maranhão",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 23,
-        "nationality": "Brasil",
-        "marketValue": 600
+        "overall": 71,
+        "value": 600,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luís Semedo",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 22,
-        "nationality": "Portugal",
-        "marketValue": 400
+        "overall": 72,
+        "value": 400,
+        "salary": 22000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -2161,203 +2947,278 @@
     "players": [
       {
         "name": "Lucão",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 24,
-        "nationality": "Brasil",
-        "marketValue": 1200000
+        "overall": 70,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dani Figueira",
-        "position": "POR",
-        "rating": 71,
+        "position": "GK",
         "age": 27,
-        "nationality": "Portugal",
-        "marketValue": 300
+        "overall": 71,
+        "value": 300,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marvin Elimbi",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 22,
-        "nationality": "Francia",
-        "marketValue": 2500000
+        "overall": 71,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Buatu",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 39,
-        "nationality": "Angola",
-        "marketValue": 600
+        "overall": 68,
+        "value": 600,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Antonio Espigares",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 21,
-        "nationality": "España",
-        "marketValue": 500
+        "overall": 69,
+        "value": 500,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Arthur Tchaptchet",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 19,
-        "nationality": "Francia",
-        "marketValue": 100
+        "overall": 70,
+        "value": 100,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ghislain Konan",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 30,
-        "nationality": "Costa de Marfil",
-        "marketValue": 3000000
+        "overall": 75,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Weverson",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 25,
-        "nationality": "Brasil",
-        "marketValue": 1200000
+        "overall": 73,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Zé Carlos",
-        "position": "DFC",
-        "rating": 74,
+        "position": "CB",
         "age": 27,
-        "nationality": "Portugal",
-        "marketValue": 1500000
+        "overall": 74,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hevertton",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 20,
-        "nationality": "Portugal",
-        "marketValue": 800
+        "overall": 69,
+        "value": 800,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jonathan Mutombo",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 45,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 68,
+        "value": 400,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mohamed Bamba",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 21,
-        "nationality": "Costa de Marfil",
-        "marketValue": 3000000
+        "overall": 71,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Facundo Cáseres",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 24,
-        "nationality": "Argentina",
-        "marketValue": 2000000
+        "overall": 73,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gonçalo Maia",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 20,
-        "nationality": "Portugal",
-        "marketValue": 100
+        "overall": 70,
+        "value": 100,
+        "salary": 20000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luís Esteves",
-        "position": "MC",
-        "rating": 77,
+        "position": "CM",
         "age": 27,
-        "nationality": "Portugal",
-        "marketValue": 2000000
+        "overall": 77,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Santi García",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 24,
-        "nationality": "España",
-        "marketValue": 1500000
+        "overall": 73,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Martín Fernández",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 32,
-        "nationality": "Uruguay",
-        "marketValue": 450
+        "overall": 68,
+        "value": 450,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Joelson Fernandes",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 22,
-        "nationality": "Portugal",
-        "marketValue": 1500000
+        "overall": 71,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tidjany Touré",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 23,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 72,
+        "value": 300,
+        "salary": 22000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sergio Bermejo",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 22,
-        "nationality": "España",
-        "marketValue": 800
+        "overall": 69,
+        "value": 800,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Murilo",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 31,
-        "nationality": "Brasil",
-        "marketValue": 800
+        "overall": 69,
+        "value": 800,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Agustín Moreira",
-        "position": "DC",
-        "rating": 73,
+        "position": "ST",
         "age": 27,
-        "nationality": "Uruguay",
-        "marketValue": 700
+        "overall": 73,
+        "value": 700,
+        "salary": 23000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gustavo Varela",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 21,
-        "nationality": "Portugal",
-        "marketValue": 1000000
+        "overall": 69,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Héctor Hernández",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 30,
-        "nationality": "España",
-        "marketValue": 800
+        "overall": 74,
+        "value": 800,
+        "salary": 24000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Carlos Eduardo",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 29,
-        "nationality": "Brasil",
-        "marketValue": 700
+        "overall": 74,
+        "value": 700,
+        "salary": 24000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -2367,203 +3228,278 @@
     "players": [
       {
         "name": "Juan Castillo",
-        "position": "POR",
-        "rating": 73,
+        "position": "GK",
         "age": 25,
-        "nationality": "Colombia",
-        "marketValue": 1000000
+        "overall": 73,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Charles",
-        "position": "POR",
-        "rating": 71,
+        "position": "GK",
         "age": 27,
-        "nationality": "Brasil",
-        "marketValue": 300
+        "overall": 71,
+        "value": 300,
+        "salary": 21000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gui",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 19,
-        "nationality": "Portugal",
-        "marketValue": 200
+        "overall": 69,
+        "value": 200,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Óscar Rivas",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 25,
-        "nationality": "España",
-        "marketValue": 1000000
+        "overall": 73,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rodrigo Abascal",
-        "position": "DFC",
-        "rating": 74,
+        "position": "CB",
         "age": 26,
-        "nationality": "Uruguay",
-        "marketValue": 600
+        "overall": 74,
+        "value": 600,
+        "salary": 24000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Thiago Balieiro",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 28,
-        "nationality": "Brasil",
-        "marketValue": 500
+        "overall": 73,
+        "value": 500,
+        "salary": 23000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Miguel Nóbrega",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 25,
-        "nationality": "Portugal",
-        "marketValue": 400
+        "overall": 71,
+        "value": 400,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "João Mendes",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 25,
-        "nationality": "Portugal",
-        "marketValue": 2500000
+        "overall": 73,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Orest Lebedenko",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 17,
-        "nationality": "Ucrania",
-        "marketValue": 500
+        "overall": 69,
+        "value": 500,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Maga",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 23,
-        "nationality": "Portugal",
-        "marketValue": 2000000
+        "overall": 73,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tony Strata",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 21,
-        "nationality": "Rumania",
-        "marketValue": 400
+        "overall": 69,
+        "value": 400,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Diogo Sousa",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 23,
-        "nationality": "Portugal",
-        "marketValue": 300
+        "overall": 71,
+        "value": 300,
+        "salary": 21000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matija Mitrović",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 21,
-        "nationality": "Serbia",
-        "marketValue": 2000000
+        "overall": 70,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Beni Mukendi",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 16,
-        "nationality": "Angola",
-        "marketValue": 2000000
+        "overall": 71,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gonçalo Nogueira",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 30,
-        "nationality": "Portugal",
-        "marketValue": 600
+        "overall": 74,
+        "value": 600,
+        "salary": 24000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Samu",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 20,
-        "nationality": "Portugal",
-        "marketValue": 1500000
+        "overall": 74,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Miguel Nogueira",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 20,
-        "nationality": "Portugal",
-        "marketValue": 500
+        "overall": 69,
+        "value": 500,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Oumar Camara",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 19,
-        "nationality": "Francia",
-        "marketValue": 1000000
+        "overall": 72,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Fabio Blanco",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 22,
-        "nationality": "España",
-        "marketValue": 1000000
+        "overall": 70,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Noah Saviolo",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 21,
-        "nationality": "Bélgica",
-        "marketValue": 600
+        "overall": 70,
+        "value": 600,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gustavo Silva",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 26,
-        "nationality": "Brasil",
-        "marketValue": 3000000
+        "overall": 75,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Telmo Arcanjo",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 18,
-        "nationality": "Cabo Verde",
-        "marketValue": 3000000
+        "overall": 70,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ejike Opara",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 33,
-        "nationality": "Nigeria",
-        "marketValue": 1000000
+        "overall": 69,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alioune Ndoye",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 24,
-        "nationality": "Senegal",
-        "marketValue": 700
+        "overall": 71,
+        "value": 700,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nélson Oliveira",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 34,
-        "nationality": "Portugal",
-        "marketValue": 300
+        "overall": 68,
+        "value": 300,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -2573,243 +3509,333 @@
     "players": [
       {
         "name": "Patrick Sequeira",
-        "position": "POR",
-        "rating": 73,
+        "position": "GK",
         "age": 26,
-        "nationality": "Costa Rica",
-        "marketValue": 3500000
+        "overall": 73,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ivan Mandić",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 22,
-        "nationality": "Croacia",
-        "marketValue": 300
+        "overall": 69,
+        "value": 300,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ricardo Batista",
-        "position": "POR",
-        "rating": 73,
+        "position": "GK",
         "age": 33,
-        "nationality": "Angola",
-        "marketValue": 100
+        "overall": 73,
+        "value": 100,
+        "salary": 23000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kaique Rocha",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 27,
-        "nationality": "Brasil",
-        "marketValue": 1500000
+        "overall": 75,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "João Goulart",
-        "position": "DFC",
-        "rating": 74,
+        "position": "CB",
         "age": 26,
-        "nationality": "Portugal",
-        "marketValue": 1000000
+        "overall": 74,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tchamba",
-        "position": "DFC",
-        "rating": 74,
+        "position": "CB",
         "age": 27,
-        "nationality": "Camerún",
-        "marketValue": 800
+        "overall": 74,
+        "value": 800,
+        "salary": 24000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Sousa",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 43,
-        "nationality": "Brasil",
-        "marketValue": 800
+        "overall": 68,
+        "value": 800,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kaly",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 22,
-        "nationality": "Angola",
-        "marketValue": 250
+        "overall": 70,
+        "value": 250,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "José Fonte",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 42,
-        "nationality": "Portugal",
-        "marketValue": 100
+        "overall": 68,
+        "value": 100,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Abdu Conté",
-        "position": "DFC",
-        "rating": 74,
+        "position": "CB",
         "age": 27,
-        "nationality": "Portugal",
-        "marketValue": 700
+        "overall": 74,
+        "value": 700,
+        "salary": 24000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gaizka Larrazabal",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 28,
-        "nationality": "España",
-        "marketValue": 2000000
+        "overall": 75,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "André Geraldes",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 18,
-        "nationality": "Portugal",
-        "marketValue": 200
+        "overall": 70,
+        "value": 200,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Seba Pérez",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 42,
-        "nationality": "Colombia",
-        "marketValue": 800
+        "overall": 68,
+        "value": 800,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rafael Brito",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 24,
-        "nationality": "Portugal",
-        "marketValue": 400
+        "overall": 71,
+        "value": 400,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Iyad Mohamed",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 24,
-        "nationality": "Comoras",
-        "marketValue": 400
+        "overall": 71,
+        "value": 400,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lawrence Ofori",
-        "position": "MC",
-        "rating": 75,
+        "position": "CM",
         "age": 27,
-        "nationality": "Ghana",
-        "marketValue": 2000000
+        "overall": 75,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Renato Nhaga",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 18,
-        "nationality": "Guinea-Bissau",
-        "marketValue": 1000000
+        "overall": 71,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yassin Oukili",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 20,
-        "nationality": "Marruecos",
-        "marketValue": 800
+        "overall": 69,
+        "value": 800,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Miguel Sousa",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 27,
-        "nationality": "Portugal",
-        "marketValue": 400
+        "overall": 74,
+        "value": 400,
+        "salary": 24000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kevin Prieto",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 19,
-        "nationality": "Uruguay",
-        "marketValue": 500
+        "overall": 69,
+        "value": 500,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tiago Morais",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 21,
-        "nationality": "Portugal",
-        "marketValue": 2500000
+        "overall": 69,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "João Marques",
-        "position": "DC",
-        "rating": 73,
+        "position": "ST",
         "age": 23,
-        "nationality": "Portugal",
-        "marketValue": 1500000
+        "overall": 73,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kelian Nsona",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 23,
-        "nationality": "Francia",
-        "marketValue": 750
+        "overall": 71,
+        "value": 750,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jérémy Livolant",
-        "position": "DC",
-        "rating": 76,
+        "position": "ST",
         "age": 29,
-        "nationality": "Francia",
-        "marketValue": 2000000
+        "overall": 76,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Xander Severina",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 17,
-        "nationality": "Curazao",
-        "marketValue": 800
+        "overall": 70,
+        "value": 800,
+        "salary": 20000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Korede Osundina",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 21,
-        "nationality": "Estados Unidos",
-        "marketValue": 350
+        "overall": 70,
+        "value": 350,
+        "salary": 20000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kiki",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 27,
-        "nationality": "Portugal",
-        "marketValue": 200
+        "overall": 74,
+        "value": 200,
+        "salary": 24000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dailon Livramento",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 24,
-        "nationality": "Cabo Verde",
-        "marketValue": 800
+        "overall": 69,
+        "value": 800,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cassiano",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 36,
-        "nationality": "Brasil",
-        "marketValue": 150
+        "overall": 64,
+        "value": 150,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Clau Mendes",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 25,
-        "nationality": "Guinea-Bissau",
-        "marketValue": 100
+        "overall": 74,
+        "value": 100,
+        "salary": 24000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -2819,227 +3845,311 @@
     "players": [
       {
         "name": "Ignacio de Arruabarrena",
-        "position": "POR",
-        "rating": 75,
+        "position": "GK",
         "age": 29,
-        "nationality": "Uruguay",
-        "marketValue": 1000000
+        "overall": 75,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "João Valido",
-        "position": "POR",
-        "rating": 71,
+        "position": "GK",
         "age": 25,
-        "nationality": "Portugal",
-        "marketValue": 500
+        "overall": 71,
+        "value": 500,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakub Vinarčík",
-        "position": "POR",
-        "rating": 74,
+        "position": "GK",
         "age": 30,
-        "nationality": "Eslovaquia",
-        "marketValue": 300
+        "overall": 74,
+        "value": 300,
+        "salary": 24000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Boris Popović",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 25,
-        "nationality": "Serbia",
-        "marketValue": 1200000
+        "overall": 73,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "José Fontán",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 25,
-        "nationality": "España",
-        "marketValue": 1000000
+        "overall": 73,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Omar Fayed",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 22,
-        "nationality": "Egipto",
-        "marketValue": 1000000
+        "overall": 71,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Javi Sánchez",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 15,
-        "nationality": "España",
-        "marketValue": 800
+        "overall": 70,
+        "value": 800,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matías Rocha",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 24,
-        "nationality": "Uruguay",
-        "marketValue": 400
+        "overall": 72,
+        "value": 400,
+        "salary": 22000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Diogo Monteiro",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 21,
-        "nationality": "Portugal",
-        "marketValue": 300
+        "overall": 69,
+        "value": 300,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Amadou Dante",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 44,
-        "nationality": "Malí",
-        "marketValue": 1500000
+        "overall": 69,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bas Kuipers",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 25,
-        "nationality": "Países Bajos",
-        "marketValue": 800
+        "overall": 72,
+        "value": 800,
+        "salary": 22000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Arnau Solà",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 16,
-        "nationality": "España",
-        "marketValue": 500
+        "overall": 70,
+        "value": 500,
+        "salary": 20000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tiago Esgaio",
-        "position": "DFC",
-        "rating": 74,
+        "position": "CB",
         "age": 28,
-        "nationality": "Portugal",
-        "marketValue": 900
+        "overall": 74,
+        "value": 900,
+        "salary": 24000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Taichi Fukui",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 21,
-        "nationality": "Japón",
-        "marketValue": 2000000
+        "overall": 72,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Espen van Ee",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 22,
-        "nationality": "Países Bajos",
-        "marketValue": 1000000
+        "overall": 73,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mateo Flores",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 21,
-        "nationality": "España",
-        "marketValue": 1000000
+        "overall": 71,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yellu Santiago",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 20,
-        "nationality": "España",
-        "marketValue": 900
+        "overall": 70,
+        "value": 900,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pedro Santos",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 25,
-        "nationality": "Portugal",
-        "marketValue": 800
+        "overall": 74,
+        "value": 800,
+        "salary": 24000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Simão",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 35,
-        "nationality": "Portugal",
-        "marketValue": 100
+        "overall": 68,
+        "value": 100,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hyun-ju Lee",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 22,
-        "nationality": "Corea del Sur",
-        "marketValue": 1500000
+        "overall": 73,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pablo Gozálbez",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 24,
-        "nationality": "España",
-        "marketValue": 500
+        "overall": 71,
+        "value": 500,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Naïs Djouahra",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 26,
-        "nationality": "Francia",
-        "marketValue": 1500000
+        "overall": 75,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Brian Mansilla",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 24,
-        "nationality": "Uruguay",
-        "marketValue": 1000000
+        "overall": 70,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Miguel Puche",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 24,
-        "nationality": "España",
-        "marketValue": 400
+        "overall": 69,
+        "value": 400,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alfonso Trezza",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 19,
-        "nationality": "Uruguay",
-        "marketValue": 1000000
+        "overall": 72,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dylan Nandín",
-        "position": "DC",
-        "rating": 73,
+        "position": "ST",
         "age": 23,
-        "nationality": "Uruguay",
-        "marketValue": 1000000
+        "overall": 73,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Iván Barbero",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 17,
-        "nationality": "España",
-        "marketValue": 500
+        "overall": 68,
+        "value": 500,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Romualdas Jansonas",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 20,
-        "nationality": "Lituania",
-        "marketValue": 400
+        "overall": 71,
+        "value": 400,
+        "salary": 21000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -3049,251 +4159,344 @@
     "players": [
       {
         "name": "Kaique Pereira",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 22,
-        "nationality": "Brasil",
-        "marketValue": 1000000
+        "overall": 70,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lucas França",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 37,
-        "nationality": "Brasil",
-        "marketValue": 600
+        "overall": 70,
+        "value": 600,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kevyn",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 20,
-        "nationality": "Brasil",
-        "marketValue": 200
+        "overall": 69,
+        "value": 200,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "César Augusto",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 22,
-        "nationality": "Brasil",
-        "marketValue": 100
+        "overall": 69,
+        "value": 100,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Zé Vítor",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 38,
-        "nationality": "Brasil",
-        "marketValue": 2000000
+        "overall": 69,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ulisses",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 26,
-        "nationality": "Brasil",
-        "marketValue": 1000000
+        "overall": 75,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Léo Santos",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 34,
-        "nationality": "Brasil",
-        "marketValue": 1000000
+        "overall": 70,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ivanildo Fernandes",
-        "position": "DFC",
-        "rating": 74,
+        "position": "CB",
         "age": 29,
-        "nationality": "Cabo Verde",
-        "marketValue": 200
+        "overall": 74,
+        "value": 200,
+        "salary": 24000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Chico Gonçalves",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 33,
-        "nationality": "Portugal",
-        "marketValue": 200
+        "overall": 68,
+        "value": 200,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "José Gomes",
-        "position": "DFC",
-        "rating": 76,
+        "position": "CB",
         "age": 29,
-        "nationality": "Portugal",
-        "marketValue": 1000000
+        "overall": 76,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lenny Vallier",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 24,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 71,
+        "value": 500,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alan Núñez",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 16,
-        "nationality": "Paraguay",
-        "marketValue": 800
+        "overall": 69,
+        "value": 800,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "João Aurélio",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 37,
-        "nationality": "Portugal",
-        "marketValue": 50
+        "overall": 68,
+        "value": 50,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matheus Dias",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 23,
-        "nationality": "Brasil",
-        "marketValue": 1500000
+        "overall": 73,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Liziero",
-        "position": "MC",
-        "rating": 76,
+        "position": "CM",
         "age": 28,
-        "nationality": "Brasil",
-        "marketValue": 1200000
+        "overall": 76,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Chiheb Labidi",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 15,
-        "nationality": "Túnez",
-        "marketValue": 500
+        "overall": 70,
+        "value": 500,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Joel Silva",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 26,
-        "nationality": "Portugal",
-        "marketValue": 400
+        "overall": 73,
+        "value": 400,
+        "salary": 23000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Deivison",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 19,
-        "nationality": "Brasil",
-        "marketValue": 200
+        "overall": 70,
+        "value": 200,
+        "salary": 20000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jota",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 20,
-        "nationality": "Portugal",
-        "marketValue": 75
+        "overall": 70,
+        "value": 75,
+        "salary": 20000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "André Sousa",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 18,
-        "nationality": "Portugal",
-        "marketValue": 50
+        "overall": 69,
+        "value": 50,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filipe Soares",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 22,
-        "nationality": "Portugal",
-        "marketValue": 700
+        "overall": 71,
+        "value": 700,
+        "salary": 21000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Jr",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 23,
-        "nationality": "Brasil",
-        "marketValue": 600
+        "overall": 72,
+        "value": 600,
+        "salary": 22000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Miguel Baeza",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 25,
-        "nationality": "España",
-        "marketValue": 400
+        "overall": 74,
+        "value": 400,
+        "salary": 24000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Paulinho Bóia",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 27,
-        "nationality": "Brasil",
-        "marketValue": 800
+        "overall": 72,
+        "value": 800,
+        "salary": 22000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Witiness Quembo",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 29,
-        "nationality": "Mozambique",
-        "marketValue": 500
+        "overall": 71,
+        "value": 500,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Motez Nourani",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 17,
-        "nationality": "Túnez",
-        "marketValue": 200
+        "overall": 71,
+        "value": 200,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gabriel Veron",
-        "position": "DC",
-        "rating": 77,
+        "position": "ST",
         "age": 27,
-        "nationality": "Brasil",
-        "marketValue": 3000000
+        "overall": 77,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pablo Ruan",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 22,
-        "nationality": "Brasil",
-        "marketValue": 500
+        "overall": 72,
+        "value": 500,
+        "salary": 22000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Watts",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 30,
-        "nationality": "Portugal",
-        "marketValue": 200
+        "overall": 71,
+        "value": 200,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jesús Ramírez",
-        "position": "DC",
-        "rating": 79,
+        "position": "ST",
         "age": 27,
-        "nationality": "Venezuela",
-        "marketValue": 2000000
+        "overall": 79,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lucas João",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 19,
-        "nationality": "Angola",
-        "marketValue": 200
+        "overall": 68,
+        "value": 200,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -3303,227 +4506,311 @@
     "players": [
       {
         "name": "Bernardo",
-        "position": "POR",
-        "rating": 72,
+        "position": "GK",
         "age": 31,
-        "nationality": "Brasil",
-        "marketValue": 2500000
+        "overall": 72,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lucas Cañizares",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 30,
-        "nationality": "España",
-        "marketValue": 400
+        "overall": 70,
+        "value": 400,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gabriel Souza",
-        "position": "POR",
-        "rating": 71,
+        "position": "GK",
         "age": 29,
-        "nationality": "Brasil",
-        "marketValue": 150
+        "overall": 71,
+        "value": 150,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Christian Marques",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 23,
-        "nationality": "Portugal",
-        "marketValue": 2000000
+        "overall": 70,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Brayan Medina",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 20,
-        "nationality": "Colombia",
-        "marketValue": 2000000
+        "overall": 68,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Diego Tavares",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 20,
-        "nationality": "Portugal",
-        "marketValue": 100
+        "overall": 67,
+        "value": 100,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "João Afonso",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 35,
-        "nationality": "Portugal",
-        "marketValue": 50
+        "overall": 65,
+        "value": 50,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nor Maviram",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 24,
-        "nationality": "Nigeria",
-        "marketValue": 500
+        "overall": 69,
+        "value": 500,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rémy Vita",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 21,
-        "nationality": "Comoras",
-        "marketValue": 400
+        "overall": 66,
+        "value": 400,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tiago Manso",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 26,
-        "nationality": "Portugal",
-        "marketValue": 700
+        "overall": 71,
+        "value": 700,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rodrigo Conceição",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 27,
-        "nationality": "Portugal",
-        "marketValue": 500
+        "overall": 71,
+        "value": 500,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bebeto",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 36,
-        "nationality": "Brasil",
-        "marketValue": 50
+        "overall": 66,
+        "value": 50,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Juanse Rodríguez",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 32,
-        "nationality": "Ecuador",
-        "marketValue": 1000000
+        "overall": 67,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Joe Hodge",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 23,
-        "nationality": "Irlanda",
-        "marketValue": 700
+        "overall": 68,
+        "value": 700,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cícero",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 28,
-        "nationality": "Brasil",
-        "marketValue": 500
+        "overall": 71,
+        "value": 500,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yaya Sithole",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 15,
-        "nationality": "Sudáfrica",
-        "marketValue": 600
+        "overall": 67,
+        "value": 600,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hélder Tavares",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 36,
-        "nationality": "Cabo Verde",
-        "marketValue": 50
+        "overall": 64,
+        "value": 50,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hugo Félix",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 21,
-        "nationality": "Portugal",
-        "marketValue": 1000000
+        "overall": 68,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Xabi Huarte",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 24,
-        "nationality": "España",
-        "marketValue": 200
+        "overall": 69,
+        "value": 200,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Makan Aïko",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 25,
-        "nationality": "Francia",
-        "marketValue": 600
+        "overall": 71,
+        "value": 600,
+        "salary": 21000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ivan Cavaleiro",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 17,
-        "nationality": "Angola",
-        "marketValue": 500
+        "overall": 68,
+        "value": 500,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Moudjatovic",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 23,
-        "nationality": "Costa de Marfil",
-        "marketValue": 200
+        "overall": 69,
+        "value": 200,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Maranhão",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 26,
-        "nationality": "Brasil",
-        "marketValue": 1500000
+        "overall": 70,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rony Lopes",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 16,
-        "nationality": "Portugal",
-        "marketValue": 1200000
+        "overall": 69,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Arjen van der Heide",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 24,
-        "nationality": "Países Bajos",
-        "marketValue": 350
+        "overall": 69,
+        "value": 350,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Afonso Rodrigues",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 19,
-        "nationality": "Portugal",
-        "marketValue": 200
+        "overall": 68,
+        "value": 200,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jordan",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 29,
-        "nationality": "Estados Unidos",
-        "marketValue": 2000000
+        "overall": 70,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yefrei Rodríguez",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 20,
-        "nationality": "Colombia",
-        "marketValue": 400
+        "overall": 65,
+        "value": 400,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -3533,243 +4820,333 @@
     "players": [
       {
         "name": "Diogo Pinto",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 21,
-        "nationality": "Portugal",
-        "marketValue": 300
+        "overall": 65,
+        "value": 300,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Grilo",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 22,
-        "nationality": "Portugal",
-        "marketValue": 100
+        "overall": 66,
+        "value": 100,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Renan Ribeiro",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 40,
-        "nationality": "Brasil",
-        "marketValue": 100
+        "overall": 66,
+        "value": 100,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luan Patrick",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 30,
-        "nationality": "Brasil",
-        "marketValue": 1000000
+        "overall": 72,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bernardo Schappo",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 26,
-        "nationality": "Brasil",
-        "marketValue": 750
+        "overall": 71,
+        "value": 750,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Otávio",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 20,
-        "nationality": "Brasil",
-        "marketValue": 500
+        "overall": 67,
+        "value": 500,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Issiar Dramé",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 26,
-        "nationality": "Malí",
-        "marketValue": 400
+        "overall": 71,
+        "value": 400,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Semeu Commey",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 21,
-        "nationality": "Ghana",
-        "marketValue": 300
+        "overall": 67,
+        "value": 300,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ni",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 22,
-        "nationality": "Portugal",
-        "marketValue": 100
+        "overall": 67,
+        "value": 100,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Georgiy Tunguliyadi",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 23,
-        "nationality": "Rusia",
-        "marketValue": 0
+        "overall": 69,
+        "value": 0,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ryan",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 23,
-        "nationality": "Brasil",
-        "marketValue": 400
+        "overall": 69,
+        "value": 400,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Max Scholze",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 20,
-        "nationality": "Alemania",
-        "marketValue": 400
+        "overall": 67,
+        "value": 400,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jefferson Encada",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 17,
-        "nationality": "Guinea-Bissau",
-        "marketValue": 400
+        "overall": 67,
+        "value": 400,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kevin Höög Jansson",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 25,
-        "nationality": "Suecia",
-        "marketValue": 400
+        "overall": 71,
+        "value": 400,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Cabral",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 23,
-        "nationality": "Brasil",
-        "marketValue": 100
+        "overall": 69,
+        "value": 100,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Eddy Doué",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 39,
-        "nationality": "Costa de Marfil",
-        "marketValue": 0
+        "overall": 65,
+        "value": 0,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Paulo Moreira",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 19,
-        "nationality": "Portugal",
-        "marketValue": 800
+        "overall": 67,
+        "value": 800,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Robinho",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 23,
-        "nationality": "Brasil",
-        "marketValue": 500
+        "overall": 68,
+        "value": 500,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tom Moustier",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 28,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 71,
+        "value": 400,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alex Sola",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 22,
-        "nationality": "Angola",
-        "marketValue": 100
+        "overall": 68,
+        "value": 100,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ianis Stoica",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 23,
-        "nationality": "Rumania",
-        "marketValue": 1500000
+        "overall": 67,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jovane Cabral",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 27,
-        "nationality": "Cabo Verde",
-        "marketValue": 800
+        "overall": 71,
+        "value": 800,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jorge Meireles",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 18,
-        "nationality": "Portugal",
-        "marketValue": 600
+        "overall": 66,
+        "value": 600,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alisson Souza",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 20,
-        "nationality": "Brasil",
-        "marketValue": 0
+        "overall": 68,
+        "value": 0,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Abraham Marcus",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 26,
-        "nationality": "Nigeria",
-        "marketValue": 800
+        "overall": 71,
+        "value": 800,
+        "salary": 21000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pape Führer",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 27,
-        "nationality": "Senegal",
-        "marketValue": 200
+        "overall": 71,
+        "value": 200,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sydney van Hooijdonk",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 25,
-        "nationality": "Países Bajos",
-        "marketValue": 1300000
+        "overall": 72,
+        "value": 1300000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rodrigo Pinho",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 34,
-        "nationality": "Brasil",
-        "marketValue": 200
+        "overall": 62,
+        "value": 200,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Chilohem Onuoha",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 20,
-        "nationality": "Alemania",
-        "marketValue": 200
+        "overall": 68,
+        "value": 200,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Leandro Antonetti",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 23,
-        "nationality": "Puerto Rico",
-        "marketValue": 200
+        "overall": 68,
+        "value": 200,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -3779,195 +5156,267 @@
     "players": [
       {
         "name": "Adriel",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 25,
-        "nationality": "Brasil",
-        "marketValue": 800
+        "overall": 69,
+        "value": 800,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Simão",
-        "position": "POR",
-        "rating": 71,
+        "position": "GK",
         "age": 32,
-        "nationality": "Brasil",
-        "marketValue": 200
+        "overall": 71,
+        "value": 200,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Trigueira",
-        "position": "POR",
-        "rating": 67,
+        "position": "GK",
         "age": 38,
-        "nationality": "Portugal",
-        "marketValue": 50
+        "overall": 67,
+        "value": 50,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cristian Devenish",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 42,
-        "nationality": "Colombia",
-        "marketValue": 800
+        "overall": 65,
+        "value": 800,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rúben Semedo",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 35,
-        "nationality": "Portugal",
-        "marketValue": 700
+        "overall": 66,
+        "value": 700,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Paulo Vitor",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 24,
-        "nationality": "Brasil",
-        "marketValue": 500
+        "overall": 69,
+        "value": 500,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ponck",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 26,
-        "nationality": "Cabo Verde",
-        "marketValue": 200
+        "overall": 71,
+        "value": 200,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Aderllan Santos",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 33,
-        "nationality": "Brasil",
-        "marketValue": 100
+        "overall": 66,
+        "value": 100,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Rivas",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 24,
-        "nationality": "Paraguay",
-        "marketValue": 500
+        "overall": 68,
+        "value": 500,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kiki",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 24,
-        "nationality": "Portugal",
-        "marketValue": 400
+        "overall": 69,
+        "value": 400,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Guillem Molina",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 25,
-        "nationality": "España",
-        "marketValue": 300
+        "overall": 69,
+        "value": 300,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Roni",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 26,
-        "nationality": "Brasil",
-        "marketValue": 1000000
+        "overall": 72,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ángel Algobia",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 27,
-        "nationality": "España",
-        "marketValue": 600
+        "overall": 71,
+        "value": 600,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tiago Hernández",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 19,
-        "nationality": "Uruguay",
-        "marketValue": 300
+        "overall": 66,
+        "value": 300,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jaume Grau",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 15,
-        "nationality": "España",
-        "marketValue": 700
+        "overall": 67,
+        "value": 700,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pedro Lima",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 22,
-        "nationality": "Brasil",
-        "marketValue": 400
+        "overall": 69,
+        "value": 400,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gustavo Mendonça",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 23,
-        "nationality": "Portugal",
-        "marketValue": 200
+        "overall": 69,
+        "value": 200,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rafael Barbosa",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 29,
-        "nationality": "Portugal",
-        "marketValue": 300
+        "overall": 72,
+        "value": 300,
+        "salary": 22000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Óscar Perea",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 20,
-        "nationality": "Colombia",
-        "marketValue": 2000000
+        "overall": 69,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tunde Akinsola",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 22,
-        "nationality": "Nigeria",
-        "marketValue": 800
+        "overall": 67,
+        "value": 800,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Guilherme Neiva",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 21,
-        "nationality": "Brasil",
-        "marketValue": 200
+        "overall": 65,
+        "value": 200,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Diego Duarte",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 20,
-        "nationality": "Paraguay",
-        "marketValue": 250
+        "overall": 65,
+        "value": 250,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tomané",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 33,
-        "nationality": "Portugal",
-        "marketValue": 200
+        "overall": 63,
+        "value": 200,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nenê",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 18,
-        "nationality": "Brasil",
-        "marketValue": 50
+        "overall": 67,
+        "value": 50,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   }

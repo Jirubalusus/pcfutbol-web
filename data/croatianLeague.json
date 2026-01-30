@@ -5,275 +5,377 @@
     "players": [
       {
         "name": "Dominik Livakovic",
-        "position": "POR",
-        "rating": 73,
+        "position": "GK",
         "age": 31,
-        "nationality": "Croacia",
-        "marketValue": 4000000
+        "overall": 73,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ivan Nevistic",
-        "position": "POR",
-        "rating": 73,
+        "position": "GK",
         "age": 33,
-        "nationality": "Croacia",
-        "marketValue": 1000000
+        "overall": 73,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ivan Filipovic",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 44,
-        "nationality": "Croacia",
-        "marketValue": 350
+        "overall": 66,
+        "value": 350,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Antonio Rajic",
-        "position": "POR",
-        "rating": 67,
+        "position": "GK",
         "age": 18,
-        "nationality": "Croacia",
-        "marketValue": 100
+        "overall": 67,
+        "value": 100,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Danijel Zagorac",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 38,
-        "nationality": "Croacia",
-        "marketValue": 50
+        "overall": 68,
+        "value": 50,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Scott McKenna",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 26,
-        "nationality": "Escocia",
-        "marketValue": 4000000
+        "overall": 75,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Raúl Torrente",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 24,
-        "nationality": "España",
-        "marketValue": 3500000
+        "overall": 71,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Niko Galesic",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 15,
-        "nationality": "Croacia",
-        "marketValue": 2500000
+        "overall": 68,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sergi Domínguez",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 36,
-        "nationality": "España",
-        "marketValue": 2500000
+        "overall": 70,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kévin Théophile-Catherine",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 28,
-        "nationality": "Martinica",
-        "marketValue": 250
+        "overall": 71,
+        "value": 250,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dino Peric",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 31,
-        "nationality": "Croacia",
-        "marketValue": 100
+        "overall": 72,
+        "value": 100,
+        "salary": 22000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matija Ruskovacki",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 20,
-        "nationality": "Croacia",
-        "marketValue": 0
+        "overall": 68,
+        "value": 0,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matteo Pérez Vinlöf",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 22,
-        "nationality": "Suecia",
-        "marketValue": 2500000
+        "overall": 68,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bruno Goda",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 27,
-        "nationality": "Croacia",
-        "marketValue": 1300000
+        "overall": 73,
+        "value": 1300000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ronaël Pierre-Gabriel",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 18,
-        "nationality": "Francia",
-        "marketValue": 2500000
+        "overall": 69,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Moris Valincic",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 25,
-        "nationality": "Croacia",
-        "marketValue": 2000000
+        "overall": 71,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Noa Mikic",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 35,
-        "nationality": "Croacia",
-        "marketValue": 400
+        "overall": 66,
+        "value": 400,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Paul Tabinas",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 23,
-        "nationality": "Filipinas",
-        "marketValue": 200
+        "overall": 70,
+        "value": 200,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ismaël Bennacer",
-        "position": "MC",
-        "rating": 75,
+        "position": "CM",
         "age": 28,
-        "nationality": "Argelia",
-        "marketValue": 9000000
+        "overall": 75,
+        "value": 9000000,
+        "salary": 27000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marko Soldo",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 22,
-        "nationality": "Croacia",
-        "marketValue": 1300000
+        "overall": 70,
+        "value": 1300000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Josip Misic",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 27,
-        "nationality": "Croacia",
-        "marketValue": 1200000
+        "overall": 73,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gonzalo Villar",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 27,
-        "nationality": "España",
-        "marketValue": 1800000
+        "overall": 72,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Miha Zajc",
-        "position": "MC",
-        "rating": 75,
+        "position": "CM",
         "age": 31,
-        "nationality": "Eslovenia",
-        "marketValue": 1300000
+        "overall": 75,
+        "value": 1300000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luka Stojkovic",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 22,
-        "nationality": "Croacia",
-        "marketValue": 3000000
+        "overall": 71,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Robert Mudrazija",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 20,
-        "nationality": "Croacia",
-        "marketValue": 1000000
+        "overall": 68,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gabriel Vidovic",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 22,
-        "nationality": "Croacia",
-        "marketValue": 2500000
+        "overall": 68,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Arbër Hoxha",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 27,
-        "nationality": "Albania",
-        "marketValue": 2500000
+        "overall": 74,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cardoso Varela",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 23,
-        "nationality": "Portugal",
-        "marketValue": 1000000
+        "overall": 68,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mateo Lisica",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 21,
-        "nationality": "Croacia",
-        "marketValue": 1300000
+        "overall": 71,
+        "value": 1300000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Fran Topic",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 30,
-        "nationality": "Croacia",
-        "marketValue": 1000000
+        "overall": 72,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Juan Córdoba",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 22,
-        "nationality": "Colombia",
-        "marketValue": 850
+        "overall": 70,
+        "value": 850,
+        "salary": 20000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dion Beljo",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 23,
-        "nationality": "Croacia",
-        "marketValue": 4000000
+        "overall": 72,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sandro Kulenovic",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 17,
-        "nationality": "Croacia",
-        "marketValue": 4000000
+        "overall": 70,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Monsef Bakrar",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 25,
-        "nationality": "Argelia",
-        "marketValue": 2000000
+        "overall": 74,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -283,235 +385,322 @@
     "players": [
       {
         "name": "Ivica Ivusic",
-        "position": "POR",
-        "rating": 71,
+        "position": "GK",
         "age": 30,
-        "nationality": "Croacia",
-        "marketValue": 1500000
+        "overall": 71,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Toni Silic",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 33,
-        "nationality": "Croacia",
-        "marketValue": 500
+        "overall": 69,
+        "value": 500,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Davyd Fesyuk",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 20,
-        "nationality": "Ucrania",
-        "marketValue": 50
+        "overall": 65,
+        "value": 50,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Raul Bezeljak",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 19,
-        "nationality": "Croacia",
-        "marketValue": 25
+        "overall": 65,
+        "value": 25,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Branimir Mlacic",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 22,
-        "nationality": "Croacia",
-        "marketValue": 4000000
+        "overall": 67,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Zvonimir Sarlija",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 31,
-        "nationality": "Croacia",
-        "marketValue": 1500000
+        "overall": 71,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ron Raci",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 23,
-        "nationality": "Kosovo",
-        "marketValue": 450
+        "overall": 67,
+        "value": 450,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marino Skelin",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 36,
-        "nationality": "Croacia",
-        "marketValue": 100
+        "overall": 65,
+        "value": 100,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Simun Hrgovic",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 32,
-        "nationality": "Croacia",
-        "marketValue": 3000000
+        "overall": 71,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ismaël Diallo",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 29,
-        "nationality": "Costa de Marfil",
-        "marketValue": 750
+        "overall": 69,
+        "value": 750,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dario Melnjak",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 17,
-        "nationality": "Croacia",
-        "marketValue": 600
+        "overall": 65,
+        "value": 600,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luka Hodak",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 38,
-        "nationality": "Croacia",
-        "marketValue": 1000000
+        "overall": 64,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Niko Sigur",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 22,
-        "nationality": "Canadá",
-        "marketValue": 4000000
+        "overall": 69,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hugo Guillamón",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 25,
-        "nationality": "España",
-        "marketValue": 2000000
+        "overall": 70,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filip Krovinovic",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 23,
-        "nationality": "Croacia",
-        "marketValue": 2000000
+        "overall": 69,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adrion Pajaziti",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 23,
-        "nationality": "Albania",
-        "marketValue": 1500000
+        "overall": 69,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luka Jurak",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 35,
-        "nationality": "Croacia",
-        "marketValue": 50
+        "overall": 65,
+        "value": 50,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rokas Pukstas",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 21,
-        "nationality": "Estados Unidos",
-        "marketValue": 5000000
+        "overall": 70,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Anthony Kalik",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 28,
-        "nationality": "Australia",
-        "marketValue": 800
+        "overall": 69,
+        "value": 800,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Noa Skoko",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 37,
-        "nationality": "Croacia",
-        "marketValue": 50
+        "overall": 63,
+        "value": 50,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Michele Sego",
-        "position": "DC",
-        "rating": 73,
+        "position": "ST",
         "age": 25,
-        "nationality": "Croacia",
-        "marketValue": 2000000
+        "overall": 73,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ante Rebić",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 32,
-        "nationality": "Croacia",
-        "marketValue": 750
+        "overall": 65,
+        "value": 750,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lovre Loncar",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 19,
-        "nationality": "Croacia",
-        "marketValue": 0
+        "overall": 67,
+        "value": 0,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bruno Durdov",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 34,
-        "nationality": "Croacia",
-        "marketValue": 3000000
+        "overall": 62,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Abdoulie Sanyang",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 24,
-        "nationality": "Gambia",
-        "marketValue": 1500000
+        "overall": 66,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Iker Almena",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 30,
-        "nationality": "España",
-        "marketValue": 1500000
+        "overall": 69,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Roko Brajkovic",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 28,
-        "nationality": "Croacia",
-        "marketValue": 400
+        "overall": 67,
+        "value": 400,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marko Livaja",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 32,
-        "nationality": "Croacia",
-        "marketValue": 3000000
+        "overall": 66,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Peter Nnaemeka Ugwuodo",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 42,
-        "nationality": "Nigeria",
-        "marketValue": 0
+        "overall": 62,
+        "value": 0,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -521,299 +710,410 @@
     "players": [
       {
         "name": "Martin Zlomislic",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 27,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 2000000
+        "overall": 69,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Nwolokor",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 31,
-        "nationality": "Nigeria",
-        "marketValue": 150
+        "overall": 68,
+        "value": 150,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Aleksa Todorovic",
-        "position": "POR",
-        "rating": 62,
+        "position": "GK",
         "age": 22,
-        "nationality": "Serbia",
-        "marketValue": 50
+        "overall": 62,
+        "value": 50,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Niko Vucetic",
-        "position": "POR",
-        "rating": 63,
+        "position": "GK",
         "age": 19,
-        "nationality": "Croacia",
-        "marketValue": 0
+        "overall": 63,
+        "value": 0,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stjepan Radeljic",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 28,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 2800000
+        "overall": 71,
+        "value": 2800000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Anel Husic",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 24,
-        "nationality": "Suiza",
-        "marketValue": 850
+        "overall": 66,
+        "value": 850,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ante Majstorovic",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 45,
-        "nationality": "Croacia",
-        "marketValue": 500
+        "overall": 64,
+        "value": 500,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bruno Burcul",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 24,
-        "nationality": "Croacia",
-        "marketValue": 400
+        "overall": 66,
+        "value": 400,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mile Skoric",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 34,
-        "nationality": "Croacia",
-        "marketValue": 100
+        "overall": 63,
+        "value": 100,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Roko Valincic",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 19,
-        "nationality": "Croacia",
-        "marketValue": 50
+        "overall": 64,
+        "value": 50,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mladen Devetak",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 34,
-        "nationality": "Serbia",
-        "marketValue": 1000000
+        "overall": 66,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Noel Bodetic",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 21,
-        "nationality": "Croacia",
-        "marketValue": 400
+        "overall": 63,
+        "value": 400,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ante Orec",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 22,
-        "nationality": "Croacia",
-        "marketValue": 1500000
+        "overall": 66,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Justas Lasickas",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 23,
-        "nationality": "Lituania",
-        "marketValue": 500
+        "overall": 65,
+        "value": 500,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Téo Barišić",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 28,
-        "nationality": "Croacia",
-        "marketValue": 100
+        "overall": 68,
+        "value": 100,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alfonso Barco",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 24,
-        "nationality": "Perú",
-        "marketValue": 500
+        "overall": 66,
+        "value": 500,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Branko Pavic",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 19,
-        "nationality": "Croacia",
-        "marketValue": 400
+        "overall": 64,
+        "value": 400,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tiago Dantas",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 26,
-        "nationality": "Portugal",
-        "marketValue": 2800000
+        "overall": 70,
+        "value": 2800000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dejan Petrovic",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 28,
-        "nationality": "Eslovenia",
-        "marketValue": 1500000
+        "overall": 69,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rajan Zlibanovic",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 19,
-        "nationality": "Croacia",
-        "marketValue": 75
+        "overall": 64,
+        "value": 75,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Toni Fruk",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 24,
-        "nationality": "Croacia",
-        "marketValue": 9000000
+        "overall": 72,
+        "value": 9000000,
+        "salary": 27000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Niko Jankovic",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 24,
-        "nationality": "Croacia",
-        "marketValue": 3500000
+        "overall": 67,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Samuele Vignato",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 19,
-        "nationality": "Italia",
-        "marketValue": 2500000
+        "overall": 65,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Amer Gojak",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 28,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 400
+        "overall": 67,
+        "value": 400,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Merveil Ndockyt",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 20,
-        "nationality": "Congo",
-        "marketValue": 300
+        "overall": 63,
+        "value": 300,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Florent Shehu",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 23,
-        "nationality": "Suiza",
-        "marketValue": 50
+        "overall": 66,
+        "value": 50,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gabriel Rukavina",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 22,
-        "nationality": "Croacia",
-        "marketValue": 600
+        "overall": 63,
+        "value": 600,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luka Menalo",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 17,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 450
+        "overall": 62,
+        "value": 450,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dimitri Legbo",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 24,
-        "nationality": "Costa de Marfil",
-        "marketValue": 400
+        "overall": 66,
+        "value": 400,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tornike Morchiladze",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 24,
-        "nationality": "Georgia",
-        "marketValue": 350
+        "overall": 69,
+        "value": 350,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dominik Thaqi",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 25,
-        "nationality": "Croacia",
-        "marketValue": 400
+        "overall": 67,
+        "value": 400,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bruno Bogojevic",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 30,
-        "nationality": "Croacia",
-        "marketValue": 350
+        "overall": 65,
+        "value": 350,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matej Momcilovski",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 21,
-        "nationality": "Macedonia del Norte",
-        "marketValue": 50
+        "overall": 65,
+        "value": 50,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Adu-Adjei",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 18,
-        "nationality": "Inglaterra",
-        "marketValue": 750
+        "overall": 65,
+        "value": 750,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ante Matej Juric",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 23,
-        "nationality": "Croacia",
-        "marketValue": 700
+        "overall": 63,
+        "value": 700,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cherno Saho",
-        "position": "DC",
-        "rating": 60,
+        "position": "ST",
         "age": 37,
-        "nationality": "Gambia",
-        "marketValue": 250
+        "overall": 60,
+        "value": 250,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Duje Cop",
-        "position": "DC",
-        "rating": 59,
+        "position": "ST",
         "age": 35,
-        "nationality": "Croacia",
-        "marketValue": 100
+        "overall": 59,
+        "value": 100,
+        "salary": 9000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -823,251 +1123,344 @@
     "players": [
       {
         "name": "Marko Malenica",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 31,
-        "nationality": "Croacia",
-        "marketValue": 300
+        "overall": 68,
+        "value": 300,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nikola Curcija",
-        "position": "POR",
-        "rating": 62,
+        "position": "GK",
         "age": 24,
-        "nationality": "Canadá",
-        "marketValue": 100
+        "overall": 62,
+        "value": 100,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jan Hlapcic",
-        "position": "POR",
-        "rating": 63,
+        "position": "GK",
         "age": 20,
-        "nationality": "Croacia",
-        "marketValue": 50
+        "overall": 63,
+        "value": 50,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luka Jelenic",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 26,
-        "nationality": "Croacia",
-        "marketValue": 1000000
+        "overall": 69,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Styopa Mkrtchyan",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 22,
-        "nationality": "Armenia",
-        "marketValue": 400
+        "overall": 64,
+        "value": 400,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jon Mersinaj",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 15,
-        "nationality": "Albania",
-        "marketValue": 400
+        "overall": 64,
+        "value": 400,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Emin Hasic",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 33,
-        "nationality": "Suecia",
-        "marketValue": 300
+        "overall": 63,
+        "value": 300,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kresimir Vrbanac",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 20,
-        "nationality": "Croacia",
-        "marketValue": 200
+        "overall": 63,
+        "value": 200,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Roko Jurisic",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 22,
-        "nationality": "Croacia",
-        "marketValue": 1000000
+        "overall": 66,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Colina",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 38,
-        "nationality": "Croacia",
-        "marketValue": 750
+        "overall": 62,
+        "value": 750,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Borna Barisic",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 33,
-        "nationality": "Croacia",
-        "marketValue": 600
+        "overall": 63,
+        "value": 600,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Fran Karacic",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 29,
-        "nationality": "Australia",
-        "marketValue": 750
+        "overall": 68,
+        "value": 750,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Renan Guedes",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 42,
-        "nationality": "Brasil",
-        "marketValue": 350
+        "overall": 62,
+        "value": 350,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Oleksandr Petrusenko",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 16,
-        "nationality": "Ucrania",
-        "marketValue": 750
+        "overall": 64,
+        "value": 750,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vladan Bubanja",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 21,
-        "nationality": "Montenegro",
-        "marketValue": 750
+        "overall": 64,
+        "value": 750,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Mejía",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 22,
-        "nationality": "Colombia",
-        "marketValue": 300
+        "overall": 66,
+        "value": 300,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Niko Farkas",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 18,
-        "nationality": "Croacia",
-        "marketValue": 50
+        "overall": 63,
+        "value": 50,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luka Vrbancic",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 23,
-        "nationality": "Croacia",
-        "marketValue": 1000000
+        "overall": 67,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stanislav Shopov",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 23,
-        "nationality": "Bulgaria",
-        "marketValue": 700
+        "overall": 66,
+        "value": 700,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tonio Teklic",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 26,
-        "nationality": "Croacia",
-        "marketValue": 600
+        "overall": 68,
+        "value": 600,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Simun Mikolcic",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 22,
-        "nationality": "Croacia",
-        "marketValue": 300
+        "overall": 65,
+        "value": 300,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filip Zivkovic",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 24,
-        "nationality": "Croacia",
-        "marketValue": 300
+        "overall": 65,
+        "value": 300,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nail Omerovic",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 23,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 2500000
+        "overall": 67,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Milos Jovicic",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 20,
-        "nationality": "Croacia",
-        "marketValue": 50
+        "overall": 65,
+        "value": 50,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Samuel Akere",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 21,
-        "nationality": "Nigeria",
-        "marketValue": 1000000
+        "overall": 66,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Domagoj Bukvic",
-        "position": "DC",
-        "rating": 58,
+        "position": "ST",
         "age": 39,
-        "nationality": "Croacia",
-        "marketValue": 800
+        "overall": 58,
+        "value": 800,
+        "salary": 8000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Anton Matkovic",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 34,
-        "nationality": "Croacia",
-        "marketValue": 3000000
+        "overall": 63,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Arnel Jakupovic",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 17,
-        "nationality": "Austria",
-        "marketValue": 1300000
+        "overall": 66,
+        "value": 1300000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yannick Toure",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 25,
-        "nationality": "Suiza",
-        "marketValue": 400
+        "overall": 67,
+        "value": 400,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kemal Ademi",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 30,
-        "nationality": "Suiza",
-        "marketValue": 50
+        "overall": 68,
+        "value": 50,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marino Zeravica",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 19,
-        "nationality": "Croacia",
-        "marketValue": 10
+        "overall": 65,
+        "value": 10,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1077,275 +1470,377 @@
     "players": [
       {
         "name": "Franko Kolic",
-        "position": "POR",
-        "rating": 61,
+        "position": "GK",
         "age": 22,
-        "nationality": "Croacia",
-        "marketValue": 400
+        "overall": 61,
+        "value": 400,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jan Paus-Kunst",
-        "position": "POR",
-        "rating": 60,
+        "position": "GK",
         "age": 40,
-        "nationality": "Croacia",
-        "marketValue": 50
+        "overall": 60,
+        "value": 50,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dario Maresic",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 26,
-        "nationality": "Austria",
-        "marketValue": 1500000
+        "overall": 67,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ville Koski",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 21,
-        "nationality": "Finlandia",
-        "marketValue": 1500000
+        "overall": 63,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Samuli Miettinen",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 21,
-        "nationality": "Finlandia",
-        "marketValue": 500
+        "overall": 62,
+        "value": 500,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mohamed Nasraoui",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 23,
-        "nationality": "Túnez",
-        "marketValue": 500
+        "overall": 63,
+        "value": 500,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Raul Kumar",
-        "position": "DFC",
-        "rating": 60,
+        "position": "CB",
         "age": 38,
-        "nationality": "Croacia",
-        "marketValue": 350
+        "overall": 60,
+        "value": 350,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Logi Hrafn Róbertsson",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 21,
-        "nationality": "Islandia",
-        "marketValue": 250
+        "overall": 61,
+        "value": 250,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jovan Ivanisevic",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 21,
-        "nationality": "Canadá",
-        "marketValue": 150
+        "overall": 61,
+        "value": 150,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vigo Vujanic",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 19,
-        "nationality": "Croacia",
-        "marketValue": 50
+        "overall": 62,
+        "value": 50,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ivan Bikic",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 19,
-        "nationality": "Croacia",
-        "marketValue": 0
+        "overall": 62,
+        "value": 0,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Niko Sepic",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 19,
-        "nationality": "Croacia",
-        "marketValue": 250
+        "overall": 62,
+        "value": 250,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marcel Heister",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 26,
-        "nationality": "Alemania",
-        "marketValue": 200
+        "overall": 66,
+        "value": 200,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Albert Malaj",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 19,
-        "nationality": "Albania",
-        "marketValue": 0
+        "overall": 62,
+        "value": 0,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Advan Kadusic",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 28,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 600
+        "overall": 66,
+        "value": 600,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filip Taraba",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 24,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 400
+        "overall": 63,
+        "value": 400,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alejandro Jay",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 23,
-        "nationality": "España",
-        "marketValue": 250
+        "overall": 63,
+        "value": 250,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rene Hrvatin",
-        "position": "DFC",
-        "rating": 60,
+        "position": "CB",
         "age": 44,
-        "nationality": "Eslovenia",
-        "marketValue": 150
+        "overall": 60,
+        "value": 150,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Diego Rossi",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 20,
-        "nationality": "Puerto Rico",
-        "marketValue": 0
+        "overall": 62,
+        "value": 0,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stjepan Loncar",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 29,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 1300000
+        "overall": 68,
+        "value": 1300000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Josip Radosevic",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 31,
-        "nationality": "Croacia",
-        "marketValue": 1000000
+        "overall": 67,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Antonio Mauric",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 22,
-        "nationality": "Croacia",
-        "marketValue": 800
+        "overall": 64,
+        "value": 800,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Arian Moslavac",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 19,
-        "nationality": "Croacia",
-        "marketValue": 0
+        "overall": 62,
+        "value": 0,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Israel Isaac Ayuma",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 18,
-        "nationality": "Nigeria",
-        "marketValue": 300
+        "overall": 61,
+        "value": 300,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marin Zgomba",
-        "position": "MC",
-        "rating": 59,
+        "position": "CM",
         "age": 41,
-        "nationality": "Croacia",
-        "marketValue": 50
+        "overall": 59,
+        "value": 50,
+        "salary": 9000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Danijel Djuric",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 22,
-        "nationality": "Islandia",
-        "marketValue": 250
+        "overall": 63,
+        "value": 250,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Silvio Gorican",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 25,
-        "nationality": "Croacia",
-        "marketValue": 650
+        "overall": 66,
+        "value": 650,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vinko Rozic",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 22,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 600
+        "overall": 64,
+        "value": 600,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Emil Frederiksen",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 17,
-        "nationality": "Dinamarca",
-        "marketValue": 800
+        "overall": 64,
+        "value": 800,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dominik Celija",
-        "position": "DC",
-        "rating": 59,
+        "position": "ST",
         "age": 32,
-        "nationality": "Croacia",
-        "marketValue": 50
+        "overall": 59,
+        "value": 50,
+        "salary": 9000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Smail Prevljak",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 30,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 600
+        "overall": 67,
+        "value": 600,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Saydou Bangura",
-        "position": "DC",
-        "rating": 61,
+        "position": "ST",
         "age": 23,
-        "nationality": "Países Bajos",
-        "marketValue": 350
+        "overall": 61,
+        "value": 350,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Charles Adah Agada",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 19,
-        "nationality": "Nigeria",
-        "marketValue": 50
+        "overall": 62,
+        "value": 50,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Baba Yatera",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 19,
-        "nationality": "Mauritania",
-        "marketValue": 0
+        "overall": 63,
+        "value": 0,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1355,283 +1850,388 @@
     "players": [
       {
         "name": "Osman Hadzikic",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 31,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 400
+        "overall": 66,
+        "value": 400,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matija Jesenovic",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 28,
-        "nationality": "Croacia",
-        "marketValue": 50
+        "overall": 66,
+        "value": 50,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ivan Covic",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 32,
-        "nationality": "Croacia",
-        "marketValue": 50
+        "overall": 65,
+        "value": 50,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Antun Markovic",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 33,
-        "nationality": "Croacia",
-        "marketValue": 0
+        "overall": 66,
+        "value": 0,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dominik Kovacic",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 32,
-        "nationality": "Croacia",
-        "marketValue": 600
+        "overall": 66,
+        "value": 600,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tomislav Bozic",
-        "position": "DFC",
-        "rating": 60,
+        "position": "CB",
         "age": 38,
-        "nationality": "Croacia",
-        "marketValue": 100
+        "overall": 60,
+        "value": 100,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marko Leskovic",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 34,
-        "nationality": "Croacia",
-        "marketValue": 50
+        "overall": 61,
+        "value": 50,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vinko Medjimorec",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 29,
-        "nationality": "Croacia",
-        "marketValue": 50
+        "overall": 65,
+        "value": 50,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marko Petrovic",
-        "position": "DFC",
-        "rating": 60,
+        "position": "CB",
         "age": 45,
-        "nationality": "Croacia",
-        "marketValue": 0
+        "overall": 60,
+        "value": 0,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Antonio Jakir",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 23,
-        "nationality": "Croacia",
-        "marketValue": 200
+        "overall": 63,
+        "value": 200,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Zvonimir Katalinic",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 21,
-        "nationality": "Croacia",
-        "marketValue": 150
+        "overall": 61,
+        "value": 150,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Leonard Zuta",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 35,
-        "nationality": "Macedonia del Norte",
-        "marketValue": 150
+        "overall": 61,
+        "value": 150,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Erik Ridjan",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 20,
-        "nationality": "Croacia",
-        "marketValue": 25
+        "overall": 62,
+        "value": 25,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filip Kruselj",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 18,
-        "nationality": "Croacia",
-        "marketValue": 350
+        "overall": 62,
+        "value": 350,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Karlo Isasegi",
-        "position": "DFC",
-        "rating": 60,
+        "position": "CB",
         "age": 33,
-        "nationality": "Croacia",
-        "marketValue": 100
+        "overall": 60,
+        "value": 100,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luka Curkovic",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 16,
-        "nationality": "Croacia",
-        "marketValue": 50
+        "overall": 62,
+        "value": 50,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mateo Barac",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 17,
-        "nationality": "Croacia",
-        "marketValue": 50
+        "overall": 61,
+        "value": 50,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ljuban Crepulja",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 21,
-        "nationality": "Croacia",
-        "marketValue": 400
+        "overall": 61,
+        "value": 400,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Michael Agbekpornu",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 30,
-        "nationality": "Ghana",
-        "marketValue": 400
+        "overall": 66,
+        "value": 400,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Leon Bosnjak",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 24,
-        "nationality": "Croacia",
-        "marketValue": 50
+        "overall": 63,
+        "value": 50,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jan Katic",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 19,
-        "nationality": "Croacia",
-        "marketValue": 0
+        "overall": 62,
+        "value": 0,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mihail Caimacov",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 27,
-        "nationality": "Moldavia",
-        "marketValue": 300
+        "overall": 66,
+        "value": 300,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adriano Jagusic",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 20,
-        "nationality": "Croacia",
-        "marketValue": 4000000
+        "overall": 67,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ivan Cubelic",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 15,
-        "nationality": "Croacia",
-        "marketValue": 400
+        "overall": 62,
+        "value": 400,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gabrijel Sivalec",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 26,
-        "nationality": "Croacia",
-        "marketValue": 350
+        "overall": 65,
+        "value": 350,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Josip Mitrovic",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 25,
-        "nationality": "Croacia",
-        "marketValue": 850
+        "overall": 67,
+        "value": 850,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ante Suto",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 22,
-        "nationality": "Croacia",
-        "marketValue": 850
+        "overall": 66,
+        "value": 850,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Igor Lepinjica",
-        "position": "DC",
-        "rating": 61,
+        "position": "ST",
         "age": 23,
-        "nationality": "Croacia",
-        "marketValue": 300
+        "overall": 61,
+        "value": 300,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filip Mazar",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 17,
-        "nationality": "Croacia",
-        "marketValue": 200
+        "overall": 63,
+        "value": 200,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Frano Vlasic",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 19,
-        "nationality": "Croacia",
-        "marketValue": 50
+        "overall": 63,
+        "value": 50,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Andrija Filipovic",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 28,
-        "nationality": "Croacia",
-        "marketValue": 300
+        "overall": 65,
+        "value": 300,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ivan Bozic",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 28,
-        "nationality": "Croacia",
-        "marketValue": 300
+        "overall": 66,
+        "value": 300,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ilija Nestorovski",
-        "position": "DC",
-        "rating": 60,
+        "position": "ST",
         "age": 35,
-        "nationality": "Macedonia del Norte",
-        "marketValue": 200
+        "overall": 60,
+        "value": 200,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ernis Qestaj",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 19,
-        "nationality": "Kosovo",
-        "marketValue": 50
+        "overall": 63,
+        "value": 50,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Leon Kaurin",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 19,
-        "nationality": "Croacia",
-        "marketValue": 0
+        "overall": 63,
+        "value": 0,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1641,227 +2241,311 @@
     "players": [
       {
         "name": "Oliver Zelenika",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 32,
-        "nationality": "Croacia",
-        "marketValue": 300
+        "overall": 66,
+        "value": 300,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Josip Silic",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 33,
-        "nationality": "Croacia",
-        "marketValue": 150
+        "overall": 65,
+        "value": 150,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luka Skaricic",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 24,
-        "nationality": "Croacia",
-        "marketValue": 800
+        "overall": 64,
+        "value": 800,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mateo Barac",
-        "position": "DFC",
-        "rating": 59,
+        "position": "CB",
         "age": 44,
-        "nationality": "Croacia",
-        "marketValue": 400
+        "overall": 59,
+        "value": 400,
+        "salary": 9000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mario Mladenovski",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 25,
-        "nationality": "Macedonia del Norte",
-        "marketValue": 250
+        "overall": 63,
+        "value": 250,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Novak Tepsic",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 16,
-        "nationality": "Croacia",
-        "marketValue": 200
+        "overall": 61,
+        "value": 200,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Roberto Puncec",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 34,
-        "nationality": "Croacia",
-        "marketValue": 100
+        "overall": 61,
+        "value": 100,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sven Lesjak",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 19,
-        "nationality": "Croacia",
-        "marketValue": 50
+        "overall": 61,
+        "value": 50,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Antonio Borsic",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 25,
-        "nationality": "Croacia",
-        "marketValue": 700
+        "overall": 64,
+        "value": 700,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Petar Bockaj",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 29,
-        "nationality": "Croacia",
-        "marketValue": 400
+        "overall": 66,
+        "value": 400,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gregor Sikosek",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 20,
-        "nationality": "Eslovenia",
-        "marketValue": 250
+        "overall": 62,
+        "value": 250,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Domagoj Begonja",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 29,
-        "nationality": "Croacia",
-        "marketValue": 50
+        "overall": 65,
+        "value": 50,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Frane Maglica",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 23,
-        "nationality": "Croacia",
-        "marketValue": 750
+        "overall": 66,
+        "value": 750,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vane Jovanov",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 27,
-        "nationality": "Macedonia del Norte",
-        "marketValue": 250
+        "overall": 66,
+        "value": 250,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tomislav Duvnjak",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 22,
-        "nationality": "Croacia",
-        "marketValue": 500
+        "overall": 64,
+        "value": 500,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Leon Belcar",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 24,
-        "nationality": "Croacia",
-        "marketValue": 500
+        "overall": 64,
+        "value": 500,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Puclin",
-        "position": "MC",
-        "rating": 60,
+        "position": "CM",
         "age": 33,
-        "nationality": "Croacia",
-        "marketValue": 200
+        "overall": 60,
+        "value": 200,
+        "salary": 10000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mario Marina",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 24,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 100
+        "overall": 64,
+        "value": 100,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Silvio Ilinkovic",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 15,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 150
+        "overall": 62,
+        "value": 150,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Aleksa Latkovic",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 27,
-        "nationality": "Montenegro",
-        "marketValue": 800
+        "overall": 68,
+        "value": 800,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luka Mamic",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 22,
-        "nationality": "Croacia",
-        "marketValue": 600
+        "overall": 66,
+        "value": 600,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tajio James",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 22,
-        "nationality": "Barbados",
-        "marketValue": 0
+        "overall": 64,
+        "value": 0,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Iuri Tavares",
-        "position": "DC",
-        "rating": 58,
+        "position": "ST",
         "age": 38,
-        "nationality": "Cabo Verde",
-        "marketValue": 1200000
+        "overall": 58,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matej Vuk",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 25,
-        "nationality": "Croacia",
-        "marketValue": 400
+        "overall": 64,
+        "value": 400,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ivan Canjuga",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 28,
-        "nationality": "Croacia",
-        "marketValue": 150
+        "overall": 66,
+        "value": 150,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ivan Mamut",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 17,
-        "nationality": "Croacia",
-        "marketValue": 450
+        "overall": 64,
+        "value": 450,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marko Dabro",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 28,
-        "nationality": "Croacia",
-        "marketValue": 250
+        "overall": 63,
+        "value": 250,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mate Antunovic",
-        "position": "DC",
-        "rating": 60,
+        "position": "ST",
         "age": 21,
-        "nationality": "Croacia",
-        "marketValue": 200
+        "overall": 60,
+        "value": 200,
+        "salary": 10000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1871,323 +2555,443 @@
     "players": [
       {
         "name": "Josip Posavec",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 29,
-        "nationality": "Croacia",
-        "marketValue": 300
+        "overall": 66,
+        "value": 300,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luka Savatovic",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 32,
-        "nationality": "Croacia",
-        "marketValue": 200
+        "overall": 66,
+        "value": 200,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Krunoslav Hendija",
-        "position": "POR",
-        "rating": 62,
+        "position": "GK",
         "age": 36,
-        "nationality": "Croacia",
-        "marketValue": 50
+        "overall": 62,
+        "value": 50,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cheikh Mbacke Diop",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 20,
-        "nationality": "Senegal",
-        "marketValue": 1000000
+        "overall": 63,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tino Jukic",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 24,
-        "nationality": "Croacia",
-        "marketValue": 500
+        "overall": 64,
+        "value": 500,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Denis Kolinger",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 20,
-        "nationality": "Croacia",
-        "marketValue": 500
+        "overall": 62,
+        "value": 500,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Leonardo Sigali",
-        "position": "DFC",
-        "rating": 60,
+        "position": "CB",
         "age": 38,
-        "nationality": "Argentina",
-        "marketValue": 50
+        "overall": 60,
+        "value": 50,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luka Dajcer",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 16,
-        "nationality": "Croacia",
-        "marketValue": 350
+        "overall": 61,
+        "value": 350,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dimitrije Kamenovic",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 33,
-        "nationality": "Serbia",
-        "marketValue": 300
+        "overall": 61,
+        "value": 300,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ante Utrobicic",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 33,
-        "nationality": "Croacia",
-        "marketValue": 250
+        "overall": 61,
+        "value": 250,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marko Pajac",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 17,
-        "nationality": "Croacia",
-        "marketValue": 200
+        "overall": 63,
+        "value": 200,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Fran Zilinski",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 26,
-        "nationality": "Croacia",
-        "marketValue": 200
+        "overall": 66,
+        "value": 200,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marin Leovac",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 22,
-        "nationality": "Croacia",
-        "marketValue": 50
+        "overall": 61,
+        "value": 50,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Franjo Posavac",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 23,
-        "nationality": "Croacia",
-        "marketValue": 300
+        "overall": 64,
+        "value": 300,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marko Vesovic",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 23,
-        "nationality": "Montenegro",
-        "marketValue": 150
+        "overall": 64,
+        "value": 150,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mario Situm",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 18,
-        "nationality": "Croacia",
-        "marketValue": 100
+        "overall": 61,
+        "value": 100,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mody Boune",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 23,
-        "nationality": "Francia",
-        "marketValue": 50
+        "overall": 64,
+        "value": 50,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Katic",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 19,
-        "nationality": "Croacia",
-        "marketValue": 0
+        "overall": 62,
+        "value": 0,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ivan Katic",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 24,
-        "nationality": "Croacia",
-        "marketValue": 500
+        "overall": 64,
+        "value": 500,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Blaz Boskovic",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 24,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 350
+        "overall": 64,
+        "value": 350,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matija Subotic",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 18,
-        "nationality": "Croacia",
-        "marketValue": 350
+        "overall": 61,
+        "value": 350,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gentrit Salihu",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 22,
-        "nationality": "Kosovo",
-        "marketValue": 175
+        "overall": 64,
+        "value": 175,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marcel Lorber",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 21,
-        "nationality": "Eslovenia",
-        "marketValue": 300
+        "overall": 62,
+        "value": 300,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Domagoj Antolic",
-        "position": "MC",
-        "rating": 60,
+        "position": "CM",
         "age": 35,
-        "nationality": "Croacia",
-        "marketValue": 200
+        "overall": 60,
+        "value": 200,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Duje Reic",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 19,
-        "nationality": "Croacia",
-        "marketValue": 50
+        "overall": 62,
+        "value": 50,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakov-Anton Vasilj",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 29,
-        "nationality": "Croacia",
-        "marketValue": 200
+        "overall": 65,
+        "value": 200,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dusan Vukovic",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 30,
-        "nationality": "Montenegro",
-        "marketValue": 800
+        "overall": 64,
+        "value": 800,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mirko Susak",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 21,
-        "nationality": "Croacia",
-        "marketValue": 400
+        "overall": 62,
+        "value": 400,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bartol Kardum",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 19,
-        "nationality": "Croacia",
-        "marketValue": 250
+        "overall": 63,
+        "value": 250,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Aleksandar Trajkovski",
-        "position": "DC",
-        "rating": 60,
+        "position": "ST",
         "age": 33,
-        "nationality": "Macedonia del Norte",
-        "marketValue": 175
+        "overall": 60,
+        "value": 175,
+        "salary": 10000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Denis Busnja",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 21,
-        "nationality": "Croacia",
-        "marketValue": 150
+        "overall": 63,
+        "value": 150,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Virgili",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 21,
-        "nationality": "España",
-        "marketValue": 250
+        "overall": 62,
+        "value": 250,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Oliver Heidarsson",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 24,
-        "nationality": "Islandia",
-        "marketValue": 75
+        "overall": 64,
+        "value": 75,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Aleks Stojakovic",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 15,
-        "nationality": "Eslovenia",
-        "marketValue": 900
+        "overall": 64,
+        "value": 900,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hubert Sobol",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 25,
-        "nationality": "Polonia",
-        "marketValue": 150
+        "overall": 65,
+        "value": 150,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Carlo Matekovic",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 22,
-        "nationality": "Croacia",
-        "marketValue": 100
+        "overall": 64,
+        "value": 100,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Amad Keita",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 19,
-        "nationality": "Senegal",
-        "marketValue": 25
+        "overall": 63,
+        "value": 25,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gojko Jelic",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 19,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 0
+        "overall": 63,
+        "value": 0,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kauã Alves",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 22,
-        "nationality": "Brasil",
-        "marketValue": 0
+        "overall": 64,
+        "value": 0,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Fran Knezevic",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 19,
-        "nationality": "Croacia",
-        "marketValue": 0
+        "overall": 63,
+        "value": 0,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -2197,203 +3001,278 @@
     "players": [
       {
         "name": "Muhamed Sahinovic",
-        "position": "POR",
-        "rating": 58,
+        "position": "GK",
         "age": 22,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 400
+        "overall": 58,
+        "value": 400,
+        "salary": 8000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Davor Matijas",
-        "position": "POR",
-        "rating": 61,
+        "position": "GK",
         "age": 26,
-        "nationality": "Croacia",
-        "marketValue": 400
+        "overall": 61,
+        "value": 400,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Darijan Zarkov",
-        "position": "POR",
-        "rating": 62,
+        "position": "GK",
         "age": 30,
-        "nationality": "Croacia",
-        "marketValue": 50
+        "overall": 62,
+        "value": 50,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tin Dosen",
-        "position": "POR",
-        "rating": 58,
+        "position": "GK",
         "age": 19,
-        "nationality": "Croacia",
-        "marketValue": 0
+        "overall": 58,
+        "value": 0,
+        "salary": 8000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lovro Dukic",
-        "position": "DFC",
-        "rating": 58,
+        "position": "CB",
         "age": 33,
-        "nationality": "Croacia",
-        "marketValue": 0
+        "overall": 58,
+        "value": 0,
+        "salary": 8000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mateo Les",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 25,
-        "nationality": "Croacia",
-        "marketValue": 500
+        "overall": 61,
+        "value": 500,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stefan Peric",
-        "position": "DFC",
-        "rating": 57,
+        "position": "CB",
         "age": 45,
-        "nationality": "Austria",
-        "marketValue": 350
+        "overall": 57,
+        "value": 350,
+        "salary": 7000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakov Filipovic",
-        "position": "DFC",
-        "rating": 58,
+        "position": "CB",
         "age": 33,
-        "nationality": "Croacia",
-        "marketValue": 200
+        "overall": 58,
+        "value": 200,
+        "salary": 8000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marijan Cabraja",
-        "position": "DFC",
-        "rating": 60,
+        "position": "CB",
         "age": 19,
-        "nationality": "Croacia",
-        "marketValue": 350
+        "overall": 60,
+        "value": 350,
+        "salary": 10000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Elvir Durakovic",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 32,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 200
+        "overall": 62,
+        "value": 200,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Zan Trontelj",
-        "position": "DFC",
-        "rating": 60,
+        "position": "CB",
         "age": 22,
-        "nationality": "Eslovenia",
-        "marketValue": 800
+        "overall": 60,
+        "value": 800,
+        "salary": 10000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jurica Prsir",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 25,
-        "nationality": "Croacia",
-        "marketValue": 1500000
+        "overall": 66,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Iker Pozo",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 25,
-        "nationality": "España",
-        "marketValue": 750
+        "overall": 66,
+        "value": 750,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ognjen Bakic",
-        "position": "MC",
-        "rating": 60,
+        "position": "CM",
         "age": 23,
-        "nationality": "Montenegro",
-        "marketValue": 400
+        "overall": 60,
+        "value": 400,
+        "salary": 10000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Domagoj Pavicic",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 24,
-        "nationality": "Croacia",
-        "marketValue": 200
+        "overall": 61,
+        "value": 200,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ante Kavelj",
-        "position": "MC",
-        "rating": 57,
+        "position": "CM",
         "age": 36,
-        "nationality": "Croacia",
-        "marketValue": 650
+        "overall": 57,
+        "value": 650,
+        "salary": 7000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ivan Fiolic",
-        "position": "MC",
-        "rating": 58,
+        "position": "CM",
         "age": 18,
-        "nationality": "Croacia",
-        "marketValue": 200
+        "overall": 58,
+        "value": 200,
+        "salary": 8000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Antonio Ilic",
-        "position": "MC",
-        "rating": 59,
+        "position": "CM",
         "age": 20,
-        "nationality": "Croacia",
-        "marketValue": 125
+        "overall": 59,
+        "value": 125,
+        "salary": 9000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Théo Epailly",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 26,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 63,
+        "value": 400,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luka Vrzic",
-        "position": "DC",
-        "rating": 58,
+        "position": "ST",
         "age": 20,
-        "nationality": "Croacia",
-        "marketValue": 450
+        "overall": 58,
+        "value": 450,
+        "salary": 8000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vanja Pelko",
-        "position": "DC",
-        "rating": 60,
+        "position": "ST",
         "age": 29,
-        "nationality": "Croacia",
-        "marketValue": 300
+        "overall": 60,
+        "value": 300,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filip Cuic",
-        "position": "DC",
-        "rating": 61,
+        "position": "ST",
         "age": 22,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 650
+        "overall": 61,
+        "value": 650,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Medin Gashi",
-        "position": "DC",
-        "rating": 58,
+        "position": "ST",
         "age": 19,
-        "nationality": "Kosovo",
-        "marketValue": 300
+        "overall": 58,
+        "value": 300,
+        "salary": 8000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Wisdom Aondowase Sule",
-        "position": "DC",
-        "rating": 61,
+        "position": "ST",
         "age": 22,
-        "nationality": "Nigeria",
-        "marketValue": 250
+        "overall": 61,
+        "value": 250,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ante Erceg",
-        "position": "DC",
-        "rating": 54,
+        "position": "ST",
         "age": 36,
-        "nationality": "Croacia",
-        "marketValue": 50
+        "overall": 54,
+        "value": 50,
+        "salary": 4000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -2403,267 +3282,366 @@
     "players": [
       {
         "name": "Marino Bulat",
-        "position": "POR",
-        "rating": 61,
+        "position": "GK",
         "age": 26,
-        "nationality": "Croacia",
-        "marketValue": 300
+        "overall": 61,
+        "value": 300,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Antonio Djakovic",
-        "position": "POR",
-        "rating": 58,
+        "position": "GK",
         "age": 42,
-        "nationality": "Croacia",
-        "marketValue": 250
+        "overall": 58,
+        "value": 250,
+        "salary": 8000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Denis Pintol",
-        "position": "POR",
-        "rating": 61,
+        "position": "GK",
         "age": 25,
-        "nationality": "Eslovenia",
-        "marketValue": 100
+        "overall": 61,
+        "value": 100,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dominik Mulac",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 26,
-        "nationality": "Croacia",
-        "marketValue": 400
+        "overall": 62,
+        "value": 400,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakov Gurlica",
-        "position": "DFC",
-        "rating": 58,
+        "position": "CB",
         "age": 35,
-        "nationality": "Croacia",
-        "marketValue": 300
+        "overall": 58,
+        "value": 300,
+        "salary": 8000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Josip Elez",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 31,
-        "nationality": "Croacia",
-        "marketValue": 250
+        "overall": 63,
+        "value": 250,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Moreno Zivkovic",
-        "position": "DFC",
-        "rating": 59,
+        "position": "CB",
         "age": 21,
-        "nationality": "Croacia",
-        "marketValue": 250
+        "overall": 59,
+        "value": 250,
+        "salary": 9000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nikita Vlasenko",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 24,
-        "nationality": "Suiza",
-        "marketValue": 150
+        "overall": 61,
+        "value": 150,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakov Suver",
-        "position": "DFC",
-        "rating": 58,
+        "position": "CB",
         "age": 22,
-        "nationality": "Croacia",
-        "marketValue": 100
+        "overall": 58,
+        "value": 100,
+        "salary": 8000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mario Tadic",
-        "position": "DFC",
-        "rating": 58,
+        "position": "CB",
         "age": 34,
-        "nationality": "Croacia",
-        "marketValue": 50
+        "overall": 58,
+        "value": 50,
+        "salary": 8000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kerim Calhanoglu",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 23,
-        "nationality": "Alemania",
-        "marketValue": 350
+        "overall": 61,
+        "value": 350,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kristijan Cabrajic",
-        "position": "DFC",
-        "rating": 59,
+        "position": "CB",
         "age": 20,
-        "nationality": "Croacia",
-        "marketValue": 200
+        "overall": 59,
+        "value": 200,
+        "salary": 9000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ivan Rist",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 28,
-        "nationality": "Croacia",
-        "marketValue": 0
+        "overall": 63,
+        "value": 0,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kristijan Pavicic",
-        "position": "DFC",
-        "rating": 59,
+        "position": "CB",
         "age": 16,
-        "nationality": "Croacia",
-        "marketValue": 250
+        "overall": 59,
+        "value": 250,
+        "salary": 9000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mario Ticinovic",
-        "position": "DFC",
-        "rating": 58,
+        "position": "CB",
         "age": 34,
-        "nationality": "Croacia",
-        "marketValue": 150
+        "overall": 58,
+        "value": 150,
+        "salary": 8000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vito Caic",
-        "position": "MC",
-        "rating": 58,
+        "position": "CM",
         "age": 20,
-        "nationality": "Croacia",
-        "marketValue": 200
+        "overall": 58,
+        "value": 200,
+        "salary": 8000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marin Pilj",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 30,
-        "nationality": "Croacia",
-        "marketValue": 200
+        "overall": 62,
+        "value": 200,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakov Biljan",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 30,
-        "nationality": "Croacia",
-        "marketValue": 50
+        "overall": 62,
+        "value": 50,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Samuel Koeberlé",
-        "position": "MC",
-        "rating": 56,
+        "position": "CM",
         "age": 36,
-        "nationality": "Francia",
-        "marketValue": 50
+        "overall": 56,
+        "value": 50,
+        "salary": 6000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Eniss Shabani",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 22,
-        "nationality": "Albania",
-        "marketValue": 350
+        "overall": 61,
+        "value": 350,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Robin González",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 27,
-        "nationality": "Colombia",
-        "marketValue": 850
+        "overall": 65,
+        "value": 850,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lovre Kulusic",
-        "position": "MC",
-        "rating": 59,
+        "position": "CM",
         "age": 19,
-        "nationality": "Croacia",
-        "marketValue": 500
+        "overall": 59,
+        "value": 500,
+        "salary": 9000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Josip Spoljaric",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 29,
-        "nationality": "Croacia",
-        "marketValue": 200
+        "overall": 63,
+        "value": 200,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alen Jurilj",
-        "position": "DC",
-        "rating": 60,
+        "position": "ST",
         "age": 19,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 250
+        "overall": 60,
+        "value": 250,
+        "salary": 10000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pocholo Bugas",
-        "position": "DC",
-        "rating": 55,
+        "position": "ST",
         "age": 39,
-        "nationality": "Filipinas",
-        "marketValue": 25
+        "overall": 55,
+        "value": 25,
+        "salary": 5000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lovro Banovec",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 28,
-        "nationality": "Croacia",
-        "marketValue": 600
+        "overall": 63,
+        "value": 600,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Simun Butic",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 27,
-        "nationality": "Croacia",
-        "marketValue": 200
+        "overall": 63,
+        "value": 200,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tyrone Tormin",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 29,
-        "nationality": "Francia",
-        "marketValue": 100
+        "overall": 62,
+        "value": 100,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakov Puljic",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 21,
-        "nationality": "Croacia",
-        "marketValue": 250
+        "overall": 62,
+        "value": 250,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lun Boncina",
-        "position": "DC",
-        "rating": 61,
+        "position": "ST",
         "age": 23,
-        "nationality": "Eslovenia",
-        "marketValue": 200
+        "overall": 61,
+        "value": 200,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Keyendrah Simmonds",
-        "position": "DC",
-        "rating": 61,
+        "position": "ST",
         "age": 24,
-        "nationality": "Inglaterra",
-        "marketValue": 150
+        "overall": 61,
+        "value": 150,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luka Klanac",
-        "position": "DC",
-        "rating": 54,
+        "position": "ST",
         "age": 33,
-        "nationality": "Croacia",
-        "marketValue": 50
+        "overall": 54,
+        "value": 50,
+        "salary": 4000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kristijan Mrkonjic",
-        "position": "DC",
-        "rating": 61,
+        "position": "ST",
         "age": 28,
-        "nationality": "Croacia",
-        "marketValue": 0
+        "overall": 61,
+        "value": 0,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   }

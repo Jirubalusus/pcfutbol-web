@@ -5,251 +5,344 @@
     "players": [
       {
         "name": "Tjark Ernst",
-        "position": "POR",
-        "rating": 72,
+        "position": "GK",
         "age": 22,
-        "nationality": "Alemania",
-        "marketValue": 4000000
+        "overall": 72,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Konstantin Heide",
-        "position": "POR",
-        "rating": 71,
+        "position": "GK",
         "age": 20,
-        "nationality": "Alemania",
-        "marketValue": 500
+        "overall": 71,
+        "value": 500,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marius Gersbeck",
-        "position": "POR",
-        "rating": 71,
+        "position": "GK",
         "age": 35,
-        "nationality": "Alemania",
-        "marketValue": 350
+        "overall": 71,
+        "value": 350,
+        "salary": 21000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tim Goller",
-        "position": "POR",
-        "rating": 71,
+        "position": "GK",
         "age": 43,
-        "nationality": "Alemania",
-        "marketValue": 350
+        "overall": 71,
+        "value": 350,
+        "salary": 21000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Linus Gechter",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 44,
-        "nationality": "Alemania",
-        "marketValue": 3500000
+        "overall": 71,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Márton Dárdai",
-        "position": "DFC",
-        "rating": 77,
+        "position": "CB",
         "age": 31,
-        "nationality": "Hungría",
-        "marketValue": 2500000
+        "overall": 77,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pascal Klemens",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 41,
-        "nationality": "Alemania",
-        "marketValue": 2500000
+        "overall": 71,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Niklas Kolbe",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 27,
-        "nationality": "Alemania",
-        "marketValue": 700
+        "overall": 75,
+        "value": 700,
+        "salary": 25000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Agustín Rogel",
-        "position": "DFC",
-        "rating": 76,
+        "position": "CB",
         "age": 28,
-        "nationality": "Uruguay",
-        "marketValue": 500
+        "overall": 76,
+        "value": 500,
+        "salary": 26000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "John Brooks",
-        "position": "DFC",
-        "rating": 74,
+        "position": "CB",
         "age": 25,
-        "nationality": "Estados Unidos",
-        "marketValue": 300
+        "overall": 74,
+        "value": 300,
+        "salary": 24000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Toni Leistner",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 37,
-        "nationality": "Alemania",
-        "marketValue": 300
+        "overall": 70,
+        "value": 300,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tim Hoffmann",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 20,
-        "nationality": "Alemania",
-        "marketValue": 225
+        "overall": 72,
+        "value": 225,
+        "salary": 22000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Michal Karbownik",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 33,
-        "nationality": "Polonia",
-        "marketValue": 2000000
+        "overall": 72,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Julian Eitschberger",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 21,
-        "nationality": "Alemania",
-        "marketValue": 1000000
+        "overall": 72,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Deyovaisio Zeefuik",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 42,
-        "nationality": "Surinam",
-        "marketValue": 1000000
+        "overall": 71,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Janne Berner",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 34,
-        "nationality": "Alemania",
-        "marketValue": 300
+        "overall": 71,
+        "value": 300,
+        "salary": 21000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kennet Eichhorn",
-        "position": "MC",
-        "rating": 79,
+        "position": "CM",
         "age": 23,
-        "nationality": "Alemania",
-        "marketValue": 20000000
+        "overall": 79,
+        "value": 20000000,
+        "salary": 60000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Boris Mamuzah Lum",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 21,
-        "nationality": "Alemania",
-        "marketValue": 1000000
+        "overall": 73,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Diego Demme",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 34,
-        "nationality": "Alemania",
-        "marketValue": 500
+        "overall": 71,
+        "value": 500,
+        "salary": 21000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Michaël Cuisance",
-        "position": "MC",
-        "rating": 78,
+        "position": "CM",
         "age": 26,
-        "nationality": "Francia",
-        "marketValue": 3500000
+        "overall": 78,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Leon Jensen",
-        "position": "MC",
-        "rating": 76,
+        "position": "CM",
         "age": 28,
-        "nationality": "Alemania",
-        "marketValue": 800
+        "overall": 76,
+        "value": 800,
+        "salary": 26000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kevin Sessa",
-        "position": "MC",
-        "rating": 75,
+        "position": "CM",
         "age": 25,
-        "nationality": "Alemania",
-        "marketValue": 750
+        "overall": 75,
+        "value": 750,
+        "salary": 25000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Paul Seguin",
-        "position": "MC",
-        "rating": 76,
+        "position": "CM",
         "age": 30,
-        "nationality": "Alemania",
-        "marketValue": 750
+        "overall": 76,
+        "value": 750,
+        "salary": 26000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jeremy Dudziak",
-        "position": "MC",
-        "rating": 76,
+        "position": "CM",
         "age": 28,
-        "nationality": "Túnez",
-        "marketValue": 400
+        "overall": 76,
+        "value": 400,
+        "salary": 26000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Maurice Krattenmacher",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 20,
-        "nationality": "Alemania",
-        "marketValue": 3500000
+        "overall": 72,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Fabian Reese",
-        "position": "DC",
-        "rating": 80,
+        "position": "ST",
         "age": 28,
-        "nationality": "Alemania",
-        "marketValue": 5000000
+        "overall": 80,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jón Dagur Thorsteinsson",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 24,
-        "nationality": "Islandia",
-        "marketValue": 800
+        "overall": 71,
+        "value": 800,
+        "salary": 21000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marten Winkler",
-        "position": "DC",
-        "rating": 76,
+        "position": "ST",
         "age": 22,
-        "nationality": "Alemania",
-        "marketValue": 1500000
+        "overall": 76,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dawid Kownacki",
-        "position": "DC",
-        "rating": 77,
+        "position": "ST",
         "age": 28,
-        "nationality": "Polonia",
-        "marketValue": 2500000
+        "overall": 77,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sebastian Grönning",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 17,
-        "nationality": "Dinamarca",
-        "marketValue": 700
+        "overall": 72,
+        "value": 700,
+        "salary": 22000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luca Schuler",
-        "position": "DC",
-        "rating": 73,
+        "position": "ST",
         "age": 18,
-        "nationality": "Alemania",
-        "marketValue": 600
+        "overall": 73,
+        "value": 600,
+        "salary": 23000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -259,251 +352,344 @@
     "players": [
       {
         "name": "Nahuel Noll",
-        "position": "POR",
-        "rating": 72,
+        "position": "GK",
         "age": 22,
-        "nationality": "Alemania",
-        "marketValue": 1800000
+        "overall": 72,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Leo Weinkauf",
-        "position": "POR",
-        "rating": 75,
+        "position": "GK",
         "age": 30,
-        "nationality": "Alemania",
-        "marketValue": 250
+        "overall": 75,
+        "value": 250,
+        "salary": 25000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jonas Schwanke",
-        "position": "POR",
-        "rating": 71,
+        "position": "GK",
         "age": 40,
-        "nationality": "Alemania",
-        "marketValue": 150
+        "overall": 71,
+        "value": 150,
+        "salary": 21000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hendry Blank",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 21,
-        "nationality": "Alemania",
-        "marketValue": 2000000
+        "overall": 72,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Virgil Ghiță",
-        "position": "DFC",
-        "rating": 77,
+        "position": "CB",
         "age": 27,
-        "nationality": "Rumania",
-        "marketValue": 2000000
+        "overall": 77,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Maik Nawrocki",
-        "position": "DFC",
-        "rating": 77,
+        "position": "CB",
         "age": 24,
-        "nationality": "Polonia",
-        "marketValue": 2000000
+        "overall": 77,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ime Okon",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 20,
-        "nationality": "Sudáfrica",
-        "marketValue": 2000000
+        "overall": 73,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Boris Tomiak",
-        "position": "DFC",
-        "rating": 77,
+        "position": "CB",
         "age": 27,
-        "nationality": "Alemania",
-        "marketValue": 1700000
+        "overall": 77,
+        "value": 1700000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bastian Allgeier",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 17,
-        "nationality": "Alemania",
-        "marketValue": 400
+        "overall": 71,
+        "value": 400,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Brooklyn Ezeh",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 37,
-        "nationality": "Alemania",
-        "marketValue": 300
+        "overall": 70,
+        "value": 300,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Noel Aseko",
-        "position": "MC",
-        "rating": 75,
+        "position": "CM",
         "age": 15,
-        "nationality": "Alemania",
-        "marketValue": 6000000
+        "overall": 75,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Noah Engelbreth",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 22,
-        "nationality": "Alemania",
-        "marketValue": 175
+        "overall": 74,
+        "value": 175,
+        "salary": 24000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Enzo Leopold",
-        "position": "MC",
-        "rating": 78,
+        "position": "CM",
         "age": 25,
-        "nationality": "Alemania",
-        "marketValue": 3000000
+        "overall": 78,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stefán Teitur Thórdarson",
-        "position": "MC",
-        "rating": 75,
+        "position": "CM",
         "age": 23,
-        "nationality": "Islandia",
-        "marketValue": 1800000
+        "overall": 75,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Waniss Taïbi",
-        "position": "MC",
-        "rating": 76,
+        "position": "CM",
         "age": 26,
-        "nationality": "Francia",
-        "marketValue": 1500000
+        "overall": 76,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Franz Roggow",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 23,
-        "nationality": "Alemania",
-        "marketValue": 600
+        "overall": 73,
+        "value": 600,
+        "salary": 23000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mwisho Mhango",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 21,
-        "nationality": "Malaui",
-        "marketValue": 0
+        "overall": 72,
+        "value": 0,
+        "salary": 22000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hayate Matsuda",
-        "position": "MC",
-        "rating": 77,
+        "position": "CM",
         "age": 27,
-        "nationality": "Japón",
-        "marketValue": 2000000
+        "overall": 77,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Maurice Neubauer",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 33,
-        "nationality": "Alemania",
-        "marketValue": 900
+        "overall": 72,
+        "value": 900,
+        "salary": 22000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kolja Oudenne",
-        "position": "MC",
-        "rating": 76,
+        "position": "CM",
         "age": 29,
-        "nationality": "Suecia",
-        "marketValue": 700
+        "overall": 76,
+        "value": 700,
+        "salary": 26000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "William Kokolo",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 19,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 71,
+        "value": 500,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Elias Saad",
-        "position": "DC",
-        "rating": 78,
+        "position": "ST",
         "age": 24,
-        "nationality": "Túnez",
-        "marketValue": 4000000
+        "overall": 78,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Noah Weißhaupt",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 24,
-        "nationality": "Alemania",
-        "marketValue": 3500000
+        "overall": 75,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Husseyn Chakroun",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 21,
-        "nationality": "Líbano",
-        "marketValue": 1800000
+        "overall": 74,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Taycan Kurt",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 39,
-        "nationality": "Turquía",
-        "marketValue": 0
+        "overall": 68,
+        "value": 0,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daisuke Yokota",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 18,
-        "nationality": "Japón",
-        "marketValue": 1700000
+        "overall": 74,
+        "value": 1700000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mustapha Bundu",
-        "position": "DC",
-        "rating": 77,
+        "position": "ST",
         "age": 28,
-        "nationality": "Sierra Leona",
-        "marketValue": 1000000
+        "overall": 77,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Benjamin Källman",
-        "position": "DC",
-        "rating": 79,
+        "position": "ST",
         "age": 27,
-        "nationality": "Finlandia",
-        "marketValue": 3000000
+        "overall": 79,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Benedikt Pichler",
-        "position": "DC",
-        "rating": 77,
+        "position": "ST",
         "age": 28,
-        "nationality": "Austria",
-        "marketValue": 1500000
+        "overall": 77,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Havard Nielsen",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 16,
-        "nationality": "Noruega",
-        "marketValue": 400
+        "overall": 72,
+        "value": 400,
+        "salary": 22000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Denis Husser",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 34,
-        "nationality": "Alemania",
-        "marketValue": 200
+        "overall": 70,
+        "value": 200,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -513,275 +699,377 @@
     "players": [
       {
         "name": "Loris Karius",
-        "position": "POR",
-        "rating": 74,
+        "position": "GK",
         "age": 32,
-        "nationality": "Alemania",
-        "marketValue": 800
+        "overall": 74,
+        "value": 800,
+        "salary": 24000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kevin Müller",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 22,
-        "nationality": "Alemania",
-        "marketValue": 300
+        "overall": 69,
+        "value": 300,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Johannes Siebeking",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 36,
-        "nationality": "Alemania",
-        "marketValue": 125
+        "overall": 70,
+        "value": 125,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luca Podlech",
-        "position": "POR",
-        "rating": 74,
+        "position": "GK",
         "age": 32,
-        "nationality": "Alemania",
-        "marketValue": 50
+        "overall": 74,
+        "value": 50,
+        "salary": 24000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mertcan Ayhan",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 43,
-        "nationality": "Turquía",
-        "marketValue": 4000000
+        "overall": 69,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hasan Kuruçay",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 28,
-        "nationality": "Turquía",
-        "marketValue": 1800000
+        "overall": 75,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nikola Katic",
-        "position": "DFC",
-        "rating": 74,
+        "position": "CB",
         "age": 25,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 1800000
+        "overall": 74,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Timo Becker",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 28,
-        "nationality": "Alemania",
-        "marketValue": 1500000
+        "overall": 75,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Felipe Sánchez",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 21,
-        "nationality": "Argentina",
-        "marketValue": 800
+        "overall": 69,
+        "value": 800,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dylan Leonard",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 18,
-        "nationality": "Australia",
-        "marketValue": 400
+        "overall": 70,
+        "value": 400,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tomas Kalas",
-        "position": "DFC",
-        "rating": 74,
+        "position": "CB",
         "age": 26,
-        "nationality": "República Checa",
-        "marketValue": 400
+        "overall": 74,
+        "value": 400,
+        "salary": 24000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vitalie Becker",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 33,
-        "nationality": "Alemania",
-        "marketValue": 3000000
+        "overall": 70,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Anton Donkor",
-        "position": "DFC",
-        "rating": 74,
+        "position": "CB",
         "age": 30,
-        "nationality": "Alemania",
-        "marketValue": 400
+        "overall": 74,
+        "value": 400,
+        "salary": 24000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adrian Gantenbein",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 17,
-        "nationality": "Suiza",
-        "marketValue": 900
+        "overall": 70,
+        "value": 900,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Henning Matriciani",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 41,
-        "nationality": "Alemania",
-        "marketValue": 350
+        "overall": 67,
+        "value": 350,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tidiane Touré",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 21,
-        "nationality": "Francia",
-        "marketValue": 150
+        "overall": 70,
+        "value": 150,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dejan Ljubicic",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 21,
-        "nationality": "Austria",
-        "marketValue": 3000000
+        "overall": 71,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ron Schallenberg",
-        "position": "MC",
-        "rating": 75,
+        "position": "CM",
         "age": 27,
-        "nationality": "Alemania",
-        "marketValue": 1800000
+        "overall": 75,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Max Grüger",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 37,
-        "nationality": "Alemania",
-        "marketValue": 1700000
+        "overall": 68,
+        "value": 1700000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mauro Zalazar",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 16,
-        "nationality": "Uruguay",
-        "marketValue": 300
+        "overall": 69,
+        "value": 300,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Soufiane El-Faouzi",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 23,
-        "nationality": "Alemania",
-        "marketValue": 4000000
+        "overall": 73,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Janik Bachmann",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 29,
-        "nationality": "Alemania",
-        "marketValue": 600
+        "overall": 73,
+        "value": 600,
+        "salary": 23000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Finn Porath",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 27,
-        "nationality": "Alemania",
-        "marketValue": 1000000
+        "overall": 74,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kenan Karaman",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 19,
-        "nationality": "Turquía",
-        "marketValue": 2000000
+        "overall": 74,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Christopher Antwi-Adjei",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 18,
-        "nationality": "Ghana",
-        "marketValue": 500
+        "overall": 71,
+        "value": 500,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Amin Younes",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 32,
-        "nationality": "Alemania",
-        "marketValue": 300
+        "overall": 68,
+        "value": 300,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mika Wallentowitz",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 35,
-        "nationality": "Alemania",
-        "marketValue": 1000000
+        "overall": 66,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Zaid Tchibara",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 19,
-        "nationality": "Togo",
-        "marketValue": 300
+        "overall": 71,
+        "value": 300,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Moussa Sylla",
-        "position": "DC",
-        "rating": 76,
+        "position": "ST",
         "age": 26,
-        "nationality": "Malí",
-        "marketValue": 5000000
+        "overall": 76,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Christian Gomis",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 25,
-        "nationality": "Senegal",
-        "marketValue": 1500000
+        "overall": 75,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Edin Dzeko",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 39,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 1500000
+        "overall": 71,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bryan Lasme",
-        "position": "DC",
-        "rating": 73,
+        "position": "ST",
         "age": 27,
-        "nationality": "Francia",
-        "marketValue": 600
+        "overall": 73,
+        "value": 600,
+        "salary": 23000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Emil Højlund",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 15,
-        "nationality": "Dinamarca",
-        "marketValue": 500
+        "overall": 71,
+        "value": 500,
+        "salary": 21000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Peter Remmert",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 39,
-        "nationality": "Alemania",
-        "marketValue": 500
+        "overall": 67,
+        "value": 500,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -791,235 +1079,322 @@
     "players": [
       {
         "name": "Timo Horn",
-        "position": "POR",
-        "rating": 74,
+        "position": "GK",
         "age": 32,
-        "nationality": "Alemania",
-        "marketValue": 700
+        "overall": 74,
+        "value": 700,
+        "salary": 24000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Niclas Thiede",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 22,
-        "nationality": "Alemania",
-        "marketValue": 350
+        "overall": 68,
+        "value": 350,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hugo Rölleke",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 38,
-        "nationality": "Alemania",
-        "marketValue": 50
+        "overall": 70,
+        "value": 50,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Leandro Morgalla",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 39,
-        "nationality": "Alemania",
-        "marketValue": 3500000
+        "overall": 69,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Erhan Masovic",
-        "position": "DFC",
-        "rating": 74,
+        "position": "CB",
         "age": 27,
-        "nationality": "Serbia",
-        "marketValue": 1500000
+        "overall": 74,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Philipp Strompf",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 27,
-        "nationality": "Alemania",
-        "marketValue": 1000000
+        "overall": 75,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Noah Loosli",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 20,
-        "nationality": "Suiza",
-        "marketValue": 750
+        "overall": 70,
+        "value": 750,
+        "salary": 20000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kevin Vogt",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 34,
-        "nationality": "Alemania",
-        "marketValue": 400
+        "overall": 69,
+        "value": 400,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Hülsenbusch",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 25,
-        "nationality": "Alemania",
-        "marketValue": 50
+        "overall": 72,
+        "value": 50,
+        "salary": 22000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Maximilian Wittek",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 32,
-        "nationality": "Alemania",
-        "marketValue": 1000000
+        "overall": 75,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mikkel Rakneberg",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 18,
-        "nationality": "Noruega",
-        "marketValue": 700
+        "overall": 70,
+        "value": 700,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Darnell Keumo",
-        "position": "DFC",
-        "rating": 74,
+        "position": "CB",
         "age": 30,
-        "nationality": "Alemania",
-        "marketValue": 300
+        "overall": 74,
+        "value": 300,
+        "salary": 24000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Felix Passlack",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 15,
-        "nationality": "Alemania",
-        "marketValue": 1000000
+        "overall": 70,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kacper Koscierski",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 35,
-        "nationality": "Alemania",
-        "marketValue": 700
+        "overall": 68,
+        "value": 700,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cajetan Lenz",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 34,
-        "nationality": "Alemania",
-        "marketValue": 6000000
+        "overall": 71,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marcel Sobottka",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 31,
-        "nationality": "Alemania",
-        "marketValue": 350
+        "overall": 74,
+        "value": 350,
+        "salary": 24000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kjell Wätjen",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 19,
-        "nationality": "Alemania",
-        "marketValue": 3500000
+        "overall": 71,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mats Pannewig",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 24,
-        "nationality": "Alemania",
-        "marketValue": 2500000
+        "overall": 73,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matus Bero",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 19,
-        "nationality": "Eslovaquia",
-        "marketValue": 2000000
+        "overall": 71,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Moritz-Broni Kwarteng",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 27,
-        "nationality": "Alemania",
-        "marketValue": 750
+        "overall": 73,
+        "value": 750,
+        "salary": 23000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Koji Miyoshi",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 23,
-        "nationality": "Japón",
-        "marketValue": 1000000
+        "overall": 73,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Romario Rösch",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 26,
-        "nationality": "Alemania",
-        "marketValue": 400
+        "overall": 73,
+        "value": 400,
+        "salary": 23000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Francis Onyeka",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 21,
-        "nationality": "Alemania",
-        "marketValue": 6000000
+        "overall": 74,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lirim Jashari",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 36,
-        "nationality": "Kosovo",
-        "marketValue": 100
+        "overall": 68,
+        "value": 100,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gerrit Holtmann",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 17,
-        "nationality": "Filipinas",
-        "marketValue": 700
+        "overall": 72,
+        "value": 700,
+        "salary": 22000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Farid Alfa-Ruprecht",
-        "position": "DC",
-        "rating": 73,
+        "position": "ST",
         "age": 29,
-        "nationality": "Alemania",
-        "marketValue": 3000000
+        "overall": 73,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Callum Marshall",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 16,
-        "nationality": "Irlanda del Norte",
-        "marketValue": 2000000
+        "overall": 74,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ibrahim Sissoko",
-        "position": "DC",
-        "rating": 73,
+        "position": "ST",
         "age": 30,
-        "nationality": "Malí",
-        "marketValue": 900
+        "overall": 73,
+        "value": 900,
+        "salary": 23000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Philipp Hofmann",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 33,
-        "nationality": "Alemania",
-        "marketValue": 750
+        "overall": 66,
+        "value": 750,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1029,235 +1404,322 @@
     "players": [
       {
         "name": "Dennis Seimen",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 41,
-        "nationality": "Alemania",
-        "marketValue": 7000000
+        "overall": 69,
+        "value": 7000000,
+        "salary": 21000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Markus Schubert",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 27,
-        "nationality": "Alemania",
-        "marketValue": 500
+        "overall": 69,
+        "value": 500,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Florian Pruhs",
-        "position": "POR",
-        "rating": 72,
+        "position": "GK",
         "age": 31,
-        "nationality": "Alemania",
-        "marketValue": 150
+        "overall": 72,
+        "value": 150,
+        "salary": 22000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mattes Hansen",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 22,
-        "nationality": "Alemania",
-        "marketValue": 2500000
+        "overall": 69,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Felix Götze",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 20,
-        "nationality": "Alemania",
-        "marketValue": 2000000
+        "overall": 69,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Calvin Brackelmann",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 26,
-        "nationality": "Alemania",
-        "marketValue": 1500000
+        "overall": 73,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tjark Scheller",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 25,
-        "nationality": "Alemania",
-        "marketValue": 1500000
+        "overall": 71,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marcel Hoffmeier",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 33,
-        "nationality": "Alemania",
-        "marketValue": 1000000
+        "overall": 68,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Kinsombi",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 30,
-        "nationality": "Alemania",
-        "marketValue": 400
+        "overall": 72,
+        "value": 400,
+        "salary": 22000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kevin Krumme",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 21,
-        "nationality": "Alemania",
-        "marketValue": 150
+        "overall": 68,
+        "value": 150,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kerem Yalcin",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 21,
-        "nationality": "Alemania",
-        "marketValue": 150
+        "overall": 68,
+        "value": 150,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Santiago Castañeda",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 21,
-        "nationality": "Estados Unidos",
-        "marketValue": 4000000
+        "overall": 69,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luis Engelns",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 18,
-        "nationality": "Alemania",
-        "marketValue": 4000000
+        "overall": 68,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mika Baur",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 21,
-        "nationality": "Alemania",
-        "marketValue": 3000000
+        "overall": 70,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sebastian Klaas",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 26,
-        "nationality": "Alemania",
-        "marketValue": 750
+        "overall": 73,
+        "value": 750,
+        "salary": 23000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Laurin Curda",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 17,
-        "nationality": "Alemania",
-        "marketValue": 1500000
+        "overall": 72,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ruben Müller",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 20,
-        "nationality": "Alemania",
-        "marketValue": 300
+        "overall": 67,
+        "value": 300,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Raphael Obermair",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 23,
-        "nationality": "Filipinas",
-        "marketValue": 1500000
+        "overall": 73,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jonah Sticker",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 21,
-        "nationality": "Alemania",
-        "marketValue": 350
+        "overall": 67,
+        "value": 350,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Anton Bäuerle",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 21,
-        "nationality": "Alemania",
-        "marketValue": 200
+        "overall": 68,
+        "value": 200,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Niklas Mohr",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 24,
-        "nationality": "Alemania",
-        "marketValue": 75
+        "overall": 70,
+        "value": 75,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nick Bätzner",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 25,
-        "nationality": "Alemania",
-        "marketValue": 700
+        "overall": 69,
+        "value": 700,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sven Michel",
-        "position": "DC",
-        "rating": 61,
+        "position": "ST",
         "age": 35,
-        "nationality": "Alemania",
-        "marketValue": 300
+        "overall": 61,
+        "value": 300,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filip Bilbija",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 25,
-        "nationality": "Alemania",
-        "marketValue": 2500000
+        "overall": 74,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bennit Bröger",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 38,
-        "nationality": "Alemania",
-        "marketValue": 500
+        "overall": 64,
+        "value": 500,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kennedy Okpala",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 21,
-        "nationality": "Alemania",
-        "marketValue": 1500000
+        "overall": 70,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lucas Copado",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 28,
-        "nationality": "Alemania",
-        "marketValue": 800
+        "overall": 69,
+        "value": 800,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Steffen Tigges",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 27,
-        "nationality": "Alemania",
-        "marketValue": 700
+        "overall": 72,
+        "value": 700,
+        "salary": 22000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stefano Marino",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 30,
-        "nationality": "Alemania",
-        "marketValue": 600
+        "overall": 69,
+        "value": 600,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1267,243 +1729,333 @@
     "players": [
       {
         "name": "Jonas Krumrey",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 21,
-        "nationality": "Alemania",
-        "marketValue": 1200000
+        "overall": 68,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Timon Weiner",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 27,
-        "nationality": "Alemania",
-        "marketValue": 500
+        "overall": 69,
+        "value": 500,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lio Rothenhagen",
-        "position": "POR",
-        "rating": 67,
+        "position": "GK",
         "age": 41,
-        "nationality": "Alemania",
-        "marketValue": 350
+        "overall": 67,
+        "value": 350,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marcel Engelhardt",
-        "position": "POR",
-        "rating": 72,
+        "position": "GK",
         "age": 31,
-        "nationality": "Alemania",
-        "marketValue": 175
+        "overall": 72,
+        "value": 175,
+        "salary": 22000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tyler Doğan",
-        "position": "POR",
-        "rating": 67,
+        "position": "GK",
         "age": 42,
-        "nationality": "Turquía",
-        "marketValue": 75
+        "overall": 67,
+        "value": 75,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Zec",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 26,
-        "nationality": "Eslovenia",
-        "marketValue": 2500000
+        "overall": 73,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marko Ivezic",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 24,
-        "nationality": "Serbia",
-        "marketValue": 1500000
+        "overall": 71,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Frederik Roslyng",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 20,
-        "nationality": "Dinamarca",
-        "marketValue": 1200000
+        "overall": 68,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marco Komenda",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 29,
-        "nationality": "Alemania",
-        "marketValue": 800
+        "overall": 72,
+        "value": 800,
+        "salary": 22000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ivan Nekic",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 25,
-        "nationality": "Croacia",
-        "marketValue": 700
+        "overall": 69,
+        "value": 700,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mladen Cvjetinovic",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 17,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 600
+        "overall": 68,
+        "value": 600,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Carl Johansson",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 31,
-        "nationality": "Suecia",
-        "marketValue": 450
+        "overall": 72,
+        "value": 450,
+        "salary": 22000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Patrick Erras",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 31,
-        "nationality": "Alemania",
-        "marketValue": 300
+        "overall": 72,
+        "value": 300,
+        "salary": 22000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "John Tolkin",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 23,
-        "nationality": "Estados Unidos",
-        "marketValue": 2500000
+        "overall": 71,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Leon Parduzi",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 40,
-        "nationality": "Kosovo",
-        "marketValue": 0
+        "overall": 66,
+        "value": 0,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lasse Rosenboom",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 23,
-        "nationality": "Alemania",
-        "marketValue": 1200000
+        "overall": 70,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Niklas Niehoff",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 29,
-        "nationality": "Alemania",
-        "marketValue": 450
+        "overall": 71,
+        "value": 450,
+        "salary": 21000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kasper Davidsen",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 15,
-        "nationality": "Dinamarca",
-        "marketValue": 2500000
+        "overall": 69,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jonas Meffert",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 28,
-        "nationality": "Alemania",
-        "marketValue": 800
+        "overall": 72,
+        "value": 800,
+        "salary": 22000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Umut Tohumcu",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 21,
-        "nationality": "Alemania",
-        "marketValue": 5000000
+        "overall": 70,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stefan Schwab",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 22,
-        "nationality": "Austria",
-        "marketValue": 300
+        "overall": 69,
+        "value": 300,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hamza Muqaj",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 20,
-        "nationality": "Kosovo",
-        "marketValue": 250
+        "overall": 68,
+        "value": 250,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jonas Therkelsen",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 22,
-        "nationality": "Noruega",
-        "marketValue": 2200000
+        "overall": 71,
+        "value": 2200000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Andu Kelati",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 16,
-        "nationality": "Alemania",
-        "marketValue": 600
+        "overall": 69,
+        "value": 600,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexander Bernhardsson",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 27,
-        "nationality": "Suecia",
-        "marketValue": 3000000
+        "overall": 75,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adrián Kaprálik",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 20,
-        "nationality": "Eslovaquia",
-        "marketValue": 1500000
+        "overall": 68,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Phil Harres",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 19,
-        "nationality": "Alemania",
-        "marketValue": 2500000
+        "overall": 70,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Steven Skrzybski",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 33,
-        "nationality": "Alemania",
-        "marketValue": 600
+        "overall": 66,
+        "value": 600,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marcus Müller",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 25,
-        "nationality": "Alemania",
-        "marketValue": 500
+        "overall": 69,
+        "value": 500,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Aldin Jakupovic",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 18,
-        "nationality": "Eslovenia",
-        "marketValue": 250
+        "overall": 69,
+        "value": 250,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1513,235 +2065,322 @@
     "players": [
       {
         "name": "Julian Krahl",
-        "position": "POR",
-        "rating": 71,
+        "position": "GK",
         "age": 26,
-        "nationality": "Alemania",
-        "marketValue": 1000000
+        "overall": 71,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Simon Simoni",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 25,
-        "nationality": "Albania",
-        "marketValue": 600
+        "overall": 69,
+        "value": 600,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Avdo Spahic",
-        "position": "POR",
-        "rating": 72,
+        "position": "GK",
         "age": 30,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 175
+        "overall": 72,
+        "value": 175,
+        "salary": 22000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Fabian Heck",
-        "position": "POR",
-        "rating": 72,
+        "position": "GK",
         "age": 28,
-        "nationality": "Luxemburgo",
-        "marketValue": 0
+        "overall": 72,
+        "value": 0,
+        "salary": 22000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Enis Kamga",
-        "position": "POR",
-        "rating": 67,
+        "position": "GK",
         "age": 40,
-        "nationality": "Alemania",
-        "marketValue": 0
+        "overall": 67,
+        "value": 0,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luca Sirch",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 31,
-        "nationality": "Alemania",
-        "marketValue": 2200000
+        "overall": 73,
+        "value": 2200000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ji-soo Kim",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 21,
-        "nationality": "Corea del Sur",
-        "marketValue": 2000000
+        "overall": 69,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jacob Rasmussen",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 28,
-        "nationality": "Dinamarca",
-        "marketValue": 1800000
+        "overall": 73,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Maxwell Gyamfi",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 26,
-        "nationality": "Alemania",
-        "marketValue": 900
+        "overall": 72,
+        "value": 900,
+        "salary": 22000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Atanas Chernev",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 16,
-        "nationality": "Bulgaria",
-        "marketValue": 700
+        "overall": 68,
+        "value": 700,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mika Haas",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 22,
-        "nationality": "Alemania",
-        "marketValue": 3000000
+        "overall": 69,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Florian Kleinhansl",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 25,
-        "nationality": "Alemania",
-        "marketValue": 600
+        "overall": 69,
+        "value": 600,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Erik Wekesser",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 28,
-        "nationality": "Alemania",
-        "marketValue": 400
+        "overall": 72,
+        "value": 400,
+        "salary": 22000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Paul Joly",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 26,
-        "nationality": "Francia",
-        "marketValue": 2500000
+        "overall": 75,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Simon Asta",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 25,
-        "nationality": "Alemania",
-        "marketValue": 800
+        "overall": 70,
+        "value": 800,
+        "salary": 20000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Fabian Kunze",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 27,
-        "nationality": "Alemania",
-        "marketValue": 1200000
+        "overall": 73,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Leon Robinson",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 37,
-        "nationality": "Alemania",
-        "marketValue": 600
+        "overall": 66,
+        "value": 600,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dion Hofmeister",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 44,
-        "nationality": "Alemania",
-        "marketValue": 400
+        "overall": 66,
+        "value": 400,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Semih Sahin",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 26,
-        "nationality": "Alemania",
-        "marketValue": 1500000
+        "overall": 74,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tobias Raschl",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 20,
-        "nationality": "Alemania",
-        "marketValue": 500
+        "overall": 67,
+        "value": 500,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Naatan Skyttä",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 15,
-        "nationality": "Finlandia",
-        "marketValue": 5000000
+        "overall": 72,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marlon Ritter",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 31,
-        "nationality": "Alemania",
-        "marketValue": 800
+        "overall": 74,
+        "value": 800,
+        "salary": 24000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kenny-Prince Redondo",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 31,
-        "nationality": "Alemania",
-        "marketValue": 400
+        "overall": 66,
+        "value": 400,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Norman Bassette",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 17,
-        "nationality": "Bélgica",
-        "marketValue": 1800000
+        "overall": 70,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ivan Prtajin",
-        "position": "DC",
-        "rating": 77,
+        "position": "ST",
         "age": 29,
-        "nationality": "Croacia",
-        "marketValue": 1500000
+        "overall": 77,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Hanslik",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 19,
-        "nationality": "Alemania",
-        "marketValue": 1200000
+        "overall": 72,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mahir Emreli",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 28,
-        "nationality": "Azerbaiyán",
-        "marketValue": 700
+        "overall": 72,
+        "value": 700,
+        "salary": 22000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Richmond Tachie",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 29,
-        "nationality": "Alemania",
-        "marketValue": 500
+        "overall": 69,
+        "value": 500,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dickson Abiama",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 27,
-        "nationality": "Nigeria",
-        "marketValue": 350
+        "overall": 69,
+        "value": 350,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1751,227 +2390,311 @@
     "players": [
       {
         "name": "Jan Reichert",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 24,
-        "nationality": "Alemania",
-        "marketValue": 1000000
+        "overall": 66,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Christian Mathenia",
-        "position": "POR",
-        "rating": 67,
+        "position": "GK",
         "age": 26,
-        "nationality": "Alemania",
-        "marketValue": 300
+        "overall": 67,
+        "value": 300,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Robin Lisewski",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 19,
-        "nationality": "Polonia",
-        "marketValue": 150
+        "overall": 65,
+        "value": 150,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Fabio Gruber",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 23,
-        "nationality": "Perú",
-        "marketValue": 2000000
+        "overall": 69,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luka Lochoshvili",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 24,
-        "nationality": "Georgia",
-        "marketValue": 2000000
+        "overall": 69,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kristian Mandic",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 36,
-        "nationality": "Croacia",
-        "marketValue": 400
+        "overall": 65,
+        "value": 400,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tarek Buchmann",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 28,
-        "nationality": "Alemania",
-        "marketValue": 300
+        "overall": 70,
+        "value": 300,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Berkay Yilmaz",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 21,
-        "nationality": "Turquía",
-        "marketValue": 4000000
+        "overall": 69,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Danilo Soares",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 34,
-        "nationality": "Brasil",
-        "marketValue": 400
+        "overall": 65,
+        "value": 400,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Eric Porstner",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 41,
-        "nationality": "Alemania",
-        "marketValue": 350
+        "overall": 63,
+        "value": 350,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tim Drexler",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 15,
-        "nationality": "Alemania",
-        "marketValue": 2500000
+        "overall": 67,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Henri Koudossou",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 26,
-        "nationality": "Alemania",
-        "marketValue": 1200000
+        "overall": 71,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tim Janisch",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 32,
-        "nationality": "Alemania",
-        "marketValue": 1000000
+        "overall": 70,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adam Markhiev",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 23,
-        "nationality": "Finlandia",
-        "marketValue": 3000000
+        "overall": 69,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rabby Nzingoula",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 22,
-        "nationality": "Francia",
-        "marketValue": 2000000
+        "overall": 69,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tom Baack",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 26,
-        "nationality": "Alemania",
-        "marketValue": 400
+        "overall": 69,
+        "value": 400,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Eryk Grzywacz",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 19,
-        "nationality": "Polonia",
-        "marketValue": 250
+        "overall": 66,
+        "value": 250,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rafael Lubach",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 18,
-        "nationality": "Alemania",
-        "marketValue": 3500000
+        "overall": 69,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Finn Becker",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 25,
-        "nationality": "Alemania",
-        "marketValue": 1500000
+        "overall": 71,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Justin von der Hitz",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 27,
-        "nationality": "Alemania",
-        "marketValue": 400
+        "overall": 70,
+        "value": 400,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Julian Justvan",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 27,
-        "nationality": "Alemania",
-        "marketValue": 2200000
+        "overall": 73,
+        "value": 2200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ayoub Chaikhoun",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 17,
-        "nationality": "Marruecos",
-        "marketValue": 500
+        "overall": 65,
+        "value": 500,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mohamed Alì Zoma",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 23,
-        "nationality": "Italia",
-        "marketValue": 1800000
+        "overall": 69,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mickaël Biron",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 28,
-        "nationality": "Martinica",
-        "marketValue": 700
+        "overall": 69,
+        "value": 700,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adriano Grimaldi",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 33,
-        "nationality": "Alemania",
-        "marketValue": 350
+        "overall": 63,
+        "value": 350,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Noah Maboulou",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 37,
-        "nationality": "Congo",
-        "marketValue": 300
+        "overall": 62,
+        "value": 300,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Piet Scobel",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 39,
-        "nationality": "Alemania",
-        "marketValue": 300
+        "overall": 62,
+        "value": 300,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tino Kusanovic",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 42,
-        "nationality": "Croacia",
-        "marketValue": 300
+        "overall": 62,
+        "value": 300,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1981,243 +2704,333 @@
     "players": [
       {
         "name": "Florian Kastenmeier",
-        "position": "POR",
-        "rating": 71,
+        "position": "GK",
         "age": 33,
-        "nationality": "Alemania",
-        "marketValue": 1200000
+        "overall": 71,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marcel Lotka",
-        "position": "POR",
-        "rating": 64,
+        "position": "GK",
         "age": 24,
-        "nationality": "Alemania",
-        "marketValue": 500
+        "overall": 64,
+        "value": 500,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Florian Schock",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 26,
-        "nationality": "Alemania",
-        "marketValue": 200
+        "overall": 68,
+        "value": 200,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jesper Daland",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 26,
-        "nationality": "Noruega",
-        "marketValue": 2500000
+        "overall": 71,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tim Oberdorf",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 15,
-        "nationality": "Alemania",
-        "marketValue": 1200000
+        "overall": 67,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jordy de Wijs",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 30,
-        "nationality": "Países Bajos",
-        "marketValue": 500
+        "overall": 69,
+        "value": 500,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Elias Egouli",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 44,
-        "nationality": "Alemania",
-        "marketValue": 350
+        "overall": 63,
+        "value": 350,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kenneth Schmidt",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 23,
-        "nationality": "Alemania",
-        "marketValue": 800
+        "overall": 68,
+        "value": 800,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Christopher Lenz",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 31,
-        "nationality": "Alemania",
-        "marketValue": 400
+        "overall": 70,
+        "value": 400,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Valgeir Lunddal",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 24,
-        "nationality": "Islandia",
-        "marketValue": 1200000
+        "overall": 71,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matthias Zimmermann",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 25,
-        "nationality": "Alemania",
-        "marketValue": 400
+        "overall": 68,
+        "value": 400,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tim Breithaupt",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 23,
-        "nationality": "Alemania",
-        "marketValue": 2000000
+        "overall": 69,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Anouar El Azzouzi",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 24,
-        "nationality": "Marruecos",
-        "marketValue": 2000000
+        "overall": 69,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Satoshi Tanaka",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 16,
-        "nationality": "Japón",
-        "marketValue": 1500000
+        "overall": 67,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Moritz Heyer",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 30,
-        "nationality": "Alemania",
-        "marketValue": 500
+        "overall": 69,
+        "value": 500,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sotiris Alexandropoulos",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 24,
-        "nationality": "Grecia",
-        "marketValue": 2000000
+        "overall": 69,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sima Suso",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 20,
-        "nationality": "Alemania",
-        "marketValue": 1000000
+        "overall": 67,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Shinta Appelkamp",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 23,
-        "nationality": "Alemania",
-        "marketValue": 1500000
+        "overall": 69,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hamza Anhari",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 40,
-        "nationality": "Marruecos",
-        "marketValue": 125
+        "overall": 64,
+        "value": 125,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Florent Muslija",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 24,
-        "nationality": "Kosovo",
-        "marketValue": 1800000
+        "overall": 70,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Julian Hettwer",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 22,
-        "nationality": "Alemania",
-        "marketValue": 1300000
+        "overall": 69,
+        "value": 1300000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tim Rossmann",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 21,
-        "nationality": "Alemania",
-        "marketValue": 1000000
+        "overall": 68,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Karim Affo",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 45,
-        "nationality": "Alemania",
-        "marketValue": 200
+        "overall": 62,
+        "value": 200,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Christian Rasmussen",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 23,
-        "nationality": "Dinamarca",
-        "marketValue": 1500000
+        "overall": 68,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Emmanuel Iyoha",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 19,
-        "nationality": "Alemania",
-        "marketValue": 1000000
+        "overall": 66,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luca Raimund",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 20,
-        "nationality": "Alemania",
-        "marketValue": 400
+        "overall": 66,
+        "value": 400,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marin Ljubicic",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 20,
-        "nationality": "Croacia",
-        "marketValue": 2500000
+        "overall": 68,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Zan Celar",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 26,
-        "nationality": "Eslovenia",
-        "marketValue": 1500000
+        "overall": 68,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cedric Itten",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 29,
-        "nationality": "Suiza",
-        "marketValue": 1500000
+        "overall": 72,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jordi Paulina",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 27,
-        "nationality": "Curazao",
-        "marketValue": 500
+        "overall": 70,
+        "value": 500,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -2227,219 +3040,300 @@
     "players": [
       {
         "name": "Marcel Schuhen",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 33,
-        "nationality": "Alemania",
-        "marketValue": 600
+        "overall": 70,
+        "value": 600,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexander Brunst",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 30,
-        "nationality": "Alemania",
-        "marketValue": 300
+        "overall": 69,
+        "value": 300,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Benedikt Börner",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 24,
-        "nationality": "Alemania",
-        "marketValue": 150
+        "overall": 65,
+        "value": 150,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Patric Pfeiffer",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 26,
-        "nationality": "Ghana",
-        "marketValue": 1500000
+        "overall": 71,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Aleksandar Vukotic",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 20,
-        "nationality": "Serbia",
-        "marketValue": 900
+        "overall": 66,
+        "value": 900,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matej Maglica",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 27,
-        "nationality": "Croacia",
-        "marketValue": 800
+        "overall": 70,
+        "value": 800,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Max Pfister",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 18,
-        "nationality": "Alemania",
-        "marketValue": 0
+        "overall": 66,
+        "value": 0,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Raoul Petretta",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 18,
-        "nationality": "Italia",
-        "marketValue": 600
+        "overall": 66,
+        "value": 600,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Fabian Holland",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 32,
-        "nationality": "Alemania",
-        "marketValue": 200
+        "overall": 69,
+        "value": 200,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tim Arnold",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 19,
-        "nationality": "Alemania",
-        "marketValue": 0
+        "overall": 66,
+        "value": 0,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sergio López",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 26,
-        "nationality": "España",
-        "marketValue": 1200000
+        "overall": 72,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matthias Bader",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 26,
-        "nationality": "Alemania",
-        "marketValue": 700
+        "overall": 69,
+        "value": 700,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hiroki Akiyama",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 16,
-        "nationality": "Japón",
-        "marketValue": 2000000
+        "overall": 67,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kai Klefisch",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 17,
-        "nationality": "Alemania",
-        "marketValue": 1500000
+        "overall": 67,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Niklas Schmidt",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 31,
-        "nationality": "Alemania",
-        "marketValue": 1500000
+        "overall": 71,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Merveille Papela",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 21,
-        "nationality": "Alemania",
-        "marketValue": 600
+        "overall": 65,
+        "value": 600,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Fabian Nürnberger",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 15,
-        "nationality": "Bulgaria",
-        "marketValue": 1500000
+        "overall": 68,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marco Richter",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 23,
-        "nationality": "Alemania",
-        "marketValue": 1500000
+        "overall": 71,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luca Marseiler",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 28,
-        "nationality": "Alemania",
-        "marketValue": 750
+        "overall": 70,
+        "value": 750,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jean-Paul Boëtius",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 31,
-        "nationality": "Surinam",
-        "marketValue": 400
+        "overall": 69,
+        "value": 400,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yosuke Furukawa",
-        "position": "DC",
-        "rating": 59,
+        "position": "ST",
         "age": 44,
-        "nationality": "Japón",
-        "marketValue": 600
+        "overall": 59,
+        "value": 600,
+        "salary": 9000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Isac Lidberg",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 27,
-        "nationality": "Suecia",
-        "marketValue": 5000000
+        "overall": 74,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Fraser Hornby",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 26,
-        "nationality": "Escocia",
-        "marketValue": 3500000
+        "overall": 74,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Killian Corredor",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 34,
-        "nationality": "Francia",
-        "marketValue": 2800000
+        "overall": 65,
+        "value": 2800000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bartosz Bialek",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 27,
-        "nationality": "Polonia",
-        "marketValue": 600
+        "overall": 67,
+        "value": 600,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Fynn Lakenmacher",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 19,
-        "nationality": "Alemania",
-        "marketValue": 400
+        "overall": 66,
+        "value": 400,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Serhat-Semih Güler",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 22,
-        "nationality": "Alemania",
-        "marketValue": 250
+        "overall": 68,
+        "value": 250,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -2449,235 +3343,322 @@
     "players": [
       {
         "name": "Hans Christian Bernat",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 25,
-        "nationality": "Dinamarca",
-        "marketValue": 1000000
+        "overall": 69,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Robin Himmelmann",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 30,
-        "nationality": "Alemania",
-        "marketValue": 150
+        "overall": 69,
+        "value": 150,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Aki Koch",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 18,
-        "nationality": "Alemania",
-        "marketValue": 100
+        "overall": 65,
+        "value": 100,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marcel Beifus",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 23,
-        "nationality": "Alemania",
-        "marketValue": 2000000
+        "overall": 69,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Christoph Kobald",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 22,
-        "nationality": "Austria",
-        "marketValue": 800
+        "overall": 66,
+        "value": 800,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stephan Ambrosius",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 27,
-        "nationality": "Ghana",
-        "marketValue": 500
+        "overall": 70,
+        "value": 500,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marcel Franke",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 28,
-        "nationality": "Alemania",
-        "marketValue": 500
+        "overall": 70,
+        "value": 500,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Paul Scholl",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 15,
-        "nationality": "Alemania",
-        "marketValue": 250
+        "overall": 65,
+        "value": 250,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Herold",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 20,
-        "nationality": "Alemania",
-        "marketValue": 3500000
+        "overall": 69,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Niclas Dühring",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 29,
-        "nationality": "Alemania",
-        "marketValue": 175
+        "overall": 70,
+        "value": 175,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rafael Pinto Pedrosa",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 36,
-        "nationality": "Alemania",
-        "marketValue": 5000000
+        "overall": 67,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sebastian Jung",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 35,
-        "nationality": "Alemania",
-        "marketValue": 300
+        "overall": 65,
+        "value": 300,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dzenis Burnic",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 27,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 1200000
+        "overall": 71,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nicolai Rapp",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 29,
-        "nationality": "Alemania",
-        "marketValue": 1000000
+        "overall": 71,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Andreas Müller",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 16,
-        "nationality": "Alemania",
-        "marketValue": 1000000
+        "overall": 67,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mateo Kritzer",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 34,
-        "nationality": "Alemania",
-        "marketValue": 500
+        "overall": 65,
+        "value": 500,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marvin Wanitzek",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 32,
-        "nationality": "Alemania",
-        "marketValue": 1200000
+        "overall": 69,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Meiko Wäschenbach",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 21,
-        "nationality": "Alemania",
-        "marketValue": 150
+        "overall": 65,
+        "value": 150,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Efe-Kaan Sihlaroglu",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 38,
-        "nationality": "Turquía",
-        "marketValue": 150
+        "overall": 64,
+        "value": 150,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Robert Geller",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 35,
-        "nationality": "Serbia",
-        "marketValue": 100
+        "overall": 64,
+        "value": 100,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lilian Egloff",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 25,
-        "nationality": "Alemania",
-        "marketValue": 1500000
+        "overall": 73,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Philipp Förster",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 30,
-        "nationality": "Alemania",
-        "marketValue": 600
+        "overall": 70,
+        "value": 600,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Leon Opitz",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 17,
-        "nationality": "Alemania",
-        "marketValue": 600
+        "overall": 65,
+        "value": 600,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ali-Eren Ersungur",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 27,
-        "nationality": "Turquía",
-        "marketValue": 300
+        "overall": 70,
+        "value": 300,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Louey Ben Farhat",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 19,
-        "nationality": "Túnez",
-        "marketValue": 3000000
+        "overall": 69,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Roko Simic",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 22,
-        "nationality": "Croacia",
-        "marketValue": 2000000
+        "overall": 66,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Eymen Laghrissi",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 44,
-        "nationality": "Alemania",
-        "marketValue": 1000000
+        "overall": 62,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Shio Fukuda",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 21,
-        "nationality": "Japón",
-        "marketValue": 800
+        "overall": 64,
+        "value": 800,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Fabian Schleusener",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 24,
-        "nationality": "Alemania",
-        "marketValue": 400
+        "overall": 70,
+        "value": 400,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -2687,227 +3668,311 @@
     "players": [
       {
         "name": "Nicolas Kristof",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 20,
-        "nationality": "Austria",
-        "marketValue": 1800000
+        "overall": 66,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tim Boss",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 28,
-        "nationality": "Alemania",
-        "marketValue": 200
+        "overall": 69,
+        "value": 200,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Frank Lehmann",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 36,
-        "nationality": "Alemania",
-        "marketValue": 100
+        "overall": 66,
+        "value": 100,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lukas Pinckert",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 19,
-        "nationality": "Alemania",
-        "marketValue": 2000000
+        "overall": 67,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Maximilian Rohr",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 31,
-        "nationality": "Alemania",
-        "marketValue": 600
+        "overall": 70,
+        "value": 600,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Florian Le Joncour",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 30,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 70,
+        "value": 500,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luis Seifert",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 22,
-        "nationality": "Alemania",
-        "marketValue": 200
+        "overall": 66,
+        "value": 200,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lasse Günther",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 21,
-        "nationality": "Alemania",
-        "marketValue": 1200000
+        "overall": 68,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nicholas Mickelson",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 26,
-        "nationality": "Tailandia",
-        "marketValue": 750
+        "overall": 69,
+        "value": 750,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Felix Keidel",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 43,
-        "nationality": "Alemania",
-        "marketValue": 1200000
+        "overall": 65,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jan Gyamerah",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 30,
-        "nationality": "Ghana",
-        "marketValue": 500
+        "overall": 70,
+        "value": 500,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Pantschenko",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 32,
-        "nationality": "Alemania",
-        "marketValue": 75
+        "overall": 70,
+        "value": 75,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Amara Condé",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 29,
-        "nationality": "Alemania",
-        "marketValue": 800
+        "overall": 70,
+        "value": 800,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Carlo Sickinger",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 23,
-        "nationality": "Alemania",
-        "marketValue": 750
+        "overall": 67,
+        "value": 750,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Patryk Dragon",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 29,
-        "nationality": "Alemania",
-        "marketValue": 50
+        "overall": 70,
+        "value": 50,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lukasz Poreba",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 25,
-        "nationality": "Polonia",
-        "marketValue": 2000000
+        "overall": 71,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Frederik Schmahl",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 17,
-        "nationality": "Alemania",
-        "marketValue": 600
+        "overall": 65,
+        "value": 600,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bambasé Conté",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 22,
-        "nationality": "Alemania",
-        "marketValue": 2800000
+        "overall": 71,
+        "value": 2800000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jarzinho Malanga",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 19,
-        "nationality": "Alemania",
-        "marketValue": 1700000
+        "overall": 65,
+        "value": 1700000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tom Zimmerschied",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 29,
-        "nationality": "Alemania",
-        "marketValue": 1200000
+        "overall": 69,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lukas Petkov",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 25,
-        "nationality": "Bulgaria",
-        "marketValue": 1800000
+        "overall": 69,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Manuel Feil",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 31,
-        "nationality": "Alemania",
-        "marketValue": 350
+        "overall": 64,
+        "value": 350,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Raif Adam",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 15,
-        "nationality": "Alemania",
-        "marketValue": 125
+        "overall": 67,
+        "value": 125,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Otto Stange",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 18,
-        "nationality": "Alemania",
-        "marketValue": 2500000
+        "overall": 67,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Mokwa",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 42,
-        "nationality": "Francia",
-        "marketValue": 1000000
+        "overall": 63,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luca Pfeiffer",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 16,
-        "nationality": "Alemania",
-        "marketValue": 500
+        "overall": 67,
+        "value": 500,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luca Schnellbacher",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 24,
-        "nationality": "Alemania",
-        "marketValue": 500
+        "overall": 65,
+        "value": 500,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mohammad Mahmoud",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 18,
-        "nationality": "Alemania",
-        "marketValue": 100
+        "overall": 67,
+        "value": 100,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -2917,259 +3982,355 @@
     "players": [
       {
         "name": "Pelle Boevink",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 26,
-        "nationality": "Países Bajos",
-        "marketValue": 450
+        "overall": 68,
+        "value": 450,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Timo Schlieck",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 21,
-        "nationality": "Alemania",
-        "marketValue": 400
+        "overall": 65,
+        "value": 400,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nils Körber",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 29,
-        "nationality": "Alemania",
-        "marketValue": 225
+        "overall": 70,
+        "value": 225,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sebastian Jung",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 31,
-        "nationality": "Alemania",
-        "marketValue": 100
+        "overall": 70,
+        "value": 100,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Maximilian Dietz",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 33,
-        "nationality": "Estados Unidos",
-        "marketValue": 1800000
+        "overall": 66,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Reno Münz",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 20,
-        "nationality": "Alemania",
-        "marketValue": 1200000
+        "overall": 67,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luca Itter",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 27,
-        "nationality": "Alemania",
-        "marketValue": 1200000
+        "overall": 71,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jan Elvedi",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 15,
-        "nationality": "Suiza",
-        "marketValue": 800
+        "overall": 66,
+        "value": 800,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Philipp Ziereis",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 32,
-        "nationality": "Alemania",
-        "marketValue": 500
+        "overall": 70,
+        "value": 500,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Brynjar Ingi Bjarnason",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 25,
-        "nationality": "Islandia",
-        "marketValue": 500
+        "overall": 68,
+        "value": 500,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Noah König",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 17,
-        "nationality": "Alemania",
-        "marketValue": 400
+        "overall": 65,
+        "value": 400,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Abrangao",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 40,
-        "nationality": "Alemania",
-        "marketValue": 500
+        "overall": 64,
+        "value": 500,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Raul Marița",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 38,
-        "nationality": "Rumania",
-        "marketValue": 250
+        "overall": 64,
+        "value": 250,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lukas Reich",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 19,
-        "nationality": "Alemania",
-        "marketValue": 1200000
+        "overall": 67,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jannik Dehm",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 23,
-        "nationality": "Alemania",
-        "marketValue": 600
+        "overall": 68,
+        "value": 600,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mathias Olesen",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 24,
-        "nationality": "Luxemburgo",
-        "marketValue": 1000000
+        "overall": 69,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sacha Bansé",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 24,
-        "nationality": "Burkina Faso",
-        "marketValue": 650
+        "overall": 68,
+        "value": 650,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Paul Will",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 26,
-        "nationality": "Alemania",
-        "marketValue": 450
+        "overall": 70,
+        "value": 450,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Doni Arifi",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 28,
-        "nationality": "Finlandia",
-        "marketValue": 450
+        "overall": 70,
+        "value": 450,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakob Engel",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 35,
-        "nationality": "Alemania",
-        "marketValue": 150
+        "overall": 65,
+        "value": 150,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marco John",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 24,
-        "nationality": "Alemania",
-        "marketValue": 1000000
+        "overall": 71,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Julian Green",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 37,
-        "nationality": "Estados Unidos",
-        "marketValue": 800
+        "overall": 64,
+        "value": 800,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jomaine Consbruch",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 24,
-        "nationality": "Alemania",
-        "marketValue": 600
+        "overall": 67,
+        "value": 600,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Felix Klaus",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 30,
-        "nationality": "Alemania",
-        "marketValue": 550
+        "overall": 74,
+        "value": 550,
+        "salary": 24000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Aaron Keller",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 16,
-        "nationality": "Suiza",
-        "marketValue": 1500000
+        "overall": 67,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Juan Cabrera",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 22,
-        "nationality": "Uruguay",
-        "marketValue": 300
+        "overall": 67,
+        "value": 300,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Aiman Dardari",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 20,
-        "nationality": "Luxemburgo",
-        "marketValue": 1000000
+        "overall": 68,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Noel Futkeu",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 23,
-        "nationality": "Alemania",
-        "marketValue": 5000000
+        "overall": 71,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Branimir Hrgota",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 33,
-        "nationality": "Suecia",
-        "marketValue": 500
+        "overall": 63,
+        "value": 500,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Omar Sillah",
-        "position": "DC",
-        "rating": 59,
+        "position": "ST",
         "age": 42,
-        "nationality": "Alemania",
-        "marketValue": 500
+        "overall": 59,
+        "value": 500,
+        "salary": 9000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Felix Higl",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 18,
-        "nationality": "Alemania",
-        "marketValue": 350
+        "overall": 64,
+        "value": 350,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dennis Srbeny",
-        "position": "DC",
-        "rating": 61,
+        "position": "ST",
         "age": 31,
-        "nationality": "Alemania",
-        "marketValue": 300
+        "overall": 61,
+        "value": 300,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -3179,275 +4340,377 @@
     "players": [
       {
         "name": "Dominik Reimann",
-        "position": "POR",
-        "rating": 71,
+        "position": "GK",
         "age": 28,
-        "nationality": "Alemania",
-        "marketValue": 1000000
+        "overall": 71,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Noah Kruth",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 30,
-        "nationality": "Alemania",
-        "marketValue": 250
+        "overall": 69,
+        "value": 250,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Robert Kampa",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 40,
-        "nationality": "Alemania",
-        "marketValue": 75
+        "overall": 65,
+        "value": 75,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jean Hugonet",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 24,
-        "nationality": "Francia",
-        "marketValue": 1700000
+        "overall": 69,
+        "value": 1700000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Max Geschwill",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 28,
-        "nationality": "Alemania",
-        "marketValue": 1200000
+        "overall": 70,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marcus Mathisen",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 16,
-        "nationality": "Dinamarca",
-        "marketValue": 1000000
+        "overall": 67,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Andi Hoti",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 22,
-        "nationality": "Kosovo",
-        "marketValue": 600
+        "overall": 65,
+        "value": 600,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tobias Müller",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 31,
-        "nationality": "Alemania",
-        "marketValue": 600
+        "overall": 70,
+        "value": 600,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Heber",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 15,
-        "nationality": "Alemania",
-        "marketValue": 500
+        "overall": 66,
+        "value": 500,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tarek Chahed",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 34,
-        "nationality": "Alemania",
-        "marketValue": 100
+        "overall": 65,
+        "value": 100,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexander Nollenberger",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 17,
-        "nationality": "Alemania",
-        "marketValue": 800
+        "overall": 67,
+        "value": 800,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lubambo Musonda",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 19,
-        "nationality": "Zambia",
-        "marketValue": 600
+        "overall": 66,
+        "value": 600,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Samuel Loric",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 25,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 68,
+        "value": 500,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Philipp Hercher",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 27,
-        "nationality": "Alemania",
-        "marketValue": 600
+        "overall": 69,
+        "value": 600,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Herbert Bockhorn",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 30,
-        "nationality": "Uganda",
-        "marketValue": 450
+        "overall": 70,
+        "value": 450,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Eldin Dzogovic",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 22,
-        "nationality": "Luxemburgo",
-        "marketValue": 300
+        "overall": 66,
+        "value": 300,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luka Hyryläinen",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 38,
-        "nationality": "Finlandia",
-        "marketValue": 1700000
+        "overall": 64,
+        "value": 1700000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Silas Gnaka",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 25,
-        "nationality": "Costa de Marfil",
-        "marketValue": 1200000
+        "overall": 71,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dariusz Stalmach",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 20,
-        "nationality": "Polonia",
-        "marketValue": 1000000
+        "overall": 66,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Falko Michel",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 21,
-        "nationality": "Alemania",
-        "marketValue": 700
+        "overall": 66,
+        "value": 700,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Connor Krempicki",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 31,
-        "nationality": "Alemania",
-        "marketValue": 300
+        "overall": 70,
+        "value": 300,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Laurin Ulrich",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 20,
-        "nationality": "Alemania",
-        "marketValue": 2500000
+        "overall": 67,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Robert Leipertz",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 31,
-        "nationality": "Alemania",
-        "marketValue": 200
+        "overall": 70,
+        "value": 200,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nick Meier",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 20,
-        "nationality": "Alemania",
-        "marketValue": 125
+        "overall": 66,
+        "value": 125,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Baris Atik",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 23,
-        "nationality": "Alemania",
-        "marketValue": 800
+        "overall": 68,
+        "value": 800,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Noah Pesch",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 20,
-        "nationality": "Croacia",
-        "marketValue": 600
+        "overall": 64,
+        "value": 600,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mateusz Zukowski",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 22,
-        "nationality": "Polonia",
-        "marketValue": 500
+        "overall": 72,
+        "value": 500,
+        "salary": 22000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kandet Diawara",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 39,
-        "nationality": "Guinea",
-        "marketValue": 400
+        "overall": 62,
+        "value": 400,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Magnus Baars",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 35,
-        "nationality": "Alemania",
-        "marketValue": 200
+        "overall": 62,
+        "value": 200,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rayan Ghrieb",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 29,
-        "nationality": "Francia",
-        "marketValue": 1200000
+        "overall": 72,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Maximilian Breunig",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 25,
-        "nationality": "Alemania",
-        "marketValue": 1000000
+        "overall": 70,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexander Ahl-Holmström",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 26,
-        "nationality": "Suecia",
-        "marketValue": 1000000
+        "overall": 70,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ado Onaiwu",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 45,
-        "nationality": "Japón",
-        "marketValue": 700
+        "overall": 62,
+        "value": 700,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Aleksa Marusic",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 26,
-        "nationality": "Montenegro",
-        "marketValue": 300
+        "overall": 70,
+        "value": 300,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -3457,203 +4720,278 @@
     "players": [
       {
         "name": "Ron-Thorben Hoffmann",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 26,
-        "nationality": "Alemania",
-        "marketValue": 1000000
+        "overall": 69,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Elhan Kastrati",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 28,
-        "nationality": "Albania",
-        "marketValue": 500
+        "overall": 69,
+        "value": 500,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marko Rajkovacic",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 33,
-        "nationality": "Suiza",
-        "marketValue": 150
+        "overall": 70,
+        "value": 150,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Louis Breunig",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 16,
-        "nationality": "Alemania",
-        "marketValue": 1200000
+        "overall": 66,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sven Köhler",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 27,
-        "nationality": "Alemania",
-        "marketValue": 1000000
+        "overall": 71,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lukas Frenkert",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 29,
-        "nationality": "Alemania",
-        "marketValue": 900
+        "overall": 70,
+        "value": 900,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kevin Ehlers",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 21,
-        "nationality": "Alemania",
-        "marketValue": 700
+        "overall": 66,
+        "value": 700,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Patrick Nkoa",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 26,
-        "nationality": "Camerún",
-        "marketValue": 500
+        "overall": 70,
+        "value": 500,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Frederik Jäkel",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 24,
-        "nationality": "Alemania",
-        "marketValue": 450
+        "overall": 68,
+        "value": 450,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Fabio Di Michele Sanchez",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 22,
-        "nationality": "Alemania",
-        "marketValue": 1200000
+        "overall": 67,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Leon Bell Bell",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 19,
-        "nationality": "Camerún",
-        "marketValue": 500
+        "overall": 66,
+        "value": 500,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Florian Flick",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 25,
-        "nationality": "Alemania",
-        "marketValue": 800
+        "overall": 70,
+        "value": 800,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Max Marie",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 15,
-        "nationality": "Alemania",
-        "marketValue": 1500000
+        "overall": 67,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lino Tempelmann",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 20,
-        "nationality": "Alemania",
-        "marketValue": 800
+        "overall": 66,
+        "value": 800,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Robin Heußer",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 30,
-        "nationality": "Alemania",
-        "marketValue": 700
+        "overall": 70,
+        "value": 700,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Fabio Kaufmann",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 33,
-        "nationality": "Alemania",
-        "marketValue": 300
+        "overall": 64,
+        "value": 300,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sidney Raebiger",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 37,
-        "nationality": "Alemania",
-        "marketValue": 250
+        "overall": 64,
+        "value": 250,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mehmet Aydin",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 23,
-        "nationality": "Turquía",
-        "marketValue": 1200000
+        "overall": 72,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Johan Gómez",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 44,
-        "nationality": "Estados Unidos",
-        "marketValue": 800
+        "overall": 64,
+        "value": 800,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Anas Bakhat",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 18,
-        "nationality": "Alemania",
-        "marketValue": 200
+        "overall": 66,
+        "value": 200,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Faride Alidou",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 24,
-        "nationality": "Alemania",
-        "marketValue": 1000000
+        "overall": 69,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sidi Sané",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 24,
-        "nationality": "Alemania",
-        "marketValue": 300
+        "overall": 65,
+        "value": 300,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jovan Mijatovic",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 20,
-        "nationality": "Serbia",
-        "marketValue": 2200000
+        "overall": 68,
+        "value": 2200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Erencan Yardımcı",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 23,
-        "nationality": "Turquía",
-        "marketValue": 2000000
+        "overall": 69,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Robert Ramsak",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 23,
-        "nationality": "Alemania",
-        "marketValue": 500
+        "overall": 67,
+        "value": 500,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -3663,235 +5001,322 @@
     "players": [
       {
         "name": "Johannes Schenk",
-        "position": "POR",
-        "rating": 63,
+        "position": "GK",
         "age": 23,
-        "nationality": "Alemania",
-        "marketValue": 2000000
+        "overall": 63,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Morten Behrens",
-        "position": "POR",
-        "rating": 64,
+        "position": "GK",
         "age": 26,
-        "nationality": "Alemania",
-        "marketValue": 250
+        "overall": 64,
+        "value": 250,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marian Kirsch",
-        "position": "POR",
-        "rating": 67,
+        "position": "GK",
         "age": 33,
-        "nationality": "Alemania",
-        "marketValue": 75
+        "overall": 67,
+        "value": 75,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Paul Jaeckel",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 27,
-        "nationality": "Alemania",
-        "marketValue": 1000000
+        "overall": 68,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jannis Heuer",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 22,
-        "nationality": "Alemania",
-        "marketValue": 1000000
+        "overall": 64,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Antonio Tikvic",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 21,
-        "nationality": "Croacia",
-        "marketValue": 700
+        "overall": 63,
+        "value": 700,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Niko Koulis",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 24,
-        "nationality": "Alemania",
-        "marketValue": 500
+        "overall": 64,
+        "value": 500,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Torge Paetow",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 16,
-        "nationality": "Alemania",
-        "marketValue": 300
+        "overall": 62,
+        "value": 300,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Simon Scherder",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 15,
-        "nationality": "Alemania",
-        "marketValue": 250
+        "overall": 63,
+        "value": 250,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luca Bolay",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 25,
-        "nationality": "Alemania",
-        "marketValue": 600
+        "overall": 65,
+        "value": 600,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mikkel Kirkeskov",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 34,
-        "nationality": "Dinamarca",
-        "marketValue": 250
+        "overall": 61,
+        "value": 250,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jano ter Horst",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 27,
-        "nationality": "Alemania",
-        "marketValue": 1200000
+        "overall": 68,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marco Meyerhöfer",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 28,
-        "nationality": "Alemania",
-        "marketValue": 500
+        "overall": 66,
+        "value": 500,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marcel Benger",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 27,
-        "nationality": "Alemania",
-        "marketValue": 400
+        "overall": 67,
+        "value": 400,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rico Preißinger",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 21,
-        "nationality": "Alemania",
-        "marketValue": 400
+        "overall": 63,
+        "value": 400,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marvin Schulz",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 31,
-        "nationality": "Alemania",
-        "marketValue": 600
+        "overall": 67,
+        "value": 600,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yassine Bouchama",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 28,
-        "nationality": "Alemania",
-        "marketValue": 500
+        "overall": 67,
+        "value": 500,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jorrit Hendrix",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 20,
-        "nationality": "Países Bajos",
-        "marketValue": 800
+        "overall": 63,
+        "value": 800,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marvin Benjamins",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 19,
-        "nationality": "Alemania",
-        "marketValue": 50
+        "overall": 63,
+        "value": 50,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Zidan Sertdemir",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 20,
-        "nationality": "Dinamarca",
-        "marketValue": 1800000
+        "overall": 64,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Oliver Batista-Meier",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 17,
-        "nationality": "Alemania",
-        "marketValue": 1500000
+        "overall": 67,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Joshua Mees",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 29,
-        "nationality": "Alemania",
-        "marketValue": 800
+        "overall": 67,
+        "value": 800,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Charalambos Makridis",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 29,
-        "nationality": "Alemania",
-        "marketValue": 400
+        "overall": 64,
+        "value": 400,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Shin Yamada",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 25,
-        "nationality": "Japón",
-        "marketValue": 1000000
+        "overall": 68,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Oscar Vilhelmsson",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 22,
-        "nationality": "Suecia",
-        "marketValue": 1000000
+        "overall": 66,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Imad Rondic",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 29,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 1000000
+        "overall": 68,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Malik Batmaz",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 23,
-        "nationality": "Alemania",
-        "marketValue": 500
+        "overall": 64,
+        "value": 500,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Etienne Amenyido",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 30,
-        "nationality": "Togo",
-        "marketValue": 500
+        "overall": 68,
+        "value": 500,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lars Lokotsch",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 29,
-        "nationality": "Alemania",
-        "marketValue": 350
+        "overall": 66,
+        "value": 350,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -3901,251 +5326,344 @@
     "players": [
       {
         "name": "Elias Bethke",
-        "position": "POR",
-        "rating": 62,
+        "position": "GK",
         "age": 40,
-        "nationality": "Alemania",
-        "marketValue": 600
+        "overall": 62,
+        "value": 600,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tim Schreiber",
-        "position": "POR",
-        "rating": 62,
+        "position": "GK",
         "age": 23,
-        "nationality": "Alemania",
-        "marketValue": 500
+        "overall": 62,
+        "value": 500,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lennart Grill",
-        "position": "POR",
-        "rating": 61,
+        "position": "GK",
         "age": 22,
-        "nationality": "Alemania",
-        "marketValue": 450
+        "overall": 61,
+        "value": 450,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Mesenhöler",
-        "position": "POR",
-        "rating": 62,
+        "position": "GK",
         "age": 37,
-        "nationality": "Alemania",
-        "marketValue": 125
+        "overall": 62,
+        "value": 125,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Julian Pauli",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 20,
-        "nationality": "Alemania",
-        "marketValue": 2500000
+        "overall": 64,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Thomas Keller",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 39,
-        "nationality": "Alemania",
-        "marketValue": 600
+        "overall": 61,
+        "value": 600,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Claudio Kammerknecht",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 15,
-        "nationality": "Sri Lanka",
-        "marketValue": 400
+        "overall": 62,
+        "value": 400,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lukas Boeder",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 29,
-        "nationality": "Alemania",
-        "marketValue": 400
+        "overall": 67,
+        "value": 400,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lars Bünning",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 23,
-        "nationality": "Alemania",
-        "marketValue": 350
+        "overall": 64,
+        "value": 350,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Friedrich Müller",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 42,
-        "nationality": "Alemania",
-        "marketValue": 300
+        "overall": 61,
+        "value": 300,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexander Rossipal",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 19,
-        "nationality": "Alemania",
-        "marketValue": 500
+        "overall": 64,
+        "value": 500,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sascha Risch",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 28,
-        "nationality": "Alemania",
-        "marketValue": 500
+        "overall": 67,
+        "value": 500,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Konrad Faber",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 28,
-        "nationality": "Alemania",
-        "marketValue": 500
+        "overall": 67,
+        "value": 500,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jonas Sterner",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 32,
-        "nationality": "Alemania",
-        "marketValue": 500
+        "overall": 67,
+        "value": 500,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jan-Hendrik Marx",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 26,
-        "nationality": "Alemania",
-        "marketValue": 200
+        "overall": 67,
+        "value": 200,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kofi Amoako",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 20,
-        "nationality": "Alemania",
-        "marketValue": 2000000
+        "overall": 64,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vinko Sapina",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 30,
-        "nationality": "Alemania",
-        "marketValue": 400
+        "overall": 67,
+        "value": 400,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Robert Wagner",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 18,
-        "nationality": "Alemania",
-        "marketValue": 2000000
+        "overall": 64,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Niklas Hauptmann",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 27,
-        "nationality": "Alemania",
-        "marketValue": 600
+        "overall": 68,
+        "value": 600,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luca Herrmann",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 26,
-        "nationality": "Alemania",
-        "marketValue": 400
+        "overall": 66,
+        "value": 400,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tony Menzel",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 24,
-        "nationality": "Alemania",
-        "marketValue": 600
+        "overall": 64,
+        "value": 600,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nils Fröling",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 16,
-        "nationality": "Suecia",
-        "marketValue": 500
+        "overall": 63,
+        "value": 500,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakob Zickler",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 38,
-        "nationality": "Austria",
-        "marketValue": 0
+        "overall": 61,
+        "value": 0,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dominik Kother",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 25,
-        "nationality": "Alemania",
-        "marketValue": 600
+        "overall": 64,
+        "value": 600,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jonas Oehmichen",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 25,
-        "nationality": "Alemania",
-        "marketValue": 450
+        "overall": 64,
+        "value": 450,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakob Lemmer",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 25,
-        "nationality": "Alemania",
-        "marketValue": 700
+        "overall": 67,
+        "value": 700,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jason Ceka",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 26,
-        "nationality": "Alemania",
-        "marketValue": 400
+        "overall": 67,
+        "value": 400,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ben Bobzien",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 20,
-        "nationality": "Alemania",
-        "marketValue": 1200000
+        "overall": 65,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Christoph Daferner",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 33,
-        "nationality": "Alemania",
-        "marketValue": 700
+        "overall": 62,
+        "value": 700,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vincent Vermeij",
-        "position": "DC",
-        "rating": 61,
+        "position": "ST",
         "age": 31,
-        "nationality": "Países Bajos",
-        "marketValue": 500
+        "overall": 61,
+        "value": 500,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stefan Kutschke",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 30,
-        "nationality": "Alemania",
-        "marketValue": 150
+        "overall": 64,
+        "value": 150,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -4155,235 +5673,322 @@
     "players": [
       {
         "name": "Jonas Kersken",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 25,
-        "nationality": "Alemania",
-        "marketValue": 1000000
+        "overall": 66,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Leo Oppermann",
-        "position": "POR",
-        "rating": 61,
+        "position": "GK",
         "age": 18,
-        "nationality": "Alemania",
-        "marketValue": 250
+        "overall": 61,
+        "value": 250,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Philip Hildesheim",
-        "position": "POR",
-        "rating": 62,
+        "position": "GK",
         "age": 20,
-        "nationality": "Alemania",
-        "marketValue": 0
+        "overall": 62,
+        "value": 0,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Maximilian Bauer",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 25,
-        "nationality": "Alemania",
-        "marketValue": 1500000
+        "overall": 66,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Maximilian Großer",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 19,
-        "nationality": "Alemania",
-        "marketValue": 900
+        "overall": 63,
+        "value": 900,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Leon Schneider",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 23,
-        "nationality": "Alemania",
-        "marketValue": 900
+        "overall": 65,
+        "value": 900,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Joel Felix",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 28,
-        "nationality": "Dinamarca",
-        "marketValue": 500
+        "overall": 67,
+        "value": 500,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Robin Knoche",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 31,
-        "nationality": "Alemania",
-        "marketValue": 500
+        "overall": 67,
+        "value": 500,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tim Handwerker",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 29,
-        "nationality": "Alemania",
-        "marketValue": 600
+        "overall": 68,
+        "value": 600,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Arne Sicker",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 17,
-        "nationality": "Alemania",
-        "marketValue": 300
+        "overall": 62,
+        "value": 300,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Justin Lukas",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 36,
-        "nationality": "Alemania",
-        "marketValue": 150
+        "overall": 62,
+        "value": 150,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Felix Hagmann",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 22,
-        "nationality": "Alemania",
-        "marketValue": 500
+        "overall": 62,
+        "value": 500,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Christopher Lannert",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 24,
-        "nationality": "Alemania",
-        "marketValue": 400
+        "overall": 65,
+        "value": 400,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stefano Russo",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 21,
-        "nationality": "Alemania",
-        "marketValue": 800
+        "overall": 63,
+        "value": 800,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Eyyüb Yasar",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 44,
-        "nationality": "Alemania",
-        "marketValue": 250
+        "overall": 61,
+        "value": 250,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marius Wörl",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 38,
-        "nationality": "Alemania",
-        "marketValue": 1500000
+        "overall": 62,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mael Corboz",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 31,
-        "nationality": "Estados Unidos",
-        "marketValue": 450
+        "overall": 68,
+        "value": 450,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sam Schreck",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 27,
-        "nationality": "Alemania",
-        "marketValue": 350
+        "overall": 66,
+        "value": 350,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marvin Mehlem",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 28,
-        "nationality": "Alemania",
-        "marketValue": 1200000
+        "overall": 68,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Benjamin Boakye",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 27,
-        "nationality": "Alemania",
-        "marketValue": 1200000
+        "overall": 66,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jannik Rochelt",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 22,
-        "nationality": "Alemania",
-        "marketValue": 800
+        "overall": 65,
+        "value": 800,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Richter",
-        "position": "DC",
-        "rating": 59,
+        "position": "ST",
         "age": 43,
-        "nationality": "Alemania",
-        "marketValue": 500
+        "overall": 59,
+        "value": 500,
+        "salary": 9000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Monju Momuluh",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 23,
-        "nationality": "Alemania",
-        "marketValue": 1200000
+        "overall": 68,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Noah Sarenren Bazee",
-        "position": "DC",
-        "rating": 60,
+        "position": "ST",
         "age": 37,
-        "nationality": "Alemania",
-        "marketValue": 400
+        "overall": 60,
+        "value": 400,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Isaiah Young",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 30,
-        "nationality": "Estados Unidos",
-        "marketValue": 300
+        "overall": 64,
+        "value": 300,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Semir Telalovic",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 26,
-        "nationality": "Alemania",
-        "marketValue": 800
+        "overall": 67,
+        "value": 800,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Joel Grodowski",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 28,
-        "nationality": "Alemania",
-        "marketValue": 750
+        "overall": 68,
+        "value": 750,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Roberts Uldrikis",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 28,
-        "nationality": "Letonia",
-        "marketValue": 500
+        "overall": 70,
+        "value": 500,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jeredy Hilterman",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 27,
-        "nationality": "Surinam",
-        "marketValue": 300
+        "overall": 67,
+        "value": 300,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   }

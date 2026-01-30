@@ -5,251 +5,344 @@
     "players": [
       {
         "name": "Jindrich Stanek",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 36,
-        "nationality": "República Checa",
-        "marketValue": 3000000
+        "overall": 69,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakub Markovic",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 35,
-        "nationality": "República Checa",
-        "marketValue": 2500000
+        "overall": 68,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ondrej Kolar",
-        "position": "POR",
-        "rating": 72,
+        "position": "GK",
         "age": 31,
-        "nationality": "República Checa",
-        "marketValue": 100
+        "overall": 72,
+        "value": 100,
+        "salary": 22000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Igoh Ogbu",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 25,
-        "nationality": "Nigeria",
-        "marketValue": 8500000
+        "overall": 71,
+        "value": 8500000,
+        "salary": 25500,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Zima",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 25,
-        "nationality": "República Checa",
-        "marketValue": 7000000
+        "overall": 72,
+        "value": 7000000,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stepan Chaloupek",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 22,
-        "nationality": "República Checa",
-        "marketValue": 6000000
+        "overall": 70,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tomas Vlcek",
-        "position": "DFC",
-        "rating": 74,
+        "position": "CB",
         "age": 27,
-        "nationality": "República Checa",
-        "marketValue": 5500000
+        "overall": 74,
+        "value": 5500000,
+        "salary": 16500,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tomas Holes",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 32,
-        "nationality": "República Checa",
-        "marketValue": 1500000
+        "overall": 73,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jan Boril",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 18,
-        "nationality": "República Checa",
-        "marketValue": 200
+        "overall": 68,
+        "value": 200,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Jurásek",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 39,
-        "nationality": "República Checa",
-        "marketValue": 4500000
+        "overall": 67,
+        "value": 4500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Youssoupha Mbodji",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 22,
-        "nationality": "Senegal",
-        "marketValue": 1800000
+        "overall": 68,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ondrej Zmrzly",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 33,
-        "nationality": "República Checa",
-        "marketValue": 1500000
+        "overall": 67,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dominik Javorcek",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 37,
-        "nationality": "Eslovaquia",
-        "marketValue": 450
+        "overall": 66,
+        "value": 450,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daiki Hashioka",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 26,
-        "nationality": "Japón",
-        "marketValue": 1200000
+        "overall": 72,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Samuel Isife",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 21,
-        "nationality": "Nigeria",
-        "marketValue": 800
+        "overall": 68,
+        "value": 800,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Moses",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 16,
-        "nationality": "Nigeria",
-        "marketValue": 9000000
+        "overall": 70,
+        "value": 9000000,
+        "salary": 27000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Oscar",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 19,
-        "nationality": "Liberia",
-        "marketValue": 8000000
+        "overall": 70,
+        "value": 8000000,
+        "salary": 24000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Michal Sadílek",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 23,
-        "nationality": "República Checa",
-        "marketValue": 7500000
+        "overall": 72,
+        "value": 7500000,
+        "salary": 22500,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Divine Teah",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 19,
-        "nationality": "Liberia",
-        "marketValue": 1800000
+        "overall": 69,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexandr Buzek",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 21,
-        "nationality": "República Checa",
-        "marketValue": 1000000
+        "overall": 69,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Petr Sevcik",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 31,
-        "nationality": "República Checa",
-        "marketValue": 250
+        "overall": 72,
+        "value": 250,
+        "salary": 22000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Doudera",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 21,
-        "nationality": "República Checa",
-        "marketValue": 4000000
+        "overall": 69,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Simion Michez",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 23,
-        "nationality": "Camerún",
-        "marketValue": 1000000
+        "overall": 71,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lukas Provod",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 17,
-        "nationality": "República Checa",
-        "marketValue": 8000000
+        "overall": 74,
+        "value": 8000000,
+        "salary": 24000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Muhammed Cham",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 25,
-        "nationality": "Austria",
-        "marketValue": 5000000
+        "overall": 73,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vasil Kusej",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 25,
-        "nationality": "República Checa",
-        "marketValue": 5000000
+        "overall": 74,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Youssoupha Sanyang",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 20,
-        "nationality": "Gambia",
-        "marketValue": 3000000
+        "overall": 67,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ivan Schranz",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 26,
-        "nationality": "Eslovaquia",
-        "marketValue": 900
+        "overall": 69,
+        "value": 900,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mojmír Chytil",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 26,
-        "nationality": "República Checa",
-        "marketValue": 3500000
+        "overall": 72,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tomas Chory",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 25,
-        "nationality": "República Checa",
-        "marketValue": 3000000
+        "overall": 75,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Erik Prekop",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 31,
-        "nationality": "Eslovaquia",
-        "marketValue": 1000000
+        "overall": 64,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -259,243 +352,333 @@
     "players": [
       {
         "name": "Peter Vindahl",
-        "position": "POR",
-        "rating": 73,
+        "position": "GK",
         "age": 27,
-        "nationality": "Dinamarca",
-        "marketValue": 2800000
+        "overall": 73,
+        "value": 2800000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakub Surovcik",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 44,
-        "nationality": "Eslovaquia",
-        "marketValue": 400
+        "overall": 66,
+        "value": 400,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Kerl",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 25,
-        "nationality": "República Checa",
-        "marketValue": 200
+        "overall": 70,
+        "value": 200,
+        "salary": 20000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Emmanuel Uchenna",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 16,
-        "nationality": "Nigeria",
-        "marketValue": 5000000
+        "overall": 70,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adam Sevinsky",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 19,
-        "nationality": "República Checa",
-        "marketValue": 3000000
+        "overall": 69,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Asger Sörensen",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 25,
-        "nationality": "Dinamarca",
-        "marketValue": 2000000
+        "overall": 71,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filip Panák",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 27,
-        "nationality": "República Checa",
-        "marketValue": 1800000
+        "overall": 72,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Elias Cobbaut",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 33,
-        "nationality": "Bélgica",
-        "marketValue": 900
+        "overall": 67,
+        "value": 900,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakub Martinec",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 27,
-        "nationality": "República Checa",
-        "marketValue": 850
+        "overall": 71,
+        "value": 850,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jaroslav Zelený",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 30,
-        "nationality": "República Checa",
-        "marketValue": 800
+        "overall": 72,
+        "value": 800,
+        "salary": 22000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Oliver Sonne",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 17,
-        "nationality": "Perú",
-        "marketValue": 4000000
+        "overall": 69,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sivert Mannsverk",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 20,
-        "nationality": "Noruega",
-        "marketValue": 4000000
+        "overall": 68,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Patrik Vydra",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 26,
-        "nationality": "República Checa",
-        "marketValue": 4000000
+        "overall": 74,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kaan Kairinen",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 27,
-        "nationality": "Finlandia",
-        "marketValue": 6000000
+        "overall": 74,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Andrew Irving",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 18,
-        "nationality": "Escocia",
-        "marketValue": 5000000
+        "overall": 70,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Magnus Kofod Andersen",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 26,
-        "nationality": "Dinamarca",
-        "marketValue": 1500000
+        "overall": 72,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pavel Kaderabek",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 33,
-        "nationality": "República Checa",
-        "marketValue": 1500000
+        "overall": 68,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matej Rynes",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 24,
-        "nationality": "República Checa",
-        "marketValue": 4000000
+        "overall": 71,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Martin Suchomel",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 23,
-        "nationality": "República Checa",
-        "marketValue": 900
+        "overall": 69,
+        "value": 900,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Santiago Eneme",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 25,
-        "nationality": "Guinea Ecuatorial",
-        "marketValue": 2000000
+        "overall": 72,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lukas Haraslin",
-        "position": "DC",
-        "rating": 73,
+        "position": "ST",
         "age": 22,
-        "nationality": "Eslovaquia",
-        "marketValue": 6000000
+        "overall": 73,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Veljko Birmancevic",
-        "position": "DC",
-        "rating": 73,
+        "position": "ST",
         "age": 27,
-        "nationality": "Serbia",
-        "marketValue": 4500000
+        "overall": 73,
+        "value": 4500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "John Mercado",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 23,
-        "nationality": "Ecuador",
-        "marketValue": 4000000
+        "overall": 71,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Garang Kuol",
-        "position": "DC",
-        "rating": 61,
+        "position": "ST",
         "age": 36,
-        "nationality": "Australia",
-        "marketValue": 800
+        "overall": 61,
+        "value": 800,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ondrej Penxa",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 18,
-        "nationality": "República Checa",
-        "marketValue": 750
+        "overall": 69,
+        "value": 750,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Joao Grimaldo",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 21,
-        "nationality": "Perú",
-        "marketValue": 700
+        "overall": 69,
+        "value": 700,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Roman Mokrovics",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 31,
-        "nationality": "República Checa",
-        "marketValue": 450
+        "overall": 66,
+        "value": 450,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Albion Rrahmani",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 25,
-        "nationality": "Kosovo",
-        "marketValue": 7500000
+        "overall": 75,
+        "value": 7500000,
+        "salary": 22500,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jan Kuchta",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 29,
-        "nationality": "República Checa",
-        "marketValue": 3000000
+        "overall": 75,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matyas Vojta",
-        "position": "DC",
-        "rating": 73,
+        "position": "ST",
         "age": 29,
-        "nationality": "República Checa",
-        "marketValue": 2200000
+        "overall": 73,
+        "value": 2200000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -505,219 +688,300 @@
     "players": [
       {
         "name": "Florian Wiegele",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 44,
-        "nationality": "Austria",
-        "marketValue": 1000000
+        "overall": 65,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dominik Tapaj",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 21,
-        "nationality": "Eslovaquia",
-        "marketValue": 400
+        "overall": 65,
+        "value": 400,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marian Tvrdon",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 31,
-        "nationality": "Eslovaquia",
-        "marketValue": 100
+        "overall": 69,
+        "value": 100,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matyas Silhavy",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 15,
-        "nationality": "República Checa",
-        "marketValue": 0
+        "overall": 65,
+        "value": 0,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sampson Dweh",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 40,
-        "nationality": "Liberia",
-        "marketValue": 6000000
+        "overall": 66,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Karel Spacil",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 22,
-        "nationality": "República Checa",
-        "marketValue": 3500000
+        "overall": 67,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jan Paluska",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 22,
-        "nationality": "República Checa",
-        "marketValue": 3500000
+        "overall": 67,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vaclav Jemelka",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 21,
-        "nationality": "República Checa",
-        "marketValue": 1500000
+        "overall": 69,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Krcik",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 37,
-        "nationality": "Eslovaquia",
-        "marketValue": 800
+        "overall": 64,
+        "value": 800,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Merchas Doski",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 26,
-        "nationality": "Irak",
-        "marketValue": 800
+        "overall": 70,
+        "value": 800,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adam Kadlec",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 16,
-        "nationality": "República Checa",
-        "marketValue": 500
+        "overall": 66,
+        "value": 500,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adrian Zeljkovic",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 23,
-        "nationality": "Eslovenia",
-        "marketValue": 2200000
+        "overall": 68,
+        "value": 2200000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lukas Cerv",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 24,
-        "nationality": "República Checa",
-        "marketValue": 6000000
+        "overall": 72,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Patrik Hrosovsky",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 17,
-        "nationality": "Eslovaquia",
-        "marketValue": 2000000
+        "overall": 67,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jiri Panos",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 20,
-        "nationality": "República Checa",
-        "marketValue": 1800000
+        "overall": 66,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matej Valenta",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 32,
-        "nationality": "República Checa",
-        "marketValue": 1200000
+        "overall": 65,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexandr Sojka",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 22,
-        "nationality": "República Checa",
-        "marketValue": 800
+        "overall": 68,
+        "value": 800,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Amar Memic",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 25,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 3500000
+        "overall": 73,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cheick Souaré",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 19,
-        "nationality": "Francia",
-        "marketValue": 3000000
+        "overall": 68,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tom Sloncik",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 29,
-        "nationality": "República Checa",
-        "marketValue": 2000000
+        "overall": 71,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Denis Visinsky",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 22,
-        "nationality": "República Checa",
-        "marketValue": 1500000
+        "overall": 68,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tomas Ladra",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 18,
-        "nationality": "República Checa",
-        "marketValue": 1000000
+        "overall": 68,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Prince Adu",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 22,
-        "nationality": "Ghana",
-        "marketValue": 3500000
+        "overall": 69,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Salim Fago Lawal",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 23,
-        "nationality": "Nigeria",
-        "marketValue": 1800000
+        "overall": 69,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Vasulin",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 27,
-        "nationality": "República Checa",
-        "marketValue": 1000000
+        "overall": 71,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matej Vydra",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 33,
-        "nationality": "República Checa",
-        "marketValue": 750
+        "overall": 66,
+        "value": 750,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Christophe Kabongo",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 22,
-        "nationality": "República Checa",
-        "marketValue": 650
+        "overall": 65,
+        "value": 650,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -727,339 +991,465 @@
     "players": [
       {
         "name": "Jan Koutny",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 21,
-        "nationality": "República Checa",
-        "marketValue": 3000000
+        "overall": 68,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tadeas Stoppen",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 29,
-        "nationality": "República Checa",
-        "marketValue": 200
+        "overall": 70,
+        "value": 200,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matus Hruska",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 31,
-        "nationality": "Eslovaquia",
-        "marketValue": 200
+        "overall": 69,
+        "value": 200,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakub Trefil",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 31,
-        "nationality": "República Checa",
-        "marketValue": 100
+        "overall": 70,
+        "value": 100,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tomas Digana",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 28,
-        "nationality": "Eslovaquia",
-        "marketValue": 50
+        "overall": 70,
+        "value": 50,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Abdoulaye Sylla",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 25,
-        "nationality": "Guinea",
-        "marketValue": 1200000
+        "overall": 69,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jan Kral",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 21,
-        "nationality": "República Checa",
-        "marketValue": 750
+        "overall": 66,
+        "value": 750,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tomas Huk",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 31,
-        "nationality": "Eslovaquia",
-        "marketValue": 400
+        "overall": 69,
+        "value": 400,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adam Dohnalek",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 21,
-        "nationality": "República Checa",
-        "marketValue": 350
+        "overall": 66,
+        "value": 350,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matus Maly",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 33,
-        "nationality": "Eslovaquia",
-        "marketValue": 300
+        "overall": 64,
+        "value": 300,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Patrik Siegl",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 18,
-        "nationality": "República Checa",
-        "marketValue": 125
+        "overall": 66,
+        "value": 125,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jiri Slama",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 27,
-        "nationality": "República Checa",
-        "marketValue": 650
+        "overall": 70,
+        "value": 650,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakub Elbel",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 25,
-        "nationality": "República Checa",
-        "marketValue": 400
+        "overall": 68,
+        "value": 400,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Michal Leibl",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 28,
-        "nationality": "República Checa",
-        "marketValue": 100
+        "overall": 70,
+        "value": 100,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matej Hadas",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 22,
-        "nationality": "República Checa",
-        "marketValue": 800
+        "overall": 66,
+        "value": 800,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filip Slavicek",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 16,
-        "nationality": "República Checa",
-        "marketValue": 700
+        "overall": 66,
+        "value": 700,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Péter Baráth",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 23,
-        "nationality": "Hungría",
-        "marketValue": 1500000
+        "overall": 69,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakub Jezierski",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 21,
-        "nationality": "Polonia",
-        "marketValue": 400
+        "overall": 66,
+        "value": 400,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tihomir Kostadinov",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 29,
-        "nationality": "Macedonia del Norte",
-        "marketValue": 350
+        "overall": 69,
+        "value": 350,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Michal Beran",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 25,
-        "nationality": "República Checa",
-        "marketValue": 2500000
+        "overall": 71,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stepan Langer",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 37,
-        "nationality": "República Checa",
-        "marketValue": 600
+        "overall": 64,
+        "value": 600,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jiri Spacil",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 26,
-        "nationality": "República Checa",
-        "marketValue": 400
+        "overall": 69,
+        "value": 400,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Tkac",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 24,
-        "nationality": "República Checa",
-        "marketValue": 300
+        "overall": 68,
+        "value": 300,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dele Israel",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 24,
-        "nationality": "Nigeria",
-        "marketValue": 150
+        "overall": 68,
+        "value": 150,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vaclav Zahradnicek",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 19,
-        "nationality": "República Checa",
-        "marketValue": 125
+        "overall": 66,
+        "value": 125,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matej Mikulenka",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 25,
-        "nationality": "República Checa",
-        "marketValue": 1000000
+        "overall": 70,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ahmad Ghali",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 25,
-        "nationality": "Nigeria",
-        "marketValue": 1300000
+        "overall": 73,
+        "value": 1300000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dario Grgic",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 20,
-        "nationality": "Serbia",
-        "marketValue": 1800000
+        "overall": 67,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Fabijan Krivak",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 23,
-        "nationality": "Croacia",
-        "marketValue": 1500000
+        "overall": 69,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dominik Janosek",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 39,
-        "nationality": "República Checa",
-        "marketValue": 700
+        "overall": 63,
+        "value": 700,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Danijel Sturm",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 17,
-        "nationality": "Eslovenia",
-        "marketValue": 800
+        "overall": 67,
+        "value": 800,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jachym Sip",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 23,
-        "nationality": "República Checa",
-        "marketValue": 450
+        "overall": 65,
+        "value": 450,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filip Urica",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 27,
-        "nationality": "República Checa",
-        "marketValue": 150
+        "overall": 70,
+        "value": 150,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Artūr Dolžnikov",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 25,
-        "nationality": "Lituania",
-        "marketValue": 400
+        "overall": 67,
+        "value": 400,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Moses Emmanuel",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 22,
-        "nationality": "Nigeria",
-        "marketValue": 200
+        "overall": 68,
+        "value": 200,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Antonin Rusek",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 26,
-        "nationality": "República Checa",
-        "marketValue": 350
+        "overall": 70,
+        "value": 350,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vaclav Sejk",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 23,
-        "nationality": "República Checa",
-        "marketValue": 900
+        "overall": 68,
+        "value": 900,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jan Kliment",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 32,
-        "nationality": "República Checa",
-        "marketValue": 600
+        "overall": 64,
+        "value": 600,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "John Paul Dembe",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 18,
-        "nationality": "Uganda",
-        "marketValue": 350
+        "overall": 67,
+        "value": 350,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mohamed Yasser",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 35,
-        "nationality": "Egipto",
-        "marketValue": 350
+        "overall": 62,
+        "value": 350,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yunusa Muritala",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 25,
-        "nationality": "Nigeria",
-        "marketValue": 225
+        "overall": 70,
+        "value": 225,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Denis Kramar",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 16,
-        "nationality": "República Checa",
-        "marketValue": 75
+        "overall": 67,
+        "value": 75,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1069,291 +1459,399 @@
     "players": [
       {
         "name": "Martin Jedlicka",
-        "position": "POR",
-        "rating": 64,
+        "position": "GK",
         "age": 23,
-        "nationality": "República Checa",
-        "marketValue": 2500000
+        "overall": 64,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dominik Holec",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 30,
-        "nationality": "Eslovaquia",
-        "marketValue": 550
+        "overall": 70,
+        "value": 550,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Viktor Budinsky",
-        "position": "POR",
-        "rating": 67,
+        "position": "GK",
         "age": 32,
-        "nationality": "Eslovaquia",
-        "marketValue": 175
+        "overall": 67,
+        "value": 175,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mikulas Kubny",
-        "position": "POR",
-        "rating": 63,
+        "position": "GK",
         "age": 41,
-        "nationality": "República Checa",
-        "marketValue": 150
+        "overall": 63,
+        "value": 150,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ondrej Kricfalusi",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 21,
-        "nationality": "República Checa",
-        "marketValue": 2500000
+        "overall": 65,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Karel Pojezny",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 24,
-        "nationality": "República Checa",
-        "marketValue": 650
+        "overall": 66,
+        "value": 650,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pablo Ortiz",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 25,
-        "nationality": "Colombia",
-        "marketValue": 500
+        "overall": 66,
+        "value": 500,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matej Chalus",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 37,
-        "nationality": "República Checa",
-        "marketValue": 450
+        "overall": 62,
+        "value": 450,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jiri Micek",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 42,
-        "nationality": "República Checa",
-        "marketValue": 400
+        "overall": 62,
+        "value": 400,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Michal Frydrych",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 17,
-        "nationality": "República Checa",
-        "marketValue": 100
+        "overall": 64,
+        "value": 100,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hamidou Kante",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 21,
-        "nationality": "Senegal",
-        "marketValue": 1000000
+        "overall": 65,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vlasiy Sinyavskiy",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 29,
-        "nationality": "Estonia",
-        "marketValue": 750
+        "overall": 68,
+        "value": 750,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Patrick Kpozo",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 15,
-        "nationality": "Ghana",
-        "marketValue": 300
+        "overall": 63,
+        "value": 300,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Eldar Sehic",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 44,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 200
+        "overall": 61,
+        "value": 200,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexander Munksgaard",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 31,
-        "nationality": "Dinamarca",
-        "marketValue": 300
+        "overall": 67,
+        "value": 300,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Christ Tiéhi",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 27,
-        "nationality": "Costa de Marfil",
-        "marketValue": 300
+        "overall": 67,
+        "value": 300,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Planka",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 18,
-        "nationality": "República Checa",
-        "marketValue": 2200000
+        "overall": 67,
+        "value": 2200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jiri Boula",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 26,
-        "nationality": "República Checa",
-        "marketValue": 1700000
+        "overall": 69,
+        "value": 1700000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Artur Musak",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 20,
-        "nationality": "Eslovaquia",
-        "marketValue": 350
+        "overall": 63,
+        "value": 350,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marek Havran",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 19,
-        "nationality": "República Checa",
-        "marketValue": 1200000
+        "overall": 64,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Abdullahi Bewene",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 34,
-        "nationality": "Nigeria",
-        "marketValue": 700
+        "overall": 63,
+        "value": 700,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dennis Owusu",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 25,
-        "nationality": "Alemania",
-        "marketValue": 350
+        "overall": 67,
+        "value": 350,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matus Rusnak",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 26,
-        "nationality": "Eslovaquia",
-        "marketValue": 275
+        "overall": 67,
+        "value": 275,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Srdjan Plavsic",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 30,
-        "nationality": "Serbia",
-        "marketValue": 450
+        "overall": 68,
+        "value": 450,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Holzer",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 30,
-        "nationality": "República Checa",
-        "marketValue": 350
+        "overall": 68,
+        "value": 350,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Michal Kohút",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 21,
-        "nationality": "República Checa",
-        "marketValue": 1200000
+        "overall": 67,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filip Sancl",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 19,
-        "nationality": "República Checa",
-        "marketValue": 600
+        "overall": 64,
+        "value": 600,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Buchta",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 26,
-        "nationality": "República Checa",
-        "marketValue": 1000000
+        "overall": 67,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Petr Jaron",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 24,
-        "nationality": "República Checa",
-        "marketValue": 200
+        "overall": 66,
+        "value": 200,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lauri Laine",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 26,
-        "nationality": "Finlandia",
-        "marketValue": 150
+        "overall": 68,
+        "value": 150,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakub Pira",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 29,
-        "nationality": "Eslovaquia",
-        "marketValue": 1500000
+        "overall": 67,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vaclav Jurecka",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 15,
-        "nationality": "República Checa",
-        "marketValue": 1000000
+        "overall": 66,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Abdallah Gning",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 27,
-        "nationality": "Senegal",
-        "marketValue": 650
+        "overall": 68,
+        "value": 650,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filip Kubala",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 28,
-        "nationality": "República Checa",
-        "marketValue": 400
+        "overall": 71,
+        "value": 400,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Latal",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 23,
-        "nationality": "República Checa",
-        "marketValue": 275
+        "overall": 65,
+        "value": 275,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ladislav Almasi",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 26,
-        "nationality": "Eslovaquia",
-        "marketValue": 275
+        "overall": 67,
+        "value": 275,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1363,251 +1861,344 @@
     "players": [
       {
         "name": "Tomas Koubek",
-        "position": "POR",
-        "rating": 63,
+        "position": "GK",
         "age": 40,
-        "nationality": "República Checa",
-        "marketValue": 450
+        "overall": 63,
+        "value": 450,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ivan Krajcirik",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 25,
-        "nationality": "Eslovaquia",
-        "marketValue": 300
+        "overall": 65,
+        "value": 300,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lukas Pesl",
-        "position": "POR",
-        "rating": 67,
+        "position": "GK",
         "age": 33,
-        "nationality": "República Checa",
-        "marketValue": 125
+        "overall": 67,
+        "value": 125,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jindrich Musil",
-        "position": "POR",
-        "rating": 63,
+        "position": "GK",
         "age": 21,
-        "nationality": "República Checa",
-        "marketValue": 0
+        "overall": 63,
+        "value": 0,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ange N'Guessan",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 16,
-        "nationality": "Francia",
-        "marketValue": 3500000
+        "overall": 65,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Simon Gabriel",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 32,
-        "nationality": "República Checa",
-        "marketValue": 900
+        "overall": 68,
+        "value": 900,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jan Knapik",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 22,
-        "nationality": "República Checa",
-        "marketValue": 400
+        "overall": 64,
+        "value": 400,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Haris Berbic",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 23,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 350
+        "overall": 66,
+        "value": 350,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Augustin Drakpe",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 24,
-        "nationality": "Togo",
-        "marketValue": 300
+        "overall": 66,
+        "value": 300,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jan Mikula",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 34,
-        "nationality": "República Checa",
-        "marketValue": 175
+        "overall": 62,
+        "value": 175,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Martin Ryzek",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 20,
-        "nationality": "Eslovaquia",
-        "marketValue": 50
+        "overall": 64,
+        "value": 50,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Aziz Kayondo",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 27,
-        "nationality": "Uganda",
-        "marketValue": 900
+        "overall": 68,
+        "value": 900,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dominik Masek",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 29,
-        "nationality": "República Checa",
-        "marketValue": 175
+        "overall": 68,
+        "value": 175,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Petr Hodous",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 22,
-        "nationality": "República Checa",
-        "marketValue": 600
+        "overall": 64,
+        "value": 600,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Josef Kozeluh",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 18,
-        "nationality": "República Checa",
-        "marketValue": 500
+        "overall": 63,
+        "value": 500,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marek Icha",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 23,
-        "nationality": "República Checa",
-        "marketValue": 800
+        "overall": 67,
+        "value": 800,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vojtech Stransky",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 22,
-        "nationality": "República Checa",
-        "marketValue": 1500000
+        "overall": 68,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Toumani Diakite",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 30,
-        "nationality": "Costa de Marfil",
-        "marketValue": 500
+        "overall": 67,
+        "value": 500,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Qëndrim Zyba",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 24,
-        "nationality": "Kosovo",
-        "marketValue": 400
+        "overall": 66,
+        "value": 400,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Patrik Dulay",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 24,
-        "nationality": "Eslovaquia",
-        "marketValue": 400
+        "overall": 65,
+        "value": 400,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lukas Masopust",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 26,
-        "nationality": "República Checa",
-        "marketValue": 250
+        "overall": 68,
+        "value": 250,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vojtech Sychra",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 28,
-        "nationality": "República Checa",
-        "marketValue": 500
+        "overall": 69,
+        "value": 500,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ermin Mahmic",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 20,
-        "nationality": "Austria",
-        "marketValue": 2500000
+        "overall": 67,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Milan Lexa",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 15,
-        "nationality": "República Checa",
-        "marketValue": 200
+        "overall": 64,
+        "value": 200,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Afolabi Soliu",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 20,
-        "nationality": "Nigeria",
-        "marketValue": 1200000
+        "overall": 66,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Petr Julis",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 17,
-        "nationality": "República Checa",
-        "marketValue": 400
+        "overall": 62,
+        "value": 400,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lukas Masek",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 21,
-        "nationality": "República Checa",
-        "marketValue": 1500000
+        "overall": 64,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Raimonds Krollis",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 24,
-        "nationality": "Letonia",
-        "marketValue": 1000000
+        "overall": 67,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Rus",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 29,
-        "nationality": "República Checa",
-        "marketValue": 500
+        "overall": 68,
+        "value": 500,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filip Spatenka",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 21,
-        "nationality": "República Checa",
-        "marketValue": 400
+        "overall": 65,
+        "value": 400,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lukas Letenay",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 21,
-        "nationality": "Eslovaquia",
-        "marketValue": 350
+        "overall": 64,
+        "value": 350,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1617,315 +2208,432 @@
     "players": [
       {
         "name": "Luka Kharatishvili",
-        "position": "POR",
-        "rating": 60,
+        "position": "GK",
         "age": 23,
-        "nationality": "Georgia",
-        "marketValue": 550
+        "overall": 60,
+        "value": 550,
+        "salary": 10000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ales Mandous",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 30,
-        "nationality": "República Checa",
-        "marketValue": 350
+        "overall": 66,
+        "value": 350,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jan Stejskal",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 28,
-        "nationality": "República Checa",
-        "marketValue": 200
+        "overall": 66,
+        "value": 200,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matej Simunek",
-        "position": "POR",
-        "rating": 61,
+        "position": "GK",
         "age": 22,
-        "nationality": "República Checa",
-        "marketValue": 0
+        "overall": 61,
+        "value": 0,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mikulas Konecny",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 32,
-        "nationality": "República Checa",
-        "marketValue": 2200000
+        "overall": 67,
+        "value": 2200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Louis Lurvink",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 24,
-        "nationality": "Suiza",
-        "marketValue": 750
+        "overall": 64,
+        "value": 750,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bogdan Slyubyk",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 21,
-        "nationality": "Ucrania",
-        "marketValue": 700
+        "overall": 62,
+        "value": 700,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Simon Bammens",
-        "position": "DFC",
-        "rating": 60,
+        "position": "CB",
         "age": 44,
-        "nationality": "Bélgica",
-        "marketValue": 500
+        "overall": 60,
+        "value": 500,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jason Noslin",
-        "position": "DFC",
-        "rating": 60,
+        "position": "CB",
         "age": 43,
-        "nationality": "Países Bajos",
-        "marketValue": 325
+        "overall": 60,
+        "value": 325,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Simek",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 27,
-        "nationality": "República Checa",
-        "marketValue": 200
+        "overall": 65,
+        "value": 200,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ryan Mahuta",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 25,
-        "nationality": "Finlandia",
-        "marketValue": 500
+        "overall": 64,
+        "value": 500,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Emmanuel Godwin",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 20,
-        "nationality": "Nigeria",
-        "marketValue": 200
+        "overall": 62,
+        "value": 200,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jan Tredl",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 21,
-        "nationality": "República Checa",
-        "marketValue": 350
+        "overall": 61,
+        "value": 350,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Michal Surzyn",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 23,
-        "nationality": "República Checa",
-        "marketValue": 200
+        "overall": 63,
+        "value": 200,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jiri Hamza",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 20,
-        "nationality": "República Checa",
-        "marketValue": 250
+        "overall": 62,
+        "value": 250,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jan Reznicek",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 33,
-        "nationality": "República Checa",
-        "marketValue": 125
+        "overall": 61,
+        "value": 125,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kamil Vacek",
-        "position": "MC",
-        "rating": 59,
+        "position": "CM",
         "age": 38,
-        "nationality": "República Checa",
-        "marketValue": 50
+        "overall": 59,
+        "value": 50,
+        "salary": 9000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Michal Hlavaty",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 19,
-        "nationality": "República Checa",
-        "marketValue": 800
+        "overall": 62,
+        "value": 800,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tomas Jelinek",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 16,
-        "nationality": "República Checa",
-        "marketValue": 600
+        "overall": 62,
+        "value": 600,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stepan Misek",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 18,
-        "nationality": "República Checa",
-        "marketValue": 500
+        "overall": 61,
+        "value": 500,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Samuel Simek",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 26,
-        "nationality": "República Checa",
-        "marketValue": 350
+        "overall": 66,
+        "value": 350,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tomas Solil",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 24,
-        "nationality": "República Checa",
-        "marketValue": 250
+        "overall": 64,
+        "value": 250,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marek Halda",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 30,
-        "nationality": "República Checa",
-        "marketValue": 0
+        "overall": 66,
+        "value": 0,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tobias Boledovic",
-        "position": "MC",
-        "rating": 60,
+        "position": "CM",
         "age": 40,
-        "nationality": "República Checa",
-        "marketValue": 350
+        "overall": 60,
+        "value": 350,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Giannis-Fivos Botos",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 25,
-        "nationality": "Grecia",
-        "marketValue": 1000000
+        "overall": 68,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Denis Darmovzal",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 15,
-        "nationality": "República Checa",
-        "marketValue": 150
+        "overall": 62,
+        "value": 150,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vojtech Patrak",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 25,
-        "nationality": "República Checa",
-        "marketValue": 700
+        "overall": 65,
+        "value": 700,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Muhammed Suso",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 20,
-        "nationality": "Gambia",
-        "marketValue": 150
+        "overall": 63,
+        "value": 150,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Diego Zarate",
-        "position": "DC",
-        "rating": 60,
+        "position": "ST",
         "age": 34,
-        "nationality": "Estados Unidos",
-        "marketValue": 0
+        "overall": 60,
+        "value": 0,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Robi Saarma",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 24,
-        "nationality": "Estonia",
-        "marketValue": 450
+        "overall": 62,
+        "value": 450,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Pandula",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 21,
-        "nationality": "República Checa",
-        "marketValue": 75
+        "overall": 63,
+        "value": 75,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filip Vecheta",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 22,
-        "nationality": "República Checa",
-        "marketValue": 650
+        "overall": 63,
+        "value": 650,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Smekal",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 24,
-        "nationality": "República Checa",
-        "marketValue": 450
+        "overall": 63,
+        "value": 450,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Abdullahi Tanko",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 28,
-        "nationality": "Nigeria",
-        "marketValue": 400
+        "overall": 68,
+        "value": 400,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ladislav Krobot",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 17,
-        "nationality": "República Checa",
-        "marketValue": 300
+        "overall": 62,
+        "value": 300,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Victor Samuel",
-        "position": "DC",
-        "rating": 58,
+        "position": "ST",
         "age": 35,
-        "nationality": "Nigeria",
-        "marketValue": 200
+        "overall": 58,
+        "value": 200,
+        "salary": 8000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mohammed Marzuq Yahaya",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 22,
-        "nationality": "Nigeria",
-        "marketValue": 125
+        "overall": 64,
+        "value": 125,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matej Kvacek",
-        "position": "DC",
-        "rating": 58,
+        "position": "ST",
         "age": 37,
-        "nationality": "República Checa",
-        "marketValue": 100
+        "overall": 58,
+        "value": 100,
+        "salary": 8000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filip Brdicka",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 29,
-        "nationality": "República Checa",
-        "marketValue": 75
+        "overall": 66,
+        "value": 75,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1935,235 +2643,322 @@
     "players": [
       {
         "name": "Jakub Lapes",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 30,
-        "nationality": "República Checa",
-        "marketValue": 550
+        "overall": 66,
+        "value": 550,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vladimir Neuman",
-        "position": "POR",
-        "rating": 63,
+        "position": "GK",
         "age": 25,
-        "nationality": "República Checa",
-        "marketValue": 125
+        "overall": 63,
+        "value": 125,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ondrej Mrozek",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 34,
-        "nationality": "República Checa",
-        "marketValue": 0
+        "overall": 65,
+        "value": 0,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ondrej Schovanec",
-        "position": "POR",
-        "rating": 61,
+        "position": "GK",
         "age": 23,
-        "nationality": "República Checa",
-        "marketValue": 0
+        "overall": 61,
+        "value": 0,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filip Prebsl",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 22,
-        "nationality": "República Checa",
-        "marketValue": 1300000
+        "overall": 63,
+        "value": 1300000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sahmkou Camara",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 22,
-        "nationality": "Guinea",
-        "marketValue": 1200000
+        "overall": 63,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Simon Sloncik",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 21,
-        "nationality": "República Checa",
-        "marketValue": 600
+        "overall": 62,
+        "value": 600,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yevgeniy Skyba",
-        "position": "DFC",
-        "rating": 60,
+        "position": "CB",
         "age": 44,
-        "nationality": "Ucrania",
-        "marketValue": 350
+        "overall": 60,
+        "value": 350,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Albert Labik",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 21,
-        "nationality": "República Checa",
-        "marketValue": 900
+        "overall": 63,
+        "value": 900,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nino Milic",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 19,
-        "nationality": "Eslovenia",
-        "marketValue": 300
+        "overall": 62,
+        "value": 300,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jiri Fleisman",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 25,
-        "nationality": "República Checa",
-        "marketValue": 10
+        "overall": 64,
+        "value": 10,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jan Chytry",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 24,
-        "nationality": "República Checa",
-        "marketValue": 500
+        "overall": 63,
+        "value": 500,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Aboubacar Traore",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 21,
-        "nationality": "Costa de Marfil",
-        "marketValue": 400
+        "overall": 62,
+        "value": 400,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakub Kristan",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 23,
-        "nationality": "República Checa",
-        "marketValue": 250
+        "overall": 63,
+        "value": 250,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sebastian Bohac",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 23,
-        "nationality": "República Checa",
-        "marketValue": 400
+        "overall": 64,
+        "value": 400,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Samuel Sigut",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 17,
-        "nationality": "República Checa",
-        "marketValue": 700
+        "overall": 64,
+        "value": 700,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kristian Vallo",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 27,
-        "nationality": "Eslovaquia",
-        "marketValue": 350
+        "overall": 66,
+        "value": 350,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jan Fiala",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 29,
-        "nationality": "República Checa",
-        "marketValue": 200
+        "overall": 65,
+        "value": 200,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yahaya Lawali",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 19,
-        "nationality": "Nigeria",
-        "marketValue": 0
+        "overall": 62,
+        "value": 0,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Emmanuel Ayaosi",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 21,
-        "nationality": "Nigeria",
-        "marketValue": 2000000
+        "overall": 66,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rok Storman",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 21,
-        "nationality": "Eslovenia",
-        "marketValue": 800
+        "overall": 62,
+        "value": 800,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Denny Samko",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 25,
-        "nationality": "República Checa",
-        "marketValue": 750
+        "overall": 69,
+        "value": 750,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vit Valosek",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 28,
-        "nationality": "República Checa",
-        "marketValue": 0
+        "overall": 66,
+        "value": 0,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ousmane Condé",
-        "position": "DC",
-        "rating": 57,
+        "position": "ST",
         "age": 31,
-        "nationality": "Guinea",
-        "marketValue": 300
+        "overall": 57,
+        "value": 300,
+        "salary": 7000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pavel Kacor",
-        "position": "DC",
-        "rating": 60,
+        "position": "ST",
         "age": 19,
-        "nationality": "República Checa",
-        "marketValue": 225
+        "overall": 60,
+        "value": 225,
+        "salary": 10000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Josias King Furaha",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 22,
-        "nationality": "Noruega",
-        "marketValue": 0
+        "overall": 64,
+        "value": 0,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ebrima Singhateh",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 27,
-        "nationality": "Gambia",
-        "marketValue": 850
+        "overall": 67,
+        "value": 850,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lucky Ezeh",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 26,
-        "nationality": "Nigeria",
-        "marketValue": 350
+        "overall": 66,
+        "value": 350,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kahuan",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 20,
-        "nationality": "Brasil",
-        "marketValue": 325
+        "overall": 63,
+        "value": 325,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -2173,235 +2968,322 @@
     "players": [
       {
         "name": "Klemen Mihelak",
-        "position": "POR",
-        "rating": 60,
+        "position": "GK",
         "age": 24,
-        "nationality": "Eslovenia",
-        "marketValue": 200
+        "overall": 60,
+        "value": 200,
+        "salary": 10000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jan Hanus",
-        "position": "POR",
-        "rating": 62,
+        "position": "GK",
         "age": 37,
-        "nationality": "República Checa",
-        "marketValue": 100
+        "overall": 62,
+        "value": 100,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Albert Kotlin",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 33,
-        "nationality": "República Checa",
-        "marketValue": 25
+        "overall": 66,
+        "value": 25,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nemanja Tekijaski",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 28,
-        "nationality": "Serbia",
-        "marketValue": 800
+        "overall": 66,
+        "value": 800,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Renato Pantalon",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 28,
-        "nationality": "Croacia",
-        "marketValue": 500
+        "overall": 65,
+        "value": 500,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nassim Innocenti",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 23,
-        "nationality": "Burkina Faso",
-        "marketValue": 300
+        "overall": 63,
+        "value": 300,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Stepanek",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 28,
-        "nationality": "República Checa",
-        "marketValue": 225
+        "overall": 65,
+        "value": 225,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Krystof Karban",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 26,
-        "nationality": "República Checa",
-        "marketValue": 100
+        "overall": 66,
+        "value": 100,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Eduard Sobol",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 32,
-        "nationality": "Ucrania",
-        "marketValue": 700
+        "overall": 66,
+        "value": 700,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filip Novak",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 35,
-        "nationality": "República Checa",
-        "marketValue": 150
+        "overall": 61,
+        "value": 150,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Nykrin",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 21,
-        "nationality": "República Checa",
-        "marketValue": 75
+        "overall": 62,
+        "value": 75,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Martin Cedidla",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 18,
-        "nationality": "República Checa",
-        "marketValue": 1000000
+        "overall": 63,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Soucek",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 27,
-        "nationality": "República Checa",
-        "marketValue": 350
+        "overall": 66,
+        "value": 350,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Samuel Lavrincik",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 17,
-        "nationality": "Eslovaquia",
-        "marketValue": 275
+        "overall": 61,
+        "value": 275,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sebastian Nebyla",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 25,
-        "nationality": "Eslovaquia",
-        "marketValue": 1300000
+        "overall": 69,
+        "value": 1300000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Richard Sedlacek",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 26,
-        "nationality": "República Checa",
-        "marketValue": 800
+        "overall": 66,
+        "value": 800,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dominik Hollý",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 22,
-        "nationality": "Eslovaquia",
-        "marketValue": 750
+        "overall": 64,
+        "value": 750,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nelson Okeke",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 23,
-        "nationality": "Nigeria",
-        "marketValue": 450
+        "overall": 64,
+        "value": 450,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Samuel Obinaya",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 20,
-        "nationality": "Ucrania",
-        "marketValue": 100
+        "overall": 62,
+        "value": 100,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matej Polidar",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 21,
-        "nationality": "República Checa",
-        "marketValue": 600
+        "overall": 63,
+        "value": 600,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vakhtang Chanturishvili",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 32,
-        "nationality": "Georgia",
-        "marketValue": 300
+        "overall": 61,
+        "value": 300,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filip Zorvan",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 29,
-        "nationality": "República Checa",
-        "marketValue": 750
+        "overall": 66,
+        "value": 750,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jan Suchan",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 30,
-        "nationality": "República Checa",
-        "marketValue": 275
+        "overall": 65,
+        "value": 275,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Béni Makouana",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 23,
-        "nationality": "Congo",
-        "marketValue": 400
+        "overall": 64,
+        "value": 400,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matej Malensek",
-        "position": "DC",
-        "rating": 57,
+        "position": "ST",
         "age": 42,
-        "nationality": "Eslovenia",
-        "marketValue": 300
+        "overall": 57,
+        "value": 300,
+        "salary": 7000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexis Alégué",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 29,
-        "nationality": "Camerún",
-        "marketValue": 750
+        "overall": 65,
+        "value": 750,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lamin Jawo",
-        "position": "DC",
-        "rating": 59,
+        "position": "ST",
         "age": 44,
-        "nationality": "Gambia",
-        "marketValue": 400
+        "overall": 59,
+        "value": 400,
+        "salary": 9000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Puskac",
-        "position": "DC",
-        "rating": 61,
+        "position": "ST",
         "age": 24,
-        "nationality": "República Checa",
-        "marketValue": 225
+        "overall": 61,
+        "value": 225,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jan Chramosta",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 19,
-        "nationality": "República Checa",
-        "marketValue": 175
+        "overall": 64,
+        "value": 175,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -2411,259 +3293,355 @@
     "players": [
       {
         "name": "Matous Trmal",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 29,
-        "nationality": "República Checa",
-        "marketValue": 450
+        "overall": 66,
+        "value": 450,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Richard Ludha",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 33,
-        "nationality": "Eslovaquia",
-        "marketValue": 250
+        "overall": 65,
+        "value": 250,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Krystof Lichtenberg",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 31,
-        "nationality": "República Checa",
-        "marketValue": 75
+        "overall": 66,
+        "value": 75,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ludek Nemecek",
-        "position": "POR",
-        "rating": 64,
+        "position": "GK",
         "age": 27,
-        "nationality": "República Checa",
-        "marketValue": 25
+        "overall": 64,
+        "value": 25,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Denis Halinsky",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 17,
-        "nationality": "República Checa",
-        "marketValue": 1500000
+        "overall": 63,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dalibor Vecerka",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 28,
-        "nationality": "República Checa",
-        "marketValue": 650
+        "overall": 66,
+        "value": 650,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nojus Audinis",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 34,
-        "nationality": "Lituania",
-        "marketValue": 400
+        "overall": 61,
+        "value": 400,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakub Jakubko",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 21,
-        "nationality": "Eslovaquia",
-        "marketValue": 250
+        "overall": 61,
+        "value": 250,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Danihel",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 26,
-        "nationality": "Eslovaquia",
-        "marketValue": 250
+        "overall": 65,
+        "value": 250,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Oliver Klimpl",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 21,
-        "nationality": "Eslovaquia",
-        "marketValue": 125
+        "overall": 62,
+        "value": 125,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Emmanuel Fully",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 18,
-        "nationality": "Liberia",
-        "marketValue": 500
+        "overall": 62,
+        "value": 500,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jaroslav Harustak",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 15,
-        "nationality": "República Checa",
-        "marketValue": 400
+        "overall": 62,
+        "value": 400,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Josef Svanda",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 24,
-        "nationality": "República Checa",
-        "marketValue": 275
+        "overall": 63,
+        "value": 275,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Petr Kodes",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 16,
-        "nationality": "República Checa",
-        "marketValue": 225
+        "overall": 62,
+        "value": 225,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Laco Takacs",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 22,
-        "nationality": "República Checa",
-        "marketValue": 125
+        "overall": 64,
+        "value": 125,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lukas Marecek",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 23,
-        "nationality": "República Checa",
-        "marketValue": 50
+        "overall": 63,
+        "value": 50,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Robert Jukl",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 19,
-        "nationality": "República Checa",
-        "marketValue": 300
+        "overall": 62,
+        "value": 300,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marek Beranek",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 22,
-        "nationality": "República Checa",
-        "marketValue": 75
+        "overall": 64,
+        "value": 75,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakub Emmer",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 21,
-        "nationality": "República Checa",
-        "marketValue": 25
+        "overall": 62,
+        "value": 25,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Michal Bilek",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 28,
-        "nationality": "República Checa",
-        "marketValue": 375
+        "overall": 68,
+        "value": 375,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matej Radosta",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 35,
-        "nationality": "República Checa",
-        "marketValue": 550
+        "overall": 61,
+        "value": 550,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matej Riznic",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 25,
-        "nationality": "Eslovaquia",
-        "marketValue": 400
+        "overall": 66,
+        "value": 400,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ladislav Krejci",
-        "position": "MC",
-        "rating": 60,
+        "position": "CM",
         "age": 33,
-        "nationality": "República Checa",
-        "marketValue": 150
+        "overall": 60,
+        "value": 150,
+        "salary": 10000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Marecek",
-        "position": "MC",
-        "rating": 60,
+        "position": "CM",
         "age": 37,
-        "nationality": "República Checa",
-        "marketValue": 300
+        "overall": 60,
+        "value": 300,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jan Fortelny",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 27,
-        "nationality": "República Checa",
-        "marketValue": 200
+        "overall": 66,
+        "value": 200,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "John Auta",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 19,
-        "nationality": "Nigeria",
-        "marketValue": 650
+        "overall": 63,
+        "value": 650,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tomas Zlatohlavek",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 25,
-        "nationality": "República Checa",
-        "marketValue": 325
+        "overall": 66,
+        "value": 325,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Benjamin Nyarko",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 27,
-        "nationality": "Ghana",
-        "marketValue": 275
+        "overall": 65,
+        "value": 275,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matej Pulkrab",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 28,
-        "nationality": "República Checa",
-        "marketValue": 225
+        "overall": 64,
+        "value": 225,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matyas Kozak",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 24,
-        "nationality": "República Checa",
-        "marketValue": 225
+        "overall": 63,
+        "value": 225,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matej Naprstek",
-        "position": "DC",
-        "rating": 61,
+        "position": "ST",
         "age": 22,
-        "nationality": "República Checa",
-        "marketValue": 225
+        "overall": 61,
+        "value": 225,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pavel Svatek",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 24,
-        "nationality": "República Checa",
-        "marketValue": 150
+        "overall": 64,
+        "value": 150,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -2673,235 +3651,322 @@
     "players": [
       {
         "name": "Vojtech Vorel",
-        "position": "POR",
-        "rating": 61,
+        "position": "GK",
         "age": 42,
-        "nationality": "República Checa",
-        "marketValue": 300
+        "overall": 61,
+        "value": 300,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jiri Floder",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 29,
-        "nationality": "República Checa",
-        "marketValue": 300
+        "overall": 66,
+        "value": 300,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stefan Jovanoski",
-        "position": "POR",
-        "rating": 61,
+        "position": "GK",
         "age": 19,
-        "nationality": "Macedonia del Norte",
-        "marketValue": 25
+        "overall": 61,
+        "value": 25,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ondrej Karafiat",
-        "position": "DFC",
-        "rating": 60,
+        "position": "CB",
         "age": 44,
-        "nationality": "República Checa",
-        "marketValue": 500
+        "overall": 60,
+        "value": 500,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Martin Kralik",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 30,
-        "nationality": "Eslovaquia",
-        "marketValue": 300
+        "overall": 66,
+        "value": 300,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jan Harustak",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 20,
-        "nationality": "República Checa",
-        "marketValue": 200
+        "overall": 62,
+        "value": 200,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Denis Donat",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 24,
-        "nationality": "República Checa",
-        "marketValue": 200
+        "overall": 63,
+        "value": 200,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matej Hybs",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 33,
-        "nationality": "República Checa",
-        "marketValue": 125
+        "overall": 61,
+        "value": 125,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jetmir Haliti",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 16,
-        "nationality": "Kosovo",
-        "marketValue": 125
+        "overall": 62,
+        "value": 125,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adam Zouhar",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 19,
-        "nationality": "República Checa",
-        "marketValue": 0
+        "overall": 62,
+        "value": 0,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matej Zachoval",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 26,
-        "nationality": "República Checa",
-        "marketValue": 200
+        "overall": 65,
+        "value": 200,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dominik Kostka",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 31,
-        "nationality": "República Checa",
-        "marketValue": 300
+        "overall": 66,
+        "value": 300,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filip Matousek",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 32,
-        "nationality": "República Checa",
-        "marketValue": 275
+        "overall": 66,
+        "value": 275,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jan Zíka",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 19,
-        "nationality": "República Checa",
-        "marketValue": 850
+        "overall": 62,
+        "value": 850,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Roman Macek",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 28,
-        "nationality": "República Checa",
-        "marketValue": 500
+        "overall": 66,
+        "value": 500,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Langhamer",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 28,
-        "nationality": "República Checa",
-        "marketValue": 500
+        "overall": 66,
+        "value": 500,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Pech",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 23,
-        "nationality": "República Checa",
-        "marketValue": 350
+        "overall": 64,
+        "value": 350,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Martin Subert",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 21,
-        "nationality": "República Checa",
-        "marketValue": 325
+        "overall": 61,
+        "value": 325,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nicolas Penner",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 15,
-        "nationality": "República Checa",
-        "marketValue": 250
+        "overall": 62,
+        "value": 250,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Kozel",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 19,
-        "nationality": "República Checa",
-        "marketValue": 200
+        "overall": 62,
+        "value": 200,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dominik Mares",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 24,
-        "nationality": "República Checa",
-        "marketValue": 150
+        "overall": 64,
+        "value": 150,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Michal Sevcik",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 22,
-        "nationality": "República Checa",
-        "marketValue": 750
+        "overall": 66,
+        "value": 750,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Solomon John",
-        "position": "DC",
-        "rating": 60,
+        "position": "ST",
         "age": 20,
-        "nationality": "Nigeria",
-        "marketValue": 500
+        "overall": 60,
+        "value": 500,
+        "salary": 10000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filip Lehky",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 23,
-        "nationality": "República Checa",
-        "marketValue": 325
+        "overall": 62,
+        "value": 325,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Josef Kolarik",
-        "position": "DC",
-        "rating": 61,
+        "position": "ST",
         "age": 19,
-        "nationality": "República Checa",
-        "marketValue": 1000000
+        "overall": 61,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vojtech Hora",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 21,
-        "nationality": "República Checa",
-        "marketValue": 150
+        "overall": 63,
+        "value": 150,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jan Buryan",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 20,
-        "nationality": "República Checa",
-        "marketValue": 300
+        "overall": 63,
+        "value": 300,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jiri Klima",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 23,
-        "nationality": "República Checa",
-        "marketValue": 225
+        "overall": 63,
+        "value": 225,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matous Krulich",
-        "position": "DC",
-        "rating": 57,
+        "position": "ST",
         "age": 37,
-        "nationality": "República Checa",
-        "marketValue": 175
+        "overall": 57,
+        "value": 175,
+        "salary": 7000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -2911,291 +3976,399 @@
     "players": [
       {
         "name": "Rihards Matrevics",
-        "position": "POR",
-        "rating": 64,
+        "position": "GK",
         "age": 26,
-        "nationality": "Letonia",
-        "marketValue": 400
+        "overall": 64,
+        "value": 400,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hugo Jan Backovsky",
-        "position": "POR",
-        "rating": 64,
+        "position": "GK",
         "age": 26,
-        "nationality": "República Checa",
-        "marketValue": 275
+        "overall": 64,
+        "value": 275,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adam Jagrik",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 31,
-        "nationality": "República Checa",
-        "marketValue": 200
+        "overall": 65,
+        "value": 200,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filip Vacha",
-        "position": "POR",
-        "rating": 61,
+        "position": "GK",
         "age": 44,
-        "nationality": "República Checa",
-        "marketValue": 0
+        "overall": 61,
+        "value": 0,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Eric Hunal",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 21,
-        "nationality": "República Checa",
-        "marketValue": 600
+        "overall": 62,
+        "value": 600,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marios Pourzitidis",
-        "position": "DFC",
-        "rating": 60,
+        "position": "CB",
         "age": 37,
-        "nationality": "Grecia",
-        "marketValue": 350
+        "overall": 60,
+        "value": 350,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jaroslav Svozil",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 23,
-        "nationality": "República Checa",
-        "marketValue": 225
+        "overall": 64,
+        "value": 225,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dominik Hasek",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 18,
-        "nationality": "República Checa",
-        "marketValue": 200
+        "overall": 61,
+        "value": 200,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mouhamed Tidjane Traore",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 22,
-        "nationality": "Costa de Marfil",
-        "marketValue": 200
+        "overall": 61,
+        "value": 200,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Kozma",
-        "position": "DFC",
-        "rating": 60,
+        "position": "CB",
         "age": 39,
-        "nationality": "República Checa",
-        "marketValue": 200
+        "overall": 60,
+        "value": 200,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Zlatan Sehovic",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 25,
-        "nationality": "Serbia",
-        "marketValue": 450
+        "overall": 64,
+        "value": 450,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bruno Unusic",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 23,
-        "nationality": "Croacia",
-        "marketValue": 225
+        "overall": 64,
+        "value": 225,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ondrej Ullman",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 25,
-        "nationality": "República Checa",
-        "marketValue": 225
+        "overall": 64,
+        "value": 225,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Samson Tijani",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 23,
-        "nationality": "Nigeria",
-        "marketValue": 450
+        "overall": 64,
+        "value": 450,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matej Zitny",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 20,
-        "nationality": "República Checa",
-        "marketValue": 400
+        "overall": 61,
+        "value": 400,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marek Hanousek",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 25,
-        "nationality": "República Checa",
-        "marketValue": 125
+        "overall": 66,
+        "value": 125,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jan Peterka",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 35,
-        "nationality": "República Checa",
-        "marketValue": 100
+        "overall": 61,
+        "value": 100,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dantaye Gilbert",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 15,
-        "nationality": "Trinidad y Tobago",
-        "marketValue": 250
+        "overall": 62,
+        "value": 250,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Diego Velasquez",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 19,
-        "nationality": "Estados Unidos",
-        "marketValue": 175
+        "overall": 61,
+        "value": 175,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Christian Bacinsky",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 21,
-        "nationality": "Eslovaquia",
-        "marketValue": 150
+        "overall": 62,
+        "value": 150,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakub Jerabek",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 24,
-        "nationality": "República Checa",
-        "marketValue": 75
+        "overall": 64,
+        "value": 75,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rajmund Mikus",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 30,
-        "nationality": "Eslovaquia",
-        "marketValue": 200
+        "overall": 66,
+        "value": 200,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marcel Cermak",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 19,
-        "nationality": "República Checa",
-        "marketValue": 450
+        "overall": 62,
+        "value": 450,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakub Kadák",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 26,
-        "nationality": "Eslovaquia",
-        "marketValue": 400
+        "overall": 66,
+        "value": 400,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pavel Gaszczyk",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 20,
-        "nationality": "República Checa",
-        "marketValue": 175
+        "overall": 61,
+        "value": 175,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Seif Ali Hindi",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 21,
-        "nationality": "Suecia",
-        "marketValue": 50
+        "overall": 62,
+        "value": 50,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Michal Cernak",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 22,
-        "nationality": "República Checa",
-        "marketValue": 300
+        "overall": 64,
+        "value": 300,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dario Kreiker",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 23,
-        "nationality": "Austria",
-        "marketValue": 225
+        "overall": 64,
+        "value": 225,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kevin-Prince Milla",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 22,
-        "nationality": "Camerún",
-        "marketValue": 500
+        "overall": 64,
+        "value": 500,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Michal Kroupa",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 19,
-        "nationality": "República Checa",
-        "marketValue": 400
+        "overall": 62,
+        "value": 400,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Namory Cissé",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 27,
-        "nationality": "Austria",
-        "marketValue": 350
+        "overall": 66,
+        "value": 350,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Chinonso Emeka",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 24,
-        "nationality": "Nigeria",
-        "marketValue": 250
+        "overall": 64,
+        "value": 250,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tomas Jedlicka",
-        "position": "DC",
-        "rating": 60,
+        "position": "ST",
         "age": 16,
-        "nationality": "República Checa",
-        "marketValue": 250
+        "overall": 60,
+        "value": 250,
+        "salary": 10000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Boubou Diallo",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 30,
-        "nationality": "Malí",
-        "marketValue": 200
+        "overall": 66,
+        "value": 200,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jacques Fokam",
-        "position": "DC",
-        "rating": 60,
+        "position": "ST",
         "age": 17,
-        "nationality": "Francia",
-        "marketValue": 175
+        "overall": 60,
+        "value": 175,
+        "salary": 10000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tomas Pekhart",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 17,
-        "nationality": "República Checa",
-        "marketValue": 100
+        "overall": 63,
+        "value": 100,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -3205,211 +4378,289 @@
     "players": [
       {
         "name": "Adam Zadrazil",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 25,
-        "nationality": "República Checa",
-        "marketValue": 2000000
+        "overall": 65,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matyas Vagner",
-        "position": "POR",
-        "rating": 60,
+        "position": "GK",
         "age": 20,
-        "nationality": "República Checa",
-        "marketValue": 125
+        "overall": 60,
+        "value": 125,
+        "salary": 10000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Patrik Vizek",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 32,
-        "nationality": "República Checa",
-        "marketValue": 50
+        "overall": 65,
+        "value": 50,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filip Cihak",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 26,
-        "nationality": "República Checa",
-        "marketValue": 500
+        "overall": 66,
+        "value": 500,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Frantisek Cech",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 25,
-        "nationality": "República Checa",
-        "marketValue": 350
+        "overall": 64,
+        "value": 350,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakub Uhrincat",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 24,
-        "nationality": "Eslovaquia",
-        "marketValue": 300
+        "overall": 63,
+        "value": 300,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tomas Petrasek",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 33,
-        "nationality": "República Checa",
-        "marketValue": 200
+        "overall": 61,
+        "value": 200,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Horak",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 26,
-        "nationality": "República Checa",
-        "marketValue": 650
+        "overall": 67,
+        "value": 650,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Ludvicek",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 24,
-        "nationality": "República Checa",
-        "marketValue": 300
+        "overall": 63,
+        "value": 300,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lucas Kubr",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 21,
-        "nationality": "República Checa",
-        "marketValue": 175
+        "overall": 61,
+        "value": 175,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Juraj Chvatal",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 30,
-        "nationality": "Eslovaquia",
-        "marketValue": 275
+        "overall": 66,
+        "value": 275,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vladimír Darida",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 16,
-        "nationality": "República Checa",
-        "marketValue": 400
+        "overall": 65,
+        "value": 400,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Samuel Dancak",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 27,
-        "nationality": "Eslovaquia",
-        "marketValue": 350
+        "overall": 66,
+        "value": 350,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakub Kucera",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 28,
-        "nationality": "República Checa",
-        "marketValue": 300
+        "overall": 68,
+        "value": 300,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vaclav Pilar",
-        "position": "MC",
-        "rating": 60,
+        "position": "CM",
         "age": 37,
-        "nationality": "República Checa",
-        "marketValue": 100
+        "overall": 60,
+        "value": 100,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adam Binar",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 23,
-        "nationality": "República Checa",
-        "marketValue": 0
+        "overall": 64,
+        "value": 0,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Trubac",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 27,
-        "nationality": "República Checa",
-        "marketValue": 400
+        "overall": 66,
+        "value": 400,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adam Vlkanova",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 31,
-        "nationality": "República Checa",
-        "marketValue": 300
+        "overall": 69,
+        "value": 300,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lukas Cmelik",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 29,
-        "nationality": "Eslovaquia",
-        "marketValue": 150
+        "overall": 66,
+        "value": 150,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marko Regza",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 18,
-        "nationality": "Letonia",
-        "marketValue": 550
+        "overall": 63,
+        "value": 550,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adam Griger",
-        "position": "DC",
-        "rating": 55,
+        "position": "ST",
         "age": 38,
-        "nationality": "Eslovaquia",
-        "marketValue": 400
+        "overall": 55,
+        "value": 400,
+        "salary": 5000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mick van Buren",
-        "position": "DC",
-        "rating": 61,
+        "position": "ST",
         "age": 33,
-        "nationality": "Países Bajos",
-        "marketValue": 250
+        "overall": 61,
+        "value": 250,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ondrej Mihalik",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 17,
-        "nationality": "República Checa",
-        "marketValue": 225
+        "overall": 62,
+        "value": 225,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filip Firbacher",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 24,
-        "nationality": "República Checa",
-        "marketValue": 175
+        "overall": 64,
+        "value": 175,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakub Hodek",
-        "position": "DC",
-        "rating": 61,
+        "position": "ST",
         "age": 24,
-        "nationality": "República Checa",
-        "marketValue": 175
+        "overall": 61,
+        "value": 175,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lukas Hruska",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 23,
-        "nationality": "República Checa",
-        "marketValue": 0
+        "overall": 64,
+        "value": 0,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -3419,219 +4670,300 @@
     "players": [
       {
         "name": "Tomas Frühwald",
-        "position": "POR",
-        "rating": 57,
+        "position": "GK",
         "age": 23,
-        "nationality": "Eslovaquia",
-        "marketValue": 300
+        "overall": 57,
+        "value": 300,
+        "salary": 7000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Michal Reichl",
-        "position": "POR",
-        "rating": 63,
+        "position": "GK",
         "age": 33,
-        "nationality": "República Checa",
-        "marketValue": 200
+        "overall": 63,
+        "value": 200,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakub Siman",
-        "position": "POR",
-        "rating": 62,
+        "position": "GK",
         "age": 31,
-        "nationality": "República Checa",
-        "marketValue": 0
+        "overall": 62,
+        "value": 0,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ondrej Kukucka",
-        "position": "DFC",
-        "rating": 57,
+        "position": "CB",
         "age": 35,
-        "nationality": "República Checa",
-        "marketValue": 400
+        "overall": 57,
+        "value": 400,
+        "salary": 7000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lukas Hulka",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 28,
-        "nationality": "República Checa",
-        "marketValue": 350
+        "overall": 63,
+        "value": 350,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Lischka",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 27,
-        "nationality": "República Checa",
-        "marketValue": 300
+        "overall": 63,
+        "value": 300,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jan Vondra",
-        "position": "DFC",
-        "rating": 59,
+        "position": "CB",
         "age": 22,
-        "nationality": "República Checa",
-        "marketValue": 200
+        "overall": 59,
+        "value": 200,
+        "salary": 9000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matej Kadlec",
-        "position": "DFC",
-        "rating": 60,
+        "position": "CB",
         "age": 23,
-        "nationality": "República Checa",
-        "marketValue": 100
+        "overall": 60,
+        "value": 100,
+        "salary": 10000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Petr Mirvald",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 32,
-        "nationality": "República Checa",
-        "marketValue": 175
+        "overall": 63,
+        "value": 175,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Peter Kareem",
-        "position": "DFC",
-        "rating": 60,
+        "position": "CB",
         "age": 25,
-        "nationality": "Nigeria",
-        "marketValue": 500
+        "overall": 60,
+        "value": 500,
+        "salary": 10000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Milan Havel",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 31,
-        "nationality": "República Checa",
-        "marketValue": 325
+        "overall": 63,
+        "value": 325,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Denis Vala",
-        "position": "DFC",
-        "rating": 59,
+        "position": "CB",
         "age": 18,
-        "nationality": "República Checa",
-        "marketValue": 75
+        "overall": 59,
+        "value": 75,
+        "salary": 9000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Benson Sakala",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 29,
-        "nationality": "Zambia",
-        "marketValue": 375
+        "overall": 63,
+        "value": 375,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gibril Sosseh",
-        "position": "MC",
-        "rating": 59,
+        "position": "CM",
         "age": 19,
-        "nationality": "Gambia",
-        "marketValue": 250
+        "overall": 59,
+        "value": 250,
+        "salary": 9000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Robert Hruby",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 31,
-        "nationality": "República Checa",
-        "marketValue": 150
+        "overall": 62,
+        "value": 150,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vojtech Smrz",
-        "position": "MC",
-        "rating": 56,
+        "position": "CM",
         "age": 42,
-        "nationality": "República Checa",
-        "marketValue": 50
+        "overall": 56,
+        "value": 50,
+        "salary": 6000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Oliver Mikuda",
-        "position": "MC",
-        "rating": 58,
+        "position": "CM",
         "age": 20,
-        "nationality": "República Checa",
-        "marketValue": 0
+        "overall": 58,
+        "value": 0,
+        "salary": 8000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dominik Plestil",
-        "position": "MC",
-        "rating": 60,
+        "position": "CM",
         "age": 24,
-        "nationality": "República Checa",
-        "marketValue": 200
+        "overall": 60,
+        "value": 200,
+        "salary": 10000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jan Kovarik",
-        "position": "MC",
-        "rating": 59,
+        "position": "CM",
         "age": 19,
-        "nationality": "República Checa",
-        "marketValue": 75
+        "overall": 59,
+        "value": 75,
+        "salary": 9000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vladimir Zeman",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 25,
-        "nationality": "República Checa",
-        "marketValue": 350
+        "overall": 64,
+        "value": 350,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jan Matousek",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 27,
-        "nationality": "República Checa",
-        "marketValue": 325
+        "overall": 65,
+        "value": 325,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ales Cermak",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 31,
-        "nationality": "República Checa",
-        "marketValue": 225
+        "overall": 64,
+        "value": 225,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Simon Cerny",
-        "position": "MC",
-        "rating": 58,
+        "position": "CM",
         "age": 19,
-        "nationality": "República Checa",
-        "marketValue": 150
+        "overall": 58,
+        "value": 150,
+        "salary": 8000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vaclav Drchal",
-        "position": "DC",
-        "rating": 58,
+        "position": "ST",
         "age": 20,
-        "nationality": "República Checa",
-        "marketValue": 350
+        "overall": 58,
+        "value": 350,
+        "salary": 8000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yusuf",
-        "position": "DC",
-        "rating": 55,
+        "position": "ST",
         "age": 32,
-        "nationality": "Baréin",
-        "marketValue": 300
+        "overall": 55,
+        "value": 300,
+        "salary": 5000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Eric Ramírez",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 27,
-        "nationality": "Venezuela",
-        "marketValue": 275
+        "overall": 63,
+        "value": 275,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Milan Ristovski",
-        "position": "DC",
-        "rating": 61,
+        "position": "ST",
         "age": 27,
-        "nationality": "Macedonia del Norte",
-        "marketValue": 250
+        "overall": 61,
+        "value": 250,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -3641,203 +4973,278 @@
     "players": [
       {
         "name": "Stanislav Dostal",
-        "position": "POR",
-        "rating": 58,
+        "position": "GK",
         "age": 17,
-        "nationality": "República Checa",
-        "marketValue": 200
+        "overall": 58,
+        "value": 200,
+        "salary": 8000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Samuel Belanik",
-        "position": "POR",
-        "rating": 57,
+        "position": "GK",
         "age": 22,
-        "nationality": "Eslovaquia",
-        "marketValue": 125
+        "overall": 57,
+        "value": 125,
+        "salary": 7000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Milan Knobloch",
-        "position": "POR",
-        "rating": 62,
+        "position": "GK",
         "age": 34,
-        "nationality": "República Checa",
-        "marketValue": 75
+        "overall": 62,
+        "value": 75,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stepan Bachurek",
-        "position": "POR",
-        "rating": 58,
+        "position": "GK",
         "age": 23,
-        "nationality": "República Checa",
-        "marketValue": 0
+        "overall": 58,
+        "value": 0,
+        "salary": 8000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakub Cernin",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 24,
-        "nationality": "República Checa",
-        "marketValue": 325
+        "overall": 61,
+        "value": 325,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakub Kolar",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 28,
-        "nationality": "República Checa",
-        "marketValue": 275
+        "overall": 63,
+        "value": 275,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Antonin Krapka",
-        "position": "DFC",
-        "rating": 57,
+        "position": "CB",
         "age": 39,
-        "nationality": "República Checa",
-        "marketValue": 200
+        "overall": 57,
+        "value": 200,
+        "salary": 7000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakub Jugas",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 25,
-        "nationality": "República Checa",
-        "marketValue": 150
+        "overall": 61,
+        "value": 150,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lukas Bartosak",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 31,
-        "nationality": "República Checa",
-        "marketValue": 100
+        "overall": 63,
+        "value": 100,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jan Kalabiska",
-        "position": "DFC",
-        "rating": 57,
+        "position": "CB",
         "age": 39,
-        "nationality": "República Checa",
-        "marketValue": 50
+        "overall": 57,
+        "value": 50,
+        "salary": 7000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Michal Fukala",
-        "position": "DFC",
-        "rating": 60,
+        "position": "CB",
         "age": 22,
-        "nationality": "República Checa",
-        "marketValue": 375
+        "overall": 60,
+        "value": 375,
+        "salary": 10000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Milos Kopecny",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 23,
-        "nationality": "República Checa",
-        "marketValue": 200
+        "overall": 61,
+        "value": 200,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cletus Nombil",
-        "position": "MC",
-        "rating": 59,
+        "position": "CM",
         "age": 19,
-        "nationality": "Ghana",
-        "marketValue": 450
+        "overall": 59,
+        "value": 450,
+        "salary": 9000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Joss Didiba",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 28,
-        "nationality": "Camerún",
-        "marketValue": 350
+        "overall": 63,
+        "value": 350,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stanislav Petruța",
-        "position": "MC",
-        "rating": 59,
+        "position": "CM",
         "age": 16,
-        "nationality": "República Checa",
-        "marketValue": 350
+        "overall": 59,
+        "value": 350,
+        "salary": 9000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kristers Penkevics",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 23,
-        "nationality": "Letonia",
-        "marketValue": 225
+        "overall": 61,
+        "value": 225,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Machalik",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 29,
-        "nationality": "República Checa",
-        "marketValue": 175
+        "overall": 62,
+        "value": 175,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marian Pisoja",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 25,
-        "nationality": "Eslovaquia",
-        "marketValue": 300
+        "overall": 63,
+        "value": 300,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Michal Cupak",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 26,
-        "nationality": "República Checa",
-        "marketValue": 350
+        "overall": 65,
+        "value": 350,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tomas Hellebrand",
-        "position": "MC",
-        "rating": 58,
+        "position": "CM",
         "age": 18,
-        "nationality": "República Checa",
-        "marketValue": 300
+        "overall": 58,
+        "value": 300,
+        "salary": 8000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tom Ulbrich",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 27,
-        "nationality": "República Checa",
-        "marketValue": 250
+        "overall": 62,
+        "value": 250,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stanley Kanu",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 27,
-        "nationality": "Nigeria",
-        "marketValue": 500
+        "overall": 63,
+        "value": 500,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matej Koubek",
-        "position": "DC",
-        "rating": 57,
+        "position": "ST",
         "age": 15,
-        "nationality": "República Checa",
-        "marketValue": 225
+        "overall": 57,
+        "value": 225,
+        "salary": 7000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lukas Branecky",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 30,
-        "nationality": "República Checa",
-        "marketValue": 175
+        "overall": 62,
+        "value": 175,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tomas Poznar",
-        "position": "DC",
-        "rating": 52,
+        "position": "ST",
         "age": 37,
-        "nationality": "República Checa",
-        "marketValue": 25
+        "overall": 52,
+        "value": 25,
+        "salary": 2000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -3847,211 +5254,289 @@
     "players": [
       {
         "name": "Milan Heca",
-        "position": "POR",
-        "rating": 63,
+        "position": "GK",
         "age": 29,
-        "nationality": "República Checa",
-        "marketValue": 125
+        "overall": 63,
+        "value": 125,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tomas Frystak",
-        "position": "POR",
-        "rating": 62,
+        "position": "GK",
         "age": 30,
-        "nationality": "República Checa",
-        "marketValue": 10
+        "overall": 62,
+        "value": 10,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Andrej Stojcevski",
-        "position": "DFC",
-        "rating": 59,
+        "position": "CB",
         "age": 22,
-        "nationality": "Macedonia del Norte",
-        "marketValue": 500
+        "overall": 59,
+        "value": 500,
+        "salary": 9000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filip Vasko",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 26,
-        "nationality": "Eslovaquia",
-        "marketValue": 400
+        "overall": 63,
+        "value": 400,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Milan Rundic",
-        "position": "DFC",
-        "rating": 58,
+        "position": "CB",
         "age": 33,
-        "nationality": "Serbia",
-        "marketValue": 125
+        "overall": 58,
+        "value": 125,
+        "salary": 8000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jonathan Mulder",
-        "position": "DFC",
-        "rating": 59,
+        "position": "CB",
         "age": 18,
-        "nationality": "Israel",
-        "marketValue": 275
+        "overall": 59,
+        "value": 275,
+        "salary": 9000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gigli Ndefe",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 31,
-        "nationality": "Angola",
-        "marketValue": 225
+        "overall": 63,
+        "value": 225,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Martin Koscelník",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 30,
-        "nationality": "Eslovaquia",
-        "marketValue": 225
+        "overall": 62,
+        "value": 225,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Petr Reinberk",
-        "position": "DFC",
-        "rating": 60,
+        "position": "CB",
         "age": 23,
-        "nationality": "República Checa",
-        "marketValue": 50
+        "overall": 60,
+        "value": 50,
+        "salary": 10000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vlastimil Danicek",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 28,
-        "nationality": "República Checa",
-        "marketValue": 100
+        "overall": 63,
+        "value": 100,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Paul Ndubuisi",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 25,
-        "nationality": "Nigeria",
-        "marketValue": 0
+        "overall": 63,
+        "value": 0,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marek Havlík",
-        "position": "MC",
-        "rating": 59,
+        "position": "CM",
         "age": 20,
-        "nationality": "República Checa",
-        "marketValue": 400
+        "overall": 59,
+        "value": 400,
+        "salary": 9000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Roman Horak",
-        "position": "MC",
-        "rating": 59,
+        "position": "CM",
         "age": 20,
-        "nationality": "República Checa",
-        "marketValue": 350
+        "overall": 59,
+        "value": 350,
+        "salary": 9000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Michal Travnik",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 31,
-        "nationality": "República Checa",
-        "marketValue": 300
+        "overall": 63,
+        "value": 300,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Martin Svidersky",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 23,
-        "nationality": "Eslovaquia",
-        "marketValue": 275
+        "overall": 61,
+        "value": 275,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Tetour",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 31,
-        "nationality": "República Checa",
-        "marketValue": 125
+        "overall": 62,
+        "value": 125,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Patrik Blahut",
-        "position": "MC",
-        "rating": 59,
+        "position": "CM",
         "age": 15,
-        "nationality": "Eslovaquia",
-        "marketValue": 300
+        "overall": 59,
+        "value": 300,
+        "salary": 9000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pavel Juroska",
-        "position": "MC",
-        "rating": 60,
+        "position": "CM",
         "age": 24,
-        "nationality": "República Checa",
-        "marketValue": 275
+        "overall": 60,
+        "value": 275,
+        "salary": 10000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Milan Petrzela",
-        "position": "MC",
-        "rating": 56,
+        "position": "CM",
         "age": 42,
-        "nationality": "República Checa",
-        "marketValue": 10
+        "overall": 56,
+        "value": 10,
+        "salary": 6000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stepan Beran",
-        "position": "MC",
-        "rating": 57,
+        "position": "CM",
         "age": 37,
-        "nationality": "República Checa",
-        "marketValue": 200
+        "overall": 57,
+        "value": 200,
+        "salary": 7000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alan Marinelli",
-        "position": "DC",
-        "rating": 60,
+        "position": "ST",
         "age": 26,
-        "nationality": "Argentina",
-        "marketValue": 275
+        "overall": 60,
+        "value": 275,
+        "salary": 10000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Barat",
-        "position": "DC",
-        "rating": 57,
+        "position": "ST",
         "age": 19,
-        "nationality": "República Checa",
-        "marketValue": 275
+        "overall": 57,
+        "value": 275,
+        "salary": 7000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adonija Ouanda",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 27,
-        "nationality": "Canadá",
-        "marketValue": 275
+        "overall": 63,
+        "value": 275,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Zan Medved",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 26,
-        "nationality": "Eslovenia",
-        "marketValue": 300
+        "overall": 63,
+        "value": 300,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Michael Krmencik",
-        "position": "DC",
-        "rating": 57,
+        "position": "ST",
         "age": 21,
-        "nationality": "República Checa",
-        "marketValue": 200
+        "overall": 57,
+        "value": 200,
+        "salary": 7000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ousman Ceesay",
-        "position": "DC",
-        "rating": 60,
+        "position": "ST",
         "age": 20,
-        "nationality": "Gambia",
-        "marketValue": 0
+        "overall": 60,
+        "value": 0,
+        "salary": 10000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   }
