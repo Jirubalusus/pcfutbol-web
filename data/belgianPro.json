@@ -10,7 +10,7 @@
         "overall": 78,
         "value": 1500000,
         "salary": 15000,
-        "contract": 1,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -43,7 +43,7 @@
         "overall": 71,
         "value": 200,
         "salary": 21000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -54,7 +54,7 @@
         "overall": 78,
         "value": 28000000,
         "salary": 84000,
-        "contract": 3,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -76,7 +76,7 @@
         "overall": 74,
         "value": 3000000,
         "salary": 15000,
-        "contract": 2,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -98,7 +98,7 @@
         "overall": 78,
         "value": 15000000,
         "salary": 45000,
-        "contract": 2,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -109,7 +109,7 @@
         "overall": 73,
         "value": 3500000,
         "salary": 15000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -120,7 +120,7 @@
         "overall": 75,
         "value": 6000000,
         "salary": 18000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -142,7 +142,7 @@
         "overall": 78,
         "value": 20000000,
         "salary": 60000,
-        "contract": 3,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -153,7 +153,7 @@
         "overall": 84,
         "value": 15000000,
         "salary": 45000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -164,7 +164,7 @@
         "overall": 75,
         "value": 1800000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -208,7 +208,7 @@
         "overall": 77,
         "value": 10000000,
         "salary": 30000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -219,7 +219,7 @@
         "overall": 79,
         "value": 6000000,
         "salary": 18000,
-        "contract": 3,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -230,7 +230,7 @@
         "overall": 75,
         "value": 1500000,
         "salary": 15000,
-        "contract": 4,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -252,7 +252,7 @@
         "overall": 78,
         "value": 15000000,
         "salary": 45000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -263,7 +263,7 @@
         "overall": 75,
         "value": 5000000,
         "salary": 15000,
-        "contract": 2,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -296,7 +296,7 @@
         "overall": 77,
         "value": 8000000,
         "salary": 24000,
-        "contract": 2,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -324,7 +324,7 @@
         "overall": 76,
         "value": 2500000,
         "salary": 15000,
-        "contract": 4,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -335,7 +335,7 @@
         "overall": 78,
         "value": 1700000,
         "salary": 15000,
-        "contract": 2,
+        "contract": 1,
         "morale": 75,
         "fitness": 100
       },
@@ -346,7 +346,7 @@
         "overall": 77,
         "value": 1000000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 1,
         "morale": 75,
         "fitness": 100
       },
@@ -379,7 +379,7 @@
         "overall": 79,
         "value": 8000000,
         "salary": 24000,
-        "contract": 4,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -412,7 +412,7 @@
         "overall": 74,
         "value": 4000000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -423,7 +423,7 @@
         "overall": 74,
         "value": 2500000,
         "salary": 15000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -434,7 +434,7 @@
         "overall": 82,
         "value": 15000000,
         "salary": 45000,
-        "contract": 4,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -445,7 +445,7 @@
         "overall": 77,
         "value": 2500000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 1,
         "morale": 75,
         "fitness": 100
       },
@@ -456,7 +456,7 @@
         "overall": 74,
         "value": 8000000,
         "salary": 24000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -478,7 +478,7 @@
         "overall": 81,
         "value": 10000000,
         "salary": 30000,
-        "contract": 3,
+        "contract": 1,
         "morale": 75,
         "fitness": 100
       },
@@ -489,7 +489,7 @@
         "overall": 74,
         "value": 1000000,
         "salary": 15000,
-        "contract": 4,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -500,7 +500,7 @@
         "overall": 80,
         "value": 28000000,
         "salary": 84000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -522,7 +522,7 @@
         "overall": 70,
         "value": 5000000,
         "salary": 15000,
-        "contract": 2,
+        "contract": 1,
         "morale": 75,
         "fitness": 100
       },
@@ -533,7 +533,7 @@
         "overall": 75,
         "value": 3000000,
         "salary": 15000,
-        "contract": 4,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -555,7 +555,7 @@
         "overall": 77,
         "value": 10000000,
         "salary": 30000,
-        "contract": 4,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -566,7 +566,7 @@
         "overall": 72,
         "value": 3500000,
         "salary": 15000,
-        "contract": 2,
+        "contract": 1,
         "morale": 75,
         "fitness": 100
       },
@@ -577,7 +577,7 @@
         "overall": 77,
         "value": 7000000,
         "salary": 21000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -588,7 +588,7 @@
         "overall": 74,
         "value": 5000000,
         "salary": 15000,
-        "contract": 4,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -599,7 +599,7 @@
         "overall": 75,
         "value": 2500000,
         "salary": 15000,
-        "contract": 1,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -638,7 +638,7 @@
         "overall": 69,
         "value": 300,
         "salary": 19000,
-        "contract": 2,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -660,7 +660,7 @@
         "overall": 70,
         "value": 100,
         "salary": 20000,
-        "contract": 2,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -671,7 +671,7 @@
         "overall": 79,
         "value": 9000000,
         "salary": 27000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -682,7 +682,7 @@
         "overall": 73,
         "value": 5000000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -693,7 +693,7 @@
         "overall": 76,
         "value": 2500000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -704,7 +704,7 @@
         "overall": 75,
         "value": 2000000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -737,7 +737,7 @@
         "overall": 75,
         "value": 3000000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 1,
         "morale": 75,
         "fitness": 100
       },
@@ -748,7 +748,7 @@
         "overall": 71,
         "value": 150,
         "salary": 21000,
-        "contract": 4,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -759,7 +759,7 @@
         "overall": 78,
         "value": 9000000,
         "salary": 27000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -803,7 +803,7 @@
         "overall": 73,
         "value": 250,
         "salary": 23000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -814,7 +814,7 @@
         "overall": 77,
         "value": 12000000,
         "salary": 36000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -836,7 +836,7 @@
         "overall": 75,
         "value": 5000000,
         "salary": 15000,
-        "contract": 4,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -847,7 +847,7 @@
         "overall": 70,
         "value": 200,
         "salary": 20000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -858,7 +858,7 @@
         "overall": 76,
         "value": 13000000,
         "salary": 39000,
-        "contract": 4,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -869,7 +869,7 @@
         "overall": 78,
         "value": 6000000,
         "salary": 18000,
-        "contract": 1,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -880,7 +880,7 @@
         "overall": 78,
         "value": 5000000,
         "salary": 15000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -913,7 +913,7 @@
         "overall": 73,
         "value": 100,
         "salary": 23000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       }
@@ -941,7 +941,7 @@
         "overall": 75,
         "value": 500,
         "salary": 25000,
-        "contract": 1,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -952,7 +952,7 @@
         "overall": 70,
         "value": 250,
         "salary": 20000,
-        "contract": 4,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -963,7 +963,7 @@
         "overall": 74,
         "value": 4500000,
         "salary": 15000,
-        "contract": 4,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -1007,7 +1007,7 @@
         "overall": 71,
         "value": 500,
         "salary": 21000,
-        "contract": 3,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -1018,7 +1018,7 @@
         "overall": 74,
         "value": 3000000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -1051,7 +1051,7 @@
         "overall": 73,
         "value": 4000000,
         "salary": 15000,
-        "contract": 4,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -1062,7 +1062,7 @@
         "overall": 72,
         "value": 2000000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -1073,7 +1073,7 @@
         "overall": 73,
         "value": 600,
         "salary": 23000,
-        "contract": 4,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -1084,7 +1084,7 @@
         "overall": 74,
         "value": 3500000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -1106,7 +1106,7 @@
         "overall": 76,
         "value": 17000000,
         "salary": 51000,
-        "contract": 4,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -1117,7 +1117,7 @@
         "overall": 72,
         "value": 4500000,
         "salary": 15000,
-        "contract": 4,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -1128,7 +1128,7 @@
         "overall": 71,
         "value": 400,
         "salary": 21000,
-        "contract": 4,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -1139,7 +1139,7 @@
         "overall": 76,
         "value": 8000000,
         "salary": 24000,
-        "contract": 2,
+        "contract": 1,
         "morale": 75,
         "fitness": 100
       },
@@ -1150,7 +1150,7 @@
         "overall": 73,
         "value": 3000000,
         "salary": 15000,
-        "contract": 2,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -1161,7 +1161,7 @@
         "overall": 75,
         "value": 2500000,
         "salary": 15000,
-        "contract": 1,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -1172,7 +1172,7 @@
         "overall": 75,
         "value": 400,
         "salary": 25000,
-        "contract": 3,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -1183,7 +1183,7 @@
         "overall": 78,
         "value": 7000000,
         "salary": 21000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -1205,7 +1205,7 @@
         "overall": 69,
         "value": 800,
         "salary": 19000,
-        "contract": 4,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -1249,7 +1249,7 @@
         "overall": 75,
         "value": 5000000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -1332,7 +1332,7 @@
         "overall": 73,
         "value": 2500000,
         "salary": 15000,
-        "contract": 2,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -1354,7 +1354,7 @@
         "overall": 71,
         "value": 400,
         "salary": 21000,
-        "contract": 2,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -1398,7 +1398,7 @@
         "overall": 71,
         "value": 9000000,
         "salary": 27000,
-        "contract": 2,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -1486,7 +1486,7 @@
         "overall": 75,
         "value": 4000000,
         "salary": 15000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -1508,7 +1508,7 @@
         "overall": 71,
         "value": 3500000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -1519,7 +1519,7 @@
         "overall": 76,
         "value": 2500000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 1,
         "morale": 75,
         "fitness": 100
       },
@@ -1569,7 +1569,7 @@
         "overall": 67,
         "value": 200,
         "salary": 17000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -1580,7 +1580,7 @@
         "overall": 68,
         "value": 100,
         "salary": 18000,
-        "contract": 3,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -1602,7 +1602,7 @@
         "overall": 70,
         "value": 2500000,
         "salary": 15000,
-        "contract": 4,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -1624,7 +1624,7 @@
         "overall": 72,
         "value": 1200000,
         "salary": 15000,
-        "contract": 4,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -1635,7 +1635,7 @@
         "overall": 68,
         "value": 800,
         "salary": 18000,
-        "contract": 4,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -1657,7 +1657,7 @@
         "overall": 74,
         "value": 2500000,
         "salary": 15000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -1668,7 +1668,7 @@
         "overall": 69,
         "value": 1200000,
         "salary": 15000,
-        "contract": 2,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -1690,7 +1690,7 @@
         "overall": 71,
         "value": 1000000,
         "salary": 15000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -1701,7 +1701,7 @@
         "overall": 70,
         "value": 1200000,
         "salary": 15000,
-        "contract": 2,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -1712,7 +1712,7 @@
         "overall": 69,
         "value": 200,
         "salary": 19000,
-        "contract": 4,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -1723,7 +1723,7 @@
         "overall": 74,
         "value": 2000000,
         "salary": 15000,
-        "contract": 2,
+        "contract": 1,
         "morale": 75,
         "fitness": 100
       },
@@ -1756,7 +1756,7 @@
         "overall": 69,
         "value": 400,
         "salary": 19000,
-        "contract": 3,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -1811,7 +1811,7 @@
         "overall": 77,
         "value": 3000000,
         "salary": 15000,
-        "contract": 1,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -1822,7 +1822,7 @@
         "overall": 72,
         "value": 2500000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -1866,7 +1866,7 @@
         "overall": 74,
         "value": 5000000,
         "salary": 15000,
-        "contract": 4,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -1894,7 +1894,7 @@
         "overall": 68,
         "value": 5000000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -1905,7 +1905,7 @@
         "overall": 65,
         "value": 200,
         "salary": 15000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -1938,7 +1938,7 @@
         "overall": 68,
         "value": 1500000,
         "salary": 15000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -1960,7 +1960,7 @@
         "overall": 72,
         "value": 1200000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 1,
         "morale": 75,
         "fitness": 100
       },
@@ -1971,7 +1971,7 @@
         "overall": 70,
         "value": 1200000,
         "salary": 15000,
-        "contract": 4,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -1982,7 +1982,7 @@
         "overall": 67,
         "value": 800,
         "salary": 17000,
-        "contract": 3,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -1993,7 +1993,7 @@
         "overall": 71,
         "value": 600,
         "salary": 21000,
-        "contract": 2,
+        "contract": 1,
         "morale": 75,
         "fitness": 100
       },
@@ -2004,7 +2004,7 @@
         "overall": 66,
         "value": 600,
         "salary": 16000,
-        "contract": 4,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -2015,7 +2015,7 @@
         "overall": 71,
         "value": 400,
         "salary": 21000,
-        "contract": 1,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -2026,7 +2026,7 @@
         "overall": 72,
         "value": 4000000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 1,
         "morale": 75,
         "fitness": 100
       },
@@ -2037,7 +2037,7 @@
         "overall": 68,
         "value": 1500000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -2048,7 +2048,7 @@
         "overall": 66,
         "value": 150,
         "salary": 16000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -2081,7 +2081,7 @@
         "overall": 67,
         "value": 100,
         "salary": 17000,
-        "contract": 4,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -2092,7 +2092,7 @@
         "overall": 67,
         "value": 2500000,
         "salary": 15000,
-        "contract": 2,
+        "contract": 1,
         "morale": 75,
         "fitness": 100
       },
@@ -2213,7 +2213,7 @@
         "overall": 67,
         "value": 500,
         "salary": 17000,
-        "contract": 4,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -2224,7 +2224,7 @@
         "overall": 71,
         "value": 400,
         "salary": 21000,
-        "contract": 2,
+        "contract": 1,
         "morale": 75,
         "fitness": 100
       },
@@ -2252,7 +2252,7 @@
         "overall": 67,
         "value": 2500000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -2263,7 +2263,7 @@
         "overall": 70,
         "value": 150,
         "salary": 20000,
-        "contract": 1,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -2274,7 +2274,7 @@
         "overall": 71,
         "value": 50,
         "salary": 21000,
-        "contract": 1,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -2307,7 +2307,7 @@
         "overall": 66,
         "value": 400,
         "salary": 16000,
-        "contract": 4,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -2329,7 +2329,7 @@
         "overall": 65,
         "value": 150,
         "salary": 15000,
-        "contract": 1,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -2340,7 +2340,7 @@
         "overall": 71,
         "value": 500,
         "salary": 21000,
-        "contract": 3,
+        "contract": 1,
         "morale": 75,
         "fitness": 100
       },
@@ -2384,7 +2384,7 @@
         "overall": 68,
         "value": 2200000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -2406,7 +2406,7 @@
         "overall": 66,
         "value": 250,
         "salary": 16000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -2439,7 +2439,7 @@
         "overall": 67,
         "value": 50,
         "salary": 17000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -2483,7 +2483,7 @@
         "overall": 68,
         "value": 150,
         "salary": 18000,
-        "contract": 4,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -2494,7 +2494,7 @@
         "overall": 70,
         "value": 2500000,
         "salary": 15000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -2516,7 +2516,7 @@
         "overall": 70,
         "value": 3000000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -2527,7 +2527,7 @@
         "overall": 69,
         "value": 1700000,
         "salary": 15000,
-        "contract": 4,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -2538,7 +2538,7 @@
         "overall": 66,
         "value": 700,
         "salary": 16000,
-        "contract": 2,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -2560,7 +2560,7 @@
         "overall": 71,
         "value": 200,
         "salary": 21000,
-        "contract": 2,
+        "contract": 1,
         "morale": 75,
         "fitness": 100
       }
@@ -2577,7 +2577,7 @@
         "overall": 72,
         "value": 1200000,
         "salary": 15000,
-        "contract": 2,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -2588,7 +2588,7 @@
         "overall": 72,
         "value": 1000000,
         "salary": 15000,
-        "contract": 1,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -2610,7 +2610,7 @@
         "overall": 71,
         "value": 50,
         "salary": 21000,
-        "contract": 2,
+        "contract": 1,
         "morale": 75,
         "fitness": 100
       },
@@ -2621,7 +2621,7 @@
         "overall": 67,
         "value": 3500000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -2654,7 +2654,7 @@
         "overall": 67,
         "value": 1200000,
         "salary": 15000,
-        "contract": 1,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -2665,7 +2665,7 @@
         "overall": 66,
         "value": 400,
         "salary": 16000,
-        "contract": 2,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -2676,7 +2676,7 @@
         "overall": 66,
         "value": 400,
         "salary": 16000,
-        "contract": 4,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -2687,7 +2687,7 @@
         "overall": 69,
         "value": 4000000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -2709,7 +2709,7 @@
         "overall": 70,
         "value": 3000000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -2720,7 +2720,7 @@
         "overall": 66,
         "value": 500,
         "salary": 16000,
-        "contract": 1,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -2742,7 +2742,7 @@
         "overall": 71,
         "value": 700,
         "salary": 21000,
-        "contract": 1,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -2764,7 +2764,7 @@
         "overall": 69,
         "value": 2000000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -2808,7 +2808,7 @@
         "overall": 70,
         "value": 3000000,
         "salary": 15000,
-        "contract": 4,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -2819,7 +2819,7 @@
         "overall": 71,
         "value": 400,
         "salary": 21000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -2852,7 +2852,7 @@
         "overall": 65,
         "value": 1500000,
         "salary": 15000,
-        "contract": 1,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -2874,7 +2874,7 @@
         "overall": 68,
         "value": 450,
         "salary": 18000,
-        "contract": 4,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -2902,7 +2902,7 @@
         "overall": 67,
         "value": 1500000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -2913,7 +2913,7 @@
         "overall": 70,
         "value": 800,
         "salary": 20000,
-        "contract": 1,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -2935,7 +2935,7 @@
         "overall": 66,
         "value": 50,
         "salary": 16000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -2957,7 +2957,7 @@
         "overall": 70,
         "value": 2500000,
         "salary": 15000,
-        "contract": 4,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -3001,7 +3001,7 @@
         "overall": 70,
         "value": 1500000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -3023,7 +3023,7 @@
         "overall": 72,
         "value": 2000000,
         "salary": 15000,
-        "contract": 2,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -3045,7 +3045,7 @@
         "overall": 72,
         "value": 2500000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -3078,7 +3078,7 @@
         "overall": 73,
         "value": 5000000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -3100,7 +3100,7 @@
         "overall": 74,
         "value": 2000000,
         "salary": 15000,
-        "contract": 2,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -3122,7 +3122,7 @@
         "overall": 71,
         "value": 4000000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -3133,7 +3133,7 @@
         "overall": 67,
         "value": 1500000,
         "salary": 15000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -3155,7 +3155,7 @@
         "overall": 70,
         "value": 500,
         "salary": 20000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -3177,7 +3177,7 @@
         "overall": 70,
         "value": 200,
         "salary": 20000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -3188,7 +3188,7 @@
         "overall": 69,
         "value": 1800000,
         "salary": 15000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -3227,7 +3227,7 @@
         "overall": 71,
         "value": 1000000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 1,
         "morale": 75,
         "fitness": 100
       },
@@ -3238,7 +3238,7 @@
         "overall": 66,
         "value": 50,
         "salary": 16000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -3304,7 +3304,7 @@
         "overall": 67,
         "value": 250,
         "salary": 17000,
-        "contract": 4,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -3348,7 +3348,7 @@
         "overall": 66,
         "value": 500,
         "salary": 16000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -3359,7 +3359,7 @@
         "overall": 71,
         "value": 500,
         "salary": 21000,
-        "contract": 2,
+        "contract": 1,
         "morale": 75,
         "fitness": 100
       },
@@ -3392,7 +3392,7 @@
         "overall": 70,
         "value": 300,
         "salary": 20000,
-        "contract": 2,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -3414,7 +3414,7 @@
         "overall": 69,
         "value": 800,
         "salary": 19000,
-        "contract": 4,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -3480,7 +3480,7 @@
         "overall": 70,
         "value": 2000000,
         "salary": 15000,
-        "contract": 2,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -3502,7 +3502,7 @@
         "overall": 68,
         "value": 800,
         "salary": 18000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       }
@@ -3519,7 +3519,7 @@
         "overall": 67,
         "value": 4000000,
         "salary": 15000,
-        "contract": 2,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -3541,7 +3541,7 @@
         "overall": 65,
         "value": 150,
         "salary": 15000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -3552,7 +3552,7 @@
         "overall": 70,
         "value": 1500000,
         "salary": 15000,
-        "contract": 4,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -3563,7 +3563,7 @@
         "overall": 72,
         "value": 1000000,
         "salary": 15000,
-        "contract": 2,
+        "contract": 1,
         "morale": 75,
         "fitness": 100
       },
@@ -3596,7 +3596,7 @@
         "overall": 66,
         "value": 300,
         "salary": 16000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -3640,7 +3640,7 @@
         "overall": 70,
         "value": 1500000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -3673,7 +3673,7 @@
         "overall": 71,
         "value": 3000000,
         "salary": 15000,
-        "contract": 2,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -3684,7 +3684,7 @@
         "overall": 68,
         "value": 750,
         "salary": 18000,
-        "contract": 4,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -3695,7 +3695,7 @@
         "overall": 75,
         "value": 5000000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -3772,7 +3772,7 @@
         "overall": 67,
         "value": 200,
         "salary": 17000,
-        "contract": 4,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -3794,7 +3794,7 @@
         "overall": 73,
         "value": 900,
         "salary": 23000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -3822,7 +3822,7 @@
         "overall": 67,
         "value": 4000000,
         "salary": 15000,
-        "contract": 2,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -3833,7 +3833,7 @@
         "overall": 65,
         "value": 300,
         "salary": 15000,
-        "contract": 2,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -3844,7 +3844,7 @@
         "overall": 66,
         "value": 50,
         "salary": 16000,
-        "contract": 2,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -3866,7 +3866,7 @@
         "overall": 72,
         "value": 1800000,
         "salary": 15000,
-        "contract": 1,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -3888,7 +3888,7 @@
         "overall": 66,
         "value": 400,
         "salary": 16000,
-        "contract": 1,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -3921,7 +3921,7 @@
         "overall": 72,
         "value": 1500000,
         "salary": 15000,
-        "contract": 1,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -3943,7 +3943,7 @@
         "overall": 71,
         "value": 500,
         "salary": 21000,
-        "contract": 1,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -3954,7 +3954,7 @@
         "overall": 66,
         "value": 500,
         "salary": 16000,
-        "contract": 4,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -3965,7 +3965,7 @@
         "overall": 72,
         "value": 1300000,
         "salary": 15000,
-        "contract": 1,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -3976,7 +3976,7 @@
         "overall": 71,
         "value": 3500000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -3987,7 +3987,7 @@
         "overall": 73,
         "value": 1500000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -3998,7 +3998,7 @@
         "overall": 68,
         "value": 700,
         "salary": 18000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -4009,7 +4009,7 @@
         "overall": 69,
         "value": 350,
         "salary": 19000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -4020,7 +4020,7 @@
         "overall": 72,
         "value": 1000000,
         "salary": 15000,
-        "contract": 1,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -4031,7 +4031,7 @@
         "overall": 65,
         "value": 900,
         "salary": 15000,
-        "contract": 1,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -4064,7 +4064,7 @@
         "overall": 68,
         "value": 600,
         "salary": 18000,
-        "contract": 3,
+        "contract": 1,
         "morale": 75,
         "fitness": 100
       },
@@ -4075,7 +4075,7 @@
         "overall": 67,
         "value": 1500000,
         "salary": 15000,
-        "contract": 4,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -4086,7 +4086,7 @@
         "overall": 67,
         "value": 1500000,
         "salary": 15000,
-        "contract": 4,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -4125,7 +4125,7 @@
         "overall": 66,
         "value": 800,
         "salary": 16000,
-        "contract": 1,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -4147,7 +4147,7 @@
         "overall": 67,
         "value": 150,
         "salary": 17000,
-        "contract": 2,
+        "contract": 1,
         "morale": 75,
         "fitness": 100
       },
@@ -4180,7 +4180,7 @@
         "overall": 66,
         "value": 700,
         "salary": 16000,
-        "contract": 3,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -4191,7 +4191,7 @@
         "overall": 67,
         "value": 700,
         "salary": 17000,
-        "contract": 2,
+        "contract": 1,
         "morale": 75,
         "fitness": 100
       },
@@ -4202,7 +4202,7 @@
         "overall": 68,
         "value": 600,
         "salary": 18000,
-        "contract": 1,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -4213,7 +4213,7 @@
         "overall": 64,
         "value": 500,
         "salary": 14000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -4224,7 +4224,7 @@
         "overall": 64,
         "value": 0,
         "salary": 14000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -4235,7 +4235,7 @@
         "overall": 64,
         "value": 800,
         "salary": 14000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -4279,7 +4279,7 @@
         "overall": 64,
         "value": 600,
         "salary": 14000,
-        "contract": 4,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -4301,7 +4301,7 @@
         "overall": 67,
         "value": 400,
         "salary": 17000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -4312,7 +4312,7 @@
         "overall": 68,
         "value": 50,
         "salary": 18000,
-        "contract": 1,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -4323,7 +4323,7 @@
         "overall": 65,
         "value": 1200000,
         "salary": 15000,
-        "contract": 4,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -4378,7 +4378,7 @@
         "overall": 65,
         "value": 2000000,
         "salary": 15000,
-        "contract": 4,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -4400,7 +4400,7 @@
         "overall": 66,
         "value": 400,
         "salary": 16000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -4411,7 +4411,7 @@
         "overall": 63,
         "value": 800,
         "salary": 13000,
-        "contract": 4,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -4433,7 +4433,7 @@
         "overall": 64,
         "value": 1500000,
         "salary": 15000,
-        "contract": 4,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -4466,7 +4466,7 @@
         "overall": 65,
         "value": 100,
         "salary": 15000,
-        "contract": 4,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       }
@@ -4505,7 +4505,7 @@
         "overall": 68,
         "value": 250,
         "salary": 18000,
-        "contract": 1,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -4527,7 +4527,7 @@
         "overall": 67,
         "value": 1200000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -4549,7 +4549,7 @@
         "overall": 64,
         "value": 800,
         "salary": 14000,
-        "contract": 4,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -4560,7 +4560,7 @@
         "overall": 64,
         "value": 800,
         "salary": 14000,
-        "contract": 4,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -4571,7 +4571,7 @@
         "overall": 64,
         "value": 600,
         "salary": 14000,
-        "contract": 3,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -4593,7 +4593,7 @@
         "overall": 67,
         "value": 1000000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -4615,7 +4615,7 @@
         "overall": 69,
         "value": 600,
         "salary": 19000,
-        "contract": 3,
+        "contract": 1,
         "morale": 75,
         "fitness": 100
       },
@@ -4626,7 +4626,7 @@
         "overall": 65,
         "value": 1000000,
         "salary": 15000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -4648,7 +4648,7 @@
         "overall": 63,
         "value": 300,
         "salary": 13000,
-        "contract": 4,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -4692,7 +4692,7 @@
         "overall": 63,
         "value": 750,
         "salary": 13000,
-        "contract": 4,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -4714,7 +4714,7 @@
         "overall": 67,
         "value": 600,
         "salary": 17000,
-        "contract": 4,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -4747,7 +4747,7 @@
         "overall": 69,
         "value": 1500000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -4758,7 +4758,7 @@
         "overall": 66,
         "value": 700,
         "salary": 16000,
-        "contract": 2,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -4769,7 +4769,7 @@
         "overall": 66,
         "value": 500,
         "salary": 16000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -4780,7 +4780,7 @@
         "overall": 64,
         "value": 300,
         "salary": 14000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -4819,7 +4819,7 @@
         "overall": 62,
         "value": 100,
         "salary": 12000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -4830,7 +4830,7 @@
         "overall": 63,
         "value": 100,
         "salary": 13000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -4841,7 +4841,7 @@
         "overall": 69,
         "value": 1200000,
         "salary": 15000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -4852,7 +4852,7 @@
         "overall": 67,
         "value": 1200000,
         "salary": 15000,
-        "contract": 4,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -4863,7 +4863,7 @@
         "overall": 68,
         "value": 500,
         "salary": 18000,
-        "contract": 4,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -4885,7 +4885,7 @@
         "overall": 67,
         "value": 400,
         "salary": 17000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -4907,7 +4907,7 @@
         "overall": 65,
         "value": 250,
         "salary": 15000,
-        "contract": 4,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -4940,7 +4940,7 @@
         "overall": 64,
         "value": 700,
         "salary": 14000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -4973,7 +4973,7 @@
         "overall": 67,
         "value": 500,
         "salary": 17000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -4995,7 +4995,7 @@
         "overall": 66,
         "value": 700,
         "salary": 16000,
-        "contract": 4,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -5006,7 +5006,7 @@
         "overall": 67,
         "value": 600,
         "salary": 17000,
-        "contract": 2,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -5017,7 +5017,7 @@
         "overall": 68,
         "value": 150,
         "salary": 18000,
-        "contract": 1,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
@@ -5039,7 +5039,7 @@
         "overall": 65,
         "value": 1000000,
         "salary": 15000,
-        "contract": 2,
+        "contract": 4,
         "morale": 75,
         "fitness": 100
       },
@@ -5050,7 +5050,7 @@
         "overall": 68,
         "value": 600,
         "salary": 18000,
-        "contract": 3,
+        "contract": 1,
         "morale": 75,
         "fitness": 100
       },
@@ -5061,7 +5061,7 @@
         "overall": 66,
         "value": 500,
         "salary": 16000,
-        "contract": 3,
+        "contract": 2,
         "morale": 75,
         "fitness": 100
       },
@@ -5072,7 +5072,7 @@
         "overall": 68,
         "value": 300,
         "salary": 18000,
-        "contract": 1,
+        "contract": 3,
         "morale": 75,
         "fitness": 100
       },
