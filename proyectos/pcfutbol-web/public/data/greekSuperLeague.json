@@ -1,0 +1,3534 @@
+[
+  {
+    "id": "olympiakos-piraus",
+    "name": "Olympiacos El Pireo",
+    "players": [
+      {
+        "name": "Konstantinos Tzolakis",
+        "position": "POR",
+        "rating": 77,
+        "age": 23,
+        "nationality": "Grecia",
+        "marketValue": 15000000
+      },
+      {
+        "name": "Alexandros Paschalakis",
+        "position": "POR",
+        "rating": 70,
+        "age": 36,
+        "nationality": "Grecia",
+        "marketValue": 400
+      },
+      {
+        "name": "Nikolaos Botis",
+        "position": "POR",
+        "rating": 74,
+        "age": 31,
+        "nationality": "Grecia",
+        "marketValue": 300
+      },
+      {
+        "name": "Georgios Kouraklis",
+        "position": "POR",
+        "rating": 69,
+        "age": 19,
+        "nationality": "Grecia",
+        "marketValue": 100
+      },
+      {
+        "name": "Lorenzo Pirola",
+        "position": "DFC",
+        "rating": 75,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 9000000
+      },
+      {
+        "name": "Panagiotis Retsos",
+        "position": "DFC",
+        "rating": 71,
+        "age": 45,
+        "nationality": "Grecia",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Giulian Biancone",
+        "position": "DFC",
+        "rating": 73,
+        "age": 25,
+        "nationality": "Francia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Alexios Kalogeropoulos",
+        "position": "DFC",
+        "rating": 71,
+        "age": 21,
+        "nationality": "Grecia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Gustavo Mancha",
+        "position": "DFC",
+        "rating": 69,
+        "age": 39,
+        "nationality": "Brasil",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Rúben Vezo",
+        "position": "DFC",
+        "rating": 70,
+        "age": 21,
+        "nationality": "Portugal",
+        "marketValue": 800
+      },
+      {
+        "name": "Francisco Ortega",
+        "position": "DFC",
+        "rating": 79,
+        "age": 26,
+        "nationality": "Argentina",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Bruno Onyemaechi",
+        "position": "DFC",
+        "rating": 75,
+        "age": 26,
+        "nationality": "Nigeria",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Costinha",
+        "position": "DFC",
+        "rating": 73,
+        "age": 20,
+        "nationality": "Portugal",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Rodinei",
+        "position": "DFC",
+        "rating": 74,
+        "age": 23,
+        "nationality": "Brasil",
+        "marketValue": 900
+      },
+      {
+        "name": "Santiago Hezze",
+        "position": "MC",
+        "rating": 72,
+        "age": 32,
+        "nationality": "Argentina",
+        "marketValue": 14000000
+      },
+      {
+        "name": "Theofanis Bakoulas",
+        "position": "MC",
+        "rating": 72,
+        "age": 21,
+        "nationality": "Grecia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Dani García",
+        "position": "MC",
+        "rating": 69,
+        "age": 35,
+        "nationality": "España",
+        "marketValue": 800
+      },
+      {
+        "name": "Argyrios Liatsikouras",
+        "position": "MC",
+        "rating": 71,
+        "age": 19,
+        "nationality": "Grecia",
+        "marketValue": 250
+      },
+      {
+        "name": "Christos Mouzakitis",
+        "position": "MC",
+        "rating": 76,
+        "age": 19,
+        "nationality": "Grecia",
+        "marketValue": 25000000
+      },
+      {
+        "name": "Diogo Nascimento",
+        "position": "MC",
+        "rating": 73,
+        "age": 23,
+        "nationality": "Portugal",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Lorenzo Scipioni",
+        "position": "MC",
+        "rating": 72,
+        "age": 16,
+        "nationality": "Argentina",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Chiquinho",
+        "position": "MC",
+        "rating": 77,
+        "age": 22,
+        "nationality": "Portugal",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Yusuf Yazıcı",
+        "position": "MC",
+        "rating": 79,
+        "age": 29,
+        "nationality": "Turquía",
+        "marketValue": 4500000
+      },
+      {
+        "name": "Stavros Pnevmonidis",
+        "position": "MC",
+        "rating": 71,
+        "age": 19,
+        "nationality": "Grecia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Daniel Podence",
+        "position": "DC",
+        "rating": 77,
+        "age": 30,
+        "nationality": "Portugal",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Gabriel Strefezza",
+        "position": "DC",
+        "rating": 75,
+        "age": 27,
+        "nationality": "Brasil",
+        "marketValue": 7000000
+      },
+      {
+        "name": "André Luiz",
+        "position": "DC",
+        "rating": 74,
+        "age": 23,
+        "nationality": "Brasil",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Gelson Martins",
+        "position": "DC",
+        "rating": 76,
+        "age": 30,
+        "nationality": "Portugal",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Ayoub El Kaabi",
+        "position": "DC",
+        "rating": 73,
+        "age": 32,
+        "nationality": "Marruecos",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Roman Yaremchuk",
+        "position": "DC",
+        "rating": 75,
+        "age": 30,
+        "nationality": "Ucrania",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Mehdi Taremi",
+        "position": "DC",
+        "rating": 72,
+        "age": 33,
+        "nationality": "Irán",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Konstantinos Angelakis",
+        "position": "DC",
+        "rating": 72,
+        "age": 18,
+        "nationality": "Grecia",
+        "marketValue": 200
+      }
+    ]
+  },
+  {
+    "id": "paok-thessaloniki",
+    "name": "PAOK de Salónica FC",
+    "players": [
+      {
+        "name": "Jiri Pavlenka",
+        "position": "POR",
+        "rating": 75,
+        "age": 33,
+        "nationality": "República Checa",
+        "marketValue": 800
+      },
+      {
+        "name": "Luka Gugeshashvili",
+        "position": "POR",
+        "rating": 72,
+        "age": 26,
+        "nationality": "Georgia",
+        "marketValue": 800
+      },
+      {
+        "name": "Antonis Tsiftsis",
+        "position": "POR",
+        "rating": 72,
+        "age": 26,
+        "nationality": "Grecia",
+        "marketValue": 600
+      },
+      {
+        "name": "Dimitrios Monastirlis",
+        "position": "POR",
+        "rating": 69,
+        "age": 41,
+        "nationality": "Grecia",
+        "marketValue": 250
+      },
+      {
+        "name": "Giannis Michailidis",
+        "position": "DFC",
+        "rating": 74,
+        "age": 25,
+        "nationality": "Grecia",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Alessandro Vogliacco",
+        "position": "DFC",
+        "rating": 75,
+        "age": 27,
+        "nationality": "Italia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Tomasz Kedziora",
+        "position": "DFC",
+        "rating": 72,
+        "age": 16,
+        "nationality": "Polonia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Dejan Lovren",
+        "position": "DFC",
+        "rating": 69,
+        "age": 36,
+        "nationality": "Croacia",
+        "marketValue": 500
+      },
+      {
+        "name": "Dimitrios Bataoulas",
+        "position": "DFC",
+        "rating": 70,
+        "age": 18,
+        "nationality": "Grecia",
+        "marketValue": 200
+      },
+      {
+        "name": "Greg Taylor",
+        "position": "DFC",
+        "rating": 76,
+        "age": 32,
+        "nationality": "Escocia",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Abdul Rahman Baba",
+        "position": "DFC",
+        "rating": 72,
+        "age": 21,
+        "nationality": "Ghana",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Jonjoe Kenny",
+        "position": "DFC",
+        "rating": 76,
+        "age": 28,
+        "nationality": "Inglaterra",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Joan Sastre",
+        "position": "DFC",
+        "rating": 73,
+        "age": 23,
+        "nationality": "España",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Soualiho Meïté",
+        "position": "MC",
+        "rating": 76,
+        "age": 31,
+        "nationality": "Francia",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Magomed Ozdoev",
+        "position": "MC",
+        "rating": 78,
+        "age": 27,
+        "nationality": "Rusia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Konstantinos Thymianis",
+        "position": "MC",
+        "rating": 79,
+        "age": 25,
+        "nationality": "Grecia",
+        "marketValue": 500
+      },
+      {
+        "name": "Christos Zafeiris",
+        "position": "MC",
+        "rating": 73,
+        "age": 20,
+        "nationality": "Grecia",
+        "marketValue": 11000000
+      },
+      {
+        "name": "Mady Camara",
+        "position": "MC",
+        "rating": 76,
+        "age": 28,
+        "nationality": "Guinea",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Alessandro Bianco",
+        "position": "MC",
+        "rating": 73,
+        "age": 22,
+        "nationality": "Italia",
+        "marketValue": 4500000
+      },
+      {
+        "name": "Dimitrios Tsopouroglou",
+        "position": "MC",
+        "rating": 69,
+        "age": 33,
+        "nationality": "Grecia",
+        "marketValue": 350
+      },
+      {
+        "name": "Giannis Konstantelias",
+        "position": "MC",
+        "rating": 78,
+        "age": 22,
+        "nationality": "Grecia",
+        "marketValue": 20000000
+      },
+      {
+        "name": "Luka Ivanušec",
+        "position": "MC",
+        "rating": 71,
+        "age": 18,
+        "nationality": "Croacia",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Dimitrios Pelkas",
+        "position": "MC",
+        "rating": 70,
+        "age": 32,
+        "nationality": "Grecia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Taison",
+        "position": "DC",
+        "rating": 69,
+        "age": 38,
+        "nationality": "Brasil",
+        "marketValue": 275
+      },
+      {
+        "name": "Dimitrios Berdos",
+        "position": "DC",
+        "rating": 66,
+        "age": 39,
+        "nationality": "Grecia",
+        "marketValue": 200
+      },
+      {
+        "name": "Andrija Zivkovic",
+        "position": "DC",
+        "rating": 80,
+        "age": 29,
+        "nationality": "Serbia",
+        "marketValue": 8000000
+      },
+      {
+        "name": "Kiril Despodov",
+        "position": "DC",
+        "rating": 75,
+        "age": 29,
+        "nationality": "Bulgaria",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Dimitrios Chatsidis",
+        "position": "DC",
+        "rating": 71,
+        "age": 19,
+        "nationality": "Grecia",
+        "marketValue": 250
+      },
+      {
+        "name": "Georgios Giakoumakis",
+        "position": "DC",
+        "rating": 71,
+        "age": 31,
+        "nationality": "Grecia",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Fedor Chalov",
+        "position": "DC",
+        "rating": 74,
+        "age": 27,
+        "nationality": "Rusia",
+        "marketValue": 5500000
+      },
+      {
+        "name": "Alexander Jeremejeff",
+        "position": "DC",
+        "rating": 74,
+        "age": 19,
+        "nationality": "Suecia",
+        "marketValue": 800
+      },
+      {
+        "name": "Anestis Mythou",
+        "position": "DC",
+        "rating": 71,
+        "age": 18,
+        "nationality": "Grecia",
+        "marketValue": 250
+      }
+    ]
+  },
+  {
+    "id": "panathinaikos-athen",
+    "name": "Panathinaikos FC",
+    "players": [
+      {
+        "name": "Alban Lafont",
+        "position": "POR",
+        "rating": 69,
+        "age": 40,
+        "nationality": "Costa de Marfil",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Lucas Chaves",
+        "position": "POR",
+        "rating": 74,
+        "age": 30,
+        "nationality": "Argentina",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Konstantinos Kotsaris",
+        "position": "POR",
+        "rating": 72,
+        "age": 29,
+        "nationality": "Grecia",
+        "marketValue": 450
+      },
+      {
+        "name": "Ahmed Touba",
+        "position": "DFC",
+        "rating": 76,
+        "age": 27,
+        "nationality": "Argelia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Tin Jedvaj",
+        "position": "DFC",
+        "rating": 69,
+        "age": 21,
+        "nationality": "Croacia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Sverrir Ingi Ingason",
+        "position": "DFC",
+        "rating": 69,
+        "age": 15,
+        "nationality": "Islandia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Erik Palmer-Brown",
+        "position": "DFC",
+        "rating": 74,
+        "age": 28,
+        "nationality": "Estados Unidos",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Georgios Katris",
+        "position": "DFC",
+        "rating": 69,
+        "age": 20,
+        "nationality": "Grecia",
+        "marketValue": 400
+      },
+      {
+        "name": "Georgios Kyriakopoulos",
+        "position": "DFC",
+        "rating": 74,
+        "age": 29,
+        "nationality": "Grecia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Filip Mladenovic",
+        "position": "DFC",
+        "rating": 70,
+        "age": 25,
+        "nationality": "Serbia",
+        "marketValue": 600
+      },
+      {
+        "name": "Davide Calabria",
+        "position": "DFC",
+        "rating": 74,
+        "age": 29,
+        "nationality": "Italia",
+        "marketValue": 4500000
+      },
+      {
+        "name": "Giannis Kotsiras",
+        "position": "DFC",
+        "rating": 73,
+        "age": 27,
+        "nationality": "Grecia",
+        "marketValue": 500
+      },
+      {
+        "name": "Pedro Chirivella",
+        "position": "MC",
+        "rating": 75,
+        "age": 28,
+        "nationality": "España",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Manolis Siopis",
+        "position": "MC",
+        "rating": 73,
+        "age": 31,
+        "nationality": "Grecia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Adam Gnezda Cerin",
+        "position": "MC",
+        "rating": 70,
+        "age": 16,
+        "nationality": "Eslovenia",
+        "marketValue": 4500000
+      },
+      {
+        "name": "Renato Sanches",
+        "position": "MC",
+        "rating": 73,
+        "age": 28,
+        "nationality": "Portugal",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Tonny Vilhena",
+        "position": "MC",
+        "rating": 73,
+        "age": 31,
+        "nationality": "Países Bajos",
+        "marketValue": 800
+      },
+      {
+        "name": "Sotiris Kontouris",
+        "position": "MC",
+        "rating": 69,
+        "age": 18,
+        "nationality": "Grecia",
+        "marketValue": 400
+      },
+      {
+        "name": "Anastasios Bakasetas",
+        "position": "MC",
+        "rating": 71,
+        "age": 32,
+        "nationality": "Grecia",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Vicente Taborda",
+        "position": "MC",
+        "rating": 69,
+        "age": 20,
+        "nationality": "Argentina",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Filip Djuricic",
+        "position": "MC",
+        "rating": 74,
+        "age": 31,
+        "nationality": "Serbia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Anass Zaroury",
+        "position": "DC",
+        "rating": 75,
+        "age": 25,
+        "nationality": "Marruecos",
+        "marketValue": 8000000
+      },
+      {
+        "name": "Santino Andino",
+        "position": "DC",
+        "rating": 72,
+        "age": 20,
+        "nationality": "Argentina",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Facundo Pellistri",
+        "position": "DC",
+        "rating": 75,
+        "age": 28,
+        "nationality": "Uruguay",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Daniel Mancini",
+        "position": "DC",
+        "rating": 68,
+        "age": 17,
+        "nationality": "Argentina",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Pavlos Pantelidis",
+        "position": "DC",
+        "rating": 72,
+        "age": 23,
+        "nationality": "Grecia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Georgios Kyriopoulos",
+        "position": "DC",
+        "rating": 71,
+        "age": 22,
+        "nationality": "Grecia",
+        "marketValue": 350
+      },
+      {
+        "name": "Giannis Bokos",
+        "position": "DC",
+        "rating": 63,
+        "age": 39,
+        "nationality": "Grecia",
+        "marketValue": 100
+      },
+      {
+        "name": "Karol Świderski",
+        "position": "DC",
+        "rating": 72,
+        "age": 19,
+        "nationality": "Polonia",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Cyriel Dessers",
+        "position": "DC",
+        "rating": 69,
+        "age": 33,
+        "nationality": "Nigeria",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Milos Pantovic",
+        "position": "DC",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Serbia",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Andreas Tetteh",
+        "position": "DC",
+        "rating": 72,
+        "age": 24,
+        "nationality": "Grecia",
+        "marketValue": 2000000
+      }
+    ]
+  },
+  {
+    "id": "aek-athen",
+    "name": "AEK Atenas FC",
+    "players": [
+      {
+        "name": "Thomas Strakosha",
+        "position": "POR",
+        "rating": 74,
+        "age": 30,
+        "nationality": "Albania",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Alberto Brignoli",
+        "position": "POR",
+        "rating": 70,
+        "age": 34,
+        "nationality": "Italia",
+        "marketValue": 800
+      },
+      {
+        "name": "Angelos Angelopoulos",
+        "position": "POR",
+        "rating": 65,
+        "age": 22,
+        "nationality": "Grecia",
+        "marketValue": 100
+      },
+      {
+        "name": "Marios Balamotis",
+        "position": "POR",
+        "rating": 66,
+        "age": 41,
+        "nationality": "Grecia",
+        "marketValue": 0
+      },
+      {
+        "name": "Harold Moukoudi",
+        "position": "DFC",
+        "rating": 73,
+        "age": 28,
+        "nationality": "Camerún",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Filipe Relvas",
+        "position": "DFC",
+        "rating": 66,
+        "age": 44,
+        "nationality": "Portugal",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Martin Georgiev",
+        "position": "DFC",
+        "rating": 68,
+        "age": 15,
+        "nationality": "Bulgaria",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Domagoj Vida",
+        "position": "DFC",
+        "rating": 66,
+        "age": 21,
+        "nationality": "Croacia",
+        "marketValue": 600
+      },
+      {
+        "name": "Alexander Callens",
+        "position": "DFC",
+        "rating": 67,
+        "age": 22,
+        "nationality": "Perú",
+        "marketValue": 300
+      },
+      {
+        "name": "Christos Kosidis",
+        "position": "DFC",
+        "rating": 65,
+        "age": 34,
+        "nationality": "Grecia",
+        "marketValue": 175
+      },
+      {
+        "name": "James Penrice",
+        "position": "DFC",
+        "rating": 71,
+        "age": 29,
+        "nationality": "Escocia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Stavros Pilios",
+        "position": "DFC",
+        "rating": 70,
+        "age": 25,
+        "nationality": "Grecia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Lazaros Rota",
+        "position": "DFC",
+        "rating": 75,
+        "age": 28,
+        "nationality": "Grecia",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Marko Grujić",
+        "position": "MC",
+        "rating": 71,
+        "age": 29,
+        "nationality": "Serbia",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Jens Jönsson",
+        "position": "MC",
+        "rating": 66,
+        "age": 33,
+        "nationality": "Dinamarca",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Orbelín Pineda",
+        "position": "MC",
+        "rating": 73,
+        "age": 29,
+        "nationality": "México",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Robert Ljubicic",
+        "position": "MC",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Croacia",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Răzvan Marin",
+        "position": "MC",
+        "rating": 68,
+        "age": 18,
+        "nationality": "Rumania",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Roberto Pereyra",
+        "position": "MC",
+        "rating": 64,
+        "age": 37,
+        "nationality": "Argentina",
+        "marketValue": 800
+      },
+      {
+        "name": "Niclas Eliasson",
+        "position": "MC",
+        "rating": 69,
+        "age": 19,
+        "nationality": "Suecia",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Mijat Gacinovic",
+        "position": "MC",
+        "rating": 71,
+        "age": 30,
+        "nationality": "Serbia",
+        "marketValue": 1800000
+      },
+      {
+        "name": "João Mário",
+        "position": "MC",
+        "rating": 67,
+        "age": 33,
+        "nationality": "Portugal",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Dimitrios Kaloskamis",
+        "position": "MC",
+        "rating": 68,
+        "age": 17,
+        "nationality": "Grecia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Petros Mantalos",
+        "position": "MC",
+        "rating": 69,
+        "age": 20,
+        "nationality": "Grecia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Dereck Kutesa",
+        "position": "DC",
+        "rating": 71,
+        "age": 28,
+        "nationality": "Suiza",
+        "marketValue": 4500000
+      },
+      {
+        "name": "Aboubakary Koita",
+        "position": "DC",
+        "rating": 72,
+        "age": 27,
+        "nationality": "Mauritania",
+        "marketValue": 4500000
+      },
+      {
+        "name": "Luka Jović",
+        "position": "DC",
+        "rating": 75,
+        "age": 28,
+        "nationality": "Serbia",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Frantzdy Pierrot",
+        "position": "DC",
+        "rating": 72,
+        "age": 30,
+        "nationality": "Haití",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Barnabás Varga",
+        "position": "DC",
+        "rating": 74,
+        "age": 25,
+        "nationality": "Hungría",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Zini",
+        "position": "DC",
+        "rating": 70,
+        "age": 23,
+        "nationality": "Angola",
+        "marketValue": 1500000
+      }
+    ]
+  },
+  {
+    "id": "aris-thessaloniki",
+    "name": "Aris de Salónica",
+    "players": [
+      {
+        "name": "Lovro Majkic",
+        "position": "POR",
+        "rating": 65,
+        "age": 21,
+        "nationality": "Croacia",
+        "marketValue": 600
+      },
+      {
+        "name": "Georgios Athanasiadis",
+        "position": "POR",
+        "rating": 70,
+        "age": 33,
+        "nationality": "Grecia",
+        "marketValue": 600
+      },
+      {
+        "name": "Sokratis Dioudis",
+        "position": "POR",
+        "rating": 71,
+        "age": 32,
+        "nationality": "Grecia",
+        "marketValue": 250
+      },
+      {
+        "name": "Emiliano Karaj",
+        "position": "POR",
+        "rating": 65,
+        "age": 20,
+        "nationality": "Albania",
+        "marketValue": 0
+      },
+      {
+        "name": "Pedro Álvaro",
+        "position": "DFC",
+        "rating": 70,
+        "age": 24,
+        "nationality": "Portugal",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Noah Sonko Sundberg",
+        "position": "DFC",
+        "rating": 66,
+        "age": 20,
+        "nationality": "Gambia",
+        "marketValue": 900
+      },
+      {
+        "name": "Fabiano",
+        "position": "DFC",
+        "rating": 66,
+        "age": 34,
+        "nationality": "Brasil",
+        "marketValue": 500
+      },
+      {
+        "name": "Lindsay Rose",
+        "position": "DFC",
+        "rating": 66,
+        "age": 33,
+        "nationality": "Mauricio",
+        "marketValue": 150
+      },
+      {
+        "name": "Hamza Mendyl",
+        "position": "DFC",
+        "rating": 64,
+        "age": 37,
+        "nationality": "Marruecos",
+        "marketValue": 900
+      },
+      {
+        "name": "Martin Frydek",
+        "position": "DFC",
+        "rating": 66,
+        "age": 17,
+        "nationality": "República Checa",
+        "marketValue": 250
+      },
+      {
+        "name": "Marko Kerkez",
+        "position": "DFC",
+        "rating": 69,
+        "age": 25,
+        "nationality": "Serbia",
+        "marketValue": 200
+      },
+      {
+        "name": "Noah Fadiga",
+        "position": "DFC",
+        "rating": 72,
+        "age": 27,
+        "nationality": "Senegal",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Álvaro Tejero",
+        "position": "DFC",
+        "rating": 68,
+        "age": 15,
+        "nationality": "España",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Uros Racic",
+        "position": "MC",
+        "rating": 72,
+        "age": 27,
+        "nationality": "Serbia",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Martin Hongla",
+        "position": "MC",
+        "rating": 72,
+        "age": 27,
+        "nationality": "Camerún",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Sarafianos Papasarafianos",
+        "position": "MC",
+        "rating": 71,
+        "age": 29,
+        "nationality": "Grecia",
+        "marketValue": 0
+      },
+      {
+        "name": "Monchu",
+        "position": "MC",
+        "rating": 75,
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Konstantinos Galanopoulos",
+        "position": "MC",
+        "rating": 72,
+        "age": 28,
+        "nationality": "Grecia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Michalis Voriazidis",
+        "position": "MC",
+        "rating": 69,
+        "age": 22,
+        "nationality": "Grecia",
+        "marketValue": 200
+      },
+      {
+        "name": "Fredrik Jensen",
+        "position": "MC",
+        "rating": 72,
+        "age": 28,
+        "nationality": "Finlandia",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Gabriel Misehouy",
+        "position": "MC",
+        "rating": 70,
+        "age": 26,
+        "nationality": "Países Bajos",
+        "marketValue": 900
+      },
+      {
+        "name": "Mamadou Gning",
+        "position": "MC",
+        "rating": 70,
+        "age": 25,
+        "nationality": "Senegal",
+        "marketValue": 50
+      },
+      {
+        "name": "Konstantinos Charoupas",
+        "position": "MC",
+        "rating": 65,
+        "age": 41,
+        "nationality": "Grecia",
+        "marketValue": 0
+      },
+      {
+        "name": "Othmane Boussaid",
+        "position": "DC",
+        "rating": 72,
+        "age": 25,
+        "nationality": "Bélgica",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Anastasios Donis",
+        "position": "DC",
+        "rating": 70,
+        "age": 29,
+        "nationality": "Grecia",
+        "marketValue": 600
+      },
+      {
+        "name": "Michalis Panagidis",
+        "position": "DC",
+        "rating": 68,
+        "age": 21,
+        "nationality": "Grecia",
+        "marketValue": 350
+      },
+      {
+        "name": "Carles Pérez",
+        "position": "DC",
+        "rating": 70,
+        "age": 27,
+        "nationality": "España",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Dudu",
+        "position": "DC",
+        "rating": 68,
+        "age": 28,
+        "nationality": "Brasil",
+        "marketValue": 800
+      },
+      {
+        "name": "Giannis Gianniotas",
+        "position": "DC",
+        "rating": 62,
+        "age": 32,
+        "nationality": "Grecia",
+        "marketValue": 250
+      },
+      {
+        "name": "Loren Morón",
+        "position": "DC",
+        "rating": 67,
+        "age": 32,
+        "nationality": "España",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Tino Kadewere",
+        "position": "DC",
+        "rating": 72,
+        "age": 30,
+        "nationality": "Zimbabue",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Migouel Alfarela",
+        "position": "DC",
+        "rating": 68,
+        "age": 19,
+        "nationality": "Francia",
+        "marketValue": 700
+      }
+    ]
+  },
+  {
+    "id": "panetolikos-gfs",
+    "name": "Panetolikos GFS",
+    "players": [
+      {
+        "name": "Yevgeniy Kucherenko",
+        "position": "POR",
+        "rating": 67,
+        "age": 26,
+        "nationality": "Ucrania",
+        "marketValue": 400
+      },
+      {
+        "name": "Zivko Zivkovic",
+        "position": "POR",
+        "rating": 64,
+        "age": 36,
+        "nationality": "Serbia",
+        "marketValue": 100
+      },
+      {
+        "name": "Michalis Pardalos",
+        "position": "POR",
+        "rating": 63,
+        "age": 24,
+        "nationality": "Grecia",
+        "marketValue": 75
+      },
+      {
+        "name": "Efthymios Papazois",
+        "position": "POR",
+        "rating": 64,
+        "age": 21,
+        "nationality": "Grecia",
+        "marketValue": 0
+      },
+      {
+        "name": "Christos Sielis",
+        "position": "DFC",
+        "rating": 65,
+        "age": 16,
+        "nationality": "Chipre",
+        "marketValue": 700
+      },
+      {
+        "name": "Unai García",
+        "position": "DFC",
+        "rating": 64,
+        "age": 33,
+        "nationality": "España",
+        "marketValue": 600
+      },
+      {
+        "name": "Nikola Stajic",
+        "position": "DFC",
+        "rating": 67,
+        "age": 24,
+        "nationality": "Serbia",
+        "marketValue": 450
+      },
+      {
+        "name": "Gustav Granath",
+        "position": "DFC",
+        "rating": 69,
+        "age": 28,
+        "nationality": "Suecia",
+        "marketValue": 400
+      },
+      {
+        "name": "Sebastian Mladen",
+        "position": "DFC",
+        "rating": 64,
+        "age": 34,
+        "nationality": "Rumania",
+        "marketValue": 300
+      },
+      {
+        "name": "David Galiatsos",
+        "position": "DFC",
+        "rating": 63,
+        "age": 45,
+        "nationality": "Grecia",
+        "marketValue": 250
+      },
+      {
+        "name": "Chrysovalantis Manos",
+        "position": "DFC",
+        "rating": 64,
+        "age": 20,
+        "nationality": "Grecia",
+        "marketValue": 0
+      },
+      {
+        "name": "Apostolos Apostolopoulos",
+        "position": "DFC",
+        "rating": 66,
+        "age": 23,
+        "nationality": "Grecia",
+        "marketValue": 450
+      },
+      {
+        "name": "Christian Manrique",
+        "position": "DFC",
+        "rating": 65,
+        "age": 15,
+        "nationality": "España",
+        "marketValue": 400
+      },
+      {
+        "name": "Charalampos Mavrias",
+        "position": "DFC",
+        "rating": 64,
+        "age": 35,
+        "nationality": "Grecia",
+        "marketValue": 300
+      },
+      {
+        "name": "Georgios Agapakis",
+        "position": "DFC",
+        "rating": 66,
+        "age": 23,
+        "nationality": "Grecia",
+        "marketValue": 75
+      },
+      {
+        "name": "Giannis Satsias",
+        "position": "MC",
+        "rating": 65,
+        "age": 18,
+        "nationality": "Chipre",
+        "marketValue": 500
+      },
+      {
+        "name": "Lazar Kojic",
+        "position": "MC",
+        "rating": 69,
+        "age": 28,
+        "nationality": "Serbia",
+        "marketValue": 400
+      },
+      {
+        "name": "Christos Belevonis",
+        "position": "MC",
+        "rating": 67,
+        "age": 23,
+        "nationality": "Grecia",
+        "marketValue": 350
+      },
+      {
+        "name": "Andreas Bouchalakis",
+        "position": "MC",
+        "rating": 63,
+        "age": 41,
+        "nationality": "Grecia",
+        "marketValue": 350
+      },
+      {
+        "name": "Alexandru Mățan",
+        "position": "MC",
+        "rating": 70,
+        "age": 26,
+        "nationality": "Rumania",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Adriano Bregou",
+        "position": "MC",
+        "rating": 69,
+        "age": 30,
+        "nationality": "Grecia",
+        "marketValue": 600
+      },
+      {
+        "name": "Jeyson Chura",
+        "position": "MC",
+        "rating": 64,
+        "age": 20,
+        "nationality": "Bolivia",
+        "marketValue": 500
+      },
+      {
+        "name": "Miguel Luís",
+        "position": "MC",
+        "rating": 69,
+        "age": 26,
+        "nationality": "Portugal",
+        "marketValue": 400
+      },
+      {
+        "name": "Vangelis Nikolaou",
+        "position": "MC",
+        "rating": 64,
+        "age": 21,
+        "nationality": "Grecia",
+        "marketValue": 250
+      },
+      {
+        "name": "Konrad Michalak",
+        "position": "DC",
+        "rating": 67,
+        "age": 28,
+        "nationality": "Polonia",
+        "marketValue": 600
+      },
+      {
+        "name": "Farley Rosa",
+        "position": "DC",
+        "rating": 63,
+        "age": 32,
+        "nationality": "Brasil",
+        "marketValue": 450
+      },
+      {
+        "name": "Diego Esteban",
+        "position": "DC",
+        "rating": 65,
+        "age": 22,
+        "nationality": "España",
+        "marketValue": 350
+      },
+      {
+        "name": "Lampros Smyrlis",
+        "position": "DC",
+        "rating": 63,
+        "age": 21,
+        "nationality": "Grecia",
+        "marketValue": 200
+      },
+      {
+        "name": "Vasilios Kakionis",
+        "position": "DC",
+        "rating": 66,
+        "age": 17,
+        "nationality": "Grecia",
+        "marketValue": 0
+      },
+      {
+        "name": "Christos Esketzis",
+        "position": "DC",
+        "rating": 67,
+        "age": 27,
+        "nationality": "Grecia",
+        "marketValue": 0
+      },
+      {
+        "name": "Béni Nkololo",
+        "position": "DC",
+        "rating": 70,
+        "age": 29,
+        "nationality": "Francia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Youssouph Badji",
+        "position": "DC",
+        "rating": 67,
+        "age": 24,
+        "nationality": "Senegal",
+        "marketValue": 900
+      },
+      {
+        "name": "Jorge Aguirre",
+        "position": "DC",
+        "rating": 70,
+        "age": 26,
+        "nationality": "Cuba",
+        "marketValue": 600
+      },
+      {
+        "name": "Kosta Aleksic",
+        "position": "DC",
+        "rating": 67,
+        "age": 27,
+        "nationality": "Serbia",
+        "marketValue": 450
+      },
+      {
+        "name": "Deivid Hoxha",
+        "position": "DC",
+        "rating": 63,
+        "age": 33,
+        "nationality": "Albania",
+        "marketValue": 0
+      }
+    ]
+  },
+  {
+    "id": "ofi-kreta",
+    "name": "OFI Creta",
+    "players": [
+      {
+        "name": "Nikolaos Christogeorgos",
+        "position": "POR",
+        "rating": 69,
+        "age": 31,
+        "nationality": "Grecia",
+        "marketValue": 800
+      },
+      {
+        "name": "Klidman Lilo",
+        "position": "POR",
+        "rating": 63,
+        "age": 22,
+        "nationality": "Albania",
+        "marketValue": 400
+      },
+      {
+        "name": "Panagiotis Katsikas",
+        "position": "POR",
+        "rating": 66,
+        "age": 26,
+        "nationality": "Grecia",
+        "marketValue": 200
+      },
+      {
+        "name": "Manuel Kalafatis",
+        "position": "POR",
+        "rating": 64,
+        "age": 23,
+        "nationality": "Grecia",
+        "marketValue": 0
+      },
+      {
+        "name": "Kresimir Krizmanic",
+        "position": "DFC",
+        "rating": 68,
+        "age": 25,
+        "nationality": "Croacia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Konstantinos Kostoulas",
+        "position": "DFC",
+        "rating": 64,
+        "age": 20,
+        "nationality": "Grecia",
+        "marketValue": 450
+      },
+      {
+        "name": "Achilleas Poungouras",
+        "position": "DFC",
+        "rating": 65,
+        "age": 15,
+        "nationality": "Grecia",
+        "marketValue": 350
+      },
+      {
+        "name": "Giannis Christopoulos",
+        "position": "DFC",
+        "rating": 64,
+        "age": 22,
+        "nationality": "Grecia",
+        "marketValue": 250
+      },
+      {
+        "name": "Vasilios Lampropoulos",
+        "position": "DFC",
+        "rating": 67,
+        "age": 24,
+        "nationality": "Grecia",
+        "marketValue": 175
+      },
+      {
+        "name": "Konstantinos Lagoudakis",
+        "position": "DFC",
+        "rating": 64,
+        "age": 18,
+        "nationality": "Grecia",
+        "marketValue": 0
+      },
+      {
+        "name": "Ilias Chatzitheodoridis",
+        "position": "DFC",
+        "rating": 69,
+        "age": 28,
+        "nationality": "Grecia",
+        "marketValue": 500
+      },
+      {
+        "name": "Pavlos Kenourgiakis",
+        "position": "DFC",
+        "rating": 64,
+        "age": 17,
+        "nationality": "Grecia",
+        "marketValue": 0
+      },
+      {
+        "name": "Borja González",
+        "position": "DFC",
+        "rating": 66,
+        "age": 17,
+        "nationality": "España",
+        "marketValue": 600
+      },
+      {
+        "name": "Nikolaos Marinakis",
+        "position": "DFC",
+        "rating": 69,
+        "age": 32,
+        "nationality": "Grecia",
+        "marketValue": 175
+      },
+      {
+        "name": "Zisis Karachalios",
+        "position": "MC",
+        "rating": 69,
+        "age": 30,
+        "nationality": "Grecia",
+        "marketValue": 600
+      },
+      {
+        "name": "Ilija Vukotić",
+        "position": "MC",
+        "rating": 68,
+        "age": 27,
+        "nationality": "Montenegro",
+        "marketValue": 500
+      },
+      {
+        "name": "Athanasios Androutsos",
+        "position": "MC",
+        "rating": 69,
+        "age": 28,
+        "nationality": "Grecia",
+        "marketValue": 500
+      },
+      {
+        "name": "Georgios Kanellopoulos",
+        "position": "MC",
+        "rating": 69,
+        "age": 26,
+        "nationality": "Grecia",
+        "marketValue": 400
+      },
+      {
+        "name": "Filip Bainovic",
+        "position": "MC",
+        "rating": 68,
+        "age": 25,
+        "nationality": "Serbia",
+        "marketValue": 250
+      },
+      {
+        "name": "Emmanouil Chnaris",
+        "position": "MC",
+        "rating": 65,
+        "age": 17,
+        "nationality": "Grecia",
+        "marketValue": 0
+      },
+      {
+        "name": "Giannis Apostolakis",
+        "position": "MC",
+        "rating": 64,
+        "age": 21,
+        "nationality": "Grecia",
+        "marketValue": 600
+      },
+      {
+        "name": "Juan Neira",
+        "position": "MC",
+        "rating": 62,
+        "age": 36,
+        "nationality": "Argentina",
+        "marketValue": 100
+      },
+      {
+        "name": "Athanasios Sitmalidis",
+        "position": "MC",
+        "rating": 65,
+        "age": 17,
+        "nationality": "Grecia",
+        "marketValue": 0
+      },
+      {
+        "name": "Thiago Nuss",
+        "position": "DC",
+        "rating": 68,
+        "age": 18,
+        "nationality": "Argentina",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Levan Shengelia",
+        "position": "DC",
+        "rating": 67,
+        "age": 27,
+        "nationality": "Georgia",
+        "marketValue": 700
+      },
+      {
+        "name": "Giannis Theodosoulakis",
+        "position": "DC",
+        "rating": 63,
+        "age": 21,
+        "nationality": "Grecia",
+        "marketValue": 600
+      },
+      {
+        "name": "Taxiarchis Fountas",
+        "position": "DC",
+        "rating": 68,
+        "age": 30,
+        "nationality": "Grecia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Eddie Salcedo",
+        "position": "DC",
+        "rating": 69,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Aaron Leya Iseka",
+        "position": "DC",
+        "rating": 69,
+        "age": 28,
+        "nationality": "Bélgica",
+        "marketValue": 350
+      }
+    ]
+  },
+  {
+    "id": "apo-levadiakos",
+    "name": "APO Levadiakos",
+    "players": [
+      {
+        "name": "Yuriy Lodygin",
+        "position": "POR",
+        "rating": 65,
+        "age": 35,
+        "nationality": "Rusia",
+        "marketValue": 300
+      },
+      {
+        "name": "Lucas Anacker",
+        "position": "POR",
+        "rating": 68,
+        "age": 29,
+        "nationality": "Brasil",
+        "marketValue": 300
+      },
+      {
+        "name": "Giannis Sourdis",
+        "position": "POR",
+        "rating": 63,
+        "age": 24,
+        "nationality": "Grecia",
+        "marketValue": 50
+      },
+      {
+        "name": "Stelios Vallindras",
+        "position": "POR",
+        "rating": 69,
+        "age": 33,
+        "nationality": "Grecia",
+        "marketValue": 0
+      },
+      {
+        "name": "Panagiotis Liagas",
+        "position": "DFC",
+        "rating": 67,
+        "age": 24,
+        "nationality": "Grecia",
+        "marketValue": 600
+      },
+      {
+        "name": "Hördur Magnússon",
+        "position": "DFC",
+        "rating": 69,
+        "age": 32,
+        "nationality": "Islandia",
+        "marketValue": 500
+      },
+      {
+        "name": "Taxiarchis Filon",
+        "position": "DFC",
+        "rating": 64,
+        "age": 22,
+        "nationality": "Grecia",
+        "marketValue": 350
+      },
+      {
+        "name": "Giannis Tsivelekidis",
+        "position": "DFC",
+        "rating": 62,
+        "age": 37,
+        "nationality": "Grecia",
+        "marketValue": 300
+      },
+      {
+        "name": "Joel Abu Hanna",
+        "position": "DFC",
+        "rating": 68,
+        "age": 28,
+        "nationality": "Alemania",
+        "marketValue": 250
+      },
+      {
+        "name": "Georgios Kornezos",
+        "position": "DFC",
+        "rating": 68,
+        "age": 27,
+        "nationality": "Grecia",
+        "marketValue": 175
+      },
+      {
+        "name": "Nikolaos Tsaras",
+        "position": "DFC",
+        "rating": 65,
+        "age": 19,
+        "nationality": "Grecia",
+        "marketValue": 0
+      },
+      {
+        "name": "Marios Vichos",
+        "position": "DFC",
+        "rating": 69,
+        "age": 26,
+        "nationality": "Grecia",
+        "marketValue": 900
+      },
+      {
+        "name": "Triantafyllos Tsapras",
+        "position": "DFC",
+        "rating": 70,
+        "age": 24,
+        "nationality": "Grecia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Georgios Manthatis",
+        "position": "DFC",
+        "rating": 68,
+        "age": 28,
+        "nationality": "Grecia",
+        "marketValue": 350
+      },
+      {
+        "name": "Konstantinos Verris",
+        "position": "DFC",
+        "rating": 69,
+        "age": 28,
+        "nationality": "Grecia",
+        "marketValue": 0
+      },
+      {
+        "name": "Enis Cokaj",
+        "position": "MC",
+        "rating": 67,
+        "age": 23,
+        "nationality": "Albania",
+        "marketValue": 900
+      },
+      {
+        "name": "Giannis Kosti",
+        "position": "MC",
+        "rating": 64,
+        "age": 18,
+        "nationality": "Chipre",
+        "marketValue": 600
+      },
+      {
+        "name": "Georgios Nikas",
+        "position": "MC",
+        "rating": 68,
+        "age": 26,
+        "nationality": "Grecia",
+        "marketValue": 450
+      },
+      {
+        "name": "Aaron Tshibola",
+        "position": "MC",
+        "rating": 62,
+        "age": 36,
+        "nationality": "RD del Congo",
+        "marketValue": 350
+      },
+      {
+        "name": "Lamarana Jallow",
+        "position": "MC",
+        "rating": 64,
+        "age": 19,
+        "nationality": "Gambia",
+        "marketValue": 300
+      },
+      {
+        "name": "Christos Papadopoulos",
+        "position": "MC",
+        "rating": 65,
+        "age": 21,
+        "nationality": "Grecia",
+        "marketValue": 600
+      },
+      {
+        "name": "Guillermo Balzi",
+        "position": "MC",
+        "rating": 71,
+        "age": 24,
+        "nationality": "Argentina",
+        "marketValue": 500
+      },
+      {
+        "name": "Konstantinos Goumas",
+        "position": "MC",
+        "rating": 65,
+        "age": 20,
+        "nationality": "Grecia",
+        "marketValue": 400
+      },
+      {
+        "name": "Benjamin Verbic",
+        "position": "DC",
+        "rating": 62,
+        "age": 32,
+        "nationality": "Eslovenia",
+        "marketValue": 800
+      },
+      {
+        "name": "Hisham Layous",
+        "position": "DC",
+        "rating": 68,
+        "age": 25,
+        "nationality": "Israel",
+        "marketValue": 600
+      },
+      {
+        "name": "Fabricio Pedrozo",
+        "position": "DC",
+        "rating": 66,
+        "age": 15,
+        "nationality": "Argentina",
+        "marketValue": 175
+      },
+      {
+        "name": "Panagiotis Symelidis",
+        "position": "DC",
+        "rating": 61,
+        "age": 31,
+        "nationality": "Grecia",
+        "marketValue": 150
+      },
+      {
+        "name": "Sebastián Palacios",
+        "position": "DC",
+        "rating": 65,
+        "age": 34,
+        "nationality": "Argentina",
+        "marketValue": 750
+      },
+      {
+        "name": "Alen Ozbolt",
+        "position": "DC",
+        "rating": 71,
+        "age": 29,
+        "nationality": "Eslovenia",
+        "marketValue": 600
+      },
+      {
+        "name": "Ognjen Ozegovic",
+        "position": "DC",
+        "rating": 61,
+        "age": 45,
+        "nationality": "Serbia",
+        "marketValue": 500
+      },
+      {
+        "name": "Stipe Juric",
+        "position": "DC",
+        "rating": 65,
+        "age": 21,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 250
+      }
+    ]
+  },
+  {
+    "id": "ae-kifisias",
+    "name": "AE Kifisias",
+    "players": [
+      {
+        "name": "Moisés Ramírez",
+        "position": "POR",
+        "rating": 67,
+        "age": 25,
+        "nationality": "Ecuador",
+        "marketValue": 800
+      },
+      {
+        "name": "Vasilios Xenopoulos",
+        "position": "POR",
+        "rating": 67,
+        "age": 27,
+        "nationality": "Grecia",
+        "marketValue": 300
+      },
+      {
+        "name": "Apostolos Tsilingiris",
+        "position": "POR",
+        "rating": 67,
+        "age": 25,
+        "nationality": "Grecia",
+        "marketValue": 150
+      },
+      {
+        "name": "Filippos Roberts",
+        "position": "POR",
+        "rating": 67,
+        "age": 26,
+        "nationality": "Grecia",
+        "marketValue": 0
+      },
+      {
+        "name": "Theodoros Faitakis",
+        "position": "DFC",
+        "rating": 67,
+        "age": 25,
+        "nationality": "Grecia",
+        "marketValue": 0
+      },
+      {
+        "name": "Alex Petkov",
+        "position": "DFC",
+        "rating": 68,
+        "age": 26,
+        "nationality": "Bulgaria",
+        "marketValue": 600
+      },
+      {
+        "name": "Jakub Pokorny",
+        "position": "DFC",
+        "rating": 63,
+        "age": 38,
+        "nationality": "República Checa",
+        "marketValue": 600
+      },
+      {
+        "name": "Hugo Sousa",
+        "position": "DFC",
+        "rating": 64,
+        "age": 33,
+        "nationality": "Portugal",
+        "marketValue": 175
+      },
+      {
+        "name": "Alberto Botía",
+        "position": "DFC",
+        "rating": 62,
+        "age": 37,
+        "nationality": "España",
+        "marketValue": 75
+      },
+      {
+        "name": "Vasilios Spinos",
+        "position": "DFC",
+        "rating": 69,
+        "age": 28,
+        "nationality": "Grecia",
+        "marketValue": 75
+      },
+      {
+        "name": "Yasser Larouci",
+        "position": "DFC",
+        "rating": 67,
+        "age": 25,
+        "nationality": "Argelia",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Diamantis Chouchoumis",
+        "position": "DFC",
+        "rating": 68,
+        "age": 31,
+        "nationality": "Grecia",
+        "marketValue": 350
+      },
+      {
+        "name": "Luciano Maidana",
+        "position": "DFC",
+        "rating": 66,
+        "age": 24,
+        "nationality": "Argentina",
+        "marketValue": 50
+      },
+      {
+        "name": "Cheick Oumar Konaté",
+        "position": "DFC",
+        "rating": 66,
+        "age": 15,
+        "nationality": "Malí",
+        "marketValue": 1500000
+      },
+      {
+        "name": "David Simón",
+        "position": "DFC",
+        "rating": 63,
+        "age": 37,
+        "nationality": "España",
+        "marketValue": 50
+      },
+      {
+        "name": "Konstantinos Lampsias",
+        "position": "DFC",
+        "rating": 67,
+        "age": 23,
+        "nationality": "Grecia",
+        "marketValue": 50
+      },
+      {
+        "name": "Timipere Johnson Eboh",
+        "position": "MC",
+        "rating": 67,
+        "age": 23,
+        "nationality": "Nigeria",
+        "marketValue": 500
+      },
+      {
+        "name": "Rubén Pérez",
+        "position": "MC",
+        "rating": 65,
+        "age": 21,
+        "nationality": "España",
+        "marketValue": 175
+      },
+      {
+        "name": "Georgios Konstantakopoulos",
+        "position": "MC",
+        "rating": 65,
+        "age": 21,
+        "nationality": "Grecia",
+        "marketValue": 175
+      },
+      {
+        "name": "Konstantinos Roukounakis",
+        "position": "MC",
+        "rating": 65,
+        "age": 17,
+        "nationality": "Grecia",
+        "marketValue": 150
+      },
+      {
+        "name": "Alexandros Pothas",
+        "position": "MC",
+        "rating": 65,
+        "age": 16,
+        "nationality": "Grecia",
+        "marketValue": 0
+      },
+      {
+        "name": "Lazare Amani",
+        "position": "MC",
+        "rating": 69,
+        "age": 27,
+        "nationality": "Costa de Marfil",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Jorge Pombo",
+        "position": "MC",
+        "rating": 69,
+        "age": 31,
+        "nationality": "España",
+        "marketValue": 275
+      },
+      {
+        "name": "Lucas Villafañez",
+        "position": "MC",
+        "rating": 64,
+        "age": 19,
+        "nationality": "Argentina",
+        "marketValue": 225
+      },
+      {
+        "name": "Christos Ligdas",
+        "position": "MC",
+        "rating": 65,
+        "age": 18,
+        "nationality": "Grecia",
+        "marketValue": 0
+      },
+      {
+        "name": "Jeremy Antonisse",
+        "position": "DC",
+        "rating": 65,
+        "age": 23,
+        "nationality": "Curazao",
+        "marketValue": 800
+      },
+      {
+        "name": "Miguel Tavares",
+        "position": "DC",
+        "rating": 69,
+        "age": 27,
+        "nationality": "Portugal",
+        "marketValue": 200
+      },
+      {
+        "name": "Gerson Sousa",
+        "position": "DC",
+        "rating": 64,
+        "age": 23,
+        "nationality": "Portugal",
+        "marketValue": 800
+      },
+      {
+        "name": "Ché Nunnely",
+        "position": "DC",
+        "rating": 69,
+        "age": 26,
+        "nationality": "Surinam",
+        "marketValue": 500
+      },
+      {
+        "name": "Michalis Patiras",
+        "position": "DC",
+        "rating": 68,
+        "age": 30,
+        "nationality": "Grecia",
+        "marketValue": 50
+      },
+      {
+        "name": "Patrik Mijic",
+        "position": "DC",
+        "rating": 69,
+        "age": 27,
+        "nationality": "Croacia",
+        "marketValue": 500
+      },
+      {
+        "name": "Dimitrios Theodoridis",
+        "position": "DC",
+        "rating": 67,
+        "age": 23,
+        "nationality": "Grecia",
+        "marketValue": 200
+      },
+      {
+        "name": "Sebastian Musiolik",
+        "position": "DC",
+        "rating": 66,
+        "age": 29,
+        "nationality": "Polonia",
+        "marketValue": 200
+      },
+      {
+        "name": "Apostolos Christopoulos",
+        "position": "DC",
+        "rating": 67,
+        "age": 23,
+        "nationality": "Grecia",
+        "marketValue": 200
+      }
+    ]
+  },
+  {
+    "id": "atromitos-athen",
+    "name": "Atromitos FC",
+    "players": [
+      {
+        "name": "Lefteris Choutesiotis",
+        "position": "POR",
+        "rating": 69,
+        "age": 31,
+        "nationality": "Grecia",
+        "marketValue": 400
+      },
+      {
+        "name": "Alexei Koselev",
+        "position": "POR",
+        "rating": 68,
+        "age": 32,
+        "nationality": "Moldavia",
+        "marketValue": 300
+      },
+      {
+        "name": "Vasilios Athanasiou",
+        "position": "POR",
+        "rating": 68,
+        "age": 30,
+        "nationality": "Grecia",
+        "marketValue": 200
+      },
+      {
+        "name": "Gerasimos Mitoglou",
+        "position": "DFC",
+        "rating": 67,
+        "age": 24,
+        "nationality": "Grecia",
+        "marketValue": 700
+      },
+      {
+        "name": "Dimitrios Stavropoulos",
+        "position": "DFC",
+        "rating": 69,
+        "age": 28,
+        "nationality": "Grecia",
+        "marketValue": 400
+      },
+      {
+        "name": "Dimitrios Tsakmakis",
+        "position": "DFC",
+        "rating": 63,
+        "age": 44,
+        "nationality": "Grecia",
+        "marketValue": 300
+      },
+      {
+        "name": "Mansur",
+        "position": "DFC",
+        "rating": 69,
+        "age": 32,
+        "nationality": "Brasil",
+        "marketValue": 300
+      },
+      {
+        "name": "Jere Uronen",
+        "position": "DFC",
+        "rating": 65,
+        "age": 21,
+        "nationality": "Finlandia",
+        "marketValue": 700
+      },
+      {
+        "name": "Georgios Papadopoulos",
+        "position": "DFC",
+        "rating": 64,
+        "age": 16,
+        "nationality": "Grecia",
+        "marketValue": 250
+      },
+      {
+        "name": "Quini",
+        "position": "DFC",
+        "rating": 65,
+        "age": 17,
+        "nationality": "España",
+        "marketValue": 175
+      },
+      {
+        "name": "Mattheos Mountes",
+        "position": "MC",
+        "rating": 67,
+        "age": 22,
+        "nationality": "Grecia",
+        "marketValue": 350
+      },
+      {
+        "name": "Samuel Moutoussamy",
+        "position": "MC",
+        "rating": 70,
+        "age": 29,
+        "nationality": "RD del Congo",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Theocharis Tsingaras",
+        "position": "MC",
+        "rating": 69,
+        "age": 25,
+        "nationality": "Grecia",
+        "marketValue": 900
+      },
+      {
+        "name": "Peter Michorl",
+        "position": "MC",
+        "rating": 70,
+        "age": 30,
+        "nationality": "Austria",
+        "marketValue": 500
+      },
+      {
+        "name": "Athanasios Karamanis",
+        "position": "MC",
+        "rating": 66,
+        "age": 22,
+        "nationality": "Grecia",
+        "marketValue": 300
+      },
+      {
+        "name": "Elton Hoxha",
+        "position": "MC",
+        "rating": 65,
+        "age": 19,
+        "nationality": "Albania",
+        "marketValue": 0
+      },
+      {
+        "name": "Leonardos Kopanidis",
+        "position": "MC",
+        "rating": 65,
+        "age": 18,
+        "nationality": "Grecia",
+        "marketValue": 0
+      },
+      {
+        "name": "Brayan Palmezano",
+        "position": "MC",
+        "rating": 68,
+        "age": 25,
+        "nationality": "Venezuela",
+        "marketValue": 800
+      },
+      {
+        "name": "Steven Zuber",
+        "position": "MC",
+        "rating": 64,
+        "age": 34,
+        "nationality": "Suiza",
+        "marketValue": 800
+      },
+      {
+        "name": "Spyros Ampartzidis",
+        "position": "MC",
+        "rating": 64,
+        "age": 20,
+        "nationality": "Grecia",
+        "marketValue": 50
+      },
+      {
+        "name": "Georgios Tzovaras",
+        "position": "DC",
+        "rating": 66,
+        "age": 26,
+        "nationality": "Grecia",
+        "marketValue": 250
+      },
+      {
+        "name": "Konstantinos Batos",
+        "position": "DC",
+        "rating": 60,
+        "age": 33,
+        "nationality": "Grecia",
+        "marketValue": 0
+      },
+      {
+        "name": "Makana Baku",
+        "position": "DC",
+        "rating": 65,
+        "age": 32,
+        "nationality": "Alemania",
+        "marketValue": 600
+      },
+      {
+        "name": "Sotiris Tsiloulis",
+        "position": "DC",
+        "rating": 67,
+        "age": 23,
+        "nationality": "Grecia",
+        "marketValue": 300
+      },
+      {
+        "name": "Denzel Jubitana",
+        "position": "DC",
+        "rating": 67,
+        "age": 26,
+        "nationality": "Surinam",
+        "marketValue": 600
+      },
+      {
+        "name": "Panagiotis Tsantilas",
+        "position": "DC",
+        "rating": 66,
+        "age": 19,
+        "nationality": "Grecia",
+        "marketValue": 250
+      },
+      {
+        "name": "Tom van Weert",
+        "position": "DC",
+        "rating": 58,
+        "age": 35,
+        "nationality": "Países Bajos",
+        "marketValue": 175
+      },
+      {
+        "name": "Vangelis Paliouras",
+        "position": "DC",
+        "rating": 69,
+        "age": 29,
+        "nationality": "Grecia",
+        "marketValue": 0
+      }
+    ]
+  },
+  {
+    "id": "asteras-tripolis",
+    "name": "Asteras Aktor",
+    "players": [
+      {
+        "name": "Panagiotis Tsintotas",
+        "position": "POR",
+        "rating": 63,
+        "age": 16,
+        "nationality": "Grecia",
+        "marketValue": 250
+      },
+      {
+        "name": "Nikolaos Papadopoulos",
+        "position": "POR",
+        "rating": 65,
+        "age": 35,
+        "nationality": "Grecia",
+        "marketValue": 150
+      },
+      {
+        "name": "Spyros Angelidis",
+        "position": "POR",
+        "rating": 63,
+        "age": 21,
+        "nationality": "Grecia",
+        "marketValue": 150
+      },
+      {
+        "name": "Theofilos Kakadiaris",
+        "position": "POR",
+        "rating": 64,
+        "age": 19,
+        "nationality": "Grecia",
+        "marketValue": 125
+      },
+      {
+        "name": "Robert Ivanov",
+        "position": "DFC",
+        "rating": 69,
+        "age": 31,
+        "nationality": "Finlandia",
+        "marketValue": 600
+      },
+      {
+        "name": "Pepe Castaño",
+        "position": "DFC",
+        "rating": 64,
+        "age": 19,
+        "nationality": "España",
+        "marketValue": 600
+      },
+      {
+        "name": "Nikola Sipcic",
+        "position": "DFC",
+        "rating": 69,
+        "age": 30,
+        "nationality": "Montenegro",
+        "marketValue": 400
+      },
+      {
+        "name": "Konstantinos Triantafyllopoulos",
+        "position": "DFC",
+        "rating": 69,
+        "age": 32,
+        "nationality": "Grecia",
+        "marketValue": 200
+      },
+      {
+        "name": "Issiaga Sylla",
+        "position": "DFC",
+        "rating": 69,
+        "age": 32,
+        "nationality": "Guinea",
+        "marketValue": 900
+      },
+      {
+        "name": "Konstantinos Pomonis",
+        "position": "DFC",
+        "rating": 69,
+        "age": 29,
+        "nationality": "Grecia",
+        "marketValue": 100
+      },
+      {
+        "name": "Panagiotis Deligiannidis",
+        "position": "DFC",
+        "rating": 68,
+        "age": 29,
+        "nationality": "Grecia",
+        "marketValue": 450
+      },
+      {
+        "name": "Nikolai Alho",
+        "position": "DFC",
+        "rating": 65,
+        "age": 17,
+        "nationality": "Finlandia",
+        "marketValue": 300
+      },
+      {
+        "name": "Eder González",
+        "position": "MC",
+        "rating": 68,
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 800
+      },
+      {
+        "name": "Evgeniy Yablonskiy",
+        "position": "MC",
+        "rating": 69,
+        "age": 30,
+        "nationality": "Bielorrusia",
+        "marketValue": 500
+      },
+      {
+        "name": "Julián Chicco",
+        "position": "MC",
+        "rating": 69,
+        "age": 28,
+        "nationality": "Argentina",
+        "marketValue": 500
+      },
+      {
+        "name": "Oluwatobiloba Alagbe",
+        "position": "MC",
+        "rating": 68,
+        "age": 25,
+        "nationality": "Nigeria",
+        "marketValue": 500
+      },
+      {
+        "name": "Theofanis Tzandaris",
+        "position": "MC",
+        "rating": 63,
+        "age": 32,
+        "nationality": "Grecia",
+        "marketValue": 200
+      },
+      {
+        "name": "Mumo Muñoz",
+        "position": "MC",
+        "rating": 67,
+        "age": 22,
+        "nationality": "España",
+        "marketValue": 600
+      },
+      {
+        "name": "Julián Bartolo",
+        "position": "DC",
+        "rating": 67,
+        "age": 29,
+        "nationality": "Argentina",
+        "marketValue": 800
+      },
+      {
+        "name": "Dimitris Emmanouilidis",
+        "position": "DC",
+        "rating": 69,
+        "age": 25,
+        "nationality": "Grecia",
+        "marketValue": 500
+      },
+      {
+        "name": "Júnior Mendieta",
+        "position": "DC",
+        "rating": 60,
+        "age": 32,
+        "nationality": "Argentina",
+        "marketValue": 450
+      },
+      {
+        "name": "Kalvin Ketu",
+        "position": "DC",
+        "rating": 59,
+        "age": 40,
+        "nationality": "Camerún",
+        "marketValue": 300
+      },
+      {
+        "name": "Nikolaos Kaltsas",
+        "position": "DC",
+        "rating": 64,
+        "age": 20,
+        "nationality": "Grecia",
+        "marketValue": 175
+      },
+      {
+        "name": "Nicholas Gioacchini",
+        "position": "DC",
+        "rating": 68,
+        "age": 25,
+        "nationality": "Estados Unidos",
+        "marketValue": 800
+      },
+      {
+        "name": "Georgios Charalampoglou",
+        "position": "DC",
+        "rating": 66,
+        "age": 21,
+        "nationality": "Grecia",
+        "marketValue": 250
+      },
+      {
+        "name": "Federico Macheda",
+        "position": "DC",
+        "rating": 61,
+        "age": 41,
+        "nationality": "Italia",
+        "marketValue": 175
+      }
+    ]
+  },
+  {
+    "id": "ae-larisa",
+    "name": "AE Larisa",
+    "players": [
+      {
+        "name": "Nikolaos Melissas",
+        "position": "POR",
+        "rating": 66,
+        "age": 32,
+        "nationality": "Grecia",
+        "marketValue": 225
+      },
+      {
+        "name": "Alexandros Anagnostopoulos",
+        "position": "POR",
+        "rating": 65,
+        "age": 31,
+        "nationality": "Grecia",
+        "marketValue": 225
+      },
+      {
+        "name": "Theodoros Venetikidis",
+        "position": "POR",
+        "rating": 61,
+        "age": 21,
+        "nationality": "Grecia",
+        "marketValue": 75
+      },
+      {
+        "name": "Dylan Batubinsika",
+        "position": "DFC",
+        "rating": 66,
+        "age": 29,
+        "nationality": "RD del Congo",
+        "marketValue": 700
+      },
+      {
+        "name": "Erick Ferigra",
+        "position": "DFC",
+        "rating": 66,
+        "age": 26,
+        "nationality": "Ecuador",
+        "marketValue": 450
+      },
+      {
+        "name": "Epaminondas Pantelakis",
+        "position": "DFC",
+        "rating": 66,
+        "age": 30,
+        "nationality": "Grecia",
+        "marketValue": 400
+      },
+      {
+        "name": "Theocharis Iliadis",
+        "position": "DFC",
+        "rating": 65,
+        "age": 29,
+        "nationality": "Grecia",
+        "marketValue": 350
+      },
+      {
+        "name": "Ahmed Ouattara Kossonou",
+        "position": "DFC",
+        "rating": 62,
+        "age": 22,
+        "nationality": "Costa de Marfil",
+        "marketValue": 350
+      },
+      {
+        "name": "Konstantinos Grozos",
+        "position": "DFC",
+        "rating": 61,
+        "age": 18,
+        "nationality": "Grecia",
+        "marketValue": 50
+      },
+      {
+        "name": "Yvann Maçon",
+        "position": "DFC",
+        "rating": 67,
+        "age": 27,
+        "nationality": "Guadalupe",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Konstantinos Apostolakis",
+        "position": "DFC",
+        "rating": 65,
+        "age": 26,
+        "nationality": "Grecia",
+        "marketValue": 125
+      },
+      {
+        "name": "Athanasios Papageorgiou",
+        "position": "DFC",
+        "rating": 61,
+        "age": 22,
+        "nationality": "Grecia",
+        "marketValue": 25
+      },
+      {
+        "name": "Jani Atanasov",
+        "position": "MC",
+        "rating": 66,
+        "age": 31,
+        "nationality": "Macedonia del Norte",
+        "marketValue": 550
+      },
+      {
+        "name": "Paschalis Staikos",
+        "position": "MC",
+        "rating": 65,
+        "age": 26,
+        "nationality": "Grecia",
+        "marketValue": 400
+      },
+      {
+        "name": "Goni Naor",
+        "position": "MC",
+        "rating": 66,
+        "age": 26,
+        "nationality": "Lituania",
+        "marketValue": 325
+      },
+      {
+        "name": "Facundo Pérez",
+        "position": "MC",
+        "rating": 66,
+        "age": 26,
+        "nationality": "Argentina",
+        "marketValue": 600
+      },
+      {
+        "name": "Vasilios Sourlis",
+        "position": "MC",
+        "rating": 63,
+        "age": 23,
+        "nationality": "Grecia",
+        "marketValue": 350
+      },
+      {
+        "name": "Luca Andrada",
+        "position": "MC",
+        "rating": 63,
+        "age": 24,
+        "nationality": "Argentina",
+        "marketValue": 200
+      },
+      {
+        "name": "Davíd Kristján Ólafsson",
+        "position": "MC",
+        "rating": 62,
+        "age": 20,
+        "nationality": "Islandia",
+        "marketValue": 500
+      },
+      {
+        "name": "Zisis Chatzistravos",
+        "position": "MC",
+        "rating": 61,
+        "age": 18,
+        "nationality": "Grecia",
+        "marketValue": 450
+      },
+      {
+        "name": "Ángelo Sagal",
+        "position": "DC",
+        "rating": 66,
+        "age": 25,
+        "nationality": "Chile",
+        "marketValue": 400
+      },
+      {
+        "name": "Giannis Pasas",
+        "position": "DC",
+        "rating": 62,
+        "age": 19,
+        "nationality": "Grecia",
+        "marketValue": 175
+      },
+      {
+        "name": "Dimitrios Diminikos",
+        "position": "DC",
+        "rating": 63,
+        "age": 17,
+        "nationality": "Grecia",
+        "marketValue": 0
+      },
+      {
+        "name": "Savvas Mourgos",
+        "position": "DC",
+        "rating": 64,
+        "age": 27,
+        "nationality": "Grecia",
+        "marketValue": 450
+      },
+      {
+        "name": "Emanuel Vignato",
+        "position": "DC",
+        "rating": 66,
+        "age": 25,
+        "nationality": "Italia",
+        "marketValue": 450
+      },
+      {
+        "name": "Thierry Moutinho",
+        "position": "DC",
+        "rating": 66,
+        "age": 30,
+        "nationality": "Portugal",
+        "marketValue": 75
+      },
+      {
+        "name": "Lubomir Tupta",
+        "position": "DC",
+        "rating": 64,
+        "age": 29,
+        "nationality": "Eslovaquia",
+        "marketValue": 600
+      },
+      {
+        "name": "Julien Ngoy",
+        "position": "DC",
+        "rating": 66,
+        "age": 28,
+        "nationality": "Bélgica",
+        "marketValue": 400
+      },
+      {
+        "name": "Leandro Garate",
+        "position": "DC",
+        "rating": 62,
+        "age": 23,
+        "nationality": "Argentina",
+        "marketValue": 250
+      }
+    ]
+  },
+  {
+    "id": "panserraikos",
+    "name": "Panserraikos",
+    "players": [
+      {
+        "name": "Francisco Tinaglini",
+        "position": "POR",
+        "rating": 64,
+        "age": 27,
+        "nationality": "Uruguay",
+        "marketValue": 400
+      },
+      {
+        "name": "Alexandros Tsompanidis",
+        "position": "POR",
+        "rating": 60,
+        "age": 20,
+        "nationality": "Grecia",
+        "marketValue": 50
+      },
+      {
+        "name": "Viktoras Sakalidis",
+        "position": "POR",
+        "rating": 61,
+        "age": 22,
+        "nationality": "Grecia",
+        "marketValue": 0
+      },
+      {
+        "name": "Michalis Pourliotopoulos",
+        "position": "POR",
+        "rating": 61,
+        "age": 18,
+        "nationality": "Grecia",
+        "marketValue": 0
+      },
+      {
+        "name": "Iva Gelashvili",
+        "position": "DFC",
+        "rating": 64,
+        "age": 24,
+        "nationality": "Georgia",
+        "marketValue": 500
+      },
+      {
+        "name": "Volnei",
+        "position": "DFC",
+        "rating": 66,
+        "age": 30,
+        "nationality": "Brasil",
+        "marketValue": 450
+      },
+      {
+        "name": "Vernon de Marco",
+        "position": "DFC",
+        "rating": 61,
+        "age": 33,
+        "nationality": "Eslovaquia",
+        "marketValue": 275
+      },
+      {
+        "name": "Aristotelis Karasalidis",
+        "position": "DFC",
+        "rating": 60,
+        "age": 34,
+        "nationality": "Grecia",
+        "marketValue": 75
+      },
+      {
+        "name": "Igor Kalinin",
+        "position": "DFC",
+        "rating": 66,
+        "age": 30,
+        "nationality": "Rusia",
+        "marketValue": 600
+      },
+      {
+        "name": "Marios Tsaousis",
+        "position": "DFC",
+        "rating": 64,
+        "age": 25,
+        "nationality": "Grecia",
+        "marketValue": 450
+      },
+      {
+        "name": "Yoël Armougom",
+        "position": "DFC",
+        "rating": 66,
+        "age": 31,
+        "nationality": "Francia",
+        "marketValue": 200
+      },
+      {
+        "name": "Lefteris Lyratzis",
+        "position": "DFC",
+        "rating": 62,
+        "age": 19,
+        "nationality": "Grecia",
+        "marketValue": 800
+      },
+      {
+        "name": "Moussa Wagué",
+        "position": "DFC",
+        "rating": 61,
+        "age": 22,
+        "nationality": "Senegal",
+        "marketValue": 400
+      },
+      {
+        "name": "Charalampos Georgiadis",
+        "position": "DFC",
+        "rating": 63,
+        "age": 23,
+        "nationality": "Grecia",
+        "marketValue": 100
+      },
+      {
+        "name": "Angelos Liasos",
+        "position": "MC",
+        "rating": 66,
+        "age": 25,
+        "nationality": "Grecia",
+        "marketValue": 350
+      },
+      {
+        "name": "Ethan Brooks",
+        "position": "MC",
+        "rating": 66,
+        "age": 28,
+        "nationality": "Sudáfrica",
+        "marketValue": 800
+      },
+      {
+        "name": "Stephane Omeonga",
+        "position": "MC",
+        "rating": 60,
+        "age": 40,
+        "nationality": "Bélgica",
+        "marketValue": 400
+      },
+      {
+        "name": "Giannis Doiranlis",
+        "position": "MC",
+        "rating": 63,
+        "age": 24,
+        "nationality": "Grecia",
+        "marketValue": 350
+      },
+      {
+        "name": "Viktor Rumyantsev",
+        "position": "MC",
+        "rating": 62,
+        "age": 21,
+        "nationality": "Grecia",
+        "marketValue": 300
+      },
+      {
+        "name": "Samir Ben Sallam",
+        "position": "MC",
+        "rating": 64,
+        "age": 24,
+        "nationality": "Países Bajos",
+        "marketValue": 150
+      },
+      {
+        "name": "Zacharias Papadimitriou",
+        "position": "MC",
+        "rating": 60,
+        "age": 41,
+        "nationality": "Grecia",
+        "marketValue": 0
+      },
+      {
+        "name": "Adrián Riera",
+        "position": "MC",
+        "rating": 66,
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 250
+      },
+      {
+        "name": "Alex Teixeira",
+        "position": "MC",
+        "rating": 60,
+        "age": 36,
+        "nationality": "Brasil",
+        "marketValue": 175
+      },
+      {
+        "name": "Andre Green",
+        "position": "DC",
+        "rating": 66,
+        "age": 27,
+        "nationality": "Inglaterra",
+        "marketValue": 400
+      },
+      {
+        "name": "Darnell Eric Bile",
+        "position": "DC",
+        "rating": 63,
+        "age": 20,
+        "nationality": "Francia",
+        "marketValue": 200
+      },
+      {
+        "name": "Alexandros Maskanakis",
+        "position": "DC",
+        "rating": 60,
+        "age": 17,
+        "nationality": "Grecia",
+        "marketValue": 200
+      },
+      {
+        "name": "Braian Galván",
+        "position": "DC",
+        "rating": 63,
+        "age": 16,
+        "nationality": "Argentina",
+        "marketValue": 750
+      },
+      {
+        "name": "Marios Sofianos",
+        "position": "DC",
+        "rating": 62,
+        "age": 21,
+        "nationality": "Grecia",
+        "marketValue": 175
+      },
+      {
+        "name": "Alexandros Salvanos",
+        "position": "DC",
+        "rating": 55,
+        "age": 35,
+        "nationality": "Grecia",
+        "marketValue": 0
+      },
+      {
+        "name": "Andrei Ivan",
+        "position": "DC",
+        "rating": 66,
+        "age": 29,
+        "nationality": "Rumania",
+        "marketValue": 900
+      },
+      {
+        "name": "Nikolaos Karelis",
+        "position": "DC",
+        "rating": 59,
+        "age": 33,
+        "nationality": "Grecia",
+        "marketValue": 350
+      },
+      {
+        "name": "Apostolos Savvidis",
+        "position": "DC",
+        "rating": 58,
+        "age": 42,
+        "nationality": "Grecia",
+        "marketValue": 0
+      },
+      {
+        "name": "Youshaa Knaj",
+        "position": "DC",
+        "rating": 63,
+        "age": 20,
+        "nationality": "Siria",
+        "marketValue": 0
+      }
+    ]
+  },
+  {
+    "id": "volos-nps",
+    "name": "Volos NPS",
+    "players": [
+      {
+        "name": "Marios Siampanis",
+        "position": "POR",
+        "rating": 64,
+        "age": 26,
+        "nationality": "Grecia",
+        "marketValue": 400
+      },
+      {
+        "name": "Nikolaos Grammatikakis",
+        "position": "POR",
+        "rating": 60,
+        "age": 22,
+        "nationality": "Grecia",
+        "marketValue": 250
+      },
+      {
+        "name": "Athanasios Papathanasiou-Gerofokas",
+        "position": "POR",
+        "rating": 61,
+        "age": 19,
+        "nationality": "Grecia",
+        "marketValue": 0
+      },
+      {
+        "name": "Derek Agyakwa",
+        "position": "DFC",
+        "rating": 64,
+        "age": 24,
+        "nationality": "Países Bajos",
+        "marketValue": 500
+      },
+      {
+        "name": "Hjörtur Hermannsson",
+        "position": "DFC",
+        "rating": 66,
+        "age": 30,
+        "nationality": "Islandia",
+        "marketValue": 400
+      },
+      {
+        "name": "Giannis Kargas",
+        "position": "DFC",
+        "rating": 66,
+        "age": 31,
+        "nationality": "Grecia",
+        "marketValue": 250
+      },
+      {
+        "name": "Athanasios Triantafyllou",
+        "position": "DFC",
+        "rating": 62,
+        "age": 22,
+        "nationality": "Grecia",
+        "marketValue": 150
+      },
+      {
+        "name": "Núrio Fortuna",
+        "position": "DFC",
+        "rating": 64,
+        "age": 25,
+        "nationality": "Angola",
+        "marketValue": 600
+      },
+      {
+        "name": "Leroy Abanda",
+        "position": "DFC",
+        "rating": 64,
+        "age": 25,
+        "nationality": "Francia",
+        "marketValue": 400
+      },
+      {
+        "name": "Konstantinos Lykourinos",
+        "position": "DFC",
+        "rating": 67,
+        "age": 24,
+        "nationality": "Grecia",
+        "marketValue": 50
+      },
+      {
+        "name": "Klearchos Vainopoulos",
+        "position": "DFC",
+        "rating": 62,
+        "age": 20,
+        "nationality": "Grecia",
+        "marketValue": 0
+      },
+      {
+        "name": "Carles Soria",
+        "position": "DFC",
+        "rating": 66,
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 500
+      },
+      {
+        "name": "Georgios Mygas",
+        "position": "DFC",
+        "rating": 62,
+        "age": 22,
+        "nationality": "Grecia",
+        "marketValue": 250
+      },
+      {
+        "name": "Lefteris Tasiouras",
+        "position": "DFC",
+        "rating": 61,
+        "age": 21,
+        "nationality": "Grecia",
+        "marketValue": 200
+      },
+      {
+        "name": "David Martínez",
+        "position": "MC",
+        "rating": 63,
+        "age": 16,
+        "nationality": "Argentina",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Anastasios Tsokanis",
+        "position": "MC",
+        "rating": 61,
+        "age": 34,
+        "nationality": "Grecia",
+        "marketValue": 200
+      },
+      {
+        "name": "Vasilios Grosdis",
+        "position": "MC",
+        "rating": 61,
+        "age": 17,
+        "nationality": "Grecia",
+        "marketValue": 250
+      },
+      {
+        "name": "Giannis Bouzoukis",
+        "position": "MC",
+        "rating": 62,
+        "age": 18,
+        "nationality": "Grecia",
+        "marketValue": 450
+      },
+      {
+        "name": "Juanpi",
+        "position": "MC",
+        "rating": 61,
+        "age": 32,
+        "nationality": "Venezuela",
+        "marketValue": 400
+      },
+      {
+        "name": "Matías González",
+        "position": "MC",
+        "rating": 62,
+        "age": 21,
+        "nationality": "Argentina",
+        "marketValue": 175
+      },
+      {
+        "name": "Iason Kyrkos",
+        "position": "MC",
+        "rating": 65,
+        "age": 29,
+        "nationality": "Grecia",
+        "marketValue": 125
+      },
+      {
+        "name": "Lazaros Lamprou",
+        "position": "DC",
+        "rating": 66,
+        "age": 28,
+        "nationality": "Grecia",
+        "marketValue": 600
+      },
+      {
+        "name": "Jasin Assehnoun",
+        "position": "DC",
+        "rating": 65,
+        "age": 27,
+        "nationality": "Finlandia",
+        "marketValue": 350
+      },
+      {
+        "name": "Diamanti Legisi",
+        "position": "DC",
+        "rating": 58,
+        "age": 39,
+        "nationality": "Grecia",
+        "marketValue": 0
+      },
+      {
+        "name": "Joca",
+        "position": "DC",
+        "rating": 66,
+        "age": 30,
+        "nationality": "Portugal",
+        "marketValue": 600
+      },
+      {
+        "name": "Maximiliano Comba",
+        "position": "DC",
+        "rating": 63,
+        "age": 20,
+        "nationality": "Argentina",
+        "marketValue": 300
+      },
+      {
+        "name": "Jan Hurtado",
+        "position": "DC",
+        "rating": 66,
+        "age": 25,
+        "nationality": "Venezuela",
+        "marketValue": 350
+      },
+      {
+        "name": "Nabil Makni",
+        "position": "DC",
+        "rating": 60,
+        "age": 19,
+        "nationality": "Túnez",
+        "marketValue": 200
+      }
+    ]
+  }
+]

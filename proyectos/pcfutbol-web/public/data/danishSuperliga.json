@@ -1,0 +1,2634 @@
+[
+  {
+    "id": "fc-midtjylland",
+    "name": "FC Midtjylland",
+    "players": [
+      {
+        "name": "Elías Ólafsson",
+        "position": "POR",
+        "rating": 69,
+        "age": 16,
+        "nationality": "Islandia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Ovie Ejeheri",
+        "position": "POR",
+        "rating": 73,
+        "age": 30,
+        "nationality": "Inglaterra",
+        "marketValue": 150
+      },
+      {
+        "name": "Jonas Lössl",
+        "position": "POR",
+        "rating": 68,
+        "age": 36,
+        "nationality": "Dinamarca",
+        "marketValue": 100
+      },
+      {
+        "name": "Mark Ugboh",
+        "position": "POR",
+        "rating": 68,
+        "age": 22,
+        "nationality": "Nigeria",
+        "marketValue": 0
+      },
+      {
+        "name": "Liam Selin",
+        "position": "POR",
+        "rating": 73,
+        "age": 31,
+        "nationality": "Suecia",
+        "marketValue": 0
+      },
+      {
+        "name": "Ousmane Diao",
+        "position": "DFC",
+        "rating": 71,
+        "age": 21,
+        "nationality": "Senegal",
+        "marketValue": 8000000
+      },
+      {
+        "name": "Mads Bech Sørensen",
+        "position": "DFC",
+        "rating": 73,
+        "age": 22,
+        "nationality": "Dinamarca",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Martin Erlić",
+        "position": "DFC",
+        "rating": 74,
+        "age": 28,
+        "nationality": "Croacia",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Han-beom Lee",
+        "position": "DFC",
+        "rating": 72,
+        "age": 23,
+        "nationality": "Corea del Sur",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Bilal Konteh",
+        "position": "DFC",
+        "rating": 68,
+        "age": 35,
+        "nationality": "Suecia",
+        "marketValue": 0
+      },
+      {
+        "name": "Victor Bak",
+        "position": "DFC",
+        "rating": 70,
+        "age": 22,
+        "nationality": "Dinamarca",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Paulinho",
+        "position": "DFC",
+        "rating": 72,
+        "age": 29,
+        "nationality": "Brasil",
+        "marketValue": 500
+      },
+      {
+        "name": "Kevin Mbabu",
+        "position": "DFC",
+        "rating": 68,
+        "age": 43,
+        "nationality": "Suiza",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Adam Gabriel",
+        "position": "DFC",
+        "rating": 70,
+        "age": 24,
+        "nationality": "República Checa",
+        "marketValue": 750
+      },
+      {
+        "name": "Philip Billing",
+        "position": "MC",
+        "rating": 76,
+        "age": 29,
+        "nationality": "Dinamarca",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Denil Castillo",
+        "position": "MC",
+        "rating": 72,
+        "age": 21,
+        "nationality": "Ecuador",
+        "marketValue": 5500000
+      },
+      {
+        "name": "Pedro Bravo",
+        "position": "MC",
+        "rating": 70,
+        "age": 19,
+        "nationality": "Colombia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Dani Silva",
+        "position": "MC",
+        "rating": 73,
+        "age": 25,
+        "nationality": "Portugal",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Valdemar Byskov",
+        "position": "MC",
+        "rating": 69,
+        "age": 20,
+        "nationality": "Dinamarca",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Alamara Djabi",
+        "position": "MC",
+        "rating": 68,
+        "age": 33,
+        "nationality": "Guinea-Bissau",
+        "marketValue": 200
+      },
+      {
+        "name": "Aral Şimşir",
+        "position": "DC",
+        "rating": 76,
+        "age": 23,
+        "nationality": "Turquía",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Mikel Gogorza",
+        "position": "DC",
+        "rating": 65,
+        "age": 41,
+        "nationality": "Dinamarca",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Junior Zé",
+        "position": "DC",
+        "rating": 66,
+        "age": 39,
+        "nationality": "Suiza",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Darío Osorio",
+        "position": "DC",
+        "rating": 75,
+        "age": 22,
+        "nationality": "Chile",
+        "marketValue": 10000000
+      },
+      {
+        "name": "Edward Chilufya",
+        "position": "DC",
+        "rating": 71,
+        "age": 26,
+        "nationality": "Zambia",
+        "marketValue": 850
+      },
+      {
+        "name": "Franculino",
+        "position": "DC",
+        "rating": 77,
+        "age": 21,
+        "nationality": "Guinea-Bissau",
+        "marketValue": 22000000
+      },
+      {
+        "name": "Gue-sung Cho",
+        "position": "DC",
+        "rating": 74,
+        "age": 28,
+        "nationality": "Corea del Sur",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Mikael Uhre",
+        "position": "DC",
+        "rating": 71,
+        "age": 17,
+        "nationality": "Dinamarca",
+        "marketValue": 2800000
+      },
+      {
+        "name": "Ola Brynhildsen",
+        "position": "DC",
+        "rating": 74,
+        "age": 26,
+        "nationality": "Noruega",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Júnior Brumado",
+        "position": "DC",
+        "rating": 74,
+        "age": 26,
+        "nationality": "Brasil",
+        "marketValue": 900
+      }
+    ]
+  },
+  {
+    "id": "fc-kopenhagen",
+    "name": "FC Copenhague",
+    "players": [
+      {
+        "name": "Dominik Kotarski",
+        "position": "POR",
+        "rating": 73,
+        "age": 25,
+        "nationality": "Croacia",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Rúnar Alex Rúnarsson",
+        "position": "POR",
+        "rating": 70,
+        "age": 31,
+        "nationality": "Islandia",
+        "marketValue": 400
+      },
+      {
+        "name": "Oscar Buur",
+        "position": "POR",
+        "rating": 65,
+        "age": 19,
+        "nationality": "Dinamarca",
+        "marketValue": 0
+      },
+      {
+        "name": "Gabriel Pereira",
+        "position": "DFC",
+        "rating": 73,
+        "age": 25,
+        "nationality": "Brasil",
+        "marketValue": 6500000
+      },
+      {
+        "name": "Pantelis Hatzidiakos",
+        "position": "DFC",
+        "rating": 72,
+        "age": 29,
+        "nationality": "Grecia",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Munashe Garananga",
+        "position": "DFC",
+        "rating": 69,
+        "age": 25,
+        "nationality": "Zimbabue",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Junnosuke Suzuki",
+        "position": "DFC",
+        "rating": 68,
+        "age": 20,
+        "nationality": "Japón",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Marcos López",
+        "position": "DFC",
+        "rating": 68,
+        "age": 15,
+        "nationality": "Perú",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Birger Meling",
+        "position": "DFC",
+        "rating": 69,
+        "age": 24,
+        "nationality": "Noruega",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Rodrigo Huescas",
+        "position": "DFC",
+        "rating": 71,
+        "age": 22,
+        "nationality": "México",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Aurélio Buta",
+        "position": "DFC",
+        "rating": 68,
+        "age": 17,
+        "nationality": "Portugal",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Yoram Zague",
+        "position": "DFC",
+        "rating": 67,
+        "age": 22,
+        "nationality": "Francia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Kenay Myrie",
+        "position": "DFC",
+        "rating": 67,
+        "age": 18,
+        "nationality": "Costa Rica",
+        "marketValue": 800
+      },
+      {
+        "name": "William Clem",
+        "position": "MC",
+        "rating": 65,
+        "age": 36,
+        "nationality": "Dinamarca",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Amir Richardson",
+        "position": "MC",
+        "rating": 72,
+        "age": 25,
+        "nationality": "Marruecos",
+        "marketValue": 4500000
+      },
+      {
+        "name": "Magnus Mattsson",
+        "position": "MC",
+        "rating": 74,
+        "age": 26,
+        "nationality": "Dinamarca",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Mads Emil Madsen",
+        "position": "MC",
+        "rating": 68,
+        "age": 21,
+        "nationality": "Dinamarca",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Thomas Delaney",
+        "position": "MC",
+        "rating": 70,
+        "age": 27,
+        "nationality": "Dinamarca",
+        "marketValue": 800
+      },
+      {
+        "name": "Oliver Højer",
+        "position": "MC",
+        "rating": 65,
+        "age": 38,
+        "nationality": "Dinamarca",
+        "marketValue": 50
+      },
+      {
+        "name": "Jonathan Moalem",
+        "position": "MC",
+        "rating": 71,
+        "age": 29,
+        "nationality": "Dinamarca",
+        "marketValue": 0
+      },
+      {
+        "name": "Elias Achouri",
+        "position": "DC",
+        "rating": 72,
+        "age": 30,
+        "nationality": "Túnez",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Robert",
+        "position": "DC",
+        "rating": 68,
+        "age": 16,
+        "nationality": "Brasil",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Jordan Larsson",
+        "position": "DC",
+        "rating": 72,
+        "age": 28,
+        "nationality": "Suecia",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Liam West",
+        "position": "DC",
+        "rating": 68,
+        "age": 18,
+        "nationality": "Noruega",
+        "marketValue": 0
+      },
+      {
+        "name": "Mohamed Elyounoussi",
+        "position": "DC",
+        "rating": 68,
+        "age": 31,
+        "nationality": "Noruega",
+        "marketValue": 4500000
+      },
+      {
+        "name": "Youssoufa Moukoko",
+        "position": "DC",
+        "rating": 69,
+        "age": 21,
+        "nationality": "Alemania",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Viktor Dadason",
+        "position": "DC",
+        "rating": 65,
+        "age": 39,
+        "nationality": "Islandia",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Viktor Claesson",
+        "position": "DC",
+        "rating": 63,
+        "age": 34,
+        "nationality": "Suecia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Andreas Cornelius",
+        "position": "DC",
+        "rating": 63,
+        "age": 32,
+        "nationality": "Dinamarca",
+        "marketValue": 400
+      }
+    ]
+  },
+  {
+    "id": "brondby-if",
+    "name": "Brøndby IF",
+    "players": [
+      {
+        "name": "Patrick Pentz",
+        "position": "POR",
+        "rating": 74,
+        "age": 29,
+        "nationality": "Austria",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Gavin Beavers",
+        "position": "POR",
+        "rating": 65,
+        "age": 20,
+        "nationality": "Estados Unidos",
+        "marketValue": 400
+      },
+      {
+        "name": "Thomas Mikkelsen",
+        "position": "POR",
+        "rating": 66,
+        "age": 16,
+        "nationality": "Dinamarca",
+        "marketValue": 25
+      },
+      {
+        "name": "Ben Godfrey",
+        "position": "DFC",
+        "rating": 73,
+        "age": 28,
+        "nationality": "Inglaterra",
+        "marketValue": 5500000
+      },
+      {
+        "name": "Luis Binks",
+        "position": "DFC",
+        "rating": 70,
+        "age": 24,
+        "nationality": "Inglaterra",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Frederik Alves",
+        "position": "DFC",
+        "rating": 72,
+        "age": 32,
+        "nationality": "Dinamarca",
+        "marketValue": 2800000
+      },
+      {
+        "name": "Rasmus Lauritsen",
+        "position": "DFC",
+        "rating": 71,
+        "age": 29,
+        "nationality": "Dinamarca",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Jordi Vanlerberghe",
+        "position": "DFC",
+        "rating": 71,
+        "age": 30,
+        "nationality": "Bélgica",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Mats Köhlert",
+        "position": "DFC",
+        "rating": 73,
+        "age": 27,
+        "nationality": "Alemania",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Marko Divković",
+        "position": "DFC",
+        "rating": 70,
+        "age": 24,
+        "nationality": "Croacia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Sean Klaiber",
+        "position": "DFC",
+        "rating": 73,
+        "age": 31,
+        "nationality": "Surinam",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Oliver Villadsen",
+        "position": "DFC",
+        "rating": 70,
+        "age": 24,
+        "nationality": "Dinamarca",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Bartosz Slisz",
+        "position": "MC",
+        "rating": 72,
+        "age": 26,
+        "nationality": "Polonia",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Benjamin Tahirović",
+        "position": "MC",
+        "rating": 70,
+        "age": 22,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 4500000
+      },
+      {
+        "name": "Mathias Jensen",
+        "position": "MC",
+        "rating": 64,
+        "age": 42,
+        "nationality": "Dinamarca",
+        "marketValue": 750
+      },
+      {
+        "name": "Daniel Wass",
+        "position": "MC",
+        "rating": 66,
+        "age": 36,
+        "nationality": "Dinamarca",
+        "marketValue": 500
+      },
+      {
+        "name": "Nicolai Vallys",
+        "position": "MC",
+        "rating": 76,
+        "age": 29,
+        "nationality": "Dinamarca",
+        "marketValue": 4500000
+      },
+      {
+        "name": "Ousmane Sow",
+        "position": "DC",
+        "rating": 70,
+        "age": 22,
+        "nationality": "Francia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Sho Fukuda",
+        "position": "DC",
+        "rating": 68,
+        "age": 19,
+        "nationality": "Japón",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Filip Bundgaard",
+        "position": "DC",
+        "rating": 69,
+        "age": 21,
+        "nationality": "Dinamarca",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Emmanuel Dennis",
+        "position": "DC",
+        "rating": 69,
+        "age": 17,
+        "nationality": "Nigeria",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Jacob Ambæk",
+        "position": "DC",
+        "rating": 63,
+        "age": 38,
+        "nationality": "Dinamarca",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Kotaro Uchino",
+        "position": "DC",
+        "rating": 65,
+        "age": 18,
+        "nationality": "Japón",
+        "marketValue": 100
+      }
+    ]
+  },
+  {
+    "id": "fc-nordsjaelland",
+    "name": "FC Nordsjælland",
+    "players": [
+      {
+        "name": "Andreas Hansen",
+        "position": "POR",
+        "rating": 70,
+        "age": 30,
+        "nationality": "Dinamarca",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Jakob Busk",
+        "position": "POR",
+        "rating": 64,
+        "age": 16,
+        "nationality": "Dinamarca",
+        "marketValue": 150
+      },
+      {
+        "name": "Noah Markmann",
+        "position": "DFC",
+        "rating": 64,
+        "age": 45,
+        "nationality": "Dinamarca",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Tobias Salquist",
+        "position": "DFC",
+        "rating": 69,
+        "age": 30,
+        "nationality": "Dinamarca",
+        "marketValue": 600
+      },
+      {
+        "name": "Stephen Acquah",
+        "position": "DFC",
+        "rating": 63,
+        "age": 34,
+        "nationality": "Ghana",
+        "marketValue": 500
+      },
+      {
+        "name": "Markus Walker",
+        "position": "DFC",
+        "rating": 68,
+        "age": 28,
+        "nationality": "Dinamarca",
+        "marketValue": 400
+      },
+      {
+        "name": "Juho Lähteenmäki",
+        "position": "DFC",
+        "rating": 68,
+        "age": 25,
+        "nationality": "Finlandia",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Runar Norheim",
+        "position": "DFC",
+        "rating": 67,
+        "age": 23,
+        "nationality": "Noruega",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Issaka Seidu",
+        "position": "DFC",
+        "rating": 68,
+        "age": 30,
+        "nationality": "Ghana",
+        "marketValue": 25
+      },
+      {
+        "name": "Peter Ankersen",
+        "position": "DFC",
+        "rating": 64,
+        "age": 35,
+        "nationality": "Dinamarca",
+        "marketValue": 150
+      },
+      {
+        "name": "Victor Gustafsen",
+        "position": "DFC",
+        "rating": 65,
+        "age": 18,
+        "nationality": "Dinamarca",
+        "marketValue": 0
+      },
+      {
+        "name": "Mark Brink",
+        "position": "MC",
+        "rating": 70,
+        "age": 27,
+        "nationality": "Dinamarca",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Justin Janssen",
+        "position": "MC",
+        "rating": 64,
+        "age": 18,
+        "nationality": "Dinamarca",
+        "marketValue": 850
+      },
+      {
+        "name": "Malte Heyde",
+        "position": "MC",
+        "rating": 64,
+        "age": 18,
+        "nationality": "Dinamarca",
+        "marketValue": 25
+      },
+      {
+        "name": "Caleb Yirenkyi",
+        "position": "MC",
+        "rating": 66,
+        "age": 36,
+        "nationality": "Ghana",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Nicklas Røjkjær",
+        "position": "MC",
+        "rating": 72,
+        "age": 27,
+        "nationality": "Dinamarca",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Villum Berthelsen",
+        "position": "MC",
+        "rating": 69,
+        "age": 29,
+        "nationality": "Dinamarca",
+        "marketValue": 850
+      },
+      {
+        "name": "Araphat Mohammed",
+        "position": "MC",
+        "rating": 65,
+        "age": 20,
+        "nationality": "Ghana",
+        "marketValue": 50
+      },
+      {
+        "name": "Diallo Sanoussi",
+        "position": "MC",
+        "rating": 69,
+        "age": 27,
+        "nationality": "Costa de Marfil",
+        "marketValue": 0
+      },
+      {
+        "name": "Lamine Sadio",
+        "position": "MC",
+        "rating": 63,
+        "age": 37,
+        "nationality": "Senegal",
+        "marketValue": 0
+      },
+      {
+        "name": "Prince Amoako Junior",
+        "position": "DC",
+        "rating": 70,
+        "age": 22,
+        "nationality": "Ghana",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Ola Solbakken",
+        "position": "DC",
+        "rating": 70,
+        "age": 27,
+        "nationality": "Noruega",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Hjalte Boe Rasmussen",
+        "position": "DC",
+        "rating": 58,
+        "age": 40,
+        "nationality": "Dinamarca",
+        "marketValue": 50
+      },
+      {
+        "name": "Villum Dalsgaard",
+        "position": "DC",
+        "rating": 61,
+        "age": 41,
+        "nationality": "Dinamarca",
+        "marketValue": 0
+      },
+      {
+        "name": "Alexander Lind",
+        "position": "DC",
+        "rating": 70,
+        "age": 23,
+        "nationality": "Dinamarca",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Levy Nene",
+        "position": "DC",
+        "rating": 65,
+        "age": 17,
+        "nationality": "Costa de Marfil",
+        "marketValue": 750
+      },
+      {
+        "name": "Souleymane Alio",
+        "position": "DC",
+        "rating": 63,
+        "age": 33,
+        "nationality": "Burkina Faso",
+        "marketValue": 25
+      }
+    ]
+  },
+  {
+    "id": "aarhus-gf",
+    "name": "Aarhus GF",
+    "players": [
+      {
+        "name": "Mads Hedenstad",
+        "position": "POR",
+        "rating": 63,
+        "age": 21,
+        "nationality": "Noruega",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Jesper Hansen",
+        "position": "POR",
+        "rating": 62,
+        "age": 40,
+        "nationality": "Dinamarca",
+        "marketValue": 50
+      },
+      {
+        "name": "Eric Kahl",
+        "position": "DFC",
+        "rating": 64,
+        "age": 19,
+        "nationality": "Suecia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Jonas Jensen-Abbew",
+        "position": "DFC",
+        "rating": 60,
+        "age": 40,
+        "nationality": "Dinamarca",
+        "marketValue": 900
+      },
+      {
+        "name": "Tobias Mölgaard",
+        "position": "DFC",
+        "rating": 67,
+        "age": 29,
+        "nationality": "Dinamarca",
+        "marketValue": 800
+      },
+      {
+        "name": "Frederik Tingager",
+        "position": "DFC",
+        "rating": 67,
+        "age": 32,
+        "nationality": "Dinamarca",
+        "marketValue": 250
+      },
+      {
+        "name": "Henrik Dalsgaard",
+        "position": "DFC",
+        "rating": 62,
+        "age": 36,
+        "nationality": "Dinamarca",
+        "marketValue": 100
+      },
+      {
+        "name": "Magnus Knudsen",
+        "position": "MC",
+        "rating": 66,
+        "age": 24,
+        "nationality": "Noruega",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Markus Solbakken",
+        "position": "MC",
+        "rating": 68,
+        "age": 25,
+        "nationality": "Noruega",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Kevin Yakob",
+        "position": "MC",
+        "rating": 62,
+        "age": 17,
+        "nationality": "Irak",
+        "marketValue": 600
+      },
+      {
+        "name": "Nicolai Poulsen",
+        "position": "MC",
+        "rating": 62,
+        "age": 32,
+        "nationality": "Dinamarca",
+        "marketValue": 300
+      },
+      {
+        "name": "Felix Beijmo",
+        "position": "MC",
+        "rating": 68,
+        "age": 27,
+        "nationality": "Suecia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Rasmus Carstensen",
+        "position": "MC",
+        "rating": 68,
+        "age": 29,
+        "nationality": "Dinamarca",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Jacob Andersen",
+        "position": "MC",
+        "rating": 67,
+        "age": 26,
+        "nationality": "Dinamarca",
+        "marketValue": 400
+      },
+      {
+        "name": "Gift Links",
+        "position": "MC",
+        "rating": 69,
+        "age": 27,
+        "nationality": "Sudáfrica",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Kristian Arnstad",
+        "position": "DC",
+        "rating": 68,
+        "age": 22,
+        "nationality": "Noruega",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Frederik Emmery",
+        "position": "DC",
+        "rating": 59,
+        "age": 39,
+        "nationality": "Dinamarca",
+        "marketValue": 350
+      },
+      {
+        "name": "Tómas Óli Kristjánsson",
+        "position": "DC",
+        "rating": 64,
+        "age": 20,
+        "nationality": "Islandia",
+        "marketValue": 50
+      },
+      {
+        "name": "Tobias Bech",
+        "position": "DC",
+        "rating": 63,
+        "age": 31,
+        "nationality": "Dinamarca",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Sebastian Jørgensen",
+        "position": "DC",
+        "rating": 64,
+        "age": 25,
+        "nationality": "Dinamarca",
+        "marketValue": 650
+      },
+      {
+        "name": "Janni Serra",
+        "position": "DC",
+        "rating": 64,
+        "age": 27,
+        "nationality": "Alemania",
+        "marketValue": 350
+      },
+      {
+        "name": "Patrick Mortensen",
+        "position": "DC",
+        "rating": 60,
+        "age": 36,
+        "nationality": "Dinamarca",
+        "marketValue": 300
+      },
+      {
+        "name": "Stefen Tchamche",
+        "position": "DC",
+        "rating": 64,
+        "age": 27,
+        "nationality": "Dinamarca",
+        "marketValue": 150
+      }
+    ]
+  },
+  {
+    "id": "viborg-ff",
+    "name": "Viborg FF",
+    "players": [
+      {
+        "name": "Lucas Lund",
+        "position": "POR",
+        "rating": 66,
+        "age": 25,
+        "nationality": "Dinamarca",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Filip Djukic",
+        "position": "POR",
+        "rating": 61,
+        "age": 16,
+        "nationality": "Montenegro",
+        "marketValue": 750
+      },
+      {
+        "name": "Daniel Anyembe",
+        "position": "DFC",
+        "rating": 66,
+        "age": 24,
+        "nationality": "Kenia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Stipe Radic",
+        "position": "DFC",
+        "rating": 66,
+        "age": 25,
+        "nationality": "Croacia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Zan Zaletel",
+        "position": "DFC",
+        "rating": 68,
+        "age": 26,
+        "nationality": "Eslovenia",
+        "marketValue": 1300000
+      },
+      {
+        "name": "Lukas Kirkegaard",
+        "position": "DFC",
+        "rating": 66,
+        "age": 32,
+        "nationality": "Dinamarca",
+        "marketValue": 25
+      },
+      {
+        "name": "Srdjan Kuzmic",
+        "position": "DFC",
+        "rating": 68,
+        "age": 30,
+        "nationality": "Eslovenia",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Oliver Bundgaard",
+        "position": "DFC",
+        "rating": 66,
+        "age": 23,
+        "nationality": "Dinamarca",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Jean Manuel Mbom",
+        "position": "DFC",
+        "rating": 65,
+        "age": 18,
+        "nationality": "Alemania",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Hjalte Bidstrup",
+        "position": "DFC",
+        "rating": 67,
+        "age": 26,
+        "nationality": "Dinamarca",
+        "marketValue": 750
+      },
+      {
+        "name": "Mikkel Løndal",
+        "position": "DFC",
+        "rating": 66,
+        "age": 31,
+        "nationality": "Dinamarca",
+        "marketValue": 0
+      },
+      {
+        "name": "Mees Hoedemakers",
+        "position": "MC",
+        "rating": 66,
+        "age": 27,
+        "nationality": "Países Bajos",
+        "marketValue": 750
+      },
+      {
+        "name": "Jeppe Grønning",
+        "position": "MC",
+        "rating": 62,
+        "age": 34,
+        "nationality": "Dinamarca",
+        "marketValue": 150
+      },
+      {
+        "name": "Thomas Jørgensen",
+        "position": "MC",
+        "rating": 66,
+        "age": 20,
+        "nationality": "Dinamarca",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Mads Søndergaard",
+        "position": "MC",
+        "rating": 68,
+        "age": 23,
+        "nationality": "Dinamarca",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Asker Beck",
+        "position": "MC",
+        "rating": 65,
+        "age": 22,
+        "nationality": "Dinamarca",
+        "marketValue": 600
+      },
+      {
+        "name": "Frederik Damkjer",
+        "position": "MC",
+        "rating": 61,
+        "age": 33,
+        "nationality": "Dinamarca",
+        "marketValue": 75
+      },
+      {
+        "name": "Charly Nouck",
+        "position": "DC",
+        "rating": 67,
+        "age": 21,
+        "nationality": "Dinamarca",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Sami Jalal",
+        "position": "DC",
+        "rating": 65,
+        "age": 29,
+        "nationality": "Dinamarca",
+        "marketValue": 750
+      },
+      {
+        "name": "Yonis Njoh",
+        "position": "DC",
+        "rating": 65,
+        "age": 22,
+        "nationality": "Francia",
+        "marketValue": 550
+      },
+      {
+        "name": "Osman Addo",
+        "position": "DC",
+        "rating": 64,
+        "age": 17,
+        "nationality": "Dinamarca",
+        "marketValue": 400
+      },
+      {
+        "name": "Bilal Brahimi",
+        "position": "DC",
+        "rating": 65,
+        "age": 21,
+        "nationality": "Francia",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Tim Freriks",
+        "position": "DC",
+        "rating": 67,
+        "age": 27,
+        "nationality": "Países Bajos",
+        "marketValue": 650
+      },
+      {
+        "name": "Dorian Hanza",
+        "position": "DC",
+        "rating": 61,
+        "age": 19,
+        "nationality": "Guinea Ecuatorial",
+        "marketValue": 250
+      }
+    ]
+  },
+  {
+    "id": "silkeborg-if",
+    "name": "Silkeborg IF",
+    "players": [
+      {
+        "name": "Aske Andrésen",
+        "position": "POR",
+        "rating": 66,
+        "age": 30,
+        "nationality": "Dinamarca",
+        "marketValue": 250
+      },
+      {
+        "name": "Nicolai Larsen",
+        "position": "POR",
+        "rating": 69,
+        "age": 34,
+        "nationality": "Dinamarca",
+        "marketValue": 200
+      },
+      {
+        "name": "Bastian Holm",
+        "position": "POR",
+        "rating": 62,
+        "age": 16,
+        "nationality": "Dinamarca",
+        "marketValue": 0
+      },
+      {
+        "name": "Robin Østrøm",
+        "position": "DFC",
+        "rating": 66,
+        "age": 23,
+        "nationality": "Noruega",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Pedro Ganchas",
+        "position": "DFC",
+        "rating": 66,
+        "age": 25,
+        "nationality": "Portugal",
+        "marketValue": 1700000
+      },
+      {
+        "name": "Alexander Busch",
+        "position": "DFC",
+        "rating": 62,
+        "age": 40,
+        "nationality": "Dinamarca",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Pontus Rödin",
+        "position": "DFC",
+        "rating": 65,
+        "age": 25,
+        "nationality": "Suecia",
+        "marketValue": 500
+      },
+      {
+        "name": "Melker Jonsson",
+        "position": "DFC",
+        "rating": 65,
+        "age": 23,
+        "nationality": "Suecia",
+        "marketValue": 350
+      },
+      {
+        "name": "Alexander Priesborg",
+        "position": "DFC",
+        "rating": 65,
+        "age": 24,
+        "nationality": "Dinamarca",
+        "marketValue": 0
+      },
+      {
+        "name": "Andreas Poulsen",
+        "position": "DFC",
+        "rating": 68,
+        "age": 26,
+        "nationality": "Dinamarca",
+        "marketValue": 850
+      },
+      {
+        "name": "Leonel Montano",
+        "position": "DFC",
+        "rating": 62,
+        "age": 18,
+        "nationality": "Dinamarca",
+        "marketValue": 400
+      },
+      {
+        "name": "Jens Martin Gammelby",
+        "position": "DFC",
+        "rating": 65,
+        "age": 19,
+        "nationality": "Dinamarca",
+        "marketValue": 350
+      },
+      {
+        "name": "Simon Stüker",
+        "position": "DFC",
+        "rating": 67,
+        "age": 28,
+        "nationality": "Dinamarca",
+        "marketValue": 0
+      },
+      {
+        "name": "Mikkel Øxenberg",
+        "position": "MC",
+        "rating": 67,
+        "age": 26,
+        "nationality": "Dinamarca",
+        "marketValue": 0
+      },
+      {
+        "name": "Mads Larsen",
+        "position": "MC",
+        "rating": 64,
+        "age": 20,
+        "nationality": "Dinamarca",
+        "marketValue": 1700000
+      },
+      {
+        "name": "Mads Freundlich",
+        "position": "MC",
+        "rating": 63,
+        "age": 33,
+        "nationality": "Dinamarca",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Julius Lorents",
+        "position": "MC",
+        "rating": 60,
+        "age": 36,
+        "nationality": "Dinamarca",
+        "marketValue": 800
+      },
+      {
+        "name": "Villads Westh",
+        "position": "MC",
+        "rating": 63,
+        "age": 21,
+        "nationality": "Dinamarca",
+        "marketValue": 750
+      },
+      {
+        "name": "Adam Wikman",
+        "position": "MC",
+        "rating": 65,
+        "age": 22,
+        "nationality": "Suecia",
+        "marketValue": 600
+      },
+      {
+        "name": "Sofus Berger",
+        "position": "MC",
+        "rating": 64,
+        "age": 22,
+        "nationality": "Dinamarca",
+        "marketValue": 350
+      },
+      {
+        "name": "Callum McCowatt",
+        "position": "MC",
+        "rating": 66,
+        "age": 17,
+        "nationality": "Nueva Zelanda",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Younes Bakiz",
+        "position": "MC",
+        "rating": 68,
+        "age": 26,
+        "nationality": "Dinamarca",
+        "marketValue": 1700000
+      },
+      {
+        "name": "Rami Al Hajj",
+        "position": "MC",
+        "rating": 65,
+        "age": 22,
+        "nationality": "Suecia",
+        "marketValue": 700
+      },
+      {
+        "name": "Jeppe Andersen",
+        "position": "MC",
+        "rating": 61,
+        "age": 33,
+        "nationality": "Dinamarca",
+        "marketValue": 100
+      },
+      {
+        "name": "Tonni Adamsen",
+        "position": "DC",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Dinamarca",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Alexander Simmelhack",
+        "position": "DC",
+        "rating": 64,
+        "age": 20,
+        "nationality": "Dinamarca",
+        "marketValue": 700
+      }
+    ]
+  },
+  {
+    "id": "randers-fc",
+    "name": "Randers FC",
+    "players": [
+      {
+        "name": "Paul Izzo",
+        "position": "POR",
+        "rating": 67,
+        "age": 31,
+        "nationality": "Australia",
+        "marketValue": 600
+      },
+      {
+        "name": "Jannich Storch",
+        "position": "POR",
+        "rating": 66,
+        "age": 32,
+        "nationality": "Dinamarca",
+        "marketValue": 50
+      },
+      {
+        "name": "Mert Demirci",
+        "position": "POR",
+        "rating": 62,
+        "age": 22,
+        "nationality": "Países Bajos",
+        "marketValue": 0
+      },
+      {
+        "name": "Wessel Dammers",
+        "position": "DFC",
+        "rating": 67,
+        "age": 30,
+        "nationality": "Países Bajos",
+        "marketValue": 900
+      },
+      {
+        "name": "Lucas Lissens",
+        "position": "DFC",
+        "rating": 64,
+        "age": 24,
+        "nationality": "Bélgica",
+        "marketValue": 700
+      },
+      {
+        "name": "Oliver Jones",
+        "position": "DFC",
+        "rating": 63,
+        "age": 22,
+        "nationality": "Australia",
+        "marketValue": 250
+      },
+      {
+        "name": "Daniel Høegh",
+        "position": "DFC",
+        "rating": 62,
+        "age": 35,
+        "nationality": "Dinamarca",
+        "marketValue": 150
+      },
+      {
+        "name": "Nikolas Dyhr",
+        "position": "DFC",
+        "rating": 62,
+        "age": 44,
+        "nationality": "Dinamarca",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Martin Sjølstad",
+        "position": "DFC",
+        "rating": 63,
+        "age": 15,
+        "nationality": "Noruega",
+        "marketValue": 250
+      },
+      {
+        "name": "Oliver Olsen",
+        "position": "DFC",
+        "rating": 68,
+        "age": 27,
+        "nationality": "Dinamarca",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Sabil Hansen",
+        "position": "DFC",
+        "rating": 64,
+        "age": 24,
+        "nationality": "Dinamarca",
+        "marketValue": 600
+      },
+      {
+        "name": "André Römer",
+        "position": "MC",
+        "rating": 66,
+        "age": 28,
+        "nationality": "Dinamarca",
+        "marketValue": 400
+      },
+      {
+        "name": "John Björkengren",
+        "position": "MC",
+        "rating": 68,
+        "age": 27,
+        "nationality": "Suecia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Laurits Pedersen",
+        "position": "MC",
+        "rating": 62,
+        "age": 16,
+        "nationality": "Dinamarca",
+        "marketValue": 700
+      },
+      {
+        "name": "Frederik Lauenborg",
+        "position": "MC",
+        "rating": 66,
+        "age": 28,
+        "nationality": "Dinamarca",
+        "marketValue": 250
+      },
+      {
+        "name": "Ousseynou Fall Seck",
+        "position": "MC",
+        "rating": 66,
+        "age": 25,
+        "nationality": "Senegal",
+        "marketValue": 25
+      },
+      {
+        "name": "Max Albæk",
+        "position": "MC",
+        "rating": 60,
+        "age": 38,
+        "nationality": "Dinamarca",
+        "marketValue": 25
+      },
+      {
+        "name": "Mike Themsen",
+        "position": "MC",
+        "rating": 67,
+        "age": 30,
+        "nationality": "Dinamarca",
+        "marketValue": 800
+      },
+      {
+        "name": "Noah Shamoun",
+        "position": "DC",
+        "rating": 64,
+        "age": 18,
+        "nationality": "Siria",
+        "marketValue": 325
+      },
+      {
+        "name": "Ernest Agyiri",
+        "position": "DC",
+        "rating": 64,
+        "age": 21,
+        "nationality": "Ghana",
+        "marketValue": 275
+      },
+      {
+        "name": "Cyril Edudzi",
+        "position": "DC",
+        "rating": 61,
+        "age": 33,
+        "nationality": "Ghana",
+        "marketValue": 250
+      },
+      {
+        "name": "Mathias Greve",
+        "position": "DC",
+        "rating": 62,
+        "age": 17,
+        "nationality": "Dinamarca",
+        "marketValue": 900
+      },
+      {
+        "name": "Elies Mahmoud",
+        "position": "DC",
+        "rating": 63,
+        "age": 24,
+        "nationality": "Francia",
+        "marketValue": 650
+      },
+      {
+        "name": "Mohamed Touré",
+        "position": "DC",
+        "rating": 67,
+        "age": 21,
+        "nationality": "Australia",
+        "marketValue": 1700000
+      },
+      {
+        "name": "Warren Caddy",
+        "position": "DC",
+        "rating": 67,
+        "age": 28,
+        "nationality": "Madagascar",
+        "marketValue": 600
+      },
+      {
+        "name": "Amin Al-Hamawi",
+        "position": "DC",
+        "rating": 66,
+        "age": 22,
+        "nationality": "Irak",
+        "marketValue": 250
+      },
+      {
+        "name": "Musa Touré",
+        "position": "DC",
+        "rating": 63,
+        "age": 19,
+        "nationality": "Australia",
+        "marketValue": 200
+      }
+    ]
+  },
+  {
+    "id": "odense-boldklub",
+    "name": "Odense Boldklub",
+    "players": [
+      {
+        "name": "Theo Sander",
+        "position": "POR",
+        "rating": 67,
+        "age": 30,
+        "nationality": "Dinamarca",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Viljar Myhra",
+        "position": "POR",
+        "rating": 62,
+        "age": 16,
+        "nationality": "Noruega",
+        "marketValue": 800
+      },
+      {
+        "name": "Martin Hansen",
+        "position": "POR",
+        "rating": 63,
+        "age": 35,
+        "nationality": "Dinamarca",
+        "marketValue": 25
+      },
+      {
+        "name": "Marcus Eskildsen",
+        "position": "POR",
+        "rating": 65,
+        "age": 27,
+        "nationality": "Dinamarca",
+        "marketValue": 0
+      },
+      {
+        "name": "James Gomez",
+        "position": "DFC",
+        "rating": 67,
+        "age": 29,
+        "nationality": "Gambia",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Julius Berthel Askou",
+        "position": "DFC",
+        "rating": 64,
+        "age": 19,
+        "nationality": "Dinamarca",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Yaya Bojang",
+        "position": "DFC",
+        "rating": 65,
+        "age": 24,
+        "nationality": "Gambia",
+        "marketValue": 850
+      },
+      {
+        "name": "Nicolas Bürgy",
+        "position": "DFC",
+        "rating": 67,
+        "age": 30,
+        "nationality": "Suiza",
+        "marketValue": 800
+      },
+      {
+        "name": "Bjørn Paulsen",
+        "position": "DFC",
+        "rating": 61,
+        "age": 34,
+        "nationality": "Dinamarca",
+        "marketValue": 50
+      },
+      {
+        "name": "Adam Sørensen",
+        "position": "DFC",
+        "rating": 66,
+        "age": 25,
+        "nationality": "Dinamarca",
+        "marketValue": 900
+      },
+      {
+        "name": "Marcus McCoy",
+        "position": "DFC",
+        "rating": 62,
+        "age": 15,
+        "nationality": "Dinamarca",
+        "marketValue": 350
+      },
+      {
+        "name": "Leeroy Owusu",
+        "position": "DFC",
+        "rating": 63,
+        "age": 20,
+        "nationality": "Ghana",
+        "marketValue": 900
+      },
+      {
+        "name": "Ismahila Ouédraogo",
+        "position": "MC",
+        "rating": 66,
+        "age": 22,
+        "nationality": "Burkina Faso",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Jakob Bonde",
+        "position": "MC",
+        "rating": 62,
+        "age": 32,
+        "nationality": "Dinamarca",
+        "marketValue": 250
+      },
+      {
+        "name": "Tom Trybull",
+        "position": "MC",
+        "rating": 63,
+        "age": 19,
+        "nationality": "Alemania",
+        "marketValue": 200
+      },
+      {
+        "name": "Vitus Friis",
+        "position": "MC",
+        "rating": 62,
+        "age": 21,
+        "nationality": "Dinamarca",
+        "marketValue": 25
+      },
+      {
+        "name": "Max Ejdum",
+        "position": "MC",
+        "rating": 65,
+        "age": 18,
+        "nationality": "Dinamarca",
+        "marketValue": 1700000
+      },
+      {
+        "name": "Anssi Suhonen",
+        "position": "MC",
+        "rating": 67,
+        "age": 25,
+        "nationality": "Finlandia",
+        "marketValue": 550
+      },
+      {
+        "name": "Gustav Grubbe",
+        "position": "MC",
+        "rating": 64,
+        "age": 23,
+        "nationality": "Dinamarca",
+        "marketValue": 450
+      },
+      {
+        "name": "Rasmus Falk",
+        "position": "MC",
+        "rating": 63,
+        "age": 34,
+        "nationality": "Dinamarca",
+        "marketValue": 300
+      },
+      {
+        "name": "William Martin",
+        "position": "DC",
+        "rating": 62,
+        "age": 23,
+        "nationality": "Dinamarca",
+        "marketValue": 600
+      },
+      {
+        "name": "Magnus Andersen",
+        "position": "DC",
+        "rating": 67,
+        "age": 28,
+        "nationality": "Dinamarca",
+        "marketValue": 25
+      },
+      {
+        "name": "Mads Abrahamsen",
+        "position": "DC",
+        "rating": 64,
+        "age": 19,
+        "nationality": "Dinamarca",
+        "marketValue": 0
+      },
+      {
+        "name": "Jona Niemiec",
+        "position": "DC",
+        "rating": 64,
+        "age": 24,
+        "nationality": "Alemania",
+        "marketValue": 500
+      },
+      {
+        "name": "Fiete Arp",
+        "position": "DC",
+        "rating": 69,
+        "age": 26,
+        "nationality": "Alemania",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Noah Ganaus",
+        "position": "DC",
+        "rating": 66,
+        "age": 17,
+        "nationality": "Alemania",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Jay-Roy Grot",
+        "position": "DC",
+        "rating": 63,
+        "age": 31,
+        "nationality": "Surinam",
+        "marketValue": 800
+      },
+      {
+        "name": "Lasse Legolas",
+        "position": "DC",
+        "rating": 67,
+        "age": 26,
+        "nationality": "Dinamarca",
+        "marketValue": 0
+      }
+    ]
+  },
+  {
+    "id": "sonderjyske",
+    "name": "Sönderjyske Fodbold",
+    "players": [
+      {
+        "name": "Marcus Bundgaard",
+        "position": "POR",
+        "rating": 62,
+        "age": 16,
+        "nationality": "Dinamarca",
+        "marketValue": 850
+      },
+      {
+        "name": "Nicolai Flø",
+        "position": "POR",
+        "rating": 66,
+        "age": 30,
+        "nationality": "Dinamarca",
+        "marketValue": 200
+      },
+      {
+        "name": "Maxime Soulas",
+        "position": "DFC",
+        "rating": 68,
+        "age": 26,
+        "nationality": "Francia",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Magnus Jensen",
+        "position": "DFC",
+        "rating": 67,
+        "age": 29,
+        "nationality": "Dinamarca",
+        "marketValue": 700
+      },
+      {
+        "name": "Daníel Leó Grétarsson",
+        "position": "DFC",
+        "rating": 67,
+        "age": 30,
+        "nationality": "Islandia",
+        "marketValue": 500
+      },
+      {
+        "name": "Pachanga Kristensen",
+        "position": "DFC",
+        "rating": 62,
+        "age": 19,
+        "nationality": "Dinamarca",
+        "marketValue": 25
+      },
+      {
+        "name": "Rúnar Thór Sigurgeirsson",
+        "position": "DFC",
+        "rating": 64,
+        "age": 21,
+        "nationality": "Islandia",
+        "marketValue": 400
+      },
+      {
+        "name": "Ebube Duru",
+        "position": "DFC",
+        "rating": 64,
+        "age": 23,
+        "nationality": "Nigeria",
+        "marketValue": 350
+      },
+      {
+        "name": "Dalton Wilkins",
+        "position": "DFC",
+        "rating": 67,
+        "age": 26,
+        "nationality": "Nueva Zelanda",
+        "marketValue": 150
+      },
+      {
+        "name": "Alberto Vogtmann",
+        "position": "DFC",
+        "rating": 69,
+        "age": 32,
+        "nationality": "Dinamarca",
+        "marketValue": 0
+      },
+      {
+        "name": "Tobias Klysner",
+        "position": "DFC",
+        "rating": 62,
+        "age": 20,
+        "nationality": "Dinamarca",
+        "marketValue": 400
+      },
+      {
+        "name": "Andreas Oggesen",
+        "position": "DFC",
+        "rating": 64,
+        "age": 22,
+        "nationality": "Dinamarca",
+        "marketValue": 250
+      },
+      {
+        "name": "Simon Waever",
+        "position": "DFC",
+        "rating": 66,
+        "age": 30,
+        "nationality": "Dinamarca",
+        "marketValue": 50
+      },
+      {
+        "name": "Tobias Sommer",
+        "position": "MC",
+        "rating": 69,
+        "age": 26,
+        "nationality": "Dinamarca",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Rasmus Vinderslev",
+        "position": "MC",
+        "rating": 66,
+        "age": 28,
+        "nationality": "Dinamarca",
+        "marketValue": 700
+      },
+      {
+        "name": "Sefer Emini",
+        "position": "MC",
+        "rating": 66,
+        "age": 25,
+        "nationality": "Macedonia del Norte",
+        "marketValue": 800
+      },
+      {
+        "name": "Mohamed Cherif Haidara",
+        "position": "MC",
+        "rating": 66,
+        "age": 31,
+        "nationality": "Guinea",
+        "marketValue": 500
+      },
+      {
+        "name": "Anders Bergholt",
+        "position": "MC",
+        "rating": 67,
+        "age": 28,
+        "nationality": "Dinamarca",
+        "marketValue": 0
+      },
+      {
+        "name": "Anders Hoeg",
+        "position": "MC",
+        "rating": 65,
+        "age": 17,
+        "nationality": "Dinamarca",
+        "marketValue": 0
+      },
+      {
+        "name": "Olti Hyseni",
+        "position": "DC",
+        "rating": 65,
+        "age": 24,
+        "nationality": "Dinamarca",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Alexander Lyng",
+        "position": "DC",
+        "rating": 65,
+        "age": 21,
+        "nationality": "Dinamarca",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Albert Rrahmani",
+        "position": "DC",
+        "rating": 66,
+        "age": 29,
+        "nationality": "Kosovo",
+        "marketValue": 50
+      },
+      {
+        "name": "Mads Agger",
+        "position": "DC",
+        "rating": 70,
+        "age": 25,
+        "nationality": "Dinamarca",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Lirim Qamili",
+        "position": "DC",
+        "rating": 65,
+        "age": 15,
+        "nationality": "Macedonia del Norte",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Matthew Hoppe",
+        "position": "DC",
+        "rating": 66,
+        "age": 24,
+        "nationality": "Estados Unidos",
+        "marketValue": 650
+      }
+    ]
+  },
+  {
+    "id": "vejle-boldklub",
+    "name": "Vejle Boldklub",
+    "players": [
+      {
+        "name": "Igor Vekic",
+        "position": "POR",
+        "rating": 62,
+        "age": 27,
+        "nationality": "Eslovenia",
+        "marketValue": 500
+      },
+      {
+        "name": "Tobias Haahr",
+        "position": "POR",
+        "rating": 58,
+        "age": 24,
+        "nationality": "Dinamarca",
+        "marketValue": 50
+      },
+      {
+        "name": "Gustav Knudsen",
+        "position": "POR",
+        "rating": 64,
+        "age": 33,
+        "nationality": "Dinamarca",
+        "marketValue": 0
+      },
+      {
+        "name": "Valdemar Lund",
+        "position": "DFC",
+        "rating": 60,
+        "age": 22,
+        "nationality": "Dinamarca",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Stefan Velkov",
+        "position": "DFC",
+        "rating": 64,
+        "age": 29,
+        "nationality": "Bulgaria",
+        "marketValue": 700
+      },
+      {
+        "name": "Damian van Bruggen",
+        "position": "DFC",
+        "rating": 64,
+        "age": 29,
+        "nationality": "Países Bajos",
+        "marketValue": 600
+      },
+      {
+        "name": "Anders Sønderskov",
+        "position": "DFC",
+        "rating": 59,
+        "age": 22,
+        "nationality": "Dinamarca",
+        "marketValue": 100
+      },
+      {
+        "name": "Lasse Nielsen",
+        "position": "DFC",
+        "rating": 58,
+        "age": 38,
+        "nationality": "Dinamarca",
+        "marketValue": 50
+      },
+      {
+        "name": "Giorgi Tabatadze",
+        "position": "DFC",
+        "rating": 60,
+        "age": 21,
+        "nationality": "Georgia",
+        "marketValue": 350
+      },
+      {
+        "name": "Christian Sørensen",
+        "position": "DFC",
+        "rating": 59,
+        "age": 33,
+        "nationality": "Dinamarca",
+        "marketValue": 250
+      },
+      {
+        "name": "Thomas Gundelund",
+        "position": "DFC",
+        "rating": 62,
+        "age": 24,
+        "nationality": "Dinamarca",
+        "marketValue": 750
+      },
+      {
+        "name": "Lasse Flø",
+        "position": "DFC",
+        "rating": 62,
+        "age": 23,
+        "nationality": "Dinamarca",
+        "marketValue": 400
+      },
+      {
+        "name": "Mads Enggård",
+        "position": "MC",
+        "rating": 65,
+        "age": 30,
+        "nationality": "Dinamarca",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Lundrim Hetemi",
+        "position": "MC",
+        "rating": 59,
+        "age": 34,
+        "nationality": "Albania",
+        "marketValue": 500
+      },
+      {
+        "name": "Mike Vestergård",
+        "position": "MC",
+        "rating": 64,
+        "age": 28,
+        "nationality": "Dinamarca",
+        "marketValue": 300
+      },
+      {
+        "name": "Tobias Lauritsen",
+        "position": "MC",
+        "rating": 60,
+        "age": 21,
+        "nationality": "Dinamarca",
+        "marketValue": 800
+      },
+      {
+        "name": "Andrew Hjulsager",
+        "position": "MC",
+        "rating": 61,
+        "age": 17,
+        "nationality": "Dinamarca",
+        "marketValue": 500
+      },
+      {
+        "name": "Sander Ravn",
+        "position": "MC",
+        "rating": 64,
+        "age": 26,
+        "nationality": "Dinamarca",
+        "marketValue": 25
+      },
+      {
+        "name": "Clemens Astrup",
+        "position": "MC",
+        "rating": 64,
+        "age": 27,
+        "nationality": "Dinamarca",
+        "marketValue": 0
+      },
+      {
+        "name": "Bismark Edjeodji",
+        "position": "MC",
+        "rating": 59,
+        "age": 32,
+        "nationality": "Ghana",
+        "marketValue": 500
+      },
+      {
+        "name": "Tobias Bach",
+        "position": "DC",
+        "rating": 62,
+        "age": 16,
+        "nationality": "Dinamarca",
+        "marketValue": 650
+      },
+      {
+        "name": "Jonathan Amon",
+        "position": "DC",
+        "rating": 64,
+        "age": 26,
+        "nationality": "Estados Unidos",
+        "marketValue": 500
+      },
+      {
+        "name": "Mikkel Duelund",
+        "position": "DC",
+        "rating": 62,
+        "age": 28,
+        "nationality": "Dinamarca",
+        "marketValue": 400
+      },
+      {
+        "name": "Alexi Pitu",
+        "position": "DC",
+        "rating": 61,
+        "age": 23,
+        "nationality": "Alemania",
+        "marketValue": 400
+      },
+      {
+        "name": "Abdoulaye Camara",
+        "position": "DC",
+        "rating": 58,
+        "age": 20,
+        "nationality": "Guinea",
+        "marketValue": 300
+      },
+      {
+        "name": "Christian Gammelgaard",
+        "position": "DC",
+        "rating": 60,
+        "age": 22,
+        "nationality": "Dinamarca",
+        "marketValue": 900
+      },
+      {
+        "name": "Wahid Faghir",
+        "position": "DC",
+        "rating": 61,
+        "age": 19,
+        "nationality": "Dinamarca",
+        "marketValue": 500
+      },
+      {
+        "name": "Jelle Duin",
+        "position": "DC",
+        "rating": 64,
+        "age": 27,
+        "nationality": "Países Bajos",
+        "marketValue": 200
+      },
+      {
+        "name": "Anders Jacobsen",
+        "position": "DC",
+        "rating": 61,
+        "age": 18,
+        "nationality": "Dinamarca",
+        "marketValue": 50
+      },
+      {
+        "name": "Ransford Amoo",
+        "position": "DC",
+        "rating": 61,
+        "age": 18,
+        "nationality": "Ghana",
+        "marketValue": 0
+      }
+    ]
+  },
+  {
+    "id": "fc-fredericia",
+    "name": "FC Fredericia",
+    "players": [
+      {
+        "name": "Valdemar Birksø",
+        "position": "POR",
+        "rating": 59,
+        "age": 24,
+        "nationality": "Dinamarca",
+        "marketValue": 600
+      },
+      {
+        "name": "Etienne Green",
+        "position": "POR",
+        "rating": 58,
+        "age": 42,
+        "nationality": "Inglaterra",
+        "marketValue": 500
+      },
+      {
+        "name": "Mads Eriksen",
+        "position": "POR",
+        "rating": 59,
+        "age": 23,
+        "nationality": "Dinamarca",
+        "marketValue": 25
+      },
+      {
+        "name": "Frederik Rieper",
+        "position": "DFC",
+        "rating": 64,
+        "age": 26,
+        "nationality": "Dinamarca",
+        "marketValue": 750
+      },
+      {
+        "name": "Jeppe Kudsk",
+        "position": "DFC",
+        "rating": 60,
+        "age": 22,
+        "nationality": "Dinamarca",
+        "marketValue": 450
+      },
+      {
+        "name": "Adam Nygaard",
+        "position": "DFC",
+        "rating": 60,
+        "age": 20,
+        "nationality": "Dinamarca",
+        "marketValue": 300
+      },
+      {
+        "name": "Malthe Ladefoged",
+        "position": "DFC",
+        "rating": 59,
+        "age": 15,
+        "nationality": "Dinamarca",
+        "marketValue": 25
+      },
+      {
+        "name": "Jakob Jessen",
+        "position": "DFC",
+        "rating": 60,
+        "age": 21,
+        "nationality": "Dinamarca",
+        "marketValue": 700
+      },
+      {
+        "name": "Daníel Freyr Kristjánsson",
+        "position": "DFC",
+        "rating": 61,
+        "age": 17,
+        "nationality": "Islandia",
+        "marketValue": 450
+      },
+      {
+        "name": "Kristian Pedersen",
+        "position": "DFC",
+        "rating": 62,
+        "age": 24,
+        "nationality": "Dinamarca",
+        "marketValue": 400
+      },
+      {
+        "name": "Daniel Thøgersen",
+        "position": "DFC",
+        "rating": 64,
+        "age": 26,
+        "nationality": "Dinamarca",
+        "marketValue": 200
+      },
+      {
+        "name": "Anders Dahl",
+        "position": "DFC",
+        "rating": 61,
+        "age": 23,
+        "nationality": "Dinamarca",
+        "marketValue": 600
+      },
+      {
+        "name": "Svenn Crone",
+        "position": "DFC",
+        "rating": 64,
+        "age": 30,
+        "nationality": "Dinamarca",
+        "marketValue": 400
+      },
+      {
+        "name": "Andreas Pyndt",
+        "position": "MC",
+        "rating": 61,
+        "age": 18,
+        "nationality": "Dinamarca",
+        "marketValue": 600
+      },
+      {
+        "name": "Felix Winther",
+        "position": "MC",
+        "rating": 64,
+        "age": 25,
+        "nationality": "Dinamarca",
+        "marketValue": 500
+      },
+      {
+        "name": "Jonatan Lindekilde",
+        "position": "MC",
+        "rating": 60,
+        "age": 21,
+        "nationality": "Dinamarca",
+        "marketValue": 400
+      },
+      {
+        "name": "Moses Opondo",
+        "position": "MC",
+        "rating": 64,
+        "age": 28,
+        "nationality": "Uganda",
+        "marketValue": 350
+      },
+      {
+        "name": "Sofus Johannesen",
+        "position": "MC",
+        "rating": 60,
+        "age": 16,
+        "nationality": "Dinamarca",
+        "marketValue": 250
+      },
+      {
+        "name": "Daniel Haarbo",
+        "position": "MC",
+        "rating": 59,
+        "age": 20,
+        "nationality": "Dinamarca",
+        "marketValue": 150
+      },
+      {
+        "name": "William Madsen",
+        "position": "MC",
+        "rating": 61,
+        "age": 23,
+        "nationality": "Dinamarca",
+        "marketValue": 500
+      },
+      {
+        "name": "Emilio Simonsen",
+        "position": "MC",
+        "rating": 65,
+        "age": 26,
+        "nationality": "Dinamarca",
+        "marketValue": 300
+      },
+      {
+        "name": "Gustav Marcussen",
+        "position": "DC",
+        "rating": 64,
+        "age": 27,
+        "nationality": "Dinamarca",
+        "marketValue": 750
+      },
+      {
+        "name": "Agon Mucolli",
+        "position": "DC",
+        "rating": 63,
+        "age": 27,
+        "nationality": "Albania",
+        "marketValue": 450
+      },
+      {
+        "name": "Oscar Buch",
+        "position": "DC",
+        "rating": 65,
+        "age": 28,
+        "nationality": "Dinamarca",
+        "marketValue": 450
+      },
+      {
+        "name": "Friday Etim",
+        "position": "DC",
+        "rating": 62,
+        "age": 23,
+        "nationality": "Nigeria",
+        "marketValue": 500
+      },
+      {
+        "name": "Patrick Egelund",
+        "position": "DC",
+        "rating": 63,
+        "age": 25,
+        "nationality": "Dinamarca",
+        "marketValue": 200
+      },
+      {
+        "name": "Eskild Dall",
+        "position": "DC",
+        "rating": 58,
+        "age": 19,
+        "nationality": "Dinamarca",
+        "marketValue": 200
+      },
+      {
+        "name": "Martin Huldahl",
+        "position": "DC",
+        "rating": 62,
+        "age": 22,
+        "nationality": "Dinamarca",
+        "marketValue": 25
+      }
+    ]
+  }
+]

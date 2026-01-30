@@ -1,0 +1,3730 @@
+[
+  {
+    "id": "fc-brugge",
+    "name": "Club Brujas KV",
+    "players": [
+      {
+        "name": "Nordin Jackers",
+        "position": "POR",
+        "rating": 78,
+        "age": 29,
+        "nationality": "Bélgica",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Simon Mignolet",
+        "position": "POR",
+        "rating": 72,
+        "age": 22,
+        "nationality": "Bélgica",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Axl De Corte",
+        "position": "POR",
+        "rating": 72,
+        "age": 19,
+        "nationality": "Bélgica",
+        "marketValue": 400
+      },
+      {
+        "name": "Dani van den Heuvel",
+        "position": "POR",
+        "rating": 71,
+        "age": 16,
+        "nationality": "Países Bajos",
+        "marketValue": 200
+      },
+      {
+        "name": "Joel Ordóñez",
+        "position": "DFC",
+        "rating": 78,
+        "age": 21,
+        "nationality": "Ecuador",
+        "marketValue": 28000000
+      },
+      {
+        "name": "Brandon Mechele",
+        "position": "DFC",
+        "rating": 74,
+        "age": 44,
+        "nationality": "Bélgica",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Jorne Spileers",
+        "position": "DFC",
+        "rating": 74,
+        "age": 21,
+        "nationality": "Bélgica",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Vince Osuji",
+        "position": "DFC",
+        "rating": 75,
+        "age": 24,
+        "nationality": "Nigeria",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Joaquin Seys",
+        "position": "DFC",
+        "rating": 78,
+        "age": 20,
+        "nationality": "Bélgica",
+        "marketValue": 15000000
+      },
+      {
+        "name": "Bjorn Meijer",
+        "position": "DFC",
+        "rating": 73,
+        "age": 22,
+        "nationality": "Países Bajos",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Kyriani Sabbe",
+        "position": "DFC",
+        "rating": 75,
+        "age": 21,
+        "nationality": "Bélgica",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Hugo Siquet",
+        "position": "DFC",
+        "rating": 71,
+        "age": 41,
+        "nationality": "Bélgica",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Raphael Onyedika",
+        "position": "MC",
+        "rating": 78,
+        "age": 15,
+        "nationality": "Nigeria",
+        "marketValue": 20000000
+      },
+      {
+        "name": "Aleksandar Stanković",
+        "position": "MC",
+        "rating": 84,
+        "age": 25,
+        "nationality": "Serbia",
+        "marketValue": 15000000
+      },
+      {
+        "name": "Lynnt Audoor",
+        "position": "MC",
+        "rating": 75,
+        "age": 22,
+        "nationality": "Bélgica",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Ludovit Reis",
+        "position": "MC",
+        "rating": 78,
+        "age": 25,
+        "nationality": "Países Bajos",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Hugo Vetlesen",
+        "position": "MC",
+        "rating": 77,
+        "age": 25,
+        "nationality": "Noruega",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Alejandro Granados",
+        "position": "MC",
+        "rating": 73,
+        "age": 19,
+        "nationality": "España",
+        "marketValue": 700
+      },
+      {
+        "name": "Félix Lemaréchal",
+        "position": "MC",
+        "rating": 77,
+        "age": 22,
+        "nationality": "Francia",
+        "marketValue": 10000000
+      },
+      {
+        "name": "Hans Vanaken",
+        "position": "MC",
+        "rating": 79,
+        "age": 20,
+        "nationality": "Bélgica",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Cisse Sandra",
+        "position": "MC",
+        "rating": 75,
+        "age": 22,
+        "nationality": "Bélgica",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Christos Tzolis",
+        "position": "DC",
+        "rating": 89,
+        "age": 24,
+        "nationality": "Grecia",
+        "marketValue": 30000000
+      },
+      {
+        "name": "Carlos Forbs",
+        "position": "DC",
+        "rating": 78,
+        "age": 21,
+        "nationality": "Portugal",
+        "marketValue": 15000000
+      },
+      {
+        "name": "Mamadou Diakhon",
+        "position": "DC",
+        "rating": 75,
+        "age": 20,
+        "nationality": "Francia",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Shandre Campbell",
+        "position": "DC",
+        "rating": 72,
+        "age": 20,
+        "nationality": "Sudáfrica",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Nicolò Tresoldi",
+        "position": "DC",
+        "rating": 76,
+        "age": 21,
+        "nationality": "Alemania",
+        "marketValue": 10000000
+      },
+      {
+        "name": "Romeo Vermant",
+        "position": "DC",
+        "rating": 77,
+        "age": 17,
+        "nationality": "Bélgica",
+        "marketValue": 8000000
+      },
+      {
+        "name": "Gustaf Nilsson",
+        "position": "DC",
+        "rating": 72,
+        "age": 19,
+        "nationality": "Suecia",
+        "marketValue": 2500000
+      }
+    ]
+  },
+  {
+    "id": "krc-genk",
+    "name": "KRC Genk",
+    "players": [
+      {
+        "name": "Tobias Lawal",
+        "position": "POR",
+        "rating": 76,
+        "age": 26,
+        "nationality": "Austria",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Hendrik Van Crombrugge",
+        "position": "POR",
+        "rating": 78,
+        "age": 32,
+        "nationality": "Bélgica",
+        "marketValue": 1700000
+      },
+      {
+        "name": "Lucca Brughmans",
+        "position": "POR",
+        "rating": 77,
+        "age": 28,
+        "nationality": "Bélgica",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Brent Stevens",
+        "position": "POR",
+        "rating": 72,
+        "age": 22,
+        "nationality": "Bélgica",
+        "marketValue": 50
+      },
+      {
+        "name": "Matte Smets",
+        "position": "DFC",
+        "rating": 77,
+        "age": 22,
+        "nationality": "Bélgica",
+        "marketValue": 11000000
+      },
+      {
+        "name": "Mujaid Sadick",
+        "position": "DFC",
+        "rating": 79,
+        "age": 25,
+        "nationality": "España",
+        "marketValue": 8000000
+      },
+      {
+        "name": "Josué Kongolo",
+        "position": "DFC",
+        "rating": 71,
+        "age": 44,
+        "nationality": "Bélgica",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Adrián Palacios",
+        "position": "DFC",
+        "rating": 72,
+        "age": 34,
+        "nationality": "Venezuela",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Yaimar Medina",
+        "position": "DFC",
+        "rating": 74,
+        "age": 19,
+        "nationality": "Ecuador",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Joris Kayembe",
+        "position": "DFC",
+        "rating": 74,
+        "age": 18,
+        "nationality": "RD del Congo",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Zakaria El Ouahdi",
+        "position": "DFC",
+        "rating": 82,
+        "age": 24,
+        "nationality": "Marruecos",
+        "marketValue": 15000000
+      },
+      {
+        "name": "Ken Nkuba",
+        "position": "DFC",
+        "rating": 77,
+        "age": 27,
+        "nationality": "Bélgica",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Ibrahima Sory Bangoura",
+        "position": "MC",
+        "rating": 74,
+        "age": 21,
+        "nationality": "Guinea",
+        "marketValue": 8000000
+      },
+      {
+        "name": "Nikolas Sattlberger",
+        "position": "MC",
+        "rating": 75,
+        "age": 24,
+        "nationality": "Austria",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Bryan Heynen",
+        "position": "MC",
+        "rating": 81,
+        "age": 28,
+        "nationality": "Bélgica",
+        "marketValue": 10000000
+      },
+      {
+        "name": "August De Wannemacker",
+        "position": "MC",
+        "rating": 74,
+        "age": 17,
+        "nationality": "Bélgica",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Konstantinos Karetsas",
+        "position": "MC",
+        "rating": 80,
+        "age": 20,
+        "nationality": "Grecia",
+        "marketValue": 28000000
+      },
+      {
+        "name": "Daan Heymans",
+        "position": "MC",
+        "rating": 75,
+        "age": 38,
+        "nationality": "Bélgica",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Noah Adedeji-Sternberg",
+        "position": "DC",
+        "rating": 70,
+        "age": 32,
+        "nationality": "Bélgica",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Yira Sor",
+        "position": "DC",
+        "rating": 75,
+        "age": 25,
+        "nationality": "Nigeria",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Ayumu Yokoyama",
+        "position": "DC",
+        "rating": 77,
+        "age": 30,
+        "nationality": "Japón",
+        "marketValue": 900
+      },
+      {
+        "name": "Jarne Steuckers",
+        "position": "DC",
+        "rating": 77,
+        "age": 23,
+        "nationality": "Bélgica",
+        "marketValue": 10000000
+      },
+      {
+        "name": "Junya Ito",
+        "position": "DC",
+        "rating": 72,
+        "age": 32,
+        "nationality": "Japón",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Hyeon-gyu Oh",
+        "position": "DC",
+        "rating": 77,
+        "age": 24,
+        "nationality": "Corea del Sur",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Jusef Erabi",
+        "position": "DC",
+        "rating": 74,
+        "age": 22,
+        "nationality": "Suecia",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Robin Mirisola",
+        "position": "DC",
+        "rating": 75,
+        "age": 29,
+        "nationality": "Bélgica",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Aaron Bibout",
+        "position": "DC",
+        "rating": 75,
+        "age": 23,
+        "nationality": "Camerún",
+        "marketValue": 1000000
+      }
+    ]
+  },
+  {
+    "id": "royale-union-saint-gilloise",
+    "name": "Union Saint-Gilloise",
+    "players": [
+      {
+        "name": "Kjell Scherpen",
+        "position": "POR",
+        "rating": 75,
+        "age": 37,
+        "nationality": "Países Bajos",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Vic Chambaere",
+        "position": "POR",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Bélgica",
+        "marketValue": 300
+      },
+      {
+        "name": "Giorgi Kavlashvili",
+        "position": "POR",
+        "rating": 70,
+        "age": 18,
+        "nationality": "Georgia",
+        "marketValue": 100
+      },
+      {
+        "name": "Jens Teunckens",
+        "position": "POR",
+        "rating": 70,
+        "age": 21,
+        "nationality": "Bélgica",
+        "marketValue": 100
+      },
+      {
+        "name": "Kevin Mac Allister",
+        "position": "DFC",
+        "rating": 79,
+        "age": 28,
+        "nationality": "Argentina",
+        "marketValue": 9000000
+      },
+      {
+        "name": "Fedde Leysen",
+        "position": "DFC",
+        "rating": 73,
+        "age": 22,
+        "nationality": "Bélgica",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Ross Sykes",
+        "position": "DFC",
+        "rating": 76,
+        "age": 26,
+        "nationality": "Inglaterra",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Christian Burgess",
+        "position": "DFC",
+        "rating": 75,
+        "age": 16,
+        "nationality": "Inglaterra",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Mamadou Thierno Barry",
+        "position": "DFC",
+        "rating": 71,
+        "age": 20,
+        "nationality": "Senegal",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Massiré Sylla",
+        "position": "DFC",
+        "rating": 75,
+        "age": 29,
+        "nationality": "Senegal",
+        "marketValue": 600
+      },
+      {
+        "name": "Louis Patris",
+        "position": "DFC",
+        "rating": 75,
+        "age": 27,
+        "nationality": "Bélgica",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Guillaume François",
+        "position": "DFC",
+        "rating": 71,
+        "age": 19,
+        "nationality": "Bélgica",
+        "marketValue": 150
+      },
+      {
+        "name": "Adem Zorgane",
+        "position": "MC",
+        "rating": 78,
+        "age": 26,
+        "nationality": "Argelia",
+        "marketValue": 9000000
+      },
+      {
+        "name": "Kamiel Van De Perre",
+        "position": "MC",
+        "rating": 73,
+        "age": 21,
+        "nationality": "Bélgica",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Besfort Zeneli",
+        "position": "MC",
+        "rating": 74,
+        "age": 23,
+        "nationality": "Suecia",
+        "marketValue": 4500000
+      },
+      {
+        "name": "Rob Schoofs",
+        "position": "MC",
+        "rating": 72,
+        "age": 17,
+        "nationality": "Bélgica",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Ivan Pavlic",
+        "position": "MC",
+        "rating": 73,
+        "age": 24,
+        "nationality": "Bélgica",
+        "marketValue": 250
+      },
+      {
+        "name": "Anan Khalaili",
+        "position": "MC",
+        "rating": 77,
+        "age": 25,
+        "nationality": "Israel",
+        "marketValue": 12000000
+      },
+      {
+        "name": "Ousseynou Niang",
+        "position": "MC",
+        "rating": 76,
+        "age": 22,
+        "nationality": "Senegal",
+        "marketValue": 7500000
+      },
+      {
+        "name": "Anouar Ait El Hadj",
+        "position": "MC",
+        "rating": 75,
+        "age": 23,
+        "nationality": "Bélgica",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Guilherme Smith",
+        "position": "DC",
+        "rating": 70,
+        "age": 22,
+        "nationality": "Brasil",
+        "marketValue": 200
+      },
+      {
+        "name": "Promise David",
+        "position": "DC",
+        "rating": 76,
+        "age": 24,
+        "nationality": "Canadá",
+        "marketValue": 13000000
+      },
+      {
+        "name": "Raul Florucz",
+        "position": "DC",
+        "rating": 78,
+        "age": 30,
+        "nationality": "Austria",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Kevin Rodríguez",
+        "position": "DC",
+        "rating": 78,
+        "age": 25,
+        "nationality": "Ecuador",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Mohammed Fuseini",
+        "position": "DC",
+        "rating": 74,
+        "age": 23,
+        "nationality": "Ghana",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Marc Giger",
+        "position": "DC",
+        "rating": 70,
+        "age": 20,
+        "nationality": "Suiza",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Mateo Biondic",
+        "position": "DC",
+        "rating": 73,
+        "age": 22,
+        "nationality": "Alemania",
+        "marketValue": 100
+      }
+    ]
+  },
+  {
+    "id": "rsc-anderlecht",
+    "name": "RSC Anderlecht",
+    "players": [
+      {
+        "name": "Colin Coosemans",
+        "position": "POR",
+        "rating": 76,
+        "age": 26,
+        "nationality": "Bélgica",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Justin Heekeren",
+        "position": "POR",
+        "rating": 75,
+        "age": 32,
+        "nationality": "Alemania",
+        "marketValue": 500
+      },
+      {
+        "name": "Joachim Imbrechts",
+        "position": "POR",
+        "rating": 70,
+        "age": 24,
+        "nationality": "Suecia",
+        "marketValue": 250
+      },
+      {
+        "name": "Lucas Hey",
+        "position": "DFC",
+        "rating": 74,
+        "age": 22,
+        "nationality": "Dinamarca",
+        "marketValue": 4500000
+      },
+      {
+        "name": "Marco Kana",
+        "position": "DFC",
+        "rating": 74,
+        "age": 23,
+        "nationality": "Bélgica",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Mihajlo Ilić",
+        "position": "DFC",
+        "rating": 71,
+        "age": 15,
+        "nationality": "Serbia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Moussa Diarra",
+        "position": "DFC",
+        "rating": 74,
+        "age": 25,
+        "nationality": "Malí",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Zoumana Keita",
+        "position": "DFC",
+        "rating": 71,
+        "age": 20,
+        "nationality": "Alemania",
+        "marketValue": 500
+      },
+      {
+        "name": "Moussa N'Diaye",
+        "position": "DFC",
+        "rating": 74,
+        "age": 23,
+        "nationality": "Senegal",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Ludwig Augustinsson",
+        "position": "DFC",
+        "rating": 76,
+        "age": 31,
+        "nationality": "Suecia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Killian Sardella",
+        "position": "DFC",
+        "rating": 75,
+        "age": 23,
+        "nationality": "Bélgica",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Ilay Camara",
+        "position": "DFC",
+        "rating": 73,
+        "age": 23,
+        "nationality": "Senegal",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Ali Maamar",
+        "position": "DFC",
+        "rating": 72,
+        "age": 20,
+        "nationality": "Marruecos",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Thomas Foket",
+        "position": "DFC",
+        "rating": 73,
+        "age": 25,
+        "nationality": "Bélgica",
+        "marketValue": 600
+      },
+      {
+        "name": "Enric Llansana",
+        "position": "MC",
+        "rating": 74,
+        "age": 24,
+        "nationality": "Países Bajos",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Mats Rits",
+        "position": "MC",
+        "rating": 73,
+        "age": 23,
+        "nationality": "Bélgica",
+        "marketValue": 750
+      },
+      {
+        "name": "Nathan De Cat",
+        "position": "MC",
+        "rating": 76,
+        "age": 17,
+        "nationality": "Bélgica",
+        "marketValue": 17000000
+      },
+      {
+        "name": "Nathan-Dylan Saliba",
+        "position": "MC",
+        "rating": 72,
+        "age": 21,
+        "nationality": "Canadá",
+        "marketValue": 4500000
+      },
+      {
+        "name": "Anas Tajaouart",
+        "position": "MC",
+        "rating": 71,
+        "age": 20,
+        "nationality": "Marruecos",
+        "marketValue": 400
+      },
+      {
+        "name": "Mario Stroeykens",
+        "position": "MC",
+        "rating": 76,
+        "age": 29,
+        "nationality": "RD del Congo",
+        "marketValue": 8000000
+      },
+      {
+        "name": "Yari Verschaeren",
+        "position": "MC",
+        "rating": 73,
+        "age": 24,
+        "nationality": "Bélgica",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Thorgan Hazard",
+        "position": "MC",
+        "rating": 75,
+        "age": 32,
+        "nationality": "Bélgica",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Alexis Flips",
+        "position": "MC",
+        "rating": 75,
+        "age": 26,
+        "nationality": "Francia",
+        "marketValue": 400
+      },
+      {
+        "name": "Nilson Angulo",
+        "position": "DC",
+        "rating": 78,
+        "age": 19,
+        "nationality": "Ecuador",
+        "marketValue": 7000000
+      },
+      {
+        "name": "César Huerta",
+        "position": "DC",
+        "rating": 74,
+        "age": 21,
+        "nationality": "México",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Ibrahim Kanaté",
+        "position": "DC",
+        "rating": 69,
+        "age": 19,
+        "nationality": "Malí",
+        "marketValue": 800
+      },
+      {
+        "name": "Tristan Degreef",
+        "position": "DC",
+        "rating": 70,
+        "age": 21,
+        "nationality": "Bélgica",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Mihajlo Cvetkovic",
+        "position": "DC",
+        "rating": 73,
+        "age": 19,
+        "nationality": "Serbia",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Adriano Bertaccini",
+        "position": "DC",
+        "rating": 78,
+        "age": 25,
+        "nationality": "Bélgica",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Danylo Sikan",
+        "position": "DC",
+        "rating": 75,
+        "age": 24,
+        "nationality": "Ucrania",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Elyèss Dao",
+        "position": "DC",
+        "rating": 73,
+        "age": 22,
+        "nationality": "Marruecos",
+        "marketValue": 400
+      }
+    ]
+  },
+  {
+    "id": "kaa-gent",
+    "name": "KAA Gante",
+    "players": [
+      {
+        "name": "Davy Roef",
+        "position": "POR",
+        "rating": 76,
+        "age": 33,
+        "nationality": "Bélgica",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Kjell Peersman",
+        "position": "POR",
+        "rating": 72,
+        "age": 30,
+        "nationality": "Bélgica",
+        "marketValue": 400
+      },
+      {
+        "name": "Tom Vandenberghe",
+        "position": "POR",
+        "rating": 67,
+        "age": 23,
+        "nationality": "Bélgica",
+        "marketValue": 300
+      },
+      {
+        "name": "Siebe Van der Heyden",
+        "position": "DFC",
+        "rating": 68,
+        "age": 44,
+        "nationality": "Bélgica",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Maksim Paskotsi",
+        "position": "DFC",
+        "rating": 72,
+        "age": 23,
+        "nationality": "Estonia",
+        "marketValue": 2800000
+      },
+      {
+        "name": "Jean-Kévin Duverne",
+        "position": "DFC",
+        "rating": 73,
+        "age": 29,
+        "nationality": "Haití",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Hatim Es-Saoubi",
+        "position": "DFC",
+        "rating": 72,
+        "age": 25,
+        "nationality": "Marruecos",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Matties Volckaert",
+        "position": "DFC",
+        "rating": 71,
+        "age": 23,
+        "nationality": "Bélgica",
+        "marketValue": 400
+      },
+      {
+        "name": "Tiago Araújo",
+        "position": "DFC",
+        "rating": 70,
+        "age": 20,
+        "nationality": "Portugal",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Gilles De Meyer",
+        "position": "DFC",
+        "rating": 68,
+        "age": 35,
+        "nationality": "Bélgica",
+        "marketValue": 500
+      },
+      {
+        "name": "Mohammed El Âdfaoui",
+        "position": "MC",
+        "rating": 74,
+        "age": 28,
+        "nationality": "Bélgica",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Mathias Delorge",
+        "position": "MC",
+        "rating": 71,
+        "age": 17,
+        "nationality": "Bélgica",
+        "marketValue": 9000000
+      },
+      {
+        "name": "Atsuki Ito",
+        "position": "MC",
+        "rating": 70,
+        "age": 15,
+        "nationality": "Japón",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Leonardo Lopes",
+        "position": "MC",
+        "rating": 71,
+        "age": 22,
+        "nationality": "Portugal",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Matisse Samoise",
+        "position": "MC",
+        "rating": 70,
+        "age": 18,
+        "nationality": "Bélgica",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Hyun-seok Hong",
+        "position": "MC",
+        "rating": 72,
+        "age": 24,
+        "nationality": "Corea del Sur",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Abdelkahar Kadri",
+        "position": "MC",
+        "rating": 69,
+        "age": 37,
+        "nationality": "Argelia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Aimé Omgba",
+        "position": "MC",
+        "rating": 71,
+        "age": 23,
+        "nationality": "Países Bajos",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Tibe De Vlieger",
+        "position": "MC",
+        "rating": 72,
+        "age": 27,
+        "nationality": "Bélgica",
+        "marketValue": 600
+      },
+      {
+        "name": "Michal Skoras",
+        "position": "DC",
+        "rating": 75,
+        "age": 25,
+        "nationality": "Polonia",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Momodou Sonko",
+        "position": "DC",
+        "rating": 68,
+        "age": 20,
+        "nationality": "Suecia",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Max Dean",
+        "position": "DC",
+        "rating": 71,
+        "age": 21,
+        "nationality": "Inglaterra",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Wilfried Kanga",
+        "position": "DC",
+        "rating": 76,
+        "age": 27,
+        "nationality": "Costa de Marfil",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Hyllarion Goore",
+        "position": "DC",
+        "rating": 66,
+        "age": 45,
+        "nationality": "Costa de Marfil",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Moctar Diop",
+        "position": "DC",
+        "rating": 70,
+        "age": 21,
+        "nationality": "Senegal",
+        "marketValue": 750
+      }
+    ]
+  },
+  {
+    "id": "royal-antwerpen-fc",
+    "name": "Royal Amberes FC",
+    "players": [
+      {
+        "name": "Taishi Brandon Nozawa",
+        "position": "POR",
+        "rating": 69,
+        "age": 41,
+        "nationality": "Japón",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Yannick Thoelen",
+        "position": "POR",
+        "rating": 67,
+        "age": 15,
+        "nationality": "Bélgica",
+        "marketValue": 200
+      },
+      {
+        "name": "Niels Devalckeneer",
+        "position": "POR",
+        "rating": 68,
+        "age": 21,
+        "nationality": "Bélgica",
+        "marketValue": 100
+      },
+      {
+        "name": "Zeno Van Den Bosch",
+        "position": "DFC",
+        "rating": 70,
+        "age": 33,
+        "nationality": "Bélgica",
+        "marketValue": 8000000
+      },
+      {
+        "name": "Rein Van Helden",
+        "position": "DFC",
+        "rating": 70,
+        "age": 20,
+        "nationality": "Bélgica",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Kiki Kouyaté",
+        "position": "DFC",
+        "rating": 72,
+        "age": 25,
+        "nationality": "Malí",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Yuto Tsunashima",
+        "position": "DFC",
+        "rating": 72,
+        "age": 25,
+        "nationality": "Japón",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Andreas Verstraeten",
+        "position": "DFC",
+        "rating": 68,
+        "age": 21,
+        "nationality": "Bélgica",
+        "marketValue": 800
+      },
+      {
+        "name": "Björn Engels",
+        "position": "DFC",
+        "rating": 73,
+        "age": 31,
+        "nationality": "Bélgica",
+        "marketValue": 100
+      },
+      {
+        "name": "Daam Foulon",
+        "position": "DFC",
+        "rating": 74,
+        "age": 26,
+        "nationality": "Bélgica",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Semm Renders",
+        "position": "DFC",
+        "rating": 69,
+        "age": 17,
+        "nationality": "Bélgica",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Kobe Corbanie",
+        "position": "DFC",
+        "rating": 69,
+        "age": 20,
+        "nationality": "Bélgica",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Glenn Bijl",
+        "position": "DFC",
+        "rating": 71,
+        "age": 23,
+        "nationality": "Países Bajos",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Mauricio Benítez",
+        "position": "MC",
+        "rating": 70,
+        "age": 16,
+        "nationality": "Argentina",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Jules Ahoka",
+        "position": "MC",
+        "rating": 69,
+        "age": 19,
+        "nationality": "RD del Congo",
+        "marketValue": 200
+      },
+      {
+        "name": "Dennis Praet",
+        "position": "MC",
+        "rating": 74,
+        "age": 31,
+        "nationality": "Bélgica",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Mahamadou Diawara",
+        "position": "MC",
+        "rating": 72,
+        "age": 34,
+        "nationality": "Francia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Youssef Hamdaoui",
+        "position": "MC",
+        "rating": 67,
+        "age": 43,
+        "nationality": "Marruecos",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Xander Dierckx",
+        "position": "MC",
+        "rating": 69,
+        "age": 16,
+        "nationality": "Bélgica",
+        "marketValue": 400
+      },
+      {
+        "name": "Christopher Scott",
+        "position": "MC",
+        "rating": 73,
+        "age": 30,
+        "nationality": "Alemania",
+        "marketValue": 600
+      },
+      {
+        "name": "Isaac Babadi",
+        "position": "MC",
+        "rating": 69,
+        "age": 20,
+        "nationality": "Países Bajos",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Farouck Adekami",
+        "position": "MC",
+        "rating": 71,
+        "age": 22,
+        "nationality": "Costa de Marfil",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Marwan Al-Sahafi",
+        "position": "DC",
+        "rating": 69,
+        "age": 21,
+        "nationality": "Arabia Saudita",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Gyrano Kerk",
+        "position": "DC",
+        "rating": 77,
+        "age": 30,
+        "nationality": "Surinam",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Thibo Somers",
+        "position": "DC",
+        "rating": 72,
+        "age": 24,
+        "nationality": "Bélgica",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Anthony Valencia",
+        "position": "DC",
+        "rating": 71,
+        "age": 22,
+        "nationality": "Ecuador",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Mukhammadali Urinboev",
+        "position": "DC",
+        "rating": 69,
+        "age": 19,
+        "nationality": "Uzbekistán",
+        "marketValue": 450
+      },
+      {
+        "name": "Geoffry Hairemans",
+        "position": "DC",
+        "rating": 67,
+        "age": 34,
+        "nationality": "Bélgica",
+        "marketValue": 400
+      },
+      {
+        "name": "Vincent Janssen",
+        "position": "DC",
+        "rating": 74,
+        "age": 18,
+        "nationality": "Países Bajos",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Gabriel Jesus David",
+        "position": "DC",
+        "rating": 69,
+        "age": 19,
+        "nationality": "Nigeria",
+        "marketValue": 300
+      }
+    ]
+  },
+  {
+    "id": "standard-luttich",
+    "name": "Standard de Lieja",
+    "players": [
+      {
+        "name": "Matthieu Epolo",
+        "position": "POR",
+        "rating": 68,
+        "age": 21,
+        "nationality": "RD del Congo",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Lucas Pirard",
+        "position": "POR",
+        "rating": 65,
+        "age": 21,
+        "nationality": "Bélgica",
+        "marketValue": 200
+      },
+      {
+        "name": "Matteo Godfroid",
+        "position": "POR",
+        "rating": 66,
+        "age": 21,
+        "nationality": "Bélgica",
+        "marketValue": 50
+      },
+      {
+        "name": "Ibe Hautekiet",
+        "position": "DFC",
+        "rating": 70,
+        "age": 25,
+        "nationality": "Bélgica",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Ibrahim Karamoko",
+        "position": "DFC",
+        "rating": 68,
+        "age": 20,
+        "nationality": "Francia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Daan Dierckx",
+        "position": "DFC",
+        "rating": 72,
+        "age": 29,
+        "nationality": "Bélgica",
+        "marketValue": 1500000
+      },
+      {
+        "name": "David Bates",
+        "position": "DFC",
+        "rating": 72,
+        "age": 29,
+        "nationality": "Escocia",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Josué Homawoo",
+        "position": "DFC",
+        "rating": 70,
+        "age": 24,
+        "nationality": "Togo",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Gustav Mortensen",
+        "position": "DFC",
+        "rating": 67,
+        "age": 21,
+        "nationality": "Dinamarca",
+        "marketValue": 800
+      },
+      {
+        "name": "Souleyman Doumbia",
+        "position": "DFC",
+        "rating": 71,
+        "age": 29,
+        "nationality": "Costa de Marfil",
+        "marketValue": 600
+      },
+      {
+        "name": "Alexandro Calut",
+        "position": "DFC",
+        "rating": 66,
+        "age": 22,
+        "nationality": "Bélgica",
+        "marketValue": 600
+      },
+      {
+        "name": "Boli Bolingoli",
+        "position": "DFC",
+        "rating": 71,
+        "age": 30,
+        "nationality": "Bélgica",
+        "marketValue": 400
+      },
+      {
+        "name": "Marlon Fossey",
+        "position": "DFC",
+        "rating": 72,
+        "age": 27,
+        "nationality": "Estados Unidos",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Henry Lawrence",
+        "position": "DFC",
+        "rating": 68,
+        "age": 18,
+        "nationality": "Inglaterra",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Steeven Assengue",
+        "position": "DFC",
+        "rating": 66,
+        "age": 20,
+        "nationality": "Bélgica",
+        "marketValue": 150
+      },
+      {
+        "name": "Hakim Sahabo",
+        "position": "MC",
+        "rating": 67,
+        "age": 20,
+        "nationality": "Ruanda",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Marco Ilaimaharitra",
+        "position": "MC",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Madagascar",
+        "marketValue": 800
+      },
+      {
+        "name": "Bradley Nam James",
+        "position": "MC",
+        "rating": 67,
+        "age": 19,
+        "nationality": "Bélgica",
+        "marketValue": 100
+      },
+      {
+        "name": "Teddy Teuma",
+        "position": "MC",
+        "rating": 67,
+        "age": 32,
+        "nationality": "Malta",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Nayel Mehssatou",
+        "position": "MC",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Chile",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Casper Nielsen",
+        "position": "MC",
+        "rating": 73,
+        "age": 31,
+        "nationality": "Dinamarca",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Léandre Kuavita",
+        "position": "MC",
+        "rating": 67,
+        "age": 21,
+        "nationality": "Bélgica",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Tobias Mohr",
+        "position": "MC",
+        "rating": 71,
+        "age": 30,
+        "nationality": "Alemania",
+        "marketValue": 900
+      },
+      {
+        "name": "Mohammed El Hankouri",
+        "position": "MC",
+        "rating": 72,
+        "age": 27,
+        "nationality": "Marruecos",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Rafiki Saïd",
+        "position": "DC",
+        "rating": 69,
+        "age": 17,
+        "nationality": "Comoras",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Adnane Abid",
+        "position": "DC",
+        "rating": 68,
+        "age": 22,
+        "nationality": "Bélgica",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Dennis Eckert Ayensa",
+        "position": "DC",
+        "rating": 72,
+        "age": 29,
+        "nationality": "Alemania",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Timothé Nkada",
+        "position": "DC",
+        "rating": 69,
+        "age": 26,
+        "nationality": "Francia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Thomas Henry",
+        "position": "DC",
+        "rating": 66,
+        "age": 31,
+        "nationality": "Francia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "René Mitongo",
+        "position": "DC",
+        "rating": 67,
+        "age": 19,
+        "nationality": "Bélgica",
+        "marketValue": 500
+      },
+      {
+        "name": "Grejohn Kyei",
+        "position": "DC",
+        "rating": 71,
+        "age": 30,
+        "nationality": "Francia",
+        "marketValue": 400
+      },
+      {
+        "name": "Bernard Nguene",
+        "position": "DC",
+        "rating": 71,
+        "age": 26,
+        "nationality": "Camerún",
+        "marketValue": 200
+      }
+    ]
+  },
+  {
+    "id": "kvc-westerlo",
+    "name": "KVC Westerlo",
+    "players": [
+      {
+        "name": "Andreas Jungdal",
+        "position": "POR",
+        "rating": 67,
+        "age": 23,
+        "nationality": "Dinamarca",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Koen Van Langendonck",
+        "position": "POR",
+        "rating": 70,
+        "age": 30,
+        "nationality": "Bélgica",
+        "marketValue": 150
+      },
+      {
+        "name": "Oskar Annell",
+        "position": "POR",
+        "rating": 71,
+        "age": 31,
+        "nationality": "Bélgica",
+        "marketValue": 50
+      },
+      {
+        "name": "Emin Bayram",
+        "position": "DFC",
+        "rating": 66,
+        "age": 40,
+        "nationality": "Turquía",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Seiji Kimura",
+        "position": "DFC",
+        "rating": 70,
+        "age": 24,
+        "nationality": "Japón",
+        "marketValue": 1300000
+      },
+      {
+        "name": "Amando Lapage",
+        "position": "DFC",
+        "rating": 66,
+        "age": 21,
+        "nationality": "Bélgica",
+        "marketValue": 400
+      },
+      {
+        "name": "Bakary Haidara",
+        "position": "DFC",
+        "rating": 67,
+        "age": 20,
+        "nationality": "Costa de Marfil",
+        "marketValue": 200
+      },
+      {
+        "name": "Roman Neustädter",
+        "position": "DFC",
+        "rating": 65,
+        "age": 33,
+        "nationality": "Rusia",
+        "marketValue": 150
+      },
+      {
+        "name": "Dylan Ourega",
+        "position": "DFC",
+        "rating": 71,
+        "age": 28,
+        "nationality": "Francia",
+        "marketValue": 500
+      },
+      {
+        "name": "Bryan Reynolds",
+        "position": "DFC",
+        "rating": 68,
+        "age": 22,
+        "nationality": "Estados Unidos",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Lucas Mbamba",
+        "position": "DFC",
+        "rating": 68,
+        "age": 23,
+        "nationality": "Bélgica",
+        "marketValue": 600
+      },
+      {
+        "name": "Doğucan Haspolat",
+        "position": "MC",
+        "rating": 68,
+        "age": 34,
+        "nationality": "Turquía",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Arthur Piedfort",
+        "position": "MC",
+        "rating": 68,
+        "age": 20,
+        "nationality": "Bélgica",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Sergiy Sydorchuk",
+        "position": "MC",
+        "rating": 65,
+        "age": 34,
+        "nationality": "Ucrania",
+        "marketValue": 300
+      },
+      {
+        "name": "Mathias Fixelles",
+        "position": "MC",
+        "rating": 66,
+        "age": 19,
+        "nationality": "Bélgica",
+        "marketValue": 250
+      },
+      {
+        "name": "Reda Laalaoui",
+        "position": "MC",
+        "rating": 67,
+        "age": 20,
+        "nationality": "Marruecos",
+        "marketValue": 800
+      },
+      {
+        "name": "Thomas Van den Keybus",
+        "position": "MC",
+        "rating": 64,
+        "age": 39,
+        "nationality": "Bélgica",
+        "marketValue": 800
+      },
+      {
+        "name": "Raf Smekens",
+        "position": "MC",
+        "rating": 67,
+        "age": 17,
+        "nationality": "Bélgica",
+        "marketValue": 50
+      },
+      {
+        "name": "Isa Sakamoto",
+        "position": "MC",
+        "rating": 71,
+        "age": 22,
+        "nationality": "Japón",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Jan Bernat",
+        "position": "MC",
+        "rating": 67,
+        "age": 21,
+        "nationality": "Eslovaquia",
+        "marketValue": 250
+      },
+      {
+        "name": "Josimar Alcócer",
+        "position": "DC",
+        "rating": 70,
+        "age": 21,
+        "nationality": "Costa Rica",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Naoufal Bohamdi-Kamoni",
+        "position": "DC",
+        "rating": 68,
+        "age": 18,
+        "nationality": "Bélgica",
+        "marketValue": 150
+      },
+      {
+        "name": "Allahyar Sayyadmanesh",
+        "position": "DC",
+        "rating": 70,
+        "age": 24,
+        "nationality": "Irán",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Shunsuke Saito",
+        "position": "DC",
+        "rating": 67,
+        "age": 38,
+        "nationality": "Japón",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Nacho Ferri",
+        "position": "DC",
+        "rating": 70,
+        "age": 21,
+        "nationality": "España",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Afonso Patrão",
+        "position": "DC",
+        "rating": 69,
+        "age": 18,
+        "nationality": "Portugal",
+        "marketValue": 1700000
+      },
+      {
+        "name": "Kyan Vaesen",
+        "position": "DC",
+        "rating": 66,
+        "age": 24,
+        "nationality": "Bélgica",
+        "marketValue": 700
+      },
+      {
+        "name": "Eliot Bujupi",
+        "position": "DC",
+        "rating": 68,
+        "age": 19,
+        "nationality": "Kosovo",
+        "marketValue": 500
+      },
+      {
+        "name": "Fernand Goure",
+        "position": "DC",
+        "rating": 71,
+        "age": 29,
+        "nationality": "Costa de Marfil",
+        "marketValue": 200
+      }
+    ]
+  },
+  {
+    "id": "kv-mechelen",
+    "name": "KV Mechelen",
+    "players": [
+      {
+        "name": "Nacho Miras",
+        "position": "POR",
+        "rating": 72,
+        "age": 28,
+        "nationality": "España",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Ortwin De Wolf",
+        "position": "POR",
+        "rating": 72,
+        "age": 28,
+        "nationality": "Bélgica",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Tijn Van Ingelgom",
+        "position": "POR",
+        "rating": 65,
+        "age": 15,
+        "nationality": "Bélgica",
+        "marketValue": 100
+      },
+      {
+        "name": "Axel Willockx",
+        "position": "POR",
+        "rating": 71,
+        "age": 32,
+        "nationality": "Bélgica",
+        "marketValue": 50
+      },
+      {
+        "name": "Gora Diouf",
+        "position": "DFC",
+        "rating": 67,
+        "age": 22,
+        "nationality": "Senegal",
+        "marketValue": 3500000
+      },
+      {
+        "name": "José Marsà",
+        "position": "DFC",
+        "rating": 70,
+        "age": 23,
+        "nationality": "España",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Redouane Halhal",
+        "position": "DFC",
+        "rating": 68,
+        "age": 22,
+        "nationality": "Marruecos",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Tommy St. Jago",
+        "position": "DFC",
+        "rating": 67,
+        "age": 33,
+        "nationality": "Curazao",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Ian Struyf",
+        "position": "DFC",
+        "rating": 66,
+        "age": 18,
+        "nationality": "Bélgica",
+        "marketValue": 400
+      },
+      {
+        "name": "Lovro Golic",
+        "position": "DFC",
+        "rating": 66,
+        "age": 22,
+        "nationality": "Eslovenia",
+        "marketValue": 400
+      },
+      {
+        "name": "Moncef Zekri",
+        "position": "DFC",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Marruecos",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Thérence Koudou",
+        "position": "DFC",
+        "rating": 68,
+        "age": 21,
+        "nationality": "Francia",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Fredrik Hammar",
+        "position": "MC",
+        "rating": 70,
+        "age": 24,
+        "nationality": "Suecia",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Mory Konaté",
+        "position": "MC",
+        "rating": 66,
+        "age": 32,
+        "nationality": "Guinea",
+        "marketValue": 500
+      },
+      {
+        "name": "Massimo Decoene",
+        "position": "MC",
+        "rating": 64,
+        "age": 39,
+        "nationality": "Bélgica",
+        "marketValue": 200
+      },
+      {
+        "name": "Dikeni Salifou",
+        "position": "MC",
+        "rating": 71,
+        "age": 29,
+        "nationality": "Alemania",
+        "marketValue": 700
+      },
+      {
+        "name": "Amine Ouahabi",
+        "position": "MC",
+        "rating": 65,
+        "age": 40,
+        "nationality": "Marruecos",
+        "marketValue": 100
+      },
+      {
+        "name": "Mathis Servais",
+        "position": "MC",
+        "rating": 69,
+        "age": 17,
+        "nationality": "Bélgica",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Bilal Bafdili",
+        "position": "MC",
+        "rating": 67,
+        "age": 21,
+        "nationality": "Bélgica",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Kerim Mrabti",
+        "position": "MC",
+        "rating": 68,
+        "age": 19,
+        "nationality": "Suecia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Maksim Kireev",
+        "position": "MC",
+        "rating": 67,
+        "age": 21,
+        "nationality": "Bielorrusia",
+        "marketValue": 700
+      },
+      {
+        "name": "Myron van Brederode",
+        "position": "DC",
+        "rating": 70,
+        "age": 22,
+        "nationality": "Países Bajos",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Hassane Bandé",
+        "position": "DC",
+        "rating": 71,
+        "age": 27,
+        "nationality": "Burkina Faso",
+        "marketValue": 400
+      },
+      {
+        "name": "Bill Antonio",
+        "position": "DC",
+        "rating": 61,
+        "age": 38,
+        "nationality": "Zimbabue",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Halil Özdemir",
+        "position": "DC",
+        "rating": 68,
+        "age": 21,
+        "nationality": "Turquía",
+        "marketValue": 150
+      },
+      {
+        "name": "Benito Raman",
+        "position": "DC",
+        "rating": 65,
+        "age": 31,
+        "nationality": "Bélgica",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Keano Vanrafelghem",
+        "position": "DC",
+        "rating": 71,
+        "age": 27,
+        "nationality": "Bélgica",
+        "marketValue": 900
+      },
+      {
+        "name": "Bouke Boersma",
+        "position": "DC",
+        "rating": 68,
+        "age": 20,
+        "nationality": "Países Bajos",
+        "marketValue": 450
+      },
+      {
+        "name": "Mauro Lenaerts",
+        "position": "DC",
+        "rating": 65,
+        "age": 34,
+        "nationality": "Bélgica",
+        "marketValue": 400
+      }
+    ]
+  },
+  {
+    "id": "rsc-charleroi",
+    "name": "R Charleroi SC",
+    "players": [
+      {
+        "name": "Martin Delavallée",
+        "position": "POR",
+        "rating": 67,
+        "age": 21,
+        "nationality": "Bélgica",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Mohamed Koné",
+        "position": "POR",
+        "rating": 70,
+        "age": 30,
+        "nationality": "Costa de Marfil",
+        "marketValue": 800
+      },
+      {
+        "name": "Théo Defourny",
+        "position": "POR",
+        "rating": 71,
+        "age": 33,
+        "nationality": "Bélgica",
+        "marketValue": 200
+      },
+      {
+        "name": "Nicolas Closset",
+        "position": "POR",
+        "rating": 66,
+        "age": 21,
+        "nationality": "Bélgica",
+        "marketValue": 50
+      },
+      {
+        "name": "Aiham Ousou",
+        "position": "DFC",
+        "rating": 74,
+        "age": 26,
+        "nationality": "Siria",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Check Keita",
+        "position": "DFC",
+        "rating": 70,
+        "age": 22,
+        "nationality": "Malí",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Mehdi Boukamir",
+        "position": "DFC",
+        "rating": 70,
+        "age": 32,
+        "nationality": "Marruecos",
+        "marketValue": 500
+      },
+      {
+        "name": "Massamba Sow",
+        "position": "DFC",
+        "rating": 65,
+        "age": 44,
+        "nationality": "Francia",
+        "marketValue": 500
+      },
+      {
+        "name": "Robin Denuit",
+        "position": "DFC",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Bélgica",
+        "marketValue": 100
+      },
+      {
+        "name": "Mardochée Nzita",
+        "position": "DFC",
+        "rating": 70,
+        "age": 24,
+        "nationality": "Bélgica",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Jules Gaudin",
+        "position": "DFC",
+        "rating": 68,
+        "age": 23,
+        "nationality": "Francia",
+        "marketValue": 600
+      },
+      {
+        "name": "Lewin Blum",
+        "position": "DFC",
+        "rating": 72,
+        "age": 27,
+        "nationality": "Suiza",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Kevin Van Den Kerkhof",
+        "position": "DFC",
+        "rating": 72,
+        "age": 29,
+        "nationality": "Argelia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Étienne Camara",
+        "position": "MC",
+        "rating": 72,
+        "age": 22,
+        "nationality": "Francia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Amine Boukamir",
+        "position": "MC",
+        "rating": 66,
+        "age": 19,
+        "nationality": "Marruecos",
+        "marketValue": 300
+      },
+      {
+        "name": "Mory Kera",
+        "position": "MC",
+        "rating": 67,
+        "age": 17,
+        "nationality": "Bélgica",
+        "marketValue": 150
+      },
+      {
+        "name": "Yassine Titraoui",
+        "position": "MC",
+        "rating": 73,
+        "age": 22,
+        "nationality": "Argelia",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Yassine Khalifi",
+        "position": "MC",
+        "rating": 67,
+        "age": 40,
+        "nationality": "Marruecos",
+        "marketValue": 400
+      },
+      {
+        "name": "Patrick Pflücke",
+        "position": "MC",
+        "rating": 74,
+        "age": 29,
+        "nationality": "Alemania",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Jakob Napoleon Romsaas",
+        "position": "MC",
+        "rating": 68,
+        "age": 21,
+        "nationality": "Noruega",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Parfait Guiagon",
+        "position": "DC",
+        "rating": 71,
+        "age": 24,
+        "nationality": "Costa de Marfil",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Antoine Bernier",
+        "position": "DC",
+        "rating": 67,
+        "age": 17,
+        "nationality": "Bélgica",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Filip Szymczak",
+        "position": "DC",
+        "rating": 66,
+        "age": 23,
+        "nationality": "Polonia",
+        "marketValue": 800
+      },
+      {
+        "name": "Isaac Mbenza",
+        "position": "DC",
+        "rating": 70,
+        "age": 29,
+        "nationality": "Bélgica",
+        "marketValue": 500
+      },
+      {
+        "name": "Quentin Benaets",
+        "position": "DC",
+        "rating": 63,
+        "age": 43,
+        "nationality": "Bélgica",
+        "marketValue": 100
+      },
+      {
+        "name": "Raymond Asante",
+        "position": "DC",
+        "rating": 70,
+        "age": 28,
+        "nationality": "Ghana",
+        "marketValue": 200
+      },
+      {
+        "name": "Aurélien Scheidler",
+        "position": "DC",
+        "rating": 69,
+        "age": 21,
+        "nationality": "Francia",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Antoine Colassin",
+        "position": "DC",
+        "rating": 69,
+        "age": 25,
+        "nationality": "Bélgica",
+        "marketValue": 600
+      }
+    ]
+  },
+  {
+    "id": "cercle-brugge",
+    "name": "Círculo de Brujas",
+    "players": [
+      {
+        "name": "Maxime Delanghe",
+        "position": "POR",
+        "rating": 67,
+        "age": 21,
+        "nationality": "Bélgica",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Warleson",
+        "position": "POR",
+        "rating": 71,
+        "age": 29,
+        "nationality": "Brasil",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Bas Langenbick",
+        "position": "POR",
+        "rating": 66,
+        "age": 22,
+        "nationality": "Bélgica",
+        "marketValue": 50
+      },
+      {
+        "name": "Christiaan Ravych",
+        "position": "DFC",
+        "rating": 70,
+        "age": 23,
+        "nationality": "Bélgica",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Emmanuel Kakou",
+        "position": "DFC",
+        "rating": 67,
+        "age": 20,
+        "nationality": "Costa de Marfil",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Dalangunypole Gomis",
+        "position": "DFC",
+        "rating": 67,
+        "age": 21,
+        "nationality": "Francia",
+        "marketValue": 200
+      },
+      {
+        "name": "Nazinho",
+        "position": "DFC",
+        "rating": 69,
+        "age": 20,
+        "nationality": "Portugal",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Geoffrey Kondo",
+        "position": "DFC",
+        "rating": 69,
+        "age": 24,
+        "nationality": "Francia",
+        "marketValue": 800
+      },
+      {
+        "name": "Valy Konaté",
+        "position": "DFC",
+        "rating": 67,
+        "age": 19,
+        "nationality": "Costa de Marfil",
+        "marketValue": 250
+      },
+      {
+        "name": "Beni Mpanzu",
+        "position": "DFC",
+        "rating": 67,
+        "age": 21,
+        "nationality": "Bélgica",
+        "marketValue": 200
+      },
+      {
+        "name": "Gary Magnée",
+        "position": "DFC",
+        "rating": 69,
+        "age": 15,
+        "nationality": "Bélgica",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Ibrahim Diakité",
+        "position": "DFC",
+        "rating": 67,
+        "age": 22,
+        "nationality": "Guinea",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Ibrahima Diaby",
+        "position": "MC",
+        "rating": 66,
+        "age": 19,
+        "nationality": "Francia",
+        "marketValue": 500
+      },
+      {
+        "name": "Hannes Van Der Bruggen",
+        "position": "MC",
+        "rating": 71,
+        "age": 28,
+        "nationality": "Bélgica",
+        "marketValue": 500
+      },
+      {
+        "name": "Lawrence Agyekum",
+        "position": "MC",
+        "rating": 70,
+        "age": 22,
+        "nationality": "Ghana",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Edan Diop",
+        "position": "MC",
+        "rating": 66,
+        "age": 37,
+        "nationality": "Francia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Nils De Wilde",
+        "position": "MC",
+        "rating": 70,
+        "age": 27,
+        "nationality": "Bélgica",
+        "marketValue": 300
+      },
+      {
+        "name": "Erick Nunes",
+        "position": "MC",
+        "rating": 67,
+        "age": 21,
+        "nationality": "Brasil",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Pieter Gerkens",
+        "position": "MC",
+        "rating": 69,
+        "age": 18,
+        "nationality": "Bélgica",
+        "marketValue": 800
+      },
+      {
+        "name": "Oluwaseun Adewumi",
+        "position": "MC",
+        "rating": 67,
+        "age": 17,
+        "nationality": "Austria",
+        "marketValue": 600
+      },
+      {
+        "name": "Heriberto Jurado",
+        "position": "DC",
+        "rating": 68,
+        "age": 23,
+        "nationality": "México",
+        "marketValue": 800
+      },
+      {
+        "name": "Alama Bayo",
+        "position": "DC",
+        "rating": 69,
+        "age": 22,
+        "nationality": "Bélgica",
+        "marketValue": 200
+      },
+      {
+        "name": "Krys Kouassi",
+        "position": "DC",
+        "rating": 62,
+        "age": 41,
+        "nationality": "Francia",
+        "marketValue": 200
+      },
+      {
+        "name": "Oumar Diakité",
+        "position": "DC",
+        "rating": 71,
+        "age": 22,
+        "nationality": "Costa de Marfil",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Steve Ngoura",
+        "position": "DC",
+        "rating": 70,
+        "age": 20,
+        "nationality": "Francia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Dante Vanzeir",
+        "position": "DC",
+        "rating": 72,
+        "age": 27,
+        "nationality": "Bélgica",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Abdoul Kader Ouattara",
+        "position": "DC",
+        "rating": 68,
+        "age": 20,
+        "nationality": "Burkina Faso",
+        "marketValue": 800
+      }
+    ]
+  },
+  {
+    "id": "vv-st-truiden",
+    "name": "Sint-Truidense VV",
+    "players": [
+      {
+        "name": "Leo Kokubo",
+        "position": "POR",
+        "rating": 67,
+        "age": 16,
+        "nationality": "Japón",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Jo Coppens",
+        "position": "POR",
+        "rating": 67,
+        "age": 35,
+        "nationality": "Bélgica",
+        "marketValue": 150
+      },
+      {
+        "name": "Matt Lendfers",
+        "position": "POR",
+        "rating": 65,
+        "age": 21,
+        "nationality": "Bélgica",
+        "marketValue": 150
+      },
+      {
+        "name": "Loïc Mbe Soh",
+        "position": "DFC",
+        "rating": 70,
+        "age": 24,
+        "nationality": "Francia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Joedrick Pupe",
+        "position": "DFC",
+        "rating": 72,
+        "age": 28,
+        "nationality": "Bélgica",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Visar Musliu",
+        "position": "DFC",
+        "rating": 71,
+        "age": 26,
+        "nationality": "Macedonia del Norte",
+        "marketValue": 900
+      },
+      {
+        "name": "Shogo Taniguchi",
+        "position": "DFC",
+        "rating": 66,
+        "age": 34,
+        "nationality": "Japón",
+        "marketValue": 800
+      },
+      {
+        "name": "Wolke Janssens",
+        "position": "DFC",
+        "rating": 66,
+        "age": 22,
+        "nationality": "Bélgica",
+        "marketValue": 300
+      },
+      {
+        "name": "Hugo Lambotte",
+        "position": "DFC",
+        "rating": 66,
+        "age": 34,
+        "nationality": "Bélgica",
+        "marketValue": 150
+      },
+      {
+        "name": "Taiga Hata",
+        "position": "DFC",
+        "rating": 71,
+        "age": 24,
+        "nationality": "Japón",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Simen Juklerød",
+        "position": "DFC",
+        "rating": 66,
+        "age": 18,
+        "nationality": "Noruega",
+        "marketValue": 300
+      },
+      {
+        "name": "Robert-Jan Vanwesemael",
+        "position": "DFC",
+        "rating": 70,
+        "age": 23,
+        "nationality": "Bélgica",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Abdoulaye Sissako",
+        "position": "MC",
+        "rating": 71,
+        "age": 27,
+        "nationality": "Francia",
+        "marketValue": 900
+      },
+      {
+        "name": "Alouis Diriken",
+        "position": "MC",
+        "rating": 65,
+        "age": 33,
+        "nationality": "Bélgica",
+        "marketValue": 300
+      },
+      {
+        "name": "Rihito Yamamoto",
+        "position": "MC",
+        "rating": 71,
+        "age": 24,
+        "nationality": "Japón",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Ryan Merlen",
+        "position": "MC",
+        "rating": 68,
+        "age": 23,
+        "nationality": "Francia",
+        "marketValue": 750
+      },
+      {
+        "name": "Ryotaro Ito",
+        "position": "MC",
+        "rating": 75,
+        "age": 27,
+        "nationality": "Japón",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Shion Shinkawa",
+        "position": "MC",
+        "rating": 67,
+        "age": 18,
+        "nationality": "Japón",
+        "marketValue": 700
+      },
+      {
+        "name": "Isaías Delpupo",
+        "position": "MC",
+        "rating": 68,
+        "age": 22,
+        "nationality": "Argentina",
+        "marketValue": 300
+      },
+      {
+        "name": "Illyès Benachour",
+        "position": "MC",
+        "rating": 70,
+        "age": 31,
+        "nationality": "Marruecos",
+        "marketValue": 100
+      },
+      {
+        "name": "Ilias Sebaoui",
+        "position": "DC",
+        "rating": 68,
+        "age": 24,
+        "nationality": "Marruecos",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Kaito Matsuzawa",
+        "position": "DC",
+        "rating": 60,
+        "age": 38,
+        "nationality": "Japón",
+        "marketValue": 600
+      },
+      {
+        "name": "Arbnor Muja",
+        "position": "DC",
+        "rating": 72,
+        "age": 27,
+        "nationality": "Albania",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Adam Nhaili",
+        "position": "DC",
+        "rating": 67,
+        "age": 20,
+        "nationality": "Bélgica",
+        "marketValue": 200
+      },
+      {
+        "name": "Keisuke Goto",
+        "position": "DC",
+        "rating": 65,
+        "age": 42,
+        "nationality": "Japón",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Oumar Diouf",
+        "position": "DC",
+        "rating": 73,
+        "age": 22,
+        "nationality": "Senegal",
+        "marketValue": 900
+      },
+      {
+        "name": "Jay-David Mbalanda",
+        "position": "DC",
+        "rating": 65,
+        "age": 32,
+        "nationality": "Bélgica",
+        "marketValue": 100
+      }
+    ]
+  },
+  {
+    "id": "oud-heverlee-leuven",
+    "name": "Oud-Heverlee Leuven",
+    "players": [
+      {
+        "name": "Tobe Leysen",
+        "position": "POR",
+        "rating": 67,
+        "age": 23,
+        "nationality": "Bélgica",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Maxence Prévot",
+        "position": "POR",
+        "rating": 65,
+        "age": 16,
+        "nationality": "Francia",
+        "marketValue": 300
+      },
+      {
+        "name": "Théo Radelet",
+        "position": "POR",
+        "rating": 66,
+        "age": 18,
+        "nationality": "Bélgica",
+        "marketValue": 50
+      },
+      {
+        "name": "Takuma Ominami",
+        "position": "DFC",
+        "rating": 72,
+        "age": 28,
+        "nationality": "Japón",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Ewoud Pletinckx",
+        "position": "DFC",
+        "rating": 72,
+        "age": 28,
+        "nationality": "Bélgica",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Roggerio Nyakossi",
+        "position": "DFC",
+        "rating": 65,
+        "age": 34,
+        "nationality": "Suiza",
+        "marketValue": 800
+      },
+      {
+        "name": "Noë Dussenne",
+        "position": "DFC",
+        "rating": 66,
+        "age": 33,
+        "nationality": "Bélgica",
+        "marketValue": 400
+      },
+      {
+        "name": "Viktor Damjanic",
+        "position": "DFC",
+        "rating": 67,
+        "age": 15,
+        "nationality": "Croacia",
+        "marketValue": 400
+      },
+      {
+        "name": "Christ Souanga",
+        "position": "DFC",
+        "rating": 67,
+        "age": 19,
+        "nationality": "Bélgica",
+        "marketValue": 200
+      },
+      {
+        "name": "Takahiro Akimoto",
+        "position": "DFC",
+        "rating": 72,
+        "age": 30,
+        "nationality": "Japón",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Óscar Gil",
+        "position": "DFC",
+        "rating": 71,
+        "age": 27,
+        "nationality": "España",
+        "marketValue": 700
+      },
+      {
+        "name": "Thibault Vlietinck",
+        "position": "DFC",
+        "rating": 71,
+        "age": 28,
+        "nationality": "Bélgica",
+        "marketValue": 500
+      },
+      {
+        "name": "Davis Opoku",
+        "position": "DFC",
+        "rating": 66,
+        "age": 18,
+        "nationality": "Bélgica",
+        "marketValue": 500
+      },
+      {
+        "name": "Birger Verstraete",
+        "position": "MC",
+        "rating": 72,
+        "age": 31,
+        "nationality": "Bélgica",
+        "marketValue": 1300000
+      },
+      {
+        "name": "Lukasz Lakomy",
+        "position": "MC",
+        "rating": 71,
+        "age": 24,
+        "nationality": "Polonia",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Siebe Schrijvers",
+        "position": "MC",
+        "rating": 73,
+        "age": 29,
+        "nationality": "Bélgica",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Wouter George",
+        "position": "MC",
+        "rating": 68,
+        "age": 23,
+        "nationality": "Bélgica",
+        "marketValue": 700
+      },
+      {
+        "name": "Bryang Kayo",
+        "position": "MC",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Estados Unidos",
+        "marketValue": 350
+      },
+      {
+        "name": "Youssef Maziz",
+        "position": "MC",
+        "rating": 72,
+        "age": 27,
+        "nationality": "Francia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Mathieu Maertens",
+        "position": "MC",
+        "rating": 65,
+        "age": 33,
+        "nationality": "Bélgica",
+        "marketValue": 900
+      },
+      {
+        "name": "William Balikwisha",
+        "position": "MC",
+        "rating": 67,
+        "age": 21,
+        "nationality": "RD del Congo",
+        "marketValue": 600
+      },
+      {
+        "name": "Thibaud Verlinden",
+        "position": "DC",
+        "rating": 69,
+        "age": 26,
+        "nationality": "Bélgica",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Henok Teklab",
+        "position": "DC",
+        "rating": 68,
+        "age": 27,
+        "nationality": "Alemania",
+        "marketValue": 600
+      },
+      {
+        "name": "Casper Terho",
+        "position": "DC",
+        "rating": 67,
+        "age": 22,
+        "nationality": "Finlandia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Chukwubuikem Ikwuemesi",
+        "position": "DC",
+        "rating": 67,
+        "age": 19,
+        "nationality": "Nigeria",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Sory Kaba",
+        "position": "DC",
+        "rating": 65,
+        "age": 39,
+        "nationality": "Guinea",
+        "marketValue": 1300000
+      },
+      {
+        "name": "Abdoul Karim Traoré",
+        "position": "DC",
+        "rating": 65,
+        "age": 19,
+        "nationality": "Guinea",
+        "marketValue": 700
+      }
+    ]
+  },
+  {
+    "id": "sv-zulte-waregem",
+    "name": "Zulte Waregem",
+    "players": [
+      {
+        "name": "Brent Gabriël",
+        "position": "POR",
+        "rating": 66,
+        "age": 27,
+        "nationality": "Bélgica",
+        "marketValue": 800
+      },
+      {
+        "name": "Ennio van der Gouw",
+        "position": "POR",
+        "rating": 63,
+        "age": 23,
+        "nationality": "Países Bajos",
+        "marketValue": 400
+      },
+      {
+        "name": "Louis Bostyn",
+        "position": "POR",
+        "rating": 67,
+        "age": 32,
+        "nationality": "Bélgica",
+        "marketValue": 150
+      },
+      {
+        "name": "Arnaud Dobbels",
+        "position": "POR",
+        "rating": 63,
+        "age": 42,
+        "nationality": "Bélgica",
+        "marketValue": 50
+      },
+      {
+        "name": "Anton Tanghe",
+        "position": "DFC",
+        "rating": 68,
+        "age": 27,
+        "nationality": "Bélgica",
+        "marketValue": 800
+      },
+      {
+        "name": "Jakob Kiilerich",
+        "position": "DFC",
+        "rating": 66,
+        "age": 25,
+        "nationality": "Dinamarca",
+        "marketValue": 700
+      },
+      {
+        "name": "Lukas Willen",
+        "position": "DFC",
+        "rating": 67,
+        "age": 31,
+        "nationality": "Bélgica",
+        "marketValue": 700
+      },
+      {
+        "name": "Laurent Lemoine",
+        "position": "DFC",
+        "rating": 68,
+        "age": 27,
+        "nationality": "Bélgica",
+        "marketValue": 600
+      },
+      {
+        "name": "Kadir Seven",
+        "position": "DFC",
+        "rating": 64,
+        "age": 22,
+        "nationality": "Turquía",
+        "marketValue": 500
+      },
+      {
+        "name": "Mouhamadou Sall",
+        "position": "DFC",
+        "rating": 64,
+        "age": 18,
+        "nationality": "Senegal",
+        "marketValue": 0
+      },
+      {
+        "name": "Yannick Cappelle",
+        "position": "DFC",
+        "rating": 64,
+        "age": 22,
+        "nationality": "Bélgica",
+        "marketValue": 800
+      },
+      {
+        "name": "Emran Soglo",
+        "position": "DFC",
+        "rating": 64,
+        "age": 17,
+        "nationality": "Inglaterra",
+        "marketValue": 400
+      },
+      {
+        "name": "Atli Barkarson",
+        "position": "DFC",
+        "rating": 66,
+        "age": 24,
+        "nationality": "Islandia",
+        "marketValue": 300
+      },
+      {
+        "name": "Wilguens Paugain",
+        "position": "DFC",
+        "rating": 66,
+        "age": 24,
+        "nationality": "Haití",
+        "marketValue": 600
+      },
+      {
+        "name": "Benoît Nyssen",
+        "position": "DFC",
+        "rating": 64,
+        "age": 19,
+        "nationality": "Bélgica",
+        "marketValue": 600
+      },
+      {
+        "name": "Tochukwu Nnadi",
+        "position": "MC",
+        "rating": 65,
+        "age": 21,
+        "nationality": "Nigeria",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Enrique Lofolomo",
+        "position": "MC",
+        "rating": 67,
+        "age": 25,
+        "nationality": "Alemania",
+        "marketValue": 400
+      },
+      {
+        "name": "Ibrahim Diabaté",
+        "position": "MC",
+        "rating": 68,
+        "age": 27,
+        "nationality": "Costa de Marfil",
+        "marketValue": 50
+      },
+      {
+        "name": "Thomas Claes",
+        "position": "MC",
+        "rating": 65,
+        "age": 21,
+        "nationality": "Bélgica",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Thibaud Sergeant",
+        "position": "MC",
+        "rating": 64,
+        "age": 20,
+        "nationality": "Bélgica",
+        "marketValue": 50
+      },
+      {
+        "name": "Tristan Panduro",
+        "position": "MC",
+        "rating": 64,
+        "age": 18,
+        "nationality": "Dinamarca",
+        "marketValue": 0
+      },
+      {
+        "name": "Jeppe Erenbjerg",
+        "position": "MC",
+        "rating": 71,
+        "age": 25,
+        "nationality": "Dinamarca",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Serxho Ujka",
+        "position": "MC",
+        "rating": 61,
+        "age": 36,
+        "nationality": "Albania",
+        "marketValue": 400
+      },
+      {
+        "name": "Joseph Opoku",
+        "position": "DC",
+        "rating": 65,
+        "age": 22,
+        "nationality": "Ghana",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Marley Aké",
+        "position": "DC",
+        "rating": 62,
+        "age": 39,
+        "nationality": "Francia",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Abdoulaye Traoré",
+        "position": "DC",
+        "rating": 66,
+        "age": 22,
+        "nationality": "Costa de Marfil",
+        "marketValue": 400
+      },
+      {
+        "name": "Stavros Gavriel",
+        "position": "DC",
+        "rating": 63,
+        "age": 24,
+        "nationality": "Chipre",
+        "marketValue": 800
+      },
+      {
+        "name": "Nikola Mituljikic",
+        "position": "DC",
+        "rating": 66,
+        "age": 23,
+        "nationality": "Serbia",
+        "marketValue": 600
+      },
+      {
+        "name": "Anosike Ementa",
+        "position": "DC",
+        "rating": 64,
+        "age": 18,
+        "nationality": "Dinamarca",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Tobias Hedl",
+        "position": "DC",
+        "rating": 62,
+        "age": 20,
+        "nationality": "Austria",
+        "marketValue": 500
+      },
+      {
+        "name": "Jelle Vossen",
+        "position": "DC",
+        "rating": 57,
+        "age": 36,
+        "nationality": "Bélgica",
+        "marketValue": 200
+      },
+      {
+        "name": "Siebe Van Keymolen",
+        "position": "DC",
+        "rating": 65,
+        "age": 20,
+        "nationality": "Bélgica",
+        "marketValue": 100
+      }
+    ]
+  },
+  {
+    "id": "fcv-dender-eh",
+    "name": "FCV Dender EH",
+    "players": [
+      {
+        "name": "Michael Verrips",
+        "position": "POR",
+        "rating": 68,
+        "age": 34,
+        "nationality": "Países Bajos",
+        "marketValue": 600
+      },
+      {
+        "name": "Gauthier Gallon",
+        "position": "POR",
+        "rating": 68,
+        "age": 32,
+        "nationality": "Francia",
+        "marketValue": 600
+      },
+      {
+        "name": "Guillaume Dietsch",
+        "position": "POR",
+        "rating": 68,
+        "age": 30,
+        "nationality": "Francia",
+        "marketValue": 250
+      },
+      {
+        "name": "Louis Fortin",
+        "position": "POR",
+        "rating": 62,
+        "age": 24,
+        "nationality": "Bélgica",
+        "marketValue": 100
+      },
+      {
+        "name": "Luc Marijnissen",
+        "position": "DFC",
+        "rating": 67,
+        "age": 23,
+        "nationality": "Países Bajos",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Luc De Fougerolles",
+        "position": "DFC",
+        "rating": 63,
+        "age": 44,
+        "nationality": "Canadá",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Kobe Cools",
+        "position": "DFC",
+        "rating": 64,
+        "age": 21,
+        "nationality": "Bélgica",
+        "marketValue": 800
+      },
+      {
+        "name": "Benjamin Fredrick",
+        "position": "DFC",
+        "rating": 64,
+        "age": 22,
+        "nationality": "Nigeria",
+        "marketValue": 800
+      },
+      {
+        "name": "Bo De Kerf",
+        "position": "DFC",
+        "rating": 64,
+        "age": 22,
+        "nationality": "Bélgica",
+        "marketValue": 600
+      },
+      {
+        "name": "Bryan Goncalves",
+        "position": "DFC",
+        "rating": 68,
+        "age": 29,
+        "nationality": "Francia",
+        "marketValue": 500
+      },
+      {
+        "name": "Fabio Ferraro",
+        "position": "DFC",
+        "rating": 67,
+        "age": 23,
+        "nationality": "Bélgica",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Nail Moutha-Sebtaoui",
+        "position": "DFC",
+        "rating": 63,
+        "age": 20,
+        "nationality": "Marruecos",
+        "marketValue": 300
+      },
+      {
+        "name": "Marsoni Sambu",
+        "position": "DFC",
+        "rating": 69,
+        "age": 29,
+        "nationality": "Angola",
+        "marketValue": 600
+      },
+      {
+        "name": "Nathan Rôdes",
+        "position": "MC",
+        "rating": 65,
+        "age": 18,
+        "nationality": "Bélgica",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Malcolm Viltard",
+        "position": "MC",
+        "rating": 66,
+        "age": 24,
+        "nationality": "Francia",
+        "marketValue": 800
+      },
+      {
+        "name": "Krzysztof Koton",
+        "position": "MC",
+        "rating": 63,
+        "age": 15,
+        "nationality": "Polonia",
+        "marketValue": 300
+      },
+      {
+        "name": "Noah Mbamba",
+        "position": "MC",
+        "rating": 65,
+        "age": 17,
+        "nationality": "Bélgica",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Roman Kvet",
+        "position": "MC",
+        "rating": 65,
+        "age": 16,
+        "nationality": "República Checa",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Desmond Acquah",
+        "position": "MC",
+        "rating": 65,
+        "age": 23,
+        "nationality": "Bélgica",
+        "marketValue": 200
+      },
+      {
+        "name": "David Hrncar",
+        "position": "MC",
+        "rating": 63,
+        "age": 20,
+        "nationality": "Eslovaquia",
+        "marketValue": 750
+      },
+      {
+        "name": "Amine Daali",
+        "position": "MC",
+        "rating": 62,
+        "age": 45,
+        "nationality": "Bélgica",
+        "marketValue": 0
+      },
+      {
+        "name": "Ragnar Oratmangoen",
+        "position": "DC",
+        "rating": 67,
+        "age": 26,
+        "nationality": "Indonesia",
+        "marketValue": 600
+      },
+      {
+        "name": "Alireza Jahanbakhsh",
+        "position": "DC",
+        "rating": 67,
+        "age": 27,
+        "nationality": "Irán",
+        "marketValue": 800
+      },
+      {
+        "name": "Mohamed Berte",
+        "position": "DC",
+        "rating": 63,
+        "age": 23,
+        "nationality": "Bélgica",
+        "marketValue": 800
+      },
+      {
+        "name": "Bruny Nsimba",
+        "position": "DC",
+        "rating": 69,
+        "age": 25,
+        "nationality": "Bélgica",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Moïse Sahi Dion",
+        "position": "DC",
+        "rating": 66,
+        "age": 24,
+        "nationality": "Costa de Marfil",
+        "marketValue": 700
+      },
+      {
+        "name": "David Toshevski",
+        "position": "DC",
+        "rating": 66,
+        "age": 24,
+        "nationality": "Macedonia del Norte",
+        "marketValue": 500
+      },
+      {
+        "name": "Jordan Kadiri",
+        "position": "DC",
+        "rating": 64,
+        "age": 19,
+        "nationality": "Nigeria",
+        "marketValue": 300
+      },
+      {
+        "name": "Ryan Adewusi",
+        "position": "DC",
+        "rating": 60,
+        "age": 37,
+        "nationality": "Bélgica",
+        "marketValue": 100
+      }
+    ]
+  },
+  {
+    "id": "raal-la-louviere",
+    "name": "RAAL La Louvière",
+    "players": [
+      {
+        "name": "Marcos Peano",
+        "position": "POR",
+        "rating": 64,
+        "age": 21,
+        "nationality": "Argentina",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Célestin De Schrevel",
+        "position": "POR",
+        "rating": 62,
+        "age": 23,
+        "nationality": "Bélgica",
+        "marketValue": 100
+      },
+      {
+        "name": "Lucas Monteiro",
+        "position": "POR",
+        "rating": 63,
+        "age": 20,
+        "nationality": "Portugal",
+        "marketValue": 100
+      },
+      {
+        "name": "Djibril Lamego",
+        "position": "DFC",
+        "rating": 69,
+        "age": 25,
+        "nationality": "Francia",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Yllan Okou",
+        "position": "DFC",
+        "rating": 67,
+        "age": 23,
+        "nationality": "Francia",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Maxence Maisonneuve",
+        "position": "DFC",
+        "rating": 68,
+        "age": 26,
+        "nationality": "Francia",
+        "marketValue": 500
+      },
+      {
+        "name": "Wagane Faye",
+        "position": "DFC",
+        "rating": 68,
+        "age": 32,
+        "nationality": "Senegal",
+        "marketValue": 400
+      },
+      {
+        "name": "Matthis Riou",
+        "position": "DFC",
+        "rating": 67,
+        "age": 26,
+        "nationality": "Francia",
+        "marketValue": 400
+      },
+      {
+        "name": "Thierry Lutonda",
+        "position": "DFC",
+        "rating": 66,
+        "age": 25,
+        "nationality": "Bélgica",
+        "marketValue": 600
+      },
+      {
+        "name": "Nolan Gillot",
+        "position": "DFC",
+        "rating": 65,
+        "age": 23,
+        "nationality": "Francia",
+        "marketValue": 250
+      },
+      {
+        "name": "Darío Benavides",
+        "position": "DFC",
+        "rating": 63,
+        "age": 19,
+        "nationality": "España",
+        "marketValue": 400
+      },
+      {
+        "name": "Alexis Beka Beka",
+        "position": "MC",
+        "rating": 65,
+        "age": 24,
+        "nationality": "Francia",
+        "marketValue": 500
+      },
+      {
+        "name": "Majeed Ashimeru",
+        "position": "MC",
+        "rating": 64,
+        "age": 18,
+        "nationality": "Ghana",
+        "marketValue": 700
+      },
+      {
+        "name": "Sami Lahssaini",
+        "position": "MC",
+        "rating": 64,
+        "age": 15,
+        "nationality": "Bélgica",
+        "marketValue": 600
+      },
+      {
+        "name": "Owen Maës",
+        "position": "MC",
+        "rating": 68,
+        "age": 27,
+        "nationality": "Francia",
+        "marketValue": 600
+      },
+      {
+        "name": "Samuel Gueulette",
+        "position": "MC",
+        "rating": 67,
+        "age": 25,
+        "nationality": "Ruanda",
+        "marketValue": 500
+      },
+      {
+        "name": "Jordi Liongola",
+        "position": "MC",
+        "rating": 70,
+        "age": 25,
+        "nationality": "Burundi",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Joël Ito",
+        "position": "MC",
+        "rating": 66,
+        "age": 23,
+        "nationality": "Bélgica",
+        "marketValue": 700
+      },
+      {
+        "name": "Maxime Pau",
+        "position": "MC",
+        "rating": 67,
+        "age": 25,
+        "nationality": "Francia",
+        "marketValue": 600
+      },
+      {
+        "name": "Bryan Soumaré",
+        "position": "MC",
+        "rating": 68,
+        "age": 28,
+        "nationality": "Francia",
+        "marketValue": 150
+      },
+      {
+        "name": "Noah Makembo-Ntemo",
+        "position": "MC",
+        "rating": 64,
+        "age": 20,
+        "nationality": "Bélgica",
+        "marketValue": 100
+      },
+      {
+        "name": "Jerry Afriyie",
+        "position": "DC",
+        "rating": 65,
+        "age": 22,
+        "nationality": "Ghana",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Mouhamed Belkheir",
+        "position": "DC",
+        "rating": 68,
+        "age": 27,
+        "nationality": "Argelia",
+        "marketValue": 600
+      },
+      {
+        "name": "Pape Moussa Fall",
+        "position": "DC",
+        "rating": 66,
+        "age": 21,
+        "nationality": "Senegal",
+        "marketValue": 500
+      },
+      {
+        "name": "Nachon Nsingi",
+        "position": "DC",
+        "rating": 68,
+        "age": 27,
+        "nationality": "Bélgica",
+        "marketValue": 300
+      },
+      {
+        "name": "Cristian Makaté",
+        "position": "DC",
+        "rating": 66,
+        "age": 23,
+        "nationality": "Guinea Ecuatorial",
+        "marketValue": 150
+      }
+    ]
+  }
+]

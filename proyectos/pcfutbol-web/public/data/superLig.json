@@ -1,0 +1,4102 @@
+[
+  {
+    "id": "galatasaray-istanbul",
+    "name": "Galatasaray",
+    "players": [
+      {
+        "name": "Uğurcan Çakır",
+        "position": "POR",
+        "rating": 82,
+        "age": 29,
+        "nationality": "Turquía",
+        "marketValue": 15000000
+      },
+      {
+        "name": "Günay Güvenç",
+        "position": "POR",
+        "rating": 71,
+        "age": 19,
+        "nationality": "Turquía",
+        "marketValue": 400
+      },
+      {
+        "name": "Batuhan Şen",
+        "position": "POR",
+        "rating": 74,
+        "age": 26,
+        "nationality": "Turquía",
+        "marketValue": 200
+      },
+      {
+        "name": "Enes Emre Büyük",
+        "position": "POR",
+        "rating": 72,
+        "age": 19,
+        "nationality": "Turquía",
+        "marketValue": 0
+      },
+      {
+        "name": "Davinson Sánchez",
+        "position": "DFC",
+        "rating": 82,
+        "age": 29,
+        "nationality": "Colombia",
+        "marketValue": 18000000
+      },
+      {
+        "name": "Abdülkerim Bardakcı",
+        "position": "DFC",
+        "rating": 75,
+        "age": 42,
+        "nationality": "Turquía",
+        "marketValue": 6500000
+      },
+      {
+        "name": "Arda Ünyay",
+        "position": "DFC",
+        "rating": 73,
+        "age": 19,
+        "nationality": "Turquía",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Metehan Baltacı",
+        "position": "DFC",
+        "rating": 74,
+        "age": 23,
+        "nationality": "Turquía",
+        "marketValue": 0
+      },
+      {
+        "name": "Ismail Jakobs",
+        "position": "DFC",
+        "rating": 79,
+        "age": 26,
+        "nationality": "Senegal",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Eren Elmalı",
+        "position": "DFC",
+        "rating": 75,
+        "age": 17,
+        "nationality": "Turquía",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Kazımcan Karataş",
+        "position": "DFC",
+        "rating": 77,
+        "age": 23,
+        "nationality": "Turquía",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Wilfried Singo",
+        "position": "DFC",
+        "rating": 80,
+        "age": 25,
+        "nationality": "Costa de Marfil",
+        "marketValue": 28000000
+      },
+      {
+        "name": "Roland Sallai",
+        "position": "DFC",
+        "rating": 82,
+        "age": 28,
+        "nationality": "Hungría",
+        "marketValue": 10000000
+      },
+      {
+        "name": "Lucas Torreira",
+        "position": "MC",
+        "rating": 74,
+        "age": 34,
+        "nationality": "Uruguay",
+        "marketValue": 12000000
+      },
+      {
+        "name": "Mario Lemina",
+        "position": "MC",
+        "rating": 74,
+        "age": 32,
+        "nationality": "Gabón",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Kaan Ayhan",
+        "position": "MC",
+        "rating": 75,
+        "age": 23,
+        "nationality": "Turquía",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Gabriel Sara",
+        "position": "MC",
+        "rating": 82,
+        "age": 26,
+        "nationality": "Brasil",
+        "marketValue": 20000000
+      },
+      {
+        "name": "İlkay Gündoğan",
+        "position": "MC",
+        "rating": 74,
+        "age": 20,
+        "nationality": "Alemania",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Gökdeniz Gürpüz",
+        "position": "MC",
+        "rating": 72,
+        "age": 33,
+        "nationality": "Turquía",
+        "marketValue": 250
+      },
+      {
+        "name": "Noa Lang",
+        "position": "DC",
+        "rating": 82,
+        "age": 26,
+        "nationality": "Países Bajos",
+        "marketValue": 25000000
+      },
+      {
+        "name": "Barış Alper Yılmaz",
+        "position": "DC",
+        "rating": 84,
+        "age": 25,
+        "nationality": "Turquía",
+        "marketValue": 24000000
+      },
+      {
+        "name": "Ahmed Kutucu",
+        "position": "DC",
+        "rating": 72,
+        "age": 21,
+        "nationality": "Turquía",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Leroy Sané",
+        "position": "DC",
+        "rating": 83,
+        "age": 30,
+        "nationality": "Alemania",
+        "marketValue": 23000000
+      },
+      {
+        "name": "Yunus Akgün",
+        "position": "DC",
+        "rating": 83,
+        "age": 25,
+        "nationality": "Turquía",
+        "marketValue": 17000000
+      },
+      {
+        "name": "Yáser Asprilla",
+        "position": "DC",
+        "rating": 77,
+        "age": 22,
+        "nationality": "Colombia",
+        "marketValue": 12000000
+      },
+      {
+        "name": "Yusuf Demir",
+        "position": "DC",
+        "rating": 75,
+        "age": 30,
+        "nationality": "Austria",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Victor Osimhen",
+        "position": "DC",
+        "rating": 84,
+        "age": 45,
+        "nationality": "Nigeria",
+        "marketValue": 75000000
+      },
+      {
+        "name": "Mauro Icardi",
+        "position": "DC",
+        "rating": 74,
+        "age": 32,
+        "nationality": "Argentina",
+        "marketValue": 6000000
+      }
+    ]
+  },
+  {
+    "id": "fenerbahce-istanbul",
+    "name": "Fenerbahce",
+    "players": [
+      {
+        "name": "Ederson",
+        "position": "POR",
+        "rating": 82,
+        "age": 31,
+        "nationality": "Brasil",
+        "marketValue": 15000000
+      },
+      {
+        "name": "Tarık Çetin",
+        "position": "POR",
+        "rating": 76,
+        "age": 29,
+        "nationality": "Turquía",
+        "marketValue": 600
+      },
+      {
+        "name": "Mert Günok",
+        "position": "POR",
+        "rating": 77,
+        "age": 34,
+        "nationality": "Turquía",
+        "marketValue": 500
+      },
+      {
+        "name": "Engin Can Biterge",
+        "position": "POR",
+        "rating": 72,
+        "age": 39,
+        "nationality": "Turquía",
+        "marketValue": 0
+      },
+      {
+        "name": "Jayden Oosterwolde",
+        "position": "DFC",
+        "rating": 82,
+        "age": 24,
+        "nationality": "Países Bajos",
+        "marketValue": 16000000
+      },
+      {
+        "name": "Milan Škriniar",
+        "position": "DFC",
+        "rating": 75,
+        "age": 37,
+        "nationality": "Eslovaquia",
+        "marketValue": 11000000
+      },
+      {
+        "name": "Çağlar Söyüncü",
+        "position": "DFC",
+        "rating": 78,
+        "age": 29,
+        "nationality": "Turquía",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Yiğit Efe Demir",
+        "position": "DFC",
+        "rating": 73,
+        "age": 21,
+        "nationality": "Turquía",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Archie Brown",
+        "position": "DFC",
+        "rating": 78,
+        "age": 23,
+        "nationality": "Inglaterra",
+        "marketValue": 10000000
+      },
+      {
+        "name": "Levent Mercan",
+        "position": "DFC",
+        "rating": 74,
+        "age": 22,
+        "nationality": "Turquía",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Nélson Semedo",
+        "position": "DFC",
+        "rating": 79,
+        "age": 27,
+        "nationality": "Portugal",
+        "marketValue": 7500000
+      },
+      {
+        "name": "Mert Müldür",
+        "position": "DFC",
+        "rating": 74,
+        "age": 18,
+        "nationality": "Turquía",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Edson Álvarez",
+        "position": "MC",
+        "rating": 82,
+        "age": 28,
+        "nationality": "México",
+        "marketValue": 22000000
+      },
+      {
+        "name": "İsmail Yüksek",
+        "position": "MC",
+        "rating": 79,
+        "age": 27,
+        "nationality": "Turquía",
+        "marketValue": 13000000
+      },
+      {
+        "name": "Mattéo Guendouzi",
+        "position": "MC",
+        "rating": 84,
+        "age": 26,
+        "nationality": "Francia",
+        "marketValue": 28000000
+      },
+      {
+        "name": "Fred",
+        "position": "MC",
+        "rating": 74,
+        "age": 32,
+        "nationality": "Brasil",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Abdou Aziz Fall",
+        "position": "MC",
+        "rating": 73,
+        "age": 18,
+        "nationality": "Senegal",
+        "marketValue": 100
+      },
+      {
+        "name": "Marco Asensio",
+        "position": "MC",
+        "rating": 82,
+        "age": 21,
+        "nationality": "España",
+        "marketValue": 15000000
+      },
+      {
+        "name": "Talisca",
+        "position": "MC",
+        "rating": 81,
+        "age": 31,
+        "nationality": "Brasil",
+        "marketValue": 8000000
+      },
+      {
+        "name": "Mert Hakan Yandaş",
+        "position": "MC",
+        "rating": 77,
+        "age": 31,
+        "nationality": "Turquía",
+        "marketValue": 500
+      },
+      {
+        "name": "Kerem Aktürkoğlu",
+        "position": "DC",
+        "rating": 83,
+        "age": 27,
+        "nationality": "Turquía",
+        "marketValue": 22000000
+      },
+      {
+        "name": "Oğuz Aydın",
+        "position": "DC",
+        "rating": 76,
+        "age": 25,
+        "nationality": "Turquía",
+        "marketValue": 10000000
+      },
+      {
+        "name": "Dorgeles Nene",
+        "position": "DC",
+        "rating": 76,
+        "age": 45,
+        "nationality": "Malí",
+        "marketValue": 18000000
+      },
+      {
+        "name": "Anthony Musaba",
+        "position": "DC",
+        "rating": 78,
+        "age": 20,
+        "nationality": "Países Bajos",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Emre Mor",
+        "position": "DC",
+        "rating": 77,
+        "age": 28,
+        "nationality": "Turquía",
+        "marketValue": 800
+      },
+      {
+        "name": "Jhon Durán",
+        "position": "DC",
+        "rating": 83,
+        "age": 22,
+        "nationality": "Colombia",
+        "marketValue": 32000000
+      },
+      {
+        "name": "Youssef En-Nesyri",
+        "position": "DC",
+        "rating": 79,
+        "age": 19,
+        "nationality": "Marruecos",
+        "marketValue": 22000000
+      }
+    ]
+  },
+  {
+    "id": "besiktas-istanbul",
+    "name": "Besiktas JK",
+    "players": [
+      {
+        "name": "Ersin Destanoğlu",
+        "position": "POR",
+        "rating": 76,
+        "age": 30,
+        "nationality": "Turquía",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Emre Bilgin",
+        "position": "POR",
+        "rating": 69,
+        "age": 21,
+        "nationality": "Turquía",
+        "marketValue": 500
+      },
+      {
+        "name": "Emir Yaşar",
+        "position": "POR",
+        "rating": 70,
+        "age": 20,
+        "nationality": "Turquía",
+        "marketValue": 100
+      },
+      {
+        "name": "Tiago Djaló",
+        "position": "DFC",
+        "rating": 72,
+        "age": 35,
+        "nationality": "Portugal",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Felix Uduokhai",
+        "position": "DFC",
+        "rating": 76,
+        "age": 28,
+        "nationality": "Alemania",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Emirhan Topçu",
+        "position": "DFC",
+        "rating": 75,
+        "age": 25,
+        "nationality": "Turquía",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Yasin Özcan",
+        "position": "DFC",
+        "rating": 73,
+        "age": 19,
+        "nationality": "Turquía",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Rıdvan Yılmaz",
+        "position": "DFC",
+        "rating": 71,
+        "age": 33,
+        "nationality": "Turquía",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Emrecan Terzi",
+        "position": "DFC",
+        "rating": 71,
+        "age": 22,
+        "nationality": "Turquía",
+        "marketValue": 450
+      },
+      {
+        "name": "Taylan Bulut",
+        "position": "DFC",
+        "rating": 72,
+        "age": 22,
+        "nationality": "Alemania",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Gökhan Sazdağı",
+        "position": "DFC",
+        "rating": 74,
+        "age": 25,
+        "nationality": "Turquía",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Wilfred Ndidi",
+        "position": "MC",
+        "rating": 77,
+        "age": 29,
+        "nationality": "Nigeria",
+        "marketValue": 10000000
+      },
+      {
+        "name": "Kartal Yılmaz",
+        "position": "MC",
+        "rating": 71,
+        "age": 17,
+        "nationality": "Turquía",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Necip Uysal",
+        "position": "MC",
+        "rating": 70,
+        "age": 20,
+        "nationality": "Turquía",
+        "marketValue": 200
+      },
+      {
+        "name": "Orkun Kökçü",
+        "position": "MC",
+        "rating": 81,
+        "age": 25,
+        "nationality": "Turquía",
+        "marketValue": 25000000
+      },
+      {
+        "name": "Salih Uçan",
+        "position": "MC",
+        "rating": 70,
+        "age": 32,
+        "nationality": "Turquía",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Jota Silva",
+        "position": "DC",
+        "rating": 76,
+        "age": 26,
+        "nationality": "Portugal",
+        "marketValue": 14000000
+      },
+      {
+        "name": "Devrim Şahin",
+        "position": "DC",
+        "rating": 71,
+        "age": 18,
+        "nationality": "Turquía",
+        "marketValue": 100
+      },
+      {
+        "name": "Vaclav Cerny",
+        "position": "DC",
+        "rating": 76,
+        "age": 18,
+        "nationality": "República Checa",
+        "marketValue": 8000000
+      },
+      {
+        "name": "Cengiz Ünder",
+        "position": "DC",
+        "rating": 77,
+        "age": 28,
+        "nationality": "Turquía",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Milot Rashica",
+        "position": "DC",
+        "rating": 74,
+        "age": 29,
+        "nationality": "Kosovo",
+        "marketValue": 4000000
+      },
+      {
+        "name": "El Bilal Touré",
+        "position": "DC",
+        "rating": 80,
+        "age": 19,
+        "nationality": "Malí",
+        "marketValue": 15000000
+      },
+      {
+        "name": "Mustafa Hekimoğlu",
+        "position": "DC",
+        "rating": 74,
+        "age": 18,
+        "nationality": "Turquía",
+        "marketValue": 5000000
+      }
+    ]
+  },
+  {
+    "id": "trabzonspor",
+    "name": "Trabzonspor",
+    "players": [
+      {
+        "name": "André Onana",
+        "position": "POR",
+        "rating": 75,
+        "age": 24,
+        "nationality": "Camerún",
+        "marketValue": 15000000
+      },
+      {
+        "name": "Onuralp Çevikkan",
+        "position": "POR",
+        "rating": 72,
+        "age": 25,
+        "nationality": "Turquía",
+        "marketValue": 900
+      },
+      {
+        "name": "Ahmet Yıldırım",
+        "position": "POR",
+        "rating": 69,
+        "age": 19,
+        "nationality": "Turquía",
+        "marketValue": 0
+      },
+      {
+        "name": "Erol Can Çolak",
+        "position": "POR",
+        "rating": 70,
+        "age": 20,
+        "nationality": "Turquía",
+        "marketValue": 0
+      },
+      {
+        "name": "Arseniy Batagov",
+        "position": "DFC",
+        "rating": 71,
+        "age": 44,
+        "nationality": "Ucrania",
+        "marketValue": 9000000
+      },
+      {
+        "name": "Chibuike Nwaiwu",
+        "position": "DFC",
+        "rating": 77,
+        "age": 27,
+        "nationality": "Nigeria",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Rayyan Baniya",
+        "position": "DFC",
+        "rating": 73,
+        "age": 23,
+        "nationality": "Turquía",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Stefan Savic",
+        "position": "DFC",
+        "rating": 71,
+        "age": 15,
+        "nationality": "Montenegro",
+        "marketValue": 700
+      },
+      {
+        "name": "Arda Öztürk",
+        "position": "DFC",
+        "rating": 71,
+        "age": 21,
+        "nationality": "Turquía",
+        "marketValue": 100
+      },
+      {
+        "name": "Taha Emre İnce",
+        "position": "DFC",
+        "rating": 71,
+        "age": 18,
+        "nationality": "Turquía",
+        "marketValue": 100
+      },
+      {
+        "name": "Mathias Løvik",
+        "position": "DFC",
+        "rating": 72,
+        "age": 22,
+        "nationality": "Noruega",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Mustafa Eskihellaç",
+        "position": "DFC",
+        "rating": 73,
+        "age": 19,
+        "nationality": "Turquía",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Wagner Pina",
+        "position": "DFC",
+        "rating": 73,
+        "age": 20,
+        "nationality": "Cabo Verde",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Okay Yokuşlu",
+        "position": "MC",
+        "rating": 76,
+        "age": 31,
+        "nationality": "Turquía",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Salih Malkoçoğlu",
+        "position": "MC",
+        "rating": 71,
+        "age": 20,
+        "nationality": "Turquía",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Christ Inao Oulaï",
+        "position": "MC",
+        "rating": 73,
+        "age": 42,
+        "nationality": "Costa de Marfil",
+        "marketValue": 8000000
+      },
+      {
+        "name": "Benjamin Bouchouari",
+        "position": "MC",
+        "rating": 75,
+        "age": 24,
+        "nationality": "Marruecos",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Tim Jabol-Folcarelli",
+        "position": "MC",
+        "rating": 77,
+        "age": 26,
+        "nationality": "Francia",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Ozan Tufan",
+        "position": "MC",
+        "rating": 75,
+        "age": 30,
+        "nationality": "Turquía",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Boran Başkan",
+        "position": "MC",
+        "rating": 71,
+        "age": 19,
+        "nationality": "Turquía",
+        "marketValue": 100
+      },
+      {
+        "name": "Ernest Muci",
+        "position": "MC",
+        "rating": 78,
+        "age": 24,
+        "nationality": "Albania",
+        "marketValue": 9000000
+      },
+      {
+        "name": "Kazeem Olaigbe",
+        "position": "DC",
+        "rating": 75,
+        "age": 23,
+        "nationality": "Bélgica",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Anthony Nwakaeme",
+        "position": "DC",
+        "rating": 68,
+        "age": 36,
+        "nationality": "Nigeria",
+        "marketValue": 300
+      },
+      {
+        "name": "Oleksandr Zubkov",
+        "position": "DC",
+        "rating": 75,
+        "age": 22,
+        "nationality": "Ucrania",
+        "marketValue": 7500000
+      },
+      {
+        "name": "Edin Visca",
+        "position": "DC",
+        "rating": 66,
+        "age": 35,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 500
+      },
+      {
+        "name": "Paul Onuachu",
+        "position": "DC",
+        "rating": 81,
+        "age": 30,
+        "nationality": "Nigeria",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Felipe Augusto",
+        "position": "DC",
+        "rating": 75,
+        "age": 21,
+        "nationality": "Brasil",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Umut Nayir",
+        "position": "DC",
+        "rating": 72,
+        "age": 18,
+        "nationality": "Turquía",
+        "marketValue": 700
+      }
+    ]
+  },
+  {
+    "id": "istanbul-basaksehir-fk",
+    "name": "Basaksehir FK",
+    "players": [
+      {
+        "name": "Muhammed Şengezer",
+        "position": "POR",
+        "rating": 69,
+        "age": 16,
+        "nationality": "Turquía",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Doğan Alemdar",
+        "position": "POR",
+        "rating": 68,
+        "age": 23,
+        "nationality": "Turquía",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Volkan Babacan",
+        "position": "POR",
+        "rating": 68,
+        "age": 37,
+        "nationality": "Turquía",
+        "marketValue": 50
+      },
+      {
+        "name": "Luca Stancic",
+        "position": "POR",
+        "rating": 68,
+        "age": 19,
+        "nationality": "Turquía",
+        "marketValue": 0
+      },
+      {
+        "name": "Jerome Opoku",
+        "position": "DFC",
+        "rating": 75,
+        "age": 27,
+        "nationality": "Ghana",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Léo Duarte",
+        "position": "DFC",
+        "rating": 74,
+        "age": 29,
+        "nationality": "Brasil",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Hamza Güreler",
+        "position": "DFC",
+        "rating": 69,
+        "age": 15,
+        "nationality": "Turquía",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Ousseynou Ba",
+        "position": "DFC",
+        "rating": 74,
+        "age": 27,
+        "nationality": "Senegal",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Christopher Operi",
+        "position": "DFC",
+        "rating": 70,
+        "age": 21,
+        "nationality": "Costa de Marfil",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Festy Ebosele",
+        "position": "DFC",
+        "rating": 68,
+        "age": 36,
+        "nationality": "Irlanda",
+        "marketValue": 4500000
+      },
+      {
+        "name": "Onur Bulut",
+        "position": "DFC",
+        "rating": 73,
+        "age": 31,
+        "nationality": "Turquía",
+        "marketValue": 700
+      },
+      {
+        "name": "Ömer Ali Şahiner",
+        "position": "DFC",
+        "rating": 67,
+        "age": 42,
+        "nationality": "Turquía",
+        "marketValue": 250
+      },
+      {
+        "name": "Jakub Kaluzinski",
+        "position": "MC",
+        "rating": 69,
+        "age": 18,
+        "nationality": "Polonia",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Berat Özdemir",
+        "position": "MC",
+        "rating": 74,
+        "age": 27,
+        "nationality": "Turquía",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Onur Ergün",
+        "position": "MC",
+        "rating": 67,
+        "age": 33,
+        "nationality": "Turquía",
+        "marketValue": 250
+      },
+      {
+        "name": "Miguel Crespo",
+        "position": "MC",
+        "rating": 76,
+        "age": 29,
+        "nationality": "Portugal",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Olivier Kemen",
+        "position": "MC",
+        "rating": 75,
+        "age": 29,
+        "nationality": "Camerún",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Umut Güneş",
+        "position": "MC",
+        "rating": 69,
+        "age": 20,
+        "nationality": "Turquía",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Mohamed Hassan Fofana",
+        "position": "MC",
+        "rating": 69,
+        "age": 20,
+        "nationality": "Costa de Marfil",
+        "marketValue": 50
+      },
+      {
+        "name": "Amine Harit",
+        "position": "DC",
+        "rating": 76,
+        "age": 25,
+        "nationality": "Marruecos",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Ivan Brnic",
+        "position": "DC",
+        "rating": 69,
+        "age": 24,
+        "nationality": "Croacia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Berkay Aslan",
+        "position": "DC",
+        "rating": 65,
+        "age": 45,
+        "nationality": "Turquía",
+        "marketValue": 200
+      },
+      {
+        "name": "Abbosbek Fayzullaev",
+        "position": "DC",
+        "rating": 71,
+        "age": 22,
+        "nationality": "Uzbekistán",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Yusuf Sarı",
+        "position": "DC",
+        "rating": 75,
+        "age": 27,
+        "nationality": "Turquía",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Eldor Shomurodov",
+        "position": "DC",
+        "rating": 79,
+        "age": 30,
+        "nationality": "Uzbekistán",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Davie Selke",
+        "position": "DC",
+        "rating": 67,
+        "age": 31,
+        "nationality": "Alemania",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Bertuğ Yıldırım",
+        "position": "DC",
+        "rating": 71,
+        "age": 23,
+        "nationality": "Turquía",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Nuno Da Costa",
+        "position": "DC",
+        "rating": 66,
+        "age": 34,
+        "nationality": "Cabo Verde",
+        "marketValue": 500
+      }
+    ]
+  },
+  {
+    "id": "samsunspor",
+    "name": "Samsunspor",
+    "players": [
+      {
+        "name": "Okan Kocuk",
+        "position": "POR",
+        "rating": 76,
+        "age": 30,
+        "nationality": "Turquía",
+        "marketValue": 2200000
+      },
+      {
+        "name": "İrfan Can Eğribayat",
+        "position": "POR",
+        "rating": 72,
+        "age": 27,
+        "nationality": "Turquía",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Efe Yiğit Üstün",
+        "position": "POR",
+        "rating": 73,
+        "age": 33,
+        "nationality": "Turquía",
+        "marketValue": 0
+      },
+      {
+        "name": "Efe Berat Törüz",
+        "position": "POR",
+        "rating": 67,
+        "age": 19,
+        "nationality": "Turquía",
+        "marketValue": 0
+      },
+      {
+        "name": "Rick van Drongelen",
+        "position": "DFC",
+        "rating": 76,
+        "age": 27,
+        "nationality": "Países Bajos",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Toni Borevković",
+        "position": "DFC",
+        "rating": 71,
+        "age": 24,
+        "nationality": "Croacia",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Lubomir Satka",
+        "position": "DFC",
+        "rating": 70,
+        "age": 37,
+        "nationality": "Eslovaquia",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Bedirhan Çetin",
+        "position": "DFC",
+        "rating": 69,
+        "age": 19,
+        "nationality": "Turquía",
+        "marketValue": 150
+      },
+      {
+        "name": "Ali Badra Diabaté",
+        "position": "DFC",
+        "rating": 69,
+        "age": 15,
+        "nationality": "Costa de Marfil",
+        "marketValue": 100
+      },
+      {
+        "name": "Logi Tómasson",
+        "position": "DFC",
+        "rating": 70,
+        "age": 17,
+        "nationality": "Islandia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Soner Gönül",
+        "position": "DFC",
+        "rating": 72,
+        "age": 28,
+        "nationality": "Turquía",
+        "marketValue": 600
+      },
+      {
+        "name": "Joe Mendes",
+        "position": "DFC",
+        "rating": 71,
+        "age": 23,
+        "nationality": "Suecia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Zeki Yavru",
+        "position": "DFC",
+        "rating": 69,
+        "age": 18,
+        "nationality": "Turquía",
+        "marketValue": 300
+      },
+      {
+        "name": "Antoine Makoumbou",
+        "position": "MC",
+        "rating": 74,
+        "age": 29,
+        "nationality": "Congo",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Celil Yüksel",
+        "position": "MC",
+        "rating": 73,
+        "age": 28,
+        "nationality": "Turquía",
+        "marketValue": 800
+      },
+      {
+        "name": "Yunus Emre Çift",
+        "position": "MC",
+        "rating": 70,
+        "age": 22,
+        "nationality": "Turquía",
+        "marketValue": 600
+      },
+      {
+        "name": "Franck Atoen",
+        "position": "MC",
+        "rating": 73,
+        "age": 25,
+        "nationality": "Camerún",
+        "marketValue": 0
+      },
+      {
+        "name": "Eyüp Değirmenci",
+        "position": "MC",
+        "rating": 69,
+        "age": 18,
+        "nationality": "Turquía",
+        "marketValue": 0
+      },
+      {
+        "name": "Olivier Ntcham",
+        "position": "MC",
+        "rating": 74,
+        "age": 29,
+        "nationality": "Camerún",
+        "marketValue": 2800000
+      },
+      {
+        "name": "Eyüp Aydın",
+        "position": "MC",
+        "rating": 69,
+        "age": 21,
+        "nationality": "Turquía",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Yalçın Kayan",
+        "position": "MC",
+        "rating": 73,
+        "age": 20,
+        "nationality": "Turquía",
+        "marketValue": 700
+      },
+      {
+        "name": "Muhammet Özbaskıcı",
+        "position": "MC",
+        "rating": 69,
+        "age": 20,
+        "nationality": "Turquía",
+        "marketValue": 0
+      },
+      {
+        "name": "Alper Efe Pazar",
+        "position": "MC",
+        "rating": 69,
+        "age": 20,
+        "nationality": "Turquía",
+        "marketValue": 0
+      },
+      {
+        "name": "Carlo Holse",
+        "position": "MC",
+        "rating": 76,
+        "age": 21,
+        "nationality": "Dinamarca",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Afonso Sousa",
+        "position": "MC",
+        "rating": 75,
+        "age": 25,
+        "nationality": "Portugal",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Jaurès Assoumou",
+        "position": "DC",
+        "rating": 72,
+        "age": 23,
+        "nationality": "Costa de Marfil",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Emre Kılınç",
+        "position": "DC",
+        "rating": 67,
+        "age": 31,
+        "nationality": "Turquía",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Tahsin Bülbül",
+        "position": "DC",
+        "rating": 69,
+        "age": 16,
+        "nationality": "Turquía",
+        "marketValue": 50
+      },
+      {
+        "name": "Saikuba Jarju",
+        "position": "DC",
+        "rating": 75,
+        "age": 30,
+        "nationality": "Gambia",
+        "marketValue": 0
+      },
+      {
+        "name": "Elayis Tavsan",
+        "position": "DC",
+        "rating": 72,
+        "age": 24,
+        "nationality": "Países Bajos",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Tanguy Coulibaly",
+        "position": "DC",
+        "rating": 72,
+        "age": 24,
+        "nationality": "Francia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Polat Yaldır",
+        "position": "DC",
+        "rating": 68,
+        "age": 22,
+        "nationality": "Turquía",
+        "marketValue": 150
+      },
+      {
+        "name": "Cherif Ndiaye",
+        "position": "DC",
+        "rating": 74,
+        "age": 19,
+        "nationality": "Senegal",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Marius Mouandilmadji",
+        "position": "DC",
+        "rating": 75,
+        "age": 28,
+        "nationality": "Chad",
+        "marketValue": 4500000
+      },
+      {
+        "name": "Ebrima Ceesay",
+        "position": "DC",
+        "rating": 70,
+        "age": 19,
+        "nationality": "Gambia",
+        "marketValue": 50
+      }
+    ]
+  },
+  {
+    "id": "goztepe",
+    "name": "Göztepe",
+    "players": [
+      {
+        "name": "Mateusz Lis",
+        "position": "POR",
+        "rating": 74,
+        "age": 28,
+        "nationality": "Polonia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Ekrem Kılıçarslan",
+        "position": "POR",
+        "rating": 67,
+        "age": 17,
+        "nationality": "Turquía",
+        "marketValue": 250
+      },
+      {
+        "name": "Şamil Öztürk",
+        "position": "POR",
+        "rating": 73,
+        "age": 33,
+        "nationality": "Turquía",
+        "marketValue": 100
+      },
+      {
+        "name": "Nevzat Üzel",
+        "position": "POR",
+        "rating": 68,
+        "age": 21,
+        "nationality": "Turquía",
+        "marketValue": 0
+      },
+      {
+        "name": "Taha Altıkardeş",
+        "position": "DFC",
+        "rating": 71,
+        "age": 22,
+        "nationality": "Turquía",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Malcom Bokele",
+        "position": "DFC",
+        "rating": 74,
+        "age": 26,
+        "nationality": "Camerún",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Furkan Bayır",
+        "position": "DFC",
+        "rating": 71,
+        "age": 23,
+        "nationality": "Turquía",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Héliton",
+        "position": "DFC",
+        "rating": 74,
+        "age": 30,
+        "nationality": "Brasil",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Allan Godói",
+        "position": "DFC",
+        "rating": 73,
+        "age": 32,
+        "nationality": "Brasil",
+        "marketValue": 100
+      },
+      {
+        "name": "Ege Yıldırım",
+        "position": "DFC",
+        "rating": 67,
+        "age": 45,
+        "nationality": "Turquía",
+        "marketValue": 50
+      },
+      {
+        "name": "Anthony Dennis",
+        "position": "MC",
+        "rating": 75,
+        "age": 30,
+        "nationality": "Nigeria",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Novatus Miroshi",
+        "position": "MC",
+        "rating": 70,
+        "age": 20,
+        "nationality": "Tanzania",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Rhaldney",
+        "position": "MC",
+        "rating": 74,
+        "age": 27,
+        "nationality": "Brasil",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Furkan Malak",
+        "position": "MC",
+        "rating": 69,
+        "age": 21,
+        "nationality": "Turquía",
+        "marketValue": 0
+      },
+      {
+        "name": "Arda Okan Kurtulan",
+        "position": "MC",
+        "rating": 72,
+        "age": 23,
+        "nationality": "Turquía",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Ogün Bayrak",
+        "position": "MC",
+        "rating": 72,
+        "age": 27,
+        "nationality": "Turquía",
+        "marketValue": 800
+      },
+      {
+        "name": "Uğur Kaan Yıldız",
+        "position": "MC",
+        "rating": 70,
+        "age": 22,
+        "nationality": "Turquía",
+        "marketValue": 700
+      },
+      {
+        "name": "Amin Cherni",
+        "position": "MC",
+        "rating": 71,
+        "age": 15,
+        "nationality": "Túnez",
+        "marketValue": 2000000
+      },
+      {
+        "name": "İsmail Köybaşı",
+        "position": "MC",
+        "rating": 66,
+        "age": 36,
+        "nationality": "Turquía",
+        "marketValue": 50
+      },
+      {
+        "name": "Alexis Antunes",
+        "position": "MC",
+        "rating": 74,
+        "age": 25,
+        "nationality": "Suiza",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Junior Olaitan",
+        "position": "MC",
+        "rating": 72,
+        "age": 23,
+        "nationality": "Benín",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Efkan Bekiroğlu",
+        "position": "MC",
+        "rating": 73,
+        "age": 30,
+        "nationality": "Turquía",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Juan",
+        "position": "DC",
+        "rating": 74,
+        "age": 23,
+        "nationality": "Brasil",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Janderson",
+        "position": "DC",
+        "rating": 67,
+        "age": 39,
+        "nationality": "Brasil",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Jeh",
+        "position": "DC",
+        "rating": 70,
+        "age": 19,
+        "nationality": "Brasil",
+        "marketValue": 700
+      },
+      {
+        "name": "Ibrahim Sabra",
+        "position": "DC",
+        "rating": 69,
+        "age": 19,
+        "nationality": "Jordania",
+        "marketValue": 400
+      },
+      {
+        "name": "Guilherme Luiz",
+        "position": "DC",
+        "rating": 70,
+        "age": 20,
+        "nationality": "Brasil",
+        "marketValue": 350
+      }
+    ]
+  },
+  {
+    "id": "caykur-rizespor",
+    "name": "Caykur Rizespor",
+    "players": [
+      {
+        "name": "Yahia Fofana",
+        "position": "POR",
+        "rating": 71,
+        "age": 25,
+        "nationality": "Costa de Marfil",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Erdem Canpolat",
+        "position": "POR",
+        "rating": 65,
+        "age": 24,
+        "nationality": "Turquía",
+        "marketValue": 500
+      },
+      {
+        "name": "Efe Doğan",
+        "position": "POR",
+        "rating": 66,
+        "age": 35,
+        "nationality": "Turquía",
+        "marketValue": 150
+      },
+      {
+        "name": "Attila Mocsi",
+        "position": "DFC",
+        "rating": 70,
+        "age": 25,
+        "nationality": "Hungría",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Modibo Sagnan",
+        "position": "DFC",
+        "rating": 71,
+        "age": 27,
+        "nationality": "Malí",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Khusniddin Alikulov",
+        "position": "DFC",
+        "rating": 72,
+        "age": 26,
+        "nationality": "Uzbekistán",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Samet Akaydin",
+        "position": "DFC",
+        "rating": 72,
+        "age": 31,
+        "nationality": "Turquía",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Emir Ortakaya",
+        "position": "DFC",
+        "rating": 67,
+        "age": 21,
+        "nationality": "Turquía",
+        "marketValue": 700
+      },
+      {
+        "name": "Mithat Pala",
+        "position": "DFC",
+        "rating": 69,
+        "age": 25,
+        "nationality": "Turquía",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Casper Højer",
+        "position": "DFC",
+        "rating": 72,
+        "age": 31,
+        "nationality": "Dinamarca",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Taha Şahin",
+        "position": "DFC",
+        "rating": 66,
+        "age": 37,
+        "nationality": "Turquía",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Furkan Orak",
+        "position": "DFC",
+        "rating": 68,
+        "age": 24,
+        "nationality": "Turquía",
+        "marketValue": 250
+      },
+      {
+        "name": "Giannis Papanikolaou",
+        "position": "MC",
+        "rating": 72,
+        "age": 27,
+        "nationality": "Grecia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Qazim Laci",
+        "position": "MC",
+        "rating": 68,
+        "age": 20,
+        "nationality": "Albania",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Ibrahim Olawoyin",
+        "position": "MC",
+        "rating": 72,
+        "age": 28,
+        "nationality": "Nigeria",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Muhamed Buljubasic",
+        "position": "MC",
+        "rating": 67,
+        "age": 18,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Taylan Antalyalı",
+        "position": "MC",
+        "rating": 70,
+        "age": 31,
+        "nationality": "Turquía",
+        "marketValue": 800
+      },
+      {
+        "name": "Valentin Mihăilă",
+        "position": "DC",
+        "rating": 71,
+        "age": 25,
+        "nationality": "Rumania",
+        "marketValue": 2800000
+      },
+      {
+        "name": "Altin Zeqiri",
+        "position": "DC",
+        "rating": 70,
+        "age": 25,
+        "nationality": "Kosovo",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Emrecan Bulut",
+        "position": "DC",
+        "rating": 66,
+        "age": 23,
+        "nationality": "Turquía",
+        "marketValue": 600
+      },
+      {
+        "name": "Loide Augusto",
+        "position": "DC",
+        "rating": 71,
+        "age": 25,
+        "nationality": "Angola",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Adedire Mebude",
+        "position": "DC",
+        "rating": 68,
+        "age": 17,
+        "nationality": "Escocia",
+        "marketValue": 700
+      },
+      {
+        "name": "Ali Sowe",
+        "position": "DC",
+        "rating": 66,
+        "age": 31,
+        "nationality": "Gambia",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Halil Dervişoğlu",
+        "position": "DC",
+        "rating": 70,
+        "age": 26,
+        "nationality": "Turquía",
+        "marketValue": 800
+      }
+    ]
+  },
+  {
+    "id": "konyaspor",
+    "name": "Konyaspor",
+    "players": [
+      {
+        "name": "Deniz Ertaş",
+        "position": "POR",
+        "rating": 67,
+        "age": 20,
+        "nationality": "Turquía",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Bahadır Güngördü",
+        "position": "POR",
+        "rating": 71,
+        "age": 30,
+        "nationality": "Turquía",
+        "marketValue": 600
+      },
+      {
+        "name": "Egemen Aydın",
+        "position": "POR",
+        "rating": 71,
+        "age": 29,
+        "nationality": "Turquía",
+        "marketValue": 0
+      },
+      {
+        "name": "Adamo Nagalo",
+        "position": "DFC",
+        "rating": 70,
+        "age": 23,
+        "nationality": "Burkina Faso",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Riechedly Bazoer",
+        "position": "DFC",
+        "rating": 68,
+        "age": 20,
+        "nationality": "Curazao",
+        "marketValue": 2800000
+      },
+      {
+        "name": "Adil Demirbağ",
+        "position": "DFC",
+        "rating": 73,
+        "age": 28,
+        "nationality": "Turquía",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Uğurcan Yazğılı",
+        "position": "DFC",
+        "rating": 72,
+        "age": 26,
+        "nationality": "Turquía",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Josip Calusic",
+        "position": "DFC",
+        "rating": 66,
+        "age": 15,
+        "nationality": "Croacia",
+        "marketValue": 300
+      },
+      {
+        "name": "Yasir Subaşı",
+        "position": "DFC",
+        "rating": 70,
+        "age": 30,
+        "nationality": "Turquía",
+        "marketValue": 100
+      },
+      {
+        "name": "Arif Boşluk",
+        "position": "DFC",
+        "rating": 69,
+        "age": 24,
+        "nationality": "Turquía",
+        "marketValue": 800
+      },
+      {
+        "name": "Guilherme",
+        "position": "DFC",
+        "rating": 66,
+        "age": 35,
+        "nationality": "Brasil",
+        "marketValue": 400
+      },
+      {
+        "name": "Yhoan Andzouana",
+        "position": "DFC",
+        "rating": 70,
+        "age": 23,
+        "nationality": "Congo",
+        "marketValue": 800
+      },
+      {
+        "name": "Jin-ho Jo",
+        "position": "MC",
+        "rating": 67,
+        "age": 21,
+        "nationality": "Corea del Sur",
+        "marketValue": 800
+      },
+      {
+        "name": "Marko Jevtovic",
+        "position": "MC",
+        "rating": 67,
+        "age": 16,
+        "nationality": "Serbia",
+        "marketValue": 500
+      },
+      {
+        "name": "Ufuk Akyol",
+        "position": "MC",
+        "rating": 67,
+        "age": 19,
+        "nationality": "Turquía",
+        "marketValue": 500
+      },
+      {
+        "name": "Berkan Kutlu",
+        "position": "MC",
+        "rating": 68,
+        "age": 18,
+        "nationality": "Turquía",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Melih İbrahimoğlu",
+        "position": "MC",
+        "rating": 72,
+        "age": 25,
+        "nationality": "Turquía",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Morten Bjørlo",
+        "position": "MC",
+        "rating": 65,
+        "age": 42,
+        "nationality": "Noruega",
+        "marketValue": 900
+      },
+      {
+        "name": "Esat Buğa",
+        "position": "MC",
+        "rating": 71,
+        "age": 30,
+        "nationality": "Turquía",
+        "marketValue": 50
+      },
+      {
+        "name": "Enis Bardhi",
+        "position": "MC",
+        "rating": 72,
+        "age": 30,
+        "nationality": "Macedonia del Norte",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Sander Svendsen",
+        "position": "MC",
+        "rating": 68,
+        "age": 32,
+        "nationality": "Noruega",
+        "marketValue": 700
+      },
+      {
+        "name": "Jackson Muleka",
+        "position": "DC",
+        "rating": 62,
+        "age": 40,
+        "nationality": "RD del Congo",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Pedrinho",
+        "position": "DC",
+        "rating": 68,
+        "age": 29,
+        "nationality": "Brasil",
+        "marketValue": 900
+      },
+      {
+        "name": "Tunahan Taşçı",
+        "position": "DC",
+        "rating": 66,
+        "age": 23,
+        "nationality": "Turquía",
+        "marketValue": 800
+      },
+      {
+        "name": "Marius Ștefănescu",
+        "position": "DC",
+        "rating": 68,
+        "age": 27,
+        "nationality": "Rumania",
+        "marketValue": 800
+      },
+      {
+        "name": "Deniz Türüç",
+        "position": "DC",
+        "rating": 67,
+        "age": 33,
+        "nationality": "Turquía",
+        "marketValue": 700
+      },
+      {
+        "name": "Blaz Kramer",
+        "position": "DC",
+        "rating": 75,
+        "age": 29,
+        "nationality": "Eslovenia",
+        "marketValue": 900
+      }
+    ]
+  },
+  {
+    "id": "gaziantep-fk",
+    "name": "Gaziantep FK",
+    "players": [
+      {
+        "name": "Zafer Görgen",
+        "position": "POR",
+        "rating": 66,
+        "age": 20,
+        "nationality": "Turquía",
+        "marketValue": 800
+      },
+      {
+        "name": "Burak Bozan",
+        "position": "POR",
+        "rating": 69,
+        "age": 25,
+        "nationality": "Turquía",
+        "marketValue": 800
+      },
+      {
+        "name": "Tayyip Talha Sanuç",
+        "position": "DFC",
+        "rating": 70,
+        "age": 23,
+        "nationality": "Turquía",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Nihad Mujakic",
+        "position": "DFC",
+        "rating": 72,
+        "age": 27,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Arda Kızıldağ",
+        "position": "DFC",
+        "rating": 71,
+        "age": 27,
+        "nationality": "Turquía",
+        "marketValue": 900
+      },
+      {
+        "name": "Myenty Abena",
+        "position": "DFC",
+        "rating": 71,
+        "age": 31,
+        "nationality": "Surinam",
+        "marketValue": 700
+      },
+      {
+        "name": "Nazım Sangaré",
+        "position": "DFC",
+        "rating": 70,
+        "age": 30,
+        "nationality": "Turquía",
+        "marketValue": 200
+      },
+      {
+        "name": "Kévin Rodrigues",
+        "position": "DFC",
+        "rating": 72,
+        "age": 31,
+        "nationality": "Portugal",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Luis Pérez",
+        "position": "DFC",
+        "rating": 72,
+        "age": 30,
+        "nationality": "España",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Salem M'Bakata",
+        "position": "DFC",
+        "rating": 67,
+        "age": 22,
+        "nationality": "Francia",
+        "marketValue": 500
+      },
+      {
+        "name": "Melih Kabasakal",
+        "position": "MC",
+        "rating": 71,
+        "age": 29,
+        "nationality": "Turquía",
+        "marketValue": 800
+      },
+      {
+        "name": "Ogün Özçiçek",
+        "position": "MC",
+        "rating": 71,
+        "age": 27,
+        "nationality": "Turquía",
+        "marketValue": 500
+      },
+      {
+        "name": "Drissa Camara",
+        "position": "MC",
+        "rating": 73,
+        "age": 23,
+        "nationality": "Costa de Marfil",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Juninho Bacuna",
+        "position": "MC",
+        "rating": 71,
+        "age": 28,
+        "nationality": "Curazao",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Karamba Gassama",
+        "position": "MC",
+        "rating": 67,
+        "age": 17,
+        "nationality": "Gambia",
+        "marketValue": 250
+      },
+      {
+        "name": "Kacper Kozlowski",
+        "position": "MC",
+        "rating": 71,
+        "age": 22,
+        "nationality": "Polonia",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Alexandru Maxim",
+        "position": "MC",
+        "rating": 67,
+        "age": 44,
+        "nationality": "Rumania",
+        "marketValue": 500
+      },
+      {
+        "name": "Victor Ntino-Emo Gidado",
+        "position": "MC",
+        "rating": 67,
+        "age": 21,
+        "nationality": "Nigeria",
+        "marketValue": 400
+      },
+      {
+        "name": "Yusuf Kabadayi",
+        "position": "DC",
+        "rating": 63,
+        "age": 32,
+        "nationality": "Alemania",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Christopher Lungoyi",
+        "position": "DC",
+        "rating": 69,
+        "age": 25,
+        "nationality": "Suiza",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Ali Osman Kalın",
+        "position": "DC",
+        "rating": 70,
+        "age": 26,
+        "nationality": "Turquía",
+        "marketValue": 50
+      },
+      {
+        "name": "Deian Sorescu",
+        "position": "DC",
+        "rating": 69,
+        "age": 18,
+        "nationality": "Rumania",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Ali Mevran Ablak",
+        "position": "DC",
+        "rating": 68,
+        "age": 16,
+        "nationality": "Turquía",
+        "marketValue": 0
+      },
+      {
+        "name": "Mohamed Bayo",
+        "position": "DC",
+        "rating": 73,
+        "age": 27,
+        "nationality": "Guinea",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Denis Drăguș",
+        "position": "DC",
+        "rating": 75,
+        "age": 26,
+        "nationality": "Rumania",
+        "marketValue": 3000000
+      }
+    ]
+  },
+  {
+    "id": "kasimpasa",
+    "name": "Kasimpasa",
+    "players": [
+      {
+        "name": "Andreas Gianniotis",
+        "position": "POR",
+        "rating": 71,
+        "age": 33,
+        "nationality": "Grecia",
+        "marketValue": 350
+      },
+      {
+        "name": "Ali Emre Yanar",
+        "position": "POR",
+        "rating": 68,
+        "age": 25,
+        "nationality": "Turquía",
+        "marketValue": 100
+      },
+      {
+        "name": "Ege Albayrak",
+        "position": "POR",
+        "rating": 66,
+        "age": 18,
+        "nationality": "Turquía",
+        "marketValue": 0
+      },
+      {
+        "name": "Şant Kazancı",
+        "position": "POR",
+        "rating": 66,
+        "age": 17,
+        "nationality": "Turquía",
+        "marketValue": 0
+      },
+      {
+        "name": "Rodrigo Becão",
+        "position": "DFC",
+        "rating": 72,
+        "age": 30,
+        "nationality": "Brasil",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Nicholas Opoku",
+        "position": "DFC",
+        "rating": 68,
+        "age": 20,
+        "nationality": "Ghana",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Adem Arous",
+        "position": "DFC",
+        "rating": 66,
+        "age": 21,
+        "nationality": "Túnez",
+        "marketValue": 800
+      },
+      {
+        "name": "Taylan Aydın",
+        "position": "DFC",
+        "rating": 70,
+        "age": 29,
+        "nationality": "Turquía",
+        "marketValue": 300
+      },
+      {
+        "name": "Yunus Atakaya",
+        "position": "DFC",
+        "rating": 67,
+        "age": 21,
+        "nationality": "Turquía",
+        "marketValue": 0
+      },
+      {
+        "name": "Godfried Frimpong",
+        "position": "DFC",
+        "rating": 68,
+        "age": 21,
+        "nationality": "Países Bajos",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Emre Taşdemir",
+        "position": "DFC",
+        "rating": 65,
+        "age": 33,
+        "nationality": "Turquía",
+        "marketValue": 100
+      },
+      {
+        "name": "Cláudio Winck",
+        "position": "DFC",
+        "rating": 71,
+        "age": 31,
+        "nationality": "Brasil",
+        "marketValue": 800
+      },
+      {
+        "name": "Kamil Ahmet Çörekçi",
+        "position": "DFC",
+        "rating": 67,
+        "age": 22,
+        "nationality": "Turquía",
+        "marketValue": 100
+      },
+      {
+        "name": "Berkay Muratoğlu",
+        "position": "DFC",
+        "rating": 67,
+        "age": 18,
+        "nationality": "Turquía",
+        "marketValue": 50
+      },
+      {
+        "name": "Andri Fannar Baldursson",
+        "position": "MC",
+        "rating": 68,
+        "age": 16,
+        "nationality": "Islandia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Kerem Demirbay",
+        "position": "MC",
+        "rating": 72,
+        "age": 26,
+        "nationality": "Alemania",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Cem Üstündag",
+        "position": "MC",
+        "rating": 71,
+        "age": 25,
+        "nationality": "Austria",
+        "marketValue": 300
+      },
+      {
+        "name": "Cafú",
+        "position": "MC",
+        "rating": 66,
+        "age": 32,
+        "nationality": "Portugal",
+        "marketValue": 300
+      },
+      {
+        "name": "Atakan Müjde",
+        "position": "MC",
+        "rating": 68,
+        "age": 22,
+        "nationality": "Turquía",
+        "marketValue": 50
+      },
+      {
+        "name": "Haris Hajradinovic",
+        "position": "MC",
+        "rating": 74,
+        "age": 31,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Mortadha Ben Ouanes",
+        "position": "DC",
+        "rating": 68,
+        "age": 31,
+        "nationality": "Túnez",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Ali Yavuz Kol",
+        "position": "DC",
+        "rating": 68,
+        "age": 25,
+        "nationality": "Turquía",
+        "marketValue": 300
+      },
+      {
+        "name": "Erdem Çetinkaya",
+        "position": "DC",
+        "rating": 69,
+        "age": 24,
+        "nationality": "Turquía",
+        "marketValue": 0
+      },
+      {
+        "name": "İrfan Can Kahveci",
+        "position": "DC",
+        "rating": 75,
+        "age": 30,
+        "nationality": "Turquía",
+        "marketValue": 4500000
+      },
+      {
+        "name": "Jim Allevinah",
+        "position": "DC",
+        "rating": 72,
+        "age": 30,
+        "nationality": "Gabón",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Fousseni Diabaté",
+        "position": "DC",
+        "rating": 65,
+        "age": 34,
+        "nationality": "Malí",
+        "marketValue": 900
+      },
+      {
+        "name": "Mamadou Fall",
+        "position": "DC",
+        "rating": 63,
+        "age": 34,
+        "nationality": "Senegal",
+        "marketValue": 500
+      },
+      {
+        "name": "Pape Habib Guèye",
+        "position": "DC",
+        "rating": 72,
+        "age": 26,
+        "nationality": "Senegal",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Yusuf Barası",
+        "position": "DC",
+        "rating": 69,
+        "age": 22,
+        "nationality": "Turquía",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Kubilay Kanatsızkuş",
+        "position": "DC",
+        "rating": 65,
+        "age": 17,
+        "nationality": "Turquía",
+        "marketValue": 500
+      },
+      {
+        "name": "Cenk Tosun",
+        "position": "DC",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Turquía",
+        "marketValue": 500
+      }
+    ]
+  },
+  {
+    "id": "alanyaspor",
+    "name": "Alanyaspor",
+    "players": [
+      {
+        "name": "Ertuğrul Taşkıran",
+        "position": "POR",
+        "rating": 67,
+        "age": 36,
+        "nationality": "Turquía",
+        "marketValue": 100
+      },
+      {
+        "name": "Paulo Victor",
+        "position": "POR",
+        "rating": 65,
+        "age": 39,
+        "nationality": "Brasil",
+        "marketValue": 50
+      },
+      {
+        "name": "Nuno Lima",
+        "position": "DFC",
+        "rating": 70,
+        "age": 24,
+        "nationality": "Portugal",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Ümit Akdağ",
+        "position": "DFC",
+        "rating": 68,
+        "age": 22,
+        "nationality": "Rumania",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Fatih Aksoy",
+        "position": "DFC",
+        "rating": 67,
+        "age": 20,
+        "nationality": "Turquía",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Fidan Aliti",
+        "position": "DFC",
+        "rating": 71,
+        "age": 32,
+        "nationality": "Kosovo",
+        "marketValue": 900
+      },
+      {
+        "name": "Bruno Viana",
+        "position": "DFC",
+        "rating": 70,
+        "age": 30,
+        "nationality": "Brasil",
+        "marketValue": 700
+      },
+      {
+        "name": "Bedirhan Özyurt",
+        "position": "DFC",
+        "rating": 67,
+        "age": 22,
+        "nationality": "Turquía",
+        "marketValue": 150
+      },
+      {
+        "name": "Baran Moğultay",
+        "position": "DFC",
+        "rating": 67,
+        "age": 18,
+        "nationality": "Turquía",
+        "marketValue": 250
+      },
+      {
+        "name": "Batuhan Yavuz",
+        "position": "DFC",
+        "rating": 66,
+        "age": 20,
+        "nationality": "Turquía",
+        "marketValue": 50
+      },
+      {
+        "name": "Maestro",
+        "position": "MC",
+        "rating": 70,
+        "age": 22,
+        "nationality": "Angola",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Gaius Makouta",
+        "position": "MC",
+        "rating": 66,
+        "age": 42,
+        "nationality": "Congo",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Nicolas Janvier",
+        "position": "MC",
+        "rating": 66,
+        "age": 17,
+        "nationality": "Francia",
+        "marketValue": 700
+      },
+      {
+        "name": "Enes Keskin",
+        "position": "MC",
+        "rating": 68,
+        "age": 24,
+        "nationality": "Turquía",
+        "marketValue": 400
+      },
+      {
+        "name": "İzzet Çelik",
+        "position": "MC",
+        "rating": 66,
+        "age": 21,
+        "nationality": "Turquía",
+        "marketValue": 300
+      },
+      {
+        "name": "Buluthan Bulut",
+        "position": "MC",
+        "rating": 67,
+        "age": 21,
+        "nationality": "Turquía",
+        "marketValue": 50
+      },
+      {
+        "name": "Florent Hadergjonaj",
+        "position": "MC",
+        "rating": 75,
+        "age": 31,
+        "nationality": "Kosovo",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Yusuf Özdemir",
+        "position": "MC",
+        "rating": 71,
+        "age": 25,
+        "nationality": "Turquía",
+        "marketValue": 0
+      },
+      {
+        "name": "Ianis Hagi",
+        "position": "MC",
+        "rating": 72,
+        "age": 27,
+        "nationality": "Rumania",
+        "marketValue": 1800000
+      },
+      {
+        "name": "İbrahim Kaya",
+        "position": "MC",
+        "rating": 72,
+        "age": 27,
+        "nationality": "Turquía",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Ui-jo Hwang",
+        "position": "MC",
+        "rating": 67,
+        "age": 16,
+        "nationality": "Corea del Sur",
+        "marketValue": 500
+      },
+      {
+        "name": "Efecan Karaca",
+        "position": "MC",
+        "rating": 64,
+        "age": 36,
+        "nationality": "Turquía",
+        "marketValue": 100
+      },
+      {
+        "name": "Yusuf Can Karademir",
+        "position": "MC",
+        "rating": 65,
+        "age": 38,
+        "nationality": "Turquía",
+        "marketValue": 50
+      },
+      {
+        "name": "Ruan",
+        "position": "DC",
+        "rating": 67,
+        "age": 20,
+        "nationality": "Brasil",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Meschack Elia",
+        "position": "DC",
+        "rating": 71,
+        "age": 28,
+        "nationality": "RD del Congo",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Steve Mounié",
+        "position": "DC",
+        "rating": 66,
+        "age": 31,
+        "nationality": "Benín",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Uchenna Ogundu",
+        "position": "DC",
+        "rating": 68,
+        "age": 22,
+        "nationality": "Nigeria",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Güven Yalçın",
+        "position": "DC",
+        "rating": 71,
+        "age": 27,
+        "nationality": "Turquía",
+        "marketValue": 1000000
+      }
+    ]
+  },
+  {
+    "id": "genclerbirligi-ankara",
+    "name": "Genclerbirligi Ankara",
+    "players": [
+      {
+        "name": "Ricardo Velho",
+        "position": "POR",
+        "rating": 67,
+        "age": 24,
+        "nationality": "Portugal",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Erhan Erentürk",
+        "position": "POR",
+        "rating": 65,
+        "age": 18,
+        "nationality": "Turquía",
+        "marketValue": 250
+      },
+      {
+        "name": "Ebrar Aydın",
+        "position": "POR",
+        "rating": 71,
+        "age": 33,
+        "nationality": "Turquía",
+        "marketValue": 50
+      },
+      {
+        "name": "Berk Deniz Çukurcu",
+        "position": "POR",
+        "rating": 66,
+        "age": 19,
+        "nationality": "Turquía",
+        "marketValue": 0
+      },
+      {
+        "name": "Dimitrios Goutas",
+        "position": "DFC",
+        "rating": 72,
+        "age": 31,
+        "nationality": "Grecia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Thalisson",
+        "position": "DFC",
+        "rating": 71,
+        "age": 27,
+        "nationality": "Brasil",
+        "marketValue": 700
+      },
+      {
+        "name": "Zan Zuzek",
+        "position": "DFC",
+        "rating": 71,
+        "age": 29,
+        "nationality": "Eslovenia",
+        "marketValue": 700
+      },
+      {
+        "name": "Abdullah Şahindere",
+        "position": "DFC",
+        "rating": 67,
+        "age": 22,
+        "nationality": "Turquía",
+        "marketValue": 50
+      },
+      {
+        "name": "Umut İslamoğlu",
+        "position": "DFC",
+        "rating": 69,
+        "age": 25,
+        "nationality": "Turquía",
+        "marketValue": 50
+      },
+      {
+        "name": "Arda Çağan Çelik",
+        "position": "DFC",
+        "rating": 65,
+        "age": 44,
+        "nationality": "Turquía",
+        "marketValue": 0
+      },
+      {
+        "name": "Abdurrahim Dursun",
+        "position": "DFC",
+        "rating": 70,
+        "age": 27,
+        "nationality": "Turquía",
+        "marketValue": 250
+      },
+      {
+        "name": "Matej Hanousek",
+        "position": "DFC",
+        "rating": 69,
+        "age": 23,
+        "nationality": "República Checa",
+        "marketValue": 150
+      },
+      {
+        "name": "Yiğit Hamza Aydar",
+        "position": "DFC",
+        "rating": 67,
+        "age": 17,
+        "nationality": "Turquía",
+        "marketValue": 0
+      },
+      {
+        "name": "Pedro Pereira",
+        "position": "DFC",
+        "rating": 72,
+        "age": 28,
+        "nationality": "Portugal",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Fıratcan Üzüm",
+        "position": "DFC",
+        "rating": 70,
+        "age": 26,
+        "nationality": "Turquía",
+        "marketValue": 200
+      },
+      {
+        "name": "Emirhan Ünal",
+        "position": "DFC",
+        "rating": 67,
+        "age": 20,
+        "nationality": "Turquía",
+        "marketValue": 0
+      },
+      {
+        "name": "Tom Dele-Bashiru",
+        "position": "MC",
+        "rating": 68,
+        "age": 15,
+        "nationality": "Nigeria",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Moussa Kyabou",
+        "position": "MC",
+        "rating": 71,
+        "age": 27,
+        "nationality": "Malí",
+        "marketValue": 400
+      },
+      {
+        "name": "Peter Etebo",
+        "position": "MC",
+        "rating": 71,
+        "age": 30,
+        "nationality": "Nigeria",
+        "marketValue": 300
+      },
+      {
+        "name": "Oğulcan Ülgün",
+        "position": "MC",
+        "rating": 70,
+        "age": 35,
+        "nationality": "Turquía",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Franco Tongya",
+        "position": "MC",
+        "rating": 70,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Samed Onur",
+        "position": "MC",
+        "rating": 68,
+        "age": 23,
+        "nationality": "Turquía",
+        "marketValue": 500
+      },
+      {
+        "name": "Ensar Kemaloğlu",
+        "position": "MC",
+        "rating": 71,
+        "age": 27,
+        "nationality": "Turquía",
+        "marketValue": 300
+      },
+      {
+        "name": "Dal Varesanovic",
+        "position": "MC",
+        "rating": 69,
+        "age": 24,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Cihan Çanak",
+        "position": "DC",
+        "rating": 69,
+        "age": 21,
+        "nationality": "Turquía",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Henry Onyekuru",
+        "position": "DC",
+        "rating": 71,
+        "age": 28,
+        "nationality": "Nigeria",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Metehan Mimaroğlu",
+        "position": "DC",
+        "rating": 65,
+        "age": 31,
+        "nationality": "Turquía",
+        "marketValue": 400
+      },
+      {
+        "name": "Göktan Gürpüz",
+        "position": "DC",
+        "rating": 70,
+        "age": 23,
+        "nationality": "Turquía",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Dilhan Demir",
+        "position": "DC",
+        "rating": 65,
+        "age": 21,
+        "nationality": "Alemania",
+        "marketValue": 100
+      },
+      {
+        "name": "Sékou Koïta",
+        "position": "DC",
+        "rating": 70,
+        "age": 22,
+        "nationality": "Malí",
+        "marketValue": 3000000
+      },
+      {
+        "name": "M'Baye Niang",
+        "position": "DC",
+        "rating": 72,
+        "age": 29,
+        "nationality": "Senegal",
+        "marketValue": 800
+      },
+      {
+        "name": "Ayaz Özcan",
+        "position": "DC",
+        "rating": 65,
+        "age": 16,
+        "nationality": "Turquía",
+        "marketValue": 50
+      }
+    ]
+  },
+  {
+    "id": "kocaelispor",
+    "name": "Kocaelispor",
+    "players": [
+      {
+        "name": "Aleksandar Jovanovic",
+        "position": "POR",
+        "rating": 72,
+        "age": 33,
+        "nationality": "Serbia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Serhat Öztaşdelen",
+        "position": "POR",
+        "rating": 66,
+        "age": 21,
+        "nationality": "Turquía",
+        "marketValue": 200
+      },
+      {
+        "name": "Gökhan Değirmenci",
+        "position": "POR",
+        "rating": 66,
+        "age": 35,
+        "nationality": "Turquía",
+        "marketValue": 50
+      },
+      {
+        "name": "Botond Balogh",
+        "position": "DFC",
+        "rating": 70,
+        "age": 23,
+        "nationality": "Hungría",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Hrvoje Smolcic",
+        "position": "DFC",
+        "rating": 70,
+        "age": 25,
+        "nationality": "Croacia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Mateusz Wieteska",
+        "position": "DFC",
+        "rating": 72,
+        "age": 28,
+        "nationality": "Polonia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Massadio Haïdara",
+        "position": "DFC",
+        "rating": 67,
+        "age": 21,
+        "nationality": "Malí",
+        "marketValue": 900
+      },
+      {
+        "name": "Muharrem Cinan",
+        "position": "DFC",
+        "rating": 70,
+        "age": 27,
+        "nationality": "Turquía",
+        "marketValue": 500
+      },
+      {
+        "name": "Anfernee Dijksteel",
+        "position": "DFC",
+        "rating": 72,
+        "age": 29,
+        "nationality": "Surinam",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Ahmet Oğuz",
+        "position": "DFC",
+        "rating": 67,
+        "age": 22,
+        "nationality": "Turquía",
+        "marketValue": 400
+      },
+      {
+        "name": "Show",
+        "position": "MC",
+        "rating": 72,
+        "age": 26,
+        "nationality": "Angola",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Habib Keïta",
+        "position": "MC",
+        "rating": 70,
+        "age": 23,
+        "nationality": "Malí",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Joseph Nonge",
+        "position": "MC",
+        "rating": 67,
+        "age": 20,
+        "nationality": "Bélgica",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Karol Linetty",
+        "position": "MC",
+        "rating": 72,
+        "age": 30,
+        "nationality": "Polonia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Samet Yalçın",
+        "position": "MC",
+        "rating": 68,
+        "age": 23,
+        "nationality": "Turquía",
+        "marketValue": 250
+      },
+      {
+        "name": "Ege Bilim",
+        "position": "MC",
+        "rating": 71,
+        "age": 27,
+        "nationality": "Turquía",
+        "marketValue": 50
+      },
+      {
+        "name": "Darko Churlinov",
+        "position": "DC",
+        "rating": 66,
+        "age": 17,
+        "nationality": "Macedonia del Norte",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Rigoberto Rivas",
+        "position": "DC",
+        "rating": 72,
+        "age": 27,
+        "nationality": "Honduras",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Tayfur Bingöl",
+        "position": "DC",
+        "rating": 65,
+        "age": 33,
+        "nationality": "Turquía",
+        "marketValue": 500
+      },
+      {
+        "name": "Furkan Gedik",
+        "position": "DC",
+        "rating": 65,
+        "age": 18,
+        "nationality": "Turquía",
+        "marketValue": 250
+      },
+      {
+        "name": "Can Keleş",
+        "position": "DC",
+        "rating": 67,
+        "age": 24,
+        "nationality": "Austria",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Dan Agyei",
+        "position": "DC",
+        "rating": 69,
+        "age": 28,
+        "nationality": "Inglaterra",
+        "marketValue": 800
+      },
+      {
+        "name": "Bruno Petkovic",
+        "position": "DC",
+        "rating": 67,
+        "age": 31,
+        "nationality": "Croacia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Ahmet Sağat",
+        "position": "DC",
+        "rating": 71,
+        "age": 29,
+        "nationality": "Turquía",
+        "marketValue": 300
+      },
+      {
+        "name": "Serdar Dursun",
+        "position": "DC",
+        "rating": 68,
+        "age": 19,
+        "nationality": "Turquía",
+        "marketValue": 300
+      }
+    ]
+  },
+  {
+    "id": "kayserispor",
+    "name": "Kayserispor",
+    "players": [
+      {
+        "name": "Bilal Bayazıt",
+        "position": "POR",
+        "rating": 70,
+        "age": 25,
+        "nationality": "Turquía",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Deniz Dönmezer",
+        "position": "POR",
+        "rating": 70,
+        "age": 27,
+        "nationality": "Turquía",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Onurcan Piri",
+        "position": "POR",
+        "rating": 70,
+        "age": 31,
+        "nationality": "Turquía",
+        "marketValue": 200
+      },
+      {
+        "name": "Majid Hosseini",
+        "position": "DFC",
+        "rating": 72,
+        "age": 29,
+        "nationality": "Irán",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Semih Güler",
+        "position": "DFC",
+        "rating": 71,
+        "age": 31,
+        "nationality": "Turquía",
+        "marketValue": 900
+      },
+      {
+        "name": "Stefano Denswil",
+        "position": "DFC",
+        "rating": 71,
+        "age": 32,
+        "nationality": "Surinam",
+        "marketValue": 800
+      },
+      {
+        "name": "Gideon Jung",
+        "position": "DFC",
+        "rating": 65,
+        "age": 37,
+        "nationality": "Alemania",
+        "marketValue": 400
+      },
+      {
+        "name": "Jadel Katongo",
+        "position": "DFC",
+        "rating": 67,
+        "age": 21,
+        "nationality": "Inglaterra",
+        "marketValue": 350
+      },
+      {
+        "name": "Kayra Cihan",
+        "position": "DFC",
+        "rating": 64,
+        "age": 38,
+        "nationality": "Turquía",
+        "marketValue": 100
+      },
+      {
+        "name": "Abdulsamet Burak",
+        "position": "DFC",
+        "rating": 70,
+        "age": 29,
+        "nationality": "Turquía",
+        "marketValue": 0
+      },
+      {
+        "name": "Lionel Carole",
+        "position": "DFC",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Francia",
+        "marketValue": 300
+      },
+      {
+        "name": "Aaron Opoku",
+        "position": "DFC",
+        "rating": 71,
+        "age": 30,
+        "nationality": "Alemania",
+        "marketValue": 800
+      },
+      {
+        "name": "Burak Kapacak",
+        "position": "DFC",
+        "rating": 66,
+        "age": 17,
+        "nationality": "Turquía",
+        "marketValue": 200
+      },
+      {
+        "name": "Youssef Aït Bennasser",
+        "position": "MC",
+        "rating": 68,
+        "age": 15,
+        "nationality": "Marruecos",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Dorukhan Toköz",
+        "position": "MC",
+        "rating": 68,
+        "age": 24,
+        "nationality": "Turquía",
+        "marketValue": 800
+      },
+      {
+        "name": "László Bénes",
+        "position": "MC",
+        "rating": 74,
+        "age": 28,
+        "nationality": "Eslovaquia",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Görkem Sağlam",
+        "position": "MC",
+        "rating": 71,
+        "age": 27,
+        "nationality": "Turquía",
+        "marketValue": 900
+      },
+      {
+        "name": "Furkan Soyalp",
+        "position": "MC",
+        "rating": 66,
+        "age": 33,
+        "nationality": "Turquía",
+        "marketValue": 400
+      },
+      {
+        "name": "Yiğit Emre Çeltik",
+        "position": "MC",
+        "rating": 67,
+        "age": 21,
+        "nationality": "Turquía",
+        "marketValue": 50
+      },
+      {
+        "name": "João Mendes",
+        "position": "MC",
+        "rating": 73,
+        "age": 31,
+        "nationality": "Portugal",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Eray Özbek",
+        "position": "MC",
+        "rating": 66,
+        "age": 16,
+        "nationality": "Turquía",
+        "marketValue": 250
+      },
+      {
+        "name": "Miguel Cardoso",
+        "position": "DC",
+        "rating": 65,
+        "age": 31,
+        "nationality": "Portugal",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Sam Mather",
+        "position": "DC",
+        "rating": 68,
+        "age": 21,
+        "nationality": "Inglaterra",
+        "marketValue": 100
+      },
+      {
+        "name": "Nurettin Korkmaz",
+        "position": "DC",
+        "rating": 66,
+        "age": 23,
+        "nationality": "Turquía",
+        "marketValue": 100
+      },
+      {
+        "name": "Denis Makarov",
+        "position": "DC",
+        "rating": 69,
+        "age": 18,
+        "nationality": "Rusia",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Carlos Mané",
+        "position": "DC",
+        "rating": 66,
+        "age": 20,
+        "nationality": "Guinea-Bissau",
+        "marketValue": 900
+      },
+      {
+        "name": "Ramazan Civelek",
+        "position": "DC",
+        "rating": 69,
+        "age": 28,
+        "nationality": "Turquía",
+        "marketValue": 800
+      },
+      {
+        "name": "German Onugkha",
+        "position": "DC",
+        "rating": 73,
+        "age": 29,
+        "nationality": "Rusia",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Indrit Tuci",
+        "position": "DC",
+        "rating": 66,
+        "age": 22,
+        "nationality": "Albania",
+        "marketValue": 800
+      },
+      {
+        "name": "Talha Sarıarslan",
+        "position": "DC",
+        "rating": 66,
+        "age": 22,
+        "nationality": "Turquía",
+        "marketValue": 300
+      }
+    ]
+  },
+  {
+    "id": "antalyaspor",
+    "name": "Antalyaspor",
+    "players": [
+      {
+        "name": "Abdullah Yiğiter",
+        "position": "POR",
+        "rating": 63,
+        "age": 21,
+        "nationality": "Turquía",
+        "marketValue": 400
+      },
+      {
+        "name": "Ataberk Dadakdeniz",
+        "position": "POR",
+        "rating": 63,
+        "age": 16,
+        "nationality": "Turquía",
+        "marketValue": 300
+      },
+      {
+        "name": "Julián Cuesta",
+        "position": "POR",
+        "rating": 68,
+        "age": 34,
+        "nationality": "España",
+        "marketValue": 250
+      },
+      {
+        "name": "Kağan Arıcan",
+        "position": "POR",
+        "rating": 62,
+        "age": 19,
+        "nationality": "Turquía",
+        "marketValue": 150
+      },
+      {
+        "name": "Georgiy Dzhikiya",
+        "position": "DFC",
+        "rating": 69,
+        "age": 32,
+        "nationality": "Rusia",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Lautaro Giannetti",
+        "position": "DFC",
+        "rating": 69,
+        "age": 30,
+        "nationality": "Argentina",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Hüseyin Türkmen",
+        "position": "DFC",
+        "rating": 68,
+        "age": 28,
+        "nationality": "Turquía",
+        "marketValue": 200
+      },
+      {
+        "name": "Bahadır Öztürk",
+        "position": "DFC",
+        "rating": 68,
+        "age": 30,
+        "nationality": "Turquía",
+        "marketValue": 200
+      },
+      {
+        "name": "Veysel Sarı",
+        "position": "DFC",
+        "rating": 62,
+        "age": 37,
+        "nationality": "Turquía",
+        "marketValue": 100
+      },
+      {
+        "name": "Ensar Buğra Tivsiz",
+        "position": "DFC",
+        "rating": 68,
+        "age": 27,
+        "nationality": "Turquía",
+        "marketValue": 0
+      },
+      {
+        "name": "Ege İzmirli",
+        "position": "DFC",
+        "rating": 63,
+        "age": 18,
+        "nationality": "Turquía",
+        "marketValue": 0
+      },
+      {
+        "name": "Kenneth Paal",
+        "position": "DFC",
+        "rating": 69,
+        "age": 28,
+        "nationality": "Surinam",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Samet Karakoç",
+        "position": "DFC",
+        "rating": 65,
+        "age": 23,
+        "nationality": "Turquía",
+        "marketValue": 400
+      },
+      {
+        "name": "Bünyamin Balcı",
+        "position": "DFC",
+        "rating": 67,
+        "age": 25,
+        "nationality": "Turquía",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Erdoğan Yeşilyurt",
+        "position": "DFC",
+        "rating": 64,
+        "age": 17,
+        "nationality": "Turquía",
+        "marketValue": 500
+      },
+      {
+        "name": "Jesper Ceesay",
+        "position": "MC",
+        "rating": 67,
+        "age": 23,
+        "nationality": "Gambia",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Soner Dikmen",
+        "position": "MC",
+        "rating": 63,
+        "age": 32,
+        "nationality": "Turquía",
+        "marketValue": 800
+      },
+      {
+        "name": "Dario Saric",
+        "position": "MC",
+        "rating": 68,
+        "age": 28,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 700
+      },
+      {
+        "name": "Yakub İlçin",
+        "position": "MC",
+        "rating": 63,
+        "age": 20,
+        "nationality": "Turquía",
+        "marketValue": 300
+      },
+      {
+        "name": "Abdülkadir Ömür",
+        "position": "MC",
+        "rating": 69,
+        "age": 26,
+        "nationality": "Turquía",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Ramzi Safuri",
+        "position": "MC",
+        "rating": 70,
+        "age": 30,
+        "nationality": "Israel",
+        "marketValue": 900
+      },
+      {
+        "name": "Sander van de Streek",
+        "position": "MC",
+        "rating": 66,
+        "age": 22,
+        "nationality": "Países Bajos",
+        "marketValue": 600
+      },
+      {
+        "name": "Nikola Storm",
+        "position": "DC",
+        "rating": 67,
+        "age": 26,
+        "nationality": "Bélgica",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Doğukan Sinik",
+        "position": "DC",
+        "rating": 68,
+        "age": 27,
+        "nationality": "Turquía",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Ali Demirbilek",
+        "position": "DC",
+        "rating": 65,
+        "age": 19,
+        "nationality": "Turquía",
+        "marketValue": 200
+      },
+      {
+        "name": "Berkay Topdemir",
+        "position": "DC",
+        "rating": 62,
+        "age": 33,
+        "nationality": "Turquía",
+        "marketValue": 50
+      },
+      {
+        "name": "Samuel Ballet",
+        "position": "DC",
+        "rating": 65,
+        "age": 24,
+        "nationality": "Suiza",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Yohan Boli",
+        "position": "DC",
+        "rating": 63,
+        "age": 32,
+        "nationality": "Costa de Marfil",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Bachir Gueye",
+        "position": "DC",
+        "rating": 66,
+        "age": 24,
+        "nationality": "Senegal",
+        "marketValue": 100
+      },
+      {
+        "name": "Kerem Kayaarası",
+        "position": "DC",
+        "rating": 65,
+        "age": 19,
+        "nationality": "Turquía",
+        "marketValue": 50
+      }
+    ]
+  },
+  {
+    "id": "eyupspor",
+    "name": "Eyüpspor",
+    "players": [
+      {
+        "name": "Marcos Felipe",
+        "position": "POR",
+        "rating": 69,
+        "age": 29,
+        "nationality": "Brasil",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Jankat Yılmaz",
+        "position": "POR",
+        "rating": 62,
+        "age": 24,
+        "nationality": "Turquía",
+        "marketValue": 250
+      },
+      {
+        "name": "Robin Yalçın",
+        "position": "DFC",
+        "rating": 68,
+        "age": 32,
+        "nationality": "Turquía",
+        "marketValue": 600
+      },
+      {
+        "name": "Luccas Claro",
+        "position": "DFC",
+        "rating": 63,
+        "age": 34,
+        "nationality": "Brasil",
+        "marketValue": 300
+      },
+      {
+        "name": "Jérôme Onguéné",
+        "position": "DFC",
+        "rating": 70,
+        "age": 28,
+        "nationality": "Camerún",
+        "marketValue": 150
+      },
+      {
+        "name": "Gilbert Mendy",
+        "position": "DFC",
+        "rating": 64,
+        "age": 21,
+        "nationality": "Senegal",
+        "marketValue": 50
+      },
+      {
+        "name": "Umut Meraş",
+        "position": "DFC",
+        "rating": 67,
+        "age": 30,
+        "nationality": "Turquía",
+        "marketValue": 400
+      },
+      {
+        "name": "Arda Yavuz",
+        "position": "DFC",
+        "rating": 64,
+        "age": 19,
+        "nationality": "Turquía",
+        "marketValue": 50
+      },
+      {
+        "name": "Calegari",
+        "position": "DFC",
+        "rating": 67,
+        "age": 23,
+        "nationality": "Brasil",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Denis Radu",
+        "position": "DFC",
+        "rating": 64,
+        "age": 22,
+        "nationality": "Rumania",
+        "marketValue": 400
+      },
+      {
+        "name": "Talha Ülvan",
+        "position": "DFC",
+        "rating": 63,
+        "age": 17,
+        "nationality": "Turquía",
+        "marketValue": 250
+      },
+      {
+        "name": "Mateusz Legowski",
+        "position": "MC",
+        "rating": 65,
+        "age": 20,
+        "nationality": "Polonia",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Baran Gezek",
+        "position": "MC",
+        "rating": 65,
+        "age": 20,
+        "nationality": "Turquía",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Taras Stepanenko",
+        "position": "MC",
+        "rating": 62,
+        "age": 33,
+        "nationality": "Ucrania",
+        "marketValue": 500
+      },
+      {
+        "name": "Taşkın İlter",
+        "position": "MC",
+        "rating": 67,
+        "age": 28,
+        "nationality": "Azerbaiyán",
+        "marketValue": 150
+      },
+      {
+        "name": "Charles-André Raux-Yao",
+        "position": "MC",
+        "rating": 64,
+        "age": 15,
+        "nationality": "Francia",
+        "marketValue": 150
+      },
+      {
+        "name": "Emre Akbaba",
+        "position": "MC",
+        "rating": 64,
+        "age": 33,
+        "nationality": "Turquía",
+        "marketValue": 500
+      },
+      {
+        "name": "Prince Ampem",
+        "position": "DC",
+        "rating": 58,
+        "age": 40,
+        "nationality": "Ghana",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Ángel Torres",
+        "position": "DC",
+        "rating": 68,
+        "age": 25,
+        "nationality": "Colombia",
+        "marketValue": 300
+      },
+      {
+        "name": "Lenny Pintor",
+        "position": "DC",
+        "rating": 68,
+        "age": 23,
+        "nationality": "Francia",
+        "marketValue": 200
+      },
+      {
+        "name": "Christ Sadia",
+        "position": "DC",
+        "rating": 65,
+        "age": 18,
+        "nationality": "Costa de Marfil",
+        "marketValue": 100
+      },
+      {
+        "name": "Umut Bozok",
+        "position": "DC",
+        "rating": 66,
+        "age": 19,
+        "nationality": "Turquía",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Metehan Altunbaş",
+        "position": "DC",
+        "rating": 67,
+        "age": 26,
+        "nationality": "Turquía",
+        "marketValue": 250
+      }
+    ]
+  },
+  {
+    "id": "fatih-karagumruk",
+    "name": "Fatih Karagümrük",
+    "players": [
+      {
+        "name": "Ivo Grbic",
+        "position": "POR",
+        "rating": 69,
+        "age": 30,
+        "nationality": "Croacia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Furkan Bekleviç",
+        "position": "POR",
+        "rating": 65,
+        "age": 26,
+        "nationality": "Turquía",
+        "marketValue": 300
+      },
+      {
+        "name": "Kerem Yandal",
+        "position": "POR",
+        "rating": 62,
+        "age": 19,
+        "nationality": "Turquía",
+        "marketValue": 0
+      },
+      {
+        "name": "Berke Can Evli",
+        "position": "POR",
+        "rating": 63,
+        "age": 16,
+        "nationality": "Turquía",
+        "marketValue": 0
+      },
+      {
+        "name": "Davide Biraschi",
+        "position": "DFC",
+        "rating": 68,
+        "age": 31,
+        "nationality": "Italia",
+        "marketValue": 400
+      },
+      {
+        "name": "Anıl Yiğit Çınar",
+        "position": "DFC",
+        "rating": 63,
+        "age": 22,
+        "nationality": "Turquía",
+        "marketValue": 200
+      },
+      {
+        "name": "Burhan Ersoy",
+        "position": "DFC",
+        "rating": 65,
+        "age": 24,
+        "nationality": "Turquía",
+        "marketValue": 100
+      },
+      {
+        "name": "Muhammed Kadıoğlu",
+        "position": "DFC",
+        "rating": 67,
+        "age": 32,
+        "nationality": "Turquía",
+        "marketValue": 100
+      },
+      {
+        "name": "Jure Balkovec",
+        "position": "DFC",
+        "rating": 68,
+        "age": 29,
+        "nationality": "Eslovenia",
+        "marketValue": 800
+      },
+      {
+        "name": "Çağtay Kurukalıp",
+        "position": "DFC",
+        "rating": 62,
+        "age": 33,
+        "nationality": "Turquía",
+        "marketValue": 600
+      },
+      {
+        "name": "Ricardo Esgaio",
+        "position": "DFC",
+        "rating": 68,
+        "age": 32,
+        "nationality": "Portugal",
+        "marketValue": 800
+      },
+      {
+        "name": "Bartuğ Elmaz",
+        "position": "MC",
+        "rating": 67,
+        "age": 22,
+        "nationality": "Turquía",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Marius Tresor Doh",
+        "position": "MC",
+        "rating": 67,
+        "age": 22,
+        "nationality": "Costa de Marfil",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Matías Kranevitter",
+        "position": "MC",
+        "rating": 63,
+        "age": 32,
+        "nationality": "Argentina",
+        "marketValue": 700
+      },
+      {
+        "name": "Berkay Özcan",
+        "position": "MC",
+        "rating": 69,
+        "age": 27,
+        "nationality": "Turquía",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Daniel Johnson",
+        "position": "MC",
+        "rating": 64,
+        "age": 33,
+        "nationality": "Jamaica",
+        "marketValue": 400
+      },
+      {
+        "name": "Barış Kalaycı",
+        "position": "MC",
+        "rating": 63,
+        "age": 20,
+        "nationality": "Turquía",
+        "marketValue": 200
+      },
+      {
+        "name": "Tuğbey Akgün",
+        "position": "MC",
+        "rating": 64,
+        "age": 16,
+        "nationality": "Turquía",
+        "marketValue": 100
+      },
+      {
+        "name": "Sam Larsson",
+        "position": "MC",
+        "rating": 68,
+        "age": 23,
+        "nationality": "Suecia",
+        "marketValue": 800
+      },
+      {
+        "name": "Serginho",
+        "position": "DC",
+        "rating": 66,
+        "age": 30,
+        "nationality": "Brasil",
+        "marketValue": 600
+      },
+      {
+        "name": "Ahmet Sivri",
+        "position": "DC",
+        "rating": 64,
+        "age": 17,
+        "nationality": "Turquía",
+        "marketValue": 250
+      },
+      {
+        "name": "Shavy Babicka",
+        "position": "DC",
+        "rating": 69,
+        "age": 25,
+        "nationality": "Gabón",
+        "marketValue": 1500000
+      },
+      {
+        "name": "João Camacho",
+        "position": "DC",
+        "rating": 60,
+        "age": 37,
+        "nationality": "Portugal",
+        "marketValue": 500
+      },
+      {
+        "name": "Tarık Buğra Kalpaklı",
+        "position": "DC",
+        "rating": 62,
+        "age": 20,
+        "nationality": "Turquía",
+        "marketValue": 200
+      },
+      {
+        "name": "Ahmed Traore",
+        "position": "DC",
+        "rating": 65,
+        "age": 18,
+        "nationality": "Costa de Marfil",
+        "marketValue": 100
+      },
+      {
+        "name": "Tiago Çukur",
+        "position": "DC",
+        "rating": 63,
+        "age": 21,
+        "nationality": "Turquía",
+        "marketValue": 400
+      },
+      {
+        "name": "Andre Gray",
+        "position": "DC",
+        "rating": 61,
+        "age": 34,
+        "nationality": "Jamaica",
+        "marketValue": 400
+      },
+      {
+        "name": "Abdul Kader Moussa Kone",
+        "position": "DC",
+        "rating": 65,
+        "age": 15,
+        "nationality": "Costa de Marfil",
+        "marketValue": 100
+      }
+    ]
+  }
+]

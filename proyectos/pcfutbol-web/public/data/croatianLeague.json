@@ -1,0 +1,2670 @@
+[
+  {
+    "id": "gnk-dinamo-zagreb",
+    "name": "GNK Dinamo Zagreb",
+    "players": [
+      {
+        "name": "Dominik Livakovic",
+        "position": "POR",
+        "rating": 73,
+        "age": 31,
+        "nationality": "Croacia",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Ivan Nevistic",
+        "position": "POR",
+        "rating": 73,
+        "age": 33,
+        "nationality": "Croacia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Ivan Filipovic",
+        "position": "POR",
+        "rating": 66,
+        "age": 44,
+        "nationality": "Croacia",
+        "marketValue": 350
+      },
+      {
+        "name": "Antonio Rajic",
+        "position": "POR",
+        "rating": 67,
+        "age": 18,
+        "nationality": "Croacia",
+        "marketValue": 100
+      },
+      {
+        "name": "Danijel Zagorac",
+        "position": "POR",
+        "rating": 68,
+        "age": 38,
+        "nationality": "Croacia",
+        "marketValue": 50
+      },
+      {
+        "name": "Scott McKenna",
+        "position": "DFC",
+        "rating": 75,
+        "age": 26,
+        "nationality": "Escocia",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Raúl Torrente",
+        "position": "DFC",
+        "rating": 71,
+        "age": 24,
+        "nationality": "España",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Niko Galesic",
+        "position": "DFC",
+        "rating": 68,
+        "age": 15,
+        "nationality": "Croacia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Sergi Domínguez",
+        "position": "DFC",
+        "rating": 70,
+        "age": 36,
+        "nationality": "España",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Kévin Théophile-Catherine",
+        "position": "DFC",
+        "rating": 71,
+        "age": 28,
+        "nationality": "Martinica",
+        "marketValue": 250
+      },
+      {
+        "name": "Dino Peric",
+        "position": "DFC",
+        "rating": 72,
+        "age": 31,
+        "nationality": "Croacia",
+        "marketValue": 100
+      },
+      {
+        "name": "Matija Ruskovacki",
+        "position": "DFC",
+        "rating": 68,
+        "age": 20,
+        "nationality": "Croacia",
+        "marketValue": 0
+      },
+      {
+        "name": "Matteo Pérez Vinlöf",
+        "position": "DFC",
+        "rating": 68,
+        "age": 22,
+        "nationality": "Suecia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Bruno Goda",
+        "position": "DFC",
+        "rating": 73,
+        "age": 27,
+        "nationality": "Croacia",
+        "marketValue": 1300000
+      },
+      {
+        "name": "Ronaël Pierre-Gabriel",
+        "position": "DFC",
+        "rating": 69,
+        "age": 18,
+        "nationality": "Francia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Moris Valincic",
+        "position": "DFC",
+        "rating": 71,
+        "age": 25,
+        "nationality": "Croacia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Noa Mikic",
+        "position": "DFC",
+        "rating": 66,
+        "age": 35,
+        "nationality": "Croacia",
+        "marketValue": 400
+      },
+      {
+        "name": "Paul Tabinas",
+        "position": "DFC",
+        "rating": 70,
+        "age": 23,
+        "nationality": "Filipinas",
+        "marketValue": 200
+      },
+      {
+        "name": "Ismaël Bennacer",
+        "position": "MC",
+        "rating": 75,
+        "age": 28,
+        "nationality": "Argelia",
+        "marketValue": 9000000
+      },
+      {
+        "name": "Marko Soldo",
+        "position": "MC",
+        "rating": 70,
+        "age": 22,
+        "nationality": "Croacia",
+        "marketValue": 1300000
+      },
+      {
+        "name": "Josip Misic",
+        "position": "MC",
+        "rating": 73,
+        "age": 27,
+        "nationality": "Croacia",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Gonzalo Villar",
+        "position": "MC",
+        "rating": 72,
+        "age": 27,
+        "nationality": "España",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Miha Zajc",
+        "position": "MC",
+        "rating": 75,
+        "age": 31,
+        "nationality": "Eslovenia",
+        "marketValue": 1300000
+      },
+      {
+        "name": "Luka Stojkovic",
+        "position": "MC",
+        "rating": 71,
+        "age": 22,
+        "nationality": "Croacia",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Robert Mudrazija",
+        "position": "MC",
+        "rating": 68,
+        "age": 20,
+        "nationality": "Croacia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Gabriel Vidovic",
+        "position": "DC",
+        "rating": 68,
+        "age": 22,
+        "nationality": "Croacia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Arbër Hoxha",
+        "position": "DC",
+        "rating": 74,
+        "age": 27,
+        "nationality": "Albania",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Cardoso Varela",
+        "position": "DC",
+        "rating": 68,
+        "age": 23,
+        "nationality": "Portugal",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Mateo Lisica",
+        "position": "DC",
+        "rating": 71,
+        "age": 21,
+        "nationality": "Croacia",
+        "marketValue": 1300000
+      },
+      {
+        "name": "Fran Topic",
+        "position": "DC",
+        "rating": 72,
+        "age": 30,
+        "nationality": "Croacia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Juan Córdoba",
+        "position": "DC",
+        "rating": 70,
+        "age": 22,
+        "nationality": "Colombia",
+        "marketValue": 850
+      },
+      {
+        "name": "Dion Beljo",
+        "position": "DC",
+        "rating": 72,
+        "age": 23,
+        "nationality": "Croacia",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Sandro Kulenovic",
+        "position": "DC",
+        "rating": 70,
+        "age": 17,
+        "nationality": "Croacia",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Monsef Bakrar",
+        "position": "DC",
+        "rating": 74,
+        "age": 25,
+        "nationality": "Argelia",
+        "marketValue": 2000000
+      }
+    ]
+  },
+  {
+    "id": "hnk-hajduk-split",
+    "name": "HNK Hajduk Split",
+    "players": [
+      {
+        "name": "Ivica Ivusic",
+        "position": "POR",
+        "rating": 71,
+        "age": 30,
+        "nationality": "Croacia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Toni Silic",
+        "position": "POR",
+        "rating": 69,
+        "age": 33,
+        "nationality": "Croacia",
+        "marketValue": 500
+      },
+      {
+        "name": "Davyd Fesyuk",
+        "position": "POR",
+        "rating": 65,
+        "age": 20,
+        "nationality": "Ucrania",
+        "marketValue": 50
+      },
+      {
+        "name": "Raul Bezeljak",
+        "position": "POR",
+        "rating": 65,
+        "age": 19,
+        "nationality": "Croacia",
+        "marketValue": 25
+      },
+      {
+        "name": "Branimir Mlacic",
+        "position": "DFC",
+        "rating": 67,
+        "age": 22,
+        "nationality": "Croacia",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Zvonimir Sarlija",
+        "position": "DFC",
+        "rating": 71,
+        "age": 31,
+        "nationality": "Croacia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Ron Raci",
+        "position": "DFC",
+        "rating": 67,
+        "age": 23,
+        "nationality": "Kosovo",
+        "marketValue": 450
+      },
+      {
+        "name": "Marino Skelin",
+        "position": "DFC",
+        "rating": 65,
+        "age": 36,
+        "nationality": "Croacia",
+        "marketValue": 100
+      },
+      {
+        "name": "Simun Hrgovic",
+        "position": "DFC",
+        "rating": 71,
+        "age": 32,
+        "nationality": "Croacia",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Ismaël Diallo",
+        "position": "DFC",
+        "rating": 69,
+        "age": 29,
+        "nationality": "Costa de Marfil",
+        "marketValue": 750
+      },
+      {
+        "name": "Dario Melnjak",
+        "position": "DFC",
+        "rating": 65,
+        "age": 17,
+        "nationality": "Croacia",
+        "marketValue": 600
+      },
+      {
+        "name": "Luka Hodak",
+        "position": "DFC",
+        "rating": 64,
+        "age": 38,
+        "nationality": "Croacia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Niko Sigur",
+        "position": "MC",
+        "rating": 69,
+        "age": 22,
+        "nationality": "Canadá",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Hugo Guillamón",
+        "position": "MC",
+        "rating": 70,
+        "age": 25,
+        "nationality": "España",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Filip Krovinovic",
+        "position": "MC",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Croacia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Adrion Pajaziti",
+        "position": "MC",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Albania",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Luka Jurak",
+        "position": "MC",
+        "rating": 65,
+        "age": 35,
+        "nationality": "Croacia",
+        "marketValue": 50
+      },
+      {
+        "name": "Rokas Pukstas",
+        "position": "MC",
+        "rating": 70,
+        "age": 21,
+        "nationality": "Estados Unidos",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Anthony Kalik",
+        "position": "MC",
+        "rating": 69,
+        "age": 28,
+        "nationality": "Australia",
+        "marketValue": 800
+      },
+      {
+        "name": "Noa Skoko",
+        "position": "MC",
+        "rating": 63,
+        "age": 37,
+        "nationality": "Croacia",
+        "marketValue": 50
+      },
+      {
+        "name": "Michele Sego",
+        "position": "DC",
+        "rating": 73,
+        "age": 25,
+        "nationality": "Croacia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Ante Rebić",
+        "position": "DC",
+        "rating": 65,
+        "age": 32,
+        "nationality": "Croacia",
+        "marketValue": 750
+      },
+      {
+        "name": "Lovre Loncar",
+        "position": "DC",
+        "rating": 67,
+        "age": 19,
+        "nationality": "Croacia",
+        "marketValue": 0
+      },
+      {
+        "name": "Bruno Durdov",
+        "position": "DC",
+        "rating": 62,
+        "age": 34,
+        "nationality": "Croacia",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Abdoulie Sanyang",
+        "position": "DC",
+        "rating": 66,
+        "age": 24,
+        "nationality": "Gambia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Iker Almena",
+        "position": "DC",
+        "rating": 69,
+        "age": 30,
+        "nationality": "España",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Roko Brajkovic",
+        "position": "DC",
+        "rating": 67,
+        "age": 28,
+        "nationality": "Croacia",
+        "marketValue": 400
+      },
+      {
+        "name": "Marko Livaja",
+        "position": "DC",
+        "rating": 66,
+        "age": 32,
+        "nationality": "Croacia",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Peter Nnaemeka Ugwuodo",
+        "position": "DC",
+        "rating": 62,
+        "age": 42,
+        "nationality": "Nigeria",
+        "marketValue": 0
+      }
+    ]
+  },
+  {
+    "id": "hnk-rijeka",
+    "name": "HNK Rijeka",
+    "players": [
+      {
+        "name": "Martin Zlomislic",
+        "position": "POR",
+        "rating": 69,
+        "age": 27,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 2000000
+      },
+      {
+        "name": "David Nwolokor",
+        "position": "POR",
+        "rating": 68,
+        "age": 31,
+        "nationality": "Nigeria",
+        "marketValue": 150
+      },
+      {
+        "name": "Aleksa Todorovic",
+        "position": "POR",
+        "rating": 62,
+        "age": 22,
+        "nationality": "Serbia",
+        "marketValue": 50
+      },
+      {
+        "name": "Niko Vucetic",
+        "position": "POR",
+        "rating": 63,
+        "age": 19,
+        "nationality": "Croacia",
+        "marketValue": 0
+      },
+      {
+        "name": "Stjepan Radeljic",
+        "position": "DFC",
+        "rating": 71,
+        "age": 28,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 2800000
+      },
+      {
+        "name": "Anel Husic",
+        "position": "DFC",
+        "rating": 66,
+        "age": 24,
+        "nationality": "Suiza",
+        "marketValue": 850
+      },
+      {
+        "name": "Ante Majstorovic",
+        "position": "DFC",
+        "rating": 64,
+        "age": 45,
+        "nationality": "Croacia",
+        "marketValue": 500
+      },
+      {
+        "name": "Bruno Burcul",
+        "position": "DFC",
+        "rating": 66,
+        "age": 24,
+        "nationality": "Croacia",
+        "marketValue": 400
+      },
+      {
+        "name": "Mile Skoric",
+        "position": "DFC",
+        "rating": 63,
+        "age": 34,
+        "nationality": "Croacia",
+        "marketValue": 100
+      },
+      {
+        "name": "Roko Valincic",
+        "position": "DFC",
+        "rating": 64,
+        "age": 19,
+        "nationality": "Croacia",
+        "marketValue": 50
+      },
+      {
+        "name": "Mladen Devetak",
+        "position": "DFC",
+        "rating": 66,
+        "age": 34,
+        "nationality": "Serbia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Noel Bodetic",
+        "position": "DFC",
+        "rating": 63,
+        "age": 21,
+        "nationality": "Croacia",
+        "marketValue": 400
+      },
+      {
+        "name": "Ante Orec",
+        "position": "DFC",
+        "rating": 66,
+        "age": 22,
+        "nationality": "Croacia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Justas Lasickas",
+        "position": "DFC",
+        "rating": 65,
+        "age": 23,
+        "nationality": "Lituania",
+        "marketValue": 500
+      },
+      {
+        "name": "Téo Barišić",
+        "position": "DFC",
+        "rating": 68,
+        "age": 28,
+        "nationality": "Croacia",
+        "marketValue": 100
+      },
+      {
+        "name": "Alfonso Barco",
+        "position": "MC",
+        "rating": 66,
+        "age": 24,
+        "nationality": "Perú",
+        "marketValue": 500
+      },
+      {
+        "name": "Branko Pavic",
+        "position": "MC",
+        "rating": 64,
+        "age": 19,
+        "nationality": "Croacia",
+        "marketValue": 400
+      },
+      {
+        "name": "Tiago Dantas",
+        "position": "MC",
+        "rating": 70,
+        "age": 26,
+        "nationality": "Portugal",
+        "marketValue": 2800000
+      },
+      {
+        "name": "Dejan Petrovic",
+        "position": "MC",
+        "rating": 69,
+        "age": 28,
+        "nationality": "Eslovenia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Rajan Zlibanovic",
+        "position": "MC",
+        "rating": 64,
+        "age": 19,
+        "nationality": "Croacia",
+        "marketValue": 75
+      },
+      {
+        "name": "Toni Fruk",
+        "position": "MC",
+        "rating": 72,
+        "age": 24,
+        "nationality": "Croacia",
+        "marketValue": 9000000
+      },
+      {
+        "name": "Niko Jankovic",
+        "position": "MC",
+        "rating": 67,
+        "age": 24,
+        "nationality": "Croacia",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Samuele Vignato",
+        "position": "MC",
+        "rating": 65,
+        "age": 19,
+        "nationality": "Italia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Amer Gojak",
+        "position": "MC",
+        "rating": 67,
+        "age": 28,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 400
+      },
+      {
+        "name": "Merveil Ndockyt",
+        "position": "MC",
+        "rating": 63,
+        "age": 20,
+        "nationality": "Congo",
+        "marketValue": 300
+      },
+      {
+        "name": "Florent Shehu",
+        "position": "MC",
+        "rating": 66,
+        "age": 23,
+        "nationality": "Suiza",
+        "marketValue": 50
+      },
+      {
+        "name": "Gabriel Rukavina",
+        "position": "DC",
+        "rating": 63,
+        "age": 22,
+        "nationality": "Croacia",
+        "marketValue": 600
+      },
+      {
+        "name": "Luka Menalo",
+        "position": "DC",
+        "rating": 62,
+        "age": 17,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 450
+      },
+      {
+        "name": "Dimitri Legbo",
+        "position": "DC",
+        "rating": 66,
+        "age": 24,
+        "nationality": "Costa de Marfil",
+        "marketValue": 400
+      },
+      {
+        "name": "Tornike Morchiladze",
+        "position": "DC",
+        "rating": 69,
+        "age": 24,
+        "nationality": "Georgia",
+        "marketValue": 350
+      },
+      {
+        "name": "Dominik Thaqi",
+        "position": "DC",
+        "rating": 67,
+        "age": 25,
+        "nationality": "Croacia",
+        "marketValue": 400
+      },
+      {
+        "name": "Bruno Bogojevic",
+        "position": "DC",
+        "rating": 65,
+        "age": 30,
+        "nationality": "Croacia",
+        "marketValue": 350
+      },
+      {
+        "name": "Matej Momcilovski",
+        "position": "DC",
+        "rating": 65,
+        "age": 21,
+        "nationality": "Macedonia del Norte",
+        "marketValue": 50
+      },
+      {
+        "name": "Daniel Adu-Adjei",
+        "position": "DC",
+        "rating": 65,
+        "age": 18,
+        "nationality": "Inglaterra",
+        "marketValue": 750
+      },
+      {
+        "name": "Ante Matej Juric",
+        "position": "DC",
+        "rating": 63,
+        "age": 23,
+        "nationality": "Croacia",
+        "marketValue": 700
+      },
+      {
+        "name": "Cherno Saho",
+        "position": "DC",
+        "rating": 60,
+        "age": 37,
+        "nationality": "Gambia",
+        "marketValue": 250
+      },
+      {
+        "name": "Duje Cop",
+        "position": "DC",
+        "rating": 59,
+        "age": 35,
+        "nationality": "Croacia",
+        "marketValue": 100
+      }
+    ]
+  },
+  {
+    "id": "nk-osijek",
+    "name": "NK Osijek",
+    "players": [
+      {
+        "name": "Marko Malenica",
+        "position": "POR",
+        "rating": 68,
+        "age": 31,
+        "nationality": "Croacia",
+        "marketValue": 300
+      },
+      {
+        "name": "Nikola Curcija",
+        "position": "POR",
+        "rating": 62,
+        "age": 24,
+        "nationality": "Canadá",
+        "marketValue": 100
+      },
+      {
+        "name": "Jan Hlapcic",
+        "position": "POR",
+        "rating": 63,
+        "age": 20,
+        "nationality": "Croacia",
+        "marketValue": 50
+      },
+      {
+        "name": "Luka Jelenic",
+        "position": "DFC",
+        "rating": 69,
+        "age": 26,
+        "nationality": "Croacia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Styopa Mkrtchyan",
+        "position": "DFC",
+        "rating": 64,
+        "age": 22,
+        "nationality": "Armenia",
+        "marketValue": 400
+      },
+      {
+        "name": "Jon Mersinaj",
+        "position": "DFC",
+        "rating": 64,
+        "age": 15,
+        "nationality": "Albania",
+        "marketValue": 400
+      },
+      {
+        "name": "Emin Hasic",
+        "position": "DFC",
+        "rating": 63,
+        "age": 33,
+        "nationality": "Suecia",
+        "marketValue": 300
+      },
+      {
+        "name": "Kresimir Vrbanac",
+        "position": "DFC",
+        "rating": 63,
+        "age": 20,
+        "nationality": "Croacia",
+        "marketValue": 200
+      },
+      {
+        "name": "Roko Jurisic",
+        "position": "DFC",
+        "rating": 66,
+        "age": 22,
+        "nationality": "Croacia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "David Colina",
+        "position": "DFC",
+        "rating": 62,
+        "age": 38,
+        "nationality": "Croacia",
+        "marketValue": 750
+      },
+      {
+        "name": "Borna Barisic",
+        "position": "DFC",
+        "rating": 63,
+        "age": 33,
+        "nationality": "Croacia",
+        "marketValue": 600
+      },
+      {
+        "name": "Fran Karacic",
+        "position": "DFC",
+        "rating": 68,
+        "age": 29,
+        "nationality": "Australia",
+        "marketValue": 750
+      },
+      {
+        "name": "Renan Guedes",
+        "position": "DFC",
+        "rating": 62,
+        "age": 42,
+        "nationality": "Brasil",
+        "marketValue": 350
+      },
+      {
+        "name": "Oleksandr Petrusenko",
+        "position": "MC",
+        "rating": 64,
+        "age": 16,
+        "nationality": "Ucrania",
+        "marketValue": 750
+      },
+      {
+        "name": "Vladan Bubanja",
+        "position": "MC",
+        "rating": 64,
+        "age": 21,
+        "nationality": "Montenegro",
+        "marketValue": 750
+      },
+      {
+        "name": "David Mejía",
+        "position": "MC",
+        "rating": 66,
+        "age": 22,
+        "nationality": "Colombia",
+        "marketValue": 300
+      },
+      {
+        "name": "Niko Farkas",
+        "position": "MC",
+        "rating": 63,
+        "age": 18,
+        "nationality": "Croacia",
+        "marketValue": 50
+      },
+      {
+        "name": "Luka Vrbancic",
+        "position": "MC",
+        "rating": 67,
+        "age": 23,
+        "nationality": "Croacia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Stanislav Shopov",
+        "position": "MC",
+        "rating": 66,
+        "age": 23,
+        "nationality": "Bulgaria",
+        "marketValue": 700
+      },
+      {
+        "name": "Tonio Teklic",
+        "position": "MC",
+        "rating": 68,
+        "age": 26,
+        "nationality": "Croacia",
+        "marketValue": 600
+      },
+      {
+        "name": "Simun Mikolcic",
+        "position": "MC",
+        "rating": 65,
+        "age": 22,
+        "nationality": "Croacia",
+        "marketValue": 300
+      },
+      {
+        "name": "Filip Zivkovic",
+        "position": "MC",
+        "rating": 65,
+        "age": 24,
+        "nationality": "Croacia",
+        "marketValue": 300
+      },
+      {
+        "name": "Nail Omerovic",
+        "position": "DC",
+        "rating": 67,
+        "age": 23,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Milos Jovicic",
+        "position": "DC",
+        "rating": 65,
+        "age": 20,
+        "nationality": "Croacia",
+        "marketValue": 50
+      },
+      {
+        "name": "Samuel Akere",
+        "position": "DC",
+        "rating": 66,
+        "age": 21,
+        "nationality": "Nigeria",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Domagoj Bukvic",
+        "position": "DC",
+        "rating": 58,
+        "age": 39,
+        "nationality": "Croacia",
+        "marketValue": 800
+      },
+      {
+        "name": "Anton Matkovic",
+        "position": "DC",
+        "rating": 63,
+        "age": 34,
+        "nationality": "Croacia",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Arnel Jakupovic",
+        "position": "DC",
+        "rating": 66,
+        "age": 17,
+        "nationality": "Austria",
+        "marketValue": 1300000
+      },
+      {
+        "name": "Yannick Toure",
+        "position": "DC",
+        "rating": 67,
+        "age": 25,
+        "nationality": "Suiza",
+        "marketValue": 400
+      },
+      {
+        "name": "Kemal Ademi",
+        "position": "DC",
+        "rating": 68,
+        "age": 30,
+        "nationality": "Suiza",
+        "marketValue": 50
+      },
+      {
+        "name": "Marino Zeravica",
+        "position": "DC",
+        "rating": 65,
+        "age": 19,
+        "nationality": "Croacia",
+        "marketValue": 10
+      }
+    ]
+  },
+  {
+    "id": "nk-istra-1961",
+    "name": "NK Istra 1961",
+    "players": [
+      {
+        "name": "Franko Kolic",
+        "position": "POR",
+        "rating": 61,
+        "age": 22,
+        "nationality": "Croacia",
+        "marketValue": 400
+      },
+      {
+        "name": "Jan Paus-Kunst",
+        "position": "POR",
+        "rating": 60,
+        "age": 40,
+        "nationality": "Croacia",
+        "marketValue": 50
+      },
+      {
+        "name": "Dario Maresic",
+        "position": "DFC",
+        "rating": 67,
+        "age": 26,
+        "nationality": "Austria",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Ville Koski",
+        "position": "DFC",
+        "rating": 63,
+        "age": 21,
+        "nationality": "Finlandia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Samuli Miettinen",
+        "position": "DFC",
+        "rating": 62,
+        "age": 21,
+        "nationality": "Finlandia",
+        "marketValue": 500
+      },
+      {
+        "name": "Mohamed Nasraoui",
+        "position": "DFC",
+        "rating": 63,
+        "age": 23,
+        "nationality": "Túnez",
+        "marketValue": 500
+      },
+      {
+        "name": "Raul Kumar",
+        "position": "DFC",
+        "rating": 60,
+        "age": 38,
+        "nationality": "Croacia",
+        "marketValue": 350
+      },
+      {
+        "name": "Logi Hrafn Róbertsson",
+        "position": "DFC",
+        "rating": 61,
+        "age": 21,
+        "nationality": "Islandia",
+        "marketValue": 250
+      },
+      {
+        "name": "Jovan Ivanisevic",
+        "position": "DFC",
+        "rating": 61,
+        "age": 21,
+        "nationality": "Canadá",
+        "marketValue": 150
+      },
+      {
+        "name": "Vigo Vujanic",
+        "position": "DFC",
+        "rating": 62,
+        "age": 19,
+        "nationality": "Croacia",
+        "marketValue": 50
+      },
+      {
+        "name": "Ivan Bikic",
+        "position": "DFC",
+        "rating": 62,
+        "age": 19,
+        "nationality": "Croacia",
+        "marketValue": 0
+      },
+      {
+        "name": "Niko Sepic",
+        "position": "DFC",
+        "rating": 62,
+        "age": 19,
+        "nationality": "Croacia",
+        "marketValue": 250
+      },
+      {
+        "name": "Marcel Heister",
+        "position": "DFC",
+        "rating": 66,
+        "age": 26,
+        "nationality": "Alemania",
+        "marketValue": 200
+      },
+      {
+        "name": "Albert Malaj",
+        "position": "DFC",
+        "rating": 62,
+        "age": 19,
+        "nationality": "Albania",
+        "marketValue": 0
+      },
+      {
+        "name": "Advan Kadusic",
+        "position": "DFC",
+        "rating": 66,
+        "age": 28,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 600
+      },
+      {
+        "name": "Filip Taraba",
+        "position": "DFC",
+        "rating": 63,
+        "age": 24,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 400
+      },
+      {
+        "name": "Alejandro Jay",
+        "position": "DFC",
+        "rating": 63,
+        "age": 23,
+        "nationality": "España",
+        "marketValue": 250
+      },
+      {
+        "name": "Rene Hrvatin",
+        "position": "DFC",
+        "rating": 60,
+        "age": 44,
+        "nationality": "Eslovenia",
+        "marketValue": 150
+      },
+      {
+        "name": "Diego Rossi",
+        "position": "DFC",
+        "rating": 62,
+        "age": 20,
+        "nationality": "Puerto Rico",
+        "marketValue": 0
+      },
+      {
+        "name": "Stjepan Loncar",
+        "position": "MC",
+        "rating": 68,
+        "age": 29,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 1300000
+      },
+      {
+        "name": "Josip Radosevic",
+        "position": "MC",
+        "rating": 67,
+        "age": 31,
+        "nationality": "Croacia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Antonio Mauric",
+        "position": "MC",
+        "rating": 64,
+        "age": 22,
+        "nationality": "Croacia",
+        "marketValue": 800
+      },
+      {
+        "name": "Arian Moslavac",
+        "position": "MC",
+        "rating": 62,
+        "age": 19,
+        "nationality": "Croacia",
+        "marketValue": 0
+      },
+      {
+        "name": "Israel Isaac Ayuma",
+        "position": "MC",
+        "rating": 61,
+        "age": 18,
+        "nationality": "Nigeria",
+        "marketValue": 300
+      },
+      {
+        "name": "Marin Zgomba",
+        "position": "MC",
+        "rating": 59,
+        "age": 41,
+        "nationality": "Croacia",
+        "marketValue": 50
+      },
+      {
+        "name": "Danijel Djuric",
+        "position": "MC",
+        "rating": 63,
+        "age": 22,
+        "nationality": "Islandia",
+        "marketValue": 250
+      },
+      {
+        "name": "Silvio Gorican",
+        "position": "DC",
+        "rating": 66,
+        "age": 25,
+        "nationality": "Croacia",
+        "marketValue": 650
+      },
+      {
+        "name": "Vinko Rozic",
+        "position": "DC",
+        "rating": 64,
+        "age": 22,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 600
+      },
+      {
+        "name": "Emil Frederiksen",
+        "position": "DC",
+        "rating": 64,
+        "age": 17,
+        "nationality": "Dinamarca",
+        "marketValue": 800
+      },
+      {
+        "name": "Dominik Celija",
+        "position": "DC",
+        "rating": 59,
+        "age": 32,
+        "nationality": "Croacia",
+        "marketValue": 50
+      },
+      {
+        "name": "Smail Prevljak",
+        "position": "DC",
+        "rating": 67,
+        "age": 30,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 600
+      },
+      {
+        "name": "Saydou Bangura",
+        "position": "DC",
+        "rating": 61,
+        "age": 23,
+        "nationality": "Países Bajos",
+        "marketValue": 350
+      },
+      {
+        "name": "Charles Adah Agada",
+        "position": "DC",
+        "rating": 62,
+        "age": 19,
+        "nationality": "Nigeria",
+        "marketValue": 50
+      },
+      {
+        "name": "Baba Yatera",
+        "position": "DC",
+        "rating": 63,
+        "age": 19,
+        "nationality": "Mauritania",
+        "marketValue": 0
+      }
+    ]
+  },
+  {
+    "id": "slaven-belupo-koprivnica",
+    "name": "Slaven Belupo Koprivnica",
+    "players": [
+      {
+        "name": "Osman Hadzikic",
+        "position": "POR",
+        "rating": 66,
+        "age": 31,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 400
+      },
+      {
+        "name": "Matija Jesenovic",
+        "position": "POR",
+        "rating": 66,
+        "age": 28,
+        "nationality": "Croacia",
+        "marketValue": 50
+      },
+      {
+        "name": "Ivan Covic",
+        "position": "POR",
+        "rating": 65,
+        "age": 32,
+        "nationality": "Croacia",
+        "marketValue": 50
+      },
+      {
+        "name": "Antun Markovic",
+        "position": "POR",
+        "rating": 66,
+        "age": 33,
+        "nationality": "Croacia",
+        "marketValue": 0
+      },
+      {
+        "name": "Dominik Kovacic",
+        "position": "DFC",
+        "rating": 66,
+        "age": 32,
+        "nationality": "Croacia",
+        "marketValue": 600
+      },
+      {
+        "name": "Tomislav Bozic",
+        "position": "DFC",
+        "rating": 60,
+        "age": 38,
+        "nationality": "Croacia",
+        "marketValue": 100
+      },
+      {
+        "name": "Marko Leskovic",
+        "position": "DFC",
+        "rating": 61,
+        "age": 34,
+        "nationality": "Croacia",
+        "marketValue": 50
+      },
+      {
+        "name": "Vinko Medjimorec",
+        "position": "DFC",
+        "rating": 65,
+        "age": 29,
+        "nationality": "Croacia",
+        "marketValue": 50
+      },
+      {
+        "name": "Marko Petrovic",
+        "position": "DFC",
+        "rating": 60,
+        "age": 45,
+        "nationality": "Croacia",
+        "marketValue": 0
+      },
+      {
+        "name": "Antonio Jakir",
+        "position": "DFC",
+        "rating": 63,
+        "age": 23,
+        "nationality": "Croacia",
+        "marketValue": 200
+      },
+      {
+        "name": "Zvonimir Katalinic",
+        "position": "DFC",
+        "rating": 61,
+        "age": 21,
+        "nationality": "Croacia",
+        "marketValue": 150
+      },
+      {
+        "name": "Leonard Zuta",
+        "position": "DFC",
+        "rating": 61,
+        "age": 35,
+        "nationality": "Macedonia del Norte",
+        "marketValue": 150
+      },
+      {
+        "name": "Erik Ridjan",
+        "position": "DFC",
+        "rating": 62,
+        "age": 20,
+        "nationality": "Croacia",
+        "marketValue": 25
+      },
+      {
+        "name": "Filip Kruselj",
+        "position": "DFC",
+        "rating": 62,
+        "age": 18,
+        "nationality": "Croacia",
+        "marketValue": 350
+      },
+      {
+        "name": "Karlo Isasegi",
+        "position": "DFC",
+        "rating": 60,
+        "age": 33,
+        "nationality": "Croacia",
+        "marketValue": 100
+      },
+      {
+        "name": "Luka Curkovic",
+        "position": "DFC",
+        "rating": 62,
+        "age": 16,
+        "nationality": "Croacia",
+        "marketValue": 50
+      },
+      {
+        "name": "Mateo Barac",
+        "position": "DFC",
+        "rating": 61,
+        "age": 17,
+        "nationality": "Croacia",
+        "marketValue": 50
+      },
+      {
+        "name": "Ljuban Crepulja",
+        "position": "MC",
+        "rating": 61,
+        "age": 21,
+        "nationality": "Croacia",
+        "marketValue": 400
+      },
+      {
+        "name": "Michael Agbekpornu",
+        "position": "MC",
+        "rating": 66,
+        "age": 30,
+        "nationality": "Ghana",
+        "marketValue": 400
+      },
+      {
+        "name": "Leon Bosnjak",
+        "position": "MC",
+        "rating": 63,
+        "age": 24,
+        "nationality": "Croacia",
+        "marketValue": 50
+      },
+      {
+        "name": "Jan Katic",
+        "position": "MC",
+        "rating": 62,
+        "age": 19,
+        "nationality": "Croacia",
+        "marketValue": 0
+      },
+      {
+        "name": "Mihail Caimacov",
+        "position": "MC",
+        "rating": 66,
+        "age": 27,
+        "nationality": "Moldavia",
+        "marketValue": 300
+      },
+      {
+        "name": "Adriano Jagusic",
+        "position": "MC",
+        "rating": 67,
+        "age": 20,
+        "nationality": "Croacia",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Ivan Cubelic",
+        "position": "MC",
+        "rating": 62,
+        "age": 15,
+        "nationality": "Croacia",
+        "marketValue": 400
+      },
+      {
+        "name": "Gabrijel Sivalec",
+        "position": "DC",
+        "rating": 65,
+        "age": 26,
+        "nationality": "Croacia",
+        "marketValue": 350
+      },
+      {
+        "name": "Josip Mitrovic",
+        "position": "DC",
+        "rating": 67,
+        "age": 25,
+        "nationality": "Croacia",
+        "marketValue": 850
+      },
+      {
+        "name": "Ante Suto",
+        "position": "DC",
+        "rating": 66,
+        "age": 22,
+        "nationality": "Croacia",
+        "marketValue": 850
+      },
+      {
+        "name": "Igor Lepinjica",
+        "position": "DC",
+        "rating": 61,
+        "age": 23,
+        "nationality": "Croacia",
+        "marketValue": 300
+      },
+      {
+        "name": "Filip Mazar",
+        "position": "DC",
+        "rating": 63,
+        "age": 17,
+        "nationality": "Croacia",
+        "marketValue": 200
+      },
+      {
+        "name": "Frano Vlasic",
+        "position": "DC",
+        "rating": 63,
+        "age": 19,
+        "nationality": "Croacia",
+        "marketValue": 50
+      },
+      {
+        "name": "Andrija Filipovic",
+        "position": "DC",
+        "rating": 65,
+        "age": 28,
+        "nationality": "Croacia",
+        "marketValue": 300
+      },
+      {
+        "name": "Ivan Bozic",
+        "position": "DC",
+        "rating": 66,
+        "age": 28,
+        "nationality": "Croacia",
+        "marketValue": 300
+      },
+      {
+        "name": "Ilija Nestorovski",
+        "position": "DC",
+        "rating": 60,
+        "age": 35,
+        "nationality": "Macedonia del Norte",
+        "marketValue": 200
+      },
+      {
+        "name": "Ernis Qestaj",
+        "position": "DC",
+        "rating": 63,
+        "age": 19,
+        "nationality": "Kosovo",
+        "marketValue": 50
+      },
+      {
+        "name": "Leon Kaurin",
+        "position": "DC",
+        "rating": 63,
+        "age": 19,
+        "nationality": "Croacia",
+        "marketValue": 0
+      }
+    ]
+  },
+  {
+    "id": "nk-varazdin",
+    "name": "NK Varazdin",
+    "players": [
+      {
+        "name": "Oliver Zelenika",
+        "position": "POR",
+        "rating": 66,
+        "age": 32,
+        "nationality": "Croacia",
+        "marketValue": 300
+      },
+      {
+        "name": "Josip Silic",
+        "position": "POR",
+        "rating": 65,
+        "age": 33,
+        "nationality": "Croacia",
+        "marketValue": 150
+      },
+      {
+        "name": "Luka Skaricic",
+        "position": "DFC",
+        "rating": 64,
+        "age": 24,
+        "nationality": "Croacia",
+        "marketValue": 800
+      },
+      {
+        "name": "Mateo Barac",
+        "position": "DFC",
+        "rating": 59,
+        "age": 44,
+        "nationality": "Croacia",
+        "marketValue": 400
+      },
+      {
+        "name": "Mario Mladenovski",
+        "position": "DFC",
+        "rating": 63,
+        "age": 25,
+        "nationality": "Macedonia del Norte",
+        "marketValue": 250
+      },
+      {
+        "name": "Novak Tepsic",
+        "position": "DFC",
+        "rating": 61,
+        "age": 16,
+        "nationality": "Croacia",
+        "marketValue": 200
+      },
+      {
+        "name": "Roberto Puncec",
+        "position": "DFC",
+        "rating": 61,
+        "age": 34,
+        "nationality": "Croacia",
+        "marketValue": 100
+      },
+      {
+        "name": "Sven Lesjak",
+        "position": "DFC",
+        "rating": 61,
+        "age": 19,
+        "nationality": "Croacia",
+        "marketValue": 50
+      },
+      {
+        "name": "Antonio Borsic",
+        "position": "DFC",
+        "rating": 64,
+        "age": 25,
+        "nationality": "Croacia",
+        "marketValue": 700
+      },
+      {
+        "name": "Petar Bockaj",
+        "position": "DFC",
+        "rating": 66,
+        "age": 29,
+        "nationality": "Croacia",
+        "marketValue": 400
+      },
+      {
+        "name": "Gregor Sikosek",
+        "position": "DFC",
+        "rating": 62,
+        "age": 20,
+        "nationality": "Eslovenia",
+        "marketValue": 250
+      },
+      {
+        "name": "Domagoj Begonja",
+        "position": "DFC",
+        "rating": 65,
+        "age": 29,
+        "nationality": "Croacia",
+        "marketValue": 50
+      },
+      {
+        "name": "Frane Maglica",
+        "position": "DFC",
+        "rating": 66,
+        "age": 23,
+        "nationality": "Croacia",
+        "marketValue": 750
+      },
+      {
+        "name": "Vane Jovanov",
+        "position": "DFC",
+        "rating": 66,
+        "age": 27,
+        "nationality": "Macedonia del Norte",
+        "marketValue": 250
+      },
+      {
+        "name": "Tomislav Duvnjak",
+        "position": "MC",
+        "rating": 64,
+        "age": 22,
+        "nationality": "Croacia",
+        "marketValue": 500
+      },
+      {
+        "name": "Leon Belcar",
+        "position": "MC",
+        "rating": 64,
+        "age": 24,
+        "nationality": "Croacia",
+        "marketValue": 500
+      },
+      {
+        "name": "David Puclin",
+        "position": "MC",
+        "rating": 60,
+        "age": 33,
+        "nationality": "Croacia",
+        "marketValue": 200
+      },
+      {
+        "name": "Mario Marina",
+        "position": "MC",
+        "rating": 64,
+        "age": 24,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 100
+      },
+      {
+        "name": "Silvio Ilinkovic",
+        "position": "MC",
+        "rating": 62,
+        "age": 15,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 150
+      },
+      {
+        "name": "Aleksa Latkovic",
+        "position": "MC",
+        "rating": 68,
+        "age": 27,
+        "nationality": "Montenegro",
+        "marketValue": 800
+      },
+      {
+        "name": "Luka Mamic",
+        "position": "MC",
+        "rating": 66,
+        "age": 22,
+        "nationality": "Croacia",
+        "marketValue": 600
+      },
+      {
+        "name": "Tajio James",
+        "position": "MC",
+        "rating": 64,
+        "age": 22,
+        "nationality": "Barbados",
+        "marketValue": 0
+      },
+      {
+        "name": "Iuri Tavares",
+        "position": "DC",
+        "rating": 58,
+        "age": 38,
+        "nationality": "Cabo Verde",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Matej Vuk",
+        "position": "DC",
+        "rating": 64,
+        "age": 25,
+        "nationality": "Croacia",
+        "marketValue": 400
+      },
+      {
+        "name": "Ivan Canjuga",
+        "position": "DC",
+        "rating": 66,
+        "age": 28,
+        "nationality": "Croacia",
+        "marketValue": 150
+      },
+      {
+        "name": "Ivan Mamut",
+        "position": "DC",
+        "rating": 64,
+        "age": 17,
+        "nationality": "Croacia",
+        "marketValue": 450
+      },
+      {
+        "name": "Marko Dabro",
+        "position": "DC",
+        "rating": 63,
+        "age": 28,
+        "nationality": "Croacia",
+        "marketValue": 250
+      },
+      {
+        "name": "Mate Antunovic",
+        "position": "DC",
+        "rating": 60,
+        "age": 21,
+        "nationality": "Croacia",
+        "marketValue": 200
+      }
+    ]
+  },
+  {
+    "id": "nk-lokomotiva-zagreb",
+    "name": "NK Lokomotiva Zagreb",
+    "players": [
+      {
+        "name": "Josip Posavec",
+        "position": "POR",
+        "rating": 66,
+        "age": 29,
+        "nationality": "Croacia",
+        "marketValue": 300
+      },
+      {
+        "name": "Luka Savatovic",
+        "position": "POR",
+        "rating": 66,
+        "age": 32,
+        "nationality": "Croacia",
+        "marketValue": 200
+      },
+      {
+        "name": "Krunoslav Hendija",
+        "position": "POR",
+        "rating": 62,
+        "age": 36,
+        "nationality": "Croacia",
+        "marketValue": 50
+      },
+      {
+        "name": "Cheikh Mbacke Diop",
+        "position": "DFC",
+        "rating": 63,
+        "age": 20,
+        "nationality": "Senegal",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Tino Jukic",
+        "position": "DFC",
+        "rating": 64,
+        "age": 24,
+        "nationality": "Croacia",
+        "marketValue": 500
+      },
+      {
+        "name": "Denis Kolinger",
+        "position": "DFC",
+        "rating": 62,
+        "age": 20,
+        "nationality": "Croacia",
+        "marketValue": 500
+      },
+      {
+        "name": "Leonardo Sigali",
+        "position": "DFC",
+        "rating": 60,
+        "age": 38,
+        "nationality": "Argentina",
+        "marketValue": 50
+      },
+      {
+        "name": "Luka Dajcer",
+        "position": "DFC",
+        "rating": 61,
+        "age": 16,
+        "nationality": "Croacia",
+        "marketValue": 350
+      },
+      {
+        "name": "Dimitrije Kamenovic",
+        "position": "DFC",
+        "rating": 61,
+        "age": 33,
+        "nationality": "Serbia",
+        "marketValue": 300
+      },
+      {
+        "name": "Ante Utrobicic",
+        "position": "DFC",
+        "rating": 61,
+        "age": 33,
+        "nationality": "Croacia",
+        "marketValue": 250
+      },
+      {
+        "name": "Marko Pajac",
+        "position": "DFC",
+        "rating": 63,
+        "age": 17,
+        "nationality": "Croacia",
+        "marketValue": 200
+      },
+      {
+        "name": "Fran Zilinski",
+        "position": "DFC",
+        "rating": 66,
+        "age": 26,
+        "nationality": "Croacia",
+        "marketValue": 200
+      },
+      {
+        "name": "Marin Leovac",
+        "position": "DFC",
+        "rating": 61,
+        "age": 22,
+        "nationality": "Croacia",
+        "marketValue": 50
+      },
+      {
+        "name": "Franjo Posavac",
+        "position": "DFC",
+        "rating": 64,
+        "age": 23,
+        "nationality": "Croacia",
+        "marketValue": 300
+      },
+      {
+        "name": "Marko Vesovic",
+        "position": "DFC",
+        "rating": 64,
+        "age": 23,
+        "nationality": "Montenegro",
+        "marketValue": 150
+      },
+      {
+        "name": "Mario Situm",
+        "position": "DFC",
+        "rating": 61,
+        "age": 18,
+        "nationality": "Croacia",
+        "marketValue": 100
+      },
+      {
+        "name": "Mody Boune",
+        "position": "DFC",
+        "rating": 64,
+        "age": 23,
+        "nationality": "Francia",
+        "marketValue": 50
+      },
+      {
+        "name": "David Katic",
+        "position": "DFC",
+        "rating": 62,
+        "age": 19,
+        "nationality": "Croacia",
+        "marketValue": 0
+      },
+      {
+        "name": "Ivan Katic",
+        "position": "MC",
+        "rating": 64,
+        "age": 24,
+        "nationality": "Croacia",
+        "marketValue": 500
+      },
+      {
+        "name": "Blaz Boskovic",
+        "position": "MC",
+        "rating": 64,
+        "age": 24,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 350
+      },
+      {
+        "name": "Matija Subotic",
+        "position": "MC",
+        "rating": 61,
+        "age": 18,
+        "nationality": "Croacia",
+        "marketValue": 350
+      },
+      {
+        "name": "Gentrit Salihu",
+        "position": "MC",
+        "rating": 64,
+        "age": 22,
+        "nationality": "Kosovo",
+        "marketValue": 175
+      },
+      {
+        "name": "Marcel Lorber",
+        "position": "MC",
+        "rating": 62,
+        "age": 21,
+        "nationality": "Eslovenia",
+        "marketValue": 300
+      },
+      {
+        "name": "Domagoj Antolic",
+        "position": "MC",
+        "rating": 60,
+        "age": 35,
+        "nationality": "Croacia",
+        "marketValue": 200
+      },
+      {
+        "name": "Duje Reic",
+        "position": "MC",
+        "rating": 62,
+        "age": 19,
+        "nationality": "Croacia",
+        "marketValue": 50
+      },
+      {
+        "name": "Jakov-Anton Vasilj",
+        "position": "MC",
+        "rating": 65,
+        "age": 29,
+        "nationality": "Croacia",
+        "marketValue": 200
+      },
+      {
+        "name": "Dusan Vukovic",
+        "position": "DC",
+        "rating": 64,
+        "age": 30,
+        "nationality": "Montenegro",
+        "marketValue": 800
+      },
+      {
+        "name": "Mirko Susak",
+        "position": "DC",
+        "rating": 62,
+        "age": 21,
+        "nationality": "Croacia",
+        "marketValue": 400
+      },
+      {
+        "name": "Bartol Kardum",
+        "position": "DC",
+        "rating": 63,
+        "age": 19,
+        "nationality": "Croacia",
+        "marketValue": 250
+      },
+      {
+        "name": "Aleksandar Trajkovski",
+        "position": "DC",
+        "rating": 60,
+        "age": 33,
+        "nationality": "Macedonia del Norte",
+        "marketValue": 175
+      },
+      {
+        "name": "Denis Busnja",
+        "position": "DC",
+        "rating": 63,
+        "age": 21,
+        "nationality": "Croacia",
+        "marketValue": 150
+      },
+      {
+        "name": "David Virgili",
+        "position": "DC",
+        "rating": 62,
+        "age": 21,
+        "nationality": "España",
+        "marketValue": 250
+      },
+      {
+        "name": "Oliver Heidarsson",
+        "position": "DC",
+        "rating": 64,
+        "age": 24,
+        "nationality": "Islandia",
+        "marketValue": 75
+      },
+      {
+        "name": "Aleks Stojakovic",
+        "position": "DC",
+        "rating": 64,
+        "age": 15,
+        "nationality": "Eslovenia",
+        "marketValue": 900
+      },
+      {
+        "name": "Hubert Sobol",
+        "position": "DC",
+        "rating": 65,
+        "age": 25,
+        "nationality": "Polonia",
+        "marketValue": 150
+      },
+      {
+        "name": "Carlo Matekovic",
+        "position": "DC",
+        "rating": 64,
+        "age": 22,
+        "nationality": "Croacia",
+        "marketValue": 100
+      },
+      {
+        "name": "Amad Keita",
+        "position": "DC",
+        "rating": 63,
+        "age": 19,
+        "nationality": "Senegal",
+        "marketValue": 25
+      },
+      {
+        "name": "Gojko Jelic",
+        "position": "DC",
+        "rating": 63,
+        "age": 19,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 0
+      },
+      {
+        "name": "Kauã Alves",
+        "position": "DC",
+        "rating": 64,
+        "age": 22,
+        "nationality": "Brasil",
+        "marketValue": 0
+      },
+      {
+        "name": "Fran Knezevic",
+        "position": "DC",
+        "rating": 63,
+        "age": 19,
+        "nationality": "Croacia",
+        "marketValue": 0
+      }
+    ]
+  },
+  {
+    "id": "hnk-gorica",
+    "name": "HNK Gorica",
+    "players": [
+      {
+        "name": "Muhamed Sahinovic",
+        "position": "POR",
+        "rating": 58,
+        "age": 22,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 400
+      },
+      {
+        "name": "Davor Matijas",
+        "position": "POR",
+        "rating": 61,
+        "age": 26,
+        "nationality": "Croacia",
+        "marketValue": 400
+      },
+      {
+        "name": "Darijan Zarkov",
+        "position": "POR",
+        "rating": 62,
+        "age": 30,
+        "nationality": "Croacia",
+        "marketValue": 50
+      },
+      {
+        "name": "Tin Dosen",
+        "position": "POR",
+        "rating": 58,
+        "age": 19,
+        "nationality": "Croacia",
+        "marketValue": 0
+      },
+      {
+        "name": "Lovro Dukic",
+        "position": "DFC",
+        "rating": 58,
+        "age": 33,
+        "nationality": "Croacia",
+        "marketValue": 0
+      },
+      {
+        "name": "Mateo Les",
+        "position": "DFC",
+        "rating": 61,
+        "age": 25,
+        "nationality": "Croacia",
+        "marketValue": 500
+      },
+      {
+        "name": "Stefan Peric",
+        "position": "DFC",
+        "rating": 57,
+        "age": 45,
+        "nationality": "Austria",
+        "marketValue": 350
+      },
+      {
+        "name": "Jakov Filipovic",
+        "position": "DFC",
+        "rating": 58,
+        "age": 33,
+        "nationality": "Croacia",
+        "marketValue": 200
+      },
+      {
+        "name": "Marijan Cabraja",
+        "position": "DFC",
+        "rating": 60,
+        "age": 19,
+        "nationality": "Croacia",
+        "marketValue": 350
+      },
+      {
+        "name": "Elvir Durakovic",
+        "position": "DFC",
+        "rating": 62,
+        "age": 32,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 200
+      },
+      {
+        "name": "Zan Trontelj",
+        "position": "DFC",
+        "rating": 60,
+        "age": 22,
+        "nationality": "Eslovenia",
+        "marketValue": 800
+      },
+      {
+        "name": "Jurica Prsir",
+        "position": "MC",
+        "rating": 66,
+        "age": 25,
+        "nationality": "Croacia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Iker Pozo",
+        "position": "MC",
+        "rating": 66,
+        "age": 25,
+        "nationality": "España",
+        "marketValue": 750
+      },
+      {
+        "name": "Ognjen Bakic",
+        "position": "MC",
+        "rating": 60,
+        "age": 23,
+        "nationality": "Montenegro",
+        "marketValue": 400
+      },
+      {
+        "name": "Domagoj Pavicic",
+        "position": "MC",
+        "rating": 61,
+        "age": 24,
+        "nationality": "Croacia",
+        "marketValue": 200
+      },
+      {
+        "name": "Ante Kavelj",
+        "position": "MC",
+        "rating": 57,
+        "age": 36,
+        "nationality": "Croacia",
+        "marketValue": 650
+      },
+      {
+        "name": "Ivan Fiolic",
+        "position": "MC",
+        "rating": 58,
+        "age": 18,
+        "nationality": "Croacia",
+        "marketValue": 200
+      },
+      {
+        "name": "Antonio Ilic",
+        "position": "MC",
+        "rating": 59,
+        "age": 20,
+        "nationality": "Croacia",
+        "marketValue": 125
+      },
+      {
+        "name": "Théo Epailly",
+        "position": "DC",
+        "rating": 63,
+        "age": 26,
+        "nationality": "Francia",
+        "marketValue": 400
+      },
+      {
+        "name": "Luka Vrzic",
+        "position": "DC",
+        "rating": 58,
+        "age": 20,
+        "nationality": "Croacia",
+        "marketValue": 450
+      },
+      {
+        "name": "Vanja Pelko",
+        "position": "DC",
+        "rating": 60,
+        "age": 29,
+        "nationality": "Croacia",
+        "marketValue": 300
+      },
+      {
+        "name": "Filip Cuic",
+        "position": "DC",
+        "rating": 61,
+        "age": 22,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 650
+      },
+      {
+        "name": "Medin Gashi",
+        "position": "DC",
+        "rating": 58,
+        "age": 19,
+        "nationality": "Kosovo",
+        "marketValue": 300
+      },
+      {
+        "name": "Wisdom Aondowase Sule",
+        "position": "DC",
+        "rating": 61,
+        "age": 22,
+        "nationality": "Nigeria",
+        "marketValue": 250
+      },
+      {
+        "name": "Ante Erceg",
+        "position": "DC",
+        "rating": 54,
+        "age": 36,
+        "nationality": "Croacia",
+        "marketValue": 50
+      }
+    ]
+  },
+  {
+    "id": "hnk-vukovar-1991",
+    "name": "HNK Vukovar 1991",
+    "players": [
+      {
+        "name": "Marino Bulat",
+        "position": "POR",
+        "rating": 61,
+        "age": 26,
+        "nationality": "Croacia",
+        "marketValue": 300
+      },
+      {
+        "name": "Antonio Djakovic",
+        "position": "POR",
+        "rating": 58,
+        "age": 42,
+        "nationality": "Croacia",
+        "marketValue": 250
+      },
+      {
+        "name": "Denis Pintol",
+        "position": "POR",
+        "rating": 61,
+        "age": 25,
+        "nationality": "Eslovenia",
+        "marketValue": 100
+      },
+      {
+        "name": "Dominik Mulac",
+        "position": "DFC",
+        "rating": 62,
+        "age": 26,
+        "nationality": "Croacia",
+        "marketValue": 400
+      },
+      {
+        "name": "Jakov Gurlica",
+        "position": "DFC",
+        "rating": 58,
+        "age": 35,
+        "nationality": "Croacia",
+        "marketValue": 300
+      },
+      {
+        "name": "Josip Elez",
+        "position": "DFC",
+        "rating": 63,
+        "age": 31,
+        "nationality": "Croacia",
+        "marketValue": 250
+      },
+      {
+        "name": "Moreno Zivkovic",
+        "position": "DFC",
+        "rating": 59,
+        "age": 21,
+        "nationality": "Croacia",
+        "marketValue": 250
+      },
+      {
+        "name": "Nikita Vlasenko",
+        "position": "DFC",
+        "rating": 61,
+        "age": 24,
+        "nationality": "Suiza",
+        "marketValue": 150
+      },
+      {
+        "name": "Jakov Suver",
+        "position": "DFC",
+        "rating": 58,
+        "age": 22,
+        "nationality": "Croacia",
+        "marketValue": 100
+      },
+      {
+        "name": "Mario Tadic",
+        "position": "DFC",
+        "rating": 58,
+        "age": 34,
+        "nationality": "Croacia",
+        "marketValue": 50
+      },
+      {
+        "name": "Kerim Calhanoglu",
+        "position": "DFC",
+        "rating": 61,
+        "age": 23,
+        "nationality": "Alemania",
+        "marketValue": 350
+      },
+      {
+        "name": "Kristijan Cabrajic",
+        "position": "DFC",
+        "rating": 59,
+        "age": 20,
+        "nationality": "Croacia",
+        "marketValue": 200
+      },
+      {
+        "name": "Ivan Rist",
+        "position": "DFC",
+        "rating": 63,
+        "age": 28,
+        "nationality": "Croacia",
+        "marketValue": 0
+      },
+      {
+        "name": "Kristijan Pavicic",
+        "position": "DFC",
+        "rating": 59,
+        "age": 16,
+        "nationality": "Croacia",
+        "marketValue": 250
+      },
+      {
+        "name": "Mario Ticinovic",
+        "position": "DFC",
+        "rating": 58,
+        "age": 34,
+        "nationality": "Croacia",
+        "marketValue": 150
+      },
+      {
+        "name": "Vito Caic",
+        "position": "MC",
+        "rating": 58,
+        "age": 20,
+        "nationality": "Croacia",
+        "marketValue": 200
+      },
+      {
+        "name": "Marin Pilj",
+        "position": "MC",
+        "rating": 62,
+        "age": 30,
+        "nationality": "Croacia",
+        "marketValue": 200
+      },
+      {
+        "name": "Jakov Biljan",
+        "position": "MC",
+        "rating": 62,
+        "age": 30,
+        "nationality": "Croacia",
+        "marketValue": 50
+      },
+      {
+        "name": "Samuel Koeberlé",
+        "position": "MC",
+        "rating": 56,
+        "age": 36,
+        "nationality": "Francia",
+        "marketValue": 50
+      },
+      {
+        "name": "Eniss Shabani",
+        "position": "MC",
+        "rating": 61,
+        "age": 22,
+        "nationality": "Albania",
+        "marketValue": 350
+      },
+      {
+        "name": "Robin González",
+        "position": "MC",
+        "rating": 65,
+        "age": 27,
+        "nationality": "Colombia",
+        "marketValue": 850
+      },
+      {
+        "name": "Lovre Kulusic",
+        "position": "MC",
+        "rating": 59,
+        "age": 19,
+        "nationality": "Croacia",
+        "marketValue": 500
+      },
+      {
+        "name": "Josip Spoljaric",
+        "position": "MC",
+        "rating": 63,
+        "age": 29,
+        "nationality": "Croacia",
+        "marketValue": 200
+      },
+      {
+        "name": "Alen Jurilj",
+        "position": "DC",
+        "rating": 60,
+        "age": 19,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 250
+      },
+      {
+        "name": "Pocholo Bugas",
+        "position": "DC",
+        "rating": 55,
+        "age": 39,
+        "nationality": "Filipinas",
+        "marketValue": 25
+      },
+      {
+        "name": "Lovro Banovec",
+        "position": "DC",
+        "rating": 63,
+        "age": 28,
+        "nationality": "Croacia",
+        "marketValue": 600
+      },
+      {
+        "name": "Simun Butic",
+        "position": "DC",
+        "rating": 63,
+        "age": 27,
+        "nationality": "Croacia",
+        "marketValue": 200
+      },
+      {
+        "name": "Tyrone Tormin",
+        "position": "DC",
+        "rating": 62,
+        "age": 29,
+        "nationality": "Francia",
+        "marketValue": 100
+      },
+      {
+        "name": "Jakov Puljic",
+        "position": "DC",
+        "rating": 62,
+        "age": 21,
+        "nationality": "Croacia",
+        "marketValue": 250
+      },
+      {
+        "name": "Lun Boncina",
+        "position": "DC",
+        "rating": 61,
+        "age": 23,
+        "nationality": "Eslovenia",
+        "marketValue": 200
+      },
+      {
+        "name": "Keyendrah Simmonds",
+        "position": "DC",
+        "rating": 61,
+        "age": 24,
+        "nationality": "Inglaterra",
+        "marketValue": 150
+      },
+      {
+        "name": "Luka Klanac",
+        "position": "DC",
+        "rating": 54,
+        "age": 33,
+        "nationality": "Croacia",
+        "marketValue": 50
+      },
+      {
+        "name": "Kristijan Mrkonjic",
+        "position": "DC",
+        "rating": 61,
+        "age": 28,
+        "nationality": "Croacia",
+        "marketValue": 0
+      }
+    ]
+  }
+]

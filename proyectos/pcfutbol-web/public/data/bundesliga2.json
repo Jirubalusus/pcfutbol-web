@@ -1,0 +1,4390 @@
+[
+  {
+    "id": "hertha-bsc",
+    "name": "Hertha Berlín",
+    "players": [
+      {
+        "name": "Tjark Ernst",
+        "position": "POR",
+        "rating": 72,
+        "age": 22,
+        "nationality": "Alemania",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Konstantin Heide",
+        "position": "POR",
+        "rating": 71,
+        "age": 20,
+        "nationality": "Alemania",
+        "marketValue": 500
+      },
+      {
+        "name": "Marius Gersbeck",
+        "position": "POR",
+        "rating": 71,
+        "age": 35,
+        "nationality": "Alemania",
+        "marketValue": 350
+      },
+      {
+        "name": "Tim Goller",
+        "position": "POR",
+        "rating": 71,
+        "age": 43,
+        "nationality": "Alemania",
+        "marketValue": 350
+      },
+      {
+        "name": "Linus Gechter",
+        "position": "DFC",
+        "rating": 71,
+        "age": 44,
+        "nationality": "Alemania",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Márton Dárdai",
+        "position": "DFC",
+        "rating": 77,
+        "age": 31,
+        "nationality": "Hungría",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Pascal Klemens",
+        "position": "DFC",
+        "rating": 71,
+        "age": 41,
+        "nationality": "Alemania",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Niklas Kolbe",
+        "position": "DFC",
+        "rating": 75,
+        "age": 27,
+        "nationality": "Alemania",
+        "marketValue": 700
+      },
+      {
+        "name": "Agustín Rogel",
+        "position": "DFC",
+        "rating": 76,
+        "age": 28,
+        "nationality": "Uruguay",
+        "marketValue": 500
+      },
+      {
+        "name": "John Brooks",
+        "position": "DFC",
+        "rating": 74,
+        "age": 25,
+        "nationality": "Estados Unidos",
+        "marketValue": 300
+      },
+      {
+        "name": "Toni Leistner",
+        "position": "DFC",
+        "rating": 70,
+        "age": 37,
+        "nationality": "Alemania",
+        "marketValue": 300
+      },
+      {
+        "name": "Tim Hoffmann",
+        "position": "DFC",
+        "rating": 72,
+        "age": 20,
+        "nationality": "Alemania",
+        "marketValue": 225
+      },
+      {
+        "name": "Michal Karbownik",
+        "position": "DFC",
+        "rating": 72,
+        "age": 33,
+        "nationality": "Polonia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Julian Eitschberger",
+        "position": "DFC",
+        "rating": 72,
+        "age": 21,
+        "nationality": "Alemania",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Deyovaisio Zeefuik",
+        "position": "DFC",
+        "rating": 71,
+        "age": 42,
+        "nationality": "Surinam",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Janne Berner",
+        "position": "DFC",
+        "rating": 71,
+        "age": 34,
+        "nationality": "Alemania",
+        "marketValue": 300
+      },
+      {
+        "name": "Kennet Eichhorn",
+        "position": "MC",
+        "rating": 79,
+        "age": 23,
+        "nationality": "Alemania",
+        "marketValue": 20000000
+      },
+      {
+        "name": "Boris Mamuzah Lum",
+        "position": "MC",
+        "rating": 73,
+        "age": 21,
+        "nationality": "Alemania",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Diego Demme",
+        "position": "MC",
+        "rating": 71,
+        "age": 34,
+        "nationality": "Alemania",
+        "marketValue": 500
+      },
+      {
+        "name": "Michaël Cuisance",
+        "position": "MC",
+        "rating": 78,
+        "age": 26,
+        "nationality": "Francia",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Leon Jensen",
+        "position": "MC",
+        "rating": 76,
+        "age": 28,
+        "nationality": "Alemania",
+        "marketValue": 800
+      },
+      {
+        "name": "Kevin Sessa",
+        "position": "MC",
+        "rating": 75,
+        "age": 25,
+        "nationality": "Alemania",
+        "marketValue": 750
+      },
+      {
+        "name": "Paul Seguin",
+        "position": "MC",
+        "rating": 76,
+        "age": 30,
+        "nationality": "Alemania",
+        "marketValue": 750
+      },
+      {
+        "name": "Jeremy Dudziak",
+        "position": "MC",
+        "rating": 76,
+        "age": 28,
+        "nationality": "Túnez",
+        "marketValue": 400
+      },
+      {
+        "name": "Maurice Krattenmacher",
+        "position": "MC",
+        "rating": 72,
+        "age": 20,
+        "nationality": "Alemania",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Fabian Reese",
+        "position": "DC",
+        "rating": 80,
+        "age": 28,
+        "nationality": "Alemania",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Jón Dagur Thorsteinsson",
+        "position": "DC",
+        "rating": 71,
+        "age": 24,
+        "nationality": "Islandia",
+        "marketValue": 800
+      },
+      {
+        "name": "Marten Winkler",
+        "position": "DC",
+        "rating": 76,
+        "age": 22,
+        "nationality": "Alemania",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Dawid Kownacki",
+        "position": "DC",
+        "rating": 77,
+        "age": 28,
+        "nationality": "Polonia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Sebastian Grönning",
+        "position": "DC",
+        "rating": 72,
+        "age": 17,
+        "nationality": "Dinamarca",
+        "marketValue": 700
+      },
+      {
+        "name": "Luca Schuler",
+        "position": "DC",
+        "rating": 73,
+        "age": 18,
+        "nationality": "Alemania",
+        "marketValue": 600
+      }
+    ]
+  },
+  {
+    "id": "hannover-96",
+    "name": "Hannover 96",
+    "players": [
+      {
+        "name": "Nahuel Noll",
+        "position": "POR",
+        "rating": 72,
+        "age": 22,
+        "nationality": "Alemania",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Leo Weinkauf",
+        "position": "POR",
+        "rating": 75,
+        "age": 30,
+        "nationality": "Alemania",
+        "marketValue": 250
+      },
+      {
+        "name": "Jonas Schwanke",
+        "position": "POR",
+        "rating": 71,
+        "age": 40,
+        "nationality": "Alemania",
+        "marketValue": 150
+      },
+      {
+        "name": "Hendry Blank",
+        "position": "DFC",
+        "rating": 72,
+        "age": 21,
+        "nationality": "Alemania",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Virgil Ghiță",
+        "position": "DFC",
+        "rating": 77,
+        "age": 27,
+        "nationality": "Rumania",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Maik Nawrocki",
+        "position": "DFC",
+        "rating": 77,
+        "age": 24,
+        "nationality": "Polonia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Ime Okon",
+        "position": "DFC",
+        "rating": 73,
+        "age": 20,
+        "nationality": "Sudáfrica",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Boris Tomiak",
+        "position": "DFC",
+        "rating": 77,
+        "age": 27,
+        "nationality": "Alemania",
+        "marketValue": 1700000
+      },
+      {
+        "name": "Bastian Allgeier",
+        "position": "DFC",
+        "rating": 71,
+        "age": 17,
+        "nationality": "Alemania",
+        "marketValue": 400
+      },
+      {
+        "name": "Brooklyn Ezeh",
+        "position": "DFC",
+        "rating": 70,
+        "age": 37,
+        "nationality": "Alemania",
+        "marketValue": 300
+      },
+      {
+        "name": "Noel Aseko",
+        "position": "MC",
+        "rating": 75,
+        "age": 15,
+        "nationality": "Alemania",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Noah Engelbreth",
+        "position": "MC",
+        "rating": 74,
+        "age": 22,
+        "nationality": "Alemania",
+        "marketValue": 175
+      },
+      {
+        "name": "Enzo Leopold",
+        "position": "MC",
+        "rating": 78,
+        "age": 25,
+        "nationality": "Alemania",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Stefán Teitur Thórdarson",
+        "position": "MC",
+        "rating": 75,
+        "age": 23,
+        "nationality": "Islandia",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Waniss Taïbi",
+        "position": "MC",
+        "rating": 76,
+        "age": 26,
+        "nationality": "Francia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Franz Roggow",
+        "position": "MC",
+        "rating": 73,
+        "age": 23,
+        "nationality": "Alemania",
+        "marketValue": 600
+      },
+      {
+        "name": "Mwisho Mhango",
+        "position": "MC",
+        "rating": 72,
+        "age": 21,
+        "nationality": "Malaui",
+        "marketValue": 0
+      },
+      {
+        "name": "Hayate Matsuda",
+        "position": "MC",
+        "rating": 77,
+        "age": 27,
+        "nationality": "Japón",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Maurice Neubauer",
+        "position": "MC",
+        "rating": 72,
+        "age": 33,
+        "nationality": "Alemania",
+        "marketValue": 900
+      },
+      {
+        "name": "Kolja Oudenne",
+        "position": "MC",
+        "rating": 76,
+        "age": 29,
+        "nationality": "Suecia",
+        "marketValue": 700
+      },
+      {
+        "name": "William Kokolo",
+        "position": "MC",
+        "rating": 71,
+        "age": 19,
+        "nationality": "Francia",
+        "marketValue": 500
+      },
+      {
+        "name": "Elias Saad",
+        "position": "DC",
+        "rating": 78,
+        "age": 24,
+        "nationality": "Túnez",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Noah Weißhaupt",
+        "position": "DC",
+        "rating": 75,
+        "age": 24,
+        "nationality": "Alemania",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Husseyn Chakroun",
+        "position": "DC",
+        "rating": 74,
+        "age": 21,
+        "nationality": "Líbano",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Taycan Kurt",
+        "position": "DC",
+        "rating": 68,
+        "age": 39,
+        "nationality": "Turquía",
+        "marketValue": 0
+      },
+      {
+        "name": "Daisuke Yokota",
+        "position": "DC",
+        "rating": 74,
+        "age": 18,
+        "nationality": "Japón",
+        "marketValue": 1700000
+      },
+      {
+        "name": "Mustapha Bundu",
+        "position": "DC",
+        "rating": 77,
+        "age": 28,
+        "nationality": "Sierra Leona",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Benjamin Källman",
+        "position": "DC",
+        "rating": 79,
+        "age": 27,
+        "nationality": "Finlandia",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Benedikt Pichler",
+        "position": "DC",
+        "rating": 77,
+        "age": 28,
+        "nationality": "Austria",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Havard Nielsen",
+        "position": "DC",
+        "rating": 72,
+        "age": 16,
+        "nationality": "Noruega",
+        "marketValue": 400
+      },
+      {
+        "name": "Denis Husser",
+        "position": "DC",
+        "rating": 70,
+        "age": 34,
+        "nationality": "Alemania",
+        "marketValue": 200
+      }
+    ]
+  },
+  {
+    "id": "fc-schalke-04",
+    "name": "FC Schalke 04",
+    "players": [
+      {
+        "name": "Loris Karius",
+        "position": "POR",
+        "rating": 74,
+        "age": 32,
+        "nationality": "Alemania",
+        "marketValue": 800
+      },
+      {
+        "name": "Kevin Müller",
+        "position": "POR",
+        "rating": 69,
+        "age": 22,
+        "nationality": "Alemania",
+        "marketValue": 300
+      },
+      {
+        "name": "Johannes Siebeking",
+        "position": "POR",
+        "rating": 70,
+        "age": 36,
+        "nationality": "Alemania",
+        "marketValue": 125
+      },
+      {
+        "name": "Luca Podlech",
+        "position": "POR",
+        "rating": 74,
+        "age": 32,
+        "nationality": "Alemania",
+        "marketValue": 50
+      },
+      {
+        "name": "Mertcan Ayhan",
+        "position": "DFC",
+        "rating": 69,
+        "age": 43,
+        "nationality": "Turquía",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Hasan Kuruçay",
+        "position": "DFC",
+        "rating": 75,
+        "age": 28,
+        "nationality": "Turquía",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Nikola Katic",
+        "position": "DFC",
+        "rating": 74,
+        "age": 25,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Timo Becker",
+        "position": "DFC",
+        "rating": 75,
+        "age": 28,
+        "nationality": "Alemania",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Felipe Sánchez",
+        "position": "DFC",
+        "rating": 69,
+        "age": 21,
+        "nationality": "Argentina",
+        "marketValue": 800
+      },
+      {
+        "name": "Dylan Leonard",
+        "position": "DFC",
+        "rating": 70,
+        "age": 18,
+        "nationality": "Australia",
+        "marketValue": 400
+      },
+      {
+        "name": "Tomas Kalas",
+        "position": "DFC",
+        "rating": 74,
+        "age": 26,
+        "nationality": "República Checa",
+        "marketValue": 400
+      },
+      {
+        "name": "Vitalie Becker",
+        "position": "DFC",
+        "rating": 70,
+        "age": 33,
+        "nationality": "Alemania",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Anton Donkor",
+        "position": "DFC",
+        "rating": 74,
+        "age": 30,
+        "nationality": "Alemania",
+        "marketValue": 400
+      },
+      {
+        "name": "Adrian Gantenbein",
+        "position": "DFC",
+        "rating": 70,
+        "age": 17,
+        "nationality": "Suiza",
+        "marketValue": 900
+      },
+      {
+        "name": "Henning Matriciani",
+        "position": "DFC",
+        "rating": 67,
+        "age": 41,
+        "nationality": "Alemania",
+        "marketValue": 350
+      },
+      {
+        "name": "Tidiane Touré",
+        "position": "DFC",
+        "rating": 70,
+        "age": 21,
+        "nationality": "Francia",
+        "marketValue": 150
+      },
+      {
+        "name": "Dejan Ljubicic",
+        "position": "MC",
+        "rating": 71,
+        "age": 21,
+        "nationality": "Austria",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Ron Schallenberg",
+        "position": "MC",
+        "rating": 75,
+        "age": 27,
+        "nationality": "Alemania",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Max Grüger",
+        "position": "MC",
+        "rating": 68,
+        "age": 37,
+        "nationality": "Alemania",
+        "marketValue": 1700000
+      },
+      {
+        "name": "Mauro Zalazar",
+        "position": "MC",
+        "rating": 69,
+        "age": 16,
+        "nationality": "Uruguay",
+        "marketValue": 300
+      },
+      {
+        "name": "Soufiane El-Faouzi",
+        "position": "MC",
+        "rating": 73,
+        "age": 23,
+        "nationality": "Alemania",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Janik Bachmann",
+        "position": "MC",
+        "rating": 73,
+        "age": 29,
+        "nationality": "Alemania",
+        "marketValue": 600
+      },
+      {
+        "name": "Finn Porath",
+        "position": "MC",
+        "rating": 74,
+        "age": 27,
+        "nationality": "Alemania",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Kenan Karaman",
+        "position": "MC",
+        "rating": 74,
+        "age": 19,
+        "nationality": "Turquía",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Christopher Antwi-Adjei",
+        "position": "DC",
+        "rating": 71,
+        "age": 18,
+        "nationality": "Ghana",
+        "marketValue": 500
+      },
+      {
+        "name": "Amin Younes",
+        "position": "DC",
+        "rating": 68,
+        "age": 32,
+        "nationality": "Alemania",
+        "marketValue": 300
+      },
+      {
+        "name": "Mika Wallentowitz",
+        "position": "DC",
+        "rating": 66,
+        "age": 35,
+        "nationality": "Alemania",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Zaid Tchibara",
+        "position": "DC",
+        "rating": 71,
+        "age": 19,
+        "nationality": "Togo",
+        "marketValue": 300
+      },
+      {
+        "name": "Moussa Sylla",
+        "position": "DC",
+        "rating": 76,
+        "age": 26,
+        "nationality": "Malí",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Christian Gomis",
+        "position": "DC",
+        "rating": 75,
+        "age": 25,
+        "nationality": "Senegal",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Edin Dzeko",
+        "position": "DC",
+        "rating": 71,
+        "age": 39,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Bryan Lasme",
+        "position": "DC",
+        "rating": 73,
+        "age": 27,
+        "nationality": "Francia",
+        "marketValue": 600
+      },
+      {
+        "name": "Emil Højlund",
+        "position": "DC",
+        "rating": 71,
+        "age": 15,
+        "nationality": "Dinamarca",
+        "marketValue": 500
+      },
+      {
+        "name": "Peter Remmert",
+        "position": "DC",
+        "rating": 67,
+        "age": 39,
+        "nationality": "Alemania",
+        "marketValue": 500
+      }
+    ]
+  },
+  {
+    "id": "vfl-bochum",
+    "name": "VfL Bochum",
+    "players": [
+      {
+        "name": "Timo Horn",
+        "position": "POR",
+        "rating": 74,
+        "age": 32,
+        "nationality": "Alemania",
+        "marketValue": 700
+      },
+      {
+        "name": "Niclas Thiede",
+        "position": "POR",
+        "rating": 68,
+        "age": 22,
+        "nationality": "Alemania",
+        "marketValue": 350
+      },
+      {
+        "name": "Hugo Rölleke",
+        "position": "POR",
+        "rating": 70,
+        "age": 38,
+        "nationality": "Alemania",
+        "marketValue": 50
+      },
+      {
+        "name": "Leandro Morgalla",
+        "position": "DFC",
+        "rating": 69,
+        "age": 39,
+        "nationality": "Alemania",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Erhan Masovic",
+        "position": "DFC",
+        "rating": 74,
+        "age": 27,
+        "nationality": "Serbia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Philipp Strompf",
+        "position": "DFC",
+        "rating": 75,
+        "age": 27,
+        "nationality": "Alemania",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Noah Loosli",
+        "position": "DFC",
+        "rating": 70,
+        "age": 20,
+        "nationality": "Suiza",
+        "marketValue": 750
+      },
+      {
+        "name": "Kevin Vogt",
+        "position": "DFC",
+        "rating": 69,
+        "age": 34,
+        "nationality": "Alemania",
+        "marketValue": 400
+      },
+      {
+        "name": "Daniel Hülsenbusch",
+        "position": "DFC",
+        "rating": 72,
+        "age": 25,
+        "nationality": "Alemania",
+        "marketValue": 50
+      },
+      {
+        "name": "Maximilian Wittek",
+        "position": "DFC",
+        "rating": 75,
+        "age": 32,
+        "nationality": "Alemania",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Mikkel Rakneberg",
+        "position": "DFC",
+        "rating": 70,
+        "age": 18,
+        "nationality": "Noruega",
+        "marketValue": 700
+      },
+      {
+        "name": "Darnell Keumo",
+        "position": "DFC",
+        "rating": 74,
+        "age": 30,
+        "nationality": "Alemania",
+        "marketValue": 300
+      },
+      {
+        "name": "Felix Passlack",
+        "position": "DFC",
+        "rating": 70,
+        "age": 15,
+        "nationality": "Alemania",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Kacper Koscierski",
+        "position": "DFC",
+        "rating": 68,
+        "age": 35,
+        "nationality": "Alemania",
+        "marketValue": 700
+      },
+      {
+        "name": "Cajetan Lenz",
+        "position": "MC",
+        "rating": 71,
+        "age": 34,
+        "nationality": "Alemania",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Marcel Sobottka",
+        "position": "MC",
+        "rating": 74,
+        "age": 31,
+        "nationality": "Alemania",
+        "marketValue": 350
+      },
+      {
+        "name": "Kjell Wätjen",
+        "position": "MC",
+        "rating": 71,
+        "age": 19,
+        "nationality": "Alemania",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Mats Pannewig",
+        "position": "MC",
+        "rating": 73,
+        "age": 24,
+        "nationality": "Alemania",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Matus Bero",
+        "position": "MC",
+        "rating": 71,
+        "age": 19,
+        "nationality": "Eslovaquia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Moritz-Broni Kwarteng",
+        "position": "MC",
+        "rating": 73,
+        "age": 27,
+        "nationality": "Alemania",
+        "marketValue": 750
+      },
+      {
+        "name": "Koji Miyoshi",
+        "position": "MC",
+        "rating": 73,
+        "age": 23,
+        "nationality": "Japón",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Romario Rösch",
+        "position": "MC",
+        "rating": 73,
+        "age": 26,
+        "nationality": "Alemania",
+        "marketValue": 400
+      },
+      {
+        "name": "Francis Onyeka",
+        "position": "MC",
+        "rating": 74,
+        "age": 21,
+        "nationality": "Alemania",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Lirim Jashari",
+        "position": "MC",
+        "rating": 68,
+        "age": 36,
+        "nationality": "Kosovo",
+        "marketValue": 100
+      },
+      {
+        "name": "Gerrit Holtmann",
+        "position": "DC",
+        "rating": 72,
+        "age": 17,
+        "nationality": "Filipinas",
+        "marketValue": 700
+      },
+      {
+        "name": "Farid Alfa-Ruprecht",
+        "position": "DC",
+        "rating": 73,
+        "age": 29,
+        "nationality": "Alemania",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Callum Marshall",
+        "position": "DC",
+        "rating": 74,
+        "age": 16,
+        "nationality": "Irlanda del Norte",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Ibrahim Sissoko",
+        "position": "DC",
+        "rating": 73,
+        "age": 30,
+        "nationality": "Malí",
+        "marketValue": 900
+      },
+      {
+        "name": "Philipp Hofmann",
+        "position": "DC",
+        "rating": 66,
+        "age": 33,
+        "nationality": "Alemania",
+        "marketValue": 750
+      }
+    ]
+  },
+  {
+    "id": "sc-paderborn-07",
+    "name": "SC Paderborn 07",
+    "players": [
+      {
+        "name": "Dennis Seimen",
+        "position": "POR",
+        "rating": 69,
+        "age": 41,
+        "nationality": "Alemania",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Markus Schubert",
+        "position": "POR",
+        "rating": 69,
+        "age": 27,
+        "nationality": "Alemania",
+        "marketValue": 500
+      },
+      {
+        "name": "Florian Pruhs",
+        "position": "POR",
+        "rating": 72,
+        "age": 31,
+        "nationality": "Alemania",
+        "marketValue": 150
+      },
+      {
+        "name": "Mattes Hansen",
+        "position": "DFC",
+        "rating": 69,
+        "age": 22,
+        "nationality": "Alemania",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Felix Götze",
+        "position": "DFC",
+        "rating": 69,
+        "age": 20,
+        "nationality": "Alemania",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Calvin Brackelmann",
+        "position": "DFC",
+        "rating": 73,
+        "age": 26,
+        "nationality": "Alemania",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Tjark Scheller",
+        "position": "DFC",
+        "rating": 71,
+        "age": 25,
+        "nationality": "Alemania",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Marcel Hoffmeier",
+        "position": "DFC",
+        "rating": 68,
+        "age": 33,
+        "nationality": "Alemania",
+        "marketValue": 1000000
+      },
+      {
+        "name": "David Kinsombi",
+        "position": "DFC",
+        "rating": 72,
+        "age": 30,
+        "nationality": "Alemania",
+        "marketValue": 400
+      },
+      {
+        "name": "Kevin Krumme",
+        "position": "DFC",
+        "rating": 68,
+        "age": 21,
+        "nationality": "Alemania",
+        "marketValue": 150
+      },
+      {
+        "name": "Kerem Yalcin",
+        "position": "DFC",
+        "rating": 68,
+        "age": 21,
+        "nationality": "Alemania",
+        "marketValue": 150
+      },
+      {
+        "name": "Santiago Castañeda",
+        "position": "MC",
+        "rating": 69,
+        "age": 21,
+        "nationality": "Estados Unidos",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Luis Engelns",
+        "position": "MC",
+        "rating": 68,
+        "age": 18,
+        "nationality": "Alemania",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Mika Baur",
+        "position": "MC",
+        "rating": 70,
+        "age": 21,
+        "nationality": "Alemania",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Sebastian Klaas",
+        "position": "MC",
+        "rating": 73,
+        "age": 26,
+        "nationality": "Alemania",
+        "marketValue": 750
+      },
+      {
+        "name": "Laurin Curda",
+        "position": "MC",
+        "rating": 72,
+        "age": 17,
+        "nationality": "Alemania",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Ruben Müller",
+        "position": "MC",
+        "rating": 67,
+        "age": 20,
+        "nationality": "Alemania",
+        "marketValue": 300
+      },
+      {
+        "name": "Raphael Obermair",
+        "position": "MC",
+        "rating": 73,
+        "age": 23,
+        "nationality": "Filipinas",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Jonah Sticker",
+        "position": "MC",
+        "rating": 67,
+        "age": 21,
+        "nationality": "Alemania",
+        "marketValue": 350
+      },
+      {
+        "name": "Anton Bäuerle",
+        "position": "MC",
+        "rating": 68,
+        "age": 21,
+        "nationality": "Alemania",
+        "marketValue": 200
+      },
+      {
+        "name": "Niklas Mohr",
+        "position": "MC",
+        "rating": 70,
+        "age": 24,
+        "nationality": "Alemania",
+        "marketValue": 75
+      },
+      {
+        "name": "Nick Bätzner",
+        "position": "DC",
+        "rating": 69,
+        "age": 25,
+        "nationality": "Alemania",
+        "marketValue": 700
+      },
+      {
+        "name": "Sven Michel",
+        "position": "DC",
+        "rating": 61,
+        "age": 35,
+        "nationality": "Alemania",
+        "marketValue": 300
+      },
+      {
+        "name": "Filip Bilbija",
+        "position": "DC",
+        "rating": 74,
+        "age": 25,
+        "nationality": "Alemania",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Bennit Bröger",
+        "position": "DC",
+        "rating": 64,
+        "age": 38,
+        "nationality": "Alemania",
+        "marketValue": 500
+      },
+      {
+        "name": "Kennedy Okpala",
+        "position": "DC",
+        "rating": 70,
+        "age": 21,
+        "nationality": "Alemania",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Lucas Copado",
+        "position": "DC",
+        "rating": 69,
+        "age": 28,
+        "nationality": "Alemania",
+        "marketValue": 800
+      },
+      {
+        "name": "Steffen Tigges",
+        "position": "DC",
+        "rating": 72,
+        "age": 27,
+        "nationality": "Alemania",
+        "marketValue": 700
+      },
+      {
+        "name": "Stefano Marino",
+        "position": "DC",
+        "rating": 69,
+        "age": 30,
+        "nationality": "Alemania",
+        "marketValue": 600
+      }
+    ]
+  },
+  {
+    "id": "holstein-kiel",
+    "name": "Holstein Kiel",
+    "players": [
+      {
+        "name": "Jonas Krumrey",
+        "position": "POR",
+        "rating": 68,
+        "age": 21,
+        "nationality": "Alemania",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Timon Weiner",
+        "position": "POR",
+        "rating": 69,
+        "age": 27,
+        "nationality": "Alemania",
+        "marketValue": 500
+      },
+      {
+        "name": "Lio Rothenhagen",
+        "position": "POR",
+        "rating": 67,
+        "age": 41,
+        "nationality": "Alemania",
+        "marketValue": 350
+      },
+      {
+        "name": "Marcel Engelhardt",
+        "position": "POR",
+        "rating": 72,
+        "age": 31,
+        "nationality": "Alemania",
+        "marketValue": 175
+      },
+      {
+        "name": "Tyler Doğan",
+        "position": "POR",
+        "rating": 67,
+        "age": 42,
+        "nationality": "Turquía",
+        "marketValue": 75
+      },
+      {
+        "name": "David Zec",
+        "position": "DFC",
+        "rating": 73,
+        "age": 26,
+        "nationality": "Eslovenia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Marko Ivezic",
+        "position": "DFC",
+        "rating": 71,
+        "age": 24,
+        "nationality": "Serbia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Frederik Roslyng",
+        "position": "DFC",
+        "rating": 68,
+        "age": 20,
+        "nationality": "Dinamarca",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Marco Komenda",
+        "position": "DFC",
+        "rating": 72,
+        "age": 29,
+        "nationality": "Alemania",
+        "marketValue": 800
+      },
+      {
+        "name": "Ivan Nekic",
+        "position": "DFC",
+        "rating": 69,
+        "age": 25,
+        "nationality": "Croacia",
+        "marketValue": 700
+      },
+      {
+        "name": "Mladen Cvjetinovic",
+        "position": "DFC",
+        "rating": 68,
+        "age": 17,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 600
+      },
+      {
+        "name": "Carl Johansson",
+        "position": "DFC",
+        "rating": 72,
+        "age": 31,
+        "nationality": "Suecia",
+        "marketValue": 450
+      },
+      {
+        "name": "Patrick Erras",
+        "position": "DFC",
+        "rating": 72,
+        "age": 31,
+        "nationality": "Alemania",
+        "marketValue": 300
+      },
+      {
+        "name": "John Tolkin",
+        "position": "DFC",
+        "rating": 71,
+        "age": 23,
+        "nationality": "Estados Unidos",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Leon Parduzi",
+        "position": "DFC",
+        "rating": 66,
+        "age": 40,
+        "nationality": "Kosovo",
+        "marketValue": 0
+      },
+      {
+        "name": "Lasse Rosenboom",
+        "position": "DFC",
+        "rating": 70,
+        "age": 23,
+        "nationality": "Alemania",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Niklas Niehoff",
+        "position": "DFC",
+        "rating": 71,
+        "age": 29,
+        "nationality": "Alemania",
+        "marketValue": 450
+      },
+      {
+        "name": "Kasper Davidsen",
+        "position": "MC",
+        "rating": 69,
+        "age": 15,
+        "nationality": "Dinamarca",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Jonas Meffert",
+        "position": "MC",
+        "rating": 72,
+        "age": 28,
+        "nationality": "Alemania",
+        "marketValue": 800
+      },
+      {
+        "name": "Umut Tohumcu",
+        "position": "MC",
+        "rating": 70,
+        "age": 21,
+        "nationality": "Alemania",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Stefan Schwab",
+        "position": "MC",
+        "rating": 69,
+        "age": 22,
+        "nationality": "Austria",
+        "marketValue": 300
+      },
+      {
+        "name": "Hamza Muqaj",
+        "position": "MC",
+        "rating": 68,
+        "age": 20,
+        "nationality": "Kosovo",
+        "marketValue": 250
+      },
+      {
+        "name": "Jonas Therkelsen",
+        "position": "MC",
+        "rating": 71,
+        "age": 22,
+        "nationality": "Noruega",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Andu Kelati",
+        "position": "DC",
+        "rating": 69,
+        "age": 16,
+        "nationality": "Alemania",
+        "marketValue": 600
+      },
+      {
+        "name": "Alexander Bernhardsson",
+        "position": "DC",
+        "rating": 75,
+        "age": 27,
+        "nationality": "Suecia",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Adrián Kaprálik",
+        "position": "DC",
+        "rating": 68,
+        "age": 20,
+        "nationality": "Eslovaquia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Phil Harres",
+        "position": "DC",
+        "rating": 70,
+        "age": 19,
+        "nationality": "Alemania",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Steven Skrzybski",
+        "position": "DC",
+        "rating": 66,
+        "age": 33,
+        "nationality": "Alemania",
+        "marketValue": 600
+      },
+      {
+        "name": "Marcus Müller",
+        "position": "DC",
+        "rating": 69,
+        "age": 25,
+        "nationality": "Alemania",
+        "marketValue": 500
+      },
+      {
+        "name": "Aldin Jakupovic",
+        "position": "DC",
+        "rating": 69,
+        "age": 18,
+        "nationality": "Eslovenia",
+        "marketValue": 250
+      }
+    ]
+  },
+  {
+    "id": "1-fc-kaiserslautern",
+    "name": "1.FC Kaiserslautern",
+    "players": [
+      {
+        "name": "Julian Krahl",
+        "position": "POR",
+        "rating": 71,
+        "age": 26,
+        "nationality": "Alemania",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Simon Simoni",
+        "position": "POR",
+        "rating": 69,
+        "age": 25,
+        "nationality": "Albania",
+        "marketValue": 600
+      },
+      {
+        "name": "Avdo Spahic",
+        "position": "POR",
+        "rating": 72,
+        "age": 30,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 175
+      },
+      {
+        "name": "Fabian Heck",
+        "position": "POR",
+        "rating": 72,
+        "age": 28,
+        "nationality": "Luxemburgo",
+        "marketValue": 0
+      },
+      {
+        "name": "Enis Kamga",
+        "position": "POR",
+        "rating": 67,
+        "age": 40,
+        "nationality": "Alemania",
+        "marketValue": 0
+      },
+      {
+        "name": "Luca Sirch",
+        "position": "DFC",
+        "rating": 73,
+        "age": 31,
+        "nationality": "Alemania",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Ji-soo Kim",
+        "position": "DFC",
+        "rating": 69,
+        "age": 21,
+        "nationality": "Corea del Sur",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Jacob Rasmussen",
+        "position": "DFC",
+        "rating": 73,
+        "age": 28,
+        "nationality": "Dinamarca",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Maxwell Gyamfi",
+        "position": "DFC",
+        "rating": 72,
+        "age": 26,
+        "nationality": "Alemania",
+        "marketValue": 900
+      },
+      {
+        "name": "Atanas Chernev",
+        "position": "DFC",
+        "rating": 68,
+        "age": 16,
+        "nationality": "Bulgaria",
+        "marketValue": 700
+      },
+      {
+        "name": "Mika Haas",
+        "position": "DFC",
+        "rating": 69,
+        "age": 22,
+        "nationality": "Alemania",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Florian Kleinhansl",
+        "position": "DFC",
+        "rating": 69,
+        "age": 25,
+        "nationality": "Alemania",
+        "marketValue": 600
+      },
+      {
+        "name": "Erik Wekesser",
+        "position": "DFC",
+        "rating": 72,
+        "age": 28,
+        "nationality": "Alemania",
+        "marketValue": 400
+      },
+      {
+        "name": "Paul Joly",
+        "position": "DFC",
+        "rating": 75,
+        "age": 26,
+        "nationality": "Francia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Simon Asta",
+        "position": "DFC",
+        "rating": 70,
+        "age": 25,
+        "nationality": "Alemania",
+        "marketValue": 800
+      },
+      {
+        "name": "Fabian Kunze",
+        "position": "MC",
+        "rating": 73,
+        "age": 27,
+        "nationality": "Alemania",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Leon Robinson",
+        "position": "MC",
+        "rating": 66,
+        "age": 37,
+        "nationality": "Alemania",
+        "marketValue": 600
+      },
+      {
+        "name": "Dion Hofmeister",
+        "position": "MC",
+        "rating": 66,
+        "age": 44,
+        "nationality": "Alemania",
+        "marketValue": 400
+      },
+      {
+        "name": "Semih Sahin",
+        "position": "MC",
+        "rating": 74,
+        "age": 26,
+        "nationality": "Alemania",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Tobias Raschl",
+        "position": "MC",
+        "rating": 67,
+        "age": 20,
+        "nationality": "Alemania",
+        "marketValue": 500
+      },
+      {
+        "name": "Naatan Skyttä",
+        "position": "MC",
+        "rating": 72,
+        "age": 15,
+        "nationality": "Finlandia",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Marlon Ritter",
+        "position": "MC",
+        "rating": 74,
+        "age": 31,
+        "nationality": "Alemania",
+        "marketValue": 800
+      },
+      {
+        "name": "Kenny-Prince Redondo",
+        "position": "DC",
+        "rating": 66,
+        "age": 31,
+        "nationality": "Alemania",
+        "marketValue": 400
+      },
+      {
+        "name": "Norman Bassette",
+        "position": "DC",
+        "rating": 70,
+        "age": 17,
+        "nationality": "Bélgica",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Ivan Prtajin",
+        "position": "DC",
+        "rating": 77,
+        "age": 29,
+        "nationality": "Croacia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Daniel Hanslik",
+        "position": "DC",
+        "rating": 72,
+        "age": 19,
+        "nationality": "Alemania",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Mahir Emreli",
+        "position": "DC",
+        "rating": 72,
+        "age": 28,
+        "nationality": "Azerbaiyán",
+        "marketValue": 700
+      },
+      {
+        "name": "Richmond Tachie",
+        "position": "DC",
+        "rating": 69,
+        "age": 29,
+        "nationality": "Alemania",
+        "marketValue": 500
+      },
+      {
+        "name": "Dickson Abiama",
+        "position": "DC",
+        "rating": 69,
+        "age": 27,
+        "nationality": "Nigeria",
+        "marketValue": 350
+      }
+    ]
+  },
+  {
+    "id": "1-fc-nurnberg",
+    "name": "1. FC Núremberg​",
+    "players": [
+      {
+        "name": "Jan Reichert",
+        "position": "POR",
+        "rating": 66,
+        "age": 24,
+        "nationality": "Alemania",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Christian Mathenia",
+        "position": "POR",
+        "rating": 67,
+        "age": 26,
+        "nationality": "Alemania",
+        "marketValue": 300
+      },
+      {
+        "name": "Robin Lisewski",
+        "position": "POR",
+        "rating": 65,
+        "age": 19,
+        "nationality": "Polonia",
+        "marketValue": 150
+      },
+      {
+        "name": "Fabio Gruber",
+        "position": "DFC",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Perú",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Luka Lochoshvili",
+        "position": "DFC",
+        "rating": 69,
+        "age": 24,
+        "nationality": "Georgia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Kristian Mandic",
+        "position": "DFC",
+        "rating": 65,
+        "age": 36,
+        "nationality": "Croacia",
+        "marketValue": 400
+      },
+      {
+        "name": "Tarek Buchmann",
+        "position": "DFC",
+        "rating": 70,
+        "age": 28,
+        "nationality": "Alemania",
+        "marketValue": 300
+      },
+      {
+        "name": "Berkay Yilmaz",
+        "position": "DFC",
+        "rating": 69,
+        "age": 21,
+        "nationality": "Turquía",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Danilo Soares",
+        "position": "DFC",
+        "rating": 65,
+        "age": 34,
+        "nationality": "Brasil",
+        "marketValue": 400
+      },
+      {
+        "name": "Eric Porstner",
+        "position": "DFC",
+        "rating": 63,
+        "age": 41,
+        "nationality": "Alemania",
+        "marketValue": 350
+      },
+      {
+        "name": "Tim Drexler",
+        "position": "DFC",
+        "rating": 67,
+        "age": 15,
+        "nationality": "Alemania",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Henri Koudossou",
+        "position": "DFC",
+        "rating": 71,
+        "age": 26,
+        "nationality": "Alemania",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Tim Janisch",
+        "position": "DFC",
+        "rating": 70,
+        "age": 32,
+        "nationality": "Alemania",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Adam Markhiev",
+        "position": "MC",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Finlandia",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Rabby Nzingoula",
+        "position": "MC",
+        "rating": 69,
+        "age": 22,
+        "nationality": "Francia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Tom Baack",
+        "position": "MC",
+        "rating": 69,
+        "age": 26,
+        "nationality": "Alemania",
+        "marketValue": 400
+      },
+      {
+        "name": "Eryk Grzywacz",
+        "position": "MC",
+        "rating": 66,
+        "age": 19,
+        "nationality": "Polonia",
+        "marketValue": 250
+      },
+      {
+        "name": "Rafael Lubach",
+        "position": "MC",
+        "rating": 69,
+        "age": 18,
+        "nationality": "Alemania",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Finn Becker",
+        "position": "MC",
+        "rating": 71,
+        "age": 25,
+        "nationality": "Alemania",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Justin von der Hitz",
+        "position": "MC",
+        "rating": 70,
+        "age": 27,
+        "nationality": "Alemania",
+        "marketValue": 400
+      },
+      {
+        "name": "Julian Justvan",
+        "position": "MC",
+        "rating": 73,
+        "age": 27,
+        "nationality": "Alemania",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Ayoub Chaikhoun",
+        "position": "MC",
+        "rating": 65,
+        "age": 17,
+        "nationality": "Marruecos",
+        "marketValue": 500
+      },
+      {
+        "name": "Mohamed Alì Zoma",
+        "position": "DC",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Mickaël Biron",
+        "position": "DC",
+        "rating": 69,
+        "age": 28,
+        "nationality": "Martinica",
+        "marketValue": 700
+      },
+      {
+        "name": "Adriano Grimaldi",
+        "position": "DC",
+        "rating": 63,
+        "age": 33,
+        "nationality": "Alemania",
+        "marketValue": 350
+      },
+      {
+        "name": "Noah Maboulou",
+        "position": "DC",
+        "rating": 62,
+        "age": 37,
+        "nationality": "Congo",
+        "marketValue": 300
+      },
+      {
+        "name": "Piet Scobel",
+        "position": "DC",
+        "rating": 62,
+        "age": 39,
+        "nationality": "Alemania",
+        "marketValue": 300
+      },
+      {
+        "name": "Tino Kusanovic",
+        "position": "DC",
+        "rating": 62,
+        "age": 42,
+        "nationality": "Croacia",
+        "marketValue": 300
+      }
+    ]
+  },
+  {
+    "id": "fortuna-dusseldorf",
+    "name": "Fortuna Düsseldorf",
+    "players": [
+      {
+        "name": "Florian Kastenmeier",
+        "position": "POR",
+        "rating": 71,
+        "age": 33,
+        "nationality": "Alemania",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Marcel Lotka",
+        "position": "POR",
+        "rating": 64,
+        "age": 24,
+        "nationality": "Alemania",
+        "marketValue": 500
+      },
+      {
+        "name": "Florian Schock",
+        "position": "POR",
+        "rating": 68,
+        "age": 26,
+        "nationality": "Alemania",
+        "marketValue": 200
+      },
+      {
+        "name": "Jesper Daland",
+        "position": "DFC",
+        "rating": 71,
+        "age": 26,
+        "nationality": "Noruega",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Tim Oberdorf",
+        "position": "DFC",
+        "rating": 67,
+        "age": 15,
+        "nationality": "Alemania",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Jordy de Wijs",
+        "position": "DFC",
+        "rating": 69,
+        "age": 30,
+        "nationality": "Países Bajos",
+        "marketValue": 500
+      },
+      {
+        "name": "Elias Egouli",
+        "position": "DFC",
+        "rating": 63,
+        "age": 44,
+        "nationality": "Alemania",
+        "marketValue": 350
+      },
+      {
+        "name": "Kenneth Schmidt",
+        "position": "DFC",
+        "rating": 68,
+        "age": 23,
+        "nationality": "Alemania",
+        "marketValue": 800
+      },
+      {
+        "name": "Christopher Lenz",
+        "position": "DFC",
+        "rating": 70,
+        "age": 31,
+        "nationality": "Alemania",
+        "marketValue": 400
+      },
+      {
+        "name": "Valgeir Lunddal",
+        "position": "DFC",
+        "rating": 71,
+        "age": 24,
+        "nationality": "Islandia",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Matthias Zimmermann",
+        "position": "DFC",
+        "rating": 68,
+        "age": 25,
+        "nationality": "Alemania",
+        "marketValue": 400
+      },
+      {
+        "name": "Tim Breithaupt",
+        "position": "MC",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Alemania",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Anouar El Azzouzi",
+        "position": "MC",
+        "rating": 69,
+        "age": 24,
+        "nationality": "Marruecos",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Satoshi Tanaka",
+        "position": "MC",
+        "rating": 67,
+        "age": 16,
+        "nationality": "Japón",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Moritz Heyer",
+        "position": "MC",
+        "rating": 69,
+        "age": 30,
+        "nationality": "Alemania",
+        "marketValue": 500
+      },
+      {
+        "name": "Sotiris Alexandropoulos",
+        "position": "MC",
+        "rating": 69,
+        "age": 24,
+        "nationality": "Grecia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Sima Suso",
+        "position": "MC",
+        "rating": 67,
+        "age": 20,
+        "nationality": "Alemania",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Shinta Appelkamp",
+        "position": "MC",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Alemania",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Hamza Anhari",
+        "position": "MC",
+        "rating": 64,
+        "age": 40,
+        "nationality": "Marruecos",
+        "marketValue": 125
+      },
+      {
+        "name": "Florent Muslija",
+        "position": "DC",
+        "rating": 70,
+        "age": 24,
+        "nationality": "Kosovo",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Julian Hettwer",
+        "position": "DC",
+        "rating": 69,
+        "age": 22,
+        "nationality": "Alemania",
+        "marketValue": 1300000
+      },
+      {
+        "name": "Tim Rossmann",
+        "position": "DC",
+        "rating": 68,
+        "age": 21,
+        "nationality": "Alemania",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Karim Affo",
+        "position": "DC",
+        "rating": 62,
+        "age": 45,
+        "nationality": "Alemania",
+        "marketValue": 200
+      },
+      {
+        "name": "Christian Rasmussen",
+        "position": "DC",
+        "rating": 68,
+        "age": 23,
+        "nationality": "Dinamarca",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Emmanuel Iyoha",
+        "position": "DC",
+        "rating": 66,
+        "age": 19,
+        "nationality": "Alemania",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Luca Raimund",
+        "position": "DC",
+        "rating": 66,
+        "age": 20,
+        "nationality": "Alemania",
+        "marketValue": 400
+      },
+      {
+        "name": "Marin Ljubicic",
+        "position": "DC",
+        "rating": 68,
+        "age": 20,
+        "nationality": "Croacia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Zan Celar",
+        "position": "DC",
+        "rating": 68,
+        "age": 26,
+        "nationality": "Eslovenia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Cedric Itten",
+        "position": "DC",
+        "rating": 72,
+        "age": 29,
+        "nationality": "Suiza",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Jordi Paulina",
+        "position": "DC",
+        "rating": 70,
+        "age": 27,
+        "nationality": "Curazao",
+        "marketValue": 500
+      }
+    ]
+  },
+  {
+    "id": "sv-darmstadt-98",
+    "name": "SV Darmstadt 98",
+    "players": [
+      {
+        "name": "Marcel Schuhen",
+        "position": "POR",
+        "rating": 70,
+        "age": 33,
+        "nationality": "Alemania",
+        "marketValue": 600
+      },
+      {
+        "name": "Alexander Brunst",
+        "position": "POR",
+        "rating": 69,
+        "age": 30,
+        "nationality": "Alemania",
+        "marketValue": 300
+      },
+      {
+        "name": "Benedikt Börner",
+        "position": "POR",
+        "rating": 65,
+        "age": 24,
+        "nationality": "Alemania",
+        "marketValue": 150
+      },
+      {
+        "name": "Patric Pfeiffer",
+        "position": "DFC",
+        "rating": 71,
+        "age": 26,
+        "nationality": "Ghana",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Aleksandar Vukotic",
+        "position": "DFC",
+        "rating": 66,
+        "age": 20,
+        "nationality": "Serbia",
+        "marketValue": 900
+      },
+      {
+        "name": "Matej Maglica",
+        "position": "DFC",
+        "rating": 70,
+        "age": 27,
+        "nationality": "Croacia",
+        "marketValue": 800
+      },
+      {
+        "name": "Max Pfister",
+        "position": "DFC",
+        "rating": 66,
+        "age": 18,
+        "nationality": "Alemania",
+        "marketValue": 0
+      },
+      {
+        "name": "Raoul Petretta",
+        "position": "DFC",
+        "rating": 66,
+        "age": 18,
+        "nationality": "Italia",
+        "marketValue": 600
+      },
+      {
+        "name": "Fabian Holland",
+        "position": "DFC",
+        "rating": 69,
+        "age": 32,
+        "nationality": "Alemania",
+        "marketValue": 200
+      },
+      {
+        "name": "Tim Arnold",
+        "position": "DFC",
+        "rating": 66,
+        "age": 19,
+        "nationality": "Alemania",
+        "marketValue": 0
+      },
+      {
+        "name": "Sergio López",
+        "position": "DFC",
+        "rating": 72,
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Matthias Bader",
+        "position": "DFC",
+        "rating": 69,
+        "age": 26,
+        "nationality": "Alemania",
+        "marketValue": 700
+      },
+      {
+        "name": "Hiroki Akiyama",
+        "position": "MC",
+        "rating": 67,
+        "age": 16,
+        "nationality": "Japón",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Kai Klefisch",
+        "position": "MC",
+        "rating": 67,
+        "age": 17,
+        "nationality": "Alemania",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Niklas Schmidt",
+        "position": "MC",
+        "rating": 71,
+        "age": 31,
+        "nationality": "Alemania",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Merveille Papela",
+        "position": "MC",
+        "rating": 65,
+        "age": 21,
+        "nationality": "Alemania",
+        "marketValue": 600
+      },
+      {
+        "name": "Fabian Nürnberger",
+        "position": "MC",
+        "rating": 68,
+        "age": 15,
+        "nationality": "Bulgaria",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Marco Richter",
+        "position": "MC",
+        "rating": 71,
+        "age": 23,
+        "nationality": "Alemania",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Luca Marseiler",
+        "position": "MC",
+        "rating": 70,
+        "age": 28,
+        "nationality": "Alemania",
+        "marketValue": 750
+      },
+      {
+        "name": "Jean-Paul Boëtius",
+        "position": "MC",
+        "rating": 69,
+        "age": 31,
+        "nationality": "Surinam",
+        "marketValue": 400
+      },
+      {
+        "name": "Yosuke Furukawa",
+        "position": "DC",
+        "rating": 59,
+        "age": 44,
+        "nationality": "Japón",
+        "marketValue": 600
+      },
+      {
+        "name": "Isac Lidberg",
+        "position": "DC",
+        "rating": 74,
+        "age": 27,
+        "nationality": "Suecia",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Fraser Hornby",
+        "position": "DC",
+        "rating": 74,
+        "age": 26,
+        "nationality": "Escocia",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Killian Corredor",
+        "position": "DC",
+        "rating": 65,
+        "age": 34,
+        "nationality": "Francia",
+        "marketValue": 2800000
+      },
+      {
+        "name": "Bartosz Bialek",
+        "position": "DC",
+        "rating": 67,
+        "age": 27,
+        "nationality": "Polonia",
+        "marketValue": 600
+      },
+      {
+        "name": "Fynn Lakenmacher",
+        "position": "DC",
+        "rating": 66,
+        "age": 19,
+        "nationality": "Alemania",
+        "marketValue": 400
+      },
+      {
+        "name": "Serhat-Semih Güler",
+        "position": "DC",
+        "rating": 68,
+        "age": 22,
+        "nationality": "Alemania",
+        "marketValue": 250
+      }
+    ]
+  },
+  {
+    "id": "karlsruher-sc",
+    "name": "Karlsruher SC",
+    "players": [
+      {
+        "name": "Hans Christian Bernat",
+        "position": "POR",
+        "rating": 69,
+        "age": 25,
+        "nationality": "Dinamarca",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Robin Himmelmann",
+        "position": "POR",
+        "rating": 69,
+        "age": 30,
+        "nationality": "Alemania",
+        "marketValue": 150
+      },
+      {
+        "name": "Aki Koch",
+        "position": "POR",
+        "rating": 65,
+        "age": 18,
+        "nationality": "Alemania",
+        "marketValue": 100
+      },
+      {
+        "name": "Marcel Beifus",
+        "position": "DFC",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Alemania",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Christoph Kobald",
+        "position": "DFC",
+        "rating": 66,
+        "age": 22,
+        "nationality": "Austria",
+        "marketValue": 800
+      },
+      {
+        "name": "Stephan Ambrosius",
+        "position": "DFC",
+        "rating": 70,
+        "age": 27,
+        "nationality": "Ghana",
+        "marketValue": 500
+      },
+      {
+        "name": "Marcel Franke",
+        "position": "DFC",
+        "rating": 70,
+        "age": 28,
+        "nationality": "Alemania",
+        "marketValue": 500
+      },
+      {
+        "name": "Paul Scholl",
+        "position": "DFC",
+        "rating": 65,
+        "age": 15,
+        "nationality": "Alemania",
+        "marketValue": 250
+      },
+      {
+        "name": "David Herold",
+        "position": "DFC",
+        "rating": 69,
+        "age": 20,
+        "nationality": "Alemania",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Niclas Dühring",
+        "position": "DFC",
+        "rating": 70,
+        "age": 29,
+        "nationality": "Alemania",
+        "marketValue": 175
+      },
+      {
+        "name": "Rafael Pinto Pedrosa",
+        "position": "DFC",
+        "rating": 67,
+        "age": 36,
+        "nationality": "Alemania",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Sebastian Jung",
+        "position": "DFC",
+        "rating": 65,
+        "age": 35,
+        "nationality": "Alemania",
+        "marketValue": 300
+      },
+      {
+        "name": "Dzenis Burnic",
+        "position": "MC",
+        "rating": 71,
+        "age": 27,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Nicolai Rapp",
+        "position": "MC",
+        "rating": 71,
+        "age": 29,
+        "nationality": "Alemania",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Andreas Müller",
+        "position": "MC",
+        "rating": 67,
+        "age": 16,
+        "nationality": "Alemania",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Mateo Kritzer",
+        "position": "MC",
+        "rating": 65,
+        "age": 34,
+        "nationality": "Alemania",
+        "marketValue": 500
+      },
+      {
+        "name": "Marvin Wanitzek",
+        "position": "MC",
+        "rating": 69,
+        "age": 32,
+        "nationality": "Alemania",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Meiko Wäschenbach",
+        "position": "MC",
+        "rating": 65,
+        "age": 21,
+        "nationality": "Alemania",
+        "marketValue": 150
+      },
+      {
+        "name": "Efe-Kaan Sihlaroglu",
+        "position": "MC",
+        "rating": 64,
+        "age": 38,
+        "nationality": "Turquía",
+        "marketValue": 150
+      },
+      {
+        "name": "Robert Geller",
+        "position": "MC",
+        "rating": 64,
+        "age": 35,
+        "nationality": "Serbia",
+        "marketValue": 100
+      },
+      {
+        "name": "Lilian Egloff",
+        "position": "MC",
+        "rating": 73,
+        "age": 25,
+        "nationality": "Alemania",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Philipp Förster",
+        "position": "MC",
+        "rating": 70,
+        "age": 30,
+        "nationality": "Alemania",
+        "marketValue": 600
+      },
+      {
+        "name": "Leon Opitz",
+        "position": "MC",
+        "rating": 65,
+        "age": 17,
+        "nationality": "Alemania",
+        "marketValue": 600
+      },
+      {
+        "name": "Ali-Eren Ersungur",
+        "position": "MC",
+        "rating": 70,
+        "age": 27,
+        "nationality": "Turquía",
+        "marketValue": 300
+      },
+      {
+        "name": "Louey Ben Farhat",
+        "position": "DC",
+        "rating": 69,
+        "age": 19,
+        "nationality": "Túnez",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Roko Simic",
+        "position": "DC",
+        "rating": 66,
+        "age": 22,
+        "nationality": "Croacia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Eymen Laghrissi",
+        "position": "DC",
+        "rating": 62,
+        "age": 44,
+        "nationality": "Alemania",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Shio Fukuda",
+        "position": "DC",
+        "rating": 64,
+        "age": 21,
+        "nationality": "Japón",
+        "marketValue": 800
+      },
+      {
+        "name": "Fabian Schleusener",
+        "position": "DC",
+        "rating": 70,
+        "age": 24,
+        "nationality": "Alemania",
+        "marketValue": 400
+      }
+    ]
+  },
+  {
+    "id": "sv-07-elversberg",
+    "name": "SV 07 Elversberg",
+    "players": [
+      {
+        "name": "Nicolas Kristof",
+        "position": "POR",
+        "rating": 66,
+        "age": 20,
+        "nationality": "Austria",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Tim Boss",
+        "position": "POR",
+        "rating": 69,
+        "age": 28,
+        "nationality": "Alemania",
+        "marketValue": 200
+      },
+      {
+        "name": "Frank Lehmann",
+        "position": "POR",
+        "rating": 66,
+        "age": 36,
+        "nationality": "Alemania",
+        "marketValue": 100
+      },
+      {
+        "name": "Lukas Pinckert",
+        "position": "DFC",
+        "rating": 67,
+        "age": 19,
+        "nationality": "Alemania",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Maximilian Rohr",
+        "position": "DFC",
+        "rating": 70,
+        "age": 31,
+        "nationality": "Alemania",
+        "marketValue": 600
+      },
+      {
+        "name": "Florian Le Joncour",
+        "position": "DFC",
+        "rating": 70,
+        "age": 30,
+        "nationality": "Francia",
+        "marketValue": 500
+      },
+      {
+        "name": "Luis Seifert",
+        "position": "DFC",
+        "rating": 66,
+        "age": 22,
+        "nationality": "Alemania",
+        "marketValue": 200
+      },
+      {
+        "name": "Lasse Günther",
+        "position": "DFC",
+        "rating": 68,
+        "age": 21,
+        "nationality": "Alemania",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Nicholas Mickelson",
+        "position": "DFC",
+        "rating": 69,
+        "age": 26,
+        "nationality": "Tailandia",
+        "marketValue": 750
+      },
+      {
+        "name": "Felix Keidel",
+        "position": "DFC",
+        "rating": 65,
+        "age": 43,
+        "nationality": "Alemania",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Jan Gyamerah",
+        "position": "DFC",
+        "rating": 70,
+        "age": 30,
+        "nationality": "Ghana",
+        "marketValue": 500
+      },
+      {
+        "name": "Daniel Pantschenko",
+        "position": "DFC",
+        "rating": 70,
+        "age": 32,
+        "nationality": "Alemania",
+        "marketValue": 75
+      },
+      {
+        "name": "Amara Condé",
+        "position": "MC",
+        "rating": 70,
+        "age": 29,
+        "nationality": "Alemania",
+        "marketValue": 800
+      },
+      {
+        "name": "Carlo Sickinger",
+        "position": "MC",
+        "rating": 67,
+        "age": 23,
+        "nationality": "Alemania",
+        "marketValue": 750
+      },
+      {
+        "name": "Patryk Dragon",
+        "position": "MC",
+        "rating": 70,
+        "age": 29,
+        "nationality": "Alemania",
+        "marketValue": 50
+      },
+      {
+        "name": "Lukasz Poreba",
+        "position": "MC",
+        "rating": 71,
+        "age": 25,
+        "nationality": "Polonia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Frederik Schmahl",
+        "position": "MC",
+        "rating": 65,
+        "age": 17,
+        "nationality": "Alemania",
+        "marketValue": 600
+      },
+      {
+        "name": "Bambasé Conté",
+        "position": "MC",
+        "rating": 71,
+        "age": 22,
+        "nationality": "Alemania",
+        "marketValue": 2800000
+      },
+      {
+        "name": "Jarzinho Malanga",
+        "position": "DC",
+        "rating": 65,
+        "age": 19,
+        "nationality": "Alemania",
+        "marketValue": 1700000
+      },
+      {
+        "name": "Tom Zimmerschied",
+        "position": "DC",
+        "rating": 69,
+        "age": 29,
+        "nationality": "Alemania",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Lukas Petkov",
+        "position": "DC",
+        "rating": 69,
+        "age": 25,
+        "nationality": "Bulgaria",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Manuel Feil",
+        "position": "DC",
+        "rating": 64,
+        "age": 31,
+        "nationality": "Alemania",
+        "marketValue": 350
+      },
+      {
+        "name": "Raif Adam",
+        "position": "DC",
+        "rating": 67,
+        "age": 15,
+        "nationality": "Alemania",
+        "marketValue": 125
+      },
+      {
+        "name": "Otto Stange",
+        "position": "DC",
+        "rating": 67,
+        "age": 18,
+        "nationality": "Alemania",
+        "marketValue": 2500000
+      },
+      {
+        "name": "David Mokwa",
+        "position": "DC",
+        "rating": 63,
+        "age": 42,
+        "nationality": "Francia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Luca Pfeiffer",
+        "position": "DC",
+        "rating": 67,
+        "age": 16,
+        "nationality": "Alemania",
+        "marketValue": 500
+      },
+      {
+        "name": "Luca Schnellbacher",
+        "position": "DC",
+        "rating": 65,
+        "age": 24,
+        "nationality": "Alemania",
+        "marketValue": 500
+      },
+      {
+        "name": "Mohammad Mahmoud",
+        "position": "DC",
+        "rating": 67,
+        "age": 18,
+        "nationality": "Alemania",
+        "marketValue": 100
+      }
+    ]
+  },
+  {
+    "id": "spvgg-greuther-furth",
+    "name": "SpVgg Greuther Fürth",
+    "players": [
+      {
+        "name": "Pelle Boevink",
+        "position": "POR",
+        "rating": 68,
+        "age": 26,
+        "nationality": "Países Bajos",
+        "marketValue": 450
+      },
+      {
+        "name": "Timo Schlieck",
+        "position": "POR",
+        "rating": 65,
+        "age": 21,
+        "nationality": "Alemania",
+        "marketValue": 400
+      },
+      {
+        "name": "Nils Körber",
+        "position": "POR",
+        "rating": 70,
+        "age": 29,
+        "nationality": "Alemania",
+        "marketValue": 225
+      },
+      {
+        "name": "Sebastian Jung",
+        "position": "POR",
+        "rating": 70,
+        "age": 31,
+        "nationality": "Alemania",
+        "marketValue": 100
+      },
+      {
+        "name": "Maximilian Dietz",
+        "position": "DFC",
+        "rating": 66,
+        "age": 33,
+        "nationality": "Estados Unidos",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Reno Münz",
+        "position": "DFC",
+        "rating": 67,
+        "age": 20,
+        "nationality": "Alemania",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Luca Itter",
+        "position": "DFC",
+        "rating": 71,
+        "age": 27,
+        "nationality": "Alemania",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Jan Elvedi",
+        "position": "DFC",
+        "rating": 66,
+        "age": 15,
+        "nationality": "Suiza",
+        "marketValue": 800
+      },
+      {
+        "name": "Philipp Ziereis",
+        "position": "DFC",
+        "rating": 70,
+        "age": 32,
+        "nationality": "Alemania",
+        "marketValue": 500
+      },
+      {
+        "name": "Brynjar Ingi Bjarnason",
+        "position": "DFC",
+        "rating": 68,
+        "age": 25,
+        "nationality": "Islandia",
+        "marketValue": 500
+      },
+      {
+        "name": "Noah König",
+        "position": "DFC",
+        "rating": 65,
+        "age": 17,
+        "nationality": "Alemania",
+        "marketValue": 400
+      },
+      {
+        "name": "David Abrangao",
+        "position": "DFC",
+        "rating": 64,
+        "age": 40,
+        "nationality": "Alemania",
+        "marketValue": 500
+      },
+      {
+        "name": "Raul Marița",
+        "position": "DFC",
+        "rating": 64,
+        "age": 38,
+        "nationality": "Rumania",
+        "marketValue": 250
+      },
+      {
+        "name": "Lukas Reich",
+        "position": "DFC",
+        "rating": 67,
+        "age": 19,
+        "nationality": "Alemania",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Jannik Dehm",
+        "position": "DFC",
+        "rating": 68,
+        "age": 23,
+        "nationality": "Alemania",
+        "marketValue": 600
+      },
+      {
+        "name": "Mathias Olesen",
+        "position": "MC",
+        "rating": 69,
+        "age": 24,
+        "nationality": "Luxemburgo",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Sacha Bansé",
+        "position": "MC",
+        "rating": 68,
+        "age": 24,
+        "nationality": "Burkina Faso",
+        "marketValue": 650
+      },
+      {
+        "name": "Paul Will",
+        "position": "MC",
+        "rating": 70,
+        "age": 26,
+        "nationality": "Alemania",
+        "marketValue": 450
+      },
+      {
+        "name": "Doni Arifi",
+        "position": "MC",
+        "rating": 70,
+        "age": 28,
+        "nationality": "Finlandia",
+        "marketValue": 450
+      },
+      {
+        "name": "Jakob Engel",
+        "position": "MC",
+        "rating": 65,
+        "age": 35,
+        "nationality": "Alemania",
+        "marketValue": 150
+      },
+      {
+        "name": "Marco John",
+        "position": "MC",
+        "rating": 71,
+        "age": 24,
+        "nationality": "Alemania",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Julian Green",
+        "position": "MC",
+        "rating": 64,
+        "age": 37,
+        "nationality": "Estados Unidos",
+        "marketValue": 800
+      },
+      {
+        "name": "Jomaine Consbruch",
+        "position": "MC",
+        "rating": 67,
+        "age": 24,
+        "nationality": "Alemania",
+        "marketValue": 600
+      },
+      {
+        "name": "Felix Klaus",
+        "position": "MC",
+        "rating": 74,
+        "age": 30,
+        "nationality": "Alemania",
+        "marketValue": 550
+      },
+      {
+        "name": "Aaron Keller",
+        "position": "MC",
+        "rating": 67,
+        "age": 16,
+        "nationality": "Suiza",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Juan Cabrera",
+        "position": "MC",
+        "rating": 67,
+        "age": 22,
+        "nationality": "Uruguay",
+        "marketValue": 300
+      },
+      {
+        "name": "Aiman Dardari",
+        "position": "DC",
+        "rating": 68,
+        "age": 20,
+        "nationality": "Luxemburgo",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Noel Futkeu",
+        "position": "DC",
+        "rating": 71,
+        "age": 23,
+        "nationality": "Alemania",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Branimir Hrgota",
+        "position": "DC",
+        "rating": 63,
+        "age": 33,
+        "nationality": "Suecia",
+        "marketValue": 500
+      },
+      {
+        "name": "Omar Sillah",
+        "position": "DC",
+        "rating": 59,
+        "age": 42,
+        "nationality": "Alemania",
+        "marketValue": 500
+      },
+      {
+        "name": "Felix Higl",
+        "position": "DC",
+        "rating": 64,
+        "age": 18,
+        "nationality": "Alemania",
+        "marketValue": 350
+      },
+      {
+        "name": "Dennis Srbeny",
+        "position": "DC",
+        "rating": 61,
+        "age": 31,
+        "nationality": "Alemania",
+        "marketValue": 300
+      }
+    ]
+  },
+  {
+    "id": "1-fc-magdeburg",
+    "name": "1.FC Magdeburg",
+    "players": [
+      {
+        "name": "Dominik Reimann",
+        "position": "POR",
+        "rating": 71,
+        "age": 28,
+        "nationality": "Alemania",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Noah Kruth",
+        "position": "POR",
+        "rating": 69,
+        "age": 30,
+        "nationality": "Alemania",
+        "marketValue": 250
+      },
+      {
+        "name": "Robert Kampa",
+        "position": "POR",
+        "rating": 65,
+        "age": 40,
+        "nationality": "Alemania",
+        "marketValue": 75
+      },
+      {
+        "name": "Jean Hugonet",
+        "position": "DFC",
+        "rating": 69,
+        "age": 24,
+        "nationality": "Francia",
+        "marketValue": 1700000
+      },
+      {
+        "name": "Max Geschwill",
+        "position": "DFC",
+        "rating": 70,
+        "age": 28,
+        "nationality": "Alemania",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Marcus Mathisen",
+        "position": "DFC",
+        "rating": 67,
+        "age": 16,
+        "nationality": "Dinamarca",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Andi Hoti",
+        "position": "DFC",
+        "rating": 65,
+        "age": 22,
+        "nationality": "Kosovo",
+        "marketValue": 600
+      },
+      {
+        "name": "Tobias Müller",
+        "position": "DFC",
+        "rating": 70,
+        "age": 31,
+        "nationality": "Alemania",
+        "marketValue": 600
+      },
+      {
+        "name": "Daniel Heber",
+        "position": "DFC",
+        "rating": 66,
+        "age": 15,
+        "nationality": "Alemania",
+        "marketValue": 500
+      },
+      {
+        "name": "Tarek Chahed",
+        "position": "DFC",
+        "rating": 65,
+        "age": 34,
+        "nationality": "Alemania",
+        "marketValue": 100
+      },
+      {
+        "name": "Alexander Nollenberger",
+        "position": "DFC",
+        "rating": 67,
+        "age": 17,
+        "nationality": "Alemania",
+        "marketValue": 800
+      },
+      {
+        "name": "Lubambo Musonda",
+        "position": "DFC",
+        "rating": 66,
+        "age": 19,
+        "nationality": "Zambia",
+        "marketValue": 600
+      },
+      {
+        "name": "Samuel Loric",
+        "position": "DFC",
+        "rating": 68,
+        "age": 25,
+        "nationality": "Francia",
+        "marketValue": 500
+      },
+      {
+        "name": "Philipp Hercher",
+        "position": "DFC",
+        "rating": 69,
+        "age": 27,
+        "nationality": "Alemania",
+        "marketValue": 600
+      },
+      {
+        "name": "Herbert Bockhorn",
+        "position": "DFC",
+        "rating": 70,
+        "age": 30,
+        "nationality": "Uganda",
+        "marketValue": 450
+      },
+      {
+        "name": "Eldin Dzogovic",
+        "position": "DFC",
+        "rating": 66,
+        "age": 22,
+        "nationality": "Luxemburgo",
+        "marketValue": 300
+      },
+      {
+        "name": "Luka Hyryläinen",
+        "position": "MC",
+        "rating": 64,
+        "age": 38,
+        "nationality": "Finlandia",
+        "marketValue": 1700000
+      },
+      {
+        "name": "Silas Gnaka",
+        "position": "MC",
+        "rating": 71,
+        "age": 25,
+        "nationality": "Costa de Marfil",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Dariusz Stalmach",
+        "position": "MC",
+        "rating": 66,
+        "age": 20,
+        "nationality": "Polonia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Falko Michel",
+        "position": "MC",
+        "rating": 66,
+        "age": 21,
+        "nationality": "Alemania",
+        "marketValue": 700
+      },
+      {
+        "name": "Connor Krempicki",
+        "position": "MC",
+        "rating": 70,
+        "age": 31,
+        "nationality": "Alemania",
+        "marketValue": 300
+      },
+      {
+        "name": "Laurin Ulrich",
+        "position": "MC",
+        "rating": 67,
+        "age": 20,
+        "nationality": "Alemania",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Robert Leipertz",
+        "position": "MC",
+        "rating": 70,
+        "age": 31,
+        "nationality": "Alemania",
+        "marketValue": 200
+      },
+      {
+        "name": "Nick Meier",
+        "position": "MC",
+        "rating": 66,
+        "age": 20,
+        "nationality": "Alemania",
+        "marketValue": 125
+      },
+      {
+        "name": "Baris Atik",
+        "position": "DC",
+        "rating": 68,
+        "age": 23,
+        "nationality": "Alemania",
+        "marketValue": 800
+      },
+      {
+        "name": "Noah Pesch",
+        "position": "DC",
+        "rating": 64,
+        "age": 20,
+        "nationality": "Croacia",
+        "marketValue": 600
+      },
+      {
+        "name": "Mateusz Zukowski",
+        "position": "DC",
+        "rating": 72,
+        "age": 22,
+        "nationality": "Polonia",
+        "marketValue": 500
+      },
+      {
+        "name": "Kandet Diawara",
+        "position": "DC",
+        "rating": 62,
+        "age": 39,
+        "nationality": "Guinea",
+        "marketValue": 400
+      },
+      {
+        "name": "Magnus Baars",
+        "position": "DC",
+        "rating": 62,
+        "age": 35,
+        "nationality": "Alemania",
+        "marketValue": 200
+      },
+      {
+        "name": "Rayan Ghrieb",
+        "position": "DC",
+        "rating": 72,
+        "age": 29,
+        "nationality": "Francia",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Maximilian Breunig",
+        "position": "DC",
+        "rating": 70,
+        "age": 25,
+        "nationality": "Alemania",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Alexander Ahl-Holmström",
+        "position": "DC",
+        "rating": 70,
+        "age": 26,
+        "nationality": "Suecia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Ado Onaiwu",
+        "position": "DC",
+        "rating": 62,
+        "age": 45,
+        "nationality": "Japón",
+        "marketValue": 700
+      },
+      {
+        "name": "Aleksa Marusic",
+        "position": "DC",
+        "rating": 70,
+        "age": 26,
+        "nationality": "Montenegro",
+        "marketValue": 300
+      }
+    ]
+  },
+  {
+    "id": "eintracht-braunschweig",
+    "name": "Eintracht Braunschweig",
+    "players": [
+      {
+        "name": "Ron-Thorben Hoffmann",
+        "position": "POR",
+        "rating": 69,
+        "age": 26,
+        "nationality": "Alemania",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Elhan Kastrati",
+        "position": "POR",
+        "rating": 69,
+        "age": 28,
+        "nationality": "Albania",
+        "marketValue": 500
+      },
+      {
+        "name": "Marko Rajkovacic",
+        "position": "POR",
+        "rating": 70,
+        "age": 33,
+        "nationality": "Suiza",
+        "marketValue": 150
+      },
+      {
+        "name": "Louis Breunig",
+        "position": "DFC",
+        "rating": 66,
+        "age": 16,
+        "nationality": "Alemania",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Sven Köhler",
+        "position": "DFC",
+        "rating": 71,
+        "age": 27,
+        "nationality": "Alemania",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Lukas Frenkert",
+        "position": "DFC",
+        "rating": 70,
+        "age": 29,
+        "nationality": "Alemania",
+        "marketValue": 900
+      },
+      {
+        "name": "Kevin Ehlers",
+        "position": "DFC",
+        "rating": 66,
+        "age": 21,
+        "nationality": "Alemania",
+        "marketValue": 700
+      },
+      {
+        "name": "Patrick Nkoa",
+        "position": "DFC",
+        "rating": 70,
+        "age": 26,
+        "nationality": "Camerún",
+        "marketValue": 500
+      },
+      {
+        "name": "Frederik Jäkel",
+        "position": "DFC",
+        "rating": 68,
+        "age": 24,
+        "nationality": "Alemania",
+        "marketValue": 450
+      },
+      {
+        "name": "Fabio Di Michele Sanchez",
+        "position": "DFC",
+        "rating": 67,
+        "age": 22,
+        "nationality": "Alemania",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Leon Bell Bell",
+        "position": "DFC",
+        "rating": 66,
+        "age": 19,
+        "nationality": "Camerún",
+        "marketValue": 500
+      },
+      {
+        "name": "Florian Flick",
+        "position": "MC",
+        "rating": 70,
+        "age": 25,
+        "nationality": "Alemania",
+        "marketValue": 800
+      },
+      {
+        "name": "Max Marie",
+        "position": "MC",
+        "rating": 67,
+        "age": 15,
+        "nationality": "Alemania",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Lino Tempelmann",
+        "position": "MC",
+        "rating": 66,
+        "age": 20,
+        "nationality": "Alemania",
+        "marketValue": 800
+      },
+      {
+        "name": "Robin Heußer",
+        "position": "MC",
+        "rating": 70,
+        "age": 30,
+        "nationality": "Alemania",
+        "marketValue": 700
+      },
+      {
+        "name": "Fabio Kaufmann",
+        "position": "MC",
+        "rating": 64,
+        "age": 33,
+        "nationality": "Alemania",
+        "marketValue": 300
+      },
+      {
+        "name": "Sidney Raebiger",
+        "position": "MC",
+        "rating": 64,
+        "age": 37,
+        "nationality": "Alemania",
+        "marketValue": 250
+      },
+      {
+        "name": "Mehmet Aydin",
+        "position": "MC",
+        "rating": 72,
+        "age": 23,
+        "nationality": "Turquía",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Johan Gómez",
+        "position": "MC",
+        "rating": 64,
+        "age": 44,
+        "nationality": "Estados Unidos",
+        "marketValue": 800
+      },
+      {
+        "name": "Anas Bakhat",
+        "position": "MC",
+        "rating": 66,
+        "age": 18,
+        "nationality": "Alemania",
+        "marketValue": 200
+      },
+      {
+        "name": "Faride Alidou",
+        "position": "DC",
+        "rating": 69,
+        "age": 24,
+        "nationality": "Alemania",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Sidi Sané",
+        "position": "DC",
+        "rating": 65,
+        "age": 24,
+        "nationality": "Alemania",
+        "marketValue": 300
+      },
+      {
+        "name": "Jovan Mijatovic",
+        "position": "DC",
+        "rating": 68,
+        "age": 20,
+        "nationality": "Serbia",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Erencan Yardımcı",
+        "position": "DC",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Turquía",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Robert Ramsak",
+        "position": "DC",
+        "rating": 67,
+        "age": 23,
+        "nationality": "Alemania",
+        "marketValue": 500
+      }
+    ]
+  },
+  {
+    "id": "preussen-munster",
+    "name": "Preußen Münster",
+    "players": [
+      {
+        "name": "Johannes Schenk",
+        "position": "POR",
+        "rating": 63,
+        "age": 23,
+        "nationality": "Alemania",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Morten Behrens",
+        "position": "POR",
+        "rating": 64,
+        "age": 26,
+        "nationality": "Alemania",
+        "marketValue": 250
+      },
+      {
+        "name": "Marian Kirsch",
+        "position": "POR",
+        "rating": 67,
+        "age": 33,
+        "nationality": "Alemania",
+        "marketValue": 75
+      },
+      {
+        "name": "Paul Jaeckel",
+        "position": "DFC",
+        "rating": 68,
+        "age": 27,
+        "nationality": "Alemania",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Jannis Heuer",
+        "position": "DFC",
+        "rating": 64,
+        "age": 22,
+        "nationality": "Alemania",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Antonio Tikvic",
+        "position": "DFC",
+        "rating": 63,
+        "age": 21,
+        "nationality": "Croacia",
+        "marketValue": 700
+      },
+      {
+        "name": "Niko Koulis",
+        "position": "DFC",
+        "rating": 64,
+        "age": 24,
+        "nationality": "Alemania",
+        "marketValue": 500
+      },
+      {
+        "name": "Torge Paetow",
+        "position": "DFC",
+        "rating": 62,
+        "age": 16,
+        "nationality": "Alemania",
+        "marketValue": 300
+      },
+      {
+        "name": "Simon Scherder",
+        "position": "DFC",
+        "rating": 63,
+        "age": 15,
+        "nationality": "Alemania",
+        "marketValue": 250
+      },
+      {
+        "name": "Luca Bolay",
+        "position": "DFC",
+        "rating": 65,
+        "age": 25,
+        "nationality": "Alemania",
+        "marketValue": 600
+      },
+      {
+        "name": "Mikkel Kirkeskov",
+        "position": "DFC",
+        "rating": 61,
+        "age": 34,
+        "nationality": "Dinamarca",
+        "marketValue": 250
+      },
+      {
+        "name": "Jano ter Horst",
+        "position": "DFC",
+        "rating": 68,
+        "age": 27,
+        "nationality": "Alemania",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Marco Meyerhöfer",
+        "position": "DFC",
+        "rating": 66,
+        "age": 28,
+        "nationality": "Alemania",
+        "marketValue": 500
+      },
+      {
+        "name": "Marcel Benger",
+        "position": "MC",
+        "rating": 67,
+        "age": 27,
+        "nationality": "Alemania",
+        "marketValue": 400
+      },
+      {
+        "name": "Rico Preißinger",
+        "position": "MC",
+        "rating": 63,
+        "age": 21,
+        "nationality": "Alemania",
+        "marketValue": 400
+      },
+      {
+        "name": "Marvin Schulz",
+        "position": "MC",
+        "rating": 67,
+        "age": 31,
+        "nationality": "Alemania",
+        "marketValue": 600
+      },
+      {
+        "name": "Yassine Bouchama",
+        "position": "MC",
+        "rating": 67,
+        "age": 28,
+        "nationality": "Alemania",
+        "marketValue": 500
+      },
+      {
+        "name": "Jorrit Hendrix",
+        "position": "MC",
+        "rating": 63,
+        "age": 20,
+        "nationality": "Países Bajos",
+        "marketValue": 800
+      },
+      {
+        "name": "Marvin Benjamins",
+        "position": "MC",
+        "rating": 63,
+        "age": 19,
+        "nationality": "Alemania",
+        "marketValue": 50
+      },
+      {
+        "name": "Zidan Sertdemir",
+        "position": "MC",
+        "rating": 64,
+        "age": 20,
+        "nationality": "Dinamarca",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Oliver Batista-Meier",
+        "position": "MC",
+        "rating": 67,
+        "age": 17,
+        "nationality": "Alemania",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Joshua Mees",
+        "position": "MC",
+        "rating": 67,
+        "age": 29,
+        "nationality": "Alemania",
+        "marketValue": 800
+      },
+      {
+        "name": "Charalambos Makridis",
+        "position": "DC",
+        "rating": 64,
+        "age": 29,
+        "nationality": "Alemania",
+        "marketValue": 400
+      },
+      {
+        "name": "Shin Yamada",
+        "position": "DC",
+        "rating": 68,
+        "age": 25,
+        "nationality": "Japón",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Oscar Vilhelmsson",
+        "position": "DC",
+        "rating": 66,
+        "age": 22,
+        "nationality": "Suecia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Imad Rondic",
+        "position": "DC",
+        "rating": 68,
+        "age": 29,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Malik Batmaz",
+        "position": "DC",
+        "rating": 64,
+        "age": 23,
+        "nationality": "Alemania",
+        "marketValue": 500
+      },
+      {
+        "name": "Etienne Amenyido",
+        "position": "DC",
+        "rating": 68,
+        "age": 30,
+        "nationality": "Togo",
+        "marketValue": 500
+      },
+      {
+        "name": "Lars Lokotsch",
+        "position": "DC",
+        "rating": 66,
+        "age": 29,
+        "nationality": "Alemania",
+        "marketValue": 350
+      }
+    ]
+  },
+  {
+    "id": "sg-dynamo-dresden",
+    "name": "SG Dynamo Dresden",
+    "players": [
+      {
+        "name": "Elias Bethke",
+        "position": "POR",
+        "rating": 62,
+        "age": 40,
+        "nationality": "Alemania",
+        "marketValue": 600
+      },
+      {
+        "name": "Tim Schreiber",
+        "position": "POR",
+        "rating": 62,
+        "age": 23,
+        "nationality": "Alemania",
+        "marketValue": 500
+      },
+      {
+        "name": "Lennart Grill",
+        "position": "POR",
+        "rating": 61,
+        "age": 22,
+        "nationality": "Alemania",
+        "marketValue": 450
+      },
+      {
+        "name": "Daniel Mesenhöler",
+        "position": "POR",
+        "rating": 62,
+        "age": 37,
+        "nationality": "Alemania",
+        "marketValue": 125
+      },
+      {
+        "name": "Julian Pauli",
+        "position": "DFC",
+        "rating": 64,
+        "age": 20,
+        "nationality": "Alemania",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Thomas Keller",
+        "position": "DFC",
+        "rating": 61,
+        "age": 39,
+        "nationality": "Alemania",
+        "marketValue": 600
+      },
+      {
+        "name": "Claudio Kammerknecht",
+        "position": "DFC",
+        "rating": 62,
+        "age": 15,
+        "nationality": "Sri Lanka",
+        "marketValue": 400
+      },
+      {
+        "name": "Lukas Boeder",
+        "position": "DFC",
+        "rating": 67,
+        "age": 29,
+        "nationality": "Alemania",
+        "marketValue": 400
+      },
+      {
+        "name": "Lars Bünning",
+        "position": "DFC",
+        "rating": 64,
+        "age": 23,
+        "nationality": "Alemania",
+        "marketValue": 350
+      },
+      {
+        "name": "Friedrich Müller",
+        "position": "DFC",
+        "rating": 61,
+        "age": 42,
+        "nationality": "Alemania",
+        "marketValue": 300
+      },
+      {
+        "name": "Alexander Rossipal",
+        "position": "DFC",
+        "rating": 64,
+        "age": 19,
+        "nationality": "Alemania",
+        "marketValue": 500
+      },
+      {
+        "name": "Sascha Risch",
+        "position": "DFC",
+        "rating": 67,
+        "age": 28,
+        "nationality": "Alemania",
+        "marketValue": 500
+      },
+      {
+        "name": "Konrad Faber",
+        "position": "DFC",
+        "rating": 67,
+        "age": 28,
+        "nationality": "Alemania",
+        "marketValue": 500
+      },
+      {
+        "name": "Jonas Sterner",
+        "position": "DFC",
+        "rating": 67,
+        "age": 32,
+        "nationality": "Alemania",
+        "marketValue": 500
+      },
+      {
+        "name": "Jan-Hendrik Marx",
+        "position": "DFC",
+        "rating": 67,
+        "age": 26,
+        "nationality": "Alemania",
+        "marketValue": 200
+      },
+      {
+        "name": "Kofi Amoako",
+        "position": "MC",
+        "rating": 64,
+        "age": 20,
+        "nationality": "Alemania",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Vinko Sapina",
+        "position": "MC",
+        "rating": 67,
+        "age": 30,
+        "nationality": "Alemania",
+        "marketValue": 400
+      },
+      {
+        "name": "Robert Wagner",
+        "position": "MC",
+        "rating": 64,
+        "age": 18,
+        "nationality": "Alemania",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Niklas Hauptmann",
+        "position": "MC",
+        "rating": 68,
+        "age": 27,
+        "nationality": "Alemania",
+        "marketValue": 600
+      },
+      {
+        "name": "Luca Herrmann",
+        "position": "MC",
+        "rating": 66,
+        "age": 26,
+        "nationality": "Alemania",
+        "marketValue": 400
+      },
+      {
+        "name": "Tony Menzel",
+        "position": "MC",
+        "rating": 64,
+        "age": 24,
+        "nationality": "Alemania",
+        "marketValue": 600
+      },
+      {
+        "name": "Nils Fröling",
+        "position": "MC",
+        "rating": 63,
+        "age": 16,
+        "nationality": "Suecia",
+        "marketValue": 500
+      },
+      {
+        "name": "Jakob Zickler",
+        "position": "MC",
+        "rating": 61,
+        "age": 38,
+        "nationality": "Austria",
+        "marketValue": 0
+      },
+      {
+        "name": "Dominik Kother",
+        "position": "DC",
+        "rating": 64,
+        "age": 25,
+        "nationality": "Alemania",
+        "marketValue": 600
+      },
+      {
+        "name": "Jonas Oehmichen",
+        "position": "DC",
+        "rating": 64,
+        "age": 25,
+        "nationality": "Alemania",
+        "marketValue": 450
+      },
+      {
+        "name": "Jakob Lemmer",
+        "position": "DC",
+        "rating": 67,
+        "age": 25,
+        "nationality": "Alemania",
+        "marketValue": 700
+      },
+      {
+        "name": "Jason Ceka",
+        "position": "DC",
+        "rating": 67,
+        "age": 26,
+        "nationality": "Alemania",
+        "marketValue": 400
+      },
+      {
+        "name": "Ben Bobzien",
+        "position": "DC",
+        "rating": 65,
+        "age": 20,
+        "nationality": "Alemania",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Christoph Daferner",
+        "position": "DC",
+        "rating": 62,
+        "age": 33,
+        "nationality": "Alemania",
+        "marketValue": 700
+      },
+      {
+        "name": "Vincent Vermeij",
+        "position": "DC",
+        "rating": 61,
+        "age": 31,
+        "nationality": "Países Bajos",
+        "marketValue": 500
+      },
+      {
+        "name": "Stefan Kutschke",
+        "position": "DC",
+        "rating": 64,
+        "age": 30,
+        "nationality": "Alemania",
+        "marketValue": 150
+      }
+    ]
+  },
+  {
+    "id": "arminia-bielefeld",
+    "name": "Arminia Bielefeld",
+    "players": [
+      {
+        "name": "Jonas Kersken",
+        "position": "POR",
+        "rating": 66,
+        "age": 25,
+        "nationality": "Alemania",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Leo Oppermann",
+        "position": "POR",
+        "rating": 61,
+        "age": 18,
+        "nationality": "Alemania",
+        "marketValue": 250
+      },
+      {
+        "name": "Philip Hildesheim",
+        "position": "POR",
+        "rating": 62,
+        "age": 20,
+        "nationality": "Alemania",
+        "marketValue": 0
+      },
+      {
+        "name": "Maximilian Bauer",
+        "position": "DFC",
+        "rating": 66,
+        "age": 25,
+        "nationality": "Alemania",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Maximilian Großer",
+        "position": "DFC",
+        "rating": 63,
+        "age": 19,
+        "nationality": "Alemania",
+        "marketValue": 900
+      },
+      {
+        "name": "Leon Schneider",
+        "position": "DFC",
+        "rating": 65,
+        "age": 23,
+        "nationality": "Alemania",
+        "marketValue": 900
+      },
+      {
+        "name": "Joel Felix",
+        "position": "DFC",
+        "rating": 67,
+        "age": 28,
+        "nationality": "Dinamarca",
+        "marketValue": 500
+      },
+      {
+        "name": "Robin Knoche",
+        "position": "DFC",
+        "rating": 67,
+        "age": 31,
+        "nationality": "Alemania",
+        "marketValue": 500
+      },
+      {
+        "name": "Tim Handwerker",
+        "position": "DFC",
+        "rating": 68,
+        "age": 29,
+        "nationality": "Alemania",
+        "marketValue": 600
+      },
+      {
+        "name": "Arne Sicker",
+        "position": "DFC",
+        "rating": 62,
+        "age": 17,
+        "nationality": "Alemania",
+        "marketValue": 300
+      },
+      {
+        "name": "Justin Lukas",
+        "position": "DFC",
+        "rating": 62,
+        "age": 36,
+        "nationality": "Alemania",
+        "marketValue": 150
+      },
+      {
+        "name": "Felix Hagmann",
+        "position": "DFC",
+        "rating": 62,
+        "age": 22,
+        "nationality": "Alemania",
+        "marketValue": 500
+      },
+      {
+        "name": "Christopher Lannert",
+        "position": "DFC",
+        "rating": 65,
+        "age": 24,
+        "nationality": "Alemania",
+        "marketValue": 400
+      },
+      {
+        "name": "Stefano Russo",
+        "position": "MC",
+        "rating": 63,
+        "age": 21,
+        "nationality": "Alemania",
+        "marketValue": 800
+      },
+      {
+        "name": "Eyyüb Yasar",
+        "position": "MC",
+        "rating": 61,
+        "age": 44,
+        "nationality": "Alemania",
+        "marketValue": 250
+      },
+      {
+        "name": "Marius Wörl",
+        "position": "MC",
+        "rating": 62,
+        "age": 38,
+        "nationality": "Alemania",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Mael Corboz",
+        "position": "MC",
+        "rating": 68,
+        "age": 31,
+        "nationality": "Estados Unidos",
+        "marketValue": 450
+      },
+      {
+        "name": "Sam Schreck",
+        "position": "MC",
+        "rating": 66,
+        "age": 27,
+        "nationality": "Alemania",
+        "marketValue": 350
+      },
+      {
+        "name": "Marvin Mehlem",
+        "position": "MC",
+        "rating": 68,
+        "age": 28,
+        "nationality": "Alemania",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Benjamin Boakye",
+        "position": "DC",
+        "rating": 66,
+        "age": 27,
+        "nationality": "Alemania",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Jannik Rochelt",
+        "position": "DC",
+        "rating": 65,
+        "age": 22,
+        "nationality": "Alemania",
+        "marketValue": 800
+      },
+      {
+        "name": "Daniel Richter",
+        "position": "DC",
+        "rating": 59,
+        "age": 43,
+        "nationality": "Alemania",
+        "marketValue": 500
+      },
+      {
+        "name": "Monju Momuluh",
+        "position": "DC",
+        "rating": 68,
+        "age": 23,
+        "nationality": "Alemania",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Noah Sarenren Bazee",
+        "position": "DC",
+        "rating": 60,
+        "age": 37,
+        "nationality": "Alemania",
+        "marketValue": 400
+      },
+      {
+        "name": "Isaiah Young",
+        "position": "DC",
+        "rating": 64,
+        "age": 30,
+        "nationality": "Estados Unidos",
+        "marketValue": 300
+      },
+      {
+        "name": "Semir Telalovic",
+        "position": "DC",
+        "rating": 67,
+        "age": 26,
+        "nationality": "Alemania",
+        "marketValue": 800
+      },
+      {
+        "name": "Joel Grodowski",
+        "position": "DC",
+        "rating": 68,
+        "age": 28,
+        "nationality": "Alemania",
+        "marketValue": 750
+      },
+      {
+        "name": "Roberts Uldrikis",
+        "position": "DC",
+        "rating": 70,
+        "age": 28,
+        "nationality": "Letonia",
+        "marketValue": 500
+      },
+      {
+        "name": "Jeredy Hilterman",
+        "position": "DC",
+        "rating": 67,
+        "age": 27,
+        "nationality": "Surinam",
+        "marketValue": 300
+      }
+    ]
+  }
+]

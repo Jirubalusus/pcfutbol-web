@@ -1,0 +1,3974 @@
+[
+  {
+    "id": "sporting-lissabon",
+    "name": "Sporting de Lisboa",
+    "players": [
+      {
+        "name": "Rui Silva",
+        "position": "POR",
+        "rating": 84,
+        "age": 31,
+        "nationality": "Portugal",
+        "marketValue": 7000000
+      },
+      {
+        "name": "João Virgínia",
+        "position": "POR",
+        "rating": 78,
+        "age": 26,
+        "nationality": "Portugal",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Gonçalo Inácio",
+        "position": "DFC",
+        "rating": 88,
+        "age": 25,
+        "nationality": "Portugal",
+        "marketValue": 45000000
+      },
+      {
+        "name": "Ousmane Diomande",
+        "position": "DFC",
+        "rating": 88,
+        "age": 26,
+        "nationality": "Costa de Marfil",
+        "marketValue": 45000000
+      },
+      {
+        "name": "Zeno Debast",
+        "position": "DFC",
+        "rating": 84,
+        "age": 22,
+        "nationality": "Bélgica",
+        "marketValue": 30000000
+      },
+      {
+        "name": "Eduardo Quaresma",
+        "position": "DFC",
+        "rating": 82,
+        "age": 23,
+        "nationality": "Portugal",
+        "marketValue": 15000000
+      },
+      {
+        "name": "Maxi Araújo",
+        "position": "DFC",
+        "rating": 81,
+        "age": 20,
+        "nationality": "Uruguay",
+        "marketValue": 22000000
+      },
+      {
+        "name": "Nuno Santos",
+        "position": "DFC",
+        "rating": 82,
+        "age": 30,
+        "nationality": "Portugal",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Matheus Reis",
+        "position": "DFC",
+        "rating": 80,
+        "age": 30,
+        "nationality": "Brasil",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Ricardo Mangas",
+        "position": "DFC",
+        "rating": 80,
+        "age": 27,
+        "nationality": "Portugal",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Iván Fresneda",
+        "position": "DFC",
+        "rating": 78,
+        "age": 22,
+        "nationality": "España",
+        "marketValue": 12000000
+      },
+      {
+        "name": "Georgios Vagiannidis",
+        "position": "DFC",
+        "rating": 80,
+        "age": 24,
+        "nationality": "Grecia",
+        "marketValue": 11000000
+      },
+      {
+        "name": "Morten Hjulmand",
+        "position": "MC",
+        "rating": 87,
+        "age": 42,
+        "nationality": "Dinamarca",
+        "marketValue": 50000000
+      },
+      {
+        "name": "Daniel Bragança",
+        "position": "MC",
+        "rating": 82,
+        "age": 23,
+        "nationality": "Portugal",
+        "marketValue": 10000000
+      },
+      {
+        "name": "Hidemasa Morita",
+        "position": "MC",
+        "rating": 81,
+        "age": 30,
+        "nationality": "Japón",
+        "marketValue": 9000000
+      },
+      {
+        "name": "Giorgi Kochorashvili",
+        "position": "MC",
+        "rating": 81,
+        "age": 26,
+        "nationality": "Georgia",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Geny Catamo",
+        "position": "MC",
+        "rating": 88,
+        "age": 25,
+        "nationality": "Mozambique",
+        "marketValue": 15000000
+      },
+      {
+        "name": "João Simões",
+        "position": "MC",
+        "rating": 81,
+        "age": 19,
+        "nationality": "Portugal",
+        "marketValue": 15000000
+      },
+      {
+        "name": "Pedro Gonçalves",
+        "position": "DC",
+        "rating": 91,
+        "age": 27,
+        "nationality": "Portugal",
+        "marketValue": 30000000
+      },
+      {
+        "name": "Alisson Santos",
+        "position": "DC",
+        "rating": 78,
+        "age": 27,
+        "nationality": "Brasil",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Geovany Quenda",
+        "position": "DC",
+        "rating": 87,
+        "age": 18,
+        "nationality": "Portugal",
+        "marketValue": 45000000
+      },
+      {
+        "name": "Francisco Trincão",
+        "position": "DC",
+        "rating": 85,
+        "age": 17,
+        "nationality": "Portugal",
+        "marketValue": 35000000
+      },
+      {
+        "name": "Luís Guilherme",
+        "position": "DC",
+        "rating": 76,
+        "age": 31,
+        "nationality": "Brasil",
+        "marketValue": 10000000
+      },
+      {
+        "name": "Souleymane Faye",
+        "position": "DC",
+        "rating": 79,
+        "age": 22,
+        "nationality": "Senegal",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Luis Suárez",
+        "position": "DC",
+        "rating": 90,
+        "age": 28,
+        "nationality": "Colombia",
+        "marketValue": 22000000
+      },
+      {
+        "name": "Fotis Ioannidis",
+        "position": "DC",
+        "rating": 84,
+        "age": 26,
+        "nationality": "Grecia",
+        "marketValue": 20000000
+      }
+    ]
+  },
+  {
+    "id": "fc-porto",
+    "name": "FC Oporto",
+    "players": [
+      {
+        "name": "Diogo Costa",
+        "position": "POR",
+        "rating": 88,
+        "age": 26,
+        "nationality": "Portugal",
+        "marketValue": 40000000
+      },
+      {
+        "name": "Cláudio Ramos",
+        "position": "POR",
+        "rating": 80,
+        "age": 34,
+        "nationality": "Portugal",
+        "marketValue": 1000000
+      },
+      {
+        "name": "João Costa",
+        "position": "POR",
+        "rating": 74,
+        "age": 24,
+        "nationality": "Portugal",
+        "marketValue": 800
+      },
+      {
+        "name": "Jakub Kiwior",
+        "position": "DFC",
+        "rating": 83,
+        "age": 25,
+        "nationality": "Polonia",
+        "marketValue": 27000000
+      },
+      {
+        "name": "Nehuén Pérez",
+        "position": "DFC",
+        "rating": 78,
+        "age": 18,
+        "nationality": "Argentina",
+        "marketValue": 13000000
+      },
+      {
+        "name": "Jan Bednarek",
+        "position": "DFC",
+        "rating": 82,
+        "age": 29,
+        "nationality": "Polonia",
+        "marketValue": 11000000
+      },
+      {
+        "name": "Dominik Prpić",
+        "position": "DFC",
+        "rating": 77,
+        "age": 21,
+        "nationality": "Croacia",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Thiago Silva",
+        "position": "DFC",
+        "rating": 74,
+        "age": 41,
+        "nationality": "Brasil",
+        "marketValue": 600
+      },
+      {
+        "name": "Francisco Moura",
+        "position": "DFC",
+        "rating": 85,
+        "age": 26,
+        "nationality": "Portugal",
+        "marketValue": 15000000
+      },
+      {
+        "name": "Zaidu Sanusi",
+        "position": "DFC",
+        "rating": 80,
+        "age": 28,
+        "nationality": "Nigeria",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Alberto Costa",
+        "position": "DFC",
+        "rating": 82,
+        "age": 20,
+        "nationality": "Portugal",
+        "marketValue": 15000000
+      },
+      {
+        "name": "Martim Fernandes",
+        "position": "DFC",
+        "rating": 78,
+        "age": 20,
+        "nationality": "Portugal",
+        "marketValue": 12000000
+      },
+      {
+        "name": "Alan Varela",
+        "position": "MC",
+        "rating": 86,
+        "age": 22,
+        "nationality": "Argentina",
+        "marketValue": 32000000
+      },
+      {
+        "name": "Pablo Rosario",
+        "position": "MC",
+        "rating": 82,
+        "age": 29,
+        "nationality": "República Dominicana",
+        "marketValue": 8000000
+      },
+      {
+        "name": "Tomás Pérez",
+        "position": "MC",
+        "rating": 81,
+        "age": 25,
+        "nationality": "Argentina",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Victor Froholdt",
+        "position": "MC",
+        "rating": 86,
+        "age": 19,
+        "nationality": "Dinamarca",
+        "marketValue": 30000000
+      },
+      {
+        "name": "Stephen Eustaquio",
+        "position": "MC",
+        "rating": 81,
+        "age": 29,
+        "nationality": "Canadá",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Rodrigo Mora",
+        "position": "MC",
+        "rating": 83,
+        "age": 18,
+        "nationality": "Portugal",
+        "marketValue": 40000000
+      },
+      {
+        "name": "Gabri Veiga",
+        "position": "MC",
+        "rating": 85,
+        "age": 23,
+        "nationality": "España",
+        "marketValue": 23000000
+      },
+      {
+        "name": "Borja Sainz",
+        "position": "DC",
+        "rating": 82,
+        "age": 17,
+        "nationality": "España",
+        "marketValue": 23000000
+      },
+      {
+        "name": "Oskar Pietuszewski",
+        "position": "DC",
+        "rating": 81,
+        "age": 17,
+        "nationality": "Polonia",
+        "marketValue": 12000000
+      },
+      {
+        "name": "Yann Karamoh",
+        "position": "DC",
+        "rating": 81,
+        "age": 27,
+        "nationality": "Francia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "William Gomes",
+        "position": "DC",
+        "rating": 81,
+        "age": 19,
+        "nationality": "Brasil",
+        "marketValue": 20000000
+      },
+      {
+        "name": "Pepê",
+        "position": "DC",
+        "rating": 84,
+        "age": 28,
+        "nationality": "Brasil",
+        "marketValue": 20000000
+      },
+      {
+        "name": "Samu Aghehowa",
+        "position": "DC",
+        "rating": 90,
+        "age": 21,
+        "nationality": "España",
+        "marketValue": 50000000
+      },
+      {
+        "name": "Deniz Gül",
+        "position": "DC",
+        "rating": 79,
+        "age": 27,
+        "nationality": "Turquía",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Luuk de Jong",
+        "position": "DC",
+        "rating": 81,
+        "age": 26,
+        "nationality": "Países Bajos",
+        "marketValue": 1500000
+      }
+    ]
+  },
+  {
+    "id": "benfica-lissabon",
+    "name": "SL Benfica",
+    "players": [
+      {
+        "name": "Anatoliy Trubin",
+        "position": "POR",
+        "rating": 78,
+        "age": 24,
+        "nationality": "Ucrania",
+        "marketValue": 28000000
+      },
+      {
+        "name": "Samuel Soares",
+        "position": "POR",
+        "rating": 73,
+        "age": 24,
+        "nationality": "Portugal",
+        "marketValue": 4000000
+      },
+      {
+        "name": "António Silva",
+        "position": "DFC",
+        "rating": 82,
+        "age": 22,
+        "nationality": "Portugal",
+        "marketValue": 30000000
+      },
+      {
+        "name": "Tomás Araújo",
+        "position": "DFC",
+        "rating": 77,
+        "age": 44,
+        "nationality": "Portugal",
+        "marketValue": 28000000
+      },
+      {
+        "name": "Nicolás Otamendi",
+        "position": "DFC",
+        "rating": 81,
+        "age": 30,
+        "nationality": "Argentina",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Samuel Dahl",
+        "position": "DFC",
+        "rating": 82,
+        "age": 26,
+        "nationality": "Suecia",
+        "marketValue": 9000000
+      },
+      {
+        "name": "José Neto",
+        "position": "DFC",
+        "rating": 75,
+        "age": 17,
+        "nationality": "Portugal",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Amar Dedić",
+        "position": "DFC",
+        "rating": 81,
+        "age": 17,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 15000000
+      },
+      {
+        "name": "Alexander Bah",
+        "position": "DFC",
+        "rating": 80,
+        "age": 28,
+        "nationality": "Dinamarca",
+        "marketValue": 9000000
+      },
+      {
+        "name": "Sidny Lopes Cabral",
+        "position": "DFC",
+        "rating": 78,
+        "age": 15,
+        "nationality": "Cabo Verde",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Richard Ríos",
+        "position": "MC",
+        "rating": 81,
+        "age": 20,
+        "nationality": "Colombia",
+        "marketValue": 22000000
+      },
+      {
+        "name": "Enzo Barrenechea",
+        "position": "MC",
+        "rating": 81,
+        "age": 24,
+        "nationality": "Argentina",
+        "marketValue": 15000000
+      },
+      {
+        "name": "Manu Silva",
+        "position": "MC",
+        "rating": 75,
+        "age": 16,
+        "nationality": "Portugal",
+        "marketValue": 10000000
+      },
+      {
+        "name": "Fredrik Aursnes",
+        "position": "MC",
+        "rating": 86,
+        "age": 30,
+        "nationality": "Noruega",
+        "marketValue": 17000000
+      },
+      {
+        "name": "Leandro Barreiro",
+        "position": "MC",
+        "rating": 79,
+        "age": 18,
+        "nationality": "Luxemburgo",
+        "marketValue": 15000000
+      },
+      {
+        "name": "João Veloso",
+        "position": "MC",
+        "rating": 74,
+        "age": 20,
+        "nationality": "Portugal",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Georgiy Sudakov",
+        "position": "MC",
+        "rating": 84,
+        "age": 23,
+        "nationality": "Ucrania",
+        "marketValue": 30000000
+      },
+      {
+        "name": "João Rego",
+        "position": "MC",
+        "rating": 74,
+        "age": 20,
+        "nationality": "Portugal",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Andreas Schjelderup",
+        "position": "DC",
+        "rating": 74,
+        "age": 21,
+        "nationality": "Noruega",
+        "marketValue": 14000000
+      },
+      {
+        "name": "Bruma",
+        "position": "DC",
+        "rating": 80,
+        "age": 27,
+        "nationality": "Portugal",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Dodi Lukébakio",
+        "position": "DC",
+        "rating": 85,
+        "age": 28,
+        "nationality": "Bélgica",
+        "marketValue": 20000000
+      },
+      {
+        "name": "Gianluca Prestianni",
+        "position": "DC",
+        "rating": 77,
+        "age": 25,
+        "nationality": "Argentina",
+        "marketValue": 12000000
+      },
+      {
+        "name": "Rafa Silva",
+        "position": "DC",
+        "rating": 80,
+        "age": 27,
+        "nationality": "Portugal",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Vangelis Pavlidis",
+        "position": "DC",
+        "rating": 91,
+        "age": 27,
+        "nationality": "Grecia",
+        "marketValue": 35000000
+      },
+      {
+        "name": "Franjo Ivanović",
+        "position": "DC",
+        "rating": 78,
+        "age": 22,
+        "nationality": "Croacia",
+        "marketValue": 20000000
+      },
+      {
+        "name": "Henrique Araújo",
+        "position": "DC",
+        "rating": 68,
+        "age": 39,
+        "nationality": "Portugal",
+        "marketValue": 2000000
+      }
+    ]
+  },
+  {
+    "id": "sc-braga",
+    "name": "SC Braga",
+    "players": [
+      {
+        "name": "Lukas Hornicek",
+        "position": "POR",
+        "rating": 77,
+        "age": 23,
+        "nationality": "República Checa",
+        "marketValue": 10000000
+      },
+      {
+        "name": "Alaa Bellaarouch",
+        "position": "POR",
+        "rating": 73,
+        "age": 36,
+        "nationality": "Marruecos",
+        "marketValue": 400
+      },
+      {
+        "name": "Tiago Sá",
+        "position": "POR",
+        "rating": 77,
+        "age": 31,
+        "nationality": "Portugal",
+        "marketValue": 300
+      },
+      {
+        "name": "Sikou Niakaté",
+        "position": "DFC",
+        "rating": 80,
+        "age": 26,
+        "nationality": "Malí",
+        "marketValue": 8000000
+      },
+      {
+        "name": "Bright Arrey-Mbi",
+        "position": "DFC",
+        "rating": 80,
+        "age": 26,
+        "nationality": "Alemania",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Gustaf Lagerbielke",
+        "position": "DFC",
+        "rating": 78,
+        "age": 25,
+        "nationality": "Suecia",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Adrian Leon Barisic",
+        "position": "DFC",
+        "rating": 73,
+        "age": 37,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Jonatás Noro",
+        "position": "DFC",
+        "rating": 75,
+        "age": 20,
+        "nationality": "Portugal",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Paulo Oliveira",
+        "position": "DFC",
+        "rating": 73,
+        "age": 15,
+        "nationality": "Portugal",
+        "marketValue": 500
+      },
+      {
+        "name": "Leonardo Lelo",
+        "position": "DFC",
+        "rating": 79,
+        "age": 25,
+        "nationality": "Portugal",
+        "marketValue": 8000000
+      },
+      {
+        "name": "Víctor Gómez",
+        "position": "DFC",
+        "rating": 78,
+        "age": 25,
+        "nationality": "España",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Gabriel Moscardo",
+        "position": "MC",
+        "rating": 75,
+        "age": 17,
+        "nationality": "Brasil",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Demir Ege Tıknaz",
+        "position": "MC",
+        "rating": 76,
+        "age": 21,
+        "nationality": "Turquía",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Vítor Carvalho",
+        "position": "MC",
+        "rating": 78,
+        "age": 28,
+        "nationality": "Brasil",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Florian Grillitsch",
+        "position": "MC",
+        "rating": 79,
+        "age": 27,
+        "nationality": "Austria",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Yanis da Rocha",
+        "position": "MC",
+        "rating": 71,
+        "age": 41,
+        "nationality": "Portugal",
+        "marketValue": 200
+      },
+      {
+        "name": "Rodrigo Zalazar",
+        "position": "MC",
+        "rating": 85,
+        "age": 26,
+        "nationality": "Uruguay",
+        "marketValue": 20000000
+      },
+      {
+        "name": "Gorby",
+        "position": "MC",
+        "rating": 80,
+        "age": 29,
+        "nationality": "Francia",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Diego Rodrigues",
+        "position": "MC",
+        "rating": 74,
+        "age": 20,
+        "nationality": "Portugal",
+        "marketValue": 4500000
+      },
+      {
+        "name": "João Moutinho",
+        "position": "MC",
+        "rating": 72,
+        "age": 39,
+        "nationality": "Portugal",
+        "marketValue": 500
+      },
+      {
+        "name": "Mario Dorgeles",
+        "position": "MC",
+        "rating": 76,
+        "age": 20,
+        "nationality": "Costa de Marfil",
+        "marketValue": 10000000
+      },
+      {
+        "name": "Ricardo Horta",
+        "position": "DC",
+        "rating": 80,
+        "age": 21,
+        "nationality": "Portugal",
+        "marketValue": 10000000
+      },
+      {
+        "name": "Gabri Martínez",
+        "position": "DC",
+        "rating": 74,
+        "age": 23,
+        "nationality": "España",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Sandro Vidigal",
+        "position": "DC",
+        "rating": 73,
+        "age": 18,
+        "nationality": "Portugal",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Pau Víctor",
+        "position": "DC",
+        "rating": 77,
+        "age": 18,
+        "nationality": "España",
+        "marketValue": 10000000
+      },
+      {
+        "name": "Fran Navarro",
+        "position": "DC",
+        "rating": 71,
+        "age": 39,
+        "nationality": "España",
+        "marketValue": 4500000
+      },
+      {
+        "name": "Amine El Ouazzani",
+        "position": "DC",
+        "rating": 74,
+        "age": 24,
+        "nationality": "Marruecos",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Samy Jr. Merheg",
+        "position": "DC",
+        "rating": 76,
+        "age": 19,
+        "nationality": "Líbano",
+        "marketValue": 1000000
+      }
+    ]
+  },
+  {
+    "id": "fc-famalicao",
+    "name": "FC Famalicão",
+    "players": [
+      {
+        "name": "Lazar Carević",
+        "position": "POR",
+        "rating": 75,
+        "age": 25,
+        "nationality": "Montenegro",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Ivan Zlobin",
+        "position": "POR",
+        "rating": 76,
+        "age": 28,
+        "nationality": "Rusia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Léo Realpe",
+        "position": "DFC",
+        "rating": 75,
+        "age": 24,
+        "nationality": "Ecuador",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Justin de Haas",
+        "position": "DFC",
+        "rating": 73,
+        "age": 16,
+        "nationality": "Países Bajos",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Renan Santana",
+        "position": "DFC",
+        "rating": 73,
+        "age": 20,
+        "nationality": "Brasil",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Ibrahima Ba",
+        "position": "DFC",
+        "rating": 72,
+        "age": 20,
+        "nationality": "Senegal",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Pedro Bondo",
+        "position": "DFC",
+        "rating": 77,
+        "age": 28,
+        "nationality": "Angola",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Rafa Soares",
+        "position": "DFC",
+        "rating": 77,
+        "age": 30,
+        "nationality": "Portugal",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Rodrigo Pinheiro",
+        "position": "DFC",
+        "rating": 73,
+        "age": 17,
+        "nationality": "Portugal",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Garcia",
+        "position": "DFC",
+        "rating": 74,
+        "age": 24,
+        "nationality": "Brasil",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Tom van de Looi",
+        "position": "MC",
+        "rating": 77,
+        "age": 26,
+        "nationality": "Países Bajos",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Mathias de Amorim",
+        "position": "MC",
+        "rating": 74,
+        "age": 21,
+        "nationality": "Portugal",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Marcos Peña",
+        "position": "MC",
+        "rating": 72,
+        "age": 21,
+        "nationality": "España",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Otar Mamageishvili",
+        "position": "MC",
+        "rating": 71,
+        "age": 15,
+        "nationality": "Georgia",
+        "marketValue": 700
+      },
+      {
+        "name": "Gustavo Sá",
+        "position": "MC",
+        "rating": 77,
+        "age": 20,
+        "nationality": "Portugal",
+        "marketValue": 16000000
+      },
+      {
+        "name": "Otso Liimatta",
+        "position": "MC",
+        "rating": 72,
+        "age": 21,
+        "nationality": "Finlandia",
+        "marketValue": 800
+      },
+      {
+        "name": "Sorriso",
+        "position": "DC",
+        "rating": 76,
+        "age": 24,
+        "nationality": "Brasil",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Óscar Aranda",
+        "position": "DC",
+        "rating": 75,
+        "age": 23,
+        "nationality": "España",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Antoine Joujou",
+        "position": "DC",
+        "rating": 72,
+        "age": 22,
+        "nationality": "Francia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Roméo Beney",
+        "position": "DC",
+        "rating": 74,
+        "age": 18,
+        "nationality": "Suiza",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Rochinha",
+        "position": "DC",
+        "rating": 77,
+        "age": 30,
+        "nationality": "Portugal",
+        "marketValue": 600
+      },
+      {
+        "name": "Gil Dias",
+        "position": "DC",
+        "rating": 77,
+        "age": 23,
+        "nationality": "Portugal",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Pedro Santos",
+        "position": "DC",
+        "rating": 71,
+        "age": 22,
+        "nationality": "Portugal",
+        "marketValue": 600
+      },
+      {
+        "name": "Yassir Zabiri",
+        "position": "DC",
+        "rating": 73,
+        "age": 21,
+        "nationality": "Marruecos",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Simon Elisor",
+        "position": "DC",
+        "rating": 75,
+        "age": 26,
+        "nationality": "Francia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Umar Abubakar",
+        "position": "DC",
+        "rating": 70,
+        "age": 19,
+        "nationality": "Nigeria",
+        "marketValue": 600
+      }
+    ]
+  },
+  {
+    "id": "rio-ave-fc",
+    "name": "Rio Ave FC",
+    "players": [
+      {
+        "name": "Cezary Miszta",
+        "position": "POR",
+        "rating": 72,
+        "age": 24,
+        "nationality": "Polonia",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Kevin Chamorro",
+        "position": "POR",
+        "rating": 70,
+        "age": 22,
+        "nationality": "Costa Rica",
+        "marketValue": 300
+      },
+      {
+        "name": "Alfonso Pastor",
+        "position": "POR",
+        "rating": 76,
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 200
+      },
+      {
+        "name": "Andreas Ntoi",
+        "position": "DFC",
+        "rating": 73,
+        "age": 22,
+        "nationality": "Grecia",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Jonathan Panzo",
+        "position": "DFC",
+        "rating": 75,
+        "age": 25,
+        "nationality": "Inglaterra",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Francisco Petrasso",
+        "position": "DFC",
+        "rating": 75,
+        "age": 23,
+        "nationality": "Argentina",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Nelson Abbey",
+        "position": "DFC",
+        "rating": 73,
+        "age": 22,
+        "nationality": "Inglaterra",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Jakub Brabec",
+        "position": "DFC",
+        "rating": 76,
+        "age": 32,
+        "nationality": "República Checa",
+        "marketValue": 600
+      },
+      {
+        "name": "Julien Lomboto",
+        "position": "DFC",
+        "rating": 73,
+        "age": 23,
+        "nationality": "Francia",
+        "marketValue": 400
+      },
+      {
+        "name": "Omar Richards",
+        "position": "DFC",
+        "rating": 77,
+        "age": 27,
+        "nationality": "Inglaterra",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Nikolaos Athanasiou",
+        "position": "DFC",
+        "rating": 75,
+        "age": 24,
+        "nationality": "Grecia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Marios Vrousai",
+        "position": "DFC",
+        "rating": 73,
+        "age": 17,
+        "nationality": "Grecia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "João Tomé",
+        "position": "DFC",
+        "rating": 71,
+        "age": 20,
+        "nationality": "Portugal",
+        "marketValue": 400
+      },
+      {
+        "name": "Georgios Liavas",
+        "position": "MC",
+        "rating": 73,
+        "age": 24,
+        "nationality": "Grecia",
+        "marketValue": 900
+      },
+      {
+        "name": "Tamás Nikitscher",
+        "position": "MC",
+        "rating": 69,
+        "age": 44,
+        "nationality": "Hungría",
+        "marketValue": 500
+      },
+      {
+        "name": "Brandon Aguilera",
+        "position": "MC",
+        "rating": 75,
+        "age": 22,
+        "nationality": "Costa Rica",
+        "marketValue": 2000000
+      },
+      {
+        "name": "João Graça",
+        "position": "MC",
+        "rating": 71,
+        "age": 21,
+        "nationality": "Portugal",
+        "marketValue": 300
+      },
+      {
+        "name": "Ole Pohlmann",
+        "position": "MC",
+        "rating": 75,
+        "age": 24,
+        "nationality": "Alemania",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Antonis Papakanellos",
+        "position": "MC",
+        "rating": 71,
+        "age": 19,
+        "nationality": "Grecia",
+        "marketValue": 500
+      },
+      {
+        "name": "Tobías Medina",
+        "position": "DC",
+        "rating": 76,
+        "age": 27,
+        "nationality": "Argentina",
+        "marketValue": 800
+      },
+      {
+        "name": "Diogo Bezerra",
+        "position": "DC",
+        "rating": 75,
+        "age": 23,
+        "nationality": "Brasil",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Rafael Lobato",
+        "position": "DC",
+        "rating": 77,
+        "age": 25,
+        "nationality": "Brasil",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Dario Špikić",
+        "position": "DC",
+        "rating": 72,
+        "age": 18,
+        "nationality": "Croacia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Amine Rehmi",
+        "position": "DC",
+        "rating": 74,
+        "age": 23,
+        "nationality": "Países Bajos",
+        "marketValue": 100
+      },
+      {
+        "name": "Clayton",
+        "position": "DC",
+        "rating": 81,
+        "age": 27,
+        "nationality": "Brasil",
+        "marketValue": 8000000
+      },
+      {
+        "name": "Karem Zoabi",
+        "position": "DC",
+        "rating": 73,
+        "age": 19,
+        "nationality": "Israel",
+        "marketValue": 800
+      },
+      {
+        "name": "Marc Gual",
+        "position": "DC",
+        "rating": 75,
+        "age": 28,
+        "nationality": "España",
+        "marketValue": 700
+      }
+    ]
+  },
+  {
+    "id": "cd-santa-clara",
+    "name": "CD Santa Clara",
+    "players": [
+      {
+        "name": "Gabriel Batista",
+        "position": "POR",
+        "rating": 77,
+        "age": 27,
+        "nationality": "Brasil",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Neneca",
+        "position": "POR",
+        "rating": 70,
+        "age": 22,
+        "nationality": "Brasil",
+        "marketValue": 400
+      },
+      {
+        "name": "Cristian",
+        "position": "POR",
+        "rating": 74,
+        "age": 25,
+        "nationality": "Brasil",
+        "marketValue": 75
+      },
+      {
+        "name": "MT",
+        "position": "DFC",
+        "rating": 77,
+        "age": 32,
+        "nationality": "Brasil",
+        "marketValue": 4500000
+      },
+      {
+        "name": "Sidney Lima",
+        "position": "DFC",
+        "rating": 77,
+        "age": 23,
+        "nationality": "Brasil",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Frederico Venâncio",
+        "position": "DFC",
+        "rating": 72,
+        "age": 21,
+        "nationality": "Portugal",
+        "marketValue": 500
+      },
+      {
+        "name": "Pedro Pacheco",
+        "position": "DFC",
+        "rating": 76,
+        "age": 29,
+        "nationality": "Portugal",
+        "marketValue": 400
+      },
+      {
+        "name": "Luís Rocha",
+        "position": "DFC",
+        "rating": 70,
+        "age": 39,
+        "nationality": "Portugal",
+        "marketValue": 100
+      },
+      {
+        "name": "Paulo Victor",
+        "position": "DFC",
+        "rating": 75,
+        "age": 24,
+        "nationality": "Brasil",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Lucas Soares",
+        "position": "DFC",
+        "rating": 71,
+        "age": 42,
+        "nationality": "Brasil",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Diogo Calila",
+        "position": "DFC",
+        "rating": 75,
+        "age": 27,
+        "nationality": "Mozambique",
+        "marketValue": 500
+      },
+      {
+        "name": "Adriano Firmino",
+        "position": "MC",
+        "rating": 77,
+        "age": 26,
+        "nationality": "Brasil",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Pedro Ferreira",
+        "position": "MC",
+        "rating": 77,
+        "age": 28,
+        "nationality": "Portugal",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Serginho",
+        "position": "MC",
+        "rating": 72,
+        "age": 35,
+        "nationality": "Portugal",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Gustavo Klismahn",
+        "position": "MC",
+        "rating": 76,
+        "age": 26,
+        "nationality": "Brasil",
+        "marketValue": 500
+      },
+      {
+        "name": "Gabriel Silva",
+        "position": "DC",
+        "rating": 75,
+        "age": 23,
+        "nationality": "Brasil",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Vinícius Lopes",
+        "position": "DC",
+        "rating": 78,
+        "age": 26,
+        "nationality": "Brasil",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Brenner",
+        "position": "DC",
+        "rating": 73,
+        "age": 24,
+        "nationality": "Brasil",
+        "marketValue": 1300000
+      },
+      {
+        "name": "Welinton Torrão",
+        "position": "DC",
+        "rating": 76,
+        "age": 26,
+        "nationality": "Brasil",
+        "marketValue": 350
+      },
+      {
+        "name": "Wendel",
+        "position": "DC",
+        "rating": 75,
+        "age": 29,
+        "nationality": "Brasil",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Elias Manoel",
+        "position": "DC",
+        "rating": 72,
+        "age": 24,
+        "nationality": "Brasil",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Gonçalo Paciência",
+        "position": "DC",
+        "rating": 70,
+        "age": 31,
+        "nationality": "Portugal",
+        "marketValue": 700
+      },
+      {
+        "name": "João Costa",
+        "position": "DC",
+        "rating": 70,
+        "age": 17,
+        "nationality": "Portugal",
+        "marketValue": 400
+      }
+    ]
+  },
+  {
+    "id": "gd-estoril-praia",
+    "name": "GD Estoril Praia",
+    "players": [
+      {
+        "name": "Joel Robles",
+        "position": "POR",
+        "rating": 70,
+        "age": 35,
+        "nationality": "España",
+        "marketValue": 400
+      },
+      {
+        "name": "Martin Turk",
+        "position": "POR",
+        "rating": 68,
+        "age": 16,
+        "nationality": "Eslovenia",
+        "marketValue": 300
+      },
+      {
+        "name": "Diogo Dias",
+        "position": "POR",
+        "rating": 74,
+        "age": 31,
+        "nationality": "Portugal",
+        "marketValue": 200
+      },
+      {
+        "name": "Kévin Boma",
+        "position": "DFC",
+        "rating": 69,
+        "age": 44,
+        "nationality": "Togo",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Felix Bacher",
+        "position": "DFC",
+        "rating": 73,
+        "age": 25,
+        "nationality": "Austria",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Antef Tsoungui",
+        "position": "DFC",
+        "rating": 71,
+        "age": 23,
+        "nationality": "Bélgica",
+        "marketValue": 650
+      },
+      {
+        "name": "Ferro",
+        "position": "DFC",
+        "rating": 73,
+        "age": 28,
+        "nationality": "Portugal",
+        "marketValue": 600
+      },
+      {
+        "name": "Or Israelov",
+        "position": "DFC",
+        "rating": 70,
+        "age": 18,
+        "nationality": "Israel",
+        "marketValue": 200
+      },
+      {
+        "name": "Pedro Amaral",
+        "position": "DFC",
+        "rating": 73,
+        "age": 24,
+        "nationality": "Portugal",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Tiago Parente",
+        "position": "DFC",
+        "rating": 69,
+        "age": 22,
+        "nationality": "Portugal",
+        "marketValue": 500
+      },
+      {
+        "name": "Gonçalo Costa",
+        "position": "DFC",
+        "rating": 70,
+        "age": 20,
+        "nationality": "Portugal",
+        "marketValue": 400
+      },
+      {
+        "name": "Ricard Sánchez",
+        "position": "DFC",
+        "rating": 74,
+        "age": 25,
+        "nationality": "España",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Pedro Carvalho",
+        "position": "DFC",
+        "rating": 69,
+        "age": 22,
+        "nationality": "Portugal",
+        "marketValue": 500
+      },
+      {
+        "name": "Jordan Holsgrove",
+        "position": "MC",
+        "rating": 77,
+        "age": 26,
+        "nationality": "Escocia",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Jandro Orellana",
+        "position": "MC",
+        "rating": 75,
+        "age": 25,
+        "nationality": "España",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Xeka",
+        "position": "MC",
+        "rating": 75,
+        "age": 31,
+        "nationality": "Portugal",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Nodar Lominadze",
+        "position": "MC",
+        "rating": 71,
+        "age": 23,
+        "nationality": "Georgia",
+        "marketValue": 700
+      },
+      {
+        "name": "João Carvalho",
+        "position": "MC",
+        "rating": 79,
+        "age": 28,
+        "nationality": "Portugal",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Pizzi",
+        "position": "MC",
+        "rating": 69,
+        "age": 21,
+        "nationality": "Portugal",
+        "marketValue": 300
+      },
+      {
+        "name": "André Lacximicant",
+        "position": "DC",
+        "rating": 71,
+        "age": 19,
+        "nationality": "Portugal",
+        "marketValue": 800
+      },
+      {
+        "name": "Rafik Guitane",
+        "position": "DC",
+        "rating": 75,
+        "age": 26,
+        "nationality": "Argelia",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Yanis Begraoui",
+        "position": "DC",
+        "rating": 75,
+        "age": 24,
+        "nationality": "Marruecos",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Alejandro Marqués",
+        "position": "DC",
+        "rating": 74,
+        "age": 25,
+        "nationality": "Venezuela",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Khayon Edwards",
+        "position": "DC",
+        "rating": 72,
+        "age": 22,
+        "nationality": "Jamaica",
+        "marketValue": 350
+      }
+    ]
+  },
+  {
+    "id": "fc-alverca",
+    "name": "FC Alverca",
+    "players": [
+      {
+        "name": "André Gomes",
+        "position": "POR",
+        "rating": 70,
+        "age": 21,
+        "nationality": "Portugal",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Matheus Mendes",
+        "position": "POR",
+        "rating": 73,
+        "age": 31,
+        "nationality": "Brasil",
+        "marketValue": 300
+      },
+      {
+        "name": "Mateus",
+        "position": "POR",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Brasil",
+        "marketValue": 100
+      },
+      {
+        "name": "André Paulo",
+        "position": "POR",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Portugal",
+        "marketValue": 100
+      },
+      {
+        "name": "Bastien Meupiyou",
+        "position": "DFC",
+        "rating": 70,
+        "age": 33,
+        "nationality": "Francia",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Naves",
+        "position": "DFC",
+        "rating": 73,
+        "age": 23,
+        "nationality": "Brasil",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Julián Martínez",
+        "position": "DFC",
+        "rating": 70,
+        "age": 22,
+        "nationality": "Honduras",
+        "marketValue": 500
+      },
+      {
+        "name": "Sergi Gómez",
+        "position": "DFC",
+        "rating": 69,
+        "age": 33,
+        "nationality": "España",
+        "marketValue": 500
+      },
+      {
+        "name": "Steven Baseya",
+        "position": "DFC",
+        "rating": 69,
+        "age": 21,
+        "nationality": "Francia",
+        "marketValue": 400
+      },
+      {
+        "name": "Chissumba",
+        "position": "DFC",
+        "rating": 72,
+        "age": 20,
+        "nationality": "Portugal",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Isaac James",
+        "position": "DFC",
+        "rating": 69,
+        "age": 21,
+        "nationality": "Nigeria",
+        "marketValue": 350
+      },
+      {
+        "name": "Vasco Moreira",
+        "position": "MC",
+        "rating": 70,
+        "age": 17,
+        "nationality": "Portugal",
+        "marketValue": 850
+      },
+      {
+        "name": "Sabit Abdulai",
+        "position": "MC",
+        "rating": 70,
+        "age": 21,
+        "nationality": "Ghana",
+        "marketValue": 700
+      },
+      {
+        "name": "Tomás Mendes",
+        "position": "MC",
+        "rating": 71,
+        "age": 16,
+        "nationality": "Guinea-Bissau",
+        "marketValue": 500
+      },
+      {
+        "name": "Abderrahmane Soumare",
+        "position": "MC",
+        "rating": 74,
+        "age": 30,
+        "nationality": "Mauritania",
+        "marketValue": 0
+      },
+      {
+        "name": "Davy Gui",
+        "position": "MC",
+        "rating": 69,
+        "age": 19,
+        "nationality": "Costa de Marfil",
+        "marketValue": 600
+      },
+      {
+        "name": "Zakaria Kassary",
+        "position": "MC",
+        "rating": 70,
+        "age": 20,
+        "nationality": "Marruecos",
+        "marketValue": 150
+      },
+      {
+        "name": "Nabil Touaizi",
+        "position": "MC",
+        "rating": 72,
+        "age": 24,
+        "nationality": "Marruecos",
+        "marketValue": 500
+      },
+      {
+        "name": "Lincoln",
+        "position": "MC",
+        "rating": 72,
+        "age": 18,
+        "nationality": "Brasil",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Chiquinho",
+        "position": "DC",
+        "rating": 76,
+        "age": 25,
+        "nationality": "Portugal",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Léo Chú",
+        "position": "DC",
+        "rating": 75,
+        "age": 25,
+        "nationality": "Brasil",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Figueiredo",
+        "position": "DC",
+        "rating": 72,
+        "age": 20,
+        "nationality": "Brasil",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Cédric Nuozzi",
+        "position": "DC",
+        "rating": 68,
+        "age": 20,
+        "nationality": "Bélgica",
+        "marketValue": 800
+      },
+      {
+        "name": "Stéphane Diarra",
+        "position": "DC",
+        "rating": 74,
+        "age": 25,
+        "nationality": "Costa de Marfil",
+        "marketValue": 500
+      },
+      {
+        "name": "Fabrício Garcia",
+        "position": "DC",
+        "rating": 72,
+        "age": 24,
+        "nationality": "Cabo Verde",
+        "marketValue": 400
+      },
+      {
+        "name": "Marko Milovanović",
+        "position": "DC",
+        "rating": 74,
+        "age": 22,
+        "nationality": "Serbia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Mathis Clairicia",
+        "position": "DC",
+        "rating": 71,
+        "age": 19,
+        "nationality": "Francia",
+        "marketValue": 400
+      },
+      {
+        "name": "Sandro Lima",
+        "position": "DC",
+        "rating": 65,
+        "age": 35,
+        "nationality": "Brasil",
+        "marketValue": 150
+      },
+      {
+        "name": "Felipe Lima",
+        "position": "DC",
+        "rating": 71,
+        "age": 19,
+        "nationality": "Brasil",
+        "marketValue": 0
+      }
+    ]
+  },
+  {
+    "id": "moreirense-fc",
+    "name": "Moreirense FC",
+    "players": [
+      {
+        "name": "André Ferreira",
+        "position": "POR",
+        "rating": 74,
+        "age": 29,
+        "nationality": "Portugal",
+        "marketValue": 600
+      },
+      {
+        "name": "Mika",
+        "position": "POR",
+        "rating": 69,
+        "age": 16,
+        "nationality": "Portugal",
+        "marketValue": 100
+      },
+      {
+        "name": "Caio Secco",
+        "position": "POR",
+        "rating": 69,
+        "age": 22,
+        "nationality": "Brasil",
+        "marketValue": 100
+      },
+      {
+        "name": "Michel",
+        "position": "DFC",
+        "rating": 70,
+        "age": 22,
+        "nationality": "Brasil",
+        "marketValue": 800
+      },
+      {
+        "name": "Maracás",
+        "position": "DFC",
+        "rating": 74,
+        "age": 26,
+        "nationality": "Brasil",
+        "marketValue": 800
+      },
+      {
+        "name": "Gilberto Batista",
+        "position": "DFC",
+        "rating": 69,
+        "age": 22,
+        "nationality": "Guinea-Bissau",
+        "marketValue": 400
+      },
+      {
+        "name": "Kiko",
+        "position": "DFC",
+        "rating": 75,
+        "age": 27,
+        "nationality": "Portugal",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Álvaro Martínez",
+        "position": "DFC",
+        "rating": 69,
+        "age": 17,
+        "nationality": "España",
+        "marketValue": 400
+      },
+      {
+        "name": "Dinis Pinto",
+        "position": "DFC",
+        "rating": 75,
+        "age": 25,
+        "nationality": "Portugal",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Diogo Travassos",
+        "position": "DFC",
+        "rating": 71,
+        "age": 21,
+        "nationality": "Portugal",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Fabiano",
+        "position": "DFC",
+        "rating": 73,
+        "age": 25,
+        "nationality": "Brasil",
+        "marketValue": 1700000
+      },
+      {
+        "name": "Leandro Santos",
+        "position": "DFC",
+        "rating": 71,
+        "age": 20,
+        "nationality": "Portugal",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Mateja Stjepanović",
+        "position": "MC",
+        "rating": 71,
+        "age": 21,
+        "nationality": "Serbia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Afonso Assis",
+        "position": "MC",
+        "rating": 73,
+        "age": 25,
+        "nationality": "Portugal",
+        "marketValue": 300
+      },
+      {
+        "name": "Vasco Sousa",
+        "position": "MC",
+        "rating": 71,
+        "age": 15,
+        "nationality": "Portugal",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Nile John",
+        "position": "MC",
+        "rating": 72,
+        "age": 22,
+        "nationality": "Inglaterra",
+        "marketValue": 350
+      },
+      {
+        "name": "Rodri Alonso",
+        "position": "MC",
+        "rating": 69,
+        "age": 21,
+        "nationality": "España",
+        "marketValue": 300
+      },
+      {
+        "name": "Jimi Gower",
+        "position": "MC",
+        "rating": 73,
+        "age": 30,
+        "nationality": "Inglaterra",
+        "marketValue": 100
+      },
+      {
+        "name": "Alan",
+        "position": "MC",
+        "rating": 77,
+        "age": 25,
+        "nationality": "Brasil",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Benny",
+        "position": "MC",
+        "rating": 70,
+        "age": 20,
+        "nationality": "Portugal",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Gabrielzinho",
+        "position": "DC",
+        "rating": 75,
+        "age": 29,
+        "nationality": "Brasil",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Landerson",
+        "position": "DC",
+        "rating": 69,
+        "age": 19,
+        "nationality": "Brasil",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Cedric Teguia",
+        "position": "DC",
+        "rating": 69,
+        "age": 24,
+        "nationality": "España",
+        "marketValue": 800
+      },
+      {
+        "name": "Kiko Bondoso",
+        "position": "DC",
+        "rating": 72,
+        "age": 30,
+        "nationality": "Portugal",
+        "marketValue": 800
+      },
+      {
+        "name": "Yan Maranhão",
+        "position": "DC",
+        "rating": 71,
+        "age": 23,
+        "nationality": "Brasil",
+        "marketValue": 600
+      },
+      {
+        "name": "Luís Semedo",
+        "position": "DC",
+        "rating": 72,
+        "age": 22,
+        "nationality": "Portugal",
+        "marketValue": 400
+      }
+    ]
+  },
+  {
+    "id": "gil-vicente-fc",
+    "name": "Gil Vicente FC",
+    "players": [
+      {
+        "name": "Lucão",
+        "position": "POR",
+        "rating": 70,
+        "age": 24,
+        "nationality": "Brasil",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Dani Figueira",
+        "position": "POR",
+        "rating": 71,
+        "age": 27,
+        "nationality": "Portugal",
+        "marketValue": 300
+      },
+      {
+        "name": "Marvin Elimbi",
+        "position": "DFC",
+        "rating": 71,
+        "age": 22,
+        "nationality": "Francia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Buatu",
+        "position": "DFC",
+        "rating": 68,
+        "age": 39,
+        "nationality": "Angola",
+        "marketValue": 600
+      },
+      {
+        "name": "Antonio Espigares",
+        "position": "DFC",
+        "rating": 69,
+        "age": 21,
+        "nationality": "España",
+        "marketValue": 500
+      },
+      {
+        "name": "Arthur Tchaptchet",
+        "position": "DFC",
+        "rating": 70,
+        "age": 19,
+        "nationality": "Francia",
+        "marketValue": 100
+      },
+      {
+        "name": "Ghislain Konan",
+        "position": "DFC",
+        "rating": 75,
+        "age": 30,
+        "nationality": "Costa de Marfil",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Weverson",
+        "position": "DFC",
+        "rating": 73,
+        "age": 25,
+        "nationality": "Brasil",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Zé Carlos",
+        "position": "DFC",
+        "rating": 74,
+        "age": 27,
+        "nationality": "Portugal",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Hevertton",
+        "position": "DFC",
+        "rating": 69,
+        "age": 20,
+        "nationality": "Portugal",
+        "marketValue": 800
+      },
+      {
+        "name": "Jonathan Mutombo",
+        "position": "DFC",
+        "rating": 68,
+        "age": 45,
+        "nationality": "Francia",
+        "marketValue": 400
+      },
+      {
+        "name": "Mohamed Bamba",
+        "position": "MC",
+        "rating": 71,
+        "age": 21,
+        "nationality": "Costa de Marfil",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Facundo Cáseres",
+        "position": "MC",
+        "rating": 73,
+        "age": 24,
+        "nationality": "Argentina",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Gonçalo Maia",
+        "position": "MC",
+        "rating": 70,
+        "age": 20,
+        "nationality": "Portugal",
+        "marketValue": 100
+      },
+      {
+        "name": "Luís Esteves",
+        "position": "MC",
+        "rating": 77,
+        "age": 27,
+        "nationality": "Portugal",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Santi García",
+        "position": "MC",
+        "rating": 73,
+        "age": 24,
+        "nationality": "España",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Martín Fernández",
+        "position": "MC",
+        "rating": 68,
+        "age": 32,
+        "nationality": "Uruguay",
+        "marketValue": 450
+      },
+      {
+        "name": "Joelson Fernandes",
+        "position": "DC",
+        "rating": 71,
+        "age": 22,
+        "nationality": "Portugal",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Tidjany Touré",
+        "position": "DC",
+        "rating": 72,
+        "age": 23,
+        "nationality": "Francia",
+        "marketValue": 300
+      },
+      {
+        "name": "Sergio Bermejo",
+        "position": "DC",
+        "rating": 69,
+        "age": 22,
+        "nationality": "España",
+        "marketValue": 800
+      },
+      {
+        "name": "Murilo",
+        "position": "DC",
+        "rating": 69,
+        "age": 31,
+        "nationality": "Brasil",
+        "marketValue": 800
+      },
+      {
+        "name": "Agustín Moreira",
+        "position": "DC",
+        "rating": 73,
+        "age": 27,
+        "nationality": "Uruguay",
+        "marketValue": 700
+      },
+      {
+        "name": "Gustavo Varela",
+        "position": "DC",
+        "rating": 69,
+        "age": 21,
+        "nationality": "Portugal",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Héctor Hernández",
+        "position": "DC",
+        "rating": 74,
+        "age": 30,
+        "nationality": "España",
+        "marketValue": 800
+      },
+      {
+        "name": "Carlos Eduardo",
+        "position": "DC",
+        "rating": 74,
+        "age": 29,
+        "nationality": "Brasil",
+        "marketValue": 700
+      }
+    ]
+  },
+  {
+    "id": "vitoria-guimaraes-sc",
+    "name": "Vitória Guimarães SC",
+    "players": [
+      {
+        "name": "Juan Castillo",
+        "position": "POR",
+        "rating": 73,
+        "age": 25,
+        "nationality": "Colombia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Charles",
+        "position": "POR",
+        "rating": 71,
+        "age": 27,
+        "nationality": "Brasil",
+        "marketValue": 300
+      },
+      {
+        "name": "Gui",
+        "position": "POR",
+        "rating": 69,
+        "age": 19,
+        "nationality": "Portugal",
+        "marketValue": 200
+      },
+      {
+        "name": "Óscar Rivas",
+        "position": "DFC",
+        "rating": 73,
+        "age": 25,
+        "nationality": "España",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Rodrigo Abascal",
+        "position": "DFC",
+        "rating": 74,
+        "age": 26,
+        "nationality": "Uruguay",
+        "marketValue": 600
+      },
+      {
+        "name": "Thiago Balieiro",
+        "position": "DFC",
+        "rating": 73,
+        "age": 28,
+        "nationality": "Brasil",
+        "marketValue": 500
+      },
+      {
+        "name": "Miguel Nóbrega",
+        "position": "DFC",
+        "rating": 71,
+        "age": 25,
+        "nationality": "Portugal",
+        "marketValue": 400
+      },
+      {
+        "name": "João Mendes",
+        "position": "DFC",
+        "rating": 73,
+        "age": 25,
+        "nationality": "Portugal",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Orest Lebedenko",
+        "position": "DFC",
+        "rating": 69,
+        "age": 17,
+        "nationality": "Ucrania",
+        "marketValue": 500
+      },
+      {
+        "name": "Maga",
+        "position": "DFC",
+        "rating": 73,
+        "age": 23,
+        "nationality": "Portugal",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Tony Strata",
+        "position": "DFC",
+        "rating": 69,
+        "age": 21,
+        "nationality": "Rumania",
+        "marketValue": 400
+      },
+      {
+        "name": "Diogo Sousa",
+        "position": "MC",
+        "rating": 71,
+        "age": 23,
+        "nationality": "Portugal",
+        "marketValue": 300
+      },
+      {
+        "name": "Matija Mitrović",
+        "position": "MC",
+        "rating": 70,
+        "age": 21,
+        "nationality": "Serbia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Beni Mukendi",
+        "position": "MC",
+        "rating": 71,
+        "age": 16,
+        "nationality": "Angola",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Gonçalo Nogueira",
+        "position": "MC",
+        "rating": 74,
+        "age": 30,
+        "nationality": "Portugal",
+        "marketValue": 600
+      },
+      {
+        "name": "Samu",
+        "position": "MC",
+        "rating": 74,
+        "age": 20,
+        "nationality": "Portugal",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Miguel Nogueira",
+        "position": "MC",
+        "rating": 69,
+        "age": 20,
+        "nationality": "Portugal",
+        "marketValue": 500
+      },
+      {
+        "name": "Oumar Camara",
+        "position": "DC",
+        "rating": 72,
+        "age": 19,
+        "nationality": "Francia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Fabio Blanco",
+        "position": "DC",
+        "rating": 70,
+        "age": 22,
+        "nationality": "España",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Noah Saviolo",
+        "position": "DC",
+        "rating": 70,
+        "age": 21,
+        "nationality": "Bélgica",
+        "marketValue": 600
+      },
+      {
+        "name": "Gustavo Silva",
+        "position": "DC",
+        "rating": 75,
+        "age": 26,
+        "nationality": "Brasil",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Telmo Arcanjo",
+        "position": "DC",
+        "rating": 70,
+        "age": 18,
+        "nationality": "Cabo Verde",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Ejike Opara",
+        "position": "DC",
+        "rating": 69,
+        "age": 33,
+        "nationality": "Nigeria",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Alioune Ndoye",
+        "position": "DC",
+        "rating": 71,
+        "age": 24,
+        "nationality": "Senegal",
+        "marketValue": 700
+      },
+      {
+        "name": "Nélson Oliveira",
+        "position": "DC",
+        "rating": 68,
+        "age": 34,
+        "nationality": "Portugal",
+        "marketValue": 300
+      }
+    ]
+  },
+  {
+    "id": "casa-pia-ac",
+    "name": "Casa Pia AC",
+    "players": [
+      {
+        "name": "Patrick Sequeira",
+        "position": "POR",
+        "rating": 73,
+        "age": 26,
+        "nationality": "Costa Rica",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Ivan Mandić",
+        "position": "POR",
+        "rating": 69,
+        "age": 22,
+        "nationality": "Croacia",
+        "marketValue": 300
+      },
+      {
+        "name": "Ricardo Batista",
+        "position": "POR",
+        "rating": 73,
+        "age": 33,
+        "nationality": "Angola",
+        "marketValue": 100
+      },
+      {
+        "name": "Kaique Rocha",
+        "position": "DFC",
+        "rating": 75,
+        "age": 27,
+        "nationality": "Brasil",
+        "marketValue": 1500000
+      },
+      {
+        "name": "João Goulart",
+        "position": "DFC",
+        "rating": 74,
+        "age": 26,
+        "nationality": "Portugal",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Tchamba",
+        "position": "DFC",
+        "rating": 74,
+        "age": 27,
+        "nationality": "Camerún",
+        "marketValue": 800
+      },
+      {
+        "name": "David Sousa",
+        "position": "DFC",
+        "rating": 68,
+        "age": 43,
+        "nationality": "Brasil",
+        "marketValue": 800
+      },
+      {
+        "name": "Kaly",
+        "position": "DFC",
+        "rating": 70,
+        "age": 22,
+        "nationality": "Angola",
+        "marketValue": 250
+      },
+      {
+        "name": "José Fonte",
+        "position": "DFC",
+        "rating": 68,
+        "age": 42,
+        "nationality": "Portugal",
+        "marketValue": 100
+      },
+      {
+        "name": "Abdu Conté",
+        "position": "DFC",
+        "rating": 74,
+        "age": 27,
+        "nationality": "Portugal",
+        "marketValue": 700
+      },
+      {
+        "name": "Gaizka Larrazabal",
+        "position": "DFC",
+        "rating": 75,
+        "age": 28,
+        "nationality": "España",
+        "marketValue": 2000000
+      },
+      {
+        "name": "André Geraldes",
+        "position": "DFC",
+        "rating": 70,
+        "age": 18,
+        "nationality": "Portugal",
+        "marketValue": 200
+      },
+      {
+        "name": "Seba Pérez",
+        "position": "MC",
+        "rating": 68,
+        "age": 42,
+        "nationality": "Colombia",
+        "marketValue": 800
+      },
+      {
+        "name": "Rafael Brito",
+        "position": "MC",
+        "rating": 71,
+        "age": 24,
+        "nationality": "Portugal",
+        "marketValue": 400
+      },
+      {
+        "name": "Iyad Mohamed",
+        "position": "MC",
+        "rating": 71,
+        "age": 24,
+        "nationality": "Comoras",
+        "marketValue": 400
+      },
+      {
+        "name": "Lawrence Ofori",
+        "position": "MC",
+        "rating": 75,
+        "age": 27,
+        "nationality": "Ghana",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Renato Nhaga",
+        "position": "MC",
+        "rating": 71,
+        "age": 18,
+        "nationality": "Guinea-Bissau",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Yassin Oukili",
+        "position": "MC",
+        "rating": 69,
+        "age": 20,
+        "nationality": "Marruecos",
+        "marketValue": 800
+      },
+      {
+        "name": "Miguel Sousa",
+        "position": "MC",
+        "rating": 74,
+        "age": 27,
+        "nationality": "Portugal",
+        "marketValue": 400
+      },
+      {
+        "name": "Kevin Prieto",
+        "position": "MC",
+        "rating": 69,
+        "age": 19,
+        "nationality": "Uruguay",
+        "marketValue": 500
+      },
+      {
+        "name": "Tiago Morais",
+        "position": "DC",
+        "rating": 69,
+        "age": 21,
+        "nationality": "Portugal",
+        "marketValue": 2500000
+      },
+      {
+        "name": "João Marques",
+        "position": "DC",
+        "rating": 73,
+        "age": 23,
+        "nationality": "Portugal",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Kelian Nsona",
+        "position": "DC",
+        "rating": 71,
+        "age": 23,
+        "nationality": "Francia",
+        "marketValue": 750
+      },
+      {
+        "name": "Jérémy Livolant",
+        "position": "DC",
+        "rating": 76,
+        "age": 29,
+        "nationality": "Francia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Xander Severina",
+        "position": "DC",
+        "rating": 70,
+        "age": 17,
+        "nationality": "Curazao",
+        "marketValue": 800
+      },
+      {
+        "name": "Korede Osundina",
+        "position": "DC",
+        "rating": 70,
+        "age": 21,
+        "nationality": "Estados Unidos",
+        "marketValue": 350
+      },
+      {
+        "name": "Kiki",
+        "position": "DC",
+        "rating": 74,
+        "age": 27,
+        "nationality": "Portugal",
+        "marketValue": 200
+      },
+      {
+        "name": "Dailon Livramento",
+        "position": "DC",
+        "rating": 69,
+        "age": 24,
+        "nationality": "Cabo Verde",
+        "marketValue": 800
+      },
+      {
+        "name": "Cassiano",
+        "position": "DC",
+        "rating": 64,
+        "age": 36,
+        "nationality": "Brasil",
+        "marketValue": 150
+      },
+      {
+        "name": "Clau Mendes",
+        "position": "DC",
+        "rating": 74,
+        "age": 25,
+        "nationality": "Guinea-Bissau",
+        "marketValue": 100
+      }
+    ]
+  },
+  {
+    "id": "fc-arouca",
+    "name": "FC Arouca",
+    "players": [
+      {
+        "name": "Ignacio de Arruabarrena",
+        "position": "POR",
+        "rating": 75,
+        "age": 29,
+        "nationality": "Uruguay",
+        "marketValue": 1000000
+      },
+      {
+        "name": "João Valido",
+        "position": "POR",
+        "rating": 71,
+        "age": 25,
+        "nationality": "Portugal",
+        "marketValue": 500
+      },
+      {
+        "name": "Jakub Vinarčík",
+        "position": "POR",
+        "rating": 74,
+        "age": 30,
+        "nationality": "Eslovaquia",
+        "marketValue": 300
+      },
+      {
+        "name": "Boris Popović",
+        "position": "DFC",
+        "rating": 73,
+        "age": 25,
+        "nationality": "Serbia",
+        "marketValue": 1200000
+      },
+      {
+        "name": "José Fontán",
+        "position": "DFC",
+        "rating": 73,
+        "age": 25,
+        "nationality": "España",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Omar Fayed",
+        "position": "DFC",
+        "rating": 71,
+        "age": 22,
+        "nationality": "Egipto",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Javi Sánchez",
+        "position": "DFC",
+        "rating": 70,
+        "age": 15,
+        "nationality": "España",
+        "marketValue": 800
+      },
+      {
+        "name": "Matías Rocha",
+        "position": "DFC",
+        "rating": 72,
+        "age": 24,
+        "nationality": "Uruguay",
+        "marketValue": 400
+      },
+      {
+        "name": "Diogo Monteiro",
+        "position": "DFC",
+        "rating": 69,
+        "age": 21,
+        "nationality": "Portugal",
+        "marketValue": 300
+      },
+      {
+        "name": "Amadou Dante",
+        "position": "DFC",
+        "rating": 69,
+        "age": 44,
+        "nationality": "Malí",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Bas Kuipers",
+        "position": "DFC",
+        "rating": 72,
+        "age": 25,
+        "nationality": "Países Bajos",
+        "marketValue": 800
+      },
+      {
+        "name": "Arnau Solà",
+        "position": "DFC",
+        "rating": 70,
+        "age": 16,
+        "nationality": "España",
+        "marketValue": 500
+      },
+      {
+        "name": "Tiago Esgaio",
+        "position": "DFC",
+        "rating": 74,
+        "age": 28,
+        "nationality": "Portugal",
+        "marketValue": 900
+      },
+      {
+        "name": "Taichi Fukui",
+        "position": "MC",
+        "rating": 72,
+        "age": 21,
+        "nationality": "Japón",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Espen van Ee",
+        "position": "MC",
+        "rating": 73,
+        "age": 22,
+        "nationality": "Países Bajos",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Mateo Flores",
+        "position": "MC",
+        "rating": 71,
+        "age": 21,
+        "nationality": "España",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Yellu Santiago",
+        "position": "MC",
+        "rating": 70,
+        "age": 20,
+        "nationality": "España",
+        "marketValue": 900
+      },
+      {
+        "name": "Pedro Santos",
+        "position": "MC",
+        "rating": 74,
+        "age": 25,
+        "nationality": "Portugal",
+        "marketValue": 800
+      },
+      {
+        "name": "David Simão",
+        "position": "MC",
+        "rating": 68,
+        "age": 35,
+        "nationality": "Portugal",
+        "marketValue": 100
+      },
+      {
+        "name": "Hyun-ju Lee",
+        "position": "MC",
+        "rating": 73,
+        "age": 22,
+        "nationality": "Corea del Sur",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Pablo Gozálbez",
+        "position": "MC",
+        "rating": 71,
+        "age": 24,
+        "nationality": "España",
+        "marketValue": 500
+      },
+      {
+        "name": "Naïs Djouahra",
+        "position": "DC",
+        "rating": 75,
+        "age": 26,
+        "nationality": "Francia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Brian Mansilla",
+        "position": "DC",
+        "rating": 70,
+        "age": 24,
+        "nationality": "Uruguay",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Miguel Puche",
+        "position": "DC",
+        "rating": 69,
+        "age": 24,
+        "nationality": "España",
+        "marketValue": 400
+      },
+      {
+        "name": "Alfonso Trezza",
+        "position": "DC",
+        "rating": 72,
+        "age": 19,
+        "nationality": "Uruguay",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Dylan Nandín",
+        "position": "DC",
+        "rating": 73,
+        "age": 23,
+        "nationality": "Uruguay",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Iván Barbero",
+        "position": "DC",
+        "rating": 68,
+        "age": 17,
+        "nationality": "España",
+        "marketValue": 500
+      },
+      {
+        "name": "Romualdas Jansonas",
+        "position": "DC",
+        "rating": 71,
+        "age": 20,
+        "nationality": "Lituania",
+        "marketValue": 400
+      }
+    ]
+  },
+  {
+    "id": "cd-nacional",
+    "name": "CD Nacional",
+    "players": [
+      {
+        "name": "Kaique Pereira",
+        "position": "POR",
+        "rating": 70,
+        "age": 22,
+        "nationality": "Brasil",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Lucas França",
+        "position": "POR",
+        "rating": 70,
+        "age": 37,
+        "nationality": "Brasil",
+        "marketValue": 600
+      },
+      {
+        "name": "Kevyn",
+        "position": "POR",
+        "rating": 69,
+        "age": 20,
+        "nationality": "Brasil",
+        "marketValue": 200
+      },
+      {
+        "name": "César Augusto",
+        "position": "POR",
+        "rating": 69,
+        "age": 22,
+        "nationality": "Brasil",
+        "marketValue": 100
+      },
+      {
+        "name": "Zé Vítor",
+        "position": "DFC",
+        "rating": 69,
+        "age": 38,
+        "nationality": "Brasil",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Ulisses",
+        "position": "DFC",
+        "rating": 75,
+        "age": 26,
+        "nationality": "Brasil",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Léo Santos",
+        "position": "DFC",
+        "rating": 70,
+        "age": 34,
+        "nationality": "Brasil",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Ivanildo Fernandes",
+        "position": "DFC",
+        "rating": 74,
+        "age": 29,
+        "nationality": "Cabo Verde",
+        "marketValue": 200
+      },
+      {
+        "name": "Chico Gonçalves",
+        "position": "DFC",
+        "rating": 68,
+        "age": 33,
+        "nationality": "Portugal",
+        "marketValue": 200
+      },
+      {
+        "name": "José Gomes",
+        "position": "DFC",
+        "rating": 76,
+        "age": 29,
+        "nationality": "Portugal",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Lenny Vallier",
+        "position": "DFC",
+        "rating": 71,
+        "age": 24,
+        "nationality": "Francia",
+        "marketValue": 500
+      },
+      {
+        "name": "Alan Núñez",
+        "position": "DFC",
+        "rating": 69,
+        "age": 16,
+        "nationality": "Paraguay",
+        "marketValue": 800
+      },
+      {
+        "name": "João Aurélio",
+        "position": "DFC",
+        "rating": 68,
+        "age": 37,
+        "nationality": "Portugal",
+        "marketValue": 50
+      },
+      {
+        "name": "Matheus Dias",
+        "position": "MC",
+        "rating": 73,
+        "age": 23,
+        "nationality": "Brasil",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Liziero",
+        "position": "MC",
+        "rating": 76,
+        "age": 28,
+        "nationality": "Brasil",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Chiheb Labidi",
+        "position": "MC",
+        "rating": 70,
+        "age": 15,
+        "nationality": "Túnez",
+        "marketValue": 500
+      },
+      {
+        "name": "Joel Silva",
+        "position": "MC",
+        "rating": 73,
+        "age": 26,
+        "nationality": "Portugal",
+        "marketValue": 400
+      },
+      {
+        "name": "Deivison",
+        "position": "MC",
+        "rating": 70,
+        "age": 19,
+        "nationality": "Brasil",
+        "marketValue": 200
+      },
+      {
+        "name": "Jota",
+        "position": "MC",
+        "rating": 70,
+        "age": 20,
+        "nationality": "Portugal",
+        "marketValue": 75
+      },
+      {
+        "name": "André Sousa",
+        "position": "MC",
+        "rating": 69,
+        "age": 18,
+        "nationality": "Portugal",
+        "marketValue": 50
+      },
+      {
+        "name": "Filipe Soares",
+        "position": "MC",
+        "rating": 71,
+        "age": 22,
+        "nationality": "Portugal",
+        "marketValue": 700
+      },
+      {
+        "name": "Daniel Jr",
+        "position": "MC",
+        "rating": 72,
+        "age": 23,
+        "nationality": "Brasil",
+        "marketValue": 600
+      },
+      {
+        "name": "Miguel Baeza",
+        "position": "MC",
+        "rating": 74,
+        "age": 25,
+        "nationality": "España",
+        "marketValue": 400
+      },
+      {
+        "name": "Paulinho Bóia",
+        "position": "DC",
+        "rating": 72,
+        "age": 27,
+        "nationality": "Brasil",
+        "marketValue": 800
+      },
+      {
+        "name": "Witiness Quembo",
+        "position": "DC",
+        "rating": 71,
+        "age": 29,
+        "nationality": "Mozambique",
+        "marketValue": 500
+      },
+      {
+        "name": "Motez Nourani",
+        "position": "DC",
+        "rating": 71,
+        "age": 17,
+        "nationality": "Túnez",
+        "marketValue": 200
+      },
+      {
+        "name": "Gabriel Veron",
+        "position": "DC",
+        "rating": 77,
+        "age": 27,
+        "nationality": "Brasil",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Pablo Ruan",
+        "position": "DC",
+        "rating": 72,
+        "age": 22,
+        "nationality": "Brasil",
+        "marketValue": 500
+      },
+      {
+        "name": "Watts",
+        "position": "DC",
+        "rating": 71,
+        "age": 30,
+        "nationality": "Portugal",
+        "marketValue": 200
+      },
+      {
+        "name": "Jesús Ramírez",
+        "position": "DC",
+        "rating": 79,
+        "age": 27,
+        "nationality": "Venezuela",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Lucas João",
+        "position": "DC",
+        "rating": 68,
+        "age": 19,
+        "nationality": "Angola",
+        "marketValue": 200
+      }
+    ]
+  },
+  {
+    "id": "cd-tondela",
+    "name": "CD Tondela",
+    "players": [
+      {
+        "name": "Bernardo",
+        "position": "POR",
+        "rating": 72,
+        "age": 31,
+        "nationality": "Brasil",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Lucas Cañizares",
+        "position": "POR",
+        "rating": 70,
+        "age": 30,
+        "nationality": "España",
+        "marketValue": 400
+      },
+      {
+        "name": "Gabriel Souza",
+        "position": "POR",
+        "rating": 71,
+        "age": 29,
+        "nationality": "Brasil",
+        "marketValue": 150
+      },
+      {
+        "name": "Christian Marques",
+        "position": "DFC",
+        "rating": 70,
+        "age": 23,
+        "nationality": "Portugal",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Brayan Medina",
+        "position": "DFC",
+        "rating": 68,
+        "age": 20,
+        "nationality": "Colombia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Diego Tavares",
+        "position": "DFC",
+        "rating": 67,
+        "age": 20,
+        "nationality": "Portugal",
+        "marketValue": 100
+      },
+      {
+        "name": "João Afonso",
+        "position": "DFC",
+        "rating": 65,
+        "age": 35,
+        "nationality": "Portugal",
+        "marketValue": 50
+      },
+      {
+        "name": "Nor Maviram",
+        "position": "DFC",
+        "rating": 69,
+        "age": 24,
+        "nationality": "Nigeria",
+        "marketValue": 500
+      },
+      {
+        "name": "Rémy Vita",
+        "position": "DFC",
+        "rating": 66,
+        "age": 21,
+        "nationality": "Comoras",
+        "marketValue": 400
+      },
+      {
+        "name": "Tiago Manso",
+        "position": "DFC",
+        "rating": 71,
+        "age": 26,
+        "nationality": "Portugal",
+        "marketValue": 700
+      },
+      {
+        "name": "Rodrigo Conceição",
+        "position": "DFC",
+        "rating": 71,
+        "age": 27,
+        "nationality": "Portugal",
+        "marketValue": 500
+      },
+      {
+        "name": "Bebeto",
+        "position": "DFC",
+        "rating": 66,
+        "age": 36,
+        "nationality": "Brasil",
+        "marketValue": 50
+      },
+      {
+        "name": "Juanse Rodríguez",
+        "position": "MC",
+        "rating": 67,
+        "age": 32,
+        "nationality": "Ecuador",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Joe Hodge",
+        "position": "MC",
+        "rating": 68,
+        "age": 23,
+        "nationality": "Irlanda",
+        "marketValue": 700
+      },
+      {
+        "name": "Cícero",
+        "position": "MC",
+        "rating": 71,
+        "age": 28,
+        "nationality": "Brasil",
+        "marketValue": 500
+      },
+      {
+        "name": "Yaya Sithole",
+        "position": "MC",
+        "rating": 67,
+        "age": 15,
+        "nationality": "Sudáfrica",
+        "marketValue": 600
+      },
+      {
+        "name": "Hélder Tavares",
+        "position": "MC",
+        "rating": 64,
+        "age": 36,
+        "nationality": "Cabo Verde",
+        "marketValue": 50
+      },
+      {
+        "name": "Hugo Félix",
+        "position": "MC",
+        "rating": 68,
+        "age": 21,
+        "nationality": "Portugal",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Xabi Huarte",
+        "position": "MC",
+        "rating": 69,
+        "age": 24,
+        "nationality": "España",
+        "marketValue": 200
+      },
+      {
+        "name": "Makan Aïko",
+        "position": "DC",
+        "rating": 71,
+        "age": 25,
+        "nationality": "Francia",
+        "marketValue": 600
+      },
+      {
+        "name": "Ivan Cavaleiro",
+        "position": "DC",
+        "rating": 68,
+        "age": 17,
+        "nationality": "Angola",
+        "marketValue": 500
+      },
+      {
+        "name": "Moudjatovic",
+        "position": "DC",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Costa de Marfil",
+        "marketValue": 200
+      },
+      {
+        "name": "Maranhão",
+        "position": "DC",
+        "rating": 70,
+        "age": 26,
+        "nationality": "Brasil",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Rony Lopes",
+        "position": "DC",
+        "rating": 69,
+        "age": 16,
+        "nationality": "Portugal",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Arjen van der Heide",
+        "position": "DC",
+        "rating": 69,
+        "age": 24,
+        "nationality": "Países Bajos",
+        "marketValue": 350
+      },
+      {
+        "name": "Afonso Rodrigues",
+        "position": "DC",
+        "rating": 68,
+        "age": 19,
+        "nationality": "Portugal",
+        "marketValue": 200
+      },
+      {
+        "name": "Jordan",
+        "position": "DC",
+        "rating": 70,
+        "age": 29,
+        "nationality": "Estados Unidos",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Yefrei Rodríguez",
+        "position": "DC",
+        "rating": 65,
+        "age": 20,
+        "nationality": "Colombia",
+        "marketValue": 400
+      }
+    ]
+  },
+  {
+    "id": "cf-estrela-amadora-sad",
+    "name": "CF Estrela Amadora",
+    "players": [
+      {
+        "name": "Diogo Pinto",
+        "position": "POR",
+        "rating": 65,
+        "age": 21,
+        "nationality": "Portugal",
+        "marketValue": 300
+      },
+      {
+        "name": "David Grilo",
+        "position": "POR",
+        "rating": 66,
+        "age": 22,
+        "nationality": "Portugal",
+        "marketValue": 100
+      },
+      {
+        "name": "Renan Ribeiro",
+        "position": "POR",
+        "rating": 66,
+        "age": 40,
+        "nationality": "Brasil",
+        "marketValue": 100
+      },
+      {
+        "name": "Luan Patrick",
+        "position": "DFC",
+        "rating": 72,
+        "age": 30,
+        "nationality": "Brasil",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Bernardo Schappo",
+        "position": "DFC",
+        "rating": 71,
+        "age": 26,
+        "nationality": "Brasil",
+        "marketValue": 750
+      },
+      {
+        "name": "Otávio",
+        "position": "DFC",
+        "rating": 67,
+        "age": 20,
+        "nationality": "Brasil",
+        "marketValue": 500
+      },
+      {
+        "name": "Issiar Dramé",
+        "position": "DFC",
+        "rating": 71,
+        "age": 26,
+        "nationality": "Malí",
+        "marketValue": 400
+      },
+      {
+        "name": "Semeu Commey",
+        "position": "DFC",
+        "rating": 67,
+        "age": 21,
+        "nationality": "Ghana",
+        "marketValue": 300
+      },
+      {
+        "name": "Ni",
+        "position": "DFC",
+        "rating": 67,
+        "age": 22,
+        "nationality": "Portugal",
+        "marketValue": 100
+      },
+      {
+        "name": "Georgiy Tunguliyadi",
+        "position": "DFC",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Rusia",
+        "marketValue": 0
+      },
+      {
+        "name": "Ryan",
+        "position": "DFC",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Brasil",
+        "marketValue": 400
+      },
+      {
+        "name": "Max Scholze",
+        "position": "DFC",
+        "rating": 67,
+        "age": 20,
+        "nationality": "Alemania",
+        "marketValue": 400
+      },
+      {
+        "name": "Jefferson Encada",
+        "position": "DFC",
+        "rating": 67,
+        "age": 17,
+        "nationality": "Guinea-Bissau",
+        "marketValue": 400
+      },
+      {
+        "name": "Kevin Höög Jansson",
+        "position": "MC",
+        "rating": 71,
+        "age": 25,
+        "nationality": "Suecia",
+        "marketValue": 400
+      },
+      {
+        "name": "Daniel Cabral",
+        "position": "MC",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Brasil",
+        "marketValue": 100
+      },
+      {
+        "name": "Eddy Doué",
+        "position": "MC",
+        "rating": 65,
+        "age": 39,
+        "nationality": "Costa de Marfil",
+        "marketValue": 0
+      },
+      {
+        "name": "Paulo Moreira",
+        "position": "MC",
+        "rating": 67,
+        "age": 19,
+        "nationality": "Portugal",
+        "marketValue": 800
+      },
+      {
+        "name": "Robinho",
+        "position": "MC",
+        "rating": 68,
+        "age": 23,
+        "nationality": "Brasil",
+        "marketValue": 500
+      },
+      {
+        "name": "Tom Moustier",
+        "position": "MC",
+        "rating": 71,
+        "age": 28,
+        "nationality": "Francia",
+        "marketValue": 400
+      },
+      {
+        "name": "Alex Sola",
+        "position": "MC",
+        "rating": 68,
+        "age": 22,
+        "nationality": "Angola",
+        "marketValue": 100
+      },
+      {
+        "name": "Ianis Stoica",
+        "position": "DC",
+        "rating": 67,
+        "age": 23,
+        "nationality": "Rumania",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Jovane Cabral",
+        "position": "DC",
+        "rating": 71,
+        "age": 27,
+        "nationality": "Cabo Verde",
+        "marketValue": 800
+      },
+      {
+        "name": "Jorge Meireles",
+        "position": "DC",
+        "rating": 66,
+        "age": 18,
+        "nationality": "Portugal",
+        "marketValue": 600
+      },
+      {
+        "name": "Alisson Souza",
+        "position": "DC",
+        "rating": 68,
+        "age": 20,
+        "nationality": "Brasil",
+        "marketValue": 0
+      },
+      {
+        "name": "Abraham Marcus",
+        "position": "DC",
+        "rating": 71,
+        "age": 26,
+        "nationality": "Nigeria",
+        "marketValue": 800
+      },
+      {
+        "name": "Pape Führer",
+        "position": "DC",
+        "rating": 71,
+        "age": 27,
+        "nationality": "Senegal",
+        "marketValue": 200
+      },
+      {
+        "name": "Sydney van Hooijdonk",
+        "position": "DC",
+        "rating": 72,
+        "age": 25,
+        "nationality": "Países Bajos",
+        "marketValue": 1300000
+      },
+      {
+        "name": "Rodrigo Pinho",
+        "position": "DC",
+        "rating": 62,
+        "age": 34,
+        "nationality": "Brasil",
+        "marketValue": 200
+      },
+      {
+        "name": "Chilohem Onuoha",
+        "position": "DC",
+        "rating": 68,
+        "age": 20,
+        "nationality": "Alemania",
+        "marketValue": 200
+      },
+      {
+        "name": "Leandro Antonetti",
+        "position": "DC",
+        "rating": 68,
+        "age": 23,
+        "nationality": "Puerto Rico",
+        "marketValue": 200
+      }
+    ]
+  },
+  {
+    "id": "avs-futebol-sad",
+    "name": "Avs Futebol",
+    "players": [
+      {
+        "name": "Adriel",
+        "position": "POR",
+        "rating": 69,
+        "age": 25,
+        "nationality": "Brasil",
+        "marketValue": 800
+      },
+      {
+        "name": "Simão",
+        "position": "POR",
+        "rating": 71,
+        "age": 32,
+        "nationality": "Brasil",
+        "marketValue": 200
+      },
+      {
+        "name": "Trigueira",
+        "position": "POR",
+        "rating": 67,
+        "age": 38,
+        "nationality": "Portugal",
+        "marketValue": 50
+      },
+      {
+        "name": "Cristian Devenish",
+        "position": "DFC",
+        "rating": 65,
+        "age": 42,
+        "nationality": "Colombia",
+        "marketValue": 800
+      },
+      {
+        "name": "Rúben Semedo",
+        "position": "DFC",
+        "rating": 66,
+        "age": 35,
+        "nationality": "Portugal",
+        "marketValue": 700
+      },
+      {
+        "name": "Paulo Vitor",
+        "position": "DFC",
+        "rating": 69,
+        "age": 24,
+        "nationality": "Brasil",
+        "marketValue": 500
+      },
+      {
+        "name": "Ponck",
+        "position": "DFC",
+        "rating": 71,
+        "age": 26,
+        "nationality": "Cabo Verde",
+        "marketValue": 200
+      },
+      {
+        "name": "Aderllan Santos",
+        "position": "DFC",
+        "rating": 66,
+        "age": 33,
+        "nationality": "Brasil",
+        "marketValue": 100
+      },
+      {
+        "name": "Daniel Rivas",
+        "position": "DFC",
+        "rating": 68,
+        "age": 24,
+        "nationality": "Paraguay",
+        "marketValue": 500
+      },
+      {
+        "name": "Kiki",
+        "position": "DFC",
+        "rating": 69,
+        "age": 24,
+        "nationality": "Portugal",
+        "marketValue": 400
+      },
+      {
+        "name": "Guillem Molina",
+        "position": "DFC",
+        "rating": 69,
+        "age": 25,
+        "nationality": "España",
+        "marketValue": 300
+      },
+      {
+        "name": "Roni",
+        "position": "MC",
+        "rating": 72,
+        "age": 26,
+        "nationality": "Brasil",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Ángel Algobia",
+        "position": "MC",
+        "rating": 71,
+        "age": 27,
+        "nationality": "España",
+        "marketValue": 600
+      },
+      {
+        "name": "Tiago Hernández",
+        "position": "MC",
+        "rating": 66,
+        "age": 19,
+        "nationality": "Uruguay",
+        "marketValue": 300
+      },
+      {
+        "name": "Jaume Grau",
+        "position": "MC",
+        "rating": 67,
+        "age": 15,
+        "nationality": "España",
+        "marketValue": 700
+      },
+      {
+        "name": "Pedro Lima",
+        "position": "MC",
+        "rating": 69,
+        "age": 22,
+        "nationality": "Brasil",
+        "marketValue": 400
+      },
+      {
+        "name": "Gustavo Mendonça",
+        "position": "MC",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Portugal",
+        "marketValue": 200
+      },
+      {
+        "name": "Rafael Barbosa",
+        "position": "MC",
+        "rating": 72,
+        "age": 29,
+        "nationality": "Portugal",
+        "marketValue": 300
+      },
+      {
+        "name": "Óscar Perea",
+        "position": "DC",
+        "rating": 69,
+        "age": 20,
+        "nationality": "Colombia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Tunde Akinsola",
+        "position": "DC",
+        "rating": 67,
+        "age": 22,
+        "nationality": "Nigeria",
+        "marketValue": 800
+      },
+      {
+        "name": "Guilherme Neiva",
+        "position": "DC",
+        "rating": 65,
+        "age": 21,
+        "nationality": "Brasil",
+        "marketValue": 200
+      },
+      {
+        "name": "Diego Duarte",
+        "position": "DC",
+        "rating": 65,
+        "age": 20,
+        "nationality": "Paraguay",
+        "marketValue": 250
+      },
+      {
+        "name": "Tomané",
+        "position": "DC",
+        "rating": 63,
+        "age": 33,
+        "nationality": "Portugal",
+        "marketValue": 200
+      },
+      {
+        "name": "Nenê",
+        "position": "DC",
+        "rating": 67,
+        "age": 18,
+        "nationality": "Brasil",
+        "marketValue": 50
+      }
+    ]
+  }
+]

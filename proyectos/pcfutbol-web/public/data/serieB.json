@@ -1,0 +1,4786 @@
+[
+  {
+    "id": "venezia-fc",
+    "name": "Venezia FC",
+    "players": [
+      {
+        "name": "Filip Stanković",
+        "position": "POR",
+        "rating": 72,
+        "age": 23,
+        "nationality": "Serbia",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Alessandro Plizzari",
+        "position": "POR",
+        "rating": 71,
+        "age": 22,
+        "nationality": "Italia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Stefano Minelli",
+        "position": "POR",
+        "rating": 75,
+        "age": 31,
+        "nationality": "Italia",
+        "marketValue": 200
+      },
+      {
+        "name": "Matteo Grandi",
+        "position": "POR",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 75
+      },
+      {
+        "name": "Joël Schingtienne",
+        "position": "DFC",
+        "rating": 74,
+        "age": 23,
+        "nationality": "Bélgica",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Michael Svoboda",
+        "position": "DFC",
+        "rating": 76,
+        "age": 30,
+        "nationality": "Austria",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Seid Korac",
+        "position": "DFC",
+        "rating": 73,
+        "age": 24,
+        "nationality": "Luxemburgo",
+        "marketValue": 1700000
+      },
+      {
+        "name": "Marin Šverko",
+        "position": "DFC",
+        "rating": 71,
+        "age": 33,
+        "nationality": "Croacia",
+        "marketValue": 1300000
+      },
+      {
+        "name": "Ahmed Sidibé",
+        "position": "DFC",
+        "rating": 72,
+        "age": 23,
+        "nationality": "Francia",
+        "marketValue": 650
+      },
+      {
+        "name": "Michael Venturi",
+        "position": "DFC",
+        "rating": 71,
+        "age": 16,
+        "nationality": "Italia",
+        "marketValue": 400
+      },
+      {
+        "name": "Bartol Franjic",
+        "position": "DFC",
+        "rating": 76,
+        "age": 26,
+        "nationality": "Croacia",
+        "marketValue": 1400000
+      },
+      {
+        "name": "Ridgeciano Haps",
+        "position": "DFC",
+        "rating": 74,
+        "age": 32,
+        "nationality": "Surinam",
+        "marketValue": 700
+      },
+      {
+        "name": "Antoine Hainaut",
+        "position": "DFC",
+        "rating": 72,
+        "age": 18,
+        "nationality": "Francia",
+        "marketValue": 1700000
+      },
+      {
+        "name": "Richie Sagrado",
+        "position": "DFC",
+        "rating": 71,
+        "age": 20,
+        "nationality": "Bélgica",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Emil Bohinen",
+        "position": "MC",
+        "rating": 69,
+        "age": 37,
+        "nationality": "Noruega",
+        "marketValue": 1300000
+      },
+      {
+        "name": "Issa Doumbia",
+        "position": "MC",
+        "rating": 77,
+        "age": 22,
+        "nationality": "Italia",
+        "marketValue": 6500000
+      },
+      {
+        "name": "Gianluca Busio",
+        "position": "MC",
+        "rating": 75,
+        "age": 23,
+        "nationality": "Estados Unidos",
+        "marketValue": 5500000
+      },
+      {
+        "name": "Matteo Dagasso",
+        "position": "MC",
+        "rating": 72,
+        "age": 21,
+        "nationality": "Italia",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Kike Pérez",
+        "position": "MC",
+        "rating": 77,
+        "age": 28,
+        "nationality": "España",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Alfred Duncan",
+        "position": "MC",
+        "rating": 70,
+        "age": 32,
+        "nationality": "Ghana",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Nunzio Lella",
+        "position": "MC",
+        "rating": 72,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 650
+      },
+      {
+        "name": "Mattia Compagnon",
+        "position": "MC",
+        "rating": 70,
+        "age": 21,
+        "nationality": "Italia",
+        "marketValue": 750
+      },
+      {
+        "name": "Bjarki Bjarkason",
+        "position": "MC",
+        "rating": 71,
+        "age": 19,
+        "nationality": "Islandia",
+        "marketValue": 750
+      },
+      {
+        "name": "John Yeboah",
+        "position": "MC",
+        "rating": 80,
+        "age": 25,
+        "nationality": "Ecuador",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Saad El Haddad",
+        "position": "MC",
+        "rating": 75,
+        "age": 27,
+        "nationality": "Marruecos",
+        "marketValue": 400
+      },
+      {
+        "name": "Marko Farji",
+        "position": "DC",
+        "rating": 73,
+        "age": 21,
+        "nationality": "Irak",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Alessandro Pietrelli",
+        "position": "DC",
+        "rating": 73,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 750
+      },
+      {
+        "name": "Andrea Adorante",
+        "position": "DC",
+        "rating": 77,
+        "age": 25,
+        "nationality": "Italia",
+        "marketValue": 3200000
+      },
+      {
+        "name": "Lion Lauberbach",
+        "position": "DC",
+        "rating": 76,
+        "age": 29,
+        "nationality": "Alemania",
+        "marketValue": 1700000
+      },
+      {
+        "name": "Antonio Casas",
+        "position": "DC",
+        "rating": 72,
+        "age": 25,
+        "nationality": "España",
+        "marketValue": 700
+      }
+    ]
+  },
+  {
+    "id": "ac-monza",
+    "name": "AC Monza",
+    "players": [
+      {
+        "name": "Demba Thiam",
+        "position": "POR",
+        "rating": 71,
+        "age": 20,
+        "nationality": "Senegal",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Semuel Pizzignacco",
+        "position": "POR",
+        "rating": 69,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 750
+      },
+      {
+        "name": "Aljaz Strajnar",
+        "position": "POR",
+        "rating": 70,
+        "age": 43,
+        "nationality": "Eslovenia",
+        "marketValue": 100
+      },
+      {
+        "name": "Lorenzo Lucchesi",
+        "position": "DFC",
+        "rating": 71,
+        "age": 22,
+        "nationality": "Italia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Andrea Carboni",
+        "position": "DFC",
+        "rating": 70,
+        "age": 44,
+        "nationality": "Italia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Valentin Antov",
+        "position": "DFC",
+        "rating": 74,
+        "age": 25,
+        "nationality": "Bulgaria",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Luca Ravanelli",
+        "position": "DFC",
+        "rating": 76,
+        "age": 29,
+        "nationality": "Italia",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Filippo Delli Carri",
+        "position": "DFC",
+        "rating": 71,
+        "age": 15,
+        "nationality": "Italia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Arvid Brorsson",
+        "position": "DFC",
+        "rating": 74,
+        "age": 26,
+        "nationality": "Suecia",
+        "marketValue": 500
+      },
+      {
+        "name": "Saverio Domanico",
+        "position": "DFC",
+        "rating": 70,
+        "age": 33,
+        "nationality": "Italia",
+        "marketValue": 300
+      },
+      {
+        "name": "Samuele Capolupo",
+        "position": "DFC",
+        "rating": 75,
+        "age": 27,
+        "nationality": "Italia",
+        "marketValue": 75
+      },
+      {
+        "name": "Samuele Birindelli",
+        "position": "DFC",
+        "rating": 72,
+        "age": 19,
+        "nationality": "Italia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Adam Bakoune",
+        "position": "DFC",
+        "rating": 72,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 600
+      },
+      {
+        "name": "Leonardo Colombo",
+        "position": "MC",
+        "rating": 70,
+        "age": 21,
+        "nationality": "Italia",
+        "marketValue": 400
+      },
+      {
+        "name": "Matteo Pessina",
+        "position": "MC",
+        "rating": 72,
+        "age": 32,
+        "nationality": "Italia",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Hernani",
+        "position": "MC",
+        "rating": 78,
+        "age": 31,
+        "nationality": "Brasil",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Pedro Obiang",
+        "position": "MC",
+        "rating": 70,
+        "age": 33,
+        "nationality": "Guinea Ecuatorial",
+        "marketValue": 400
+      },
+      {
+        "name": "Patrick Ciurria",
+        "position": "MC",
+        "rating": 76,
+        "age": 26,
+        "nationality": "Italia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Paulo Azzi",
+        "position": "MC",
+        "rating": 75,
+        "age": 31,
+        "nationality": "Brasil",
+        "marketValue": 750
+      },
+      {
+        "name": "Andrea Colpani",
+        "position": "MC",
+        "rating": 77,
+        "age": 28,
+        "nationality": "Italia",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Nicolas Galazzi",
+        "position": "MC",
+        "rating": 72,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 900
+      },
+      {
+        "name": "Giuseppe Caso",
+        "position": "MC",
+        "rating": 75,
+        "age": 30,
+        "nationality": "Italia",
+        "marketValue": 900
+      },
+      {
+        "name": "Keita Baldé",
+        "position": "DC",
+        "rating": 70,
+        "age": 17,
+        "nationality": "Senegal",
+        "marketValue": 900
+      },
+      {
+        "name": "Omari Forson",
+        "position": "DC",
+        "rating": 73,
+        "age": 21,
+        "nationality": "Inglaterra",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Gianluca Caprari",
+        "position": "DC",
+        "rating": 68,
+        "age": 32,
+        "nationality": "Italia",
+        "marketValue": 750
+      },
+      {
+        "name": "Agustín Álvarez",
+        "position": "DC",
+        "rating": 76,
+        "age": 25,
+        "nationality": "Uruguay",
+        "marketValue": 3700000
+      },
+      {
+        "name": "Dany Mota",
+        "position": "DC",
+        "rating": 76,
+        "age": 27,
+        "nationality": "Portugal",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Mirko Marić",
+        "position": "DC",
+        "rating": 72,
+        "age": 30,
+        "nationality": "Croacia",
+        "marketValue": 500
+      },
+      {
+        "name": "Andrea Petagna",
+        "position": "DC",
+        "rating": 66,
+        "age": 37,
+        "nationality": "Italia",
+        "marketValue": 500
+      }
+    ]
+  },
+  {
+    "id": "sampdoria-genua",
+    "name": "UC Sampdoria",
+    "players": [
+      {
+        "name": "Tommaso Martinelli",
+        "position": "POR",
+        "rating": 71,
+        "age": 20,
+        "nationality": "Italia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Gaëtan Coucke",
+        "position": "POR",
+        "rating": 73,
+        "age": 27,
+        "nationality": "Bélgica",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Simone Ghidotti",
+        "position": "POR",
+        "rating": 73,
+        "age": 25,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Nicola Ravaglia",
+        "position": "POR",
+        "rating": 74,
+        "age": 30,
+        "nationality": "Italia",
+        "marketValue": 50
+      },
+      {
+        "name": "Matteo Palma",
+        "position": "DFC",
+        "rating": 73,
+        "age": 17,
+        "nationality": "Alemania",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Mattia Viti",
+        "position": "DFC",
+        "rating": 74,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Dennis Hadzikadunic",
+        "position": "DFC",
+        "rating": 72,
+        "age": 17,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 1300000
+      },
+      {
+        "name": "Giorgio Altare",
+        "position": "DFC",
+        "rating": 71,
+        "age": 15,
+        "nationality": "Italia",
+        "marketValue": 800
+      },
+      {
+        "name": "Alessandro Pio Riccio",
+        "position": "DFC",
+        "rating": 73,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 400
+      },
+      {
+        "name": "Stipe Vulikic",
+        "position": "DFC",
+        "rating": 74,
+        "age": 31,
+        "nationality": "Croacia",
+        "marketValue": 400
+      },
+      {
+        "name": "Alex Ferrari",
+        "position": "DFC",
+        "rating": 72,
+        "age": 25,
+        "nationality": "Italia",
+        "marketValue": 250
+      },
+      {
+        "name": "Lorenzo Malanca",
+        "position": "DFC",
+        "rating": 69,
+        "age": 39,
+        "nationality": "Italia",
+        "marketValue": 150
+      },
+      {
+        "name": "Nikolas Ioannou",
+        "position": "DFC",
+        "rating": 69,
+        "age": 44,
+        "nationality": "Chipre",
+        "marketValue": 700
+      },
+      {
+        "name": "Simone Giordano",
+        "position": "DFC",
+        "rating": 71,
+        "age": 21,
+        "nationality": "Italia",
+        "marketValue": 600
+      },
+      {
+        "name": "Fabio Depaoli",
+        "position": "DFC",
+        "rating": 73,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 900
+      },
+      {
+        "name": "Alessandro Di Pardo",
+        "position": "DFC",
+        "rating": 75,
+        "age": 29,
+        "nationality": "Italia",
+        "marketValue": 800
+      },
+      {
+        "name": "Lorenzo Venuti",
+        "position": "DFC",
+        "rating": 71,
+        "age": 18,
+        "nationality": "Italia",
+        "marketValue": 400
+      },
+      {
+        "name": "Salvatore Esposito",
+        "position": "MC",
+        "rating": 77,
+        "age": 25,
+        "nationality": "Italia",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Oliver Abildgaard",
+        "position": "MC",
+        "rating": 75,
+        "age": 28,
+        "nationality": "Dinamarca",
+        "marketValue": 500
+      },
+      {
+        "name": "Matteo Ricci",
+        "position": "MC",
+        "rating": 74,
+        "age": 31,
+        "nationality": "Italia",
+        "marketValue": 300
+      },
+      {
+        "name": "Liam Henderson",
+        "position": "MC",
+        "rating": 72,
+        "age": 16,
+        "nationality": "Escocia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Francesco Conti",
+        "position": "MC",
+        "rating": 69,
+        "age": 33,
+        "nationality": "Italia",
+        "marketValue": 600
+      },
+      {
+        "name": "Jordan Ferri",
+        "position": "MC",
+        "rating": 69,
+        "age": 33,
+        "nationality": "Francia",
+        "marketValue": 500
+      },
+      {
+        "name": "Alessandro Bellemo",
+        "position": "MC",
+        "rating": 75,
+        "age": 30,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Tommaso Casalino",
+        "position": "MC",
+        "rating": 70,
+        "age": 34,
+        "nationality": "Italia",
+        "marketValue": 300
+      },
+      {
+        "name": "Stefano Girelli",
+        "position": "MC",
+        "rating": 71,
+        "age": 19,
+        "nationality": "Italia",
+        "marketValue": 200
+      },
+      {
+        "name": "Manuel Cicconi",
+        "position": "MC",
+        "rating": 75,
+        "age": 28,
+        "nationality": "Italia",
+        "marketValue": 900
+      },
+      {
+        "name": "Simone Pafundi",
+        "position": "MC",
+        "rating": 74,
+        "age": 20,
+        "nationality": "Italia",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Antonín Barák",
+        "position": "MC",
+        "rating": 75,
+        "age": 31,
+        "nationality": "República Checa",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Luigi Cherubini",
+        "position": "DC",
+        "rating": 72,
+        "age": 22,
+        "nationality": "Italia",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Tjas Begic",
+        "position": "DC",
+        "rating": 73,
+        "age": 22,
+        "nationality": "Eslovenia",
+        "marketValue": 700
+      },
+      {
+        "name": "Matteo Luigi Brunori",
+        "position": "DC",
+        "rating": 70,
+        "age": 31,
+        "nationality": "Italia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Massimo Coda",
+        "position": "DC",
+        "rating": 69,
+        "age": 37,
+        "nationality": "Italia",
+        "marketValue": 400
+      }
+    ]
+  },
+  {
+    "id": "fc-empoli",
+    "name": "Empoli FC",
+    "players": [
+      {
+        "name": "Andrea Fulignati",
+        "position": "POR",
+        "rating": 68,
+        "age": 21,
+        "nationality": "Italia",
+        "marketValue": 900
+      },
+      {
+        "name": "Samuele Perisan",
+        "position": "POR",
+        "rating": 72,
+        "age": 28,
+        "nationality": "Italia",
+        "marketValue": 400
+      },
+      {
+        "name": "Manuel Gasparini",
+        "position": "POR",
+        "rating": 67,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 200
+      },
+      {
+        "name": "Francesco Versari",
+        "position": "POR",
+        "rating": 68,
+        "age": 22,
+        "nationality": "Italia",
+        "marketValue": 100
+      },
+      {
+        "name": "Matteo Lovato",
+        "position": "DFC",
+        "rating": 70,
+        "age": 20,
+        "nationality": "Italia",
+        "marketValue": 2800000
+      },
+      {
+        "name": "Gabriele Guarino",
+        "position": "DFC",
+        "rating": 69,
+        "age": 34,
+        "nationality": "Italia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Lorenzo Tosto",
+        "position": "DFC",
+        "rating": 73,
+        "age": 29,
+        "nationality": "Italia",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Nosa Edward Obaretin",
+        "position": "DFC",
+        "rating": 72,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Marco Curto",
+        "position": "DFC",
+        "rating": 72,
+        "age": 27,
+        "nationality": "Italia",
+        "marketValue": 750
+      },
+      {
+        "name": "Simone Romagnoli",
+        "position": "DFC",
+        "rating": 68,
+        "age": 35,
+        "nationality": "Italia",
+        "marketValue": 250
+      },
+      {
+        "name": "Dawid Bembnista",
+        "position": "DFC",
+        "rating": 68,
+        "age": 36,
+        "nationality": "Polonia",
+        "marketValue": 175
+      },
+      {
+        "name": "Gabriele Indragoli",
+        "position": "DFC",
+        "rating": 73,
+        "age": 28,
+        "nationality": "Italia",
+        "marketValue": 150
+      },
+      {
+        "name": "Brando Moruzzi",
+        "position": "DFC",
+        "rating": 74,
+        "age": 27,
+        "nationality": "Italia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Antonio Candela",
+        "position": "DFC",
+        "rating": 71,
+        "age": 25,
+        "nationality": "Italia",
+        "marketValue": 900
+      },
+      {
+        "name": "Tyronne Ebuehi",
+        "position": "DFC",
+        "rating": 70,
+        "age": 24,
+        "nationality": "Nigeria",
+        "marketValue": 800
+      },
+      {
+        "name": "Duccio Degli Innocenti",
+        "position": "MC",
+        "rating": 71,
+        "age": 22,
+        "nationality": "Italia",
+        "marketValue": 1400000
+      },
+      {
+        "name": "Gerard Yepes",
+        "position": "MC",
+        "rating": 72,
+        "age": 23,
+        "nationality": "España",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Andrea Ghion",
+        "position": "MC",
+        "rating": 70,
+        "age": 18,
+        "nationality": "Italia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Lorenzo Ignacchiti",
+        "position": "MC",
+        "rating": 73,
+        "age": 25,
+        "nationality": "Italia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Nicolas Haas",
+        "position": "MC",
+        "rating": 67,
+        "age": 32,
+        "nationality": "Suiza",
+        "marketValue": 700
+      },
+      {
+        "name": "Salvatore Elia",
+        "position": "MC",
+        "rating": 75,
+        "age": 26,
+        "nationality": "Italia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Joseph Ceesay",
+        "position": "MC",
+        "rating": 69,
+        "age": 15,
+        "nationality": "Gambia",
+        "marketValue": 600
+      },
+      {
+        "name": "Rareș Ilie",
+        "position": "MC",
+        "rating": 73,
+        "age": 22,
+        "nationality": "Rumania",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Edoardo Saporiti",
+        "position": "MC",
+        "rating": 70,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 700
+      },
+      {
+        "name": "Danilo Busiello",
+        "position": "MC",
+        "rating": 69,
+        "age": 17,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Andrea Orlandi",
+        "position": "MC",
+        "rating": 69,
+        "age": 19,
+        "nationality": "Italia",
+        "marketValue": 175
+      },
+      {
+        "name": "Bogdan Popov",
+        "position": "DC",
+        "rating": 70,
+        "age": 18,
+        "nationality": "Ucrania",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Stiven Shpendi",
+        "position": "DC",
+        "rating": 72,
+        "age": 22,
+        "nationality": "Albania",
+        "marketValue": 2700000
+      },
+      {
+        "name": "Daniel Fila",
+        "position": "DC",
+        "rating": 72,
+        "age": 23,
+        "nationality": "República Checa",
+        "marketValue": 2300000
+      },
+      {
+        "name": "Pietro Pellegri",
+        "position": "DC",
+        "rating": 72,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Marco Nasti",
+        "position": "DC",
+        "rating": 71,
+        "age": 19,
+        "nationality": "Italia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Thomas Campaniello",
+        "position": "DC",
+        "rating": 71,
+        "age": 17,
+        "nationality": "Italia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Ismaël Konaté",
+        "position": "DC",
+        "rating": 70,
+        "age": 19,
+        "nationality": "Italia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Flavio Bianchi",
+        "position": "DC",
+        "rating": 72,
+        "age": 26,
+        "nationality": "Italia",
+        "marketValue": 250
+      }
+    ]
+  },
+  {
+    "id": "palermo-fc",
+    "name": "Palermo FC",
+    "players": [
+      {
+        "name": "Jesse Joronen",
+        "position": "POR",
+        "rating": 73,
+        "age": 32,
+        "nationality": "Finlandia",
+        "marketValue": 500
+      },
+      {
+        "name": "Alfred Gomis",
+        "position": "POR",
+        "rating": 72,
+        "age": 32,
+        "nationality": "Senegal",
+        "marketValue": 300
+      },
+      {
+        "name": "Francesco Di Bartolo",
+        "position": "POR",
+        "rating": 67,
+        "age": 20,
+        "nationality": "Italia",
+        "marketValue": 50
+      },
+      {
+        "name": "Mattia Bani",
+        "position": "DFC",
+        "rating": 74,
+        "age": 32,
+        "nationality": "Italia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Giangiacomo Magnani",
+        "position": "DFC",
+        "rating": 72,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 1400000
+      },
+      {
+        "name": "Pietro Ceccaroni",
+        "position": "DFC",
+        "rating": 74,
+        "age": 32,
+        "nationality": "Italia",
+        "marketValue": 1400000
+      },
+      {
+        "name": "Patryk Peda",
+        "position": "DFC",
+        "rating": 74,
+        "age": 29,
+        "nationality": "Polonia",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Davide Veroli",
+        "position": "DFC",
+        "rating": 70,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 800
+      },
+      {
+        "name": "Tommaso Augello",
+        "position": "DFC",
+        "rating": 74,
+        "age": 31,
+        "nationality": "Italia",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Niccolò Pierozzi",
+        "position": "DFC",
+        "rating": 74,
+        "age": 27,
+        "nationality": "Italia",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Salim Diakité",
+        "position": "DFC",
+        "rating": 71,
+        "age": 23,
+        "nationality": "Malí",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Bartosz Bereszyński",
+        "position": "DFC",
+        "rating": 68,
+        "age": 19,
+        "nationality": "Polonia",
+        "marketValue": 450
+      },
+      {
+        "name": "Claudio Gomes",
+        "position": "MC",
+        "rating": 73,
+        "age": 25,
+        "nationality": "Francia",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Alexis Blin",
+        "position": "MC",
+        "rating": 72,
+        "age": 28,
+        "nationality": "Francia",
+        "marketValue": 900
+      },
+      {
+        "name": "Filippo Ranocchia",
+        "position": "MC",
+        "rating": 72,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Antonio Palumbo",
+        "position": "MC",
+        "rating": 75,
+        "age": 29,
+        "nationality": "Italia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Jacopo Segre",
+        "position": "MC",
+        "rating": 74,
+        "age": 28,
+        "nationality": "Italia",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Samuel Giovane",
+        "position": "MC",
+        "rating": 69,
+        "age": 17,
+        "nationality": "Italia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Aljosa Vasic",
+        "position": "MC",
+        "rating": 71,
+        "age": 23,
+        "nationality": "Serbia",
+        "marketValue": 800
+      },
+      {
+        "name": "Emmanuel Gyasi",
+        "position": "MC",
+        "rating": 69,
+        "age": 32,
+        "nationality": "Ghana",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Joel Pohjanpalo",
+        "position": "DC",
+        "rating": 74,
+        "age": 20,
+        "nationality": "Finlandia",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Jérémy Le Douaron",
+        "position": "DC",
+        "rating": 69,
+        "age": 21,
+        "nationality": "Francia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Giacomo Corona",
+        "position": "DC",
+        "rating": 67,
+        "age": 31,
+        "nationality": "Italia",
+        "marketValue": 500
+      }
+    ]
+  },
+  {
+    "id": "spezia-calcio",
+    "name": "Spezia",
+    "players": [
+      {
+        "name": "Diego Mascardi",
+        "position": "POR",
+        "rating": 67,
+        "age": 19,
+        "nationality": "Italia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Boris Radunović",
+        "position": "POR",
+        "rating": 66,
+        "age": 22,
+        "nationality": "Serbia",
+        "marketValue": 800
+      },
+      {
+        "name": "Mouhamadou Sarr",
+        "position": "POR",
+        "rating": 71,
+        "age": 29,
+        "nationality": "Senegal",
+        "marketValue": 250
+      },
+      {
+        "name": "Leonardo Loria",
+        "position": "POR",
+        "rating": 66,
+        "age": 16,
+        "nationality": "Italia",
+        "marketValue": 150
+      },
+      {
+        "name": "Giovanni Bonfanti",
+        "position": "DFC",
+        "rating": 70,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Petko Hristov",
+        "position": "DFC",
+        "rating": 72,
+        "age": 26,
+        "nationality": "Bulgaria",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Marco Ruggero",
+        "position": "DFC",
+        "rating": 70,
+        "age": 25,
+        "nationality": "Italia",
+        "marketValue": 2400000
+      },
+      {
+        "name": "Fellipe Jack",
+        "position": "DFC",
+        "rating": 67,
+        "age": 20,
+        "nationality": "Italia",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Ales Mateju",
+        "position": "DFC",
+        "rating": 65,
+        "age": 37,
+        "nationality": "República Checa",
+        "marketValue": 900
+      },
+      {
+        "name": "Andrea Bertoncini",
+        "position": "DFC",
+        "rating": 69,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 150
+      },
+      {
+        "name": "Laurens Serpe",
+        "position": "DFC",
+        "rating": 69,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 100
+      },
+      {
+        "name": "Pietro Beruatto",
+        "position": "DFC",
+        "rating": 72,
+        "age": 27,
+        "nationality": "Italia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Leonardo Sernicola",
+        "position": "DFC",
+        "rating": 68,
+        "age": 17,
+        "nationality": "Italia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Giuseppe Aurelio",
+        "position": "DFC",
+        "rating": 71,
+        "age": 31,
+        "nationality": "Italia",
+        "marketValue": 800
+      },
+      {
+        "name": "Luca Vignali",
+        "position": "DFC",
+        "rating": 71,
+        "age": 32,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Ádám Nagy",
+        "position": "MC",
+        "rating": 71,
+        "age": 30,
+        "nationality": "Hungría",
+        "marketValue": 700
+      },
+      {
+        "name": "Alessandro Romano",
+        "position": "MC",
+        "rating": 67,
+        "age": 19,
+        "nationality": "Suiza",
+        "marketValue": 500
+      },
+      {
+        "name": "Christian Comotto",
+        "position": "MC",
+        "rating": 66,
+        "age": 34,
+        "nationality": "Italia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Filippo Bandinelli",
+        "position": "MC",
+        "rating": 71,
+        "age": 25,
+        "nationality": "Italia",
+        "marketValue": 750
+      },
+      {
+        "name": "Mattia Valoti",
+        "position": "MC",
+        "rating": 66,
+        "age": 32,
+        "nationality": "Italia",
+        "marketValue": 600
+      },
+      {
+        "name": "Szymon Żurkowski",
+        "position": "MC",
+        "rating": 71,
+        "age": 28,
+        "nationality": "Polonia",
+        "marketValue": 500
+      },
+      {
+        "name": "Francesco Cassata",
+        "position": "MC",
+        "rating": 71,
+        "age": 29,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Emanuele Adamo",
+        "position": "MC",
+        "rating": 71,
+        "age": 27,
+        "nationality": "Italia",
+        "marketValue": 750
+      },
+      {
+        "name": "Daniele Verde",
+        "position": "DC",
+        "rating": 72,
+        "age": 29,
+        "nationality": "Italia",
+        "marketValue": 750
+      },
+      {
+        "name": "Vanja Vlahović",
+        "position": "DC",
+        "rating": 67,
+        "age": 21,
+        "nationality": "Serbia",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Giuseppe Di Serio",
+        "position": "DC",
+        "rating": 68,
+        "age": 20,
+        "nationality": "Italia",
+        "marketValue": 800
+      },
+      {
+        "name": "Gianluca Lapadula",
+        "position": "DC",
+        "rating": 62,
+        "age": 35,
+        "nationality": "Perú",
+        "marketValue": 600
+      },
+      {
+        "name": "Gabriele Artistico",
+        "position": "DC",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 350
+      },
+      {
+        "name": "Edoardo Soleri",
+        "position": "DC",
+        "rating": 68,
+        "age": 27,
+        "nationality": "Italia",
+        "marketValue": 300
+      }
+    ]
+  },
+  {
+    "id": "us-catanzaro",
+    "name": "US Catanzaro",
+    "players": [
+      {
+        "name": "Mirko Pigliacelli",
+        "position": "POR",
+        "rating": 66,
+        "age": 22,
+        "nationality": "Italia",
+        "marketValue": 400
+      },
+      {
+        "name": "Christian Marietta",
+        "position": "POR",
+        "rating": 65,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 250
+      },
+      {
+        "name": "Lorenzo Madia",
+        "position": "POR",
+        "rating": 66,
+        "age": 18,
+        "nationality": "Italia",
+        "marketValue": 50
+      },
+      {
+        "name": "Edoardo Borrelli",
+        "position": "POR",
+        "rating": 66,
+        "age": 21,
+        "nationality": "Italia",
+        "marketValue": 50
+      },
+      {
+        "name": "Matias Antonini",
+        "position": "DFC",
+        "rating": 71,
+        "age": 27,
+        "nationality": "Brasil",
+        "marketValue": 800
+      },
+      {
+        "name": "Tommaso Cassandro",
+        "position": "DFC",
+        "rating": 71,
+        "age": 26,
+        "nationality": "Italia",
+        "marketValue": 800
+      },
+      {
+        "name": "Bruno Verrengia",
+        "position": "DFC",
+        "rating": 70,
+        "age": 26,
+        "nationality": "Italia",
+        "marketValue": 400
+      },
+      {
+        "name": "Nicolò Brighenti",
+        "position": "DFC",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 250
+      },
+      {
+        "name": "Ervin Bashi",
+        "position": "DFC",
+        "rating": 66,
+        "age": 20,
+        "nationality": "Albania",
+        "marketValue": 200
+      },
+      {
+        "name": "Mario Paura",
+        "position": "DFC",
+        "rating": 66,
+        "age": 33,
+        "nationality": "Italia",
+        "marketValue": 75
+      },
+      {
+        "name": "Costantino Favasuli",
+        "position": "DFC",
+        "rating": 72,
+        "age": 27,
+        "nationality": "Italia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Gianluca Di Chiara",
+        "position": "DFC",
+        "rating": 66,
+        "age": 17,
+        "nationality": "Italia",
+        "marketValue": 250
+      },
+      {
+        "name": "Gonçalo Esteves",
+        "position": "DFC",
+        "rating": 67,
+        "age": 21,
+        "nationality": "Portugal",
+        "marketValue": 500
+      },
+      {
+        "name": "Ruggero Frosinini",
+        "position": "DFC",
+        "rating": 68,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 250
+      },
+      {
+        "name": "Marco Pompetti",
+        "position": "MC",
+        "rating": 68,
+        "age": 21,
+        "nationality": "Italia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Jacopo Petriccione",
+        "position": "MC",
+        "rating": 71,
+        "age": 30,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Fabio Rispoli",
+        "position": "MC",
+        "rating": 67,
+        "age": 32,
+        "nationality": "Italia",
+        "marketValue": 4500000
+      },
+      {
+        "name": "Simone Pontisso",
+        "position": "MC",
+        "rating": 69,
+        "age": 20,
+        "nationality": "Italia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Davide Buglio",
+        "position": "MC",
+        "rating": 70,
+        "age": 27,
+        "nationality": "Italia",
+        "marketValue": 800
+      },
+      {
+        "name": "Alphadjo Cissè",
+        "position": "MC",
+        "rating": 71,
+        "age": 19,
+        "nationality": "Italia",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Mattia Liberali",
+        "position": "MC",
+        "rating": 67,
+        "age": 18,
+        "nationality": "Italia",
+        "marketValue": 3800000
+      },
+      {
+        "name": "Rémi Oudin",
+        "position": "MC",
+        "rating": 71,
+        "age": 28,
+        "nationality": "Francia",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Gabriele Alesi",
+        "position": "MC",
+        "rating": 70,
+        "age": 30,
+        "nationality": "Italia",
+        "marketValue": 250
+      },
+      {
+        "name": "Patrick Nuamah",
+        "position": "DC",
+        "rating": 66,
+        "age": 19,
+        "nationality": "Italia",
+        "marketValue": 1600000
+      },
+      {
+        "name": "Federico Di Francesco",
+        "position": "DC",
+        "rating": 65,
+        "age": 31,
+        "nationality": "Italia",
+        "marketValue": 750
+      },
+      {
+        "name": "Sayha Seha",
+        "position": "DC",
+        "rating": 68,
+        "age": 21,
+        "nationality": "Madagascar",
+        "marketValue": 200
+      },
+      {
+        "name": "Marco D'Alessandro",
+        "position": "DC",
+        "rating": 62,
+        "age": 34,
+        "nationality": "Italia",
+        "marketValue": 175
+      },
+      {
+        "name": "Pietro Iemmello",
+        "position": "DC",
+        "rating": 66,
+        "age": 33,
+        "nationality": "Italia",
+        "marketValue": 750
+      },
+      {
+        "name": "Filippo Pittarello",
+        "position": "DC",
+        "rating": 68,
+        "age": 29,
+        "nationality": "Italia",
+        "marketValue": 600
+      },
+      {
+        "name": "Luca Pandolfi",
+        "position": "DC",
+        "rating": 68,
+        "age": 27,
+        "nationality": "Italia",
+        "marketValue": 400
+      }
+    ]
+  },
+  {
+    "id": "frosinone-calcio",
+    "name": "Frosinone Calcio",
+    "players": [
+      {
+        "name": "Lorenzo Palmisani",
+        "position": "POR",
+        "rating": 67,
+        "age": 22,
+        "nationality": "Italia",
+        "marketValue": 1400000
+      },
+      {
+        "name": "Matteo Pisseri",
+        "position": "POR",
+        "rating": 70,
+        "age": 34,
+        "nationality": "Italia",
+        "marketValue": 150
+      },
+      {
+        "name": "Eldin Lolic",
+        "position": "POR",
+        "rating": 65,
+        "age": 21,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 50
+      },
+      {
+        "name": "Gabriele Calvani",
+        "position": "DFC",
+        "rating": 68,
+        "age": 22,
+        "nationality": "Italia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Ilario Monterisi",
+        "position": "DFC",
+        "rating": 73,
+        "age": 30,
+        "nationality": "Italia",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Gabriele Bracaglia",
+        "position": "DFC",
+        "rating": 68,
+        "age": 22,
+        "nationality": "Italia",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Giorgio Cittadini",
+        "position": "DFC",
+        "rating": 68,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 900
+      },
+      {
+        "name": "Jacopo Gelli",
+        "position": "DFC",
+        "rating": 68,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 400
+      },
+      {
+        "name": "Sergio Kalaj",
+        "position": "DFC",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Albania",
+        "marketValue": 150
+      },
+      {
+        "name": "Riccardo Marchizza",
+        "position": "DFC",
+        "rating": 71,
+        "age": 27,
+        "nationality": "Italia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Niccolò Corrado",
+        "position": "DFC",
+        "rating": 66,
+        "age": 19,
+        "nationality": "Italia",
+        "marketValue": 900
+      },
+      {
+        "name": "Anthony Oyono",
+        "position": "DFC",
+        "rating": 68,
+        "age": 20,
+        "nationality": "Gabón",
+        "marketValue": 1400000
+      },
+      {
+        "name": "Jérémy Oyono",
+        "position": "DFC",
+        "rating": 66,
+        "age": 21,
+        "nationality": "Gabón",
+        "marketValue": 400
+      },
+      {
+        "name": "Giacomo Calò",
+        "position": "MC",
+        "rating": 75,
+        "age": 28,
+        "nationality": "Italia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Matteo Cichella",
+        "position": "MC",
+        "rating": 66,
+        "age": 16,
+        "nationality": "Italia",
+        "marketValue": 900
+      },
+      {
+        "name": "Ilias Koutsoupias",
+        "position": "MC",
+        "rating": 72,
+        "age": 24,
+        "nationality": "Grecia",
+        "marketValue": 1700000
+      },
+      {
+        "name": "Filippo Grosso",
+        "position": "MC",
+        "rating": 66,
+        "age": 18,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Ben Lhassine Kone",
+        "position": "MC",
+        "rating": 70,
+        "age": 25,
+        "nationality": "Costa de Marfil",
+        "marketValue": 500
+      },
+      {
+        "name": "Edoardo Masciangelo",
+        "position": "MC",
+        "rating": 65,
+        "age": 32,
+        "nationality": "Italia",
+        "marketValue": 250
+      },
+      {
+        "name": "Francesco Gelli",
+        "position": "MC",
+        "rating": 71,
+        "age": 29,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Abdoulie Ndow",
+        "position": "MC",
+        "rating": 68,
+        "age": 24,
+        "nationality": "Gambia",
+        "marketValue": 150
+      },
+      {
+        "name": "Giorgi Kvernadze",
+        "position": "DC",
+        "rating": 69,
+        "age": 17,
+        "nationality": "Georgia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Antonio Fiori",
+        "position": "DC",
+        "rating": 70,
+        "age": 22,
+        "nationality": "Italia",
+        "marketValue": 1300000
+      },
+      {
+        "name": "Damar Dixon",
+        "position": "DC",
+        "rating": 68,
+        "age": 21,
+        "nationality": "Canadá",
+        "marketValue": 100
+      },
+      {
+        "name": "Seydou Fini",
+        "position": "DC",
+        "rating": 69,
+        "age": 19,
+        "nationality": "Italia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Farès Ghedjemis",
+        "position": "DC",
+        "rating": 71,
+        "age": 23,
+        "nationality": "Francia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Kevin Barcella",
+        "position": "DC",
+        "rating": 68,
+        "age": 19,
+        "nationality": "Italia",
+        "marketValue": 400
+      },
+      {
+        "name": "Antonio Raimondo",
+        "position": "DC",
+        "rating": 69,
+        "age": 21,
+        "nationality": "Italia",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Massimo Zilli",
+        "position": "DC",
+        "rating": 68,
+        "age": 28,
+        "nationality": "Italia",
+        "marketValue": 450
+      },
+      {
+        "name": "Lorenzo Gori",
+        "position": "DC",
+        "rating": 66,
+        "age": 21,
+        "nationality": "Italia",
+        "marketValue": 250
+      },
+      {
+        "name": "Edoardo Vergani",
+        "position": "DC",
+        "rating": 66,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 250
+      }
+    ]
+  },
+  {
+    "id": "cesena-fc",
+    "name": "Cesena FC",
+    "players": [
+      {
+        "name": "Jonathan Klinsmann",
+        "position": "POR",
+        "rating": 70,
+        "age": 33,
+        "nationality": "Estados Unidos",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Alessandro Siano",
+        "position": "POR",
+        "rating": 63,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 100
+      },
+      {
+        "name": "Niccolò Fontana",
+        "position": "POR",
+        "rating": 64,
+        "age": 39,
+        "nationality": "Italia",
+        "marketValue": 100
+      },
+      {
+        "name": "Luca Ferretti",
+        "position": "POR",
+        "rating": 63,
+        "age": 40,
+        "nationality": "Italia",
+        "marketValue": 50
+      },
+      {
+        "name": "Andrea Ciofi",
+        "position": "DFC",
+        "rating": 66,
+        "age": 15,
+        "nationality": "Italia",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Massimiliano Mangraviti",
+        "position": "DFC",
+        "rating": 68,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 1400000
+      },
+      {
+        "name": "Giovanni Zaro",
+        "position": "DFC",
+        "rating": 65,
+        "age": 19,
+        "nationality": "Italia",
+        "marketValue": 700
+      },
+      {
+        "name": "Matteo Guidi",
+        "position": "DFC",
+        "rating": 64,
+        "age": 18,
+        "nationality": "Italia",
+        "marketValue": 300
+      },
+      {
+        "name": "Matteo Piacentini",
+        "position": "DFC",
+        "rating": 68,
+        "age": 26,
+        "nationality": "Italia",
+        "marketValue": 250
+      },
+      {
+        "name": "Peter Amoran",
+        "position": "DFC",
+        "rating": 64,
+        "age": 16,
+        "nationality": "Suecia",
+        "marketValue": 150
+      },
+      {
+        "name": "Gianluca Frabotta",
+        "position": "DFC",
+        "rating": 70,
+        "age": 26,
+        "nationality": "Italia",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Raffaele Celia",
+        "position": "DFC",
+        "rating": 68,
+        "age": 26,
+        "nationality": "Italia",
+        "marketValue": 350
+      },
+      {
+        "name": "Vittorio Magni",
+        "position": "DFC",
+        "rating": 66,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 400
+      },
+      {
+        "name": "Michele Castagnetti",
+        "position": "MC",
+        "rating": 63,
+        "age": 36,
+        "nationality": "Italia",
+        "marketValue": 300
+      },
+      {
+        "name": "Matteo Francesconi",
+        "position": "MC",
+        "rating": 66,
+        "age": 21,
+        "nationality": "Italia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Simone Bastoni",
+        "position": "MC",
+        "rating": 68,
+        "age": 29,
+        "nationality": "Italia",
+        "marketValue": 700
+      },
+      {
+        "name": "Dimitri Bisoli",
+        "position": "MC",
+        "rating": 69,
+        "age": 25,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Tommaso Arrigoni",
+        "position": "MC",
+        "rating": 71,
+        "age": 31,
+        "nationality": "Italia",
+        "marketValue": 200
+      },
+      {
+        "name": "Davide Zamagni",
+        "position": "MC",
+        "rating": 64,
+        "age": 35,
+        "nationality": "Italia",
+        "marketValue": 200
+      },
+      {
+        "name": "Tommaso Berti",
+        "position": "MC",
+        "rating": 68,
+        "age": 21,
+        "nationality": "Italia",
+        "marketValue": 4500000
+      },
+      {
+        "name": "Riccardo Ciervo",
+        "position": "DC",
+        "rating": 68,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Cristian Shpendi",
+        "position": "DC",
+        "rating": 70,
+        "age": 22,
+        "nationality": "Albania",
+        "marketValue": 5500000
+      },
+      {
+        "name": "Siren Diao",
+        "position": "DC",
+        "rating": 67,
+        "age": 29,
+        "nationality": "España",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Jalen Blesa",
+        "position": "DC",
+        "rating": 67,
+        "age": 24,
+        "nationality": "España",
+        "marketValue": 750
+      },
+      {
+        "name": "Marco Olivieri",
+        "position": "DC",
+        "rating": 60,
+        "age": 32,
+        "nationality": "Italia",
+        "marketValue": 300
+      },
+      {
+        "name": "Frederik Tosku",
+        "position": "DC",
+        "rating": 66,
+        "age": 19,
+        "nationality": "Albania",
+        "marketValue": 300
+      },
+      {
+        "name": "Giovanni Perini",
+        "position": "DC",
+        "rating": 64,
+        "age": 20,
+        "nationality": "Italia",
+        "marketValue": 200
+      }
+    ]
+  },
+  {
+    "id": "modena-fc-2018",
+    "name": "Modena FC",
+    "players": [
+      {
+        "name": "Leandro Chichizola",
+        "position": "POR",
+        "rating": 65,
+        "age": 35,
+        "nationality": "Argentina",
+        "marketValue": 250
+      },
+      {
+        "name": "Abdullah Laidani",
+        "position": "POR",
+        "rating": 64,
+        "age": 22,
+        "nationality": "Suiza",
+        "marketValue": 75
+      },
+      {
+        "name": "Michele Pezzolato",
+        "position": "POR",
+        "rating": 63,
+        "age": 22,
+        "nationality": "Italia",
+        "marketValue": 50
+      },
+      {
+        "name": "Fabrizio Bagheria",
+        "position": "POR",
+        "rating": 63,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 50
+      },
+      {
+        "name": "Bryant Nieling",
+        "position": "DFC",
+        "rating": 66,
+        "age": 20,
+        "nationality": "Países Bajos",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Alessandro Dellavalle",
+        "position": "DFC",
+        "rating": 67,
+        "age": 25,
+        "nationality": "Italia",
+        "marketValue": 2700000
+      },
+      {
+        "name": "Daniel Tonoli",
+        "position": "DFC",
+        "rating": 68,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Davide Adorni",
+        "position": "DFC",
+        "rating": 69,
+        "age": 28,
+        "nationality": "Italia",
+        "marketValue": 375
+      },
+      {
+        "name": "Cristian Căuz",
+        "position": "DFC",
+        "rating": 63,
+        "age": 33,
+        "nationality": "Italia",
+        "marketValue": 350
+      },
+      {
+        "name": "Steven Nador",
+        "position": "DFC",
+        "rating": 64,
+        "age": 19,
+        "nationality": "Togo",
+        "marketValue": 150
+      },
+      {
+        "name": "Matteo Cotali",
+        "position": "DFC",
+        "rating": 68,
+        "age": 29,
+        "nationality": "Italia",
+        "marketValue": 350
+      },
+      {
+        "name": "Gady Beyuku",
+        "position": "DFC",
+        "rating": 65,
+        "age": 20,
+        "nationality": "Francia",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Fabio Gerli",
+        "position": "MC",
+        "rating": 66,
+        "age": 16,
+        "nationality": "Italia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Alessandro Sersanti",
+        "position": "MC",
+        "rating": 67,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Niklas Pyyhtiä",
+        "position": "MC",
+        "rating": 65,
+        "age": 18,
+        "nationality": "Finlandia",
+        "marketValue": 1700000
+      },
+      {
+        "name": "Simone Santoro",
+        "position": "MC",
+        "rating": 70,
+        "age": 26,
+        "nationality": "Italia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Luca Magnino",
+        "position": "MC",
+        "rating": 68,
+        "age": 28,
+        "nationality": "Italia",
+        "marketValue": 600
+      },
+      {
+        "name": "Francesco Zampano",
+        "position": "MC",
+        "rating": 64,
+        "age": 32,
+        "nationality": "Italia",
+        "marketValue": 900
+      },
+      {
+        "name": "Yanis Massolin",
+        "position": "MC",
+        "rating": 64,
+        "age": 17,
+        "nationality": "Francia",
+        "marketValue": 900
+      },
+      {
+        "name": "Francesco Di Mariano",
+        "position": "DC",
+        "rating": 65,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 450
+      },
+      {
+        "name": "Luca Zanimacchia",
+        "position": "DC",
+        "rating": 68,
+        "age": 27,
+        "nationality": "Italia",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Manuel De Luca",
+        "position": "DC",
+        "rating": 71,
+        "age": 27,
+        "nationality": "Italia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Pedro Mendes",
+        "position": "DC",
+        "rating": 67,
+        "age": 26,
+        "nationality": "Portugal",
+        "marketValue": 1400000
+      },
+      {
+        "name": "Ettore Gliozzi",
+        "position": "DC",
+        "rating": 70,
+        "age": 30,
+        "nationality": "Italia",
+        "marketValue": 800
+      },
+      {
+        "name": "Grégoire Defrel",
+        "position": "DC",
+        "rating": 61,
+        "age": 34,
+        "nationality": "Francia",
+        "marketValue": 350
+      },
+      {
+        "name": "Luca Strizzolo",
+        "position": "DC",
+        "rating": 63,
+        "age": 32,
+        "nationality": "Italia",
+        "marketValue": 200
+      }
+    ]
+  },
+  {
+    "id": "mantova-1911",
+    "name": "Mantova 1911",
+    "players": [
+      {
+        "name": "Marco Festa",
+        "position": "POR",
+        "rating": 69,
+        "age": 33,
+        "nationality": "Italia",
+        "marketValue": 300
+      },
+      {
+        "name": "Francesco Bardi",
+        "position": "POR",
+        "rating": 64,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 300
+      },
+      {
+        "name": "Ante Vukovic",
+        "position": "POR",
+        "rating": 69,
+        "age": 34,
+        "nationality": "Croacia",
+        "marketValue": 300
+      },
+      {
+        "name": "Lorenzo Andrenacci",
+        "position": "POR",
+        "rating": 63,
+        "age": 22,
+        "nationality": "Italia",
+        "marketValue": 200
+      },
+      {
+        "name": "Konstantinos Chrysopoulos",
+        "position": "DFC",
+        "rating": 65,
+        "age": 22,
+        "nationality": "Grecia",
+        "marketValue": 600
+      },
+      {
+        "name": "Alessio Castellini",
+        "position": "DFC",
+        "rating": 69,
+        "age": 27,
+        "nationality": "Italia",
+        "marketValue": 600
+      },
+      {
+        "name": "Stefano Cella",
+        "position": "DFC",
+        "rating": 69,
+        "age": 29,
+        "nationality": "Italia",
+        "marketValue": 600
+      },
+      {
+        "name": "Valerio Mantovani",
+        "position": "DFC",
+        "rating": 69,
+        "age": 29,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Junior Ligue",
+        "position": "DFC",
+        "rating": 66,
+        "age": 20,
+        "nationality": "Suiza",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Tiago Gonçalves",
+        "position": "DFC",
+        "rating": 65,
+        "age": 15,
+        "nationality": "Portugal",
+        "marketValue": 800
+      },
+      {
+        "name": "Fahem Benaïssa",
+        "position": "DFC",
+        "rating": 67,
+        "age": 23,
+        "nationality": "Francia",
+        "marketValue": 600
+      },
+      {
+        "name": "Cristiano Bani",
+        "position": "DFC",
+        "rating": 69,
+        "age": 27,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Nicolò Radaelli",
+        "position": "DFC",
+        "rating": 66,
+        "age": 17,
+        "nationality": "Italia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Tommaso Maggioni",
+        "position": "DFC",
+        "rating": 67,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 450
+      },
+      {
+        "name": "Côme Bianay Balcot",
+        "position": "DFC",
+        "rating": 65,
+        "age": 20,
+        "nationality": "Francia",
+        "marketValue": 175
+      },
+      {
+        "name": "Federico Artioli",
+        "position": "MC",
+        "rating": 67,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Rachid Kouda",
+        "position": "MC",
+        "rating": 68,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Simone Trimboli",
+        "position": "MC",
+        "rating": 66,
+        "age": 21,
+        "nationality": "Italia",
+        "marketValue": 1700000
+      },
+      {
+        "name": "Federico Zuccon",
+        "position": "MC",
+        "rating": 68,
+        "age": 22,
+        "nationality": "Italia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Flavio Paoletti",
+        "position": "MC",
+        "rating": 62,
+        "age": 36,
+        "nationality": "Italia",
+        "marketValue": 650
+      },
+      {
+        "name": "David Wieser",
+        "position": "MC",
+        "rating": 66,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 400
+      },
+      {
+        "name": "Francesco Ruocco",
+        "position": "MC",
+        "rating": 65,
+        "age": 19,
+        "nationality": "Italia",
+        "marketValue": 600
+      },
+      {
+        "name": "César Falletti",
+        "position": "MC",
+        "rating": 64,
+        "age": 18,
+        "nationality": "Uruguay",
+        "marketValue": 400
+      },
+      {
+        "name": "Maat Daniel Caprini",
+        "position": "DC",
+        "rating": 67,
+        "age": 28,
+        "nationality": "Italia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Davide Bragantini",
+        "position": "DC",
+        "rating": 67,
+        "age": 30,
+        "nationality": "Italia",
+        "marketValue": 1600000
+      },
+      {
+        "name": "Tommaso Marras",
+        "position": "DC",
+        "rating": 65,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Nicolò Buso",
+        "position": "DC",
+        "rating": 69,
+        "age": 25,
+        "nationality": "Italia",
+        "marketValue": 900
+      },
+      {
+        "name": "Nicholas Bonfanti",
+        "position": "DC",
+        "rating": 67,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Leonardo Mancuso",
+        "position": "DC",
+        "rating": 63,
+        "age": 33,
+        "nationality": "Italia",
+        "marketValue": 400
+      },
+      {
+        "name": "Davis Mensah",
+        "position": "DC",
+        "rating": 60,
+        "age": 34,
+        "nationality": "Italia",
+        "marketValue": 150
+      }
+    ]
+  },
+  {
+    "id": "ssc-bari",
+    "name": "SSC Bari",
+    "players": [
+      {
+        "name": "Michele Cerofolini",
+        "position": "POR",
+        "rating": 69,
+        "age": 31,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Marco Pissardo",
+        "position": "POR",
+        "rating": 68,
+        "age": 28,
+        "nationality": "Italia",
+        "marketValue": 250
+      },
+      {
+        "name": "Davide Marfella",
+        "position": "POR",
+        "rating": 67,
+        "age": 26,
+        "nationality": "Italia",
+        "marketValue": 50
+      },
+      {
+        "name": "Giacomo Stabile",
+        "position": "DFC",
+        "rating": 64,
+        "age": 37,
+        "nationality": "Italia",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Dimitrios Nikolaou",
+        "position": "DFC",
+        "rating": 64,
+        "age": 43,
+        "nationality": "Grecia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Andrea Cistana",
+        "position": "DFC",
+        "rating": 69,
+        "age": 28,
+        "nationality": "Italia",
+        "marketValue": 750
+      },
+      {
+        "name": "Andrea Meroni",
+        "position": "DFC",
+        "rating": 69,
+        "age": 29,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Raffaele Pucino",
+        "position": "DFC",
+        "rating": 67,
+        "age": 25,
+        "nationality": "Italia",
+        "marketValue": 150
+      },
+      {
+        "name": "Sheriff Kassama",
+        "position": "DFC",
+        "rating": 64,
+        "age": 15,
+        "nationality": "Italia",
+        "marketValue": 100
+      },
+      {
+        "name": "Mehdi Dorval",
+        "position": "DFC",
+        "rating": 69,
+        "age": 24,
+        "nationality": "Argelia",
+        "marketValue": 2400000
+      },
+      {
+        "name": "Riccardo Burgio",
+        "position": "DFC",
+        "rating": 66,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 150
+      },
+      {
+        "name": "Lorenzo Dickmann",
+        "position": "DFC",
+        "rating": 67,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 700
+      },
+      {
+        "name": "Moussa Mané",
+        "position": "DFC",
+        "rating": 68,
+        "age": 30,
+        "nationality": "Italia",
+        "marketValue": 100
+      },
+      {
+        "name": "Matthias Verreth",
+        "position": "MC",
+        "rating": 69,
+        "age": 29,
+        "nationality": "Bélgica",
+        "marketValue": 900
+      },
+      {
+        "name": "Ebrima Darboe",
+        "position": "MC",
+        "rating": 67,
+        "age": 24,
+        "nationality": "Gambia",
+        "marketValue": 800
+      },
+      {
+        "name": "Riccardo Pagano",
+        "position": "MC",
+        "rating": 65,
+        "age": 21,
+        "nationality": "Italia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Matthias Braunöder",
+        "position": "MC",
+        "rating": 70,
+        "age": 27,
+        "nationality": "Austria",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Giulio Maggiore",
+        "position": "MC",
+        "rating": 65,
+        "age": 18,
+        "nationality": "Italia",
+        "marketValue": 900
+      },
+      {
+        "name": "Gaetano Castrovilli",
+        "position": "MC",
+        "rating": 69,
+        "age": 28,
+        "nationality": "Italia",
+        "marketValue": 750
+      },
+      {
+        "name": "Vincenzo Colangiuli",
+        "position": "MC",
+        "rating": 64,
+        "age": 32,
+        "nationality": "Italia",
+        "marketValue": 150
+      },
+      {
+        "name": "Tomás Esteves",
+        "position": "MC",
+        "rating": 66,
+        "age": 19,
+        "nationality": "Portugal",
+        "marketValue": 1900000
+      },
+      {
+        "name": "Giuseppe Sibilli",
+        "position": "MC",
+        "rating": 69,
+        "age": 29,
+        "nationality": "Italia",
+        "marketValue": 800
+      },
+      {
+        "name": "Mirko Antonucci",
+        "position": "MC",
+        "rating": 64,
+        "age": 16,
+        "nationality": "Italia",
+        "marketValue": 750
+      },
+      {
+        "name": "Nicolò Cavuoti",
+        "position": "MC",
+        "rating": 65,
+        "age": 20,
+        "nationality": "Italia",
+        "marketValue": 400
+      },
+      {
+        "name": "Nicola Bellomo",
+        "position": "MC",
+        "rating": 63,
+        "age": 34,
+        "nationality": "Italia",
+        "marketValue": 100
+      },
+      {
+        "name": "Emanuele Rao",
+        "position": "DC",
+        "rating": 63,
+        "age": 17,
+        "nationality": "Italia",
+        "marketValue": 800
+      },
+      {
+        "name": "Giacomo De Pieri",
+        "position": "DC",
+        "rating": 67,
+        "age": 19,
+        "nationality": "Italia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Anthony Partipilo",
+        "position": "DC",
+        "rating": 63,
+        "age": 21,
+        "nationality": "Italia",
+        "marketValue": 400
+      },
+      {
+        "name": "Gabriele Moncini",
+        "position": "DC",
+        "rating": 69,
+        "age": 29,
+        "nationality": "Italia",
+        "marketValue": 800
+      },
+      {
+        "name": "Marvin Cuni",
+        "position": "DC",
+        "rating": 67,
+        "age": 24,
+        "nationality": "Albania",
+        "marketValue": 800
+      },
+      {
+        "name": "Christian Gytkjaer",
+        "position": "DC",
+        "rating": 61,
+        "age": 35,
+        "nationality": "Dinamarca",
+        "marketValue": 400
+      }
+    ]
+  },
+  {
+    "id": "ss-juve-stabia",
+    "name": "SS Juve Stabia",
+    "players": [
+      {
+        "name": "Alessandro Confente",
+        "position": "POR",
+        "rating": 67,
+        "age": 27,
+        "nationality": "Italia",
+        "marketValue": 750
+      },
+      {
+        "name": "Pietro Boer",
+        "position": "POR",
+        "rating": 63,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 300
+      },
+      {
+        "name": "Alessandro Signorini",
+        "position": "POR",
+        "rating": 64,
+        "age": 16,
+        "nationality": "Italia",
+        "marketValue": 50
+      },
+      {
+        "name": "Andrea Giorgini",
+        "position": "DFC",
+        "rating": 65,
+        "age": 33,
+        "nationality": "Italia",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Marco Bellich",
+        "position": "DFC",
+        "rating": 70,
+        "age": 26,
+        "nationality": "Italia",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Marco Varnier",
+        "position": "DFC",
+        "rating": 68,
+        "age": 27,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Christian Dalle Mura",
+        "position": "DFC",
+        "rating": 67,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 400
+      },
+      {
+        "name": "Mattia Mannini",
+        "position": "DFC",
+        "rating": 65,
+        "age": 19,
+        "nationality": "Italia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Lorenzo Carissoni",
+        "position": "DFC",
+        "rating": 67,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Omar Correia",
+        "position": "MC",
+        "rating": 70,
+        "age": 29,
+        "nationality": "Francia",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Giuseppe Leone",
+        "position": "MC",
+        "rating": 67,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 800
+      },
+      {
+        "name": "Emanuele Torrasi",
+        "position": "MC",
+        "rating": 69,
+        "age": 26,
+        "nationality": "Italia",
+        "marketValue": 150
+      },
+      {
+        "name": "Kevin Zeroli",
+        "position": "MC",
+        "rating": 66,
+        "age": 21,
+        "nationality": "Italia",
+        "marketValue": 3800000
+      },
+      {
+        "name": "Christian Pierobon",
+        "position": "MC",
+        "rating": 67,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 750
+      },
+      {
+        "name": "Aaron Ciammaglichella",
+        "position": "MC",
+        "rating": 65,
+        "age": 17,
+        "nationality": "Italia",
+        "marketValue": 700
+      },
+      {
+        "name": "Fabio Maistro",
+        "position": "MC",
+        "rating": 64,
+        "age": 37,
+        "nationality": "Italia",
+        "marketValue": 400
+      },
+      {
+        "name": "Thomas Battistella",
+        "position": "MC",
+        "rating": 67,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 350
+      },
+      {
+        "name": "Kevin Piscopo",
+        "position": "MC",
+        "rating": 68,
+        "age": 27,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Nicola Mosti",
+        "position": "MC",
+        "rating": 69,
+        "age": 27,
+        "nationality": "Italia",
+        "marketValue": 450
+      },
+      {
+        "name": "Alessio Cacciamani",
+        "position": "DC",
+        "rating": 65,
+        "age": 18,
+        "nationality": "Italia",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Gregorio Morachioli",
+        "position": "DC",
+        "rating": 66,
+        "age": 18,
+        "nationality": "Italia",
+        "marketValue": 300
+      },
+      {
+        "name": "Matheus Luz Priveato Dos Santos",
+        "position": "DC",
+        "rating": 67,
+        "age": 23,
+        "nationality": "Brasil",
+        "marketValue": 100
+      },
+      {
+        "name": "Rareș Burnete",
+        "position": "DC",
+        "rating": 63,
+        "age": 21,
+        "nationality": "Rumania",
+        "marketValue": 600
+      },
+      {
+        "name": "Alessandro Gabrielloni",
+        "position": "DC",
+        "rating": 61,
+        "age": 31,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Leonardo Candellone",
+        "position": "DC",
+        "rating": 70,
+        "age": 27,
+        "nationality": "Italia",
+        "marketValue": 450
+      }
+    ]
+  },
+  {
+    "id": "ac-reggiana-1919",
+    "name": "AC Reggiana 1919",
+    "players": [
+      {
+        "name": "Alessandro Micai",
+        "position": "POR",
+        "rating": 69,
+        "age": 32,
+        "nationality": "Italia",
+        "marketValue": 200
+      },
+      {
+        "name": "Andrea Seculin",
+        "position": "POR",
+        "rating": 64,
+        "age": 35,
+        "nationality": "Italia",
+        "marketValue": 150
+      },
+      {
+        "name": "Matteo Cardinali",
+        "position": "POR",
+        "rating": 64,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 75
+      },
+      {
+        "name": "Matteo Enza",
+        "position": "POR",
+        "rating": 64,
+        "age": 22,
+        "nationality": "Italia",
+        "marketValue": 50
+      },
+      {
+        "name": "Andrea Papetti",
+        "position": "DFC",
+        "rating": 68,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 1400000
+      },
+      {
+        "name": "Francesco Vicari",
+        "position": "DFC",
+        "rating": 69,
+        "age": 31,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Paolo Rozzio",
+        "position": "DFC",
+        "rating": 63,
+        "age": 33,
+        "nationality": "Italia",
+        "marketValue": 200
+      },
+      {
+        "name": "Danilo Quaranta",
+        "position": "DFC",
+        "rating": 69,
+        "age": 28,
+        "nationality": "Italia",
+        "marketValue": 150
+      },
+      {
+        "name": "Andrea Bozzolan",
+        "position": "DFC",
+        "rating": 66,
+        "age": 21,
+        "nationality": "Italia",
+        "marketValue": 2800000
+      },
+      {
+        "name": "Simone Bonetti",
+        "position": "DFC",
+        "rating": 64,
+        "age": 43,
+        "nationality": "Italia",
+        "marketValue": 1700000
+      },
+      {
+        "name": "Alessandro Tripaldelli",
+        "position": "DFC",
+        "rating": 64,
+        "age": 33,
+        "nationality": "Italia",
+        "marketValue": 250
+      },
+      {
+        "name": "Lorenzo Libutti",
+        "position": "DFC",
+        "rating": 65,
+        "age": 17,
+        "nationality": "Italia",
+        "marketValue": 450
+      },
+      {
+        "name": "Mario Sampirisi",
+        "position": "DFC",
+        "rating": 69,
+        "age": 31,
+        "nationality": "Italia",
+        "marketValue": 250
+      },
+      {
+        "name": "Tobías Reinhart",
+        "position": "MC",
+        "rating": 66,
+        "age": 16,
+        "nationality": "Argentina",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Leonardo Mendicino",
+        "position": "MC",
+        "rating": 62,
+        "age": 44,
+        "nationality": "Italia",
+        "marketValue": 800
+      },
+      {
+        "name": "Charlys",
+        "position": "MC",
+        "rating": 65,
+        "age": 21,
+        "nationality": "Brasil",
+        "marketValue": 750
+      },
+      {
+        "name": "Pietro Pinelli",
+        "position": "MC",
+        "rating": 65,
+        "age": 19,
+        "nationality": "Italia",
+        "marketValue": 75
+      },
+      {
+        "name": "Luca Belardinelli",
+        "position": "MC",
+        "rating": 67,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 700
+      },
+      {
+        "name": "Massimo Bertagnoli",
+        "position": "MC",
+        "rating": 70,
+        "age": 26,
+        "nationality": "Italia",
+        "marketValue": 600
+      },
+      {
+        "name": "Martín Suárez",
+        "position": "MC",
+        "rating": 65,
+        "age": 15,
+        "nationality": "Uruguay",
+        "marketValue": 300
+      },
+      {
+        "name": "Francesco Vallarelli",
+        "position": "MC",
+        "rating": 65,
+        "age": 20,
+        "nationality": "Italia",
+        "marketValue": 250
+      },
+      {
+        "name": "Roque Maisterra",
+        "position": "MC",
+        "rating": 65,
+        "age": 19,
+        "nationality": "Argentina",
+        "marketValue": 125
+      },
+      {
+        "name": "Oliver Urso",
+        "position": "MC",
+        "rating": 69,
+        "age": 29,
+        "nationality": "Dinamarca",
+        "marketValue": 100
+      },
+      {
+        "name": "Matteo Rover",
+        "position": "MC",
+        "rating": 67,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 750
+      },
+      {
+        "name": "Natan Girma",
+        "position": "MC",
+        "rating": 67,
+        "age": 24,
+        "nationality": "Suiza",
+        "marketValue": 700
+      },
+      {
+        "name": "Manolo Portanova",
+        "position": "MC",
+        "rating": 71,
+        "age": 25,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Kleis Bozhanaj",
+        "position": "MC",
+        "rating": 67,
+        "age": 24,
+        "nationality": "Albania",
+        "marketValue": 450
+      },
+      {
+        "name": "Alessandro Pavanati",
+        "position": "MC",
+        "rating": 69,
+        "age": 27,
+        "nationality": "Italia",
+        "marketValue": 300
+      },
+      {
+        "name": "Oumar Conté",
+        "position": "DC",
+        "rating": 66,
+        "age": 19,
+        "nationality": "Guinea",
+        "marketValue": 300
+      },
+      {
+        "name": "Mathis Lambourde",
+        "position": "DC",
+        "rating": 63,
+        "age": 20,
+        "nationality": "Francia",
+        "marketValue": 800
+      },
+      {
+        "name": "Cedric Gondo",
+        "position": "DC",
+        "rating": 67,
+        "age": 29,
+        "nationality": "Costa de Marfil",
+        "marketValue": 500
+      },
+      {
+        "name": "Andrija Novakovich",
+        "position": "DC",
+        "rating": 68,
+        "age": 29,
+        "nationality": "Estados Unidos",
+        "marketValue": 450
+      },
+      {
+        "name": "Edoardo Cavaliere",
+        "position": "DC",
+        "rating": 64,
+        "age": 19,
+        "nationality": "Italia",
+        "marketValue": 75
+      }
+    ]
+  },
+  {
+    "id": "fc-sudtirol",
+    "name": "FC Südtirol",
+    "players": [
+      {
+        "name": "Marius Adamonis",
+        "position": "POR",
+        "rating": 70,
+        "age": 31,
+        "nationality": "Lituania",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Alessio Cragno",
+        "position": "POR",
+        "rating": 64,
+        "age": 22,
+        "nationality": "Italia",
+        "marketValue": 700
+      },
+      {
+        "name": "Giacomo Poluzzi",
+        "position": "POR",
+        "rating": 65,
+        "age": 37,
+        "nationality": "Italia",
+        "marketValue": 150
+      },
+      {
+        "name": "Daniel Theiner",
+        "position": "POR",
+        "rating": 64,
+        "age": 21,
+        "nationality": "Italia",
+        "marketValue": 100
+      },
+      {
+        "name": "Raphael Kofler",
+        "position": "DFC",
+        "rating": 70,
+        "age": 28,
+        "nationality": "Italia",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Nicola Pietrangeli",
+        "position": "DFC",
+        "rating": 65,
+        "age": 19,
+        "nationality": "Italia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Filipe Bordon",
+        "position": "DFC",
+        "rating": 64,
+        "age": 20,
+        "nationality": "Brasil",
+        "marketValue": 800
+      },
+      {
+        "name": "Frédéric Veseli",
+        "position": "DFC",
+        "rating": 64,
+        "age": 34,
+        "nationality": "Albania",
+        "marketValue": 150
+      },
+      {
+        "name": "Davide Mancini",
+        "position": "DFC",
+        "rating": 64,
+        "age": 20,
+        "nationality": "Italia",
+        "marketValue": 100
+      },
+      {
+        "name": "Andrea Masiello",
+        "position": "DFC",
+        "rating": 63,
+        "age": 39,
+        "nationality": "Italia",
+        "marketValue": 100
+      },
+      {
+        "name": "Simone Davi",
+        "position": "DFC",
+        "rating": 67,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 750
+      },
+      {
+        "name": "Hamza El Kaouakibi",
+        "position": "DFC",
+        "rating": 69,
+        "age": 27,
+        "nationality": "Marruecos",
+        "marketValue": 400
+      },
+      {
+        "name": "Federico Davi",
+        "position": "DFC",
+        "rating": 66,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 300
+      },
+      {
+        "name": "Jacopo Martini",
+        "position": "MC",
+        "rating": 66,
+        "age": 21,
+        "nationality": "Italia",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Simone Tronchin",
+        "position": "MC",
+        "rating": 66,
+        "age": 18,
+        "nationality": "Italia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Mamadou Coulibaly",
+        "position": "MC",
+        "rating": 68,
+        "age": 26,
+        "nationality": "Senegal",
+        "marketValue": 600
+      },
+      {
+        "name": "Alessandro Mallamo",
+        "position": "MC",
+        "rating": 68,
+        "age": 26,
+        "nationality": "Italia",
+        "marketValue": 350
+      },
+      {
+        "name": "Fabian Tait",
+        "position": "MC",
+        "rating": 65,
+        "age": 21,
+        "nationality": "Italia",
+        "marketValue": 300
+      },
+      {
+        "name": "Marco Frigerio",
+        "position": "MC",
+        "rating": 69,
+        "age": 26,
+        "nationality": "Italia",
+        "marketValue": 275
+      },
+      {
+        "name": "Domen Crnigoj",
+        "position": "MC",
+        "rating": 69,
+        "age": 30,
+        "nationality": "Eslovenia",
+        "marketValue": 250
+      },
+      {
+        "name": "Salvatore Molina",
+        "position": "MC",
+        "rating": 64,
+        "age": 34,
+        "nationality": "Italia",
+        "marketValue": 300
+      },
+      {
+        "name": "Karim Zedadka",
+        "position": "MC",
+        "rating": 68,
+        "age": 25,
+        "nationality": "Argelia",
+        "marketValue": 400
+      },
+      {
+        "name": "Daniele Casiraghi",
+        "position": "MC",
+        "rating": 66,
+        "age": 17,
+        "nationality": "Italia",
+        "marketValue": 700
+      },
+      {
+        "name": "Simone Verdi",
+        "position": "MC",
+        "rating": 64,
+        "age": 33,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Silvio Merkaj",
+        "position": "DC",
+        "rating": 64,
+        "age": 33,
+        "nationality": "Albania",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Emanuele Pecorino",
+        "position": "DC",
+        "rating": 66,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 400
+      },
+      {
+        "name": "Raphael Odogwu",
+        "position": "DC",
+        "rating": 59,
+        "age": 35,
+        "nationality": "Italia",
+        "marketValue": 300
+      }
+    ]
+  },
+  {
+    "id": "us-avellino-1912",
+    "name": "US Avellino 1912",
+    "players": [
+      {
+        "name": "Giovanni Daffara",
+        "position": "POR",
+        "rating": 69,
+        "age": 30,
+        "nationality": "Italia",
+        "marketValue": 600
+      },
+      {
+        "name": "Jacopo Sassi",
+        "position": "POR",
+        "rating": 64,
+        "age": 22,
+        "nationality": "Italia",
+        "marketValue": 250
+      },
+      {
+        "name": "Antony Iannarilli",
+        "position": "POR",
+        "rating": 65,
+        "age": 35,
+        "nationality": "Italia",
+        "marketValue": 225
+      },
+      {
+        "name": "Leonardo Marson",
+        "position": "POR",
+        "rating": 69,
+        "age": 28,
+        "nationality": "Italia",
+        "marketValue": 150
+      },
+      {
+        "name": "Pasquale Pane",
+        "position": "POR",
+        "rating": 64,
+        "age": 45,
+        "nationality": "Italia",
+        "marketValue": 50
+      },
+      {
+        "name": "Armando Izzo",
+        "position": "DFC",
+        "rating": 65,
+        "age": 33,
+        "nationality": "Italia",
+        "marketValue": 1300000
+      },
+      {
+        "name": "Alessandro Fontanarosa",
+        "position": "DFC",
+        "rating": 66,
+        "age": 22,
+        "nationality": "Italia",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Filippo Reale",
+        "position": "DFC",
+        "rating": 65,
+        "age": 19,
+        "nationality": "Italia",
+        "marketValue": 800
+      },
+      {
+        "name": "Lorenco Simic",
+        "position": "DFC",
+        "rating": 63,
+        "age": 44,
+        "nationality": "Croacia",
+        "marketValue": 600
+      },
+      {
+        "name": "Patrick Enrici",
+        "position": "DFC",
+        "rating": 67,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 450
+      },
+      {
+        "name": "Michele Rigione",
+        "position": "DFC",
+        "rating": 64,
+        "age": 34,
+        "nationality": "Italia",
+        "marketValue": 200
+      },
+      {
+        "name": "Alessandro Milani",
+        "position": "DFC",
+        "rating": 65,
+        "age": 20,
+        "nationality": "Venezuela",
+        "marketValue": 650
+      },
+      {
+        "name": "Marco Sala",
+        "position": "DFC",
+        "rating": 69,
+        "age": 26,
+        "nationality": "Italia",
+        "marketValue": 400
+      },
+      {
+        "name": "Andrea Cagnano",
+        "position": "DFC",
+        "rating": 66,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 300
+      },
+      {
+        "name": "Filippo Missori",
+        "position": "DFC",
+        "rating": 66,
+        "age": 21,
+        "nationality": "Italia",
+        "marketValue": 1700000
+      },
+      {
+        "name": "Tommaso Cancellotti",
+        "position": "DFC",
+        "rating": 69,
+        "age": 29,
+        "nationality": "Italia",
+        "marketValue": 250
+      },
+      {
+        "name": "Martin Palumbo",
+        "position": "MC",
+        "rating": 65,
+        "age": 20,
+        "nationality": "Noruega",
+        "marketValue": 600
+      },
+      {
+        "name": "Luca Palmiero",
+        "position": "MC",
+        "rating": 69,
+        "age": 29,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Justin Kumi",
+        "position": "MC",
+        "rating": 66,
+        "age": 16,
+        "nationality": "Italia",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Michele Besaggio",
+        "position": "MC",
+        "rating": 63,
+        "age": 39,
+        "nationality": "Italia",
+        "marketValue": 750
+      },
+      {
+        "name": "Dimitrios Sounas",
+        "position": "MC",
+        "rating": 69,
+        "age": 24,
+        "nationality": "Grecia",
+        "marketValue": 550
+      },
+      {
+        "name": "Marco Armellino",
+        "position": "MC",
+        "rating": 64,
+        "age": 21,
+        "nationality": "Italia",
+        "marketValue": 200
+      },
+      {
+        "name": "Raffaele Russo",
+        "position": "DC",
+        "rating": 66,
+        "age": 26,
+        "nationality": "Italia",
+        "marketValue": 350
+      },
+      {
+        "name": "Roberto Insigne",
+        "position": "DC",
+        "rating": 63,
+        "age": 31,
+        "nationality": "Italia",
+        "marketValue": 750
+      },
+      {
+        "name": "Luca D'Andrea",
+        "position": "DC",
+        "rating": 66,
+        "age": 21,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Tommaso Biasci",
+        "position": "DC",
+        "rating": 61,
+        "age": 31,
+        "nationality": "Italia",
+        "marketValue": 700
+      },
+      {
+        "name": "Gennaro Tutino",
+        "position": "DC",
+        "rating": 70,
+        "age": 29,
+        "nationality": "Italia",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Cosimo Patierno",
+        "position": "DC",
+        "rating": 63,
+        "age": 34,
+        "nationality": "Italia",
+        "marketValue": 200
+      },
+      {
+        "name": "Andrea Favilli",
+        "position": "DC",
+        "rating": 69,
+        "age": 28,
+        "nationality": "Italia",
+        "marketValue": 200
+      }
+    ]
+  },
+  {
+    "id": "carrarese-calcio-1908",
+    "name": "Carrarese Calcio 1908",
+    "players": [
+      {
+        "name": "Marco Bleve",
+        "position": "POR",
+        "rating": 66,
+        "age": 30,
+        "nationality": "Italia",
+        "marketValue": 350
+      },
+      {
+        "name": "Vincenzo Fiorillo",
+        "position": "POR",
+        "rating": 61,
+        "age": 36,
+        "nationality": "Italia",
+        "marketValue": 100
+      },
+      {
+        "name": "Giovanni Garofani",
+        "position": "POR",
+        "rating": 61,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 75
+      },
+      {
+        "name": "Stefano Mazzini",
+        "position": "POR",
+        "rating": 61,
+        "age": 22,
+        "nationality": "Italia",
+        "marketValue": 50
+      },
+      {
+        "name": "Fabio Andrea Ruggeri",
+        "position": "DFC",
+        "rating": 66,
+        "age": 26,
+        "nationality": "Italia",
+        "marketValue": 1700000
+      },
+      {
+        "name": "Marco Imperiale",
+        "position": "DFC",
+        "rating": 67,
+        "age": 26,
+        "nationality": "Italia",
+        "marketValue": 1400000
+      },
+      {
+        "name": "Julián Illanes",
+        "position": "DFC",
+        "rating": 66,
+        "age": 28,
+        "nationality": "Argentina",
+        "marketValue": 500
+      },
+      {
+        "name": "Nicolò Calabrese",
+        "position": "DFC",
+        "rating": 60,
+        "age": 37,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Filippo Oliana",
+        "position": "DFC",
+        "rating": 65,
+        "age": 26,
+        "nationality": "Italia",
+        "marketValue": 400
+      },
+      {
+        "name": "Bartosz Salamon",
+        "position": "DFC",
+        "rating": 60,
+        "age": 34,
+        "nationality": "Polonia",
+        "marketValue": 200
+      },
+      {
+        "name": "Simone Zanon",
+        "position": "DFC",
+        "rating": 65,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Nicolás Schiavi",
+        "position": "MC",
+        "rating": 64,
+        "age": 18,
+        "nationality": "Argentina",
+        "marketValue": 500
+      },
+      {
+        "name": "Luis Hasa",
+        "position": "MC",
+        "rating": 65,
+        "age": 22,
+        "nationality": "Italia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Emanuele Zuelli",
+        "position": "MC",
+        "rating": 63,
+        "age": 17,
+        "nationality": "Italia",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Filippo Melegoni",
+        "position": "MC",
+        "rating": 65,
+        "age": 26,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Dachi Lordkipanidze",
+        "position": "MC",
+        "rating": 66,
+        "age": 25,
+        "nationality": "Georgia",
+        "marketValue": 500
+      },
+      {
+        "name": "Gabriele Parlanti",
+        "position": "MC",
+        "rating": 63,
+        "age": 22,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Antonio Troise",
+        "position": "MC",
+        "rating": 62,
+        "age": 20,
+        "nationality": "Italia",
+        "marketValue": 0
+      },
+      {
+        "name": "Devid Eugene Bouah",
+        "position": "MC",
+        "rating": 63,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 400
+      },
+      {
+        "name": "Tommaso Rubino",
+        "position": "MC",
+        "rating": 62,
+        "age": 21,
+        "nationality": "Italia",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Nikola Sekulov",
+        "position": "MC",
+        "rating": 59,
+        "age": 44,
+        "nationality": "Italia",
+        "marketValue": 450
+      },
+      {
+        "name": "Federico Accornero",
+        "position": "DC",
+        "rating": 62,
+        "age": 21,
+        "nationality": "Italia",
+        "marketValue": 400
+      },
+      {
+        "name": "Niccolò Belloni",
+        "position": "DC",
+        "rating": 57,
+        "age": 31,
+        "nationality": "Italia",
+        "marketValue": 150
+      },
+      {
+        "name": "Filippo Distefano",
+        "position": "DC",
+        "rating": 64,
+        "age": 28,
+        "nationality": "Italia",
+        "marketValue": 1300000
+      },
+      {
+        "name": "Fabio Abiuso",
+        "position": "DC",
+        "rating": 66,
+        "age": 22,
+        "nationality": "Italia",
+        "marketValue": 750
+      },
+      {
+        "name": "Ernesto Torregrossa",
+        "position": "DC",
+        "rating": 57,
+        "age": 33,
+        "nationality": "Venezuela",
+        "marketValue": 250
+      },
+      {
+        "name": "Mattia Finotto",
+        "position": "DC",
+        "rating": 59,
+        "age": 32,
+        "nationality": "Italia",
+        "marketValue": 225
+      }
+    ]
+  },
+  {
+    "id": "delfino-pescara-1936",
+    "name": "Delfino Pescara 1936",
+    "players": [
+      {
+        "name": "Sebastiano Desplanches",
+        "position": "POR",
+        "rating": 62,
+        "age": 22,
+        "nationality": "Italia",
+        "marketValue": 1700000
+      },
+      {
+        "name": "Nicolò Profeta",
+        "position": "POR",
+        "rating": 61,
+        "age": 19,
+        "nationality": "Italia",
+        "marketValue": 100
+      },
+      {
+        "name": "Ivan Saio",
+        "position": "POR",
+        "rating": 60,
+        "age": 22,
+        "nationality": "Italia",
+        "marketValue": 100
+      },
+      {
+        "name": "Andreaw Gravillon",
+        "position": "DFC",
+        "rating": 67,
+        "age": 26,
+        "nationality": "Guadalupe",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Gabriele Corbo",
+        "position": "DFC",
+        "rating": 66,
+        "age": 26,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Riccardo Capellini",
+        "position": "DFC",
+        "rating": 64,
+        "age": 25,
+        "nationality": "Italia",
+        "marketValue": 400
+      },
+      {
+        "name": "Filippo Pellacani",
+        "position": "DFC",
+        "rating": 64,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 350
+      },
+      {
+        "name": "Davide Bettella",
+        "position": "DFC",
+        "rating": 64,
+        "age": 25,
+        "nationality": "Italia",
+        "marketValue": 300
+      },
+      {
+        "name": "Riccardo Brosco",
+        "position": "DFC",
+        "rating": 61,
+        "age": 34,
+        "nationality": "Italia",
+        "marketValue": 175
+      },
+      {
+        "name": "Tommaso Corazza",
+        "position": "DFC",
+        "rating": 63,
+        "age": 16,
+        "nationality": "Italia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Davide Faraoni",
+        "position": "DFC",
+        "rating": 62,
+        "age": 19,
+        "nationality": "Italia",
+        "marketValue": 600
+      },
+      {
+        "name": "Gaetano Letizia",
+        "position": "DFC",
+        "rating": 61,
+        "age": 35,
+        "nationality": "Italia",
+        "marketValue": 200
+      },
+      {
+        "name": "Gastón Brugman",
+        "position": "MC",
+        "rating": 62,
+        "age": 33,
+        "nationality": "Uruguay",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Julian Brandes",
+        "position": "MC",
+        "rating": 61,
+        "age": 21,
+        "nationality": "Países Bajos",
+        "marketValue": 350
+      },
+      {
+        "name": "Erdis Kraja",
+        "position": "MC",
+        "rating": 66,
+        "age": 25,
+        "nationality": "Albania",
+        "marketValue": 200
+      },
+      {
+        "name": "Fabrizio Caligara",
+        "position": "MC",
+        "rating": 61,
+        "age": 21,
+        "nationality": "Italia",
+        "marketValue": 700
+      },
+      {
+        "name": "Luca Valzania",
+        "position": "MC",
+        "rating": 66,
+        "age": 29,
+        "nationality": "Italia",
+        "marketValue": 400
+      },
+      {
+        "name": "Andrea Oliveri",
+        "position": "MC",
+        "rating": 64,
+        "age": 33,
+        "nationality": "Italia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Lorenzo Berardi",
+        "position": "MC",
+        "rating": 59,
+        "age": 36,
+        "nationality": "Italia",
+        "marketValue": 200
+      },
+      {
+        "name": "Giacomo Olzer",
+        "position": "MC",
+        "rating": 68,
+        "age": 27,
+        "nationality": "Italia",
+        "marketValue": 700
+      },
+      {
+        "name": "Leonardo Graziani",
+        "position": "MC",
+        "rating": 61,
+        "age": 20,
+        "nationality": "Italia",
+        "marketValue": 600
+      },
+      {
+        "name": "Lorenzo Meazzi",
+        "position": "MC",
+        "rating": 63,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 400
+      },
+      {
+        "name": "Lorenzo Insigne",
+        "position": "DC",
+        "rating": 58,
+        "age": 34,
+        "nationality": "Italia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Davide Merola",
+        "position": "DC",
+        "rating": 65,
+        "age": 25,
+        "nationality": "Italia",
+        "marketValue": 600
+      },
+      {
+        "name": "Orji Okwonkwo",
+        "position": "DC",
+        "rating": 60,
+        "age": 17,
+        "nationality": "Nigeria",
+        "marketValue": 200
+      },
+      {
+        "name": "Lorenzo Sgarbi",
+        "position": "DC",
+        "rating": 60,
+        "age": 18,
+        "nationality": "Italia",
+        "marketValue": 350
+      },
+      {
+        "name": "Antonio Di Nardo",
+        "position": "DC",
+        "rating": 66,
+        "age": 27,
+        "nationality": "Italia",
+        "marketValue": 450
+      },
+      {
+        "name": "Frank Tsadjout",
+        "position": "DC",
+        "rating": 66,
+        "age": 26,
+        "nationality": "Italia",
+        "marketValue": 400
+      },
+      {
+        "name": "Riccardo Tonin",
+        "position": "DC",
+        "rating": 61,
+        "age": 15,
+        "nationality": "Italia",
+        "marketValue": 300
+      }
+    ]
+  },
+  {
+    "id": "calcio-padova",
+    "name": "Calcio Padova",
+    "players": [
+      {
+        "name": "Mattia Fortin",
+        "position": "POR",
+        "rating": 62,
+        "age": 22,
+        "nationality": "Italia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Alessandro Sorrentino",
+        "position": "POR",
+        "rating": 60,
+        "age": 22,
+        "nationality": "Italia",
+        "marketValue": 450
+      },
+      {
+        "name": "Louis Mouquet",
+        "position": "POR",
+        "rating": 60,
+        "age": 21,
+        "nationality": "Portugal",
+        "marketValue": 150
+      },
+      {
+        "name": "Michele Voltan",
+        "position": "POR",
+        "rating": 61,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 50
+      },
+      {
+        "name": "Carlo Faedo",
+        "position": "DFC",
+        "rating": 66,
+        "age": 26,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Filippo Sgarbi",
+        "position": "DFC",
+        "rating": 66,
+        "age": 32,
+        "nationality": "Italia",
+        "marketValue": 350
+      },
+      {
+        "name": "Marco Perrotta",
+        "position": "DFC",
+        "rating": 66,
+        "age": 31,
+        "nationality": "Italia",
+        "marketValue": 300
+      },
+      {
+        "name": "Francesco Belli",
+        "position": "DFC",
+        "rating": 65,
+        "age": 31,
+        "nationality": "Italia",
+        "marketValue": 250
+      },
+      {
+        "name": "Christian Pastina",
+        "position": "DFC",
+        "rating": 64,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 250
+      },
+      {
+        "name": "Lorenzo Villa",
+        "position": "DFC",
+        "rating": 61,
+        "age": 22,
+        "nationality": "Italia",
+        "marketValue": 200
+      },
+      {
+        "name": "Alessandro Boi",
+        "position": "DFC",
+        "rating": 61,
+        "age": 20,
+        "nationality": "Italia",
+        "marketValue": 100
+      },
+      {
+        "name": "Antonio Barreca",
+        "position": "DFC",
+        "rating": 66,
+        "age": 30,
+        "nationality": "Italia",
+        "marketValue": 300
+      },
+      {
+        "name": "Giulio Favale",
+        "position": "DFC",
+        "rating": 65,
+        "age": 30,
+        "nationality": "Italia",
+        "marketValue": 250
+      },
+      {
+        "name": "Paolo Ghiglione",
+        "position": "DFC",
+        "rating": 61,
+        "age": 18,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Lorenzo Crisetig",
+        "position": "MC",
+        "rating": 60,
+        "age": 33,
+        "nationality": "Italia",
+        "marketValue": 400
+      },
+      {
+        "name": "Jonas Harder",
+        "position": "MC",
+        "rating": 61,
+        "age": 44,
+        "nationality": "Italia",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Jacopo Bacci",
+        "position": "MC",
+        "rating": 62,
+        "age": 21,
+        "nationality": "Italia",
+        "marketValue": 750
+      },
+      {
+        "name": "Luca Di Maggio",
+        "position": "MC",
+        "rating": 63,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 600
+      },
+      {
+        "name": "Pietro Fusi",
+        "position": "MC",
+        "rating": 66,
+        "age": 28,
+        "nationality": "Italia",
+        "marketValue": 400
+      },
+      {
+        "name": "Kevin Varas",
+        "position": "MC",
+        "rating": 62,
+        "age": 32,
+        "nationality": "Ecuador",
+        "marketValue": 300
+      },
+      {
+        "name": "Daniele Baselli",
+        "position": "MC",
+        "rating": 60,
+        "age": 33,
+        "nationality": "Italia",
+        "marketValue": 250
+      },
+      {
+        "name": "Francesco Tumiatti",
+        "position": "MC",
+        "rating": 61,
+        "age": 18,
+        "nationality": "Italia",
+        "marketValue": 50
+      },
+      {
+        "name": "Alessandro Capelli",
+        "position": "MC",
+        "rating": 61,
+        "age": 17,
+        "nationality": "Italia",
+        "marketValue": 450
+      },
+      {
+        "name": "Jonathan Silva",
+        "position": "MC",
+        "rating": 60,
+        "age": 41,
+        "nationality": "Brasil",
+        "marketValue": 500
+      },
+      {
+        "name": "Papu Gómez",
+        "position": "DC",
+        "rating": 58,
+        "age": 37,
+        "nationality": "Argentina",
+        "marketValue": 900
+      },
+      {
+        "name": "Cristian Buonaiuto",
+        "position": "DC",
+        "rating": 57,
+        "age": 33,
+        "nationality": "Italia",
+        "marketValue": 300
+      },
+      {
+        "name": "Simone Russini",
+        "position": "DC",
+        "rating": 66,
+        "age": 25,
+        "nationality": "Italia",
+        "marketValue": 150
+      },
+      {
+        "name": "Alessandro Seghetti",
+        "position": "DC",
+        "rating": 61,
+        "age": 22,
+        "nationality": "Italia",
+        "marketValue": 400
+      },
+      {
+        "name": "Mattia Bortolussi",
+        "position": "DC",
+        "rating": 64,
+        "age": 20,
+        "nationality": "Italia",
+        "marketValue": 600
+      },
+      {
+        "name": "Kevin Lasagna",
+        "position": "DC",
+        "rating": 63,
+        "age": 15,
+        "nationality": "Italia",
+        "marketValue": 500
+      }
+    ]
+  },
+  {
+    "id": "virtus-entella",
+    "name": "Virtus Entella",
+    "players": [
+      {
+        "name": "Simone Colombi",
+        "position": "POR",
+        "rating": 66,
+        "age": 34,
+        "nationality": "Italia",
+        "marketValue": 200
+      },
+      {
+        "name": "Federico Del Frate",
+        "position": "POR",
+        "rating": 60,
+        "age": 22,
+        "nationality": "Italia",
+        "marketValue": 200
+      },
+      {
+        "name": "Ovidijus Siaulys",
+        "position": "POR",
+        "rating": 63,
+        "age": 26,
+        "nationality": "Lituania",
+        "marketValue": 100
+      },
+      {
+        "name": "Ruben Rinaldini",
+        "position": "POR",
+        "rating": 61,
+        "age": 21,
+        "nationality": "Italia",
+        "marketValue": 50
+      },
+      {
+        "name": "Tommaso Del Lungo",
+        "position": "DFC",
+        "rating": 62,
+        "age": 22,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Andrea Tiritiello",
+        "position": "DFC",
+        "rating": 66,
+        "age": 30,
+        "nationality": "Italia",
+        "marketValue": 400
+      },
+      {
+        "name": "Luca Parodi",
+        "position": "DFC",
+        "rating": 64,
+        "age": 23,
+        "nationality": "Italia",
+        "marketValue": 350
+      },
+      {
+        "name": "Lorenzo Moretti",
+        "position": "DFC",
+        "rating": 59,
+        "age": 42,
+        "nationality": "Italia",
+        "marketValue": 250
+      },
+      {
+        "name": "Ivan Marconi",
+        "position": "DFC",
+        "rating": 62,
+        "age": 15,
+        "nationality": "Italia",
+        "marketValue": 175
+      },
+      {
+        "name": "Andrea Bottaro",
+        "position": "DFC",
+        "rating": 61,
+        "age": 18,
+        "nationality": "Italia",
+        "marketValue": 150
+      },
+      {
+        "name": "Denis Portanova",
+        "position": "DFC",
+        "rating": 63,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 100
+      },
+      {
+        "name": "Riccardo Turicchia",
+        "position": "DFC",
+        "rating": 62,
+        "age": 22,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Mattia Alborghetti",
+        "position": "DFC",
+        "rating": 66,
+        "age": 27,
+        "nationality": "Italia",
+        "marketValue": 250
+      },
+      {
+        "name": "Niccolò Squizzato",
+        "position": "MC",
+        "rating": 64,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 900
+      },
+      {
+        "name": "Marco Nichetti",
+        "position": "MC",
+        "rating": 66,
+        "age": 29,
+        "nationality": "Italia",
+        "marketValue": 300
+      },
+      {
+        "name": "Leonardo Benedetti",
+        "position": "MC",
+        "rating": 66,
+        "age": 25,
+        "nationality": "Italia",
+        "marketValue": 650
+      },
+      {
+        "name": "Nermin Karić",
+        "position": "MC",
+        "rating": 66,
+        "age": 26,
+        "nationality": "Suecia",
+        "marketValue": 650
+      },
+      {
+        "name": "Marco Dalla Vecchia",
+        "position": "MC",
+        "rating": 66,
+        "age": 27,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Ahmad Benali",
+        "position": "MC",
+        "rating": 61,
+        "age": 33,
+        "nationality": "Libia",
+        "marketValue": 300
+      },
+      {
+        "name": "Ernesto Matteazzi",
+        "position": "MC",
+        "rating": 66,
+        "age": 25,
+        "nationality": "Italia",
+        "marketValue": 100
+      },
+      {
+        "name": "Antonio Boccadamo",
+        "position": "MC",
+        "rating": 65,
+        "age": 26,
+        "nationality": "Italia",
+        "marketValue": 350
+      },
+      {
+        "name": "Francesco Mezzoni",
+        "position": "MC",
+        "rating": 66,
+        "age": 25,
+        "nationality": "Italia",
+        "marketValue": 350
+      },
+      {
+        "name": "Davide Bariti",
+        "position": "MC",
+        "rating": 60,
+        "age": 34,
+        "nationality": "Italia",
+        "marketValue": 200
+      },
+      {
+        "name": "Stefano Di Mario",
+        "position": "MC",
+        "rating": 67,
+        "age": 26,
+        "nationality": "Italia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Andrea Franzoni",
+        "position": "MC",
+        "rating": 66,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 500
+      },
+      {
+        "name": "Flavio Russo",
+        "position": "DC",
+        "rating": 60,
+        "age": 21,
+        "nationality": "Italia",
+        "marketValue": 750
+      },
+      {
+        "name": "Alessandro Debenedetti",
+        "position": "DC",
+        "rating": 61,
+        "age": 19,
+        "nationality": "Italia",
+        "marketValue": 650
+      },
+      {
+        "name": "Luigi Cuppone",
+        "position": "DC",
+        "rating": 66,
+        "age": 28,
+        "nationality": "Italia",
+        "marketValue": 400
+      },
+      {
+        "name": "Bernat Guiu",
+        "position": "DC",
+        "rating": 66,
+        "age": 25,
+        "nationality": "España",
+        "marketValue": 400
+      },
+      {
+        "name": "Tommaso Fumagalli",
+        "position": "DC",
+        "rating": 63,
+        "age": 20,
+        "nationality": "Italia",
+        "marketValue": 400
+      }
+    ]
+  }
+]
