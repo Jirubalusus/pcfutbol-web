@@ -12,6 +12,8 @@ import {
   Building2,
   Wrench,
   Mail,
+  Landmark,
+  Globe,
   Settings as SettingsIcon,
   ChevronLeft,
   Gamepad2
@@ -26,7 +28,9 @@ const menuItems = [
   { id: 'calendar', icon: Calendar, label: 'Calendario' },
   { id: 'table', icon: Trophy, label: 'Clasificación' },
   { id: 'transfers', icon: Briefcase, label: 'Fichajes' },
+  { id: 'europe', icon: Globe, label: 'Europa' },
   { id: 'stadium', icon: Building2, label: 'Estadio' },
+  { id: 'finance', icon: Landmark, label: 'Banco' },
   { id: 'facilities', icon: Wrench, label: 'Instalaciones' },
   { id: 'messages', icon: Mail, label: 'Mensajes' },
 ];

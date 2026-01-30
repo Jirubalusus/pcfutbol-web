@@ -16,6 +16,25 @@
       color: var(--color-text-secondary);
       font-size: 1rem;
     }
+
+    .stadium-3d-fallback {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 200px;
+      color: var(--color-text-tertiary);
+      font-size: 1rem;
+      gap: 0.5rem;
+      
+      span {
+        font-size: 3rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      height: 150px;
+    }
   }
   
   &__header {
@@ -29,8 +48,12 @@
     border-radius: 16px;
     flex-wrap: wrap;
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       flex-direction: column;
+      padding: 0.75rem;
+      margin-bottom: 0.75rem;
+      gap: 0.5rem;
+      border-radius: 10px;
     }
 
     .stadium-info {
@@ -96,6 +119,8 @@
     margin-bottom: 1.25rem;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 2px;
 
     &::-webkit-scrollbar { display: none; }
 
@@ -110,6 +135,12 @@
       cursor: pointer;
       white-space: nowrap;
       transition: all 0.2s;
+      flex-shrink: 0;
+
+      @media (max-width: 768px) {
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+      }
 
       &:active { transform: scale(0.97); }
 
@@ -147,9 +178,16 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+    align-items: stretch; // Both cards same height per row
 
     @media (max-width: 768px) {
       grid-template-columns: 1fr;
+    }
+
+    > .card {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 0; // Grid gap handles spacing
     }
 
     .abonados-display, .abonados-control {
@@ -210,6 +248,93 @@
     
     .campaign-closed {
       color: var(--color-text-tertiary) !important;
+    }
+
+    // ===== CAMPAÑA CERRADA (rediseño) =====
+    .campaign-closed-card {
+      margin-top: 0.75rem;
+      flex: 1; // Fill remaining space in flex card
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .campaign-closed-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--color-text-tertiary);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+
+      .lock-icon {
+        font-size: 0.75rem;
+      }
+    }
+
+    .campaign-closed-stats {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 1rem 0.5rem;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .campaign-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+
+      &.main .stat-value {
+        font-size: 1.6rem;
+        color: #00d4ff;
+      }
+
+      .stat-value {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #fff;
+      }
+
+      .stat-label {
+        font-size: 0.7rem;
+        color: var(--color-text-tertiary);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+    }
+
+    .campaign-stat-divider {
+      width: 1px;
+      height: 36px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .campaign-closed-bar {
+      margin-top: 0.75rem;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 3px;
+      overflow: hidden;
+
+      .bar-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #00d4ff, #30d158);
+        border-radius: 3px;
+        transition: width 0.5s ease;
+      }
+    }
+
+    .campaign-closed-footer {
+      margin-top: 0.4rem;
+      text-align: right;
+      font-size: 0.72rem;
+      color: var(--color-text-tertiary);
     }
     
     .season-price-section {
@@ -302,6 +427,40 @@
       color: var(--color-text-tertiary);
       font-size: 0.85rem;
       margin: 0;
+    }
+
+    .price-control button.locked,
+    .price-control button:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      &:active { transform: none; }
+    }
+
+    .accumulated-income {
+      margin-top: 1rem;
+      padding: 0.75rem 1rem;
+      background: rgba(46, 204, 113, 0.08);
+      border: 1px solid rgba(46, 204, 113, 0.2);
+      border-radius: 8px;
+
+      .accumulated-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .label { color: var(--color-text-secondary); font-size: 0.9rem; }
+        .accumulated-value {
+          font-size: 1.3rem;
+          font-weight: 700;
+          color: #2ecc71;
+        }
+      }
+
+      .accumulated-hint {
+        margin: 0.25rem 0 0;
+        font-size: 0.75rem;
+        color: var(--color-text-tertiary);
+        text-align: right;
+      }
     }
 
     .balance-card {
@@ -460,6 +619,17 @@
       border: 1px solid var(--color-glass-border);
       border-radius: 12px;
 
+      @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: stretch;
+        
+        button {
+          width: 100%;
+          min-height: 44px;
+        }
+      }
+
       .offer-info {
         display: flex;
         flex-direction: column;
@@ -522,6 +692,11 @@
       border: 1px solid var(--color-glass-border);
       border-radius: 12px;
 
+      @media (max-width: 768px) {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+
       &.disabled { opacity: 0.5; }
 
       .event-icon {
@@ -548,6 +723,11 @@
         border: none;
         border-radius: 10px;
         color: #fff;
+        min-height: 44px;
+
+        @media (max-width: 768px) {
+          width: 100%;
+        }
         font-weight: 600;
         cursor: pointer;
 

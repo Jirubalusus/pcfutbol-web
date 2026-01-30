@@ -79,13 +79,90 @@ export default function Plantilla() {
   };
   
   const getRenewalDemand = (player) => {
-    // El jugador pide subida según su overall y edad
     const currentSalary = player.salary || 30000;
-    const overallFactor = player.overall / 75;
-    const ageFactor = player.age <= 28 ? 1.2 : player.age <= 32 ? 1.0 : 0.85;
-    const demandedSalary = Math.round(currentSalary * overallFactor * ageFactor * 1.15); // +15% mínimo
-    const demandedYears = player.age <= 28 ? 4 : player.age <= 32 ? 3 : 2;
-    return { salary: demandedSalary, years: demandedYears };
+    const age = player.age || 25;
+    const overall = player.overall || 70;
+    const potential = player.potential || overall;
+    const minutesPlayed = player.personality?.minutesPlayed ?? 50;
+    
+    // === FACTOR EDAD ===
+    // Jóvenes (<23): piden poco salario pero muchos años, salvo si son cracks
+    // Prime (24-30): piden según su nivel, subida si rinden bien
+    // Veteranos (31-33): piden similar o ligeramente menos
+    // Mayores (34+): piden MENOS, saben que están en declive
+    let ageSalaryFactor;
+    let demandedYears;
+    
+    if (age <= 21) {
+      ageSalaryFactor = 0.85;  // Piden menos, están contentos con jugar
+      demandedYears = 4;       // Quieren estabilidad
+    } else if (age <= 23) {
+      ageSalaryFactor = 0.95;
+      demandedYears = 4;
+    } else if (age <= 27) {
+      ageSalaryFactor = 1.10;  // Prime ascendente, quieren subida
+      demandedYears = 4;
+    } else if (age <= 30) {
+      ageSalaryFactor = 1.15;  // Pico, último gran contrato
+      demandedYears = 3;
+    } else if (age <= 33) {
+      ageSalaryFactor = 0.95;  // Empiezan a aceptar menos
+      demandedYears = 2;
+    } else {
+      ageSalaryFactor = 0.75;  // 34+: saben que están en declive
+      demandedYears = 1;
+    }
+    
+    // === FACTOR OVERALL ===
+    // Jugadores con más media piden más proporcionalmente
+    // 60 OVR → ×0.85, 75 OVR → ×1.0, 85 OVR → ×1.25, 95 OVR → ×1.55
+    const overallFactor = 0.55 + (overall / 100) * 1.0;
+    
+    // === FACTOR POTENCIAL (solo jóvenes) ===
+    // Si un joven tiene mucho potencial, pide más porque sabe que vale
+    let potentialBonus = 1.0;
+    if (age <= 25 && potential > overall) {
+      const potentialGap = potential - overall;
+      // Gap de 10+ → pide bastante más
+      potentialBonus = 1.0 + Math.min(0.3, potentialGap * 0.02);
+    }
+    
+    // === FACTOR RENDIMIENTO ===
+    // Si juega mucho (titular), pide más. Si juega poco, pide menos.
+    let performanceFactor;
+    if (minutesPlayed >= 75) {
+      performanceFactor = 1.10; // Titular indiscutible
+    } else if (minutesPlayed >= 50) {
+      performanceFactor = 1.0;  // Rotación normal
+    } else if (minutesPlayed >= 25) {
+      performanceFactor = 0.90; // Poco protagonismo
+    } else {
+      performanceFactor = 0.80; // Apenas juega, acepta lo que sea
+    }
+    
+    // === CÁLCULO FINAL ===
+    const demandedSalary = Math.round(
+      currentSalary * ageSalaryFactor * overallFactor * potentialBonus * performanceFactor
+    );
+    
+    // El salario pedido nunca baja de un mínimo razonable según overall
+    const minSalary = Math.round(overall * overall * 3); // ~15K para 70 OVR, ~22K para 85 OVR
+    
+    return { 
+      salary: Math.max(minSalary, demandedSalary), 
+      years: demandedYears 
+    };
+  };
+  
+  // ¿El jugador quiere renovar? Solo si le quedan 1-2 años, no se retira, y no renovó recientemente
+  const wantsToRenew = (player) => {
+    if (player.retiring) return false;
+    const contractYears = player.contractYears ?? player.personality?.contractYears ?? 2;
+    // No renovar si ya renovó esta temporada (cooldown de 30 semanas)
+    const lastRenewal = player.personality?.lastRenewalWeek || 0;
+    const currentWeek = state.currentWeek || 1;
+    if (lastRenewal > 0 && (currentWeek - lastRenewal) < 30) return false;
+    return contractYears <= 2;
   };
   
   const needsAttention = (player) => {
@@ -129,11 +206,13 @@ export default function Plantilla() {
         ...selectedPlayer,
         salary: newSalary,
         contractYears: newYears,
+        contract: newYears,
         personality: {
           ...selectedPlayer.personality,
           contractYears: newYears,
           happiness: Math.min(100, (selectedPlayer.personality?.happiness || 70) + 15),
-          wantsToLeave: false
+          wantsToLeave: false,
+          lastRenewalWeek: state.currentWeek // Previene renovar otra vez
         }
       }
     });
@@ -249,8 +328,8 @@ export default function Plantilla() {
           </div>
           <div className="finance-box salary">
             <span className="label">Masa salarial</span>
-            <span className="value">{formatMoney(totalWeeklySalary)}/sem</span>
-            <span className="yearly">{formatMoney(totalYearlySalary)}/año ({salaryPercentage}%)</span>
+            <span className="value">{formatMoney(totalYearlySalary)}/año</span>
+            <span className="yearly">{formatMoney(totalWeeklySalary)}/sem ({salaryPercentage}% del presupuesto)</span>
           </div>
         </div>
       </div>
@@ -304,12 +383,22 @@ export default function Plantilla() {
       <div className="plantilla__list">
         {sortedPlayers.map(player => {
           const contract = getContractStatus(player);
+          const contractYears = player.contractYears ?? player.personality?.contractYears ?? 2;
           const yearlySalary = (player.salary || 0) * WEEKS_PER_YEAR;
+          const totalContractCost = yearlySalary * contractYears;
           const attention = needsAttention(player);
           const isTransferListed = player.transferListed;
           
           return (
-            <div key={player.name} className={`player-row ${attention ? 'attention' : ''} ${isTransferListed ? 'listed' : ''}`}>
+            <div key={player.name} className={`player-row ${attention ? 'attention' : ''} ${isTransferListed ? 'listed' : ''}`}
+              onClick={(e) => {
+                // On mobile, tap row to open action sheet
+                if (window.innerWidth <= 768 && !e.target.closest('.player-actions')) {
+                  setSelectedPlayer(player);
+                  setActionModal({ type: 'mobile-actions', player });
+                }
+              }}
+            >
               <div className="player-main">
                 <span className="pos" style={{ background: getPositionColor(player.position) }}>
                   {player.position}
@@ -323,10 +412,13 @@ export default function Plantilla() {
                   <span className="meta">{player.overall} OVR · {player.age} años</span>
                 </div>
               </div>
+
+              {/* OVR badge visible on mobile */}
+              <span className="player-ovr-badge">{player.overall}</span>
               
               <div className="player-contract">
-                <span className="salary">{formatMoney(player.salary || 0)}/sem</span>
-                <span className="yearly">{formatMoney(yearlySalary)}/año</span>
+                <span className="salary">{formatMoney(yearlySalary)}/año</span>
+                <span className="yearly">{formatMoney(totalContractCost)} total ({contractYears}a)</span>
               </div>
               
               <div className="player-status">
@@ -339,8 +431,8 @@ export default function Plantilla() {
                 <button 
                   className="btn-renew" 
                   onClick={() => handleRenew(player)} 
-                  title={player.retiring ? "El jugador ha anunciado su retiro" : "Renovar"}
-                  disabled={player.retiring}
+                  title={player.retiring ? "El jugador ha anunciado su retiro" : !wantsToRenew(player) ? "El jugador no necesita renovar (le quedan más de 2 años)" : "Renovar"}
+                  disabled={!wantsToRenew(player)}
                 >
                   ✍️
                 </button>
@@ -360,12 +452,50 @@ export default function Plantilla() {
       {actionModal && selectedPlayer && (
         <div className="plantilla__modal-overlay" onClick={closeModal}>
           <div className="plantilla__modal" onClick={e => e.stopPropagation()}>
+
+            {/* MOBILE ACTION SHEET */}
+            {actionModal.type === 'mobile-actions' && (
+              <>
+                <div className="modal-header">
+                  <h3>{selectedPlayer.name}</h3>
+                </div>
+                <div className="modal-content">
+                  <div className="player-summary">
+                    <span className="pos" style={{ background: getPositionColor(selectedPlayer.position) }}>
+                      {selectedPlayer.position}
+                    </span>
+                    <span className="ovr">{selectedPlayer.overall}</span>
+                    <span className="age">{selectedPlayer.age} años</span>
+                  </div>
+                  <div className="mobile-action-list">
+                    <button className="mobile-action-btn" onClick={() => { closeModal(); handleRenew(selectedPlayer); }} disabled={!wantsToRenew(selectedPlayer)}>
+                      ✍️ Renovar contrato
+                    </button>
+                    <button className="mobile-action-btn" onClick={() => { closeModal(); handleSell(selectedPlayer); }}>
+                      🏷️ Poner en venta
+                    </button>
+                    <button className="mobile-action-btn mobile-action-btn--danger" onClick={() => { closeModal(); handleRelease(selectedPlayer); }}>
+                      👋 Liberar jugador
+                    </button>
+                    <button className="btn-cancel" onClick={closeModal}>
+                      Cancelar
+                    </button>
+                  </div>
+                </div>
+              </>
+            )}
             
             {/* RENOVAR */}
-            {actionModal.type === 'renew' && (
+            {actionModal.type === 'renew' && (() => {
+              const currentContractYears = selectedPlayer.personality?.contractYears || selectedPlayer.contractYears || 1;
+              const currentYearlySalary = (selectedPlayer.salary || 0) * WEEKS_PER_YEAR;
+              const newYearlySalary = actionModal.demand.salary * WEEKS_PER_YEAR;
+              const salaryDiff = newYearlySalary - currentYearlySalary;
+              
+              return (
               <>
                 <div className="modal-header renew">
-                  <h3>✍️ Renovar a {selectedPlayer.name}</h3>
+                  <h3>Renovar a {selectedPlayer.name}</h3>
                 </div>
                 <div className="modal-content">
                   <div className="player-summary">
@@ -379,28 +509,29 @@ export default function Plantilla() {
                   <div className="comparison">
                     <div className="current">
                       <span className="label">Contrato actual</span>
-                      <span className="salary">{formatMoney(selectedPlayer.salary || 0)}/sem</span>
-                      <span className="yearly">{formatMoney((selectedPlayer.salary || 0) * WEEKS_PER_YEAR)}/año</span>
+                      <span className="salary">{formatMoney(currentYearlySalary)}/año</span>
+                      <span className="yearly">Total: {formatMoney(currentYearlySalary * currentContractYears)}</span>
+                      <span className="years">{currentContractYears} año{currentContractYears !== 1 ? 's' : ''}</span>
                     </div>
                     <div className="arrow">→</div>
                     <div className="new">
                       <span className="label">Pide</span>
-                      <span className="salary">{formatMoney(actionModal.demand.salary)}/sem</span>
-                      <span className="yearly">{formatMoney(actionModal.demand.salary * WEEKS_PER_YEAR)}/año</span>
+                      <span className="salary">{formatMoney(newYearlySalary)}/año</span>
+                      <span className="yearly">Total: {formatMoney(newYearlySalary * actionModal.demand.years)}</span>
                       <span className="years">{actionModal.demand.years} años</span>
                     </div>
                   </div>
                   
                   <div className="impact">
-                    <span className="impact-label">💰 Impacto en presupuesto:</span>
-                    <span className="impact-value negative">
-                      {formatMoney((actionModal.demand.salary - (selectedPlayer.salary || 0)) * WEEKS_PER_YEAR)}/año
+                    <span className="impact-label">Impacto en presupuesto:</span>
+                    <span className={`impact-value ${salaryDiff > 0 ? 'negative' : 'positive'}`}>
+                      {salaryDiff > 0 ? '+' : ''}{formatMoney(salaryDiff)}/año
                     </span>
                   </div>
                   
                   <div className="modal-actions">
                     <button className="btn-confirm" onClick={confirmRenew}>
-                      ✅ Aceptar y renovar
+                      Aceptar y renovar
                     </button>
                     <button className="btn-cancel" onClick={closeModal}>
                       Cancelar
@@ -408,7 +539,8 @@ export default function Plantilla() {
                   </div>
                 </div>
               </>
-            )}
+              );
+            })()}
             
             {/* VENDER */}
             {actionModal.type === 'sell' && (

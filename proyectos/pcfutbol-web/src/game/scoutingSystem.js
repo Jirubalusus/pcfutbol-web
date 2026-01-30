@@ -361,8 +361,6 @@ export function getTeamsByLeague(allTeams, leagueId) {
   let teams = allTeams || [];
   if (leagueId) {
     teams = teams.filter(t => t.leagueId === leagueId);
-    // Fallback: if no teams match (data doesn't have leagueId yet), return all
-    if (teams.length === 0) teams = allTeams || [];
   }
   return teams.map(team => ({
     ...team,

@@ -75,6 +75,10 @@
     @media (max-width: 900px) {
       grid-template-columns: 1fr;
     }
+
+    @media (max-width: 768px) {
+      gap: 0.75rem;
+    }
   }
   
   &__list {
@@ -185,7 +189,7 @@
       overflow-y: auto;
       padding: 1rem;
       padding-top: env(safe-area-inset-top, 1rem);
-      padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 80px);
+      padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 95px);
     }
   }
 

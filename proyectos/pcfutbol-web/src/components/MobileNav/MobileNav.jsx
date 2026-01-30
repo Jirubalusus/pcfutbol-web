@@ -14,8 +14,10 @@ const MENU_ITEMS = [
   { id: 'formation', icon: '⚽', label: 'Formación' },
   { id: 'objectives', icon: '🎯', label: 'Objetivos' },
   { id: 'calendar', icon: '📅', label: 'Calendario' },
+  { id: 'europe', icon: '🌍', label: 'Europa' },
   { id: 'transfers', icon: '💰', label: 'Fichajes' },
   { id: 'stadium', icon: '🏟️', label: 'Estadio' },
+  { id: 'finance', icon: '🏦', label: 'Banco' },
   { id: 'facilities', icon: '🏗️', label: 'Instalaciones' },
   { id: 'messages', icon: '📬', label: 'Mensajes' },
 ];

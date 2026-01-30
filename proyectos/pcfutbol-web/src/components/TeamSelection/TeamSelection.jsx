@@ -12,24 +12,50 @@ import {
   getBundesligaTeams,
   getLigue1Teams,
   getPrimeraRfefGroups,
-  getSegundaRfefGroups
+  getSegundaRfefGroups,
+  getEredivisieTeams,
+  getPrimeiraLigaTeams,
+  getChampionshipTeams,
+  getBelgianProTeams,
+  getSuperLigTeams,
+  getScottishPremTeams,
+  getSerieBTeams,
+  getBundesliga2Teams,
+  getLigue2Teams,
+  getSwissTeams,
+  getAustrianTeams,
+  getGreekTeams,
+  getDanishTeams,
+  getCroatianTeams,
+  getCzechTeams
 } from '../../data/teamsFirestore';
 import { getStadiumInfo, getStadiumLevel } from '../../data/stadiumCapacities';
 import { initializeLeague } from '../../game/leagueEngine';
 import { initializeOtherLeagues } from '../../game/multiLeagueEngine';
 import { generateSeasonObjectives } from '../../game/objectivesEngine';
 import { generatePreseasonOptions } from '../../game/seasonManager';
-import { Calendar, Plane, Home, Swords, Sparkles, CheckCircle2, ChevronRight } from 'lucide-react';
+import { Calendar, Plane, Home, Swords, Sparkles, ChevronRight } from 'lucide-react';
 import EuropeMap from './EuropeMap';
 import './TeamSelection.scss';
 import './EuropeMap.scss';
 
 const COUNTRIES = [
   { id: 'spain', name: 'España', flag: '🇪🇸', leagues: ['laliga', 'segunda', 'primeraRFEF', 'segundaRFEF'] },
-  { id: 'england', name: 'Inglaterra', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', leagues: ['premierLeague'] },
-  { id: 'italy', name: 'Italia', flag: '🇮🇹', leagues: ['serieA'] },
-  { id: 'germany', name: 'Alemania', flag: '🇩🇪', leagues: ['bundesliga'] },
-  { id: 'france', name: 'Francia', flag: '🇫🇷', leagues: ['ligue1'] },
+  { id: 'england', name: 'Inglaterra', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', leagues: ['premierLeague', 'championship'] },
+  { id: 'italy', name: 'Italia', flag: '🇮🇹', leagues: ['serieA', 'serieB'] },
+  { id: 'germany', name: 'Alemania', flag: '🇩🇪', leagues: ['bundesliga', 'bundesliga2'] },
+  { id: 'france', name: 'Francia', flag: '🇫🇷', leagues: ['ligue1', 'ligue2'] },
+  { id: 'netherlands', name: 'Países Bajos', flag: '🇳🇱', leagues: ['eredivisie'] },
+  { id: 'portugal', name: 'Portugal', flag: '🇵🇹', leagues: ['primeiraLiga'] },
+  { id: 'belgium', name: 'Bélgica', flag: '🇧🇪', leagues: ['belgianPro'] },
+  { id: 'turkey', name: 'Turquía', flag: '🇹🇷', leagues: ['superLig'] },
+  { id: 'scotland', name: 'Escocia', flag: '🏴󠁧󠁢󠁳󠁣󠁴󠁿', leagues: ['scottishPrem'] },
+  { id: 'switzerland', name: 'Suiza', flag: '🇨🇭', leagues: ['swissSuperLeague'] },
+  { id: 'austria', name: 'Austria', flag: '🇦🇹', leagues: ['austrianBundesliga'] },
+  { id: 'greece', name: 'Grecia', flag: '🇬🇷', leagues: ['greekSuperLeague'] },
+  { id: 'denmark', name: 'Dinamarca', flag: '🇩🇰', leagues: ['danishSuperliga'] },
+  { id: 'croatia', name: 'Croacia', flag: '🇭🇷', leagues: ['croatianLeague'] },
+  { id: 'czech', name: 'Chequia', flag: '🇨🇿', leagues: ['czechLeague'] },
 ];
 
 // Función helper para obtener equipos de una liga
@@ -43,6 +69,21 @@ function getLeagueTeams(leagueId) {
     case 'serieA': return getSerieATeams();
     case 'bundesliga': return getBundesligaTeams();
     case 'ligue1': return getLigue1Teams();
+    case 'eredivisie': return getEredivisieTeams();
+    case 'primeiraLiga': return getPrimeiraLigaTeams();
+    case 'championship': return getChampionshipTeams();
+    case 'belgianPro': return getBelgianProTeams();
+    case 'superLig': return getSuperLigTeams();
+    case 'scottishPrem': return getScottishPremTeams();
+    case 'serieB': return getSerieBTeams();
+    case 'bundesliga2': return getBundesliga2Teams();
+    case 'ligue2': return getLigue2Teams();
+    case 'swissSuperLeague': return getSwissTeams();
+    case 'austrianBundesliga': return getAustrianTeams();
+    case 'greekSuperLeague': return getGreekTeams();
+    case 'danishSuperliga': return getDanishTeams();
+    case 'croatianLeague': return getCroatianTeams();
+    case 'czechLeague': return getCzechTeams();
     default: return [];
   }
 }
@@ -67,6 +108,19 @@ const LEAGUE_NAMES = {
   serieA: 'Serie A',
   eredivisie: 'Eredivisie',
   primeiraLiga: 'Primeira Liga',
+  championship: 'Championship',
+  belgianPro: 'Jupiler Pro League',
+  superLig: 'Süper Lig',
+  scottishPrem: 'Scottish Premiership',
+  serieB: 'Serie B',
+  bundesliga2: '2. Bundesliga',
+  ligue2: 'Ligue 2',
+  swissSuperLeague: 'Super League (CH)',
+  austrianBundesliga: 'Bundesliga (AT)',
+  greekSuperLeague: 'Super League (GR)',
+  danishSuperliga: 'Superligaen',
+  croatianLeague: 'HNL',
+  czechLeague: 'Chance Liga',
 };
 
 // Ligas que tienen grupos
@@ -175,7 +229,12 @@ export default function TeamSelection() {
   // Función para obtener todos los equipos de todas las ligas
   const getAllTeamsForPreseason = () => [
     ...getLaLigaTeams(), ...getSegundaTeams(), ...getPrimeraRfefTeams(), ...getSegundaRfefTeams(),
-    ...getPremierTeams(), ...getSerieATeams(), ...getBundesligaTeams(), ...getLigue1Teams()
+    ...getPremierTeams(), ...getSerieATeams(), ...getBundesligaTeams(), ...getLigue1Teams(),
+    ...getEredivisieTeams(), ...getPrimeiraLigaTeams(), ...getChampionshipTeams(),
+    ...getBelgianProTeams(), ...getSuperLigTeams(), ...getScottishPremTeams(),
+    ...getSerieBTeams(), ...getBundesliga2Teams(), ...getLigue2Teams(),
+    ...getSwissTeams(), ...getAustrianTeams(), ...getGreekTeams(),
+    ...getDanishTeams(), ...getCroatianTeams(), ...getCzechTeams()
   ];
 
   const handleShowPreseason = () => {
@@ -222,15 +281,45 @@ export default function TeamSelection() {
     dispatch({ type: 'SET_FIXTURES', payload: leagueData.fixtures });
     dispatch({ type: 'SET_PLAYER_LEAGUE', payload: selectedLeague });
     
-    // Guardar todos los equipos de la liga para el mercado global
-    const allLeagueTeamsWithData = leagueTeams.map(t => ({
-      ...t,
-      id: t.id,
-      name: t.name,
-      players: t.players || [],
-      budget: t.budget || (t.reputation > 4 ? 100_000_000 : t.reputation > 3 ? 50_000_000 : 20_000_000),
-      leagueId: selectedLeague
-    }));
+    // Guardar TODOS los equipos de TODAS las ligas para el mercado global y el explorador
+    const allLeagueIds = [
+      { id: 'laliga', getter: getLaLigaTeams },
+      { id: 'segunda', getter: getSegundaTeams },
+      { id: 'premierLeague', getter: getPremierTeams },
+      { id: 'serieA', getter: getSerieATeams },
+      { id: 'bundesliga', getter: getBundesligaTeams },
+      { id: 'ligue1', getter: getLigue1Teams },
+      { id: 'eredivisie', getter: getEredivisieTeams },
+      { id: 'primeiraLiga', getter: getPrimeiraLigaTeams },
+      { id: 'championship', getter: getChampionshipTeams },
+      { id: 'belgianPro', getter: getBelgianProTeams },
+      { id: 'superLig', getter: getSuperLigTeams },
+      { id: 'scottishPrem', getter: getScottishPremTeams },
+      { id: 'serieB', getter: getSerieBTeams },
+      { id: 'bundesliga2', getter: getBundesliga2Teams },
+      { id: 'ligue2', getter: getLigue2Teams },
+      { id: 'swissSuperLeague', getter: getSwissTeams },
+      { id: 'austrianBundesliga', getter: getAustrianTeams },
+      { id: 'greekSuperLeague', getter: getGreekTeams },
+      { id: 'danishSuperliga', getter: getDanishTeams },
+      { id: 'croatianLeague', getter: getCroatianTeams },
+      { id: 'czechLeague', getter: getCzechTeams },
+    ];
+    
+    const allLeagueTeamsWithData = [];
+    for (const league of allLeagueIds) {
+      const teams = league.getter();
+      for (const t of teams) {
+        allLeagueTeamsWithData.push({
+          ...t,
+          id: t.id,
+          name: t.name,
+          players: t.players || [],
+          budget: t.budget || (t.reputation > 4 ? 100_000_000 : t.reputation > 3 ? 50_000_000 : 20_000_000),
+          leagueId: league.id
+        });
+      }
+    }
     dispatch({ type: 'UPDATE_LEAGUE_TEAMS', payload: allLeagueTeamsWithData });
     
     // Inicializar otras ligas para poder verlas en la clasificación
@@ -763,11 +852,6 @@ export default function TeamSelection() {
                     </ul>
                   </div>
                   
-                  {selectedPreseason?.id === option.id && (
-                    <div className="selected-indicator">
-                      <CheckCircle2 size={20} /> Seleccionado
-                    </div>
-                  )}
                 </div>
               ))}
             </div>

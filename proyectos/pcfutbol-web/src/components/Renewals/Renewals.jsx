@@ -296,6 +296,8 @@ export default function Renewals() {
                 <button 
                   className="renew-btn"
                   onClick={() => startRenewal(player)}
+                  disabled={player.retiring || player.contractYears > 2}
+                  title={player.retiring ? "Se retira" : player.contractYears > 2 ? "No necesita renovar (más de 2 años de contrato)" : "Negociar renovación"}
                 >
                   📝 Negociar Renovación
                 </button>

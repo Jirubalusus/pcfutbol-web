@@ -8,32 +8,32 @@ export const FACILITY_SPECIALIZATIONS = {
     name: 'Cantera',
     options: [
       { 
-        id: 'offensive', 
-        name: 'Ofensiva', 
-        icon: '⚔️',
-        description: 'Genera más delanteros y extremos',
-        effect: { positions: ['ST', 'RW', 'LW', 'CAM'], bonusOvr: 2 }
+        id: 'goalkeeper', 
+        name: 'Portero', 
+        icon: '🧤',
+        description: 'Genera porteros',
+        effect: { positions: ['GK'], bonusOvr: 2 }
       },
       { 
-        id: 'defensive', 
-        name: 'Defensiva', 
+        id: 'defense', 
+        name: 'Defensa', 
         icon: '🛡️',
-        description: 'Genera más defensas y porteros',
-        effect: { positions: ['GK', 'CB', 'RB', 'LB', 'CDM'], bonusOvr: 2 }
+        description: 'Genera defensas (CB, RB, LB)',
+        effect: { positions: ['CB', 'RB', 'LB'], bonusOvr: 2 }
       },
       { 
-        id: 'technical', 
-        name: 'Técnica', 
+        id: 'midfield', 
+        name: 'Medio', 
         icon: '🎯',
-        description: 'Jugadores con mejor pase y regate',
-        effect: { attributes: ['passing', 'dribbling'], bonusOvr: 1 }
+        description: 'Genera centrocampistas (CDM, CM, CAM)',
+        effect: { positions: ['CDM', 'CM', 'CAM'], bonusOvr: 2 }
       },
       { 
-        id: 'physical', 
-        name: 'Física', 
-        icon: '💪',
-        description: 'Jugadores más rápidos y fuertes',
-        effect: { attributes: ['pace', 'physical'], bonusOvr: 1 }
+        id: 'forward', 
+        name: 'Delantero', 
+        icon: '⚽',
+        description: 'Genera delanteros y extremos (ST, RW, LW)',
+        effect: { positions: ['ST', 'RW', 'LW'], bonusOvr: 2 }
       }
     ]
   },
@@ -63,32 +63,6 @@ export const FACILITY_SPECIALIZATIONS = {
       }
     ]
   },
-  training: {
-    name: 'Entrenamiento',
-    options: [
-      { 
-        id: 'intensive', 
-        name: 'Intensivo', 
-        icon: '🔥',
-        description: '+50% progresión, +50% riesgo lesión',
-        effect: { progressBonus: 0.50, injuryRisk: 0.50 }
-      },
-      { 
-        id: 'balanced', 
-        name: 'Equilibrado', 
-        icon: '⚖️',
-        description: 'Progresión y riesgo normales',
-        effect: { progressBonus: 0, injuryRisk: 0 }
-      },
-      { 
-        id: 'conservative', 
-        name: 'Conservador', 
-        icon: '🧘',
-        description: '-25% progresión, -50% riesgo lesión',
-        effect: { progressBonus: -0.25, injuryRisk: -0.50 }
-      }
-    ]
-  }
 };
 
 // Tipos de eventos de instalaciones
@@ -137,27 +111,6 @@ export const FACILITY_EVENTS = {
     ]
   },
   
-  // Eventos de entrenamiento
-  training_breakthrough: {
-    type: 'training',
-    title: '💡 Progreso excepcional',
-    getMessage: (player) => `${player.name} ha tenido un avance notable en los entrenamientos.`,
-    choices: [
-      { id: 'focus', text: '🎯 Entrenamiento personal', effect: 'big_boost_one' },
-      { id: 'share', text: '👥 Compartir con el grupo', effect: 'small_boost_all' },
-      { id: 'normal', text: '📋 Seguir plan normal', effect: 'none' }
-    ]
-  },
-  training_conflict: {
-    type: 'training',
-    title: '😤 Conflicto en el vestuario',
-    getMessage: (player1, player2) => `${player1.name} y ${player2?.name || 'otro jugador'} han tenido un enfrentamiento en el entrenamiento.`,
-    getChoices: (player1, player2) => [
-      { id: 'side_p1', text: `Apoyar a ${player1?.name?.split(' ')[0] || 'Jugador 1'}`, effect: 'boost_p1_hurt_p2' },
-      { id: 'side_p2', text: `Apoyar a ${player2?.name?.split(' ')[0] || 'Jugador 2'}`, effect: 'boost_p2_hurt_p1' },
-      { id: 'mediate', text: '🤝 Mediar entre ambos', effect: 'small_morale_all' }
-    ]
-  }
 };
 
 // Genera un evento aleatorio basado en las instalaciones
@@ -170,8 +123,6 @@ export function generateFacilityEvent(facilities, players, week) {
   
   const youthLevel = facilities?.youth || 0;
   const medicalLevel = facilities?.medical || 0;
-  const trainingLevel = facilities?.training || 0;
-  
   // Más nivel = más probabilidad de eventos positivos
   const eventTypes = [];
   
@@ -180,9 +131,6 @@ export function generateFacilityEvent(facilities, players, week) {
   }
   if (medicalLevel > 0) {
     eventTypes.push('medical_discovery', 'player_discomfort');
-  }
-  if (trainingLevel > 0) {
-    eventTypes.push('training_breakthrough', 'training_conflict');
   }
   
   if (eventTypes.length === 0) return null;
@@ -218,11 +166,12 @@ export function generateFacilityEvent(facilities, players, week) {
 }
 
 // Genera canterano con especialización
+// Siempre 1 canterano/temporada — el nivel de cantera mejora la media del jugador
 export function generateYouthPlayer(youthLevel, specialization) {
-  const minOvr = [55, 60, 65, 70][youthLevel];
-  const maxOvr = [65, 72, 78, 85][youthLevel];
+  const minOvr = [50, 55, 58, 62][youthLevel];
+  const maxOvr = [60, 65, 70, 75][youthLevel];
   
-  // Posiciones según especialización
+  // Posición según especialización (80% de la zona elegida, 20% aleatoria)
   let positions;
   let bonusOvr = 0;
   
@@ -231,14 +180,8 @@ export function generateYouthPlayer(youthLevel, specialization) {
   const allPositions = ['GK', 'CB', 'RB', 'LB', 'CDM', 'CM', 'CAM', 'RW', 'LW', 'ST'];
   
   if (spec?.effect?.positions) {
-    // Calcular probabilidad ajustada para lograr ~70% efectivo
-    // P_efectiva = P_directa + (1 - P_directa) * (specPositions / allPositions)
-    // 0.70 = X + (1-X) * (spec.effect.positions.length / 10)
-    const specCount = spec.effect.positions.length;
-    const targetRate = 0.70;
-    const adjustedRate = (targetRate - specCount/10) / (1 - specCount/10);
-    
-    if (Math.random() < adjustedRate) {
+    // 80% sale de la especialización, 20% aleatorio
+    if (Math.random() < 0.80) {
       positions = spec.effect.positions;
     } else {
       positions = allPositions;
@@ -250,7 +193,7 @@ export function generateYouthPlayer(youthLevel, specialization) {
   
   const position = positions[Math.floor(Math.random() * positions.length)];
   const overall = Math.min(99, Math.floor(Math.random() * (maxOvr - minOvr + 1)) + minOvr + bonusOvr);
-  const age = 17 + Math.floor(Math.random() * 3);
+  const age = 17 + Math.floor(Math.random() * 2); // 17-18 años
   
   const firstNames = ['Pablo', 'Miguel', 'Carlos', 'David', 'Alejandro', 'Daniel', 'Javier', 'Sergio', 'Adrián', 'Hugo', 'Álvaro', 'Iker', 'Mario', 'Diego', 'Rubén'];
   const lastNames = ['García', 'Martínez', 'López', 'Sánchez', 'Fernández', 'González', 'Rodríguez', 'Pérez', 'Gómez', 'Ruiz', 'Díaz', 'Moreno', 'Muñoz', 'Jiménez', 'Navarro'];
@@ -262,7 +205,8 @@ export function generateYouthPlayer(youthLevel, specialization) {
     overall,
     potential: Math.min(99, overall + Math.floor(Math.random() * 15) + 5),
     nationality: 'España',
-    salary: Math.round(overall * 5000),
+    // Salario bajo de canterano (joven, sin experiencia)
+    salary: Math.max(1500, Math.round(2000 * Math.pow(2, (overall - 55) / 5) * 0.5)),
     value: Math.round(overall * overall * 10000),
     isYouthProduct: true
   };

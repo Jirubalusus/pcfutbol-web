@@ -482,35 +482,61 @@
 
 // Mobile adjustments
 @media (max-width: 768px) {
+  .objectives {
+    padding: 10px;
+    padding-bottom: 95px;
+    overflow-x: hidden;
+  }
+
   .objectives__header {
+    margin-bottom: 16px;
+
     .header-title {
+      gap: 10px;
+
       h1 {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
+      }
+
+      .subtitle {
+        font-size: 0.8rem;
       }
     }
   }
+
+  .objectives__stats {
+    gap: 8px;
+    margin-bottom: 16px;
+  }
   
   .stat-card {
-    padding: 12px;
+    padding: 10px;
+    gap: 8px;
     
     .stat-value {
-      font-size: 1.25rem;
+      font-size: 1.15rem;
+    }
+
+    .stat-label {
+      font-size: 0.65rem;
     }
   }
   
   .objective-main {
     flex-wrap: wrap;
+    gap: 10px;
   }
   
   .objective-expand {
     position: absolute;
-    right: 16px;
-    top: 16px;
+    right: 12px;
+    top: 12px;
   }
   
   .objective-card {
     position: relative;
-    padding-right: 40px;
+    padding: 12px;
+    padding-right: 36px;
   }
   
   .objective-header {
@@ -520,5 +546,39 @@
   
   .objective-status {
     margin-top: 4px;
+  }
+
+  .objective-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .objective-name {
+    font-size: 0.95rem;
+  }
+
+  .objective-desc {
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+  }
+
+  .objectives__filters {
+    gap: 6px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+
+    .filter-btn {
+      padding: 6px 10px;
+      font-size: 0.78rem;
+    }
+  }
+
+  .objectives__section {
+    margin-bottom: 20px;
+  }
+
+  .objectives__tip {
+    padding: 12px;
+    margin-top: 16px;
   }
 }

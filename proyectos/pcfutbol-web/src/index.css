@@ -211,6 +211,58 @@ select:focus-visible {
   }
 }
 
+/* ── Global Smooth Transitions ── */
+/* Cards and interactive elements get smooth transitions by default */
+button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth page content transitions */
+.office__content,
+.office__main {
+  animation: contentFadeIn 0.3s ease-out;
+}
+
+@keyframes contentFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Cards appear with subtle slide */
+.office__card,
+.glass-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.office__card:hover,
+.glass-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Shimmer effect utility class */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.04) 50%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  animation: shimmerSlide 2.5s ease-in-out infinite;
+}
+@keyframes shimmerSlide {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
 /* Loading states */
 .loading {
   opacity: 0.5;
@@ -263,4 +315,165 @@ select:focus-visible {
   -webkit-backdrop-filter: var(--backdrop-blur);
   border: 1px solid var(--color-glass-border);
   border-radius: var(--border-radius-lg);
+}
+
+/* ============================================================
+   MOBILE GLOBAL OVERRIDES — Apple Minimalist Style
+   Only affects screens ≤768px. Desktop untouched.
+   ============================================================ */
+@media (max-width: 768px) {
+  /* === KILL HORIZONTAL SCROLL === */
+  html, body, #root {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+    width: 100% !important;
+  }
+
+  /* Force all direct children to respect viewport */
+  body > *, #root > * {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+
+  /* === BASE TYPOGRAPHY — Tighter for mobile === */
+  :root {
+    font-size: 15px;
+  }
+
+  /* === GLOBAL CARD STYLE — Apple-like === */
+  .office__card,
+  .card,
+  .glass-card,
+  .player-row,
+  .stat-card,
+  .finance-box,
+  .league-card,
+  .country-card,
+  .preseason-card,
+  .intensity-card-v2 {
+    border: none !important;
+    border-radius: 14px !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+  }
+
+  /* === MODALS — Bottom sheet, Apple-style === */
+  .pcf-modal-overlay,
+  .transfer-modal-overlay,
+  .player-modal-overlay,
+  .preseason-modal-overlay,
+  .mobile-menu {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .pcf-modal,
+  .transfer-modal,
+  .player-modal {
+    border: none !important;
+    box-shadow: 0 -4px 40px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  /* === BUTTONS — Rounded, no harsh borders === */
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* === CONTENT AREAS — No overflow === */
+  .office__content,
+  .office__main,
+  .pcf-ts-content,
+  .tab-explorar,
+  .plantilla,
+  .formation-wrapper,
+  .transfers-content,
+  .tab-resumen,
+  .tab-buscar,
+  .tab-ofertas,
+  .tab-noticias,
+  .calendar-v2,
+  .league-table-v2,
+  .facilities-v2,
+  .stadium-simple,
+  .training-simple,
+  .objectives,
+  .renewals,
+  .messages,
+  .squad,
+  .settings {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
+  }
+
+  /* === KILL ALL TABLE HORIZONTAL SCROLL === */
+  .league-table-v2__table,
+  .pcf-table-container,
+  [class*="table-wrapper"],
+  [class*="table-container"] {
+    overflow-x: hidden !important;
+  }
+
+  /* === FICHAJES — Fix tab overflow === */
+  .transfers-v2 .tabs,
+  .transfers-v2__tabs,
+  .transfers-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    max-width: 100%;
+  }
+  .transfers-v2 .tabs::-webkit-scrollbar,
+  .transfers-v2__tabs::-webkit-scrollbar,
+  .transfers-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* === CALENDARIO — Fix match card overflow === */
+  .match-card,
+  .match-row,
+  .calendar-match,
+  .fixture-card {
+    max-width: 100%;
+    overflow: hidden;
+  }
+  .team.away,
+  .team.home {
+    max-width: 45%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .match-status {
+    max-width: 100% !important;
+    overflow: hidden;
+  }
+
+  /* === INSTALACIONES — Fix stat-box overflow === */
+  .facilities .stat-box,
+  .facilities-header .stat-box,
+  [class*="stat-box"] {
+    max-width: calc(50% - 0.5rem);
+    overflow: hidden;
+  }
+  .facilities .stats-row,
+  .facilities-header .stats-row,
+  [class*="stats-row"] {
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
+
+  /* === SMOOTH SCROLLING === */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* === REDUCE VISUAL NOISE — Apple approach === */
+  .office__overview .office__card {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  /* === GLOBAL SPACING REDUCTION === */
+  h1 { font-size: 1.3rem !important; }
+  h2 { font-size: 1.15rem !important; }
+  h3 { font-size: 1rem !important; }
 }

@@ -5,6 +5,11 @@ import { LALIGA_TEAMS } from '../data/teamsFirestore';
 import { generateFacilityEvent, generateYouthPlayer, applyEventChoice, FACILITY_SPECIALIZATIONS } from '../game/facilitiesSystem';
 import { assignRole } from '../game/playerRoles';
 import { GlobalTransferEngine, isTransferWindowOpen, formatTransferPrice, calculateMarketValue, TEAM_PROFILES } from '../game/globalTransferEngine';
+import { evaluateManager, generateWarningMessage } from '../game/managerEvaluation';
+import { generateSalary, applyTeamsSalaries } from '../game/salaryGenerator';
+import { evolvePlayer } from '../game/seasonEngine';
+import { isEuropeanWeek, getEuropeanPhaseForWeek, EUROPEAN_MATCHDAY_WEEKS } from '../game/europeanCompetitions';
+import { simulateEuropeanMatchday, advanceEuropeanPhase, recordPlayerLeagueResult, recordPlayerKnockoutResult, getPlayerCompetition } from '../game/europeanSeason';
 
 const GameContext = createContext();
 
@@ -35,6 +40,9 @@ const initialState = {
   money: 0,
   weeklyIncome: 0,
   weeklyExpenses: 0,
+  
+  // Transfers - jugadores bloqueados tras fichaje fallido (se resetea cada temporada)
+  blockedPlayers: [], // Array de player IDs bloqueados hasta fin de temporada
   
   // Facilities
   facilities: {
@@ -98,6 +106,15 @@ const initialState = {
   playerMarket: [],
   freeAgents: [],
   
+  // Manager evaluation
+  managerConfidence: 75, // 0-100, por debajo de 10 = despido
+  managerFired: false,
+  
+  // European Competitions
+  europeanCompetitions: null,     // Set via INIT_EUROPEAN_COMPETITIONS
+  pendingEuropeanMatch: null,     // Set when player has a European match this week
+  europeanQualification: null,    // Set at season end for next season
+  
   // Messages & Events
   messages: [],
   
@@ -147,13 +164,14 @@ function gameReducer(state, action) {
         return Math.floor(Math.random() * 2) + 1; // 1-2 años (veteranos mayores)
       };
       
-      // Asignar roles y contratos a todos los jugadores
+      // Asignar roles, contratos y salarios a todos los jugadores
       const teamWithRoles = {
         ...action.payload.team,
         players: action.payload.team.players.map(player => ({
           ...player,
           role: player.role || assignRole(player),
-          contractYears: player.contractYears ?? generateContract(player.age || 25)
+          contractYears: player.contractYears ?? generateContract(player.age || 25),
+          salary: generateSalary(player)
         }))
       };
       
@@ -170,6 +188,11 @@ function gameReducer(state, action) {
           level: stadiumLevel,
           name: stadiumInfo.name,
           realCapacity: stadiumInfo.capacity,
+          // Abonados iniciales: ~40% de capacidad real como base
+          seasonTickets: Math.floor((stadiumInfo.capacity || 8000) * 0.4),
+          seasonTicketsFinal: null, // Se fija al cerrar la campaña
+          seasonTicketsCampaignOpen: true,
+          ticketPrice: 30,
           grassCondition: 100
         },
         facilities: {
@@ -264,17 +287,13 @@ function gameReducer(state, action) {
         return false;
       };
       
-      // Envejecer jugadores, reducir contratos y filtrar expirados
+      // Evolucionar jugadores, reducir contratos y filtrar expirados
       const updatedPlayers = (state.team?.players?.map(player => {
         const newAge = (player.age || 25) + 1;
         const contractYears = player.contractYears ?? player.personality?.contractYears ?? 2;
         
-        // Reducir overall para jugadores mayores
-        let overallChange = 0;
-        if (newAge >= 34) overallChange = -3;
-        else if (newAge >= 32) overallChange = -2;
-        else if (newAge >= 30) overallChange = -1;
-        else if (newAge <= 23) overallChange = Math.random() > 0.7 ? 1 : 0; // Jóvenes pueden mejorar
+        // Evolución realista: cada jugador es único
+        const newOverall = evolvePlayer(player);
         
         // Check retiro
         const willRetire = checkRetirement(player, newAge);
@@ -282,10 +301,13 @@ function gameReducer(state, action) {
         return {
           ...player,
           age: newAge,
-          overall: Math.max(40, Math.min(99, player.overall + overallChange)),
+          overall: newOverall,
           contractYears: contractYears - 1,
           injured: false,
           injuryWeeksLeft: 0,
+          yellowCards: 0,
+          suspended: false,
+          suspensionType: null,
           retiring: willRetire,
           severeInjuryCount: 0 // Reset al inicio de temporada
         };
@@ -327,11 +349,21 @@ function gameReducer(state, action) {
         // Limpiar alineación y convocados
         lineup: cleanedLineup,
         convocados: (state.convocados || []).filter(name => playerNames.has(name)),
-        money: state.money + moneyChange,
-        // Actualizar estadio con naming actualizado
+        // Cobrar ingresos acumulados de taquilla al final de temporada
+        money: state.money + moneyChange + (state.stadium?.accumulatedTicketIncome ?? 0),
+        // Actualizar estadio: cobrar acumulado, resetear para nueva temporada, desbloquear precio
         stadium: {
           ...state.stadium,
-          naming: updatedNaming
+          naming: updatedNaming,
+          accumulatedTicketIncome: 0,    // Reset: nueva temporada empieza de cero
+          ticketPriceLocked: false,       // Desbloquear precio para la nueva temporada
+          lastMatchAttendance: null,
+          lastMatchTicketSales: null,
+          lastMatchIncome: null,
+          seasonTicketsCampaignOpen: true, // Reabrir campaña de abonos
+          seasonTicketsFinal: null,
+          seasonTicketIncomeCollected: 0,
+          totalSeasonIncome: 0
         },
         // Guardar partidos de pretemporada
         preseasonMatches: preseasonMatches,
@@ -346,7 +378,11 @@ function gameReducer(state, action) {
         europeanQualification: seasonResult.qualification,
         // Reset para nueva temporada
         training: { intensity: null }, // Desbloquear entrenamiento
-        medicalSlots: [] // Liberar slots médicos
+        medicalSlots: [], // Liberar slots médicos
+        blockedPlayers: [], // Reset: desbloquear jugadores para nueva temporada
+        // Reset European state (will be re-initialized by SeasonEnd)
+        europeanCompetitions: null,
+        pendingEuropeanMatch: null
       };
     }
     
@@ -378,9 +414,9 @@ function gameReducer(state, action) {
       // Calculate weekly income from facilities
       const stadiumLevel = state.facilities?.stadium || 0;
       const sponsorLevel = state.facilities?.sponsorship || 0;
-      const stadiumIncomes = [500000, 900000, 1500000, 2500000];
-      const sponsorIncomes = [200000, 500000, 1000000, 2000000];
-      const facilityIncome = stadiumIncomes[stadiumLevel] + sponsorIncomes[sponsorLevel];
+      const stadiumIncomes = [500000, 900000, 1500000, 2500000, 4000000];
+      const sponsorIncomes = [25000, 70000, 140000, 235000];
+      const facilityIncome = (stadiumIncomes[stadiumLevel] || 500000) + (sponsorIncomes[sponsorLevel] || 25000);
       
       // Calculate weekly salary expenses
       const salaryExpenses = state.team?.players?.reduce((sum, p) => sum + (p.salary || 0), 0) || 0;
@@ -412,17 +448,14 @@ function gameReducer(state, action) {
       
       if (state.currentWeek === 38) {
         const youthLevel = state.facilities?.youth || 0;
-        const youthSpec = state.facilitySpecs?.youth || 'offensive';
-        const numYouth = 1 + youthLevel;
-        
-        for (let i = 0; i < numYouth; i++) {
-          const newPlayer = generateYouthPlayer(youthLevel, youthSpec);
-          newYouthPlayers.push(newPlayer);
-          updatedYouthStats = {
-            playersGenerated: updatedYouthStats.playersGenerated + 1,
-            totalOvr: updatedYouthStats.totalOvr + newPlayer.overall
-          };
-        }
+        const youthSpec = state.facilitySpecs?.youth || 'defense';
+        // Siempre 1 canterano por temporada — el nivel mejora su media
+        const newPlayer = generateYouthPlayer(youthLevel, youthSpec);
+        newYouthPlayers.push(newPlayer);
+        updatedYouthStats = {
+          playersGenerated: updatedYouthStats.playersGenerated + 1,
+          totalOvr: updatedYouthStats.totalOvr + newPlayer.overall
+        };
         updatedPlayers = [...updatedPlayers, ...newYouthPlayers];
       }
       
@@ -436,12 +469,13 @@ function gameReducer(state, action) {
       const newMessages = [];
       
       if (newYouthPlayers.length > 0) {
-        const specName = FACILITY_SPECIALIZATIONS.youth.options.find(o => o.id === (state.facilitySpecs?.youth || 'offensive'))?.name || 'General';
+        const specName = FACILITY_SPECIALIZATIONS.youth.options.find(o => o.id === (state.facilitySpecs?.youth || 'defense'))?.name || 'General';
+        const youthPlayer = newYouthPlayers[0];
         newMessages.push({
           id: Date.now(),
           type: 'youth',
-          title: '🌱 Nuevos canteranos',
-          content: `La cantera (${specName}) ha promocionado ${newYouthPlayers.length} jugador${newYouthPlayers.length > 1 ? 'es' : ''}: ${newYouthPlayers.map(p => `${p.name} (${p.position}, ${p.overall})`).join(', ')}`,
+          title: '🌱 Nuevo canterano',
+          content: `La cantera (${specName}) ha promocionado a ${youthPlayer.name} (${youthPlayer.position}, ${youthPlayer.overall} OVR, ${youthPlayer.age} años)`,
           date: `Fin Temporada ${state.currentSeason}`
         });
       }
@@ -461,7 +495,14 @@ function gameReducer(state, action) {
       // SIMULACIÓN DEL MERCADO GLOBAL
       // ============================================================
       const nextWeek = state.currentWeek + 1;
-      const windowStatus = isTransferWindowOpen(nextWeek);
+      // Calcular total de jornadas de liga basado en fixtures
+      const totalWeeks = state.fixtures?.length > 0 
+        ? Math.max(...state.fixtures.map(f => f.week)) 
+        : 38;
+      const windowStatus = isTransferWindowOpen(nextWeek, {
+        preseasonPhase: state.preseasonPhase || false,
+        totalWeeks
+      });
       let updatedLeagueTeams = state.leagueTeams || [];
       let marketSummary = state.globalMarket?.summary || { recentTransfers: [], activeRumors: [], totalTransfers: 0, totalSpent: 0 };
       let newTransferMessages = [];
@@ -566,6 +607,110 @@ function gameReducer(state, action) {
         o.status !== 'pending' || (o.expiresAt && o.expiresAt > Date.now())
       );
       
+      // ============================================================
+      // EVALUACIÓN DEL MÍSTER (cada 3 semanas para no spamear)
+      // ============================================================
+      let managerEval = { confidence: state.managerConfidence || 75, warning: null, fired: false, reason: null };
+      if (nextWeek > 5 && nextWeek % 3 === 0 && !state.preseasonPhase) {
+        managerEval = evaluateManager({
+          ...state,
+          currentWeek: nextWeek,
+          team: { ...state.team, players: updatedPlayers }
+        });
+        
+        const warningMsg = generateWarningMessage(managerEval, nextWeek);
+        if (warningMsg) {
+          newMessages.push(warningMsg);
+        }
+      }
+      
+      // ============================================================
+      // EUROPEAN COMPETITIONS — Check for European matchday
+      // ============================================================
+      let updatedEuropean = state.europeanCompetitions;
+      let pendingEuropeanMatch = null;
+      let europeanMessages = [];
+
+      if (updatedEuropean && isEuropeanWeek(nextWeek)) {
+        const phaseInfo = getEuropeanPhaseForWeek(nextWeek);
+        
+        if (phaseInfo && phaseInfo.phase === 'league') {
+          // Swiss league phase matchday
+          for (const [compId, compState] of Object.entries(updatedEuropean.competitions)) {
+            if (!compState || compState.phase !== 'league') continue;
+            
+            const { updatedState, playerMatch } = simulateEuropeanMatchday(
+              compState, phaseInfo.matchday, state.teamId
+            );
+            updatedEuropean = {
+              ...updatedEuropean,
+              competitions: {
+                ...updatedEuropean.competitions,
+                [compId]: updatedState
+              }
+            };
+            
+            if (playerMatch) {
+              // Add competition context to player match
+              pendingEuropeanMatch = {
+                ...playerMatch,
+                competitionId: compId,
+                competitionName: compState.config?.name || compId,
+                phase: 'league'
+              };
+            }
+            
+            // Check if league phase is over (matchday 8) → advance
+            // BUT only if player doesn't have a pending match this matchday
+            if (phaseInfo.matchday === 8 && updatedState.currentMatchday >= 8 && !playerMatch) {
+              const advanced = advanceEuropeanPhase(updatedState, state.teamId);
+              updatedEuropean.competitions[compId] = advanced.updatedState;
+              europeanMessages.push(...advanced.messages);
+              if (advanced.playerMatch) {
+                pendingEuropeanMatch = {
+                  ...advanced.playerMatch,
+                  competitionId: compId,
+                  competitionName: compState.config?.name || compId,
+                  phase: advanced.updatedState.phase
+                };
+              }
+            }
+          }
+        } else if (phaseInfo) {
+          // Knockout phase weeks — advance competition phases
+          for (const [compId, compState] of Object.entries(updatedEuropean.competitions)) {
+            if (!compState || compState.phase === 'completed' || compState.phase === 'league') continue;
+            
+            const advanced = advanceEuropeanPhase(compState, state.teamId);
+            updatedEuropean = {
+              ...updatedEuropean,
+              competitions: {
+                ...updatedEuropean.competitions,
+                [compId]: advanced.updatedState
+              }
+            };
+            europeanMessages.push(...advanced.messages);
+            if (advanced.playerMatch) {
+              pendingEuropeanMatch = {
+                ...advanced.playerMatch,
+                competitionId: compId,
+                competitionName: compState.config?.name || compId,
+                phase: advanced.updatedState.phase
+              };
+            }
+          }
+        }
+      }
+
+      // Format European messages
+      const formattedEuropeanMessages = europeanMessages.map(m => ({
+        id: Date.now() + Math.random(),
+        type: m.type || 'european',
+        title: m.title,
+        content: m.content,
+        date: `Semana ${nextWeek}`
+      }));
+
       return { 
         ...state, 
         currentWeek: nextWeek,
@@ -574,7 +719,7 @@ function gameReducer(state, action) {
         weeklyExpenses: salaryExpenses,
         team: state.team ? { ...state.team, players: updatedPlayers } : null,
         stadium: updatedStadium,
-        messages: [...newTransferMessages, ...newMessages, ...state.messages].slice(0, 50),
+        messages: [...formattedEuropeanMessages, ...newTransferMessages, ...newMessages, ...state.messages].slice(0, 50),
         pendingEvent: newEvent || state.pendingEvent,
         facilityStats: {
           ...state.facilityStats,
@@ -589,7 +734,13 @@ function gameReducer(state, action) {
           summary: marketSummary,
           windowOpen: windowStatus.open,
           windowType: windowStatus.type
-        }
+        },
+        // Evaluación del míster
+        managerConfidence: managerEval.confidence,
+        managerFired: managerEval.fired,
+        // European competitions
+        europeanCompetitions: updatedEuropean,
+        pendingEuropeanMatch
       };
     }
     
@@ -666,6 +817,17 @@ function gameReducer(state, action) {
         money: state.money - action.payload.cost
       };
     
+    case 'BLOCK_PLAYER': {
+      // Bloquear un jugador tras fichaje fallido (hasta fin de temporada)
+      const playerId = action.payload;
+      const currentBlocked = state.blockedPlayers || [];
+      if (currentBlocked.includes(playerId)) return state;
+      return {
+        ...state,
+        blockedPlayers: [...currentBlocked, playerId]
+      };
+    }
+    
     case 'UPDATE_STADIUM':
       return {
         ...state,
@@ -731,7 +893,7 @@ function gameReducer(state, action) {
     case 'UPDATE_LEAGUE_TEAMS':
       return {
         ...state,
-        leagueTeams: action.payload
+        leagueTeams: applyTeamsSalaries(action.payload)
       };
     
     case 'REMOVE_FREE_AGENT':
@@ -971,16 +1133,17 @@ function gameReducer(state, action) {
     }
     
     case 'RECORD_MATCH_INCOME': {
-      // Registrar ingresos de un partido en casa
+      // Acumular ingresos de entradas — se cobran al final de temporada, no por partido
       const matchIncome = action.payload.income;
       return {
         ...state,
         stadium: {
           ...state.stadium,
           lastMatchIncome: matchIncome,
-          totalSeasonIncome: (state.stadium?.totalSeasonIncome || 0) + matchIncome
-        },
-        money: state.money + matchIncome
+          totalSeasonIncome: (state.stadium?.totalSeasonIncome || 0) + matchIncome,
+          accumulatedTicketIncome: (state.stadium?.accumulatedTicketIncome || 0) + matchIncome
+        }
+        // NO sumar a money aquí — se cobra en START_NEW_SEASON
       };
     }
     
@@ -1058,6 +1221,96 @@ function gameReducer(state, action) {
       };
     }
     
+    case 'ADD_YELLOW_CARDS': {
+      // payload: { cards: [{ playerName: string }] }
+      // Solo suma amarillas acumuladas (NO doble amarilla del mismo partido, eso viene como red_card)
+      const cards = action.payload.cards || [];
+      if (cards.length === 0) return state;
+      
+      const updatedPlayers = state.team.players.map(p => {
+        const cardCount = cards.filter(c => c.playerName === p.name).length;
+        if (cardCount === 0) return p;
+        
+        const newYellows = (p.yellowCards || 0) + cardCount;
+        
+        if (newYellows >= 5) {
+          // 5 amarillas acumuladas = 1 partido de sanción, reset contador
+          return { 
+            ...p, 
+            yellowCards: 0, 
+            suspended: true, 
+            suspensionType: 'yellow',
+            suspensionMatches: 1
+          };
+        }
+        return { ...p, yellowCards: newYellows };
+      });
+      
+      return {
+        ...state,
+        team: { ...state.team, players: updatedPlayers }
+      };
+    }
+
+    case 'ADD_RED_CARDS': {
+      // payload: { cards: [{ playerName: string, reason: string }] }
+      // Doble amarilla = 1 partido, Roja directa = 2 partidos
+      const redCards = action.payload.cards || [];
+      if (redCards.length === 0) return state;
+      
+      const updatedPlayers = state.team.players.map(p => {
+        const card = redCards.find(c => c.playerName === p.name);
+        if (!card) return p;
+        
+        const isDoubleYellow = card.reason === 'Segunda amarilla';
+        const matchesBanned = isDoubleYellow ? 1 : 2; // Doble amarilla = 1, Roja directa = 2
+        
+        return { 
+          ...p, 
+          suspended: true, 
+          suspensionType: isDoubleYellow ? 'double_yellow' : 'red',
+          suspensionMatches: matchesBanned
+        };
+      });
+      
+      return {
+        ...state,
+        team: { ...state.team, players: updatedPlayers }
+      };
+    }
+
+    case 'SERVE_SUSPENSIONS': {
+      // Llamar ANTES de cada partido oficial: decrementa 1 partido a cada sancionado
+      // Los que llegan a 0 quedan libres
+      const updatedPlayers = state.team.players.map(p => {
+        if (!p.suspended || !p.suspensionMatches) return p;
+        
+        const remaining = p.suspensionMatches - 1;
+        if (remaining <= 0) {
+          return { ...p, suspended: false, suspensionType: null, suspensionMatches: 0 };
+        }
+        return { ...p, suspensionMatches: remaining };
+      });
+      
+      // Auto-sacar sancionados del lineup
+      const currentLineup = state.lineup || {};
+      const cleanedLineup = { ...currentLineup };
+      const stillSuspended = updatedPlayers.filter(p => p.suspended);
+      const suspendedNames = new Set(stillSuspended.map(p => p.name));
+      
+      Object.keys(cleanedLineup).forEach(slot => {
+        if (cleanedLineup[slot] && suspendedNames.has(cleanedLineup[slot].name)) {
+          delete cleanedLineup[slot];
+        }
+      });
+      
+      return {
+        ...state,
+        team: { ...state.team, players: updatedPlayers },
+        lineup: cleanedLineup
+      };
+    }
+
     case 'HEAL_INJURIES': {
       const currentSlots = state.medicalSlots || [];
       const healed = [];
@@ -1260,7 +1513,7 @@ function gameReducer(state, action) {
     case 'GENERATE_YOUTH_PLAYER': {
       // Usar el sistema de especialización
       const youthLevel = state.facilities?.youth || 0;
-      const youthSpec = state.facilitySpecs?.youth || 'offensive';
+      const youthSpec = state.facilitySpecs?.youth || 'defense';
       const newPlayer = generateYouthPlayer(youthLevel, youthSpec);
       
       return {
@@ -1305,6 +1558,151 @@ function gameReducer(state, action) {
       return {
         ...state,
         pendingEvent: null
+      };
+    }
+    
+    // ============================================================
+    // EUROPEAN COMPETITIONS
+    // ============================================================
+    
+    case 'INIT_EUROPEAN_COMPETITIONS': {
+      return {
+        ...state,
+        europeanCompetitions: action.payload,
+        pendingEuropeanMatch: null
+      };
+    }
+    
+    case 'COMPLETE_EUROPEAN_MATCH': {
+      // Player finished their European match. Record the result.
+      const { competitionId, matchResult, matchday, phase } = action.payload;
+      let updatedEuropean = { ...state.europeanCompetitions };
+      const compState = updatedEuropean.competitions[competitionId];
+      if (!compState) return state;
+
+      let updatedComp;
+      if (phase === 'league') {
+        updatedComp = recordPlayerLeagueResult(compState, matchResult, matchday);
+      } else {
+        updatedComp = recordPlayerKnockoutResult(compState, matchResult, phase);
+      }
+
+      updatedEuropean = {
+        ...updatedEuropean,
+        competitions: {
+          ...updatedEuropean.competitions,
+          [competitionId]: updatedComp
+        }
+      };
+
+      // After recording league matchday 8, trigger phase advancement (league→playoff)
+      let advanceMessages = [];
+      let newPendingMatch = null;
+      if (phase === 'league' && matchday === 8 && updatedComp.currentMatchday >= 8) {
+        const advanced = advanceEuropeanPhase(updatedComp, state.teamId);
+        updatedEuropean.competitions[competitionId] = advanced.updatedState;
+        advanceMessages = advanced.messages;
+        if (advanced.playerMatch) {
+          newPendingMatch = {
+            ...advanced.playerMatch,
+            competitionId,
+            competitionName: updatedComp.config?.name || competitionId,
+            phase: advanced.updatedState.phase
+          };
+        }
+      }
+
+      // After recording knockout result, try to advance the phase
+      // (e.g., after player completes playoff match → advance to R16 draw)
+      if (phase !== 'league') {
+        const currentComp = updatedEuropean.competitions[competitionId];
+        const advanced = advanceEuropeanPhase(currentComp, state.teamId);
+        if (advanced.updatedState.phase !== currentComp.phase) {
+          // Phase actually advanced
+          updatedEuropean.competitions[competitionId] = advanced.updatedState;
+          advanceMessages.push(...advanced.messages);
+          if (advanced.playerMatch) {
+            newPendingMatch = {
+              ...advanced.playerMatch,
+              competitionId,
+              competitionName: currentComp.config?.name || competitionId,
+              phase: advanced.updatedState.phase
+            };
+          }
+        }
+      }
+
+      // Award prize money to player
+      const finalComp = updatedEuropean.competitions[competitionId];
+      const playerPrize = finalComp.prizesMoney?.[state.teamId] || 0;
+      const prevPrize = compState.prizesMoney?.[state.teamId] || 0;
+      const newPrize = playerPrize - prevPrize;
+
+      const prizeMessages = newPrize > 0 ? [{
+        id: Date.now(),
+        type: 'european',
+        title: `${finalComp.config.icon} Ingresos europeos`,
+        content: `${finalComp.config.shortName}: +€${(newPrize / 1_000_000).toFixed(1)}M`,
+        date: `Semana ${state.currentWeek}`
+      }] : [];
+
+      const fmtAdvanceMessages = advanceMessages.map(m => ({
+        id: Date.now() + Math.random(),
+        type: 'european',
+        title: m.title,
+        content: m.content,
+        date: `Semana ${state.currentWeek}`
+      }));
+
+      return {
+        ...state,
+        europeanCompetitions: updatedEuropean,
+        pendingEuropeanMatch: newPendingMatch,
+        money: state.money + newPrize,
+        messages: [...fmtAdvanceMessages, ...prizeMessages, ...state.messages].slice(0, 50)
+      };
+    }
+    
+    case 'ADVANCE_EUROPEAN_PHASE': {
+      // Manually trigger phase advancement
+      const { competitionId: compId } = action.payload;
+      const european = { ...state.europeanCompetitions };
+      const comp = european.competitions[compId];
+      if (!comp) return state;
+
+      const { updatedState, playerMatch, messages } = advanceEuropeanPhase(comp, state.teamId);
+      european.competitions[compId] = updatedState;
+
+      const fmtMessages = messages.map(m => ({
+        id: Date.now() + Math.random(),
+        type: 'european',
+        title: m.title,
+        content: m.content,
+        date: `Semana ${state.currentWeek}`
+      }));
+
+      let newPendingMatch = state.pendingEuropeanMatch;
+      if (playerMatch) {
+        newPendingMatch = {
+          ...playerMatch,
+          competitionId: compId,
+          competitionName: comp.config?.name || compId,
+          phase: updatedState.phase
+        };
+      }
+
+      return {
+        ...state,
+        europeanCompetitions: european,
+        pendingEuropeanMatch: newPendingMatch,
+        messages: [...fmtMessages, ...state.messages].slice(0, 50)
+      };
+    }
+    
+    case 'CLEAR_EUROPEAN_MATCH': {
+      return {
+        ...state,
+        pendingEuropeanMatch: null
       };
     }
     

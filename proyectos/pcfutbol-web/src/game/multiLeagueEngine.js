@@ -4,13 +4,29 @@
 // ============================================================
 
 import { initializeLeague, simulateMatch, updateTable, getWeekFixtures } from './leagueEngine';
+import { simulateFullPlayoff } from './playoffEngine';
 import { 
   getLaLigaTeams, 
   getSegundaTeams, 
   getPremierTeams, 
   getSerieATeams, 
   getBundesligaTeams, 
-  getLigue1Teams 
+  getLigue1Teams,
+  getEredivisieTeams,
+  getPrimeiraLigaTeams,
+  getChampionshipTeams,
+  getBelgianProTeams,
+  getSuperLigTeams,
+  getScottishPremTeams,
+  getSerieBTeams,
+  getBundesliga2Teams,
+  getLigue2Teams,
+  getSwissTeams,
+  getAustrianTeams,
+  getGreekTeams,
+  getDanishTeams,
+  getCroatianTeams,
+  getCzechTeams
 } from '../data/teamsFirestore';
 
 // Configuración de ligas
@@ -90,6 +106,189 @@ export const LEAGUE_CONFIG = {
       europaLeague: [4],
       conference: [5],
       relegation: [16, 17, 18]
+    }
+  },
+  eredivisie: {
+    id: 'eredivisie',
+    name: 'Eredivisie',
+    country: 'Países Bajos',
+    teams: 18,
+    getTeams: getEredivisieTeams,
+    zones: {
+      champions: [1, 2],
+      europaLeague: [3],
+      conference: [4, 5],
+      relegation: [16, 17, 18]
+    }
+  },
+  primeiraLiga: {
+    id: 'primeiraLiga',
+    name: 'Primeira Liga',
+    country: 'Portugal',
+    teams: 18,
+    getTeams: getPrimeiraLigaTeams,
+    zones: {
+      champions: [1, 2],
+      europaLeague: [3],
+      conference: [4],
+      relegation: [16, 17, 18]
+    }
+  },
+  championship: {
+    id: 'championship',
+    name: 'Championship',
+    country: 'Inglaterra',
+    teams: 24,
+    getTeams: getChampionshipTeams,
+    zones: {
+      promotion: [1, 2],
+      playoff: [3, 4, 5, 6],
+      relegation: [22, 23, 24]
+    }
+  },
+  belgianPro: {
+    id: 'belgianPro',
+    name: 'Jupiler Pro League',
+    country: 'Bélgica',
+    teams: 16,
+    getTeams: getBelgianProTeams,
+    zones: {
+      champions: [1],
+      europaLeague: [2],
+      conference: [3],
+      relegation: [15, 16]
+    }
+  },
+  superLig: {
+    id: 'superLig',
+    name: 'Süper Lig',
+    country: 'Turquía',
+    teams: 19,
+    getTeams: getSuperLigTeams,
+    zones: {
+      champions: [1],
+      europaLeague: [2],
+      conference: [3],
+      relegation: [17, 18, 19]
+    }
+  },
+  scottishPrem: {
+    id: 'scottishPrem',
+    name: 'Scottish Premiership',
+    country: 'Escocia',
+    teams: 12,
+    getTeams: getScottishPremTeams,
+    zones: {
+      champions: [1],
+      conference: [2],
+      relegation: [11, 12]
+    }
+  },
+  serieB: {
+    id: 'serieB',
+    name: 'Serie B',
+    country: 'Italia',
+    teams: 20,
+    getTeams: getSerieBTeams,
+    zones: {
+      promotion: [1, 2],
+      playoff: [3, 4, 5, 6, 7, 8],
+      relegation: [18, 19, 20]
+    }
+  },
+  bundesliga2: {
+    id: 'bundesliga2',
+    name: '2. Bundesliga',
+    country: 'Alemania',
+    teams: 18,
+    getTeams: getBundesliga2Teams,
+    zones: {
+      promotion: [1, 2],
+      playoff: [3],
+      relegation: [16, 17, 18]
+    }
+  },
+  ligue2: {
+    id: 'ligue2',
+    name: 'Ligue 2',
+    country: 'Francia',
+    teams: 18,
+    getTeams: getLigue2Teams,
+    zones: {
+      promotion: [1, 2],
+      playoff: [3, 4, 5],
+      relegation: [16, 17, 18]
+    }
+  },
+  swissSuperLeague: {
+    id: 'swissSuperLeague',
+    name: 'Super League',
+    country: 'Suiza',
+    teams: 12,
+    getTeams: getSwissTeams,
+    zones: {
+      champions: [1],
+      conference: [2],
+      relegation: [11, 12]
+    }
+  },
+  austrianBundesliga: {
+    id: 'austrianBundesliga',
+    name: 'Bundesliga (AT)',
+    country: 'Austria',
+    teams: 12,
+    getTeams: getAustrianTeams,
+    zones: {
+      champions: [1],
+      conference: [2],
+      relegation: [11, 12]
+    }
+  },
+  greekSuperLeague: {
+    id: 'greekSuperLeague',
+    name: 'Super League',
+    country: 'Grecia',
+    teams: 14,
+    getTeams: getGreekTeams,
+    zones: {
+      champions: [1],
+      conference: [2],
+      relegation: [13, 14]
+    }
+  },
+  danishSuperliga: {
+    id: 'danishSuperliga',
+    name: 'Superligaen',
+    country: 'Dinamarca',
+    teams: 12,
+    getTeams: getDanishTeams,
+    zones: {
+      champions: [1],
+      conference: [2],
+      relegation: [11, 12]
+    }
+  },
+  croatianLeague: {
+    id: 'croatianLeague',
+    name: 'HNL',
+    country: 'Croacia',
+    teams: 10,
+    getTeams: getCroatianTeams,
+    zones: {
+      champions: [1],
+      relegation: [9, 10]
+    }
+  },
+  czechLeague: {
+    id: 'czechLeague',
+    name: 'Chance Liga',
+    country: 'Chequia',
+    teams: 16,
+    getTeams: getCzechTeams,
+    zones: {
+      champions: [1],
+      conference: [2],
+      relegation: [15, 16]
     }
   }
 };
@@ -303,12 +502,42 @@ export function getPromotedTeams(table, leagueId) {
  * @param {string} playerTeamId - ID del equipo del jugador
  * @returns {Object} - Nuevos equipos para cada liga y nueva liga del jugador
  */
-export function processSpanishPromotionRelegation(laligaTable, segundaTable, playerTeamId) {
+/**
+ * Procesa los descensos y ascensos entre La Liga y Segunda
+ * 3 descienden de La Liga, 3 ascienden de Segunda (2 directos + 1 playoff)
+ * @param {Object} options
+ * @param {Array} options.laligaTable - Clasificación final de La Liga
+ * @param {Array} options.segundaTable - Clasificación final de Segunda
+ * @param {string} options.playerTeamId - ID del equipo del jugador
+ * @param {Object|null} options.playoffBracket - Bracket de playoff ya resuelto (si el jugador jugó el playoff)
+ * @returns {Object} - Nuevos equipos para cada liga y nueva liga del jugador
+ */
+export function processSpanishPromotionRelegation(laligaTable, segundaTable, playerTeamId, playoffBracket = null) {
   // Equipos que descienden de La Liga (posiciones 18, 19, 20)
   const relegatedFromLaLiga = getRelegatedTeams(laligaTable, 'laliga');
   
-  // Equipos que ascienden de Segunda (posiciones 1 y 2)
-  const promotedFromSegunda = getPromotedTeams(segundaTable, 'segunda');
+  // Equipos que ascienden DIRECTO de Segunda (posiciones 1 y 2)
+  const autoPromoted = getPromotedTeams(segundaTable, 'segunda');
+  
+  // === PLAYOFF DE ASCENSO ===
+  // Si no se pasó un bracket resuelto, simular el playoff ahora
+  const allSegundaTeams = getSegundaTeams();
+  const allLaLigaTeams = getLaLigaTeams();
+  const allTeams = [...allLaLigaTeams, ...allSegundaTeams];
+  
+  let resolvedBracket = playoffBracket;
+  if (!resolvedBracket || resolvedBracket.phase !== 'completed') {
+    resolvedBracket = simulateFullPlayoff(segundaTable, allTeams);
+  }
+  
+  // El ganador del playoff asciende también
+  const playoffWinnerId = resolvedBracket?.winner || null;
+  
+  // Total de ascensos: 2 directos + 1 playoff
+  const promotedFromSegunda = [...autoPromoted];
+  if (playoffWinnerId && !promotedFromSegunda.includes(playoffWinnerId)) {
+    promotedFromSegunda.push(playoffWinnerId);
+  }
   
   // Verificar si el jugador asciende o desciende
   let newPlayerLeague = null;
@@ -318,24 +547,20 @@ export function processSpanishPromotionRelegation(laligaTable, segundaTable, pla
     newPlayerLeague = 'laliga';
   }
   
-  // Obtener todos los equipos de ambas ligas
-  const allLaLigaTeams = getLaLigaTeams();
-  const allSegundaTeams = getSegundaTeams();
-  
   // Crear arrays de IDs de equipos actuales en cada liga
   const currentLaLigaIds = laligaTable.map(t => t.teamId);
   const currentSegundaIds = segundaTable.map(t => t.teamId);
   
   // Calcular nuevos equipos de La Liga:
-  // - Quitar los relegados
-  // - Añadir los promocionados de Segunda
+  // - Quitar los relegados (3)
+  // - Añadir los promocionados de Segunda (3: 2 directos + 1 playoff)
   const newLaLigaIds = currentLaLigaIds
     .filter(id => !relegatedFromLaLiga.includes(id))
     .concat(promotedFromSegunda);
   
   // Calcular nuevos equipos de Segunda:
-  // - Quitar los promocionados
-  // - Añadir los relegados de La Liga
+  // - Quitar los promocionados (3)
+  // - Añadir los relegados de La Liga (3)
   const newSegundaIds = currentSegundaIds
     .filter(id => !promotedFromSegunda.includes(id))
     .concat(relegatedFromLaLiga);
@@ -351,21 +576,27 @@ export function processSpanishPromotionRelegation(laligaTable, segundaTable, pla
     allLaLigaTeams.find(t => t.id === id)
   ).filter(Boolean);
   
+  // Nombres para mensajes
+  const playoffWinnerName = resolvedBracket?.final?.result?.winnerName || playoffWinnerId || '';
+  
   return {
     newLaLigaTeams,
     newSegundaTeams,
     relegatedFromLaLiga,
     promotedFromSegunda,
+    playoffBracket: resolvedBracket,
+    playoffWinnerId,
     newPlayerLeague,
     changes: {
       relegated: relegatedFromLaLiga.map(id => {
         const team = laligaTable.find(t => t.teamId === id);
         return team?.teamName || id;
       }),
-      promoted: promotedFromSegunda.map(id => {
+      promoted: autoPromoted.map(id => {
         const team = segundaTable.find(t => t.teamId === id);
         return team?.teamName || id;
-      })
+      }),
+      playoffWinner: playoffWinnerName
     }
   };
 }
@@ -376,7 +607,7 @@ export function processSpanishPromotionRelegation(laligaTable, segundaTable, pla
  * @param {string} playerTeamId - ID del equipo del jugador
  * @returns {Object} - Nuevos datos de liga y otras ligas
  */
-export function initializeNewSeasonWithPromotions(state, playerTeamId) {
+export function initializeNewSeasonWithPromotions(state, playerTeamId, playoffBracket = null) {
   const playerLeagueId = state.playerLeagueId || 'laliga';
   
   // Solo procesamos promoción/relegación para ligas españolas
@@ -396,8 +627,8 @@ export function initializeNewSeasonWithPromotions(state, playerTeamId) {
       return initializeOtherLeagues(playerLeagueId);
     }
     
-    // Procesar cambios
-    const changes = processSpanishPromotionRelegation(laligaTable, segundaTable, playerTeamId);
+    // Procesar cambios (incluye playoff de ascenso de Segunda)
+    const changes = processSpanishPromotionRelegation(laligaTable, segundaTable, playerTeamId, playoffBracket);
     
     // Inicializar nuevas ligas con los equipos actualizados
     const newLaLigaData = initializeLeague(
@@ -412,7 +643,9 @@ export function initializeNewSeasonWithPromotions(state, playerTeamId) {
     
     // Inicializar otras ligas europeas (sin cambios, solo reiniciar)
     const otherLeagues = {};
-    ['premierLeague', 'serieA', 'bundesliga', 'ligue1'].forEach(leagueId => {
+    Object.keys(LEAGUE_CONFIG).forEach(leagueId => {
+      // Saltar las ligas españolas que ya se manejan arriba
+      if (leagueId === 'laliga' || leagueId === 'segunda') return;
       const config = LEAGUE_CONFIG[leagueId];
       const teams = config.getTeams();
       if (teams && teams.length > 0) {

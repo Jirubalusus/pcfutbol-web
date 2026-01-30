@@ -131,17 +131,10 @@ export default function Calendar() {
                 key={fixture.id || idx} 
                 className={`fixture-card ${playerMatch ? 'is-player' : ''} ${fixture.played ? 'played' : ''}`}
               >
-                {/* Equipo local */}
+                {/* Equipo local — nombre a la derecha, badge pegado al centro */}
                 <div className={`team home ${fixture.homeTeam === state.teamId ? 'is-you' : ''}`}>
-                  <div className="team-badge">
-                    {getTeamInitials(fixture.homeTeam)}
-                  </div>
                   <span className="team-name">{getTeamName(fixture.homeTeam)}</span>
-                  {fixture.homeTeam === state.teamId && (
-                    <span className="home-indicator">
-                      <Home size={14} />
-                    </span>
-                  )}
+                  <div className="team-badge">{getTeamInitials(fixture.homeTeam)}</div>
                 </div>
                 
                 {/* Marcador / VS */}
@@ -154,44 +147,30 @@ export default function Calendar() {
                     </div>
                   ) : (
                     <div className="vs-badge">
-                      <Clock size={16} />
-                      <span>VS</span>
+                      <span>vs</span>
                     </div>
                   )}
                 </div>
                 
-                {/* Equipo visitante */}
+                {/* Equipo visitante — badge pegado al centro, nombre a la izquierda */}
                 <div className={`team away ${fixture.awayTeam === state.teamId ? 'is-you' : ''}`}>
-                  {fixture.awayTeam === state.teamId && (
-                    <span className="away-indicator">
-                      <Plane size={14} />
-                    </span>
-                  )}
+                  <div className="team-badge">{getTeamInitials(fixture.awayTeam)}</div>
                   <span className="team-name">{getTeamName(fixture.awayTeam)}</span>
-                  <div className="team-badge">
-                    {getTeamInitials(fixture.awayTeam)}
-                  </div>
                 </div>
                 
                 {/* Estado */}
                 <div className="match-status">
                   {fixture.played ? (
-                    <span className="status-badge played">
-                      <CheckCircle2 size={14} />
-                      Jugado
-                    </span>
+                    <span className={`status-dot ${playerResult === 'W' ? 'win' : playerResult === 'L' ? 'loss' : 'draw'}`}></span>
                   ) : selectedWeek === state.currentWeek ? (
                     <span className="status-badge pending">
                       <Clock size={14} />
-                      Esta jornada
                     </span>
                   ) : selectedWeek < state.currentWeek ? (
-                    <span className="status-badge missed">
-                      Aplazado
-                    </span>
+                    <span className="status-badge missed">!</span>
                   ) : (
                     <span className="status-badge upcoming">
-                      Por jugar
+                      <Circle size={10} />
                     </span>
                   )}
                 </div>

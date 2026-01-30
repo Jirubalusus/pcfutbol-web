@@ -43,40 +43,18 @@ const FACILITIES = [
     description: 'Ingresos por patrocinios',
     hasSpec: false,
     levels: [
-      { name: 'Básico', income: 200000 },
-      { name: 'Activo', income: 500000 },
-      { name: 'Profesional', income: 1000000 },
-      { name: 'Premium', income: 2000000 }
+      { name: 'Básico', income: 25000 },
+      { name: 'Activo', income: 70000 },
+      { name: 'Profesional', income: 140000 },
+      { name: 'Premium', income: 235000 }
     ],
     benefits: [
-      '€200K/semana',
-      '€500K/semana',
-      '€1M/semana',
-      '€2M/semana'
+      '€1M/temporada',
+      '€3M/temporada',
+      '€6M/temporada',
+      '€10M/temporada'
     ],
     upgradeCost: [2000000, 6000000, 18000000]
-  },
-  { 
-    id: 'training', 
-    name: 'Entrenamiento', 
-    icon: '⚽', 
-    category: 'development',
-    color: '#30d158',
-    description: 'Progresión de jugadores',
-    hasSpec: true,
-    levels: [
-      { name: 'Básico', bonus: 0 },
-      { name: 'Mejorado', bonus: 10 },
-      { name: 'Profesional', bonus: 20 },
-      { name: 'Élite', bonus: 35 }
-    ],
-    benefits: [
-      'Progresión estándar',
-      '+10% progresión',
-      '+20% progresión',
-      '+35% progresión'
-    ],
-    upgradeCost: [2000000, 8000000, 20000000]
   },
   { 
     id: 'youth', 
@@ -87,18 +65,18 @@ const FACILITIES = [
     description: 'Genera jóvenes talentos',
     hasSpec: true,
     levels: [
-      { name: 'Básica', talentMax: 65 },
-      { name: 'Desarrollada', talentMax: 72 },
-      { name: 'Avanzada', talentMax: 78 },
-      { name: 'Élite', talentMax: 85 }
+      { name: 'Básica', talentMax: 60 },
+      { name: 'Desarrollada', talentMax: 65 },
+      { name: 'Avanzada', talentMax: 70 },
+      { name: 'Élite', talentMax: 75 }
     ],
     benefits: [
-      '1 canterano/año (55-65)',
-      '2 canteranos/año (60-72)',
-      '3 canteranos/año (65-78)',
-      '4 canteranos/año (70-85)'
+      '1 canterano/temporada (50-60)',
+      '1 canterano/temporada (55-65)',
+      '1 canterano/temporada (58-70)',
+      '1 canterano/temporada (62-75)'
     ],
-    upgradeCost: [3000000, 10000000, 25000000]
+    upgradeCost: [5000000, 15000000, 40000000]
   },
   { 
     id: 'medical', 
@@ -120,7 +98,7 @@ const FACILITIES = [
       '-35% lesiones • 1 tratamiento',
       '-50% lesiones • 2 tratamientos'
     ],
-    upgradeCost: [1500000, 5000000, 15000000]
+    upgradeCost: [3000000, 12000000, 35000000]
   },
   { 
     id: 'scouting', 
@@ -128,21 +106,21 @@ const FACILITIES = [
     icon: '🔍', 
     category: 'support',
     color: '#bf5af2',
-    description: 'Descubre jugadores',
+    description: 'Reduce costes de fichaje',
     hasSpec: false,
     levels: [
-      { name: 'Local', range: 'Liga local' },
-      { name: 'Nacional', range: 'Todo el país' },
-      { name: 'Europeo', range: 'Europa' },
-      { name: 'Mundial', range: 'Todo el mundo' }
+      { name: 'Local', discount: 0 },
+      { name: 'Nacional', discount: 10 },
+      { name: 'Europeo', discount: 20 },
+      { name: 'Mundial', discount: 30 }
     ],
     benefits: [
-      'Solo La Liga',
-      '+ Segunda División',
-      '+ Ligas europeas',
-      '+ Todo el mundo'
+      'Sin ventaja en fichajes',
+      '-10% coste fichajes',
+      '-20% coste fichajes',
+      '-30% coste fichajes'
     ],
-    upgradeCost: [1000000, 4000000, 12000000]
+    upgradeCost: [2000000, 8000000, 20000000]
   },
 ];
 
@@ -339,8 +317,8 @@ export default function Facilities() {
           <div className="stat-box stat-box--income">
             <span className="stat-icon">💰</span>
             <div className="stat-content">
-              <span className="stat-value">{formatMoney(weeklyIncome)}</span>
-              <span className="stat-label">Ingresos/semana</span>
+              <span className="stat-value">{formatMoney(weeklyIncome * 43)}</span>
+              <span className="stat-label">Ingresos/temporada</span>
             </div>
           </div>
           <div className="stat-box stat-box--budget">
@@ -509,7 +487,7 @@ export default function Facilities() {
                           </div>
                         ) : (
                           <div className="facility-card__maxed">
-                            <span>🏆</span> Nivel Máximo
+                            Nivel Máximo
                           </div>
                         )}
                         

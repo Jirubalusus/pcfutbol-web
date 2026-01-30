@@ -35,9 +35,17 @@ $row-noconv-2: #4a4a4a;
   background: linear-gradient(180deg, $pcf-blue-dark 0%, $pcf-blue-mid 50%, $pcf-blue-dark 100%);
   padding: 0.5rem;
   font-family: 'Segoe UI', Arial, sans-serif;
+  overflow-x: hidden;
+  max-width: 100vw;
+  box-sizing: border-box;
   
   @media (min-width: 768px) {
     padding: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.25rem;
+    padding-bottom: 95px;
   }
 }
 
@@ -200,21 +208,6 @@ $row-noconv-2: #4a4a4a;
   border: 2px solid #3a5a7a;
   border-radius: 4px;
   overflow: hidden;
-  max-height: calc(100vh - 180px);
-  overflow-y: auto;
-  
-  &::-webkit-scrollbar {
-    width: 10px;
-  }
-  
-  &::-webkit-scrollbar-track {
-    background: #1a2a3a;
-  }
-  
-  &::-webkit-scrollbar-thumb {
-    background: #3a5a7a;
-    border-radius: 4px;
-  }
 }
 
 // Separadores de sección estilo PC Fútbol
@@ -276,7 +269,7 @@ $row-noconv-2: #4a4a4a;
 .pcf-table {
   .table-header {
     display: grid;
-    grid-template-columns: 35px 1fr 50px 50px; // Nº | JUGADOR | MED | POS
+    grid-template-columns: 35px 1fr 24px 50px 50px; // Nº | JUGADOR | 🟨 | MED | POS
     gap: 4px;
     padding: 0.5rem 0.75rem;
     background: linear-gradient(180deg, #1a2a3a 0%, #0a1a2a 100%);
@@ -301,30 +294,31 @@ $row-noconv-2: #4a4a4a;
   }
   
   .table-body {
-    max-height: 350px;
-    overflow-y: auto;
-    
-    @media (max-width: 900px) {
-      max-height: 250px;
-    }
-    
-    &::-webkit-scrollbar {
-      width: 8px;
-    }
-    
-    &::-webkit-scrollbar-track {
-      background: #1a2a3a;
-    }
-    
-    &::-webkit-scrollbar-thumb {
-      background: #3a5a7a;
-      border-radius: 4px;
+    // Sin max-height ni scroll — fluye con el scroll natural de la página
+
+    // Solo no convocados puede tener scroll
+    &--scroll {
+      max-height: 200px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+      
+      &::-webkit-scrollbar {
+        width: 4px;
+      }
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 4px;
+      }
     }
   }
   
   .table-row {
     display: grid;
-    grid-template-columns: 35px 1fr 50px 50px; // Nº | JUGADOR | MED | POS
+    grid-template-columns: 35px 1fr 24px 50px 50px; // Nº | JUGADOR | 🟨 | MED | POS
     gap: 4px;
     padding: 0.4rem 0.75rem;
     cursor: pointer;
@@ -366,11 +360,42 @@ $row-noconv-2: #4a4a4a;
     }
     
     &.compatible-swap {
-      background: linear-gradient(90deg, rgba(45, 122, 74, 0.6), rgba(45, 122, 74, 0.4)) !important;
-      box-shadow: inset 0 0 8px rgba(45, 200, 100, 0.3);
+      // Default fallback (decent)
+      background: linear-gradient(90deg, rgba(255, 214, 10, 0.2), rgba(255, 214, 10, 0.1)) !important;
+      box-shadow: inset 0 0 8px rgba(255, 214, 10, 0.15);
       
       &:hover {
-        background: linear-gradient(90deg, rgba(45, 160, 90, 0.8), rgba(45, 160, 90, 0.6)) !important;
+        background: linear-gradient(90deg, rgba(255, 214, 10, 0.3), rgba(255, 214, 10, 0.2)) !important;
+      }
+      
+      // Same position = perfect swap (bright green)
+      &.swap-perfect {
+        background: linear-gradient(90deg, rgba(48, 209, 88, 0.45), rgba(48, 209, 88, 0.25)) !important;
+        box-shadow: inset 0 0 8px rgba(48, 209, 88, 0.3);
+        
+        &:hover {
+          background: linear-gradient(90deg, rgba(48, 209, 88, 0.6), rgba(48, 209, 88, 0.4)) !important;
+        }
+      }
+      
+      // Compatible position = good swap (darker green)
+      &.swap-good {
+        background: linear-gradient(90deg, rgba(39, 174, 96, 0.35), rgba(39, 174, 96, 0.2)) !important;
+        box-shadow: inset 0 0 8px rgba(39, 174, 96, 0.25);
+        
+        &:hover {
+          background: linear-gradient(90deg, rgba(39, 174, 96, 0.5), rgba(39, 174, 96, 0.35)) !important;
+        }
+      }
+      
+      // Decent fit = yellowish
+      &.swap-decent {
+        background: linear-gradient(90deg, rgba(255, 214, 10, 0.2), rgba(255, 214, 10, 0.1)) !important;
+        box-shadow: inset 0 0 8px rgba(255, 214, 10, 0.15);
+        
+        &:hover {
+          background: linear-gradient(90deg, rgba(255, 214, 10, 0.3), rgba(255, 214, 10, 0.2)) !important;
+        }
       }
     }
     
@@ -383,6 +408,32 @@ $row-noconv-2: #4a4a4a;
       
       .col-name .injury-icon {
         color: #cc0000 !important;
+      }
+    }
+
+    // Suspended by yellow cards - MUTED AMBER
+    &.suspended-yellow {
+      background: rgba(180, 150, 0, 0.18) !important;
+
+      &:hover {
+        background: rgba(180, 150, 0, 0.28) !important;
+      }
+
+      .col-name {
+        color: #ccaa00;
+      }
+    }
+
+    // Suspended by red card - MUTED RED
+    &.suspended-red {
+      background: rgba(180, 30, 30, 0.20) !important;
+
+      &:hover {
+        background: rgba(180, 30, 30, 0.30) !important;
+      }
+
+      .col-name {
+        color: #cc3333;
       }
     }
     
@@ -401,6 +452,38 @@ $row-noconv-2: #4a4a4a;
         font-weight: 700;
         color: $pcf-gold;
       }
+
+      &.col-yellow, &.col-status {
+        width: 60px;
+        min-width: 60px;
+        text-align: right;
+        font-size: 0.65rem;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 2px;
+        padding-right: 4px;
+        
+        .status-icon {
+          display: inline-flex;
+          align-items: center;
+          font-size: 0.65rem;
+          white-space: nowrap;
+          
+          &.injury {
+            color: #ff6b6b;
+          }
+          &.red {
+            color: #ff453a;
+          }
+          &.yellow {
+            color: #ffd60a;
+          }
+          &.warning {
+            color: #ffa500;
+          }
+        }
+      }
       
       &.col-name {
         justify-content: flex-start;
@@ -409,22 +492,6 @@ $row-noconv-2: #4a4a4a;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        
-        .injury-icon {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          width: 14px;
-          height: 14px;
-          margin-right: 4px;
-          background: #fff;
-          border: 1px solid #999;
-          border-radius: 2px;
-          color: #cc0000;
-          font-size: 0.7rem;
-          font-weight: 900;
-          line-height: 1;
-        }
       }
       
       &.col-attr {
@@ -443,6 +510,28 @@ $row-noconv-2: #4a4a4a;
         &.low { 
           color: #ff7d7d; 
           text-shadow: 0 0 8px rgba(255, 125, 125, 0.5);
+        }
+        
+        // Position fit colors (override high/low when playing position matters)
+        &.fit-perfect {
+          color: #30d158 !important;
+          text-shadow: 0 0 8px rgba(48, 209, 88, 0.5);
+        }
+        &.fit-good {
+          color: #27ae60 !important;
+          text-shadow: 0 0 8px rgba(39, 174, 96, 0.5);
+        }
+        &.fit-decent {
+          color: #ffd60a !important;
+          text-shadow: 0 0 8px rgba(255, 214, 10, 0.5);
+        }
+        &.fit-poor {
+          color: #ff9f0a !important;
+          text-shadow: 0 0 8px rgba(255, 159, 10, 0.5);
+        }
+        &.fit-terrible {
+          color: #ff453a !important;
+          text-shadow: 0 0 8px rgba(255, 69, 58, 0.5);
         }
       }
       
@@ -784,6 +873,11 @@ $row-noconv-2: #4a4a4a;
   justify-content: center;
   z-index: 1000;
   padding: 1rem;
+  
+  @media (max-width: 768px) {
+    padding: 0;
+    align-items: flex-end;
+  }
 }
 
 .pcf-modal {
@@ -794,6 +888,13 @@ $row-noconv-2: #4a4a4a;
   max-width: 400px;
   max-height: 80vh;
   overflow: hidden;
+  
+  @media (max-width: 768px) {
+    max-width: 100vw;
+    max-height: 85vh;
+    border-radius: 12px 12px 0 0;
+    border: none;
+  }
   
   .modal-header {
     display: flex;
@@ -870,6 +971,34 @@ $row-noconv-2: #4a4a4a;
       }
     }
     
+    // Position fit colors for player selection modal
+    &.fit-perfect {
+      background: rgba(48, 209, 88, 0.35);
+      border-left: 3px solid #30d158;
+      
+      &:hover {
+        background: rgba(48, 209, 88, 0.5);
+      }
+    }
+    
+    &.fit-good {
+      background: rgba(39, 174, 96, 0.18);
+      border-left: 3px solid #27ae60;
+      
+      &:hover {
+        background: rgba(39, 174, 96, 0.3);
+      }
+    }
+    
+    &.fit-decent {
+      background: rgba(255, 214, 10, 0.12);
+      border-left: 3px solid #ffd60a;
+      
+      &:hover {
+        background: rgba(255, 214, 10, 0.22);
+      }
+    }
+    
     &.in-lineup {
       opacity: 0.5;
     }
@@ -898,6 +1027,11 @@ $row-noconv-2: #4a4a4a;
       color: $pcf-green-light;
       font-size: 1rem;
       text-align: center;
+      
+      &.good {
+        color: #27ae60;
+        font-size: 0.85rem;
+      }
     }
   }
 }
@@ -1446,6 +1580,20 @@ $row-noconv-2: #4a4a4a;
   animation: slideUp 0.3s ease-out;
 }
 
+.warning-icon {
+  color: #ffd700;
+  animation: pulse-warning 1.5s ease-in-out infinite;
+}
+
+.suspended-icon {
+  filter: brightness(1.2);
+}
+
+@keyframes pulse-warning {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
 @keyframes slideUp {
   from {
     opacity: 0;
@@ -1577,6 +1725,13 @@ $row-noconv-2: #4a4a4a;
   font-style: italic;
 }
 
+.tactic-option .detail {
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.4);
+  margin-top: 2px;
+  line-height: 1.3;
+}
+
 // ============================================================
 // MODAL ENTRENAMIENTO V2 - Rediseñado
 // ============================================================
@@ -1588,6 +1743,15 @@ $row-noconv-2: #4a4a4a;
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
   overflow: hidden;
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 100vw;
+    border-radius: 16px 16px 0 0;
+    max-height: 90vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
 }
 
 .modal-header-v2 {
@@ -1597,6 +1761,10 @@ $row-noconv-2: #4a4a4a;
   padding: 20px 24px;
   background: rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  
+  @media (max-width: 768px) {
+    padding: 16px;
+  }
   
   .header-title {
     display: flex;
@@ -1636,6 +1804,10 @@ $row-noconv-2: #4a4a4a;
 
 .modal-body-v2 {
   padding: 24px;
+  
+  @media (max-width: 768px) {
+    padding: 16px;
+  }
 }
 
 .training-subtitle {
@@ -1656,9 +1828,9 @@ $row-noconv-2: #4a4a4a;
   gap: 16px;
   margin-bottom: 24px;
   
-  @media (max-width: 700px) {
+  @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 8px;
   }
 }
 
@@ -1849,9 +2021,16 @@ $row-noconv-2: #4a4a4a;
   background: rgba(0, 0, 0, 0.2);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   
+  @media (max-width: 768px) {
+    padding: 12px 16px;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom));
+    flex-direction: column;
+  }
+  
   button {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     padding: 12px 24px;
     border-radius: 10px;
@@ -1860,6 +2039,7 @@ $row-noconv-2: #4a4a4a;
     cursor: pointer;
     transition: all 0.2s;
     border: none;
+    min-height: 44px;
   }
   
   .btn-secondary {

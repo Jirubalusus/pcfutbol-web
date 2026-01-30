@@ -10,7 +10,16 @@ const COUNTRY_DATA = {
   italy: { lat: 42.5, lng: 12.5, name: 'Italia', code: 'IT', color: '#33CC33' },
   france: { lat: 46.5, lng: 2.5, name: 'Francia', code: 'FR', color: '#5555FF' },
   portugal: { lat: 39.5, lng: -8.0, name: 'Portugal', code: 'PT', color: '#22AA44' },
-  netherlands: { lat: 52.3, lng: 5.3, name: 'Países Bajos', code: 'NL', color: '#FF7700' }
+  netherlands: { lat: 52.3, lng: 5.3, name: 'Países Bajos', code: 'NL', color: '#FF7700' },
+  belgium: { lat: 50.8, lng: 4.4, name: 'Bélgica', code: 'BE', color: '#FFDD00' },
+  turkey: { lat: 39.0, lng: 35.0, name: 'Turquía', code: 'TR', color: '#E30A17' },
+  scotland: { lat: 56.5, lng: -4.0, name: 'Escocia', code: 'SCO', color: '#003399' },
+  switzerland: { lat: 46.8, lng: 8.2, name: 'Suiza', code: 'CH', color: '#FF0000' },
+  austria: { lat: 47.5, lng: 14.5, name: 'Austria', code: 'AT', color: '#ED2939' },
+  greece: { lat: 38.5, lng: 23.7, name: 'Grecia', code: 'GR', color: '#0D5EAF' },
+  denmark: { lat: 56.0, lng: 10.0, name: 'Dinamarca', code: 'DK', color: '#C60C30' },
+  croatia: { lat: 45.1, lng: 15.2, name: 'Croacia', code: 'HR', color: '#FF3333' },
+  czech: { lat: 49.8, lng: 15.5, name: 'Chequia', code: 'CZ', color: '#11457E' }
 };
 
 // Breakpoint para móvil

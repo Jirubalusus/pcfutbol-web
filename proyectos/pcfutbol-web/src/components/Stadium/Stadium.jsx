@@ -1,13 +1,36 @@
-import React, { useState, useMemo, Suspense } from 'react';
+import React, { useState, useMemo, useEffect, Suspense, Component } from 'react';
 import { useGame } from '../../context/GameContext';
 import { 
   getLaLigaTeams, getSegundaTeams, getPremierTeams, getSerieATeams, getBundesligaTeams, getLigue1Teams
 } from '../../data/teamsFirestore';
+
+// Detect mobile viewport
+const getIsMobile = () => typeof window !== 'undefined' && window.innerWidth <= 768;
+
+// ErrorBoundary para capturar errores de Stadium3D sin crashear la app
+class Stadium3DErrorBoundary extends Component {
+  state = { hasError: false };
+  static getDerivedStateFromError() { return { hasError: true }; }
+  componentDidCatch(err) { console.warn('Stadium3D error:', err); }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="stadium-3d-fallback">
+          <span>🏟️</span>
+          <p>Vista 3D no disponible</p>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 import { 
   predictAttendance, 
   calculateMatchIncome,
   calculateSeasonTicketIncome,
   calculateSeasonTickets,
+  calculatePriceFactor,
+  calculateFairPrice,
   PRICE_CONFIG,
   BIG_TEAMS
 } from '../../game/stadiumEconomy';
@@ -53,6 +76,13 @@ const SPECIAL_EVENTS = [
 export default function Stadium() {
   const { state, dispatch } = useGame();
   const [activeTab, setActiveTab] = useState('general');
+  const [isMobile, setIsMobile] = useState(getIsMobile);
+  
+  useEffect(() => {
+    const handler = () => setIsMobile(getIsMobile());
+    window.addEventListener('resize', handler);
+    return () => window.removeEventListener('resize', handler);
+  }, []);
   
   // Estado con defaults seguros
   const stadium = state.stadium || {};
@@ -72,6 +102,8 @@ export default function Stadium() {
   const seasonTicketsCampaignOpen = stadium.seasonTicketsCampaignOpen ?? (currentWeek <= SEASON_TICKET_DEADLINE);
   const seasonTicketPrice = stadium.seasonTicketPrice ?? 400; // Precio mientras campaña abierta
   const ticketPrice = stadium.ticketPrice ?? 30; // Precio entrada partido suelto
+  const ticketPriceLocked = stadium.ticketPriceLocked ?? false; // Se bloquea al empezar la liga
+  const accumulatedTicketIncome = stadium.accumulatedTicketIncome ?? 0; // Ingresos acumulados (se cobran a final de temporada)
   
   // Datos del equipo para calcular abonados
   const teamPlayers = state.team?.players || [];
@@ -105,11 +137,32 @@ export default function Stadium() {
   const seasonTicketIncome = (seasonTickets || 0) * seasonTicketPrice;
   const namingIncome = naming?.yearlyIncome ?? 0;
   const maintenanceCost = currentLevel?.maintenance || 500000; // Ya es anual
-  const annualBalance = seasonTicketIncome + namingIncome - maintenanceCost;
+  // Precio justo dinámico según contexto del equipo
+  const playerLeagueId = state.playerLeagueId || 'laliga';
+  const division = ['segunda', 'segundaRFEF', 'primeraRFEF'].includes(playerLeagueId) ? 2 : 1;
+  const fairPrice = calculateFairPrice({
+    teamOverall,
+    teamReputation,
+    leaguePosition: teamPosition,
+    totalTeams,
+    division
+  });
   
-  // Factor cancha simple (basado en nivel + ocupación)
-  const occupancyRate = seasonTickets / capacity;
-  const homeAdvantage = 1 + (currentLevel.prestige * 0.01) + (occupancyRate > 0.5 ? 0.02 : 0);
+  // Estimación de ingresos por entradas sueltas (aplica factor precio relativo al justo)
+  const availableForTickets = Math.max(0, capacity - seasonTickets);
+  const priceFactor = calculatePriceFactor(ticketPrice, 1.0, fairPrice);
+  const estimatedTicketSalesPerMatch = Math.round(availableForTickets * PRICE_CONFIG.baseDemandRate * priceFactor);
+  const estimatedTicketIncome = estimatedTicketSalesPerMatch * ticketPrice * HOME_GAMES_PER_SEASON;
+  const annualBalance = seasonTicketIncome + estimatedTicketIncome + namingIncome - maintenanceCost;
+  
+  // Ocupación real: abonados + estimación de entradas sueltas vendidas por partido
+  const estimatedTotalAttendance = seasonTickets + estimatedTicketSalesPerMatch;
+  const occupancyRate = Math.min(1, estimatedTotalAttendance / capacity);
+  
+  // Factor cancha gradual (basado en nivel + ocupación real)
+  // Ocupación 0% → +0%, 50% → +1%, 75% → +2%, 100% → +3%
+  const occupancyBonus = occupancyRate * 0.03;
+  const homeAdvantage = 1 + (currentLevel.prestige * 0.01) + occupancyBonus;
   
   // Cooldown eventos
   const weeksSinceEvent = (state.currentWeek || 1) - lastEventWeek;
@@ -133,19 +186,37 @@ export default function Stadium() {
     updateStadium({ seasonTicketPrice: newPrice });
   };
   
-  // Cerrar campaña de abonos (fijar precio y cantidad)
+  // Cerrar campaña de abonos (fijar precio y cantidad, cobrar ingresos)
   const handleCloseCampaign = () => {
     if (!seasonTicketsCampaignOpen) return;
+    const totalAbonados = calculatedSeasonTickets;
+    const totalSeasonTicketIncome = totalAbonados * seasonTicketPrice;
+    
     updateStadium({
       seasonTicketsCampaignOpen: false,
-      seasonTicketsFinal: calculatedSeasonTickets,
-      seasonTicketPriceFinal: seasonTicketPrice
+      seasonTicketsFinal: totalAbonados,
+      seasonTicketPriceFinal: seasonTicketPrice,
+      seasonTicketIncomeCollected: totalSeasonTicketIncome
+    });
+    
+    // Cobrar ingresos de abonados inmediatamente (los aficionados pagan al abonarse)
+    dispatch({ type: 'UPDATE_MONEY', payload: totalSeasonTicketIncome });
+    dispatch({
+      type: 'ADD_MESSAGE',
+      payload: {
+        id: Date.now(),
+        type: 'stadium',
+        title: '🎫 Campaña de abonos cerrada',
+        content: `${totalAbonados.toLocaleString()} abonados × €${seasonTicketPrice} = ${formatMoney(totalSeasonTicketIncome)} ingresados`,
+        date: `Semana ${state.currentWeek}`
+      }
     });
   };
   
-  // Precio entrada partido (afecta asistencia no-abonados) - siempre modificable
+  // Precio entrada partido (solo ajustable en pretemporada, bloqueado durante la temporada)
   const handleTicketPriceChange = (delta) => {
-    const newPrice = Math.max(5, ticketPrice + delta); // Mínimo 5€, sin máximo
+    if (ticketPriceLocked) return;
+    const newPrice = Math.max(5, Math.min(150, ticketPrice + delta)); // Mínimo 5€, máximo 150€
     updateStadium({ ticketPrice: newPrice });
   };
   
@@ -313,7 +384,10 @@ export default function Stadium() {
         morale: teamEntry?.morale || 70,
         leagueId: state.playerLeagueId || 'laliga',
         homeTeamId: state.team?.id,
-        awayTeamId: rivalTeam.id
+        awayTeamId: rivalTeam.id,
+        teamOverall,
+        teamReputation,
+        division
       }),
       matchPrice
     };
@@ -332,16 +406,20 @@ export default function Stadium() {
 
   return (
     <div className="stadium-simple">
-      {/* Visor 3D del estadio */}
-      <div className="stadium-simple__3d-viewer">
-        <Suspense fallback={<div className="stadium-3d-loading">Cargando estadio...</div>}>
-          <Stadium3D 
-            level={level} 
-            naming={naming} 
-            grassCondition={grassCondition} 
-          />
-        </Suspense>
-      </div>
+      {/* Visor 3D del estadio — skip on mobile to avoid WebGL crashes */}
+      {!isMobile && (
+        <div className="stadium-simple__3d-viewer">
+          <Stadium3DErrorBoundary>
+            <Suspense fallback={<div className="stadium-3d-loading">Cargando estadio...</div>}>
+              <Stadium3D 
+                level={level} 
+                naming={naming} 
+                grassCondition={grassCondition} 
+              />
+            </Suspense>
+          </Stadium3DErrorBoundary>
+        </div>
+      )}
       
       {/* Header */}
       <div className="stadium-simple__header">
@@ -428,77 +506,97 @@ export default function Stadium() {
                 </button>
               </>
             ) : (
-              <>
-                <p className="card-hint campaign-closed">🔒 Campaña cerrada para esta temporada</p>
-                
-                <div className="abonados-display">
-                  <div className="abonados-info">
-                    <span className="big-number">{seasonTickets.toLocaleString()}</span>
-                    <span className="of-total">abonados</span>
-                  </div>
-                  <p className="locked-price">Precio fijado: <strong>€{stadium.seasonTicketPriceFinal || seasonTicketPrice}</strong></p>
+              <div className="campaign-closed-card">
+                <div className="campaign-closed-header">
+                  <span className="lock-icon">🔒</span>
+                  <span>Campaña cerrada</span>
                 </div>
-              </>
+                
+                <div className="campaign-closed-stats">
+                  <div className="campaign-stat main">
+                    <span className="stat-value">{seasonTickets.toLocaleString()}</span>
+                    <span className="stat-label">abonados</span>
+                  </div>
+                  <div className="campaign-stat-divider"></div>
+                  <div className="campaign-stat">
+                    <span className="stat-value">€{stadium.seasonTicketPriceFinal || seasonTicketPrice}</span>
+                    <span className="stat-label">precio/abono</span>
+                  </div>
+                  <div className="campaign-stat-divider"></div>
+                  <div className="campaign-stat">
+                    <span className="stat-value">{formatMoney((seasonTickets || 0) * (stadium.seasonTicketPriceFinal || seasonTicketPrice))}</span>
+                    <span className="stat-label">ingresado</span>
+                  </div>
+                </div>
+                
+                <div className="campaign-closed-bar">
+                  <div className="bar-fill" style={{ width: `${Math.min(100, (seasonTickets / Math.floor(capacity * 0.8)) * 100)}%` }}></div>
+                </div>
+                <div className="campaign-closed-footer">
+                  <span>{Math.round((seasonTickets / capacity) * 100)}% del aforo abonado</span>
+                </div>
+              </div>
             )}
           </div>
           
           {/* Precio entrada partido suelto */}
           <div className="card">
             <h3>🎟️ Precio Entrada</h3>
-            <p className="card-hint">Para no abonados. Afecta asistencia en cada partido</p>
+            <p className="card-hint">
+              {ticketPriceLocked 
+                ? '🔒 Precio fijado para esta temporada. Solo para no abonados.'
+                : 'Precio por partido para no abonados. Fija antes de que empiece la liga.'}
+            </p>
             
             <div className="price-control">
-              <button onClick={() => handleTicketPriceChange(-5)}>-5€</button>
+              <button 
+                onClick={() => handleTicketPriceChange(-5)} 
+                disabled={ticketPriceLocked}
+                className={ticketPriceLocked ? 'locked' : ''}
+              >-5€</button>
               <span className="price-value">€{ticketPrice}</span>
-              <button onClick={() => handleTicketPriceChange(5)}>+5€</button>
+              <button 
+                onClick={() => handleTicketPriceChange(5)} 
+                disabled={ticketPriceLocked}
+                className={ticketPriceLocked ? 'locked' : ''}
+              >+5€</button>
+            </div>
+            
+            {/* Ingresos acumulados esta temporada */}
+            <div className="accumulated-income">
+              <div className="accumulated-row">
+                <span className="label">💰 Ingresos entradas acumulados</span>
+                <span className="value accumulated-value">{formatMoney(accumulatedTicketIncome)}</span>
+              </div>
+              <p className="accumulated-hint">Solo entradas vendidas (sin abonados). Se cobra al finalizar la temporada.</p>
             </div>
             
             {/* Última jornada en casa */}
-            {(stadium.lastMatchAttendance || stadium.lastMatchIncome) && (
+            {(stadium.lastMatchTicketSales != null || stadium.lastMatchIncome != null) && (
               <div className="last-match-info">
                 <h4>📊 Última jornada en casa</h4>
                 <div className="last-match-stats">
-                  {stadium.lastMatchAttendance && (
+                  {stadium.lastMatchTicketSales != null && (
                     <div className="stat-row">
-                      <span className="label">👥 Asistentes</span>
+                      <span className="label">🎟️ Entradas vendidas</span>
+                      <span className="value">{stadium.lastMatchTicketSales.toLocaleString()}</span>
+                    </div>
+                  )}
+                  {stadium.lastMatchAttendance != null && (
+                    <div className="stat-row">
+                      <span className="label">👥 Asistencia total</span>
                       <span className="value">{stadium.lastMatchAttendance.toLocaleString()}</span>
                     </div>
                   )}
-                  {stadium.lastMatchIncome && (
+                  {stadium.lastMatchIncome != null && (
                     <div className="stat-row income">
-                      <span className="label">💰 Ingresos taquilla</span>
+                      <span className="label">💰 Ingresos entradas</span>
                       <span className="value">{formatMoney(stadium.lastMatchIncome)}</span>
                     </div>
                   )}
                 </div>
               </div>
             )}
-          </div>
-          
-          {/* Balance */}
-          <div className="card balance-card">
-            <h3>📈 Balance Anual Estimado</h3>
-            
-            <div className="balance-rows">
-              <div className="balance-row income">
-                <span>Abonados ({seasonTickets.toLocaleString()})</span>
-                <span>{formatMoney(seasonTicketIncome)}</span>
-              </div>
-              {namingIncome > 0 && (
-                <div className="balance-row income">
-                  <span>Naming Rights</span>
-                  <span>{formatMoney(namingIncome)}</span>
-                </div>
-              )}
-              <div className="balance-row expense">
-                <span>Mantenimiento</span>
-                <span>-{formatMoney(maintenanceCost)}</span>
-              </div>
-              <div className={`balance-row total ${annualBalance >= 0 ? 'positive' : 'negative'}`}>
-                <span>Balance</span>
-                <span>{formatMoney(annualBalance)}</span>
-              </div>
-            </div>
           </div>
           
           {/* Césped */}

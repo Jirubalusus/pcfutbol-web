@@ -23,10 +23,13 @@ import Transfers from '../Transfers/TransfersV2';
 import Stadium from '../Stadium/Stadium';
 import Facilities from '../Facilities/Facilities';
 import Messages from '../Messages/Messages';
+import Finance from '../Finance/Finance';
 import MatchDay from '../MatchDay/MatchDay';
 import Training from '../Training/Training';
 import Objectives from '../Objectives/Objectives';
 import SeasonEnd from '../SeasonEnd/SeasonEnd';
+import ManagerFired from '../ManagerFired/ManagerFired';
+import Europe from '../Europe/Europe';
 import { isSeasonOver } from '../../game/seasonManager';
 import {
   Trophy,
@@ -52,7 +55,8 @@ export default function Office() {
   const isMobile = window.innerWidth <= 768;
   
   // Detectar si la temporada ha terminado
-  const seasonOver = state.fixtures?.length > 0 && isSeasonOver(state.fixtures, 'laliga');
+  const playerLeagueId = state.playerLeagueId || 'laliga';
+  const seasonOver = state.fixtures?.length > 0 && isSeasonOver(state.fixtures, playerLeagueId);
   
   const formatMoney = (amount) => {
     if (amount >= 1000000) {
@@ -123,16 +127,19 @@ export default function Office() {
       weekFixtures: weekFixtures.slice(0, 3),
       playerMatch: playerMatch,
       allTeamsCount: getAllTeams().length,
-      seasonOver: seasonOver
+      seasonOver: seasonOver,
+      pendingEuropeanMatch: state.pendingEuropeanMatch ? 'yes' : 'no'
     });
     
-    if (playerMatch) {
+    if (state.pendingEuropeanMatch) {
+      // European match takes priority (midweek before weekend league match)
+      setShowMatch(true);
+    } else if (playerMatch) {
       setShowMatch(true);
     } else {
       const result = simulateOtherMatches();
       dispatch({ type: 'SET_FIXTURES', payload: result.fixtures });
       dispatch({ type: 'SET_LEAGUE_TABLE', payload: result.table });
-      dispatch({ type: 'APPLY_TRAINING' });
       dispatch({ type: 'ADVANCE_WEEK' });
     }
   };
@@ -150,7 +157,20 @@ export default function Office() {
         dispatch({ type: 'ADVANCE_PRESEASON_WEEK' });
       }
     } else {
-      dispatch({ type: 'APPLY_TRAINING' });
+      // After a European match, check if there's still a league match this week
+      // If so, DON'T advance the week yet — let the user play the league match too
+      const weekFixtures = state.fixtures.filter(f => f.week === state.currentWeek && !f.played);
+      const leagueMatch = weekFixtures.find(f => 
+        f.homeTeam === state.teamId || f.awayTeam === state.teamId
+      );
+      const stillHasEuropean = state.pendingEuropeanMatch;
+      
+      if (leagueMatch || stillHasEuropean) {
+        // There's still a match to play this week — don't advance, just return to office
+        // The user will click advance again to play the next match
+        return;
+      }
+      
       dispatch({ type: 'ADVANCE_WEEK' });
     }
   };
@@ -177,6 +197,8 @@ export default function Office() {
   const handleSimulateWeeks = async (numWeeks) => {
     // No simular múltiples semanas durante pretemporada
     if (state.preseasonPhase) return;
+    // No simular si hay partido europeo pendiente
+    if (state.pendingEuropeanMatch) return;
     
     setSimulating(true);
     
@@ -188,12 +210,14 @@ export default function Office() {
     let weeksSimulated = 0;
     let seasonEnded = false;
     
-    // Máxima jornada de la liga (38 para LaLiga)
-    const maxWeek = 38;
+    // Máxima jornada de la liga (dinámica según liga del jugador)
+    const maxWeek = currentFixtures.length > 0 
+      ? Math.max(...currentFixtures.map(f => f.week)) 
+      : 38;
     
     for (let i = 0; i < numWeeks; i++) {
       // Comprobar si la temporada ha terminado
-      if (currentWeek > maxWeek || isSeasonOver(currentFixtures, 'laliga')) {
+      if (currentWeek > maxWeek || isSeasonOver(currentFixtures, playerLeagueId)) {
         seasonEnded = true;
         break;
       }
@@ -221,12 +245,19 @@ export default function Office() {
           let attendanceFillRate = 0.7;
           if (isHome && state.stadium) {
             const stadium = state.stadium;
-            const stadiumCapacity = [8000, 18000, 35000, 55000, 80000][stadium.level || 0];
-            const seasonTickets = stadium.seasonTickets ?? Math.floor(stadiumCapacity * 0.3);
+            const levelCapacity = [8000, 18000, 35000, 55000, 80000][stadium.level || 0];
+            const stadiumCapacity = stadium.realCapacity || levelCapacity;
+            const seasonTickets = stadium.seasonTicketsFinal ?? stadium.seasonTickets ?? Math.floor(stadiumCapacity * 0.3);
             const ticketPrice = (stadium.ticketPrice ?? 30) + (stadium.matchPriceAdjust || 0);
             const rivalPosition = currentTable.findIndex(t => t.teamId === opponentId) + 1 || 10;
             const teamPosition = currentTable.findIndex(t => t.teamId === state.teamId) + 1 || 10;
             const teamEntry = currentTable.find(t => t.teamId === state.teamId);
+            
+            const leagueId = state.leagueId || 'laliga';
+            const division = ['segunda', 'segundaRFEF', 'primeraRFEF'].includes(leagueId) ? 2 : 1;
+            const teamPlayers = state.team?.players || [];
+            const teamOvr = teamPlayers.length > 0 
+              ? Math.round(teamPlayers.reduce((sum, p) => sum + (p.overall || 70), 0) / teamPlayers.length) : 70;
             
             const attendance = calculateMatchAttendance({
               stadiumCapacity,
@@ -238,9 +269,12 @@ export default function Office() {
               totalTeams: currentTable.length || 20,
               streak: teamEntry?.streak || 0,
               morale: teamEntry?.morale || 70,
-              leagueId: state.leagueId || 'laliga',
+              leagueId,
               homeTeamId: state.teamId,
-              awayTeamId: opponentId
+              awayTeamId: opponentId,
+              teamOverall: teamOvr,
+              teamReputation: state.team?.reputation || 70,
+              division
             });
             attendanceFillRate = attendance.fillRate;
           }
@@ -252,6 +286,49 @@ export default function Office() {
             awayTeamData,
             { attendanceFillRate: isHome ? attendanceFillRate : 0.7 }
           );
+          
+          // Ingresos de taquilla si somos locales (ACUMULAR, no dar directo)
+          if (isHome && state.stadium) {
+            const stadium = state.stadium;
+            const levelCap = [8000, 18000, 35000, 55000, 80000][stadium.level || 0];
+            const sCap = stadium.realCapacity || levelCap;
+            const sTix = stadium.seasonTicketsFinal ?? stadium.seasonTickets ?? Math.floor(sCap * 0.3);
+            const tPrice = (stadium.ticketPrice ?? 30);
+            const sLevel = stadium.level ?? 0;
+            
+            const att = calculateMatchAttendance({
+              stadiumCapacity: sCap,
+              seasonTickets: sTix,
+              ticketPrice: tPrice,
+              rivalTeam: opponent,
+              rivalPosition: currentTable.findIndex(t => t.teamId === opponentId) + 1 || 10,
+              teamPosition: currentTable.findIndex(t => t.teamId === state.teamId) + 1 || 10,
+              totalTeams: currentTable.length || 20,
+              streak: currentTable.find(t => t.teamId === state.teamId)?.streak || 0,
+              morale: currentTable.find(t => t.teamId === state.teamId)?.morale || 70,
+              leagueId: state.leagueId || 'laliga',
+              homeTeamId: state.teamId,
+              awayTeamId: opponentId
+            });
+            
+            const tktIncome = att.ticketSales * tPrice;
+            const concRate = 8 + (sLevel * 2);
+            const concIncome = att.attendance * concRate;
+            const totalIncome = tktIncome + concIncome;
+            
+            // Acumular ingresos (se cobran a final de temporada)
+            const prevAccumulated = stadium.accumulatedTicketIncome ?? 0;
+            dispatch({
+              type: 'UPDATE_STADIUM',
+              payload: {
+                ...stadium,
+                lastMatchAttendance: att.attendance,
+                lastMatchIncome: totalIncome,
+                accumulatedTicketIncome: prevAccumulated + totalIncome,
+                ticketPriceLocked: true
+              }
+            });
+          }
           
           // Aplicar lesiones del equipo del jugador
           const playerTeamSide = isHome ? 'home' : 'away';
@@ -317,9 +394,8 @@ export default function Office() {
       dispatch({ type: 'SET_OTHER_LEAGUES', payload: updatedOtherLeagues });
     }
     
-    // Avanzar semanas (esto también aplica training y healing por cada semana)
+    // Avanzar semanas
     for (let i = 0; i < weeksSimulated; i++) {
-      dispatch({ type: 'APPLY_TRAINING' });
       dispatch({ type: 'ADVANCE_WEEK' });
     }
     
@@ -370,8 +446,12 @@ export default function Office() {
         return <Transfers />;
       case 'stadium':
         return <Stadium />;
+      case 'finance':
+        return <Finance />;
       case 'facilities':
         return <Facilities />;
+      case 'europe':
+        return <Europe />;
       case 'messages':
         return <Messages />;
       default:
@@ -382,11 +462,26 @@ export default function Office() {
   const renderOverview = () => {
     const position = state.leagueTable.findIndex(t => t.teamId === state.teamId) + 1;
     const teamStats = state.leagueTable.find(t => t.teamId === state.teamId);
-    const nextMatch = state.fixtures.find(f => 
-      f.week >= state.currentWeek && 
-      !f.played && 
-      (f.homeTeam === state.teamId || f.awayTeam === state.teamId)
-    );
+    
+    // En pretemporada mostrar el amistoso, en liga el siguiente partido
+    let nextMatch = null;
+    if (state.preseasonPhase && state.preseasonMatches?.length > 0) {
+      const preseasonIdx = (state.preseasonWeek || 1) - 1;
+      const preMatch = state.preseasonMatches[preseasonIdx];
+      if (preMatch && !preMatch.played) {
+        nextMatch = {
+          ...preMatch,
+          isPreseason: true,
+          week: state.preseasonWeek
+        };
+      }
+    } else {
+      nextMatch = state.fixtures.find(f => 
+        f.week >= state.currentWeek && 
+        !f.played && 
+        (f.homeTeam === state.teamId || f.awayTeam === state.teamId)
+      );
+    }
     
     return (
       <div className="office__overview">
@@ -438,21 +533,61 @@ export default function Office() {
           </div>
         </div>
         
+        {/* Barra de confianza del míster */}
+        {!state.preseasonPhase && state.currentWeek > 5 && (
+          <div className="office__confidence" style={{
+            margin: '0 0 1.5rem',
+            padding: '0.75rem 1rem',
+            background: state.managerConfidence <= 25 ? 'rgba(231,76,60,0.12)' : 'rgba(255,255,255,0.03)',
+            borderRadius: '8px',
+            border: state.managerConfidence <= 25 ? '1px solid rgba(231,76,60,0.3)' : '1px solid rgba(255,255,255,0.06)'
+          }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.4rem' }}>
+              <span style={{ fontSize: '0.75rem', color: '#8899aa', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                {state.managerConfidence <= 25 ? '⚠️ ' : ''}Confianza de la directiva
+              </span>
+              <span style={{ 
+                fontSize: '0.85rem', fontWeight: 700,
+                color: state.managerConfidence > 60 ? '#2ecc71' : state.managerConfidence > 40 ? '#f39c12' : state.managerConfidence > 25 ? '#e67e22' : '#e74c3c'
+              }}>
+                {state.managerConfidence}%
+              </span>
+            </div>
+            <div style={{ height: '6px', background: 'rgba(255,255,255,0.08)', borderRadius: '3px', overflow: 'hidden' }}>
+              <div style={{
+                height: '100%', borderRadius: '3px', transition: 'width 0.5s, background 0.5s',
+                width: `${state.managerConfidence}%`,
+                background: state.managerConfidence > 60 ? '#2ecc71' : state.managerConfidence > 40 ? '#f39c12' : state.managerConfidence > 25 ? '#e67e22' : '#e74c3c'
+              }} />
+            </div>
+          </div>
+        )}
+        
         <div className="office__grid">
           <div className="office__grid-left">
             {nextMatch && (
               <div className="office__next-match">
                 <h3>Próximo Partido</h3>
-                <span className="office__match-week">Jornada {nextMatch.week}</span>
+                <span className="office__match-week">
+                  {nextMatch.isPreseason ? `Amistoso ${nextMatch.week}/5` : `Jornada ${nextMatch.week}`}
+                </span>
                 <div className="office__match-preview">
                   <div className="team home">
-                    <span className="name">{nextMatch.homeTeam === state.teamId ? state.team.name : 
-                      state.leagueTable.find(t => t.teamId === nextMatch.homeTeam)?.teamName}</span>
+                    <span className="name">
+                      {nextMatch.isPreseason 
+                        ? (nextMatch.homeTeamName || nextMatch.homeTeam)
+                        : (nextMatch.homeTeam === state.teamId ? state.team.name : 
+                          state.leagueTable.find(t => t.teamId === nextMatch.homeTeam)?.teamName)}
+                    </span>
                   </div>
                   <div className="vs">VS</div>
                   <div className="team away">
-                    <span className="name">{nextMatch.awayTeam === state.teamId ? state.team.name : 
-                      state.leagueTable.find(t => t.teamId === nextMatch.awayTeam)?.teamName}</span>
+                    <span className="name">
+                      {nextMatch.isPreseason
+                        ? (nextMatch.awayTeamName || nextMatch.awayTeam)
+                        : (nextMatch.awayTeam === state.teamId ? state.team.name : 
+                          state.leagueTable.find(t => t.teamId === nextMatch.awayTeam)?.teamName)}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -571,6 +706,11 @@ export default function Office() {
     );
   }
   
+  // Modal de despido
+  if (state.managerFired) {
+    return <ManagerFired />;
+  }
+  
   // Modal de fin de temporada
   if (showSeasonEnd) {
     return (
@@ -622,11 +762,11 @@ export default function Office() {
             </button>
             
             <div className="office__sim-dropdown">
-              <button className="office__sim-btn" disabled={simulating || state.preseasonPhase}>
+              <button className="office__sim-btn" disabled={simulating || state.preseasonPhase || !!state.pendingEuropeanMatch}>
                 <FastForward size={18} strokeWidth={2} />
                 <span>{simulating ? 'Simulando...' : 'Simular'}</span>
               </button>
-              {!simulating && !state.preseasonPhase && (
+              {!simulating && !state.preseasonPhase && !state.pendingEuropeanMatch && (
                 <div className="office__sim-options">
                   <button onClick={() => handleSimulateWeeks(4)}>4 semanas</button>
                   <button onClick={() => handleSimulateWeeks(10)}>10 semanas</button>

@@ -1,5 +1,9 @@
 .facilities-v2 {
   padding-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    padding-bottom: 95px;
+  }
   
   // ==================== MODALS ====================
   &__modal-overlay {
@@ -12,6 +16,11 @@
     z-index: 1000;
     padding: 1rem;
     animation: fadeIn 0.2s ease;
+
+    @media (max-width: 768px) {
+      padding: 0.5rem;
+      align-items: flex-end;
+    }
   }
   
   @keyframes fadeIn {
@@ -28,6 +37,15 @@
     width: 100%;
     animation: slideUp 0.3s ease;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+
+    @media (max-width: 768px) {
+      max-width: 100vw;
+      padding: 1rem;
+      border-radius: 14px 14px 0 0;
+      border: none;
+      max-height: 85vh;
+      overflow-y: auto;
+    }
     
     @keyframes slideUp {
       from { transform: translateY(20px); opacity: 0; }
@@ -168,11 +186,19 @@
     margin-bottom: 1.5rem;
     flex-wrap: wrap;
     
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+    
     .header-title {
       h2 {
         margin: 0 0 0.25rem;
         font-size: 1.5rem;
         font-weight: 700;
+        
+        @media (max-width: 768px) {
+          font-size: 1.25rem;
+        }
       }
       p {
         margin: 0;
@@ -198,10 +224,14 @@
       background: var(--color-glass);
       border: 1px solid var(--color-glass-border);
       border-radius: 12px;
+      min-width: 0;
+      overflow: hidden;
       
       @media (max-width: 600px) {
         flex: 1;
         justify-content: center;
+        padding: 0.5rem 0.75rem;
+        gap: 0.5rem;
       }
       
       .stat-icon { font-size: 1.5rem; }
@@ -289,6 +319,10 @@
       border-radius: 10px;
       transition: all 0.2s;
       
+      @media (max-width: 768px) {
+        flex-wrap: wrap;
+      }
+      
       &.treated { opacity: 0.6; }
       
       .player-avatar {
@@ -351,6 +385,11 @@
         cursor: pointer;
         white-space: nowrap;
         transition: all 0.2s;
+        min-height: 44px;
+        
+        @media (max-width: 768px) {
+          width: 100%;
+        }
         
         &:hover:not(:disabled) {
           transform: scale(1.05);
@@ -694,6 +733,10 @@
     border: 1px solid var(--color-glass-border);
     border-radius: 14px;
     
+    @media (max-width: 768px) {
+      padding: 1rem;
+    }
+    
     h3 {
       margin: 0 0 1rem;
       font-size: 1rem;
@@ -704,6 +747,10 @@
       display: flex;
       gap: 1.5rem;
       flex-wrap: wrap;
+      
+      @media (max-width: 768px) {
+        gap: 1rem;
+      }
     }
     
     .impact-item {

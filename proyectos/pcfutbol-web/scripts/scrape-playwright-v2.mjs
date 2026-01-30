@@ -71,6 +71,113 @@ const LEAGUES = {
     country: 'FR',
     baseOverall: 73,
     tier: 1
+  },
+  // Second divisions
+  championship: { 
+    url: 'https://www.transfermarkt.es/championship/startseite/wettbewerb/GB2', 
+    id: 'GB2', 
+    country: 'GB',
+    baseOverall: 70,
+    tier: 2
+  },
+  serieB: { 
+    url: 'https://www.transfermarkt.es/serie-b/startseite/wettbewerb/IT2', 
+    id: 'IT2', 
+    country: 'IT',
+    baseOverall: 67,
+    tier: 2
+  },
+  bundesliga2: { 
+    url: 'https://www.transfermarkt.es/2-bundesliga/startseite/wettbewerb/L2', 
+    id: 'L2', 
+    country: 'DE',
+    baseOverall: 68,
+    tier: 2
+  },
+  ligue2: { 
+    url: 'https://www.transfermarkt.es/ligue-2/startseite/wettbewerb/FR2', 
+    id: 'FR2', 
+    country: 'FR',
+    baseOverall: 66,
+    tier: 2
+  },
+  // Other top leagues
+  eredivisie: { 
+    url: 'https://www.transfermarkt.es/eredivisie/startseite/wettbewerb/NL1', 
+    id: 'NL1', 
+    country: 'NL',
+    baseOverall: 71,
+    tier: 1
+  },
+  primeiraLiga: { 
+    url: 'https://www.transfermarkt.es/liga-portugal-betclic/startseite/wettbewerb/PO1', 
+    id: 'PO1', 
+    country: 'PT',
+    baseOverall: 72,
+    tier: 1
+  },
+  belgianPro: { 
+    url: 'https://www.transfermarkt.es/jupiler-pro-league/startseite/wettbewerb/BE1', 
+    id: 'BE1', 
+    country: 'BE',
+    baseOverall: 69,
+    tier: 1
+  },
+  superLig: { 
+    url: 'https://www.transfermarkt.es/super-lig/startseite/wettbewerb/TR1', 
+    id: 'TR1', 
+    country: 'TR',
+    baseOverall: 69,
+    tier: 1
+  },
+  scottishPrem: { 
+    url: 'https://www.transfermarkt.es/scottish-premiership/startseite/wettbewerb/SC1', 
+    id: 'SC1', 
+    country: 'SC',
+    baseOverall: 66,
+    tier: 1
+  },
+  swissSuperLeague: { 
+    url: 'https://www.transfermarkt.es/super-league/startseite/wettbewerb/C1', 
+    id: 'C1', 
+    country: 'CH',
+    baseOverall: 66,
+    tier: 1
+  },
+  austrianBundesliga: { 
+    url: 'https://www.transfermarkt.es/bundesliga/startseite/wettbewerb/A1', 
+    id: 'A1', 
+    country: 'AT',
+    baseOverall: 66,
+    tier: 1
+  },
+  greekSuperLeague: { 
+    url: 'https://www.transfermarkt.es/super-league-1/startseite/wettbewerb/GR1', 
+    id: 'GR1', 
+    country: 'GR',
+    baseOverall: 67,
+    tier: 1
+  },
+  danishSuperliga: { 
+    url: 'https://www.transfermarkt.es/superligaen/startseite/wettbewerb/DK1', 
+    id: 'DK1', 
+    country: 'DK',
+    baseOverall: 65,
+    tier: 1
+  },
+  croatianLeague: { 
+    url: 'https://www.transfermarkt.es/hrvatska-nogometna-liga/startseite/wettbewerb/KR1', 
+    id: 'KR1', 
+    country: 'HR',
+    baseOverall: 64,
+    tier: 1
+  },
+  czechLeague: { 
+    url: 'https://www.transfermarkt.es/chance-liga/startseite/wettbewerb/TS1', 
+    id: 'TS1', 
+    country: 'CZ',
+    baseOverall: 64,
+    tier: 1
   }
 };
 

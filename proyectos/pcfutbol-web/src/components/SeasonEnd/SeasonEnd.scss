@@ -8,6 +8,11 @@
   z-index: 2000;
   padding: 20px;
   overflow-y: auto;
+  
+  @media (max-width: 768px) {
+    padding: 10px;
+    align-items: flex-start;
+  }
 }
 
 .season-end__modal {
@@ -33,6 +38,11 @@
   gap: 16px;
   margin-bottom: 32px;
   
+  @media (max-width: 768px) {
+    margin-bottom: 20px;
+    gap: 12px;
+  }
+  
   .header-icon {
     color: #ffd60a;
   }
@@ -41,6 +51,10 @@
     font-size: 1.5rem;
     color: #fff;
     margin: 0;
+    
+    @media (max-width: 768px) {
+      font-size: 1.25rem;
+    }
   }
   
   p {
@@ -294,6 +308,7 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
+  min-height: 56px;
   
   &:hover {
     transform: translateY(-2px);
@@ -455,19 +470,6 @@
     }
   }
   
-  .selected-indicator {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 16px;
-    padding: 10px;
-    background: rgba(10, 132, 255, 0.2);
-    border-radius: 8px;
-    color: #0a84ff;
-    font-weight: 600;
-    font-size: 0.9rem;
-  }
 }
 
 .preseason-actions {
@@ -519,20 +521,265 @@
 
 // Mobile
 @media (max-width: 768px) {
+  .season-end {
+    padding: 8px;
+    padding-bottom: 95px;
+  }
+
   .season-end__modal {
-    padding: 20px;
+    padding: 14px;
+    border-radius: 14px;
+    max-width: calc(100vw - 16px);
+    overflow-x: hidden;
+
+    &--preseason {
+      max-width: calc(100vw - 16px);
+      width: 100%;
+    }
   }
   
   .final-position {
     flex-direction: column;
     text-align: center;
+    padding: 16px;
+    gap: 16px;
+    margin-bottom: 16px;
   }
   
   .position-badge .position-number {
     font-size: 2.5rem;
   }
+
+  .season-stats {
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .objectives-summary {
+    margin-bottom: 16px;
+  }
+
+  .season-total {
+    padding: 14px;
+    margin-bottom: 16px;
+  }
   
+  .preseason-options {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .preseason-card {
+    padding: 14px;
+  }
+
   .preseason-actions {
     flex-direction: column;
+    gap: 8px;
+  }
+
+  .european-qualification,
+  .relegation-warning {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    padding: 14px;
+  }
+
+  .playoff-bracket {
+    padding: 0.75rem;
+  }
+
+  .btn-continue {
+    min-height: 50px;
+  }
+}
+
+// ============================================================
+// PLAYOFF STYLES
+// ============================================================
+
+.playoff-icon {
+  color: #f39c12;
+}
+
+.playoff-bracket {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  
+  h3 {
+    margin: 0 0 1rem;
+    font-size: 1rem;
+  }
+  
+  .bracket-matches {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .bracket-match {
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 8px;
+    border-left: 3px solid #444;
+    
+    &.played { border-left-color: #2ecc71; }
+    &.final-match { 
+      border-left-color: #f39c12;
+      background: rgba(243, 156, 18, 0.06);
+    }
+    
+    .bracket-label {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .bracket-teams {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-top: 0.4rem;
+      
+      .team {
+        flex: 1;
+        font-size: 0.9rem;
+        
+        &:last-child { text-align: right; }
+        &.winner { color: #2ecc71; font-weight: 700; }
+        &.player-team { 
+          color: #3b82f6; 
+          font-weight: 700;
+          text-decoration: underline;
+        }
+      }
+      
+      .score {
+        font-weight: 700;
+        font-size: 1rem;
+        color: var(--color-warning);
+        flex-shrink: 0;
+        min-width: 70px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.playoff-result {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  
+  &.victory {
+    background: rgba(46, 204, 113, 0.1);
+    border: 1px solid rgba(46, 204, 113, 0.3);
+  }
+  &.defeat {
+    background: rgba(231, 76, 60, 0.1);
+    border: 1px solid rgba(231, 76, 60, 0.3);
+  }
+  
+  h3 { margin: 0 0 0.75rem; font-size: 1.3rem; }
+  
+  .result-score {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0.5rem 0;
+  }
+  
+  .result-extra {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0.25rem 0;
+  }
+  
+  .promotion-msg {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #2ecc71;
+    margin: 1rem 0 0;
+  }
+  
+  .elimination-msg {
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0.5rem 0 0;
+  }
+}
+
+.playoff-next-match {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 12px;
+  text-align: center;
+  
+  h3 { margin: 0 0 0.75rem; }
+  
+  .next-match-info {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+  }
+  
+  .next-match-venue {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0.25rem 0 1rem;
+  }
+  
+  .btn-play-match {
+    background: linear-gradient(135deg, #f39c12, #e67e22) !important;
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+  }
+}
+
+.playoff-completed {
+  margin: 1.5rem 0;
+  text-align: center;
+  
+  .promotion-msg {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #2ecc71;
+    margin: 0.75rem 0;
+  }
+}
+
+.promotion-celebration {
+  background: rgba(46, 204, 113, 0.12) !important;
+  border-color: rgba(46, 204, 113, 0.3) !important;
+}
+
+.playoff-summary-box {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: rgba(243, 156, 18, 0.06);
+  border: 1px solid rgba(243, 156, 18, 0.2);
+  border-radius: 12px;
+  
+  h3 { margin: 0 0 0.75rem; font-size: 1rem; }
+  
+  .playoff-summary-results {
+    p {
+      margin: 0.3rem 0;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    .final-result { 
+      color: #fff; 
+      margin-top: 0.5rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .playoff-winner { color: #2ecc71; font-size: 0.95rem; }
   }
 }

@@ -303,16 +303,30 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .save-slots {
-    padding: 16px;
+    padding: 12px;
+    overflow-x: hidden;
 
-    &__header h2 {
-      font-size: 22px;
+    &__header {
+      margin-bottom: 24px;
+
+      h2 {
+        font-size: 20px;
+      }
     }
 
     &__grid {
       grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    &__slot-content {
+      padding: 12px;
+    }
+
+    &__stats {
+      padding: 10px;
     }
   }
 }

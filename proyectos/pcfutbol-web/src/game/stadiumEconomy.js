@@ -102,30 +102,61 @@ export function calculateRivalAttraction(rivalTeam, rivalPosition, leagueId) {
 }
 
 /**
- * Calcula el factor de precio (elasticidad de demanda)
- * Precio bajo = más demanda, precio alto = menos demanda
+ * Calcula el "precio justo" de entrada según el contexto del equipo
+ * Un equipo top en primera puede cobrar €80-120, uno de segunda €20-40
+ * @param {Object} params
+ * @returns {number} Precio justo de referencia
  */
-export function calculatePriceFactor(ticketPrice, rivalFactor = 1.0) {
-  const { referencePrice, elasticity } = PRICE_CONFIG;
+export function calculateFairPrice({
+  teamOverall = 70,
+  teamReputation = 70,
+  leaguePosition = 10,
+  totalTeams = 20,
+  division = 1  // 1 = primera, 2 = segunda, etc.
+} = {}) {
+  // Base por división: primera ~€50, segunda ~€25, tercera ~€15
+  const divisionBase = division === 1 ? 50 : division === 2 ? 25 : 15;
   
-  // Factor base (suavizado)
-  // €15 → factor ~1.3 (más gente)
-  // €30 → factor 1.0 (normal)
-  // €60 → factor ~0.45 (menos gente)
-  // €100 → factor ~0.15
-  const priceRatio = ticketPrice / referencePrice;
+  // Factor overall: equipo de 60 OVR → ×0.7, 75 → ×1.0, 90 → ×1.5
+  const overallFactor = 0.4 + (teamOverall / 100) * 1.1;
+  
+  // Factor reputación: club histórico puede cobrar más
+  const reputationFactor = 0.7 + (teamReputation / 100) * 0.6;
+  
+  // Factor posición: primero → ×1.3, mitad → ×1.0, último → ×0.7
+  const positionRatio = (totalTeams - leaguePosition + 1) / totalTeams;
+  const positionFactor = 0.7 + (positionRatio * 0.6);
+  
+  const fairPrice = divisionBase * overallFactor * reputationFactor * positionFactor;
+  
+  // Clamp entre €10 y €150
+  return Math.round(Math.max(10, Math.min(150, fairPrice)));
+}
+
+/**
+ * Calcula el factor de precio (elasticidad de demanda)
+ * El precio se evalúa RELATIVO al precio justo del equipo
+ * Real Madrid 1º puede cobrar €120 sin problema, equipo de segunda no
+ */
+export function calculatePriceFactor(ticketPrice, rivalFactor = 1.0, fairPrice = null) {
+  const { elasticity } = PRICE_CONFIG;
+  
+  // Si no se pasa fairPrice, usar el referencePrice fijo como fallback
+  const refPrice = fairPrice || PRICE_CONFIG.referencePrice;
+  
+  const priceRatio = ticketPrice / refPrice;
   
   let factor;
-  if (ticketPrice <= referencePrice) {
-    // Precios bajos: bonificación moderada
+  if (ticketPrice <= refPrice) {
+    // Precios por debajo del justo: bonificación moderada
     factor = 1 + (1 - priceRatio) * elasticity * 0.5;
   } else {
-    // Precios altos: penalización exponencial (suavizada)
-    factor = Math.pow(referencePrice / ticketPrice, 1.4);
+    // Precios por encima del justo: penalización exponencial
+    factor = Math.pow(refPrice / ticketPrice, 1.4);
   }
   
   // Los partidos atractivos aguantan mejor precios altos
-  if (rivalFactor > 1.3 && ticketPrice > referencePrice) {
+  if (rivalFactor > 1.3 && ticketPrice > refPrice) {
     const elasticityReduction = (rivalFactor - 1.3) * 0.25;
     factor = Math.min(factor + elasticityReduction, 0.95);
   }
@@ -221,7 +252,10 @@ export function calculateMatchAttendance({
   morale,
   leagueId,
   homeTeamId,
-  awayTeamId
+  awayTeamId,
+  teamOverall = 70,
+  teamReputation = 70,
+  division = 1
 }) {
   // Capacidad disponible para entradas sueltas
   const availableSeats = stadiumCapacity - seasonTickets;
@@ -229,9 +263,12 @@ export function calculateMatchAttendance({
   // Demanda base: 55% de asientos disponibles (configurable)
   const baseDemand = availableSeats * PRICE_CONFIG.baseDemandRate;
   
+  // Precio justo dinámico según contexto del equipo
+  const fairPrice = calculateFairPrice({ teamOverall, teamReputation, leaguePosition: teamPosition, totalTeams, division });
+  
   // Calcular factores
   const rivalFactor = calculateRivalAttraction(rivalTeam, rivalPosition, leagueId);
-  const priceFactor = calculatePriceFactor(ticketPrice, rivalFactor);
+  const priceFactor = calculatePriceFactor(ticketPrice, rivalFactor, fairPrice);
   const performanceFactor = calculatePerformanceFactor(teamPosition, totalTeams, streak, morale);
   const derbyBonus = isDerby(homeTeamId, awayTeamId) ? 1.3 : 1.0;
   
@@ -346,7 +383,10 @@ export function predictAttendance({
   morale,
   leagueId,
   homeTeamId,
-  awayTeamId
+  awayTeamId,
+  teamOverall = 70,
+  teamReputation = 70,
+  division = 1
 }) {
   const result = calculateMatchAttendance({
     stadiumCapacity,
@@ -360,7 +400,10 @@ export function predictAttendance({
     morale,
     leagueId,
     homeTeamId,
-    awayTeamId
+    awayTeamId,
+    teamOverall,
+    teamReputation,
+    division
   });
   
   // Añadir rangos de predicción (±10%)

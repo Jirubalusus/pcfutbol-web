@@ -1,6 +1,7 @@
 // League Engine v2.0 - Motor de simulación realista
 import { getEffectiveOverall, calculateRoleBonus } from './playerRoles';
 import { simulateMatchV2, calculateMatchStrength, getTeamProfile } from './matchSimulationV2';
+import { getPositionFit, getSlotPosition } from './positionSystem';
 
 // ============== CONFIGURACIÓN DE FORMACIONES ==============
 export const FORMATIONS = {
@@ -62,12 +63,35 @@ export const FORMATIONS = {
 
 // ============== TÁCTICAS ==============
 export const TACTICS = {
-  balanced: { name: 'Equilibrado', attack: 1.0, defense: 1.0, fatigue: 1.0 },
-  attacking: { name: 'Ofensivo', attack: 1.2, defense: 0.8, fatigue: 1.1 },
-  defensive: { name: 'Defensivo', attack: 0.75, defense: 1.25, fatigue: 0.9 },
-  possession: { name: 'Posesión', attack: 0.9, defense: 1.0, fatigue: 0.95, possession: 1.15 },
-  counter: { name: 'Contraataque', attack: 1.1, defense: 1.05, fatigue: 1.05, counter: 1.3 },
-  highPress: { name: 'Presión alta', attack: 1.15, defense: 0.9, fatigue: 1.25 }
+  balanced:   { name: 'Equilibrado',    attack: 1.0,  defense: 1.0,  fatigue: 1.0,  possession: 1.0  },
+  attacking:  { name: 'Ofensivo',       attack: 1.35, defense: 0.7,  fatigue: 1.15, possession: 1.05 },
+  defensive:  { name: 'Defensivo',      attack: 0.6,  defense: 1.4,  fatigue: 0.85, possession: 0.85 },
+  possession: { name: 'Posesión',       attack: 0.95, defense: 1.1,  fatigue: 0.9,  possession: 1.3  },
+  counter:    { name: 'Contraataque',   attack: 1.2,  defense: 1.15, fatigue: 1.1,  possession: 0.75, counter: 1.5 },
+  highPress:  { name: 'Presión alta',   attack: 1.25, defense: 0.85, fatigue: 1.3,  possession: 1.1  }
+};
+
+// Matchups tácticos: cada táctica tiene ventajas y desventajas contra otras
+// Bonus de rating que se aplica si tu táctica "gana" contra la del rival
+export const TACTICAL_MATCHUPS = {
+  counter:    { strongVs: ['attacking', 'highPress'], weakVs: ['possession', 'defensive'] },
+  possession: { strongVs: ['counter', 'defensive'],   weakVs: ['highPress'] },
+  attacking:  { strongVs: ['defensive', 'balanced'],   weakVs: ['counter', 'highPress'] },
+  defensive:  { strongVs: ['balanced'],                weakVs: ['possession', 'attacking'] },
+  highPress:  { strongVs: ['possession', 'balanced'],  weakVs: ['counter'] },
+  balanced:   { strongVs: [],                          weakVs: [] }
+};
+
+/**
+ * Calcular bonus/penalización por matchup táctico
+ * @returns number entre -6 y +6
+ */
+export function getTacticalMatchupBonus(myTactic, opponentTactic) {
+  const matchup = TACTICAL_MATCHUPS[myTactic];
+  if (!matchup) return 0;
+  if (matchup.strongVs.includes(opponentTactic)) return 6;  // Ventaja táctica
+  if (matchup.weakVs.includes(opponentTactic)) return -4;   // Desventaja táctica
+  return 0;
 };
 
 // ============== INICIALIZACIÓN DE LIGA ==============
@@ -157,7 +181,7 @@ export function generateFixtures(teams) {
 }
 
 // ============== CÁLCULO DE FUERZA DEL EQUIPO ==============
-export function calculateTeamStrength(team, formation = '4-3-3', tactic = 'balanced', teamMorale = 70) {
+export function calculateTeamStrength(team, formation = '4-3-3', tactic = 'balanced', teamMorale = 70, customLineup = null) {
   // Si team es undefined o no tiene players, devolver valores por defecto
   if (!team || !team.players || team.players.length === 0) {
     return { overall: team?.reputation || 50, attack: 50, midfield: 50, defense: 50, goalkeeper: 50, lineup: [] };
@@ -166,14 +190,40 @@ export function calculateTeamStrength(team, formation = '4-3-3', tactic = 'balan
   const formationData = FORMATIONS[formation] || FORMATIONS['4-3-3'];
   const tacticData = TACTICS[tactic] || TACTICS.balanced;
   
-  // Seleccionar mejores 11 según la formación
-  const lineup = selectBestLineup(team.players, formationData.positions);
+  // Usar lineup personalizado del jugador si se proporciona, si no auto-seleccionar
+  let lineup;
+  if (customLineup && Object.keys(customLineup).length >= 11) {
+    // Convertir {slotId: playerObj} → array de jugadores con posición de juego
+    lineup = Object.entries(customLineup)
+      .filter(([_, p]) => p && p.name)
+      .map(([slotId, p]) => {
+        // Buscar datos actualizados del jugador en la plantilla (por si cambió overall, lesión, etc.)
+        const freshPlayer = team.players.find(tp => tp.name === p.name) || p;
+        // Extraer posición del slotId (ej: "CB1" → "CB", "ST2" → "ST")  
+        const playingPos = getSlotPosition(slotId) || p.position;
+        return { ...freshPlayer, playingPosition: playingPos };
+      })
+      .filter(p => !p.injured && !p.suspended); // Excluir lesionados y sancionados
+    
+    // Si el lineup custom tiene menos de 11 sanos, rellenar con auto-selección
+    if (lineup.length < 11) {
+      const usedNames = new Set(lineup.map(p => p.name));
+      const remaining = selectBestLineup(
+        team.players.filter(p => !usedNames.has(p.name)),
+        formationData.positions.slice(lineup.length)
+      );
+      lineup = [...lineup, ...remaining];
+    }
+  } else {
+    lineup = selectBestLineup(team.players, formationData.positions);
+  }
   
-  // Calcular fuerza por líneas
-  const gkPlayers = lineup.filter(p => p.position === 'GK');
-  const defPlayers = lineup.filter(p => ['CB', 'RB', 'LB'].includes(p.position));
-  const midPlayers = lineup.filter(p => ['CDM', 'CM', 'CAM', 'RM', 'LM'].includes(p.position));
-  const attPlayers = lineup.filter(p => ['ST', 'RW', 'LW', 'CF'].includes(p.position));
+  // Calcular fuerza por líneas (usar playingPosition = posición del slot en la formación)
+  const getLinePos = (p) => p.playingPosition || p.position;
+  const gkPlayers = lineup.filter(p => getLinePos(p) === 'GK');
+  const defPlayers = lineup.filter(p => ['CB', 'RB', 'LB'].includes(getLinePos(p)));
+  const midPlayers = lineup.filter(p => ['CDM', 'CM', 'CAM', 'RM', 'LM'].includes(getLinePos(p)));
+  const attPlayers = lineup.filter(p => ['ST', 'RW', 'LW', 'CF'].includes(getLinePos(p)));
   
   // MEDIA BASE (sin modificadores - para mostrar al usuario)
   const baseGoalkeeper = gkPlayers.length > 0 
@@ -249,7 +299,7 @@ export function calculateTeamStrength(team, formation = '4-3-3', tactic = 'balan
   };
 }
 
-// Rating efectivo considerando fitness, moral, lesiones Y ROLES
+// Rating efectivo considerando fitness, moral, lesiones, ROLES Y POSICIÓN
 function getEffectiveRating(player, tactic = 'balanced', teammates = [], teamMorale = 70) {
   // Penalización por lesión
   if (player.injured) return player.overall * 0.3;
@@ -257,6 +307,12 @@ function getEffectiveRating(player, tactic = 'balanced', teammates = [], teamMor
   // Usar el sistema de roles para calcular el overall efectivo
   // Esto incluye: bonus de rol según táctica, sinergias, moral y fitness
   let rating = getEffectiveOverall(player, tactic, teammates, teamMorale);
+  
+  // Penalización por jugar fuera de posición
+  if (player.playingPosition) {
+    const fit = getPositionFit(player.position, player.playingPosition);
+    rating *= fit.factor;
+  }
   
   // Penalización adicional por edad extrema
   if (player.age >= 34) rating *= 0.97;
@@ -270,7 +326,7 @@ function getEffectiveRating(player, tactic = 'balanced', teammates = [], teamMor
 
 // Seleccionar mejor 11 según posiciones requeridas
 function selectBestLineup(players, requiredPositions) {
-  const available = players.filter(p => !p.injured);
+  const available = players.filter(p => !p.injured && !p.suspended);
   const lineup = [];
   const used = new Set();
   
@@ -560,8 +616,8 @@ function simulateMatchMinuteByMinute(homeRating, awayRating, homeStrength, awayS
       }
     }
     
-    // Roja directa (muy rara)
-    if (Math.random() < 0.001 * intensity) {
+    // Roja directa (~1 cada 8-10 partidos por equipo)
+    if (Math.random() < 0.003 * intensity) {
       const isHome = Math.random() > 0.5;
       const team = isHome ? homeTeam : awayTeam;
       const player = selectCardPlayer(team);

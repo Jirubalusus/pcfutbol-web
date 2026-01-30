@@ -270,12 +270,13 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .auth {
-    padding: 16px;
+    padding: 12px;
 
     &__card {
-      padding: 24px;
+      padding: 20px;
+      max-width: calc(100vw - 24px);
     }
 
     &__header h2 {
@@ -284,6 +285,12 @@
 
     &__icon {
       font-size: 40px;
+    }
+
+    &__google,
+    &__guest,
+    &__btn {
+      min-height: 48px;
     }
   }
 }

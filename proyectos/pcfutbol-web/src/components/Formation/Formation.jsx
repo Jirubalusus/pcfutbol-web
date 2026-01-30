@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useGame } from '../../context/GameContext';
 import { useToast } from '../Toast/Toast';
 import { FORMATIONS, TACTICS, calculateTeamStrength } from '../../game/leagueEngine';
+import { getPositionFit, getSlotPosition, FIT_COLORS } from '../../game/positionSystem';
 import { Shield, Scale, Swords, Target, Zap, CheckCircle2, Settings, Dumbbell, Heart, AlertTriangle, Lock, Building2, TrendingUp, BarChart3, Activity, X, Check } from 'lucide-react';
 import './Formation.scss';
 
@@ -163,7 +164,6 @@ export default function Formation() {
   const [activeTab, setActiveTab] = useState('titulares');
   
   // Modales de gestión
-  const [showTrainingModal, setShowTrainingModal] = useState(false);
   const [showInjuredModal, setShowInjuredModal] = useState(false);
   const [showStatsModal, setShowStatsModal] = useState(false);
   const [showTacticModal, setShowTacticModal] = useState(false);
@@ -228,8 +228,8 @@ export default function Formation() {
           noConvocados.push(playerWithNumber);
         }
       } else {
-        // Auto: primeros 7 no lesionados
-        if (!player.injured && convocados.length < 7) {
+        // Auto: primeros 5 no lesionados como suplentes (estilo PC Fútbol 5.0)
+        if (!player.injured && convocados.length < 5) {
           convocados.push(playerWithNumber);
         } else {
           noConvocados.push(playerWithNumber);
@@ -237,13 +237,33 @@ export default function Formation() {
       }
     });
     
-    // Ordenar TODAS las categorías por posición (estilo PC Fútbol)
-    titulares.sort(sortByPosition);
+    // Titulares: ordenar por SLOT de la formación (GK → DEF → MED → DEL fijo)
+    // Así el orden refleja la formación elegida, no la posición natural del jugador
+    const slotOrder = {};
+    formationPositions.forEach((pos, idx) => { slotOrder[pos.id] = idx; });
+    const lineupEntries = Object.entries(lineup);
+    titulares.sort((a, b) => {
+      const slotA = lineupEntries.find(([_, p]) => p?.name === a.name)?.[0];
+      const slotB = lineupEntries.find(([_, p]) => p?.name === b.name)?.[0];
+      return (slotOrder[slotA] ?? 99) - (slotOrder[slotB] ?? 99);
+    });
+    // Suplentes y no convocados: ordenar por posición natural
     convocados.sort(sortByPosition);
     noConvocados.sort(sortByPosition);
     
     return { titulares, convocados, noConvocados };
   }, [players, lineup, manualConvocados]);
+  
+  // Mapa playerName → slotId para saber en qué slot juega cada titular
+  const playerSlotMap = useMemo(() => {
+    const map = {};
+    Object.entries(lineup).forEach(([slotId, player]) => {
+      if (player?.name) {
+        map[player.name] = slotId;
+      }
+    });
+    return map;
+  }, [lineup]);
   
   // Cargar lineup del estado global al montar
   useEffect(() => {
@@ -264,14 +284,17 @@ export default function Formation() {
     const used = new Set();
     
     formationPositions.forEach(pos => {
-      const compat = POSITION_COMPAT[pos.id] || [];
+      const slotPos = getSlotPosition(pos.id);
       const best = players
-        .filter(p => !used.has(p.name) && !p.injured)
+        .filter(p => !used.has(p.name) && !p.injured && !p.suspended)
         .sort((a, b) => {
-          const aMatch = compat.includes(a.position) ? 1 : 0;
-          const bMatch = compat.includes(b.position) ? 1 : 0;
-          if (bMatch !== aMatch) return bMatch - aMatch;
-          return b.overall - a.overall;
+          // Usar compatibilidad gradual (factor 0.0-1.0) para elegir mejor jugador
+          const fitA = getPositionFit(a.position, slotPos);
+          const fitB = getPositionFit(b.position, slotPos);
+          // Puntuación: factor de posición × overall (así un 80 en posición perfecta > 85 fuera de posición)
+          const scoreA = fitA.factor * a.overall;
+          const scoreB = fitB.factor * b.overall;
+          return scoreB - scoreA;
         })[0];
       
       if (best) {
@@ -330,6 +353,16 @@ export default function Formation() {
     const slot1 = Object.entries(lineup).find(([_, p]) => p?.name === player1.name)?.[0];
     const slot2 = Object.entries(lineup).find(([_, p]) => p?.name === player2.name)?.[0];
     
+    // Bloquear si un sancionado/lesionado intenta entrar a la alineación
+    if (slot1 && !slot2 && (player2.suspended || player2.injured)) {
+      setSelectedPlayer(null);
+      return;
+    }
+    if (!slot1 && slot2 && (player1.suspended || player1.injured)) {
+      setSelectedPlayer(null);
+      return;
+    }
+    
     const newLineup = { ...lineup };
     
     if (slot1 && slot2) {
@@ -339,31 +372,43 @@ export default function Formation() {
     } else if (slot1 && !slot2) {
       // Solo player1 en lineup → player2 entra, player1 sale
       newLineup[slot1] = player2;
-      // Player1 (que sale) debe ir a convocados, player2 (que entra) sale de convocados
+      // Player1 sale del campo. Debe ir adonde estaba player2 (convocado o no convocado).
       const newConvocados = manualConvocados.length > 0 
         ? [...manualConvocados] 
         : categorizedPlayers.convocados.map(p => p.name);
-      // Añadir player1 a convocados (el que sale del campo)
-      if (!newConvocados.includes(player1.name)) {
-        newConvocados.push(player1.name);
+      const player2WasConvocado = newConvocados.includes(player2.name);
+      
+      if (player2WasConvocado) {
+        // Player2 era convocado → player1 hereda su puesto como convocado
+        // Quitar player2 de convocados (entra al campo) y añadir player1
+        const finalConvocados = newConvocados.filter(n => n !== player2.name);
+        finalConvocados.push(player1.name);
+        dispatch({ type: 'SET_CONVOCADOS', payload: finalConvocados });
+      } else {
+        // Player2 era no-convocado → player1 va a no-convocados
+        // Solo quitar player2 de convocados (por si acaso) sin añadir player1
+        const finalConvocados = newConvocados.filter(n => n !== player2.name && n !== player1.name);
+        dispatch({ type: 'SET_CONVOCADOS', payload: finalConvocados });
       }
-      // Quitar player2 de convocados (el que entra al campo)
-      const finalConvocados = newConvocados.filter(n => n !== player2.name);
-      dispatch({ type: 'SET_CONVOCADOS', payload: finalConvocados });
     } else if (!slot1 && slot2) {
       // Solo player2 en lineup → player1 entra, player2 sale
       newLineup[slot2] = player1;
-      // Player2 (que sale) debe ir a convocados, player1 (que entra) sale de convocados
+      // Player2 sale del campo. Debe ir adonde estaba player1 (convocado o no convocado).
       const newConvocados = manualConvocados.length > 0 
         ? [...manualConvocados] 
         : categorizedPlayers.convocados.map(p => p.name);
-      // Añadir player2 a convocados (el que sale del campo)
-      if (!newConvocados.includes(player2.name)) {
-        newConvocados.push(player2.name);
+      const player1WasConvocado = newConvocados.includes(player1.name);
+      
+      if (player1WasConvocado) {
+        // Player1 era convocado → player2 hereda su puesto como convocado
+        const finalConvocados = newConvocados.filter(n => n !== player1.name);
+        finalConvocados.push(player2.name);
+        dispatch({ type: 'SET_CONVOCADOS', payload: finalConvocados });
+      } else {
+        // Player1 era no-convocado → player2 va a no-convocados
+        const finalConvocados = newConvocados.filter(n => n !== player1.name && n !== player2.name);
+        dispatch({ type: 'SET_CONVOCADOS', payload: finalConvocados });
       }
-      // Quitar player1 de convocados (el que entra al campo)
-      const finalConvocados = newConvocados.filter(n => n !== player1.name);
-      dispatch({ type: 'SET_CONVOCADOS', payload: finalConvocados });
     } else {
       // NINGUNO en lineup → intercambiar entre convocados/no convocados
       const isPlayer1Convocado = manualConvocados.includes(player1.name) || 
@@ -421,6 +466,7 @@ export default function Formation() {
   };
   
   // Determinar si dos jugadores son compatibles para intercambio (misma zona del campo)
+  // Si player1 (el seleccionado) es titular, usa su posición en la formación, no la natural
   const isCompatibleSwap = (player1, player2) => {
     if (!player1 || !player2) return false;
     if (player1.name === player2.name) return false;
@@ -439,7 +485,15 @@ export default function Formation() {
       return 'MID'; // default
     };
     
-    return getGroup(player1.position) === getGroup(player2.position);
+    // Si player1 está en la alineación, usar su posición en la formación
+    const slot1 = playerSlotMap[player1.name];
+    const pos1 = slot1 ? getSlotPosition(slot1) : player1.position;
+    
+    // Si player2 está en la alineación, usar su posición en la formación
+    const slot2 = playerSlotMap[player2.name];
+    const pos2 = slot2 ? getSlotPosition(slot2) : player2.position;
+    
+    return getGroup(pos1) === getGroup(pos2);
   };
   
   const getPositionColor = (pos) => {
@@ -520,6 +574,7 @@ export default function Formation() {
             <div className="table-header titulares">
               <span className="col-num">Nº</span>
               <span className="col-name">JUGADOR</span>
+              <span className="col-status"></span>
               {PLAYER_ATTRIBUTES.map(attr => (
                 <span key={attr.key} className="col-attr">{attr.short}</span>
               ))}
@@ -530,30 +585,44 @@ export default function Formation() {
               {categorizedPlayers.titulares.map((player, idx) => {
                 const isSelected = selectedPlayer?.name === player.name;
                 const isCompatible = selectedPlayer && !isSelected && isCompatibleSwap(selectedPlayer, player);
+                const slotId = playerSlotMap[player.name];
+                const slotPos = slotId ? getSlotPosition(slotId) : null;
+                const fit = slotPos ? getPositionFit(player.position, slotPos) : null;
+                // Swap compatibility: usar posición de formación del seleccionado si es titular
+                const selectedSlotId = selectedPlayer ? playerSlotMap[selectedPlayer.name] : null;
+                const selectedEffectivePos = selectedSlotId ? getSlotPosition(selectedSlotId) : selectedPlayer?.position;
+                const swapFit = isCompatible ? getPositionFit(player.position, selectedEffectivePos) : null;
+                const swapClass = swapFit ? (swapFit.level === 'perfect' ? 'swap-perfect' : swapFit.level === 'good' ? 'swap-good' : 'swap-decent') : '';
                 return (
                 <div 
                   key={player.name}
-                  className={`table-row titulares ${getPositionClass(player.position)} ${isSelected ? 'selected' : ''} ${isCompatible ? 'compatible-swap' : ''} ${player.injured ? 'injured' : ''}`}
+                  className={`table-row titulares ${getPositionClass(player.position)} ${isSelected ? 'selected' : ''} ${isCompatible ? `compatible-swap ${swapClass}` : ''} ${player.injured ? 'injured' : ''} ${player.suspended ? (player.suspensionType === 'red' ? 'suspended-red' : 'suspended-yellow') : ''}`}
                   onClick={() => handleRowClick(player)}
                 >
                   <span className="col-num">{player.number}</span>
-                  <span className="col-name">
-                    {player.injured && <span className="injury-icon">+</span>}
-                    {player.name}
+                  <span className="col-name">{player.name}</span>
+                  <span className="col-status">
+                    {player.injured && player.injuryWeeksLeft > 0 && <span className="status-icon injury">🏥{player.injuryWeeksLeft}s</span>}
+                    {player.suspended && player.suspensionType === 'red' && <span className="status-icon red">🟥{player.suspensionMatches}p</span>}
+                    {player.suspended && player.suspensionType === 'double_yellow' && <span className="status-icon red">🟨🟨{player.suspensionMatches}p</span>}
+                    {player.suspended && player.suspensionType === 'yellow' && <span className="status-icon yellow">🟨×5</span>}
+                    {!player.suspended && !player.injured && (player.yellowCards || 0) >= 4 && <span className="status-icon warning">⚠️</span>}
                   </span>
-                  {PLAYER_ATTRIBUTES.map(attr => (
-                    <span 
-                      key={attr.key} 
-                      className={`col-attr ${
-                        (player[attr.key] || player.overall) >= 80 ? 'high' : 
-                        (player[attr.key] || player.overall) <= 60 ? 'low' : ''
-                      }`}
-                    >
-                      {player[attr.key] || player.overall}
-                    </span>
-                  ))}
-                  <span className="col-pos" style={getPositionStyle(player.position)}>
-                    {player.position}
+                  {PLAYER_ATTRIBUTES.map(attr => {
+                    const adjOvr = fit ? Math.round(player.overall * fit.factor) : player.overall;
+                    const fitClass = fit ? `fit-${fit.level}` : '';
+                    return (
+                      <span 
+                        key={attr.key} 
+                        className={`col-attr ${fitClass || (adjOvr >= 80 ? 'high' : adjOvr <= 60 ? 'low' : '')}`}
+                        title={fit && fit.level !== 'perfect' ? `${player.overall} → ${adjOvr} (${player.position} jugando de ${slotPos})` : ''}
+                      >
+                        {adjOvr}
+                      </span>
+                    );
+                  })}
+                  <span className="col-pos" style={getPositionStyle(slotPos || player.position)}>
+                    {slotPos || player.position}
                   </span>
                 </div>
               )})}
@@ -567,16 +636,25 @@ export default function Formation() {
               {categorizedPlayers.convocados.map((player, idx) => {
                 const isSelected = selectedPlayer?.name === player.name;
                 const isCompatible = selectedPlayer && !isSelected && isCompatibleSwap(selectedPlayer, player);
+                // Swap compatibility: usar posición de formación del seleccionado si es titular
+                const selectedSlotIdConv = selectedPlayer ? playerSlotMap[selectedPlayer.name] : null;
+                const selectedEffectivePosConv = selectedSlotIdConv ? getSlotPosition(selectedSlotIdConv) : selectedPlayer?.position;
+                const swapFit = isCompatible ? getPositionFit(player.position, selectedEffectivePosConv) : null;
+                const swapClass = swapFit ? (swapFit.level === 'perfect' ? 'swap-perfect' : swapFit.level === 'good' ? 'swap-good' : 'swap-decent') : '';
                 return (
                 <div 
                   key={player.name}
-                  className={`table-row convocados ${getPositionClass(player.position)} ${isSelected ? 'selected' : ''} ${isCompatible ? 'compatible-swap' : ''} ${player.injured ? 'injured' : ''}`}
+                  className={`table-row convocados ${getPositionClass(player.position)} ${isSelected ? 'selected' : ''} ${isCompatible ? `compatible-swap ${swapClass}` : ''} ${player.injured ? 'injured' : ''} ${player.suspended ? (player.suspensionType === 'red' ? 'suspended-red' : 'suspended-yellow') : ''}`}
                   onClick={() => handleRowClick(player)}
                 >
                   <span className="col-num">{player.number}</span>
-                  <span className="col-name">
-                    {player.injured && <span className="injury-icon">+</span>}
-                    {player.name}
+                  <span className="col-name">{player.name}</span>
+                  <span className="col-status">
+                    {player.injured && player.injuryWeeksLeft > 0 && <span className="status-icon injury">🏥{player.injuryWeeksLeft}s</span>}
+                    {player.suspended && player.suspensionType === 'red' && <span className="status-icon red">🟥{player.suspensionMatches}p</span>}
+                    {player.suspended && player.suspensionType === 'double_yellow' && <span className="status-icon red">🟨🟨{player.suspensionMatches}p</span>}
+                    {player.suspended && player.suspensionType === 'yellow' && <span className="status-icon yellow">🟨×5</span>}
+                    {!player.suspended && !player.injured && (player.yellowCards || 0) >= 4 && <span className="status-icon warning">⚠️</span>}
                   </span>
                   {PLAYER_ATTRIBUTES.map(attr => (
                     <span 
@@ -599,21 +677,30 @@ export default function Formation() {
           
           {/* NO CONVOCADOS */}
           <div className="pcf-section-header noconvocados">JUGADORES NO CONVOCADOS</div>
-          <div className="pcf-table">
-            <div className="table-body">
+          <div className="pcf-table pcf-table--noconvocados">
+            <div className="table-body table-body--scroll">
               {categorizedPlayers.noConvocados.map((player, idx) => {
                 const isSelected = selectedPlayer?.name === player.name;
                 const isCompatible = selectedPlayer && !isSelected && isCompatibleSwap(selectedPlayer, player);
+                // Swap compatibility: usar posición de formación del seleccionado si es titular
+                const selectedSlotIdNC = selectedPlayer ? playerSlotMap[selectedPlayer.name] : null;
+                const selectedEffectivePosNC = selectedSlotIdNC ? getSlotPosition(selectedSlotIdNC) : selectedPlayer?.position;
+                const swapFit = isCompatible ? getPositionFit(player.position, selectedEffectivePosNC) : null;
+                const swapClass = swapFit ? (swapFit.level === 'perfect' ? 'swap-perfect' : swapFit.level === 'good' ? 'swap-good' : 'swap-decent') : '';
                 return (
                 <div 
                   key={player.name}
-                  className={`table-row noconvocados ${getPositionClass(player.position)} ${isSelected ? 'selected' : ''} ${isCompatible ? 'compatible-swap' : ''} ${player.injured ? 'injured' : ''}`}
+                  className={`table-row noconvocados ${getPositionClass(player.position)} ${isSelected ? 'selected' : ''} ${isCompatible ? `compatible-swap ${swapClass}` : ''} ${player.injured ? 'injured' : ''} ${player.suspended ? (player.suspensionType === 'red' ? 'suspended-red' : 'suspended-yellow') : ''}`}
                   onClick={() => handleRowClick(player)}
                 >
                   <span className="col-num">{player.number}</span>
-                  <span className="col-name">
-                    {player.injured && <span className="injury-icon">+</span>}
-                    {player.name}
+                  <span className="col-name">{player.name}</span>
+                  <span className="col-status">
+                    {player.injured && player.injuryWeeksLeft > 0 && <span className="status-icon injury">🏥{player.injuryWeeksLeft}s</span>}
+                    {player.suspended && player.suspensionType === 'red' && <span className="status-icon red">🟥{player.suspensionMatches}p</span>}
+                    {player.suspended && player.suspensionType === 'double_yellow' && <span className="status-icon red">🟨🟨{player.suspensionMatches}p</span>}
+                    {player.suspended && player.suspensionType === 'yellow' && <span className="status-icon yellow">🟨×5</span>}
+                    {!player.suspended && !player.injured && (player.yellowCards || 0) >= 4 && <span className="status-icon warning">⚠️</span>}
                   </span>
                   {PLAYER_ATTRIBUTES.map(attr => (
                     <span 
@@ -648,6 +735,10 @@ export default function Formation() {
             
             {formationPositions.map(pos => {
               const player = lineup[pos.id];
+              const slotPos = getSlotPosition(pos.id);
+              const fit = player ? getPositionFit(player.position, slotPos) : null;
+              const adjOvr = player && fit ? Math.round(player.overall * fit.factor) : player?.overall;
+              const borderColor = fit ? FIT_COLORS[fit.level] : '#fff';
               return (
                 <div
                   key={pos.id}
@@ -656,8 +747,8 @@ export default function Formation() {
                   onClick={() => handleSlotClick(pos.id)}
                 >
                   {player ? (
-                    <div className="player-dot" style={{ background: getPositionColor(player.position) }}>
-                      <span className="ovr">{player.overall}</span>
+                    <div className="player-dot" style={{ background: getPositionColor(player.position), borderColor }}>
+                      <span className="ovr">{adjOvr}</span>
                     </div>
                   ) : (
                     <div className="empty-dot">
@@ -715,7 +806,6 @@ export default function Formation() {
           
           {/* BOTONES */}
           <div className="pcf-buttons">
-            <button className="pcf-btn" onClick={() => setShowTrainingModal(true)}><Dumbbell size={16} /> ENTRENAMIENTO</button>
             <button className="pcf-btn" onClick={() => setShowInjuredModal(true)}><Heart size={16} /> LESIONADOS</button>
             <button className="pcf-btn" onClick={() => setShowStatsModal(true)}><BarChart3 size={16} /> ESTADÍSTICAS</button>
             <button className="pcf-btn" onClick={() => setShowTacticModal(true)}><Target size={16} /> TÁCTICA</button>
@@ -733,21 +823,25 @@ export default function Formation() {
             </div>
             <div className="modal-body">
               {players
-                .filter(p => !p.injured)
+                .filter(p => !p.injured && !p.suspended)
                 .sort((a, b) => {
-                  const compat = POSITION_COMPAT[selectedSlot] || [];
-                  const aMatch = compat.includes(a.position) ? 1 : 0;
-                  const bMatch = compat.includes(b.position) ? 1 : 0;
-                  if (bMatch !== aMatch) return bMatch - aMatch;
+                  const slotPos = getSlotPosition(selectedSlot);
+                  const fitA = getPositionFit(a.position, slotPos);
+                  const fitB = getPositionFit(b.position, slotPos);
+                  if (fitB.factor !== fitA.factor) return fitB.factor - fitA.factor;
                   return b.overall - a.overall;
                 })
                 .map(player => {
-                  const isCompat = POSITION_COMPAT[selectedSlot]?.includes(player.position);
+                  const slotPos = getSlotPosition(selectedSlot);
+                  const fit = getPositionFit(player.position, slotPos);
+                  const fitClass = fit.level === 'perfect' ? 'fit-perfect' :
+                                   fit.level === 'good' ? 'fit-good' :
+                                   fit.level === 'decent' ? 'fit-decent' : '';
                   const isInLineup = Object.values(lineup).some(p => p?.name === player.name);
                   return (
                     <div 
                       key={player.name}
-                      className={`modal-player ${isCompat ? 'compatible' : ''} ${isInLineup ? 'in-lineup' : ''}`}
+                      className={`modal-player ${fitClass} ${isInLineup ? 'in-lineup' : ''}`}
                       onClick={() => handlePlayerSelect(player)}
                     >
                       <span className="pos" style={{ color: getPositionColor(player.position) }}>
@@ -755,24 +849,14 @@ export default function Formation() {
                       </span>
                       <span className="name">{player.name}</span>
                       <span className="ovr">{player.overall}</span>
-                      {isCompat && <span className="badge">✓</span>}
+                      {fit.level === 'perfect' && <span className="badge">✓</span>}
+                      {fit.level === 'good' && <span className="badge good">≈</span>}
                     </div>
                   );
                 })}
             </div>
           </div>
         </div>
-      )}
-      
-      {/* MODAL ENTRENAMIENTO */}
-      {showTrainingModal && (
-        <TrainingModal 
-          onClose={() => setShowTrainingModal(false)}
-          players={players}
-          facilities={state.facilities}
-          dispatch={dispatch}
-          currentIntensity={state.training?.intensity}
-        />
       )}
       
       {/* MODAL LESIONADOS */}
@@ -813,14 +897,15 @@ export default function Formation() {
               const newPositions = FORMATION_POSITIONS[newFormation] || FORMATION_POSITIONS['4-3-3'];
               
               newPositions.forEach(pos => {
-                const compat = POSITION_COMPAT[pos.id] || [];
+                const slotPos = getSlotPosition(pos.id);
                 const best = players
-                  .filter(p => !used.has(p.name) && !p.injured)
+                  .filter(p => !used.has(p.name) && !p.injured && !p.suspended)
                   .sort((a, b) => {
-                    const aMatch = compat.includes(a.position) ? 1 : 0;
-                    const bMatch = compat.includes(b.position) ? 1 : 0;
-                    if (bMatch !== aMatch) return bMatch - aMatch;
-                    return b.overall - a.overall;
+                    const fitA = getPositionFit(a.position, slotPos);
+                    const fitB = getPositionFit(b.position, slotPos);
+                    const scoreA = fitA.factor * a.overall;
+                    const scoreB = fitB.factor * b.overall;
+                    return scoreB - scoreA;
                   })[0];
                 
                 if (best) {
@@ -842,7 +927,9 @@ export default function Formation() {
 // ============================================================
 // MODAL: ENTRENAMIENTO (Rediseñado)
 // ============================================================
-function TrainingModal({ onClose, players, facilities, dispatch, currentIntensity }) {
+// TrainingModal removed — training system eliminated
+
+function _TrainingModal_REMOVED({ onClose, players, facilities, dispatch, currentIntensity }) {
   const toast = useToast();
   const [intensity, setIntensity] = useState(currentIntensity || 'normal');
   const isLocked = currentIntensity !== null && currentIntensity !== undefined;
@@ -1238,11 +1325,11 @@ function TacticModal({ onClose, currentTactic, currentFormation, dispatch, onFor
   ];
   
   const tacticOptions = [
-    { id: 'defensive', name: 'Defensiva', desc: 'Prioriza no encajar goles', iconType: 'shield', bonus: '+15% defensa, -10% ataque', color: '#0a84ff' },
-    { id: 'balanced', name: 'Equilibrada', desc: 'Balance ataque-defensa', iconType: 'scale', bonus: 'Sin modificadores', color: '#8e8e93' },
-    { id: 'attacking', name: 'Ofensiva', desc: 'Máxima presión adelante', iconType: 'swords', bonus: '+15% ataque, -10% defensa', color: '#ff453a' },
-    { id: 'possession', name: 'Posesión', desc: 'Control del balón', iconType: 'target', bonus: '+10% posesión, +5% pases', color: '#30d158' },
-    { id: 'counter', name: 'Contraataque', desc: 'Transiciones rápidas', iconType: 'zap', bonus: '+20% contraataque, -5% posesión', color: '#ff9f0a' },
+    { id: 'defensive', name: 'Defensiva', desc: 'Muro atrás, pocas ocasiones', iconType: 'shield', bonus: '+40% defensa, -40% ataque', detail: 'Fuerte vs Equilibrada · Débil vs Posesión y Ofensiva', color: '#0a84ff' },
+    { id: 'balanced', name: 'Equilibrada', desc: 'Sin sorpresas, sin riesgos', iconType: 'scale', bonus: 'Sin modificadores', detail: 'No tiene ventajas ni desventajas tácticas', color: '#8e8e93' },
+    { id: 'attacking', name: 'Ofensiva', desc: 'A por todas, riesgo alto', iconType: 'swords', bonus: '+35% ataque, -30% defensa', detail: 'Fuerte vs Defensiva · Débil vs Contra y Presión', color: '#ff453a' },
+    { id: 'possession', name: 'Posesión', desc: 'Dominar el balón y cansar', iconType: 'target', bonus: '+30% posesión, +10% defensa', detail: 'Fuerte vs Contra · Débil vs Presión alta', color: '#30d158' },
+    { id: 'counter', name: 'Contraataque', desc: 'Ceder balón, matar a la contra', iconType: 'zap', bonus: '+20% ataque, +15% defensa, -25% posesión', detail: 'Fuerte vs Ofensiva y Presión · Débil vs Posesión', color: '#ff9f0a' },
   ];
   
   const handleSave = () => {
@@ -1308,6 +1395,7 @@ function TacticModal({ onClose, currentTactic, currentFormation, dispatch, onFor
                     <span className="name">{t.name}</span>
                     <span className="desc">{t.desc}</span>
                     <span className="bonus">{t.bonus}</span>
+                    {t.detail && <span className="detail">{t.detail}</span>}
                   </div>
                   {tactic === t.id && <CheckCircle2 size={20} className="check" style={{ color: t.color }} />}
                 </div>

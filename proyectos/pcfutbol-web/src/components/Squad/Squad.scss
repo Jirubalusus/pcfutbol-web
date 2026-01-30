@@ -1,5 +1,10 @@
 .squad {
   padding-bottom: 1rem;
+  overflow-x: hidden;
+
+  @media (max-width: 768px) {
+    padding-bottom: 95px;
+  }
 
   // ==================
   // HEADER

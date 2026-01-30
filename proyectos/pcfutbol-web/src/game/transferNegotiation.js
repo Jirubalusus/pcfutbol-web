@@ -45,7 +45,7 @@ export const CLUB_TIERS = {
     wageMultiplier: 0.7,
     attractiveness: 0.4,
     teams: ['Rayo Vallecano', 'Getafe', 'Osasuna', 'Celta Vigo', 'Mallorca', 'Girona',
-            'Alavés', 'Las Palmas', 'Espanyol', 'Valladolid', 'Leganés',
+            'Alavés', 'Espanyol', 'Valladolid', 'Elche',
             'Bournemouth', 'Fulham', 'Wolves', 'Crystal Palace', 'Brentford',
             'Nottingham Forest', 'Everton', 'Leicester City']
   },
@@ -141,7 +141,7 @@ export const PLAYER_PERSONALITIES = {
 };
 
 /**
- * Asignar personalidad aleatoria a un jugador
+ * Asignar personalidad a un jugador (determinista basado en nombre)
  */
 export function assignPersonality(player) {
   const personalities = Object.keys(PLAYER_PERSONALITIES);
@@ -155,7 +155,11 @@ export function assignPersonality(player) {
   };
   
   const total = Object.values(weights).reduce((a, b) => a + b, 0);
-  let random = Math.random() * total;
+  
+  // Seeded random basado en el nombre del jugador para que sea consistente
+  const seed = (player.name || '').split('').reduce((acc, c, i) => acc + c.charCodeAt(0) * (i + 1), 0);
+  const x = Math.sin(seed * 9301 + 49297) * 10000;
+  let random = (x - Math.floor(x)) * total;
   
   for (const [personality, weight] of Object.entries(weights)) {
     random -= weight;
@@ -177,33 +181,9 @@ export function assignPersonality(player) {
  */
 export function evaluateClubOffer(offer, player, sellingTeam, buyingTeam) {
   const marketValue = calculateMarketValue(player);
-  const sellerTier = getClubTier(sellingTeam.name);
-  const buyerTier = getClubTier(buyingTeam.name);
-  const sellerProfile = TEAM_PROFILES[Object.keys(TEAM_PROFILES).find(k => 
-    TEAM_PROFILES[k].teams?.includes(sellingTeam.name)
-  ) || 'lowTable'];
   
-  // Factores que afectan el precio pedido
-  let askingMultiplier = 1.0;
-  
-  // Si el comprador es de tier inferior, piden más (no quieren vender ahí)
-  if (buyerTier < sellerTier) {
-    askingMultiplier += (sellerTier - buyerTier) * 0.15;
-  }
-  
-  // Si el jugador es titular/clave, piden más
-  const isKeyPlayer = player.overall >= 80 || player.role?.name === 'Capitán';
-  if (isKeyPlayer) {
-    askingMultiplier += 0.25;
-  }
-  
-  // Si tiene contrato largo, piden más
-  if ((player.contractYears || 2) >= 4) {
-    askingMultiplier += 0.15;
-  }
-  
-  // Reluctancia a vender del club
-  askingMultiplier += sellerProfile.sellReluctance * 0.2;
+  // Usar la dificultad del fichaje para calcular el precio real pedido
+  const { askingMultiplier } = calculateTransferDifficulty(player, sellingTeam, buyingTeam);
   
   const askingPrice = Math.round(marketValue * askingMultiplier);
   const offerRatio = offer.amount / askingPrice;
@@ -278,8 +258,8 @@ export function calculateRequiredSalary(player, currentTeam, newTeam) {
   
   // Si baja de tier, necesita compensación
   if (tierDiff > 0) {
-    // Cada tier de bajada = +30-50% más de salario
-    const tierPenalty = tierDiff * (0.3 + Math.random() * 0.2);
+    // Cada tier de bajada = +40% más de salario (determinista)
+    const tierPenalty = tierDiff * 0.4;
     salaryMultiplier += tierPenalty;
     
     // La personalidad afecta cuánto extra pide
@@ -802,61 +782,97 @@ export function getTierDescription(tier) {
 }
 
 /**
- * Calcular dificultad del fichaje (para UI)
+ * Calcular dificultad del fichaje (para UI Y negociación)
+ * 
+ * La dificultad es ÚNICA por jugador y determina:
+ * - Cuánto por encima del valor mostrado debes ofrecer
+ * - La probabilidad de contraoferta del club
+ * 
+ * askingMultiplier: 
+ *   1.0 = el valor mostrado es suficiente
+ *   1.3 = necesitas ofrecer ~30% más del valor
+ *   1.6+ = necesitas ofrecer mucho más
  */
 export function calculateTransferDifficulty(player, sellingTeam, buyingTeam) {
-  const sellerTier = getClubTier(sellingTeam.name);
-  const buyerTier = getClubTier(buyingTeam.name);
+  const sellerTier = getClubTier(sellingTeam?.name);
+  const buyerTier = getClubTier(buyingTeam?.name);
   const tierDiff = sellerTier - buyerTier;
   
-  let difficulty = 'Normal';
-  let color = '#ffd60a';
-  let percentage = 50;
+  // === BASE: tier difference ===
+  let score = 50; // 0-100, higher = easier
+  score -= tierDiff * 12; // cada tier de diferencia = -12 puntos
   
-  if (tierDiff >= 2) {
-    difficulty = 'Muy Difícil';
-    color = '#ff453a';
-    percentage = 15;
-  } else if (tierDiff === 1) {
-    difficulty = 'Difícil';
-    color = '#ff9f0a';
-    percentage = 35;
-  } else if (tierDiff === 0) {
-    difficulty = 'Normal';
-    color = '#ffd60a';
-    percentage = 55;
-  } else if (tierDiff === -1) {
-    difficulty = 'Fácil';
-    color = '#30d158';
-    percentage = 70;
-  } else {
-    difficulty = 'Muy Fácil';
-    color = '#30d158';
-    percentage = 85;
-  }
+  // === OVERALL del jugador ===
+  // Estrellas son más difíciles de fichar
+  if (player.overall >= 90) score -= 25;
+  else if (player.overall >= 85) score -= 15;
+  else if (player.overall >= 80) score -= 8;
+  else if (player.overall <= 70) score += 10;
+  else if (player.overall <= 65) score += 18;
   
-  // Ajustar por overall del jugador
-  if (player.overall >= 85) {
-    percentage -= 15;
-  } else if (player.overall >= 80) {
-    percentage -= 8;
-  }
+  // === EDAD ===
+  // Jóvenes promesas: más difícil (los clubes no venden)
+  // Veteranos: más fácil (los clubes aceptan antes)
+  if (player.age <= 21) score -= 10;
+  else if (player.age <= 23) score -= 5;
+  else if (player.age >= 33) score += 15;
+  else if (player.age >= 30) score += 8;
   
-  // Ajustar por personalidad si la conocemos
+  // === CONTRATO ===
+  // Contrato largo = difícil; corto = fácil
+  const contract = player.contractYears || player.contract || 2;
+  if (contract >= 4) score -= 10;
+  else if (contract >= 3) score -= 4;
+  else if (contract <= 1) score += 15;
+  
+  // === PERSONALIDAD ===
   const personality = PLAYER_PERSONALITIES[player.personality];
   if (personality) {
-    if (tierDiff > 0 && personality.name === 'Ambicioso') {
-      percentage -= 15;
-      difficulty = percentage < 25 ? 'Casi Imposible' : difficulty;
-    }
-    if (personality.name === 'Mercenario') {
-      percentage += 10;
-    }
+    if (personality.name === 'Leal') score -= 12;
+    else if (personality.name === 'Ambicioso' && tierDiff > 0) score -= 10;
+    else if (personality.name === 'Mercenario') score += 12;
+    else if (personality.name === 'Aventurero') score += 8;
+    // Profesional y Familiar: neutro
   }
   
-  percentage = Math.max(5, Math.min(90, percentage));
+  // === VARIACIÓN DETERMINISTA por nombre (cada jugador es único) ===
+  const nameHash = (player.name || '').split('').reduce((acc, c, i) => acc + c.charCodeAt(0) * (i + 1), 0);
+  const variation = ((nameHash % 20) - 10); // -10 a +9
+  score += variation;
   
-  return { difficulty, color, percentage, tierDiff };
+  // Clamp
+  score = Math.max(5, Math.min(95, score));
+  
+  // === MAPEAR SCORE A DIFICULTAD ===
+  let difficulty, color;
+  if (score >= 75) {
+    difficulty = 'Muy Fácil';
+    color = '#30d158';
+  } else if (score >= 60) {
+    difficulty = 'Fácil';
+    color = '#30d158';
+  } else if (score >= 40) {
+    difficulty = 'Normal';
+    color = '#ffd60a';
+  } else if (score >= 25) {
+    difficulty = 'Difícil';
+    color = '#ff9f0a';
+  } else if (score >= 12) {
+    difficulty = 'Muy Difícil';
+    color = '#ff453a';
+  } else {
+    difficulty = 'Casi Imposible';
+    color = '#ff453a';
+  }
+  
+  // === ASKING MULTIPLIER (usado en evaluateClubOffer) ===
+  // score 90 → mult 0.95 (te aceptan incluso por debajo del valor)
+  // score 50 → mult 1.15 (necesitas +15%)
+  // score 20 → mult 1.45 (necesitas +45%)
+  // score 5  → mult 1.70 (necesitas +70%)
+  const askingMultiplier = 1.70 - (score / 100) * 0.75; // Rango: 0.95 a 1.70
+  
+  return { difficulty, color, percentage: score, tierDiff, askingMultiplier };
 }
 
 export default {

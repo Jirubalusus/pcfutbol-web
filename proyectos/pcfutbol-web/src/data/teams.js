@@ -883,6 +883,21 @@ import { premierTeamsArray } from './teams-premier.js';
 import { serieATeams } from './teams-seriea.js';
 import { bundesligaTeams } from './teams-bundesliga.js';
 import { ligue1Teams } from './teams-ligue1.js';
+import { eredivisieTeams } from './teams-eredivisie.js';
+import { primeiraLigaTeams } from './teams-primeira-liga.js';
+import { championshipTeams } from './teams-championship.js';
+import { belgianProTeams } from './teams-belgian-pro.js';
+import { superLigTeams } from './teams-super-lig.js';
+import { scottishPremTeams } from './teams-scottish-prem.js';
+import { serieBTeams } from './teams-serie-b.js';
+import { bundesliga2Teams } from './teams-bundesliga2.js';
+import { ligue2Teams } from './teams-ligue2.js';
+import { swissTeams } from './teams-swiss.js';
+import { austrianTeams } from './teams-austrian.js';
+import { greekTeams } from './teams-greek.js';
+import { danishTeams } from './teams-danish.js';
+import { croatianTeams } from './teams-croatian.js';
+import { czechTeams } from './teams-czech.js';
 
 // ============================================================
 // EXPORTS PARA COMPONENTES (con datos reales)
@@ -912,9 +927,22 @@ export const SERIE_A_TEAMS = serieATeams || [];
 // Ligue 1
 export const LIGUE1_TEAMS = ligue1Teams || [];
 
-// Otras ligas (aún no implementadas)
-export const EREDIVISIE_TEAMS = [];
-export const PRIMEIRA_LIGA_TEAMS = [];
+// Other European leagues
+export const EREDIVISIE_TEAMS = eredivisieTeams || [];
+export const PRIMEIRA_LIGA_TEAMS = primeiraLigaTeams || [];
+export const CHAMPIONSHIP_TEAMS = championshipTeams || [];
+export const BELGIAN_PRO_TEAMS = belgianProTeams || [];
+export const SUPER_LIG_TEAMS = superLigTeams || [];
+export const SCOTTISH_PREM_TEAMS = scottishPremTeams || [];
+export const SERIE_B_TEAMS = serieBTeams || [];
+export const BUNDESLIGA2_TEAMS = bundesliga2Teams || [];
+export const LIGUE2_TEAMS = ligue2Teams || [];
+export const SWISS_TEAMS = swissTeams || [];
+export const AUSTRIAN_TEAMS = austrianTeams || [];
+export const GREEK_TEAMS = greekTeams || [];
+export const DANISH_TEAMS = danishTeams || [];
+export const CROATIAN_TEAMS = croatianTeams || [];
+export const CZECH_TEAMS = czechTeams || [];
 
 // Definición de ligas
 export const LEAGUES = {
@@ -927,7 +955,20 @@ export const LEAGUES = {
   serieA: { id: 'serieA', name: 'Serie A', country: 'italy', level: 1 },
   ligue1: { id: 'ligue1', name: 'Ligue 1', country: 'france', level: 1 },
   eredivisie: { id: 'eredivisie', name: 'Eredivisie', country: 'netherlands', level: 1 },
-  primeiraLiga: { id: 'primeiraLiga', name: 'Primeira Liga', country: 'portugal', level: 1 }
+  primeiraLiga: { id: 'primeiraLiga', name: 'Primeira Liga', country: 'portugal', level: 1 },
+  championship: { id: 'championship', name: 'Championship', country: 'england', level: 2 },
+  belgianPro: { id: 'belgianPro', name: 'Jupiler Pro League', country: 'belgium', level: 1 },
+  superLig: { id: 'superLig', name: 'Süper Lig', country: 'turkey', level: 1 },
+  scottishPrem: { id: 'scottishPrem', name: 'Scottish Premiership', country: 'scotland', level: 1 },
+  serieB: { id: 'serieB', name: 'Serie B', country: 'italy', level: 2 },
+  bundesliga2: { id: 'bundesliga2', name: '2. Bundesliga', country: 'germany', level: 2 },
+  ligue2: { id: 'ligue2', name: 'Ligue 2', country: 'france', level: 2 },
+  swissSuperLeague: { id: 'swissSuperLeague', name: 'Super League', country: 'switzerland', level: 1 },
+  austrianBundesliga: { id: 'austrianBundesliga', name: 'Bundesliga (Austria)', country: 'austria', level: 1 },
+  greekSuperLeague: { id: 'greekSuperLeague', name: 'Super League', country: 'greece', level: 1 },
+  danishSuperliga: { id: 'danishSuperliga', name: 'Superligaen', country: 'denmark', level: 1 },
+  croatianLeague: { id: 'croatianLeague', name: 'HNL', country: 'croatia', level: 1 },
+  czechLeague: { id: 'czechLeague', name: 'Chance Liga', country: 'czechia', level: 1 }
 };
 
 // Helper para obtener equipos por liga
@@ -939,6 +980,21 @@ export function getTeamsByLeague(leagueId) {
     case 'bundesliga': return BUNDESLIGA_TEAMS;
     case 'serieA': return SERIE_A_TEAMS;
     case 'ligue1': return LIGUE1_TEAMS;
+    case 'eredivisie': return EREDIVISIE_TEAMS;
+    case 'primeiraLiga': return PRIMEIRA_LIGA_TEAMS;
+    case 'championship': return CHAMPIONSHIP_TEAMS;
+    case 'belgianPro': return BELGIAN_PRO_TEAMS;
+    case 'superLig': return SUPER_LIG_TEAMS;
+    case 'scottishPrem': return SCOTTISH_PREM_TEAMS;
+    case 'serieB': return SERIE_B_TEAMS;
+    case 'bundesliga2': return BUNDESLIGA2_TEAMS;
+    case 'ligue2': return LIGUE2_TEAMS;
+    case 'swissSuperLeague': return SWISS_TEAMS;
+    case 'austrianBundesliga': return AUSTRIAN_TEAMS;
+    case 'greekSuperLeague': return GREEK_TEAMS;
+    case 'danishSuperliga': return DANISH_TEAMS;
+    case 'croatianLeague': return CROATIAN_TEAMS;
+    case 'czechLeague': return CZECH_TEAMS;
     default: return [];
   }
 }

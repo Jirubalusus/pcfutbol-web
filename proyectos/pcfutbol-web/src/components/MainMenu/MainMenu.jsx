@@ -4,6 +4,10 @@ import { useAuth } from '../../context/AuthContext';
 import Settings from '../Settings/Settings';
 import Auth from '../Auth/Auth';
 import SaveSlots from '../SaveSlots/SaveSlots';
+import { 
+  Play, LogIn, LogOut, Save, Trophy, Settings as SettingsIcon, 
+  Lightbulb, User, Gamepad2, ChevronRight
+} from 'lucide-react';
 import './MainMenu.scss';
 
 export default function MainMenu() {
@@ -14,6 +18,7 @@ export default function MainMenu() {
   const [showAuth, setShowAuth] = useState(false);
   const [showSaveSlots, setShowSaveSlots] = useState(false);
   const [saveSlotsMode, setSaveSlotsMode] = useState('load');
+  const [loggingOut, setLoggingOut] = useState(false);
   
   useEffect(() => {
     setTimeout(() => setAnimateIn(true), 100);
@@ -42,8 +47,10 @@ export default function MainMenu() {
   };
 
   const handleLogout = async () => {
+    setLoggingOut(true);
     await logout();
     dispatch({ type: 'RESET_GAME' });
+    setLoggingOut(false);
   };
   
   if (showSettings) {
@@ -74,25 +81,40 @@ export default function MainMenu() {
         <div className="main-menu__gradient"></div>
         <div className="main-menu__pattern"></div>
         <div className="main-menu__glow"></div>
+        <div className="main-menu__particles">
+          {[...Array(6)].map((_, i) => (
+            <div key={i} className={`particle particle--${i}`} />
+          ))}
+        </div>
       </div>
       
       <div className="main-menu__content">
-        {/* User status */}
+        {/* User status — logged in */}
         {isAuthenticated && (
           <div className="main-menu__user">
+            <div className="main-menu__user-avatar">
+              <User size={14} />
+            </div>
             <span className="main-menu__user-name">
-              👤 {user?.displayName || user?.email?.split('@')[0]}
+              {user?.displayName || user?.email?.split('@')[0]}
             </span>
-            <button className="main-menu__user-logout" onClick={handleLogout}>
-              Cerrar sesión
+            <button 
+              className="main-menu__user-logout" 
+              onClick={handleLogout}
+              disabled={loggingOut}
+            >
+              <LogOut size={13} />
+              <span>{loggingOut ? 'Saliendo...' : 'Salir'}</span>
             </button>
           </div>
         )}
 
         <div className="main-menu__hero">
-          <div className="main-menu__ball">⚽</div>
+          <div className="main-menu__ball">
+            <div className="main-menu__ball-inner">⚽</div>
+          </div>
           <h1 className="main-menu__title">
-            <span className="pc">PC</span>
+            <span className="pc">P C</span>
             <span className="futbol">FÚTBOL</span>
           </h1>
           <div className="main-menu__edition">
@@ -108,13 +130,17 @@ export default function MainMenu() {
             <button 
               className="main-menu__btn main-menu__btn--continue"
               onClick={handleContinue}
+              style={{ '--delay': '0' }}
             >
               <div className="btn-content">
-                <span className="icon">▶️</span>
+                <span className="icon-wrapper icon-wrapper--continue">
+                  <Play size={22} />
+                </span>
                 <div className="text">
                   <span className="label">Continuar Partida</span>
                   <span className="sublabel">{state.team?.name} · Semana {state.currentWeek}</span>
                 </div>
+                <ChevronRight size={18} className="chevron" />
               </div>
             </button>
           )}
@@ -123,9 +149,12 @@ export default function MainMenu() {
             className="main-menu__btn main-menu__btn--primary"
             onClick={handlePlay}
             disabled={authLoading}
+            style={{ '--delay': state.gameStarted ? '1' : '0' }}
           >
             <div className="btn-content">
-              <span className="icon">🏟️</span>
+              <span className="icon-wrapper icon-wrapper--primary">
+                {isAuthenticated ? <Gamepad2 size={22} /> : <LogIn size={22} />}
+              </span>
               <div className="text">
                 <span className="label">
                   {isAuthenticated ? 'Jugar' : 'Iniciar Sesión'}
@@ -137,6 +166,7 @@ export default function MainMenu() {
                   }
                 </span>
               </div>
+              <ChevronRight size={18} className="chevron" />
             </div>
           </button>
 
@@ -147,28 +177,37 @@ export default function MainMenu() {
                 setSaveSlotsMode('save');
                 setShowSaveSlots(true);
               }}
+              style={{ '--delay': '2' }}
             >
               <div className="btn-content">
-                <span className="icon">💾</span>
+                <span className="icon-wrapper icon-wrapper--save">
+                  <Save size={20} />
+                </span>
                 <div className="text">
                   <span className="label">Guardar Partida</span>
                   <span className="sublabel">Guarda tu progreso actual</span>
                 </div>
+                <ChevronRight size={18} className="chevron" />
               </div>
             </button>
           )}
           
           <div className="main-menu__secondary">
-            <button className="main-menu__btn main-menu__btn--small" disabled>
-              <span className="icon">🏆</span>
+            <button 
+              className="main-menu__btn main-menu__btn--small" 
+              disabled
+              style={{ '--delay': state.gameStarted ? '3' : '1' }}
+            >
+              <Trophy size={20} className="icon-svg" />
               <span className="label">Récords</span>
             </button>
             
             <button 
               className="main-menu__btn main-menu__btn--small"
               onClick={() => setShowSettings(true)}
+              style={{ '--delay': state.gameStarted ? '4' : '2' }}
             >
-              <span className="icon">⚙️</span>
+              <SettingsIcon size={20} className="icon-svg" />
               <span className="label">Opciones</span>
             </button>
           </div>
@@ -176,7 +215,8 @@ export default function MainMenu() {
 
         {!isAuthenticated && (
           <div className="main-menu__guest-notice">
-            <p>💡 Inicia sesión para guardar tu progreso en la nube</p>
+            <Lightbulb size={14} className="notice-icon" />
+            <p>Inicia sesión para guardar tu progreso en la nube</p>
           </div>
         )}
         

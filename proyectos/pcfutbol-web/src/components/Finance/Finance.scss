@@ -1,0 +1,175 @@
+.finance {
+  padding: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+  
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+  
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    
+    h2 {
+      margin: 0;
+      font-size: 1.4rem;
+    }
+  }
+  
+  &__budget {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 0.75rem 1.25rem;
+    background: rgba(48, 209, 88, 0.1);
+    border: 1px solid rgba(48, 209, 88, 0.25);
+    border-radius: 12px;
+    
+    .label {
+      font-size: 0.7rem;
+      color: var(--color-text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .amount {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--color-success);
+    }
+  }
+  
+  &__sections {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  &__section {
+    background: var(--color-glass);
+    border: 1px solid var(--color-glass-border);
+    border-radius: 12px;
+    overflow: hidden;
+    
+    h3 {
+      margin: 0;
+      padding: 1rem 1.25rem 0.25rem;
+      font-size: 1rem;
+      color: var(--color-text-primary);
+    }
+  }
+  
+  &__disclaimer {
+    margin: 0;
+    padding: 0 1.25rem 0.5rem;
+    font-size: 0.75rem;
+    color: var(--color-text-tertiary);
+    font-style: italic;
+  }
+  
+  &__group {
+    padding: 0.5rem 0;
+    
+    &-title {
+      padding: 0.4rem 1.25rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      
+      &.income {
+        color: rgba(48, 209, 88, 0.7);
+      }
+      
+      &.expense {
+        color: rgba(255, 69, 58, 0.7);
+      }
+    }
+  }
+  
+  &__total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.875rem 1.25rem;
+    background: rgba(0, 0, 0, 0.3);
+    font-weight: 700;
+    font-size: 0.95rem;
+    border-top: 1px solid var(--color-glass-border);
+    
+    .positive {
+      color: var(--color-success);
+    }
+    
+    .negative {
+      color: #ff453a;
+    }
+  }
+  
+  &__info {
+    display: flex;
+    gap: 1rem;
+    padding: 0.875rem 1.25rem;
+    border-top: 1px solid var(--color-glass-border);
+    
+    .info-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.15rem;
+      
+      .label {
+        font-size: 0.7rem;
+        color: var(--color-text-tertiary);
+      }
+      
+      .value {
+        font-weight: 700;
+        font-size: 0.9rem;
+        color: var(--color-accent);
+      }
+    }
+  }
+}
+
+.finance-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1.25rem;
+  transition: background 0.15s;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.03);
+  }
+  
+  &__label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    font-size: 0.85rem;
+    
+    .detail {
+      font-size: 0.7rem;
+      color: var(--color-text-tertiary);
+    }
+  }
+  
+  &__amount {
+    font-weight: 600;
+    font-size: 0.9rem;
+    font-variant-numeric: tabular-nums;
+    
+    &.positive {
+      color: var(--color-success);
+    }
+    
+    &.negative {
+      color: #ff453a;
+    }
+  }
+}

@@ -1,0 +1,549 @@
+// ============================================================
+// EUROPE — European Competitions Styles
+// ============================================================
+
+.europe {
+  padding: 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+
+  // ── Empty State ──
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 4rem 2rem;
+    text-align: center;
+    color: #8899aa;
+
+    h2 {
+      color: #e0e6ed;
+      font-size: 1.4rem;
+    }
+
+    p {
+      max-width: 400px;
+      line-height: 1.5;
+    }
+
+    .europe__hint {
+      font-size: 0.8rem;
+      opacity: 0.6;
+    }
+  }
+
+  // ── Competition Tabs ──
+  &__tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+
+    &::-webkit-scrollbar {
+      height: 3px;
+    }
+  }
+
+  &__tab {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    color: #8899aa;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+    font-size: 0.85rem;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.06);
+      color: #e0e6ed;
+    }
+
+    &.active {
+      background: rgba(46, 125, 50, 0.15);
+      border-color: rgba(46, 125, 50, 0.4);
+      color: #66bb6a;
+    }
+
+    &.player {
+      border-color: rgba(255, 193, 7, 0.3);
+    }
+
+    &.player.active {
+      border-color: rgba(255, 193, 7, 0.5);
+    }
+
+    &-icon {
+      font-size: 1.1rem;
+    }
+
+    &-star {
+      color: #ffc107;
+      fill: #ffc107;
+    }
+  }
+
+  // ── Content ──
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  // ── Header ──
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    h2 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.3rem;
+      color: #e0e6ed;
+      margin: 0;
+    }
+  }
+
+  &__phase-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.06);
+    color: #8899aa;
+    font-size: 0.75rem;
+    margin-top: 0.3rem;
+  }
+
+  &__player-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+  }
+
+  &__prize {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #66bb6a;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  &__eliminated-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    background: rgba(231, 76, 60, 0.15);
+    color: #e74c3c;
+    font-size: 0.75rem;
+  }
+
+  // ── Swiss Table ──
+  &__standings {
+    h3 {
+      color: #e0e6ed;
+      font-size: 1rem;
+      margin: 0 0 0.75rem;
+    }
+  }
+
+  &__table-wrapper {
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+
+    th, td {
+      padding: 0.5rem 0.4rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    th {
+      background: rgba(255, 255, 255, 0.04);
+      color: #8899aa;
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+      white-space: nowrap;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+
+      &:hover {
+        color: #e0e6ed;
+      }
+
+      &.team {
+        text-align: left;
+      }
+    }
+
+    td {
+      color: #c0c8d0;
+
+      &.pos {
+        width: 32px;
+      }
+
+      &.team {
+        text-align: left;
+        font-weight: 500;
+        white-space: nowrap;
+        max-width: 140px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        .player-star {
+          color: #ffc107;
+          fill: #ffc107;
+          margin-left: 4px;
+          vertical-align: middle;
+        }
+      }
+
+      &.league-flag {
+        font-size: 0.9rem;
+        width: 30px;
+      }
+
+      &.pts {
+        font-weight: 700;
+        color: #e0e6ed;
+      }
+    }
+
+    .pos-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.7rem;
+
+      &.direct {
+        background: rgba(46, 125, 50, 0.2);
+        color: #66bb6a;
+      }
+
+      &.playoff {
+        background: rgba(255, 152, 0, 0.15);
+        color: #ffb74d;
+      }
+
+      &.eliminated {
+        background: rgba(231, 76, 60, 0.12);
+        color: #e57373;
+      }
+    }
+
+    tr {
+      transition: background 0.15s;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      &.is-player {
+        background: rgba(255, 193, 7, 0.06);
+
+        td {
+          color: #e0e6ed;
+        }
+
+        &:hover {
+          background: rgba(255, 193, 7, 0.1);
+        }
+      }
+
+      &.direct td:first-child {
+        border-left: 3px solid rgba(46, 125, 50, 0.5);
+      }
+
+      &.playoff td:first-child {
+        border-left: 3px solid rgba(255, 152, 0, 0.4);
+      }
+
+      &.eliminated td:first-child {
+        border-left: 3px solid rgba(231, 76, 60, 0.3);
+      }
+    }
+  }
+
+  // ── Legend ──
+  &__legend {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 0.75rem;
+    font-size: 0.7rem;
+    color: #8899aa;
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+      }
+
+      &.direct .dot {
+        background: rgba(46, 125, 50, 0.6);
+      }
+
+      &.playoff .dot {
+        background: rgba(255, 152, 0, 0.5);
+      }
+
+      &.eliminated .dot {
+        background: rgba(231, 76, 60, 0.4);
+      }
+    }
+  }
+
+  // ── Knockout Bracket ──
+  &__knockout {
+    h3 {
+      color: #e0e6ed;
+      font-size: 1rem;
+      margin: 0 0 1rem;
+    }
+  }
+
+  &__bracket {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+
+  &__bracket-round {
+    min-width: 180px;
+  }
+
+  &__bracket-title {
+    font-size: 0.75rem;
+    color: #8899aa;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  &__bracket-matchups {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  &__matchup {
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 6px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.02);
+
+    &.player {
+      border-color: rgba(255, 193, 7, 0.3);
+      background: rgba(255, 193, 7, 0.04);
+    }
+
+    &.completed {
+      opacity: 0.9;
+    }
+
+    &-team {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.4rem 0.6rem;
+      font-size: 0.8rem;
+      color: #c0c8d0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+
+      &:last-of-type {
+        border-bottom: none;
+      }
+
+      &.winner {
+        color: #66bb6a;
+        font-weight: 600;
+      }
+
+      .team-name {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 110px;
+      }
+
+      .leg-score {
+        font-weight: 600;
+        color: #e0e6ed;
+        font-size: 0.75rem;
+      }
+    }
+
+    &-agg {
+      padding: 0.2rem 0.6rem;
+      font-size: 0.65rem;
+      color: #8899aa;
+      background: rgba(255, 255, 255, 0.02);
+      text-align: center;
+    }
+  }
+
+  // ── Final Result ──
+  &__final-result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.08), rgba(255, 152, 0, 0.05));
+    border-radius: 12px;
+    border: 1px solid rgba(255, 193, 7, 0.2);
+    text-align: center;
+    color: #ffc107;
+
+    h3 {
+      color: #e0e6ed;
+      margin: 0;
+    }
+
+    .europe__winner-name {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #ffc107;
+    }
+
+    .europe__final-score {
+      color: #8899aa;
+      font-size: 0.85rem;
+    }
+  }
+
+  // ── Results ──
+  &__results {
+    h3 {
+      color: #e0e6ed;
+      font-size: 1rem;
+      margin: 0 0 0.75rem;
+    }
+  }
+
+  &__results-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  &__result-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 6px;
+    font-size: 0.8rem;
+    color: #c0c8d0;
+
+    &.player-match {
+      background: rgba(255, 193, 7, 0.06);
+      border: 1px solid rgba(255, 193, 7, 0.15);
+    }
+
+    .matchday {
+      color: #8899aa;
+      font-size: 0.7rem;
+      min-width: 24px;
+    }
+
+    .home-team, .away-team {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .home-team {
+      text-align: right;
+    }
+
+    .score {
+      font-weight: 700;
+      color: #e0e6ed;
+      min-width: 40px;
+      text-align: center;
+    }
+  }
+
+  &__no-data {
+    color: #8899aa;
+    font-style: italic;
+    padding: 1rem;
+  }
+}
+
+// ── Mobile ──
+@media (max-width: 768px) {
+  .europe {
+    padding: 0.75rem;
+
+    &__header {
+      flex-direction: column;
+    }
+
+    &__player-info {
+      align-items: flex-start;
+    }
+
+    &__table {
+      font-size: 0.7rem;
+
+      th, td {
+        padding: 0.35rem 0.3rem;
+      }
+
+      // Hide less important columns on mobile
+      .league-flag {
+        display: none;
+      }
+    }
+
+    &__bracket {
+      flex-direction: column;
+    }
+
+    &__bracket-round {
+      min-width: unset;
+    }
+
+    &__legend {
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+  }
+}

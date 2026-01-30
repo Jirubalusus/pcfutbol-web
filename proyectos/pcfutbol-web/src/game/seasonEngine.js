@@ -1,6 +1,118 @@
 // Motor de fin de temporada
 // Gestiona ascensos, descensos y transición a nueva temporada
 
+// ============================================================
+// EVOLUCIÓN DE JUGADORES
+// Sistema realista con variación única por jugador
+// ============================================================
+
+// Hash determinista basado en nombre del jugador
+function nameHash(name) {
+  let h = 0;
+  for (let i = 0; i < (name || '').length; i++) {
+    h = ((h << 5) - h + name.charCodeAt(i)) | 0;
+  }
+  return Math.abs(h);
+}
+
+// Genera un float 0-1 determinista para un jugador + aspecto
+function playerSeed(name, aspect) {
+  const h = nameHash(name + ':' + aspect);
+  return (h % 10000) / 10000;
+}
+
+/**
+ * Calcula la evolución de overall de un jugador al final de temporada.
+ * 
+ * Filosofía:
+ * - Cada jugador tiene un "potencial de crecimiento" único (determinista por nombre)
+ * - Muy jóvenes (16-20): crecimiento alto (+1 a +4)
+ * - Jóvenes (21-24): crecimiento moderado (+1 a +2)
+ * - Prime (25-28): ligero crecimiento o meseta (+0 a +1)
+ * - Madurez (29-33): meseta, raramente bajan
+ * - Declive (34+): empiezan a perder, variable por jugador
+ * 
+ * El resultado NO es fijo: combina un componente determinista (personalidad)
+ * con variación aleatoria (forma de la temporada, lesiones, etc.)
+ */
+export function evolvePlayer(player) {
+  const { name, age, overall } = player;
+  
+  // === PERFIL ÚNICO DEL JUGADOR (determinista por nombre) ===
+  const talentSeed = playerSeed(name, 'talent');     // 0-1: talento natural
+  const peakAgeSeed = playerSeed(name, 'peakAge');    // 0-1: cuándo llega al pico
+  const durability = playerSeed(name, 'durability');  // 0-1: resistencia al declive
+  
+  // Edad pico: entre 28 y 33 dependiendo del jugador
+  const peakAge = 28 + Math.floor(peakAgeSeed * 6);  // 28-33
+  
+  // Factor talento: jugadores con más talento crecen más rápido
+  // Rango: 0.6 (talento bajo) a 1.4 (talento alto)
+  const talentFactor = 0.6 + talentSeed * 0.8;
+  
+  // Factor suerte de la temporada (aleatorio, simula buena/mala temporada)
+  const seasonLuck = (Math.random() - 0.5) * 0.6; // -0.3 a +0.3
+  
+  let change = 0;
+  
+  if (age <= 20) {
+    // MUY JÓVENES: crecimiento alto
+    // Base: +1.5 a +3.5, modificado por talento y suerte
+    const base = 1.5 + talentFactor * 1.5; // 2.4 a 3.6
+    change = base + seasonLuck;
+    // Algunos cracks pegan un estirón brutal
+    if (talentSeed > 0.85 && Math.random() < 0.25) change += 1;
+  } 
+  else if (age <= 24) {
+    // JÓVENES: crecimiento moderado
+    // Base: +0.8 a +2.2
+    const base = 0.8 + talentFactor * 1.0; // 1.4 a 1.9
+    change = base + seasonLuck;
+  }
+  else if (age <= 28) {
+    // PRIME TEMPRANO: crecimiento lento, llegando al pico
+    // Base: +0.2 a +0.8
+    const base = 0.2 + talentFactor * 0.4; // 0.44 a 0.76
+    change = base + seasonLuck * 0.7;
+    // Si ya tiene overall muy alto (90+), más difícil mejorar
+    if (overall >= 90) change *= 0.5;
+  }
+  else if (age <= peakAge) {
+    // PRIME/MESETA: se mantiene, pequeños ajustes
+    // Base: -0.2 a +0.4
+    change = 0.1 + seasonLuck * 0.5;
+    if (overall >= 92) change -= 0.3; // Techos naturales
+  }
+  else {
+    // DECLIVE: después de la edad pico
+    const yearsPostPeak = age - peakAge;
+    // Cuánto declina depende de durabilidad y años post-pico
+    // Jugadores duraderos: bajan menos, más tarde
+    // Base: -0.5 por año post-pico, reducido por durabilidad
+    const decayRate = 0.5 + (1.0 - durability) * 0.8; // 0.5 a 1.3 por año
+    const base = -(yearsPostPeak * decayRate);
+    change = base + seasonLuck * 0.4; // La suerte ayuda menos
+    
+    // A los 37+ el declive es más pronunciado siempre
+    if (age >= 37) change -= 1.0;
+    // A los 39+ caída libre
+    if (age >= 39) change -= 1.5;
+  }
+  
+  // Redondear con probabilidad proporcional a la parte decimal
+  // Ej: +1.7 → 70% de +2, 30% de +1
+  const sign = change >= 0 ? 1 : -1;
+  const absChange = Math.abs(change);
+  const intPart = Math.floor(absChange);
+  const fracPart = absChange - intPart;
+  const roundedChange = sign * (intPart + (Math.random() < fracPart ? 1 : 0));
+  
+  // Aplicar límites
+  const newOverall = Math.max(50, Math.min(99, overall + roundedChange));
+  
+  return newOverall;
+}
+
 /**
  * Verifica si la temporada ha terminado
  */
@@ -138,21 +250,9 @@ export function prepareNewSeason(team, outcome, newLeagueTeams) {
     budgetMultiplier *= 1.05; // +5% extra por estabilidad
   }
 
-  // Envejecer jugadores
+  // Evolucionar jugadores (edad + overall)
   const updatedPlayers = team.players.map(p => {
-    let newOverall = p.overall;
-    
-    // Jugadores jóvenes mejoran (potencial)
-    if (p.age <= 24 && Math.random() < 0.4) {
-      newOverall = Math.min(99, newOverall + 1);
-    }
-    // Veteranos decaen más gradualmente
-    else if (p.age >= 32) {
-      const decayChance = (p.age - 31) * 0.15; // 15% a los 32, 30% a los 33, etc.
-      if (Math.random() < decayChance) {
-        newOverall = Math.max(55, newOverall - 1);
-      }
-    }
+    const newOverall = evolvePlayer(p);
     
     return {
       ...p,
@@ -163,7 +263,10 @@ export function prepareNewSeason(team, outcome, newLeagueTeams) {
       injuryWeeksLeft: 0,
       injuryType: null,
       treated: false,
-      trainingProgress: 0
+      trainingProgress: 0,
+      yellowCards: 0,
+      suspended: false,
+      suspensionType: null
     };
   });
 

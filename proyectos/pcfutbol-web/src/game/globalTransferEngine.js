@@ -627,12 +627,21 @@ export function createGlobalEngine(gameState) {
 
 /**
  * Verificar si el mercado está abierto
+ * @param {number} week - Semana actual de liga
+ * @param {Object} options - Opciones adicionales
+ * @param {boolean} options.preseasonPhase - Si estamos en pretemporada
+ * @param {number} options.totalWeeks - Total de jornadas de liga (38 para 20 equipos)
  */
-export function isTransferWindowOpen(week) {
-  // Verano: semanas 1-8 (pretemporada + primeras semanas)
-  // Invierno: semanas 20-22
-  if (week <= 8) return { open: true, type: 'summer' };
-  if (week >= 20 && week <= 22) return { open: true, type: 'winter' };
+export function isTransferWindowOpen(week, options = {}) {
+  const { preseasonPhase = false, totalWeeks = 38 } = options;
+  
+  // Mercado de verano: SOLO durante pretemporada
+  if (preseasonPhase) return { open: true, type: 'summer' };
+  
+  // Mercado de invierno: SOLO la jornada exacta de mitad de liga
+  const midWeek = Math.ceil(totalWeeks / 2); // jornada 19 para 38 jornadas
+  if (week === midWeek) return { open: true, type: 'winter' };
+  
   return { open: false, type: null };
 }
 

@@ -2,6 +2,8 @@
 // SEASON MANAGER - Gestión de temporadas, pretemporada y transiciones
 // ============================================================
 
+import { evolvePlayer } from './seasonEngine.js';
+
 // Configuración de competiciones europeas por liga
 export const EUROPEAN_SPOTS = {
   laliga: {
@@ -266,14 +268,14 @@ function isObjectiveCompleted(objective, seasonResult) {
 export function prepareNewSeason(currentState, seasonResult) {
   const newSeason = currentState.currentSeason + 1;
   
-  // Envejecer jugadores
+  // Evolucionar jugadores (edad + overall con sistema realista)
   const agedPlayers = currentState.team.players.map(player => ({
     ...player,
     age: player.age + 1,
-    // Reducir overall para jugadores mayores de 32
-    overall: player.age >= 32 
-      ? Math.max(50, player.overall - Math.floor(Math.random() * 3))
-      : player.overall
+    overall: evolvePlayer(player),
+    yellowCards: 0,
+    suspended: false,
+    suspensionType: null
   }));
   
   // Decrementar contratos y filtrar expirados

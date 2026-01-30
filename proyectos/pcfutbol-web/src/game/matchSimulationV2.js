@@ -5,7 +5,7 @@
 // Permite sorpresas controladas (~15% de upsets)
 // Empates más frecuentes entre equipos parejos
 
-import { FORMATIONS, TACTICS, calculateTeamStrength } from './leagueEngine';
+import { FORMATIONS, TACTICS, calculateTeamStrength, getTacticalMatchupBonus } from './leagueEngine';
 
 // ============================================================
 // CONFIGURACIÓN DE REALISMO
@@ -22,11 +22,11 @@ const LEAGUE_STATS = {
 
 // Factor de "upset" - probabilidad de sorpresa según diferencia de nivel
 const UPSET_FACTORS = {
-  huge: { diff: 20, upsetChance: 0.05 },      // Dif >20 pts: 5% upset
-  large: { diff: 15, upsetChance: 0.10 },     // Dif 15-20: 10% upset  
-  medium: { diff: 10, upsetChance: 0.18 },    // Dif 10-15: 18% upset
-  small: { diff: 5, upsetChance: 0.30 },      // Dif 5-10: 30% upset
-  tiny: { diff: 0, upsetChance: 0.45 }        // Dif <5: 45% upset (casi parejo)
+  huge: { diff: 25, upsetChance: 0.02 },      // Dif >25 pts: 2% upset (casi imposible)
+  large: { diff: 18, upsetChance: 0.06 },     // Dif 18-25: 6% upset
+  medium: { diff: 12, upsetChance: 0.12 },    // Dif 12-18: 12% upset
+  small: { diff: 6, upsetChance: 0.22 },      // Dif 6-12: 22% upset
+  tiny: { diff: 0, upsetChance: 0.38 }        // Dif <6: 38% upset (casi parejo)
 };
 
 // Perfiles de equipos según reputación
@@ -92,15 +92,15 @@ const TEAM_PROFILES = {
 // ============================================================
 
 /**
- * Obtener perfil de equipo según reputación
+ * Obtener perfil de equipo según reputación (escala 0-100)
  */
 export function getTeamProfile(reputation) {
-  if (reputation >= 5) return TEAM_PROFILES.elite;
-  if (reputation >= 4) return TEAM_PROFILES.top;
-  if (reputation >= 3.5) return TEAM_PROFILES.midHigh;
-  if (reputation >= 3) return TEAM_PROFILES.mid;
-  if (reputation >= 2.5) return TEAM_PROFILES.midLow;
-  return TEAM_PROFILES.low;
+  if (reputation >= 90) return TEAM_PROFILES.elite;     // Real Madrid (95), Barcelona (93)
+  if (reputation >= 80) return TEAM_PROFILES.top;        // Newcastle (82), Atlético (~85)
+  if (reputation >= 72) return TEAM_PROFILES.midHigh;    // Athletic (~78), Betis, Valencia
+  if (reputation >= 65) return TEAM_PROFILES.mid;        // Getafe (67), Osasuna, Celta
+  if (reputation >= 58) return TEAM_PROFILES.midLow;     // Recreativo (61), equipos modestos
+  return TEAM_PROFILES.low;                               // Equipos menores (<58)
 }
 
 /**
@@ -112,11 +112,13 @@ export function calculateMatchStrength(team, formation, tactic, context = {}) {
     fatigue = 0,        // 0-100, fatiga acumulada
     injuries = 0,       // Número de lesionados clave
     isHome = false,
-    seasonMomentum = 0  // -20 a +20 según racha de temporada
+    seasonMomentum = 0, // -20 a +20 según racha de temporada
+    customLineup = null, // Lineup personalizado del jugador
+    attendanceFillRate = 0.7 // Ocupación del estadio
   } = context;
   
-  // Base: media del 11 titular
-  const strength = calculateTeamStrength(team, formation, tactic, morale);
+  // Base: media del 11 titular (usando lineup custom si disponible)
+  const strength = calculateTeamStrength(team, formation, tactic, morale, customLineup);
   const baseRating = strength.effectiveOverall || strength.overall || 70;
   
   // Reputación del equipo (muy importante)
@@ -132,7 +134,9 @@ export function calculateMatchStrength(team, formation, tactic, context = {}) {
   
   // Bonificaciones
   const moraleBonus = (morale - 50) * 0.12;  // ±6 puntos por moral
-  const homeBonus = isHome ? 4 + (team.stadiumCapacity || 20000) / 15000 : 0;  // 4-8 pts local
+  // Factor cancha: base 2 pts + hasta 6 pts extra según ocupación del estadio
+  // Estadio lleno (100%) = +8 pts, medio vacío (30%) = +3.8 pts, vacío (10%) = +2.6 pts
+  const homeBonus = isHome ? 2 + (attendanceFillRate * 6) : 0;
   const momentumBonus = seasonMomentum * 0.3;  // ±6 puntos por racha
   
   // Rating final
@@ -190,25 +194,36 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
     isDerby = false,
     importance = 'normal', // normal, crucial, final
     weather = 'normal',    // normal, rain, extreme
-    referee = 'neutral'    // neutral, strict, lenient
+    referee = 'neutral',   // neutral, strict, lenient
+    homeLineup = null,     // Lineup personalizado del equipo local
+    awayLineup = null,     // Lineup personalizado del equipo visitante
+    attendanceFillRate = 0.7  // Ocupación del estadio (afecta factor cancha)
   } = context;
   
-  // Calcular fuerzas ajustadas
+  // Calcular fuerzas ajustadas (con lineup del jugador si disponible)
   const homeStrength = calculateMatchStrength(homeTeamData, homeFormation, homeTactic, {
     morale: homeMorale,
     isHome: true,
-    seasonMomentum: homeSeasonMomentum
+    seasonMomentum: homeSeasonMomentum,
+    customLineup: homeLineup,
+    attendanceFillRate
   });
   
   const awayStrength = calculateMatchStrength(awayTeamData, awayFormation, awayTactic, {
     morale: awayMorale,
     isHome: false,
-    seasonMomentum: awaySeasonMomentum
+    seasonMomentum: awaySeasonMomentum,
+    customLineup: awayLineup
   });
   
-  // Diferencia de nivel
-  const ratingDiff = homeStrength.rating - awayStrength.rating;
-  const reputationDiff = (homeStrength.reputation - awayStrength.reputation) * 5; // Amplificar diferencia de rep
+  // Bonus por matchup táctico (piedra-papel-tijera)
+  const homeTacticalBonus = getTacticalMatchupBonus(homeTactic, awayTactic);
+  const awayTacticalBonus = getTacticalMatchupBonus(awayTactic, homeTactic);
+  
+  // Diferencia de nivel (incluye bonus táctico)
+  const ratingDiff = (homeStrength.rating + homeTacticalBonus) - (awayStrength.rating + awayTacticalBonus);
+  // Reputación en escala 0-100: multiplicador reducido para no dominar el cálculo
+  const reputationDiff = (homeStrength.reputation - awayStrength.reputation) * 0.5;
   const totalDiff = ratingDiff + reputationDiff;
   
   // Determinar probabilidades base
@@ -225,12 +240,14 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
   // Decidir resultado
   const result = decideResult(homeWinProb, drawProb, awayWinProb, upsetFactor, isDerby);
   
-  // Simular goles según resultado
+  // Simular goles según resultado (tácticas afectan cantidad de goles)
   const { homeScore, awayScore } = simulateGoals(
     result,
     homeStrength,
     awayStrength,
-    importance
+    importance,
+    homeTactic,
+    awayTactic
   );
   
   // Generar eventos del partido
@@ -244,13 +261,15 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
     referee
   );
   
-  // Stats del partido
+  // Stats del partido (tácticas afectan posesión, tiros, etc.)
   const stats = generateMatchStats(
     homeStrength,
     awayStrength,
     homeScore,
     awayScore,
-    result
+    result,
+    homeTactic,
+    awayTactic
   );
   
   return {
@@ -279,12 +298,16 @@ function calculateResultProbabilities(homeStrength, awayStrength, totalDiff, isD
   // Base: usar perfiles de equipo
   let homeWinBase = homeProfile.baseWinRate;
   let drawBase = (homeProfile.drawRate + awayProfile.drawRate) / 2;
-  let awayWinBase = awayProfile.baseWinRate * 0.65; // Visitante siempre más difícil
+  let awayWinBase = awayProfile.baseWinRate * 0.6; // Visitante siempre más difícil
   
-  // Ajustar según diferencia de rating
-  const diffFactor = totalDiff / 100; // Normalizar
-  homeWinBase += diffFactor * 0.35;
-  awayWinBase -= diffFactor * 0.25;
+  // Ajustar según diferencia de rating (más agresivo)
+  const diffFactor = totalDiff / 80; // Normalizar (era /100, ahora más impacto)
+  homeWinBase += diffFactor * 0.5;   // Era 0.35
+  awayWinBase -= diffFactor * 0.4;   // Era 0.25
+  
+  // Evitar negativos
+  homeWinBase = Math.max(0.05, homeWinBase);
+  awayWinBase = Math.max(0, awayWinBase);
   
   // Derby: más impredecible
   if (isDerby) {
@@ -295,10 +318,13 @@ function calculateResultProbabilities(homeStrength, awayStrength, totalDiff, isD
   
   // Normalizar
   const total = homeWinBase + drawBase + awayWinBase;
+  
+  // Mínimos más bajos para mismatches grandes (antes 5% min, ahora 2%)
+  const minAway = Math.abs(totalDiff) > 25 ? 0.02 : 0.05;
   return {
-    homeWinProb: Math.max(0.05, Math.min(0.90, homeWinBase / total)),
-    drawProb: Math.max(0.10, Math.min(0.40, drawBase / total)),
-    awayWinProb: Math.max(0.05, Math.min(0.70, awayWinBase / total))
+    homeWinProb: Math.max(0.05, Math.min(0.92, homeWinBase / total)),
+    drawProb: Math.max(0.08, Math.min(0.40, drawBase / total)),
+    awayWinProb: Math.max(minAway, Math.min(0.70, awayWinBase / total))
   };
 }
 
@@ -336,7 +362,7 @@ function decideResult(homeWinProb, drawProb, awayWinProb, upsetFactor, isDerby) 
 /**
  * Simular goles según resultado decidido
  */
-function simulateGoals(result, homeStrength, awayStrength, importance) {
+function simulateGoals(result, homeStrength, awayStrength, importance, homeTactic = 'balanced', awayTactic = 'balanced') {
   const homeProfile = homeStrength.profile;
   const awayProfile = awayStrength.profile;
   
@@ -344,6 +370,12 @@ function simulateGoals(result, homeStrength, awayStrength, importance) {
   
   // Modificador por importancia
   const impMod = importance === 'final' ? 0.85 : importance === 'crucial' ? 0.95 : 1;
+  
+  // Tácticas defensivas = menos goles totales, ofensivas = más
+  const homeTacticData = TACTICS[homeTactic] || TACTICS.balanced;
+  const awayTacticData = TACTICS[awayTactic] || TACTICS.balanced;
+  // Promedio de lo "abierto" del partido (ambas tácticas influyen)
+  const goalFrequency = ((homeTacticData.attack + awayTacticData.attack) / 2);  // >1 = más goles, <1 = menos
   
   if (result === 1) {
     // Victoria local
@@ -355,7 +387,7 @@ function simulateGoals(result, homeStrength, awayStrength, importance) {
       { value: 5, weight: 2 }    // Goleada histórica
     ]);
     
-    homeScore = Math.round(homeProfile.goalsScored * impMod + Math.random() * 1.5);
+    homeScore = Math.round(homeProfile.goalsScored * impMod * goalFrequency + Math.random() * 1.5);
     awayScore = Math.max(0, homeScore - margin);
     
     // Asegurar que local gana
@@ -371,7 +403,7 @@ function simulateGoals(result, homeStrength, awayStrength, importance) {
       { value: 4, weight: 3 }
     ]);
     
-    awayScore = Math.round(awayProfile.goalsScored * impMod + Math.random() * 1.2);
+    awayScore = Math.round(awayProfile.goalsScored * impMod * goalFrequency + Math.random() * 1.2);
     homeScore = Math.max(0, awayScore - margin);
     
     if (awayScore <= homeScore) {
@@ -467,17 +499,18 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
     });
   }
   
-  // Roja (5% chance base)
-  if (Math.random() < 0.05 * strictness) {
-    const isHome = Math.random() > 0.5;
-    const team = isHome ? homeTeam : awayTeam;
-    events.push({
-      type: 'red_card',
-      team: isHome ? 'home' : 'away',
-      minute: 30 + Math.floor(Math.random() * 55),
-      player: selectRandomPlayer(team)
-    });
-  }
+  // Rojas: cada equipo tiene ~18% de probabilidad por partido (~7/temporada, realista)
+  [homeTeam, awayTeam].forEach((team, idx) => {
+    const teamLabel = idx === 0 ? 'home' : 'away';
+    if (Math.random() < 0.18 * strictness) {
+      events.push({
+        type: 'red_card',
+        team: teamLabel,
+        minute: 25 + Math.floor(Math.random() * 60),
+        player: selectRandomPlayer(team)
+      });
+    }
+  });
   
   return events.sort((a, b) => a.minute - b.minute);
 }
@@ -514,22 +547,44 @@ function selectRandomPlayer(team) {
 /**
  * Generar estadísticas del partido
  */
-function generateMatchStats(homeStrength, awayStrength, homeScore, awayScore, result) {
-  // Posesión basada en ratings y resultado
-  const midDiff = (homeStrength.strength?.midfield || 70) - (awayStrength.strength?.midfield || 70);
-  let homePossession = 50 + midDiff / 4 + (result === 1 ? 5 : result === -1 ? -5 : 0);
-  homePossession = Math.max(30, Math.min(70, homePossession));
+function generateMatchStats(homeStrength, awayStrength, homeScore, awayScore, result, homeTactic = 'balanced', awayTactic = 'balanced') {
+  const homeTacticData = TACTICS[homeTactic] || TACTICS.balanced;
+  const awayTacticData = TACTICS[awayTactic] || TACTICS.balanced;
   
-  // Tiros
-  const homeShots = 8 + Math.floor(homePossession / 10) + homeScore * 2;
-  const awayShots = 8 + Math.floor((100 - homePossession) / 10) + awayScore * 2;
+  // Posesión basada en ratings, resultado Y tácticas
+  const midDiff = (homeStrength.strength?.midfield || 70) - (awayStrength.strength?.midfield || 70);
+  const possessionTacticDiff = ((homeTacticData.possession || 1) - (awayTacticData.possession || 1)) * 20;
+  let homePossession = 50 + midDiff / 4 + possessionTacticDiff + (result === 1 ? 3 : result === -1 ? -3 : 0);
+  homePossession = Math.max(25, Math.min(75, homePossession));
+  
+  // Tiros (tácticas ofensivas = más tiros, defensivas = menos)
+  const homeAttackMod = homeTacticData.attack;
+  const awayAttackMod = awayTacticData.attack;
+  const homeShots = Math.round((8 + Math.floor(homePossession / 10) + homeScore * 2) * homeAttackMod);
+  const awayShots = Math.round((8 + Math.floor((100 - homePossession) / 10) + awayScore * 2) * awayAttackMod);
+  
+  // Faltas (presión alta y defensiva = más faltas)
+  const homeFoulMod = homeTactic === 'highPress' ? 1.4 : homeTactic === 'defensive' ? 1.2 : 1;
+  const awayFoulMod = awayTactic === 'highPress' ? 1.4 : awayTactic === 'defensive' ? 1.2 : 1;
+  const homeFouls = Math.round((10 + Math.floor(Math.random() * 6)) * homeFoulMod);
+  const awayFouls = Math.round((10 + Math.floor(Math.random() * 6)) * awayFoulMod);
+  const homeYellows = Math.floor(homeFouls * (0.15 + Math.random() * 0.15));
+  const awayYellows = Math.floor(awayFouls * (0.15 + Math.random() * 0.15));
+  // Rojas: ~18% base por equipo por partido → ~7 rojas/temporada (realista)
+  // Tácticas agresivas aumentan probabilidad
+  const homeRedMod = homeTactic === 'highPress' ? 1.5 : homeTactic === 'defensive' ? 1.3 : 1;
+  const awayRedMod = awayTactic === 'highPress' ? 1.5 : awayTactic === 'defensive' ? 1.3 : 1;
+  const homeReds = Math.random() < (0.18 * homeRedMod) ? 1 : 0;
+  const awayReds = Math.random() < (0.18 * awayRedMod) ? 1 : 0;
   
   return {
     possession: { home: Math.round(homePossession), away: Math.round(100 - homePossession) },
     shots: { home: homeShots, away: awayShots },
     shotsOnTarget: { home: Math.floor(homeShots * 0.4), away: Math.floor(awayShots * 0.4) },
     corners: { home: Math.floor(homePossession / 12), away: Math.floor((100 - homePossession) / 12) },
-    fouls: { home: 10 + Math.floor(Math.random() * 6), away: 10 + Math.floor(Math.random() * 6) }
+    fouls: { home: homeFouls, away: awayFouls },
+    yellowCards: { home: homeYellows, away: awayYellows },
+    redCards: { home: homeReds, away: awayReds }
   };
 }
 

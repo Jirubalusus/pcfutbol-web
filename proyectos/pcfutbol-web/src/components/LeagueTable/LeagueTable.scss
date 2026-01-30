@@ -3,11 +3,22 @@
   max-width: 1000px;
   margin: 0 auto;
 
+  @media (max-width: 768px) {
+    padding: 12px;
+  }
+
   &__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
 
     h2 {
       display: flex;
@@ -16,6 +27,10 @@
       font-size: 1.5rem;
       color: #fff;
       margin: 0;
+
+      @media (max-width: 768px) {
+        font-size: 1.25rem;
+      }
 
       svg {
         color: #ffd700;
@@ -57,6 +72,11 @@
     background: rgba(255, 255, 255, 0.03);
     border-radius: 12px;
 
+    @media (max-width: 768px) {
+      gap: 8px 12px;
+      padding: 10px 12px;
+    }
+
     .legend-item {
       display: flex;
       align-items: center;
@@ -85,6 +105,11 @@
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.05);
 
+    @media (min-width: 769px) {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
     .table-header {
       display: grid;
       grid-template-columns: 50px 1fr 40px 40px 40px 40px 40px 40px 50px 50px 100px;
@@ -97,7 +122,10 @@
       font-weight: 600;
 
       @media (max-width: 768px) {
-        grid-template-columns: 40px 1fr 30px 30px 30px 40px 60px;
+        grid-template-columns: 24px 1fr 22px 22px 22px 30px 38px;
+        gap: 2px;
+        padding: 6px 6px;
+        font-size: 0.6rem;
         
         .col-pj, .col-gf, .col-ga, .col-form { display: none; }
       }
@@ -113,7 +141,9 @@
       align-items: center;
 
       @media (max-width: 768px) {
-        grid-template-columns: 40px 1fr 30px 30px 30px 40px 60px;
+        grid-template-columns: 24px 1fr 22px 22px 22px 30px 38px;
+        gap: 2px;
+        padding: 4px 6px;
         
         .col-pj, .col-gf, .col-ga, .col-form { display: none; }
       }
@@ -147,6 +177,13 @@
           font-size: 0.85rem;
           background: rgba(255, 255, 255, 0.1);
           color: #fff;
+
+          @media (max-width: 768px) {
+            width: 20px;
+            height: 20px;
+            font-size: 0.6rem;
+            border-radius: 3px;
+          }
         }
       }
 
@@ -164,6 +201,10 @@
         gap: 12px;
         min-width: 0;
 
+        @media (max-width: 768px) {
+          gap: 6px;
+        }
+
         .team-badge {
           width: 32px;
           height: 32px;
@@ -176,6 +217,13 @@
           font-weight: 700;
           color: #fff;
           flex-shrink: 0;
+
+          @media (max-width: 768px) {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            font-size: 0.45rem;
+          }
         }
 
         .team-name {
@@ -184,6 +232,10 @@
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
+
+          @media (max-width: 768px) {
+            font-size: 0.7rem;
+          }
         }
       }
 
@@ -191,6 +243,10 @@
         font-size: 0.85rem;
         color: #8e8e93;
         text-align: center;
+
+        @media (max-width: 768px) {
+          font-size: 0.6rem;
+        }
       }
 
       .col-gd {
@@ -199,6 +255,10 @@
         
         &.positive { color: #30d158; }
         &.negative { color: #ff453a; }
+
+        @media (max-width: 768px) {
+          font-size: 0.6rem;
+        }
       }
 
       .col-pts {
@@ -206,6 +266,10 @@
         font-weight: 700;
         color: #fff;
         text-align: center;
+
+        @media (max-width: 768px) {
+          font-size: 0.7rem;
+        }
       }
 
       .col-form {
