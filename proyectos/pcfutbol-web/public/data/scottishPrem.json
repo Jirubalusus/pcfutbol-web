@@ -5,267 +5,366 @@
     "players": [
       {
         "name": "Viljami Sinisalo",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 24,
-        "nationality": "Finlandia",
-        "marketValue": 1000000
+        "overall": 69,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kasper Schmeichel",
-        "position": "POR",
-        "rating": 71,
+        "position": "GK",
         "age": 39,
-        "nationality": "Dinamarca",
-        "marketValue": 300
+        "overall": 71,
+        "value": 300,
+        "salary": 21000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ross Doohan",
-        "position": "POR",
-        "rating": 74,
+        "position": "GK",
         "age": 31,
-        "nationality": "Escocia",
-        "marketValue": 250
+        "overall": 74,
+        "value": 250,
+        "salary": 24000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cameron Carter-Vickers",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 20,
-        "nationality": "Estados Unidos",
-        "marketValue": 13000000
+        "overall": 72,
+        "value": 13000000,
+        "salary": 39000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Liam Scales",
-        "position": "DFC",
-        "rating": 76,
+        "position": "CB",
         "age": 27,
-        "nationality": "Irlanda",
-        "marketValue": 5000000
+        "overall": 76,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Auston Trusty",
-        "position": "DFC",
-        "rating": 76,
+        "position": "CB",
         "age": 27,
-        "nationality": "Estados Unidos",
-        "marketValue": 5000000
+        "overall": 76,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stephen Welsh",
-        "position": "DFC",
-        "rating": 74,
+        "position": "CB",
         "age": 26,
-        "nationality": "Escocia",
-        "marketValue": 800
+        "overall": 74,
+        "value": 800,
+        "salary": 24000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dane Murray",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 22,
-        "nationality": "Escocia",
-        "marketValue": 350
+        "overall": 69,
+        "value": 350,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hayato Inamura",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 25,
-        "nationality": "Japón",
-        "marketValue": 300
+        "overall": 72,
+        "value": 300,
+        "salary": 22000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kieran Tierney",
-        "position": "DFC",
-        "rating": 77,
+        "position": "CB",
         "age": 28,
-        "nationality": "Escocia",
-        "marketValue": 8000000
+        "overall": 77,
+        "value": 8000000,
+        "salary": 24000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marcelo Saracchi",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 36,
-        "nationality": "Uruguay",
-        "marketValue": 1500000
+        "overall": 69,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adam Montgomery",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 37,
-        "nationality": "Escocia",
-        "marketValue": 400
+        "overall": 68,
+        "value": 400,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Julián Araujo",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 22,
-        "nationality": "México",
-        "marketValue": 10000000
+        "overall": 72,
+        "value": 10000000,
+        "salary": 30000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alistair Johnston",
-        "position": "DFC",
-        "rating": 76,
+        "position": "CB",
         "age": 27,
-        "nationality": "Canadá",
-        "marketValue": 8000000
+        "overall": 76,
+        "value": 8000000,
+        "salary": 24000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Anthony Ralston",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 27,
-        "nationality": "Escocia",
-        "marketValue": 1500000
+        "overall": 75,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Colby Donovan",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 19,
-        "nationality": "Escocia",
-        "marketValue": 1000000
+        "overall": 70,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Callum McGregor",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 42,
-        "nationality": "Escocia",
-        "marketValue": 4500000
+        "overall": 71,
+        "value": 4500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Reo Hatate",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 41,
-        "nationality": "Japón",
-        "marketValue": 12000000
+        "overall": 70,
+        "value": 12000000,
+        "salary": 36000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Arne Engels",
-        "position": "MC",
-        "rating": 77,
+        "position": "CM",
         "age": 27,
-        "nationality": "Bélgica",
-        "marketValue": 10000000
+        "overall": 77,
+        "value": 10000000,
+        "salary": 30000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Paulo Bernardo",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 28,
-        "nationality": "Portugal",
-        "marketValue": 4000000
+        "overall": 74,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luke McCowan",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 28,
-        "nationality": "Escocia",
-        "marketValue": 2500000
+        "overall": 74,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Odin Holm",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 15,
-        "nationality": "Noruega",
-        "marketValue": 1000000
+        "overall": 71,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daizen Maeda",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 38,
-        "nationality": "Japón",
-        "marketValue": 14000000
+        "overall": 69,
+        "value": 14000000,
+        "salary": 42000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jota",
-        "position": "DC",
-        "rating": 76,
+        "position": "ST",
         "age": 26,
-        "nationality": "Portugal",
-        "marketValue": 6000000
+        "overall": 76,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Michel-Ange Balikwisha",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 24,
-        "nationality": "RD del Congo",
-        "marketValue": 5000000
+        "overall": 71,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sebastian Tounekti",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 23,
-        "nationality": "Túnez",
-        "marketValue": 4000000
+        "overall": 71,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Benjamin Nygren",
-        "position": "DC",
-        "rating": 76,
+        "position": "ST",
         "age": 24,
-        "nationality": "Suecia",
-        "marketValue": 6500000
+        "overall": 76,
+        "value": 6500000,
+        "salary": 19500,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hyun-jun Yang",
-        "position": "DC",
-        "rating": 73,
+        "position": "ST",
         "age": 23,
-        "nationality": "Corea del Sur",
-        "marketValue": 2500000
+        "overall": 73,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "James Forrest",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 34,
-        "nationality": "Escocia",
-        "marketValue": 400
+        "overall": 65,
+        "value": 400,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kelechi Iheanacho",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 17,
-        "nationality": "Nigeria",
-        "marketValue": 3800000
+        "overall": 71,
+        "value": 3800000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tomas Cvancara",
-        "position": "DC",
-        "rating": 78,
+        "position": "ST",
         "age": 25,
-        "nationality": "República Checa",
-        "marketValue": 2500000
+        "overall": 78,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Johnny Kenny",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 24,
-        "nationality": "Irlanda",
-        "marketValue": 600
+        "overall": 71,
+        "value": 600,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Callum Osmand",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 19,
-        "nationality": "Inglaterra",
-        "marketValue": 500
+        "overall": 71,
+        "value": 500,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -275,243 +374,333 @@
     "players": [
       {
         "name": "Jack Butland",
-        "position": "POR",
-        "rating": 75,
+        "position": "GK",
         "age": 32,
-        "nationality": "Inglaterra",
-        "marketValue": 1500000
+        "overall": 75,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Liam Kelly",
-        "position": "POR",
-        "rating": 71,
+        "position": "GK",
         "age": 31,
-        "nationality": "Escocia",
-        "marketValue": 800
+        "overall": 71,
+        "value": 800,
+        "salary": 21000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kieran Wright",
-        "position": "POR",
-        "rating": 72,
+        "position": "GK",
         "age": 32,
-        "nationality": "Escocia",
-        "marketValue": 50
+        "overall": 72,
+        "value": 50,
+        "salary": 22000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nasser Djiga",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 24,
-        "nationality": "Burkina Faso",
-        "marketValue": 6000000
+        "overall": 72,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Derek Cornelius",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 28,
-        "nationality": "Canadá",
-        "marketValue": 4000000
+        "overall": 73,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "John Souttar",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 29,
-        "nationality": "Escocia",
-        "marketValue": 3500000
+        "overall": 75,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Emmanuel Fernandez",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 37,
-        "nationality": "Inglaterra",
-        "marketValue": 1500000
+        "overall": 67,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Clinton Nsiala",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 19,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 67,
+        "value": 500,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tuur Rommens",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 25,
-        "nationality": "Bélgica",
-        "marketValue": 4000000
+        "overall": 71,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jayden Meghoma",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 30,
-        "nationality": "Inglaterra",
-        "marketValue": 750
+        "overall": 72,
+        "value": 750,
+        "salary": 22000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Max Aarons",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 26,
-        "nationality": "Inglaterra",
-        "marketValue": 4000000
+        "overall": 72,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dujon Sterling",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 21,
-        "nationality": "Inglaterra",
-        "marketValue": 2500000
+        "overall": 69,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "James Tavernier",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 34,
-        "nationality": "Inglaterra",
-        "marketValue": 1300000
+        "overall": 68,
+        "value": 1300000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nicolas Raskin",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 43,
-        "nationality": "Bélgica",
-        "marketValue": 12000000
+        "overall": 71,
+        "value": 12000000,
+        "salary": 36000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tochi Chukwuani",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 42,
-        "nationality": "Dinamarca",
-        "marketValue": 4000000
+        "overall": 67,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Connor Barron",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 23,
-        "nationality": "Escocia",
-        "marketValue": 2500000
+        "overall": 71,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bailey Rice",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 19,
-        "nationality": "Escocia",
-        "marketValue": 800
+        "overall": 68,
+        "value": 800,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mohamed Diomandé",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 24,
-        "nationality": "Costa de Marfil",
-        "marketValue": 7000000
+        "overall": 72,
+        "value": 7000000,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Joe Rothwell",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 31,
-        "nationality": "Inglaterra",
-        "marketValue": 1200000
+        "overall": 72,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Thelo Aasgaard",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 23,
-        "nationality": "Noruega",
-        "marketValue": 2800000
+        "overall": 71,
+        "value": 2800000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nedim Bajrami",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 26,
-        "nationality": "Albania",
-        "marketValue": 2500000
+        "overall": 72,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mikey Moore",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 18,
-        "nationality": "Inglaterra",
-        "marketValue": 16000000
+        "overall": 72,
+        "value": 16000000,
+        "salary": 48000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Djeidi Gassama",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 23,
-        "nationality": "Francia",
-        "marketValue": 4000000
+        "overall": 71,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rabbi Matondo",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 17,
-        "nationality": "Gales",
-        "marketValue": 1000000
+        "overall": 70,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Findlay Curtis",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 19,
-        "nationality": "Escocia",
-        "marketValue": 750
+        "overall": 66,
+        "value": 750,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Andreas Skov Olsen",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 26,
-        "nationality": "Dinamarca",
-        "marketValue": 10000000
+        "overall": 74,
+        "value": 10000000,
+        "salary": 30000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Oliver Antman",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 18,
-        "nationality": "Finlandia",
-        "marketValue": 4500000
+        "overall": 67,
+        "value": 4500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Youssef Chermiti",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 21,
-        "nationality": "Portugal",
-        "marketValue": 6000000
+        "overall": 69,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bojan Miovski",
-        "position": "DC",
-        "rating": 73,
+        "position": "ST",
         "age": 28,
-        "nationality": "Macedonia del Norte",
-        "marketValue": 2500000
+        "overall": 73,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Danilo",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 26,
-        "nationality": "Brasil",
-        "marketValue": 2000000
+        "overall": 70,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -521,251 +710,344 @@
     "players": [
       {
         "name": "Alexander Schwolow",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 25,
-        "nationality": "Alemania",
-        "marketValue": 450
+        "overall": 70,
+        "value": 450,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Craig Gordon",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 43,
-        "nationality": "Escocia",
-        "marketValue": 50
+        "overall": 66,
+        "value": 50,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ryan Fulton",
-        "position": "POR",
-        "rating": 72,
+        "position": "GK",
         "age": 30,
-        "nationality": "Escocia",
-        "marketValue": 50
+        "overall": 72,
+        "value": 50,
+        "salary": 22000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Michael Steinwender",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 15,
-        "nationality": "Austria",
-        "marketValue": 1200000
+        "overall": 69,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Frankie Kent",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 30,
-        "nationality": "Inglaterra",
-        "marketValue": 500
+        "overall": 72,
+        "value": 500,
+        "salary": 22000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stuart Findlay",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 19,
-        "nationality": "Escocia",
-        "marketValue": 450
+        "overall": 70,
+        "value": 450,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jamie McCart",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 28,
-        "nationality": "Escocia",
-        "marketValue": 350
+        "overall": 71,
+        "value": 350,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Craig Halkett",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 30,
-        "nationality": "Escocia",
-        "marketValue": 300
+        "overall": 72,
+        "value": 300,
+        "salary": 22000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Harry Milne",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 18,
-        "nationality": "Escocia",
-        "marketValue": 550
+        "overall": 72,
+        "value": 550,
+        "salary": 22000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stephen Kingsley",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 31,
-        "nationality": "Escocia",
-        "marketValue": 70
+        "overall": 71,
+        "value": 70,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Christian Borchgrevink",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 26,
-        "nationality": "Noruega",
-        "marketValue": 450
+        "overall": 71,
+        "value": 450,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jordi Altena",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 23,
-        "nationality": "Países Bajos",
-        "marketValue": 400
+        "overall": 71,
+        "value": 400,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Oisin McEntee",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 31,
-        "nationality": "Irlanda",
-        "marketValue": 200
+        "overall": 72,
+        "value": 200,
+        "salary": 22000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Beni Baningime",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 27,
-        "nationality": "RD del Congo",
-        "marketValue": 1500000
+        "overall": 73,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Calem Nieuwenhof",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 24,
-        "nationality": "Australia",
-        "marketValue": 800
+        "overall": 70,
+        "value": 800,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ageu",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 40,
-        "nationality": "Brasil",
-        "marketValue": 1500000
+        "overall": 67,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cammy Devlin",
-        "position": "MC",
-        "rating": 75,
+        "position": "CM",
         "age": 27,
-        "nationality": "Australia",
-        "marketValue": 1200000
+        "overall": 75,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Blair Spittal",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 16,
-        "nationality": "Escocia",
-        "marketValue": 800
+        "overall": 67,
+        "value": 800,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marc Leonard",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 24,
-        "nationality": "Escocia",
-        "marketValue": 700
+        "overall": 73,
+        "value": 700,
+        "salary": 23000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tómas Bent Magnússon",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 22,
-        "nationality": "Islandia",
-        "marketValue": 300
+        "overall": 69,
+        "value": 300,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Finlay Pollock",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 24,
-        "nationality": "Escocia",
-        "marketValue": 75
+        "overall": 70,
+        "value": 75,
+        "salary": 20000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexandros Kyziridis",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 25,
-        "nationality": "Grecia",
-        "marketValue": 2000000
+        "overall": 74,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rogers Mato",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 25,
-        "nationality": "Uganda",
-        "marketValue": 700
+        "overall": 72,
+        "value": 700,
+        "salary": 22000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pierre Landry Kabore",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 24,
-        "nationality": "Burkina Faso",
-        "marketValue": 300
+        "overall": 67,
+        "value": 300,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alan Forrest",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 17,
-        "nationality": "Escocia",
-        "marketValue": 250
+        "overall": 66,
+        "value": 250,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Islam Chesnokov",
-        "position": "DC",
-        "rating": 73,
+        "position": "ST",
         "age": 26,
-        "nationality": "Kazajistán",
-        "marketValue": 1200000
+        "overall": 73,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sabah Kerjota",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 29,
-        "nationality": "Albania",
-        "marketValue": 250
+        "overall": 69,
+        "value": 250,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lawrence Shankland",
-        "position": "DC",
-        "rating": 77,
+        "position": "ST",
         "age": 30,
-        "nationality": "Escocia",
-        "marketValue": 2500000
+        "overall": 77,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cláudio Braga",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 26,
-        "nationality": "Portugal",
-        "marketValue": 2500000
+        "overall": 75,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "James Wilson",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 21,
-        "nationality": "Escocia",
-        "marketValue": 1200000
+        "overall": 69,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Elton Kabangu",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 27,
-        "nationality": "Bélgica",
-        "marketValue": 500
+        "overall": 69,
+        "value": 500,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -775,219 +1057,300 @@
     "players": [
       {
         "name": "Raphael Sallinger",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 30,
-        "nationality": "Austria",
-        "marketValue": 450
+        "overall": 70,
+        "value": 450,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jordan Smith",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 31,
-        "nationality": "Inglaterra",
-        "marketValue": 100
+        "overall": 69,
+        "value": 100,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Murray Johnson",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 31,
-        "nationality": "Escocia",
-        "marketValue": 100
+        "overall": 70,
+        "value": 100,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rocky Bushiri",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 33,
-        "nationality": "RD del Congo",
-        "marketValue": 900
+        "overall": 65,
+        "value": 900,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Warren O'Hora",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 26,
-        "nationality": "Irlanda",
-        "marketValue": 550
+        "overall": 70,
+        "value": 550,
+        "salary": 20000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Grant Hanley",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 34,
-        "nationality": "Escocia",
-        "marketValue": 500
+        "overall": 65,
+        "value": 500,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jack Iredale",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 15,
-        "nationality": "Australia",
-        "marketValue": 250
+        "overall": 66,
+        "value": 250,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jordan Obita",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 21,
-        "nationality": "Uganda",
-        "marketValue": 200
+        "overall": 66,
+        "value": 200,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Chris Cadden",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 29,
-        "nationality": "Escocia",
-        "marketValue": 600
+        "overall": 70,
+        "value": 600,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kanayo Megwa",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 27,
-        "nationality": "Inglaterra",
-        "marketValue": 150
+        "overall": 69,
+        "value": 150,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dan Barlaser",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 22,
-        "nationality": "Inglaterra",
-        "marketValue": 1800000
+        "overall": 69,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Miguel Chaiwa",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 21,
-        "nationality": "Zambia",
-        "marketValue": 1200000
+        "overall": 67,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dylan Levitt",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 25,
-        "nationality": "Gales",
-        "marketValue": 650
+        "overall": 69,
+        "value": 650,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alasana Manneh",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 27,
-        "nationality": "Gambia",
-        "marketValue": 450
+        "overall": 69,
+        "value": 450,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kai Andrews",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 19,
-        "nationality": "Gales",
-        "marketValue": 400
+        "overall": 66,
+        "value": 400,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Joe Newell",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 32,
-        "nationality": "Inglaterra",
-        "marketValue": 400
+        "overall": 64,
+        "value": 400,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Josh Mulligan",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 20,
-        "nationality": "Escocia",
-        "marketValue": 1200000
+        "overall": 70,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nicky Cadden",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 19,
-        "nationality": "Escocia",
-        "marketValue": 700
+        "overall": 66,
+        "value": 700,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jamie McGrath",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 17,
-        "nationality": "Irlanda",
-        "marketValue": 1200000
+        "overall": 69,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Josh Campbell",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 32,
-        "nationality": "Escocia",
-        "marketValue": 1000000
+        "overall": 65,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rudi Molotnikov",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 35,
-        "nationality": "Escocia",
-        "marketValue": 400
+        "overall": 64,
+        "value": 400,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Élie Youan",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 26,
-        "nationality": "Francia",
-        "marketValue": 1200000
+        "overall": 68,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Junior Hoilett",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 23,
-        "nationality": "Canadá",
-        "marketValue": 50
+        "overall": 65,
+        "value": 50,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kieron Bowie",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 23,
-        "nationality": "Escocia",
-        "marketValue": 2700000
+        "overall": 69,
+        "value": 2700000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Thibault Klidjé",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 18,
-        "nationality": "Togo",
-        "marketValue": 2200000
+        "overall": 65,
+        "value": 2200000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Martin Boyle",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 32,
-        "nationality": "Australia",
-        "marketValue": 500
+        "overall": 64,
+        "value": 500,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Owen Elding",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 19,
-        "nationality": "Irlanda",
-        "marketValue": 350
+        "overall": 67,
+        "value": 350,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -997,243 +1360,333 @@
     "players": [
       {
         "name": "Dimitar Mitov",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 29,
-        "nationality": "Bulgaria",
-        "marketValue": 800
+        "overall": 70,
+        "value": 800,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Per Kristian Bråtveit",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 29,
-        "nationality": "Noruega",
-        "marketValue": 600
+        "overall": 68,
+        "value": 600,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nick Suman",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 25,
-        "nationality": "Australia",
-        "marketValue": 0
+        "overall": 65,
+        "value": 0,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jack Milne",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 22,
-        "nationality": "Escocia",
-        "marketValue": 1000000
+        "overall": 67,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Liam Morrison",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 23,
-        "nationality": "Escocia",
-        "marketValue": 1000000
+        "overall": 67,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kristers Tobers",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 24,
-        "nationality": "Letonia",
-        "marketValue": 800
+        "overall": 66,
+        "value": 800,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mats Knoester",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 27,
-        "nationality": "Países Bajos",
-        "marketValue": 600
+        "overall": 70,
+        "value": 600,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gavin Molloy",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 21,
-        "nationality": "Irlanda",
-        "marketValue": 600
+        "overall": 63,
+        "value": 600,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Emmanuel Gyamfi",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 21,
-        "nationality": "Alemania",
-        "marketValue": 200
+        "overall": 63,
+        "value": 200,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mitchel Frame",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 20,
-        "nationality": "Escocia",
-        "marketValue": 0
+        "overall": 67,
+        "value": 0,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexander Jensen",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 28,
-        "nationality": "Dinamarca",
-        "marketValue": 1300000
+        "overall": 69,
+        "value": 1300000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nicky Devlin",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 32,
-        "nationality": "Escocia",
-        "marketValue": 450
+        "overall": 68,
+        "value": 450,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Afeez Aremu",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 26,
-        "nationality": "Nigeria",
-        "marketValue": 600
+        "overall": 68,
+        "value": 600,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ante Palaversa",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 18,
-        "nationality": "Croacia",
-        "marketValue": 550
+        "overall": 63,
+        "value": 550,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dante Polvara",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 25,
-        "nationality": "Estados Unidos",
-        "marketValue": 400
+        "overall": 68,
+        "value": 400,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sivert Heltne Nilsen",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 34,
-        "nationality": "Noruega",
-        "marketValue": 250
+        "overall": 62,
+        "value": 250,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Graeme Shinnie",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 34,
-        "nationality": "Escocia",
-        "marketValue": 200
+        "overall": 63,
+        "value": 200,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kjartan Már Kjartansson",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 29,
-        "nationality": "Islandia",
-        "marketValue": 150
+        "overall": 67,
+        "value": 150,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lyall Cameron",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 25,
-        "nationality": "Escocia",
-        "marketValue": 1500000
+        "overall": 69,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Leighton Clarkson",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 24,
-        "nationality": "Inglaterra",
-        "marketValue": 1000000
+        "overall": 66,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stuart Armstrong",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 16,
-        "nationality": "Escocia",
-        "marketValue": 600
+        "overall": 64,
+        "value": 600,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adil Aouchiche",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 23,
-        "nationality": "Francia",
-        "marketValue": 1300000
+        "overall": 67,
+        "value": 1300000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Topi Keskinen",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 22,
-        "nationality": "Finlandia",
-        "marketValue": 1600000
+        "overall": 65,
+        "value": 1600000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kenan Bilalovic",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 20,
-        "nationality": "Suecia",
-        "marketValue": 500
+        "overall": 64,
+        "value": 500,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nicolas Milanovic",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 24,
-        "nationality": "Australia",
-        "marketValue": 600
+        "overall": 63,
+        "value": 600,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dylan Lobban",
-        "position": "DC",
-        "rating": 58,
+        "position": "ST",
         "age": 38,
-        "nationality": "Escocia",
-        "marketValue": 0
+        "overall": 58,
+        "value": 0,
+        "salary": 8000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kevin Nisbet",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 15,
-        "nationality": "Escocia",
-        "marketValue": 1500000
+        "overall": 64,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marko Lazetić",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 27,
-        "nationality": "Serbia",
-        "marketValue": 800
+        "overall": 65,
+        "value": 800,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Toyosi Olusanya",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 20,
-        "nationality": "Inglaterra",
-        "marketValue": 500
+        "overall": 68,
+        "value": 500,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Peter Ambrose",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 32,
-        "nationality": "Nigeria",
-        "marketValue": 400
+        "overall": 62,
+        "value": 400,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1243,195 +1696,267 @@
     "players": [
       {
         "name": "Ashley Maynard-Brewer",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 26,
-        "nationality": "Australia",
-        "marketValue": 300
+        "overall": 66,
+        "value": 300,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dave Richards",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 25,
-        "nationality": "Gales",
-        "marketValue": 75
+        "overall": 65,
+        "value": 75,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ruairidh Adams",
-        "position": "POR",
-        "rating": 67,
+        "position": "GK",
         "age": 31,
-        "nationality": "Escocia",
-        "marketValue": 0
+        "overall": 67,
+        "value": 0,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ross Graham",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 24,
-        "nationality": "Escocia",
-        "marketValue": 550
+        "overall": 66,
+        "value": 550,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bert Esselink",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 26,
-        "nationality": "Países Bajos",
-        "marketValue": 350
+        "overall": 68,
+        "value": 350,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Krisztián Keresztes",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 23,
-        "nationality": "Hungría",
-        "marketValue": 350
+        "overall": 68,
+        "value": 350,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Iurie Iovu",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 23,
-        "nationality": "Moldavia",
-        "marketValue": 300
+        "overall": 66,
+        "value": 300,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ryan Strain",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 28,
-        "nationality": "Australia",
-        "marketValue": 450
+        "overall": 67,
+        "value": 450,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dario Naamo",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 22,
-        "nationality": "Finlandia",
-        "marketValue": 200
+        "overall": 63,
+        "value": 200,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luca Stephenson",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 21,
-        "nationality": "Inglaterra",
-        "marketValue": 900
+        "overall": 64,
+        "value": 900,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vicko Sevelj",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 25,
-        "nationality": "Croacia",
-        "marketValue": 650
+        "overall": 68,
+        "value": 650,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Craig Sibbald",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 30,
-        "nationality": "Escocia",
-        "marketValue": 350
+        "overall": 68,
+        "value": 350,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Julius Eskesen",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 26,
-        "nationality": "Dinamarca",
-        "marketValue": 750
+        "overall": 67,
+        "value": 750,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Panutche Camara",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 28,
-        "nationality": "Guinea-Bissau",
-        "marketValue": 350
+        "overall": 68,
+        "value": 350,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Isaac Pappoe",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 22,
-        "nationality": "Ghana",
-        "marketValue": 250
+        "overall": 66,
+        "value": 250,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lewis O'Donnell",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 30,
-        "nationality": "Escocia",
-        "marketValue": 0
+        "overall": 68,
+        "value": 0,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Will Ferry",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 25,
-        "nationality": "Irlanda",
-        "marketValue": 800
+        "overall": 70,
+        "value": 800,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Neil Farrugia",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 20,
-        "nationality": "Irlanda",
-        "marketValue": 125
+        "overall": 64,
+        "value": 125,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ivan Dolcek",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 19,
-        "nationality": "Croacia",
-        "marketValue": 900
+        "overall": 65,
+        "value": 900,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kristijan Trapanovski",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 26,
-        "nationality": "Macedonia del Norte",
-        "marketValue": 600
+        "overall": 65,
+        "value": 600,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Amar Fatah",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 17,
-        "nationality": "Suecia",
-        "marketValue": 500
+        "overall": 66,
+        "value": 500,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Zachary Sapsford",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 23,
-        "nationality": "Australia",
-        "marketValue": 700
+        "overall": 66,
+        "value": 700,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nikolaj Möller",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 23,
-        "nationality": "Suecia",
-        "marketValue": 450
+        "overall": 63,
+        "value": 450,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Max Watters",
-        "position": "DC",
-        "rating": 60,
+        "position": "ST",
         "age": 36,
-        "nationality": "Inglaterra",
-        "marketValue": 400
+        "overall": 60,
+        "value": 400,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1441,235 +1966,322 @@
     "players": [
       {
         "name": "Maksymilian Stryjek",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 29,
-        "nationality": "Polonia",
-        "marketValue": 300
+        "overall": 68,
+        "value": 300,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kelle Roos",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 33,
-        "nationality": "Países Bajos",
-        "marketValue": 275
+        "overall": 68,
+        "value": 275,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Eddie Beach",
-        "position": "POR",
-        "rating": 67,
+        "position": "GK",
         "age": 30,
-        "nationality": "Gales",
-        "marketValue": 200
+        "overall": 67,
+        "value": 200,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lewis Mayo",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 25,
-        "nationality": "Escocia",
-        "marketValue": 600
+        "overall": 68,
+        "value": 600,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Robbie Deas",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 25,
-        "nationality": "Escocia",
-        "marketValue": 500
+        "overall": 68,
+        "value": 500,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Zac Williams",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 21,
-        "nationality": "Gales",
-        "marketValue": 450
+        "overall": 63,
+        "value": 450,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "George Stanger",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 25,
-        "nationality": "Nueva Zelanda",
-        "marketValue": 200
+        "overall": 66,
+        "value": 200,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ethan Schilte-Brown",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 25,
-        "nationality": "Canadá",
-        "marketValue": 100
+        "overall": 65,
+        "value": 100,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dominic Thompson",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 25,
-        "nationality": "Inglaterra",
-        "marketValue": 400
+        "overall": 66,
+        "value": 400,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Michael Schjönning-Larsen",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 21,
-        "nationality": "Estonia",
-        "marketValue": 350
+        "overall": 64,
+        "value": 350,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jamie Brandon",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 27,
-        "nationality": "Escocia",
-        "marketValue": 250
+        "overall": 70,
+        "value": 250,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "James Brown",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 15,
-        "nationality": "Irlanda",
-        "marketValue": 200
+        "overall": 64,
+        "value": 200,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Watson",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 20,
-        "nationality": "Escocia",
-        "marketValue": 1800000
+        "overall": 67,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ben Brannan",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 26,
-        "nationality": "Escocia",
-        "marketValue": 400
+        "overall": 67,
+        "value": 400,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Brad Lyons",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 28,
-        "nationality": "Irlanda del Norte",
-        "marketValue": 350
+        "overall": 68,
+        "value": 350,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kyle Magennis",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 16,
-        "nationality": "Escocia",
-        "marketValue": 350
+        "overall": 63,
+        "value": 350,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jack Thomson",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 22,
-        "nationality": "Escocia",
-        "marketValue": 250
+        "overall": 65,
+        "value": 250,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Liam Polworth",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 31,
-        "nationality": "Escocia",
-        "marketValue": 200
+        "overall": 68,
+        "value": 200,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tom Lowery",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 18,
-        "nationality": "Inglaterra",
-        "marketValue": 175
+        "overall": 63,
+        "value": 175,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Greg Kiltie",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 29,
-        "nationality": "Escocia",
-        "marketValue": 300
+        "overall": 66,
+        "value": 300,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Scott Tiffoney",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 17,
-        "nationality": "Escocia",
-        "marketValue": 250
+        "overall": 62,
+        "value": 250,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nicky Cleșcenco",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 24,
-        "nationality": "Moldavia",
-        "marketValue": 150
+        "overall": 66,
+        "value": 150,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matty Kennedy",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 31,
-        "nationality": "Irlanda del Norte",
-        "marketValue": 150
+        "overall": 62,
+        "value": 150,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rory McKenzie",
-        "position": "DC",
-        "rating": 59,
+        "position": "ST",
         "age": 32,
-        "nationality": "Escocia",
-        "marketValue": 150
+        "overall": 59,
+        "value": 150,
+        "salary": 9000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bruce Anderson",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 19,
-        "nationality": "Escocia",
-        "marketValue": 300
+        "overall": 63,
+        "value": 300,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tyreece John-Jules",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 24,
-        "nationality": "Inglaterra",
-        "marketValue": 250
+        "overall": 66,
+        "value": 250,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Djenairo Daniels",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 29,
-        "nationality": "Surinam",
-        "marketValue": 200
+        "overall": 69,
+        "value": 200,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marcus Dackers",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 23,
-        "nationality": "Gales",
-        "marketValue": 150
+        "overall": 64,
+        "value": 150,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marley Watkins",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 23,
-        "nationality": "Gales",
-        "marketValue": 50
+        "overall": 63,
+        "value": 50,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1679,211 +2291,289 @@
     "players": [
       {
         "name": "Shamal George",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 28,
-        "nationality": "Inglaterra",
-        "marketValue": 300
+        "overall": 70,
+        "value": 300,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Peter Urminsky",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 26,
-        "nationality": "Eslovaquia",
-        "marketValue": 75
+        "overall": 66,
+        "value": 75,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ryan Mullen",
-        "position": "POR",
-        "rating": 67,
+        "position": "GK",
         "age": 31,
-        "nationality": "Escocia",
-        "marketValue": 50
+        "overall": 67,
+        "value": 50,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alex Gogic",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 31,
-        "nationality": "Chipre",
-        "marketValue": 400
+        "overall": 70,
+        "value": 400,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Richard King",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 24,
-        "nationality": "Jamaica",
-        "marketValue": 250
+        "overall": 66,
+        "value": 250,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Miguel Freckleton",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 21,
-        "nationality": "Inglaterra",
-        "marketValue": 200
+        "overall": 66,
+        "value": 200,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Scott Tanser",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 31,
-        "nationality": "Inglaterra",
-        "marketValue": 350
+        "overall": 67,
+        "value": 350,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Declan John",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 24,
-        "nationality": "Gales",
-        "marketValue": 250
+        "overall": 70,
+        "value": 250,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jayden Richardson",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 25,
-        "nationality": "Inglaterra",
-        "marketValue": 350
+        "overall": 66,
+        "value": 350,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marcus Fraser",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 22,
-        "nationality": "Escocia",
-        "marketValue": 350
+        "overall": 66,
+        "value": 350,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tunmise Sobowale",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 19,
-        "nationality": "Irlanda",
-        "marketValue": 250
+        "overall": 63,
+        "value": 250,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mark O'Hara",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 30,
-        "nationality": "Escocia",
-        "marketValue": 700
+        "overall": 68,
+        "value": 700,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Keanu Baccus",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 25,
-        "nationality": "Australia",
-        "marketValue": 700
+        "overall": 68,
+        "value": 700,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Liam Donnelly",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 44,
-        "nationality": "Irlanda del Norte",
-        "marketValue": 350
+        "overall": 61,
+        "value": 350,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Killian Phillips",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 23,
-        "nationality": "Irlanda",
-        "marketValue": 1000000
+        "overall": 69,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Allan Campbell",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 16,
-        "nationality": "Escocia",
-        "marketValue": 800
+        "overall": 64,
+        "value": 800,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Roland Idowu",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 24,
-        "nationality": "Irlanda",
-        "marketValue": 150
+        "overall": 65,
+        "value": 150,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Conor McMenamin",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 30,
-        "nationality": "Irlanda del Norte",
-        "marketValue": 150
+        "overall": 66,
+        "value": 150,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jalmaro Calvin",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 17,
-        "nationality": "Antigua y Barbuda",
-        "marketValue": 100
+        "overall": 64,
+        "value": 100,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Malik Dijksteel",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 18,
-        "nationality": "Países Bajos",
-        "marketValue": 75
+        "overall": 62,
+        "value": 75,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Evan Mooney",
-        "position": "DC",
-        "rating": 59,
+        "position": "ST",
         "age": 33,
-        "nationality": "Escocia",
-        "marketValue": 300
+        "overall": 59,
+        "value": 300,
+        "salary": 9000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kion Etete",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 24,
-        "nationality": "Inglaterra",
-        "marketValue": 900
+        "overall": 66,
+        "value": 900,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jonah Ayunga",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 28,
-        "nationality": "Kenia",
-        "marketValue": 450
+        "overall": 68,
+        "value": 450,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dan Nlundulu",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 26,
-        "nationality": "Inglaterra",
-        "marketValue": 350
+        "overall": 66,
+        "value": 350,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jake Young",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 20,
-        "nationality": "Inglaterra",
-        "marketValue": 225
+        "overall": 65,
+        "value": 225,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mikael Mandron",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 31,
-        "nationality": "Francia",
-        "marketValue": 200
+        "overall": 64,
+        "value": 200,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1893,211 +2583,289 @@
     "players": [
       {
         "name": "Aston Oxborough",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 27,
-        "nationality": "Inglaterra",
-        "marketValue": 300
+        "overall": 65,
+        "value": 300,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Calum Ward",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 25,
-        "nationality": "Inglaterra",
-        "marketValue": 250
+        "overall": 68,
+        "value": 250,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matty Connelly",
-        "position": "POR",
-        "rating": 67,
+        "position": "GK",
         "age": 31,
-        "nationality": "Escocia",
-        "marketValue": 50
+        "overall": 67,
+        "value": 50,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Liam Gordon",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 30,
-        "nationality": "Escocia",
-        "marketValue": 400
+        "overall": 68,
+        "value": 400,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jordan McGhee",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 29,
-        "nationality": "Escocia",
-        "marketValue": 200
+        "overall": 68,
+        "value": 200,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Emmanuel Longelo",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 45,
-        "nationality": "Inglaterra",
-        "marketValue": 700
+        "overall": 63,
+        "value": 700,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "John Koutroumbis",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 22,
-        "nationality": "Australia",
-        "marketValue": 350
+        "overall": 64,
+        "value": 350,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Paul McGinn",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 16,
-        "nationality": "Escocia",
-        "marketValue": 100
+        "overall": 64,
+        "value": 100,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stephen O'Donnell",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 33,
-        "nationality": "Escocia",
-        "marketValue": 50
+        "overall": 63,
+        "value": 50,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Elliot Watt",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 20,
-        "nationality": "Escocia",
-        "marketValue": 500
+        "overall": 66,
+        "value": 500,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Andy Halliday",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 34,
-        "nationality": "Escocia",
-        "marketValue": 150
+        "overall": 62,
+        "value": 150,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Callum Slattery",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 26,
-        "nationality": "Inglaterra",
-        "marketValue": 450
+        "overall": 69,
+        "value": 450,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lukas Fadinger",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 25,
-        "nationality": "Austria",
-        "marketValue": 350
+        "overall": 70,
+        "value": 350,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Oscar Priestman",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 18,
-        "nationality": "Australia",
-        "marketValue": 300
+        "overall": 63,
+        "value": 300,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tom Sparrow",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 23,
-        "nationality": "Gales",
-        "marketValue": 100
+        "overall": 65,
+        "value": 100,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sam Nicholson",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 19,
-        "nationality": "Escocia",
-        "marketValue": 100
+        "overall": 64,
+        "value": 100,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tawanda Maswanhise",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 23,
-        "nationality": "Zimbabue",
-        "marketValue": 700
+        "overall": 68,
+        "value": 700,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Regan Charles-Cook",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 28,
-        "nationality": "Granada",
-        "marketValue": 600
+        "overall": 65,
+        "value": 600,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ibrahim Said",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 23,
-        "nationality": "Nigeria",
-        "marketValue": 600
+        "overall": 64,
+        "value": 600,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Elijah Just",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 21,
-        "nationality": "Nueva Zelanda",
-        "marketValue": 450
+        "overall": 64,
+        "value": 450,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Apostolos Stamatelopoulos",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 26,
-        "nationality": "Australia",
-        "marketValue": 550
+        "overall": 68,
+        "value": 550,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Eythor Bjørgolfsson",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 15,
-        "nationality": "Noruega",
-        "marketValue": 400
+        "overall": 68,
+        "value": 400,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filip Stuparevic",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 17,
-        "nationality": "Serbia",
-        "marketValue": 300
+        "overall": 65,
+        "value": 300,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Zach Robinson",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 23,
-        "nationality": "Inglaterra",
-        "marketValue": 250
+        "overall": 66,
+        "value": 250,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Callum Hendry",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 28,
-        "nationality": "Escocia",
-        "marketValue": 225
+        "overall": 66,
+        "value": 225,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luca Ross",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 28,
-        "nationality": "Escocia",
-        "marketValue": 50
+        "overall": 65,
+        "value": 50,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -2107,227 +2875,311 @@
     "players": [
       {
         "name": "Jérôme Prior",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 28,
-        "nationality": "Francia",
-        "marketValue": 150
+        "overall": 70,
+        "value": 150,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jack Hamilton",
-        "position": "POR",
-        "rating": 67,
+        "position": "GK",
         "age": 31,
-        "nationality": "Escocia",
-        "marketValue": 100
+        "overall": 67,
+        "value": 100,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jamie Smith",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 32,
-        "nationality": "Escocia",
-        "marketValue": 0
+        "overall": 68,
+        "value": 0,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Danny Wilson",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 27,
-        "nationality": "Escocia",
-        "marketValue": 125
+        "overall": 70,
+        "value": 125,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ryan McGowan",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 36,
-        "nationality": "Australia",
-        "marketValue": 50
+        "overall": 63,
+        "value": 50,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Brooklyn Kabongolo",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 23,
-        "nationality": "Francia",
-        "marketValue": 25
+        "overall": 65,
+        "value": 25,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Babacar Fati",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 25,
-        "nationality": "Guinea-Bissau",
-        "marketValue": 350
+        "overall": 66,
+        "value": 350,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Joshua Brenet",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 30,
-        "nationality": "Curazao",
-        "marketValue": 1500000
+        "overall": 70,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Danny Finlayson",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 19,
-        "nationality": "Irlanda del Norte",
-        "marketValue": 200
+        "overall": 66,
+        "value": 200,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cammy Kerr",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 30,
-        "nationality": "Escocia",
-        "marketValue": 100
+        "overall": 68,
+        "value": 100,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mahamadou Susoho",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 21,
-        "nationality": "España",
-        "marketValue": 1000000
+        "overall": 65,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mohamad Sylla",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 24,
-        "nationality": "Francia",
-        "marketValue": 100
+        "overall": 66,
+        "value": 100,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Emmanuel Danso",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 20,
-        "nationality": "Ghana",
-        "marketValue": 400
+        "overall": 64,
+        "value": 400,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Macaulay Tait",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 25,
-        "nationality": "Escocia",
-        "marketValue": 400
+        "overall": 68,
+        "value": 400,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Aidan Denholm",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 22,
-        "nationality": "Escocia",
-        "marketValue": 300
+        "overall": 66,
+        "value": 300,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Scott Arfield",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 37,
-        "nationality": "Canadá",
-        "marketValue": 50
+        "overall": 64,
+        "value": 50,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lewis Smith",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 15,
-        "nationality": "Escocia",
-        "marketValue": 200
+        "overall": 64,
+        "value": 200,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cristian Montano",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 26,
-        "nationality": "Colombia",
-        "marketValue": 100
+        "overall": 69,
+        "value": 100,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Samson Lawal",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 40,
-        "nationality": "Nigeria",
-        "marketValue": 150
+        "overall": 61,
+        "value": 150,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Scott Pittman",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 33,
-        "nationality": "Escocia",
-        "marketValue": 100
+        "overall": 63,
+        "value": 100,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Andrew Shinnie",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 22,
-        "nationality": "Escocia",
-        "marketValue": 50
+        "overall": 65,
+        "value": 50,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jannik Wanner",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 31,
-        "nationality": "Alemania",
-        "marketValue": 200
+        "overall": 62,
+        "value": 200,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Joshua Zimmerman",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 29,
-        "nationality": "Curazao",
-        "marketValue": 325
+        "overall": 68,
+        "value": 325,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Connor McLennan",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 26,
-        "nationality": "Escocia",
-        "marketValue": 150
+        "overall": 65,
+        "value": 150,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alex Tamm",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 21,
-        "nationality": "Estonia",
-        "marketValue": 600
+        "overall": 65,
+        "value": 600,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Robbie Muirhead",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 29,
-        "nationality": "Escocia",
-        "marketValue": 175
+        "overall": 67,
+        "value": 175,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stevie May",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 17,
-        "nationality": "Escocia",
-        "marketValue": 100
+        "overall": 63,
+        "value": 100,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jeremy Bokila",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 18,
-        "nationality": "RD del Congo",
-        "marketValue": 50
+        "overall": 64,
+        "value": 50,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -2337,195 +3189,267 @@
     "players": [
       {
         "name": "Jon McCracken",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 25,
-        "nationality": "Escocia",
-        "marketValue": 500
+        "overall": 65,
+        "value": 500,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kieran O'Hara",
-        "position": "POR",
-        "rating": 64,
+        "position": "GK",
         "age": 29,
-        "nationality": "Irlanda",
-        "marketValue": 150
+        "overall": 64,
+        "value": 150,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ryan Astley",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 24,
-        "nationality": "Gales",
-        "marketValue": 600
+        "overall": 63,
+        "value": 600,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luke Graham",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 22,
-        "nationality": "Escocia",
-        "marketValue": 500
+        "overall": 63,
+        "value": 500,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Billy Koumetio",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 23,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 62,
+        "value": 400,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Aaron Donnelly",
-        "position": "DFC",
-        "rating": 60,
+        "position": "CB",
         "age": 22,
-        "nationality": "Irlanda del Norte",
-        "marketValue": 400
+        "overall": 60,
+        "value": 400,
+        "salary": 10000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Clark Robertson",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 32,
-        "nationality": "Escocia",
-        "marketValue": 150
+        "overall": 65,
+        "value": 150,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Imari Samuels",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 22,
-        "nationality": "Inglaterra",
-        "marketValue": 300
+        "overall": 61,
+        "value": 300,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ethan Ingram",
-        "position": "DFC",
-        "rating": 60,
+        "position": "CB",
         "age": 22,
-        "nationality": "Inglaterra",
-        "marketValue": 300
+        "overall": 60,
+        "value": 300,
+        "salary": 10000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Brad Halliday",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 16,
-        "nationality": "Inglaterra",
-        "marketValue": 300
+        "overall": 61,
+        "value": 300,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Paul Digby",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 30,
-        "nationality": "Inglaterra",
-        "marketValue": 200
+        "overall": 64,
+        "value": 200,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Joel Cotterill",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 24,
-        "nationality": "Gales",
-        "marketValue": 150
+        "overall": 63,
+        "value": 150,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ethan Hamilton",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 27,
-        "nationality": "Escocia",
-        "marketValue": 400
+        "overall": 65,
+        "value": 400,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Finlay Robertson",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 23,
-        "nationality": "Escocia",
-        "marketValue": 300
+        "overall": 63,
+        "value": 300,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Callum Jones",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 28,
-        "nationality": "Gales",
-        "marketValue": 300
+        "overall": 65,
+        "value": 300,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Drey Wright",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 30,
-        "nationality": "Inglaterra",
-        "marketValue": 150
+        "overall": 65,
+        "value": 150,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cameron Congreve",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 20,
-        "nationality": "Gales",
-        "marketValue": 450
+        "overall": 62,
+        "value": 450,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Charlie Reilly",
-        "position": "MC",
-        "rating": 60,
+        "position": "CM",
         "age": 18,
-        "nationality": "Escocia",
-        "marketValue": 100
+        "overall": 60,
+        "value": 100,
+        "salary": 10000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yan Dhanda",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 21,
-        "nationality": "Inglaterra",
-        "marketValue": 500
+        "overall": 61,
+        "value": 500,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tony Yogane",
-        "position": "DC",
-        "rating": 60,
+        "position": "ST",
         "age": 17,
-        "nationality": "Inglaterra",
-        "marketValue": 150
+        "overall": 60,
+        "value": 150,
+        "salary": 10000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Simon Murray",
-        "position": "DC",
-        "rating": 60,
+        "position": "ST",
         "age": 15,
-        "nationality": "Escocia",
-        "marketValue": 150
+        "overall": 60,
+        "value": 150,
+        "salary": 10000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Joe Westley",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 19,
-        "nationality": "Inglaterra",
-        "marketValue": 150
+        "overall": 62,
+        "value": 150,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ashley Hay",
-        "position": "DC",
-        "rating": 60,
+        "position": "ST",
         "age": 22,
-        "nationality": "Inglaterra",
-        "marketValue": 100
+        "overall": 60,
+        "value": 100,
+        "salary": 10000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Joe Bevan",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 27,
-        "nationality": "Escocia",
-        "marketValue": 75
+        "overall": 65,
+        "value": 75,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -2535,219 +3459,300 @@
     "players": [
       {
         "name": "Nicky Hogarth",
-        "position": "POR",
-        "rating": 59,
+        "position": "GK",
         "age": 24,
-        "nationality": "Escocia",
-        "marketValue": 150
+        "overall": 59,
+        "value": 150,
+        "salary": 9000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jamie Sneddon",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 28,
-        "nationality": "Escocia",
-        "marketValue": 150
+        "overall": 65,
+        "value": 150,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Scott Bain",
-        "position": "POR",
-        "rating": 62,
+        "position": "GK",
         "age": 19,
-        "nationality": "Escocia",
-        "marketValue": 100
+        "overall": 62,
+        "value": 100,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lewis Neilson",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 15,
-        "nationality": "Escocia",
-        "marketValue": 700
+        "overall": 61,
+        "value": 700,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filip Lissah",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 28,
-        "nationality": "Inglaterra",
-        "marketValue": 250
+        "overall": 65,
+        "value": 250,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Liam Henderson",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 29,
-        "nationality": "Escocia",
-        "marketValue": 100
+        "overall": 67,
+        "value": 100,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Coll Donaldson",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 30,
-        "nationality": "Escocia",
-        "marketValue": 100
+        "overall": 65,
+        "value": 100,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Connor Allan",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 20,
-        "nationality": "Escocia",
-        "marketValue": 100
+        "overall": 61,
+        "value": 100,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tom Lang",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 28,
-        "nationality": "Escocia",
-        "marketValue": 50
+        "overall": 65,
+        "value": 50,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Leon McCann",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 25,
-        "nationality": "Escocia",
-        "marketValue": 100
+        "overall": 63,
+        "value": 100,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sam Hart",
-        "position": "DFC",
-        "rating": 58,
+        "position": "CB",
         "age": 42,
-        "nationality": "Inglaterra",
-        "marketValue": 100
+        "overall": 58,
+        "value": 100,
+        "salary": 8000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Keelan Adams",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 24,
-        "nationality": "Escocia",
-        "marketValue": 250
+        "overall": 63,
+        "value": 250,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Finn Yeats",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 21,
-        "nationality": "Escocia",
-        "marketValue": 200
+        "overall": 61,
+        "value": 200,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Brad Spencer",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 29,
-        "nationality": "Escocia",
-        "marketValue": 225
+        "overall": 67,
+        "value": 225,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dylan Tait",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 21,
-        "nationality": "Escocia",
-        "marketValue": 300
+        "overall": 61,
+        "value": 300,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Henry Cartwright",
-        "position": "MC",
-        "rating": 60,
+        "position": "CM",
         "age": 17,
-        "nationality": "Inglaterra",
-        "marketValue": 50
+        "overall": 60,
+        "value": 50,
+        "salary": 10000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Calvin Miller",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 29,
-        "nationality": "Escocia",
-        "marketValue": 350
+        "overall": 69,
+        "value": 350,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ethan Ross",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 23,
-        "nationality": "Escocia",
-        "marketValue": 250
+        "overall": 62,
+        "value": 250,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Aidan Nesbitt",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 28,
-        "nationality": "Escocia",
-        "marketValue": 200
+        "overall": 64,
+        "value": 200,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gary Oliver",
-        "position": "MC",
-        "rating": 60,
+        "position": "CM",
         "age": 18,
-        "nationality": "Escocia",
-        "marketValue": 75
+        "overall": 60,
+        "value": 75,
+        "salary": 10000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ethan Williams",
-        "position": "DC",
-        "rating": 61,
+        "position": "ST",
         "age": 24,
-        "nationality": "Inglaterra",
-        "marketValue": 250
+        "overall": 61,
+        "value": 250,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kyrell Wilson",
-        "position": "DC",
-        "rating": 61,
+        "position": "ST",
         "age": 22,
-        "nationality": "Inglaterra",
-        "marketValue": 100
+        "overall": 61,
+        "value": 100,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Louie Marsh",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 30,
-        "nationality": "Inglaterra",
-        "marketValue": 150
+        "overall": 67,
+        "value": 150,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ross MacIver",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 26,
-        "nationality": "Escocia",
-        "marketValue": 200
+        "overall": 65,
+        "value": 200,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ben Parkinson",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 27,
-        "nationality": "Inglaterra",
-        "marketValue": 150
+        "overall": 66,
+        "value": 150,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Barney Stewart",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 16,
-        "nationality": "Escocia",
-        "marketValue": 125
+        "overall": 64,
+        "value": 125,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Brian Graham",
-        "position": "DC",
-        "rating": 56,
+        "position": "ST",
         "age": 38,
-        "nationality": "Escocia",
-        "marketValue": 50
+        "overall": 56,
+        "value": 50,
+        "salary": 6000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   }

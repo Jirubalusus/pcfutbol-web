@@ -223,6 +223,28 @@ export default function TeamSelection() {
   };
 
   const handleSelectTeam = (team) => {
+    // Ensure budget and reputation exist (scraped teams may lack these)
+    if (!team.budget || !team.reputation) {
+      const totalValue = (team.players || []).reduce((sum, p) => sum + (p.value || 0), 0);
+      const avgOverall = team.players?.length 
+        ? team.players.reduce((s, p) => s + (p.overall || 0), 0) / team.players.length
+        : 70;
+      
+      // Budget: ~10% of squad value, with min/max bounds per reputation tier
+      if (!team.reputation) {
+        if (avgOverall >= 82) team.reputation = 5;
+        else if (avgOverall >= 78) team.reputation = 4;
+        else if (avgOverall >= 73) team.reputation = 3;
+        else if (avgOverall >= 68) team.reputation = 2;
+        else team.reputation = 1;
+      }
+      
+      if (!team.budget) {
+        const baseBudget = Math.max(totalValue * 0.10, 5_000_000);
+        const repMultiplier = [0.5, 0.7, 1.0, 1.5, 2.5][team.reputation - 1] || 1.0;
+        team.budget = Math.round(baseBudget * repMultiplier);
+      }
+    }
     setSelectedTeam(team);
   };
   

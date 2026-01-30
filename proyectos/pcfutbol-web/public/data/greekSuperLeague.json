@@ -5,259 +5,355 @@
     "players": [
       {
         "name": "Konstantinos Tzolakis",
-        "position": "POR",
-        "rating": 77,
+        "position": "GK",
         "age": 23,
-        "nationality": "Grecia",
-        "marketValue": 15000000
+        "overall": 77,
+        "value": 15000000,
+        "salary": 45000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexandros Paschalakis",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 36,
-        "nationality": "Grecia",
-        "marketValue": 400
+        "overall": 70,
+        "value": 400,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nikolaos Botis",
-        "position": "POR",
-        "rating": 74,
+        "position": "GK",
         "age": 31,
-        "nationality": "Grecia",
-        "marketValue": 300
+        "overall": 74,
+        "value": 300,
+        "salary": 24000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Georgios Kouraklis",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 19,
-        "nationality": "Grecia",
-        "marketValue": 100
+        "overall": 69,
+        "value": 100,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lorenzo Pirola",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 23,
-        "nationality": "Italia",
-        "marketValue": 9000000
+        "overall": 75,
+        "value": 9000000,
+        "salary": 27000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Panagiotis Retsos",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 45,
-        "nationality": "Grecia",
-        "marketValue": 6000000
+        "overall": 71,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Giulian Biancone",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 25,
-        "nationality": "Francia",
-        "marketValue": 2500000
+        "overall": 73,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexios Kalogeropoulos",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 21,
-        "nationality": "Grecia",
-        "marketValue": 1500000
+        "overall": 71,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gustavo Mancha",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 39,
-        "nationality": "Brasil",
-        "marketValue": 1000000
+        "overall": 69,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rúben Vezo",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 21,
-        "nationality": "Portugal",
-        "marketValue": 800
+        "overall": 70,
+        "value": 800,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Francisco Ortega",
-        "position": "DFC",
-        "rating": 79,
+        "position": "CB",
         "age": 26,
-        "nationality": "Argentina",
-        "marketValue": 7000000
+        "overall": 79,
+        "value": 7000000,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bruno Onyemaechi",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 26,
-        "nationality": "Nigeria",
-        "marketValue": 2500000
+        "overall": 75,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Costinha",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 20,
-        "nationality": "Portugal",
-        "marketValue": 6000000
+        "overall": 73,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rodinei",
-        "position": "DFC",
-        "rating": 74,
+        "position": "CB",
         "age": 23,
-        "nationality": "Brasil",
-        "marketValue": 900
+        "overall": 74,
+        "value": 900,
+        "salary": 24000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Santiago Hezze",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 32,
-        "nationality": "Argentina",
-        "marketValue": 14000000
+        "overall": 72,
+        "value": 14000000,
+        "salary": 42000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Theofanis Bakoulas",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 21,
-        "nationality": "Grecia",
-        "marketValue": 1000000
+        "overall": 72,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dani García",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 35,
-        "nationality": "España",
-        "marketValue": 800
+        "overall": 69,
+        "value": 800,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Argyrios Liatsikouras",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 19,
-        "nationality": "Grecia",
-        "marketValue": 250
+        "overall": 71,
+        "value": 250,
+        "salary": 21000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Christos Mouzakitis",
-        "position": "MC",
-        "rating": 76,
+        "position": "CM",
         "age": 19,
-        "nationality": "Grecia",
-        "marketValue": 25000000
+        "overall": 76,
+        "value": 25000000,
+        "salary": 75000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Diogo Nascimento",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 23,
-        "nationality": "Portugal",
-        "marketValue": 3500000
+        "overall": 73,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lorenzo Scipioni",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 16,
-        "nationality": "Argentina",
-        "marketValue": 3500000
+        "overall": 72,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Chiquinho",
-        "position": "MC",
-        "rating": 77,
+        "position": "CM",
         "age": 22,
-        "nationality": "Portugal",
-        "marketValue": 5000000
+        "overall": 77,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yusuf Yazıcı",
-        "position": "MC",
-        "rating": 79,
+        "position": "CM",
         "age": 29,
-        "nationality": "Turquía",
-        "marketValue": 4500000
+        "overall": 79,
+        "value": 4500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stavros Pnevmonidis",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 19,
-        "nationality": "Grecia",
-        "marketValue": 1000000
+        "overall": 71,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Podence",
-        "position": "DC",
-        "rating": 77,
+        "position": "ST",
         "age": 30,
-        "nationality": "Portugal",
-        "marketValue": 5000000
+        "overall": 77,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gabriel Strefezza",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 27,
-        "nationality": "Brasil",
-        "marketValue": 7000000
+        "overall": 75,
+        "value": 7000000,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "André Luiz",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 23,
-        "nationality": "Brasil",
-        "marketValue": 4000000
+        "overall": 74,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gelson Martins",
-        "position": "DC",
-        "rating": 76,
+        "position": "ST",
         "age": 30,
-        "nationality": "Portugal",
-        "marketValue": 2500000
+        "overall": 76,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ayoub El Kaabi",
-        "position": "DC",
-        "rating": 73,
+        "position": "ST",
         "age": 32,
-        "nationality": "Marruecos",
-        "marketValue": 5000000
+        "overall": 73,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Roman Yaremchuk",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 30,
-        "nationality": "Ucrania",
-        "marketValue": 2500000
+        "overall": 75,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mehdi Taremi",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 33,
-        "nationality": "Irán",
-        "marketValue": 2500000
+        "overall": 72,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Konstantinos Angelakis",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 18,
-        "nationality": "Grecia",
-        "marketValue": 200
+        "overall": 72,
+        "value": 200,
+        "salary": 22000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -267,259 +363,355 @@
     "players": [
       {
         "name": "Jiri Pavlenka",
-        "position": "POR",
-        "rating": 75,
+        "position": "GK",
         "age": 33,
-        "nationality": "República Checa",
-        "marketValue": 800
+        "overall": 75,
+        "value": 800,
+        "salary": 25000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luka Gugeshashvili",
-        "position": "POR",
-        "rating": 72,
+        "position": "GK",
         "age": 26,
-        "nationality": "Georgia",
-        "marketValue": 800
+        "overall": 72,
+        "value": 800,
+        "salary": 22000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Antonis Tsiftsis",
-        "position": "POR",
-        "rating": 72,
+        "position": "GK",
         "age": 26,
-        "nationality": "Grecia",
-        "marketValue": 600
+        "overall": 72,
+        "value": 600,
+        "salary": 22000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dimitrios Monastirlis",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 41,
-        "nationality": "Grecia",
-        "marketValue": 250
+        "overall": 69,
+        "value": 250,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Giannis Michailidis",
-        "position": "DFC",
-        "rating": 74,
+        "position": "CB",
         "age": 25,
-        "nationality": "Grecia",
-        "marketValue": 3000000
+        "overall": 74,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alessandro Vogliacco",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 27,
-        "nationality": "Italia",
-        "marketValue": 2500000
+        "overall": 75,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tomasz Kedziora",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 16,
-        "nationality": "Polonia",
-        "marketValue": 2000000
+        "overall": 72,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dejan Lovren",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 36,
-        "nationality": "Croacia",
-        "marketValue": 500
+        "overall": 69,
+        "value": 500,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dimitrios Bataoulas",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 18,
-        "nationality": "Grecia",
-        "marketValue": 200
+        "overall": 70,
+        "value": 200,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Greg Taylor",
-        "position": "DFC",
-        "rating": 76,
+        "position": "CB",
         "age": 32,
-        "nationality": "Escocia",
-        "marketValue": 5000000
+        "overall": 76,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Abdul Rahman Baba",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 21,
-        "nationality": "Ghana",
-        "marketValue": 2000000
+        "overall": 72,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jonjoe Kenny",
-        "position": "DFC",
-        "rating": 76,
+        "position": "CB",
         "age": 28,
-        "nationality": "Inglaterra",
-        "marketValue": 2500000
+        "overall": 76,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Joan Sastre",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 23,
-        "nationality": "España",
-        "marketValue": 1000000
+        "overall": 73,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Soualiho Meïté",
-        "position": "MC",
-        "rating": 76,
+        "position": "CM",
         "age": 31,
-        "nationality": "Francia",
-        "marketValue": 1800000
+        "overall": 76,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Magomed Ozdoev",
-        "position": "MC",
-        "rating": 78,
+        "position": "CM",
         "age": 27,
-        "nationality": "Rusia",
-        "marketValue": 1500000
+        "overall": 78,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Konstantinos Thymianis",
-        "position": "MC",
-        "rating": 79,
+        "position": "CM",
         "age": 25,
-        "nationality": "Grecia",
-        "marketValue": 500
+        "overall": 79,
+        "value": 500,
+        "salary": 29000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Christos Zafeiris",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 20,
-        "nationality": "Grecia",
-        "marketValue": 11000000
+        "overall": 73,
+        "value": 11000000,
+        "salary": 33000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mady Camara",
-        "position": "MC",
-        "rating": 76,
+        "position": "CM",
         "age": 28,
-        "nationality": "Guinea",
-        "marketValue": 7000000
+        "overall": 76,
+        "value": 7000000,
+        "salary": 21000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alessandro Bianco",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 22,
-        "nationality": "Italia",
-        "marketValue": 4500000
+        "overall": 73,
+        "value": 4500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dimitrios Tsopouroglou",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 33,
-        "nationality": "Grecia",
-        "marketValue": 350
+        "overall": 69,
+        "value": 350,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Giannis Konstantelias",
-        "position": "MC",
-        "rating": 78,
+        "position": "CM",
         "age": 22,
-        "nationality": "Grecia",
-        "marketValue": 20000000
+        "overall": 78,
+        "value": 20000000,
+        "salary": 60000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luka Ivanušec",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 18,
-        "nationality": "Croacia",
-        "marketValue": 3500000
+        "overall": 71,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dimitrios Pelkas",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 32,
-        "nationality": "Grecia",
-        "marketValue": 1500000
+        "overall": 70,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Taison",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 38,
-        "nationality": "Brasil",
-        "marketValue": 275
+        "overall": 69,
+        "value": 275,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dimitrios Berdos",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 39,
-        "nationality": "Grecia",
-        "marketValue": 200
+        "overall": 66,
+        "value": 200,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Andrija Zivkovic",
-        "position": "DC",
-        "rating": 80,
+        "position": "ST",
         "age": 29,
-        "nationality": "Serbia",
-        "marketValue": 8000000
+        "overall": 80,
+        "value": 8000000,
+        "salary": 24000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kiril Despodov",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 29,
-        "nationality": "Bulgaria",
-        "marketValue": 6000000
+        "overall": 75,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dimitrios Chatsidis",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 19,
-        "nationality": "Grecia",
-        "marketValue": 250
+        "overall": 71,
+        "value": 250,
+        "salary": 21000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Georgios Giakoumakis",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 31,
-        "nationality": "Grecia",
-        "marketValue": 7000000
+        "overall": 71,
+        "value": 7000000,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Fedor Chalov",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 27,
-        "nationality": "Rusia",
-        "marketValue": 5500000
+        "overall": 74,
+        "value": 5500000,
+        "salary": 16500,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexander Jeremejeff",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 19,
-        "nationality": "Suecia",
-        "marketValue": 800
+        "overall": 74,
+        "value": 800,
+        "salary": 24000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Anestis Mythou",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 18,
-        "nationality": "Grecia",
-        "marketValue": 250
+        "overall": 71,
+        "value": 250,
+        "salary": 21000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -529,259 +721,355 @@
     "players": [
       {
         "name": "Alban Lafont",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 40,
-        "nationality": "Costa de Marfil",
-        "marketValue": 3000000
+        "overall": 69,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lucas Chaves",
-        "position": "POR",
-        "rating": 74,
+        "position": "GK",
         "age": 30,
-        "nationality": "Argentina",
-        "marketValue": 1000000
+        "overall": 74,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Konstantinos Kotsaris",
-        "position": "POR",
-        "rating": 72,
+        "position": "GK",
         "age": 29,
-        "nationality": "Grecia",
-        "marketValue": 450
+        "overall": 72,
+        "value": 450,
+        "salary": 22000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ahmed Touba",
-        "position": "DFC",
-        "rating": 76,
+        "position": "CB",
         "age": 27,
-        "nationality": "Argelia",
-        "marketValue": 2500000
+        "overall": 76,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tin Jedvaj",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 21,
-        "nationality": "Croacia",
-        "marketValue": 2500000
+        "overall": 69,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sverrir Ingi Ingason",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 15,
-        "nationality": "Islandia",
-        "marketValue": 2000000
+        "overall": 69,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Erik Palmer-Brown",
-        "position": "DFC",
-        "rating": 74,
+        "position": "CB",
         "age": 28,
-        "nationality": "Estados Unidos",
-        "marketValue": 1500000
+        "overall": 74,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Georgios Katris",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 20,
-        "nationality": "Grecia",
-        "marketValue": 400
+        "overall": 69,
+        "value": 400,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Georgios Kyriakopoulos",
-        "position": "DFC",
-        "rating": 74,
+        "position": "CB",
         "age": 29,
-        "nationality": "Grecia",
-        "marketValue": 2000000
+        "overall": 74,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filip Mladenovic",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 25,
-        "nationality": "Serbia",
-        "marketValue": 600
+        "overall": 70,
+        "value": 600,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Davide Calabria",
-        "position": "DFC",
-        "rating": 74,
+        "position": "CB",
         "age": 29,
-        "nationality": "Italia",
-        "marketValue": 4500000
+        "overall": 74,
+        "value": 4500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Giannis Kotsiras",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 27,
-        "nationality": "Grecia",
-        "marketValue": 500
+        "overall": 73,
+        "value": 500,
+        "salary": 23000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pedro Chirivella",
-        "position": "MC",
-        "rating": 75,
+        "position": "CM",
         "age": 28,
-        "nationality": "España",
-        "marketValue": 5000000
+        "overall": 75,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Manolis Siopis",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 31,
-        "nationality": "Grecia",
-        "marketValue": 1500000
+        "overall": 73,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adam Gnezda Cerin",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 16,
-        "nationality": "Eslovenia",
-        "marketValue": 4500000
+        "overall": 70,
+        "value": 4500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Renato Sanches",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 28,
-        "nationality": "Portugal",
-        "marketValue": 2500000
+        "overall": 73,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tonny Vilhena",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 31,
-        "nationality": "Países Bajos",
-        "marketValue": 800
+        "overall": 73,
+        "value": 800,
+        "salary": 23000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sotiris Kontouris",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 18,
-        "nationality": "Grecia",
-        "marketValue": 400
+        "overall": 69,
+        "value": 400,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Anastasios Bakasetas",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 32,
-        "nationality": "Grecia",
-        "marketValue": 3500000
+        "overall": 71,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vicente Taborda",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 20,
-        "nationality": "Argentina",
-        "marketValue": 3500000
+        "overall": 69,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filip Djuricic",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 31,
-        "nationality": "Serbia",
-        "marketValue": 1000000
+        "overall": 74,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Anass Zaroury",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 25,
-        "nationality": "Marruecos",
-        "marketValue": 8000000
+        "overall": 75,
+        "value": 8000000,
+        "salary": 24000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Santino Andino",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 20,
-        "nationality": "Argentina",
-        "marketValue": 5000000
+        "overall": 72,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Facundo Pellistri",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 28,
-        "nationality": "Uruguay",
-        "marketValue": 7000000
+        "overall": 75,
+        "value": 7000000,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Mancini",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 17,
-        "nationality": "Argentina",
-        "marketValue": 2000000
+        "overall": 68,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pavlos Pantelidis",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 23,
-        "nationality": "Grecia",
-        "marketValue": 1000000
+        "overall": 72,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Georgios Kyriopoulos",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 22,
-        "nationality": "Grecia",
-        "marketValue": 350
+        "overall": 71,
+        "value": 350,
+        "salary": 21000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Giannis Bokos",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 39,
-        "nationality": "Grecia",
-        "marketValue": 100
+        "overall": 63,
+        "value": 100,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Karol Świderski",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 19,
-        "nationality": "Polonia",
-        "marketValue": 5000000
+        "overall": 72,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cyriel Dessers",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 33,
-        "nationality": "Nigeria",
-        "marketValue": 3500000
+        "overall": 69,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Milos Pantovic",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 23,
-        "nationality": "Serbia",
-        "marketValue": 3000000
+        "overall": 69,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Andreas Tetteh",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 24,
-        "nationality": "Grecia",
-        "marketValue": 2000000
+        "overall": 72,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -791,243 +1079,333 @@
     "players": [
       {
         "name": "Thomas Strakosha",
-        "position": "POR",
-        "rating": 74,
+        "position": "GK",
         "age": 30,
-        "nationality": "Albania",
-        "marketValue": 2500000
+        "overall": 74,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alberto Brignoli",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 34,
-        "nationality": "Italia",
-        "marketValue": 800
+        "overall": 70,
+        "value": 800,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Angelos Angelopoulos",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 22,
-        "nationality": "Grecia",
-        "marketValue": 100
+        "overall": 65,
+        "value": 100,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marios Balamotis",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 41,
-        "nationality": "Grecia",
-        "marketValue": 0
+        "overall": 66,
+        "value": 0,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Harold Moukoudi",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 28,
-        "nationality": "Camerún",
-        "marketValue": 5000000
+        "overall": 73,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filipe Relvas",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 44,
-        "nationality": "Portugal",
-        "marketValue": 3500000
+        "overall": 66,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Martin Georgiev",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 15,
-        "nationality": "Bulgaria",
-        "marketValue": 1500000
+        "overall": 68,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Domagoj Vida",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 21,
-        "nationality": "Croacia",
-        "marketValue": 600
+        "overall": 66,
+        "value": 600,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexander Callens",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 22,
-        "nationality": "Perú",
-        "marketValue": 300
+        "overall": 67,
+        "value": 300,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Christos Kosidis",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 34,
-        "nationality": "Grecia",
-        "marketValue": 175
+        "overall": 65,
+        "value": 175,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "James Penrice",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 29,
-        "nationality": "Escocia",
-        "marketValue": 2500000
+        "overall": 71,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stavros Pilios",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 25,
-        "nationality": "Grecia",
-        "marketValue": 1500000
+        "overall": 70,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lazaros Rota",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 28,
-        "nationality": "Grecia",
-        "marketValue": 4000000
+        "overall": 75,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marko Grujić",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 29,
-        "nationality": "Serbia",
-        "marketValue": 3000000
+        "overall": 71,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jens Jönsson",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 33,
-        "nationality": "Dinamarca",
-        "marketValue": 1200000
+        "overall": 66,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Orbelín Pineda",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 29,
-        "nationality": "México",
-        "marketValue": 7000000
+        "overall": 73,
+        "value": 7000000,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Robert Ljubicic",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 23,
-        "nationality": "Croacia",
-        "marketValue": 3500000
+        "overall": 69,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Răzvan Marin",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 18,
-        "nationality": "Rumania",
-        "marketValue": 3000000
+        "overall": 68,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Roberto Pereyra",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 37,
-        "nationality": "Argentina",
-        "marketValue": 800
+        "overall": 64,
+        "value": 800,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Niclas Eliasson",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 19,
-        "nationality": "Suecia",
-        "marketValue": 3500000
+        "overall": 69,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mijat Gacinovic",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 30,
-        "nationality": "Serbia",
-        "marketValue": 1800000
+        "overall": 71,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "João Mário",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 33,
-        "nationality": "Portugal",
-        "marketValue": 1800000
+        "overall": 67,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dimitrios Kaloskamis",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 17,
-        "nationality": "Grecia",
-        "marketValue": 1500000
+        "overall": 68,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Petros Mantalos",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 20,
-        "nationality": "Grecia",
-        "marketValue": 1000000
+        "overall": 69,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dereck Kutesa",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 28,
-        "nationality": "Suiza",
-        "marketValue": 4500000
+        "overall": 71,
+        "value": 4500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Aboubakary Koita",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 27,
-        "nationality": "Mauritania",
-        "marketValue": 4500000
+        "overall": 72,
+        "value": 4500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luka Jović",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 28,
-        "nationality": "Serbia",
-        "marketValue": 6000000
+        "overall": 75,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Frantzdy Pierrot",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 30,
-        "nationality": "Haití",
-        "marketValue": 3000000
+        "overall": 72,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Barnabás Varga",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 25,
-        "nationality": "Hungría",
-        "marketValue": 3000000
+        "overall": 74,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Zini",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 23,
-        "nationality": "Angola",
-        "marketValue": 1500000
+        "overall": 70,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1037,259 +1415,355 @@
     "players": [
       {
         "name": "Lovro Majkic",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 21,
-        "nationality": "Croacia",
-        "marketValue": 600
+        "overall": 65,
+        "value": 600,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Georgios Athanasiadis",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 33,
-        "nationality": "Grecia",
-        "marketValue": 600
+        "overall": 70,
+        "value": 600,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sokratis Dioudis",
-        "position": "POR",
-        "rating": 71,
+        "position": "GK",
         "age": 32,
-        "nationality": "Grecia",
-        "marketValue": 250
+        "overall": 71,
+        "value": 250,
+        "salary": 21000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Emiliano Karaj",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 20,
-        "nationality": "Albania",
-        "marketValue": 0
+        "overall": 65,
+        "value": 0,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pedro Álvaro",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 24,
-        "nationality": "Portugal",
-        "marketValue": 2000000
+        "overall": 70,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Noah Sonko Sundberg",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 20,
-        "nationality": "Gambia",
-        "marketValue": 900
+        "overall": 66,
+        "value": 900,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Fabiano",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 34,
-        "nationality": "Brasil",
-        "marketValue": 500
+        "overall": 66,
+        "value": 500,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lindsay Rose",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 33,
-        "nationality": "Mauricio",
-        "marketValue": 150
+        "overall": 66,
+        "value": 150,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hamza Mendyl",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 37,
-        "nationality": "Marruecos",
-        "marketValue": 900
+        "overall": 64,
+        "value": 900,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Martin Frydek",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 17,
-        "nationality": "República Checa",
-        "marketValue": 250
+        "overall": 66,
+        "value": 250,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marko Kerkez",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 25,
-        "nationality": "Serbia",
-        "marketValue": 200
+        "overall": 69,
+        "value": 200,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Noah Fadiga",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 27,
-        "nationality": "Senegal",
-        "marketValue": 2000000
+        "overall": 72,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Álvaro Tejero",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 15,
-        "nationality": "España",
-        "marketValue": 1800000
+        "overall": 68,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Uros Racic",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 27,
-        "nationality": "Serbia",
-        "marketValue": 3000000
+        "overall": 72,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Martin Hongla",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 27,
-        "nationality": "Camerún",
-        "marketValue": 1200000
+        "overall": 72,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sarafianos Papasarafianos",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 29,
-        "nationality": "Grecia",
-        "marketValue": 0
+        "overall": 71,
+        "value": 0,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Monchu",
-        "position": "MC",
-        "rating": 75,
+        "position": "CM",
         "age": 26,
-        "nationality": "España",
-        "marketValue": 6000000
+        "overall": 75,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Konstantinos Galanopoulos",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 28,
-        "nationality": "Grecia",
-        "marketValue": 1000000
+        "overall": 72,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Michalis Voriazidis",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 22,
-        "nationality": "Grecia",
-        "marketValue": 200
+        "overall": 69,
+        "value": 200,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Fredrik Jensen",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 28,
-        "nationality": "Finlandia",
-        "marketValue": 3000000
+        "overall": 72,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gabriel Misehouy",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 26,
-        "nationality": "Países Bajos",
-        "marketValue": 900
+        "overall": 70,
+        "value": 900,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mamadou Gning",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 25,
-        "nationality": "Senegal",
-        "marketValue": 50
+        "overall": 70,
+        "value": 50,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Konstantinos Charoupas",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 41,
-        "nationality": "Grecia",
-        "marketValue": 0
+        "overall": 65,
+        "value": 0,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Othmane Boussaid",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 25,
-        "nationality": "Bélgica",
-        "marketValue": 1500000
+        "overall": 72,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Anastasios Donis",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 29,
-        "nationality": "Grecia",
-        "marketValue": 600
+        "overall": 70,
+        "value": 600,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Michalis Panagidis",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 21,
-        "nationality": "Grecia",
-        "marketValue": 350
+        "overall": 68,
+        "value": 350,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Carles Pérez",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 27,
-        "nationality": "España",
-        "marketValue": 1800000
+        "overall": 70,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dudu",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 28,
-        "nationality": "Brasil",
-        "marketValue": 800
+        "overall": 68,
+        "value": 800,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Giannis Gianniotas",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 32,
-        "nationality": "Grecia",
-        "marketValue": 250
+        "overall": 62,
+        "value": 250,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Loren Morón",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 32,
-        "nationality": "España",
-        "marketValue": 2500000
+        "overall": 67,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tino Kadewere",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 30,
-        "nationality": "Zimbabue",
-        "marketValue": 1800000
+        "overall": 72,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Migouel Alfarela",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 19,
-        "nationality": "Francia",
-        "marketValue": 700
+        "overall": 68,
+        "value": 700,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1299,283 +1773,388 @@
     "players": [
       {
         "name": "Yevgeniy Kucherenko",
-        "position": "POR",
-        "rating": 67,
+        "position": "GK",
         "age": 26,
-        "nationality": "Ucrania",
-        "marketValue": 400
+        "overall": 67,
+        "value": 400,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Zivko Zivkovic",
-        "position": "POR",
-        "rating": 64,
+        "position": "GK",
         "age": 36,
-        "nationality": "Serbia",
-        "marketValue": 100
+        "overall": 64,
+        "value": 100,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Michalis Pardalos",
-        "position": "POR",
-        "rating": 63,
+        "position": "GK",
         "age": 24,
-        "nationality": "Grecia",
-        "marketValue": 75
+        "overall": 63,
+        "value": 75,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Efthymios Papazois",
-        "position": "POR",
-        "rating": 64,
+        "position": "GK",
         "age": 21,
-        "nationality": "Grecia",
-        "marketValue": 0
+        "overall": 64,
+        "value": 0,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Christos Sielis",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 16,
-        "nationality": "Chipre",
-        "marketValue": 700
+        "overall": 65,
+        "value": 700,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Unai García",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 33,
-        "nationality": "España",
-        "marketValue": 600
+        "overall": 64,
+        "value": 600,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nikola Stajic",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 24,
-        "nationality": "Serbia",
-        "marketValue": 450
+        "overall": 67,
+        "value": 450,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gustav Granath",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 28,
-        "nationality": "Suecia",
-        "marketValue": 400
+        "overall": 69,
+        "value": 400,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sebastian Mladen",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 34,
-        "nationality": "Rumania",
-        "marketValue": 300
+        "overall": 64,
+        "value": 300,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Galiatsos",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 45,
-        "nationality": "Grecia",
-        "marketValue": 250
+        "overall": 63,
+        "value": 250,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Chrysovalantis Manos",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 20,
-        "nationality": "Grecia",
-        "marketValue": 0
+        "overall": 64,
+        "value": 0,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Apostolos Apostolopoulos",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 23,
-        "nationality": "Grecia",
-        "marketValue": 450
+        "overall": 66,
+        "value": 450,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Christian Manrique",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 15,
-        "nationality": "España",
-        "marketValue": 400
+        "overall": 65,
+        "value": 400,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Charalampos Mavrias",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 35,
-        "nationality": "Grecia",
-        "marketValue": 300
+        "overall": 64,
+        "value": 300,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Georgios Agapakis",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 23,
-        "nationality": "Grecia",
-        "marketValue": 75
+        "overall": 66,
+        "value": 75,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Giannis Satsias",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 18,
-        "nationality": "Chipre",
-        "marketValue": 500
+        "overall": 65,
+        "value": 500,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lazar Kojic",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 28,
-        "nationality": "Serbia",
-        "marketValue": 400
+        "overall": 69,
+        "value": 400,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Christos Belevonis",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 23,
-        "nationality": "Grecia",
-        "marketValue": 350
+        "overall": 67,
+        "value": 350,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Andreas Bouchalakis",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 41,
-        "nationality": "Grecia",
-        "marketValue": 350
+        "overall": 63,
+        "value": 350,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexandru Mățan",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 26,
-        "nationality": "Rumania",
-        "marketValue": 2000000
+        "overall": 70,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adriano Bregou",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 30,
-        "nationality": "Grecia",
-        "marketValue": 600
+        "overall": 69,
+        "value": 600,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jeyson Chura",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 20,
-        "nationality": "Bolivia",
-        "marketValue": 500
+        "overall": 64,
+        "value": 500,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Miguel Luís",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 26,
-        "nationality": "Portugal",
-        "marketValue": 400
+        "overall": 69,
+        "value": 400,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vangelis Nikolaou",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 21,
-        "nationality": "Grecia",
-        "marketValue": 250
+        "overall": 64,
+        "value": 250,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Konrad Michalak",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 28,
-        "nationality": "Polonia",
-        "marketValue": 600
+        "overall": 67,
+        "value": 600,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Farley Rosa",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 32,
-        "nationality": "Brasil",
-        "marketValue": 450
+        "overall": 63,
+        "value": 450,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Diego Esteban",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 22,
-        "nationality": "España",
-        "marketValue": 350
+        "overall": 65,
+        "value": 350,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lampros Smyrlis",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 21,
-        "nationality": "Grecia",
-        "marketValue": 200
+        "overall": 63,
+        "value": 200,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vasilios Kakionis",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 17,
-        "nationality": "Grecia",
-        "marketValue": 0
+        "overall": 66,
+        "value": 0,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Christos Esketzis",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 27,
-        "nationality": "Grecia",
-        "marketValue": 0
+        "overall": 67,
+        "value": 0,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Béni Nkololo",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 29,
-        "nationality": "Francia",
-        "marketValue": 1000000
+        "overall": 70,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Youssouph Badji",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 24,
-        "nationality": "Senegal",
-        "marketValue": 900
+        "overall": 67,
+        "value": 900,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jorge Aguirre",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 26,
-        "nationality": "Cuba",
-        "marketValue": 600
+        "overall": 70,
+        "value": 600,
+        "salary": 20000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kosta Aleksic",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 27,
-        "nationality": "Serbia",
-        "marketValue": 450
+        "overall": 67,
+        "value": 450,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Deivid Hoxha",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 33,
-        "nationality": "Albania",
-        "marketValue": 0
+        "overall": 63,
+        "value": 0,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1585,235 +2164,322 @@
     "players": [
       {
         "name": "Nikolaos Christogeorgos",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 31,
-        "nationality": "Grecia",
-        "marketValue": 800
+        "overall": 69,
+        "value": 800,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Klidman Lilo",
-        "position": "POR",
-        "rating": 63,
+        "position": "GK",
         "age": 22,
-        "nationality": "Albania",
-        "marketValue": 400
+        "overall": 63,
+        "value": 400,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Panagiotis Katsikas",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 26,
-        "nationality": "Grecia",
-        "marketValue": 200
+        "overall": 66,
+        "value": 200,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Manuel Kalafatis",
-        "position": "POR",
-        "rating": 64,
+        "position": "GK",
         "age": 23,
-        "nationality": "Grecia",
-        "marketValue": 0
+        "overall": 64,
+        "value": 0,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kresimir Krizmanic",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 25,
-        "nationality": "Croacia",
-        "marketValue": 1000000
+        "overall": 68,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Konstantinos Kostoulas",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 20,
-        "nationality": "Grecia",
-        "marketValue": 450
+        "overall": 64,
+        "value": 450,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Achilleas Poungouras",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 15,
-        "nationality": "Grecia",
-        "marketValue": 350
+        "overall": 65,
+        "value": 350,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Giannis Christopoulos",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 22,
-        "nationality": "Grecia",
-        "marketValue": 250
+        "overall": 64,
+        "value": 250,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vasilios Lampropoulos",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 24,
-        "nationality": "Grecia",
-        "marketValue": 175
+        "overall": 67,
+        "value": 175,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Konstantinos Lagoudakis",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 18,
-        "nationality": "Grecia",
-        "marketValue": 0
+        "overall": 64,
+        "value": 0,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ilias Chatzitheodoridis",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 28,
-        "nationality": "Grecia",
-        "marketValue": 500
+        "overall": 69,
+        "value": 500,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pavlos Kenourgiakis",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 17,
-        "nationality": "Grecia",
-        "marketValue": 0
+        "overall": 64,
+        "value": 0,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Borja González",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 17,
-        "nationality": "España",
-        "marketValue": 600
+        "overall": 66,
+        "value": 600,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nikolaos Marinakis",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 32,
-        "nationality": "Grecia",
-        "marketValue": 175
+        "overall": 69,
+        "value": 175,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Zisis Karachalios",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 30,
-        "nationality": "Grecia",
-        "marketValue": 600
+        "overall": 69,
+        "value": 600,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ilija Vukotić",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 27,
-        "nationality": "Montenegro",
-        "marketValue": 500
+        "overall": 68,
+        "value": 500,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Athanasios Androutsos",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 28,
-        "nationality": "Grecia",
-        "marketValue": 500
+        "overall": 69,
+        "value": 500,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Georgios Kanellopoulos",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 26,
-        "nationality": "Grecia",
-        "marketValue": 400
+        "overall": 69,
+        "value": 400,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filip Bainovic",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 25,
-        "nationality": "Serbia",
-        "marketValue": 250
+        "overall": 68,
+        "value": 250,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Emmanouil Chnaris",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 17,
-        "nationality": "Grecia",
-        "marketValue": 0
+        "overall": 65,
+        "value": 0,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Giannis Apostolakis",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 21,
-        "nationality": "Grecia",
-        "marketValue": 600
+        "overall": 64,
+        "value": 600,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Juan Neira",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 36,
-        "nationality": "Argentina",
-        "marketValue": 100
+        "overall": 62,
+        "value": 100,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Athanasios Sitmalidis",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 17,
-        "nationality": "Grecia",
-        "marketValue": 0
+        "overall": 65,
+        "value": 0,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Thiago Nuss",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 18,
-        "nationality": "Argentina",
-        "marketValue": 1000000
+        "overall": 68,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Levan Shengelia",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 27,
-        "nationality": "Georgia",
-        "marketValue": 700
+        "overall": 67,
+        "value": 700,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Giannis Theodosoulakis",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 21,
-        "nationality": "Grecia",
-        "marketValue": 600
+        "overall": 63,
+        "value": 600,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Taxiarchis Fountas",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 30,
-        "nationality": "Grecia",
-        "marketValue": 2000000
+        "overall": 68,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Eddie Salcedo",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 24,
-        "nationality": "Italia",
-        "marketValue": 1000000
+        "overall": 69,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Aaron Leya Iseka",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 28,
-        "nationality": "Bélgica",
-        "marketValue": 350
+        "overall": 69,
+        "value": 350,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1823,251 +2489,344 @@
     "players": [
       {
         "name": "Yuriy Lodygin",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 35,
-        "nationality": "Rusia",
-        "marketValue": 300
+        "overall": 65,
+        "value": 300,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lucas Anacker",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 29,
-        "nationality": "Brasil",
-        "marketValue": 300
+        "overall": 68,
+        "value": 300,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Giannis Sourdis",
-        "position": "POR",
-        "rating": 63,
+        "position": "GK",
         "age": 24,
-        "nationality": "Grecia",
-        "marketValue": 50
+        "overall": 63,
+        "value": 50,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stelios Vallindras",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 33,
-        "nationality": "Grecia",
-        "marketValue": 0
+        "overall": 69,
+        "value": 0,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Panagiotis Liagas",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 24,
-        "nationality": "Grecia",
-        "marketValue": 600
+        "overall": 67,
+        "value": 600,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hördur Magnússon",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 32,
-        "nationality": "Islandia",
-        "marketValue": 500
+        "overall": 69,
+        "value": 500,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Taxiarchis Filon",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 22,
-        "nationality": "Grecia",
-        "marketValue": 350
+        "overall": 64,
+        "value": 350,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Giannis Tsivelekidis",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 37,
-        "nationality": "Grecia",
-        "marketValue": 300
+        "overall": 62,
+        "value": 300,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Joel Abu Hanna",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 28,
-        "nationality": "Alemania",
-        "marketValue": 250
+        "overall": 68,
+        "value": 250,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Georgios Kornezos",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 27,
-        "nationality": "Grecia",
-        "marketValue": 175
+        "overall": 68,
+        "value": 175,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nikolaos Tsaras",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 19,
-        "nationality": "Grecia",
-        "marketValue": 0
+        "overall": 65,
+        "value": 0,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marios Vichos",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 26,
-        "nationality": "Grecia",
-        "marketValue": 900
+        "overall": 69,
+        "value": 900,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Triantafyllos Tsapras",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 24,
-        "nationality": "Grecia",
-        "marketValue": 1000000
+        "overall": 70,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Georgios Manthatis",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 28,
-        "nationality": "Grecia",
-        "marketValue": 350
+        "overall": 68,
+        "value": 350,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Konstantinos Verris",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 28,
-        "nationality": "Grecia",
-        "marketValue": 0
+        "overall": 69,
+        "value": 0,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Enis Cokaj",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 23,
-        "nationality": "Albania",
-        "marketValue": 900
+        "overall": 67,
+        "value": 900,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Giannis Kosti",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 18,
-        "nationality": "Chipre",
-        "marketValue": 600
+        "overall": 64,
+        "value": 600,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Georgios Nikas",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 26,
-        "nationality": "Grecia",
-        "marketValue": 450
+        "overall": 68,
+        "value": 450,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Aaron Tshibola",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 36,
-        "nationality": "RD del Congo",
-        "marketValue": 350
+        "overall": 62,
+        "value": 350,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lamarana Jallow",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 19,
-        "nationality": "Gambia",
-        "marketValue": 300
+        "overall": 64,
+        "value": 300,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Christos Papadopoulos",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 21,
-        "nationality": "Grecia",
-        "marketValue": 600
+        "overall": 65,
+        "value": 600,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Guillermo Balzi",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 24,
-        "nationality": "Argentina",
-        "marketValue": 500
+        "overall": 71,
+        "value": 500,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Konstantinos Goumas",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 20,
-        "nationality": "Grecia",
-        "marketValue": 400
+        "overall": 65,
+        "value": 400,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Benjamin Verbic",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 32,
-        "nationality": "Eslovenia",
-        "marketValue": 800
+        "overall": 62,
+        "value": 800,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hisham Layous",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 25,
-        "nationality": "Israel",
-        "marketValue": 600
+        "overall": 68,
+        "value": 600,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Fabricio Pedrozo",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 15,
-        "nationality": "Argentina",
-        "marketValue": 175
+        "overall": 66,
+        "value": 175,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Panagiotis Symelidis",
-        "position": "DC",
-        "rating": 61,
+        "position": "ST",
         "age": 31,
-        "nationality": "Grecia",
-        "marketValue": 150
+        "overall": 61,
+        "value": 150,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sebastián Palacios",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 34,
-        "nationality": "Argentina",
-        "marketValue": 750
+        "overall": 65,
+        "value": 750,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alen Ozbolt",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 29,
-        "nationality": "Eslovenia",
-        "marketValue": 600
+        "overall": 71,
+        "value": 600,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ognjen Ozegovic",
-        "position": "DC",
-        "rating": 61,
+        "position": "ST",
         "age": 45,
-        "nationality": "Serbia",
-        "marketValue": 500
+        "overall": 61,
+        "value": 500,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stipe Juric",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 21,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 250
+        "overall": 65,
+        "value": 250,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -2077,275 +2836,377 @@
     "players": [
       {
         "name": "Moisés Ramírez",
-        "position": "POR",
-        "rating": 67,
+        "position": "GK",
         "age": 25,
-        "nationality": "Ecuador",
-        "marketValue": 800
+        "overall": 67,
+        "value": 800,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vasilios Xenopoulos",
-        "position": "POR",
-        "rating": 67,
+        "position": "GK",
         "age": 27,
-        "nationality": "Grecia",
-        "marketValue": 300
+        "overall": 67,
+        "value": 300,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Apostolos Tsilingiris",
-        "position": "POR",
-        "rating": 67,
+        "position": "GK",
         "age": 25,
-        "nationality": "Grecia",
-        "marketValue": 150
+        "overall": 67,
+        "value": 150,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filippos Roberts",
-        "position": "POR",
-        "rating": 67,
+        "position": "GK",
         "age": 26,
-        "nationality": "Grecia",
-        "marketValue": 0
+        "overall": 67,
+        "value": 0,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Theodoros Faitakis",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 25,
-        "nationality": "Grecia",
-        "marketValue": 0
+        "overall": 67,
+        "value": 0,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alex Petkov",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 26,
-        "nationality": "Bulgaria",
-        "marketValue": 600
+        "overall": 68,
+        "value": 600,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakub Pokorny",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 38,
-        "nationality": "República Checa",
-        "marketValue": 600
+        "overall": 63,
+        "value": 600,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hugo Sousa",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 33,
-        "nationality": "Portugal",
-        "marketValue": 175
+        "overall": 64,
+        "value": 175,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alberto Botía",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 37,
-        "nationality": "España",
-        "marketValue": 75
+        "overall": 62,
+        "value": 75,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vasilios Spinos",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 28,
-        "nationality": "Grecia",
-        "marketValue": 75
+        "overall": 69,
+        "value": 75,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yasser Larouci",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 25,
-        "nationality": "Argelia",
-        "marketValue": 1800000
+        "overall": 67,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Diamantis Chouchoumis",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 31,
-        "nationality": "Grecia",
-        "marketValue": 350
+        "overall": 68,
+        "value": 350,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luciano Maidana",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 24,
-        "nationality": "Argentina",
-        "marketValue": 50
+        "overall": 66,
+        "value": 50,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cheick Oumar Konaté",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 15,
-        "nationality": "Malí",
-        "marketValue": 1500000
+        "overall": 66,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Simón",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 37,
-        "nationality": "España",
-        "marketValue": 50
+        "overall": 63,
+        "value": 50,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Konstantinos Lampsias",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 23,
-        "nationality": "Grecia",
-        "marketValue": 50
+        "overall": 67,
+        "value": 50,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Timipere Johnson Eboh",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 23,
-        "nationality": "Nigeria",
-        "marketValue": 500
+        "overall": 67,
+        "value": 500,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rubén Pérez",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 21,
-        "nationality": "España",
-        "marketValue": 175
+        "overall": 65,
+        "value": 175,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Georgios Konstantakopoulos",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 21,
-        "nationality": "Grecia",
-        "marketValue": 175
+        "overall": 65,
+        "value": 175,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Konstantinos Roukounakis",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 17,
-        "nationality": "Grecia",
-        "marketValue": 150
+        "overall": 65,
+        "value": 150,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexandros Pothas",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 16,
-        "nationality": "Grecia",
-        "marketValue": 0
+        "overall": 65,
+        "value": 0,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lazare Amani",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 27,
-        "nationality": "Costa de Marfil",
-        "marketValue": 1200000
+        "overall": 69,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jorge Pombo",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 31,
-        "nationality": "España",
-        "marketValue": 275
+        "overall": 69,
+        "value": 275,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lucas Villafañez",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 19,
-        "nationality": "Argentina",
-        "marketValue": 225
+        "overall": 64,
+        "value": 225,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Christos Ligdas",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 18,
-        "nationality": "Grecia",
-        "marketValue": 0
+        "overall": 65,
+        "value": 0,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jeremy Antonisse",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 23,
-        "nationality": "Curazao",
-        "marketValue": 800
+        "overall": 65,
+        "value": 800,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Miguel Tavares",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 27,
-        "nationality": "Portugal",
-        "marketValue": 200
+        "overall": 69,
+        "value": 200,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gerson Sousa",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 23,
-        "nationality": "Portugal",
-        "marketValue": 800
+        "overall": 64,
+        "value": 800,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ché Nunnely",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 26,
-        "nationality": "Surinam",
-        "marketValue": 500
+        "overall": 69,
+        "value": 500,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Michalis Patiras",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 30,
-        "nationality": "Grecia",
-        "marketValue": 50
+        "overall": 68,
+        "value": 50,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Patrik Mijic",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 27,
-        "nationality": "Croacia",
-        "marketValue": 500
+        "overall": 69,
+        "value": 500,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dimitrios Theodoridis",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 23,
-        "nationality": "Grecia",
-        "marketValue": 200
+        "overall": 67,
+        "value": 200,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sebastian Musiolik",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 29,
-        "nationality": "Polonia",
-        "marketValue": 200
+        "overall": 66,
+        "value": 200,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Apostolos Christopoulos",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 23,
-        "nationality": "Grecia",
-        "marketValue": 200
+        "overall": 67,
+        "value": 200,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -2355,227 +3216,311 @@
     "players": [
       {
         "name": "Lefteris Choutesiotis",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 31,
-        "nationality": "Grecia",
-        "marketValue": 400
+        "overall": 69,
+        "value": 400,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexei Koselev",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 32,
-        "nationality": "Moldavia",
-        "marketValue": 300
+        "overall": 68,
+        "value": 300,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vasilios Athanasiou",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 30,
-        "nationality": "Grecia",
-        "marketValue": 200
+        "overall": 68,
+        "value": 200,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gerasimos Mitoglou",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 24,
-        "nationality": "Grecia",
-        "marketValue": 700
+        "overall": 67,
+        "value": 700,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dimitrios Stavropoulos",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 28,
-        "nationality": "Grecia",
-        "marketValue": 400
+        "overall": 69,
+        "value": 400,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dimitrios Tsakmakis",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 44,
-        "nationality": "Grecia",
-        "marketValue": 300
+        "overall": 63,
+        "value": 300,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mansur",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 32,
-        "nationality": "Brasil",
-        "marketValue": 300
+        "overall": 69,
+        "value": 300,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jere Uronen",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 21,
-        "nationality": "Finlandia",
-        "marketValue": 700
+        "overall": 65,
+        "value": 700,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Georgios Papadopoulos",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 16,
-        "nationality": "Grecia",
-        "marketValue": 250
+        "overall": 64,
+        "value": 250,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Quini",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 17,
-        "nationality": "España",
-        "marketValue": 175
+        "overall": 65,
+        "value": 175,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mattheos Mountes",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 22,
-        "nationality": "Grecia",
-        "marketValue": 350
+        "overall": 67,
+        "value": 350,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Samuel Moutoussamy",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 29,
-        "nationality": "RD del Congo",
-        "marketValue": 1200000
+        "overall": 70,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Theocharis Tsingaras",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 25,
-        "nationality": "Grecia",
-        "marketValue": 900
+        "overall": 69,
+        "value": 900,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Peter Michorl",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 30,
-        "nationality": "Austria",
-        "marketValue": 500
+        "overall": 70,
+        "value": 500,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Athanasios Karamanis",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 22,
-        "nationality": "Grecia",
-        "marketValue": 300
+        "overall": 66,
+        "value": 300,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Elton Hoxha",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 19,
-        "nationality": "Albania",
-        "marketValue": 0
+        "overall": 65,
+        "value": 0,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Leonardos Kopanidis",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 18,
-        "nationality": "Grecia",
-        "marketValue": 0
+        "overall": 65,
+        "value": 0,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Brayan Palmezano",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 25,
-        "nationality": "Venezuela",
-        "marketValue": 800
+        "overall": 68,
+        "value": 800,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Steven Zuber",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 34,
-        "nationality": "Suiza",
-        "marketValue": 800
+        "overall": 64,
+        "value": 800,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Spyros Ampartzidis",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 20,
-        "nationality": "Grecia",
-        "marketValue": 50
+        "overall": 64,
+        "value": 50,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Georgios Tzovaras",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 26,
-        "nationality": "Grecia",
-        "marketValue": 250
+        "overall": 66,
+        "value": 250,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Konstantinos Batos",
-        "position": "DC",
-        "rating": 60,
+        "position": "ST",
         "age": 33,
-        "nationality": "Grecia",
-        "marketValue": 0
+        "overall": 60,
+        "value": 0,
+        "salary": 10000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Makana Baku",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 32,
-        "nationality": "Alemania",
-        "marketValue": 600
+        "overall": 65,
+        "value": 600,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sotiris Tsiloulis",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 23,
-        "nationality": "Grecia",
-        "marketValue": 300
+        "overall": 67,
+        "value": 300,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Denzel Jubitana",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 26,
-        "nationality": "Surinam",
-        "marketValue": 600
+        "overall": 67,
+        "value": 600,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Panagiotis Tsantilas",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 19,
-        "nationality": "Grecia",
-        "marketValue": 250
+        "overall": 66,
+        "value": 250,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tom van Weert",
-        "position": "DC",
-        "rating": 58,
+        "position": "ST",
         "age": 35,
-        "nationality": "Países Bajos",
-        "marketValue": 175
+        "overall": 58,
+        "value": 175,
+        "salary": 8000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vangelis Paliouras",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 29,
-        "nationality": "Grecia",
-        "marketValue": 0
+        "overall": 69,
+        "value": 0,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -2585,211 +3530,289 @@
     "players": [
       {
         "name": "Panagiotis Tsintotas",
-        "position": "POR",
-        "rating": 63,
+        "position": "GK",
         "age": 16,
-        "nationality": "Grecia",
-        "marketValue": 250
+        "overall": 63,
+        "value": 250,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nikolaos Papadopoulos",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 35,
-        "nationality": "Grecia",
-        "marketValue": 150
+        "overall": 65,
+        "value": 150,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Spyros Angelidis",
-        "position": "POR",
-        "rating": 63,
+        "position": "GK",
         "age": 21,
-        "nationality": "Grecia",
-        "marketValue": 150
+        "overall": 63,
+        "value": 150,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Theofilos Kakadiaris",
-        "position": "POR",
-        "rating": 64,
+        "position": "GK",
         "age": 19,
-        "nationality": "Grecia",
-        "marketValue": 125
+        "overall": 64,
+        "value": 125,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Robert Ivanov",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 31,
-        "nationality": "Finlandia",
-        "marketValue": 600
+        "overall": 69,
+        "value": 600,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pepe Castaño",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 19,
-        "nationality": "España",
-        "marketValue": 600
+        "overall": 64,
+        "value": 600,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nikola Sipcic",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 30,
-        "nationality": "Montenegro",
-        "marketValue": 400
+        "overall": 69,
+        "value": 400,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Konstantinos Triantafyllopoulos",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 32,
-        "nationality": "Grecia",
-        "marketValue": 200
+        "overall": 69,
+        "value": 200,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Issiaga Sylla",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 32,
-        "nationality": "Guinea",
-        "marketValue": 900
+        "overall": 69,
+        "value": 900,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Konstantinos Pomonis",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 29,
-        "nationality": "Grecia",
-        "marketValue": 100
+        "overall": 69,
+        "value": 100,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Panagiotis Deligiannidis",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 29,
-        "nationality": "Grecia",
-        "marketValue": 450
+        "overall": 68,
+        "value": 450,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nikolai Alho",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 17,
-        "nationality": "Finlandia",
-        "marketValue": 300
+        "overall": 65,
+        "value": 300,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Eder González",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 29,
-        "nationality": "España",
-        "marketValue": 800
+        "overall": 68,
+        "value": 800,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Evgeniy Yablonskiy",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 30,
-        "nationality": "Bielorrusia",
-        "marketValue": 500
+        "overall": 69,
+        "value": 500,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Julián Chicco",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 28,
-        "nationality": "Argentina",
-        "marketValue": 500
+        "overall": 69,
+        "value": 500,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Oluwatobiloba Alagbe",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 25,
-        "nationality": "Nigeria",
-        "marketValue": 500
+        "overall": 68,
+        "value": 500,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Theofanis Tzandaris",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 32,
-        "nationality": "Grecia",
-        "marketValue": 200
+        "overall": 63,
+        "value": 200,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mumo Muñoz",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 22,
-        "nationality": "España",
-        "marketValue": 600
+        "overall": 67,
+        "value": 600,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Julián Bartolo",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 29,
-        "nationality": "Argentina",
-        "marketValue": 800
+        "overall": 67,
+        "value": 800,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dimitris Emmanouilidis",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 25,
-        "nationality": "Grecia",
-        "marketValue": 500
+        "overall": 69,
+        "value": 500,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Júnior Mendieta",
-        "position": "DC",
-        "rating": 60,
+        "position": "ST",
         "age": 32,
-        "nationality": "Argentina",
-        "marketValue": 450
+        "overall": 60,
+        "value": 450,
+        "salary": 10000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kalvin Ketu",
-        "position": "DC",
-        "rating": 59,
+        "position": "ST",
         "age": 40,
-        "nationality": "Camerún",
-        "marketValue": 300
+        "overall": 59,
+        "value": 300,
+        "salary": 9000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nikolaos Kaltsas",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 20,
-        "nationality": "Grecia",
-        "marketValue": 175
+        "overall": 64,
+        "value": 175,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nicholas Gioacchini",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 25,
-        "nationality": "Estados Unidos",
-        "marketValue": 800
+        "overall": 68,
+        "value": 800,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Georgios Charalampoglou",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 21,
-        "nationality": "Grecia",
-        "marketValue": 250
+        "overall": 66,
+        "value": 250,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Federico Macheda",
-        "position": "DC",
-        "rating": 61,
+        "position": "ST",
         "age": 41,
-        "nationality": "Italia",
-        "marketValue": 175
+        "overall": 61,
+        "value": 175,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -2799,235 +3822,322 @@
     "players": [
       {
         "name": "Nikolaos Melissas",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 32,
-        "nationality": "Grecia",
-        "marketValue": 225
+        "overall": 66,
+        "value": 225,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexandros Anagnostopoulos",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 31,
-        "nationality": "Grecia",
-        "marketValue": 225
+        "overall": 65,
+        "value": 225,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Theodoros Venetikidis",
-        "position": "POR",
-        "rating": 61,
+        "position": "GK",
         "age": 21,
-        "nationality": "Grecia",
-        "marketValue": 75
+        "overall": 61,
+        "value": 75,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dylan Batubinsika",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 29,
-        "nationality": "RD del Congo",
-        "marketValue": 700
+        "overall": 66,
+        "value": 700,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Erick Ferigra",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 26,
-        "nationality": "Ecuador",
-        "marketValue": 450
+        "overall": 66,
+        "value": 450,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Epaminondas Pantelakis",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 30,
-        "nationality": "Grecia",
-        "marketValue": 400
+        "overall": 66,
+        "value": 400,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Theocharis Iliadis",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 29,
-        "nationality": "Grecia",
-        "marketValue": 350
+        "overall": 65,
+        "value": 350,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ahmed Ouattara Kossonou",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 22,
-        "nationality": "Costa de Marfil",
-        "marketValue": 350
+        "overall": 62,
+        "value": 350,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Konstantinos Grozos",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 18,
-        "nationality": "Grecia",
-        "marketValue": 50
+        "overall": 61,
+        "value": 50,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yvann Maçon",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 27,
-        "nationality": "Guadalupe",
-        "marketValue": 1000000
+        "overall": 67,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Konstantinos Apostolakis",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 26,
-        "nationality": "Grecia",
-        "marketValue": 125
+        "overall": 65,
+        "value": 125,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Athanasios Papageorgiou",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 22,
-        "nationality": "Grecia",
-        "marketValue": 25
+        "overall": 61,
+        "value": 25,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jani Atanasov",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 31,
-        "nationality": "Macedonia del Norte",
-        "marketValue": 550
+        "overall": 66,
+        "value": 550,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Paschalis Staikos",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 26,
-        "nationality": "Grecia",
-        "marketValue": 400
+        "overall": 65,
+        "value": 400,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Goni Naor",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 26,
-        "nationality": "Lituania",
-        "marketValue": 325
+        "overall": 66,
+        "value": 325,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Facundo Pérez",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 26,
-        "nationality": "Argentina",
-        "marketValue": 600
+        "overall": 66,
+        "value": 600,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vasilios Sourlis",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 23,
-        "nationality": "Grecia",
-        "marketValue": 350
+        "overall": 63,
+        "value": 350,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luca Andrada",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 24,
-        "nationality": "Argentina",
-        "marketValue": 200
+        "overall": 63,
+        "value": 200,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Davíd Kristján Ólafsson",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 20,
-        "nationality": "Islandia",
-        "marketValue": 500
+        "overall": 62,
+        "value": 500,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Zisis Chatzistravos",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 18,
-        "nationality": "Grecia",
-        "marketValue": 450
+        "overall": 61,
+        "value": 450,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ángelo Sagal",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 25,
-        "nationality": "Chile",
-        "marketValue": 400
+        "overall": 66,
+        "value": 400,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Giannis Pasas",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 19,
-        "nationality": "Grecia",
-        "marketValue": 175
+        "overall": 62,
+        "value": 175,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dimitrios Diminikos",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 17,
-        "nationality": "Grecia",
-        "marketValue": 0
+        "overall": 63,
+        "value": 0,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Savvas Mourgos",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 27,
-        "nationality": "Grecia",
-        "marketValue": 450
+        "overall": 64,
+        "value": 450,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Emanuel Vignato",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 25,
-        "nationality": "Italia",
-        "marketValue": 450
+        "overall": 66,
+        "value": 450,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Thierry Moutinho",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 30,
-        "nationality": "Portugal",
-        "marketValue": 75
+        "overall": 66,
+        "value": 75,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lubomir Tupta",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 29,
-        "nationality": "Eslovaquia",
-        "marketValue": 600
+        "overall": 64,
+        "value": 600,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Julien Ngoy",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 28,
-        "nationality": "Bélgica",
-        "marketValue": 400
+        "overall": 66,
+        "value": 400,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Leandro Garate",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 23,
-        "nationality": "Argentina",
-        "marketValue": 250
+        "overall": 62,
+        "value": 250,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -3037,267 +4147,366 @@
     "players": [
       {
         "name": "Francisco Tinaglini",
-        "position": "POR",
-        "rating": 64,
+        "position": "GK",
         "age": 27,
-        "nationality": "Uruguay",
-        "marketValue": 400
+        "overall": 64,
+        "value": 400,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexandros Tsompanidis",
-        "position": "POR",
-        "rating": 60,
+        "position": "GK",
         "age": 20,
-        "nationality": "Grecia",
-        "marketValue": 50
+        "overall": 60,
+        "value": 50,
+        "salary": 10000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Viktoras Sakalidis",
-        "position": "POR",
-        "rating": 61,
+        "position": "GK",
         "age": 22,
-        "nationality": "Grecia",
-        "marketValue": 0
+        "overall": 61,
+        "value": 0,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Michalis Pourliotopoulos",
-        "position": "POR",
-        "rating": 61,
+        "position": "GK",
         "age": 18,
-        "nationality": "Grecia",
-        "marketValue": 0
+        "overall": 61,
+        "value": 0,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Iva Gelashvili",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 24,
-        "nationality": "Georgia",
-        "marketValue": 500
+        "overall": 64,
+        "value": 500,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Volnei",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 30,
-        "nationality": "Brasil",
-        "marketValue": 450
+        "overall": 66,
+        "value": 450,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vernon de Marco",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 33,
-        "nationality": "Eslovaquia",
-        "marketValue": 275
+        "overall": 61,
+        "value": 275,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Aristotelis Karasalidis",
-        "position": "DFC",
-        "rating": 60,
+        "position": "CB",
         "age": 34,
-        "nationality": "Grecia",
-        "marketValue": 75
+        "overall": 60,
+        "value": 75,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Igor Kalinin",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 30,
-        "nationality": "Rusia",
-        "marketValue": 600
+        "overall": 66,
+        "value": 600,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marios Tsaousis",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 25,
-        "nationality": "Grecia",
-        "marketValue": 450
+        "overall": 64,
+        "value": 450,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yoël Armougom",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 31,
-        "nationality": "Francia",
-        "marketValue": 200
+        "overall": 66,
+        "value": 200,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lefteris Lyratzis",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 19,
-        "nationality": "Grecia",
-        "marketValue": 800
+        "overall": 62,
+        "value": 800,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Moussa Wagué",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 22,
-        "nationality": "Senegal",
-        "marketValue": 400
+        "overall": 61,
+        "value": 400,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Charalampos Georgiadis",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 23,
-        "nationality": "Grecia",
-        "marketValue": 100
+        "overall": 63,
+        "value": 100,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Angelos Liasos",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 25,
-        "nationality": "Grecia",
-        "marketValue": 350
+        "overall": 66,
+        "value": 350,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ethan Brooks",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 28,
-        "nationality": "Sudáfrica",
-        "marketValue": 800
+        "overall": 66,
+        "value": 800,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stephane Omeonga",
-        "position": "MC",
-        "rating": 60,
+        "position": "CM",
         "age": 40,
-        "nationality": "Bélgica",
-        "marketValue": 400
+        "overall": 60,
+        "value": 400,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Giannis Doiranlis",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 24,
-        "nationality": "Grecia",
-        "marketValue": 350
+        "overall": 63,
+        "value": 350,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Viktor Rumyantsev",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 21,
-        "nationality": "Grecia",
-        "marketValue": 300
+        "overall": 62,
+        "value": 300,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Samir Ben Sallam",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 24,
-        "nationality": "Países Bajos",
-        "marketValue": 150
+        "overall": 64,
+        "value": 150,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Zacharias Papadimitriou",
-        "position": "MC",
-        "rating": 60,
+        "position": "CM",
         "age": 41,
-        "nationality": "Grecia",
-        "marketValue": 0
+        "overall": 60,
+        "value": 0,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adrián Riera",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 29,
-        "nationality": "España",
-        "marketValue": 250
+        "overall": 66,
+        "value": 250,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alex Teixeira",
-        "position": "MC",
-        "rating": 60,
+        "position": "CM",
         "age": 36,
-        "nationality": "Brasil",
-        "marketValue": 175
+        "overall": 60,
+        "value": 175,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Andre Green",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 27,
-        "nationality": "Inglaterra",
-        "marketValue": 400
+        "overall": 66,
+        "value": 400,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Darnell Eric Bile",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 20,
-        "nationality": "Francia",
-        "marketValue": 200
+        "overall": 63,
+        "value": 200,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexandros Maskanakis",
-        "position": "DC",
-        "rating": 60,
+        "position": "ST",
         "age": 17,
-        "nationality": "Grecia",
-        "marketValue": 200
+        "overall": 60,
+        "value": 200,
+        "salary": 10000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Braian Galván",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 16,
-        "nationality": "Argentina",
-        "marketValue": 750
+        "overall": 63,
+        "value": 750,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marios Sofianos",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 21,
-        "nationality": "Grecia",
-        "marketValue": 175
+        "overall": 62,
+        "value": 175,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexandros Salvanos",
-        "position": "DC",
-        "rating": 55,
+        "position": "ST",
         "age": 35,
-        "nationality": "Grecia",
-        "marketValue": 0
+        "overall": 55,
+        "value": 0,
+        "salary": 5000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Andrei Ivan",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 29,
-        "nationality": "Rumania",
-        "marketValue": 900
+        "overall": 66,
+        "value": 900,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nikolaos Karelis",
-        "position": "DC",
-        "rating": 59,
+        "position": "ST",
         "age": 33,
-        "nationality": "Grecia",
-        "marketValue": 350
+        "overall": 59,
+        "value": 350,
+        "salary": 9000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Apostolos Savvidis",
-        "position": "DC",
-        "rating": 58,
+        "position": "ST",
         "age": 42,
-        "nationality": "Grecia",
-        "marketValue": 0
+        "overall": 58,
+        "value": 0,
+        "salary": 8000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Youshaa Knaj",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 20,
-        "nationality": "Siria",
-        "marketValue": 0
+        "overall": 63,
+        "value": 0,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -3307,227 +4516,311 @@
     "players": [
       {
         "name": "Marios Siampanis",
-        "position": "POR",
-        "rating": 64,
+        "position": "GK",
         "age": 26,
-        "nationality": "Grecia",
-        "marketValue": 400
+        "overall": 64,
+        "value": 400,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nikolaos Grammatikakis",
-        "position": "POR",
-        "rating": 60,
+        "position": "GK",
         "age": 22,
-        "nationality": "Grecia",
-        "marketValue": 250
+        "overall": 60,
+        "value": 250,
+        "salary": 10000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Athanasios Papathanasiou-Gerofokas",
-        "position": "POR",
-        "rating": 61,
+        "position": "GK",
         "age": 19,
-        "nationality": "Grecia",
-        "marketValue": 0
+        "overall": 61,
+        "value": 0,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Derek Agyakwa",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 24,
-        "nationality": "Países Bajos",
-        "marketValue": 500
+        "overall": 64,
+        "value": 500,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hjörtur Hermannsson",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 30,
-        "nationality": "Islandia",
-        "marketValue": 400
+        "overall": 66,
+        "value": 400,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Giannis Kargas",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 31,
-        "nationality": "Grecia",
-        "marketValue": 250
+        "overall": 66,
+        "value": 250,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Athanasios Triantafyllou",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 22,
-        "nationality": "Grecia",
-        "marketValue": 150
+        "overall": 62,
+        "value": 150,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Núrio Fortuna",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 25,
-        "nationality": "Angola",
-        "marketValue": 600
+        "overall": 64,
+        "value": 600,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Leroy Abanda",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 25,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 64,
+        "value": 400,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Konstantinos Lykourinos",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 24,
-        "nationality": "Grecia",
-        "marketValue": 50
+        "overall": 67,
+        "value": 50,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Klearchos Vainopoulos",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 20,
-        "nationality": "Grecia",
-        "marketValue": 0
+        "overall": 62,
+        "value": 0,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Carles Soria",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 29,
-        "nationality": "España",
-        "marketValue": 500
+        "overall": 66,
+        "value": 500,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Georgios Mygas",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 22,
-        "nationality": "Grecia",
-        "marketValue": 250
+        "overall": 62,
+        "value": 250,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lefteris Tasiouras",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 21,
-        "nationality": "Grecia",
-        "marketValue": 200
+        "overall": 61,
+        "value": 200,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Martínez",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 16,
-        "nationality": "Argentina",
-        "marketValue": 1200000
+        "overall": 63,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Anastasios Tsokanis",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 34,
-        "nationality": "Grecia",
-        "marketValue": 200
+        "overall": 61,
+        "value": 200,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vasilios Grosdis",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 17,
-        "nationality": "Grecia",
-        "marketValue": 250
+        "overall": 61,
+        "value": 250,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Giannis Bouzoukis",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 18,
-        "nationality": "Grecia",
-        "marketValue": 450
+        "overall": 62,
+        "value": 450,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Juanpi",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 32,
-        "nationality": "Venezuela",
-        "marketValue": 400
+        "overall": 61,
+        "value": 400,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matías González",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 21,
-        "nationality": "Argentina",
-        "marketValue": 175
+        "overall": 62,
+        "value": 175,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Iason Kyrkos",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 29,
-        "nationality": "Grecia",
-        "marketValue": 125
+        "overall": 65,
+        "value": 125,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lazaros Lamprou",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 28,
-        "nationality": "Grecia",
-        "marketValue": 600
+        "overall": 66,
+        "value": 600,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jasin Assehnoun",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 27,
-        "nationality": "Finlandia",
-        "marketValue": 350
+        "overall": 65,
+        "value": 350,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Diamanti Legisi",
-        "position": "DC",
-        "rating": 58,
+        "position": "ST",
         "age": 39,
-        "nationality": "Grecia",
-        "marketValue": 0
+        "overall": 58,
+        "value": 0,
+        "salary": 8000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Joca",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 30,
-        "nationality": "Portugal",
-        "marketValue": 600
+        "overall": 66,
+        "value": 600,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Maximiliano Comba",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 20,
-        "nationality": "Argentina",
-        "marketValue": 300
+        "overall": 63,
+        "value": 300,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jan Hurtado",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 25,
-        "nationality": "Venezuela",
-        "marketValue": 350
+        "overall": 66,
+        "value": 350,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nabil Makni",
-        "position": "DC",
-        "rating": 60,
+        "position": "ST",
         "age": 19,
-        "nationality": "Túnez",
-        "marketValue": 200
+        "overall": 60,
+        "value": 200,
+        "salary": 10000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   }

@@ -27,22 +27,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Position mapping: English -> Spanish
-const POSITION_MAP = {
-  'GK': 'POR',
-  'CB': 'DFC',
-  'LB': 'LI',
-  'RB': 'LD',
-  'CDM': 'MCD',
-  'CM': 'MC',
-  'CAM': 'MCO',
-  'LW': 'EI',
-  'RW': 'ED',
-  'CF': 'MP',
-  'ST': 'DC',
-  'LM': 'MI',
-  'RM': 'MD'
-};
+// Valid positions (keep English like existing data)
+const VALID_POSITIONS = ['GK','CB','LB','RB','CDM','CM','CAM','LW','RW','CF','ST','LM','RM'];
 
 // Leagues to process (only the ones not already uploaded)
 const LEAGUES_TO_UPLOAD = [
@@ -73,16 +59,50 @@ function toSlug(name) {
     .replace(/^-|-$/g, '');
 }
 
+/**
+ * Generate salary from market value (same formula as existing data)
+ * ~0.3% of market value per week, with min/max bounds
+ */
+function generateSalary(marketValue, overall) {
+  if (!marketValue || marketValue < 1000) {
+    // Low value players: base on overall
+    return Math.round(10000 + (overall - 60) * 1000);
+  }
+  // ~0.3% of market value per week, capped
+  const base = Math.round(marketValue * 0.003);
+  return Math.max(15000, Math.min(base, 200000));
+}
+
+/**
+ * Generate contract years (1-5 based on age)
+ */
+function generateContract(age) {
+  if (age >= 34) return 1;
+  if (age >= 30) return Math.random() < 0.5 ? 1 : 2;
+  if (age >= 27) return Math.floor(Math.random() * 3) + 1; // 1-3
+  return Math.floor(Math.random() * 3) + 2; // 2-4
+}
+
 function convertTeam(rawTeam) {
   const id = rawTeam.slug || toSlug(rawTeam.name);
-  const players = (rawTeam.players || []).map(p => ({
-    name: p.name,
-    position: POSITION_MAP[p.position] || 'MC',
-    rating: p.overall || 70,
-    age: p.age || 25,
-    nationality: p.nationality || '',
-    marketValue: p.marketValue || 0
-  }));
+  const players = (rawTeam.players || []).map(p => {
+    const overall = p.overall || 70;
+    const age = p.age || 25;
+    const marketValue = p.marketValue || 0;
+    const position = VALID_POSITIONS.includes(p.position) ? p.position : 'CM';
+    
+    return {
+      name: p.name,
+      position,
+      age,
+      overall,
+      value: marketValue,
+      salary: generateSalary(marketValue, overall),
+      contract: generateContract(age),
+      morale: 75,
+      fitness: 100
+    };
+  });
   
   return {
     id,
@@ -116,7 +136,7 @@ async function uploadLeague(leagueId, teams, metadata) {
         league: leagueId,
         playerCount: team.players?.length || 0,
         avgOverall: team.players?.length 
-          ? Math.round(team.players.reduce((s, p) => s + (p.rating || 0), 0) / team.players.length)
+          ? Math.round(team.players.reduce((s, p) => s + (p.overall || 0), 0) / team.players.length)
           : 0,
         updatedAt: new Date().toISOString()
       });

@@ -5,243 +5,333 @@
     "players": [
       {
         "name": "Elías Ólafsson",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 16,
-        "nationality": "Islandia",
-        "marketValue": 2000000
+        "overall": 69,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ovie Ejeheri",
-        "position": "POR",
-        "rating": 73,
+        "position": "GK",
         "age": 30,
-        "nationality": "Inglaterra",
-        "marketValue": 150
+        "overall": 73,
+        "value": 150,
+        "salary": 23000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jonas Lössl",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 36,
-        "nationality": "Dinamarca",
-        "marketValue": 100
+        "overall": 68,
+        "value": 100,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mark Ugboh",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 22,
-        "nationality": "Nigeria",
-        "marketValue": 0
+        "overall": 68,
+        "value": 0,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Liam Selin",
-        "position": "POR",
-        "rating": 73,
+        "position": "GK",
         "age": 31,
-        "nationality": "Suecia",
-        "marketValue": 0
+        "overall": 73,
+        "value": 0,
+        "salary": 23000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ousmane Diao",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 21,
-        "nationality": "Senegal",
-        "marketValue": 8000000
+        "overall": 71,
+        "value": 8000000,
+        "salary": 24000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mads Bech Sørensen",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 22,
-        "nationality": "Dinamarca",
-        "marketValue": 6000000
+        "overall": 73,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Martin Erlić",
-        "position": "DFC",
-        "rating": 74,
+        "position": "CB",
         "age": 28,
-        "nationality": "Croacia",
-        "marketValue": 4000000
+        "overall": 74,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Han-beom Lee",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 23,
-        "nationality": "Corea del Sur",
-        "marketValue": 1800000
+        "overall": 72,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bilal Konteh",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 35,
-        "nationality": "Suecia",
-        "marketValue": 0
+        "overall": 68,
+        "value": 0,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Victor Bak",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 22,
-        "nationality": "Dinamarca",
-        "marketValue": 3000000
+        "overall": 70,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Paulinho",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 29,
-        "nationality": "Brasil",
-        "marketValue": 500
+        "overall": 72,
+        "value": 500,
+        "salary": 22000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kevin Mbabu",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 43,
-        "nationality": "Suiza",
-        "marketValue": 3000000
+        "overall": 68,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adam Gabriel",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 24,
-        "nationality": "República Checa",
-        "marketValue": 750
+        "overall": 70,
+        "value": 750,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Philip Billing",
-        "position": "MC",
-        "rating": 76,
+        "position": "CM",
         "age": 29,
-        "nationality": "Dinamarca",
-        "marketValue": 7000000
+        "overall": 76,
+        "value": 7000000,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Denil Castillo",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 21,
-        "nationality": "Ecuador",
-        "marketValue": 5500000
+        "overall": 72,
+        "value": 5500000,
+        "salary": 16500,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pedro Bravo",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 19,
-        "nationality": "Colombia",
-        "marketValue": 2500000
+        "overall": 70,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dani Silva",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 25,
-        "nationality": "Portugal",
-        "marketValue": 2500000
+        "overall": 73,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Valdemar Byskov",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 20,
-        "nationality": "Dinamarca",
-        "marketValue": 2000000
+        "overall": 69,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alamara Djabi",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 33,
-        "nationality": "Guinea-Bissau",
-        "marketValue": 200
+        "overall": 68,
+        "value": 200,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Aral Şimşir",
-        "position": "DC",
-        "rating": 76,
+        "position": "ST",
         "age": 23,
-        "nationality": "Turquía",
-        "marketValue": 6000000
+        "overall": 76,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mikel Gogorza",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 41,
-        "nationality": "Dinamarca",
-        "marketValue": 3000000
+        "overall": 65,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Junior Zé",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 39,
-        "nationality": "Suiza",
-        "marketValue": 1500000
+        "overall": 66,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Darío Osorio",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 22,
-        "nationality": "Chile",
-        "marketValue": 10000000
+        "overall": 75,
+        "value": 10000000,
+        "salary": 30000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Edward Chilufya",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 26,
-        "nationality": "Zambia",
-        "marketValue": 850
+        "overall": 71,
+        "value": 850,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Franculino",
-        "position": "DC",
-        "rating": 77,
+        "position": "ST",
         "age": 21,
-        "nationality": "Guinea-Bissau",
-        "marketValue": 22000000
+        "overall": 77,
+        "value": 22000000,
+        "salary": 66000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gue-sung Cho",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 28,
-        "nationality": "Corea del Sur",
-        "marketValue": 3000000
+        "overall": 74,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mikael Uhre",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 17,
-        "nationality": "Dinamarca",
-        "marketValue": 2800000
+        "overall": 71,
+        "value": 2800000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ola Brynhildsen",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 26,
-        "nationality": "Noruega",
-        "marketValue": 2500000
+        "overall": 74,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Júnior Brumado",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 26,
-        "nationality": "Brasil",
-        "marketValue": 900
+        "overall": 74,
+        "value": 900,
+        "salary": 24000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -251,235 +341,322 @@
     "players": [
       {
         "name": "Dominik Kotarski",
-        "position": "POR",
-        "rating": 73,
+        "position": "GK",
         "age": 25,
-        "nationality": "Croacia",
-        "marketValue": 6000000
+        "overall": 73,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rúnar Alex Rúnarsson",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 31,
-        "nationality": "Islandia",
-        "marketValue": 400
+        "overall": 70,
+        "value": 400,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Oscar Buur",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 19,
-        "nationality": "Dinamarca",
-        "marketValue": 0
+        "overall": 65,
+        "value": 0,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gabriel Pereira",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 25,
-        "nationality": "Brasil",
-        "marketValue": 6500000
+        "overall": 73,
+        "value": 6500000,
+        "salary": 19500,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pantelis Hatzidiakos",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 29,
-        "nationality": "Grecia",
-        "marketValue": 3500000
+        "overall": 72,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Munashe Garananga",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 25,
-        "nationality": "Zimbabue",
-        "marketValue": 2000000
+        "overall": 69,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Junnosuke Suzuki",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 20,
-        "nationality": "Japón",
-        "marketValue": 2000000
+        "overall": 68,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marcos López",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 15,
-        "nationality": "Perú",
-        "marketValue": 3500000
+        "overall": 68,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Birger Meling",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 24,
-        "nationality": "Noruega",
-        "marketValue": 1500000
+        "overall": 69,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rodrigo Huescas",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 22,
-        "nationality": "México",
-        "marketValue": 6000000
+        "overall": 71,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Aurélio Buta",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 17,
-        "nationality": "Portugal",
-        "marketValue": 3000000
+        "overall": 68,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yoram Zague",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 22,
-        "nationality": "Francia",
-        "marketValue": 2500000
+        "overall": 67,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kenay Myrie",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 18,
-        "nationality": "Costa Rica",
-        "marketValue": 800
+        "overall": 67,
+        "value": 800,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "William Clem",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 36,
-        "nationality": "Dinamarca",
-        "marketValue": 3000000
+        "overall": 65,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Amir Richardson",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 25,
-        "nationality": "Marruecos",
-        "marketValue": 4500000
+        "overall": 72,
+        "value": 4500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Magnus Mattsson",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 26,
-        "nationality": "Dinamarca",
-        "marketValue": 4000000
+        "overall": 74,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mads Emil Madsen",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 21,
-        "nationality": "Dinamarca",
-        "marketValue": 2500000
+        "overall": 68,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Thomas Delaney",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 27,
-        "nationality": "Dinamarca",
-        "marketValue": 800
+        "overall": 70,
+        "value": 800,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Oliver Højer",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 38,
-        "nationality": "Dinamarca",
-        "marketValue": 50
+        "overall": 65,
+        "value": 50,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jonathan Moalem",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 29,
-        "nationality": "Dinamarca",
-        "marketValue": 0
+        "overall": 71,
+        "value": 0,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Elias Achouri",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 30,
-        "nationality": "Túnez",
-        "marketValue": 3500000
+        "overall": 72,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Robert",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 16,
-        "nationality": "Brasil",
-        "marketValue": 2200000
+        "overall": 68,
+        "value": 2200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jordan Larsson",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 28,
-        "nationality": "Suecia",
-        "marketValue": 3000000
+        "overall": 72,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Liam West",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 18,
-        "nationality": "Noruega",
-        "marketValue": 0
+        "overall": 68,
+        "value": 0,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mohamed Elyounoussi",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 31,
-        "nationality": "Noruega",
-        "marketValue": 4500000
+        "overall": 68,
+        "value": 4500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Youssoufa Moukoko",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 21,
-        "nationality": "Alemania",
-        "marketValue": 7000000
+        "overall": 69,
+        "value": 7000000,
+        "salary": 21000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Viktor Dadason",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 39,
-        "nationality": "Islandia",
-        "marketValue": 3000000
+        "overall": 65,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Viktor Claesson",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 34,
-        "nationality": "Suecia",
-        "marketValue": 2000000
+        "overall": 63,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Andreas Cornelius",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 32,
-        "nationality": "Dinamarca",
-        "marketValue": 400
+        "overall": 63,
+        "value": 400,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -489,187 +666,256 @@
     "players": [
       {
         "name": "Patrick Pentz",
-        "position": "POR",
-        "rating": 74,
+        "position": "GK",
         "age": 29,
-        "nationality": "Austria",
-        "marketValue": 2200000
+        "overall": 74,
+        "value": 2200000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gavin Beavers",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 20,
-        "nationality": "Estados Unidos",
-        "marketValue": 400
+        "overall": 65,
+        "value": 400,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Thomas Mikkelsen",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 16,
-        "nationality": "Dinamarca",
-        "marketValue": 25
+        "overall": 66,
+        "value": 25,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ben Godfrey",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 28,
-        "nationality": "Inglaterra",
-        "marketValue": 5500000
+        "overall": 73,
+        "value": 5500000,
+        "salary": 16500,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luis Binks",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 24,
-        "nationality": "Inglaterra",
-        "marketValue": 3000000
+        "overall": 70,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Frederik Alves",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 32,
-        "nationality": "Dinamarca",
-        "marketValue": 2800000
+        "overall": 72,
+        "value": 2800000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rasmus Lauritsen",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 29,
-        "nationality": "Dinamarca",
-        "marketValue": 1500000
+        "overall": 71,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jordi Vanlerberghe",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 30,
-        "nationality": "Bélgica",
-        "marketValue": 1200000
+        "overall": 71,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mats Köhlert",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 27,
-        "nationality": "Alemania",
-        "marketValue": 3500000
+        "overall": 73,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marko Divković",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 24,
-        "nationality": "Croacia",
-        "marketValue": 2500000
+        "overall": 70,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sean Klaiber",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 31,
-        "nationality": "Surinam",
-        "marketValue": 1500000
+        "overall": 73,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Oliver Villadsen",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 24,
-        "nationality": "Dinamarca",
-        "marketValue": 1200000
+        "overall": 70,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bartosz Slisz",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 26,
-        "nationality": "Polonia",
-        "marketValue": 4000000
+        "overall": 72,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Benjamin Tahirović",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 22,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 4500000
+        "overall": 70,
+        "value": 4500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mathias Jensen",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 42,
-        "nationality": "Dinamarca",
-        "marketValue": 750
+        "overall": 64,
+        "value": 750,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Wass",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 36,
-        "nationality": "Dinamarca",
-        "marketValue": 500
+        "overall": 66,
+        "value": 500,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nicolai Vallys",
-        "position": "MC",
-        "rating": 76,
+        "position": "CM",
         "age": 29,
-        "nationality": "Dinamarca",
-        "marketValue": 4500000
+        "overall": 76,
+        "value": 4500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ousmane Sow",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 22,
-        "nationality": "Francia",
-        "marketValue": 1500000
+        "overall": 70,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sho Fukuda",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 19,
-        "nationality": "Japón",
-        "marketValue": 1200000
+        "overall": 68,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filip Bundgaard",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 21,
-        "nationality": "Dinamarca",
-        "marketValue": 2500000
+        "overall": 69,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Emmanuel Dennis",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 17,
-        "nationality": "Nigeria",
-        "marketValue": 2000000
+        "overall": 69,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jacob Ambæk",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 38,
-        "nationality": "Dinamarca",
-        "marketValue": 1000000
+        "overall": 63,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kotaro Uchino",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 18,
-        "nationality": "Japón",
-        "marketValue": 100
+        "overall": 65,
+        "value": 100,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -679,219 +925,300 @@
     "players": [
       {
         "name": "Andreas Hansen",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 30,
-        "nationality": "Dinamarca",
-        "marketValue": 1000000
+        "overall": 70,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakob Busk",
-        "position": "POR",
-        "rating": 64,
+        "position": "GK",
         "age": 16,
-        "nationality": "Dinamarca",
-        "marketValue": 150
+        "overall": 64,
+        "value": 150,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Noah Markmann",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 45,
-        "nationality": "Dinamarca",
-        "marketValue": 2500000
+        "overall": 64,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tobias Salquist",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 30,
-        "nationality": "Dinamarca",
-        "marketValue": 600
+        "overall": 69,
+        "value": 600,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stephen Acquah",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 34,
-        "nationality": "Ghana",
-        "marketValue": 500
+        "overall": 63,
+        "value": 500,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Markus Walker",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 28,
-        "nationality": "Dinamarca",
-        "marketValue": 400
+        "overall": 68,
+        "value": 400,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Juho Lähteenmäki",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 25,
-        "nationality": "Finlandia",
-        "marketValue": 3500000
+        "overall": 68,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Runar Norheim",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 23,
-        "nationality": "Noruega",
-        "marketValue": 2000000
+        "overall": 67,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Issaka Seidu",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 30,
-        "nationality": "Ghana",
-        "marketValue": 25
+        "overall": 68,
+        "value": 25,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Peter Ankersen",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 35,
-        "nationality": "Dinamarca",
-        "marketValue": 150
+        "overall": 64,
+        "value": 150,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Victor Gustafsen",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 18,
-        "nationality": "Dinamarca",
-        "marketValue": 0
+        "overall": 65,
+        "value": 0,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mark Brink",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 27,
-        "nationality": "Dinamarca",
-        "marketValue": 2000000
+        "overall": 70,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Justin Janssen",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 18,
-        "nationality": "Dinamarca",
-        "marketValue": 850
+        "overall": 64,
+        "value": 850,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Malte Heyde",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 18,
-        "nationality": "Dinamarca",
-        "marketValue": 25
+        "overall": 64,
+        "value": 25,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Caleb Yirenkyi",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 36,
-        "nationality": "Ghana",
-        "marketValue": 6000000
+        "overall": 66,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nicklas Røjkjær",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 27,
-        "nationality": "Dinamarca",
-        "marketValue": 2000000
+        "overall": 72,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Villum Berthelsen",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 29,
-        "nationality": "Dinamarca",
-        "marketValue": 850
+        "overall": 69,
+        "value": 850,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Araphat Mohammed",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 20,
-        "nationality": "Ghana",
-        "marketValue": 50
+        "overall": 65,
+        "value": 50,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Diallo Sanoussi",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 27,
-        "nationality": "Costa de Marfil",
-        "marketValue": 0
+        "overall": 69,
+        "value": 0,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lamine Sadio",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 37,
-        "nationality": "Senegal",
-        "marketValue": 0
+        "overall": 63,
+        "value": 0,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Prince Amoako Junior",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 22,
-        "nationality": "Ghana",
-        "marketValue": 5000000
+        "overall": 70,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ola Solbakken",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 27,
-        "nationality": "Noruega",
-        "marketValue": 1800000
+        "overall": 70,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hjalte Boe Rasmussen",
-        "position": "DC",
-        "rating": 58,
+        "position": "ST",
         "age": 40,
-        "nationality": "Dinamarca",
-        "marketValue": 50
+        "overall": 58,
+        "value": 50,
+        "salary": 8000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Villum Dalsgaard",
-        "position": "DC",
-        "rating": 61,
+        "position": "ST",
         "age": 41,
-        "nationality": "Dinamarca",
-        "marketValue": 0
+        "overall": 61,
+        "value": 0,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexander Lind",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 23,
-        "nationality": "Dinamarca",
-        "marketValue": 6000000
+        "overall": 70,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Levy Nene",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 17,
-        "nationality": "Costa de Marfil",
-        "marketValue": 750
+        "overall": 65,
+        "value": 750,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Souleymane Alio",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 33,
-        "nationality": "Burkina Faso",
-        "marketValue": 25
+        "overall": 63,
+        "value": 25,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -901,187 +1228,256 @@
     "players": [
       {
         "name": "Mads Hedenstad",
-        "position": "POR",
-        "rating": 63,
+        "position": "GK",
         "age": 21,
-        "nationality": "Noruega",
-        "marketValue": 1000000
+        "overall": 63,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jesper Hansen",
-        "position": "POR",
-        "rating": 62,
+        "position": "GK",
         "age": 40,
-        "nationality": "Dinamarca",
-        "marketValue": 50
+        "overall": 62,
+        "value": 50,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Eric Kahl",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 19,
-        "nationality": "Suecia",
-        "marketValue": 2500000
+        "overall": 64,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jonas Jensen-Abbew",
-        "position": "DFC",
-        "rating": 60,
+        "position": "CB",
         "age": 40,
-        "nationality": "Dinamarca",
-        "marketValue": 900
+        "overall": 60,
+        "value": 900,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tobias Mölgaard",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 29,
-        "nationality": "Dinamarca",
-        "marketValue": 800
+        "overall": 67,
+        "value": 800,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Frederik Tingager",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 32,
-        "nationality": "Dinamarca",
-        "marketValue": 250
+        "overall": 67,
+        "value": 250,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Henrik Dalsgaard",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 36,
-        "nationality": "Dinamarca",
-        "marketValue": 100
+        "overall": 62,
+        "value": 100,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Magnus Knudsen",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 24,
-        "nationality": "Noruega",
-        "marketValue": 2500000
+        "overall": 66,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Markus Solbakken",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 25,
-        "nationality": "Noruega",
-        "marketValue": 2200000
+        "overall": 68,
+        "value": 2200000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kevin Yakob",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 17,
-        "nationality": "Irak",
-        "marketValue": 600
+        "overall": 62,
+        "value": 600,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nicolai Poulsen",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 32,
-        "nationality": "Dinamarca",
-        "marketValue": 300
+        "overall": 62,
+        "value": 300,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Felix Beijmo",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 27,
-        "nationality": "Suecia",
-        "marketValue": 2500000
+        "overall": 68,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rasmus Carstensen",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 29,
-        "nationality": "Dinamarca",
-        "marketValue": 2000000
+        "overall": 68,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jacob Andersen",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 26,
-        "nationality": "Dinamarca",
-        "marketValue": 400
+        "overall": 67,
+        "value": 400,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gift Links",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 27,
-        "nationality": "Sudáfrica",
-        "marketValue": 1500000
+        "overall": 69,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kristian Arnstad",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 22,
-        "nationality": "Noruega",
-        "marketValue": 5000000
+        "overall": 68,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Frederik Emmery",
-        "position": "DC",
-        "rating": 59,
+        "position": "ST",
         "age": 39,
-        "nationality": "Dinamarca",
-        "marketValue": 350
+        "overall": 59,
+        "value": 350,
+        "salary": 9000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tómas Óli Kristjánsson",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 20,
-        "nationality": "Islandia",
-        "marketValue": 50
+        "overall": 64,
+        "value": 50,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tobias Bech",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 31,
-        "nationality": "Dinamarca",
-        "marketValue": 4000000
+        "overall": 63,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sebastian Jørgensen",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 25,
-        "nationality": "Dinamarca",
-        "marketValue": 650
+        "overall": 64,
+        "value": 650,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Janni Serra",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 27,
-        "nationality": "Alemania",
-        "marketValue": 350
+        "overall": 64,
+        "value": 350,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Patrick Mortensen",
-        "position": "DC",
-        "rating": 60,
+        "position": "ST",
         "age": 36,
-        "nationality": "Dinamarca",
-        "marketValue": 300
+        "overall": 60,
+        "value": 300,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stefen Tchamche",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 27,
-        "nationality": "Dinamarca",
-        "marketValue": 150
+        "overall": 64,
+        "value": 150,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1091,195 +1487,267 @@
     "players": [
       {
         "name": "Lucas Lund",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 25,
-        "nationality": "Dinamarca",
-        "marketValue": 2000000
+        "overall": 66,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Filip Djukic",
-        "position": "POR",
-        "rating": 61,
+        "position": "GK",
         "age": 16,
-        "nationality": "Montenegro",
-        "marketValue": 750
+        "overall": 61,
+        "value": 750,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Anyembe",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 24,
-        "nationality": "Kenia",
-        "marketValue": 2000000
+        "overall": 66,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stipe Radic",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 25,
-        "nationality": "Croacia",
-        "marketValue": 1500000
+        "overall": 66,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Zan Zaletel",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 26,
-        "nationality": "Eslovenia",
-        "marketValue": 1300000
+        "overall": 68,
+        "value": 1300000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lukas Kirkegaard",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 32,
-        "nationality": "Dinamarca",
-        "marketValue": 25
+        "overall": 66,
+        "value": 25,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Srdjan Kuzmic",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 30,
-        "nationality": "Eslovenia",
-        "marketValue": 1800000
+        "overall": 68,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Oliver Bundgaard",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 23,
-        "nationality": "Dinamarca",
-        "marketValue": 1000000
+        "overall": 66,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jean Manuel Mbom",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 18,
-        "nationality": "Alemania",
-        "marketValue": 1500000
+        "overall": 65,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hjalte Bidstrup",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 26,
-        "nationality": "Dinamarca",
-        "marketValue": 750
+        "overall": 67,
+        "value": 750,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mikkel Løndal",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 31,
-        "nationality": "Dinamarca",
-        "marketValue": 0
+        "overall": 66,
+        "value": 0,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mees Hoedemakers",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 27,
-        "nationality": "Países Bajos",
-        "marketValue": 750
+        "overall": 66,
+        "value": 750,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jeppe Grønning",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 34,
-        "nationality": "Dinamarca",
-        "marketValue": 150
+        "overall": 62,
+        "value": 150,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Thomas Jørgensen",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 20,
-        "nationality": "Dinamarca",
-        "marketValue": 4000000
+        "overall": 66,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mads Søndergaard",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 23,
-        "nationality": "Dinamarca",
-        "marketValue": 1200000
+        "overall": 68,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Asker Beck",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 22,
-        "nationality": "Dinamarca",
-        "marketValue": 600
+        "overall": 65,
+        "value": 600,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Frederik Damkjer",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 33,
-        "nationality": "Dinamarca",
-        "marketValue": 75
+        "overall": 61,
+        "value": 75,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Charly Nouck",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 21,
-        "nationality": "Dinamarca",
-        "marketValue": 1000000
+        "overall": 67,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sami Jalal",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 29,
-        "nationality": "Dinamarca",
-        "marketValue": 750
+        "overall": 65,
+        "value": 750,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yonis Njoh",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 22,
-        "nationality": "Francia",
-        "marketValue": 550
+        "overall": 65,
+        "value": 550,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Osman Addo",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 17,
-        "nationality": "Dinamarca",
-        "marketValue": 400
+        "overall": 64,
+        "value": 400,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bilal Brahimi",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 21,
-        "nationality": "Francia",
-        "marketValue": 1200000
+        "overall": 65,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tim Freriks",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 27,
-        "nationality": "Países Bajos",
-        "marketValue": 650
+        "overall": 67,
+        "value": 650,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dorian Hanza",
-        "position": "DC",
-        "rating": 61,
+        "position": "ST",
         "age": 19,
-        "nationality": "Guinea Ecuatorial",
-        "marketValue": 250
+        "overall": 61,
+        "value": 250,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1289,211 +1757,289 @@
     "players": [
       {
         "name": "Aske Andrésen",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 30,
-        "nationality": "Dinamarca",
-        "marketValue": 250
+        "overall": 66,
+        "value": 250,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nicolai Larsen",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 34,
-        "nationality": "Dinamarca",
-        "marketValue": 200
+        "overall": 69,
+        "value": 200,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bastian Holm",
-        "position": "POR",
-        "rating": 62,
+        "position": "GK",
         "age": 16,
-        "nationality": "Dinamarca",
-        "marketValue": 0
+        "overall": 62,
+        "value": 0,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Robin Østrøm",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 23,
-        "nationality": "Noruega",
-        "marketValue": 2000000
+        "overall": 66,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pedro Ganchas",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 25,
-        "nationality": "Portugal",
-        "marketValue": 1700000
+        "overall": 66,
+        "value": 1700000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexander Busch",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 40,
-        "nationality": "Dinamarca",
-        "marketValue": 1200000
+        "overall": 62,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pontus Rödin",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 25,
-        "nationality": "Suecia",
-        "marketValue": 500
+        "overall": 65,
+        "value": 500,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Melker Jonsson",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 23,
-        "nationality": "Suecia",
-        "marketValue": 350
+        "overall": 65,
+        "value": 350,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexander Priesborg",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 24,
-        "nationality": "Dinamarca",
-        "marketValue": 0
+        "overall": 65,
+        "value": 0,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Andreas Poulsen",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 26,
-        "nationality": "Dinamarca",
-        "marketValue": 850
+        "overall": 68,
+        "value": 850,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Leonel Montano",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 18,
-        "nationality": "Dinamarca",
-        "marketValue": 400
+        "overall": 62,
+        "value": 400,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jens Martin Gammelby",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 19,
-        "nationality": "Dinamarca",
-        "marketValue": 350
+        "overall": 65,
+        "value": 350,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Simon Stüker",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 28,
-        "nationality": "Dinamarca",
-        "marketValue": 0
+        "overall": 67,
+        "value": 0,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mikkel Øxenberg",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 26,
-        "nationality": "Dinamarca",
-        "marketValue": 0
+        "overall": 67,
+        "value": 0,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mads Larsen",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 20,
-        "nationality": "Dinamarca",
-        "marketValue": 1700000
+        "overall": 64,
+        "value": 1700000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mads Freundlich",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 33,
-        "nationality": "Dinamarca",
-        "marketValue": 1500000
+        "overall": 63,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Julius Lorents",
-        "position": "MC",
-        "rating": 60,
+        "position": "CM",
         "age": 36,
-        "nationality": "Dinamarca",
-        "marketValue": 800
+        "overall": 60,
+        "value": 800,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Villads Westh",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 21,
-        "nationality": "Dinamarca",
-        "marketValue": 750
+        "overall": 63,
+        "value": 750,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adam Wikman",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 22,
-        "nationality": "Suecia",
-        "marketValue": 600
+        "overall": 65,
+        "value": 600,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sofus Berger",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 22,
-        "nationality": "Dinamarca",
-        "marketValue": 350
+        "overall": 64,
+        "value": 350,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Callum McCowatt",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 17,
-        "nationality": "Nueva Zelanda",
-        "marketValue": 2000000
+        "overall": 66,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Younes Bakiz",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 26,
-        "nationality": "Dinamarca",
-        "marketValue": 1700000
+        "overall": 68,
+        "value": 1700000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rami Al Hajj",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 22,
-        "nationality": "Suecia",
-        "marketValue": 700
+        "overall": 65,
+        "value": 700,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jeppe Andersen",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 33,
-        "nationality": "Dinamarca",
-        "marketValue": 100
+        "overall": 61,
+        "value": 100,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tonni Adamsen",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 23,
-        "nationality": "Dinamarca",
-        "marketValue": 1500000
+        "overall": 69,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexander Simmelhack",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 20,
-        "nationality": "Dinamarca",
-        "marketValue": 700
+        "overall": 64,
+        "value": 700,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1503,219 +2049,300 @@
     "players": [
       {
         "name": "Paul Izzo",
-        "position": "POR",
-        "rating": 67,
+        "position": "GK",
         "age": 31,
-        "nationality": "Australia",
-        "marketValue": 600
+        "overall": 67,
+        "value": 600,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jannich Storch",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 32,
-        "nationality": "Dinamarca",
-        "marketValue": 50
+        "overall": 66,
+        "value": 50,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mert Demirci",
-        "position": "POR",
-        "rating": 62,
+        "position": "GK",
         "age": 22,
-        "nationality": "Países Bajos",
-        "marketValue": 0
+        "overall": 62,
+        "value": 0,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Wessel Dammers",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 30,
-        "nationality": "Países Bajos",
-        "marketValue": 900
+        "overall": 67,
+        "value": 900,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lucas Lissens",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 24,
-        "nationality": "Bélgica",
-        "marketValue": 700
+        "overall": 64,
+        "value": 700,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Oliver Jones",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 22,
-        "nationality": "Australia",
-        "marketValue": 250
+        "overall": 63,
+        "value": 250,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Høegh",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 35,
-        "nationality": "Dinamarca",
-        "marketValue": 150
+        "overall": 62,
+        "value": 150,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nikolas Dyhr",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 44,
-        "nationality": "Dinamarca",
-        "marketValue": 2200000
+        "overall": 62,
+        "value": 2200000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Martin Sjølstad",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 15,
-        "nationality": "Noruega",
-        "marketValue": 250
+        "overall": 63,
+        "value": 250,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Oliver Olsen",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 27,
-        "nationality": "Dinamarca",
-        "marketValue": 1800000
+        "overall": 68,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sabil Hansen",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 24,
-        "nationality": "Dinamarca",
-        "marketValue": 600
+        "overall": 64,
+        "value": 600,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "André Römer",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 28,
-        "nationality": "Dinamarca",
-        "marketValue": 400
+        "overall": 66,
+        "value": 400,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "John Björkengren",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 27,
-        "nationality": "Suecia",
-        "marketValue": 2000000
+        "overall": 68,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Laurits Pedersen",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 16,
-        "nationality": "Dinamarca",
-        "marketValue": 700
+        "overall": 62,
+        "value": 700,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Frederik Lauenborg",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 28,
-        "nationality": "Dinamarca",
-        "marketValue": 250
+        "overall": 66,
+        "value": 250,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ousseynou Fall Seck",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 25,
-        "nationality": "Senegal",
-        "marketValue": 25
+        "overall": 66,
+        "value": 25,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Max Albæk",
-        "position": "MC",
-        "rating": 60,
+        "position": "CM",
         "age": 38,
-        "nationality": "Dinamarca",
-        "marketValue": 25
+        "overall": 60,
+        "value": 25,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mike Themsen",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 30,
-        "nationality": "Dinamarca",
-        "marketValue": 800
+        "overall": 67,
+        "value": 800,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Noah Shamoun",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 18,
-        "nationality": "Siria",
-        "marketValue": 325
+        "overall": 64,
+        "value": 325,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ernest Agyiri",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 21,
-        "nationality": "Ghana",
-        "marketValue": 275
+        "overall": 64,
+        "value": 275,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cyril Edudzi",
-        "position": "DC",
-        "rating": 61,
+        "position": "ST",
         "age": 33,
-        "nationality": "Ghana",
-        "marketValue": 250
+        "overall": 61,
+        "value": 250,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mathias Greve",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 17,
-        "nationality": "Dinamarca",
-        "marketValue": 900
+        "overall": 62,
+        "value": 900,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Elies Mahmoud",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 24,
-        "nationality": "Francia",
-        "marketValue": 650
+        "overall": 63,
+        "value": 650,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mohamed Touré",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 21,
-        "nationality": "Australia",
-        "marketValue": 1700000
+        "overall": 67,
+        "value": 1700000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Warren Caddy",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 28,
-        "nationality": "Madagascar",
-        "marketValue": 600
+        "overall": 67,
+        "value": 600,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Amin Al-Hamawi",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 22,
-        "nationality": "Irak",
-        "marketValue": 250
+        "overall": 66,
+        "value": 250,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Musa Touré",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 19,
-        "nationality": "Australia",
-        "marketValue": 200
+        "overall": 63,
+        "value": 200,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1725,227 +2352,311 @@
     "players": [
       {
         "name": "Theo Sander",
-        "position": "POR",
-        "rating": 67,
+        "position": "GK",
         "age": 30,
-        "nationality": "Dinamarca",
-        "marketValue": 1000000
+        "overall": 67,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Viljar Myhra",
-        "position": "POR",
-        "rating": 62,
+        "position": "GK",
         "age": 16,
-        "nationality": "Noruega",
-        "marketValue": 800
+        "overall": 62,
+        "value": 800,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Martin Hansen",
-        "position": "POR",
-        "rating": 63,
+        "position": "GK",
         "age": 35,
-        "nationality": "Dinamarca",
-        "marketValue": 25
+        "overall": 63,
+        "value": 25,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marcus Eskildsen",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 27,
-        "nationality": "Dinamarca",
-        "marketValue": 0
+        "overall": 65,
+        "value": 0,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "James Gomez",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 29,
-        "nationality": "Gambia",
-        "marketValue": 1200000
+        "overall": 67,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Julius Berthel Askou",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 19,
-        "nationality": "Dinamarca",
-        "marketValue": 1000000
+        "overall": 64,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yaya Bojang",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 24,
-        "nationality": "Gambia",
-        "marketValue": 850
+        "overall": 65,
+        "value": 850,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nicolas Bürgy",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 30,
-        "nationality": "Suiza",
-        "marketValue": 800
+        "overall": 67,
+        "value": 800,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bjørn Paulsen",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 34,
-        "nationality": "Dinamarca",
-        "marketValue": 50
+        "overall": 61,
+        "value": 50,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adam Sørensen",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 25,
-        "nationality": "Dinamarca",
-        "marketValue": 900
+        "overall": 66,
+        "value": 900,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marcus McCoy",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 15,
-        "nationality": "Dinamarca",
-        "marketValue": 350
+        "overall": 62,
+        "value": 350,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Leeroy Owusu",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 20,
-        "nationality": "Ghana",
-        "marketValue": 900
+        "overall": 63,
+        "value": 900,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ismahila Ouédraogo",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 22,
-        "nationality": "Burkina Faso",
-        "marketValue": 1000000
+        "overall": 66,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakob Bonde",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 32,
-        "nationality": "Dinamarca",
-        "marketValue": 250
+        "overall": 62,
+        "value": 250,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tom Trybull",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 19,
-        "nationality": "Alemania",
-        "marketValue": 200
+        "overall": 63,
+        "value": 200,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vitus Friis",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 21,
-        "nationality": "Dinamarca",
-        "marketValue": 25
+        "overall": 62,
+        "value": 25,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Max Ejdum",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 18,
-        "nationality": "Dinamarca",
-        "marketValue": 1700000
+        "overall": 65,
+        "value": 1700000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Anssi Suhonen",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 25,
-        "nationality": "Finlandia",
-        "marketValue": 550
+        "overall": 67,
+        "value": 550,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gustav Grubbe",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 23,
-        "nationality": "Dinamarca",
-        "marketValue": 450
+        "overall": 64,
+        "value": 450,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rasmus Falk",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 34,
-        "nationality": "Dinamarca",
-        "marketValue": 300
+        "overall": 63,
+        "value": 300,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "William Martin",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 23,
-        "nationality": "Dinamarca",
-        "marketValue": 600
+        "overall": 62,
+        "value": 600,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Magnus Andersen",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 28,
-        "nationality": "Dinamarca",
-        "marketValue": 25
+        "overall": 67,
+        "value": 25,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mads Abrahamsen",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 19,
-        "nationality": "Dinamarca",
-        "marketValue": 0
+        "overall": 64,
+        "value": 0,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jona Niemiec",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 24,
-        "nationality": "Alemania",
-        "marketValue": 500
+        "overall": 64,
+        "value": 500,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Fiete Arp",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 26,
-        "nationality": "Alemania",
-        "marketValue": 1200000
+        "overall": 69,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Noah Ganaus",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 17,
-        "nationality": "Alemania",
-        "marketValue": 1200000
+        "overall": 66,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jay-Roy Grot",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 31,
-        "nationality": "Surinam",
-        "marketValue": 800
+        "overall": 63,
+        "value": 800,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lasse Legolas",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 26,
-        "nationality": "Dinamarca",
-        "marketValue": 0
+        "overall": 67,
+        "value": 0,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1955,203 +2666,278 @@
     "players": [
       {
         "name": "Marcus Bundgaard",
-        "position": "POR",
-        "rating": 62,
+        "position": "GK",
         "age": 16,
-        "nationality": "Dinamarca",
-        "marketValue": 850
+        "overall": 62,
+        "value": 850,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nicolai Flø",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 30,
-        "nationality": "Dinamarca",
-        "marketValue": 200
+        "overall": 66,
+        "value": 200,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Maxime Soulas",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 26,
-        "nationality": "Francia",
-        "marketValue": 1800000
+        "overall": 68,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Magnus Jensen",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 29,
-        "nationality": "Dinamarca",
-        "marketValue": 700
+        "overall": 67,
+        "value": 700,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daníel Leó Grétarsson",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 30,
-        "nationality": "Islandia",
-        "marketValue": 500
+        "overall": 67,
+        "value": 500,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pachanga Kristensen",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 19,
-        "nationality": "Dinamarca",
-        "marketValue": 25
+        "overall": 62,
+        "value": 25,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rúnar Thór Sigurgeirsson",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 21,
-        "nationality": "Islandia",
-        "marketValue": 400
+        "overall": 64,
+        "value": 400,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ebube Duru",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 23,
-        "nationality": "Nigeria",
-        "marketValue": 350
+        "overall": 64,
+        "value": 350,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dalton Wilkins",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 26,
-        "nationality": "Nueva Zelanda",
-        "marketValue": 150
+        "overall": 67,
+        "value": 150,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alberto Vogtmann",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 32,
-        "nationality": "Dinamarca",
-        "marketValue": 0
+        "overall": 69,
+        "value": 0,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tobias Klysner",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 20,
-        "nationality": "Dinamarca",
-        "marketValue": 400
+        "overall": 62,
+        "value": 400,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Andreas Oggesen",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 22,
-        "nationality": "Dinamarca",
-        "marketValue": 250
+        "overall": 64,
+        "value": 250,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Simon Waever",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 30,
-        "nationality": "Dinamarca",
-        "marketValue": 50
+        "overall": 66,
+        "value": 50,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tobias Sommer",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 26,
-        "nationality": "Dinamarca",
-        "marketValue": 1000000
+        "overall": 69,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rasmus Vinderslev",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 28,
-        "nationality": "Dinamarca",
-        "marketValue": 700
+        "overall": 66,
+        "value": 700,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sefer Emini",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 25,
-        "nationality": "Macedonia del Norte",
-        "marketValue": 800
+        "overall": 66,
+        "value": 800,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mohamed Cherif Haidara",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 31,
-        "nationality": "Guinea",
-        "marketValue": 500
+        "overall": 66,
+        "value": 500,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Anders Bergholt",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 28,
-        "nationality": "Dinamarca",
-        "marketValue": 0
+        "overall": 67,
+        "value": 0,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Anders Hoeg",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 17,
-        "nationality": "Dinamarca",
-        "marketValue": 0
+        "overall": 65,
+        "value": 0,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Olti Hyseni",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 24,
-        "nationality": "Dinamarca",
-        "marketValue": 1500000
+        "overall": 65,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexander Lyng",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 21,
-        "nationality": "Dinamarca",
-        "marketValue": 1200000
+        "overall": 65,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Albert Rrahmani",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 29,
-        "nationality": "Kosovo",
-        "marketValue": 50
+        "overall": 66,
+        "value": 50,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mads Agger",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 25,
-        "nationality": "Dinamarca",
-        "marketValue": 1200000
+        "overall": 70,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lirim Qamili",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 15,
-        "nationality": "Macedonia del Norte",
-        "marketValue": 1000000
+        "overall": 65,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matthew Hoppe",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 24,
-        "nationality": "Estados Unidos",
-        "marketValue": 650
+        "overall": 66,
+        "value": 650,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -2161,243 +2947,333 @@
     "players": [
       {
         "name": "Igor Vekic",
-        "position": "POR",
-        "rating": 62,
+        "position": "GK",
         "age": 27,
-        "nationality": "Eslovenia",
-        "marketValue": 500
+        "overall": 62,
+        "value": 500,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tobias Haahr",
-        "position": "POR",
-        "rating": 58,
+        "position": "GK",
         "age": 24,
-        "nationality": "Dinamarca",
-        "marketValue": 50
+        "overall": 58,
+        "value": 50,
+        "salary": 8000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gustav Knudsen",
-        "position": "POR",
-        "rating": 64,
+        "position": "GK",
         "age": 33,
-        "nationality": "Dinamarca",
-        "marketValue": 0
+        "overall": 64,
+        "value": 0,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Valdemar Lund",
-        "position": "DFC",
-        "rating": 60,
+        "position": "CB",
         "age": 22,
-        "nationality": "Dinamarca",
-        "marketValue": 1000000
+        "overall": 60,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stefan Velkov",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 29,
-        "nationality": "Bulgaria",
-        "marketValue": 700
+        "overall": 64,
+        "value": 700,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Damian van Bruggen",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 29,
-        "nationality": "Países Bajos",
-        "marketValue": 600
+        "overall": 64,
+        "value": 600,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Anders Sønderskov",
-        "position": "DFC",
-        "rating": 59,
+        "position": "CB",
         "age": 22,
-        "nationality": "Dinamarca",
-        "marketValue": 100
+        "overall": 59,
+        "value": 100,
+        "salary": 9000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lasse Nielsen",
-        "position": "DFC",
-        "rating": 58,
+        "position": "CB",
         "age": 38,
-        "nationality": "Dinamarca",
-        "marketValue": 50
+        "overall": 58,
+        "value": 50,
+        "salary": 8000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Giorgi Tabatadze",
-        "position": "DFC",
-        "rating": 60,
+        "position": "CB",
         "age": 21,
-        "nationality": "Georgia",
-        "marketValue": 350
+        "overall": 60,
+        "value": 350,
+        "salary": 10000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Christian Sørensen",
-        "position": "DFC",
-        "rating": 59,
+        "position": "CB",
         "age": 33,
-        "nationality": "Dinamarca",
-        "marketValue": 250
+        "overall": 59,
+        "value": 250,
+        "salary": 9000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Thomas Gundelund",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 24,
-        "nationality": "Dinamarca",
-        "marketValue": 750
+        "overall": 62,
+        "value": 750,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lasse Flø",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 23,
-        "nationality": "Dinamarca",
-        "marketValue": 400
+        "overall": 62,
+        "value": 400,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mads Enggård",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 30,
-        "nationality": "Dinamarca",
-        "marketValue": 2500000
+        "overall": 65,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lundrim Hetemi",
-        "position": "MC",
-        "rating": 59,
+        "position": "CM",
         "age": 34,
-        "nationality": "Albania",
-        "marketValue": 500
+        "overall": 59,
+        "value": 500,
+        "salary": 9000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mike Vestergård",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 28,
-        "nationality": "Dinamarca",
-        "marketValue": 300
+        "overall": 64,
+        "value": 300,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tobias Lauritsen",
-        "position": "MC",
-        "rating": 60,
+        "position": "CM",
         "age": 21,
-        "nationality": "Dinamarca",
-        "marketValue": 800
+        "overall": 60,
+        "value": 800,
+        "salary": 10000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Andrew Hjulsager",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 17,
-        "nationality": "Dinamarca",
-        "marketValue": 500
+        "overall": 61,
+        "value": 500,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sander Ravn",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 26,
-        "nationality": "Dinamarca",
-        "marketValue": 25
+        "overall": 64,
+        "value": 25,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Clemens Astrup",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 27,
-        "nationality": "Dinamarca",
-        "marketValue": 0
+        "overall": 64,
+        "value": 0,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bismark Edjeodji",
-        "position": "MC",
-        "rating": 59,
+        "position": "CM",
         "age": 32,
-        "nationality": "Ghana",
-        "marketValue": 500
+        "overall": 59,
+        "value": 500,
+        "salary": 9000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tobias Bach",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 16,
-        "nationality": "Dinamarca",
-        "marketValue": 650
+        "overall": 62,
+        "value": 650,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jonathan Amon",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 26,
-        "nationality": "Estados Unidos",
-        "marketValue": 500
+        "overall": 64,
+        "value": 500,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mikkel Duelund",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 28,
-        "nationality": "Dinamarca",
-        "marketValue": 400
+        "overall": 62,
+        "value": 400,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexi Pitu",
-        "position": "DC",
-        "rating": 61,
+        "position": "ST",
         "age": 23,
-        "nationality": "Alemania",
-        "marketValue": 400
+        "overall": 61,
+        "value": 400,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Abdoulaye Camara",
-        "position": "DC",
-        "rating": 58,
+        "position": "ST",
         "age": 20,
-        "nationality": "Guinea",
-        "marketValue": 300
+        "overall": 58,
+        "value": 300,
+        "salary": 8000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Christian Gammelgaard",
-        "position": "DC",
-        "rating": 60,
+        "position": "ST",
         "age": 22,
-        "nationality": "Dinamarca",
-        "marketValue": 900
+        "overall": 60,
+        "value": 900,
+        "salary": 10000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Wahid Faghir",
-        "position": "DC",
-        "rating": 61,
+        "position": "ST",
         "age": 19,
-        "nationality": "Dinamarca",
-        "marketValue": 500
+        "overall": 61,
+        "value": 500,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jelle Duin",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 27,
-        "nationality": "Países Bajos",
-        "marketValue": 200
+        "overall": 64,
+        "value": 200,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Anders Jacobsen",
-        "position": "DC",
-        "rating": 61,
+        "position": "ST",
         "age": 18,
-        "nationality": "Dinamarca",
-        "marketValue": 50
+        "overall": 61,
+        "value": 50,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ransford Amoo",
-        "position": "DC",
-        "rating": 61,
+        "position": "ST",
         "age": 18,
-        "nationality": "Ghana",
-        "marketValue": 0
+        "overall": 61,
+        "value": 0,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -2407,227 +3283,311 @@
     "players": [
       {
         "name": "Valdemar Birksø",
-        "position": "POR",
-        "rating": 59,
+        "position": "GK",
         "age": 24,
-        "nationality": "Dinamarca",
-        "marketValue": 600
+        "overall": 59,
+        "value": 600,
+        "salary": 9000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Etienne Green",
-        "position": "POR",
-        "rating": 58,
+        "position": "GK",
         "age": 42,
-        "nationality": "Inglaterra",
-        "marketValue": 500
+        "overall": 58,
+        "value": 500,
+        "salary": 8000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mads Eriksen",
-        "position": "POR",
-        "rating": 59,
+        "position": "GK",
         "age": 23,
-        "nationality": "Dinamarca",
-        "marketValue": 25
+        "overall": 59,
+        "value": 25,
+        "salary": 9000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Frederik Rieper",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 26,
-        "nationality": "Dinamarca",
-        "marketValue": 750
+        "overall": 64,
+        "value": 750,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jeppe Kudsk",
-        "position": "DFC",
-        "rating": 60,
+        "position": "CB",
         "age": 22,
-        "nationality": "Dinamarca",
-        "marketValue": 450
+        "overall": 60,
+        "value": 450,
+        "salary": 10000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adam Nygaard",
-        "position": "DFC",
-        "rating": 60,
+        "position": "CB",
         "age": 20,
-        "nationality": "Dinamarca",
-        "marketValue": 300
+        "overall": 60,
+        "value": 300,
+        "salary": 10000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Malthe Ladefoged",
-        "position": "DFC",
-        "rating": 59,
+        "position": "CB",
         "age": 15,
-        "nationality": "Dinamarca",
-        "marketValue": 25
+        "overall": 59,
+        "value": 25,
+        "salary": 9000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakob Jessen",
-        "position": "DFC",
-        "rating": 60,
+        "position": "CB",
         "age": 21,
-        "nationality": "Dinamarca",
-        "marketValue": 700
+        "overall": 60,
+        "value": 700,
+        "salary": 10000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daníel Freyr Kristjánsson",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 17,
-        "nationality": "Islandia",
-        "marketValue": 450
+        "overall": 61,
+        "value": 450,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kristian Pedersen",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 24,
-        "nationality": "Dinamarca",
-        "marketValue": 400
+        "overall": 62,
+        "value": 400,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Thøgersen",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 26,
-        "nationality": "Dinamarca",
-        "marketValue": 200
+        "overall": 64,
+        "value": 200,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Anders Dahl",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 23,
-        "nationality": "Dinamarca",
-        "marketValue": 600
+        "overall": 61,
+        "value": 600,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Svenn Crone",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 30,
-        "nationality": "Dinamarca",
-        "marketValue": 400
+        "overall": 64,
+        "value": 400,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Andreas Pyndt",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 18,
-        "nationality": "Dinamarca",
-        "marketValue": 600
+        "overall": 61,
+        "value": 600,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Felix Winther",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 25,
-        "nationality": "Dinamarca",
-        "marketValue": 500
+        "overall": 64,
+        "value": 500,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jonatan Lindekilde",
-        "position": "MC",
-        "rating": 60,
+        "position": "CM",
         "age": 21,
-        "nationality": "Dinamarca",
-        "marketValue": 400
+        "overall": 60,
+        "value": 400,
+        "salary": 10000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Moses Opondo",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 28,
-        "nationality": "Uganda",
-        "marketValue": 350
+        "overall": 64,
+        "value": 350,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sofus Johannesen",
-        "position": "MC",
-        "rating": 60,
+        "position": "CM",
         "age": 16,
-        "nationality": "Dinamarca",
-        "marketValue": 250
+        "overall": 60,
+        "value": 250,
+        "salary": 10000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Haarbo",
-        "position": "MC",
-        "rating": 59,
+        "position": "CM",
         "age": 20,
-        "nationality": "Dinamarca",
-        "marketValue": 150
+        "overall": 59,
+        "value": 150,
+        "salary": 9000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "William Madsen",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 23,
-        "nationality": "Dinamarca",
-        "marketValue": 500
+        "overall": 61,
+        "value": 500,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Emilio Simonsen",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 26,
-        "nationality": "Dinamarca",
-        "marketValue": 300
+        "overall": 65,
+        "value": 300,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gustav Marcussen",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 27,
-        "nationality": "Dinamarca",
-        "marketValue": 750
+        "overall": 64,
+        "value": 750,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Agon Mucolli",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 27,
-        "nationality": "Albania",
-        "marketValue": 450
+        "overall": 63,
+        "value": 450,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Oscar Buch",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 28,
-        "nationality": "Dinamarca",
-        "marketValue": 450
+        "overall": 65,
+        "value": 450,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Friday Etim",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 23,
-        "nationality": "Nigeria",
-        "marketValue": 500
+        "overall": 62,
+        "value": 500,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Patrick Egelund",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 25,
-        "nationality": "Dinamarca",
-        "marketValue": 200
+        "overall": 63,
+        "value": 200,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Eskild Dall",
-        "position": "DC",
-        "rating": 58,
+        "position": "ST",
         "age": 19,
-        "nationality": "Dinamarca",
-        "marketValue": 200
+        "overall": 58,
+        "value": 200,
+        "salary": 8000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Martin Huldahl",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 22,
-        "nationality": "Dinamarca",
-        "marketValue": 25
+        "overall": 62,
+        "value": 25,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   }

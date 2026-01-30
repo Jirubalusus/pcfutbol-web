@@ -5,227 +5,311 @@
     "players": [
       {
         "name": "Uğurcan Çakır",
-        "position": "POR",
-        "rating": 82,
+        "position": "GK",
         "age": 29,
-        "nationality": "Turquía",
-        "marketValue": 15000000
+        "overall": 82,
+        "value": 15000000,
+        "salary": 45000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Günay Güvenç",
-        "position": "POR",
-        "rating": 71,
+        "position": "GK",
         "age": 19,
-        "nationality": "Turquía",
-        "marketValue": 400
+        "overall": 71,
+        "value": 400,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Batuhan Şen",
-        "position": "POR",
-        "rating": 74,
+        "position": "GK",
         "age": 26,
-        "nationality": "Turquía",
-        "marketValue": 200
+        "overall": 74,
+        "value": 200,
+        "salary": 24000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Enes Emre Büyük",
-        "position": "POR",
-        "rating": 72,
+        "position": "GK",
         "age": 19,
-        "nationality": "Turquía",
-        "marketValue": 0
+        "overall": 72,
+        "value": 0,
+        "salary": 22000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Davinson Sánchez",
-        "position": "DFC",
-        "rating": 82,
+        "position": "CB",
         "age": 29,
-        "nationality": "Colombia",
-        "marketValue": 18000000
+        "overall": 82,
+        "value": 18000000,
+        "salary": 54000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Abdülkerim Bardakcı",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 42,
-        "nationality": "Turquía",
-        "marketValue": 6500000
+        "overall": 75,
+        "value": 6500000,
+        "salary": 19500,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Arda Ünyay",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 19,
-        "nationality": "Turquía",
-        "marketValue": 1000000
+        "overall": 73,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Metehan Baltacı",
-        "position": "DFC",
-        "rating": 74,
+        "position": "CB",
         "age": 23,
-        "nationality": "Turquía",
-        "marketValue": 0
+        "overall": 74,
+        "value": 0,
+        "salary": 24000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ismail Jakobs",
-        "position": "DFC",
-        "rating": 79,
+        "position": "CB",
         "age": 26,
-        "nationality": "Senegal",
-        "marketValue": 6000000
+        "overall": 79,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Eren Elmalı",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 17,
-        "nationality": "Turquía",
-        "marketValue": 5000000
+        "overall": 75,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kazımcan Karataş",
-        "position": "DFC",
-        "rating": 77,
+        "position": "CB",
         "age": 23,
-        "nationality": "Turquía",
-        "marketValue": 2000000
+        "overall": 77,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Wilfried Singo",
-        "position": "DFC",
-        "rating": 80,
+        "position": "CB",
         "age": 25,
-        "nationality": "Costa de Marfil",
-        "marketValue": 28000000
+        "overall": 80,
+        "value": 28000000,
+        "salary": 84000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Roland Sallai",
-        "position": "DFC",
-        "rating": 82,
+        "position": "CB",
         "age": 28,
-        "nationality": "Hungría",
-        "marketValue": 10000000
+        "overall": 82,
+        "value": 10000000,
+        "salary": 30000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lucas Torreira",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 34,
-        "nationality": "Uruguay",
-        "marketValue": 12000000
+        "overall": 74,
+        "value": 12000000,
+        "salary": 36000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mario Lemina",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 32,
-        "nationality": "Gabón",
-        "marketValue": 6000000
+        "overall": 74,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kaan Ayhan",
-        "position": "MC",
-        "rating": 75,
+        "position": "CM",
         "age": 23,
-        "nationality": "Turquía",
-        "marketValue": 3000000
+        "overall": 75,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gabriel Sara",
-        "position": "MC",
-        "rating": 82,
+        "position": "CM",
         "age": 26,
-        "nationality": "Brasil",
-        "marketValue": 20000000
+        "overall": 82,
+        "value": 20000000,
+        "salary": 60000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "İlkay Gündoğan",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 20,
-        "nationality": "Alemania",
-        "marketValue": 3500000
+        "overall": 74,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gökdeniz Gürpüz",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 33,
-        "nationality": "Turquía",
-        "marketValue": 250
+        "overall": 72,
+        "value": 250,
+        "salary": 22000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Noa Lang",
-        "position": "DC",
-        "rating": 82,
+        "position": "ST",
         "age": 26,
-        "nationality": "Países Bajos",
-        "marketValue": 25000000
+        "overall": 82,
+        "value": 25000000,
+        "salary": 75000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Barış Alper Yılmaz",
-        "position": "DC",
-        "rating": 84,
+        "position": "ST",
         "age": 25,
-        "nationality": "Turquía",
-        "marketValue": 24000000
+        "overall": 84,
+        "value": 24000000,
+        "salary": 72000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ahmed Kutucu",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 21,
-        "nationality": "Turquía",
-        "marketValue": 4000000
+        "overall": 72,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Leroy Sané",
-        "position": "DC",
-        "rating": 83,
+        "position": "ST",
         "age": 30,
-        "nationality": "Alemania",
-        "marketValue": 23000000
+        "overall": 83,
+        "value": 23000000,
+        "salary": 69000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yunus Akgün",
-        "position": "DC",
-        "rating": 83,
+        "position": "ST",
         "age": 25,
-        "nationality": "Turquía",
-        "marketValue": 17000000
+        "overall": 83,
+        "value": 17000000,
+        "salary": 51000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yáser Asprilla",
-        "position": "DC",
-        "rating": 77,
+        "position": "ST",
         "age": 22,
-        "nationality": "Colombia",
-        "marketValue": 12000000
+        "overall": 77,
+        "value": 12000000,
+        "salary": 36000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yusuf Demir",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 30,
-        "nationality": "Austria",
-        "marketValue": 1500000
+        "overall": 75,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Victor Osimhen",
-        "position": "DC",
-        "rating": 84,
+        "position": "ST",
         "age": 45,
-        "nationality": "Nigeria",
-        "marketValue": 75000000
+        "overall": 84,
+        "value": 75000000,
+        "salary": 200000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mauro Icardi",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 32,
-        "nationality": "Argentina",
-        "marketValue": 6000000
+        "overall": 74,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -235,219 +319,300 @@
     "players": [
       {
         "name": "Ederson",
-        "position": "POR",
-        "rating": 82,
+        "position": "GK",
         "age": 31,
-        "nationality": "Brasil",
-        "marketValue": 15000000
+        "overall": 82,
+        "value": 15000000,
+        "salary": 45000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tarık Çetin",
-        "position": "POR",
-        "rating": 76,
+        "position": "GK",
         "age": 29,
-        "nationality": "Turquía",
-        "marketValue": 600
+        "overall": 76,
+        "value": 600,
+        "salary": 26000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mert Günok",
-        "position": "POR",
-        "rating": 77,
+        "position": "GK",
         "age": 34,
-        "nationality": "Turquía",
-        "marketValue": 500
+        "overall": 77,
+        "value": 500,
+        "salary": 27000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Engin Can Biterge",
-        "position": "POR",
-        "rating": 72,
+        "position": "GK",
         "age": 39,
-        "nationality": "Turquía",
-        "marketValue": 0
+        "overall": 72,
+        "value": 0,
+        "salary": 22000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jayden Oosterwolde",
-        "position": "DFC",
-        "rating": 82,
+        "position": "CB",
         "age": 24,
-        "nationality": "Países Bajos",
-        "marketValue": 16000000
+        "overall": 82,
+        "value": 16000000,
+        "salary": 48000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Milan Škriniar",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 37,
-        "nationality": "Eslovaquia",
-        "marketValue": 11000000
+        "overall": 75,
+        "value": 11000000,
+        "salary": 33000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Çağlar Söyüncü",
-        "position": "DFC",
-        "rating": 78,
+        "position": "CB",
         "age": 29,
-        "nationality": "Turquía",
-        "marketValue": 6000000
+        "overall": 78,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yiğit Efe Demir",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 21,
-        "nationality": "Turquía",
-        "marketValue": 2000000
+        "overall": 73,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Archie Brown",
-        "position": "DFC",
-        "rating": 78,
+        "position": "CB",
         "age": 23,
-        "nationality": "Inglaterra",
-        "marketValue": 10000000
+        "overall": 78,
+        "value": 10000000,
+        "salary": 30000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Levent Mercan",
-        "position": "DFC",
-        "rating": 74,
+        "position": "CB",
         "age": 22,
-        "nationality": "Turquía",
-        "marketValue": 3500000
+        "overall": 74,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nélson Semedo",
-        "position": "DFC",
-        "rating": 79,
+        "position": "CB",
         "age": 27,
-        "nationality": "Portugal",
-        "marketValue": 7500000
+        "overall": 79,
+        "value": 7500000,
+        "salary": 22500,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mert Müldür",
-        "position": "DFC",
-        "rating": 74,
+        "position": "CB",
         "age": 18,
-        "nationality": "Turquía",
-        "marketValue": 5000000
+        "overall": 74,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Edson Álvarez",
-        "position": "MC",
-        "rating": 82,
+        "position": "CM",
         "age": 28,
-        "nationality": "México",
-        "marketValue": 22000000
+        "overall": 82,
+        "value": 22000000,
+        "salary": 66000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "İsmail Yüksek",
-        "position": "MC",
-        "rating": 79,
+        "position": "CM",
         "age": 27,
-        "nationality": "Turquía",
-        "marketValue": 13000000
+        "overall": 79,
+        "value": 13000000,
+        "salary": 39000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mattéo Guendouzi",
-        "position": "MC",
-        "rating": 84,
+        "position": "CM",
         "age": 26,
-        "nationality": "Francia",
-        "marketValue": 28000000
+        "overall": 84,
+        "value": 28000000,
+        "salary": 84000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Fred",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 32,
-        "nationality": "Brasil",
-        "marketValue": 7000000
+        "overall": 74,
+        "value": 7000000,
+        "salary": 21000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Abdou Aziz Fall",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 18,
-        "nationality": "Senegal",
-        "marketValue": 100
+        "overall": 73,
+        "value": 100,
+        "salary": 23000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marco Asensio",
-        "position": "MC",
-        "rating": 82,
+        "position": "CM",
         "age": 21,
-        "nationality": "España",
-        "marketValue": 15000000
+        "overall": 82,
+        "value": 15000000,
+        "salary": 45000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Talisca",
-        "position": "MC",
-        "rating": 81,
+        "position": "CM",
         "age": 31,
-        "nationality": "Brasil",
-        "marketValue": 8000000
+        "overall": 81,
+        "value": 8000000,
+        "salary": 24000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mert Hakan Yandaş",
-        "position": "MC",
-        "rating": 77,
+        "position": "CM",
         "age": 31,
-        "nationality": "Turquía",
-        "marketValue": 500
+        "overall": 77,
+        "value": 500,
+        "salary": 27000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kerem Aktürkoğlu",
-        "position": "DC",
-        "rating": 83,
+        "position": "ST",
         "age": 27,
-        "nationality": "Turquía",
-        "marketValue": 22000000
+        "overall": 83,
+        "value": 22000000,
+        "salary": 66000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Oğuz Aydın",
-        "position": "DC",
-        "rating": 76,
+        "position": "ST",
         "age": 25,
-        "nationality": "Turquía",
-        "marketValue": 10000000
+        "overall": 76,
+        "value": 10000000,
+        "salary": 30000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dorgeles Nene",
-        "position": "DC",
-        "rating": 76,
+        "position": "ST",
         "age": 45,
-        "nationality": "Malí",
-        "marketValue": 18000000
+        "overall": 76,
+        "value": 18000000,
+        "salary": 54000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Anthony Musaba",
-        "position": "DC",
-        "rating": 78,
+        "position": "ST",
         "age": 20,
-        "nationality": "Países Bajos",
-        "marketValue": 4000000
+        "overall": 78,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Emre Mor",
-        "position": "DC",
-        "rating": 77,
+        "position": "ST",
         "age": 28,
-        "nationality": "Turquía",
-        "marketValue": 800
+        "overall": 77,
+        "value": 800,
+        "salary": 27000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jhon Durán",
-        "position": "DC",
-        "rating": 83,
+        "position": "ST",
         "age": 22,
-        "nationality": "Colombia",
-        "marketValue": 32000000
+        "overall": 83,
+        "value": 32000000,
+        "salary": 96000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Youssef En-Nesyri",
-        "position": "DC",
-        "rating": 79,
+        "position": "ST",
         "age": 19,
-        "nationality": "Marruecos",
-        "marketValue": 22000000
+        "overall": 79,
+        "value": 22000000,
+        "salary": 66000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -457,187 +622,256 @@
     "players": [
       {
         "name": "Ersin Destanoğlu",
-        "position": "POR",
-        "rating": 76,
+        "position": "GK",
         "age": 30,
-        "nationality": "Turquía",
-        "marketValue": 2200000
+        "overall": 76,
+        "value": 2200000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Emre Bilgin",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 21,
-        "nationality": "Turquía",
-        "marketValue": 500
+        "overall": 69,
+        "value": 500,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Emir Yaşar",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 20,
-        "nationality": "Turquía",
-        "marketValue": 100
+        "overall": 70,
+        "value": 100,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tiago Djaló",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 35,
-        "nationality": "Portugal",
-        "marketValue": 7000000
+        "overall": 72,
+        "value": 7000000,
+        "salary": 21000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Felix Uduokhai",
-        "position": "DFC",
-        "rating": 76,
+        "position": "CB",
         "age": 28,
-        "nationality": "Alemania",
-        "marketValue": 5000000
+        "overall": 76,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Emirhan Topçu",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 25,
-        "nationality": "Turquía",
-        "marketValue": 5000000
+        "overall": 75,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yasin Özcan",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 19,
-        "nationality": "Turquía",
-        "marketValue": 5000000
+        "overall": 73,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rıdvan Yılmaz",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 33,
-        "nationality": "Turquía",
-        "marketValue": 3500000
+        "overall": 71,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Emrecan Terzi",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 22,
-        "nationality": "Turquía",
-        "marketValue": 450
+        "overall": 71,
+        "value": 450,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Taylan Bulut",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 22,
-        "nationality": "Alemania",
-        "marketValue": 6000000
+        "overall": 72,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gökhan Sazdağı",
-        "position": "DFC",
-        "rating": 74,
+        "position": "CB",
         "age": 25,
-        "nationality": "Turquía",
-        "marketValue": 1500000
+        "overall": 74,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Wilfred Ndidi",
-        "position": "MC",
-        "rating": 77,
+        "position": "CM",
         "age": 29,
-        "nationality": "Nigeria",
-        "marketValue": 10000000
+        "overall": 77,
+        "value": 10000000,
+        "salary": 30000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kartal Yılmaz",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 17,
-        "nationality": "Turquía",
-        "marketValue": 2500000
+        "overall": 71,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Necip Uysal",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 20,
-        "nationality": "Turquía",
-        "marketValue": 200
+        "overall": 70,
+        "value": 200,
+        "salary": 20000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Orkun Kökçü",
-        "position": "MC",
-        "rating": 81,
+        "position": "CM",
         "age": 25,
-        "nationality": "Turquía",
-        "marketValue": 25000000
+        "overall": 81,
+        "value": 25000000,
+        "salary": 75000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Salih Uçan",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 32,
-        "nationality": "Turquía",
-        "marketValue": 1200000
+        "overall": 70,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jota Silva",
-        "position": "DC",
-        "rating": 76,
+        "position": "ST",
         "age": 26,
-        "nationality": "Portugal",
-        "marketValue": 14000000
+        "overall": 76,
+        "value": 14000000,
+        "salary": 42000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Devrim Şahin",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 18,
-        "nationality": "Turquía",
-        "marketValue": 100
+        "overall": 71,
+        "value": 100,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vaclav Cerny",
-        "position": "DC",
-        "rating": 76,
+        "position": "ST",
         "age": 18,
-        "nationality": "República Checa",
-        "marketValue": 8000000
+        "overall": 76,
+        "value": 8000000,
+        "salary": 24000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cengiz Ünder",
-        "position": "DC",
-        "rating": 77,
+        "position": "ST",
         "age": 28,
-        "nationality": "Turquía",
-        "marketValue": 7000000
+        "overall": 77,
+        "value": 7000000,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Milot Rashica",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 29,
-        "nationality": "Kosovo",
-        "marketValue": 4000000
+        "overall": 74,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "El Bilal Touré",
-        "position": "DC",
-        "rating": 80,
+        "position": "ST",
         "age": 19,
-        "nationality": "Malí",
-        "marketValue": 15000000
+        "overall": 80,
+        "value": 15000000,
+        "salary": 45000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mustafa Hekimoğlu",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 18,
-        "nationality": "Turquía",
-        "marketValue": 5000000
+        "overall": 74,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -647,227 +881,311 @@
     "players": [
       {
         "name": "André Onana",
-        "position": "POR",
-        "rating": 75,
+        "position": "GK",
         "age": 24,
-        "nationality": "Camerún",
-        "marketValue": 15000000
+        "overall": 75,
+        "value": 15000000,
+        "salary": 45000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Onuralp Çevikkan",
-        "position": "POR",
-        "rating": 72,
+        "position": "GK",
         "age": 25,
-        "nationality": "Turquía",
-        "marketValue": 900
+        "overall": 72,
+        "value": 900,
+        "salary": 22000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ahmet Yıldırım",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 19,
-        "nationality": "Turquía",
-        "marketValue": 0
+        "overall": 69,
+        "value": 0,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Erol Can Çolak",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 20,
-        "nationality": "Turquía",
-        "marketValue": 0
+        "overall": 70,
+        "value": 0,
+        "salary": 20000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Arseniy Batagov",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 44,
-        "nationality": "Ucrania",
-        "marketValue": 9000000
+        "overall": 71,
+        "value": 9000000,
+        "salary": 27000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Chibuike Nwaiwu",
-        "position": "DFC",
-        "rating": 77,
+        "position": "CB",
         "age": 27,
-        "nationality": "Nigeria",
-        "marketValue": 6000000
+        "overall": 77,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rayyan Baniya",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 23,
-        "nationality": "Turquía",
-        "marketValue": 1500000
+        "overall": 73,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stefan Savic",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 15,
-        "nationality": "Montenegro",
-        "marketValue": 700
+        "overall": 71,
+        "value": 700,
+        "salary": 21000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Arda Öztürk",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 21,
-        "nationality": "Turquía",
-        "marketValue": 100
+        "overall": 71,
+        "value": 100,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Taha Emre İnce",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 18,
-        "nationality": "Turquía",
-        "marketValue": 100
+        "overall": 71,
+        "value": 100,
+        "salary": 21000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mathias Løvik",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 22,
-        "nationality": "Noruega",
-        "marketValue": 4000000
+        "overall": 72,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mustafa Eskihellaç",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 19,
-        "nationality": "Turquía",
-        "marketValue": 3000000
+        "overall": 73,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Wagner Pina",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 20,
-        "nationality": "Cabo Verde",
-        "marketValue": 7000000
+        "overall": 73,
+        "value": 7000000,
+        "salary": 21000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Okay Yokuşlu",
-        "position": "MC",
-        "rating": 76,
+        "position": "CM",
         "age": 31,
-        "nationality": "Turquía",
-        "marketValue": 2000000
+        "overall": 76,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Salih Malkoçoğlu",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 20,
-        "nationality": "Turquía",
-        "marketValue": 1000000
+        "overall": 71,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Christ Inao Oulaï",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 42,
-        "nationality": "Costa de Marfil",
-        "marketValue": 8000000
+        "overall": 73,
+        "value": 8000000,
+        "salary": 24000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Benjamin Bouchouari",
-        "position": "MC",
-        "rating": 75,
+        "position": "CM",
         "age": 24,
-        "nationality": "Marruecos",
-        "marketValue": 6000000
+        "overall": 75,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tim Jabol-Folcarelli",
-        "position": "MC",
-        "rating": 77,
+        "position": "CM",
         "age": 26,
-        "nationality": "Francia",
-        "marketValue": 5000000
+        "overall": 77,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ozan Tufan",
-        "position": "MC",
-        "rating": 75,
+        "position": "CM",
         "age": 30,
-        "nationality": "Turquía",
-        "marketValue": 1500000
+        "overall": 75,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Boran Başkan",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 19,
-        "nationality": "Turquía",
-        "marketValue": 100
+        "overall": 71,
+        "value": 100,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ernest Muci",
-        "position": "MC",
-        "rating": 78,
+        "position": "CM",
         "age": 24,
-        "nationality": "Albania",
-        "marketValue": 9000000
+        "overall": 78,
+        "value": 9000000,
+        "salary": 27000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kazeem Olaigbe",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 23,
-        "nationality": "Bélgica",
-        "marketValue": 5000000
+        "overall": 75,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Anthony Nwakaeme",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 36,
-        "nationality": "Nigeria",
-        "marketValue": 300
+        "overall": 68,
+        "value": 300,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Oleksandr Zubkov",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 22,
-        "nationality": "Ucrania",
-        "marketValue": 7500000
+        "overall": 75,
+        "value": 7500000,
+        "salary": 22500,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Edin Visca",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 35,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 500
+        "overall": 66,
+        "value": 500,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Paul Onuachu",
-        "position": "DC",
-        "rating": 81,
+        "position": "ST",
         "age": 30,
-        "nationality": "Nigeria",
-        "marketValue": 6000000
+        "overall": 81,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Felipe Augusto",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 21,
-        "nationality": "Brasil",
-        "marketValue": 6000000
+        "overall": 75,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Umut Nayir",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 18,
-        "nationality": "Turquía",
-        "marketValue": 700
+        "overall": 72,
+        "value": 700,
+        "salary": 22000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -877,227 +1195,311 @@
     "players": [
       {
         "name": "Muhammed Şengezer",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 16,
-        "nationality": "Turquía",
-        "marketValue": 2500000
+        "overall": 69,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Doğan Alemdar",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 23,
-        "nationality": "Turquía",
-        "marketValue": 1500000
+        "overall": 68,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Volkan Babacan",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 37,
-        "nationality": "Turquía",
-        "marketValue": 50
+        "overall": 68,
+        "value": 50,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luca Stancic",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 19,
-        "nationality": "Turquía",
-        "marketValue": 0
+        "overall": 68,
+        "value": 0,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jerome Opoku",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 27,
-        "nationality": "Ghana",
-        "marketValue": 5000000
+        "overall": 75,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Léo Duarte",
-        "position": "DFC",
-        "rating": 74,
+        "position": "CB",
         "age": 29,
-        "nationality": "Brasil",
-        "marketValue": 2500000
+        "overall": 74,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hamza Güreler",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 15,
-        "nationality": "Turquía",
-        "marketValue": 2000000
+        "overall": 69,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ousseynou Ba",
-        "position": "DFC",
-        "rating": 74,
+        "position": "CB",
         "age": 27,
-        "nationality": "Senegal",
-        "marketValue": 1800000
+        "overall": 74,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Christopher Operi",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 21,
-        "nationality": "Costa de Marfil",
-        "marketValue": 4000000
+        "overall": 70,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Festy Ebosele",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 36,
-        "nationality": "Irlanda",
-        "marketValue": 4500000
+        "overall": 68,
+        "value": 4500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Onur Bulut",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 31,
-        "nationality": "Turquía",
-        "marketValue": 700
+        "overall": 73,
+        "value": 700,
+        "salary": 23000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ömer Ali Şahiner",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 42,
-        "nationality": "Turquía",
-        "marketValue": 250
+        "overall": 67,
+        "value": 250,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jakub Kaluzinski",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 18,
-        "nationality": "Polonia",
-        "marketValue": 4000000
+        "overall": 69,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Berat Özdemir",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 27,
-        "nationality": "Turquía",
-        "marketValue": 3500000
+        "overall": 74,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Onur Ergün",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 33,
-        "nationality": "Turquía",
-        "marketValue": 250
+        "overall": 67,
+        "value": 250,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Miguel Crespo",
-        "position": "MC",
-        "rating": 76,
+        "position": "CM",
         "age": 29,
-        "nationality": "Portugal",
-        "marketValue": 3000000
+        "overall": 76,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Olivier Kemen",
-        "position": "MC",
-        "rating": 75,
+        "position": "CM",
         "age": 29,
-        "nationality": "Camerún",
-        "marketValue": 2500000
+        "overall": 75,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Umut Güneş",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 20,
-        "nationality": "Turquía",
-        "marketValue": 2200000
+        "overall": 69,
+        "value": 2200000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mohamed Hassan Fofana",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 20,
-        "nationality": "Costa de Marfil",
-        "marketValue": 50
+        "overall": 69,
+        "value": 50,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Amine Harit",
-        "position": "DC",
-        "rating": 76,
+        "position": "ST",
         "age": 25,
-        "nationality": "Marruecos",
-        "marketValue": 6000000
+        "overall": 76,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ivan Brnic",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 24,
-        "nationality": "Croacia",
-        "marketValue": 2000000
+        "overall": 69,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Berkay Aslan",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 45,
-        "nationality": "Turquía",
-        "marketValue": 200
+        "overall": 65,
+        "value": 200,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Abbosbek Fayzullaev",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 22,
-        "nationality": "Uzbekistán",
-        "marketValue": 7000000
+        "overall": 71,
+        "value": 7000000,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yusuf Sarı",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 27,
-        "nationality": "Turquía",
-        "marketValue": 3500000
+        "overall": 75,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Eldor Shomurodov",
-        "position": "DC",
-        "rating": 79,
+        "position": "ST",
         "age": 30,
-        "nationality": "Uzbekistán",
-        "marketValue": 5000000
+        "overall": 79,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Davie Selke",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 31,
-        "nationality": "Alemania",
-        "marketValue": 3000000
+        "overall": 67,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bertuğ Yıldırım",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 23,
-        "nationality": "Turquía",
-        "marketValue": 2200000
+        "overall": 71,
+        "value": 2200000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nuno Da Costa",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 34,
-        "nationality": "Cabo Verde",
-        "marketValue": 500
+        "overall": 66,
+        "value": 500,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1107,283 +1509,388 @@
     "players": [
       {
         "name": "Okan Kocuk",
-        "position": "POR",
-        "rating": 76,
+        "position": "GK",
         "age": 30,
-        "nationality": "Turquía",
-        "marketValue": 2200000
+        "overall": 76,
+        "value": 2200000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "İrfan Can Eğribayat",
-        "position": "POR",
-        "rating": 72,
+        "position": "GK",
         "age": 27,
-        "nationality": "Turquía",
-        "marketValue": 2000000
+        "overall": 72,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Efe Yiğit Üstün",
-        "position": "POR",
-        "rating": 73,
+        "position": "GK",
         "age": 33,
-        "nationality": "Turquía",
-        "marketValue": 0
+        "overall": 73,
+        "value": 0,
+        "salary": 23000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Efe Berat Törüz",
-        "position": "POR",
-        "rating": 67,
+        "position": "GK",
         "age": 19,
-        "nationality": "Turquía",
-        "marketValue": 0
+        "overall": 67,
+        "value": 0,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rick van Drongelen",
-        "position": "DFC",
-        "rating": 76,
+        "position": "CB",
         "age": 27,
-        "nationality": "Países Bajos",
-        "marketValue": 4000000
+        "overall": 76,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Toni Borevković",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 24,
-        "nationality": "Croacia",
-        "marketValue": 3500000
+        "overall": 71,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lubomir Satka",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 37,
-        "nationality": "Eslovaquia",
-        "marketValue": 1800000
+        "overall": 70,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bedirhan Çetin",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 19,
-        "nationality": "Turquía",
-        "marketValue": 150
+        "overall": 69,
+        "value": 150,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ali Badra Diabaté",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 15,
-        "nationality": "Costa de Marfil",
-        "marketValue": 100
+        "overall": 69,
+        "value": 100,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Logi Tómasson",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 17,
-        "nationality": "Islandia",
-        "marketValue": 2500000
+        "overall": 70,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Soner Gönül",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 28,
-        "nationality": "Turquía",
-        "marketValue": 600
+        "overall": 72,
+        "value": 600,
+        "salary": 22000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Joe Mendes",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 23,
-        "nationality": "Suecia",
-        "marketValue": 2500000
+        "overall": 71,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Zeki Yavru",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 18,
-        "nationality": "Turquía",
-        "marketValue": 300
+        "overall": 69,
+        "value": 300,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Antoine Makoumbou",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 29,
-        "nationality": "Congo",
-        "marketValue": 4000000
+        "overall": 74,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Celil Yüksel",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 28,
-        "nationality": "Turquía",
-        "marketValue": 800
+        "overall": 73,
+        "value": 800,
+        "salary": 23000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yunus Emre Çift",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 22,
-        "nationality": "Turquía",
-        "marketValue": 600
+        "overall": 70,
+        "value": 600,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Franck Atoen",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 25,
-        "nationality": "Camerún",
-        "marketValue": 0
+        "overall": 73,
+        "value": 0,
+        "salary": 23000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Eyüp Değirmenci",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 18,
-        "nationality": "Turquía",
-        "marketValue": 0
+        "overall": 69,
+        "value": 0,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Olivier Ntcham",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 29,
-        "nationality": "Camerún",
-        "marketValue": 2800000
+        "overall": 74,
+        "value": 2800000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Eyüp Aydın",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 21,
-        "nationality": "Turquía",
-        "marketValue": 1000000
+        "overall": 69,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yalçın Kayan",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 20,
-        "nationality": "Turquía",
-        "marketValue": 700
+        "overall": 73,
+        "value": 700,
+        "salary": 23000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Muhammet Özbaskıcı",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 20,
-        "nationality": "Turquía",
-        "marketValue": 0
+        "overall": 69,
+        "value": 0,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alper Efe Pazar",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 20,
-        "nationality": "Turquía",
-        "marketValue": 0
+        "overall": 69,
+        "value": 0,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Carlo Holse",
-        "position": "MC",
-        "rating": 76,
+        "position": "CM",
         "age": 21,
-        "nationality": "Dinamarca",
-        "marketValue": 6000000
+        "overall": 76,
+        "value": 6000000,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Afonso Sousa",
-        "position": "MC",
-        "rating": 75,
+        "position": "CM",
         "age": 25,
-        "nationality": "Portugal",
-        "marketValue": 5000000
+        "overall": 75,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jaurès Assoumou",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 23,
-        "nationality": "Costa de Marfil",
-        "marketValue": 3000000
+        "overall": 72,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Emre Kılınç",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 31,
-        "nationality": "Turquía",
-        "marketValue": 1500000
+        "overall": 67,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tahsin Bülbül",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 16,
-        "nationality": "Turquía",
-        "marketValue": 50
+        "overall": 69,
+        "value": 50,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Saikuba Jarju",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 30,
-        "nationality": "Gambia",
-        "marketValue": 0
+        "overall": 75,
+        "value": 0,
+        "salary": 25000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Elayis Tavsan",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 24,
-        "nationality": "Países Bajos",
-        "marketValue": 1500000
+        "overall": 72,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tanguy Coulibaly",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 24,
-        "nationality": "Francia",
-        "marketValue": 1500000
+        "overall": 72,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Polat Yaldır",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 22,
-        "nationality": "Turquía",
-        "marketValue": 150
+        "overall": 68,
+        "value": 150,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cherif Ndiaye",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 19,
-        "nationality": "Senegal",
-        "marketValue": 5000000
+        "overall": 74,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marius Mouandilmadji",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 28,
-        "nationality": "Chad",
-        "marketValue": 4500000
+        "overall": 75,
+        "value": 4500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ebrima Ceesay",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 19,
-        "nationality": "Gambia",
-        "marketValue": 50
+        "overall": 70,
+        "value": 50,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1393,219 +1900,300 @@
     "players": [
       {
         "name": "Mateusz Lis",
-        "position": "POR",
-        "rating": 74,
+        "position": "GK",
         "age": 28,
-        "nationality": "Polonia",
-        "marketValue": 2000000
+        "overall": 74,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ekrem Kılıçarslan",
-        "position": "POR",
-        "rating": 67,
+        "position": "GK",
         "age": 17,
-        "nationality": "Turquía",
-        "marketValue": 250
+        "overall": 67,
+        "value": 250,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Şamil Öztürk",
-        "position": "POR",
-        "rating": 73,
+        "position": "GK",
         "age": 33,
-        "nationality": "Turquía",
-        "marketValue": 100
+        "overall": 73,
+        "value": 100,
+        "salary": 23000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nevzat Üzel",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 21,
-        "nationality": "Turquía",
-        "marketValue": 0
+        "overall": 68,
+        "value": 0,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Taha Altıkardeş",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 22,
-        "nationality": "Turquía",
-        "marketValue": 5000000
+        "overall": 71,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Malcom Bokele",
-        "position": "DFC",
-        "rating": 74,
+        "position": "CB",
         "age": 26,
-        "nationality": "Camerún",
-        "marketValue": 3500000
+        "overall": 74,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Furkan Bayır",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 23,
-        "nationality": "Turquía",
-        "marketValue": 1500000
+        "overall": 71,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Héliton",
-        "position": "DFC",
-        "rating": 74,
+        "position": "CB",
         "age": 30,
-        "nationality": "Brasil",
-        "marketValue": 1000000
+        "overall": 74,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Allan Godói",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 32,
-        "nationality": "Brasil",
-        "marketValue": 100
+        "overall": 73,
+        "value": 100,
+        "salary": 23000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ege Yıldırım",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 45,
-        "nationality": "Turquía",
-        "marketValue": 50
+        "overall": 67,
+        "value": 50,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Anthony Dennis",
-        "position": "MC",
-        "rating": 75,
+        "position": "CM",
         "age": 30,
-        "nationality": "Nigeria",
-        "marketValue": 5000000
+        "overall": 75,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Novatus Miroshi",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 20,
-        "nationality": "Tanzania",
-        "marketValue": 2000000
+        "overall": 70,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rhaldney",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 27,
-        "nationality": "Brasil",
-        "marketValue": 1000000
+        "overall": 74,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Furkan Malak",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 21,
-        "nationality": "Turquía",
-        "marketValue": 0
+        "overall": 69,
+        "value": 0,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Arda Okan Kurtulan",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 23,
-        "nationality": "Turquía",
-        "marketValue": 2500000
+        "overall": 72,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ogün Bayrak",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 27,
-        "nationality": "Turquía",
-        "marketValue": 800
+        "overall": 72,
+        "value": 800,
+        "salary": 22000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Uğur Kaan Yıldız",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 22,
-        "nationality": "Turquía",
-        "marketValue": 700
+        "overall": 70,
+        "value": 700,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Amin Cherni",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 15,
-        "nationality": "Túnez",
-        "marketValue": 2000000
+        "overall": 71,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "İsmail Köybaşı",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 36,
-        "nationality": "Turquía",
-        "marketValue": 50
+        "overall": 66,
+        "value": 50,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexis Antunes",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 25,
-        "nationality": "Suiza",
-        "marketValue": 1800000
+        "overall": 74,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Junior Olaitan",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 23,
-        "nationality": "Benín",
-        "marketValue": 1200000
+        "overall": 72,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Efkan Bekiroğlu",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 30,
-        "nationality": "Turquía",
-        "marketValue": 1200000
+        "overall": 73,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Juan",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 23,
-        "nationality": "Brasil",
-        "marketValue": 4000000
+        "overall": 74,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Janderson",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 39,
-        "nationality": "Brasil",
-        "marketValue": 3500000
+        "overall": 67,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jeh",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 19,
-        "nationality": "Brasil",
-        "marketValue": 700
+        "overall": 70,
+        "value": 700,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ibrahim Sabra",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 19,
-        "nationality": "Jordania",
-        "marketValue": 400
+        "overall": 69,
+        "value": 400,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Guilherme Luiz",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 20,
-        "nationality": "Brasil",
-        "marketValue": 350
+        "overall": 70,
+        "value": 350,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1615,195 +2203,267 @@
     "players": [
       {
         "name": "Yahia Fofana",
-        "position": "POR",
-        "rating": 71,
+        "position": "GK",
         "age": 25,
-        "nationality": "Costa de Marfil",
-        "marketValue": 5000000
+        "overall": 71,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Erdem Canpolat",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 24,
-        "nationality": "Turquía",
-        "marketValue": 500
+        "overall": 65,
+        "value": 500,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Efe Doğan",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 35,
-        "nationality": "Turquía",
-        "marketValue": 150
+        "overall": 66,
+        "value": 150,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Attila Mocsi",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 25,
-        "nationality": "Hungría",
-        "marketValue": 2000000
+        "overall": 70,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Modibo Sagnan",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 27,
-        "nationality": "Malí",
-        "marketValue": 2000000
+        "overall": 71,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Khusniddin Alikulov",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 26,
-        "nationality": "Uzbekistán",
-        "marketValue": 1500000
+        "overall": 72,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Samet Akaydin",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 31,
-        "nationality": "Turquía",
-        "marketValue": 1200000
+        "overall": 72,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Emir Ortakaya",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 21,
-        "nationality": "Turquía",
-        "marketValue": 700
+        "overall": 67,
+        "value": 700,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mithat Pala",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 25,
-        "nationality": "Turquía",
-        "marketValue": 1500000
+        "overall": 69,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Casper Højer",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 31,
-        "nationality": "Dinamarca",
-        "marketValue": 1200000
+        "overall": 72,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Taha Şahin",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 37,
-        "nationality": "Turquía",
-        "marketValue": 3000000
+        "overall": 66,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Furkan Orak",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 24,
-        "nationality": "Turquía",
-        "marketValue": 250
+        "overall": 68,
+        "value": 250,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Giannis Papanikolaou",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 27,
-        "nationality": "Grecia",
-        "marketValue": 1500000
+        "overall": 72,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Qazim Laci",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 20,
-        "nationality": "Albania",
-        "marketValue": 3000000
+        "overall": 68,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ibrahim Olawoyin",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 28,
-        "nationality": "Nigeria",
-        "marketValue": 2200000
+        "overall": 72,
+        "value": 2200000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Muhamed Buljubasic",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 18,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 1800000
+        "overall": 67,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Taylan Antalyalı",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 31,
-        "nationality": "Turquía",
-        "marketValue": 800
+        "overall": 70,
+        "value": 800,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Valentin Mihăilă",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 25,
-        "nationality": "Rumania",
-        "marketValue": 2800000
+        "overall": 71,
+        "value": 2800000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Altin Zeqiri",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 25,
-        "nationality": "Kosovo",
-        "marketValue": 1200000
+        "overall": 70,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Emrecan Bulut",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 23,
-        "nationality": "Turquía",
-        "marketValue": 600
+        "overall": 66,
+        "value": 600,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Loide Augusto",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 25,
-        "nationality": "Angola",
-        "marketValue": 1000000
+        "overall": 71,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adedire Mebude",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 17,
-        "nationality": "Escocia",
-        "marketValue": 700
+        "overall": 68,
+        "value": 700,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ali Sowe",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 31,
-        "nationality": "Gambia",
-        "marketValue": 1800000
+        "overall": 66,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Halil Dervişoğlu",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 26,
-        "nationality": "Turquía",
-        "marketValue": 800
+        "overall": 70,
+        "value": 800,
+        "salary": 20000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1813,219 +2473,300 @@
     "players": [
       {
         "name": "Deniz Ertaş",
-        "position": "POR",
-        "rating": 67,
+        "position": "GK",
         "age": 20,
-        "nationality": "Turquía",
-        "marketValue": 3500000
+        "overall": 67,
+        "value": 3500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bahadır Güngördü",
-        "position": "POR",
-        "rating": 71,
+        "position": "GK",
         "age": 30,
-        "nationality": "Turquía",
-        "marketValue": 600
+        "overall": 71,
+        "value": 600,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Egemen Aydın",
-        "position": "POR",
-        "rating": 71,
+        "position": "GK",
         "age": 29,
-        "nationality": "Turquía",
-        "marketValue": 0
+        "overall": 71,
+        "value": 0,
+        "salary": 21000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adamo Nagalo",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 23,
-        "nationality": "Burkina Faso",
-        "marketValue": 3000000
+        "overall": 70,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Riechedly Bazoer",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 20,
-        "nationality": "Curazao",
-        "marketValue": 2800000
+        "overall": 68,
+        "value": 2800000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adil Demirbağ",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 28,
-        "nationality": "Turquía",
-        "marketValue": 1800000
+        "overall": 73,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Uğurcan Yazğılı",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 26,
-        "nationality": "Turquía",
-        "marketValue": 1200000
+        "overall": 72,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Josip Calusic",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 15,
-        "nationality": "Croacia",
-        "marketValue": 300
+        "overall": 66,
+        "value": 300,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yasir Subaşı",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 30,
-        "nationality": "Turquía",
-        "marketValue": 100
+        "overall": 70,
+        "value": 100,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Arif Boşluk",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 24,
-        "nationality": "Turquía",
-        "marketValue": 800
+        "overall": 69,
+        "value": 800,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Guilherme",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 35,
-        "nationality": "Brasil",
-        "marketValue": 400
+        "overall": 66,
+        "value": 400,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yhoan Andzouana",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 23,
-        "nationality": "Congo",
-        "marketValue": 800
+        "overall": 70,
+        "value": 800,
+        "salary": 20000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jin-ho Jo",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 21,
-        "nationality": "Corea del Sur",
-        "marketValue": 800
+        "overall": 67,
+        "value": 800,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marko Jevtovic",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 16,
-        "nationality": "Serbia",
-        "marketValue": 500
+        "overall": 67,
+        "value": 500,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ufuk Akyol",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 19,
-        "nationality": "Turquía",
-        "marketValue": 500
+        "overall": 67,
+        "value": 500,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Berkan Kutlu",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 18,
-        "nationality": "Turquía",
-        "marketValue": 2500000
+        "overall": 68,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Melih İbrahimoğlu",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 25,
-        "nationality": "Turquía",
-        "marketValue": 1800000
+        "overall": 72,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Morten Bjørlo",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 42,
-        "nationality": "Noruega",
-        "marketValue": 900
+        "overall": 65,
+        "value": 900,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Esat Buğa",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 30,
-        "nationality": "Turquía",
-        "marketValue": 50
+        "overall": 71,
+        "value": 50,
+        "salary": 21000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Enis Bardhi",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 30,
-        "nationality": "Macedonia del Norte",
-        "marketValue": 3000000
+        "overall": 72,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sander Svendsen",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 32,
-        "nationality": "Noruega",
-        "marketValue": 700
+        "overall": 68,
+        "value": 700,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jackson Muleka",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 40,
-        "nationality": "RD del Congo",
-        "marketValue": 2500000
+        "overall": 62,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pedrinho",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 29,
-        "nationality": "Brasil",
-        "marketValue": 900
+        "overall": 68,
+        "value": 900,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tunahan Taşçı",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 23,
-        "nationality": "Turquía",
-        "marketValue": 800
+        "overall": 66,
+        "value": 800,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marius Ștefănescu",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 27,
-        "nationality": "Rumania",
-        "marketValue": 800
+        "overall": 68,
+        "value": 800,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Deniz Türüç",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 33,
-        "nationality": "Turquía",
-        "marketValue": 700
+        "overall": 67,
+        "value": 700,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Blaz Kramer",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 29,
-        "nationality": "Eslovenia",
-        "marketValue": 900
+        "overall": 75,
+        "value": 900,
+        "salary": 25000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -2035,203 +2776,278 @@
     "players": [
       {
         "name": "Zafer Görgen",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 20,
-        "nationality": "Turquía",
-        "marketValue": 800
+        "overall": 66,
+        "value": 800,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Burak Bozan",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 25,
-        "nationality": "Turquía",
-        "marketValue": 800
+        "overall": 69,
+        "value": 800,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tayyip Talha Sanuç",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 23,
-        "nationality": "Turquía",
-        "marketValue": 1800000
+        "overall": 70,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nihad Mujakic",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 27,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 1200000
+        "overall": 72,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Arda Kızıldağ",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 27,
-        "nationality": "Turquía",
-        "marketValue": 900
+        "overall": 71,
+        "value": 900,
+        "salary": 21000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Myenty Abena",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 31,
-        "nationality": "Surinam",
-        "marketValue": 700
+        "overall": 71,
+        "value": 700,
+        "salary": 21000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nazım Sangaré",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 30,
-        "nationality": "Turquía",
-        "marketValue": 200
+        "overall": 70,
+        "value": 200,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kévin Rodrigues",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 31,
-        "nationality": "Portugal",
-        "marketValue": 1200000
+        "overall": 72,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luis Pérez",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 30,
-        "nationality": "España",
-        "marketValue": 1200000
+        "overall": 72,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Salem M'Bakata",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 22,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 67,
+        "value": 500,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Melih Kabasakal",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 29,
-        "nationality": "Turquía",
-        "marketValue": 800
+        "overall": 71,
+        "value": 800,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ogün Özçiçek",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 27,
-        "nationality": "Turquía",
-        "marketValue": 500
+        "overall": 71,
+        "value": 500,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Drissa Camara",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 23,
-        "nationality": "Costa de Marfil",
-        "marketValue": 3000000
+        "overall": 73,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Juninho Bacuna",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 28,
-        "nationality": "Curazao",
-        "marketValue": 2200000
+        "overall": 71,
+        "value": 2200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Karamba Gassama",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 17,
-        "nationality": "Gambia",
-        "marketValue": 250
+        "overall": 67,
+        "value": 250,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kacper Kozlowski",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 22,
-        "nationality": "Polonia",
-        "marketValue": 5000000
+        "overall": 71,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexandru Maxim",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 44,
-        "nationality": "Rumania",
-        "marketValue": 500
+        "overall": 67,
+        "value": 500,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Victor Ntino-Emo Gidado",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 21,
-        "nationality": "Nigeria",
-        "marketValue": 400
+        "overall": 67,
+        "value": 400,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yusuf Kabadayi",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 32,
-        "nationality": "Alemania",
-        "marketValue": 1500000
+        "overall": 63,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Christopher Lungoyi",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 25,
-        "nationality": "Suiza",
-        "marketValue": 1000000
+        "overall": 69,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ali Osman Kalın",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 26,
-        "nationality": "Turquía",
-        "marketValue": 50
+        "overall": 70,
+        "value": 50,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Deian Sorescu",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 18,
-        "nationality": "Rumania",
-        "marketValue": 2000000
+        "overall": 69,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ali Mevran Ablak",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 16,
-        "nationality": "Turquía",
-        "marketValue": 0
+        "overall": 68,
+        "value": 0,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mohamed Bayo",
-        "position": "DC",
-        "rating": 73,
+        "position": "ST",
         "age": 27,
-        "nationality": "Guinea",
-        "marketValue": 3000000
+        "overall": 73,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Denis Drăguș",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 26,
-        "nationality": "Rumania",
-        "marketValue": 3000000
+        "overall": 75,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -2241,251 +3057,344 @@
     "players": [
       {
         "name": "Andreas Gianniotis",
-        "position": "POR",
-        "rating": 71,
+        "position": "GK",
         "age": 33,
-        "nationality": "Grecia",
-        "marketValue": 350
+        "overall": 71,
+        "value": 350,
+        "salary": 21000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ali Emre Yanar",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 25,
-        "nationality": "Turquía",
-        "marketValue": 100
+        "overall": 68,
+        "value": 100,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ege Albayrak",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 18,
-        "nationality": "Turquía",
-        "marketValue": 0
+        "overall": 66,
+        "value": 0,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Şant Kazancı",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 17,
-        "nationality": "Turquía",
-        "marketValue": 0
+        "overall": 66,
+        "value": 0,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rodrigo Becão",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 30,
-        "nationality": "Brasil",
-        "marketValue": 3000000
+        "overall": 72,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nicholas Opoku",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 20,
-        "nationality": "Ghana",
-        "marketValue": 1500000
+        "overall": 68,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adem Arous",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 21,
-        "nationality": "Túnez",
-        "marketValue": 800
+        "overall": 66,
+        "value": 800,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Taylan Aydın",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 29,
-        "nationality": "Turquía",
-        "marketValue": 300
+        "overall": 70,
+        "value": 300,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yunus Atakaya",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 21,
-        "nationality": "Turquía",
-        "marketValue": 0
+        "overall": 67,
+        "value": 0,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Godfried Frimpong",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 21,
-        "nationality": "Países Bajos",
-        "marketValue": 2000000
+        "overall": 68,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Emre Taşdemir",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 33,
-        "nationality": "Turquía",
-        "marketValue": 100
+        "overall": 65,
+        "value": 100,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cláudio Winck",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 31,
-        "nationality": "Brasil",
-        "marketValue": 800
+        "overall": 71,
+        "value": 800,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kamil Ahmet Çörekçi",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 22,
-        "nationality": "Turquía",
-        "marketValue": 100
+        "overall": 67,
+        "value": 100,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Berkay Muratoğlu",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 18,
-        "nationality": "Turquía",
-        "marketValue": 50
+        "overall": 67,
+        "value": 50,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Andri Fannar Baldursson",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 16,
-        "nationality": "Islandia",
-        "marketValue": 1500000
+        "overall": 68,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kerem Demirbay",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 26,
-        "nationality": "Alemania",
-        "marketValue": 1500000
+        "overall": 72,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cem Üstündag",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 25,
-        "nationality": "Austria",
-        "marketValue": 300
+        "overall": 71,
+        "value": 300,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cafú",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 32,
-        "nationality": "Portugal",
-        "marketValue": 300
+        "overall": 66,
+        "value": 300,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Atakan Müjde",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 22,
-        "nationality": "Turquía",
-        "marketValue": 50
+        "overall": 68,
+        "value": 50,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Haris Hajradinovic",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 31,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 1800000
+        "overall": 74,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mortadha Ben Ouanes",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 31,
-        "nationality": "Túnez",
-        "marketValue": 1500000
+        "overall": 68,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ali Yavuz Kol",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 25,
-        "nationality": "Turquía",
-        "marketValue": 300
+        "overall": 68,
+        "value": 300,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Erdem Çetinkaya",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 24,
-        "nationality": "Turquía",
-        "marketValue": 0
+        "overall": 69,
+        "value": 0,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "İrfan Can Kahveci",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 30,
-        "nationality": "Turquía",
-        "marketValue": 4500000
+        "overall": 75,
+        "value": 4500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jim Allevinah",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 30,
-        "nationality": "Gabón",
-        "marketValue": 1200000
+        "overall": 72,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Fousseni Diabaté",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 34,
-        "nationality": "Malí",
-        "marketValue": 900
+        "overall": 65,
+        "value": 900,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mamadou Fall",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 34,
-        "nationality": "Senegal",
-        "marketValue": 500
+        "overall": 63,
+        "value": 500,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pape Habib Guèye",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 26,
-        "nationality": "Senegal",
-        "marketValue": 1500000
+        "overall": 72,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yusuf Barası",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 22,
-        "nationality": "Turquía",
-        "marketValue": 1200000
+        "overall": 69,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kubilay Kanatsızkuş",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 17,
-        "nationality": "Turquía",
-        "marketValue": 500
+        "overall": 65,
+        "value": 500,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cenk Tosun",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 23,
-        "nationality": "Turquía",
-        "marketValue": 500
+        "overall": 69,
+        "value": 500,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -2495,227 +3404,311 @@
     "players": [
       {
         "name": "Ertuğrul Taşkıran",
-        "position": "POR",
-        "rating": 67,
+        "position": "GK",
         "age": 36,
-        "nationality": "Turquía",
-        "marketValue": 100
+        "overall": 67,
+        "value": 100,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Paulo Victor",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 39,
-        "nationality": "Brasil",
-        "marketValue": 50
+        "overall": 65,
+        "value": 50,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nuno Lima",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 24,
-        "nationality": "Portugal",
-        "marketValue": 1500000
+        "overall": 70,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ümit Akdağ",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 22,
-        "nationality": "Rumania",
-        "marketValue": 1500000
+        "overall": 68,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Fatih Aksoy",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 20,
-        "nationality": "Turquía",
-        "marketValue": 1200000
+        "overall": 67,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Fidan Aliti",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 32,
-        "nationality": "Kosovo",
-        "marketValue": 900
+        "overall": 71,
+        "value": 900,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bruno Viana",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 30,
-        "nationality": "Brasil",
-        "marketValue": 700
+        "overall": 70,
+        "value": 700,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bedirhan Özyurt",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 22,
-        "nationality": "Turquía",
-        "marketValue": 150
+        "overall": 67,
+        "value": 150,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Baran Moğultay",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 18,
-        "nationality": "Turquía",
-        "marketValue": 250
+        "overall": 67,
+        "value": 250,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Batuhan Yavuz",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 20,
-        "nationality": "Turquía",
-        "marketValue": 50
+        "overall": 66,
+        "value": 50,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Maestro",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 22,
-        "nationality": "Angola",
-        "marketValue": 4000000
+        "overall": 70,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gaius Makouta",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 42,
-        "nationality": "Congo",
-        "marketValue": 2000000
+        "overall": 66,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nicolas Janvier",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 17,
-        "nationality": "Francia",
-        "marketValue": 700
+        "overall": 66,
+        "value": 700,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Enes Keskin",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 24,
-        "nationality": "Turquía",
-        "marketValue": 400
+        "overall": 68,
+        "value": 400,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "İzzet Çelik",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 21,
-        "nationality": "Turquía",
-        "marketValue": 300
+        "overall": 66,
+        "value": 300,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Buluthan Bulut",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 21,
-        "nationality": "Turquía",
-        "marketValue": 50
+        "overall": 67,
+        "value": 50,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Florent Hadergjonaj",
-        "position": "MC",
-        "rating": 75,
+        "position": "CM",
         "age": 31,
-        "nationality": "Kosovo",
-        "marketValue": 1500000
+        "overall": 75,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yusuf Özdemir",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 25,
-        "nationality": "Turquía",
-        "marketValue": 0
+        "overall": 71,
+        "value": 0,
+        "salary": 21000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ianis Hagi",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 27,
-        "nationality": "Rumania",
-        "marketValue": 1800000
+        "overall": 72,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "İbrahim Kaya",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 27,
-        "nationality": "Turquía",
-        "marketValue": 1000000
+        "overall": 72,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ui-jo Hwang",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 16,
-        "nationality": "Corea del Sur",
-        "marketValue": 500
+        "overall": 67,
+        "value": 500,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Efecan Karaca",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 36,
-        "nationality": "Turquía",
-        "marketValue": 100
+        "overall": 64,
+        "value": 100,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yusuf Can Karademir",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 38,
-        "nationality": "Turquía",
-        "marketValue": 50
+        "overall": 65,
+        "value": 50,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ruan",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 20,
-        "nationality": "Brasil",
-        "marketValue": 1000000
+        "overall": 67,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Meschack Elia",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 28,
-        "nationality": "RD del Congo",
-        "marketValue": 2500000
+        "overall": 71,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Steve Mounié",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 31,
-        "nationality": "Benín",
-        "marketValue": 1800000
+        "overall": 66,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Uchenna Ogundu",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 22,
-        "nationality": "Nigeria",
-        "marketValue": 1500000
+        "overall": 68,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Güven Yalçın",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 27,
-        "nationality": "Turquía",
-        "marketValue": 1000000
+        "overall": 71,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -2725,259 +3718,355 @@
     "players": [
       {
         "name": "Ricardo Velho",
-        "position": "POR",
-        "rating": 67,
+        "position": "GK",
         "age": 24,
-        "nationality": "Portugal",
-        "marketValue": 3000000
+        "overall": 67,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Erhan Erentürk",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 18,
-        "nationality": "Turquía",
-        "marketValue": 250
+        "overall": 65,
+        "value": 250,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ebrar Aydın",
-        "position": "POR",
-        "rating": 71,
+        "position": "GK",
         "age": 33,
-        "nationality": "Turquía",
-        "marketValue": 50
+        "overall": 71,
+        "value": 50,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Berk Deniz Çukurcu",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 19,
-        "nationality": "Turquía",
-        "marketValue": 0
+        "overall": 66,
+        "value": 0,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dimitrios Goutas",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 31,
-        "nationality": "Grecia",
-        "marketValue": 1000000
+        "overall": 72,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Thalisson",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 27,
-        "nationality": "Brasil",
-        "marketValue": 700
+        "overall": 71,
+        "value": 700,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Zan Zuzek",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 29,
-        "nationality": "Eslovenia",
-        "marketValue": 700
+        "overall": 71,
+        "value": 700,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Abdullah Şahindere",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 22,
-        "nationality": "Turquía",
-        "marketValue": 50
+        "overall": 67,
+        "value": 50,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Umut İslamoğlu",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 25,
-        "nationality": "Turquía",
-        "marketValue": 50
+        "overall": 69,
+        "value": 50,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Arda Çağan Çelik",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 44,
-        "nationality": "Turquía",
-        "marketValue": 0
+        "overall": 65,
+        "value": 0,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Abdurrahim Dursun",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 27,
-        "nationality": "Turquía",
-        "marketValue": 250
+        "overall": 70,
+        "value": 250,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matej Hanousek",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 23,
-        "nationality": "República Checa",
-        "marketValue": 150
+        "overall": 69,
+        "value": 150,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yiğit Hamza Aydar",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 17,
-        "nationality": "Turquía",
-        "marketValue": 0
+        "overall": 67,
+        "value": 0,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pedro Pereira",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 28,
-        "nationality": "Portugal",
-        "marketValue": 1200000
+        "overall": 72,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Fıratcan Üzüm",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 26,
-        "nationality": "Turquía",
-        "marketValue": 200
+        "overall": 70,
+        "value": 200,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Emirhan Ünal",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 20,
-        "nationality": "Turquía",
-        "marketValue": 0
+        "overall": 67,
+        "value": 0,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tom Dele-Bashiru",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 15,
-        "nationality": "Nigeria",
-        "marketValue": 1800000
+        "overall": 68,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Moussa Kyabou",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 27,
-        "nationality": "Malí",
-        "marketValue": 400
+        "overall": 71,
+        "value": 400,
+        "salary": 21000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Peter Etebo",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 30,
-        "nationality": "Nigeria",
-        "marketValue": 300
+        "overall": 71,
+        "value": 300,
+        "salary": 21000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Oğulcan Ülgün",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 35,
-        "nationality": "Turquía",
-        "marketValue": 1200000
+        "overall": 70,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Franco Tongya",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 23,
-        "nationality": "Italia",
-        "marketValue": 1000000
+        "overall": 70,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Samed Onur",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 23,
-        "nationality": "Turquía",
-        "marketValue": 500
+        "overall": 68,
+        "value": 500,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ensar Kemaloğlu",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 27,
-        "nationality": "Turquía",
-        "marketValue": 300
+        "overall": 71,
+        "value": 300,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dal Varesanovic",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 24,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 2000000
+        "overall": 69,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cihan Çanak",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 21,
-        "nationality": "Turquía",
-        "marketValue": 3000000
+        "overall": 69,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Henry Onyekuru",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 28,
-        "nationality": "Nigeria",
-        "marketValue": 1800000
+        "overall": 71,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Metehan Mimaroğlu",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 31,
-        "nationality": "Turquía",
-        "marketValue": 400
+        "overall": 65,
+        "value": 400,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Göktan Gürpüz",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 23,
-        "nationality": "Turquía",
-        "marketValue": 1800000
+        "overall": 70,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dilhan Demir",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 21,
-        "nationality": "Alemania",
-        "marketValue": 100
+        "overall": 65,
+        "value": 100,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sékou Koïta",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 22,
-        "nationality": "Malí",
-        "marketValue": 3000000
+        "overall": 70,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "M'Baye Niang",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 29,
-        "nationality": "Senegal",
-        "marketValue": 800
+        "overall": 72,
+        "value": 800,
+        "salary": 22000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ayaz Özcan",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 16,
-        "nationality": "Turquía",
-        "marketValue": 50
+        "overall": 65,
+        "value": 50,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -2987,203 +4076,278 @@
     "players": [
       {
         "name": "Aleksandar Jovanovic",
-        "position": "POR",
-        "rating": 72,
+        "position": "GK",
         "age": 33,
-        "nationality": "Serbia",
-        "marketValue": 1000000
+        "overall": 72,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Serhat Öztaşdelen",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 21,
-        "nationality": "Turquía",
-        "marketValue": 200
+        "overall": 66,
+        "value": 200,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gökhan Değirmenci",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 35,
-        "nationality": "Turquía",
-        "marketValue": 50
+        "overall": 66,
+        "value": 50,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Botond Balogh",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 23,
-        "nationality": "Hungría",
-        "marketValue": 2500000
+        "overall": 70,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hrvoje Smolcic",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 25,
-        "nationality": "Croacia",
-        "marketValue": 2000000
+        "overall": 70,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mateusz Wieteska",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 28,
-        "nationality": "Polonia",
-        "marketValue": 1500000
+        "overall": 72,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Massadio Haïdara",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 21,
-        "nationality": "Malí",
-        "marketValue": 900
+        "overall": 67,
+        "value": 900,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Muharrem Cinan",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 27,
-        "nationality": "Turquía",
-        "marketValue": 500
+        "overall": 70,
+        "value": 500,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Anfernee Dijksteel",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 29,
-        "nationality": "Surinam",
-        "marketValue": 1200000
+        "overall": 72,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ahmet Oğuz",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 22,
-        "nationality": "Turquía",
-        "marketValue": 400
+        "overall": 67,
+        "value": 400,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Show",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 26,
-        "nationality": "Angola",
-        "marketValue": 1000000
+        "overall": 72,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Habib Keïta",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 23,
-        "nationality": "Malí",
-        "marketValue": 1800000
+        "overall": 70,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Joseph Nonge",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 20,
-        "nationality": "Bélgica",
-        "marketValue": 1800000
+        "overall": 67,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Karol Linetty",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 30,
-        "nationality": "Polonia",
-        "marketValue": 1500000
+        "overall": 72,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Samet Yalçın",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 23,
-        "nationality": "Turquía",
-        "marketValue": 250
+        "overall": 68,
+        "value": 250,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ege Bilim",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 27,
-        "nationality": "Turquía",
-        "marketValue": 50
+        "overall": 71,
+        "value": 50,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Darko Churlinov",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 17,
-        "nationality": "Macedonia del Norte",
-        "marketValue": 1500000
+        "overall": 66,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rigoberto Rivas",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 27,
-        "nationality": "Honduras",
-        "marketValue": 1200000
+        "overall": 72,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tayfur Bingöl",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 33,
-        "nationality": "Turquía",
-        "marketValue": 500
+        "overall": 65,
+        "value": 500,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Furkan Gedik",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 18,
-        "nationality": "Turquía",
-        "marketValue": 250
+        "overall": 65,
+        "value": 250,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Can Keleş",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 24,
-        "nationality": "Austria",
-        "marketValue": 1800000
+        "overall": 67,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dan Agyei",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 28,
-        "nationality": "Inglaterra",
-        "marketValue": 800
+        "overall": 69,
+        "value": 800,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bruno Petkovic",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 31,
-        "nationality": "Croacia",
-        "marketValue": 2500000
+        "overall": 67,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ahmet Sağat",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 29,
-        "nationality": "Turquía",
-        "marketValue": 300
+        "overall": 71,
+        "value": 300,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Serdar Dursun",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 19,
-        "nationality": "Turquía",
-        "marketValue": 300
+        "overall": 68,
+        "value": 300,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -3193,243 +4357,333 @@
     "players": [
       {
         "name": "Bilal Bayazıt",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 25,
-        "nationality": "Turquía",
-        "marketValue": 1800000
+        "overall": 70,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Deniz Dönmezer",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 27,
-        "nationality": "Turquía",
-        "marketValue": 1000000
+        "overall": 70,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Onurcan Piri",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 31,
-        "nationality": "Turquía",
-        "marketValue": 200
+        "overall": 70,
+        "value": 200,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Majid Hosseini",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 29,
-        "nationality": "Irán",
-        "marketValue": 1000000
+        "overall": 72,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Semih Güler",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 31,
-        "nationality": "Turquía",
-        "marketValue": 900
+        "overall": 71,
+        "value": 900,
+        "salary": 21000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stefano Denswil",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 32,
-        "nationality": "Surinam",
-        "marketValue": 800
+        "overall": 71,
+        "value": 800,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gideon Jung",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 37,
-        "nationality": "Alemania",
-        "marketValue": 400
+        "overall": 65,
+        "value": 400,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jadel Katongo",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 21,
-        "nationality": "Inglaterra",
-        "marketValue": 350
+        "overall": 67,
+        "value": 350,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kayra Cihan",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 38,
-        "nationality": "Turquía",
-        "marketValue": 100
+        "overall": 64,
+        "value": 100,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Abdulsamet Burak",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 29,
-        "nationality": "Turquía",
-        "marketValue": 0
+        "overall": 70,
+        "value": 0,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lionel Carole",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 23,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 69,
+        "value": 300,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Aaron Opoku",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 30,
-        "nationality": "Alemania",
-        "marketValue": 800
+        "overall": 71,
+        "value": 800,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Burak Kapacak",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 17,
-        "nationality": "Turquía",
-        "marketValue": 200
+        "overall": 66,
+        "value": 200,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Youssef Aït Bennasser",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 15,
-        "nationality": "Marruecos",
-        "marketValue": 1000000
+        "overall": 68,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dorukhan Toköz",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 24,
-        "nationality": "Turquía",
-        "marketValue": 800
+        "overall": 68,
+        "value": 800,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "László Bénes",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 28,
-        "nationality": "Eslovaquia",
-        "marketValue": 3000000
+        "overall": 74,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Görkem Sağlam",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 27,
-        "nationality": "Turquía",
-        "marketValue": 900
+        "overall": 71,
+        "value": 900,
+        "salary": 21000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Furkan Soyalp",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 33,
-        "nationality": "Turquía",
-        "marketValue": 400
+        "overall": 66,
+        "value": 400,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yiğit Emre Çeltik",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 21,
-        "nationality": "Turquía",
-        "marketValue": 50
+        "overall": 67,
+        "value": 50,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "João Mendes",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 31,
-        "nationality": "Portugal",
-        "marketValue": 1500000
+        "overall": 73,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Eray Özbek",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 16,
-        "nationality": "Turquía",
-        "marketValue": 250
+        "overall": 66,
+        "value": 250,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Miguel Cardoso",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 31,
-        "nationality": "Portugal",
-        "marketValue": 1800000
+        "overall": 65,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sam Mather",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 21,
-        "nationality": "Inglaterra",
-        "marketValue": 100
+        "overall": 68,
+        "value": 100,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nurettin Korkmaz",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 23,
-        "nationality": "Turquía",
-        "marketValue": 100
+        "overall": 66,
+        "value": 100,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Denis Makarov",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 18,
-        "nationality": "Rusia",
-        "marketValue": 1800000
+        "overall": 69,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Carlos Mané",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 20,
-        "nationality": "Guinea-Bissau",
-        "marketValue": 900
+        "overall": 66,
+        "value": 900,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ramazan Civelek",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 28,
-        "nationality": "Turquía",
-        "marketValue": 800
+        "overall": 69,
+        "value": 800,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "German Onugkha",
-        "position": "DC",
-        "rating": 73,
+        "position": "ST",
         "age": 29,
-        "nationality": "Rusia",
-        "marketValue": 1800000
+        "overall": 73,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Indrit Tuci",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 22,
-        "nationality": "Albania",
-        "marketValue": 800
+        "overall": 66,
+        "value": 800,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Talha Sarıarslan",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 22,
-        "nationality": "Turquía",
-        "marketValue": 300
+        "overall": 66,
+        "value": 300,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -3439,243 +4693,333 @@
     "players": [
       {
         "name": "Abdullah Yiğiter",
-        "position": "POR",
-        "rating": 63,
+        "position": "GK",
         "age": 21,
-        "nationality": "Turquía",
-        "marketValue": 400
+        "overall": 63,
+        "value": 400,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ataberk Dadakdeniz",
-        "position": "POR",
-        "rating": 63,
+        "position": "GK",
         "age": 16,
-        "nationality": "Turquía",
-        "marketValue": 300
+        "overall": 63,
+        "value": 300,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Julián Cuesta",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 34,
-        "nationality": "España",
-        "marketValue": 250
+        "overall": 68,
+        "value": 250,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kağan Arıcan",
-        "position": "POR",
-        "rating": 62,
+        "position": "GK",
         "age": 19,
-        "nationality": "Turquía",
-        "marketValue": 150
+        "overall": 62,
+        "value": 150,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Georgiy Dzhikiya",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 32,
-        "nationality": "Rusia",
-        "marketValue": 1800000
+        "overall": 69,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lautaro Giannetti",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 30,
-        "nationality": "Argentina",
-        "marketValue": 1500000
+        "overall": 69,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hüseyin Türkmen",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 28,
-        "nationality": "Turquía",
-        "marketValue": 200
+        "overall": 68,
+        "value": 200,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bahadır Öztürk",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 30,
-        "nationality": "Turquía",
-        "marketValue": 200
+        "overall": 68,
+        "value": 200,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Veysel Sarı",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 37,
-        "nationality": "Turquía",
-        "marketValue": 100
+        "overall": 62,
+        "value": 100,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ensar Buğra Tivsiz",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 27,
-        "nationality": "Turquía",
-        "marketValue": 0
+        "overall": 68,
+        "value": 0,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ege İzmirli",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 18,
-        "nationality": "Turquía",
-        "marketValue": 0
+        "overall": 63,
+        "value": 0,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kenneth Paal",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 28,
-        "nationality": "Surinam",
-        "marketValue": 2500000
+        "overall": 69,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Samet Karakoç",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 23,
-        "nationality": "Turquía",
-        "marketValue": 400
+        "overall": 65,
+        "value": 400,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bünyamin Balcı",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 25,
-        "nationality": "Turquía",
-        "marketValue": 2200000
+        "overall": 67,
+        "value": 2200000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Erdoğan Yeşilyurt",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 17,
-        "nationality": "Turquía",
-        "marketValue": 500
+        "overall": 64,
+        "value": 500,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jesper Ceesay",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 23,
-        "nationality": "Gambia",
-        "marketValue": 1200000
+        "overall": 67,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Soner Dikmen",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 32,
-        "nationality": "Turquía",
-        "marketValue": 800
+        "overall": 63,
+        "value": 800,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dario Saric",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 28,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 700
+        "overall": 68,
+        "value": 700,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yakub İlçin",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 20,
-        "nationality": "Turquía",
-        "marketValue": 300
+        "overall": 63,
+        "value": 300,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Abdülkadir Ömür",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 26,
-        "nationality": "Turquía",
-        "marketValue": 2500000
+        "overall": 69,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ramzi Safuri",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 30,
-        "nationality": "Israel",
-        "marketValue": 900
+        "overall": 70,
+        "value": 900,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sander van de Streek",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 22,
-        "nationality": "Países Bajos",
-        "marketValue": 600
+        "overall": 66,
+        "value": 600,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nikola Storm",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 26,
-        "nationality": "Bélgica",
-        "marketValue": 1800000
+        "overall": 67,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Doğukan Sinik",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 27,
-        "nationality": "Turquía",
-        "marketValue": 1200000
+        "overall": 68,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ali Demirbilek",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 19,
-        "nationality": "Turquía",
-        "marketValue": 200
+        "overall": 65,
+        "value": 200,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Berkay Topdemir",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 33,
-        "nationality": "Turquía",
-        "marketValue": 50
+        "overall": 62,
+        "value": 50,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Samuel Ballet",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 24,
-        "nationality": "Suiza",
-        "marketValue": 1200000
+        "overall": 65,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yohan Boli",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 32,
-        "nationality": "Costa de Marfil",
-        "marketValue": 1500000
+        "overall": 63,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bachir Gueye",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 24,
-        "nationality": "Senegal",
-        "marketValue": 100
+        "overall": 66,
+        "value": 100,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kerem Kayaarası",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 19,
-        "nationality": "Turquía",
-        "marketValue": 50
+        "overall": 65,
+        "value": 50,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -3685,187 +5029,256 @@
     "players": [
       {
         "name": "Marcos Felipe",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 29,
-        "nationality": "Brasil",
-        "marketValue": 3000000
+        "overall": 69,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jankat Yılmaz",
-        "position": "POR",
-        "rating": 62,
+        "position": "GK",
         "age": 24,
-        "nationality": "Turquía",
-        "marketValue": 250
+        "overall": 62,
+        "value": 250,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Robin Yalçın",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 32,
-        "nationality": "Turquía",
-        "marketValue": 600
+        "overall": 68,
+        "value": 600,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luccas Claro",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 34,
-        "nationality": "Brasil",
-        "marketValue": 300
+        "overall": 63,
+        "value": 300,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jérôme Onguéné",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 28,
-        "nationality": "Camerún",
-        "marketValue": 150
+        "overall": 70,
+        "value": 150,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gilbert Mendy",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 21,
-        "nationality": "Senegal",
-        "marketValue": 50
+        "overall": 64,
+        "value": 50,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Umut Meraş",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 30,
-        "nationality": "Turquía",
-        "marketValue": 400
+        "overall": 67,
+        "value": 400,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Arda Yavuz",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 19,
-        "nationality": "Turquía",
-        "marketValue": 50
+        "overall": 64,
+        "value": 50,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Calegari",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 23,
-        "nationality": "Brasil",
-        "marketValue": 3000000
+        "overall": 67,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Denis Radu",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 22,
-        "nationality": "Rumania",
-        "marketValue": 400
+        "overall": 64,
+        "value": 400,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Talha Ülvan",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 17,
-        "nationality": "Turquía",
-        "marketValue": 250
+        "overall": 63,
+        "value": 250,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mateusz Legowski",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 20,
-        "nationality": "Polonia",
-        "marketValue": 2200000
+        "overall": 65,
+        "value": 2200000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Baran Gezek",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 20,
-        "nationality": "Turquía",
-        "marketValue": 1000000
+        "overall": 65,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Taras Stepanenko",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 33,
-        "nationality": "Ucrania",
-        "marketValue": 500
+        "overall": 62,
+        "value": 500,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Taşkın İlter",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 28,
-        "nationality": "Azerbaiyán",
-        "marketValue": 150
+        "overall": 67,
+        "value": 150,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Charles-André Raux-Yao",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 15,
-        "nationality": "Francia",
-        "marketValue": 150
+        "overall": 64,
+        "value": 150,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Emre Akbaba",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 33,
-        "nationality": "Turquía",
-        "marketValue": 500
+        "overall": 64,
+        "value": 500,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Prince Ampem",
-        "position": "DC",
-        "rating": 58,
+        "position": "ST",
         "age": 40,
-        "nationality": "Ghana",
-        "marketValue": 1500000
+        "overall": 58,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ángel Torres",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 25,
-        "nationality": "Colombia",
-        "marketValue": 300
+        "overall": 68,
+        "value": 300,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lenny Pintor",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 23,
-        "nationality": "Francia",
-        "marketValue": 200
+        "overall": 68,
+        "value": 200,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Christ Sadia",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 18,
-        "nationality": "Costa de Marfil",
-        "marketValue": 100
+        "overall": 65,
+        "value": 100,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Umut Bozok",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 19,
-        "nationality": "Turquía",
-        "marketValue": 1200000
+        "overall": 66,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Metehan Altunbaş",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 26,
-        "nationality": "Turquía",
-        "marketValue": 250
+        "overall": 67,
+        "value": 250,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -3875,227 +5288,311 @@
     "players": [
       {
         "name": "Ivo Grbic",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 30,
-        "nationality": "Croacia",
-        "marketValue": 1500000
+        "overall": 69,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Furkan Bekleviç",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 26,
-        "nationality": "Turquía",
-        "marketValue": 300
+        "overall": 65,
+        "value": 300,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kerem Yandal",
-        "position": "POR",
-        "rating": 62,
+        "position": "GK",
         "age": 19,
-        "nationality": "Turquía",
-        "marketValue": 0
+        "overall": 62,
+        "value": 0,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Berke Can Evli",
-        "position": "POR",
-        "rating": 63,
+        "position": "GK",
         "age": 16,
-        "nationality": "Turquía",
-        "marketValue": 0
+        "overall": 63,
+        "value": 0,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Davide Biraschi",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 31,
-        "nationality": "Italia",
-        "marketValue": 400
+        "overall": 68,
+        "value": 400,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Anıl Yiğit Çınar",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 22,
-        "nationality": "Turquía",
-        "marketValue": 200
+        "overall": 63,
+        "value": 200,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Burhan Ersoy",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 24,
-        "nationality": "Turquía",
-        "marketValue": 100
+        "overall": 65,
+        "value": 100,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Muhammed Kadıoğlu",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 32,
-        "nationality": "Turquía",
-        "marketValue": 100
+        "overall": 67,
+        "value": 100,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jure Balkovec",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 29,
-        "nationality": "Eslovenia",
-        "marketValue": 800
+        "overall": 68,
+        "value": 800,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Çağtay Kurukalıp",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 33,
-        "nationality": "Turquía",
-        "marketValue": 600
+        "overall": 62,
+        "value": 600,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ricardo Esgaio",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 32,
-        "nationality": "Portugal",
-        "marketValue": 800
+        "overall": 68,
+        "value": 800,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bartuğ Elmaz",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 22,
-        "nationality": "Turquía",
-        "marketValue": 1500000
+        "overall": 67,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marius Tresor Doh",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 22,
-        "nationality": "Costa de Marfil",
-        "marketValue": 1500000
+        "overall": 67,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matías Kranevitter",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 32,
-        "nationality": "Argentina",
-        "marketValue": 700
+        "overall": 63,
+        "value": 700,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Berkay Özcan",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 27,
-        "nationality": "Turquía",
-        "marketValue": 1800000
+        "overall": 69,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daniel Johnson",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 33,
-        "nationality": "Jamaica",
-        "marketValue": 400
+        "overall": 64,
+        "value": 400,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Barış Kalaycı",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 20,
-        "nationality": "Turquía",
-        "marketValue": 200
+        "overall": 63,
+        "value": 200,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tuğbey Akgün",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 16,
-        "nationality": "Turquía",
-        "marketValue": 100
+        "overall": 64,
+        "value": 100,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sam Larsson",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 23,
-        "nationality": "Suecia",
-        "marketValue": 800
+        "overall": 68,
+        "value": 800,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Serginho",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 30,
-        "nationality": "Brasil",
-        "marketValue": 600
+        "overall": 66,
+        "value": 600,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ahmet Sivri",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 17,
-        "nationality": "Turquía",
-        "marketValue": 250
+        "overall": 64,
+        "value": 250,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Shavy Babicka",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 25,
-        "nationality": "Gabón",
-        "marketValue": 1500000
+        "overall": 69,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "João Camacho",
-        "position": "DC",
-        "rating": 60,
+        "position": "ST",
         "age": 37,
-        "nationality": "Portugal",
-        "marketValue": 500
+        "overall": 60,
+        "value": 500,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tarık Buğra Kalpaklı",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 20,
-        "nationality": "Turquía",
-        "marketValue": 200
+        "overall": 62,
+        "value": 200,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ahmed Traore",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 18,
-        "nationality": "Costa de Marfil",
-        "marketValue": 100
+        "overall": 65,
+        "value": 100,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tiago Çukur",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 21,
-        "nationality": "Turquía",
-        "marketValue": 400
+        "overall": 63,
+        "value": 400,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Andre Gray",
-        "position": "DC",
-        "rating": 61,
+        "position": "ST",
         "age": 34,
-        "nationality": "Jamaica",
-        "marketValue": 400
+        "overall": 61,
+        "value": 400,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Abdul Kader Moussa Kone",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 15,
-        "nationality": "Costa de Marfil",
-        "marketValue": 100
+        "overall": 65,
+        "value": 100,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   }

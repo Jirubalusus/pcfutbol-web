@@ -5,211 +5,289 @@
     "players": [
       {
         "name": "Gautier Larsonneur",
-        "position": "POR",
-        "rating": 75,
+        "position": "GK",
         "age": 30,
-        "nationality": "Francia",
-        "marketValue": 3000000
+        "overall": 75,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Brice Maubleu",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 36,
-        "nationality": "Francia",
-        "marketValue": 150
+        "overall": 69,
+        "value": 150,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Chico Lamba",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 15,
-        "nationality": "Portugal",
-        "marketValue": 4000000
+        "overall": 71,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mickaël Nadé",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 26,
-        "nationality": "Francia",
-        "marketValue": 2000000
+        "overall": 75,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Maxime Bernauer",
-        "position": "DFC",
-        "rating": 76,
+        "position": "CB",
         "age": 27,
-        "nationality": "Francia",
-        "marketValue": 1800000
+        "overall": 76,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ebenezer Annan",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 19,
-        "nationality": "Ghana",
-        "marketValue": 2500000
+        "overall": 71,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lassana Traoré",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 34,
-        "nationality": "Senegal",
-        "marketValue": 100
+        "overall": 69,
+        "value": 100,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "João Ferreira",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 24,
-        "nationality": "Portugal",
-        "marketValue": 3000000
+        "overall": 73,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Strahinja Stojkovic",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 18,
-        "nationality": "Serbia",
-        "marketValue": 800
+        "overall": 70,
+        "value": 800,
+        "salary": 20000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dennis Appiah",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 33,
-        "nationality": "Francia",
-        "marketValue": 700
+        "overall": 68,
+        "value": 700,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pierre Ekwah",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 24,
-        "nationality": "Francia",
-        "marketValue": 3000000
+        "overall": 73,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Abdoulaye Kanté",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 20,
-        "nationality": "Costa de Marfil",
-        "marketValue": 3000000
+        "overall": 71,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mahmoud Jaber",
-        "position": "MC",
-        "rating": 75,
+        "position": "CM",
         "age": 26,
-        "nationality": "Israel",
-        "marketValue": 2000000
+        "overall": 75,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Aïmen Moueffek",
-        "position": "MC",
-        "rating": 76,
+        "position": "CM",
         "age": 29,
-        "nationality": "Marruecos",
-        "marketValue": 2000000
+        "overall": 76,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Florian Tardieu",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 33,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 69,
+        "value": 500,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luan Gadegbeku",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 35,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 68,
+        "value": 300,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Paul Eymard",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 36,
-        "nationality": "Francia",
-        "marketValue": 200
+        "overall": 70,
+        "value": 200,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ben Old",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 23,
-        "nationality": "Nueva Zelanda",
-        "marketValue": 600
+        "overall": 73,
+        "value": 600,
+        "salary": 23000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Igor Miladinovic",
-        "position": "MC",
-        "rating": 75,
+        "position": "CM",
         "age": 28,
-        "nationality": "Serbia",
-        "marketValue": 2000000
+        "overall": 75,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nadir El Jamali",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 31,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 73,
+        "value": 300,
+        "salary": 23000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Zuriko Davitashvili",
-        "position": "DC",
-        "rating": 76,
+        "position": "ST",
         "age": 22,
-        "nationality": "Georgia",
-        "marketValue": 8000000
+        "overall": 76,
+        "value": 8000000,
+        "salary": 24000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Augustine Boakye",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 20,
-        "nationality": "Ghana",
-        "marketValue": 4000000
+        "overall": 74,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lucas Stassin",
-        "position": "DC",
-        "rating": 77,
+        "position": "ST",
         "age": 21,
-        "nationality": "Bélgica",
-        "marketValue": 15000000
+        "overall": 77,
+        "value": 15000000,
+        "salary": 45000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Joshua Duffus",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 17,
-        "nationality": "Jamaica",
-        "marketValue": 3000000
+        "overall": 72,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Irvin Cardona",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 28,
-        "nationality": "Malta",
-        "marketValue": 2500000
+        "overall": 75,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Djylian N'Guessan",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 25,
-        "nationality": "Francia",
-        "marketValue": 2000000
+        "overall": 75,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -219,203 +297,278 @@
     "players": [
       {
         "name": "Ewen Jaouen",
-        "position": "POR",
-        "rating": 75,
+        "position": "GK",
         "age": 29,
-        "nationality": "Francia",
-        "marketValue": 2000000
+        "overall": 75,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexandre Olliero",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 20,
-        "nationality": "Francia",
-        "marketValue": 150
+        "overall": 68,
+        "value": 150,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Soumaïla Sylla",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 21,
-        "nationality": "Guinea",
-        "marketValue": 75
+        "overall": 69,
+        "value": 75,
+        "salary": 19000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Joseph Okumu",
-        "position": "DFC",
-        "rating": 76,
+        "position": "CB",
         "age": 28,
-        "nationality": "Kenia",
-        "marketValue": 5000000
+        "overall": 76,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Abdoul Koné",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 20,
-        "nationality": "Francia",
-        "marketValue": 5000000
+        "overall": 72,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Elie N'Tamon",
-        "position": "DFC",
-        "rating": 75,
+        "position": "CB",
         "age": 28,
-        "nationality": "Costa de Marfil",
-        "marketValue": 2000000
+        "overall": 75,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Samuel Kotto",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 22,
-        "nationality": "Camerún",
-        "marketValue": 1000000
+        "overall": 71,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nicolas Pallois",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 38,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 68,
+        "value": 300,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sergio Akieme",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 18,
-        "nationality": "España",
-        "marketValue": 5000000
+        "overall": 72,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hiroki Sekine",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 23,
-        "nationality": "Japón",
-        "marketValue": 1500000
+        "overall": 73,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Maxime Busi",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 26,
-        "nationality": "Bélgica",
-        "marketValue": 800
+        "overall": 73,
+        "value": 800,
+        "salary": 23000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mory Gbane",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 24,
-        "nationality": "Costa de Marfil",
-        "marketValue": 4000000
+        "overall": 73,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Théo Leoni",
-        "position": "MC",
-        "rating": 76,
+        "position": "CM",
         "age": 25,
-        "nationality": "Bélgica",
-        "marketValue": 3000000
+        "overall": 76,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Patrick Zabi",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 19,
-        "nationality": "Costa de Marfil",
-        "marketValue": 3000000
+        "overall": 72,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yaya Fofana",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 21,
-        "nationality": "Costa de Marfil",
-        "marketValue": 2500000
+        "overall": 71,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "John Patrick",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 30,
-        "nationality": "Irlanda",
-        "marketValue": 800
+        "overall": 73,
+        "value": 800,
+        "salary": 23000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Martial Tia",
-        "position": "MC",
-        "rating": 72,
+        "position": "CM",
         "age": 19,
-        "nationality": "Malí",
-        "marketValue": 5000000
+        "overall": 72,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Keito Nakamura",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 17,
-        "nationality": "Japón",
-        "marketValue": 8000000
+        "overall": 74,
+        "value": 8000000,
+        "salary": 24000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mohamed Daramy",
-        "position": "DC",
-        "rating": 73,
+        "position": "ST",
         "age": 24,
-        "nationality": "Dinamarca",
-        "marketValue": 3000000
+        "overall": 73,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ike Orazi",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 18,
-        "nationality": "Irlanda",
-        "marketValue": 75
+        "overall": 71,
+        "value": 75,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yassine Benhattab",
-        "position": "DC",
-        "rating": 73,
+        "position": "ST",
         "age": 23,
-        "nationality": "Francia",
-        "marketValue": 1800000
+        "overall": 73,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Thiemoko Diarra",
-        "position": "DC",
-        "rating": 73,
+        "position": "ST",
         "age": 22,
-        "nationality": "Malí",
-        "marketValue": 500
+        "overall": 73,
+        "value": 500,
+        "salary": 23000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Amine Salama",
-        "position": "DC",
-        "rating": 75,
+        "position": "ST",
         "age": 25,
-        "nationality": "Francia",
-        "marketValue": 1500000
+        "overall": 75,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adama Bojang",
-        "position": "DC",
-        "rating": 74,
+        "position": "ST",
         "age": 27,
-        "nationality": "Gambia",
-        "marketValue": 800
+        "overall": 74,
+        "value": 800,
+        "salary": 24000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hafiz Umar Ibrahim",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 20,
-        "nationality": "Nigeria",
-        "marketValue": 800
+        "overall": 71,
+        "value": 800,
+        "salary": 21000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -425,219 +578,300 @@
     "players": [
       {
         "name": "Nicolas Lemaître",
-        "position": "POR",
-        "rating": 67,
+        "position": "GK",
         "age": 16,
-        "nationality": "Francia",
-        "marketValue": 600
+        "overall": 67,
+        "value": 600,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hillel Konaté",
-        "position": "POR",
-        "rating": 67,
+        "position": "GK",
         "age": 40,
-        "nationality": "Burkina Faso",
-        "marketValue": 300
+        "overall": 67,
+        "value": 300,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Zacharie Boucher",
-        "position": "POR",
-        "rating": 71,
+        "position": "GK",
         "age": 33,
-        "nationality": "Francia",
-        "marketValue": 100
+        "overall": 71,
+        "value": 100,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Paolo Gozzi",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 25,
-        "nationality": "Italia",
-        "marketValue": 1500000
+        "overall": 71,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hugo Gambor",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 23,
-        "nationality": "República Centroafricana",
-        "marketValue": 800
+        "overall": 70,
+        "value": 800,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adrien Monfray",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 35,
-        "nationality": "Francia",
-        "marketValue": 250
+        "overall": 67,
+        "value": 250,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tom Akpakoun",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 37,
-        "nationality": "Francia",
-        "marketValue": 25
+        "overall": 66,
+        "value": 25,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sankhoun Diawara",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 38,
-        "nationality": "Francia",
-        "marketValue": 25
+        "overall": 66,
+        "value": 25,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ismaël Boura",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 25,
-        "nationality": "Comoras",
-        "marketValue": 2500000
+        "overall": 71,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Anis Ouzenadji",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 19,
-        "nationality": "Francia",
-        "marketValue": 150
+        "overall": 67,
+        "value": 150,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yvann Titi",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 44,
-        "nationality": "Francia",
-        "marketValue": 1000000
+        "overall": 67,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Thierno Baldé",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 18,
-        "nationality": "Francia",
-        "marketValue": 600
+        "overall": 68,
+        "value": 600,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lucas Maronnier",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 25,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 70,
+        "value": 500,
+        "salary": 20000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexandre Phliponeau",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 26,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 71,
+        "value": 400,
+        "salary": 21000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Roman Murcy",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 35,
-        "nationality": "Francia",
-        "marketValue": 50
+        "overall": 66,
+        "value": 50,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Martin Adeline",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 22,
-        "nationality": "Francia",
-        "marketValue": 3000000
+        "overall": 73,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mouhamed Diop",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 25,
-        "nationality": "Senegal",
-        "marketValue": 2000000
+        "overall": 73,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Antoine Mille",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 17,
-        "nationality": "Francia",
-        "marketValue": 1000000
+        "overall": 69,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Xavier Chavalerin",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 34,
-        "nationality": "Francia",
-        "marketValue": 150
+        "overall": 67,
+        "value": 150,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Merwan Ifnaoui",
-        "position": "MC",
-        "rating": 74,
+        "position": "CM",
         "age": 27,
-        "nationality": "Francia",
-        "marketValue": 1200000
+        "overall": 74,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mathys Detourbet",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 18,
-        "nationality": "Francia",
-        "marketValue": 4000000
+        "overall": 69,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Elijah Odede",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 19,
-        "nationality": "Nigeria",
-        "marketValue": 700
+        "overall": 68,
+        "value": 700,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Amadou Diakité",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 36,
-        "nationality": "Francia",
-        "marketValue": 50
+        "overall": 64,
+        "value": 50,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tawfik Bentayeb",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 21,
-        "nationality": "Marruecos",
-        "marketValue": 3000000
+        "overall": 72,
+        "value": 3000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mounaïm El Idrissy",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 26,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 71,
+        "value": 500,
+        "salary": 21000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Renaud Ripart",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 20,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 70,
+        "value": 400,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ibrahim Traoré",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 34,
-        "nationality": "Francia",
-        "marketValue": 50
+        "overall": 66,
+        "value": 50,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -647,195 +881,267 @@
     "players": [
       {
         "name": "Simon Ngapandouetnbu",
-        "position": "POR",
-        "rating": 73,
+        "position": "GK",
         "age": 31,
-        "nationality": "Camerún",
-        "marketValue": 1500000
+        "overall": 73,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mathieu Michel",
-        "position": "POR",
-        "rating": 71,
+        "position": "GK",
         "age": 34,
-        "nationality": "Francia",
-        "marketValue": 150
+        "overall": 71,
+        "value": 150,
+        "salary": 21000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Viktor Dzodic",
-        "position": "POR",
-        "rating": 67,
+        "position": "GK",
         "age": 19,
-        "nationality": "Serbia",
-        "marketValue": 100
+        "overall": 67,
+        "value": 100,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Becir Omeragic",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 27,
-        "nationality": "Suiza",
-        "marketValue": 4000000
+        "overall": 73,
+        "value": 4000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Naoufel El Hannach",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 19,
-        "nationality": "Marruecos",
-        "marketValue": 1200000
+        "overall": 69,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Julien Laporte",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 15,
-        "nationality": "Francia",
-        "marketValue": 900
+        "overall": 68,
+        "value": 900,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Christopher Jullien",
-        "position": "DFC",
-        "rating": 72,
+        "position": "CB",
         "age": 32,
-        "nationality": "Guadalupe",
-        "marketValue": 700
+        "overall": 72,
+        "value": 700,
+        "salary": 22000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yaël Mouanga",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 23,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 70,
+        "value": 500,
+        "salary": 20000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Théo Sainte-Luce",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 17,
-        "nationality": "Francia",
-        "marketValue": 700
+        "overall": 68,
+        "value": 700,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lucas Mincarelli",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 21,
-        "nationality": "Francia",
-        "marketValue": 700
+        "overall": 68,
+        "value": 700,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Enzo Tchato",
-        "position": "DFC",
-        "rating": 73,
+        "position": "CB",
         "age": 29,
-        "nationality": "Camerún",
-        "marketValue": 1800000
+        "overall": 73,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Wilfried Ndollo Bille",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 20,
-        "nationality": "Camerún",
-        "marketValue": 100
+        "overall": 68,
+        "value": 100,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Everson Jr",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 22,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 70,
+        "value": 500,
+        "salary": 20000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Khalil Fayad",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 21,
-        "nationality": "Marruecos",
-        "marketValue": 2000000
+        "overall": 68,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Théo Chennahi",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 44,
-        "nationality": "Francia",
-        "marketValue": 600
+        "overall": 66,
+        "value": 600,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nabil Homssa",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 20,
-        "nationality": "Francia",
-        "marketValue": 0
+        "overall": 68,
+        "value": 0,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Téji Savanier",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 34,
-        "nationality": "Francia",
-        "marketValue": 1800000
+        "overall": 71,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ayanda Sishuba",
-        "position": "MC",
-        "rating": 73,
+        "position": "CM",
         "age": 28,
-        "nationality": "Bélgica",
-        "marketValue": 1000000
+        "overall": 73,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nicolas Pays",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 18,
-        "nationality": "Francia",
-        "marketValue": 700
+        "overall": 68,
+        "value": 700,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nathanaël Mbuku",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 23,
-        "nationality": "RD del Congo",
-        "marketValue": 1200000
+        "overall": 70,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Axel Guéguin",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 22,
-        "nationality": "Francia",
-        "marketValue": 150
+        "overall": 70,
+        "value": 150,
+        "salary": 20000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexandre Mendy",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 19,
-        "nationality": "Guinea-Bissau",
-        "marketValue": 1000000
+        "overall": 70,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Victor Orakpo",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 20,
-        "nationality": "Nigeria",
-        "marketValue": 500
+        "overall": 66,
+        "value": 500,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yanis Issoufou",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 19,
-        "nationality": "Francia",
-        "marketValue": 100
+        "overall": 70,
+        "value": 100,
+        "salary": 20000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -845,211 +1151,289 @@
     "players": [
       {
         "name": "Paul Bernardoni",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 40,
-        "nationality": "Francia",
-        "marketValue": 2000000
+        "overall": 66,
+        "value": 2000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexis Sauvage",
-        "position": "POR",
-        "rating": 64,
+        "position": "GK",
         "age": 16,
-        "nationality": "Francia",
-        "marketValue": 100
+        "overall": 64,
+        "value": 100,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Siaka Bakayoko",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 34,
-        "nationality": "Francia",
-        "marketValue": 1500000
+        "overall": 66,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Aboubacar Lô",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 28,
-        "nationality": "Senegal",
-        "marketValue": 600
+        "overall": 70,
+        "value": 600,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Arvin Appiah",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 25,
-        "nationality": "Inglaterra",
-        "marketValue": 700
+        "overall": 68,
+        "value": 700,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jérôme Roussillon",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 21,
-        "nationality": "Guadalupe",
-        "marketValue": 600
+        "overall": 66,
+        "value": 600,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Coleen Louis",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 44,
-        "nationality": "Francia",
-        "marketValue": 200
+        "overall": 64,
+        "value": 200,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Amine Chabane",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 39,
-        "nationality": "Marruecos",
-        "marketValue": 1500000
+        "overall": 65,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nathan Talbot",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 18,
-        "nationality": "Francia",
-        "marketValue": 75
+        "overall": 65,
+        "value": 75,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ibrahim Fofana",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 45,
-        "nationality": "Costa de Marfil",
-        "marketValue": 2500000
+        "overall": 65,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kylian Kaïboue",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 20,
-        "nationality": "Francia",
-        "marketValue": 900
+        "overall": 66,
+        "value": 900,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Thomas Monconduit",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 34,
-        "nationality": "Francia",
-        "marketValue": 200
+        "overall": 65,
+        "value": 200,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Joseph Nduquidi",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 15,
-        "nationality": "Angola",
-        "marketValue": 350
+        "overall": 66,
+        "value": 350,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Oscar Aïssat",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 18,
-        "nationality": "Argelia",
-        "marketValue": 50
+        "overall": 66,
+        "value": 50,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Teddy Averlant",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 26,
-        "nationality": "Gabón",
-        "marketValue": 600
+        "overall": 70,
+        "value": 600,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rayan Lutin",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 27,
-        "nationality": "Comoras",
-        "marketValue": 1000000
+        "overall": 71,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Victor Lobry",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 30,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 71,
+        "value": 400,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Messy Manitu",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 18,
-        "nationality": "RD del Congo",
-        "marketValue": 50
+        "overall": 66,
+        "value": 50,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Carraro Injai",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 42,
-        "nationality": "Francia",
-        "marketValue": 50
+        "overall": 64,
+        "value": 50,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Enzo Somon",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 17,
-        "nationality": "Francia",
-        "marketValue": 0
+        "overall": 66,
+        "value": 0,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jan Mlakar",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 27,
-        "nationality": "Eslovenia",
-        "marketValue": 1500000
+        "overall": 71,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nordine Kandil",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 24,
-        "nationality": "Marruecos",
-        "marketValue": 900
+        "overall": 68,
+        "value": 900,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ilyes Hamache",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 22,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 68,
+        "value": 500,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Antoine Leautey",
-        "position": "DC",
-        "rating": 73,
+        "position": "ST",
         "age": 29,
-        "nationality": "Francia",
-        "marketValue": 1200000
+        "overall": 73,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yvan Ikia Dimi",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 26,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 70,
+        "value": 500,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yanis Rafii",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 19,
-        "nationality": "Francia",
-        "marketValue": 75
+        "overall": 69,
+        "value": 75,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1059,227 +1443,311 @@
     "players": [
       {
         "name": "Mathys Niflore",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 18,
-        "nationality": "Francia",
-        "marketValue": 1000000
+        "overall": 66,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marcos Lavín",
-        "position": "POR",
-        "rating": 69,
+        "position": "GK",
         "age": 29,
-        "nationality": "España",
-        "marketValue": 200
+        "overall": 69,
+        "value": 200,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mouhamed Sissokho",
-        "position": "POR",
-        "rating": 66,
+        "position": "GK",
         "age": 36,
-        "nationality": "Senegal",
-        "marketValue": 0
+        "overall": 66,
+        "value": 0,
+        "salary": 16000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bram Lagae",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 22,
-        "nationality": "Bélgica",
-        "marketValue": 500
+        "overall": 66,
+        "value": 500,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Opa Sangante",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 26,
-        "nationality": "Guinea-Bissau",
-        "marketValue": 250
+        "overall": 70,
+        "value": 250,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Victor Mayela",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 22,
-        "nationality": "Francia",
-        "marketValue": 200
+        "overall": 66,
+        "value": 200,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vincent Sasso",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 23,
-        "nationality": "Francia",
-        "marketValue": 200
+        "overall": 68,
+        "value": 200,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Felipe Abner",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 30,
-        "nationality": "Brasil",
-        "marketValue": 600
+        "overall": 70,
+        "value": 600,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Assane N'Doye",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 21,
-        "nationality": "Senegal",
-        "marketValue": 0
+        "overall": 66,
+        "value": 0,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Maedine Makhloufi",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 42,
-        "nationality": "Francia",
-        "marketValue": 0
+        "overall": 64,
+        "value": 0,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alec Georgen",
-        "position": "DFC",
-        "rating": 71,
+        "position": "CB",
         "age": 27,
-        "nationality": "Francia",
-        "marketValue": 1000000
+        "overall": 71,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Allan Linguet",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 27,
-        "nationality": "Francia",
-        "marketValue": 350
+        "overall": 70,
+        "value": 350,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lenny Dziki Loussilaho",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 24,
-        "nationality": "Congo",
-        "marketValue": 100
+        "overall": 67,
+        "value": 100,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pape Diong",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 19,
-        "nationality": "Senegal",
-        "marketValue": 1000000
+        "overall": 67,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lohann Doucet",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 15,
-        "nationality": "Francia",
-        "marketValue": 600
+        "overall": 66,
+        "value": 600,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Théna Massock",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 18,
-        "nationality": "Francia",
-        "marketValue": 200
+        "overall": 66,
+        "value": 200,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Iñigo Eguaras",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 16,
-        "nationality": "España",
-        "marketValue": 150
+        "overall": 66,
+        "value": 150,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Enzo Bardeli",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 20,
-        "nationality": "Francia",
-        "marketValue": 5000000
+        "overall": 71,
+        "value": 5000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Antoine Sekongo",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 21,
-        "nationality": "Malí",
-        "marketValue": 1200000
+        "overall": 69,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Malick Diop",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 18,
-        "nationality": "Senegal",
-        "marketValue": 100
+        "overall": 65,
+        "value": 100,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Eddy Sylvestre",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 26,
-        "nationality": "Francia",
-        "marketValue": 250
+        "overall": 71,
+        "value": 250,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Aristide Zossou",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 20,
-        "nationality": "Costa de Marfil",
-        "marketValue": 1500000
+        "overall": 66,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Morgan Bokele",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 21,
-        "nationality": "Camerún",
-        "marketValue": 800
+        "overall": 67,
+        "value": 800,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alex Daho",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 22,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 65,
+        "value": 300,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Marco Essimi",
-        "position": "DC",
-        "rating": 70,
+        "position": "ST",
         "age": 26,
-        "nationality": "Francia",
-        "marketValue": 600
+        "overall": 70,
+        "value": 600,
+        "salary": 20000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Zaid Seha",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 19,
-        "nationality": "Francia",
-        "marketValue": 100
+        "overall": 66,
+        "value": 100,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Thomas Robinet",
-        "position": "DC",
-        "rating": 72,
+        "position": "ST",
         "age": 29,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 72,
+        "value": 500,
+        "salary": 22000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Abou Kanté",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 19,
-        "nationality": "Gambia",
-        "marketValue": 300
+        "overall": 64,
+        "value": 300,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1289,203 +1757,278 @@
     "players": [
       {
         "name": "Teddy Bartouche-Selbonne",
-        "position": "POR",
-        "rating": 70,
+        "position": "GK",
         "age": 28,
-        "nationality": "Guadalupe",
-        "marketValue": 300
+        "overall": 70,
+        "value": 300,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adrián Ortolá",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 16,
-        "nationality": "España",
-        "marketValue": 300
+        "overall": 65,
+        "value": 300,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Noah Marec",
-        "position": "POR",
-        "rating": 64,
+        "position": "GK",
         "age": 40,
-        "nationality": "Francia",
-        "marketValue": 0
+        "overall": 64,
+        "value": 0,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sohaib Naïr",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 18,
-        "nationality": "Argelia",
-        "marketValue": 1200000
+        "overall": 67,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Donatien Gomis",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 31,
-        "nationality": "Senegal",
-        "marketValue": 700
+        "overall": 70,
+        "value": 700,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Albin Demouchy",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 36,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 65,
+        "value": 400,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Idriss Planeix",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 38,
-        "nationality": "Francia",
-        "marketValue": 0
+        "overall": 64,
+        "value": 0,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Akim Abdallah",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 29,
-        "nationality": "Comoras",
-        "marketValue": 600
+        "overall": 70,
+        "value": 600,
+        "salary": 20000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alpha Sissoko",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 22,
-        "nationality": "Francia",
-        "marketValue": 1500000
+        "overall": 67,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Erwin Koffi",
-        "position": "DFC",
-        "rating": 70,
+        "position": "CB",
         "age": 31,
-        "nationality": "Francia",
-        "marketValue": 600
+        "overall": 70,
+        "value": 600,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jérémie Matumona",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 19,
-        "nationality": "Francia",
-        "marketValue": 150
+        "overall": 65,
+        "value": 150,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kalidou Sidibé",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 27,
-        "nationality": "Malí",
-        "marketValue": 1800000
+        "overall": 71,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dylan Louiserre",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 30,
-        "nationality": "Francia",
-        "marketValue": 1000000
+        "overall": 71,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tanguy Ahile",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 39,
-        "nationality": "Francia",
-        "marketValue": 200
+        "overall": 63,
+        "value": 200,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yohan Demoncy",
-        "position": "MC",
-        "rating": 71,
+        "position": "CM",
         "age": 21,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 71,
+        "value": 500,
+        "salary": 21000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Darly N'Landu",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 25,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 69,
+        "value": 300,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Amine Hemia",
-        "position": "MC",
-        "rating": 75,
+        "position": "CM",
         "age": 28,
-        "nationality": "Francia",
-        "marketValue": 2500000
+        "overall": 75,
+        "value": 2500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jérémy Hatchi",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 20,
-        "nationality": "Guadalupe",
-        "marketValue": 800
+        "overall": 67,
+        "value": 800,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Freddy Mbemba",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 17,
-        "nationality": "Francia",
-        "marketValue": 700
+        "overall": 66,
+        "value": 700,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gautier Ott",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 24,
-        "nationality": "Francia",
-        "marketValue": 700
+        "overall": 66,
+        "value": 700,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Amadou Samoura",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 19,
-        "nationality": "Francia",
-        "marketValue": 250
+        "overall": 65,
+        "value": 250,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Youssef Njoya",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 34,
-        "nationality": "Francia",
-        "marketValue": 50
+        "overall": 64,
+        "value": 50,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Amadou Sagna",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 26,
-        "nationality": "Senegal",
-        "marketValue": 600
+        "overall": 68,
+        "value": 600,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Louis Mafouta",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 31,
-        "nationality": "República Centroafricana",
-        "marketValue": 1000000
+        "overall": 66,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stanislas Kielt",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 27,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 69,
+        "value": 400,
+        "salary": 19000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1495,195 +2038,267 @@
     "players": [
       {
         "name": "Noah Raveyre",
-        "position": "POR",
-        "rating": 64,
+        "position": "GK",
         "age": 22,
-        "nationality": "Francia",
-        "marketValue": 1500000
+        "overall": 64,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Esteban Salles",
-        "position": "POR",
-        "rating": 67,
+        "position": "GK",
         "age": 30,
-        "nationality": "Francia",
-        "marketValue": 200
+        "overall": 67,
+        "value": 200,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tao Paradowski",
-        "position": "POR",
-        "rating": 62,
+        "position": "GK",
         "age": 40,
-        "nationality": "Francia",
-        "marketValue": 100
+        "overall": 62,
+        "value": 100,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jean Ruiz",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 25,
-        "nationality": "Francia",
-        "marketValue": 1000000
+        "overall": 67,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Daylam Meddah",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 23,
-        "nationality": "Francia",
-        "marketValue": 800
+        "overall": 66,
+        "value": 800,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Anthony Briançon",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 23,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 66,
+        "value": 400,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Setigui Karamoko",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 26,
-        "nationality": "Francia",
-        "marketValue": 250
+        "overall": 68,
+        "value": 250,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ousmane Kanté",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 19,
-        "nationality": "Guinea",
-        "marketValue": 150
+        "overall": 63,
+        "value": 150,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Joseph Kalulu",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 21,
-        "nationality": "Francia",
-        "marketValue": 1000000
+        "overall": 65,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Souleymane Basse",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 22,
-        "nationality": "Senegal",
-        "marketValue": 300
+        "overall": 64,
+        "value": 300,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tom Pouilly",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 22,
-        "nationality": "Francia",
-        "marketValue": 1000000
+        "overall": 65,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Neil Glossoa",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 26,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 67,
+        "value": 300,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rayan Touzghar",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 22,
-        "nationality": "Marruecos",
-        "marketValue": 1000000
+        "overall": 67,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Antonin Bobichon",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 30,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 68,
+        "value": 500,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Steeve Beusnard",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 21,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 64,
+        "value": 300,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cheikh Fall",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 21,
-        "nationality": "Senegal",
-        "marketValue": 250
+        "overall": 66,
+        "value": 250,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Edhy Zuliani",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 21,
-        "nationality": "Argelia",
-        "marketValue": 250
+        "overall": 63,
+        "value": 250,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kyllian Gasnier",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 23,
-        "nationality": "Francia",
-        "marketValue": 150
+        "overall": 66,
+        "value": 150,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rayane Messi",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 18,
-        "nationality": "Francia",
-        "marketValue": 1000000
+        "overall": 63,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Giovani Versini",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 21,
-        "nationality": "Francia",
-        "marketValue": 1500000
+        "overall": 66,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kyliane Dong",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 21,
-        "nationality": "Francia",
-        "marketValue": 600
+        "overall": 63,
+        "value": 600,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Salif Lebouath",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 34,
-        "nationality": "Francia",
-        "marketValue": 100
+        "overall": 62,
+        "value": 100,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Omar Sadik",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 18,
-        "nationality": "Marruecos",
-        "marketValue": 600
+        "overall": 65,
+        "value": 600,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Omar Sissoko",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 17,
-        "nationality": "Francia",
-        "marketValue": 250
+        "overall": 64,
+        "value": 250,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1693,203 +2308,278 @@
     "players": [
       {
         "name": "Gaëtan Poussin",
-        "position": "POR",
-        "rating": 63,
+        "position": "GK",
         "age": 16,
-        "nationality": "Francia",
-        "marketValue": 900
+        "overall": 63,
+        "value": 900,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mouez Hassen",
-        "position": "POR",
-        "rating": 63,
+        "position": "GK",
         "age": 40,
-        "nationality": "Túnez",
-        "marketValue": 400
+        "overall": 63,
+        "value": 400,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Quentin Beunardeau",
-        "position": "POR",
-        "rating": 67,
+        "position": "GK",
         "age": 31,
-        "nationality": "Francia",
-        "marketValue": 200
+        "overall": 67,
+        "value": 200,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dylan Durivaux",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 20,
-        "nationality": "Francia",
-        "marketValue": 1000000
+        "overall": 65,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bradley Danger",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 27,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 68,
+        "value": 500,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pierre Lemonnier",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 24,
-        "nationality": "Francia",
-        "marketValue": 350
+        "overall": 66,
+        "value": 350,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Josué Escartin",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 22,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 64,
+        "value": 300,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rayane Doucouré",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 24,
-        "nationality": "Guinea",
-        "marketValue": 100
+        "overall": 66,
+        "value": 100,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matthieu Huard",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 27,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 68,
+        "value": 500,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sékou Guindo",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 22,
-        "nationality": "Malí",
-        "marketValue": 0
+        "overall": 64,
+        "value": 0,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Giovanni Haag",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 25,
-        "nationality": "Francia",
-        "marketValue": 1200000
+        "overall": 69,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Islamdine Halifa",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 19,
-        "nationality": "Francia",
-        "marketValue": 700
+        "overall": 64,
+        "value": 700,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cheick Konaté",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 20,
-        "nationality": "Costa de Marfil",
-        "marketValue": 0
+        "overall": 64,
+        "value": 0,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ryad Hachem",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 27,
-        "nationality": "Francia",
-        "marketValue": 800
+        "overall": 68,
+        "value": 800,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vincent Kany",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 23,
-        "nationality": "Francia",
-        "marketValue": 50
+        "overall": 66,
+        "value": 50,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dembo Sylla",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 22,
-        "nationality": "Guinea",
-        "marketValue": 1000000
+        "overall": 67,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kemo Cissé",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 29,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 69,
+        "value": 500,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Saîf-Eddine Khaoui",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 30,
-        "nationality": "Túnez",
-        "marketValue": 700
+        "overall": 70,
+        "value": 700,
+        "salary": 20000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Guillaume Trani",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 25,
-        "nationality": "Francia",
-        "marketValue": 250
+        "overall": 67,
+        "value": 250,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kévin Cabral",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 26,
-        "nationality": "Francia",
-        "marketValue": 1000000
+        "overall": 67,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Damien Durand",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 30,
-        "nationality": "Francia",
-        "marketValue": 600
+        "overall": 69,
+        "value": 600,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pape Meïssa Ba",
-        "position": "DC",
-        "rating": 71,
+        "position": "ST",
         "age": 28,
-        "nationality": "Senegal",
-        "marketValue": 1000000
+        "overall": 71,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jovany Ikanga",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 23,
-        "nationality": "Francia",
-        "marketValue": 800
+        "overall": 64,
+        "value": 800,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hacène Benali",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 29,
-        "nationality": "Argelia",
-        "marketValue": 300
+        "overall": 67,
+        "value": 300,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Abdelsamad Hachem",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 21,
-        "nationality": "Francia",
-        "marketValue": 150
+        "overall": 62,
+        "value": 150,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -1899,219 +2589,300 @@
     "players": [
       {
         "name": "Lisandru Olmeta",
-        "position": "POR",
-        "rating": 62,
+        "position": "GK",
         "age": 20,
-        "nationality": "Francia",
-        "marketValue": 200
+        "overall": 62,
+        "value": 200,
+        "salary": 12000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Johny Placide",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 30,
-        "nationality": "Haití",
-        "marketValue": 150
+        "overall": 68,
+        "value": 150,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Julien Fabri",
-        "position": "POR",
-        "rating": 63,
+        "position": "GK",
         "age": 23,
-        "nationality": "Francia",
-        "marketValue": 100
+        "overall": 63,
+        "value": 100,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sacha Contena",
-        "position": "POR",
-        "rating": 63,
+        "position": "GK",
         "age": 16,
-        "nationality": "Francia",
-        "marketValue": 0
+        "overall": 63,
+        "value": 0,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Juan Guevara",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 24,
-        "nationality": "Colombia",
-        "marketValue": 700
+        "overall": 66,
+        "value": 700,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Anthony Roncaglia",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 25,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 66,
+        "value": 500,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dumè Guidi",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 29,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 68,
+        "value": 400,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gustave Akueson",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 28,
-        "nationality": "Togo",
-        "marketValue": 400
+        "overall": 68,
+        "value": 400,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Noah Zilliox",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 22,
-        "nationality": "Francia",
-        "marketValue": 150
+        "overall": 64,
+        "value": 150,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "David Djédjé",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 34,
-        "nationality": "Costa de Marfil",
-        "marketValue": 100
+        "overall": 63,
+        "value": 100,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Donovan Basset",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 22,
-        "nationality": "Francia",
-        "marketValue": 50
+        "overall": 64,
+        "value": 50,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Zakaria Ariss",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 21,
-        "nationality": "Marruecos",
-        "marketValue": 1800000
+        "overall": 65,
+        "value": 1800000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Florian Bohnert",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 15,
-        "nationality": "Luxemburgo",
-        "marketValue": 400
+        "overall": 64,
+        "value": 400,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tom Meynadier",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 24,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 66,
+        "value": 400,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Tom Ducrocq",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 26,
-        "nationality": "Francia",
-        "marketValue": 1000000
+        "overall": 69,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jocelyn Janneh",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 23,
-        "nationality": "Guinea",
-        "marketValue": 1000000
+        "overall": 67,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Christophe Vincent",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 33,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 63,
+        "value": 300,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Joachim Eickmayer",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 17,
-        "nationality": "Francia",
-        "marketValue": 250
+        "overall": 64,
+        "value": 250,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matteo Petrignani",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 33,
-        "nationality": "Francia",
-        "marketValue": 150
+        "overall": 62,
+        "value": 150,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexandre Zaouai",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 18,
-        "nationality": "Costa de Marfil",
-        "marketValue": 250
+        "overall": 63,
+        "value": 250,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Amine Boutrah",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 25,
-        "nationality": "Francia",
-        "marketValue": 1500000
+        "overall": 67,
+        "value": 1500000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jérémy Sebas",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 22,
-        "nationality": "Martinica",
-        "marketValue": 600
+        "overall": 66,
+        "value": 600,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Issiaka Karamoko",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 24,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 63,
+        "value": 300,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Félix Tomi",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 25,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 68,
+        "value": 400,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ayman Aiki",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 25,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 65,
+        "value": 300,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Maxime Blé",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 23,
-        "nationality": "Francia",
-        "marketValue": 200
+        "overall": 63,
+        "value": 200,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nicolas Parravicini",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 19,
-        "nationality": "Italia",
-        "marketValue": 200
+        "overall": 65,
+        "value": 200,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -2121,195 +2892,267 @@
     "players": [
       {
         "name": "Mamadou Diop",
-        "position": "POR",
-        "rating": 67,
+        "position": "GK",
         "age": 26,
-        "nationality": "Mauritania",
-        "marketValue": 1200000
+        "overall": 67,
+        "value": 1200000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bobby Allain",
-        "position": "POR",
-        "rating": 62,
+        "position": "GK",
         "age": 16,
-        "nationality": "Francia",
-        "marketValue": 100
+        "overall": 62,
+        "value": 100,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Maxime Pattier",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 29,
-        "nationality": "Francia",
-        "marketValue": 75
+        "overall": 68,
+        "value": 75,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Clément Vidal",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 25,
-        "nationality": "Francia",
-        "marketValue": 900
+        "overall": 66,
+        "value": 900,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Stone Mambo",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 26,
-        "nationality": "Francia",
-        "marketValue": 700
+        "overall": 68,
+        "value": 700,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Loris Mouyokolo",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 24,
-        "nationality": "Francia",
-        "marketValue": 600
+        "overall": 66,
+        "value": 600,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Allan Tchaptchet",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 21,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 64,
+        "value": 500,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gaëtan Paquiez",
-        "position": "DFC",
-        "rating": 69,
+        "position": "CB",
         "age": 29,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 69,
+        "value": 400,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Efe Sarıkaya",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 33,
-        "nationality": "Turquía",
-        "marketValue": 250
+        "overall": 62,
+        "value": 250,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matthéo Xantippe",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 27,
-        "nationality": "Francia",
-        "marketValue": 700
+        "overall": 68,
+        "value": 700,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mathieu Mion",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 26,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 67,
+        "value": 300,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Shaquil Delos",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 17,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 64,
+        "value": 500,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ange Loïc N'Gatta",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 22,
-        "nationality": "Costa de Marfil",
-        "marketValue": 75
+        "overall": 64,
+        "value": 75,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Samba Diba",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 30,
-        "nationality": "Senegal",
-        "marketValue": 500
+        "overall": 68,
+        "value": 500,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jessy Benet",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 30,
-        "nationality": "Francia",
-        "marketValue": 800
+        "overall": 68,
+        "value": 800,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lucas Bernadou",
-        "position": "MC",
-        "rating": 70,
+        "position": "CM",
         "age": 25,
-        "nationality": "Francia",
-        "marketValue": 450
+        "overall": 70,
+        "value": 450,
+        "salary": 20000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Baptiste Mouazan",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 15,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 64,
+        "value": 400,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nesta Zahui",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 19,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 63,
+        "value": 500,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mamady Bangré",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 24,
-        "nationality": "Burkina Faso",
-        "marketValue": 400
+        "overall": 63,
+        "value": 400,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Arthur Lallias",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 22,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 66,
+        "value": 300,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yadaly Diaby",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 25,
-        "nationality": "Guinea",
-        "marketValue": 700
+        "overall": 68,
+        "value": 700,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Moussa Djitté",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 26,
-        "nationality": "Senegal",
-        "marketValue": 600
+        "overall": 69,
+        "value": 600,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Evans Maurin",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 20,
-        "nationality": "Francia",
-        "marketValue": 150
+        "overall": 65,
+        "value": 150,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mohamed Bechikh",
-        "position": "DC",
-        "rating": 60,
+        "position": "ST",
         "age": 37,
-        "nationality": "Francia",
-        "marketValue": 100
+        "overall": 60,
+        "value": 100,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -2319,251 +3162,344 @@
     "players": [
       {
         "name": "Enzo Basilio",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 31,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 68,
+        "value": 500,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Martin Sourzac",
-        "position": "POR",
-        "rating": 63,
+        "position": "GK",
         "age": 16,
-        "nationality": "Francia",
-        "marketValue": 150
+        "overall": 63,
+        "value": 150,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kenzo Noël",
-        "position": "POR",
-        "rating": 63,
+        "position": "GK",
         "age": 40,
-        "nationality": "Francia",
-        "marketValue": 150
+        "overall": 63,
+        "value": 150,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Geoffrey Lembet",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 30,
-        "nationality": "República Centroafricana",
-        "marketValue": 75
+        "overall": 68,
+        "value": 75,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nehemiah Fernandez",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 21,
-        "nationality": "Francia",
-        "marketValue": 800
+        "overall": 64,
+        "value": 800,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adrien Julloux",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 29,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 68,
+        "value": 400,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Elydjah Mendy",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 21,
-        "nationality": "Guinea-Bissau",
-        "marketValue": 300
+        "overall": 64,
+        "value": 300,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nicolas Saint-Ruf",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 33,
-        "nationality": "Guadalupe",
-        "marketValue": 250
+        "overall": 63,
+        "value": 250,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yannis Nahounou",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 21,
-        "nationality": "Francia",
-        "marketValue": 150
+        "overall": 63,
+        "value": 150,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Faitout Maouassa",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 27,
-        "nationality": "Francia",
-        "marketValue": 1000000
+        "overall": 68,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Justin Bourgault",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 20,
-        "nationality": "Francia",
-        "marketValue": 600
+        "overall": 64,
+        "value": 600,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Martin Expérience",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 19,
-        "nationality": "Haití",
-        "marketValue": 400
+        "overall": 64,
+        "value": 400,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Rayan Bamba",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 23,
-        "nationality": "Francia",
-        "marketValue": 1000000
+        "overall": 67,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Enzo Tacafred",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 44,
-        "nationality": "Francia",
-        "marketValue": 250
+        "overall": 62,
+        "value": 250,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jérémy Gélin",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 25,
-        "nationality": "Francia",
-        "marketValue": 800
+        "overall": 68,
+        "value": 800,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Teddy Bouriaud",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 29,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 68,
+        "value": 500,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Maxence Carlier",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 17,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 64,
+        "value": 400,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Bakari Camara",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 32,
-        "nationality": "Mauritania",
-        "marketValue": 100
+        "overall": 63,
+        "value": 100,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hugo Barbier",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 18,
-        "nationality": "Francia",
-        "marketValue": 75
+        "overall": 64,
+        "value": 75,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Chafik El Hansar",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 45,
-        "nationality": "Francia",
-        "marketValue": 50
+        "overall": 64,
+        "value": 50,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cazim Suljic",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 29,
-        "nationality": "Bosnia y Herzegovina",
-        "marketValue": 250
+        "overall": 67,
+        "value": 250,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Walid Bouabdeli",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 25,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 68,
+        "value": 500,
+        "salary": 18000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Zakaria Fdaouch",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 28,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 68,
+        "value": 500,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mattheo Guendez",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 34,
-        "nationality": "Francia",
-        "marketValue": 150
+        "overall": 62,
+        "value": 150,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Brandon Bokangu",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 20,
-        "nationality": "RD del Congo",
-        "marketValue": 400
+        "overall": 65,
+        "value": 400,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Oumar Sidibé",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 25,
-        "nationality": "Francia",
-        "marketValue": 250
+        "overall": 67,
+        "value": 250,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jimmy Evans",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 22,
-        "nationality": "Nigeria",
-        "marketValue": 200
+        "overall": 63,
+        "value": 200,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Patrick Ouotro",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 29,
-        "nationality": "Costa de Marfil",
-        "marketValue": 400
+        "overall": 68,
+        "value": 400,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adrian Dabasse",
-        "position": "DC",
-        "rating": 61,
+        "position": "ST",
         "age": 32,
-        "nationality": "Francia",
-        "marketValue": 200
+        "overall": 61,
+        "value": 200,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Pape Sissoko",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 20,
-        "nationality": "Malí",
-        "marketValue": 100
+        "overall": 65,
+        "value": 100,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Zakaria Ztouti",
-        "position": "DC",
-        "rating": 68,
+        "position": "ST",
         "age": 26,
-        "nationality": "Francia",
-        "marketValue": 75
+        "overall": 68,
+        "value": 75,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -2573,211 +3509,289 @@
     "players": [
       {
         "name": "Théo Guivarch",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 30,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 68,
+        "value": 500,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Massamba N'Diaye",
-        "position": "POR",
-        "rating": 62,
+        "position": "GK",
         "age": 24,
-        "nationality": "Senegal",
-        "marketValue": 250
+        "overall": 62,
+        "value": 250,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Maximiliano Caufriez",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 28,
-        "nationality": "Bélgica",
-        "marketValue": 900
+        "overall": 68,
+        "value": 900,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yoann Salmier",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 21,
-        "nationality": "Guayana Francesa",
-        "marketValue": 700
+        "overall": 64,
+        "value": 700,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ivan M'Bahia",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 28,
-        "nationality": "Costa de Marfil",
-        "marketValue": 400
+        "overall": 68,
+        "value": 400,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matys Donavin",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 45,
-        "nationality": "Francia",
-        "marketValue": 50
+        "overall": 62,
+        "value": 50,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vital Nsimba",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 32,
-        "nationality": "RD del Congo",
-        "marketValue": 400
+        "overall": 68,
+        "value": 400,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kenji-Van Boto",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 29,
-        "nationality": "Madagascar",
-        "marketValue": 300
+        "overall": 68,
+        "value": 300,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mathys Tourraine",
-        "position": "DFC",
-        "rating": 62,
+        "position": "CB",
         "age": 39,
-        "nationality": "Marruecos",
-        "marketValue": 800
+        "overall": 62,
+        "value": 800,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ibrahim Coulibaly",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 20,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 64,
+        "value": 400,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Johan Gastien",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 25,
-        "nationality": "Francia",
-        "marketValue": 200
+        "overall": 68,
+        "value": 200,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Julien Astic",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 20,
-        "nationality": "Francia",
-        "marketValue": 150
+        "overall": 63,
+        "value": 150,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Allan Ackra",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 44,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 62,
+        "value": 400,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Abdellah Baallal",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 21,
-        "nationality": "Marruecos",
-        "marketValue": 250
+        "overall": 64,
+        "value": 250,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Henri Saivet",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 35,
-        "nationality": "Senegal",
-        "marketValue": 250
+        "overall": 63,
+        "value": 250,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yuliwes Bellache",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 23,
-        "nationality": "Argelia",
-        "marketValue": 100
+        "overall": 65,
+        "value": 100,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Abdoul Kader Bamba",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 32,
-        "nationality": "Francia",
-        "marketValue": 1000000
+        "overall": 64,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Maïdine Douane",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 23,
-        "nationality": "Argelia",
-        "marketValue": 600
+        "overall": 66,
+        "value": 600,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ilhan Fakili",
-        "position": "DC",
-        "rating": 69,
+        "position": "ST",
         "age": 29,
-        "nationality": "Francia",
-        "marketValue": 600
+        "overall": 69,
+        "value": 600,
+        "salary": 19000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Axel Camblan",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 22,
-        "nationality": "Francia",
-        "marketValue": 600
+        "overall": 64,
+        "value": 600,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ousmane Diop",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 17,
-        "nationality": "Senegal",
-        "marketValue": 300
+        "overall": 64,
+        "value": 300,
+        "salary": 14000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mohamed Guindo",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 19,
-        "nationality": "Malí",
-        "marketValue": 400
+        "overall": 65,
+        "value": 400,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adrien Hunou",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 23,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 65,
+        "value": 300,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Loïc Socka Bongué",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 27,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 66,
+        "value": 300,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Famara Diédhiou",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 18,
-        "nationality": "Senegal",
-        "marketValue": 250
+        "overall": 67,
+        "value": 250,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Amine Saïd",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 22,
-        "nationality": "Argelia",
-        "marketValue": 100
+        "overall": 65,
+        "value": 100,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -2787,219 +3801,300 @@
     "players": [
       {
         "name": "Quentin Braat",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 28,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 68,
+        "value": 500,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lucas Margueron",
-        "position": "POR",
-        "rating": 62,
+        "position": "GK",
         "age": 16,
-        "nationality": "Francia",
-        "marketValue": 200
+        "overall": 62,
+        "value": 200,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Enzo Crombez",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 30,
-        "nationality": "Francia",
-        "marketValue": 0
+        "overall": 68,
+        "value": 0,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Raphaël Lipinski",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 23,
-        "nationality": "Francia",
-        "marketValue": 800
+        "overall": 66,
+        "value": 800,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mathis Magnin",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 24,
-        "nationality": "Suiza",
-        "marketValue": 800
+        "overall": 66,
+        "value": 800,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Clément Jolibois",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 28,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 68,
+        "value": 500,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Loni Laurent",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 24,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 66,
+        "value": 300,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Aurélien Pelon",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 17,
-        "nationality": "Francia",
-        "marketValue": 50
+        "overall": 64,
+        "value": 50,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dylan Vangi",
-        "position": "DFC",
-        "rating": 64,
+        "position": "CB",
         "age": 21,
-        "nationality": "Francia",
-        "marketValue": 50
+        "overall": 64,
+        "value": 50,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jordan Mendes",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 21,
-        "nationality": "Francia",
-        "marketValue": 800
+        "overall": 64,
+        "value": 800,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Samy Benchamma",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 26,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 68,
+        "value": 400,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Wilitty Younoussa",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 24,
-        "nationality": "Camerún",
-        "marketValue": 800
+        "overall": 66,
+        "value": 800,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Octave Joly",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 22,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 66,
+        "value": 500,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexis Trouillet",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 27,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 68,
+        "value": 500,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mohamed Achi",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 24,
-        "nationality": "Francia",
-        "marketValue": 150
+        "overall": 66,
+        "value": 150,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Morgan Corredor",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 21,
-        "nationality": "Francia",
-        "marketValue": 50
+        "overall": 64,
+        "value": 50,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yanis Dahalani",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 34,
-        "nationality": "Francia",
-        "marketValue": 0
+        "overall": 63,
+        "value": 0,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nolan Galves",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 25,
-        "nationality": "Francia",
-        "marketValue": 600
+        "overall": 69,
+        "value": 600,
+        "salary": 19000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Evans Jean-Lambert",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 15,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 66,
+        "value": 500,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ryan Ponti",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 20,
-        "nationality": "Madagascar",
-        "marketValue": 250
+        "overall": 63,
+        "value": 250,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mathis Saka",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 28,
-        "nationality": "Francia",
-        "marketValue": 150
+        "overall": 67,
+        "value": 150,
+        "salary": 17000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Corentin Issanchou",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 20,
-        "nationality": "Francia",
-        "marketValue": 50
+        "overall": 64,
+        "value": 50,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kenny Nagera",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 23,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 64,
+        "value": 400,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Taïryk Arconte",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 22,
-        "nationality": "Guadalupe",
-        "marketValue": 700
+        "overall": 66,
+        "value": 700,
+        "salary": 16000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ibrahima Baldé",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 18,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 66,
+        "value": 500,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mehdi Baaloudj",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 24,
-        "nationality": "Argelia",
-        "marketValue": 300
+        "overall": 65,
+        "value": 300,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hermann Tebily",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 19,
-        "nationality": "Francia",
-        "marketValue": 150
+        "overall": 65,
+        "value": 150,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -3009,187 +4104,256 @@
     "players": [
       {
         "name": "Mamadou Samassa",
-        "position": "POR",
-        "rating": 68,
+        "position": "GK",
         "age": 30,
-        "nationality": "Malí",
-        "marketValue": 200
+        "overall": 68,
+        "value": 200,
+        "salary": 18000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Maxime Hautbois",
-        "position": "POR",
-        "rating": 63,
+        "position": "GK",
         "age": 35,
-        "nationality": "Francia",
-        "marketValue": 100
+        "overall": 63,
+        "value": 100,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "William Bianda",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 25,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 66,
+        "value": 300,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Peter Ouaneh",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 27,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 68,
+        "value": 300,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mattéo Commaret",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 24,
-        "nationality": "Francia",
-        "marketValue": 250
+        "overall": 66,
+        "value": 250,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Moïse Adilehou",
-        "position": "DFC",
-        "rating": 68,
+        "position": "CB",
         "age": 30,
-        "nationality": "Benín",
-        "marketValue": 150
+        "overall": 68,
+        "value": 150,
+        "salary": 18000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Yohan Tavares",
-        "position": "DFC",
-        "rating": 66,
+        "position": "CB",
         "age": 23,
-        "nationality": "Portugal",
-        "marketValue": 100
+        "overall": 66,
+        "value": 100,
+        "salary": 16000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ylies Aradj",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 21,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 63,
+        "value": 300,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Layousse Samb",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 35,
-        "nationality": "Senegal",
-        "marketValue": 300
+        "overall": 63,
+        "value": 300,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Thibaut Vargas",
-        "position": "DFC",
-        "rating": 67,
+        "position": "CB",
         "age": 25,
-        "nationality": "Francia",
-        "marketValue": 1000000
+        "overall": 67,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sam Sanna",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 26,
-        "nationality": "Francia",
-        "marketValue": 900
+        "overall": 68,
+        "value": 900,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cyril Mandouki",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 34,
-        "nationality": "Martinica",
-        "marketValue": 200
+        "overall": 63,
+        "value": 200,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Enzo Montet",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 25,
-        "nationality": "Francia",
-        "marketValue": 150
+        "overall": 67,
+        "value": 150,
+        "salary": 17000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Titouan Thomas",
-        "position": "MC",
-        "rating": 66,
+        "position": "CM",
         "age": 24,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 66,
+        "value": 500,
+        "salary": 16000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Julien Maggiotti",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 28,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 68,
+        "value": 400,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "William Benard",
-        "position": "MC",
-        "rating": 68,
+        "position": "CM",
         "age": 26,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 68,
+        "value": 300,
+        "salary": 18000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Malik Sellouki",
-        "position": "MC",
-        "rating": 69,
+        "position": "CM",
         "age": 25,
-        "nationality": "Francia",
-        "marketValue": 1000000
+        "overall": 69,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mamadou Camara",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 24,
-        "nationality": "Malí",
-        "marketValue": 600
+        "overall": 64,
+        "value": 600,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ethan Clavreul",
-        "position": "DC",
-        "rating": 64,
+        "position": "ST",
         "age": 20,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 64,
+        "value": 400,
+        "salary": 14000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dylan Mbayo",
-        "position": "DC",
-        "rating": 66,
+        "position": "ST",
         "age": 15,
-        "nationality": "Bélgica",
-        "marketValue": 1000000
+        "overall": 66,
+        "value": 1000000,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Eros Maddy",
-        "position": "DC",
-        "rating": 61,
+        "position": "ST",
         "age": 34,
-        "nationality": "Países Bajos",
-        "marketValue": 150
+        "overall": 61,
+        "value": 150,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Trévis Dago",
-        "position": "DC",
-        "rating": 67,
+        "position": "ST",
         "age": 21,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 67,
+        "value": 300,
+        "salary": 17000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Malik Tchokounté",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 18,
-        "nationality": "Francia",
-        "marketValue": 125
+        "overall": 65,
+        "value": 125,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -3199,211 +4363,289 @@
     "players": [
       {
         "name": "Nicolas Kocik",
-        "position": "POR",
-        "rating": 63,
+        "position": "GK",
         "age": 27,
-        "nationality": "Francia",
-        "marketValue": 600
+        "overall": 63,
+        "value": 600,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ewan Hatfout",
-        "position": "POR",
-        "rating": 62,
+        "position": "GK",
         "age": 25,
-        "nationality": "Francia",
-        "marketValue": 50
+        "overall": 62,
+        "value": 50,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Augustin Delbecque",
-        "position": "POR",
-        "rating": 60,
+        "position": "GK",
         "age": 23,
-        "nationality": "Francia",
-        "marketValue": 0
+        "overall": 60,
+        "value": 0,
+        "salary": 10000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Théo Eyoum",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 21,
-        "nationality": "Francia",
-        "marketValue": 700
+        "overall": 61,
+        "value": 700,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Harold Voyer",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 28,
-        "nationality": "Martinica",
-        "marketValue": 500
+        "overall": 65,
+        "value": 500,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Isaac Cossier",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 19,
-        "nationality": "Francia",
-        "marketValue": 200
+        "overall": 61,
+        "value": 200,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Samuel Yohou",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 17,
-        "nationality": "Francia",
-        "marketValue": 200
+        "overall": 61,
+        "value": 200,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mathis Hamdi",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 26,
-        "nationality": "Francia",
-        "marketValue": 75
+        "overall": 65,
+        "value": 75,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Anthony Ribelin",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 29,
-        "nationality": "Francia",
-        "marketValue": 200
+        "overall": 65,
+        "value": 200,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Noa Boissé",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 32,
-        "nationality": "Francia",
-        "marketValue": 50
+        "overall": 65,
+        "value": 50,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lucas Bretelle",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 29,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 65,
+        "value": 500,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexandre Lauray",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 28,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 65,
+        "value": 400,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Malang Gomes",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 20,
-        "nationality": "Francia",
-        "marketValue": 100
+        "overall": 61,
+        "value": 100,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Milan Robin",
-        "position": "MC",
-        "rating": 63,
+        "position": "CM",
         "age": 24,
-        "nationality": "Francia",
-        "marketValue": 600
+        "overall": 63,
+        "value": 600,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jean Vercruysse",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 25,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 65,
+        "value": 500,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Martin Rossignol",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 27,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 65,
+        "value": 400,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Edwin Quarshie",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 30,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 65,
+        "value": 300,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Izhak Hammoudi",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 31,
-        "nationality": "Francia",
-        "marketValue": 100
+        "overall": 64,
+        "value": 100,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lucas Buadés",
-        "position": "MC",
-        "rating": 62,
+        "position": "CM",
         "age": 18,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 62,
+        "value": 500,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Lucas Calodat",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 22,
-        "nationality": "Francia",
-        "marketValue": 800
+        "overall": 64,
+        "value": 800,
+        "salary": 14000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Erwan Colas",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 28,
-        "nationality": "Francia",
-        "marketValue": 200
+        "overall": 62,
+        "value": 200,
+        "salary": 12000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Taylor Luvambo",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 23,
-        "nationality": "Francia",
-        "marketValue": 150
+        "overall": 62,
+        "value": 150,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "William Harhouz",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 20,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 62,
+        "value": 400,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Dame Gueye",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 25,
-        "nationality": "Senegal",
-        "marketValue": 350
+        "overall": 65,
+        "value": 350,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Antoine Rabillard",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 30,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 63,
+        "value": 300,
+        "salary": 13000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Baptiste Guillaume",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 19,
-        "nationality": "Bélgica",
-        "marketValue": 300
+        "overall": 62,
+        "value": 300,
+        "salary": 12000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -3413,227 +4655,311 @@
     "players": [
       {
         "name": "Florian Escales",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 29,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 65,
+        "value": 500,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Thomas Callens",
-        "position": "POR",
-        "rating": 59,
+        "position": "GK",
         "age": 16,
-        "nationality": "Francia",
-        "marketValue": 150
+        "overall": 59,
+        "value": 150,
+        "salary": 9000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Matéo Gonzalez",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 30,
-        "nationality": "Francia",
-        "marketValue": 0
+        "overall": 65,
+        "value": 0,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Aymerick Nedelec",
-        "position": "POR",
-        "rating": 60,
+        "position": "GK",
         "age": 40,
-        "nationality": "Francia",
-        "marketValue": 0
+        "overall": 60,
+        "value": 0,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Axel Drouhin",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 18,
-        "nationality": "Francia",
-        "marketValue": 800
+        "overall": 61,
+        "value": 800,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Julien Kouadio",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 27,
-        "nationality": "Francia",
-        "marketValue": 700
+        "overall": 65,
+        "value": 700,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Thibault Delphis",
-        "position": "DFC",
-        "rating": 59,
+        "position": "CB",
         "age": 41,
-        "nationality": "Francia",
-        "marketValue": 700
+        "overall": 59,
+        "value": 700,
+        "salary": 9000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "François Lajugie",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 29,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 65,
+        "value": 400,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Mattéo Veillon",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 23,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 63,
+        "value": 300,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Esteban Riou",
-        "position": "DFC",
-        "rating": 60,
+        "position": "CB",
         "age": 34,
-        "nationality": "Francia",
-        "marketValue": 0
+        "overall": 60,
+        "value": 0,
+        "salary": 10000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Cédric Makutungu",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 26,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 65,
+        "value": 300,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Fabrice N'Sakala",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 21,
-        "nationality": "RD del Congo",
-        "marketValue": 100
+        "overall": 61,
+        "value": 100,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hamza Koutoune",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 19,
-        "nationality": "Marruecos",
-        "marketValue": 200
+        "overall": 61,
+        "value": 200,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ahmed Kashi",
-        "position": "MC",
-        "rating": 59,
+        "position": "CM",
         "age": 37,
-        "nationality": "Argelia",
-        "marketValue": 150
+        "overall": 59,
+        "value": 150,
+        "salary": 9000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vincent Pajot",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 17,
-        "nationality": "Francia",
-        "marketValue": 150
+        "overall": 61,
+        "value": 150,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Paul Venot",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 25,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 65,
+        "value": 300,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Alexis Casadei",
-        "position": "MC",
-        "rating": 64,
+        "position": "CM",
         "age": 29,
-        "nationality": "Francia",
-        "marketValue": 200
+        "overall": 64,
+        "value": 200,
+        "salary": 14000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Wael Debbiche",
-        "position": "MC",
-        "rating": 59,
+        "position": "CM",
         "age": 42,
-        "nationality": "Túnez",
-        "marketValue": 0
+        "overall": 59,
+        "value": 0,
+        "salary": 9000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Triston Rowe",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 19,
-        "nationality": "Inglaterra",
-        "marketValue": 500
+        "overall": 61,
+        "value": 500,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Clément Billemaz",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 22,
-        "nationality": "Francia",
-        "marketValue": 600
+        "overall": 65,
+        "value": 600,
+        "salary": 15000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Abdel Hbouch",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 27,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 65,
+        "value": 500,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Josué Tiendrébéogo",
-        "position": "MC",
-        "rating": 60,
+        "position": "CM",
         "age": 20,
-        "nationality": "Burkina Faso",
-        "marketValue": 300
+        "overall": 60,
+        "value": 300,
+        "salary": 10000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Valentin Jacob",
-        "position": "MC",
-        "rating": 67,
+        "position": "CM",
         "age": 31,
-        "nationality": "Francia",
-        "marketValue": 200
+        "overall": 67,
+        "value": 200,
+        "salary": 17000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Kilyan Jusseron-Veniere",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 19,
-        "nationality": "Francia",
-        "marketValue": 50
+        "overall": 61,
+        "value": 50,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Antoine Larose",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 28,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 65,
+        "value": 300,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ben Hamed Touré",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 22,
-        "nationality": "Costa de Marfil",
-        "marketValue": 500
+        "overall": 63,
+        "value": 500,
+        "salary": 13000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Thibault Rambaud",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 28,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 63,
+        "value": 300,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Quentin Paris",
-        "position": "DC",
-        "rating": 58,
+        "position": "ST",
         "age": 33,
-        "nationality": "Francia",
-        "marketValue": 250
+        "overall": 58,
+        "value": 250,
+        "salary": 8000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   },
@@ -3643,219 +4969,300 @@
     "players": [
       {
         "name": "Azamat Uriev",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 30,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 65,
+        "value": 300,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Blondy Nna Noukeu",
-        "position": "POR",
-        "rating": 60,
+        "position": "GK",
         "age": 24,
-        "nationality": "Camerún",
-        "marketValue": 150
+        "overall": 60,
+        "value": 150,
+        "salary": 10000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Ibrahim Koné",
-        "position": "POR",
-        "rating": 59,
+        "position": "GK",
         "age": 16,
-        "nationality": "Guinea",
-        "marketValue": 50
+        "overall": 59,
+        "value": 50,
+        "salary": 9000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Xavier Lenogue",
-        "position": "POR",
-        "rating": 65,
+        "position": "GK",
         "age": 29,
-        "nationality": "Martinica",
-        "marketValue": 0
+        "overall": 65,
+        "value": 0,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nathan Zohoré",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 25,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 63,
+        "value": 400,
+        "salary": 13000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Adrien Pinot",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 15,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 61,
+        "value": 400,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Siad Gourville",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 25,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 63,
+        "value": 300,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jonathan Kapenga",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 22,
-        "nationality": "Francia",
-        "marketValue": 0
+        "overall": 61,
+        "value": 0,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Vincent Burlet",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 20,
-        "nationality": "Bélgica",
-        "marketValue": 600
+        "overall": 61,
+        "value": 600,
+        "salary": 11000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Julien Boyer",
-        "position": "DFC",
-        "rating": 65,
+        "position": "CB",
         "age": 27,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 65,
+        "value": 400,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Louis Siliadin",
-        "position": "DFC",
-        "rating": 63,
+        "position": "CB",
         "age": 24,
-        "nationality": "Francia",
-        "marketValue": 100
+        "overall": 63,
+        "value": 100,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sonny Duflos",
-        "position": "DFC",
-        "rating": 60,
+        "position": "CB",
         "age": 22,
-        "nationality": "Francia",
-        "marketValue": 150
+        "overall": 60,
+        "value": 150,
+        "salary": 10000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Emmanuel Kouassi",
-        "position": "DFC",
-        "rating": 59,
+        "position": "CB",
         "age": 33,
-        "nationality": "Costa de Marfil",
-        "marketValue": 150
+        "overall": 59,
+        "value": 150,
+        "salary": 9000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Demba Thiam",
-        "position": "DFC",
-        "rating": 61,
+        "position": "CB",
         "age": 18,
-        "nationality": "Francia",
-        "marketValue": 100
+        "overall": 61,
+        "value": 100,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Nolan Binet",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 19,
-        "nationality": "Francia",
-        "marketValue": 700
+        "overall": 61,
+        "value": 700,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Jonas Martin",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 35,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 61,
+        "value": 300,
+        "salary": 11000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Joffrey Bultel",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 25,
-        "nationality": "Francia",
-        "marketValue": 250
+        "overall": 65,
+        "value": 250,
+        "salary": 15000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Hervé Touré",
-        "position": "MC",
-        "rating": 60,
+        "position": "CM",
         "age": 20,
-        "nationality": "Costa de Marfil",
-        "marketValue": 150
+        "overall": 60,
+        "value": 150,
+        "salary": 10000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Aurélien Platret",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 21,
-        "nationality": "Francia",
-        "marketValue": 500
+        "overall": 61,
+        "value": 500,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Sohan Paillard",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 28,
-        "nationality": "Francia",
-        "marketValue": 0
+        "overall": 65,
+        "value": 0,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Amine El Farissi",
-        "position": "MC",
-        "rating": 65,
+        "position": "CM",
         "age": 27,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 65,
+        "value": 300,
+        "salary": 15000,
+        "contract": 1,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Luka Boiteau",
-        "position": "MC",
-        "rating": 61,
+        "position": "CM",
         "age": 20,
-        "nationality": "Canadá",
-        "marketValue": 150
+        "overall": 61,
+        "value": 150,
+        "salary": 11000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Noah Fatar",
-        "position": "DC",
-        "rating": 61,
+        "position": "ST",
         "age": 23,
-        "nationality": "Francia",
-        "marketValue": 400
+        "overall": 61,
+        "value": 400,
+        "salary": 11000,
+        "contract": 4,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Souleymane Keita",
-        "position": "DC",
-        "rating": 62,
+        "position": "ST",
         "age": 20,
-        "nationality": "Francia",
-        "marketValue": 100
+        "overall": 62,
+        "value": 100,
+        "salary": 12000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Corentin Fatou",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 17,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 63,
+        "value": 300,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Gabin Capuano",
-        "position": "DC",
-        "rating": 65,
+        "position": "ST",
         "age": 26,
-        "nationality": "Francia",
-        "marketValue": 300
+        "overall": 65,
+        "value": 300,
+        "salary": 15000,
+        "contract": 3,
+        "morale": 75,
+        "fitness": 100
       },
       {
         "name": "Martin Lecolier",
-        "position": "DC",
-        "rating": 63,
+        "position": "ST",
         "age": 22,
-        "nationality": "Francia",
-        "marketValue": 100
+        "overall": 63,
+        "value": 100,
+        "salary": 13000,
+        "contract": 2,
+        "morale": 75,
+        "fitness": 100
       }
     ]
   }
