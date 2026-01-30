@@ -349,15 +349,32 @@
   transition: all 0.2s;
   min-width: 0;
   overflow: hidden;
+  -webkit-tap-highlight-color: rgba(10, 132, 255, 0.2);
   
-  &:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.2);
+  @media (hover: hover) {
+    &:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+  
+  &:active {
+    background: rgba(10, 132, 255, 0.08);
+    border-color: rgba(10, 132, 255, 0.4);
   }
   
   &.selected {
-    border-color: #0a84ff;
-    background: rgba(10, 132, 255, 0.1);
+    border-color: #0a84ff !important;
+    background: rgba(10, 132, 255, 0.12) !important;
+    box-shadow: 0 0 16px rgba(10, 132, 255, 0.3), inset 0 0 0 1px rgba(10, 132, 255, 0.15);
+    
+    .card-header svg {
+      color: #4da6ff;
+    }
+    
+    .card-header h3 {
+      color: #4da6ff;
+    }
   }
   
   .card-header {
@@ -571,6 +588,7 @@
 
   .preseason-card {
     padding: 14px;
+    touch-action: manipulation;
   }
 
   .preseason-actions {
