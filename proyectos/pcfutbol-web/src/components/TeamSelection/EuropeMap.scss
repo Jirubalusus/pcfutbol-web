@@ -173,16 +173,20 @@
     
     @media (max-width: 768px) {
       flex-direction: column;
-      align-items: stretch;
-      gap: 1rem;
+      align-items: center;
+      gap: 0.75rem;
+      overflow-y: auto;
+      max-height: calc(100vh - 200px);
+      padding-bottom: 1rem;
     }
   }
   
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: stretch;
-    gap: 1rem;
+    gap: 0.5rem;
     padding: 0.5rem;
+    overflow: visible;
   }
   
   &__map {
@@ -190,6 +194,27 @@
     
     @media (max-width: 768px) {
       width: 100%;
+      display: flex;
+      justify-content: center;
+      
+      // Smaller globe on mobile
+      canvas {
+        max-width: 220px !important;
+        max-height: 220px !important;
+      }
+      
+      .globe-wrapper {
+        transform: scale(0.7);
+        transform-origin: top center;
+        margin-bottom: -40px;
+      }
+    }
+    
+    @media (max-width: 400px) {
+      .globe-wrapper {
+        transform: scale(0.6);
+        margin-bottom: -60px;
+      }
     }
   }
   
@@ -202,6 +227,7 @@
       width: 100%;
       max-width: 100%;
       min-width: unset;
+      flex-shrink: 0;
     }
   }
   
@@ -214,7 +240,8 @@
     padding-right: 4px;
     
     @media (max-width: 768px) {
-      max-height: 35vh;
+      max-height: none;
+      overflow-y: visible;
     }
     
     // Scrollbar styling
@@ -243,12 +270,15 @@
     .flag {
       font-size: 2.5rem;
     }
-  }
-  
-  &__leagues {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+    
+    @media (max-width: 768px) {
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+      
+      .flag {
+        font-size: 1.8rem;
+      }
+    }
   }
   
   &__league {
@@ -261,6 +291,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
+    @media (max-width: 768px) {
+      padding: 0.7rem 1rem;
+      border-radius: 8px;
+    }
     
     &:hover {
       background: rgba(61, 90, 128, 0.5);
