@@ -1,7 +1,7 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 
 /**
- * MoneyInput - Input de dinero con formato M/K y botones +/- con aceleración
+ * MoneyInput - Input de dinero con formato M y botones +/- con aceleración suave
  * 
  * Props:
  * - value: valor en unidades (ej: 2500000)
@@ -16,20 +16,14 @@ import React, { useState, useRef, useCallback, useEffect } from 'react';
 export default function MoneyInput({ value, onChange, step = 500000, min = 0, max, disabled, suffix = '', prefix = '€' }) {
   const [holding, setHolding] = useState(null); // 'up' | 'down' | null
   const intervalRef = useRef(null);
-  const speedRef = useRef(1); // Multiplicador de velocidad
   const tickCountRef = useRef(0);
   
+  // Siempre formato M (0.1M, 0.5M, 2.0M, etc.)
   const formatDisplay = (val) => {
-    if (val >= 1000000) {
-      const m = val / 1000000;
-      // Mostrar decimal solo si no es entero
-      return m % 1 === 0 ? `${m}M` : `${m.toFixed(1)}M`;
-    }
-    if (val >= 1000) {
-      const k = val / 1000;
-      return k % 1 === 0 ? `${k}K` : `${k.toFixed(0)}K`;
-    }
-    return `${val}`;
+    const m = val / 1000000;
+    if (m >= 100) return `${Math.round(m)}M`;
+    if (m >= 10) return `${m.toFixed(1)}M`;
+    return `${m.toFixed(1)}M`;
   };
   
   const clamp = useCallback((val) => {
@@ -38,34 +32,11 @@ export default function MoneyInput({ value, onChange, step = 500000, min = 0, ma
     return clamped;
   }, [min, max]);
   
-  const increment = useCallback(() => {
-    tickCountRef.current++;
-    // Aceleración: después de 5 ticks sube x2, después de 15 sube x5, después de 30 sube x10
-    const ticks = tickCountRef.current;
-    let multiplier = 1;
-    if (ticks > 30) multiplier = 10;
-    else if (ticks > 15) multiplier = 5;
-    else if (ticks > 5) multiplier = 2;
-    
-    onChange(prev => clamp((typeof prev === 'function' ? prev : value) + step * multiplier));
-  }, [value, step, clamp, onChange]);
-  
-  const decrement = useCallback(() => {
-    tickCountRef.current++;
-    const ticks = tickCountRef.current;
-    let multiplier = 1;
-    if (ticks > 30) multiplier = 10;
-    else if (ticks > 15) multiplier = 5;
-    else if (ticks > 5) multiplier = 2;
-    
-    onChange(prev => clamp((typeof prev === 'function' ? prev : value) - step * multiplier));
-  }, [value, step, clamp, onChange]);
-  
   const startHold = useCallback((direction) => {
     if (disabled) return;
     tickCountRef.current = 0;
     
-    // Primer click inmediato
+    // Primer click inmediato (1x step)
     if (direction === 'up') {
       onChange(clamp(value + step));
     } else {
@@ -74,24 +45,24 @@ export default function MoneyInput({ value, onChange, step = 500000, min = 0, ma
     
     setHolding(direction);
     
-    // Inicio del hold después de 400ms
+    // Hold: empieza después de 500ms, intervalo 150ms, aceleración suave
     const timeout = setTimeout(() => {
       const interval = setInterval(() => {
         tickCountRef.current++;
         const ticks = tickCountRef.current;
+        // Aceleración suave: x1 hasta 15 ticks (~2.2s), x2 hasta 40 (~6s), x3 después
         let multiplier = 1;
-        if (ticks > 30) multiplier = 10;
-        else if (ticks > 15) multiplier = 5;
-        else if (ticks > 5) multiplier = 2;
+        if (ticks > 40) multiplier = 3;
+        else if (ticks > 15) multiplier = 2;
         
         if (direction === 'up') {
           onChange(v => clamp(v + step * multiplier));
         } else {
           onChange(v => clamp(v - step * multiplier));
         }
-      }, 80); // 80ms entre ticks cuando se mantiene pulsado
+      }, 150); // 150ms entre ticks (antes era 80ms)
       intervalRef.current = interval;
-    }, 400);
+    }, 500);
     
     intervalRef.current = timeout;
   }, [disabled, value, step, clamp, onChange]);

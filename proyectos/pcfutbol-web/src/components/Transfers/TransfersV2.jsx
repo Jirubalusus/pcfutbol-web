@@ -998,11 +998,14 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
   const discountFactor = 1 - (scoutingDiscount / 100);
   const effectiveMarketValue = Math.round(marketValue * discountFactor);
   
+  // Redondear a 0.1M (100K)
+  const roundTo100K = (val) => Math.round(val / 100000) * 100000;
+  
   // Inicializar valores (con descuento de ojeador)
   useEffect(() => {
-    setOfferAmount(Math.round(effectiveMarketValue * 0.95));
-    setSalaryOffer(Math.round(requiredSalary * 1.1));
-    setSigningBonus(isFreeAgent ? Math.round(effectiveMarketValue * 0.15) : Math.round(effectiveMarketValue * 0.1));
+    setOfferAmount(roundTo100K(effectiveMarketValue * 0.95));
+    setSalaryOffer(roundTo100K(Math.max(requiredSalary * 1.1, 100000)));
+    setSigningBonus(roundTo100K(isFreeAgent ? effectiveMarketValue * 0.15 : effectiveMarketValue * 0.1));
   }, [effectiveMarketValue, requiredSalary, isFreeAgent]);
   
   // Calcular probabilidad del club en tiempo real (usa valor con descuento ojeador)

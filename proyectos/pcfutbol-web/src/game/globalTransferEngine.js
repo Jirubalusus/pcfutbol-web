@@ -649,9 +649,10 @@ export function isTransferWindowOpen(week, options = {}) {
  * Formatear precio para mostrar
  */
 export function formatTransferPrice(price) {
-  if (price >= 1_000_000) return `€${(price / 1_000_000).toFixed(1)}M`;
-  if (price >= 1_000) return `€${(price / 1_000).toFixed(0)}K`;
-  return `€${price}`;
+  // Siempre formato M para consistencia
+  const m = price / 1_000_000;
+  if (m >= 100) return `€${Math.round(m)}M`;
+  return `€${m.toFixed(1)}M`;
 }
 
 export default GlobalTransferEngine;
