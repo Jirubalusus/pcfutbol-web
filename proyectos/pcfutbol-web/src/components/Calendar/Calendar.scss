@@ -112,7 +112,19 @@
     background: rgba(255, 255, 255, 0.02);
     border-radius: 12px;
 
-    @media (max-width: 768px) {
+    @media (max-width: 640px) {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      justify-content: flex-start;
+      gap: 4px;
+      padding: 10px;
+      margin-bottom: 16px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      &::-webkit-scrollbar { display: none; }
+    }
+
+    @media (min-width: 641px) and (max-width: 768px) {
       gap: 4px;
       padding: 10px;
       margin-bottom: 16px;
@@ -182,8 +194,8 @@
       transition: all 0.2s;
 
       @media (max-width: 640px) {
-        grid-template-columns: 1fr 56px 1fr 24px;
-        padding: 8px 10px;
+        grid-template-columns: 1fr 50px 1fr 24px;
+        padding: 10px 12px;
       }
 
       &:hover {
@@ -198,39 +210,34 @@
       .team {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 8px;
         min-width: 0;
 
         &.home {
           justify-content: flex-end;
-
-          .team-name {
-            text-align: right;
-          }
+          text-align: right;
         }
 
         &.away {
           justify-content: flex-start;
         }
 
-        &.is-you .team-name {
+        &.is-you .team-name,
+        &.is-you .team-short {
           color: #0a84ff;
           font-weight: 600;
         }
 
-        .team-badge {
-          width: 32px;
-          height: 32px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: rgba(255, 255, 255, 0.06);
-          border-radius: 6px;
-          font-size: 0.6rem;
-          font-weight: 700;
-          color: #aaa;
-          flex-shrink: 0;
+        .team-short {
+          display: none;
+          font-size: 0.85rem;
+          font-weight: 600;
+          color: #ddd;
           letter-spacing: 0.5px;
+
+          @media (max-width: 640px) {
+            display: block;
+          }
         }
 
         .team-name {
@@ -241,7 +248,7 @@
           text-overflow: ellipsis;
           
           @media (max-width: 640px) {
-            font-size: 0.75rem;
+            display: none;
           }
         }
       }

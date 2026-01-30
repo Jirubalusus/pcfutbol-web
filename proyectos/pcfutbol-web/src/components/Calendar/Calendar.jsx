@@ -31,14 +31,18 @@ export default function Calendar() {
     return team?.teamName || teamId;
   };
   
-  // Obtener iniciales del equipo
-  const getTeamInitials = (teamId) => {
+  // Obtener nombre corto del equipo (3 letras)
+  const getTeamShortName = (teamId) => {
+    // Intentar shortName del equipo en leagueTeams
+    const teamData = state.leagueTeams?.find(t => t.id === teamId);
+    if (teamData?.shortName) return teamData.shortName;
+    
     const name = getTeamName(teamId);
-    if (!name || name === teamId) return '??';
-    const words = name.split(' ').filter(w => !['CF', 'FC', 'CD', 'UD', 'RC', 'SD', 'CA', 'Real', 'Atlético', 'Athletic', 'Deportivo'].includes(w));
-    if (words.length === 0) return name.substring(0, 3).toUpperCase();
-    if (words.length === 1) return words[0].substring(0, 3).toUpperCase();
-    return words.slice(0, 2).map(w => w[0]).join('').toUpperCase();
+    if (!name || name === teamId) return '???';
+    // Quitar prefijos comunes
+    const words = name.split(' ').filter(w => !['CF', 'FC', 'CD', 'UD', 'RC', 'SD', 'CA'].includes(w));
+    const main = words[0] || name;
+    return main.substring(0, 3).toUpperCase();
   };
   
   const isPlayerMatch = (fixture) => {
@@ -131,10 +135,10 @@ export default function Calendar() {
                 key={fixture.id || idx} 
                 className={`fixture-card ${playerMatch ? 'is-player' : ''} ${fixture.played ? 'played' : ''}`}
               >
-                {/* Equipo local — nombre a la derecha, badge pegado al centro */}
+                {/* Equipo local */}
                 <div className={`team home ${fixture.homeTeam === state.teamId ? 'is-you' : ''}`}>
                   <span className="team-name">{getTeamName(fixture.homeTeam)}</span>
-                  <div className="team-badge">{getTeamInitials(fixture.homeTeam)}</div>
+                  <span className="team-short">{getTeamShortName(fixture.homeTeam)}</span>
                 </div>
                 
                 {/* Marcador / VS */}
@@ -152,9 +156,9 @@ export default function Calendar() {
                   )}
                 </div>
                 
-                {/* Equipo visitante — badge pegado al centro, nombre a la izquierda */}
+                {/* Equipo visitante */}
                 <div className={`team away ${fixture.awayTeam === state.teamId ? 'is-you' : ''}`}>
-                  <div className="team-badge">{getTeamInitials(fixture.awayTeam)}</div>
+                  <span className="team-short">{getTeamShortName(fixture.awayTeam)}</span>
                   <span className="team-name">{getTeamName(fixture.awayTeam)}</span>
                 </div>
                 
