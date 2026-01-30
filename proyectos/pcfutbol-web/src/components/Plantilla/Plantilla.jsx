@@ -425,6 +425,9 @@ export default function Plantilla() {
                 <span className="contract" style={{ color: contract.color }}>
                   📅 {contract.label}
                 </span>
+                {wantsToRenew(player) && !player.retiring && (
+                  <span className="renew-icon" title="Se puede renovar">✍️</span>
+                )}
               </div>
               
               <div className="player-actions">

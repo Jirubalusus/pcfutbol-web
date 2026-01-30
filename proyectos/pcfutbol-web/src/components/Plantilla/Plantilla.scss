@@ -368,6 +368,10 @@
       }
 
       .player-status {
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+        
         .contract {
           font-size: 0.85rem;
           font-weight: 500;
@@ -380,10 +384,25 @@
             border-radius: 4px;
           }
         }
+        
+        .renew-icon {
+          font-size: 1rem;
+          cursor: pointer;
+          animation: pulse-renew 2s ease-in-out infinite;
+          
+          @media (min-width: 769px) {
+            display: none; // En desktop ya hay botón de renovar
+          }
+        }
 
         @media (max-width: 768px) {
           flex-shrink: 0;
         }
+      }
+      
+      @keyframes pulse-renew {
+        0%, 100% { opacity: 0.7; }
+        50% { opacity: 1; }
       }
 
       .player-actions {
