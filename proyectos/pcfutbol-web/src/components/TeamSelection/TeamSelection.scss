@@ -656,9 +656,10 @@ $pcf-text: #bdc3c7;
   
   @media (max-width: 900px) {
     flex: 1;
-    min-height: 40vh;
+    min-height: auto;
     max-height: none;
     overflow-y: auto;
+    padding-bottom: 80px;
   }
 }
 
@@ -858,12 +859,15 @@ $pcf-text: #bdc3c7;
     box-shadow: 0 4px 12px rgba($pcf-green, 0.4);
     
     @media (max-width: 900px) {
-      position: sticky;
+      position: fixed;
       bottom: 0;
+      left: 0;
+      right: 0;
       margin: 0;
       padding: 1.2rem;
+      padding-bottom: calc(1.2rem + env(safe-area-inset-bottom));
       border-radius: 0;
-      z-index: 10;
+      z-index: 100;
       font-size: 1.1rem;
       min-height: 60px;
       box-shadow: 0 -4px 20px rgba(0,0,0,0.5);
@@ -900,6 +904,16 @@ $pcf-text: #bdc3c7;
   p {
     font-size: 1.1rem;
     color: $pcf-gray;
+  }
+
+  @media (max-width: 900px) {
+    display: none;
+  }
+}
+
+.map-selection__placeholder {
+  @media (max-width: 900px) {
+    display: none;
   }
 }
 

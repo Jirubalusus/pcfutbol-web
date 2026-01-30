@@ -36,7 +36,18 @@ function generateMockStandings() {
     premierLeague: generateMockTeams('premierLeague', 20, 87),
     serieA: generateMockTeams('serieA', 20, 85),
     bundesliga: generateMockTeams('bundesliga', 18, 84),
-    ligue1: generateMockTeams('ligue1', 18, 80)
+    ligue1: generateMockTeams('ligue1', 18, 80),
+    eredivisie: generateMockTeams('eredivisie', 18, 76),
+    primeiraLiga: generateMockTeams('primeiraLiga', 18, 77),
+    belgianPro: generateMockTeams('belgianPro', 16, 72),
+    superLig: generateMockTeams('superLig', 19, 73),
+    scottishPrem: generateMockTeams('scottishPrem', 12, 70),
+    austrianBundesliga: generateMockTeams('austrianBundesliga', 12, 69),
+    greekSuperLeague: generateMockTeams('greekSuperLeague', 14, 68),
+    swissSuperLeague: generateMockTeams('swissSuperLeague', 12, 67),
+    danishSuperliga: generateMockTeams('danishSuperliga', 12, 66),
+    croatianLeague: generateMockTeams('croatianLeague', 10, 64),
+    czechLeague: generateMockTeams('czechLeague', 16, 65)
   };
 }
 
@@ -67,20 +78,17 @@ function runTests() {
   
   const qualified = qualifyTeamsForEurope(standings, allTeamsMap);
 
-  // Expected CL teams: 4+4+4+4+3 = 19
-  const expectedCL = 4 + 4 + 4 + 4 + 3;
-  assert(qualified.championsLeague.length === expectedCL,
-    `Champions League has ${expectedCL} teams (got ${qualified.championsLeague.length})`);
+  // Expected CL teams: 4+4+4+4+3+2+2+1+1+1+1+1+1+1+1+1 = 32
+  assert(qualified.championsLeague.length === 32,
+    `Champions League has 32 teams (got ${qualified.championsLeague.length})`);
 
-  // Expected EL teams: 2+2+2+2+1 = 9
-  const expectedEL = 2 + 2 + 2 + 2 + 1;
-  assert(qualified.europaLeague.length === expectedEL,
-    `Europa League has ${expectedEL} teams (got ${qualified.europaLeague.length})`);
+  // Expected EL teams: 2+2+2+2+1+2+2+3+3+2+2+2+2+2+1+2 = 32
+  assert(qualified.europaLeague.length === 32,
+    `Europa League has 32 teams (got ${qualified.europaLeague.length})`);
 
-  // Expected ECL teams: 1+1+1+1+1 = 5
-  const expectedECL = 1 + 1 + 1 + 1 + 1;
-  assert(qualified.conferenceleague.length === expectedECL,
-    `Conference League has ${expectedECL} teams (got ${qualified.conferenceleague.length})`);
+  // Expected ECL teams: 1+1+1+1+1+3+3+3+3+2+2+2+2+2+2+3 = 32
+  assert(qualified.conferenceleague.length === 32,
+    `Conference League has 32 teams (got ${qualified.conferenceleague.length})`);
 
   // All teams should have teamId and league
   assert(qualified.championsLeague.every(t => t.teamId && t.league),
@@ -89,24 +97,8 @@ function runTests() {
   // Test 2: Swiss Draw (pad teams to 36)
   console.log('\n📋 Test 2: generateSwissDraw');
   
-  // Pad CL teams to 36 for the draw
+  // CL should already have 32 teams, no padding needed
   const clTeams = [...qualified.championsLeague];
-  while (clTeams.length < 36) {
-    clTeams.push({
-      teamId: `extra_cl_${clTeams.length}`,
-      teamName: `Extra CL Team ${clTeams.length + 1}`,
-      shortName: `EX${clTeams.length}`,
-      league: `extra_league_${clTeams.length % 5}`,
-      reputation: 65 + Math.floor(Math.random() * 10),
-      overall: 68,
-      players: Array.from({ length: 18 }, (_, j) => ({
-        name: `ExtraPlayer ${j}`,
-        position: 'CM',
-        overall: 68,
-        age: 25
-      }))
-    });
-  }
 
   const { matchdays, pots } = generateSwissDraw(clTeams);
 
@@ -116,8 +108,8 @@ function runTests() {
   assert(pots.length === 4,
     `Pot count = 4 (got ${pots.length})`);
 
-  assert(pots.every(p => p.length === 9),
-    `Each pot has 9 teams (got ${pots.map(p => p.length).join(', ')})`);
+  assert(pots.every(p => p.length === 8),
+    `Each pot has 8 teams (got ${pots.map(p => p.length).join(', ')})`);
 
   // Count fixtures per team
   const fixturesPerTeam = new Map();
@@ -161,8 +153,8 @@ function runTests() {
 
   const swissStandings = getSwissStandings(clTeams, fakeResults);
   
-  assert(swissStandings.length === 36,
-    `Standings has 36 teams (got ${swissStandings.length})`);
+  assert(swissStandings.length === 32,
+    `Standings has 32 teams (got ${swissStandings.length})`);
   
   assert(swissStandings[0].points >= swissStandings[1].points,
     'Standings sorted by points DESC');
@@ -181,8 +173,8 @@ function runTests() {
   assert(qual.playoffUnseeded.length === 8,
     `Playoff unseeded: 8 teams (got ${qual.playoffUnseeded.length})`);
   
-  assert(qual.eliminated.length === 12,
-    `Eliminated: 12 teams (got ${qual.eliminated.length})`);
+  assert(qual.eliminated.length === 8,
+    `Eliminated: 8 teams (got ${qual.eliminated.length})`);
 
   // Test 5: Playoff Draw
   console.log('\n📋 Test 5: drawPlayoffRound');

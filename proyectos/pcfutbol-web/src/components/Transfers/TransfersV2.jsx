@@ -1523,6 +1523,18 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
           
           {/* COLUMNA DERECHA: NEGOCIACIÓN */}
           <div className="negotiation-column">
+            {/* COMPACT MOBILE HEADER (replaces player card on mobile) */}
+            <div className="player-mobile-header">
+              <span className="pos-badge" data-pos={player.position}>{player.position}</span>
+              <div className="info">
+                <span className="name">{player.name}</span>
+                <span className="meta">
+                  {isFreeAgent ? 'Agente Libre' : player.teamName} · {player.age} años · {formatTransferPrice(marketValue)}
+                </span>
+              </div>
+              <span className="ovr">{player.overall}</span>
+            </div>
+
             {/* OPCIÓN PRE-CONTRATO (si disponible) */}
             {canPreContract && !isFreeAgent && (
               <div className="pre-contract-toggle">

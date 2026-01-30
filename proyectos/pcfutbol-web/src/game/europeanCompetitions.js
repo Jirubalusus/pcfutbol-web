@@ -15,7 +15,7 @@ export const CHAMPIONS_LEAGUE = {
   shortName: 'Champions',
   icon: '🏆',
   color: '#1a237e',
-  teamsCount: 36,
+  teamsCount: 32,
   potsCount: 4,
   matchesPerTeam: 8,
   prizes: {
@@ -36,7 +36,7 @@ export const EUROPA_LEAGUE = {
   shortName: 'Europa League',
   icon: '🥈',
   color: '#e65100',
-  teamsCount: 36,
+  teamsCount: 32,
   potsCount: 4,
   matchesPerTeam: 8,
   prizes: {
@@ -57,7 +57,7 @@ export const CONFERENCE_LEAGUE = {
   shortName: 'Conference',
   icon: '🥉',
   color: '#2e7d32',
-  teamsCount: 36,
+  teamsCount: 32,
   potsCount: 4,
   matchesPerTeam: 8,
   prizes: {
@@ -83,14 +83,18 @@ export const COMPETITIONS = {
 // ============================================================
 // Easily extensible: just add new leagues here.
 
+// LEAGUE_SLOTS — 32 teams per competition
+// CL: 4+4+4+4+3+2+2+1+1+1+1+1+1+1+1+1 = 32
+// EL: 2+2+2+2+1+2+2+3+3+2+2+2+2+2+1+2 = 32
+// ECL: 1+1+1+1+1+3+3+3+3+2+2+2+2+2+2+3 = 32
 export const LEAGUE_SLOTS = {
   laliga: {
     leagueId: 'laliga',
     name: 'La Liga',
     country: 'España',
-    championsLeague: 4,   // Positions 1-4
-    europaLeague: 2,       // Positions 5-6
-    conferenceleague: 1    // Position 7
+    championsLeague: 4,
+    europaLeague: 2,
+    conferenceleague: 1
   },
   premierLeague: {
     leagueId: 'premierLeague',
@@ -129,88 +133,88 @@ export const LEAGUE_SLOTS = {
     name: 'Eredivisie',
     country: 'Países Bajos',
     championsLeague: 2,
-    europaLeague: 1,
-    conferenceleague: 2
+    europaLeague: 2,
+    conferenceleague: 3
   },
   primeiraLiga: {
     leagueId: 'primeiraLiga',
     name: 'Primeira Liga',
     country: 'Portugal',
     championsLeague: 2,
-    europaLeague: 1,
-    conferenceleague: 1
+    europaLeague: 2,
+    conferenceleague: 3
   },
   belgianPro: {
     leagueId: 'belgianPro',
     name: 'Jupiler Pro League',
     country: 'Bélgica',
     championsLeague: 1,
-    europaLeague: 1,
-    conferenceleague: 1
+    europaLeague: 3,
+    conferenceleague: 3
   },
   superLig: {
     leagueId: 'superLig',
     name: 'Süper Lig',
     country: 'Turquía',
     championsLeague: 1,
-    europaLeague: 1,
-    conferenceleague: 1
+    europaLeague: 3,
+    conferenceleague: 3
   },
   scottishPrem: {
     leagueId: 'scottishPrem',
     name: 'Scottish Premiership',
     country: 'Escocia',
     championsLeague: 1,
-    europaLeague: 0,
-    conferenceleague: 1
+    europaLeague: 2,
+    conferenceleague: 2
   },
   austrianBundesliga: {
     leagueId: 'austrianBundesliga',
     name: 'Bundesliga (AT)',
     country: 'Austria',
     championsLeague: 1,
-    europaLeague: 0,
-    conferenceleague: 1
+    europaLeague: 2,
+    conferenceleague: 2
   },
   greekSuperLeague: {
     leagueId: 'greekSuperLeague',
     name: 'Super League',
     country: 'Grecia',
     championsLeague: 1,
-    europaLeague: 0,
-    conferenceleague: 1
+    europaLeague: 2,
+    conferenceleague: 2
   },
   swissSuperLeague: {
     leagueId: 'swissSuperLeague',
     name: 'Super League (CH)',
     country: 'Suiza',
     championsLeague: 1,
-    europaLeague: 0,
-    conferenceleague: 1
+    europaLeague: 2,
+    conferenceleague: 2
   },
   danishSuperliga: {
     leagueId: 'danishSuperliga',
     name: 'Superligaen',
     country: 'Dinamarca',
     championsLeague: 1,
-    europaLeague: 0,
-    conferenceleague: 1
+    europaLeague: 2,
+    conferenceleague: 2
   },
   croatianLeague: {
     leagueId: 'croatianLeague',
     name: 'HNL',
     country: 'Croacia',
     championsLeague: 1,
-    europaLeague: 0,
-    conferenceleague: 0
+    europaLeague: 1,
+    conferenceleague: 2
   },
   czechLeague: {
     leagueId: 'czechLeague',
     name: 'Chance Liga',
     country: 'Chequia',
     championsLeague: 1,
-    europaLeague: 0,
-    conferenceleague: 1
+    europaLeague: 2,
+    conferenceleague: 3
   }
 };
 

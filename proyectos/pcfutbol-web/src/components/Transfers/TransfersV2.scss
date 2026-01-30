@@ -980,11 +980,31 @@ $border-color: $card-border;
   }
 
   .transfers-tabs {
-    padding: 0.4rem;
+    padding: 0.5rem 0.75rem;
+    gap: 0.35rem;
+    background: linear-gradient(180deg, #161b22 0%, #0d1117 100%);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
     
     .tab {
-      padding: 0.45rem 0.6rem;
-      font-size: 0.75rem;
+      padding: 0.5rem 0.85rem;
+      font-size: 0.78rem;
+      border-radius: 20px;
+      gap: 0.35rem;
+      flex-shrink: 0;
+      background: rgba(255,255,255,0.04);
+      min-height: 36px;
+      
+      svg {
+        width: 15px;
+        height: 15px;
+      }
+      
+      &.active {
+        background: rgba(10, 132, 255, 0.2);
+        color: #0a84ff;
+        font-weight: 600;
+        box-shadow: 0 0 0 1px rgba(10, 132, 255, 0.3);
+      }
     }
   }
 
@@ -1103,6 +1123,11 @@ $border-color: $card-border;
       background: rgba(255,255,255,0.15);
       color: $text;
     }
+  }
+  
+  // Mobile compact header (hidden on desktop)
+  .player-mobile-header {
+    display: none;
   }
   
   // RESULTADO FINAL OVERLAY
@@ -1984,39 +2009,74 @@ $border-color: $card-border;
     overflow: visible;
     
     .player-column {
-      border-right: none;
-      border-bottom: 1px solid $border-color;
-      max-height: 160px;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 0.5rem;
-      overflow: hidden;
-      
-      .player-card {
-        max-width: 150px;
-        padding: 0.75rem;
-
-        .player-name {
-          font-size: 0.85rem;
-        }
-      }
-      
-      .player-stats, .player-personality, .difficulty-indicator {
-        display: none;
-      }
+      display: none;
     }
     
     .negotiation-column {
-      padding: 0.5rem;
+      padding: 0.75rem;
       padding-bottom: calc(1rem + env(safe-area-inset-bottom));
       overflow-y: auto;
       overflow-x: hidden;
+
+      .player-mobile-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem 1rem;
+        background: linear-gradient(135deg, rgba(10, 132, 255, 0.15) 0%, rgba(22, 27, 34, 0.8) 100%);
+        border: 1px solid rgba(10, 132, 255, 0.2);
+        border-radius: 12px;
+        margin-bottom: 0.75rem;
+        
+        .pos-badge {
+          padding: 0.3rem 0.5rem;
+          border-radius: 6px;
+          font-size: 0.75rem;
+          font-weight: 700;
+          flex-shrink: 0;
+          background: rgba(255,255,255,0.1);
+          
+          &[data-pos="GK"] { background: rgba(241, 196, 15, 0.2); color: #f1c40f; }
+          &[data-pos="CB"], &[data-pos="RB"], &[data-pos="LB"], &[data-pos="RWB"], &[data-pos="LWB"] { background: rgba(52, 152, 219, 0.2); color: #3498db; }
+          &[data-pos="CDM"], &[data-pos="CM"], &[data-pos="CAM"], &[data-pos="RM"], &[data-pos="LM"] { background: rgba(46, 204, 113, 0.2); color: #2ecc71; }
+          &[data-pos="RW"], &[data-pos="LW"], &[data-pos="ST"], &[data-pos="CF"] { background: rgba(231, 76, 60, 0.2); color: #e74c3c; }
+        }
+        
+        .info {
+          flex: 1;
+          min-width: 0;
+          
+          .name {
+            display: block;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #f0f6fc;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          
+          .meta {
+            display: block;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.5);
+            margin-top: 2px;
+          }
+        }
+        
+        .ovr {
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: #ffd60a;
+          flex-shrink: 0;
+        }
+      }
 
       .negotiation-section {
         padding: 0.75rem;
       }
     }
+
   }
 
   // Resultado final overlay — asegurar que se vea completo

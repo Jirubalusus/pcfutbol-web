@@ -28,8 +28,8 @@ export const EUROPEAN_SPOTS = {
   },
   premierLeague: {
     champions: [1, 2, 3, 4],
-    europaLeague: [5],
-    conference: [6, 7], // Conference puede incluir ganador FA Cup
+    europaLeague: [5, 6],
+    conference: [7],
     relegation: [18, 19, 20]
   },
   serieA: {

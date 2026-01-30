@@ -170,8 +170,8 @@ export const LEAGUE_CONFIG = {
     getTeams: getEredivisieTeams,
     zones: {
       champions: [1, 2],
-      europaLeague: [3],
-      conference: [4, 5],
+      europaLeague: [3, 4],
+      conference: [5, 6, 7],
       relegation: [16, 17, 18]
     }
   },
@@ -183,8 +183,8 @@ export const LEAGUE_CONFIG = {
     getTeams: getPrimeiraLigaTeams,
     zones: {
       champions: [1, 2],
-      europaLeague: [3],
-      conference: [4],
+      europaLeague: [3, 4],
+      conference: [5, 6, 7],
       relegation: [16, 17, 18]
     }
   },
@@ -208,8 +208,8 @@ export const LEAGUE_CONFIG = {
     getTeams: getBelgianProTeams,
     zones: {
       champions: [1],
-      europaLeague: [2],
-      conference: [3],
+      europaLeague: [2, 3, 4],
+      conference: [5, 6, 7],
       relegation: [15, 16]
     }
   },
@@ -221,8 +221,8 @@ export const LEAGUE_CONFIG = {
     getTeams: getSuperLigTeams,
     zones: {
       champions: [1],
-      europaLeague: [2],
-      conference: [3],
+      europaLeague: [2, 3, 4],
+      conference: [5, 6, 7],
       relegation: [17, 18, 19]
     }
   },
@@ -234,7 +234,8 @@ export const LEAGUE_CONFIG = {
     getTeams: getScottishPremTeams,
     zones: {
       champions: [1],
-      conference: [2],
+      europaLeague: [2, 3],
+      conference: [4, 5],
       relegation: [11, 12]
     }
   },
@@ -282,7 +283,8 @@ export const LEAGUE_CONFIG = {
     getTeams: getSwissTeams,
     zones: {
       champions: [1],
-      conference: [2],
+      europaLeague: [2, 3],
+      conference: [4, 5],
       relegation: [11, 12]
     }
   },
@@ -294,7 +296,8 @@ export const LEAGUE_CONFIG = {
     getTeams: getAustrianTeams,
     zones: {
       champions: [1],
-      conference: [2],
+      europaLeague: [2, 3],
+      conference: [4, 5],
       relegation: [11, 12]
     }
   },
@@ -306,7 +309,8 @@ export const LEAGUE_CONFIG = {
     getTeams: getGreekTeams,
     zones: {
       champions: [1],
-      conference: [2],
+      europaLeague: [2, 3],
+      conference: [4, 5],
       relegation: [13, 14]
     }
   },
@@ -318,7 +322,8 @@ export const LEAGUE_CONFIG = {
     getTeams: getDanishTeams,
     zones: {
       champions: [1],
-      conference: [2],
+      europaLeague: [2, 3],
+      conference: [4, 5],
       relegation: [11, 12]
     }
   },
@@ -330,6 +335,8 @@ export const LEAGUE_CONFIG = {
     getTeams: getCroatianTeams,
     zones: {
       champions: [1],
+      europaLeague: [2],
+      conference: [3, 4],
       relegation: [9, 10]
     }
   },
@@ -341,7 +348,8 @@ export const LEAGUE_CONFIG = {
     getTeams: getCzechTeams,
     zones: {
       champions: [1],
-      conference: [2],
+      europaLeague: [2, 3],
+      conference: [4, 5, 6],
       relegation: [15, 16]
     }
   }

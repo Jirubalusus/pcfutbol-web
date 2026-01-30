@@ -1,14 +1,14 @@
 // ============================================================
 // SWISS SYSTEM — Draw engine for UEFA league phase
 // ============================================================
-// Implements the new UEFA format: 36 teams, 4 pots, 8 matches
-// each (2 per pot: 1 home, 1 away). No same-league clashes.
+// Implements the new UEFA format: 32 teams, 4 pots of 8,
+// 8 matches each (2 per pot: 1 home, 1 away). No same-league clashes.
 // ============================================================
 
 /**
- * Divide teams into 4 pots of 9, sorted by reputation/overall
+ * Divide teams into 4 pots of 8, sorted by reputation/overall
  * @param {Array} teams - Array of team objects (must have reputation or overall)
- * @returns {Array[]} 4 arrays of 9 teams each
+ * @returns {Array[]} 4 arrays of 8 teams each
  */
 export function createPots(teams) {
   // Sort by reputation (primary), then overall (secondary)
@@ -18,7 +18,7 @@ export function createPots(teams) {
     return (b.overall || 0) - (a.overall || 0);
   });
 
-  const potSize = 9;
+  const potSize = 8;
   const pots = [];
   for (let i = 0; i < 4; i++) {
     pots.push(sorted.slice(i * potSize, (i + 1) * potSize));
@@ -39,11 +39,11 @@ function shuffleArray(arr) {
 }
 
 /**
- * Generate the Swiss-system draw for 36 teams.
+ * Generate the Swiss-system draw for 32 teams.
  * Each team plays 8 matches: 2 from each pot (1 home, 1 away).
  * No team plays against a team from the same league.
  * 
- * @param {Array} teams - 36 team objects with { teamId, league, reputation, ... }
+ * @param {Array} teams - 32 team objects with { teamId, league, reputation, ... }
  * @returns {{ matchdays: Array[], pots: Array[] }}
  *   matchdays: 8 arrays of fixtures [{ homeTeamId, awayTeamId, matchday }]
  *   pots: the 4 pots used
@@ -51,10 +51,10 @@ function shuffleArray(arr) {
 export function generateSwissDraw(teams) {
   // Don't mutate the input array
   teams = [...teams];
-  if (teams.length < 36) {
-    console.warn(`Swiss draw: expected 36 teams, got ${teams.length}. Padding with placeholder teams.`);
+  if (teams.length < 32) {
+    console.warn(`Swiss draw: expected 32 teams, got ${teams.length}. Padding with placeholder teams.`);
     // Pad with placeholder teams if needed
-    while (teams.length < 36) {
+    while (teams.length < 32) {
       teams.push({
         teamId: `placeholder_${teams.length}`,
         teamName: `Placeholder ${teams.length + 1}`,
@@ -289,7 +289,7 @@ function distributeToMatchdays(fixtures, numMatchdays) {
 /**
  * Compute Swiss standings from match results.
  * 
- * @param {Array} teams - All 36 teams in the competition
+ * @param {Array} teams - All 32 teams in the competition
  * @param {Array} results - Array of { homeTeamId, awayTeamId, homeScore, awayScore }
  * @returns {Array} Sorted standings array
  */
@@ -365,10 +365,10 @@ export function getSwissStandings(teams, results) {
 // ============================================================
 
 /**
- * Determine qualification from Swiss standings:
+ * Determine qualification from Swiss standings (32 teams):
  * - 1st–8th → Round of 16 directly
  * - 9th–24th → Playoff round (seeded vs unseeded)
- * - 25th–36th → Eliminated
+ * - 25th–32nd → Eliminated
  * 
  * @param {Array} standings - Sorted Swiss standings
  * @returns {{ direct: Array, playoffSeeded: Array, playoffUnseeded: Array, eliminated: Array }}
@@ -378,6 +378,6 @@ export function determineSwissQualification(standings) {
     direct: standings.slice(0, 8),              // Direct to R16
     playoffSeeded: standings.slice(8, 16),       // 9th-16th (seeded in playoffs)
     playoffUnseeded: standings.slice(16, 24),    // 17th-24th (unseeded in playoffs)
-    eliminated: standings.slice(24)              // 25th-36th out
+    eliminated: standings.slice(24)              // 25th-32nd out
   };
 }

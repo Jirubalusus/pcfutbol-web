@@ -321,7 +321,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
                              qualifiedTeams.conferenceleague.length;
 
       if (totalQualified >= 12) {
-        // Pad each competition to 36 teams with best remaining teams
+        // Pad each competition to 32 teams with best remaining teams
         const usedTeamIds = new Set();
         Object.values(qualifiedTeams).forEach(teams => 
           teams.forEach(t => usedTeamIds.add(t.teamId))
@@ -334,7 +334,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
 
         // Pad each competition
         for (const compId of ['championsLeague', 'europaLeague', 'conferenceleague']) {
-          const needed = 36 - qualifiedTeams[compId].length;
+          const needed = 32 - qualifiedTeams[compId].length;
           if (needed > 0) {
             const fillers = remainingTeams.splice(0, needed);
             qualifiedTeams[compId].push(...fillers.map(t => ({

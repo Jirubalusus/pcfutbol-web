@@ -385,14 +385,7 @@ export default function Office() {
     dispatch({ type: 'SET_FIXTURES', payload: currentFixtures });
     dispatch({ type: 'SET_LEAGUE_TABLE', payload: currentTable });
     
-    // Simular otras ligas en paralelo (todas las semanas de una vez)
-    if (state.otherLeagues && Object.keys(state.otherLeagues).length > 0) {
-      let updatedOtherLeagues = { ...state.otherLeagues };
-      for (let week = state.currentWeek; week < state.currentWeek + weeksSimulated; week++) {
-        updatedOtherLeagues = simulateOtherLeaguesWeek(updatedOtherLeagues, week);
-      }
-      dispatch({ type: 'SET_OTHER_LEAGUES', payload: updatedOtherLeagues });
-    }
+    // Other leagues are now simulated inside ADVANCE_WEEK (GameContext)
     
     // Avanzar semanas
     for (let i = 0; i < weeksSimulated; i++) {

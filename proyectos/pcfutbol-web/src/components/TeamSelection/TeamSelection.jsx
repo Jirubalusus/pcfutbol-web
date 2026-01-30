@@ -31,9 +31,11 @@ import {
 } from '../../data/teamsFirestore';
 import { getStadiumInfo, getStadiumLevel } from '../../data/stadiumCapacities';
 import { initializeLeague } from '../../game/leagueEngine';
-import { initializeOtherLeagues } from '../../game/multiLeagueEngine';
+import { initializeOtherLeagues, LEAGUE_CONFIG } from '../../game/multiLeagueEngine';
 import { generateSeasonObjectives } from '../../game/objectivesEngine';
 import { generatePreseasonOptions } from '../../game/seasonManager';
+import { qualifyTeamsForEurope, LEAGUE_SLOTS } from '../../game/europeanCompetitions';
+import { initializeEuropeanCompetitions } from '../../game/europeanSeason';
 import { Calendar, Plane, Home, Swords, Sparkles, ChevronRight } from 'lucide-react';
 import EuropeMap from './EuropeMap';
 import './TeamSelection.scss';
@@ -352,6 +354,105 @@ export default function TeamSelection() {
     // Inicializar otras ligas para poder verlas en la clasificación
     const otherLeagues = initializeOtherLeagues(selectedLeague, hasGroups ? selectedGroup : null);
     dispatch({ type: 'SET_OTHER_LEAGUES', payload: otherLeagues });
+    
+    // ============================================================
+    // BOOTSTRAP EUROPEAN COMPETITIONS (primera temporada)
+    // ============================================================
+    try {
+      // Generate fictional standings based on team reputation
+      // (no real standings exist yet in the first season)
+      const bootstrapStandings = {};
+      const allTeamsMap = {};
+      
+      // Collect all first-division teams from all leagues
+      for (const [leagueId, slots] of Object.entries(LEAGUE_SLOTS)) {
+        const config = LEAGUE_CONFIG[leagueId];
+        if (!config || !config.getTeams) continue;
+        
+        const leagueTeams = config.getTeams();
+        if (!leagueTeams || leagueTeams.length === 0) continue;
+        
+        // Sort by reputation (descending) to simulate end-of-season standings
+        const sorted = [...leagueTeams].sort((a, b) => 
+          (b.reputation || 70) - (a.reputation || 70)
+        );
+        
+        // Create synthetic standings (position = reputation rank)
+        bootstrapStandings[leagueId] = sorted.map((t, idx) => ({
+          teamId: t.id || t.teamId,
+          teamName: t.name || t.teamName,
+          shortName: t.shortName || '',
+          reputation: t.reputation || 70,
+          overall: t.overall || 70,
+          leaguePosition: idx + 1
+        }));
+        
+        // Build allTeamsMap
+        leagueTeams.forEach(t => {
+          allTeamsMap[t.id || t.teamId] = t;
+        });
+      }
+      
+      // Qualify teams based on reputation-based standings
+      const qualifiedTeams = qualifyTeamsForEurope(bootstrapStandings, allTeamsMap);
+      
+      // Track used IDs to avoid duplicates when padding
+      const usedTeamIds = new Set();
+      Object.values(qualifiedTeams).forEach(teams => 
+        teams.forEach(t => usedTeamIds.add(t.teamId))
+      );
+      
+      // Get remaining top teams to fill competitions to 32
+      const allAvailableTeams = Object.values(allTeamsMap)
+        .filter(t => !usedTeamIds.has(t.id || t.teamId))
+        .sort((a, b) => (b.reputation || 0) - (a.reputation || 0));
+      
+      for (const compId of ['championsLeague', 'europaLeague', 'conferenceleague']) {
+        const needed = 32 - qualifiedTeams[compId].length;
+        if (needed > 0) {
+          const fillers = allAvailableTeams.splice(0, needed);
+          qualifiedTeams[compId].push(...fillers.map(t => ({
+            teamId: t.id || t.teamId,
+            teamName: t.name || t.teamName,
+            shortName: t.shortName || '',
+            league: t.league || 'unknown',
+            leaguePosition: 0,
+            reputation: t.reputation || 60,
+            overall: t.overall || 65,
+            players: t.players || [],
+            ...t
+          })));
+          fillers.forEach(t => usedTeamIds.add(t.id || t.teamId));
+        }
+      }
+      
+      const europeanState = initializeEuropeanCompetitions(qualifiedTeams);
+      dispatch({ type: 'INIT_EUROPEAN_COMPETITIONS', payload: europeanState });
+      
+      // Check if player qualified
+      const playerQualComp = ['championsLeague', 'europaLeague', 'conferenceleague']
+        .find(c => qualifiedTeams[c].some(t => (t.teamId || t.id) === selectedTeam.id));
+      
+      if (playerQualComp) {
+        const compNames = {
+          championsLeague: 'Champions League',
+          europaLeague: 'Europa League',
+          conferenceleague: 'Conference League'
+        };
+        dispatch({
+          type: 'ADD_MESSAGE',
+          payload: {
+            id: Date.now() + 50,
+            type: 'european',
+            title: '🏆 ¡Competición Europea!',
+            content: `Tu equipo jugará la ${compNames[playerQualComp]} esta temporada.`,
+            date: 'Semana 1'
+          }
+        });
+      }
+    } catch (err) {
+      console.error('Error bootstrapping European competitions:', err);
+    }
     
     const objectives = generateSeasonObjectives(selectedTeam, selectedLeague, leagueData.table);
     dispatch({ type: 'SET_SEASON_OBJECTIVES', payload: objectives });

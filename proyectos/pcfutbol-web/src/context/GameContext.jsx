@@ -10,6 +10,7 @@ import { generateSalary, applyTeamsSalaries } from '../game/salaryGenerator';
 import { evolvePlayer } from '../game/seasonEngine';
 import { isEuropeanWeek, getEuropeanPhaseForWeek, EUROPEAN_MATCHDAY_WEEKS } from '../game/europeanCompetitions';
 import { simulateEuropeanMatchday, advanceEuropeanPhase, recordPlayerLeagueResult, recordPlayerKnockoutResult, getPlayerCompetition } from '../game/europeanSeason';
+import { simulateOtherLeaguesWeek } from '../game/multiLeagueEngine';
 
 const GameContext = createContext();
 
@@ -715,6 +716,18 @@ function gameReducer(state, action) {
         date: `Semana ${nextWeek}`
       }));
 
+      // ============================================================
+      // SIMULATE OTHER LEAGUES (all first-division leagues in parallel)
+      // ============================================================
+      let updatedOtherLeagues = state.otherLeagues;
+      if (updatedOtherLeagues && Object.keys(updatedOtherLeagues).length > 0) {
+        try {
+          updatedOtherLeagues = simulateOtherLeaguesWeek(updatedOtherLeagues, nextWeek);
+        } catch (e) {
+          console.warn('Error simulating other leagues week', nextWeek, e);
+        }
+      }
+
       return { 
         ...state, 
         currentWeek: nextWeek,
@@ -744,7 +757,9 @@ function gameReducer(state, action) {
         managerFired: managerEval.fired,
         // European competitions
         europeanCompetitions: updatedEuropean,
-        pendingEuropeanMatch
+        pendingEuropeanMatch,
+        // Other leagues (simulated each week)
+        otherLeagues: updatedOtherLeagues
       };
     }
     

@@ -315,6 +315,54 @@ export default function MatchDay({ onComplete }) {
         });
       });
 
+      // === Also simulate league match + other leagues for this week ===
+      // European weeks overlap with domestic fixtures; auto-sim the domestic match
+      const leagueMatch = state.fixtures?.find(f =>
+        f.week === state.currentWeek && !f.played &&
+        (f.homeTeam === state.teamId || f.awayTeam === state.teamId)
+      );
+      if (leagueMatch) {
+        const allTeamsForSim = getAllTeams().map(t => t.id === state.teamId ? state.team : t);
+        const leagueOpponentId = leagueMatch.homeTeam === state.teamId ? leagueMatch.awayTeam : leagueMatch.homeTeam;
+        const leagueOpponent = allTeamsForSim.find(t => t.id === leagueOpponentId);
+        const leagueIsHome = leagueMatch.homeTeam === state.teamId;
+        
+        if (leagueOpponent) {
+          const leagueResult = simulateMatch(
+            leagueMatch.homeTeam, leagueMatch.awayTeam,
+            leagueIsHome ? state.team : leagueOpponent,
+            leagueIsHome ? leagueOpponent : state.team,
+            { importance: 'normal', attendanceFillRate: 0.7 }
+          );
+          
+          let updatedFixtures = state.fixtures.map(f =>
+            f.id === leagueMatch.id ? { ...f, played: true, homeScore: leagueResult.homeScore, awayScore: leagueResult.awayScore } : f
+          );
+          let newTable = updateTable(state.leagueTable, leagueMatch.homeTeam, leagueMatch.awayTeam, leagueResult.homeScore, leagueResult.awayScore);
+          
+          // Simulate other league matches for this week
+          const otherMatchesResult = simulateWeekMatches(updatedFixtures, newTable, state.currentWeek, state.teamId, allTeamsForSim);
+          dispatch({ type: 'SET_FIXTURES', payload: otherMatchesResult.fixtures });
+          dispatch({ type: 'SET_LEAGUE_TABLE', payload: otherMatchesResult.table });
+          
+          // Add auto-sim result message
+          const pScore = leagueIsHome ? leagueResult.homeScore : leagueResult.awayScore;
+          const oScore = leagueIsHome ? leagueResult.awayScore : leagueResult.homeScore;
+          dispatch({
+            type: 'ADD_MESSAGE',
+            payload: {
+              id: Date.now() + 0.5,
+              type: 'match_result',
+              title: `⚽ Liga (auto): ${state.team.name} ${pScore} - ${oScore} ${leagueOpponent.name}`,
+              content: pScore > oScore ? '¡Victoria!' : pScore < oScore ? 'Derrota' : 'Empate',
+              date: `Semana ${state.currentWeek}`
+            }
+          });
+        }
+      }
+      
+      // Other leagues are simulated in ADVANCE_WEEK (GameContext)
+
       onComplete();
       return;
     }
@@ -359,11 +407,7 @@ export default function MatchDay({ onComplete }) {
     dispatch({ type: 'SET_FIXTURES', payload: otherMatchesResult.fixtures });
     dispatch({ type: 'SET_LEAGUE_TABLE', payload: otherMatchesResult.table });
     
-    // Simular otras ligas en paralelo
-    if (state.otherLeagues && Object.keys(state.otherLeagues).length > 0) {
-      const updatedOtherLeagues = simulateOtherLeaguesWeek(state.otherLeagues, state.currentWeek);
-      dispatch({ type: 'SET_OTHER_LEAGUES', payload: updatedOtherLeagues });
-    }
+    // Other leagues are simulated in ADVANCE_WEEK (GameContext)
     
     // Add result
     dispatch({

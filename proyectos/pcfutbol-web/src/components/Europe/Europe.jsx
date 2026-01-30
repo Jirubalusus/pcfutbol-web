@@ -227,10 +227,22 @@ export default function Europe() {
                       const isPlayer = team.teamId === state.teamId;
                       const leagueFlags = {
                         laliga: '🇪🇸',
+                        segunda: '🇪🇸',
                         premierLeague: '🏴󠁧󠁢󠁥󠁮󠁧󠁿',
                         serieA: '🇮🇹',
                         bundesliga: '🇩🇪',
-                        ligue1: '🇫🇷'
+                        ligue1: '🇫🇷',
+                        eredivisie: '🇳🇱',
+                        primeiraLiga: '🇵🇹',
+                        belgianPro: '🇧🇪',
+                        superLig: '🇹🇷',
+                        scottishPrem: '🏴󠁧󠁢󠁳󠁣󠁴󠁿',
+                        austrianBundesliga: '🇦🇹',
+                        greekSuperLeague: '🇬🇷',
+                        swissSuperLeague: '🇨🇭',
+                        danishSuperliga: '🇩🇰',
+                        croatianLeague: '🇭🇷',
+                        czechLeague: '🇨🇿'
                       };
 
                       return (
@@ -270,7 +282,7 @@ export default function Europe() {
                   <span className="dot"></span> 9-24: Playoffs
                 </span>
                 <span className="legend-item eliminated">
-                  <span className="dot"></span> 25-36: Eliminado
+                  <span className="dot"></span> 25-32: Eliminado
                 </span>
               </div>
             </div>
