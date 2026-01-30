@@ -1,54 +1,21 @@
 rules_version = '2';
+
 service cloud.firestore {
   match /databases/{database}/documents {
-    
-    // Datos de equipos y ligas - lectura pública, escritura solo admin
-    match /teams/{teamId} {
-      allow read: if true;
-      allow write: if false; // Solo desde scripts con credenciales admin
-    }
-    
+
+    // Leagues: read-only for everyone, write only from admin/scripts
     match /leagues/{leagueId} {
       allow read: if true;
       allow write: if false;
     }
-    
-    match /metadata/{docId} {
+
+    // Teams: read-only for everyone, write only from admin/scripts
+    match /teams/{teamId} {
       allow read: if true;
       allow write: if false;
     }
-    
-    // Perfil de usuario
-    match /users/{userId} {
-      allow read: if request.auth != null && request.auth.uid == userId;
-      allow create: if request.auth != null && request.auth.uid == userId;
-      allow update: if request.auth != null && request.auth.uid == userId;
-      allow delete: if false;
-    }
-    
-    // Partidas guardadas - formato: {userId}_slot_{0-4}
-    match /saves/{saveId} {
-      // Verificar que el saveId pertenece al usuario autenticado
-      allow read: if request.auth != null && 
-                    saveId.matches(request.auth.uid + '_slot_[0-4]');
-      
-      allow create: if request.auth != null && 
-                      saveId.matches(request.auth.uid + '_slot_[0-4]') &&
-                      request.resource.data.userId == request.auth.uid &&
-                      request.resource.data.slotIndex >= 0 &&
-                      request.resource.data.slotIndex <= 4;
-      
-      allow update: if request.auth != null && 
-                      saveId.matches(request.auth.uid + '_slot_[0-4]') &&
-                      resource.data.userId == request.auth.uid &&
-                      request.resource.data.userId == request.auth.uid;
-      
-      allow delete: if request.auth != null && 
-                      saveId.matches(request.auth.uid + '_slot_[0-4]') &&
-                      resource.data.userId == request.auth.uid;
-    }
-    
-    // Bloquear todo lo demás
+
+    // Default: deny everything else
     match /{document=**} {
       allow read, write: if false;
     }

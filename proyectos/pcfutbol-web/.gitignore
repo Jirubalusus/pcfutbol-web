@@ -23,6 +23,11 @@ dist-ssr
 *.sln
 *.sw?
 
+# Environment variables (API keys)
+.env
+.env.local
+.env.*.local
+
 # Firebase credentials (NEVER commit)
 .firebase-credentials.json
 *-service-account*.json
