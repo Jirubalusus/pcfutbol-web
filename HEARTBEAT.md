@@ -1,23 +1,21 @@
 # HEARTBEAT.md
 
-## Estado: ✅ Competiciones europeas completas + QA
-**Última actualización:** 2026-01-30 14:50
+## Estado: ✅ Todas las ligas europeas completas
+**Última actualización:** 2026-01-30 19:48
 
-## Completado hoy (30 enero) — tarde
-- ✅ Precio entrada dinámico (afecta ocupación + factor cancha)
-- ✅ Rojas aumentadas a 18% (realista ~7/temporada)
-- ✅ Sistema renovación v2 (edad, potencial, rendimiento)
-- ✅ Sección Banco (finanzas centralizadas)
-- ✅ Skip button reposicionado en partido
-- ✅ UI fixes varios (modal renovación, tarjetas estadio)
-- ✅ **Competiciones europeas** — Champions, Europa League, Conference League
-  - Motor Swiss system (36 equipos, 4 bombos, 8 jornadas)
-  - Fase eliminatoria (playoffs, octavos, cuartos, semis, final)
-  - Integración calendario + GameContext
-  - UI completa (tabla Swiss, bracket, premios)
-  - Conexión fin de temporada (clasificación automática)
-- ✅ **QA completado** — bugs corregidos en Swiss draw constraints
+## Completado hoy (30 enero) — tarde/noche
+- ✅ Fix mobile: países/ligas visibles en selección de equipo
+- ✅ **15 ligas nuevas subidas a Firestore** (238 equipos, 6795 jugadores)
+  - Eredivisie, Primeira Liga, Championship, Jupiler Pro, Süper Lig, Scottish Prem
+  - Serie B, 2. Bundesliga, Ligue 2, Super League suiza/griega
+  - Bundesliga AT, Superligaen, HNL, Chance Liga
+- ✅ Fix formato datos: rating→overall, añadido salary/value/contract/age/morale/fitness
+- ✅ Fix NaN presupuesto: auto-cálculo budget+reputation para equipos nuevos
+- ✅ Fix Serie A, Bundesliga, Ligue 1 (formato viejo corregido)
+- ✅ Re-subidas las 23 ligas completas a Firestore
+- ✅ **Clasificación**: selector con 23 ligas, plazas europeas/descenso correctas por liga
 
 ## Estado actual
 - PC Fútbol Web funcionando en GitHub Pages
-- Requiere nueva partida para ver cambios europeos
+- 23 ligas jugables con datos reales de Transfermarkt
+- Requiere nueva partida para ver cambios

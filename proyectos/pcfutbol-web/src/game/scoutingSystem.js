@@ -346,12 +346,32 @@ function generateRecommendation(player, need, difficulty, scoutingLevel) {
 // ============================================================
 
 export const AVAILABLE_LEAGUES = [
+  // España
   { id: 'laliga', name: 'La Liga', country: 'España', flagUrl: 'https://flagcdn.com/es.svg', color: '#ff4444' },
   { id: 'segunda', name: 'La Liga 2', country: 'España', flagUrl: 'https://flagcdn.com/es.svg', color: '#ff8844' },
+  { id: 'primeraRFEF', name: 'Primera Federación', country: 'España', flagUrl: 'https://flagcdn.com/es.svg', color: '#cc6600' },
+  { id: 'segundaRFEF', name: 'Segunda Federación', country: 'España', flagUrl: 'https://flagcdn.com/es.svg', color: '#996633' },
+  // Top 5 + segundas
   { id: 'premierLeague', name: 'Premier League', country: 'Inglaterra', flagUrl: 'https://flagcdn.com/gb-eng.svg', color: '#3d195b' },
+  { id: 'championship', name: 'Championship', country: 'Inglaterra', flagUrl: 'https://flagcdn.com/gb-eng.svg', color: '#5b2d8e' },
   { id: 'serieA', name: 'Serie A', country: 'Italia', flagUrl: 'https://flagcdn.com/it.svg', color: '#008c45' },
+  { id: 'serieB', name: 'Serie B', country: 'Italia', flagUrl: 'https://flagcdn.com/it.svg', color: '#00b359' },
   { id: 'bundesliga', name: 'Bundesliga', country: 'Alemania', flagUrl: 'https://flagcdn.com/de.svg', color: '#dd0000' },
+  { id: 'bundesliga2', name: '2. Bundesliga', country: 'Alemania', flagUrl: 'https://flagcdn.com/de.svg', color: '#ff3333' },
   { id: 'ligue1', name: 'Ligue 1', country: 'Francia', flagUrl: 'https://flagcdn.com/fr.svg', color: '#091c3e' },
+  { id: 'ligue2', name: 'Ligue 2', country: 'Francia', flagUrl: 'https://flagcdn.com/fr.svg', color: '#1a3366' },
+  // Resto de Europa
+  { id: 'eredivisie', name: 'Eredivisie', country: 'Países Bajos', flagUrl: 'https://flagcdn.com/nl.svg', color: '#ff6600' },
+  { id: 'primeiraLiga', name: 'Primeira Liga', country: 'Portugal', flagUrl: 'https://flagcdn.com/pt.svg', color: '#006600' },
+  { id: 'belgianPro', name: 'Jupiler Pro League', country: 'Bélgica', flagUrl: 'https://flagcdn.com/be.svg', color: '#cc9900' },
+  { id: 'superLig', name: 'Süper Lig', country: 'Turquía', flagUrl: 'https://flagcdn.com/tr.svg', color: '#e30a17' },
+  { id: 'scottishPrem', name: 'Scottish Premiership', country: 'Escocia', flagUrl: 'https://flagcdn.com/gb-sct.svg', color: '#003399' },
+  { id: 'swissSuperLeague', name: 'Super League', country: 'Suiza', flagUrl: 'https://flagcdn.com/ch.svg', color: '#ff0000' },
+  { id: 'austrianBundesliga', name: 'Bundesliga (AT)', country: 'Austria', flagUrl: 'https://flagcdn.com/at.svg', color: '#ed2939' },
+  { id: 'greekSuperLeague', name: 'Super League', country: 'Grecia', flagUrl: 'https://flagcdn.com/gr.svg', color: '#0d5eaf' },
+  { id: 'danishSuperliga', name: 'Superligaen', country: 'Dinamarca', flagUrl: 'https://flagcdn.com/dk.svg', color: '#c8102e' },
+  { id: 'croatianLeague', name: 'HNL', country: 'Croacia', flagUrl: 'https://flagcdn.com/hr.svg', color: '#0046a8' },
+  { id: 'czechLeague', name: 'Chance Liga', country: 'Chequia', flagUrl: 'https://flagcdn.com/cz.svg', color: '#11457e' },
 ];
 
 /**
