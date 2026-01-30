@@ -27,6 +27,14 @@ $pcf-text: #bdc3c7;
   overflow: hidden;
   max-width: 100vw;
   overflow-x: hidden;
+
+  @media (max-width: 768px) {
+    height: auto;
+    min-height: 100vh;
+    max-height: none;
+    overflow: visible;
+    overflow-x: hidden;
+  }
 }
 
 // ============================================================
@@ -174,6 +182,10 @@ $pcf-text: #bdc3c7;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 768px) {
+    overflow: visible;
+  }
 }
 
 // ============================================================
@@ -185,6 +197,10 @@ $pcf-text: #bdc3c7;
   flex-direction: column;
   padding: 1rem;
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    overflow: visible;
+  }
   
   h2 {
     text-align: center;
@@ -203,6 +219,11 @@ $pcf-text: #bdc3c7;
     max-width: 600px;
     margin: 0 auto;
     width: 100%;
+
+    @media (max-width: 768px) {
+      overflow-y: visible;
+      padding-bottom: 1rem;
+    }
   }
   
   .country-card {
@@ -262,6 +283,10 @@ $pcf-text: #bdc3c7;
   flex-direction: column;
   padding: 1rem;
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    overflow: visible;
+  }
   
   h2 {
     text-align: center;
@@ -280,6 +305,11 @@ $pcf-text: #bdc3c7;
     max-width: 600px;
     margin: 0 auto;
     width: 100%;
+
+    @media (max-width: 768px) {
+      overflow-y: visible;
+      padding-bottom: 1rem;
+    }
   }
   
   .league-card {
@@ -512,6 +542,11 @@ $pcf-text: #bdc3c7;
     flex: 1;
     overflow-y: auto;
     padding: 0;
+    
+    @media (max-width: 768px) {
+      overflow-y: visible;
+      padding-bottom: 1rem;
+    }
     
     &::-webkit-scrollbar {
       width: 8px;
