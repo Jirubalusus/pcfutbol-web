@@ -1,0 +1,5602 @@
+[
+  {
+    "id": "ipswich-town",
+    "name": "Ipswich Town",
+    "players": [
+      {
+        "name": "Alex Palmer",
+        "position": "POR",
+        "rating": 78,
+        "age": 29,
+        "nationality": "Inglaterra",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Christian Walton",
+        "position": "POR",
+        "rating": 78,
+        "age": 28,
+        "nationality": "Inglaterra",
+        "marketValue": 800
+      },
+      {
+        "name": "David Button",
+        "position": "POR",
+        "rating": 75,
+        "age": 27,
+        "nationality": "Inglaterra",
+        "marketValue": 50
+      },
+      {
+        "name": "Jacob Greaves",
+        "position": "DFC",
+        "rating": 80,
+        "age": 24,
+        "nationality": "Inglaterra",
+        "marketValue": 16000000
+      },
+      {
+        "name": "Dara O'Shea",
+        "position": "DFC",
+        "rating": 85,
+        "age": 26,
+        "nationality": "Irlanda",
+        "marketValue": 15000000
+      },
+      {
+        "name": "Cédric Kipré",
+        "position": "DFC",
+        "rating": 79,
+        "age": 29,
+        "nationality": "Costa de Marfil",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Elkan Baggott",
+        "position": "DFC",
+        "rating": 76,
+        "age": 25,
+        "nationality": "Indonesia",
+        "marketValue": 200
+      },
+      {
+        "name": "Leif Davis",
+        "position": "DFC",
+        "rating": 85,
+        "age": 26,
+        "nationality": "Inglaterra",
+        "marketValue": 20000000
+      },
+      {
+        "name": "Conor Townsend",
+        "position": "DFC",
+        "rating": 74,
+        "age": 22,
+        "nationality": "Inglaterra",
+        "marketValue": 500
+      },
+      {
+        "name": "Ben Johnson",
+        "position": "DFC",
+        "rating": 75,
+        "age": 18,
+        "nationality": "Inglaterra",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Darnell Furlong",
+        "position": "DFC",
+        "rating": 75,
+        "age": 19,
+        "nationality": "Inglaterra",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Ashley Young",
+        "position": "DFC",
+        "rating": 73,
+        "age": 15,
+        "nationality": "Inglaterra",
+        "marketValue": 400
+      },
+      {
+        "name": "Azor Matusiwa",
+        "position": "MC",
+        "rating": 82,
+        "age": 27,
+        "nationality": "Países Bajos",
+        "marketValue": 11000000
+      },
+      {
+        "name": "Jens Cajuste",
+        "position": "MC",
+        "rating": 80,
+        "age": 26,
+        "nationality": "Suecia",
+        "marketValue": 8000000
+      },
+      {
+        "name": "Marcelino Núñez",
+        "position": "MC",
+        "rating": 77,
+        "age": 32,
+        "nationality": "Chile",
+        "marketValue": 9000000
+      },
+      {
+        "name": "Dan Neil",
+        "position": "MC",
+        "rating": 78,
+        "age": 24,
+        "nationality": "Inglaterra",
+        "marketValue": 6500000
+      },
+      {
+        "name": "Jack Taylor",
+        "position": "MC",
+        "rating": 79,
+        "age": 27,
+        "nationality": "Irlanda",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Kasey McAteer",
+        "position": "MC",
+        "rating": 75,
+        "age": 20,
+        "nationality": "Irlanda",
+        "marketValue": 12000000
+      },
+      {
+        "name": "Wes Burns",
+        "position": "MC",
+        "rating": 79,
+        "age": 31,
+        "nationality": "Gales",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Anis Mehmeti",
+        "position": "MC",
+        "rating": 75,
+        "age": 33,
+        "nationality": "Albania",
+        "marketValue": 10000000
+      },
+      {
+        "name": "Sammie Szmodics",
+        "position": "MC",
+        "rating": 77,
+        "age": 23,
+        "nationality": "Irlanda",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Jaden Philogene",
+        "position": "DC",
+        "rating": 82,
+        "age": 23,
+        "nationality": "Inglaterra",
+        "marketValue": 18000000
+      },
+      {
+        "name": "Jack Clarke",
+        "position": "DC",
+        "rating": 84,
+        "age": 25,
+        "nationality": "Inglaterra",
+        "marketValue": 15000000
+      },
+      {
+        "name": "Sindre Walle Egeli",
+        "position": "DC",
+        "rating": 78,
+        "age": 19,
+        "nationality": "Noruega",
+        "marketValue": 20000000
+      },
+      {
+        "name": "George Hirst",
+        "position": "DC",
+        "rating": 80,
+        "age": 26,
+        "nationality": "Escocia",
+        "marketValue": 8000000
+      },
+      {
+        "name": "Chuba Akpom",
+        "position": "DC",
+        "rating": 77,
+        "age": 29,
+        "nationality": "Inglaterra",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Iván Azón",
+        "position": "DC",
+        "rating": 70,
+        "age": 31,
+        "nationality": "España",
+        "marketValue": 3000000
+      }
+    ]
+  },
+  {
+    "id": "fc-southampton",
+    "name": "Southampton FC",
+    "players": [
+      {
+        "name": "Daniel Peretz",
+        "position": "POR",
+        "rating": 74,
+        "age": 41,
+        "nationality": "Israel",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Alex McCarthy",
+        "position": "POR",
+        "rating": 73,
+        "age": 36,
+        "nationality": "Inglaterra",
+        "marketValue": 300
+      },
+      {
+        "name": "George Long",
+        "position": "POR",
+        "rating": 76,
+        "age": 25,
+        "nationality": "Inglaterra",
+        "marketValue": 200
+      },
+      {
+        "name": "Taylor Harwood-Bellis",
+        "position": "DFC",
+        "rating": 81,
+        "age": 24,
+        "nationality": "Inglaterra",
+        "marketValue": 20000000
+      },
+      {
+        "name": "Nathan Wood",
+        "position": "DFC",
+        "rating": 75,
+        "age": 15,
+        "nationality": "Inglaterra",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Joshua Quarshie",
+        "position": "DFC",
+        "rating": 74,
+        "age": 17,
+        "nationality": "Alemania",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Jack Stephens",
+        "position": "DFC",
+        "rating": 79,
+        "age": 32,
+        "nationality": "Inglaterra",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Joachim Kayi Sanda",
+        "position": "DFC",
+        "rating": 73,
+        "age": 39,
+        "nationality": "Francia",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Welington",
+        "position": "DFC",
+        "rating": 73,
+        "age": 34,
+        "nationality": "Brasil",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Ryan Manning",
+        "position": "DFC",
+        "rating": 79,
+        "age": 29,
+        "nationality": "Irlanda",
+        "marketValue": 2800000
+      },
+      {
+        "name": "Juan Larios",
+        "position": "DFC",
+        "rating": 75,
+        "age": 22,
+        "nationality": "España",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Elias Jelert",
+        "position": "DFC",
+        "rating": 73,
+        "age": 38,
+        "nationality": "Dinamarca",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Mads Roerslev",
+        "position": "DFC",
+        "rating": 80,
+        "age": 26,
+        "nationality": "Dinamarca",
+        "marketValue": 6000000
+      },
+      {
+        "name": "James Bree",
+        "position": "DFC",
+        "rating": 79,
+        "age": 28,
+        "nationality": "Inglaterra",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Flynn Downes",
+        "position": "MC",
+        "rating": 80,
+        "age": 27,
+        "nationality": "Inglaterra",
+        "marketValue": 12000000
+      },
+      {
+        "name": "Shea Charles",
+        "position": "MC",
+        "rating": 78,
+        "age": 24,
+        "nationality": "Irlanda del Norte",
+        "marketValue": 12000000
+      },
+      {
+        "name": "Oriol Romeu",
+        "position": "MC",
+        "rating": 78,
+        "age": 28,
+        "nationality": "España",
+        "marketValue": 700
+      },
+      {
+        "name": "Caspar Jander",
+        "position": "MC",
+        "rating": 76,
+        "age": 20,
+        "nationality": "Alemania",
+        "marketValue": 10000000
+      },
+      {
+        "name": "Joe Aribo",
+        "position": "MC",
+        "rating": 78,
+        "age": 29,
+        "nationality": "Nigeria",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Tom Fellows",
+        "position": "MC",
+        "rating": 77,
+        "age": 18,
+        "nationality": "Inglaterra",
+        "marketValue": 10000000
+      },
+      {
+        "name": "Finn Azaz",
+        "position": "MC",
+        "rating": 86,
+        "age": 25,
+        "nationality": "Irlanda",
+        "marketValue": 18000000
+      },
+      {
+        "name": "Léo Scienza",
+        "position": "MC",
+        "rating": 81,
+        "age": 27,
+        "nationality": "Brasil",
+        "marketValue": 9000000
+      },
+      {
+        "name": "Kuryu Matsuki",
+        "position": "MC",
+        "rating": 78,
+        "age": 27,
+        "nationality": "Japón",
+        "marketValue": 2400000
+      },
+      {
+        "name": "Jay Robinson",
+        "position": "DC",
+        "rating": 74,
+        "age": 18,
+        "nationality": "Inglaterra",
+        "marketValue": 8000000
+      },
+      {
+        "name": "Samuel Edozie",
+        "position": "DC",
+        "rating": 78,
+        "age": 23,
+        "nationality": "Inglaterra",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Cameron Archer",
+        "position": "DC",
+        "rating": 76,
+        "age": 19,
+        "nationality": "Inglaterra",
+        "marketValue": 10000000
+      },
+      {
+        "name": "Adam Armstrong",
+        "position": "DC",
+        "rating": 81,
+        "age": 28,
+        "nationality": "Inglaterra",
+        "marketValue": 9000000
+      },
+      {
+        "name": "Ross Stewart",
+        "position": "DC",
+        "rating": 78,
+        "age": 29,
+        "nationality": "Escocia",
+        "marketValue": 2800000
+      }
+    ]
+  },
+  {
+    "id": "coventry-city",
+    "name": "Coventry City",
+    "players": [
+      {
+        "name": "Carl Rushworth",
+        "position": "POR",
+        "rating": 77,
+        "age": 19,
+        "nationality": "Inglaterra",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Oliver Dovin",
+        "position": "POR",
+        "rating": 74,
+        "age": 23,
+        "nationality": "Suecia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Ben Wilson",
+        "position": "POR",
+        "rating": 77,
+        "age": 33,
+        "nationality": "Inglaterra",
+        "marketValue": 500
+      },
+      {
+        "name": "Bobby Thomas",
+        "position": "DFC",
+        "rating": 80,
+        "age": 25,
+        "nationality": "Inglaterra",
+        "marketValue": 10000000
+      },
+      {
+        "name": "Liam Kitching",
+        "position": "DFC",
+        "rating": 78,
+        "age": 15,
+        "nationality": "Inglaterra",
+        "marketValue": 8000000
+      },
+      {
+        "name": "Joel Latibeaudiere",
+        "position": "DFC",
+        "rating": 74,
+        "age": 22,
+        "nationality": "Jamaica",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Luke Woolfenden",
+        "position": "DFC",
+        "rating": 78,
+        "age": 26,
+        "nationality": "Inglaterra",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Jay Dasilva",
+        "position": "DFC",
+        "rating": 80,
+        "age": 27,
+        "nationality": "Gales",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Miguel Ángel Brau",
+        "position": "DFC",
+        "rating": 73,
+        "age": 33,
+        "nationality": "España",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Jake Bidwell",
+        "position": "DFC",
+        "rating": 73,
+        "age": 21,
+        "nationality": "Inglaterra",
+        "marketValue": 800
+      },
+      {
+        "name": "Milan van Ewijk",
+        "position": "DFC",
+        "rating": 84,
+        "age": 27,
+        "nationality": "Países Bajos",
+        "marketValue": 16000000
+      },
+      {
+        "name": "Kaine Kesler-Hayden",
+        "position": "DFC",
+        "rating": 74,
+        "age": 20,
+        "nationality": "Inglaterra",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Matt Grimes",
+        "position": "MC",
+        "rating": 81,
+        "age": 30,
+        "nationality": "Inglaterra",
+        "marketValue": 4500000
+      },
+      {
+        "name": "Jack Rudoni",
+        "position": "MC",
+        "rating": 82,
+        "age": 24,
+        "nationality": "Inglaterra",
+        "marketValue": 15000000
+      },
+      {
+        "name": "Victor Torp",
+        "position": "MC",
+        "rating": 83,
+        "age": 29,
+        "nationality": "Dinamarca",
+        "marketValue": 12000000
+      },
+      {
+        "name": "Josh Eccles",
+        "position": "MC",
+        "rating": 79,
+        "age": 28,
+        "nationality": "Inglaterra",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Jamie Allen",
+        "position": "MC",
+        "rating": 77,
+        "age": 31,
+        "nationality": "Inglaterra",
+        "marketValue": 600
+      },
+      {
+        "name": "Ephron Mason-Clark",
+        "position": "MC",
+        "rating": 82,
+        "age": 26,
+        "nationality": "Inglaterra",
+        "marketValue": 8000000
+      },
+      {
+        "name": "Romain Esse",
+        "position": "DC",
+        "rating": 79,
+        "age": 20,
+        "nationality": "Inglaterra",
+        "marketValue": 10000000
+      },
+      {
+        "name": "Tatsuhiro Sakamoto",
+        "position": "DC",
+        "rating": 79,
+        "age": 29,
+        "nationality": "Japón",
+        "marketValue": 4500000
+      },
+      {
+        "name": "Min-hyeok Yang",
+        "position": "DC",
+        "rating": 76,
+        "age": 18,
+        "nationality": "Corea del Sur",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Jahnoah Markelo",
+        "position": "DC",
+        "rating": 77,
+        "age": 23,
+        "nationality": "Surinam",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Haji Wright",
+        "position": "DC",
+        "rating": 81,
+        "age": 27,
+        "nationality": "Estados Unidos",
+        "marketValue": 12000000
+      },
+      {
+        "name": "Brandon Thomas-Asante",
+        "position": "DC",
+        "rating": 80,
+        "age": 23,
+        "nationality": "Ghana",
+        "marketValue": 12000000
+      },
+      {
+        "name": "Ellis Simms",
+        "position": "DC",
+        "rating": 80,
+        "age": 25,
+        "nationality": "Inglaterra",
+        "marketValue": 8000000
+      }
+    ]
+  },
+  {
+    "id": "leicester-city",
+    "name": "Leicester City",
+    "players": [
+      {
+        "name": "Jakub Stolarczyk",
+        "position": "POR",
+        "rating": 77,
+        "age": 25,
+        "nationality": "Polonia",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Fran Vieites",
+        "position": "POR",
+        "rating": 75,
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Asmir Begovic",
+        "position": "POR",
+        "rating": 75,
+        "age": 31,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 200
+      },
+      {
+        "name": "Caleb Okoli",
+        "position": "DFC",
+        "rating": 76,
+        "age": 24,
+        "nationality": "Italia",
+        "marketValue": 12000000
+      },
+      {
+        "name": "Harry Souttar",
+        "position": "DFC",
+        "rating": 74,
+        "age": 15,
+        "nationality": "Australia",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Jannik Vestergaard",
+        "position": "DFC",
+        "rating": 75,
+        "age": 23,
+        "nationality": "Dinamarca",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Ben Nelson",
+        "position": "DFC",
+        "rating": 72,
+        "age": 21,
+        "nationality": "Inglaterra",
+        "marketValue": 600
+      },
+      {
+        "name": "Victor Kristiansen",
+        "position": "DFC",
+        "rating": 74,
+        "age": 16,
+        "nationality": "Dinamarca",
+        "marketValue": 14000000
+      },
+      {
+        "name": "Luke Thomas",
+        "position": "DFC",
+        "rating": 73,
+        "age": 33,
+        "nationality": "Inglaterra",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Ricardo Pereira",
+        "position": "DFC",
+        "rating": 73,
+        "age": 21,
+        "nationality": "Portugal",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Oliver Skipp",
+        "position": "MC",
+        "rating": 76,
+        "age": 22,
+        "nationality": "Inglaterra",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Hamza Choudhury",
+        "position": "MC",
+        "rating": 73,
+        "age": 17,
+        "nationality": "Bangladés",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Jordan James",
+        "position": "MC",
+        "rating": 76,
+        "age": 21,
+        "nationality": "Gales",
+        "marketValue": 8000000
+      },
+      {
+        "name": "Harry Winks",
+        "position": "MC",
+        "rating": 78,
+        "age": 29,
+        "nationality": "Inglaterra",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Michael Golding",
+        "position": "MC",
+        "rating": 72,
+        "age": 34,
+        "nationality": "Inglaterra",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Louis Page",
+        "position": "MC",
+        "rating": 75,
+        "age": 25,
+        "nationality": "Inglaterra",
+        "marketValue": 600
+      },
+      {
+        "name": "Aaron Ramsey",
+        "position": "MC",
+        "rating": 80,
+        "age": 30,
+        "nationality": "Inglaterra",
+        "marketValue": 8000000
+      },
+      {
+        "name": "Bobby De Cordova-Reid",
+        "position": "MC",
+        "rating": 74,
+        "age": 32,
+        "nationality": "Jamaica",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Jeremy Monga",
+        "position": "DC",
+        "rating": 75,
+        "age": 28,
+        "nationality": "Inglaterra",
+        "marketValue": 10000000
+      },
+      {
+        "name": "Stephy Mavididi",
+        "position": "DC",
+        "rating": 76,
+        "age": 27,
+        "nationality": "Inglaterra",
+        "marketValue": 8000000
+      },
+      {
+        "name": "Abdul Fatawu",
+        "position": "DC",
+        "rating": 81,
+        "age": 21,
+        "nationality": "Ghana",
+        "marketValue": 20000000
+      },
+      {
+        "name": "Wanya Marçal",
+        "position": "DC",
+        "rating": 76,
+        "age": 27,
+        "nationality": "Portugal",
+        "marketValue": 300
+      },
+      {
+        "name": "Patson Daka",
+        "position": "DC",
+        "rating": 72,
+        "age": 20,
+        "nationality": "Zambia",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Jordan Ayew",
+        "position": "DC",
+        "rating": 71,
+        "age": 34,
+        "nationality": "Ghana",
+        "marketValue": 1800000
+      }
+    ]
+  },
+  {
+    "id": "sheffield-united",
+    "name": "Sheffield United",
+    "players": [
+      {
+        "name": "Michael Cooper",
+        "position": "POR",
+        "rating": 78,
+        "age": 26,
+        "nationality": "Inglaterra",
+        "marketValue": 10000000
+      },
+      {
+        "name": "Adam Davies",
+        "position": "POR",
+        "rating": 70,
+        "age": 17,
+        "nationality": "Gales",
+        "marketValue": 300
+      },
+      {
+        "name": "Luke Faxon",
+        "position": "POR",
+        "rating": 76,
+        "age": 31,
+        "nationality": "Inglaterra",
+        "marketValue": 0
+      },
+      {
+        "name": "Mark McGuinness",
+        "position": "DFC",
+        "rating": 76,
+        "age": 25,
+        "nationality": "Irlanda",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Japhet Tanganga",
+        "position": "DFC",
+        "rating": 77,
+        "age": 26,
+        "nationality": "Inglaterra",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Tyler Bindon",
+        "position": "DFC",
+        "rating": 72,
+        "age": 21,
+        "nationality": "Nueva Zelanda",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Ben Mee",
+        "position": "DFC",
+        "rating": 72,
+        "age": 15,
+        "nationality": "Inglaterra",
+        "marketValue": 500
+      },
+      {
+        "name": "Harrison Burrows",
+        "position": "DFC",
+        "rating": 76,
+        "age": 24,
+        "nationality": "Inglaterra",
+        "marketValue": 12000000
+      },
+      {
+        "name": "Sam McCallum",
+        "position": "DFC",
+        "rating": 74,
+        "age": 25,
+        "nationality": "Inglaterra",
+        "marketValue": 1400000
+      },
+      {
+        "name": "Ki-Jana Hoever",
+        "position": "DFC",
+        "rating": 76,
+        "age": 24,
+        "nationality": "Países Bajos",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Femi Seriki",
+        "position": "DFC",
+        "rating": 72,
+        "age": 38,
+        "nationality": "Inglaterra",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Jamie Shackleton",
+        "position": "DFC",
+        "rating": 73,
+        "age": 16,
+        "nationality": "Inglaterra",
+        "marketValue": 1300000
+      },
+      {
+        "name": "Mihail Polendakov",
+        "position": "DFC",
+        "rating": 76,
+        "age": 32,
+        "nationality": "Bulgaria",
+        "marketValue": 600
+      },
+      {
+        "name": "Djibril Soumaré",
+        "position": "MC",
+        "rating": 72,
+        "age": 18,
+        "nationality": "Senegal",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Jaïro Riedewald",
+        "position": "MC",
+        "rating": 71,
+        "age": 44,
+        "nationality": "Países Bajos",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Gustavo Hamer",
+        "position": "MC",
+        "rating": 82,
+        "age": 28,
+        "nationality": "Países Bajos",
+        "marketValue": 16000000
+      },
+      {
+        "name": "Sydie Peck",
+        "position": "MC",
+        "rating": 72,
+        "age": 42,
+        "nationality": "Inglaterra",
+        "marketValue": 12000000
+      },
+      {
+        "name": "Andre Brooks",
+        "position": "MC",
+        "rating": 76,
+        "age": 22,
+        "nationality": "Inglaterra",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Tom Davies",
+        "position": "MC",
+        "rating": 75,
+        "age": 22,
+        "nationality": "Inglaterra",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Oliver Arblaster",
+        "position": "MC",
+        "rating": 75,
+        "age": 22,
+        "nationality": "Inglaterra",
+        "marketValue": 1400000
+      },
+      {
+        "name": "Alex Matos",
+        "position": "MC",
+        "rating": 76,
+        "age": 28,
+        "nationality": "Inglaterra",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Tahith Chong",
+        "position": "MC",
+        "rating": 74,
+        "age": 24,
+        "nationality": "Curazao",
+        "marketValue": 4500000
+      },
+      {
+        "name": "Callum O'Hare",
+        "position": "MC",
+        "rating": 80,
+        "age": 27,
+        "nationality": "Inglaterra",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Christian Nwachukwu",
+        "position": "DC",
+        "rating": 68,
+        "age": 40,
+        "nationality": "Nigeria",
+        "marketValue": 800
+      },
+      {
+        "name": "Chiedozie Ogbene",
+        "position": "DC",
+        "rating": 75,
+        "age": 19,
+        "nationality": "Irlanda",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Ehije Ukaki",
+        "position": "DC",
+        "rating": 73,
+        "age": 20,
+        "nationality": "Nigeria",
+        "marketValue": 700
+      },
+      {
+        "name": "Tyrese Campbell",
+        "position": "DC",
+        "rating": 76,
+        "age": 23,
+        "nationality": "Inglaterra",
+        "marketValue": 9000000
+      },
+      {
+        "name": "Tom Cannon",
+        "position": "DC",
+        "rating": 73,
+        "age": 23,
+        "nationality": "Irlanda",
+        "marketValue": 8000000
+      },
+      {
+        "name": "Danny Ings",
+        "position": "DC",
+        "rating": 68,
+        "age": 33,
+        "nationality": "Inglaterra",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Patrick Bamford",
+        "position": "DC",
+        "rating": 71,
+        "age": 45,
+        "nationality": "Inglaterra",
+        "marketValue": 1200000
+      }
+    ]
+  },
+  {
+    "id": "fc-middlesbrough",
+    "name": "Middlesbrough FC",
+    "players": [
+      {
+        "name": "Sol Brynn",
+        "position": "POR",
+        "rating": 79,
+        "age": 31,
+        "nationality": "Inglaterra",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Seny Dieng",
+        "position": "POR",
+        "rating": 77,
+        "age": 31,
+        "nationality": "Senegal",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Jon McLaughlin",
+        "position": "POR",
+        "rating": 75,
+        "age": 33,
+        "nationality": "Escocia",
+        "marketValue": 50
+      },
+      {
+        "name": "Adilson Malanda",
+        "position": "DFC",
+        "rating": 78,
+        "age": 29,
+        "nationality": "Francia",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Alfie Jones",
+        "position": "DFC",
+        "rating": 77,
+        "age": 28,
+        "nationality": "Canadá",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Dael Fry",
+        "position": "DFC",
+        "rating": 77,
+        "age": 28,
+        "nationality": "Inglaterra",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Darragh Lenihan",
+        "position": "DFC",
+        "rating": 76,
+        "age": 26,
+        "nationality": "Irlanda",
+        "marketValue": 800
+      },
+      {
+        "name": "George Edmundson",
+        "position": "DFC",
+        "rating": 73,
+        "age": 25,
+        "nationality": "Inglaterra",
+        "marketValue": 750
+      },
+      {
+        "name": "Matt Targett",
+        "position": "DFC",
+        "rating": 77,
+        "age": 30,
+        "nationality": "Inglaterra",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Alex Bangura",
+        "position": "DFC",
+        "rating": 73,
+        "age": 24,
+        "nationality": "Sierra Leona",
+        "marketValue": 700
+      },
+      {
+        "name": "Finley Munroe",
+        "position": "DFC",
+        "rating": 72,
+        "age": 15,
+        "nationality": "Inglaterra",
+        "marketValue": 250
+      },
+      {
+        "name": "Callum Brittain",
+        "position": "DFC",
+        "rating": 80,
+        "age": 27,
+        "nationality": "Inglaterra",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Luke Ayling",
+        "position": "DFC",
+        "rating": 71,
+        "age": 34,
+        "nationality": "Inglaterra",
+        "marketValue": 400
+      },
+      {
+        "name": "Hayden Hackney",
+        "position": "MC",
+        "rating": 82,
+        "age": 23,
+        "nationality": "Inglaterra",
+        "marketValue": 25000000
+      },
+      {
+        "name": "Sverre Nypan",
+        "position": "MC",
+        "rating": 76,
+        "age": 19,
+        "nationality": "Noruega",
+        "marketValue": 15000000
+      },
+      {
+        "name": "Aidan Morris",
+        "position": "MC",
+        "rating": 74,
+        "age": 18,
+        "nationality": "Estados Unidos",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Riley McGree",
+        "position": "MC",
+        "rating": 76,
+        "age": 27,
+        "nationality": "Australia",
+        "marketValue": 2800000
+      },
+      {
+        "name": "Alan Browne",
+        "position": "MC",
+        "rating": 73,
+        "age": 16,
+        "nationality": "Irlanda",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Law McCabe",
+        "position": "MC",
+        "rating": 76,
+        "age": 28,
+        "nationality": "Inglaterra",
+        "marketValue": 100
+      },
+      {
+        "name": "Leo Castledine",
+        "position": "MC",
+        "rating": 75,
+        "age": 23,
+        "nationality": "Inglaterra",
+        "marketValue": 1100000
+      },
+      {
+        "name": "Alex Gilbert",
+        "position": "MC",
+        "rating": 73,
+        "age": 24,
+        "nationality": "Irlanda",
+        "marketValue": 500
+      },
+      {
+        "name": "Jeremy Sarmiento",
+        "position": "DC",
+        "rating": 76,
+        "age": 23,
+        "nationality": "Ecuador",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Micah Hamilton",
+        "position": "DC",
+        "rating": 73,
+        "age": 17,
+        "nationality": "Inglaterra",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Sam Silvera",
+        "position": "DC",
+        "rating": 72,
+        "age": 22,
+        "nationality": "Australia",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Morgan Whittaker",
+        "position": "DC",
+        "rating": 80,
+        "age": 25,
+        "nationality": "Inglaterra",
+        "marketValue": 10000000
+      },
+      {
+        "name": "Sontje Hansen",
+        "position": "DC",
+        "rating": 74,
+        "age": 27,
+        "nationality": "Curazao",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Tommy Conway",
+        "position": "DC",
+        "rating": 76,
+        "age": 23,
+        "nationality": "Escocia",
+        "marketValue": 8000000
+      },
+      {
+        "name": "David Strelec",
+        "position": "DC",
+        "rating": 76,
+        "age": 24,
+        "nationality": "Eslovaquia",
+        "marketValue": 7500000
+      },
+      {
+        "name": "Kaly Sène",
+        "position": "DC",
+        "rating": 71,
+        "age": 20,
+        "nationality": "Senegal",
+        "marketValue": 2000000
+      }
+    ]
+  },
+  {
+    "id": "norwich-city",
+    "name": "Norwich City",
+    "players": [
+      {
+        "name": "Vladan Kovacevic",
+        "position": "POR",
+        "rating": 75,
+        "age": 27,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Daniel Grimshaw",
+        "position": "POR",
+        "rating": 73,
+        "age": 32,
+        "nationality": "Inglaterra",
+        "marketValue": 700
+      },
+      {
+        "name": "Vicente Reyes",
+        "position": "POR",
+        "rating": 74,
+        "age": 34,
+        "nationality": "Chile",
+        "marketValue": 350
+      },
+      {
+        "name": "Daniel Barden",
+        "position": "POR",
+        "rating": 69,
+        "age": 39,
+        "nationality": "Gales",
+        "marketValue": 100
+      },
+      {
+        "name": "Louie Moulden",
+        "position": "POR",
+        "rating": 74,
+        "age": 31,
+        "nationality": "Inglaterra",
+        "marketValue": 0
+      },
+      {
+        "name": "José Córdoba",
+        "position": "DFC",
+        "rating": 70,
+        "age": 33,
+        "nationality": "Panamá",
+        "marketValue": 4500000
+      },
+      {
+        "name": "Harry Darling",
+        "position": "DFC",
+        "rating": 75,
+        "age": 26,
+        "nationality": "Inglaterra",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Jakov Medic",
+        "position": "DFC",
+        "rating": 74,
+        "age": 27,
+        "nationality": "Croacia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Ruairi McConville",
+        "position": "DFC",
+        "rating": 71,
+        "age": 15,
+        "nationality": "Irlanda del Norte",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Shane Duffy",
+        "position": "DFC",
+        "rating": 69,
+        "age": 34,
+        "nationality": "Irlanda",
+        "marketValue": 500
+      },
+      {
+        "name": "Harry Amass",
+        "position": "DFC",
+        "rating": 72,
+        "age": 18,
+        "nationality": "Inglaterra",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Ben Chrisene",
+        "position": "DFC",
+        "rating": 71,
+        "age": 22,
+        "nationality": "Inglaterra",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Lucien Mahovo",
+        "position": "DFC",
+        "rating": 70,
+        "age": 20,
+        "nationality": "Inglaterra",
+        "marketValue": 200
+      },
+      {
+        "name": "Jack Stacey",
+        "position": "DFC",
+        "rating": 75,
+        "age": 29,
+        "nationality": "Inglaterra",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Kellen Fisher",
+        "position": "DFC",
+        "rating": 70,
+        "age": 35,
+        "nationality": "Inglaterra",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Mirko Topić",
+        "position": "MC",
+        "rating": 74,
+        "age": 22,
+        "nationality": "Serbia",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Jacob Wright",
+        "position": "MC",
+        "rating": 70,
+        "age": 16,
+        "nationality": "Inglaterra",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Amankwah Forson",
+        "position": "MC",
+        "rating": 70,
+        "age": 18,
+        "nationality": "Ghana",
+        "marketValue": 4500000
+      },
+      {
+        "name": "Pelle Mattsson",
+        "position": "MC",
+        "rating": 73,
+        "age": 24,
+        "nationality": "Dinamarca",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Anis Ben Slimane",
+        "position": "MC",
+        "rating": 73,
+        "age": 20,
+        "nationality": "Túnez",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Liam Gibbs",
+        "position": "MC",
+        "rating": 72,
+        "age": 23,
+        "nationality": "Inglaterra",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Paris Maghoma",
+        "position": "MC",
+        "rating": 74,
+        "age": 25,
+        "nationality": "Inglaterra",
+        "marketValue": 800
+      },
+      {
+        "name": "Kenny McLean",
+        "position": "MC",
+        "rating": 74,
+        "age": 23,
+        "nationality": "Escocia",
+        "marketValue": 500
+      },
+      {
+        "name": "Gabe Forsyth",
+        "position": "MC",
+        "rating": 68,
+        "age": 41,
+        "nationality": "Escocia",
+        "marketValue": 200
+      },
+      {
+        "name": "Ali Ahmed",
+        "position": "MC",
+        "rating": 76,
+        "age": 21,
+        "nationality": "Canadá",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Jeffrey Schlupp",
+        "position": "MC",
+        "rating": 74,
+        "age": 27,
+        "nationality": "Ghana",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Oscar Schwartau",
+        "position": "MC",
+        "rating": 75,
+        "age": 29,
+        "nationality": "Dinamarca",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Emiliano Marcondes",
+        "position": "MC",
+        "rating": 73,
+        "age": 30,
+        "nationality": "Dinamarca",
+        "marketValue": 800
+      },
+      {
+        "name": "Papa Amadou Diallo",
+        "position": "DC",
+        "rating": 75,
+        "age": 19,
+        "nationality": "Senegal",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Matěj Jurásek",
+        "position": "DC",
+        "rating": 71,
+        "age": 22,
+        "nationality": "República Checa",
+        "marketValue": 6500000
+      },
+      {
+        "name": "Tony Springett",
+        "position": "DC",
+        "rating": 63,
+        "age": 42,
+        "nationality": "Irlanda",
+        "marketValue": 500
+      },
+      {
+        "name": "Josh Sargent",
+        "position": "DC",
+        "rating": 80,
+        "age": 25,
+        "nationality": "Estados Unidos",
+        "marketValue": 20000000
+      },
+      {
+        "name": "Mathias Kvistgaarden",
+        "position": "DC",
+        "rating": 75,
+        "age": 30,
+        "nationality": "Dinamarca",
+        "marketValue": 10000000
+      },
+      {
+        "name": "Ante Crnac",
+        "position": "DC",
+        "rating": 73,
+        "age": 17,
+        "nationality": "Croacia",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Jovon Makama",
+        "position": "DC",
+        "rating": 74,
+        "age": 24,
+        "nationality": "Inglaterra",
+        "marketValue": 1500000
+      }
+    ]
+  },
+  {
+    "id": "birmingham-city",
+    "name": "Birmingham City",
+    "players": [
+      {
+        "name": "James Beadle",
+        "position": "POR",
+        "rating": 74,
+        "age": 25,
+        "nationality": "Inglaterra",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Ryan Allsop",
+        "position": "POR",
+        "rating": 68,
+        "age": 21,
+        "nationality": "Inglaterra",
+        "marketValue": 800
+      },
+      {
+        "name": "Christoph Klarer",
+        "position": "DFC",
+        "rating": 76,
+        "age": 25,
+        "nationality": "Austria",
+        "marketValue": 5500000
+      },
+      {
+        "name": "Phil Neumann",
+        "position": "DFC",
+        "rating": 75,
+        "age": 28,
+        "nationality": "Alemania",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Jack Robinson",
+        "position": "DFC",
+        "rating": 74,
+        "age": 32,
+        "nationality": "Inglaterra",
+        "marketValue": 500
+      },
+      {
+        "name": "Kai Wagner",
+        "position": "DFC",
+        "rating": 77,
+        "age": 31,
+        "nationality": "Alemania",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Alex Cochrane",
+        "position": "DFC",
+        "rating": 72,
+        "age": 20,
+        "nationality": "Inglaterra",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Lee Buchanan",
+        "position": "DFC",
+        "rating": 73,
+        "age": 24,
+        "nationality": "Inglaterra",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Bright Osayi-Samuel",
+        "position": "DFC",
+        "rating": 75,
+        "age": 26,
+        "nationality": "Nigeria",
+        "marketValue": 6500000
+      },
+      {
+        "name": "Ethan Laird",
+        "position": "DFC",
+        "rating": 74,
+        "age": 24,
+        "nationality": "Inglaterra",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Tomoki Iwata",
+        "position": "MC",
+        "rating": 75,
+        "age": 24,
+        "nationality": "Japón",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Tommy Doyle",
+        "position": "MC",
+        "rating": 74,
+        "age": 24,
+        "nationality": "Inglaterra",
+        "marketValue": 8000000
+      },
+      {
+        "name": "Seung-ho Paik",
+        "position": "MC",
+        "rating": 77,
+        "age": 28,
+        "nationality": "Corea del Sur",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Jhon Solís",
+        "position": "MC",
+        "rating": 71,
+        "age": 21,
+        "nationality": "Colombia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Kanya Fujimoto",
+        "position": "MC",
+        "rating": 74,
+        "age": 27,
+        "nationality": "Japón",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Willum Thór Willumsson",
+        "position": "MC",
+        "rating": 70,
+        "age": 18,
+        "nationality": "Islandia",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Ibrahim Osman",
+        "position": "DC",
+        "rating": 73,
+        "age": 17,
+        "nationality": "Ghana",
+        "marketValue": 8000000
+      },
+      {
+        "name": "Demarai Gray",
+        "position": "DC",
+        "rating": 76,
+        "age": 29,
+        "nationality": "Jamaica",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Carlos Vicente",
+        "position": "DC",
+        "rating": 76,
+        "age": 26,
+        "nationality": "España",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Patrick Roberts",
+        "position": "DC",
+        "rating": 72,
+        "age": 16,
+        "nationality": "Inglaterra",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Scott Wright",
+        "position": "DC",
+        "rating": 74,
+        "age": 28,
+        "nationality": "Escocia",
+        "marketValue": 700
+      },
+      {
+        "name": "Jay Stansfield",
+        "position": "DC",
+        "rating": 81,
+        "age": 28,
+        "nationality": "Inglaterra",
+        "marketValue": 18000000
+      },
+      {
+        "name": "Kyogo Furuhashi",
+        "position": "DC",
+        "rating": 67,
+        "age": 31,
+        "nationality": "Japón",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Marvin Ducksch",
+        "position": "DC",
+        "rating": 69,
+        "age": 33,
+        "nationality": "Alemania",
+        "marketValue": 2000000
+      },
+      {
+        "name": "August Priske",
+        "position": "DC",
+        "rating": 75,
+        "age": 29,
+        "nationality": "Dinamarca",
+        "marketValue": 1600000
+      }
+    ]
+  },
+  {
+    "id": "west-bromwich-albion",
+    "name": "West Bromwich Albion",
+    "players": [
+      {
+        "name": "Max O'Leary",
+        "position": "POR",
+        "rating": 75,
+        "age": 29,
+        "nationality": "Irlanda",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Josh Griffiths",
+        "position": "POR",
+        "rating": 70,
+        "age": 20,
+        "nationality": "Inglaterra",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Joe Wildsmith",
+        "position": "POR",
+        "rating": 68,
+        "age": 23,
+        "nationality": "Inglaterra",
+        "marketValue": 350
+      },
+      {
+        "name": "Chris Mepham",
+        "position": "DFC",
+        "rating": 75,
+        "age": 28,
+        "nationality": "Gales",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Nat Phillips",
+        "position": "DFC",
+        "rating": 77,
+        "age": 28,
+        "nationality": "Inglaterra",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Krystian Bielik",
+        "position": "DFC",
+        "rating": 74,
+        "age": 28,
+        "nationality": "Polonia",
+        "marketValue": 2800000
+      },
+      {
+        "name": "George Campbell",
+        "position": "DFC",
+        "rating": 73,
+        "age": 24,
+        "nationality": "Estados Unidos",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Samuel Iling-Junior",
+        "position": "DFC",
+        "rating": 72,
+        "age": 22,
+        "nationality": "Inglaterra",
+        "marketValue": 10000000
+      },
+      {
+        "name": "Callum Styles",
+        "position": "DFC",
+        "rating": 73,
+        "age": 25,
+        "nationality": "Hungría",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Charlie Taylor",
+        "position": "DFC",
+        "rating": 75,
+        "age": 29,
+        "nationality": "Inglaterra",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Alfie Gilchrist",
+        "position": "DFC",
+        "rating": 70,
+        "age": 22,
+        "nationality": "Inglaterra",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Danny Imray",
+        "position": "DFC",
+        "rating": 70,
+        "age": 22,
+        "nationality": "Inglaterra",
+        "marketValue": 275
+      },
+      {
+        "name": "Ousmane Diakité",
+        "position": "MC",
+        "rating": 70,
+        "age": 17,
+        "nationality": "Malí",
+        "marketValue": 800
+      },
+      {
+        "name": "Isaac Price",
+        "position": "MC",
+        "rating": 72,
+        "age": 21,
+        "nationality": "Irlanda del Norte",
+        "marketValue": 12000000
+      },
+      {
+        "name": "Jayson Molumby",
+        "position": "MC",
+        "rating": 75,
+        "age": 26,
+        "nationality": "Irlanda",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Alex Mowatt",
+        "position": "MC",
+        "rating": 75,
+        "age": 27,
+        "nationality": "Inglaterra",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Mikey Johnston",
+        "position": "DC",
+        "rating": 75,
+        "age": 26,
+        "nationality": "Irlanda",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Jed Wallace",
+        "position": "DC",
+        "rating": 68,
+        "age": 31,
+        "nationality": "Inglaterra",
+        "marketValue": 1600000
+      },
+      {
+        "name": "Josh Maja",
+        "position": "DC",
+        "rating": 73,
+        "age": 27,
+        "nationality": "Nigeria",
+        "marketValue": 9000000
+      },
+      {
+        "name": "Aune Heggebø",
+        "position": "DC",
+        "rating": 73,
+        "age": 19,
+        "nationality": "Noruega",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Karlan Grant",
+        "position": "DC",
+        "rating": 73,
+        "age": 28,
+        "nationality": "Inglaterra",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Daryl Dike",
+        "position": "DC",
+        "rating": 72,
+        "age": 25,
+        "nationality": "Estados Unidos",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Tammer Bany",
+        "position": "DC",
+        "rating": 74,
+        "age": 26,
+        "nationality": "Jordania",
+        "marketValue": 250
+      }
+    ]
+  },
+  {
+    "id": "swansea-city",
+    "name": "Swansea City",
+    "players": [
+      {
+        "name": "Andy Fisher",
+        "position": "POR",
+        "rating": 69,
+        "age": 27,
+        "nationality": "Inglaterra",
+        "marketValue": 600
+      },
+      {
+        "name": "Lawrence Vigouroux",
+        "position": "POR",
+        "rating": 69,
+        "age": 22,
+        "nationality": "Chile",
+        "marketValue": 450
+      },
+      {
+        "name": "Paul Farman",
+        "position": "POR",
+        "rating": 72,
+        "age": 29,
+        "nationality": "Inglaterra",
+        "marketValue": 50
+      },
+      {
+        "name": "Ben Cabango",
+        "position": "DFC",
+        "rating": 74,
+        "age": 25,
+        "nationality": "Gales",
+        "marketValue": 9000000
+      },
+      {
+        "name": "Cameron Burgess",
+        "position": "DFC",
+        "rating": 71,
+        "age": 15,
+        "nationality": "Australia",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Ricardo Santos",
+        "position": "DFC",
+        "rating": 70,
+        "age": 23,
+        "nationality": "Cabo Verde",
+        "marketValue": 500
+      },
+      {
+        "name": "Josh Tymon",
+        "position": "DFC",
+        "rating": 76,
+        "age": 26,
+        "nationality": "Inglaterra",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Ishé Samuels-Smith",
+        "position": "DFC",
+        "rating": 67,
+        "age": 16,
+        "nationality": "Inglaterra",
+        "marketValue": 700
+      },
+      {
+        "name": "Josh Key",
+        "position": "DFC",
+        "rating": 73,
+        "age": 26,
+        "nationality": "Inglaterra",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Joel Ward",
+        "position": "DFC",
+        "rating": 70,
+        "age": 25,
+        "nationality": "Inglaterra",
+        "marketValue": 300
+      },
+      {
+        "name": "Sam Parker",
+        "position": "DFC",
+        "rating": 65,
+        "age": 41,
+        "nationality": "Gales",
+        "marketValue": 150
+      },
+      {
+        "name": "Malick Yalcouyé",
+        "position": "MC",
+        "rating": 69,
+        "age": 20,
+        "nationality": "Costa de Marfil",
+        "marketValue": 14000000
+      },
+      {
+        "name": "Gonçalo Franco",
+        "position": "MC",
+        "rating": 69,
+        "age": 17,
+        "nationality": "Portugal",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Marko Stamenić",
+        "position": "MC",
+        "rating": 71,
+        "age": 23,
+        "nationality": "Nueva Zelanda",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Melker Widell",
+        "position": "MC",
+        "rating": 70,
+        "age": 23,
+        "nationality": "Suecia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Ethan Galbraith",
+        "position": "MC",
+        "rating": 75,
+        "age": 30,
+        "nationality": "Irlanda del Norte",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Jay Fulton",
+        "position": "MC",
+        "rating": 71,
+        "age": 31,
+        "nationality": "Escocia",
+        "marketValue": 600
+      },
+      {
+        "name": "Liam Cullen",
+        "position": "MC",
+        "rating": 68,
+        "age": 20,
+        "nationality": "Gales",
+        "marketValue": 2800000
+      },
+      {
+        "name": "Oliver Cooper",
+        "position": "MC",
+        "rating": 73,
+        "age": 31,
+        "nationality": "Gales",
+        "marketValue": 2800000
+      },
+      {
+        "name": "Gustavo Nunes",
+        "position": "DC",
+        "rating": 71,
+        "age": 18,
+        "nationality": "Brasil",
+        "marketValue": 10000000
+      },
+      {
+        "name": "Zeidane Inoussa",
+        "position": "DC",
+        "rating": 71,
+        "age": 27,
+        "nationality": "Suecia",
+        "marketValue": 5500000
+      },
+      {
+        "name": "Ji-sung Eom",
+        "position": "DC",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Corea del Sur",
+        "marketValue": 1400000
+      },
+      {
+        "name": "Ronald",
+        "position": "DC",
+        "rating": 63,
+        "age": 35,
+        "nationality": "Brasil",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Adam Idah",
+        "position": "DC",
+        "rating": 67,
+        "age": 33,
+        "nationality": "Irlanda",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Žan Vipotnik",
+        "position": "DC",
+        "rating": 72,
+        "age": 23,
+        "nationality": "Eslovenia",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Bobby Wales",
+        "position": "DC",
+        "rating": 67,
+        "age": 24,
+        "nationality": "Escocia",
+        "marketValue": 400
+      }
+    ]
+  },
+  {
+    "id": "stoke-city",
+    "name": "Stoke City",
+    "players": [
+      {
+        "name": "Viktor Johansson",
+        "position": "POR",
+        "rating": 72,
+        "age": 27,
+        "nationality": "Suecia",
+        "marketValue": 10000000
+      },
+      {
+        "name": "Gavin Bazunu",
+        "position": "POR",
+        "rating": 74,
+        "age": 31,
+        "nationality": "Irlanda",
+        "marketValue": 9000000
+      },
+      {
+        "name": "Tommy Simkin",
+        "position": "POR",
+        "rating": 70,
+        "age": 25,
+        "nationality": "Inglaterra",
+        "marketValue": 500
+      },
+      {
+        "name": "Frank Fielding",
+        "position": "POR",
+        "rating": 72,
+        "age": 34,
+        "nationality": "Inglaterra",
+        "marketValue": 75
+      },
+      {
+        "name": "True Grant",
+        "position": "POR",
+        "rating": 67,
+        "age": 20,
+        "nationality": "Inglaterra",
+        "marketValue": 0
+      },
+      {
+        "name": "Ben Wilmot",
+        "position": "DFC",
+        "rating": 72,
+        "age": 16,
+        "nationality": "Inglaterra",
+        "marketValue": 5500000
+      },
+      {
+        "name": "Ashley Phillips",
+        "position": "DFC",
+        "rating": 73,
+        "age": 26,
+        "nationality": "Inglaterra",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Bosun Lawal",
+        "position": "DFC",
+        "rating": 69,
+        "age": 18,
+        "nationality": "Irlanda",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Maksym Taloverov",
+        "position": "DFC",
+        "rating": 66,
+        "age": 40,
+        "nationality": "Ucrania",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Ben Gibson",
+        "position": "DFC",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Inglaterra",
+        "marketValue": 700
+      },
+      {
+        "name": "Eric-Junior Bocat",
+        "position": "DFC",
+        "rating": 68,
+        "age": 17,
+        "nationality": "Francia",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Aaron Cresswell",
+        "position": "DFC",
+        "rating": 67,
+        "age": 36,
+        "nationality": "Inglaterra",
+        "marketValue": 450
+      },
+      {
+        "name": "Junior Tchamadeu",
+        "position": "DFC",
+        "rating": 69,
+        "age": 22,
+        "nationality": "Camerún",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Steven Nzonzi",
+        "position": "MC",
+        "rating": 67,
+        "age": 15,
+        "nationality": "Francia",
+        "marketValue": 500
+      },
+      {
+        "name": "Tomas Rigo",
+        "position": "MC",
+        "rating": 69,
+        "age": 19,
+        "nationality": "Eslovaquia",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Lewis Baker",
+        "position": "MC",
+        "rating": 75,
+        "age": 30,
+        "nationality": "Inglaterra",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Ben Pearson",
+        "position": "MC",
+        "rating": 72,
+        "age": 31,
+        "nationality": "Inglaterra",
+        "marketValue": 900
+      },
+      {
+        "name": "Tatsuki Seko",
+        "position": "MC",
+        "rating": 72,
+        "age": 28,
+        "nationality": "Japón",
+        "marketValue": 900
+      },
+      {
+        "name": "Jun-ho Bae",
+        "position": "MC",
+        "rating": 71,
+        "age": 22,
+        "nationality": "Corea del Sur",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Sorba Thomas",
+        "position": "DC",
+        "rating": 77,
+        "age": 27,
+        "nationality": "Gales",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Million Manhoef",
+        "position": "DC",
+        "rating": 66,
+        "age": 42,
+        "nationality": "Países Bajos",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Lamine Cissé",
+        "position": "DC",
+        "rating": 70,
+        "age": 29,
+        "nationality": "Francia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Divin Mubama",
+        "position": "DC",
+        "rating": 71,
+        "age": 21,
+        "nationality": "Inglaterra",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Róbert Boženík",
+        "position": "DC",
+        "rating": 70,
+        "age": 26,
+        "nationality": "Eslovaquia",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Milan Smit",
+        "position": "DC",
+        "rating": 71,
+        "age": 22,
+        "nationality": "Países Bajos",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Sam Gallagher",
+        "position": "DC",
+        "rating": 69,
+        "age": 20,
+        "nationality": "Inglaterra",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Nathan Lowe",
+        "position": "DC",
+        "rating": 64,
+        "age": 35,
+        "nationality": "Inglaterra",
+        "marketValue": 300
+      }
+    ]
+  },
+  {
+    "id": "bristol-city",
+    "name": "Bristol City",
+    "players": [
+      {
+        "name": "Radek Vítek",
+        "position": "POR",
+        "rating": 68,
+        "age": 23,
+        "nationality": "República Checa",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Joe Lumley",
+        "position": "POR",
+        "rating": 71,
+        "age": 30,
+        "nationality": "Inglaterra",
+        "marketValue": 450
+      },
+      {
+        "name": "Lewis Thomas",
+        "position": "POR",
+        "rating": 72,
+        "age": 32,
+        "nationality": "Gales",
+        "marketValue": 150
+      },
+      {
+        "name": "Luke McNally",
+        "position": "DFC",
+        "rating": 69,
+        "age": 15,
+        "nationality": "Irlanda",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Zak Vyner",
+        "position": "DFC",
+        "rating": 75,
+        "age": 28,
+        "nationality": "Kenia",
+        "marketValue": 2800000
+      },
+      {
+        "name": "Rob Dickie",
+        "position": "DFC",
+        "rating": 71,
+        "age": 16,
+        "nationality": "Inglaterra",
+        "marketValue": 2300000
+      },
+      {
+        "name": "Rob Atkinson",
+        "position": "DFC",
+        "rating": 73,
+        "age": 27,
+        "nationality": "Inglaterra",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Josh Campbell-Slowey",
+        "position": "DFC",
+        "rating": 67,
+        "age": 33,
+        "nationality": "Inglaterra",
+        "marketValue": 0
+      },
+      {
+        "name": "Neto Borges",
+        "position": "DFC",
+        "rating": 70,
+        "age": 21,
+        "nationality": "Brasil",
+        "marketValue": 2600000
+      },
+      {
+        "name": "Cameron Pring",
+        "position": "DFC",
+        "rating": 72,
+        "age": 28,
+        "nationality": "Inglaterra",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Seb Naylor",
+        "position": "DFC",
+        "rating": 68,
+        "age": 20,
+        "nationality": "Inglaterra",
+        "marketValue": 0
+      },
+      {
+        "name": "George Tanner",
+        "position": "DFC",
+        "rating": 69,
+        "age": 19,
+        "nationality": "Inglaterra",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Ross McCrorie",
+        "position": "DFC",
+        "rating": 74,
+        "age": 27,
+        "nationality": "Escocia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Adam Randell",
+        "position": "MC",
+        "rating": 75,
+        "age": 25,
+        "nationality": "Inglaterra",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Jason Knight",
+        "position": "MC",
+        "rating": 72,
+        "age": 24,
+        "nationality": "Irlanda",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Max Bird",
+        "position": "MC",
+        "rating": 73,
+        "age": 25,
+        "nationality": "Inglaterra",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Joe Williams",
+        "position": "MC",
+        "rating": 73,
+        "age": 29,
+        "nationality": "Inglaterra",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Sam Morsy",
+        "position": "MC",
+        "rating": 66,
+        "age": 40,
+        "nationality": "Egipto",
+        "marketValue": 400
+      },
+      {
+        "name": "Adam Murphy",
+        "position": "MC",
+        "rating": 72,
+        "age": 28,
+        "nationality": "Irlanda",
+        "marketValue": 0
+      },
+      {
+        "name": "Mark Sykes",
+        "position": "MC",
+        "rating": 69,
+        "age": 17,
+        "nationality": "Irlanda",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Scott Twine",
+        "position": "MC",
+        "rating": 77,
+        "age": 26,
+        "nationality": "Inglaterra",
+        "marketValue": 10000000
+      },
+      {
+        "name": "George Earthy",
+        "position": "MC",
+        "rating": 69,
+        "age": 44,
+        "nationality": "Inglaterra",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Delano Burgzorg",
+        "position": "DC",
+        "rating": 73,
+        "age": 27,
+        "nationality": "Surinam",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Sam Bell",
+        "position": "DC",
+        "rating": 69,
+        "age": 20,
+        "nationality": "Inglaterra",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Emil Riis",
+        "position": "DC",
+        "rating": 72,
+        "age": 18,
+        "nationality": "Dinamarca",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Sinclair Armstrong",
+        "position": "DC",
+        "rating": 70,
+        "age": 30,
+        "nationality": "Irlanda",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Fally Mayulu",
+        "position": "DC",
+        "rating": 68,
+        "age": 23,
+        "nationality": "Francia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Ephraim Yeboah",
+        "position": "DC",
+        "rating": 71,
+        "age": 25,
+        "nationality": "Italia",
+        "marketValue": 150
+      }
+    ]
+  },
+  {
+    "id": "hull-city",
+    "name": "Hull City",
+    "players": [
+      {
+        "name": "Ivor Pandur",
+        "position": "POR",
+        "rating": 73,
+        "age": 25,
+        "nationality": "Croacia",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Dillon Phillips",
+        "position": "POR",
+        "rating": 71,
+        "age": 30,
+        "nationality": "Inglaterra",
+        "marketValue": 250
+      },
+      {
+        "name": "Charlie Hughes",
+        "position": "DFC",
+        "rating": 72,
+        "age": 22,
+        "nationality": "Inglaterra",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Paddy McNair",
+        "position": "DFC",
+        "rating": 73,
+        "age": 30,
+        "nationality": "Irlanda del Norte",
+        "marketValue": 2800000
+      },
+      {
+        "name": "John Egan",
+        "position": "DFC",
+        "rating": 69,
+        "age": 15,
+        "nationality": "Irlanda",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Semi Ajayi",
+        "position": "DFC",
+        "rating": 72,
+        "age": 32,
+        "nationality": "Nigeria",
+        "marketValue": 900
+      },
+      {
+        "name": "Akin Famewo",
+        "position": "DFC",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Inglaterra",
+        "marketValue": 800
+      },
+      {
+        "name": "Cathal McCarthy",
+        "position": "DFC",
+        "rating": 67,
+        "age": 19,
+        "nationality": "Irlanda",
+        "marketValue": 300
+      },
+      {
+        "name": "James Debayo",
+        "position": "DFC",
+        "rating": 66,
+        "age": 37,
+        "nationality": "Inglaterra",
+        "marketValue": 0
+      },
+      {
+        "name": "Ryan Giles",
+        "position": "DFC",
+        "rating": 78,
+        "age": 26,
+        "nationality": "Inglaterra",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Brandon Williams",
+        "position": "DFC",
+        "rating": 73,
+        "age": 30,
+        "nationality": "Inglaterra",
+        "marketValue": 1000000
+      },
+      {
+        "name": "James Furlong",
+        "position": "DFC",
+        "rating": 72,
+        "age": 29,
+        "nationality": "Irlanda",
+        "marketValue": 300
+      },
+      {
+        "name": "Matty Jacob",
+        "position": "DFC",
+        "rating": 68,
+        "age": 16,
+        "nationality": "Inglaterra",
+        "marketValue": 200
+      },
+      {
+        "name": "Cody Drameh",
+        "position": "DFC",
+        "rating": 69,
+        "age": 18,
+        "nationality": "Inglaterra",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Lewie Coyle",
+        "position": "DFC",
+        "rating": 74,
+        "age": 30,
+        "nationality": "Inglaterra",
+        "marketValue": 1300000
+      },
+      {
+        "name": "Amir Hadziahmetovic",
+        "position": "MC",
+        "rating": 69,
+        "age": 20,
+        "nationality": "Bosnia y Herzegovina",
+        "marketValue": 4200000
+      },
+      {
+        "name": "John Lundstram",
+        "position": "MC",
+        "rating": 73,
+        "age": 31,
+        "nationality": "Inglaterra",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Regan Slater",
+        "position": "MC",
+        "rating": 73,
+        "age": 27,
+        "nationality": "Inglaterra",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Eliot Matazo",
+        "position": "MC",
+        "rating": 71,
+        "age": 23,
+        "nationality": "Bélgica",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Darko Gyabi",
+        "position": "MC",
+        "rating": 70,
+        "age": 24,
+        "nationality": "Inglaterra",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Matt Crooks",
+        "position": "MC",
+        "rating": 72,
+        "age": 25,
+        "nationality": "Inglaterra",
+        "marketValue": 700
+      },
+      {
+        "name": "Kieran Dowell",
+        "position": "MC",
+        "rating": 72,
+        "age": 26,
+        "nationality": "Inglaterra",
+        "marketValue": 600
+      },
+      {
+        "name": "Joel Ndala",
+        "position": "DC",
+        "rating": 67,
+        "age": 19,
+        "nationality": "Inglaterra",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Liam Millar",
+        "position": "DC",
+        "rating": 71,
+        "age": 26,
+        "nationality": "Canadá",
+        "marketValue": 2800000
+      },
+      {
+        "name": "Mohamed Belloumi",
+        "position": "DC",
+        "rating": 71,
+        "age": 23,
+        "nationality": "Argelia",
+        "marketValue": 4000000
+      },
+      {
+        "name": "David Akintola",
+        "position": "DC",
+        "rating": 70,
+        "age": 30,
+        "nationality": "Nigeria",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Yu Hirakawa",
+        "position": "DC",
+        "rating": 76,
+        "age": 25,
+        "nationality": "Japón",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Joe Gelhardt",
+        "position": "DC",
+        "rating": 72,
+        "age": 21,
+        "nationality": "Inglaterra",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Oli McBurnie",
+        "position": "DC",
+        "rating": 77,
+        "age": 29,
+        "nationality": "Escocia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Enis Destan",
+        "position": "DC",
+        "rating": 62,
+        "age": 39,
+        "nationality": "Turquía",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Kyle Joseph",
+        "position": "DC",
+        "rating": 71,
+        "age": 22,
+        "nationality": "Escocia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Hugh Parker",
+        "position": "DC",
+        "rating": 69,
+        "age": 19,
+        "nationality": "Irlanda",
+        "marketValue": 0
+      }
+    ]
+  },
+  {
+    "id": "fc-watford",
+    "name": "Watford FC",
+    "players": [
+      {
+        "name": "Egil Selvik",
+        "position": "POR",
+        "rating": 73,
+        "age": 28,
+        "nationality": "Noruega",
+        "marketValue": 1300000
+      },
+      {
+        "name": "Nathan Baxter",
+        "position": "POR",
+        "rating": 69,
+        "age": 27,
+        "nationality": "Inglaterra",
+        "marketValue": 650
+      },
+      {
+        "name": "Daniel Bachmann",
+        "position": "POR",
+        "rating": 72,
+        "age": 31,
+        "nationality": "Austria",
+        "marketValue": 600
+      },
+      {
+        "name": "Alfie Marriott",
+        "position": "POR",
+        "rating": 67,
+        "age": 41,
+        "nationality": "Inglaterra",
+        "marketValue": 0
+      },
+      {
+        "name": "Formose Mendy",
+        "position": "DFC",
+        "rating": 73,
+        "age": 27,
+        "nationality": "Senegal",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Kévin Keben",
+        "position": "DFC",
+        "rating": 69,
+        "age": 22,
+        "nationality": "Camerún",
+        "marketValue": 1600000
+      },
+      {
+        "name": "Mattie Pollock",
+        "position": "DFC",
+        "rating": 71,
+        "age": 24,
+        "nationality": "Inglaterra",
+        "marketValue": 1500000
+      },
+      {
+        "name": "James Abankwah",
+        "position": "DFC",
+        "rating": 71,
+        "age": 25,
+        "nationality": "Irlanda",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Marc Bola",
+        "position": "DFC",
+        "rating": 69,
+        "age": 16,
+        "nationality": "Inglaterra",
+        "marketValue": 1500000
+      },
+      {
+        "name": "James Morris",
+        "position": "DFC",
+        "rating": 67,
+        "age": 22,
+        "nationality": "Inglaterra",
+        "marketValue": 500
+      },
+      {
+        "name": "Jeremy Ngakia",
+        "position": "DFC",
+        "rating": 74,
+        "age": 25,
+        "nationality": "RD del Congo",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Jérémy Petris",
+        "position": "DFC",
+        "rating": 72,
+        "age": 29,
+        "nationality": "Martinica",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Nampalys Mendy",
+        "position": "MC",
+        "rating": 70,
+        "age": 23,
+        "nationality": "Senegal",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Hector Kyprianou",
+        "position": "MC",
+        "rating": 71,
+        "age": 24,
+        "nationality": "Chipre",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Imrân Louza",
+        "position": "MC",
+        "rating": 80,
+        "age": 26,
+        "nationality": "Marruecos",
+        "marketValue": 10000000
+      },
+      {
+        "name": "Edoardo Bove",
+        "position": "MC",
+        "rating": 70,
+        "age": 15,
+        "nationality": "Italia",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Edo Kayembe",
+        "position": "MC",
+        "rating": 67,
+        "age": 39,
+        "nationality": "RD del Congo",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Pierre Dwomoh",
+        "position": "MC",
+        "rating": 69,
+        "age": 21,
+        "nationality": "Bélgica",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Moussa Sissoko",
+        "position": "MC",
+        "rating": 67,
+        "age": 17,
+        "nationality": "Francia",
+        "marketValue": 300
+      },
+      {
+        "name": "Giorgi Chakvetadze",
+        "position": "MC",
+        "rating": 73,
+        "age": 26,
+        "nationality": "Georgia",
+        "marketValue": 4500000
+      },
+      {
+        "name": "Kwadwo Baah",
+        "position": "DC",
+        "rating": 64,
+        "age": 34,
+        "nationality": "Alemania",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Rocco Vata",
+        "position": "DC",
+        "rating": 69,
+        "age": 20,
+        "nationality": "Irlanda",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Nestory Irankunda",
+        "position": "DC",
+        "rating": 68,
+        "age": 19,
+        "nationality": "Australia",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Othmane Maamma",
+        "position": "DC",
+        "rating": 65,
+        "age": 42,
+        "nationality": "Marruecos",
+        "marketValue": 1300000
+      },
+      {
+        "name": "Tom Ince",
+        "position": "DC",
+        "rating": 65,
+        "age": 34,
+        "nationality": "Inglaterra",
+        "marketValue": 400
+      },
+      {
+        "name": "Luca Kjerrumgaard",
+        "position": "DC",
+        "rating": 71,
+        "age": 22,
+        "nationality": "Dinamarca",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Vivaldo Semedo",
+        "position": "DC",
+        "rating": 67,
+        "age": 18,
+        "nationality": "Portugal",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Mamadou Doumbia",
+        "position": "DC",
+        "rating": 67,
+        "age": 20,
+        "nationality": "Malí",
+        "marketValue": 800
+      }
+    ]
+  },
+  {
+    "id": "fc-millwall",
+    "name": "Millwall FC",
+    "players": [
+      {
+        "name": "Lukas Jensen",
+        "position": "POR",
+        "rating": 70,
+        "age": 26,
+        "nationality": "Dinamarca",
+        "marketValue": 900
+      },
+      {
+        "name": "George Evans",
+        "position": "POR",
+        "rating": 67,
+        "age": 41,
+        "nationality": "Inglaterra",
+        "marketValue": 350
+      },
+      {
+        "name": "Max Crocombe",
+        "position": "POR",
+        "rating": 67,
+        "age": 15,
+        "nationality": "Nueva Zelanda",
+        "marketValue": 200
+      },
+      {
+        "name": "Joel Coleman",
+        "position": "POR",
+        "rating": 67,
+        "age": 43,
+        "nationality": "Inglaterra",
+        "marketValue": 75
+      },
+      {
+        "name": "Caleb Taylor",
+        "position": "DFC",
+        "rating": 71,
+        "age": 23,
+        "nationality": "Inglaterra",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Jake Cooper",
+        "position": "DFC",
+        "rating": 75,
+        "age": 30,
+        "nationality": "Inglaterra",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Tristan Crama",
+        "position": "DFC",
+        "rating": 73,
+        "age": 24,
+        "nationality": "Francia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Wes Harding",
+        "position": "DFC",
+        "rating": 65,
+        "age": 45,
+        "nationality": "Jamaica",
+        "marketValue": 900
+      },
+      {
+        "name": "Zak Sturge",
+        "position": "DFC",
+        "rating": 68,
+        "age": 21,
+        "nationality": "Inglaterra",
+        "marketValue": 800
+      },
+      {
+        "name": "Joe Bryan",
+        "position": "DFC",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Inglaterra",
+        "marketValue": 550
+      },
+      {
+        "name": "Danny McNamara",
+        "position": "DFC",
+        "rating": 72,
+        "age": 27,
+        "nationality": "Irlanda",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Ryan Leonard",
+        "position": "DFC",
+        "rating": 68,
+        "age": 18,
+        "nationality": "Inglaterra",
+        "marketValue": 250
+      },
+      {
+        "name": "Billy Mitchell",
+        "position": "MC",
+        "rating": 71,
+        "age": 24,
+        "nationality": "Inglaterra",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Casper De Norre",
+        "position": "MC",
+        "rating": 71,
+        "age": 24,
+        "nationality": "Bélgica",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Will Smallbone",
+        "position": "MC",
+        "rating": 68,
+        "age": 39,
+        "nationality": "Irlanda",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Luke Cundle",
+        "position": "MC",
+        "rating": 73,
+        "age": 25,
+        "nationality": "Inglaterra",
+        "marketValue": 3200000
+      },
+      {
+        "name": "Derek Mazou-Sacko",
+        "position": "MC",
+        "rating": 68,
+        "age": 21,
+        "nationality": "Francia",
+        "marketValue": 800
+      },
+      {
+        "name": "Daniel Kelly",
+        "position": "MC",
+        "rating": 67,
+        "age": 16,
+        "nationality": "Escocia",
+        "marketValue": 700
+      },
+      {
+        "name": "Massimo Luongo",
+        "position": "MC",
+        "rating": 68,
+        "age": 21,
+        "nationality": "Australia",
+        "marketValue": 350
+      },
+      {
+        "name": "Barry Bannan",
+        "position": "MC",
+        "rating": 66,
+        "age": 36,
+        "nationality": "Escocia",
+        "marketValue": 200
+      },
+      {
+        "name": "Femi Azeez",
+        "position": "MC",
+        "rating": 73,
+        "age": 24,
+        "nationality": "Inglaterra",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Alfie Doughty",
+        "position": "MC",
+        "rating": 76,
+        "age": 26,
+        "nationality": "Inglaterra",
+        "marketValue": 5500000
+      },
+      {
+        "name": "Thierno Ballo",
+        "position": "DC",
+        "rating": 71,
+        "age": 24,
+        "nationality": "Austria",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Aidomo Emakhu",
+        "position": "DC",
+        "rating": 67,
+        "age": 22,
+        "nationality": "Irlanda",
+        "marketValue": 900
+      },
+      {
+        "name": "Zak Lovelace",
+        "position": "DC",
+        "rating": 72,
+        "age": 29,
+        "nationality": "Inglaterra",
+        "marketValue": 500
+      },
+      {
+        "name": "Camiel Neghli",
+        "position": "DC",
+        "rating": 69,
+        "age": 24,
+        "nationality": "Argelia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Ra'ees Bangura-Williams",
+        "position": "DC",
+        "rating": 63,
+        "age": 31,
+        "nationality": "Inglaterra",
+        "marketValue": 400
+      },
+      {
+        "name": "Benicio Baker",
+        "position": "DC",
+        "rating": 72,
+        "age": 26,
+        "nationality": "Inglaterra",
+        "marketValue": 300
+      },
+      {
+        "name": "Josh Coburn",
+        "position": "DC",
+        "rating": 71,
+        "age": 19,
+        "nationality": "Inglaterra",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Mihailo Ivanović",
+        "position": "DC",
+        "rating": 70,
+        "age": 21,
+        "nationality": "Serbia",
+        "marketValue": 4500000
+      },
+      {
+        "name": "Macaulay Langstaff",
+        "position": "DC",
+        "rating": 66,
+        "age": 17,
+        "nationality": "Inglaterra",
+        "marketValue": 700
+      }
+    ]
+  },
+  {
+    "id": "afc-wrexham",
+    "name": "Wrexham AFC",
+    "players": [
+      {
+        "name": "Arthur Okonkwo",
+        "position": "POR",
+        "rating": 68,
+        "age": 24,
+        "nationality": "Inglaterra",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Danny Ward",
+        "position": "POR",
+        "rating": 67,
+        "age": 21,
+        "nationality": "Gales",
+        "marketValue": 800
+      },
+      {
+        "name": "Callum Burton",
+        "position": "POR",
+        "rating": 69,
+        "age": 25,
+        "nationality": "Inglaterra",
+        "marketValue": 150
+      },
+      {
+        "name": "Reuben Egan",
+        "position": "POR",
+        "rating": 72,
+        "age": 31,
+        "nationality": "Irlanda",
+        "marketValue": 0
+      },
+      {
+        "name": "Callum Doyle",
+        "position": "DFC",
+        "rating": 70,
+        "age": 22,
+        "nationality": "Inglaterra",
+        "marketValue": 8000000
+      },
+      {
+        "name": "Max Cleworth",
+        "position": "DFC",
+        "rating": 71,
+        "age": 23,
+        "nationality": "Inglaterra",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Dominic Hyam",
+        "position": "DFC",
+        "rating": 75,
+        "age": 30,
+        "nationality": "Escocia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Lewis Brunt",
+        "position": "DFC",
+        "rating": 69,
+        "age": 25,
+        "nationality": "Inglaterra",
+        "marketValue": 800
+      },
+      {
+        "name": "Dan Scarr",
+        "position": "DFC",
+        "rating": 70,
+        "age": 24,
+        "nationality": "Inglaterra",
+        "marketValue": 350
+      },
+      {
+        "name": "Liberato Cacace",
+        "position": "DFC",
+        "rating": 70,
+        "age": 25,
+        "nationality": "Nueva Zelanda",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Issa Kaboré",
+        "position": "DFC",
+        "rating": 72,
+        "age": 24,
+        "nationality": "Burkina Faso",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Ryan Barnett",
+        "position": "DFC",
+        "rating": 71,
+        "age": 29,
+        "nationality": "Inglaterra",
+        "marketValue": 700
+      },
+      {
+        "name": "Aaron James",
+        "position": "DFC",
+        "rating": 67,
+        "age": 34,
+        "nationality": "Inglaterra",
+        "marketValue": 0
+      },
+      {
+        "name": "Ben Sheaf",
+        "position": "MC",
+        "rating": 70,
+        "age": 18,
+        "nationality": "Inglaterra",
+        "marketValue": 7500000
+      },
+      {
+        "name": "George Dobson",
+        "position": "MC",
+        "rating": 69,
+        "age": 15,
+        "nationality": "Inglaterra",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Lewis O'Brien",
+        "position": "MC",
+        "rating": 73,
+        "age": 27,
+        "nationality": "Inglaterra",
+        "marketValue": 4000000
+      },
+      {
+        "name": "George Thomason",
+        "position": "MC",
+        "rating": 74,
+        "age": 25,
+        "nationality": "Inglaterra",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Oliver Rathbone",
+        "position": "MC",
+        "rating": 69,
+        "age": 20,
+        "nationality": "Inglaterra",
+        "marketValue": 800
+      },
+      {
+        "name": "Matty James",
+        "position": "MC",
+        "rating": 66,
+        "age": 37,
+        "nationality": "Inglaterra",
+        "marketValue": 200
+      },
+      {
+        "name": "Josh Windass",
+        "position": "MC",
+        "rating": 70,
+        "age": 32,
+        "nationality": "Inglaterra",
+        "marketValue": 600
+      },
+      {
+        "name": "Elliot Lee",
+        "position": "MC",
+        "rating": 66,
+        "age": 38,
+        "nationality": "Inglaterra",
+        "marketValue": 600
+      },
+      {
+        "name": "Harry Ashfield",
+        "position": "MC",
+        "rating": 66,
+        "age": 45,
+        "nationality": "Gales",
+        "marketValue": 0
+      },
+      {
+        "name": "Nathan Broadhead",
+        "position": "DC",
+        "rating": 69,
+        "age": 33,
+        "nationality": "Gales",
+        "marketValue": 7000000
+      },
+      {
+        "name": "James Rainbird",
+        "position": "DC",
+        "rating": 64,
+        "age": 43,
+        "nationality": "Inglaterra",
+        "marketValue": 25
+      },
+      {
+        "name": "Ryan Longman",
+        "position": "DC",
+        "rating": 71,
+        "age": 25,
+        "nationality": "Inglaterra",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Callum Edwards",
+        "position": "DC",
+        "rating": 64,
+        "age": 42,
+        "nationality": "Inglaterra",
+        "marketValue": 75
+      },
+      {
+        "name": "Kieffer Moore",
+        "position": "DC",
+        "rating": 71,
+        "age": 19,
+        "nationality": "Gales",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Ryan Hardie",
+        "position": "DC",
+        "rating": 70,
+        "age": 28,
+        "nationality": "Escocia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Sam Smith",
+        "position": "DC",
+        "rating": 69,
+        "age": 28,
+        "nationality": "Inglaterra",
+        "marketValue": 900
+      },
+      {
+        "name": "Paul Mullin",
+        "position": "DC",
+        "rating": 66,
+        "age": 31,
+        "nationality": "Inglaterra",
+        "marketValue": 500
+      },
+      {
+        "name": "Mo Faal",
+        "position": "DC",
+        "rating": 70,
+        "age": 22,
+        "nationality": "Gambia",
+        "marketValue": 400
+      },
+      {
+        "name": "Jay Rodríguez",
+        "position": "DC",
+        "rating": 69,
+        "age": 16,
+        "nationality": "Inglaterra",
+        "marketValue": 300
+      }
+    ]
+  },
+  {
+    "id": "derby-county",
+    "name": "Derby County",
+    "players": [
+      {
+        "name": "Jacob Widell Zetterström",
+        "position": "POR",
+        "rating": 73,
+        "age": 27,
+        "nationality": "Suecia",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Josh Vickers",
+        "position": "POR",
+        "rating": 71,
+        "age": 31,
+        "nationality": "Inglaterra",
+        "marketValue": 200
+      },
+      {
+        "name": "Richard O'Donnell",
+        "position": "POR",
+        "rating": 68,
+        "age": 37,
+        "nationality": "Inglaterra",
+        "marketValue": 50
+      },
+      {
+        "name": "Sondre Langås",
+        "position": "DFC",
+        "rating": 71,
+        "age": 24,
+        "nationality": "Noruega",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Dion Sanderson",
+        "position": "DFC",
+        "rating": 75,
+        "age": 28,
+        "nationality": "Inglaterra",
+        "marketValue": 2800000
+      },
+      {
+        "name": "Matt Clarke",
+        "position": "DFC",
+        "rating": 75,
+        "age": 29,
+        "nationality": "Inglaterra",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Danny Batth",
+        "position": "DFC",
+        "rating": 66,
+        "age": 35,
+        "nationality": "Inglaterra",
+        "marketValue": 150
+      },
+      {
+        "name": "Jake Rooney",
+        "position": "DFC",
+        "rating": 68,
+        "age": 21,
+        "nationality": "Inglaterra",
+        "marketValue": 150
+      },
+      {
+        "name": "Callum Elder",
+        "position": "DFC",
+        "rating": 68,
+        "age": 20,
+        "nationality": "Australia",
+        "marketValue": 400
+      },
+      {
+        "name": "Craig Forsyth",
+        "position": "DFC",
+        "rating": 66,
+        "age": 36,
+        "nationality": "Escocia",
+        "marketValue": 75
+      },
+      {
+        "name": "Max Johnston",
+        "position": "DFC",
+        "rating": 69,
+        "age": 22,
+        "nationality": "Escocia",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Lewis Travis",
+        "position": "MC",
+        "rating": 73,
+        "age": 27,
+        "nationality": "Inglaterra",
+        "marketValue": 3000000
+      },
+      {
+        "name": "David Ozoh",
+        "position": "MC",
+        "rating": 69,
+        "age": 18,
+        "nationality": "Inglaterra",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Bobby Clark",
+        "position": "MC",
+        "rating": 68,
+        "age": 42,
+        "nationality": "Inglaterra",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Oscar Fraulo",
+        "position": "MC",
+        "rating": 73,
+        "age": 29,
+        "nationality": "Dinamarca",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Liam Thompson",
+        "position": "MC",
+        "rating": 68,
+        "age": 16,
+        "nationality": "Inglaterra",
+        "marketValue": 800
+      },
+      {
+        "name": "Joe Ward",
+        "position": "MC",
+        "rating": 71,
+        "age": 23,
+        "nationality": "Inglaterra",
+        "marketValue": 200
+      },
+      {
+        "name": "Andreas Weimann",
+        "position": "MC",
+        "rating": 66,
+        "age": 34,
+        "nationality": "Austria",
+        "marketValue": 450
+      },
+      {
+        "name": "Jaydon Banel",
+        "position": "DC",
+        "rating": 67,
+        "age": 34,
+        "nationality": "Países Bajos",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Patrick Agyemang",
+        "position": "DC",
+        "rating": 76,
+        "age": 25,
+        "nationality": "Estados Unidos",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Carlton Morris",
+        "position": "DC",
+        "rating": 76,
+        "age": 30,
+        "nationality": "Inglaterra",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Ben Brereton Díaz",
+        "position": "DC",
+        "rating": 72,
+        "age": 25,
+        "nationality": "Chile",
+        "marketValue": 6000000
+      },
+      {
+        "name": "Rhian Brewster",
+        "position": "DC",
+        "rating": 71,
+        "age": 25,
+        "nationality": "Inglaterra",
+        "marketValue": 2600000
+      },
+      {
+        "name": "Lars-Jørgen Salvesen",
+        "position": "DC",
+        "rating": 66,
+        "age": 15,
+        "nationality": "Noruega",
+        "marketValue": 600
+      },
+      {
+        "name": "Kayden Jackson",
+        "position": "DC",
+        "rating": 66,
+        "age": 19,
+        "nationality": "Inglaterra",
+        "marketValue": 200
+      }
+    ]
+  },
+  {
+    "id": "queens-park-rangers",
+    "name": "Queens Park Rangers",
+    "players": [
+      {
+        "name": "Paul Nardi",
+        "position": "POR",
+        "rating": 73,
+        "age": 31,
+        "nationality": "Francia",
+        "marketValue": 1600000
+      },
+      {
+        "name": "Joe Walsh",
+        "position": "POR",
+        "rating": 67,
+        "age": 23,
+        "nationality": "Inglaterra",
+        "marketValue": 500
+      },
+      {
+        "name": "Ben Hamer",
+        "position": "POR",
+        "rating": 71,
+        "age": 29,
+        "nationality": "Inglaterra",
+        "marketValue": 75
+      },
+      {
+        "name": "Ronnie Edwards",
+        "position": "DFC",
+        "rating": 67,
+        "age": 37,
+        "nationality": "Inglaterra",
+        "marketValue": 3800000
+      },
+      {
+        "name": "Amadou Mbengue",
+        "position": "DFC",
+        "rating": 73,
+        "age": 27,
+        "nationality": "Senegal",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Jake Clarke-Salter",
+        "position": "DFC",
+        "rating": 72,
+        "age": 28,
+        "nationality": "Inglaterra",
+        "marketValue": 900
+      },
+      {
+        "name": "Steve Cook",
+        "position": "DFC",
+        "rating": 67,
+        "age": 34,
+        "nationality": "Inglaterra",
+        "marketValue": 300
+      },
+      {
+        "name": "Esquerdinha",
+        "position": "DFC",
+        "rating": 72,
+        "age": 28,
+        "nationality": "Brasil",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Rhys Norrington-Davies",
+        "position": "DFC",
+        "rating": 69,
+        "age": 18,
+        "nationality": "Gales",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Ziyad Larkeche",
+        "position": "DFC",
+        "rating": 66,
+        "age": 38,
+        "nationality": "Francia",
+        "marketValue": 800
+      },
+      {
+        "name": "Jimmy Dunne",
+        "position": "DFC",
+        "rating": 75,
+        "age": 28,
+        "nationality": "Irlanda",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Kealey Adamson",
+        "position": "DFC",
+        "rating": 68,
+        "age": 22,
+        "nationality": "Australia",
+        "marketValue": 450
+      },
+      {
+        "name": "Sam Field",
+        "position": "MC",
+        "rating": 72,
+        "age": 27,
+        "nationality": "Inglaterra",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Jonathan Varane",
+        "position": "MC",
+        "rating": 67,
+        "age": 40,
+        "nationality": "Martinica",
+        "marketValue": 1400000
+      },
+      {
+        "name": "Isaac Hayden",
+        "position": "MC",
+        "rating": 67,
+        "age": 15,
+        "nationality": "Jamaica",
+        "marketValue": 600
+      },
+      {
+        "name": "Nicolas Madsen",
+        "position": "MC",
+        "rating": 74,
+        "age": 24,
+        "nationality": "Dinamarca",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Kieran Morgan",
+        "position": "MC",
+        "rating": 68,
+        "age": 21,
+        "nationality": "Inglaterra",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Harvey Vale",
+        "position": "MC",
+        "rating": 68,
+        "age": 20,
+        "nationality": "Inglaterra",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Ilias Chair",
+        "position": "MC",
+        "rating": 75,
+        "age": 28,
+        "nationality": "Marruecos",
+        "marketValue": 5500000
+      },
+      {
+        "name": "Karamoko Dembélé",
+        "position": "MC",
+        "rating": 71,
+        "age": 22,
+        "nationality": "Inglaterra",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Koki Saito",
+        "position": "DC",
+        "rating": 63,
+        "age": 35,
+        "nationality": "Japón",
+        "marketValue": 3200000
+      },
+      {
+        "name": "Daniel Bennie",
+        "position": "DC",
+        "rating": 69,
+        "age": 23,
+        "nationality": "Australia",
+        "marketValue": 250
+      },
+      {
+        "name": "Kwame Poku",
+        "position": "DC",
+        "rating": 69,
+        "age": 17,
+        "nationality": "Ghana",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Paul Smyth",
+        "position": "DC",
+        "rating": 69,
+        "age": 28,
+        "nationality": "Irlanda del Norte",
+        "marketValue": 600
+      },
+      {
+        "name": "Richard Kone",
+        "position": "DC",
+        "rating": 71,
+        "age": 22,
+        "nationality": "Costa de Marfil",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Rumarn Burrell",
+        "position": "DC",
+        "rating": 71,
+        "age": 16,
+        "nationality": "Jamaica",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Rayan Kolli",
+        "position": "DC",
+        "rating": 72,
+        "age": 26,
+        "nationality": "Argelia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Justin Obikwu",
+        "position": "DC",
+        "rating": 69,
+        "age": 21,
+        "nationality": "Trinidad y Tobago",
+        "marketValue": 125
+      }
+    ]
+  },
+  {
+    "id": "preston-north-end",
+    "name": "Preston North End",
+    "players": [
+      {
+        "name": "Daniel Iversen",
+        "position": "POR",
+        "rating": 75,
+        "age": 28,
+        "nationality": "Dinamarca",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Jack Walton",
+        "position": "POR",
+        "rating": 69,
+        "age": 27,
+        "nationality": "Inglaterra",
+        "marketValue": 500
+      },
+      {
+        "name": "David Cornell",
+        "position": "POR",
+        "rating": 72,
+        "age": 34,
+        "nationality": "Gales",
+        "marketValue": 75
+      },
+      {
+        "name": "Jordan Storey",
+        "position": "DFC",
+        "rating": 75,
+        "age": 28,
+        "nationality": "Inglaterra",
+        "marketValue": 3800000
+      },
+      {
+        "name": "Lewis Gibson",
+        "position": "DFC",
+        "rating": 69,
+        "age": 19,
+        "nationality": "Inglaterra",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Odeluga Offiah",
+        "position": "DFC",
+        "rating": 67,
+        "age": 42,
+        "nationality": "Inglaterra",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Liam Lindsay",
+        "position": "DFC",
+        "rating": 72,
+        "age": 30,
+        "nationality": "Escocia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Andrew Hughes",
+        "position": "DFC",
+        "rating": 70,
+        "age": 16,
+        "nationality": "Gales",
+        "marketValue": 400
+      },
+      {
+        "name": "Thierry Small",
+        "position": "DFC",
+        "rating": 73,
+        "age": 26,
+        "nationality": "Inglaterra",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Jamal Lewis",
+        "position": "DFC",
+        "rating": 68,
+        "age": 18,
+        "nationality": "Irlanda del Norte",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Andrija Vukcevic",
+        "position": "DFC",
+        "rating": 71,
+        "age": 29,
+        "nationality": "Montenegro",
+        "marketValue": 500
+      },
+      {
+        "name": "Brad Potts",
+        "position": "DFC",
+        "rating": 66,
+        "age": 44,
+        "nationality": "Inglaterra",
+        "marketValue": 800
+      },
+      {
+        "name": "Pol Valentín",
+        "position": "DFC",
+        "rating": 72,
+        "age": 28,
+        "nationality": "España",
+        "marketValue": 450
+      },
+      {
+        "name": "Noah Mawene",
+        "position": "MC",
+        "rating": 66,
+        "age": 35,
+        "nationality": "Inglaterra",
+        "marketValue": 200
+      },
+      {
+        "name": "Ben Whiteman",
+        "position": "MC",
+        "rating": 75,
+        "age": 29,
+        "nationality": "Inglaterra",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Ali McCann",
+        "position": "MC",
+        "rating": 73,
+        "age": 26,
+        "nationality": "Irlanda del Norte",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Jordan Thompson",
+        "position": "MC",
+        "rating": 67,
+        "age": 15,
+        "nationality": "Irlanda del Norte",
+        "marketValue": 800
+      },
+      {
+        "name": "Kaedyn Kamara",
+        "position": "MC",
+        "rating": 72,
+        "age": 27,
+        "nationality": "Inglaterra",
+        "marketValue": 75
+      },
+      {
+        "name": "Robbie Brady",
+        "position": "MC",
+        "rating": 67,
+        "age": 34,
+        "nationality": "Irlanda",
+        "marketValue": 150
+      },
+      {
+        "name": "Alfie Devine",
+        "position": "MC",
+        "rating": 69,
+        "age": 21,
+        "nationality": "Inglaterra",
+        "marketValue": 4500000
+      },
+      {
+        "name": "Mads Frøkjaer-Jensen",
+        "position": "MC",
+        "rating": 72,
+        "age": 26,
+        "nationality": "Dinamarca",
+        "marketValue": 3200000
+      },
+      {
+        "name": "Kitt Nelson",
+        "position": "MC",
+        "rating": 67,
+        "age": 34,
+        "nationality": "Inglaterra",
+        "marketValue": 150
+      },
+      {
+        "name": "Lewis Dobbin",
+        "position": "DC",
+        "rating": 71,
+        "age": 17,
+        "nationality": "Inglaterra",
+        "marketValue": 2800000
+      },
+      {
+        "name": "Milos Lukovic",
+        "position": "DC",
+        "rating": 71,
+        "age": 20,
+        "nationality": "Serbia",
+        "marketValue": 5000000
+      },
+      {
+        "name": "Daniel Jebbison",
+        "position": "DC",
+        "rating": 71,
+        "age": 22,
+        "nationality": "Canadá",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Milutin Osmajic",
+        "position": "DC",
+        "rating": 73,
+        "age": 28,
+        "nationality": "Montenegro",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Michael Smith",
+        "position": "DC",
+        "rating": 68,
+        "age": 24,
+        "nationality": "Inglaterra",
+        "marketValue": 250
+      }
+    ]
+  },
+  {
+    "id": "blackburn-rovers",
+    "name": "Blackburn Rovers",
+    "players": [
+      {
+        "name": "Aynsley Pears",
+        "position": "POR",
+        "rating": 71,
+        "age": 27,
+        "nationality": "Inglaterra",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Balázs Tóth",
+        "position": "POR",
+        "rating": 67,
+        "age": 22,
+        "nationality": "Hungría",
+        "marketValue": 700
+      },
+      {
+        "name": "Eiran Cashin",
+        "position": "DFC",
+        "rating": 70,
+        "age": 20,
+        "nationality": "Irlanda",
+        "marketValue": 7000000
+      },
+      {
+        "name": "Hayden Carter",
+        "position": "DFC",
+        "rating": 69,
+        "age": 17,
+        "nationality": "Inglaterra",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Scott Wharton",
+        "position": "DFC",
+        "rating": 69,
+        "age": 16,
+        "nationality": "Inglaterra",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Sean McLoughlin",
+        "position": "DFC",
+        "rating": 70,
+        "age": 15,
+        "nationality": "Irlanda",
+        "marketValue": 750
+      },
+      {
+        "name": "Connor O'Riordan",
+        "position": "DFC",
+        "rating": 72,
+        "age": 26,
+        "nationality": "Irlanda",
+        "marketValue": 550
+      },
+      {
+        "name": "Harry Pickering",
+        "position": "DFC",
+        "rating": 72,
+        "age": 27,
+        "nationality": "Inglaterra",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Yuri Ribeiro",
+        "position": "DFC",
+        "rating": 72,
+        "age": 29,
+        "nationality": "Portugal",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Ryan Alebiosu",
+        "position": "DFC",
+        "rating": 71,
+        "age": 24,
+        "nationality": "Nigeria",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Lewis Miller",
+        "position": "DFC",
+        "rating": 71,
+        "age": 25,
+        "nationality": "Australia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Taylor Gardner-Hickman",
+        "position": "MC",
+        "rating": 71,
+        "age": 24,
+        "nationality": "Inglaterra",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Sidnei Tavares",
+        "position": "MC",
+        "rating": 70,
+        "age": 24,
+        "nationality": "Cabo Verde",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Jake Garrett",
+        "position": "MC",
+        "rating": 72,
+        "age": 30,
+        "nationality": "Inglaterra",
+        "marketValue": 500
+      },
+      {
+        "name": "Moussa Baradji",
+        "position": "MC",
+        "rating": 70,
+        "age": 24,
+        "nationality": "Francia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Sondre Tronstad",
+        "position": "MC",
+        "rating": 73,
+        "age": 30,
+        "nationality": "Noruega",
+        "marketValue": 1300000
+      },
+      {
+        "name": "Axel Henriksson",
+        "position": "MC",
+        "rating": 68,
+        "age": 18,
+        "nationality": "Suecia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Kristi Montgomery",
+        "position": "MC",
+        "rating": 71,
+        "age": 31,
+        "nationality": "Escocia",
+        "marketValue": 250
+      },
+      {
+        "name": "Adam Forshaw",
+        "position": "MC",
+        "rating": 71,
+        "age": 28,
+        "nationality": "Inglaterra",
+        "marketValue": 200
+      },
+      {
+        "name": "Dion De Neve",
+        "position": "MC",
+        "rating": 69,
+        "age": 24,
+        "nationality": "Bélgica",
+        "marketValue": 900
+      },
+      {
+        "name": "Todd Cantwell",
+        "position": "MC",
+        "rating": 76,
+        "age": 27,
+        "nationality": "Inglaterra",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Ryoya Morishita",
+        "position": "MC",
+        "rating": 73,
+        "age": 25,
+        "nationality": "Japón",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Mathias Jørgensen",
+        "position": "DC",
+        "rating": 74,
+        "age": 29,
+        "nationality": "Dinamarca",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Ryan Hedges",
+        "position": "DC",
+        "rating": 67,
+        "age": 19,
+        "nationality": "Gales",
+        "marketValue": 800
+      },
+      {
+        "name": "Augustus Kargbo",
+        "position": "DC",
+        "rating": 72,
+        "age": 26,
+        "nationality": "Sierra Leona",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Andri Gudjohnsen",
+        "position": "DC",
+        "rating": 72,
+        "age": 24,
+        "nationality": "Islandia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Yuki Ohashi",
+        "position": "DC",
+        "rating": 71,
+        "age": 23,
+        "nationality": "Japón",
+        "marketValue": 1600000
+      },
+      {
+        "name": "Igor Tyjon",
+        "position": "DC",
+        "rating": 66,
+        "age": 32,
+        "nationality": "Inglaterra",
+        "marketValue": 0
+      }
+    ]
+  },
+  {
+    "id": "oxford-united",
+    "name": "Oxford United",
+    "players": [
+      {
+        "name": "Jamie Cumming",
+        "position": "POR",
+        "rating": 70,
+        "age": 26,
+        "nationality": "Inglaterra",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Matt Ingram",
+        "position": "POR",
+        "rating": 63,
+        "age": 21,
+        "nationality": "Inglaterra",
+        "marketValue": 400
+      },
+      {
+        "name": "Simon Eastwood",
+        "position": "POR",
+        "rating": 65,
+        "age": 36,
+        "nationality": "Inglaterra",
+        "marketValue": 50
+      },
+      {
+        "name": "Jacob Knightbridge",
+        "position": "POR",
+        "rating": 64,
+        "age": 22,
+        "nationality": "Inglaterra",
+        "marketValue": 0
+      },
+      {
+        "name": "Ben Davies",
+        "position": "DFC",
+        "rating": 69,
+        "age": 29,
+        "nationality": "Inglaterra",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Michal Helik",
+        "position": "DFC",
+        "rating": 72,
+        "age": 30,
+        "nationality": "Polonia",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Ciaron Brown",
+        "position": "DFC",
+        "rating": 70,
+        "age": 28,
+        "nationality": "Irlanda del Norte",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Jordan Thorniley",
+        "position": "DFC",
+        "rating": 64,
+        "age": 34,
+        "nationality": "Inglaterra",
+        "marketValue": 275
+      },
+      {
+        "name": "Stephan Negru",
+        "position": "DFC",
+        "rating": 69,
+        "age": 28,
+        "nationality": "Irlanda",
+        "marketValue": 125
+      },
+      {
+        "name": "James Golding",
+        "position": "DFC",
+        "rating": 64,
+        "age": 35,
+        "nationality": "Irlanda",
+        "marketValue": 100
+      },
+      {
+        "name": "Jack Currie",
+        "position": "DFC",
+        "rating": 69,
+        "age": 26,
+        "nationality": "Inglaterra",
+        "marketValue": 700
+      },
+      {
+        "name": "Greg Leigh",
+        "position": "DFC",
+        "rating": 64,
+        "age": 22,
+        "nationality": "Jamaica",
+        "marketValue": 200
+      },
+      {
+        "name": "Hidde ter Avest",
+        "position": "DFC",
+        "rating": 68,
+        "age": 24,
+        "nationality": "Países Bajos",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Brodie Spencer",
+        "position": "DFC",
+        "rating": 66,
+        "age": 15,
+        "nationality": "Irlanda del Norte",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Sam Long",
+        "position": "DFC",
+        "rating": 69,
+        "age": 31,
+        "nationality": "Inglaterra",
+        "marketValue": 175
+      },
+      {
+        "name": "Yunus Konak",
+        "position": "MC",
+        "rating": 66,
+        "age": 20,
+        "nationality": "Turquía",
+        "marketValue": 4500000
+      },
+      {
+        "name": "Brian De Keersmaecker",
+        "position": "MC",
+        "rating": 73,
+        "age": 25,
+        "nationality": "Bélgica",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Will Vaulks",
+        "position": "MC",
+        "rating": 64,
+        "age": 32,
+        "nationality": "Gales",
+        "marketValue": 500
+      },
+      {
+        "name": "Jamie McDonnell",
+        "position": "MC",
+        "rating": 63,
+        "age": 38,
+        "nationality": "Irlanda del Norte",
+        "marketValue": 300
+      },
+      {
+        "name": "Cameron Brannagan",
+        "position": "MC",
+        "rating": 69,
+        "age": 29,
+        "nationality": "Inglaterra",
+        "marketValue": 600
+      },
+      {
+        "name": "Joshua Johnson",
+        "position": "MC",
+        "rating": 63,
+        "age": 36,
+        "nationality": "Inglaterra",
+        "marketValue": 0
+      },
+      {
+        "name": "Filip Krastev",
+        "position": "MC",
+        "rating": 67,
+        "age": 24,
+        "nationality": "Bulgaria",
+        "marketValue": 3500000
+      },
+      {
+        "name": "Jamie Donley",
+        "position": "MC",
+        "rating": 65,
+        "age": 33,
+        "nationality": "Irlanda del Norte",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Myles Peart-Harris",
+        "position": "MC",
+        "rating": 63,
+        "age": 44,
+        "nationality": "Jamaica",
+        "marketValue": 900
+      },
+      {
+        "name": "Siriki Dembélé",
+        "position": "DC",
+        "rating": 65,
+        "age": 23,
+        "nationality": "Escocia",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Przemyslaw Placheta",
+        "position": "DC",
+        "rating": 68,
+        "age": 27,
+        "nationality": "Polonia",
+        "marketValue": 1300000
+      },
+      {
+        "name": "Tyler Goodrham",
+        "position": "DC",
+        "rating": 64,
+        "age": 19,
+        "nationality": "Irlanda",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Jin-woo Jeon",
+        "position": "DC",
+        "rating": 63,
+        "age": 32,
+        "nationality": "Corea del Sur",
+        "marketValue": 900
+      },
+      {
+        "name": "Stanley Mills",
+        "position": "DC",
+        "rating": 64,
+        "age": 17,
+        "nationality": "Inglaterra",
+        "marketValue": 800
+      },
+      {
+        "name": "Matt Phillips",
+        "position": "DC",
+        "rating": 62,
+        "age": 34,
+        "nationality": "Escocia",
+        "marketValue": 150
+      },
+      {
+        "name": "Will Lankshear",
+        "position": "DC",
+        "rating": 70,
+        "age": 27,
+        "nationality": "Inglaterra",
+        "marketValue": 4500000
+      },
+      {
+        "name": "Nik Prelec",
+        "position": "DC",
+        "rating": 65,
+        "age": 16,
+        "nationality": "Eslovenia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Ole Romeny",
+        "position": "DC",
+        "rating": 67,
+        "age": 25,
+        "nationality": "Indonesia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Mark Harris",
+        "position": "DC",
+        "rating": 66,
+        "age": 27,
+        "nationality": "Gales",
+        "marketValue": 800
+      },
+      {
+        "name": "Tom Bradshaw",
+        "position": "DC",
+        "rating": 65,
+        "age": 20,
+        "nationality": "Gales",
+        "marketValue": 300
+      },
+      {
+        "name": "Gatlin O'Donkor",
+        "position": "DC",
+        "rating": 61,
+        "age": 39,
+        "nationality": "Inglaterra",
+        "marketValue": 250
+      }
+    ]
+  },
+  {
+    "id": "fc-portsmouth",
+    "name": "Portsmouth FC",
+    "players": [
+      {
+        "name": "Nicolas Schmid",
+        "position": "POR",
+        "rating": 70,
+        "age": 28,
+        "nationality": "Austria",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Josef Bursik",
+        "position": "POR",
+        "rating": 66,
+        "age": 26,
+        "nationality": "Inglaterra",
+        "marketValue": 800
+      },
+      {
+        "name": "Ben Killip",
+        "position": "POR",
+        "rating": 68,
+        "age": 30,
+        "nationality": "Inglaterra",
+        "marketValue": 150
+      },
+      {
+        "name": "Jordan Archer",
+        "position": "POR",
+        "rating": 69,
+        "age": 31,
+        "nationality": "Escocia",
+        "marketValue": 75
+      },
+      {
+        "name": "Hayden Matthews",
+        "position": "DFC",
+        "rating": 65,
+        "age": 21,
+        "nationality": "Australia",
+        "marketValue": 1300000
+      },
+      {
+        "name": "Aji Alese",
+        "position": "DFC",
+        "rating": 68,
+        "age": 25,
+        "nationality": "Inglaterra",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Josh Knight",
+        "position": "DFC",
+        "rating": 70,
+        "age": 28,
+        "nationality": "Inglaterra",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Regan Poole",
+        "position": "DFC",
+        "rating": 72,
+        "age": 27,
+        "nationality": "Gales",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Conor Shaughnessy",
+        "position": "DFC",
+        "rating": 69,
+        "age": 29,
+        "nationality": "Irlanda",
+        "marketValue": 900
+      },
+      {
+        "name": "Ibane Bowat",
+        "position": "DFC",
+        "rating": 64,
+        "age": 17,
+        "nationality": "Escocia",
+        "marketValue": 600
+      },
+      {
+        "name": "Tom McIntyre",
+        "position": "DFC",
+        "rating": 69,
+        "age": 27,
+        "nationality": "Escocia",
+        "marketValue": 500
+      },
+      {
+        "name": "Connor Ogilvie",
+        "position": "DFC",
+        "rating": 69,
+        "age": 29,
+        "nationality": "Inglaterra",
+        "marketValue": 500
+      },
+      {
+        "name": "Jacob Farrell",
+        "position": "DFC",
+        "rating": 65,
+        "age": 19,
+        "nationality": "Australia",
+        "marketValue": 500
+      },
+      {
+        "name": "Terry Devlin",
+        "position": "DFC",
+        "rating": 68,
+        "age": 24,
+        "nationality": "Irlanda del Norte",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Jordan Williams",
+        "position": "DFC",
+        "rating": 68,
+        "age": 26,
+        "nationality": "Inglaterra",
+        "marketValue": 800
+      },
+      {
+        "name": "Zak Swanson",
+        "position": "DFC",
+        "rating": 65,
+        "age": 22,
+        "nationality": "Inglaterra",
+        "marketValue": 800
+      },
+      {
+        "name": "Andre Dozzell",
+        "position": "MC",
+        "rating": 68,
+        "age": 21,
+        "nationality": "Inglaterra",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Márk Kosznovszky",
+        "position": "MC",
+        "rating": 65,
+        "age": 18,
+        "nationality": "Hungría",
+        "marketValue": 1300000
+      },
+      {
+        "name": "Luke Le Roux",
+        "position": "MC",
+        "rating": 65,
+        "age": 16,
+        "nationality": "Sudáfrica",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Ebou Adams",
+        "position": "MC",
+        "rating": 65,
+        "age": 38,
+        "nationality": "Gambia",
+        "marketValue": 800
+      },
+      {
+        "name": "Marlon Pack",
+        "position": "MC",
+        "rating": 64,
+        "age": 34,
+        "nationality": "Inglaterra",
+        "marketValue": 150
+      },
+      {
+        "name": "John Swift",
+        "position": "MC",
+        "rating": 69,
+        "age": 30,
+        "nationality": "Inglaterra",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Harry Clout",
+        "position": "MC",
+        "rating": 65,
+        "age": 19,
+        "nationality": "Inglaterra",
+        "marketValue": 0
+      },
+      {
+        "name": "Josh Murphy",
+        "position": "DC",
+        "rating": 70,
+        "age": 23,
+        "nationality": "Inglaterra",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Millenic Alli",
+        "position": "DC",
+        "rating": 70,
+        "age": 27,
+        "nationality": "Irlanda",
+        "marketValue": 1100000
+      },
+      {
+        "name": "Keshi Anderson",
+        "position": "DC",
+        "rating": 61,
+        "age": 37,
+        "nationality": "Inglaterra",
+        "marketValue": 600
+      },
+      {
+        "name": "Callum Lang",
+        "position": "DC",
+        "rating": 70,
+        "age": 27,
+        "nationality": "Inglaterra",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Florian Bianchini",
+        "position": "DC",
+        "rating": 65,
+        "age": 24,
+        "nationality": "Francia",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Adrian Segečić",
+        "position": "DC",
+        "rating": 67,
+        "age": 21,
+        "nationality": "Australia",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Franco Umeh-Chibueze",
+        "position": "DC",
+        "rating": 66,
+        "age": 15,
+        "nationality": "Irlanda",
+        "marketValue": 500
+      },
+      {
+        "name": "Harvey Blair",
+        "position": "DC",
+        "rating": 69,
+        "age": 29,
+        "nationality": "Inglaterra",
+        "marketValue": 300
+      },
+      {
+        "name": "Conor Chaplin",
+        "position": "DC",
+        "rating": 60,
+        "age": 36,
+        "nationality": "Inglaterra",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Colby Bishop",
+        "position": "DC",
+        "rating": 70,
+        "age": 29,
+        "nationality": "Inglaterra",
+        "marketValue": 1600000
+      },
+      {
+        "name": "Thomas Waddingham",
+        "position": "DC",
+        "rating": 66,
+        "age": 20,
+        "nationality": "Australia",
+        "marketValue": 500
+      },
+      {
+        "name": "Makenzie Kirk",
+        "position": "DC",
+        "rating": 66,
+        "age": 25,
+        "nationality": "Irlanda del Norte",
+        "marketValue": 400
+      }
+    ]
+  },
+  {
+    "id": "charlton-athletic",
+    "name": "Charlton Athletic",
+    "players": [
+      {
+        "name": "Thomas Kaminski",
+        "position": "POR",
+        "rating": 72,
+        "age": 33,
+        "nationality": "Bélgica",
+        "marketValue": 1300000
+      },
+      {
+        "name": "Will Mannion",
+        "position": "POR",
+        "rating": 66,
+        "age": 25,
+        "nationality": "Inglaterra",
+        "marketValue": 400
+      },
+      {
+        "name": "Tiernan Brooks",
+        "position": "POR",
+        "rating": 64,
+        "age": 23,
+        "nationality": "Irlanda",
+        "marketValue": 0
+      },
+      {
+        "name": "Conor Coady",
+        "position": "DFC",
+        "rating": 70,
+        "age": 32,
+        "nationality": "Inglaterra",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Reece Burke",
+        "position": "DFC",
+        "rating": 69,
+        "age": 32,
+        "nationality": "Inglaterra",
+        "marketValue": 1300000
+      },
+      {
+        "name": "Amari'i Bell",
+        "position": "DFC",
+        "rating": 66,
+        "age": 17,
+        "nationality": "Jamaica",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Lloyd Jones",
+        "position": "DFC",
+        "rating": 71,
+        "age": 30,
+        "nationality": "Inglaterra",
+        "marketValue": 800
+      },
+      {
+        "name": "Luke Chambers",
+        "position": "DFC",
+        "rating": 65,
+        "age": 19,
+        "nationality": "Inglaterra",
+        "marketValue": 800
+      },
+      {
+        "name": "Macaulay Gillesphey",
+        "position": "DFC",
+        "rating": 69,
+        "age": 30,
+        "nationality": "Inglaterra",
+        "marketValue": 400
+      },
+      {
+        "name": "Zach Mitchell",
+        "position": "DFC",
+        "rating": 65,
+        "age": 20,
+        "nationality": "Inglaterra",
+        "marketValue": 200
+      },
+      {
+        "name": "Josh Edwards",
+        "position": "DFC",
+        "rating": 65,
+        "age": 16,
+        "nationality": "Escocia",
+        "marketValue": 550
+      },
+      {
+        "name": "Harry Clarke",
+        "position": "DFC",
+        "rating": 64,
+        "age": 44,
+        "nationality": "Inglaterra",
+        "marketValue": 4000000
+      },
+      {
+        "name": "Joe Rankin-Costello",
+        "position": "DFC",
+        "rating": 69,
+        "age": 26,
+        "nationality": "Inglaterra",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Kayne Ramsay",
+        "position": "DFC",
+        "rating": 67,
+        "age": 25,
+        "nationality": "Inglaterra",
+        "marketValue": 800
+      },
+      {
+        "name": "Conor Coventry",
+        "position": "MC",
+        "rating": 70,
+        "age": 25,
+        "nationality": "Irlanda",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Greg Docherty",
+        "position": "MC",
+        "rating": 70,
+        "age": 29,
+        "nationality": "Escocia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Ibrahim Fullah",
+        "position": "MC",
+        "rating": 62,
+        "age": 37,
+        "nationality": "Inglaterra",
+        "marketValue": 400
+      },
+      {
+        "name": "Karoy Anderson",
+        "position": "MC",
+        "rating": 64,
+        "age": 18,
+        "nationality": "Jamaica",
+        "marketValue": 350
+      },
+      {
+        "name": "Luke Berry",
+        "position": "MC",
+        "rating": 63,
+        "age": 33,
+        "nationality": "Inglaterra",
+        "marketValue": 250
+      },
+      {
+        "name": "Sonny Carey",
+        "position": "MC",
+        "rating": 72,
+        "age": 25,
+        "nationality": "Inglaterra",
+        "marketValue": 2500000
+      },
+      {
+        "name": "Harvey Knibbs",
+        "position": "MC",
+        "rating": 63,
+        "age": 41,
+        "nationality": "Inglaterra",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Tyreece Campbell",
+        "position": "DC",
+        "rating": 66,
+        "age": 22,
+        "nationality": "Jamaica",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Onel Hernández",
+        "position": "DC",
+        "rating": 69,
+        "age": 27,
+        "nationality": "Cuba",
+        "marketValue": 400
+      },
+      {
+        "name": "Jayden Fevrier",
+        "position": "DC",
+        "rating": 67,
+        "age": 22,
+        "nationality": "Inglaterra",
+        "marketValue": 350
+      },
+      {
+        "name": "Charlie Kelman",
+        "position": "DC",
+        "rating": 68,
+        "age": 23,
+        "nationality": "Estados Unidos",
+        "marketValue": 3000000
+      },
+      {
+        "name": "Lyndon Dykes",
+        "position": "DC",
+        "rating": 72,
+        "age": 30,
+        "nationality": "Escocia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Miles Leaburn",
+        "position": "DC",
+        "rating": 65,
+        "age": 22,
+        "nationality": "Inglaterra",
+        "marketValue": 800
+      },
+      {
+        "name": "Matty Godden",
+        "position": "DC",
+        "rating": 67,
+        "age": 24,
+        "nationality": "Inglaterra",
+        "marketValue": 150
+      }
+    ]
+  },
+  {
+    "id": "sheffield-wednesday",
+    "name": "Sheffield Wednesday",
+    "players": [
+      {
+        "name": "Pierce Charles",
+        "position": "POR",
+        "rating": 64,
+        "age": 20,
+        "nationality": "Irlanda del Norte",
+        "marketValue": 300
+      },
+      {
+        "name": "Murphy Cooper",
+        "position": "POR",
+        "rating": 64,
+        "age": 24,
+        "nationality": "Inglaterra",
+        "marketValue": 300
+      },
+      {
+        "name": "Logan Stretch",
+        "position": "POR",
+        "rating": 66,
+        "age": 25,
+        "nationality": "Gales",
+        "marketValue": 0
+      },
+      {
+        "name": "Di'Shon Bernard",
+        "position": "DFC",
+        "rating": 68,
+        "age": 25,
+        "nationality": "Jamaica",
+        "marketValue": 1500000
+      },
+      {
+        "name": "Gabriel Otegbayo",
+        "position": "DFC",
+        "rating": 64,
+        "age": 22,
+        "nationality": "Irlanda",
+        "marketValue": 500
+      },
+      {
+        "name": "Dominic Iorfa",
+        "position": "DFC",
+        "rating": 69,
+        "age": 30,
+        "nationality": "Inglaterra",
+        "marketValue": 300
+      },
+      {
+        "name": "Liam Cooper",
+        "position": "DFC",
+        "rating": 65,
+        "age": 16,
+        "nationality": "Escocia",
+        "marketValue": 300
+      },
+      {
+        "name": "Max Lowe",
+        "position": "DFC",
+        "rating": 70,
+        "age": 28,
+        "nationality": "Inglaterra",
+        "marketValue": 2200000
+      },
+      {
+        "name": "Reece Johnson",
+        "position": "DFC",
+        "rating": 68,
+        "age": 27,
+        "nationality": "Inglaterra",
+        "marketValue": 75
+      },
+      {
+        "name": "Yan Valery",
+        "position": "DFC",
+        "rating": 70,
+        "age": 26,
+        "nationality": "Túnez",
+        "marketValue": 1300000
+      },
+      {
+        "name": "Sean Fusire",
+        "position": "DFC",
+        "rating": 65,
+        "age": 20,
+        "nationality": "Zimbabue",
+        "marketValue": 400
+      },
+      {
+        "name": "Liam Palmer",
+        "position": "DFC",
+        "rating": 64,
+        "age": 34,
+        "nationality": "Escocia",
+        "marketValue": 150
+      },
+      {
+        "name": "Guilherme Siqueira",
+        "position": "DFC",
+        "rating": 67,
+        "age": 23,
+        "nationality": "Brasil",
+        "marketValue": 0
+      },
+      {
+        "name": "Nathaniel Chalobah",
+        "position": "MC",
+        "rating": 71,
+        "age": 31,
+        "nationality": "Inglaterra",
+        "marketValue": 700
+      },
+      {
+        "name": "Jarvis Thornton",
+        "position": "MC",
+        "rating": 62,
+        "age": 37,
+        "nationality": "Inglaterra",
+        "marketValue": 0
+      },
+      {
+        "name": "Svante Ingelsson",
+        "position": "MC",
+        "rating": 72,
+        "age": 27,
+        "nationality": "Suecia",
+        "marketValue": 1000000
+      },
+      {
+        "name": "Rio Shipston",
+        "position": "MC",
+        "rating": 64,
+        "age": 20,
+        "nationality": "Inglaterra",
+        "marketValue": 75
+      },
+      {
+        "name": "Jaden Heskey",
+        "position": "MC",
+        "rating": 67,
+        "age": 24,
+        "nationality": "Inglaterra",
+        "marketValue": 0
+      },
+      {
+        "name": "Olaf Kobacki",
+        "position": "DC",
+        "rating": 66,
+        "age": 19,
+        "nationality": "Polonia",
+        "marketValue": 700
+      },
+      {
+        "name": "Nathan Redmond",
+        "position": "DC",
+        "rating": 67,
+        "age": 15,
+        "nationality": "Inglaterra",
+        "marketValue": 1200000
+      },
+      {
+        "name": "Iké Ugbo",
+        "position": "DC",
+        "rating": 67,
+        "age": 27,
+        "nationality": "Canadá",
+        "marketValue": 2000000
+      },
+      {
+        "name": "Jerry Yates",
+        "position": "DC",
+        "rating": 70,
+        "age": 29,
+        "nationality": "Inglaterra",
+        "marketValue": 1800000
+      },
+      {
+        "name": "Jamal Lowe",
+        "position": "DC",
+        "rating": 61,
+        "age": 31,
+        "nationality": "Jamaica",
+        "marketValue": 800
+      },
+      {
+        "name": "Bailey Cadamarteri",
+        "position": "DC",
+        "rating": 64,
+        "age": 18,
+        "nationality": "Jamaica",
+        "marketValue": 800
+      },
+      {
+        "name": "Charlie McNeill",
+        "position": "DC",
+        "rating": 63,
+        "age": 17,
+        "nationality": "Inglaterra",
+        "marketValue": 400
+      }
+    ]
+  }
+]
