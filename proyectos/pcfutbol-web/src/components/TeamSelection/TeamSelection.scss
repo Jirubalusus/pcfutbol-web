@@ -174,11 +174,6 @@ $pcf-text: #bdc3c7;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  
-  @media (max-width: 768px) {
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
 }
 
 // ============================================================
