@@ -4,8 +4,9 @@ import { Trophy, ChevronDown, ChevronUp, Globe, RefreshCw } from 'lucide-react';
 import { getLeagueTable, LEAGUE_CONFIG, initializeOtherLeagues, simulateOtherLeaguesWeek } from '../../game/multiLeagueEngine';
 import './LeagueTable.scss';
 
-// Configuración de zonas por liga (mantener para retrocompatibilidad)
+// Configuración de zonas por liga
 const LEAGUE_ZONES = {
+  // === ESPAÑA ===
   laliga: {
     name: 'La Liga',
     champions: [1, 2, 3, 4],
@@ -25,9 +26,9 @@ const LEAGUE_ZONES = {
     name: 'Primera Federación',
     isGroupLeague: true,
     promotion: [1],
-    relegation: [], // Dynamic based on group size
-    relegationFromBottom: 2, // Last 2 per group
-    teams: 0 // Dynamic
+    relegation: [],
+    relegationFromBottom: 2,
+    teams: 0
   },
   segundaRFEF: {
     name: 'Segunda Federación',
@@ -36,6 +37,7 @@ const LEAGUE_ZONES = {
     relegation: [],
     teams: 0
   },
+  // === TOP 5 LIGAS ===
   premierLeague: {
     name: 'Premier League',
     champions: [1, 2, 3, 4],
@@ -67,19 +69,139 @@ const LEAGUE_ZONES = {
     conference: [5],
     relegation: [16, 17, 18],
     teams: 18
+  },
+  // === SEGUNDAS DIVISIONES ===
+  championship: {
+    name: 'Championship',
+    promotion: [1, 2],
+    playoff: [3, 4, 5, 6],
+    relegation: [22, 23, 24],
+    teams: 24
+  },
+  serieB: {
+    name: 'Serie B',
+    promotion: [1, 2],
+    playoff: [3, 4, 5, 6, 7, 8],
+    relegation: [18, 19, 20],
+    teams: 20
+  },
+  bundesliga2: {
+    name: '2. Bundesliga',
+    promotion: [1, 2],
+    playoff: [3],
+    relegation: [16, 17, 18],
+    teams: 18
+  },
+  ligue2: {
+    name: 'Ligue 2',
+    promotion: [1, 2],
+    playoff: [3, 4, 5],
+    relegation: [16, 17, 18],
+    teams: 18
+  },
+  // === OTRAS LIGAS EUROPEAS ===
+  eredivisie: {
+    name: 'Eredivisie',
+    champions: [1],
+    europaLeague: [2, 3],
+    conference: [4],
+    relegation: [16, 17, 18],
+    teams: 18
+  },
+  primeiraLiga: {
+    name: 'Primeira Liga',
+    champions: [1],
+    europaLeague: [2, 3],
+    conference: [4],
+    relegation: [16, 17, 18],
+    teams: 18
+  },
+  belgianPro: {
+    name: 'Jupiler Pro League',
+    champions: [1],
+    europaLeague: [2],
+    conference: [3],
+    relegation: [15, 16],
+    teams: 16
+  },
+  superLig: {
+    name: 'Süper Lig',
+    champions: [1],
+    europaLeague: [2, 3],
+    conference: [4],
+    relegation: [16, 17, 18],
+    teams: 18
+  },
+  scottishPrem: {
+    name: 'Scottish Premiership',
+    champions: [1],
+    europaLeague: [2],
+    conference: [3],
+    relegation: [11, 12],
+    teams: 12
+  },
+  swissSuperLeague: {
+    name: 'Super League',
+    champions: [1],
+    europaLeague: [2],
+    conference: [3],
+    relegation: [11, 12],
+    teams: 12
+  },
+  austrianBundesliga: {
+    name: 'Bundesliga (AT)',
+    champions: [1],
+    europaLeague: [2],
+    conference: [3],
+    relegation: [11, 12],
+    teams: 12
+  },
+  greekSuperLeague: {
+    name: 'Super League',
+    champions: [1],
+    europaLeague: [2],
+    conference: [3],
+    relegation: [13, 14],
+    teams: 14
+  },
+  danishSuperliga: {
+    name: 'Superligaen',
+    champions: [1],
+    europaLeague: [2],
+    conference: [3],
+    relegation: [11, 12],
+    teams: 12
+  },
+  croatianLeague: {
+    name: 'HNL',
+    champions: [1],
+    europaLeague: [2],
+    conference: [3],
+    relegation: [9, 10],
+    teams: 10
+  },
+  czechLeague: {
+    name: 'Chance Liga',
+    champions: [1],
+    europaLeague: [2],
+    conference: [3],
+    relegation: [15, 16],
+    teams: 16
   }
 };
 
 // Banderas emoji por país
 const COUNTRY_FLAGS = {
-  laliga: '🇪🇸',
-  segunda: '🇪🇸',
-  primeraRFEF: '🇪🇸',
-  segundaRFEF: '🇪🇸',
-  premierLeague: '🏴󠁧󠁢󠁥󠁮󠁧󠁿',
-  serieA: '🇮🇹',
-  bundesliga: '🇩🇪',
-  ligue1: '🇫🇷'
+  laliga: '🇪🇸', segunda: '🇪🇸', primeraRFEF: '🇪🇸', segundaRFEF: '🇪🇸',
+  premierLeague: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', championship: '🏴󠁧󠁢󠁥󠁮󠁧󠁿',
+  serieA: '🇮🇹', serieB: '🇮🇹',
+  bundesliga: '🇩🇪', bundesliga2: '🇩🇪',
+  ligue1: '🇫🇷', ligue2: '🇫🇷',
+  eredivisie: '🇳🇱', primeiraLiga: '🇵🇹', belgianPro: '🇧🇪',
+  superLig: '🇹🇷', scottishPrem: '🏴󠁧󠁢󠁳󠁣󠁴󠁿',
+  swissSuperLeague: '🇨🇭', austrianBundesliga: '🇦🇹',
+  greekSuperLeague: '🇬🇷', danishSuperliga: '🇩🇰',
+  croatianLeague: '🇭🇷', czechLeague: '🇨🇿'
 };
 
 export default function LeagueTable() {
@@ -224,11 +346,34 @@ export default function LeagueTable() {
               <option value="primeraRFEF">Primera Federación</option>
               <option value="segundaRFEF">Segunda Federación</option>
             </optgroup>
-            <optgroup label="🌍 Europa">
-              <option value="premierLeague">{COUNTRY_FLAGS.premierLeague} Premier League</option>
-              <option value="serieA">{COUNTRY_FLAGS.serieA} Serie A</option>
-              <option value="bundesliga">{COUNTRY_FLAGS.bundesliga} Bundesliga</option>
-              <option value="ligue1">{COUNTRY_FLAGS.ligue1} Ligue 1</option>
+            <optgroup label="🏴󠁧󠁢󠁥󠁮󠁧󠁿 Inglaterra">
+              <option value="premierLeague">Premier League</option>
+              <option value="championship">Championship</option>
+            </optgroup>
+            <optgroup label="🇮🇹 Italia">
+              <option value="serieA">Serie A</option>
+              <option value="serieB">Serie B</option>
+            </optgroup>
+            <optgroup label="🇩🇪 Alemania">
+              <option value="bundesliga">Bundesliga</option>
+              <option value="bundesliga2">2. Bundesliga</option>
+            </optgroup>
+            <optgroup label="🇫🇷 Francia">
+              <option value="ligue1">Ligue 1</option>
+              <option value="ligue2">Ligue 2</option>
+            </optgroup>
+            <optgroup label="🌍 Resto de Europa">
+              <option value="eredivisie">🇳🇱 Eredivisie</option>
+              <option value="primeiraLiga">🇵🇹 Primeira Liga</option>
+              <option value="belgianPro">🇧🇪 Jupiler Pro League</option>
+              <option value="superLig">🇹🇷 Süper Lig</option>
+              <option value="scottishPrem">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scottish Prem</option>
+              <option value="swissSuperLeague">🇨🇭 Super League</option>
+              <option value="austrianBundesliga">🇦🇹 Bundesliga (AT)</option>
+              <option value="greekSuperLeague">🇬🇷 Super League</option>
+              <option value="danishSuperliga">🇩🇰 Superligaen</option>
+              <option value="croatianLeague">🇭🇷 HNL</option>
+              <option value="czechLeague">🇨🇿 Chance Liga</option>
             </optgroup>
           </select>
         </div>
