@@ -194,8 +194,9 @@
       transition: all 0.2s;
 
       @media (max-width: 640px) {
-        grid-template-columns: 1fr 50px 1fr 24px;
-        padding: 10px 12px;
+        grid-template-columns: 1fr 44px 1fr 24px;
+        padding: 8px 12px;
+        gap: 0 4px;
       }
 
       &:hover {
@@ -210,7 +211,6 @@
       .team {
         display: flex;
         align-items: center;
-        gap: 8px;
         min-width: 0;
 
         &.home {
@@ -222,22 +222,9 @@
           justify-content: flex-start;
         }
 
-        &.is-you .team-name,
-        &.is-you .team-short {
+        &.is-you .team-name {
           color: #0a84ff;
           font-weight: 600;
-        }
-
-        .team-short {
-          display: none;
-          font-size: 0.85rem;
-          font-weight: 600;
-          color: #ddd;
-          letter-spacing: 0.5px;
-
-          @media (max-width: 640px) {
-            display: block;
-          }
         }
 
         .team-name {
@@ -248,7 +235,7 @@
           text-overflow: ellipsis;
           
           @media (max-width: 640px) {
-            display: none;
+            font-size: 0.78rem;
           }
         }
       }

@@ -138,7 +138,6 @@ export default function Calendar() {
                 {/* Equipo local */}
                 <div className={`team home ${fixture.homeTeam === state.teamId ? 'is-you' : ''}`}>
                   <span className="team-name">{getTeamName(fixture.homeTeam)}</span>
-                  <span className="team-short">{getTeamShortName(fixture.homeTeam)}</span>
                 </div>
                 
                 {/* Marcador / VS */}
@@ -158,7 +157,6 @@ export default function Calendar() {
                 
                 {/* Equipo visitante */}
                 <div className={`team away ${fixture.awayTeam === state.teamId ? 'is-you' : ''}`}>
-                  <span className="team-short">{getTeamShortName(fixture.awayTeam)}</span>
                   <span className="team-name">{getTeamName(fixture.awayTeam)}</span>
                 </div>
                 
