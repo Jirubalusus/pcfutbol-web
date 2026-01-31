@@ -1202,11 +1202,13 @@ function gameReducer(state, action) {
       };
     
     case 'INJURE_PLAYER': {
-      // Centro médico reduce tiempo de lesiones
+      // Centro médico reduce tiempo de lesiones (nivel base + especialización recuperación)
       const medicalLevel = state.facilities?.medical || 0;
-      const medicalReduction = [0, 0.20, 0.35, 0.50][medicalLevel]; // 0%, 20%, 35%, 50%
+      const medicalReduction = [0, 0.20, 0.35, 0.50][medicalLevel];
+      const recoverySpecBonus = state.facilitySpecs?.medical === 'recovery' ? 0.50 : 0;
+      const totalReduction = Math.min(0.75, medicalReduction + recoverySpecBonus); // Cap 75%
       const baseWeeks = action.payload.weeksOut;
-      const reducedWeeks = Math.max(1, Math.round(baseWeeks * (1 - medicalReduction)));
+      const reducedWeeks = Math.max(1, Math.round(baseWeeks * (1 - totalReduction)));
       
       // Lesión grave = más de 6 semanas
       const isSevere = baseWeeks >= 6;
@@ -1333,15 +1335,28 @@ function gameReducer(state, action) {
     case 'HEAL_INJURIES': {
       const currentSlots = state.medicalSlots || [];
       const healed = [];
+      const hasPerformanceSpec = state.facilitySpecs?.medical === 'performance';
       
       const healedPlayers = state.team.players.map(p => {
         if (p.injured && p.injuryWeeksLeft > 0) {
           const newWeeksLeft = p.injuryWeeksLeft - 1;
           if (newWeeksLeft <= 0) {
-            healed.push(p.name); // Marcar como curado para liberar slot
-            return { ...p, injured: false, injuryWeeksLeft: 0, injuryType: null, treated: false };
+            healed.push(p.name);
+            // Rendimiento: jugadores vuelven con +2 OVR temporal por 4 semanas
+            const postInjuryBoost = hasPerformanceSpec ? { 
+              postInjuryBonus: 2, 
+              postInjuryWeeksLeft: 4 
+            } : {};
+            return { ...p, injured: false, injuryWeeksLeft: 0, injuryType: null, treated: false, ...postInjuryBoost };
           }
           return { ...p, injuryWeeksLeft: newWeeksLeft };
+        }
+        // Reducir bonus post-lesión
+        if (p.postInjuryWeeksLeft > 0) {
+          const weeksLeft = p.postInjuryWeeksLeft - 1;
+          return weeksLeft <= 0 
+            ? { ...p, postInjuryBonus: 0, postInjuryWeeksLeft: 0 }
+            : { ...p, postInjuryWeeksLeft: weeksLeft };
         }
         return p;
       });

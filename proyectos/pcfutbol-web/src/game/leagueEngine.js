@@ -628,10 +628,17 @@ function simulateMatchMinuteByMinute(homeRating, awayRating, homeStrength, awayS
     // Lesiones - el césped malo aumenta riesgo del LOCAL
     // Césped 100% = riesgo normal, 50% = +50% riesgo local, 0% = +100% riesgo local
     const grassPenalty = grassCondition < 100 ? (100 - grassCondition) / 100 : 0;
+    // Prevención del centro médico reduce probabilidad de lesiones
+    const medicalPrevention = options?.medicalPrevention || 0; // 0 a 0.30
     const baseInjuryChance = 0.002 * intensity;
     
-    // Primero check lesión visitante (riesgo normal)
-    if (Math.random() < baseInjuryChance) {
+    // Calcular reducción por prevención médica según equipo
+    const playerIsHome = options?.playerIsHome;
+    const awayInjuryChance = baseInjuryChance * (playerIsHome === false ? (1 - medicalPrevention) : 1);
+    const homeInjuryChance = baseInjuryChance * (1 + grassPenalty) * (playerIsHome === true ? (1 - medicalPrevention) : 1);
+    
+    // Check lesión visitante
+    if (Math.random() < awayInjuryChance) {
       const player = selectInjuryPlayer(awayTeam);
       const severity = generateInjurySeverity();
       events.push({
@@ -645,7 +652,6 @@ function simulateMatchMinuteByMinute(homeRating, awayRating, homeStrength, awayS
     }
     
     // Check lesión local (riesgo aumentado si césped malo)
-    const homeInjuryChance = baseInjuryChance * (1 + grassPenalty);
     if (Math.random() < homeInjuryChance) {
       const player = selectInjuryPlayer(homeTeam);
       const severity = generateInjurySeverity();
@@ -656,7 +662,7 @@ function simulateMatchMinuteByMinute(homeRating, awayRating, homeStrength, awayS
         player: player.name,
         severity: severity.type,
         weeksOut: severity.weeks,
-        grassRelated: grassCondition < 70 // Marcar si fue por césped malo
+        grassRelated: grassCondition < 70
       });
     }
   }

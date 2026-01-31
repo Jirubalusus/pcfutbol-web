@@ -206,13 +206,15 @@ export default function MatchDay({ onComplete }) {
         awayTactic: isHome ? 'balanced' : state.tactic,
         homeMorale: isHome ? (playerTableEntry?.morale || 70) : (opponentTableEntry?.morale || 70),
         awayMorale: isHome ? (opponentTableEntry?.morale || 70) : (playerTableEntry?.morale || 70),
-        isDerby: false, // TODO: implement derby detection
+        isDerby: false,
         importance: 'normal',
         attendanceFillRate: isHome ? attendanceFillRate : 0.7,
         grassCondition,
-        // Pasar lineup del jugador para que la simulación respete su alineación
         homeLineup: isHome ? state.lineup : null,
-        awayLineup: isHome ? null : state.lineup
+        awayLineup: isHome ? null : state.lineup,
+        // Centro médico: especialización prevención reduce lesiones
+        playerIsHome: isHome,
+        medicalPrevention: state.facilitySpecs?.medical === 'prevention' ? 0.30 : 0
       }
     );
     
