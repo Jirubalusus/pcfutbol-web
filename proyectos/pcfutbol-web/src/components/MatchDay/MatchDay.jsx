@@ -356,7 +356,7 @@ export default function MatchDay({ onComplete }) {
         });
       }
 
-      onComplete();
+      onComplete('cup');
       return;
     }
 
@@ -414,7 +414,7 @@ export default function MatchDay({ onComplete }) {
       // League fixtures have been remapped to non-European weeks.
       // Other leagues are simulated in ADVANCE_WEEK (GameContext).
 
-      onComplete();
+      onComplete('european');
       return;
     }
 
@@ -571,12 +571,16 @@ export default function MatchDay({ onComplete }) {
     if (isHome && matchResult.attendance) {
       const att = matchResult.attendance;
       const stadium = state.stadium || {};
-      const tPrice = (stadium.ticketPrice ?? 30);
+      const tPrice = (stadium.ticketPrice ?? 30) + (stadium.matchPriceAdjust || 0);
       
-      // Ingresos = SOLO entradas vendidas (no abonados, ya pagaron en campaña)
+      // Ingresos = entradas vendidas + consumiciones (bar, tienda, etc.)
+      const sLevel = stadium.level ?? 0;
+      const concRate = 8 + (sLevel * 2); // €8-18 por asistente según nivel
       const ticketIncome = att.ticketSales * tPrice;
+      const concessionIncome = att.attendance * concRate;
+      const totalMatchIncome = ticketIncome + concessionIncome;
       
-      // ACUMULAR ingresos de entradas (se cobran al final de temporada)
+      // ACUMULAR ingresos (se cobran al final de temporada)
       const prevAccumulated = stadium.accumulatedTicketIncome ?? 0;
       
       // Guardar datos de última jornada + acumular + bloquear precio
@@ -586,29 +590,28 @@ export default function MatchDay({ onComplete }) {
           ...stadium, 
           lastMatchTicketSales: att.ticketSales,       // Entradas vendidas (sin abonados)
           lastMatchAttendance: att.attendance,          // Asistencia total (con abonados)
-          lastMatchIncome: ticketIncome,                // Solo ingresos de entradas vendidas
-          accumulatedTicketIncome: prevAccumulated + ticketIncome,
+          lastMatchIncome: totalMatchIncome,            // Entradas + consumiciones
+          accumulatedTicketIncome: prevAccumulated + totalMatchIncome,
           ticketPriceLocked: true // Se bloquea al jugar el primer partido
         }
       });
       
       // Mensaje con detalles de taquilla
       const fillPercent = Math.round(att.fillRate * 100);
-      const availableSeats = att.availableSeats || 0;
       dispatch({
         type: 'ADD_MESSAGE',
         payload: {
           id: Date.now() + 0.1,
           type: 'stadium',
           title: `Taquilla: ${att.ticketSales.toLocaleString()} entradas vendidas (${fillPercent}% aforo)`,
-          content: `Ingresos: €${(ticketIncome/1000).toFixed(0)}K (${att.ticketSales} × €${tPrice}) | Acumulado temp.: €${((prevAccumulated + ticketIncome)/1000).toFixed(0)}K`,
+          content: `Taquilla: €${(ticketIncome/1000).toFixed(0)}K + Consumiciones: €${(concessionIncome/1000).toFixed(0)}K | Acumulado temp.: €${((prevAccumulated + totalMatchIncome)/1000).toFixed(0)}K`,
           date: `Semana ${state.currentWeek}`
         }
       });
     }
     
     // HEAL_INJURIES se llama en ADVANCE_WEEK, no aquí
-    onComplete();
+    onComplete('league');
   };
   
   const getInjuryText = (severity) => {

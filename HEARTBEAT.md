@@ -1,21 +1,29 @@
 # HEARTBEAT.md
 
-## Estado: ✅ Todas las ligas europeas completas
-**Última actualización:** 2026-01-30 19:48
+## Estado: ✅ Sesión activa — trabajando con Pol
+**Última actualización:** 2026-02-01 12:45
 
-## Completado hoy (30 enero) — tarde/noche
-- ✅ Fix mobile: países/ligas visibles en selección de equipo
-- ✅ **15 ligas nuevas subidas a Firestore** (238 equipos, 6795 jugadores)
-  - Eredivisie, Primeira Liga, Championship, Jupiler Pro, Süper Lig, Scottish Prem
-  - Serie B, 2. Bundesliga, Ligue 2, Super League suiza/griega
-  - Bundesliga AT, Superligaen, HNL, Chance Liga
-- ✅ Fix formato datos: rating→overall, añadido salary/value/contract/age/morale/fitness
-- ✅ Fix NaN presupuesto: auto-cálculo budget+reputation para equipos nuevos
-- ✅ Fix Serie A, Bundesliga, Ligue 1 (formato viejo corregido)
-- ✅ Re-subidas las 23 ligas completas a Firestore
-- ✅ **Clasificación**: selector con 23 ligas, plazas europeas/descenso correctas por liga
+## Completado hoy (1 febrero)
+
+### Bugs de economía/taquilla (6 fixes)
+- ✅ handleMatchComplete stale state → ahora avanza semana correctamente
+- ✅ Fast-forward ya no sobreescribe ingresos acumulados
+- ✅ Ingresos consistentes MatchDay vs Office (entradas + consumiciones)
+- ✅ matchPriceAdjust incluido en cálculo de ingresos
+- ✅ Parámetros faltantes en fast-forward (teamOverall, division, etc.)
+- ✅ Código muerto RECORD_MATCH_INCOME eliminado
+
+### Estadísticas de temporada (Formation)
+- ✅ Modal estadísticas ahora lee de leagueTable (datos reales)
+- ✅ Nueva pestaña "Jugadores" con goleadores, asistentes, más partidos
+
+### Sistema de Cantera "Hijos"
+- ✅ 50 leyendas mutadas para cantera del jugador (Massi, Pelú, Zidani...)
+- ✅ Jugadores retirados generan "hijos" con nombre mutado
+- ✅ Potential del hijo ≈ OVR del padre (±5)
+- ✅ Crecimiento acelerado (evolveSonPlayer) hacia potential
+- ✅ Aplica a equipos IA también (leagueTeams envejecen + generan hijos)
 
 ## Estado actual
-- PC Fútbol Web funcionando en GitHub Pages
-- 23 ligas jugables con datos reales de Transfermarkt
-- Requiere nueva partida para ver cambios
+- PC Fútbol Web desplegado OK
+- Esperando feedback de Pol

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  Home, Users, BarChart3, Menu, Target, Calendar, Globe, Award,
+  Home, Users, BarChart3, Menu, Target, Calendar, Award,
   Coins, Building2, Building, Wrench, Mail, FastForward, SkipForward,
   Settings as SettingsIcon, LogOut, X
 } from 'lucide-react';
@@ -20,8 +20,7 @@ const MENU_ITEMS = [
   { id: 'formation', icon: <FootballIcon size={20} />, label: 'Formación' },
   { id: 'objectives', icon: <Target size={20} />, label: 'Objetivos' },
   { id: 'calendar', icon: <Calendar size={20} />, label: 'Calendario' },
-  { id: 'cup', icon: <Award size={20} />, label: 'Copa', requiresCup: true },
-  { id: 'europe', icon: <Globe size={20} />, label: 'Europa' },
+  { id: 'competitions', icon: <Award size={20} />, label: 'Competiciones', requiresCompetitions: true },
   { id: 'transfers', icon: <Coins size={20} />, label: 'Fichajes' },
   { id: 'stadium', icon: <Building2 size={20} />, label: 'Estadio' },
   { id: 'finance', icon: <Building size={20} />, label: 'Banco' },
@@ -38,9 +37,10 @@ export default function MobileNav({ activeTab, onTabChange, onAdvanceWeek, onSim
   const simDisabled = simulating || state.preseasonPhase || !!state.pendingEuropeanMatch || !!state.pendingCupMatch;
   
   // Filter menu items based on state
-  const filteredMenuItems = MENU_ITEMS.filter(item => 
-    !item.requiresCup || state.cupCompetition
-  );
+  const filteredMenuItems = MENU_ITEMS.filter(item => {
+    if (item.requiresCompetitions) return state.cupCompetition || state.europeanCompetitions?.initialized;
+    return true;
+  });
 
   const handleTabClick = (tabId) => {
     if (tabId === 'menu') {

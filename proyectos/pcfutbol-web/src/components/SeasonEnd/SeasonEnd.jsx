@@ -364,8 +364,9 @@ export default function SeasonEnd({ allTeams, onComplete }) {
     let europeanCalendar = null;
     const hasEuropean = !!seasonResult.qualification;
 
-    if (hasEuropean || cupRounds > 0) {
-      // Build expanded season calendar with European + cup weeks
+    {
+      // ALWAYS build season calendar (even league-only) so Calendar component
+      // can properly show competition tabs (Liga / Copa / Europa)
       const totalLeagueMDs = finalFixtures.length > 0
         ? Math.max(...finalFixtures.map(f => f.week))
         : 38;

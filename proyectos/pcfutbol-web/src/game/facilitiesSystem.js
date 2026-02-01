@@ -167,8 +167,175 @@ export function generateFacilityEvent(facilities, players, week) {
   };
 }
 
-// Genera canterano con especialización
-// Siempre 1 canterano/temporada — el nivel de cantera mejora la media del jugador
+// ============================================================
+// SISTEMA DE CANTERA — "HIJOS" DE JUGADORES RETIRADOS
+// ============================================================
+
+// Leyendas para la cantera del jugador (nombres mutados con gracia)
+const LEGENDARY_SONS = [
+  // Nombre original → nombre "hijo", posición, OVR referencia del padre
+  { parent: 'Pelé', son: 'Pelú', pos: 'ST', parentOvr: 97 },
+  { parent: 'Maradona', son: 'Maradoni', pos: 'CAM', parentOvr: 96 },
+  { parent: 'Cruyff', son: 'Cruyfi', pos: 'CAM', parentOvr: 95 },
+  { parent: 'Messi', son: 'Massi', pos: 'RW', parentOvr: 96 },
+  { parent: 'Ronaldo Nazário', son: 'Roneldo', pos: 'ST', parentOvr: 95 },
+  { parent: 'Cristiano Ronaldo', son: 'Cristiani', pos: 'LW', parentOvr: 94 },
+  { parent: 'Zidane', son: 'Zidani', pos: 'CAM', parentOvr: 95 },
+  { parent: 'Ronaldinho', son: 'Ronaldino', pos: 'CAM', parentOvr: 93 },
+  { parent: 'Beckenbauer', son: 'Beckenbau', pos: 'CB', parentOvr: 95 },
+  { parent: 'Maldini', son: 'Maldino', pos: 'CB', parentOvr: 94 },
+  { parent: 'Pirlo', son: 'Pirli', pos: 'CM', parentOvr: 91 },
+  { parent: 'Xavi', son: 'Xabi', pos: 'CM', parentOvr: 92 },
+  { parent: 'Iniesta', son: 'Iniesti', pos: 'CM', parentOvr: 92 },
+  { parent: 'Buffon', son: 'Baffon', pos: 'GK', parentOvr: 93 },
+  { parent: 'Casillas', son: 'Casillos', pos: 'GK', parentOvr: 92 },
+  { parent: 'Puyol', son: 'Puyel', pos: 'CB', parentOvr: 90 },
+  { parent: 'Roberto Carlos', son: 'Roberto Carles', pos: 'LB', parentOvr: 91 },
+  { parent: 'Cafu', son: 'Cafú Jr.', pos: 'RB', parentOvr: 91 },
+  { parent: 'Henry', son: 'Hanry', pos: 'ST', parentOvr: 93 },
+  { parent: 'Van Basten', son: 'Van Bisten', pos: 'ST', parentOvr: 94 },
+  { parent: 'Platini', son: 'Platoni', pos: 'CAM', parentOvr: 94 },
+  { parent: 'Di Stéfano', son: 'Di Stefini', pos: 'ST', parentOvr: 95 },
+  { parent: 'Puskas', son: 'Puskis', pos: 'ST', parentOvr: 94 },
+  { parent: 'Eusébio', son: 'Eusebiu', pos: 'ST', parentOvr: 93 },
+  { parent: 'Garrincha', son: 'Garrinchi', pos: 'RW', parentOvr: 93 },
+  { parent: 'Matthäus', son: 'Mattheus', pos: 'CDM', parentOvr: 92 },
+  { parent: 'Rummenigge', son: 'Rummenigi', pos: 'ST', parentOvr: 91 },
+  { parent: 'Bergkamp', son: 'Bergkump', pos: 'ST', parentOvr: 91 },
+  { parent: 'Raúl', son: 'Raúlito', pos: 'ST', parentOvr: 90 },
+  { parent: 'Rivaldo', son: 'Rivaldu', pos: 'LW', parentOvr: 91 },
+  { parent: 'Nedved', son: 'Nedvid', pos: 'LW', parentOvr: 90 },
+  { parent: 'Baggio', son: 'Bagio', pos: 'CAM', parentOvr: 92 },
+  { parent: 'Riquelme', son: 'Riquelmi', pos: 'CAM', parentOvr: 90 },
+  { parent: 'Laudrup', son: 'Laudrip', pos: 'CAM', parentOvr: 90 },
+  { parent: 'Drogba', son: 'Drogbi', pos: 'ST', parentOvr: 89 },
+  { parent: 'Scholes', son: 'Scholis', pos: 'CM', parentOvr: 89 },
+  { parent: 'Gerrard', son: 'Gerrurd', pos: 'CM', parentOvr: 89 },
+  { parent: 'Lampard', son: 'Lampord', pos: 'CM', parentOvr: 89 },
+  { parent: 'Nesta', son: 'Nisti', pos: 'CB', parentOvr: 92 },
+  { parent: 'Cannavaro', son: 'Cannavero', pos: 'CB', parentOvr: 91 },
+  { parent: 'Terry', son: 'Tarry', pos: 'CB', parentOvr: 89 },
+  { parent: 'Yashin', son: 'Yashun', pos: 'GK', parentOvr: 94 },
+  { parent: 'Neuer', son: 'Nouer', pos: 'GK', parentOvr: 92 },
+  { parent: 'Ramos', son: 'Ramas', pos: 'CB', parentOvr: 90 },
+  { parent: 'Lahm', son: 'Lahmi', pos: 'RB', parentOvr: 90 },
+  { parent: 'Seedorf', son: 'Seedurf', pos: 'CM', parentOvr: 89 },
+  { parent: 'Vieira', son: 'Viera', pos: 'CDM', parentOvr: 90 },
+  { parent: 'Romário', son: 'Romariu', pos: 'ST', parentOvr: 93 },
+  { parent: 'Stoichkov', son: 'Stoichkuv', pos: 'LW', parentOvr: 91 },
+  { parent: 'Batistuta', son: 'Batistuti', pos: 'ST', parentOvr: 91 },
+];
+
+// Track de leyendas ya usadas (para evitar duplicados en una partida)
+let usedLegendIndices = new Set();
+
+/**
+ * Muta un nombre de jugador para crear el "hijo"
+ * Reglas: cambiar vocales, endings, alternar letras
+ */
+export function mutatePlayerName(fullName) {
+  const parts = fullName.split(' ');
+  
+  // Mutar el apellido (última parte) — es lo más reconocible
+  const lastName = parts[parts.length - 1];
+  const mutated = mutateWord(lastName);
+  
+  // Generar un nombre de pila random
+  const firstNames = [
+    'Pablo', 'Miguel', 'Carlos', 'Leo', 'Adrián', 'Hugo', 'Iker', 'Sergio',
+    'Lucas', 'Marco', 'André', 'João', 'Pierre', 'Luca', 'Mohammed', 'Kevin',
+    'Jack', 'James', 'Thomas', 'Jan', 'Lars', 'Sven', 'Ali', 'Omar'
+  ];
+  const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+  
+  return `${firstName} ${mutated}`;
+}
+
+function mutateWord(word) {
+  if (word.length <= 2) return word + 'i';
+  
+  const mutations = [
+    // Cambiar última vocal
+    (w) => {
+      const vowels = 'aeiouáéíóú';
+      const replacements = { a: 'i', e: 'a', i: 'u', o: 'e', u: 'o', á: 'í', é: 'á', í: 'ú', ó: 'é', ú: 'ó' };
+      for (let i = w.length - 1; i >= 0; i--) {
+        if (vowels.includes(w[i])) {
+          return w.slice(0, i) + (replacements[w[i]] || 'i') + w.slice(i + 1);
+        }
+      }
+      return w + 'i';
+    },
+    // Cambiar ending
+    (w) => {
+      const endings = [
+        [/ez$/, 'iz'], [/es$/, 'os'], [/o$/, 'i'], [/a$/, 'o'],
+        [/er$/, 'ar'], [/on$/, 'un'], [/ini$/, 'oni'], [/ard$/, 'urd'],
+        [/en$/, 'an'], [/is$/, 'us'], [/an$/, 'en']
+      ];
+      for (const [pattern, replacement] of endings) {
+        if (pattern.test(w)) return w.replace(pattern, replacement);
+      }
+      return w + 'i';
+    },
+    // Duplicar o quitar una consonante
+    (w) => {
+      const idx = Math.floor(w.length * 0.6);
+      const c = w[idx];
+      if (c && !'aeiouáéíóú '.includes(c)) {
+        return Math.random() < 0.5 
+          ? w.slice(0, idx) + c + w.slice(idx)  // duplicar
+          : w.slice(0, idx) + w.slice(idx + 1); // quitar
+      }
+      return w + 'o';
+    },
+    // Swap dos letras adyacentes
+    (w) => {
+      const idx = 1 + Math.floor(Math.random() * (w.length - 2));
+      return w.slice(0, idx) + w[idx + 1] + w[idx] + w.slice(idx + 2);
+    }
+  ];
+  
+  const mutation = mutations[Math.floor(Math.random() * mutations.length)];
+  return mutation(word);
+}
+
+/**
+ * Genera un "hijo" de un jugador retirado (para equipos IA)
+ * Hereda posición, su potential se acerca al OVR del padre
+ */
+export function generateSonPlayer(retiredPlayer) {
+  const name = mutatePlayerName(retiredPlayer.name);
+  const position = retiredPlayer.position || 'CM';
+  const age = 17 + Math.floor(Math.random() * 2); // 17-18
+  const initialOvr = 50 + Math.floor(Math.random() * 10); // 50-59
+  
+  // Potential = OVR del padre ± varianza (-5 a +3)
+  const parentOvr = retiredPlayer.overall || 70;
+  const variance = Math.floor(Math.random() * 9) - 5; // -5 a +3
+  const potential = Math.max(60, Math.min(99, parentOvr + variance));
+  
+  return {
+    name,
+    position,
+    age,
+    overall: initialOvr,
+    potential,
+    parentName: retiredPlayer.name,
+    parentOvr,
+    nationality: retiredPlayer.nationality || 'Desconocida',
+    salary: Math.max(1500, Math.round(2000 * Math.pow(2, (initialOvr - 55) / 5) * 0.5)),
+    value: Math.round(initialOvr * initialOvr * 10000),
+    contractYears: 4,
+    isYouthProduct: true,
+    isSon: true
+  };
+}
+
+/**
+ * Genera canterano para el equipo del JUGADOR
+ * Usa nombres de leyendas mutados + nivel de cantera
+ */
 export function generateYouthPlayer(youthLevel, specialization) {
   const minOvr = [50, 55, 58, 62][youthLevel];
   const maxOvr = [60, 65, 70, 75][youthLevel];
@@ -178,11 +345,9 @@ export function generateYouthPlayer(youthLevel, specialization) {
   let bonusOvr = 0;
   
   const spec = FACILITY_SPECIALIZATIONS.youth.options.find(o => o.id === specialization);
-  
   const allPositions = ['GK', 'CB', 'RB', 'LB', 'CDM', 'CM', 'CAM', 'RW', 'LW', 'ST'];
   
   if (spec?.effect?.positions) {
-    // 80% sale de la especialización, 20% aleatorio
     if (Math.random() < 0.80) {
       positions = spec.effect.positions;
     } else {
@@ -194,24 +359,81 @@ export function generateYouthPlayer(youthLevel, specialization) {
   }
   
   const position = positions[Math.floor(Math.random() * positions.length)];
-  const overall = Math.min(99, Math.floor(Math.random() * (maxOvr - minOvr + 1)) + minOvr + bonusOvr);
-  const age = 17 + Math.floor(Math.random() * 2); // 17-18 años
+  const baseOvr = Math.min(99, Math.floor(Math.random() * (maxOvr - minOvr + 1)) + minOvr + bonusOvr);
+  const age = 17 + Math.floor(Math.random() * 2);
   
-  const firstNames = ['Pablo', 'Miguel', 'Carlos', 'David', 'Alejandro', 'Daniel', 'Javier', 'Sergio', 'Adrián', 'Hugo', 'Álvaro', 'Iker', 'Mario', 'Diego', 'Rubén'];
-  const lastNames = ['García', 'Martínez', 'López', 'Sánchez', 'Fernández', 'González', 'Rodríguez', 'Pérez', 'Gómez', 'Ruiz', 'Díaz', 'Moreno', 'Muñoz', 'Jiménez', 'Navarro'];
+  // Intentar buscar una leyenda que encaje con la posición (o cualquiera)
+  let legend = null;
   
+  // Filtrar leyendas de la misma zona posicional
+  const positionZone = getPositionZone(position);
+  const matchingLegends = LEGENDARY_SONS
+    .map((l, idx) => ({ ...l, idx }))
+    .filter(l => !usedLegendIndices.has(l.idx) && getPositionZone(l.pos) === positionZone);
+  
+  if (matchingLegends.length > 0) {
+    legend = matchingLegends[Math.floor(Math.random() * matchingLegends.length)];
+  } else {
+    // Sin leyendas de esa zona, coger cualquiera no usada
+    const anyLegends = LEGENDARY_SONS
+      .map((l, idx) => ({ ...l, idx }))
+      .filter(l => !usedLegendIndices.has(l.idx));
+    if (anyLegends.length > 0) {
+      legend = anyLegends[Math.floor(Math.random() * anyLegends.length)];
+    } else {
+      // Todas usadas — resetear y empezar de nuevo
+      usedLegendIndices = new Set();
+      legend = LEGENDARY_SONS[Math.floor(Math.random() * LEGENDARY_SONS.length)];
+    }
+  }
+  
+  if (legend) {
+    usedLegendIndices.add(legend.idx);
+    
+    // Potential basado en el OVR de la leyenda + nivel de cantera
+    const legendVariance = Math.floor(Math.random() * 9) - 5; // -5 a +3
+    const potential = Math.max(65, Math.min(99, legend.parentOvr + legendVariance));
+    
+    return {
+      name: legend.son,
+      position: legend.pos, // Usar la posición natural de la leyenda
+      age,
+      overall: baseOvr,
+      potential,
+      parentName: legend.parent,
+      parentOvr: legend.parentOvr,
+      nationality: 'España',
+      salary: Math.max(1500, Math.round(2000 * Math.pow(2, (baseOvr - 55) / 5) * 0.5)),
+      value: Math.round(baseOvr * baseOvr * 10000),
+      contractYears: 4,
+      isYouthProduct: true,
+      isSon: true,
+      isLegendSon: true
+    };
+  }
+  
+  // Fallback: nombre genérico (no debería llegar aquí)
+  const firstNames = ['Pablo', 'Miguel', 'Carlos', 'David', 'Hugo', 'Iker', 'Mario', 'Diego'];
+  const lastNames = ['García', 'Martínez', 'López', 'Fernández', 'González', 'Rodríguez', 'Pérez'];
   return {
     name: `${firstNames[Math.floor(Math.random() * firstNames.length)]} ${lastNames[Math.floor(Math.random() * lastNames.length)]}`,
     position,
     age,
-    overall,
-    potential: Math.min(99, overall + Math.floor(Math.random() * 15) + 5),
+    overall: baseOvr,
+    potential: Math.min(99, baseOvr + Math.floor(Math.random() * 15) + 5),
     nationality: 'España',
-    // Salario bajo de canterano (joven, sin experiencia)
-    salary: Math.max(1500, Math.round(2000 * Math.pow(2, (overall - 55) / 5) * 0.5)),
-    value: Math.round(overall * overall * 10000),
+    salary: Math.max(1500, Math.round(2000 * Math.pow(2, (baseOvr - 55) / 5) * 0.5)),
+    value: Math.round(baseOvr * baseOvr * 10000),
+    contractYears: 4,
     isYouthProduct: true
   };
+}
+
+function getPositionZone(pos) {
+  if (pos === 'GK') return 'gk';
+  if (['CB', 'RB', 'LB'].includes(pos)) return 'def';
+  if (['CDM', 'CM', 'CAM'].includes(pos)) return 'mid';
+  return 'fwd'; // ST, RW, LW
 }
 
 // Nuevo sistema médico: cada médico se queda con un jugador hasta que se cure

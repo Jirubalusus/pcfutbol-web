@@ -13,7 +13,6 @@ import {
   Wrench,
   Mail,
   Landmark,
-  Globe,
   Award,
   Settings as SettingsIcon,
   ChevronLeft,
@@ -29,8 +28,7 @@ const menuItems = [
   { id: 'calendar', icon: Calendar, label: 'Calendario' },
   { id: 'table', icon: Trophy, label: 'Clasificación' },
   { id: 'transfers', icon: Briefcase, label: 'Fichajes' },
-  { id: 'cup', icon: Award, label: 'Copa', requiresCup: true },
-  { id: 'europe', icon: Globe, label: 'Europa' },
+  { id: 'competitions', icon: Award, label: 'Competiciones', requiresCompetitions: true },
   { id: 'stadium', icon: Building2, label: 'Estadio' },
   { id: 'finance', icon: Landmark, label: 'Banco' },
   { id: 'facilities', icon: Wrench, label: 'Instalaciones' },
@@ -62,7 +60,10 @@ export default function Sidebar({ activeTab, onTabChange }) {
         
         <nav className="sidebar__nav">
           {menuItems
-            .filter(item => !item.requiresCup || state.cupCompetition)
+            .filter(item => {
+              if (item.requiresCompetitions) return state.cupCompetition || state.europeanCompetitions?.initialized;
+              return true;
+            })
             .map(item => {
             const IconComponent = item.icon;
             return (

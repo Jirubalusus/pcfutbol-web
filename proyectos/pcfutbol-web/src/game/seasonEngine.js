@@ -1,6 +1,8 @@
 // Motor de fin de temporada
 // Gestiona ascensos, descensos y transición a nueva temporada
 
+import { generateSonPlayer } from './facilitiesSystem';
+
 // ============================================================
 // EVOLUCIÓN DE JUGADORES
 // Sistema realista con variación única por jugador
@@ -37,6 +39,11 @@ function playerSeed(name, aspect) {
  */
 export function evolvePlayer(player) {
   const { name, age, overall } = player;
+  
+  // === "HIJOS" DE JUGADORES: crecimiento acelerado hacia potential ===
+  if (player.isSon && player.potential) {
+    return evolveSonPlayer(player);
+  }
   
   // === PERFIL ÚNICO DEL JUGADOR (determinista por nombre) ===
   const talentSeed = playerSeed(name, 'talent');     // 0-1: talento natural
@@ -111,6 +118,59 @@ export function evolvePlayer(player) {
   const newOverall = Math.max(50, Math.min(99, overall + roundedChange));
   
   return newOverall;
+}
+
+/**
+ * Evolución especial para "hijos" de jugadores retirados
+ * Crecen más rápido hacia su potential, luego se comportan como jugadores normales
+ */
+function evolveSonPlayer(player) {
+  const { age, overall, potential } = player;
+  const gap = potential - overall;
+  const seasonLuck = (Math.random() - 0.5) * 0.4; // -0.2 a +0.2
+  
+  let change = 0;
+  
+  if (age <= 20) {
+    // Juventud: crecimiento rápido hacia potential
+    // Cubrir ~20-30% del gap por temporada
+    const growthRate = 0.20 + Math.random() * 0.10;
+    change = Math.max(2, gap * growthRate) + seasonLuck;
+  } else if (age <= 24) {
+    // Desarrollo: sigue creciendo pero más lento
+    // Cubrir ~12-20% del gap restante
+    const growthRate = 0.12 + Math.random() * 0.08;
+    change = Math.max(1, gap * growthRate) + seasonLuck;
+  } else if (age <= 28) {
+    // Prime: ajustes finos, ya cerca del potential
+    if (gap > 3) {
+      change = 1 + seasonLuck;
+    } else {
+      change = 0.2 + seasonLuck * 0.5;
+    }
+  } else if (age <= 32) {
+    // Meseta/inicio declive
+    change = -0.2 + seasonLuck * 0.5;
+  } else {
+    // Declive — comportamiento normal
+    const yearsOver = age - 32;
+    change = -(yearsOver * 0.8) + seasonLuck * 0.3;
+    if (age >= 37) change -= 1.0;
+  }
+  
+  // Si supera el potential, frenar
+  if (overall >= potential && change > 0) {
+    change = Math.min(change, 0.3);
+  }
+  
+  // Redondear con probabilidad proporcional
+  const sign = change >= 0 ? 1 : -1;
+  const absChange = Math.abs(change);
+  const intPart = Math.floor(absChange);
+  const fracPart = absChange - intPart;
+  const roundedChange = sign * (intPart + (Math.random() < fracPart ? 1 : 0));
+  
+  return Math.max(50, Math.min(99, overall + roundedChange));
 }
 
 /**
@@ -278,9 +338,12 @@ export function prepareNewSeason(team, outcome, newLeagueTeams) {
   });
   const retiredPlayers = updatedPlayers.filter(p => !activePlayers.includes(p));
 
+  // Generar "hijos" para reemplazar a los retirados
+  const newSons = retiredPlayers.map(retired => generateSonPlayer(retired));
+
   return {
     ...team,
-    players: activePlayers,
+    players: [...activePlayers, ...newSons],
     budget: Math.round(team.budget * budgetMultiplier),
     retiredPlayers,
     seasonsInCurrentLeague: outcome.promotion || outcome.relegation ? 1 : (team.seasonsInCurrentLeague || 1) + 1

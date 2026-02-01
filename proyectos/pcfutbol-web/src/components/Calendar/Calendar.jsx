@@ -1,531 +1,537 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useGame } from '../../context/GameContext';
-import { 
-  CalendarDays, 
-  ChevronLeft, 
-  ChevronRight, 
-  Home, 
-  Plane,
+import {
+  CalendarDays,
+  ChevronLeft,
+  ChevronRight,
   Clock,
-  CheckCircle2,
   Circle
 } from 'lucide-react';
-import { isEuropeanWeekDynamic, getPhaseForWeekCompat, isCupWeek as checkIsCupWeek, getCupRoundForWeek } from '../../game/europeanCompetitions';
-import { getPlayerCompetition, isTeamAlive } from '../../game/europeanSeason';
+import { getPhaseForWeekCompat, getCupRoundForWeek } from '../../game/europeanCompetitions';
+import { getPlayerCompetition } from '../../game/europeanSeason';
 import './Calendar.scss';
 
 export default function Calendar() {
   const { state } = useGame();
-  const [selectedWeek, setSelectedWeek] = useState(state.currentWeek || 1);
+  const carouselRef = useRef(null);
 
-  // Player's European competition (if any)
+  // ── Player's European competition (for button coloring) ──
   const playerEuropean = useMemo(() => {
     if (!state.europeanCompetitions) return null;
     return getPlayerCompetition(state.europeanCompetitions, state.teamId);
   }, [state.europeanCompetitions, state.teamId]);
 
-  const playerAlive = useMemo(() => {
-    if (!playerEuropean) return false;
-    return isTeamAlive(playerEuropean.state, state.teamId);
-  }, [playerEuropean, state.teamId]);
-
-  const totalWeeks = useMemo(() => {
-    // v2: If europeanCalendar exists, use its totalWeeks as the season length
-    if (state.europeanCalendar) {
-      return state.europeanCalendar.totalWeeks;
-    }
-    let max = state.fixtures?.length
-      ? Math.max(...state.fixtures.map(f => f.week), 38)
+  // ── Calendar: use europeanCalendar if available, else simple league calendar ──
+  const calendar = useMemo(() => {
+    if (state.europeanCalendar) return state.europeanCalendar;
+    const maxWeek = state.fixtures?.length > 0
+      ? Math.max(...state.fixtures.map(f => f.week))
       : 38;
-    // Legacy: extend calendar to week 47 if player is alive in European competition
-    if (playerEuropean && playerAlive) {
-      max = Math.max(max, 47);
-    }
-    return max;
-  }, [state.fixtures, state.europeanCalendar, playerEuropean, playerAlive]);
-  
-  const weekFixtures = useMemo(() => {
-    return state.fixtures?.filter(f => f.week === selectedWeek) || [];
-  }, [state.fixtures, selectedWeek]);
-
-  // European match info for the selected week
-  const europeanMatch = useMemo(() => {
-    if (!playerEuropean) return null;
-    const compState = playerEuropean.state;
-
-    const phaseInfo = getPhaseForWeekCompat(selectedWeek, state.europeanCalendar);
-    if (!phaseInfo) return null;
-
-    // Don't show future European matches if eliminated
-    if (selectedWeek > state.currentWeek && !playerAlive) return null;
-
-    const { phase, matchday } = phaseInfo;
-
-    // ── LEAGUE PHASE ──
-    if (phase === 'league') {
-      const fixtures = compState.matchdays?.[matchday - 1];
-      if (!fixtures) return null;
-
-      const playerFixture = fixtures.find(f =>
-        f.homeTeamId === state.teamId || f.awayTeamId === state.teamId
-      );
-      if (!playerFixture) return null;
-
-      const isHome = playerFixture.homeTeamId === state.teamId;
-      const rivalId = isHome ? playerFixture.awayTeamId : playerFixture.homeTeamId;
-      const rivalTeam = compState.teams.find(t => t.teamId === rivalId);
-
-      const result = compState.results?.find(r =>
-        r.matchday === matchday &&
-        ((r.homeTeamId === state.teamId && r.awayTeamId === rivalId) ||
-         (r.awayTeamId === state.teamId && r.homeTeamId === rivalId))
-      );
-
-      let playerScore = null, rivalScore = null;
-      if (result) {
-        const isHomeInResult = result.homeTeamId === state.teamId;
-        playerScore = isHomeInResult ? result.homeScore : result.awayScore;
-        rivalScore = isHomeInResult ? result.awayScore : result.homeScore;
-      }
-
-      return {
-        icon: compState.config.icon,
-        competitionName: compState.config.shortName,
-        phaseLabel: `Jornada ${matchday}`,
-        rivalName: rivalTeam?.teamName || rivalId,
-        isHome,
-        played: !!result,
-        playerScore,
-        rivalScore,
-      };
-    }
-
-    // ── KNOCKOUT PHASES ──
-    const phaseLabels = {
-      playoff: 'Playoff',
-      r16: 'Octavos de Final',
-      qf: 'Cuartos de Final',
-      sf: 'Semifinal',
-      final: 'Final',
-    };
-
-    let matchup, result;
-
-    if (phase === 'final') {
-      matchup = compState.finalMatchup;
-      result = compState.finalResult;
-    } else {
-      const matchups = compState[`${phase}Matchups`] || [];
-      const results = compState[`${phase}Results`] || [];
-
-      matchup = matchups.find(m =>
-        m.team1?.teamId === state.teamId || m.team2?.teamId === state.teamId
-      );
-      result = results.find(r =>
-        r.team1?.teamId === state.teamId || r.team2?.teamId === state.teamId
-      );
-    }
-
-    if (!matchup) return null;
-
-    const isTeam1 = matchup.team1?.teamId === state.teamId;
-    const rival = isTeam1 ? matchup.team2 : matchup.team1;
-
-    let label = phaseLabels[phase] || phase;
-    if (phase !== 'final' && matchday) {
-      label += matchday === 1 ? ' — Ida' : ' — Vuelta';
-    }
-
-    let playerScore = null, rivalScore = null;
-    let played = false;
-
-    if (result?.winner) {
-      played = true;
-      if (result.leg1) {
-        const leg1HomeIsPlayer = result.leg1.homeTeamId === state.teamId;
-        playerScore = leg1HomeIsPlayer ? result.leg1.homeScore : result.leg1.awayScore;
-        rivalScore = leg1HomeIsPlayer ? result.leg1.awayScore : result.leg1.homeScore;
-      } else if (result.aggregate) {
-        const parts = result.aggregate.split('-').map(Number);
-        playerScore = isTeam1 ? parts[0] : parts[1];
-        rivalScore = isTeam1 ? parts[1] : parts[0];
-      }
-    }
-
     return {
-      icon: compState.config.icon,
-      competitionName: compState.config.shortName,
-      phaseLabel: label,
-      rivalName: rival?.teamName || rival?.teamId || '???',
-      isHome: phase === 'final' ? true : (matchday === 1 ? isTeam1 : !isTeam1),
-      played,
-      playerScore,
-      rivalScore,
+      leagueWeekMap: Array.from({ length: maxWeek }, (_, i) => i + 1),
+      europeanWeeks: {},
+      allEuropeanWeeks: [],
+      cupWeeks: [],
+      totalWeeks: maxWeek
     };
-  }, [playerEuropean, playerAlive, selectedWeek, state.currentWeek, state.teamId, state.europeanCalendar]);
+  }, [state.europeanCalendar, state.fixtures]);
+
+  const totalWeeks = calendar.totalWeeks;
+  const hasEuropean = !!state.europeanCompetitions?.initialized;
+  const hasCup = !!state.cupCompetition;
+
+  // ── Build unified chronological week entries ──
+  const weekEntries = useMemo(() => {
+    const { leagueWeekMap, allEuropeanWeeks, europeanWeeks, cupWeeks } = calendar;
+    const entries = [];
+
+    // week → league matchday reverse map
+    const weekToMatchday = {};
+    if (leagueWeekMap) {
+      leagueWeekMap.forEach((calWeek, idx) => { weekToMatchday[calWeek] = idx + 1; });
+    }
+
+    const euroSet = new Set(allEuropeanWeeks || []);
+    const cupSet = new Set(cupWeeks || []);
+
+    // European phase info per week
+    const euroPhaseMap = {};
+    const phaseLabels = { league: 'J', playoff: 'PO', r16: '8v', qf: '4t', sf: 'SF', final: 'F' };
+    if (europeanWeeks) {
+      for (const [phase, weeks] of Object.entries(europeanWeeks)) {
+        if (!Array.isArray(weeks)) continue;
+        weeks.forEach((week, idx) => {
+          euroPhaseMap[week] = { phase, matchday: idx + 1, total: weeks.length };
+        });
+      }
+    }
+
+    // Competition color for European button
+    const compClassMap = { championsLeague: 'champions', europaLeague: 'europa', conferenceleague: 'conference' };
+    const euroClass = playerEuropean ? (compClassMap[playerEuropean.competitionId] || 'champions') : 'champions';
+
+    // Pre-index fixtures by week
+    const fixturesByWeek = {};
+    (state.fixtures || []).forEach(f => {
+      if (!fixturesByWeek[f.week]) fixturesByWeek[f.week] = [];
+      fixturesByWeek[f.week].push(f);
+    });
+
+    let euroNum = 0;
+
+    for (let w = 1; w <= totalWeeks; w++) {
+      // League
+      if (weekToMatchday[w] !== undefined) {
+        const md = weekToMatchday[w];
+        const wf = fixturesByWeek[w] || [];
+        entries.push({
+          week: w, type: 'league', number: md,
+          competitionClass: '', label: String(md),
+          played: wf.length > 0 && wf.every(f => f.played)
+        });
+      }
+
+      // European
+      if (euroSet.has(w) && hasEuropean) {
+        euroNum++;
+        const pi = euroPhaseMap[w];
+        let label = `J${euroNum}`;
+        if (pi) {
+          if (pi.phase === 'league') {
+            label = `J${pi.matchday}`;
+          } else {
+            const short = phaseLabels[pi.phase] || pi.phase;
+            label = pi.total > 1 ? `${short}${pi.matchday}` : short;
+          }
+        }
+        entries.push({
+          week: w, type: 'european', number: euroNum,
+          competitionClass: euroClass, label,
+          played: w < state.currentWeek
+        });
+      }
+
+      // Cup
+      if (cupSet.has(w) && hasCup) {
+        const cupNum = (cupWeeks || []).indexOf(w) + 1;
+        const roundIdx = getCupRoundForWeek(w, calendar);
+        const roundName = (roundIdx !== null && state.cupCompetition.rounds?.[roundIdx]?.name) || `Ronda ${cupNum}`;
+        const cupRoundPlayed = roundIdx !== null &&
+          state.cupCompetition.rounds?.[roundIdx]?.matches?.some(m => m.played);
+        let shortLabel = roundName;
+        if (shortLabel.length > 4) shortLabel = `R${cupNum}`;
+
+        entries.push({
+          week: w, type: 'cup', number: cupNum, roundIdx,
+          competitionClass: 'cup', label: shortLabel, fullLabel: roundName,
+          played: cupRoundPlayed || w < state.currentWeek
+        });
+      }
+    }
+
+    return entries;
+  }, [calendar, state.cupCompetition, state.fixtures, totalWeeks, hasEuropean, hasCup, playerEuropean, state.currentWeek]);
+
+  // ── Selected entry index ──
+  const [selectedIdx, setSelectedIdx] = useState(() => {
+    const cw = state.currentWeek || 1;
+    let best = 0;
+    for (let i = 0; i < weekEntries.length; i++) {
+      if (weekEntries[i].week === cw) { best = i; break; }
+      if (weekEntries[i].week > cw) { best = i; break; }
+      best = i;
+    }
+    return best;
+  });
+
+  useEffect(() => {
+    if (weekEntries.length > 0 && selectedIdx >= weekEntries.length) {
+      setSelectedIdx(weekEntries.length - 1);
+    }
+  }, [weekEntries, selectedIdx]);
+
+  const safeIdx = weekEntries.length > 0 ? Math.min(Math.max(0, selectedIdx), weekEntries.length - 1) : 0;
+  const selectedEntry = weekEntries[safeIdx];
+  const selectedWeek = selectedEntry?.week || state.currentWeek || 1;
+
+  // Auto-scroll carousel to selected button
+  useEffect(() => {
+    if (!carouselRef.current) return;
+    const btn = carouselRef.current.children[safeIdx];
+    if (btn) btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }, [safeIdx]);
+
+  // ── League fixtures ──
+  const weekFixtures = useMemo(() => {
+    if (selectedEntry?.type !== 'league') return [];
+    return state.fixtures?.filter(f => f.week === selectedWeek) || [];
+  }, [state.fixtures, selectedWeek, selectedEntry?.type]);
+
+  // ── ALL European fixtures (all competitions) ──
+  const allEuropeanFixtures = useMemo(() => {
+    if (selectedEntry?.type !== 'european') return [];
+    if (!state.europeanCompetitions?.competitions) return [];
+
+    const phaseInfo = getPhaseForWeekCompat(selectedWeek, calendar);
+    if (!phaseInfo) return [];
+    const { phase, matchday } = phaseInfo;
+    const comps = [];
+
+    for (const [compId, compState] of Object.entries(state.europeanCompetitions.competitions)) {
+      if (!compState || compState.phase === 'completed') continue;
+
+      const compFixtures = [];
+      const teamMap = {};
+      (compState.teams || []).forEach(t => { teamMap[t.teamId] = t.teamName || t.shortName || t.teamId; });
+
+      if (phase === 'league') {
+        // Swiss phase
+        const fixtures = compState.matchdays?.[matchday - 1];
+        if (!fixtures) continue;
+
+        fixtures.forEach(f => {
+          const result = compState.results?.find(r =>
+            r.matchday === matchday &&
+            r.homeTeamId === f.homeTeamId && r.awayTeamId === f.awayTeamId
+          );
+          compFixtures.push({
+            homeTeamId: f.homeTeamId, awayTeamId: f.awayTeamId,
+            homeName: teamMap[f.homeTeamId] || f.homeTeamId,
+            awayName: teamMap[f.awayTeamId] || f.awayTeamId,
+            played: !!result,
+            homeScore: result?.homeScore ?? null,
+            awayScore: result?.awayScore ?? null,
+            isPlayer: f.homeTeamId === state.teamId || f.awayTeamId === state.teamId
+          });
+        });
+      } else {
+        // Knockout phases
+        let matchups, results;
+        if (phase === 'final') {
+          matchups = compState.finalMatchup ? [compState.finalMatchup] : [];
+          results = compState.finalResult ? [compState.finalResult] : [];
+        } else {
+          matchups = compState[`${phase}Matchups`] || [];
+          results = compState[`${phase}Results`] || [];
+        }
+
+        matchups.forEach((matchup, i) => {
+          const result = results[i];
+          const t1Name = matchup.team1?.teamName || matchup.team1?.shortName || '???';
+          const t2Name = matchup.team2?.teamName || matchup.team2?.shortName || '???';
+          const isFinal = phase === 'final';
+          const isLeg1 = matchday === 1 || isFinal;
+
+          const homeId = isLeg1 ? matchup.team1?.teamId : matchup.team2?.teamId;
+          const awayId = isLeg1 ? matchup.team2?.teamId : matchup.team1?.teamId;
+          const homeName = isLeg1 ? t1Name : t2Name;
+          const awayName = isLeg1 ? t2Name : t1Name;
+
+          let played = false, homeScore = null, awayScore = null;
+          if (result) {
+            const legData = isLeg1 ? result.leg1 : result.leg2;
+            if (legData) {
+              played = true;
+              homeScore = legData.homeScore;
+              awayScore = legData.awayScore;
+            } else if (isFinal && result.winner) {
+              played = true;
+              if (result.aggregate) {
+                const parts = result.aggregate.split('-').map(Number);
+                homeScore = parts[0]; awayScore = parts[1];
+              }
+            }
+          }
+
+          compFixtures.push({
+            homeTeamId: homeId, awayTeamId: awayId,
+            homeName, awayName, played, homeScore, awayScore,
+            isPlayer: homeId === state.teamId || awayId === state.teamId,
+            knockout: true, aggregate: result?.aggregate, winner: result?.winner?.teamId
+          });
+        });
+      }
+
+      if (compFixtures.length > 0) {
+        const classMap = { championsLeague: 'champions', europaLeague: 'europa', conferenceleague: 'conference' };
+        comps.push({
+          compId,
+          name: compState.config?.name || compId,
+          shortName: compState.config?.shortName || compId,
+          icon: compState.config?.icon || '⭐',
+          cssClass: classMap[compId] || 'champions',
+          fixtures: compFixtures
+        });
+      }
+    }
+
+    return comps;
+  }, [selectedEntry?.type, selectedWeek, state.europeanCompetitions, calendar, state.teamId]);
+
+  // ── ALL Cup fixtures ──
+  const allCupFixtures = useMemo(() => {
+    if (selectedEntry?.type !== 'cup') return [];
+    if (!state.cupCompetition) return [];
+
+    const roundIdx = selectedEntry.roundIdx;
+    if (roundIdx === null || roundIdx === undefined) return [];
+    const round = state.cupCompetition.rounds?.[roundIdx];
+    if (!round) return [];
+
+    return round.matches.map(m => ({
+      homeTeam: m.homeTeam, awayTeam: m.awayTeam,
+      homeName: m.homeTeam?.teamName || '—',
+      awayName: m.awayTeam?.teamName || '—',
+      played: m.played, homeScore: m.homeScore, awayScore: m.awayScore,
+      winnerId: m.winnerId, bye: m.bye, penalties: m.penalties,
+      isPlayer: m.homeTeam?.teamId === state.teamId || m.awayTeam?.teamId === state.teamId
+    }));
+  }, [selectedEntry?.type, selectedEntry?.roundIdx, state.cupCompetition, state.teamId]);
 
   // ── Helper functions ──
-
   const getTeamName = (teamId) => {
     const team = state.leagueTable?.find(t => t.teamId === teamId);
     return team?.teamName || teamId;
   };
-  
-  const getTeamShortName = (teamId) => {
-    const teamData = state.leagueTeams?.find(t => t.id === teamId);
-    if (teamData?.shortName) return teamData.shortName;
-    const name = getTeamName(teamId);
-    if (!name || name === teamId) return '???';
-    const words = name.split(' ').filter(w => !['CF', 'FC', 'CD', 'UD', 'RC', 'SD', 'CA'].includes(w));
-    const main = words[0] || name;
-    return main.substring(0, 3).toUpperCase();
+
+  const stripName = (name) => {
+    if (!name) return '???';
+    const stripped = name
+      .replace(/^(FC |CF |CD |UD |RC |SD |CA |RCD |)/, '')
+      .replace(/( CF| FC| CD| UD)$/, '')
+      .trim();
+    if (stripped.length > 14) {
+      const words = stripped.split(' ');
+      const meaningful = words.filter(w => !['de', 'del', 'la', 'las', 'los'].includes(w.toLowerCase()));
+      return meaningful[0] || words[0];
+    }
+    return stripped;
   };
-  
-  const isPlayerMatch = (fixture) => {
-    return fixture.homeTeam === state.teamId || fixture.awayTeam === state.teamId;
-  };
-  
-  const isPlayerHome = (fixture) => {
-    return fixture.homeTeam === state.teamId;
-  };
-  
+
+  const getDisplayName = (teamId) => stripName(getTeamName(teamId));
+
+  const isPlayerMatch = (fixture) => fixture.homeTeam === state.teamId || fixture.awayTeam === state.teamId;
+  const isPlayerHome = (fixture) => fixture.homeTeam === state.teamId;
+
   const getPlayerResult = (fixture) => {
     if (!fixture.played || !isPlayerMatch(fixture)) return null;
     const isHome = isPlayerHome(fixture);
-    const playerGoals = isHome ? fixture.homeScore : fixture.awayScore;
-    const opponentGoals = isHome ? fixture.awayScore : fixture.homeScore;
-    if (playerGoals > opponentGoals) return 'W';
-    if (playerGoals < opponentGoals) return 'L';
+    const pGoals = isHome ? fixture.homeScore : fixture.awayScore;
+    const oGoals = isHome ? fixture.awayScore : fixture.homeScore;
+    if (pGoals > oGoals) return 'W';
+    if (pGoals < oGoals) return 'L';
     return 'D';
   };
 
-  const getEuropeanResult = () => {
-    if (!europeanMatch?.played) return null;
-    if (europeanMatch.playerScore > europeanMatch.rivalScore) return 'W';
-    if (europeanMatch.playerScore < europeanMatch.rivalScore) return 'L';
+  const getEuroPlayerResult = (f) => {
+    if (!f.played || !f.isPlayer) return null;
+    const isHome = f.homeTeamId === state.teamId;
+    const pGoals = isHome ? f.homeScore : f.awayScore;
+    const oGoals = isHome ? f.awayScore : f.homeScore;
+    if (pGoals > oGoals) return 'W';
+    if (pGoals < oGoals) return 'L';
     return 'D';
   };
 
-  // Check if a week should show the European indicator dot
-  const weekHasEuropean = (week) => {
-    if (!playerEuropean) return false;
-    if (!isEuropeanWeekDynamic(week, state.europeanCalendar)) return false;
-    if (week > state.currentWeek && !playerAlive) return false;
-    return true;
-  };
-
-  // Check if a week is a cup week
-  const weekHasCup = (week) => {
-    return checkIsCupWeek(week, state.europeanCalendar) && state.cupCompetition;
-  };
-
-  // Cup match info for the selected week
-  const cupMatch = useMemo(() => {
-    if (!state.cupCompetition) return null;
-    if (!checkIsCupWeek(selectedWeek, state.europeanCalendar)) return null;
-
-    const cupRoundIdx = getCupRoundForWeek(selectedWeek, state.europeanCalendar);
-    if (cupRoundIdx === null) return null;
-
-    const bracket = state.cupCompetition;
-    const round = bracket.rounds?.[cupRoundIdx];
-    if (!round) return null;
-
-    // Find player's match in this round
-    const playerCupMatch = round.matches.find(m =>
-      m.homeTeam?.teamId === state.teamId || m.awayTeam?.teamId === state.teamId
-    );
-
-    if (!playerCupMatch) {
-      // Player eliminated or has a bye
-      if (bracket.playerEliminated) return null;
-      return null;
+  // ── Nav title ──
+  const getNavTitle = () => {
+    if (!selectedEntry) return { label: 'Jornada', sublabel: '1' };
+    const phaseFullLabels = { league: 'Jornada', playoff: 'Playoff', r16: 'Octavos', qf: 'Cuartos', sf: 'Semi', final: 'Final' };
+    switch (selectedEntry.type) {
+      case 'league': return { label: 'Jornada', sublabel: String(selectedEntry.number) };
+      case 'european': {
+        const pi = getPhaseForWeekCompat(selectedEntry.week, calendar);
+        const phaseLabel = pi ? phaseFullLabels[pi.phase] || pi.phase : 'Europa';
+        const mdLabel = pi ? (pi.phase === 'league' ? String(pi.matchday) : (pi.total > 1 ? String(pi.matchday) : '')) : '';
+        return { label: phaseLabel, sublabel: mdLabel || selectedEntry.label };
+      }
+      case 'cup': return { label: 'Copa', sublabel: selectedEntry.fullLabel || selectedEntry.label };
+      default: return { label: 'Semana', sublabel: String(selectedEntry.week) };
     }
+  };
+  const navTitle = getNavTitle();
 
-    const isHome = playerCupMatch.homeTeam?.teamId === state.teamId;
-    const rival = isHome ? playerCupMatch.awayTeam : playerCupMatch.homeTeam;
-
-    if (playerCupMatch.bye) {
-      return {
-        icon: bracket.config?.icon || '🏆',
-        cupName: bracket.config?.shortName || 'Copa',
-        roundName: round.name,
-        isBye: true,
-        played: true
-      };
-    }
-
-    return {
-      icon: bracket.config?.icon || '🏆',
-      cupName: bracket.config?.shortName || 'Copa',
-      roundName: round.name,
-      rivalName: rival?.teamName || '???',
-      isHome,
-      played: playerCupMatch.played,
-      playerScore: playerCupMatch.played
-        ? (isHome ? playerCupMatch.homeScore : playerCupMatch.awayScore)
-        : null,
-      rivalScore: playerCupMatch.played
-        ? (isHome ? playerCupMatch.awayScore : playerCupMatch.homeScore)
-        : null,
-      winnerId: playerCupMatch.winnerId,
-      penalties: playerCupMatch.penalties
-    };
-  }, [state.cupCompetition, selectedWeek, state.teamId, state.europeanCalendar]);
-
-  // ── Render helpers ──
-
-  const renderEuropeanMatch = () => {
-    if (!europeanMatch) return null;
-
-    const euroResult = getEuropeanResult();
-    const playerTeamName = getTeamName(state.teamId);
-
-    // Show in correct home/away order
-    const homeName = europeanMatch.isHome ? playerTeamName : europeanMatch.rivalName;
-    const awayName = europeanMatch.isHome ? europeanMatch.rivalName : playerTeamName;
-    const homeScore = europeanMatch.played
-      ? (europeanMatch.isHome ? europeanMatch.playerScore : europeanMatch.rivalScore)
-      : null;
-    const awayScore = europeanMatch.played
-      ? (europeanMatch.isHome ? europeanMatch.rivalScore : europeanMatch.playerScore)
-      : null;
-
-    return (
-      <div className="european-section">
-        <div className="european-badge">
-          <span className="euro-icon">{europeanMatch.icon}</span>
-          <span className="euro-name">{europeanMatch.competitionName}</span>
-          <span className="euro-sep">·</span>
-          <span className="euro-phase">{europeanMatch.phaseLabel}</span>
-        </div>
-        <div className={`fixture-card is-player european-card ${europeanMatch.played ? 'played' : ''}`}>
-          <div className={`team home ${europeanMatch.isHome ? 'is-you' : ''}`}>
-            <span className="team-name">{homeName}</span>
-          </div>
-
-          <div className="match-center">
-            {europeanMatch.played ? (
-              <div className={`score result-${(euroResult || 'd').toLowerCase()}`}>
-                <span className="home-score">{homeScore}</span>
-                <span className="separator">-</span>
-                <span className="away-score">{awayScore}</span>
-              </div>
-            ) : (
-              <div className="vs-badge"><span>vs</span></div>
-            )}
-          </div>
-
-          <div className={`team away ${!europeanMatch.isHome ? 'is-you' : ''}`}>
-            <span className="team-name">{awayName}</span>
-          </div>
-
-          <div className="match-status">
-            {europeanMatch.played ? (
-              <span className={`status-dot ${euroResult === 'W' ? 'win' : euroResult === 'L' ? 'loss' : 'draw'}`} />
-            ) : selectedWeek === state.currentWeek ? (
-              <span className="status-badge pending"><Clock size={14} /></span>
-            ) : selectedWeek < state.currentWeek ? (
-              <span className="status-badge missed">!</span>
-            ) : (
-              <span className="status-badge upcoming"><Circle size={10} /></span>
-            )}
-          </div>
-        </div>
+  // ── Render fixture card (reusable) ──
+  const renderFixtureCard = (key, { homeName, awayName, homeIsPlayer, awayIsPlayer, played, homeScore, awayScore, playerResult, statusType, extraClass, penalties }) => (
+    <div key={key} className={`fixture-card ${homeIsPlayer || awayIsPlayer ? 'is-player' : ''} ${played ? 'played' : ''} ${extraClass || ''}`}>
+      <div className={`team home ${homeIsPlayer ? 'is-you' : ''}`}>
+        <span className="team-name">{homeName}</span>
       </div>
-    );
+      <div className="match-center">
+        {played ? (
+          <div className={`score ${playerResult ? `result-${playerResult.toLowerCase()}` : ''}`}>
+            <span className="home-score">{homeScore}</span>
+            <span className="separator">-</span>
+            <span className="away-score">{awayScore}</span>
+            {penalties && <span className="penalties-tag">(Pen)</span>}
+          </div>
+        ) : (
+          <div className="vs-badge"><span>vs</span></div>
+        )}
+      </div>
+      <div className={`team away ${awayIsPlayer ? 'is-you' : ''}`}>
+        <span className="team-name">{awayName}</span>
+      </div>
+      <div className="match-status">
+        {played ? (
+          <span className={`status-dot ${playerResult === 'W' ? 'win' : playerResult === 'L' ? 'loss' : playerResult === 'D' ? 'draw' : 'neutral'}`} />
+        ) : statusType === 'pending' ? (
+          <span className="status-badge pending"><Clock size={14} /></span>
+        ) : statusType === 'missed' ? (
+          <span className="status-badge missed">!</span>
+        ) : (
+          <span className="status-badge upcoming"><Circle size={10} /></span>
+        )}
+      </div>
+    </div>
+  );
+
+  const getStatusType = () => {
+    if (selectedWeek === state.currentWeek) return 'pending';
+    if (selectedWeek < state.currentWeek) return 'missed';
+    return 'upcoming';
   };
 
   return (
     <div className="calendar-v2">
       {/* Header */}
       <div className="calendar-v2__header">
-        <h2>
-          <CalendarDays size={24} />
-          Calendario
-        </h2>
+        <h2><CalendarDays size={24} /> Calendario</h2>
         <span className="season-badge">Temporada {state.currentSeason || 1}</span>
       </div>
-      
-      {/* Navegación de jornada */}
+
+      {/* Nav arrows + title */}
       <div className="calendar-v2__nav">
-        <button 
-          className="nav-btn"
-          onClick={() => setSelectedWeek(Math.max(1, selectedWeek - 1))}
-          disabled={selectedWeek <= 1}
-        >
+        <button className="nav-btn" onClick={() => setSelectedIdx(Math.max(0, safeIdx - 1))} disabled={safeIdx <= 0}>
           <ChevronLeft size={20} />
         </button>
-        
         <div className="nav-title">
-          <span className="week-label">Jornada</span>
-          <span className="week-number">{selectedWeek}</span>
+          <span className="week-label">{navTitle.label}</span>
+          <span className="week-number">{navTitle.sublabel}</span>
         </div>
-        
-        <button 
-          className="nav-btn"
-          onClick={() => setSelectedWeek(Math.min(totalWeeks, selectedWeek + 1))}
-          disabled={selectedWeek >= totalWeeks}
-        >
+        <button className="nav-btn" onClick={() => setSelectedIdx(Math.min(weekEntries.length - 1, safeIdx + 1))} disabled={safeIdx >= weekEntries.length - 1}>
           <ChevronRight size={20} />
         </button>
       </div>
-      
-      {/* Selector de jornadas */}
-      <div className="calendar-v2__weeks">
-        {Array.from({ length: totalWeeks }, (_, i) => i + 1).map(week => {
-          const weekMatches = state.fixtures?.filter(f => f.week === week) || [];
-          const allPlayed = weekMatches.length > 0 && weekMatches.every(f => f.played);
-          const isCurrent = week === state.currentWeek;
-          const hasEuropean = weekHasEuropean(week);
-          const hasCup = weekHasCup(week);
-          
-          return (
-            <button
-              key={week}
-              className={`week-btn ${week === selectedWeek ? 'selected' : ''} ${isCurrent ? 'current' : ''} ${allPlayed ? 'played' : ''} ${hasEuropean ? 'european' : ''} ${hasCup ? 'cup' : ''}`}
-              onClick={() => setSelectedWeek(week)}
-            >
-              {week}
-              {hasEuropean && <span className="euro-dot" />}
-              {hasCup && !hasEuropean && <span className="cup-dot" />}
-            </button>
-          );
-        })}
+
+      {/* Unified carousel */}
+      <div className="calendar-v2__carousel" ref={carouselRef}>
+        {weekEntries.map((entry, idx) => (
+          <button
+            key={`${entry.type}-${entry.week}`}
+            className={[
+              'carousel-btn',
+              `carousel-btn--${entry.type}`,
+              entry.competitionClass && `carousel-btn--${entry.competitionClass}`,
+              idx === safeIdx && 'selected',
+              entry.week === state.currentWeek && 'current',
+              entry.played && 'played'
+            ].filter(Boolean).join(' ')}
+            onClick={() => setSelectedIdx(idx)}
+            title={entry.type === 'cup' ? entry.fullLabel : entry.type === 'european' ? `Europa ${entry.label}` : `Jornada ${entry.number}`}
+          >
+            {entry.label}
+          </button>
+        ))}
       </div>
-      
-      {/* Lista de partidos */}
+
+      {/* Fixtures area */}
       <div className="calendar-v2__fixtures">
-        {weekFixtures.length === 0 && !europeanMatch && !cupMatch ? (
-          <div className="no-fixtures">
-            <Circle size={48} />
-            <p>No hay partidos en esta jornada</p>
-          </div>
-        ) : (
-          <>
-            {/* Partido de copa del jugador */}
-            {cupMatch && (
-              <div className="cup-section">
-                <div className="cup-badge">
-                  <span className="cup-icon">{cupMatch.icon}</span>
-                  <span className="cup-name">{cupMatch.cupName}</span>
-                  <span className="euro-sep">·</span>
-                  <span className="cup-phase">{cupMatch.roundName}</span>
-                </div>
-                {cupMatch.isBye ? (
-                  <div className="fixture-card is-player cup-card played">
-                    <div className="team home is-you">
-                      <span className="team-name">{getTeamName(state.teamId)}</span>
-                    </div>
-                    <div className="match-center">
-                      <div className="vs-badge"><span>Exento</span></div>
-                    </div>
-                    <div className="team away">
-                      <span className="team-name">—</span>
-                    </div>
-                    <div className="match-status">
-                      <span className="status-dot win" />
-                    </div>
-                  </div>
-                ) : (
-                  <div className={`fixture-card is-player cup-card ${cupMatch.played ? 'played' : ''}`}>
-                    <div className={`team home ${cupMatch.isHome ? 'is-you' : ''}`}>
-                      <span className="team-name">{cupMatch.isHome ? getTeamName(state.teamId) : cupMatch.rivalName}</span>
-                    </div>
-                    <div className="match-center">
-                      {cupMatch.played ? (
-                        <div className={`score ${cupMatch.winnerId === state.teamId ? 'result-w' : 'result-l'}`}>
-                          <span className="home-score">
-                            {cupMatch.isHome ? cupMatch.playerScore : cupMatch.rivalScore}
-                          </span>
-                          <span className="separator">-</span>
-                          <span className="away-score">
-                            {cupMatch.isHome ? cupMatch.rivalScore : cupMatch.playerScore}
-                          </span>
-                          {cupMatch.penalties && <span className="penalties-tag">(Pen)</span>}
-                        </div>
-                      ) : (
-                        <div className="vs-badge"><span>vs</span></div>
-                      )}
-                    </div>
-                    <div className={`team away ${!cupMatch.isHome ? 'is-you' : ''}`}>
-                      <span className="team-name">{cupMatch.isHome ? cupMatch.rivalName : getTeamName(state.teamId)}</span>
-                    </div>
-                    <div className="match-status">
-                      {cupMatch.played ? (
-                        <span className={`status-dot ${cupMatch.winnerId === state.teamId ? 'win' : 'loss'}`} />
-                      ) : selectedWeek === state.currentWeek ? (
-                        <span className="status-badge pending"><Clock size={14} /></span>
-                      ) : (
-                        <span className="status-badge upcoming"><Circle size={10} /></span>
-                      )}
-                    </div>
-                  </div>
-                )}
+
+        {/* ── League ── */}
+        {selectedEntry?.type === 'league' && (
+          weekFixtures.length === 0 ? (
+            <div className="no-fixtures"><Circle size={48} /><p>No hay partidos en esta jornada</p></div>
+          ) : weekFixtures.map((fixture, idx) => {
+            const pm = isPlayerMatch(fixture);
+            const pr = getPlayerResult(fixture);
+            return renderFixtureCard(fixture.id || idx, {
+              homeName: getDisplayName(fixture.homeTeam),
+              awayName: getDisplayName(fixture.awayTeam),
+              homeIsPlayer: fixture.homeTeam === state.teamId,
+              awayIsPlayer: fixture.awayTeam === state.teamId,
+              played: fixture.played,
+              homeScore: fixture.homeScore,
+              awayScore: fixture.awayScore,
+              playerResult: pr,
+              statusType: getStatusType()
+            });
+          })
+        )}
+
+        {/* ── European — all competitions ── */}
+        {selectedEntry?.type === 'european' && (
+          allEuropeanFixtures.length === 0 ? (
+            <div className="no-fixtures"><Circle size={48} /><p>No hay partidos europeos en esta jornada</p></div>
+          ) : allEuropeanFixtures.map(comp => (
+            <div key={comp.compId} className="competition-section">
+              <div className={`competition-badge competition-badge--${comp.cssClass}`}>
+                <span className="comp-icon">{comp.icon}</span>
+                <span className="comp-name">{comp.shortName}</span>
               </div>
-            )}
+              {comp.fixtures.map((f, idx) => {
+                const pr = getEuroPlayerResult(f);
+                return renderFixtureCard(`${comp.compId}-${idx}`, {
+                  homeName: stripName(f.homeName),
+                  awayName: stripName(f.awayName),
+                  homeIsPlayer: f.homeTeamId === state.teamId,
+                  awayIsPlayer: f.awayTeamId === state.teamId,
+                  played: f.played,
+                  homeScore: f.homeScore,
+                  awayScore: f.awayScore,
+                  playerResult: pr,
+                  statusType: getStatusType(),
+                  extraClass: `euro-fixture euro-fixture--${comp.cssClass}`
+                });
+              })}
+            </div>
+          ))
+        )}
 
-            {/* Partido europeo del jugador */}
-            {renderEuropeanMatch()}
-
-            {/* Separador si hay partidos de liga + copa/europeo */}
-            {weekFixtures.length > 0 && (europeanMatch || cupMatch) && (
-              <div className="section-divider">
-                <span>Liga</span>
+        {/* ── Cup — all matches ── */}
+        {selectedEntry?.type === 'cup' && (
+          allCupFixtures.length === 0 ? (
+            <div className="no-fixtures"><Circle size={48} /><p>No hay partidos de copa en esta ronda</p></div>
+          ) : (
+            <div className="competition-section">
+              <div className="competition-badge competition-badge--cup">
+                <span className="comp-icon">{state.cupCompetition?.config?.icon || '🏆'}</span>
+                <span className="comp-name">{state.cupCompetition?.config?.shortName || 'Copa'}</span>
+                <span className="comp-phase">{selectedEntry.fullLabel}</span>
               </div>
-            )}
-
-            {/* Partidos de liga */}
-            {weekFixtures.map((fixture, idx) => {
-              const playerMatch = isPlayerMatch(fixture);
-              const playerResult = getPlayerResult(fixture);
-              
-              return (
-                <div 
-                  key={fixture.id || idx} 
-                  className={`fixture-card ${playerMatch ? 'is-player' : ''} ${fixture.played ? 'played' : ''}`}
-                >
-                  <div className={`team home ${fixture.homeTeam === state.teamId ? 'is-you' : ''}`}>
-                    <span className="team-name">{getTeamName(fixture.homeTeam)}</span>
-                  </div>
-                  
-                  <div className="match-center">
-                    {fixture.played ? (
-                      <div className={`score ${playerResult ? `result-${playerResult.toLowerCase()}` : ''}`}>
-                        <span className="home-score">{fixture.homeScore}</span>
-                        <span className="separator">-</span>
-                        <span className="away-score">{fixture.awayScore}</span>
-                      </div>
-                    ) : (
-                      <div className="vs-badge">
-                        <span>vs</span>
-                      </div>
-                    )}
-                  </div>
-                  
-                  <div className={`team away ${fixture.awayTeam === state.teamId ? 'is-you' : ''}`}>
-                    <span className="team-name">{getTeamName(fixture.awayTeam)}</span>
-                  </div>
-                  
-                  <div className="match-status">
-                    {fixture.played ? (
-                      <span className={`status-dot ${playerResult === 'W' ? 'win' : playerResult === 'L' ? 'loss' : 'draw'}`}></span>
-                    ) : selectedWeek === state.currentWeek ? (
-                      <span className="status-badge pending">
-                        <Clock size={14} />
-                      </span>
-                    ) : selectedWeek < state.currentWeek ? (
-                      <span className="status-badge missed">!</span>
-                    ) : (
-                      <span className="status-badge upcoming">
-                        <Circle size={10} />
-                      </span>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </>
+              {allCupFixtures.map((m, idx) => {
+                if (m.bye) {
+                  return renderFixtureCard(`cup-bye-${idx}`, {
+                    homeName: stripName(m.homeName),
+                    awayName: '—',
+                    homeIsPlayer: m.homeTeam?.teamId === state.teamId,
+                    awayIsPlayer: false,
+                    played: true,
+                    homeScore: null, awayScore: null,
+                    playerResult: m.isPlayer ? 'W' : null,
+                    statusType: 'played',
+                    extraClass: 'cup-fixture'
+                  });
+                }
+                const isWin = m.isPlayer && m.winnerId === state.teamId;
+                const isLoss = m.isPlayer && m.played && m.winnerId !== state.teamId;
+                const pr = m.played && m.isPlayer ? (isWin ? 'W' : 'L') : null;
+                return renderFixtureCard(`cup-${idx}`, {
+                  homeName: stripName(m.homeName),
+                  awayName: stripName(m.awayName),
+                  homeIsPlayer: m.homeTeam?.teamId === state.teamId,
+                  awayIsPlayer: m.awayTeam?.teamId === state.teamId,
+                  played: m.played,
+                  homeScore: m.homeScore,
+                  awayScore: m.awayScore,
+                  playerResult: pr,
+                  statusType: getStatusType(),
+                  extraClass: 'cup-fixture',
+                  penalties: m.penalties
+                });
+              })}
+            </div>
+          )
         )}
       </div>
     </div>

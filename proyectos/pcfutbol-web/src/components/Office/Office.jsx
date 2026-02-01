@@ -31,6 +31,7 @@ import SeasonEnd from '../SeasonEnd/SeasonEnd';
 import ManagerFired from '../ManagerFired/ManagerFired';
 import Europe from '../Europe/Europe';
 import Cup from '../Cup/Cup';
+import Competitions from '../Competitions/Competitions';
 import { isSeasonOver } from '../../game/seasonManager';
 import { getPlayerCompetition, isTeamAlive } from '../../game/europeanSeason';
 import {
@@ -162,7 +163,7 @@ export default function Office() {
     }
   };
   
-  const handleMatchComplete = () => {
+  const handleMatchComplete = (completedMatchType) => {
     setShowMatch(false);
     
     if (state.preseasonPhase) {
@@ -176,21 +177,31 @@ export default function Office() {
       }
     } else {
       // After a cup/European match, check if there's still a league match this week
-      // If so, DON'T advance the week yet — let the user play the league match too
-      const weekFixtures = state.fixtures.filter(f => f.week === state.currentWeek && !f.played);
-      const leagueMatch = weekFixtures.find(f => 
-        f.homeTeam === state.teamId || f.awayTeam === state.teamId
-      );
-      const stillHasCup = state.pendingCupMatch;
-      const stillHasEuropean = state.pendingEuropeanMatch;
+      // Use completedMatchType to avoid stale state issues:
+      // - After a league match: we know fixtures were updated, skip stale check
+      // - After cup/european: check if there's a pending league match (stale is OK here
+      //   because the league fixture wasn't touched)
       
-      if (leagueMatch || stillHasCup || stillHasEuropean) {
-        // There's still a match to play this week — don't advance, just return to office
-        // The user will click advance again to play the next match
-        return;
+      if (completedMatchType === 'league') {
+        // League match done — simulate others and advance
+        const result = simulateOtherMatches();
+        dispatch({ type: 'SET_FIXTURES', payload: result.fixtures });
+        dispatch({ type: 'SET_LEAGUE_TABLE', payload: result.table });
+        dispatch({ type: 'ADVANCE_WEEK' });
+      } else {
+        // Cup or European match done — check if there's still a league match this week
+        const weekFixtures = state.fixtures.filter(f => f.week === state.currentWeek && !f.played);
+        const leagueMatch = weekFixtures.find(f => 
+          f.homeTeam === state.teamId || f.awayTeam === state.teamId
+        );
+        
+        if (leagueMatch) {
+          // Still a league match to play — don't advance
+          return;
+        }
+        
+        dispatch({ type: 'ADVANCE_WEEK' });
       }
-      
-      dispatch({ type: 'ADVANCE_WEEK' });
     }
   };
   
@@ -229,6 +240,9 @@ export default function Office() {
     const allTeams = getAllTeams();
     let weeksSimulated = 0;
     let seasonEnded = false;
+    
+    // Track accumulated ticket income locally to avoid stale state overwrites
+    let localAccumulatedIncome = state.stadium?.accumulatedTicketIncome ?? 0;
     
     // Máxima jornada de la liga (dinámica según liga del jugador)
     const maxWeek = currentFixtures.length > 0 
@@ -315,8 +329,14 @@ export default function Office() {
             const levelCap = [8000, 18000, 35000, 55000, 80000][stadium.level || 0];
             const sCap = stadium.realCapacity || levelCap;
             const sTix = stadium.seasonTicketsFinal ?? stadium.seasonTickets ?? Math.floor(sCap * 0.3);
-            const tPrice = (stadium.ticketPrice ?? 30);
+            const tPrice = (stadium.ticketPrice ?? 30) + (stadium.matchPriceAdjust || 0);
             const sLevel = stadium.level ?? 0;
+            
+            const leagueId = state.leagueId || 'laliga';
+            const division = ['segunda', 'segundaRFEF', 'primeraRFEF'].includes(leagueId) ? 2 : 1;
+            const teamPlayers = state.team?.players || [];
+            const teamOvr = teamPlayers.length > 0 
+              ? Math.round(teamPlayers.reduce((sum, p) => sum + (p.overall || 70), 0) / teamPlayers.length) : 70;
             
             const att = calculateMatchAttendance({
               stadiumCapacity: sCap,
@@ -328,9 +348,12 @@ export default function Office() {
               totalTeams: currentTable.length || 20,
               streak: currentTable.find(t => t.teamId === state.teamId)?.streak || 0,
               morale: currentTable.find(t => t.teamId === state.teamId)?.morale || 70,
-              leagueId: state.leagueId || 'laliga',
+              leagueId,
               homeTeamId: state.teamId,
-              awayTeamId: opponentId
+              awayTeamId: opponentId,
+              teamOverall: teamOvr,
+              teamReputation: state.team?.reputation || 70,
+              division
             });
             
             const tktIncome = att.ticketSales * tPrice;
@@ -338,18 +361,8 @@ export default function Office() {
             const concIncome = att.attendance * concRate;
             const totalIncome = tktIncome + concIncome;
             
-            // Acumular ingresos (se cobran a final de temporada)
-            const prevAccumulated = stadium.accumulatedTicketIncome ?? 0;
-            dispatch({
-              type: 'UPDATE_STADIUM',
-              payload: {
-                ...stadium,
-                lastMatchAttendance: att.attendance,
-                lastMatchIncome: totalIncome,
-                accumulatedTicketIncome: prevAccumulated + totalIncome,
-                ticketPriceLocked: true
-              }
-            });
+            // Acumular ingresos localmente (evita stale state overwrites)
+            localAccumulatedIncome += totalIncome;
           }
           
           // Aplicar lesiones del equipo del jugador
@@ -406,6 +419,17 @@ export default function Office() {
     // Aplicar todos los cambios de una vez
     dispatch({ type: 'SET_FIXTURES', payload: currentFixtures });
     dispatch({ type: 'SET_LEAGUE_TABLE', payload: currentTable });
+    
+    // Aplicar ingresos acumulados de taquilla de una vez (evita stale state)
+    if (localAccumulatedIncome > (state.stadium?.accumulatedTicketIncome ?? 0)) {
+      dispatch({
+        type: 'UPDATE_STADIUM',
+        payload: {
+          accumulatedTicketIncome: localAccumulatedIncome,
+          ticketPriceLocked: true
+        }
+      });
+    }
     
     // Other leagues are now simulated inside ADVANCE_WEEK (GameContext)
     
@@ -465,6 +489,8 @@ export default function Office() {
         return <Finance />;
       case 'facilities':
         return <Facilities />;
+      case 'competitions':
+        return <Competitions />;
       case 'europe':
         return <Europe />;
       case 'cup':

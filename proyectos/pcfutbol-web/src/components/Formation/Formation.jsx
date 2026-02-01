@@ -965,7 +965,9 @@ export default function Formation() {
           onClose={() => setShowStatsModal(false)}
           players={players}
           team={state.team}
-          seasonStats={state.seasonStats}
+          leagueTable={state.leagueTable}
+          teamId={state.teamId}
+          playerSeasonStats={state.playerSeasonStats}
         />
       )}
       
@@ -1281,7 +1283,7 @@ function InjuredModal({ onClose, players, facilities, dispatch, budget }) {
 // ============================================================
 // MODAL: ESTADÍSTICAS
 // ============================================================
-function StatsModal({ onClose, players, team, seasonStats }) {
+function StatsModal({ onClose, players, team, leagueTable, teamId, playerSeasonStats }) {
   const [tab, setTab] = useState('equipo');
   
   // Stats del equipo
@@ -1293,8 +1295,40 @@ function StatsModal({ onClose, players, team, seasonStats }) {
   const topOverall = [...players].sort((a, b) => b.overall - a.overall).slice(0, 5);
   const topValue = [...players].sort((a, b) => (b.value || 0) - (a.value || 0)).slice(0, 5);
   
-  // Stats de temporada
-  const stats = seasonStats || { played: 0, won: 0, drawn: 0, lost: 0, goalsFor: 0, goalsAgainst: 0 };
+  // Stats de temporada — derivar de leagueTable (fuente real)
+  const teamEntry = (leagueTable || []).find(t => t.teamId === teamId);
+  const stats = teamEntry 
+    ? { 
+        played: teamEntry.played || 0, 
+        won: teamEntry.won || 0, 
+        drawn: teamEntry.drawn || 0, 
+        lost: teamEntry.lost || 0, 
+        goalsFor: teamEntry.goalsFor || 0, 
+        goalsAgainst: teamEntry.goalsAgainst || 0 
+      }
+    : { played: 0, won: 0, drawn: 0, lost: 0, goalsFor: 0, goalsAgainst: 0 };
+  
+  // Stats individuales de jugadores — de playerSeasonStats
+  const pStats = playerSeasonStats || {};
+  const teamPlayerNames = new Set(players.map(p => p.name));
+  
+  // Goleadores (solo jugadores actuales del equipo)
+  const topScorers = Object.entries(pStats)
+    .filter(([name, s]) => teamPlayerNames.has(name) && s.goals > 0)
+    .sort((a, b) => b[1].goals - a[1].goals)
+    .slice(0, 5);
+  
+  // Asistentes
+  const topAssisters = Object.entries(pStats)
+    .filter(([name, s]) => teamPlayerNames.has(name) && s.assists > 0)
+    .sort((a, b) => b[1].assists - a[1].assists)
+    .slice(0, 5);
+  
+  // Más partidos
+  const topAppearances = Object.entries(pStats)
+    .filter(([name, s]) => teamPlayerNames.has(name) && s.matchesPlayed > 0)
+    .sort((a, b) => b[1].matchesPlayed - a[1].matchesPlayed)
+    .slice(0, 5);
   
   return (
     <div className="pcf-modal-overlay" onClick={onClose}>
@@ -1307,7 +1341,8 @@ function StatsModal({ onClose, players, team, seasonStats }) {
         <div className="modal-tabs">
           <button className={tab === 'equipo' ? 'active' : ''} onClick={() => setTab('equipo')}>Equipo</button>
           <button className={tab === 'temporada' ? 'active' : ''} onClick={() => setTab('temporada')}>Temporada</button>
-          <button className={tab === 'top' ? 'active' : ''} onClick={() => setTab('top')}>Top Jugadores</button>
+          <button className={tab === 'jugadores' ? 'active' : ''} onClick={() => setTab('jugadores')}>Jugadores</button>
+          <button className={tab === 'top' ? 'active' : ''} onClick={() => setTab('top')}>Top</button>
         </div>
         
         <div className="modal-body">
@@ -1364,6 +1399,50 @@ function StatsModal({ onClose, players, team, seasonStats }) {
                   {stats.goalsFor - stats.goalsAgainst >= 0 ? '+' : ''}{stats.goalsFor - stats.goalsAgainst}
                 </span>
               </div>
+            </div>
+          )}
+          
+          {tab === 'jugadores' && (
+            <div className="top-players">
+              {topScorers.length > 0 && (
+                <div className="top-section">
+                  <h4>Goleadores</h4>
+                  {topScorers.map(([name, s], i) => (
+                    <div key={name} className="top-row">
+                      <span className="rank">{i + 1}</span>
+                      <span className="name">{name}</span>
+                      <span className="value">{s.goals} gol{s.goals !== 1 ? 'es' : ''}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+              {topAssisters.length > 0 && (
+                <div className="top-section">
+                  <h4>Asistentes</h4>
+                  {topAssisters.map(([name, s], i) => (
+                    <div key={name} className="top-row">
+                      <span className="rank">{i + 1}</span>
+                      <span className="name">{name}</span>
+                      <span className="value">{s.assists} asist.</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+              {topAppearances.length > 0 && (
+                <div className="top-section">
+                  <h4>Más partidos</h4>
+                  {topAppearances.map(([name, s], i) => (
+                    <div key={name} className="top-row">
+                      <span className="rank">{i + 1}</span>
+                      <span className="name">{name}</span>
+                      <span className="value">{s.matchesPlayed} PJ</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+              {topScorers.length === 0 && topAssisters.length === 0 && topAppearances.length === 0 && (
+                <p style={{ color: '#8899aa', textAlign: 'center', padding: '2rem 0' }}>Sin estadísticas aún — juega partidos para generar datos</p>
+              )}
             </div>
           )}
           

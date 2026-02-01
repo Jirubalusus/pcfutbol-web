@@ -2,7 +2,7 @@ import React, { createContext, useContext, useReducer, useEffect } from 'react';
 import { db } from '../firebase/config';
 import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import { LALIGA_TEAMS } from '../data/teamsFirestore';
-import { generateFacilityEvent, generateYouthPlayer, applyEventChoice, FACILITY_SPECIALIZATIONS } from '../game/facilitiesSystem';
+import { generateFacilityEvent, generateYouthPlayer, generateSonPlayer, applyEventChoice, FACILITY_SPECIALIZATIONS } from '../game/facilitiesSystem';
 import { assignRole } from '../game/playerRoles';
 import { GlobalTransferEngine, isTransferWindowOpen, formatTransferPrice, calculateMarketValue, TEAM_PROFILES } from '../game/globalTransferEngine';
 import { evaluateManager, generateWarningMessage } from '../game/managerEvaluation';
@@ -401,7 +401,7 @@ function gameReducer(state, action) {
       const allPlayersForEvolution = [...playersWithoutLoans, ...myLoanedOutPlayers];
       
       // Evolucionar jugadores, reducir contratos y filtrar expirados
-      const updatedPlayers = (allPlayersForEvolution.map(player => {
+      const evolvedPlayers = (allPlayersForEvolution.map(player => {
         const newAge = (player.age || 25) + 1;
         const contractYears = player.contractYears ?? player.personality?.contractYears ?? 2;
         
@@ -429,9 +429,14 @@ function gameReducer(state, action) {
           loanFromTeamId: undefined,
           loanSalaryShare: undefined
         };
-      }) || [])
-        // Filtrar jugadores con contrato expirado o que se retiran
-        .filter(player => player.contractYears > 0 && !player.retiring);
+      }) || []);
+      
+      // Capturar jugadores que se van (retiro o fin contrato) para generar "hijos"
+      const departingPlayers = evolvedPlayers.filter(p => p.contractYears <= 0 || p.retiring);
+      const retiringPlayers = evolvedPlayers.filter(p => p.retiring);
+      
+      // Filtrar: solo quedan los activos
+      const updatedPlayers = evolvedPlayers.filter(player => player.contractYears > 0 && !player.retiring);
       
       // Limpiar lineup de jugadores que ya no están en la plantilla
       const playerNames = new Set(updatedPlayers.map(p => p.name));
@@ -456,13 +461,67 @@ function gameReducer(state, action) {
         }
       }
       
+      // Generar "hijos" de jugadores retirados del equipo del jugador
+      const retirementSons = retiringPlayers.map(retired => generateSonPlayer(retired));
+      const finalPlayers = [...updatedPlayers, ...retirementSons];
+      
+      // Mensajes de retiros e hijos
+      const retirementMessages = [];
+      retiringPlayers.forEach((retired, idx) => {
+        retirementMessages.push({
+          id: Date.now() + idx + 0.5,
+          type: 'retirement',
+          title: `Se retira: ${retired.name}`,
+          content: `${retired.name} (${retired.position}, ${retired.overall} OVR) se retira del fútbol profesional`,
+          date: `Fin Temporada ${state.currentSeason}`
+        });
+      });
+      retirementSons.forEach((son, idx) => {
+        retirementMessages.push({
+          id: Date.now() + idx + 0.8,
+          type: 'youth',
+          title: `Nuevo canterano: ${son.name}`,
+          content: `Hijo de ${son.parentName} — ${son.position}, ${son.overall} OVR, potencial ${son.potential}`,
+          date: `Inicio Temporada ${state.currentSeason + 1}`
+        });
+      });
+      
+      // Actualizar playerNames para lineup con los nuevos jugadores
+      const finalPlayerNames = new Set(finalPlayers.map(p => p.name));
+      
+      // === ENVEJECER Y GENERAR HIJOS EN EQUIPOS IA (leagueTeams) ===
+      const updatedLeagueTeamsForSeason = (state.leagueTeams || []).map(team => {
+        if (team.id === state.teamId) return team; // Skip player's team (already handled)
+        if (!team.players || team.players.length === 0) return team;
+        
+        // Envejecer jugadores
+        const agedPlayers = team.players.map(p => ({
+          ...p,
+          age: (p.age || 25) + 1,
+          overall: evolvePlayer(p)
+        }));
+        
+        // Retirar viejos
+        const active = agedPlayers.filter(p => {
+          if (p.age > 38) return false;
+          if (p.age > 36) return Math.random() > 0.5;
+          return true;
+        });
+        const retired = agedPlayers.filter(p => !active.includes(p));
+        
+        // Generar hijos de retirados
+        const sons = retired.map(r => generateSonPlayer(r));
+        
+        return { ...team, players: [...active, ...sons] };
+      });
+      
       return {
         ...state,
         currentSeason: state.currentSeason + 1,
         currentWeek: 1,
         team: {
           ...state.team,
-          players: updatedPlayers
+          players: finalPlayers
         },
         // Limpiar alineación y convocados
         lineup: cleanedLineup,
@@ -508,17 +567,23 @@ function gameReducer(state, action) {
         // Reset cup state (will be re-initialized by SeasonEnd)
         cupCompetition: null,
         pendingCupMatch: null,
+        // Equipos IA con jugadores envejecidos + hijos de retirados
+        leagueTeams: updatedLeagueTeamsForSeason,
         // Cesiones: limpiar para nueva temporada
         activeLoans: seasonRemainingLoans, // Solo quedan las compradas/no activas
         loanHistory: [...(state.loanHistory || []), ...seasonExpiredLoans],
         incomingLoanOffers: [],
+        // Mensajes: retiros + hijos + cesiones
+        messages: [...retirementMessages, ...loanExpireMessages.map(m => ({
+          id: Date.now() + Math.random(), type: 'loan', title: m.title || 'Cesión', content: m.content || '', date: `Fin Temporada ${state.currentSeason}`
+        }))].slice(0, 50),
         // Form system reset
         playerForm: generateInitialForm(
-          updatedPlayers, // or whatever the evolved players array is called in that case
+          finalPlayers,
           state.team?.players?.find(p => p.role === 'captain')?.name
         ),
         matchTracker: Object.fromEntries(
-          (updatedPlayers || []).map(p => [p.name, { consecutivePlayed: 0, weeksSincePlay: 3 }])
+          (finalPlayers || []).map(p => [p.name, { consecutivePlayed: 0, weeksSincePlay: 3 }])
         ),
         rejectedTransfers: {}
       };
@@ -1501,20 +1566,7 @@ function gameReducer(state, action) {
       };
     }
     
-    case 'RECORD_MATCH_INCOME': {
-      // Acumular ingresos de entradas — se cobran al final de temporada, no por partido
-      const matchIncome = action.payload.income;
-      return {
-        ...state,
-        stadium: {
-          ...state.stadium,
-          lastMatchIncome: matchIncome,
-          totalSeasonIncome: (state.stadium?.totalSeasonIncome || 0) + matchIncome,
-          accumulatedTicketIncome: (state.stadium?.accumulatedTicketIncome || 0) + matchIncome
-        }
-        // NO sumar a money aquí — se cobra en START_NEW_SEASON
-      };
-    }
+    // RECORD_MATCH_INCOME removed — income is accumulated via UPDATE_STADIUM dispatches
     
     case 'DELETE_MESSAGE':
       return {
