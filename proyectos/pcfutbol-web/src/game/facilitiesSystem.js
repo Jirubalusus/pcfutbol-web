@@ -2,6 +2,8 @@
 // SISTEMA DE INSTALACIONES CON ESPECIALIZACIONES Y EVENTOS
 // ============================================================
 
+import { getFacilityCostMultiplier } from './leagueTiers';
+
 // Especializaciones disponibles por instalación
 export const FACILITY_SPECIALIZATIONS = {
   youth: {
@@ -227,9 +229,10 @@ export function getMedicalHealingWeeks(medicalLevel) {
 }
 
 // Coste por tratamiento según nivel (más nivel = menos coste)
-export function getMedicalTreatmentCost(medicalLevel) {
+export function getMedicalTreatmentCost(medicalLevel, leagueId) {
   const costPerLevel = [500000, 500000, 400000, 300000, 200000, 100000]; // €500K a €100K
-  return costPerLevel[medicalLevel] || 500000;
+  const mult = getFacilityCostMultiplier(leagueId);
+  return Math.round((costPerLevel[medicalLevel] || 500000) * mult);
 }
 
 // Calcula tratamientos médicos disponibles (slots totales - slots ocupados)
@@ -284,15 +287,16 @@ export function applyEventChoice(state, event, choiceId) {
   let newState = { ...state };
   let messages = [];
   
-  // Verificar si hay coste
-  if (choice.cost && state.money < choice.cost) {
+  // Verificar si hay coste - escalar por tier
+  const scaledCost = choice.cost ? Math.round(choice.cost * getFacilityCostMultiplier(state.leagueId)) : 0;
+  if (scaledCost && state.money < scaledCost) {
     return { 
       ...state, 
       messages: [{
         id: Date.now(),
         type: 'error',
         title: '❌ Fondos insuficientes',
-        content: `No tienes €${(choice.cost/1000000).toFixed(1)}M para esta opción.`,
+        content: `No tienes €${(scaledCost/1000000).toFixed(1)}M para esta opción.`,
         date: `Semana ${state.currentWeek}`
       }, ...state.messages]
     };
@@ -421,8 +425,8 @@ export function applyEventChoice(state, event, choiceId) {
   }
   
   // Aplicar coste si existe
-  if (choice.cost) {
-    newState.money -= choice.cost;
+  if (scaledCost) {
+    newState.money -= scaledCost;
   }
   
   return {

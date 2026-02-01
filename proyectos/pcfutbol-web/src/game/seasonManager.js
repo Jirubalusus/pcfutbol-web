@@ -70,9 +70,15 @@ export const LEAGUE_MATCHDAYS = {
  * Determina si la temporada ha terminado
  */
 export function isSeasonOver(fixtures, leagueId = 'laliga') {
-  const maxWeek = LEAGUE_MATCHDAYS[leagueId] || 38;
+  if (!fixtures || fixtures.length === 0) return false;
+  
+  // Derive maxWeek from actual fixtures instead of lookup table
+  // This handles all leagues correctly regardless of team count
+  const maxWeek = Math.max(...fixtures.map(f => f.week));
+  
   const allPlayed = fixtures.every(f => f.played);
-  const lastWeekPlayed = fixtures.filter(f => f.week === maxWeek).every(f => f.played);
+  const lastWeekFixtures = fixtures.filter(f => f.week === maxWeek);
+  const lastWeekPlayed = lastWeekFixtures.length > 0 && lastWeekFixtures.every(f => f.played);
   
   return allPlayed || lastWeekPlayed;
 }

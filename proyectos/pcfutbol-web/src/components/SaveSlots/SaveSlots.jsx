@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { FolderOpen, Save, FolderCog, Trash2, PlusCircle, Play, ArrowLeft } from 'lucide-react';
+import FootballIcon from '../icons/FootballIcon';
 import { useAuth } from '../../context/AuthContext';
 import { useGame } from '../../context/GameContext';
 import { getUserSaves, loadGameFromSlot, deleteSaveSlot, saveGameToSlot } from '../../firebase/savesService';
@@ -124,7 +126,7 @@ export default function SaveSlots({ mode = 'load', onBack, onSlotSelected }) {
     return (
       <div className="save-slots">
         <div className="save-slots__loading">
-          <div className="save-slots__spinner">⚽</div>
+          <div className="save-slots__spinner"><FootballIcon size={22} /></div>
           <p>Cargando partidas...</p>
         </div>
       </div>
@@ -134,13 +136,13 @@ export default function SaveSlots({ mode = 'load', onBack, onSlotSelected }) {
   return (
     <div className="save-slots">
       <div className="save-slots__container">
-        <button className="save-slots__back" onClick={onBack}>← Volver</button>
+        <button className="save-slots__back" onClick={onBack}><ArrowLeft size={14} /> Volver</button>
         
         <div className="save-slots__header">
           <h2>
-            {mode === 'load' && '📂 Cargar Partida'}
-            {mode === 'save' && '💾 Guardar Partida'}
-            {mode === 'manage' && '🗂️ Gestionar Partidas'}
+            {mode === 'load' && <><FolderOpen size={16} /> Cargar Partida</>}
+            {mode === 'save' && <><Save size={16} /> Guardar Partida</>}
+            {mode === 'manage' && <><FolderCog size={16} /> Gestionar Partidas</>}
           </h2>
           <p className="save-slots__subtitle">
             {mode === 'load' && 'Selecciona una partida guardada o crea una nueva'}
@@ -168,7 +170,7 @@ export default function SaveSlots({ mode = 'load', onBack, onSlotSelected }) {
 
               {slot.empty ? (
                 <div className="save-slots__slot-empty">
-                  <div className="save-slots__empty-icon">🆕</div>
+                  <div className="save-slots__empty-icon"><PlusCircle size={36} /></div>
                   <p>Hueco vacío</p>
                   
                   {mode === 'load' && (
@@ -193,7 +195,7 @@ export default function SaveSlots({ mode = 'load', onBack, onSlotSelected }) {
               ) : (
                 <div className="save-slots__slot-content">
                   <div className="save-slots__team-info">
-                    <div className="save-slots__team-badge">⚽</div>
+                    <div className="save-slots__team-badge"><FootballIcon size={20} /></div>
                     <div className="save-slots__team-details">
                       <h3>{slot.summary?.teamName || 'Equipo desconocido'}</h3>
                       <p>
@@ -218,7 +220,7 @@ export default function SaveSlots({ mode = 'load', onBack, onSlotSelected }) {
                         onClick={() => handleLoadSlot(index)}
                         disabled={actionLoading === index}
                       >
-                        {actionLoading === index ? 'Cargando...' : '▶ Cargar'}
+                        {actionLoading === index ? 'Cargando...' : <><Play size={14} /> Cargar</>}
                       </button>
                     )}
                     
@@ -246,7 +248,7 @@ export default function SaveSlots({ mode = 'load', onBack, onSlotSelected }) {
                             onClick={() => setConfirmDelete(index)}
                             disabled={actionLoading === index}
                           >
-                            💾 Guardar aquí
+                            <Save size={14} /> Guardar aquí
                           </button>
                         )}
                       </>
@@ -278,13 +280,13 @@ export default function SaveSlots({ mode = 'load', onBack, onSlotSelected }) {
                               onClick={() => handleLoadSlot(index)}
                               disabled={actionLoading === index}
                             >
-                              ▶ Cargar
+                              <Play size={14} /> Cargar
                             </button>
                             <button 
                               className="save-slots__btn save-slots__btn--delete"
                               onClick={() => setConfirmDelete(index)}
                             >
-                              🗑️
+                              <Trash2 size={14} />
                             </button>
                           </>
                         )}

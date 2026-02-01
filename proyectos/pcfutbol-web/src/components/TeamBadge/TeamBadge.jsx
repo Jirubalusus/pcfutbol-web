@@ -1,4 +1,5 @@
 import React from 'react';
+import { Trophy } from 'lucide-react';
 import './TeamBadge.scss';
 
 // Simple team badge component with colors
@@ -69,7 +70,7 @@ export function CountryFlag({ country, size = 'md' }) {
     netherlands: '🇳🇱',
     portugal: '🇵🇹',
     // Default
-    default: '🏳️'
+    default: '\u25CB'
   };
 
   const sizeMap = {
@@ -103,7 +104,7 @@ export function LeagueBadge({ leagueId, showName = true }) {
     primeiraLiga: { name: 'Liga Portugal', icon: '🇵🇹', color: '#00843d' }
   };
 
-  const league = leagues[leagueId] || { name: leagueId, icon: '🏆', color: '#666' };
+  const league = leagues[leagueId] || { name: leagueId, icon: <Trophy size={14} />, color: '#666' };
 
   return (
     <div className="league-badge" style={{ '--league-color': league.color }}>

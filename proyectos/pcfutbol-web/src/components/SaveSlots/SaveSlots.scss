@@ -138,8 +138,14 @@
   }
 
   &__empty-icon {
-    font-size: 36px;
-    opacity: 0.6;
+    color: rgba(100, 150, 255, 0.4);
+    display: flex;
+    justify-content: center;
+    
+    svg {
+      width: 40px;
+      height: 40px;
+    }
   }
 
   &__slot-content {

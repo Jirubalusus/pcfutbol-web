@@ -1,5 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { useGame } from '../../context/GameContext';
+import { Check, Tag, ClipboardList, Bell, AlertCircle, Clock, Coins, Calendar, Cake, Flag, PenTool, UserMinus, CircleDollarSign, XCircle, X } from 'lucide-react';
+import { FORM_STATES } from '../../game/formSystem';
 import './Plantilla.scss';
 
 // Constantes
@@ -222,7 +224,7 @@ export default function Plantilla() {
       payload: {
         id: Date.now(),
         type: 'contract',
-        title: `✅ ${selectedPlayer.name} ha renovado`,
+        title: `${selectedPlayer.name} ha renovado`,
         content: `Nuevo contrato: ${newYears} años, ${formatMoney(newSalary)}/sem`,
         date: `Semana ${state.currentWeek}`
       }
@@ -249,7 +251,7 @@ export default function Plantilla() {
       payload: {
         id: Date.now(),
         type: 'transfer',
-        title: `🏷️ ${selectedPlayer.name} en venta`,
+        title: `${selectedPlayer.name} en venta`,
         content: `Precio: ${formatMoney(actionModal.value)}`,
         date: `Semana ${state.currentWeek}`
       }
@@ -284,7 +286,7 @@ export default function Plantilla() {
         payload: {
           id: Date.now(),
           type: 'morale',
-          title: `😔 El vestuario nota la marcha de ${selectedPlayer.name}`,
+          title: `El vestuario nota la marcha de ${selectedPlayer.name}`,
           content: `La moral del equipo se ha resentido`,
           date: `Semana ${state.currentWeek}`
         }
@@ -296,7 +298,7 @@ export default function Plantilla() {
       payload: {
         id: Date.now(),
         type: 'contract',
-        title: `👋 ${selectedPlayer.name} ha sido liberado`,
+        title: `${selectedPlayer.name} ha sido liberado`,
         content: severanceCost > 0 
           ? `Indemnización pagada: ${formatMoney(severanceCost)}`
           : `Jugador liberado sin coste`,
@@ -317,7 +319,7 @@ export default function Plantilla() {
       {/* Header con finanzas */}
       <div className="plantilla__header">
         <div className="header-title">
-          <h2>📋 Plantilla</h2>
+          <h2><ClipboardList size={16} /> Plantilla</h2>
           <span className="player-count">{players.length} jugadores</span>
         </div>
         
@@ -338,7 +340,7 @@ export default function Plantilla() {
       {playersNeedingAttention.length > 0 && (
         <div className="plantilla__alerts">
           <div className="alert-header">
-            <span className="alert-icon">🔔</span>
+            <span className="alert-icon"><Bell size={14} /></span>
             <span className="alert-title">{playersNeedingAttention.length} jugador{playersNeedingAttention.length > 1 ? 'es' : ''} requiere{playersNeedingAttention.length > 1 ? 'n' : ''} atención</span>
           </div>
           <div className="alert-list">
@@ -350,7 +352,7 @@ export default function Plantilla() {
                   <span className="pos" style={{ color: getPositionColor(p.position) }}>{p.position}</span>
                   <span className="name">{p.name}</span>
                   <span className="reason">
-                    {wantsLeave ? '😤 Quiere irse' : `⏰ ${contract.label}`}
+                    {wantsLeave ? <><AlertCircle size={12} /> Quiere irse</> : <><Clock size={12} /> {contract.label}</>}
                   </span>
                 </div>
               );
@@ -366,17 +368,26 @@ export default function Plantilla() {
       <div className="plantilla__sort">
         <span>Ordenar por:</span>
         <button className={sortBy === 'salary' ? 'active' : ''} onClick={() => setSortBy('salary')}>
-          💰 Salario
+          <Coins size={12} /> Salario
         </button>
         <button className={sortBy === 'contract' ? 'active' : ''} onClick={() => setSortBy('contract')}>
-          📅 Contrato
+          <Calendar size={12} /> Contrato
         </button>
         <button className={sortBy === 'ovr' ? 'active' : ''} onClick={() => setSortBy('ovr')}>
           ⭐ OVR
         </button>
         <button className={sortBy === 'age' ? 'active' : ''} onClick={() => setSortBy('age')}>
-          🎂 Edad
+          <Cake size={12} /> Edad
         </button>
+      </div>
+      
+      {/* Table header */}
+      <div className="plantilla__table-header">
+        <span className="col-pos">POS</span>
+        <span className="col-name">JUGADOR</span>
+        <span className="col-ovr">MED</span>
+        <span className="col-salary">SALARIO</span>
+        <span className="col-contract">CONTRATO</span>
       </div>
       
       {/* Lista de jugadores */}
@@ -406,8 +417,9 @@ export default function Plantilla() {
                 <div className="info">
                   <span className="name">
                     {player.name}
-                    {isTransferListed && <span className="tag-listed">🏷️ En venta</span>}
-                    {player.retiring && <span className="tag-retiring">🏁 Se retira</span>}
+                    {player.onLoan && <span className="tag-loan">🤝 EN CESIÓN</span>}
+                    {isTransferListed && !player.onLoan && <span className="tag-listed"><Tag size={12} /> En venta</span>}
+                    {player.retiring && <span className="tag-retiring"><Flag size={12} /> Se retira</span>}
                   </span>
                   <span className="meta">{player.overall} OVR · {player.age} años</span>
                 </div>
@@ -423,28 +435,38 @@ export default function Plantilla() {
               
               <div className="player-status">
                 <span className="contract" style={{ color: contract.color }}>
-                  📅 {contract.label}
+                  <Calendar size={12} /> {contract.label}
                 </span>
-                {wantsToRenew(player) && !player.retiring && (
-                  <span className="renew-icon" title="Se puede renovar">✍️</span>
-                )}
+                <span className={`renew-icon ${wantsToRenew(player) && !player.retiring ? '' : 'hidden'}`} title="Se puede renovar">
+                  <PenTool size={12} />
+                </span>
               </div>
               
               <div className="player-actions">
-                <button 
-                  className="btn-renew" 
-                  onClick={() => handleRenew(player)} 
-                  title={player.retiring ? "El jugador ha anunciado su retiro" : !wantsToRenew(player) ? "El jugador no necesita renovar (le quedan más de 2 años)" : "Renovar"}
-                  disabled={!wantsToRenew(player)}
-                >
-                  ✍️
-                </button>
-                <button className="btn-sell" onClick={() => handleSell(player)} title="Poner en venta">
-                  🏷️
-                </button>
-                <button className="btn-release" onClick={() => handleRelease(player)} title="Liberar">
-                  👋
-                </button>
+                {player.onLoan ? (
+                  <>
+                    <span className="loan-info-badge" title={`Cedido por ${player.loanFromTeam}`}>
+                      🤝 Cedido
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <button 
+                      className="btn-renew" 
+                      onClick={() => handleRenew(player)} 
+                      title={player.retiring ? "El jugador ha anunciado su retiro" : !wantsToRenew(player) ? "El jugador no necesita renovar (le quedan más de 2 años)" : "Renovar"}
+                      disabled={!wantsToRenew(player)}
+                    >
+                      <PenTool size={14} />
+                    </button>
+                    <button className="btn-sell" onClick={() => handleSell(player)} title="Poner en venta">
+                      <Tag size={14} />
+                    </button>
+                    <button className="btn-release" onClick={() => handleRelease(player)} title="Liberar">
+                      <UserMinus size={14} />
+                    </button>
+                  </>
+                )}
               </div>
             </div>
           );
@@ -471,18 +493,31 @@ export default function Plantilla() {
                     <span className="age">{selectedPlayer.age} años</span>
                   </div>
                   <div className="mobile-action-list">
-                    <button className="mobile-action-btn" onClick={() => { closeModal(); handleRenew(selectedPlayer); }} disabled={!wantsToRenew(selectedPlayer)}>
-                      ✍️ Renovar contrato
-                    </button>
-                    <button className="mobile-action-btn" onClick={() => { closeModal(); handleSell(selectedPlayer); }}>
-                      🏷️ Poner en venta
-                    </button>
-                    <button className="mobile-action-btn mobile-action-btn--danger" onClick={() => { closeModal(); handleRelease(selectedPlayer); }}>
-                      👋 Liberar jugador
-                    </button>
-                    <button className="btn-cancel" onClick={closeModal}>
-                      Cancelar
-                    </button>
+                    {selectedPlayer.onLoan ? (
+                      <>
+                        <div className="mobile-action-info">
+                          🤝 Jugador cedido por {selectedPlayer.loanFromTeam} — No se puede vender ni liberar
+                        </div>
+                        <button className="mobile-action-btn mobile-action-btn--cancel" onClick={closeModal}>
+                          <X size={14} /> Cerrar
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <button className="mobile-action-btn" onClick={() => { closeModal(); handleRenew(selectedPlayer); }} disabled={!wantsToRenew(selectedPlayer)}>
+                          <PenTool size={14} /> Renovar contrato
+                        </button>
+                        <button className="mobile-action-btn" onClick={() => { closeModal(); handleSell(selectedPlayer); }}>
+                          <Tag size={14} /> Poner en venta
+                        </button>
+                        <button className="mobile-action-btn mobile-action-btn--danger" onClick={() => { closeModal(); handleRelease(selectedPlayer); }}>
+                          <UserMinus size={14} /> Liberar jugador
+                        </button>
+                        <button className="mobile-action-btn mobile-action-btn--cancel" onClick={closeModal}>
+                          <X size={14} /> Cancelar
+                        </button>
+                      </>
+                    )}
                   </div>
                 </div>
               </>
@@ -549,7 +584,7 @@ export default function Plantilla() {
             {actionModal.type === 'sell' && (
               <>
                 <div className="modal-header sell">
-                  <h3>🏷️ Poner en venta a {selectedPlayer.name}</h3>
+                  <h3><Tag size={14} /> Poner en venta a {selectedPlayer.name}</h3>
                 </div>
                 <div className="modal-content">
                   <div className="player-summary">
@@ -572,7 +607,7 @@ export default function Plantilla() {
                   </div>
                   
                   <div className="impact">
-                    <span className="impact-label">💰 Si se vende:</span>
+                    <span className="impact-label"><Coins size={12} /> Si se vende:</span>
                     <span className="impact-value positive">
                       +{formatMoney(actionModal.value)} + {formatMoney((selectedPlayer.salary || 0) * WEEKS_PER_YEAR)}/año ahorrados
                     </span>
@@ -582,7 +617,7 @@ export default function Plantilla() {
                   
                   <div className="modal-actions">
                     <button className="btn-confirm" onClick={confirmSell}>
-                      🏷️ Poner en venta
+                      <Tag size={14} /> Poner en venta
                     </button>
                     <button className="btn-cancel" onClick={closeModal}>
                       Cancelar
@@ -596,7 +631,7 @@ export default function Plantilla() {
             {actionModal.type === 'release' && (
               <>
                 <div className="modal-header release">
-                  <h3>👋 Liberar a {selectedPlayer.name}</h3>
+                  <h3><UserMinus size={14} /> Liberar a {selectedPlayer.name}</h3>
                 </div>
                 <div className="modal-content">
                   <div className="player-summary">
@@ -608,21 +643,21 @@ export default function Plantilla() {
                   </div>
                   
                   <div className="warning-box danger">
-                    <span className="warning-icon">💸</span>
+                    <span className="warning-icon"><CircleDollarSign size={14} /></span>
                     <span className="warning-text">
                       Debes pagar la indemnización por los {actionModal.contractYears} año{actionModal.contractYears > 1 ? 's' : ''} de contrato restantes.
                     </span>
                   </div>
                   
                   <div className="impact">
-                    <span className="impact-label">💸 Indemnización a pagar:</span>
+                    <span className="impact-label"><CircleDollarSign size={12} /> Indemnización a pagar:</span>
                     <span className="impact-value negative">
                       -{formatMoney(actionModal.severanceCost)}
                     </span>
                   </div>
                   
                   <div className="impact">
-                    <span className="impact-label">💰 Ahorrarás en salarios:</span>
+                    <span className="impact-label"><Coins size={12} /> Ahorrarás en salarios:</span>
                     <span className="impact-value positive">
                       +{formatMoney(actionModal.yearlySaved)}/año
                     </span>
@@ -630,13 +665,13 @@ export default function Plantilla() {
                   
                   {selectedPlayer.overall >= 75 && (
                     <div className="morale-warning">
-                      <span>😔 Esto puede afectar la moral del vestuario</span>
+                      <span>Esto puede afectar la moral del vestuario</span>
                     </div>
                   )}
                   
                   {budget < actionModal.severanceCost && (
                     <div className="morale-warning">
-                      <span>❌ No tienes suficiente dinero para la indemnización</span>
+                      <span><XCircle size={12} /> No tienes suficiente dinero para la indemnización</span>
                     </div>
                   )}
                   
@@ -646,7 +681,7 @@ export default function Plantilla() {
                       onClick={confirmRelease}
                       disabled={budget < actionModal.severanceCost}
                     >
-                      👋 Pagar y liberar ({formatMoney(actionModal.severanceCost)})
+                      <UserMinus size={14} /> Pagar y liberar ({formatMoney(actionModal.severanceCost)})
                     </button>
                     <button className="btn-cancel" onClick={closeModal}>
                       Cancelar

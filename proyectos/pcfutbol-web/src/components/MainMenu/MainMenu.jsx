@@ -8,6 +8,7 @@ import {
   Play, LogIn, LogOut, Save, Trophy, Settings as SettingsIcon, 
   Lightbulb, User, Gamepad2, ChevronRight
 } from 'lucide-react';
+import FootballIcon from '../icons/FootballIcon';
 import './MainMenu.scss';
 
 export default function MainMenu() {
@@ -88,30 +89,32 @@ export default function MainMenu() {
         </div>
       </div>
       
-      <div className="main-menu__content">
-        {/* User status — logged in */}
-        {isAuthenticated && (
-          <div className="main-menu__user">
-            <div className="main-menu__user-avatar">
-              <User size={14} />
-            </div>
-            <span className="main-menu__user-name">
-              {user?.displayName || user?.email?.split('@')[0]}
-            </span>
-            <button 
-              className="main-menu__user-logout" 
-              onClick={handleLogout}
-              disabled={loggingOut}
-            >
-              <LogOut size={13} />
-              <span>{loggingOut ? 'Saliendo...' : 'Salir'}</span>
-            </button>
+      {/* User status — logged in (outside content for proper absolute positioning) */}
+      {isAuthenticated && (
+        <div className="main-menu__user">
+          <div className="main-menu__user-avatar">
+            <User size={14} />
           </div>
-        )}
+          <span className="main-menu__user-name">
+            {user?.displayName || user?.email?.split('@')[0]}
+          </span>
+          <button 
+            className="main-menu__user-logout" 
+            onClick={handleLogout}
+            disabled={loggingOut}
+          >
+            <LogOut size={13} />
+            <span>{loggingOut ? 'Saliendo...' : 'Salir'}</span>
+          </button>
+        </div>
+      )}
 
+      <div className="main-menu__content">
         <div className="main-menu__hero">
           <div className="main-menu__ball">
-            <div className="main-menu__ball-inner">⚽</div>
+            <div className="main-menu__ball-inner">
+              <span className="hero-ball" role="img" aria-label="balón">⚽</span>
+            </div>
           </div>
           <h1 className="main-menu__title">
             <span className="pc">P C</span>

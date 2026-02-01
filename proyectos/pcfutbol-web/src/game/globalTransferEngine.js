@@ -4,10 +4,12 @@
 // Simula transferencias entre TODOS los equipos (IA ↔ IA)
 // Genera noticias, rumores y mantiene el mundo vivo
 
+import { getTransferValueMultiplier } from './leagueTiers';
+
 /**
  * Calcular valor de mercado de un jugador
  */
-export function calculateMarketValue(player) {
+export function calculateMarketValue(player, leagueId) {
   const overall = player.overall || 70;
   const age = player.age || 25;
   
@@ -56,8 +58,10 @@ export function calculateMarketValue(player) {
   else if (contractYears <= 2) contractMod = 0.75;
   else if (contractYears >= 5) contractMod = 1.15;
   
-  const finalValue = baseValue * ageMod * posMod * contractMod;
-  return Math.round(Math.max(100_000, Math.min(300_000_000, finalValue)));
+  // Apply tier multiplier for league-specific market values
+  const tierMult = leagueId ? getTransferValueMultiplier(leagueId) : 1.0;
+  const finalValue = baseValue * ageMod * posMod * contractMod * tierMult;
+  return Math.round(Math.max(50_000, Math.min(300_000_000, finalValue)));
 }
 
 // ============================================================
@@ -137,8 +141,13 @@ export class GlobalTransferEngine {
     
     teamsData.forEach(team => {
       const profile = this.getTeamProfile(team.name);
+      
+      // Apply tier multiplier to budget if team has leagueId
+      const tierMult = team.leagueId ? getTransferValueMultiplier(team.leagueId) : 1.0;
       const [minBudget, maxBudget] = profile.budgetRange;
-      const budget = Math.round(minBudget + Math.random() * (maxBudget - minBudget));
+      const scaledMin = Math.round(minBudget * tierMult);
+      const scaledMax = Math.round(maxBudget * tierMult);
+      const budget = Math.round(scaledMin + Math.random() * (scaledMax - scaledMin));
       
       teams.set(team.id, {
         ...team,
@@ -287,9 +296,15 @@ export class GlobalTransferEngine {
       }
     }
     
-    // Generar rumores
+    // Generar rumores (incluir rumores de cesiones)
     const newRumors = this.generateRumors(Math.random() < 0.5 ? 1 : 2);
     events.push(...newRumors.map(r => ({ type: 'rumor', data: r })));
+    
+    // 30% chance de rumor de cesión durante ventana
+    if (Math.random() < 0.30) {
+      const loanRumors = this.generateLoanRumors(1);
+      events.push(...loanRumors.map(r => ({ type: 'rumor', data: r })));
+    }
     
     return events;
   }
@@ -312,7 +327,7 @@ export class GlobalTransferEngine {
     if (!sellingTeam || sellingTeam.id === this.playerTeamId) return null;
     
     // Calcular precio
-    const marketValue = calculateMarketValue(target);
+    const marketValue = calculateMarketValue(target, sellingTeam.leagueId);
     const sellingProfile = this.getTeamProfile(sellingTeam.name);
     const askingPrice = Math.round(marketValue * (1 + sellingProfile.sellReluctance * 0.3));
     
@@ -455,6 +470,52 @@ export class GlobalTransferEngine {
   // ============================================================
 
   /**
+   * Generar mensajes de cesiones IA para las noticias
+   */
+  generateLoanRumors(count = 1) {
+    const rumors = [];
+    const templates = [
+      { type: 'loan_interest', text: '{to} quiere la cesión de {player} ({from})' },
+      { type: 'loan_close', text: '{player} a punto de salir cedido de {from} al {to}' },
+      { type: 'loan_return', text: '{player} podría volver a {from} tras su cesión en {to}' }
+    ];
+    
+    for (let i = 0; i < count; i++) {
+      const template = templates[Math.floor(Math.random() * templates.length)];
+      const teams = Array.from(this.allTeams.values()).filter(t => t.id !== this.playerTeamId);
+      const fromTeam = teams[Math.floor(Math.random() * teams.length)];
+      const toTeam = teams.filter(t => t.id !== fromTeam?.id)[Math.floor(Math.random() * Math.max(1, teams.length - 1))];
+      
+      if (!fromTeam?.players?.length || !toTeam) continue;
+      
+      // Buscar jugador joven o suplente (candidato a cesión)
+      const candidates = fromTeam.players.filter(p => p.age <= 23 || p.overall < (fromTeam.players.reduce((s, pl) => s + (pl.overall || 70), 0) / fromTeam.players.length) - 3);
+      const player = candidates.length > 0 
+        ? candidates[Math.floor(Math.random() * candidates.length)]
+        : fromTeam.players[Math.floor(Math.random() * fromTeam.players.length)];
+      
+      if (!player) continue;
+      
+      rumors.push({
+        id: `loan_rumor_${Date.now()}_${i}`,
+        type: template.type,
+        text: template.text
+          .replace('{player}', player.name)
+          .replace('{from}', fromTeam.name)
+          .replace('{to}', toTeam.name),
+        player: { name: player.name, position: player.position, overall: player.overall },
+        from: fromTeam.name,
+        to: toTeam.name,
+        reliability: Math.round(25 + Math.random() * 45),
+        isLoanRumor: true,
+        createdAt: Date.now()
+      });
+    }
+    
+    return rumors;
+  }
+
+  /**
    * Generar rumores de mercado
    */
   generateRumors(count = 1) {
@@ -480,7 +541,7 @@ export class GlobalTransferEngine {
       const player = fromTeam.players[Math.floor(Math.random() * fromTeam.players.length)];
       if (!player) continue;
       
-      const price = calculateMarketValue(player);
+      const price = calculateMarketValue(player, fromTeam.leagueId);
       
       const rumor = {
         id: `rumor_${Date.now()}_${i}`,

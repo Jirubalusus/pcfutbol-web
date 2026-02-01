@@ -114,11 +114,12 @@ export function calculateMatchStrength(team, formation, tactic, context = {}) {
     isHome = false,
     seasonMomentum = 0, // -20 a +20 según racha de temporada
     customLineup = null, // Lineup personalizado del jugador
-    attendanceFillRate = 0.7 // Ocupación del estadio
+    attendanceFillRate = 0.7, // Ocupación del estadio
+    playerForm = {}     // Player form data
   } = context;
   
   // Base: media del 11 titular (usando lineup custom si disponible)
-  const strength = calculateTeamStrength(team, formation, tactic, morale, customLineup);
+  const strength = calculateTeamStrength(team, formation, tactic, morale, customLineup, playerForm);
   const baseRating = strength.effectiveOverall || strength.overall || 70;
   
   // Reputación del equipo (muy importante)
@@ -197,8 +198,14 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
     referee = 'neutral',   // neutral, strict, lenient
     homeLineup = null,     // Lineup personalizado del equipo local
     awayLineup = null,     // Lineup personalizado del equipo visitante
-    attendanceFillRate = 0.7  // Ocupación del estadio (afecta factor cancha)
+    attendanceFillRate = 0.7,  // Ocupación del estadio (afecta factor cancha)
+    playerTeamForm = {},
+    playerTeamId = null
   } = context;
+  
+  // Determine which team gets the form data
+  const homeForm = homeTeamData.id === playerTeamId ? playerTeamForm : {};
+  const awayForm = awayTeamData.id === playerTeamId ? playerTeamForm : {};
   
   // Calcular fuerzas ajustadas (con lineup del jugador si disponible)
   const homeStrength = calculateMatchStrength(homeTeamData, homeFormation, homeTactic, {
@@ -206,14 +213,16 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
     isHome: true,
     seasonMomentum: homeSeasonMomentum,
     customLineup: homeLineup,
-    attendanceFillRate
+    attendanceFillRate,
+    playerForm: homeForm
   });
   
   const awayStrength = calculateMatchStrength(awayTeamData, awayFormation, awayTactic, {
     morale: awayMorale,
     isHome: false,
     seasonMomentum: awaySeasonMomentum,
-    customLineup: awayLineup
+    customLineup: awayLineup,
+    playerForm: awayForm
   });
   
   // Bonus por matchup táctico (piedra-papel-tijera)

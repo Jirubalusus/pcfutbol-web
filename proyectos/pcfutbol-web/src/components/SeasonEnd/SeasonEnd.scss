@@ -17,8 +17,8 @@
 
 .season-end__modal {
   background: linear-gradient(145deg, #1a1f2e, #141824);
-  border-radius: 20px;
-  padding: 32px;
+  border-radius: 16px;
+  padding: 20px;
   max-width: 600px;
   width: 100%;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -35,26 +35,17 @@
 .modal-header {
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 32px;
-  
-  @media (max-width: 768px) {
-    margin-bottom: 20px;
-    gap: 12px;
-  }
+  gap: 12px;
+  margin-bottom: 20px;
   
   .header-icon {
     color: #ffd60a;
   }
   
   h1 {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     color: #fff;
     margin: 0;
-    
-    @media (max-width: 768px) {
-      font-size: 1.25rem;
-    }
   }
   
   p {
@@ -84,7 +75,7 @@
   border-radius: 12px;
   
   .position-number {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 800;
     color: #000;
     line-height: 1;
@@ -109,7 +100,7 @@
     align-items: center;
     
     .value {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       font-weight: 700;
       color: #fff;
       
@@ -126,6 +117,54 @@
 }
 
 // European Qualification
+// Competition results (cup & european)
+.competition-result {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: linear-gradient(145deg, rgba(142, 142, 147, 0.08), rgba(99, 99, 102, 0.08));
+  border: 1px solid rgba(142, 142, 147, 0.2);
+  border-radius: 12px;
+  margin-bottom: 12px;
+
+  .result-icon {
+    color: #8e8e93;
+    flex-shrink: 0;
+  }
+
+  .result-info {
+    h3 {
+      color: #e5e5ea;
+      margin: 0 0 2px;
+      font-size: 1rem;
+    }
+
+    p {
+      color: #aaa;
+      margin: 0;
+      font-size: 0.9rem;
+    }
+  }
+
+  &--champion {
+    background: linear-gradient(145deg, rgba(255, 214, 10, 0.12), rgba(255, 159, 10, 0.08));
+    border-color: rgba(255, 214, 10, 0.35);
+
+    .result-icon {
+      color: #ffd60a;
+    }
+
+    .result-info h3 {
+      color: #ffd60a;
+    }
+
+    .result-info p {
+      color: #ffcc00;
+    }
+  }
+}
+
 .european-qualification {
   display: flex;
   align-items: center;
@@ -540,7 +579,7 @@
 @media (max-width: 768px) {
   .season-end {
     padding: 8px;
-    padding-bottom: 95px;
+    padding-bottom: 130px;
   }
 
   .season-end__modal {

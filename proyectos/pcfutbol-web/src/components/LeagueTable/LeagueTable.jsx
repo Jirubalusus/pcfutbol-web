@@ -19,21 +19,23 @@ const LEAGUE_ZONES = {
     name: 'Segunda División',
     promotion: [1, 2],
     playoff: [3, 4, 5, 6],
-    relegation: [20, 21, 22],
+    relegation: [19, 20, 21, 22],
     teams: 22
   },
   primeraRFEF: {
     name: 'Primera Federación',
     isGroupLeague: true,
     promotion: [1],
+    playoff: [2, 3, 4, 5],
     relegation: [],
-    relegationFromBottom: 2,
+    relegationFromBottom: 5,
     teams: 0
   },
   segundaRFEF: {
     name: 'Segunda Federación',
     isGroupLeague: true,
     promotion: [1],
+    playoff: [2, 3, 4, 5],
     relegation: [],
     teams: 0
   },
@@ -362,7 +364,7 @@ export default function LeagueTable() {
               <option value="ligue1">Ligue 1</option>
               <option value="ligue2">Ligue 2</option>
             </optgroup>
-            <optgroup label="🌍 Resto de Europa">
+            <optgroup label="Resto de Europa">
               <option value="eredivisie">🇳🇱 Eredivisie</option>
               <option value="primeiraLiga">🇵🇹 Primeira Liga</option>
               <option value="belgianPro">🇧🇪 Jupiler Pro League</option>
@@ -477,7 +479,16 @@ export default function LeagueTable() {
                       <span className="team-badge">
                         {getTeamInitials(team.teamName)}
                       </span>
-                      <span className="team-name">{team.teamName}</span>
+                      <span className="team-info">
+                        <span className="team-name">{team.teamName}</span>
+                        {(team.form || []).length > 0 && (
+                          <span className="team-form-mobile">
+                            {(team.form || []).slice(-5).map((f, i) => (
+                              <span key={i} className={`form-pip form-${f?.toLowerCase()}`} />
+                            ))}
+                          </span>
+                        )}
+                      </span>
                     </span>
                     <span className="col-pj">{team.played || 0}</span>
                     <span className="col-w">{team.won}</span>

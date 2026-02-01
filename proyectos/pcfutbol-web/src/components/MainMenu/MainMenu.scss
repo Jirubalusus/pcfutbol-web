@@ -7,6 +7,11 @@
   position: relative;
   overflow: hidden;
   padding: 2rem;
+  padding-top: calc(env(safe-area-inset-top, 0px) + 3rem);
+
+  @media (max-width: 768px) {
+    padding-top: calc(env(safe-area-inset-top, 0px) + 3.5rem);
+  }
 
   &__settings-wrapper {
     position: fixed;
@@ -125,8 +130,9 @@
   // ── User Bar (logged in) ──
   &__user {
     position: absolute;
-    top: 1rem;
+    top: calc(env(safe-area-inset-top, 0px) + 1rem);
     right: 1rem;
+    z-index: 10;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -135,6 +141,13 @@
     border-radius: 24px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     animation: fadeSlideDown 0.5s ease 0.6s both;
+
+    @media (max-width: 768px) {
+      top: calc(env(safe-area-inset-top, 0px) + 0.5rem);
+      right: 0.75rem;
+      padding: 5px 8px 5px 5px;
+      gap: 6px;
+    }
   }
 
   &__user-avatar {
@@ -223,25 +236,29 @@
   }
 
   &__ball {
-    margin-bottom: 1rem;
-    perspective: 200px;
+    margin-bottom: 1.5rem;
+    perspective: 400px;
 
     &-inner {
-      font-size: 4rem;
-      animation: ballFloat 3s ease-in-out infinite;
-      filter: drop-shadow(0 8px 24px rgba(0, 212, 255, 0.25));
       display: inline-block;
+      animation: ballFloat 3s ease-in-out infinite;
+      
+      .hero-ball {
+        font-size: 7rem;
+        line-height: 1;
+        display: block;
+        filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.3))
+               drop-shadow(0 12px 24px rgba(0, 0, 0, 0.4));
+      }
     }
   }
 
   @keyframes ballFloat {
     0%, 100% { 
-      transform: translateY(0) rotateX(0deg); 
-      filter: drop-shadow(0 8px 24px rgba(0, 212, 255, 0.25));
+      transform: translateY(0) rotate(0deg);
     }
     50% { 
-      transform: translateY(-12px) rotateX(5deg); 
-      filter: drop-shadow(0 20px 32px rgba(0, 212, 255, 0.15));
+      transform: translateY(-14px) rotate(3deg);
     }
   }
 

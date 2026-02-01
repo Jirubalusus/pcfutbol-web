@@ -1,36 +1,27 @@
 .calendar-v2 {
-  padding: 20px;
+  padding: 12px;
   max-width: 900px;
   margin: 0 auto;
-
-  @media (max-width: 768px) {
-    padding: 12px;
-  }
 
   &__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
 
     @media (max-width: 768px) {
       flex-direction: column;
       gap: 0.75rem;
       align-items: flex-start;
-      margin-bottom: 16px;
     }
 
     h2 {
       display: flex;
       align-items: center;
-      gap: 12px;
-      font-size: 1.5rem;
+      gap: 10px;
+      font-size: 1.25rem;
       color: #fff;
       margin: 0;
-
-      @media (max-width: 768px) {
-        font-size: 1.25rem;
-      }
 
       svg {
         color: #0a84ff;
@@ -95,7 +86,7 @@
       }
 
       .week-number {
-        font-size: 2rem;
+        font-size: 1.5rem;
         font-weight: 700;
         color: #fff;
       }
@@ -131,6 +122,7 @@
     }
 
     .week-btn {
+      position: relative;
       width: 36px;
       height: 36px;
       min-width: 36px;
@@ -164,6 +156,34 @@
       &.played {
         color: #30d158;
       }
+
+      // European week indicator
+      &.european {
+        border-color: rgba(255, 215, 0, 0.35);
+
+        &.selected {
+          border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        &.current {
+          border-color: #ffd60a;
+        }
+      }
+
+      .euro-dot {
+        position: absolute;
+        bottom: 3px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: #ffd700;
+      }
+
+      &.selected .euro-dot {
+        background: rgba(255, 255, 255, 0.8);
+      }
     }
   }
 
@@ -183,6 +203,84 @@
       }
     }
 
+    // ── European match section ──
+    .european-section {
+      margin-bottom: 4px;
+
+      .european-badge {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px 4px;
+        font-size: 0.75rem;
+        color: #ffd700;
+
+        @media (max-width: 640px) {
+          padding: 4px 6px 2px;
+          font-size: 0.7rem;
+          gap: 4px;
+        }
+
+        .euro-icon {
+          font-size: 0.9rem;
+          line-height: 1;
+        }
+
+        .euro-name {
+          font-weight: 600;
+          letter-spacing: 0.3px;
+        }
+
+        .euro-sep {
+          opacity: 0.4;
+        }
+
+        .euro-phase {
+          opacity: 0.75;
+          font-weight: 400;
+        }
+      }
+
+      .european-card {
+        border-color: rgba(255, 215, 0, 0.25) !important;
+        background: rgba(255, 215, 0, 0.04) !important;
+
+        &:hover {
+          background: rgba(255, 215, 0, 0.07) !important;
+        }
+
+        &.is-player {
+          background: rgba(255, 215, 0, 0.06) !important;
+          border-color: rgba(255, 215, 0, 0.3) !important;
+        }
+      }
+    }
+
+    // ── Section divider (between European and League) ──
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0 4px;
+
+      &::before,
+      &::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      span {
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: #636366;
+        font-weight: 500;
+      }
+    }
+
+    // ── Fixture cards (shared between league and European) ──
     .fixture-card {
       display: grid;
       grid-template-columns: 1fr 70px 1fr 32px;
@@ -194,9 +292,9 @@
       transition: all 0.2s;
 
       @media (max-width: 640px) {
-        grid-template-columns: 1fr 44px 1fr 24px;
-        padding: 8px 12px;
-        gap: 0 4px;
+        grid-template-columns: 1fr 50px 1fr 16px;
+        padding: 8px 6px;
+        gap: 0 6px;
       }
 
       &:hover {
@@ -235,7 +333,7 @@
           text-overflow: ellipsis;
           
           @media (max-width: 640px) {
-            font-size: 0.78rem;
+            font-size: 0.72rem;
           }
         }
       }

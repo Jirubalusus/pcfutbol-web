@@ -30,7 +30,9 @@ import Objectives from '../Objectives/Objectives';
 import SeasonEnd from '../SeasonEnd/SeasonEnd';
 import ManagerFired from '../ManagerFired/ManagerFired';
 import Europe from '../Europe/Europe';
+import Cup from '../Cup/Cup';
 import { isSeasonOver } from '../../game/seasonManager';
+import { getPlayerCompetition, isTeamAlive } from '../../game/europeanSeason';
 import {
   Trophy,
   TrendingUp,
@@ -40,7 +42,9 @@ import {
   Save,
   SkipForward,
   FastForward,
-  ChevronRight
+  ChevronRight,
+  AlertTriangle,
+  HeartPulse
 } from 'lucide-react';
 import './Office.scss';
 
@@ -56,7 +60,18 @@ export default function Office() {
   
   // Detectar si la temporada ha terminado
   const playerLeagueId = state.playerLeagueId || 'laliga';
-  const seasonOver = state.fixtures?.length > 0 && isSeasonOver(state.fixtures, playerLeagueId);
+  const leagueIsOver = !state.preseasonPhase && state.fixtures?.length > 0 && isSeasonOver(state.fixtures, playerLeagueId);
+  
+  // v2: If European calendar exists, season continues until European comps finish
+  let seasonOver = leagueIsOver;
+  if (seasonOver && state.europeanCalendar && state.europeanCompetitions) {
+    const playerComp = getPlayerCompetition(state.europeanCompetitions, state.teamId);
+    const stillAlive = playerComp && isTeamAlive(playerComp.state, state.teamId);
+    const hasMoreEuropeanWeeks = state.currentWeek < state.europeanCalendar.totalWeeks;
+    if ((stillAlive && hasMoreEuropeanWeeks) || state.pendingEuropeanMatch) {
+      seasonOver = false; // Player still has European matches to play
+    }
+  }
   
   const formatMoney = (amount) => {
     if (amount >= 1000000) {
@@ -131,7 +146,10 @@ export default function Office() {
       pendingEuropeanMatch: state.pendingEuropeanMatch ? 'yes' : 'no'
     });
     
-    if (state.pendingEuropeanMatch) {
+    if (state.pendingCupMatch) {
+      // Cup match takes priority
+      setShowMatch(true);
+    } else if (state.pendingEuropeanMatch) {
       // European match takes priority (midweek before weekend league match)
       setShowMatch(true);
     } else if (playerMatch) {
@@ -157,15 +175,16 @@ export default function Office() {
         dispatch({ type: 'ADVANCE_PRESEASON_WEEK' });
       }
     } else {
-      // After a European match, check if there's still a league match this week
+      // After a cup/European match, check if there's still a league match this week
       // If so, DON'T advance the week yet — let the user play the league match too
       const weekFixtures = state.fixtures.filter(f => f.week === state.currentWeek && !f.played);
       const leagueMatch = weekFixtures.find(f => 
         f.homeTeam === state.teamId || f.awayTeam === state.teamId
       );
+      const stillHasCup = state.pendingCupMatch;
       const stillHasEuropean = state.pendingEuropeanMatch;
       
-      if (leagueMatch || stillHasEuropean) {
+      if (leagueMatch || stillHasCup || stillHasEuropean) {
         // There's still a match to play this week — don't advance, just return to office
         // The user will click advance again to play the next match
         return;
@@ -197,7 +216,8 @@ export default function Office() {
   const handleSimulateWeeks = async (numWeeks) => {
     // No simular múltiples semanas durante pretemporada
     if (state.preseasonPhase) return;
-    // No simular si hay partido europeo pendiente
+    // No simular si hay partido de copa o europeo pendiente
+    if (state.pendingCupMatch) return;
     if (state.pendingEuropeanMatch) return;
     
     setSimulating(true);
@@ -284,7 +304,9 @@ export default function Office() {
             playerMatch.awayTeam,
             homeTeamData,
             awayTeamData,
-            { attendanceFillRate: isHome ? attendanceFillRate : 0.7 }
+            { attendanceFillRate: isHome ? attendanceFillRate : 0.7 },
+            state.playerForm || {},
+            state.teamId
           );
           
           // Ingresos de taquilla si somos locales (ACUMULAR, no dar directo)
@@ -402,7 +424,7 @@ export default function Office() {
         payload: {
           id: Date.now(),
           type: 'season',
-          title: '🏆 Fin de Temporada',
+          title: 'Fin de Temporada',
           content: `La temporada ha terminado después de ${weeksSimulated} semanas simuladas.`,
           date: `Semana ${state.currentWeek + weeksSimulated}`
         }
@@ -445,6 +467,8 @@ export default function Office() {
         return <Facilities />;
       case 'europe':
         return <Europe />;
+      case 'cup':
+        return <Cup />;
       case 'messages':
         return <Messages />;
       default:
@@ -537,7 +561,7 @@ export default function Office() {
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.4rem' }}>
               <span style={{ fontSize: '0.75rem', color: '#8899aa', textTransform: 'uppercase', letterSpacing: '1px' }}>
-                {state.managerConfidence <= 25 ? '⚠️ ' : ''}Confianza de la directiva
+                {state.managerConfidence <= 25 ? <><AlertTriangle size={12} />{' '}</> : ''}Confianza de la directiva
               </span>
               <span style={{ 
                 fontSize: '0.85rem', fontWeight: 700,
@@ -670,7 +694,7 @@ export default function Office() {
       <div className="office">
         <div className="injured-warning-modal">
           <div className="injured-warning-content">
-            <h2>⚠️ Jugadores lesionados en alineación</h2>
+            <h2><AlertTriangle size={16} /> Jugadores lesionados en alineación</h2>
             <p>Tienes {injuredInLineup.length} jugador{injuredInLineup.length > 1 ? 'es' : ''} lesionado{injuredInLineup.length > 1 ? 's' : ''} en tu alineación titular:</p>
             
             <ul className="injured-list">
@@ -678,7 +702,7 @@ export default function Office() {
                 <li key={p.name}>
                   <span className="pos">{p.position}</span>
                   <span className="name">{p.name}</span>
-                  <span className="weeks">🏥 {p.injuryWeeksLeft} semana{p.injuryWeeksLeft > 1 ? 's' : ''}</span>
+                  <span className="weeks"><HeartPulse size={14} /> {p.injuryWeeksLeft} semana{p.injuryWeeksLeft > 1 ? 's' : ''}</span>
                 </li>
               ))}
             </ul>
@@ -724,7 +748,8 @@ export default function Office() {
         activeTab={activeTab} 
         onTabChange={setActiveTab} 
         onAdvanceWeek={handleAdvanceWeek}
-        onSave={saveGame}
+        onSimulate={handleSimulateWeeks}
+        simulating={simulating}
       />
       
       <main className="office__main">
@@ -755,11 +780,11 @@ export default function Office() {
             </button>
             
             <div className="office__sim-dropdown">
-              <button className="office__sim-btn" disabled={simulating || state.preseasonPhase || !!state.pendingEuropeanMatch}>
+              <button className="office__sim-btn" disabled={simulating || state.preseasonPhase || !!state.pendingEuropeanMatch || !!state.pendingCupMatch}>
                 <FastForward size={18} strokeWidth={2} />
                 <span>{simulating ? 'Simulando...' : 'Simular'}</span>
               </button>
-              {!simulating && !state.preseasonPhase && !state.pendingEuropeanMatch && (
+              {!simulating && !state.preseasonPhase && !state.pendingEuropeanMatch && !state.pendingCupMatch && (
                 <div className="office__sim-options">
                   <button onClick={() => handleSimulateWeeks(4)}>4 semanas</button>
                   <button onClick={() => handleSimulateWeeks(10)}>10 semanas</button>

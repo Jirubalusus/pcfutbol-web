@@ -1,12 +1,18 @@
 import React from 'react';
+import { Circle, Dumbbell, Lock, Building2, Info, Check } from 'lucide-react';
 import { useGame } from '../../context/GameContext';
 import './Training.scss';
+
+const INTENSITY_ICONS = {
+  light: <Circle size={16} className="intensity-icon intensity-icon--green" />,
+  normal: <Circle size={16} className="intensity-icon intensity-icon--yellow" />,
+  intense: <Circle size={16} className="intensity-icon intensity-icon--red" />
+};
 
 const INTENSITY_LEVELS = {
   light: {
     id: 'light',
     name: 'Suave',
-    icon: '🟢',
     statBonus: '+0.6%',
     injuryRisk: '5%',
     description: 'Menor progresión, menos lesiones. Ideal para veteranos.',
@@ -15,7 +21,6 @@ const INTENSITY_LEVELS = {
   normal: {
     id: 'normal',
     name: 'Normal',
-    icon: '🟡',
     statBonus: '+1.1%',
     injuryRisk: '15%',
     description: 'Balance equilibrado entre progresión y riesgo.',
@@ -24,7 +29,6 @@ const INTENSITY_LEVELS = {
   intense: {
     id: 'intense',
     name: 'Intenso',
-    icon: '🔴',
     statBonus: '+1.7%',
     injuryRisk: '30%',
     description: 'Máxima progresión, mayor riesgo de lesiones.',
@@ -57,7 +61,7 @@ export default function Training() {
       payload: {
         id: Date.now(),
         type: 'training',
-        title: '🏋️ Intensidad de entrenamiento fijada',
+        title: 'Intensidad de entrenamiento fijada',
         content: `El equipo entrenará con intensidad ${INTENSITY_LEVELS[intensityId].name} durante toda la temporada.`,
         date: `Semana ${state.currentWeek}`
       }
@@ -67,9 +71,9 @@ export default function Training() {
   return (
     <div className="training-simple">
       <div className="training-simple__header">
-        <h2>🏋️ Intensidad de Entrenamiento</h2>
+        <h2><Dumbbell size={16} /> Intensidad de Entrenamiento</h2>
         {isLocked ? (
-          <span className="locked-badge">🔒 Bloqueado hasta próxima pretemporada</span>
+          <span className="locked-badge"><Lock size={12} /> Bloqueado hasta próxima pretemporada</span>
         ) : (
           <p className="subtitle">Selecciona la intensidad para toda la temporada</p>
         )}
@@ -87,9 +91,9 @@ export default function Training() {
               style={{ '--intensity-color': intensity.color }}
             >
               <div className="card-header">
-                <span className="icon">{intensity.icon}</span>
+                <span className="icon">{INTENSITY_ICONS[intensity.id]}</span>
                 <h3>{intensity.name}</h3>
-                {isSelected && <span className="check">✓</span>}
+                {isSelected && <span className="check"><Check size={14} /></span>}
               </div>
               
               <p className="description">{intensity.description}</p>
@@ -111,7 +115,7 @@ export default function Training() {
 
       <div className="training-simple__info">
         <div className="info-box">
-          <span className="icon">🏟️</span>
+          <span className="icon"><Building2 size={16} /></span>
           <div className="text">
             <span className="label">Nivel instalaciones</span>
             <span className="value">{trainingFacilityLevel}/3 (x{(1 + facilityBonus).toFixed(1)} bonus)</span>
@@ -120,7 +124,7 @@ export default function Training() {
         
         {isLocked && (
           <div className="info-box locked">
-            <span className="icon">ℹ️</span>
+            <span className="icon"><Info size={16} /></span>
             <div className="text">
               <span className="label">Intensidad actual: {INTENSITY_LEVELS[currentIntensity]?.name}</span>
               <span className="value">Podrás cambiarla al inicio de la próxima temporada</span>

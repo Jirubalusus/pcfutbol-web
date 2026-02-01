@@ -1,21 +1,17 @@
 .finance {
-  padding: 1.5rem;
+  padding: 1rem;
   max-width: 800px;
   margin: 0 auto;
-  
-  @media (max-width: 768px) {
-    padding: 1rem;
-  }
   
   &__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     
     h2 {
       margin: 0;
-      font-size: 1.4rem;
+      font-size: 1.2rem;
     }
   }
   
@@ -36,7 +32,7 @@
     }
     
     .amount {
-      font-size: 1.3rem;
+      font-size: 1.1rem;
       font-weight: 800;
       color: var(--color-success);
     }
@@ -45,7 +41,7 @@
   &__sections {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
   }
   
   &__section {

@@ -219,9 +219,14 @@ export const LEAGUE_SLOTS = {
 };
 
 // ============================================================
-// EUROPEAN CALENDAR — When European matches happen
+// EUROPEAN CALENDAR — Intercalated weeks system (v2)
+// ============================================================
+// European weeks are inserted as EXTRA weeks between league matchdays.
+// Each week = exactly 1 match (either league OR European).
+// Season expands from N to N+17 weeks when European comps are active.
 // ============================================================
 
+// Legacy static weeks — used as fallback for old saves without europeanCalendar
 export const EUROPEAN_MATCHDAY_WEEKS = {
   league: [6, 9, 12, 15, 18, 21, 24, 27],   // 8 Swiss matchdays
   playoff: [31, 33],                           // 2-leg playoffs
@@ -231,7 +236,6 @@ export const EUROPEAN_MATCHDAY_WEEKS = {
   final: [47]                                  // Single-leg final
 };
 
-// Flat list of all European weeks for quick lookup
 export const ALL_EUROPEAN_WEEKS = [
   ...EUROPEAN_MATCHDAY_WEEKS.league,
   ...EUROPEAN_MATCHDAY_WEEKS.playoff,
@@ -243,8 +247,7 @@ export const ALL_EUROPEAN_WEEKS = [
 
 /**
  * Get which phase a given week belongs to (if any)
- * @param {number} week
- * @returns {{ phase: string, matchday: number } | null}
+ * Uses legacy static weeks — prefer getPhaseForWeek() with calendar for new saves
  */
 export function getEuropeanPhaseForWeek(week) {
   for (const [phase, weeks] of Object.entries(EUROPEAN_MATCHDAY_WEEKS)) {
@@ -257,10 +260,214 @@ export function getEuropeanPhaseForWeek(week) {
 }
 
 /**
- * Check if a given week has European matches
+ * Check if a given week has European matches (legacy static)
  */
 export function isEuropeanWeek(week) {
   return ALL_EUROPEAN_WEEKS.includes(week);
+}
+
+// ============================================================
+// NEW: Dynamic European Calendar (v2 — intercalated weeks)
+// ============================================================
+
+/**
+ * Build an expanded season calendar that intercalates European AND cup weeks
+ * between league matchdays. Each week has exactly 1 match type.
+ *
+ * Example for 38-matchday league with European + 6 cup rounds:
+ *   Weeks 1-4: Liga J1-J4
+ *   Week 5: 🏆 Champions Jornada 1
+ *   Weeks 6-9: Liga J5-J8
+ *   Week 10: 👑 Copa Ronda 1
+ *   ... (total: 38 league + 17 European + 6 cup = 61 weeks)
+ *
+ * @param {number} totalLeagueMDs - Total league matchdays (34, 38, 42, etc.)
+ * @param {Object} options - { hasEuropean: bool, cupRounds: number }
+ * @returns {{ leagueWeekMap: number[], europeanWeeks: object, allEuropeanWeeks: number[], cupWeeks: number[], totalWeeks: number }}
+ */
+export function buildSeasonCalendar(totalLeagueMDs, { hasEuropean = false, cupRounds = 0 } = {}) {
+  // Posiciones de rondas de copa: distribuidas uniformemente en la temporada
+  const cupAfterMD = [];
+  for (let i = 0; i < cupRounds; i++) {
+    cupAfterMD.push(Math.round((i + 1) * totalLeagueMDs / (cupRounds + 1)));
+  }
+
+  const entries = [];
+  let leagueMD = 0;
+  let week = 0;
+  let cupRoundIdx = 0;
+
+  // Helper: insertar semana de copa si toca después de esta jornada de liga
+  const tryInsertCup = () => {
+    if (cupRoundIdx < cupAfterMD.length && leagueMD >= cupAfterMD[cupRoundIdx]) {
+      week++;
+      entries.push({ week, type: 'cup', cupRound: cupRoundIdx });
+      cupRoundIdx++;
+    }
+  };
+
+  if (hasEuropean) {
+    // Gap between European matchdays during Swiss phase
+    const gap = Math.floor(totalLeagueMDs / 9); // ~4 for 38, ~3 for 34
+
+    // ── Swiss phase: 8 matchdays with `gap` league games between each ──
+    for (let i = 0; i < 8; i++) {
+      for (let j = 0; j < gap; j++) {
+        if (leagueMD >= totalLeagueMDs) break;
+        week++;
+        leagueMD++;
+        entries.push({ week, type: 'league', leagueMD });
+        tryInsertCup();
+      }
+      week++;
+      entries.push({ week, type: 'european', phase: 'league', matchday: i + 1 });
+    }
+
+    // ── Knockout phase: alternating 1 league + 1 European ──
+    const knockouts = [
+      ['playoff', 1], ['playoff', 2],
+      ['r16', 1], ['r16', 2],
+      ['qf', 1], ['qf', 2],
+      ['sf', 1], ['sf', 2],
+      ['final', 1]
+    ];
+
+    for (const [phase, md] of knockouts) {
+      if (leagueMD < totalLeagueMDs) {
+        week++;
+        leagueMD++;
+        entries.push({ week, type: 'league', leagueMD });
+        tryInsertCup();
+      }
+      week++;
+      entries.push({ week, type: 'european', phase, matchday: md });
+    }
+
+    // ── Any remaining league matchdays ──
+    while (leagueMD < totalLeagueMDs) {
+      week++;
+      leagueMD++;
+      entries.push({ week, type: 'league', leagueMD });
+      tryInsertCup();
+    }
+  } else {
+    // Sin competiciones europeas: solo liga + copa
+    while (leagueMD < totalLeagueMDs) {
+      week++;
+      leagueMD++;
+      entries.push({ week, type: 'league', leagueMD });
+      tryInsertCup();
+    }
+  }
+
+  // Insertar rondas de copa restantes (si no se insertaron durante la liga)
+  while (cupRoundIdx < cupAfterMD.length) {
+    week++;
+    entries.push({ week, type: 'cup', cupRound: cupRoundIdx });
+    cupRoundIdx++;
+  }
+
+  // ── Build outputs ──
+  const europeanWeeks = { league: [], playoff: [], r16: [], qf: [], sf: [], final: [] };
+  const leagueWeekMap = new Array(totalLeagueMDs);
+  const cupWeeks = [];
+
+  for (const entry of entries) {
+    if (entry.type === 'european') {
+      europeanWeeks[entry.phase].push(entry.week);
+    } else if (entry.type === 'league') {
+      leagueWeekMap[entry.leagueMD - 1] = entry.week;
+    } else if (entry.type === 'cup') {
+      cupWeeks.push(entry.week);
+    }
+  }
+
+  const allEuropeanWeeks = Object.values(europeanWeeks).flat().sort((a, b) => a - b);
+
+  return {
+    leagueWeekMap,
+    europeanWeeks,
+    allEuropeanWeeks,
+    cupWeeks,
+    totalWeeks: week
+  };
+}
+
+/**
+ * Backward-compatible wrapper: builds calendar with European weeks only (no cup).
+ * @param {number} totalLeagueMDs
+ * @returns {{ leagueWeekMap: number[], europeanWeeks: object, allEuropeanWeeks: number[], cupWeeks: number[], totalWeeks: number }}
+ */
+export function buildEuropeanCalendar(totalLeagueMDs) {
+  return buildSeasonCalendar(totalLeagueMDs, { hasEuropean: true, cupRounds: 0 });
+}
+
+/**
+ * Check if a week is a cup week using the season calendar.
+ */
+export function isCupWeek(week, calendar) {
+  return calendar?.cupWeeks?.includes(week) || false;
+}
+
+/**
+ * Get the cup round index for a given week (0-based).
+ * Returns null if not a cup week.
+ */
+export function getCupRoundForWeek(week, calendar) {
+  if (!calendar?.cupWeeks) return null;
+  const idx = calendar.cupWeeks.indexOf(week);
+  return idx >= 0 ? idx : null;
+}
+
+/**
+ * Remap fixture weeks using the league-week map from buildEuropeanCalendar.
+ * Fixtures generated with sequential weeks (1,2,3...) get remapped to skip European weeks.
+ *
+ * @param {Array} fixtures - Fixture objects with { week, ... }
+ * @param {number[]} leagueWeekMap - from buildEuropeanCalendar().leagueWeekMap
+ * @returns {Array} - Fixtures with updated week numbers
+ */
+export function remapFixturesForEuropean(fixtures, leagueWeekMap) {
+  return fixtures.map(f => {
+    const newWeek = leagueWeekMap[f.week - 1]; // f.week is 1-indexed
+    return newWeek != null ? { ...f, week: newWeek } : f;
+  });
+}
+
+/**
+ * Get European phase for a week using dynamic calendar (v2).
+ * @param {number} week
+ * @param {object} calendar - output of buildEuropeanCalendar()
+ * @returns {{ phase: string, matchday: number } | null}
+ */
+export function getPhaseForWeek(week, calendar) {
+  if (!calendar || !calendar.europeanWeeks) return null;
+  for (const [phase, weeks] of Object.entries(calendar.europeanWeeks)) {
+    const idx = weeks.indexOf(week);
+    if (idx !== -1) {
+      return { phase, matchday: idx + 1 };
+    }
+  }
+  return null;
+}
+
+/**
+ * Check if a week is European using dynamic calendar (v2).
+ * Falls back to legacy static check if no calendar provided.
+ */
+export function isEuropeanWeekDynamic(week, calendar) {
+  if (calendar && calendar.allEuropeanWeeks) {
+    return calendar.allEuropeanWeeks.includes(week);
+  }
+  return isEuropeanWeek(week);
+}
+
+/**
+ * Get European phase for a week, supporting both v2 calendar and legacy.
+ */
+export function getPhaseForWeekCompat(week, calendar) {
+  if (calendar) return getPhaseForWeek(week, calendar);
+  return getEuropeanPhaseForWeek(week);
 }
 
 // ============================================================

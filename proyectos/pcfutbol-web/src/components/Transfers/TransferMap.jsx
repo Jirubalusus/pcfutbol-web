@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Globe, X } from 'lucide-react';
 import './TransferMap.scss';
 
 const COUNTRIES = [
@@ -42,9 +43,9 @@ export default function TransferMap({ onSelectLeague, onClose }) {
   return (
     <div className="transfer-map">
       <div className="transfer-map__header">
-        <h2>🌍 Mercado de Fichajes</h2>
+        <h2><Globe size={16} /> Mercado de Fichajes</h2>
         <p>Selecciona un país para explorar jugadores</p>
-        <button className="close-btn" onClick={onClose}>✕</button>
+        <button className="close-btn" onClick={onClose}><X size={16} /></button>
       </div>
 
       <div className="transfer-map__container">
@@ -98,7 +99,7 @@ export default function TransferMap({ onSelectLeague, onClose }) {
             <div className="popup-header">
               <span className="flag">{selectedCountry.flag}</span>
               <h3>{selectedCountry.name}</h3>
-              <button onClick={() => setSelectedCountry(null)}>✕</button>
+              <button onClick={() => setSelectedCountry(null)}><X size={14} /></button>
             </div>
             <div className="popup-leagues">
               {selectedCountry.leagues.map(leagueId => (

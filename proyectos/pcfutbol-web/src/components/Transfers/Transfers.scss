@@ -1200,3 +1200,113 @@
   from { transform: translateY(100%); }
   to { transform: translateY(0); }
 }
+
+// ============================================================
+// CESIONES (LOANS) TAB
+// ============================================================
+
+.transfers__loans {
+  .transfers__loan-tabs {
+    display: flex;
+    gap: 0.25rem;
+    margin-bottom: 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.25rem;
+    
+    button {
+      padding: 0.6rem 0.9rem;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--border-radius-md, 8px);
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+      -webkit-tap-highlight-color: transparent;
+      
+      &.active {
+        background: linear-gradient(135deg, rgba(10, 132, 255, 0.25), rgba(10, 132, 255, 0.15));
+        border-color: rgba(10, 132, 255, 0.4);
+        color: #0a84ff;
+      }
+      
+      &.has-offers {
+        .badge {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          min-width: 18px;
+          height: 18px;
+          padding: 0 5px;
+          border-radius: 9px;
+          background: #ff453a;
+          color: white;
+          font-size: 0.65rem;
+          font-weight: 700;
+          margin-left: 0.35rem;
+        }
+      }
+      
+      @media (max-width: 768px) {
+        padding: 0.5rem 0.7rem;
+        font-size: 0.75rem;
+        flex: 1;
+        text-align: center;
+      }
+    }
+  }
+  
+  .transfers__loan-section {
+    animation: fadeIn 0.2s ease;
+  }
+  
+  .loan-candidate {
+    .loan-reason {
+      font-size: 0.7rem;
+      color: rgba(10, 132, 255, 0.8);
+      font-style: italic;
+    }
+    
+    .purchase-option {
+      display: block;
+      font-size: 0.7rem;
+      color: #ffd700;
+    }
+  }
+  
+  .loan-active {
+    border-left: 3px solid #0a84ff !important;
+    
+    &.received {
+      border-left-color: #30d158 !important;
+    }
+    
+    .purchase-option {
+      display: block;
+      font-size: 0.7rem;
+      color: #ffd700;
+    }
+  }
+  
+  .loan-offer {
+    border-left: 3px solid #0a84ff;
+    
+    .amount-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.3rem 0;
+      font-size: 0.85rem;
+      
+      .label {
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .value {
+        font-weight: 600;
+        color: #fff;
+      }
+    }
+  }
+}

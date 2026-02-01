@@ -5,8 +5,19 @@ import {
   ChevronRight, X, Check, DollarSign, Calendar, MapPin, Star,
   Users, Newspaper, Target, Zap, ArrowRight, ArrowLeftRight,
   Building2, Briefcase, Bell, RefreshCw, UserCheck, Handshake,
-  ThumbsUp, ThumbsDown, MessageSquare, Crown, Shield
+  ThumbsUp, ThumbsDown, MessageSquare, Crown, Shield,
+  Ban, Sparkles, CheckCircle, XCircle, Lock, AlertTriangle,
+  Trophy, Heart, Swords, ClipboardList, Globe, Home, Coins, Dumbbell, Scale
 } from 'lucide-react';
+
+const PERSONALITY_ICONS = {
+  ambitious: Trophy, mercenary: Coins, loyal: Heart, competitor: Swords,
+  professional: ClipboardList, patriot: Globe, adventurous: Globe
+};
+const SPECIAL_GOAL_ICONS = {
+  worldCup: Globe, breakThrough: Star, lastContract: Coins,
+  returnHome: Home, winTitles: Trophy, proveWorth: Dumbbell
+};
 import { isTransferWindowOpen, formatTransferPrice, calculateMarketValue } from '../../game/globalTransferEngine';
 import MoneyInput from './MoneyInput';
 import { 
@@ -421,7 +432,7 @@ function BuscarTab({ players, searchQuery, setSearchQuery, filters, setFilters, 
               <div className="card-header">
                 <span className="position" data-pos={player.position}>{player.position}</span>
                 <span className="overall">{player.overall}</span>
-                {isBlocked && <span className="blocked-icon">🚫</span>}
+                {isBlocked && <span className="blocked-icon"><Ban size={14} /></span>}
               </div>
               <div className="card-body">
                 <h4>{player.name}</h4>
@@ -586,12 +597,12 @@ function MisOfertasTab({ offers, dispatch, budget }) {
             <span>{formatTransferPrice(offer.amount)}</span>
           </div>
           <div className="offer-status-detail">
-            {offer.status === 'pending' && <span>⏳ Esperando respuesta...</span>}
-            {offer.status === 'accepted' && <span className="success">✅ ¡Fichaje completado!</span>}
-            {offer.status === 'rejected' && <span className="rejected">❌ Oferta rechazada</span>}
+            {offer.status === 'pending' && <span><Clock size={12} /> Esperando respuesta...</span>}
+            {offer.status === 'accepted' && <span className="success"><CheckCircle size={12} /> ¡Fichaje completado!</span>}
+            {offer.status === 'rejected' && <span className="rejected"><XCircle size={12} /> Oferta rechazada</span>}
             {offer.status === 'countered' && (
               <div className="counter-offer">
-                <span>🔄 Piden {formatTransferPrice(offer.counterAmount)}</span>
+                <span><RefreshCw size={12} /> Piden {formatTransferPrice(offer.counterAmount)}</span>
                 {budget >= offer.counterAmount && (
                   <button className="btn-accept-counter" onClick={() => handleAcceptCounter(offer)}>
                     <Check size={14} /> Aceptar
@@ -623,14 +634,14 @@ function NoticiasTab({ transfers, rumors }) {
       type: 'transfer', 
       text: `${t.player?.name} ficha por ${t.to?.name} desde ${t.from?.name} por ${formatTransferPrice(t.price)}`,
       time: t.date,
-      icon: '✅'
+      icon: 'transfer'
     })),
     ...(rumors || []).map(r => ({ 
       type: 'rumor', 
       text: r.text,
       time: r.createdAt,
       reliability: r.reliability,
-      icon: '📰'
+      icon: 'rumor'
     }))
   ].sort((a, b) => new Date(b.time) - new Date(a.time));
 
@@ -640,7 +651,7 @@ function NoticiasTab({ transfers, rumors }) {
       <div className="news-feed">
         {allNews.map((news, i) => (
           <div key={i} className={`news-item ${news.type}`}>
-            <span className="news-icon">{news.icon}</span>
+            <span className="news-icon">{news.icon === 'transfer' ? <CheckCircle size={14} /> : <Newspaper size={14} />}</span>
             <div className="news-content">
               <p>{news.text}</p>
               {news.reliability && (
@@ -790,8 +801,8 @@ function ExplorarTab({ leagueTeams, myTeamId, onSelectPlayer, blockedPlayers = [
                 <span className="player-name">{player.name}</span>
                 <span className="player-age">{player.age} años</span>
                 <span className="player-ovr">{player.overall}</span>
-                <span className="player-value">{formatTransferPrice(calculateMarketValue(player))}</span>
-                {isBlocked && <span className="blocked-badge">🚫</span>}
+                <span className="player-value">{formatTransferPrice(calculateMarketValue(player, state.leagueId))}</span>
+                {isBlocked && <span className="blocked-badge"><Ban size={14} /></span>}
               </div>
             );
           })}
@@ -882,7 +893,7 @@ function OjeadorTab({ myTeam, leagueTeams, scoutingLevel, budget, onSelectPlayer
                   </div>
                   <div className="suggestion-stats">
                     <span className="overall">{player.overall}</span>
-                    <span className="value">{isBlocked ? '🚫' : formatTransferPrice(player.marketValue)}</span>
+                    <span className="value">{isBlocked ? <Ban size={14} /> : formatTransferPrice(player.marketValue)}</span>
                   </div>
                   {!isBlocked && (
                     <div 
@@ -906,11 +917,11 @@ function OjeadorTab({ myTeam, leagueTeams, scoutingLevel, budget, onSelectPlayer
 // ============================================================
 function NewsTicker({ transfers }) {
   const tickerItems = (transfers || []).slice(0, 10).map(t => 
-    `🔄 ${t.player?.name} → ${t.to?.name} (${formatTransferPrice(t.price)})`
+    `${t.player?.name} → ${t.to?.name} (${formatTransferPrice(t.price)})`
   );
 
   if (tickerItems.length === 0) {
-    tickerItems.push('📰 Mercado de fichajes activo | Mantente atento a las novedades');
+    tickerItems.push('Mercado de fichajes activo | Mantente atento a las novedades');
   }
 
   return (
@@ -958,7 +969,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
   const [clubRetries, setClubRetries] = useState(0);
   
   // Datos del jugador
-  const marketValue = calculateMarketValue(player);
+  const marketValue = calculateMarketValue(player, state.leagueId);
   const currentSalary = player.salary || 50000;
   
   // Personalidad memoizada — assignPersonality ahora es determinista (seeded por nombre)
@@ -1202,7 +1213,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
     dispatch({
       type: 'ADD_MESSAGE',
       payload: {
-        id: Date.now(), type: 'transfer', title: '✅ Fichaje completado',
+        id: Date.now(), type: 'transfer', title: 'Fichaje completado',
         content: `${player.name} es nuevo jugador. Coste: ${formatTransferPrice(offerAmount)}, Salario: ${formatTransferPrice(playerCounter.salary)}/sem`,
         date: `Semana ${state.currentWeek}`
       }
@@ -1359,7 +1370,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
       payload: {
         id: Date.now(),
         type: 'transfer',
-        title: isFreeAgent ? '✅ Agente libre fichado' : '✅ Pre-contrato firmado',
+        title: isFreeAgent ? 'Agente libre fichado' : 'Pre-contrato firmado',
         content: `${player.name} es nuevo jugador. Prima: ${formatTransferPrice(signingBonus)}, Salario: ${formatTransferPrice(salaryOffer)}/sem`,
         date: `Semana ${state.currentWeek}`
       }
@@ -1399,7 +1410,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
       payload: {
         id: Date.now(),
         type: 'transfer',
-        title: '✅ Fichaje completado',
+        title: 'Fichaje completado',
         content: `${player.name} es nuevo jugador. Coste: ${formatTransferPrice(offerAmount)}, Salario: ${formatTransferPrice(salaryOffer)}/sem`,
         date: `Semana ${state.currentWeek}`
       }
@@ -1427,7 +1438,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
             <div className="result-content">
               {finalResult === 'success' ? (
                 <>
-                  <div className="result-icon">🎉</div>
+                  <div className="result-icon"><Sparkles size={48} /></div>
                   <h2>¡FICHAJE!</h2>
                   <p className="player-name">{player.name}</p>
                   <div className="result-details">
@@ -1441,10 +1452,10 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
                 </>
               ) : (
                 <>
-                  <div className="result-icon">😔</div>
+                  <div className="result-icon"><XCircle size={48} /></div>
                   <h2>FICHAJE FALLIDO</h2>
                   <p className="fail-reason">{failReason}</p>
-                  <p className="block-notice">🚫 No podrás negociar con este jugador hasta la próxima temporada</p>
+                  <p className="block-notice"><Ban size={14} /> No podrás negociar con este jugador hasta la próxima temporada</p>
                   <div className="result-actions">
                     <button className="result-btn close" onClick={() => onClose(true)}>
                       Cerrar
@@ -1499,7 +1510,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
             </div>
             
             <div className="player-personality">
-              <span className="personality-icon">{personalityData?.icon || '⚖️'}</span>
+              <span className="personality-icon">{(() => { const Icon = PERSONALITY_ICONS[player.personality?.type] || Scale; return <Icon size={16} />; })()}</span>
               <div className="personality-text">
                 <span className="personality-name">{personalityData?.name || 'Profesional'}</span>
                 <span className="personality-desc">{personalityData?.desc}</span>
@@ -1519,7 +1530,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
                 ></div>
               </div>
               {tierDiff > 0 && (
-                <span className="tier-warning">⚠️ Baja {tierDiff} nivel{tierDiff > 1 ? 'es' : ''}</span>
+                <span className="tier-warning"><AlertTriangle size={14} /> Baja {tierDiff} nivel{tierDiff > 1 ? 'es' : ''}</span>
               )}
             </div>
           </div>
@@ -1567,11 +1578,11 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
                       <span>Negociación con el Club</span>
                     </div>
                     <div className={`status-badge ${clubStatus}`}>
-                      {clubStatus === 'pending' && '⏳ Pendiente'}
-                      {clubStatus === 'negotiating' && '⏳ Negociando...'}
-                      {clubStatus === 'accepted' && '✅ Aceptado'}
-                      {clubStatus === 'rejected' && '❌ Rechazado'}
-                      {clubStatus === 'counter' && '🔄 Contraoferta'}
+                      {clubStatus === 'pending' && <><Clock size={12} /> Pendiente</>}
+                      {clubStatus === 'negotiating' && <><Clock size={12} /> Negociando...</>}
+                      {clubStatus === 'accepted' && <><CheckCircle size={12} /> Aceptado</>}
+                      {clubStatus === 'rejected' && <><XCircle size={12} /> Rechazado</>}
+                      {clubStatus === 'counter' && <><RefreshCw size={12} /> Contraoferta</>}
                     </div>
                   </div>
                   
@@ -1630,7 +1641,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
                       onClick={handleClubOffer}
                       disabled={!canAfford || !windowStatus.open}
                     >
-                      {!windowStatus.open ? '🔒 Mercado cerrado' : !canAfford ? `Presupuesto insuficiente (${formatTransferPrice(budget)})` : 'Enviar oferta al club'}
+                      {!windowStatus.open ? <><Lock size={14} /> Mercado cerrado</> : !canAfford ? `Presupuesto insuficiente (${formatTransferPrice(budget)})` : 'Enviar oferta al club'}
                     </button>
                   )}
                   
@@ -1650,12 +1661,12 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
                       <span>Negociación con el Jugador</span>
                     </div>
                     <div className={`status-badge ${playerStatus}`}>
-                      {playerStatus === 'locked' && '🔒 Bloqueado'}
-                      {playerStatus === 'pending' && '⏳ Pendiente'}
-                      {playerStatus === 'negotiating' && '⏳ Negociando...'}
-                      {playerStatus === 'accepted' && '✅ Aceptado'}
-                      {playerStatus === 'rejected' && '❌ Rechazado'}
-                      {playerStatus === 'counter' && '🔄 Contraoferta'}
+                      {playerStatus === 'locked' && <><Lock size={12} /> Bloqueado</>}
+                      {playerStatus === 'pending' && <><Clock size={12} /> Pendiente</>}
+                      {playerStatus === 'negotiating' && <><Clock size={12} /> Negociando...</>}
+                      {playerStatus === 'accepted' && <><CheckCircle size={12} /> Aceptado</>}
+                      {playerStatus === 'rejected' && <><XCircle size={12} /> Rechazado</>}
+                      {playerStatus === 'counter' && <><RefreshCw size={12} /> Contraoferta</>}
                     </div>
                   </div>
                   
@@ -1754,12 +1765,12 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
                     <span>{isFreeAgent ? 'Negociación con Agente Libre' : 'Pre-contrato'}</span>
                   </div>
                   <div className={`status-badge ${playerStatus}`}>
-                    {playerStatus === 'pending' && '⏳ Pendiente'}
-                    {playerStatus === 'locked' && '⏳ Pendiente'}
-                    {playerStatus === 'negotiating' && '⏳ Negociando...'}
-                    {playerStatus === 'accepted' && '✅ Aceptado'}
-                    {playerStatus === 'rejected' && '❌ Rechazado'}
-                    {playerStatus === 'counter' && '🔄 Contraoferta'}
+                    {playerStatus === 'pending' && <><Clock size={12} /> Pendiente</>}
+                    {playerStatus === 'locked' && <><Clock size={12} /> Pendiente</>}
+                    {playerStatus === 'negotiating' && <><Clock size={12} /> Negociando...</>}
+                    {playerStatus === 'accepted' && <><CheckCircle size={12} /> Aceptado</>}
+                    {playerStatus === 'rejected' && <><XCircle size={12} /> Rechazado</>}
+                    {playerStatus === 'counter' && <><RefreshCw size={12} /> Contraoferta</>}
                   </div>
                 </div>
                 

@@ -37,7 +37,8 @@ export function evaluateManager(state) {
     teamId,
     currentWeek,
     preseasonPhase,
-    managerConfidence = 75
+    managerConfidence = 75,
+    money = 0
   } = state;
   
   // No evaluar durante pretemporada o primeras 5 jornadas
@@ -114,6 +115,27 @@ export function evaluateManager(state) {
   // --- 5. Victoria reciente da un respiro ---
   if (recentForm.length > 0 && recentForm[recentForm.length - 1] === 'W') {
     confidenceChange += 3;
+  }
+  
+  // --- 6. Presupuesto negativo (bancarrota) ---
+  if (money < -20_000_000) {
+    // Bancarrota grave → despido inmediato
+    return {
+      confidence: 0,
+      warning: 'critical',
+      fired: true,
+      reason: 'La directiva te ha destituido por llevar al club a la bancarrota.',
+      details: [`Presupuesto: €${Math.round(money / 1000)}K`]
+    };
+  } else if (money < -10_000_000) {
+    confidenceChange -= 20;
+    reasons.push(`Presupuesto en números rojos (€${Math.round(money / 1_000_000)}M)`);
+  } else if (money < -5_000_000) {
+    confidenceChange -= 12;
+    reasons.push(`Situación financiera crítica`);
+  } else if (money < 0) {
+    confidenceChange -= 5;
+    reasons.push(`Presupuesto negativo`);
   }
   
   // ============================================================

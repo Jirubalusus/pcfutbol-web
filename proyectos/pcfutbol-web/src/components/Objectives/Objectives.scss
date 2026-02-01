@@ -1,11 +1,7 @@
 .objectives {
-  padding: 24px;
+  padding: 16px;
   max-width: 900px;
   margin: 0 auto;
-  
-  @media (max-width: 768px) {
-    padding: 16px;
-  }
 }
 
 // Header
@@ -22,7 +18,7 @@
     }
     
     h1 {
-      font-size: 1.75rem;
+      font-size: 1.25rem;
       font-weight: 700;
       color: #fff;
       margin: 0;
@@ -40,8 +36,8 @@
 .objectives__stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  margin-bottom: 24px;
+  gap: 8px;
+  margin-bottom: 16px;
   
   @media (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
@@ -51,8 +47,8 @@
 .stat-card {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 16px;
+  gap: 10px;
+  padding: 12px;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -73,7 +69,7 @@
   }
   
   .stat-value {
-    font-size: 1.5rem;
+    font-size: 1.15rem;
     font-weight: 700;
     color: #fff;
     line-height: 1.2;
@@ -480,46 +476,12 @@
   }
 }
 
-// Mobile adjustments
+// Mobile adjustments — layout-only overrides
 @media (max-width: 768px) {
   .objectives {
     padding: 10px;
-    padding-bottom: 95px;
+    padding-bottom: 130px;
     overflow-x: hidden;
-  }
-
-  .objectives__header {
-    margin-bottom: 16px;
-
-    .header-title {
-      gap: 10px;
-
-      h1 {
-        font-size: 1.2rem;
-      }
-
-      .subtitle {
-        font-size: 0.8rem;
-      }
-    }
-  }
-
-  .objectives__stats {
-    gap: 8px;
-    margin-bottom: 16px;
-  }
-  
-  .stat-card {
-    padding: 10px;
-    gap: 8px;
-    
-    .stat-value {
-      font-size: 1.15rem;
-    }
-
-    .stat-label {
-      font-size: 0.65rem;
-    }
   }
   
   .objective-main {
@@ -535,7 +497,6 @@
   
   .objective-card {
     position: relative;
-    padding: 12px;
     padding-right: 36px;
   }
   
@@ -546,39 +507,5 @@
   
   .objective-status {
     margin-top: 4px;
-  }
-
-  .objective-icon {
-    width: 40px;
-    height: 40px;
-  }
-
-  .objective-name {
-    font-size: 0.95rem;
-  }
-
-  .objective-desc {
-    font-size: 0.8rem;
-    margin-bottom: 8px;
-  }
-
-  .objectives__filters {
-    gap: 6px;
-    margin-bottom: 16px;
-    padding-bottom: 12px;
-
-    .filter-btn {
-      padding: 6px 10px;
-      font-size: 0.78rem;
-    }
-  }
-
-  .objectives__section {
-    margin-bottom: 20px;
-  }
-
-  .objectives__tip {
-    padding: 12px;
-    margin-top: 16px;
   }
 }

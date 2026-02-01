@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Settings as SettingsIcon, X, Music, Volume2, Save, Check, XCircle, Trash2, AlertTriangle } from 'lucide-react';
 import { useGame } from '../../context/GameContext';
 import './Settings.scss';
 
@@ -55,9 +56,9 @@ export default function Settings({ onClose }) {
   return (
     <div className="settings">
       <div className="settings__header">
-        <h2>⚙️ Opciones</h2>
+        <h2><SettingsIcon size={16} /> Opciones</h2>
         {onClose && (
-          <button className="settings__close" onClick={onClose}>✕</button>
+          <button className="settings__close" onClick={onClose}><X size={16} /></button>
         )}
       </div>
 
@@ -148,7 +149,7 @@ export default function Settings({ onClose }) {
             <div className="settings__sliders">
               <div className="settings__slider-item">
                 <div className="slider-header">
-                  <span className="label">🎵 Música</span>
+                  <span className="label"><Music size={14} /> Música</span>
                   <span className="value">{settings.musicVolume}%</span>
                 </div>
                 <input
@@ -162,7 +163,7 @@ export default function Settings({ onClose }) {
 
               <div className="settings__slider-item">
                 <div className="slider-header">
-                  <span className="label">🔊 Efectos</span>
+                  <span className="label"><Volume2 size={14} /> Efectos</span>
                   <span className="value">{settings.sfxVolume}%</span>
                 </div>
                 <input
@@ -187,10 +188,10 @@ export default function Settings({ onClose }) {
                 onClick={handleSaveGame}
                 disabled={saveStatus === 'saving'}
               >
-                {saveStatus === 'saving' && '💾 Guardando...'}
-                {saveStatus === 'saved' && '✅ ¡Guardado!'}
-                {saveStatus === 'error' && '❌ Error al guardar'}
-                {!saveStatus && '💾 Guardar partida'}
+                {saveStatus === 'saving' && <><Save size={14} /> Guardando...</>}
+                {saveStatus === 'saved' && <><Check size={14} /> ¡Guardado!</>}
+                {saveStatus === 'error' && <><XCircle size={14} /> Error al guardar</>}
+                {!saveStatus && <><Save size={14} /> Guardar partida</>}
               </button>
             )}
 
@@ -198,7 +199,7 @@ export default function Settings({ onClose }) {
               className="settings__action-btn danger"
               onClick={() => setShowResetConfirm(true)}
             >
-              🗑️ Borrar datos y reiniciar
+              <Trash2 size={14} /> Borrar datos y reiniciar
             </button>
           </div>
         </section>
@@ -217,7 +218,7 @@ export default function Settings({ onClose }) {
       {showResetConfirm && (
         <div className="settings__modal-overlay" onClick={() => setShowResetConfirm(false)}>
           <div className="settings__modal" onClick={e => e.stopPropagation()}>
-            <div className="modal-icon">⚠️</div>
+            <div className="modal-icon"><AlertTriangle size={22} /></div>
             <h3>¿Borrar todos los datos?</h3>
             <p>Esta acción eliminará tu partida guardada y no se puede deshacer.</p>
             <div className="modal-actions">

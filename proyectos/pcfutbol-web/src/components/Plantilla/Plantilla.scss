@@ -1,453 +1,476 @@
+// ============================================================
+// PLANTILLA - Gestión de jugadores estilo tabla profesional
+// ============================================================
+
+$bg-dark: #0a1628;
+$bg-card: #152238;
+$bg-row-odd: #1a2d45;
+$bg-row-even: #142435;
+$bg-row-hover: #1e3a58;
+$border: #2a4a6a;
+$gold: #ffd700;
+$green: #30d158;
+$orange: #ff9500;
+$red: #ff453a;
+$blue: #0a84ff;
+$gray: #7a8a9a;
+$white: #e8eaed;
+
 .plantilla {
+  padding: 0.5rem;
+  min-height: 100vh;
+  background: linear-gradient(180deg, $bg-dark 0%, darken($bg-dark, 3%) 100%);
+
   @media (max-width: 768px) {
-    padding-bottom: 95px;
+    padding: 0.25rem;
+    padding-bottom: 130px;
   }
 
+  // ============================================================
+  // HEADER
+  // ============================================================
   &__header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-    padding: 1.25rem;
-    background: linear-gradient(135deg, #1a3a5c, #0d1f35);
-    border-radius: 16px;
-    flex-wrap: wrap;
+    align-items: center;
+    background: $bg-card;
+    border: 1px solid $border;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
 
     @media (max-width: 768px) {
-      padding: 0.75rem;
-      margin-bottom: 0.75rem;
+      flex-direction: column;
       gap: 0.5rem;
-      border-radius: 10px;
+      padding: 0.6rem;
     }
 
     .header-title {
       h2 {
         margin: 0;
-        font-size: 1.5rem;
+        font-size: 1.1rem;
         font-weight: 700;
-        
-        @media (max-width: 768px) {
-          font-size: 1.25rem;
-        }
+        color: $gold;
       }
       .player-count {
-        color: var(--color-text-tertiary);
-        font-size: 0.9rem;
+        color: $gray;
+        font-size: 0.8rem;
       }
     }
 
     .header-finances {
       display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
+      gap: 0.5rem;
 
       @media (max-width: 768px) {
         width: 100%;
-        gap: 0.5rem;
       }
 
       .finance-box {
-        padding: 0.75rem 1.25rem;
+        padding: 0.6rem 1rem;
         background: rgba(0, 0, 0, 0.3);
-        border-radius: 12px;
+        border: 1px solid $border;
+        border-radius: 6px;
         text-align: center;
-        min-width: 140px;
 
         @media (max-width: 768px) {
           flex: 1;
-          min-width: 0;
-          padding: 0.6rem 0.75rem;
+          padding: 0.5rem;
         }
 
         .label {
           display: block;
-          font-size: 0.75rem;
-          color: var(--color-text-tertiary);
+          font-size: 0.65rem;
+          color: $gray;
           text-transform: uppercase;
-          margin-bottom: 0.25rem;
+          letter-spacing: 0.5px;
+          margin-bottom: 0.15rem;
         }
 
         .value {
           display: block;
-          font-size: 1.25rem;
+          font-size: 1.1rem;
           font-weight: 700;
+
+          @media (max-width: 768px) {
+            font-size: 0.95rem;
+          }
         }
 
         .yearly {
           display: block;
-          font-size: 0.8rem;
-          color: var(--color-text-secondary);
+          font-size: 0.7rem;
+          color: $gray;
         }
 
-        &.budget .value {
-          color: var(--color-success);
-        }
-
-        &.salary .value {
-          color: var(--color-warning);
-        }
+        &.budget .value { color: $green; }
+        &.salary .value { color: $orange; }
       }
     }
   }
 
+  // ============================================================
+  // ALERTS
+  // ============================================================
   &__alerts {
-    background: linear-gradient(135deg, rgba(255, 149, 0, 0.15), rgba(255, 69, 58, 0.1));
-    border: 1px solid rgba(255, 149, 0, 0.3);
-    border-radius: 12px;
-    padding: 1rem;
-    margin-bottom: 1rem;
-
-    @media (max-width: 768px) {
-      padding: 0.6rem;
-      margin-bottom: 0.5rem;
-      border-radius: 8px;
-    }
+    background: rgba($orange, 0.08);
+    border: 1px solid rgba($orange, 0.25);
+    border-radius: 8px;
+    padding: 0.6rem;
+    margin-bottom: 0.5rem;
 
     .alert-header {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.75rem;
+      gap: 0.4rem;
+      margin-bottom: 0.5rem;
 
-      .alert-icon {
-        font-size: 1.2rem;
-      }
-
+      .alert-icon { font-size: 1rem; }
       .alert-title {
         font-weight: 600;
-        color: var(--color-warning);
+        font-size: 0.8rem;
+        color: $orange;
       }
     }
 
     .alert-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: 0.35rem;
 
       .alert-item {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
-        padding: 0.5rem 0.75rem;
+        gap: 0.4rem;
+        padding: 0.35rem 0.6rem;
         background: rgba(0, 0, 0, 0.3);
-        border-radius: 8px;
+        border-radius: 6px;
         cursor: pointer;
-        transition: all 0.15s;
+        font-size: 0.8rem;
+        transition: background 0.15s;
 
-        &:hover {
-          background: rgba(255, 149, 0, 0.2);
-        }
-
-        .pos {
-          font-weight: 700;
-          font-size: 0.8rem;
-        }
-
-        .name {
-          font-weight: 500;
-        }
-
-        .reason {
-          font-size: 0.8rem;
-          color: var(--color-text-secondary);
-        }
+        &:hover { background: rgba($orange, 0.15); }
+        .pos { font-weight: 700; font-size: 0.75rem; }
+        .name { font-weight: 500; }
+        .reason { font-size: 0.75rem; color: $gray; }
       }
 
       .more {
-        padding: 0.5rem;
-        color: var(--color-text-tertiary);
-        font-size: 0.85rem;
+        padding: 0.35rem;
+        color: $gray;
+        font-size: 0.8rem;
       }
     }
   }
 
+  // ============================================================
+  // SORT TABS
+  // ============================================================
   &__sort {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-    flex-wrap: wrap;
-
-    @media (max-width: 768px) {
-      gap: 0.25rem;
-      margin-bottom: 0.5rem;
-    }
+    gap: 0.35rem;
+    margin-bottom: 0.5rem;
 
     > span {
-      color: var(--color-text-tertiary);
-      font-size: 0.85rem;
+      color: $gray;
+      font-size: 0.75rem;
 
-      @media (max-width: 768px) {
-        font-size: 0.7rem;
-        display: none; // Hide "Ordenar:" label on mobile to save space
-      }
+      @media (max-width: 768px) { display: none; }
     }
 
     button {
-      padding: 0.5rem 0.75rem;
-      background: #1c2a3a;
-      border: 1px solid var(--color-glass-border);
-      border-radius: 8px;
-      color: var(--color-text-secondary);
-      font-size: 0.85rem;
+      padding: 0.45rem 0.7rem;
+      background: $bg-card;
+      border: 1px solid $border;
+      border-radius: 6px;
+      color: $gray;
+      font-size: 0.75rem;
+      font-weight: 600;
       cursor: pointer;
       transition: all 0.15s;
-      min-height: 44px;
+      min-height: 36px;
 
       @media (max-width: 768px) {
-        padding: 0.4rem 0.55rem;
+        padding: 0.35rem 0.5rem;
         font-size: 0.7rem;
-        min-height: 36px;
-        border-radius: 6px;
+        min-height: 32px;
+        flex: 1;
+        text-align: center;
       }
 
-      &:hover {
-        background: #253649;
-      }
+      &:hover { background: $bg-row-hover; }
 
       &.active {
-        background: var(--color-accent);
+        background: $blue;
         color: #fff;
-        border-color: var(--color-accent);
+        border-color: $blue;
       }
     }
   }
 
+  // ============================================================
+  // TABLE HEADER (column labels)
+  // ============================================================
+  &__table-header {
+    display: grid;
+    grid-template-columns: 32px 1fr 36px 80px 65px;
+    gap: 4px;
+    padding: 0.4rem 0.5rem;
+    background: darken($bg-card, 3%);
+    border: 1px solid $border;
+    border-radius: 6px 6px 0 0;
+    border-bottom: 2px solid $border;
+
+    span {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: $gray;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+
+      &.col-name { padding-left: 0.3rem; }
+      &.col-ovr, &.col-salary, &.col-contract { justify-content: center; }
+    }
+  }
+
+  // ============================================================
+  // PLAYER LIST (table body)
+  // ============================================================
   &__list {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-
-    @media (max-width: 768px) {
-      gap: 2px;
-    }
+    border: 1px solid $border;
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    overflow: hidden;
 
     .player-row {
       display: grid;
-      grid-template-columns: 1fr auto auto auto;
-      gap: 1rem;
+      grid-template-columns: 32px 1fr 36px 80px 65px;
+      gap: 4px;
       align-items: center;
-      padding: 0.75rem 1rem;
-      background: #1c2a3a;
-      border: 1px solid var(--color-glass-border);
-      border-radius: 10px;
-      transition: all 0.15s;
+      padding: 0.4rem 0.5rem;
+      cursor: pointer;
+      transition: background 0.1s;
+      border-bottom: 1px solid rgba($border, 0.5);
 
-      // MOBILE: single compact row [Pos] [Name] [OVR] [Salary] [Contract badge]
-      @media (max-width: 768px) {
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-        padding: 0.35rem 0.5rem;
-        border-radius: 6px;
-        min-height: 44px;
-      }
-
-      &:hover {
-        background: #253649;
-      }
+      &:nth-child(odd) { background: $bg-row-odd; }
+      &:nth-child(even) { background: $bg-row-even; }
+      &:hover { background: $bg-row-hover; }
+      &:last-child { border-bottom: none; }
 
       &.attention {
-        border-color: var(--color-warning);
-        background: rgba(255, 149, 0, 0.05);
+        border-left: 3px solid $orange;
       }
 
       &.listed {
-        border-color: var(--color-accent);
-        background: rgba(10, 132, 255, 0.05);
+        border-left: 3px solid $blue;
       }
 
+      // === Position badge ===
       .player-main {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-
-        @media (max-width: 768px) {
-          flex: 1;
-          gap: 0.35rem;
-          min-width: 0;
-          overflow: hidden;
-        }
+        display: contents;
 
         .pos {
-          width: 36px;
-          height: 36px;
+          width: 32px;
+          height: 24px;
           display: flex;
           align-items: center;
           justify-content: center;
-          border-radius: 8px;
+          border-radius: 4px;
           font-weight: 700;
-          font-size: 0.8rem;
+          font-size: 0.65rem;
           color: #fff;
-
-          @media (max-width: 768px) {
-            width: 26px;
-            height: 26px;
-            border-radius: 4px;
-            font-size: 0.6rem;
-            flex-shrink: 0;
-          }
         }
 
         .info {
-          @media (max-width: 768px) {
-            min-width: 0;
-            overflow: hidden;
-          }
+          min-width: 0;
+          overflow: hidden;
 
           .name {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            display: block;
             font-weight: 600;
+            font-size: 0.8rem;
+            color: $white;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
 
-            @media (max-width: 768px) {
-              font-size: 0.78rem;
-              display: block;
-              white-space: nowrap;
-              overflow: hidden;
-              text-overflow: ellipsis;
+            .tag-listed, .tag-retiring, .tag-loan {
+              font-size: 0.6rem;
+              margin-left: 0.25rem;
+              vertical-align: middle;
             }
-
-            .tag-listed {
-              font-size: 0.75rem;
-              padding: 0.15rem 0.4rem;
-              background: var(--color-accent);
-              border-radius: 4px;
-              font-weight: 500;
-
-              @media (max-width: 768px) {
-                display: none;
-              }
-            }
-
-            .tag-retiring {
-              @media (max-width: 768px) {
-                display: none;
-              }
+            
+            .tag-loan {
+              color: #0a84ff;
+              background: rgba(10, 132, 255, 0.15);
+              padding: 0.1rem 0.35rem;
+              border-radius: 3px;
+              font-weight: 600;
+              border: 1px solid rgba(10, 132, 255, 0.3);
             }
           }
 
           .meta {
-            font-size: 0.8rem;
-            color: var(--color-text-tertiary);
+            display: none; // Hidden in table mode, info is in columns
 
-            @media (max-width: 768px) {
-              display: none;
+            @media (min-width: 769px) {
+              display: block;
+              font-size: 0.75rem;
+              color: $gray;
             }
           }
         }
       }
 
-      .player-contract {
-        text-align: right;
+      // === OVR badge ===
+      .player-ovr-badge {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        font-weight: 800;
+        color: $gold;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 4px;
+        padding: 0.15rem 0.25rem;
+        min-width: 32px;
+        height: 24px;
+      }
 
-        @media (max-width: 768px) {
-          flex-shrink: 0;
-        }
+      // === Salary ===
+      .player-contract {
+        text-align: center;
+        min-width: 0;
 
         .salary {
           display: block;
-          font-weight: 600;
-          color: var(--color-warning);
-          
-          @media (max-width: 768px) {
-            font-size: 0.7rem;
-          }
+          font-weight: 700;
+          font-size: 0.75rem;
+          color: $orange;
+          white-space: nowrap;
         }
 
         .yearly {
-          font-size: 0.8rem;
-          color: var(--color-text-tertiary);
-          
-          @media (max-width: 768px) {
-            display: none;
-          }
+          display: none; // Too much detail for mobile
         }
       }
 
+      // === Contract status ===
       .player-status {
         display: flex;
         align-items: center;
-        gap: 0.35rem;
-        
+        justify-content: center;
+        gap: 0.2rem;
+
         .contract {
-          font-size: 0.85rem;
-          font-weight: 500;
-          
-          @media (max-width: 768px) {
-            font-size: 0.65rem;
-            white-space: nowrap;
-            padding: 0.15rem 0.35rem;
-            background: rgba(255, 255, 255, 0.06);
-            border-radius: 4px;
-          }
+          font-size: 0.65rem;
+          font-weight: 600;
+          white-space: nowrap;
+          padding: 0.2rem 0.4rem;
+          background: rgba(0, 0, 0, 0.25);
+          border-radius: 4px;
         }
-        
+
         .renew-icon {
-          font-size: 1rem;
-          cursor: pointer;
-          animation: pulse-renew 2s ease-in-out infinite;
-          
-          @media (min-width: 769px) {
-            display: none; // En desktop ya hay botón de renovar
-          }
-        }
-
-        @media (max-width: 768px) {
-          flex-shrink: 0;
-        }
-      }
-      
-      @keyframes pulse-renew {
-        0%, 100% { opacity: 0.7; }
-        50% { opacity: 1; }
-      }
-
-      .player-actions {
-        display: flex;
-        gap: 0.25rem;
-
-        // Hide action buttons on mobile — users tap the row to get modal
-        @media (max-width: 768px) {
           display: none;
+          @media (max-width: 768px) {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.85rem;
+            min-width: 16px;
+          }
+          &.hidden {
+            visibility: hidden;
+          }
         }
+      }
 
-        button {
-          width: 36px;
-          height: 36px;
+      // === Desktop action buttons ===
+      .player-actions {
+        display: none;
+
+        @media (min-width: 769px) {
           display: flex;
-          align-items: center;
-          justify-content: center;
-          background: rgba(255, 255, 255, 0.1);
-          border: none;
-          border-radius: 8px;
-          font-size: 1rem;
-          cursor: pointer;
-          transition: all 0.15s;
+          gap: 0.25rem;
 
-          &:hover {
-            transform: scale(1.1);
+          button {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.08);
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.15s;
+
+            &:hover { transform: scale(1.1); }
+            &.btn-renew:hover { background: rgba($green, 0.3); }
+            &.btn-sell:hover { background: rgba($blue, 0.3); }
+            &.btn-release:hover { background: rgba($red, 0.3); }
           }
-
-          &.btn-renew:hover {
-            background: rgba(48, 209, 88, 0.3);
-          }
-
-          &.btn-sell:hover {
-            background: rgba(10, 132, 255, 0.3);
-          }
-
-          &.btn-release:hover {
-            background: rgba(255, 69, 58, 0.3);
+          
+          .loan-info-badge {
+            display: flex;
+            align-items: center;
+            font-size: 0.65rem;
+            color: $blue;
+            background: rgba($blue, 0.12);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            border: 1px solid rgba($blue, 0.25);
+            white-space: nowrap;
           }
         }
       }
     }
   }
 
-  // Modal
+  // ============================================================
+  // DESKTOP: wider grid with actions
+  // ============================================================
+  @media (min-width: 769px) {
+    &__table-header {
+      grid-template-columns: 36px 1fr 42px 100px 80px 100px;
+    }
+
+    &__list .player-row {
+      grid-template-columns: 36px 1fr 42px 100px 80px 100px;
+      padding: 0.4rem 0.6rem;
+
+      .player-main .pos {
+        width: 36px;
+        height: 26px;
+        font-size: 0.7rem;
+      }
+
+      .player-main .info .name {
+        font-size: 0.82rem;
+      }
+
+      .player-ovr-badge {
+        font-size: 0.82rem;
+        height: 26px;
+      }
+
+      .player-contract .yearly {
+        display: block;
+        font-size: 0.65rem;
+        color: $gray;
+      }
+    }
+  }
+
+  // ============================================================
+  // MODAL
+  // ============================================================
   &__modal-overlay {
     position: fixed;
     inset: 0;
@@ -465,228 +488,196 @@
   }
 
   &__modal {
-    background: #1c2a3a;
-    border-radius: 16px;
+    background: $bg-card;
+    border: 1px solid $border;
+    border-radius: 12px;
     width: 100%;
-    max-width: 400px;
+    max-width: 420px;
     overflow: hidden;
     max-height: 90vh;
     overflow-y: auto;
 
     @media (max-width: 768px) {
       max-width: 100vw;
-      border-radius: 16px 16px 0 0;
+      border-radius: 12px 12px 0 0;
       max-height: 85vh;
     }
 
     .modal-header {
-      padding: 1.25rem;
+      padding: 1rem;
       text-align: center;
+      border-bottom: 1px solid $border;
 
       h3 {
         margin: 0;
-        font-size: 1.1rem;
+        font-size: 1.05rem;
+        color: $white;
       }
 
-      &.renew {
-        background: linear-gradient(135deg, rgba(48, 209, 88, 0.2), rgba(48, 209, 88, 0.1));
-      }
-
-      &.sell {
-        background: linear-gradient(135deg, rgba(10, 132, 255, 0.2), rgba(10, 132, 255, 0.1));
-      }
-
-      &.release {
-        background: linear-gradient(135deg, rgba(255, 69, 58, 0.2), rgba(255, 69, 58, 0.1));
-      }
+      &.renew { background: rgba($green, 0.1); }
+      &.sell { background: rgba($blue, 0.1); }
+      &.release { background: rgba($red, 0.1); }
     }
 
     .modal-content {
-      padding: 1.25rem;
+      padding: 1rem;
 
       .player-summary {
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 0.75rem;
-        margin-bottom: 1.25rem;
-        padding: 0.75rem;
-        background: rgba(0, 0, 0, 0.2);
-        border-radius: 10px;
+        margin-bottom: 1rem;
+        padding: 0.6rem;
+        background: rgba(0, 0, 0, 0.25);
+        border-radius: 8px;
 
         .pos {
-          width: 40px;
-          height: 40px;
+          width: 36px;
+          height: 28px;
           display: flex;
           align-items: center;
           justify-content: center;
-          border-radius: 8px;
+          border-radius: 6px;
           font-weight: 700;
+          font-size: 0.8rem;
           color: #fff;
         }
 
         .ovr {
-          font-size: 1.5rem;
-          font-weight: 700;
+          font-size: 1.4rem;
+          font-weight: 800;
+          color: $gold;
         }
 
         .age {
-          color: var(--color-text-secondary);
+          color: $gray;
+          font-size: 0.9rem;
         }
       }
 
       .comparison {
         display: flex;
         align-items: center;
-        gap: 0.75rem;
+        gap: 0.5rem;
         margin-bottom: 1rem;
 
         .current, .new {
           flex: 1;
-          padding: 0.75rem;
+          padding: 0.6rem;
           background: rgba(0, 0, 0, 0.2);
+          border: 1px solid $border;
           border-radius: 8px;
           text-align: center;
 
           .label {
             display: block;
-            font-size: 0.75rem;
-            color: var(--color-text-tertiary);
-            margin-bottom: 0.25rem;
+            font-size: 0.65rem;
+            color: $gray;
+            text-transform: uppercase;
+            margin-bottom: 0.2rem;
           }
-
           .salary {
             display: block;
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1rem;
           }
-
           .yearly {
             display: block;
-            font-size: 0.8rem;
-            color: var(--color-text-secondary);
+            font-size: 0.75rem;
+            color: $gray;
           }
-
           .years {
             display: block;
-            font-size: 0.85rem;
-            color: var(--color-accent);
-            margin-top: 0.25rem;
+            font-size: 0.8rem;
+            color: $blue;
+            margin-top: 0.15rem;
           }
         }
 
-        .current .salary {
-          color: var(--color-text-secondary);
-        }
-
-        .new .salary {
-          color: var(--color-warning);
-        }
-
-        .arrow {
-          font-size: 1.5rem;
-          color: var(--color-text-tertiary);
-        }
+        .current .salary { color: $gray; }
+        .new .salary { color: $orange; }
+        .arrow { font-size: 1.3rem; color: $gray; }
       }
 
       .sell-info {
         display: flex;
-        gap: 1rem;
+        gap: 0.5rem;
         margin-bottom: 1rem;
 
         .value-box, .salary-box {
           flex: 1;
-          padding: 0.75rem;
+          padding: 0.6rem;
           background: rgba(0, 0, 0, 0.2);
+          border: 1px solid $border;
           border-radius: 8px;
           text-align: center;
 
           .label {
             display: block;
-            font-size: 0.75rem;
-            color: var(--color-text-tertiary);
-            margin-bottom: 0.25rem;
+            font-size: 0.65rem;
+            color: $gray;
+            text-transform: uppercase;
+            margin-bottom: 0.15rem;
           }
-
           .value {
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
           }
         }
-
-        .value-box .value {
-          color: var(--color-success);
-        }
+        .value-box .value { color: $green; }
       }
 
       .impact {
-        padding: 0.75rem;
+        padding: 0.6rem;
         background: rgba(0, 0, 0, 0.3);
         border-radius: 8px;
-        margin-bottom: 1rem;
+        margin-bottom: 0.75rem;
         text-align: center;
 
         .impact-label {
           display: block;
-          font-size: 0.85rem;
-          color: var(--color-text-secondary);
-          margin-bottom: 0.25rem;
+          font-size: 0.8rem;
+          color: $gray;
+          margin-bottom: 0.15rem;
         }
-
         .impact-value {
           font-weight: 700;
-          font-size: 1.1rem;
-
-          &.positive {
-            color: var(--color-success);
-          }
-
-          &.negative {
-            color: #ff453a;
-          }
+          font-size: 1.05rem;
+          &.positive { color: $green; }
+          &.negative { color: $red; }
         }
       }
 
       .warning-box {
         display: flex;
         align-items: center;
-        gap: 0.75rem;
-        padding: 0.75rem;
-        background: rgba(255, 69, 58, 0.15);
-        border: 1px solid rgba(255, 69, 58, 0.3);
+        gap: 0.6rem;
+        padding: 0.6rem;
+        background: rgba($red, 0.12);
+        border: 1px solid rgba($red, 0.3);
         border-radius: 8px;
-        margin-bottom: 1rem;
-        
-        &.danger {
-          background: rgba(255, 69, 58, 0.25);
-          border-color: rgba(255, 69, 58, 0.5);
-        }
+        margin-bottom: 0.75rem;
 
-        .warning-icon {
-          font-size: 1.5rem;
-        }
-
-        .warning-text {
-          font-size: 0.9rem;
-          color: var(--color-error);
-        }
+        .warning-icon { font-size: 1.3rem; }
+        .warning-text { font-size: 0.85rem; color: $red; }
       }
 
       .morale-warning {
         padding: 0.5rem;
-        background: rgba(255, 149, 0, 0.15);
+        background: rgba($orange, 0.12);
         border-radius: 6px;
         text-align: center;
-        font-size: 0.85rem;
-        color: var(--color-warning);
-        margin-bottom: 1rem;
+        font-size: 0.8rem;
+        color: $orange;
+        margin-bottom: 0.75rem;
       }
 
       .note {
-        font-size: 0.85rem;
-        color: var(--color-text-tertiary);
+        font-size: 0.8rem;
+        color: $gray;
         text-align: center;
-        margin-bottom: 1rem;
+        margin-bottom: 0.75rem;
       }
 
       .modal-actions {
@@ -695,113 +686,105 @@
         gap: 0.5rem;
 
         button {
-          padding: 0.875rem;
+          padding: 0.75rem;
           border: none;
-          border-radius: 10px;
+          border-radius: 8px;
           font-weight: 600;
-          font-size: 0.95rem;
+          font-size: 0.9rem;
           cursor: pointer;
           transition: all 0.15s;
+          min-height: 44px;
 
-          &:active {
-            transform: scale(0.98);
-          }
+          &:active { transform: scale(0.98); }
         }
 
         .btn-confirm {
-          background: #2d8a4e;
+          background: $green;
           color: #fff;
-
-          &.danger {
-            background: var(--color-error);
-          }
-
-          &:hover {
-            background: #35a05a;
-          }
+          &.danger { background: $red; }
+          &:hover { filter: brightness(1.1); }
         }
 
         .btn-cancel {
           background: transparent;
-          border: 1px solid var(--color-glass-border);
-          color: var(--color-text-secondary);
-
-          &:hover {
-            background: rgba(255, 255, 255, 0.05);
-          }
+          border: 1px solid $border;
+          color: $gray;
+          &:hover { background: rgba(255, 255, 255, 0.05); }
         }
       }
     }
   }
 }
 
+// ============================================================
+// MISC GLOBAL OVERRIDES
+// ============================================================
 .tag-retiring {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  margin-left: 8px;
-  padding: 2px 8px;
-  background: rgba(255, 149, 0, 0.2);
-  color: #ff9500;
-  border-radius: 12px;
-  font-size: 0.7rem;
+  gap: 2px;
+  margin-left: 4px;
+  padding: 1px 6px;
+  background: rgba($orange, 0.2);
+  color: $orange;
+  border-radius: 3px;
+  font-size: 0.6rem;
   font-weight: 600;
 }
 
 .btn-renew:disabled {
-  opacity: 0.4;
+  opacity: 0.35;
   cursor: not-allowed;
-}
-
-// OVR badge — visible only on mobile, inline in the compact row
-.player-ovr-badge {
-  display: none;
-
-  @media (max-width: 768px) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 22px;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 4px;
-    font-size: 0.7rem;
-    font-weight: 700;
-    color: #ffd700;
-    flex-shrink: 0;
-  }
 }
 
 // Mobile action sheet
 .mobile-action-list {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.4rem;
 
   .mobile-action-btn {
-    padding: 0.85rem;
+    padding: 0.75rem;
     border: none;
-    border-radius: 10px;
-    font-size: 0.95rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.06);
     color: #fff;
     text-align: left;
     transition: background 0.15s;
     min-height: 44px;
 
-    &:active {
-      background: rgba(255, 255, 255, 0.15);
-    }
-
-    &:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
-
-    &--danger {
-      color: var(--color-danger, #ff453a);
+    &:active { background: rgba(255, 255, 255, 0.12); }
+    &:disabled { opacity: 0.35; cursor: not-allowed; }
+    &--danger { color: $red; }
+    &--cancel {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: $gray;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      margin-top: 0.25rem;
+      &:active { background: rgba(255, 255, 255, 0.08); }
     }
   }
+  
+  .mobile-action-info {
+    padding: 0.75rem;
+    background: rgba($blue, 0.1);
+    border: 1px solid rgba($blue, 0.25);
+    border-radius: 8px;
+    color: $blue;
+    font-size: 0.85rem;
+    text-align: center;
+  }
+}
+
+@keyframes pulse-renew {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
 }

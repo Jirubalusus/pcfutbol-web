@@ -3,7 +3,8 @@ import { useGame } from '../../context/GameContext';
 import { useToast } from '../Toast/Toast';
 import { FORMATIONS, TACTICS, calculateTeamStrength } from '../../game/leagueEngine';
 import { getPositionFit, getSlotPosition, FIT_COLORS } from '../../game/positionSystem';
-import { Shield, Scale, Swords, Target, Zap, CheckCircle2, Settings, Dumbbell, Heart, AlertTriangle, Lock, Building2, TrendingUp, BarChart3, Activity, X, Check } from 'lucide-react';
+import { FORM_STATES } from '../../game/formSystem';
+import { Shield, Scale, Swords, Target, Zap, CheckCircle2, Settings, Dumbbell, Heart, AlertTriangle, Lock, Building2, TrendingUp, BarChart3, Activity, X, Check, HeartPulse, Square, Star, Trophy, Coins, Clock } from 'lucide-react';
 import './Formation.scss';
 
 // Posiciones del campo para cada formación
@@ -535,7 +536,9 @@ export default function Formation() {
   };
   
   const renderStars = (count) => {
-    return '★'.repeat(count) + '☆'.repeat(5 - count);
+    return Array.from({ length: 5 }, (_, i) => (
+      <Star key={i} size={12} className={i < count ? 'star-filled' : 'star-empty'} fill={i < count ? 'currentColor' : 'none'} />
+    ));
   };
   
   // Formatear fecha actual
@@ -602,20 +605,39 @@ export default function Formation() {
                   <span className="col-num">{player.number}</span>
                   <span className="col-name">{player.name}</span>
                   <span className="col-status">
-                    {player.injured && player.injuryWeeksLeft > 0 && <span className="status-icon injury">🏥{player.injuryWeeksLeft}s</span>}
-                    {player.suspended && player.suspensionType === 'red' && <span className="status-icon red">🟥{player.suspensionMatches}p</span>}
-                    {player.suspended && player.suspensionType === 'double_yellow' && <span className="status-icon red">🟨🟨{player.suspensionMatches}p</span>}
-                    {player.suspended && player.suspensionType === 'yellow' && <span className="status-icon yellow">🟨×5</span>}
-                    {!player.suspended && !player.injured && (player.yellowCards || 0) >= 4 && <span className="status-icon warning">⚠️</span>}
+                    {/* Form arrow */}
+                    {(() => {
+                      const form = (state.playerForm || {})[player.name] || 'normal';
+                      const formInfo = FORM_STATES[form];
+                      // Mostrar siempre la flecha (como PES6)
+                      return (
+                        <span 
+                          className={`form-arrow form-${form}`} 
+                          style={{ color: formInfo.color }}
+                          title={`Forma: ${formInfo.label} (${formInfo.matchBonus > 0 ? '+' : ''}${Math.round(formInfo.matchBonus * 100)}%)`}
+                        >
+                          {formInfo.arrow}
+                        </span>
+                      );
+                    })()}
+                    {player.injured && player.injuryWeeksLeft > 0 && <span className="status-icon injury"><HeartPulse size={12} />{player.injuryWeeksLeft}s</span>}
+                    {player.suspended && player.suspensionType === 'red' && <span className="status-icon red"><Square size={12} className="card-red" />{player.suspensionMatches}p</span>}
+                    {player.suspended && player.suspensionType === 'double_yellow' && <span className="status-icon red"><><Square size={12} className="card-yellow" /><Square size={12} className="card-yellow" /></>{player.suspensionMatches}p</span>}
+                    {player.suspended && player.suspensionType === 'yellow' && <span className="status-icon yellow"><Square size={12} className="card-yellow" />×5</span>}
+                    {!player.suspended && !player.injured && player.postInjuryBonus > 0 && player.postInjuryWeeksLeft > 0 && <span className="status-icon boost"><TrendingUp size={12} />{player.postInjuryWeeksLeft}s</span>}
+                    {!player.suspended && !player.injured && !(player.postInjuryBonus > 0 && player.postInjuryWeeksLeft > 0) && (player.yellowCards || 0) >= 4 && <span className="status-icon warning"><AlertTriangle size={12} /></span>}
                   </span>
                   {PLAYER_ATTRIBUTES.map(attr => {
-                    const adjOvr = fit ? Math.round(player.overall * fit.factor) : player.overall;
+                    const baseOvr = player.overall + (player.postInjuryBonus || 0);
+                    const adjOvr = fit ? Math.round(baseOvr * fit.factor) : baseOvr;
+                    const hasBoosted = player.postInjuryBonus > 0 && player.postInjuryWeeksLeft > 0;
                     const fitClass = fit ? `fit-${fit.level}` : '';
+                    const boostClass = hasBoosted ? 'boosted' : '';
                     return (
                       <span 
                         key={attr.key} 
-                        className={`col-attr ${fitClass || (adjOvr >= 80 ? 'high' : adjOvr <= 60 ? 'low' : '')}`}
-                        title={fit && fit.level !== 'perfect' ? `${player.overall} → ${adjOvr} (${player.position} jugando de ${slotPos})` : ''}
+                        className={`col-attr ${fitClass || (adjOvr >= 80 ? 'high' : adjOvr <= 60 ? 'low' : '')} ${boostClass}`}
+                        title={hasBoosted ? `${player.overall} + ${player.postInjuryBonus} bonus rendimiento (${player.postInjuryWeeksLeft} sem)` : fit && fit.level !== 'perfect' ? `${player.overall} → ${adjOvr} (${player.position} jugando de ${slotPos})` : ''}
                       >
                         {adjOvr}
                       </span>
@@ -650,23 +672,43 @@ export default function Formation() {
                   <span className="col-num">{player.number}</span>
                   <span className="col-name">{player.name}</span>
                   <span className="col-status">
-                    {player.injured && player.injuryWeeksLeft > 0 && <span className="status-icon injury">🏥{player.injuryWeeksLeft}s</span>}
-                    {player.suspended && player.suspensionType === 'red' && <span className="status-icon red">🟥{player.suspensionMatches}p</span>}
-                    {player.suspended && player.suspensionType === 'double_yellow' && <span className="status-icon red">🟨🟨{player.suspensionMatches}p</span>}
-                    {player.suspended && player.suspensionType === 'yellow' && <span className="status-icon yellow">🟨×5</span>}
-                    {!player.suspended && !player.injured && (player.yellowCards || 0) >= 4 && <span className="status-icon warning">⚠️</span>}
+                    {/* Form arrow */}
+                    {(() => {
+                      const form = (state.playerForm || {})[player.name] || 'normal';
+                      const formInfo = FORM_STATES[form];
+                      // Mostrar siempre la flecha (como PES6)
+                      return (
+                        <span 
+                          className={`form-arrow form-${form}`} 
+                          style={{ color: formInfo.color }}
+                          title={`Forma: ${formInfo.label} (${formInfo.matchBonus > 0 ? '+' : ''}${Math.round(formInfo.matchBonus * 100)}%)`}
+                        >
+                          {formInfo.arrow}
+                        </span>
+                      );
+                    })()}
+                    {player.injured && player.injuryWeeksLeft > 0 && <span className="status-icon injury"><HeartPulse size={12} />{player.injuryWeeksLeft}s</span>}
+                    {player.suspended && player.suspensionType === 'red' && <span className="status-icon red"><Square size={12} className="card-red" />{player.suspensionMatches}p</span>}
+                    {player.suspended && player.suspensionType === 'double_yellow' && <span className="status-icon red"><><Square size={12} className="card-yellow" /><Square size={12} className="card-yellow" /></>{player.suspensionMatches}p</span>}
+                    {player.suspended && player.suspensionType === 'yellow' && <span className="status-icon yellow"><Square size={12} className="card-yellow" />×5</span>}
+                    {!player.suspended && !player.injured && player.postInjuryBonus > 0 && player.postInjuryWeeksLeft > 0 && <span className="status-icon boost"><TrendingUp size={12} />{player.postInjuryWeeksLeft}s</span>}
+                    {!player.suspended && !player.injured && !(player.postInjuryBonus > 0 && player.postInjuryWeeksLeft > 0) && (player.yellowCards || 0) >= 4 && <span className="status-icon warning"><AlertTriangle size={12} /></span>}
                   </span>
-                  {PLAYER_ATTRIBUTES.map(attr => (
+                  {PLAYER_ATTRIBUTES.map(attr => {
+                    const boostedOvr = (player[attr.key] || player.overall) + (player.postInjuryBonus || 0);
+                    const hasBoosted = player.postInjuryBonus > 0 && player.postInjuryWeeksLeft > 0;
+                    return (
                     <span 
                       key={attr.key} 
                       className={`col-attr ${
-                        (player[attr.key] || player.overall) >= 80 ? 'high' : 
-                        (player[attr.key] || player.overall) <= 60 ? 'low' : ''
-                      }`}
+                        boostedOvr >= 80 ? 'high' : 
+                        boostedOvr <= 60 ? 'low' : ''
+                      } ${hasBoosted ? 'boosted' : ''}`}
                     >
-                      {player[attr.key] || player.overall}
+                      {boostedOvr}
                     </span>
-                  ))}
+                    );
+                  })}
                   <span className="col-pos" style={getPositionStyle(player.position)}>
                     {player.position}
                   </span>
@@ -696,23 +738,43 @@ export default function Formation() {
                   <span className="col-num">{player.number}</span>
                   <span className="col-name">{player.name}</span>
                   <span className="col-status">
-                    {player.injured && player.injuryWeeksLeft > 0 && <span className="status-icon injury">🏥{player.injuryWeeksLeft}s</span>}
-                    {player.suspended && player.suspensionType === 'red' && <span className="status-icon red">🟥{player.suspensionMatches}p</span>}
-                    {player.suspended && player.suspensionType === 'double_yellow' && <span className="status-icon red">🟨🟨{player.suspensionMatches}p</span>}
-                    {player.suspended && player.suspensionType === 'yellow' && <span className="status-icon yellow">🟨×5</span>}
-                    {!player.suspended && !player.injured && (player.yellowCards || 0) >= 4 && <span className="status-icon warning">⚠️</span>}
+                    {/* Form arrow */}
+                    {(() => {
+                      const form = (state.playerForm || {})[player.name] || 'normal';
+                      const formInfo = FORM_STATES[form];
+                      // Mostrar siempre la flecha (como PES6)
+                      return (
+                        <span 
+                          className={`form-arrow form-${form}`} 
+                          style={{ color: formInfo.color }}
+                          title={`Forma: ${formInfo.label} (${formInfo.matchBonus > 0 ? '+' : ''}${Math.round(formInfo.matchBonus * 100)}%)`}
+                        >
+                          {formInfo.arrow}
+                        </span>
+                      );
+                    })()}
+                    {player.injured && player.injuryWeeksLeft > 0 && <span className="status-icon injury"><HeartPulse size={12} />{player.injuryWeeksLeft}s</span>}
+                    {player.suspended && player.suspensionType === 'red' && <span className="status-icon red"><Square size={12} className="card-red" />{player.suspensionMatches}p</span>}
+                    {player.suspended && player.suspensionType === 'double_yellow' && <span className="status-icon red"><><Square size={12} className="card-yellow" /><Square size={12} className="card-yellow" /></>{player.suspensionMatches}p</span>}
+                    {player.suspended && player.suspensionType === 'yellow' && <span className="status-icon yellow"><Square size={12} className="card-yellow" />×5</span>}
+                    {!player.suspended && !player.injured && player.postInjuryBonus > 0 && player.postInjuryWeeksLeft > 0 && <span className="status-icon boost"><TrendingUp size={12} />{player.postInjuryWeeksLeft}s</span>}
+                    {!player.suspended && !player.injured && !(player.postInjuryBonus > 0 && player.postInjuryWeeksLeft > 0) && (player.yellowCards || 0) >= 4 && <span className="status-icon warning"><AlertTriangle size={12} /></span>}
                   </span>
-                  {PLAYER_ATTRIBUTES.map(attr => (
+                  {PLAYER_ATTRIBUTES.map(attr => {
+                    const boostedOvr = (player[attr.key] || player.overall) + (player.postInjuryBonus || 0);
+                    const hasBoosted = player.postInjuryBonus > 0 && player.postInjuryWeeksLeft > 0;
+                    return (
                     <span 
                       key={attr.key} 
                       className={`col-attr ${
-                        (player[attr.key] || player.overall) >= 80 ? 'high' : 
-                        (player[attr.key] || player.overall) <= 60 ? 'low' : ''
-                      }`}
+                        boostedOvr >= 80 ? 'high' : 
+                        boostedOvr <= 60 ? 'low' : ''
+                      } ${hasBoosted ? 'boosted' : ''}`}
                     >
-                      {player[attr.key] || player.overall}
+                      {boostedOvr}
                     </span>
-                  ))}
+                    );
+                  })}
                   <span className="col-pos" style={getPositionStyle(player.position)}>
                     {player.position}
                   </span>
@@ -737,18 +799,45 @@ export default function Formation() {
               const player = lineup[pos.id];
               const slotPos = getSlotPosition(pos.id);
               const fit = player ? getPositionFit(player.position, slotPos) : null;
-              const adjOvr = player && fit ? Math.round(player.overall * fit.factor) : player?.overall;
+              const baseOvr = (player?.overall || 0) + (player?.postInjuryBonus || 0);
+              const adjOvr = player && fit ? Math.round(baseOvr * fit.factor) : baseOvr || undefined;
               const borderColor = fit ? FIT_COLORS[fit.level] : '#fff';
+              const hasBoosted = player?.postInjuryBonus > 0 && player?.postInjuryWeeksLeft > 0;
               return (
                 <div
                   key={pos.id}
-                  className={`pitch-slot ${player ? 'filled' : 'empty'}`}
+                  className={`pitch-slot ${player ? 'filled' : 'empty'} ${hasBoosted ? 'boosted' : ''}`}
                   style={{ left: `${pos.x}%`, top: `${pos.y}%` }}
                   onClick={() => handleSlotClick(pos.id)}
                 >
                   {player ? (
-                    <div className="player-dot" style={{ background: getPositionColor(player.position), borderColor }}>
+                    <div className="player-dot" style={{ background: getPositionColor(player.position), borderColor, boxShadow: hasBoosted ? '0 0 10px 3px rgba(48, 209, 88, 0.6)' : undefined }}>
                       <span className="ovr">{adjOvr}</span>
+                      {/* Form arrow on pitch */}
+                      {(() => {
+                        const form = (state.playerForm || {})[player.name] || 'normal';
+                        const formInfo = FORM_STATES[form];
+                        // Mostrar siempre la flecha (como PES6)
+                        return (
+                          <span 
+                            className={`pitch-form-arrow form-${form}`} 
+                            style={{ 
+                              position: 'absolute', 
+                              top: '-10px', 
+                              right: '-10px', 
+                              color: formInfo.color, 
+                              fontWeight: 'bold', 
+                              fontSize: '12px',
+                              lineHeight: 1,
+                              textShadow: '0 0 4px rgba(0,0,0,0.9), 0 0 2px rgba(0,0,0,0.9)',
+                              zIndex: 5
+                            }}
+                            title={`Forma: ${formInfo.label} (${formInfo.matchBonus > 0 ? '+' : ''}${Math.round(formInfo.matchBonus * 100)}%)`}
+                          >
+                            {formInfo.arrow}
+                          </span>
+                        );
+                      })()}
                     </div>
                   ) : (
                     <div className="empty-dot">
@@ -819,7 +908,7 @@ export default function Formation() {
           <div className="pcf-modal" onClick={e => e.stopPropagation()}>
             <div className="modal-header">
               <h3>Seleccionar Jugador</h3>
-              <button onClick={() => setShowModal(false)}>✕</button>
+              <button onClick={() => setShowModal(false)}><X size={14} /></button>
             </div>
             <div className="modal-body">
               {players
@@ -849,7 +938,7 @@ export default function Formation() {
                       </span>
                       <span className="name">{player.name}</span>
                       <span className="ovr">{player.overall}</span>
-                      {fit.level === 'perfect' && <span className="badge">✓</span>}
+                      {fit.level === 'perfect' && <span className="badge"><Check size={10} /></span>}
                       {fit.level === 'good' && <span className="badge good">≈</span>}
                     </div>
                   );
@@ -1127,7 +1216,7 @@ function InjuredModal({ onClose, players, facilities, dispatch, budget }) {
         <div className="modal-body">
           {injuredPlayers.length === 0 ? (
             <div className="no-injured">
-              <span className="icon">✅</span>
+              <span className="icon"><Check size={14} /></span>
               <p>No hay jugadores lesionados</p>
             </div>
           ) : (
@@ -1153,8 +1242,8 @@ function InjuredModal({ onClose, players, facilities, dispatch, budget }) {
                       </div>
                       <div className="injury-info">
                         <span className={`weeks ${wasTreated ? 'reduced' : ''}`}>
-                          ⏱️ {adjustedWeeks} semana{adjustedWeeks !== 1 ? 's' : ''}
-                          {wasTreated && <span className="treat-badge">✓</span>}
+                          <Clock size={12} /> {adjustedWeeks} semana{adjustedWeeks !== 1 ? 's' : ''}
+                          {wasTreated && <span className="treat-badge"><Check size={10} /></span>}
                         </span>
                       </div>
                       {wasTreated ? (
@@ -1281,7 +1370,7 @@ function StatsModal({ onClose, players, team, seasonStats }) {
           {tab === 'top' && (
             <div className="top-players">
               <div className="top-section">
-                <h4>🏆 Mejor valorados</h4>
+                <h4><Trophy size={14} /> Mejor valorados</h4>
                 {topOverall.map((p, i) => (
                   <div key={p.name} className="top-row">
                     <span className="rank">{i + 1}</span>
@@ -1291,7 +1380,7 @@ function StatsModal({ onClose, players, team, seasonStats }) {
                 ))}
               </div>
               <div className="top-section">
-                <h4>💰 Más valiosos</h4>
+                <h4><Coins size={14} /> Más valiosos</h4>
                 {topValue.map((p, i) => (
                   <div key={p.name} className="top-row">
                     <span className="rank">{i + 1}</span>
@@ -1411,7 +1500,7 @@ function TacticModal({ onClose, currentTactic, currentFormation, dispatch, onFor
         
         {showToast && (
           <div className="tactic-toast">
-            ✅ Táctica actualizada: {formation} {tacticOptions.find(t => t.id === tactic)?.name}
+            <Check size={14} /> Táctica actualizada: {formation} {tacticOptions.find(t => t.id === tactic)?.name}
           </div>
         )}
       </div>

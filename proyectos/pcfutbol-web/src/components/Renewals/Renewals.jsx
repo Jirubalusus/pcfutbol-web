@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { AlertTriangle, FileText, X, Check, XCircle, MessageSquare, RefreshCw, ClipboardList, Star } from 'lucide-react';
 import { useGame } from '../../context/GameContext';
 import { 
   PERSONALITIES, 
@@ -108,7 +109,7 @@ export default function Renewals() {
         payload: {
           id: Date.now(),
           type: 'renewal',
-          title: `✅ ${selectedPlayer.name} ha renovado`,
+          title: `${selectedPlayer.name} ha renovado`,
           content: `Nuevo contrato: ${renewalOffer.years} años, ${formatMoney(renewalOffer.newSalary)}/sem`,
           date: `Semana ${state.currentWeek}`
         }
@@ -156,7 +157,7 @@ export default function Renewals() {
         payload: {
           id: Date.now(),
           type: 'renewal',
-          title: `❌ ${selectedPlayer.name} rechaza renovar`,
+          title: `${selectedPlayer.name} rechaza renovar`,
           content: `El jugador está descontento y quiere salir del club`,
           date: `Semana ${state.currentWeek}`
         }
@@ -288,7 +289,7 @@ export default function Renewals() {
               
               {player.urgencyReason && (
                 <div className={`player-alert ${player.urgency}`}>
-                  ⚠️ {player.urgencyReason}
+                  <AlertTriangle size={14} /> {player.urgencyReason}
                 </div>
               )}
               
@@ -299,7 +300,7 @@ export default function Renewals() {
                   disabled={player.retiring || player.contractYears > 2}
                   title={player.retiring ? "Se retira" : player.contractYears > 2 ? "No necesita renovar (más de 2 años de contrato)" : "Negociar renovación"}
                 >
-                  📝 Negociar Renovación
+                  <FileText size={14} /> Negociar Renovación
                 </button>
               </div>
             </div>
@@ -317,7 +318,7 @@ export default function Renewals() {
                 setSelectedPlayer(null);
                 setRenewalOffer(null);
                 setNegotiationResult(null);
-              }}>✕</button>
+              }}><X size={16} /></button>
             </div>
             
             <div className="modal-content">
@@ -375,7 +376,7 @@ export default function Renewals() {
                 
                 {renewalOffer.playerDemand?.conditions?.length > 0 && (
                   <div className="player-demands">
-                    <h4>⚠️ Condiciones del jugador:</h4>
+                    <h4><AlertTriangle size={14} /> Condiciones del jugador:</h4>
                     {renewalOffer.playerDemand.conditions.map((cond, i) => (
                       <div key={i} className={`demand ${cond.required ? 'required' : ''}`}>
                         {cond.text} {cond.required && '(obligatorio)'}
@@ -389,15 +390,15 @@ export default function Renewals() {
               {negotiationResult && (
                 <div className={`negotiation-result ${negotiationResult.response}`}>
                   <h4>
-                    {negotiationResult.response === 'accept' && '✅ ¡Acepta la oferta!'}
-                    {negotiationResult.response === 'negotiate' && '💬 Quiere negociar'}
-                    {negotiationResult.response === 'reject' && '❌ Rechaza la oferta'}
+                    {negotiationResult.response === 'accept' && <><Check size={14} /> ¡Acepta la oferta!</>}
+                    {negotiationResult.response === 'negotiate' && <><MessageSquare size={14} /> Quiere negociar</>}
+                    {negotiationResult.response === 'reject' && <><XCircle size={14} /> Rechaza la oferta</>}
                   </h4>
                   
                   <div className="reasons">
                     {negotiationResult.reasons.map((reason, i) => (
                       <div key={i} className={`reason ${reason.positive ? 'positive' : 'negative'}`}>
-                        {reason.positive ? '✓' : '✗'} {reason.text}
+                        {reason.positive ? <Check size={12} /> : <XCircle size={12} />} {reason.text}
                       </div>
                     ))}
                   </div>
@@ -480,19 +481,19 @@ export default function Renewals() {
                         className={renewalOffer.promisedRole === 'starter' ? 'active' : ''}
                         onClick={() => setRenewalOffer({ ...renewalOffer, promisedRole: 'starter' })}
                       >
-                        ⭐ Titular
+                        <Star size={14} /> Titular
                       </button>
                       <button 
                         className={renewalOffer.promisedRole === 'rotation' ? 'active' : ''}
                         onClick={() => setRenewalOffer({ ...renewalOffer, promisedRole: 'rotation' })}
                       >
-                        🔄 Rotación
+                        <RefreshCw size={14} /> Rotación
                       </button>
                       <button 
                         className={renewalOffer.promisedRole === 'backup' ? 'active' : ''}
                         onClick={() => setRenewalOffer({ ...renewalOffer, promisedRole: 'backup' })}
                       >
-                        📋 Suplente
+                        <ClipboardList size={14} /> Suplente
                       </button>
                     </div>
                   </div>

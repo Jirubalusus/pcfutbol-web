@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState, useMemo } from 'react';
+import { Globe as GlobeIcon } from 'lucide-react';
 import Globe from 'react-globe.gl';
 import './EuropeMap.scss';
 
@@ -99,7 +100,7 @@ export default function EuropeMap({ countries, selectedCountry, onCountryClick, 
     
     return (
       <div className="countries-mobile">
-        <h3 className="countries-mobile__title">🌍 Selecciona un país</h3>
+        <h3 className="countries-mobile__title"><GlobeIcon size={16} /> Selecciona un país</h3>
         <div className="countries-mobile__list">
           {countries.map(country => (
             <button
@@ -158,7 +159,7 @@ export default function EuropeMap({ countries, selectedCountry, onCountryClick, 
         atmosphereColor="lightskyblue"
         atmosphereAltitude={0.15}
       />
-      <p className="globe-hint">🌍 Arrastra para girar • Clic en un país</p>
+      <p className="globe-hint">Arrastra para girar • Clic en un país</p>
     </div>
   );
 }

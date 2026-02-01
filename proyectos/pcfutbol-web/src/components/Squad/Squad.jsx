@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { HeartPulse, X } from 'lucide-react';
 import { useGame } from '../../context/GameContext';
 import './Squad.scss';
 
@@ -107,7 +108,7 @@ export default function Squad() {
 
         {isInjured && (
           <div className="squad__injury-alert">
-            🏥 Lesionado · {p.injuryWeeksLeft} semana{p.injuryWeeksLeft > 1 ? 's' : ''} de baja
+            <HeartPulse size={14} /> Lesionado · {p.injuryWeeksLeft} semana{p.injuryWeeksLeft > 1 ? 's' : ''} de baja
           </div>
         )}
 
@@ -256,7 +257,7 @@ export default function Squad() {
                 <span className="player-name">{player.name}</span>
                 <span className="player-meta">
                   {getPositionName(player.position)}
-                  {isInjured && <span className="injury-tag"> · 🏥 {player.injuryWeeksLeft}s</span>}
+                  {isInjured && <span className="injury-tag"> · <HeartPulse size={12} /> {player.injuryWeeksLeft}s</span>}
                 </span>
               </div>
               
@@ -273,7 +274,7 @@ export default function Squad() {
         <div className="squad__desktop-panel">
           <div className="panel-header">
             <h3>{selectedPlayer.name}</h3>
-            <button className="close-btn" onClick={handleBack}>✕</button>
+            <button className="close-btn" onClick={handleBack}><X size={16} /></button>
           </div>
           <div className="panel-overall">
             <span className="number">{selectedPlayer.overall}</span>

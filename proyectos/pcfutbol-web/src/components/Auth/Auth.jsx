@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Mail, Lock, FileText, Key, FlaskConical } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import './Auth.scss';
 
@@ -97,7 +98,7 @@ export default function Auth({ onBack }) {
           <button className="auth__back" onClick={onBack}>← Volver</button>
           
           <div className="auth__header">
-            <div className="auth__icon">📧</div>
+            <div className="auth__icon"><Mail size={22} /></div>
             <h2>Verifica tu email</h2>
           </div>
 
@@ -144,7 +145,7 @@ export default function Auth({ onBack }) {
         
         <div className="auth__header">
           <div className="auth__icon">
-            {mode === 'login' ? '🔐' : mode === 'register' ? '📝' : '🔑'}
+            {mode === 'login' ? <Lock size={22} /> : mode === 'register' ? <FileText size={22} /> : <Key size={22} />}
           </div>
           <h2>
             {mode === 'login' && 'Iniciar Sesión'}
@@ -174,7 +175,7 @@ export default function Auth({ onBack }) {
               onClick={loginAsGuest}
               disabled={isLoading}
             >
-              🧪 Entrar como Invitado (Pruebas)
+              <FlaskConical size={14} /> Entrar como Invitado (Pruebas)
             </button>
           </>
         )}

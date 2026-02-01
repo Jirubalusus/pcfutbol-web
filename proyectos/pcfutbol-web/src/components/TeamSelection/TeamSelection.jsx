@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { useGame } from '../../context/GameContext';
 import { useAuth } from '../../context/AuthContext';
 import { saveGameToSlot } from '../../firebase/savesService';
+import { getLeagueTier } from '../../game/leagueTiers';
 import { 
   getLaLigaTeams,
   getSegundaTeams,
@@ -36,7 +37,8 @@ import { generateSeasonObjectives } from '../../game/objectivesEngine';
 import { generatePreseasonOptions } from '../../game/seasonManager';
 import { qualifyTeamsForEurope, LEAGUE_SLOTS } from '../../game/europeanCompetitions';
 import { initializeEuropeanCompetitions } from '../../game/europeanSeason';
-import { Calendar, Plane, Home, Swords, Sparkles, ChevronRight } from 'lucide-react';
+import { Calendar, Plane, Home, Swords, Sparkles, ChevronRight, Lock, Map, ClipboardList, Trophy, Building2, Users, DollarSign, Star } from 'lucide-react';
+import FootballIcon from '../icons/FootballIcon';
 import EuropeMap from './EuropeMap';
 import './TeamSelection.scss';
 import './EuropeMap.scss';
@@ -158,22 +160,57 @@ export default function TeamSelection() {
   // Calcular el número total de pasos (simplificado a 2)
   const totalSteps = 2;
   
-  // Obtener equipos según liga y grupo
+  // Obtener equipos según liga y grupo (pre-calculando budget/reputation)
   const teams = useMemo(() => {
-    if (!selectedLeague) return [];
+    let rawTeams = [];
+    if (!selectedLeague) return rawTeams;
     
     // Si tiene grupos y hay uno seleccionado, usar equipos del grupo
     if (hasGroups && selectedGroup) {
       const groups = getLeagueGroups(selectedLeague);
-      return groups[selectedGroup]?.teams || [];
+      rawTeams = groups[selectedGroup]?.teams || [];
+    } else if (!hasGroups) {
+      rawTeams = getLeagueTeams(selectedLeague);
     }
     
-    // Si no tiene grupos, devolver todos los equipos
-    if (!hasGroups) {
-      return getLeagueTeams(selectedLeague);
-    }
+    // Pre-calcular budget y reputation para equipos que no lo tengan
+    // Budget escala por tier de liga
+    const tierBudgets = {
+      1: { pct: 0.12, min: 15_000_000, max: 500_000_000 },
+      2: { pct: 0.10, min: 5_000_000, max: 120_000_000 },
+      3: { pct: 0.07, min: 1_500_000, max: 30_000_000 },
+      4: { pct: 0.05, min: 300_000, max: 5_000_000 },
+      5: { pct: 0.03, min: 100_000, max: 1_500_000 }
+    };
+    const currentTier = getLeagueTier(selectedLeague);
+    const budgetConfig = tierBudgets[currentTier] || tierBudgets[1];
     
-    return [];
+    rawTeams.forEach(team => {
+      if (!team.budget || !team.reputation) {
+        const totalValue = (team.players || []).reduce((sum, p) => sum + (p.value || 0), 0);
+        const avgOverall = team.players?.length 
+          ? team.players.reduce((s, p) => s + (p.overall || 0), 0) / team.players.length
+          : 70;
+        
+        if (!team.reputation) {
+          if (avgOverall >= 82) team.reputation = 5;
+          else if (avgOverall >= 78) team.reputation = 4;
+          else if (avgOverall >= 73) team.reputation = 3;
+          else if (avgOverall >= 68) team.reputation = 2;
+          else team.reputation = 1;
+        }
+        
+        if (!team.budget) {
+          const baseBudget = Math.max(totalValue * budgetConfig.pct, budgetConfig.min);
+          const repMultiplier = [0.5, 0.7, 1.0, 1.5, 2.5][team.reputation - 1] || 1.0;
+          team.budget = Math.round(
+            Math.min(baseBudget * repMultiplier, budgetConfig.max)
+          );
+        }
+      }
+    });
+    
+    return rawTeams;
   }, [selectedLeague, selectedGroup, hasGroups]);
 
   const filteredTeams = useMemo(() => {
@@ -226,13 +263,23 @@ export default function TeamSelection() {
 
   const handleSelectTeam = (team) => {
     // Ensure budget and reputation exist (scraped teams may lack these)
+    // Budget escala por tier de liga
     if (!team.budget || !team.reputation) {
       const totalValue = (team.players || []).reduce((sum, p) => sum + (p.value || 0), 0);
       const avgOverall = team.players?.length 
         ? team.players.reduce((s, p) => s + (p.overall || 0), 0) / team.players.length
         : 70;
       
-      // Budget: ~10% of squad value, with min/max bounds per reputation tier
+      const tierBudgets = {
+        1: { pct: 0.12, min: 15_000_000, max: 500_000_000 },
+        2: { pct: 0.10, min: 5_000_000, max: 120_000_000 },
+        3: { pct: 0.07, min: 1_500_000, max: 30_000_000 },
+        4: { pct: 0.05, min: 300_000, max: 5_000_000 },
+        5: { pct: 0.03, min: 100_000, max: 1_500_000 }
+      };
+      const currentTier = getLeagueTier(selectedLeague);
+      const budgetConfig = tierBudgets[currentTier] || tierBudgets[1];
+      
       if (!team.reputation) {
         if (avgOverall >= 82) team.reputation = 5;
         else if (avgOverall >= 78) team.reputation = 4;
@@ -242,9 +289,11 @@ export default function TeamSelection() {
       }
       
       if (!team.budget) {
-        const baseBudget = Math.max(totalValue * 0.10, 5_000_000);
+        const baseBudget = Math.max(totalValue * budgetConfig.pct, budgetConfig.min);
         const repMultiplier = [0.5, 0.7, 1.0, 1.5, 2.5][team.reputation - 1] || 1.0;
-        team.budget = Math.round(baseBudget * repMultiplier);
+        team.budget = Math.round(
+          Math.min(baseBudget * repMultiplier, budgetConfig.max)
+        );
       }
     }
     setSelectedTeam(team);
@@ -293,6 +342,7 @@ export default function TeamSelection() {
       payload: { 
         teamId: selectedTeam.id, 
         team: { ...selectedTeam },
+        leagueId: selectedLeague,
         group: selectedGroup,
         stadiumInfo,
         stadiumLevel,
@@ -444,7 +494,7 @@ export default function TeamSelection() {
           payload: {
             id: Date.now() + 50,
             type: 'european',
-            title: '🏆 ¡Competición Europea!',
+            title: '¡Competición Europea!',
             content: `Tu equipo jugará la ${compNames[playerQualComp]} esta temporada.`,
             date: 'Semana 1'
           }
@@ -475,7 +525,7 @@ export default function TeamSelection() {
         payload: {
           id: Date.now() + 1,
           type: 'objectives',
-          title: '🎯 Objetivos de temporada',
+          title: 'Objetivos de temporada',
           content: `La directiva espera: ${criticalObj.name}. ${criticalObj.description}.`,
           date: 'Semana 1'
         }
@@ -557,7 +607,7 @@ export default function TeamSelection() {
       <div className="pcf-ts-header">
         <div className="header-left">
           <button className="btn-back" onClick={handleBack}>
-            ← {step === 1 ? (selectedCountry ? 'PAÍSES' : 'MENÚ') : 'ATRÁS'}
+            ‹ {step === 1 ? (selectedCountry ? 'Países' : 'Menú') : 'Atrás'}
           </button>
         </div>
         <div className="header-center">
@@ -640,7 +690,7 @@ export default function TeamSelection() {
                             </div>
                           </div>
                           <span className="map-selection__league-arrow">
-                            {leagueTeams.length > 0 ? '→' : '🔒'}
+                            {leagueTeams.length > 0 ? <ChevronRight size={14} /> : <Lock size={14} />}
                           </span>
                         </button>
                       );
@@ -649,7 +699,7 @@ export default function TeamSelection() {
                 </>
               ) : (
                 <div className="map-selection__placeholder">
-                  <div className="map-selection__placeholder-icon">🗺️</div>
+                  <div className="map-selection__placeholder-icon"><Map size={32} /></div>
                   <div className="map-selection__placeholder-text">
                     Selecciona un país en el mapa
                   </div>
@@ -678,7 +728,7 @@ export default function TeamSelection() {
                     onClick={() => leagueTeams.length > 0 && handleSelectLeague(leagueId)}
                     disabled={leagueTeams.length === 0}
                   >
-                    <div className="league-icon">⚽</div>
+                    <div className="league-icon"><FootballIcon size={20} /></div>
                     <div className="info">
                       <span className="name">{LEAGUE_NAMES[leagueId]}</span>
                       <span className="meta">
@@ -690,7 +740,7 @@ export default function TeamSelection() {
                         }
                       </span>
                     </div>
-                    <span className="arrow">{leagueTeams.length > 0 ? '→' : '🔒'}</span>
+                    <span className="arrow">{leagueTeams.length > 0 ? <ChevronRight size={14} /> : <Lock size={14} />}</span>
                   </button>
                 );
               })}
@@ -701,7 +751,7 @@ export default function TeamSelection() {
         {/* GRUPOS */}
         {currentContent === 'groups' && selectedLeague && (
           <div className="groups-grid">
-            <h2>📋 {LEAGUE_NAMES[selectedLeague]} - Selecciona un grupo</h2>
+            <h2><ClipboardList size={20} /> {LEAGUE_NAMES[selectedLeague]} - Selecciona un grupo</h2>
             <div className="groups-list">
               {Object.entries(getLeagueGroups(selectedLeague) || {}).map(([groupId, group]) => (
                 <button
@@ -709,7 +759,7 @@ export default function TeamSelection() {
                   className="group-card"
                   onClick={() => handleSelectGroup(groupId)}
                 >
-                  <div className="group-icon">🏆</div>
+                  <div className="group-icon"><Trophy size={20} /></div>
                   <div className="info">
                     <span className="name">{group.name}</span>
                     <span className="meta">
@@ -739,7 +789,7 @@ export default function TeamSelection() {
               <div className="search-box">
                 <input
                   type="text"
-                  placeholder="🔍 Buscar equipo..."
+                  placeholder="Buscar equipo..."
                   value={searchTerm}
                   onChange={e => setSearchTerm(e.target.value)}
                 />
@@ -773,7 +823,7 @@ export default function TeamSelection() {
                       </div>
                       <span className="team-ovr">{avgOvr || '??'}</span>
                       <span className="team-diff" style={{ color: difficulty.color }}>
-                        {'★'.repeat(difficulty.stars)}
+                        {Array.from({ length: difficulty.stars }, (_, i) => <Star key={i} size={12} style={{fill:'currentColor'}} />)}
                       </span>
                     </button>
                   );
@@ -805,22 +855,22 @@ export default function TeamSelection() {
                   {/* Stats */}
                   <div className="stats-grid">
                     <div className="stat-card">
-                      <span className="icon">🏟️</span>
+                      <span className="icon"><Building2 size={16} /></span>
                       <span className="label">Estadio</span>
                       <span className="value">{selectedTeam.stadium || 'Municipal'}</span>
                     </div>
                     <div className="stat-card">
-                      <span className="icon">👥</span>
+                      <span className="icon"><Users size={16} /></span>
                       <span className="label">Capacidad</span>
                       <span className="value">{(selectedTeam.stadiumCapacity || 15000).toLocaleString()}</span>
                     </div>
                     <div className="stat-card">
-                      <span className="icon">💰</span>
+                      <span className="icon"><DollarSign size={16} /></span>
                       <span className="label">Presupuesto</span>
                       <span className="value highlight">{formatMoney(selectedTeam.budget)}</span>
                     </div>
                     <div className="stat-card">
-                      <span className="icon">⭐</span>
+                      <span className="icon"><Star size={16} /></span>
                       <span className="label">Reputación</span>
                       <span className="value">{selectedTeam.reputation || 70}/100</span>
                     </div>
@@ -833,14 +883,14 @@ export default function TeamSelection() {
                       className="difficulty-value"
                       style={{ color: getDifficulty(selectedTeam).color }}
                     >
-                      {getDifficulty(selectedTeam).label} {'★'.repeat(getDifficulty(selectedTeam).stars)}
+                      {getDifficulty(selectedTeam).label} {Array.from({ length: getDifficulty(selectedTeam).stars }, (_, i) => <Star key={i} size={12} style={{fill:'currentColor'}} />)}
                     </span>
                   </div>
 
                   {/* Plantilla destacada */}
                   {selectedTeam.players && selectedTeam.players.length > 0 && (
                     <div className="squad-preview">
-                      <h3>⭐ Jugadores destacados</h3>
+                      <h3><Star size={16} /> Jugadores destacados</h3>
                       <div className="players-list">
                         {selectedTeam.players
                           .sort((a, b) => b.overall - a.overall)
@@ -854,19 +904,19 @@ export default function TeamSelection() {
                           ))}
                       </div>
                       <div className="squad-total">
-                        📋 {selectedTeam.players.length} jugadores en plantilla
+                        <ClipboardList size={14} /> {selectedTeam.players.length} jugadores en plantilla
                       </div>
                     </div>
                   )}
 
                   {/* Botón comenzar */}
                   <button className="btn-start" onClick={handleShowPreseason}>
-                    ⚽ COMENZAR CON {selectedTeam.name?.toUpperCase()}
+                    <FootballIcon size={16} /> COMENZAR CON {selectedTeam.name?.toUpperCase()}
                   </button>
                 </div>
               ) : (
                 <div className="no-selection">
-                  <span className="icon">👈</span>
+                  <span className="icon"><ChevronRight size={24} style={{transform:'rotate(180deg)'}} /></span>
                   <p>Selecciona un equipo de la lista</p>
                 </div>
               )}

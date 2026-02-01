@@ -16,7 +16,7 @@ class Stadium3DErrorBoundary extends Component {
     if (this.state.hasError) {
       return (
         <div className="stadium-3d-fallback">
-          <span>🏟️</span>
+          <span><Building2 size={20} /></span>
           <p>Vista 3D no disponible</p>
         </div>
       );
@@ -34,6 +34,8 @@ import {
   PRICE_CONFIG,
   BIG_TEAMS
 } from '../../game/stadiumEconomy';
+import { Building2, Mic, Briefcase, Trophy, Ticket, Coins, BarChart3, Megaphone, Users, Sprout, Check, AlertTriangle, XCircle, Lock, Wrench, Tag } from 'lucide-react';
+import FootballIcon from '../icons/FootballIcon';
 import './Stadium.scss';
 
 // Función para obtener todos los equipos
@@ -66,10 +68,10 @@ const NAMING_SPONSORS = [
 ];
 
 const SPECIAL_EVENTS = [
-  { id: 'friendly', name: 'Amistoso', icon: '⚽', income: 200000, grassDamage: 5, cooldown: 1 },
-  { id: 'concert', name: 'Concierto', icon: '🎤', income: 500000, grassDamage: 20, cooldown: 3 },
-  { id: 'corporate', name: 'Evento Corporativo', icon: '💼', income: 150000, grassDamage: 3, cooldown: 1 },
-  { id: 'legends', name: 'Partido Leyendas', icon: '🏆', income: 400000, grassDamage: 8, cooldown: 2 }
+  { id: 'friendly', name: 'Amistoso', icon: <FootballIcon size={16} />, income: 200000, grassDamage: 5, cooldown: 1 },
+  { id: 'concert', name: 'Concierto', icon: <Mic size={16} />, income: 500000, grassDamage: 20, cooldown: 3 },
+  { id: 'corporate', name: 'Evento Corporativo', icon: <Briefcase size={16} />, income: 150000, grassDamage: 3, cooldown: 1 },
+  { id: 'legends', name: 'Partido Leyendas', icon: <Trophy size={16} />, income: 400000, grassDamage: 8, cooldown: 2 }
 ];
 
 // === COMPONENTE ===
@@ -206,7 +208,7 @@ export default function Stadium() {
       payload: {
         id: Date.now(),
         type: 'stadium',
-        title: '🎫 Campaña de abonos cerrada',
+        title: 'Campaña de abonos cerrada',
         content: `${totalAbonados.toLocaleString()} abonados × €${seasonTicketPrice} = ${formatMoney(totalSeasonTicketIncome)} ingresados`,
         date: `Semana ${state.currentWeek}`
       }
@@ -235,7 +237,7 @@ export default function Stadium() {
       payload: {
         id: Date.now(),
         type: 'stadium',
-        title: '💰 Naming Rights',
+        title: 'Naming Rights',
         content: `Acuerdo con ${sponsor.name}: €${(sponsor.offer/1000000).toFixed(1)}M/año por ${sponsor.duration} años`,
         date: `Semana ${state.currentWeek}`
       }
@@ -252,7 +254,7 @@ export default function Stadium() {
         payload: {
           id: Date.now(),
           type: 'warning',
-          title: '⚠️ Fondos insuficientes',
+          title: 'Fondos insuficientes',
           content: `Necesitas €${(penalty / 1000000).toFixed(1)}M para pagar la penalización por cancelar el contrato.`,
           date: `Semana ${state.currentWeek}`
         }
@@ -271,7 +273,7 @@ export default function Stadium() {
       payload: {
         id: Date.now(),
         type: 'stadium',
-        title: '🏟️ Naming cancelado',
+        title: 'Naming cancelado',
         content: penalty > 0 
           ? `El estadio recupera su nombre original. Penalización pagada: €${(penalty / 1000000).toFixed(1)}M`
           : 'El estadio recupera su nombre original',
@@ -317,7 +319,7 @@ export default function Stadium() {
       payload: {
         id: Date.now(),
         type: 'stadium',
-        title: '🏗️ Estadio ampliado',
+        title: 'Estadio ampliado',
         content: `Ahora es ${nextLevel.name} con ${nextLevel.capacity.toLocaleString()} asientos`,
         date: `Semana ${state.currentWeek}`
       }
@@ -450,13 +452,13 @@ export default function Stadium() {
       {/* Tabs simplificados */}
       <div className="stadium-simple__tabs">
         <button className={activeTab === 'general' ? 'active' : ''} onClick={() => setActiveTab('general')}>
-          📊 General
+          <BarChart3 size={14} /> General
         </button>
         <button className={activeTab === 'sponsors' ? 'active' : ''} onClick={() => setActiveTab('sponsors')}>
-          💰 Patrocinio
+          <Coins size={14} /> Patrocinio
         </button>
         <button className={activeTab === 'events' ? 'active' : ''} onClick={() => setActiveTab('events')}>
-          🎤 Eventos
+          <Mic size={14} /> Eventos
         </button>
       </div>
       
@@ -465,11 +467,11 @@ export default function Stadium() {
         <div className="stadium-simple__general">
           {/* Campaña de abonos */}
           <div className="card">
-            <h3>🎫 Campaña de Abonos</h3>
+            <h3><Ticket size={14} /> Campaña de Abonos</h3>
             {seasonTicketsCampaignOpen ? (
               <>
                 <p className="card-hint campaign-open">
-                  📢 Campaña abierta hasta jornada {SEASON_TICKET_DEADLINE} (actual: {currentWeek})
+                  <Megaphone size={12} /> Campaña abierta hasta jornada {SEASON_TICKET_DEADLINE} (actual: {currentWeek})
                 </p>
                 
                 {/* Precio del abono */}
@@ -495,20 +497,20 @@ export default function Stadium() {
                   </div>
                   <div className="abonados-factors">
                     <span title="Overall medio">⭐ {teamOverall}</span>
-                    <span title="Posición liga">📊 {teamPosition}º</span>
-                    <span title="Reputación">🏆 {teamReputation}</span>
+                    <span title="Posición liga"><BarChart3 size={12} /> {teamPosition}º</span>
+                    <span title="Reputación"><Trophy size={12} /> {teamReputation}</span>
                   </div>
                 </div>
                 
                 {/* Botón cerrar campaña */}
                 <button className="btn-close-campaign" onClick={handleCloseCampaign}>
-                  ✅ Cerrar campaña y fijar abonados
+                  <Check size={14} /> Cerrar campaña y fijar abonados
                 </button>
               </>
             ) : (
               <div className="campaign-closed-card">
                 <div className="campaign-closed-header">
-                  <span className="lock-icon">🔒</span>
+                  <span className="lock-icon"><Lock size={14} /></span>
                   <span>Campaña cerrada</span>
                 </div>
                 
@@ -541,10 +543,10 @@ export default function Stadium() {
           
           {/* Precio entrada partido suelto */}
           <div className="card">
-            <h3>🎟️ Precio Entrada</h3>
+            <h3><Ticket size={14} /> Precio Entrada</h3>
             <p className="card-hint">
               {ticketPriceLocked 
-                ? '🔒 Precio fijado para esta temporada. Solo para no abonados.'
+                ? <><Lock size={12} /> Precio fijado para esta temporada. Solo para no abonados.</>
                 : 'Precio por partido para no abonados. Fija antes de que empiece la liga.'}
             </p>
             
@@ -565,7 +567,7 @@ export default function Stadium() {
             {/* Ingresos acumulados esta temporada */}
             <div className="accumulated-income">
               <div className="accumulated-row">
-                <span className="label">💰 Ingresos entradas acumulados</span>
+                <span className="label"><Coins size={12} /> Ingresos entradas acumulados</span>
                 <span className="value accumulated-value">{formatMoney(accumulatedTicketIncome)}</span>
               </div>
               <p className="accumulated-hint">Solo entradas vendidas (sin abonados). Se cobra al finalizar la temporada.</p>
@@ -574,23 +576,23 @@ export default function Stadium() {
             {/* Última jornada en casa */}
             {(stadium.lastMatchTicketSales != null || stadium.lastMatchIncome != null) && (
               <div className="last-match-info">
-                <h4>📊 Última jornada en casa</h4>
+                <h4><BarChart3 size={12} /> Última jornada en casa</h4>
                 <div className="last-match-stats">
                   {stadium.lastMatchTicketSales != null && (
                     <div className="stat-row">
-                      <span className="label">🎟️ Entradas vendidas</span>
+                      <span className="label"><Ticket size={12} /> Entradas vendidas</span>
                       <span className="value">{stadium.lastMatchTicketSales.toLocaleString()}</span>
                     </div>
                   )}
                   {stadium.lastMatchAttendance != null && (
                     <div className="stat-row">
-                      <span className="label">👥 Asistencia total</span>
+                      <span className="label"><Users size={12} /> Asistencia total</span>
                       <span className="value">{stadium.lastMatchAttendance.toLocaleString()}</span>
                     </div>
                   )}
                   {stadium.lastMatchIncome != null && (
                     <div className="stat-row income">
-                      <span className="label">💰 Ingresos entradas</span>
+                      <span className="label"><Coins size={12} /> Ingresos entradas</span>
                       <span className="value">{formatMoney(stadium.lastMatchIncome)}</span>
                     </div>
                   )}
@@ -601,7 +603,7 @@ export default function Stadium() {
           
           {/* Césped */}
           <div className="card grass-card">
-            <h3>🌱 Estado del Césped</h3>
+            <h3><Sprout size={14} /> Estado del Césped</h3>
             <div className="grass-bar">
               <div className={`fill ${grassCondition < 50 ? 'danger' : grassCondition < 70 ? 'warning' : ''}`} style={{ width: `${grassCondition}%` }}></div>
               <span className="grass-percent">{grassCondition}%</span>
@@ -609,9 +611,9 @@ export default function Stadium() {
             
             {/* Estado y efecto en lesiones */}
             <div className="grass-status">
-              {grassCondition >= 80 && <span className="status good">✅ Óptimo</span>}
-              {grassCondition >= 50 && grassCondition < 80 && <span className="status warning">⚠️ Riesgo lesiones +{Math.round((100 - grassCondition) / 2)}%</span>}
-              {grassCondition < 50 && <span className="status danger">❌ Riesgo lesiones +{Math.round((100 - grassCondition))}%</span>}
+              {grassCondition >= 80 && <span className="status good"><Check size={12} /> Óptimo</span>}
+              {grassCondition >= 50 && grassCondition < 80 && <span className="status warning"><AlertTriangle size={12} /> Riesgo lesiones +{Math.round((100 - grassCondition) / 2)}%</span>}
+              {grassCondition < 50 && <span className="status danger"><XCircle size={12} /> Riesgo lesiones +{Math.round((100 - grassCondition))}%</span>}
             </div>
             
             <p className="grass-hint">
@@ -621,7 +623,7 @@ export default function Stadium() {
             
             {grassCondition < 70 && (
               <button className="repair-btn" onClick={handleRepairGrass} disabled={state.money < 200000}>
-                🔧 Reparar césped ({formatMoney(200000)})
+                <Wrench size={14} /> Reparar césped ({formatMoney(200000)})
               </button>
             )}
           </div>
@@ -633,7 +635,7 @@ export default function Stadium() {
         <div className="stadium-simple__sponsors">
           {naming ? (
             <div className="current-sponsor">
-              <h3>🏷️ Patrocinador Actual</h3>
+              <h3><Tag size={14} /> Patrocinador Actual</h3>
               <div className="sponsor-info">
                 <span className="sponsor-name">{naming.name}</span>
                 <span className="sponsor-income">{formatMoney(naming.yearlyIncome)}/año</span>
@@ -643,12 +645,12 @@ export default function Stadium() {
                 Cancelar contrato
               </button>
               <span className="cancel-warning">
-                ⚠️ Penalización: {formatMoney(Math.round(naming.yearlyIncome * naming.yearsLeft * 0.5))}
+                <AlertTriangle size={12} /> Penalización: {formatMoney(Math.round(naming.yearlyIncome * naming.yearsLeft * 0.5))}
               </span>
             </div>
           ) : (
             <>
-              <h3>💰 Ofertas de Naming Rights</h3>
+              <h3><Coins size={14} /> Ofertas de Naming Rights</h3>
               <p className="hint">Vende el nombre del estadio por ingresos anuales</p>
               
               {availableSponsors.length > 0 ? (
@@ -675,7 +677,7 @@ export default function Stadium() {
       {/* TAB: EVENTS */}
       {activeTab === 'events' && (
         <div className="stadium-simple__events">
-          <h3>🎤 Organizar Eventos</h3>
+          <h3><Mic size={14} /> Organizar Eventos</h3>
           <p className="hint">Genera ingresos extra (requiere 2 semanas entre eventos)</p>
           
           {!canHostEvent && (
@@ -702,7 +704,7 @@ export default function Stadium() {
           </div>
           
           {grassCondition < 30 && (
-            <p className="grass-warning">⚠️ Repara el césped antes de organizar eventos</p>
+            <p className="grass-warning"><AlertTriangle size={12} /> Repara el césped antes de organizar eventos</p>
           )}
         </div>
       )}

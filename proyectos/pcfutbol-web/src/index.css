@@ -7,7 +7,7 @@
 :root {
   /* Typography - Larger for accessibility */
   font-family: 'SF Pro Display', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-size: 18px; /* Base size larger */
+  font-size: 15px; /* Compact — matches mobile density */
   line-height: 1.5;
   font-weight: 400;
 
@@ -335,10 +335,7 @@ button {
     overflow-x: hidden !important;
   }
 
-  /* === BASE TYPOGRAPHY — Tighter for mobile === */
-  :root {
-    font-size: 15px;
-  }
+  /* Base font already 15px — no change needed */
 
   /* === GLOBAL CARD STYLE — Apple-like === */
   .office__card,
@@ -472,8 +469,5 @@ button {
     -webkit-backdrop-filter: none;
   }
 
-  /* === GLOBAL SPACING REDUCTION === */
-  h1 { font-size: 1.3rem !important; }
-  h2 { font-size: 1.15rem !important; }
-  h3 { font-size: 1rem !important; }
+  /* Font sizes now compact globally — no mobile overrides needed */
 }

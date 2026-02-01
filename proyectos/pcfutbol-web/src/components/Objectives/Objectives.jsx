@@ -17,9 +17,9 @@ import {
   Flame,
   Shield,
   Zap,
-  Info,
-  CircleDot
+  Info
 } from 'lucide-react';
+import FootballIcon from '../icons/FootballIcon';
 import './Objectives.scss';
 
 export default function Objectives() {
@@ -94,9 +94,9 @@ export default function Objectives() {
       case 'medium':
         return { icon: Target, label: 'Secundario', color: '#0a84ff' };
       case 'low':
-        return { icon: CircleDot, label: 'Opcional', color: '#8e8e93' };
+        return { icon: FootballIcon, label: 'Opcional', color: '#8e8e93' };
       default:
-        return { icon: CircleDot, label: 'Objetivo', color: '#8e8e93' };
+        return { icon: FootballIcon, label: 'Objetivo', color: '#8e8e93' };
     }
   };
 

@@ -66,6 +66,54 @@
     background: var(--color-bg-tertiary);
   }
   
+  &__sim-wrapper {
+    flex: 1;
+    position: relative;
+  }
+
+  &__sim-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 9;
+  }
+
+  &__sim-dropdown {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    margin-bottom: 0.3rem;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-glass-border);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.4);
+    z-index: 10;
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--color-glass-border);
+      color: var(--color-text-primary);
+      font-size: 0.8rem;
+      font-weight: 500;
+      text-align: left;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:active {
+        background: var(--color-glass);
+      }
+    }
+  }
+
   &__action-btn {
     flex: 1;
     display: flex;
@@ -80,14 +128,21 @@
     transition: all 0.2s ease;
     -webkit-tap-highlight-color: transparent;
     min-height: 36px;
+    width: 100%;
     
-    &--save {
+    &--sim {
       background: var(--color-bg-card);
       border: 1px solid var(--color-glass-border);
       color: var(--color-text-secondary);
       
-      &:active {
+      &:active:not(:disabled) {
         background: var(--color-bg-card-hover);
+      }
+
+      &:disabled {
+        opacity: 0.35;
+        cursor: not-allowed;
+        color: var(--color-text-tertiary);
       }
     }
     

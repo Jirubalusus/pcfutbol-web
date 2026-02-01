@@ -1,6 +1,6 @@
 .league-table-v2 {
-  padding: 20px;
-  max-width: 1000px;
+  padding: 12px;
+  max-width: 960px;
   margin: 0 auto;
 
   &__group-tabs {
@@ -33,34 +33,25 @@
     }
   }
 
-  @media (max-width: 768px) {
-    padding: 12px;
-  }
-
   &__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 
     @media (max-width: 768px) {
       flex-direction: column;
       gap: 0.75rem;
       align-items: flex-start;
-      margin-bottom: 16px;
     }
 
     h2 {
       display: flex;
       align-items: center;
-      gap: 12px;
-      font-size: 1.5rem;
+      gap: 10px;
+      font-size: 1.25rem;
       color: #fff;
       margin: 0;
-
-      @media (max-width: 768px) {
-        font-size: 1.25rem;
-      }
 
       svg {
         color: #ffd700;
@@ -256,6 +247,13 @@
           }
         }
 
+        .team-info {
+          display: flex;
+          flex-direction: column;
+          min-width: 0;
+          gap: 2px;
+        }
+
         .team-name {
           font-size: 0.9rem;
           color: #fff;
@@ -265,6 +263,25 @@
 
           @media (max-width: 768px) {
             font-size: 0.7rem;
+          }
+        }
+
+        .team-form-mobile {
+          display: none;
+
+          @media (max-width: 768px) {
+            display: flex;
+            gap: 3px;
+
+            .form-pip {
+              width: 14px;
+              height: 5px;
+              border-radius: 2px;
+
+              &.form-w { background: #30d158; }
+              &.form-d { background: #ffd60a; }
+              &.form-l { background: #ff453a; }
+            }
           }
         }
       }

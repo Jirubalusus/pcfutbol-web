@@ -3,14 +3,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem 1rem;
+  padding: 1rem;
   background: 
     radial-gradient(ellipse 60% 40% at 50% 0%, rgba(0, 102, 255, 0.12) 0%, transparent 50%),
     var(--color-bg-primary);
 
   @media (max-width: 768px) {
     padding: 0.75rem 0.5rem;
-    padding-bottom: 100px;
+    padding-bottom: 130px;
     align-items: flex-start;
     overflow-x: hidden;
   }
@@ -94,17 +94,27 @@
     }
 
     .home-tag, .away-tag {
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      padding: 0.2rem 0.5rem;
+      padding: 0.15rem 0.5rem;
       border-radius: var(--border-radius-xs);
       background: var(--color-accent);
       color: #000;
+      margin-bottom: 0.4rem;
+      min-height: 1.2rem;
+      display: inline-flex;
+      align-items: center;
     }
 
     .away-tag {
       background: var(--color-text-tertiary);
+    }
+    
+    .tag-spacer {
+      display: inline-block;
+      height: 1.2rem;
+      margin-bottom: 0.4rem;
     }
 
     .team-form {
@@ -181,7 +191,6 @@
   }
 
   &__play-btn {
-    width: 100%;
     padding: 1.25rem;
     background: linear-gradient(135deg, var(--color-success), #28a745);
     border: none;
@@ -190,17 +199,30 @@
     font-size: 1.2rem;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: filter 0.3s ease, box-shadow 0.3s ease;
     -webkit-tap-highlight-color: transparent;
     min-height: 56px;
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    z-index: 100;
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.6);
+
+    @media (min-width: 769px) {
+      max-width: 500px;
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%);
+    }
 
     &:hover {
-      transform: translateY(-2px);
+      filter: brightness(1.1);
       box-shadow: 0 8px 30px rgba(48, 209, 88, 0.3);
     }
 
     &:active {
-      transform: scale(0.98);
+      filter: brightness(0.95);
     }
   }
 
@@ -214,16 +236,12 @@
   }
 
   &__minute {
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: 900;
     color: var(--color-accent);
     text-shadow: 0 0 40px rgba(0, 212, 255, 0.5);
     animation: pulse 1s ease-in-out infinite;
     margin-bottom: 1rem;
-
-    @media (max-width: 768px) {
-      font-size: 3rem;
-    }
   }
 
   &__score {
@@ -244,12 +262,8 @@
       }
 
       .score {
-        font-size: 3rem;
+        font-size: 2.25rem;
         font-weight: 900;
-
-        @media (max-width: 768px) {
-          font-size: 2.25rem;
-        }
       }
     }
 
@@ -332,7 +346,38 @@
       min-width: 35px;
     }
 
-    .icon { font-size: 1.1rem; }
+    .icon {
+      display: flex;
+      align-items: center;
+      min-width: 20px;
+      
+      .icon-goal {
+        color: #30d158;
+        fill: #30d158;
+        stroke: #1a8a3a;
+        filter: drop-shadow(0 0 3px rgba(48, 209, 88, 0.4));
+      }
+      
+      .icon-card {
+        display: inline-block;
+        width: 12px;
+        height: 16px;
+        border-radius: 2px;
+        
+        &--yellow {
+          background: #ffd60a;
+          box-shadow: 0 0 4px rgba(255, 214, 10, 0.5);
+        }
+        &--red {
+          background: #ff453a;
+          box-shadow: 0 0 4px rgba(255, 69, 58, 0.5);
+        }
+      }
+      
+      .icon-injury {
+        color: #ff9f0a;
+      }
+    }
 
     .player {
       flex: 1;
@@ -346,15 +391,29 @@
   }
 
   &__skip-btn {
-    padding: 0.6rem 2rem;
-    background: transparent;
+    padding: 0.9rem 2rem;
+    background: rgba(12, 20, 36, 0.95);
     border: 1px solid var(--color-glass-border);
-    border-radius: var(--border-radius-md);
     color: var(--color-text-secondary);
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: background 0.2s ease, color 0.2s ease;
     min-height: 44px;
-    margin-bottom: 1rem;
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    z-index: 100;
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.6);
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    @media (min-width: 769px) {
+      max-width: 500px;
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%);
+    }
 
     &:hover {
       background: var(--color-glass);
@@ -490,15 +549,11 @@
     order: 2;
 
     .score-num {
-      font-size: 3rem;
+      font-size: 2.25rem;
       font-weight: 900;
       line-height: 1;
       min-width: 36px;
       text-align: center;
-
-      @media (max-width: 500px) {
-        font-size: 2.25rem;
-      }
     }
 
     .score-sep {
@@ -663,6 +718,26 @@
     .event-dot {
       font-size: 0.85rem;
       line-height: 1;
+      display: flex;
+      align-items: center;
+      
+      .icon-goal {
+        color: #30d158;
+        fill: #30d158;
+        stroke: #1a8a3a;
+      }
+      
+      .icon-card {
+        display: inline-block;
+        width: 10px;
+        height: 14px;
+        border-radius: 1.5px;
+        
+        &--yellow { background: #ffd60a; }
+        &--red { background: #ff453a; }
+      }
+      
+      .icon-injury { color: #ff9f0a; }
     }
 
     .event-detail {
@@ -704,7 +779,6 @@
   }
 
   &__continue-btn {
-    width: 100%;
     padding: 1.1rem;
     background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
     border: none;
@@ -713,18 +787,30 @@
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: filter 0.3s ease, box-shadow 0.3s ease;
     min-height: 52px;
     letter-spacing: 0.02em;
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    z-index: 100;
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.6);
+
+    @media (min-width: 769px) {
+      max-width: 500px;
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%);
+    }
 
     &:hover {
       filter: brightness(1.1);
-      transform: translateY(-1px);
       box-shadow: 0 6px 24px rgba(0, 212, 255, 0.2);
     }
 
     &:active {
-      transform: scale(0.98);
+      filter: brightness(0.95);
     }
   }
 }

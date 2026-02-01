@@ -14,6 +14,7 @@ import {
   Mail,
   Landmark,
   Globe,
+  Award,
   Settings as SettingsIcon,
   ChevronLeft,
   Gamepad2
@@ -28,6 +29,7 @@ const menuItems = [
   { id: 'calendar', icon: Calendar, label: 'Calendario' },
   { id: 'table', icon: Trophy, label: 'Clasificación' },
   { id: 'transfers', icon: Briefcase, label: 'Fichajes' },
+  { id: 'cup', icon: Award, label: 'Copa', requiresCup: true },
   { id: 'europe', icon: Globe, label: 'Europa' },
   { id: 'stadium', icon: Building2, label: 'Estadio' },
   { id: 'finance', icon: Landmark, label: 'Banco' },
@@ -59,7 +61,9 @@ export default function Sidebar({ activeTab, onTabChange }) {
         </div>
         
         <nav className="sidebar__nav">
-          {menuItems.map(item => {
+          {menuItems
+            .filter(item => !item.requiresCup || state.cupCompetition)
+            .map(item => {
             const IconComponent = item.icon;
             return (
               <button

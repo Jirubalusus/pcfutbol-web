@@ -254,10 +254,10 @@ export default function Europe() {
                             <span className={`pos-badge ${zone}`}>{pos}</span>
                           </td>
                           <td className="team">
-                            {team.shortName || team.teamName}
+                            {team.teamName || team.shortName}
                             {isPlayer && <Star size={10} className="player-star" />}
                           </td>
-                          <td className="league-flag">{leagueFlags[team.league] || '🌍'}</td>
+                          <td className="league-flag">{leagueFlags[team.league] || <Globe size={14} />}</td>
                           <td className="num">{team.played}</td>
                           <td className="num">{team.won}</td>
                           <td className="num">{team.drawn}</td>
@@ -323,9 +323,9 @@ export default function Europe() {
                   return (
                     <div key={idx} className={`europe__result-item ${isPlayerMatch ? 'player-match' : ''}`}>
                       <span className="matchday">J{r.matchday}</span>
-                      <span className="home-team">{homeTeam?.shortName || homeTeam?.teamName || r.homeTeamId}</span>
+                      <span className="home-team">{homeTeam?.teamName || homeTeam?.shortName || r.homeTeamId}</span>
                       <span className="score">{r.homeScore} - {r.awayScore}</span>
-                      <span className="away-team">{awayTeam?.shortName || awayTeam?.teamName || r.awayTeamId}</span>
+                      <span className="away-team">{awayTeam?.teamName || awayTeam?.shortName || r.awayTeamId}</span>
                     </div>
                   );
                 })}
@@ -379,13 +379,13 @@ function renderKnockoutPhase(compState, playerTeamId) {
               return (
                 <div key={idx} className={`europe__matchup ${isPlayerMatchup ? 'player' : ''} ${hasResult ? 'completed' : 'pending'}`}>
                   <div className={`europe__matchup-team ${matchup.winner?.teamId === team1?.teamId ? 'winner' : ''}`}>
-                    <span className="team-name">{team1?.shortName || team1?.teamName || '?'}</span>
+                    <span className="team-name">{team1?.teamName || team1?.shortName || '?'}</span>
                     {matchup.leg1 && (
                       <span className="leg-score">{matchup.leg1.homeScore}-{matchup.leg1.awayScore}</span>
                     )}
                   </div>
                   <div className={`europe__matchup-team ${matchup.winner?.teamId === team2?.teamId ? 'winner' : ''}`}>
-                    <span className="team-name">{team2?.shortName || team2?.teamName || '?'}</span>
+                    <span className="team-name">{team2?.teamName || team2?.shortName || '?'}</span>
                     {matchup.leg2 && (
                       <span className="leg-score">{matchup.leg2.homeScore}-{matchup.leg2.awayScore}</span>
                     )}

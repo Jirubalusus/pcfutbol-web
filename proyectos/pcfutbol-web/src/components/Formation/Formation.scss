@@ -45,7 +45,7 @@ $row-noconv-2: #4a4a4a;
 
   @media (max-width: 768px) {
     padding: 0.25rem;
-    padding-bottom: 95px;
+    padding-bottom: 130px;
   }
 }
 
@@ -95,11 +95,11 @@ $row-noconv-2: #4a4a4a;
   &__title {
     h1 {
       margin: 0;
-      font-size: 1.5rem;
+      font-size: 1.15rem;
       font-weight: 700;
       color: $pcf-gold;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-      letter-spacing: 3px;
+      letter-spacing: 2px;
       
       @media (max-width: 600px) {
         font-size: 1.1rem;
@@ -269,7 +269,7 @@ $row-noconv-2: #4a4a4a;
 .pcf-table {
   .table-header {
     display: grid;
-    grid-template-columns: 35px 1fr 24px 50px 50px; // Nº | JUGADOR | 🟨 | MED | POS
+    grid-template-columns: 35px 1fr 55px 50px 50px; // Nº | JUGADOR | FORM/STATUS | MED | POS
     gap: 4px;
     padding: 0.5rem 0.75rem;
     background: linear-gradient(180deg, #1a2a3a 0%, #0a1a2a 100%);
@@ -318,7 +318,7 @@ $row-noconv-2: #4a4a4a;
   
   .table-row {
     display: grid;
-    grid-template-columns: 35px 1fr 24px 50px 50px; // Nº | JUGADOR | 🟨 | MED | POS
+    grid-template-columns: 35px 1fr 55px 50px 50px; // Nº | JUGADOR | FORM/STATUS | MED | POS
     gap: 4px;
     padding: 0.4rem 0.75rem;
     cursor: pointer;
@@ -482,6 +482,10 @@ $row-noconv-2: #4a4a4a;
           &.warning {
             color: #ffa500;
           }
+          &.boost {
+            color: #30d158;
+            font-weight: 600;
+          }
         }
       }
       
@@ -532,6 +536,15 @@ $row-noconv-2: #4a4a4a;
         &.fit-terrible {
           color: #ff453a !important;
           text-shadow: 0 0 8px rgba(255, 69, 58, 0.5);
+        }
+        
+        // Post-injury performance boost (+2 OVR)
+        &.boosted {
+          color: #30d158 !important;
+          text-shadow: 0 0 10px rgba(48, 209, 88, 0.7);
+          background: rgba(48, 209, 88, 0.15) !important;
+          border: 1px solid rgba(48, 209, 88, 0.4);
+          animation: pulse-boost 2s ease-in-out infinite;
         }
       }
       
@@ -1610,6 +1623,11 @@ $row-noconv-2: #4a4a4a;
   50% { opacity: 1; }
 }
 
+@keyframes pulse-boost {
+  0%, 100% { box-shadow: 0 0 4px rgba(48, 209, 88, 0.3); }
+  50% { box-shadow: 0 0 10px rgba(48, 209, 88, 0.6); }
+}
+
 @keyframes slideUp {
   from {
     opacity: 0;
@@ -2076,4 +2094,61 @@ $row-noconv-2: #4a4a4a;
       box-shadow: 0 4px 12px rgba(10, 132, 255, 0.4);
     }
   }
+}
+
+// ============================================================
+// FORM ARROWS (PES6-style) — Geometric shapes, no emoji issues
+// ============================================================
+.form-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 3px;
+  font-weight: bold;
+  line-height: 1;
+  font-family: 'Segoe UI Symbol', 'Arial', sans-serif;
+  -webkit-text-size-adjust: none;
+  width: 16px;
+  height: 16px;
+  font-size: 11px;
+  
+  // Diagonal arrows via rotation
+  &.form-good {
+    transform: rotate(45deg);
+  }
+  &.form-low {
+    transform: rotate(-45deg);
+  }
+}
+
+.form-excellent { color: #00a8ff !important; }
+.form-good { color: #7ed321 !important; }
+.form-normal { color: #888 !important; opacity: 0.5; }
+.form-low { color: #ff9500 !important; }
+.form-terrible { color: #ff3b30 !important; }
+
+.pitch-form-arrow {
+  position: absolute;
+  font-weight: bold;
+  pointer-events: none;
+  font-family: 'Segoe UI Symbol', 'Arial', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  
+  // Diagonal arrows via rotation on pitch too
+  &.form-good {
+    transform: rotate(45deg);
+  }
+  &.form-low {
+    transform: rotate(-45deg);
+  }
+}
+
+// Asegurar que el dot permite overflow para las flechas
+.pitch-slot .player-dot {
+  overflow: visible;
+  position: relative;
 }

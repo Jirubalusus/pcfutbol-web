@@ -7,10 +7,14 @@ import { assignRole } from '../game/playerRoles';
 import { GlobalTransferEngine, isTransferWindowOpen, formatTransferPrice, calculateMarketValue, TEAM_PROFILES } from '../game/globalTransferEngine';
 import { evaluateManager, generateWarningMessage } from '../game/managerEvaluation';
 import { generateSalary, applyTeamsSalaries } from '../game/salaryGenerator';
+import { getLeagueTier, getEconomyMultiplier } from '../game/leagueTiers';
 import { evolvePlayer } from '../game/seasonEngine';
-import { isEuropeanWeek, getEuropeanPhaseForWeek, EUROPEAN_MATCHDAY_WEEKS } from '../game/europeanCompetitions';
+import { isEuropeanWeekDynamic, getPhaseForWeekCompat, isCupWeek, getCupRoundForWeek, EUROPEAN_MATCHDAY_WEEKS } from '../game/europeanCompetitions';
 import { simulateEuropeanMatchday, advanceEuropeanPhase, recordPlayerLeagueResult, recordPlayerKnockoutResult, getPlayerCompetition } from '../game/europeanSeason';
+import { simulateCupRound, completeCupMatch, getCupRoundName } from '../game/cupSystem';
 import { simulateOtherLeaguesWeek } from '../game/multiLeagueEngine';
+import { updateWeeklyForm, updateMatchTracker, tickRejectedTransfers, generateInitialForm, generateAIForm, FORM_STATES, getFormMatchModifier } from '../game/formSystem';
+import { generateLoanOffers, expireLoans, simulateAILoans, createLoan } from '../game/loanSystem';
 
 const GameContext = createContext();
 
@@ -32,6 +36,8 @@ const initialState = {
   // Player's Team
   teamId: null,
   team: null,
+  leagueId: null,
+  leagueTier: 1,
   formation: '4-3-3',
   tactic: 'balanced',
   lineup: {}, // Alineación actual: { slotId: playerName }
@@ -45,6 +51,11 @@ const initialState = {
   // Transfers - jugadores bloqueados tras fichaje fallido (se resetea cada temporada)
   blockedPlayers: [], // Array de player IDs bloqueados hasta fin de temporada
   
+  // Cesiones (Loans)
+  activeLoans: [],       // Cesiones activas (tanto cedidos como recibidos)
+  loanHistory: [],       // Historial de cesiones
+  incomingLoanOffers: [], // Ofertas de cesión entrantes
+  
   // Facilities
   facilities: {
     stadium: 0,
@@ -55,12 +66,13 @@ const initialState = {
     sponsorship: 0
   },
   
-  // Facility Specializations
+  // Facility Specializations (null = no elegida aún)
   facilitySpecs: {
-    youth: 'offensive',      // offensive, defensive, technical, physical
-    medical: 'recovery',     // prevention, recovery, performance
-    training: 'balanced'     // intensive, balanced, conservative
+    youth: null,
+    medical: null,
+    training: null
   },
+  facilitySpecsLocked: {},  // { youth: true, medical: true } → bloqueado hasta nueva temporada
   
   // Facility Stats (para feedback)
   facilityStats: {
@@ -90,6 +102,9 @@ const initialState = {
   fixtures: [],
   results: [],
   
+  // Player individual season stats
+  playerSeasonStats: {},  // { [playerName]: { goals, assists, cleanSheets, matchesPlayed, yellowCards, redCards, motm } }
+  
   // Otras ligas (para simular en paralelo)
   otherLeagues: {
     segunda: { table: [], fixtures: [] },
@@ -116,6 +131,11 @@ const initialState = {
   europeanCompetitions: null,     // Set via INIT_EUROPEAN_COMPETITIONS
   pendingEuropeanMatch: null,     // Set when player has a European match this week
   europeanQualification: null,    // Set at season end for next season
+  europeanCalendar: null,         // Set when player has European comps; output of buildSeasonCalendar()
+  
+  // Copa Nacional
+  cupCompetition: null,           // Bracket state de la copa nacional
+  pendingCupMatch: null,          // Partido de copa del jugador para esta semana
   
   // Messages & Events
   messages: [],
@@ -144,7 +164,12 @@ const initialState = {
   jobOffers: [],
   
   // UI State
-  currentScreen: 'main_menu'
+  currentScreen: 'main_menu',
+  
+  // Form System (PES6-style arrows)
+  playerForm: {},           // { [playerName]: 'excellent'|'good'|'normal'|'low'|'terrible' }
+  matchTracker: {},         // { [playerName]: { consecutivePlayed, weeksSincePlay } }
+  rejectedTransfers: {}     // { [playerName]: { weeksLeft, totalWeeks, quality } }
 };
 
 function gameReducer(state, action) {
@@ -157,6 +182,10 @@ function gameReducer(state, action) {
       const stadiumInfo = action.payload.stadiumInfo || { name: 'Estadio', capacity: 8000 };
       const stadiumLevel = action.payload.stadiumLevel ?? 0;
       
+      // League tier para escalado económico
+      const leagueId = action.payload.leagueId;
+      const leagueTier = leagueId ? getLeagueTier(leagueId) : 1;
+      
       // Función para generar contrato basado en edad
       const generateContract = (age) => {
         if (age <= 21) return Math.floor(Math.random() * 3) + 3; // 3-5 años (jóvenes promesas)
@@ -167,21 +196,30 @@ function gameReducer(state, action) {
       };
       
       // Asignar roles, contratos y salarios a todos los jugadores
+      // Salarios escalados por tier de liga
       const teamWithRoles = {
         ...action.payload.team,
         players: action.payload.team.players.map(player => ({
           ...player,
           role: player.role || assignRole(player),
           contractYears: player.contractYears ?? generateContract(player.age || 25),
-          salary: generateSalary(player)
+          salary: generateSalary(player, leagueTier)
         }))
       };
+      
+      const initialForm = generateInitialForm(teamWithRoles.players);
+      const initialTracker = {};
+      teamWithRoles.players.forEach(p => {
+        initialTracker[p.name] = { consecutivePlayed: 0, weeksSincePlay: 3 }; // Start as "rested"
+      });
       
       return { 
         ...initialState, 
         gameStarted: true,
         teamId: action.payload.teamId,
         team: teamWithRoles,
+        leagueId: leagueId,
+        leagueTier: leagueTier,
         money: teamWithRoles.budget,
         loaded: true,
         currentScreen: 'office',
@@ -204,7 +242,10 @@ function gameReducer(state, action) {
         // Pretemporada
         preseasonMatches: action.payload.preseasonMatches || [],
         preseasonPhase: action.payload.preseasonPhase || false,
-        preseasonWeek: action.payload.preseasonPhase ? 1 : 0
+        preseasonWeek: action.payload.preseasonPhase ? 1 : 0,
+        playerForm: initialForm,
+        matchTracker: initialTracker,
+        rejectedTransfers: {}
       };
     }
     
@@ -259,8 +300,16 @@ function gameReducer(state, action) {
       };
     }
     
-    case 'SET_PLAYER_LEAGUE':
-      return { ...state, playerLeagueId: action.payload };
+    case 'SET_PLAYER_LEAGUE': {
+      const newLeagueId = action.payload;
+      const newLeagueTier = newLeagueId ? getLeagueTier(newLeagueId) : (state.leagueTier || 1);
+      return { 
+        ...state, 
+        playerLeagueId: newLeagueId,
+        leagueId: newLeagueId,
+        leagueTier: newLeagueTier
+      };
+    }
     
     case 'SET_PLAYER_GROUP':
       return { ...state, playerGroupId: action.payload };
@@ -271,8 +320,56 @@ function gameReducer(state, action) {
         results: [...state.results, action.payload]
       };
     
+    case 'UPDATE_PLAYER_SEASON_STATS': {
+      const { events, playerTeamSide, cleanSheet } = action.payload;
+      const currentStats = { ...state.playerSeasonStats };
+      
+      // Count goals and assists from match events
+      events.forEach(event => {
+        if (event.type === 'goal' && event.team === playerTeamSide) {
+          const scorerName = event.player;
+          if (!currentStats[scorerName]) currentStats[scorerName] = { goals: 0, assists: 0, cleanSheets: 0, matchesPlayed: 0, yellowCards: 0, redCards: 0, motm: 0 };
+          currentStats[scorerName].goals++;
+          
+          if (event.assist) {
+            if (!currentStats[event.assist]) currentStats[event.assist] = { goals: 0, assists: 0, cleanSheets: 0, matchesPlayed: 0, yellowCards: 0, redCards: 0, motm: 0 };
+            currentStats[event.assist].assists++;
+          }
+        }
+        if (event.type === 'yellow_card' && event.team === playerTeamSide) {
+          if (!currentStats[event.player]) currentStats[event.player] = { goals: 0, assists: 0, cleanSheets: 0, matchesPlayed: 0, yellowCards: 0, redCards: 0, motm: 0 };
+          currentStats[event.player].yellowCards++;
+        }
+        if (event.type === 'red_card' && event.team === playerTeamSide) {
+          if (!currentStats[event.player]) currentStats[event.player] = { goals: 0, assists: 0, cleanSheets: 0, matchesPlayed: 0, yellowCards: 0, redCards: 0, motm: 0 };
+          currentStats[event.player].redCards++;
+        }
+      });
+      
+      // Record matches played for lineup players
+      const lineup = state.convocados || [];
+      lineup.forEach(name => {
+        if (!currentStats[name]) currentStats[name] = { goals: 0, assists: 0, cleanSheets: 0, matchesPlayed: 0, yellowCards: 0, redCards: 0, motm: 0 };
+        currentStats[name].matchesPlayed++;
+      });
+      
+      // Clean sheets for GK
+      if (cleanSheet) {
+        const gk = state.team?.players?.find(p => p.position === 'GK' && lineup.includes(p.name));
+        if (gk && currentStats[gk.name]) {
+          currentStats[gk.name].cleanSheets++;
+        }
+      }
+      
+      return { ...state, playerSeasonStats: currentStats };
+    }
+    
     case 'START_NEW_SEASON': {
       const { seasonResult, objectiveRewards, europeanBonus, preseasonMatches, moneyChange, newFixtures, newTable, newObjectives } = action.payload;
+      
+      // === PROCESAR CESIONES AL FINAL DE TEMPORADA ===
+      const currentLoans = state.activeLoans || [];
+      const { expiredLoans: seasonExpiredLoans, remainingLoans: seasonRemainingLoans, messages: loanExpireMessages } = expireLoans(currentLoans, state.leagueTeams);
       
       // Función para calcular si un jugador decide retirarse
       const checkRetirement = (player, newAge) => {
@@ -292,8 +389,19 @@ function gameReducer(state, action) {
         return false;
       };
       
+      // Quitar jugadores en cesión recibida (onLoan: true) antes de evolucionar
+      const playersWithoutLoans = (state.team?.players || []).filter(p => !p.onLoan);
+      
+      // Añadir jugadores propios que vuelven de cesión
+      const myLoanedOutPlayers = seasonExpiredLoans
+        .filter(l => l.fromTeamId === state.teamId)
+        .map(l => l.playerData)
+        .filter(Boolean);
+      
+      const allPlayersForEvolution = [...playersWithoutLoans, ...myLoanedOutPlayers];
+      
       // Evolucionar jugadores, reducir contratos y filtrar expirados
-      const updatedPlayers = (state.team?.players?.map(player => {
+      const updatedPlayers = (allPlayersForEvolution.map(player => {
         const newAge = (player.age || 25) + 1;
         const contractYears = player.contractYears ?? player.personality?.contractYears ?? 2;
         
@@ -314,7 +422,12 @@ function gameReducer(state, action) {
           suspended: false,
           suspensionType: null,
           retiring: willRetire,
-          severeInjuryCount: 0 // Reset al inicio de temporada
+          severeInjuryCount: 0, // Reset al inicio de temporada
+          // Limpiar flags de cesión
+          onLoan: false,
+          loanFromTeam: undefined,
+          loanFromTeamId: undefined,
+          loanSalaryShare: undefined
         };
       }) || [])
         // Filtrar jugadores con contrato expirado o que se retiran
@@ -385,9 +498,29 @@ function gameReducer(state, action) {
         training: { intensity: null }, // Desbloquear entrenamiento
         medicalSlots: [], // Liberar slots médicos
         blockedPlayers: [], // Reset: desbloquear jugadores para nueva temporada
+        facilitySpecsLocked: {}, // Desbloquear especializaciones
+        facilitySpecs: { youth: null, medical: null, training: null }, // Reset especializaciones
+        playerSeasonStats: {},  // Reset para nueva temporada
         // Reset European state (will be re-initialized by SeasonEnd)
         europeanCompetitions: null,
-        pendingEuropeanMatch: null
+        pendingEuropeanMatch: null,
+        europeanCalendar: action.payload.europeanCalendar || null,
+        // Reset cup state (will be re-initialized by SeasonEnd)
+        cupCompetition: null,
+        pendingCupMatch: null,
+        // Cesiones: limpiar para nueva temporada
+        activeLoans: seasonRemainingLoans, // Solo quedan las compradas/no activas
+        loanHistory: [...(state.loanHistory || []), ...seasonExpiredLoans],
+        incomingLoanOffers: [],
+        // Form system reset
+        playerForm: generateInitialForm(
+          updatedPlayers, // or whatever the evolved players array is called in that case
+          state.team?.players?.find(p => p.role === 'captain')?.name
+        ),
+        matchTracker: Object.fromEntries(
+          (updatedPlayers || []).map(p => [p.name, { consecutivePlayed: 0, weeksSincePlay: 3 }])
+        ),
+        rejectedTransfers: {}
       };
     }
     
@@ -416,15 +549,48 @@ function gameReducer(state, action) {
     }
     
     case 'ADVANCE_WEEK': {
-      // Calculate weekly income from facilities
+      // Calculate weekly income from facilities, scaled by league tier
       const stadiumLevel = state.facilities?.stadium || 0;
       const sponsorLevel = state.facilities?.sponsorship || 0;
-      const stadiumIncomes = [500000, 900000, 1500000, 2500000, 4000000];
-      const sponsorIncomes = [25000, 70000, 140000, 235000];
-      const facilityIncome = (stadiumIncomes[stadiumLevel] || 500000) + (sponsorIncomes[sponsorLevel] || 25000);
+      const economyMult = state.leagueId ? getEconomyMultiplier(state.leagueId) : 1.0;
+      const stadiumIncomes = [500000, 900000, 1500000, 2500000, 4000000].map(v => Math.round(v * economyMult));
+      const sponsorIncomes = [25000, 70000, 140000, 235000].map(v => Math.round(v * economyMult));
+      const facilityIncome = (stadiumIncomes[stadiumLevel] || stadiumIncomes[0]) + (sponsorIncomes[sponsorLevel] || sponsorIncomes[0]);
+      
+      // Commercial performance bonuses (sponsorship reacts to results)
+      let commercialBonus = 0;
+      if (sponsorLevel >= 1) {  // Solo si tienes nivel comercial >= 1
+        const table = state.leagueTable || [];
+        const playerTeam = table.find(t => t.teamId === state.teamId);
+        const position = playerTeam ? table.indexOf(playerTeam) + 1 : table.length;
+        const totalTeams = table.length || 20;
+        
+        // Top 25% → bonus, top 10% → big bonus
+        if (position <= Math.ceil(totalTeams * 0.10)) {
+          commercialBonus = Math.round(facilityIncome * 0.15); // +15% income for top position
+        } else if (position <= Math.ceil(totalTeams * 0.25)) {
+          commercialBonus = Math.round(facilityIncome * 0.08); // +8% for top quarter
+        }
+        
+        // Winning streak bonus
+        const playerTeamData = table.find(t => t.teamId === state.teamId);
+        if (playerTeamData?.streak >= 5) {
+          commercialBonus += Math.round(facilityIncome * 0.10); // +10% for 5+ win streak
+        }
+      }
+      
+      const totalIncome = facilityIncome + commercialBonus;
       
       // Calculate weekly salary expenses
-      const salaryExpenses = state.team?.players?.reduce((sum, p) => sum + (p.salary || 0), 0) || 0;
+      // Jugadores cedidos (recibidos): solo pagas tu parte del salario (salaryShare)
+      // Jugadores propios: pagas el salario completo
+      const salaryExpenses = state.team?.players?.reduce((sum, p) => {
+        if (p.onLoan && p.loanSalaryShare !== undefined) {
+          // Jugador en cesión: solo pagas tu porcentaje
+          return sum + Math.round((p.salary || 0) * p.loanSalaryShare);
+        }
+        return sum + (p.salary || 0);
+      }, 0) || 0;
       
       // Heal injuries - reduce weeks left by 1
       let updatedPlayers = state.team?.players?.map(p => {
@@ -453,7 +619,7 @@ function gameReducer(state, action) {
       
       if (state.currentWeek === 38) {
         const youthLevel = state.facilities?.youth || 0;
-        const youthSpec = state.facilitySpecs?.youth || 'defense';
+        const youthSpec = state.facilitySpecs?.youth || 'general';
         // Siempre 1 canterano por temporada — el nivel mejora su media
         const newPlayer = generateYouthPlayer(youthLevel, youthSpec);
         newYouthPlayers.push(newPlayer);
@@ -474,7 +640,7 @@ function gameReducer(state, action) {
       const newMessages = [];
       
       if (newYouthPlayers.length > 0) {
-        const specName = FACILITY_SPECIALIZATIONS.youth.options.find(o => o.id === (state.facilitySpecs?.youth || 'defense'))?.name || 'General';
+        const specName = FACILITY_SPECIALIZATIONS.youth.options.find(o => o.id === state.facilitySpecs?.youth)?.name || 'General';
         const youthPlayer = newYouthPlayers[0];
         newMessages.push({
           id: Date.now(),
@@ -574,7 +740,7 @@ function gameReducer(state, action) {
           
           if (interestedTeams.length > 0) {
             const buyer = interestedTeams[Math.floor(Math.random() * interestedTeams.length)];
-            const marketValue = calculateMarketValue(targetPlayer);
+            const marketValue = calculateMarketValue(targetPlayer, state.leagueId);
             const offerAmount = Math.round(marketValue * (0.85 + Math.random() * 0.35)); // 85-120% del valor
             
             const newOffer = {
@@ -613,12 +779,15 @@ function gameReducer(state, action) {
       );
       
       // ============================================================
-      // EVALUACIÓN DEL MÍSTER (cada 3 semanas para no spamear)
+      // EVALUACIÓN DEL MÍSTER (cada 3 semanas, o cada semana si bancarrota)
       // ============================================================
+      const updatedMoney = state.money + totalIncome - salaryExpenses;
+      const isBankrupt = updatedMoney < 0;
       let managerEval = { confidence: state.managerConfidence || 75, warning: null, fired: false, reason: null };
-      if (nextWeek > 5 && nextWeek % 3 === 0 && !state.preseasonPhase) {
+      if ((nextWeek > 5 && nextWeek % 3 === 0 && !state.preseasonPhase) || isBankrupt) {
         managerEval = evaluateManager({
           ...state,
+          money: updatedMoney,
           currentWeek: nextWeek,
           team: { ...state.team, players: updatedPlayers }
         });
@@ -631,13 +800,15 @@ function gameReducer(state, action) {
       
       // ============================================================
       // EUROPEAN COMPETITIONS — Check for European matchday
+      // v2: Uses dynamic calendar (intercalated weeks) when available
       // ============================================================
       let updatedEuropean = state.europeanCompetitions;
       let pendingEuropeanMatch = null;
       let europeanMessages = [];
 
-      if (updatedEuropean && isEuropeanWeek(nextWeek)) {
-        const phaseInfo = getEuropeanPhaseForWeek(nextWeek);
+      const isEuWeek = isEuropeanWeekDynamic(nextWeek, state.europeanCalendar);
+      if (updatedEuropean && isEuWeek) {
+        const phaseInfo = getPhaseForWeekCompat(nextWeek, state.europeanCalendar);
         
         if (phaseInfo && phaseInfo.phase === 'league') {
           // Swiss league phase matchday
@@ -717,6 +888,79 @@ function gameReducer(state, action) {
       }));
 
       // ============================================================
+      // CUP COMPETITION — Check for cup matchday
+      // ============================================================
+      let updatedCupCompetition = state.cupCompetition;
+      let pendingCupMatch = null;
+      let cupMessages = [];
+
+      const isCupWeekNow = isCupWeek(nextWeek, state.europeanCalendar);
+      if (isCupWeekNow && updatedCupCompetition && !updatedCupCompetition.winner) {
+        const cupRoundIdx = getCupRoundForWeek(nextWeek, state.europeanCalendar);
+        if (cupRoundIdx !== null && cupRoundIdx === updatedCupCompetition.currentRound) {
+          // Build allTeamsData map for simulation
+          const cupAllTeams = {};
+          if (state.leagueTeams) {
+            state.leagueTeams.forEach(t => { cupAllTeams[t.id] = t; });
+          }
+          if (state.team) {
+            cupAllTeams[state.teamId] = state.team;
+          }
+
+          const { updatedBracket, playerMatch } = simulateCupRound(
+            updatedCupCompetition,
+            cupRoundIdx,
+            state.teamId,
+            cupAllTeams
+          );
+          updatedCupCompetition = updatedBracket;
+
+          if (playerMatch && !updatedCupCompetition.playerEliminated) {
+            pendingCupMatch = {
+              ...playerMatch,
+              cupName: updatedCupCompetition.config?.name || 'Copa',
+              cupIcon: updatedCupCompetition.config?.icon || '🏆',
+              cupShortName: updatedCupCompetition.config?.shortName || 'Copa',
+              roundName: updatedCupCompetition.rounds[cupRoundIdx]?.name || `Ronda ${cupRoundIdx + 1}`
+            };
+          }
+
+          // Mensaje si el jugador tenía bye
+          if (!playerMatch && !updatedCupCompetition.playerEliminated) {
+            // Player had a bye this round or all matches were auto-simulated
+            const playerHadBye = updatedCupCompetition.rounds[cupRoundIdx]?.matches.some(
+              m => m.bye && (m.homeTeam?.teamId === state.teamId)
+            );
+            if (playerHadBye) {
+              cupMessages.push({
+                id: Date.now() + Math.random(),
+                type: 'cup',
+                title: `${updatedCupCompetition.config?.icon || '🏆'} ${updatedCupCompetition.config?.shortName || 'Copa'}`,
+                content: `Tu equipo pasa directamente a la siguiente ronda (exento)`,
+                date: `Semana ${nextWeek}`
+              });
+            }
+          }
+
+          // Comprobar si hay ganador
+          if (updatedCupCompetition.winner) {
+            const winnerName = updatedCupCompetition.rounds[updatedCupCompetition.rounds.length - 1]
+              ?.matches[0]?.winnerId === state.teamId
+              ? state.team?.name : 'otro equipo';
+            cupMessages.push({
+              id: Date.now() + Math.random(),
+              type: 'cup',
+              title: `${updatedCupCompetition.config?.icon || '🏆'} ¡${updatedCupCompetition.config?.name || 'Copa'} finalizada!`,
+              content: updatedCupCompetition.winner === state.teamId
+                ? `¡Tu equipo ha ganado la ${updatedCupCompetition.config?.name || 'Copa'}!`
+                : `La ${updatedCupCompetition.config?.name || 'Copa'} ha sido ganada por ${winnerName}`,
+              date: `Semana ${nextWeek}`
+            });
+          }
+        }
+      }
+
+      // ============================================================
       // SIMULATE OTHER LEAGUES (all first-division leagues in parallel)
       // ============================================================
       let updatedOtherLeagues = state.otherLeagues;
@@ -728,15 +972,94 @@ function gameReducer(state, action) {
         }
       }
 
+      // ============================================================
+      // CESIONES: Actualización semanal
+      // ============================================================
+      let updatedActiveLoans = [...(state.activeLoans || [])].map(loan => {
+        if (loan.status === 'active' && loan.weeksRemaining > 0) {
+          return { ...loan, weeksRemaining: loan.weeksRemaining - 1 };
+        }
+        return loan;
+      });
+      
+      // Generar ofertas de cesión entrantes (20% chance durante ventana de mercado)
+      let updatedIncomingLoanOffers = [...(state.incomingLoanOffers || [])];
+      let loanOfferMessages = [];
+      
+      if (windowStatus.open && state.team?.players && Math.random() < 0.20) {
+        const newLoanOffers = generateLoanOffers(
+          state.team, 
+          state.leagueTeams || [], 
+          state.teamId
+        );
+        if (newLoanOffers.length > 0) {
+          updatedIncomingLoanOffers = [...updatedIncomingLoanOffers, ...newLoanOffers];
+          newLoanOffers.forEach(offer => {
+            loanOfferMessages.push({
+              id: Date.now() + Math.random(),
+              type: 'loan',
+              title: '📩 Oferta de cesión recibida',
+              content: `${offer.toTeamName} quiere llevarse a ${offer.playerData.name} en cesión. Fee: €${(offer.loanFee / 1_000_000).toFixed(1)}M`,
+              date: `Semana ${nextWeek}`
+            });
+          });
+        }
+      }
+      
+      // Limpiar ofertas de cesión expiradas
+      updatedIncomingLoanOffers = updatedIncomingLoanOffers.filter(o =>
+        o.status !== 'pending' || (o.expiresAt && o.expiresAt > Date.now())
+      );
+      
+      // Simular cesiones IA
+      let aiLoanMessages = [];
+      if (windowStatus.open && updatedLeagueTeams.length > 0) {
+        const aiLoanEvents = simulateAILoans(updatedLeagueTeams, state.teamId, updatedActiveLoans);
+        aiLoanEvents.forEach(event => {
+          aiLoanMessages.push({
+            id: Date.now() + Math.random(),
+            type: 'loan',
+            title: '🔄 Cesión IA',
+            content: `${event.player.name} (${event.player.position}, ${event.player.overall}) cedido de ${event.from.name} a ${event.to.name}`,
+            date: `Semana ${nextWeek}`
+          });
+        });
+      }
+
+      // === FORM SYSTEM: Update match tracker and form ===
+      // Update match tracker: who played this week?
+      // Players in convocados played, rest didn't
+      const playedThisWeek = state.convocados || [];
+      const updatedTracker = updateMatchTracker(
+        state.matchTracker || {},
+        state.team?.players || [],
+        playedThisWeek
+      );
+
+      // Tick rejected transfer penalties
+      const updatedRejected = tickRejectedTransfers(state.rejectedTransfers);
+
+      // Calculate new form based on play/rest cycle
+      const captainName = state.team?.players?.find(p => p.role === 'captain')?.name || null;
+      const newForm = updateWeeklyForm(
+        state.playerForm || {},
+        state.team?.players || [],
+        updatedTracker,
+        {
+          rejectedTransfers: updatedRejected,
+          captainName
+        }
+      );
+
       return { 
         ...state, 
         currentWeek: nextWeek,
-        money: state.money + facilityIncome - salaryExpenses,
-        weeklyIncome: facilityIncome,
+        money: state.money + totalIncome - salaryExpenses,
+        weeklyIncome: totalIncome,
         weeklyExpenses: salaryExpenses,
         team: state.team ? { ...state.team, players: updatedPlayers } : null,
         stadium: updatedStadium,
-        messages: [...formattedEuropeanMessages, ...newTransferMessages, ...newMessages, ...state.messages].slice(0, 50),
+        messages: [...cupMessages, ...formattedEuropeanMessages, ...newTransferMessages, ...loanOfferMessages, ...aiLoanMessages, ...newMessages, ...state.messages].slice(0, 50),
         pendingEvent: newEvent || state.pendingEvent,
         facilityStats: {
           ...state.facilityStats,
@@ -758,8 +1081,20 @@ function gameReducer(state, action) {
         // European competitions
         europeanCompetitions: updatedEuropean,
         pendingEuropeanMatch,
+        // European calendar (preserved from season setup)
+        europeanCalendar: state.europeanCalendar,
+        // Cup competition
+        cupCompetition: updatedCupCompetition,
+        pendingCupMatch,
         // Other leagues (simulated each week)
-        otherLeagues: updatedOtherLeagues
+        otherLeagues: updatedOtherLeagues,
+        // Form system
+        playerForm: newForm,
+        matchTracker: updatedTracker,
+        rejectedTransfers: updatedRejected,
+        // Cesiones
+        activeLoans: updatedActiveLoans,
+        incomingLoanOffers: updatedIncomingLoanOffers
       };
     }
     
@@ -802,6 +1137,8 @@ function gameReducer(state, action) {
       };
     
     case 'SIGN_PLAYER': {
+      // Block signing if can't afford it
+      if (state.money < action.payload.fee) return state;
       const newPlayer = {
         ...action.payload.player,
         role: action.payload.player.role || assignRole(action.payload.player)
@@ -983,6 +1320,19 @@ function gameReducer(state, action) {
       };
     }
     
+    case 'REJECT_TRANSFER_PENALTY': {
+      const { playerName, offerQuality } = action.payload;
+      const totalWeeks = offerQuality === 'excellent' ? 8 : offerQuality === 'good' ? 5 : 3;
+      const updatedRejected = {
+        ...state.rejectedTransfers,
+        [playerName]: { weeksLeft: totalWeeks, totalWeeks, quality: offerQuality }
+      };
+      const updatedForm = { ...state.playerForm };
+      updatedForm[playerName] = 'terrible'; // Immediate effect
+      
+      return { ...state, rejectedTransfers: updatedRejected, playerForm: updatedForm };
+    }
+    
     case 'COUNTER_INCOMING_OFFER': {
       const offer = action.payload;
       const counterAmount = Math.round(offer.amount * 1.3);
@@ -1028,7 +1378,7 @@ function gameReducer(state, action) {
       const targetPlayer = (targetTeam.players || []).find(p => p.name === offer.player.name);
       if (!targetPlayer) return state;
       
-      const marketValue = calculateMarketValue(targetPlayer);
+      const marketValue = calculateMarketValue(targetPlayer, targetTeam.leagueId);
       const offerRatio = offer.amount / marketValue;
       
       // Decidir respuesta
@@ -1547,7 +1897,7 @@ function gameReducer(state, action) {
     case 'GENERATE_YOUTH_PLAYER': {
       // Usar el sistema de especialización
       const youthLevel = state.facilities?.youth || 0;
-      const youthSpec = state.facilitySpecs?.youth || 'defense';
+      const youthSpec = state.facilitySpecs?.youth || 'general';
       const newPlayer = generateYouthPlayer(youthLevel, youthSpec);
       
       return {
@@ -1567,11 +1917,17 @@ function gameReducer(state, action) {
     }
     
     case 'SET_FACILITY_SPEC': {
+      // Si ya está bloqueada, no permitir cambio
+      if (state.facilitySpecsLocked?.[action.payload.facility]) return state;
       return {
         ...state,
         facilitySpecs: {
           ...state.facilitySpecs,
           [action.payload.facility]: action.payload.spec
+        },
+        facilitySpecsLocked: {
+          ...state.facilitySpecsLocked,
+          [action.payload.facility]: true
         }
       };
     }
@@ -1737,6 +2093,367 @@ function gameReducer(state, action) {
       return {
         ...state,
         pendingEuropeanMatch: null
+      };
+    }
+    
+    // ============================================================
+    // COPA NACIONAL
+    // ============================================================
+    
+    case 'INIT_CUP_COMPETITION': {
+      return {
+        ...state,
+        cupCompetition: action.payload,
+        pendingCupMatch: null
+      };
+    }
+    
+    case 'COMPLETE_CUP_MATCH': {
+      // El jugador terminó su partido de copa
+      const { roundIdx, matchIdx, homeScore, awayScore } = action.payload;
+      if (!state.cupCompetition) return state;
+
+      const updatedBracket = completeCupMatch(
+        state.cupCompetition,
+        roundIdx,
+        matchIdx,
+        homeScore,
+        awayScore,
+        state.teamId
+      );
+
+      const cupMessages = [];
+
+      // Mensaje de resultado
+      const match = state.cupCompetition.rounds[roundIdx]?.matches[matchIdx];
+      if (match) {
+        const isHome = match.homeTeam?.teamId === state.teamId;
+        const playerScore = isHome ? homeScore : awayScore;
+        const rivalScore = isHome ? awayScore : homeScore;
+        const rivalName = isHome ? match.awayTeam?.teamName : match.homeTeam?.teamName;
+        const won = updatedBracket.rounds[roundIdx]?.matches[matchIdx]?.winnerId === state.teamId;
+
+        cupMessages.push({
+          id: Date.now(),
+          type: 'cup',
+          title: `${updatedBracket.config?.icon || '🏆'} ${updatedBracket.config?.shortName || 'Copa'}: ${state.team.name} ${playerScore} - ${rivalScore} ${rivalName || 'Rival'}`,
+          content: won ? '¡Clasificado para la siguiente ronda!' : 'Eliminado de la copa',
+          date: `Semana ${state.currentWeek}`
+        });
+      }
+
+      // Comprobar si ganó la copa
+      if (updatedBracket.winner === state.teamId) {
+        cupMessages.push({
+          id: Date.now() + 1,
+          type: 'cup',
+          title: `${updatedBracket.config?.icon || '🏆'} ¡¡CAMPEÓN DE LA ${(updatedBracket.config?.name || 'Copa').toUpperCase()}!!`,
+          content: `¡${state.team.name} ha ganado la ${updatedBracket.config?.name || 'Copa'}!`,
+          date: `Semana ${state.currentWeek}`
+        });
+      }
+
+      return {
+        ...state,
+        cupCompetition: updatedBracket,
+        pendingCupMatch: null,
+        messages: [...cupMessages, ...state.messages].slice(0, 50)
+      };
+    }
+    
+    case 'CLEAR_CUP_MATCH': {
+      return {
+        ...state,
+        pendingCupMatch: null
+      };
+    }
+    
+    // ============================================================
+    // SISTEMA DE CESIONES (LOANS)
+    // ============================================================
+    
+    case 'LOAN_OUT_PLAYER': {
+      // Ceder jugador propio a otro equipo
+      const { player, toTeamId, toTeamName, loanFee, salaryShare, purchaseOption } = action.payload;
+      
+      // Quitar jugador de la plantilla
+      const updatedPlayers = state.team.players.filter(p => p.name !== player.name);
+      
+      // Limpiar lineup si estaba
+      const cleanedLineup = {};
+      if (state.lineup) {
+        Object.entries(state.lineup).forEach(([slot, p]) => {
+          if (p && p.name !== player.name) {
+            cleanedLineup[slot] = p;
+          }
+        });
+      }
+      
+      // Crear cesión
+      const loan = createLoan(
+        player,
+        { id: state.teamId, name: state.team.name },
+        { id: toTeamId, name: toTeamName },
+        loanFee, salaryShare, purchaseOption
+      );
+      
+      // Actualizar leagueTeams — añadir jugador al equipo receptor
+      const updatedLeagueTeams = (state.leagueTeams || []).map(t => {
+        if (t.id === toTeamId) {
+          const loanedPlayer = {
+            ...player,
+            onLoan: true,
+            loanFromTeam: state.team.name,
+            loanFromTeamId: state.teamId,
+            teamId: toTeamId
+          };
+          return {
+            ...t,
+            players: [...(t.players || []), loanedPlayer],
+            budget: (t.budget || 50_000_000) - loanFee
+          };
+        }
+        return t;
+      });
+      
+      return {
+        ...state,
+        team: { ...state.team, players: updatedPlayers },
+        lineup: cleanedLineup,
+        convocados: (state.convocados || []).filter(name => name !== player.name),
+        money: state.money + loanFee,
+        activeLoans: [...(state.activeLoans || []), loan],
+        leagueTeams: updatedLeagueTeams,
+        messages: [{
+          id: Date.now(),
+          type: 'loan',
+          title: '📤 Jugador cedido',
+          content: `${player.name} cedido al ${toTeamName}. Fee: ${formatTransferPrice(loanFee)}${purchaseOption ? ` | Opción de compra: ${formatTransferPrice(purchaseOption)}` : ''}`,
+          date: `Semana ${state.currentWeek}`
+        }, ...state.messages].slice(0, 50)
+      };
+    }
+    
+    case 'LOAN_IN_PLAYER': {
+      // Recibir jugador en cesión desde otro equipo
+      const { player, fromTeamId, fromTeamName, loanFee, salaryShare, purchaseOption } = action.payload;
+      
+      // Verificar presupuesto
+      if (state.money < loanFee) return state;
+      
+      // Añadir jugador a la plantilla con flag de cesión
+      const loanedPlayer = {
+        ...player,
+        onLoan: true,
+        loanFromTeam: fromTeamName,
+        loanFromTeamId: fromTeamId,
+        loanSalaryShare: salaryShare,
+        teamId: state.teamId
+      };
+      
+      // Crear cesión
+      const loan = createLoan(
+        player,
+        { id: fromTeamId, name: fromTeamName },
+        { id: state.teamId, name: state.team.name },
+        loanFee, salaryShare, purchaseOption
+      );
+      
+      // Actualizar leagueTeams — quitar jugador del equipo propietario
+      const updatedLeagueTeams = (state.leagueTeams || []).map(t => {
+        if (t.id === fromTeamId) {
+          return {
+            ...t,
+            players: (t.players || []).filter(p => p.name !== player.name),
+            budget: (t.budget || 50_000_000) + loanFee
+          };
+        }
+        return t;
+      });
+      
+      return {
+        ...state,
+        team: { ...state.team, players: [...state.team.players, loanedPlayer] },
+        money: state.money - loanFee,
+        activeLoans: [...(state.activeLoans || []), loan],
+        leagueTeams: updatedLeagueTeams,
+        messages: [{
+          id: Date.now(),
+          type: 'loan',
+          title: '📥 Jugador recibido en cesión',
+          content: `${player.name} llega cedido desde ${fromTeamName}. Fee: ${formatTransferPrice(loanFee)}${purchaseOption ? ` | Opción de compra: ${formatTransferPrice(purchaseOption)}` : ''}`,
+          date: `Semana ${state.currentWeek}`
+        }, ...state.messages].slice(0, 50)
+      };
+    }
+    
+    case 'EXPIRE_LOANS': {
+      // Al final de temporada: devolver todos los jugadores cedidos
+      const currentLoans = state.activeLoans || [];
+      const { expiredLoans, remainingLoans, messages: loanMessages } = expireLoans(currentLoans, state.leagueTeams);
+      
+      // Jugadores prestados (onLoan: true) se eliminan de la plantilla
+      let updatedPlayers = (state.team?.players || []).filter(p => !p.onLoan);
+      
+      // Jugadores propios cedidos vuelven a la plantilla
+      const myLoanedOut = expiredLoans.filter(l => l.fromTeamId === state.teamId);
+      for (const loan of myLoanedOut) {
+        if (loan.playerData) {
+          updatedPlayers.push({
+            ...loan.playerData,
+            onLoan: false,
+            loanFromTeam: undefined,
+            loanFromTeamId: undefined,
+            loanSalaryShare: undefined,
+            teamId: state.teamId
+          });
+        }
+      }
+      
+      // Formatear mensajes
+      const formattedMessages = loanMessages.map(m => ({
+        id: Date.now() + Math.random(),
+        type: m.type,
+        title: m.title,
+        content: m.content,
+        date: `Fin Temporada ${state.currentSeason}`
+      }));
+      
+      return {
+        ...state,
+        team: { ...state.team, players: updatedPlayers },
+        activeLoans: remainingLoans,
+        loanHistory: [...(state.loanHistory || []), ...expiredLoans],
+        messages: [...formattedMessages, ...state.messages].slice(0, 50)
+      };
+    }
+    
+    case 'EXERCISE_LOAN_PURCHASE': {
+      // Ejecutar opción de compra — convierte cesión en traspaso definitivo
+      const { loanId } = action.payload;
+      const loan = (state.activeLoans || []).find(l => l.id === loanId);
+      
+      if (!loan || !loan.purchaseOption || loan.status !== 'active') return state;
+      if (state.money < loan.purchaseOption) return state;
+      
+      // El jugador ya está en la plantilla (con onLoan: true), convertirlo en definitivo
+      const updatedPlayers = state.team.players.map(p => {
+        if (p.name === loan.playerId && p.onLoan) {
+          return {
+            ...p,
+            onLoan: false,
+            loanFromTeam: undefined,
+            loanFromTeamId: undefined,
+            loanSalaryShare: undefined,
+            contractYears: 4 // Nuevo contrato
+          };
+        }
+        return p;
+      });
+      
+      // Actualizar cesión como comprada
+      const updatedLoans = (state.activeLoans || []).map(l =>
+        l.id === loanId ? { ...l, status: 'purchased' } : l
+      );
+      
+      // Actualizar leagueTeams — dar dinero al equipo propietario
+      const updatedLeagueTeams = (state.leagueTeams || []).map(t => {
+        if (t.id === loan.fromTeamId) {
+          return {
+            ...t,
+            budget: (t.budget || 50_000_000) + loan.purchaseOption
+          };
+        }
+        return t;
+      });
+      
+      return {
+        ...state,
+        team: { ...state.team, players: updatedPlayers },
+        money: state.money - loan.purchaseOption,
+        activeLoans: updatedLoans,
+        loanHistory: [...(state.loanHistory || []), { ...loan, status: 'purchased' }],
+        leagueTeams: updatedLeagueTeams,
+        messages: [{
+          id: Date.now(),
+          type: 'transfer',
+          title: '✅ Opción de compra ejecutada',
+          content: `${loan.playerData?.name || loan.playerId} fichado en propiedad por ${formatTransferPrice(loan.purchaseOption)}`,
+          date: `Semana ${state.currentWeek}`
+        }, ...state.messages].slice(0, 50)
+      };
+    }
+    
+    case 'ACCEPT_LOAN_OFFER': {
+      // Aceptar oferta de cesión entrante — ceder jugador propio
+      const offer = action.payload;
+      const player = state.team.players.find(p => p.name === offer.playerId);
+      if (!player) return state;
+      
+      // Quitar jugador de la plantilla
+      const updatedPlayers = state.team.players.filter(p => p.name !== offer.playerId);
+      
+      // Limpiar lineup
+      const cleanedLineup = {};
+      if (state.lineup) {
+        Object.entries(state.lineup).forEach(([slot, p]) => {
+          if (p && p.name !== offer.playerId) {
+            cleanedLineup[slot] = p;
+          }
+        });
+      }
+      
+      // Crear cesión
+      const loan = createLoan(
+        player,
+        { id: state.teamId, name: state.team.name },
+        { id: offer.toTeamId, name: offer.toTeamName },
+        offer.loanFee, offer.salaryShare, offer.purchaseOption
+      );
+      
+      // Actualizar leagueTeams
+      const updatedLeagueTeams = (state.leagueTeams || []).map(t => {
+        if (t.id === offer.toTeamId) {
+          const loanedPlayer = {
+            ...player,
+            onLoan: true,
+            loanFromTeam: state.team.name,
+            loanFromTeamId: state.teamId,
+            teamId: offer.toTeamId
+          };
+          return {
+            ...t,
+            players: [...(t.players || []), loanedPlayer],
+            budget: (t.budget || 50_000_000) - offer.loanFee
+          };
+        }
+        return t;
+      });
+      
+      return {
+        ...state,
+        team: { ...state.team, players: updatedPlayers },
+        lineup: cleanedLineup,
+        convocados: (state.convocados || []).filter(name => name !== offer.playerId),
+        money: state.money + offer.loanFee,
+        activeLoans: [...(state.activeLoans || []), loan],
+        incomingLoanOffers: (state.incomingLoanOffers || []).filter(o => o.id !== offer.id),
+        leagueTeams: updatedLeagueTeams,
+        messages: [{
+          id: Date.now(),
+          type: 'loan',
+          title: '📤 Cesión aceptada',
+          content: `${player.name} cedido al ${offer.toTeamName}. Fee: ${formatTransferPrice(offer.loanFee)}`,
+          date: `Semana ${state.currentWeek}`
+        }, ...state.messages].slice(0, 50)
+      };
+    }
+    
+    case 'REJECT_LOAN_OFFER': {
+      const offer = action.payload;
+      return {
+        ...state,
+        incomingLoanOffers: (state.incomingLoanOffers || []).filter(o => o.id !== offer.id)
       };
     }
     

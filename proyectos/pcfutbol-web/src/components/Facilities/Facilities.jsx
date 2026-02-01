@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useGame } from '../../context/GameContext';
 import { 
   FACILITY_SPECIALIZATIONS, 
@@ -7,13 +7,15 @@ import {
   getMedicalHealingWeeks,
   getMedicalTreatmentCost
 } from '../../game/facilitiesSystem';
+import { getFacilityCostMultiplier, getEconomyMultiplier } from '../../game/leagueTiers';
+import { Building2, Briefcase, Sprout, HeartPulse, Search, Coins, TrendingUp, Wrench, Zap, Target, Check, BarChart3, Stethoscope, Syringe, Clock } from 'lucide-react';
 import './Facilities.scss';
 
 const FACILITIES = [
   { 
     id: 'stadium', 
     name: 'Estadio', 
-    icon: '🏟️', 
+    icon: <Building2 size={20} />, 
     category: 'income',
     color: '#4a9eff',
     description: 'Capacidad y factor cancha',
@@ -37,7 +39,7 @@ const FACILITIES = [
   { 
     id: 'sponsorship', 
     name: 'Comercial', 
-    icon: '💼', 
+    icon: <Briefcase size={20} />, 
     category: 'income',
     color: '#ffd60a',
     description: 'Ingresos por patrocinios',
@@ -59,7 +61,7 @@ const FACILITIES = [
   { 
     id: 'youth', 
     name: 'Cantera', 
-    icon: '🌱', 
+    icon: <Sprout size={20} />, 
     category: 'development',
     color: '#64d97b',
     description: 'Genera jóvenes talentos',
@@ -81,7 +83,7 @@ const FACILITIES = [
   { 
     id: 'medical', 
     name: 'Centro Médico', 
-    icon: '🏥', 
+    icon: <HeartPulse size={20} />, 
     category: 'support',
     color: '#ff6b6b',
     description: 'Reduce tiempo de lesiones',
@@ -103,7 +105,7 @@ const FACILITIES = [
   { 
     id: 'scouting', 
     name: 'Ojeadores', 
-    icon: '🔍', 
+    icon: <Search size={20} />, 
     category: 'support',
     color: '#bf5af2',
     description: 'Reduce costes de fichaje',
@@ -125,9 +127,9 @@ const FACILITIES = [
 ];
 
 const CATEGORIES = {
-  income: { name: 'Ingresos', icon: '💰', color: '#ffd60a' },
-  development: { name: 'Desarrollo', icon: '📈', color: '#30d158' },
-  support: { name: 'Soporte', icon: '🛠️', color: '#bf5af2' }
+  income: { name: 'Ingresos', icon: <Coins size={14} />, color: '#ffd60a' },
+  development: { name: 'Desarrollo', icon: <TrendingUp size={14} />, color: '#30d158' },
+  support: { name: 'Soporte', icon: <Wrench size={14} />, color: '#bf5af2' }
 };
 
 export default function Facilities() {
@@ -140,12 +142,38 @@ export default function Facilities() {
   const facilityStats = state.facilityStats || {};
   const pendingEvent = state.pendingEvent;
   
+  // Escalar costes de instalaciones y beneficios por tier de liga
+  const scaledFacilities = useMemo(() => {
+    const costMult = getFacilityCostMultiplier(state.leagueId);
+    const econMult = state.leagueId ? getEconomyMultiplier(state.leagueId) : 1.0;
+    const formatScaled = (amount) => {
+      if (amount >= 1000000) return `€${(amount / 1000000).toFixed(1)}M`;
+      if (amount >= 1000) return `€${Math.round(amount / 1000)}K`;
+      return `€${amount}`;
+    };
+    return FACILITIES.map(f => {
+      const scaled = {
+        ...f,
+        upgradeCost: f.upgradeCost.map(c => Math.round(c * costMult))
+      };
+      // Escalar beneficios de Comercial (income × economyMult)
+      if (f.id === 'sponsorship') {
+        const baseIncomes = [25000, 70000, 140000, 235000]; // weekly
+        scaled.benefits = baseIncomes.map(w => {
+          const annual = Math.round(w * econMult * 38);
+          return `${formatScaled(annual)}/temporada`;
+        });
+      }
+      return scaled;
+    });
+  }, [state.leagueId]);
+  
   // Nuevo sistema de slots médicos
   const medicalLevel = facilities.medical || 0;
   const medicalSlots = state.medicalSlots || []; // Array de nombres de jugadores en tratamiento
   const totalSlots = getMedicalSlots(medicalLevel);
   const treatmentsAvailable = getMedicalTreatmentsAvailable(medicalLevel, medicalSlots);
-  const treatmentCost = getMedicalTreatmentCost(medicalLevel);
+  const treatmentCost = getMedicalTreatmentCost(medicalLevel, state.leagueId);
   const healingWeeks = getMedicalHealingWeeks(medicalLevel);
   const injuredPlayers = state.team?.players?.filter(p => p.injured && p.injuryWeeksLeft > 0) || [];
   // Solo se puede tratar si no tiene médico asignado
@@ -160,7 +188,7 @@ export default function Facilities() {
     // Solo patrocinios dan ingreso fijo semanal
     // El estadio genera ingresos por taquilla (ver pestaña Estadio)
     const sponsorLevel = facilities.sponsorship || 0;
-    const sponsorIncome = FACILITIES[1].levels[sponsorLevel].income;
+    const sponsorIncome = scaledFacilities[1].levels[sponsorLevel].income;
     return sponsorIncome;
   };
   
@@ -227,12 +255,15 @@ export default function Facilities() {
     });
   };
   
+  const facilitySpecsLocked = state.facilitySpecsLocked || {};
+  
   const getSpecForFacility = (facilityId) => {
     const specConfig = FACILITY_SPECIALIZATIONS[facilityId];
     if (!specConfig) return null;
     
     const currentSpec = facilitySpecs[facilityId];
-    return specConfig.options.find(o => o.id === currentSpec) || specConfig.options[0];
+    if (!currentSpec) return null; // No spec selected yet
+    return specConfig.options.find(o => o.id === currentSpec) || null;
   };
   
   const weeklyIncome = calculateWeeklyIncome();
@@ -241,7 +272,7 @@ export default function Facilities() {
     : 0;
 
   // Group facilities by category
-  const facilitiesByCategory = FACILITIES.reduce((acc, f) => {
+  const facilitiesByCategory = scaledFacilities.reduce((acc, f) => {
     if (!acc[f.category]) acc[f.category] = [];
     acc[f.category].push(f);
     return acc;
@@ -254,7 +285,7 @@ export default function Facilities() {
         <div className="facilities-v2__modal-overlay">
           <div className="facilities-v2__modal">
             <div className="modal-header">
-              <span className="modal-icon">⚡</span>
+              <span className="modal-icon"><Zap size={22} /></span>
               <h3>{pendingEvent.title}</h3>
             </div>
             <p className="modal-message">{pendingEvent.message}</p>
@@ -278,11 +309,11 @@ export default function Facilities() {
       )}
       
       {/* Specialization Modal */}
-      {selectedFacility && FACILITY_SPECIALIZATIONS[selectedFacility] && (
+      {selectedFacility && FACILITY_SPECIALIZATIONS[selectedFacility] && !facilitySpecsLocked[selectedFacility] && (
         <div className="facilities-v2__modal-overlay" onClick={() => setSelectedFacility(null)}>
           <div className="facilities-v2__modal facilities-v2__modal--spec" onClick={e => e.stopPropagation()}>
-            <h3>🎯 {FACILITY_SPECIALIZATIONS[selectedFacility].name}</h3>
-            <p className="modal-subtitle">Elige la especialización</p>
+            <h3><Target size={14} /> {FACILITY_SPECIALIZATIONS[selectedFacility].name}</h3>
+            <p className="modal-subtitle">Elige la especialización (se bloqueará hasta la próxima temporada)</p>
             <div className="spec-grid">
               {FACILITY_SPECIALIZATIONS[selectedFacility].options.map(opt => {
                 const isSelected = facilitySpecs[selectedFacility] === opt.id;
@@ -295,7 +326,7 @@ export default function Facilities() {
                     <span className="spec-card__icon">{opt.icon}</span>
                     <span className="spec-card__name">{opt.name}</span>
                     <span className="spec-card__desc">{opt.description}</span>
-                    {isSelected && <span className="spec-card__check">✓</span>}
+                    {isSelected && <span className="spec-card__check"><Check size={12} /></span>}
                   </button>
                 );
               })}
@@ -310,19 +341,19 @@ export default function Facilities() {
       {/* Header with summary */}
       <div className="facilities-v2__header">
         <div className="header-title">
-          <h2>🏗️ Instalaciones</h2>
+          <h2><Wrench size={16} /> Instalaciones</h2>
           <p>Mejora tu club para competir al máximo nivel</p>
         </div>
         <div className="header-stats">
           <div className="stat-box stat-box--income">
-            <span className="stat-icon">💰</span>
+            <span className="stat-icon"><Coins size={14} /></span>
             <div className="stat-content">
               <span className="stat-value">{formatMoney(weeklyIncome * 43)}</span>
               <span className="stat-label">Ingresos/temporada</span>
             </div>
           </div>
           <div className="stat-box stat-box--budget">
-            <span className="stat-icon">🏦</span>
+            <span className="stat-icon"><Building2 size={14} /></span>
             <div className="stat-content">
               <span className="stat-value">{formatMoney(state.money)}</span>
               <span className="stat-label">Presupuesto</span>
@@ -336,12 +367,12 @@ export default function Facilities() {
         <div className="facilities-v2__medical-bay">
           <div className="medical-header">
             <div className="medical-title">
-              <span className="medical-icon">🏥</span>
+              <span className="medical-icon"><HeartPulse size={16} /></span>
               <h3>Enfermería</h3>
             </div>
             <div className="medical-treatments">
               <span className="treatment-badge">
-                👨‍⚕️ Médicos: {treatmentsAvailable}/{totalSlots} disponibles
+                <Stethoscope size={12} /> Médicos: {treatmentsAvailable}/{totalSlots} disponibles
               </span>
               {medicalLevel > 0 && (
                 <span className="treatment-info">
@@ -353,7 +384,7 @@ export default function Facilities() {
           
           {injuredPlayers.length === 0 ? (
             <div className="medical-empty">
-              <span>✅</span> Sin jugadores lesionados
+              <span><Check size={14} /></span> Sin jugadores lesionados
             </div>
           ) : (
             <div className="medical-list">
@@ -370,11 +401,11 @@ export default function Facilities() {
                     <div className="player-details">
                       <span className="player-name">{player.name}</span>
                       <span className="player-injury">
-                        🤕 {player.injuryWeeksLeft} sem{player.injuryWeeksLeft > 1 ? 'anas' : 'ana'}
+                        <HeartPulse size={12} /> {player.injuryWeeksLeft} sem{player.injuryWeeksLeft > 1 ? 'anas' : 'ana'}
                       </span>
                     </div>
                     {hasDoctor ? (
-                      <span className="player-badge treated">👨‍⚕️ En tratamiento</span>
+                      <span className="player-badge treated"><Stethoscope size={12} /> En tratamiento</span>
                     ) : medicalLevel === 0 ? (
                       <span className="player-badge minor">Sin centro médico</span>
                     ) : (
@@ -384,7 +415,7 @@ export default function Facilities() {
                         disabled={!canTreat}
                         title={!canTreat ? 'No hay médicos disponibles' : `Reducir a ${newWeeks} semanas`}
                       >
-                        💉 → {newWeeks} sem ({formatMoney(treatmentCost)})
+                        <Syringe size={12} /> → {newWeeks} sem ({formatMoney(treatmentCost)})
                       </button>
                     )}
                   </div>
@@ -455,16 +486,27 @@ export default function Facilities() {
                     {isExpanded && (
                       <div className="facility-card__expanded">
                         {/* Specialization */}
-                        {facility.hasSpec && spec && (
+                        {facility.hasSpec && (
                           <div 
-                            className="facility-card__spec"
-                            onClick={() => setSelectedFacility(facility.id)}
+                            className={`facility-card__spec ${facilitySpecsLocked[facility.id] ? 'locked' : ''} ${!spec ? 'pending' : ''}`}
+                            onClick={() => !facilitySpecsLocked[facility.id] && setSelectedFacility(facility.id)}
                           >
                             <span className="spec-label">Especialización:</span>
-                            <span className="spec-value">
-                              {spec.icon} {spec.name}
-                            </span>
-                            <span className="spec-edit">Cambiar →</span>
+                            {spec ? (
+                              <>
+                                <span className="spec-value spec-value--active">
+                                  {spec.icon} {spec.name}
+                                </span>
+                                <span className="spec-locked">🔒</span>
+                              </>
+                            ) : (
+                              <>
+                                <span className="spec-value spec-value--none">
+                                  <span className="spec-sparkle">✦</span> Sin elegir
+                                </span>
+                                <span className="spec-edit">Elegir →</span>
+                              </>
+                            )}
                           </div>
                         )}
                         
@@ -514,25 +556,25 @@ export default function Facilities() {
       {/* Impact Stats */}
       {(facilityStats.youth?.playersGenerated > 0 || facilityStats.medical?.weeksSaved > 0 || facilityStats.medical?.treatmentsApplied > 0) && (
         <div className="facilities-v2__impact">
-          <h3>📊 Impacto de tus instalaciones</h3>
+          <h3><BarChart3 size={14} /> Impacto de tus instalaciones</h3>
           <div className="impact-grid">
             {facilityStats.youth?.playersGenerated > 0 && (
               <div className="impact-item">
-                <span className="impact-icon">🌱</span>
+                <span className="impact-icon"><Sprout size={14} /></span>
                 <span className="impact-value">{facilityStats.youth.playersGenerated}</span>
                 <span className="impact-label">Canteranos ({youthAvgOvr} OVR)</span>
               </div>
             )}
             {facilityStats.medical?.treatmentsApplied > 0 && (
               <div className="impact-item">
-                <span className="impact-icon">💉</span>
+                <span className="impact-icon"><Syringe size={12} /></span>
                 <span className="impact-value">{facilityStats.medical.treatmentsApplied}</span>
                 <span className="impact-label">Tratamientos</span>
               </div>
             )}
             {facilityStats.medical?.weeksSaved > 0 && (
               <div className="impact-item">
-                <span className="impact-icon">⏱️</span>
+                <span className="impact-icon"><Clock size={16} /></span>
                 <span className="impact-value">{facilityStats.medical.weeksSaved}</span>
                 <span className="impact-label">Semanas ahorradas</span>
               </div>

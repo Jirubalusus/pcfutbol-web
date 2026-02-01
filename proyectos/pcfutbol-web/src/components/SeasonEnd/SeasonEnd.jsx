@@ -18,7 +18,11 @@ import {
   Swords,
   Sparkles,
   Zap,
-  Globe
+  Globe,
+  ClipboardList,
+  Ticket,
+  Flag,
+  Flame
 } from 'lucide-react';
 import {
   getSeasonResult,
@@ -28,7 +32,9 @@ import {
   getEuropeanBonus,
   EUROPEAN_SPOTS
 } from '../../game/seasonManager';
-import { qualifyTeamsForEurope } from '../../game/europeanCompetitions';
+import { qualifyTeamsForEurope, buildSeasonCalendar, buildEuropeanCalendar, remapFixturesForEuropean } from '../../game/europeanCompetitions';
+import { getCupTeams, generateCupBracket, CUP_CONFIGS } from '../../game/cupSystem';
+import { LEAGUE_CONFIG } from '../../game/multiLeagueEngine';
 import { initializeEuropeanCompetitions } from '../../game/europeanSeason';
 import { initializeLeague } from '../../game/leagueEngine';
 import { initializeNewSeasonWithPromotions, getLeagueName, getLeagueTable } from '../../game/multiLeagueEngine';
@@ -40,9 +46,14 @@ import {
   simulateFullPlayoff,
   isTeamInPlayoff,
   getNextPlayoffMatch,
-  getPlayoffMatchSummary
+  getPlayoffMatchSummary,
+  generateAllGroupPlayoffs,
+  simulateAllGroupPlayoffs,
+  getGroupPlayoffWinners,
+  advanceGroupPlayoffBracket
 } from '../../game/playoffEngine';
-import { getSegundaTeams, getLaLigaTeams } from '../../data/teamsFirestore';
+import { getSegundaTeams, getLaLigaTeams, getPrimeraRfefTeams, getSegundaRfefTeams } from '../../data/teamsFirestore';
+import FootballIcon from '../icons/FootballIcon';
 import './SeasonEnd.scss';
 
 export default function SeasonEnd({ allTeams, onComplete }) {
@@ -61,12 +72,26 @@ export default function SeasonEnd({ allTeams, onComplete }) {
     return pos >= 3 && pos <= 6;
   }, [state.leagueTable, state.teamId, playerLeagueId]);
   
+  // RFEF playoff detection: player in position 2-5 of their group
+  const playerInRFEFPlayoff = useMemo(() => {
+    if (playerLeagueId !== 'primeraRFEF' && playerLeagueId !== 'segundaRFEF') return false;
+    // Player's group table is at state.leagueTable (flattened for compatibility)
+    const groupTable = state.leagueTable || [];
+    const pos = groupTable.findIndex(t => t.teamId === state.teamId) + 1;
+    return pos >= 2 && pos <= 5;
+  }, [state.leagueTable, state.teamId, playerLeagueId]);
+  
+  const anyPlayoff = playerInPlayoff || playerInRFEFPlayoff;
+  
   // Estado inicial: si el jugador está en playoff, empezar ahí
-  const [phase, setPhase] = useState(playerInPlayoff ? 'playoff' : 'summary');
+  const [phase, setPhase] = useState(anyPlayoff ? 'playoff' : 'summary');
   const [selectedPreseason, setSelectedPreseason] = useState(null);
   const [playoffBracket, setPlayoffBracket] = useState(null);
   const [playoffMatchResult, setPlayoffMatchResult] = useState(null);
   const [playerEliminated, setPlayerEliminated] = useState(false);
+  
+  // RFEF playoff brackets (all groups, player group is interactive)
+  const [rfefPlayoffBrackets, setRfefPlayoffBrackets] = useState(null);
   
   // Inicializar playoff
   useEffect(() => {
@@ -88,6 +113,35 @@ export default function SeasonEnd({ allTeams, onComplete }) {
       }
     }
   }, [segundaTable, playerInPlayoff]);
+  
+  // Initialize RFEF playoffs
+  useEffect(() => {
+    if (playerLeagueId !== 'primeraRFEF' && playerLeagueId !== 'segundaRFEF') return;
+    if (rfefPlayoffBrackets) return;
+    
+    // Get group league data
+    const groupLeagueData = state.leagueGroupData || state.otherLeagues?.[playerLeagueId];
+    if (!groupLeagueData?.groups) return;
+    
+    const rfefTeams = playerLeagueId === 'primeraRFEF' ? getPrimeraRfefTeams() : getSegundaRfefTeams();
+    
+    // Generate playoff brackets for all groups
+    const { brackets, playerGroupId } = generateAllGroupPlayoffs(groupLeagueData, rfefTeams, state.teamId);
+    
+    if (playerInRFEFPlayoff && playerGroupId) {
+      // Player participates: simulate all OTHER groups, leave player's group for interactive play
+      const { brackets: simBrackets, playerBracket } = simulateAllGroupPlayoffs(brackets, state.teamId);
+      setRfefPlayoffBrackets(simBrackets);
+      // Use the player's group bracket as the main playoffBracket for reuse of existing UI
+      if (playerBracket) {
+        setPlayoffBracket(playerBracket);
+      }
+    } else {
+      // Player NOT in playoff: auto-simulate all groups
+      const { brackets: simBrackets } = simulateAllGroupPlayoffs(brackets, null);
+      setRfefPlayoffBrackets(simBrackets);
+    }
+  }, [playerLeagueId, state.leagueGroupData, state.otherLeagues, playerInRFEFPlayoff, rfefPlayoffBrackets]);
   
   // Obtener resultado de temporada
   const seasonResult = useMemo(() => {
@@ -138,24 +192,41 @@ export default function SeasonEnd({ allTeams, onComplete }) {
     if (!nextMatch) return;
     
     const result = simulatePlayoffMatch(nextMatch.homeTeam, nextMatch.awayTeam);
-    const updatedBracket = advancePlayoffBracket(playoffBracket, nextMatch.id, result);
+    // Use group-aware advance for RFEF playoffs, standard for Segunda
+    const isRFEF = playerLeagueId === 'primeraRFEF' || playerLeagueId === 'segundaRFEF';
+    const updatedBracket = isRFEF
+      ? advanceGroupPlayoffBracket(playoffBracket, nextMatch.id, result)
+      : advancePlayoffBracket(playoffBracket, nextMatch.id, result);
     
     setPlayoffMatchResult(result);
     setPlayoffBracket(updatedBracket);
+    
+    // Update the RFEF brackets with the player's updated bracket
+    if (isRFEF && rfefPlayoffBrackets && playoffBracket.groupId) {
+      setRfefPlayoffBrackets(prev => ({
+        ...prev,
+        [playoffBracket.groupId]: updatedBracket
+      }));
+    }
     
     // Comprobar si el jugador fue eliminado
     if (result.winnerId !== state.teamId) {
       setPlayerEliminated(true);
       // Auto-simular el resto del playoff si queda la final
       if (updatedBracket.phase === 'final') {
-        const allTeamsData = [...getLaLigaTeams(), ...getSegundaTeams(), ...allTeams];
-        const uniqueTeams = [];
-        const seen = new Set();
-        allTeamsData.forEach(t => { if (!seen.has(t.id)) { seen.add(t.id); uniqueTeams.push(t); }});
-        
         const finalResult = simulatePlayoffMatch(updatedBracket.final.homeTeam, updatedBracket.final.awayTeam);
-        const completedBracket = advancePlayoffBracket(updatedBracket, 'final', finalResult);
+        const completedBracket = isRFEF
+          ? advanceGroupPlayoffBracket(updatedBracket, updatedBracket.final.id, finalResult)
+          : advancePlayoffBracket(updatedBracket, 'final', finalResult);
         setPlayoffBracket(completedBracket);
+        
+        // Update RFEF brackets
+        if (isRFEF && rfefPlayoffBrackets && playoffBracket.groupId) {
+          setRfefPlayoffBrackets(prev => ({
+            ...prev,
+            [playoffBracket.groupId]: completedBracket
+          }));
+        }
       }
     }
   };
@@ -175,8 +246,26 @@ export default function SeasonEnd({ allTeams, onComplete }) {
     // Calcular total de dinero (ingresos - salarios)
     const totalMoney = objectiveRewards.netResult + europeanBonus - totalSalaryCost;
     
+    // Build RFEF playoff data for promotion processing
+    const rfefPlayoffOptions = {};
+    if (rfefPlayoffBrackets) {
+      if (playerLeagueId === 'primeraRFEF' || state.otherLeagues?.primeraRFEF) {
+        // Check if we have Primera RFEF brackets
+        const isPrimera = playerLeagueId === 'primeraRFEF';
+        if (isPrimera) {
+          rfefPlayoffOptions.primeraRFEFPlayoffBrackets = rfefPlayoffBrackets;
+        }
+      }
+      if (playerLeagueId === 'segundaRFEF' || state.otherLeagues?.segundaRFEF) {
+        const isSegunda = playerLeagueId === 'segundaRFEF';
+        if (isSegunda) {
+          rfefPlayoffOptions.segundaRFEFPlayoffBrackets = rfefPlayoffBrackets;
+        }
+      }
+    }
+    
     // Procesar promoción/relegación y generar nuevas ligas (con playoff resuelto)
-    const newSeasonData = initializeNewSeasonWithPromotions(state, state.teamId, playoffBracket);
+    const newSeasonData = initializeNewSeasonWithPromotions(state, state.teamId, playoffBracket, rfefPlayoffOptions);
     
     // Generar nuevos objetivos para la nueva liga del jugador
     const newPlayerLeagueId = newSeasonData.newPlayerLeagueId || state.playerLeagueId || 'laliga';
@@ -191,7 +280,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
           payload: {
             id: Date.now(),
             type: 'relegation',
-            title: '📉 Descensos a Segunda',
+            title: 'Descensos a Segunda',
             content: `Descienden: ${newSeasonData.changes.relegated.join(', ')}`,
             date: `Fin Temporada ${state.currentSeason}`
           }
@@ -205,7 +294,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
           payload: {
             id: Date.now() + 1,
             type: 'promotion',
-            title: '📈 Ascensos directos a La Liga',
+            title: 'Ascensos directos a La Liga',
             content: `Ascienden: ${newSeasonData.changes.promoted.join(', ')}`,
             date: `Fin Temporada ${state.currentSeason}`
           }
@@ -219,7 +308,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
           payload: {
             id: Date.now() + 2,
             type: 'promotion',
-            title: '🏆 Ascenso por Playoff',
+            title: 'Ascenso por Playoff',
             content: `${newSeasonData.changes.playoffWinner} gana el playoff y asciende a La Liga`,
             date: `Fin Temporada ${state.currentSeason}`
           }
@@ -234,7 +323,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
           payload: {
             id: Date.now() + 2,
             type: isPromotion ? 'promotion' : 'relegation',
-            title: isPromotion ? '🎉 ¡ASCENSO!' : '😔 Descenso',
+            title: isPromotion ? '¡ASCENSO!' : 'Descenso',
             content: isPromotion 
               ? `¡${state.team.name} jugará en La Liga la próxima temporada!`
               : `${state.team.name} jugará en Segunda División la próxima temporada.`,
@@ -244,6 +333,46 @@ export default function SeasonEnd({ allTeams, onComplete }) {
       }
     }
     
+    // ============================================================
+    // CUP COMPETITION — Initialize domestic cup
+    // ============================================================
+    let cupBracket = null;
+    let cupRounds = 0;
+
+    try {
+      const cupData = getCupTeams(
+        newPlayerLeagueId,
+        state.team,
+        newSeasonData.otherLeagues || state.otherLeagues,
+        newSeasonData.playerLeague?.table || state.leagueTable
+      );
+
+      if (cupData && cupData.teams.length >= 2) {
+        cupBracket = generateCupBracket(cupData.teams, state.teamId);
+        if (cupBracket) {
+          cupRounds = cupBracket.rounds.length;
+        }
+      }
+    } catch (err) {
+      console.warn('Error initializing cup competition:', err);
+    }
+
+    // ============================================================
+    // SEASON CALENDAR — Intercalate European AND cup weeks into fixtures
+    // ============================================================
+    let finalFixtures = newSeasonData.playerLeague.fixtures;
+    let europeanCalendar = null;
+    const hasEuropean = !!seasonResult.qualification;
+
+    if (hasEuropean || cupRounds > 0) {
+      // Build expanded season calendar with European + cup weeks
+      const totalLeagueMDs = finalFixtures.length > 0
+        ? Math.max(...finalFixtures.map(f => f.week))
+        : 38;
+      europeanCalendar = buildSeasonCalendar(totalLeagueMDs, { hasEuropean, cupRounds });
+      finalFixtures = remapFixturesForEuropean(finalFixtures, europeanCalendar.leagueWeekMap);
+    }
+
     // Dispatch para iniciar nueva temporada
     dispatch({
       type: 'START_NEW_SEASON',
@@ -253,10 +382,11 @@ export default function SeasonEnd({ allTeams, onComplete }) {
         europeanBonus,
         preseasonMatches: selectedPreseason.matches,
         moneyChange: totalMoney,
-        newFixtures: newSeasonData.playerLeague.fixtures,
+        newFixtures: finalFixtures,
         newTable: newSeasonData.playerLeague.table,
         newObjectives,
-        newPlayerLeagueId: newSeasonData.newPlayerLeagueId
+        newPlayerLeagueId: newSeasonData.newPlayerLeagueId,
+        europeanCalendar
       }
     });
     
@@ -282,6 +412,14 @@ export default function SeasonEnd({ allTeams, onComplete }) {
       });
     } else if (newSeasonData.playerLeague && !newSeasonData.playerLeague.isGroupLeague) {
       dispatch({ type: 'SET_PLAYER_GROUP', payload: null });
+    }
+    
+    // Initialize cup competition
+    if (cupBracket) {
+      dispatch({
+        type: 'INIT_CUP_COMPETITION',
+        payload: cupBracket
+      });
     }
     
     // ============================================================
@@ -372,7 +510,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
             payload: {
               id: Date.now() + 100,
               type: 'european',
-              title: `🏆 ¡Competición Europea!`,
+              title: `¡Competición Europea!`,
               content: `Tu equipo jugará la ${compNames[playerQualComp]} la próxima temporada.`,
               date: `Inicio Temporada ${state.currentSeason + 1}`
             }
@@ -405,7 +543,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
           
           {/* Bracket visual */}
           <div className="playoff-bracket">
-            <h3>📋 Cuadro de Playoff</h3>
+            <h3><ClipboardList size={14} /> Cuadro de Playoff</h3>
             <div className="bracket-matches">
               {playoffBracket.semifinals.map((semi, idx) => (
                 <div key={idx} className={`bracket-match ${semi.played ? 'played' : ''}`}>
@@ -430,7 +568,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
               
               {playoffBracket.final.homeTeam && (
                 <div className={`bracket-match final-match ${playoffBracket.final.played ? 'played' : ''}`}>
-                  <span className="bracket-label">🏆 Final</span>
+                  <span className="bracket-label"><Trophy size={14} /> Final</span>
                   <div className="bracket-teams">
                     <span className={`team ${playoffBracket.final.result?.winnerId === playoffBracket.final.homeTeam.teamId ? 'winner' : ''} ${playoffBracket.final.homeTeam.teamId === state.teamId ? 'player-team' : ''}`}>
                       {playoffBracket.final.homeTeam.teamName}
@@ -454,7 +592,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
           {/* Resultado del último partido */}
           {playoffMatchResult && (
             <div className={`playoff-result ${playoffMatchResult.winnerId === state.teamId ? 'victory' : 'defeat'}`}>
-              <h3>{playoffMatchResult.winnerId === state.teamId ? '🎉 ¡Victoria!' : '😔 Derrota'}</h3>
+              <h3>{playoffMatchResult.winnerId === state.teamId ? <><Sparkles size={14} /> ¡Victoria!</> : 'Derrota'}</h3>
               <p className="result-score">
                 {playoffMatchResult.homeTeamName} {playoffMatchResult.homeScore} - {playoffMatchResult.awayScore} {playoffMatchResult.awayTeamName}
               </p>
@@ -466,7 +604,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
               )}
               
               {playoffMatchResult.winnerId === state.teamId && playoffBracket.phase === 'completed' && (
-                <p className="promotion-msg">🏆 ¡{state.team?.name} ASCIENDE A LA LIGA!</p>
+                <p className="promotion-msg"><Trophy size={14} /> ¡{state.team?.name} ASCIENDE A LA LIGA!</p>
               )}
               {playerEliminated && (
                 <p className="elimination-msg">El equipo ha sido eliminado del playoff</p>
@@ -481,15 +619,15 @@ export default function SeasonEnd({ allTeams, onComplete }) {
           {/* Botón para jugar el siguiente partido */}
           {!playoffMatchResult && nextMatch && !playerEliminated && (
             <div className="playoff-next-match">
-              <h3>⚡ Próximo partido</h3>
+              <h3><Zap size={14} /> Próximo partido</h3>
               <p className="next-match-info">
                 {nextMatch.label}: <strong>{nextMatch.homeTeam.teamName}</strong> vs <strong>{nextMatch.awayTeam.teamName}</strong>
               </p>
               <p className="next-match-venue">
-                {isPlayerHome ? '🏠 Jugamos en casa' : '✈️ Jugamos fuera'}
+                {isPlayerHome ? <><Home size={12} /> Jugamos en casa</> : <><Plane size={12} /> Jugamos fuera</>}
               </p>
               <button className="btn-continue btn-play-match" onClick={handlePlayoffMatch}>
-                ⚽ Jugar partido <ChevronRight size={20} />
+                <FootballIcon size={14} /> Jugar partido <ChevronRight size={20} />
               </button>
             </div>
           )}
@@ -499,7 +637,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
             <div className="playoff-completed">
               {playoffBracket.phase === 'completed' && (
                 <>
-                  <h3>🏆 Playoff completado</h3>
+                  <h3><Trophy size={14} /> Playoff completado</h3>
                   {playoffBracket.winner === state.teamId ? (
                     <p className="promotion-msg">¡{state.team?.name} ASCIENDE A LA LIGA!</p>
                   ) : (
@@ -563,7 +701,113 @@ export default function SeasonEnd({ allTeams, onComplete }) {
             </div>
           </div>
           
-          {/* Clasificación Europea */}
+          {/* Resultado en Copa doméstica */}
+          {state.cupCompetition && (() => {
+            const cup = state.cupCompetition;
+            const cupName = cup.config?.name || 'Copa';
+            const cupIcon = cup.config?.icon || '🏆';
+            let cupResult = null;
+            let isChampion = false;
+
+            if (cup.winner === state.teamId) {
+              cupResult = 'Campeón';
+              isChampion = true;
+            } else if (cup.playerEliminated) {
+              // Find the round where the player lost
+              for (let i = 0; i < cup.rounds.length; i++) {
+                const round = cup.rounds[i];
+                for (const match of round.matches) {
+                  if (match.played && !match.bye &&
+                    (match.homeTeam?.teamId === state.teamId || match.awayTeam?.teamId === state.teamId) &&
+                    match.winnerId && match.winnerId !== state.teamId) {
+                    cupResult = round.name;
+                    break;
+                  }
+                }
+                if (cupResult) break;
+              }
+              if (!cupResult) cupResult = 'Eliminado';
+            }
+
+            if (cupResult) {
+              return (
+                <div className={`competition-result ${isChampion ? 'competition-result--champion' : ''}`}>
+                  <Flag size={24} className="result-icon" />
+                  <div className="result-info">
+                    <h3>{cupIcon} {cupName}</h3>
+                    <p>{isChampion ? '🏆 ¡Campeón!' : `Eliminado en ${cupResult}`}</p>
+                  </div>
+                </div>
+              );
+            }
+            return null;
+          })()}
+
+          {/* Resultado en competición europea */}
+          {state.europeanCompetitions?.competitions && (() => {
+            const comps = state.europeanCompetitions.competitions;
+            for (const [compId, compState] of Object.entries(comps)) {
+              if (!compState) continue;
+              if (!compState.teams?.some(t => t.teamId === state.teamId)) continue;
+
+              const compName = compState.config?.shortName || compId;
+              const icon = compState.config?.icon || '🌍';
+              let result = null;
+              let isChampion = false;
+
+              // Won the final
+              if (compState.finalResult?.winner?.teamId === state.teamId) {
+                result = 'Campeón';
+                isChampion = true;
+              } else {
+                // Check elimination phase
+                const q = compState.qualification;
+                if (q?.eliminated?.some(t => t.teamId === state.teamId)) {
+                  result = 'Fase de Liga';
+                } else {
+                  const phases = [
+                    { key: 'playoffResults', name: 'Playoff' },
+                    { key: 'r16Results', name: 'Octavos de Final' },
+                    { key: 'qfResults', name: 'Cuartos de Final' },
+                    { key: 'sfResults', name: 'Semifinales' }
+                  ];
+                  for (const { key, name } of phases) {
+                    const results = compState[key];
+                    if (!results) continue;
+                    const teamMatch = results.find(r =>
+                      r.team1?.teamId === state.teamId || r.team2?.teamId === state.teamId
+                    );
+                    if (teamMatch && teamMatch.winner && teamMatch.winner.teamId !== state.teamId) {
+                      result = name;
+                      break;
+                    }
+                  }
+                  // Lost in final
+                  if (!result && compState.finalResult?.winner && compState.finalResult.winner.teamId !== state.teamId) {
+                    const finalMatch = compState.finalMatchup;
+                    if (finalMatch && (finalMatch.team1?.teamId === state.teamId || finalMatch.team2?.teamId === state.teamId)) {
+                      result = 'Final (Subcampeón)';
+                    }
+                  }
+                }
+              }
+
+              if (result) {
+                return (
+                  <div className={`competition-result ${isChampion ? 'competition-result--champion' : ''}`}>
+                    <Globe size={24} className="result-icon" />
+                    <div className="result-info">
+                      <h3>{icon} {compName}</h3>
+                      <p>{isChampion ? '🏆 ¡Campeón!' : `Eliminado en ${result}`}</p>
+                    </div>
+                  </div>
+                );
+              }
+            }
+            return null;
+          })()}
+
+          {/* Clasificación Europea (próxima temporada) */}
           {competitionName && (
             <div className="european-qualification">
               <Star size={24} className="star-icon" />
@@ -574,7 +818,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
             </div>
           )}
           
-          {/* European competition prizes earned this season */}
+          {/* Premios económicos de competición europea */}
           {state.europeanCompetitions?.competitions && (() => {
             let totalEuropeanPrize = 0;
             let euroCompName = null;
@@ -605,16 +849,16 @@ export default function SeasonEnd({ allTeams, onComplete }) {
             <div className="european-qualification promotion-celebration">
               <Trophy size={24} className="star-icon" />
               <div className="qualification-info">
-                <h3>🎉 ¡ASCENSO POR PLAYOFF!</h3>
+                <h3><Sparkles size={16} /> ¡ASCENSO POR PLAYOFF!</h3>
                 <p>{state.team?.name} jugará en La Liga la próxima temporada</p>
               </div>
             </div>
           )}
           
-          {/* Resultados del playoff de Segunda (si no es el jugador) */}
-          {playoffBracket && playoffBracket.phase === 'completed' && !playerInPlayoff && (
+          {/* Resultados del playoff de Segunda (solo si el jugador está en Segunda pero no en el playoff) */}
+          {playoffBracket && playoffBracket.phase === 'completed' && !playerInPlayoff && playerLeagueId === 'segunda' && (
             <div className="playoff-summary-box">
-              <h3>🏆 Playoff de Ascenso (Segunda)</h3>
+              <h3><Trophy size={14} /> Playoff de Ascenso (Segunda)</h3>
               <div className="playoff-summary-results">
                 {playoffBracket.semifinals.map((semi, idx) => (
                   <p key={idx}>{getPlayoffMatchSummary(semi)}</p>
@@ -680,7 +924,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
             )}
             {(state.stadium?.accumulatedTicketIncome ?? 0) > 0 && (
               <div className="total-row">
-                <span>🎟️ Entradas (acumulado)</span>
+                <span><Ticket size={12} /> Entradas (acumulado)</span>
                 <span className="positive">+{formatMoney(state.stadium?.accumulatedTicketIncome ?? 0)}</span>
               </div>
             )}

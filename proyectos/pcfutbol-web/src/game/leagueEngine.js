@@ -2,6 +2,7 @@
 import { getEffectiveOverall, calculateRoleBonus } from './playerRoles';
 import { simulateMatchV2, calculateMatchStrength, getTeamProfile } from './matchSimulationV2';
 import { getPositionFit, getSlotPosition } from './positionSystem';
+import { generateAIForm } from './formSystem';
 
 // ============== CONFIGURACIÓN DE FORMACIONES ==============
 export const FORMATIONS = {
@@ -181,7 +182,7 @@ export function generateFixtures(teams) {
 }
 
 // ============== CÁLCULO DE FUERZA DEL EQUIPO ==============
-export function calculateTeamStrength(team, formation = '4-3-3', tactic = 'balanced', teamMorale = 70, customLineup = null) {
+export function calculateTeamStrength(team, formation = '4-3-3', tactic = 'balanced', teamMorale = 70, customLineup = null, playerForm = {}) {
   // Si team es undefined o no tiene players, devolver valores por defecto
   if (!team || !team.players || team.players.length === 0) {
     return { overall: team?.reputation || 50, attack: 50, midfield: 50, defense: 50, goalkeeper: 50, lineup: [] };
@@ -249,19 +250,19 @@ export function calculateTeamStrength(team, formation = '4-3-3', tactic = 'balan
   
   // RATINGS EFECTIVOS (para simulación - con roles, táctica, moral)
   const effectiveGoalkeeper = gkPlayers.length > 0 
-    ? gkPlayers.reduce((sum, p) => sum + getEffectiveRating(p, tactic, lineup, teamMorale), 0) / gkPlayers.length 
+    ? gkPlayers.reduce((sum, p) => sum + getEffectiveRating(p, tactic, lineup, teamMorale, playerForm[p.name] || 'normal'), 0) / gkPlayers.length 
     : 60;
   
   const effectiveDefense = defPlayers.length > 0 
-    ? defPlayers.reduce((sum, p) => sum + getEffectiveRating(p, tactic, lineup, teamMorale), 0) / defPlayers.length 
+    ? defPlayers.reduce((sum, p) => sum + getEffectiveRating(p, tactic, lineup, teamMorale, playerForm[p.name] || 'normal'), 0) / defPlayers.length 
     : 60;
   
   const effectiveMidfield = midPlayers.length > 0 
-    ? midPlayers.reduce((sum, p) => sum + getEffectiveRating(p, tactic, lineup, teamMorale), 0) / midPlayers.length 
+    ? midPlayers.reduce((sum, p) => sum + getEffectiveRating(p, tactic, lineup, teamMorale, playerForm[p.name] || 'normal'), 0) / midPlayers.length 
     : 60;
   
   const effectiveAttack = attPlayers.length > 0 
-    ? attPlayers.reduce((sum, p) => sum + getEffectiveRating(p, tactic, lineup, teamMorale), 0) / attPlayers.length 
+    ? attPlayers.reduce((sum, p) => sum + getEffectiveRating(p, tactic, lineup, teamMorale, playerForm[p.name] || 'normal'), 0) / attPlayers.length 
     : 60;
   
   // Aplicar modificadores de formación y táctica (solo para simulación)
@@ -300,7 +301,7 @@ export function calculateTeamStrength(team, formation = '4-3-3', tactic = 'balan
 }
 
 // Rating efectivo considerando fitness, moral, lesiones, ROLES Y POSICIÓN
-function getEffectiveRating(player, tactic = 'balanced', teammates = [], teamMorale = 70) {
+function getEffectiveRating(player, tactic = 'balanced', teammates = [], teamMorale = 70, formState = 'normal') {
   // Penalización por lesión
   if (player.injured) return player.overall * 0.3;
   
@@ -320,6 +321,10 @@ function getEffectiveRating(player, tactic = 'balanced', teammates = [], teamMor
   
   // Bonus por juventud en forma
   if (player.age <= 23 && player.overall >= 75) rating *= 1.02;
+  
+  // Form system bonus/penalty (PES6-style arrows)
+  const formModifier = 1 + ({ excellent: 0.12, good: 0.05, normal: 0, low: -0.08, terrible: -0.18 }[formState] || 0);
+  rating *= formModifier;
   
   return rating;
 }
@@ -379,9 +384,22 @@ function selectBestLineup(players, requiredPositions) {
 
 // ============== SIMULACIÓN DE PARTIDO ==============
 // Ahora usa el motor V2 más realista
-export function simulateMatch(homeTeamId, awayTeamId, homeTeamData, awayTeamData, context = {}) {
+export function simulateMatch(homeTeamId, awayTeamId, homeTeamData, awayTeamData, context = {}, playerTeamForm = {}, playerTeamId = null) {
+  // Generate form for both teams
+  const isHomePlayer = homeTeamData.id === playerTeamId;
+  const isAwayPlayer = awayTeamData.id === playerTeamId;
+  const homeForm = isHomePlayer ? playerTeamForm : generateAIForm(homeTeamData.players || []);
+  const awayForm = isAwayPlayer ? playerTeamForm : generateAIForm(awayTeamData.players || []);
+  
+  // Add form data to context
+  const updatedContext = {
+    ...context,
+    homeForm,
+    awayForm,
+    playerTeamId
+  };
   // Usar el nuevo motor V2 que respeta jerarquías
-  return simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamData, context);
+  return simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamData, updatedContext);
 }
 
 // ============== SIMULACIÓN DE PARTIDO (LEGACY - para referencia) ==============
@@ -396,12 +414,16 @@ function simulateMatchLegacy(homeTeamId, awayTeamId, homeTeamData, awayTeamData,
     isDerby = false,
     importance = 'normal', // normal, crucial, final
     attendanceFillRate = 0.7, // Ocupación del estadio (0.0 - 1.0)
-    grassCondition = 100 // Estado del césped (0-100), afecta lesiones del local
+    grassCondition = 100, // Estado del césped (0-100), afecta lesiones del local
+    playerTeamForm = {},
+    playerTeamId = null
   } = context;
   
-  // Calcular fuerzas (pasando la moral para que los roles se calculen correctamente)
-  const homeStrength = calculateTeamStrength(homeTeamData, homeFormation, homeTactic, homeMorale);
-  const awayStrength = calculateTeamStrength(awayTeamData, awayFormation, awayTactic, awayMorale);
+  // Generate form for both teams
+  const homeForm = homeTeamData.id === playerTeamId ? playerTeamForm : generateAIForm(homeTeamData.players || []);
+  const awayForm = awayTeamData.id === playerTeamId ? playerTeamForm : generateAIForm(awayTeamData.players || []);
+  const homeStrength = calculateTeamStrength(homeTeamData, homeFormation, homeTactic, homeMorale, null, homeForm);
+  const awayStrength = calculateTeamStrength(awayTeamData, awayFormation, awayTactic, awayMorale, null, awayForm);
   
   // Ventaja de local - depende del tamaño del estadio Y de la asistencia
   const stadiumCapacity = homeTeamData.stadiumCapacity || 20000;
@@ -983,10 +1005,11 @@ export function simulateWeekMatches(fixtures, table, week, playerTeamId, allTeam
     const homeEntry = updatedTable.find(t => t.teamId === fixture.homeTeam);
     const awayEntry = updatedTable.find(t => t.teamId === fixture.awayTeam);
     
+    // For AI vs AI matches, both teams are AI so no playerTeamForm needed
     const result = simulateMatch(fixture.homeTeam, fixture.awayTeam, homeTeam, awayTeam, {
       homeMorale: homeEntry?.morale || 70,
       awayMorale: awayEntry?.morale || 70
-    });
+    }, {}, null); // No player team, so both get AI form
     
     updatedTable = updateTable(updatedTable, fixture.homeTeam, fixture.awayTeam, result.homeScore, result.awayScore);
     

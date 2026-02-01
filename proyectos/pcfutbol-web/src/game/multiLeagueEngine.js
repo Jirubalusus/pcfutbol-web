@@ -4,7 +4,7 @@
 // ============================================================
 
 import { initializeLeague, simulateMatch, updateTable, getWeekFixtures } from './leagueEngine';
-import { simulateFullPlayoff } from './playoffEngine';
+import { simulateFullPlayoff, generateAllGroupPlayoffs, simulateAllGroupPlayoffs, getGroupPlayoffWinners } from './playoffEngine';
 import { 
   initializeGroupLeague, 
   simulateGroupLeagueWeek, 
@@ -64,7 +64,7 @@ export const LEAGUE_CONFIG = {
     zones: {
       promotion: [1, 2],
       playoff: [3, 4, 5, 6],
-      relegation: [20, 21, 22]
+      relegation: [19, 20, 21, 22]  // 4 descienden a Primera RFEF
     }
   },
   primeraRFEF: {
@@ -82,9 +82,10 @@ export const LEAGUE_CONFIG = {
       };
     },
     zones: {
-      // Per-group zones: position 1 promotes, last 2 relegate
-      promotionPerGroup: 1,    // Champion of each group ascends to Segunda
-      relegationPerGroup: 2    // Last 2 of each group descend to Segunda RFEF
+      // Per-group zones: position 1 promotes directly, 2-5 play playoff
+      promotionPerGroup: 1,    // Champion of each group ascends directly to Segunda
+      playoffPerGroup: [2, 3, 4, 5], // 2º-5º play playoff: winner also ascends
+      relegationPerGroup: 5    // Últimos 5 de cada grupo descienden a Segunda RFEF (10 total)
     }
   },
   segundaRFEF: {
@@ -105,8 +106,9 @@ export const LEAGUE_CONFIG = {
       };
     },
     zones: {
-      // Per-group zones: position 1 promotes, last 1 relegated (to Tercera, not implemented)
-      promotionPerGroup: 1,   // Champion of each group ascends to Primera RFEF
+      // Per-group zones: position 1 promotes directly, 2-5 play playoff
+      promotionPerGroup: 1,   // Champion of each group ascends directly to Primera RFEF
+      playoffPerGroup: [2, 3, 4, 5], // 2º-5º play playoff: winner also ascends
       relegationPerGroup: 0   // No relegation implemented (Tercera not in game)
     }
   },
@@ -817,19 +819,25 @@ export function processSpanishPromotionRelegation(laligaTable, segundaTable, pla
  * Procesa ascensos/descensos entre Segunda y Primera RFEF
  * y entre Primera RFEF y Segunda RFEF
  */
-function processRFEFPromotionRelegation(segundaTable, primeraRFEFData, segundaRFEFData) {
+/**
+ * @param {Object} options.primeraRFEFPlayoffBrackets - Pre-resolved playoff brackets (if player participated)
+ * @param {Object} options.segundaRFEFPlayoffBrackets - Pre-resolved playoff brackets (if player participated)
+ */
+function processRFEFPromotionRelegation(segundaTable, primeraRFEFData, segundaRFEFData, options = {}) {
   const allSegundaTeams = getSegundaTeams();
   const allPrimeraRfefTeams = getPrimeraRfefTeams();
   const allSegundaRfefTeams = getSegundaRfefTeams();
   
   const changes = {
     segundaToRFEF: [],    // Teams relegated from Segunda to Primera RFEF
-    rfefToSegunda: [],    // Teams promoted from Primera RFEF to Segunda
+    rfefToSegunda: [],    // Teams promoted from Primera RFEF to Segunda (direct + playoff)
     rfefToSegundaRFEF: [],// Teams relegated from Primera RFEF to Segunda RFEF
-    segundaRFEFToRFEF: [] // Teams promoted from Segunda RFEF to Primera RFEF
+    segundaRFEFToRFEF: [],// Teams promoted from Segunda RFEF to Primera RFEF (direct + playoff)
+    primeraRFEFPlayoffBrackets: {},  // Playoff brackets for Primera RFEF
+    segundaRFEFPlayoffBrackets: {}   // Playoff brackets for Segunda RFEF
   };
   
-  // 1. Segunda → Primera RFEF: Last 3 of Segunda descend
+  // 1. Segunda → Primera RFEF: Last 4 of Segunda descend (positions 19-22)
   if (segundaTable && segundaTable.length > 0) {
     const zones = LEAGUE_CONFIG.segunda.zones;
     if (zones.relegation) {
@@ -839,22 +847,51 @@ function processRFEFPromotionRelegation(segundaTable, primeraRFEFData, segundaRF
     }
   }
   
-  // 2. Primera RFEF → Segunda: Champion of each group ascends
+  // 2. Primera RFEF → Segunda: Champions ascend directly + playoff winners
   if (primeraRFEFData?.groups) {
-    const promoted = getPromotedFromGroups(primeraRFEFData, 1);
-    changes.rfefToSegunda = promoted.map(p => p.teamId);
+    // Direct: champion of each group
+    const directPromoted = getPromotedFromGroups(primeraRFEFData, 1);
+    changes.rfefToSegunda = directPromoted.map(p => p.teamId);
+    
+    // Playoff: 2º-5º of each group play playoff, winner ascends
+    let playoffBrackets = options.primeraRFEFPlayoffBrackets;
+    if (!playoffBrackets) {
+      // Auto-generate and simulate all playoffs
+      const { brackets } = generateAllGroupPlayoffs(primeraRFEFData, allPrimeraRfefTeams, null);
+      const simResult = simulateAllGroupPlayoffs(brackets, null);
+      playoffBrackets = simResult.brackets;
+    }
+    changes.primeraRFEFPlayoffBrackets = playoffBrackets;
+    
+    // Add playoff winners to promoted list
+    const playoffWinners = getGroupPlayoffWinners(playoffBrackets);
+    changes.rfefToSegunda = [...changes.rfefToSegunda, ...playoffWinners];
   }
   
-  // 3. Primera RFEF → Segunda RFEF: Last 2 of each group descend
+  // 3. Primera RFEF → Segunda RFEF: Last 5 of each group descend (10 total)
   if (primeraRFEFData?.groups) {
-    const relegated = getRelegatedFromGroups(primeraRFEFData, 2);
+    const relegated = getRelegatedFromGroups(primeraRFEFData, 5);
     changes.rfefToSegundaRFEF = relegated.map(r => r.teamId);
   }
   
-  // 4. Segunda RFEF → Primera RFEF: Champion of each group ascends
+  // 4. Segunda RFEF → Primera RFEF: Champions ascend directly + playoff winners
   if (segundaRFEFData?.groups) {
-    const promoted = getPromotedFromGroups(segundaRFEFData, 1);
-    changes.segundaRFEFToRFEF = promoted.map(p => p.teamId);
+    // Direct: champion of each group
+    const directPromoted = getPromotedFromGroups(segundaRFEFData, 1);
+    changes.segundaRFEFToRFEF = directPromoted.map(p => p.teamId);
+    
+    // Playoff: 2º-5º of each group play playoff, winner ascends
+    let playoffBrackets = options.segundaRFEFPlayoffBrackets;
+    if (!playoffBrackets) {
+      const { brackets } = generateAllGroupPlayoffs(segundaRFEFData, allSegundaRfefTeams, null);
+      const simResult = simulateAllGroupPlayoffs(brackets, null);
+      playoffBrackets = simResult.brackets;
+    }
+    changes.segundaRFEFPlayoffBrackets = playoffBrackets;
+    
+    // Add playoff winners to promoted list
+    const playoffWinners = getGroupPlayoffWinners(playoffBrackets);
+    changes.segundaRFEFToRFEF = [...changes.segundaRFEFToRFEF, ...playoffWinners];
   }
   
   return changes;
@@ -866,7 +903,11 @@ function processRFEFPromotionRelegation(segundaTable, primeraRFEFData, segundaRF
  * @param {string} playerTeamId - ID del equipo del jugador
  * @returns {Object} - Nuevos datos de liga y otras ligas
  */
-export function initializeNewSeasonWithPromotions(state, playerTeamId, playoffBracket = null) {
+/**
+ * @param {Object|null} playoffBracket - Segunda División playoff bracket (resolved)
+ * @param {Object} rfefPlayoffs - { primeraRFEFPlayoffBrackets, segundaRFEFPlayoffBrackets }
+ */
+export function initializeNewSeasonWithPromotions(state, playerTeamId, playoffBracket = null, rfefPlayoffs = {}) {
   const playerLeagueId = state.playerLeagueId || 'laliga';
   
   // Solo procesamos promoción/relegación para ligas españolas
@@ -896,8 +937,11 @@ export function initializeNewSeasonWithPromotions(state, playerTeamId, playoffBr
       laligaSegundaChanges = processSpanishPromotionRelegation(laligaTable, segundaTable, playerTeamId, playoffBracket);
     }
     
-    // Process RFEF promotion/relegation
-    const rfefChanges = processRFEFPromotionRelegation(segundaTable, primeraRFEFData, segundaRFEFData);
+    // Process RFEF promotion/relegation (with playoffs)
+    const rfefChanges = processRFEFPromotionRelegation(segundaTable, primeraRFEFData, segundaRFEFData, {
+      primeraRFEFPlayoffBrackets: rfefPlayoffs.primeraRFEFPlayoffBrackets || null,
+      segundaRFEFPlayoffBrackets: rfefPlayoffs.segundaRFEFPlayoffBrackets || null
+    });
     
     // === BUILD NEW TEAM LISTS ===
     const allLaLigaTeams = getLaLigaTeams();
@@ -1039,7 +1083,9 @@ export function initializeNewSeasonWithPromotions(state, playerTeamId, playoffBr
         segundaToRFEF: rfefChanges.segundaToRFEF.map(id => findTeam(id)?.name || id),
         segundaRFEFPromoted: rfefChanges.segundaRFEFToRFEF.map(id => findTeam(id)?.name || id)
       },
-      playoffBracket: laligaSegundaChanges.playoffBracket
+      playoffBracket: laligaSegundaChanges.playoffBracket,
+      primeraRFEFPlayoffBrackets: rfefChanges.primeraRFEFPlayoffBrackets,
+      segundaRFEFPlayoffBrackets: rfefChanges.segundaRFEFPlayoffBrackets
     };
     
     if (isGroupPlayerLeague) {

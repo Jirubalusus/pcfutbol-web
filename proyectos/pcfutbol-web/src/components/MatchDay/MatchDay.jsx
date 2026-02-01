@@ -7,6 +7,8 @@ import {
 import { simulateMatch, updateTable, simulateWeekMatches, calculateTeamStrength, FORMATIONS, TACTICS } from '../../game/leagueEngine';
 import { simulateOtherLeaguesWeek } from '../../game/multiLeagueEngine';
 import { calculateMatchAttendance, calculateMatchIncome } from '../../game/stadiumEconomy';
+import { Flame, Star, Square, HeartPulse, Ticket, Building2, SkipForward, Circle } from 'lucide-react';
+import FootballIcon from '../icons/FootballIcon';
 import './MatchDay.scss';
 
 // Función para obtener todos los equipos dinámicamente (todas las ligas)
@@ -30,13 +32,25 @@ export default function MatchDay({ onComplete }) {
     }
   }, [eventIndex]);
   
-  // Buscar partido: European match → pretemporada → liga
+  // Buscar partido: Cup match → European match → pretemporada → liga
   let playerMatch;
   let isPreseason = false;
   let isEuropeanMatch = false;
+  let isCupMatch = false;
   let europeanMatchData = null;
+  let cupMatchData = null;
 
-  if (state.pendingEuropeanMatch) {
+  if (state.pendingCupMatch) {
+    // Copa nacional: prioridad sobre todo excepto pretemporada ya iniciada
+    cupMatchData = state.pendingCupMatch;
+    isCupMatch = true;
+    playerMatch = {
+      homeTeam: cupMatchData.homeTeam?.teamId,
+      awayTeam: cupMatchData.awayTeam?.teamId,
+      week: state.currentWeek,
+      isCup: true
+    };
+  } else if (state.pendingEuropeanMatch) {
     // European competition match takes priority
     europeanMatchData = state.pendingEuropeanMatch;
     isEuropeanMatch = true;
@@ -64,14 +78,27 @@ export default function MatchDay({ onComplete }) {
     );
   }
 
-  const isHome = isEuropeanMatch
-    ? (europeanMatchData.isHome ?? (playerMatch?.homeTeam === state.teamId))
-    : (playerMatch?.homeTeam === state.teamId);
+  const isHome = isCupMatch
+    ? (cupMatchData.homeTeam?.teamId === state.teamId)
+    : isEuropeanMatch
+      ? (europeanMatchData.isHome ?? (playerMatch?.homeTeam === state.teamId))
+      : (playerMatch?.homeTeam === state.teamId);
   const opponentId = isHome ? playerMatch?.awayTeam : playerMatch?.homeTeam;
   
   // Resolve opponent data
   let opponent;
-  if (isEuropeanMatch) {
+  if (isCupMatch) {
+    // Cup match has team data embedded in cupMatchData
+    const cupOpponent = isHome ? cupMatchData.awayTeam : cupMatchData.homeTeam;
+    opponent = {
+      ...cupOpponent,
+      id: cupOpponent?.teamId,
+      name: cupOpponent?.teamName,
+      shortName: cupOpponent?.shortName || cupOpponent?.teamName?.substring(0, 3)?.toUpperCase(),
+      players: cupOpponent?.players || [],
+      reputation: cupOpponent?.reputation || 70
+    };
+  } else if (isEuropeanMatch) {
     // European match has team data embedded
     const eu = europeanMatchData;
     if (isHome) {
@@ -215,7 +242,9 @@ export default function MatchDay({ onComplete }) {
         // Centro médico: especialización prevención reduce lesiones
         playerIsHome: isHome,
         medicalPrevention: state.facilitySpecs?.medical === 'prevention' ? 0.30 : 0
-      }
+      },
+      state.playerForm || {},
+      state.teamId
     );
     
     console.log('🎮 simulateMatch done, result:', result ? 'OK' : 'NULL', result?.homeScore, '-', result?.awayScore);
@@ -267,6 +296,70 @@ export default function MatchDay({ onComplete }) {
   };
   
   const handleFinish = () => {
+    // Cup match — dispatch special action and return
+    if (isCupMatch && cupMatchData) {
+      dispatch({
+        type: 'COMPLETE_CUP_MATCH',
+        payload: {
+          roundIdx: cupMatchData.roundIdx,
+          matchIdx: cupMatchData.matchIdx,
+          homeScore: matchResult.homeScore,
+          awayScore: matchResult.awayScore
+        }
+      });
+
+      // Process injuries
+      const playerTeamSide = isHome ? 'home' : 'away';
+      const injuries = matchResult.events.filter(e => e.type === 'injury' && e.team === playerTeamSide);
+      injuries.forEach(injury => {
+        dispatch({
+          type: 'INJURE_PLAYER',
+          payload: {
+            playerName: injury.player,
+            weeksOut: injury.weeksOut,
+            severity: injury.severity
+          }
+        });
+      });
+
+      // Track player season stats
+      const opponentGoals = isHome ? matchResult.awayScore : matchResult.homeScore;
+      dispatch({
+        type: 'UPDATE_PLAYER_SEASON_STATS',
+        payload: {
+          events: matchResult.events,
+          playerTeamSide: isHome ? 'home' : 'away',
+          cleanSheet: opponentGoals === 0
+        }
+      });
+
+      // Process cards (official match)
+      dispatch({ type: 'SERVE_SUSPENSIONS' });
+
+      const playerYellowCards = matchResult.events.filter(
+        e => e.type === 'yellow_card' && e.team === (isHome ? 'home' : 'away')
+      );
+      if (playerYellowCards.length > 0) {
+        dispatch({
+          type: 'ADD_YELLOW_CARDS',
+          payload: { cards: playerYellowCards.map(e => ({ playerName: e.player })) }
+        });
+      }
+
+      const playerRedCards = matchResult.events.filter(
+        e => e.type === 'red_card' && e.team === (isHome ? 'home' : 'away')
+      );
+      if (playerRedCards.length > 0) {
+        dispatch({
+          type: 'ADD_RED_CARDS',
+          payload: { cards: playerRedCards.map(e => ({ playerName: e.player, reason: e.reason || 'Roja directa' })) }
+        });
+      }
+
+      onComplete();
+      return;
+    }
+
     // European match — dispatch special action and return
     if (isEuropeanMatch && europeanMatchData) {
       const euResult = {
@@ -297,7 +390,7 @@ export default function MatchDay({ onComplete }) {
         payload: {
           id: Date.now(),
           type: 'european',
-          title: `⚽ ${europeanMatchData.competitionName || 'Europa'}: ${state.team.name} ${playerScore} - ${opponentScore} ${opponent?.name || 'Rival'}`,
+          title: `${europeanMatchData.competitionName || 'Europa'}: ${state.team.name} ${playerScore} - ${opponentScore} ${opponent?.name || 'Rival'}`,
           content: resultText,
           date: `Semana ${state.currentWeek}`
         }
@@ -317,53 +410,9 @@ export default function MatchDay({ onComplete }) {
         });
       });
 
-      // === Also simulate league match + other leagues for this week ===
-      // European weeks overlap with domestic fixtures; auto-sim the domestic match
-      const leagueMatch = state.fixtures?.find(f =>
-        f.week === state.currentWeek && !f.played &&
-        (f.homeTeam === state.teamId || f.awayTeam === state.teamId)
-      );
-      if (leagueMatch) {
-        const allTeamsForSim = getAllTeams().map(t => t.id === state.teamId ? state.team : t);
-        const leagueOpponentId = leagueMatch.homeTeam === state.teamId ? leagueMatch.awayTeam : leagueMatch.homeTeam;
-        const leagueOpponent = allTeamsForSim.find(t => t.id === leagueOpponentId);
-        const leagueIsHome = leagueMatch.homeTeam === state.teamId;
-        
-        if (leagueOpponent) {
-          const leagueResult = simulateMatch(
-            leagueMatch.homeTeam, leagueMatch.awayTeam,
-            leagueIsHome ? state.team : leagueOpponent,
-            leagueIsHome ? leagueOpponent : state.team,
-            { importance: 'normal', attendanceFillRate: 0.7 }
-          );
-          
-          let updatedFixtures = state.fixtures.map(f =>
-            f.id === leagueMatch.id ? { ...f, played: true, homeScore: leagueResult.homeScore, awayScore: leagueResult.awayScore } : f
-          );
-          let newTable = updateTable(state.leagueTable, leagueMatch.homeTeam, leagueMatch.awayTeam, leagueResult.homeScore, leagueResult.awayScore);
-          
-          // Simulate other league matches for this week
-          const otherMatchesResult = simulateWeekMatches(updatedFixtures, newTable, state.currentWeek, state.teamId, allTeamsForSim);
-          dispatch({ type: 'SET_FIXTURES', payload: otherMatchesResult.fixtures });
-          dispatch({ type: 'SET_LEAGUE_TABLE', payload: otherMatchesResult.table });
-          
-          // Add auto-sim result message
-          const pScore = leagueIsHome ? leagueResult.homeScore : leagueResult.awayScore;
-          const oScore = leagueIsHome ? leagueResult.awayScore : leagueResult.homeScore;
-          dispatch({
-            type: 'ADD_MESSAGE',
-            payload: {
-              id: Date.now() + 0.5,
-              type: 'match_result',
-              title: `⚽ Liga (auto): ${state.team.name} ${pScore} - ${oScore} ${leagueOpponent.name}`,
-              content: pScore > oScore ? '¡Victoria!' : pScore < oScore ? 'Derrota' : 'Empate',
-              date: `Semana ${state.currentWeek}`
-            }
-          });
-        }
-      }
-      
-      // Other leagues are simulated in ADVANCE_WEEK (GameContext)
+      // v2: European weeks are intercalated — no league match this week.
+      // League fixtures have been remapped to non-European weeks.
+      // Other leagues are simulated in ADVANCE_WEEK (GameContext).
 
       onComplete();
       return;
@@ -424,6 +473,18 @@ export default function MatchDay({ onComplete }) {
     });
     } // end if (!isPreseason) — no actualizar liga en amistosos
     
+    // Track player season stats (both official and preseason matches)
+    const playerTeamSide = isHome ? 'home' : 'away';
+    const opponentGoals = isHome ? matchResult.awayScore : matchResult.homeScore;
+    dispatch({
+      type: 'UPDATE_PLAYER_SEASON_STATS',
+      payload: {
+        events: matchResult.events,
+        playerTeamSide,
+        cleanSheet: opponentGoals === 0
+      }
+    });
+    
     // Add message (pretemporada y liga)
     const playerScore = isHome ? matchResult.homeScore : matchResult.awayScore;
     const opponentScore = isHome ? matchResult.awayScore : matchResult.homeScore;
@@ -435,14 +496,13 @@ export default function MatchDay({ onComplete }) {
       payload: {
         id: Date.now(),
         type: 'match_result',
-        title: `${isPreseason ? '🏟️ Amistoso' : 'Resultado'}: ${state.team.name} ${playerScore} - ${opponentScore} ${opponent.name}`,
+        title: `${isPreseason ? 'Amistoso' : 'Resultado'}: ${state.team.name} ${playerScore} - ${opponentScore} ${opponent.name}`,
         content: resultText,
         date: isPreseason ? `Pretemporada ${state.preseasonWeek}` : `Semana ${state.currentWeek}`
       }
     });
     
     // Process injuries for player's team
-    const playerTeamSide = isHome ? 'home' : 'away';
     const playerInjuries = matchResult.events.filter(
       e => e.type === 'injury' && e.team === playerTeamSide
     );
@@ -462,7 +522,7 @@ export default function MatchDay({ onComplete }) {
         payload: {
           id: Date.now() + Math.random(),
           type: 'injury',
-          title: `🏥 Lesión: ${injury.player}`,
+          title: `Lesión: ${injury.player}`,
           content: `${injury.player} estará ${injury.weeksOut} semanas de baja (${getInjuryText(injury.severity)})`,
           date: isPreseason ? `Pretemporada ${state.preseasonWeek}` : `Semana ${state.currentWeek}`
         }
@@ -540,7 +600,7 @@ export default function MatchDay({ onComplete }) {
         payload: {
           id: Date.now() + 0.1,
           type: 'stadium',
-          title: `🎟️ Taquilla: ${att.ticketSales.toLocaleString()} entradas vendidas (${fillPercent}% aforo)`,
+          title: `Taquilla: ${att.ticketSales.toLocaleString()} entradas vendidas (${fillPercent}% aforo)`,
           content: `Ingresos: €${(ticketIncome/1000).toFixed(0)}K (${att.ticketSales} × €${tPrice}) | Acumulado temp.: €${((prevAccumulated + ticketIncome)/1000).toFixed(0)}K`,
           date: `Semana ${state.currentWeek}`
         }
@@ -562,13 +622,13 @@ export default function MatchDay({ onComplete }) {
   
   const getGoalTypeText = (type) => {
     switch (type) {
-      case 'golazo': return '🔥 ¡GOLAZO!';
-      case 'great_strike': return '💫 Gran disparo';
+      case 'golazo': return <><Flame size={14} /> ¡GOLAZO!</>;
+      case 'great_strike': return <><Star size={14} /> Gran disparo</>;
       case 'penalty': return '(Penalti)';
       case 'header': return '(Cabezazo)';
       case 'tap_in': return '(A placer)';
       case 'corner': return '(Córner)';
-      case 'late': return '🔥 ¡Gol en el descuento!';
+      case 'late': return <><Flame size={14} /> ¡Gol en el descuento!</>;
       default: return '';
     }
   };
@@ -587,13 +647,13 @@ export default function MatchDay({ onComplete }) {
       <div className="match-day__content">
         {phase === 'preview' && (
           <div className="match-day__preview">
-            <h2>{isEuropeanMatch ? `${europeanMatchData.competitionName || 'Europa'} — ${europeanMatchData.phase === 'league' ? `Jornada ${europeanMatchData.matchday}` : europeanMatchData.phase}` : isPreseason ? `Amistoso ${state.preseasonWeek}/5` : `Jornada ${state.currentWeek}`}</h2>
+            <h2>{isCupMatch ? `${cupMatchData.cupIcon || '🏆'} ${cupMatchData.cupShortName || 'Copa'} — ${cupMatchData.roundName || 'Ronda'}` : isEuropeanMatch ? `${europeanMatchData.competitionName || 'Europa'} — ${europeanMatchData.phase === 'league' ? `Jornada ${europeanMatchData.matchday}` : europeanMatchData.phase}` : isPreseason ? `Amistoso ${state.preseasonWeek}/5` : `Jornada ${state.currentWeek}`}</h2>
             
             <div className="match-day__teams">
               <div className={`match-day__team ${isHome ? 'player' : ''}`}>
+                {isHome ? <span className="home-tag">LOCAL</span> : <span className="tag-spacer" />}
                 <div className="badge">{isHome ? state.team.shortName : opponent.shortName}</div>
                 <h3>{isHome ? state.team.name : opponent.name}</h3>
-                {isHome && <span className="home-tag">LOCAL</span>}
                 <div className="team-form">
                   {getFormText(isHome ? playerTableEntry?.form : opponentTableEntry?.form)}
                 </div>
@@ -602,9 +662,9 @@ export default function MatchDay({ onComplete }) {
               <div className="match-day__vs">VS</div>
               
               <div className={`match-day__team ${!isHome ? 'player' : ''}`}>
+                {!isHome ? <span className="away-tag">VISITANTE</span> : <span className="tag-spacer" />}
                 <div className="badge">{!isHome ? state.team.shortName : opponent.shortName}</div>
                 <h3>{!isHome ? state.team.name : opponent.name}</h3>
-                {!isHome && <span className="away-tag">VISITANTE</span>}
                 <div className="team-form">
                   {getFormText(!isHome ? playerTableEntry?.form : opponentTableEntry?.form)}
                 </div>
@@ -640,9 +700,6 @@ export default function MatchDay({ onComplete }) {
               </div>
             </div>
             
-            <button className="match-day__play-btn" onClick={simulateAndPlay}>
-              ⚽ Jugar Partido
-            </button>
           </div>
         )}
         
@@ -683,19 +740,15 @@ export default function MatchDay({ onComplete }) {
               </div>
             </div>
             
-            <button className="match-day__skip-btn" onClick={skipToEnd}>
-              ⏭️ Saltar al final
-            </button>
-            
             <div className="match-day__events" ref={eventsRef}>
               {matchResult.events.slice(0, eventIndex).map((event, idx) => (
                 <div key={idx} className={`match-day__event ${event.team} ${event.type} ${event.goalType || ''}`}>
                   <span className="minute">{event.minute}'</span>
                   <span className="icon">
-                    {event.type === 'goal' && '⚽'}
-                    {event.type === 'yellow_card' && '🟨'}
-                    {event.type === 'red_card' && '🟥'}
-                    {event.type === 'injury' && '🏥'}
+                    {event.type === 'goal' && <Circle size={16} className="icon-goal" />}
+                    {event.type === 'yellow_card' && <span className="icon-card icon-card--yellow" />}
+                    {event.type === 'red_card' && <span className="icon-card icon-card--red" />}
+                    {event.type === 'injury' && <HeartPulse size={16} className="icon-injury" />}
                   </span>
                   <span className="player">
                     {typeof event.player === 'object' ? event.player?.name || 'Desconocido' : event.player}
@@ -734,9 +787,9 @@ export default function MatchDay({ onComplete }) {
             { label: 'A puerta', home: stats.shotsOnTarget.home, away: stats.shotsOnTarget.away },
             { label: 'Córners', home: stats.corners.home, away: stats.corners.away },
             { label: 'Faltas', home: stats.fouls?.home ?? 0, away: stats.fouls?.away ?? 0 },
-            { label: 'Amarillas', home: stats.yellowCards.home, away: stats.yellowCards.away, icon: '🟨' },
+            { label: 'Amarillas', home: stats.yellowCards.home, away: stats.yellowCards.away, icon: <Square size={14} className="card-yellow" /> },
             ...(stats.redCards.home > 0 || stats.redCards.away > 0 
-              ? [{ label: 'Rojas', home: stats.redCards.home, away: stats.redCards.away, icon: '🟥' }] 
+              ? [{ label: 'Rojas', home: stats.redCards.home, away: stats.redCards.away, icon: <Square size={14} className="card-red" /> }] 
               : [])
           ];
           
@@ -756,7 +809,7 @@ export default function MatchDay({ onComplete }) {
                 <div className="team-scorers">
                   {homeGoals.map((g, i) => (
                     <span key={i} className="scorer">
-                      ⚽ {typeof g.player === 'object' ? g.player?.name : g.player} {g.minute}'
+                      <FootballIcon size={12} /> {typeof g.player === 'object' ? g.player?.name : g.player} {g.minute}'
                     </span>
                   ))}
                 </div>
@@ -774,7 +827,7 @@ export default function MatchDay({ onComplete }) {
                 <div className="team-scorers">
                   {awayGoals.map((g, i) => (
                     <span key={i} className="scorer">
-                      ⚽ {typeof g.player === 'object' ? g.player?.name : g.player} {g.minute}'
+                      <FootballIcon size={12} /> {typeof g.player === 'object' ? g.player?.name : g.player} {g.minute}'
                     </span>
                   ))}
                 </div>
@@ -819,10 +872,10 @@ export default function MatchDay({ onComplete }) {
                   {matchResult.events.map((event, idx) => {
                     const isHomeEvent = event.team === 'home';
                     const playerName = typeof event.player === 'object' ? event.player?.name || '?' : event.player;
-                    const icon = event.type === 'goal' ? '⚽' 
-                      : event.type === 'yellow_card' ? '🟨' 
-                      : event.type === 'red_card' ? '🟥' 
-                      : '🏥';
+                    const icon = event.type === 'goal' ? <Circle size={16} className="icon-goal" /> 
+                      : event.type === 'yellow_card' ? <span className="icon-card icon-card--yellow" /> 
+                      : event.type === 'red_card' ? <span className="icon-card icon-card--red" /> 
+                      : <HeartPulse size={16} className="icon-injury" />;
                     
                     return (
                       <div key={idx} className={`timeline-event ${isHomeEvent ? 'home' : 'away'} ${event.type}`}>
@@ -841,7 +894,7 @@ export default function MatchDay({ onComplete }) {
                             <span className="event-extra">{getGoalTypeText(event.goalType)}</span>
                           )}
                           {event.type === 'injury' && (
-                            <span className="event-extra">🏥 {event.weeksOut} sem.</span>
+                            <span className="event-extra"><HeartPulse size={12} /> {event.weeksOut} sem.</span>
                           )}
                           <span className="event-team-tag">
                             {isHomeEvent ? homeShort : awayShort}
@@ -859,13 +912,27 @@ export default function MatchDay({ onComplete }) {
               </div>
             )}
             
-            <button className="match-day__continue-btn" onClick={handleFinish}>
-              Continuar
-            </button>
           </div>
           );
         })()}
       </div>
+
+      {/* Buttons rendered OUTSIDE animated containers to avoid transform breaking position:fixed */}
+      {phase === 'preview' && (
+        <button className="match-day__play-btn" onClick={simulateAndPlay}>
+          <FootballIcon size={14} /> Jugar Partido
+        </button>
+      )}
+      {phase === 'playing' && matchResult && (
+        <button className="match-day__skip-btn" onClick={skipToEnd}>
+          <SkipForward size={14} /> Saltar al final
+        </button>
+      )}
+      {phase === 'result' && matchResult && (
+        <button className="match-day__continue-btn" onClick={handleFinish}>
+          Continuar
+        </button>
+      )}
     </div>
   );
 }
