@@ -34,6 +34,8 @@ import Cup from '../Cup/Cup';
 import Competitions from '../Competitions/Competitions';
 import { isSeasonOver } from '../../game/seasonManager';
 import { getPlayerCompetition, isTeamAlive } from '../../game/europeanSeason';
+import { isCupWeek, getCupRoundForWeek } from '../../game/europeanCompetitions';
+import { simulateCupRound, completeCupMatch } from '../../game/cupSystem';
 import {
   Trophy,
   TrendingUp,
@@ -244,6 +246,10 @@ export default function Office() {
     // Track accumulated ticket income locally to avoid stale state overwrites
     let localAccumulatedIncome = state.stadium?.accumulatedTicketIncome ?? 0;
     
+    // Track cup competition locally (avoids losing pendingCupMatch across ADVANCE_WEEKs)
+    let localCupCompetition = state.cupCompetition ? { ...state.cupCompetition } : null;
+    let cupChanged = false;
+    
     // Máxima jornada de la liga (dinámica según liga del jugador)
     const maxWeek = currentFixtures.length > 0 
       ? Math.max(...currentFixtures.map(f => f.week)) 
@@ -413,12 +419,57 @@ export default function Office() {
       
       currentFixtures = otherResult.fixtures;
       currentTable = otherResult.table;
+
+      // ── CUP: Auto-simular partido de copa del jugador ──
+      if (localCupCompetition && !localCupCompetition.winner &&
+          isCupWeek(currentWeek, state.europeanCalendar)) {
+        const cupRoundIdx = getCupRoundForWeek(currentWeek, state.europeanCalendar);
+        if (cupRoundIdx !== null && cupRoundIdx === localCupCompetition.currentRound) {
+          // Build teams map for cup simulation
+          const cupTeamsMap = {};
+          if (state.leagueTeams) {
+            state.leagueTeams.forEach(t => { cupTeamsMap[t.id] = t; });
+          }
+          if (state.team) cupTeamsMap[state.teamId] = state.team;
+
+          const { updatedBracket, playerMatch: cupPlayerMatch } = simulateCupRound(
+            localCupCompetition, cupRoundIdx, state.teamId, cupTeamsMap
+          );
+          localCupCompetition = updatedBracket;
+
+          // Auto-simulate the player's cup match
+          if (cupPlayerMatch && !localCupCompetition.playerEliminated) {
+            const cupHome = cupPlayerMatch.homeTeam;
+            const cupAway = cupPlayerMatch.awayTeam;
+            const homeData = cupTeamsMap[cupHome.teamId] || { id: cupHome.teamId, name: cupHome.teamName, players: cupHome.players || [], reputation: cupHome.reputation || 70 };
+            const awayData = cupTeamsMap[cupAway.teamId] || { id: cupAway.teamId, name: cupAway.teamName, players: cupAway.players || [], reputation: cupAway.reputation || 70 };
+
+            const cupResult = simulateMatch(
+              cupHome.teamId, cupAway.teamId, homeData, awayData,
+              { homeMorale: 70, awayMorale: 70 },
+              state.playerForm || {}, state.teamId
+            );
+
+            localCupCompetition = completeCupMatch(
+              localCupCompetition, cupRoundIdx, cupPlayerMatch.matchIdx,
+              cupResult.homeScore, cupResult.awayScore, state.teamId
+            );
+          }
+          cupChanged = true;
+        }
+      }
+
       currentWeek++;
     }
     
     // Aplicar todos los cambios de una vez
     dispatch({ type: 'SET_FIXTURES', payload: currentFixtures });
     dispatch({ type: 'SET_LEAGUE_TABLE', payload: currentTable });
+    
+    // Si la copa cambió durante la simulación, actualizar
+    if (cupChanged && localCupCompetition) {
+      dispatch({ type: 'INIT_CUP_COMPETITION', payload: localCupCompetition });
+    }
     
     // Aplicar ingresos acumulados de taquilla de una vez (evita stale state)
     if (localAccumulatedIncome > (state.stadium?.accumulatedTicketIncome ?? 0)) {
@@ -480,7 +531,7 @@ export default function Office() {
       case 'calendar':
         return <Calendar />;
       case 'table':
-        return <LeagueTable />;
+        return <Competitions />;
       case 'transfers':
         return <Transfers />;
       case 'stadium':

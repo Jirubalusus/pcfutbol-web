@@ -62,11 +62,12 @@ export default function Finance() {
     
     // === GASTOS ===
     
-    // Salarios (semanal × semanas transcurridas esta temporada)
+    // Salarios: se pagan a final de temporada (anual completo)
     const weeklySalaries = players.reduce((sum, p) => sum + (p.salary || 0), 0);
     const weeksPlayed = state.currentWeek || 1;
-    const salariesPaid = weeklySalaries * weeksPlayed;
     const annualSalaries = weeklySalaries * WEEKS_PER_YEAR;
+    // No se descuentan semanalmente — se pagan al final de temporada
+    const salariesPaid = 0;
     
     // Mantenimiento estadio
     const maintenanceCost = currentLevel?.maintenance || 500000;
@@ -74,8 +75,8 @@ export default function Finance() {
     // Fichajes comprados
     const transferSpent = state.transfersSpent ?? 0;
     
-    // Total gastos
-    const totalExpenses = salariesPaid + maintenanceCost + transferSpent;
+    // Total gastos (salarios se pagan a fin de temporada, se muestra como pendiente)
+    const totalExpenses = annualSalaries + maintenanceCost + transferSpent;
     
     // Balance
     const balance = totalIncome - totalExpenses;
@@ -153,9 +154,9 @@ export default function Finance() {
         <div className="finance__group">
           <div className="finance__group-title expense">Gastos</div>
           <FinanceRow 
-            label="Salarios plantilla" 
-            amount={-finances.salariesPaid}
-            detail={`${formatMoneyPlain(finances.weeklySalaries)}/sem × ${finances.weeksPlayed} semanas`}
+            label="Salarios plantilla (fin temporada)" 
+            amount={-finances.annualSalaries}
+            detail={`${formatMoneyPlain(finances.weeklySalaries)}/sem × 52 sem — pendiente`}
           />
           <FinanceRow 
             label="Mantenimiento estadio" 

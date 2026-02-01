@@ -27,7 +27,18 @@ export const CUP_CONFIGS = {
   'Grecia': { id: 'greekCup', name: 'Κύπελλο Ελλάδας', icon: '🏆', shortName: 'Cup' },
   'Dinamarca': { id: 'danishCup', name: 'DBU Pokalen', icon: '🏆', shortName: 'Pokalen' },
   'Croacia': { id: 'croatianCup', name: 'Hrvatski kup', icon: '🏆', shortName: 'Kup' },
-  'Chequia': { id: 'czechCup', name: 'MOL Cup', icon: '🏆', shortName: 'MOL Cup' }
+  'Chequia': { id: 'czechCup', name: 'MOL Cup', icon: '🏆', shortName: 'MOL Cup' },
+  // South America
+  'Argentina': { id: 'copaArgentina', name: 'Copa Argentina', icon: '🏆', shortName: 'Copa' },
+  'Brasil': { id: 'copaDoBrasil', name: 'Copa do Brasil', icon: '🏆', shortName: 'Copa' },
+  'Colombia': { id: 'copaColombia', name: 'Copa Colombia', icon: '🏆', shortName: 'Copa' },
+  'Chile': { id: 'copaChile', name: 'Copa Chile', icon: '🏆', shortName: 'Copa' },
+  'Uruguay': { id: 'copaUruguay', name: 'Copa Uruguay', icon: '🏆', shortName: 'Copa' },
+  'Ecuador': { id: 'copaEcuador', name: 'Copa Ecuador', icon: '🏆', shortName: 'Copa' },
+  'Paraguay': { id: 'copaParaguay', name: 'Copa Paraguay', icon: '🏆', shortName: 'Copa' },
+  'Perú': { id: 'copaPeru', name: 'Copa Perú', icon: '🏆', shortName: 'Copa' },
+  'Bolivia': { id: 'copaBolivia', name: 'Copa Bolivia', icon: '🏆', shortName: 'Copa' },
+  'Venezuela': { id: 'copaVenezuela', name: 'Copa Venezuela', icon: '🏆', shortName: 'Copa' }
 };
 
 // Ligas de grupos que NO cuentan para la copa (divisiones bajas de España)

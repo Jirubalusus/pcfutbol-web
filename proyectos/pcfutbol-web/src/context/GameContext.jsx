@@ -11,8 +11,10 @@ import { getLeagueTier, getEconomyMultiplier } from '../game/leagueTiers';
 import { evolvePlayer } from '../game/seasonEngine';
 import { isEuropeanWeekDynamic, getPhaseForWeekCompat, isCupWeek, getCupRoundForWeek, EUROPEAN_MATCHDAY_WEEKS } from '../game/europeanCompetitions';
 import { simulateEuropeanMatchday, advanceEuropeanPhase, recordPlayerLeagueResult, recordPlayerKnockoutResult, getPlayerCompetition } from '../game/europeanSeason';
+import { isSouthAmericanLeague } from '../game/southAmericanCompetitions';
+import { simulateSAMatchday, advanceSAPhase, recordPlayerSALeagueResult, recordPlayerSAKnockoutResult, getPlayerSACompetition } from '../game/southAmericanSeason';
 import { simulateCupRound, completeCupMatch, getCupRoundName } from '../game/cupSystem';
-import { simulateOtherLeaguesWeek } from '../game/multiLeagueEngine';
+import { simulateOtherLeaguesWeek, isAperturaClausura, getClausuraStartWeek, LEAGUE_CONFIG } from '../game/multiLeagueEngine';
 import { updateWeeklyForm, updateMatchTracker, tickRejectedTransfers, generateInitialForm, generateAIForm, FORM_STATES, getFormMatchModifier } from '../game/formSystem';
 import { generateLoanOffers, expireLoans, simulateAILoans, createLoan } from '../game/loanSystem';
 
@@ -118,6 +120,10 @@ const initialState = {
   playerLeagueId: 'laliga',
   playerGroupId: null, // For group leagues (primeraRFEF, segundaRFEF)
   
+  // Apertura-Clausura state (for player's league when applicable)
+  aperturaTable: null,       // Frozen Apertura final standings
+  currentTournament: 'apertura', // 'apertura' or 'clausura'
+  
   // Transfer Market
   transferOffers: [],
   playerMarket: [],
@@ -133,6 +139,10 @@ const initialState = {
   europeanQualification: null,    // Set at season end for next season
   europeanCalendar: null,         // Set when player has European comps; output of buildSeasonCalendar()
   
+  // South American Competitions (Libertadores / Sudamericana)
+  saCompetitions: null,           // Set via INIT_SA_COMPETITIONS
+  pendingSAMatch: null,           // Set when player has an SA match this week
+
   // Copa Nacional
   cupCompetition: null,           // Bracket state de la copa nacional
   pendingCupMatch: null,          // Partido de copa del jugador para esta semana
@@ -560,10 +570,16 @@ function gameReducer(state, action) {
         facilitySpecsLocked: {}, // Desbloquear especializaciones
         facilitySpecs: { youth: null, medical: null, training: null }, // Reset especializaciones
         playerSeasonStats: {},  // Reset para nueva temporada
+        // Reset Apertura-Clausura state
+        aperturaTable: null,
+        currentTournament: 'apertura',
         // Reset European state (will be re-initialized by SeasonEnd)
         europeanCompetitions: null,
         pendingEuropeanMatch: null,
         europeanCalendar: action.payload.europeanCalendar || null,
+        // Reset SA state (will be re-initialized by SeasonEnd)
+        saCompetitions: null,
+        pendingSAMatch: null,
         // Reset cup state (will be re-initialized by SeasonEnd)
         cupCompetition: null,
         pendingCupMatch: null,
@@ -614,48 +630,66 @@ function gameReducer(state, action) {
     }
     
     case 'ADVANCE_WEEK': {
-      // Calculate weekly income from facilities, scaled by league tier
-      const stadiumLevel = state.facilities?.stadium || 0;
-      const sponsorLevel = state.facilities?.sponsorship || 0;
-      const economyMult = state.leagueId ? getEconomyMultiplier(state.leagueId) : 1.0;
-      const stadiumIncomes = [500000, 900000, 1500000, 2500000, 4000000].map(v => Math.round(v * economyMult));
-      const sponsorIncomes = [25000, 70000, 140000, 235000].map(v => Math.round(v * economyMult));
-      const facilityIncome = (stadiumIncomes[stadiumLevel] || stadiumIncomes[0]) + (sponsorIncomes[sponsorLevel] || sponsorIncomes[0]);
+      // ============================================================
+      // AUTO-RESOLVE pending European/SA matches (e.g. during simulate season)
+      // If ADVANCE_WEEK is called while a pendingEuropeanMatch/pendingSAMatch
+      // exists, the player didn't play it interactively → auto-simulate.
+      // ============================================================
+      let resolvedEuropean = state.europeanCompetitions;
+      let resolvedSA = state.saCompetitions;
       
-      // Commercial performance bonuses (sponsorship reacts to results)
-      let commercialBonus = 0;
-      if (sponsorLevel >= 1) {  // Solo si tienes nivel comercial >= 1
-        const table = state.leagueTable || [];
-        const playerTeam = table.find(t => t.teamId === state.teamId);
-        const position = playerTeam ? table.indexOf(playerTeam) + 1 : table.length;
-        const totalTeams = table.length || 20;
-        
-        // Top 25% → bonus, top 10% → big bonus
-        if (position <= Math.ceil(totalTeams * 0.10)) {
-          commercialBonus = Math.round(facilityIncome * 0.15); // +15% income for top position
-        } else if (position <= Math.ceil(totalTeams * 0.25)) {
-          commercialBonus = Math.round(facilityIncome * 0.08); // +8% for top quarter
+      const autoSimPendingMatch = (pm, competitions, recordLeague, recordKnockout, advancePhase, teamId) => {
+        const compState = competitions?.competitions?.[pm.competitionId];
+        if (!compState) return competitions;
+        const homeRep = pm.homeTeam?.reputation || 70;
+        const awayRep = pm.awayTeam?.reputation || 70;
+        const diff = (homeRep + 5) - awayRep;
+        const hExp = 1.2 + diff * 0.02;
+        const aExp = 1.2 - diff * 0.02;
+        const homeScore = Math.max(0, Math.round(hExp + (Math.random() * 2 - 1)));
+        const awayScore = Math.max(0, Math.round(aExp + (Math.random() * 2 - 1)));
+        const autoResult = {
+          homeTeamId: pm.homeTeamId || pm.homeTeam?.teamId,
+          awayTeamId: pm.awayTeamId || pm.awayTeam?.teamId,
+          homeScore, awayScore, events: []
+        };
+        let updatedComp = pm.phase === 'league'
+          ? recordLeague(compState, autoResult, pm.matchday)
+          : recordKnockout(compState, autoResult, pm.phase);
+        // Phase advancement
+        if ((pm.phase === 'league' && pm.matchday === 8 && updatedComp.currentMatchday >= 8) || pm.phase !== 'league') {
+          const advanced = advancePhase(updatedComp, teamId);
+          if (advanced.updatedState.phase !== compState.phase || pm.phase === 'league') {
+            updatedComp = advanced.updatedState;
+          }
         }
-        
-        // Winning streak bonus
-        const playerTeamData = table.find(t => t.teamId === state.teamId);
-        if (playerTeamData?.streak >= 5) {
-          commercialBonus += Math.round(facilityIncome * 0.10); // +10% for 5+ win streak
-        }
+        return {
+          ...competitions,
+          competitions: { ...competitions.competitions, [pm.competitionId]: updatedComp }
+        };
+      };
+      
+      if (state.pendingEuropeanMatch) {
+        resolvedEuropean = autoSimPendingMatch(
+          state.pendingEuropeanMatch, resolvedEuropean,
+          recordPlayerLeagueResult, recordPlayerKnockoutResult, advanceEuropeanPhase, state.teamId
+        );
+      }
+      if (state.pendingSAMatch) {
+        resolvedSA = autoSimPendingMatch(
+          state.pendingSAMatch, resolvedSA,
+          recordPlayerSALeagueResult, recordPlayerSAKnockoutResult, advanceSAPhase, state.teamId
+        );
       }
       
-      const totalIncome = facilityIncome + commercialBonus;
+      // NO weekly income. All revenue (commercial, tickets, season tickets)
+      // is accumulated and collected at end of season via START_NEW_SEASON.
+      // Only player sales add money instantly.
+      const totalIncome = 0;
       
-      // Calculate weekly salary expenses
-      // Jugadores cedidos (recibidos): solo pagas tu parte del salario (salaryShare)
-      // Jugadores propios: pagas el salario completo
-      const salaryExpenses = state.team?.players?.reduce((sum, p) => {
-        if (p.onLoan && p.loanSalaryShare !== undefined) {
-          // Jugador en cesión: solo pagas tu porcentaje
-          return sum + Math.round((p.salary || 0) * p.loanSalaryShare);
-        }
-        return sum + (p.salary || 0);
-      }, 0) || 0;
+      // Salaries are NOT deducted weekly — they are paid at end of season
+      // via START_NEW_SEASON (SeasonEnd calculates totalSalaryCost = weekly * 52)
+      const salaryExpenses = 0;
       
       // Heal injuries - reduce weeks left by 1
       let updatedPlayers = state.team?.players?.map(p => {
@@ -867,7 +901,7 @@ function gameReducer(state, action) {
       // EUROPEAN COMPETITIONS — Check for European matchday
       // v2: Uses dynamic calendar (intercalated weeks) when available
       // ============================================================
-      let updatedEuropean = state.europeanCompetitions;
+      let updatedEuropean = resolvedEuropean;
       let pendingEuropeanMatch = null;
       let europeanMessages = [];
 
@@ -947,6 +981,83 @@ function gameReducer(state, action) {
       const formattedEuropeanMessages = europeanMessages.map(m => ({
         id: Date.now() + Math.random(),
         type: m.type || 'european',
+        title: m.title,
+        content: m.content,
+        date: `Semana ${nextWeek}`
+      }));
+
+      // ============================================================
+      // SOUTH AMERICAN COMPETITIONS — Same intercalated week check
+      // Uses the same calendar system (hasEuropean flag triggers SA weeks too)
+      // ============================================================
+      let updatedSA = resolvedSA;
+      let pendingSAMatch = null;
+      let saMessages = [];
+
+      // SA competitions use the same intercalated weeks as European
+      if (updatedSA && isEuWeek) {
+        const phaseInfo = getPhaseForWeekCompat(nextWeek, state.europeanCalendar);
+        
+        if (phaseInfo && phaseInfo.phase === 'league') {
+          for (const [compId, compState] of Object.entries(updatedSA.competitions)) {
+            if (!compState || compState.phase !== 'league') continue;
+            
+            const { updatedState, playerMatch } = simulateSAMatchday(
+              compState, phaseInfo.matchday, state.teamId
+            );
+            updatedSA = {
+              ...updatedSA,
+              competitions: { ...updatedSA.competitions, [compId]: updatedState }
+            };
+            
+            if (playerMatch) {
+              pendingSAMatch = {
+                ...playerMatch,
+                competitionId: compId,
+                competitionName: compState.config?.name || compId,
+                phase: 'league'
+              };
+            }
+            
+            if (phaseInfo.matchday === 8 && updatedState.currentMatchday >= 8 && !playerMatch) {
+              const advanced = advanceSAPhase(updatedState, state.teamId);
+              updatedSA.competitions[compId] = advanced.updatedState;
+              saMessages.push(...advanced.messages);
+              if (advanced.playerMatch) {
+                pendingSAMatch = {
+                  ...advanced.playerMatch,
+                  competitionId: compId,
+                  competitionName: compState.config?.name || compId,
+                  phase: advanced.updatedState.phase
+                };
+              }
+            }
+          }
+        } else if (phaseInfo) {
+          for (const [compId, compState] of Object.entries(updatedSA.competitions)) {
+            if (!compState || compState.phase === 'completed' || compState.phase === 'league') continue;
+            
+            const advanced = advanceSAPhase(compState, state.teamId);
+            updatedSA = {
+              ...updatedSA,
+              competitions: { ...updatedSA.competitions, [compId]: advanced.updatedState }
+            };
+            saMessages.push(...advanced.messages);
+            if (advanced.playerMatch) {
+              pendingSAMatch = {
+                ...advanced.playerMatch,
+                competitionId: compId,
+                competitionName: compState.config?.name || compId,
+                phase: advanced.updatedState.phase
+              };
+            }
+          }
+        }
+      }
+
+      const formattedSAMessages = saMessages.map(m => ({
+        id: Date.now() + Math.random(),
+        type: m.type || 'southamerican',
         title: m.title,
         content: m.content,
         date: `Semana ${nextWeek}`
@@ -1116,15 +1227,46 @@ function gameReducer(state, action) {
         }
       );
 
+      // ============================================================
+      // APERTURA-CLAUSURA: Detect tournament phase transition
+      // for the player's league
+      // ============================================================
+      let updatedLeagueTable = state.leagueTable;
+      let updatedAperturaTable = state.aperturaTable;
+      let updatedCurrentTournament = state.currentTournament || 'apertura';
+
+      if (isAperturaClausura(state.playerLeagueId)) {
+        const playerConfig = LEAGUE_CONFIG[state.playerLeagueId];
+        if (playerConfig) {
+          const clausuraStart = getClausuraStartWeek(playerConfig.teams);
+          if (nextWeek === clausuraStart && updatedCurrentTournament === 'apertura') {
+            // Freeze Apertura table
+            updatedAperturaTable = state.leagueTable.map(t => ({ ...t }));
+            updatedCurrentTournament = 'clausura';
+            // Reset league table for Clausura (zero stats, fresh start)
+            updatedLeagueTable = state.leagueTable.map(entry => ({
+              ...entry,
+              played: 0, won: 0, drawn: 0, lost: 0,
+              goalsFor: 0, goalsAgainst: 0, goalDifference: 0,
+              points: 0, form: [], homeForm: [], awayForm: [],
+              streak: 0, morale: 70
+            }));
+          }
+        }
+      }
+
       return { 
         ...state, 
         currentWeek: nextWeek,
+        leagueTable: updatedLeagueTable,
+        aperturaTable: updatedAperturaTable,
+        currentTournament: updatedCurrentTournament,
         money: state.money + totalIncome - salaryExpenses,
         weeklyIncome: totalIncome,
         weeklyExpenses: salaryExpenses,
         team: state.team ? { ...state.team, players: updatedPlayers } : null,
         stadium: updatedStadium,
-        messages: [...cupMessages, ...formattedEuropeanMessages, ...newTransferMessages, ...loanOfferMessages, ...aiLoanMessages, ...newMessages, ...state.messages].slice(0, 50),
+        messages: [...cupMessages, ...formattedEuropeanMessages, ...formattedSAMessages, ...newTransferMessages, ...loanOfferMessages, ...aiLoanMessages, ...newMessages, ...state.messages].slice(0, 50),
         pendingEvent: newEvent || state.pendingEvent,
         facilityStats: {
           ...state.facilityStats,
@@ -1146,6 +1288,9 @@ function gameReducer(state, action) {
         // European competitions
         europeanCompetitions: updatedEuropean,
         pendingEuropeanMatch,
+        // South American competitions
+        saCompetitions: updatedSA,
+        pendingSAMatch,
         // European calendar (preserved from season setup)
         europeanCalendar: state.europeanCalendar,
         // Cup competition
@@ -2149,8 +2294,115 @@ function gameReducer(state, action) {
     }
     
     // ============================================================
+    // SOUTH AMERICAN COMPETITIONS (same pattern as European)
+    // ============================================================
+    
+    case 'INIT_SA_COMPETITIONS': {
+      return {
+        ...state,
+        saCompetitions: action.payload,
+        pendingSAMatch: null
+      };
+    }
+    
+    case 'COMPLETE_SA_MATCH': {
+      const { competitionId, matchResult, matchday, phase } = action.payload;
+      let updatedSA = { ...state.saCompetitions };
+      const compState = updatedSA.competitions[competitionId];
+      if (!compState) return state;
+
+      let updatedComp;
+      if (phase === 'league') {
+        updatedComp = recordPlayerSALeagueResult(compState, matchResult, matchday);
+      } else {
+        updatedComp = recordPlayerSAKnockoutResult(compState, matchResult, phase);
+      }
+
+      updatedSA = {
+        ...updatedSA,
+        competitions: { ...updatedSA.competitions, [competitionId]: updatedComp }
+      };
+
+      let advanceMessages = [];
+      let newPendingMatch = null;
+      if (phase === 'league' && matchday === 8 && updatedComp.currentMatchday >= 8) {
+        const advanced = advanceSAPhase(updatedComp, state.teamId);
+        updatedSA.competitions[competitionId] = advanced.updatedState;
+        advanceMessages = advanced.messages;
+        if (advanced.playerMatch) {
+          newPendingMatch = {
+            ...advanced.playerMatch,
+            competitionId,
+            competitionName: updatedComp.config?.name || competitionId,
+            phase: advanced.updatedState.phase
+          };
+        }
+      }
+
+      if (phase !== 'league') {
+        const currentComp = updatedSA.competitions[competitionId];
+        const advanced = advanceSAPhase(currentComp, state.teamId);
+        if (advanced.updatedState.phase !== currentComp.phase) {
+          updatedSA.competitions[competitionId] = advanced.updatedState;
+          advanceMessages.push(...advanced.messages);
+          if (advanced.playerMatch) {
+            newPendingMatch = {
+              ...advanced.playerMatch,
+              competitionId,
+              competitionName: currentComp.config?.name || competitionId,
+              phase: advanced.updatedState.phase
+            };
+          }
+        }
+      }
+
+      const finalComp = updatedSA.competitions[competitionId];
+      const playerPrize = finalComp.prizesMoney?.[state.teamId] || 0;
+      const prevPrize = compState.prizesMoney?.[state.teamId] || 0;
+      const newPrize = playerPrize - prevPrize;
+
+      const prizeMessages = newPrize > 0 ? [{
+        id: Date.now(),
+        type: 'southamerican',
+        title: `${finalComp.config.icon} Ingresos continentales`,
+        content: `${finalComp.config.shortName}: +$${(newPrize / 1_000_000).toFixed(1)}M USD`,
+        date: `Semana ${state.currentWeek}`
+      }] : [];
+
+      const fmtAdvanceMessages = advanceMessages.map(m => ({
+        id: Date.now() + Math.random(),
+        type: 'southamerican',
+        title: m.title,
+        content: m.content,
+        date: `Semana ${state.currentWeek}`
+      }));
+
+      return {
+        ...state,
+        saCompetitions: updatedSA,
+        pendingSAMatch: newPendingMatch,
+        money: state.money + newPrize,
+        messages: [...fmtAdvanceMessages, ...prizeMessages, ...state.messages].slice(0, 50)
+      };
+    }
+    
+    case 'CLEAR_SA_MATCH': {
+      return {
+        ...state,
+        pendingSAMatch: null
+      };
+    }
+    
+    // ============================================================
     // COPA NACIONAL
     // ============================================================
+    
+    case 'SET_EUROPEAN_CALENDAR': {
+      return {
+        ...state,
+        europeanCalendar: action.payload
+      };
+    }
     
     case 'INIT_CUP_COMPETITION': {
       return {
@@ -2508,6 +2760,16 @@ function gameReducer(state, action) {
         incomingLoanOffers: (state.incomingLoanOffers || []).filter(o => o.id !== offer.id)
       };
     }
+    
+    // ============================================================
+    // APERTURA-CLAUSURA
+    // ============================================================
+    
+    case 'SET_TOURNAMENT_PHASE':
+      return { ...state, currentTournament: action.payload };
+    
+    case 'SAVE_APERTURA_TABLE':
+      return { ...state, aperturaTable: action.payload };
     
     case 'RESET_GAME':
       localStorage.removeItem('pcfutbol_saveId');

@@ -51,7 +51,18 @@ export const EUROPEAN_SPOTS = {
     conference: [5],
     relegation: [16, 17, 18],
     playoffRelegation: [16]
-  }
+  },
+  // South American leagues (use libertadores/sudamericana instead of champions/europaLeague)
+  argentinaPrimera: { libertadores: [1, 2, 3, 4], sudamericana: [5, 6], relegation: [25, 26, 27, 28] },
+  brasileiraoA: { libertadores: [1, 2, 3, 4], sudamericana: [5, 6, 7, 8], relegation: [17, 18, 19, 20] },
+  colombiaPrimera: { libertadores: [1, 2, 3], sudamericana: [4, 5, 6], relegation: [18, 19, 20] },
+  chilePrimera: { libertadores: [1, 2], sudamericana: [3, 4], relegation: [14, 15, 16] },
+  uruguayPrimera: { libertadores: [1, 2], sudamericana: [3, 4], relegation: [14, 15, 16] },
+  ecuadorLigaPro: { libertadores: [1, 2], sudamericana: [3, 4], relegation: [14, 15, 16] },
+  paraguayPrimera: { libertadores: [1], sudamericana: [2, 3], relegation: [11, 12] },
+  peruLiga1: { libertadores: [1, 2], sudamericana: [3, 4], relegation: [16, 17, 18] },
+  boliviaPrimera: { libertadores: [1], sudamericana: [2, 3], relegation: [14, 15, 16] },
+  venezuelaPrimera: { libertadores: [1, 2], sudamericana: [3, 4], relegation: [16, 17, 18] }
 };
 
 // Número de jornadas por liga
@@ -96,11 +107,15 @@ export function getSeasonResult(table, teamId, leagueId = 'laliga') {
   let promotion = false;
   let playoff = false;
   
-  // Determinar clasificación
+  // Determinar clasificación (European or South American)
   if (spots.champions?.includes(position)) {
     qualification = 'champions';
+  } else if (spots.libertadores?.includes(position)) {
+    qualification = 'libertadores';
   } else if (spots.europaLeague?.includes(position)) {
     qualification = 'europaLeague';
+  } else if (spots.sudamericana?.includes(position)) {
+    qualification = 'sudamericana';
   } else if (spots.conference?.includes(position)) {
     qualification = 'conference';
   }
@@ -342,25 +357,29 @@ export function prepareNewSeason(currentState, seasonResult) {
 }
 
 /**
- * Obtiene el nombre de la competición europea
+ * Obtiene el nombre de la competición continental
  */
 export function getCompetitionName(qualification) {
   switch (qualification) {
     case 'champions': return 'UEFA Champions League';
     case 'europaLeague': return 'UEFA Europa League';
     case 'conference': return 'UEFA Conference League';
+    case 'libertadores': return 'Copa Libertadores';
+    case 'sudamericana': return 'Copa Sudamericana';
     default: return null;
   }
 }
 
 /**
- * Calcula bonus por clasificación europea
+ * Calcula bonus por clasificación continental (European or SA)
  */
 export function getEuropeanBonus(qualification) {
   switch (qualification) {
     case 'champions': return 15000000; // €15M
     case 'europaLeague': return 8000000; // €8M
     case 'conference': return 4000000; // €4M
+    case 'libertadores': return 3000000; // $3M USD
+    case 'sudamericana': return 900000; // $900K USD
     default: return 0;
   }
 }

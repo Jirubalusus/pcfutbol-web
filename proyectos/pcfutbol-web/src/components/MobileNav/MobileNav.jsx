@@ -12,7 +12,7 @@ import './MobileNav.scss';
 const TABS = [
   { id: 'overview', icon: <Home size={20} />, label: 'Inicio' },
   { id: 'plantilla', icon: <Users size={20} />, label: 'Plantilla' },
-  { id: 'table', icon: <BarChart3 size={20} />, label: 'Liga' },
+  { id: 'competitions', icon: <Award size={20} />, label: 'Compet.' },
   { id: 'menu', icon: <Menu size={20} />, label: 'Más' },
 ];
 
@@ -20,7 +20,6 @@ const MENU_ITEMS = [
   { id: 'formation', icon: <FootballIcon size={20} />, label: 'Formación' },
   { id: 'objectives', icon: <Target size={20} />, label: 'Objetivos' },
   { id: 'calendar', icon: <Calendar size={20} />, label: 'Calendario' },
-  { id: 'competitions', icon: <Award size={20} />, label: 'Competiciones', requiresCompetitions: true },
   { id: 'transfers', icon: <Coins size={20} />, label: 'Fichajes' },
   { id: 'stadium', icon: <Building2 size={20} />, label: 'Estadio' },
   { id: 'finance', icon: <Building size={20} />, label: 'Banco' },
@@ -36,11 +35,7 @@ export default function MobileNav({ activeTab, onTabChange, onAdvanceWeek, onSim
 
   const simDisabled = simulating || state.preseasonPhase || !!state.pendingEuropeanMatch || !!state.pendingCupMatch;
   
-  // Filter menu items based on state
-  const filteredMenuItems = MENU_ITEMS.filter(item => {
-    if (item.requiresCompetitions) return state.cupCompetition || state.europeanCompetitions?.initialized;
-    return true;
-  });
+  const filteredMenuItems = MENU_ITEMS;
 
   const handleTabClick = (tabId) => {
     if (tabId === 'menu') {

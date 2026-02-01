@@ -172,6 +172,7 @@ export default function TransfersV2() {
           <ExplorarTab
             leagueTeams={state.leagueTeams || []}
             myTeamId={state.teamId}
+            playerLeagueId={state.leagueId}
             onSelectPlayer={setSelectedPlayer}
             blockedPlayers={state.blockedPlayers || []}
           />
@@ -673,38 +674,59 @@ function NoticiasTab({ transfers, rumors }) {
 // ============================================================
 // TAB: EXPLORAR LIGAS Y EQUIPOS
 // ============================================================
-function ExplorarTab({ leagueTeams, myTeamId, onSelectPlayer, blockedPlayers = [] }) {
+
+// Agrupar ligas por país para la vista de exploración
+const LEAGUE_GROUPS = (() => {
+  const groups = {};
+  AVAILABLE_LEAGUES.forEach(l => {
+    if (!groups[l.country]) groups[l.country] = { country: l.country, flagUrl: l.flagUrl, leagues: [] };
+    groups[l.country].leagues.push(l);
+  });
+  return Object.values(groups);
+})();
+
+function ExplorarTab({ leagueTeams, myTeamId, playerLeagueId, onSelectPlayer, blockedPlayers = [] }) {
   const [selectedLeague, setSelectedLeague] = useState(null);
   const [selectedTeam, setSelectedTeam] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
   
   const teams = useMemo(() => getTeamsByLeague(leagueTeams, selectedLeague), [leagueTeams, selectedLeague]);
   
-  // Vista de ligas
+  const filteredTeams = useMemo(() => {
+    if (!searchQuery) return teams;
+    return teams.filter(t => t.name?.toLowerCase().includes(searchQuery.toLowerCase()));
+  }, [teams, searchQuery]);
+
+  // Vista de ligas — agrupadas por país
   if (!selectedLeague) {
     return (
       <div className="tab-explorar">
         <div className="explorar-header">
-          <h3><Building2 size={20} /> Explorar Ligas</h3>
-          <p>Selecciona una liga para ver sus equipos</p>
+          <h3><Globe size={20} /> Explorar Mercado</h3>
+          <p>Selecciona una liga para ver equipos y jugadores disponibles</p>
         </div>
-        <div className="leagues-grid">
-          {AVAILABLE_LEAGUES.map(league => (
-            <div 
-              key={league.id}
-              className="league-card"
-              style={{ '--league-color': league.color }}
-              onClick={() => setSelectedLeague(league.id)}
-            >
-              <img 
-                src={league.flagUrl} 
-                alt={league.country} 
-                className="league-flag-img"
-              />
-              <div className="league-info">
-                <span className="league-name">{league.name}</span>
-                <span className="league-country">{league.country}</span>
+        <div className="leagues-by-country">
+          {LEAGUE_GROUPS.map(group => (
+            <div key={group.country} className="country-group">
+              <div className="country-label">
+                <img src={group.flagUrl} alt={group.country} className="country-flag" />
+                <span>{group.country}</span>
               </div>
-              <ChevronRight size={20} className="arrow" />
+              <div className="country-leagues">
+                {group.leagues.map(league => {
+                  const count = (leagueTeams || []).filter(t => t.leagueId === league.id).length;
+                  return (
+                    <button
+                      key={league.id}
+                      className="league-chip"
+                      onClick={() => { setSelectedLeague(league.id); setSearchQuery(''); }}
+                    >
+                      <span className="chip-name">{league.name}</span>
+                      <span className="chip-count">{count}</span>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           ))}
         </div>
@@ -713,63 +735,85 @@ function ExplorarTab({ leagueTeams, myTeamId, onSelectPlayer, blockedPlayers = [
   }
   
   // Vista de equipos
+  const leagueInfo = AVAILABLE_LEAGUES.find(l => l.id === selectedLeague);
+
   if (!selectedTeam) {
-    const leagueInfo = AVAILABLE_LEAGUES.find(l => l.id === selectedLeague);
     return (
       <div className="tab-explorar">
         <div className="explorar-header with-back">
-          <button className="back-btn" onClick={() => setSelectedLeague(null)}>
+          <button className="back-btn" onClick={() => { setSelectedLeague(null); setSearchQuery(''); }}>
             <ArrowRight size={18} style={{ transform: 'rotate(180deg)' }} />
           </button>
-          <div>
-            <h3><img src={leagueInfo?.flagUrl} alt="" style={{ width: '24px', height: '16px', objectFit: 'cover', borderRadius: '2px', verticalAlign: 'middle' }} /> {leagueInfo?.name}</h3>
+          <div className="header-info">
+            <h3>
+              <img src={leagueInfo?.flagUrl} alt="" className="header-flag" />
+              {leagueInfo?.name}
+            </h3>
             <p>{teams.length} equipos</p>
           </div>
         </div>
-        <div className="teams-grid">
-          {teams.map(team => (
-            <div 
-              key={team.id}
-              className={`team-card ${team.id === myTeamId ? 'my-team' : ''}`}
-              onClick={() => team.id !== myTeamId && setSelectedTeam(team)}
-            >
-              <div className="team-badge">{team.name?.charAt(0)}</div>
-              <div className="team-info">
-                <span className="team-name">{team.name}</span>
-                <div className="team-stats">
-                  <span className="stat">
-                    <Users size={12} />
-                    {team.players?.length || 0}
-                  </span>
-                  <span className="stat">
-                    <Star size={12} />
-                    {team.avgOverall}
+        
+        {/* Buscador de equipos */}
+        {teams.length > 8 && (
+          <div className="explorar-search">
+            <Search size={16} />
+            <input
+              type="text"
+              placeholder="Buscar equipo..."
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
+            />
+            {searchQuery && (
+              <button className="clear-btn" onClick={() => setSearchQuery('')}><X size={14} /></button>
+            )}
+          </div>
+        )}
+        
+        <div className="teams-compact-grid">
+          {filteredTeams.map(team => {
+            const isMine = team.id === myTeamId;
+            return (
+              <div 
+                key={team.id}
+                className={`team-compact ${isMine ? 'my-team' : ''}`}
+                onClick={() => !isMine && setSelectedTeam(team)}
+              >
+                <div className="tc-badge" style={{ background: team.colors?.primary || `hsl(${(team.name?.charCodeAt(0) || 0) * 7 % 360}, 50%, 35%)` }}>
+                  {team.shortName?.slice(0, 3) || team.name?.slice(0, 3)}
+                </div>
+                <div className="tc-info">
+                  <span className="tc-name">{team.name}</span>
+                  <span className="tc-meta">
+                    <Users size={11} /> {team.players?.length || 0}
+                    <Star size={11} /> {team.avgOverall}
                   </span>
                 </div>
+                {isMine && <span className="tc-mine">Tu equipo</span>}
               </div>
-              {team.id !== myTeamId && <ChevronRight size={18} className="arrow" />}
-              {team.id === myTeamId && <span className="my-badge">Tu equipo</span>}
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     );
   }
   
-  // Vista de plantilla del equipo
-  const leagueInfo = AVAILABLE_LEAGUES.find(l => l.id === selectedLeague);
+  // Vista de plantilla del equipo — con navegación lateral de equipos
   return (
     <div className="tab-explorar">
       <div className="explorar-header with-back">
-        <button className="back-btn" onClick={() => { setSelectedTeam(null); setSelectedLeague(null); }}>
+        <button className="back-btn" onClick={() => { setSelectedTeam(null); }}>
           <ArrowRight size={18} style={{ transform: 'rotate(180deg)' }} />
         </button>
-        <div>
-          <h3><img src={leagueInfo?.flagUrl} alt="" style={{ width: '20px', height: '14px', objectFit: 'cover', borderRadius: '2px', verticalAlign: 'middle' }} /> {leagueInfo?.name}</h3>
+        <div className="header-info">
+          <h3>
+            <img src={leagueInfo?.flagUrl} alt="" className="header-flag" />
+            {selectedTeam.name}
+          </h3>
+          <p>{selectedTeam.players?.length || 0} jugadores · Media {selectedTeam.avgOverall || '??'}</p>
         </div>
       </div>
       
-      {/* Tabs de equipos */}
+      {/* Tabs de equipos (navegación rápida) */}
       <div className="teams-tabs">
         {teams.map(team => (
           <button
@@ -778,11 +822,19 @@ function ExplorarTab({ leagueTeams, myTeamId, onSelectPlayer, blockedPlayers = [
             onClick={() => team.id !== myTeamId && setSelectedTeam(team)}
             disabled={team.id === myTeamId}
           >
-            <span className="tab-initial">{team.name?.charAt(0)}</span>
-            <span className="tab-name">{team.name}</span>
+            <span className="tab-name">{team.shortName || team.name?.split(' ').pop()}</span>
             <span className="tab-ovr">{team.avgOverall}</span>
           </button>
         ))}
+      </div>
+
+      {/* Cabecera de la tabla */}
+      <div className="squad-table-header">
+        <span className="col-pos">POS</span>
+        <span className="col-name">JUGADOR</span>
+        <span className="col-age">EDAD</span>
+        <span className="col-ovr">OVR</span>
+        <span className="col-value">VALOR</span>
       </div>
 
       <div className="squad-list">
@@ -799,9 +851,9 @@ function ExplorarTab({ leagueTeams, myTeamId, onSelectPlayer, blockedPlayers = [
               >
                 <span className="player-pos" data-pos={player.position}>{player.position}</span>
                 <span className="player-name">{player.name}</span>
-                <span className="player-age">{player.age} años</span>
+                <span className="player-age">{player.age}</span>
                 <span className="player-ovr">{player.overall}</span>
-                <span className="player-value">{formatTransferPrice(calculateMarketValue(player, state.leagueId))}</span>
+                <span className="player-value">{formatTransferPrice(calculateMarketValue(player, playerLeagueId))}</span>
                 {isBlocked && <span className="blocked-badge"><Ban size={14} /></span>}
               </div>
             );

@@ -163,7 +163,8 @@ export default function Plantilla() {
     // No renovar si ya renovó esta temporada (cooldown de 30 semanas)
     const lastRenewal = player.personality?.lastRenewalWeek || 0;
     const currentWeek = state.currentWeek || 1;
-    if (lastRenewal > 0 && (currentWeek - lastRenewal) < 30) return false;
+    // Si lastRenewal > currentWeek, es de una temporada anterior → ignorar cooldown
+    if (lastRenewal > 0 && lastRenewal <= currentWeek && (currentWeek - lastRenewal) < 30) return false;
     return contractYears <= 2;
   };
   
@@ -347,12 +348,23 @@ export default function Plantilla() {
             {playersNeedingAttention.slice(0, 3).map(p => {
               const contract = getContractStatus(p);
               const wantsLeave = p.personality?.wantsToLeave;
+              const canRenew = wantsToRenew(p);
               return (
-                <div key={p.name} className="alert-item" onClick={() => handleRenew(p)}>
+                <div key={p.name} className="alert-item" onClick={() => {
+                  if (canRenew) {
+                    handleRenew(p);
+                  } else {
+                    // Can't renew (retiring, cooldown, etc.) — open mobile actions
+                    setSelectedPlayer(p);
+                    setActionModal({ type: 'mobile-actions', player: p });
+                  }
+                }}>
                   <span className="pos" style={{ color: getPositionColor(p.position) }}>{p.position}</span>
                   <span className="name">{p.name}</span>
                   <span className="reason">
-                    {wantsLeave ? <><AlertCircle size={12} /> Quiere irse</> : <><Clock size={12} /> {contract.label}</>}
+                    {p.retiring ? <><AlertCircle size={12} /> Se retira</> 
+                      : wantsLeave ? <><AlertCircle size={12} /> Quiere irse</> 
+                      : <><Clock size={12} /> {contract.label}</>}
                   </span>
                 </div>
               );

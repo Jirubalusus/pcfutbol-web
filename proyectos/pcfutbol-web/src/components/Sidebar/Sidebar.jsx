@@ -26,9 +26,8 @@ const menuItems = [
   { id: 'formation', icon: ClipboardList, label: 'Alineación' },
   { id: 'objectives', icon: Target, label: 'Objetivos' },
   { id: 'calendar', icon: Calendar, label: 'Calendario' },
-  { id: 'table', icon: Trophy, label: 'Clasificación' },
   { id: 'transfers', icon: Briefcase, label: 'Fichajes' },
-  { id: 'competitions', icon: Award, label: 'Competiciones', requiresCompetitions: true },
+  { id: 'competitions', icon: Award, label: 'Competiciones' },
   { id: 'stadium', icon: Building2, label: 'Estadio' },
   { id: 'finance', icon: Landmark, label: 'Banco' },
   { id: 'facilities', icon: Wrench, label: 'Instalaciones' },
@@ -59,12 +58,7 @@ export default function Sidebar({ activeTab, onTabChange }) {
         </div>
         
         <nav className="sidebar__nav">
-          {menuItems
-            .filter(item => {
-              if (item.requiresCompetitions) return state.cupCompetition || state.europeanCompetitions?.initialized;
-              return true;
-            })
-            .map(item => {
+          {menuItems.map(item => {
             const IconComponent = item.icon;
             return (
               <button

@@ -1,0 +1,19 @@
+// ============================================================
+// SOUTH AMERICA — SA Competitions Styles
+// ============================================================
+// Reuses .europe class structure (same layout/patterns).
+// SA-specific accent overrides are minimal.
+// ============================================================
+
+.sa-comps {
+  // SA competitions use the same .europe styles from Europe.scss.
+  // Only override accent colors for the SA feel.
+  
+  .europe__tab.active {
+    border-color: #2e7d32;
+  }
+  
+  .europe__tab.player {
+    background: rgba(46, 125, 50, 0.15);
+  }
+}

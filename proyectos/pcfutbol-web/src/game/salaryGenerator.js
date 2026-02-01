@@ -81,13 +81,11 @@ export function generateSalary(player, leagueTier = 1) {
  */
 export function applyGeneratedSalaries(players, leagueTier = 1) {
   return (players || []).map(player => {
-    // Si el salario parece placeholder (todos iguales a 20000) o no existe, generar uno
-    const currentSalary = player.salary || 0;
-    const isPlaceholder = currentSalary === 0 || currentSalary === 20000;
-    
+    // Siempre regenerar salarios con el tier correcto para garantizar balance económico.
+    // Los salarios del scraper no tienen en cuenta el tier de liga.
     return {
       ...player,
-      salary: isPlaceholder ? generateSalary(player, leagueTier) : currentSalary
+      salary: generateSalary(player, leagueTier)
     };
   });
 }

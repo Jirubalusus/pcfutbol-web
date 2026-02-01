@@ -133,6 +133,125 @@ export const STADIUM_CAPACITIES = {
   'rennes': { name: 'Roazhon Park', capacity: 30000 },
   'strasbourg': { name: 'Stade de la Meinau', capacity: 26000 },
   'nantes': { name: 'Stade de la Beaujoire', capacity: 37000 },
+
+  // ============================================================
+  // SOUTH AMERICA
+  // ============================================================
+
+  // === ARGENTINA ===
+  'club-atletico-river-plate': { name: 'Estadio Monumental', capacity: 84567 },
+  'club-atletico-boca-juniors': { name: 'La Bombonera', capacity: 54000 },
+  'racing-club': { name: 'Cilindro de Avellaneda', capacity: 51389 },
+  'club-atletico-independiente': { name: 'Libertadores de América', capacity: 48069 },
+  'club-atletico-san-lorenzo-de-almagro': { name: 'Nuevo Gasómetro', capacity: 48000 },
+  'club-atletico-velez-sarsfield': { name: 'José Amalfitani', capacity: 49540 },
+  'club-atletico-huracan': { name: 'Tomás Adolfo Ducó', capacity: 48314 },
+  'club-estudiantes-de-la-plata': { name: 'Jorge Luis Hirschi', capacity: 30018 },
+  'club-atletico-rosario-central': { name: 'Gigante de Arroyito', capacity: 41654 },
+  'club-atletico-newells-old-boys': { name: 'Marcelo Bielsa', capacity: 42000 },
+  'club-atletico-talleres': { name: 'Mario Alberto Kempes', capacity: 57000 },
+  'club-atletico-lanus': { name: 'La Fortaleza', capacity: 47027 },
+  'ca-belgrano': { name: 'Julio César Villagra', capacity: 34000 },
+  'argentinos-juniors': { name: 'Diego Armando Maradona', capacity: 26000 },
+  'defensa-y-justicia': { name: 'Norberto Tomaghello', capacity: 18000 },
+  'club-atletico-tigre': { name: 'José Dellagiovanna', capacity: 26282 },
+  'club-atletico-platense': { name: 'Ciudad de Vicente López', capacity: 28000 },
+  'club-atletico-union': { name: '15 de Abril', capacity: 27000 },
+  'club-de-gimnasia-y-esgrima-la-plata': { name: 'Juan C. Zerillo', capacity: 33000 },
+  'club-atletico-banfield': { name: 'Florencio Sola', capacity: 34901 },
+  'club-atletico-tucuman': { name: 'Monumental José Fierro', capacity: 35200 },
+  'instituto-ac-cordoba': { name: 'Juan Domingo Perón', capacity: 30000 },
+  'independiente-rivadavia': { name: 'Bautista Gargantini', capacity: 25000 },
+  'club-atletico-barracas-central': { name: 'Claudio Chiqui Tapia', capacity: 18000 },
+  'gimnasia-y-esgrima-de-mendoza': { name: 'Víctor Antonio Legrotaglie', capacity: 20000 },
+  'club-atletico-sarmiento-junin-': { name: 'Eva Perón', capacity: 25000 },
+  'cd-riestra': { name: 'Guillermo Laza', capacity: 10000 },
+  'club-atletico-aldosivi': { name: 'José María Minella', capacity: 35354 },
+  'aa-estudiantes-de-rio-cuarto': { name: 'Ciudad de Río Cuarto', capacity: 14000 },
+  'club-atletico-central-cordoba-sde-': { name: 'Alfredo Terrera', capacity: 30000 },
+
+  // === BRASIL ===
+  'flamengo-rio-de-janeiro': { name: 'Maracanã', capacity: 78838 },
+  'se-palmeiras-sao-paulo': { name: 'Allianz Parque', capacity: 44000 },
+  'corinthians-sao-paulo': { name: 'Neo Química Arena', capacity: 49205 },
+  'fc-sao-paulo': { name: 'Morumbi', capacity: 66795 },
+  'vasco-da-gama-rio-de-janeiro': { name: 'São Januário', capacity: 21880 },
+  'fluminense-rio-de-janeiro': { name: 'Maracanã', capacity: 78838 },
+  'botafogo-rio-de-janeiro': { name: 'Nilton Santos', capacity: 46931 },
+  'clube-atletico-mineiro': { name: 'Arena MRV', capacity: 46000 },
+  'gremio-porto-alegre': { name: 'Arena do Grêmio', capacity: 60540 },
+  'sc-internacional-porto-alegre': { name: 'Beira-Rio', capacity: 50128 },
+  'ec-cruzeiro-belo-horizonte': { name: 'Mineirão', capacity: 61846 },
+  'esporte-clube-bahia': { name: 'Arena Fonte Nova', capacity: 50025 },
+  'fc-santos': { name: 'Vila Belmiro', capacity: 16068 },
+  'club-athletico-paranaense': { name: 'Arena da Baixada', capacity: 42372 },
+  'red-bull-bragantino': { name: 'Nabi Abi Chedid', capacity: 17728 },
+  'esporte-clube-vitoria': { name: 'Barradão', capacity: 36000 },
+  'coritiba-fc': { name: 'Couto Pereira', capacity: 40502 },
+  'chapecoense': { name: 'Arena Condá', capacity: 22600 },
+  'clube-do-remo-pa-': { name: 'Baenão', capacity: 16200 },
+  'mirassol-futebol-clube-sp-': { name: 'José Maria de Campos Maia', capacity: 15000 },
+
+  // === COLOMBIA ===
+  'atletico-nacional': { name: 'Atanasio Girardot', capacity: 45943 },
+  'millonarios-fc': { name: 'El Campín', capacity: 36343 },
+  'cd-america-de-cali': { name: 'Estadio Pascual Guerrero', capacity: 36000 },
+  'junior-fc': { name: 'Estadio Metropolitano', capacity: 50000 },
+  'independiente-medellin': { name: 'Atanasio Girardot', capacity: 45943 },
+  'independiente-santa-fe': { name: 'El Campín', capacity: 36343 },
+  'deportivo-cali': { name: 'Estadio Deportivo Cali', capacity: 60000 },
+  'deportes-tolima': { name: 'Manuel Murillo Toro', capacity: 27000 },
+  'once-caldas': { name: 'Palogrande', capacity: 31000 },
+  'atletico-bucaramanga': { name: 'Alfonso López', capacity: 28000 },
+
+  // === CHILE ===
+  'club-universidad-de-chile': { name: 'Estadio Nacional', capacity: 48665 },
+  'csd-colo-colo': { name: 'Estadio Monumental David Arellano', capacity: 47000 },
+  'cd-universidad-catolica': { name: 'San Carlos de Apoquindo', capacity: 15000 },
+  'cd-ohiggins': { name: 'El Teniente', capacity: 14000 },
+  'coquimbo-unido': { name: 'Francisco Sánchez Rumoroso', capacity: 18750 },
+
+  // === URUGUAY ===
+  'ca-penarol': { name: 'Campeón del Siglo', capacity: 40000 },
+  'club-nacional': { name: 'Gran Parque Central', capacity: 34000 },
+  'defensor-sc': { name: 'Estadio Luis Franzini', capacity: 18000 },
+  'liverpool-fc-montevideo': { name: 'Belvedere', capacity: 12000 },
+  'ca-boston-river': { name: 'Tróccoli', capacity: 10000 },
+
+  // === ECUADOR ===
+  'independiente-del-valle': { name: 'Banco Guayaquil', capacity: 12000 },
+  'barcelona-sc-guayaquil': { name: 'Estadio Monumental Isidro Romero', capacity: 59283 },
+  'ldu-quito': { name: 'Estadio Rodrigo Paz Delgado', capacity: 41575 },
+  'cd-universidad-catolica': { name: 'Estadio Olímpico Atahualpa', capacity: 35258 },
+  'orense-sc': { name: 'Estadio 9 de Mayo', capacity: 18000 },
+
+  // === PARAGUAY ===
+  'club-cerro-porteno': { name: 'Nuevo Olla', capacity: 45000 },
+  'olimpia-asuncion': { name: 'Manuel Ferreira', capacity: 25000 },
+  'club-libertad-asuncion': { name: 'Dr. Nicolás Leoz', capacity: 12000 },
+  'club-guarani': { name: 'Rogelio Livieres', capacity: 12000 },
+  'club-nacional-asuncion': { name: 'Arsenio Erico', capacity: 15000 },
+
+  // === PERÚ ===
+  'club-alianza-lima': { name: 'Estadio Alejandro Villanueva', capacity: 35000 },
+  'universitario-de-deportes': { name: 'Estadio Monumental', capacity: 80093 },
+  'club-sporting-cristal': { name: 'Estadio Alberto Gallardo', capacity: 18000 },
+  'fbc-melgar': { name: 'Estadio de la UNSA', capacity: 45000 },
+  'cusco-fc': { name: 'Inca Garcilaso de la Vega', capacity: 42056 },
+
+  // === BOLIVIA ===
+  'bolivar-la-paz': { name: 'Hernando Siles', capacity: 42000 },
+  'the-strongest-la-paz': { name: 'Hernando Siles', capacity: 42000 },
+  'club-always-ready': { name: 'Estadio Municipal de El Alto', capacity: 25000 },
+  'blooming-santa-cruz': { name: 'Ramón Tahuichi Aguilera', capacity: 38000 },
+  'club-deportivo-guabira': { name: 'Gilberto Parada', capacity: 18000 },
+
+  // === VENEZUELA ===
+  'deportivo-tachira': { name: 'Pueblo Nuevo', capacity: 38755 },
+  'caracas-fc': { name: 'Estadio Olímpico de la UCV', capacity: 25354 },
+  'deportivo-la-guaira': { name: 'Estadio Olímpico de la UCV', capacity: 25354 },
+  'carabobo-fc': { name: 'Misael Delgado', capacity: 15000 },
+  'academia-puerto-cabello': { name: 'José Antonio Páez', capacity: 10000 },
 };
 
 /**

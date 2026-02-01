@@ -37,8 +37,8 @@ export default function Calendar() {
   }, [state.europeanCalendar, state.fixtures]);
 
   const totalWeeks = calendar.totalWeeks;
-  const hasEuropean = !!state.europeanCompetitions?.initialized;
-  const hasCup = !!state.cupCompetition;
+  const hasEuropean = !!state.europeanCompetitions?.initialized || (calendar.allEuropeanWeeks?.length > 0);
+  const hasCup = !!state.cupCompetition || (calendar.cupWeeks?.length > 0);
 
   // ── Build unified chronological week entries ──
   const weekEntries = useMemo(() => {

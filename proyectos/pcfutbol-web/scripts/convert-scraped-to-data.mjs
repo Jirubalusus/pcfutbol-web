@@ -153,6 +153,97 @@ const LEAGUE_CONFIG = {
     defaultCapacity: 10000,
     baseReputation: 64,
     tier: 1
+  },
+  // South American leagues
+  argentinaPrimera: {
+    outputFile: 'teams-argentina.js',
+    exportName: 'argentinaTeams',
+    leagueId: 'argentinaPrimera',
+    leagueName: 'Liga Profesional',
+    defaultCapacity: 30000,
+    baseReputation: 72,
+    tier: 1
+  },
+  brasileiraoA: {
+    outputFile: 'teams-brasileirao.js',
+    exportName: 'brasilTeams',
+    leagueId: 'brasileiraoA',
+    leagueName: 'Série A',
+    defaultCapacity: 35000,
+    baseReputation: 73,
+    tier: 1
+  },
+  colombiaPrimera: {
+    outputFile: 'teams-colombia.js',
+    exportName: 'colombiaTeams',
+    leagueId: 'colombiaPrimera',
+    leagueName: 'Liga BetPlay',
+    defaultCapacity: 25000,
+    baseReputation: 67,
+    tier: 1
+  },
+  chilePrimera: {
+    outputFile: 'teams-chile.js',
+    exportName: 'chileTeams',
+    leagueId: 'chilePrimera',
+    leagueName: 'Primera División (Chile)',
+    defaultCapacity: 15000,
+    baseReputation: 66,
+    tier: 1
+  },
+  uruguayPrimera: {
+    outputFile: 'teams-uruguay.js',
+    exportName: 'uruguayTeams',
+    leagueId: 'uruguayPrimera',
+    leagueName: 'Primera División (Uruguay)',
+    defaultCapacity: 20000,
+    baseReputation: 67,
+    tier: 1
+  },
+  ecuadorLigaPro: {
+    outputFile: 'teams-ecuador.js',
+    exportName: 'ecuadorTeams',
+    leagueId: 'ecuadorLigaPro',
+    leagueName: 'LigaPro',
+    defaultCapacity: 15000,
+    baseReputation: 65,
+    tier: 1
+  },
+  paraguayPrimera: {
+    outputFile: 'teams-paraguay.js',
+    exportName: 'paraguayTeams',
+    leagueId: 'paraguayPrimera',
+    leagueName: 'División de Honor',
+    defaultCapacity: 15000,
+    baseReputation: 63,
+    tier: 1
+  },
+  peruLiga1: {
+    outputFile: 'teams-peru.js',
+    exportName: 'peruTeams',
+    leagueId: 'peruLiga1',
+    leagueName: 'Liga 1',
+    defaultCapacity: 15000,
+    baseReputation: 63,
+    tier: 1
+  },
+  boliviaPrimera: {
+    outputFile: 'teams-bolivia.js',
+    exportName: 'boliviaTeams',
+    leagueId: 'boliviaPrimera',
+    leagueName: 'División Profesional',
+    defaultCapacity: 15000,
+    baseReputation: 60,
+    tier: 1
+  },
+  venezuelaPrimera: {
+    outputFile: 'teams-venezuela.js',
+    exportName: 'venezuelaTeams',
+    leagueId: 'venezuelaPrimera',
+    leagueName: 'Liga FUTVE',
+    defaultCapacity: 12000,
+    baseReputation: 61,
+    tier: 1
   }
 };
 

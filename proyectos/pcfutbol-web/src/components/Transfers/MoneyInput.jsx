@@ -18,12 +18,20 @@ export default function MoneyInput({ value, onChange, step = 500000, min = 0, ma
   const intervalRef = useRef(null);
   const tickCountRef = useRef(0);
   
-  // Siempre formato M (0.1M, 0.5M, 2.0M, etc.)
+  // Formato: K por debajo de 1M, M a partir de 1M
   const formatDisplay = (val) => {
+    if (val < 1000000) {
+      return `${Math.round(val / 1000)}K`;
+    }
     const m = val / 1000000;
     if (m >= 100) return `${Math.round(m)}M`;
     if (m >= 10) return `${m.toFixed(1)}M`;
     return `${m.toFixed(1)}M`;
+  };
+  
+  // Step dinámico: 100K cuando el valor está por debajo de 1M
+  const getStep = (currentVal) => {
+    return currentVal < 1000000 ? 100000 : step;
   };
   
   const clamp = useCallback((val) => {
@@ -36,11 +44,12 @@ export default function MoneyInput({ value, onChange, step = 500000, min = 0, ma
     if (disabled) return;
     tickCountRef.current = 0;
     
-    // Primer click inmediato (1x step)
+    // Primer click inmediato con step dinámico
+    const currentStep = getStep(value);
     if (direction === 'up') {
-      onChange(clamp(value + step));
+      onChange(clamp(value + currentStep));
     } else {
-      onChange(clamp(value - step));
+      onChange(clamp(value - currentStep));
     }
     
     setHolding(direction);
@@ -56,11 +65,17 @@ export default function MoneyInput({ value, onChange, step = 500000, min = 0, ma
         else if (ticks > 15) multiplier = 2;
         
         if (direction === 'up') {
-          onChange(v => clamp(v + step * multiplier));
+          onChange(v => {
+            const s = getStep(v);
+            return clamp(v + s * multiplier);
+          });
         } else {
-          onChange(v => clamp(v - step * multiplier));
+          onChange(v => {
+            const s = getStep(v);
+            return clamp(v - s * multiplier);
+          });
         }
-      }, 150); // 150ms entre ticks (antes era 80ms)
+      }, 150);
       intervalRef.current = interval;
     }, 500);
     

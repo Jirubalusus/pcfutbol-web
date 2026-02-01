@@ -36,6 +36,8 @@ import { qualifyTeamsForEurope, buildSeasonCalendar, buildEuropeanCalendar, rema
 import { getCupTeams, generateCupBracket, CUP_CONFIGS } from '../../game/cupSystem';
 import { LEAGUE_CONFIG } from '../../game/multiLeagueEngine';
 import { initializeEuropeanCompetitions } from '../../game/europeanSeason';
+import { isSouthAmericanLeague, qualifyTeamsForSouthAmerica, SA_LEAGUE_SLOTS } from '../../game/southAmericanCompetitions';
+import { initializeSACompetitions } from '../../game/southAmericanSeason';
 import { initializeLeague } from '../../game/leagueEngine';
 import { initializeNewSeasonWithPromotions, getLeagueName, getLeagueTable } from '../../game/multiLeagueEngine';
 import { generateSeasonObjectives } from '../../game/objectivesEngine';
@@ -424,21 +426,20 @@ export default function SeasonEnd({ allTeams, onComplete }) {
     }
     
     // ============================================================
-    // EUROPEAN COMPETITIONS — Initialize for next season
+    // CONTINENTAL COMPETITIONS — Initialize for next season
     // ============================================================
+    const isInSALeague = isSouthAmericanLeague(newSeasonData.newPlayerLeagueId || playerLeagueId);
+    
     try {
-      // Build league standings from all leagues (current season final tables)
       const leagueStandings = {};
       const allTeamsMap = {};
 
-      // Player's league
       const playerTable = newSeasonData.playerLeague?.table || state.leagueTable || [];
       const newPlayerLeague = newSeasonData.newPlayerLeagueId || playerLeagueId;
       if (playerTable.length > 0) {
         leagueStandings[newPlayerLeague] = playerTable;
       }
       
-      // Other leagues
       const otherLeagues = newSeasonData.otherLeagues || state.otherLeagues || {};
       for (const [leagueId, leagueData] of Object.entries(otherLeagues)) {
         if (leagueData?.table?.length > 0 && leagueId !== newPlayerLeague) {
@@ -446,80 +447,124 @@ export default function SeasonEnd({ allTeams, onComplete }) {
         }
       }
 
-      // Build allTeamsMap from all available teams
       allTeams.forEach(t => {
         allTeamsMap[t.id || t.teamId] = t;
       });
 
-      // Qualify teams for European competitions
-      const qualifiedTeams = qualifyTeamsForEurope(leagueStandings, allTeamsMap);
-      
-      // Check if enough teams to form competitions
-      const totalQualified = qualifiedTeams.championsLeague.length + 
-                             qualifiedTeams.europaLeague.length + 
-                             qualifiedTeams.conferenceleague.length;
+      if (isInSALeague) {
+        // ── SOUTH AMERICAN COMPETITIONS ──
+        const qualifiedTeams = qualifyTeamsForSouthAmerica(leagueStandings, allTeamsMap);
+        
+        const totalQualified = qualifiedTeams.copaLibertadores.length + 
+                               qualifiedTeams.copaSudamericana.length;
 
-      if (totalQualified >= 12) {
-        // Pad each competition to 32 teams with best remaining teams
-        const usedTeamIds = new Set();
-        Object.values(qualifiedTeams).forEach(teams => 
-          teams.forEach(t => usedTeamIds.add(t.teamId))
-        );
+        if (totalQualified >= 8) {
+          const usedTeamIds = new Set();
+          Object.values(qualifiedTeams).forEach(teams => 
+            teams.forEach(t => usedTeamIds.add(t.teamId))
+          );
 
-        // Get remaining top teams to fill competitions
-        const remainingTeams = allTeams
-          .filter(t => !usedTeamIds.has(t.id || t.teamId))
-          .sort((a, b) => (b.reputation || 0) - (a.reputation || 0));
+          const remainingTeams = allTeams
+            .filter(t => !usedTeamIds.has(t.id || t.teamId) && isSouthAmericanLeague(t.league || t.leagueId || ''))
+            .sort((a, b) => (b.reputation || 0) - (a.reputation || 0));
 
-        // Pad each competition
-        for (const compId of ['championsLeague', 'europaLeague', 'conferenceleague']) {
-          const needed = 32 - qualifiedTeams[compId].length;
-          if (needed > 0) {
-            const fillers = remainingTeams.splice(0, needed);
-            qualifiedTeams[compId].push(...fillers.map(t => ({
-              teamId: t.id || t.teamId,
-              teamName: t.name || t.teamName,
-              shortName: t.shortName || '',
-              league: t.league || 'unknown',
-              leaguePosition: 0,
-              reputation: t.reputation || 60,
-              overall: t.overall || 65,
-              players: t.players || [],
-              ...t
-            })));
+          for (const compId of ['copaLibertadores', 'copaSudamericana']) {
+            const needed = 32 - qualifiedTeams[compId].length;
+            if (needed > 0) {
+              const fillers = remainingTeams.splice(0, needed);
+              qualifiedTeams[compId].push(...fillers.map(t => ({
+                teamId: t.id || t.teamId,
+                teamName: t.name || t.teamName,
+                shortName: t.shortName || '',
+                league: t.league || 'unknown',
+                leaguePosition: 0,
+                reputation: t.reputation || 60,
+                overall: t.overall || 65,
+                players: t.players || [],
+                ...t
+              })));
+            }
+          }
+
+          const saState = initializeSACompetitions(qualifiedTeams);
+          dispatch({ type: 'INIT_SA_COMPETITIONS', payload: saState });
+
+          const playerQualComp = ['copaLibertadores', 'copaSudamericana']
+            .find(c => qualifiedTeams[c].some(t => (t.teamId || t.id) === state.teamId));
+
+          if (playerQualComp) {
+            const compNames = { copaLibertadores: 'Copa Libertadores', copaSudamericana: 'Copa Sudamericana' };
+            dispatch({
+              type: 'ADD_MESSAGE',
+              payload: {
+                id: Date.now() + 100,
+                type: 'southamerican',
+                title: `¡Competición Continental!`,
+                content: `Tu equipo jugará la ${compNames[playerQualComp]} la próxima temporada.`,
+                date: `Inicio Temporada ${state.currentSeason + 1}`
+              }
+            });
           }
         }
+      } else {
+        // ── EUROPEAN COMPETITIONS ──
+        const qualifiedTeams = qualifyTeamsForEurope(leagueStandings, allTeamsMap);
+        
+        const totalQualified = qualifiedTeams.championsLeague.length + 
+                               qualifiedTeams.europaLeague.length + 
+                               qualifiedTeams.conferenceleague.length;
 
-        const europeanState = initializeEuropeanCompetitions(qualifiedTeams);
-        dispatch({
-          type: 'INIT_EUROPEAN_COMPETITIONS',
-          payload: europeanState
-        });
+        if (totalQualified >= 12) {
+          const usedTeamIds = new Set();
+          Object.values(qualifiedTeams).forEach(teams => 
+            teams.forEach(t => usedTeamIds.add(t.teamId))
+          );
 
-        // Notify player of European qualification
-        const playerQualComp = ['championsLeague', 'europaLeague', 'conferenceleague']
-          .find(c => qualifiedTeams[c].some(t => (t.teamId || t.id) === state.teamId));
+          const remainingTeams = allTeams
+            .filter(t => !usedTeamIds.has(t.id || t.teamId))
+            .sort((a, b) => (b.reputation || 0) - (a.reputation || 0));
 
-        if (playerQualComp) {
-          const compNames = {
-            championsLeague: 'Champions League',
-            europaLeague: 'Europa League',
-            conferenceleague: 'Conference League'
-          };
-          dispatch({
-            type: 'ADD_MESSAGE',
-            payload: {
-              id: Date.now() + 100,
-              type: 'european',
-              title: `¡Competición Europea!`,
-              content: `Tu equipo jugará la ${compNames[playerQualComp]} la próxima temporada.`,
-              date: `Inicio Temporada ${state.currentSeason + 1}`
+          for (const compId of ['championsLeague', 'europaLeague', 'conferenceleague']) {
+            const needed = 32 - qualifiedTeams[compId].length;
+            if (needed > 0) {
+              const fillers = remainingTeams.splice(0, needed);
+              qualifiedTeams[compId].push(...fillers.map(t => ({
+                teamId: t.id || t.teamId,
+                teamName: t.name || t.teamName,
+                shortName: t.shortName || '',
+                league: t.league || 'unknown',
+                leaguePosition: 0,
+                reputation: t.reputation || 60,
+                overall: t.overall || 65,
+                players: t.players || [],
+                ...t
+              })));
             }
-          });
+          }
+
+          const europeanState = initializeEuropeanCompetitions(qualifiedTeams);
+          dispatch({ type: 'INIT_EUROPEAN_COMPETITIONS', payload: europeanState });
+
+          const playerQualComp = ['championsLeague', 'europaLeague', 'conferenceleague']
+            .find(c => qualifiedTeams[c].some(t => (t.teamId || t.id) === state.teamId));
+
+          if (playerQualComp) {
+            const compNames = { championsLeague: 'Champions League', europaLeague: 'Europa League', conferenceleague: 'Conference League' };
+            dispatch({
+              type: 'ADD_MESSAGE',
+              payload: {
+                id: Date.now() + 100,
+                type: 'european',
+                title: `¡Competición Europea!`,
+                content: `Tu equipo jugará la ${compNames[playerQualComp]} la próxima temporada.`,
+                date: `Inicio Temporada ${state.currentSeason + 1}`
+              }
+            });
+          }
         }
       }
     } catch (err) {
-      console.error('Error initializing European competitions:', err);
+      console.error('Error initializing continental competitions:', err);
     }
     
     onComplete();
@@ -728,20 +773,36 @@ export default function SeasonEnd({ allTeams, onComplete }) {
                 if (cupResult) break;
               }
               if (!cupResult) cupResult = 'Eliminado';
+            } else {
+              // Player still alive but cup not finished — find the furthest round reached
+              let lastRoundPlayed = null;
+              for (let i = cup.rounds.length - 1; i >= 0; i--) {
+                const round = cup.rounds[i];
+                const playerMatch = round.matches.find(m =>
+                  m.homeTeam?.teamId === state.teamId || m.awayTeam?.teamId === state.teamId
+                );
+                if (playerMatch && (playerMatch.played || playerMatch.bye)) {
+                  lastRoundPlayed = round.name;
+                  break;
+                }
+              }
+              if (lastRoundPlayed) {
+                cupResult = lastRoundPlayed;
+              } else {
+                // Didn't play any round — check if they had a bye in round 1
+                cupResult = cup.rounds[0]?.name || 'Participante';
+              }
             }
 
-            if (cupResult) {
-              return (
-                <div className={`competition-result ${isChampion ? 'competition-result--champion' : ''}`}>
-                  <Flag size={24} className="result-icon" />
-                  <div className="result-info">
-                    <h3>{cupIcon} {cupName}</h3>
-                    <p>{isChampion ? '🏆 ¡Campeón!' : `Eliminado en ${cupResult}`}</p>
-                  </div>
+            return (
+              <div className={`competition-result ${isChampion ? 'competition-result--champion' : ''}`}>
+                <Flag size={24} className="result-icon" />
+                <div className="result-info">
+                  <h3>{cupIcon} {cupName}</h3>
+                  <p>{isChampion ? '🏆 ¡Campeón!' : cup.playerEliminated ? `Eliminado en ${cupResult}` : `Alcanzó: ${cupResult}`}</p>
                 </div>
-              );
-            }
-            return null;
+              </div>
+            );
           })()}
 
           {/* Resultado en competición europea */}
@@ -751,7 +812,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
               if (!compState) continue;
               if (!compState.teams?.some(t => t.teamId === state.teamId)) continue;
 
-              const compName = compState.config?.shortName || compId;
+              const compName = compState.config?.shortName || compState.config?.name || compId;
               const icon = compState.config?.icon || '🌍';
               let result = null;
               let isChampion = false;
@@ -761,49 +822,79 @@ export default function SeasonEnd({ allTeams, onComplete }) {
                 result = 'Campeón';
                 isChampion = true;
               } else {
-                // Check elimination phase
-                const q = compState.qualification;
-                if (q?.eliminated?.some(t => t.teamId === state.teamId)) {
-                  result = 'Fase de Liga';
-                } else {
+                // Check elimination in reverse order (from final backwards)
+                // Lost in final
+                if (compState.finalResult?.winner && compState.finalResult.winner.teamId !== state.teamId) {
+                  const fm = compState.finalMatchup;
+                  if (fm && (fm.team1?.teamId === state.teamId || fm.team2?.teamId === state.teamId)) {
+                    result = 'Final (Subcampeón)';
+                  }
+                }
+
+                // Check knockout phases
+                if (!result) {
                   const phases = [
-                    { key: 'playoffResults', name: 'Playoff' },
-                    { key: 'r16Results', name: 'Octavos de Final' },
+                    { key: 'sfResults', name: 'Semifinales' },
                     { key: 'qfResults', name: 'Cuartos de Final' },
-                    { key: 'sfResults', name: 'Semifinales' }
+                    { key: 'r16Results', name: 'Octavos de Final' },
+                    { key: 'playoffResults', name: 'Playoff' }
                   ];
                   for (const { key, name } of phases) {
                     const results = compState[key];
-                    if (!results) continue;
+                    if (!results || results.length === 0) continue;
                     const teamMatch = results.find(r =>
                       r.team1?.teamId === state.teamId || r.team2?.teamId === state.teamId
                     );
-                    if (teamMatch && teamMatch.winner && teamMatch.winner.teamId !== state.teamId) {
-                      result = name;
+                    if (teamMatch) {
+                      if (teamMatch.winner && teamMatch.winner.teamId !== state.teamId) {
+                        result = name;
+                      } else if (teamMatch.winner && teamMatch.winner.teamId === state.teamId) {
+                        // Won this round but didn't find elimination later — still active
+                        continue;
+                      }
                       break;
                     }
                   }
-                  // Lost in final
-                  if (!result && compState.finalResult?.winner && compState.finalResult.winner.teamId !== state.teamId) {
-                    const finalMatch = compState.finalMatchup;
-                    if (finalMatch && (finalMatch.team1?.teamId === state.teamId || finalMatch.team2?.teamId === state.teamId)) {
-                      result = 'Final (Subcampeón)';
+                }
+
+                // Swiss phase elimination
+                if (!result) {
+                  const q = compState.qualification;
+                  if (q?.eliminated?.some(t => t.teamId === state.teamId)) {
+                    // Find position in Swiss standings
+                    const standing = compState.standings?.find(s => s.teamId === state.teamId);
+                    const pos = standing ? compState.standings.indexOf(standing) + 1 : null;
+                    result = pos ? `Fase de Liga (${pos}º)` : 'Fase de Liga';
+                  }
+                }
+
+                // Fallback: still active or unknown — show league position
+                if (!result) {
+                  const standing = compState.standings?.find(s => s.teamId === state.teamId);
+                  if (standing) {
+                    const pos = compState.standings
+                      .sort((a, b) => (b.points - a.points) || (b.goalDifference - a.goalDifference))
+                      .findIndex(s => s.teamId === state.teamId) + 1;
+                    if (compState.phase === 'league' || compState.currentMatchday < 8) {
+                      result = `Fase de Liga (${pos}º, J${compState.currentMatchday || 0}/8)`;
+                    } else {
+                      result = `${pos}º en Fase de Liga`;
                     }
+                  } else {
+                    result = 'Participante';
                   }
                 }
               }
 
-              if (result) {
-                return (
-                  <div className={`competition-result ${isChampion ? 'competition-result--champion' : ''}`}>
-                    <Globe size={24} className="result-icon" />
-                    <div className="result-info">
-                      <h3>{icon} {compName}</h3>
-                      <p>{isChampion ? '🏆 ¡Campeón!' : `Eliminado en ${result}`}</p>
-                    </div>
+              return (
+                <div className={`competition-result ${isChampion ? 'competition-result--champion' : ''}`}>
+                  <Globe size={24} className="result-icon" />
+                  <div className="result-info">
+                    <h3>{icon} {compName}</h3>
+                    <p>{isChampion ? '🏆 ¡Campeón!' : result}</p>
                   </div>
-                );
-              }
+                </div>
+              );
             }
             return null;
           })()}

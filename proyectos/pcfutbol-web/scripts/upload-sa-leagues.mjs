@@ -1,0 +1,165 @@
+/**
+ * Upload South American leagues to Firestore
+ * Only uploads the 10 SA leagues (skips European ones already uploaded)
+ */
+
+import { initializeApp } from 'firebase/app';
+import { getFirestore, doc, setDoc, writeBatch } from 'firebase/firestore';
+import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+import { firebaseConfig } from './firebase-config.mjs';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const projectRoot = join(__dirname, '..');
+const scrapedDir = join(projectRoot, 'scraped-data', '2025-26');
+const dataDir = join(projectRoot, 'public', 'data');
+
+// Ensure data dir exists
+if (!existsSync(dataDir)) mkdirSync(dataDir, { recursive: true });
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const VALID_POSITIONS = ['GK','CB','LB','RB','CDM','CM','CAM','LW','RW','CF','ST','LM','RM'];
+
+const SA_LEAGUES = [
+  { src: 'argentinaPrimera.json',  firestoreId: 'argentinaPrimera',  name: 'Liga Profesional',     country: 'Argentina' },
+  { src: 'brasileiraoA.json',     firestoreId: 'brasileiraoA',       name: 'Série A',              country: 'Brasil' },
+  { src: 'colombiaPrimera.json',  firestoreId: 'colombiaPrimera',    name: 'Liga BetPlay',         country: 'Colombia' },
+  { src: 'chilePrimera.json',     firestoreId: 'chilePrimera',       name: 'Liga de Primera',      country: 'Chile' },
+  { src: 'uruguayPrimera.json',   firestoreId: 'uruguayPrimera',     name: 'Liga AUF',             country: 'Uruguay' },
+  { src: 'ecuadorLigaPro.json',   firestoreId: 'ecuadorLigaPro',     name: 'LigaPro Serie A',      country: 'Ecuador' },
+  { src: 'paraguayPrimera.json',  firestoreId: 'paraguayPrimera',    name: 'Primera División',     country: 'Paraguay' },
+  { src: 'peruLiga1.json',        firestoreId: 'peruLiga1',          name: 'Liga 1',               country: 'Perú' },
+  { src: 'boliviaPrimera.json',   firestoreId: 'boliviaPrimera',     name: 'División Profesional',  country: 'Bolivia' },
+  { src: 'venezuelaPrimera.json', firestoreId: 'venezuelaPrimera',   name: 'Liga FUTVE',           country: 'Venezuela' },
+];
+
+function toSlug(name) {
+  return name
+    .toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
+function generateSalary(marketValue, overall) {
+  if (!marketValue || marketValue < 1000) {
+    return Math.round(10000 + (overall - 60) * 1000);
+  }
+  const base = Math.round(marketValue * 0.003);
+  return Math.max(15000, Math.min(base, 200000));
+}
+
+function generateContract(age) {
+  if (age >= 34) return 1;
+  if (age >= 30) return Math.random() < 0.5 ? 1 : 2;
+  if (age >= 27) return Math.floor(Math.random() * 3) + 1;
+  return Math.floor(Math.random() * 3) + 2;
+}
+
+function convertTeam(rawTeam) {
+  const id = rawTeam.slug || toSlug(rawTeam.name);
+  const players = (rawTeam.players || []).map(p => {
+    const overall = p.overall || 70;
+    const age = p.age || 25;
+    const marketValue = p.marketValue || 0;
+    const position = VALID_POSITIONS.includes(p.position) ? p.position : 'CM';
+    
+    return {
+      name: p.name,
+      position,
+      age,
+      overall,
+      value: marketValue,
+      salary: generateSalary(marketValue, overall),
+      contract: generateContract(age),
+      morale: 75,
+      fitness: 100
+    };
+  });
+  
+  return { id, name: rawTeam.name, players };
+}
+
+async function uploadLeague(leagueId, teams, metadata) {
+  await setDoc(doc(db, 'leagues', leagueId), {
+    name: metadata.name,
+    country: metadata.country,
+    teamCount: teams.length,
+    playerCount: teams.reduce((sum, t) => sum + (t.players?.length || 0), 0),
+    updatedAt: new Date().toISOString()
+  });
+  
+  const BATCH_SIZE = 400;
+  let uploaded = 0;
+  
+  for (let i = 0; i < teams.length; i += BATCH_SIZE) {
+    const batch = writeBatch(db);
+    const chunk = teams.slice(i, i + BATCH_SIZE);
+    
+    for (const team of chunk) {
+      const teamRef = doc(db, 'teams', team.id);
+      batch.set(teamRef, {
+        ...team,
+        league: leagueId,
+        playerCount: team.players?.length || 0,
+        avgOverall: team.players?.length 
+          ? Math.round(team.players.reduce((s, p) => s + (p.overall || 0), 0) / team.players.length)
+          : 0,
+        updatedAt: new Date().toISOString()
+      });
+    }
+    
+    await batch.commit();
+    uploaded += chunk.length;
+  }
+  
+  return uploaded;
+}
+
+async function main() {
+  console.log('🌎 Uploading South American leagues to Firestore...\n');
+  
+  let totalTeams = 0;
+  let totalPlayers = 0;
+  let successCount = 0;
+  
+  for (const league of SA_LEAGUES) {
+    process.stdout.write(`  ⚽ ${league.name} (${league.src})...`);
+    
+    try {
+      const rawData = JSON.parse(readFileSync(join(scrapedDir, league.src), 'utf-8'));
+      
+      if (!Array.isArray(rawData) || rawData.length === 0) {
+        console.log(' ❌ Empty or invalid data');
+        continue;
+      }
+      
+      const teams = rawData.map(convertTeam);
+      const playerCount = teams.reduce((s, t) => s + t.players.length, 0);
+      
+      // Save JSON in public/data for local fallback
+      const jsonPath = join(dataDir, league.src);
+      writeFileSync(jsonPath, JSON.stringify(teams, null, 2), 'utf-8');
+      
+      // Upload to Firestore
+      await uploadLeague(league.firestoreId, teams, league);
+      
+      console.log(` ✅ ${teams.length} teams, ${playerCount} players`);
+      totalTeams += teams.length;
+      totalPlayers += playerCount;
+      successCount++;
+    } catch (e) {
+      console.log(` ❌ ${e.message}`);
+    }
+  }
+  
+  console.log(`\n✅ Done! ${successCount}/10 SA leagues uploaded: ${totalTeams} teams, ${totalPlayers} players.`);
+  process.exit(0);
+}
+
+main().catch(e => { console.error(e); process.exit(1); });

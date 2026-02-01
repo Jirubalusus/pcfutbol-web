@@ -61,8 +61,22 @@ export const LEAGUE_TIERS = {
   croatianLeague:       { tier: 3, ...TIER_CONFIG[3] },
   czechLeague:          { tier: 3, ...TIER_CONFIG[3] },
 
-  // === Tier 4: Lower - Primera RFEF ===
-  primeraRFEF:  { tier: 4, ...TIER_CONFIG[4] },
+  // === Tier 2: Major - South American top leagues ===
+  argentinaPrimera:     { tier: 2, ...TIER_CONFIG[2] },
+  brasileiraoA:         { tier: 2, ...TIER_CONFIG[2] },
+
+  // === Tier 3: Standard - South American mid leagues ===
+  colombiaPrimera:      { tier: 3, ...TIER_CONFIG[3] },
+  chilePrimera:         { tier: 3, ...TIER_CONFIG[3] },
+  uruguayPrimera:       { tier: 3, ...TIER_CONFIG[3] },
+  ecuadorLigaPro:       { tier: 3, ...TIER_CONFIG[3] },
+
+  // === Tier 4: Lower - Primera RFEF + SA lower leagues ===
+  primeraRFEF:          { tier: 4, ...TIER_CONFIG[4] },
+  paraguayPrimera:      { tier: 4, ...TIER_CONFIG[4] },
+  peruLiga1:            { tier: 4, ...TIER_CONFIG[4] },
+  boliviaPrimera:       { tier: 4, ...TIER_CONFIG[4] },
+  venezuelaPrimera:     { tier: 4, ...TIER_CONFIG[4] },
 
   // === Tier 5: Amateur - Segunda RFEF ===
   segundaRFEF:  { tier: 5, ...TIER_CONFIG[5] },

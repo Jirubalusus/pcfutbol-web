@@ -1,7 +1,8 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useGame } from '../../context/GameContext';
 import { Trophy, ChevronDown, ChevronUp, Globe, RefreshCw } from 'lucide-react';
-import { getLeagueTable, LEAGUE_CONFIG, initializeOtherLeagues, simulateOtherLeaguesWeek } from '../../game/multiLeagueEngine';
+import { getLeagueTable, LEAGUE_CONFIG, initializeOtherLeagues, simulateOtherLeaguesWeek, isAperturaClausura, computeAccumulatedTable } from '../../game/multiLeagueEngine';
+import { sortTable } from '../../game/leagueEngine';
 import './LeagueTable.scss';
 
 // Configuración de zonas por liga
@@ -189,6 +190,77 @@ const LEAGUE_ZONES = {
     conference: [3],
     relegation: [15, 16],
     teams: 16
+  },
+  // === SOUTH AMERICA ===
+  argentinaPrimera: {
+    name: 'Liga Profesional',
+    libertadores: [1, 2, 3, 4],
+    sudamericana: [5, 6],
+    relegation: [25, 26, 27, 28],
+    teams: 28
+  },
+  brasileiraoA: {
+    name: 'Série A',
+    libertadores: [1, 2, 3, 4],
+    sudamericana: [5, 6, 7, 8],
+    relegation: [17, 18, 19, 20],
+    teams: 20
+  },
+  colombiaPrimera: {
+    name: 'Liga BetPlay',
+    libertadores: [1, 2, 3],
+    sudamericana: [4, 5, 6],
+    relegation: [18, 19, 20],
+    teams: 20
+  },
+  chilePrimera: {
+    name: 'Primera División (CL)',
+    libertadores: [1, 2],
+    sudamericana: [3, 4],
+    relegation: [14, 15, 16],
+    teams: 16
+  },
+  uruguayPrimera: {
+    name: 'Primera División (UY)',
+    libertadores: [1, 2],
+    sudamericana: [3, 4],
+    relegation: [14, 15, 16],
+    teams: 16
+  },
+  ecuadorLigaPro: {
+    name: 'LigaPro',
+    libertadores: [1, 2],
+    sudamericana: [3, 4],
+    relegation: [14, 15, 16],
+    teams: 16
+  },
+  paraguayPrimera: {
+    name: 'División de Honor',
+    libertadores: [1],
+    sudamericana: [2, 3],
+    relegation: [11, 12],
+    teams: 12
+  },
+  peruLiga1: {
+    name: 'Liga 1',
+    libertadores: [1, 2],
+    sudamericana: [3, 4],
+    relegation: [16, 17, 18],
+    teams: 18
+  },
+  boliviaPrimera: {
+    name: 'División Profesional',
+    libertadores: [1],
+    sudamericana: [2, 3],
+    relegation: [14, 15, 16],
+    teams: 16
+  },
+  venezuelaPrimera: {
+    name: 'Liga FUTVE',
+    libertadores: [1, 2],
+    sudamericana: [3, 4],
+    relegation: [16, 17, 18],
+    teams: 18
   }
 };
 
@@ -203,7 +275,12 @@ const COUNTRY_FLAGS = {
   superLig: '🇹🇷', scottishPrem: '🏴󠁧󠁢󠁳󠁣󠁴󠁿',
   swissSuperLeague: '🇨🇭', austrianBundesliga: '🇦🇹',
   greekSuperLeague: '🇬🇷', danishSuperliga: '🇩🇰',
-  croatianLeague: '🇭🇷', czechLeague: '🇨🇿'
+  croatianLeague: '🇭🇷', czechLeague: '🇨🇿',
+  // South America
+  argentinaPrimera: '🇦🇷', brasileiraoA: '🇧🇷', colombiaPrimera: '🇨🇴',
+  chilePrimera: '🇨🇱', uruguayPrimera: '🇺🇾', ecuadorLigaPro: '🇪🇨',
+  paraguayPrimera: '🇵🇾', peruLiga1: '🇵🇪', boliviaPrimera: '🇧🇴',
+  venezuelaPrimera: '🇻🇪'
 };
 
 export default function LeagueTable() {
@@ -212,6 +289,7 @@ export default function LeagueTable() {
   const [selectedLeague, setSelectedLeague] = useState(playerLeagueId);
   const [selectedGroup, setSelectedGroup] = useState(null);
   const [showAllTeams, setShowAllTeams] = useState(false);
+  const [tournamentTab, setTournamentTab] = useState('current'); // 'apertura' | 'clausura' | 'acumulada' | 'current'
   
   // Inicializar otras ligas si no existen (para partidas antiguas)
   useEffect(() => {
@@ -290,20 +368,98 @@ export default function LeagueTable() {
     return state.otherLeagues?.[selectedLeague]?.table || [];
   }, [selectedLeague, selectedGroup, isGroupLeague, playerLeagueId, playerGroupId, state.leagueTable, state.otherLeagues]);
   
+  // Apertura-Clausura detection
+  const isAPCL = isAperturaClausura(selectedLeague);
+  
+  // Get AP-CL data for selected league
+  const apclData = useMemo(() => {
+    if (!isAPCL) return null;
+    
+    if (selectedLeague === playerLeagueId) {
+      return {
+        aperturaTable: state.aperturaTable,
+        currentTournament: state.currentTournament || 'apertura',
+        currentTable: state.leagueTable || []
+      };
+    }
+    
+    const leagueData = state.otherLeagues?.[selectedLeague];
+    if (!leagueData) return null;
+    return {
+      aperturaTable: leagueData.aperturaTable,
+      accumulatedTable: leagueData.accumulatedTable,
+      currentTournament: leagueData.currentTournament || 'apertura',
+      currentTable: leagueData.table || []
+    };
+  }, [isAPCL, selectedLeague, playerLeagueId, state.aperturaTable, state.currentTournament, state.leagueTable, state.otherLeagues]);
+  
+  // Compute the displayed table based on tournament tab
+  const displayTable = useMemo(() => {
+    if (!isAPCL || !apclData) return table;
+    
+    const activeTab = tournamentTab === 'current' 
+      ? apclData.currentTournament 
+      : tournamentTab;
+    
+    if (activeTab === 'apertura') {
+      if (apclData.currentTournament === 'apertura') {
+        return apclData.currentTable; // Apertura in progress
+      }
+      return apclData.aperturaTable || []; // Frozen apertura
+    }
+    
+    if (activeTab === 'clausura') {
+      if (apclData.currentTournament === 'clausura') {
+        return apclData.currentTable; // Clausura in progress
+      }
+      return []; // Not started yet
+    }
+    
+    if (activeTab === 'acumulada') {
+      // For other leagues, use stored accumulated table
+      if (apclData.accumulatedTable) {
+        return apclData.accumulatedTable;
+      }
+      // For player's league, compute on the fly
+      if (apclData.aperturaTable) {
+        return computeAccumulatedTable(apclData.aperturaTable, apclData.currentTable);
+      }
+      return apclData.currentTable; // Still in apertura, accumulated = current
+    }
+    
+    return table;
+  }, [isAPCL, apclData, tournamentTab, table]);
+  
+  // Reset tournament tab when switching leagues
+  useEffect(() => {
+    setTournamentTab('current');
+  }, [selectedLeague]);
+  
   const leagueConfig = LEAGUE_ZONES[selectedLeague] || LEAGUE_ZONES.laliga;
   const isPlayerLeague = selectedLeague === playerLeagueId;
   
+  // Determine effective active tab for zone display
+  const effectiveTab = isAPCL 
+    ? (tournamentTab === 'current' ? (apclData?.currentTournament || 'apertura') : tournamentTab) 
+    : null;
+  const showZones = !isAPCL || effectiveTab === 'acumulada';
+  
   // Función para obtener la zona de una posición
   const getZone = (position) => {
+    // For AP-CL, only show classification zones in accumulated table
+    if (isAPCL && !showZones) return '';
+    
     if (leagueConfig.champions?.includes(position)) return 'champions';
+    if (leagueConfig.libertadores?.includes(position)) return 'champions'; // Same color as CL
     if (leagueConfig.europaLeague?.includes(position)) return 'europa';
+    if (leagueConfig.sudamericana?.includes(position)) return 'europa'; // Same color as EL
     if (leagueConfig.conference?.includes(position)) return 'conference';
     if (leagueConfig.promotion?.includes(position)) return 'promotion';
     if (leagueConfig.playoff?.includes(position)) return 'playoff';
     if (leagueConfig.relegation?.includes(position)) return 'relegation';
     // Dynamic relegation for group leagues (last N teams)
-    if (leagueConfig.relegationFromBottom && table.length > 0) {
-      if (position > table.length - leagueConfig.relegationFromBottom) return 'relegation';
+    if (leagueConfig.relegationFromBottom && displayTable.length > 0) {
+      if (position > displayTable.length - leagueConfig.relegationFromBottom) return 'relegation';
     }
     return '';
   };
@@ -317,12 +473,15 @@ export default function LeagueTable() {
     return words.slice(0, 2).map(w => w[0]).join('').toUpperCase();
   };
   
+  // Use displayTable for AP-CL, fall back to table for standard
+  const activeTable = isAPCL ? displayTable : table;
+  
   // Equipos a mostrar
-  const displayedTeams = showAllTeams ? table : table.slice(0, 10);
-  const playerPosition = table.findIndex(t => t.isPlayer) + 1;
+  const displayedTeams = showAllTeams ? activeTable : activeTable.slice(0, 10);
+  const playerPosition = activeTable.findIndex(t => t.isPlayer) + 1;
   
   // Verificar si hay datos para la liga seleccionada
-  const hasData = table.length > 0;
+  const hasData = activeTable.length > 0;
 
   return (
     <div className="league-table-v2">
@@ -377,6 +536,18 @@ export default function LeagueTable() {
               <option value="croatianLeague">🇭🇷 HNL</option>
               <option value="czechLeague">🇨🇿 Chance Liga</option>
             </optgroup>
+            <optgroup label="🌎 Sudamérica">
+              <option value="argentinaPrimera">🇦🇷 Liga Profesional</option>
+              <option value="brasileiraoA">🇧🇷 Série A</option>
+              <option value="colombiaPrimera">🇨🇴 Liga BetPlay</option>
+              <option value="chilePrimera">🇨🇱 Primera División</option>
+              <option value="uruguayPrimera">🇺🇾 Primera División</option>
+              <option value="ecuadorLigaPro">🇪🇨 LigaPro</option>
+              <option value="paraguayPrimera">🇵🇾 División de Honor</option>
+              <option value="peruLiga1">🇵🇪 Liga 1</option>
+              <option value="boliviaPrimera">🇧🇴 Div. Profesional</option>
+              <option value="venezuelaPrimera">🇻🇪 Liga FUTVE</option>
+            </optgroup>
           </select>
         </div>
       </div>
@@ -412,38 +583,83 @@ export default function LeagueTable() {
         </div>
       )}
 
+      {/* Apertura-Clausura tournament tabs */}
+      {isAPCL && hasData && (
+        <div className="league-table-v2__tournament-tabs">
+          <div className="tournament-indicator">
+            🏆 {apclData?.currentTournament === 'apertura' ? 'Apertura' : 'Clausura'} en curso
+          </div>
+          <div className="tournament-tab-buttons">
+            <button
+              className={`tournament-tab ${(tournamentTab === 'current' ? apclData?.currentTournament : tournamentTab) === 'apertura' ? 'active' : ''} ${apclData?.currentTournament === 'apertura' ? 'is-live' : ''}`}
+              onClick={() => setTournamentTab('apertura')}
+            >
+              Apertura
+              {apclData?.currentTournament === 'apertura' && <span className="live-dot" />}
+            </button>
+            <button
+              className={`tournament-tab ${(tournamentTab === 'current' ? apclData?.currentTournament : tournamentTab) === 'clausura' ? 'active' : ''} ${apclData?.currentTournament === 'clausura' ? 'is-live' : ''}`}
+              onClick={() => setTournamentTab('clausura')}
+              disabled={apclData?.currentTournament === 'apertura'}
+            >
+              Clausura
+              {apclData?.currentTournament === 'clausura' && <span className="live-dot" />}
+            </button>
+            <button
+              className={`tournament-tab ${(tournamentTab === 'current' ? '' : tournamentTab) === 'acumulada' ? 'active' : ''}`}
+              onClick={() => setTournamentTab('acumulada')}
+              disabled={apclData?.currentTournament === 'apertura'}
+            >
+              Acumulada
+            </button>
+          </div>
+        </div>
+      )}
+
       {hasData && (
         <>
           {/* Leyenda de zonas */}
           <div className="league-table-v2__legend">
-            {leagueConfig.champions && (
+            {leagueConfig.champions && showZones && (
               <span className="legend-item champions">
                 <span className="dot"></span> Champions League
               </span>
             )}
-            {leagueConfig.europaLeague && (
+            {leagueConfig.libertadores && showZones && (
+              <span className="legend-item champions">
+                <span className="dot"></span> Libertadores
+              </span>
+            )}
+            {leagueConfig.europaLeague && showZones && (
               <span className="legend-item europa">
                 <span className="dot"></span> Europa League
               </span>
             )}
-            {leagueConfig.conference && (
+            {leagueConfig.sudamericana && showZones && (
+              <span className="legend-item europa">
+                <span className="dot"></span> Sudamericana
+              </span>
+            )}
+            {leagueConfig.conference && showZones && (
               <span className="legend-item conference">
                 <span className="dot"></span> Conference League
               </span>
             )}
-            {leagueConfig.promotion && (
+            {leagueConfig.promotion && showZones && (
               <span className="legend-item promotion">
                 <span className="dot"></span> Ascenso directo
               </span>
             )}
-            {leagueConfig.playoff && (
+            {leagueConfig.playoff && showZones && (
               <span className="legend-item playoff">
                 <span className="dot"></span> Playoff ascenso
               </span>
             )}
-            <span className="legend-item relegation">
-              <span className="dot"></span> Descenso
-            </span>
+            {showZones && (
+              <span className="legend-item relegation">
+                <span className="dot"></span> Descenso
+              </span>
+            )}
           </div>
           
           {/* Tabla */}
@@ -513,7 +729,7 @@ export default function LeagueTable() {
             </div>
             
             {/* Separador si hay más equipos */}
-            {!showAllTeams && table.length > 10 && (
+            {!showAllTeams && activeTable.length > 10 && (
               <>
                 {/* Mostrar posición del jugador si está fuera del top 10 */}
                 {isPlayerLeague && playerPosition > 10 && (
@@ -525,20 +741,20 @@ export default function LeagueTable() {
                       </span>
                       <span className="col-team">
                         <span className="team-badge">
-                          {getTeamInitials(table[playerPosition - 1]?.teamName)}
+                          {getTeamInitials(activeTable[playerPosition - 1]?.teamName)}
                         </span>
-                        <span className="team-name">{table[playerPosition - 1]?.teamName}</span>
+                        <span className="team-name">{activeTable[playerPosition - 1]?.teamName}</span>
                       </span>
-                      <span className="col-pj">{table[playerPosition - 1]?.played || 0}</span>
-                      <span className="col-w">{table[playerPosition - 1]?.won}</span>
-                      <span className="col-d">{table[playerPosition - 1]?.drawn}</span>
-                      <span className="col-l">{table[playerPosition - 1]?.lost}</span>
-                      <span className="col-gf">{table[playerPosition - 1]?.goalsFor || 0}</span>
-                      <span className="col-ga">{table[playerPosition - 1]?.goalsAgainst || 0}</span>
-                      <span className="col-gd">{table[playerPosition - 1]?.goalDifference > 0 ? '+' : ''}{table[playerPosition - 1]?.goalDifference}</span>
-                      <span className="col-pts">{table[playerPosition - 1]?.points}</span>
+                      <span className="col-pj">{activeTable[playerPosition - 1]?.played || 0}</span>
+                      <span className="col-w">{activeTable[playerPosition - 1]?.won}</span>
+                      <span className="col-d">{activeTable[playerPosition - 1]?.drawn}</span>
+                      <span className="col-l">{activeTable[playerPosition - 1]?.lost}</span>
+                      <span className="col-gf">{activeTable[playerPosition - 1]?.goalsFor || 0}</span>
+                      <span className="col-ga">{activeTable[playerPosition - 1]?.goalsAgainst || 0}</span>
+                      <span className="col-gd">{activeTable[playerPosition - 1]?.goalDifference > 0 ? '+' : ''}{activeTable[playerPosition - 1]?.goalDifference}</span>
+                      <span className="col-pts">{activeTable[playerPosition - 1]?.points}</span>
                       <span className="col-form">
-                        {(table[playerPosition - 1]?.form || []).slice(-5).map((f, i) => (
+                        {(activeTable[playerPosition - 1]?.form || []).slice(-5).map((f, i) => (
                           <span key={i} className={`form-dot form-${f?.toLowerCase()}`}>{f}</span>
                         ))}
                       </span>
@@ -549,12 +765,12 @@ export default function LeagueTable() {
                 
                 <button className="show-more-btn" onClick={() => setShowAllTeams(true)}>
                   <ChevronDown size={16} />
-                  Ver todos los equipos ({table.length})
+                  Ver todos los equipos ({activeTable.length})
                 </button>
               </>
             )}
             
-            {showAllTeams && table.length > 10 && (
+            {showAllTeams && activeTable.length > 10 && (
               <button className="show-more-btn" onClick={() => setShowAllTeams(false)}>
                 <ChevronUp size={16} />
                 Ver menos

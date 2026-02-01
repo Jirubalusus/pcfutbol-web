@@ -69,6 +69,38 @@ export async function loadSegundaRFEF() {
   return data?.allTeams || [];
 }
 
+// South American leagues
+export async function loadArgentina() {
+  return await loadJSON('argentinaPrimera.json') || [];
+}
+export async function loadBrasileirao() {
+  return await loadJSON('brasileiraoA.json') || [];
+}
+export async function loadColombia() {
+  return await loadJSON('colombiaPrimera.json') || [];
+}
+export async function loadChile() {
+  return await loadJSON('chilePrimera.json') || [];
+}
+export async function loadUruguay() {
+  return await loadJSON('uruguayPrimera.json') || [];
+}
+export async function loadEcuador() {
+  return await loadJSON('ecuadorLigaPro.json') || [];
+}
+export async function loadParaguay() {
+  return await loadJSON('paraguayPrimera.json') || [];
+}
+export async function loadPeru() {
+  return await loadJSON('peruLiga1.json') || [];
+}
+export async function loadBolivia() {
+  return await loadJSON('boliviaPrimera.json') || [];
+}
+export async function loadVenezuela() {
+  return await loadJSON('venezuelaPrimera.json') || [];
+}
+
 // Loader de todas las ligas
 export async function loadAllTeams() {
   const [laliga, laliga2, premier, seriea, bundesliga, ligue1, primeraRfef, segundaRfef] = await Promise.all([
@@ -119,6 +151,27 @@ export async function loadLeague(leagueName) {
     'primerafederacion': loadPrimeraRFEF,
     'segunda-rfef': loadSegundaRFEF,
     'segundafederacion': loadSegundaRFEF,
+    // South America
+    'argentina': loadArgentina,
+    'argentinaprimera': loadArgentina,
+    'brasileirao': loadBrasileirao,
+    'brasileiraoa': loadBrasileirao,
+    'colombia': loadColombia,
+    'colombiaprimera': loadColombia,
+    'chile': loadChile,
+    'chileprimera': loadChile,
+    'uruguay': loadUruguay,
+    'uruguayprimera': loadUruguay,
+    'ecuador': loadEcuador,
+    'ecuadorligapro': loadEcuador,
+    'paraguay': loadParaguay,
+    'paraguayprimera': loadParaguay,
+    'peru': loadPeru,
+    'peruliga1': loadPeru,
+    'bolivia': loadBolivia,
+    'boliviaprimera': loadBolivia,
+    'venezuela': loadVenezuela,
+    'venezuelaprimera': loadVenezuela,
   };
   
   const loader = loaders[leagueName.toLowerCase()];

@@ -117,9 +117,8 @@ export function evaluateManager(state) {
     confidenceChange += 3;
   }
   
-  // --- 6. Presupuesto negativo (bancarrota) ---
-  if (money < -20_000_000) {
-    // Bancarrota grave → despido inmediato
+  // --- 6. Presupuesto negativo (bancarrota) → despido inmediato ---
+  if (money < 0) {
     return {
       confidence: 0,
       warning: 'critical',
@@ -127,15 +126,6 @@ export function evaluateManager(state) {
       reason: 'La directiva te ha destituido por llevar al club a la bancarrota.',
       details: [`Presupuesto: €${Math.round(money / 1000)}K`]
     };
-  } else if (money < -10_000_000) {
-    confidenceChange -= 20;
-    reasons.push(`Presupuesto en números rojos (€${Math.round(money / 1_000_000)}M)`);
-  } else if (money < -5_000_000) {
-    confidenceChange -= 12;
-    reasons.push(`Situación financiera crítica`);
-  } else if (money < 0) {
-    confidenceChange -= 5;
-    reasons.push(`Presupuesto negativo`);
   }
   
   // ============================================================

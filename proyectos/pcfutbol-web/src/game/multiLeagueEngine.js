@@ -3,7 +3,7 @@
 // Inicializa y simula todas las ligas en paralelo
 // ============================================================
 
-import { initializeLeague, simulateMatch, updateTable, getWeekFixtures } from './leagueEngine';
+import { initializeLeague, simulateMatch, updateTable, sortTable, getWeekFixtures } from './leagueEngine';
 import { simulateFullPlayoff, generateAllGroupPlayoffs, simulateAllGroupPlayoffs, getGroupPlayoffWinners } from './playoffEngine';
 import { 
   initializeGroupLeague, 
@@ -37,7 +37,17 @@ import {
   getGreekTeams,
   getDanishTeams,
   getCroatianTeams,
-  getCzechTeams
+  getCzechTeams,
+  getArgentinaTeams,
+  getBrasileiraoTeams,
+  getColombiaTeams,
+  getChileTeams,
+  getUruguayTeams,
+  getEcuadorTeams,
+  getParaguayTeams,
+  getPeruTeams,
+  getBoliviaTeams,
+  getVenezuelaTeams
 } from '../data/teamsFirestore';
 
 // Configuración de ligas
@@ -354,8 +364,196 @@ export const LEAGUE_CONFIG = {
       conference: [4, 5, 6],
       relegation: [15, 16]
     }
+  },
+
+  // ============================================================
+  // SOUTH AMERICAN LEAGUES
+  // ============================================================
+  argentinaPrimera: {
+    id: 'argentinaPrimera',
+    name: 'Liga Profesional',
+    country: 'Argentina',
+    teams: 28,
+    getTeams: getArgentinaTeams,
+    format: 'apertura-clausura',
+    zones: {
+      libertadores: [1, 2, 3, 4],
+      sudamericana: [5, 6],
+      relegation: [25, 26, 27, 28]
+    }
+  },
+  brasileiraoA: {
+    id: 'brasileiraoA',
+    name: 'Série A',
+    country: 'Brasil',
+    teams: 20,
+    getTeams: getBrasileiraoTeams,
+    format: 'standard',
+    zones: {
+      libertadores: [1, 2, 3, 4],
+      sudamericana: [5, 6, 7, 8],
+      relegation: [17, 18, 19, 20]
+    }
+  },
+  colombiaPrimera: {
+    id: 'colombiaPrimera',
+    name: 'Liga BetPlay',
+    country: 'Colombia',
+    teams: 20,
+    getTeams: getColombiaTeams,
+    format: 'apertura-clausura',
+    zones: {
+      libertadores: [1, 2, 3],
+      sudamericana: [4, 5, 6],
+      relegation: [18, 19, 20]
+    }
+  },
+  chilePrimera: {
+    id: 'chilePrimera',
+    name: 'Primera División',
+    country: 'Chile',
+    teams: 16,
+    getTeams: getChileTeams,
+    format: 'apertura-clausura',
+    zones: {
+      libertadores: [1, 2],
+      sudamericana: [3, 4],
+      relegation: [14, 15, 16]
+    }
+  },
+  uruguayPrimera: {
+    id: 'uruguayPrimera',
+    name: 'Primera División',
+    country: 'Uruguay',
+    teams: 16,
+    getTeams: getUruguayTeams,
+    format: 'apertura-clausura',
+    zones: {
+      libertadores: [1, 2],
+      sudamericana: [3, 4],
+      relegation: [14, 15, 16]
+    }
+  },
+  ecuadorLigaPro: {
+    id: 'ecuadorLigaPro',
+    name: 'LigaPro',
+    country: 'Ecuador',
+    teams: 16,
+    getTeams: getEcuadorTeams,
+    format: 'apertura-clausura',
+    zones: {
+      libertadores: [1, 2],
+      sudamericana: [3, 4],
+      relegation: [14, 15, 16]
+    }
+  },
+  paraguayPrimera: {
+    id: 'paraguayPrimera',
+    name: 'División de Honor',
+    country: 'Paraguay',
+    teams: 12,
+    getTeams: getParaguayTeams,
+    format: 'apertura-clausura',
+    zones: {
+      libertadores: [1],
+      sudamericana: [2, 3],
+      relegation: [11, 12]
+    }
+  },
+  peruLiga1: {
+    id: 'peruLiga1',
+    name: 'Liga 1',
+    country: 'Perú',
+    teams: 18,
+    getTeams: getPeruTeams,
+    format: 'apertura-clausura',
+    zones: {
+      libertadores: [1, 2],
+      sudamericana: [3, 4],
+      relegation: [16, 17, 18]
+    }
+  },
+  boliviaPrimera: {
+    id: 'boliviaPrimera',
+    name: 'División Profesional',
+    country: 'Bolivia',
+    teams: 16,
+    getTeams: getBoliviaTeams,
+    format: 'apertura-clausura',
+    zones: {
+      libertadores: [1],
+      sudamericana: [2, 3],
+      relegation: [14, 15, 16]
+    }
+  },
+  venezuelaPrimera: {
+    id: 'venezuelaPrimera',
+    name: 'Liga FUTVE',
+    country: 'Venezuela',
+    teams: 18,
+    getTeams: getVenezuelaTeams,
+    format: 'apertura-clausura',
+    zones: {
+      libertadores: [1, 2],
+      sudamericana: [3, 4],
+      relegation: [16, 17, 18]
+    }
   }
 };
+
+// ============================================================
+// APERTURA-CLAUSURA HELPERS
+// ============================================================
+
+/**
+ * Checks if a league uses the Apertura-Clausura format
+ */
+export function isAperturaClausura(leagueId) {
+  return LEAGUE_CONFIG[leagueId]?.format === 'apertura-clausura';
+}
+
+/**
+ * Returns current phase (apertura/clausura) based on week and team count
+ */
+export function getAperturaClausuraPhase(week, totalTeams) {
+  const halfPoint = totalTeams - 1; // N-1 jornadas por torneo
+  return week <= halfPoint ? 'apertura' : 'clausura';
+}
+
+/**
+ * Returns the week number where Clausura starts
+ */
+export function getClausuraStartWeek(totalTeams) {
+  return totalTeams; // Week N marks start of clausura (after N-1 apertura rounds)
+}
+
+/**
+ * Merge apertura and clausura tables into an accumulated table
+ */
+export function computeAccumulatedTable(aperturaTable, clausuraTable) {
+  if (!aperturaTable || aperturaTable.length === 0) return clausuraTable || [];
+  if (!clausuraTable || clausuraTable.length === 0) return aperturaTable;
+  
+  const accumulated = aperturaTable.map(aEntry => {
+    const cEntry = clausuraTable.find(t => t.teamId === aEntry.teamId);
+    if (!cEntry) return { ...aEntry };
+    return {
+      ...aEntry,
+      played: aEntry.played + cEntry.played,
+      won: aEntry.won + cEntry.won,
+      drawn: aEntry.drawn + cEntry.drawn,
+      lost: aEntry.lost + cEntry.lost,
+      goalsFor: aEntry.goalsFor + cEntry.goalsFor,
+      goalsAgainst: aEntry.goalsAgainst + cEntry.goalsAgainst,
+      goalDifference: aEntry.goalDifference + cEntry.goalDifference,
+      points: aEntry.points + cEntry.points,
+      form: cEntry.form, // Show latest form
+      morale: cEntry.morale || aEntry.morale
+    };
+  });
+  
+  return sortTable(accumulated);
+}
 
 /**
  * Inicializa todas las ligas excepto la del jugador
@@ -426,7 +624,17 @@ export function initializeOtherLeagues(playerLeagueId, playerGroupId = null) {
     }
     
     const { table, fixtures } = initializeLeague(teams, null);
-    otherLeagues[leagueId] = { table, fixtures };
+    
+    if (isAperturaClausura(leagueId)) {
+      // Apertura-Clausura: initialize with accumulated table tracking
+      const accumulatedTable = table.map(t => ({ ...t }));
+      otherLeagues[leagueId] = { 
+        table, fixtures, accumulatedTable, 
+        aperturaTable: null, currentTournament: 'apertura' 
+      };
+    } else {
+      otherLeagues[leagueId] = { table, fixtures };
+    }
   });
   
   return otherLeagues;
@@ -481,7 +689,29 @@ export function simulateOtherLeaguesWeek(otherLeagues, week) {
       return;
     }
     
+    // ---- Apertura-Clausura: Check if we need to reset table for Clausura ----
     let updatedTable = [...leagueData.table];
+    let accumulatedTable = leagueData.accumulatedTable ? leagueData.accumulatedTable.map(t => ({ ...t })) : null;
+    let aperturaTable = leagueData.aperturaTable || null;
+    let currentTournament = leagueData.currentTournament || 'apertura';
+    
+    if (isAperturaClausura(leagueId)) {
+      const clausuraStart = getClausuraStartWeek(config.teams);
+      if (week === clausuraStart && currentTournament === 'apertura') {
+        // Save Apertura table and reset for Clausura
+        aperturaTable = updatedTable.map(t => ({ ...t }));
+        currentTournament = 'clausura';
+        // Reset current table (keep team info, zero stats)
+        updatedTable = updatedTable.map(entry => ({
+          ...entry,
+          played: 0, won: 0, drawn: 0, lost: 0,
+          goalsFor: 0, goalsAgainst: 0, goalDifference: 0,
+          points: 0, form: [], homeForm: [], awayForm: [],
+          streak: 0, morale: 70
+        }));
+      }
+    }
+    
     const updatedFixtures = leagueData.fixtures.map(fixture => {
       // Solo simular partidos de esta semana que no se han jugado
       if (fixture.week !== week || fixture.played) return fixture;
@@ -500,8 +730,13 @@ export function simulateOtherLeaguesWeek(otherLeagues, week) {
         awayMorale: awayEntry?.morale || 70
       });
       
-      // Actualizar tabla
+      // Actualizar tabla del torneo actual
       updatedTable = updateTable(updatedTable, fixture.homeTeam, fixture.awayTeam, result.homeScore, result.awayScore);
+      
+      // Actualizar tabla acumulada (si es apertura-clausura)
+      if (accumulatedTable) {
+        accumulatedTable = updateTable(accumulatedTable, fixture.homeTeam, fixture.awayTeam, result.homeScore, result.awayScore);
+      }
       
       return {
         ...fixture,
@@ -513,10 +748,20 @@ export function simulateOtherLeaguesWeek(otherLeagues, week) {
       };
     });
     
-    updatedLeagues[leagueId] = {
-      table: updatedTable,
-      fixtures: updatedFixtures
-    };
+    if (isAperturaClausura(leagueId)) {
+      updatedLeagues[leagueId] = {
+        table: updatedTable,
+        fixtures: updatedFixtures,
+        accumulatedTable,
+        aperturaTable,
+        currentTournament
+      };
+    } else {
+      updatedLeagues[leagueId] = {
+        table: updatedTable,
+        fixtures: updatedFixtures
+      };
+    }
   });
   
   return updatedLeagues;
@@ -1025,7 +1270,15 @@ export function initializeNewSeasonWithPromotions(state, playerTeamId, playoffBr
         const teams = config.getTeams();
         if (teams && teams.length > 0) {
           const { table, fixtures } = initializeLeague(teams, null);
-          otherLeagues[leagueId] = { table, fixtures };
+          if (isAperturaClausura(leagueId)) {
+            otherLeagues[leagueId] = { 
+              table, fixtures,
+              accumulatedTable: table.map(t => ({ ...t })),
+              aperturaTable: null, currentTournament: 'apertura'
+            };
+          } else {
+            otherLeagues[leagueId] = { table, fixtures };
+          }
         }
       }
     });

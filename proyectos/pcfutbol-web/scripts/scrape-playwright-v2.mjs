@@ -44,6 +44,46 @@ const LEAGUES = {
     tier: 3,
     minSeason: 2021
   },
+  segundaRfefG1: {
+    url: 'https://www.transfermarkt.es/segunda-federacion-grupo-1/startseite/wettbewerb/E4G1',
+    id: 'E4G1',
+    country: 'ES',
+    baseOverall: 56,
+    tier: 4,
+    minSeason: 2021
+  },
+  segundaRfefG2: {
+    url: 'https://www.transfermarkt.es/segunda-federacion-grupo-2/startseite/wettbewerb/E4G2',
+    id: 'E4G2',
+    country: 'ES',
+    baseOverall: 56,
+    tier: 4,
+    minSeason: 2021
+  },
+  segundaRfefG3: {
+    url: 'https://www.transfermarkt.es/segunda-federacion-grupo-3/startseite/wettbewerb/E4G3',
+    id: 'E4G3',
+    country: 'ES',
+    baseOverall: 56,
+    tier: 4,
+    minSeason: 2021
+  },
+  segundaRfefG4: {
+    url: 'https://www.transfermarkt.es/segunda-federacion-grupo-4/startseite/wettbewerb/E4G4',
+    id: 'E4G4',
+    country: 'ES',
+    baseOverall: 56,
+    tier: 4,
+    minSeason: 2021
+  },
+  segundaRfefG5: {
+    url: 'https://www.transfermarkt.es/segunda-federacion-grupo-5/startseite/wettbewerb/E4G5',
+    id: 'E4G5',
+    country: 'ES',
+    baseOverall: 56,
+    tier: 4,
+    minSeason: 2021
+  },
   premier: { 
     url: 'https://www.transfermarkt.es/premier-league/startseite/wettbewerb/GB1', 
     id: 'GB1', 
@@ -177,6 +217,77 @@ const LEAGUES = {
     id: 'TS1', 
     country: 'CZ',
     baseOverall: 64,
+    tier: 1
+  },
+  // South American leagues
+  argentinaPrimera: {
+    url: 'https://www.transfermarkt.es/torneo-apertura/startseite/wettbewerb/ARG1',
+    id: 'ARG1',
+    country: 'AR',
+    baseOverall: 72,
+    tier: 1
+  },
+  brasileiraoA: {
+    url: 'https://www.transfermarkt.es/campeonato-brasileiro-serie-a/startseite/wettbewerb/BRA1',
+    id: 'BRA1',
+    country: 'BR',
+    baseOverall: 73,
+    tier: 1
+  },
+  colombiaPrimera: {
+    url: 'https://www.transfermarkt.es/liga-betplay/startseite/wettbewerb/COL1',
+    id: 'COL1',
+    country: 'CO',
+    baseOverall: 67,
+    tier: 1
+  },
+  chilePrimera: {
+    url: 'https://www.transfermarkt.es/liga-de-primera/startseite/wettbewerb/CLPD',
+    id: 'CLPD',
+    country: 'CL',
+    baseOverall: 66,
+    tier: 1
+  },
+  uruguayPrimera: {
+    url: 'https://www.transfermarkt.es/liga-auf-apertura/startseite/wettbewerb/URU1',
+    id: 'URU1',
+    country: 'UY',
+    baseOverall: 67,
+    tier: 1
+  },
+  ecuadorLigaPro: {
+    url: 'https://www.transfermarkt.es/ligapro-serie-a/startseite/wettbewerb/EC1N',
+    id: 'EC1N',
+    country: 'EC',
+    baseOverall: 65,
+    tier: 1
+  },
+  paraguayPrimera: {
+    url: 'https://www.transfermarkt.es/primera-division-apertura/startseite/wettbewerb/PR1A',
+    id: 'PR1A',
+    country: 'PY',
+    baseOverall: 63,
+    tier: 1
+  },
+  peruLiga1: {
+    url: 'https://www.transfermarkt.es/liga-1-apertura/startseite/wettbewerb/TDeA',
+    id: 'TDeA',
+    country: 'PE',
+    baseOverall: 63,
+    tier: 1
+  },
+  boliviaPrimera: {
+    url: 'https://www.transfermarkt.es/division-profesional/startseite/wettbewerb/BO1A',
+    id: 'BO1A',
+    country: 'BO',
+    baseOverall: 60,
+    tier: 1
+  },
+  venezuelaPrimera: {
+    url: 'https://www.transfermarkt.es/liga-futve-apertura/startseite/wettbewerb/VZ1A',
+    id: 'VZ1A',
+    country: 'VE',
+    baseOverall: 61,
     tier: 1
   }
 };

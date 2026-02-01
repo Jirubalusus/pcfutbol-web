@@ -75,4 +75,21 @@
   &__content {
     // Let child components handle their own padding
   }
+
+  &__placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 4rem 2rem;
+    text-align: center;
+    color: #667788;
+
+    p {
+      font-size: 0.95rem;
+      max-width: 400px;
+      line-height: 1.5;
+    }
+  }
 }

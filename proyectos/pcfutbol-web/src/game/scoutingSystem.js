@@ -372,6 +372,17 @@ export const AVAILABLE_LEAGUES = [
   { id: 'danishSuperliga', name: 'Superligaen', country: 'Dinamarca', flagUrl: 'https://flagcdn.com/dk.svg', color: '#c8102e' },
   { id: 'croatianLeague', name: 'HNL', country: 'Croacia', flagUrl: 'https://flagcdn.com/hr.svg', color: '#0046a8' },
   { id: 'czechLeague', name: 'Chance Liga', country: 'Chequia', flagUrl: 'https://flagcdn.com/cz.svg', color: '#11457e' },
+  // South America
+  { id: 'argentinaPrimera', name: 'Liga Profesional', country: 'Argentina', flagUrl: 'https://flagcdn.com/ar.svg', color: '#75aadb' },
+  { id: 'brasileiraoA', name: 'Série A', country: 'Brasil', flagUrl: 'https://flagcdn.com/br.svg', color: '#009739' },
+  { id: 'colombiaPrimera', name: 'Liga BetPlay', country: 'Colombia', flagUrl: 'https://flagcdn.com/co.svg', color: '#fcd116' },
+  { id: 'chilePrimera', name: 'Primera División', country: 'Chile', flagUrl: 'https://flagcdn.com/cl.svg', color: '#d52b1e' },
+  { id: 'uruguayPrimera', name: 'Primera División', country: 'Uruguay', flagUrl: 'https://flagcdn.com/uy.svg', color: '#001489' },
+  { id: 'ecuadorLigaPro', name: 'LigaPro', country: 'Ecuador', flagUrl: 'https://flagcdn.com/ec.svg', color: '#ffd100' },
+  { id: 'paraguayPrimera', name: 'División de Honor', country: 'Paraguay', flagUrl: 'https://flagcdn.com/py.svg', color: '#d52b1e' },
+  { id: 'peruLiga1', name: 'Liga 1', country: 'Perú', flagUrl: 'https://flagcdn.com/pe.svg', color: '#d91023' },
+  { id: 'boliviaPrimera', name: 'División Profesional', country: 'Bolivia', flagUrl: 'https://flagcdn.com/bo.svg', color: '#007934' },
+  { id: 'venezuelaPrimera', name: 'Liga FUTVE', country: 'Venezuela', flagUrl: 'https://flagcdn.com/ve.svg', color: '#cf142b' },
 ];
 
 /**

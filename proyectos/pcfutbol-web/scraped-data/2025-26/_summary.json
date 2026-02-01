@@ -1,81 +1,11 @@
 {
   "season": "2025-26",
   "leagues": {
-    "eredivisie": {
+    "segundaRfefG5": {
       "teams": 18,
-      "players": 503,
-      "goals": 696
-    },
-    "primeiraLiga": {
-      "teams": 18,
-      "players": 483,
-      "goals": 574
-    },
-    "championship": {
-      "teams": 24,
-      "players": 682,
-      "goals": 905
-    },
-    "belgianPro": {
-      "teams": 16,
-      "players": 454,
-      "goals": 517
-    },
-    "superLig": {
-      "teams": 18,
-      "players": 499,
-      "goals": 513
-    },
-    "scottishPrem": {
-      "teams": 12,
-      "players": 335,
-      "goals": 500
-    },
-    "serieB": {
-      "teams": 20,
-      "players": 583,
-      "goals": 496
-    },
-    "bundesliga2": {
-      "teams": 18,
-      "players": 535,
-      "goals": 495
-    },
-    "ligue2": {
-      "teams": 18,
-      "players": 469,
-      "goals": 508
-    },
-    "swissSuperLeague": {
-      "teams": 12,
-      "players": 339,
-      "goals": 504
-    },
-    "austrianBundesliga": {
-      "teams": 12,
-      "players": 341,
-      "goals": 365
-    },
-    "greekSuperLeague": {
-      "teams": 14,
-      "players": 431,
-      "goals": 439
-    },
-    "danishSuperliga": {
-      "teams": 12,
-      "players": 320,
-      "goals": 476
-    },
-    "croatianLeague": {
-      "teams": 10,
-      "players": 326,
-      "goals": 329
-    },
-    "czechLeague": {
-      "teams": 16,
-      "players": 495,
-      "goals": 438
+      "players": 445,
+      "goals": 403
     }
   },
-  "scrapedAt": "2026-01-30T15:46:39.563Z"
+  "scrapedAt": "2026-02-01T18:13:42.077Z"
 }

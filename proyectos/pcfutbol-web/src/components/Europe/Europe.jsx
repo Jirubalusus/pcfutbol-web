@@ -7,7 +7,10 @@
 import React, { useState, useMemo } from 'react';
 import { useGame } from '../../context/GameContext';
 import { COMPETITIONS } from '../../game/europeanCompetitions';
+import { SA_COMPETITIONS } from '../../game/southAmericanCompetitions';
 import { getPlayerCompetition, isTeamAlive } from '../../game/europeanSeason';
+import { getPlayerSACompetition, isTeamAliveInSA } from '../../game/southAmericanSeason';
+import { isSouthAmericanLeague } from '../../game/southAmericanCompetitions';
 import { Trophy, Globe, Star, ChevronDown, ChevronUp, Award, Zap } from 'lucide-react';
 import './Europe.scss';
 
@@ -17,13 +20,17 @@ export default function Europe() {
   const [sortBy, setSortBy] = useState('points');
   const [sortDir, setSortDir] = useState('desc');
 
-  const european = state.europeanCompetitions;
+  const isInSA = isSouthAmericanLeague(state.playerLeagueId);
+  
+  // Use SA or European competitions depending on the player's league
+  const european = isInSA ? state.saCompetitions : state.europeanCompetitions;
   
   // Find player's competition
   const playerComp = useMemo(() => {
     if (!european?.competitions) return null;
+    if (isInSA) return getPlayerSACompetition(european, state.teamId);
     return getPlayerCompetition(european, state.teamId);
-  }, [european, state.teamId]);
+  }, [european, state.teamId, isInSA]);
 
   // Default to player's competition, or first available
   const activeCompId = selectedComp || playerComp?.competitionId || 

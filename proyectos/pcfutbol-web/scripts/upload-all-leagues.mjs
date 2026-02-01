@@ -38,6 +38,17 @@ const LEAGUES_TO_UPLOAD = [
   { src: 'danishSuperliga.json',    firestoreId: 'danishSuperliga',    name: 'Superligaen',          country: 'Dinamarca' },
   { src: 'croatianLeague.json',     firestoreId: 'croatianLeague',     name: 'HNL',                  country: 'Croacia' },
   { src: 'czechLeague.json',        firestoreId: 'czechLeague',        name: 'Chance Liga',          country: 'Chequia' },
+  // South American leagues
+  { src: 'argentinaPrimera.json',  firestoreId: 'argentinaPrimera',   name: 'Liga Profesional',     country: 'Argentina' },
+  { src: 'brasileiraoA.json',     firestoreId: 'brasileiraoA',       name: 'Série A',              country: 'Brasil' },
+  { src: 'colombiaPrimera.json',  firestoreId: 'colombiaPrimera',    name: 'Liga BetPlay',         country: 'Colombia' },
+  { src: 'chilePrimera.json',     firestoreId: 'chilePrimera',       name: 'Primera División',     country: 'Chile' },
+  { src: 'uruguayPrimera.json',   firestoreId: 'uruguayPrimera',     name: 'Primera División',     country: 'Uruguay' },
+  { src: 'ecuadorLigaPro.json',   firestoreId: 'ecuadorLigaPro',     name: 'LigaPro',              country: 'Ecuador' },
+  { src: 'paraguayPrimera.json',  firestoreId: 'paraguayPrimera',    name: 'División de Honor',    country: 'Paraguay' },
+  { src: 'peruLiga1.json',        firestoreId: 'peruLiga1',          name: 'Liga 1',               country: 'Perú' },
+  { src: 'boliviaPrimera.json',   firestoreId: 'boliviaPrimera',     name: 'División Profesional', country: 'Bolivia' },
+  { src: 'venezuelaPrimera.json', firestoreId: 'venezuelaPrimera',   name: 'Liga FUTVE',           country: 'Venezuela' },
 ];
 
 function toSlug(name) {
