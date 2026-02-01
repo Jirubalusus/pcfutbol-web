@@ -190,6 +190,183 @@ $pcf-text: #bdc3c7;
 }
 
 // ============================================================
+// MAP SELECTION (Step 1 — two-column layout)
+// ============================================================
+.map-selection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 0;
+
+  @media (max-width: 900px) {
+    overflow: visible;
+  }
+}
+
+.map-selection__row {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  min-height: 0;
+  overflow: hidden;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    overflow: visible;
+  }
+}
+
+.map-selection__map {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  min-height: 0;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(20, 40, 60, 0.8) 0%,
+    transparent 70%
+  );
+
+  @media (max-width: 900px) {
+    padding: 0.5rem;
+    min-height: 300px;
+  }
+}
+
+.map-selection__panel {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, rgba($pcf-bg-light, 0.6) 0%, $pcf-bg-dark 100%);
+  border-left: 1px solid rgba($pcf-accent, 0.2);
+  overflow-y: auto;
+  padding: 0;
+
+  @media (max-width: 900px) {
+    border-left: none;
+    border-top: 1px solid rgba($pcf-accent, 0.2);
+    overflow-y: visible;
+    padding-bottom: 1rem;
+  }
+}
+
+.map-selection__title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: $pcf-white;
+  background: linear-gradient(180deg, $pcf-bg-light 0%, $pcf-bg-mid 100%);
+  border-bottom: 2px solid $pcf-accent;
+  flex-shrink: 0;
+
+  .flag {
+    font-size: 2rem;
+  }
+}
+
+.map-selection__leagues {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.75rem;
+  flex: 1;
+}
+
+.map-selection__league {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.9rem 1rem;
+  background: linear-gradient(180deg, rgba(42, 74, 106, 0.6) 0%, rgba(26, 58, 90, 0.6) 100%);
+  border: 1px solid rgba(74, 106, 138, 0.4);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+  color: inherit;
+
+  &:hover:not(.disabled) {
+    background: linear-gradient(180deg, rgba(58, 90, 122, 0.8) 0%, rgba(42, 74, 106, 0.8) 100%);
+    border-color: $pcf-gold;
+    transform: translateX(4px);
+  }
+
+  &.disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+}
+
+.map-selection__league-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: $pcf-white;
+}
+
+.map-selection__league-info {
+  font-size: 0.8rem;
+  color: $pcf-gray;
+  margin-top: 0.15rem;
+}
+
+.map-selection__league-arrow {
+  color: $pcf-gold;
+  flex-shrink: 0;
+}
+
+.map-selection__placeholder {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+  text-align: center;
+
+  @media (max-width: 900px) {
+    display: none;
+  }
+}
+
+.map-selection__placeholder-icon {
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba($pcf-accent, 0.15), rgba($pcf-accent, 0.05));
+  border: 2px solid rgba($pcf-accent, 0.25);
+  color: $pcf-accent;
+  animation: placeholderPulse 2.5s ease-in-out infinite;
+}
+
+.map-selection__placeholder-text {
+  font-size: 1.05rem;
+  color: $pcf-gray;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+@keyframes placeholderPulse {
+  0%, 100% { 
+    box-shadow: 0 0 0 0 rgba($pcf-accent, 0.2);
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 0 20px 4px rgba($pcf-accent, 0.15);
+    transform: scale(1.05);
+  }
+}
+
+// ============================================================
 // PAÍSES
 // ============================================================
 .countries-grid {

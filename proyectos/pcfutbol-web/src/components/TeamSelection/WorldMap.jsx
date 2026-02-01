@@ -46,13 +46,22 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
+      const height = window.innerHeight;
       setIsMobile(width < MOBILE_BREAKPOINT);
       if (width < 500) {
         setSize(Math.min(280, width * 0.7));
       } else if (width < 768) {
-        setSize(Math.min(320, width * 0.5));
+        setSize(Math.min(340, width * 0.55));
+      } else if (width < 1200) {
+        // Medium desktop — use 55% of available left column width (~60% of screen)
+        const availableWidth = width * 0.55;
+        const availableHeight = height - 160; // subtract header + progress bar
+        setSize(Math.min(520, availableWidth * 0.85, availableHeight * 0.8));
       } else {
-        setSize(Math.min(450, width * 0.32));
+        // Large desktop — go big
+        const availableWidth = width * 0.55;
+        const availableHeight = height - 160;
+        setSize(Math.min(620, availableWidth * 0.85, availableHeight * 0.8));
       }
     };
     handleResize();
