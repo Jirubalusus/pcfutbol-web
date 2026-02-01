@@ -373,13 +373,13 @@ export const LEAGUE_CONFIG = {
     id: 'argentinaPrimera',
     name: 'Liga Profesional',
     country: 'Argentina',
-    teams: 28,
+    teams: 30,
     getTeams: getArgentinaTeams,
     format: 'apertura-clausura',
     zones: {
       libertadores: [1, 2, 3, 4],
       sudamericana: [5, 6],
-      relegation: [25, 26, 27, 28]
+      relegation: [27, 28, 29, 30]
     }
   },
   brasileiraoA: {
@@ -490,13 +490,13 @@ export const LEAGUE_CONFIG = {
     id: 'venezuelaPrimera',
     name: 'Liga FUTVE',
     country: 'Venezuela',
-    teams: 18,
+    teams: 14,
     getTeams: getVenezuelaTeams,
     format: 'apertura-clausura',
     zones: {
       libertadores: [1, 2],
       sudamericana: [3, 4],
-      relegation: [16, 17, 18]
+      relegation: [12, 13, 14]
     }
   }
 };

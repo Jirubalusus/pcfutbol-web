@@ -2,7 +2,14 @@ import React, { useState } from 'react';
 import { useGame } from '../../context/GameContext';
 import { 
   getLaLigaTeams, getSegundaTeams, getPrimeraRfefTeams, getSegundaRfefTeams,
-  getPremierTeams, getLigue1Teams, getBundesligaTeams, getSerieATeams
+  getPremierTeams, getLigue1Teams, getBundesligaTeams, getSerieATeams,
+  getEredivisieTeams, getPrimeiraLigaTeams, getChampionshipTeams, getBelgianProTeams,
+  getSuperLigTeams, getScottishPremTeams, getSerieBTeams, getBundesliga2Teams,
+  getLigue2Teams, getSwissTeams, getAustrianTeams, getGreekTeams,
+  getDanishTeams, getCroatianTeams, getCzechTeams,
+  getArgentinaTeams, getBrasileiraoTeams, getColombiaTeams, getChileTeams,
+  getUruguayTeams, getEcuadorTeams, getParaguayTeams, getPeruTeams,
+  getBoliviaTeams, getVenezuelaTeams
 } from '../../data/teamsFirestore';
 import { simulateWeekMatches, simulateMatch, updateTable } from '../../game/leagueEngine';
 import { simulateOtherLeaguesWeek } from '../../game/multiLeagueEngine';
@@ -11,7 +18,14 @@ import { calculateMatchAttendance } from '../../game/stadiumEconomy';
 // Combine all teams for lookup - usando getters para obtener data actualizada
 const getAllTeams = () => [
   ...getLaLigaTeams(), ...getSegundaTeams(), ...getPrimeraRfefTeams(), ...getSegundaRfefTeams(),
-  ...getPremierTeams(), ...getLigue1Teams(), ...getBundesligaTeams(), ...getSerieATeams()
+  ...getPremierTeams(), ...getLigue1Teams(), ...getBundesligaTeams(), ...getSerieATeams(),
+  ...getEredivisieTeams(), ...getPrimeiraLigaTeams(), ...getChampionshipTeams(), ...getBelgianProTeams(),
+  ...getSuperLigTeams(), ...getScottishPremTeams(), ...getSerieBTeams(), ...getBundesliga2Teams(),
+  ...getLigue2Teams(), ...getSwissTeams(), ...getAustrianTeams(), ...getGreekTeams(),
+  ...getDanishTeams(), ...getCroatianTeams(), ...getCzechTeams(),
+  ...getArgentinaTeams(), ...getBrasileiraoTeams(), ...getColombiaTeams(), ...getChileTeams(),
+  ...getUruguayTeams(), ...getEcuadorTeams(), ...getParaguayTeams(), ...getPeruTeams(),
+  ...getBoliviaTeams(), ...getVenezuelaTeams()
 ];
 import Sidebar from '../Sidebar/Sidebar';
 import MobileNav from '../MobileNav/MobileNav';
