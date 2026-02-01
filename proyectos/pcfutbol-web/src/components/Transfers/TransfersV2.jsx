@@ -1266,7 +1266,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
       type: 'ADD_MESSAGE',
       payload: {
         id: Date.now(), type: 'transfer', title: 'Fichaje completado',
-        content: `${player.name} es nuevo jugador. Coste: ${formatTransferPrice(offerAmount)}, Salario: ${formatTransferPrice(playerCounter.salary)}/sem`,
+        content: `${player.name} es nuevo jugador. Coste: ${formatTransferPrice(offerAmount)}, Salario: ${formatTransferPrice(playerCounter.salary * 52)}/año`,
         date: `Semana ${state.currentWeek}`
       }
     });
@@ -1423,7 +1423,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
         id: Date.now(),
         type: 'transfer',
         title: isFreeAgent ? 'Agente libre fichado' : 'Pre-contrato firmado',
-        content: `${player.name} es nuevo jugador. Prima: ${formatTransferPrice(signingBonus)}, Salario: ${formatTransferPrice(salaryOffer)}/sem`,
+        content: `${player.name} es nuevo jugador. Prima: ${formatTransferPrice(signingBonus)}, Salario: ${formatTransferPrice(salaryOffer * 52)}/año`,
         date: `Semana ${state.currentWeek}`
       }
     });
@@ -1463,7 +1463,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
         id: Date.now(),
         type: 'transfer',
         title: 'Fichaje completado',
-        content: `${player.name} es nuevo jugador. Coste: ${formatTransferPrice(offerAmount)}, Salario: ${formatTransferPrice(salaryOffer)}/sem`,
+        content: `${player.name} es nuevo jugador. Coste: ${formatTransferPrice(offerAmount)}, Salario: ${formatTransferPrice(salaryOffer * 52)}/año`,
         date: `Semana ${state.currentWeek}`
       }
     });
@@ -1553,7 +1553,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
               </div>
               <div className="stat-row">
                 <span className="stat-label">Salario</span>
-                <span className="stat-value">{formatTransferPrice(currentSalary)}/sem</span>
+                <span className="stat-value">{formatTransferPrice(currentSalary * 52)}/año</span>
               </div>
               <div className="stat-row">
                 <span className="stat-label">Contrato</span>
@@ -1731,20 +1731,23 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
                   {playerStatus !== 'locked' && (
                     <>
                       <div className="offer-row">
-                        <label>Salario semanal</label>
+                        <label>Salario anual</label>
                         <MoneyInput
-                          value={salaryOffer}
-                          onChange={(valOrFn) => setSalaryOffer(prev => typeof valOrFn === 'function' ? valOrFn(prev) : valOrFn)}
+                          value={salaryOffer * 52}
+                          onChange={(valOrFn) => setSalaryOffer(prev => {
+                            const newAnnual = typeof valOrFn === 'function' ? valOrFn(prev * 52) : valOrFn;
+                            return Math.round(newAnnual / 52);
+                          })}
                           step={100000}
                           min={0}
                           disabled={playerStatus === 'negotiating' || playerStatus === 'accepted' || playerStatus === 'counter'}
-                          suffix="/sem"
+                          suffix="/año"
                         />
                         <span className="formatted-amount total-cost">
                           Coste total: {formatTransferPrice(salaryOffer * 52 * contractYears)} ({contractYears} año{contractYears > 1 ? 's' : ''})
                         </span>
                         <span className="salary-hint">
-                          Mínimo estimado: {formatTransferPrice(requiredSalary)}/sem
+                          Mínimo estimado: {formatTransferPrice(requiredSalary * 52)}/año
                           {tierDiff > 0 && ` (+${Math.round((requiredSalary/currentSalary - 1) * 100)}%)`}
                         </span>
                       </div>
@@ -1779,7 +1782,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
                       {playerStatus === 'counter' && playerCounter && (
                         <div className="counter-offer-box player-counter">
                           <span className="counter-label">Contraoferta del jugador:</span>
-                          <span className="counter-amount">{formatTransferPrice(playerCounter.salary)}/sem</span>
+                          <span className="counter-amount">{formatTransferPrice(playerCounter.salary * 52)}/año</span>
                           <span className="counter-total">Coste total: {formatTransferPrice(playerCounter.salary * 52 * contractYears)}</span>
                           <p className="counter-reason">{playerCounter.reason}</p>
                           <div className="counter-actions">
@@ -1853,20 +1856,23 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
                 </div>
                 
                 <div className="offer-row">
-                  <label>Salario semanal</label>
+                  <label>Salario anual</label>
                   <MoneyInput
-                    value={salaryOffer}
-                    onChange={(valOrFn) => setSalaryOffer(prev => typeof valOrFn === 'function' ? valOrFn(prev) : valOrFn)}
+                    value={salaryOffer * 52}
+                    onChange={(valOrFn) => setSalaryOffer(prev => {
+                      const newAnnual = typeof valOrFn === 'function' ? valOrFn(prev * 52) : valOrFn;
+                      return Math.round(newAnnual / 52);
+                    })}
                     step={100000}
                     min={0}
                     disabled={playerStatus === 'negotiating' || playerStatus === 'accepted'}
-                    suffix="/sem"
+                    suffix="/año"
                   />
                   <span className="formatted-amount total-cost">
                     Coste total: {formatTransferPrice(salaryOffer * 52 * contractYears)} ({contractYears} año{contractYears > 1 ? 's' : ''})
                   </span>
                   <span className="salary-hint">
-                    Mínimo estimado: {formatTransferPrice(Math.round(requiredSalary * (isFreeAgent ? 1.3 : 1.15)))}/sem
+                    Mínimo estimado: {formatTransferPrice(Math.round(requiredSalary * (isFreeAgent ? 1.3 : 1.15) * 52))}/año
                   </span>
                 </div>
                 
@@ -1900,7 +1906,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
                 {playerStatus === 'counter' && playerCounter && (
                   <div className="counter-offer-box player-counter">
                     <span className="counter-label">Contraoferta del jugador:</span>
-                    <span className="counter-amount">{formatTransferPrice(playerCounter.salary)}/sem</span>
+                    <span className="counter-amount">{formatTransferPrice(playerCounter.salary * 52)}/año</span>
                     <span className="counter-total">Coste total: {formatTransferPrice(playerCounter.salary * 52 * contractYears)}</span>
                     <p className="counter-reason">{playerCounter.reason}</p>
                     <div className="counter-actions">
@@ -1919,7 +1925,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
                 
                 <div className="total-cost-row">
                   <span className="cost-label">Coste total</span>
-                  <span className="cost-value">{formatTransferPrice(signingBonus)} + {formatTransferPrice(salaryOffer)}/sem × {contractYears} años</span>
+                  <span className="cost-value">{formatTransferPrice(signingBonus)} + {formatTransferPrice(salaryOffer * 52)}/año × {contractYears} años</span>
                 </div>
                 
                 {(playerStatus === 'pending' || playerStatus === 'locked') && (
