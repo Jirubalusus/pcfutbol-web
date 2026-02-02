@@ -176,7 +176,16 @@ export default function Formation() {
   const players = state.team?.players || [];
   const teamStrength = calculateTeamStrength(state.team, selectedFormation, selectedTactic);
   
-  // Guardar lineup en el estado global cuando cambia
+  // Sync global lineup → local cuando cambia externamente (ej: limpieza por suspensiones/lesiones)
+  useEffect(() => {
+    const globalStr = JSON.stringify(state.lineup || {});
+    const localStr = JSON.stringify(lineup);
+    if (globalStr !== localStr) {
+      setLineup(state.lineup || {});
+    }
+  }, [state.lineup]);
+  
+  // Guardar lineup en el estado global cuando cambia localmente
   useEffect(() => {
     if (Object.keys(lineup).length > 0) {
       dispatch({ type: 'SET_LINEUP', payload: lineup });
@@ -237,6 +246,20 @@ export default function Formation() {
         }
       }
     });
+    
+    // Backfill: si la lista manual dejó menos de 5 convocados
+    // (porque algunos pasaron a titulares al cambiar formación),
+    // rellenar con los mejores no convocados no lesionados
+    if (hasManualConvocados && convocados.length < 5) {
+      const needed = 5 - convocados.length;
+      const backfill = noConvocados
+        .filter(p => !p.injured)
+        .slice(0, needed);
+      backfill.forEach(p => {
+        convocados.push(p);
+        noConvocados.splice(noConvocados.indexOf(p), 1);
+      });
+    }
     
     // Titulares: ordenar por SLOT de la formación (GK → DEF → MED → DEL fijo)
     // Así el orden refleja la formación elegida, no la posición natural del jugador
@@ -307,6 +330,20 @@ export default function Formation() {
     setLineup(newLineup);
     // Guardar inmediatamente
     dispatch({ type: 'SET_LINEUP', payload: newLineup });
+    
+    // Recalcular convocados tras el auto-fill
+    const newLineupNames = new Set(Object.values(newLineup).map(p => p?.name).filter(Boolean));
+    const currentConv = (state.convocados || []).filter(n => !newLineupNames.has(n));
+    if (currentConv.length < 5) {
+      const needed = 5 - currentConv.length;
+      const available = players
+        .filter(p => !newLineupNames.has(p.name) && !currentConv.includes(p.name) && !p.injured)
+        .sort((a, b) => b.overall - a.overall)
+        .slice(0, needed)
+        .map(p => p.name);
+      currentConv.push(...available);
+    }
+    dispatch({ type: 'SET_CONVOCADOS', payload: currentConv });
   };
   
   const handleSlotClick = (slotId) => {
@@ -1007,6 +1044,21 @@ export default function Formation() {
               
               setLineup(newLineup);
               dispatch({ type: 'SET_LINEUP', payload: newLineup });
+              
+              // Recalcular convocados: los de la lista manual que NO son titulares,
+              // + backfill de los mejores disponibles hasta llegar a 5
+              const newLineupNames = new Set(Object.values(newLineup).map(p => p?.name).filter(Boolean));
+              const currentConvocados = (state.convocados || []).filter(n => !newLineupNames.has(n));
+              if (currentConvocados.length < 5) {
+                const needed = 5 - currentConvocados.length;
+                const available = players
+                  .filter(p => !newLineupNames.has(p.name) && !currentConvocados.includes(p.name) && !p.injured)
+                  .sort((a, b) => b.overall - a.overall)
+                  .slice(0, needed)
+                  .map(p => p.name);
+                currentConvocados.push(...available);
+              }
+              dispatch({ type: 'SET_CONVOCADOS', payload: currentConvocados });
             }, 50);
           }}
         />

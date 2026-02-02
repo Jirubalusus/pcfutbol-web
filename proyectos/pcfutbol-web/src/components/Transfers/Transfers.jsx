@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useGame } from '../../context/GameContext';
+import CustomSelect from '../common/CustomSelect/CustomSelect';
 import { 
   getLaLigaTeams,
   getSegundaTeams,
@@ -1124,27 +1125,39 @@ export default function Transfers() {
               value={searchTerm}
               onChange={e => setSearchTerm(e.target.value)}
             />
-            <select value={positionFilter} onChange={e => setPositionFilter(e.target.value)}>
-              <option value="all">Todas las posiciones</option>
-              <option value="GK">Portero</option>
-              <option value="CB">Central</option>
-              <option value="RB">Lateral Der.</option>
-              <option value="LB">Lateral Izq.</option>
-              <option value="CDM">Pivote</option>
-              <option value="CM">Centrocampista</option>
-              <option value="CAM">Mediapunta</option>
-              <option value="RW">Extremo Der.</option>
-              <option value="LW">Extremo Izq.</option>
-              <option value="ST">Delantero</option>
-            </select>
-            <select value={sortBy} onChange={e => setSortBy(e.target.value)}>
-              <option value="overall">Mayor media</option>
-              <option value="price_low">Menor precio</option>
-              <option value="price_high">Mayor precio</option>
-              <option value="age_young">Más joven</option>
-              <option value="value">Mejor valor</option>
-              <option value="easy">Más fácil</option>
-            </select>
+            <CustomSelect
+              compact
+              value={positionFilter}
+              onChange={setPositionFilter}
+              searchable={false}
+              options={[
+                { value: 'all', label: 'Todas las posiciones' },
+                { value: 'GK', label: 'Portero' },
+                { value: 'CB', label: 'Central' },
+                { value: 'RB', label: 'Lateral Der.' },
+                { value: 'LB', label: 'Lateral Izq.' },
+                { value: 'CDM', label: 'Pivote' },
+                { value: 'CM', label: 'Centrocampista' },
+                { value: 'CAM', label: 'Mediapunta' },
+                { value: 'RW', label: 'Extremo Der.' },
+                { value: 'LW', label: 'Extremo Izq.' },
+                { value: 'ST', label: 'Delantero' },
+              ]}
+            />
+            <CustomSelect
+              compact
+              value={sortBy}
+              onChange={setSortBy}
+              searchable={false}
+              options={[
+                { value: 'overall', label: 'Mayor media' },
+                { value: 'price_low', label: 'Menor precio' },
+                { value: 'price_high', label: 'Mayor precio' },
+                { value: 'age_young', label: 'Más joven' },
+                { value: 'value', label: 'Mejor valor' },
+                { value: 'easy', label: 'Más fácil' },
+              ]}
+            />
             <button 
               className={`filter-toggle ${showAdvancedFilters ? 'active' : ''}`}
               onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
@@ -1323,7 +1336,7 @@ export default function Transfers() {
             </div>
           ) : (
             <div className="transfers__offers-list">
-              {state.transferOffers.map(offer => (
+              {(Array.isArray(state.transferOffers) ? state.transferOffers : []).map(offer => (
                 <div key={offer.id} className={`transfers__offer ${offer.isUrgent ? 'urgent' : ''}`}>
                   {offer.isUrgent && <div className="urgent-banner"><Zap size={14} /> OFERTA URGENTE</div>}
                   <div className="offer-header">

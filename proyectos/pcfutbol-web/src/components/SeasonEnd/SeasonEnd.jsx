@@ -376,6 +376,26 @@ export default function SeasonEnd({ allTeams, onComplete }) {
       finalFixtures = remapFixturesForEuropean(finalFixtures, europeanCalendar.leagueWeekMap);
     }
 
+    // ============================================================
+    // CONTRARRELOJ: Record trophies for league/cup wins this season
+    // ============================================================
+    if (state.gameMode === 'contrarreloj') {
+      // League champion?
+      const playerPos = state.leagueTable?.findIndex(t => t.teamId === state.teamId) + 1;
+      if (playerPos === 1) {
+        dispatch({
+          type: 'CONTRARRELOJ_ADD_TROPHY',
+          payload: {
+            type: 'league',
+            season: state.currentSeason,
+            name: getLeagueName(playerLeagueId) || playerLeagueId
+          }
+        });
+      }
+      // Cup champion is already handled in COMPLETE_CUP_MATCH
+      // European/SA champion is already handled in COMPLETE_EUROPEAN_MATCH / COMPLETE_SA_MATCH
+    }
+
     // Dispatch para iniciar nueva temporada
     dispatch({
       type: 'START_NEW_SEASON',
@@ -899,6 +919,97 @@ export default function SeasonEnd({ allTeams, onComplete }) {
             return null;
           })()}
 
+          {/* Resultado en competición sudamericana */}
+          {state.saCompetitions?.competitions && (() => {
+            const comps = state.saCompetitions.competitions;
+            for (const [compId, compState] of Object.entries(comps)) {
+              if (!compState) continue;
+              if (!compState.teams?.some(t => t.teamId === state.teamId)) continue;
+
+              const compName = compState.config?.shortName || compState.config?.name || compId;
+              const icon = compState.config?.icon || '🌎';
+              let result = null;
+              let isChampion = false;
+
+              // Won the final
+              if (compState.finalResult?.winner?.teamId === state.teamId) {
+                result = 'Campeón';
+                isChampion = true;
+              } else {
+                // Lost in final
+                if (compState.finalResult?.winner && compState.finalResult.winner.teamId !== state.teamId) {
+                  const fm = compState.finalMatchup;
+                  if (fm && (fm.team1?.teamId === state.teamId || fm.team2?.teamId === state.teamId)) {
+                    result = 'Final (Subcampeón)';
+                  }
+                }
+
+                // Check knockout phases
+                if (!result) {
+                  const phases = [
+                    { key: 'sfResults', name: 'Semifinales' },
+                    { key: 'qfResults', name: 'Cuartos de Final' },
+                    { key: 'r16Results', name: 'Octavos de Final' },
+                    { key: 'playoffResults', name: 'Playoff' }
+                  ];
+                  for (const { key, name } of phases) {
+                    const results = compState[key];
+                    if (!results || results.length === 0) continue;
+                    const teamMatch = results.find(r =>
+                      r.team1?.teamId === state.teamId || r.team2?.teamId === state.teamId
+                    );
+                    if (teamMatch) {
+                      if (teamMatch.winner && teamMatch.winner.teamId !== state.teamId) {
+                        result = name;
+                      } else if (teamMatch.winner && teamMatch.winner.teamId === state.teamId) {
+                        continue;
+                      }
+                      break;
+                    }
+                  }
+                }
+
+                // Swiss phase elimination
+                if (!result) {
+                  const q = compState.qualification;
+                  if (q?.eliminated?.some(t => t.teamId === state.teamId)) {
+                    const standing = compState.standings?.find(s => s.teamId === state.teamId);
+                    const pos = standing ? compState.standings.indexOf(standing) + 1 : null;
+                    result = pos ? `Fase de Liga (${pos}º)` : 'Fase de Liga';
+                  }
+                }
+
+                // Fallback
+                if (!result) {
+                  const standing = compState.standings?.find(s => s.teamId === state.teamId);
+                  if (standing) {
+                    const pos = compState.standings
+                      .sort((a, b) => (b.points - a.points) || (b.goalDifference - a.goalDifference))
+                      .findIndex(s => s.teamId === state.teamId) + 1;
+                    if (compState.phase === 'league' || compState.currentMatchday < 8) {
+                      result = `Fase de Liga (${pos}º, J${compState.currentMatchday || 0}/8)`;
+                    } else {
+                      result = `${pos}º en Fase de Liga`;
+                    }
+                  } else {
+                    result = 'Participante';
+                  }
+                }
+              }
+
+              return (
+                <div className={`competition-result ${isChampion ? 'competition-result--champion' : ''}`}>
+                  <Globe size={24} className="result-icon" />
+                  <div className="result-info">
+                    <h3>{icon} {compName}</h3>
+                    <p>{isChampion ? '🏆 ¡Campeón!' : result}</p>
+                  </div>
+                </div>
+              );
+            }
+            return null;
+          })()}
+
           {/* Clasificación Europea (próxima temporada) */}
           {competitionName && (
             <div className="european-qualification">
@@ -929,6 +1040,32 @@ export default function SeasonEnd({ allTeams, onComplete }) {
                   <div className="qualification-info">
                     <h3>Premios {euroCompName}</h3>
                     <p>Ingresos por competición europea: <strong>{formatMoney(totalEuropeanPrize)}</strong></p>
+                  </div>
+                </div>
+              );
+            }
+            return null;
+          })()}
+          
+          {/* Premios económicos de competición sudamericana */}
+          {state.saCompetitions?.competitions && (() => {
+            let totalSAPrize = 0;
+            let saCompName = null;
+            for (const [cId, cState] of Object.entries(state.saCompetitions.competitions)) {
+              if (!cState) continue;
+              const prize = cState.prizesMoney?.[state.teamId] || 0;
+              if (prize > 0) {
+                totalSAPrize += prize;
+                saCompName = cState.config?.shortName || cId;
+              }
+            }
+            if (totalSAPrize > 0) {
+              return (
+                <div className="european-qualification" style={{ borderColor: 'rgba(46,125,50,0.3)' }}>
+                  <Globe size={24} className="star-icon" style={{ color: '#66bb6a' }} />
+                  <div className="qualification-info">
+                    <h3>Premios {saCompName}</h3>
+                    <p>Ingresos por competición sudamericana: <strong>{formatMoney(totalSAPrize)}</strong></p>
                   </div>
                 </div>
               );

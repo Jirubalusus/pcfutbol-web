@@ -62,21 +62,28 @@ export const LEAGUE_TIERS = {
   czechLeague:          { tier: 3, ...TIER_CONFIG[3] },
 
   // === Tier 2: Major - South American top leagues ===
-  argentinaPrimera:     { tier: 2, ...TIER_CONFIG[2] },
-  brasileiraoA:         { tier: 2, ...TIER_CONFIG[2] },
+  // salaryMult: overrides salary calculation (SA players have high OVR but much lower wages than Europe)
+  argentinaPrimera:     { tier: 2, ...TIER_CONFIG[2], salaryMult: 0.18 },
+  brasileiraoA:         { tier: 2, ...TIER_CONFIG[2], salaryMult: 0.22 },
 
   // === Tier 3: Standard - South American mid leagues ===
-  colombiaPrimera:      { tier: 3, ...TIER_CONFIG[3] },
-  chilePrimera:         { tier: 3, ...TIER_CONFIG[3] },
-  uruguayPrimera:       { tier: 3, ...TIER_CONFIG[3] },
-  ecuadorLigaPro:       { tier: 3, ...TIER_CONFIG[3] },
+  colombiaPrimera:      { tier: 3, ...TIER_CONFIG[3], salaryMult: 0.07 },
+  chilePrimera:         { tier: 3, ...TIER_CONFIG[3], salaryMult: 0.07 },
+  uruguayPrimera:       { tier: 3, ...TIER_CONFIG[3], salaryMult: 0.07 },
+  ecuadorLigaPro:       { tier: 3, ...TIER_CONFIG[3], salaryMult: 0.07 },
 
   // === Tier 4: Lower - Primera RFEF + SA lower leagues ===
   primeraRFEF:          { tier: 4, ...TIER_CONFIG[4] },
-  paraguayPrimera:      { tier: 4, ...TIER_CONFIG[4] },
-  peruLiga1:            { tier: 4, ...TIER_CONFIG[4] },
-  boliviaPrimera:       { tier: 4, ...TIER_CONFIG[4] },
-  venezuelaPrimera:     { tier: 4, ...TIER_CONFIG[4] },
+  paraguayPrimera:      { tier: 4, ...TIER_CONFIG[4], salaryMult: 0.025 },
+  peruLiga1:            { tier: 4, ...TIER_CONFIG[4], salaryMult: 0.025 },
+  boliviaPrimera:       { tier: 4, ...TIER_CONFIG[4], salaryMult: 0.025 },
+  venezuelaPrimera:     { tier: 4, ...TIER_CONFIG[4], salaryMult: 0.025 },
+
+  // === Rest of World ===
+  saudiPro:             { tier: 2, ...TIER_CONFIG[2], salaryMult: 0.25 },
+  ligaMX:               { tier: 2, ...TIER_CONFIG[2], salaryMult: 0.06 },
+  mls:                  { tier: 3, ...TIER_CONFIG[3], salaryMult: 0.08 },
+  jLeague:              { tier: 3, ...TIER_CONFIG[3], salaryMult: 0.04 },
 
   // === Tier 5: Amateur - Segunda RFEF ===
   segundaRFEF:  { tier: 5, ...TIER_CONFIG[5] },
@@ -101,6 +108,20 @@ export function getLeagueTier(leagueId) {
  */
 export function getEconomyMultiplier(leagueId) {
   return LEAGUE_TIERS[leagueId]?.multiplier ?? TIER_CONFIG[3].multiplier;
+}
+
+/**
+ * Devuelve el multiplicador de SALARIO de una liga.
+ * Usa salaryMult si existe (para ligas SA con overalls altos pero salarios bajos),
+ * o cae al multiplier estándar del tier.
+ * 
+ * @param {string} leagueId - ID de la liga
+ * @returns {number} Multiplicador de salario
+ */
+export function getSalaryMultiplier(leagueId) {
+  const entry = LEAGUE_TIERS[leagueId];
+  if (!entry) return TIER_CONFIG[3].multiplier;
+  return entry.salaryMult ?? entry.multiplier;
 }
 
 /**

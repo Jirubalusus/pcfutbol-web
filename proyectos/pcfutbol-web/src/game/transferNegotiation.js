@@ -172,72 +172,222 @@ export function assignPersonality(player) {
 }
 
 // ============================================================
+// SISTEMA DE RIVALIDADES
+// ============================================================
+
+export const CLUB_RIVALRIES = [
+  // España
+  ['Real Madrid', 'Barcelona'],
+  ['Real Betis', 'Sevilla'],
+  ['Atlético Madrid', 'Real Madrid'],
+  ['Athletic Club', 'Real Sociedad'],
+  ['Valencia', 'Villarreal'],
+  ['Espanyol', 'Barcelona'],
+  ['Celta Vigo', 'Deportivo de La Coruña'],
+  // Inglaterra
+  ['Liverpool', 'Manchester United'],
+  ['Arsenal', 'Tottenham'],
+  ['Manchester City', 'Manchester United'],
+  ['Chelsea', 'Arsenal'],
+  ['Everton', 'Liverpool'],
+  // Italia
+  ['Inter', 'Milan'],
+  ['Juventus', 'Inter'],
+  ['Roma', 'Lazio'],
+  ['Napoli', 'Juventus'],
+  // Alemania
+  ['Bayern München', 'Borussia Dortmund'],
+  ['FC Schalke 04', 'Borussia Dortmund'],
+  // Francia
+  ['PSG', 'Marseille'],
+  ['Olympique Lyon', 'AS Saint-Étienne'],
+  // Argentina
+  ['Boca Juniors', 'River Plate'],
+  ['Racing Club', 'Independiente'],
+  ['San Lorenzo', 'Huracán'],
+  // Brasil
+  ['Flamengo', 'Vasco da Gama'],
+  ['Corinthians', 'Palmeiras'],
+  ['Grêmio', 'Internacional'],
+  ['São Paulo', 'Corinthians'],
+  // Colombia
+  ['Atlético Nacional', 'Independiente Medellín'],
+  ['Millonarios', 'Santa Fe'],
+  // Chile
+  ['Colo-Colo', 'Universidad de Chile'],
+  ['Universidad Católica', 'Colo-Colo'],
+  // Uruguay
+  ['Peñarol', 'Nacional'],
+];
+
+/**
+ * Check if two teams are rivals (flexible word-boundary matching)
+ */
+export function areRivals(teamNameA, teamNameB) {
+  if (!teamNameA || !teamNameB) return false;
+  
+  const normalize = (name) => name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+  const escape = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  
+  const matchNames = (candidate, reference) => {
+    const c = normalize(candidate);
+    const r = normalize(reference);
+    if (c === r) return true;
+    if (r.length < 3) return false;
+    // Word-boundary: reference appears as whole word(s) in candidate or vice versa
+    const shorter = c.length <= r.length ? c : r;
+    const longer = c.length <= r.length ? r : c;
+    const regex = new RegExp(`(^|\\s)${escape(shorter)}($|\\s)`);
+    return regex.test(longer);
+  };
+  
+  return CLUB_RIVALRIES.some(([r1, r2]) => {
+    return (
+      (matchNames(teamNameA, r1) && matchNames(teamNameB, r2)) ||
+      (matchNames(teamNameA, r2) && matchNames(teamNameB, r1))
+    );
+  });
+}
+
+// ============================================================
 // NEGOCIACIÓN CON EL CLUB
 // ============================================================
 
 /**
  * Evaluar oferta del club comprador
- * @returns {object} { accepted, counter, reason }
+ * Soporta negociación dinámica por rondas con negotiationContext
+ * @param {object} negotiationContext - { round, previousOffers: [amount...], previousCounter }
+ * @returns {object} { accepted, rejected, counter, reason, minAcceptable, isRivalry, isFinalOffer, round }
  */
-export function evaluateClubOffer(offer, player, sellingTeam, buyingTeam) {
+export function evaluateClubOffer(offer, player, sellingTeam, buyingTeam, negotiationContext = null) {
   const marketValue = calculateMarketValue(player);
-  
-  // Usar la dificultad del fichaje para calcular el precio real pedido
   const { askingMultiplier } = calculateTransferDifficulty(player, sellingTeam, buyingTeam);
+  let askingPrice = Math.round(marketValue * askingMultiplier);
   
-  const askingPrice = Math.round(marketValue * askingMultiplier);
+  const rivalry = areRivals(sellingTeam?.name, buyingTeam?.name);
+  const round = negotiationContext?.round || 1;
+  const maxRounds = rivalry ? 2 : 3;
+  const previousOffers = negotiationContext?.previousOffers || [];
+  const previousCounter = negotiationContext?.previousCounter || null;
+  
+  // Rivales: el precio pedido sube un 30%
+  if (rivalry) {
+    askingPrice = Math.round(askingPrice * 1.3);
+  }
+  
   const offerRatio = offer.amount / askingPrice;
+  const isLastRound = round >= maxRounds;
   
-  // Evaluar oferta
-  if (offerRatio >= 1.15) {
-    // Oferta muy generosa - aceptar
-    return { 
-      accepted: true, 
-      reason: 'Oferta irrechazable',
-      finalPrice: offer.amount
-    };
-  }
+  // Campos base de la respuesta
+  const base = { isRivalry: rivalry, round, isFinalOffer: false };
   
-  if (offerRatio >= 0.95) {
-    // Oferta buena - 80% aceptar
-    if (Math.random() < 0.8) {
-      return { 
-        accepted: true, 
-        reason: 'Oferta aceptable',
-        finalPrice: offer.amount
-      };
+  // === RONDA 1 (o sin contexto — compatibilidad) ===
+  if (round <= 1) {
+    // Rivales: oferta < 70% → rechazo directo
+    if (rivalry && offerRatio < 0.7) {
+      return { ...base, accepted: false, rejected: true, reason: 'Oferta inaceptable de un rival — no negociamos', minAcceptable: askingPrice };
     }
-  }
-  
-  if (offerRatio >= 0.75) {
-    // Oferta razonable - contraoferta
-    const counterPrice = Math.round(askingPrice * (0.95 + Math.random() * 0.1));
-    return {
-      accepted: false,
-      counter: counterPrice,
-      reason: `Queremos ${formatTransferPrice(counterPrice)}`,
-      minAcceptable: Math.round(askingPrice * 0.9)
-    };
-  }
-  
-  if (offerRatio >= 0.5) {
-    // Oferta baja - contraoferta más agresiva
+    
+    // Oferta < 50% → RECHAZO DIRECTO sin contraoferta
+    if (offerRatio < 0.5) {
+      return { ...base, accepted: false, rejected: true, reason: 'Oferta irrisoria, no negociamos', minAcceptable: askingPrice };
+    }
+    
+    // Oferta ≥ 115% → acepta siempre
+    if (offerRatio >= 1.15) {
+      return { ...base, accepted: true, reason: 'Oferta irrechazable', finalPrice: offer.amount };
+    }
+    
+    // Oferta 95-115% → 80% acepta
+    if (offerRatio >= 0.95) {
+      if (Math.random() < 0.8) {
+        return { ...base, accepted: true, reason: 'Oferta aceptable', finalPrice: offer.amount };
+      }
+      // 20% cae a contraoferta suave
+      const counterPrice = Math.round(askingPrice * (0.98 + Math.random() * 0.05));
+      return { ...base, accepted: false, counter: counterPrice, reason: `Queremos un poco más: ${formatTransferPrice(counterPrice)}`, minAcceptable: Math.round(askingPrice * 0.9) };
+    }
+    
+    // Oferta 75-95% → contraoferta (95-105% del asking)
+    if (offerRatio >= 0.75) {
+      const counterPrice = Math.round(askingPrice * (0.95 + Math.random() * 0.1));
+      return { ...base, accepted: false, counter: counterPrice, reason: `Queremos ${formatTransferPrice(counterPrice)}`, minAcceptable: Math.round(askingPrice * 0.9) };
+    }
+    
+    // Oferta 50-75% → contraoferta agresiva (105-120% del asking)
     const counterPrice = Math.round(askingPrice * (1.05 + Math.random() * 0.15));
-    return {
-      accepted: false,
-      counter: counterPrice,
-      reason: `Oferta insuficiente. Mínimo ${formatTransferPrice(counterPrice)}`,
-      minAcceptable: askingPrice
-    };
+    return { ...base, accepted: false, counter: counterPrice, reason: `Oferta insuficiente. Mínimo ${formatTransferPrice(counterPrice)}`, minAcceptable: askingPrice };
   }
   
-  // Oferta ridícula - rechazar
-  return {
-    accepted: false,
-    rejected: true,
-    reason: 'Oferta irrisoria, no negociamos',
-    minAcceptable: askingPrice
-  };
+  // === RONDAS 2+ ===
+  const lastOffer = previousOffers.length > 0 ? previousOffers[previousOffers.length - 1] : 0;
+  const offerIncreased = offer.amount > lastOffer;
+  
+  // Si la nueva oferta ≥ counter anterior → aceptar (superó la petición)
+  if (previousCounter && offer.amount >= previousCounter) {
+    return { ...base, accepted: true, reason: 'Acuerdo alcanzado — oferta cumple con lo pedido', finalPrice: offer.amount };
+  }
+  
+  // === ÚLTIMA RONDA ===
+  if (isLastRound) {
+    // Jugador no subió → rechazo directo
+    if (!offerIncreased) {
+      return { ...base, accepted: false, rejected: true, reason: 'El club se cansó de negociar — oferta no mejorada', minAcceptable: askingPrice };
+    }
+    
+    // Oferta ≥ 95% → acepta
+    if (offerRatio >= 0.95) {
+      return { ...base, accepted: true, reason: 'Acuerdo alcanzado', finalPrice: offer.amount };
+    }
+    
+    // Oferta ≥ 90% → alta probabilidad
+    if (offerRatio >= 0.9) {
+      if (Math.random() < 0.85) {
+        return { ...base, accepted: true, reason: 'Acuerdo alcanzado', finalPrice: offer.amount };
+      }
+    }
+    
+    // Oferta < 80% → rechazo
+    if (offerRatio < 0.8) {
+      return { ...base, accepted: false, rejected: true, reason: 'Oferta insuficiente para cerrar el trato', minAcceptable: askingPrice };
+    }
+    
+    // 80-95% → última contraoferta "take it or leave it"
+    const finalCounter = Math.round((offer.amount + askingPrice) / 2);
+    return { ...base, accepted: false, counter: finalCounter, reason: `Última oferta: ${formatTransferPrice(finalCounter)}. Lo tomas o lo dejas.`, minAcceptable: Math.round(askingPrice * 0.85), isFinalOffer: true };
+  }
+  
+  // === RONDA INTERMEDIA (no última) ===
+  if (offerIncreased) {
+    // Jugador subió su oferta → club coopera
+    
+    // Si ≥ 90% asking → alta probabilidad de aceptar
+    if (offerRatio >= 0.9) {
+      if (Math.random() < 0.7) {
+        return { ...base, accepted: true, reason: 'Oferta aceptable', finalPrice: offer.amount };
+      }
+    }
+    
+    // Club baja su counter: punto medio entre nueva oferta y counter anterior
+    if (previousCounter) {
+      const newCounter = Math.round((offer.amount + previousCounter) / 2);
+      return { ...base, accepted: false, counter: newCounter, reason: `Contraoferta: ${formatTransferPrice(newCounter)}`, minAcceptable: Math.round(askingPrice * 0.85) };
+    }
+    
+    // Sin counter anterior (fallback)
+    const counterPrice = Math.round(askingPrice * (0.95 + Math.random() * 0.1));
+    return { ...base, accepted: false, counter: counterPrice, reason: `Contraoferta: ${formatTransferPrice(counterPrice)}`, minAcceptable: Math.round(askingPrice * 0.9) };
+  } else {
+    // Jugador mantuvo o bajó → club mantiene o sube
+    if (previousCounter) {
+      const bump = 1 + Math.random() * 0.05; // 0-5% subida
+      const newCounter = Math.round(previousCounter * bump);
+      return { ...base, accepted: false, counter: newCounter, reason: `El club mantiene su posición: ${formatTransferPrice(newCounter)}`, minAcceptable: askingPrice };
+    }
+    
+    const counterPrice = Math.round(askingPrice * (1.05 + Math.random() * 0.1));
+    return { ...base, accepted: false, counter: counterPrice, reason: `El club no cede: ${formatTransferPrice(counterPrice)}`, minAcceptable: askingPrice };
+  }
 }
 
 // ============================================================
@@ -879,6 +1029,8 @@ export default {
   getClubTier,
   getTierData,
   CLUB_TIERS,
+  CLUB_RIVALRIES,
+  areRivals,
   PLAYER_PERSONALITIES,
   assignPersonality,
   evaluateClubOffer,

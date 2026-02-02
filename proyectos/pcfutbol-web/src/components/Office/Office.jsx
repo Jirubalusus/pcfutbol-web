@@ -89,6 +89,13 @@ export default function Office() {
       seasonOver = false; // Player still has European matches to play
     }
   }
+  // Same check for SA competitions
+  if (seasonOver && state.europeanCalendar && state.saCompetitions) {
+    const hasMoreWeeks = state.currentWeek < state.europeanCalendar.totalWeeks;
+    if (hasMoreWeeks || state.pendingSAMatch) {
+      seasonOver = false; // Player still has SA matches to play
+    }
+  }
   
   const formatMoney = (amount) => {
     if (amount >= 1000000) {
@@ -107,6 +114,15 @@ export default function Office() {
     );
   };
 
+  const getSuspendedInLineup = () => {
+    const lineup = state.lineup || {};
+    const lineupNames = Object.values(lineup).filter(p => p).map(p => p.name);
+    const players = state.team?.players || [];
+    return players.filter(p => 
+      lineupNames.includes(p.name) && p.suspended && p.suspensionMatches > 0
+    );
+  };
+
   const handleAdvanceWeek = () => {
     // Comprobar si la temporada ha terminado
     if (seasonOver) {
@@ -120,6 +136,20 @@ export default function Office() {
       setInjuredInLineup(injured);
       setShowInjuredWarning(true);
       return;
+    }
+    
+    // Auto-sacar sancionados del lineup antes de avanzar
+    const suspendedInLineup = getSuspendedInLineup();
+    if (suspendedInLineup.length > 0) {
+      // Remove suspended players from lineup automatically
+      const cleanedLineup = { ...(state.lineup || {}) };
+      const suspNames = new Set(suspendedInLineup.map(p => p.name));
+      Object.keys(cleanedLineup).forEach(slot => {
+        if (cleanedLineup[slot] && suspNames.has(cleanedLineup[slot].name)) {
+          delete cleanedLineup[slot];
+        }
+      });
+      dispatch({ type: 'SET_LINEUP', payload: cleanedLineup });
     }
     
     proceedAdvanceWeek();
@@ -169,6 +199,9 @@ export default function Office() {
     } else if (state.pendingEuropeanMatch) {
       // European match takes priority (midweek before weekend league match)
       setShowMatch(true);
+    } else if (state.pendingSAMatch) {
+      // SA match takes priority (same logic as European)
+      setShowMatch(true);
     } else if (playerMatch) {
       setShowMatch(true);
     } else {
@@ -199,10 +232,8 @@ export default function Office() {
       //   because the league fixture wasn't touched)
       
       if (completedMatchType === 'league') {
-        // League match done — simulate others and advance
-        const result = simulateOtherMatches();
-        dispatch({ type: 'SET_FIXTURES', payload: result.fixtures });
-        dispatch({ type: 'SET_LEAGUE_TABLE', payload: result.table });
+        // League match done — MatchDay already simulated other matches and dispatched
+        // SET_FIXTURES + SET_LEAGUE_TABLE. Don't re-simulate (stale state would overwrite).
         dispatch({ type: 'ADVANCE_WEEK' });
       } else {
         // Cup or European match done — check if there's still a league match this week
@@ -246,6 +277,7 @@ export default function Office() {
     // No simular si hay partido de copa o europeo pendiente
     if (state.pendingCupMatch) return;
     if (state.pendingEuropeanMatch) return;
+    if (state.pendingSAMatch) return;
     
     setSimulating(true);
     
@@ -856,11 +888,6 @@ export default function Office() {
               <span className="value">{formatMoney(state.money)}</span>
             </div>
             
-            <button className="office__save-btn" onClick={saveGame}>
-              <Save size={18} strokeWidth={2} />
-              <span>Guardar</span>
-            </button>
-            
             <button 
               className="office__advance-btn" 
               onClick={handleAdvanceWeek}
@@ -871,11 +898,11 @@ export default function Office() {
             </button>
             
             <div className="office__sim-dropdown">
-              <button className="office__sim-btn" disabled={simulating || state.preseasonPhase || !!state.pendingEuropeanMatch || !!state.pendingCupMatch}>
+              <button className="office__sim-btn" disabled={simulating || state.preseasonPhase || !!state.pendingEuropeanMatch || !!state.pendingSAMatch || !!state.pendingCupMatch}>
                 <FastForward size={18} strokeWidth={2} />
                 <span>{simulating ? 'Simulando...' : 'Simular'}</span>
               </button>
-              {!simulating && !state.preseasonPhase && !state.pendingEuropeanMatch && !state.pendingCupMatch && (
+              {!simulating && !state.preseasonPhase && !state.pendingEuropeanMatch && !state.pendingSAMatch && !state.pendingCupMatch && (
                 <div className="office__sim-options">
                   <button onClick={() => handleSimulateWeeks(4)}>4 semanas</button>
                   <button onClick={() => handleSimulateWeeks(10)}>10 semanas</button>

@@ -6,6 +6,35 @@
 import teamsService from '../firebase/teamsService';
 import { enrichSATeams } from './enrichSATeams';
 
+// Rest of World — local data (not in Firestore)
+import { mlsTeams } from './teams-mls';
+import { saudiTeams } from './teams-saudi';
+import { ligaMXTeams } from './teams-ligamx';
+import { jLeagueTeams } from './teams-jleague';
+
+// ============================================================
+// Normalización de posiciones: inglés → español
+// ============================================================
+const POS_MAP = {
+  'GK': 'POR', 'CB': 'DFC', 'LB': 'LTI', 'RB': 'LTD',
+  'LWB': 'LTI', 'RWB': 'LTD', 'CDM': 'MCD', 'CM': 'MC',
+  'CAM': 'MCO', 'LM': 'MI', 'RM': 'MD', 'LW': 'EI',
+  'RW': 'ED', 'CF': 'MP', 'ST': 'DC', 'LD': 'LTD', 'LI': 'LTI'
+};
+
+function normalizePositions(teams) {
+  if (!teams) return teams;
+  for (const team of teams) {
+    if (!team.players) continue;
+    for (const p of team.players) {
+      if (p.position && POS_MAP[p.position]) {
+        p.position = POS_MAP[p.position];
+      }
+    }
+  }
+  return teams;
+}
+
 // Cache de datos cargados
 let dataLoaded = false;
 let loadPromise = null;
@@ -34,6 +63,13 @@ export let GREEK_TEAMS = [];
 export let DANISH_TEAMS = [];
 export let CROATIAN_TEAMS = [];
 export let CZECH_TEAMS = [];
+
+// Rest of World leagues
+// Rest of World leagues
+export let MLS_TEAMS = [];
+export let SAUDI_TEAMS = [];
+export let LIGA_MX_TEAMS = [];
+export let J_LEAGUE_TEAMS = [];
 
 // South American leagues
 export let ARGENTINA_TEAMS = [];
@@ -87,6 +123,12 @@ export function getDanishTeams() { return DANISH_TEAMS; }
 export function getCroatianTeams() { return CROATIAN_TEAMS; }
 export function getCzechTeams() { return CZECH_TEAMS; }
 
+// Rest of World getters
+export function getMLSTeams() { return MLS_TEAMS; }
+export function getSaudiTeams() { return SAUDI_TEAMS; }
+export function getLigaMXTeams() { return LIGA_MX_TEAMS; }
+export function getJLeagueTeams() { return J_LEAGUE_TEAMS; }
+
 // South American getters
 export function getArgentinaTeams() { return ARGENTINA_TEAMS; }
 export function getBrasileiraoTeams() { return BRASILEIRAO_TEAMS; }
@@ -133,7 +175,12 @@ export const LEAGUES = {
   paraguayPrimera: { name: 'División de Honor', country: 'Paraguay' },
   peruLiga1: { name: 'Liga 1', country: 'Perú' },
   boliviaPrimera: { name: 'División Profesional', country: 'Bolivia' },
-  venezuelaPrimera: { name: 'Liga FUTVE', country: 'Venezuela' }
+  venezuelaPrimera: { name: 'Liga FUTVE', country: 'Venezuela' },
+  // Rest of World
+  mls: { name: 'Major League Soccer', country: 'USA' },
+  saudiPro: { name: 'Saudi Pro League', country: 'Arabia Saudí' },
+  ligaMX: { name: 'Liga MX', country: 'México' },
+  jLeague: { name: 'J1 League', country: 'Japón' }
 };
 
 // Función para cargar todos los datos
@@ -186,6 +233,13 @@ export async function loadAllData() {
           teamsService.getTeamsByLeague('boliviaPrimera'),
           teamsService.getTeamsByLeague('venezuelaPrimera')
         ]);
+
+      // Normalizar posiciones inglés → español en TODOS los datos de Firestore
+      [laliga, laliga2, primeraRfef, segundaRfef, premier, seriea, bundesliga, ligue1,
+       eredivisie, primeiraLiga, championship, belgianPro, superLig, scottishPrem,
+       serieB, bundesliga2, ligue2, swiss, austrian, greek, danish, croatian, czech,
+       argentina, brasileirao, colombia, chile, uruguay, ecuador, paraguay, peru, bolivia, venezuela
+      ].forEach(normalizePositions);
 
       // Actualizar arrays exportados (mutación in-place)
       LALIGA_TEAMS.length = 0;
@@ -288,6 +342,16 @@ export async function loadAllData() {
       VENEZUELA_TEAMS.length = 0;
       VENEZUELA_TEAMS.push(...enrichSATeams(venezuela, 'venezuelaPrimera'));
 
+      // Rest of World — loaded from local static data (not in Firestore)
+      MLS_TEAMS.length = 0;
+      MLS_TEAMS.push(...mlsTeams);
+      SAUDI_TEAMS.length = 0;
+      SAUDI_TEAMS.push(...saudiTeams);
+      LIGA_MX_TEAMS.length = 0;
+      LIGA_MX_TEAMS.push(...ligaMXTeams);
+      J_LEAGUE_TEAMS.length = 0;
+      J_LEAGUE_TEAMS.push(...jLeagueTeams);
+
       // Organizar grupos de RFEF
       const primeraG1 = primeraRfef.slice(0, Math.ceil(primeraRfef.length / 2));
       const primeraG2 = primeraRfef.slice(Math.ceil(primeraRfef.length / 2));
@@ -310,7 +374,8 @@ export async function loadAllData() {
         danish.length + croatian.length + czech.length +
         argentina.length + brasileirao.length + colombia.length + chile.length +
         uruguay.length + ecuador.length + paraguay.length + peru.length +
-        bolivia.length + venezuela.length;
+        bolivia.length + venezuela.length +
+        MLS_TEAMS.length + SAUDI_TEAMS.length + LIGA_MX_TEAMS.length + J_LEAGUE_TEAMS.length;
       console.log(`✅ Datos cargados en ${Date.now() - start}ms (${totalTeams} equipos)`);
 
       return true;
@@ -367,6 +432,11 @@ export default {
   PERU_TEAMS,
   BOLIVIA_TEAMS,
   VENEZUELA_TEAMS,
+  // Rest of World
+  MLS_TEAMS,
+  SAUDI_TEAMS,
+  LIGA_MX_TEAMS,
+  J_LEAGUE_TEAMS,
   LEAGUES,
   freeAgents
 };

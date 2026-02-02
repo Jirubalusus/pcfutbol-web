@@ -20,18 +20,25 @@ export default function MoneyInput({ value, onChange, step = 500000, min = 0, ma
   
   // Formato: K por debajo de 1M, M a partir de 1M
   const formatDisplay = (val) => {
-    if (val < 1000000) {
+    if (val < 1_000_000) {
       return `${Math.round(val / 1000)}K`;
     }
-    const m = val / 1000000;
+    const m = val / 1_000_000;
     if (m >= 100) return `${Math.round(m)}M`;
-    if (m >= 10) return `${m.toFixed(1)}M`;
-    return `${m.toFixed(1)}M`;
+    // Mostrar decimal solo si lo hay
+    const fixed1 = m.toFixed(1);
+    const fixed2 = m.toFixed(2);
+    if (fixed2.endsWith('0')) return `${fixed1}M`;
+    return `${fixed2}M`;
   };
   
-  // Step dinámico: 100K cuando el valor está por debajo de 1M
+  // Step dinámico proporcional al valor actual
   const getStep = (currentVal) => {
-    return currentVal < 1000000 ? 100000 : step;
+    if (currentVal < 1_000_000) return 50_000;     // <1M  → 50K
+    if (currentVal < 5_000_000) return 100_000;     // 1-5M → 100K
+    if (currentVal < 20_000_000) return 250_000;    // 5-20M → 250K
+    if (currentVal < 50_000_000) return 500_000;    // 20-50M → 500K
+    return 1_000_000;                               // 50M+ → 1M
   };
   
   const clamp = useCallback((val) => {

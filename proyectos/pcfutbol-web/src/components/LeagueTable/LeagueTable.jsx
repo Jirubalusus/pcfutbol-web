@@ -3,6 +3,7 @@ import { useGame } from '../../context/GameContext';
 import { Trophy, ChevronDown, ChevronUp, Globe, RefreshCw } from 'lucide-react';
 import { getLeagueTable, LEAGUE_CONFIG, initializeOtherLeagues, simulateOtherLeaguesWeek, isAperturaClausura, computeAccumulatedTable } from '../../game/multiLeagueEngine';
 import { sortTable } from '../../game/leagueEngine';
+import CustomSelect from '../common/CustomSelect/CustomSelect';
 import './LeagueTable.scss';
 
 // Configuración de zonas por liga
@@ -493,62 +494,64 @@ export default function LeagueTable() {
         </h2>
         
         <div className="league-selector">
-          <select 
-            value={selectedLeague} 
-            onChange={(e) => {
-              setSelectedLeague(e.target.value);
+          <CustomSelect
+            value={selectedLeague}
+            onChange={(val) => {
+              setSelectedLeague(val);
               setShowAllTeams(false);
               setSelectedGroup(null);
             }}
-          >
-            <optgroup label="🇪🇸 España">
-              <option value="laliga">La Liga</option>
-              <option value="segunda">Segunda División</option>
-              <option value="primeraRFEF">Primera Federación</option>
-              <option value="segundaRFEF">Segunda Federación</option>
-            </optgroup>
-            <optgroup label="🏴󠁧󠁢󠁥󠁮󠁧󠁿 Inglaterra">
-              <option value="premierLeague">Premier League</option>
-              <option value="championship">Championship</option>
-            </optgroup>
-            <optgroup label="🇮🇹 Italia">
-              <option value="serieA">Serie A</option>
-              <option value="serieB">Serie B</option>
-            </optgroup>
-            <optgroup label="🇩🇪 Alemania">
-              <option value="bundesliga">Bundesliga</option>
-              <option value="bundesliga2">2. Bundesliga</option>
-            </optgroup>
-            <optgroup label="🇫🇷 Francia">
-              <option value="ligue1">Ligue 1</option>
-              <option value="ligue2">Ligue 2</option>
-            </optgroup>
-            <optgroup label="Resto de Europa">
-              <option value="eredivisie">🇳🇱 Eredivisie</option>
-              <option value="primeiraLiga">🇵🇹 Primeira Liga</option>
-              <option value="belgianPro">🇧🇪 Jupiler Pro League</option>
-              <option value="superLig">🇹🇷 Süper Lig</option>
-              <option value="scottishPrem">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scottish Prem</option>
-              <option value="swissSuperLeague">🇨🇭 Super League</option>
-              <option value="austrianBundesliga">🇦🇹 Bundesliga (AT)</option>
-              <option value="greekSuperLeague">🇬🇷 Super League</option>
-              <option value="danishSuperliga">🇩🇰 Superligaen</option>
-              <option value="croatianLeague">🇭🇷 HNL</option>
-              <option value="czechLeague">🇨🇿 Chance Liga</option>
-            </optgroup>
-            <optgroup label="🌎 Sudamérica">
-              <option value="argentinaPrimera">🇦🇷 Liga Profesional</option>
-              <option value="brasileiraoA">🇧🇷 Série A</option>
-              <option value="colombiaPrimera">🇨🇴 Liga BetPlay</option>
-              <option value="chilePrimera">🇨🇱 Primera División</option>
-              <option value="uruguayPrimera">🇺🇾 Primera División</option>
-              <option value="ecuadorLigaPro">🇪🇨 LigaPro</option>
-              <option value="paraguayPrimera">🇵🇾 División de Honor</option>
-              <option value="peruLiga1">🇵🇪 Liga 1</option>
-              <option value="boliviaPrimera">🇧🇴 Div. Profesional</option>
-              <option value="venezuelaPrimera">🇻🇪 Liga FUTVE</option>
-            </optgroup>
-          </select>
+            searchPlaceholder="Buscar liga..."
+            options={[
+              { group: 'España', icon: '🇪🇸', items: [
+                { value: 'laliga', label: 'La Liga' },
+                { value: 'segunda', label: 'Segunda División' },
+                { value: 'primeraRFEF', label: 'Primera Federación' },
+                { value: 'segundaRFEF', label: 'Segunda Federación' },
+              ]},
+              { group: 'Inglaterra', icon: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', items: [
+                { value: 'premierLeague', label: 'Premier League' },
+                { value: 'championship', label: 'Championship' },
+              ]},
+              { group: 'Italia', icon: '🇮🇹', items: [
+                { value: 'serieA', label: 'Serie A' },
+                { value: 'serieB', label: 'Serie B' },
+              ]},
+              { group: 'Alemania', icon: '🇩🇪', items: [
+                { value: 'bundesliga', label: 'Bundesliga' },
+                { value: 'bundesliga2', label: '2. Bundesliga' },
+              ]},
+              { group: 'Francia', icon: '🇫🇷', items: [
+                { value: 'ligue1', label: 'Ligue 1' },
+                { value: 'ligue2', label: 'Ligue 2' },
+              ]},
+              { group: 'Resto de Europa', icon: '🌍', items: [
+                { value: 'eredivisie', icon: '🇳🇱', label: 'Eredivisie' },
+                { value: 'primeiraLiga', icon: '🇵🇹', label: 'Primeira Liga' },
+                { value: 'belgianPro', icon: '🇧🇪', label: 'Jupiler Pro League' },
+                { value: 'superLig', icon: '🇹🇷', label: 'Süper Lig' },
+                { value: 'scottishPrem', icon: '🏴󠁧󠁢󠁳󠁣󠁴󠁿', label: 'Scottish Prem' },
+                { value: 'swissSuperLeague', icon: '🇨🇭', label: 'Super League' },
+                { value: 'austrianBundesliga', icon: '🇦🇹', label: 'Bundesliga (AT)' },
+                { value: 'greekSuperLeague', icon: '🇬🇷', label: 'Super League' },
+                { value: 'danishSuperliga', icon: '🇩🇰', label: 'Superligaen' },
+                { value: 'croatianLeague', icon: '🇭🇷', label: 'HNL' },
+                { value: 'czechLeague', icon: '🇨🇿', label: 'Chance Liga' },
+              ]},
+              { group: 'Sudamérica', icon: '🌎', items: [
+                { value: 'argentinaPrimera', icon: '🇦🇷', label: 'Liga Profesional' },
+                { value: 'brasileiraoA', icon: '🇧🇷', label: 'Série A' },
+                { value: 'colombiaPrimera', icon: '🇨🇴', label: 'Liga BetPlay' },
+                { value: 'chilePrimera', icon: '🇨🇱', label: 'Primera División' },
+                { value: 'uruguayPrimera', icon: '🇺🇾', label: 'Primera División' },
+                { value: 'ecuadorLigaPro', icon: '🇪🇨', label: 'LigaPro' },
+                { value: 'paraguayPrimera', icon: '🇵🇾', label: 'División de Honor' },
+                { value: 'peruLiga1', icon: '🇵🇪', label: 'Liga 1' },
+                { value: 'boliviaPrimera', icon: '🇧🇴', label: 'Div. Profesional' },
+                { value: 'venezuelaPrimera', icon: '🇻🇪', label: 'Liga FUTVE' },
+              ]},
+            ]}
+          />
         </div>
       </div>
       

@@ -4,7 +4,7 @@
 // Escalado por tier de liga para balance económico
 // ============================================================
 
-import { getEconomyMultiplier } from './leagueTiers';
+import { getEconomyMultiplier, getSalaryMultiplier } from './leagueTiers';
 
 // Hash determinista basado en nombre del jugador
 function nameHash(name) {
@@ -19,7 +19,7 @@ function nameHash(name) {
  * Genera salario SEMANAL realista para un jugador
  * 
  * Curva exponencial: cada 5 OVR ≈ x2 salario
- * El tier de liga escala el resultado con el multiplicador económico.
+ * El tier/leagueId escala el resultado con el multiplicador económico.
  * 
  * Ejemplos (Tier 1 - LaLiga/Premier):
  *   60 OVR → ~€4K/sem (€200K/año)
@@ -30,16 +30,17 @@ function nameHash(name) {
  *   85 OVR → ~€120K/sem (€6.2M/año)
  *   90 OVR → ~€250K/sem (€13M/año)
  * 
- * Ejemplos (Tier 5 - 2ª RFEF, x0.03):
- *   60 OVR → ~€120/sem
- *   70 OVR → ~€450/sem
- *   75 OVR → ~€900/sem (€47K/año)
+ * Ejemplos (Argentina, x0.18):
+ *   70 OVR → ~€2.9K/sem (~€150K/año)
+ *   75 OVR → ~€5.8K/sem (~€300K/año)
+ *   80 OVR → ~€12K/sem (~€600K/año)
+ *   85 OVR → ~€23K/sem (~€1.2M/año)
  * 
  * @param {object} player - { overall, age, name, potential }
- * @param {number} leagueTier - Tier de la liga (1-5), default 1
+ * @param {number|string} leagueTierOrId - Tier (1-5) o leagueId string
  * @returns {number} Salario semanal en €
  */
-export function generateSalary(player, leagueTier = 1) {
+export function generateSalary(player, leagueTierOrId = 1) {
   const ovr = player.overall || 65;
   const age = player.age || 25;
   
@@ -59,63 +60,64 @@ export function generateSalary(player, leagueTier = 1) {
   const hash = nameHash(player.name || 'Player');
   const variation = 0.88 + (hash % 250) / 1000; // 0.88 a 1.13
   
-  // Multiplicador económico por tier de liga
-  const TIER_MULTIPLIERS = { 1: 1.0, 2: 0.50, 3: 0.22, 4: 0.08, 5: 0.03 };
-  const tierMult = TIER_MULTIPLIERS[leagueTier] ?? 1.0;
+  // Resolver multiplicador: si es string → leagueId (usa salaryMult), si es número → tier legacy
+  let salaryMult, leagueTier;
+  if (typeof leagueTierOrId === 'string') {
+    salaryMult = getSalaryMultiplier(leagueTierOrId);
+    // Derive tier for minimum salary lookup
+    const MULT_TO_TIER = [[1.0, 1], [0.18, 2], [0.07, 3], [0.025, 4], [0.01, 5]];
+    leagueTier = 3; // default
+    for (const [threshold, t] of MULT_TO_TIER) {
+      if (salaryMult >= threshold) { leagueTier = t; break; }
+    }
+  } else {
+    leagueTier = leagueTierOrId;
+    const TIER_MULTIPLIERS = { 1: 1.0, 2: 0.50, 3: 0.22, 4: 0.08, 5: 0.03 };
+    salaryMult = TIER_MULTIPLIERS[leagueTier] ?? 1.0;
+  }
   
   // Mínimos por tier (semanales)
   const TIER_MINIMUMS = { 1: 2000, 2: 1000, 3: 500, 4: 200, 5: 80 };
-  const minSalary = TIER_MINIMUMS[leagueTier] ?? 2000;
+  const minSalary = TIER_MINIMUMS[leagueTier] ?? 500;
   
   // Salario semanal final
-  return Math.max(minSalary, Math.round(baseSalary * ageMod * variation * tierMult));
+  return Math.max(minSalary, Math.round(baseSalary * ageMod * variation * salaryMult));
 }
 
 /**
- * Aplica salarios generados a un array de jugadores
- * Solo sobrescribe si el salario actual parece un placeholder (20000 o no definido)
+ * Aplica salarios generados a un array de jugadores.
+ * Acepta leagueId (string) para usar salaryMult específico de la liga,
+ * o tier (number) para compatibilidad legacy.
  * 
  * @param {array} players - Array de jugadores
- * @param {number} leagueTier - Tier de la liga (1-5)
+ * @param {number|string} leagueTierOrId - Tier (1-5) o leagueId string
  * @returns {array} Jugadores con salarios actualizados
  */
-export function applyGeneratedSalaries(players, leagueTier = 1) {
+export function applyGeneratedSalaries(players, leagueTierOrId = 1) {
   return (players || []).map(player => {
-    // Siempre regenerar salarios con el tier correcto para garantizar balance económico.
-    // Los salarios del scraper no tienen en cuenta el tier de liga.
     return {
       ...player,
-      salary: generateSalary(player, leagueTier)
+      salary: generateSalary(player, leagueTierOrId)
     };
   });
 }
 
 /**
  * Aplica salarios a todos los jugadores de un array de equipos.
- * Cada equipo puede tener un leagueId para determinar su tier,
- * o se usa el tier por defecto.
+ * Usa leagueId para salaryMult específico cuando está disponible.
  * 
  * @param {array} teams - Array de equipos con .players y opcionalmente .leagueId
- * @param {number} defaultTier - Tier por defecto si el equipo no tiene leagueId
+ * @param {number|string} defaultTierOrId - Tier o leagueId por defecto
  * @returns {array} Equipos con jugadores actualizados
  */
-export function applyTeamsSalaries(teams, defaultTier = 1) {
+export function applyTeamsSalaries(teams, defaultTierOrId = 1) {
   return (teams || []).map(team => {
-    // Si el equipo tiene leagueId, calcular su tier individual
-    let teamTier = defaultTier;
-    if (team.leagueId) {
-      const mult = getEconomyMultiplier(team.leagueId);
-      // Reverse-map multiplier to tier
-      if (mult >= 1.0) teamTier = 1;
-      else if (mult >= 0.50) teamTier = 2;
-      else if (mult >= 0.22) teamTier = 3;
-      else if (mult >= 0.08) teamTier = 4;
-      else teamTier = 5;
-    }
+    // Usar leagueId del equipo si existe, si no el default
+    const tierOrId = team.leagueId || defaultTierOrId;
     
     return {
       ...team,
-      players: applyGeneratedSalaries(team.players || [], teamTier)
+      players: applyGeneratedSalaries(team.players || [], tierOrId)
     };
   });
 }

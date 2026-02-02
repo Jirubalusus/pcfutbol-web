@@ -156,84 +156,71 @@ export function getSeasonResult(table, teamId, leagueId = 'laliga') {
  */
 export function generatePreseasonOptions(allTeams, playerTeam, currentLeague) {
   // Filtrar equipos disponibles (no el propio equipo)
-  const availableTeams = allTeams.filter(t => t.id !== playerTeam.id);
+  const availableTeams = allTeams.filter(t => t.id !== playerTeam.id && t.players?.length > 0);
   
-  // Categorizar equipos por reputación
-  const topTeams = availableTeams.filter(t => t.reputation >= 80).slice(0, 20);
-  const midTeams = availableTeams.filter(t => t.reputation >= 60 && t.reputation < 80).slice(0, 30);
-  const lowTeams = availableTeams.filter(t => t.reputation >= 40 && t.reputation < 60).slice(0, 30);
+  // Shuffle completo
+  const shuffled = [...availableTeams].sort(() => Math.random() - 0.5);
   
-  // Función para seleccionar equipos aleatorios
-  const pickRandom = (arr, count) => {
-    const shuffled = [...arr].sort(() => Math.random() - 0.5);
-    return shuffled.slice(0, count);
-  };
+  // Nombres para las 3 opciones
+  const optionNames = ['Opción A', 'Opción B', 'Opción C'];
   
-  // Generar 3 opciones de pretemporada
-  const options = [
-    {
-      id: 'prestige',
-      name: 'Gira de Prestigio',
-      description: 'Enfréntate a grandes equipos europeos',
-      difficulty: 'high',
-      potentialEarnings: '€2-4M',
-      matches: generateMatches(pickRandom(topTeams, 4), playerTeam, true)
-    },
-    {
-      id: 'balanced',
-      name: 'Pretemporada Equilibrada',
-      description: 'Mezcla de rivales para preparar la temporada',
-      difficulty: 'medium',
-      potentialEarnings: '€1-2M',
-      matches: generateMatches([
-        ...pickRandom(topTeams, 1),
-        ...pickRandom(midTeams, 2),
-        ...pickRandom(lowTeams, 1)
-      ], playerTeam, true)
-    },
-    {
-      id: 'regional',
-      name: 'Torneo Regional',
-      description: 'Partidos cercanos con menor desgaste',
-      difficulty: 'low',
-      potentialEarnings: '€0.5-1M',
-      matches: generateMatches([
-        ...pickRandom(midTeams, 2),
-        ...pickRandom(lowTeams, 2)
-      ], playerTeam, true)
+  // Generar 3 opciones completamente aleatorias, sin repetir rivales entre opciones
+  const used = new Set();
+  const options = optionNames.map((name, idx) => {
+    // Elegir 5 rivales únicos (no usados en otras opciones)
+    const rivals = [];
+    for (const team of shuffled) {
+      if (rivals.length >= 5) break;
+      if (!used.has(team.id)) {
+        rivals.push(team);
+        used.add(team.id);
+      }
     }
-  ];
+    // Fallback: si no hay suficientes, reusar del pool
+    while (rivals.length < 5) {
+      const fallback = shuffled[Math.floor(Math.random() * shuffled.length)];
+      if (fallback && !rivals.find(r => r.id === fallback.id)) {
+        rivals.push(fallback);
+      }
+    }
+    
+    return {
+      id: `option_${idx}`,
+      name,
+      matches: generateMatches(rivals, playerTeam)
+    };
+  });
   
   return options;
 }
 
 /**
  * Genera los 5 partidos de pretemporada
- * El último siempre es en casa
+ * Partidos 1-4: fuera de casa
+ * Partido 5: en casa (presentación del equipo)
  */
-function generateMatches(opponents, playerTeam, lastAtHome = true) {
+function generateMatches(opponents, playerTeam) {
   const matches = [];
   
+  // Partidos 1-4: siempre fuera
   for (let i = 0; i < 4; i++) {
-    const opponent = opponents[i] || opponents[0];
-    const isHome = i === 3 ? lastAtHome : Math.random() > 0.6; // Último en casa, otros mayormente fuera
-    
+    const opponent = opponents[i];
     matches.push({
       id: `preseason_${i + 1}`,
       week: i + 1,
-      homeTeam: isHome ? playerTeam.id : opponent.id,
-      awayTeam: isHome ? opponent.id : playerTeam.id,
-      homeTeamName: isHome ? playerTeam.name : opponent.name,
-      awayTeamName: isHome ? opponent.name : playerTeam.name,
-      isHome,
-      opponent: opponent,
+      homeTeam: opponent.id,
+      awayTeam: playerTeam.id,
+      homeTeamName: opponent.name,
+      awayTeamName: playerTeam.name,
+      isHome: false,
+      opponent,
       played: false,
       isPreseason: true
     });
   }
   
-  // Partido 5 - Siempre en casa (presentación del equipo)
-  const finalOpponent = opponents[opponents.length > 4 ? 4 : opponents.length - 1] || opponents[0];
+  // Partido 5: siempre en casa (presentación)
+  const finalOpponent = opponents[4];
   matches.push({
     id: 'preseason_5',
     week: 5,
@@ -245,7 +232,7 @@ function generateMatches(opponents, playerTeam, lastAtHome = true) {
     opponent: finalOpponent,
     played: false,
     isPreseason: true,
-    isPresentationMatch: true // Partido de presentación
+    isPresentationMatch: true
   });
   
   return matches;

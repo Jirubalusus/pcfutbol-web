@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState, useMemo } from 'react';
+import React, { useRef, useEffect, useState, useMemo, useCallback } from 'react';
 import { Globe as GlobeIcon } from 'lucide-react';
 import Globe from 'react-globe.gl';
 import './WorldMap.scss';
@@ -33,6 +33,11 @@ const COUNTRY_DATA = {
   peru: { lat: -12.0, lng: -77.0, name: 'Perú', code: 'PE', color: '#D91023', continent: 'southamerica' },
   bolivia: { lat: -16.5, lng: -68.2, name: 'Bolivia', code: 'BO', color: '#007934', continent: 'southamerica' },
   venezuela: { lat: 10.5, lng: -66.9, name: 'Venezuela', code: 'VE', color: '#CF142B', continent: 'southamerica' },
+  // Rest of World
+  usa: { lat: 39.8, lng: -98.6, name: 'USA', code: 'US', color: '#3C3B6E', continent: 'world' },
+  saudiArabia: { lat: 23.9, lng: 45.1, name: 'Arabia Saudí', code: 'SA', color: '#006C35', continent: 'world' },
+  mexico: { lat: 23.6, lng: -102.6, name: 'México', code: 'MX', color: '#006847', continent: 'world' },
+  japan: { lat: 36.2, lng: 138.3, name: 'Japón', code: 'JP', color: '#BC002D', continent: 'world' },
 };
 
 const MOBILE_BREAKPOINT = 768;
@@ -110,6 +115,21 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
     }
   };
 
+  // Create HTML element for each marker (must be before conditional returns to respect hook rules)
+  const createMarkerElement = useCallback((d) => {
+    const el = document.createElement('div');
+    el.className = `globe-marker ${d.isSelected ? 'globe-marker--selected' : ''}`;
+    el.style.setProperty('--marker-color', d.isSelected ? '#00FF88' : d.color);
+    el.innerHTML = `<span class="globe-marker__code">${d.code}</span>`;
+    el.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (d?.id) onCountryClick(d.id);
+    });
+    // Tooltip on hover
+    el.title = `${d.name} — ${d.leagues} liga${d.leagues !== 1 ? 's' : ''}`;
+    return el;
+  }, [onCountryClick]);
+
   // Mobile view: grouped country list
   if (isMobile) {
     if (selectedCountry) {
@@ -118,6 +138,7 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
 
     const europeCountries = countries.filter(c => COUNTRY_DATA[c.id]?.continent === 'europe');
     const saCountries = countries.filter(c => COUNTRY_DATA[c.id]?.continent === 'southamerica');
+    const worldCountries = countries.filter(c => COUNTRY_DATA[c.id]?.continent === 'world');
 
     return (
       <div className="countries-mobile">
@@ -155,12 +176,28 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
               ))}
             </>
           )}
+          {worldCountries.length > 0 && (
+            <>
+              <div className="countries-mobile__header">🌏 Resto del Mundo</div>
+              {worldCountries.map(country => (
+                <button
+                  key={country.id}
+                  className={`countries-mobile__item ${selectedCountry === country.id ? 'selected' : ''}`}
+                  onClick={() => onCountryClick(country.id)}
+                >
+                  <span className="countries-mobile__flag">{country.flag}</span>
+                  <span className="countries-mobile__name">{country.name}</span>
+                  <span className="countries-mobile__leagues">{country.leagues.length} liga{country.leagues.length > 1 ? 's' : ''}</span>
+                </button>
+              ))}
+            </>
+          )}
         </div>
       </div>
     );
   }
 
-  // Desktop: 3D globe with all markers
+  // Desktop: 3D globe with HTML markers
   return (
     <div className="globe-wrapper">
       <Globe
@@ -170,33 +207,13 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
         globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
         backgroundColor="rgba(0,0,0,0)"
 
-        // Points
-        pointsData={markersData}
-        pointLat="lat"
-        pointLng="lng"
-        pointColor={d => d.isSelected ? '#00FF88' : d.color}
-        pointAltitude={d => d.isSelected ? 0.15 : 0.06}
-        pointRadius={0.6}
-        pointLabel={d => `
-          <div style="background:rgba(0,0,0,0.9);color:#fff;padding:10px 14px;border-radius:10px;text-align:center;border:2px solid ${d.isSelected ? '#00FF88' : d.color};">
-            <div style="font-size:24px;margin-bottom:4px;">${d.flag}</div>
-            <div style="font-weight:bold;font-size:16px;">${d.name}</div>
-            <div style="font-size:13px;color:#aaa;margin-top:4px;">${d.leagues} liga${d.leagues !== 1 ? 's' : ''}</div>
-          </div>
-        `}
-        onPointClick={handleClick}
-
-        // Labels with country code
-        labelsData={markersData}
-        labelLat="lat"
-        labelLng="lng"
-        labelText="code"
-        labelSize={1.8}
-        labelDotRadius={0}
-        labelColor={d => d.isSelected ? '#00FF88' : '#FFFFFF'}
-        labelResolution={2}
-        labelAltitude={0.02}
-        onLabelClick={handleClick}
+        // HTML markers — large clickable areas
+        htmlElementsData={markersData}
+        htmlLat="lat"
+        htmlLng="lng"
+        htmlAltitude={0.03}
+        htmlElement={createMarkerElement}
+        htmlTransitionDuration={300}
 
         atmosphereColor="lightskyblue"
         atmosphereAltitude={0.15}

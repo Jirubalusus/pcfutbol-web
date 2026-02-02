@@ -38,7 +38,11 @@ import {
   getParaguayTeams,
   getPeruTeams,
   getBoliviaTeams,
-  getVenezuelaTeams
+  getVenezuelaTeams,
+  getMLSTeams,
+  getSaudiTeams,
+  getLigaMXTeams,
+  getJLeagueTeams
 } from '../../data/teamsFirestore';
 import { getStadiumInfo, getStadiumLevel } from '../../data/stadiumCapacities';
 import { initializeLeague } from '../../game/leagueEngine';
@@ -50,7 +54,7 @@ import { initializeEuropeanCompetitions } from '../../game/europeanSeason';
 import { isSouthAmericanLeague, qualifyTeamsForSouthAmerica, SA_LEAGUE_SLOTS } from '../../game/southAmericanCompetitions';
 import { initializeSACompetitions } from '../../game/southAmericanSeason';
 import { getCupTeams, generateCupBracket } from '../../game/cupSystem';
-import { Calendar, Plane, Home, Swords, Sparkles, ChevronRight, Lock, Map, ClipboardList, Trophy, Building2, Users, DollarSign, Star } from 'lucide-react';
+import { Calendar, Plane, Home, Sparkles, ChevronRight, Lock, Map, ClipboardList, Trophy, Building2, Users, DollarSign, Star } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
 import WorldMap from './WorldMap';
 import './TeamSelection.scss';
@@ -88,7 +92,14 @@ const SOUTH_AMERICAN_COUNTRIES = [
   { id: 'venezuela', name: 'Venezuela', flag: '🇻🇪', leagues: ['venezuelaPrimera'] },
 ];
 
-const COUNTRIES = [...EUROPEAN_COUNTRIES, ...SOUTH_AMERICAN_COUNTRIES];
+const REST_OF_WORLD_COUNTRIES = [
+  { id: 'usa', name: 'Estados Unidos', flag: '🇺🇸', leagues: ['mls'] },
+  { id: 'saudiArabia', name: 'Arabia Saudí', flag: '🇸🇦', leagues: ['saudiPro'] },
+  { id: 'mexico', name: 'México', flag: '🇲🇽', leagues: ['ligaMX'] },
+  { id: 'japan', name: 'Japón', flag: '🇯🇵', leagues: ['jLeague'] },
+];
+
+const COUNTRIES = [...EUROPEAN_COUNTRIES, ...SOUTH_AMERICAN_COUNTRIES, ...REST_OF_WORLD_COUNTRIES];
 
 // Función helper para obtener equipos de una liga
 function getLeagueTeams(leagueId) {
@@ -127,6 +138,11 @@ function getLeagueTeams(leagueId) {
     case 'peruLiga1': return getPeruTeams();
     case 'boliviaPrimera': return getBoliviaTeams();
     case 'venezuelaPrimera': return getVenezuelaTeams();
+    // Rest of World
+    case 'mls': return getMLSTeams();
+    case 'saudiPro': return getSaudiTeams();
+    case 'ligaMX': return getLigaMXTeams();
+    case 'jLeague': return getJLeagueTeams();
     default: return [];
   }
 }
@@ -175,6 +191,11 @@ const LEAGUE_NAMES = {
   peruLiga1: 'Liga 1',
   boliviaPrimera: 'División Profesional',
   venezuelaPrimera: 'Liga FUTVE',
+  // Rest of World
+  mls: 'Major League Soccer',
+  saudiPro: 'Saudi Pro League',
+  ligaMX: 'Liga MX',
+  jLeague: 'J1 League',
 };
 
 // Ligas que tienen grupos
@@ -361,7 +382,9 @@ export default function TeamSelection() {
     // South America
     ...getArgentinaTeams(), ...getBrasileiraoTeams(), ...getColombiaTeams(),
     ...getChileTeams(), ...getUruguayTeams(), ...getEcuadorTeams(),
-    ...getParaguayTeams(), ...getPeruTeams(), ...getBoliviaTeams(), ...getVenezuelaTeams()
+    ...getParaguayTeams(), ...getPeruTeams(), ...getBoliviaTeams(), ...getVenezuelaTeams(),
+    // Rest of World
+    ...getMLSTeams(), ...getSaudiTeams(), ...getLigaMXTeams(), ...getJLeagueTeams()
   ];
 
   const handleShowPreseason = () => {
@@ -450,6 +473,11 @@ export default function TeamSelection() {
       { id: 'peruLiga1', getter: getPeruTeams },
       { id: 'boliviaPrimera', getter: getBoliviaTeams },
       { id: 'venezuelaPrimera', getter: getVenezuelaTeams },
+      // Rest of World
+      { id: 'mls', getter: getMLSTeams },
+      { id: 'saudiPro', getter: getSaudiTeams },
+      { id: 'ligaMX', getter: getLigaMXTeams },
+      { id: 'jLeague', getter: getJLeagueTeams },
     ];
     
     const allLeagueTeamsWithData = [];
@@ -1130,62 +1158,48 @@ export default function TeamSelection() {
               <Calendar size={32} className="header-icon" />
               <div>
                 <h1>Pretemporada {selectedTeam?.name}</h1>
-                <p>Elige tu plan de preparación antes de comenzar la liga</p>
+                <p>Elige tu paquete de amistosos</p>
               </div>
             </div>
             
-            <p className="preseason-intro">
-              Selecciona uno de los siguientes paquetes de amistosos. 
-              El último partido siempre será en casa como presentación del equipo.
-            </p>
-            
             <div className="preseason-options">
-              {preseasonOptions.map(option => (
-                <div 
-                  key={option.id}
-                  className={`preseason-card ${selectedPreseason?.id === option.id ? 'selected' : ''}`}
-                  onClick={() => setSelectedPreseason(option)}
-                >
-                  <div className="card-header">
-                    {option.id === 'prestige' && <Plane size={24} />}
-                    {option.id === 'balanced' && <Swords size={24} />}
-                    {option.id === 'regional' && <Home size={24} />}
-                    <h3>{option.name}</h3>
-                  </div>
-                  
-                  <p className="card-description">{option.description}</p>
-                  
-                  <div className="card-details">
-                    <span className={`difficulty difficulty--${option.difficulty}`}>
-                      Dificultad: {option.difficulty === 'high' ? 'Alta' : option.difficulty === 'medium' ? 'Media' : 'Baja'}
-                    </span>
-                    <span className="earnings">
-                      Ingresos potenciales: {option.potentialEarnings}
-                    </span>
-                  </div>
-                  
-                  <div className="matches-preview">
-                    <h4>Rivales:</h4>
-                    <ul>
-                      {option.matches.map((match, idx) => (
-                        <li key={idx}>
-                          <span className="match-location">
-                            {match.isHome ? <Home size={14} /> : <Plane size={14} />}
-                          </span>
-                          <span className="opponent-name">{match.opponent?.name || 'TBD'}</span>
-                          <span className="opponent-ovr">{match.opponent?.reputation || '??'} OVR</span>
-                          {match.isPresentationMatch && (
-                            <span className="presentation-badge">
-                              <Sparkles size={12} /> Presentación
+              {preseasonOptions.map(option => {
+                const avgOvr = option.matches.length > 0
+                  ? Math.round(option.matches.reduce((s, m) => s + (m.opponent?.reputation || 0), 0) / option.matches.length)
+                  : 0;
+                return (
+                  <div 
+                    key={option.id}
+                    className={`preseason-card ${selectedPreseason?.id === option.id ? 'selected' : ''}`}
+                    onClick={() => setSelectedPreseason(option)}
+                  >
+                    <div className="card-header">
+                      <FootballIcon size={20} />
+                      <h3>{option.name}</h3>
+                      <span className="avg-ovr">Media: {avgOvr} OVR</span>
+                    </div>
+                    
+                    <div className="matches-preview">
+                      <ul>
+                        {option.matches.map((match, idx) => (
+                          <li key={idx}>
+                            <span className="match-location">
+                              {match.isHome ? <Home size={14} /> : <Plane size={14} />}
                             </span>
-                          )}
-                        </li>
-                      ))}
-                    </ul>
+                            <span className="opponent-name">{match.opponent?.name || 'TBD'}</span>
+                            <span className="opponent-ovr">{match.opponent?.reputation || '??'} OVR</span>
+                            {match.isPresentationMatch && (
+                              <span className="presentation-badge">
+                                <Sparkles size={12} /> Presentación
+                              </span>
+                            )}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-                  
-                </div>
-              ))}
+                );
+              })}
             </div>
             
             <div className="preseason-actions">

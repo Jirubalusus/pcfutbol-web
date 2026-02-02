@@ -207,7 +207,7 @@ $pcf-text: #bdc3c7;
 .map-selection__row {
   flex: 1;
   display: grid;
-  grid-template-columns: 3fr 2fr;
+  grid-template-columns: 1fr 1fr;
   min-height: 0;
   overflow: hidden;
 
@@ -233,6 +233,15 @@ $pcf-text: #bdc3c7;
   @media (max-width: 900px) {
     padding: 0.5rem;
     min-height: 300px;
+  }
+
+  // On mobile, WorldMap returns null when country is selected → collapse
+  @media (max-width: 768px) {
+    min-height: 0;
+    &:empty {
+      display: none;
+      padding: 0;
+    }
   }
 }
 
@@ -1235,35 +1244,14 @@ $pcf-text: #bdc3c7;
     gap: 12px;
     margin-bottom: 12px;
     
-    svg { color: #0a84ff; }
+    svg { color: #0a84ff; flex-shrink: 0; }
     h3 { color: #fff; font-size: 1.1rem; margin: 0; }
-  }
-  
-  .card-description {
-    color: #8e8e93;
-    font-size: 0.85rem;
-    margin-bottom: 16px;
-    line-height: 1.4;
-  }
-  
-  .card-details {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 16px;
-    
-    .difficulty {
+    .avg-ovr {
+      margin-left: auto;
       font-size: 0.8rem;
-      padding: 4px 10px;
-      border-radius: 12px;
-      width: fit-content;
-      
-      &--high { background: rgba(255, 69, 58, 0.2); color: #ff453a; }
-      &--medium { background: rgba(255, 159, 10, 0.2); color: #ff9f0a; }
-      &--low { background: rgba(48, 209, 88, 0.2); color: #30d158; }
+      color: #8e8e93;
+      white-space: nowrap;
     }
-    
-    .earnings { font-size: 0.85rem; color: #30d158; }
   }
   
   .matches-preview {
@@ -1362,6 +1350,18 @@ $pcf-text: #bdc3c7;
     }
     
     &:disabled { opacity: 0.5; cursor: not-allowed; }
+  }
+  
+  // Sticky en móvil
+  @media (max-width: 768px) {
+    position: sticky;
+    bottom: 0;
+    background: linear-gradient(to top, #0a1628 70%, transparent);
+    padding: 16px 0 8px;
+    margin: 0 -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    z-index: 10;
   }
 }
 

@@ -6,6 +6,16 @@ import './ManagerFired.scss';
 export default function ManagerFired() {
   const { state, dispatch } = useGame();
   
+  // In contrarreloj mode, redirect to ContrarrelojEnd
+  if (state.gameMode === 'contrarreloj') {
+    if (!state.contrarrelojData?.finished) {
+      dispatch({ type: 'CONTRARRELOJ_LOSE', payload: { reason: 'fired' } });
+    } else {
+      dispatch({ type: 'SET_SCREEN', payload: 'contrarreloj_end' });
+    }
+    return null;
+  }
+  
   const handleBackToMenu = () => {
     dispatch({ type: 'RESET_GAME' });
     dispatch({ type: 'SET_SCREEN', payload: 'main_menu' });

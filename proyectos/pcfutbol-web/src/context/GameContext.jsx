@@ -173,6 +173,10 @@ const initialState = {
   managerRating: 50,
   jobOffers: [],
   
+  // Game Mode
+  gameMode: 'career', // 'career' | 'contrarreloj'
+  contrarrelojData: null, // { seasonsPlayed, trophies, startTeam, startLeague, won, finished, loseReason, wonCompetition }
+  
   // UI State
   currentScreen: 'main_menu',
   
@@ -184,8 +188,34 @@ const initialState = {
 
 function gameReducer(state, action) {
   switch (action.type) {
-    case 'LOAD_SAVE':
-      return { ...state, ...action.payload, loaded: true };
+    case 'LOAD_SAVE': {
+      // Firestore can convert arrays to objects with numeric keys.
+      // Sanitize critical array fields back to proper arrays.
+      const _p = action.payload || {};
+      const _toArr = (v) => {
+        if (Array.isArray(v)) return v;
+        if (v && typeof v === 'object' && !Array.isArray(v)) {
+          // Firestore object-with-numeric-keys → array
+          const keys = Object.keys(v);
+          if (keys.length > 0 && keys.every(k => /^\d+$/.test(k))) {
+            return keys.sort((a, b) => +a - +b).map(k => v[k]);
+          }
+        }
+        return v;  // null/undefined/etc. pass through
+      };
+      const sanitized = { ..._p };
+      // Array fields that Firestore might mangle
+      ['leagueTable', 'fixtures', 'results', 'messages', 'transferOffers', 'playerMarket',
+       'freeAgents', 'seasonObjectives', 'jobOffers', 'blockedPlayers', 'activeLoans',
+       'loanHistory', 'incomingLoanOffers', 'convocados', 'preseasonMatches'].forEach(key => {
+        if (key in sanitized) sanitized[key] = _toArr(sanitized[key]) || [];
+      });
+      // Sanitize team.players
+      if (sanitized.team && sanitized.team.players) {
+        sanitized.team = { ...sanitized.team, players: _toArr(sanitized.team.players) || [] };
+      }
+      return { ...state, ...sanitized, loaded: true };
+    }
     
     case 'NEW_GAME': {
       // Obtener estadio real del equipo
@@ -213,7 +243,7 @@ function gameReducer(state, action) {
           ...player,
           role: player.role || assignRole(player),
           contractYears: player.contractYears ?? generateContract(player.age || 25),
-          salary: generateSalary(player, leagueTier)
+          salary: generateSalary(player, leagueId || leagueTier)
         }))
       };
       
@@ -223,9 +253,24 @@ function gameReducer(state, action) {
         initialTracker[p.name] = { consecutivePlayed: 0, weeksSincePlay: 3 }; // Start as "rested"
       });
       
+      // Contrarreloj mode support
+      const incomingGameMode = action.payload.gameMode || 'career';
+      const contrarrelojInit = incomingGameMode === 'contrarreloj' ? {
+        seasonsPlayed: 1,
+        trophies: [],
+        startTeam: { id: action.payload.teamId, name: action.payload.team?.name },
+        startLeague: leagueId,
+        won: false,
+        finished: false,
+        loseReason: null,
+        wonCompetition: null
+      } : null;
+      
       return { 
         ...initialState, 
         gameStarted: true,
+        gameMode: incomingGameMode,
+        contrarrelojData: contrarrelojInit,
         teamId: action.payload.teamId,
         team: teamWithRoles,
         leagueId: leagueId,
@@ -334,25 +379,32 @@ function gameReducer(state, action) {
       const { events, playerTeamSide, cleanSheet } = action.payload;
       const currentStats = { ...state.playerSeasonStats };
       
+      // Helper: normalize player from events (V2 returns {name}, V1 returns string)
+      const _gpn = (p) => typeof p === 'object' ? (p?.name || 'Desconocido') : (p || 'Desconocido');
+      const _initStat = () => ({ goals: 0, assists: 0, cleanSheets: 0, matchesPlayed: 0, yellowCards: 0, redCards: 0, motm: 0 });
+      
       // Count goals and assists from match events
       events.forEach(event => {
         if (event.type === 'goal' && event.team === playerTeamSide) {
-          const scorerName = event.player;
-          if (!currentStats[scorerName]) currentStats[scorerName] = { goals: 0, assists: 0, cleanSheets: 0, matchesPlayed: 0, yellowCards: 0, redCards: 0, motm: 0 };
+          const scorerName = _gpn(event.player);
+          if (!currentStats[scorerName]) currentStats[scorerName] = _initStat();
           currentStats[scorerName].goals++;
           
           if (event.assist) {
-            if (!currentStats[event.assist]) currentStats[event.assist] = { goals: 0, assists: 0, cleanSheets: 0, matchesPlayed: 0, yellowCards: 0, redCards: 0, motm: 0 };
-            currentStats[event.assist].assists++;
+            const assistName = _gpn(event.assist);
+            if (!currentStats[assistName]) currentStats[assistName] = _initStat();
+            currentStats[assistName].assists++;
           }
         }
         if (event.type === 'yellow_card' && event.team === playerTeamSide) {
-          if (!currentStats[event.player]) currentStats[event.player] = { goals: 0, assists: 0, cleanSheets: 0, matchesPlayed: 0, yellowCards: 0, redCards: 0, motm: 0 };
-          currentStats[event.player].yellowCards++;
+          const name = _gpn(event.player);
+          if (!currentStats[name]) currentStats[name] = _initStat();
+          currentStats[name].yellowCards++;
         }
         if (event.type === 'red_card' && event.team === playerTeamSide) {
-          if (!currentStats[event.player]) currentStats[event.player] = { goals: 0, assists: 0, cleanSheets: 0, matchesPlayed: 0, yellowCards: 0, redCards: 0, motm: 0 };
-          currentStats[event.player].redCards++;
+          const name = _gpn(event.player);
+          if (!currentStats[name]) currentStats[name] = _initStat();
+          currentStats[name].redCards++;
         }
       });
       
@@ -601,7 +653,12 @@ function gameReducer(state, action) {
         matchTracker: Object.fromEntries(
           (finalPlayers || []).map(p => [p.name, { consecutivePlayed: 0, weeksSincePlay: 3 }])
         ),
-        rejectedTransfers: {}
+        rejectedTransfers: {},
+        // Contrarreloj: increment seasons played
+        contrarrelojData: state.contrarrelojData ? {
+          ...state.contrarrelojData,
+          seasonsPlayed: (state.contrarrelojData.seasonsPlayed || 1) + 1
+        } : null
       };
     }
     
@@ -641,16 +698,16 @@ function gameReducer(state, action) {
       const autoSimPendingMatch = (pm, competitions, recordLeague, recordKnockout, advancePhase, teamId) => {
         const compState = competitions?.competitions?.[pm.competitionId];
         if (!compState) return competitions;
-        const homeRep = pm.homeTeam?.reputation || 70;
-        const awayRep = pm.awayTeam?.reputation || 70;
+        const homeRep = pm.homeTeam?.reputation || pm.team1?.reputation || 70;
+        const awayRep = pm.awayTeam?.reputation || pm.team2?.reputation || 70;
         const diff = (homeRep + 5) - awayRep;
         const hExp = 1.2 + diff * 0.02;
         const aExp = 1.2 - diff * 0.02;
         const homeScore = Math.max(0, Math.round(hExp + (Math.random() * 2 - 1)));
         const awayScore = Math.max(0, Math.round(aExp + (Math.random() * 2 - 1)));
         const autoResult = {
-          homeTeamId: pm.homeTeamId || pm.homeTeam?.teamId,
-          awayTeamId: pm.awayTeamId || pm.awayTeam?.teamId,
+          homeTeamId: pm.homeTeamId || pm.homeTeam?.teamId || pm.team1?.teamId,
+          awayTeamId: pm.awayTeamId || pm.awayTeam?.teamId || pm.team2?.teamId,
           homeScore, awayScore, events: []
         };
         let updatedComp = pm.phase === 'league'
@@ -1255,13 +1312,43 @@ function gameReducer(state, action) {
         }
       }
 
+      // ============================================================
+      // CONTRARRELOJ: Check bankrupt condition
+      // ============================================================
+      const finalMoney = state.money + totalIncome - salaryExpenses;
+      let contrarrelojUpdate = state.contrarrelojData;
+      let contrarrelojScreenOverride = null;
+      
+      if (state.gameMode === 'contrarreloj' && contrarrelojUpdate && !contrarrelojUpdate.finished) {
+        // Bankrupt check
+        if (finalMoney < 0) {
+          contrarrelojUpdate = {
+            ...contrarrelojUpdate,
+            won: false,
+            finished: true,
+            loseReason: 'bankrupt'
+          };
+          contrarrelojScreenOverride = 'contrarreloj_end';
+        }
+        // Fired check
+        else if (managerEval.fired) {
+          contrarrelojUpdate = {
+            ...contrarrelojUpdate,
+            won: false,
+            finished: true,
+            loseReason: 'fired'
+          };
+          contrarrelojScreenOverride = 'contrarreloj_end';
+        }
+      }
+
       return { 
         ...state, 
         currentWeek: nextWeek,
         leagueTable: updatedLeagueTable,
         aperturaTable: updatedAperturaTable,
         currentTournament: updatedCurrentTournament,
-        money: state.money + totalIncome - salaryExpenses,
+        money: finalMoney,
         weeklyIncome: totalIncome,
         weeklyExpenses: salaryExpenses,
         team: state.team ? { ...state.team, players: updatedPlayers } : null,
@@ -1304,7 +1391,10 @@ function gameReducer(state, action) {
         rejectedTransfers: updatedRejected,
         // Cesiones
         activeLoans: updatedActiveLoans,
-        incomingLoanOffers: updatedIncomingLoanOffers
+        incomingLoanOffers: updatedIncomingLoanOffers,
+        // Contrarreloj
+        contrarrelojData: contrarrelojUpdate,
+        ...(contrarrelojScreenOverride ? { currentScreen: contrarrelojScreenOverride } : {})
       };
     }
     
@@ -1795,6 +1885,7 @@ function gameReducer(state, action) {
       const cards = action.payload.cards || [];
       if (cards.length === 0) return state;
       
+      const newlySuspendedYellow = new Set();
       const updatedPlayers = state.team.players.map(p => {
         const cardCount = cards.filter(c => c.playerName === p.name).length;
         if (cardCount === 0) return p;
@@ -1803,6 +1894,7 @@ function gameReducer(state, action) {
         
         if (newYellows >= 5) {
           // 5 amarillas acumuladas = 1 partido de sanción, reset contador
+          newlySuspendedYellow.add(p.name);
           return { 
             ...p, 
             yellowCards: 0, 
@@ -1814,9 +1906,21 @@ function gameReducer(state, action) {
         return { ...p, yellowCards: newYellows };
       });
       
+      // Auto-sacar del lineup si se sancionó por acumulación
+      let lineupYellow = state.lineup || {};
+      if (newlySuspendedYellow.size > 0) {
+        lineupYellow = { ...lineupYellow };
+        Object.keys(lineupYellow).forEach(slot => {
+          if (lineupYellow[slot] && newlySuspendedYellow.has(lineupYellow[slot].name)) {
+            delete lineupYellow[slot];
+          }
+        });
+      }
+      
       return {
         ...state,
-        team: { ...state.team, players: updatedPlayers }
+        team: { ...state.team, players: updatedPlayers },
+        lineup: lineupYellow
       };
     }
 
@@ -1825,6 +1929,8 @@ function gameReducer(state, action) {
       // Doble amarilla = 1 partido, Roja directa = 2 partidos
       const redCards = action.payload.cards || [];
       if (redCards.length === 0) return state;
+      
+      const suspendedNames_red = new Set(redCards.map(c => c.playerName));
       
       const updatedPlayers = state.team.players.map(p => {
         const card = redCards.find(c => c.playerName === p.name);
@@ -1841,9 +1947,19 @@ function gameReducer(state, action) {
         };
       });
       
+      // Auto-sacar del lineup a los recién sancionados
+      const currentLineup_red = state.lineup || {};
+      const cleanedLineup_red = { ...currentLineup_red };
+      Object.keys(cleanedLineup_red).forEach(slot => {
+        if (cleanedLineup_red[slot] && suspendedNames_red.has(cleanedLineup_red[slot].name)) {
+          delete cleanedLineup_red[slot];
+        }
+      });
+      
       return {
         ...state,
-        team: { ...state.team, players: updatedPlayers }
+        team: { ...state.team, players: updatedPlayers },
+        lineup: cleanedLineup_red
       };
     }
 
@@ -2241,12 +2357,49 @@ function gameReducer(state, action) {
         date: `Semana ${state.currentWeek}`
       }));
 
+      // ── CONTRARRELOJ: Check European competition wins ──
+      let contrarrelojWinEu = {};
+      if (state.gameMode === 'contrarreloj' && state.contrarrelojData && !state.contrarrelojData.finished) {
+        if (finalComp.phase === 'completed' && finalComp.finalResult?.winner?.teamId === state.teamId) {
+          if (competitionId === 'championsLeague') {
+            // WIN CONDITION: Champions League won!
+            const existingTrophies = [...(state.contrarrelojData.trophies || []), {
+              type: 'champions', season: state.currentSeason,
+              name: finalComp.config?.name || 'Champions League'
+            }];
+            contrarrelojWinEu = {
+              contrarrelojData: {
+                ...state.contrarrelojData,
+                trophies: existingTrophies,
+                won: true,
+                finished: true,
+                wonCompetition: 'champions'
+              },
+              currentScreen: 'contrarreloj_end'
+            };
+          } else {
+            // Europa League / Conference League — record trophy but don't win contrarreloj
+            const trophyType = competitionId === 'europaLeague' ? 'europaLeague' : 'conference';
+            contrarrelojWinEu = {
+              contrarrelojData: {
+                ...state.contrarrelojData,
+                trophies: [...(state.contrarrelojData.trophies || []), {
+                  type: trophyType, season: state.currentSeason,
+                  name: finalComp.config?.name || competitionId
+                }]
+              }
+            };
+          }
+        }
+      }
+
       return {
         ...state,
         europeanCompetitions: updatedEuropean,
         pendingEuropeanMatch: newPendingMatch,
         money: state.money + newPrize,
-        messages: [...fmtAdvanceMessages, ...prizeMessages, ...state.messages].slice(0, 50)
+        messages: [...fmtAdvanceMessages, ...prizeMessages, ...state.messages].slice(0, 50),
+        ...contrarrelojWinEu
       };
     }
     
@@ -2377,12 +2530,48 @@ function gameReducer(state, action) {
         date: `Semana ${state.currentWeek}`
       }));
 
+      // ── CONTRARRELOJ: Check SA competition wins ──
+      let contrarrelojWinSA = {};
+      if (state.gameMode === 'contrarreloj' && state.contrarrelojData && !state.contrarrelojData.finished) {
+        if (finalComp.phase === 'completed' && finalComp.finalResult?.winner?.teamId === state.teamId) {
+          if (competitionId === 'copaLibertadores') {
+            // WIN CONDITION: Copa Libertadores won!
+            const existingTrophies = [...(state.contrarrelojData.trophies || []), {
+              type: 'libertadores', season: state.currentSeason,
+              name: finalComp.config?.name || 'Copa Libertadores'
+            }];
+            contrarrelojWinSA = {
+              contrarrelojData: {
+                ...state.contrarrelojData,
+                trophies: existingTrophies,
+                won: true,
+                finished: true,
+                wonCompetition: 'libertadores'
+              },
+              currentScreen: 'contrarreloj_end'
+            };
+          } else {
+            // Copa Sudamericana — record trophy but don't win contrarreloj
+            contrarrelojWinSA = {
+              contrarrelojData: {
+                ...state.contrarrelojData,
+                trophies: [...(state.contrarrelojData.trophies || []), {
+                  type: 'copaSudamericana', season: state.currentSeason,
+                  name: finalComp.config?.name || 'Copa Sudamericana'
+                }]
+              }
+            };
+          }
+        }
+      }
+
       return {
         ...state,
         saCompetitions: updatedSA,
         pendingSAMatch: newPendingMatch,
         money: state.money + newPrize,
-        messages: [...fmtAdvanceMessages, ...prizeMessages, ...state.messages].slice(0, 50)
+        messages: [...fmtAdvanceMessages, ...prizeMessages, ...state.messages].slice(0, 50),
+        ...contrarrelojWinSA
       };
     }
     
@@ -2447,6 +2636,7 @@ function gameReducer(state, action) {
       }
 
       // Comprobar si ganó la copa
+      let contrarrelojCupTrophy = {};
       if (updatedBracket.winner === state.teamId) {
         cupMessages.push({
           id: Date.now() + 1,
@@ -2455,13 +2645,27 @@ function gameReducer(state, action) {
           content: `¡${state.team.name} ha ganado la ${updatedBracket.config?.name || 'Copa'}!`,
           date: `Semana ${state.currentWeek}`
         });
+        // Contrarreloj: record cup trophy
+        if (state.gameMode === 'contrarreloj' && state.contrarrelojData) {
+          contrarrelojCupTrophy = {
+            contrarrelojData: {
+              ...state.contrarrelojData,
+              trophies: [...(state.contrarrelojData.trophies || []), {
+                type: 'cup',
+                season: state.currentSeason,
+                name: updatedBracket.config?.name || 'Copa Nacional'
+              }]
+            }
+          };
+        }
       }
 
       return {
         ...state,
         cupCompetition: updatedBracket,
         pendingCupMatch: null,
-        messages: [...cupMessages, ...state.messages].slice(0, 50)
+        messages: [...cupMessages, ...state.messages].slice(0, 50),
+        ...contrarrelojCupTrophy
       };
     }
     
@@ -2771,6 +2975,64 @@ function gameReducer(state, action) {
     case 'SAVE_APERTURA_TABLE':
       return { ...state, aperturaTable: action.payload };
     
+    // ============================================================
+    // CONTRARRELOJ MODE
+    // ============================================================
+    
+    case 'SET_GAME_MODE':
+      return { ...state, gameMode: action.payload };
+    
+    case 'CONTRARRELOJ_WIN': {
+      if (state.gameMode !== 'contrarreloj' || !state.contrarrelojData) return state;
+      return {
+        ...state,
+        contrarrelojData: {
+          ...state.contrarrelojData,
+          won: true,
+          finished: true,
+          wonCompetition: action.payload?.competition || 'champions'
+        },
+        currentScreen: 'contrarreloj_end'
+      };
+    }
+    
+    case 'CONTRARRELOJ_LOSE': {
+      if (state.gameMode !== 'contrarreloj' || !state.contrarrelojData) return state;
+      return {
+        ...state,
+        contrarrelojData: {
+          ...state.contrarrelojData,
+          won: false,
+          finished: true,
+          loseReason: action.payload?.reason || 'fired'
+        },
+        currentScreen: 'contrarreloj_end'
+      };
+    }
+    
+    case 'CONTRARRELOJ_ADD_TROPHY': {
+      if (!state.contrarrelojData) return state;
+      const trophy = action.payload; // { type, season, name }
+      return {
+        ...state,
+        contrarrelojData: {
+          ...state.contrarrelojData,
+          trophies: [...(state.contrarrelojData.trophies || []), trophy]
+        }
+      };
+    }
+    
+    case 'CONTRARRELOJ_INCREMENT_SEASON': {
+      if (!state.contrarrelojData) return state;
+      return {
+        ...state,
+        contrarrelojData: {
+          ...state.contrarrelojData,
+          seasonsPlayed: (state.contrarrelojData.seasonsPlayed || 1) + 1
+        }
+      };
+    }
+    
     case 'RESET_GAME':
       localStorage.removeItem('pcfutbol_saveId');
       localStorage.removeItem('pcfutbol_local_save');
@@ -2794,8 +3056,10 @@ export function GameProvider({ children }) {
   };
   
   // Save game - uses localStorage in dev mode, Firebase in production
+  // Contrarreloj mode does NOT save (ephemeral)
   const saveGame = async () => {
     if (!state.gameStarted) return;
+    if (state.gameMode === 'contrarreloj') return; // Don't save contrarreloj games
     
     const saveData = {
       ...state,

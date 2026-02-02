@@ -486,6 +486,28 @@
       }
     }
 
+    // Contrarreloj button
+    &--contrarreloj {
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.08), rgba(245, 166, 35, 0.04));
+      border-color: rgba(255, 215, 0, 0.2);
+
+      .icon-wrapper--contrarreloj {
+        background: linear-gradient(135deg, rgba(255, 215, 0, 0.25), rgba(245, 166, 35, 0.15));
+        color: #FFD700;
+      }
+
+      &:hover:not(:disabled) {
+        background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(245, 166, 35, 0.08));
+        border-color: #FFD700;
+        box-shadow: 0 8px 30px rgba(255, 215, 0, 0.12);
+
+        .icon-wrapper--contrarreloj {
+          background: linear-gradient(135deg, rgba(255, 215, 0, 0.35), rgba(245, 166, 35, 0.25));
+          box-shadow: 0 0 16px rgba(255, 215, 0, 0.2);
+        }
+      }
+    }
+
     // Small buttons
     &--small {
       flex: 1;

@@ -1,0 +1,260 @@
+.ranking {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  &__gradient {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+      linear-gradient(180deg, #0a0f1a 0%, #0d1420 100%);
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1.5rem;
+    padding-top: calc(env(safe-area-inset-top, 0px) + 1.5rem);
+
+    @media (max-width: 768px) {
+      padding: 1rem;
+      padding-top: calc(env(safe-area-inset-top, 0px) + 1rem);
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #8899aa;
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      min-height: 44px;
+      transition: all 0.2s;
+      flex-shrink: 0;
+      &:hover { background: rgba(255, 255, 255, 0.1); color: #fff; }
+    }
+
+    .header-title {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex: 1;
+
+      .trophy-icon {
+        color: #FFD700;
+        filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.4));
+        flex-shrink: 0;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+        font-weight: 900;
+        letter-spacing: 2px;
+        color: #FFD700;
+        margin: 0;
+      }
+      p {
+        color: #8899aa;
+        font-size: 0.8rem;
+        margin: 0;
+      }
+    }
+
+    .btn-clear {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: rgba(255, 69, 58, 0.1);
+      border: 1px solid rgba(255, 69, 58, 0.3);
+      color: #ff453a;
+      padding: 0.4rem 0.6rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.75rem;
+      min-height: 32px;
+      transition: all 0.2s;
+      &:hover { background: rgba(255, 69, 58, 0.2); }
+    }
+  }
+
+  // Empty state
+  &__empty {
+    text-align: center;
+    padding: 3rem 1rem;
+
+    .empty-icon {
+      color: #334455;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      color: #fff;
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      color: #8899aa;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-play {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(135deg, #FFD700, #F5A623);
+      border: none;
+      border-radius: 10px;
+      color: #000;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      min-height: 44px;
+      transition: all 0.2s;
+      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+      &:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4); }
+    }
+  }
+
+  // Table
+  &__table-wrapper {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 215, 0, 0.15);
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+
+    thead {
+      tr {
+        background: rgba(255, 215, 0, 0.08);
+      }
+      th {
+        padding: 0.75rem 0.6rem;
+        text-align: left;
+        color: #FFD700;
+        font-weight: 700;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        white-space: nowrap;
+        border-bottom: 1px solid rgba(255, 215, 0, 0.15);
+
+        svg { vertical-align: -2px; margin-right: 2px; }
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        transition: background 0.15s;
+
+        &:hover { background: rgba(255, 215, 0, 0.03); }
+
+        &.top-1 { background: rgba(255, 215, 0, 0.06); }
+        &.top-2 { background: rgba(192, 192, 192, 0.04); }
+        &.top-3 { background: rgba(205, 127, 50, 0.04); }
+      }
+
+      td {
+        padding: 0.6rem;
+        color: #ccd6e0;
+        vertical-align: middle;
+      }
+    }
+
+    .col-pos {
+      width: 50px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      justify-content: center;
+
+      span { font-weight: 700; }
+    }
+
+    .col-team {
+      .team-name { display: block; color: #fff; font-weight: 600; }
+      .league-name { display: block; color: #667788; font-size: 0.75rem; }
+    }
+
+    .col-seasons {
+      text-align: center;
+      .seasons-value {
+        font-size: 1.2rem;
+        font-weight: 800;
+        color: #FFD700;
+      }
+    }
+
+    .col-trophies {
+      text-align: center;
+      .trophies-value {
+        font-weight: 700;
+        color: #fff;
+        margin-right: 0.3rem;
+      }
+      .trophies-detail {
+        .trophy-tag {
+          font-size: 0.8rem;
+          margin: 0 1px;
+        }
+      }
+    }
+
+    .col-comp {
+      .comp-badge {
+        display: inline-block;
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        white-space: nowrap;
+
+        &.champions {
+          background: rgba(0, 102, 255, 0.15);
+          color: #66aaff;
+          border: 1px solid rgba(0, 102, 255, 0.3);
+        }
+        &.libertadores {
+          background: rgba(255, 215, 0, 0.1);
+          color: #FFD700;
+          border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+      }
+    }
+
+    .col-date {
+      color: #667788;
+      font-size: 0.75rem;
+      white-space: nowrap;
+    }
+  }
+}

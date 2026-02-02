@@ -1,0 +1,4112 @@
+[
+  {
+    "id": "cf-america",
+    "name": "CF América",
+    "shortName": "AMÉ",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Estadio Azteca",
+    "stadiumCapacity": 81070,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Luis Malagón",
+        "position": "POR",
+        "age": 28,
+        "overall": 75,
+        "nationality": "México",
+        "value": 7000000
+      },
+      {
+        "name": "Fernando Tapia",
+        "position": "POR",
+        "age": 24,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2000000
+      },
+      {
+        "name": "Rodolfo Cota",
+        "position": "POR",
+        "age": 38,
+        "overall": 63,
+        "nationality": "México",
+        "value": 250000
+      },
+      {
+        "name": "Ramón Juárez",
+        "position": "DFC",
+        "age": 24,
+        "overall": 75,
+        "nationality": "México",
+        "value": 6000000
+      },
+      {
+        "name": "Israel Reyes",
+        "position": "DFC",
+        "age": 25,
+        "overall": 75,
+        "nationality": "México",
+        "value": 5000000
+      },
+      {
+        "name": "Sebastián Cáceres",
+        "position": "DFC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Uruguay",
+        "value": 4500000
+      },
+      {
+        "name": "Igor Lichnovsky",
+        "position": "DFC",
+        "age": 31,
+        "overall": 67,
+        "nationality": "Chile",
+        "value": 900000
+      },
+      {
+        "name": "Néstor Araújo",
+        "position": "DFC",
+        "age": 34,
+        "overall": 65,
+        "nationality": "México",
+        "value": 400000
+      },
+      {
+        "name": "Miguel Vázquez",
+        "position": "DFC",
+        "age": 21,
+        "overall": 63,
+        "nationality": "México",
+        "value": 300000
+      },
+      {
+        "name": "Ralph Orquin",
+        "position": "LTI",
+        "age": 22,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2500000
+      },
+      {
+        "name": "Cristián Borja",
+        "position": "LTI",
+        "age": 32,
+        "overall": 69,
+        "nationality": "Colombia",
+        "value": 1700000
+      },
+      {
+        "name": "Dagoberto Espinoza",
+        "position": "LTD",
+        "age": 21,
+        "overall": 72,
+        "nationality": "México",
+        "value": 3000000
+      },
+      {
+        "name": "Kevin Álvarez",
+        "position": "LTD",
+        "age": 27,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2500000
+      },
+      {
+        "name": "Aarón Mejía",
+        "position": "LTD",
+        "age": 24,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1800000
+      },
+      {
+        "name": "Alan Cervantes",
+        "position": "MCD",
+        "age": 28,
+        "overall": 75,
+        "nationality": "México",
+        "value": 5000000
+      },
+      {
+        "name": "Rodrigo Dourado",
+        "position": "MCD",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 2500000
+      },
+      {
+        "name": "Santiago Naveda",
+        "position": "MCD",
+        "age": 24,
+        "overall": 67,
+        "nationality": "México",
+        "value": 800000
+      },
+      {
+        "name": "Jonathan dos Santos",
+        "position": "MCD",
+        "age": 35,
+        "overall": 63,
+        "nationality": "México",
+        "value": 350000
+      },
+      {
+        "name": "Érick Sánchez",
+        "position": "MC",
+        "age": 26,
+        "overall": 75,
+        "nationality": "México",
+        "value": 6500000
+      },
+      {
+        "name": "Alexis Gutiérrez",
+        "position": "MCO",
+        "age": 25,
+        "overall": 73,
+        "nationality": "México",
+        "value": 4000000
+      },
+      {
+        "name": "Brian Rodríguez",
+        "position": "EI",
+        "age": 25,
+        "overall": 75,
+        "nationality": "Uruguay",
+        "value": 6500000
+      },
+      {
+        "name": "Isaías Violante",
+        "position": "EI",
+        "age": 22,
+        "overall": 73,
+        "nationality": "México",
+        "value": 4500000
+      },
+      {
+        "name": "Álex Zendejas",
+        "position": "ED",
+        "age": 27,
+        "overall": 77,
+        "nationality": "Estados Unidos",
+        "value": 8500000
+      },
+      {
+        "name": "Víctor Dávila",
+        "position": "DC",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Chile",
+        "value": 4500000
+      },
+      {
+        "name": "Rodrigo Aguirre",
+        "position": "DC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Uruguay",
+        "value": 2500000
+      },
+      {
+        "name": "Henry Martin",
+        "position": "DC",
+        "age": 33,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2200000
+      },
+      {
+        "name": "José Raúl Zúñiga",
+        "position": "DC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Colombia",
+        "value": 2200000
+      },
+      {
+        "name": "Patricio Salas",
+        "position": "DC",
+        "age": 21,
+        "overall": 61,
+        "nationality": "México",
+        "value": 50000
+      }
+    ]
+  },
+  {
+    "id": "deportivo-toluca",
+    "name": "Deportivo Toluca",
+    "shortName": "DT",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Estadio Nemesio Díez Riega",
+    "stadiumCapacity": 31000,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Hugo González",
+        "position": "POR",
+        "age": 35,
+        "overall": 65,
+        "nationality": "México",
+        "value": 400000
+      },
+      {
+        "name": "Luis García",
+        "position": "POR",
+        "age": 33,
+        "overall": 63,
+        "nationality": "México",
+        "value": 350000
+      },
+      {
+        "name": "David Shrem",
+        "position": "POR",
+        "age": 20,
+        "overall": 59,
+        "nationality": "México",
+        "value": 0
+      },
+      {
+        "name": "Federico Pereira",
+        "position": "DFC",
+        "age": 25,
+        "overall": 75,
+        "nationality": "Uruguay",
+        "value": 6500000
+      },
+      {
+        "name": "Bruno Méndez",
+        "position": "DFC",
+        "age": 26,
+        "overall": 75,
+        "nationality": "Uruguay",
+        "value": 5000000
+      },
+      {
+        "name": "Everardo López",
+        "position": "DFC",
+        "age": 20,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1500000
+      },
+      {
+        "name": "Luan",
+        "position": "DFC",
+        "age": 32,
+        "overall": 69,
+        "nationality": "Brasil",
+        "value": 1300000
+      },
+      {
+        "name": "Antonio Briseño",
+        "position": "DFC",
+        "age": 31,
+        "overall": 67,
+        "nationality": "México",
+        "value": 900000
+      },
+      {
+        "name": "Jesús Gallardo",
+        "position": "LTI",
+        "age": 31,
+        "overall": 71,
+        "nationality": "México",
+        "value": 3000000
+      },
+      {
+        "name": "Mauricio Isaís",
+        "position": "LTI",
+        "age": 24,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1200000
+      },
+      {
+        "name": "Santiago Simón",
+        "position": "LTD",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Argentina",
+        "value": 4500000
+      },
+      {
+        "name": "Diego Barbosa",
+        "position": "LTD",
+        "age": 29,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2200000
+      },
+      {
+        "name": "Franco Romero",
+        "position": "MCD",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Argentina",
+        "value": 4000000
+      },
+      {
+        "name": "Fernando Arce",
+        "position": "MCD",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1200000
+      },
+      {
+        "name": "Víctor Arteaga",
+        "position": "MCD",
+        "age": 21,
+        "overall": 65,
+        "nationality": "México",
+        "value": 500000
+      },
+      {
+        "name": "Marcel Ruiz",
+        "position": "MC",
+        "age": 25,
+        "overall": 77,
+        "nationality": "México",
+        "value": 9000000
+      },
+      {
+        "name": "Frankie Amaya",
+        "position": "MC",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1800000
+      },
+      {
+        "name": "Jorge Díaz Price",
+        "position": "MC",
+        "age": 27,
+        "overall": 65,
+        "nationality": "México",
+        "value": 500000
+      },
+      {
+        "name": "Nicolás Castro",
+        "position": "MCO",
+        "age": 25,
+        "overall": 75,
+        "nationality": "Argentina",
+        "value": 5500000
+      },
+      {
+        "name": "Jesús Angulo",
+        "position": "MCO",
+        "age": 28,
+        "overall": 75,
+        "nationality": "México",
+        "value": 5000000
+      },
+      {
+        "name": "Sebastián Córdova",
+        "position": "MCO",
+        "age": 28,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2800000
+      },
+      {
+        "name": "Alexis Vega",
+        "position": "EI",
+        "age": 28,
+        "overall": 77,
+        "nationality": "México",
+        "value": 9000000
+      },
+      {
+        "name": "Pável Pérez",
+        "position": "EI",
+        "age": 27,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2000000
+      },
+      {
+        "name": "Oswaldo Virgen",
+        "position": "EI",
+        "age": 20,
+        "overall": 67,
+        "nationality": "México",
+        "value": 1000000
+      },
+      {
+        "name": "Alek Álvarez",
+        "position": "EI",
+        "age": 22,
+        "overall": 65,
+        "nationality": "México",
+        "value": 400000
+      },
+      {
+        "name": "Helinho",
+        "position": "ED",
+        "age": 25,
+        "overall": 75,
+        "nationality": "Brasil",
+        "value": 6500000
+      },
+      {
+        "name": "Paulinho",
+        "position": "DC",
+        "age": 33,
+        "overall": 75,
+        "nationality": "Portugal",
+        "value": 6000000
+      },
+      {
+        "name": "Franco Rossi",
+        "position": "DC",
+        "age": 23,
+        "overall": 67,
+        "nationality": "Uruguay",
+        "value": 700000
+      }
+    ]
+  },
+  {
+    "id": "cd-cruz-azul",
+    "name": "CD Cruz Azul",
+    "shortName": "CCA",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Estadio Olímpico Universitario",
+    "stadiumCapacity": 62700,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Kevin Mier",
+        "position": "POR",
+        "age": 25,
+        "overall": 75,
+        "nationality": "Colombia",
+        "value": 7000000
+      },
+      {
+        "name": "Andrés Gudiño",
+        "position": "POR",
+        "age": 29,
+        "overall": 67,
+        "nationality": "México",
+        "value": 1000000
+      },
+      {
+        "name": "Emmanuel Ochoa",
+        "position": "POR",
+        "age": 20,
+        "overall": 67,
+        "nationality": "México",
+        "value": 1000000
+      },
+      {
+        "name": "Jesús Orozco Chiquete",
+        "position": "DFC",
+        "age": 23,
+        "overall": 75,
+        "nationality": "México",
+        "value": 6000000
+      },
+      {
+        "name": "Willer Ditta",
+        "position": "DFC",
+        "age": 28,
+        "overall": 75,
+        "nationality": "Colombia",
+        "value": 5500000
+      },
+      {
+        "name": "Gonzalo Piovi",
+        "position": "DFC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Argentina",
+        "value": 2200000
+      },
+      {
+        "name": "Jorge Rodarte",
+        "position": "DFC",
+        "age": 21,
+        "overall": 59,
+        "nationality": "México",
+        "value": 25000
+      },
+      {
+        "name": "Omar Campos",
+        "position": "LTI",
+        "age": 23,
+        "overall": 73,
+        "nationality": "México",
+        "value": 4000000
+      },
+      {
+        "name": "Camilo Cándido",
+        "position": "LTI",
+        "age": 30,
+        "overall": 67,
+        "nationality": "Uruguay",
+        "value": 700000
+      },
+      {
+        "name": "Carlos Vargas",
+        "position": "LTI",
+        "age": 26,
+        "overall": 65,
+        "nationality": "México",
+        "value": 400000
+      },
+      {
+        "name": "Jorge Sánchez",
+        "position": "LTD",
+        "age": 28,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2200000
+      },
+      {
+        "name": "Érik Lira",
+        "position": "MCD",
+        "age": 25,
+        "overall": 77,
+        "nationality": "México",
+        "value": 9000000
+      },
+      {
+        "name": "Carlos Rodríguez",
+        "position": "MCD",
+        "age": 29,
+        "overall": 75,
+        "nationality": "México",
+        "value": 5500000
+      },
+      {
+        "name": "José Paradela",
+        "position": "MC",
+        "age": 27,
+        "overall": 75,
+        "nationality": "Argentina",
+        "value": 7000000
+      },
+      {
+        "name": "Jeremy Márquez",
+        "position": "MC",
+        "age": 25,
+        "overall": 73,
+        "nationality": "México",
+        "value": 4000000
+      },
+      {
+        "name": "Agustín Palavecino",
+        "position": "MC",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Argentina",
+        "value": 3800000
+      },
+      {
+        "name": "Andrés Montaño",
+        "position": "MC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2000000
+      },
+      {
+        "name": "Amaury García",
+        "position": "MC",
+        "age": 24,
+        "overall": 67,
+        "nationality": "México",
+        "value": 700000
+      },
+      {
+        "name": "Cristian Jiménez",
+        "position": "MC",
+        "age": 23,
+        "overall": 61,
+        "nationality": "México",
+        "value": 100000
+      },
+      {
+        "name": "Carlos Rotondi",
+        "position": "EI",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Argentina",
+        "value": 3000000
+      },
+      {
+        "name": "Amaury Morales",
+        "position": "EI",
+        "age": 20,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1500000
+      },
+      {
+        "name": "Luka Romero",
+        "position": "ED",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Argentina",
+        "value": 3200000
+      },
+      {
+        "name": "Gabriel Fernández",
+        "position": "DC",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Uruguay",
+        "value": 1800000
+      },
+      {
+        "name": "Mateo Levy",
+        "position": "DC",
+        "age": 19,
+        "overall": 67,
+        "nationality": "México",
+        "value": 750000
+      },
+      {
+        "name": "Bryan Gamboa",
+        "position": "DC",
+        "age": 23,
+        "overall": 59,
+        "nationality": "México",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": "tigres-uanl",
+    "name": "Tigres UANL",
+    "shortName": "TIG",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Estadio Universitario",
+    "stadiumCapacity": 41886,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Nahuel Guzmán",
+        "position": "POR",
+        "age": 39,
+        "overall": 63,
+        "nationality": "Argentina",
+        "value": 250000
+      },
+      {
+        "name": "Felipe Rodríguez",
+        "position": "POR",
+        "age": 36,
+        "overall": 61,
+        "nationality": "México",
+        "value": 125000
+      },
+      {
+        "name": "Antonio Carrera",
+        "position": "POR",
+        "age": 21,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 25000
+      },
+      {
+        "name": "Joaquim",
+        "position": "DFC",
+        "age": 27,
+        "overall": 75,
+        "nationality": "Brasil",
+        "value": 6000000
+      },
+      {
+        "name": "Jesús Angulo",
+        "position": "DFC",
+        "age": 28,
+        "overall": 73,
+        "nationality": "México",
+        "value": 4500000
+      },
+      {
+        "name": "Juan José Purata",
+        "position": "DFC",
+        "age": 28,
+        "overall": 73,
+        "nationality": "México",
+        "value": 4000000
+      },
+      {
+        "name": "Rafael Guerrero",
+        "position": "DFC",
+        "age": 23,
+        "overall": 65,
+        "nationality": "México",
+        "value": 600000
+      },
+      {
+        "name": "Francisco Reyes",
+        "position": "DFC",
+        "age": 27,
+        "overall": 65,
+        "nationality": "México",
+        "value": 450000
+      },
+      {
+        "name": "Marco Farfán",
+        "position": "LTI",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 2500000
+      },
+      {
+        "name": "Osvaldo Rodríguez",
+        "position": "LTI",
+        "age": 29,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1500000
+      },
+      {
+        "name": "Fernando Ordóñez",
+        "position": "LTI",
+        "age": 24,
+        "overall": 63,
+        "nationality": "México",
+        "value": 200000
+      },
+      {
+        "name": "Jesús Garza",
+        "position": "LTD",
+        "age": 25,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2500000
+      },
+      {
+        "name": "Vladímir Loroña",
+        "position": "LTD",
+        "age": 27,
+        "overall": 65,
+        "nationality": "México",
+        "value": 500000
+      },
+      {
+        "name": "Rômulo",
+        "position": "MCD",
+        "age": 25,
+        "overall": 75,
+        "nationality": "Brasil",
+        "value": 5000000
+      },
+      {
+        "name": "Fernando Gorriarán",
+        "position": "MC",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Uruguay",
+        "value": 4000000
+      },
+      {
+        "name": "Juan Pablo Vigón",
+        "position": "MC",
+        "age": 34,
+        "overall": 65,
+        "nationality": "México",
+        "value": 650000
+      },
+      {
+        "name": "Ángel Correa",
+        "position": "MCO",
+        "age": 30,
+        "overall": 77,
+        "nationality": "Argentina",
+        "value": 9000000
+      },
+      {
+        "name": "Juan Brunetta",
+        "position": "MCO",
+        "age": 28,
+        "overall": 75,
+        "nationality": "Argentina",
+        "value": 6500000
+      },
+      {
+        "name": "Marcelo Flores",
+        "position": "EI",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Canadá",
+        "value": 1200000
+      },
+      {
+        "name": "Diego Sánchez",
+        "position": "EI",
+        "age": 20,
+        "overall": 65,
+        "nationality": "México",
+        "value": 500000
+      },
+      {
+        "name": "Diego Lainez",
+        "position": "ED",
+        "age": 25,
+        "overall": 75,
+        "nationality": "México",
+        "value": 5500000
+      },
+      {
+        "name": "Ozziel Herrera",
+        "position": "ED",
+        "age": 24,
+        "overall": 75,
+        "nationality": "México",
+        "value": 5000000
+      },
+      {
+        "name": "Uriel Antuna",
+        "position": "ED",
+        "age": 28,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2800000
+      },
+      {
+        "name": "Nicolás Ibáñez",
+        "position": "DC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Argentina",
+        "value": 2200000
+      },
+      {
+        "name": "Iván López",
+        "position": "DC",
+        "age": 26,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1500000
+      },
+      {
+        "name": "André-Pierre Gignac",
+        "position": "DC",
+        "age": 40,
+        "overall": 63,
+        "nationality": "Francia",
+        "value": 350000
+      }
+    ]
+  },
+  {
+    "id": "deportivo-guadalajara",
+    "name": "Deportivo Guadalajara",
+    "shortName": "DG",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Estadio Akron",
+    "stadiumCapacity": 49580,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Raúl Rangel",
+        "position": "POR",
+        "age": 25,
+        "overall": 75,
+        "nationality": "México",
+        "value": 5500000
+      },
+      {
+        "name": "Eduardo García",
+        "position": "POR",
+        "age": 23,
+        "overall": 67,
+        "nationality": "México",
+        "value": 800000
+      },
+      {
+        "name": "Óscar Whalley",
+        "position": "POR",
+        "age": 31,
+        "overall": 63,
+        "nationality": "España",
+        "value": 350000
+      },
+      {
+        "name": "Gilberto Sepúlveda",
+        "position": "DFC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2800000
+      },
+      {
+        "name": "José Castillo",
+        "position": "DFC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2000000
+      },
+      {
+        "name": "Diego Campillo",
+        "position": "DFC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2000000
+      },
+      {
+        "name": "Miguel Tapias",
+        "position": "DFC",
+        "age": 29,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1800000
+      },
+      {
+        "name": "Bryan González",
+        "position": "LTI",
+        "age": 22,
+        "overall": 73,
+        "nationality": "México",
+        "value": 4500000
+      },
+      {
+        "name": "Leonardo Sepúlveda",
+        "position": "LTI",
+        "age": 24,
+        "overall": 65,
+        "nationality": "México",
+        "value": 400000
+      },
+      {
+        "name": "Richard Ledezma",
+        "position": "LTD",
+        "age": 25,
+        "overall": 73,
+        "nationality": "México",
+        "value": 4000000
+      },
+      {
+        "name": "Miguel Gómez",
+        "position": "LTD",
+        "age": 23,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1200000
+      },
+      {
+        "name": "Luis Romo",
+        "position": "MCD",
+        "age": 30,
+        "overall": 73,
+        "nationality": "México",
+        "value": 3500000
+      },
+      {
+        "name": "Omar Govea",
+        "position": "MCD",
+        "age": 30,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1800000
+      },
+      {
+        "name": "Fernando González",
+        "position": "MCD",
+        "age": 32,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1200000
+      },
+      {
+        "name": "Érick Gutiérrez",
+        "position": "MC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2500000
+      },
+      {
+        "name": "Daniel Aguirre",
+        "position": "MC",
+        "age": 26,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 500000
+      },
+      {
+        "name": "Efraín Álvarez",
+        "position": "MCO",
+        "age": 23,
+        "overall": 75,
+        "nationality": "México",
+        "value": 6000000
+      },
+      {
+        "name": "Brian Gutiérrez",
+        "position": "MCO",
+        "age": 22,
+        "overall": 75,
+        "nationality": "México",
+        "value": 5000000
+      },
+      {
+        "name": "Santiago Sandoval",
+        "position": "MCO",
+        "age": 18,
+        "overall": 67,
+        "nationality": "México",
+        "value": 1000000
+      },
+      {
+        "name": "Yael Padilla",
+        "position": "EI",
+        "age": 20,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1800000
+      },
+      {
+        "name": "Roberto Alvarado",
+        "position": "ED",
+        "age": 27,
+        "overall": 75,
+        "nationality": "México",
+        "value": 6000000
+      },
+      {
+        "name": "Hugo Camberos",
+        "position": "ED",
+        "age": 19,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2200000
+      },
+      {
+        "name": "Armando González",
+        "position": "DC",
+        "age": 22,
+        "overall": 75,
+        "nationality": "México",
+        "value": 7000000
+      },
+      {
+        "name": "Ricardo Marín",
+        "position": "DC",
+        "age": 27,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1800000
+      },
+      {
+        "name": "Alan Pulido",
+        "position": "DC",
+        "age": 34,
+        "overall": 67,
+        "nationality": "México",
+        "value": 800000
+      },
+      {
+        "name": "Ángel Sepúlveda",
+        "position": "DC",
+        "age": 34,
+        "overall": 65,
+        "nationality": "México",
+        "value": 600000
+      }
+    ]
+  },
+  {
+    "id": "cf-monterrey",
+    "name": "CF Monterrey",
+    "shortName": "MTY",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Estadio BBVA",
+    "stadiumCapacity": 53500,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Santiago Mele",
+        "position": "POR",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Uruguay",
+        "value": 2200000
+      },
+      {
+        "name": "Luis Cárdenas",
+        "position": "POR",
+        "age": 32,
+        "overall": 63,
+        "nationality": "México",
+        "value": 250000
+      },
+      {
+        "name": "Víctor Guzmán",
+        "position": "DFC",
+        "age": 23,
+        "overall": 75,
+        "nationality": "México",
+        "value": 5000000
+      },
+      {
+        "name": "Carlos Salcedo",
+        "position": "DFC",
+        "age": 32,
+        "overall": 67,
+        "nationality": "México",
+        "value": 1000000
+      },
+      {
+        "name": "Luis Sánchez",
+        "position": "DFC",
+        "age": 25,
+        "overall": 67,
+        "nationality": "México",
+        "value": 1000000
+      },
+      {
+        "name": "César Bustos",
+        "position": "DFC",
+        "age": 20,
+        "overall": 61,
+        "nationality": "México",
+        "value": 100000
+      },
+      {
+        "name": "Gerardo Arteaga",
+        "position": "LTI",
+        "age": 27,
+        "overall": 71,
+        "nationality": "México",
+        "value": 3200000
+      },
+      {
+        "name": "Alonso Aceves",
+        "position": "LTI",
+        "age": 24,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1800000
+      },
+      {
+        "name": "Luis Reyes",
+        "position": "LTI",
+        "age": 34,
+        "overall": 65,
+        "nationality": "México",
+        "value": 500000
+      },
+      {
+        "name": "Ricardo Chávez",
+        "position": "LTD",
+        "age": 31,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2800000
+      },
+      {
+        "name": "Érick Aguirre",
+        "position": "LTD",
+        "age": 28,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2200000
+      },
+      {
+        "name": "Stefan Medina",
+        "position": "LTD",
+        "age": 33,
+        "overall": 69,
+        "nationality": "Colombia",
+        "value": 1200000
+      },
+      {
+        "name": "Fidel Ambríz",
+        "position": "MCD",
+        "age": 22,
+        "overall": 73,
+        "nationality": "México",
+        "value": 4500000
+      },
+      {
+        "name": "Jorge Rodríguez",
+        "position": "MCD",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Argentina",
+        "value": 3200000
+      },
+      {
+        "name": "Óliver Torres",
+        "position": "MC",
+        "age": 31,
+        "overall": 73,
+        "nationality": "España",
+        "value": 3500000
+      },
+      {
+        "name": "Sergio Canales",
+        "position": "MCO",
+        "age": 34,
+        "overall": 77,
+        "nationality": "España",
+        "value": 5000000
+      },
+      {
+        "name": "Iker Fimbres",
+        "position": "MCO",
+        "age": 20,
+        "overall": 74,
+        "nationality": "México",
+        "value": 3800000
+      },
+      {
+        "name": "Lucas Ocampos",
+        "position": "EI",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Argentina",
+        "value": 4500000
+      },
+      {
+        "name": "Luca Orellano",
+        "position": "ED",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Argentina",
+        "value": 4500000
+      },
+      {
+        "name": "Jesús Corona",
+        "position": "ED",
+        "age": 33,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1800000
+      },
+      {
+        "name": "Michell Rodríguez",
+        "position": "ED",
+        "age": 25,
+        "overall": 67,
+        "nationality": "México",
+        "value": 1000000
+      },
+      {
+        "name": "Anthony Martial",
+        "position": "DC",
+        "age": 30,
+        "overall": 75,
+        "nationality": "Francia",
+        "value": 6000000
+      },
+      {
+        "name": "Roberto de la Rosa",
+        "position": "DC",
+        "age": 26,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1200000
+      },
+      {
+        "name": "Joaquín Moxica",
+        "position": "DC",
+        "age": 20,
+        "overall": 61,
+        "nationality": "México",
+        "value": 50000
+      }
+    ]
+  },
+  {
+    "id": "cf-pachuca",
+    "name": "CF Pachuca",
+    "shortName": "PAC",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Estadio Hidalgo",
+    "stadiumCapacity": 30000,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Carlos Moreno",
+        "position": "POR",
+        "age": 28,
+        "overall": 73,
+        "nationality": "México",
+        "value": 3500000
+      },
+      {
+        "name": "José Eulogio",
+        "position": "POR",
+        "age": 21,
+        "overall": 63,
+        "nationality": "México",
+        "value": 200000
+      },
+      {
+        "name": "Sergio Barreto",
+        "position": "DFC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Argentina",
+        "value": 2800000
+      },
+      {
+        "name": "Andrés Micolta",
+        "position": "DFC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Ecuador",
+        "value": 2000000
+      },
+      {
+        "name": "Eduardo Bauermann",
+        "position": "DFC",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Brasil",
+        "value": 1500000
+      },
+      {
+        "name": "Jorge Berlanga",
+        "position": "DFC",
+        "age": 22,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1500000
+      },
+      {
+        "name": "Pedro Martínez",
+        "position": "DFC",
+        "age": 24,
+        "overall": 61,
+        "nationality": "México",
+        "value": 50000
+      },
+      {
+        "name": "Alan Mozo",
+        "position": "LTD",
+        "age": 28,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2800000
+      },
+      {
+        "name": "Brian García",
+        "position": "LTD",
+        "age": 28,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2500000
+      },
+      {
+        "name": "Carlos Sánchez",
+        "position": "LTD",
+        "age": 23,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1500000
+      },
+      {
+        "name": "Luis Rodríguez",
+        "position": "LTD",
+        "age": 35,
+        "overall": 65,
+        "nationality": "México",
+        "value": 400000
+      },
+      {
+        "name": "Elías Montiel",
+        "position": "MCD",
+        "age": 20,
+        "overall": 76,
+        "nationality": "México",
+        "value": 5000000
+      },
+      {
+        "name": "Pedro Pedraza",
+        "position": "MCD",
+        "age": 25,
+        "overall": 71,
+        "nationality": "México",
+        "value": 3000000
+      },
+      {
+        "name": "Christian Rivera",
+        "position": "MCD",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Colombia",
+        "value": 1500000
+      },
+      {
+        "name": "William Carvalho",
+        "position": "MCD",
+        "age": 33,
+        "overall": 69,
+        "nationality": "Portugal",
+        "value": 1200000
+      },
+      {
+        "name": "Alán Bautista",
+        "position": "MCO",
+        "age": 23,
+        "overall": 71,
+        "nationality": "México",
+        "value": 3000000
+      },
+      {
+        "name": "Víctor Guzmán",
+        "position": "MCO",
+        "age": 30,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2300000
+      },
+      {
+        "name": "Sergio Hernández",
+        "position": "MCO",
+        "age": 23,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1200000
+      },
+      {
+        "name": "Israel Luna",
+        "position": "MCO",
+        "age": 23,
+        "overall": 67,
+        "nationality": "México",
+        "value": 800000
+      },
+      {
+        "name": "Oussama Idrissi",
+        "position": "EI",
+        "age": 29,
+        "overall": 75,
+        "nationality": "Marruecos",
+        "value": 6000000
+      },
+      {
+        "name": "Kenedy",
+        "position": "EI",
+        "age": 29,
+        "overall": 67,
+        "nationality": "Brasil",
+        "value": 700000
+      },
+      {
+        "name": "Alexéi Domínguez",
+        "position": "ED",
+        "age": 21,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2000000
+      },
+      {
+        "name": "Luis Quiñónes",
+        "position": "ED",
+        "age": 34,
+        "overall": 65,
+        "nationality": "Colombia",
+        "value": 400000
+      },
+      {
+        "name": "Jhonder Cádiz",
+        "position": "DC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Venezuela",
+        "value": 2800000
+      },
+      {
+        "name": "Enner Valencia",
+        "position": "DC",
+        "age": 36,
+        "overall": 69,
+        "nationality": "Ecuador",
+        "value": 1500000
+      },
+      {
+        "name": "Salomón Rondón",
+        "position": "DC",
+        "age": 36,
+        "overall": 65,
+        "nationality": "Venezuela",
+        "value": 400000
+      }
+    ]
+  },
+  {
+    "id": "club-tijuana",
+    "name": "Club Tijuana",
+    "shortName": "TIJ",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Estadio Caliente",
+    "stadiumCapacity": 29333,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Antonio Rodríguez",
+        "position": "POR",
+        "age": 33,
+        "overall": 65,
+        "nationality": "México",
+        "value": 600000
+      },
+      {
+        "name": "Salim Hernández",
+        "position": "POR",
+        "age": 27,
+        "overall": 65,
+        "nationality": "México",
+        "value": 500000
+      },
+      {
+        "name": "Rafael Inzunza",
+        "position": "DFC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2500000
+      },
+      {
+        "name": "Alejandro Gómez",
+        "position": "DFC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2500000
+      },
+      {
+        "name": "Jackson Porozo",
+        "position": "DFC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Ecuador",
+        "value": 2500000
+      },
+      {
+        "name": "Unai Bilbao",
+        "position": "DFC",
+        "age": 31,
+        "overall": 69,
+        "nationality": "España",
+        "value": 1800000
+      },
+      {
+        "name": "Óscar Manzanárez",
+        "position": "DFC",
+        "age": 30,
+        "overall": 67,
+        "nationality": "México",
+        "value": 700000
+      },
+      {
+        "name": "Alan Vega",
+        "position": "LTI",
+        "age": 25,
+        "overall": 67,
+        "nationality": "México",
+        "value": 1000000
+      },
+      {
+        "name": "Pablo Ortiz",
+        "position": "LTI",
+        "age": 23,
+        "overall": 67,
+        "nationality": "México",
+        "value": 700000
+      },
+      {
+        "name": "Ángel Zapata",
+        "position": "MCD",
+        "age": 24,
+        "overall": 67,
+        "nationality": "México",
+        "value": 1000000
+      },
+      {
+        "name": "Frank Boya",
+        "position": "MCD",
+        "age": 29,
+        "overall": 67,
+        "nationality": "Camerún",
+        "value": 1000000
+      },
+      {
+        "name": "Kevin Escamilla",
+        "position": "MCD",
+        "age": 31,
+        "overall": 67,
+        "nationality": "México",
+        "value": 700000
+      },
+      {
+        "name": "Ignacio Rivero",
+        "position": "MC",
+        "age": 33,
+        "overall": 69,
+        "nationality": "Uruguay",
+        "value": 1800000
+      },
+      {
+        "name": "Iván Tona",
+        "position": "MC",
+        "age": 25,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1500000
+      },
+      {
+        "name": "Ramiro Árciga",
+        "position": "MD",
+        "age": 21,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2500000
+      },
+      {
+        "name": "Gilberto Mora",
+        "position": "MCO",
+        "age": 17,
+        "overall": 78,
+        "nationality": "México",
+        "value": 10000000
+      },
+      {
+        "name": "Kevin Castañeda",
+        "position": "MCO",
+        "age": 26,
+        "overall": 71,
+        "nationality": "México",
+        "value": 3000000
+      },
+      {
+        "name": "Aldahir Pérez",
+        "position": "MCO",
+        "age": 21,
+        "overall": 61,
+        "nationality": "México",
+        "value": 100000
+      },
+      {
+        "name": "Adonis Preciado",
+        "position": "EI",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Ecuador",
+        "value": 1500000
+      },
+      {
+        "name": "Vitinho",
+        "position": "ED",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 2800000
+      },
+      {
+        "name": "Domingo Blanco",
+        "position": "ED",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Argentina",
+        "value": 1500000
+      },
+      {
+        "name": "Shamar Nicholson",
+        "position": "DC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Jamaica",
+        "value": 3200000
+      },
+      {
+        "name": "Josef Martínez",
+        "position": "DC",
+        "age": 32,
+        "overall": 71,
+        "nationality": "Venezuela",
+        "value": 2000000
+      },
+      {
+        "name": "Mourad El Ghezouani",
+        "position": "DC",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Marruecos",
+        "value": 1400000
+      },
+      {
+        "name": "Diego Abreu",
+        "position": "DC",
+        "age": 22,
+        "overall": 65,
+        "nationality": "Uruguay",
+        "value": 500000
+      }
+    ]
+  },
+  {
+    "id": "unam-pumas",
+    "name": "UNAM Pumas",
+    "shortName": "UP",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Estadio Olímpico Universitario",
+    "stadiumCapacity": 62700,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Keylor Navas",
+        "position": "POR",
+        "age": 39,
+        "overall": 67,
+        "nationality": "Costa Rica",
+        "value": 800000
+      },
+      {
+        "name": "Pablo Lara",
+        "position": "POR",
+        "age": 20,
+        "overall": 65,
+        "nationality": "México",
+        "value": 500000
+      },
+      {
+        "name": "Rodrigo Parra",
+        "position": "POR",
+        "age": 18,
+        "overall": 61,
+        "nationality": "México",
+        "value": 75000
+      },
+      {
+        "name": "Nathan Silva",
+        "position": "DFC",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Brasil",
+        "value": 3800000
+      },
+      {
+        "name": "Rubén Duarte",
+        "position": "DFC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "España",
+        "value": 2300000
+      },
+      {
+        "name": "Tony Leone",
+        "position": "DFC",
+        "age": 21,
+        "overall": 63,
+        "nationality": "México",
+        "value": 300000
+      },
+      {
+        "name": "Ángel Azuaje",
+        "position": "DFC",
+        "age": 21,
+        "overall": 61,
+        "nationality": "Venezuela",
+        "value": 100000
+      },
+      {
+        "name": "Álvaro Angulo",
+        "position": "LTI",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Colombia",
+        "value": 2800000
+      },
+      {
+        "name": "Pablo Bennevendo",
+        "position": "LTD",
+        "age": 26,
+        "overall": 71,
+        "nationality": "México",
+        "value": 3000000
+      },
+      {
+        "name": "Pablo Monroy",
+        "position": "LTD",
+        "age": 23,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1200000
+      },
+      {
+        "name": "Jesús Rivas",
+        "position": "LTD",
+        "age": 23,
+        "overall": 67,
+        "nationality": "México",
+        "value": 800000
+      },
+      {
+        "name": "José Caicedo",
+        "position": "MCD",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Colombia",
+        "value": 4000000
+      },
+      {
+        "name": "Santiago Trigos",
+        "position": "MCD",
+        "age": 24,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1200000
+      },
+      {
+        "name": "César Garza",
+        "position": "MCD",
+        "age": 20,
+        "overall": 65,
+        "nationality": "México",
+        "value": 400000
+      },
+      {
+        "name": "Adalberto Carrasquilla",
+        "position": "MC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Panamá",
+        "value": 3500000
+      },
+      {
+        "name": "Rodrigo López",
+        "position": "MC",
+        "age": 24,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1800000
+      },
+      {
+        "name": "Ulises Rivas",
+        "position": "MC",
+        "age": 30,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1800000
+      },
+      {
+        "name": "Pedro Vite",
+        "position": "MCO",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Ecuador",
+        "value": 4500000
+      },
+      {
+        "name": "Ángel Rico",
+        "position": "MCO",
+        "age": 21,
+        "overall": 65,
+        "nationality": "México",
+        "value": 600000
+      },
+      {
+        "name": "Jordán Carrillo",
+        "position": "EI",
+        "age": 24,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1300000
+      },
+      {
+        "name": "Leo Suárez",
+        "position": "ED",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Argentina",
+        "value": 1500000
+      },
+      {
+        "name": "Alan Medina",
+        "position": "ED",
+        "age": 28,
+        "overall": 67,
+        "nationality": "México",
+        "value": 800000
+      },
+      {
+        "name": "Robert Morales",
+        "position": "DC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Paraguay",
+        "value": 3000000
+      },
+      {
+        "name": "Guillermo Martínez",
+        "position": "DC",
+        "age": 30,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1800000
+      },
+      {
+        "name": "Juninho",
+        "position": "DC",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Brasil",
+        "value": 1500000
+      },
+      {
+        "name": "José Juan Macías",
+        "position": "DC",
+        "age": 26,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1200000
+      },
+      {
+        "name": "Santiago López",
+        "position": "DC",
+        "age": 20,
+        "overall": 61,
+        "nationality": "Canadá",
+        "value": 50000
+      }
+    ]
+  },
+  {
+    "id": "club-leon-fc",
+    "name": "Club León FC",
+    "shortName": "LEÓ",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Nou Camp",
+    "stadiumCapacity": 33943,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Óscar García",
+        "position": "POR",
+        "age": 22,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2500000
+      },
+      {
+        "name": "Jordan García",
+        "position": "POR",
+        "age": 20,
+        "overall": 69,
+        "nationality": "Colombia",
+        "value": 1200000
+      },
+      {
+        "name": "Alfonso Blanco",
+        "position": "POR",
+        "age": 38,
+        "overall": 61,
+        "nationality": "México",
+        "value": 100000
+      },
+      {
+        "name": "Óscar Jiménez",
+        "position": "POR",
+        "age": 37,
+        "overall": 61,
+        "nationality": "México",
+        "value": 50000
+      },
+      {
+        "name": "Stiven Barreiro",
+        "position": "DFC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Colombia",
+        "value": 2000000
+      },
+      {
+        "name": "Sebastián Vegas",
+        "position": "DFC",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Chile",
+        "value": 1500000
+      },
+      {
+        "name": "Valentín Gauthier",
+        "position": "DFC",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Uruguay",
+        "value": 1200000
+      },
+      {
+        "name": "Paul Bellón",
+        "position": "DFC",
+        "age": 28,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1200000
+      },
+      {
+        "name": "Salvador Reyes",
+        "position": "LTI",
+        "age": 27,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1500000
+      },
+      {
+        "name": "Óscar Villa",
+        "position": "LTI",
+        "age": 24,
+        "overall": 63,
+        "nationality": "México",
+        "value": 250000
+      },
+      {
+        "name": "Abraham Villegas",
+        "position": "LTI",
+        "age": 23,
+        "overall": 61,
+        "nationality": "México",
+        "value": 100000
+      },
+      {
+        "name": "Iván Moreno",
+        "position": "LTD",
+        "age": 28,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1800000
+      },
+      {
+        "name": "Bryan Colula",
+        "position": "LTD",
+        "age": 29,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1200000
+      },
+      {
+        "name": "David Ramírez",
+        "position": "LTD",
+        "age": 30,
+        "overall": 67,
+        "nationality": "México",
+        "value": 1000000
+      },
+      {
+        "name": "Paolo Medina",
+        "position": "LTD",
+        "age": 26,
+        "overall": 65,
+        "nationality": "México",
+        "value": 500000
+      },
+      {
+        "name": "Rodrigo Echeverría",
+        "position": "MCD",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Chile",
+        "value": 3000000
+      },
+      {
+        "name": "José Rodríguez",
+        "position": "MCD",
+        "age": 29,
+        "overall": 67,
+        "nationality": "México",
+        "value": 800000
+      },
+      {
+        "name": "Fernando Beltrán",
+        "position": "MC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "México",
+        "value": 3000000
+      },
+      {
+        "name": "Gonzalo Nápoli",
+        "position": "MC",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Uruguay",
+        "value": 1200000
+      },
+      {
+        "name": "Ángel Estrada",
+        "position": "MI",
+        "age": 23,
+        "overall": 67,
+        "nationality": "México",
+        "value": 800000
+      },
+      {
+        "name": "Daniel Arcila",
+        "position": "MCO",
+        "age": 23,
+        "overall": 65,
+        "nationality": "Colombia",
+        "value": 600000
+      },
+      {
+        "name": "Ismael Díaz",
+        "position": "EI",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Panamá",
+        "value": 1800000
+      },
+      {
+        "name": "Gael García",
+        "position": "EI",
+        "age": 21,
+        "overall": 65,
+        "nationality": "México",
+        "value": 500000
+      },
+      {
+        "name": "Juan Domínguez",
+        "position": "ED",
+        "age": 27,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2500000
+      },
+      {
+        "name": "Jordi Cortizo",
+        "position": "ED",
+        "age": 29,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2000000
+      },
+      {
+        "name": "Nicolás Vallejo",
+        "position": "ED",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Argentina",
+        "value": 1800000
+      },
+      {
+        "name": "Emilio Rodríguez",
+        "position": "ED",
+        "age": 22,
+        "overall": 67,
+        "nationality": "México",
+        "value": 1000000
+      },
+      {
+        "name": "Díber Cambindo",
+        "position": "DC",
+        "age": 29,
+        "overall": 75,
+        "nationality": "Colombia",
+        "value": 5500000
+      },
+      {
+        "name": "Alfonso Alvarado",
+        "position": "DC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2000000
+      },
+      {
+        "name": "Rogelio Funes Mori",
+        "position": "DC",
+        "age": 34,
+        "overall": 65,
+        "nationality": "México",
+        "value": 450000
+      }
+    ]
+  },
+  {
+    "id": "atletico-de-san-luis",
+    "name": "Atlético de San Luis",
+    "shortName": "ASL",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Estadio Alfonso Lastras Ramírez",
+    "stadiumCapacity": 27029,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Andrés Sánchez",
+        "position": "POR",
+        "age": 28,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2500000
+      },
+      {
+        "name": "César López",
+        "position": "POR",
+        "age": 25,
+        "overall": 65,
+        "nationality": "México",
+        "value": 500000
+      },
+      {
+        "name": "Gibrán Lajud",
+        "position": "POR",
+        "age": 32,
+        "overall": 65,
+        "nationality": "México",
+        "value": 400000
+      },
+      {
+        "name": "Diego Urtiaga",
+        "position": "POR",
+        "age": 27,
+        "overall": 63,
+        "nationality": "México",
+        "value": 200000
+      },
+      {
+        "name": "Eduardo Águila",
+        "position": "DFC",
+        "age": 23,
+        "overall": 73,
+        "nationality": "México",
+        "value": 4000000
+      },
+      {
+        "name": "Robson Bambu",
+        "position": "DFC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 2800000
+      },
+      {
+        "name": "Benjamín Galindo",
+        "position": "DFC",
+        "age": 26,
+        "overall": 67,
+        "nationality": "México",
+        "value": 800000
+      },
+      {
+        "name": "Juanpe",
+        "position": "DFC",
+        "age": 34,
+        "overall": 65,
+        "nationality": "España",
+        "value": 500000
+      },
+      {
+        "name": "Julio César Domínguez",
+        "position": "DFC",
+        "age": 38,
+        "overall": 63,
+        "nationality": "México",
+        "value": 300000
+      },
+      {
+        "name": "Juan Manuel Sanabria",
+        "position": "LTI",
+        "age": 25,
+        "overall": 75,
+        "nationality": "Uruguay",
+        "value": 5500000
+      },
+      {
+        "name": "Lucas Esteves",
+        "position": "LTI",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Brasil",
+        "value": 1800000
+      },
+      {
+        "name": "Aldo Cruz",
+        "position": "LTI",
+        "age": 28,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1200000
+      },
+      {
+        "name": "Román Torres",
+        "position": "LTD",
+        "age": 21,
+        "overall": 67,
+        "nationality": "México",
+        "value": 700000
+      },
+      {
+        "name": "Javier Suárez",
+        "position": "LTD",
+        "age": 19,
+        "overall": 65,
+        "nationality": "Venezuela",
+        "value": 500000
+      },
+      {
+        "name": "Roberto Meraz",
+        "position": "MCD",
+        "age": 26,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2000000
+      },
+      {
+        "name": "Kevin Ortega",
+        "position": "MCD",
+        "age": 24,
+        "overall": 61,
+        "nationality": "México",
+        "value": 75000
+      },
+      {
+        "name": "Sébastien Salles-Lamonge",
+        "position": "MC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Francia",
+        "value": 2500000
+      },
+      {
+        "name": "Miguel García",
+        "position": "MC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2200000
+      },
+      {
+        "name": "Jahaziel Marchand",
+        "position": "MC",
+        "age": 24,
+        "overall": 65,
+        "nationality": "México",
+        "value": 600000
+      },
+      {
+        "name": "Yan Phillipe",
+        "position": "MCO",
+        "age": 21,
+        "overall": 69,
+        "nationality": "Brasil",
+        "value": 1800000
+      },
+      {
+        "name": "Sebastián Pérez-Bouquet",
+        "position": "MCO",
+        "age": 22,
+        "overall": 67,
+        "nationality": "México",
+        "value": 1000000
+      },
+      {
+        "name": "Óscar Macías",
+        "position": "MCO",
+        "age": 27,
+        "overall": 67,
+        "nationality": "México",
+        "value": 900000
+      },
+      {
+        "name": "Jonantán Villal",
+        "position": "MCO",
+        "age": 21,
+        "overall": 63,
+        "nationality": "México",
+        "value": 350000
+      },
+      {
+        "name": "David Rodríguez",
+        "position": "MCO",
+        "age": 23,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 275000
+      },
+      {
+        "name": "Benjamín Galdames",
+        "position": "ED",
+        "age": 24,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2200000
+      },
+      {
+        "name": "Anderson Duarte",
+        "position": "ED",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Uruguay",
+        "value": 2000000
+      },
+      {
+        "name": "Fidel Barajas",
+        "position": "ED",
+        "age": 19,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1800000
+      },
+      {
+        "name": "João Pedro",
+        "position": "DC",
+        "age": 33,
+        "overall": 69,
+        "nationality": "Italia",
+        "value": 1500000
+      },
+      {
+        "name": "Santiago Muñóz",
+        "position": "DC",
+        "age": 23,
+        "overall": 67,
+        "nationality": "México",
+        "value": 1000000
+      },
+      {
+        "name": "Leonardo Flores",
+        "position": "DC",
+        "age": 22,
+        "overall": 65,
+        "nationality": "México",
+        "value": 400000
+      }
+    ]
+  },
+  {
+    "id": "club-necaxa",
+    "name": "Club Necaxa",
+    "shortName": "NEC",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Estadio Victoria",
+    "stadiumCapacity": 23851,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Ezequiel Unsain",
+        "position": "POR",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Argentina",
+        "value": 2500000
+      },
+      {
+        "name": "Luis Jiménez",
+        "position": "POR",
+        "age": 21,
+        "overall": 61,
+        "nationality": "México",
+        "value": 100000
+      },
+      {
+        "name": "Agustín Oliveros",
+        "position": "DFC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Uruguay",
+        "value": 2800000
+      },
+      {
+        "name": "Alexis Peña",
+        "position": "DFC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2800000
+      },
+      {
+        "name": "Alán Montes",
+        "position": "DFC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2500000
+      },
+      {
+        "name": "Raúl Martínez",
+        "position": "DFC",
+        "age": 22,
+        "overall": 67,
+        "nationality": "México",
+        "value": 800000
+      },
+      {
+        "name": "Francisco Méndez",
+        "position": "DFC",
+        "age": 20,
+        "overall": 63,
+        "nationality": "México",
+        "value": 150000
+      },
+      {
+        "name": "Cristian Calderón",
+        "position": "LTI",
+        "age": 28,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1800000
+      },
+      {
+        "name": "Franco Rossano",
+        "position": "LTI",
+        "age": 20,
+        "overall": 59,
+        "nationality": "México",
+        "value": 0
+      },
+      {
+        "name": "Emilio Lara",
+        "position": "LTD",
+        "age": 23,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1800000
+      },
+      {
+        "name": "Emilio Martínez",
+        "position": "LTD",
+        "age": 23,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1500000
+      },
+      {
+        "name": "Kevin Gutiérrez",
+        "position": "MCD",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Argentina",
+        "value": 3500000
+      },
+      {
+        "name": "Danny Leyva",
+        "position": "MCD",
+        "age": 22,
+        "overall": 67,
+        "nationality": "Estados Unidos",
+        "value": 1000000
+      },
+      {
+        "name": "Diego de Buen",
+        "position": "MCD",
+        "age": 34,
+        "overall": 65,
+        "nationality": "México",
+        "value": 400000
+      },
+      {
+        "name": "Agustín Almendra",
+        "position": "MC",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Argentina",
+        "value": 4000000
+      },
+      {
+        "name": "Lorenzo Faravelli",
+        "position": "MCO",
+        "age": 32,
+        "overall": 69,
+        "nationality": "Argentina",
+        "value": 1500000
+      },
+      {
+        "name": "Kevin Rosero",
+        "position": "ED",
+        "age": 27,
+        "overall": 67,
+        "nationality": "Colombia",
+        "value": 1000000
+      },
+      {
+        "name": "Julián Carranza",
+        "position": "DC",
+        "age": 25,
+        "overall": 75,
+        "nationality": "Argentina",
+        "value": 5000000
+      },
+      {
+        "name": "Tomás Badaloni",
+        "position": "DC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Argentina",
+        "value": 2000000
+      },
+      {
+        "name": "Ricardo Monreal",
+        "position": "DC",
+        "age": 24,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1500000
+      },
+      {
+        "name": "Rogelio Cortéz",
+        "position": "DC",
+        "age": 21,
+        "overall": 65,
+        "nationality": "México",
+        "value": 600000
+      }
+    ]
+  },
+  {
+    "id": "santos-laguna",
+    "name": "Santos Laguna",
+    "shortName": "SAN",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Estadio Territorio Santos Modelo Corona",
+    "stadiumCapacity": 29237,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Carlos Acevedo",
+        "position": "POR",
+        "age": 29,
+        "overall": 73,
+        "nationality": "México",
+        "value": 3500000
+      },
+      {
+        "name": "Héctor Holguín",
+        "position": "POR",
+        "age": 24,
+        "overall": 63,
+        "nationality": "México",
+        "value": 350000
+      },
+      {
+        "name": "Bruno Amione",
+        "position": "DFC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Argentina",
+        "value": 3000000
+      },
+      {
+        "name": "Kevin Balanta",
+        "position": "DFC",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Colombia",
+        "value": 1800000
+      },
+      {
+        "name": "Haret Ortega",
+        "position": "DFC",
+        "age": 25,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1200000
+      },
+      {
+        "name": "Efraín Orona",
+        "position": "DFC",
+        "age": 26,
+        "overall": 67,
+        "nationality": "México",
+        "value": 1000000
+      },
+      {
+        "name": "Édson Gutiérrez",
+        "position": "DFC",
+        "age": 30,
+        "overall": 65,
+        "nationality": "México",
+        "value": 600000
+      },
+      {
+        "name": "Geovanni Pérez",
+        "position": "DFC",
+        "age": 20,
+        "overall": 65,
+        "nationality": "México",
+        "value": 500000
+      },
+      {
+        "name": "Emmanuel Echeverría",
+        "position": "LTI",
+        "age": 22,
+        "overall": 67,
+        "nationality": "México",
+        "value": 1000000
+      },
+      {
+        "name": "José Abella",
+        "position": "LTD",
+        "age": 31,
+        "overall": 67,
+        "nationality": "México",
+        "value": 1000000
+      },
+      {
+        "name": "Kevin Picón",
+        "position": "LTD",
+        "age": 21,
+        "overall": 59,
+        "nationality": "México",
+        "value": 0
+      },
+      {
+        "name": "Aldo López",
+        "position": "MCD",
+        "age": 25,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1800000
+      },
+      {
+        "name": "Carlos Gruezo",
+        "position": "MCD",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Ecuador",
+        "value": 1500000
+      },
+      {
+        "name": "Salvador Mariscal",
+        "position": "MCD",
+        "age": 22,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1200000
+      },
+      {
+        "name": "Javier Güemez",
+        "position": "MCD",
+        "age": 34,
+        "overall": 67,
+        "nationality": "México",
+        "value": 700000
+      },
+      {
+        "name": "Nelson Cedillo",
+        "position": "MC",
+        "age": 18,
+        "overall": 59,
+        "nationality": "México",
+        "value": 0
+      },
+      {
+        "name": "Ezequiel Bullaude",
+        "position": "MCO",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Argentina",
+        "value": 2200000
+      },
+      {
+        "name": "Fran Villalba",
+        "position": "MCO",
+        "age": 27,
+        "overall": 69,
+        "nationality": "España",
+        "value": 1200000
+      },
+      {
+        "name": "Kevin Palacios",
+        "position": "EI",
+        "age": 26,
+        "overall": 67,
+        "nationality": "Colombia",
+        "value": 800000
+      },
+      {
+        "name": "Cristian Dájome",
+        "position": "EI",
+        "age": 32,
+        "overall": 67,
+        "nationality": "Colombia",
+        "value": 750000
+      },
+      {
+        "name": "Jair González",
+        "position": "EI",
+        "age": 23,
+        "overall": 63,
+        "nationality": "México",
+        "value": 350000
+      },
+      {
+        "name": "Ramiro Sordo",
+        "position": "ED",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Argentina",
+        "value": 2500000
+      },
+      {
+        "name": "Diego Medina",
+        "position": "ED",
+        "age": 24,
+        "overall": 67,
+        "nationality": "México",
+        "value": 1000000
+      },
+      {
+        "name": "Lucas Di Yorio",
+        "position": "DC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Argentina",
+        "value": 2000000
+      },
+      {
+        "name": "Jesús Ocejo",
+        "position": "DC",
+        "age": 27,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1800000
+      },
+      {
+        "name": "Choco Lozano",
+        "position": "DC",
+        "age": 32,
+        "overall": 67,
+        "nationality": "Honduras",
+        "value": 900000
+      },
+      {
+        "name": "Tahiel Jiménez",
+        "position": "DC",
+        "age": 20,
+        "overall": 67,
+        "nationality": "México",
+        "value": 750000
+      }
+    ]
+  },
+  {
+    "id": "fc-juarez",
+    "name": "FC Juárez",
+    "shortName": "JUA",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Estadio Olímpico Benito Juárez",
+    "stadiumCapacity": 22300,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Sebastián Jurado",
+        "position": "POR",
+        "age": 28,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1800000
+      },
+      {
+        "name": "Benny Díaz",
+        "position": "POR",
+        "age": 27,
+        "overall": 67,
+        "nationality": "Estados Unidos",
+        "value": 700000
+      },
+      {
+        "name": "Guillermo Ruiz",
+        "position": "POR",
+        "age": 22,
+        "overall": 59,
+        "nationality": "España",
+        "value": 0
+      },
+      {
+        "name": "Moisés Mosquera",
+        "position": "DFC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Colombia",
+        "value": 2200000
+      },
+      {
+        "name": "Jesús Murillo",
+        "position": "DFC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Colombia",
+        "value": 2000000
+      },
+      {
+        "name": "José Juan Manríquez",
+        "position": "DFC",
+        "age": 29,
+        "overall": 67,
+        "nationality": "México",
+        "value": 800000
+      },
+      {
+        "name": "Diego Ochoa",
+        "position": "DFC",
+        "age": 20,
+        "overall": 61,
+        "nationality": "México",
+        "value": 100000
+      },
+      {
+        "name": "Bryan Romero",
+        "position": "DFC",
+        "age": 23,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 100000
+      },
+      {
+        "name": "Alejandro Mayorga",
+        "position": "LTI",
+        "age": 28,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1500000
+      },
+      {
+        "name": "Francisco Nevárez",
+        "position": "LTD",
+        "age": 25,
+        "overall": 65,
+        "nationality": "México",
+        "value": 500000
+      },
+      {
+        "name": "Javier Aquino",
+        "position": "LTD",
+        "age": 35,
+        "overall": 65,
+        "nationality": "México",
+        "value": 400000
+      },
+      {
+        "name": "Denzell García",
+        "position": "MCD",
+        "age": 22,
+        "overall": 71,
+        "nationality": "México",
+        "value": 3000000
+      },
+      {
+        "name": "Jonathan González",
+        "position": "MCD",
+        "age": 26,
+        "overall": 67,
+        "nationality": "México",
+        "value": 800000
+      },
+      {
+        "name": "Homer Martínez",
+        "position": "MCD",
+        "age": 28,
+        "overall": 67,
+        "nationality": "Colombia",
+        "value": 750000
+      },
+      {
+        "name": "Guilherme Castilho",
+        "position": "MC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 2500000
+      },
+      {
+        "name": "Rodolfo Pizarro",
+        "position": "MCO",
+        "age": 31,
+        "overall": 67,
+        "nationality": "México",
+        "value": 900000
+      },
+      {
+        "name": "Raymundo Fulgencio",
+        "position": "EI",
+        "age": 25,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2200000
+      },
+      {
+        "name": "Madson",
+        "position": "EI",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 2000000
+      },
+      {
+        "name": "José Luis Rodríguez",
+        "position": "EI",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Panamá",
+        "value": 1800000
+      },
+      {
+        "name": "Ricardinho",
+        "position": "EI",
+        "age": 27,
+        "overall": 67,
+        "nationality": "Portugal",
+        "value": 1000000
+      },
+      {
+        "name": "Jairo Torres",
+        "position": "ED",
+        "age": 25,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2500000
+      },
+      {
+        "name": "Óscar Estupiñán",
+        "position": "DC",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Colombia",
+        "value": 3800000
+      },
+      {
+        "name": "Ettson Ayón",
+        "position": "DC",
+        "age": 24,
+        "overall": 67,
+        "nationality": "México",
+        "value": 1000000
+      },
+      {
+        "name": "Luca Martínez Dupuy",
+        "position": "DC",
+        "age": 24,
+        "overall": 65,
+        "nationality": "México",
+        "value": 400000
+      }
+    ]
+  },
+  {
+    "id": "atlas-guadalajara",
+    "name": "Atlas Guadalajara",
+    "shortName": "AG",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Estadio Jalisco",
+    "stadiumCapacity": 56713,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Camilo Vargas",
+        "position": "POR",
+        "age": 36,
+        "overall": 65,
+        "nationality": "Colombia",
+        "value": 500000
+      },
+      {
+        "name": "Antonio Sánchez",
+        "position": "POR",
+        "age": 26,
+        "overall": 65,
+        "nationality": "México",
+        "value": 400000
+      },
+      {
+        "name": "César Ramos",
+        "position": "POR",
+        "age": 25,
+        "overall": 63,
+        "nationality": "México",
+        "value": 200000
+      },
+      {
+        "name": "Rodrigo Schlegel",
+        "position": "DFC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Argentina",
+        "value": 2500000
+      },
+      {
+        "name": "Róber Pier",
+        "position": "DFC",
+        "age": 30,
+        "overall": 67,
+        "nationality": "España",
+        "value": 1000000
+      },
+      {
+        "name": "Gaddi Aguirre",
+        "position": "DFC",
+        "age": 29,
+        "overall": 67,
+        "nationality": "México",
+        "value": 900000
+      },
+      {
+        "name": "Adrián Mora",
+        "position": "DFC",
+        "age": 28,
+        "overall": 65,
+        "nationality": "México",
+        "value": 600000
+      },
+      {
+        "name": "Manuel Capasso",
+        "position": "DFC",
+        "age": 29,
+        "overall": 65,
+        "nationality": "Argentina",
+        "value": 600000
+      },
+      {
+        "name": "Rivaldo Lozano",
+        "position": "LTI",
+        "age": 27,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1500000
+      },
+      {
+        "name": "Jorge Rodríguez",
+        "position": "LTI",
+        "age": 24,
+        "overall": 65,
+        "nationality": "México",
+        "value": 600000
+      },
+      {
+        "name": "Gustavo Ferrareis",
+        "position": "LTD",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Brasil",
+        "value": 1200000
+      },
+      {
+        "name": "Carlos Orrantía",
+        "position": "LTD",
+        "age": 35,
+        "overall": 63,
+        "nationality": "México",
+        "value": 300000
+      },
+      {
+        "name": "Víctor Ríos",
+        "position": "MCD",
+        "age": 21,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2000000
+      },
+      {
+        "name": "Édgar Zaldívar",
+        "position": "MCD",
+        "age": 29,
+        "overall": 67,
+        "nationality": "México",
+        "value": 800000
+      },
+      {
+        "name": "Aldo Rocha",
+        "position": "MCD",
+        "age": 33,
+        "overall": 67,
+        "nationality": "México",
+        "value": 800000
+      },
+      {
+        "name": "Abraham Bass",
+        "position": "MCD",
+        "age": 24,
+        "overall": 63,
+        "nationality": "México",
+        "value": 300000
+      },
+      {
+        "name": "Paulo Ramírez",
+        "position": "MCD",
+        "age": 23,
+        "overall": 61,
+        "nationality": "México",
+        "value": 100000
+      },
+      {
+        "name": "Edyairth Ortega",
+        "position": "MC",
+        "age": 29,
+        "overall": 59,
+        "nationality": "México",
+        "value": 0
+      },
+      {
+        "name": "Sergio Hernández",
+        "position": "MI",
+        "age": 21,
+        "overall": 63,
+        "nationality": "México",
+        "value": 200000
+      },
+      {
+        "name": "Arturo González",
+        "position": "EI",
+        "age": 31,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2200000
+      },
+      {
+        "name": "Diego González",
+        "position": "ED",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Paraguay",
+        "value": 4000000
+      },
+      {
+        "name": "Mateo García",
+        "position": "ED",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Argentina",
+        "value": 1200000
+      },
+      {
+        "name": "Eduardo Aguirre",
+        "position": "DC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2200000
+      },
+      {
+        "name": "Uros Djurdjevic",
+        "position": "DC",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Montenegro",
+        "value": 1500000
+      },
+      {
+        "name": "Gustavo del Prete",
+        "position": "DC",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Argentina",
+        "value": 1200000
+      }
+    ]
+  },
+  {
+    "id": "queretaro-fc",
+    "name": "Querétaro FC",
+    "shortName": "QUE",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Estadio La Corregidora",
+    "stadiumCapacity": 34107,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "José Hernández",
+        "position": "POR",
+        "age": 28,
+        "overall": 63,
+        "nationality": "México",
+        "value": 300000
+      },
+      {
+        "name": "Guillermo Allison",
+        "position": "POR",
+        "age": 35,
+        "overall": 63,
+        "nationality": "México",
+        "value": 150000
+      },
+      {
+        "name": "Luis Villegas",
+        "position": "POR",
+        "age": 24,
+        "overall": 61,
+        "nationality": "México",
+        "value": 50000
+      },
+      {
+        "name": "Lucas Abascia",
+        "position": "DFC",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Argentina",
+        "value": 1700000
+      },
+      {
+        "name": "Diego Reyes",
+        "position": "DFC",
+        "age": 33,
+        "overall": 67,
+        "nationality": "México",
+        "value": 750000
+      },
+      {
+        "name": "Fernando Piñuelas",
+        "position": "DFC",
+        "age": 27,
+        "overall": 63,
+        "nationality": "México",
+        "value": 350000
+      },
+      {
+        "name": "Carlos Villanueva",
+        "position": "DFC",
+        "age": 31,
+        "overall": 63,
+        "nationality": "México",
+        "value": 300000
+      },
+      {
+        "name": "Francisco Venegas",
+        "position": "LTI",
+        "age": 27,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1500000
+      },
+      {
+        "name": "Daniel Parra",
+        "position": "LTI",
+        "age": 26,
+        "overall": 63,
+        "nationality": "México",
+        "value": 200000
+      },
+      {
+        "name": "Jaime Gómez",
+        "position": "LTD",
+        "age": 32,
+        "overall": 65,
+        "nationality": "México",
+        "value": 500000
+      },
+      {
+        "name": "Bayron Duarte",
+        "position": "LTD",
+        "age": 22,
+        "overall": 63,
+        "nationality": "Colombia",
+        "value": 350000
+      },
+      {
+        "name": "Omar Mendoza",
+        "position": "LTD",
+        "age": 37,
+        "overall": 63,
+        "nationality": "México",
+        "value": 150000
+      },
+      {
+        "name": "Santiago Homenchenko",
+        "position": "MCD",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Uruguay",
+        "value": 1500000
+      },
+      {
+        "name": "Bernardo Parra",
+        "position": "MCD",
+        "age": 21,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1500000
+      },
+      {
+        "name": "Michael Carcelén",
+        "position": "MCD",
+        "age": 28,
+        "overall": 67,
+        "nationality": "Ecuador",
+        "value": 1000000
+      },
+      {
+        "name": "Waldo Madrid",
+        "position": "MCD",
+        "age": 22,
+        "overall": 63,
+        "nationality": "México",
+        "value": 150000
+      },
+      {
+        "name": "Eduardo Armenta",
+        "position": "MC",
+        "age": 24,
+        "overall": 65,
+        "nationality": "México",
+        "value": 600000
+      },
+      {
+        "name": "Érik Dueñas",
+        "position": "MC",
+        "age": 21,
+        "overall": 65,
+        "nationality": "México",
+        "value": 400000
+      },
+      {
+        "name": "Carlo García",
+        "position": "MC",
+        "age": 24,
+        "overall": 63,
+        "nationality": "España",
+        "value": 350000
+      },
+      {
+        "name": "Edison Gruezo",
+        "position": "MC",
+        "age": 18,
+        "overall": 63,
+        "nationality": "Ecuador",
+        "value": 250000
+      },
+      {
+        "name": "Jesús Arellano",
+        "position": "MC",
+        "age": 21,
+        "overall": 59,
+        "nationality": "México",
+        "value": 0
+      },
+      {
+        "name": "Fernando González",
+        "position": "MI",
+        "age": 24,
+        "overall": 63,
+        "nationality": "México",
+        "value": 350000
+      },
+      {
+        "name": "Lucas Rodríguez",
+        "position": "MCO",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Argentina",
+        "value": 2200000
+      },
+      {
+        "name": "Jhojan Julio",
+        "position": "MCO",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Ecuador",
+        "value": 1200000
+      },
+      {
+        "name": "Álex Alcalá",
+        "position": "MCO",
+        "age": 20,
+        "overall": 59,
+        "nationality": "México",
+        "value": 0
+      },
+      {
+        "name": "Christopher Figueroa",
+        "position": "MCO",
+        "age": 22,
+        "overall": 59,
+        "nationality": "México",
+        "value": 0
+      },
+      {
+        "name": "Juan Robles",
+        "position": "EI",
+        "age": 22,
+        "overall": 67,
+        "nationality": "México",
+        "value": 700000
+      },
+      {
+        "name": "Carlos Valenzuela",
+        "position": "EI",
+        "age": 28,
+        "overall": 65,
+        "nationality": "Argentina",
+        "value": 400000
+      },
+      {
+        "name": "Luis Gutiérrez",
+        "position": "EI",
+        "age": 24,
+        "overall": 63,
+        "nationality": "México",
+        "value": 350000
+      },
+      {
+        "name": "Víctor López",
+        "position": "EI",
+        "age": 22,
+        "overall": 63,
+        "nationality": "México",
+        "value": 250000
+      },
+      {
+        "name": "Pablo Barrera",
+        "position": "ED",
+        "age": 38,
+        "overall": 63,
+        "nationality": "México",
+        "value": 150000
+      },
+      {
+        "name": "Mateo Coronel",
+        "position": "DC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Argentina",
+        "value": 2500000
+      },
+      {
+        "name": "Alí Ávila",
+        "position": "DC",
+        "age": 22,
+        "overall": 71,
+        "nationality": "México",
+        "value": 2000000
+      },
+      {
+        "name": "Eduardo Pérez",
+        "position": "DC",
+        "age": 32,
+        "overall": 61,
+        "nationality": "México",
+        "value": 100000
+      }
+    ]
+  },
+  {
+    "id": "puebla-fc",
+    "name": "Puebla FC",
+    "shortName": "PUE",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Estadio Cuauhtémoc",
+    "stadiumCapacity": 48000,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Daniel Gutiérrez",
+        "position": "POR",
+        "age": 28,
+        "overall": 67,
+        "nationality": "México",
+        "value": 700000
+      },
+      {
+        "name": "Julio González",
+        "position": "POR",
+        "age": 34,
+        "overall": 65,
+        "nationality": "México",
+        "value": 500000
+      },
+      {
+        "name": "Jesús Rodríguez",
+        "position": "POR",
+        "age": 32,
+        "overall": 65,
+        "nationality": "México",
+        "value": 400000
+      },
+      {
+        "name": "Juan Pablo Gómez",
+        "position": "POR",
+        "age": 24,
+        "overall": 61,
+        "nationality": "México",
+        "value": 50000
+      },
+      {
+        "name": "Nicolás Díaz",
+        "position": "DFC",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Chile",
+        "value": 1500000
+      },
+      {
+        "name": "Luis Gabriel Rey",
+        "position": "DFC",
+        "age": 23,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1200000
+      },
+      {
+        "name": "Juan Pablo Vargas",
+        "position": "DFC",
+        "age": 30,
+        "overall": 67,
+        "nationality": "Costa Rica",
+        "value": 900000
+      },
+      {
+        "name": "José Pachuca",
+        "position": "DFC",
+        "age": 20,
+        "overall": 67,
+        "nationality": "México",
+        "value": 800000
+      },
+      {
+        "name": "Fernando Monárrez",
+        "position": "LTI",
+        "age": 26,
+        "overall": 67,
+        "nationality": "México",
+        "value": 1000000
+      },
+      {
+        "name": "Íker Moreno",
+        "position": "LTD",
+        "age": 22,
+        "overall": 61,
+        "nationality": "México",
+        "value": 100000
+      },
+      {
+        "name": "Ariel Gamarra",
+        "position": "MCD",
+        "age": 22,
+        "overall": 65,
+        "nationality": "Paraguay",
+        "value": 500000
+      },
+      {
+        "name": "Miguel Ramírez",
+        "position": "MCD",
+        "age": 23,
+        "overall": 61,
+        "nationality": "México",
+        "value": 50000
+      },
+      {
+        "name": "Alonso Ramírez",
+        "position": "MCD",
+        "age": 24,
+        "overall": 61,
+        "nationality": "México",
+        "value": 50000
+      },
+      {
+        "name": "Alejandro Organista",
+        "position": "MC",
+        "age": 25,
+        "overall": 67,
+        "nationality": "México",
+        "value": 1000000
+      },
+      {
+        "name": "Raúl Castillo",
+        "position": "MCO",
+        "age": 24,
+        "overall": 67,
+        "nationality": "México",
+        "value": 1000000
+      },
+      {
+        "name": "Carlos Baltazar",
+        "position": "MCO",
+        "age": 28,
+        "overall": 67,
+        "nationality": "México",
+        "value": 1000000
+      },
+      {
+        "name": "Ángelo Araos",
+        "position": "MCO",
+        "age": 29,
+        "overall": 65,
+        "nationality": "Chile",
+        "value": 600000
+      },
+      {
+        "name": "Edgar Guerra",
+        "position": "ED",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Colombia",
+        "value": 1200000
+      },
+      {
+        "name": "Owen González",
+        "position": "ED",
+        "age": 22,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1200000
+      },
+      {
+        "name": "Brayan Garnica",
+        "position": "ED",
+        "age": 29,
+        "overall": 67,
+        "nationality": "México",
+        "value": 1000000
+      },
+      {
+        "name": "Kevin Velasco",
+        "position": "ED",
+        "age": 28,
+        "overall": 67,
+        "nationality": "Colombia",
+        "value": 700000
+      },
+      {
+        "name": "Emiliano Gómez",
+        "position": "MP",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Uruguay",
+        "value": 2000000
+      },
+      {
+        "name": "Esteban Lozano",
+        "position": "DC",
+        "age": 22,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1200000
+      },
+      {
+        "name": "Lucas Cavallini",
+        "position": "DC",
+        "age": 33,
+        "overall": 67,
+        "nationality": "Canadá",
+        "value": 900000
+      },
+      {
+        "name": "Ignacio Maestro Puch",
+        "position": "DC",
+        "age": 22,
+        "overall": 65,
+        "nationality": "Argentina",
+        "value": 650000
+      },
+      {
+        "name": "Ángel Robles",
+        "position": "DC",
+        "age": 24,
+        "overall": 65,
+        "nationality": "México",
+        "value": 400000
+      },
+      {
+        "name": "Eduardo Mustre",
+        "position": "DC",
+        "age": 23,
+        "overall": 59,
+        "nationality": "México",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": "mazatlan-fc",
+    "name": "Mazatlán FC",
+    "shortName": "MAZ",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Estadio de Mazatlán",
+    "stadiumCapacity": 25000,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "André Alcaráz",
+        "position": "POR",
+        "age": 26,
+        "overall": 63,
+        "nationality": "México",
+        "value": 250000
+      },
+      {
+        "name": "Ricardo Rodríguez",
+        "position": "POR",
+        "age": 24,
+        "overall": 61,
+        "nationality": "México",
+        "value": 100000
+      },
+      {
+        "name": "Facundo Almada",
+        "position": "DFC",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Argentina",
+        "value": 1800000
+      },
+      {
+        "name": "Lucas Merolla",
+        "position": "DFC",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Argentina",
+        "value": 1800000
+      },
+      {
+        "name": "Ángel Leyva",
+        "position": "DFC",
+        "age": 19,
+        "overall": 59,
+        "nationality": "México",
+        "value": 0
+      },
+      {
+        "name": "Christopher Castro",
+        "position": "DFC",
+        "age": 20,
+        "overall": 59,
+        "nationality": "México",
+        "value": 0
+      },
+      {
+        "name": "Jair Díaz",
+        "position": "LTI",
+        "age": 27,
+        "overall": 67,
+        "nationality": "México",
+        "value": 900000
+      },
+      {
+        "name": "Salvador Rodríguez",
+        "position": "LTI",
+        "age": 24,
+        "overall": 63,
+        "nationality": "México",
+        "value": 300000
+      },
+      {
+        "name": "Sebastián Santos",
+        "position": "LTD",
+        "age": 23,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1500000
+      },
+      {
+        "name": "José Esquivel",
+        "position": "MCD",
+        "age": 28,
+        "overall": 69,
+        "nationality": "México",
+        "value": 1200000
+      },
+      {
+        "name": "Jefferson Intriago",
+        "position": "MCD",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Ecuador",
+        "value": 1200000
+      },
+      {
+        "name": "Sebastián Fierro",
+        "position": "MCD",
+        "age": 24,
+        "overall": 67,
+        "nationality": "México",
+        "value": 700000
+      },
+      {
+        "name": "Alberto Herrera",
+        "position": "MCD",
+        "age": 24,
+        "overall": 67,
+        "nationality": "México",
+        "value": 700000
+      },
+      {
+        "name": "Alan Torres",
+        "position": "MCD",
+        "age": 25,
+        "overall": 65,
+        "nationality": "México",
+        "value": 650000
+      },
+      {
+        "name": "Jorge García",
+        "position": "MCD",
+        "age": 24,
+        "overall": 63,
+        "nationality": "México",
+        "value": 200000
+      },
+      {
+        "name": "Mauro Zaleta",
+        "position": "MCD",
+        "age": 23,
+        "overall": 63,
+        "nationality": "México",
+        "value": 200000
+      },
+      {
+        "name": "Said Godínez",
+        "position": "MCD",
+        "age": 21,
+        "overall": 59,
+        "nationality": "México",
+        "value": 0
+      },
+      {
+        "name": "Jordan Sierra",
+        "position": "MC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Ecuador",
+        "value": 2200000
+      },
+      {
+        "name": "Mauro Laínez",
+        "position": "EI",
+        "age": 29,
+        "overall": 65,
+        "nationality": "México",
+        "value": 600000
+      },
+      {
+        "name": "Ángel Saavedra",
+        "position": "EI",
+        "age": 22,
+        "overall": 63,
+        "nationality": "México",
+        "value": 200000
+      },
+      {
+        "name": "Daniel Hernández",
+        "position": "ED",
+        "age": 24,
+        "overall": 67,
+        "nationality": "México",
+        "value": 800000
+      },
+      {
+        "name": "Yoel Bárcenas",
+        "position": "ED",
+        "age": 32,
+        "overall": 67,
+        "nationality": "Panamá",
+        "value": 700000
+      },
+      {
+        "name": "Gilberto Adame",
+        "position": "ED",
+        "age": 21,
+        "overall": 61,
+        "nationality": "México",
+        "value": 50000
+      },
+      {
+        "name": "Iván González",
+        "position": "ED",
+        "age": 19,
+        "overall": 61,
+        "nationality": "México",
+        "value": 50000
+      },
+      {
+        "name": "Brian Rubio",
+        "position": "DC",
+        "age": 29,
+        "overall": 67,
+        "nationality": "México",
+        "value": 700000
+      },
+      {
+        "name": "Dudu Teodora",
+        "position": "DC",
+        "age": 26,
+        "overall": 67,
+        "nationality": "Brasil",
+        "value": 700000
+      },
+      {
+        "name": "Fábio Gomes",
+        "position": "DC",
+        "age": 28,
+        "overall": 67,
+        "nationality": "Brasil",
+        "value": 700000
+      }
+    ]
+  }
+]

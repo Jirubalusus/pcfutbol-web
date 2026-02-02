@@ -1,7 +1,15 @@
 import React, { useState, useMemo, useEffect, Suspense, Component } from 'react';
 import { useGame } from '../../context/GameContext';
 import { 
-  getLaLigaTeams, getSegundaTeams, getPremierTeams, getSerieATeams, getBundesligaTeams, getLigue1Teams
+  getLaLigaTeams, getSegundaTeams, getPrimeraRfefTeams, getSegundaRfefTeams,
+  getPremierTeams, getSerieATeams, getBundesligaTeams, getLigue1Teams,
+  getEredivisieTeams, getPrimeiraLigaTeams, getChampionshipTeams, getBelgianProTeams,
+  getSuperLigTeams, getScottishPremTeams, getSerieBTeams, getBundesliga2Teams,
+  getLigue2Teams, getSwissTeams, getAustrianTeams, getGreekTeams,
+  getDanishTeams, getCroatianTeams, getCzechTeams,
+  getArgentinaTeams, getBrasileiraoTeams, getColombiaTeams, getChileTeams,
+  getUruguayTeams, getEcuadorTeams, getParaguayTeams, getPeruTeams,
+  getBoliviaTeams, getVenezuelaTeams
 } from '../../data/teamsFirestore';
 
 // Detect mobile viewport
@@ -40,8 +48,15 @@ import './Stadium.scss';
 
 // Función para obtener todos los equipos
 const getAllTeams = () => [
-  ...getLaLigaTeams(), ...getSegundaTeams(), ...getPremierTeams(), 
-  ...getSerieATeams(), ...getBundesligaTeams(), ...getLigue1Teams()
+  ...getLaLigaTeams(), ...getSegundaTeams(), ...getPrimeraRfefTeams(), ...getSegundaRfefTeams(),
+  ...getPremierTeams(), ...getSerieATeams(), ...getBundesligaTeams(), ...getLigue1Teams(),
+  ...getEredivisieTeams(), ...getPrimeiraLigaTeams(), ...getChampionshipTeams(), ...getBelgianProTeams(),
+  ...getSuperLigTeams(), ...getScottishPremTeams(), ...getSerieBTeams(), ...getBundesliga2Teams(),
+  ...getLigue2Teams(), ...getSwissTeams(), ...getAustrianTeams(), ...getGreekTeams(),
+  ...getDanishTeams(), ...getCroatianTeams(), ...getCzechTeams(),
+  ...getArgentinaTeams(), ...getBrasileiraoTeams(), ...getColombiaTeams(), ...getChileTeams(),
+  ...getUruguayTeams(), ...getEcuadorTeams(), ...getParaguayTeams(), ...getPeruTeams(),
+  ...getBoliviaTeams(), ...getVenezuelaTeams()
 ];
 
 // Lazy load del componente 3D

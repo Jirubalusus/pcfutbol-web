@@ -77,7 +77,33 @@ export async function loadGameFromSlot(userId, slotIndex) {
   const docSnap = await getDoc(docRef);
   
   if (docSnap.exists()) {
-    return docSnap.data();
+    const data = docSnap.data();
+    // Firestore can convert JS arrays to objects with numeric keys.
+    // Sanitize critical array fields on load.
+    const arrayFields = [
+      'leagueTable', 'fixtures', 'results', 'messages', 'transferOffers',
+      'playerMarket', 'freeAgents', 'seasonObjectives', 'jobOffers',
+      'blockedPlayers', 'activeLoans', 'loanHistory', 'incomingLoanOffers',
+      'convocados', 'preseasonMatches'
+    ];
+    for (const key of arrayFields) {
+      if (key in data && data[key] && !Array.isArray(data[key]) && typeof data[key] === 'object') {
+        const keys = Object.keys(data[key]);
+        if (keys.length > 0 && keys.every(k => /^\d+$/.test(k))) {
+          data[key] = keys.sort((a, b) => +a - +b).map(k => data[key][k]);
+        } else {
+          data[key] = []; // fallback: unknown object shape → empty array
+        }
+      }
+    }
+    // Sanitize team.players
+    if (data.team?.players && !Array.isArray(data.team.players) && typeof data.team.players === 'object') {
+      const pk = Object.keys(data.team.players);
+      data.team.players = pk.length > 0 && pk.every(k => /^\d+$/.test(k))
+        ? pk.sort((a, b) => +a - +b).map(k => data.team.players[k])
+        : [];
+    }
+    return data;
   }
   
   return null;

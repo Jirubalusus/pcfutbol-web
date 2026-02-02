@@ -710,7 +710,13 @@ export function isTransferWindowOpen(week, options = {}) {
  * Formatear precio para mostrar
  */
 export function formatTransferPrice(price) {
-  // Siempre formato M para consistencia
+  if (price == null || price === 0) return '€0';
+  const abs = Math.abs(price);
+  if (abs < 1_000) return `€${Math.round(price)}`;
+  if (abs < 1_000_000) {
+    const k = price / 1_000;
+    return k >= 100 ? `€${Math.round(k)}K` : `€${k.toFixed(1)}K`;
+  }
   const m = price / 1_000_000;
   if (m >= 100) return `€${Math.round(m)}M`;
   return `€${m.toFixed(1)}M`;

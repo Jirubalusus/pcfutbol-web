@@ -1,0 +1,6988 @@
+[
+  {
+    "id": "inter-miami-cf",
+    "name": "Inter Miami CF",
+    "shortName": "MIA",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Chase Stadium",
+    "stadiumCapacity": 21550,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Dayne St. Clair",
+        "position": "POR",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Canadá",
+        "value": 3500000
+      },
+      {
+        "name": "Rocco Ríos Novo",
+        "position": "POR",
+        "age": 23,
+        "overall": 65,
+        "nationality": "Argentina",
+        "value": 600000
+      },
+      {
+        "name": "Luis Barraza",
+        "position": "POR",
+        "age": 29,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 400000
+      },
+      {
+        "name": "Óscar Ustari",
+        "position": "POR",
+        "age": 39,
+        "overall": 61,
+        "nationality": "Argentina",
+        "value": 100000
+      },
+      {
+        "name": "Micael",
+        "position": "DFC",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Brasil",
+        "value": 4000000
+      },
+      {
+        "name": "Gonzalo Luján",
+        "position": "DFC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Argentina",
+        "value": 2000000
+      },
+      {
+        "name": "Maximiliano Falcón",
+        "position": "DFC",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Uruguay",
+        "value": 1800000
+      },
+      {
+        "name": "Ian Fray",
+        "position": "DFC",
+        "age": 23,
+        "overall": 65,
+        "nationality": "Jamaica",
+        "value": 500000
+      },
+      {
+        "name": "Tyler Hall",
+        "position": "DFC",
+        "age": 19,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 100000
+      },
+      {
+        "name": "Sergio Reguilón",
+        "position": "LTI",
+        "age": 29,
+        "overall": 75,
+        "nationality": "España",
+        "value": 5000000
+      },
+      {
+        "name": "Noah Allen",
+        "position": "LTI",
+        "age": 21,
+        "overall": 69,
+        "nationality": "Grecia",
+        "value": 1800000
+      },
+      {
+        "name": "Facundo Mura",
+        "position": "LTD",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Argentina",
+        "value": 2000000
+      },
+      {
+        "name": "Israel Boatwright",
+        "position": "LTD",
+        "age": 20,
+        "overall": 61,
+        "nationality": "Rep. Dominicana",
+        "value": 50000
+      },
+      {
+        "name": "David Ayala",
+        "position": "MCD",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Argentina",
+        "value": 4000000
+      },
+      {
+        "name": "David Ruíz",
+        "position": "MCD",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Honduras",
+        "value": 2000000
+      },
+      {
+        "name": "Yannick Bright",
+        "position": "MCD",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Italia",
+        "value": 1500000
+      },
+      {
+        "name": "Rodrigo De Paul",
+        "position": "MC",
+        "age": 31,
+        "overall": 79,
+        "nationality": "Argentina",
+        "value": 15000000
+      },
+      {
+        "name": "Telasco Segovia",
+        "position": "MC",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Venezuela",
+        "value": 4500000
+      },
+      {
+        "name": "Santiago Morales",
+        "position": "MC",
+        "age": 18,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 125000
+      },
+      {
+        "name": "Mateo Silvetti",
+        "position": "EI",
+        "age": 20,
+        "overall": 76,
+        "nationality": "Argentina",
+        "value": 6000000
+      },
+      {
+        "name": "Dániel Pintér",
+        "position": "EI",
+        "age": 18,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Lionel Messi",
+        "position": "ED",
+        "age": 38,
+        "overall": 85,
+        "nationality": "Argentina",
+        "value": 15000000
+      },
+      {
+        "name": "Tadeo Allende",
+        "position": "ED",
+        "age": 26,
+        "overall": 75,
+        "nationality": "Argentina",
+        "value": 5000000
+      },
+      {
+        "name": "Germán Berterame",
+        "position": "DC",
+        "age": 27,
+        "overall": 77,
+        "nationality": "México",
+        "value": 8500000
+      },
+      {
+        "name": "Luis Suárez",
+        "position": "DC",
+        "age": 39,
+        "overall": 69,
+        "nationality": "Uruguay",
+        "value": 1500000
+      }
+    ]
+  },
+  {
+    "id": "los-angeles-fc",
+    "name": "Los Angeles FC",
+    "shortName": "LAFC",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "BMO Stadium",
+    "stadiumCapacity": 22000,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Hugo Lloris",
+        "position": "POR",
+        "age": 39,
+        "overall": 67,
+        "nationality": "Francia",
+        "value": 1000000
+      },
+      {
+        "name": "Thomas Hasal",
+        "position": "POR",
+        "age": 26,
+        "overall": 63,
+        "nationality": "Canadá",
+        "value": 200000
+      },
+      {
+        "name": "Cabral Carter",
+        "position": "POR",
+        "age": 21,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Ryan Porteous",
+        "position": "DFC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Escocia",
+        "value": 3000000
+      },
+      {
+        "name": "Eddie Segura",
+        "position": "DFC",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Colombia",
+        "value": 1800000
+      },
+      {
+        "name": "Nkosi Tafari",
+        "position": "DFC",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1500000
+      },
+      {
+        "name": "Aaron Long",
+        "position": "DFC",
+        "age": 33,
+        "overall": 67,
+        "nationality": "Estados Unidos",
+        "value": 800000
+      },
+      {
+        "name": "Lorenzo Dellavalle",
+        "position": "DFC",
+        "age": 21,
+        "overall": 61,
+        "nationality": "Italia",
+        "value": 100000
+      },
+      {
+        "name": "Kenny Nielsen",
+        "position": "DFC",
+        "age": 23,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 50000
+      },
+      {
+        "name": "Artem Smolyakov",
+        "position": "LTI",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Ucrania",
+        "value": 1800000
+      },
+      {
+        "name": "Ryan Hollingshead",
+        "position": "LTI",
+        "age": 34,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 600000
+      },
+      {
+        "name": "Sergi Palencia",
+        "position": "LTD",
+        "age": 29,
+        "overall": 71,
+        "nationality": "España",
+        "value": 2500000
+      },
+      {
+        "name": "Igor Jesus",
+        "position": "MCD",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Brasil",
+        "value": 3500000
+      },
+      {
+        "name": "Timothy Tillman",
+        "position": "MC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 3000000
+      },
+      {
+        "name": "Mark Delgado",
+        "position": "MC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 2500000
+      },
+      {
+        "name": "Mathieu Choinière",
+        "position": "MC",
+        "age": 26,
+        "overall": 67,
+        "nationality": "Canadá",
+        "value": 800000
+      },
+      {
+        "name": "Jude Terry",
+        "position": "MC",
+        "age": 17,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Ryan Raposo",
+        "position": "MI",
+        "age": 26,
+        "overall": 65,
+        "nationality": "Canadá",
+        "value": 500000
+      },
+      {
+        "name": "Amin Boudri",
+        "position": "MCO",
+        "age": 21,
+        "overall": 67,
+        "nationality": "Suecia",
+        "value": 900000
+      },
+      {
+        "name": "Matthew Evans",
+        "position": "MCO",
+        "age": 19,
+        "overall": 61,
+        "nationality": "Guatemala",
+        "value": 50000
+      },
+      {
+        "name": "Heung-min Son",
+        "position": "EI",
+        "age": 33,
+        "overall": 79,
+        "nationality": "Corea del Sur",
+        "value": 17000000
+      },
+      {
+        "name": "Denis Bouanga",
+        "position": "EI",
+        "age": 31,
+        "overall": 77,
+        "nationality": "Gabón",
+        "value": 8000000
+      },
+      {
+        "name": "Jacob Shaffelburg",
+        "position": "EI",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Canadá",
+        "value": 4000000
+      },
+      {
+        "name": "Tyler Boyd",
+        "position": "EI",
+        "age": 31,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 500000
+      },
+      {
+        "name": "David Martínez",
+        "position": "ED",
+        "age": 19,
+        "overall": 74,
+        "nationality": "Venezuela",
+        "value": 4000000
+      },
+      {
+        "name": "Adrian Wibowo",
+        "position": "ED",
+        "age": 20,
+        "overall": 61,
+        "nationality": "Indonesia",
+        "value": 100000
+      },
+      {
+        "name": "Nathan Ordaz",
+        "position": "DC",
+        "age": 22,
+        "overall": 71,
+        "nationality": "El Salvador",
+        "value": 2000000
+      },
+      {
+        "name": "Jeremy Ebobisse",
+        "position": "DC",
+        "age": 28,
+        "overall": 67,
+        "nationality": "Estados Unidos",
+        "value": 1000000
+      }
+    ]
+  },
+  {
+    "id": "los-angeles-galaxy",
+    "name": "Los Angeles Galaxy",
+    "shortName": "LAG",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Dignity Health Sports Park",
+    "stadiumCapacity": 27000,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Novak Mićović",
+        "position": "POR",
+        "age": 24,
+        "overall": 65,
+        "nationality": "Serbia",
+        "value": 600000
+      },
+      {
+        "name": "JT Marcinkowski",
+        "position": "POR",
+        "age": 28,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 200000
+      },
+      {
+        "name": "Brady Scott",
+        "position": "POR",
+        "age": 26,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 125000
+      },
+      {
+        "name": "Jakob Glesnes",
+        "position": "DFC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 3000000
+      },
+      {
+        "name": "Justin Haak",
+        "position": "DFC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 2500000
+      },
+      {
+        "name": "Carlos Garcés",
+        "position": "DFC",
+        "age": 24,
+        "overall": 67,
+        "nationality": "Colombia",
+        "value": 700000
+      },
+      {
+        "name": "Zanka",
+        "position": "DFC",
+        "age": 35,
+        "overall": 63,
+        "nationality": "Dinamarca",
+        "value": 300000
+      },
+      {
+        "name": "Chris Rindov",
+        "position": "DFC",
+        "age": 24,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 200000
+      },
+      {
+        "name": "Ascel Essengue",
+        "position": "DFC",
+        "age": 22,
+        "overall": 63,
+        "nationality": "Camerún",
+        "value": 150000
+      },
+      {
+        "name": "Maya Yoshida",
+        "position": "DFC",
+        "age": 37,
+        "overall": 63,
+        "nationality": "Japón",
+        "value": 150000
+      },
+      {
+        "name": "Julián Aude",
+        "position": "LTI",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Argentina",
+        "value": 2000000
+      },
+      {
+        "name": "John Nelson",
+        "position": "LTI",
+        "age": 27,
+        "overall": 67,
+        "nationality": "Estados Unidos",
+        "value": 800000
+      },
+      {
+        "name": "Riley Dalgado",
+        "position": "LTI",
+        "age": 19,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Miki Yamane",
+        "position": "LTD",
+        "age": 32,
+        "overall": 69,
+        "nationality": "Japón",
+        "value": 1200000
+      },
+      {
+        "name": "Mauricio Cuevas",
+        "position": "LTD",
+        "age": 22,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 500000
+      },
+      {
+        "name": "Harbor Miller",
+        "position": "LTD",
+        "age": 18,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 350000
+      },
+      {
+        "name": "Edwin Cerrillo",
+        "position": "MCD",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Estados Unidos",
+        "value": 3500000
+      },
+      {
+        "name": "Lucas Sanabria",
+        "position": "MCD",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Uruguay",
+        "value": 3500000
+      },
+      {
+        "name": "Tucker Lepley",
+        "position": "MCD",
+        "age": 24,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 200000
+      },
+      {
+        "name": "Riqui Puig",
+        "position": "MC",
+        "age": 26,
+        "overall": 81,
+        "nationality": "España",
+        "value": 18000000
+      },
+      {
+        "name": "Elijah Wynder",
+        "position": "MC",
+        "age": 22,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 500000
+      },
+      {
+        "name": "Isaiah Parente",
+        "position": "MC",
+        "age": 25,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 450000
+      },
+      {
+        "name": "Marco Reus",
+        "position": "MCO",
+        "age": 36,
+        "overall": 69,
+        "nationality": "Alemania",
+        "value": 1800000
+      },
+      {
+        "name": "Erik Thommy",
+        "position": "MCO",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Alemania",
+        "value": 1200000
+      },
+      {
+        "name": "Rubén Ramos",
+        "position": "MCO",
+        "age": 19,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 175000
+      },
+      {
+        "name": "Joseph Paintsil",
+        "position": "EI",
+        "age": 28,
+        "overall": 75,
+        "nationality": "Ghana",
+        "value": 6000000
+      },
+      {
+        "name": "Gino Vivi",
+        "position": "EI",
+        "age": 25,
+        "overall": 63,
+        "nationality": "Costa Rica",
+        "value": 200000
+      },
+      {
+        "name": "Gabriel Pec",
+        "position": "ED",
+        "age": 24,
+        "overall": 75,
+        "nationality": "Brasil",
+        "value": 7000000
+      },
+      {
+        "name": "João Klauss",
+        "position": "DC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 3000000
+      },
+      {
+        "name": "Matheus Nascimento",
+        "position": "DC",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 2500000
+      },
+      {
+        "name": "Christian Ramirez",
+        "position": "DC",
+        "age": 34,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 200000
+      }
+    ]
+  },
+  {
+    "id": "fc-cincinnati",
+    "name": "FC Cincinnati",
+    "shortName": "CIN",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "TQL Stadium",
+    "stadiumCapacity": 26000,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Roman Celentano",
+        "position": "POR",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 2500000
+      },
+      {
+        "name": "Evan Louro",
+        "position": "POR",
+        "age": 30,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 150000
+      },
+      {
+        "name": "Miles Robinson",
+        "position": "DFC",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Estados Unidos",
+        "value": 3500000
+      },
+      {
+        "name": "Matt Miazga",
+        "position": "DFC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 2000000
+      },
+      {
+        "name": "Gilberto Flores",
+        "position": "DFC",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Paraguay",
+        "value": 1300000
+      },
+      {
+        "name": "Teenage Hadebe",
+        "position": "DFC",
+        "age": 30,
+        "overall": 67,
+        "nationality": "Zimbabue",
+        "value": 1000000
+      },
+      {
+        "name": "Nick Hagglund",
+        "position": "DFC",
+        "age": 33,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 350000
+      },
+      {
+        "name": "Félix Samson",
+        "position": "DFC",
+        "age": 18,
+        "overall": 59,
+        "nationality": "Canadá",
+        "value": 0
+      },
+      {
+        "name": "Kyle Smith",
+        "position": "LTD",
+        "age": 34,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 400000
+      },
+      {
+        "name": "Alvas Powell",
+        "position": "LTD",
+        "age": 31,
+        "overall": 65,
+        "nationality": "Jamaica",
+        "value": 400000
+      },
+      {
+        "name": "Obinna Nwobodo",
+        "position": "MCD",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 3000000
+      },
+      {
+        "name": "Pavel Bucha",
+        "position": "MC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Rep. Checa",
+        "value": 4000000
+      },
+      {
+        "name": "Samuel Gidi",
+        "position": "MC",
+        "age": 21,
+        "overall": 69,
+        "nationality": "Eslovaquia",
+        "value": 1800000
+      },
+      {
+        "name": "Tah Anunga",
+        "position": "MC",
+        "age": 29,
+        "overall": 67,
+        "nationality": "Camerún",
+        "value": 800000
+      },
+      {
+        "name": "Stiven Jimenez",
+        "position": "MC",
+        "age": 18,
+        "overall": 61,
+        "nationality": "México",
+        "value": 100000
+      },
+      {
+        "name": "Evander",
+        "position": "MCO",
+        "age": 27,
+        "overall": 79,
+        "nationality": "Brasil",
+        "value": 16000000
+      },
+      {
+        "name": "Gerardo Valenzuela",
+        "position": "MCO",
+        "age": 21,
+        "overall": 67,
+        "nationality": "Estados Unidos",
+        "value": 750000
+      },
+      {
+        "name": "Ademar Chávez",
+        "position": "MCO",
+        "age": 17,
+        "overall": 59,
+        "nationality": "México",
+        "value": 0
+      },
+      {
+        "name": "Bryan Ramírez",
+        "position": "ED",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Ecuador",
+        "value": 3000000
+      },
+      {
+        "name": "Ender Echenique",
+        "position": "ED",
+        "age": 21,
+        "overall": 69,
+        "nationality": "Venezuela",
+        "value": 1200000
+      },
+      {
+        "name": "Kévin Denkey",
+        "position": "DC",
+        "age": 25,
+        "overall": 79,
+        "nationality": "Togo",
+        "value": 14000000
+      },
+      {
+        "name": "Kristian Fletcher",
+        "position": "DC",
+        "age": 20,
+        "overall": 67,
+        "nationality": "Estados Unidos",
+        "value": 800000
+      },
+      {
+        "name": "Ayoub Jabbari",
+        "position": "DC",
+        "age": 26,
+        "overall": 65,
+        "nationality": "Marruecos",
+        "value": 400000
+      },
+      {
+        "name": "Tom Barlow",
+        "position": "DC",
+        "age": 30,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 300000
+      },
+      {
+        "name": "Ștefan Chirilă",
+        "position": "DC",
+        "age": 19,
+        "overall": 61,
+        "nationality": "Rumanía",
+        "value": 100000
+      },
+      {
+        "name": "Kenji Mboma Dem",
+        "position": "DC",
+        "age": 24,
+        "overall": 61,
+        "nationality": "Francia",
+        "value": 100000
+      }
+    ]
+  },
+  {
+    "id": "vancouver-whitecaps-fc",
+    "name": "Vancouver Whitecaps FC",
+    "shortName": "VAN",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "BC Place",
+    "stadiumCapacity": 54500,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Yohei Takaoka",
+        "position": "POR",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Japón",
+        "value": 3500000
+      },
+      {
+        "name": "Isaac Boehmer",
+        "position": "POR",
+        "age": 24,
+        "overall": 63,
+        "nationality": "Canadá",
+        "value": 250000
+      },
+      {
+        "name": "Adrián Zendejas",
+        "position": "POR",
+        "age": 30,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 175000
+      },
+      {
+        "name": "Mathías Laborda",
+        "position": "DFC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Uruguay",
+        "value": 3500000
+      },
+      {
+        "name": "Tristan Blackmon",
+        "position": "DFC",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Estados Unidos",
+        "value": 3500000
+      },
+      {
+        "name": "Ranko Veselinović",
+        "position": "DFC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Serbia",
+        "value": 3000000
+      },
+      {
+        "name": "Sebastian Schonlau",
+        "position": "DFC",
+        "age": 31,
+        "overall": 65,
+        "nationality": "Alemania",
+        "value": 600000
+      },
+      {
+        "name": "Belal Halbouni",
+        "position": "DFC",
+        "age": 26,
+        "overall": 63,
+        "nationality": "Siria",
+        "value": 300000
+      },
+      {
+        "name": "Tate Johnson",
+        "position": "LTI",
+        "age": 20,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1500000
+      },
+      {
+        "name": "Sam Adekugbe",
+        "position": "LTI",
+        "age": 31,
+        "overall": 67,
+        "nationality": "Canadá",
+        "value": 800000
+      },
+      {
+        "name": "Mihail Gherasimencov",
+        "position": "LTI",
+        "age": 20,
+        "overall": 63,
+        "nationality": "Moldavia",
+        "value": 150000
+      },
+      {
+        "name": "Édier Ocampo",
+        "position": "LTD",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Colombia",
+        "value": 3000000
+      },
+      {
+        "name": "Giuseppe Bovalina",
+        "position": "LTD",
+        "age": 21,
+        "overall": 63,
+        "nationality": "Australia",
+        "value": 200000
+      },
+      {
+        "name": "Nikola Djordjevic",
+        "position": "LTD",
+        "age": 23,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Andrés Cubas",
+        "position": "MCD",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Paraguay",
+        "value": 4000000
+      },
+      {
+        "name": "Ralph Priso",
+        "position": "MCD",
+        "age": 23,
+        "overall": 67,
+        "nationality": "Canadá",
+        "value": 800000
+      },
+      {
+        "name": "J.C. Ngando",
+        "position": "MCD",
+        "age": 26,
+        "overall": 67,
+        "nationality": "Francia",
+        "value": 800000
+      },
+      {
+        "name": "Sebastian Berhalter",
+        "position": "MC",
+        "age": 24,
+        "overall": 75,
+        "nationality": "Estados Unidos",
+        "value": 5000000
+      },
+      {
+        "name": "Oliver Larraz",
+        "position": "MC",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1200000
+      },
+      {
+        "name": "Jeevan Badwal",
+        "position": "MC",
+        "age": 19,
+        "overall": 65,
+        "nationality": "Canadá",
+        "value": 600000
+      },
+      {
+        "name": "Ryan Gauld",
+        "position": "MCO",
+        "age": 30,
+        "overall": 75,
+        "nationality": "Escocia",
+        "value": 5000000
+      },
+      {
+        "name": "AZ Jackson",
+        "position": "MCO",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1500000
+      },
+      {
+        "name": "Liam MacKenzie",
+        "position": "MCO",
+        "age": 18,
+        "overall": 61,
+        "nationality": "Canadá",
+        "value": 100000
+      },
+      {
+        "name": "Kenji Cabrera",
+        "position": "EI",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Perú",
+        "value": 1600000
+      },
+      {
+        "name": "Bruno Caicedo",
+        "position": "EI",
+        "age": 21,
+        "overall": 67,
+        "nationality": "Ecuador",
+        "value": 800000
+      },
+      {
+        "name": "Emmanuel Sabbi",
+        "position": "ED",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 2500000
+      },
+      {
+        "name": "Thomas Müller",
+        "position": "MP",
+        "age": 36,
+        "overall": 77,
+        "nationality": "Alemania",
+        "value": 5000000
+      },
+      {
+        "name": "Brian White",
+        "position": "DC",
+        "age": 29,
+        "overall": 75,
+        "nationality": "Estados Unidos",
+        "value": 5000000
+      },
+      {
+        "name": "Rayan Elloumi",
+        "position": "DC",
+        "age": 18,
+        "overall": 63,
+        "nationality": "Túnez",
+        "value": 300000
+      },
+      {
+        "name": "Nelson Pierre",
+        "position": "DC",
+        "age": 20,
+        "overall": 63,
+        "nationality": "Haití",
+        "value": 200000
+      }
+    ]
+  },
+  {
+    "id": "seattle-sounders-fc",
+    "name": "Seattle Sounders FC",
+    "shortName": "SEA",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Lumen Field",
+    "stadiumCapacity": 68740,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Andrew Thomas",
+        "position": "POR",
+        "age": 27,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 400000
+      },
+      {
+        "name": "Stefan Frei",
+        "position": "POR",
+        "age": 39,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 150000
+      },
+      {
+        "name": "Max Anchor",
+        "position": "POR",
+        "age": 21,
+        "overall": 63,
+        "nationality": "Canadá",
+        "value": 150000
+      },
+      {
+        "name": "Jackson Ragen",
+        "position": "DFC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 3000000
+      },
+      {
+        "name": "Yeimar Gómez Andrade",
+        "position": "DFC",
+        "age": 33,
+        "overall": 69,
+        "nationality": "Colombia",
+        "value": 1200000
+      },
+      {
+        "name": "Ryan Sailor",
+        "position": "DFC",
+        "age": 27,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 200000
+      },
+      {
+        "name": "Stuart Hawkins",
+        "position": "DFC",
+        "age": 19,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 175000
+      },
+      {
+        "name": "Kee-hee Kim",
+        "position": "DFC",
+        "age": 36,
+        "overall": 63,
+        "nationality": "Corea del Sur",
+        "value": 150000
+      },
+      {
+        "name": "Nouhou",
+        "position": "LTI",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Camerún",
+        "value": 3500000
+      },
+      {
+        "name": "Reed Baker-Whiting",
+        "position": "LTI",
+        "age": 20,
+        "overall": 67,
+        "nationality": "Estados Unidos",
+        "value": 800000
+      },
+      {
+        "name": "Álex Roldán",
+        "position": "LTD",
+        "age": 29,
+        "overall": 73,
+        "nationality": "El Salvador",
+        "value": 3500000
+      },
+      {
+        "name": "Kalani Kossa-Rienzi",
+        "position": "LTD",
+        "age": 23,
+        "overall": 67,
+        "nationality": "Estados Unidos",
+        "value": 800000
+      },
+      {
+        "name": "Cody Baker",
+        "position": "LTD",
+        "age": 22,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 275000
+      },
+      {
+        "name": "Snyder Brunell",
+        "position": "MCD",
+        "age": 18,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 400000
+      },
+      {
+        "name": "Obed Vargas",
+        "position": "MC",
+        "age": 20,
+        "overall": 78,
+        "nationality": "México",
+        "value": 8000000
+      },
+      {
+        "name": "Cristian Roldán",
+        "position": "MC",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Estados Unidos",
+        "value": 3500000
+      },
+      {
+        "name": "Hassani Dotson",
+        "position": "MC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 3000000
+      },
+      {
+        "name": "Nikola Petković",
+        "position": "MC",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Serbia",
+        "value": 1200000
+      },
+      {
+        "name": "Albert Rusnák",
+        "position": "MCO",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Eslovaquia",
+        "value": 3000000
+      },
+      {
+        "name": "Sebastian Gomez",
+        "position": "MCO",
+        "age": 19,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Paul Rothrock",
+        "position": "EI",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 2800000
+      },
+      {
+        "name": "Pedro de la Vega",
+        "position": "ED",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Argentina",
+        "value": 3500000
+      },
+      {
+        "name": "Paul Arriola",
+        "position": "ED",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 3000000
+      },
+      {
+        "name": "Georgi Minoungou",
+        "position": "ED",
+        "age": 23,
+        "overall": 67,
+        "nationality": "Burkina Faso",
+        "value": 800000
+      },
+      {
+        "name": "Jesús Ferreira",
+        "position": "DC",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Estados Unidos",
+        "value": 4000000
+      },
+      {
+        "name": "Jordan Morris",
+        "position": "DC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 3000000
+      },
+      {
+        "name": "Danny Musovski",
+        "position": "DC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 2500000
+      },
+      {
+        "name": "Osaze De Rosario",
+        "position": "DC",
+        "age": 24,
+        "overall": 67,
+        "nationality": "Guyana",
+        "value": 800000
+      },
+      {
+        "name": "Yu Tsukanome",
+        "position": "DC",
+        "age": 25,
+        "overall": 59,
+        "nationality": "Japón",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": "atlanta-united-fc",
+    "name": "Atlanta United FC",
+    "shortName": "ATL",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Mercedes-Benz Stadium",
+    "stadiumCapacity": 73019,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Jayden Hibbert",
+        "position": "POR",
+        "age": 21,
+        "overall": 65,
+        "nationality": "Canadá",
+        "value": 500000
+      },
+      {
+        "name": "Lucas Hoyos",
+        "position": "POR",
+        "age": 36,
+        "overall": 63,
+        "nationality": "Argentina",
+        "value": 150000
+      },
+      {
+        "name": "Enea Mihaj",
+        "position": "DFC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Albania",
+        "value": 4000000
+      },
+      {
+        "name": "Stian Gregersen",
+        "position": "DFC",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Noruega",
+        "value": 1800000
+      },
+      {
+        "name": "Tomás Jacob",
+        "position": "DFC",
+        "age": 21,
+        "overall": 69,
+        "nationality": "Argentina",
+        "value": 1500000
+      },
+      {
+        "name": "Juan Berrocal",
+        "position": "DFC",
+        "age": 26,
+        "overall": 69,
+        "nationality": "España",
+        "value": 1500000
+      },
+      {
+        "name": "Matthew Edwards",
+        "position": "DFC",
+        "age": 22,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 450000
+      },
+      {
+        "name": "Pedro Amador",
+        "position": "LTI",
+        "age": 27,
+        "overall": 67,
+        "nationality": "Portugal",
+        "value": 850000
+      },
+      {
+        "name": "Dominik Chong Qui",
+        "position": "LTI",
+        "age": 18,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 100000
+      },
+      {
+        "name": "Ronald Hernández",
+        "position": "LTD",
+        "age": 28,
+        "overall": 65,
+        "nationality": "Venezuela",
+        "value": 450000
+      },
+      {
+        "name": "Tristan Muyumba",
+        "position": "MCD",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Francia",
+        "value": 1200000
+      },
+      {
+        "name": "Adyn Torres",
+        "position": "MCD",
+        "age": 18,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 100000
+      },
+      {
+        "name": "Steven Alzate",
+        "position": "MC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Colombia",
+        "value": 2500000
+      },
+      {
+        "name": "Ajani Fortune",
+        "position": "MC",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Trinidad y Tobago",
+        "value": 1200000
+      },
+      {
+        "name": "Will Reilly",
+        "position": "MC",
+        "age": 23,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 300000
+      },
+      {
+        "name": "Adrian Gill",
+        "position": "MC",
+        "age": 20,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Cooper Sanchez",
+        "position": "MC",
+        "age": 17,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Luke Brennan",
+        "position": "MD",
+        "age": 20,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 400000
+      },
+      {
+        "name": "Aleksey Miranchuk",
+        "position": "MCO",
+        "age": 30,
+        "overall": 77,
+        "nationality": "Rusia",
+        "value": 8000000
+      },
+      {
+        "name": "Santiago Pita",
+        "position": "MCO",
+        "age": 18,
+        "overall": 59,
+        "nationality": "Venezuela",
+        "value": 0
+      },
+      {
+        "name": "Saba Lobjanidze",
+        "position": "EI",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Georgia",
+        "value": 4000000
+      },
+      {
+        "name": "Miguel Almirón",
+        "position": "ED",
+        "age": 31,
+        "overall": 77,
+        "nationality": "Paraguay",
+        "value": 9000000
+      },
+      {
+        "name": "Emmanuel Latte Lath",
+        "position": "DC",
+        "age": 27,
+        "overall": 79,
+        "nationality": "Cote d'Ivoire",
+        "value": 15000000
+      },
+      {
+        "name": "Cayman Togashi",
+        "position": "DC",
+        "age": 32,
+        "overall": 63,
+        "nationality": "Japón",
+        "value": 150000
+      }
+    ]
+  },
+  {
+    "id": "austin-fc",
+    "name": "Austin FC",
+    "shortName": "ATX",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Q2 Stadium",
+    "stadiumCapacity": 20738,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Brad Stuver",
+        "position": "POR",
+        "age": 34,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 400000
+      },
+      {
+        "name": "Damian Las",
+        "position": "POR",
+        "age": 23,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 300000
+      },
+      {
+        "name": "Oleksandr Svatok",
+        "position": "DFC",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Ucrania",
+        "value": 1200000
+      },
+      {
+        "name": "Mateja Djordjević",
+        "position": "DFC",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Serbia",
+        "value": 1200000
+      },
+      {
+        "name": "Brendan Hines-Ike",
+        "position": "DFC",
+        "age": 31,
+        "overall": 67,
+        "nationality": "Estados Unidos",
+        "value": 1000000
+      },
+      {
+        "name": "Jon Bell",
+        "position": "DFC",
+        "age": 28,
+        "overall": 63,
+        "nationality": "Jamaica",
+        "value": 300000
+      },
+      {
+        "name": "Joseph Rosales",
+        "position": "LTI",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Honduras",
+        "value": 2000000
+      },
+      {
+        "name": "Guilherme Biro",
+        "position": "LTI",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 2000000
+      },
+      {
+        "name": "Žan Kolmanič",
+        "position": "LTI",
+        "age": 25,
+        "overall": 67,
+        "nationality": "Eslovenia",
+        "value": 800000
+      },
+      {
+        "name": "Mikkel Desler",
+        "position": "LTD",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Dinamarca",
+        "value": 1800000
+      },
+      {
+        "name": "Jon Gallagher",
+        "position": "LTD",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Irlanda",
+        "value": 1800000
+      },
+      {
+        "name": "Riley Thomas",
+        "position": "LTD",
+        "age": 23,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Ilie Sánchez",
+        "position": "MCD",
+        "age": 35,
+        "overall": 63,
+        "nationality": "España",
+        "value": 300000
+      },
+      {
+        "name": "Owen Wolff",
+        "position": "MC",
+        "age": 21,
+        "overall": 74,
+        "nationality": "Estados Unidos",
+        "value": 4000000
+      },
+      {
+        "name": "Daniel Pereira",
+        "position": "MC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Venezuela",
+        "value": 3000000
+      },
+      {
+        "name": "Besard Šabović",
+        "position": "MC",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Suecia",
+        "value": 1800000
+      },
+      {
+        "name": "Nicolás Dubersarsky",
+        "position": "MC",
+        "age": 21,
+        "overall": 69,
+        "nationality": "Argentina",
+        "value": 1500000
+      },
+      {
+        "name": "Ervin Torres",
+        "position": "MC",
+        "age": 18,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Micah Burton",
+        "position": "MCO",
+        "age": 19,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Myrto Uzuni",
+        "position": "EI",
+        "age": 30,
+        "overall": 75,
+        "nationality": "Albania",
+        "value": 5000000
+      },
+      {
+        "name": "Jayden Nelson",
+        "position": "EI",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Canadá",
+        "value": 2500000
+      },
+      {
+        "name": "Robert Taylor",
+        "position": "EI",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Finlandia",
+        "value": 1200000
+      },
+      {
+        "name": "CJ Fodrey",
+        "position": "EI",
+        "age": 21,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 350000
+      },
+      {
+        "name": "Facundo Torres",
+        "position": "ED",
+        "age": 25,
+        "overall": 79,
+        "nationality": "Uruguay",
+        "value": 13000000
+      },
+      {
+        "name": "Brandon Vazquez",
+        "position": "DC",
+        "age": 27,
+        "overall": 75,
+        "nationality": "Estados Unidos",
+        "value": 6000000
+      }
+    ]
+  },
+  {
+    "id": "columbus-crew",
+    "name": "Columbus Crew",
+    "shortName": "CLB",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "ScottsMiracle-Gro Field",
+    "stadiumCapacity": 20011,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Patrick Schulte",
+        "position": "POR",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Estados Unidos",
+        "value": 3500000
+      },
+      {
+        "name": "Nicholas Hagen",
+        "position": "POR",
+        "age": 29,
+        "overall": 63,
+        "nationality": "Guatemala",
+        "value": 200000
+      },
+      {
+        "name": "Evan Bush",
+        "position": "POR",
+        "age": 39,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 50000
+      },
+      {
+        "name": "Luke Pruter",
+        "position": "POR",
+        "age": 24,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 25000
+      },
+      {
+        "name": "Stanislav Lapkes",
+        "position": "POR",
+        "age": 19,
+        "overall": 59,
+        "nationality": "Bielorrusia",
+        "value": 0
+      },
+      {
+        "name": "Malte Amundsen",
+        "position": "DFC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Dinamarca",
+        "value": 3000000
+      },
+      {
+        "name": "Yevgen Cheberko",
+        "position": "DFC",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Ucrania",
+        "value": 1500000
+      },
+      {
+        "name": "Rudy Camacho",
+        "position": "DFC",
+        "age": 34,
+        "overall": 63,
+        "nationality": "Francia",
+        "value": 200000
+      },
+      {
+        "name": "Cesar Ruvalcaba",
+        "position": "DFC",
+        "age": 24,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 200000
+      },
+      {
+        "name": "Tristan Brown",
+        "position": "LTI",
+        "age": 18,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 150000
+      },
+      {
+        "name": "Andrés Herrera",
+        "position": "LTD",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Argentina",
+        "value": 1500000
+      },
+      {
+        "name": "Steven Moreira",
+        "position": "LTD",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Cabo Verde",
+        "value": 1500000
+      },
+      {
+        "name": "Owen Presthus",
+        "position": "LTD",
+        "age": 19,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 25000
+      },
+      {
+        "name": "Amar Sejdić",
+        "position": "MCD",
+        "age": 29,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 400000
+      },
+      {
+        "name": "Dylan Chambost",
+        "position": "MC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Francia",
+        "value": 2500000
+      },
+      {
+        "name": "Sean Zawadzki",
+        "position": "MC",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1800000
+      },
+      {
+        "name": "Sekou Bangoura",
+        "position": "MC",
+        "age": 23,
+        "overall": 67,
+        "nationality": "Guinea",
+        "value": 900000
+      },
+      {
+        "name": "Taha Habroune",
+        "position": "MC",
+        "age": 19,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 400000
+      },
+      {
+        "name": "Cole Mrowka",
+        "position": "MC",
+        "age": 19,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 125000
+      },
+      {
+        "name": "Mohamed Farsi",
+        "position": "MD",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Argelia",
+        "value": 2500000
+      },
+      {
+        "name": "Hugo Picard",
+        "position": "MI",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Francia",
+        "value": 3000000
+      },
+      {
+        "name": "Diego Rossi",
+        "position": "MCO",
+        "age": 27,
+        "overall": 77,
+        "nationality": "Uruguay",
+        "value": 8500000
+      },
+      {
+        "name": "Dániel Gazdag",
+        "position": "MCO",
+        "age": 29,
+        "overall": 75,
+        "nationality": "Hungría",
+        "value": 5000000
+      },
+      {
+        "name": "Quinton Elliot",
+        "position": "MCO",
+        "age": 22,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Max Arfsten",
+        "position": "EI",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Estados Unidos",
+        "value": 4500000
+      },
+      {
+        "name": "Wessam Abou Ali",
+        "position": "DC",
+        "age": 27,
+        "overall": 75,
+        "nationality": "Palestina",
+        "value": 6000000
+      },
+      {
+        "name": "Ibrahim Aliyu",
+        "position": "DC",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Nigeria",
+        "value": 1800000
+      },
+      {
+        "name": "Jamal Thiaré",
+        "position": "DC",
+        "age": 32,
+        "overall": 65,
+        "nationality": "Senegal",
+        "value": 400000
+      },
+      {
+        "name": "Chase Adams",
+        "position": "DC",
+        "age": 17,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": "new-york-city-fc",
+    "name": "New York City FC",
+    "shortName": "NYC",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Yankee Stadium",
+    "stadiumCapacity": 30321,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Matt Freese",
+        "position": "POR",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 2000000
+      },
+      {
+        "name": "Tomás Romero",
+        "position": "POR",
+        "age": 25,
+        "overall": 63,
+        "nationality": "El Salvador",
+        "value": 150000
+      },
+      {
+        "name": "Greg Ranjitsingh",
+        "position": "POR",
+        "age": 32,
+        "overall": 61,
+        "nationality": "Trinidad y Tobago",
+        "value": 100000
+      },
+      {
+        "name": "Mac Learned",
+        "position": "POR",
+        "age": 23,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Thiago Martins",
+        "position": "DFC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 2500000
+      },
+      {
+        "name": "Raul Gustavo",
+        "position": "DFC",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Brasil",
+        "value": 1500000
+      },
+      {
+        "name": "Strahinja Tanasijević",
+        "position": "DFC",
+        "age": 28,
+        "overall": 65,
+        "nationality": "Serbia",
+        "value": 500000
+      },
+      {
+        "name": "Kamran Acito",
+        "position": "DFC",
+        "age": 21,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Max Murray",
+        "position": "DFC",
+        "age": 23,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Kevin O'Toole",
+        "position": "LTI",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Irlanda",
+        "value": 1200000
+      },
+      {
+        "name": "Nico Cavallo",
+        "position": "LTI",
+        "age": 24,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 600000
+      },
+      {
+        "name": "Tayvon Gray",
+        "position": "LTD",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Jamaica",
+        "value": 2500000
+      },
+      {
+        "name": "Drew Baiera",
+        "position": "LTD",
+        "age": 18,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 75000
+      },
+      {
+        "name": "Aiden O'Neill",
+        "position": "MCD",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 3000000
+      },
+      {
+        "name": "Keaton Parks",
+        "position": "MCD",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 3000000
+      },
+      {
+        "name": "Andrés Perea",
+        "position": "MCD",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 2500000
+      },
+      {
+        "name": "Kai Trewin",
+        "position": "MCD",
+        "age": 24,
+        "overall": 67,
+        "nationality": "Australia",
+        "value": 1000000
+      },
+      {
+        "name": "Jonathan Shore",
+        "position": "MC",
+        "age": 18,
+        "overall": 67,
+        "nationality": "Estados Unidos",
+        "value": 1000000
+      },
+      {
+        "name": "Máximo Carrizo",
+        "position": "MC",
+        "age": 17,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 400000
+      },
+      {
+        "name": "Jacob Arroyave",
+        "position": "MC",
+        "age": 18,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Nicolás Fernández Mercau",
+        "position": "MCO",
+        "age": 26,
+        "overall": 75,
+        "nationality": "Argentina",
+        "value": 6000000
+      },
+      {
+        "name": "Maxi Moralez",
+        "position": "MCO",
+        "age": 38,
+        "overall": 61,
+        "nationality": "Argentina",
+        "value": 100000
+      },
+      {
+        "name": "Talles Magno",
+        "position": "EI",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Brasil",
+        "value": 4500000
+      },
+      {
+        "name": "Agustín Ojeda",
+        "position": "EI",
+        "age": 21,
+        "overall": 74,
+        "nationality": "Argentina",
+        "value": 4000000
+      },
+      {
+        "name": "Malachi Jones",
+        "position": "EI",
+        "age": 22,
+        "overall": 63,
+        "nationality": "Sierra Leona",
+        "value": 200000
+      },
+      {
+        "name": "Hannes Wolf",
+        "position": "ED",
+        "age": 26,
+        "overall": 75,
+        "nationality": "Austria",
+        "value": 5000000
+      },
+      {
+        "name": "Alonso Martínez",
+        "position": "DC",
+        "age": 27,
+        "overall": 75,
+        "nationality": "Costa Rica",
+        "value": 6000000
+      },
+      {
+        "name": "Seymour Reid",
+        "position": "DC",
+        "age": 17,
+        "overall": 63,
+        "nationality": "Jamaica",
+        "value": 200000
+      },
+      {
+        "name": "Zidane Yáñez",
+        "position": "DC",
+        "age": 18,
+        "overall": 59,
+        "nationality": "Chile",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": "san-diego-fc",
+    "name": "San Diego FC",
+    "shortName": "SD",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Snapdragon Stadium",
+    "stadiumCapacity": 35000,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "CJ dos Santos",
+        "position": "POR",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1500000
+      },
+      {
+        "name": "Pablo Sisniega",
+        "position": "POR",
+        "age": 30,
+        "overall": 63,
+        "nationality": "México",
+        "value": 175000
+      },
+      {
+        "name": "Duran Ferree",
+        "position": "POR",
+        "age": 19,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 150000
+      },
+      {
+        "name": "Christopher McVey",
+        "position": "DFC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 2000000
+      },
+      {
+        "name": "Andrés Reyes",
+        "position": "DFC",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Colombia",
+        "value": 1200000
+      },
+      {
+        "name": "Manu Duah",
+        "position": "DFC",
+        "age": 20,
+        "overall": 67,
+        "nationality": "Ghana",
+        "value": 1000000
+      },
+      {
+        "name": "Ian Pilcher",
+        "position": "DFC",
+        "age": 22,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 500000
+      },
+      {
+        "name": "Osvald Søe",
+        "position": "DFC",
+        "age": 20,
+        "overall": 65,
+        "nationality": "Dinamarca",
+        "value": 400000
+      },
+      {
+        "name": "Luca Bombino",
+        "position": "LTI",
+        "age": 19,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 2500000
+      },
+      {
+        "name": "Kieran Sargeant",
+        "position": "LTI",
+        "age": 22,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 150000
+      },
+      {
+        "name": "Willy Kumado",
+        "position": "LTD",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Ghana",
+        "value": 1200000
+      },
+      {
+        "name": "Oscar Verhoeven",
+        "position": "LTD",
+        "age": 19,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 500000
+      },
+      {
+        "name": "Leo Duru",
+        "position": "LTD",
+        "age": 21,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 75000
+      },
+      {
+        "name": "Wilson Eisner",
+        "position": "LTD",
+        "age": 23,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Jeppe Tverskov",
+        "position": "MCD",
+        "age": 32,
+        "overall": 67,
+        "nationality": "Dinamarca",
+        "value": 750000
+      },
+      {
+        "name": "Pedro Soma",
+        "position": "MCD",
+        "age": 19,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 200000
+      },
+      {
+        "name": "Aníbal Godoy",
+        "position": "MCD",
+        "age": 35,
+        "overall": 61,
+        "nationality": "Panamá",
+        "value": 100000
+      },
+      {
+        "name": "Alejandro Alvarado",
+        "position": "MC",
+        "age": 22,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 200000
+      },
+      {
+        "name": "David Vazquez",
+        "position": "MD",
+        "age": 19,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 100000
+      },
+      {
+        "name": "Emmanuel Boateng",
+        "position": "MI",
+        "age": 32,
+        "overall": 63,
+        "nationality": "Ghana",
+        "value": 150000
+      },
+      {
+        "name": "Onni Valakari",
+        "position": "MCO",
+        "age": 26,
+        "overall": 75,
+        "nationality": "Finlandia",
+        "value": 5000000
+      },
+      {
+        "name": "Hirving Lozano",
+        "position": "EI",
+        "age": 30,
+        "overall": 77,
+        "nationality": "México",
+        "value": 8000000
+      },
+      {
+        "name": "Lewis Morgan",
+        "position": "EI",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Escocia",
+        "value": 1200000
+      },
+      {
+        "name": "Alex Mighten",
+        "position": "EI",
+        "age": 23,
+        "overall": 67,
+        "nationality": "Inglaterra",
+        "value": 700000
+      },
+      {
+        "name": "Amahl Pellegrino",
+        "position": "EI",
+        "age": 35,
+        "overall": 63,
+        "nationality": "Noruega",
+        "value": 300000
+      },
+      {
+        "name": "Anders Dreyer",
+        "position": "ED",
+        "age": 27,
+        "overall": 79,
+        "nationality": "Dinamarca",
+        "value": 15000000
+      },
+      {
+        "name": "Marcus Ingvartsen",
+        "position": "DC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Dinamarca",
+        "value": 2500000
+      },
+      {
+        "name": "Tomás Ángel",
+        "position": "DC",
+        "age": 22,
+        "overall": 65,
+        "nationality": "Colombia",
+        "value": 600000
+      },
+      {
+        "name": "Anisse Saidi",
+        "position": "DC",
+        "age": 17,
+        "overall": 63,
+        "nationality": "Túnez",
+        "value": 300000
+      }
+    ]
+  },
+  {
+    "id": "chicago-fire-fc",
+    "name": "Chicago Fire FC",
+    "shortName": "CHI",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Soldier Field",
+    "stadiumCapacity": 61500,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Chris Brady",
+        "position": "POR",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 2500000
+      },
+      {
+        "name": "Josh Cohen",
+        "position": "POR",
+        "age": 33,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 125000
+      },
+      {
+        "name": "Jeff Gal",
+        "position": "POR",
+        "age": 32,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 100000
+      },
+      {
+        "name": "Mbekezeli Mbokazi",
+        "position": "DFC",
+        "age": 20,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 2500000
+      },
+      {
+        "name": "Jack Elliott",
+        "position": "DFC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Inglaterra",
+        "value": 2500000
+      },
+      {
+        "name": "Joel Waterman",
+        "position": "DFC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Canadá",
+        "value": 2500000
+      },
+      {
+        "name": "Mauricio Pineda",
+        "position": "DFC",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1200000
+      },
+      {
+        "name": "Sam Rogers",
+        "position": "DFC",
+        "age": 26,
+        "overall": 67,
+        "nationality": "Estados Unidos",
+        "value": 700000
+      },
+      {
+        "name": "Christopher Cupps",
+        "position": "DFC",
+        "age": 17,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 100000
+      },
+      {
+        "name": "Viktor Radojević",
+        "position": "LTI",
+        "age": 21,
+        "overall": 69,
+        "nationality": "Serbia",
+        "value": 1500000
+      },
+      {
+        "name": "Andrew Gutman",
+        "position": "LTI",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1500000
+      },
+      {
+        "name": "Leonardo Barroso",
+        "position": "LTD",
+        "age": 20,
+        "overall": 67,
+        "nationality": "Portugal",
+        "value": 1000000
+      },
+      {
+        "name": "Jonathan Dean",
+        "position": "LTD",
+        "age": 28,
+        "overall": 67,
+        "nationality": "Estados Unidos",
+        "value": 700000
+      },
+      {
+        "name": "Djé D'Avilla",
+        "position": "MCD",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Cote d'Ivoire",
+        "value": 2500000
+      },
+      {
+        "name": "Sam Williams",
+        "position": "MCD",
+        "age": 20,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 150000
+      },
+      {
+        "name": "Anton Salétros",
+        "position": "MC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 2500000
+      },
+      {
+        "name": "Robin Lod",
+        "position": "MC",
+        "age": 32,
+        "overall": 69,
+        "nationality": "Finlandia",
+        "value": 1200000
+      },
+      {
+        "name": "Sergio Oregel",
+        "position": "MC",
+        "age": 20,
+        "overall": 67,
+        "nationality": "Estados Unidos",
+        "value": 1000000
+      },
+      {
+        "name": "Maren Haile-Selassie",
+        "position": "MD",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Suiza",
+        "value": 1800000
+      },
+      {
+        "name": "Omari Glasgow",
+        "position": "MD",
+        "age": 22,
+        "overall": 65,
+        "nationality": "Guyana",
+        "value": 450000
+      },
+      {
+        "name": "André Franco",
+        "position": "MCO",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 2000000
+      },
+      {
+        "name": "David Poreba",
+        "position": "MCO",
+        "age": 23,
+        "overall": 61,
+        "nationality": "Polonia",
+        "value": 50000
+      },
+      {
+        "name": "Robert Turdean",
+        "position": "MCO",
+        "age": 16,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Jonathan Bamba",
+        "position": "EI",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Cote d'Ivoire",
+        "value": 3500000
+      },
+      {
+        "name": "Philip Zinckernagel",
+        "position": "ED",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Dinamarca",
+        "value": 4000000
+      },
+      {
+        "name": "Puso Dithejane",
+        "position": "ED",
+        "age": 21,
+        "overall": 67,
+        "nationality": "Sudáfrica",
+        "value": 800000
+      },
+      {
+        "name": "Chris Mueller",
+        "position": "ED",
+        "age": 29,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 300000
+      },
+      {
+        "name": "Dylan Borso",
+        "position": "ED",
+        "age": 19,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Hugo Cuypers",
+        "position": "DC",
+        "age": 28,
+        "overall": 77,
+        "nationality": "Bélgica",
+        "value": 9000000
+      },
+      {
+        "name": "Dean Boltz",
+        "position": "DC",
+        "age": 19,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 50000
+      },
+      {
+        "name": "Jason Shokalook",
+        "position": "DC",
+        "age": 23,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": "orlando-city-sc",
+    "name": "Orlando City SC",
+    "shortName": "ORL",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Inter&Co Stadium",
+    "stadiumCapacity": 25500,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Maxime Crépeau",
+        "position": "POR",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Canadá",
+        "value": 2500000
+      },
+      {
+        "name": "Javier Otero",
+        "position": "POR",
+        "age": 23,
+        "overall": 63,
+        "nationality": "Venezuela",
+        "value": 150000
+      },
+      {
+        "name": "David Brekalo",
+        "position": "DFC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Eslovenia",
+        "value": 4000000
+      },
+      {
+        "name": "Robin Jansson",
+        "position": "DFC",
+        "age": 34,
+        "overall": 65,
+        "nationality": "Suecia",
+        "value": 500000
+      },
+      {
+        "name": "Adrián Marín",
+        "position": "LTI",
+        "age": 29,
+        "overall": 69,
+        "nationality": "España",
+        "value": 1500000
+      },
+      {
+        "name": "Tahir Reid-Brown",
+        "position": "LTI",
+        "age": 19,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 75000
+      },
+      {
+        "name": "Zakaria Taifi",
+        "position": "LTD",
+        "age": 20,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 200000
+      },
+      {
+        "name": "Braian Ojeda",
+        "position": "MCD",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Paraguay",
+        "value": 4000000
+      },
+      {
+        "name": "Luis Otávio",
+        "position": "MCD",
+        "age": 18,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 2500000
+      },
+      {
+        "name": "Wilder Cartagena",
+        "position": "MCD",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Perú",
+        "value": 1500000
+      },
+      {
+        "name": "Joran Gerbet",
+        "position": "MCD",
+        "age": 24,
+        "overall": 65,
+        "nationality": "Francia",
+        "value": 500000
+      },
+      {
+        "name": "Colin Guske",
+        "position": "MCD",
+        "age": 19,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 200000
+      },
+      {
+        "name": "Eduard Atuesta",
+        "position": "MC",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Colombia",
+        "value": 3500000
+      },
+      {
+        "name": "Martín Ojeda",
+        "position": "MCO",
+        "age": 27,
+        "overall": 77,
+        "nationality": "Argentina",
+        "value": 8000000
+      },
+      {
+        "name": "Tiago",
+        "position": "EI",
+        "age": 20,
+        "overall": 72,
+        "nationality": "Brasil",
+        "value": 3000000
+      },
+      {
+        "name": "Iván Angulo",
+        "position": "EI",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Colombia",
+        "value": 3000000
+      },
+      {
+        "name": "Tyrese Spicer",
+        "position": "EI",
+        "age": 25,
+        "overall": 65,
+        "nationality": "Trinidad y Tobago",
+        "value": 600000
+      },
+      {
+        "name": "Yutaro Tsukada",
+        "position": "EI",
+        "age": 24,
+        "overall": 63,
+        "nationality": "Japón",
+        "value": 200000
+      },
+      {
+        "name": "Marco Pašalić",
+        "position": "ED",
+        "age": 25,
+        "overall": 75,
+        "nationality": "Croacia",
+        "value": 6500000
+      },
+      {
+        "name": "Gustavo Caraballo",
+        "position": "ED",
+        "age": 17,
+        "overall": 63,
+        "nationality": "Venezuela",
+        "value": 250000
+      },
+      {
+        "name": "Duncan McGuire",
+        "position": "DC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 2500000
+      }
+    ]
+  },
+  {
+    "id": "minnesota-united-fc",
+    "name": "Minnesota United FC",
+    "shortName": "MIN",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Allianz Field",
+    "stadiumCapacity": 19600,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Drake Callender",
+        "position": "POR",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1800000
+      },
+      {
+        "name": "Alec Smir",
+        "position": "POR",
+        "age": 26,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 150000
+      },
+      {
+        "name": "Kayne Rizvanovich",
+        "position": "POR",
+        "age": 18,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Nicolás Romero",
+        "position": "DFC",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Argentina",
+        "value": 2800000
+      },
+      {
+        "name": "Jefferson Díaz",
+        "position": "DFC",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Colombia",
+        "value": 1500000
+      },
+      {
+        "name": "Morris Duggan",
+        "position": "DFC",
+        "age": 25,
+        "overall": 67,
+        "nationality": "Alemania",
+        "value": 800000
+      },
+      {
+        "name": "Michael Boxall",
+        "position": "DFC",
+        "age": 37,
+        "overall": 63,
+        "nationality": "Nueva Zelanda",
+        "value": 150000
+      },
+      {
+        "name": "Britton Fischer",
+        "position": "DFC",
+        "age": 21,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Anthony Markanich Jr.",
+        "position": "LTI",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 2000000
+      },
+      {
+        "name": "Devin Padelford",
+        "position": "LTI",
+        "age": 23,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 500000
+      },
+      {
+        "name": "Kieran Chandler",
+        "position": "LTI",
+        "age": 20,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 50000
+      },
+      {
+        "name": "Matus Kmet",
+        "position": "LTD",
+        "age": 25,
+        "overall": 67,
+        "nationality": "Eslovaquia",
+        "value": 700000
+      },
+      {
+        "name": "D.J. Taylor",
+        "position": "LTD",
+        "age": 28,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 400000
+      },
+      {
+        "name": "Wil Trapp",
+        "position": "MCD",
+        "age": 33,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 600000
+      },
+      {
+        "name": "Carlos Harvey",
+        "position": "MCD",
+        "age": 25,
+        "overall": 65,
+        "nationality": "Panamá",
+        "value": 600000
+      },
+      {
+        "name": "Joaquín Pereyra",
+        "position": "MC",
+        "age": 27,
+        "overall": 75,
+        "nationality": "Argentina",
+        "value": 5000000
+      },
+      {
+        "name": "Nectarios Triantis",
+        "position": "MC",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Grecia",
+        "value": 2500000
+      },
+      {
+        "name": "Owen Gene",
+        "position": "MC",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Guadalupe",
+        "value": 1500000
+      },
+      {
+        "name": "Peter Stroud",
+        "position": "MC",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1200000
+      },
+      {
+        "name": "Julian Gressel",
+        "position": "MD",
+        "age": 32,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1800000
+      },
+      {
+        "name": "Dominik Fitz",
+        "position": "MCO",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Austria",
+        "value": 3500000
+      },
+      {
+        "name": "Alexis Fariña",
+        "position": "MCO",
+        "age": 21,
+        "overall": 67,
+        "nationality": "Paraguay",
+        "value": 800000
+      },
+      {
+        "name": "Tomás Chancalay",
+        "position": "EI",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Argentina",
+        "value": 2500000
+      },
+      {
+        "name": "Kenyel Michel",
+        "position": "EI",
+        "age": 21,
+        "overall": 67,
+        "nationality": "Costa Rica",
+        "value": 1000000
+      },
+      {
+        "name": "Mauricio González",
+        "position": "EI",
+        "age": 21,
+        "overall": 67,
+        "nationality": "Colombia",
+        "value": 900000
+      },
+      {
+        "name": "Bongokuhle Hlongwane",
+        "position": "ED",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Sudáfrica",
+        "value": 3500000
+      },
+      {
+        "name": "Darius Randell",
+        "position": "ED",
+        "age": 18,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 100000
+      },
+      {
+        "name": "Kelvin Yeboah",
+        "position": "DC",
+        "age": 25,
+        "overall": 75,
+        "nationality": "Italia",
+        "value": 6000000
+      },
+      {
+        "name": "Mamadou Dieng",
+        "position": "DC",
+        "age": 21,
+        "overall": 63,
+        "nationality": "Senegal",
+        "value": 250000
+      },
+      {
+        "name": "Jordan Adebayo-Smith",
+        "position": "DC",
+        "age": 25,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 150000
+      },
+      {
+        "name": "Marcus Caldeira",
+        "position": "DC",
+        "age": 21,
+        "overall": 59,
+        "nationality": "Canadá",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": "portland-timbers",
+    "name": "Portland Timbers",
+    "shortName": "POR",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Providence Park",
+    "stadiumCapacity": 25218,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "James Pantemis",
+        "position": "POR",
+        "age": 28,
+        "overall": 67,
+        "nationality": "Canadá",
+        "value": 1000000
+      },
+      {
+        "name": "Hunter Sulte",
+        "position": "POR",
+        "age": 23,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 150000
+      },
+      {
+        "name": "Trey Muse",
+        "position": "POR",
+        "age": 26,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 150000
+      },
+      {
+        "name": "Kamal Miller",
+        "position": "DFC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Canadá",
+        "value": 2500000
+      },
+      {
+        "name": "Finn Surman",
+        "position": "DFC",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Nueva Zelanda",
+        "value": 1500000
+      },
+      {
+        "name": "Alex Bonetig",
+        "position": "DFC",
+        "age": 23,
+        "overall": 67,
+        "nationality": "Australia",
+        "value": 1000000
+      },
+      {
+        "name": "Zac McGraw",
+        "position": "DFC",
+        "age": 28,
+        "overall": 65,
+        "nationality": "Canadá",
+        "value": 600000
+      },
+      {
+        "name": "Jimer Fory",
+        "position": "LTI",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Colombia",
+        "value": 1800000
+      },
+      {
+        "name": "Ian Smith",
+        "position": "LTI",
+        "age": 23,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 500000
+      },
+      {
+        "name": "Juan Mosquera",
+        "position": "LTD",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Colombia",
+        "value": 3000000
+      },
+      {
+        "name": "Brandon Bye",
+        "position": "LTD",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1800000
+      },
+      {
+        "name": "Eric Miller",
+        "position": "LTD",
+        "age": 33,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 300000
+      },
+      {
+        "name": "Sawyer Jura",
+        "position": "LTD",
+        "age": 19,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Joao Ortiz",
+        "position": "MCD",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Ecuador",
+        "value": 1800000
+      },
+      {
+        "name": "Diego Chará",
+        "position": "MC",
+        "age": 39,
+        "overall": 61,
+        "nationality": "Colombia",
+        "value": 100000
+      },
+      {
+        "name": "David Da Costa",
+        "position": "MCO",
+        "age": 25,
+        "overall": 75,
+        "nationality": "Portugal",
+        "value": 6000000
+      },
+      {
+        "name": "Antony",
+        "position": "EI",
+        "age": 24,
+        "overall": 75,
+        "nationality": "Brasil",
+        "value": 5000000
+      },
+      {
+        "name": "Kristoffer Velde",
+        "position": "EI",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 4500000
+      },
+      {
+        "name": "Ariel Lassiter",
+        "position": "EI",
+        "age": 31,
+        "overall": 65,
+        "nationality": "Costa Rica",
+        "value": 600000
+      },
+      {
+        "name": "Omir Fernandez",
+        "position": "ED",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1200000
+      },
+      {
+        "name": "Kevin Kelsy",
+        "position": "DC",
+        "age": 21,
+        "overall": 74,
+        "nationality": "Venezuela",
+        "value": 4000000
+      },
+      {
+        "name": "Felipe Mora",
+        "position": "DC",
+        "age": 32,
+        "overall": 71,
+        "nationality": "Chile",
+        "value": 2000000
+      },
+      {
+        "name": "Jonathan Rodríguez",
+        "position": "DC",
+        "age": 32,
+        "overall": 71,
+        "nationality": "Uruguay",
+        "value": 2000000
+      },
+      {
+        "name": "Gage Guerra",
+        "position": "DC",
+        "age": 23,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 200000
+      }
+    ]
+  },
+  {
+    "id": "charlotte-fc",
+    "name": "Charlotte FC",
+    "shortName": "CLT",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Bank of America Stadium",
+    "stadiumCapacity": 75412,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Kristijan Kahlina",
+        "position": "POR",
+        "age": 33,
+        "overall": 70,
+        "nationality": "Croacia",
+        "value": 1500000
+      },
+      {
+        "name": "Tyler Miller",
+        "position": "POR",
+        "age": 32,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 125000
+      },
+      {
+        "name": "Chituru Odunze",
+        "position": "POR",
+        "age": 23,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 50000
+      },
+      {
+        "name": "Nick Holliday",
+        "position": "POR",
+        "age": 20,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Henry Kessler",
+        "position": "DFC",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1800000
+      },
+      {
+        "name": "Andrew Privett",
+        "position": "DFC",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1200000
+      },
+      {
+        "name": "Tim Ream",
+        "position": "DFC",
+        "age": 38,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 200000
+      },
+      {
+        "name": "Jack Neeley",
+        "position": "DFC",
+        "age": 20,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 50000
+      },
+      {
+        "name": "Harry Toffolo",
+        "position": "LTI",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Inglaterra",
+        "value": 2000000
+      },
+      {
+        "name": "David Schnegg",
+        "position": "LTI",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Austria",
+        "value": 1500000
+      },
+      {
+        "name": "Mikah Thomas",
+        "position": "LTI",
+        "age": 20,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Nathan Byrne",
+        "position": "LTD",
+        "age": 33,
+        "overall": 67,
+        "nationality": "Inglaterra",
+        "value": 700000
+      },
+      {
+        "name": "Djibril Diani",
+        "position": "MCD",
+        "age": 27,
+        "overall": 67,
+        "nationality": "Francia",
+        "value": 1000000
+      },
+      {
+        "name": "Ashley Westwood",
+        "position": "MCD",
+        "age": 35,
+        "overall": 65,
+        "nationality": "Inglaterra",
+        "value": 400000
+      },
+      {
+        "name": "Luca de la Torre",
+        "position": "MC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 3000000
+      },
+      {
+        "name": "Brandt Bronico",
+        "position": "MC",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1500000
+      },
+      {
+        "name": "Baye Coulibaly",
+        "position": "MC",
+        "age": 20,
+        "overall": 69,
+        "nationality": "Malí",
+        "value": 1500000
+      },
+      {
+        "name": "Pep Biel",
+        "position": "MCO",
+        "age": 29,
+        "overall": 75,
+        "nationality": "España",
+        "value": 5500000
+      },
+      {
+        "name": "Wilfried Zaha",
+        "position": "EI",
+        "age": 33,
+        "overall": 73,
+        "nationality": "Cote d'Ivoire",
+        "value": 4000000
+      },
+      {
+        "name": "Nimfasha Berchimas",
+        "position": "EI",
+        "age": 17,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 300000
+      },
+      {
+        "name": "Liel Abada",
+        "position": "ED",
+        "age": 24,
+        "overall": 75,
+        "nationality": "Israel",
+        "value": 6000000
+      },
+      {
+        "name": "Kerwin Vargas",
+        "position": "ED",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Colombia",
+        "value": 3000000
+      },
+      {
+        "name": "Tyger Smalls",
+        "position": "ED",
+        "age": 23,
+        "overall": 63,
+        "nationality": "Inglaterra",
+        "value": 300000
+      },
+      {
+        "name": "Brian Romero",
+        "position": "ED",
+        "age": 19,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 150000
+      },
+      {
+        "name": "Idan Toklomati",
+        "position": "DC",
+        "age": 21,
+        "overall": 74,
+        "nationality": "Israel",
+        "value": 4500000
+      },
+      {
+        "name": "Archie Goodwin",
+        "position": "DC",
+        "age": 21,
+        "overall": 67,
+        "nationality": "Australia",
+        "value": 750000
+      }
+    ]
+  },
+  {
+    "id": "colorado-rapids",
+    "name": "Colorado Rapids",
+    "shortName": "COL",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Dick's Sporting Goods Park",
+    "stadiumCapacity": 33680,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Zack Steffen",
+        "position": "POR",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Estados Unidos",
+        "value": 1800000
+      },
+      {
+        "name": "Nicolas Hansen",
+        "position": "POR",
+        "age": 24,
+        "overall": 63,
+        "nationality": "Dinamarca",
+        "value": 300000
+      },
+      {
+        "name": "Adam Beaudry",
+        "position": "POR",
+        "age": 19,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 200000
+      },
+      {
+        "name": "Rob Holding",
+        "position": "DFC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Inglaterra",
+        "value": 3000000
+      },
+      {
+        "name": "Ian Murphy",
+        "position": "DFC",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1200000
+      },
+      {
+        "name": "Noah Cobb",
+        "position": "DFC",
+        "age": 20,
+        "overall": 67,
+        "nationality": "Estados Unidos",
+        "value": 1000000
+      },
+      {
+        "name": "Lucas Herrington",
+        "position": "DFC",
+        "age": 18,
+        "overall": 67,
+        "nationality": "Australia",
+        "value": 750000
+      },
+      {
+        "name": "Sam Vines",
+        "position": "LTI",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1200000
+      },
+      {
+        "name": "Jackson Travis",
+        "position": "LTI",
+        "age": 21,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 350000
+      },
+      {
+        "name": "Reggie Cannon",
+        "position": "LTD",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1500000
+      },
+      {
+        "name": "Keegan Rosenberry",
+        "position": "LTD",
+        "age": 32,
+        "overall": 67,
+        "nationality": "Estados Unidos",
+        "value": 800000
+      },
+      {
+        "name": "Josh Atencio",
+        "position": "MCD",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 2500000
+      },
+      {
+        "name": "Hamzat Ojediran",
+        "position": "MCD",
+        "age": 22,
+        "overall": 67,
+        "nationality": "Nigeria",
+        "value": 1000000
+      },
+      {
+        "name": "Connor Ronan",
+        "position": "MC",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Irlanda",
+        "value": 1200000
+      },
+      {
+        "name": "Wayne Frederick",
+        "position": "MC",
+        "age": 21,
+        "overall": 63,
+        "nationality": "Trinidad y Tobago",
+        "value": 175000
+      },
+      {
+        "name": "Ali Fadal",
+        "position": "MC",
+        "age": 22,
+        "overall": 61,
+        "nationality": "Ghana",
+        "value": 100000
+      },
+      {
+        "name": "Paxten Aaronson",
+        "position": "MCO",
+        "age": 22,
+        "overall": 75,
+        "nationality": "Estados Unidos",
+        "value": 7000000
+      },
+      {
+        "name": "Cole Bassett",
+        "position": "MCO",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Estados Unidos",
+        "value": 4000000
+      },
+      {
+        "name": "Theodore Ku-DiPietro",
+        "position": "MCO",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1500000
+      },
+      {
+        "name": "Alexis Manyoma",
+        "position": "EI",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Colombia",
+        "value": 1500000
+      },
+      {
+        "name": "Kimani Stewart-Baynes",
+        "position": "EI",
+        "age": 21,
+        "overall": 63,
+        "nationality": "Canadá",
+        "value": 200000
+      },
+      {
+        "name": "Dante Sealy",
+        "position": "ED",
+        "age": 22,
+        "overall": 67,
+        "nationality": "Trinidad y Tobago",
+        "value": 1000000
+      },
+      {
+        "name": "Bryce Jamison",
+        "position": "ED",
+        "age": 20,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 450000
+      },
+      {
+        "name": "Alex Harris",
+        "position": "ED",
+        "age": 20,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 75000
+      },
+      {
+        "name": "Rafael Navarro",
+        "position": "DC",
+        "age": 25,
+        "overall": 75,
+        "nationality": "Brasil",
+        "value": 5000000
+      },
+      {
+        "name": "Darren Yapi",
+        "position": "DC",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 2500000
+      },
+      {
+        "name": "Donavan Phillip",
+        "position": "DC",
+        "age": 21,
+        "overall": 59,
+        "nationality": "St. Lucia",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": "nashville-sc",
+    "name": "Nashville SC",
+    "shortName": "NSH",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "GEODIS Park",
+    "stadiumCapacity": 30000,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Joe Willis",
+        "position": "POR",
+        "age": 37,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 175000
+      },
+      {
+        "name": "Brian Schwake",
+        "position": "POR",
+        "age": 24,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 150000
+      },
+      {
+        "name": "Xavier Valdez",
+        "position": "POR",
+        "age": 22,
+        "overall": 61,
+        "nationality": "Rep. Dominicana",
+        "value": 75000
+      },
+      {
+        "name": "Jack Maher",
+        "position": "DFC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 2500000
+      },
+      {
+        "name": "Maxwell Woledzi",
+        "position": "DFC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Ghana",
+        "value": 2000000
+      },
+      {
+        "name": "Jeison Palacios",
+        "position": "DFC",
+        "age": 31,
+        "overall": 65,
+        "nationality": "Colombia",
+        "value": 500000
+      },
+      {
+        "name": "Josh Bauer",
+        "position": "DFC",
+        "age": 27,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 400000
+      },
+      {
+        "name": "Thomas Williams",
+        "position": "DFC",
+        "age": 21,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 175000
+      },
+      {
+        "name": "Christopher Applewhite",
+        "position": "DFC",
+        "age": 18,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 150000
+      },
+      {
+        "name": "Daniel Lovitz",
+        "position": "LTI",
+        "age": 34,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 400000
+      },
+      {
+        "name": "Isaiah LeFlore",
+        "position": "LTI",
+        "age": 23,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 25000
+      },
+      {
+        "name": "Jordan Knight",
+        "position": "LTI",
+        "age": 23,
+        "overall": 59,
+        "nationality": "Canadá",
+        "value": 0
+      },
+      {
+        "name": "Andy Nájar",
+        "position": "LTD",
+        "age": 32,
+        "overall": 65,
+        "nationality": "Honduras",
+        "value": 400000
+      },
+      {
+        "name": "Matthew Corcoran",
+        "position": "MCD",
+        "age": 19,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 300000
+      },
+      {
+        "name": "Patrick Yazbek",
+        "position": "MC",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 3500000
+      },
+      {
+        "name": "Edvard Tagseth",
+        "position": "MC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 3000000
+      },
+      {
+        "name": "Bryan Acosta",
+        "position": "MC",
+        "age": 32,
+        "overall": 65,
+        "nationality": "Honduras",
+        "value": 600000
+      },
+      {
+        "name": "Hany Mukhtar",
+        "position": "MCO",
+        "age": 30,
+        "overall": 75,
+        "nationality": "Alemania",
+        "value": 6000000
+      },
+      {
+        "name": "Jonathan Pérez",
+        "position": "EI",
+        "age": 23,
+        "overall": 67,
+        "nationality": "México",
+        "value": 800000
+      },
+      {
+        "name": "Warren Madrigal",
+        "position": "EI",
+        "age": 21,
+        "overall": 65,
+        "nationality": "Costa Rica",
+        "value": 600000
+      },
+      {
+        "name": "Cristian Espinoza",
+        "position": "ED",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Argentina",
+        "value": 4500000
+      },
+      {
+        "name": "Ahmed Qasem",
+        "position": "ED",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Suecia",
+        "value": 3500000
+      },
+      {
+        "name": "Alex Muyl",
+        "position": "ED",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 2000000
+      },
+      {
+        "name": "Shak Mohammed",
+        "position": "ED",
+        "age": 22,
+        "overall": 63,
+        "nationality": "Ghana",
+        "value": 150000
+      },
+      {
+        "name": "Sam Surridge",
+        "position": "DC",
+        "age": 27,
+        "overall": 77,
+        "nationality": "Inglaterra",
+        "value": 8000000
+      },
+      {
+        "name": "Woobens Pacius",
+        "position": "DC",
+        "age": 24,
+        "overall": 63,
+        "nationality": "Haití",
+        "value": 300000
+      },
+      {
+        "name": "Adem Sipić",
+        "position": "DC",
+        "age": 19,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 75000
+      }
+    ]
+  },
+  {
+    "id": "houston-dynamo-fc",
+    "name": "Houston Dynamo FC",
+    "shortName": "HOU",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Shell Energy Stadium",
+    "stadiumCapacity": 22039,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Jonathan Bond",
+        "position": "POR",
+        "age": 32,
+        "overall": 65,
+        "nationality": "Inglaterra",
+        "value": 500000
+      },
+      {
+        "name": "Blake Gillingham",
+        "position": "POR",
+        "age": 23,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 150000
+      },
+      {
+        "name": "Jimmy Maurer",
+        "position": "POR",
+        "age": 37,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 100000
+      },
+      {
+        "name": "Logan Erb",
+        "position": "POR",
+        "age": 22,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Lucas Halter",
+        "position": "DFC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 2000000
+      },
+      {
+        "name": "Felipe Andrade",
+        "position": "DFC",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Brasil",
+        "value": 1500000
+      },
+      {
+        "name": "Antônio Carlos",
+        "position": "DFC",
+        "age": 32,
+        "overall": 65,
+        "nationality": "Brasil",
+        "value": 600000
+      },
+      {
+        "name": "Erik Sviatchenko",
+        "position": "DFC",
+        "age": 34,
+        "overall": 65,
+        "nationality": "Dinamarca",
+        "value": 600000
+      },
+      {
+        "name": "Franco Negri",
+        "position": "LTI",
+        "age": 30,
+        "overall": 65,
+        "nationality": "Argentina",
+        "value": 500000
+      },
+      {
+        "name": "Reese Miller",
+        "position": "LTI",
+        "age": 22,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Griffin Dorsey",
+        "position": "LTD",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1500000
+      },
+      {
+        "name": "Artur",
+        "position": "MCD",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 3000000
+      },
+      {
+        "name": "Diadié Samassékou",
+        "position": "MCD",
+        "age": 30,
+        "overall": 67,
+        "nationality": "Malí",
+        "value": 1000000
+      },
+      {
+        "name": "Agustín Bouzat",
+        "position": "MCD",
+        "age": 31,
+        "overall": 67,
+        "nationality": "Argentina",
+        "value": 700000
+      },
+      {
+        "name": "Jack McGlynn",
+        "position": "MC",
+        "age": 22,
+        "overall": 75,
+        "nationality": "Estados Unidos",
+        "value": 5000000
+      },
+      {
+        "name": "Héctor Herrera",
+        "position": "MC",
+        "age": 35,
+        "overall": 67,
+        "nationality": "México",
+        "value": 900000
+      },
+      {
+        "name": "Sebastián Rodríguez",
+        "position": "MC",
+        "age": 18,
+        "overall": 59,
+        "nationality": "México",
+        "value": 0
+      },
+      {
+        "name": "Duane Holmes",
+        "position": "MD",
+        "age": 31,
+        "overall": 67,
+        "nationality": "Estados Unidos",
+        "value": 800000
+      },
+      {
+        "name": "Mateusz Bogusz",
+        "position": "MCO",
+        "age": 24,
+        "overall": 75,
+        "nationality": "Polonia",
+        "value": 6000000
+      },
+      {
+        "name": "Ondrej Lingr",
+        "position": "MCO",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Rep. Checa",
+        "value": 3500000
+      },
+      {
+        "name": "Guilherme",
+        "position": "EI",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 2500000
+      },
+      {
+        "name": "Lawrence Ennali",
+        "position": "EI",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Alemania",
+        "value": 2000000
+      },
+      {
+        "name": "Nelson Quiñónes",
+        "position": "EI",
+        "age": 23,
+        "overall": 65,
+        "nationality": "Colombia",
+        "value": 500000
+      },
+      {
+        "name": "Nick Markanich",
+        "position": "ED",
+        "age": 26,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 500000
+      },
+      {
+        "name": "Ezequiel Ponce",
+        "position": "DC",
+        "age": 28,
+        "overall": 75,
+        "nationality": "Argentina",
+        "value": 5000000
+      }
+    ]
+  },
+  {
+    "id": "new-england-revolution",
+    "name": "New England Revolution",
+    "shortName": "NE",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Gillette Stadium",
+    "stadiumCapacity": 68756,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Matt Turner",
+        "position": "POR",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Estados Unidos",
+        "value": 2500000
+      },
+      {
+        "name": "Donovan Parisian",
+        "position": "POR",
+        "age": 21,
+        "overall": 59,
+        "nationality": "Armenia",
+        "value": 0
+      },
+      {
+        "name": "Mamadou Fofana",
+        "position": "DFC",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Malí",
+        "value": 1800000
+      },
+      {
+        "name": "Brayan Ceballos",
+        "position": "DFC",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Colombia",
+        "value": 1800000
+      },
+      {
+        "name": "Tanner Beason",
+        "position": "DFC",
+        "age": 28,
+        "overall": 67,
+        "nationality": "Estados Unidos",
+        "value": 1000000
+      },
+      {
+        "name": "Ethan Kohler",
+        "position": "DFC",
+        "age": 20,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 200000
+      },
+      {
+        "name": "Andrew Farrell",
+        "position": "DFC",
+        "age": 33,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 150000
+      },
+      {
+        "name": "Keegan Hughes",
+        "position": "DFC",
+        "age": 25,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 125000
+      },
+      {
+        "name": "Eric Klein",
+        "position": "DFC",
+        "age": 19,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 50000
+      },
+      {
+        "name": "Peyton Miller",
+        "position": "LTI",
+        "age": 18,
+        "overall": 72,
+        "nationality": "Estados Unidos",
+        "value": 3000000
+      },
+      {
+        "name": "Will Sands",
+        "position": "LTI",
+        "age": 25,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 300000
+      },
+      {
+        "name": "Ilay Feingold",
+        "position": "LTD",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Israel",
+        "value": 3000000
+      },
+      {
+        "name": "Damario McIntosh",
+        "position": "LTD",
+        "age": 18,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Matt Polster",
+        "position": "MCD",
+        "age": 32,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 600000
+      },
+      {
+        "name": "Alhassan Yusuf",
+        "position": "MC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 3000000
+      },
+      {
+        "name": "Jackson Yueill",
+        "position": "MC",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1200000
+      },
+      {
+        "name": "Brooklyn Raines",
+        "position": "MC",
+        "age": 20,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 600000
+      },
+      {
+        "name": "Jack Panayotou",
+        "position": "MC",
+        "age": 21,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 200000
+      },
+      {
+        "name": "Carles Gil",
+        "position": "MCO",
+        "age": 33,
+        "overall": 71,
+        "nationality": "España",
+        "value": 2500000
+      },
+      {
+        "name": "Allan Oyirwoth",
+        "position": "MCO",
+        "age": 19,
+        "overall": 65,
+        "nationality": "Uganda",
+        "value": 400000
+      },
+      {
+        "name": "Cristiano Oliveira",
+        "position": "MCO",
+        "age": 17,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Luca Langoni",
+        "position": "ED",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Argentina",
+        "value": 4000000
+      },
+      {
+        "name": "Griffin Yow",
+        "position": "ED",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 2500000
+      },
+      {
+        "name": "Malcolm Fry",
+        "position": "ED",
+        "age": 20,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 50000
+      },
+      {
+        "name": "Dor Turgeman",
+        "position": "DC",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Israel",
+        "value": 4500000
+      },
+      {
+        "name": "Leonardo Campana",
+        "position": "DC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Ecuador",
+        "value": 2500000
+      }
+    ]
+  },
+  {
+    "id": "philadelphia-union",
+    "name": "Philadelphia Union",
+    "shortName": "PHI",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Subaru Park",
+    "stadiumCapacity": 18500,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Andre Blake",
+        "position": "POR",
+        "age": 35,
+        "overall": 65,
+        "nationality": "Jamaica",
+        "value": 400000
+      },
+      {
+        "name": "Andrew Rick",
+        "position": "POR",
+        "age": 20,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 400000
+      },
+      {
+        "name": "George Marks",
+        "position": "POR",
+        "age": 26,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 100000
+      },
+      {
+        "name": "Olwethu Makhanya",
+        "position": "DFC",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Sudáfrica",
+        "value": 2000000
+      },
+      {
+        "name": "Japhet Sery Larsen",
+        "position": "DFC",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Dinamarca",
+        "value": 1200000
+      },
+      {
+        "name": "Finn Sundstrom",
+        "position": "DFC",
+        "age": 19,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 200000
+      },
+      {
+        "name": "Kaiden Moore",
+        "position": "DFC",
+        "age": 18,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Nathan Harriel",
+        "position": "LTD",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1500000
+      },
+      {
+        "name": "Frankie Westfield",
+        "position": "LTD",
+        "age": 20,
+        "overall": 67,
+        "nationality": "Estados Unidos",
+        "value": 800000
+      },
+      {
+        "name": "Olivier Mbaizo",
+        "position": "LTD",
+        "age": 28,
+        "overall": 65,
+        "nationality": "Camerún",
+        "value": 500000
+      },
+      {
+        "name": "Danley Jean Jacques",
+        "position": "MCD",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Haití",
+        "value": 3000000
+      },
+      {
+        "name": "Jesús Bueno",
+        "position": "MCD",
+        "age": 26,
+        "overall": 67,
+        "nationality": "Venezuela",
+        "value": 800000
+      },
+      {
+        "name": "Quinn Sullivan",
+        "position": "MC",
+        "age": 21,
+        "overall": 76,
+        "nationality": "Estados Unidos",
+        "value": 5000000
+      },
+      {
+        "name": "Jovan Lukić",
+        "position": "MC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Serbia",
+        "value": 2500000
+      },
+      {
+        "name": "Ben Bender",
+        "position": "MC",
+        "age": 24,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 300000
+      },
+      {
+        "name": "Alejandro Bedoya",
+        "position": "MC",
+        "age": 38,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 100000
+      },
+      {
+        "name": "CJ Olney Jr.",
+        "position": "MI",
+        "age": 19,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 150000
+      },
+      {
+        "name": "Cavan Sullivan",
+        "position": "MCO",
+        "age": 16,
+        "overall": 74,
+        "nationality": "Estados Unidos",
+        "value": 3500000
+      },
+      {
+        "name": "Jeremy Rafanello",
+        "position": "MCO",
+        "age": 25,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 200000
+      },
+      {
+        "name": "Indiana Vassilev",
+        "position": "ED",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 2500000
+      },
+      {
+        "name": "Ezekiel Alladoh",
+        "position": "DC",
+        "age": 20,
+        "overall": 74,
+        "nationality": "Ghana",
+        "value": 3500000
+      },
+      {
+        "name": "Milan Iloski",
+        "position": "DC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 3000000
+      },
+      {
+        "name": "Bruno Damiani",
+        "position": "DC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Uruguay",
+        "value": 2500000
+      },
+      {
+        "name": "Markus Anderson",
+        "position": "DC",
+        "age": 22,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 200000
+      },
+      {
+        "name": "Sal Olivas",
+        "position": "DC",
+        "age": 19,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 100000
+      },
+      {
+        "name": "Eddy Davis III",
+        "position": "DC",
+        "age": 19,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 75000
+      },
+      {
+        "name": "Stas Korzeniowski",
+        "position": "DC",
+        "age": 23,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": "cf-montreal",
+    "name": "CF Montréal",
+    "shortName": "MTL",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Stade Saputo",
+    "stadiumCapacity": 20801,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Thomas Gillier",
+        "position": "POR",
+        "age": 21,
+        "overall": 69,
+        "nationality": "Chile",
+        "value": 1800000
+      },
+      {
+        "name": "Jonathan Sirois",
+        "position": "POR",
+        "age": 24,
+        "overall": 67,
+        "nationality": "Canadá",
+        "value": 1000000
+      },
+      {
+        "name": "Sébastian Breza",
+        "position": "POR",
+        "age": 27,
+        "overall": 63,
+        "nationality": "Canadá",
+        "value": 300000
+      },
+      {
+        "name": "Tomás Avilés",
+        "position": "DFC",
+        "age": 21,
+        "overall": 74,
+        "nationality": "Argentina",
+        "value": 4500000
+      },
+      {
+        "name": "Brayan Vera",
+        "position": "DFC",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Colombia",
+        "value": 1500000
+      },
+      {
+        "name": "Jalen Neal",
+        "position": "DFC",
+        "age": 22,
+        "overall": 67,
+        "nationality": "Estados Unidos",
+        "value": 800000
+      },
+      {
+        "name": "Brandan Craig",
+        "position": "DFC",
+        "age": 21,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 450000
+      },
+      {
+        "name": "Efraín Morales",
+        "position": "DFC",
+        "age": 21,
+        "overall": 65,
+        "nationality": "Bolivia",
+        "value": 400000
+      },
+      {
+        "name": "Luca Petrasso",
+        "position": "LTI",
+        "age": 25,
+        "overall": 65,
+        "nationality": "Canadá",
+        "value": 600000
+      },
+      {
+        "name": "Dagur Dan Thórhallsson",
+        "position": "LTD",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Islandia",
+        "value": 1500000
+      },
+      {
+        "name": "Jahkeele Marshall-Rutty",
+        "position": "LTD",
+        "age": 21,
+        "overall": 69,
+        "nationality": "Canadá",
+        "value": 1500000
+      },
+      {
+        "name": "Bode Hidalgo",
+        "position": "LTD",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1500000
+      },
+      {
+        "name": "Aleksandr Guboglo",
+        "position": "LTD",
+        "age": 18,
+        "overall": 65,
+        "nationality": "Canadá",
+        "value": 500000
+      },
+      {
+        "name": "Dawid Bugaj",
+        "position": "LTD",
+        "age": 21,
+        "overall": 65,
+        "nationality": "Polonia",
+        "value": 400000
+      },
+      {
+        "name": "Samuel Piette",
+        "position": "MCD",
+        "age": 31,
+        "overall": 67,
+        "nationality": "Canadá",
+        "value": 800000
+      },
+      {
+        "name": "Josh Nteziryayo",
+        "position": "MCD",
+        "age": 17,
+        "overall": 59,
+        "nationality": "Canadá",
+        "value": 0
+      },
+      {
+        "name": "Matty Longstaff",
+        "position": "MC",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Inglaterra",
+        "value": 1200000
+      },
+      {
+        "name": "Victor Loturi",
+        "position": "MC",
+        "age": 24,
+        "overall": 67,
+        "nationality": "Canadá",
+        "value": 800000
+      },
+      {
+        "name": "Ivan Losenko",
+        "position": "MC",
+        "age": 21,
+        "overall": 63,
+        "nationality": "Ucrania",
+        "value": 300000
+      },
+      {
+        "name": "Iván Jaime",
+        "position": "MCO",
+        "age": 25,
+        "overall": 75,
+        "nationality": "España",
+        "value": 5000000
+      },
+      {
+        "name": "Olger Escobar",
+        "position": "MCO",
+        "age": 19,
+        "overall": 63,
+        "nationality": "Guatemala",
+        "value": 300000
+      },
+      {
+        "name": "Gennadiy Synchuk",
+        "position": "ED",
+        "age": 19,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 2000000
+      },
+      {
+        "name": "Fabian Herbers",
+        "position": "ED",
+        "age": 32,
+        "overall": 67,
+        "nationality": "Alemania",
+        "value": 700000
+      },
+      {
+        "name": "Mahala Opoku",
+        "position": "ED",
+        "age": 24,
+        "overall": 65,
+        "nationality": "Ghana",
+        "value": 600000
+      },
+      {
+        "name": "Prince Owusu",
+        "position": "DC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Ghana",
+        "value": 3000000
+      },
+      {
+        "name": "Daniel Ríos",
+        "position": "DC",
+        "age": 30,
+        "overall": 65,
+        "nationality": "México",
+        "value": 600000
+      },
+      {
+        "name": "Sunusi Ibrahim",
+        "position": "DC",
+        "age": 23,
+        "overall": 65,
+        "nationality": "Nigeria",
+        "value": 600000
+      },
+      {
+        "name": "Owen Graham-Roache",
+        "position": "DC",
+        "age": 17,
+        "overall": 63,
+        "nationality": "Canadá",
+        "value": 150000
+      }
+    ]
+  },
+  {
+    "id": "st-louis-city-sc",
+    "name": "St. Louis CITY SC",
+    "shortName": "STL",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Energizer Park",
+    "stadiumCapacity": 22500,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Roman Bürki",
+        "position": "POR",
+        "age": 35,
+        "overall": 70,
+        "nationality": "Suiza",
+        "value": 1200000
+      },
+      {
+        "name": "Ben Lundt",
+        "position": "POR",
+        "age": 30,
+        "overall": 63,
+        "nationality": "Alemania",
+        "value": 200000
+      },
+      {
+        "name": "Fallou Fall",
+        "position": "DFC",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Senegal",
+        "value": 3000000
+      },
+      {
+        "name": "Kyle Hiebert",
+        "position": "DFC",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Canadá",
+        "value": 1500000
+      },
+      {
+        "name": "Timo Baumgartl",
+        "position": "DFC",
+        "age": 29,
+        "overall": 65,
+        "nationality": "Alemania",
+        "value": 600000
+      },
+      {
+        "name": "Joshua Yaro",
+        "position": "DFC",
+        "age": 31,
+        "overall": 65,
+        "nationality": "Ghana",
+        "value": 500000
+      },
+      {
+        "name": "Mamadou Mbacke",
+        "position": "DFC",
+        "age": 23,
+        "overall": 63,
+        "nationality": "Senegal",
+        "value": 300000
+      },
+      {
+        "name": "Rafael Santos",
+        "position": "LTI",
+        "age": 27,
+        "overall": 67,
+        "nationality": "Brasil",
+        "value": 800000
+      },
+      {
+        "name": "Tomas Totland",
+        "position": "LTD",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Noruega",
+        "value": 1200000
+      },
+      {
+        "name": "Jaziel Orozco",
+        "position": "LTD",
+        "age": 21,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 250000
+      },
+      {
+        "name": "Tyson Pearce",
+        "position": "LTD",
+        "age": 18,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 100000
+      },
+      {
+        "name": "Daniel Edelman",
+        "position": "MCD",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 2000000
+      },
+      {
+        "name": "Chris Durkin",
+        "position": "MCD",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1800000
+      },
+      {
+        "name": "Dante Polvara",
+        "position": "MCD",
+        "age": 25,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 400000
+      },
+      {
+        "name": "Marcel Hartel",
+        "position": "MC",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Alemania",
+        "value": 4500000
+      },
+      {
+        "name": "Eduard Löwen",
+        "position": "MC",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Alemania",
+        "value": 3500000
+      },
+      {
+        "name": "Miguel Perez",
+        "position": "MC",
+        "age": 20,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 300000
+      },
+      {
+        "name": "Conrad Wallem",
+        "position": "MD",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 2000000
+      },
+      {
+        "name": "MyKhi Joyner",
+        "position": "MI",
+        "age": 19,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 250000
+      },
+      {
+        "name": "Tomas Ostrák",
+        "position": "MCO",
+        "age": 25,
+        "overall": 67,
+        "nationality": "Rep. Checa",
+        "value": 1000000
+      },
+      {
+        "name": "Célio Pompeu",
+        "position": "EI",
+        "age": 26,
+        "overall": 67,
+        "nationality": "Brasil",
+        "value": 1000000
+      },
+      {
+        "name": "Cedric Teuchert",
+        "position": "DC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Alemania",
+        "value": 2500000
+      },
+      {
+        "name": "Sang-bin Jeong",
+        "position": "DC",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Corea del Sur",
+        "value": 1800000
+      },
+      {
+        "name": "Simon Becher",
+        "position": "DC",
+        "age": 26,
+        "overall": 67,
+        "nationality": "Estados Unidos",
+        "value": 800000
+      },
+      {
+        "name": "Brendan McSorley",
+        "position": "DC",
+        "age": 24,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 400000
+      },
+      {
+        "name": "Caden Glover",
+        "position": "DC",
+        "age": 18,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 150000
+      }
+    ]
+  },
+  {
+    "id": "real-salt-lake-city",
+    "name": "Real Salt Lake City",
+    "shortName": "RSL",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "America First Field",
+    "stadiumCapacity": 20213,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Rafael Cabral",
+        "position": "POR",
+        "age": 35,
+        "overall": 63,
+        "nationality": "Brasil",
+        "value": 200000
+      },
+      {
+        "name": "Mason Stajduhar",
+        "position": "POR",
+        "age": 28,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 175000
+      },
+      {
+        "name": "Max Kerkvliet",
+        "position": "POR",
+        "age": 20,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Justen Glad",
+        "position": "DFC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 3000000
+      },
+      {
+        "name": "Philip Quinton",
+        "position": "DFC",
+        "age": 26,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 600000
+      },
+      {
+        "name": "Kobi Henry",
+        "position": "DFC",
+        "age": 21,
+        "overall": 61,
+        "nationality": "Trinidad y Tobago",
+        "value": 100000
+      },
+      {
+        "name": "Lukas Engel",
+        "position": "LTI",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Dinamarca",
+        "value": 3000000
+      },
+      {
+        "name": "Alexandros Katranis",
+        "position": "LTI",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Grecia",
+        "value": 1200000
+      },
+      {
+        "name": "Sam Junqua",
+        "position": "LTI",
+        "age": 29,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 650000
+      },
+      {
+        "name": "Luis Rivera",
+        "position": "LTI",
+        "age": 18,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 50000
+      },
+      {
+        "name": "DeAndre Yedlin",
+        "position": "LTD",
+        "age": 32,
+        "overall": 67,
+        "nationality": "Estados Unidos",
+        "value": 1000000
+      },
+      {
+        "name": "Gio Villa",
+        "position": "LTD",
+        "age": 18,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Emeka Eneli",
+        "position": "MCD",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 2500000
+      },
+      {
+        "name": "Stijn Spierings",
+        "position": "MC",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 1200000
+      },
+      {
+        "name": "Pablo Ruiz",
+        "position": "MC",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Argentina",
+        "value": 1200000
+      },
+      {
+        "name": "Noel Caliskan",
+        "position": "MC",
+        "age": 25,
+        "overall": 67,
+        "nationality": "Alemania",
+        "value": 800000
+      },
+      {
+        "name": "Griffin Dillon",
+        "position": "MC",
+        "age": 22,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Luca Moisa",
+        "position": "MC",
+        "age": 17,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Diego Luna",
+        "position": "MI",
+        "age": 22,
+        "overall": 77,
+        "nationality": "Estados Unidos",
+        "value": 8000000
+      },
+      {
+        "name": "Owen Anderson",
+        "position": "MCO",
+        "age": 18,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Antonio Riquelme",
+        "position": "MCO",
+        "age": 17,
+        "overall": 59,
+        "nationality": "Chile",
+        "value": 0
+      },
+      {
+        "name": "Zach Booth",
+        "position": "EI",
+        "age": 21,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 350000
+      },
+      {
+        "name": "Chance Cowell",
+        "position": "EI",
+        "age": 17,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Dominik Marczuk",
+        "position": "ED",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Polonia",
+        "value": 1500000
+      },
+      {
+        "name": "Zavier Gozo",
+        "position": "ED",
+        "age": 18,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1500000
+      },
+      {
+        "name": "Tyler Wolff",
+        "position": "ED",
+        "age": 22,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 400000
+      },
+      {
+        "name": "Aiden Hezarkhani",
+        "position": "ED",
+        "age": 18,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 50000
+      },
+      {
+        "name": "Diego Rocío",
+        "position": "ED",
+        "age": 18,
+        "overall": 59,
+        "nationality": "México",
+        "value": 0
+      },
+      {
+        "name": "Omar Marquez",
+        "position": "ED",
+        "age": 17,
+        "overall": 59,
+        "nationality": "México",
+        "value": 0
+      },
+      {
+        "name": "Victor Olatunji",
+        "position": "DC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 2500000
+      },
+      {
+        "name": "Ariath Piol",
+        "position": "DC",
+        "age": 21,
+        "overall": 65,
+        "nationality": "Australia",
+        "value": 500000
+      },
+      {
+        "name": "Jesus Barea",
+        "position": "DC",
+        "age": 23,
+        "overall": 63,
+        "nationality": "España",
+        "value": 150000
+      },
+      {
+        "name": "Marcos Zambrano",
+        "position": "DC",
+        "age": 21,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 150000
+      },
+      {
+        "name": "Sergi Solans",
+        "position": "DC",
+        "age": 22,
+        "overall": 59,
+        "nationality": "España",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": "fc-dallas",
+    "name": "FC Dallas",
+    "shortName": "DAL",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Toyota Stadium",
+    "stadiumCapacity": 20500,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Michael Collodi",
+        "position": "POR",
+        "age": 24,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 400000
+      },
+      {
+        "name": "Osaze Urhoghide",
+        "position": "DFC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Inglaterra",
+        "value": 2000000
+      },
+      {
+        "name": "Lalas Abubakar",
+        "position": "DFC",
+        "age": 31,
+        "overall": 65,
+        "nationality": "Ghana",
+        "value": 500000
+      },
+      {
+        "name": "Sebastien Ibeagha",
+        "position": "DFC",
+        "age": 34,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 300000
+      },
+      {
+        "name": "Álvaro Augusto",
+        "position": "DFC",
+        "age": 20,
+        "overall": 63,
+        "nationality": "Brasil",
+        "value": 200000
+      },
+      {
+        "name": "Kaka Scabin",
+        "position": "DFC",
+        "age": 19,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Slade Starnes",
+        "position": "DFC",
+        "age": 22,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Nolan Norris",
+        "position": "LTI",
+        "age": 20,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 250000
+      },
+      {
+        "name": "Joshua Torquato",
+        "position": "LTI",
+        "age": 18,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 200000
+      },
+      {
+        "name": "Shaq Moore",
+        "position": "LTD",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1500000
+      },
+      {
+        "name": "Geovane Jesus",
+        "position": "LTD",
+        "age": 24,
+        "overall": 65,
+        "nationality": "Brasil",
+        "value": 500000
+      },
+      {
+        "name": "Enzo Newman",
+        "position": "LTD",
+        "age": 20,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Malachi Molina",
+        "position": "LTD",
+        "age": 19,
+        "overall": 59,
+        "nationality": "Jamaica",
+        "value": 0
+      },
+      {
+        "name": "Patrickson Delgado",
+        "position": "MCD",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Ecuador",
+        "value": 3000000
+      },
+      {
+        "name": "Kaick",
+        "position": "MCD",
+        "age": 20,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 2500000
+      },
+      {
+        "name": "Ran Binyamin",
+        "position": "MC",
+        "age": 21,
+        "overall": 67,
+        "nationality": "Israel",
+        "value": 700000
+      },
+      {
+        "name": "Christian Cappis",
+        "position": "MC",
+        "age": 26,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 600000
+      },
+      {
+        "name": "Ramiro",
+        "position": "MC",
+        "age": 32,
+        "overall": 65,
+        "nationality": "Brasil",
+        "value": 600000
+      },
+      {
+        "name": "Diego García",
+        "position": "MC",
+        "age": 19,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 50000
+      },
+      {
+        "name": "Caleb Swann",
+        "position": "MC",
+        "age": 18,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Herman Johansson",
+        "position": "MD",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Suecia",
+        "value": 1800000
+      },
+      {
+        "name": "Paxton Pomykal",
+        "position": "MCO",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1800000
+      },
+      {
+        "name": "Jaidyn Contreras",
+        "position": "EI",
+        "age": 18,
+        "overall": 59,
+        "nationality": "Honduras",
+        "value": 0
+      },
+      {
+        "name": "Anderson Julio",
+        "position": "ED",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Ecuador",
+        "value": 3000000
+      },
+      {
+        "name": "Louicius Deedson",
+        "position": "ED",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Haití",
+        "value": 1200000
+      },
+      {
+        "name": "Bernard Kamungo",
+        "position": "ED",
+        "age": 24,
+        "overall": 67,
+        "nationality": "Estados Unidos",
+        "value": 1000000
+      },
+      {
+        "name": "Sam Sarver",
+        "position": "ED",
+        "age": 22,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 400000
+      },
+      {
+        "name": "Daniel Baran",
+        "position": "ED",
+        "age": 19,
+        "overall": 59,
+        "nationality": "Polonia",
+        "value": 0
+      },
+      {
+        "name": "Petar Musa",
+        "position": "DC",
+        "age": 27,
+        "overall": 75,
+        "nationality": "Croacia",
+        "value": 7000000
+      },
+      {
+        "name": "Logan Farrington",
+        "position": "DC",
+        "age": 24,
+        "overall": 67,
+        "nationality": "Estados Unidos",
+        "value": 1000000
+      },
+      {
+        "name": "Nicholas Simmonds",
+        "position": "DC",
+        "age": 19,
+        "overall": 59,
+        "nationality": "Jamaica",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": "new-york-red-bulls",
+    "name": "New York Red Bulls",
+    "shortName": "NYRB",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Sports Illustrated Stadium",
+    "stadiumCapacity": 25000,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Ethan Horvath",
+        "position": "POR",
+        "age": 30,
+        "overall": 68,
+        "nationality": "Estados Unidos",
+        "value": 1000000
+      },
+      {
+        "name": "John McCarthy",
+        "position": "POR",
+        "age": 33,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 400000
+      },
+      {
+        "name": "AJ Marcucci",
+        "position": "POR",
+        "age": 26,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 250000
+      },
+      {
+        "name": "Aidan Stokes",
+        "position": "POR",
+        "age": 18,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 50000
+      },
+      {
+        "name": "Tobias Szewczyk",
+        "position": "POR",
+        "age": 17,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Noah Eile",
+        "position": "DFC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 2000000
+      },
+      {
+        "name": "Robert Voloder",
+        "position": "DFC",
+        "age": 24,
+        "overall": 67,
+        "nationality": "Alemania",
+        "value": 800000
+      },
+      {
+        "name": "Tim Parker",
+        "position": "DFC",
+        "age": 32,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 350000
+      },
+      {
+        "name": "Omar Valencia",
+        "position": "LTI",
+        "age": 21,
+        "overall": 69,
+        "nationality": "Panamá",
+        "value": 1200000
+      },
+      {
+        "name": "Raheem Edwards",
+        "position": "LTI",
+        "age": 30,
+        "overall": 67,
+        "nationality": "Canadá",
+        "value": 800000
+      },
+      {
+        "name": "Dylan Nealis",
+        "position": "LTD",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1500000
+      },
+      {
+        "name": "Justin Che",
+        "position": "LTD",
+        "age": 22,
+        "overall": 67,
+        "nationality": "Estados Unidos",
+        "value": 700000
+      },
+      {
+        "name": "Juan Mina",
+        "position": "LTD",
+        "age": 21,
+        "overall": 63,
+        "nationality": "Colombia",
+        "value": 200000
+      },
+      {
+        "name": "Gustav Berggren",
+        "position": "MCD",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 3000000
+      },
+      {
+        "name": "Aiden Jarvis",
+        "position": "MCD",
+        "age": 19,
+        "overall": 59,
+        "nationality": "Antigua and Barbuda",
+        "value": 0
+      },
+      {
+        "name": "Ronald Donkor",
+        "position": "MC",
+        "age": 21,
+        "overall": 65,
+        "nationality": "Ghana",
+        "value": 600000
+      },
+      {
+        "name": "Nehuén Benedetti",
+        "position": "MC",
+        "age": 20,
+        "overall": 59,
+        "nationality": "Argentina",
+        "value": 0
+      },
+      {
+        "name": "Adri Mehmeti",
+        "position": "MC",
+        "age": 16,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Wikelman Carmona",
+        "position": "MCO",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Venezuela",
+        "value": 1800000
+      },
+      {
+        "name": "Jorge Ruvalcaba",
+        "position": "EI",
+        "age": 24,
+        "overall": 73,
+        "nationality": "México",
+        "value": 4000000
+      },
+      {
+        "name": "Cade Cowell",
+        "position": "EI",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Estados Unidos",
+        "value": 3800000
+      },
+      {
+        "name": "Emil Forsberg",
+        "position": "EI",
+        "age": 34,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 2500000
+      },
+      {
+        "name": "Mohammed Sofo",
+        "position": "EI",
+        "age": 21,
+        "overall": 67,
+        "nationality": "Ghana",
+        "value": 1000000
+      },
+      {
+        "name": "Andy Rojas",
+        "position": "EI",
+        "age": 20,
+        "overall": 67,
+        "nationality": "Costa Rica",
+        "value": 1000000
+      },
+      {
+        "name": "Rafael Mosquera",
+        "position": "EI",
+        "age": 20,
+        "overall": 63,
+        "nationality": "Panamá",
+        "value": 250000
+      },
+      {
+        "name": "Dennis Gjengaar",
+        "position": "ED",
+        "age": 21,
+        "overall": 69,
+        "nationality": "Noruega",
+        "value": 1500000
+      },
+      {
+        "name": "Cameron Harper",
+        "position": "ED",
+        "age": 24,
+        "overall": 67,
+        "nationality": "Estados Unidos",
+        "value": 750000
+      },
+      {
+        "name": "Serge Ngoma Jr.",
+        "position": "ED",
+        "age": 20,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 500000
+      },
+      {
+        "name": "Wiktor Bogacz",
+        "position": "DC",
+        "age": 21,
+        "overall": 69,
+        "nationality": "Polonia",
+        "value": 1800000
+      },
+      {
+        "name": "Eric-Maxim Choupo-Moting",
+        "position": "DC",
+        "age": 36,
+        "overall": 69,
+        "nationality": "Camerún",
+        "value": 1200000
+      },
+      {
+        "name": "Julian Hall",
+        "position": "DC",
+        "age": 17,
+        "overall": 67,
+        "nationality": "Estados Unidos",
+        "value": 1000000
+      },
+      {
+        "name": "Roald Mitchell",
+        "position": "DC",
+        "age": 23,
+        "overall": 61,
+        "nationality": "Trinidad y Tobago",
+        "value": 50000
+      },
+      {
+        "name": "Tanner Rosborough",
+        "position": "DC",
+        "age": 17,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": "dc-united",
+    "name": "D.C. United",
+    "shortName": "DCU",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Audi Field",
+    "stadiumCapacity": 20000,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Sean Johnson",
+        "position": "POR",
+        "age": 36,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 300000
+      },
+      {
+        "name": "Alex Bono",
+        "position": "POR",
+        "age": 31,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 200000
+      },
+      {
+        "name": "Jordan Farr",
+        "position": "POR",
+        "age": 31,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 175000
+      },
+      {
+        "name": "Sean Nealis",
+        "position": "DFC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 2000000
+      },
+      {
+        "name": "Lucas Bartlett",
+        "position": "DFC",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1500000
+      },
+      {
+        "name": "Kye Rowles",
+        "position": "DFC",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Australia",
+        "value": 1200000
+      },
+      {
+        "name": "Garrison Tubbs",
+        "position": "DFC",
+        "age": 23,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 200000
+      },
+      {
+        "name": "Nikola Markovic",
+        "position": "DFC",
+        "age": 21,
+        "overall": 59,
+        "nationality": "Canadá",
+        "value": 0
+      },
+      {
+        "name": "Keisuke Kurokawa",
+        "position": "LTI",
+        "age": 28,
+        "overall": 67,
+        "nationality": "Japón",
+        "value": 1000000
+      },
+      {
+        "name": "Aarón Herrera",
+        "position": "LTD",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Guatemala",
+        "value": 1800000
+      },
+      {
+        "name": "Silvan Hefti",
+        "position": "LTD",
+        "age": 28,
+        "overall": 67,
+        "nationality": "Suiza",
+        "value": 700000
+      },
+      {
+        "name": "Conner Antley",
+        "position": "LTD",
+        "age": 30,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 350000
+      },
+      {
+        "name": "Matti Peltola",
+        "position": "MCD",
+        "age": 23,
+        "overall": 67,
+        "nationality": "Finlandia",
+        "value": 800000
+      },
+      {
+        "name": "Brandon Servania",
+        "position": "MC",
+        "age": 26,
+        "overall": 67,
+        "nationality": "Estados Unidos",
+        "value": 800000
+      },
+      {
+        "name": "Hosei Kijima",
+        "position": "MC",
+        "age": 23,
+        "overall": 65,
+        "nationality": "Japón",
+        "value": 600000
+      },
+      {
+        "name": "Gabriel Pirani",
+        "position": "MCO",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 2000000
+      },
+      {
+        "name": "Jackson Hopkins",
+        "position": "MCO",
+        "age": 21,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1500000
+      },
+      {
+        "name": "Caden Clark",
+        "position": "MCO",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1500000
+      },
+      {
+        "name": "Gavin Turner",
+        "position": "MCO",
+        "age": 19,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Jared Stroud",
+        "position": "EI",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1500000
+      },
+      {
+        "name": "Peglow",
+        "position": "EI",
+        "age": 24,
+        "overall": 67,
+        "nationality": "Brasil",
+        "value": 1000000
+      },
+      {
+        "name": "Oscar Avilez",
+        "position": "EI",
+        "age": 15,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Hakim Karamoko",
+        "position": "ED",
+        "age": 20,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 50000
+      },
+      {
+        "name": "Tai Baribo",
+        "position": "DC",
+        "age": 28,
+        "overall": 75,
+        "nationality": "Israel",
+        "value": 5000000
+      },
+      {
+        "name": "Louis Munteanu",
+        "position": "DC",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Rumanía",
+        "value": 4500000
+      },
+      {
+        "name": "Jacob Murrell",
+        "position": "DC",
+        "age": 21,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 350000
+      },
+      {
+        "name": "Gabriel Segal",
+        "position": "DC",
+        "age": 24,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 200000
+      },
+      {
+        "name": "Dominique Badji",
+        "position": "DC",
+        "age": 33,
+        "overall": 63,
+        "nationality": "Senegal",
+        "value": 200000
+      }
+    ]
+  },
+  {
+    "id": "toronto-fc",
+    "name": "Toronto FC",
+    "shortName": "TOR",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "BMO Field",
+    "stadiumCapacity": 30991,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Luka Gavran",
+        "position": "POR",
+        "age": 25,
+        "overall": 63,
+        "nationality": "Canadá",
+        "value": 150000
+      },
+      {
+        "name": "William Yarbrough",
+        "position": "POR",
+        "age": 36,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 75000
+      },
+      {
+        "name": "Adisa De Rosario",
+        "position": "POR",
+        "age": 21,
+        "overall": 59,
+        "nationality": "Canadá",
+        "value": 0
+      },
+      {
+        "name": "Walker Zimmerman",
+        "position": "DFC",
+        "age": 32,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 2000000
+      },
+      {
+        "name": "Nicksoen Gomis",
+        "position": "DFC",
+        "age": 23,
+        "overall": 65,
+        "nationality": "Francia",
+        "value": 500000
+      },
+      {
+        "name": "Zane Monlouis",
+        "position": "DFC",
+        "age": 22,
+        "overall": 65,
+        "nationality": "Jamaica",
+        "value": 400000
+      },
+      {
+        "name": "Lazar Stefanović",
+        "position": "DFC",
+        "age": 19,
+        "overall": 63,
+        "nationality": "Canadá",
+        "value": 300000
+      },
+      {
+        "name": "Adam Pearlman",
+        "position": "DFC",
+        "age": 20,
+        "overall": 63,
+        "nationality": "Canadá",
+        "value": 175000
+      },
+      {
+        "name": "Stefan Kapor",
+        "position": "DFC",
+        "age": 16,
+        "overall": 59,
+        "nationality": "Canadá",
+        "value": 0
+      },
+      {
+        "name": "Matheus Pereira",
+        "position": "LTI",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 2500000
+      },
+      {
+        "name": "Richie Laryea",
+        "position": "LTD",
+        "age": 31,
+        "overall": 67,
+        "nationality": "Canadá",
+        "value": 1000000
+      },
+      {
+        "name": "Kosi Thompson",
+        "position": "LTD",
+        "age": 23,
+        "overall": 67,
+        "nationality": "Canadá",
+        "value": 850000
+      },
+      {
+        "name": "Henry Wingo",
+        "position": "LTD",
+        "age": 30,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 400000
+      },
+      {
+        "name": "Kobe Franklin",
+        "position": "LTD",
+        "age": 22,
+        "overall": 65,
+        "nationality": "Canadá",
+        "value": 400000
+      },
+      {
+        "name": "José Cifuentes",
+        "position": "MC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Ecuador",
+        "value": 4500000
+      },
+      {
+        "name": "Jonathan Osorio",
+        "position": "MC",
+        "age": 33,
+        "overall": 69,
+        "nationality": "Canadá",
+        "value": 1200000
+      },
+      {
+        "name": "Alonso Coello",
+        "position": "MC",
+        "age": 26,
+        "overall": 67,
+        "nationality": "España",
+        "value": 800000
+      },
+      {
+        "name": "Markus Cimermancic",
+        "position": "MC",
+        "age": 21,
+        "overall": 63,
+        "nationality": "Canadá",
+        "value": 300000
+      },
+      {
+        "name": "Malik Henry",
+        "position": "MD",
+        "age": 23,
+        "overall": 63,
+        "nationality": "Canadá",
+        "value": 200000
+      },
+      {
+        "name": "Djordje Mihailovic",
+        "position": "MCO",
+        "age": 27,
+        "overall": 75,
+        "nationality": "Estados Unidos",
+        "value": 6500000
+      },
+      {
+        "name": "Derrick Etienne Jr.",
+        "position": "EI",
+        "age": 29,
+        "overall": 67,
+        "nationality": "Haití",
+        "value": 800000
+      },
+      {
+        "name": "Theo Corbeanu",
+        "position": "ED",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Canadá",
+        "value": 1800000
+      },
+      {
+        "name": "Deandre Kerr",
+        "position": "DC",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Canadá",
+        "value": 1200000
+      },
+      {
+        "name": "Jules-Anthony Vilsaint",
+        "position": "DC",
+        "age": 23,
+        "overall": 65,
+        "nationality": "Canadá",
+        "value": 500000
+      }
+    ]
+  },
+  {
+    "id": "sporting-kansas-city",
+    "name": "Sporting Kansas City",
+    "shortName": "SKC",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Children’s Mercy Park",
+    "stadiumCapacity": 21000,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "John Pulskamp",
+        "position": "POR",
+        "age": 24,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 600000
+      },
+      {
+        "name": "Stefan Cleveland",
+        "position": "POR",
+        "age": 31,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 150000
+      },
+      {
+        "name": "Ryan Schewe",
+        "position": "POR",
+        "age": 23,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 50000
+      },
+      {
+        "name": "Jack Kortkamp",
+        "position": "POR",
+        "age": 18,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Jansen Miller",
+        "position": "DFC",
+        "age": 23,
+        "overall": 67,
+        "nationality": "Estados Unidos",
+        "value": 800000
+      },
+      {
+        "name": "Ian James",
+        "position": "DFC",
+        "age": 17,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 200000
+      },
+      {
+        "name": "Jake Davis",
+        "position": "LTD",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1800000
+      },
+      {
+        "name": "Justin Reynolds",
+        "position": "LTD",
+        "age": 21,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 150000
+      },
+      {
+        "name": "Jacob Bartlett",
+        "position": "MCD",
+        "age": 20,
+        "overall": 67,
+        "nationality": "Estados Unidos",
+        "value": 1000000
+      },
+      {
+        "name": "Cielo Tschantret",
+        "position": "MCD",
+        "age": 19,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Zorhan Bassong",
+        "position": "MC",
+        "age": 26,
+        "overall": 67,
+        "nationality": "Canadá",
+        "value": 1000000
+      },
+      {
+        "name": "Manu García",
+        "position": "MCO",
+        "age": 28,
+        "overall": 73,
+        "nationality": "España",
+        "value": 3500000
+      },
+      {
+        "name": "Dániel Sallói",
+        "position": "EI",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Hungría",
+        "value": 3000000
+      },
+      {
+        "name": "Stephen Afrifa",
+        "position": "EI",
+        "age": 24,
+        "overall": 65,
+        "nationality": "Canadá",
+        "value": 500000
+      },
+      {
+        "name": "Shapi Suleymanov",
+        "position": "ED",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 2500000
+      },
+      {
+        "name": "Calvin Harris",
+        "position": "ED",
+        "age": 25,
+        "overall": 65,
+        "nationality": "Inglaterra",
+        "value": 600000
+      },
+      {
+        "name": "Dejan Joveljić",
+        "position": "DC",
+        "age": 26,
+        "overall": 75,
+        "nationality": "Serbia",
+        "value": 6500000
+      }
+    ]
+  },
+  {
+    "id": "san-jose-earthquakes",
+    "name": "San Jose Earthquakes",
+    "shortName": "SJ",
+    "city": "",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "PayPal Park",
+    "stadiumCapacity": 18000,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Daniel",
+        "position": "POR",
+        "age": 31,
+        "overall": 67,
+        "nationality": "Brasil",
+        "value": 800000
+      },
+      {
+        "name": "Earl Edwards Jr.",
+        "position": "POR",
+        "age": 34,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 125000
+      },
+      {
+        "name": "Nate Crockford",
+        "position": "POR",
+        "age": 23,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Francesco Montali",
+        "position": "POR",
+        "age": 25,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Daniel Munie",
+        "position": "DFC",
+        "age": 25,
+        "overall": 67,
+        "nationality": "Estados Unidos",
+        "value": 1000000
+      },
+      {
+        "name": "Dave Romney",
+        "position": "DFC",
+        "age": 32,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 600000
+      },
+      {
+        "name": "Reid Roberts",
+        "position": "DFC",
+        "age": 22,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 500000
+      },
+      {
+        "name": "Max Floriani",
+        "position": "DFC",
+        "age": 22,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 400000
+      },
+      {
+        "name": "DeJuan Jones",
+        "position": "LTI",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 3000000
+      },
+      {
+        "name": "Vítor Costa",
+        "position": "LTI",
+        "age": 31,
+        "overall": 65,
+        "nationality": "Brasil",
+        "value": 600000
+      },
+      {
+        "name": "Jamar Ricketts",
+        "position": "LTI",
+        "age": 24,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 400000
+      },
+      {
+        "name": "Paul Marie",
+        "position": "LTD",
+        "age": 30,
+        "overall": 65,
+        "nationality": "Francia",
+        "value": 400000
+      },
+      {
+        "name": "Nick Fernandez",
+        "position": "MCD",
+        "age": 24,
+        "overall": 61,
+        "nationality": "Estados Unidos",
+        "value": 100000
+      },
+      {
+        "name": "Edwyn Mendoza",
+        "position": "MCD",
+        "age": 19,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Rohan Rajagopal",
+        "position": "MCD",
+        "age": 18,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Beau Leroux",
+        "position": "MC",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Estados Unidos",
+        "value": 2000000
+      },
+      {
+        "name": "Noel Buck",
+        "position": "MC",
+        "age": 20,
+        "overall": 69,
+        "nationality": "Inglaterra",
+        "value": 1800000
+      },
+      {
+        "name": "Niko Tsakiris",
+        "position": "MC",
+        "age": 20,
+        "overall": 69,
+        "nationality": "Estados Unidos",
+        "value": 1500000
+      },
+      {
+        "name": "Ian Harkes",
+        "position": "MC",
+        "age": 30,
+        "overall": 67,
+        "nationality": "Estados Unidos",
+        "value": 1000000
+      },
+      {
+        "name": "Ronaldo Vieira",
+        "position": "MC",
+        "age": 27,
+        "overall": 65,
+        "nationality": "Guinea-Bisáu",
+        "value": 500000
+      },
+      {
+        "name": "Jack Skahan",
+        "position": "MC",
+        "age": 27,
+        "overall": 63,
+        "nationality": "Estados Unidos",
+        "value": 200000
+      },
+      {
+        "name": "Kaedren Spivey",
+        "position": "MC",
+        "age": 16,
+        "overall": 59,
+        "nationality": "Estados Unidos",
+        "value": 0
+      },
+      {
+        "name": "Benji Kikanović",
+        "position": "EI",
+        "age": 26,
+        "overall": 65,
+        "nationality": "Estados Unidos",
+        "value": 600000
+      },
+      {
+        "name": "Timo Werner",
+        "position": "DC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Alemania",
+        "value": 3000000
+      },
+      {
+        "name": "Ousseni Bouda",
+        "position": "DC",
+        "age": 25,
+        "overall": 67,
+        "nationality": "Burkina Faso",
+        "value": 800000
+      },
+      {
+        "name": "Preston Judd",
+        "position": "DC",
+        "age": 26,
+        "overall": 67,
+        "nationality": "Estados Unidos",
+        "value": 800000
+      }
+    ]
+  }
+]

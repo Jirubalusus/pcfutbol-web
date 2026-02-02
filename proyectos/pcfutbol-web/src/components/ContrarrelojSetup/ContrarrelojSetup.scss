@@ -1,0 +1,395 @@
+@use "sass:math";
+
+.contrarreloj-setup {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  &__gradient {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(255, 215, 0, 0.12) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 40% at 100% 100%, rgba(245, 166, 35, 0.08) 0%, transparent 50%),
+      linear-gradient(180deg, #0a0f1a 0%, #1a1000 40%, #0d1420 100%);
+  }
+
+  &__particles {
+    position: absolute;
+    inset: 0;
+    .particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: #FFD700;
+      border-radius: 50%;
+      opacity: 0;
+      animation: floatParticle 6s infinite;
+      @for $i from 0 through 7 {
+        &--#{$i} {
+          left: #{math.random(90)}#{"%"};
+          top: #{math.random(90)}#{"%"};
+          animation-delay: #{$i * 0.7}s;
+        }
+      }
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1.5rem;
+    padding-top: calc(env(safe-area-inset-top, 0px) + 1.5rem);
+
+    @media (max-width: 768px) {
+      padding: 1rem;
+      padding-top: calc(env(safe-area-inset-top, 0px) + 1rem);
+    }
+  }
+
+  // Header
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #8899aa;
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      min-height: 44px;
+      transition: all 0.2s;
+      flex-shrink: 0;
+
+      &:hover { background: rgba(255, 255, 255, 0.1); color: #fff; }
+    }
+
+    .header-title {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex: 1;
+
+      .timer-icon {
+        color: #FFD700;
+        filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
+        flex-shrink: 0;
+      }
+
+      h1 {
+        font-size: 1.75rem;
+        font-weight: 900;
+        letter-spacing: 3px;
+        background: linear-gradient(135deg, #FFD700 0%, #F5A623 50%, #FFD700 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin: 0;
+
+        @media (max-width: 768px) { font-size: 1.3rem; letter-spacing: 1px; }
+      }
+
+      .subtitle {
+        color: #8899aa;
+        font-size: 0.85rem;
+        margin: 0;
+      }
+    }
+  }
+
+  // Challenge info
+  &__challenge {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+
+    .challenge-card {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 215, 0, 0.15);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+
+      .icon {
+        flex-shrink: 0;
+        &.gold { color: #FFD700; }
+        &.red { color: #ff453a; }
+        &.amber { color: #F5A623; }
+      }
+
+      strong {
+        display: block;
+        color: #fff;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      span {
+        color: #8899aa;
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+  // Teams
+  &__teams {
+    margin-bottom: 1.5rem;
+
+    .teams-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+
+      h2 {
+        color: #fff;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 0;
+      }
+
+      .btn-reroll {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        background: rgba(255, 215, 0, 0.1);
+        border: 1px solid rgba(255, 215, 0, 0.3);
+        color: #FFD700;
+        padding: 0.4rem 0.75rem;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.8rem;
+        min-height: 36px;
+        transition: all 0.2s;
+
+        &:hover {
+          background: rgba(255, 215, 0, 0.2);
+          border-color: #FFD700;
+        }
+      }
+    }
+
+    .teams-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+
+  // Team card
+  .team-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: all 0.25s;
+    position: relative;
+
+    &:hover {
+      background: rgba(255, 215, 0, 0.05);
+      border-color: rgba(255, 215, 0, 0.3);
+    }
+
+    &.selected {
+      background: rgba(255, 215, 0, 0.08);
+      border-color: #FFD700;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
+    }
+
+    &__badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      flex-shrink: 0;
+    }
+
+    &__info {
+      flex: 1;
+      min-width: 0;
+
+      .name {
+        display: block;
+        color: #fff;
+        font-weight: 600;
+        font-size: 0.95rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .league {
+        display: block;
+        color: #8899aa;
+        font-size: 0.75rem;
+      }
+    }
+
+    &__stats {
+      display: flex;
+      gap: 0.75rem;
+      flex-shrink: 0;
+
+      @media (max-width: 500px) {
+        flex-direction: column;
+        gap: 0.2rem;
+      }
+
+      .stat {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        color: #8899aa;
+        font-size: 0.75rem;
+
+        svg { opacity: 0.6; }
+      }
+    }
+
+    .selected-indicator {
+      color: #FFD700;
+      animation: pulseGlow 1.5s infinite;
+    }
+  }
+
+  // Confirm
+  &__confirm {
+    background: rgba(255, 215, 0, 0.05);
+    border: 1px solid rgba(255, 215, 0, 0.25);
+    border-radius: 12px;
+    padding: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    animation: fadeInUp 0.3s ease;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .confirm-team {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex: 1;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+      }
+
+      .badge-large {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+        font-size: 1rem;
+        flex-shrink: 0;
+      }
+
+      .confirm-info {
+        h3 {
+          color: #fff;
+          font-size: 1.1rem;
+          margin: 0;
+        }
+        p {
+          color: #8899aa;
+          font-size: 0.85rem;
+          margin: 0.1rem 0;
+        }
+        .target {
+          color: #FFD700;
+          font-weight: 600;
+        }
+      }
+    }
+
+    .btn-start {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(135deg, #FFD700 0%, #F5A623 100%);
+      border: none;
+      border-radius: 10px;
+      color: #000;
+      font-weight: 800;
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      cursor: pointer;
+      min-height: 48px;
+      white-space: nowrap;
+      transition: all 0.2s;
+      box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+
+      &:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 30px rgba(255, 215, 0, 0.4);
+      }
+
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+@keyframes floatParticle {
+  0%, 100% { opacity: 0; transform: translateY(0) scale(1); }
+  20% { opacity: 0.6; }
+  50% { opacity: 0.3; transform: translateY(-30px) scale(1.5); }
+  80% { opacity: 0.6; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

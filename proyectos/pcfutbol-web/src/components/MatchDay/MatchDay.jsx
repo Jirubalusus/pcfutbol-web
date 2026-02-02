@@ -2,7 +2,14 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useGame } from '../../context/GameContext';
 import { 
   getLaLigaTeams, getSegundaTeams, getPrimeraRfefTeams, getSegundaRfefTeams,
-  getPremierTeams, getSerieATeams, getBundesligaTeams, getLigue1Teams
+  getPremierTeams, getSerieATeams, getBundesligaTeams, getLigue1Teams,
+  getEredivisieTeams, getPrimeiraLigaTeams, getChampionshipTeams, getBelgianProTeams,
+  getSuperLigTeams, getScottishPremTeams, getSerieBTeams, getBundesliga2Teams,
+  getLigue2Teams, getSwissTeams, getAustrianTeams, getGreekTeams,
+  getDanishTeams, getCroatianTeams, getCzechTeams,
+  getArgentinaTeams, getBrasileiraoTeams, getColombiaTeams, getChileTeams,
+  getUruguayTeams, getEcuadorTeams, getParaguayTeams, getPeruTeams,
+  getBoliviaTeams, getVenezuelaTeams
 } from '../../data/teamsFirestore';
 import { simulateMatch, updateTable, simulateWeekMatches, calculateTeamStrength, FORMATIONS, TACTICS } from '../../game/leagueEngine';
 import { simulateOtherLeaguesWeek } from '../../game/multiLeagueEngine';
@@ -14,7 +21,14 @@ import './MatchDay.scss';
 // Función para obtener todos los equipos dinámicamente (todas las ligas)
 const getAllTeams = () => [
   ...getLaLigaTeams(), ...getSegundaTeams(), ...getPrimeraRfefTeams(), ...getSegundaRfefTeams(),
-  ...getPremierTeams(), ...getSerieATeams(), ...getBundesligaTeams(), ...getLigue1Teams()
+  ...getPremierTeams(), ...getSerieATeams(), ...getBundesligaTeams(), ...getLigue1Teams(),
+  ...getEredivisieTeams(), ...getPrimeiraLigaTeams(), ...getChampionshipTeams(), ...getBelgianProTeams(),
+  ...getSuperLigTeams(), ...getScottishPremTeams(), ...getSerieBTeams(), ...getBundesliga2Teams(),
+  ...getLigue2Teams(), ...getSwissTeams(), ...getAustrianTeams(), ...getGreekTeams(),
+  ...getDanishTeams(), ...getCroatianTeams(), ...getCzechTeams(),
+  ...getArgentinaTeams(), ...getBrasileiraoTeams(), ...getColombiaTeams(), ...getChileTeams(),
+  ...getUruguayTeams(), ...getEcuadorTeams(), ...getParaguayTeams(), ...getPeruTeams(),
+  ...getBoliviaTeams(), ...getVenezuelaTeams()
 ];
 
 export default function MatchDay({ onComplete }) {
@@ -24,6 +38,9 @@ export default function MatchDay({ onComplete }) {
   const [eventIndex, setEventIndex] = useState(0);
   const [currentMinute, setCurrentMinute] = useState(0);
   const eventsRef = useRef(null);
+  
+  // Helper: normalizar player de eventos (V2 devuelve {name}, V1 devuelve string)
+  const getPlayerName = (p) => typeof p === 'object' ? (p?.name || 'Desconocido') : (p || 'Desconocido');
   
   // Auto-scroll events list to bottom when new events appear
   useEffect(() => {
@@ -65,6 +82,22 @@ export default function MatchDay({ onComplete }) {
       competitionName: euMatch.competitionName,
       matchday: euMatch.matchday,
       phase: euMatch.phase
+    };
+  } else if (state.pendingSAMatch) {
+    // South American competition match — treated as European match type
+    europeanMatchData = state.pendingSAMatch;
+    isEuropeanMatch = true;
+    const saMatch = state.pendingSAMatch;
+    playerMatch = {
+      homeTeam: saMatch.homeTeamId || saMatch.homeTeam?.teamId || saMatch.team1?.teamId,
+      awayTeam: saMatch.awayTeamId || saMatch.awayTeam?.teamId || saMatch.team2?.teamId,
+      week: state.currentWeek,
+      isEuropean: true,
+      isSouthAmerican: true,
+      competitionId: saMatch.competitionId,
+      competitionName: saMatch.competitionName,
+      matchday: saMatch.matchday,
+      phase: saMatch.phase
     };
   } else if (state.preseasonPhase && state.preseasonMatches?.length > 0) {
     const preseasonIdx = (state.preseasonWeek || 1) - 1;
@@ -315,7 +348,7 @@ export default function MatchDay({ onComplete }) {
         dispatch({
           type: 'INJURE_PLAYER',
           payload: {
-            playerName: injury.player,
+            playerName: getPlayerName(injury.player),
             weeksOut: injury.weeksOut,
             severity: injury.severity
           }
@@ -342,7 +375,7 @@ export default function MatchDay({ onComplete }) {
       if (playerYellowCards.length > 0) {
         dispatch({
           type: 'ADD_YELLOW_CARDS',
-          payload: { cards: playerYellowCards.map(e => ({ playerName: e.player })) }
+          payload: { cards: playerYellowCards.map(e => ({ playerName: getPlayerName(e.player) })) }
         });
       }
 
@@ -352,7 +385,7 @@ export default function MatchDay({ onComplete }) {
       if (playerRedCards.length > 0) {
         dispatch({
           type: 'ADD_RED_CARDS',
-          payload: { cards: playerRedCards.map(e => ({ playerName: e.player, reason: e.reason || 'Roja directa' })) }
+          payload: { cards: playerRedCards.map(e => ({ playerName: getPlayerName(e.player), reason: e.reason || 'Roja directa' })) }
         });
       }
 
@@ -360,8 +393,9 @@ export default function MatchDay({ onComplete }) {
       return;
     }
 
-    // European match — dispatch special action and return
+    // European/SA match — dispatch special action and return
     if (isEuropeanMatch && europeanMatchData) {
+      const isSAMatch = !!playerMatch.isSouthAmerican;
       const euResult = {
         homeTeamId: playerMatch.homeTeam,
         awayTeamId: playerMatch.awayTeam,
@@ -371,7 +405,7 @@ export default function MatchDay({ onComplete }) {
       };
 
       dispatch({
-        type: 'COMPLETE_EUROPEAN_MATCH',
+        type: isSAMatch ? 'COMPLETE_SA_MATCH' : 'COMPLETE_EUROPEAN_MATCH',
         payload: {
           competitionId: europeanMatchData.competitionId,
           matchResult: euResult,
@@ -389,8 +423,8 @@ export default function MatchDay({ onComplete }) {
         type: 'ADD_MESSAGE',
         payload: {
           id: Date.now(),
-          type: 'european',
-          title: `${europeanMatchData.competitionName || 'Europa'}: ${state.team.name} ${playerScore} - ${opponentScore} ${opponent?.name || 'Rival'}`,
+          type: isSAMatch ? 'southamerican' : 'european',
+          title: `${europeanMatchData.competitionName || (isSAMatch ? 'Sudamericana' : 'Europa')}: ${state.team.name} ${playerScore} - ${opponentScore} ${opponent?.name || 'Rival'}`,
           content: resultText,
           date: `Semana ${state.currentWeek}`
         }
@@ -403,25 +437,48 @@ export default function MatchDay({ onComplete }) {
         dispatch({
           type: 'INJURE_PLAYER',
           payload: {
-            playerName: injury.player,
+            playerName: getPlayerName(injury.player),
             weeksOut: injury.weeksOut,
             severity: injury.severity
           }
         });
       });
 
-      // v2: European weeks are intercalated — no league match this week.
+      // Process cards (European matches are official)
+      dispatch({ type: 'SERVE_SUSPENSIONS' });
+
+      const euYellowCards = matchResult.events.filter(
+        e => e.type === 'yellow_card' && e.team === playerTeamSide
+      );
+      if (euYellowCards.length > 0) {
+        dispatch({
+          type: 'ADD_YELLOW_CARDS',
+          payload: { cards: euYellowCards.map(e => ({ playerName: getPlayerName(e.player) })) }
+        });
+      }
+
+      const euRedCards = matchResult.events.filter(
+        e => e.type === 'red_card' && e.team === playerTeamSide
+      );
+      if (euRedCards.length > 0) {
+        dispatch({
+          type: 'ADD_RED_CARDS',
+          payload: { cards: euRedCards.map(e => ({ playerName: getPlayerName(e.player), reason: e.reason || 'Roja directa' })) }
+        });
+      }
+
+      // v2: European/SA weeks are intercalated — no league match this week.
       // League fixtures have been remapped to non-European weeks.
       // Other leagues are simulated in ADVANCE_WEEK (GameContext).
 
-      onComplete('european');
+      onComplete(isSAMatch ? 'southamerican' : 'european');
       return;
     }
 
     // Solo actualizar tabla/fixtures en partidos de liga (no pretemporada)
     if (!isPreseason) {
     // Update player's match in fixtures
-    let updatedFixtures = state.fixtures.map(f => {
+    let updatedFixtures = (Array.isArray(state.fixtures) ? state.fixtures : []).map(f => {
       if (f.id === playerMatch.id) {
         return {
           ...f,
@@ -491,27 +548,17 @@ export default function MatchDay({ onComplete }) {
     const resultText = playerScore > opponentScore ? '¡Victoria!' : 
                        playerScore < opponentScore ? 'Derrota' : 'Empate';
     
-    dispatch({
-      type: 'ADD_MESSAGE',
-      payload: {
-        id: Date.now(),
-        type: 'match_result',
-        title: `${isPreseason ? 'Amistoso' : 'Resultado'}: ${state.team.name} ${playerScore} - ${opponentScore} ${opponent.name}`,
-        content: resultText,
-        date: isPreseason ? `Pretemporada ${state.preseasonWeek}` : `Semana ${state.currentWeek}`
-      }
-    });
-    
     // Process injuries for player's team
     const playerInjuries = matchResult.events.filter(
       e => e.type === 'injury' && e.team === playerTeamSide
     );
     
     playerInjuries.forEach(injury => {
+      const injuredName = getPlayerName(injury.player);
       dispatch({
         type: 'INJURE_PLAYER',
         payload: {
-          playerName: injury.player,
+          playerName: injuredName,
           weeksOut: injury.weeksOut,
           severity: injury.severity
         }
@@ -522,8 +569,8 @@ export default function MatchDay({ onComplete }) {
         payload: {
           id: Date.now() + Math.random(),
           type: 'injury',
-          title: `Lesión: ${injury.player}`,
-          content: `${injury.player} estará ${injury.weeksOut} semanas de baja (${getInjuryText(injury.severity)})`,
+          title: `Lesión: ${injuredName}`,
+          content: `${injuredName} estará ${injury.weeksOut} semanas de baja (${getInjuryText(injury.severity)})`,
           date: isPreseason ? `Pretemporada ${state.preseasonWeek}` : `Semana ${state.currentWeek}`
         }
       });
@@ -544,7 +591,7 @@ export default function MatchDay({ onComplete }) {
         dispatch({
           type: 'ADD_YELLOW_CARDS',
           payload: {
-            cards: playerYellowCards.map(e => ({ playerName: e.player }))
+            cards: playerYellowCards.map(e => ({ playerName: getPlayerName(e.player) }))
           }
         });
       }
@@ -559,7 +606,7 @@ export default function MatchDay({ onComplete }) {
           type: 'ADD_RED_CARDS',
           payload: {
             cards: playerRedCards.map(e => ({ 
-              playerName: e.player, 
+              playerName: getPlayerName(e.player), 
               reason: e.reason || 'Roja directa'
             }))
           }

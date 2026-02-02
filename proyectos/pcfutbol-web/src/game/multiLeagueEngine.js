@@ -47,7 +47,11 @@ import {
   getParaguayTeams,
   getPeruTeams,
   getBoliviaTeams,
-  getVenezuelaTeams
+  getVenezuelaTeams,
+  getMLSTeams,
+  getSaudiTeams,
+  getLigaMXTeams,
+  getJLeagueTeams
 } from '../data/teamsFirestore';
 
 // Configuración de ligas
@@ -497,6 +501,54 @@ export const LEAGUE_CONFIG = {
       libertadores: [1, 2],
       sudamericana: [3, 4],
       relegation: [12, 13, 14]
+    }
+  },
+  // Rest of World
+  mls: {
+    id: 'mls',
+    name: 'Major League Soccer',
+    country: 'USA',
+    teams: 20,
+    getTeams: getMLSTeams,
+    format: 'standard',
+    zones: {
+      promotion: [],
+      relegation: []
+    }
+  },
+  saudiPro: {
+    id: 'saudiPro',
+    name: 'Saudi Pro League',
+    country: 'Arabia Saudí',
+    teams: 18,
+    getTeams: getSaudiTeams,
+    format: 'standard',
+    zones: {
+      championsLeague: [1, 2, 3],
+      relegation: [16, 17, 18]
+    }
+  },
+  ligaMX: {
+    id: 'ligaMX',
+    name: 'Liga MX',
+    country: 'México',
+    teams: 18,
+    getTeams: getLigaMXTeams,
+    format: 'apertura-clausura',
+    zones: {
+      relegation: [17, 18]
+    }
+  },
+  jLeague: {
+    id: 'jLeague',
+    name: 'J1 League',
+    country: 'Japón',
+    teams: 20,
+    getTeams: getJLeagueTeams,
+    format: 'standard',
+    zones: {
+      championsLeague: [1, 2, 3],
+      relegation: [18, 19, 20]
     }
   }
 };

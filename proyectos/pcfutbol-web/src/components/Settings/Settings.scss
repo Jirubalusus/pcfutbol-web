@@ -295,6 +295,16 @@
       }
     }
 
+    &.exit {
+      color: var(--color-warning, #ff9f0a);
+      border-color: rgba(255, 159, 10, 0.3);
+      background: rgba(255, 159, 10, 0.1);
+
+      &:hover {
+        background: rgba(255, 159, 10, 0.18);
+      }
+    }
+
     &.danger {
       color: var(--color-danger);
       border-color: rgba(255, 69, 58, 0.3);

@@ -33,7 +33,7 @@ export default function MobileNav({ activeTab, onTabChange, onAdvanceWeek, onSim
   const [showSettings, setShowSettings] = useState(false);
   const [showSimOptions, setShowSimOptions] = useState(false);
 
-  const simDisabled = simulating || state.preseasonPhase || !!state.pendingEuropeanMatch || !!state.pendingCupMatch;
+  const simDisabled = simulating || state.preseasonPhase || !!state.pendingEuropeanMatch || !!state.pendingSAMatch || !!state.pendingCupMatch;
   
   const filteredMenuItems = MENU_ITEMS;
 

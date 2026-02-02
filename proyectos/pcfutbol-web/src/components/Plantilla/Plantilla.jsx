@@ -22,15 +22,19 @@ export default function Plantilla() {
   const totalYearlySalary = totalWeeklySalary * WEEKS_PER_YEAR;
   const salaryPercentage = budget > 0 ? Math.round((totalYearlySalary / budget) * 100) : 0;
   
-  // Jugadores que necesitan atención
+  // Jugadores que necesitan atención (excluye recién renovados)
+  const currentWeek = state.currentWeek || 1;
   const playersNeedingAttention = useMemo(() => {
     return players.filter(p => {
       const contractYears = p.contractYears ?? p.personality?.contractYears ?? 2;
       const happiness = p.personality?.happiness ?? 70;
       const wantsToLeave = p.personality?.wantsToLeave ?? false;
+      // Excluir si se renovó recientemente (cooldown de 30 semanas)
+      const lastRenewal = p.personality?.lastRenewalWeek || 0;
+      if (lastRenewal > 0 && lastRenewal <= currentWeek && (currentWeek - lastRenewal) < 30) return false;
       return contractYears <= 1 || happiness <= 40 || wantsToLeave;
     });
-  }, [players]);
+  }, [players, currentWeek]);
   
   // Ordenar jugadores
   const sortedPlayers = useMemo(() => {
@@ -112,7 +116,7 @@ export default function Plantilla() {
       demandedYears = 2;
     } else {
       ageSalaryFactor = 0.75;  // 34+: saben que están en declive
-      demandedYears = 1;
+      demandedYears = 2;       // Mínimo 2 años para que no vuelva a saltar atención
     }
     
     // === FACTOR OVERALL ===
@@ -172,6 +176,9 @@ export default function Plantilla() {
     const contractYears = player.contractYears ?? player.personality?.contractYears ?? 2;
     const happiness = player.personality?.happiness ?? 70;
     const wantsToLeave = player.personality?.wantsToLeave ?? false;
+    // Excluir si se renovó recientemente
+    const lastRenewal = player.personality?.lastRenewalWeek || 0;
+    if (lastRenewal > 0 && lastRenewal <= currentWeek && (currentWeek - lastRenewal) < 30) return false;
     return contractYears <= 1 || happiness <= 40 || wantsToLeave;
   };
   

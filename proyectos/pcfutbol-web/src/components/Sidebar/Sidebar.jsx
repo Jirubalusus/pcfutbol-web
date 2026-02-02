@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useGame } from '../../context/GameContext';
 import Settings from '../Settings/Settings';
 import {
@@ -37,6 +37,16 @@ const menuItems = [
 export default function Sidebar({ activeTab, onTabChange }) {
   const { state, dispatch } = useGame();
   const [showSettings, setShowSettings] = useState(false);
+  const lastSeenCountRef = useRef(0);
+
+  // When user opens messages tab, mark all as "seen"
+  useEffect(() => {
+    if (activeTab === 'messages') {
+      lastSeenCountRef.current = (state.messages || []).length;
+    }
+  }, [activeTab, state.messages]);
+
+  const unreadCount = Math.max(0, (state.messages || []).length - lastSeenCountRef.current);
   
   const handleMainMenu = () => {
     dispatch({ type: 'SET_SCREEN', payload: 'main_menu' });
@@ -68,8 +78,8 @@ export default function Sidebar({ activeTab, onTabChange }) {
               >
                 <IconComponent className="sidebar__item-icon" size={20} strokeWidth={2} />
                 <span className="sidebar__item-label">{item.label}</span>
-                {item.id === 'messages' && state.messages.length > 0 && (
-                  <span className="sidebar__badge">{state.messages.length}</span>
+                {item.id === 'messages' && unreadCount > 0 && (
+                  <span className="sidebar__badge sidebar__badge--pulse">{unreadCount > 9 ? '9+' : unreadCount}</span>
                 )}
               </button>
             );

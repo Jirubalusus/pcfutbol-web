@@ -9,11 +9,16 @@ import {
 } from 'lucide-react';
 import { getPhaseForWeekCompat, getCupRoundForWeek } from '../../game/europeanCompetitions';
 import { getPlayerCompetition } from '../../game/europeanSeason';
+import { SA_MATCHDAY_WEEKS, ALL_SA_WEEKS, isSouthAmericanLeague, SA_COMPETITIONS } from '../../game/southAmericanCompetitions';
+import { getPlayerSACompetition, getSACalendar } from '../../game/southAmericanSeason';
 import './Calendar.scss';
 
 export default function Calendar() {
   const { state } = useGame();
   const carouselRef = useRef(null);
+
+  // ── Detect if player is in a South American league ──
+  const isInSALeague = useMemo(() => isSouthAmericanLeague(state.playerLeagueId), [state.playerLeagueId]);
 
   // ── Player's European competition (for button coloring) ──
   const playerEuropean = useMemo(() => {
@@ -21,11 +26,18 @@ export default function Calendar() {
     return getPlayerCompetition(state.europeanCompetitions, state.teamId);
   }, [state.europeanCompetitions, state.teamId]);
 
+  // ── Player's SA competition (for button coloring) ──
+  const playerSA = useMemo(() => {
+    if (!state.saCompetitions) return null;
+    return getPlayerSACompetition(state.saCompetitions, state.teamId);
+  }, [state.saCompetitions, state.teamId]);
+
   // ── Calendar: use europeanCalendar if available, else simple league calendar ──
   const calendar = useMemo(() => {
     if (state.europeanCalendar) return state.europeanCalendar;
-    const maxWeek = state.fixtures?.length > 0
-      ? Math.max(...state.fixtures.map(f => f.week))
+    const fixturesArr = Array.isArray(state.fixtures) ? state.fixtures : [];
+    const maxWeek = fixturesArr.length > 0
+      ? Math.max(...fixturesArr.map(f => f.week))
       : 38;
     return {
       leagueWeekMap: Array.from({ length: maxWeek }, (_, i) => i + 1),
@@ -37,7 +49,7 @@ export default function Calendar() {
   }, [state.europeanCalendar, state.fixtures]);
 
   const totalWeeks = calendar.totalWeeks;
-  const hasEuropean = !!state.europeanCompetitions?.initialized || (calendar.allEuropeanWeeks?.length > 0);
+  const hasEuropean = !!state.europeanCompetitions?.initialized || !!state.saCompetitions?.initialized || (calendar.allEuropeanWeeks?.length > 0);
   const hasCup = !!state.cupCompetition || (calendar.cupWeeks?.length > 0);
 
   // ── Build unified chronological week entries ──
@@ -66,9 +78,11 @@ export default function Calendar() {
       }
     }
 
-    // Competition color for European button
-    const compClassMap = { championsLeague: 'champions', europaLeague: 'europa', conferenceleague: 'conference' };
-    const euroClass = playerEuropean ? (compClassMap[playerEuropean.competitionId] || 'champions') : 'champions';
+    // Competition color for European/SA button
+    const compClassMap = { championsLeague: 'champions', europaLeague: 'europa', conferenceleague: 'conference', copaLibertadores: 'champions', copaSudamericana: 'europa' };
+    const euroClass = isInSALeague
+      ? (playerSA ? (compClassMap[playerSA.competitionId] || 'champions') : 'champions')
+      : (playerEuropean ? (compClassMap[playerEuropean.competitionId] || 'champions') : 'champions');
 
     // Pre-index fixtures by week
     const fixturesByWeek = {};
@@ -130,7 +144,7 @@ export default function Calendar() {
     }
 
     return entries;
-  }, [calendar, state.cupCompetition, state.fixtures, totalWeeks, hasEuropean, hasCup, playerEuropean, state.currentWeek]);
+  }, [calendar, state.cupCompetition, state.fixtures, totalWeeks, hasEuropean, hasCup, playerEuropean, playerSA, isInSALeague, state.currentWeek]);
 
   // ── Selected entry index ──
   const [selectedIdx, setSelectedIdx] = useState(() => {
@@ -167,17 +181,36 @@ export default function Calendar() {
     return state.fixtures?.filter(f => f.week === selectedWeek) || [];
   }, [state.fixtures, selectedWeek, selectedEntry?.type]);
 
-  // ── ALL European fixtures (all competitions) ──
+  // ── ALL European/SA fixtures (all competitions) ──
   const allEuropeanFixtures = useMemo(() => {
     if (selectedEntry?.type !== 'european') return [];
-    if (!state.europeanCompetitions?.competitions) return [];
 
-    const phaseInfo = getPhaseForWeekCompat(selectedWeek, calendar);
+    // Determine which competition source to use
+    const competitionsSource = isInSALeague ? state.saCompetitions : state.europeanCompetitions;
+    if (!competitionsSource?.competitions) return [];
+
+    // For SA teams, use SA calendar to get phase info; for European use the european calendar
+    let phaseInfo;
+    if (isInSALeague) {
+      const saCalendar = getSACalendar();
+      phaseInfo = saCalendar[selectedWeek] || null;
+      // Convert SA calendar format to match European format
+      if (phaseInfo) {
+        phaseInfo = {
+          phase: phaseInfo.phase,
+          matchday: phaseInfo.isLeague ? phaseInfo.matchday : phaseInfo.leg,
+          isLeague: phaseInfo.isLeague,
+          isKnockout: phaseInfo.isKnockout
+        };
+      }
+    } else {
+      phaseInfo = getPhaseForWeekCompat(selectedWeek, calendar);
+    }
     if (!phaseInfo) return [];
     const { phase, matchday } = phaseInfo;
     const comps = [];
 
-    for (const [compId, compState] of Object.entries(state.europeanCompetitions.competitions)) {
+    for (const [compId, compState] of Object.entries(competitionsSource.competitions)) {
       if (!compState || compState.phase === 'completed') continue;
 
       const compFixtures = [];
@@ -253,7 +286,7 @@ export default function Calendar() {
       }
 
       if (compFixtures.length > 0) {
-        const classMap = { championsLeague: 'champions', europaLeague: 'europa', conferenceleague: 'conference' };
+        const classMap = { championsLeague: 'champions', europaLeague: 'europa', conferenceleague: 'conference', copaLibertadores: 'champions', copaSudamericana: 'europa' };
         comps.push({
           compId,
           name: compState.config?.name || compId,
@@ -266,7 +299,7 @@ export default function Calendar() {
     }
 
     return comps;
-  }, [selectedEntry?.type, selectedWeek, state.europeanCompetitions, calendar, state.teamId]);
+  }, [selectedEntry?.type, selectedWeek, state.europeanCompetitions, state.saCompetitions, calendar, state.teamId, isInSALeague]);
 
   // ── ALL Cup fixtures ──
   const allCupFixtures = useMemo(() => {
@@ -297,12 +330,16 @@ export default function Calendar() {
   const stripName = (name) => {
     if (!name) return '???';
     const stripped = name
-      .replace(/^(FC |CF |CD |UD |RC |SD |CA |RCD |)/, '')
-      .replace(/( CF| FC| CD| UD)$/, '')
+      .replace(/^(FC |CF |CD |UD |RC |SD |CA |RCD )/, '')
+      .replace(/( CF| FC| CD| UD| Balompié| de Fútbol)$/, '')
       .trim();
-    if (stripped.length > 14) {
+    if (stripped.length > 16) {
+      // Keep first two meaningful words to avoid "Real" alone for "Real Betis"
       const words = stripped.split(' ');
       const meaningful = words.filter(w => !['de', 'del', 'la', 'las', 'los'].includes(w.toLowerCase()));
+      if (meaningful.length >= 2 && meaningful.slice(0, 2).join(' ').length <= 16) {
+        return meaningful.slice(0, 2).join(' ');
+      }
       return meaningful[0] || words[0];
     }
     return stripped;
@@ -340,8 +377,18 @@ export default function Calendar() {
     switch (selectedEntry.type) {
       case 'league': return { label: 'Jornada', sublabel: String(selectedEntry.number) };
       case 'european': {
-        const pi = getPhaseForWeekCompat(selectedEntry.week, calendar);
-        const phaseLabel = pi ? phaseFullLabels[pi.phase] || pi.phase : 'Europa';
+        let pi;
+        if (isInSALeague) {
+          const saCalendar = getSACalendar();
+          const saCal = saCalendar[selectedEntry.week];
+          if (saCal) {
+            pi = { phase: saCal.phase, matchday: saCal.isLeague ? saCal.matchday : saCal.leg, total: saCal.isLeague ? 8 : (SA_MATCHDAY_WEEKS[saCal.phase]?.length || 1) };
+          }
+        } else {
+          pi = getPhaseForWeekCompat(selectedEntry.week, calendar);
+        }
+        const defaultLabel = isInSALeague ? 'Sudamericana' : 'Europa';
+        const phaseLabel = pi ? phaseFullLabels[pi.phase] || pi.phase : defaultLabel;
         const mdLabel = pi ? (pi.phase === 'league' ? String(pi.matchday) : (pi.total > 1 ? String(pi.matchday) : '')) : '';
         return { label: phaseLabel, sublabel: mdLabel || selectedEntry.label };
       }
@@ -428,7 +475,7 @@ export default function Calendar() {
               entry.played && 'played'
             ].filter(Boolean).join(' ')}
             onClick={() => setSelectedIdx(idx)}
-            title={entry.type === 'cup' ? entry.fullLabel : entry.type === 'european' ? `Europa ${entry.label}` : `Jornada ${entry.number}`}
+            title={entry.type === 'cup' ? entry.fullLabel : entry.type === 'european' ? (isInSALeague ? `Sudamericana ${entry.label}` : `Europa ${entry.label}`) : `Jornada ${entry.number}`}
           >
             {entry.label}
           </button>
@@ -462,7 +509,7 @@ export default function Calendar() {
         {/* ── European — all competitions ── */}
         {selectedEntry?.type === 'european' && (
           allEuropeanFixtures.length === 0 ? (
-            <div className="no-fixtures"><Circle size={48} /><p>No hay partidos europeos en esta jornada</p></div>
+            <div className="no-fixtures"><Circle size={48} /><p>{isInSALeague ? 'No hay partidos sudamericanos en esta jornada' : 'No hay partidos europeos en esta jornada'}</p></div>
           ) : allEuropeanFixtures.map(comp => (
             <div key={comp.compId} className="competition-section">
               <div className={`competition-badge competition-badge--${comp.cssClass}`}>

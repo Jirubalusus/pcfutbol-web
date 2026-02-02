@@ -6,7 +6,7 @@ import Auth from '../Auth/Auth';
 import SaveSlots from '../SaveSlots/SaveSlots';
 import { 
   Play, LogIn, LogOut, Save, Trophy, Settings as SettingsIcon, 
-  Lightbulb, User, Gamepad2, ChevronRight
+  Lightbulb, User, Gamepad2, ChevronRight, Timer
 } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
 import './MainMenu.scss';
@@ -125,7 +125,7 @@ export default function MainMenu() {
             <span className="text">WEB EDITION</span>
             <span className="line"></span>
           </div>
-          <p className="main-menu__season">Temporada 2024-2025</p>
+          <p className="main-menu__season">Temporada 2025-2026</p>
         </div>
         
         <nav className="main-menu__nav">
@@ -195,11 +195,28 @@ export default function MainMenu() {
             </button>
           )}
           
+          <button
+            className="main-menu__btn main-menu__btn--contrarreloj"
+            onClick={() => dispatch({ type: 'SET_SCREEN', payload: 'contrarreloj_setup' })}
+            style={{ '--delay': state.gameStarted ? '3' : '1' }}
+          >
+            <div className="btn-content">
+              <span className="icon-wrapper icon-wrapper--contrarreloj">
+                <Timer size={22} />
+              </span>
+              <div className="text">
+                <span className="label">Contrarreloj</span>
+                <span className="sublabel">Llega a la Champions desde abajo</span>
+              </div>
+              <ChevronRight size={18} className="chevron" />
+            </div>
+          </button>
+
           <div className="main-menu__secondary">
             <button 
-              className="main-menu__btn main-menu__btn--small" 
-              disabled
-              style={{ '--delay': state.gameStarted ? '3' : '1' }}
+              className="main-menu__btn main-menu__btn--small"
+              onClick={() => dispatch({ type: 'SET_SCREEN', payload: 'ranking' })}
+              style={{ '--delay': state.gameStarted ? '4' : '2' }}
             >
               <Trophy size={20} className="icon-svg" />
               <span className="label">Récords</span>
@@ -208,7 +225,7 @@ export default function MainMenu() {
             <button 
               className="main-menu__btn main-menu__btn--small"
               onClick={() => setShowSettings(true)}
-              style={{ '--delay': state.gameStarted ? '4' : '2' }}
+              style={{ '--delay': state.gameStarted ? '5' : '3' }}
             >
               <SettingsIcon size={20} className="icon-svg" />
               <span className="label">Opciones</span>

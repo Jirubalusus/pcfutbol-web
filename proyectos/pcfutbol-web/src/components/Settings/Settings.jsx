@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Settings as SettingsIcon, X, Music, Volume2, Save, Check, XCircle, Trash2, AlertTriangle } from 'lucide-react';
+import { Settings as SettingsIcon, X, Music, Volume2, Save, Check, XCircle, Trash2, AlertTriangle, LogOut } from 'lucide-react';
 import { useGame } from '../../context/GameContext';
 import './Settings.scss';
 
@@ -29,6 +29,20 @@ export default function Settings({ onClose }) {
       await saveGame();
       setSaveStatus('saved');
       setTimeout(() => setSaveStatus(null), 2000);
+    } catch (error) {
+      setSaveStatus('error');
+      setTimeout(() => setSaveStatus(null), 3000);
+    }
+  };
+
+  const handleSaveAndExit = async () => {
+    setSaveStatus('saving');
+    try {
+      await saveGame();
+      setSaveStatus('saved');
+      setTimeout(() => {
+        dispatch({ type: 'SET_SCREEN', payload: 'main_menu' });
+      }, 500);
     } catch (error) {
       setSaveStatus('error');
       setTimeout(() => setSaveStatus(null), 3000);
@@ -183,16 +197,26 @@ export default function Settings({ onClose }) {
           <h3>Datos de Partida</h3>
           <div className="settings__actions">
             {state.gameStarted && (
-              <button 
-                className={`settings__action-btn save ${saveStatus ? saveStatus : ''}`}
-                onClick={handleSaveGame}
-                disabled={saveStatus === 'saving'}
-              >
-                {saveStatus === 'saving' && <><Save size={14} /> Guardando...</>}
-                {saveStatus === 'saved' && <><Check size={14} /> ¡Guardado!</>}
-                {saveStatus === 'error' && <><XCircle size={14} /> Error al guardar</>}
-                {!saveStatus && <><Save size={14} /> Guardar partida</>}
-              </button>
+              <>
+                <button 
+                  className={`settings__action-btn save ${saveStatus ? saveStatus : ''}`}
+                  onClick={handleSaveGame}
+                  disabled={saveStatus === 'saving'}
+                >
+                  {saveStatus === 'saving' && <><Save size={14} /> Guardando...</>}
+                  {saveStatus === 'saved' && <><Check size={14} /> ¡Guardado!</>}
+                  {saveStatus === 'error' && <><XCircle size={14} /> Error al guardar</>}
+                  {!saveStatus && <><Save size={14} /> Guardar partida</>}
+                </button>
+
+                <button 
+                  className={`settings__action-btn exit ${saveStatus === 'saving' ? 'disabled' : ''}`}
+                  onClick={handleSaveAndExit}
+                  disabled={saveStatus === 'saving'}
+                >
+                  <LogOut size={14} /> Guardar y salir
+                </button>
+              </>
             )}
 
             <button 

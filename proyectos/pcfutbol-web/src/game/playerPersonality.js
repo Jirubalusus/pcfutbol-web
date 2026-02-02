@@ -513,10 +513,10 @@ export function generateRenewalDemand(player, team) {
   
   const demandedSalary = Math.round(player.salary * salaryMultiplier);
   
-  // Años pedidos
+  // Años pedidos (mínimo 2 para que no vuelva a saltar atención)
   let demandedYears = 3;
   if (player.age >= 32) demandedYears = 2;
-  if (player.age >= 35) demandedYears = 1;
+  if (player.age >= 35) demandedYears = 2; // Mínimo 2 incluso para veteranos
   if (player.age <= 25) demandedYears = 4;
   if (player.personality?.specialGoal === 'lastContract') demandedYears = Math.max(3, demandedYears);
   
