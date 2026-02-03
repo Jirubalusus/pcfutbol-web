@@ -298,10 +298,16 @@ $white: #e8eaed;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+          }
+
+          .player-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.2rem;
+            margin-top: 0.15rem;
 
             .tag-listed, .tag-retiring, .tag-loan {
               font-size: 0.6rem;
-              margin-left: 0.25rem;
               vertical-align: middle;
             }
             
@@ -332,7 +338,7 @@ $white: #e8eaed;
           }
 
           .meta {
-            display: none; // Hidden in table mode, info is in columns
+            display: none;
 
             @media (min-width: 769px) {
               display: block;

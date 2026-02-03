@@ -467,20 +467,22 @@ export default function Plantilla() {
                   {posES(player.position)}
                 </span>
                 <div className="info">
-                  <span className="name">
-                    {player.name}
-                    {player.onLoan && <span className="tag-loan">🤝 EN CESIÓN</span>}
-                    {isTransferListed && !player.onLoan && (
-                      <span 
-                        className="tag-listed tag-listed--clickable" 
-                        onClick={(e) => { e.stopPropagation(); handleUnlist(player); }}
-                        title="Click para quitar de venta"
-                      >
-                        🏷️ En venta
-                      </span>
-                    )}
-                    {player.retiring && <span className="tag-retiring"><Flag size={12} /> Se retira</span>}
-                  </span>
+                  <span className="name">{player.name}</span>
+                  {(player.onLoan || isTransferListed || player.retiring) && (
+                    <div className="player-tags">
+                      {player.onLoan && <span className="tag-loan">🤝 EN CESIÓN</span>}
+                      {isTransferListed && !player.onLoan && (
+                        <span 
+                          className="tag-listed tag-listed--clickable" 
+                          onClick={(e) => { e.stopPropagation(); handleUnlist(player); }}
+                          title="Click para quitar de venta"
+                        >
+                          🏷️ En venta
+                        </span>
+                      )}
+                      {player.retiring && <span className="tag-retiring"><Flag size={12} /> Se retira</span>}
+                    </div>
+                  )}
                   <span className="meta">{player.overall} OVR · {player.age} años</span>
                 </div>
               </div>

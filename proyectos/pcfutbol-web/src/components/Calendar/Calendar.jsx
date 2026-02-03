@@ -330,20 +330,10 @@ export default function Calendar() {
 
   const stripName = (name) => {
     if (!name) return '???';
-    const stripped = name
+    return name
       .replace(/^(FC |CF |CD |UD |RC |SD |CA |RCD )/, '')
       .replace(/( CF| FC| CD| UD| Balompié| de Fútbol)$/, '')
       .trim();
-    if (stripped.length > 16) {
-      // Keep first two meaningful words to avoid "Real" alone for "Real Betis"
-      const words = stripped.split(' ');
-      const meaningful = words.filter(w => !['de', 'del', 'la', 'las', 'los'].includes(w.toLowerCase()));
-      if (meaningful.length >= 2 && meaningful.slice(0, 2).join(' ').length <= 16) {
-        return meaningful.slice(0, 2).join(' ');
-      }
-      return meaningful[0] || words[0];
-    }
-    return stripped;
   };
 
   const getDisplayName = (teamId) => stripName(getTeamName(teamId));

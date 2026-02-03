@@ -157,11 +157,11 @@ export default function Facilities() {
         ...f,
         upgradeCost: f.upgradeCost.map(c => Math.round(c * costMult))
       };
-      // Escalar beneficios de Comercial (income × economyMult)
+      // Comercial: mismos valores para todas las ligas (no escala)
       if (f.id === 'sponsorship') {
         const baseIncomes = [25000, 70000, 140000, 235000]; // weekly
         scaled.benefits = baseIncomes.map(w => {
-          const annual = Math.round(w * econMult * 38);
+          const annual = Math.round(w * 38);
           return `${formatScaled(annual)}/temporada`;
         });
       }
@@ -219,7 +219,7 @@ export default function Facilities() {
       payload: {
         id: Date.now(),
         type: 'facility',
-        title: `${facility.icon} ${facility.name} mejorado`,
+        title: `${facility.name} mejorado`,
         content: `Nivel: ${facility.levels[currentLevel + 1].name}. ${facility.benefits[currentLevel + 1]}`,
         date: `Semana ${state.currentWeek}`
       }

@@ -383,6 +383,11 @@ export const AVAILABLE_LEAGUES = [
   { id: 'peruLiga1', name: 'Liga 1', country: 'Perú', flagUrl: 'https://flagcdn.com/pe.svg', color: '#d91023' },
   { id: 'boliviaPrimera', name: 'División Profesional', country: 'Bolivia', flagUrl: 'https://flagcdn.com/bo.svg', color: '#007934' },
   { id: 'venezuelaPrimera', name: 'Liga FUTVE', country: 'Venezuela', flagUrl: 'https://flagcdn.com/ve.svg', color: '#cf142b' },
+  // Resto del Mundo
+  { id: 'mls', name: 'Major League Soccer', country: 'Estados Unidos', flagUrl: 'https://flagcdn.com/us.svg', color: '#013474' },
+  { id: 'saudiPro', name: 'Saudi Pro League', country: 'Arabia Saudí', flagUrl: 'https://flagcdn.com/sa.svg', color: '#006C35' },
+  { id: 'ligaMX', name: 'Liga MX', country: 'México', flagUrl: 'https://flagcdn.com/mx.svg', color: '#006847' },
+  { id: 'jLeague', name: 'J1 League', country: 'Japón', flagUrl: 'https://flagcdn.com/jp.svg', color: '#BC002D' },
 ];
 
 /**

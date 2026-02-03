@@ -257,17 +257,14 @@
         align-items: center;
         min-width: 0;
 
-        &.home { justify-content: flex-end; text-align: right; }
-        &.away { justify-content: flex-start; }
+        &.home { justify-content: flex-start; text-align: left; }
+        &.away { justify-content: flex-start; text-align: left; }
         &.is-you .team-name { color: #0a84ff; font-weight: 600; }
 
         .team-name {
           font-size: 0.85rem;
           color: #ddd;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          @media (max-width: 640px) { font-size: 0.72rem; }
+          @media (max-width: 640px) { font-size: 0.78rem; }
         }
       }
 

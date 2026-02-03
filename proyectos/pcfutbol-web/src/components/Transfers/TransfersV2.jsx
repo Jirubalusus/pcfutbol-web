@@ -1818,9 +1818,21 @@ function NoticiasTab({ transfers, rumors }) {
 
 
 
-// Países SA para detectar continente
+// Países por continente para detectar zona
 
 const SA_COUNTRIES = new Set(['Argentina', 'Brasil', 'Colombia', 'Chile', 'Uruguay', 'Ecuador', 'Paraguay', 'Perú', 'Bolivia', 'Venezuela']);
+
+const WORLD_COUNTRIES = new Set(['Estados Unidos', 'Arabia Saudí', 'México', 'Japón']);
+
+function getContinent(country) {
+
+  if (SA_COUNTRIES.has(country)) return 'sa';
+
+  if (WORLD_COUNTRIES.has(country)) return 'world';
+
+  return 'eu';
+
+}
 
 
 
@@ -1832,7 +1844,7 @@ const LEAGUE_GROUPS = (() => {
 
   AVAILABLE_LEAGUES.forEach(l => {
 
-    if (!groups[l.country]) groups[l.country] = { country: l.country, flagUrl: l.flagUrl, leagues: [], continent: SA_COUNTRIES.has(l.country) ? 'sa' : 'eu' };
+    if (!groups[l.country]) groups[l.country] = { country: l.country, flagUrl: l.flagUrl, leagues: [], continent: getContinent(l.country) };
 
     groups[l.country].leagues.push(l);
 
@@ -1893,6 +1905,12 @@ function ExplorarTab({ leagueTeams, myTeamId, playerLeagueId, onSelectPlayer, bl
           <button className={`continent-tab ${continent === 'sa' ? 'active' : ''}`} onClick={() => setContinent('sa')}>
 
             <span>🌎</span> Sudamérica
+
+          </button>
+
+          <button className={`continent-tab ${continent === 'world' ? 'active' : ''}`} onClick={() => setContinent('world')}>
+
+            <span>🌏</span> Resto del Mundo
 
           </button>
 

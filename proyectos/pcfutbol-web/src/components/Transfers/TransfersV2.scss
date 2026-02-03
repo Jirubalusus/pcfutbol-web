@@ -1663,15 +1663,15 @@ $border-color: $card-border;
     
     .negotiation-section {
       padding: 1rem;
-      background: $surface-light;
-      border-radius: 12px;
-      border-left: 4px solid $border-color;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.02) 100%);
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
       transition: all 0.3s ease;
       
-      &.accepted { border-left-color: $success; }
-      &.rejected { border-left-color: $danger; }
-      &.counter { border-left-color: $warning; }
-      &.negotiating { border-left-color: $primary; }
+      &.accepted { border-color: rgba($success, 0.3); }
+      &.rejected { border-color: rgba($danger, 0.3); }
+      &.counter { border-color: rgba($warning, 0.3); }
+      &.negotiating { border-color: rgba($primary, 0.3); }
       &.locked {
         opacity: 0.5;
         
@@ -1688,6 +1688,8 @@ $border-color: $card-border;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 1rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         
         .section-title {
           display: flex;
@@ -1711,13 +1713,18 @@ $border-color: $card-border;
       }
       
       .offer-row {
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.85rem;
         
         label {
-          display: block;
-          font-size: 0.8rem;
-          color: $text-muted;
-          margin-bottom: 0.35rem;
+          display: flex;
+          align-items: center;
+          gap: 0.35rem;
+          font-size: 0.78rem;
+          color: rgba(255, 255, 255, 0.55);
+          margin-bottom: 0.4rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.3px;
         }
         
         .offer-input-wrapper {
@@ -1762,9 +1769,9 @@ $border-color: $card-border;
         .money-input {
           display: flex;
           align-items: center;
-          background: $dark-bg;
-          border: 1px solid $border-color;
-          border-radius: 8px;
+          background: rgba(0, 0, 0, 0.25);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 10px;
           overflow: hidden;
           
           &.disabled {
@@ -1773,33 +1780,35 @@ $border-color: $card-border;
           }
           
           .money-btn {
-            width: 44px;
-            height: 44px;
+            width: 48px;
+            height: 48px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255,255,255,0.05);
+            background: rgba(255,255,255,0.04);
             border: none;
-            color: $text;
-            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.4rem;
             font-weight: 700;
             cursor: pointer;
-            transition: background 0.15s;
+            transition: all 0.15s;
             user-select: none;
             -webkit-user-select: none;
             
             &:hover:not(:disabled) {
-              background: rgba(255,255,255,0.12);
+              background: rgba(255,255,255,0.1);
+              color: white;
             }
             &:active:not(:disabled), &.active {
-              background: rgba(0, 200, 255, 0.2);
+              background: rgba($primary, 0.25);
+              color: $primary;
             }
             &:disabled {
               opacity: 0.3;
               cursor: default;
             }
-            &.minus { border-right: 1px solid $border-color; }
-            &.plus { border-left: 1px solid $border-color; }
+            &.minus { border-right: 1px solid rgba(255, 255, 255, 0.08); }
+            &.plus { border-left: 1px solid rgba(255, 255, 255, 0.08); }
           }
           
           .money-display {
@@ -1808,20 +1817,21 @@ $border-color: $card-border;
             align-items: center;
             justify-content: center;
             gap: 4px;
-            padding: 0.5rem;
+            padding: 0.6rem 0.5rem;
             
             .money-prefix {
               font-size: 0.85rem;
-              color: $text-muted;
+              color: rgba(255, 255, 255, 0.45);
             }
             .money-value {
-              font-size: 1.2rem;
+              font-size: 1.25rem;
               font-weight: 700;
-              color: $text;
+              color: #f0f6fc;
+              letter-spacing: -0.3px;
             }
             .money-suffix {
               font-size: 0.8rem;
-              color: $text-muted;
+              color: rgba(255, 255, 255, 0.45);
             }
           }
         }
@@ -1842,37 +1852,53 @@ $border-color: $card-border;
       }
       
       .contract-row {
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.85rem;
         
         label {
+          display: flex;
+          align-items: center;
+          gap: 0.35rem;
+          font-size: 0.78rem;
+          color: rgba(255, 255, 255, 0.55);
+          margin-bottom: 0.4rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.3px;
+        }
+        
+        .salary-hint {
           display: block;
-          font-size: 0.8rem;
+          font-size: 0.7rem;
           color: $text-muted;
-          margin-bottom: 0.35rem;
+          margin-top: 0.35rem;
         }
         
         .contract-buttons {
           display: flex;
-          gap: 0.5rem;
+          gap: 0.4rem;
           
           .contract-btn {
             flex: 1;
-            padding: 0.5rem;
-            background: $dark-bg;
-            border: 1px solid $border-color;
-            border-radius: 6px;
-            color: $text;
+            padding: 0.55rem 0.4rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: rgba(255, 255, 255, 0.7);
             font-size: 0.8rem;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.2s;
             
             &:hover:not(:disabled) {
               border-color: $primary;
+              background: rgba($primary, 0.1);
             }
             
             &.active {
-              background: $primary;
+              background: linear-gradient(135deg, $primary 0%, #0066d1 100%);
               border-color: $primary;
+              color: white;
+              box-shadow: 0 2px 8px rgba($primary, 0.3);
             }
             
             &:disabled {
@@ -1886,25 +1912,31 @@ $border-color: $card-border;
       .probability-row {
         display: flex;
         align-items: center;
-        gap: 0.75rem;
+        gap: 0.6rem;
         margin-bottom: 0.75rem;
+        padding: 0.5rem 0.6rem;
+        background: rgba(0, 0, 0, 0.15);
+        border-radius: 8px;
         
         .prob-label {
-          font-size: 0.75rem;
+          font-size: 0.72rem;
           color: $text-muted;
           white-space: nowrap;
+          display: flex;
+          align-items: center;
+          gap: 0.3rem;
         }
         
         .prob-bar-container {
           flex: 1;
-          height: 8px;
-          background: $dark-bg;
-          border-radius: 4px;
+          height: 10px;
+          background: rgba(255, 255, 255, 0.06);
+          border-radius: 5px;
           overflow: hidden;
           
           .prob-bar {
             height: 100%;
-            border-radius: 4px;
+            border-radius: 5px;
             transition: all 0.3s ease;
           }
         }
@@ -2117,6 +2149,92 @@ $border-color: $card-border;
         .spinning {
           animation: spin 1s linear infinite;
         }
+      }
+      
+      // Divider between club and player sections
+      .offer-divider {
+        height: 1px;
+        background: linear-gradient(90deg, transparent 0%, $border-color 50%, transparent 100%);
+        margin: 0.5rem 0;
+      }
+      
+      // Summary box
+      .offer-summary-box {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 10px;
+        padding: 0.75rem;
+        margin-bottom: 0.75rem;
+        
+        .summary-line {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0.3rem 0;
+          font-size: 0.8rem;
+          color: $text-muted;
+          
+          .amount {
+            font-weight: 600;
+            color: $text;
+          }
+          
+          &.total {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 0.3rem;
+            padding-top: 0.5rem;
+            font-weight: 700;
+            color: #ffd60a;
+            
+            .amount {
+              color: #ffd60a;
+              font-size: 0.95rem;
+            }
+          }
+        }
+      }
+      
+      // Send offer button
+      .btn-send-offer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        width: 100%;
+        padding: 0.85rem;
+        background: linear-gradient(135deg, $success 0%, #1fa855 100%);
+        border: none;
+        border-radius: 10px;
+        color: white;
+        font-size: 0.95rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s;
+        margin-bottom: 0.5rem;
+        
+        &:hover:not(:disabled) {
+          transform: translateY(-1px);
+          box-shadow: 0 4px 15px rgba($success, 0.35);
+        }
+        
+        &:active:not(:disabled) {
+          transform: translateY(0);
+        }
+        
+        &:disabled {
+          opacity: 0.45;
+          cursor: not-allowed;
+          background: $surface-lighter;
+        }
+      }
+      
+      // Offer hint
+      .offer-hint {
+        font-size: 0.72rem;
+        color: rgba(255, 255, 255, 0.35);
+        text-align: center;
+        margin: 0;
+        line-height: 1.4;
       }
     }
   }
