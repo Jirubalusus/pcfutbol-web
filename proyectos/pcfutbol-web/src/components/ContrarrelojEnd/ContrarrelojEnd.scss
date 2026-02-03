@@ -202,6 +202,223 @@
     }
   }
 
+  // Best player
+  &__best-player {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(255, 215, 0, 0.06);
+    border: 1px solid rgba(255, 215, 0, 0.15);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.25rem;
+    text-align: left;
+
+    .star-icon { color: #FFD700; flex-shrink: 0; }
+
+    .player-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+    .player-label {
+      font-size: 0.65rem;
+      color: #667788;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+    }
+    .player-name {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .player-detail {
+      font-size: 0.75rem;
+      color: #8899aa;
+      font-weight: 500;
+    }
+  }
+
+  // Match stats
+  &__match-stats {
+    margin-bottom: 1.25rem;
+    text-align: left;
+
+    h3 {
+      color: #8ec8ff;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.6rem;
+      font-weight: 700;
+      svg { vertical-align: -2px; margin-right: 0.25rem; }
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.5rem;
+
+      @media (max-width: 500px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .stat-item {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 0.6rem 0.4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.15rem;
+
+      .stat-value {
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: #fff;
+      }
+      .stat-label {
+        font-size: 0.6rem;
+        color: #667788;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+
+      &.win .stat-value { color: #2d8a4e; }
+      &.draw .stat-value { color: #d4a017; }
+      &.loss .stat-value { color: #d94a4a; }
+      &.rate {
+        background: rgba(0, 212, 255, 0.06);
+        border-color: rgba(0, 212, 255, 0.15);
+        .stat-value { color: #8ec8ff; }
+      }
+    }
+  }
+
+  // Time — hero section at the end
+  &__time {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+
+    .time-icon { color: var(--color-accent, #00d4ff); flex-shrink: 0; }
+
+    .time-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+    .time-label {
+      font-size: 0.7rem;
+      color: #667788;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+    .time-value {
+      font-size: 3rem;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+    }
+    .time-unit {
+      font-size: 0.85rem;
+      color: #8899aa;
+      font-weight: 600;
+    }
+  }
+
+  &.victory &__time {
+    border-color: rgba(255, 215, 0, 0.2);
+    background: rgba(255, 215, 0, 0.04);
+    .time-value { 
+      background: linear-gradient(135deg, #FFD700, #F5A623);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .time-icon { color: #FFD700; }
+  }
+
+  // Weighted score
+  &__weighted {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.5rem 1rem;
+    margin-top: -0.75rem;
+    margin-bottom: 1.25rem;
+
+    .weighted-formula {
+      font-size: 0.75rem;
+      color: #667788;
+    }
+
+    .weighted-score {
+      font-size: 0.9rem;
+      color: #8ec8ff;
+      font-weight: 600;
+
+      strong {
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: #fff;
+      }
+    }
+  }
+
+  // Ranking position
+  &__ranking-pos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.08), rgba(255, 215, 0, 0.03));
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    border-radius: 10px;
+    padding: 0.85rem 1.25rem;
+    margin-bottom: 1.5rem;
+    animation: fadeIn 0.6s ease 0.8s both;
+
+    .medal-icon {
+      color: #FFD700;
+      flex-shrink: 0;
+    }
+
+    .ranking-text {
+      font-size: 0.95rem;
+      color: #ccd6e0;
+      font-weight: 600;
+
+      strong {
+        color: #FFD700;
+        font-weight: 800;
+      }
+    }
+
+    .ranking-detail {
+      font-size: 0.75rem;
+      color: #667788;
+      font-weight: 500;
+    }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
   // Actions
   &__actions {
     display: flex;

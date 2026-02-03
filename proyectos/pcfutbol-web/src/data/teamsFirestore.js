@@ -16,10 +16,10 @@ import { jLeagueTeams } from './teams-jleague';
 // Normalización de posiciones: inglés → español
 // ============================================================
 const POS_MAP = {
-  'GK': 'POR', 'CB': 'DFC', 'LB': 'LTI', 'RB': 'LTD',
-  'LWB': 'LTI', 'RWB': 'LTD', 'CDM': 'MCD', 'CM': 'MC',
+  'GK': 'POR', 'CB': 'DFC', 'LB': 'LB', 'RB': 'RB',
+  'LWB': 'LB', 'RWB': 'RB', 'CDM': 'MCD', 'CM': 'MC',
   'CAM': 'MCO', 'LM': 'MI', 'RM': 'MD', 'LW': 'EI',
-  'RW': 'ED', 'CF': 'MP', 'ST': 'DC', 'LD': 'LTD', 'LI': 'LTI'
+  'RW': 'ED', 'CF': 'CF', 'ST': 'DC', 'LD': 'RB', 'LI': 'LB'
 };
 
 function normalizePositions(teams) {

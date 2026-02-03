@@ -131,9 +131,9 @@ export default function Finance() {
         <div className="finance__group">
           <div className="finance__group-title income">Ingresos</div>
           <FinanceRow 
-            label="Abonados" 
+            label="Abonados (cobro fin temporada)" 
             amount={finances.seasonTicketIncome}
-            detail={finances.seasonTickets > 0 ? `${finances.seasonTickets.toLocaleString()} × €${finances.seasonTicketPrice}` : 'Sin campaña cerrada'}
+            detail={finances.seasonTickets > 0 ? `${finances.seasonTickets.toLocaleString()} × €${finances.seasonTicketPrice} — pendiente` : 'Sin campaña cerrada'}
           />
           <FinanceRow 
             label="Entradas vendidas" 

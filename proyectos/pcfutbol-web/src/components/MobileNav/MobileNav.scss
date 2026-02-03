@@ -312,3 +312,16 @@
   from { transform: translateY(100%); }
   to { transform: translateY(0); }
 }
+
+// ==================
+// WINTER MODE (Mobile)
+// ==================
+.mobile-nav--winter {
+  border-top-color: rgba(100, 180, 255, 0.3);
+  background: linear-gradient(180deg, rgba(10, 22, 40, 0.95), var(--color-bg-secondary));
+
+  .mobile-nav__action-btn--advance {
+    background: linear-gradient(135deg, #1a5a8a 0%, #3a8acf 100%);
+    box-shadow: 0 2px 10px rgba(100, 180, 255, 0.25);
+  }
+}

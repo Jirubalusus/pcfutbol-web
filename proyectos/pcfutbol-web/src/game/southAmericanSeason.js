@@ -197,7 +197,7 @@ function ensurePlayersExist(team) {
   return {
     ...team,
     id: team.teamId || team.id,
-    name: team.teamName || team.name || 'Unknown',
+    name: team.teamName || team.name || 'Desconocido',
     players: Array.from({ length: 18 }, (_, i) => ({
       name: `Jugador ${i + 1}`,
       position: ['GK', 'CB', 'CB', 'CB', 'RB', 'LB', 'CM', 'CM', 'CDM', 'CAM', 'RM', 'LM', 'RW', 'LW', 'ST', 'ST', 'CF', 'GK'][i],

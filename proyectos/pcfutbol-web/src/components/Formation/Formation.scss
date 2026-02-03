@@ -1551,46 +1551,145 @@ $row-noconv-2: #4a4a4a;
 }
 
 // Selector de formaci�n en modal t�ctica
+// Tabs formación/táctica
+.tactic-tabs {
+  display: flex;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding: 0 16px;
+  gap: 4px;
+
+  .tab {
+    flex: 1;
+    padding: 10px 0;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: #667;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &.active {
+      color: #fff;
+      border-bottom-color: #0a84ff;
+    }
+    &:hover:not(.active) { color: #aab; }
+  }
+}
+
+// Selector visual de formación
+.formation-visual-selector {
+  .formation-group {
+    margin-bottom: 16px;
+
+    .group-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: #556;
+      letter-spacing: 0.5px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      padding-left: 2px;
+    }
+
+    .formation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
+      gap: 8px;
+
+      @media (max-width: 480px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+
+  .formation-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.15);
+    }
+
+    &.active {
+      background: rgba(48, 209, 88, 0.1);
+      border-color: #30d158;
+      box-shadow: 0 0 8px rgba(48, 209, 88, 0.2);
+    }
+
+    .mini-pitch {
+      width: 100%;
+      max-width: 80px;
+      height: auto;
+    }
+
+    .formation-name {
+      margin-top: 4px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #aab;
+      white-space: nowrap;
+    }
+
+    &.active .formation-name { color: #30d158; }
+  }
+
+  .formation-detail {
+    margin-top: 12px;
+    padding: 12px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.08);
+
+    .detail-header {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 8px;
+
+      .detail-name {
+        font-size: 1rem;
+        font-weight: 800;
+        color: #fff;
+      }
+      .detail-desc {
+        font-size: 0.75rem;
+        color: #667;
+      }
+    }
+
+    .detail-positions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+
+      .pos-tag {
+        padding: 2px 8px;
+        background: rgba(48, 209, 88, 0.12);
+        border: 1px solid rgba(48, 209, 88, 0.25);
+        border-radius: 4px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: #30d158;
+      }
+    }
+  }
+}
+
+// (legacy) formation-selector fallback
 .formation-selector {
   margin-bottom: 20px;
   padding-bottom: 16px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  
-  label {
-    display: block;
-    color: #8e8e93;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-  }
-  
-  .formation-options {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    
-    .formation-btn {
-      padding: 8px 16px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 8px;
-      color: #fff;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: all 0.2s;
-      
-      &:hover {
-        background: rgba(255, 255, 255, 0.1);
-        border-color: rgba(255, 255, 255, 0.2);
-      }
-      
-      &.active {
-        background: rgba(10, 132, 255, 0.2);
-        border-color: #0a84ff;
-        color: #0a84ff;
-      }
-    }
-  }
 }
 
 // Toast de confirmaci�n

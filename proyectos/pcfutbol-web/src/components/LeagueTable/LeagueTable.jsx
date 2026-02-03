@@ -589,9 +589,31 @@ export default function LeagueTable() {
       {/* Apertura-Clausura tournament tabs */}
       {isAPCL && hasData && (
         <div className="league-table-v2__tournament-tabs">
-          <div className="tournament-indicator">
-            🏆 {apclData?.currentTournament === 'apertura' ? 'Apertura' : 'Clausura'} en curso
-          </div>
+          {/* Show champion if final has been resolved */}
+          {(() => {
+            const leagueData = selectedLeague === playerLeagueId ? null : state.otherLeagues?.[selectedLeague];
+            const finalResult = selectedLeague === playerLeagueId
+              ? state.aperturaClausuraFinal
+              : leagueData?.finalResult;
+            if (finalResult?.winner) {
+              return (
+                <div className="tournament-indicator tournament-champion">
+                  🏆 Campeón: <strong>{finalResult.winnerName}</strong>
+                  {finalResult.hadFinal && (
+                    <span className="final-score">
+                      {' '}(Ida: {finalResult.leg1?.homeScore}-{finalResult.leg1?.awayScore}, Vuelta: {finalResult.leg2?.homeScore}-{finalResult.leg2?.awayScore})
+                    </span>
+                  )}
+                  {!finalResult.hadFinal && <span> — campeón de ambos torneos</span>}
+                </div>
+              );
+            }
+            return (
+              <div className="tournament-indicator">
+                🏆 {apclData?.currentTournament === 'apertura' ? 'Apertura' : 'Clausura'} en curso
+              </div>
+            );
+          })()}
           <div className="tournament-tab-buttons">
             <button
               className={`tournament-tab ${(tournamentTab === 'current' ? apclData?.currentTournament : tournamentTab) === 'apertura' ? 'active' : ''} ${apclData?.currentTournament === 'apertura' ? 'is-live' : ''}`}
@@ -722,7 +744,7 @@ export default function LeagueTable() {
                     <span className="col-form">
                       {(team.form || []).slice(-5).map((f, i) => (
                         <span key={i} className={`form-dot form-${f?.toLowerCase()}`}>
-                          {f}
+                          {f === 'W' ? 'V' : f === 'L' ? 'D' : 'E'}
                         </span>
                       ))}
                     </span>
@@ -758,7 +780,7 @@ export default function LeagueTable() {
                       <span className="col-pts">{activeTable[playerPosition - 1]?.points}</span>
                       <span className="col-form">
                         {(activeTable[playerPosition - 1]?.form || []).slice(-5).map((f, i) => (
-                          <span key={i} className={`form-dot form-${f?.toLowerCase()}`}>{f}</span>
+                          <span key={i} className={`form-dot form-${f?.toLowerCase()}`}>{f === 'W' ? 'V' : f === 'L' ? 'D' : 'E'}</span>
                         ))}
                       </span>
                     </div>

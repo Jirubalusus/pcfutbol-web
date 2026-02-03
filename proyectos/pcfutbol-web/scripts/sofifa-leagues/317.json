@@ -1,0 +1,466 @@
+[
+  {
+    "name": "I. Bennacer",
+    "overall": 80,
+    "potential": 80,
+    "position": "CDM, CM",
+    "age": 27,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "M. Livaja",
+    "overall": 78,
+    "potential": 78,
+    "position": "ST, CAM",
+    "age": 31,
+    "team": "Hajduk Split"
+  },
+  {
+    "name": "S. McKenna",
+    "overall": 75,
+    "potential": 75,
+    "position": "CB",
+    "age": 28,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "D. Beljo",
+    "overall": 74,
+    "potential": 80,
+    "position": "ST",
+    "age": 23,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "R. Pierre-Gabriel",
+    "overall": 73,
+    "potential": 73,
+    "position": "RB, LB, RM",
+    "age": 27,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "D. Ljubičić",
+    "overall": 73,
+    "potential": 73,
+    "position": "CM, RM, CDM, CAM",
+    "age": 27,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "M. Lisica",
+    "overall": 72,
+    "potential": 80,
+    "position": "RW, RM",
+    "age": 21,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "M. Zajc",
+    "overall": 72,
+    "potential": 72,
+    "position": "CM, CAM, CDM",
+    "age": 31,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "Gonzalo Villar",
+    "overall": 72,
+    "potential": 73,
+    "position": "CM, CDM, CAM",
+    "age": 27,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "Torrente",
+    "overall": 72,
+    "potential": 74,
+    "position": "CB",
+    "age": 23,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "M. Šego",
+    "overall": 72,
+    "potential": 75,
+    "position": "LW, ST, RW, LM",
+    "age": 24,
+    "team": "Hajduk Split"
+  },
+  {
+    "name": "A. Rebić",
+    "overall": 72,
+    "potential": 72,
+    "position": "LM, LW, ST",
+    "age": 31,
+    "team": "Hajduk Split"
+  },
+  {
+    "name": "R. Pukštas",
+    "overall": 72,
+    "potential": 82,
+    "position": "CM, CAM, CDM",
+    "age": 20,
+    "team": "Hajduk Split"
+  },
+  {
+    "name": "N. Sigur",
+    "overall": 72,
+    "potential": 81,
+    "position": "RB, CDM, RW",
+    "age": 21,
+    "team": "Hajduk Split"
+  },
+  {
+    "name": "M. Valinčić",
+    "overall": 71,
+    "potential": 79,
+    "position": "RB",
+    "age": 22,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "K. Théophile-Catherine",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB, RB",
+    "age": 35,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "J. Mišić",
+    "overall": 71,
+    "potential": 71,
+    "position": "CDM, CM",
+    "age": 31,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "I. Nevistić",
+    "overall": 71,
+    "potential": 73,
+    "position": "GK",
+    "age": 26,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "F. Krovinović",
+    "overall": 71,
+    "potential": 71,
+    "position": "CAM, CM",
+    "age": 29,
+    "team": "Hajduk Split"
+  },
+  {
+    "name": "I. Ivušić",
+    "overall": 71,
+    "potential": 71,
+    "position": "GK",
+    "age": 30,
+    "team": "Hajduk Split"
+  },
+  {
+    "name": "Š. Hrgović",
+    "overall": 71,
+    "potential": 81,
+    "position": "LB, RB",
+    "age": 21,
+    "team": "Hajduk Split"
+  },
+  {
+    "name": "N. Galešić",
+    "overall": 70,
+    "potential": 74,
+    "position": "CB",
+    "age": 24,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "S. Kulenović",
+    "overall": 70,
+    "potential": 73,
+    "position": "ST",
+    "age": 25,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "L. Stojković",
+    "overall": 70,
+    "potential": 80,
+    "position": "CAM, LW, RW, CM",
+    "age": 21,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "A. Hoxha",
+    "overall": 70,
+    "potential": 70,
+    "position": "LW, LM",
+    "age": 26,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "Hugo Guillamón",
+    "overall": 70,
+    "potential": 73,
+    "position": "CM, CDM, CB",
+    "age": 25,
+    "team": "Hajduk Split"
+  },
+  {
+    "name": "Z. Šarlija",
+    "overall": 70,
+    "potential": 71,
+    "position": "CB",
+    "age": 28,
+    "team": "Hajduk Split"
+  },
+  {
+    "name": "Sergi Domínguez",
+    "overall": 69,
+    "potential": 82,
+    "position": "CB",
+    "age": 20,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "B. Goda",
+    "overall": 69,
+    "potential": 69,
+    "position": "LB, CB",
+    "age": 27,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "D. Melnjak",
+    "overall": 69,
+    "potential": 69,
+    "position": "LB",
+    "age": 32,
+    "team": "Hajduk Split"
+  },
+  {
+    "name": "I. Diallo",
+    "overall": 69,
+    "potential": 69,
+    "position": "LB, CB, RB",
+    "age": 28,
+    "team": "Hajduk Split"
+  },
+  {
+    "name": "A. Pajaziti",
+    "overall": 69,
+    "potential": 79,
+    "position": "CDM, CM, LM",
+    "age": 22,
+    "team": "Hajduk Split"
+  },
+  {
+    "name": "J. Córdoba",
+    "overall": 68,
+    "potential": 76,
+    "position": "RW, RM, ST",
+    "age": 21,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "C. Varela",
+    "overall": 68,
+    "potential": 88,
+    "position": "LW, LM",
+    "age": 16,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "G. Vidović",
+    "overall": 68,
+    "potential": 78,
+    "position": "LM, ST, LW",
+    "age": 21,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "A. Kalik",
+    "overall": 68,
+    "potential": 68,
+    "position": "CAM, CM, ST",
+    "age": 27,
+    "team": "Hajduk Split"
+  },
+  {
+    "name": "A. Sanyang",
+    "overall": 68,
+    "potential": 69,
+    "position": "RM, ST, RW",
+    "age": 26,
+    "team": "Hajduk Split"
+  },
+  {
+    "name": "M. Pérez Vinlöf",
+    "overall": 67,
+    "potential": 81,
+    "position": "LB, LM",
+    "age": 19,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "D. Perić",
+    "overall": 65,
+    "potential": 65,
+    "position": "CB",
+    "age": 30,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "I. Filipović",
+    "overall": 65,
+    "potential": 65,
+    "position": "GK",
+    "age": 30,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "M. Soldo",
+    "overall": 65,
+    "potential": 76,
+    "position": "CDM, CM",
+    "age": 21,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "M. Bakrar",
+    "overall": 65,
+    "potential": 70,
+    "position": "ST",
+    "age": 24,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "R. Raçi",
+    "overall": 65,
+    "potential": 72,
+    "position": "CB",
+    "age": 22,
+    "team": "Hajduk Split"
+  },
+  {
+    "name": "B. Mlačić",
+    "overall": 65,
+    "potential": 80,
+    "position": "CB",
+    "age": 18,
+    "team": "Hajduk Split"
+  },
+  {
+    "name": "Iker Almena",
+    "overall": 65,
+    "potential": 76,
+    "position": "RM, LM, RW",
+    "age": 21,
+    "team": "Hajduk Split"
+  },
+  {
+    "name": "R. Mudražija",
+    "overall": 64,
+    "potential": 64,
+    "position": "CM, CDM",
+    "age": 28,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "F. Topić",
+    "overall": 64,
+    "potential": 77,
+    "position": "ST, RW",
+    "age": 21,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "B. Durdov",
+    "overall": 64,
+    "potential": 84,
+    "position": "RW, RM",
+    "age": 17,
+    "team": "Hajduk Split"
+  },
+  {
+    "name": "T. Silić",
+    "overall": 64,
+    "potential": 77,
+    "position": "GK",
+    "age": 21,
+    "team": "Hajduk Split"
+  },
+  {
+    "name": "N. Mikić",
+    "overall": 62,
+    "potential": 79,
+    "position": "RB",
+    "age": 18,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "L. Jurak",
+    "overall": 62,
+    "potential": 76,
+    "position": "CM, CAM, CDM",
+    "age": 19,
+    "team": "Hajduk Split"
+  },
+  {
+    "name": "R. Brajković",
+    "overall": 62,
+    "potential": 77,
+    "position": "RW, LW, ST, RM",
+    "age": 19,
+    "team": "Hajduk Split"
+  },
+  {
+    "name": "M. Ćutuk",
+    "overall": 61,
+    "potential": 75,
+    "position": "ST, RW",
+    "age": 18,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "L. Jakirović",
+    "overall": 61,
+    "potential": 82,
+    "position": "CB, LB",
+    "age": 17,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "P. Tabinas",
+    "overall": 61,
+    "potential": 67,
+    "position": "RB",
+    "age": 22,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "D. Zagorac",
+    "overall": 61,
+    "potential": 61,
+    "position": "GK",
+    "age": 38,
+    "team": "Dinamo Zagreb"
+  },
+  {
+    "name": "M. Skelin",
+    "overall": 60,
+    "potential": 80,
+    "position": "CB",
+    "age": 18,
+    "team": "Hajduk Split"
+  },
+  {
+    "name": "L. Hodak",
+    "overall": 58,
+    "potential": 71,
+    "position": "RB, CDM",
+    "age": 19,
+    "team": "Hajduk Split"
+  }
+]

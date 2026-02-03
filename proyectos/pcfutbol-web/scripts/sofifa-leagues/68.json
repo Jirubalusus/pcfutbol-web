@@ -1,0 +1,3786 @@
+[
+  {
+    "name": "V. Osimhen",
+    "overall": 87,
+    "potential": 88,
+    "position": "ST",
+    "age": 26,
+    "team": "Galatasaray SK"
+  },
+  {
+    "name": "Ederson",
+    "overall": 84,
+    "potential": 84,
+    "position": "GK",
+    "age": 31,
+    "team": "Fenerbahçe SK"
+  },
+  {
+    "name": "L. Torreira",
+    "overall": 83,
+    "potential": 83,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Galatasaray SK"
+  },
+  {
+    "name": "İ. Gündoğan",
+    "overall": 82,
+    "potential": 82,
+    "position": "CM, CDM, CAM",
+    "age": 34,
+    "team": "Galatasaray SK"
+  },
+  {
+    "name": "D. Sánchez",
+    "overall": 82,
+    "potential": 82,
+    "position": "CB, RB",
+    "age": 29,
+    "team": "Galatasaray SK"
+  },
+  {
+    "name": "L. Sané",
+    "overall": 82,
+    "potential": 82,
+    "position": "RM, LM, RW",
+    "age": 29,
+    "team": "Galatasaray SK"
+  },
+  {
+    "name": "M. Guendouzi",
+    "overall": 82,
+    "potential": 85,
+    "position": "CDM, CM",
+    "age": 26,
+    "team": "Fenerbahçe SK"
+  },
+  {
+    "name": "O. Kökçü",
+    "overall": 82,
+    "potential": 86,
+    "position": "CM, CAM, CDM",
+    "age": 24,
+    "team": "Beşiktaş JK"
+  },
+  {
+    "name": "Anderson Talisca",
+    "overall": 81,
+    "potential": 81,
+    "position": "CAM, ST, CM",
+    "age": 31,
+    "team": "Fenerbahçe SK"
+  },
+  {
+    "name": "M. Škriniar",
+    "overall": 81,
+    "potential": 81,
+    "position": "CB",
+    "age": 30,
+    "team": "Fenerbahçe SK"
+  },
+  {
+    "name": "M. Icardi",
+    "overall": 80,
+    "potential": 80,
+    "position": "ST",
+    "age": 32,
+    "team": "Galatasaray SK"
+  },
+  {
+    "name": "U. Çakır",
+    "overall": 80,
+    "potential": 82,
+    "position": "GK",
+    "age": 29,
+    "team": "Galatasaray SK"
+  },
+  {
+    "name": "A. Bardakcı",
+    "overall": 80,
+    "potential": 80,
+    "position": "CB",
+    "age": 30,
+    "team": "Galatasaray SK"
+  },
+  {
+    "name": "N. Lang",
+    "overall": 80,
+    "potential": 81,
+    "position": "LW, LM",
+    "age": 26,
+    "team": "Galatasaray SK"
+  },
+  {
+    "name": "W. Singo",
+    "overall": 80,
+    "potential": 85,
+    "position": "CB, RB",
+    "age": 24,
+    "team": "Galatasaray SK"
+  },
+  {
+    "name": "B. Yılmaz",
+    "overall": 80,
+    "potential": 83,
+    "position": "LM, RM, ST, LW",
+    "age": 25,
+    "team": "Galatasaray SK"
+  },
+  {
+    "name": "Marco Asensio",
+    "overall": 80,
+    "potential": 80,
+    "position": "CAM, RW, CM",
+    "age": 29,
+    "team": "Fenerbahçe SK"
+  },
+  {
+    "name": "Y. En-Nesyri",
+    "overall": 80,
+    "potential": 80,
+    "position": "ST",
+    "age": 28,
+    "team": "Fenerbahçe SK"
+  },
+  {
+    "name": "K. Aktürkoğlu",
+    "overall": 80,
+    "potential": 80,
+    "position": "LW, LM",
+    "age": 26,
+    "team": "Fenerbahçe SK"
+  },
+  {
+    "name": "A. Onana",
+    "overall": 80,
+    "potential": 80,
+    "position": "GK",
+    "age": 29,
+    "team": "Trabzonspor"
+  },
+  {
+    "name": "M. Lemina",
+    "overall": 79,
+    "potential": 79,
+    "position": "CDM, CM, CB",
+    "age": 31,
+    "team": "Galatasaray SK"
+  },
+  {
+    "name": "Y. Akgün",
+    "overall": 79,
+    "potential": 82,
+    "position": "RM, CAM, LM, RW",
+    "age": 24,
+    "team": "Galatasaray SK"
+  },
+  {
+    "name": "Gabriel Sara",
+    "overall": 79,
+    "potential": 82,
+    "position": "CM, CAM, RM, CDM",
+    "age": 26,
+    "team": "Galatasaray SK"
+  },
+  {
+    "name": "Fred",
+    "overall": 79,
+    "potential": 79,
+    "position": "CM, CDM, CAM",
+    "age": 32,
+    "team": "Fenerbahçe SK"
+  },
+  {
+    "name": "J. Durán",
+    "overall": 79,
+    "potential": 85,
+    "position": "ST",
+    "age": 21,
+    "team": "Fenerbahçe SK"
+  },
+  {
+    "name": "Nélson Semedo",
+    "overall": 78,
+    "potential": 78,
+    "position": "RB, RM",
+    "age": 31,
+    "team": "Fenerbahçe SK"
+  },
+  {
+    "name": "E. Álvarez",
+    "overall": 78,
+    "potential": 79,
+    "position": "CDM, CM, CB",
+    "age": 27,
+    "team": "Fenerbahçe SK"
+  },
+  {
+    "name": "V. Černý",
+    "overall": 78,
+    "potential": 78,
+    "position": "RM, RW, CAM",
+    "age": 27,
+    "team": "Beşiktaş JK"
+  },
+  {
+    "name": "S. Savić",
+    "overall": 78,
+    "potential": 78,
+    "position": "CB",
+    "age": 34,
+    "team": "Trabzonspor"
+  },
+  {
+    "name": "O. Zubkov",
+    "overall": 78,
+    "potential": 78,
+    "position": "RW, CAM, RM",
+    "age": 28,
+    "team": "Trabzonspor"
+  },
+  {
+    "name": "R. Sallai",
+    "overall": 77,
+    "potential": 77,
+    "position": "RB, RM, LM",
+    "age": 28,
+    "team": "Galatasaray SK"
+  },
+  {
+    "name": "Ç. Söyüncü",
+    "overall": 77,
+    "potential": 78,
+    "position": "CB",
+    "age": 29,
+    "team": "Fenerbahçe SK"
+  },
+  {
+    "name": "İ. Yüksek",
+    "overall": 77,
+    "potential": 79,
+    "position": "CDM, CM",
+    "age": 26,
+    "team": "Fenerbahçe SK"
+  },
+  {
+    "name": "T. Abraham",
+    "overall": 77,
+    "potential": 77,
+    "position": "ST",
+    "age": 27,
+    "team": "Beşiktaş JK"
+  },
+  {
+    "name": "E. Višća",
+    "overall": 77,
+    "potential": 77,
+    "position": "RW, RM",
+    "age": 35,
+    "team": "Trabzonspor"
+  },
+  {
+    "name": "İ. Kahveci",
+    "overall": 77,
+    "potential": 77,
+    "position": "RW, CAM, CM, RM",
+    "age": 29,
+    "team": "Kasımpaşa SK"
+  },
+  {
+    "name": "J. Oosterwolde",
+    "overall": 76,
+    "potential": 81,
+    "position": "CB, LB",
+    "age": 24,
+    "team": "Fenerbahçe SK"
+  },
+  {
+    "name": "W. Ndidi",
+    "overall": 76,
+    "potential": 76,
+    "position": "CDM, CM",
+    "age": 28,
+    "team": "Beşiktaş JK"
+  },
+  {
+    "name": "M. Rashica",
+    "overall": 76,
+    "potential": 76,
+    "position": "RM, LM, RW",
+    "age": 29,
+    "team": "Beşiktaş JK"
+  },
+  {
+    "name": "C. Ünder",
+    "overall": 76,
+    "potential": 76,
+    "position": "RM, RW",
+    "age": 27,
+    "team": "Beşiktaş JK"
+  },
+  {
+    "name": "P. Onuachu",
+    "overall": 76,
+    "potential": 76,
+    "position": "ST",
+    "age": 31,
+    "team": "Trabzonspor"
+  },
+  {
+    "name": "B. Petković",
+    "overall": 76,
+    "potential": 76,
+    "position": "ST",
+    "age": 30,
+    "team": "Kocaelispor"
+  },
+  {
+    "name": "Guilherme Sityá",
+    "overall": 76,
+    "potential": 76,
+    "position": "LB, LM",
+    "age": 35,
+    "team": "Konyaspor"
+  },
+  {
+    "name": "G. Güvenç",
+    "overall": 75,
+    "potential": 75,
+    "position": "GK",
+    "age": 33,
+    "team": "Galatasaray SK"
+  },
+  {
+    "name": "I. Jakobs",
+    "overall": 75,
+    "potential": 78,
+    "position": "LB, LM",
+    "age": 25,
+    "team": "Galatasaray SK"
+  },
+  {
+    "name": "E. Elmalı",
+    "overall": 75,
+    "potential": 80,
+    "position": "LB, LM",
+    "age": 24,
+    "team": "Galatasaray SK"
+  },
+  {
+    "name": "M. Günok",
+    "overall": 75,
+    "potential": 75,
+    "position": "GK",
+    "age": 36,
+    "team": "Fenerbahçe SK"
+  },
+  {
+    "name": "O. Aydın",
+    "overall": 75,
+    "potential": 78,
+    "position": "LW, RW, RM, LM",
+    "age": 24,
+    "team": "Fenerbahçe SK"
+  },
+  {
+    "name": "F. Uduokhai",
+    "overall": 75,
+    "potential": 77,
+    "position": "CB",
+    "age": 27,
+    "team": "Beşiktaş JK"
+  },
+  {
+    "name": "Tiago Djaló",
+    "overall": 75,
+    "potential": 80,
+    "position": "CB",
+    "age": 25,
+    "team": "Beşiktaş JK"
+  },
+  {
+    "name": "E. Topçu",
+    "overall": 75,
+    "potential": 80,
+    "position": "CB, LB, CDM",
+    "age": 24,
+    "team": "Beşiktaş JK"
+  },
+  {
+    "name": "Jota Silva",
+    "overall": 75,
+    "potential": 76,
+    "position": "RM, LM, ST, RW",
+    "age": 25,
+    "team": "Beşiktaş JK"
+  },
+  {
+    "name": "A. Batagov",
+    "overall": 75,
+    "potential": 80,
+    "position": "CB",
+    "age": 23,
+    "team": "Trabzonspor"
+  },
+  {
+    "name": "E. Muçi",
+    "overall": 75,
+    "potential": 80,
+    "position": "CAM, LW, LM, CM",
+    "age": 24,
+    "team": "Trabzonspor"
+  },
+  {
+    "name": "R. van Drongelen",
+    "overall": 75,
+    "potential": 78,
+    "position": "CB, LB, CDM",
+    "age": 26,
+    "team": "Samsunspor"
+  },
+  {
+    "name": "Léo Duarte",
+    "overall": 75,
+    "potential": 76,
+    "position": "CB, RB",
+    "age": 28,
+    "team": "Medipol Başakşehir FK"
+  },
+  {
+    "name": "A. Harit",
+    "overall": 75,
+    "potential": 75,
+    "position": "CAM, LW, LM, CM",
+    "age": 28,
+    "team": "Medipol Başakşehir FK"
+  },
+  {
+    "name": "A. Maxim",
+    "overall": 75,
+    "potential": 75,
+    "position": "CAM, CM, LM",
+    "age": 34,
+    "team": "Gaziantep FK"
+  },
+  {
+    "name": "H. Hajradinović",
+    "overall": 75,
+    "potential": 75,
+    "position": "CM, CAM, CDM",
+    "age": 31,
+    "team": "Kasımpaşa SK"
+  },
+  {
+    "name": "K. Ayhan",
+    "overall": 74,
+    "potential": 74,
+    "position": "CB, CDM, RB",
+    "age": 30,
+    "team": "Galatasaray SK"
+  },
+  {
+    "name": "Y. Asprilla",
+    "overall": 74,
+    "potential": 80,
+    "position": "RM, RW, LM",
+    "age": 21,
+    "team": "Galatasaray SK"
+  },
+  {
+    "name": "M. Müldür",
+    "overall": 74,
+    "potential": 76,
+    "position": "RB, LB, CB, RM",
+    "age": 26,
+    "team": "Fenerbahçe SK"
+  },
+  {
+    "name": "N. Dorgeles",
+    "overall": 74,
+    "potential": 82,
+    "position": "RW, LW, ST, RM",
+    "age": 22,
+    "team": "Fenerbahçe SK"
+  },
+  {
+    "name": "E. Touré",
+    "overall": 74,
+    "potential": 81,
+    "position": "ST, LM, CAM",
+    "age": 23,
+    "team": "Beşiktaş JK"
+  },
+  {
+    "name": "O. Yokuşlu",
+    "overall": 74,
+    "potential": 74,
+    "position": "CDM, CM, CB",
+    "age": 31,
+    "team": "Trabzonspor"
+  },
+  {
+    "name": "N. Storm",
+    "overall": 74,
+    "potential": 74,
+    "position": "LM, LW, ST",
+    "age": 30,
+    "team": "Antalyaspor"
+  },
+  {
+    "name": "O. Ntcham",
+    "overall": 74,
+    "potential": 74,
+    "position": "CM, CDM, CAM",
+    "age": 29,
+    "team": "Samsunspor"
+  },
+  {
+    "name": "C. Holse",
+    "overall": 74,
+    "potential": 77,
+    "position": "CAM, RM, CM",
+    "age": 26,
+    "team": "Samsunspor"
+  },
+  {
+    "name": "C. Operi",
+    "overall": 74,
+    "potential": 74,
+    "position": "LB, LM",
+    "age": 28,
+    "team": "Medipol Başakşehir FK"
+  },
+  {
+    "name": "E. Shomurodov",
+    "overall": 74,
+    "potential": 74,
+    "position": "ST, CAM",
+    "age": 30,
+    "team": "Medipol Başakşehir FK"
+  },
+  {
+    "name": "Y. Sarı",
+    "overall": 74,
+    "potential": 74,
+    "position": "RW, RM",
+    "age": 26,
+    "team": "Medipol Başakşehir FK"
+  },
+  {
+    "name": "Ricardo Velho",
+    "overall": 74,
+    "potential": 78,
+    "position": "GK",
+    "age": 26,
+    "team": "Gençlerbirliği SK"
+  },
+  {
+    "name": "M. Lis",
+    "overall": 74,
+    "potential": 77,
+    "position": "GK",
+    "age": 28,
+    "team": "Göztepe SK"
+  },
+  {
+    "name": "R. Bazoer",
+    "overall": 74,
+    "potential": 75,
+    "position": "CB, CDM",
+    "age": 28,
+    "team": "Konyaspor"
+  },
+  {
+    "name": "E. Bardhi",
+    "overall": 74,
+    "potential": 74,
+    "position": "CAM, CM, LM",
+    "age": 29,
+    "team": "Konyaspor"
+  },
+  {
+    "name": "Y. Fofana",
+    "overall": 74,
+    "potential": 79,
+    "position": "GK",
+    "age": 24,
+    "team": "Çaykur Rizespor"
+  },
+  {
+    "name": "Kévin Rodrigues",
+    "overall": 74,
+    "potential": 74,
+    "position": "LB, LM, CB",
+    "age": 31,
+    "team": "Gaziantep FK"
+  },
+  {
+    "name": "M. Bayo",
+    "overall": 74,
+    "potential": 75,
+    "position": "ST",
+    "age": 27,
+    "team": "Gaziantep FK"
+  },
+  {
+    "name": "K. Demirbay",
+    "overall": 74,
+    "potential": 74,
+    "position": "CM, CDM, CAM",
+    "age": 31,
+    "team": "Kasımpaşa SK"
+  },
+  {
+    "name": "Rodrigo Becão",
+    "overall": 74,
+    "potential": 74,
+    "position": "CB",
+    "age": 29,
+    "team": "Kasımpaşa SK"
+  },
+  {
+    "name": "I. Hagi",
+    "overall": 74,
+    "potential": 75,
+    "position": "CAM, LM, CM",
+    "age": 26,
+    "team": "Alanyaspor"
+  },
+  {
+    "name": "L. Mercan",
+    "overall": 73,
+    "potential": 77,
+    "position": "LB, CM, CB, LM",
+    "age": 24,
+    "team": "Fenerbahçe SK"
+  },
+  {
+    "name": "A. Brown",
+    "overall": 73,
+    "potential": 79,
+    "position": "LB, LM",
+    "age": 23,
+    "team": "Fenerbahçe SK"
+  },
+  {
+    "name": "J. Svensson",
+    "overall": 73,
+    "potential": 73,
+    "position": "RB, CM",
+    "age": 32,
+    "team": "Beşiktaş JK"
+  },
+  {
+    "name": "E. Destanoğlu",
+    "overall": 73,
+    "potential": 77,
+    "position": "GK",
+    "age": 24,
+    "team": "Beşiktaş JK"
+  },
+  {
+    "name": "R. Yılmaz",
+    "overall": 73,
+    "potential": 76,
+    "position": "LB, LM",
+    "age": 24,
+    "team": "Beşiktaş JK"
+  },
+  {
+    "name": "O. Tufan",
+    "overall": 73,
+    "potential": 73,
+    "position": "CM, CAM, CDM",
+    "age": 30,
+    "team": "Trabzonspor"
+  },
+  {
+    "name": "A. Nwakaeme",
+    "overall": 73,
+    "potential": 73,
+    "position": "LW, ST, LM",
+    "age": 36,
+    "team": "Trabzonspor"
+  },
+  {
+    "name": "Y. Boli",
+    "overall": 73,
+    "potential": 73,
+    "position": "ST",
+    "age": 31,
+    "team": "Antalyaspor"
+  },
+  {
+    "name": "G. Dzhikiya",
+    "overall": 73,
+    "potential": 73,
+    "position": "CB",
+    "age": 31,
+    "team": "Antalyaspor"
+  },
+  {
+    "name": "A. Ömür",
+    "overall": 73,
+    "potential": 74,
+    "position": "RM, CAM, CM, RB",
+    "age": 26,
+    "team": "Antalyaspor"
+  },
+  {
+    "name": "İ. Eğribayat",
+    "overall": 73,
+    "potential": 77,
+    "position": "GK",
+    "age": 27,
+    "team": "Samsunspor"
+  },
+  {
+    "name": "E. Kılınç",
+    "overall": 73,
+    "potential": 73,
+    "position": "LM, RM, LW",
+    "age": 30,
+    "team": "Samsunspor"
+  },
+  {
+    "name": "M. Mouandilmadji",
+    "overall": 73,
+    "potential": 73,
+    "position": "ST",
+    "age": 27,
+    "team": "Samsunspor"
+  },
+  {
+    "name": "Afonso Sousa",
+    "overall": 73,
+    "potential": 75,
+    "position": "CAM, CM",
+    "age": 25,
+    "team": "Samsunspor"
+  },
+  {
+    "name": "A. Makoumbou",
+    "overall": 73,
+    "potential": 76,
+    "position": "CDM, CM",
+    "age": 26,
+    "team": "Samsunspor"
+  },
+  {
+    "name": "D. Selke",
+    "overall": 73,
+    "potential": 73,
+    "position": "ST",
+    "age": 30,
+    "team": "Medipol Başakşehir FK"
+  },
+  {
+    "name": "Nuno da Costa",
+    "overall": 73,
+    "potential": 73,
+    "position": "ST, LW",
+    "age": 34,
+    "team": "Medipol Başakşehir FK"
+  },
+  {
+    "name": "O. Ba",
+    "overall": 73,
+    "potential": 73,
+    "position": "CB",
+    "age": 29,
+    "team": "Medipol Başakşehir FK"
+  },
+  {
+    "name": "Miguel Crespo",
+    "overall": 73,
+    "potential": 73,
+    "position": "CM, CDM",
+    "age": 28,
+    "team": "Medipol Başakşehir FK"
+  },
+  {
+    "name": "João Mendes",
+    "overall": 73,
+    "potential": 73,
+    "position": "CAM, LW, CM",
+    "age": 30,
+    "team": "Kayserispor"
+  },
+  {
+    "name": "M. Haïdara",
+    "overall": 73,
+    "potential": 73,
+    "position": "LB, LM",
+    "age": 32,
+    "team": "Kocaelispor"
+  },
+  {
+    "name": "K. Linetty",
+    "overall": 73,
+    "potential": 73,
+    "position": "CDM, CM",
+    "age": 30,
+    "team": "Kocaelispor"
+  },
+  {
+    "name": "D. Türüç",
+    "overall": 73,
+    "potential": 73,
+    "position": "RM, CM, RW",
+    "age": 32,
+    "team": "Konyaspor"
+  },
+  {
+    "name": "Cláudio Winck",
+    "overall": 73,
+    "potential": 73,
+    "position": "RB, RM",
+    "age": 31,
+    "team": "Kasımpaşa SK"
+  },
+  {
+    "name": "Paulo Victor",
+    "overall": 73,
+    "potential": 73,
+    "position": "GK",
+    "age": 38,
+    "team": "Alanyaspor"
+  },
+  {
+    "name": "S. Mounié",
+    "overall": 73,
+    "potential": 73,
+    "position": "ST",
+    "age": 30,
+    "team": "Alanyaspor"
+  },
+  {
+    "name": "E. Mor",
+    "overall": 72,
+    "potential": 72,
+    "position": "RW, LW, CAM, RM",
+    "age": 27,
+    "team": "Fenerbahçe SK"
+  },
+  {
+    "name": "A. Musaba",
+    "overall": 72,
+    "potential": 75,
+    "position": "RW, LW, LM, RM",
+    "age": 24,
+    "team": "Fenerbahçe SK"
+  },
+  {
+    "name": "M. Eskihellaç",
+    "overall": 72,
+    "potential": 72,
+    "position": "LB, LM, RB",
+    "age": 28,
+    "team": "Trabzonspor"
+  },
+  {
+    "name": "Wagner Pina",
+    "overall": 72,
+    "potential": 81,
+    "position": "RB, RM",
+    "age": 22,
+    "team": "Trabzonspor"
+  },
+  {
+    "name": "L. Giannetti",
+    "overall": 72,
+    "potential": 72,
+    "position": "CB",
+    "age": 31,
+    "team": "Antalyaspor"
+  },
+  {
+    "name": "O. Kocuk",
+    "overall": 72,
+    "potential": 72,
+    "position": "GK",
+    "age": 29,
+    "team": "Samsunspor"
+  },
+  {
+    "name": "T. Borevković",
+    "overall": 72,
+    "potential": 74,
+    "position": "CB",
+    "age": 28,
+    "team": "Samsunspor"
+  },
+  {
+    "name": "J. Mendes",
+    "overall": 72,
+    "potential": 79,
+    "position": "RB, RM",
+    "age": 22,
+    "team": "Samsunspor"
+  },
+  {
+    "name": "O. Kemen",
+    "overall": 72,
+    "potential": 72,
+    "position": "CM, CDM, RB, CAM",
+    "age": 28,
+    "team": "Medipol Başakşehir FK"
+  },
+  {
+    "name": "J. Opoku",
+    "overall": 72,
+    "potential": 75,
+    "position": "CB",
+    "age": 26,
+    "team": "Medipol Başakşehir FK"
+  },
+  {
+    "name": "B. Özdemir",
+    "overall": 72,
+    "potential": 73,
+    "position": "CDM, CM",
+    "age": 27,
+    "team": "Medipol Başakşehir FK"
+  },
+  {
+    "name": "Carlos Mané",
+    "overall": 72,
+    "potential": 72,
+    "position": "LM, RW, RM, LB",
+    "age": 31,
+    "team": "Kayserispor"
+  },
+  {
+    "name": "L. Bénes",
+    "overall": 72,
+    "potential": 72,
+    "position": "CM, CAM, CDM",
+    "age": 27,
+    "team": "Kayserispor"
+  },
+  {
+    "name": "Pedro Pereira",
+    "overall": 72,
+    "potential": 72,
+    "position": "RB, CB, RM",
+    "age": 27,
+    "team": "Gençlerbirliği SK"
+  },
+  {
+    "name": "S. Koita",
+    "overall": 72,
+    "potential": 75,
+    "position": "ST, CAM",
+    "age": 25,
+    "team": "Gençlerbirliği SK"
+  },
+  {
+    "name": "H. Smolčić",
+    "overall": 72,
+    "potential": 76,
+    "position": "CB",
+    "age": 24,
+    "team": "Kocaelispor"
+  },
+  {
+    "name": "Q. Laçi",
+    "overall": 72,
+    "potential": 72,
+    "position": "CAM, CM, CDM",
+    "age": 29,
+    "team": "Çaykur Rizespor"
+  },
+  {
+    "name": "E. Boateng",
+    "overall": 72,
+    "potential": 72,
+    "position": "ST, LW, LM",
+    "age": 29,
+    "team": "Gaziantep FK"
+  },
+  {
+    "name": "M. Kranevitter",
+    "overall": 72,
+    "potential": 72,
+    "position": "CDM, CB",
+    "age": 32,
+    "team": "Fatih Karagümrük"
+  },
+  {
+    "name": "C. Tosun",
+    "overall": 72,
+    "potential": 72,
+    "position": "ST, LW, LM",
+    "age": 34,
+    "team": "Kasımpaşa SK"
+  },
+  {
+    "name": "E. Karaca",
+    "overall": 72,
+    "potential": 72,
+    "position": "CAM, RM, ST, CM",
+    "age": 35,
+    "team": "Alanyaspor"
+  },
+  {
+    "name": "G. Makouta",
+    "overall": 72,
+    "potential": 73,
+    "position": "CDM, CM, CAM",
+    "age": 27,
+    "team": "Alanyaspor"
+  },
+  {
+    "name": "S. Uçan",
+    "overall": 71,
+    "potential": 71,
+    "position": "CM, CDM, CAM",
+    "age": 31,
+    "team": "Beşiktaş JK"
+  },
+  {
+    "name": "G. Sazdağı",
+    "overall": 71,
+    "potential": 71,
+    "position": "RB, RM",
+    "age": 30,
+    "team": "Beşiktaş JK"
+  },
+  {
+    "name": "Ľ. Šatka",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB",
+    "age": 29,
+    "team": "Samsunspor"
+  },
+  {
+    "name": "Z. Yavru",
+    "overall": 71,
+    "potential": 71,
+    "position": "RB, CB",
+    "age": 33,
+    "team": "Samsunspor"
+  },
+  {
+    "name": "T. Coulibaly",
+    "overall": 71,
+    "potential": 77,
+    "position": "LM, RM, ST, LW",
+    "age": 24,
+    "team": "Samsunspor"
+  },
+  {
+    "name": "M. Şengezer",
+    "overall": 71,
+    "potential": 73,
+    "position": "GK",
+    "age": 28,
+    "team": "Medipol Başakşehir FK"
+  },
+  {
+    "name": "D. Goutas",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB",
+    "age": 31,
+    "team": "Gençlerbirliği SK"
+  },
+  {
+    "name": "H. Onyekuru",
+    "overall": 71,
+    "potential": 71,
+    "position": "LM, LW",
+    "age": 28,
+    "team": "Gençlerbirliği SK"
+  },
+  {
+    "name": "M. Wieteska",
+    "overall": 71,
+    "potential": 72,
+    "position": "CB",
+    "age": 28,
+    "team": "Kocaelispor"
+  },
+  {
+    "name": "A. Oğuz",
+    "overall": 71,
+    "potential": 71,
+    "position": "RB",
+    "age": 32,
+    "team": "Kocaelispor"
+  },
+  {
+    "name": "B. Kutlu",
+    "overall": 71,
+    "potential": 71,
+    "position": "CM, CDM, LB",
+    "age": 27,
+    "team": "Konyaspor"
+  },
+  {
+    "name": "C. Højer",
+    "overall": 71,
+    "potential": 71,
+    "position": "LB, CB, LM",
+    "age": 30,
+    "team": "Çaykur Rizespor"
+  },
+  {
+    "name": "A. Sowe",
+    "overall": 71,
+    "potential": 71,
+    "position": "ST",
+    "age": 31,
+    "team": "Çaykur Rizespor"
+  },
+  {
+    "name": "M. Sagnan",
+    "overall": 71,
+    "potential": 74,
+    "position": "CB",
+    "age": 26,
+    "team": "Çaykur Rizespor"
+  },
+  {
+    "name": "S. Akaydın",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB",
+    "age": 31,
+    "team": "Çaykur Rizespor"
+  },
+  {
+    "name": "D. Drăguș",
+    "overall": 71,
+    "potential": 74,
+    "position": "ST, LW, CAM",
+    "age": 25,
+    "team": "Gaziantep FK"
+  },
+  {
+    "name": "D. Sorescu",
+    "overall": 71,
+    "potential": 71,
+    "position": "RM, RB, RW",
+    "age": 27,
+    "team": "Gaziantep FK"
+  },
+  {
+    "name": "K. Kozłowski",
+    "overall": 71,
+    "potential": 82,
+    "position": "CAM, CM, RM",
+    "age": 21,
+    "team": "Gaziantep FK"
+  },
+  {
+    "name": "S. Larsson",
+    "overall": 71,
+    "potential": 71,
+    "position": "CAM, ST, LM, CM",
+    "age": 32,
+    "team": "Fatih Karagümrük"
+  },
+  {
+    "name": "Ricardo Esgaio",
+    "overall": 71,
+    "potential": 71,
+    "position": "RM, RB, CB, RW",
+    "age": 32,
+    "team": "Fatih Karagümrük"
+  },
+  {
+    "name": "Camacho",
+    "overall": 71,
+    "potential": 71,
+    "position": "LM, LW, RW",
+    "age": 31,
+    "team": "Fatih Karagümrük"
+  },
+  {
+    "name": "I. Grbić",
+    "overall": 71,
+    "potential": 71,
+    "position": "GK",
+    "age": 29,
+    "team": "Fatih Karagümrük"
+  },
+  {
+    "name": "A. Gianniotis",
+    "overall": 71,
+    "potential": 71,
+    "position": "GK",
+    "age": 32,
+    "team": "Kasımpaşa SK"
+  },
+  {
+    "name": "Hwang Ui Jo",
+    "overall": 71,
+    "potential": 71,
+    "position": "ST, CAM",
+    "age": 32,
+    "team": "Alanyaspor"
+  },
+  {
+    "name": "Bruno Viana",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB",
+    "age": 30,
+    "team": "Alanyaspor"
+  },
+  {
+    "name": "E. Akbaba",
+    "overall": 71,
+    "potential": 71,
+    "position": "CAM, CM",
+    "age": 32,
+    "team": "Eyüpspor"
+  },
+  {
+    "name": "K. Yılmaz",
+    "overall": 70,
+    "potential": 75,
+    "position": "CDM, CM",
+    "age": 24,
+    "team": "Beşiktaş JK"
+  },
+  {
+    "name": "C. Nwaiwu",
+    "overall": 70,
+    "potential": 80,
+    "position": "CB, CDM",
+    "age": 21,
+    "team": "Trabzonspor"
+  },
+  {
+    "name": "R. Baniya",
+    "overall": 70,
+    "potential": 75,
+    "position": "CB",
+    "age": 26,
+    "team": "Trabzonspor"
+  },
+  {
+    "name": "B. Bouchouari",
+    "overall": 70,
+    "potential": 77,
+    "position": "CM, CDM",
+    "age": 23,
+    "team": "Trabzonspor"
+  },
+  {
+    "name": "T. Jabol-Folcarelli",
+    "overall": 70,
+    "potential": 73,
+    "position": "CM, CDM",
+    "age": 25,
+    "team": "Trabzonspor"
+  },
+  {
+    "name": "R. Safuri",
+    "overall": 70,
+    "potential": 70,
+    "position": "CAM, CM",
+    "age": 29,
+    "team": "Antalyaspor"
+  },
+  {
+    "name": "C. Ndiaye",
+    "overall": 70,
+    "potential": 70,
+    "position": "ST, LW",
+    "age": 29,
+    "team": "Samsunspor"
+  },
+  {
+    "name": "L. Tómasson",
+    "overall": 70,
+    "potential": 73,
+    "position": "LB, LM",
+    "age": 24,
+    "team": "Samsunspor"
+  },
+  {
+    "name": "D. Alemdar",
+    "overall": 70,
+    "potential": 76,
+    "position": "GK",
+    "age": 22,
+    "team": "Medipol Başakşehir FK"
+  },
+  {
+    "name": "D. Toköz",
+    "overall": 70,
+    "potential": 70,
+    "position": "CM, CDM, RB",
+    "age": 29,
+    "team": "Kayserispor"
+  },
+  {
+    "name": "S. Denswil",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB, LB",
+    "age": 32,
+    "team": "Kayserispor"
+  },
+  {
+    "name": "Miguel Cardoso",
+    "overall": 70,
+    "potential": 70,
+    "position": "LM, CAM, ST, LW",
+    "age": 31,
+    "team": "Kayserispor"
+  },
+  {
+    "name": "G. Sağlam",
+    "overall": 70,
+    "potential": 73,
+    "position": "CDM, CM, CAM",
+    "age": 27,
+    "team": "Kayserispor"
+  },
+  {
+    "name": "T. Dele-Bashiru",
+    "overall": 70,
+    "potential": 72,
+    "position": "CM, CDM",
+    "age": 25,
+    "team": "Gençlerbirliği SK"
+  },
+  {
+    "name": "Héliton",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB",
+    "age": 29,
+    "team": "Göztepe SK"
+  },
+  {
+    "name": "A. Dennis",
+    "overall": 70,
+    "potential": 78,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "Göztepe SK"
+  },
+  {
+    "name": "Juan",
+    "overall": 70,
+    "potential": 79,
+    "position": "ST, CAM",
+    "age": 23,
+    "team": "Göztepe SK"
+  },
+  {
+    "name": "Rhaldney",
+    "overall": 70,
+    "potential": 73,
+    "position": "CDM, CM",
+    "age": 26,
+    "team": "Göztepe SK"
+  },
+  {
+    "name": "Jeh",
+    "overall": 70,
+    "potential": 73,
+    "position": "ST",
+    "age": 25,
+    "team": "Göztepe SK"
+  },
+  {
+    "name": "E. Bekiroğlu",
+    "overall": 70,
+    "potential": 70,
+    "position": "CAM, CM",
+    "age": 29,
+    "team": "Göztepe SK"
+  },
+  {
+    "name": "M. Bokele",
+    "overall": 70,
+    "potential": 77,
+    "position": "CB, RB, RM",
+    "age": 25,
+    "team": "Göztepe SK"
+  },
+  {
+    "name": "B. Balogh",
+    "overall": 70,
+    "potential": 79,
+    "position": "CB",
+    "age": 23,
+    "team": "Kocaelispor"
+  },
+  {
+    "name": "U. Nayir",
+    "overall": 70,
+    "potential": 70,
+    "position": "ST",
+    "age": 32,
+    "team": "Konyaspor"
+  },
+  {
+    "name": "J. Muleka",
+    "overall": 70,
+    "potential": 73,
+    "position": "ST, RW, CAM",
+    "age": 25,
+    "team": "Konyaspor"
+  },
+  {
+    "name": "A. Demirbağ",
+    "overall": 70,
+    "potential": 72,
+    "position": "CB",
+    "age": 27,
+    "team": "Konyaspor"
+  },
+  {
+    "name": "V. Mihăilă",
+    "overall": 70,
+    "potential": 71,
+    "position": "LM, CAM, LW",
+    "age": 25,
+    "team": "Çaykur Rizespor"
+  },
+  {
+    "name": "I. Olawoyin",
+    "overall": 70,
+    "potential": 70,
+    "position": "CAM, CM, CDM, ST",
+    "age": 27,
+    "team": "Çaykur Rizespor"
+  },
+  {
+    "name": "T. Şahin",
+    "overall": 70,
+    "potential": 74,
+    "position": "RB, RM",
+    "age": 24,
+    "team": "Çaykur Rizespor"
+  },
+  {
+    "name": "M. Abena",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB, RB",
+    "age": 30,
+    "team": "Gaziantep FK"
+  },
+  {
+    "name": "Luis Pérez",
+    "overall": 70,
+    "potential": 70,
+    "position": "RB, RM",
+    "age": 30,
+    "team": "Gaziantep FK"
+  },
+  {
+    "name": "J. Balkovec",
+    "overall": 70,
+    "potential": 70,
+    "position": "LB, CB, CM",
+    "age": 30,
+    "team": "Fatih Karagümrük"
+  },
+  {
+    "name": "M. Fall",
+    "overall": 70,
+    "potential": 70,
+    "position": "RM, ST, RW",
+    "age": 33,
+    "team": "Kasımpaşa SK"
+  },
+  {
+    "name": "A. Szalai",
+    "overall": 70,
+    "potential": 72,
+    "position": "CB",
+    "age": 27,
+    "team": "Kasımpaşa SK"
+  },
+  {
+    "name": "G. Yalçın",
+    "overall": 70,
+    "potential": 71,
+    "position": "ST, RM, LM, CAM",
+    "age": 26,
+    "team": "Alanyaspor"
+  },
+  {
+    "name": "M. Elia",
+    "overall": 70,
+    "potential": 70,
+    "position": "ST, RM, CAM",
+    "age": 27,
+    "team": "Alanyaspor"
+  },
+  {
+    "name": "T. Stepanenko",
+    "overall": 70,
+    "potential": 70,
+    "position": "CDM, CM",
+    "age": 35,
+    "team": "Eyüpspor"
+  },
+  {
+    "name": "A. Kutucu",
+    "overall": 69,
+    "potential": 72,
+    "position": "LM, ST, LW",
+    "age": 25,
+    "team": "Galatasaray SK"
+  },
+  {
+    "name": "K. Olaigbe",
+    "overall": 69,
+    "potential": 78,
+    "position": "LW, LM, RW",
+    "age": 22,
+    "team": "Trabzonspor"
+  },
+  {
+    "name": "Felipe Augusto",
+    "overall": 69,
+    "potential": 78,
+    "position": "ST, LW, CAM, LM",
+    "age": 21,
+    "team": "Trabzonspor"
+  },
+  {
+    "name": "K. Paal",
+    "overall": 69,
+    "potential": 69,
+    "position": "LB",
+    "age": 28,
+    "team": "Antalyaspor"
+  },
+  {
+    "name": "B. Balcı",
+    "overall": 69,
+    "potential": 74,
+    "position": "RB, RM",
+    "age": 25,
+    "team": "Antalyaspor"
+  },
+  {
+    "name": "U. Güneş",
+    "overall": 69,
+    "potential": 74,
+    "position": "CDM, CM",
+    "age": 25,
+    "team": "Medipol Başakşehir FK"
+  },
+  {
+    "name": "J. Kałuziński",
+    "overall": 69,
+    "potential": 80,
+    "position": "CDM, CM, CAM",
+    "age": 22,
+    "team": "Medipol Başakşehir FK"
+  },
+  {
+    "name": "F. Ebosele",
+    "overall": 69,
+    "potential": 77,
+    "position": "RB, RM, LB",
+    "age": 22,
+    "team": "Medipol Başakşehir FK"
+  },
+  {
+    "name": "B. Yıldırım",
+    "overall": 69,
+    "potential": 77,
+    "position": "ST",
+    "age": 22,
+    "team": "Medipol Başakşehir FK"
+  },
+  {
+    "name": "B. Bayazıt",
+    "overall": 69,
+    "potential": 73,
+    "position": "GK",
+    "age": 26,
+    "team": "Kayserispor"
+  },
+  {
+    "name": "G. Onugkha",
+    "overall": 69,
+    "potential": 69,
+    "position": "ST",
+    "age": 28,
+    "team": "Kayserispor"
+  },
+  {
+    "name": "S. Güler",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB, RB",
+    "age": 30,
+    "team": "Kayserispor"
+  },
+  {
+    "name": "M. Niang",
+    "overall": 69,
+    "potential": 69,
+    "position": "ST",
+    "age": 30,
+    "team": "Gençlerbirliği SK"
+  },
+  {
+    "name": "O. Etebo",
+    "overall": 69,
+    "potential": 69,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Gençlerbirliği SK"
+  },
+  {
+    "name": "A. Antunes",
+    "overall": 69,
+    "potential": 73,
+    "position": "CAM, CM, LM, ST",
+    "age": 24,
+    "team": "Göztepe SK"
+  },
+  {
+    "name": "S. Dursun",
+    "overall": 69,
+    "potential": 69,
+    "position": "ST",
+    "age": 33,
+    "team": "Kocaelispor"
+  },
+  {
+    "name": "A. Dijksteel",
+    "overall": 69,
+    "potential": 69,
+    "position": "RB, CB",
+    "age": 28,
+    "team": "Kocaelispor"
+  },
+  {
+    "name": "M. Jevtović",
+    "overall": 69,
+    "potential": 69,
+    "position": "CDM, CM",
+    "age": 31,
+    "team": "Konyaspor"
+  },
+  {
+    "name": "J. Bacuna",
+    "overall": 69,
+    "potential": 69,
+    "position": "CM, LM, CDM",
+    "age": 27,
+    "team": "Gaziantep FK"
+  },
+  {
+    "name": "M. Kabasakal",
+    "overall": 69,
+    "potential": 69,
+    "position": "CDM, CM, RB",
+    "age": 29,
+    "team": "Gaziantep FK"
+  },
+  {
+    "name": "A. Kızıldağ",
+    "overall": 69,
+    "potential": 72,
+    "position": "CB",
+    "age": 26,
+    "team": "Gaziantep FK"
+  },
+  {
+    "name": "F. Diabaté",
+    "overall": 69,
+    "potential": 69,
+    "position": "LM, RM, CAM, LW",
+    "age": 29,
+    "team": "Kasımpaşa SK"
+  },
+  {
+    "name": "G. Frimpong",
+    "overall": 69,
+    "potential": 70,
+    "position": "LB, LM",
+    "age": 26,
+    "team": "Kasımpaşa SK"
+  },
+  {
+    "name": "M. Ben Ouanes",
+    "overall": 69,
+    "potential": 69,
+    "position": "LM, RM, LB, LW",
+    "age": 30,
+    "team": "Kasımpaşa SK"
+  },
+  {
+    "name": "Maestro",
+    "overall": 69,
+    "potential": 78,
+    "position": "CDM, CM",
+    "age": 21,
+    "team": "Alanyaspor"
+  },
+  {
+    "name": "E. Taşkıran",
+    "overall": 69,
+    "potential": 69,
+    "position": "GK",
+    "age": 35,
+    "team": "Alanyaspor"
+  },
+  {
+    "name": "F. Hadergjonaj",
+    "overall": 69,
+    "potential": 69,
+    "position": "RB, RM",
+    "age": 30,
+    "team": "Alanyaspor"
+  },
+  {
+    "name": "Marcos Felipe",
+    "overall": 69,
+    "potential": 71,
+    "position": "GK",
+    "age": 29,
+    "team": "Eyüpspor"
+  },
+  {
+    "name": "Calegari",
+    "overall": 69,
+    "potential": 78,
+    "position": "RB, RM",
+    "age": 23,
+    "team": "Eyüpspor"
+  },
+  {
+    "name": "T. Çetin",
+    "overall": 68,
+    "potential": 70,
+    "position": "GK",
+    "age": 28,
+    "team": "Fenerbahçe SK"
+  },
+  {
+    "name": "C. Inao Oulaï",
+    "overall": 68,
+    "potential": 80,
+    "position": "CM, CDM, CAM",
+    "age": 19,
+    "team": "Trabzonspor"
+  },
+  {
+    "name": "S. van de Streek",
+    "overall": 68,
+    "potential": 68,
+    "position": "LM, RM, RB, LW",
+    "age": 32,
+    "team": "Antalyaspor"
+  },
+  {
+    "name": "D. Sinik",
+    "overall": 68,
+    "potential": 68,
+    "position": "LM, LW",
+    "age": 26,
+    "team": "Antalyaspor"
+  },
+  {
+    "name": "Y. Kayan",
+    "overall": 68,
+    "potential": 69,
+    "position": "CM, CDM",
+    "age": 26,
+    "team": "Samsunspor"
+  },
+  {
+    "name": "E. Tavşan",
+    "overall": 68,
+    "potential": 71,
+    "position": "RW, RM, CAM",
+    "age": 24,
+    "team": "Samsunspor"
+  },
+  {
+    "name": "V. Babacan",
+    "overall": 68,
+    "potential": 68,
+    "position": "GK",
+    "age": 36,
+    "team": "Medipol Başakşehir FK"
+  },
+  {
+    "name": "O. Bulut",
+    "overall": 68,
+    "potential": 68,
+    "position": "RB, RM",
+    "age": 31,
+    "team": "Medipol Başakşehir FK"
+  },
+  {
+    "name": "Ö. Şahiner",
+    "overall": 68,
+    "potential": 68,
+    "position": "RB, LB, CM",
+    "age": 33,
+    "team": "Medipol Başakşehir FK"
+  },
+  {
+    "name": "I. Brnić",
+    "overall": 68,
+    "potential": 74,
+    "position": "LW, LM",
+    "age": 23,
+    "team": "Medipol Başakşehir FK"
+  },
+  {
+    "name": "L. Carole",
+    "overall": 68,
+    "potential": 68,
+    "position": "LB, CDM",
+    "age": 34,
+    "team": "Kayserispor"
+  },
+  {
+    "name": "F. Soyalp",
+    "overall": 68,
+    "potential": 68,
+    "position": "CM, CDM, CAM",
+    "age": 30,
+    "team": "Kayserispor"
+  },
+  {
+    "name": "Y. Aït Bennasser",
+    "overall": 68,
+    "potential": 68,
+    "position": "CDM, CM, CB",
+    "age": 28,
+    "team": "Kayserispor"
+  },
+  {
+    "name": "M. Hosseini",
+    "overall": 68,
+    "potential": 69,
+    "position": "CB",
+    "age": 29,
+    "team": "Kayserispor"
+  },
+  {
+    "name": "G. Akkan",
+    "overall": 68,
+    "potential": 68,
+    "position": "GK",
+    "age": 30,
+    "team": "Gençlerbirliği SK"
+  },
+  {
+    "name": "O. Bayrak",
+    "overall": 68,
+    "potential": 69,
+    "position": "RB, RM",
+    "age": 26,
+    "team": "Göztepe SK"
+  },
+  {
+    "name": "Janderson",
+    "overall": 68,
+    "potential": 70,
+    "position": "ST",
+    "age": 26,
+    "team": "Göztepe SK"
+  },
+  {
+    "name": "J. Olaitan",
+    "overall": 68,
+    "potential": 76,
+    "position": "CAM, LM, ST",
+    "age": 23,
+    "team": "Göztepe SK"
+  },
+  {
+    "name": "N. Miroshi",
+    "overall": 68,
+    "potential": 78,
+    "position": "CDM, LB, CB, CM",
+    "age": 22,
+    "team": "Göztepe SK"
+  },
+  {
+    "name": "G. Değirmenci",
+    "overall": 68,
+    "potential": 68,
+    "position": "GK",
+    "age": 36,
+    "team": "Kocaelispor"
+  },
+  {
+    "name": "A. Jovanović",
+    "overall": 68,
+    "potential": 68,
+    "position": "GK",
+    "age": 32,
+    "team": "Kocaelispor"
+  },
+  {
+    "name": "D. Churlinov",
+    "overall": 68,
+    "potential": 71,
+    "position": "LM, RM, LW",
+    "age": 24,
+    "team": "Kocaelispor"
+  },
+  {
+    "name": "O. Syrota",
+    "overall": 68,
+    "potential": 74,
+    "position": "CB",
+    "age": 25,
+    "team": "Kocaelispor"
+  },
+  {
+    "name": "H. Keïta",
+    "overall": 68,
+    "potential": 73,
+    "position": "CM, CDM",
+    "age": 23,
+    "team": "Kocaelispor"
+  },
+  {
+    "name": "C. Keleş",
+    "overall": 68,
+    "potential": 73,
+    "position": "RM, LM, RW",
+    "age": 23,
+    "team": "Kocaelispor"
+  },
+  {
+    "name": "S. Svendsen",
+    "overall": 68,
+    "potential": 68,
+    "position": "RM, CM, RW",
+    "age": 27,
+    "team": "Konyaspor"
+  },
+  {
+    "name": "B. Güngördü",
+    "overall": 68,
+    "potential": 69,
+    "position": "GK",
+    "age": 29,
+    "team": "Konyaspor"
+  },
+  {
+    "name": "B. Kramer",
+    "overall": 68,
+    "potential": 68,
+    "position": "ST",
+    "age": 29,
+    "team": "Konyaspor"
+  },
+  {
+    "name": "T. Antalyalı",
+    "overall": 68,
+    "potential": 68,
+    "position": "CM, CDM",
+    "age": 30,
+    "team": "Çaykur Rizespor"
+  },
+  {
+    "name": "A. Mocsi",
+    "overall": 68,
+    "potential": 73,
+    "position": "CB",
+    "age": 25,
+    "team": "Çaykur Rizespor"
+  },
+  {
+    "name": "G. Papanikolaou",
+    "overall": 68,
+    "potential": 70,
+    "position": "CDM, CM",
+    "age": 26,
+    "team": "Çaykur Rizespor"
+  },
+  {
+    "name": "K. Alikulov",
+    "overall": 68,
+    "potential": 71,
+    "position": "CB",
+    "age": 26,
+    "team": "Çaykur Rizespor"
+  },
+  {
+    "name": "T. Sanuç",
+    "overall": 68,
+    "potential": 72,
+    "position": "CB",
+    "age": 25,
+    "team": "Gaziantep FK"
+  },
+  {
+    "name": "A. Gray",
+    "overall": 68,
+    "potential": 68,
+    "position": "ST",
+    "age": 34,
+    "team": "Fatih Karagümrük"
+  },
+  {
+    "name": "B. Özcan",
+    "overall": 68,
+    "potential": 69,
+    "position": "CM, CAM, ST, CDM",
+    "age": 27,
+    "team": "Fatih Karagümrük"
+  },
+  {
+    "name": "Cafú",
+    "overall": 68,
+    "potential": 68,
+    "position": "CDM, CM",
+    "age": 32,
+    "team": "Kasımpaşa SK"
+  },
+  {
+    "name": "P. Gueye",
+    "overall": 68,
+    "potential": 70,
+    "position": "ST",
+    "age": 25,
+    "team": "Kasımpaşa SK"
+  },
+  {
+    "name": "N. Janvier",
+    "overall": 68,
+    "potential": 69,
+    "position": "CM, CAM",
+    "age": 26,
+    "team": "Alanyaspor"
+  },
+  {
+    "name": "F. Aksoy",
+    "overall": 68,
+    "potential": 70,
+    "position": "CB, CDM, RB",
+    "age": 27,
+    "team": "Alanyaspor"
+  },
+  {
+    "name": "P. Ampem",
+    "overall": 68,
+    "potential": 68,
+    "position": "LW, RW, LM",
+    "age": 27,
+    "team": "Eyüpspor"
+  },
+  {
+    "name": "K. Karataş",
+    "overall": 67,
+    "potential": 72,
+    "position": "LB",
+    "age": 22,
+    "team": "Galatasaray SK"
+  },
+  {
+    "name": "T. Bulut",
+    "overall": 67,
+    "potential": 78,
+    "position": "RB, RM",
+    "age": 19,
+    "team": "Beşiktaş JK"
+  },
+  {
+    "name": "N. Uysal",
+    "overall": 67,
+    "potential": 67,
+    "position": "CB, CDM, RB, CM",
+    "age": 34,
+    "team": "Beşiktaş JK"
+  },
+  {
+    "name": "V. Sarı",
+    "overall": 67,
+    "potential": 67,
+    "position": "CB",
+    "age": 36,
+    "team": "Antalyaspor"
+  },
+  {
+    "name": "D. Šarić",
+    "overall": 67,
+    "potential": 67,
+    "position": "CM, CDM, CAM",
+    "age": 28,
+    "team": "Antalyaspor"
+  },
+  {
+    "name": "H. Türkmen",
+    "overall": 67,
+    "potential": 68,
+    "position": "CB, RB",
+    "age": 27,
+    "team": "Antalyaspor"
+  },
+  {
+    "name": "S. Dikmen",
+    "overall": 67,
+    "potential": 67,
+    "position": "CM, CDM",
+    "age": 31,
+    "team": "Antalyaspor"
+  },
+  {
+    "name": "C. Yüksel",
+    "overall": 67,
+    "potential": 68,
+    "position": "CDM, CM",
+    "age": 27,
+    "team": "Samsunspor"
+  },
+  {
+    "name": "O. Ergün",
+    "overall": 67,
+    "potential": 67,
+    "position": "CDM, CM",
+    "age": 32,
+    "team": "Medipol Başakşehir FK"
+  },
+  {
+    "name": "I. Tuci",
+    "overall": 67,
+    "potential": 69,
+    "position": "ST, RW",
+    "age": 24,
+    "team": "Kayserispor"
+  },
+  {
+    "name": "R. Civelek",
+    "overall": 67,
+    "potential": 67,
+    "position": "RB, RM, LM",
+    "age": 29,
+    "team": "Kayserispor"
+  },
+  {
+    "name": "A. Opoku",
+    "overall": 67,
+    "potential": 68,
+    "position": "RM, LM, RW",
+    "age": 26,
+    "team": "Kayserispor"
+  },
+  {
+    "name": "M. Mimaroğlu",
+    "overall": 67,
+    "potential": 67,
+    "position": "LM, RM, LW",
+    "age": 30,
+    "team": "Gençlerbirliği SK"
+  },
+  {
+    "name": "D. Varešanović",
+    "overall": 67,
+    "potential": 74,
+    "position": "CAM, CM",
+    "age": 24,
+    "team": "Gençlerbirliği SK"
+  },
+  {
+    "name": "Guilherme Luiz",
+    "overall": 67,
+    "potential": 76,
+    "position": "ST",
+    "age": 20,
+    "team": "Göztepe SK"
+  },
+  {
+    "name": "İ. Köybaşı",
+    "overall": 67,
+    "potential": 67,
+    "position": "LB, LM",
+    "age": 35,
+    "team": "Göztepe SK"
+  },
+  {
+    "name": "T. Altıkardeş",
+    "overall": 67,
+    "potential": 78,
+    "position": "CB, CDM, RB",
+    "age": 21,
+    "team": "Göztepe SK"
+  },
+  {
+    "name": "A. Kurtulan",
+    "overall": 67,
+    "potential": 75,
+    "position": "RB, RM, RW",
+    "age": 22,
+    "team": "Göztepe SK"
+  },
+  {
+    "name": "M. Ștefănescu",
+    "overall": 67,
+    "potential": 67,
+    "position": "RW, LW, RM",
+    "age": 26,
+    "team": "Konyaspor"
+  },
+  {
+    "name": "M. Bjørlo",
+    "overall": 67,
+    "potential": 67,
+    "position": "CM, CAM",
+    "age": 29,
+    "team": "Konyaspor"
+  },
+  {
+    "name": "H. Dervişoğlu",
+    "overall": 67,
+    "potential": 70,
+    "position": "ST, CAM",
+    "age": 25,
+    "team": "Çaykur Rizespor"
+  },
+  {
+    "name": "Loide Augusto",
+    "overall": 67,
+    "potential": 68,
+    "position": "RM, LM, RB, RW",
+    "age": 25,
+    "team": "Çaykur Rizespor"
+  },
+  {
+    "name": "A. Zeqiri",
+    "overall": 67,
+    "potential": 70,
+    "position": "LM, RM, LW",
+    "age": 24,
+    "team": "Çaykur Rizespor"
+  },
+  {
+    "name": "N. Sangaré",
+    "overall": 67,
+    "potential": 67,
+    "position": "RB, RM, CB, CM",
+    "age": 31,
+    "team": "Gaziantep FK"
+  },
+  {
+    "name": "S. M'Bakata",
+    "overall": 67,
+    "potential": 68,
+    "position": "RB, LB, RM",
+    "age": 27,
+    "team": "Gaziantep FK"
+  },
+  {
+    "name": "N. Mujakić",
+    "overall": 67,
+    "potential": 70,
+    "position": "CB, LB",
+    "age": 27,
+    "team": "Gaziantep FK"
+  },
+  {
+    "name": "Z. Görgen",
+    "overall": 67,
+    "potential": 70,
+    "position": "GK",
+    "age": 25,
+    "team": "Gaziantep FK"
+  },
+  {
+    "name": "C. Lungoyi",
+    "overall": 67,
+    "potential": 69,
+    "position": "LM, ST, LW, LB",
+    "age": 24,
+    "team": "Gaziantep FK"
+  },
+  {
+    "name": "D. Johnson",
+    "overall": 67,
+    "potential": 67,
+    "position": "CAM, CM",
+    "age": 32,
+    "team": "Fatih Karagümrük"
+  },
+  {
+    "name": "D. Biraschi",
+    "overall": 67,
+    "potential": 67,
+    "position": "CB",
+    "age": 30,
+    "team": "Fatih Karagümrük"
+  },
+  {
+    "name": "Serginho",
+    "overall": 67,
+    "potential": 67,
+    "position": "RM, LM, RW",
+    "age": 30,
+    "team": "Fatih Karagümrük"
+  },
+  {
+    "name": "K. Çörekçi",
+    "overall": 67,
+    "potential": 67,
+    "position": "RB, LB",
+    "age": 33,
+    "team": "Kasımpaşa SK"
+  },
+  {
+    "name": "K. Kanatsızkuş",
+    "overall": 67,
+    "potential": 67,
+    "position": "ST",
+    "age": 28,
+    "team": "Kasımpaşa SK"
+  },
+  {
+    "name": "N. Opoku",
+    "overall": 67,
+    "potential": 68,
+    "position": "CB",
+    "age": 27,
+    "team": "Kasımpaşa SK"
+  },
+  {
+    "name": "F. Aliti",
+    "overall": 67,
+    "potential": 67,
+    "position": "CB, LB, CDM",
+    "age": 31,
+    "team": "Alanyaspor"
+  },
+  {
+    "name": "Nuno Lima",
+    "overall": 67,
+    "potential": 76,
+    "position": "CB",
+    "age": 24,
+    "team": "Alanyaspor"
+  },
+  {
+    "name": "Ü. Akdağ",
+    "overall": 67,
+    "potential": 79,
+    "position": "CB",
+    "age": 21,
+    "team": "Alanyaspor"
+  },
+  {
+    "name": "R. Yalçın",
+    "overall": 67,
+    "potential": 67,
+    "position": "CB, RB, CDM, CM",
+    "age": 31,
+    "team": "Eyüpspor"
+  },
+  {
+    "name": "U. Bozok",
+    "overall": 67,
+    "potential": 67,
+    "position": "ST",
+    "age": 28,
+    "team": "Eyüpspor"
+  },
+  {
+    "name": "U. Meraş",
+    "overall": 67,
+    "potential": 67,
+    "position": "LB, LM, LW",
+    "age": 29,
+    "team": "Eyüpspor"
+  },
+  {
+    "name": "M. Łęgowski",
+    "overall": 67,
+    "potential": 74,
+    "position": "CM, CDM",
+    "age": 22,
+    "team": "Eyüpspor"
+  },
+  {
+    "name": "M. Hekimoğlu",
+    "overall": 66,
+    "potential": 78,
+    "position": "ST, LM, RW, LW",
+    "age": 18,
+    "team": "Beşiktaş JK"
+  },
+  {
+    "name": "M. Løvik",
+    "overall": 66,
+    "potential": 76,
+    "position": "LB, RB, RM, LM",
+    "age": 21,
+    "team": "Trabzonspor"
+  },
+  {
+    "name": "C. Çanak",
+    "overall": 66,
+    "potential": 78,
+    "position": "CAM, RW, CM",
+    "age": 20,
+    "team": "Trabzonspor"
+  },
+  {
+    "name": "E. Yeşilyurt",
+    "overall": 66,
+    "potential": 66,
+    "position": "RB, RM, LB",
+    "age": 31,
+    "team": "Antalyaspor"
+  },
+  {
+    "name": "A. Dadakdeniz",
+    "overall": 66,
+    "potential": 71,
+    "position": "GK",
+    "age": 25,
+    "team": "Antalyaspor"
+  },
+  {
+    "name": "J. Ceesay",
+    "overall": 66,
+    "potential": 73,
+    "position": "CM, CDM",
+    "age": 23,
+    "team": "Antalyaspor"
+  },
+  {
+    "name": "S. Gönül",
+    "overall": 66,
+    "potential": 66,
+    "position": "LB, LM",
+    "age": 28,
+    "team": "Samsunspor"
+  },
+  {
+    "name": "Y. Çift",
+    "overall": 66,
+    "potential": 72,
+    "position": "CB, CDM, RB, CM",
+    "age": 21,
+    "team": "Samsunspor"
+  },
+  {
+    "name": "E. Aydın",
+    "overall": 66,
+    "potential": 77,
+    "position": "CDM, CM",
+    "age": 20,
+    "team": "Samsunspor"
+  },
+  {
+    "name": "G. Jung",
+    "overall": 66,
+    "potential": 66,
+    "position": "CB",
+    "age": 30,
+    "team": "Kayserispor"
+  },
+  {
+    "name": "M. Hanousek",
+    "overall": 66,
+    "potential": 66,
+    "position": "LB, LM",
+    "age": 32,
+    "team": "Gençlerbirliği SK"
+  },
+  {
+    "name": "Ž. Žužek",
+    "overall": 66,
+    "potential": 67,
+    "position": "CB",
+    "age": 28,
+    "team": "Gençlerbirliği SK"
+  },
+  {
+    "name": "Thalisson Kelven",
+    "overall": 66,
+    "potential": 68,
+    "position": "CB, RB",
+    "age": 27,
+    "team": "Gençlerbirliği SK"
+  },
+  {
+    "name": "Allan Godoi",
+    "overall": 66,
+    "potential": 66,
+    "position": "CB",
+    "age": 32,
+    "team": "Göztepe SK"
+  },
+  {
+    "name": "A. Cherni",
+    "overall": 66,
+    "potential": 72,
+    "position": "LB, LM",
+    "age": 23,
+    "team": "Göztepe SK"
+  },
+  {
+    "name": "R. Rivas",
+    "overall": 66,
+    "potential": 66,
+    "position": "RM, LM, RW",
+    "age": 26,
+    "team": "Kocaelispor"
+  },
+  {
+    "name": "Show",
+    "overall": 66,
+    "potential": 68,
+    "position": "CDM, CM",
+    "age": 26,
+    "team": "Kocaelispor"
+  },
+  {
+    "name": "Pedrinho",
+    "overall": 66,
+    "potential": 66,
+    "position": "CAM, CM, LM",
+    "age": 28,
+    "team": "Konyaspor"
+  },
+  {
+    "name": "U. Akyol",
+    "overall": 66,
+    "potential": 67,
+    "position": "CDM, CM",
+    "age": 27,
+    "team": "Konyaspor"
+  },
+  {
+    "name": "E. Canpolat",
+    "overall": 66,
+    "potential": 71,
+    "position": "GK",
+    "age": 24,
+    "team": "Çaykur Rizespor"
+  },
+  {
+    "name": "M. Bozan",
+    "overall": 66,
+    "potential": 72,
+    "position": "GK",
+    "age": 24,
+    "team": "Gaziantep FK"
+  },
+  {
+    "name": "O. Özçiçek",
+    "overall": 66,
+    "potential": 67,
+    "position": "CM, CDM",
+    "age": 26,
+    "team": "Gaziantep FK"
+  },
+  {
+    "name": "Y. Kabadayi",
+    "overall": 66,
+    "potential": 77,
+    "position": "RM, CM, RW",
+    "age": 21,
+    "team": "Gaziantep FK"
+  },
+  {
+    "name": "B. Elmaz",
+    "overall": 66,
+    "potential": 76,
+    "position": "CDM, CM",
+    "age": 22,
+    "team": "Fatih Karagümrük"
+  },
+  {
+    "name": "İ. Kaya",
+    "overall": 66,
+    "potential": 71,
+    "position": "LW, CAM, RW, LM",
+    "age": 24,
+    "team": "Alanyaspor"
+  },
+  {
+    "name": "L. Pintor",
+    "overall": 66,
+    "potential": 69,
+    "position": "LW, RW, LM",
+    "age": 24,
+    "team": "Eyüpspor"
+  },
+  {
+    "name": "Á. Torres",
+    "overall": 66,
+    "potential": 69,
+    "position": "RW, LW, RM",
+    "age": 25,
+    "team": "Eyüpspor"
+  },
+  {
+    "name": "Y. Demir",
+    "overall": 65,
+    "potential": 69,
+    "position": "RM, CAM, RW",
+    "age": 22,
+    "team": "Galatasaray SK"
+  },
+  {
+    "name": "Julián Cuesta",
+    "overall": 65,
+    "potential": 65,
+    "position": "GK",
+    "age": 34,
+    "team": "Antalyaspor"
+  },
+  {
+    "name": "A. Yiğiter",
+    "overall": 65,
+    "potential": 70,
+    "position": "GK",
+    "age": 25,
+    "team": "Antalyaspor"
+  },
+  {
+    "name": "B. Öztürk",
+    "overall": 65,
+    "potential": 65,
+    "position": "CB",
+    "age": 29,
+    "team": "Antalyaspor"
+  },
+  {
+    "name": "S. Ballet",
+    "overall": 65,
+    "potential": 71,
+    "position": "RM, LM, RW",
+    "age": 24,
+    "team": "Antalyaspor"
+  },
+  {
+    "name": "J. Assoumou",
+    "overall": 65,
+    "potential": 72,
+    "position": "LM, RM, LW",
+    "age": 22,
+    "team": "Samsunspor"
+  },
+  {
+    "name": "A. Fayzullaev",
+    "overall": 65,
+    "potential": 75,
+    "position": "CAM, RW, RM, CM",
+    "age": 21,
+    "team": "Medipol Başakşehir FK"
+  },
+  {
+    "name": "B. Kapacak",
+    "overall": 65,
+    "potential": 66,
+    "position": "RM, RB, RW",
+    "age": 25,
+    "team": "Kayserispor"
+  },
+  {
+    "name": "F. Tongya",
+    "overall": 65,
+    "potential": 73,
+    "position": "CM, LW, LM, CAM",
+    "age": 23,
+    "team": "Gençlerbirliği SK"
+  },
+  {
+    "name": "O. Ülgün",
+    "overall": 65,
+    "potential": 65,
+    "position": "CM, CDM, CAM",
+    "age": 27,
+    "team": "Gençlerbirliği SK"
+  },
+  {
+    "name": "Ruan",
+    "overall": 65,
+    "potential": 65,
+    "position": "RM, RB, RW",
+    "age": 30,
+    "team": "Göztepe SK"
+  },
+  {
+    "name": "F. Bayır",
+    "overall": 65,
+    "potential": 70,
+    "position": "CB",
+    "age": 25,
+    "team": "Göztepe SK"
+  },
+  {
+    "name": "T. Bingöl",
+    "overall": 65,
+    "potential": 65,
+    "position": "CM, LM, RB, CDM",
+    "age": 32,
+    "team": "Kocaelispor"
+  },
+  {
+    "name": "D. Agyei",
+    "overall": 65,
+    "potential": 65,
+    "position": "RM, ST, LM, RW",
+    "age": 28,
+    "team": "Kocaelispor"
+  },
+  {
+    "name": "J. Nonge",
+    "overall": 65,
+    "potential": 78,
+    "position": "CM, CAM, CDM",
+    "age": 20,
+    "team": "Kocaelispor"
+  },
+  {
+    "name": "U. Yazğılı",
+    "overall": 65,
+    "potential": 70,
+    "position": "CB, CDM, RB, CM",
+    "age": 26,
+    "team": "Konyaspor"
+  },
+  {
+    "name": "D. Camara",
+    "overall": 65,
+    "potential": 71,
+    "position": "CM, CAM, RM, CDM",
+    "age": 23,
+    "team": "Gaziantep FK"
+  },
+  {
+    "name": "A. Ünyay",
+    "overall": 64,
+    "potential": 80,
+    "position": "CB, RB",
+    "age": 18,
+    "team": "Galatasaray SK"
+  },
+  {
+    "name": "B. Şen",
+    "overall": 64,
+    "potential": 68,
+    "position": "GK",
+    "age": 26,
+    "team": "Galatasaray SK"
+  },
+  {
+    "name": "Y. Demir",
+    "overall": 64,
+    "potential": 78,
+    "position": "CB, CDM, RB",
+    "age": 20,
+    "team": "Fenerbahçe SK"
+  },
+  {
+    "name": "E. Bilgin",
+    "overall": 64,
+    "potential": 74,
+    "position": "GK",
+    "age": 21,
+    "team": "Beşiktaş JK"
+  },
+  {
+    "name": "Bachir Gueye",
+    "overall": 64,
+    "potential": 72,
+    "position": "ST",
+    "age": 22,
+    "team": "Antalyaspor"
+  },
+  {
+    "name": "S. Jarju",
+    "overall": 64,
+    "potential": 82,
+    "position": "LW, LM",
+    "age": 17,
+    "team": "Samsunspor"
+  },
+  {
+    "name": "A. Diabaté",
+    "overall": 64,
+    "potential": 75,
+    "position": "CB, CDM",
+    "age": 18,
+    "team": "Samsunspor"
+  },
+  {
+    "name": "H. Güreler",
+    "overall": 64,
+    "potential": 78,
+    "position": "CB",
+    "age": 19,
+    "team": "Medipol Başakşehir FK"
+  },
+  {
+    "name": "M. Kyabou",
+    "overall": 64,
+    "potential": 65,
+    "position": "CDM, CM",
+    "age": 27,
+    "team": "Gençlerbirliği SK"
+  },
+  {
+    "name": "G. Gürpüz",
+    "overall": 64,
+    "potential": 71,
+    "position": "CAM, RM, CM",
+    "age": 22,
+    "team": "Gençlerbirliği SK"
+  },
+  {
+    "name": "M. Pala",
+    "overall": 64,
+    "potential": 69,
+    "position": "CDM, LB, RB, CM",
+    "age": 24,
+    "team": "Çaykur Rizespor"
+  },
+  {
+    "name": "A. Mebude",
+    "overall": 64,
+    "potential": 78,
+    "position": "RM, RW",
+    "age": 21,
+    "team": "Çaykur Rizespor"
+  },
+  {
+    "name": "Y. Barası",
+    "overall": 64,
+    "potential": 71,
+    "position": "ST, LM",
+    "age": 22,
+    "team": "Kasımpaşa SK"
+  },
+  {
+    "name": "T. İlter",
+    "overall": 64,
+    "potential": 64,
+    "position": "CDM, CM",
+    "age": 30,
+    "team": "Eyüpspor"
+  },
+  {
+    "name": "J. Yılmaz",
+    "overall": 64,
+    "potential": 76,
+    "position": "GK",
+    "age": 20,
+    "team": "Eyüpspor"
+  },
+  {
+    "name": "O. Piri",
+    "overall": 63,
+    "potential": 63,
+    "position": "GK",
+    "age": 30,
+    "team": "Kayserispor"
+  },
+  {
+    "name": "J. Katongo",
+    "overall": 63,
+    "potential": 76,
+    "position": "RB, CB, CDM",
+    "age": 20,
+    "team": "Kayserispor"
+  },
+  {
+    "name": "A. Dursun",
+    "overall": 63,
+    "potential": 64,
+    "position": "LB, LM",
+    "age": 26,
+    "team": "Gençlerbirliği SK"
+  },
+  {
+    "name": "F. Üzüm",
+    "overall": 63,
+    "potential": 64,
+    "position": "RM, RB, RW",
+    "age": 26,
+    "team": "Gençlerbirliği SK"
+  },
+  {
+    "name": "I. Sabra",
+    "overall": 63,
+    "potential": 80,
+    "position": "ST",
+    "age": 19,
+    "team": "Göztepe SK"
+  },
+  {
+    "name": "A. Sağat",
+    "overall": 63,
+    "potential": 63,
+    "position": "ST",
+    "age": 29,
+    "team": "Kocaelispor"
+  },
+  {
+    "name": "Y. Andzouana",
+    "overall": 63,
+    "potential": 63,
+    "position": "LM, RB, RM, LW",
+    "age": 28,
+    "team": "Konyaspor"
+  },
+  {
+    "name": "M. Ibrahimoglu",
+    "overall": 63,
+    "potential": 68,
+    "position": "CM, CDM",
+    "age": 24,
+    "team": "Konyaspor"
+  },
+  {
+    "name": "T. Taşçı",
+    "overall": 63,
+    "potential": 72,
+    "position": "RM, RW, LM",
+    "age": 23,
+    "team": "Konyaspor"
+  },
+  {
+    "name": "E. Taşdemir",
+    "overall": 63,
+    "potential": 63,
+    "position": "LB, LM",
+    "age": 29,
+    "team": "Kasımpaşa SK"
+  },
+  {
+    "name": "C. Üstündag",
+    "overall": 63,
+    "potential": 66,
+    "position": "CDM, CM",
+    "age": 24,
+    "team": "Kasımpaşa SK"
+  },
+  {
+    "name": "B. Moğultay",
+    "overall": 63,
+    "potential": 71,
+    "position": "LB",
+    "age": 21,
+    "team": "Alanyaspor"
+  },
+  {
+    "name": "D. Radu",
+    "overall": 63,
+    "potential": 69,
+    "position": "RB, RM, LB",
+    "age": 22,
+    "team": "Eyüpspor"
+  },
+  {
+    "name": "O. Çevikkan",
+    "overall": 62,
+    "potential": 79,
+    "position": "GK",
+    "age": 19,
+    "team": "Trabzonspor"
+  },
+  {
+    "name": "S. Karakoç",
+    "overall": 62,
+    "potential": 70,
+    "position": "LB",
+    "age": 22,
+    "team": "Antalyaspor"
+  },
+  {
+    "name": "E. Erentürk",
+    "overall": 62,
+    "potential": 63,
+    "position": "GK",
+    "age": 30,
+    "team": "Gençlerbirliği SK"
+  },
+  {
+    "name": "S. Bouajila",
+    "overall": 62,
+    "potential": 79,
+    "position": "RW, LW, RM",
+    "age": 17,
+    "team": "Göztepe SK"
+  },
+  {
+    "name": "D. Ertaş",
+    "overall": 62,
+    "potential": 75,
+    "position": "GK",
+    "age": 20,
+    "team": "Konyaspor"
+  },
+  {
+    "name": "T. Çukur",
+    "overall": 62,
+    "potential": 71,
+    "position": "ST",
+    "age": 22,
+    "team": "Fatih Karagümrük"
+  },
+  {
+    "name": "A. Baldursson",
+    "overall": 62,
+    "potential": 68,
+    "position": "CDM, CM",
+    "age": 23,
+    "team": "Kasımpaşa SK"
+  },
+  {
+    "name": "A. Kol",
+    "overall": 62,
+    "potential": 65,
+    "position": "LM, RM, LW",
+    "age": 24,
+    "team": "Kasımpaşa SK"
+  },
+  {
+    "name": "C. Raux-Yao",
+    "overall": 62,
+    "potential": 69,
+    "position": "CM, RM, CDM",
+    "age": 23,
+    "team": "Eyüpspor"
+  },
+  {
+    "name": "K. Kayaarası",
+    "overall": 61,
+    "potential": 80,
+    "position": "ST",
+    "age": 19,
+    "team": "Antalyaspor"
+  },
+  {
+    "name": "F. Gedik",
+    "overall": 61,
+    "potential": 68,
+    "position": "LW, RW, LM",
+    "age": 22,
+    "team": "Kocaelispor"
+  },
+  {
+    "name": "Y. Subaşı",
+    "overall": 61,
+    "potential": 61,
+    "position": "LB",
+    "age": 29,
+    "team": "Konyaspor"
+  },
+  {
+    "name": "A. Boşluk",
+    "overall": 61,
+    "potential": 72,
+    "position": "LB, LM",
+    "age": 22,
+    "team": "Konyaspor"
+  },
+  {
+    "name": "E. Bulut",
+    "overall": 61,
+    "potential": 68,
+    "position": "LM, LW",
+    "age": 22,
+    "team": "Çaykur Rizespor"
+  },
+  {
+    "name": "Ç. Kurukalıp",
+    "overall": 61,
+    "potential": 70,
+    "position": "LB, RB",
+    "age": 23,
+    "team": "Fatih Karagümrük"
+  },
+  {
+    "name": "A. Arous",
+    "overall": 61,
+    "potential": 70,
+    "position": "CB",
+    "age": 20,
+    "team": "Kasımpaşa SK"
+  },
+  {
+    "name": "U. Ogundu",
+    "overall": 61,
+    "potential": 75,
+    "position": "ST",
+    "age": 19,
+    "team": "Alanyaspor"
+  },
+  {
+    "name": "J. Onguéné",
+    "overall": 61,
+    "potential": 61,
+    "position": "CB",
+    "age": 27,
+    "team": "Eyüpspor"
+  },
+  {
+    "name": "B. Gezek",
+    "overall": 61,
+    "potential": 77,
+    "position": "CDM, CM, CB",
+    "age": 19,
+    "team": "Eyüpspor"
+  },
+  {
+    "name": "E. Ortakaya",
+    "overall": 61,
+    "potential": 74,
+    "position": "CB",
+    "age": 21,
+    "team": "Eyüpspor"
+  },
+  {
+    "name": "G. Gürpüz",
+    "overall": 60,
+    "potential": 79,
+    "position": "CM, CAM, CDM",
+    "age": 19,
+    "team": "Galatasaray SK"
+  },
+  {
+    "name": "E. Kemaloğlu",
+    "overall": 60,
+    "potential": 61,
+    "position": "CM, CDM",
+    "age": 26,
+    "team": "Gençlerbirliği SK"
+  },
+  {
+    "name": "S. Onur",
+    "overall": 60,
+    "potential": 69,
+    "position": "CAM, LW, RW, CM",
+    "age": 22,
+    "team": "Gençlerbirliği SK"
+  },
+  {
+    "name": "S. Yalçın",
+    "overall": 60,
+    "potential": 60,
+    "position": "CM, CDM",
+    "age": 31,
+    "team": "Kocaelispor"
+  },
+  {
+    "name": "M. Cinan",
+    "overall": 60,
+    "potential": 61,
+    "position": "LB, LM",
+    "age": 27,
+    "team": "Kocaelispor"
+  },
+  {
+    "name": "J. Ćalušić",
+    "overall": 60,
+    "potential": 60,
+    "position": "CB, LB",
+    "age": 31,
+    "team": "Konyaspor"
+  },
+  {
+    "name": "M. Buljubašić",
+    "overall": 60,
+    "potential": 69,
+    "position": "CDM, CM, CAM",
+    "age": 20,
+    "team": "Çaykur Rizespor"
+  },
+  {
+    "name": "V. Gidado",
+    "overall": 60,
+    "potential": 70,
+    "position": "CAM, RW, CM",
+    "age": 20,
+    "team": "Gaziantep FK"
+  },
+  {
+    "name": "A. Çınar",
+    "overall": 60,
+    "potential": 72,
+    "position": "CB",
+    "age": 21,
+    "team": "Fatih Karagümrük"
+  },
+  {
+    "name": "A. Yanar",
+    "overall": 60,
+    "potential": 62,
+    "position": "GK",
+    "age": 27,
+    "team": "Kasımpaşa SK"
+  },
+  {
+    "name": "A. Fall",
+    "overall": 59,
+    "potential": 75,
+    "position": "CM, CDM",
+    "age": 18,
+    "team": "Fenerbahçe SK"
+  },
+  {
+    "name": "S. Malkoçoğlu",
+    "overall": 59,
+    "potential": 75,
+    "position": "CDM, CM, CB",
+    "age": 20,
+    "team": "Trabzonspor"
+  },
+  {
+    "name": "T. İnce",
+    "overall": 59,
+    "potential": 77,
+    "position": "CB",
+    "age": 17,
+    "team": "Trabzonspor"
+  },
+  {
+    "name": "T. Turhan",
+    "overall": 59,
+    "potential": 76,
+    "position": "ST, RW",
+    "age": 17,
+    "team": "Medipol Başakşehir FK"
+  },
+  {
+    "name": "S. Mather",
+    "overall": 59,
+    "potential": 74,
+    "position": "LM, CAM, LW",
+    "age": 20,
+    "team": "Kayserispor"
+  },
+  {
+    "name": "D. Dönmezer",
+    "overall": 59,
+    "potential": 82,
+    "position": "GK",
+    "age": 16,
+    "team": "Kayserispor"
+  },
+  {
+    "name": "E. Kılıçarslan",
+    "overall": 59,
+    "potential": 62,
+    "position": "GK",
+    "age": 27,
+    "team": "Göztepe SK"
+  },
+  {
+    "name": "B. Kalayci",
+    "overall": 59,
+    "potential": 73,
+    "position": "CAM, LW, ST, CM",
+    "age": 19,
+    "team": "Fatih Karagümrük"
+  },
+  {
+    "name": "A. Sivri",
+    "overall": 59,
+    "potential": 62,
+    "position": "ST, LW, RW, LM",
+    "age": 25,
+    "team": "Fatih Karagümrük"
+  },
+  {
+    "name": "M. Kadıoğlu",
+    "overall": 59,
+    "potential": 74,
+    "position": "CB",
+    "age": 18,
+    "team": "Fatih Karagümrük"
+  },
+  {
+    "name": "Ruan",
+    "overall": 59,
+    "potential": 69,
+    "position": "RW, LM, RM",
+    "age": 20,
+    "team": "Alanyaspor"
+  },
+  {
+    "name": "İ. Çelik",
+    "overall": 59,
+    "potential": 73,
+    "position": "CAM, CM",
+    "age": 21,
+    "team": "Alanyaspor"
+  },
+  {
+    "name": "G. Mendy",
+    "overall": 59,
+    "potential": 68,
+    "position": "CB, LB",
+    "age": 20,
+    "team": "Eyüpspor"
+  },
+  {
+    "name": "D. Şahin",
+    "overall": 58,
+    "potential": 75,
+    "position": "LW, RW, LM",
+    "age": 18,
+    "team": "Beşiktaş JK"
+  },
+  {
+    "name": "E. Ceesay",
+    "overall": 58,
+    "potential": 74,
+    "position": "ST",
+    "age": 19,
+    "team": "Samsunspor"
+  },
+  {
+    "name": "P. Yaldır",
+    "overall": 58,
+    "potential": 65,
+    "position": "RW, RM",
+    "age": 22,
+    "team": "Samsunspor"
+  },
+  {
+    "name": "N. Korkmaz",
+    "overall": 58,
+    "potential": 67,
+    "position": "LM, LW",
+    "age": 23,
+    "team": "Kayserispor"
+  },
+  {
+    "name": "T. Sarıarslan",
+    "overall": 58,
+    "potential": 69,
+    "position": "ST",
+    "age": 21,
+    "team": "Kayserispor"
+  },
+  {
+    "name": "D. Demir",
+    "overall": 58,
+    "potential": 66,
+    "position": "CM, CDM",
+    "age": 22,
+    "team": "Gençlerbirliği SK"
+  },
+  {
+    "name": "A. Traore",
+    "overall": 58,
+    "potential": 73,
+    "position": "RW, RM",
+    "age": 18,
+    "team": "Fatih Karagümrük"
+  },
+  {
+    "name": "C. Sadia",
+    "overall": 58,
+    "potential": 74,
+    "position": "RW, LW, RM",
+    "age": 18,
+    "team": "Eyüpspor"
+  },
+  {
+    "name": "M. Altunbaş",
+    "overall": 58,
+    "potential": 67,
+    "position": "ST, RW",
+    "age": 22,
+    "team": "Eyüpspor"
+  },
+  {
+    "name": "H. Karataş",
+    "overall": 57,
+    "potential": 76,
+    "position": "LW, RW, LM",
+    "age": 18,
+    "team": "Fenerbahçe SK"
+  },
+  {
+    "name": "B. Çetin",
+    "overall": 57,
+    "potential": 72,
+    "position": "CB",
+    "age": 19,
+    "team": "Samsunspor"
+  },
+  {
+    "name": "T. Bülbül",
+    "overall": 57,
+    "potential": 68,
+    "position": "LW, LM",
+    "age": 19,
+    "team": "Samsunspor"
+  },
+  {
+    "name": "U. Yıldız",
+    "overall": 57,
+    "potential": 66,
+    "position": "RB",
+    "age": 22,
+    "team": "Göztepe SK"
+  },
+  {
+    "name": "Jo Jin Ho",
+    "overall": 57,
+    "potential": 66,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "Konyaspor"
+  },
+  {
+    "name": "T. Akgün",
+    "overall": 57,
+    "potential": 64,
+    "position": "CM, CDM",
+    "age": 22,
+    "team": "Fatih Karagümrük"
+  },
+  {
+    "name": "M. Tresor Doh",
+    "overall": 57,
+    "potential": 66,
+    "position": "CDM, CM",
+    "age": 21,
+    "team": "Fatih Karagümrük"
+  },
+  {
+    "name": "T. Aydın",
+    "overall": 57,
+    "potential": 68,
+    "position": "CB, RB",
+    "age": 19,
+    "team": "Kasımpaşa SK"
+  },
+  {
+    "name": "B. Yavuz",
+    "overall": 57,
+    "potential": 74,
+    "position": "RB",
+    "age": 20,
+    "team": "Alanyaspor"
+  },
+  {
+    "name": "T. Ülvan",
+    "overall": 57,
+    "potential": 64,
+    "position": "RB, LB",
+    "age": 24,
+    "team": "Eyüpspor"
+  },
+  {
+    "name": "A. Yıldırım",
+    "overall": 56,
+    "potential": 75,
+    "position": "GK",
+    "age": 18,
+    "team": "Trabzonspor"
+  },
+  {
+    "name": "A. Demirbilek",
+    "overall": 56,
+    "potential": 81,
+    "position": "LW, RW, LM",
+    "age": 16,
+    "team": "Antalyaspor"
+  },
+  {
+    "name": "F. Atoen",
+    "overall": 56,
+    "potential": 69,
+    "position": "CDM, CM",
+    "age": 18,
+    "team": "Samsunspor"
+  },
+  {
+    "name": "M. Özbaskıcı",
+    "overall": 56,
+    "potential": 73,
+    "position": "CAM, CM",
+    "age": 19,
+    "team": "Samsunspor"
+  },
+  {
+    "name": "K. Cihan",
+    "overall": 56,
+    "potential": 73,
+    "position": "CB",
+    "age": 17,
+    "team": "Kayserispor"
+  },
+  {
+    "name": "E. Yıldırım",
+    "overall": 56,
+    "potential": 79,
+    "position": "CB",
+    "age": 18,
+    "team": "Göztepe SK"
+  },
+  {
+    "name": "K. Gassama",
+    "overall": 56,
+    "potential": 65,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Gaziantep FK"
+  },
+  {
+    "name": "B. Aslan",
+    "overall": 55,
+    "potential": 74,
+    "position": "LW, RW, LM",
+    "age": 18,
+    "team": "Medipol Başakşehir FK"
+  },
+  {
+    "name": "L. Stancic",
+    "overall": 55,
+    "potential": 72,
+    "position": "GK",
+    "age": 18,
+    "team": "Medipol Başakşehir FK"
+  },
+  {
+    "name": "F. Bekleviç",
+    "overall": 55,
+    "potential": 59,
+    "position": "GK",
+    "age": 26,
+    "team": "Fatih Karagümrük"
+  },
+  {
+    "name": "B. Bulut",
+    "overall": 55,
+    "potential": 64,
+    "position": "CM, CDM",
+    "age": 22,
+    "team": "Alanyaspor"
+  },
+  {
+    "name": "E. Keskin",
+    "overall": 55,
+    "potential": 61,
+    "position": "CM, CDM",
+    "age": 24,
+    "team": "Alanyaspor"
+  },
+  {
+    "name": "E. Törüz",
+    "overall": 54,
+    "potential": 73,
+    "position": "GK",
+    "age": 18,
+    "team": "Samsunspor"
+  },
+  {
+    "name": "M. Fofana",
+    "overall": 54,
+    "potential": 69,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Medipol Başakşehir FK"
+  },
+  {
+    "name": "Y. Çeltik",
+    "overall": 54,
+    "potential": 63,
+    "position": "CM, CAM, CDM",
+    "age": 22,
+    "team": "Kayserispor"
+  },
+  {
+    "name": "F. Malak",
+    "overall": 54,
+    "potential": 67,
+    "position": "CM, CAM, CDM",
+    "age": 20,
+    "team": "Göztepe SK"
+  },
+  {
+    "name": "E. Aydın",
+    "overall": 54,
+    "potential": 77,
+    "position": "GK",
+    "age": 18,
+    "team": "Konyaspor"
+  },
+  {
+    "name": "E. Buğa",
+    "overall": 54,
+    "potential": 71,
+    "position": "CM, CDM",
+    "age": 18,
+    "team": "Konyaspor"
+  },
+  {
+    "name": "F. Orak",
+    "overall": 54,
+    "potential": 58,
+    "position": "RB, RM",
+    "age": 24,
+    "team": "Çaykur Rizespor"
+  },
+  {
+    "name": "A. Moussa Kone",
+    "overall": 54,
+    "potential": 69,
+    "position": "ST",
+    "age": 17,
+    "team": "Fatih Karagümrük"
+  },
+  {
+    "name": "K. Yandal",
+    "overall": 54,
+    "potential": 74,
+    "position": "GK",
+    "age": 19,
+    "team": "Fatih Karagümrük"
+  },
+  {
+    "name": "K. Arıcan",
+    "overall": 53,
+    "potential": 71,
+    "position": "GK",
+    "age": 19,
+    "team": "Antalyaspor"
+  },
+  {
+    "name": "E. Özbek",
+    "overall": 53,
+    "potential": 60,
+    "position": "CAM, CM",
+    "age": 22,
+    "team": "Kayserispor"
+  },
+  {
+    "name": "A. Kalın",
+    "overall": 53,
+    "potential": 71,
+    "position": "ST",
+    "age": 17,
+    "team": "Gaziantep FK"
+  },
+  {
+    "name": "K. Alkış",
+    "overall": 53,
+    "potential": 65,
+    "position": "GK",
+    "age": 19,
+    "team": "Gaziantep FK"
+  },
+  {
+    "name": "A. Müjde",
+    "overall": 53,
+    "potential": 59,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "Kasımpaşa SK"
+  },
+  {
+    "name": "A. Çelik",
+    "overall": 52,
+    "potential": 61,
+    "position": "CB",
+    "age": 20,
+    "team": "Gençlerbirliği SK"
+  },
+  {
+    "name": "E. Doğan",
+    "overall": 52,
+    "potential": 62,
+    "position": "GK",
+    "age": 20,
+    "team": "Çaykur Rizespor"
+  },
+  {
+    "name": "B. Başkan",
+    "overall": 51,
+    "potential": 71,
+    "position": "CM, CDM",
+    "age": 19,
+    "team": "Trabzonspor"
+  },
+  {
+    "name": "S. Öztaşdelen",
+    "overall": 51,
+    "potential": 65,
+    "position": "GK",
+    "age": 20,
+    "team": "Kocaelispor"
+  },
+  {
+    "name": "B. Ersoy",
+    "overall": 51,
+    "potential": 59,
+    "position": "CB",
+    "age": 22,
+    "team": "Fatih Karagümrük"
+  },
+  {
+    "name": "Y. Karademir",
+    "overall": 51,
+    "potential": 73,
+    "position": "CM, CDM",
+    "age": 17,
+    "team": "Alanyaspor"
+  },
+  {
+    "name": "A. Yavuz",
+    "overall": 51,
+    "potential": 70,
+    "position": "LB, CB",
+    "age": 19,
+    "team": "Eyüpspor"
+  },
+  {
+    "name": "E. Aydın",
+    "overall": 50,
+    "potential": 55,
+    "position": "GK",
+    "age": 24,
+    "team": "Gençlerbirliği SK"
+  },
+  {
+    "name": "Ş. Öztürk",
+    "overall": 50,
+    "potential": 63,
+    "position": "GK",
+    "age": 20,
+    "team": "Göztepe SK"
+  },
+  {
+    "name": "C. Köseer",
+    "overall": 50,
+    "potential": 58,
+    "position": "GK",
+    "age": 22,
+    "team": "Eyüpspor"
+  },
+  {
+    "name": "Ş. Kazancı",
+    "overall": 49,
+    "potential": 68,
+    "position": "GK",
+    "age": 16,
+    "team": "Kasımpaşa SK"
+  },
+  {
+    "name": "K. Akyazı",
+    "overall": 48,
+    "potential": 64,
+    "position": "LW, LM",
+    "age": 19,
+    "team": "Konyaspor"
+  }
+]

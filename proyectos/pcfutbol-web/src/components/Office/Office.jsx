@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
+import { posES } from '../../game/positionNames';
 import { 
   getLaLigaTeams, getSegundaTeams, getPrimeraRfefTeams, getSegundaRfefTeams,
   getPremierTeams, getLigue1Teams, getBundesligaTeams, getSerieATeams,
@@ -47,6 +49,7 @@ import Europe from '../Europe/Europe';
 import Cup from '../Cup/Cup';
 import Competitions from '../Competitions/Competitions';
 import { isSeasonOver } from '../../game/seasonManager';
+import { getWinterWindowRange } from '../../game/globalTransferEngine';
 import { getPlayerCompetition, isTeamAlive } from '../../game/europeanSeason';
 import { isCupWeek, getCupRoundForWeek } from '../../game/europeanCompetitions';
 import { simulateCupRound, completeCupMatch } from '../../game/cupSystem';
@@ -66,6 +69,7 @@ import {
 import './Office.scss';
 
 export default function Office() {
+  const { t } = useTranslation();
   const { state, dispatch, saveGame } = useGame();
   const [activeTab, setActiveTab] = useState('overview');
   const [showMatch, setShowMatch] = useState(false);
@@ -96,7 +100,14 @@ export default function Office() {
       seasonOver = false; // Player still has SA matches to play
     }
   }
+  // Note: pendingAperturaClausuraFinal is handled inside SeasonEnd component
   
+  // Calcular punto medio de la temporada
+  const maxWeek = state.fixtures?.length > 0 
+    ? Math.max(...state.fixtures.map(f => f.week)) : 38;
+  const halfSeason = Math.ceil(maxWeek / 2);
+  const isPastHalfSeason = !state.preseasonPhase && state.currentWeek >= halfSeason;
+
   const formatMoney = (amount) => {
     if (amount >= 1000000) {
       return `€${(amount / 1000000).toFixed(1)}M`;
@@ -626,8 +637,8 @@ export default function Office() {
     return (
       <div className="office__overview">
         <div className="office__welcome">
-          <h2>Bienvenido, Míster</h2>
-          <p>Temporada {state.currentSeason} · {state.preseasonPhase ? `Pretemporada ${state.preseasonWeek}/${state.preseasonMatches?.length || 5}` : `Semana ${state.currentWeek}`}</p>
+          <h2>{t('office.welcome')}</h2>
+          <p>{t('office.seasonInfo', { season: state.currentSeason })} · {state.preseasonPhase ? t('office.preseason', { week: state.preseasonWeek, total: state.preseasonMatches?.length || 5 }) : t('office.weekInfo', { week: state.currentWeek })}</p>
         </div>
         
         <div className="office__cards">
@@ -636,7 +647,7 @@ export default function Office() {
               <Trophy size={28} strokeWidth={2} />
             </div>
             <div className="office__card-content">
-              <span className="label">Posición</span>
+              <span className="label">{t('leagueTable.position')}</span>
               <span className="value">{position}º</span>
             </div>
           </div>
@@ -646,7 +657,7 @@ export default function Office() {
               <TrendingUp size={28} strokeWidth={2} />
             </div>
             <div className="office__card-content">
-              <span className="label">Puntos</span>
+              <span className="label">{t('leagueTable.points')}</span>
               <span className="value">{teamStats?.points || 0}</span>
             </div>
           </div>
@@ -656,7 +667,7 @@ export default function Office() {
               <Wallet size={28} strokeWidth={2} />
             </div>
             <div className="office__card-content">
-              <span className="label">Presupuesto</span>
+              <span className="label">{t('office.budget')}</span>
               <span className="value">{formatMoney(state.money)}</span>
             </div>
           </div>
@@ -666,9 +677,9 @@ export default function Office() {
               <Users size={28} strokeWidth={2} />
             </div>
             <div className="office__card-content">
-              <span className="label">Plantilla</span>
+              <span className="label">{t('plantilla.title')}</span>
               <span className="value">{state.team?.players?.length || 0}</span>
-              <span className="sublabel">jugadores</span>
+              <span className="sublabel">{t('office.players')}</span>
             </div>
           </div>
         </div>
@@ -684,7 +695,7 @@ export default function Office() {
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.4rem' }}>
               <span style={{ fontSize: '0.75rem', color: '#8899aa', textTransform: 'uppercase', letterSpacing: '1px' }}>
-                {state.managerConfidence <= 25 ? <><AlertTriangle size={12} />{' '}</> : ''}Confianza de la directiva
+                {state.managerConfidence <= 25 ? <><AlertTriangle size={12} />{' '}</> : ''}{t('office.boardConfidence')}
               </span>
               <span style={{ 
                 fontSize: '0.85rem', fontWeight: 700,
@@ -707,9 +718,9 @@ export default function Office() {
           <div className="office__grid-left">
             {nextMatch && (
               <div className="office__next-match">
-                <h3>Próximo Partido</h3>
+                <h3>{t('office.nextMatch')}</h3>
                 <span className="office__match-week">
-                  {nextMatch.isPreseason ? `Amistoso ${nextMatch.week}/5` : `Jornada ${nextMatch.week}`}
+                  {nextMatch.isPreseason ? t('office.friendlyMatch', { week: nextMatch.week }) : t('office.matchday', { week: nextMatch.week })}
                 </span>
                 <div className="office__match-preview">
                   <div className="team home">
@@ -720,7 +731,7 @@ export default function Office() {
                           state.leagueTable.find(t => t.teamId === nextMatch.homeTeam)?.teamName)}
                     </span>
                   </div>
-                  <div className="vs">VS</div>
+                  <div className="vs">{t('office.vs')}</div>
                   <div className="team away">
                     <span className="name">
                       {nextMatch.isPreseason
@@ -734,7 +745,7 @@ export default function Office() {
             )}
             
             <div className="office__form">
-              <h3>Últimos Resultados</h3>
+              <h3>{t('office.lastResults')}</h3>
               <div className="office__form-badges">
                 {teamStats?.form && teamStats.form.length > 0 ? (
                   teamStats.form.map((result, idx) => (
@@ -743,7 +754,7 @@ export default function Office() {
                     </span>
                   ))
                 ) : (
-                  <span className="no-results">Sin partidos jugados</span>
+                  <span className="no-results">{t('office.noMatches')}</span>
                 )}
               </div>
             </div>
@@ -754,7 +765,7 @@ export default function Office() {
               <div className="office__objective-preview" onClick={() => setActiveTab('objectives')}>
                 <h3>
                   <Target size={18} strokeWidth={2} />
-                  <span>Objetivo Principal</span>
+                  <span>{t('office.mainObjective')}</span>
                 </h3>
                 {(() => {
                   const criticalObj = state.seasonObjectives.find(o => o.priority === 'critical');
@@ -784,7 +795,7 @@ export default function Office() {
                   );
                 })()}
                 <span className="view-all">
-                  <span>Ver todos los objetivos</span>
+                  <span>{t('office.viewAllObjectives')}</span>
                   <ChevronRight size={16} />
                 </span>
               </div>
@@ -792,7 +803,7 @@ export default function Office() {
             
             {state.messages.length > 0 && (
               <div className="office__recent-messages" onClick={() => setActiveTab('messages')}>
-                <h3>Mensajes Recientes</h3>
+                <h3>{t('office.recentMessages')}</h3>
                 {state.messages.slice(0, 3).map(msg => (
                   <div key={msg.id} className="office__message-preview">
                     <span className="title">{msg.title}</span>
@@ -817,27 +828,27 @@ export default function Office() {
       <div className="office">
         <div className="injured-warning-modal">
           <div className="injured-warning-content">
-            <h2><AlertTriangle size={16} /> Jugadores lesionados en alineación</h2>
-            <p>Tienes {injuredInLineup.length} jugador{injuredInLineup.length > 1 ? 'es' : ''} lesionado{injuredInLineup.length > 1 ? 's' : ''} en tu alineación titular:</p>
+            <h2><AlertTriangle size={16} /> {t('office.injuredWarning')}</h2>
+            <p>{t('office.playersInjured', { count: injuredInLineup.length })}:</p>
             
             <ul className="injured-list">
               {injuredInLineup.map(p => (
                 <li key={p.name}>
-                  <span className="pos">{p.position}</span>
+                  <span className="pos">{posES(p.position)}</span>
                   <span className="name">{p.name}</span>
-                  <span className="weeks"><HeartPulse size={14} /> {p.injuryWeeksLeft} semana{p.injuryWeeksLeft > 1 ? 's' : ''}</span>
+                  <span className="weeks"><HeartPulse size={14} /> {t('office.weeksOut', { weeks: p.injuryWeeksLeft })}</span>
                 </li>
               ))}
             </ul>
             
-            <p className="warning-hint">Ve a <strong>Alineación</strong> y sustituye a los lesionados antes de continuar.</p>
+            <p className="warning-hint">{t('office.checkFormation')}</p>
             
             <div className="warning-buttons">
               <button className="btn-primary" onClick={() => {
                 setShowInjuredWarning(false);
                 setActiveTab('formation');
               }}>
-                Ir a Alineación
+                {t('office.goToFormation')}
               </button>
             </div>
           </div>
@@ -879,12 +890,12 @@ export default function Office() {
         <header className="office__header">
           <div className="office__team-info">
             <h1>{state.team?.name}</h1>
-            <span className="office__season">Temporada {state.currentSeason} · {state.preseasonPhase ? `Pretemporada ${state.preseasonWeek}/${state.preseasonMatches?.length || 5}` : `Semana ${state.currentWeek}`}</span>
+            <span className="office__season">{t('office.seasonInfo', { season: state.currentSeason })} · {state.preseasonPhase ? t('office.preseason', { week: state.preseasonWeek, total: state.preseasonMatches?.length || 5 }) : t('office.weekInfo', { week: state.currentWeek })}</span>
           </div>
           
           <div className="office__actions">
             <div className="office__money">
-              <span className="label">Presupuesto</span>
+              <span className="label">{t('office.budget')}</span>
               <span className="value">{formatMoney(state.money)}</span>
             </div>
             
@@ -894,20 +905,22 @@ export default function Office() {
               disabled={simulating}
             >
               <SkipForward size={18} strokeWidth={2} />
-              <span>Avanzar Semana</span>
+              <span>{t('office.simulateWeek')}</span>
             </button>
             
             <div className="office__sim-dropdown">
               <button className="office__sim-btn" disabled={simulating || state.preseasonPhase || !!state.pendingEuropeanMatch || !!state.pendingSAMatch || !!state.pendingCupMatch}>
                 <FastForward size={18} strokeWidth={2} />
-                <span>{simulating ? 'Simulando...' : 'Simular'}</span>
+                <span>{simulating ? t('office.simulating') : t('office.simulate')}</span>
               </button>
               {!simulating && !state.preseasonPhase && !state.pendingEuropeanMatch && !state.pendingSAMatch && !state.pendingCupMatch && (
                 <div className="office__sim-options">
-                  <button onClick={() => handleSimulateWeeks(4)}>4 semanas</button>
-                  <button onClick={() => handleSimulateWeeks(10)}>10 semanas</button>
-                  <button onClick={() => handleSimulateWeeks(19)}>Media temporada</button>
-                  <button onClick={() => handleSimulateWeeks(38)}>Temporada completa</button>
+                  <button onClick={() => handleSimulateWeeks(3)}>{t('office.threeMatches')}</button>
+                  {isPastHalfSeason ? (
+                    <button onClick={() => handleSimulateWeeks(maxWeek - state.currentWeek + 1)}>{t('office.endOfSeason')}</button>
+                  ) : (
+                    <button onClick={() => handleSimulateWeeks(halfSeason - state.currentWeek)}>{t('office.halfSeason')}</button>
+                  )}
                 </div>
               )}
             </div>

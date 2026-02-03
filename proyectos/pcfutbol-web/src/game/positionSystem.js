@@ -30,10 +30,12 @@ const DEFAULT_FACTOR = 0.60;
 const GK_OUT_FACTOR = 0.30;
 const NON_GK_IN_GK_FACTOR = 0.30;
 
+import { posToEN } from './positionNames';
+
 /**
  * Calculate how well a player fits in a position
- * @param {string} naturalPosition - Player's natural position (e.g., 'CB', 'ST')
- * @param {string} playingPosition - Position they're playing in (e.g., 'CDM', 'RW')
+ * @param {string} naturalPosition - Player's natural position (e.g., 'CB', 'ST', or 'DFC', 'DC')
+ * @param {string} playingPosition - Position they're playing in (e.g., 'CDM', 'RW', or 'MCD', 'ED')
  * @returns {{ factor: number, level: string }} factor (0.0-1.0) and level name
  */
 export function getPositionFit(naturalPosition, playingPosition) {
@@ -41,8 +43,9 @@ export function getPositionFit(naturalPosition, playingPosition) {
     return { factor: 1.0, level: 'perfect' };
   }
 
-  const nat = naturalPosition.toUpperCase();
-  const play = playingPosition.toUpperCase();
+  // Normalizar a inglés (soporta tanto EN como ES)
+  const nat = posToEN(naturalPosition).toUpperCase();
+  const play = posToEN(playingPosition).toUpperCase();
 
   // Same position = perfect fit
   if (nat === play) {

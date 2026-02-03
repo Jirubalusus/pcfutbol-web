@@ -1,0 +1,4258 @@
+[
+  {
+    "name": "K. Benzema",
+    "overall": 85,
+    "potential": 85,
+    "position": "ST, CAM",
+    "age": 37,
+    "team": "Al Ittihad"
+  },
+  {
+    "name": "N. Kanté",
+    "overall": 85,
+    "potential": 85,
+    "position": "CDM, CM",
+    "age": 34,
+    "team": "Al Ittihad"
+  },
+  {
+    "name": "Cristiano Ronaldo",
+    "overall": 85,
+    "potential": 85,
+    "position": "ST",
+    "age": 40,
+    "team": "Al Nassr"
+  },
+  {
+    "name": "S. Milinković-Savić",
+    "overall": 84,
+    "potential": 84,
+    "position": "CM, CDM, CAM",
+    "age": 30,
+    "team": "Al Hilal"
+  },
+  {
+    "name": "Rúben Neves",
+    "overall": 84,
+    "potential": 85,
+    "position": "CDM, CM",
+    "age": 28,
+    "team": "Al Hilal"
+  },
+  {
+    "name": "T. Hernández",
+    "overall": 84,
+    "potential": 84,
+    "position": "LB, LM",
+    "age": 27,
+    "team": "Al Hilal"
+  },
+  {
+    "name": "M. Diaby",
+    "overall": 84,
+    "potential": 85,
+    "position": "RM, RW",
+    "age": 25,
+    "team": "Al Ittihad"
+  },
+  {
+    "name": "Iñigo Martínez",
+    "overall": 84,
+    "potential": 84,
+    "position": "CB",
+    "age": 34,
+    "team": "Al Nassr"
+  },
+  {
+    "name": "R. Mahrez",
+    "overall": 84,
+    "potential": 84,
+    "position": "RM, RW",
+    "age": 34,
+    "team": "Al Ahli SFC"
+  },
+  {
+    "name": "S. Mané",
+    "overall": 83,
+    "potential": 83,
+    "position": "LM, RM, ST, LW",
+    "age": 33,
+    "team": "Al Nassr"
+  },
+  {
+    "name": "K. Coman",
+    "overall": 83,
+    "potential": 83,
+    "position": "LM, RM, LW",
+    "age": 29,
+    "team": "Al Nassr"
+  },
+  {
+    "name": "K. Koulibaly",
+    "overall": 82,
+    "potential": 82,
+    "position": "CB",
+    "age": 34,
+    "team": "Al Hilal"
+  },
+  {
+    "name": "Y. Bounou",
+    "overall": 82,
+    "potential": 82,
+    "position": "GK",
+    "age": 34,
+    "team": "Al Hilal"
+  },
+  {
+    "name": "S. Al Dawsari",
+    "overall": 82,
+    "potential": 82,
+    "position": "LM, LW",
+    "age": 33,
+    "team": "Al Hilal"
+  },
+  {
+    "name": "Malcom",
+    "overall": 82,
+    "potential": 82,
+    "position": "RW, CAM, RM",
+    "age": 28,
+    "team": "Al Hilal"
+  },
+  {
+    "name": "Fabinho",
+    "overall": 82,
+    "potential": 82,
+    "position": "CDM, CM, CB",
+    "age": 31,
+    "team": "Al Ittihad"
+  },
+  {
+    "name": "Ibañez",
+    "overall": 82,
+    "potential": 84,
+    "position": "CB",
+    "age": 26,
+    "team": "Al Ahli SFC"
+  },
+  {
+    "name": "K. Casteels",
+    "overall": 82,
+    "potential": 82,
+    "position": "GK",
+    "age": 33,
+    "team": "Al Qadsiah FC"
+  },
+  {
+    "name": "Otávio",
+    "overall": 82,
+    "potential": 82,
+    "position": "CAM, CM, CDM",
+    "age": 30,
+    "team": "Al Qadsiah FC"
+  },
+  {
+    "name": "M. Retegui",
+    "overall": 82,
+    "potential": 83,
+    "position": "ST",
+    "age": 26,
+    "team": "Al Qadsiah FC"
+  },
+  {
+    "name": "Danilo Pereira",
+    "overall": 81,
+    "potential": 81,
+    "position": "CB",
+    "age": 33,
+    "team": "Al Ittihad"
+  },
+  {
+    "name": "Y. Carrasco",
+    "overall": 81,
+    "potential": 81,
+    "position": "LW, LM",
+    "age": 31,
+    "team": "Al Shabab"
+  },
+  {
+    "name": "M. Simakan",
+    "overall": 81,
+    "potential": 86,
+    "position": "CB, RB",
+    "age": 25,
+    "team": "Al Nassr"
+  },
+  {
+    "name": "I. Toney",
+    "overall": 81,
+    "potential": 81,
+    "position": "ST",
+    "age": 29,
+    "team": "Al Ahli SFC"
+  },
+  {
+    "name": "Nacho Fernández",
+    "overall": 81,
+    "potential": 81,
+    "position": "CB, LB, RB",
+    "age": 35,
+    "team": "Al Qadsiah FC"
+  },
+  {
+    "name": "K. Fortounis",
+    "overall": 81,
+    "potential": 81,
+    "position": "CAM, ST, CM",
+    "age": 32,
+    "team": "Al Khaleej"
+  },
+  {
+    "name": "S. Bergwijn",
+    "overall": 80,
+    "potential": 80,
+    "position": "LM, LW, CAM",
+    "age": 27,
+    "team": "Al Ittihad"
+  },
+  {
+    "name": "M. Brozović",
+    "overall": 80,
+    "potential": 80,
+    "position": "CDM, CM",
+    "age": 32,
+    "team": "Al Nassr"
+  },
+  {
+    "name": "João Félix",
+    "overall": 80,
+    "potential": 83,
+    "position": "CAM, ST, LM",
+    "age": 25,
+    "team": "Al Nassr"
+  },
+  {
+    "name": "F. Kessié",
+    "overall": 80,
+    "potential": 80,
+    "position": "CDM, CM",
+    "age": 28,
+    "team": "Al Ahli SFC"
+  },
+  {
+    "name": "É. Mendy",
+    "overall": 80,
+    "potential": 80,
+    "position": "GK",
+    "age": 33,
+    "team": "Al Ahli SFC"
+  },
+  {
+    "name": "Galeno",
+    "overall": 80,
+    "potential": 80,
+    "position": "LM, LW",
+    "age": 27,
+    "team": "Al Ahli SFC"
+  },
+  {
+    "name": "J. Quiñones",
+    "overall": 80,
+    "potential": 80,
+    "position": "ST",
+    "age": 28,
+    "team": "Al Qadsiah FC"
+  },
+  {
+    "name": "D. Núñez",
+    "overall": 79,
+    "potential": 82,
+    "position": "ST, LW, LM",
+    "age": 26,
+    "team": "Al Hilal"
+  },
+  {
+    "name": "Marcos Leonardo",
+    "overall": 79,
+    "potential": 85,
+    "position": "ST, CAM, CM",
+    "age": 22,
+    "team": "Al Hilal"
+  },
+  {
+    "name": "P. Rajković",
+    "overall": 79,
+    "potential": 80,
+    "position": "GK",
+    "age": 29,
+    "team": "Al Ittihad"
+  },
+  {
+    "name": "G. Wijnaldum",
+    "overall": 79,
+    "potential": 79,
+    "position": "CAM, ST, CM",
+    "age": 34,
+    "team": "Al Ettifaq"
+  },
+  {
+    "name": "Bento",
+    "overall": 79,
+    "potential": 84,
+    "position": "GK",
+    "age": 26,
+    "team": "Al Nassr"
+  },
+  {
+    "name": "A. El Mahdioui",
+    "overall": 79,
+    "potential": 79,
+    "position": "CDM, CM, CB",
+    "age": 29,
+    "team": "Al Taawoun FC"
+  },
+  {
+    "name": "M. Barrow",
+    "overall": 79,
+    "potential": 79,
+    "position": "LW, LM, ST",
+    "age": 26,
+    "team": "Al Taawoun FC"
+  },
+  {
+    "name": "C. Smalling",
+    "overall": 79,
+    "potential": 79,
+    "position": "CB",
+    "age": 35,
+    "team": "Al Fayha"
+  },
+  {
+    "name": "M. Demiral",
+    "overall": 78,
+    "potential": 81,
+    "position": "CB",
+    "age": 27,
+    "team": "Al Ahli SFC"
+  },
+  {
+    "name": "E. Millot",
+    "overall": 78,
+    "potential": 84,
+    "position": "CAM, CM",
+    "age": 22,
+    "team": "Al Ahli SFC"
+  },
+  {
+    "name": "J. Weigl",
+    "overall": 78,
+    "potential": 78,
+    "position": "CDM, CM, CB",
+    "age": 29,
+    "team": "Al Qadsiah FC"
+  },
+  {
+    "name": "M. Borjan",
+    "overall": 78,
+    "potential": 78,
+    "position": "GK",
+    "age": 37,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "A. Lacazette",
+    "overall": 78,
+    "potential": 78,
+    "position": "ST",
+    "age": 34,
+    "team": "NEOM SC"
+  },
+  {
+    "name": "M. Bułka",
+    "overall": 78,
+    "potential": 83,
+    "position": "GK",
+    "age": 25,
+    "team": "NEOM SC"
+  },
+  {
+    "name": "H. Aouar",
+    "overall": 77,
+    "potential": 78,
+    "position": "CAM, CM",
+    "age": 27,
+    "team": "Al Ittihad"
+  },
+  {
+    "name": "A. Hamdallah",
+    "overall": 77,
+    "potential": 77,
+    "position": "ST, CAM",
+    "age": 34,
+    "team": "Al Shabab"
+  },
+  {
+    "name": "Y. Adli",
+    "overall": 77,
+    "potential": 82,
+    "position": "CDM, CM",
+    "age": 24,
+    "team": "Al Shabab"
+  },
+  {
+    "name": "M. Vargas",
+    "overall": 77,
+    "potential": 77,
+    "position": "LM, ST, CAM, LW",
+    "age": 28,
+    "team": "Al Fateh"
+  },
+  {
+    "name": "Andrei Girotto",
+    "overall": 77,
+    "potential": 77,
+    "position": "CB",
+    "age": 33,
+    "team": "Al Taawoun FC"
+  },
+  {
+    "name": "S. Benrahma",
+    "overall": 77,
+    "potential": 77,
+    "position": "LW, LM, CAM",
+    "age": 29,
+    "team": "NEOM SC"
+  },
+  {
+    "name": "Roger Fernandes",
+    "overall": 76,
+    "potential": 85,
+    "position": "RM, LM, RW",
+    "age": 19,
+    "team": "Al Ittihad"
+  },
+  {
+    "name": "Medrán",
+    "overall": 76,
+    "potential": 76,
+    "position": "CM, CDM, CAM",
+    "age": 31,
+    "team": "Al Ettifaq"
+  },
+  {
+    "name": "Z. Youssouf",
+    "overall": 76,
+    "potential": 81,
+    "position": "CDM, CM, CB",
+    "age": 25,
+    "team": "Al Fateh"
+  },
+  {
+    "name": "M. Batna",
+    "overall": 76,
+    "potential": 76,
+    "position": "RM, RW, ST",
+    "age": 35,
+    "team": "Al Fateh"
+  },
+  {
+    "name": "N. Nández",
+    "overall": 76,
+    "potential": 76,
+    "position": "CM, RM, RB, CAM",
+    "age": 29,
+    "team": "Al Qadsiah FC"
+  },
+  {
+    "name": "Fábio Martins",
+    "overall": 76,
+    "potential": 76,
+    "position": "LW, LM, CM",
+    "age": 31,
+    "team": "Al Hazem FC"
+  },
+  {
+    "name": "J. Brownhill",
+    "overall": 75,
+    "potential": 75,
+    "position": "CDM, CM, CAM",
+    "age": 29,
+    "team": "Al Shabab"
+  },
+  {
+    "name": "V. Sierro",
+    "overall": 75,
+    "potential": 75,
+    "position": "CM, CDM, CAM",
+    "age": 29,
+    "team": "Al Shabab"
+  },
+  {
+    "name": "F. Al Birekan",
+    "overall": 75,
+    "potential": 78,
+    "position": "ST, LM, CAM",
+    "age": 25,
+    "team": "Al Ahli SFC"
+  },
+  {
+    "name": "M. Al Juwair",
+    "overall": 75,
+    "potential": 82,
+    "position": "CM, CDM, CAM",
+    "age": 22,
+    "team": "Al Qadsiah FC"
+  },
+  {
+    "name": "G. Álvarez",
+    "overall": 75,
+    "potential": 82,
+    "position": "CB, LB, LM",
+    "age": 25,
+    "team": "Al Qadsiah FC"
+  },
+  {
+    "name": "Mailson",
+    "overall": 75,
+    "potential": 77,
+    "position": "GK",
+    "age": 28,
+    "team": "Al Taawoun FC"
+  },
+  {
+    "name": "A. Moris",
+    "overall": 75,
+    "potential": 75,
+    "position": "GK",
+    "age": 35,
+    "team": "Al Khaleej"
+  },
+  {
+    "name": "J. King",
+    "overall": 75,
+    "potential": 75,
+    "position": "ST, LM, LW",
+    "age": 33,
+    "team": "Al Khaleej"
+  },
+  {
+    "name": "Tozé",
+    "overall": 75,
+    "potential": 75,
+    "position": "CM, CAM, CDM",
+    "age": 32,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "F. Sakala",
+    "overall": 75,
+    "potential": 75,
+    "position": "LM, LW, ST",
+    "age": 28,
+    "team": "Al Fayha"
+  },
+  {
+    "name": "A. Hegazi",
+    "overall": 75,
+    "potential": 75,
+    "position": "CB",
+    "age": 34,
+    "team": "NEOM SC"
+  },
+  {
+    "name": "Pablo Marí",
+    "overall": 74,
+    "potential": 74,
+    "position": "CB",
+    "age": 31,
+    "team": "Al Hilal"
+  },
+  {
+    "name": "Marcelo Grohe",
+    "overall": 74,
+    "potential": 74,
+    "position": "GK",
+    "age": 38,
+    "team": "Al Shabab"
+  },
+  {
+    "name": "O. Duda",
+    "overall": 74,
+    "potential": 74,
+    "position": "CM, CDM",
+    "age": 30,
+    "team": "Al Ettifaq"
+  },
+  {
+    "name": "M. Rodák",
+    "overall": 74,
+    "potential": 76,
+    "position": "GK",
+    "age": 28,
+    "team": "Al Ettifaq"
+  },
+  {
+    "name": "Ângelo",
+    "overall": 74,
+    "potential": 83,
+    "position": "RM, LM, CM, RW",
+    "age": 20,
+    "team": "Al Nassr"
+  },
+  {
+    "name": "R. Martínez",
+    "overall": 74,
+    "potential": 74,
+    "position": "ST, LW, CAM",
+    "age": 31,
+    "team": "Al Taawoun FC"
+  },
+  {
+    "name": "Y. Benzia",
+    "overall": 74,
+    "potential": 74,
+    "position": "CAM, CM",
+    "age": 30,
+    "team": "Al Fayha"
+  },
+  {
+    "name": "K. Narey",
+    "overall": 74,
+    "potential": 74,
+    "position": "RM, RW, LM",
+    "age": 30,
+    "team": "Al Akhdoud Saudi Club"
+  },
+  {
+    "name": "Bruno Varela",
+    "overall": 74,
+    "potential": 74,
+    "position": "GK",
+    "age": 30,
+    "team": "Al Hazem FC"
+  },
+  {
+    "name": "O. Al Somah",
+    "overall": 74,
+    "potential": 74,
+    "position": "ST",
+    "age": 36,
+    "team": "Al Hazem FC"
+  },
+  {
+    "name": "A. Sâyoud",
+    "overall": 74,
+    "potential": 74,
+    "position": "RW, RM, ST",
+    "age": 34,
+    "team": "Al Hazem FC"
+  },
+  {
+    "name": "M. Maolida",
+    "overall": 74,
+    "potential": 75,
+    "position": "LM, ST, LW",
+    "age": 26,
+    "team": "Al Kholood"
+  },
+  {
+    "name": "A. Doucouré",
+    "overall": 74,
+    "potential": 74,
+    "position": "CAM, CM",
+    "age": 32,
+    "team": "NEOM SC"
+  },
+  {
+    "name": "L. Rodríguez",
+    "overall": 74,
+    "potential": 86,
+    "position": "RW, RM, ST",
+    "age": 21,
+    "team": "NEOM SC"
+  },
+  {
+    "name": "Kaio César",
+    "overall": 73,
+    "potential": 83,
+    "position": "RM, RW",
+    "age": 21,
+    "team": "Al Hilal"
+  },
+  {
+    "name": "H. Tombakti",
+    "overall": 73,
+    "potential": 76,
+    "position": "CB",
+    "age": 26,
+    "team": "Al Hilal"
+  },
+  {
+    "name": "W. Hoedt",
+    "overall": 73,
+    "potential": 73,
+    "position": "CB",
+    "age": 31,
+    "team": "Al Shabab"
+  },
+  {
+    "name": "J. Hendry",
+    "overall": 73,
+    "potential": 73,
+    "position": "CB",
+    "age": 30,
+    "team": "Al Ettifaq"
+  },
+  {
+    "name": "V. Atangana",
+    "overall": 73,
+    "potential": 83,
+    "position": "CDM, CM",
+    "age": 19,
+    "team": "Al Ahli SFC"
+  },
+  {
+    "name": "C. Bonsu Baah",
+    "overall": 73,
+    "potential": 83,
+    "position": "LM, RM, LW",
+    "age": 20,
+    "team": "Al Qadsiah FC"
+  },
+  {
+    "name": "A. Fulgini",
+    "overall": 73,
+    "potential": 73,
+    "position": "CAM, CM",
+    "age": 28,
+    "team": "Al Taawoun FC"
+  },
+  {
+    "name": "Pedro Rebocho",
+    "overall": 73,
+    "potential": 73,
+    "position": "LB, LM",
+    "age": 30,
+    "team": "Al Khaleej"
+  },
+  {
+    "name": "G. Masouras",
+    "overall": 73,
+    "potential": 73,
+    "position": "ST, LM, RM, LW",
+    "age": 31,
+    "team": "Al Khaleej"
+  },
+  {
+    "name": "Jason",
+    "overall": 73,
+    "potential": 73,
+    "position": "RM, LM, ST, RW",
+    "age": 30,
+    "team": "Al Fayha"
+  },
+  {
+    "name": "M. Sylla",
+    "overall": 73,
+    "potential": 73,
+    "position": "LM, CAM, CDM, LW",
+    "age": 26,
+    "team": "Damac FC"
+  },
+  {
+    "name": "S. Pinas",
+    "overall": 73,
+    "potential": 74,
+    "position": "LB, CB, LM",
+    "age": 27,
+    "team": "Al Kholood"
+  },
+  {
+    "name": "N. Zézé",
+    "overall": 73,
+    "potential": 81,
+    "position": "CB",
+    "age": 20,
+    "team": "NEOM SC"
+  },
+  {
+    "name": "M. Kanno",
+    "overall": 72,
+    "potential": 72,
+    "position": "CM, CDM",
+    "age": 30,
+    "team": "Al Hilal"
+  },
+  {
+    "name": "Carlos Júnior",
+    "overall": 72,
+    "potential": 72,
+    "position": "RW, ST, RM",
+    "age": 29,
+    "team": "Al Shabab"
+  },
+  {
+    "name": "S. Al Ghannam",
+    "overall": 72,
+    "potential": 72,
+    "position": "RB, RM",
+    "age": 31,
+    "team": "Al Nassr"
+  },
+  {
+    "name": "N. Al Aqidi",
+    "overall": 72,
+    "potential": 78,
+    "position": "GK",
+    "age": 25,
+    "team": "Al Nassr"
+  },
+  {
+    "name": "Pacheco",
+    "overall": 72,
+    "potential": 72,
+    "position": "GK",
+    "age": 33,
+    "team": "Al Fateh"
+  },
+  {
+    "name": "M. Saadane",
+    "overall": 72,
+    "potential": 72,
+    "position": "CB",
+    "age": 33,
+    "team": "Al Fateh"
+  },
+  {
+    "name": "Jorge Fernandes",
+    "overall": 72,
+    "potential": 74,
+    "position": "CB",
+    "age": 28,
+    "team": "Al Fateh"
+  },
+  {
+    "name": "S. Bendebka",
+    "overall": 72,
+    "potential": 72,
+    "position": "CDM, CM, CAM",
+    "age": 32,
+    "team": "Al Fateh"
+  },
+  {
+    "name": "Flavio",
+    "overall": 72,
+    "potential": 72,
+    "position": "CM, CDM",
+    "age": 29,
+    "team": "Al Taawoun FC"
+  },
+  {
+    "name": "B. Schenkeveld",
+    "overall": 72,
+    "potential": 72,
+    "position": "CB",
+    "age": 33,
+    "team": "Al Khaleej"
+  },
+  {
+    "name": "D. Kourbelis",
+    "overall": 72,
+    "potential": 72,
+    "position": "CDM, CM, CB",
+    "age": 31,
+    "team": "Al Khaleej"
+  },
+  {
+    "name": "Sergio",
+    "overall": 72,
+    "potential": 72,
+    "position": "CB",
+    "age": 33,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "Petros",
+    "overall": 72,
+    "potential": 72,
+    "position": "CDM, CM",
+    "age": 36,
+    "team": "Al Akhdoud Saudi Club"
+  },
+  {
+    "name": "S. Pedroza",
+    "overall": 72,
+    "potential": 77,
+    "position": "CDM, CM, CAM",
+    "age": 26,
+    "team": "Al Akhdoud Saudi Club"
+  },
+  {
+    "name": "Kewin",
+    "overall": 72,
+    "potential": 72,
+    "position": "GK",
+    "age": 30,
+    "team": "Damac FC"
+  },
+  {
+    "name": "A. Bedrane",
+    "overall": 72,
+    "potential": 72,
+    "position": "CB",
+    "age": 33,
+    "team": "Damac FC"
+  },
+  {
+    "name": "Samir Caetano",
+    "overall": 72,
+    "potential": 72,
+    "position": "CB",
+    "age": 30,
+    "team": "Al-Najma SC"
+  },
+  {
+    "name": "J. El Yamiq",
+    "overall": 72,
+    "potential": 72,
+    "position": "CB",
+    "age": 33,
+    "team": "Al-Najma SC"
+  },
+  {
+    "name": "Luís Maximiano",
+    "overall": 72,
+    "potential": 75,
+    "position": "GK",
+    "age": 26,
+    "team": "NEOM SC"
+  },
+  {
+    "name": "H. Kadish",
+    "overall": 71,
+    "potential": 71,
+    "position": "LB, CB, CDM",
+    "age": 32,
+    "team": "Al Ittihad"
+  },
+  {
+    "name": "João Costa",
+    "overall": 71,
+    "potential": 86,
+    "position": "RM, LM, LB, RB",
+    "age": 20,
+    "team": "Al Ettifaq"
+  },
+  {
+    "name": "Paolo Fernandes",
+    "overall": 71,
+    "potential": 71,
+    "position": "RW, RM, CAM",
+    "age": 26,
+    "team": "Al Khaleej"
+  },
+  {
+    "name": "M. Sylla",
+    "overall": 71,
+    "potential": 71,
+    "position": "ST",
+    "age": 31,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "I. Soro",
+    "overall": 71,
+    "potential": 74,
+    "position": "CDM, CM",
+    "age": 27,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "M. Villanueva",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB",
+    "age": 32,
+    "team": "Al Fayha"
+  },
+  {
+    "name": "Alfa Semedo",
+    "overall": 71,
+    "potential": 72,
+    "position": "CDM, CM",
+    "age": 27,
+    "team": "Al Fayha"
+  },
+  {
+    "name": "T. Nguen",
+    "overall": 71,
+    "potential": 71,
+    "position": "LM, ST, LW",
+    "age": 31,
+    "team": "Al Akhdoud Saudi Club"
+  },
+  {
+    "name": "A. Sharahili",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB",
+    "age": 31,
+    "team": "Al Ittihad"
+  },
+  {
+    "name": "A. Al Obud",
+    "overall": 70,
+    "potential": 70,
+    "position": "RM, LM, RW",
+    "age": 30,
+    "team": "Al Ittihad"
+  },
+  {
+    "name": "M. Al Shanqeeti",
+    "overall": 70,
+    "potential": 73,
+    "position": "RB, LB, RM",
+    "age": 26,
+    "team": "Al Ittihad"
+  },
+  {
+    "name": "J. Simić",
+    "overall": 70,
+    "potential": 85,
+    "position": "CB",
+    "age": 20,
+    "team": "Al Ittihad"
+  },
+  {
+    "name": "A. Hassan",
+    "overall": 70,
+    "potential": 70,
+    "position": "ST",
+    "age": 32,
+    "team": "Al Ettifaq"
+  },
+  {
+    "name": "M. Dembélé",
+    "overall": 70,
+    "potential": 70,
+    "position": "ST",
+    "age": 28,
+    "team": "Al Ettifaq"
+  },
+  {
+    "name": "Wesley",
+    "overall": 70,
+    "potential": 81,
+    "position": "LW, LM",
+    "age": 20,
+    "team": "Al Nassr"
+  },
+  {
+    "name": "A. Al Amri",
+    "overall": 70,
+    "potential": 71,
+    "position": "CB",
+    "age": 28,
+    "team": "Al Nassr"
+  },
+  {
+    "name": "A. Ghareeb",
+    "overall": 70,
+    "potential": 70,
+    "position": "LM, LW",
+    "age": 28,
+    "team": "Al Nassr"
+  },
+  {
+    "name": "A. Majrashi",
+    "overall": 70,
+    "potential": 73,
+    "position": "RB, RM",
+    "age": 25,
+    "team": "Al Ahli SFC"
+  },
+  {
+    "name": "Y. Barbet",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB",
+    "age": 32,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "T. Okou",
+    "overall": 70,
+    "potential": 70,
+    "position": "RW, RM, ST",
+    "age": 27,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "O. Mosquera",
+    "overall": 70,
+    "potential": 70,
+    "position": "GK",
+    "age": 30,
+    "team": "Al Fayha"
+  },
+  {
+    "name": "C. Bassogog",
+    "overall": 70,
+    "potential": 70,
+    "position": "RM, RW, ST",
+    "age": 29,
+    "team": "Al Akhdoud Saudi Club"
+  },
+  {
+    "name": "B. Boutobba",
+    "overall": 70,
+    "potential": 70,
+    "position": "RM, RW, ST",
+    "age": 26,
+    "team": "Al-Najma SC"
+  },
+  {
+    "name": "Victor Braga",
+    "overall": 70,
+    "potential": 70,
+    "position": "GK",
+    "age": 33,
+    "team": "Al-Najma SC"
+  },
+  {
+    "name": "D. Tijanić",
+    "overall": 70,
+    "potential": 70,
+    "position": "CAM, CM, ST",
+    "age": 27,
+    "team": "Al-Najma SC"
+  },
+  {
+    "name": "J. Buckley",
+    "overall": 70,
+    "potential": 74,
+    "position": "CDM, CM, CAM",
+    "age": 25,
+    "team": "Al Kholood"
+  },
+  {
+    "name": "J. Cozzani",
+    "overall": 70,
+    "potential": 74,
+    "position": "GK",
+    "age": 26,
+    "team": "Al Kholood"
+  },
+  {
+    "name": "R. Enrique",
+    "overall": 70,
+    "potential": 77,
+    "position": "ST, LW, LM",
+    "age": 24,
+    "team": "Al Kholood"
+  },
+  {
+    "name": "A. Koné",
+    "overall": 70,
+    "potential": 81,
+    "position": "CDM, CM, CB",
+    "age": 20,
+    "team": "NEOM SC"
+  },
+  {
+    "name": "A. Lajami",
+    "overall": 69,
+    "potential": 70,
+    "position": "CB",
+    "age": 29,
+    "team": "Al Hilal"
+  },
+  {
+    "name": "A. Al Bulayhi",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB",
+    "age": 35,
+    "team": "Al Hilal"
+  },
+  {
+    "name": "M. Abu Al Shamat",
+    "overall": 69,
+    "potential": 78,
+    "position": "RB, RM",
+    "age": 22,
+    "team": "Al Qadsiah FC"
+  },
+  {
+    "name": "S. Al Amri",
+    "overall": 69,
+    "potential": 69,
+    "position": "LM, ST, LW",
+    "age": 31,
+    "team": "Al Khaleej"
+  },
+  {
+    "name": "S. Ganvoula",
+    "overall": 69,
+    "potential": 69,
+    "position": "ST",
+    "age": 29,
+    "team": "Al Fayha"
+  },
+  {
+    "name": "K. Günter",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB",
+    "age": 30,
+    "team": "Al Akhdoud Saudi Club"
+  },
+  {
+    "name": "Samuel Portugal",
+    "overall": 69,
+    "potential": 69,
+    "position": "GK",
+    "age": 31,
+    "team": "Al Akhdoud Saudi Club"
+  },
+  {
+    "name": "V. Vada",
+    "overall": 69,
+    "potential": 69,
+    "position": "LM, CAM, RM, LW",
+    "age": 29,
+    "team": "Damac FC"
+  },
+  {
+    "name": "L. Rosier",
+    "overall": 69,
+    "potential": 71,
+    "position": "CDM, CB, CM",
+    "age": 26,
+    "team": "Al Hazem FC"
+  },
+  {
+    "name": "N. Gyömbér",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB",
+    "age": 32,
+    "team": "Al Kholood"
+  },
+  {
+    "name": "S. Al Faraj",
+    "overall": 69,
+    "potential": 69,
+    "position": "CM, CDM",
+    "age": 35,
+    "team": "NEOM SC"
+  },
+  {
+    "name": "M. Al Buraik",
+    "overall": 69,
+    "potential": 69,
+    "position": "LB, RB, LM",
+    "age": 32,
+    "team": "NEOM SC"
+  },
+  {
+    "name": "S. Mandash",
+    "overall": 68,
+    "potential": 68,
+    "position": "RM, RW",
+    "age": 30,
+    "team": "Al Hilal"
+  },
+  {
+    "name": "N. Al Dawsari",
+    "overall": 68,
+    "potential": 69,
+    "position": "CM, CDM, LB, CAM",
+    "age": 26,
+    "team": "Al Hilal"
+  },
+  {
+    "name": "S. Al Shehri",
+    "overall": 68,
+    "potential": 68,
+    "position": "ST",
+    "age": 31,
+    "team": "Al Ittihad"
+  },
+  {
+    "name": "M. Mitaj",
+    "overall": 68,
+    "potential": 76,
+    "position": "LB, LM, CDM",
+    "age": 21,
+    "team": "Al Ittihad"
+  },
+  {
+    "name": "F. Al Ghamdi",
+    "overall": 68,
+    "potential": 75,
+    "position": "CDM, CM",
+    "age": 23,
+    "team": "Al Ittihad"
+  },
+  {
+    "name": "M. Doumbia",
+    "overall": 68,
+    "potential": 80,
+    "position": "CDM, CAM, CM",
+    "age": 21,
+    "team": "Al Ittihad"
+  },
+  {
+    "name": "A. Al Khaibari",
+    "overall": 68,
+    "potential": 68,
+    "position": "CDM, CM",
+    "age": 28,
+    "team": "Al Nassr"
+  },
+  {
+    "name": "A. Yahya",
+    "overall": 68,
+    "potential": 74,
+    "position": "LB, RM, LM",
+    "age": 24,
+    "team": "Al Nassr"
+  },
+  {
+    "name": "N. Boushal",
+    "overall": 68,
+    "potential": 71,
+    "position": "LB, RB, LM",
+    "age": 25,
+    "team": "Al Nassr"
+  },
+  {
+    "name": "Ricardo Mathias",
+    "overall": 68,
+    "potential": 82,
+    "position": "ST",
+    "age": 18,
+    "team": "Al Ahli SFC"
+  },
+  {
+    "name": "K. Toko Ekambi",
+    "overall": 68,
+    "potential": 68,
+    "position": "ST, LW, RW, LM",
+    "age": 32,
+    "team": "Al Fateh"
+  },
+  {
+    "name": "M. Al Kuwaykibi",
+    "overall": 68,
+    "potential": 68,
+    "position": "RW, RM",
+    "age": 30,
+    "team": "Al Taawoun FC"
+  },
+  {
+    "name": "I. Bayesh",
+    "overall": 68,
+    "potential": 71,
+    "position": "LM, RM, ST, LW",
+    "age": 25,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "Y. Méïté",
+    "overall": 68,
+    "potential": 68,
+    "position": "ST, RM, RW",
+    "age": 29,
+    "team": "Damac FC"
+  },
+  {
+    "name": "A. Boutouil",
+    "overall": 68,
+    "potential": 70,
+    "position": "CB",
+    "age": 27,
+    "team": "Al Hazem FC"
+  },
+  {
+    "name": "D. Flores",
+    "overall": 68,
+    "potential": 68,
+    "position": "CDM, CM, CB",
+    "age": 29,
+    "team": "Al-Najma SC"
+  },
+  {
+    "name": "M. Al Harbi",
+    "overall": 67,
+    "potential": 72,
+    "position": "LB, LM, RB",
+    "age": 25,
+    "team": "Al Hilal"
+  },
+  {
+    "name": "F. Calvo",
+    "overall": 67,
+    "potential": 67,
+    "position": "CB, LB",
+    "age": 32,
+    "team": "Al Ettifaq"
+  },
+  {
+    "name": "M. Ali",
+    "overall": 67,
+    "potential": 67,
+    "position": "CDM, CM",
+    "age": 27,
+    "team": "Al Ettifaq"
+  },
+  {
+    "name": "M. Dams",
+    "overall": 67,
+    "potential": 78,
+    "position": "LB, CB, LM",
+    "age": 21,
+    "team": "Al Ahli SFC"
+  },
+  {
+    "name": "Z. Al Johani",
+    "overall": 67,
+    "potential": 76,
+    "position": "CDM, CM, CAM",
+    "age": 23,
+    "team": "Al Ahli SFC"
+  },
+  {
+    "name": "A. Al Salem",
+    "overall": 67,
+    "potential": 67,
+    "position": "ST, CAM, CM",
+    "age": 32,
+    "team": "Al Qadsiah FC"
+  },
+  {
+    "name": "T. Al Ammar",
+    "overall": 67,
+    "potential": 70,
+    "position": "LB, LM, RM",
+    "age": 25,
+    "team": "Al Qadsiah FC"
+  },
+  {
+    "name": "M. Hamzi",
+    "overall": 67,
+    "potential": 67,
+    "position": "CDM, CM, RM",
+    "age": 33,
+    "team": "Al Khaleej"
+  },
+  {
+    "name": "G. Gül",
+    "overall": 67,
+    "potential": 70,
+    "position": "CDM, CB, CM",
+    "age": 26,
+    "team": "Al Akhdoud Saudi Club"
+  },
+  {
+    "name": "N. Alioui",
+    "overall": 67,
+    "potential": 68,
+    "position": "LW, ST, LM",
+    "age": 26,
+    "team": "Damac FC"
+  },
+  {
+    "name": "Lázaro",
+    "overall": 67,
+    "potential": 71,
+    "position": "ST, RM, LM, CAM",
+    "age": 23,
+    "team": "Al-Najma SC"
+  },
+  {
+    "name": "F. Al Sagour",
+    "overall": 66,
+    "potential": 66,
+    "position": "RB, RM",
+    "age": 29,
+    "team": "Al Ittihad"
+  },
+  {
+    "name": "Unai Hernández",
+    "overall": 66,
+    "potential": 81,
+    "position": "LM, CAM, ST, LW",
+    "age": 20,
+    "team": "Al Shabab"
+  },
+  {
+    "name": "R. Al Otaibi",
+    "overall": 66,
+    "potential": 71,
+    "position": "RB, LB, RM",
+    "age": 25,
+    "team": "Al Ettifaq"
+  },
+  {
+    "name": "A. Al Hassan",
+    "overall": 66,
+    "potential": 67,
+    "position": "CDM, CM",
+    "age": 28,
+    "team": "Al Nassr"
+  },
+  {
+    "name": "N. Al Sharari",
+    "overall": 66,
+    "potential": 67,
+    "position": "CB, RB, RM",
+    "age": 29,
+    "team": "Al Nassr"
+  },
+  {
+    "name": "J. Thekri",
+    "overall": 66,
+    "potential": 75,
+    "position": "CB, RB",
+    "age": 23,
+    "team": "Al Qadsiah FC"
+  },
+  {
+    "name": "Y. Al Shahrani",
+    "overall": 66,
+    "potential": 66,
+    "position": "LB, RB, LM",
+    "age": 33,
+    "team": "Al Qadsiah FC"
+  },
+  {
+    "name": "A. Hazazi",
+    "overall": 66,
+    "potential": 66,
+    "position": "CM, CDM, CB",
+    "age": 31,
+    "team": "Al Qadsiah FC"
+  },
+  {
+    "name": "H. Al Qahtani",
+    "overall": 66,
+    "potential": 66,
+    "position": "CM, CDM, CAM",
+    "age": 30,
+    "team": "Al Qadsiah FC"
+  },
+  {
+    "name": "A. Attiah",
+    "overall": 66,
+    "potential": 69,
+    "position": "GK",
+    "age": 28,
+    "team": "Al Taawoun FC"
+  },
+  {
+    "name": "W. Al Ahmed",
+    "overall": 66,
+    "potential": 71,
+    "position": "CB",
+    "age": 26,
+    "team": "Al Taawoun FC"
+  },
+  {
+    "name": "M. Khubrani",
+    "overall": 66,
+    "potential": 66,
+    "position": "CB",
+    "age": 31,
+    "team": "Al Khaleej"
+  },
+  {
+    "name": "Y. Al Shehri",
+    "overall": 66,
+    "potential": 66,
+    "position": "RM, CM, CAM, RB",
+    "age": 35,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "A. Al Khaibari",
+    "overall": 66,
+    "potential": 66,
+    "position": "LB, LM",
+    "age": 28,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "K. N'Doram",
+    "overall": 66,
+    "potential": 66,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Al Kholood"
+  },
+  {
+    "name": "A. Al Bishi",
+    "overall": 66,
+    "potential": 69,
+    "position": "CB",
+    "age": 26,
+    "team": "NEOM SC"
+  },
+  {
+    "name": "H. Al Yami",
+    "overall": 65,
+    "potential": 68,
+    "position": "RB, RM",
+    "age": 26,
+    "team": "Al Hilal"
+  },
+  {
+    "name": "Y. Akçiçek",
+    "overall": 65,
+    "potential": 81,
+    "position": "CB",
+    "age": 19,
+    "team": "Al Hilal"
+  },
+  {
+    "name": "A. Al Ghamdi",
+    "overall": 65,
+    "potential": 71,
+    "position": "LM, RM, LW",
+    "age": 23,
+    "team": "Al Ittihad"
+  },
+  {
+    "name": "S. Al Mousa",
+    "overall": 65,
+    "potential": 76,
+    "position": "CB",
+    "age": 22,
+    "team": "Al Ittihad"
+  },
+  {
+    "name": "M. Al Shuwayrikh",
+    "overall": 65,
+    "potential": 67,
+    "position": "CB",
+    "age": 27,
+    "team": "Al Shabab"
+  },
+  {
+    "name": "A. Al Khatib",
+    "overall": 65,
+    "potential": 65,
+    "position": "CB, LB",
+    "age": 30,
+    "team": "Al Ettifaq"
+  },
+  {
+    "name": "S. Al Nasser",
+    "overall": 65,
+    "potential": 70,
+    "position": "LB, LM, CM, CDM",
+    "age": 24,
+    "team": "Al Nassr"
+  },
+  {
+    "name": "A. Adam",
+    "overall": 65,
+    "potential": 65,
+    "position": "ST",
+    "age": 30,
+    "team": "Al Taawoun FC"
+  },
+  {
+    "name": "D. Al Enazi",
+    "overall": 65,
+    "potential": 70,
+    "position": "LB",
+    "age": 25,
+    "team": "Damac FC"
+  },
+  {
+    "name": "A. Al Ayeri",
+    "overall": 65,
+    "potential": 76,
+    "position": "RB, CM, RM",
+    "age": 21,
+    "team": "NEOM SC"
+  },
+  {
+    "name": "A. Noor",
+    "overall": 65,
+    "potential": 65,
+    "position": "RM, LM, ST, RW",
+    "age": 26,
+    "team": "NEOM SC"
+  },
+  {
+    "name": "A. Al Hamdan",
+    "overall": 64,
+    "potential": 67,
+    "position": "ST, CAM, LW",
+    "age": 25,
+    "team": "Al Hilal"
+  },
+  {
+    "name": "M. Patouillet",
+    "overall": 64,
+    "potential": 77,
+    "position": "GK",
+    "age": 21,
+    "team": "Al Hilal"
+  },
+  {
+    "name": "S. Balobaid",
+    "overall": 64,
+    "potential": 67,
+    "position": "LB, LM",
+    "age": 25,
+    "team": "Al Shabab"
+  },
+  {
+    "name": "M. Nkota",
+    "overall": 64,
+    "potential": 78,
+    "position": "RW, RM",
+    "age": 20,
+    "team": "Al Ettifaq"
+  },
+  {
+    "name": "Z. Hawsawi",
+    "overall": 64,
+    "potential": 69,
+    "position": "LB, LM",
+    "age": 24,
+    "team": "Al Ahli SFC"
+  },
+  {
+    "name": "S. Baetaih",
+    "overall": 64,
+    "potential": 69,
+    "position": "RB, RM",
+    "age": 24,
+    "team": "Al Fateh"
+  },
+  {
+    "name": "A. Asiri",
+    "overall": 64,
+    "potential": 64,
+    "position": "CB, RB, CDM",
+    "age": 33,
+    "team": "Al Khaleej"
+  },
+  {
+    "name": "S. Al Rubaie",
+    "overall": 64,
+    "potential": 64,
+    "position": "CB",
+    "age": 31,
+    "team": "Al Akhdoud Saudi Club"
+  },
+  {
+    "name": "H. Bahbri",
+    "overall": 64,
+    "potential": 64,
+    "position": "LW, RM, LM",
+    "age": 32,
+    "team": "Al Kholood"
+  },
+  {
+    "name": "M. Malaeka",
+    "overall": 64,
+    "potential": 64,
+    "position": "GK",
+    "age": 39,
+    "team": "NEOM SC"
+  },
+  {
+    "name": "A. Abdu",
+    "overall": 64,
+    "potential": 64,
+    "position": "ST",
+    "age": 28,
+    "team": "NEOM SC"
+  },
+  {
+    "name": "S. Bouabré",
+    "overall": 64,
+    "potential": 79,
+    "position": "LM, CAM, LW",
+    "age": 19,
+    "team": "NEOM SC"
+  },
+  {
+    "name": "A. Madu",
+    "overall": 63,
+    "potential": 63,
+    "position": "CB",
+    "age": 31,
+    "team": "Al Ettifaq"
+  },
+  {
+    "name": "A. Hindi",
+    "overall": 63,
+    "potential": 64,
+    "position": "CB",
+    "age": 28,
+    "team": "Al Ettifaq"
+  },
+  {
+    "name": "S. Al Najdi",
+    "overall": 63,
+    "potential": 72,
+    "position": "LB",
+    "age": 22,
+    "team": "Al Nassr"
+  },
+  {
+    "name": "A. Al Kassar",
+    "overall": 63,
+    "potential": 63,
+    "position": "GK",
+    "age": 34,
+    "team": "Al Qadsiah FC"
+  },
+  {
+    "name": "Q. Lajami",
+    "overall": 63,
+    "potential": 64,
+    "position": "CB",
+    "age": 29,
+    "team": "Al Qadsiah FC"
+  },
+  {
+    "name": "M. Al Mufarrij",
+    "overall": 63,
+    "potential": 64,
+    "position": "CB, LB, CDM",
+    "age": 28,
+    "team": "Al Taawoun FC"
+  },
+  {
+    "name": "S. Al Hamsal",
+    "overall": 63,
+    "potential": 63,
+    "position": "RB",
+    "age": 29,
+    "team": "Al Khaleej"
+  },
+  {
+    "name": "M. Al Baqawi",
+    "overall": 63,
+    "potential": 63,
+    "position": "RB, CB, RM",
+    "age": 29,
+    "team": "Al Fayha"
+  },
+  {
+    "name": "B. İnce",
+    "overall": 63,
+    "potential": 69,
+    "position": "RM, CM, RW",
+    "age": 21,
+    "team": "Al Akhdoud Saudi Club"
+  },
+  {
+    "name": "R. Sharahili",
+    "overall": 63,
+    "potential": 63,
+    "position": "CDM, CM",
+    "age": 32,
+    "team": "Damac FC"
+  },
+  {
+    "name": "A. Al Hajji",
+    "overall": 63,
+    "potential": 63,
+    "position": "CDM, CM, CAM",
+    "age": 29,
+    "team": "NEOM SC"
+  },
+  {
+    "name": "A. Al Asmari",
+    "overall": 63,
+    "potential": 63,
+    "position": "CM, CDM",
+    "age": 28,
+    "team": "NEOM SC"
+  },
+  {
+    "name": "M. Al Rubaie",
+    "overall": 62,
+    "potential": 65,
+    "position": "GK",
+    "age": 27,
+    "team": "Al Hilal"
+  },
+  {
+    "name": "A. Al Bishi",
+    "overall": 62,
+    "potential": 62,
+    "position": "RM, RW",
+    "age": 31,
+    "team": "Al Ittihad"
+  },
+  {
+    "name": "H. Al Ghamdi",
+    "overall": 62,
+    "potential": 65,
+    "position": "CM, CAM, CDM",
+    "age": 26,
+    "team": "Al Ittihad"
+  },
+  {
+    "name": "S. Al Najai",
+    "overall": 62,
+    "potential": 62,
+    "position": "CAM, RM, LM, CM",
+    "age": 28,
+    "team": "Al Nassr"
+  },
+  {
+    "name": "Matheus Gonçalves",
+    "overall": 62,
+    "potential": 73,
+    "position": "LM, RM, RW, LW",
+    "age": 19,
+    "team": "Al Ahli SFC"
+  },
+  {
+    "name": "S. Abu Al Shamat",
+    "overall": 62,
+    "potential": 71,
+    "position": "RM, LM, CAM, RW",
+    "age": 22,
+    "team": "Al Ahli SFC"
+  },
+  {
+    "name": "B. Al Hurayji",
+    "overall": 62,
+    "potential": 66,
+    "position": "RB, CM, CB, CDM",
+    "age": 25,
+    "team": "Al Taawoun FC"
+  },
+  {
+    "name": "M. Al Qahtani",
+    "overall": 62,
+    "potential": 71,
+    "position": "RM, RW",
+    "age": 22,
+    "team": "Al Taawoun FC"
+  },
+  {
+    "name": "C. Zambrano",
+    "overall": 62,
+    "potential": 72,
+    "position": "ST, RM",
+    "age": 20,
+    "team": "Al Taawoun FC"
+  },
+  {
+    "name": "A. Al Hafith",
+    "overall": 62,
+    "potential": 62,
+    "position": "CB",
+    "age": 32,
+    "team": "Al Khaleej"
+  },
+  {
+    "name": "A. Bamsaud",
+    "overall": 62,
+    "potential": 62,
+    "position": "LB, CB, LM",
+    "age": 29,
+    "team": "Al Fayha"
+  },
+  {
+    "name": "M. Al Rashidi",
+    "overall": 62,
+    "potential": 67,
+    "position": "CB, RB, RM",
+    "age": 26,
+    "team": "Al Fayha"
+  },
+  {
+    "name": "S. Hawsawi",
+    "overall": 62,
+    "potential": 63,
+    "position": "RB, LB, RM",
+    "age": 27,
+    "team": "Damac FC"
+  },
+  {
+    "name": "I. Zaid",
+    "overall": 62,
+    "potential": 62,
+    "position": "GK",
+    "age": 35,
+    "team": "Al Hazem FC"
+  },
+  {
+    "name": "A. Jasim",
+    "overall": 62,
+    "potential": 74,
+    "position": "LM, LW",
+    "age": 21,
+    "team": "Al-Najma SC"
+  },
+  {
+    "name": "F. Abdi",
+    "overall": 62,
+    "potential": 65,
+    "position": "LB, LM",
+    "age": 26,
+    "team": "NEOM SC"
+  },
+  {
+    "name": "I. Hawsawi",
+    "overall": 62,
+    "potential": 69,
+    "position": "LB, LM",
+    "age": 23,
+    "team": "NEOM SC"
+  },
+  {
+    "name": "A. Radif",
+    "overall": 61,
+    "potential": 70,
+    "position": "ST, RW, LW",
+    "age": 22,
+    "team": "Al Hilal"
+  },
+  {
+    "name": "M. Al Thani",
+    "overall": 61,
+    "potential": 61,
+    "position": "RB, RM",
+    "age": 28,
+    "team": "Al Shabab"
+  },
+  {
+    "name": "N. Al Saadi",
+    "overall": 61,
+    "potential": 64,
+    "position": "RM, RW, LM",
+    "age": 24,
+    "team": "Al Shabab"
+  },
+  {
+    "name": "M. Al Olayan",
+    "overall": 61,
+    "potential": 61,
+    "position": "LB, RB, LM",
+    "age": 30,
+    "team": "Al Ettifaq"
+  },
+  {
+    "name": "K. Al Ghannam",
+    "overall": 61,
+    "potential": 64,
+    "position": "LM, RM, LW",
+    "age": 24,
+    "team": "Al Ettifaq"
+  },
+  {
+    "name": "H. Camara",
+    "overall": 61,
+    "potential": 61,
+    "position": "ST",
+    "age": 27,
+    "team": "Al Nassr"
+  },
+  {
+    "name": "F. Al Rashidi",
+    "overall": 61,
+    "potential": 61,
+    "position": "RM, LM, RW",
+    "age": 28,
+    "team": "Al Ahli SFC"
+  },
+  {
+    "name": "M. Abdulrahman",
+    "overall": 61,
+    "potential": 70,
+    "position": "RB",
+    "age": 22,
+    "team": "Al Ahli SFC"
+  },
+  {
+    "name": "M. Qasem",
+    "overall": 61,
+    "potential": 61,
+    "position": "LB",
+    "age": 30,
+    "team": "Al Qadsiah FC"
+  },
+  {
+    "name": "I. Mahnashi",
+    "overall": 61,
+    "potential": 66,
+    "position": "CDM, CM",
+    "age": 25,
+    "team": "Al Qadsiah FC"
+  },
+  {
+    "name": "H. Al Jayzani",
+    "overall": 61,
+    "potential": 61,
+    "position": "LB, RB",
+    "age": 32,
+    "team": "Al Khaleej"
+  },
+  {
+    "name": "M. Kanabah",
+    "overall": 61,
+    "potential": 61,
+    "position": "CM, CDM",
+    "age": 32,
+    "team": "Al Khaleej"
+  },
+  {
+    "name": "E. Sali",
+    "overall": 61,
+    "potential": 78,
+    "position": "LW, RW, LM",
+    "age": 19,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "Z. Al Sahafi",
+    "overall": 61,
+    "potential": 61,
+    "position": "CB",
+    "age": 31,
+    "team": "Al Fayha"
+  },
+  {
+    "name": "S. Vrontis",
+    "overall": 61,
+    "potential": 70,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Al Fayha"
+  },
+  {
+    "name": "S. Al Abbas",
+    "overall": 61,
+    "potential": 61,
+    "position": "ST",
+    "age": 30,
+    "team": "Al Akhdoud Saudi Club"
+  },
+  {
+    "name": "J. Harkass",
+    "overall": 61,
+    "potential": 61,
+    "position": "CB",
+    "age": 29,
+    "team": "Damac FC"
+  },
+  {
+    "name": "T. Abdullah",
+    "overall": 61,
+    "potential": 61,
+    "position": "CDM, CM, RB, CB",
+    "age": 29,
+    "team": "Damac FC"
+  },
+  {
+    "name": "K. Al Samiri",
+    "overall": 61,
+    "potential": 61,
+    "position": "CDM, CM",
+    "age": 28,
+    "team": "Damac FC"
+  },
+  {
+    "name": "A. Al Khaibary",
+    "overall": 61,
+    "potential": 61,
+    "position": "CDM, CM",
+    "age": 37,
+    "team": "Al Hazem FC"
+  },
+  {
+    "name": "K. Al Subaie",
+    "overall": 61,
+    "potential": 64,
+    "position": "CDM, CM, LB",
+    "age": 25,
+    "team": "Al Hazem FC"
+  },
+  {
+    "name": "A. Hawsawi",
+    "overall": 61,
+    "potential": 61,
+    "position": "RB, RM",
+    "age": 29,
+    "team": "Al-Najma SC"
+  },
+  {
+    "name": "F. Al Abdulrazzaq",
+    "overall": 61,
+    "potential": 66,
+    "position": "RB, LB, RM",
+    "age": 25,
+    "team": "Al-Najma SC"
+  },
+  {
+    "name": "M. Hawsawi",
+    "overall": 60,
+    "potential": 65,
+    "position": "CDM, CM, CB",
+    "age": 24,
+    "team": "Al Hilal"
+  },
+  {
+    "name": "M. Faqihi",
+    "overall": 60,
+    "potential": 69,
+    "position": "LB, LM",
+    "age": 23,
+    "team": "Al Ittihad"
+  },
+  {
+    "name": "A. Al Othman",
+    "overall": 60,
+    "potential": 71,
+    "position": "ST, RM, RW",
+    "age": 21,
+    "team": "Al Shabab"
+  },
+  {
+    "name": "B. Al Sayali",
+    "overall": 60,
+    "potential": 67,
+    "position": "CM, CDM, CAM",
+    "age": 24,
+    "team": "Al Shabab"
+  },
+  {
+    "name": "H. Al Sibyani",
+    "overall": 60,
+    "potential": 67,
+    "position": "LB, LM",
+    "age": 24,
+    "team": "Al Shabab"
+  },
+  {
+    "name": "M. Al Rajih",
+    "overall": 60,
+    "potential": 71,
+    "position": "RB, CB",
+    "age": 21,
+    "team": "Al Shabab"
+  },
+  {
+    "name": "M. Sulaiman",
+    "overall": 60,
+    "potential": 68,
+    "position": "LB, RB, CB, LM",
+    "age": 21,
+    "team": "Al Ahli SFC"
+  },
+  {
+    "name": "A. Al Sanbi",
+    "overall": 60,
+    "potential": 66,
+    "position": "GK",
+    "age": 24,
+    "team": "Al Ahli SFC"
+  },
+  {
+    "name": "E. Al Muwallad",
+    "overall": 60,
+    "potential": 69,
+    "position": "CDM, CM",
+    "age": 23,
+    "team": "Al Ahli SFC"
+  },
+  {
+    "name": "M. Sanyour",
+    "overall": 60,
+    "potential": 68,
+    "position": "GK",
+    "age": 23,
+    "team": "Al Qadsiah FC"
+  },
+  {
+    "name": "A. Bahusayn",
+    "overall": 60,
+    "potential": 67,
+    "position": "CM, CAM, LW",
+    "age": 24,
+    "team": "Al Taawoun FC"
+  },
+  {
+    "name": "A. Hawsawi",
+    "overall": 60,
+    "potential": 67,
+    "position": "CM, CDM",
+    "age": 24,
+    "team": "Al Taawoun FC"
+  },
+  {
+    "name": "M. Mahzari",
+    "overall": 60,
+    "potential": 69,
+    "position": "RB, CM, LB",
+    "age": 23,
+    "team": "Al Taawoun FC"
+  },
+  {
+    "name": "M. Al Haidari",
+    "overall": 60,
+    "potential": 62,
+    "position": "GK",
+    "age": 29,
+    "team": "Al Khaleej"
+  },
+  {
+    "name": "B. Monshi",
+    "overall": 60,
+    "potential": 65,
+    "position": "CDM, CM",
+    "age": 26,
+    "team": "Al Khaleej"
+  },
+  {
+    "name": "J. Petek",
+    "overall": 60,
+    "potential": 72,
+    "position": "GK",
+    "age": 19,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "A. Hassoun",
+    "overall": 60,
+    "potential": 60,
+    "position": "RB, RM",
+    "age": 28,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "S. Zaidan",
+    "overall": 60,
+    "potential": 63,
+    "position": "CM, CDM",
+    "age": 25,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "N. Al Harthi",
+    "overall": 60,
+    "potential": 61,
+    "position": "CM, LM, RM, CAM",
+    "age": 26,
+    "team": "Al Fayha"
+  },
+  {
+    "name": "M. Borrell",
+    "overall": 60,
+    "potential": 75,
+    "position": "CDM, CM",
+    "age": 19,
+    "team": "Al Akhdoud Saudi Club"
+  },
+  {
+    "name": "M. Al Qaydhi",
+    "overall": 60,
+    "potential": 61,
+    "position": "LB, CB",
+    "age": 27,
+    "team": "Al Akhdoud Saudi Club"
+  },
+  {
+    "name": "A. Al Salem",
+    "overall": 60,
+    "potential": 61,
+    "position": "LB, CB",
+    "age": 26,
+    "team": "Al Akhdoud Saudi Club"
+  },
+  {
+    "name": "A. Al Harajin",
+    "overall": 60,
+    "potential": 60,
+    "position": "LM, RM, CM, LB",
+    "age": 30,
+    "team": "Al Hazem FC"
+  },
+  {
+    "name": "N. Al Habashi",
+    "overall": 60,
+    "potential": 60,
+    "position": "LM, LW, ST",
+    "age": 27,
+    "team": "Al Hazem FC"
+  },
+  {
+    "name": "A. Al Shammari",
+    "overall": 60,
+    "potential": 60,
+    "position": "RW, CM, CAM, RM",
+    "age": 26,
+    "team": "Al-Najma SC"
+  },
+  {
+    "name": "M. Sawaan",
+    "overall": 60,
+    "potential": 63,
+    "position": "LM, RM, LW",
+    "age": 24,
+    "team": "Al Kholood"
+  },
+  {
+    "name": "R. Solan",
+    "overall": 60,
+    "potential": 61,
+    "position": "RB, RM",
+    "age": 27,
+    "team": "Al Kholood"
+  },
+  {
+    "name": "A. Al Safri",
+    "overall": 60,
+    "potential": 60,
+    "position": "CM, CDM",
+    "age": 32,
+    "team": "Al Kholood"
+  },
+  {
+    "name": "A. Al Hassan",
+    "overall": 60,
+    "potential": 74,
+    "position": "CM, CDM, LW",
+    "age": 21,
+    "team": "NEOM SC"
+  },
+  {
+    "name": "A. Al Nashri",
+    "overall": 59,
+    "potential": 70,
+    "position": "CDM, CM",
+    "age": 23,
+    "team": "Al Ittihad"
+  },
+  {
+    "name": "H. Al Hammami",
+    "overall": 59,
+    "potential": 71,
+    "position": "RM, RW",
+    "age": 21,
+    "team": "Al Shabab"
+  },
+  {
+    "name": "M. Sibyani",
+    "overall": 59,
+    "potential": 66,
+    "position": "CB",
+    "age": 24,
+    "team": "Al Ettifaq"
+  },
+  {
+    "name": "R. Al Najjar",
+    "overall": 59,
+    "potential": 61,
+    "position": "GK",
+    "age": 28,
+    "team": "Al Nassr"
+  },
+  {
+    "name": "R. Hamed",
+    "overall": 59,
+    "potential": 70,
+    "position": "CB, RB",
+    "age": 23,
+    "team": "Al Ahli SFC"
+  },
+  {
+    "name": "A. Bukhari",
+    "overall": 59,
+    "potential": 62,
+    "position": "GK",
+    "age": 28,
+    "team": "Al Fateh"
+  },
+  {
+    "name": "H. Qasim",
+    "overall": 59,
+    "potential": 59,
+    "position": "LB, CB",
+    "age": 27,
+    "team": "Al Fateh"
+  },
+  {
+    "name": "O. Al Othman",
+    "overall": 59,
+    "potential": 71,
+    "position": "RM, CAM, LM, RB",
+    "age": 22,
+    "team": "Al Fateh"
+  },
+  {
+    "name": "H. Al Eissa",
+    "overall": 59,
+    "potential": 62,
+    "position": "LM, RM, LW",
+    "age": 24,
+    "team": "Al Khaleej"
+  },
+  {
+    "name": "A. Al Haider",
+    "overall": 59,
+    "potential": 59,
+    "position": "RB",
+    "age": 28,
+    "team": "Al Khaleej"
+  },
+  {
+    "name": "M. Al Bishi",
+    "overall": 59,
+    "potential": 64,
+    "position": "CM, CAM, CDM",
+    "age": 25,
+    "team": "Al Fayha"
+  },
+  {
+    "name": "A. Al Duqail",
+    "overall": 59,
+    "potential": 59,
+    "position": "GK",
+    "age": 29,
+    "team": "Al Fayha"
+  },
+  {
+    "name": "H. Al Zabdani",
+    "overall": 59,
+    "potential": 59,
+    "position": "RB, CDM",
+    "age": 30,
+    "team": "Al Akhdoud Saudi Club"
+  },
+  {
+    "name": "S. Al Rashid",
+    "overall": 59,
+    "potential": 60,
+    "position": "RB",
+    "age": 27,
+    "team": "Al Hazem FC"
+  },
+  {
+    "name": "Y. Al Mozairib",
+    "overall": 59,
+    "potential": 59,
+    "position": "ST, LW, LM",
+    "age": 27,
+    "team": "Al Hazem FC"
+  },
+  {
+    "name": "A. Al Dakheel",
+    "overall": 59,
+    "potential": 60,
+    "position": "CB",
+    "age": 29,
+    "team": "Al Hazem FC"
+  },
+  {
+    "name": "K. Al Mhoass",
+    "overall": 59,
+    "potential": 64,
+    "position": "CB, CDM",
+    "age": 25,
+    "team": "Al-Najma SC"
+  },
+  {
+    "name": "A. Al Dawsari",
+    "overall": 59,
+    "potential": 59,
+    "position": "CM, CDM, LM",
+    "age": 27,
+    "team": "Al Kholood"
+  },
+  {
+    "name": "K. Al Dawsari",
+    "overall": 59,
+    "potential": 62,
+    "position": "CB, RB, LB",
+    "age": 26,
+    "team": "NEOM SC"
+  },
+  {
+    "name": "F. Al Shamrani",
+    "overall": 58,
+    "potential": 70,
+    "position": "CM, CDM",
+    "age": 19,
+    "team": "Al Ittihad"
+  },
+  {
+    "name": "T. Haji",
+    "overall": 58,
+    "potential": 75,
+    "position": "ST",
+    "age": 17,
+    "team": "Al Ittihad"
+  },
+  {
+    "name": "M. Al Mahasna",
+    "overall": 58,
+    "potential": 61,
+    "position": "GK",
+    "age": 28,
+    "team": "Al Shabab"
+  },
+  {
+    "name": "M. Al Shammari",
+    "overall": 58,
+    "potential": 63,
+    "position": "LB",
+    "age": 24,
+    "team": "Al Nassr"
+  },
+  {
+    "name": "N. Masoud",
+    "overall": 58,
+    "potential": 64,
+    "position": "CB, CDM, CM",
+    "age": 24,
+    "team": "Al Fateh"
+  },
+  {
+    "name": "S. Al Sharfa",
+    "overall": 58,
+    "potential": 72,
+    "position": "ST",
+    "age": 20,
+    "team": "Al Fateh"
+  },
+  {
+    "name": "Alejandro Vergaz",
+    "overall": 58,
+    "potential": 76,
+    "position": "CB",
+    "age": 19,
+    "team": "Al Qadsiah FC"
+  },
+  {
+    "name": "Gabriel Carvalho",
+    "overall": 58,
+    "potential": 73,
+    "position": "RW, RM",
+    "age": 17,
+    "team": "Al Qadsiah FC"
+  },
+  {
+    "name": "H. Asiri",
+    "overall": 58,
+    "potential": 64,
+    "position": "RM, ST, RW",
+    "age": 24,
+    "team": "Al Qadsiah FC"
+  },
+  {
+    "name": "Victor Hugo",
+    "overall": 58,
+    "potential": 66,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "Al Taawoun FC"
+  },
+  {
+    "name": "I. Al Shuayl",
+    "overall": 58,
+    "potential": 58,
+    "position": "LB, LM",
+    "age": 30,
+    "team": "Al Taawoun FC"
+  },
+  {
+    "name": "M. Al Alaeli",
+    "overall": 58,
+    "potential": 72,
+    "position": "LB",
+    "age": 21,
+    "team": "Al Taawoun FC"
+  },
+  {
+    "name": "B. Al Mutairi",
+    "overall": 58,
+    "potential": 58,
+    "position": "LB, LM",
+    "age": 35,
+    "team": "Al Khaleej"
+  },
+  {
+    "name": "M. Tombakti",
+    "overall": 58,
+    "potential": 65,
+    "position": "CB, RB, RM",
+    "age": 22,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "M. Al Saeed",
+    "overall": 58,
+    "potential": 58,
+    "position": "LB, LM",
+    "age": 28,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "A. Al Joui",
+    "overall": 58,
+    "potential": 58,
+    "position": "LM, RM, LW",
+    "age": 30,
+    "team": "Al Fayha"
+  },
+  {
+    "name": "R. Kaabi",
+    "overall": 58,
+    "potential": 69,
+    "position": "CDM, CM, CB",
+    "age": 22,
+    "team": "Al Fayha"
+  },
+  {
+    "name": "A. Al Obaid",
+    "overall": 58,
+    "potential": 58,
+    "position": "LB, CB, LM",
+    "age": 32,
+    "team": "Damac FC"
+  },
+  {
+    "name": "N. Al Rashidi",
+    "overall": 58,
+    "potential": 58,
+    "position": "CB, RB, CDM",
+    "age": 30,
+    "team": "Damac FC"
+  },
+  {
+    "name": "S. Tunkar",
+    "overall": 58,
+    "potential": 61,
+    "position": "CB",
+    "age": 26,
+    "team": "Al Hazem FC"
+  },
+  {
+    "name": "A. Al Nakhli",
+    "overall": 58,
+    "potential": 67,
+    "position": "LB",
+    "age": 23,
+    "team": "Al Hazem FC"
+  },
+  {
+    "name": "J. Al Dossary",
+    "overall": 58,
+    "potential": 58,
+    "position": "CB, LB",
+    "age": 31,
+    "team": "Al Kholood"
+  },
+  {
+    "name": "A. Al Olewah",
+    "overall": 58,
+    "potential": 73,
+    "position": "RM, RW",
+    "age": 21,
+    "team": "Al Kholood"
+  },
+  {
+    "name": "H. Al Ali",
+    "overall": 58,
+    "potential": 67,
+    "position": "ST, RM, RW",
+    "age": 23,
+    "team": "NEOM SC"
+  },
+  {
+    "name": "A. Darsi",
+    "overall": 57,
+    "potential": 69,
+    "position": "RM, ST, RW",
+    "age": 22,
+    "team": "Al Hilal"
+  },
+  {
+    "name": "A. Al Julaydan",
+    "overall": 57,
+    "potential": 69,
+    "position": "RB, RM",
+    "age": 21,
+    "team": "Al Ittihad"
+  },
+  {
+    "name": "A. Makki",
+    "overall": 57,
+    "potential": 60,
+    "position": "CB, RB, LB",
+    "age": 26,
+    "team": "Al Shabab"
+  },
+  {
+    "name": "M. Harboush",
+    "overall": 57,
+    "potential": 68,
+    "position": "RB, LB",
+    "age": 22,
+    "team": "Al Shabab"
+  },
+  {
+    "name": "M. Gluscevic",
+    "overall": 57,
+    "potential": 68,
+    "position": "LW, LM",
+    "age": 21,
+    "team": "Al Ettifaq"
+  },
+  {
+    "name": "M. Marran",
+    "overall": 57,
+    "potential": 64,
+    "position": "ST, RM",
+    "age": 24,
+    "team": "Al Nassr"
+  },
+  {
+    "name": "F. Al Zubaidi",
+    "overall": 57,
+    "potential": 63,
+    "position": "RM, LM, CAM, RW",
+    "age": 23,
+    "team": "Al Fateh"
+  },
+  {
+    "name": "M. Qasheesh",
+    "overall": 57,
+    "potential": 59,
+    "position": "LB, LM",
+    "age": 23,
+    "team": "Al Fateh"
+  },
+  {
+    "name": "M. Al Shanqeeti",
+    "overall": 57,
+    "potential": 60,
+    "position": "LB",
+    "age": 26,
+    "team": "Al Qadsiah FC"
+  },
+  {
+    "name": "K. Al Absi",
+    "overall": 57,
+    "potential": 63,
+    "position": "LM, LW, RM",
+    "age": 24,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "S. Al Rouqi",
+    "overall": 57,
+    "potential": 66,
+    "position": "LM, RM, LW",
+    "age": 23,
+    "team": "Al Fayha"
+  },
+  {
+    "name": "N. Asiri",
+    "overall": 57,
+    "potential": 66,
+    "position": "CB",
+    "age": 24,
+    "team": "Al Akhdoud Saudi Club"
+  },
+  {
+    "name": "M. Naif",
+    "overall": 57,
+    "potential": 57,
+    "position": "LM, RM, RB, LW",
+    "age": 26,
+    "team": "Al Akhdoud Saudi Club"
+  },
+  {
+    "name": "M. Al Baqawi",
+    "overall": 57,
+    "potential": 60,
+    "position": "GK",
+    "age": 27,
+    "team": "Damac FC"
+  },
+  {
+    "name": "A. Al Qahtani",
+    "overall": 57,
+    "potential": 57,
+    "position": "LM, RM, ST, LW",
+    "age": 26,
+    "team": "Damac FC"
+  },
+  {
+    "name": "H. Al Ghamdi",
+    "overall": 57,
+    "potential": 60,
+    "position": "RM, LM, ST, RW",
+    "age": 24,
+    "team": "Damac FC"
+  },
+  {
+    "name": "Y. Al Najai",
+    "overall": 57,
+    "potential": 58,
+    "position": "RM, ST, CAM, RW",
+    "age": 26,
+    "team": "Damac FC"
+  },
+  {
+    "name": "F. Al Azmi",
+    "overall": 57,
+    "potential": 57,
+    "position": "LB, LM",
+    "age": 30,
+    "team": "Al Hazem FC"
+  },
+  {
+    "name": "Vitor Vargas",
+    "overall": 57,
+    "potential": 69,
+    "position": "LB, CB",
+    "age": 21,
+    "team": "Al-Najma SC"
+  },
+  {
+    "name": "A. Al Hurabi",
+    "overall": 57,
+    "potential": 58,
+    "position": "CDM, CM",
+    "age": 28,
+    "team": "Al-Najma SC"
+  },
+  {
+    "name": "M. Al Kunaydiri",
+    "overall": 57,
+    "potential": 62,
+    "position": "LB, LM",
+    "age": 24,
+    "team": "Al-Najma SC"
+  },
+  {
+    "name": "H. Al Dubais",
+    "overall": 57,
+    "potential": 64,
+    "position": "ST",
+    "age": 23,
+    "team": "Al-Najma SC"
+  },
+  {
+    "name": "S. Al Shehri",
+    "overall": 57,
+    "potential": 57,
+    "position": "LB",
+    "age": 29,
+    "team": "Al Kholood"
+  },
+  {
+    "name": "A. Fallatah",
+    "overall": 57,
+    "potential": 70,
+    "position": "CDM, CM, CAM",
+    "age": 21,
+    "team": "NEOM SC"
+  },
+  {
+    "name": "H. Al Shanqeeti",
+    "overall": 56,
+    "potential": 73,
+    "position": "GK",
+    "age": 20,
+    "team": "Al Ittihad"
+  },
+  {
+    "name": "M. Dawran",
+    "overall": 56,
+    "potential": 67,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "Al Ettifaq"
+  },
+  {
+    "name": "Y. Al Shammari",
+    "overall": 56,
+    "potential": 68,
+    "position": "CM, CAM, CDM",
+    "age": 21,
+    "team": "Al Ettifaq"
+  },
+  {
+    "name": "A. Hawsawi",
+    "overall": 56,
+    "potential": 59,
+    "position": "GK",
+    "age": 24,
+    "team": "Al Ettifaq"
+  },
+  {
+    "name": "Y. Al Zubaidi",
+    "overall": 56,
+    "potential": 68,
+    "position": "RM, LM, RW",
+    "age": 22,
+    "team": "Al Ahli SFC"
+  },
+  {
+    "name": "H. Al Watyan",
+    "overall": 56,
+    "potential": 58,
+    "position": "GK",
+    "age": 28,
+    "team": "Al Fateh"
+  },
+  {
+    "name": "A. Al Anzi",
+    "overall": 56,
+    "potential": 65,
+    "position": "RM, LM, ST, RW",
+    "age": 22,
+    "team": "Al Fateh"
+  },
+  {
+    "name": "S. Rajab",
+    "overall": 56,
+    "potential": 70,
+    "position": "LM, RM, LW",
+    "age": 20,
+    "team": "Al Qadsiah FC"
+  },
+  {
+    "name": "S. Harun",
+    "overall": 56,
+    "potential": 69,
+    "position": "ST",
+    "age": 19,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "A. Al Shammari",
+    "overall": 56,
+    "potential": 61,
+    "position": "GK",
+    "age": 25,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "A. Al Enazi",
+    "overall": 56,
+    "potential": 57,
+    "position": "RB, CM",
+    "age": 27,
+    "team": "Al Fayha"
+  },
+  {
+    "name": "H. Al Johani",
+    "overall": 56,
+    "potential": 58,
+    "position": "GK",
+    "age": 28,
+    "team": "Al Akhdoud Saudi Club"
+  },
+  {
+    "name": "S. Al Harthi",
+    "overall": 56,
+    "potential": 56,
+    "position": "LM, LB",
+    "age": 29,
+    "team": "Al Akhdoud Saudi Club"
+  },
+  {
+    "name": "A. Al Hotailah",
+    "overall": 56,
+    "potential": 57,
+    "position": "CAM, LM, CM",
+    "age": 27,
+    "team": "Al Akhdoud Saudi Club"
+  },
+  {
+    "name": "A. Al Shanqeeti",
+    "overall": 56,
+    "potential": 59,
+    "position": "CB, RB",
+    "age": 26,
+    "team": "Al Hazem FC"
+  },
+  {
+    "name": "M. Al Yami",
+    "overall": 56,
+    "potential": 67,
+    "position": "CDM, CM",
+    "age": 23,
+    "team": "Al Hazem FC"
+  },
+  {
+    "name": "M. Prekodravac",
+    "overall": 56,
+    "potential": 68,
+    "position": "CB, CDM, CM",
+    "age": 20,
+    "team": "Al-Najma SC"
+  },
+  {
+    "name": "N. Hawsawi",
+    "overall": 56,
+    "potential": 61,
+    "position": "LB, CDM, LM",
+    "age": 24,
+    "team": "Al-Najma SC"
+  },
+  {
+    "name": "R. Al Tulayhi",
+    "overall": 56,
+    "potential": 65,
+    "position": "CAM, CM",
+    "age": 22,
+    "team": "Al-Najma SC"
+  },
+  {
+    "name": "T. Al Khaibari",
+    "overall": 56,
+    "potential": 71,
+    "position": "ST",
+    "age": 19,
+    "team": "NEOM SC"
+  },
+  {
+    "name": "R. Azybi",
+    "overall": 56,
+    "potential": 64,
+    "position": "GK",
+    "age": 23,
+    "team": "NEOM SC"
+  },
+  {
+    "name": "M. Barnawi",
+    "overall": 55,
+    "potential": 70,
+    "position": "CB, RB",
+    "age": 19,
+    "team": "Al Ittihad"
+  },
+  {
+    "name": "O. Al Mermesh",
+    "overall": 55,
+    "potential": 67,
+    "position": "GK",
+    "age": 21,
+    "team": "Al Ittihad"
+  },
+  {
+    "name": "M. Al Absi",
+    "overall": 55,
+    "potential": 63,
+    "position": "GK",
+    "age": 22,
+    "team": "Al Ittihad"
+  },
+  {
+    "name": "J. Al Salem",
+    "overall": 55,
+    "potential": 71,
+    "position": "LW, ST, LM",
+    "age": 20,
+    "team": "Al Ettifaq"
+  },
+  {
+    "name": "S. Hagawi",
+    "overall": 55,
+    "potential": 72,
+    "position": "ST",
+    "age": 19,
+    "team": "Al Nassr"
+  },
+  {
+    "name": "R. Al Attar",
+    "overall": 55,
+    "potential": 73,
+    "position": "RM, RW",
+    "age": 19,
+    "team": "Al Ahli SFC"
+  },
+  {
+    "name": "A. Al Masoud",
+    "overall": 55,
+    "potential": 65,
+    "position": "LW, LM",
+    "age": 21,
+    "team": "Al Fateh"
+  },
+  {
+    "name": "B. Al Orayni",
+    "overall": 55,
+    "potential": 65,
+    "position": "ST",
+    "age": 21,
+    "team": "Al Taawoun FC"
+  },
+  {
+    "name": "M. Al Dawsari",
+    "overall": 55,
+    "potential": 63,
+    "position": "CB",
+    "age": 24,
+    "team": "Al Taawoun FC"
+  },
+  {
+    "name": "M. Al Aqel",
+    "overall": 55,
+    "potential": 58,
+    "position": "ST, RM, LM",
+    "age": 25,
+    "team": "Al Taawoun FC"
+  },
+  {
+    "name": "L. Ramirez",
+    "overall": 55,
+    "potential": 70,
+    "position": "ST",
+    "age": 19,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "S. Hazazi",
+    "overall": 55,
+    "potential": 64,
+    "position": "LB, LM",
+    "age": 22,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "M. Al Khaibari",
+    "overall": 55,
+    "potential": 62,
+    "position": "CB",
+    "age": 23,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "R. Al Mutairi",
+    "overall": 55,
+    "potential": 58,
+    "position": "RW, RM",
+    "age": 24,
+    "team": "Al Fayha"
+  },
+  {
+    "name": "M. Abo Abd",
+    "overall": 55,
+    "potential": 62,
+    "position": "RB, RM",
+    "age": 23,
+    "team": "Al Akhdoud Saudi Club"
+  },
+  {
+    "name": "A. Al Dwehe",
+    "overall": 55,
+    "potential": 58,
+    "position": "RM, LM, CAM, RW",
+    "age": 25,
+    "team": "Al Hazem FC"
+  },
+  {
+    "name": "E. Mokwana",
+    "overall": 55,
+    "potential": 56,
+    "position": "RW, ST, RM",
+    "age": 25,
+    "team": "Al Hazem FC"
+  },
+  {
+    "name": "A. Al Harbi",
+    "overall": 55,
+    "potential": 66,
+    "position": "RB, RM",
+    "age": 21,
+    "team": "Al Hazem FC"
+  },
+  {
+    "name": "A. Al Nakhli",
+    "overall": 55,
+    "potential": 55,
+    "position": "CM, CDM",
+    "age": 28,
+    "team": "Al-Najma SC"
+  },
+  {
+    "name": "M. Mile",
+    "overall": 55,
+    "potential": 58,
+    "position": "RW, RM",
+    "age": 25,
+    "team": "Al-Najma SC"
+  },
+  {
+    "name": "W. Al Enezi",
+    "overall": 55,
+    "potential": 57,
+    "position": "GK",
+    "age": 28,
+    "team": "Al-Najma SC"
+  },
+  {
+    "name": "H. Al Asmari",
+    "overall": 55,
+    "potential": 63,
+    "position": "RB, CB",
+    "age": 22,
+    "team": "Al Kholood"
+  },
+  {
+    "name": "Guga",
+    "overall": 55,
+    "potential": 75,
+    "position": "ST",
+    "age": 18,
+    "team": "Al Kholood"
+  },
+  {
+    "name": "T. Al Ghumail",
+    "overall": 54,
+    "potential": 68,
+    "position": "ST",
+    "age": 20,
+    "team": "Al Hilal"
+  },
+  {
+    "name": "S. Haroun",
+    "overall": 54,
+    "potential": 70,
+    "position": "CB",
+    "age": 19,
+    "team": "Al Hilal"
+  },
+  {
+    "name": "M. Abdullah",
+    "overall": 54,
+    "potential": 73,
+    "position": "ST",
+    "age": 19,
+    "team": "Al Shabab"
+  },
+  {
+    "name": "A. Matuq",
+    "overall": 54,
+    "potential": 66,
+    "position": "RM, LM, RW",
+    "age": 22,
+    "team": "Al Shabab"
+  },
+  {
+    "name": "A. Al Ouwiradi",
+    "overall": 54,
+    "potential": 64,
+    "position": "GK",
+    "age": 23,
+    "team": "Al Shabab"
+  },
+  {
+    "name": "F. Al Sibyani",
+    "overall": 54,
+    "potential": 67,
+    "position": "CDM, CM",
+    "age": 21,
+    "team": "Al Shabab"
+  },
+  {
+    "name": "N. Al Ghulaimish",
+    "overall": 54,
+    "potential": 68,
+    "position": "RB",
+    "age": 20,
+    "team": "Al Shabab"
+  },
+  {
+    "name": "A. Dahal",
+    "overall": 54,
+    "potential": 67,
+    "position": "RB",
+    "age": 20,
+    "team": "Al Ettifaq"
+  },
+  {
+    "name": "A. Aman",
+    "overall": 54,
+    "potential": 67,
+    "position": "LB, CB",
+    "age": 20,
+    "team": "Al Nassr"
+  },
+  {
+    "name": "J. Ramos",
+    "overall": 54,
+    "potential": 62,
+    "position": "ST",
+    "age": 20,
+    "team": "Al Fateh"
+  },
+  {
+    "name": "Z. Al Jari",
+    "overall": 54,
+    "potential": 63,
+    "position": "CB, RB",
+    "age": 23,
+    "team": "Al Fateh"
+  },
+  {
+    "name": "O. Al Bawardi",
+    "overall": 54,
+    "potential": 57,
+    "position": "RB",
+    "age": 26,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "A. Al Harfi",
+    "overall": 54,
+    "potential": 61,
+    "position": "RB, RW",
+    "age": 24,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "E. Bahri",
+    "overall": 54,
+    "potential": 64,
+    "position": "LB",
+    "age": 20,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "R. Al Bloushi",
+    "overall": 54,
+    "potential": 61,
+    "position": "ST, LM, RM",
+    "age": 24,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "A. Al Hussain",
+    "overall": 54,
+    "potential": 66,
+    "position": "CM, CAM, CDM",
+    "age": 20,
+    "team": "Al Fayha"
+  },
+  {
+    "name": "S. Dahal",
+    "overall": 54,
+    "potential": 72,
+    "position": "RM, LM, RW",
+    "age": 17,
+    "team": "Al Fayha"
+  },
+  {
+    "name": "M. Al Abdulmunem",
+    "overall": 54,
+    "potential": 55,
+    "position": "ST",
+    "age": 27,
+    "team": "Al Fayha"
+  },
+  {
+    "name": "G. Hawsawi",
+    "overall": 54,
+    "potential": 63,
+    "position": "CM, CDM",
+    "age": 22,
+    "team": "Al Akhdoud Saudi Club"
+  },
+  {
+    "name": "R. Al Najjar",
+    "overall": 54,
+    "potential": 55,
+    "position": "GK",
+    "age": 30,
+    "team": "Al Akhdoud Saudi Club"
+  },
+  {
+    "name": "David Kaiki",
+    "overall": 54,
+    "potential": 63,
+    "position": "RW, RM",
+    "age": 21,
+    "team": "Damac FC"
+  },
+  {
+    "name": "Miguel Carvalho",
+    "overall": 54,
+    "potential": 67,
+    "position": "CM, CAM, CDM",
+    "age": 20,
+    "team": "Al Hazem FC"
+  },
+  {
+    "name": "A. Bah",
+    "overall": 54,
+    "potential": 67,
+    "position": "CM, CDM",
+    "age": 19,
+    "team": "Al Hazem FC"
+  },
+  {
+    "name": "N. Al Bishri",
+    "overall": 54,
+    "potential": 70,
+    "position": "LM, ST, LW",
+    "age": 19,
+    "team": "Al Hazem FC"
+  },
+  {
+    "name": "K. Al Muqaytib",
+    "overall": 54,
+    "potential": 54,
+    "position": "GK",
+    "age": 33,
+    "team": "Al-Najma SC"
+  },
+  {
+    "name": "M. Al Shammari",
+    "overall": 54,
+    "potential": 54,
+    "position": "GK",
+    "age": 33,
+    "team": "Al Kholood"
+  },
+  {
+    "name": "A. Al Khanani",
+    "overall": 54,
+    "potential": 65,
+    "position": "RB",
+    "age": 21,
+    "team": "NEOM SC"
+  },
+  {
+    "name": "A. Hadhood",
+    "overall": 53,
+    "potential": 69,
+    "position": "CDM, CM, CAM",
+    "age": 20,
+    "team": "Al Hilal"
+  },
+  {
+    "name": "S. Al Mutairi",
+    "overall": 53,
+    "potential": 70,
+    "position": "LB",
+    "age": 18,
+    "team": "Al Hilal"
+  },
+  {
+    "name": "H. Al Khorayef",
+    "overall": 53,
+    "potential": 64,
+    "position": "ST",
+    "age": 19,
+    "team": "Al Shabab"
+  },
+  {
+    "name": "S. Al Anzi",
+    "overall": 53,
+    "potential": 59,
+    "position": "LB",
+    "age": 21,
+    "team": "Al Shabab"
+  },
+  {
+    "name": "R. Al Ghamdi",
+    "overall": 53,
+    "potential": 67,
+    "position": "CAM, CM",
+    "age": 19,
+    "team": "Al Nassr"
+  },
+  {
+    "name": "W. Delgado",
+    "overall": 53,
+    "potential": 60,
+    "position": "RW, RM",
+    "age": 21,
+    "team": "Al Fateh"
+  },
+  {
+    "name": "F. Darisi",
+    "overall": 53,
+    "potential": 55,
+    "position": "CB",
+    "age": 28,
+    "team": "Al Fateh"
+  },
+  {
+    "name": "K. Hazazi",
+    "overall": 53,
+    "potential": 63,
+    "position": "CM, CAM, CDM",
+    "age": 20,
+    "team": "Al Qadsiah FC"
+  },
+  {
+    "name": "A. Al Mutairi",
+    "overall": 53,
+    "potential": 66,
+    "position": "CB, LB",
+    "age": 20,
+    "team": "Al Qadsiah FC"
+  },
+  {
+    "name": "A. Al Muhaisen",
+    "overall": 53,
+    "potential": 71,
+    "position": "GK",
+    "age": 18,
+    "team": "Al Qadsiah FC"
+  },
+  {
+    "name": "A. Al Senaidi",
+    "overall": 53,
+    "potential": 68,
+    "position": "GK",
+    "age": 18,
+    "team": "Al Taawoun FC"
+  },
+  {
+    "name": "A. Al Ghamdi",
+    "overall": 53,
+    "potential": 66,
+    "position": "GK",
+    "age": 19,
+    "team": "Al Taawoun FC"
+  },
+  {
+    "name": "H. Al Sultan",
+    "overall": 53,
+    "potential": 63,
+    "position": "ST",
+    "age": 21,
+    "team": "Al Khaleej"
+  },
+  {
+    "name": "M. Al Abdullah",
+    "overall": 53,
+    "potential": 62,
+    "position": "RM, CAM, RW",
+    "age": 22,
+    "team": "Al Khaleej"
+  },
+  {
+    "name": "T. Al Shubili",
+    "overall": 53,
+    "potential": 67,
+    "position": "CDM, CM",
+    "age": 20,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "S. Tombakti",
+    "overall": 53,
+    "potential": 65,
+    "position": "CB",
+    "age": 20,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "A. Khatir",
+    "overall": 53,
+    "potential": 64,
+    "position": "CB, CDM",
+    "age": 20,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "K. Al Asbahi",
+    "overall": 53,
+    "potential": 65,
+    "position": "LM, LW",
+    "age": 21,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "N. Al Bishi",
+    "overall": 53,
+    "potential": 62,
+    "position": "CAM, CM",
+    "age": 23,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "O. Al Thumayri",
+    "overall": 53,
+    "potential": 65,
+    "position": "GK",
+    "age": 19,
+    "team": "Al Fayha"
+  },
+  {
+    "name": "K. Al Rammah",
+    "overall": 53,
+    "potential": 70,
+    "position": "LB, LM",
+    "age": 20,
+    "team": "Al Fayha"
+  },
+  {
+    "name": "A. Al Shamrani",
+    "overall": 53,
+    "potential": 60,
+    "position": "RM, LM, RW",
+    "age": 23,
+    "team": "Al Hazem FC"
+  },
+  {
+    "name": "A. Abo Rasain",
+    "overall": 52,
+    "potential": 64,
+    "position": "GK",
+    "age": 21,
+    "team": "Al Hilal"
+  },
+  {
+    "name": "E. Qaysi",
+    "overall": 52,
+    "potential": 67,
+    "position": "LM, RM, LW",
+    "age": 18,
+    "team": "Al Shabab"
+  },
+  {
+    "name": "M. Saad",
+    "overall": 52,
+    "potential": 72,
+    "position": "GK",
+    "age": 19,
+    "team": "Al Shabab"
+  },
+  {
+    "name": "T. Baljawsh",
+    "overall": 52,
+    "potential": 60,
+    "position": "GK",
+    "age": 21,
+    "team": "Al Ettifaq"
+  },
+  {
+    "name": "F. Al Ghamdi",
+    "overall": 52,
+    "potential": 62,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "Al Ettifaq"
+  },
+  {
+    "name": "M. Al Shaqaq",
+    "overall": 52,
+    "potential": 65,
+    "position": "LB, LM",
+    "age": 20,
+    "team": "Al Fateh"
+  },
+  {
+    "name": "F. Al Abdulwahed",
+    "overall": 52,
+    "potential": 64,
+    "position": "ST",
+    "age": 20,
+    "team": "Al Fateh"
+  },
+  {
+    "name": "E. Housa",
+    "overall": 52,
+    "potential": 69,
+    "position": "CAM, CM",
+    "age": 18,
+    "team": "Al Qadsiah FC"
+  },
+  {
+    "name": "A. Al Khathami",
+    "overall": 52,
+    "potential": 66,
+    "position": "ST",
+    "age": 20,
+    "team": "Al Khaleej"
+  },
+  {
+    "name": "A. Abdulrauof",
+    "overall": 52,
+    "potential": 64,
+    "position": "LM, CAM, LW",
+    "age": 21,
+    "team": "Al Khaleej"
+  },
+  {
+    "name": "M. Al Qahtani",
+    "overall": 52,
+    "potential": 64,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "E. Al Feda",
+    "overall": 52,
+    "potential": 55,
+    "position": "GK",
+    "age": 28,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "S. Al Shammari",
+    "overall": 52,
+    "potential": 61,
+    "position": "GK",
+    "age": 20,
+    "team": "Al Fayha"
+  },
+  {
+    "name": "S. Al Qarni",
+    "overall": 52,
+    "potential": 58,
+    "position": "GK",
+    "age": 23,
+    "team": "Al Akhdoud Saudi Club"
+  },
+  {
+    "name": "A. AL Khaibari",
+    "overall": 52,
+    "potential": 56,
+    "position": "RB",
+    "age": 25,
+    "team": "Damac FC"
+  },
+  {
+    "name": "Y. Al Ruwaili",
+    "overall": 52,
+    "potential": 64,
+    "position": "GK",
+    "age": 20,
+    "team": "Al Hazem FC"
+  },
+  {
+    "name": "M. Khalifa",
+    "overall": 52,
+    "potential": 62,
+    "position": "ST, CAM",
+    "age": 21,
+    "team": "Al Kholood"
+  },
+  {
+    "name": "O. Abdulghani",
+    "overall": 52,
+    "potential": 65,
+    "position": "RB",
+    "age": 20,
+    "team": "Al Kholood"
+  },
+  {
+    "name": "I. Barabaa",
+    "overall": 52,
+    "potential": 64,
+    "position": "CDM, CM",
+    "age": 19,
+    "team": "Al Kholood"
+  },
+  {
+    "name": "A. Al Ajian",
+    "overall": 52,
+    "potential": 64,
+    "position": "ST",
+    "age": 20,
+    "team": "Al Kholood"
+  },
+  {
+    "name": "M. Al Dawood",
+    "overall": 51,
+    "potential": 67,
+    "position": "CB",
+    "age": 17,
+    "team": "Al Hilal"
+  },
+  {
+    "name": "A. Haraj",
+    "overall": 51,
+    "potential": 69,
+    "position": "CB, RB",
+    "age": 18,
+    "team": "Al Shabab"
+  },
+  {
+    "name": "M. Al Otaibi",
+    "overall": 51,
+    "potential": 65,
+    "position": "GK",
+    "age": 17,
+    "team": "Al Shabab"
+  },
+  {
+    "name": "N. Al Bishi",
+    "overall": 51,
+    "potential": 65,
+    "position": "CB, CDM",
+    "age": 17,
+    "team": "Al Shabab"
+  },
+  {
+    "name": "Z. Al Ghamdi",
+    "overall": 51,
+    "potential": 60,
+    "position": "RW, RM",
+    "age": 20,
+    "team": "Al Ettifaq"
+  },
+  {
+    "name": "I. Azzam",
+    "overall": 51,
+    "potential": 71,
+    "position": "CDM, CM",
+    "age": 17,
+    "team": "Al Ahli SFC"
+  },
+  {
+    "name": "A. Abdo",
+    "overall": 51,
+    "potential": 61,
+    "position": "GK",
+    "age": 23,
+    "team": "Al Ahli SFC"
+  },
+  {
+    "name": "A. Al Marwani",
+    "overall": 51,
+    "potential": 66,
+    "position": "LM, RM, LW",
+    "age": 20,
+    "team": "Al Taawoun FC"
+  },
+  {
+    "name": "M. Sémbène",
+    "overall": 51,
+    "potential": 54,
+    "position": "CB",
+    "age": 19,
+    "team": "Al Taawoun FC"
+  },
+  {
+    "name": "B. Al Hamad",
+    "overall": 51,
+    "potential": 66,
+    "position": "LW, LM",
+    "age": 20,
+    "team": "Al Taawoun FC"
+  },
+  {
+    "name": "T. Al Dhafeeri",
+    "overall": 51,
+    "potential": 68,
+    "position": "CM, CDM",
+    "age": 19,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "M. Sahlouli",
+    "overall": 51,
+    "potential": 65,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "A. Al Khaibari",
+    "overall": 51,
+    "potential": 58,
+    "position": "RW, RM, LM",
+    "age": 20,
+    "team": "Al Fayha"
+  },
+  {
+    "name": "M. Al Dowaish",
+    "overall": 51,
+    "potential": 64,
+    "position": "RB, CB",
+    "age": 21,
+    "team": "Al Fayha"
+  },
+  {
+    "name": "S. Balhareth",
+    "overall": 51,
+    "potential": 64,
+    "position": "CM, CDM",
+    "age": 19,
+    "team": "Al Akhdoud Saudi Club"
+  },
+  {
+    "name": "S. Salem",
+    "overall": 51,
+    "potential": 65,
+    "position": "CM, CDM",
+    "age": 19,
+    "team": "Al Akhdoud Saudi Club"
+  },
+  {
+    "name": "N. Al Ghamdi",
+    "overall": 51,
+    "potential": 57,
+    "position": "GK",
+    "age": 24,
+    "team": "Damac FC"
+  },
+  {
+    "name": "J. Al Hassan",
+    "overall": 51,
+    "potential": 61,
+    "position": "RM, RW",
+    "age": 20,
+    "team": "Damac FC"
+  },
+  {
+    "name": "H. Rabea",
+    "overall": 51,
+    "potential": 59,
+    "position": "CB",
+    "age": 22,
+    "team": "Damac FC"
+  },
+  {
+    "name": "S. Al Essa",
+    "overall": 51,
+    "potential": 61,
+    "position": "RM, RB, RW",
+    "age": 20,
+    "team": "Al Hazem FC"
+  },
+  {
+    "name": "A. Masoud",
+    "overall": 51,
+    "potential": 61,
+    "position": "CB, RB",
+    "age": 22,
+    "team": "Al Kholood"
+  },
+  {
+    "name": "M. Al Hakim",
+    "overall": 51,
+    "potential": 63,
+    "position": "GK",
+    "age": 20,
+    "team": "NEOM SC"
+  },
+  {
+    "name": "G. Balanta",
+    "overall": 51,
+    "potential": 71,
+    "position": "CDM, CM",
+    "age": 18,
+    "team": "NEOM SC"
+  },
+  {
+    "name": "R. Al Dawsari",
+    "overall": 50,
+    "potential": 64,
+    "position": "GK",
+    "age": 21,
+    "team": "Al Hilal"
+  },
+  {
+    "name": "Y. Al Jaber",
+    "overall": 50,
+    "potential": 65,
+    "position": "CB",
+    "age": 19,
+    "team": "Al Ittihad"
+  },
+  {
+    "name": "Y. Madani",
+    "overall": 50,
+    "potential": 59,
+    "position": "LB",
+    "age": 20,
+    "team": "Al Ahli SFC"
+  },
+  {
+    "name": "S. Tombakti",
+    "overall": 50,
+    "potential": 59,
+    "position": "CDM, CM",
+    "age": 23,
+    "team": "Al Fateh"
+  },
+  {
+    "name": "A. Al Khaibari",
+    "overall": 50,
+    "potential": 64,
+    "position": "GK",
+    "age": 17,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "Y. Abu Dahi",
+    "overall": 50,
+    "potential": 65,
+    "position": "GK",
+    "age": 19,
+    "team": "Damac FC"
+  },
+  {
+    "name": "Z. Makkawi",
+    "overall": 50,
+    "potential": 65,
+    "position": "ST",
+    "age": 18,
+    "team": "Damac FC"
+  },
+  {
+    "name": "A. Al Sagheer",
+    "overall": 50,
+    "potential": 60,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Al-Najma SC"
+  },
+  {
+    "name": "A. Al Anzi",
+    "overall": 50,
+    "potential": 63,
+    "position": "GK",
+    "age": 19,
+    "team": "Al-Najma SC"
+  },
+  {
+    "name": "N. Al Haleel",
+    "overall": 50,
+    "potential": 52,
+    "position": "CB",
+    "age": 25,
+    "team": "Al-Najma SC"
+  },
+  {
+    "name": "A. Al Harbi",
+    "overall": 50,
+    "potential": 64,
+    "position": "LW, LM",
+    "age": 19,
+    "team": "Al Kholood"
+  },
+  {
+    "name": "M. Al Yahya",
+    "overall": 50,
+    "potential": 59,
+    "position": "GK",
+    "age": 20,
+    "team": "Al Kholood"
+  },
+  {
+    "name": "M. Al Oufi",
+    "overall": 50,
+    "potential": 61,
+    "position": "RW, RM",
+    "age": 19,
+    "team": "NEOM SC"
+  },
+  {
+    "name": "A. Al Nakhli",
+    "overall": 50,
+    "potential": 60,
+    "position": "CB, CM",
+    "age": 20,
+    "team": "NEOM SC"
+  },
+  {
+    "name": "M. Al Buainain",
+    "overall": 49,
+    "potential": 59,
+    "position": "GK",
+    "age": 19,
+    "team": "Al Nassr"
+  },
+  {
+    "name": "J. Harrison",
+    "overall": 49,
+    "potential": 56,
+    "position": "CM, CDM",
+    "age": 22,
+    "team": "Al Fateh"
+  },
+  {
+    "name": "A. Al Fawaz",
+    "overall": 49,
+    "potential": 70,
+    "position": "CM, CDM",
+    "age": 17,
+    "team": "Al Fateh"
+  },
+  {
+    "name": "A. Al Asbahi",
+    "overall": 49,
+    "potential": 57,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Al Riyadh"
+  },
+  {
+    "name": "A. Al Jaber",
+    "overall": 48,
+    "potential": 58,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "Al Nassr"
+  },
+  {
+    "name": "M. Al Aboud",
+    "overall": 48,
+    "potential": 63,
+    "position": "CM, CDM",
+    "age": 19,
+    "team": "Al Fateh"
+  },
+  {
+    "name": "A. Al Hudaybi",
+    "overall": 48,
+    "potential": 64,
+    "position": "RB",
+    "age": 18,
+    "team": "Al Fateh"
+  },
+  {
+    "name": "A. Omar",
+    "overall": 48,
+    "potential": 56,
+    "position": "CDM, CM",
+    "age": 22,
+    "team": "Damac FC"
+  },
+  {
+    "name": "B. Hazazi",
+    "overall": 47,
+    "potential": 64,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Al Nassr"
+  },
+  {
+    "name": "M. Al Sahihi",
+    "overall": 47,
+    "potential": 58,
+    "position": "CM, CDM",
+    "age": 19,
+    "team": "Al Fateh"
+  },
+  {
+    "name": "A. Kaabi",
+    "overall": 47,
+    "potential": 61,
+    "position": "CB",
+    "age": 20,
+    "team": "Al Qadsiah FC"
+  }
+]

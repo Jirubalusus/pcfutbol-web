@@ -1,0 +1,986 @@
+[
+  {
+    "name": "C. Aránguiz",
+    "overall": 74,
+    "potential": 74,
+    "position": "CM, CDM",
+    "age": 36,
+    "team": "Universidad de Chile"
+  },
+  {
+    "name": "F. Zampedri",
+    "overall": 74,
+    "potential": 74,
+    "position": "ST",
+    "age": 37,
+    "team": "Universidad Católica"
+  },
+  {
+    "name": "C. Aquino",
+    "overall": 74,
+    "potential": 74,
+    "position": "CAM, LW, CM",
+    "age": 33,
+    "team": "Colo-Colo"
+  },
+  {
+    "name": "B. Ampuero",
+    "overall": 72,
+    "potential": 72,
+    "position": "CB, RB",
+    "age": 31,
+    "team": "Universidad Católica"
+  },
+  {
+    "name": "L. Cepeda",
+    "overall": 72,
+    "potential": 81,
+    "position": "LW, LM, RW",
+    "age": 22,
+    "team": "Colo-Colo"
+  },
+  {
+    "name": "J. Abrigo",
+    "overall": 72,
+    "potential": 72,
+    "position": "CAM, LM, CM",
+    "age": 30,
+    "team": "CD Palestino"
+  },
+  {
+    "name": "A. Fuentoza",
+    "overall": 72,
+    "potential": 72,
+    "position": "LB, LM",
+    "age": 33,
+    "team": "Deportes Iquique"
+  },
+  {
+    "name": "C. Abridego",
+    "overall": 72,
+    "potential": 72,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Deportes Iquique"
+  },
+  {
+    "name": "M. Zaldivia",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB",
+    "age": 34,
+    "team": "Universidad de Chile"
+  },
+  {
+    "name": "J. Altamirano",
+    "overall": 71,
+    "potential": 74,
+    "position": "CAM, CM",
+    "age": 25,
+    "team": "Universidad de Chile"
+  },
+  {
+    "name": "F. Calderón",
+    "overall": 71,
+    "potential": 74,
+    "position": "CB",
+    "age": 27,
+    "team": "Universidad de Chile"
+  },
+  {
+    "name": "G. Castellón",
+    "overall": 70,
+    "potential": 70,
+    "position": "GK",
+    "age": 31,
+    "team": "Universidad de Chile"
+  },
+  {
+    "name": "L. Assadi",
+    "overall": 70,
+    "potential": 81,
+    "position": "CAM, LW, ST, CM",
+    "age": 21,
+    "team": "Universidad de Chile"
+  },
+  {
+    "name": "G. Medel",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB, CDM",
+    "age": 37,
+    "team": "Universidad Católica"
+  },
+  {
+    "name": "D. González",
+    "overall": 70,
+    "potential": 78,
+    "position": "CB",
+    "age": 23,
+    "team": "Universidad Católica"
+  },
+  {
+    "name": "M. Palavecino",
+    "overall": 70,
+    "potential": 71,
+    "position": "CAM, LM, CM",
+    "age": 27,
+    "team": "Universidad Católica"
+  },
+  {
+    "name": "A. Vidal",
+    "overall": 70,
+    "potential": 70,
+    "position": "CM, CDM",
+    "age": 38,
+    "team": "Colo-Colo"
+  },
+  {
+    "name": "J. Correa",
+    "overall": 70,
+    "potential": 70,
+    "position": "ST",
+    "age": 32,
+    "team": "Colo-Colo"
+  },
+  {
+    "name": "F. De Paul",
+    "overall": 70,
+    "potential": 70,
+    "position": "GK",
+    "age": 34,
+    "team": "Colo-Colo"
+  },
+  {
+    "name": "B. Carrasco",
+    "overall": 70,
+    "potential": 70,
+    "position": "RM, RW, ST",
+    "age": 34,
+    "team": "CD Palestino"
+  },
+  {
+    "name": "F. Meza",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB, CDM, RB, CM",
+    "age": 35,
+    "team": "CD Palestino"
+  },
+  {
+    "name": "I. Modonza",
+    "overall": 70,
+    "potential": 70,
+    "position": "RB, CB",
+    "age": 29,
+    "team": "Deportes Iquique"
+  },
+  {
+    "name": "C. Despredal",
+    "overall": 70,
+    "potential": 70,
+    "position": "RM, LM, RW",
+    "age": 29,
+    "team": "Deportes Iquique"
+  },
+  {
+    "name": "J. Gustaldo",
+    "overall": 70,
+    "potential": 70,
+    "position": "ST",
+    "age": 29,
+    "team": "Deportes Iquique"
+  },
+  {
+    "name": "M. Díaz",
+    "overall": 69,
+    "potential": 69,
+    "position": "CDM, CM",
+    "age": 38,
+    "team": "Universidad de Chile"
+  },
+  {
+    "name": "F. Hormazábal",
+    "overall": 69,
+    "potential": 69,
+    "position": "RB, RM",
+    "age": 29,
+    "team": "Universidad de Chile"
+  },
+  {
+    "name": "E. Mena",
+    "overall": 69,
+    "potential": 69,
+    "position": "LB, LM",
+    "age": 36,
+    "team": "Universidad Católica"
+  },
+  {
+    "name": "F. Zuqui",
+    "overall": 69,
+    "potential": 69,
+    "position": "CM, CDM",
+    "age": 33,
+    "team": "Universidad Católica"
+  },
+  {
+    "name": "C. Cuevas",
+    "overall": 69,
+    "potential": 69,
+    "position": "LM, LB, CM, LW",
+    "age": 30,
+    "team": "Universidad Católica"
+  },
+  {
+    "name": "J. Valencia",
+    "overall": 69,
+    "potential": 69,
+    "position": "CDM, CM, CB",
+    "age": 28,
+    "team": "Universidad Católica"
+  },
+  {
+    "name": "J. Díaz",
+    "overall": 69,
+    "potential": 70,
+    "position": "LB, CB",
+    "age": 27,
+    "team": "Universidad Católica"
+  },
+  {
+    "name": "C. Montes",
+    "overall": 69,
+    "potential": 74,
+    "position": "LM, RM, LW",
+    "age": 24,
+    "team": "Universidad Católica"
+  },
+  {
+    "name": "M. Inostros",
+    "overall": 69,
+    "potential": 69,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Unión Española"
+  },
+  {
+    "name": "V. De los Santos",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB",
+    "age": 25,
+    "team": "Unión Española"
+  },
+  {
+    "name": "S. Labrínez",
+    "overall": 69,
+    "potential": 69,
+    "position": "LW, LM",
+    "age": 33,
+    "team": "Unión Española"
+  },
+  {
+    "name": "J. Benítez",
+    "overall": 69,
+    "potential": 69,
+    "position": "LM, LW, CAM",
+    "age": 33,
+    "team": "CD Palestino"
+  },
+  {
+    "name": "S. Pérez",
+    "overall": 69,
+    "potential": 69,
+    "position": "GK",
+    "age": 34,
+    "team": "CD Palestino"
+  },
+  {
+    "name": "I. Poblete",
+    "overall": 68,
+    "potential": 68,
+    "position": "CM, CAM, CDM",
+    "age": 30,
+    "team": "Universidad de Chile"
+  },
+  {
+    "name": "N. Ramírez",
+    "overall": 68,
+    "potential": 70,
+    "position": "CB",
+    "age": 28,
+    "team": "Universidad de Chile"
+  },
+  {
+    "name": "M. Guerrero",
+    "overall": 68,
+    "potential": 69,
+    "position": "RW, RM",
+    "age": 25,
+    "team": "Universidad de Chile"
+  },
+  {
+    "name": "J. Martinez",
+    "overall": 68,
+    "potential": 68,
+    "position": "CM, CDM",
+    "age": 28,
+    "team": "Universidad Católica"
+  },
+  {
+    "name": "A. Canales",
+    "overall": 68,
+    "potential": 73,
+    "position": "CM, CDM",
+    "age": 25,
+    "team": "Universidad Católica"
+  },
+  {
+    "name": "F. Méndez",
+    "overall": 68,
+    "potential": 73,
+    "position": "CDM, CM, RM",
+    "age": 25,
+    "team": "Colo-Colo"
+  },
+  {
+    "name": "E. Wiemberg",
+    "overall": 68,
+    "potential": 68,
+    "position": "LB, CB",
+    "age": 31,
+    "team": "Colo-Colo"
+  },
+  {
+    "name": "D. Zúñiga",
+    "overall": 68,
+    "potential": 68,
+    "position": "LB, RB, LM",
+    "age": 28,
+    "team": "CD Palestino"
+  },
+  {
+    "name": "J. Fernández",
+    "overall": 68,
+    "potential": 68,
+    "position": "CDM, CM",
+    "age": 30,
+    "team": "CD Palestino"
+  },
+  {
+    "name": "G. Hormaza",
+    "overall": 68,
+    "potential": 68,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Deportes Iquique"
+  },
+  {
+    "name": "R. Andrero",
+    "overall": 68,
+    "potential": 68,
+    "position": "CB",
+    "age": 29,
+    "team": "Deportes Iquique"
+  },
+  {
+    "name": "A. Rochedo",
+    "overall": 68,
+    "potential": 68,
+    "position": "CAM, CM",
+    "age": 25,
+    "team": "Deportes Iquique"
+  },
+  {
+    "name": "C. Toselli",
+    "overall": 67,
+    "potential": 67,
+    "position": "GK",
+    "age": 37,
+    "team": "Universidad de Chile"
+  },
+  {
+    "name": "D. Valencia",
+    "overall": 67,
+    "potential": 70,
+    "position": "ST, LW, RW, LM",
+    "age": 25,
+    "team": "Universidad Católica"
+  },
+  {
+    "name": "V. Bernedo",
+    "overall": 67,
+    "potential": 73,
+    "position": "GK",
+    "age": 24,
+    "team": "Universidad Católica"
+  },
+  {
+    "name": "G. Suleziano",
+    "overall": 67,
+    "potential": 67,
+    "position": "GK",
+    "age": 29,
+    "team": "Unión Española"
+  },
+  {
+    "name": "B. Tangil",
+    "overall": 67,
+    "potential": 67,
+    "position": "GK",
+    "age": 25,
+    "team": "Unión Española"
+  },
+  {
+    "name": "N. Baumer",
+    "overall": 67,
+    "potential": 67,
+    "position": "ST",
+    "age": 29,
+    "team": "Unión Española"
+  },
+  {
+    "name": "E. Pavez",
+    "overall": 67,
+    "potential": 67,
+    "position": "CDM, CM",
+    "age": 35,
+    "team": "Colo-Colo"
+  },
+  {
+    "name": "T. Alarcón",
+    "overall": 67,
+    "potential": 70,
+    "position": "CDM, CM",
+    "age": 26,
+    "team": "Colo-Colo"
+  },
+  {
+    "name": "J. Villagra",
+    "overall": 67,
+    "potential": 75,
+    "position": "CB",
+    "age": 24,
+    "team": "Colo-Colo"
+  },
+  {
+    "name": "A. Martínez",
+    "overall": 67,
+    "potential": 67,
+    "position": "CM, CDM",
+    "age": 31,
+    "team": "CD Palestino"
+  },
+  {
+    "name": "C. Candero",
+    "overall": 67,
+    "potential": 67,
+    "position": "GK",
+    "age": 33,
+    "team": "Deportes Iquique"
+  },
+  {
+    "name": "B. Cerezo",
+    "overall": 66,
+    "potential": 66,
+    "position": "CB, LB",
+    "age": 30,
+    "team": "Universidad Católica"
+  },
+  {
+    "name": "E. Albavera",
+    "overall": 66,
+    "potential": 66,
+    "position": "CM, CDM, CAM",
+    "age": 33,
+    "team": "Unión Española"
+  },
+  {
+    "name": "N. Scatopano",
+    "overall": 66,
+    "potential": 66,
+    "position": "ST",
+    "age": 33,
+    "team": "Unión Española"
+  },
+  {
+    "name": "A. Mercelán",
+    "overall": 66,
+    "potential": 66,
+    "position": "RB, RM",
+    "age": 29,
+    "team": "Unión Española"
+  },
+  {
+    "name": "B. Yesib",
+    "overall": 66,
+    "potential": 66,
+    "position": "CDM, CB, CM",
+    "age": 29,
+    "team": "Deportes Iquique"
+  },
+  {
+    "name": "J. Ureyano",
+    "overall": 66,
+    "potential": 66,
+    "position": "ST, CAM",
+    "age": 29,
+    "team": "Deportes Iquique"
+  },
+  {
+    "name": "G. Carreonal",
+    "overall": 66,
+    "potential": 66,
+    "position": "CB",
+    "age": 25,
+    "team": "Deportes Iquique"
+  },
+  {
+    "name": "N. Fernández",
+    "overall": 65,
+    "potential": 68,
+    "position": "RB, RM",
+    "age": 25,
+    "team": "Universidad de Chile"
+  },
+  {
+    "name": "T. Asta-Buruaga",
+    "overall": 65,
+    "potential": 65,
+    "position": "CB, RB",
+    "age": 28,
+    "team": "Universidad Católica"
+  },
+  {
+    "name": "E. Acorada",
+    "overall": 65,
+    "potential": 65,
+    "position": "CB",
+    "age": 29,
+    "team": "Unión Española"
+  },
+  {
+    "name": "E. Merraño",
+    "overall": 65,
+    "potential": 65,
+    "position": "CAM, CM, LM",
+    "age": 29,
+    "team": "Unión Española"
+  },
+  {
+    "name": "M. Bolados",
+    "overall": 65,
+    "potential": 65,
+    "position": "RW, ST, RM",
+    "age": 29,
+    "team": "Colo-Colo"
+  },
+  {
+    "name": "R. Fernández",
+    "overall": 65,
+    "potential": 65,
+    "position": "ST",
+    "age": 34,
+    "team": "CD Palestino"
+  },
+  {
+    "name": "J. Bizama",
+    "overall": 65,
+    "potential": 65,
+    "position": "RB, CB",
+    "age": 31,
+    "team": "CD Palestino"
+  },
+  {
+    "name": "A. Ceza",
+    "overall": 65,
+    "potential": 75,
+    "position": "CB",
+    "age": 22,
+    "team": "CD Palestino"
+  },
+  {
+    "name": "S. Cardenia",
+    "overall": 65,
+    "potential": 65,
+    "position": "RM, LM, CAM, RW",
+    "age": 33,
+    "team": "Deportes Iquique"
+  },
+  {
+    "name": "S. Higuerrez",
+    "overall": 64,
+    "potential": 64,
+    "position": "ST",
+    "age": 33,
+    "team": "Universidad de Chile"
+  },
+  {
+    "name": "F. Salomoni",
+    "overall": 64,
+    "potential": 73,
+    "position": "LB, LM",
+    "age": 22,
+    "team": "Universidad de Chile"
+  },
+  {
+    "name": "A. Farías",
+    "overall": 64,
+    "potential": 64,
+    "position": "CM, CDM",
+    "age": 37,
+    "team": "Universidad Católica"
+  },
+  {
+    "name": "J. Rossel",
+    "overall": 64,
+    "potential": 78,
+    "position": "CAM, LM, ST, CM",
+    "age": 20,
+    "team": "Universidad Católica"
+  },
+  {
+    "name": "L. Carteldo",
+    "overall": 64,
+    "potential": 64,
+    "position": "RB, CB",
+    "age": 29,
+    "team": "Unión Española"
+  },
+  {
+    "name": "J. Arandero",
+    "overall": 64,
+    "potential": 64,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Unión Española"
+  },
+  {
+    "name": "F. Marchant",
+    "overall": 64,
+    "potential": 79,
+    "position": "RW, CAM, RM",
+    "age": 18,
+    "team": "Colo-Colo"
+  },
+  {
+    "name": "F. Grondoña",
+    "overall": 64,
+    "potential": 64,
+    "position": "LW, LM",
+    "age": 33,
+    "team": "Deportes Iquique"
+  },
+  {
+    "name": "I. Vásquez",
+    "overall": 63,
+    "potential": 77,
+    "position": "LW, CAM, LM",
+    "age": 19,
+    "team": "Universidad de Chile"
+  },
+  {
+    "name": "A. Desenda",
+    "overall": 63,
+    "potential": 63,
+    "position": "LM, RM, LW",
+    "age": 33,
+    "team": "Universidad de Chile"
+  },
+  {
+    "name": "I. Tapia",
+    "overall": 63,
+    "potential": 64,
+    "position": "CB, RB, LB",
+    "age": 26,
+    "team": "Universidad de Chile"
+  },
+  {
+    "name": "J. Ortiz",
+    "overall": 63,
+    "potential": 75,
+    "position": "RM, RW",
+    "age": 21,
+    "team": "Universidad Católica"
+  },
+  {
+    "name": "H. Gairamos",
+    "overall": 63,
+    "potential": 63,
+    "position": "RM, RW",
+    "age": 29,
+    "team": "Unión Española"
+  },
+  {
+    "name": "J. Baiva",
+    "overall": 63,
+    "potential": 63,
+    "position": "CB",
+    "age": 29,
+    "team": "Unión Española"
+  },
+  {
+    "name": "L. Hernández",
+    "overall": 63,
+    "potential": 73,
+    "position": "LW, LM",
+    "age": 20,
+    "team": "Colo-Colo"
+  },
+  {
+    "name": "I. Garguez",
+    "overall": 63,
+    "potential": 75,
+    "position": "RB, CB",
+    "age": 20,
+    "team": "CD Palestino"
+  },
+  {
+    "name": "G. Tapia",
+    "overall": 63,
+    "potential": 63,
+    "position": "ST",
+    "age": 29,
+    "team": "CD Palestino"
+  },
+  {
+    "name": "J. León",
+    "overall": 63,
+    "potential": 68,
+    "position": "LB",
+    "age": 25,
+    "team": "CD Palestino"
+  },
+  {
+    "name": "G. Fuengos",
+    "overall": 63,
+    "potential": 63,
+    "position": "CAM, CM",
+    "age": 33,
+    "team": "Deportes Iquique"
+  },
+  {
+    "name": "I. Pérez",
+    "overall": 62,
+    "potential": 72,
+    "position": "CB",
+    "age": 19,
+    "team": "Universidad Católica"
+  },
+  {
+    "name": "D. Melo",
+    "overall": 62,
+    "potential": 62,
+    "position": "GK",
+    "age": 31,
+    "team": "Universidad Católica"
+  },
+  {
+    "name": "B. González",
+    "overall": 62,
+    "potential": 73,
+    "position": "CM, CDM",
+    "age": 22,
+    "team": "Universidad Católica"
+  },
+  {
+    "name": "D. Corral",
+    "overall": 62,
+    "potential": 76,
+    "position": "LM, RM, LW",
+    "age": 20,
+    "team": "Universidad Católica"
+  },
+  {
+    "name": "N. Aguileda",
+    "overall": 62,
+    "potential": 62,
+    "position": "CB",
+    "age": 33,
+    "team": "Unión Española"
+  },
+  {
+    "name": "F. Soldivia",
+    "overall": 62,
+    "potential": 62,
+    "position": "CAM, CM",
+    "age": 25,
+    "team": "Unión Española"
+  },
+  {
+    "name": "C. Riquelme",
+    "overall": 62,
+    "potential": 73,
+    "position": "LB, LM",
+    "age": 21,
+    "team": "Colo-Colo"
+  },
+  {
+    "name": "V. Espinoza",
+    "overall": 62,
+    "potential": 73,
+    "position": "RB",
+    "age": 21,
+    "team": "CD Palestino"
+  },
+  {
+    "name": "B. Deroz",
+    "overall": 62,
+    "potential": 62,
+    "position": "CB",
+    "age": 29,
+    "team": "Deportes Iquique"
+  },
+  {
+    "name": "S. Arancibia",
+    "overall": 61,
+    "potential": 79,
+    "position": "RB",
+    "age": 19,
+    "team": "Universidad Católica"
+  },
+  {
+    "name": "E. Goldeiro",
+    "overall": 61,
+    "potential": 61,
+    "position": "CAM, LM, CM",
+    "age": 25,
+    "team": "Unión Española"
+  },
+  {
+    "name": "B. Gutiérrez",
+    "overall": 61,
+    "potential": 64,
+    "position": "RB",
+    "age": 23,
+    "team": "Colo-Colo"
+  },
+  {
+    "name": "N. Meza",
+    "overall": 61,
+    "potential": 70,
+    "position": "CM, CDM",
+    "age": 23,
+    "team": "CD Palestino"
+  },
+  {
+    "name": "N. Suárez",
+    "overall": 60,
+    "potential": 73,
+    "position": "CB, LB",
+    "age": 19,
+    "team": "Colo-Colo"
+  },
+  {
+    "name": "E. Villanueva",
+    "overall": 60,
+    "potential": 72,
+    "position": "GK",
+    "age": 20,
+    "team": "Colo-Colo"
+  },
+  {
+    "name": "Y. Sanpian",
+    "overall": 60,
+    "potential": 60,
+    "position": "GK",
+    "age": 37,
+    "team": "Deportes Iquique"
+  },
+  {
+    "name": "G. Naballoz",
+    "overall": 60,
+    "potential": 60,
+    "position": "CB",
+    "age": 25,
+    "team": "Deportes Iquique"
+  },
+  {
+    "name": "G. Maureira",
+    "overall": 59,
+    "potential": 73,
+    "position": "GK",
+    "age": 18,
+    "team": "Colo-Colo"
+  },
+  {
+    "name": "V. Cárcamo",
+    "overall": 58,
+    "potential": 71,
+    "position": "CAM, RW, LW, CM",
+    "age": 19,
+    "team": "Universidad Católica"
+  },
+  {
+    "name": "N. Letelier",
+    "overall": 58,
+    "potential": 71,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Universidad Católica"
+  },
+  {
+    "name": "F. Montes",
+    "overall": 58,
+    "potential": 67,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "CD Palestino"
+  },
+  {
+    "name": "B. Istúriz",
+    "overall": 58,
+    "potential": 58,
+    "position": "GK",
+    "age": 25,
+    "team": "CD Palestino"
+  },
+  {
+    "name": "D. Salgado",
+    "overall": 58,
+    "potential": 66,
+    "position": "RM, ST, RW",
+    "age": 21,
+    "team": "CD Palestino"
+  },
+  {
+    "name": "A. Cerda",
+    "overall": 57,
+    "potential": 74,
+    "position": "ST",
+    "age": 19,
+    "team": "Universidad Católica"
+  },
+  {
+    "name": "F. Valdés",
+    "overall": 56,
+    "potential": 70,
+    "position": "GK",
+    "age": 19,
+    "team": "Universidad Católica"
+  },
+  {
+    "name": "J. Salas",
+    "overall": 56,
+    "potential": 72,
+    "position": "LB",
+    "age": 17,
+    "team": "Universidad Católica"
+  },
+  {
+    "name": "I. Alegría",
+    "overall": 55,
+    "potential": 78,
+    "position": "LW, LM",
+    "age": 17,
+    "team": "CD Palestino"
+  },
+  {
+    "name": "B. Araneda",
+    "overall": 54,
+    "potential": 68,
+    "position": "LM, LW",
+    "age": 20,
+    "team": "CD Palestino"
+  }
+]

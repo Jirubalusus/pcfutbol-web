@@ -90,6 +90,66 @@ export const LEAGUE_TIERS = {
 };
 
 /**
+ * Temporadas mínimas extra que necesita un equipo para GANAR la Champions/Libertadores,
+ * respecto a un equipo que ya está en ella (ej: Madrid = 0).
+ * 
+ * Lógica:
+ * - Ya compites en Champions/Libertadores → 0 (nunca aplica en contrarreloj)
+ * - Liga top pero necesitas clasificarte (top 4) → 1
+ * - 2ª división: ascender + clasificarte → 2
+ * - 3ª división: ascender + ascender + clasificarte → 3
+ * - 4ª división: ascender×3 + clasificarte → 4
+ * 
+ * Score ranking = temporadas_jugadas - bonus
+ */
+export const PROMOTIONS_TO_CHAMPIONS = {
+  // España
+  laliga: 1,          // Necesitas clasificarte (top 4)
+  segunda: 2,         // Ascender + clasificarte
+  primeraRFEF: 3,     // Ascender + ascender + clasificarte
+  segundaRFEF: 4,     // Ascender×3 + clasificarte
+  // Inglaterra
+  premierLeague: 1,
+  championship: 2,
+  // Italia
+  serieA: 1,
+  serieB: 2,
+  // Alemania
+  bundesliga: 1,
+  bundesliga2: 2,
+  // Francia
+  ligue1: 1,
+  ligue2: 2,
+  // Ligas europeas top (primera división, necesitan clasificarse)
+  eredivisie: 1,
+  primeiraLiga: 1,
+  belgianPro: 1,
+  superLig: 1,
+  scottishPrem: 1,
+  swissSuperLeague: 1,
+  austrianBundesliga: 1,
+  greekSuperLeague: 1,
+  danishSuperliga: 1,
+  croatianLeague: 1,
+  czechLeague: 1,
+  // Sudamérica (primera división, necesitan clasificarse a Libertadores)
+  argentinaPrimera: 1,
+  brasileiraoA: 1,
+  colombiaPrimera: 1,
+  chilePrimera: 1,
+  uruguayPrimera: 1,
+  ecuadorLigaPro: 1,
+  paraguayPrimera: 1,
+  peruLiga1: 1,
+  boliviaPrimera: 1,
+  venezuelaPrimera: 1,
+};
+
+export function getPromotionsToChampions(leagueId) {
+  return PROMOTIONS_TO_CHAMPIONS[leagueId] ?? 1;
+}
+
+/**
  * Devuelve el tier (1-5) de una liga.
  * Default: Tier 3 (conservador para ligas desconocidas)
  * 
@@ -228,4 +288,51 @@ export function getPositionPerformanceMultiplier(player, stats) {
   }
   
   return 1.0;
+}
+
+// ============================================================
+// LEAGUE DISPLAY NAMES — Nombre legible para cada leagueId
+// ============================================================
+export const LEAGUE_NAMES = {
+  laliga: 'LaLiga',
+  segunda: 'Segunda División',
+  primeraRFEF: 'Primera RFEF',
+  segundaRFEF: 'Segunda RFEF',
+  premierLeague: 'Premier League',
+  championship: 'Championship',
+  serieA: 'Serie A',
+  serieB: 'Serie B',
+  bundesliga: 'Bundesliga',
+  bundesliga2: '2. Bundesliga',
+  ligue1: 'Ligue 1',
+  ligue2: 'Ligue 2',
+  eredivisie: 'Eredivisie',
+  primeiraLiga: 'Liga Portugal',
+  belgianPro: 'Pro League',
+  superLig: 'Süper Lig',
+  scottishPrem: 'Scottish Premiership',
+  swissSuperLeague: 'Super League',
+  austrianBundesliga: 'Bundesliga (AT)',
+  greekSuperLeague: 'Super League (GR)',
+  danishSuperliga: 'Superligaen',
+  croatianLeague: 'HNL',
+  czechLeague: 'Fortuna Liga',
+  argentinaPrimera: 'Liga Profesional',
+  brasileiraoA: 'Brasileirão',
+  colombiaPrimera: 'Liga BetPlay',
+  chilePrimera: 'Primera División (CL)',
+  uruguayPrimera: 'Primera División (UY)',
+  ecuadorLigaPro: 'LigaPro',
+  paraguayPrimera: 'Primera División (PY)',
+  peruLiga1: 'Liga 1',
+  boliviaPrimera: 'División Profesional',
+  venezuelaPrimera: 'Liga FUTVE',
+  mls: 'MLS',
+  saudiProLeague: 'Saudi Pro League',
+  ligaMX: 'Liga MX',
+  jLeague: 'J1 League',
+};
+
+export function getLeagueName(leagueId) {
+  return LEAGUE_NAMES[leagueId] || leagueId || 'Liga';
 }

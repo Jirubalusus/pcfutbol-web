@@ -259,8 +259,10 @@ export function areRivals(teamNameA, teamNameB) {
  * @param {object} negotiationContext - { round, previousOffers: [amount...], previousCounter }
  * @returns {object} { accepted, rejected, counter, reason, minAcceptable, isRivalry, isFinalOffer, round }
  */
-export function evaluateClubOffer(offer, player, sellingTeam, buyingTeam, negotiationContext = null) {
-  const marketValue = calculateMarketValue(player);
+export function evaluateClubOffer(offer, player, sellingTeam, buyingTeam, negotiationContext = null, options = {}) {
+  // Use provided marketValue to stay consistent with the UI display.
+  // If not provided, calculate using seller's leagueId for correct tier scaling.
+  const marketValue = options.marketValue || calculateMarketValue(player, options.leagueId);
   const { askingMultiplier } = calculateTransferDifficulty(player, sellingTeam, buyingTeam);
   let askingPrice = Math.round(marketValue * askingMultiplier);
   

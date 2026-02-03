@@ -34,11 +34,11 @@ import {
 } from '../../game/seasonManager';
 import { qualifyTeamsForEurope, buildSeasonCalendar, buildEuropeanCalendar, remapFixturesForEuropean } from '../../game/europeanCompetitions';
 import { getCupTeams, generateCupBracket, CUP_CONFIGS } from '../../game/cupSystem';
-import { LEAGUE_CONFIG } from '../../game/multiLeagueEngine';
+import { LEAGUE_CONFIG, isAperturaClausura, simulateAperturaClausuraFinal } from '../../game/multiLeagueEngine';
 import { initializeEuropeanCompetitions } from '../../game/europeanSeason';
 import { isSouthAmericanLeague, qualifyTeamsForSouthAmerica, SA_LEAGUE_SLOTS } from '../../game/southAmericanCompetitions';
 import { initializeSACompetitions } from '../../game/southAmericanSeason';
-import { initializeLeague } from '../../game/leagueEngine';
+import { initializeLeague, simulateMatch } from '../../game/leagueEngine';
 import { initializeNewSeasonWithPromotions, getLeagueName, getLeagueTable } from '../../game/multiLeagueEngine';
 import { generateSeasonObjectives } from '../../game/objectivesEngine';
 import {
@@ -85,12 +85,29 @@ export default function SeasonEnd({ allTeams, onComplete }) {
   
   const anyPlayoff = playerInPlayoff || playerInRFEFPlayoff;
   
-  // Estado inicial: si el jugador está en playoff, empezar ahí
-  const [phase, setPhase] = useState(anyPlayoff ? 'playoff' : 'summary');
+  // Apertura-Clausura final detection
+  const pendingAPCLFinal = state.pendingAperturaClausuraFinal;
+  const resolvedAPCLFinal = state.aperturaClausuraFinal;
+  const hasAPCLFinal = !!pendingAPCLFinal;
+  
+  // Estado inicial: AP-CL final first, then playoff, then summary
+  const getInitialPhase = () => {
+    if (hasAPCLFinal) return 'apcl_final';
+    if (anyPlayoff) return 'playoff';
+    return 'summary';
+  };
+  
+  const [phase, setPhase] = useState(getInitialPhase);
   const [selectedPreseason, setSelectedPreseason] = useState(null);
   const [playoffBracket, setPlayoffBracket] = useState(null);
   const [playoffMatchResult, setPlayoffMatchResult] = useState(null);
   const [playerEliminated, setPlayerEliminated] = useState(false);
+  
+  // AP-CL Final state
+  const [apclLeg, setApclLeg] = useState(1); // 1 = leg 1, 2 = leg 2, 3 = done
+  const [apclLeg1Result, setApclLeg1Result] = useState(null);
+  const [apclLeg2Result, setApclLeg2Result] = useState(null);
+  const [apclFinalResult, setApclFinalResult] = useState(resolvedAPCLFinal || null);
   
   // RFEF playoff brackets (all groups, player group is interactive)
   const [rfefPlayoffBrackets, setRfefPlayoffBrackets] = useState(null);
@@ -242,6 +259,89 @@ export default function SeasonEnd({ allTeams, onComplete }) {
     // Si el jugador sigue vivo y queda la final, se queda en 'playoff'
   };
   
+  // ============================================================
+  // AP-CL FINAL: Interactive two-leg final
+  // ============================================================
+  const handlePlayAPCLLeg = () => {
+    if (!pendingAPCLFinal) return;
+    const config = LEAGUE_CONFIG[pendingAPCLFinal.leagueId || playerLeagueId];
+    if (!config) return;
+    const leagueTeams = config.getTeams();
+    if (!leagueTeams || leagueTeams.length === 0) return;
+
+    const aperturaTeam = leagueTeams.find(t => t.id === pendingAPCLFinal.aperturaChampion);
+    const clausuraTeam = leagueTeams.find(t => t.id === pendingAPCLFinal.clausuraChampion);
+    if (!aperturaTeam || !clausuraTeam) return;
+
+    if (apclLeg === 1) {
+      // Leg 1: Apertura at home vs Clausura away
+      const result = simulateMatch(
+        pendingAPCLFinal.aperturaChampion, pendingAPCLFinal.clausuraChampion,
+        aperturaTeam, clausuraTeam,
+        { importance: 'final', homeMorale: 85, awayMorale: 85 }
+      );
+      setApclLeg1Result({ homeScore: result.homeScore, awayScore: result.awayScore, events: result.events });
+      setApclLeg(2);
+    } else if (apclLeg === 2) {
+      // Leg 2: Clausura at home vs Apertura away
+      const result = simulateMatch(
+        pendingAPCLFinal.clausuraChampion, pendingAPCLFinal.aperturaChampion,
+        clausuraTeam, aperturaTeam,
+        { importance: 'final', homeMorale: 85, awayMorale: 85 }
+      );
+      setApclLeg2Result({ homeScore: result.homeScore, awayScore: result.awayScore, events: result.events });
+
+      // Compute aggregate
+      const leg1 = apclLeg1Result;
+      const leg2 = { homeScore: result.homeScore, awayScore: result.awayScore };
+      const aperturaTotal = leg1.homeScore + leg2.awayScore;
+      const clausuraTotal = leg1.awayScore + leg2.homeScore;
+      const aperturaAwayGoals = leg2.awayScore;
+      const clausuraAwayGoals = leg1.awayScore;
+
+      let winner, winReason;
+      if (aperturaTotal > clausuraTotal) {
+        winner = pendingAPCLFinal.aperturaChampion; winReason = 'aggregate';
+      } else if (clausuraTotal > aperturaTotal) {
+        winner = pendingAPCLFinal.clausuraChampion; winReason = 'aggregate';
+      } else if (aperturaAwayGoals > clausuraAwayGoals) {
+        winner = pendingAPCLFinal.aperturaChampion; winReason = 'awayGoals';
+      } else if (clausuraAwayGoals > aperturaAwayGoals) {
+        winner = pendingAPCLFinal.clausuraChampion; winReason = 'awayGoals';
+      } else {
+        winner = pendingAPCLFinal.clausuraChampion; winReason = 'clausuraAdvantage';
+      }
+
+      const finalRes = {
+        aperturaChampion: pendingAPCLFinal.aperturaChampion,
+        aperturaChampionName: pendingAPCLFinal.aperturaChampionName,
+        clausuraChampion: pendingAPCLFinal.clausuraChampion,
+        clausuraChampionName: pendingAPCLFinal.clausuraChampionName,
+        leg1: { home: pendingAPCLFinal.aperturaChampion, away: pendingAPCLFinal.clausuraChampion, homeScore: leg1.homeScore, awayScore: leg1.awayScore },
+        leg2: { home: pendingAPCLFinal.clausuraChampion, away: pendingAPCLFinal.aperturaChampion, homeScore: leg2.homeScore, awayScore: leg2.awayScore },
+        aggregate: { apertura: aperturaTotal, clausura: clausuraTotal },
+        awayGoals: { apertura: aperturaAwayGoals, clausura: clausuraAwayGoals },
+        winner,
+        winnerName: winner === pendingAPCLFinal.aperturaChampion
+          ? pendingAPCLFinal.aperturaChampionName
+          : pendingAPCLFinal.clausuraChampionName,
+        winReason,
+        hadFinal: true
+      };
+      setApclFinalResult(finalRes);
+      setApclLeg(3);
+
+      // Dispatch to store in state
+      dispatch({ type: 'COMPLETE_APCL_FINAL', payload: finalRes });
+    }
+  };
+
+  const handleAPCLContinue = () => {
+    if (apclLeg === 3 || apclFinalResult) {
+      setPhase(anyPlayoff ? 'playoff' : 'summary');
+    }
+  };
+
   const handleConfirm = () => {
     if (!selectedPreseason) return;
     
@@ -590,6 +690,114 @@ export default function SeasonEnd({ allTeams, onComplete }) {
     onComplete();
   };
   
+  // === FASE FINAL APERTURA vs CLAUSURA ===
+  if (phase === 'apcl_final' && pendingAPCLFinal) {
+    const winReasonLabel = (reason) => {
+      if (reason === 'aggregate') return 'por resultado global';
+      if (reason === 'awayGoals') return 'por goles de visitante';
+      if (reason === 'clausuraAdvantage') return 'por ventaja deportiva (campeón del Clausura)';
+      if (reason === 'sameChampion') return 'campeón de ambos torneos';
+      return '';
+    };
+    const playerIsApertura = state.teamId === pendingAPCLFinal.aperturaChampion;
+    const playerIsClausura = state.teamId === pendingAPCLFinal.clausuraChampion;
+
+    return (
+      <div className="season-end">
+        <div className="season-end__modal">
+          <div className="modal-header">
+            <Trophy size={32} className="header-icon playoff-icon" />
+            <div>
+              <h1>Final {pendingAPCLFinal.leagueName || 'Liga'}</h1>
+              <p>Apertura vs Clausura — {apclLeg <= 2 ? (apclLeg === 1 ? 'Ida' : 'Vuelta') : 'Resultado'}</p>
+            </div>
+          </div>
+
+          {/* Bracket visual */}
+          <div className="playoff-bracket">
+            <h3><ClipboardList size={14} /> Campeón Apertura vs Campeón Clausura</h3>
+            <div className="bracket-matches">
+              {/* Leg 1 */}
+              <div className={`bracket-match ${apclLeg1Result ? 'played' : ''}`}>
+                <span className="bracket-label">Ida</span>
+                <div className="bracket-teams">
+                  <span className={`team ${playerIsApertura ? 'player-team' : ''}`}>
+                    {pendingAPCLFinal.aperturaChampionName} <small>(Apertura)</small>
+                  </span>
+                  {apclLeg1Result && (
+                    <span className="score">{apclLeg1Result.homeScore} - {apclLeg1Result.awayScore}</span>
+                  )}
+                  <span className={`team ${playerIsClausura ? 'player-team' : ''}`}>
+                    {pendingAPCLFinal.clausuraChampionName} <small>(Clausura)</small>
+                  </span>
+                </div>
+              </div>
+
+              {/* Leg 2 */}
+              <div className={`bracket-match ${apclLeg2Result ? 'played' : ''}`}>
+                <span className="bracket-label">Vuelta</span>
+                <div className="bracket-teams">
+                  <span className={`team ${playerIsClausura ? 'player-team' : ''}`}>
+                    {pendingAPCLFinal.clausuraChampionName} <small>(Clausura)</small>
+                  </span>
+                  {apclLeg2Result && (
+                    <span className="score">{apclLeg2Result.homeScore} - {apclLeg2Result.awayScore}</span>
+                  )}
+                  <span className={`team ${playerIsApertura ? 'player-team' : ''}`}>
+                    {pendingAPCLFinal.aperturaChampionName} <small>(Apertura)</small>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Final result */}
+          {apclFinalResult && (
+            <div className={`playoff-result ${apclFinalResult.winner === state.teamId ? 'victory' : 'defeat'}`}>
+              <h3>
+                {apclFinalResult.winner === state.teamId
+                  ? <><Sparkles size={14} /> ¡CAMPEÓN!</>
+                  : 'Subcampeón'}
+              </h3>
+              <p className="result-score">
+                Global: {apclFinalResult.aperturaChampionName} {apclFinalResult.aggregate.apertura} - {apclFinalResult.aggregate.clausura} {apclFinalResult.clausuraChampionName}
+              </p>
+              <p className="result-extra">{winReasonLabel(apclFinalResult.winReason)}</p>
+              {apclFinalResult.winner === state.teamId && (
+                <p className="promotion-msg"><Trophy size={14} /> ¡{state.team?.name} es CAMPEÓN de la {pendingAPCLFinal.leagueName}!</p>
+              )}
+              <button className="btn-continue" onClick={handleAPCLContinue}>
+                Continuar <ChevronRight size={20} />
+              </button>
+            </div>
+          )}
+
+          {/* Play next leg */}
+          {!apclFinalResult && (
+            <div className="playoff-next-match">
+              <h3><Zap size={14} /> {apclLeg === 1 ? 'Partido de ida' : 'Partido de vuelta'}</h3>
+              <p className="next-match-info">
+                {apclLeg === 1
+                  ? <><strong>{pendingAPCLFinal.aperturaChampionName}</strong> <small>(Local)</small> vs <strong>{pendingAPCLFinal.clausuraChampionName}</strong></>
+                  : <><strong>{pendingAPCLFinal.clausuraChampionName}</strong> <small>(Local)</small> vs <strong>{pendingAPCLFinal.aperturaChampionName}</strong></>
+                }
+              </p>
+              <p className="next-match-venue">
+                {(apclLeg === 1 && playerIsApertura) || (apclLeg === 2 && playerIsClausura)
+                  ? <><Home size={12} /> Jugamos en casa</>
+                  : <><Plane size={12} /> Jugamos fuera</>
+                }
+              </p>
+              <button className="btn-continue btn-play-match" onClick={handlePlayAPCLLeg}>
+                <FootballIcon size={14} /> Jugar partido <ChevronRight size={20} />
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
   // === FASE PLAYOFF (si el jugador está en playoff de Segunda) ===
   if (phase === 'playoff' && playoffBracket) {
     const nextMatch = getNextPlayoffMatch(state.teamId, playoffBracket);
@@ -1073,6 +1281,41 @@ export default function SeasonEnd({ allTeams, onComplete }) {
             return null;
           })()}
           
+          {/* Resultado Final Apertura vs Clausura */}
+          {(apclFinalResult || resolvedAPCLFinal) && (() => {
+            const finalData = apclFinalResult || resolvedAPCLFinal;
+            const playerWon = finalData.winner === state.teamId;
+            const winReasonText = finalData.winReason === 'aggregate' ? 'por resultado global'
+              : finalData.winReason === 'awayGoals' ? 'por goles de visitante'
+              : finalData.winReason === 'clausuraAdvantage' ? 'por ventaja deportiva'
+              : finalData.winReason === 'sameChampion' ? '(campeón de ambos torneos)' : '';
+
+            return (
+              <div className={`competition-result ${playerWon ? 'competition-result--champion' : ''}`}>
+                <Trophy size={24} className="result-icon" />
+                <div className="result-info">
+                  <h3>🏆 Final {LEAGUE_CONFIG[playerLeagueId]?.name || 'Liga'}</h3>
+                  {finalData.hadFinal ? (
+                    <>
+                      <p>
+                        {finalData.aperturaChampionName} <small>(Apertura)</small> vs {finalData.clausuraChampionName} <small>(Clausura)</small>
+                      </p>
+                      <p>
+                        Ida: {finalData.leg1?.homeScore}-{finalData.leg1?.awayScore} | Vuelta: {finalData.leg2?.homeScore}-{finalData.leg2?.awayScore}
+                      </p>
+                      <p>
+                        <strong>Campeón: {finalData.winnerName}</strong> {winReasonText}
+                      </p>
+                    </>
+                  ) : (
+                    <p><strong>{finalData.winnerName}</strong> gana Apertura y Clausura — campeón directo</p>
+                  )}
+                  {playerWon && <p>🏆 ¡Tu equipo es CAMPEÓN!</p>}
+                </div>
+              </div>
+            );
+          })()}
+
           {/* Ascenso por playoff */}
           {playerWonPlayoff && (
             <div className="european-qualification promotion-celebration">

@@ -26,6 +26,22 @@
       svg { color: #0a84ff; }
     }
 
+    .header-badges {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .league-badge {
+      padding: 8px 16px;
+      background: rgba(48, 209, 88, 0.1);
+      border: 1px solid rgba(48, 209, 88, 0.3);
+      border-radius: 20px;
+      color: #30d158;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
     .season-badge {
       padding: 8px 16px;
       background: rgba(10, 132, 255, 0.1);

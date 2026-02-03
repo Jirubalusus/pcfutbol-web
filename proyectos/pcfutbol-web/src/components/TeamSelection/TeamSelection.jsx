@@ -3,6 +3,7 @@ import { useGame } from '../../context/GameContext';
 import { useAuth } from '../../context/AuthContext';
 import { saveGameToSlot } from '../../firebase/savesService';
 import { getLeagueTier } from '../../game/leagueTiers';
+import { posES } from '../../game/positionNames';
 import { 
   getLaLigaTeams,
   getSegundaTeams,
@@ -1122,7 +1123,7 @@ export default function TeamSelection() {
                           .slice(0, 5)
                           .map((player, idx) => (
                             <div key={idx} className="player-row">
-                              <span className="pos">{player.position}</span>
+                              <span className="pos">{posES(player.position)}</span>
                               <span className="name">{player.name}</span>
                               <span className="ovr">{player.overall}</span>
                             </div>

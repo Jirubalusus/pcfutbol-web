@@ -205,12 +205,31 @@
       .league-name { display: block; color: #667788; font-size: 0.75rem; }
     }
 
-    .col-seasons {
+    .col-score {
       text-align: center;
-      .seasons-value {
+      .score-value {
         font-size: 1.2rem;
         font-weight: 800;
         color: #FFD700;
+      }
+      .score-bonus {
+        display: inline-block;
+        margin-left: 0.25rem;
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: #2d8a4e;
+        background: rgba(45, 138, 78, 0.15);
+        padding: 0.1rem 0.3rem;
+        border-radius: 4px;
+      }
+    }
+
+    .col-seasons {
+      text-align: center;
+      .seasons-value {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #8899aa;
       }
     }
 

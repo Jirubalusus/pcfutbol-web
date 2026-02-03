@@ -1,0 +1,5546 @@
+[
+  {
+    "name": "L. Messi",
+    "overall": 86,
+    "potential": 86,
+    "position": "CAM, ST, RW",
+    "age": 38,
+    "team": "Inter Miami"
+  },
+  {
+    "name": "Son Heung Min",
+    "overall": 84,
+    "potential": 84,
+    "position": "ST, LW, CAM",
+    "age": 32,
+    "team": "Los Angeles FC"
+  },
+  {
+    "name": "R. De Paul",
+    "overall": 83,
+    "potential": 83,
+    "position": "CM, CDM, RM, CAM",
+    "age": 31,
+    "team": "Inter Miami"
+  },
+  {
+    "name": "T. Müller",
+    "overall": 80,
+    "potential": 80,
+    "position": "CAM, ST, RM",
+    "age": 35,
+    "team": "Vancouver Whitecaps FC"
+  },
+  {
+    "name": "D. Bouanga",
+    "overall": 80,
+    "potential": 80,
+    "position": "LW, ST, LM",
+    "age": 30,
+    "team": "Los Angeles FC"
+  },
+  {
+    "name": "Carles Gil",
+    "overall": 79,
+    "potential": 79,
+    "position": "CAM, CM",
+    "age": 32,
+    "team": "New England Revolution"
+  },
+  {
+    "name": "Riqui Puig",
+    "overall": 79,
+    "potential": 80,
+    "position": "CM, CAM",
+    "age": 25,
+    "team": "LA Galaxy"
+  },
+  {
+    "name": "L. Suárez",
+    "overall": 79,
+    "potential": 79,
+    "position": "ST, CAM",
+    "age": 38,
+    "team": "Inter Miami"
+  },
+  {
+    "name": "Evander",
+    "overall": 79,
+    "potential": 80,
+    "position": "CAM, CM, ST",
+    "age": 27,
+    "team": "FC Cincinnati"
+  },
+  {
+    "name": "H. Mukhtar",
+    "overall": 79,
+    "potential": 79,
+    "position": "CAM, ST",
+    "age": 30,
+    "team": "Nashville SC"
+  },
+  {
+    "name": "E. Forsberg",
+    "overall": 78,
+    "potential": 78,
+    "position": "CAM, LM, CM",
+    "age": 33,
+    "team": "New York Red Bulls"
+  },
+  {
+    "name": "M. Reus",
+    "overall": 78,
+    "potential": 78,
+    "position": "CAM, CM",
+    "age": 36,
+    "team": "LA Galaxy"
+  },
+  {
+    "name": "A. Miranchuk",
+    "overall": 78,
+    "potential": 78,
+    "position": "CAM, CM, LW",
+    "age": 29,
+    "team": "Atlanta United"
+  },
+  {
+    "name": "W. Zaha",
+    "overall": 78,
+    "potential": 78,
+    "position": "LM, LW, ST",
+    "age": 32,
+    "team": "Charlotte FC"
+  },
+  {
+    "name": "H. Lozano",
+    "overall": 78,
+    "potential": 78,
+    "position": "LW, RW, LM",
+    "age": 29,
+    "team": "San Diego FC"
+  },
+  {
+    "name": "A. Dreyer",
+    "overall": 78,
+    "potential": 78,
+    "position": "RW, LW, RM",
+    "age": 27,
+    "team": "San Diego FC"
+  },
+  {
+    "name": "H. Cuypers",
+    "overall": 77,
+    "potential": 77,
+    "position": "ST",
+    "age": 28,
+    "team": "Chicago Fire"
+  },
+  {
+    "name": "R. Gauld",
+    "overall": 77,
+    "potential": 77,
+    "position": "LW, ST, RW, LM",
+    "age": 29,
+    "team": "Vancouver Whitecaps FC"
+  },
+  {
+    "name": "C. Arango",
+    "overall": 77,
+    "potential": 77,
+    "position": "ST, CAM, LW",
+    "age": 30,
+    "team": "San Jose Earthquakes"
+  },
+  {
+    "name": "Pep Biel",
+    "overall": 77,
+    "potential": 77,
+    "position": "CAM, ST, RM, CM",
+    "age": 28,
+    "team": "Charlotte FC"
+  },
+  {
+    "name": "P. Zinckernagel",
+    "overall": 76,
+    "potential": 76,
+    "position": "RW, RM, LW",
+    "age": 30,
+    "team": "Chicago Fire"
+  },
+  {
+    "name": "J. Bamba",
+    "overall": 76,
+    "potential": 76,
+    "position": "LW, LM, CAM",
+    "age": 29,
+    "team": "Chicago Fire"
+  },
+  {
+    "name": "P. Musa",
+    "overall": 76,
+    "potential": 77,
+    "position": "ST",
+    "age": 27,
+    "team": "FC Dallas"
+  },
+  {
+    "name": "J. Rodríguez",
+    "overall": 76,
+    "potential": 76,
+    "position": "LM, ST, LW",
+    "age": 31,
+    "team": "Portland Timbers"
+  },
+  {
+    "name": "M. Ojeda",
+    "overall": 76,
+    "potential": 77,
+    "position": "CAM, RM, LM, CM",
+    "age": 26,
+    "team": "Orlando City SC"
+  },
+  {
+    "name": "M. Almirón",
+    "overall": 76,
+    "potential": 76,
+    "position": "RW, RM, ST",
+    "age": 31,
+    "team": "Atlanta United"
+  },
+  {
+    "name": "R. Bürki",
+    "overall": 76,
+    "potential": 76,
+    "position": "GK",
+    "age": 34,
+    "team": "St. Louis CITY SC"
+  },
+  {
+    "name": "K. Denkey",
+    "overall": 76,
+    "potential": 80,
+    "position": "ST",
+    "age": 24,
+    "team": "FC Cincinnati"
+  },
+  {
+    "name": "K. Kahlina",
+    "overall": 76,
+    "potential": 76,
+    "position": "GK",
+    "age": 32,
+    "team": "Charlotte FC"
+  },
+  {
+    "name": "D. Rossi",
+    "overall": 75,
+    "potential": 76,
+    "position": "CAM, ST",
+    "age": 27,
+    "team": "Columbus Crew"
+  },
+  {
+    "name": "E. Choupo-Moting",
+    "overall": 75,
+    "potential": 75,
+    "position": "ST, CAM",
+    "age": 36,
+    "team": "New York Red Bulls"
+  },
+  {
+    "name": "P. Aaronson",
+    "overall": 75,
+    "potential": 82,
+    "position": "CM, CDM, CAM",
+    "age": 21,
+    "team": "Colorado Rapids"
+  },
+  {
+    "name": "D. Joveljić",
+    "overall": 75,
+    "potential": 78,
+    "position": "ST",
+    "age": 25,
+    "team": "Sporting Kansas City"
+  },
+  {
+    "name": "Gabriel Pec",
+    "overall": 75,
+    "potential": 81,
+    "position": "RM, RW, LW",
+    "age": 24,
+    "team": "LA Galaxy"
+  },
+  {
+    "name": "J. Paintsil",
+    "overall": 75,
+    "potential": 75,
+    "position": "LM, RM, LW",
+    "age": 27,
+    "team": "LA Galaxy"
+  },
+  {
+    "name": "B. White",
+    "overall": 75,
+    "potential": 75,
+    "position": "ST",
+    "age": 29,
+    "team": "Vancouver Whitecaps FC"
+  },
+  {
+    "name": "J. Pereyra",
+    "overall": 75,
+    "potential": 76,
+    "position": "CM, LM, CAM",
+    "age": 26,
+    "team": "Minnesota United FC"
+  },
+  {
+    "name": "A. Rusnák",
+    "overall": 75,
+    "potential": 75,
+    "position": "CAM, CDM, CM",
+    "age": 30,
+    "team": "Seattle Sounders FC"
+  },
+  {
+    "name": "D. Mihailovic",
+    "overall": 75,
+    "potential": 76,
+    "position": "CAM, CM",
+    "age": 26,
+    "team": "Toronto FC"
+  },
+  {
+    "name": "N. Fernández",
+    "overall": 75,
+    "potential": 76,
+    "position": "RM, CAM, ST, RW",
+    "age": 25,
+    "team": "New York City FC"
+  },
+  {
+    "name": "H. Lloris",
+    "overall": 75,
+    "potential": 75,
+    "position": "GK",
+    "age": 38,
+    "team": "Los Angeles FC"
+  },
+  {
+    "name": "M. Hartel",
+    "overall": 75,
+    "potential": 75,
+    "position": "CAM, CM, LM",
+    "age": 29,
+    "team": "St. Louis CITY SC"
+  },
+  {
+    "name": "C. Espinoza",
+    "overall": 75,
+    "potential": 75,
+    "position": "RM, RW, CAM",
+    "age": 30,
+    "team": "Nashville SC"
+  },
+  {
+    "name": "D. Gazdag",
+    "overall": 74,
+    "potential": 74,
+    "position": "CAM, ST, CM",
+    "age": 29,
+    "team": "Columbus Crew"
+  },
+  {
+    "name": "M. Turner",
+    "overall": 74,
+    "potential": 74,
+    "position": "GK",
+    "age": 31,
+    "team": "New England Revolution"
+  },
+  {
+    "name": "Manu García",
+    "overall": 74,
+    "potential": 74,
+    "position": "CAM, CM, LM",
+    "age": 27,
+    "team": "Sporting Kansas City"
+  },
+  {
+    "name": "A. Cubas",
+    "overall": 74,
+    "potential": 74,
+    "position": "CDM, CM, CB",
+    "age": 29,
+    "team": "Vancouver Whitecaps FC"
+  },
+  {
+    "name": "Iván Jaime",
+    "overall": 74,
+    "potential": 77,
+    "position": "LM, CAM, RM, LW",
+    "age": 24,
+    "team": "CF Montréal"
+  },
+  {
+    "name": "David da Costa",
+    "overall": 74,
+    "potential": 77,
+    "position": "CAM, LW, CM",
+    "age": 24,
+    "team": "Portland Timbers"
+  },
+  {
+    "name": "Y. Gómez Andrade",
+    "overall": 74,
+    "potential": 74,
+    "position": "CB",
+    "age": 33,
+    "team": "Seattle Sounders FC"
+  },
+  {
+    "name": "C. Roldan",
+    "overall": 74,
+    "potential": 74,
+    "position": "CDM, RM, CM",
+    "age": 30,
+    "team": "Seattle Sounders FC"
+  },
+  {
+    "name": "P. De la Vega",
+    "overall": 74,
+    "potential": 77,
+    "position": "RM, RW, LW",
+    "age": 24,
+    "team": "Seattle Sounders FC"
+  },
+  {
+    "name": "A. Blake",
+    "overall": 74,
+    "potential": 74,
+    "position": "GK",
+    "age": 34,
+    "team": "Philadelphia Union"
+  },
+  {
+    "name": "E. Löwen",
+    "overall": 74,
+    "potential": 74,
+    "position": "CM, CDM, CAM",
+    "age": 28,
+    "team": "St. Louis CITY SC"
+  },
+  {
+    "name": "P. Bucha",
+    "overall": 74,
+    "potential": 75,
+    "position": "CM, CDM, CAM",
+    "age": 27,
+    "team": "FC Cincinnati"
+  },
+  {
+    "name": "M. Uzuni",
+    "overall": 74,
+    "potential": 74,
+    "position": "ST, LW, LM",
+    "age": 30,
+    "team": "Austin FC"
+  },
+  {
+    "name": "S. Surridge",
+    "overall": 74,
+    "potential": 75,
+    "position": "ST",
+    "age": 26,
+    "team": "Nashville SC"
+  },
+  {
+    "name": "M. Ingvartsen",
+    "overall": 74,
+    "potential": 74,
+    "position": "ST",
+    "age": 29,
+    "team": "San Diego FC"
+  },
+  {
+    "name": "T. Baribo",
+    "overall": 73,
+    "potential": 73,
+    "position": "ST",
+    "age": 27,
+    "team": "DC United"
+  },
+  {
+    "name": "R. Lod",
+    "overall": 73,
+    "potential": 73,
+    "position": "CM, CAM, RM",
+    "age": 32,
+    "team": "Chicago Fire"
+  },
+  {
+    "name": "E. Ponce",
+    "overall": 73,
+    "potential": 73,
+    "position": "ST",
+    "age": 28,
+    "team": "Houston Dynamo"
+  },
+  {
+    "name": "D. Samassékou",
+    "overall": 73,
+    "potential": 73,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Houston Dynamo"
+  },
+  {
+    "name": "Diogo Gonçalves",
+    "overall": 73,
+    "potential": 73,
+    "position": "LM, CM, CAM, LW",
+    "age": 28,
+    "team": "Real Salt Lake"
+  },
+  {
+    "name": "V. Olatunji",
+    "overall": 73,
+    "potential": 76,
+    "position": "ST",
+    "age": 25,
+    "team": "Real Salt Lake"
+  },
+  {
+    "name": "T. Chancalay",
+    "overall": 73,
+    "potential": 73,
+    "position": "LM, RM, LW",
+    "age": 26,
+    "team": "Minnesota United FC"
+  },
+  {
+    "name": "D. Fitz",
+    "overall": 73,
+    "potential": 76,
+    "position": "CAM, CM",
+    "age": 26,
+    "team": "Minnesota United FC"
+  },
+  {
+    "name": "W. Zimmerman",
+    "overall": 73,
+    "potential": 73,
+    "position": "CB",
+    "age": 32,
+    "team": "Toronto FC"
+  },
+  {
+    "name": "E. Atuesta",
+    "overall": 73,
+    "potential": 73,
+    "position": "CM, CDM",
+    "age": 28,
+    "team": "Orlando City SC"
+  },
+  {
+    "name": "A. Freeman",
+    "overall": 73,
+    "potential": 81,
+    "position": "RB, CM",
+    "age": 20,
+    "team": "Orlando City SC"
+  },
+  {
+    "name": "D. St. Clair",
+    "overall": 73,
+    "potential": 76,
+    "position": "GK",
+    "age": 28,
+    "team": "Inter Miami"
+  },
+  {
+    "name": "M. Miazga",
+    "overall": 73,
+    "potential": 73,
+    "position": "CB",
+    "age": 29,
+    "team": "FC Cincinnati"
+  },
+  {
+    "name": "M. Robinson",
+    "overall": 73,
+    "potential": 75,
+    "position": "CB",
+    "age": 28,
+    "team": "FC Cincinnati"
+  },
+  {
+    "name": "O. Nwobodo",
+    "overall": 73,
+    "potential": 73,
+    "position": "CM, CDM, CAM",
+    "age": 28,
+    "team": "FC Cincinnati"
+  },
+  {
+    "name": "M. Desler",
+    "overall": 73,
+    "potential": 73,
+    "position": "RB, RM",
+    "age": 30,
+    "team": "Austin FC"
+  },
+  {
+    "name": "A. Westwood",
+    "overall": 73,
+    "potential": 73,
+    "position": "CDM, CM",
+    "age": 35,
+    "team": "Charlotte FC"
+  },
+  {
+    "name": "L. Abada",
+    "overall": 73,
+    "potential": 78,
+    "position": "RM, RW, LM",
+    "age": 23,
+    "team": "Charlotte FC"
+  },
+  {
+    "name": "P. McNair",
+    "overall": 73,
+    "potential": 73,
+    "position": "CB",
+    "age": 30,
+    "team": "San Diego FC"
+  },
+  {
+    "name": "L. Morgan",
+    "overall": 73,
+    "potential": 73,
+    "position": "ST, LM, CAM",
+    "age": 28,
+    "team": "San Diego FC"
+  },
+  {
+    "name": "J. Tverskov",
+    "overall": 73,
+    "potential": 73,
+    "position": "CM, CDM",
+    "age": 32,
+    "team": "San Diego FC"
+  },
+  {
+    "name": "M. Arfsten",
+    "overall": 72,
+    "potential": 77,
+    "position": "LM, LB, RM, LW",
+    "age": 24,
+    "team": "Columbus Crew"
+  },
+  {
+    "name": "A. Yusuf",
+    "overall": 72,
+    "potential": 77,
+    "position": "CM, CDM, CAM",
+    "age": 24,
+    "team": "New England Revolution"
+  },
+  {
+    "name": "André Franco",
+    "overall": 72,
+    "potential": 72,
+    "position": "RM, CAM, CM, RW",
+    "age": 27,
+    "team": "Chicago Fire"
+  },
+  {
+    "name": "R. Holding",
+    "overall": 72,
+    "potential": 72,
+    "position": "CB",
+    "age": 29,
+    "team": "Colorado Rapids"
+  },
+  {
+    "name": "Z. Steffen",
+    "overall": 72,
+    "potential": 72,
+    "position": "GK",
+    "age": 30,
+    "team": "Colorado Rapids"
+  },
+  {
+    "name": "J. Glesnes",
+    "overall": 72,
+    "potential": 72,
+    "position": "CB",
+    "age": 31,
+    "team": "LA Galaxy"
+  },
+  {
+    "name": "J. McGlynn",
+    "overall": 72,
+    "potential": 82,
+    "position": "CM, RM, CDM",
+    "age": 21,
+    "team": "Houston Dynamo"
+  },
+  {
+    "name": "D. Luna",
+    "overall": 72,
+    "potential": 79,
+    "position": "LM, CAM, LW",
+    "age": 21,
+    "team": "Real Salt Lake"
+  },
+  {
+    "name": "J. Morris",
+    "overall": 72,
+    "potential": 72,
+    "position": "ST, LM, LW",
+    "age": 30,
+    "team": "Seattle Sounders FC"
+  },
+  {
+    "name": "J. Cifuentes",
+    "overall": 72,
+    "potential": 75,
+    "position": "CM, CDM",
+    "age": 26,
+    "team": "Toronto FC"
+  },
+  {
+    "name": "Daniel",
+    "overall": 72,
+    "potential": 72,
+    "position": "GK",
+    "age": 31,
+    "team": "San Jose Earthquakes"
+  },
+  {
+    "name": "M. Pašalić",
+    "overall": 72,
+    "potential": 75,
+    "position": "RM, RW, CAM",
+    "age": 24,
+    "team": "Orlando City SC"
+  },
+  {
+    "name": "M. Moralez",
+    "overall": 72,
+    "potential": 72,
+    "position": "CAM, CM, CDM",
+    "age": 38,
+    "team": "New York City FC"
+  },
+  {
+    "name": "H. Wolf",
+    "overall": 72,
+    "potential": 73,
+    "position": "RM, LM, RW",
+    "age": 26,
+    "team": "New York City FC"
+  },
+  {
+    "name": "A. Martínez",
+    "overall": 72,
+    "potential": 73,
+    "position": "ST",
+    "age": 26,
+    "team": "New York City FC"
+  },
+  {
+    "name": "E. Latte Lath",
+    "overall": 72,
+    "potential": 73,
+    "position": "ST",
+    "age": 26,
+    "team": "Atlanta United"
+  },
+  {
+    "name": "S. Lobjanidze",
+    "overall": 72,
+    "potential": 72,
+    "position": "RM, RW, LM",
+    "age": 30,
+    "team": "Atlanta United"
+  },
+  {
+    "name": "T. Allende",
+    "overall": 72,
+    "potential": 73,
+    "position": "RM, LM, ST, RW",
+    "age": 26,
+    "team": "Inter Miami"
+  },
+  {
+    "name": "M. Delgado",
+    "overall": 72,
+    "potential": 72,
+    "position": "CM, CDM, CAM",
+    "age": 30,
+    "team": "Los Angeles FC"
+  },
+  {
+    "name": "R. Hollingshead",
+    "overall": 72,
+    "potential": 72,
+    "position": "LB, RB, CM",
+    "age": 34,
+    "team": "Los Angeles FC"
+  },
+  {
+    "name": "Klauss",
+    "overall": 72,
+    "potential": 72,
+    "position": "ST",
+    "age": 28,
+    "team": "St. Louis CITY SC"
+  },
+  {
+    "name": "R. Celentano",
+    "overall": 72,
+    "potential": 78,
+    "position": "GK",
+    "age": 24,
+    "team": "FC Cincinnati"
+  },
+  {
+    "name": "B. Vazquez",
+    "overall": 72,
+    "potential": 73,
+    "position": "ST",
+    "age": 26,
+    "team": "Austin FC"
+  },
+  {
+    "name": "A. Nájar",
+    "overall": 72,
+    "potential": 72,
+    "position": "RB, RM, CB",
+    "age": 32,
+    "team": "Nashville SC"
+  },
+  {
+    "name": "T. Ream",
+    "overall": 72,
+    "potential": 72,
+    "position": "CB, LB, CDM",
+    "age": 37,
+    "team": "Charlotte FC"
+  },
+  {
+    "name": "L. de la Torre",
+    "overall": 72,
+    "potential": 73,
+    "position": "CM, CAM, LM",
+    "age": 27,
+    "team": "Charlotte FC"
+  },
+  {
+    "name": "S. Moreira",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB, RB, CM",
+    "age": 30,
+    "team": "Columbus Crew"
+  },
+  {
+    "name": "H. Picard",
+    "overall": 71,
+    "potential": 79,
+    "position": "LM, LW",
+    "age": 22,
+    "team": "Columbus Crew"
+  },
+  {
+    "name": "G. Berggren",
+    "overall": 71,
+    "potential": 71,
+    "position": "CM, CDM",
+    "age": 27,
+    "team": "New York Red Bulls"
+  },
+  {
+    "name": "L. Campana",
+    "overall": 71,
+    "potential": 76,
+    "position": "ST",
+    "age": 25,
+    "team": "New England Revolution"
+  },
+  {
+    "name": "L. Langoni",
+    "overall": 71,
+    "potential": 75,
+    "position": "RM, ST, RW",
+    "age": 23,
+    "team": "New England Revolution"
+  },
+  {
+    "name": "J. Elliott",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB",
+    "age": 29,
+    "team": "Chicago Fire"
+  },
+  {
+    "name": "R. Cannon",
+    "overall": 71,
+    "potential": 72,
+    "position": "RB, CB, RM",
+    "age": 27,
+    "team": "Colorado Rapids"
+  },
+  {
+    "name": "A. Manyoma",
+    "overall": 71,
+    "potential": 79,
+    "position": "RM, LM, RW",
+    "age": 22,
+    "team": "Colorado Rapids"
+  },
+  {
+    "name": "M. Paes",
+    "overall": 71,
+    "potential": 75,
+    "position": "GK",
+    "age": 27,
+    "team": "FC Dallas"
+  },
+  {
+    "name": "D. Sallói",
+    "overall": 71,
+    "potential": 71,
+    "position": "LW, LM",
+    "age": 28,
+    "team": "Sporting Kansas City"
+  },
+  {
+    "name": "M. Yamane",
+    "overall": 71,
+    "potential": 71,
+    "position": "RB, CM",
+    "age": 31,
+    "team": "LA Galaxy"
+  },
+  {
+    "name": "Antônio Carlos",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB",
+    "age": 32,
+    "team": "Houston Dynamo"
+  },
+  {
+    "name": "Artur",
+    "overall": 71,
+    "potential": 71,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Houston Dynamo"
+  },
+  {
+    "name": "O. Lingr",
+    "overall": 71,
+    "potential": 71,
+    "position": "LM, CAM, RM, LW",
+    "age": 26,
+    "team": "Houston Dynamo"
+  },
+  {
+    "name": "Y. Takaoka",
+    "overall": 71,
+    "potential": 71,
+    "position": "GK",
+    "age": 29,
+    "team": "Vancouver Whitecaps FC"
+  },
+  {
+    "name": "K. Cabrera",
+    "overall": 71,
+    "potential": 79,
+    "position": "CAM, LM, CM",
+    "age": 22,
+    "team": "Vancouver Whitecaps FC"
+  },
+  {
+    "name": "P. Ruiz",
+    "overall": 71,
+    "potential": 73,
+    "position": "CDM, CM, CB",
+    "age": 26,
+    "team": "Real Salt Lake"
+  },
+  {
+    "name": "M. Boxall",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB",
+    "age": 36,
+    "team": "Minnesota United FC"
+  },
+  {
+    "name": "J. Gressel",
+    "overall": 71,
+    "potential": 71,
+    "position": "RM, RB, CM, RW",
+    "age": 31,
+    "team": "Minnesota United FC"
+  },
+  {
+    "name": "K. Yeboah",
+    "overall": 71,
+    "potential": 75,
+    "position": "ST",
+    "age": 25,
+    "team": "Minnesota United FC"
+  },
+  {
+    "name": "B. Hlongwane",
+    "overall": 71,
+    "potential": 76,
+    "position": "RB, RM, RW, CM",
+    "age": 25,
+    "team": "Minnesota United FC"
+  },
+  {
+    "name": "K. Miller",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB",
+    "age": 28,
+    "team": "Portland Timbers"
+  },
+  {
+    "name": "Antony",
+    "overall": 71,
+    "potential": 75,
+    "position": "LM, RM, LW",
+    "age": 23,
+    "team": "Portland Timbers"
+  },
+  {
+    "name": "N. Tolo",
+    "overall": 71,
+    "potential": 71,
+    "position": "LB, CB, LM",
+    "age": 28,
+    "team": "Seattle Sounders FC"
+  },
+  {
+    "name": "J. Ferreira",
+    "overall": 71,
+    "potential": 75,
+    "position": "ST, CAM, RM",
+    "age": 24,
+    "team": "Seattle Sounders FC"
+  },
+  {
+    "name": "O. Vargas",
+    "overall": 71,
+    "potential": 83,
+    "position": "CDM, CM, RM, CB",
+    "age": 19,
+    "team": "Seattle Sounders FC"
+  },
+  {
+    "name": "J. Ragen",
+    "overall": 71,
+    "potential": 74,
+    "position": "CB",
+    "age": 26,
+    "team": "Seattle Sounders FC"
+  },
+  {
+    "name": "J. Osorio",
+    "overall": 71,
+    "potential": 71,
+    "position": "CM, CAM, CDM",
+    "age": 33,
+    "team": "Toronto FC"
+  },
+  {
+    "name": "R. Laryea",
+    "overall": 71,
+    "potential": 71,
+    "position": "RM, RB, LM",
+    "age": 30,
+    "team": "Toronto FC"
+  },
+  {
+    "name": "D. Jones",
+    "overall": 71,
+    "potential": 71,
+    "position": "LB, LM, RM",
+    "age": 28,
+    "team": "San Jose Earthquakes"
+  },
+  {
+    "name": "Q. Sullivan",
+    "overall": 71,
+    "potential": 80,
+    "position": "RM, ST, LM, RW",
+    "age": 21,
+    "team": "Philadelphia Union"
+  },
+  {
+    "name": "Adrián Marín",
+    "overall": 71,
+    "potential": 71,
+    "position": "LB, CB, LM",
+    "age": 28,
+    "team": "Orlando City SC"
+  },
+  {
+    "name": "Thiago",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB",
+    "age": 30,
+    "team": "New York City FC"
+  },
+  {
+    "name": "K. Parks",
+    "overall": 71,
+    "potential": 72,
+    "position": "CDM, CM",
+    "age": 27,
+    "team": "New York City FC"
+  },
+  {
+    "name": "S. Alzate",
+    "overall": 71,
+    "potential": 74,
+    "position": "CDM, CM",
+    "age": 26,
+    "team": "Atlanta United"
+  },
+  {
+    "name": "Berrocal",
+    "overall": 71,
+    "potential": 74,
+    "position": "CB",
+    "age": 26,
+    "team": "Atlanta United"
+  },
+  {
+    "name": "E. Mihaj",
+    "overall": 71,
+    "potential": 74,
+    "position": "CB",
+    "age": 26,
+    "team": "Atlanta United"
+  },
+  {
+    "name": "A. Long",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB",
+    "age": 32,
+    "team": "Los Angeles FC"
+  },
+  {
+    "name": "T. Tillman",
+    "overall": 71,
+    "potential": 72,
+    "position": "CM, CAM, LW, CDM",
+    "age": 26,
+    "team": "Los Angeles FC"
+  },
+  {
+    "name": "R. Porteous",
+    "overall": 71,
+    "potential": 75,
+    "position": "CB",
+    "age": 26,
+    "team": "Los Angeles FC"
+  },
+  {
+    "name": "H. Toffolo",
+    "overall": 71,
+    "potential": 71,
+    "position": "LB, LM",
+    "age": 29,
+    "team": "Charlotte FC"
+  },
+  {
+    "name": "D. Schnegg",
+    "overall": 71,
+    "potential": 71,
+    "position": "LB, LM, LW",
+    "age": 26,
+    "team": "Charlotte FC"
+  },
+  {
+    "name": "A. Pellegrino",
+    "overall": 71,
+    "potential": 71,
+    "position": "LM, LW",
+    "age": 35,
+    "team": "San Diego FC"
+  },
+  {
+    "name": "D. Chambost",
+    "overall": 70,
+    "potential": 70,
+    "position": "CM, CAM, CDM",
+    "age": 27,
+    "team": "Columbus Crew"
+  },
+  {
+    "name": "A. Herrera",
+    "overall": 70,
+    "potential": 70,
+    "position": "RB, RM",
+    "age": 26,
+    "team": "Columbus Crew"
+  },
+  {
+    "name": "P. Schulte",
+    "overall": 70,
+    "potential": 77,
+    "position": "GK",
+    "age": 24,
+    "team": "Columbus Crew"
+  },
+  {
+    "name": "M. Farsi",
+    "overall": 70,
+    "potential": 71,
+    "position": "RM, RB, RW",
+    "age": 25,
+    "team": "Columbus Crew"
+  },
+  {
+    "name": "K. Rowles",
+    "overall": 70,
+    "potential": 71,
+    "position": "CB",
+    "age": 27,
+    "team": "DC United"
+  },
+  {
+    "name": "A. Herrera",
+    "overall": 70,
+    "potential": 70,
+    "position": "RB, RM, CB",
+    "age": 28,
+    "team": "DC United"
+  },
+  {
+    "name": "M. Fofana",
+    "overall": 70,
+    "potential": 72,
+    "position": "CB",
+    "age": 27,
+    "team": "New England Revolution"
+  },
+  {
+    "name": "K. Rosenberry",
+    "overall": 70,
+    "potential": 70,
+    "position": "RB, LB, RM, CM",
+    "age": 31,
+    "team": "Colorado Rapids"
+  },
+  {
+    "name": "C. Bassett",
+    "overall": 70,
+    "potential": 77,
+    "position": "CAM, CM, CDM",
+    "age": 23,
+    "team": "Colorado Rapids"
+  },
+  {
+    "name": "Ramiro",
+    "overall": 70,
+    "potential": 70,
+    "position": "CDM, CM, RB",
+    "age": 32,
+    "team": "FC Dallas"
+  },
+  {
+    "name": "G. Dorsey",
+    "overall": 70,
+    "potential": 72,
+    "position": "RB, RM",
+    "age": 26,
+    "team": "Houston Dynamo"
+  },
+  {
+    "name": "S. Schonlau",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB",
+    "age": 30,
+    "team": "Vancouver Whitecaps FC"
+  },
+  {
+    "name": "E. Sabbi",
+    "overall": 70,
+    "potential": 70,
+    "position": "RW, RM, LW",
+    "age": 27,
+    "team": "Vancouver Whitecaps FC"
+  },
+  {
+    "name": "T. Blackmon",
+    "overall": 70,
+    "potential": 71,
+    "position": "CB",
+    "age": 28,
+    "team": "Vancouver Whitecaps FC"
+  },
+  {
+    "name": "M. Laborda",
+    "overall": 70,
+    "potential": 73,
+    "position": "CB, RB, RM, RW",
+    "age": 25,
+    "team": "Vancouver Whitecaps FC"
+  },
+  {
+    "name": "S. Berhalter",
+    "overall": 70,
+    "potential": 75,
+    "position": "CM, RM, CDM",
+    "age": 24,
+    "team": "Vancouver Whitecaps FC"
+  },
+  {
+    "name": "R. Veselinović",
+    "overall": 70,
+    "potential": 73,
+    "position": "CB",
+    "age": 26,
+    "team": "Vancouver Whitecaps FC"
+  },
+  {
+    "name": "D. Yedlin",
+    "overall": 70,
+    "potential": 70,
+    "position": "RB, RM, CB, CDM",
+    "age": 31,
+    "team": "Real Salt Lake"
+  },
+  {
+    "name": "L. Engel",
+    "overall": 70,
+    "potential": 71,
+    "position": "LB, LM, CB, LW",
+    "age": 26,
+    "team": "Real Salt Lake"
+  },
+  {
+    "name": "E. Eneli",
+    "overall": 70,
+    "potential": 74,
+    "position": "CDM, CM",
+    "age": 25,
+    "team": "Real Salt Lake"
+  },
+  {
+    "name": "N. Triantis",
+    "overall": 70,
+    "potential": 79,
+    "position": "CM, CDM, CB",
+    "age": 22,
+    "team": "Minnesota United FC"
+  },
+  {
+    "name": "P. Owusu",
+    "overall": 70,
+    "potential": 70,
+    "position": "ST",
+    "age": 28,
+    "team": "CF Montréal"
+  },
+  {
+    "name": "D. Chará",
+    "overall": 70,
+    "potential": 70,
+    "position": "CDM, CM, CB",
+    "age": 39,
+    "team": "Portland Timbers"
+  },
+  {
+    "name": "F. Mora",
+    "overall": 70,
+    "potential": 70,
+    "position": "ST",
+    "age": 31,
+    "team": "Portland Timbers"
+  },
+  {
+    "name": "K. Velde",
+    "overall": 70,
+    "potential": 71,
+    "position": "LM, LW",
+    "age": 25,
+    "team": "Portland Timbers"
+  },
+  {
+    "name": "B. Bye",
+    "overall": 70,
+    "potential": 70,
+    "position": "RB, RM",
+    "age": 29,
+    "team": "Portland Timbers"
+  },
+  {
+    "name": "J. Ortiz",
+    "overall": 70,
+    "potential": 70,
+    "position": "CDM, CM, CB",
+    "age": 29,
+    "team": "Portland Timbers"
+  },
+  {
+    "name": "S. Frei",
+    "overall": 70,
+    "potential": 70,
+    "position": "GK",
+    "age": 39,
+    "team": "Seattle Sounders FC"
+  },
+  {
+    "name": "A. Roldan",
+    "overall": 70,
+    "potential": 70,
+    "position": "RB, RM, CM",
+    "age": 28,
+    "team": "Seattle Sounders FC"
+  },
+  {
+    "name": "D. Jean Jacques",
+    "overall": 70,
+    "potential": 75,
+    "position": "CM, CDM",
+    "age": 25,
+    "team": "Philadelphia Union"
+  },
+  {
+    "name": "B. Damiani",
+    "overall": 70,
+    "potential": 79,
+    "position": "ST",
+    "age": 23,
+    "team": "Philadelphia Union"
+  },
+  {
+    "name": "R. Jansson",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB, LB",
+    "age": 33,
+    "team": "Orlando City SC"
+  },
+  {
+    "name": "B. Ojeda",
+    "overall": 70,
+    "potential": 76,
+    "position": "CDM, CM",
+    "age": 25,
+    "team": "Orlando City SC"
+  },
+  {
+    "name": "D. Brekalo",
+    "overall": 70,
+    "potential": 73,
+    "position": "CB, LB, CDM",
+    "age": 26,
+    "team": "Orlando City SC"
+  },
+  {
+    "name": "Raul Gustavo",
+    "overall": 70,
+    "potential": 73,
+    "position": "CB",
+    "age": 26,
+    "team": "New York City FC"
+  },
+  {
+    "name": "A. O'Neill",
+    "overall": 70,
+    "potential": 70,
+    "position": "CDM, CM",
+    "age": 26,
+    "team": "New York City FC"
+  },
+  {
+    "name": "M. Freese",
+    "overall": 70,
+    "potential": 73,
+    "position": "GK",
+    "age": 26,
+    "team": "New York City FC"
+  },
+  {
+    "name": "S. Gregersen",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB",
+    "age": 30,
+    "team": "Atlanta United"
+  },
+  {
+    "name": "T. Segovia",
+    "overall": 70,
+    "potential": 79,
+    "position": "CM, LM, CDM",
+    "age": 22,
+    "team": "Inter Miami"
+  },
+  {
+    "name": "Sergi Palencia",
+    "overall": 70,
+    "potential": 70,
+    "position": "RB, RM, LB, CM",
+    "age": 29,
+    "team": "Los Angeles FC"
+  },
+  {
+    "name": "J. Ebobisse",
+    "overall": 70,
+    "potential": 70,
+    "position": "ST",
+    "age": 28,
+    "team": "Los Angeles FC"
+  },
+  {
+    "name": "C. Wallem",
+    "overall": 70,
+    "potential": 73,
+    "position": "LM, CM, CDM, LB",
+    "age": 25,
+    "team": "St. Louis CITY SC"
+  },
+  {
+    "name": "Ilie Sánchez",
+    "overall": 70,
+    "potential": 70,
+    "position": "CM, CDM",
+    "age": 34,
+    "team": "Austin FC"
+  },
+  {
+    "name": "O. Svatok",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB",
+    "age": 30,
+    "team": "Austin FC"
+  },
+  {
+    "name": "A. Godoy",
+    "overall": 70,
+    "potential": 70,
+    "position": "CM, CDM",
+    "age": 35,
+    "team": "San Diego FC"
+  },
+  {
+    "name": "S. Johnson",
+    "overall": 69,
+    "potential": 69,
+    "position": "GK",
+    "age": 36,
+    "team": "DC United"
+  },
+  {
+    "name": "S. Nealis",
+    "overall": 69,
+    "potential": 70,
+    "position": "CB",
+    "age": 28,
+    "team": "DC United"
+  },
+  {
+    "name": "C. Brady",
+    "overall": 69,
+    "potential": 80,
+    "position": "GK",
+    "age": 21,
+    "team": "Chicago Fire"
+  },
+  {
+    "name": "C. Ronan",
+    "overall": 69,
+    "potential": 70,
+    "position": "CDM, CM",
+    "age": 27,
+    "team": "Colorado Rapids"
+  },
+  {
+    "name": "Rafael Navarro",
+    "overall": 69,
+    "potential": 74,
+    "position": "ST, CAM",
+    "age": 25,
+    "team": "Colorado Rapids"
+  },
+  {
+    "name": "S. Moore",
+    "overall": 69,
+    "potential": 69,
+    "position": "RB, RM",
+    "age": 28,
+    "team": "FC Dallas"
+  },
+  {
+    "name": "O. Urhoghide",
+    "overall": 69,
+    "potential": 74,
+    "position": "CB",
+    "age": 24,
+    "team": "FC Dallas"
+  },
+  {
+    "name": "M. Suleymanov",
+    "overall": 69,
+    "potential": 70,
+    "position": "RM, CAM, RW",
+    "age": 25,
+    "team": "Sporting Kansas City"
+  },
+  {
+    "name": "M. Yoshida",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB",
+    "age": 36,
+    "team": "LA Galaxy"
+  },
+  {
+    "name": "C. Garcés",
+    "overall": 69,
+    "potential": 78,
+    "position": "CB, RB, CDM",
+    "age": 23,
+    "team": "LA Galaxy"
+  },
+  {
+    "name": "E. Sviatchenko",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB",
+    "age": 33,
+    "team": "Houston Dynamo"
+  },
+  {
+    "name": "J. Glad",
+    "overall": 69,
+    "potential": 70,
+    "position": "CB",
+    "age": 28,
+    "team": "Real Salt Lake"
+  },
+  {
+    "name": "W. Trapp",
+    "overall": 69,
+    "potential": 69,
+    "position": "CDM, CM, CB",
+    "age": 32,
+    "team": "Minnesota United FC"
+  },
+  {
+    "name": "N. Romero",
+    "overall": 69,
+    "potential": 76,
+    "position": "CB",
+    "age": 21,
+    "team": "Minnesota United FC"
+  },
+  {
+    "name": "Jung Ho Yeon",
+    "overall": 69,
+    "potential": 74,
+    "position": "CM, CDM",
+    "age": 24,
+    "team": "Minnesota United FC"
+  },
+  {
+    "name": "B. Vera",
+    "overall": 69,
+    "potential": 72,
+    "position": "CB",
+    "age": 26,
+    "team": "CF Montréal"
+  },
+  {
+    "name": "J. Fory",
+    "overall": 69,
+    "potential": 76,
+    "position": "LB, LM, LW",
+    "age": 23,
+    "team": "Portland Timbers"
+  },
+  {
+    "name": "T. Corbeanu",
+    "overall": 69,
+    "potential": 74,
+    "position": "RM, LM, RW",
+    "age": 23,
+    "team": "Toronto FC"
+  },
+  {
+    "name": "Vítor Costa",
+    "overall": 69,
+    "potential": 69,
+    "position": "LB, LM, CM",
+    "age": 31,
+    "team": "San Jose Earthquakes"
+  },
+  {
+    "name": "N. Harriel",
+    "overall": 69,
+    "potential": 76,
+    "position": "RB, CB, CDM",
+    "age": 24,
+    "team": "Philadelphia Union"
+  },
+  {
+    "name": "M. Crépeau",
+    "overall": 69,
+    "potential": 69,
+    "position": "GK",
+    "age": 31,
+    "team": "Orlando City SC"
+  },
+  {
+    "name": "I. Angulo",
+    "overall": 69,
+    "potential": 70,
+    "position": "LM, LW, RM",
+    "age": 26,
+    "team": "Orlando City SC"
+  },
+  {
+    "name": "Talles Magno",
+    "overall": 69,
+    "potential": 76,
+    "position": "LW, LM, ST",
+    "age": 23,
+    "team": "New York City FC"
+  },
+  {
+    "name": "A. Ojeda",
+    "overall": 69,
+    "potential": 77,
+    "position": "LM, LW, RM",
+    "age": 21,
+    "team": "New York City FC"
+  },
+  {
+    "name": "Pedro Amador",
+    "overall": 69,
+    "potential": 70,
+    "position": "LB, LM",
+    "age": 26,
+    "team": "Atlanta United"
+  },
+  {
+    "name": "Y. Bright",
+    "overall": 69,
+    "potential": 73,
+    "position": "CDM, CM, CB",
+    "age": 23,
+    "team": "Inter Miami"
+  },
+  {
+    "name": "D. Ayala",
+    "overall": 69,
+    "potential": 75,
+    "position": "CDM, CM",
+    "age": 22,
+    "team": "Inter Miami"
+  },
+  {
+    "name": "M. Falcón",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB",
+    "age": 28,
+    "team": "Inter Miami"
+  },
+  {
+    "name": "T. Baumgartl",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB",
+    "age": 29,
+    "team": "St. Louis CITY SC"
+  },
+  {
+    "name": "T. Hadebe",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB",
+    "age": 29,
+    "team": "FC Cincinnati"
+  },
+  {
+    "name": "B. Stuver",
+    "overall": 69,
+    "potential": 69,
+    "position": "GK",
+    "age": 34,
+    "team": "Austin FC"
+  },
+  {
+    "name": "R. Taylor",
+    "overall": 69,
+    "potential": 69,
+    "position": "LW, LM, RM",
+    "age": 30,
+    "team": "Austin FC"
+  },
+  {
+    "name": "J. Willis",
+    "overall": 69,
+    "potential": 69,
+    "position": "GK",
+    "age": 36,
+    "team": "Nashville SC"
+  },
+  {
+    "name": "B. Acosta",
+    "overall": 69,
+    "potential": 69,
+    "position": "CM, CDM",
+    "age": 31,
+    "team": "Nashville SC"
+  },
+  {
+    "name": "N. Byrne",
+    "overall": 69,
+    "potential": 69,
+    "position": "RB, LB, CM",
+    "age": 33,
+    "team": "Charlotte FC"
+  },
+  {
+    "name": "K. Vargas",
+    "overall": 69,
+    "potential": 75,
+    "position": "RM, LM, LW, RW",
+    "age": 23,
+    "team": "Charlotte FC"
+  },
+  {
+    "name": "R. Camacho",
+    "overall": 68,
+    "potential": 68,
+    "position": "CB",
+    "age": 34,
+    "team": "Columbus Crew"
+  },
+  {
+    "name": "M. Amundsen",
+    "overall": 68,
+    "potential": 69,
+    "position": "CB, LB, LM",
+    "age": 27,
+    "team": "Columbus Crew"
+  },
+  {
+    "name": "W. Ali",
+    "overall": 68,
+    "potential": 69,
+    "position": "ST, LW",
+    "age": 26,
+    "team": "Columbus Crew"
+  },
+  {
+    "name": "Y. Cheberko",
+    "overall": 68,
+    "potential": 70,
+    "position": "CB",
+    "age": 27,
+    "team": "Columbus Crew"
+  },
+  {
+    "name": "S. Zawadzki",
+    "overall": 68,
+    "potential": 74,
+    "position": "CB, CM, CDM",
+    "age": 25,
+    "team": "Columbus Crew"
+  },
+  {
+    "name": "Gabriel Pirani",
+    "overall": 68,
+    "potential": 74,
+    "position": "CAM, CM, LM, ST",
+    "age": 23,
+    "team": "DC United"
+  },
+  {
+    "name": "N. Eile",
+    "overall": 68,
+    "potential": 77,
+    "position": "CB",
+    "age": 22,
+    "team": "New York Red Bulls"
+  },
+  {
+    "name": "D. Turgeman",
+    "overall": 68,
+    "potential": 75,
+    "position": "ST",
+    "age": 21,
+    "team": "New England Revolution"
+  },
+  {
+    "name": "M. Polster",
+    "overall": 68,
+    "potential": 68,
+    "position": "CDM, CM, RB",
+    "age": 32,
+    "team": "New England Revolution"
+  },
+  {
+    "name": "J. Yueill",
+    "overall": 68,
+    "potential": 68,
+    "position": "CDM, CM",
+    "age": 28,
+    "team": "New England Revolution"
+  },
+  {
+    "name": "B. Ceballos",
+    "overall": 68,
+    "potential": 74,
+    "position": "CB",
+    "age": 24,
+    "team": "New England Revolution"
+  },
+  {
+    "name": "A. Gutman",
+    "overall": 68,
+    "potential": 68,
+    "position": "LB, LM, CM",
+    "age": 28,
+    "team": "Chicago Fire"
+  },
+  {
+    "name": "J. Waterman",
+    "overall": 68,
+    "potential": 68,
+    "position": "CB, RB, CDM",
+    "age": 29,
+    "team": "Chicago Fire"
+  },
+  {
+    "name": "C. Herranes",
+    "overall": 68,
+    "potential": 68,
+    "position": "CB",
+    "age": 33,
+    "team": "Sporting Kansas City"
+  },
+  {
+    "name": "L. Sanabria",
+    "overall": 68,
+    "potential": 79,
+    "position": "CDM, CM",
+    "age": 21,
+    "team": "LA Galaxy"
+  },
+  {
+    "name": "Zanka",
+    "overall": 68,
+    "potential": 68,
+    "position": "CB",
+    "age": 35,
+    "team": "LA Galaxy"
+  },
+  {
+    "name": "E. Cerrillo",
+    "overall": 68,
+    "potential": 73,
+    "position": "CDM, CM, CB",
+    "age": 24,
+    "team": "LA Galaxy"
+  },
+  {
+    "name": "Felipe Andrade",
+    "overall": 68,
+    "potential": 75,
+    "position": "LB, CB",
+    "age": 23,
+    "team": "Houston Dynamo"
+  },
+  {
+    "name": "S. Adekugbe",
+    "overall": 68,
+    "potential": 68,
+    "position": "LB, LM",
+    "age": 30,
+    "team": "Vancouver Whitecaps FC"
+  },
+  {
+    "name": "E. Ocampo",
+    "overall": 68,
+    "potential": 78,
+    "position": "RB, RM",
+    "age": 21,
+    "team": "Vancouver Whitecaps FC"
+  },
+  {
+    "name": "Rafael",
+    "overall": 68,
+    "potential": 68,
+    "position": "GK",
+    "age": 35,
+    "team": "Real Salt Lake"
+  },
+  {
+    "name": "D. Marczuk",
+    "overall": 68,
+    "potential": 77,
+    "position": "RM, RW",
+    "age": 21,
+    "team": "Real Salt Lake"
+  },
+  {
+    "name": "O. Gene",
+    "overall": 68,
+    "potential": 76,
+    "position": "CDM, CM, CB",
+    "age": 22,
+    "team": "Minnesota United FC"
+  },
+  {
+    "name": "S. Piette",
+    "overall": 68,
+    "potential": 68,
+    "position": "CDM, CM, CB",
+    "age": 30,
+    "team": "CF Montréal"
+  },
+  {
+    "name": "F. Surman",
+    "overall": 68,
+    "potential": 75,
+    "position": "CB",
+    "age": 21,
+    "team": "Portland Timbers"
+  },
+  {
+    "name": "K. Kelsy",
+    "overall": 68,
+    "potential": 81,
+    "position": "ST",
+    "age": 20,
+    "team": "Portland Timbers"
+  },
+  {
+    "name": "Kim Kee Hee",
+    "overall": 68,
+    "potential": 68,
+    "position": "CB",
+    "age": 35,
+    "team": "Seattle Sounders FC"
+  },
+  {
+    "name": "P. Arriola",
+    "overall": 68,
+    "potential": 68,
+    "position": "RM, RW, LW",
+    "age": 30,
+    "team": "Seattle Sounders FC"
+  },
+  {
+    "name": "D. Romney",
+    "overall": 68,
+    "potential": 68,
+    "position": "CB",
+    "age": 32,
+    "team": "San Jose Earthquakes"
+  },
+  {
+    "name": "Ronaldo Vieira",
+    "overall": 68,
+    "potential": 68,
+    "position": "CM, CDM",
+    "age": 26,
+    "team": "San Jose Earthquakes"
+  },
+  {
+    "name": "O. Mbaizo",
+    "overall": 68,
+    "potential": 68,
+    "position": "RB, RM",
+    "age": 27,
+    "team": "Philadelphia Union"
+  },
+  {
+    "name": "I. Vassilev",
+    "overall": 68,
+    "potential": 74,
+    "position": "LM, CAM, RM, LW",
+    "age": 24,
+    "team": "Philadelphia Union"
+  },
+  {
+    "name": "W. Cartagena",
+    "overall": 68,
+    "potential": 68,
+    "position": "CDM, CM, CB",
+    "age": 30,
+    "team": "Orlando City SC"
+  },
+  {
+    "name": "D. McGuire",
+    "overall": 68,
+    "potential": 73,
+    "position": "ST",
+    "age": 24,
+    "team": "Orlando City SC"
+  },
+  {
+    "name": "J. Fernández",
+    "overall": 68,
+    "potential": 75,
+    "position": "RW, RM, LW",
+    "age": 21,
+    "team": "New York City FC"
+  },
+  {
+    "name": "T. Muyumba",
+    "overall": 68,
+    "potential": 69,
+    "position": "CDM, CM",
+    "age": 28,
+    "team": "Atlanta United"
+  },
+  {
+    "name": "O. Ustari",
+    "overall": 68,
+    "potential": 68,
+    "position": "GK",
+    "age": 38,
+    "team": "Inter Miami"
+  },
+  {
+    "name": "G. Luján",
+    "overall": 68,
+    "potential": 75,
+    "position": "CB, RB, RM",
+    "age": 24,
+    "team": "Inter Miami"
+  },
+  {
+    "name": "Igor Jesus",
+    "overall": 68,
+    "potential": 78,
+    "position": "CM, CDM",
+    "age": 22,
+    "team": "Los Angeles FC"
+  },
+  {
+    "name": "T. Boyd",
+    "overall": 68,
+    "potential": 68,
+    "position": "RM, LM, RW",
+    "age": 30,
+    "team": "Los Angeles FC"
+  },
+  {
+    "name": "E. Segura",
+    "overall": 68,
+    "potential": 69,
+    "position": "CB, RB, CDM",
+    "age": 28,
+    "team": "Los Angeles FC"
+  },
+  {
+    "name": "C. Teuchert",
+    "overall": 68,
+    "potential": 68,
+    "position": "CAM, ST, CM",
+    "age": 28,
+    "team": "St. Louis CITY SC"
+  },
+  {
+    "name": "N. Hagglund",
+    "overall": 68,
+    "potential": 68,
+    "position": "CB",
+    "age": 32,
+    "team": "FC Cincinnati"
+  },
+  {
+    "name": "E. Echenique",
+    "overall": 68,
+    "potential": 78,
+    "position": "RM, ST, LM, RW",
+    "age": 21,
+    "team": "FC Cincinnati"
+  },
+  {
+    "name": "B. Sabovic",
+    "overall": 68,
+    "potential": 68,
+    "position": "CM, CDM",
+    "age": 27,
+    "team": "Austin FC"
+  },
+  {
+    "name": "J. Nelson",
+    "overall": 68,
+    "potential": 75,
+    "position": "LW, RW, LM",
+    "age": 22,
+    "team": "Austin FC"
+  },
+  {
+    "name": "D. Pereira",
+    "overall": 68,
+    "potential": 73,
+    "position": "CM, CDM",
+    "age": 24,
+    "team": "Austin FC"
+  },
+  {
+    "name": "J. Rosales",
+    "overall": 68,
+    "potential": 73,
+    "position": "LB, LM, CM",
+    "age": 24,
+    "team": "Austin FC"
+  },
+  {
+    "name": "O. Wolff",
+    "overall": 68,
+    "potential": 79,
+    "position": "CM, LM, CAM",
+    "age": 20,
+    "team": "Austin FC"
+  },
+  {
+    "name": "D. Lovitz",
+    "overall": 68,
+    "potential": 68,
+    "position": "LB, CB, LM",
+    "age": 33,
+    "team": "Nashville SC"
+  },
+  {
+    "name": "A. Muyl",
+    "overall": 68,
+    "potential": 68,
+    "position": "LM, RM, RB, LB",
+    "age": 29,
+    "team": "Nashville SC"
+  },
+  {
+    "name": "I. Toklomati",
+    "overall": 68,
+    "potential": 82,
+    "position": "ST",
+    "age": 20,
+    "team": "Charlotte FC"
+  },
+  {
+    "name": "B. Bronico",
+    "overall": 68,
+    "potential": 68,
+    "position": "CM, CDM, CAM",
+    "age": 30,
+    "team": "Charlotte FC"
+  },
+  {
+    "name": "D. Diani",
+    "overall": 68,
+    "potential": 70,
+    "position": "CDM, CM",
+    "age": 27,
+    "team": "Charlotte FC"
+  },
+  {
+    "name": "T. Ángel",
+    "overall": 68,
+    "potential": 76,
+    "position": "ST, LW, LM",
+    "age": 22,
+    "team": "San Diego FC"
+  },
+  {
+    "name": "João Peglow",
+    "overall": 67,
+    "potential": 71,
+    "position": "LM, LW, RM",
+    "age": 23,
+    "team": "DC United"
+  },
+  {
+    "name": "J. Stroud",
+    "overall": 67,
+    "potential": 67,
+    "position": "RM, RW",
+    "age": 28,
+    "team": "DC United"
+  },
+  {
+    "name": "L. Bartlett",
+    "overall": 67,
+    "potential": 68,
+    "position": "CB",
+    "age": 27,
+    "team": "DC United"
+  },
+  {
+    "name": "T. Parker",
+    "overall": 67,
+    "potential": 67,
+    "position": "CB",
+    "age": 32,
+    "team": "New York Red Bulls"
+  },
+  {
+    "name": "M. Haile-Selassie",
+    "overall": 67,
+    "potential": 68,
+    "position": "RM, LM, ST, RW",
+    "age": 26,
+    "team": "Chicago Fire"
+  },
+  {
+    "name": "S. Vines",
+    "overall": 67,
+    "potential": 70,
+    "position": "LB, LM",
+    "age": 26,
+    "team": "Colorado Rapids"
+  },
+  {
+    "name": "I. Murphy",
+    "overall": 67,
+    "potential": 71,
+    "position": "CB",
+    "age": 25,
+    "team": "Colorado Rapids"
+  },
+  {
+    "name": "A. Julio",
+    "overall": 67,
+    "potential": 67,
+    "position": "ST, LM, RM, LW",
+    "age": 29,
+    "team": "FC Dallas"
+  },
+  {
+    "name": "J. Davis",
+    "overall": 67,
+    "potential": 73,
+    "position": "RB, CDM, CM, RM",
+    "age": 23,
+    "team": "Sporting Kansas City"
+  },
+  {
+    "name": "C. Ramirez",
+    "overall": 67,
+    "potential": 67,
+    "position": "ST, CAM, CM",
+    "age": 34,
+    "team": "LA Galaxy"
+  },
+  {
+    "name": "J. Haak",
+    "overall": 67,
+    "potential": 73,
+    "position": "CB, CDM, CM",
+    "age": 23,
+    "team": "LA Galaxy"
+  },
+  {
+    "name": "J. Aude",
+    "overall": 67,
+    "potential": 75,
+    "position": "LB, CM",
+    "age": 22,
+    "team": "LA Galaxy"
+  },
+  {
+    "name": "J. Bond",
+    "overall": 67,
+    "potential": 67,
+    "position": "GK",
+    "age": 32,
+    "team": "Houston Dynamo"
+  },
+  {
+    "name": "D. Holmes",
+    "overall": 67,
+    "potential": 67,
+    "position": "CAM, RM, CM",
+    "age": 30,
+    "team": "Houston Dynamo"
+  },
+  {
+    "name": "L. Ennali",
+    "overall": 67,
+    "potential": 74,
+    "position": "LM, RM, LW",
+    "age": 23,
+    "team": "Houston Dynamo"
+  },
+  {
+    "name": "L. Veznera",
+    "overall": 67,
+    "potential": 67,
+    "position": "ST",
+    "age": 29,
+    "team": "Houston Dynamo"
+  },
+  {
+    "name": "J. Romales",
+    "overall": 67,
+    "potential": 67,
+    "position": "RB",
+    "age": 37,
+    "team": "Houston Dynamo"
+  },
+  {
+    "name": "J. Pupe",
+    "overall": 67,
+    "potential": 67,
+    "position": "CB",
+    "age": 28,
+    "team": "Vancouver Whitecaps FC"
+  },
+  {
+    "name": "T. Wolff",
+    "overall": 67,
+    "potential": 77,
+    "position": "LM, LW, CM, LB",
+    "age": 22,
+    "team": "Real Salt Lake"
+  },
+  {
+    "name": "J. Díaz",
+    "overall": 67,
+    "potential": 72,
+    "position": "CB, RB, RM",
+    "age": 24,
+    "team": "Minnesota United FC"
+  },
+  {
+    "name": "T. Avilés",
+    "overall": 67,
+    "potential": 76,
+    "position": "CB, CDM",
+    "age": 21,
+    "team": "CF Montréal"
+  },
+  {
+    "name": "J. Pantemis",
+    "overall": 67,
+    "potential": 68,
+    "position": "GK",
+    "age": 28,
+    "team": "Portland Timbers"
+  },
+  {
+    "name": "J. Mosquera",
+    "overall": 67,
+    "potential": 76,
+    "position": "RB, RM, CM",
+    "age": 22,
+    "team": "Portland Timbers"
+  },
+  {
+    "name": "H. Dotson",
+    "overall": 67,
+    "potential": 67,
+    "position": "CM, CDM",
+    "age": 27,
+    "team": "Seattle Sounders FC"
+  },
+  {
+    "name": "A. Bedoya",
+    "overall": 67,
+    "potential": 67,
+    "position": "CM, CDM, CAM",
+    "age": 38,
+    "team": "Philadelphia Union"
+  },
+  {
+    "name": "M. Iloski",
+    "overall": 67,
+    "potential": 70,
+    "position": "ST",
+    "age": 25,
+    "team": "Philadelphia Union"
+  },
+  {
+    "name": "J. Lukiċ",
+    "overall": 67,
+    "potential": 74,
+    "position": "CM, CAM, CDM",
+    "age": 23,
+    "team": "Philadelphia Union"
+  },
+  {
+    "name": "T. Gray",
+    "overall": 67,
+    "potential": 72,
+    "position": "RB, CB, CDM",
+    "age": 22,
+    "team": "New York City FC"
+  },
+  {
+    "name": "J. Thiaré",
+    "overall": 67,
+    "potential": 67,
+    "position": "ST",
+    "age": 32,
+    "team": "Atlanta United"
+  },
+  {
+    "name": "R. Hernández",
+    "overall": 67,
+    "potential": 67,
+    "position": "LB, CB, RB, LM",
+    "age": 27,
+    "team": "Atlanta United"
+  },
+  {
+    "name": "A. Deroz",
+    "overall": 67,
+    "potential": 67,
+    "position": "GK",
+    "age": 37,
+    "team": "Atlanta United"
+  },
+  {
+    "name": "M. Choinière",
+    "overall": 67,
+    "potential": 68,
+    "position": "CM, LM, CDM",
+    "age": 26,
+    "team": "Los Angeles FC"
+  },
+  {
+    "name": "J. Shaffelburg",
+    "overall": 67,
+    "potential": 68,
+    "position": "LM, RM, LB, LW",
+    "age": 25,
+    "team": "Los Angeles FC"
+  },
+  {
+    "name": "N. Tafari",
+    "overall": 67,
+    "potential": 69,
+    "position": "CB",
+    "age": 28,
+    "team": "Los Angeles FC"
+  },
+  {
+    "name": "D. Martínez",
+    "overall": 67,
+    "potential": 79,
+    "position": "RW, RM, CAM",
+    "age": 19,
+    "team": "Los Angeles FC"
+  },
+  {
+    "name": "D. Edelman",
+    "overall": 67,
+    "potential": 75,
+    "position": "CDM, CM, CB",
+    "age": 22,
+    "team": "St. Louis CITY SC"
+  },
+  {
+    "name": "K. Hiebert",
+    "overall": 67,
+    "potential": 69,
+    "position": "CB, LB, RB, LM",
+    "age": 27,
+    "team": "St. Louis CITY SC"
+  },
+  {
+    "name": "F. Fall",
+    "overall": 67,
+    "potential": 80,
+    "position": "CB",
+    "age": 21,
+    "team": "St. Louis CITY SC"
+  },
+  {
+    "name": "J. Obrian",
+    "overall": 67,
+    "potential": 67,
+    "position": "RM, RW, LM",
+    "age": 30,
+    "team": "Austin FC"
+  },
+  {
+    "name": "J. Palacios",
+    "overall": 67,
+    "potential": 67,
+    "position": "CB",
+    "age": 31,
+    "team": "Nashville SC"
+  },
+  {
+    "name": "E. Tagseth",
+    "overall": 67,
+    "potential": 72,
+    "position": "CM, CDM, LB",
+    "age": 24,
+    "team": "Nashville SC"
+  },
+  {
+    "name": "A. Reyes",
+    "overall": 67,
+    "potential": 72,
+    "position": "CB",
+    "age": 25,
+    "team": "San Diego FC"
+  },
+  {
+    "name": "M. Peltola",
+    "overall": 66,
+    "potential": 73,
+    "position": "CDM, CB",
+    "age": 22,
+    "team": "DC United"
+  },
+  {
+    "name": "C. Clark",
+    "overall": 66,
+    "potential": 74,
+    "position": "CAM, LM, LW, CM",
+    "age": 22,
+    "team": "DC United"
+  },
+  {
+    "name": "J. McCarthy",
+    "overall": 66,
+    "potential": 66,
+    "position": "GK",
+    "age": 32,
+    "team": "New York Red Bulls"
+  },
+  {
+    "name": "R. Edwards",
+    "overall": 66,
+    "potential": 66,
+    "position": "LB, LM",
+    "age": 29,
+    "team": "New York Red Bulls"
+  },
+  {
+    "name": "D. Nealis",
+    "overall": 66,
+    "potential": 67,
+    "position": "RB, CB, RM, CM",
+    "age": 26,
+    "team": "New York Red Bulls"
+  },
+  {
+    "name": "C. Harper",
+    "overall": 66,
+    "potential": 72,
+    "position": "RM, RB, CAM, RW",
+    "age": 23,
+    "team": "New York Red Bulls"
+  },
+  {
+    "name": "M. Morales",
+    "overall": 66,
+    "potential": 77,
+    "position": "LB",
+    "age": 22,
+    "team": "New York Red Bulls"
+  },
+  {
+    "name": "S. Rogers",
+    "overall": 66,
+    "potential": 70,
+    "position": "CB",
+    "age": 26,
+    "team": "Chicago Fire"
+  },
+  {
+    "name": "J. Cohen",
+    "overall": 66,
+    "potential": 66,
+    "position": "GK",
+    "age": 32,
+    "team": "Chicago Fire"
+  },
+  {
+    "name": "Kaick",
+    "overall": 66,
+    "potential": 80,
+    "position": "CM, CDM",
+    "age": 19,
+    "team": "FC Dallas"
+  },
+  {
+    "name": "S. Ibeagha",
+    "overall": 66,
+    "potential": 66,
+    "position": "CB",
+    "age": 33,
+    "team": "FC Dallas"
+  },
+  {
+    "name": "C. Cappis",
+    "overall": 66,
+    "potential": 69,
+    "position": "CM, LB, CDM",
+    "age": 25,
+    "team": "FC Dallas"
+  },
+  {
+    "name": "P. Delgado",
+    "overall": 66,
+    "potential": 75,
+    "position": "CM, CAM, CDM",
+    "age": 21,
+    "team": "FC Dallas"
+  },
+  {
+    "name": "J. Nelson",
+    "overall": 66,
+    "potential": 67,
+    "position": "LB, CM",
+    "age": 26,
+    "team": "LA Galaxy"
+  },
+  {
+    "name": "O. Larraz",
+    "overall": 66,
+    "potential": 73,
+    "position": "CDM, CM",
+    "age": 23,
+    "team": "Vancouver Whitecaps FC"
+  },
+  {
+    "name": "A. Katranis",
+    "overall": 66,
+    "potential": 67,
+    "position": "LB, LM",
+    "age": 27,
+    "team": "Real Salt Lake"
+  },
+  {
+    "name": "M. Kmeť",
+    "overall": 66,
+    "potential": 70,
+    "position": "RB, RM",
+    "age": 25,
+    "team": "Minnesota United FC"
+  },
+  {
+    "name": "C. Harvey",
+    "overall": 66,
+    "potential": 70,
+    "position": "CB, CM, RB, CDM",
+    "age": 25,
+    "team": "Minnesota United FC"
+  },
+  {
+    "name": "P. Stroud",
+    "overall": 66,
+    "potential": 73,
+    "position": "CDM, CM, RM",
+    "age": 23,
+    "team": "Minnesota United FC"
+  },
+  {
+    "name": "M. Longstaff",
+    "overall": 66,
+    "potential": 68,
+    "position": "CM, CDM, CAM",
+    "age": 25,
+    "team": "CF Montréal"
+  },
+  {
+    "name": "J. Sirois",
+    "overall": 66,
+    "potential": 71,
+    "position": "GK",
+    "age": 24,
+    "team": "CF Montréal"
+  },
+  {
+    "name": "J. Neal",
+    "overall": 66,
+    "potential": 78,
+    "position": "CB",
+    "age": 21,
+    "team": "CF Montréal"
+  },
+  {
+    "name": "T. Gillier",
+    "overall": 66,
+    "potential": 79,
+    "position": "GK",
+    "age": 21,
+    "team": "CF Montréal"
+  },
+  {
+    "name": "D. Etienne Jr.",
+    "overall": 66,
+    "potential": 66,
+    "position": "LM, ST, LW",
+    "age": 28,
+    "team": "Toronto FC"
+  },
+  {
+    "name": "J. Bueno",
+    "overall": 66,
+    "potential": 69,
+    "position": "CM, CDM",
+    "age": 26,
+    "team": "Philadelphia Union"
+  },
+  {
+    "name": "A. Perea",
+    "overall": 66,
+    "potential": 70,
+    "position": "CDM, CM",
+    "age": 24,
+    "team": "New York City FC"
+  },
+  {
+    "name": "N. Allen",
+    "overall": 66,
+    "potential": 75,
+    "position": "CB, LB",
+    "age": 21,
+    "team": "Inter Miami"
+  },
+  {
+    "name": "N. Ordaz",
+    "overall": 66,
+    "potential": 77,
+    "position": "ST, LW, RW, CAM",
+    "age": 21,
+    "team": "Los Angeles FC"
+  },
+  {
+    "name": "C. Durkin",
+    "overall": 66,
+    "potential": 69,
+    "position": "CM, CDM, RM",
+    "age": 25,
+    "team": "St. Louis CITY SC"
+  },
+  {
+    "name": "R. Alm",
+    "overall": 66,
+    "potential": 66,
+    "position": "RM, RW, LW",
+    "age": 29,
+    "team": "St. Louis CITY SC"
+  },
+  {
+    "name": "Jeong Sang Bin",
+    "overall": 66,
+    "potential": 73,
+    "position": "ST, RM, RW, CAM",
+    "age": 23,
+    "team": "St. Louis CITY SC"
+  },
+  {
+    "name": "A. Powell",
+    "overall": 66,
+    "potential": 66,
+    "position": "RB, RM, CB, CDM",
+    "age": 30,
+    "team": "FC Cincinnati"
+  },
+  {
+    "name": "A. Qasem",
+    "overall": 66,
+    "potential": 73,
+    "position": "LW, RM, CAM, LM",
+    "age": 21,
+    "team": "Nashville SC"
+  },
+  {
+    "name": "P. Yazbek",
+    "overall": 66,
+    "potential": 72,
+    "position": "CDM, CM",
+    "age": 23,
+    "team": "Nashville SC"
+  },
+  {
+    "name": "A. Privett",
+    "overall": 66,
+    "potential": 73,
+    "position": "CB",
+    "age": 24,
+    "team": "Charlotte FC"
+  },
+  {
+    "name": "A. Mighten",
+    "overall": 66,
+    "potential": 74,
+    "position": "LM, RM, LW",
+    "age": 23,
+    "team": "San Diego FC"
+  },
+  {
+    "name": "I. Aliyu",
+    "overall": 65,
+    "potential": 71,
+    "position": "LM, ST, LW",
+    "age": 23,
+    "team": "Columbus Crew"
+  },
+  {
+    "name": "B. Servania",
+    "overall": 65,
+    "potential": 68,
+    "position": "CDM, CM",
+    "age": 26,
+    "team": "DC United"
+  },
+  {
+    "name": "I. Feingold",
+    "overall": 65,
+    "potential": 72,
+    "position": "RB, RM, LB",
+    "age": 20,
+    "team": "New England Revolution"
+  },
+  {
+    "name": "C. Mueller",
+    "overall": 65,
+    "potential": 65,
+    "position": "LM, RM, LW",
+    "age": 28,
+    "team": "Chicago Fire"
+  },
+  {
+    "name": "M. Pineda",
+    "overall": 65,
+    "potential": 67,
+    "position": "CB, CDM, CM",
+    "age": 27,
+    "team": "Chicago Fire"
+  },
+  {
+    "name": "Rafael Santos",
+    "overall": 65,
+    "potential": 65,
+    "position": "LB, LM",
+    "age": 27,
+    "team": "Colorado Rapids"
+  },
+  {
+    "name": "D. Sealy",
+    "overall": 65,
+    "potential": 77,
+    "position": "LM, RM, LW",
+    "age": 22,
+    "team": "Colorado Rapids"
+  },
+  {
+    "name": "J. Atencio",
+    "overall": 65,
+    "potential": 74,
+    "position": "CDM, CM, CB",
+    "age": 23,
+    "team": "Colorado Rapids"
+  },
+  {
+    "name": "T. Ku-DiPietro",
+    "overall": 65,
+    "potential": 71,
+    "position": "LM, CAM, RW, LW",
+    "age": 23,
+    "team": "Colorado Rapids"
+  },
+  {
+    "name": "L. Farrington",
+    "overall": 65,
+    "potential": 72,
+    "position": "ST, CAM",
+    "age": 23,
+    "team": "FC Dallas"
+  },
+  {
+    "name": "L. Abubakar",
+    "overall": 65,
+    "potential": 65,
+    "position": "CB, RB, CDM",
+    "age": 30,
+    "team": "FC Dallas"
+  },
+  {
+    "name": "J. Marcinkowski",
+    "overall": 65,
+    "potential": 67,
+    "position": "GK",
+    "age": 28,
+    "team": "LA Galaxy"
+  },
+  {
+    "name": "M. Cuevas",
+    "overall": 65,
+    "potential": 74,
+    "position": "RB, RM",
+    "age": 22,
+    "team": "LA Galaxy"
+  },
+  {
+    "name": "J. Ngando",
+    "overall": 65,
+    "potential": 68,
+    "position": "CM, CDM",
+    "age": 25,
+    "team": "Vancouver Whitecaps FC"
+  },
+  {
+    "name": "D. Callender",
+    "overall": 65,
+    "potential": 68,
+    "position": "GK",
+    "age": 27,
+    "team": "Minnesota United FC"
+  },
+  {
+    "name": "A. Markanich Jr",
+    "overall": 65,
+    "potential": 68,
+    "position": "LB, LM, CB, LW",
+    "age": 25,
+    "team": "Minnesota United FC"
+  },
+  {
+    "name": "A. Fariña",
+    "overall": 65,
+    "potential": 79,
+    "position": "CAM, CM",
+    "age": 20,
+    "team": "Minnesota United FC"
+  },
+  {
+    "name": "D. Ríos",
+    "overall": 65,
+    "potential": 65,
+    "position": "ST",
+    "age": 30,
+    "team": "CF Montréal"
+  },
+  {
+    "name": "D. Thorhallsson",
+    "overall": 65,
+    "potential": 70,
+    "position": "RB, CM, RM",
+    "age": 25,
+    "team": "CF Montréal"
+  },
+  {
+    "name": "K. Opoku",
+    "overall": 65,
+    "potential": 68,
+    "position": "ST, RW, CAM",
+    "age": 23,
+    "team": "CF Montréal"
+  },
+  {
+    "name": "A. Lassiter",
+    "overall": 65,
+    "potential": 65,
+    "position": "LM, RM, ST, LB",
+    "age": 30,
+    "team": "Portland Timbers"
+  },
+  {
+    "name": "O. Fernandez",
+    "overall": 65,
+    "potential": 65,
+    "position": "LM, RM, CAM, LW",
+    "age": 26,
+    "team": "Portland Timbers"
+  },
+  {
+    "name": "D. Musovski",
+    "overall": 65,
+    "potential": 65,
+    "position": "ST",
+    "age": 29,
+    "team": "Seattle Sounders FC"
+  },
+  {
+    "name": "P. Rothrock",
+    "overall": 65,
+    "potential": 65,
+    "position": "LM, RM, LW",
+    "age": 26,
+    "team": "Seattle Sounders FC"
+  },
+  {
+    "name": "I. Harkes",
+    "overall": 65,
+    "potential": 65,
+    "position": "CM, CDM",
+    "age": 30,
+    "team": "San Jose Earthquakes"
+  },
+  {
+    "name": "P. Marie",
+    "overall": 65,
+    "potential": 65,
+    "position": "RB, LB, RM",
+    "age": 30,
+    "team": "San Jose Earthquakes"
+  },
+  {
+    "name": "T. Spicer",
+    "overall": 65,
+    "potential": 68,
+    "position": "LM, LW, RM, LB",
+    "age": 24,
+    "team": "Orlando City SC"
+  },
+  {
+    "name": "K. O'Toole",
+    "overall": 65,
+    "potential": 66,
+    "position": "LB, LM",
+    "age": 26,
+    "team": "New York City FC"
+  },
+  {
+    "name": "I. Fray",
+    "overall": 65,
+    "potential": 73,
+    "position": "RB, CB, RM",
+    "age": 22,
+    "team": "Inter Miami"
+  },
+  {
+    "name": "Célio Pompeu",
+    "overall": 65,
+    "potential": 66,
+    "position": "LM, CAM, RW, LW",
+    "age": 25,
+    "team": "St. Louis CITY SC"
+  },
+  {
+    "name": "K. Smith",
+    "overall": 65,
+    "potential": 65,
+    "position": "RB, LB, CM",
+    "age": 33,
+    "team": "FC Cincinnati"
+  },
+  {
+    "name": "A. Jabbari",
+    "overall": 65,
+    "potential": 68,
+    "position": "ST",
+    "age": 25,
+    "team": "FC Cincinnati"
+  },
+  {
+    "name": "B. Hines-Ike",
+    "overall": 65,
+    "potential": 65,
+    "position": "CB",
+    "age": 30,
+    "team": "Austin FC"
+  },
+  {
+    "name": "J. Gallagher",
+    "overall": 65,
+    "potential": 65,
+    "position": "RB, LB, LM, RM",
+    "age": 29,
+    "team": "Austin FC"
+  },
+  {
+    "name": "Guilherme Biro",
+    "overall": 65,
+    "potential": 68,
+    "position": "LB, CB, CM",
+    "age": 25,
+    "team": "Austin FC"
+  },
+  {
+    "name": "J. Maher",
+    "overall": 65,
+    "potential": 69,
+    "position": "CB",
+    "age": 25,
+    "team": "Nashville SC"
+  },
+  {
+    "name": "C. McVey",
+    "overall": 65,
+    "potential": 67,
+    "position": "CB, RB, LB, CDM",
+    "age": 28,
+    "team": "San Diego FC"
+  },
+  {
+    "name": "A. Sejdič",
+    "overall": 64,
+    "potential": 64,
+    "position": "CM, CAM, CDM",
+    "age": 28,
+    "team": "Columbus Crew"
+  },
+  {
+    "name": "N. Hagen",
+    "overall": 64,
+    "potential": 66,
+    "position": "GK",
+    "age": 28,
+    "team": "Columbus Crew"
+  },
+  {
+    "name": "J. Russell-Rowe",
+    "overall": 64,
+    "potential": 73,
+    "position": "ST, CAM",
+    "age": 22,
+    "team": "Columbus Crew"
+  },
+  {
+    "name": "M. Sofo",
+    "overall": 64,
+    "potential": 76,
+    "position": "LM, LW, RM",
+    "age": 20,
+    "team": "New York Red Bulls"
+  },
+  {
+    "name": "W. Carmona",
+    "overall": 64,
+    "potential": 72,
+    "position": "LM, RM, CAM, LW",
+    "age": 22,
+    "team": "New York Red Bulls"
+  },
+  {
+    "name": "A. Farrell",
+    "overall": 64,
+    "potential": 64,
+    "position": "CB",
+    "age": 33,
+    "team": "New England Revolution"
+  },
+  {
+    "name": "A. Bono",
+    "overall": 64,
+    "potential": 64,
+    "position": "GK",
+    "age": 31,
+    "team": "New England Revolution"
+  },
+  {
+    "name": "T. Beason",
+    "overall": 64,
+    "potential": 66,
+    "position": "CB, LB, CDM",
+    "age": 28,
+    "team": "New England Revolution"
+  },
+  {
+    "name": "B. Raines",
+    "overall": 64,
+    "potential": 76,
+    "position": "CDM, CM, CB",
+    "age": 20,
+    "team": "New England Revolution"
+  },
+  {
+    "name": "J. Dean",
+    "overall": 64,
+    "potential": 64,
+    "position": "RB, LB, RM",
+    "age": 28,
+    "team": "Chicago Fire"
+  },
+  {
+    "name": "P. Pomykal",
+    "overall": 64,
+    "potential": 67,
+    "position": "CM, CDM, CAM",
+    "age": 25,
+    "team": "FC Dallas"
+  },
+  {
+    "name": "D. Louicius",
+    "overall": 64,
+    "potential": 70,
+    "position": "RW, ST, RM",
+    "age": 24,
+    "team": "FC Dallas"
+  },
+  {
+    "name": "B. Kamungo",
+    "overall": 64,
+    "potential": 70,
+    "position": "LM, RM, RW, LW",
+    "age": 23,
+    "team": "FC Dallas"
+  },
+  {
+    "name": "J. Pulskamp",
+    "overall": 64,
+    "potential": 69,
+    "position": "GK",
+    "age": 24,
+    "team": "Sporting Kansas City"
+  },
+  {
+    "name": "N. Mićović",
+    "overall": 64,
+    "potential": 72,
+    "position": "GK",
+    "age": 23,
+    "team": "LA Galaxy"
+  },
+  {
+    "name": "S. Junqua",
+    "overall": 64,
+    "potential": 64,
+    "position": "CB, LB, LM",
+    "age": 28,
+    "team": "Real Salt Lake"
+  },
+  {
+    "name": "H. Synchuk",
+    "overall": 64,
+    "potential": 78,
+    "position": "CAM, RM, CM",
+    "age": 18,
+    "team": "CF Montréal"
+  },
+  {
+    "name": "J. Marshall-Rutty",
+    "overall": 64,
+    "potential": 75,
+    "position": "RB, RM, LB",
+    "age": 21,
+    "team": "CF Montréal"
+  },
+  {
+    "name": "E. Morales",
+    "overall": 64,
+    "potential": 79,
+    "position": "CB",
+    "age": 21,
+    "team": "CF Montréal"
+  },
+  {
+    "name": "S. Ibrahim",
+    "overall": 64,
+    "potential": 69,
+    "position": "ST, RW, RM",
+    "age": 22,
+    "team": "CF Montréal"
+  },
+  {
+    "name": "S. Breza",
+    "overall": 64,
+    "potential": 64,
+    "position": "GK",
+    "age": 27,
+    "team": "CF Montréal"
+  },
+  {
+    "name": "V. Loturi",
+    "overall": 64,
+    "potential": 70,
+    "position": "CDM, CM",
+    "age": 24,
+    "team": "CF Montréal"
+  },
+  {
+    "name": "Z. McGraw",
+    "overall": 64,
+    "potential": 65,
+    "position": "CB",
+    "age": 28,
+    "team": "Portland Timbers"
+  },
+  {
+    "name": "H. Wingo",
+    "overall": 64,
+    "potential": 64,
+    "position": "RB, CB, RM",
+    "age": 29,
+    "team": "Toronto FC"
+  },
+  {
+    "name": "Alonso Coello",
+    "overall": 64,
+    "potential": 67,
+    "position": "CM, CDM, CAM",
+    "age": 25,
+    "team": "Toronto FC"
+  },
+  {
+    "name": "L. Gavran",
+    "overall": 64,
+    "potential": 68,
+    "position": "GK",
+    "age": 25,
+    "team": "Toronto FC"
+  },
+  {
+    "name": "B. Leroux",
+    "overall": 64,
+    "potential": 75,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "San Jose Earthquakes"
+  },
+  {
+    "name": "B. Kikanović",
+    "overall": 64,
+    "potential": 65,
+    "position": "LM, LW, RM, LB",
+    "age": 25,
+    "team": "San Jose Earthquakes"
+  },
+  {
+    "name": "N. Buck",
+    "overall": 64,
+    "potential": 79,
+    "position": "CM, CDM, RW, CAM",
+    "age": 20,
+    "team": "San Jose Earthquakes"
+  },
+  {
+    "name": "C. Togashi",
+    "overall": 64,
+    "potential": 64,
+    "position": "ST, RW",
+    "age": 31,
+    "team": "Atlanta United"
+  },
+  {
+    "name": "D. Ruíz",
+    "overall": 64,
+    "potential": 74,
+    "position": "CM, CDM, RB",
+    "age": 21,
+    "team": "Inter Miami"
+  },
+  {
+    "name": "J. Yaro",
+    "overall": 64,
+    "potential": 64,
+    "position": "CB",
+    "age": 30,
+    "team": "St. Louis CITY SC"
+  },
+  {
+    "name": "T. Totland",
+    "overall": 64,
+    "potential": 65,
+    "position": "RB, LB, RM",
+    "age": 25,
+    "team": "St. Louis CITY SC"
+  },
+  {
+    "name": "T. Ostrák",
+    "overall": 64,
+    "potential": 67,
+    "position": "CM, CAM, CDM",
+    "age": 25,
+    "team": "St. Louis CITY SC"
+  },
+  {
+    "name": "T. Anunga",
+    "overall": 64,
+    "potential": 64,
+    "position": "CM, CDM",
+    "age": 28,
+    "team": "FC Cincinnati"
+  },
+  {
+    "name": "Ž. Kolmanič",
+    "overall": 64,
+    "potential": 68,
+    "position": "LB, LM",
+    "age": 25,
+    "team": "Austin FC"
+  },
+  {
+    "name": "J. Bell",
+    "overall": 64,
+    "potential": 64,
+    "position": "CB, LB, CDM",
+    "age": 27,
+    "team": "Austin FC"
+  },
+  {
+    "name": "J. Bauer",
+    "overall": 64,
+    "potential": 67,
+    "position": "CB, RB, RM",
+    "age": 26,
+    "team": "Nashville SC"
+  },
+  {
+    "name": "E. Boateng",
+    "overall": 64,
+    "potential": 64,
+    "position": "LM, RM, LW",
+    "age": 31,
+    "team": "San Diego FC"
+  },
+  {
+    "name": "P. Sisniega",
+    "overall": 64,
+    "potential": 65,
+    "position": "GK",
+    "age": 29,
+    "team": "San Diego FC"
+  },
+  {
+    "name": "C. dos Santos",
+    "overall": 64,
+    "potential": 70,
+    "position": "GK",
+    "age": 24,
+    "team": "San Diego FC"
+  },
+  {
+    "name": "E. Bush",
+    "overall": 63,
+    "potential": 63,
+    "position": "GK",
+    "age": 39,
+    "team": "Columbus Crew"
+  },
+  {
+    "name": "J. Mina",
+    "overall": 63,
+    "potential": 76,
+    "position": "RB",
+    "age": 20,
+    "team": "New York Red Bulls"
+  },
+  {
+    "name": "P. Miller",
+    "overall": 63,
+    "potential": 77,
+    "position": "LB, LM",
+    "age": 17,
+    "team": "New England Revolution"
+  },
+  {
+    "name": "W. Sands",
+    "overall": 63,
+    "potential": 66,
+    "position": "LM, LB",
+    "age": 24,
+    "team": "New England Revolution"
+  },
+  {
+    "name": "D. D'Avilla",
+    "overall": 63,
+    "potential": 70,
+    "position": "CDM, CM",
+    "age": 22,
+    "team": "Chicago Fire"
+  },
+  {
+    "name": "J. Gal",
+    "overall": 63,
+    "potential": 63,
+    "position": "GK",
+    "age": 32,
+    "team": "Chicago Fire"
+  },
+  {
+    "name": "D. Yapi",
+    "overall": 63,
+    "potential": 77,
+    "position": "ST",
+    "age": 20,
+    "team": "Colorado Rapids"
+  },
+  {
+    "name": "S. Cleveland",
+    "overall": 63,
+    "potential": 63,
+    "position": "GK",
+    "age": 31,
+    "team": "Sporting Kansas City"
+  },
+  {
+    "name": "Z. Bassong",
+    "overall": 63,
+    "potential": 66,
+    "position": "LB, CB, CM",
+    "age": 26,
+    "team": "Sporting Kansas City"
+  },
+  {
+    "name": "I. Parente",
+    "overall": 63,
+    "potential": 68,
+    "position": "CM, CDM",
+    "age": 25,
+    "team": "LA Galaxy"
+  },
+  {
+    "name": "J. Maurer",
+    "overall": 63,
+    "potential": 63,
+    "position": "GK",
+    "age": 36,
+    "team": "Houston Dynamo"
+  },
+  {
+    "name": "T. Johnson",
+    "overall": 63,
+    "potential": 73,
+    "position": "LB, LM",
+    "age": 19,
+    "team": "Vancouver Whitecaps FC"
+  },
+  {
+    "name": "D. Taylor",
+    "overall": 63,
+    "potential": 63,
+    "position": "RB, LB, RM",
+    "age": 27,
+    "team": "Minnesota United FC"
+  },
+  {
+    "name": "O. Escobar",
+    "overall": 63,
+    "potential": 80,
+    "position": "RW, CAM, RM",
+    "age": 18,
+    "team": "CF Montréal"
+  },
+  {
+    "name": "L. Petrasso",
+    "overall": 63,
+    "potential": 66,
+    "position": "LB, LM, CB",
+    "age": 25,
+    "team": "CF Montréal"
+  },
+  {
+    "name": "E. Miller",
+    "overall": 63,
+    "potential": 63,
+    "position": "LB, RB, CB",
+    "age": 32,
+    "team": "Portland Timbers"
+  },
+  {
+    "name": "N. Petković",
+    "overall": 63,
+    "potential": 74,
+    "position": "CDM, CAM, CM",
+    "age": 22,
+    "team": "Seattle Sounders FC"
+  },
+  {
+    "name": "G. Minoungou",
+    "overall": 63,
+    "potential": 72,
+    "position": "RM, RW, LW",
+    "age": 22,
+    "team": "Seattle Sounders FC"
+  },
+  {
+    "name": "K. Kossa-Rienzi",
+    "overall": 63,
+    "potential": 71,
+    "position": "RB, RM, CM",
+    "age": 23,
+    "team": "Seattle Sounders FC"
+  },
+  {
+    "name": "A. Thomas",
+    "overall": 63,
+    "potential": 67,
+    "position": "GK",
+    "age": 26,
+    "team": "Seattle Sounders FC"
+  },
+  {
+    "name": "N. Gomis",
+    "overall": 63,
+    "potential": 70,
+    "position": "CB, LB",
+    "age": 23,
+    "team": "Toronto FC"
+  },
+  {
+    "name": "W. Yarbrough",
+    "overall": 63,
+    "potential": 63,
+    "position": "GK",
+    "age": 36,
+    "team": "Toronto FC"
+  },
+  {
+    "name": "K. Thompson",
+    "overall": 63,
+    "potential": 68,
+    "position": "RB, RM, CM",
+    "age": 22,
+    "team": "Toronto FC"
+  },
+  {
+    "name": "O. Bouda",
+    "overall": 63,
+    "potential": 66,
+    "position": "LM, RM, ST, LW",
+    "age": 25,
+    "team": "San Jose Earthquakes"
+  },
+  {
+    "name": "N. Tsakiris",
+    "overall": 63,
+    "potential": 79,
+    "position": "CDM, CM, CAM",
+    "age": 20,
+    "team": "San Jose Earthquakes"
+  },
+  {
+    "name": "P. Judd",
+    "overall": 63,
+    "potential": 66,
+    "position": "ST",
+    "age": 26,
+    "team": "San Jose Earthquakes"
+  },
+  {
+    "name": "F. Westfield",
+    "overall": 63,
+    "potential": 77,
+    "position": "RB, LB, CM",
+    "age": 19,
+    "team": "Philadelphia Union"
+  },
+  {
+    "name": "B. Bender",
+    "overall": 63,
+    "potential": 70,
+    "position": "CAM, LM, CM",
+    "age": 24,
+    "team": "Philadelphia Union"
+  },
+  {
+    "name": "O. Makhanya",
+    "overall": 63,
+    "potential": 71,
+    "position": "CB",
+    "age": 21,
+    "team": "Philadelphia Union"
+  },
+  {
+    "name": "M. Silvetti",
+    "overall": 63,
+    "potential": 81,
+    "position": "RM, LM, ST, RW",
+    "age": 19,
+    "team": "Inter Miami"
+  },
+  {
+    "name": "R. Ríos Novo",
+    "overall": 63,
+    "potential": 73,
+    "position": "GK",
+    "age": 23,
+    "team": "Inter Miami"
+  },
+  {
+    "name": "B. Schwake",
+    "overall": 63,
+    "potential": 69,
+    "position": "GK",
+    "age": 23,
+    "team": "Nashville SC"
+  },
+  {
+    "name": "A. Goodwin",
+    "overall": 63,
+    "potential": 77,
+    "position": "ST",
+    "age": 20,
+    "team": "Charlotte FC"
+  },
+  {
+    "name": "L. Bombino",
+    "overall": 63,
+    "potential": 76,
+    "position": "LB, LM",
+    "age": 18,
+    "team": "San Diego FC"
+  },
+  {
+    "name": "A. Alvarado",
+    "overall": 63,
+    "potential": 74,
+    "position": "CAM, CM",
+    "age": 21,
+    "team": "San Diego FC"
+  },
+  {
+    "name": "J. Hopkins",
+    "overall": 62,
+    "potential": 72,
+    "position": "CAM, CM",
+    "age": 21,
+    "team": "DC United"
+  },
+  {
+    "name": "R. Voloder",
+    "overall": 62,
+    "potential": 67,
+    "position": "CB, LB, CDM",
+    "age": 24,
+    "team": "New York Red Bulls"
+  },
+  {
+    "name": "D. Gjengaar",
+    "overall": 62,
+    "potential": 75,
+    "position": "RM, RW",
+    "age": 21,
+    "team": "New York Red Bulls"
+  },
+  {
+    "name": "O. Valencia",
+    "overall": 62,
+    "potential": 73,
+    "position": "LB, LM",
+    "age": 21,
+    "team": "New York Red Bulls"
+  },
+  {
+    "name": "Leonardo Barroso",
+    "overall": 62,
+    "potential": 75,
+    "position": "RB",
+    "age": 20,
+    "team": "Chicago Fire"
+  },
+  {
+    "name": "S. Oregel",
+    "overall": 62,
+    "potential": 69,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Chicago Fire"
+  },
+  {
+    "name": "C. Harris",
+    "overall": 62,
+    "potential": 65,
+    "position": "RM, LM, ST, RW",
+    "age": 25,
+    "team": "Sporting Kansas City"
+  },
+  {
+    "name": "R. Priso",
+    "overall": 62,
+    "potential": 69,
+    "position": "CDM, CM",
+    "age": 22,
+    "team": "Vancouver Whitecaps FC"
+  },
+  {
+    "name": "M. Duggan",
+    "overall": 62,
+    "potential": 68,
+    "position": "CB",
+    "age": 24,
+    "team": "Minnesota United FC"
+  },
+  {
+    "name": "D. Padelford",
+    "overall": 62,
+    "potential": 72,
+    "position": "CB, LB, LM",
+    "age": 22,
+    "team": "Minnesota United FC"
+  },
+  {
+    "name": "F. Herbers",
+    "overall": 62,
+    "potential": 62,
+    "position": "CM, CDM, LM, CAM",
+    "age": 31,
+    "team": "CF Montréal"
+  },
+  {
+    "name": "B. Hidalgo",
+    "overall": 62,
+    "potential": 71,
+    "position": "RB, CB",
+    "age": 23,
+    "team": "CF Montréal"
+  },
+  {
+    "name": "R. Sailor",
+    "overall": 62,
+    "potential": 65,
+    "position": "CB",
+    "age": 26,
+    "team": "Seattle Sounders FC"
+  },
+  {
+    "name": "K. Franklin",
+    "overall": 62,
+    "potential": 69,
+    "position": "RB, RM, CDM",
+    "age": 22,
+    "team": "Toronto FC"
+  },
+  {
+    "name": "E. Edwards Jr.",
+    "overall": 62,
+    "potential": 62,
+    "position": "GK",
+    "age": 33,
+    "team": "San Jose Earthquakes"
+  },
+  {
+    "name": "J. Skahan",
+    "overall": 62,
+    "potential": 62,
+    "position": "CM, CAM",
+    "age": 27,
+    "team": "San Jose Earthquakes"
+  },
+  {
+    "name": "A. Smolyakov",
+    "overall": 62,
+    "potential": 69,
+    "position": "LB, LM",
+    "age": 22,
+    "team": "Los Angeles FC"
+  },
+  {
+    "name": "T. Hasal",
+    "overall": 62,
+    "potential": 65,
+    "position": "GK",
+    "age": 25,
+    "team": "Los Angeles FC"
+  },
+  {
+    "name": "G. Flores",
+    "overall": 62,
+    "potential": 73,
+    "position": "CB",
+    "age": 22,
+    "team": "FC Cincinnati"
+  },
+  {
+    "name": "W. Kumado",
+    "overall": 62,
+    "potential": 71,
+    "position": "RB, RM",
+    "age": 22,
+    "team": "San Diego FC"
+  },
+  {
+    "name": "H. Kijima",
+    "overall": 61,
+    "potential": 68,
+    "position": "CM, CDM, LM, CAM",
+    "age": 23,
+    "team": "DC United"
+  },
+  {
+    "name": "G. Tubbs",
+    "overall": 61,
+    "potential": 67,
+    "position": "CB",
+    "age": 23,
+    "team": "DC United"
+  },
+  {
+    "name": "R. Donkor",
+    "overall": 61,
+    "potential": 75,
+    "position": "CDM, CM",
+    "age": 20,
+    "team": "New York Red Bulls"
+  },
+  {
+    "name": "N. Cobb",
+    "overall": 61,
+    "potential": 77,
+    "position": "CB, RB, CDM",
+    "age": 19,
+    "team": "Colorado Rapids"
+  },
+  {
+    "name": "M. Collodi",
+    "overall": 61,
+    "potential": 67,
+    "position": "GK",
+    "age": 24,
+    "team": "FC Dallas"
+  },
+  {
+    "name": "J. Miller",
+    "overall": 61,
+    "potential": 67,
+    "position": "CB",
+    "age": 23,
+    "team": "Sporting Kansas City"
+  },
+  {
+    "name": "B. Scott",
+    "overall": 61,
+    "potential": 65,
+    "position": "GK",
+    "age": 26,
+    "team": "LA Galaxy"
+  },
+  {
+    "name": "N. Quiñónes",
+    "overall": 61,
+    "potential": 70,
+    "position": "LM, RM, LW",
+    "age": 22,
+    "team": "Houston Dynamo"
+  },
+  {
+    "name": "A. Zendejas",
+    "overall": 61,
+    "potential": 61,
+    "position": "GK",
+    "age": 29,
+    "team": "Vancouver Whitecaps FC"
+  },
+  {
+    "name": "P. Quinton",
+    "overall": 61,
+    "potential": 66,
+    "position": "CB, RB, CDM",
+    "age": 25,
+    "team": "Real Salt Lake"
+  },
+  {
+    "name": "S. Brunell",
+    "overall": 61,
+    "potential": 79,
+    "position": "CDM, CM",
+    "age": 18,
+    "team": "Seattle Sounders FC"
+  },
+  {
+    "name": "Z. Monlouis",
+    "overall": 61,
+    "potential": 74,
+    "position": "CB",
+    "age": 21,
+    "team": "Toronto FC"
+  },
+  {
+    "name": "D. Kerr",
+    "overall": 61,
+    "potential": 68,
+    "position": "ST, RM, CM, RW",
+    "age": 22,
+    "team": "Toronto FC"
+  },
+  {
+    "name": "M. Floriani",
+    "overall": 61,
+    "potential": 68,
+    "position": "CB",
+    "age": 22,
+    "team": "San Jose Earthquakes"
+  },
+  {
+    "name": "D. Munie",
+    "overall": 61,
+    "potential": 66,
+    "position": "CB",
+    "age": 25,
+    "team": "San Jose Earthquakes"
+  },
+  {
+    "name": "G. Marks",
+    "overall": 61,
+    "potential": 66,
+    "position": "GK",
+    "age": 25,
+    "team": "Philadelphia Union"
+  },
+  {
+    "name": "J. Gerbet",
+    "overall": 61,
+    "potential": 68,
+    "position": "CDM, CM",
+    "age": 24,
+    "team": "Orlando City SC"
+  },
+  {
+    "name": "A. Fortune",
+    "overall": 61,
+    "potential": 70,
+    "position": "CM, CDM, CAM",
+    "age": 22,
+    "team": "Atlanta United"
+  },
+  {
+    "name": "E. Louro",
+    "overall": 61,
+    "potential": 62,
+    "position": "GK",
+    "age": 29,
+    "team": "FC Cincinnati"
+  },
+  {
+    "name": "T. Barlow",
+    "overall": 61,
+    "potential": 61,
+    "position": "ST, CAM, CM",
+    "age": 29,
+    "team": "FC Cincinnati"
+  },
+  {
+    "name": "N. Dubersarsky",
+    "overall": 61,
+    "potential": 75,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Austin FC"
+  },
+  {
+    "name": "M. Duah",
+    "overall": 61,
+    "potential": 71,
+    "position": "CB, CDM",
+    "age": 20,
+    "team": "San Diego FC"
+  },
+  {
+    "name": "J. Murrell",
+    "overall": 60,
+    "potential": 74,
+    "position": "ST",
+    "age": 21,
+    "team": "DC United"
+  },
+  {
+    "name": "K. Hughes",
+    "overall": 60,
+    "potential": 65,
+    "position": "CB",
+    "age": 24,
+    "team": "New England Revolution"
+  },
+  {
+    "name": "Geovane Jesus",
+    "overall": 60,
+    "potential": 66,
+    "position": "RB",
+    "age": 23,
+    "team": "FC Dallas"
+  },
+  {
+    "name": "T. Lepley",
+    "overall": 60,
+    "potential": 67,
+    "position": "CM, CDM",
+    "age": 23,
+    "team": "LA Galaxy"
+  },
+  {
+    "name": "E. Wynder",
+    "overall": 60,
+    "potential": 68,
+    "position": "CM, CAM, CDM",
+    "age": 22,
+    "team": "LA Galaxy"
+  },
+  {
+    "name": "G. Bovalina",
+    "overall": 60,
+    "potential": 74,
+    "position": "RB, CM",
+    "age": 20,
+    "team": "Vancouver Whitecaps FC"
+  },
+  {
+    "name": "Z. Gozo",
+    "overall": 60,
+    "potential": 80,
+    "position": "RM, CAM, RW",
+    "age": 18,
+    "team": "Real Salt Lake"
+  },
+  {
+    "name": "D. Bugaj",
+    "overall": 60,
+    "potential": 66,
+    "position": "RB, RM",
+    "age": 20,
+    "team": "CF Montréal"
+  },
+  {
+    "name": "A. Guboglo",
+    "overall": 60,
+    "potential": 75,
+    "position": "RB, RM, LB",
+    "age": 18,
+    "team": "CF Montréal"
+  },
+  {
+    "name": "R. Baker-Whiting",
+    "overall": 60,
+    "potential": 76,
+    "position": "LB, RB, LM",
+    "age": 20,
+    "team": "Seattle Sounders FC"
+  },
+  {
+    "name": "J. Vilsaint",
+    "overall": 60,
+    "potential": 69,
+    "position": "ST",
+    "age": 22,
+    "team": "Toronto FC"
+  },
+  {
+    "name": "J. Rafanello",
+    "overall": 60,
+    "potential": 65,
+    "position": "CAM, CM",
+    "age": 25,
+    "team": "Philadelphia Union"
+  },
+  {
+    "name": "T. Romero",
+    "overall": 60,
+    "potential": 66,
+    "position": "GK",
+    "age": 24,
+    "team": "New York City FC"
+  },
+  {
+    "name": "S. Becher",
+    "overall": 60,
+    "potential": 63,
+    "position": "ST",
+    "age": 25,
+    "team": "St. Louis CITY SC"
+  },
+  {
+    "name": "G. Valenzuela",
+    "overall": 60,
+    "potential": 74,
+    "position": "CAM, ST, CM",
+    "age": 20,
+    "team": "FC Cincinnati"
+  },
+  {
+    "name": "W. Pacius",
+    "overall": 60,
+    "potential": 67,
+    "position": "ST",
+    "age": 24,
+    "team": "Nashville SC"
+  },
+  {
+    "name": "H. Bruseth",
+    "overall": 60,
+    "potential": 74,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "San Diego FC"
+  },
+  {
+    "name": "L. Duru",
+    "overall": 60,
+    "potential": 72,
+    "position": "RB, RM",
+    "age": 20,
+    "team": "San Diego FC"
+  },
+  {
+    "name": "T. Habroune",
+    "overall": 59,
+    "potential": 76,
+    "position": "CAM, CM",
+    "age": 19,
+    "team": "Columbus Crew"
+  },
+  {
+    "name": "A. Rojas",
+    "overall": 59,
+    "potential": 74,
+    "position": "LW, LM",
+    "age": 19,
+    "team": "New York Red Bulls"
+  },
+  {
+    "name": "S. Ngoma",
+    "overall": 59,
+    "potential": 75,
+    "position": "RM, ST, RW",
+    "age": 19,
+    "team": "New York Red Bulls"
+  },
+  {
+    "name": "J. Panayotou",
+    "overall": 59,
+    "potential": 73,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "New England Revolution"
+  },
+  {
+    "name": "A. Fadal",
+    "overall": 59,
+    "potential": 70,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "Colorado Rapids"
+  },
+  {
+    "name": "J. Bartlett",
+    "overall": 59,
+    "potential": 72,
+    "position": "CM, CDM",
+    "age": 19,
+    "team": "Sporting Kansas City"
+  },
+  {
+    "name": "S. Afrifa",
+    "overall": 59,
+    "potential": 65,
+    "position": "LW, ST, RW, LM",
+    "age": 24,
+    "team": "Sporting Kansas City"
+  },
+  {
+    "name": "G. Vivi",
+    "overall": 59,
+    "potential": 62,
+    "position": "LW, LM",
+    "age": 24,
+    "team": "LA Galaxy"
+  },
+  {
+    "name": "B. Gillingham",
+    "overall": 59,
+    "potential": 67,
+    "position": "GK",
+    "age": 22,
+    "team": "Houston Dynamo"
+  },
+  {
+    "name": "I. Boehmer",
+    "overall": 59,
+    "potential": 66,
+    "position": "GK",
+    "age": 23,
+    "team": "Vancouver Whitecaps FC"
+  },
+  {
+    "name": "A. Piol",
+    "overall": 59,
+    "potential": 73,
+    "position": "ST",
+    "age": 20,
+    "team": "Real Salt Lake"
+  },
+  {
+    "name": "K. Henry",
+    "overall": 59,
+    "potential": 67,
+    "position": "CB",
+    "age": 21,
+    "team": "Real Salt Lake"
+  },
+  {
+    "name": "N. Caliskan",
+    "overall": 59,
+    "potential": 61,
+    "position": "RB, CM, CDM",
+    "age": 24,
+    "team": "Real Salt Lake"
+  },
+  {
+    "name": "B. Craig",
+    "overall": 59,
+    "potential": 69,
+    "position": "CB, CDM",
+    "age": 21,
+    "team": "CF Montréal"
+  },
+  {
+    "name": "J. Ricketts",
+    "overall": 59,
+    "potential": 65,
+    "position": "LM, LB",
+    "age": 23,
+    "team": "San Jose Earthquakes"
+  },
+  {
+    "name": "S. Tanasijević",
+    "overall": 59,
+    "potential": 61,
+    "position": "CB",
+    "age": 28,
+    "team": "New York City FC"
+  },
+  {
+    "name": "G. Ranjitsingh",
+    "overall": 59,
+    "potential": 59,
+    "position": "GK",
+    "age": 31,
+    "team": "New York City FC"
+  },
+  {
+    "name": "J. Shore",
+    "overall": 59,
+    "potential": 72,
+    "position": "CDM, CM, CB",
+    "age": 18,
+    "team": "New York City FC"
+  },
+  {
+    "name": "L. Brennan",
+    "overall": 59,
+    "potential": 74,
+    "position": "RW, RM",
+    "age": 20,
+    "team": "Atlanta United"
+  },
+  {
+    "name": "L. Dellavalle",
+    "overall": 59,
+    "potential": 69,
+    "position": "CB",
+    "age": 21,
+    "team": "Los Angeles FC"
+  },
+  {
+    "name": "B. Lundt",
+    "overall": 59,
+    "potential": 60,
+    "position": "GK",
+    "age": 29,
+    "team": "St. Louis CITY SC"
+  },
+  {
+    "name": "M. Perez",
+    "overall": 59,
+    "potential": 76,
+    "position": "CDM, CM",
+    "age": 20,
+    "team": "St. Louis CITY SC"
+  },
+  {
+    "name": "J. Pérez",
+    "overall": 59,
+    "potential": 66,
+    "position": "RM, LM, RW",
+    "age": 22,
+    "team": "Nashville SC"
+  },
+  {
+    "name": "S. Mohammed",
+    "overall": 59,
+    "potential": 68,
+    "position": "LM, CAM, LW",
+    "age": 21,
+    "team": "Nashville SC"
+  },
+  {
+    "name": "T. Smalls",
+    "overall": 59,
+    "potential": 65,
+    "position": "LW, RM, ST, LM",
+    "age": 22,
+    "team": "Charlotte FC"
+  },
+  {
+    "name": "C. Odunze",
+    "overall": 59,
+    "potential": 69,
+    "position": "GK",
+    "age": 22,
+    "team": "Charlotte FC"
+  },
+  {
+    "name": "C. Antley",
+    "overall": 58,
+    "potential": 58,
+    "position": "RB, CB, LB, CDM",
+    "age": 30,
+    "team": "DC United"
+  },
+  {
+    "name": "J. Farr",
+    "overall": 58,
+    "potential": 58,
+    "position": "GK",
+    "age": 30,
+    "team": "DC United"
+  },
+  {
+    "name": "H. Miller",
+    "overall": 58,
+    "potential": 77,
+    "position": "RB",
+    "age": 18,
+    "team": "LA Galaxy"
+  },
+  {
+    "name": "J. Badwal",
+    "overall": 58,
+    "potential": 76,
+    "position": "CM, CDM",
+    "age": 19,
+    "team": "Vancouver Whitecaps FC"
+  },
+  {
+    "name": "M. Stajduhar",
+    "overall": 58,
+    "potential": 61,
+    "position": "GK",
+    "age": 27,
+    "team": "Real Salt Lake"
+  },
+  {
+    "name": "O. De Rosario",
+    "overall": 58,
+    "potential": 65,
+    "position": "ST",
+    "age": 23,
+    "team": "Seattle Sounders FC"
+  },
+  {
+    "name": "C. Applewhite",
+    "overall": 58,
+    "potential": 71,
+    "position": "CB",
+    "age": 17,
+    "team": "Nashville SC"
+  },
+  {
+    "name": "O. Verhoeven",
+    "overall": 58,
+    "potential": 78,
+    "position": "RB, LB, RM",
+    "age": 19,
+    "team": "San Diego FC"
+  },
+  {
+    "name": "D. Ferree",
+    "overall": 58,
+    "potential": 76,
+    "position": "GK",
+    "age": 18,
+    "team": "San Diego FC"
+  },
+  {
+    "name": "T. Brown",
+    "overall": 57,
+    "potential": 74,
+    "position": "LB, LM",
+    "age": 17,
+    "team": "Columbus Crew"
+  },
+  {
+    "name": "W. Bogacz",
+    "overall": 57,
+    "potential": 71,
+    "position": "ST",
+    "age": 20,
+    "team": "New York Red Bulls"
+  },
+  {
+    "name": "M. Fry",
+    "overall": 57,
+    "potential": 70,
+    "position": "RW, RM",
+    "age": 20,
+    "team": "New England Revolution"
+  },
+  {
+    "name": "Álvaro Augusto",
+    "overall": 57,
+    "potential": 74,
+    "position": "CB",
+    "age": 20,
+    "team": "FC Dallas"
+  },
+  {
+    "name": "N. Norris",
+    "overall": 57,
+    "potential": 71,
+    "position": "LB, CDM, CM",
+    "age": 20,
+    "team": "FC Dallas"
+  },
+  {
+    "name": "C. Rindov",
+    "overall": 57,
+    "potential": 65,
+    "position": "CB",
+    "age": 23,
+    "team": "LA Galaxy"
+  },
+  {
+    "name": "A. Whit",
+    "overall": 57,
+    "potential": 57,
+    "position": "CM, CDM",
+    "age": 29,
+    "team": "Houston Dynamo"
+  },
+  {
+    "name": "R. Elloumi",
+    "overall": 57,
+    "potential": 77,
+    "position": "ST",
+    "age": 17,
+    "team": "Vancouver Whitecaps FC"
+  },
+  {
+    "name": "C. Baker",
+    "overall": 57,
+    "potential": 68,
+    "position": "RB, LB, RM",
+    "age": 21,
+    "team": "Seattle Sounders FC"
+  },
+  {
+    "name": "M. Henry",
+    "overall": 57,
+    "potential": 65,
+    "position": "RM, CM, RW",
+    "age": 22,
+    "team": "Toronto FC"
+  },
+  {
+    "name": "L. Stefanović",
+    "overall": 57,
+    "potential": 77,
+    "position": "CB",
+    "age": 18,
+    "team": "Toronto FC"
+  },
+  {
+    "name": "M. Cimermancic",
+    "overall": 57,
+    "potential": 69,
+    "position": "CM, LM, CDM",
+    "age": 20,
+    "team": "Toronto FC"
+  },
+  {
+    "name": "R. Roberts",
+    "overall": 57,
+    "potential": 67,
+    "position": "CB, LB",
+    "age": 21,
+    "team": "San Jose Earthquakes"
+  },
+  {
+    "name": "M. Jones",
+    "overall": 57,
+    "potential": 65,
+    "position": "LW, ST, LM",
+    "age": 21,
+    "team": "New York City FC"
+  },
+  {
+    "name": "N. Cavallo",
+    "overall": 57,
+    "potential": 63,
+    "position": "LB",
+    "age": 23,
+    "team": "New York City FC"
+  },
+  {
+    "name": "M. Edwards",
+    "overall": 57,
+    "potential": 68,
+    "position": "RB, CB, LB, CDM",
+    "age": 22,
+    "team": "Atlanta United"
+  },
+  {
+    "name": "W. Reilly",
+    "overall": 57,
+    "potential": 66,
+    "position": "CM, CDM, CAM",
+    "age": 22,
+    "team": "Atlanta United"
+  },
+  {
+    "name": "I. Boatwright",
+    "overall": 57,
+    "potential": 67,
+    "position": "RB",
+    "age": 20,
+    "team": "Inter Miami"
+  },
+  {
+    "name": "S. Morales",
+    "overall": 57,
+    "potential": 74,
+    "position": "CAM, RM, CM",
+    "age": 18,
+    "team": "Inter Miami"
+  },
+  {
+    "name": "T. Hall",
+    "overall": 57,
+    "potential": 74,
+    "position": "CB, CDM",
+    "age": 19,
+    "team": "Inter Miami"
+  },
+  {
+    "name": "M. Joyner",
+    "overall": 57,
+    "potential": 74,
+    "position": "LM, LW",
+    "age": 18,
+    "team": "St. Louis CITY SC"
+  },
+  {
+    "name": "K. Fletcher",
+    "overall": 57,
+    "potential": 75,
+    "position": "LM, LW",
+    "age": 19,
+    "team": "FC Cincinnati"
+  },
+  {
+    "name": "M. Djordjević",
+    "overall": 57,
+    "potential": 68,
+    "position": "CB",
+    "age": 22,
+    "team": "Austin FC"
+  },
+  {
+    "name": "M. Corcoran",
+    "overall": 57,
+    "potential": 68,
+    "position": "CDM, CM",
+    "age": 19,
+    "team": "Nashville SC"
+  },
+  {
+    "name": "B. Coulibaly",
+    "overall": 57,
+    "potential": 68,
+    "position": "CM, CDM",
+    "age": 19,
+    "team": "Charlotte FC"
+  },
+  {
+    "name": "N. Berchimas",
+    "overall": 57,
+    "potential": 79,
+    "position": "LM, LW",
+    "age": 17,
+    "team": "Charlotte FC"
+  },
+  {
+    "name": "C. Ruvalcaba",
+    "overall": 56,
+    "potential": 64,
+    "position": "CB",
+    "age": 23,
+    "team": "Columbus Crew"
+  },
+  {
+    "name": "A. Marcucci",
+    "overall": 56,
+    "potential": 61,
+    "position": "GK",
+    "age": 25,
+    "team": "New York Red Bulls"
+  },
+  {
+    "name": "J. Hall",
+    "overall": 56,
+    "potential": 74,
+    "position": "LM, RW, ST, LW",
+    "age": 17,
+    "team": "New York Red Bulls"
+  },
+  {
+    "name": "N. Hansen",
+    "overall": 56,
+    "potential": 64,
+    "position": "GK",
+    "age": 23,
+    "team": "Colorado Rapids"
+  },
+  {
+    "name": "E. Newman",
+    "overall": 56,
+    "potential": 70,
+    "position": "RB",
+    "age": 19,
+    "team": "FC Dallas"
+  },
+  {
+    "name": "C. Cowell",
+    "overall": 56,
+    "potential": 82,
+    "position": "LW, LM",
+    "age": 16,
+    "team": "Real Salt Lake"
+  },
+  {
+    "name": "M. Dieng",
+    "overall": 56,
+    "potential": 67,
+    "position": "ST",
+    "age": 21,
+    "team": "Minnesota United FC"
+  },
+  {
+    "name": "I. Smith",
+    "overall": 56,
+    "potential": 65,
+    "position": "CB",
+    "age": 22,
+    "team": "Portland Timbers"
+  },
+  {
+    "name": "A. Pearlman",
+    "overall": 56,
+    "potential": 73,
+    "position": "RB, RM, CB",
+    "age": 20,
+    "team": "Toronto FC"
+  },
+  {
+    "name": "J. Hibbert",
+    "overall": 56,
+    "potential": 67,
+    "position": "GK",
+    "age": 20,
+    "team": "Atlanta United"
+  },
+  {
+    "name": "B. McSorley",
+    "overall": 56,
+    "potential": 63,
+    "position": "ST, RM, RW",
+    "age": 23,
+    "team": "St. Louis CITY SC"
+  },
+  {
+    "name": "D. Las",
+    "overall": 56,
+    "potential": 65,
+    "position": "GK",
+    "age": 23,
+    "team": "Austin FC"
+  },
+  {
+    "name": "I. LeFlore",
+    "overall": 56,
+    "potential": 63,
+    "position": "LB, LM",
+    "age": 23,
+    "team": "Nashville SC"
+  },
+  {
+    "name": "J. Neeley",
+    "overall": 56,
+    "potential": 73,
+    "position": "CB, RB",
+    "age": 20,
+    "team": "Charlotte FC"
+  },
+  {
+    "name": "O. Glasgow",
+    "overall": 55,
+    "potential": 67,
+    "position": "RM, RW, RB",
+    "age": 21,
+    "team": "Chicago Fire"
+  },
+  {
+    "name": "C. Cupps",
+    "overall": 55,
+    "potential": 77,
+    "position": "CB",
+    "age": 17,
+    "team": "Chicago Fire"
+  },
+  {
+    "name": "D. Poreba",
+    "overall": 55,
+    "potential": 64,
+    "position": "CM, CAM, CDM",
+    "age": 22,
+    "team": "Chicago Fire"
+  },
+  {
+    "name": "L. MacKenzie",
+    "overall": 55,
+    "potential": 72,
+    "position": "CAM, CM",
+    "age": 18,
+    "team": "Vancouver Whitecaps FC"
+  },
+  {
+    "name": "J. Adebayo-Smith",
+    "overall": 55,
+    "potential": 60,
+    "position": "ST",
+    "age": 24,
+    "team": "Minnesota United FC"
+  },
+  {
+    "name": "S. Hawkins",
+    "overall": 55,
+    "potential": 74,
+    "position": "CB",
+    "age": 18,
+    "team": "Seattle Sounders FC"
+  },
+  {
+    "name": "F. Montali",
+    "overall": 55,
+    "potential": 59,
+    "position": "GK",
+    "age": 24,
+    "team": "San Jose Earthquakes"
+  },
+  {
+    "name": "J. Otero",
+    "overall": 55,
+    "potential": 64,
+    "position": "GK",
+    "age": 22,
+    "team": "Orlando City SC"
+  },
+  {
+    "name": "M. Carrizo",
+    "overall": 55,
+    "potential": 69,
+    "position": "CAM, CM",
+    "age": 17,
+    "team": "New York City FC"
+  },
+  {
+    "name": "A. Gordon",
+    "overall": 55,
+    "potential": 71,
+    "position": "RW, ST, RM",
+    "age": 18,
+    "team": "Atlanta United"
+  },
+  {
+    "name": "J. Orozco",
+    "overall": 55,
+    "potential": 70,
+    "position": "CB",
+    "age": 21,
+    "team": "St. Louis CITY SC"
+  },
+  {
+    "name": "I. Pilcher",
+    "overall": 55,
+    "potential": 61,
+    "position": "CB, LB",
+    "age": 22,
+    "team": "San Diego FC"
+  },
+  {
+    "name": "R. Mosquera",
+    "overall": 54,
+    "potential": 66,
+    "position": "LW, LM, LB",
+    "age": 20,
+    "team": "New York Red Bulls"
+  },
+  {
+    "name": "Tiago",
+    "overall": 54,
+    "potential": 71,
+    "position": "CB",
+    "age": 20,
+    "team": "New England Revolution"
+  },
+  {
+    "name": "S. Williams",
+    "overall": 54,
+    "potential": 71,
+    "position": "CM, CDM, CAM",
+    "age": 20,
+    "team": "Chicago Fire"
+  },
+  {
+    "name": "K. Stewart-Baynes",
+    "overall": 54,
+    "potential": 68,
+    "position": "ST",
+    "age": 20,
+    "team": "Colorado Rapids"
+  },
+  {
+    "name": "M. Molina",
+    "overall": 54,
+    "potential": 72,
+    "position": "RB, RW, RM",
+    "age": 18,
+    "team": "FC Dallas"
+  },
+  {
+    "name": "J. Kortkamp",
+    "overall": 54,
+    "potential": 77,
+    "position": "GK",
+    "age": 17,
+    "team": "Sporting Kansas City"
+  },
+  {
+    "name": "J. Reynolds",
+    "overall": 54,
+    "potential": 64,
+    "position": "RB, RM",
+    "age": 21,
+    "team": "Sporting Kansas City"
+  },
+  {
+    "name": "N. Pierre",
+    "overall": 54,
+    "potential": 69,
+    "position": "ST",
+    "age": 20,
+    "team": "Vancouver Whitecaps FC"
+  },
+  {
+    "name": "M. Zambrano",
+    "overall": 54,
+    "potential": 64,
+    "position": "ST",
+    "age": 20,
+    "team": "Real Salt Lake"
+  },
+  {
+    "name": "G. Guerra",
+    "overall": 54,
+    "potential": 62,
+    "position": "ST",
+    "age": 22,
+    "team": "Portland Timbers"
+  },
+  {
+    "name": "T. Muse",
+    "overall": 54,
+    "potential": 58,
+    "position": "GK",
+    "age": 25,
+    "team": "Portland Timbers"
+  },
+  {
+    "name": "A. Rick",
+    "overall": 54,
+    "potential": 63,
+    "position": "GK",
+    "age": 19,
+    "team": "Philadelphia Union"
+  },
+  {
+    "name": "C. Guske",
+    "overall": 54,
+    "potential": 70,
+    "position": "CDM, CM",
+    "age": 18,
+    "team": "Orlando City SC"
+  },
+  {
+    "name": "Ș. Chirilă",
+    "overall": 54,
+    "potential": 74,
+    "position": "ST",
+    "age": 18,
+    "team": "FC Cincinnati"
+  },
+  {
+    "name": "S. Gidi",
+    "overall": 54,
+    "potential": 68,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "FC Cincinnati"
+  },
+  {
+    "name": "C. Fodrey",
+    "overall": 54,
+    "potential": 65,
+    "position": "ST, LW",
+    "age": 21,
+    "team": "Austin FC"
+  },
+  {
+    "name": "J. Knight",
+    "overall": 54,
+    "potential": 62,
+    "position": "LB, LM, RB",
+    "age": 23,
+    "team": "Nashville SC"
+  },
+  {
+    "name": "X. Valdez",
+    "overall": 54,
+    "potential": 63,
+    "position": "GK",
+    "age": 21,
+    "team": "Nashville SC"
+  },
+  {
+    "name": "N. Holliday",
+    "overall": 54,
+    "potential": 71,
+    "position": "GK",
+    "age": 19,
+    "team": "Charlotte FC"
+  },
+  {
+    "name": "E. Klein",
+    "overall": 53,
+    "potential": 73,
+    "position": "CB, CDM",
+    "age": 18,
+    "team": "New England Revolution"
+  },
+  {
+    "name": "D. Boltz",
+    "overall": 53,
+    "potential": 70,
+    "position": "ST",
+    "age": 19,
+    "team": "Chicago Fire"
+  },
+  {
+    "name": "A. Beaudry",
+    "overall": 53,
+    "potential": 73,
+    "position": "GK",
+    "age": 19,
+    "team": "Colorado Rapids"
+  },
+  {
+    "name": "A. Harris",
+    "overall": 53,
+    "potential": 63,
+    "position": "ST",
+    "age": 20,
+    "team": "Colorado Rapids"
+  },
+  {
+    "name": "J. Travis",
+    "overall": 53,
+    "potential": 67,
+    "position": "LB, CM",
+    "age": 21,
+    "team": "Colorado Rapids"
+  },
+  {
+    "name": "D. Baran",
+    "overall": 53,
+    "potential": 70,
+    "position": "RW, LW, RM",
+    "age": 18,
+    "team": "FC Dallas"
+  },
+  {
+    "name": "D. Garcia",
+    "overall": 53,
+    "potential": 73,
+    "position": "CM, CAM, CDM",
+    "age": 18,
+    "team": "FC Dallas"
+  },
+  {
+    "name": "R. Ramos Jr",
+    "overall": 53,
+    "potential": 73,
+    "position": "CAM, CM",
+    "age": 18,
+    "team": "LA Galaxy"
+  },
+  {
+    "name": "K. Nielsen",
+    "overall": 53,
+    "potential": 60,
+    "position": "CB",
+    "age": 23,
+    "team": "Los Angeles FC"
+  },
+  {
+    "name": "T. Pearce",
+    "overall": 53,
+    "potential": 76,
+    "position": "CDM, CM",
+    "age": 17,
+    "team": "St. Louis CITY SC"
+  },
+  {
+    "name": "M. Burton",
+    "overall": 53,
+    "potential": 71,
+    "position": "CAM, CM",
+    "age": 19,
+    "team": "Austin FC"
+  },
+  {
+    "name": "T. Williams",
+    "overall": 53,
+    "potential": 68,
+    "position": "CB, LB",
+    "age": 20,
+    "team": "Nashville SC"
+  },
+  {
+    "name": "C. Mrowka",
+    "overall": 52,
+    "potential": 72,
+    "position": "CAM, CM",
+    "age": 19,
+    "team": "Columbus Crew"
+  },
+  {
+    "name": "A. Stokes",
+    "overall": 52,
+    "potential": 75,
+    "position": "GK",
+    "age": 17,
+    "team": "New York Red Bulls"
+  },
+  {
+    "name": "S. Sarver",
+    "overall": 52,
+    "potential": 62,
+    "position": "ST, RW",
+    "age": 22,
+    "team": "FC Dallas"
+  },
+  {
+    "name": "R. Schewe",
+    "overall": 52,
+    "potential": 58,
+    "position": "GK",
+    "age": 23,
+    "team": "Sporting Kansas City"
+  },
+  {
+    "name": "I. James",
+    "overall": 52,
+    "potential": 65,
+    "position": "CB",
+    "age": 17,
+    "team": "Sporting Kansas City"
+  },
+  {
+    "name": "C. Tschantret",
+    "overall": 52,
+    "potential": 68,
+    "position": "CDM, CM",
+    "age": 19,
+    "team": "Sporting Kansas City"
+  },
+  {
+    "name": "A. Smir",
+    "overall": 52,
+    "potential": 57,
+    "position": "GK",
+    "age": 26,
+    "team": "Minnesota United FC"
+  },
+  {
+    "name": "O. Graham-Roache",
+    "overall": 52,
+    "potential": 75,
+    "position": "ST",
+    "age": 17,
+    "team": "CF Montréal"
+  },
+  {
+    "name": "A. De Rosario",
+    "overall": 52,
+    "potential": 66,
+    "position": "GK",
+    "age": 20,
+    "team": "Toronto FC"
+  },
+  {
+    "name": "C. Flax",
+    "overall": 52,
+    "potential": 59,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "New York City FC"
+  },
+  {
+    "name": "K. Acito",
+    "overall": 52,
+    "potential": 60,
+    "position": "CB",
+    "age": 21,
+    "team": "New York City FC"
+  },
+  {
+    "name": "D. Chong-Qui",
+    "overall": 52,
+    "potential": 75,
+    "position": "LB",
+    "age": 17,
+    "team": "Atlanta United"
+  },
+  {
+    "name": "A. Wibowo",
+    "overall": 52,
+    "potential": 64,
+    "position": "RW, RM",
+    "age": 19,
+    "team": "Los Angeles FC"
+  },
+  {
+    "name": "W. Frederick",
+    "overall": 51,
+    "potential": 62,
+    "position": "CAM, CM",
+    "age": 21,
+    "team": "Colorado Rapids"
+  },
+  {
+    "name": "M. Anchor",
+    "overall": 51,
+    "potential": 65,
+    "position": "GK",
+    "age": 20,
+    "team": "Seattle Sounders FC"
+  },
+  {
+    "name": "C. Olney Jr",
+    "overall": 51,
+    "potential": 71,
+    "position": "CM, CDM",
+    "age": 18,
+    "team": "Philadelphia Union"
+  },
+  {
+    "name": "S. Reid",
+    "overall": 51,
+    "potential": 68,
+    "position": "ST",
+    "age": 17,
+    "team": "New York City FC"
+  },
+  {
+    "name": "D. Baiera",
+    "overall": 51,
+    "potential": 63,
+    "position": "RB",
+    "age": 18,
+    "team": "New York City FC"
+  },
+  {
+    "name": "Z. Yáñez",
+    "overall": 51,
+    "potential": 65,
+    "position": "ST",
+    "age": 17,
+    "team": "New York City FC"
+  },
+  {
+    "name": "A. Chávez",
+    "overall": 51,
+    "potential": 77,
+    "position": "CAM, CM",
+    "age": 16,
+    "team": "FC Cincinnati"
+  },
+  {
+    "name": "I. Jones",
+    "overall": 51,
+    "potential": 62,
+    "position": "CM, CDM",
+    "age": 19,
+    "team": "Nashville SC"
+  },
+  {
+    "name": "R. Mitchell",
+    "overall": 50,
+    "potential": 59,
+    "position": "ST",
+    "age": 22,
+    "team": "New York Red Bulls"
+  },
+  {
+    "name": "M. Anderson",
+    "overall": 50,
+    "potential": 60,
+    "position": "ST, LW",
+    "age": 21,
+    "team": "Philadelphia Union"
+  },
+  {
+    "name": "G. Caraballo",
+    "overall": 50,
+    "potential": 76,
+    "position": "RW, LW, RM",
+    "age": 16,
+    "team": "Orlando City SC"
+  },
+  {
+    "name": "C. Glover",
+    "overall": 50,
+    "potential": 72,
+    "position": "ST",
+    "age": 18,
+    "team": "St. Louis CITY SC"
+  },
+  {
+    "name": "A. Sipić",
+    "overall": 50,
+    "potential": 61,
+    "position": "ST",
+    "age": 19,
+    "team": "Nashville SC"
+  },
+  {
+    "name": "K. Sargeant",
+    "overall": 50,
+    "potential": 59,
+    "position": "RB",
+    "age": 22,
+    "team": "San Diego FC"
+  },
+  {
+    "name": "P. Soma",
+    "overall": 50,
+    "potential": 63,
+    "position": "CDM, CM",
+    "age": 19,
+    "team": "San Diego FC"
+  },
+  {
+    "name": "V. Radojević",
+    "overall": 49,
+    "potential": 58,
+    "position": "LB",
+    "age": 20,
+    "team": "Chicago Fire"
+  },
+  {
+    "name": "S. Jura",
+    "overall": 49,
+    "potential": 69,
+    "position": "RB",
+    "age": 19,
+    "team": "Portland Timbers"
+  },
+  {
+    "name": "Y. Tsukada",
+    "overall": 49,
+    "potential": 55,
+    "position": "LW, RW, LM",
+    "age": 23,
+    "team": "Orlando City SC"
+  },
+  {
+    "name": "K. Mboma Dem",
+    "overall": 49,
+    "potential": 56,
+    "position": "ST, RW, CAM",
+    "age": 23,
+    "team": "FC Cincinnati"
+  },
+  {
+    "name": "S. Jimenez",
+    "overall": 49,
+    "potential": 70,
+    "position": "CDM, CM, RB",
+    "age": 18,
+    "team": "FC Cincinnati"
+  },
+  {
+    "name": "R. Thomas",
+    "overall": 49,
+    "potential": 54,
+    "position": "RB",
+    "age": 23,
+    "team": "Austin FC"
+  },
+  {
+    "name": "E. Torres",
+    "overall": 49,
+    "potential": 71,
+    "position": "CM, CDM",
+    "age": 17,
+    "team": "Austin FC"
+  },
+  {
+    "name": "D. Vazquez",
+    "overall": 49,
+    "potential": 67,
+    "position": "LW, LM",
+    "age": 19,
+    "team": "San Diego FC"
+  },
+  {
+    "name": "D. Borso",
+    "overall": 48,
+    "potential": 68,
+    "position": "CAM, CM",
+    "age": 19,
+    "team": "Chicago Fire"
+  },
+  {
+    "name": "J. Torquato",
+    "overall": 48,
+    "potential": 69,
+    "position": "LB, LM",
+    "age": 17,
+    "team": "FC Dallas"
+  },
+  {
+    "name": "T. Reid-Brown",
+    "overall": 48,
+    "potential": 68,
+    "position": "LB",
+    "age": 18,
+    "team": "Orlando City SC"
+  },
+  {
+    "name": "A. Saidi",
+    "overall": 48,
+    "potential": 73,
+    "position": "ST",
+    "age": 17,
+    "team": "San Diego FC"
+  }
+]

@@ -250,4 +250,33 @@
       transform: scale(1);
     }
   }
+
+  // ==================
+  // WINTER MODE
+  // ==================
+  &--winter {
+    border-right-color: rgba(100, 180, 255, 0.2);
+
+    .sidebar__logo {
+      background: linear-gradient(180deg, rgba(100, 180, 255, 0.08) 0%, transparent 100%);
+    }
+
+    .sidebar__logo-icon {
+      color: #8ec8ff;
+      filter: drop-shadow(0 0 8px rgba(100, 180, 255, 0.4));
+    }
+  }
+
+  &__winter-tag {
+    display: inline-block;
+    margin-top: 0.4rem;
+    padding: 0.2rem 0.6rem;
+    background: linear-gradient(135deg, rgba(100, 180, 255, 0.15), rgba(100, 180, 255, 0.05));
+    border: 1px solid rgba(100, 180, 255, 0.25);
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #8ec8ff;
+    letter-spacing: 0.03em;
+  }
 }

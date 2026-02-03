@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { useAuth } from '../../context/AuthContext';
 import Settings from '../Settings/Settings';
 import Auth from '../Auth/Auth';
 import SaveSlots from '../SaveSlots/SaveSlots';
+import { hasActiveContrarreloj, getContrarrelojSave, deleteContrarrelojSave } from '../../firebase/contrarrelojSaveService';
 import { 
   Play, LogIn, LogOut, Save, Trophy, Settings as SettingsIcon, 
   Lightbulb, User, Gamepad2, ChevronRight, Timer
@@ -12,6 +14,7 @@ import FootballIcon from '../icons/FootballIcon';
 import './MainMenu.scss';
 
 export default function MainMenu() {
+  const { t } = useTranslation();
   const { state, dispatch } = useGame();
   const { user, isAuthenticated, isEmailVerified, logout, loading: authLoading } = useAuth();
   const [animateIn, setAnimateIn] = useState(false);
@@ -21,9 +24,46 @@ export default function MainMenu() {
   const [saveSlotsMode, setSaveSlotsMode] = useState('load');
   const [loggingOut, setLoggingOut] = useState(false);
   
+  // Contrarreloj state
+  const [contrarrelojInfo, setContrarrelojInfo] = useState({ hasActive: false, summary: null });
+  const [showContrarrelojPrompt, setShowContrarrelojPrompt] = useState(false);
+  const [loadingContrarreloj, setLoadingContrarreloj] = useState(false);
+  
   useEffect(() => {
     setTimeout(() => setAnimateIn(true), 100);
   }, []);
+
+  // Detect active contrarreloj: check in-memory state first, then Firebase
+  const isContrarrelojInMemory = state.gameStarted && state.gameMode === 'contrarreloj' && !state.contrarrelojData?.finished;
+
+  useEffect(() => {
+    // If contrarreloj is already in memory, use that info directly
+    if (isContrarrelojInMemory) {
+      setContrarrelojInfo({
+        hasActive: true,
+        source: 'memory',
+        summary: {
+          teamName: state.team?.name || 'Equipo desconocido',
+          teamId: state.teamId,
+          leagueId: state.leagueId || state.playerLeagueId,
+          season: state.contrarrelojData?.seasonsPlayed || 1,
+          week: state.currentWeek || 1,
+          money: state.money || 0,
+          trophies: state.contrarrelojData?.trophies?.length || 0
+        }
+      });
+      return;
+    }
+
+    // Otherwise check Firebase
+    if (isAuthenticated && user?.uid) {
+      hasActiveContrarreloj(user.uid)
+        .then(info => setContrarrelojInfo(info))
+        .catch(() => setContrarrelojInfo({ hasActive: false, summary: null }));
+    } else {
+      setContrarrelojInfo({ hasActive: false, summary: null });
+    }
+  }, [isAuthenticated, user?.uid, isContrarrelojInMemory]);
 
   // Cerrar Auth cuando el usuario se autentique
   useEffect(() => {
@@ -52,6 +92,61 @@ export default function MainMenu() {
     await logout();
     dispatch({ type: 'RESET_GAME' });
     setLoggingOut(false);
+  };
+
+  // Contrarreloj handlers
+  const handleContrarreloj = () => {
+    if (!isAuthenticated) {
+      setShowAuth(true);
+      return;
+    }
+    if (contrarrelojInfo.hasActive) {
+      setShowContrarrelojPrompt(true);
+    } else {
+      dispatch({ type: 'SET_SCREEN', payload: 'contrarreloj_setup' });
+    }
+  };
+
+  const handleContrarrelojContinue = async () => {
+    // If already in memory, just go to office
+    if (isContrarrelojInMemory) {
+      dispatch({ type: 'SET_SCREEN', payload: 'office' });
+      setShowContrarrelojPrompt(false);
+      return;
+    }
+
+    // Otherwise load from Firebase
+    if (!user?.uid) return;
+    setLoadingContrarreloj(true);
+    try {
+      const saveData = await getContrarrelojSave(user.uid);
+      if (saveData) {
+        dispatch({ type: 'LOAD_SAVE', payload: { ...saveData, _contrarrelojUserId: user.uid } });
+        dispatch({ type: 'SET_SCREEN', payload: 'office' });
+      }
+    } catch (err) {
+      console.error('Error loading contrarreloj save:', err);
+    }
+    setLoadingContrarreloj(false);
+    setShowContrarrelojPrompt(false);
+  };
+
+  const handleContrarrelojNew = async () => {
+    // Delete old contrarreloj save (Firebase + reset in-memory state)
+    if (user?.uid) {
+      try {
+        await deleteContrarrelojSave(user.uid);
+      } catch (err) {
+        console.error('Error deleting old contrarreloj save:', err);
+      }
+    }
+    // Reset game state if current game is contrarreloj
+    if (isContrarrelojInMemory) {
+      dispatch({ type: 'RESET_GAME' });
+    }
+    setContrarrelojInfo({ hasActive: false, summary: null });
+    setShowContrarrelojPrompt(false);
+    dispatch({ type: 'SET_SCREEN', payload: 'contrarreloj_setup' });
   };
   
   if (showSettings) {
@@ -104,7 +199,7 @@ export default function MainMenu() {
             disabled={loggingOut}
           >
             <LogOut size={13} />
-            <span>{loggingOut ? 'Saliendo...' : 'Salir'}</span>
+            <span>{loggingOut ? t('mainMenu.loggingOut') : t('mainMenu.logout')}</span>
           </button>
         </div>
       )}
@@ -118,18 +213,19 @@ export default function MainMenu() {
           </div>
           <h1 className="main-menu__title">
             <span className="pc">P C</span>
-            <span className="futbol">FÚTBOL</span>
+            <span className="futbol">{t('mainMenu.title').split(' ')[1] || 'FÚTBOL'}</span>
           </h1>
           <div className="main-menu__edition">
             <span className="line"></span>
-            <span className="text">WEB EDITION</span>
+            <span className="text">{t('mainMenu.subtitle')}</span>
             <span className="line"></span>
           </div>
-          <p className="main-menu__season">Temporada 2025-2026</p>
+          <p className="main-menu__season">{t('mainMenu.season')}</p>
         </div>
         
         <nav className="main-menu__nav">
-          {state.gameStarted && (
+          {/* Continuar Partida — solo modo carrera (contrarreloj usa su propio botón) */}
+          {state.gameStarted && state.gameMode !== 'contrarreloj' && (
             <button 
               className="main-menu__btn main-menu__btn--continue"
               onClick={handleContinue}
@@ -140,8 +236,8 @@ export default function MainMenu() {
                   <Play size={22} />
                 </span>
                 <div className="text">
-                  <span className="label">Continuar Partida</span>
-                  <span className="sublabel">{state.team?.name} · Semana {state.currentWeek}</span>
+                  <span className="label">{t('mainMenu.continueGame')}</span>
+                  <span className="sublabel">{state.team?.name} · {t('common.week')} {state.currentWeek}</span>
                 </div>
                 <ChevronRight size={18} className="chevron" />
               </div>
@@ -152,7 +248,7 @@ export default function MainMenu() {
             className="main-menu__btn main-menu__btn--primary"
             onClick={handlePlay}
             disabled={authLoading}
-            style={{ '--delay': state.gameStarted ? '1' : '0' }}
+            style={{ '--delay': (state.gameStarted && state.gameMode !== 'contrarreloj') ? '1' : '0' }}
           >
             <div className="btn-content">
               <span className="icon-wrapper icon-wrapper--primary">
@@ -173,7 +269,8 @@ export default function MainMenu() {
             </div>
           </button>
 
-          {isAuthenticated && state.gameStarted && (
+          {/* Guardar Partida — solo modo carrera (NO contrarreloj) */}
+          {isAuthenticated && state.gameStarted && state.gameMode !== 'contrarreloj' && (
             <button 
               className="main-menu__btn main-menu__btn--save"
               onClick={() => {
@@ -195,22 +292,29 @@ export default function MainMenu() {
             </button>
           )}
           
-          <button
-            className="main-menu__btn main-menu__btn--contrarreloj"
-            onClick={() => dispatch({ type: 'SET_SCREEN', payload: 'contrarreloj_setup' })}
-            style={{ '--delay': state.gameStarted ? '3' : '1' }}
-          >
-            <div className="btn-content">
-              <span className="icon-wrapper icon-wrapper--contrarreloj">
-                <Timer size={22} />
-              </span>
-              <div className="text">
-                <span className="label">Contrarreloj</span>
-                <span className="sublabel">Llega a la Champions desde abajo</span>
+          {isAuthenticated && (
+            <button
+              className="main-menu__btn main-menu__btn--contrarreloj"
+              onClick={handleContrarreloj}
+              style={{ '--delay': state.gameStarted ? '3' : '1' }}
+            >
+              <div className="btn-content">
+                <span className="icon-wrapper icon-wrapper--contrarreloj">
+                  <Timer size={22} />
+                </span>
+                <div className="text">
+                  <span className="label">Contrarreloj</span>
+                  <span className="sublabel">
+                    {contrarrelojInfo.hasActive 
+                      ? `${contrarrelojInfo.summary?.teamName} · Temp. ${contrarrelojInfo.summary?.season}`
+                      : 'Llega a la Champions desde abajo'
+                    }
+                  </span>
+                </div>
+                <ChevronRight size={18} className="chevron" />
               </div>
-              <ChevronRight size={18} className="chevron" />
-            </div>
-          </button>
+            </button>
+          )}
 
           <div className="main-menu__secondary">
             <button 
@@ -232,6 +336,46 @@ export default function MainMenu() {
             </button>
           </div>
         </nav>
+
+        {/* Contrarreloj prompt: Continuar / Nueva partida */}
+        {showContrarrelojPrompt && (
+          <div className="main-menu__contrarreloj-prompt">
+            <div className="contrarreloj-prompt__overlay" onClick={() => setShowContrarrelojPrompt(false)} />
+            <div className="contrarreloj-prompt__card">
+              <div className="contrarreloj-prompt__header">
+                <Timer size={24} />
+                <h3>Contrarreloj activo</h3>
+              </div>
+              <div className="contrarreloj-prompt__info">
+                <p className="team-name">{contrarrelojInfo.summary?.teamName}</p>
+                <p className="details">
+                  Temporada {contrarrelojInfo.summary?.season} · 
+                  Jornada {contrarrelojInfo.summary?.week}
+                  {contrarrelojInfo.summary?.trophies > 0 && ` · 🏆 ${contrarrelojInfo.summary.trophies}`}
+                </p>
+              </div>
+              <div className="contrarreloj-prompt__actions">
+                <button 
+                  className="btn-continue" 
+                  onClick={handleContrarrelojContinue}
+                  disabled={loadingContrarreloj}
+                >
+                  <Play size={18} />
+                  {loadingContrarreloj ? 'Cargando...' : 'Continuar'}
+                </button>
+                <button 
+                  className="btn-new" 
+                  onClick={handleContrarrelojNew}
+                >
+                  Nueva partida
+                </button>
+              </div>
+              <p className="contrarreloj-prompt__warning">
+                ⚠️ Empezar nueva partida borrará el progreso actual
+              </p>
+            </div>
+          </div>
+        )}
 
         {!isAuthenticated && (
           <div className="main-menu__guest-notice">

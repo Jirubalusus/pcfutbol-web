@@ -592,7 +592,7 @@ function getMatchWinner(match) {
  * Necesita al menos: id, name, players, reputation.
  */
 function resolveTeamData(cupTeam, allTeamsData) {
-  if (!cupTeam) return { id: 'unknown', name: 'Unknown', players: [], reputation: 60 };
+  if (!cupTeam) return { id: 'unknown', name: 'Desconocido', players: [], reputation: 60 };
   
   // Buscar en allTeamsData si hay datos más completos
   const fullData = allTeamsData?.[cupTeam.teamId];

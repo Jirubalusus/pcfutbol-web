@@ -1,0 +1,2242 @@
+[
+  {
+    "name": "Ronaldo Cabrais",
+    "overall": 83,
+    "potential": 83,
+    "position": "CAM, RM, CM",
+    "age": 29,
+    "team": "Botafogo"
+  },
+  {
+    "name": "Lucas Mantela",
+    "overall": 82,
+    "potential": 82,
+    "position": "GK",
+    "age": 25,
+    "team": "Palmeiras"
+  },
+  {
+    "name": "Welington Dano",
+    "overall": 81,
+    "potential": 81,
+    "position": "LB, LM, LW",
+    "age": 25,
+    "team": "Atlético Mineiro"
+  },
+  {
+    "name": "Nailton Suzuki",
+    "overall": 81,
+    "potential": 81,
+    "position": "CAM, ST, CM",
+    "age": 29,
+    "team": "Atlético Mineiro"
+  },
+  {
+    "name": "Rosival Dourado",
+    "overall": 81,
+    "potential": 81,
+    "position": "CDM, CM, CAM",
+    "age": 25,
+    "team": "Corinthians"
+  },
+  {
+    "name": "Oswaldinato",
+    "overall": 81,
+    "potential": 81,
+    "position": "ST",
+    "age": 29,
+    "team": "Flamengo"
+  },
+  {
+    "name": "Laure Santeiro",
+    "overall": 80,
+    "potential": 80,
+    "position": "CAM, LM, LW, CM",
+    "age": 25,
+    "team": "Fluminense"
+  },
+  {
+    "name": "Heberto Gaúcho",
+    "overall": 80,
+    "potential": 80,
+    "position": "CB, CDM",
+    "age": 29,
+    "team": "Atlético Mineiro"
+  },
+  {
+    "name": "Maikel Catarino",
+    "overall": 80,
+    "potential": 80,
+    "position": "RB, RM",
+    "age": 29,
+    "team": "Corinthians"
+  },
+  {
+    "name": "Héniton Pires",
+    "overall": 80,
+    "potential": 80,
+    "position": "GK",
+    "age": 29,
+    "team": "Flamengo"
+  },
+  {
+    "name": "Tony Abranjes",
+    "overall": 80,
+    "potential": 80,
+    "position": "CB",
+    "age": 33,
+    "team": "Internacional"
+  },
+  {
+    "name": "Jorge Andrão",
+    "overall": 79,
+    "potential": 79,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Fluminense"
+  },
+  {
+    "name": "Diego Essler",
+    "overall": 79,
+    "potential": 79,
+    "position": "LB, LM",
+    "age": 25,
+    "team": "Atlético Mineiro"
+  },
+  {
+    "name": "Adnan Vidual",
+    "overall": 79,
+    "potential": 79,
+    "position": "RB",
+    "age": 29,
+    "team": "Internacional"
+  },
+  {
+    "name": "Gabri Prestão",
+    "overall": 79,
+    "potential": 79,
+    "position": "GK",
+    "age": 29,
+    "team": "Internacional"
+  },
+  {
+    "name": "Luimo Boas Santos",
+    "overall": 79,
+    "potential": 79,
+    "position": "ST",
+    "age": 25,
+    "team": "Bahia"
+  },
+  {
+    "name": "Fredditinho",
+    "overall": 78,
+    "potential": 78,
+    "position": "ST",
+    "age": 33,
+    "team": "Palmeiras"
+  },
+  {
+    "name": "Vieirundinho",
+    "overall": 78,
+    "potential": 78,
+    "position": "CB",
+    "age": 33,
+    "team": "Botafogo"
+  },
+  {
+    "name": "Albertinho Dutra",
+    "overall": 78,
+    "potential": 78,
+    "position": "LW, LM",
+    "age": 29,
+    "team": "São Paulo"
+  },
+  {
+    "name": "Jason Bardeira",
+    "overall": 78,
+    "potential": 78,
+    "position": "ST",
+    "age": 25,
+    "team": "Corinthians"
+  },
+  {
+    "name": "Wellington Sabrão",
+    "overall": 78,
+    "potential": 78,
+    "position": "RB, LB",
+    "age": 33,
+    "team": "Flamengo"
+  },
+  {
+    "name": "Pedrão Tofico",
+    "overall": 78,
+    "potential": 78,
+    "position": "CB",
+    "age": 29,
+    "team": "Flamengo"
+  },
+  {
+    "name": "Guilson Paiva",
+    "overall": 78,
+    "potential": 78,
+    "position": "RM, RW",
+    "age": 29,
+    "team": "Flamengo"
+  },
+  {
+    "name": "Arturo Inálcio",
+    "overall": 78,
+    "potential": 78,
+    "position": "CM, CAM, CDM",
+    "age": 25,
+    "team": "Flamengo"
+  },
+  {
+    "name": "Jonatão Praz",
+    "overall": 78,
+    "potential": 78,
+    "position": "LW, LM",
+    "age": 25,
+    "team": "Flamengo"
+  },
+  {
+    "name": "Gerson Armão",
+    "overall": 78,
+    "potential": 78,
+    "position": "LB, LM",
+    "age": 25,
+    "team": "Internacional"
+  },
+  {
+    "name": "Zervandro",
+    "overall": 78,
+    "potential": 78,
+    "position": "CB, LB",
+    "age": 25,
+    "team": "Internacional"
+  },
+  {
+    "name": "Enzo Chissano",
+    "overall": 77,
+    "potential": 77,
+    "position": "LB, RB, CB",
+    "age": 29,
+    "team": "Palmeiras"
+  },
+  {
+    "name": "Claudio Coíntra",
+    "overall": 77,
+    "potential": 77,
+    "position": "CAM, CM",
+    "age": 29,
+    "team": "Palmeiras"
+  },
+  {
+    "name": "Wagner Laranjo",
+    "overall": 77,
+    "potential": 77,
+    "position": "CDM, CM",
+    "age": 37,
+    "team": "Palmeiras"
+  },
+  {
+    "name": "Victorio Jabim",
+    "overall": 77,
+    "potential": 77,
+    "position": "RB, RM",
+    "age": 29,
+    "team": "Palmeiras"
+  },
+  {
+    "name": "Murildo Kauê",
+    "overall": 77,
+    "potential": 77,
+    "position": "LM, LW",
+    "age": 25,
+    "team": "Palmeiras"
+  },
+  {
+    "name": "Andeson Trigo",
+    "overall": 77,
+    "potential": 77,
+    "position": "LB, LM, CAM",
+    "age": 33,
+    "team": "Fluminense"
+  },
+  {
+    "name": "Leander Baia",
+    "overall": 77,
+    "potential": 77,
+    "position": "RB, RM",
+    "age": 33,
+    "team": "Atlético Mineiro"
+  },
+  {
+    "name": "Rodrigo Vuarte",
+    "overall": 77,
+    "potential": 77,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Atlético Mineiro"
+  },
+  {
+    "name": "Jadsinho Mei",
+    "overall": 77,
+    "potential": 77,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Flamengo"
+  },
+  {
+    "name": "Sidney Pessinho",
+    "overall": 77,
+    "potential": 77,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Internacional"
+  },
+  {
+    "name": "Nicolás Filhei",
+    "overall": 76,
+    "potential": 76,
+    "position": "CM, CAM, CDM",
+    "age": 29,
+    "team": "Palmeiras"
+  },
+  {
+    "name": "Rubem Esteiro",
+    "overall": 76,
+    "potential": 76,
+    "position": "RM, CM, RW",
+    "age": 33,
+    "team": "Palmeiras"
+  },
+  {
+    "name": "Lúcio Corteijo",
+    "overall": 76,
+    "potential": 76,
+    "position": "RB",
+    "age": 33,
+    "team": "Botafogo"
+  },
+  {
+    "name": "Pierrino Faria",
+    "overall": 76,
+    "potential": 76,
+    "position": "GK",
+    "age": 37,
+    "team": "Botafogo"
+  },
+  {
+    "name": "Davi Parrela",
+    "overall": 76,
+    "potential": 76,
+    "position": "CB, CDM",
+    "age": 25,
+    "team": "Botafogo"
+  },
+  {
+    "name": "Silas Almeim",
+    "overall": 76,
+    "potential": 76,
+    "position": "LB, LM",
+    "age": 29,
+    "team": "Cruzeiro"
+  },
+  {
+    "name": "Nelsildo Reis",
+    "overall": 76,
+    "potential": 79,
+    "position": "GK",
+    "age": 25,
+    "team": "Cruzeiro"
+  },
+  {
+    "name": "Lafortiscinho",
+    "overall": 76,
+    "potential": 76,
+    "position": "LB",
+    "age": 29,
+    "team": "Vasco da Gama"
+  },
+  {
+    "name": "Omualdo Chagas",
+    "overall": 76,
+    "potential": 76,
+    "position": "CB",
+    "age": 33,
+    "team": "Atlético Mineiro"
+  },
+  {
+    "name": "David Seijalbo",
+    "overall": 76,
+    "potential": 76,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Atlético Mineiro"
+  },
+  {
+    "name": "Simão Acunha",
+    "overall": 76,
+    "potential": 76,
+    "position": "CAM, RW, CM",
+    "age": 33,
+    "team": "Atlético Mineiro"
+  },
+  {
+    "name": "Adilson Edrada",
+    "overall": 76,
+    "potential": 76,
+    "position": "CAM, CM",
+    "age": 29,
+    "team": "Bahia"
+  },
+  {
+    "name": "Elildo Petri",
+    "overall": 75,
+    "potential": 75,
+    "position": "RM, CAM, RW",
+    "age": 29,
+    "team": "Palmeiras"
+  },
+  {
+    "name": "Kaíqundo Calado",
+    "overall": 75,
+    "potential": 75,
+    "position": "RB, CDM",
+    "age": 29,
+    "team": "Botafogo"
+  },
+  {
+    "name": "Alam Lindeiro",
+    "overall": 75,
+    "potential": 75,
+    "position": "LB",
+    "age": 29,
+    "team": "Botafogo"
+  },
+  {
+    "name": "Kaíquão Castro",
+    "overall": 75,
+    "potential": 75,
+    "position": "GK",
+    "age": 29,
+    "team": "Fluminense"
+  },
+  {
+    "name": "Jailson Caeiro",
+    "overall": 75,
+    "potential": 75,
+    "position": "RB, RM",
+    "age": 29,
+    "team": "Cruzeiro"
+  },
+  {
+    "name": "Jorginhson",
+    "overall": 75,
+    "potential": 75,
+    "position": "CDM, CM, CAM",
+    "age": 29,
+    "team": "Cruzeiro"
+  },
+  {
+    "name": "Dênildo Stein",
+    "overall": 75,
+    "potential": 75,
+    "position": "ST, CAM",
+    "age": 37,
+    "team": "Cruzeiro"
+  },
+  {
+    "name": "Leôncio Vimieiro",
+    "overall": 75,
+    "potential": 75,
+    "position": "LB",
+    "age": 29,
+    "team": "São Paulo"
+  },
+  {
+    "name": "Formosandrinho",
+    "overall": 75,
+    "potential": 75,
+    "position": "ST, CAM",
+    "age": 29,
+    "team": "Atlético Mineiro"
+  },
+  {
+    "name": "Simão Donatinho",
+    "overall": 75,
+    "potential": 75,
+    "position": "GK",
+    "age": 29,
+    "team": "Corinthians"
+  },
+  {
+    "name": "Enaldo Praz",
+    "overall": 75,
+    "potential": 75,
+    "position": "LB",
+    "age": 37,
+    "team": "Corinthians"
+  },
+  {
+    "name": "Estevão Candeira",
+    "overall": 75,
+    "potential": 75,
+    "position": "RB, LB",
+    "age": 29,
+    "team": "Flamengo"
+  },
+  {
+    "name": "Danisco Fachini",
+    "overall": 75,
+    "potential": 75,
+    "position": "CDM, CM",
+    "age": 33,
+    "team": "Flamengo"
+  },
+  {
+    "name": "Elieser Baldeiro",
+    "overall": 75,
+    "potential": 75,
+    "position": "CB",
+    "age": 29,
+    "team": "Flamengo"
+  },
+  {
+    "name": "Joshuando Sá",
+    "overall": 75,
+    "potential": 75,
+    "position": "LB, CB",
+    "age": 29,
+    "team": "Bahia"
+  },
+  {
+    "name": "Pascoal Muscato",
+    "overall": 75,
+    "potential": 75,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Bahia"
+  },
+  {
+    "name": "Juli Freitinho",
+    "overall": 75,
+    "potential": 75,
+    "position": "CB",
+    "age": 25,
+    "team": "Grêmio"
+  },
+  {
+    "name": "Emilio Piodão",
+    "overall": 75,
+    "potential": 75,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Grêmio"
+  },
+  {
+    "name": "Germano Cuba",
+    "overall": 74,
+    "potential": 74,
+    "position": "LB, CAM, LM",
+    "age": 29,
+    "team": "Palmeiras"
+  },
+  {
+    "name": "Jorge Praceira",
+    "overall": 74,
+    "potential": 74,
+    "position": "CB",
+    "age": 29,
+    "team": "Palmeiras"
+  },
+  {
+    "name": "Douglas Armeira",
+    "overall": 74,
+    "potential": 74,
+    "position": "RB",
+    "age": 29,
+    "team": "Palmeiras"
+  },
+  {
+    "name": "Claudiano Sobrino",
+    "overall": 74,
+    "potential": 74,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Botafogo"
+  },
+  {
+    "name": "Adrian Scitto",
+    "overall": 74,
+    "potential": 74,
+    "position": "GK",
+    "age": 29,
+    "team": "Botafogo"
+  },
+  {
+    "name": "Heitorsinho Padilha",
+    "overall": 74,
+    "potential": 74,
+    "position": "LB, LM",
+    "age": 29,
+    "team": "Botafogo"
+  },
+  {
+    "name": "Edercinho Sepa",
+    "overall": 74,
+    "potential": 74,
+    "position": "CDM, CM",
+    "age": 25,
+    "team": "Botafogo"
+  },
+  {
+    "name": "Murilo Sancha",
+    "overall": 74,
+    "potential": 74,
+    "position": "RM, CM, RW",
+    "age": 33,
+    "team": "Botafogo"
+  },
+  {
+    "name": "José Mirazar",
+    "overall": 74,
+    "potential": 74,
+    "position": "CAM, LM, LW, CM",
+    "age": 29,
+    "team": "Botafogo"
+  },
+  {
+    "name": "Roberto Soira",
+    "overall": 74,
+    "potential": 74,
+    "position": "CB",
+    "age": 29,
+    "team": "Botafogo"
+  },
+  {
+    "name": "Vinicius Cardenha",
+    "overall": 74,
+    "potential": 74,
+    "position": "RB, CB",
+    "age": 29,
+    "team": "Fluminense"
+  },
+  {
+    "name": "Kaimo Lima",
+    "overall": 74,
+    "potential": 74,
+    "position": "CB, CDM, LB",
+    "age": 29,
+    "team": "Fluminense"
+  },
+  {
+    "name": "Nicholas Aldair",
+    "overall": 74,
+    "potential": 74,
+    "position": "ST",
+    "age": 29,
+    "team": "Fluminense"
+  },
+  {
+    "name": "Hugo Goiteira",
+    "overall": 74,
+    "potential": 74,
+    "position": "CB",
+    "age": 29,
+    "team": "Cruzeiro"
+  },
+  {
+    "name": "Allan Bardinho",
+    "overall": 74,
+    "potential": 74,
+    "position": "CAM, CM",
+    "age": 29,
+    "team": "Cruzeiro"
+  },
+  {
+    "name": "Mauri Borgho",
+    "overall": 74,
+    "potential": 74,
+    "position": "RB, CDM",
+    "age": 29,
+    "team": "São Paulo"
+  },
+  {
+    "name": "Lino Essier",
+    "overall": 74,
+    "potential": 74,
+    "position": "CB",
+    "age": 29,
+    "team": "São Paulo"
+  },
+  {
+    "name": "Michael Dimeira",
+    "overall": 74,
+    "potential": 74,
+    "position": "CAM, RM, CM",
+    "age": 29,
+    "team": "São Paulo"
+  },
+  {
+    "name": "Ailtio Coelho",
+    "overall": 74,
+    "potential": 74,
+    "position": "LM, LW",
+    "age": 29,
+    "team": "São Paulo"
+  },
+  {
+    "name": "Eltildo Correia",
+    "overall": 74,
+    "potential": 74,
+    "position": "CB, RB, LB",
+    "age": 29,
+    "team": "Atlético Mineiro"
+  },
+  {
+    "name": "Meirelinson",
+    "overall": 74,
+    "potential": 74,
+    "position": "CB",
+    "age": 29,
+    "team": "Corinthians"
+  },
+  {
+    "name": "Enzo Marteiro",
+    "overall": 74,
+    "potential": 74,
+    "position": "GK",
+    "age": 29,
+    "team": "Flamengo"
+  },
+  {
+    "name": "Douglas Carvalheira",
+    "overall": 74,
+    "potential": 74,
+    "position": "LB",
+    "age": 33,
+    "team": "Flamengo"
+  },
+  {
+    "name": "Gérson Damesio",
+    "overall": 74,
+    "potential": 74,
+    "position": "CB",
+    "age": 29,
+    "team": "Flamengo"
+  },
+  {
+    "name": "Diegildo Ramos",
+    "overall": 74,
+    "potential": 74,
+    "position": "ST, RM",
+    "age": 29,
+    "team": "Flamengo"
+  },
+  {
+    "name": "Elias Fontoira",
+    "overall": 74,
+    "potential": 74,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Internacional"
+  },
+  {
+    "name": "Juli Piresinho",
+    "overall": 74,
+    "potential": 76,
+    "position": "RB",
+    "age": 25,
+    "team": "Grêmio"
+  },
+  {
+    "name": "Ramón da Almeyda",
+    "overall": 74,
+    "potential": 74,
+    "position": "LB, CM",
+    "age": 29,
+    "team": "Grêmio"
+  },
+  {
+    "name": "Victorino Magela",
+    "overall": 74,
+    "potential": 74,
+    "position": "GK",
+    "age": 25,
+    "team": "Grêmio"
+  },
+  {
+    "name": "Kel Perinho",
+    "overall": 74,
+    "potential": 74,
+    "position": "CB",
+    "age": 29,
+    "team": "Vitória"
+  },
+  {
+    "name": "Caio Nunson",
+    "overall": 74,
+    "potential": 74,
+    "position": "CB, LB",
+    "age": 25,
+    "team": "Fortaleza"
+  },
+  {
+    "name": "Edval Anton",
+    "overall": 74,
+    "potential": 74,
+    "position": "CDM, CM, CAM",
+    "age": 29,
+    "team": "Fortaleza"
+  },
+  {
+    "name": "Mardial Cunha",
+    "overall": 74,
+    "potential": 74,
+    "position": "CB",
+    "age": 25,
+    "team": "Fortaleza"
+  },
+  {
+    "name": "Otávio Cairinho",
+    "overall": 73,
+    "potential": 73,
+    "position": "CB, RB",
+    "age": 29,
+    "team": "Palmeiras"
+  },
+  {
+    "name": "Guto Costinho",
+    "overall": 73,
+    "potential": 73,
+    "position": "CB",
+    "age": 33,
+    "team": "Palmeiras"
+  },
+  {
+    "name": "Juliano Mascarinhas",
+    "overall": 73,
+    "potential": 73,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Botafogo"
+  },
+  {
+    "name": "Enaldo Toxeto",
+    "overall": 73,
+    "potential": 73,
+    "position": "CB",
+    "age": 37,
+    "team": "Botafogo"
+  },
+  {
+    "name": "Marlion Simões",
+    "overall": 73,
+    "potential": 73,
+    "position": "LB, CM",
+    "age": 29,
+    "team": "Cruzeiro"
+  },
+  {
+    "name": "Nivo Serpinho",
+    "overall": 73,
+    "potential": 73,
+    "position": "GK",
+    "age": 29,
+    "team": "Vasco da Gama"
+  },
+  {
+    "name": "Lúcio Anselmão",
+    "overall": 73,
+    "potential": 73,
+    "position": "CM, LB, CDM",
+    "age": 29,
+    "team": "São Paulo"
+  },
+  {
+    "name": "Caio Chissano",
+    "overall": 73,
+    "potential": 73,
+    "position": "LB, LM",
+    "age": 33,
+    "team": "São Paulo"
+  },
+  {
+    "name": "Darinho Carioca",
+    "overall": 73,
+    "potential": 73,
+    "position": "ST",
+    "age": 29,
+    "team": "São Paulo"
+  },
+  {
+    "name": "Claudinho Vair",
+    "overall": 73,
+    "potential": 73,
+    "position": "RW, RM",
+    "age": 33,
+    "team": "São Paulo"
+  },
+  {
+    "name": "Freder Cabral",
+    "overall": 73,
+    "potential": 73,
+    "position": "GK",
+    "age": 29,
+    "team": "Atlético Mineiro"
+  },
+  {
+    "name": "Nildo Reisão",
+    "overall": 73,
+    "potential": 73,
+    "position": "CDM, CB, CM",
+    "age": 29,
+    "team": "Atlético Mineiro"
+  },
+  {
+    "name": "Paulson Junqueira",
+    "overall": 73,
+    "potential": 73,
+    "position": "LB",
+    "age": 29,
+    "team": "Corinthians"
+  },
+  {
+    "name": "Neviano Neves",
+    "overall": 73,
+    "potential": 73,
+    "position": "CM, RM, CDM",
+    "age": 25,
+    "team": "Corinthians"
+  },
+  {
+    "name": "Nuno Lisareda",
+    "overall": 73,
+    "potential": 73,
+    "position": "ST",
+    "age": 25,
+    "team": "Corinthians"
+  },
+  {
+    "name": "Michel Cruceiro",
+    "overall": 73,
+    "potential": 73,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Flamengo"
+  },
+  {
+    "name": "Marlon Nideiro",
+    "overall": 73,
+    "potential": 73,
+    "position": "CAM, CM",
+    "age": 29,
+    "team": "Flamengo"
+  },
+  {
+    "name": "Fabri Arnoia",
+    "overall": 73,
+    "potential": 73,
+    "position": "RW, CAM, RM",
+    "age": 29,
+    "team": "Flamengo"
+  },
+  {
+    "name": "Nicolás Formido",
+    "overall": 73,
+    "potential": 73,
+    "position": "CAM, LM, CM",
+    "age": 25,
+    "team": "Internacional"
+  },
+  {
+    "name": "Fabrio Farinha",
+    "overall": 73,
+    "potential": 73,
+    "position": "CAM, LM, RM, CM",
+    "age": 29,
+    "team": "Internacional"
+  },
+  {
+    "name": "Enzo Merques",
+    "overall": 73,
+    "potential": 73,
+    "position": "LB",
+    "age": 29,
+    "team": "Internacional"
+  },
+  {
+    "name": "Silvosinho",
+    "overall": 73,
+    "potential": 73,
+    "position": "RB, RM",
+    "age": 29,
+    "team": "Bahia"
+  },
+  {
+    "name": "Sandelas Júnior",
+    "overall": 73,
+    "potential": 73,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Bahia"
+  },
+  {
+    "name": "Marcinho Paneira",
+    "overall": 73,
+    "potential": 73,
+    "position": "CDM, CM, RM",
+    "age": 25,
+    "team": "Grêmio"
+  },
+  {
+    "name": "Leo Caldeirinha",
+    "overall": 73,
+    "potential": 73,
+    "position": "CAM, LM, CM",
+    "age": 29,
+    "team": "Vitória"
+  },
+  {
+    "name": "Túlio Changas",
+    "overall": 72,
+    "potential": 72,
+    "position": "GK",
+    "age": 29,
+    "team": "Palmeiras"
+  },
+  {
+    "name": "Gérson Noalha",
+    "overall": 72,
+    "potential": 72,
+    "position": "ST, CAM, LM",
+    "age": 29,
+    "team": "Palmeiras"
+  },
+  {
+    "name": "Jadson Vidigal",
+    "overall": 72,
+    "potential": 72,
+    "position": "ST",
+    "age": 29,
+    "team": "Botafogo"
+  },
+  {
+    "name": "Fabiano Sonta",
+    "overall": 72,
+    "potential": 72,
+    "position": "CB, CDM",
+    "age": 29,
+    "team": "Fluminense"
+  },
+  {
+    "name": "Fábio Melitinho",
+    "overall": 72,
+    "potential": 72,
+    "position": "CAM, LM, CM",
+    "age": 29,
+    "team": "Fluminense"
+  },
+  {
+    "name": "Hugo Rubiães",
+    "overall": 72,
+    "potential": 72,
+    "position": "CDM, RB, CM",
+    "age": 29,
+    "team": "Fluminense"
+  },
+  {
+    "name": "Kelivelson",
+    "overall": 72,
+    "potential": 72,
+    "position": "CDM, RB, RM, CM",
+    "age": 29,
+    "team": "Cruzeiro"
+  },
+  {
+    "name": "Caio Milaçar",
+    "overall": 72,
+    "potential": 72,
+    "position": "CAM, CM",
+    "age": 29,
+    "team": "Cruzeiro"
+  },
+  {
+    "name": "Maicol Pimenta",
+    "overall": 72,
+    "potential": 72,
+    "position": "CDM, CM, CAM",
+    "age": 25,
+    "team": "Vasco da Gama"
+  },
+  {
+    "name": "Éder Aldralho",
+    "overall": 72,
+    "potential": 72,
+    "position": "RM, CAM, RW",
+    "age": 25,
+    "team": "Vasco da Gama"
+  },
+  {
+    "name": "Ailton Valpaços",
+    "overall": 72,
+    "potential": 72,
+    "position": "CB, CDM",
+    "age": 29,
+    "team": "São Paulo"
+  },
+  {
+    "name": "André Milazisco",
+    "overall": 72,
+    "potential": 72,
+    "position": "GK",
+    "age": 29,
+    "team": "São Paulo"
+  },
+  {
+    "name": "Igor Madinha",
+    "overall": 72,
+    "potential": 72,
+    "position": "RM, CAM, CM, RW",
+    "age": 29,
+    "team": "São Paulo"
+  },
+  {
+    "name": "Sacramentinho",
+    "overall": 72,
+    "potential": 72,
+    "position": "GK",
+    "age": 37,
+    "team": "Atlético Mineiro"
+  },
+  {
+    "name": "Heitor Gesse",
+    "overall": 72,
+    "potential": 72,
+    "position": "LB",
+    "age": 29,
+    "team": "Atlético Mineiro"
+  },
+  {
+    "name": "Evandro Rochedo",
+    "overall": 72,
+    "potential": 72,
+    "position": "ST",
+    "age": 29,
+    "team": "Atlético Mineiro"
+  },
+  {
+    "name": "Alminho Boas",
+    "overall": 72,
+    "potential": 72,
+    "position": "CDM, CM, CB",
+    "age": 29,
+    "team": "Atlético Mineiro"
+  },
+  {
+    "name": "Timo Triano",
+    "overall": 72,
+    "potential": 72,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Corinthians"
+  },
+  {
+    "name": "Guto Milazar",
+    "overall": 72,
+    "potential": 72,
+    "position": "LB",
+    "age": 29,
+    "team": "Flamengo"
+  },
+  {
+    "name": "Gusinho Marquenho",
+    "overall": 72,
+    "potential": 72,
+    "position": "CAM, ST, CM",
+    "age": 25,
+    "team": "Internacional"
+  },
+  {
+    "name": "Hélton Celanova",
+    "overall": 72,
+    "potential": 72,
+    "position": "ST",
+    "age": 29,
+    "team": "Internacional"
+  },
+  {
+    "name": "Alam Araújo",
+    "overall": 72,
+    "potential": 72,
+    "position": "LB, LM",
+    "age": 29,
+    "team": "Bahia"
+  },
+  {
+    "name": "Ozimário Rebeilo",
+    "overall": 72,
+    "potential": 72,
+    "position": "LB",
+    "age": 29,
+    "team": "Bahia"
+  },
+  {
+    "name": "Leordinho Paes",
+    "overall": 72,
+    "potential": 72,
+    "position": "CAM, LM, CM",
+    "age": 25,
+    "team": "Bahia"
+  },
+  {
+    "name": "Alam Basteirinho",
+    "overall": 72,
+    "potential": 72,
+    "position": "CAM, RM, CM",
+    "age": 29,
+    "team": "Bahia"
+  },
+  {
+    "name": "Santi da Bruma",
+    "overall": 72,
+    "potential": 72,
+    "position": "ST, RM",
+    "age": 29,
+    "team": "Grêmio"
+  },
+  {
+    "name": "Jenaro Kaio",
+    "overall": 72,
+    "potential": 72,
+    "position": "CAM, CM",
+    "age": 37,
+    "team": "Grêmio"
+  },
+  {
+    "name": "Pietrson Mendes",
+    "overall": 72,
+    "potential": 72,
+    "position": "CAM, ST, CM",
+    "age": 29,
+    "team": "Grêmio"
+  },
+  {
+    "name": "Dersan Dinis",
+    "overall": 72,
+    "potential": 72,
+    "position": "RW, RM",
+    "age": 29,
+    "team": "Grêmio"
+  },
+  {
+    "name": "João Bardinho",
+    "overall": 72,
+    "potential": 72,
+    "position": "LB, RB",
+    "age": 29,
+    "team": "Grêmio"
+  },
+  {
+    "name": "Porphirinho",
+    "overall": 72,
+    "potential": 72,
+    "position": "CDM, CM",
+    "age": 25,
+    "team": "Vitória"
+  },
+  {
+    "name": "Jacson Zonta",
+    "overall": 72,
+    "potential": 72,
+    "position": "CAM, RM, LM, CM",
+    "age": 29,
+    "team": "Vitória"
+  },
+  {
+    "name": "Ricky Guerreda",
+    "overall": 72,
+    "potential": 72,
+    "position": "RB",
+    "age": 29,
+    "team": "Vitória"
+  },
+  {
+    "name": "Kauã Abranches",
+    "overall": 72,
+    "potential": 72,
+    "position": "CAM, RM, RB, CM",
+    "age": 29,
+    "team": "Fortaleza"
+  },
+  {
+    "name": "Tony Muttinho",
+    "overall": 72,
+    "potential": 72,
+    "position": "RB, RM",
+    "age": 29,
+    "team": "Fortaleza"
+  },
+  {
+    "name": "Calegarcinho",
+    "overall": 72,
+    "potential": 72,
+    "position": "ST, CAM",
+    "age": 37,
+    "team": "Fortaleza"
+  },
+  {
+    "name": "Antonaldo Vaz",
+    "overall": 71,
+    "potential": 71,
+    "position": "LB",
+    "age": 25,
+    "team": "Palmeiras"
+  },
+  {
+    "name": "Raphael Paneira",
+    "overall": 71,
+    "potential": 71,
+    "position": "CAM, RM, CM",
+    "age": 25,
+    "team": "Palmeiras"
+  },
+  {
+    "name": "Paulão Junqueiras",
+    "overall": 71,
+    "potential": 71,
+    "position": "ST",
+    "age": 25,
+    "team": "Botafogo"
+  },
+  {
+    "name": "Carleto Costinha",
+    "overall": 71,
+    "potential": 71,
+    "position": "CAM, ST, RM, CM",
+    "age": 29,
+    "team": "Fluminense"
+  },
+  {
+    "name": "Wiliam Santinho",
+    "overall": 71,
+    "potential": 71,
+    "position": "GK",
+    "age": 29,
+    "team": "Fluminense"
+  },
+  {
+    "name": "Wagner Orsinho",
+    "overall": 71,
+    "potential": 71,
+    "position": "LB",
+    "age": 25,
+    "team": "Fluminense"
+  },
+  {
+    "name": "Jony Reitosa",
+    "overall": 71,
+    "potential": 71,
+    "position": "RB",
+    "age": 29,
+    "team": "Cruzeiro"
+  },
+  {
+    "name": "Josué da Feira",
+    "overall": 71,
+    "potential": 71,
+    "position": "ST",
+    "age": 29,
+    "team": "Vasco da Gama"
+  },
+  {
+    "name": "Rafanilton Vilela",
+    "overall": 71,
+    "potential": 71,
+    "position": "ST, CAM",
+    "age": 33,
+    "team": "São Paulo"
+  },
+  {
+    "name": "Rômulo Calsede",
+    "overall": 71,
+    "potential": 71,
+    "position": "ST",
+    "age": 25,
+    "team": "São Paulo"
+  },
+  {
+    "name": "Eminho Moringa",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB",
+    "age": 33,
+    "team": "Corinthians"
+  },
+  {
+    "name": "Germano Monico",
+    "overall": 71,
+    "potential": 71,
+    "position": "CM, CDM",
+    "age": 33,
+    "team": "Corinthians"
+  },
+  {
+    "name": "Dinei Dellarmi",
+    "overall": 71,
+    "potential": 71,
+    "position": "RW, RM",
+    "age": 29,
+    "team": "Corinthians"
+  },
+  {
+    "name": "Pedrildo Rocha",
+    "overall": 71,
+    "potential": 71,
+    "position": "LW, LM",
+    "age": 29,
+    "team": "Corinthians"
+  },
+  {
+    "name": "Eduardo Fonseira",
+    "overall": 71,
+    "potential": 71,
+    "position": "GK",
+    "age": 25,
+    "team": "Corinthians"
+  },
+  {
+    "name": "Diogo Parrela",
+    "overall": 71,
+    "potential": 71,
+    "position": "RB",
+    "age": 29,
+    "team": "Internacional"
+  },
+  {
+    "name": "Eltson Marques",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB",
+    "age": 29,
+    "team": "Internacional"
+  },
+  {
+    "name": "Gus Outomouro",
+    "overall": 71,
+    "potential": 71,
+    "position": "ST, LM",
+    "age": 29,
+    "team": "Internacional"
+  },
+  {
+    "name": "Ailton Cardenhas",
+    "overall": 71,
+    "potential": 71,
+    "position": "GK",
+    "age": 25,
+    "team": "Bahia"
+  },
+  {
+    "name": "Vanderleiton",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB",
+    "age": 25,
+    "team": "Bahia"
+  },
+  {
+    "name": "Nathael Silbeira",
+    "overall": 71,
+    "potential": 71,
+    "position": "GK",
+    "age": 29,
+    "team": "Grêmio"
+  },
+  {
+    "name": "Pombaixinho",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB",
+    "age": 29,
+    "team": "Vitória"
+  },
+  {
+    "name": "Luisinho Conradi",
+    "overall": 71,
+    "potential": 71,
+    "position": "LB",
+    "age": 25,
+    "team": "Fortaleza"
+  },
+  {
+    "name": "Bernardo Motinho",
+    "overall": 71,
+    "potential": 71,
+    "position": "RB, RM",
+    "age": 29,
+    "team": "Fortaleza"
+  },
+  {
+    "name": "Lourival Dinisco",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB",
+    "age": 25,
+    "team": "Fortaleza"
+  },
+  {
+    "name": "Breno Bausa",
+    "overall": 70,
+    "potential": 70,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Cruzeiro"
+  },
+  {
+    "name": "Milton Menceiros",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB",
+    "age": 29,
+    "team": "Cruzeiro"
+  },
+  {
+    "name": "Nascimentardo",
+    "overall": 70,
+    "potential": 70,
+    "position": "CAM, CM",
+    "age": 25,
+    "team": "Cruzeiro"
+  },
+  {
+    "name": "Renatão Baumer",
+    "overall": 70,
+    "potential": 70,
+    "position": "LB",
+    "age": 29,
+    "team": "Vasco da Gama"
+  },
+  {
+    "name": "Jaimosa Cavaco",
+    "overall": 70,
+    "potential": 70,
+    "position": "RB",
+    "age": 25,
+    "team": "Vasco da Gama"
+  },
+  {
+    "name": "Emerson Avintes",
+    "overall": 70,
+    "potential": 70,
+    "position": "CAM, RM, CM",
+    "age": 29,
+    "team": "Vasco da Gama"
+  },
+  {
+    "name": "Sanaldo Caiado",
+    "overall": 70,
+    "potential": 70,
+    "position": "CAM, CM",
+    "age": 33,
+    "team": "Vasco da Gama"
+  },
+  {
+    "name": "Césario Limberg",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB",
+    "age": 29,
+    "team": "São Paulo"
+  },
+  {
+    "name": "Natinho Mestres",
+    "overall": 70,
+    "potential": 70,
+    "position": "RM, RW",
+    "age": 29,
+    "team": "São Paulo"
+  },
+  {
+    "name": "Lourival Rodeiro",
+    "overall": 70,
+    "potential": 70,
+    "position": "CM, CDM",
+    "age": 29,
+    "team": "São Paulo"
+  },
+  {
+    "name": "Tiago Pombeira",
+    "overall": 70,
+    "potential": 70,
+    "position": "CAM, CM",
+    "age": 25,
+    "team": "Atlético Mineiro"
+  },
+  {
+    "name": "Jailson Oliva",
+    "overall": 70,
+    "potential": 70,
+    "position": "RB",
+    "age": 29,
+    "team": "Atlético Mineiro"
+  },
+  {
+    "name": "Luildo Simões",
+    "overall": 70,
+    "potential": 70,
+    "position": "CAM, CM",
+    "age": 25,
+    "team": "Corinthians"
+  },
+  {
+    "name": "Nuno Moldeiro",
+    "overall": 70,
+    "potential": 70,
+    "position": "LM, LW",
+    "age": 29,
+    "team": "Corinthians"
+  },
+  {
+    "name": "Leôncio Lobeiro",
+    "overall": 70,
+    "potential": 70,
+    "position": "RW, RM",
+    "age": 25,
+    "team": "Flamengo"
+  },
+  {
+    "name": "Jairo Farnias",
+    "overall": 70,
+    "potential": 70,
+    "position": "GK",
+    "age": 25,
+    "team": "Internacional"
+  },
+  {
+    "name": "Luan Sendeiro",
+    "overall": 70,
+    "potential": 70,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Internacional"
+  },
+  {
+    "name": "Martin Cordeia",
+    "overall": 70,
+    "potential": 70,
+    "position": "CAM, CM",
+    "age": 29,
+    "team": "Internacional"
+  },
+  {
+    "name": "Claytinho Branco",
+    "overall": 70,
+    "potential": 70,
+    "position": "RB",
+    "age": 29,
+    "team": "Bahia"
+  },
+  {
+    "name": "Arthur Silbeira",
+    "overall": 70,
+    "potential": 70,
+    "position": "ST",
+    "age": 29,
+    "team": "Bahia"
+  },
+  {
+    "name": "Carvamelinho",
+    "overall": 70,
+    "potential": 70,
+    "position": "RB",
+    "age": 29,
+    "team": "Grêmio"
+  },
+  {
+    "name": "Adeilson Gesser",
+    "overall": 70,
+    "potential": 70,
+    "position": "CAM, CM",
+    "age": 29,
+    "team": "Grêmio"
+  },
+  {
+    "name": "Heitinho Zanon",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB, LB",
+    "age": 29,
+    "team": "Grêmio"
+  },
+  {
+    "name": "Cristian Lodeira",
+    "overall": 70,
+    "potential": 70,
+    "position": "ST, RW",
+    "age": 29,
+    "team": "Vitória"
+  },
+  {
+    "name": "Vítor Angulho",
+    "overall": 70,
+    "potential": 70,
+    "position": "GK",
+    "age": 29,
+    "team": "Fortaleza"
+  },
+  {
+    "name": "Marlinito Dias",
+    "overall": 70,
+    "potential": 70,
+    "position": "CDM, CB, CM",
+    "age": 29,
+    "team": "Fortaleza"
+  },
+  {
+    "name": "Eltildo Bessa",
+    "overall": 70,
+    "potential": 70,
+    "position": "ST, CAM, LW",
+    "age": 29,
+    "team": "Fortaleza"
+  },
+  {
+    "name": "Jonaldo Monteiro",
+    "overall": 70,
+    "potential": 70,
+    "position": "LB, LM",
+    "age": 25,
+    "team": "Fortaleza"
+  },
+  {
+    "name": "Ansel Barni",
+    "overall": 70,
+    "potential": 70,
+    "position": "CDM, CM, RM",
+    "age": 25,
+    "team": "Fortaleza"
+  },
+  {
+    "name": "Patricio Alagoano",
+    "overall": 70,
+    "potential": 70,
+    "position": "CAM, RM, RW, CM",
+    "age": 29,
+    "team": "Fortaleza"
+  },
+  {
+    "name": "Vitor Marlão",
+    "overall": 70,
+    "potential": 70,
+    "position": "LB, CB",
+    "age": 29,
+    "team": "Fortaleza"
+  },
+  {
+    "name": "Roldão Riso",
+    "overall": 69,
+    "potential": 69,
+    "position": "CDM, CB, CM",
+    "age": 29,
+    "team": "Palmeiras"
+  },
+  {
+    "name": "Barbosaldinho",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB, RB",
+    "age": 33,
+    "team": "Vasco da Gama"
+  },
+  {
+    "name": "Nilson Padilho",
+    "overall": 69,
+    "potential": 69,
+    "position": "CAM, CM, CDM",
+    "age": 25,
+    "team": "Vasco da Gama"
+  },
+  {
+    "name": "Ever Corredeira",
+    "overall": 69,
+    "potential": 69,
+    "position": "ST",
+    "age": 29,
+    "team": "Vasco da Gama"
+  },
+  {
+    "name": "Nosberto Vila",
+    "overall": 69,
+    "potential": 69,
+    "position": "RB, RM",
+    "age": 29,
+    "team": "São Paulo"
+  },
+  {
+    "name": "Paolinho Leima",
+    "overall": 69,
+    "potential": 69,
+    "position": "RB",
+    "age": 25,
+    "team": "Atlético Mineiro"
+  },
+  {
+    "name": "Kaio Figueiras",
+    "overall": 69,
+    "potential": 69,
+    "position": "LB, LM",
+    "age": 29,
+    "team": "Grêmio"
+  },
+  {
+    "name": "Vágner Norteiro",
+    "overall": 69,
+    "potential": 69,
+    "position": "RB",
+    "age": 29,
+    "team": "Vitória"
+  },
+  {
+    "name": "Caio Venzano",
+    "overall": 69,
+    "potential": 69,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Vitória"
+  },
+  {
+    "name": "Luciano Cacheira",
+    "overall": 69,
+    "potential": 69,
+    "position": "GK",
+    "age": 29,
+    "team": "Fortaleza"
+  },
+  {
+    "name": "Sevinho Santos",
+    "overall": 69,
+    "potential": 69,
+    "position": "ST, CAM",
+    "age": 25,
+    "team": "Fortaleza"
+  },
+  {
+    "name": "Jadson Castrelo",
+    "overall": 68,
+    "potential": 68,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Fluminense"
+  },
+  {
+    "name": "Antonaldo Laforte",
+    "overall": 68,
+    "potential": 68,
+    "position": "CAM, CM",
+    "age": 29,
+    "team": "Fluminense"
+  },
+  {
+    "name": "Helito Caldeira",
+    "overall": 68,
+    "potential": 68,
+    "position": "RB",
+    "age": 29,
+    "team": "Fluminense"
+  },
+  {
+    "name": "Vagnão Cadete",
+    "overall": 68,
+    "potential": 68,
+    "position": "ST, CAM, LM",
+    "age": 29,
+    "team": "Cruzeiro"
+  },
+  {
+    "name": "Paulo Daineiro",
+    "overall": 68,
+    "potential": 68,
+    "position": "CAM, CM",
+    "age": 29,
+    "team": "Cruzeiro"
+  },
+  {
+    "name": "Mauricio Clerez",
+    "overall": 68,
+    "potential": 68,
+    "position": "CB",
+    "age": 29,
+    "team": "Vasco da Gama"
+  },
+  {
+    "name": "Sandeiro Leal",
+    "overall": 68,
+    "potential": 68,
+    "position": "CAM, CM",
+    "age": 25,
+    "team": "Vasco da Gama"
+  },
+  {
+    "name": "Ranteiro Alves",
+    "overall": 68,
+    "potential": 68,
+    "position": "CAM, CM",
+    "age": 29,
+    "team": "Vasco da Gama"
+  },
+  {
+    "name": "Ever Sineiro",
+    "overall": 68,
+    "potential": 68,
+    "position": "CAM, ST, LM, CM",
+    "age": 25,
+    "team": "Vasco da Gama"
+  },
+  {
+    "name": "Tomás Nuninho",
+    "overall": 68,
+    "potential": 68,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Bahia"
+  },
+  {
+    "name": "Edélcio Maranhesi",
+    "overall": 68,
+    "potential": 68,
+    "position": "CAM, CM",
+    "age": 29,
+    "team": "Bahia"
+  },
+  {
+    "name": "Macarinho Louro",
+    "overall": 68,
+    "potential": 68,
+    "position": "CAM, CM",
+    "age": 25,
+    "team": "Grêmio"
+  },
+  {
+    "name": "Franci Martinho",
+    "overall": 68,
+    "potential": 68,
+    "position": "ST",
+    "age": 29,
+    "team": "Vitória"
+  },
+  {
+    "name": "Márcio Velinha",
+    "overall": 68,
+    "potential": 68,
+    "position": "GK",
+    "age": 33,
+    "team": "Vitória"
+  },
+  {
+    "name": "Fred Soidares",
+    "overall": 68,
+    "potential": 68,
+    "position": "LB, CB",
+    "age": 29,
+    "team": "Vitória"
+  },
+  {
+    "name": "Marlon Dorrão",
+    "overall": 68,
+    "potential": 68,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Vitória"
+  },
+  {
+    "name": "Renato Rochela",
+    "overall": 68,
+    "potential": 68,
+    "position": "CAM, LM, LW, CM",
+    "age": 29,
+    "team": "Vitória"
+  },
+  {
+    "name": "Kaio Aldair",
+    "overall": 68,
+    "potential": 68,
+    "position": "RB, RM",
+    "age": 29,
+    "team": "Fortaleza"
+  },
+  {
+    "name": "Michildo Melo",
+    "overall": 67,
+    "potential": 67,
+    "position": "LM, LB, LW",
+    "age": 33,
+    "team": "Botafogo"
+  },
+  {
+    "name": "Dener Rolim",
+    "overall": 67,
+    "potential": 67,
+    "position": "CAM, RM, CM",
+    "age": 25,
+    "team": "Botafogo"
+  },
+  {
+    "name": "Kauã Zanson",
+    "overall": 67,
+    "potential": 67,
+    "position": "CB, RB",
+    "age": 29,
+    "team": "Fluminense"
+  },
+  {
+    "name": "Edenildo Lagoas",
+    "overall": 67,
+    "potential": 67,
+    "position": "RB, CB",
+    "age": 25,
+    "team": "Cruzeiro"
+  },
+  {
+    "name": "Traeira Lopes",
+    "overall": 67,
+    "potential": 67,
+    "position": "GK",
+    "age": 29,
+    "team": "Vasco da Gama"
+  },
+  {
+    "name": "Rafael de Aseiro",
+    "overall": 67,
+    "potential": 67,
+    "position": "GK",
+    "age": 29,
+    "team": "São Paulo"
+  },
+  {
+    "name": "Jadenilson Baia",
+    "overall": 67,
+    "potential": 67,
+    "position": "RB",
+    "age": 33,
+    "team": "Corinthians"
+  },
+  {
+    "name": "Adriano Trindori",
+    "overall": 67,
+    "potential": 67,
+    "position": "CB",
+    "age": 29,
+    "team": "Corinthians"
+  },
+  {
+    "name": "Silaldo Junqueiras",
+    "overall": 67,
+    "potential": 67,
+    "position": "CM, CDM",
+    "age": 29,
+    "team": "Corinthians"
+  },
+  {
+    "name": "Gustavo Pastinho",
+    "overall": 67,
+    "potential": 67,
+    "position": "ST, RM",
+    "age": 29,
+    "team": "Internacional"
+  },
+  {
+    "name": "Fepe Limão",
+    "overall": 67,
+    "potential": 67,
+    "position": "GK",
+    "age": 33,
+    "team": "Bahia"
+  },
+  {
+    "name": "Claudio Mouria",
+    "overall": 67,
+    "potential": 67,
+    "position": "CAM, CM",
+    "age": 29,
+    "team": "Bahia"
+  },
+  {
+    "name": "Adrián Maideira",
+    "overall": 67,
+    "potential": 67,
+    "position": "CAM, CM",
+    "age": 29,
+    "team": "Vitória"
+  },
+  {
+    "name": "Elton Coengo",
+    "overall": 67,
+    "potential": 67,
+    "position": "CM, CDM",
+    "age": 25,
+    "team": "Vitória"
+  },
+  {
+    "name": "Estevãtinho",
+    "overall": 66,
+    "potential": 66,
+    "position": "CAM, CM",
+    "age": 29,
+    "team": "Fluminense"
+  },
+  {
+    "name": "Adão Morrinhos",
+    "overall": 66,
+    "potential": 66,
+    "position": "ST, CAM",
+    "age": 29,
+    "team": "Fluminense"
+  },
+  {
+    "name": "Welliton Helmes",
+    "overall": 66,
+    "potential": 66,
+    "position": "CAM, CM",
+    "age": 25,
+    "team": "Internacional"
+  },
+  {
+    "name": "Nazario Serpe",
+    "overall": 66,
+    "potential": 66,
+    "position": "CDM, CB, CM",
+    "age": 29,
+    "team": "Grêmio"
+  },
+  {
+    "name": "Alex Doneiro",
+    "overall": 66,
+    "potential": 66,
+    "position": "CAM, ST, CM",
+    "age": 25,
+    "team": "Vitória"
+  },
+  {
+    "name": "Luis Paezinho",
+    "overall": 65,
+    "potential": 65,
+    "position": "CB, LB",
+    "age": 29,
+    "team": "Bahia"
+  },
+  {
+    "name": "Emílio Trevões",
+    "overall": 65,
+    "potential": 65,
+    "position": "ST, LW",
+    "age": 33,
+    "team": "Vitória"
+  },
+  {
+    "name": "Bernard Alemão",
+    "overall": 65,
+    "potential": 65,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Fortaleza"
+  },
+  {
+    "name": "Nito Carbelho",
+    "overall": 64,
+    "potential": 64,
+    "position": "ST, CAM",
+    "age": 29,
+    "team": "Fluminense"
+  },
+  {
+    "name": "Leonardo Freijão",
+    "overall": 64,
+    "potential": 64,
+    "position": "CDM, CM, CAM",
+    "age": 29,
+    "team": "Cruzeiro"
+  },
+  {
+    "name": "Nelson Freitosa",
+    "overall": 64,
+    "potential": 64,
+    "position": "GK",
+    "age": 29,
+    "team": "Cruzeiro"
+  },
+  {
+    "name": "Peixotacinho",
+    "overall": 64,
+    "potential": 64,
+    "position": "CB, RB",
+    "age": 29,
+    "team": "Grêmio"
+  },
+  {
+    "name": "Iuliano Alfaro",
+    "overall": 64,
+    "potential": 64,
+    "position": "ST, LM, CAM",
+    "age": 33,
+    "team": "Grêmio"
+  },
+  {
+    "name": "Fachendinho",
+    "overall": 63,
+    "potential": 63,
+    "position": "ST, RM",
+    "age": 29,
+    "team": "Bahia"
+  },
+  {
+    "name": "Carlos Travisso",
+    "overall": 63,
+    "potential": 63,
+    "position": "GK",
+    "age": 29,
+    "team": "Vitória"
+  },
+  {
+    "name": "Dêniro Prestes",
+    "overall": 62,
+    "potential": 62,
+    "position": "ST",
+    "age": 25,
+    "team": "Cruzeiro"
+  },
+  {
+    "name": "Fabiem Jardim",
+    "overall": 62,
+    "potential": 62,
+    "position": "CAM, CM",
+    "age": 29,
+    "team": "Vasco da Gama"
+  },
+  {
+    "name": "Raullino Meneses",
+    "overall": 62,
+    "potential": 62,
+    "position": "CDM, CB, CM",
+    "age": 25,
+    "team": "Vitória"
+  },
+  {
+    "name": "Túlio Nevinha",
+    "overall": 61,
+    "potential": 61,
+    "position": "CB",
+    "age": 25,
+    "team": "Vasco da Gama"
+  },
+  {
+    "name": "Hélton Carvalhal",
+    "overall": 61,
+    "potential": 61,
+    "position": "ST",
+    "age": 29,
+    "team": "Vasco da Gama"
+  }
+]

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { Settings as SettingsIcon, X, Music, Volume2, Save, Check, XCircle, Trash2, AlertTriangle, LogOut } from 'lucide-react';
+import { Settings as SettingsIcon, X, Music, Volume2, Save, Check, XCircle, Trash2, AlertTriangle, LogOut, Globe } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import './Settings.scss';
 
 export default function Settings({ onClose }) {
+  const { t, i18n } = useTranslation();
   const { state, dispatch, saveGame } = useGame();
   const [settings, setSettings] = useState(state.settings || {
     difficulty: 'normal',
@@ -21,6 +23,10 @@ export default function Settings({ onClose }) {
     const newSettings = { ...settings, [key]: value };
     setSettings(newSettings);
     dispatch({ type: 'UPDATE_SETTINGS', payload: { [key]: value } });
+  };
+
+  const handleLanguageChange = (langCode) => {
+    i18n.changeLanguage(langCode);
   };
 
   const handleSaveGame = async () => {
@@ -55,31 +61,57 @@ export default function Settings({ onClose }) {
     onClose?.();
   };
 
+  const languageOptions = [
+    { code: 'es', name: 'Español', flag: '🇪🇸' },
+    { code: 'en', name: 'English', flag: '🇬🇧' },
+    { code: 'fr', name: 'Français', flag: '🇫🇷' },
+    { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
+    { code: 'pt', name: 'Português', flag: '🇵🇹' },
+    { code: 'it', name: 'Italiano', flag: '🇮🇹' }
+  ];
+
   const difficultyOptions = [
-    { value: 'easy', label: 'Fácil', desc: 'IA menos agresiva, más dinero inicial' },
-    { value: 'normal', label: 'Normal', desc: 'Experiencia equilibrada' },
-    { value: 'hard', label: 'Difícil', desc: 'IA muy competitiva, menos recursos' }
+    { value: 'easy', label: t('settings.easy'), desc: 'IA menos agresiva, más dinero inicial' },
+    { value: 'normal', label: t('settings.normal'), desc: 'Experiencia equilibrada' },
+    { value: 'hard', label: t('settings.hard'), desc: 'IA muy competitiva, menos recursos' }
   ];
 
   const speedOptions = [
     { value: 'slow', label: 'Lenta', desc: 'Más tiempo para ver los partidos' },
-    { value: 'normal', label: 'Normal', desc: 'Velocidad estándar' },
+    { value: 'normal', label: t('settings.normal'), desc: 'Velocidad estándar' },
     { value: 'fast', label: 'Rápida', desc: 'Partidos más cortos' }
   ];
 
   return (
     <div className="settings">
       <div className="settings__header">
-        <h2><SettingsIcon size={16} /> Opciones</h2>
+        <h2><SettingsIcon size={16} /> {t('settings.title')}</h2>
         {onClose && (
           <button className="settings__close" onClick={onClose}><X size={16} /></button>
         )}
       </div>
 
       <div className="settings__content">
+        {/* Idioma / Language */}
+        <section className="settings__section">
+          <h3><Globe size={16} /> {t('settings.language')}</h3>
+          <div className="settings__language-grid">
+            {languageOptions.map(lang => (
+              <button
+                key={lang.code}
+                className={`settings__language-card ${i18n.language === lang.code ? 'active' : ''}`}
+                onClick={() => handleLanguageChange(lang.code)}
+              >
+                <span className="flag">{lang.flag}</span>
+                <span className="name">{lang.name}</span>
+              </button>
+            ))}
+          </div>
+        </section>
+
         {/* Dificultad */}
         <section className="settings__section">
-          <h3>Dificultad</h3>
+          <h3>{t('settings.difficulty')}</h3>
           <div className="settings__options settings__options--cards">
             {difficultyOptions.map(opt => (
               <button

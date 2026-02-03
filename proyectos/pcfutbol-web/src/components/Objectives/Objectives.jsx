@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { useGame } from '../../context/GameContext';
+import ContrarrelojProgress from '../ContrarrelojProgress/ContrarrelojProgress';
 import {
   Target,
   Trophy,
@@ -24,6 +25,12 @@ import './Objectives.scss';
 
 export default function Objectives() {
   const { state } = useGame();
+
+  // Modo contrarreloj: mostrar panel de progreso en vez de objetivos
+  if (state.gameMode === 'contrarreloj') {
+    return <ContrarrelojProgress />;
+  }
+
   const objectives = state.seasonObjectives || [];
   const [filter, setFilter] = useState('all'); // all, completed, in-progress, at-risk
   const [expandedId, setExpandedId] = useState(null);

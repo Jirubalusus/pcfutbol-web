@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useGame } from '../../context/GameContext';
+import { posES } from '../../game/positionNames';
 import { 
   FACILITY_SPECIALIZATIONS, 
   getMedicalTreatmentsAvailable,
@@ -396,7 +397,7 @@ export default function Facilities() {
                 return (
                   <div key={player.name} className={`medical-player ${hasDoctor ? 'treated' : ''}`}>
                     <div className="player-avatar">
-                      <span>{player.position}</span>
+                      <span>{posES(player.position)}</span>
                     </div>
                     <div className="player-details">
                       <span className="player-name">{player.name}</span>

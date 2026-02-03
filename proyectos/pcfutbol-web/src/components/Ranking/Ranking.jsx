@@ -91,7 +91,8 @@ export default function Ranking() {
                   <th className="col-pos">#</th>
                   <th className="col-player">Jugador</th>
                   <th className="col-team">Equipo</th>
-                  <th className="col-seasons"><Timer size={14} /> Temporadas</th>
+                  <th className="col-score">Puntuación</th>
+                  <th className="col-seasons"><Timer size={14} /> Temp.</th>
                   <th className="col-trophies"><Trophy size={14} /> Trofeos</th>
                   <th className="col-comp">Competición</th>
                   <th className="col-date"><Calendar size={14} /> Fecha</th>
@@ -108,6 +109,10 @@ export default function Ranking() {
                     <td className="col-team">
                       <span className="team-name">{entry.teamName}</span>
                       <span className="league-name">{entry.leagueName || ''}</span>
+                    </td>
+                    <td className="col-score">
+                      <span className="score-value">{(entry.seasonsPlayed || 0) - (entry.difficultyBonus || 0)}</span>
+                      {(entry.difficultyBonus || 0) > 0 && <span className="score-bonus">-{entry.difficultyBonus}</span>}
                     </td>
                     <td className="col-seasons">
                       <span className="seasons-value">{entry.seasonsPlayed}</span>

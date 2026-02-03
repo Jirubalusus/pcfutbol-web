@@ -22,6 +22,55 @@
   }
   
   // ==================
+  // WINTER TRANSFER WINDOW
+  // ==================
+  &--winter {
+    .office__header {
+      border-bottom-color: rgba(100, 180, 255, 0.3);
+    }
+  }
+
+  &__winter-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, #0a1628 0%, #1a3a5c 50%, #0a1628 100%);
+    border-bottom: 1px solid rgba(100, 180, 255, 0.25);
+    color: #8ec8ff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    position: sticky;
+    top: 0;
+    z-index: 51;
+
+    span {
+      background: linear-gradient(90deg, #8ec8ff, #d4eaff, #8ec8ff);
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: winterShimmer 3s ease-in-out infinite;
+    }
+
+    @media (max-width: 768px) {
+      padding: 0.4rem 0.75rem;
+      font-size: 0.7rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+
+  @keyframes winterShimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  // ==================
   // HEADER
   // ==================
   &__header {

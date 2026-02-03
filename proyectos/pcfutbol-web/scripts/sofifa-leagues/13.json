@@ -1,0 +1,4762 @@
+[
+  {
+    "name": "E. Haaland",
+    "position": "ST",
+    "age": 24,
+    "overall": 91,
+    "potential": 93,
+    "team": "Manchester City"
+  },
+  {
+    "name": "M. Salah",
+    "position": "RM,RW",
+    "age": 33,
+    "overall": 90,
+    "potential": 90,
+    "team": "Liverpool"
+  },
+  {
+    "name": "Gabriel",
+    "position": "CB",
+    "age": 27,
+    "overall": 89,
+    "potential": 90,
+    "team": "Arsenal"
+  },
+  {
+    "name": "V. van Dijk",
+    "position": "CB",
+    "age": 33,
+    "overall": 89,
+    "potential": 89,
+    "team": "Liverpool"
+  },
+  {
+    "name": "Alisson",
+    "position": "GK",
+    "age": 32,
+    "overall": 89,
+    "potential": 89,
+    "team": "Liverpool"
+  },
+  {
+    "name": "G. Donnarumma",
+    "position": "GK",
+    "age": 26,
+    "overall": 89,
+    "potential": 91,
+    "team": "Manchester City"
+  },
+  {
+    "name": "Rodri",
+    "position": "CDM,CM",
+    "age": 29,
+    "overall": 89,
+    "potential": 89,
+    "team": "Manchester City"
+  },
+  {
+    "name": "D. Rice",
+    "position": "CDM,CM",
+    "age": 26,
+    "overall": 88,
+    "potential": 89,
+    "team": "Arsenal"
+  },
+  {
+    "name": "W. Saliba",
+    "position": "CB",
+    "age": 24,
+    "overall": 88,
+    "potential": 90,
+    "team": "Arsenal"
+  },
+  {
+    "name": "B. Saka",
+    "position": "RW,RM",
+    "age": 23,
+    "overall": 88,
+    "potential": 90,
+    "team": "Arsenal"
+  },
+  {
+    "name": "M. Caicedo",
+    "position": "CDM,CM",
+    "age": 23,
+    "overall": 88,
+    "potential": 90,
+    "team": "Chelsea"
+  },
+  {
+    "name": "F. Wirtz",
+    "position": "CAM,LM,CM",
+    "age": 22,
+    "overall": 88,
+    "potential": 92,
+    "team": "Liverpool"
+  },
+  {
+    "name": "David Raya",
+    "position": "GK",
+    "age": 29,
+    "overall": 87,
+    "potential": 87,
+    "team": "Arsenal"
+  },
+  {
+    "name": "C. Palmer",
+    "position": "CAM,RM,CM",
+    "age": 23,
+    "overall": 87,
+    "potential": 90,
+    "team": "Chelsea"
+  },
+  {
+    "name": "A. Isak",
+    "position": "ST",
+    "age": 25,
+    "overall": 87,
+    "potential": 88,
+    "team": "Liverpool"
+  },
+  {
+    "name": "Bruno Fernandes",
+    "position": "CM,CAM",
+    "age": 30,
+    "overall": 87,
+    "potential": 87,
+    "team": "Manchester United"
+  },
+  {
+    "name": "M. Ødegaard",
+    "position": "CM,CAM",
+    "age": 26,
+    "overall": 86,
+    "potential": 87,
+    "team": "Arsenal"
+  },
+  {
+    "name": "V. Gyökeres",
+    "position": "ST",
+    "age": 27,
+    "overall": 86,
+    "potential": 87,
+    "team": "Arsenal"
+  },
+  {
+    "name": "A. Mac Allister",
+    "position": "CM,CDM",
+    "age": 26,
+    "overall": 86,
+    "potential": 87,
+    "team": "Liverpool"
+  },
+  {
+    "name": "R. Gravenberch",
+    "position": "CDM,CM",
+    "age": 23,
+    "overall": 86,
+    "potential": 89,
+    "team": "Liverpool"
+  },
+  {
+    "name": "Rúben Dias",
+    "position": "CB",
+    "age": 28,
+    "overall": 86,
+    "potential": 87,
+    "team": "Manchester City"
+  },
+  {
+    "name": "S. Tonali",
+    "position": "CDM,CM",
+    "age": 25,
+    "overall": 86,
+    "potential": 88,
+    "team": "Newcastle United"
+  },
+  {
+    "name": "Bruno Guimarães",
+    "position": "CM,CDM",
+    "age": 27,
+    "overall": 86,
+    "potential": 86,
+    "team": "Newcastle United"
+  },
+  {
+    "name": "Zubimendi",
+    "position": "CDM,CM",
+    "age": 26,
+    "overall": 85,
+    "potential": 87,
+    "team": "Arsenal"
+  },
+  {
+    "name": "E. Martínez",
+    "position": "GK",
+    "age": 32,
+    "overall": 85,
+    "potential": 85,
+    "team": "Aston Villa"
+  },
+  {
+    "name": "Y. Tielemans",
+    "position": "CM,CDM,CAM",
+    "age": 28,
+    "overall": 85,
+    "potential": 85,
+    "team": "Aston Villa"
+  },
+  {
+    "name": "Marc Cucurella",
+    "position": "LB,CM",
+    "age": 26,
+    "overall": 85,
+    "potential": 86,
+    "team": "Chelsea"
+  },
+  {
+    "name": "E. Fernández",
+    "position": "CM,CDM,CAM",
+    "age": 24,
+    "overall": 85,
+    "potential": 88,
+    "team": "Chelsea"
+  },
+  {
+    "name": "D. Szoboszlai",
+    "position": "CAM,CM",
+    "age": 24,
+    "overall": 85,
+    "potential": 87,
+    "team": "Liverpool"
+  },
+  {
+    "name": "I. Konaté",
+    "position": "CB",
+    "age": 26,
+    "overall": 85,
+    "potential": 87,
+    "team": "Liverpool"
+  },
+  {
+    "name": "P. Foden",
+    "position": "CAM,CM,RW",
+    "age": 25,
+    "overall": 85,
+    "potential": 88,
+    "team": "Manchester City"
+  },
+  {
+    "name": "T. Reijnders",
+    "position": "CM,CDM,CAM",
+    "age": 26,
+    "overall": 85,
+    "potential": 86,
+    "team": "Manchester City"
+  },
+  {
+    "name": "J. Gvardiol",
+    "position": "CB,LB,LM",
+    "age": 23,
+    "overall": 85,
+    "potential": 88,
+    "team": "Manchester City"
+  },
+  {
+    "name": "B. Mbeumo",
+    "position": "RW,RM,ST",
+    "age": 25,
+    "overall": 85,
+    "potential": 86,
+    "team": "Manchester United"
+  },
+  {
+    "name": "G. Xhaka",
+    "position": "CDM,CM",
+    "age": 32,
+    "overall": 85,
+    "potential": 85,
+    "team": "Sunderland"
+  },
+  {
+    "name": "E. Eze",
+    "position": "CAM,CM,LW",
+    "age": 27,
+    "overall": 84,
+    "potential": 85,
+    "team": "Arsenal"
+  },
+  {
+    "name": "J. Timber",
+    "position": "RB,LB,CB,RM",
+    "age": 24,
+    "overall": 84,
+    "potential": 87,
+    "team": "Arsenal"
+  },
+  {
+    "name": "E. Konsa",
+    "position": "CB",
+    "age": 27,
+    "overall": 84,
+    "potential": 85,
+    "team": "Aston Villa"
+  },
+  {
+    "name": "B. Kamara",
+    "position": "CDM,CM",
+    "age": 25,
+    "overall": 84,
+    "potential": 86,
+    "team": "Aston Villa"
+  },
+  {
+    "name": "J. Pickford",
+    "position": "GK",
+    "age": 31,
+    "overall": 84,
+    "potential": 84,
+    "team": "Everton"
+  },
+  {
+    "name": "H. Ekitiké",
+    "position": "ST,CAM",
+    "age": 23,
+    "overall": 84,
+    "potential": 88,
+    "team": "Liverpool"
+  },
+  {
+    "name": "J. Maddison",
+    "position": "CM,CAM",
+    "age": 28,
+    "overall": 84,
+    "potential": 84,
+    "team": "Tottenham Hotspur"
+  },
+  {
+    "name": "L. Trossard",
+    "position": "LW,ST,LM",
+    "age": 30,
+    "overall": 83,
+    "potential": 83,
+    "team": "Arsenal"
+  },
+  {
+    "name": "Mikel Merino",
+    "position": "CM,ST,CDM",
+    "age": 29,
+    "overall": 83,
+    "potential": 83,
+    "team": "Arsenal"
+  },
+  {
+    "name": "B. White",
+    "position": "RB,RM",
+    "age": 27,
+    "overall": 83,
+    "potential": 83,
+    "team": "Arsenal"
+  },
+  {
+    "name": "P. Hincapié",
+    "position": "CB,LB",
+    "age": 23,
+    "overall": 83,
+    "potential": 89,
+    "team": "Arsenal"
+  },
+  {
+    "name": "M. Rogers",
+    "position": "CAM,LM,CM",
+    "age": 22,
+    "overall": 83,
+    "potential": 86,
+    "team": "Aston Villa"
+  },
+  {
+    "name": "R. James",
+    "position": "RB,CDM",
+    "age": 25,
+    "overall": 83,
+    "potential": 85,
+    "team": "Chelsea"
+  },
+  {
+    "name": "C. Gakpo",
+    "position": "LM,LW",
+    "age": 26,
+    "overall": 83,
+    "potential": 84,
+    "team": "Liverpool"
+  },
+  {
+    "name": "J. Frimpong",
+    "position": "RB,RM,RW",
+    "age": 24,
+    "overall": 83,
+    "potential": 85,
+    "team": "Liverpool"
+  },
+  {
+    "name": "G. Mamardashvili",
+    "position": "GK",
+    "age": 24,
+    "overall": 83,
+    "potential": 86,
+    "team": "Liverpool"
+  },
+  {
+    "name": "Bernardo Silva",
+    "position": "CM,RW,CAM",
+    "age": 30,
+    "overall": 83,
+    "potential": 83,
+    "team": "Manchester City"
+  },
+  {
+    "name": "M. Guéhi",
+    "position": "CB",
+    "age": 24,
+    "overall": 83,
+    "potential": 85,
+    "team": "Manchester City"
+  },
+  {
+    "name": "J. Doku",
+    "position": "LW,RW,LM",
+    "age": 23,
+    "overall": 83,
+    "potential": 86,
+    "team": "Manchester City"
+  },
+  {
+    "name": "O. Marmoush",
+    "position": "LW,ST,LM",
+    "age": 26,
+    "overall": 83,
+    "potential": 83,
+    "team": "Manchester City"
+  },
+  {
+    "name": "Matheus Cunha",
+    "position": "CAM,LW,ST",
+    "age": 26,
+    "overall": 83,
+    "potential": 85,
+    "team": "Manchester United"
+  },
+  {
+    "name": "Palhinha",
+    "position": "CDM,CM",
+    "age": 29,
+    "overall": 83,
+    "potential": 83,
+    "team": "Tottenham Hotspur"
+  },
+  {
+    "name": "C. Romero",
+    "position": "CB",
+    "age": 27,
+    "overall": 83,
+    "potential": 85,
+    "team": "Tottenham Hotspur"
+  },
+  {
+    "name": "G. Vicario",
+    "position": "GK",
+    "age": 28,
+    "overall": 83,
+    "potential": 85,
+    "team": "Tottenham Hotspur"
+  },
+  {
+    "name": "D. Kulusevski",
+    "position": "CM,RW,CAM",
+    "age": 25,
+    "overall": 83,
+    "potential": 86,
+    "team": "Tottenham Hotspur"
+  },
+  {
+    "name": "M. van de Ven",
+    "position": "CB,LB",
+    "age": 24,
+    "overall": 83,
+    "potential": 86,
+    "team": "Tottenham Hotspur"
+  },
+  {
+    "name": "J. Bowen",
+    "position": "RM,ST,RW",
+    "age": 28,
+    "overall": 83,
+    "potential": 83,
+    "team": "West Ham United"
+  },
+  {
+    "name": "K. Havertz",
+    "position": "ST,CM,CAM",
+    "age": 26,
+    "overall": 82,
+    "potential": 84,
+    "team": "Arsenal"
+  },
+  {
+    "name": "O. Watkins",
+    "position": "ST",
+    "age": 29,
+    "overall": 82,
+    "potential": 82,
+    "team": "Aston Villa"
+  },
+  {
+    "name": "Pedro Neto",
+    "position": "RM,LM,RW",
+    "age": 25,
+    "overall": 82,
+    "potential": 84,
+    "team": "Chelsea"
+  },
+  {
+    "name": "J. Grealish",
+    "position": "LM,LW",
+    "age": 29,
+    "overall": 82,
+    "potential": 82,
+    "team": "Everton"
+  },
+  {
+    "name": "I. Ndiaye",
+    "position": "RM,LM,RW",
+    "age": 25,
+    "overall": 82,
+    "potential": 85,
+    "team": "Everton"
+  },
+  {
+    "name": "J. Stones",
+    "position": "CB,RB,CDM",
+    "age": 31,
+    "overall": 82,
+    "potential": 82,
+    "team": "Manchester City"
+  },
+  {
+    "name": "M. Kovačić",
+    "position": "CM,CDM,CAM",
+    "age": 31,
+    "overall": 82,
+    "potential": 82,
+    "team": "Manchester City"
+  },
+  {
+    "name": "N. Aké",
+    "position": "CB,LB",
+    "age": 30,
+    "overall": 82,
+    "potential": 82,
+    "team": "Manchester City"
+  },
+  {
+    "name": "A. Semenyo",
+    "position": "RW,LW,RM",
+    "age": 25,
+    "overall": 82,
+    "potential": 83,
+    "team": "Manchester City"
+  },
+  {
+    "name": "R. Cherki",
+    "position": "RW,RM,CAM",
+    "age": 21,
+    "overall": 82,
+    "potential": 88,
+    "team": "Manchester City"
+  },
+  {
+    "name": "M. de Ligt",
+    "position": "CB",
+    "age": 25,
+    "overall": 82,
+    "potential": 84,
+    "team": "Manchester United"
+  },
+  {
+    "name": "F. Schär",
+    "position": "CB",
+    "age": 33,
+    "overall": 82,
+    "potential": 82,
+    "team": "Newcastle United"
+  },
+  {
+    "name": "Y. Wissa",
+    "position": "ST",
+    "age": 28,
+    "overall": 82,
+    "potential": 82,
+    "team": "Newcastle United"
+  },
+  {
+    "name": "A. Gordon",
+    "position": "LW,RW,LM",
+    "age": 24,
+    "overall": 82,
+    "potential": 85,
+    "team": "Newcastle United"
+  },
+  {
+    "name": "S. Botman",
+    "position": "CB",
+    "age": 25,
+    "overall": 82,
+    "potential": 85,
+    "team": "Newcastle United"
+  },
+  {
+    "name": "M. Sels",
+    "position": "GK",
+    "age": 33,
+    "overall": 82,
+    "potential": 82,
+    "team": "Nottingham Forest"
+  },
+  {
+    "name": "N. Milenković",
+    "position": "CB",
+    "age": 27,
+    "overall": 82,
+    "potential": 83,
+    "team": "Nottingham Forest"
+  },
+  {
+    "name": "E. Anderson",
+    "position": "CDM,CM",
+    "age": 22,
+    "overall": 82,
+    "potential": 86,
+    "team": "Nottingham Forest"
+  },
+  {
+    "name": "Murillo",
+    "position": "CB",
+    "age": 22,
+    "overall": 82,
+    "potential": 86,
+    "team": "Nottingham Forest"
+  },
+  {
+    "name": "Pedro Porro",
+    "position": "RB,RM",
+    "age": 25,
+    "overall": 82,
+    "potential": 85,
+    "team": "Tottenham Hotspur"
+  },
+  {
+    "name": "X. Simons",
+    "position": "CAM,LM,LW,ST",
+    "age": 22,
+    "overall": 82,
+    "potential": 85,
+    "team": "Tottenham Hotspur"
+  },
+  {
+    "name": "A. Robinson",
+    "position": "LB,LM",
+    "age": 27,
+    "overall": 82,
+    "potential": 82,
+    "team": "Fulham FC"
+  },
+  {
+    "name": "D. Henderson",
+    "position": "GK",
+    "age": 28,
+    "overall": 82,
+    "potential": 83,
+    "team": "Crystal Palace"
+  },
+  {
+    "name": "J. Mateta",
+    "position": "ST",
+    "age": 28,
+    "overall": 82,
+    "potential": 82,
+    "team": "Crystal Palace"
+  },
+  {
+    "name": "D. Muñoz",
+    "position": "RB,RM",
+    "age": 29,
+    "overall": 82,
+    "potential": 82,
+    "team": "Crystal Palace"
+  },
+  {
+    "name": "K. Mitoma",
+    "position": "LM,LW",
+    "age": 28,
+    "overall": 82,
+    "potential": 82,
+    "team": "Brighton & Hove Albion"
+  },
+  {
+    "name": "Gabriel Martinelli",
+    "position": "LW,LM",
+    "age": 24,
+    "overall": 81,
+    "potential": 84,
+    "team": "Arsenal"
+  },
+  {
+    "name": "R. Calafiori",
+    "position": "LB,CB,CDM",
+    "age": 23,
+    "overall": 81,
+    "potential": 85,
+    "team": "Arsenal"
+  },
+  {
+    "name": "J. McGinn",
+    "position": "RM,LM,CAM,RB",
+    "age": 30,
+    "overall": 81,
+    "potential": 81,
+    "team": "Aston Villa"
+  },
+  {
+    "name": "M. Cash",
+    "position": "RB,RM",
+    "age": 27,
+    "overall": 81,
+    "potential": 81,
+    "team": "Aston Villa"
+  },
+  {
+    "name": "A. Onana",
+    "position": "CDM,CM",
+    "age": 23,
+    "overall": 81,
+    "potential": 84,
+    "team": "Aston Villa"
+  },
+  {
+    "name": "A. Robertson",
+    "position": "LB,LM",
+    "age": 31,
+    "overall": 81,
+    "potential": 81,
+    "team": "Liverpool"
+  },
+  {
+    "name": "M. Kerkez",
+    "position": "LB,LM",
+    "age": 21,
+    "overall": 81,
+    "potential": 85,
+    "team": "Liverpool"
+  },
+  {
+    "name": "R. Aït-Nouri",
+    "position": "LB,LM",
+    "age": 24,
+    "overall": 81,
+    "potential": 85,
+    "team": "Manchester City"
+  },
+  {
+    "name": "Nico González",
+    "position": "CDM,CM",
+    "age": 23,
+    "overall": 81,
+    "potential": 85,
+    "team": "Manchester City"
+  },
+  {
+    "name": "Savinho",
+    "position": "RW,LW,RM",
+    "age": 21,
+    "overall": 81,
+    "potential": 86,
+    "team": "Manchester City"
+  },
+  {
+    "name": "Casemiro",
+    "position": "CDM,CM",
+    "age": 33,
+    "overall": 81,
+    "potential": 81,
+    "team": "Manchester United"
+  },
+  {
+    "name": "L. Martínez",
+    "position": "CB",
+    "age": 27,
+    "overall": 81,
+    "potential": 82,
+    "team": "Manchester United"
+  },
+  {
+    "name": "Joelinton",
+    "position": "CM,CDM",
+    "age": 28,
+    "overall": 81,
+    "potential": 81,
+    "team": "Newcastle United"
+  },
+  {
+    "name": "M. Thiaw",
+    "position": "CB",
+    "age": 23,
+    "overall": 81,
+    "potential": 85,
+    "team": "Newcastle United"
+  },
+  {
+    "name": "L. Hall",
+    "position": "LB,LM",
+    "age": 20,
+    "overall": 81,
+    "potential": 86,
+    "team": "Newcastle United"
+  },
+  {
+    "name": "C. Wood",
+    "position": "ST",
+    "age": 33,
+    "overall": 81,
+    "potential": 81,
+    "team": "Nottingham Forest"
+  },
+  {
+    "name": "M. Gibbs-White",
+    "position": "CAM",
+    "age": 25,
+    "overall": 81,
+    "potential": 83,
+    "team": "Nottingham Forest"
+  },
+  {
+    "name": "M. Kudus",
+    "position": "RW,RM,ST",
+    "age": 24,
+    "overall": 81,
+    "potential": 83,
+    "team": "Tottenham Hotspur"
+  },
+  {
+    "name": "M. Lacroix",
+    "position": "CB",
+    "age": 25,
+    "overall": 81,
+    "potential": 83,
+    "team": "Crystal Palace"
+  },
+  {
+    "name": "A. Wharton",
+    "position": "CDM,CM",
+    "age": 21,
+    "overall": 81,
+    "potential": 87,
+    "team": "Crystal Palace"
+  },
+  {
+    "name": "F. Chiesa",
+    "position": "RM,ST,RW",
+    "age": 27,
+    "overall": 80,
+    "potential": 80,
+    "team": "Liverpool"
+  },
+  {
+    "name": "C. Jones",
+    "position": "CAM,CM,CDM",
+    "age": 24,
+    "overall": 80,
+    "potential": 83,
+    "team": "Liverpool"
+  },
+  {
+    "name": "Matheus Nunes",
+    "position": "RB,CM,RM",
+    "age": 26,
+    "overall": 80,
+    "potential": 81,
+    "team": "Manchester City"
+  },
+  {
+    "name": "H. Maguire",
+    "position": "CB",
+    "age": 32,
+    "overall": 80,
+    "potential": 80,
+    "team": "Manchester United"
+  },
+  {
+    "name": "N. Mazraoui",
+    "position": "RB,CB,RM",
+    "age": 27,
+    "overall": 80,
+    "potential": 80,
+    "team": "Manchester United"
+  },
+  {
+    "name": "B. Šeško",
+    "position": "ST",
+    "age": 22,
+    "overall": 80,
+    "potential": 88,
+    "team": "Manchester United"
+  },
+  {
+    "name": "D. Burn",
+    "position": "CB,LB",
+    "age": 33,
+    "overall": 80,
+    "potential": 80,
+    "team": "Newcastle United"
+  },
+  {
+    "name": "N. Pope",
+    "position": "GK",
+    "age": 33,
+    "overall": 80,
+    "potential": 80,
+    "team": "Newcastle United"
+  },
+  {
+    "name": "J. Murphy",
+    "position": "RW,RM",
+    "age": 30,
+    "overall": 80,
+    "potential": 80,
+    "team": "Newcastle United"
+  },
+  {
+    "name": "H. Barnes",
+    "position": "LW,RW,LM",
+    "age": 27,
+    "overall": 80,
+    "potential": 80,
+    "team": "Newcastle United"
+  },
+  {
+    "name": "N. Woltemade",
+    "position": "ST,CAM",
+    "age": 23,
+    "overall": 80,
+    "potential": 85,
+    "team": "Newcastle United"
+  },
+  {
+    "name": "T. Livramento",
+    "position": "RB,LB,RM",
+    "age": 22,
+    "overall": 80,
+    "potential": 86,
+    "team": "Newcastle United"
+  },
+  {
+    "name": "O. Aina",
+    "position": "RB,LB,RM",
+    "age": 28,
+    "overall": 80,
+    "potential": 80,
+    "team": "Nottingham Forest"
+  },
+  {
+    "name": "N. Williams",
+    "position": "LB,RB",
+    "age": 24,
+    "overall": 80,
+    "potential": 82,
+    "team": "Nottingham Forest"
+  },
+  {
+    "name": "D. Solanke",
+    "position": "ST",
+    "age": 27,
+    "overall": 80,
+    "potential": 80,
+    "team": "Tottenham Hotspur"
+  },
+  {
+    "name": "R. Bentancur",
+    "position": "CDM,CM",
+    "age": 28,
+    "overall": 80,
+    "potential": 81,
+    "team": "Tottenham Hotspur"
+  },
+  {
+    "name": "C. Gallagher",
+    "position": "CM,LM,CDM",
+    "age": 25,
+    "overall": 80,
+    "potential": 82,
+    "team": "Tottenham Hotspur"
+  },
+  {
+    "name": "P. Sarr",
+    "position": "CM,CDM",
+    "age": 22,
+    "overall": 80,
+    "potential": 85,
+    "team": "Tottenham Hotspur"
+  },
+  {
+    "name": "V. Castellanos",
+    "position": "ST",
+    "age": 26,
+    "overall": 80,
+    "potential": 81,
+    "team": "West Ham United"
+  },
+  {
+    "name": "N. Mukiele",
+    "position": "CB,RB,RM",
+    "age": 27,
+    "overall": 80,
+    "potential": 80,
+    "team": "Sunderland"
+  },
+  {
+    "name": "Reinildo",
+    "position": "LB",
+    "age": 31,
+    "overall": 80,
+    "potential": 80,
+    "team": "Sunderland"
+  },
+  {
+    "name": "O. Alderete",
+    "position": "CB",
+    "age": 28,
+    "overall": 80,
+    "potential": 81,
+    "team": "Sunderland"
+  },
+  {
+    "name": "B. Leno",
+    "position": "GK",
+    "age": 33,
+    "overall": 80,
+    "potential": 80,
+    "team": "Fulham FC"
+  },
+  {
+    "name": "A. Iwobi",
+    "position": "LM,RM,LW",
+    "age": 29,
+    "overall": 80,
+    "potential": 80,
+    "team": "Fulham FC"
+  },
+  {
+    "name": "S. Chukwueze",
+    "position": "RM,RW",
+    "age": 26,
+    "overall": 80,
+    "potential": 80,
+    "team": "Fulham FC"
+  },
+  {
+    "name": "I. Sarr",
+    "position": "RW,CAM,RM",
+    "age": 27,
+    "overall": 80,
+    "potential": 80,
+    "team": "Crystal Palace"
+  },
+  {
+    "name": "B. Verbruggen",
+    "position": "GK",
+    "age": 22,
+    "overall": 80,
+    "potential": 86,
+    "team": "Brighton & Hove Albion"
+  },
+  {
+    "name": "J. van Hecke",
+    "position": "CB",
+    "age": 25,
+    "overall": 80,
+    "potential": 83,
+    "team": "Brighton & Hove Albion"
+  },
+  {
+    "name": "Y. Minteh",
+    "position": "RM,RW",
+    "age": 20,
+    "overall": 80,
+    "potential": 86,
+    "team": "Brighton & Hove Albion"
+  },
+  {
+    "name": "C. Baleba",
+    "position": "CDM,CM",
+    "age": 21,
+    "overall": 80,
+    "potential": 86,
+    "team": "Brighton & Hove Albion"
+  },
+  {
+    "name": "M. Damsgaard",
+    "position": "CAM,CM",
+    "age": 24,
+    "overall": 80,
+    "potential": 83,
+    "team": "Brentford"
+  },
+  {
+    "name": "M. Senesi",
+    "position": "CB",
+    "age": 28,
+    "overall": 80,
+    "potential": 80,
+    "team": "AFC Bournemouth"
+  },
+  {
+    "name": "Evanilson",
+    "position": "ST",
+    "age": 25,
+    "overall": 80,
+    "potential": 83,
+    "team": "AFC Bournemouth"
+  },
+  {
+    "name": "C. Nørgaard",
+    "position": "CDM,CM",
+    "age": 31,
+    "overall": 80,
+    "potential": 80,
+    "team": "Arsenal"
+  },
+  {
+    "name": "Gabriel Jesus",
+    "position": "ST,CAM",
+    "age": 28,
+    "overall": 80,
+    "potential": 80,
+    "team": "Arsenal"
+  },
+  {
+    "name": "N. Madueke",
+    "position": "RW,RM",
+    "age": 23,
+    "overall": 80,
+    "potential": 84,
+    "team": "Arsenal"
+  },
+  {
+    "name": "L. Digne",
+    "position": "LB,LM",
+    "age": 31,
+    "overall": 80,
+    "potential": 80,
+    "team": "Aston Villa"
+  },
+  {
+    "name": "Pau Torres",
+    "position": "CB",
+    "age": 28,
+    "overall": 80,
+    "potential": 80,
+    "team": "Aston Villa"
+  },
+  {
+    "name": "Robert Sánchez",
+    "position": "GK",
+    "age": 27,
+    "overall": 80,
+    "potential": 81,
+    "team": "Chelsea"
+  },
+  {
+    "name": "T. Chalobah",
+    "position": "CB,RB",
+    "age": 25,
+    "overall": 80,
+    "potential": 82,
+    "team": "Chelsea"
+  },
+  {
+    "name": "João Pedro",
+    "position": "ST,CAM",
+    "age": 23,
+    "overall": 80,
+    "potential": 84,
+    "team": "Chelsea"
+  },
+  {
+    "name": "L. Colwill",
+    "position": "CB",
+    "age": 22,
+    "overall": 80,
+    "potential": 84,
+    "team": "Chelsea"
+  },
+  {
+    "name": "Andrey Santos",
+    "position": "CM,CDM",
+    "age": 21,
+    "overall": 80,
+    "potential": 87,
+    "team": "Chelsea"
+  },
+  {
+    "name": "J. Tarkowski",
+    "position": "CB",
+    "age": 32,
+    "overall": 80,
+    "potential": 80,
+    "team": "Everton"
+  },
+  {
+    "name": "J. Garner",
+    "position": "CDM,CM",
+    "age": 24,
+    "overall": 80,
+    "potential": 84,
+    "team": "Everton"
+  },
+  {
+    "name": "A. Wan-Bissaka",
+    "position": "RB",
+    "age": 27,
+    "overall": 79,
+    "potential": 79,
+    "team": "West Ham United"
+  },
+  {
+    "name": "Lucas Paquetá",
+    "position": "CM,LM,CAM",
+    "age": 27,
+    "overall": 79,
+    "potential": 79,
+    "team": "West Ham United"
+  },
+  {
+    "name": "R. Roefs",
+    "position": "GK",
+    "age": 22,
+    "overall": 79,
+    "potential": 85,
+    "team": "Sunderland"
+  },
+  {
+    "name": "J. Andersen",
+    "position": "CB",
+    "age": 29,
+    "overall": 79,
+    "potential": 79,
+    "team": "Fulham FC"
+  },
+  {
+    "name": "S. Berge",
+    "position": "CDM,CM",
+    "age": 27,
+    "overall": 79,
+    "potential": 80,
+    "team": "Fulham FC"
+  },
+  {
+    "name": "Florentino",
+    "position": "CDM,CM,CB",
+    "age": 25,
+    "overall": 79,
+    "potential": 82,
+    "team": "Burnley"
+  },
+  {
+    "name": "W. Benítez",
+    "position": "GK",
+    "age": 32,
+    "overall": 79,
+    "potential": 79,
+    "team": "Crystal Palace"
+  },
+  {
+    "name": "T. Mitchell",
+    "position": "LB,LM",
+    "age": 25,
+    "overall": 79,
+    "potential": 81,
+    "team": "Crystal Palace"
+  },
+  {
+    "name": "C. Richards",
+    "position": "CB",
+    "age": 25,
+    "overall": 79,
+    "potential": 81,
+    "team": "Crystal Palace"
+  },
+  {
+    "name": "B. Johnson",
+    "position": "RW,RM,LM",
+    "age": 24,
+    "overall": 79,
+    "potential": 83,
+    "team": "Crystal Palace"
+  },
+  {
+    "name": "Yeremy Pino",
+    "position": "LW,RW,CAM,LM",
+    "age": 22,
+    "overall": 79,
+    "potential": 87,
+    "team": "Crystal Palace"
+  },
+  {
+    "name": "D. Welbeck",
+    "position": "ST",
+    "age": 34,
+    "overall": 79,
+    "potential": 79,
+    "team": "Brighton & Hove Albion"
+  },
+  {
+    "name": "F. Kadıoğlu",
+    "position": "LB,RB,LM",
+    "age": 25,
+    "overall": 79,
+    "potential": 81,
+    "team": "Brighton & Hove Albion"
+  },
+  {
+    "name": "M. De Cuyper",
+    "position": "LB,LM",
+    "age": 24,
+    "overall": 79,
+    "potential": 84,
+    "team": "Brighton & Hove Albion"
+  },
+  {
+    "name": "J. Henderson",
+    "position": "CDM,CM",
+    "age": 35,
+    "overall": 79,
+    "potential": 79,
+    "team": "Brentford"
+  },
+  {
+    "name": "C. Kelleher",
+    "position": "GK",
+    "age": 26,
+    "overall": 79,
+    "potential": 82,
+    "team": "Brentford"
+  },
+  {
+    "name": "N. Collins",
+    "position": "CB",
+    "age": 24,
+    "overall": 79,
+    "potential": 82,
+    "team": "Brentford"
+  },
+  {
+    "name": "Igor Thiago",
+    "position": "ST",
+    "age": 24,
+    "overall": 79,
+    "potential": 83,
+    "team": "Brentford"
+  },
+  {
+    "name": "M. Kayode",
+    "position": "RB,RM",
+    "age": 20,
+    "overall": 79,
+    "potential": 84,
+    "team": "Brentford"
+  },
+  {
+    "name": "T. Adams",
+    "position": "CDM,CM",
+    "age": 26,
+    "overall": 79,
+    "potential": 81,
+    "team": "AFC Bournemouth"
+  },
+  {
+    "name": "J. Kluivert",
+    "position": "CAM,LM,CM",
+    "age": 26,
+    "overall": 79,
+    "potential": 81,
+    "team": "AFC Bournemouth"
+  },
+  {
+    "name": "B. Diakité",
+    "position": "CB",
+    "age": 24,
+    "overall": 79,
+    "potential": 84,
+    "team": "AFC Bournemouth"
+  },
+  {
+    "name": "Đ. Petrović",
+    "position": "GK",
+    "age": 25,
+    "overall": 79,
+    "potential": 83,
+    "team": "AFC Bournemouth"
+  },
+  {
+    "name": "M. Lewis-Skelly",
+    "position": "LB,CM",
+    "age": 18,
+    "overall": 78,
+    "potential": 87,
+    "team": "Arsenal"
+  },
+  {
+    "name": "M. Bizot",
+    "position": "GK",
+    "age": 34,
+    "overall": 78,
+    "potential": 78,
+    "team": "Aston Villa"
+  },
+  {
+    "name": "T. Mings",
+    "position": "CB",
+    "age": 32,
+    "overall": 78,
+    "potential": 78,
+    "team": "Aston Villa"
+  },
+  {
+    "name": "E. Buendía",
+    "position": "LM,CAM,LW",
+    "age": 28,
+    "overall": 78,
+    "potential": 78,
+    "team": "Aston Villa"
+  },
+  {
+    "name": "L. Bailey",
+    "position": "RM,RW",
+    "age": 27,
+    "overall": 78,
+    "potential": 78,
+    "team": "Aston Villa"
+  },
+  {
+    "name": "H. Elliott",
+    "position": "CAM,CM,RW",
+    "age": 22,
+    "overall": 78,
+    "potential": 83,
+    "team": "Aston Villa"
+  },
+  {
+    "name": "E. Guessand",
+    "position": "RM,RW,ST",
+    "age": 24,
+    "overall": 78,
+    "potential": 83,
+    "team": "Aston Villa"
+  },
+  {
+    "name": "R. Sterling",
+    "position": "LW,LM,RM",
+    "age": 30,
+    "overall": 78,
+    "potential": 78,
+    "team": "Chelsea"
+  },
+  {
+    "name": "T. Adarabioyo",
+    "position": "CB",
+    "age": 27,
+    "overall": 78,
+    "potential": 80,
+    "team": "Chelsea"
+  },
+  {
+    "name": "L. Delap",
+    "position": "ST",
+    "age": 22,
+    "overall": 78,
+    "potential": 85,
+    "team": "Chelsea"
+  },
+  {
+    "name": "R. Lavia",
+    "position": "CDM,CM",
+    "age": 21,
+    "overall": 78,
+    "potential": 85,
+    "team": "Chelsea"
+  },
+  {
+    "name": "J. Gittens",
+    "position": "LM,LW",
+    "age": 20,
+    "overall": 78,
+    "potential": 85,
+    "team": "Chelsea"
+  },
+  {
+    "name": "A. Garnacho",
+    "position": "LM,LW",
+    "age": 21,
+    "overall": 78,
+    "potential": 84,
+    "team": "Chelsea"
+  },
+  {
+    "name": "J. Hato",
+    "position": "LB,CB,CDM",
+    "age": 19,
+    "overall": 78,
+    "potential": 88,
+    "team": "Chelsea"
+  },
+  {
+    "name": "K. Dewsbury-Hall",
+    "position": "CAM,CM",
+    "age": 26,
+    "overall": 78,
+    "potential": 79,
+    "team": "Everton"
+  },
+  {
+    "name": "A. Stach",
+    "position": "CM,CDM,CAM",
+    "age": 26,
+    "overall": 78,
+    "potential": 79,
+    "team": "Leeds United"
+  },
+  {
+    "name": "M. Mount",
+    "position": "CAM,LW,CM",
+    "age": 26,
+    "overall": 78,
+    "potential": 79,
+    "team": "Manchester United"
+  },
+  {
+    "name": "Diogo Dalot",
+    "position": "RB,LB,RM,CM",
+    "age": 26,
+    "overall": 78,
+    "potential": 80,
+    "team": "Manchester United"
+  },
+  {
+    "name": "M. Ugarte",
+    "position": "CDM,CM",
+    "age": 24,
+    "overall": 78,
+    "potential": 82,
+    "team": "Manchester United"
+  },
+  {
+    "name": "L. Yoro",
+    "position": "CB",
+    "age": 19,
+    "overall": 78,
+    "potential": 86,
+    "team": "Manchester United"
+  },
+  {
+    "name": "I. Sangaré",
+    "position": "CDM,CM",
+    "age": 27,
+    "overall": 78,
+    "potential": 79,
+    "team": "Nottingham Forest"
+  },
+  {
+    "name": "C. Hudson-Odoi",
+    "position": "LM,LW",
+    "age": 24,
+    "overall": 78,
+    "potential": 81,
+    "team": "Nottingham Forest"
+  },
+  {
+    "name": "D. Ndoye",
+    "position": "LM,RM,LW",
+    "age": 24,
+    "overall": 78,
+    "potential": 81,
+    "team": "Nottingham Forest"
+  },
+  {
+    "name": "Y. Bissouma",
+    "position": "CDM,CM",
+    "age": 28,
+    "overall": 78,
+    "potential": 78,
+    "team": "Tottenham Hotspur"
+  },
+  {
+    "name": "L. Bergvall",
+    "position": "CM,CAM,RM",
+    "age": 19,
+    "overall": 78,
+    "potential": 87,
+    "team": "Tottenham Hotspur"
+  },
+  {
+    "name": "J. Todibo",
+    "position": "CB",
+    "age": 25,
+    "overall": 78,
+    "potential": 81,
+    "team": "West Ham United"
+  },
+  {
+    "name": "Mateus Fernandes",
+    "position": "CAM,CM",
+    "age": 20,
+    "overall": 78,
+    "potential": 85,
+    "team": "West Ham United"
+  },
+  {
+    "name": "L. Geertruida",
+    "position": "CB,RB,CDM,RM",
+    "age": 24,
+    "overall": 78,
+    "potential": 82,
+    "team": "Sunderland"
+  },
+  {
+    "name": "T. Hume",
+    "position": "RB,LB,CB,CM",
+    "age": 23,
+    "overall": 78,
+    "potential": 81,
+    "team": "Sunderland"
+  },
+  {
+    "name": "André",
+    "position": "CDM,CM",
+    "age": 23,
+    "overall": 78,
+    "potential": 83,
+    "team": "Wolverhampton Wanderers"
+  },
+  {
+    "name": "L. Krejčí",
+    "position": "CB,CM,CDM",
+    "age": 26,
+    "overall": 78,
+    "potential": 82,
+    "team": "Wolverhampton Wanderers"
+  },
+  {
+    "name": "João Gomes",
+    "position": "CDM,CM",
+    "age": 24,
+    "overall": 78,
+    "potential": 83,
+    "team": "Wolverhampton Wanderers"
+  },
+  {
+    "name": "K. Tete",
+    "position": "RB",
+    "age": 29,
+    "overall": 78,
+    "potential": 78,
+    "team": "Fulham FC"
+  },
+  {
+    "name": "H. Wilson",
+    "position": "RM,CAM,RW",
+    "age": 28,
+    "overall": 78,
+    "potential": 78,
+    "team": "Fulham FC"
+  },
+  {
+    "name": "S. Lukić",
+    "position": "CDM,CM",
+    "age": 28,
+    "overall": 78,
+    "potential": 78,
+    "team": "Fulham FC"
+  },
+  {
+    "name": "C. Bassey",
+    "position": "CB",
+    "age": 25,
+    "overall": 78,
+    "potential": 81,
+    "team": "Fulham FC"
+  },
+  {
+    "name": "K. Walker",
+    "position": "RB,RM",
+    "age": 35,
+    "overall": 78,
+    "potential": 78,
+    "team": "Burnley"
+  },
+  {
+    "name": "M. Dúbravka",
+    "position": "GK",
+    "age": 36,
+    "overall": 78,
+    "potential": 78,
+    "team": "Burnley"
+  },
+  {
+    "name": "P. Groß",
+    "position": "CDM,CM",
+    "age": 34,
+    "overall": 78,
+    "potential": 78,
+    "team": "Brighton & Hove Albion"
+  },
+  {
+    "name": "J. Veltman",
+    "position": "RB",
+    "age": 33,
+    "overall": 78,
+    "potential": 78,
+    "team": "Brighton & Hove Albion"
+  },
+  {
+    "name": "O. Boscagli",
+    "position": "CB",
+    "age": 27,
+    "overall": 78,
+    "potential": 80,
+    "team": "Brighton & Hove Albion"
+  },
+  {
+    "name": "M. Wieffer",
+    "position": "CDM,RB,CM",
+    "age": 25,
+    "overall": 78,
+    "potential": 82,
+    "team": "Brighton & Hove Albion"
+  },
+  {
+    "name": "Y. Ayari",
+    "position": "CDM,CM",
+    "age": 21,
+    "overall": 78,
+    "potential": 84,
+    "team": "Brighton & Hove Albion"
+  },
+  {
+    "name": "M. Jensen",
+    "position": "CM,CDM",
+    "age": 29,
+    "overall": 78,
+    "potential": 78,
+    "team": "Brentford"
+  },
+  {
+    "name": "K. Schade",
+    "position": "LM,LW,ST",
+    "age": 23,
+    "overall": 78,
+    "potential": 83,
+    "team": "Brentford"
+  },
+  {
+    "name": "R. Christie",
+    "position": "CDM,CM",
+    "age": 30,
+    "overall": 78,
+    "potential": 78,
+    "team": "AFC Bournemouth"
+  },
+  {
+    "name": "L. Cook",
+    "position": "CDM,RB,CM",
+    "age": 28,
+    "overall": 78,
+    "potential": 78,
+    "team": "AFC Bournemouth"
+  },
+  {
+    "name": "A. Truffert",
+    "position": "LB,LM",
+    "age": 23,
+    "overall": 78,
+    "potential": 82,
+    "team": "AFC Bournemouth"
+  },
+  {
+    "name": "A. Scott",
+    "position": "CDM,CM,CAM",
+    "age": 21,
+    "overall": 78,
+    "potential": 84,
+    "team": "AFC Bournemouth"
+  },
+  {
+    "name": "Cristhian Mosquera",
+    "position": "CB",
+    "age": 21,
+    "overall": 77,
+    "potential": 85,
+    "team": "Arsenal"
+  },
+  {
+    "name": "R. Barkley",
+    "position": "CM,CAM,CDM",
+    "age": 31,
+    "overall": 77,
+    "potential": 77,
+    "team": "Aston Villa"
+  },
+  {
+    "name": "A. Disasi",
+    "position": "CB,RB",
+    "age": 27,
+    "overall": 77,
+    "potential": 78,
+    "team": "Chelsea"
+  },
+  {
+    "name": "F. Jörgensen",
+    "position": "GK",
+    "age": 23,
+    "overall": 77,
+    "potential": 83,
+    "team": "Chelsea"
+  },
+  {
+    "name": "D. McNeil",
+    "position": "LM,CAM,RM,LW",
+    "age": 25,
+    "overall": 77,
+    "potential": 78,
+    "team": "Everton"
+  },
+  {
+    "name": "V. Mykolenko",
+    "position": "LB,LM",
+    "age": 26,
+    "overall": 77,
+    "potential": 78,
+    "team": "Everton"
+  },
+  {
+    "name": "J. Rodon",
+    "position": "CB",
+    "age": 27,
+    "overall": 77,
+    "potential": 78,
+    "team": "Leeds United"
+  },
+  {
+    "name": "E. Ampadu",
+    "position": "CDM,CB,CM",
+    "age": 24,
+    "overall": 77,
+    "potential": 80,
+    "team": "Leeds United"
+  },
+  {
+    "name": "G. Gudmundsson",
+    "position": "LB,CB,LM",
+    "age": 26,
+    "overall": 77,
+    "potential": 78,
+    "team": "Leeds United"
+  },
+  {
+    "name": "J. Bijol",
+    "position": "CB",
+    "age": 26,
+    "overall": 77,
+    "potential": 79,
+    "team": "Leeds United"
+  },
+  {
+    "name": "R. Lewis",
+    "position": "RB,LB,CM",
+    "age": 20,
+    "overall": 77,
+    "potential": 84,
+    "team": "Manchester City"
+  },
+  {
+    "name": "J. Zirkzee",
+    "position": "ST,CAM",
+    "age": 24,
+    "overall": 77,
+    "potential": 83,
+    "team": "Manchester United"
+  },
+  {
+    "name": "K. Mainoo",
+    "position": "CM,CDM",
+    "age": 20,
+    "overall": 77,
+    "potential": 85,
+    "team": "Manchester United"
+  },
+  {
+    "name": "A. Ramsdale",
+    "position": "GK",
+    "age": 27,
+    "overall": 77,
+    "potential": 79,
+    "team": "Newcastle United"
+  },
+  {
+    "name": "J. Ramsey",
+    "position": "CM,LW,CAM",
+    "age": 24,
+    "overall": 77,
+    "potential": 81,
+    "team": "Newcastle United"
+  },
+  {
+    "name": "Igor Jesus",
+    "position": "ST",
+    "age": 24,
+    "overall": 77,
+    "potential": 81,
+    "team": "Nottingham Forest"
+  },
+  {
+    "name": "O. Zinchenko",
+    "position": "LB,CM",
+    "age": 28,
+    "overall": 77,
+    "potential": 77,
+    "team": "Nottingham Forest"
+  },
+  {
+    "name": "D. Bakwa",
+    "position": "RM,RW",
+    "age": 22,
+    "overall": 77,
+    "potential": 83,
+    "team": "Nottingham Forest"
+  },
+  {
+    "name": "M. Tel",
+    "position": "ST,LW,LM,CAM",
+    "age": 20,
+    "overall": 77,
+    "potential": 86,
+    "team": "Tottenham Hotspur"
+  },
+  {
+    "name": "W. Odobert",
+    "position": "LW,LM,RM",
+    "age": 20,
+    "overall": 77,
+    "potential": 84,
+    "team": "Tottenham Hotspur"
+  },
+  {
+    "name": "A. Areola",
+    "position": "GK",
+    "age": 32,
+    "overall": 77,
+    "potential": 77,
+    "team": "West Ham United"
+  },
+  {
+    "name": "C. Wilson",
+    "position": "ST",
+    "age": 33,
+    "overall": 77,
+    "potential": 77,
+    "team": "West Ham United"
+  },
+  {
+    "name": "E. Diouf",
+    "position": "LB,LM",
+    "age": 20,
+    "overall": 77,
+    "potential": 83,
+    "team": "West Ham United"
+  },
+  {
+    "name": "D. Ballard",
+    "position": "CB",
+    "age": 25,
+    "overall": 77,
+    "potential": 79,
+    "team": "Sunderland"
+  },
+  {
+    "name": "E. Le Fée",
+    "position": "CM,LM,CAM,CDM",
+    "age": 25,
+    "overall": 77,
+    "potential": 80,
+    "team": "Sunderland"
+  },
+  {
+    "name": "B. Brobbey",
+    "position": "ST",
+    "age": 23,
+    "overall": 77,
+    "potential": 83,
+    "team": "Sunderland"
+  },
+  {
+    "name": "H. Diarra",
+    "position": "CM,CAM,CDM",
+    "age": 21,
+    "overall": 77,
+    "potential": 83,
+    "team": "Sunderland"
+  },
+  {
+    "name": "N. Sadiki",
+    "position": "CM,CDM,CAM",
+    "age": 20,
+    "overall": 77,
+    "potential": 84,
+    "team": "Sunderland"
+  },
+  {
+    "name": "J. Larsen",
+    "position": "ST",
+    "age": 25,
+    "overall": 77,
+    "potential": 80,
+    "team": "Wolverhampton Wanderers"
+  },
+  {
+    "name": "J. Arias",
+    "position": "RW,LW,CM,RM",
+    "age": 27,
+    "overall": 77,
+    "potential": 77,
+    "team": "Wolverhampton Wanderers"
+  },
+  {
+    "name": "E. Agbadou",
+    "position": "CB",
+    "age": 28,
+    "overall": 77,
+    "potential": 78,
+    "team": "Wolverhampton Wanderers"
+  },
+  {
+    "name": "T. Arokodare",
+    "position": "ST",
+    "age": 24,
+    "overall": 77,
+    "potential": 80,
+    "team": "Wolverhampton Wanderers"
+  },
+  {
+    "name": "R. Jiménez",
+    "position": "ST",
+    "age": 34,
+    "overall": 77,
+    "potential": 77,
+    "team": "Fulham FC"
+  },
+  {
+    "name": "R. Sessegnon",
+    "position": "LB,CM",
+    "age": 25,
+    "overall": 77,
+    "potential": 79,
+    "team": "Fulham FC"
+  },
+  {
+    "name": "E. Smith Rowe",
+    "position": "CAM,CM,LM",
+    "age": 24,
+    "overall": 77,
+    "potential": 81,
+    "team": "Fulham FC"
+  },
+  {
+    "name": "J. Cullen",
+    "position": "CDM,CM",
+    "age": 29,
+    "overall": 77,
+    "potential": 77,
+    "team": "Burnley"
+  },
+  {
+    "name": "Q. Hartman",
+    "position": "LB,LM",
+    "age": 23,
+    "overall": 77,
+    "potential": 83,
+    "team": "Burnley"
+  },
+  {
+    "name": "W. Hughes",
+    "position": "CDM,CM",
+    "age": 30,
+    "overall": 77,
+    "potential": 77,
+    "team": "Crystal Palace"
+  },
+  {
+    "name": "J. Lerma",
+    "position": "CDM,CM,CB",
+    "age": 30,
+    "overall": 77,
+    "potential": 77,
+    "team": "Crystal Palace"
+  },
+  {
+    "name": "D. Kamada",
+    "position": "CM,CAM,CDM",
+    "age": 28,
+    "overall": 77,
+    "potential": 77,
+    "team": "Crystal Palace"
+  },
+  {
+    "name": "C. Doucouré",
+    "position": "CDM,CM",
+    "age": 25,
+    "overall": 77,
+    "potential": 80,
+    "team": "Crystal Palace"
+  },
+  {
+    "name": "L. Dunk",
+    "position": "CB",
+    "age": 33,
+    "overall": 77,
+    "potential": 77,
+    "team": "Brighton & Hove Albion"
+  },
+  {
+    "name": "G. Rutter",
+    "position": "CAM,ST",
+    "age": 23,
+    "overall": 77,
+    "potential": 83,
+    "team": "Brighton & Hove Albion"
+  },
+  {
+    "name": "V. Janelt",
+    "position": "CDM,CM",
+    "age": 27,
+    "overall": 77,
+    "potential": 78,
+    "team": "Brentford"
+  },
+  {
+    "name": "S. van den Berg",
+    "position": "CB",
+    "age": 23,
+    "overall": 77,
+    "potential": 83,
+    "team": "Brentford"
+  },
+  {
+    "name": "D. Ouattara",
+    "position": "RM,LM,ST,RW",
+    "age": 23,
+    "overall": 77,
+    "potential": 81,
+    "team": "Brentford"
+  },
+  {
+    "name": "Y. Yarmoliuk",
+    "position": "CDM,CM",
+    "age": 21,
+    "overall": 77,
+    "potential": 83,
+    "team": "Brentford"
+  },
+  {
+    "name": "E. Ünal",
+    "position": "ST",
+    "age": 28,
+    "overall": 77,
+    "potential": 77,
+    "team": "AFC Bournemouth"
+  },
+  {
+    "name": "M. Tavernier",
+    "position": "LM,RM,CAM,LW",
+    "age": 26,
+    "overall": 77,
+    "potential": 78,
+    "team": "AFC Bournemouth"
+  },
+  {
+    "name": "A. Adli",
+    "position": "ST,LM,CAM",
+    "age": 25,
+    "overall": 77,
+    "potential": 81,
+    "team": "AFC Bournemouth"
+  },
+  {
+    "name": "V. Lindelöf",
+    "position": "CB",
+    "age": 30,
+    "overall": 76,
+    "potential": 76,
+    "team": "Aston Villa"
+  },
+  {
+    "name": "B. Badiashile",
+    "position": "CB",
+    "age": 24,
+    "overall": 76,
+    "potential": 80,
+    "team": "Chelsea"
+  },
+  {
+    "name": "M. Keane",
+    "position": "CB",
+    "age": 32,
+    "overall": 76,
+    "potential": 76,
+    "team": "Everton"
+  },
+  {
+    "name": "Beto",
+    "position": "ST",
+    "age": 27,
+    "overall": 76,
+    "potential": 76,
+    "team": "Everton"
+  },
+  {
+    "name": "J. O'Brien",
+    "position": "RB,CB",
+    "age": 24,
+    "overall": 76,
+    "potential": 81,
+    "team": "Everton"
+  },
+  {
+    "name": "T. Iroegbunam",
+    "position": "CDM,CM",
+    "age": 22,
+    "overall": 76,
+    "potential": 80,
+    "team": "Everton"
+  },
+  {
+    "name": "T. Barry",
+    "position": "ST",
+    "age": 22,
+    "overall": 76,
+    "potential": 84,
+    "team": "Everton"
+  },
+  {
+    "name": "D. Calvert-Lewin",
+    "position": "ST",
+    "age": 28,
+    "overall": 76,
+    "potential": 76,
+    "team": "Leeds United"
+  },
+  {
+    "name": "L. Nmecha",
+    "position": "ST",
+    "age": 26,
+    "overall": 76,
+    "potential": 77,
+    "team": "Leeds United"
+  },
+  {
+    "name": "D. James",
+    "position": "RW,RM",
+    "age": 27,
+    "overall": 76,
+    "potential": 76,
+    "team": "Leeds United"
+  },
+  {
+    "name": "A. Tanaka",
+    "position": "CDM,CM",
+    "age": 26,
+    "overall": 76,
+    "potential": 79,
+    "team": "Leeds United"
+  },
+  {
+    "name": "S. Longstaff",
+    "position": "CM,CDM",
+    "age": 27,
+    "overall": 76,
+    "potential": 76,
+    "team": "Leeds United"
+  },
+  {
+    "name": "P. Struijk",
+    "position": "CB",
+    "age": 25,
+    "overall": 76,
+    "potential": 79,
+    "team": "Leeds United"
+  },
+  {
+    "name": "N. Okafor",
+    "position": "ST,LW,CAM",
+    "age": 25,
+    "overall": 76,
+    "potential": 79,
+    "team": "Leeds United"
+  },
+  {
+    "name": "J. Trafford",
+    "position": "GK",
+    "age": 22,
+    "overall": 76,
+    "potential": 84,
+    "team": "Manchester City"
+  },
+  {
+    "name": "O. Bobb",
+    "position": "RW,LW,RM",
+    "age": 21,
+    "overall": 76,
+    "potential": 84,
+    "team": "Manchester City"
+  },
+  {
+    "name": "P. Dorgu",
+    "position": "LB,LM,RM",
+    "age": 20,
+    "overall": 76,
+    "potential": 84,
+    "team": "Manchester United"
+  },
+  {
+    "name": "J. Willock",
+    "position": "CM,CAM",
+    "age": 25,
+    "overall": 76,
+    "potential": 78,
+    "team": "Newcastle United"
+  },
+  {
+    "name": "L. Miley",
+    "position": "CM,RB,CDM",
+    "age": 19,
+    "overall": 76,
+    "potential": 86,
+    "team": "Newcastle United"
+  },
+  {
+    "name": "R. Yates",
+    "position": "CDM,CM",
+    "age": 27,
+    "overall": 76,
+    "potential": 77,
+    "team": "Nottingham Forest"
+  },
+  {
+    "name": "Morato",
+    "position": "CB,LB",
+    "age": 24,
+    "overall": 76,
+    "potential": 80,
+    "team": "Nottingham Forest"
+  },
+  {
+    "name": "O. Hutchinson",
+    "position": "RM,CAM,RW",
+    "age": 21,
+    "overall": 76,
+    "potential": 84,
+    "team": "Nottingham Forest"
+  },
+  {
+    "name": "K. Walker-Peters",
+    "position": "RB,RM,LB",
+    "age": 28,
+    "overall": 76,
+    "potential": 76,
+    "team": "West Ham United"
+  },
+  {
+    "name": "T. Souček",
+    "position": "CDM,CM",
+    "age": 30,
+    "overall": 76,
+    "potential": 76,
+    "team": "West Ham United"
+  },
+  {
+    "name": "K. Mavropanos",
+    "position": "CB",
+    "age": 27,
+    "overall": 76,
+    "potential": 76,
+    "team": "West Ham United"
+  },
+  {
+    "name": "M. Kilman",
+    "position": "CB",
+    "age": 28,
+    "overall": 76,
+    "potential": 77,
+    "team": "West Ham United"
+  },
+  {
+    "name": "C. Summerville",
+    "position": "LM,LW",
+    "age": 23,
+    "overall": 76,
+    "potential": 82,
+    "team": "West Ham United"
+  },
+  {
+    "name": "S. Adingra",
+    "position": "LW,LM,RW",
+    "age": 23,
+    "overall": 76,
+    "potential": 82,
+    "team": "Sunderland"
+  },
+  {
+    "name": "C. Talbi",
+    "position": "RW,RM",
+    "age": 20,
+    "overall": 76,
+    "potential": 87,
+    "team": "Sunderland"
+  },
+  {
+    "name": "S. Johnstone",
+    "position": "GK",
+    "age": 32,
+    "overall": 76,
+    "potential": 76,
+    "team": "Wolverhampton Wanderers"
+  },
+  {
+    "name": "José Sá",
+    "position": "GK",
+    "age": 32,
+    "overall": 76,
+    "potential": 76,
+    "team": "Wolverhampton Wanderers"
+  },
+  {
+    "name": "S. Bueno",
+    "position": "CB",
+    "age": 26,
+    "overall": 76,
+    "potential": 78,
+    "team": "Wolverhampton Wanderers"
+  },
+  {
+    "name": "Kevin",
+    "position": "LM,LW,RW",
+    "age": 22,
+    "overall": 76,
+    "potential": 81,
+    "team": "Fulham FC"
+  },
+  {
+    "name": "Adama Traoré",
+    "position": "RM,RW",
+    "age": 29,
+    "overall": 76,
+    "potential": 76,
+    "team": "Fulham FC"
+  },
+  {
+    "name": "I. Diop",
+    "position": "CB",
+    "age": 28,
+    "overall": 76,
+    "potential": 77,
+    "team": "Fulham FC"
+  },
+  {
+    "name": "Rodrigo Muniz",
+    "position": "ST",
+    "age": 24,
+    "overall": 76,
+    "potential": 81,
+    "team": "Fulham FC"
+  },
+  {
+    "name": "M. Estève",
+    "position": "CB",
+    "age": 23,
+    "overall": 76,
+    "potential": 82,
+    "team": "Burnley"
+  },
+  {
+    "name": "C. Uche",
+    "position": "ST,CAM,CM",
+    "age": 22,
+    "overall": 76,
+    "potential": 84,
+    "team": "Crystal Palace"
+  },
+  {
+    "name": "D. Gómez",
+    "position": "CDM,CAM,LM,CM",
+    "age": 22,
+    "overall": 76,
+    "potential": 83,
+    "team": "Brighton & Hove Albion"
+  },
+  {
+    "name": "J. Hinshelwood",
+    "position": "CDM,RB,LB,CM",
+    "age": 20,
+    "overall": 76,
+    "potential": 84,
+    "team": "Brighton & Hove Albion"
+  },
+  {
+    "name": "K. Ajer",
+    "position": "CB,RB,LB,RM",
+    "age": 27,
+    "overall": 76,
+    "potential": 77,
+    "team": "Brentford"
+  },
+  {
+    "name": "R. Henry",
+    "position": "LB,LM",
+    "age": 27,
+    "overall": 76,
+    "potential": 76,
+    "team": "Brentford"
+  },
+  {
+    "name": "E. Pinnock",
+    "position": "CB",
+    "age": 32,
+    "overall": 76,
+    "potential": 76,
+    "team": "Brentford"
+  },
+  {
+    "name": "K. Lewis-Potter",
+    "position": "LB,LM,RM",
+    "age": 24,
+    "overall": 76,
+    "potential": 79,
+    "team": "Brentford"
+  },
+  {
+    "name": "D. Brooks",
+    "position": "RM,RW",
+    "age": 27,
+    "overall": 76,
+    "potential": 76,
+    "team": "AFC Bournemouth"
+  },
+  {
+    "name": "E. Kroupi",
+    "position": "ST,CAM",
+    "age": 19,
+    "overall": 76,
+    "potential": 85,
+    "team": "AFC Bournemouth"
+  },
+  {
+    "name": "Álex Jiménez",
+    "position": "RB,RM",
+    "age": 20,
+    "overall": 76,
+    "potential": 83,
+    "team": "AFC Bournemouth"
+  },
+  {
+    "name": "Dário Essugo",
+    "position": "CDM,CM",
+    "age": 20,
+    "overall": 75,
+    "potential": 83,
+    "team": "Chelsea"
+  },
+  {
+    "name": "C. Alcaraz",
+    "position": "CAM,CM",
+    "age": 22,
+    "overall": 75,
+    "potential": 82,
+    "team": "Everton"
+  },
+  {
+    "name": "J. Justin",
+    "position": "RB,LB,CM",
+    "age": 27,
+    "overall": 75,
+    "potential": 76,
+    "team": "Leeds United"
+  },
+  {
+    "name": "J. Bogle",
+    "position": "RB,RM",
+    "age": 24,
+    "overall": 75,
+    "potential": 79,
+    "team": "Leeds United"
+  },
+  {
+    "name": "J. Piroe",
+    "position": "ST",
+    "age": 25,
+    "overall": 75,
+    "potential": 78,
+    "team": "Leeds United"
+  },
+  {
+    "name": "B. Aaronson",
+    "position": "RW,CAM,CM,RM",
+    "age": 24,
+    "overall": 75,
+    "potential": 78,
+    "team": "Leeds United"
+  },
+  {
+    "name": "F. Buonanotte",
+    "position": "CAM,RM,CM",
+    "age": 20,
+    "overall": 75,
+    "potential": 82,
+    "team": "Leeds United"
+  },
+  {
+    "name": "T. Malacia",
+    "position": "LB,LM",
+    "age": 25,
+    "overall": 75,
+    "potential": 76,
+    "team": "Manchester United"
+  },
+  {
+    "name": "A. Bayındır",
+    "position": "GK",
+    "age": 27,
+    "overall": 75,
+    "potential": 77,
+    "team": "Manchester United"
+  },
+  {
+    "name": "N. Savona",
+    "position": "RB,LB,RM",
+    "age": 22,
+    "overall": 75,
+    "potential": 81,
+    "team": "Nottingham Forest"
+  },
+  {
+    "name": "L. Lucca",
+    "position": "ST",
+    "age": 24,
+    "overall": 75,
+    "potential": 79,
+    "team": "Nottingham Forest"
+  },
+  {
+    "name": "A. Kinský",
+    "position": "GK",
+    "age": 22,
+    "overall": 75,
+    "potential": 81,
+    "team": "Tottenham Hotspur"
+  },
+  {
+    "name": "B. Davies",
+    "position": "CB",
+    "age": 32,
+    "overall": 75,
+    "potential": 75,
+    "team": "Tottenham Hotspur"
+  },
+  {
+    "name": "R. Drăgușin",
+    "position": "CB",
+    "age": 23,
+    "overall": 75,
+    "potential": 81,
+    "team": "Tottenham Hotspur"
+  },
+  {
+    "name": "A. Gray",
+    "position": "CDM,CB,RB,CM",
+    "age": 19,
+    "overall": 75,
+    "potential": 86,
+    "team": "Tottenham Hotspur"
+  },
+  {
+    "name": "J. Ward-Prowse",
+    "position": "CM,CDM,CAM",
+    "age": 30,
+    "overall": 75,
+    "potential": 75,
+    "team": "West Ham United"
+  },
+  {
+    "name": "G. Rodríguez",
+    "position": "CDM,CM",
+    "age": 31,
+    "overall": 75,
+    "potential": 75,
+    "team": "West Ham United"
+  },
+  {
+    "name": "Igor Julio",
+    "position": "CB,LB",
+    "age": 27,
+    "overall": 75,
+    "potential": 77,
+    "team": "West Ham United"
+  },
+  {
+    "name": "M. Hermansen",
+    "position": "GK",
+    "age": 24,
+    "overall": 75,
+    "potential": 80,
+    "team": "West Ham United"
+  },
+  {
+    "name": "B. Traoré",
+    "position": "RW,RM",
+    "age": 29,
+    "overall": 75,
+    "potential": 75,
+    "team": "Sunderland"
+  },
+  {
+    "name": "A. Masuaku",
+    "position": "LB,LM",
+    "age": 31,
+    "overall": 75,
+    "potential": 75,
+    "team": "Sunderland"
+  },
+  {
+    "name": "W. Isidor",
+    "position": "ST",
+    "age": 24,
+    "overall": 75,
+    "potential": 78,
+    "team": "Sunderland"
+  },
+  {
+    "name": "J. Bellegarde",
+    "position": "CAM,CM,LW",
+    "age": 27,
+    "overall": 75,
+    "potential": 76,
+    "team": "Wolverhampton Wanderers"
+  },
+  {
+    "name": "Toti",
+    "position": "CB",
+    "age": 26,
+    "overall": 75,
+    "potential": 78,
+    "team": "Wolverhampton Wanderers"
+  },
+  {
+    "name": "T. Castagne",
+    "position": "RB,RM",
+    "age": 29,
+    "overall": 75,
+    "potential": 75,
+    "team": "Fulham FC"
+  },
+  {
+    "name": "Jorge Cuenca",
+    "position": "CB",
+    "age": 25,
+    "overall": 75,
+    "potential": 79,
+    "team": "Fulham FC"
+  },
+  {
+    "name": "C. Roberts",
+    "position": "RB,CM",
+    "age": 29,
+    "overall": 75,
+    "potential": 75,
+    "team": "Burnley"
+  },
+  {
+    "name": "M. Edwards",
+    "position": "RM,RW",
+    "age": 26,
+    "overall": 75,
+    "potential": 75,
+    "team": "Burnley"
+  },
+  {
+    "name": "J. Anthony",
+    "position": "LM,RM,LW",
+    "age": 25,
+    "overall": 75,
+    "potential": 76,
+    "team": "Burnley"
+  },
+  {
+    "name": "L. Ugochukwu",
+    "position": "CDM,CM,CAM",
+    "age": 21,
+    "overall": 75,
+    "potential": 82,
+    "team": "Burnley"
+  },
+  {
+    "name": "Z. Amdouni",
+    "position": "ST,CAM",
+    "age": 24,
+    "overall": 75,
+    "potential": 79,
+    "team": "Burnley"
+  },
+  {
+    "name": "E. Nketiah",
+    "position": "ST",
+    "age": 26,
+    "overall": 75,
+    "potential": 78,
+    "team": "Crystal Palace"
+  },
+  {
+    "name": "A. Webster",
+    "position": "CB",
+    "age": 30,
+    "overall": 75,
+    "potential": 75,
+    "team": "Brighton & Hove Albion"
+  },
+  {
+    "name": "R. Nelson",
+    "position": "RM,LM,RW",
+    "age": 25,
+    "overall": 75,
+    "potential": 76,
+    "team": "Brentford"
+  },
+  {
+    "name": "A. Hickey",
+    "position": "RB,LB,RM",
+    "age": 23,
+    "overall": 75,
+    "potential": 79,
+    "team": "Brentford"
+  },
+  {
+    "name": "L. Bogarde",
+    "position": "CDM,CM,RB",
+    "age": 21,
+    "overall": 74,
+    "potential": 81,
+    "team": "Aston Villa"
+  },
+  {
+    "name": "A. Anselmino",
+    "position": "CB",
+    "age": 20,
+    "overall": 74,
+    "potential": 84,
+    "team": "Chelsea"
+  },
+  {
+    "name": "M. Röhl",
+    "position": "CAM,CM,CDM,ST",
+    "age": 22,
+    "overall": 74,
+    "potential": 82,
+    "team": "Everton"
+  },
+  {
+    "name": "T. Dibling",
+    "position": "RM,CAM,RW",
+    "age": 19,
+    "overall": 74,
+    "potential": 85,
+    "team": "Everton"
+  },
+  {
+    "name": "S. Bornauw",
+    "position": "CB",
+    "age": 26,
+    "overall": 74,
+    "potential": 76,
+    "team": "Leeds United"
+  },
+  {
+    "name": "I. Gruev",
+    "position": "CDM,CM",
+    "age": 25,
+    "overall": 74,
+    "potential": 77,
+    "team": "Leeds United"
+  },
+  {
+    "name": "W. Gnonto",
+    "position": "LW,LM,RW",
+    "age": 21,
+    "overall": 74,
+    "potential": 83,
+    "team": "Leeds United"
+  },
+  {
+    "name": "K. Phillips",
+    "position": "CDM,CM",
+    "age": 29,
+    "overall": 74,
+    "potential": 74,
+    "team": "Manchester City"
+  },
+  {
+    "name": "Jair Cunha",
+    "position": "CB",
+    "age": 20,
+    "overall": 74,
+    "potential": 81,
+    "team": "Nottingham Forest"
+  },
+  {
+    "name": "Cuiabano",
+    "position": "LB,LM",
+    "age": 22,
+    "overall": 74,
+    "potential": 80,
+    "team": "Nottingham Forest"
+  },
+  {
+    "name": "T. Awoniyi",
+    "position": "ST",
+    "age": 27,
+    "overall": 74,
+    "potential": 74,
+    "team": "Nottingham Forest"
+  },
+  {
+    "name": "Ł. Fabiański",
+    "position": "GK",
+    "age": 40,
+    "overall": 74,
+    "potential": 74,
+    "team": "West Ham United"
+  },
+  {
+    "name": "M. Doherty",
+    "position": "CB,RB,RM",
+    "age": 33,
+    "overall": 74,
+    "potential": 74,
+    "team": "Wolverhampton Wanderers"
+  },
+  {
+    "name": "Hwang Hee Chan",
+    "position": "ST,LW,RW,CAM",
+    "age": 29,
+    "overall": 74,
+    "potential": 74,
+    "team": "Wolverhampton Wanderers"
+  },
+  {
+    "name": "Hugo Bueno",
+    "position": "LB,LM",
+    "age": 22,
+    "overall": 74,
+    "potential": 79,
+    "team": "Wolverhampton Wanderers"
+  },
+  {
+    "name": "J. Tchatchoua",
+    "position": "RB,RM",
+    "age": 24,
+    "overall": 74,
+    "potential": 79,
+    "team": "Wolverhampton Wanderers"
+  },
+  {
+    "name": "J. King",
+    "position": "CAM,CM",
+    "age": 18,
+    "overall": 74,
+    "potential": 84,
+    "team": "Fulham FC"
+  },
+  {
+    "name": "T. Cairney",
+    "position": "CM,CDM,CAM",
+    "age": 34,
+    "overall": 74,
+    "potential": 74,
+    "team": "Fulham FC"
+  },
+  {
+    "name": "B. Lecomte",
+    "position": "GK",
+    "age": 34,
+    "overall": 74,
+    "potential": 74,
+    "team": "Fulham FC"
+  },
+  {
+    "name": "J. Bruun Larsen",
+    "position": "LM,RM,LW",
+    "age": 26,
+    "overall": 74,
+    "potential": 74,
+    "team": "Burnley"
+  },
+  {
+    "name": "Z. Flemming",
+    "position": "ST",
+    "age": 26,
+    "overall": 74,
+    "potential": 75,
+    "team": "Burnley"
+  },
+  {
+    "name": "J. Beyer",
+    "position": "CB",
+    "age": 25,
+    "overall": 74,
+    "potential": 78,
+    "team": "Burnley"
+  },
+  {
+    "name": "Hannibal",
+    "position": "CM,CAM",
+    "age": 22,
+    "overall": 74,
+    "potential": 82,
+    "team": "Burnley"
+  },
+  {
+    "name": "Lucas Pires",
+    "position": "LB",
+    "age": 24,
+    "overall": 74,
+    "potential": 78,
+    "team": "Burnley"
+  },
+  {
+    "name": "S. March",
+    "position": "RM,RW",
+    "age": 30,
+    "overall": 74,
+    "potential": 74,
+    "team": "Brighton & Hove Albion"
+  },
+  {
+    "name": "D. Coppola",
+    "position": "CB",
+    "age": 21,
+    "overall": 74,
+    "potential": 80,
+    "team": "Brighton & Hove Albion"
+  },
+  {
+    "name": "B. Gruda",
+    "position": "CAM,RM,CM",
+    "age": 21,
+    "overall": 74,
+    "potential": 84,
+    "team": "Brighton & Hove Albion"
+  },
+  {
+    "name": "F. Onyeka",
+    "position": "CM,CDM",
+    "age": 27,
+    "overall": 74,
+    "potential": 74,
+    "team": "Brentford"
+  },
+  {
+    "name": "Fábio Carvalho",
+    "position": "CAM,CM",
+    "age": 22,
+    "overall": 74,
+    "potential": 82,
+    "team": "Brentford"
+  },
+  {
+    "name": "Andrés García",
+    "position": "RB,RM",
+    "age": 22,
+    "overall": 73,
+    "potential": 82,
+    "team": "Aston Villa"
+  },
+  {
+    "name": "J. Acheampong",
+    "position": "CB,RB,CDM,CM",
+    "age": 19,
+    "overall": 73,
+    "potential": 85,
+    "team": "Chelsea"
+  },
+  {
+    "name": "K. Darlow",
+    "position": "GK",
+    "age": 34,
+    "overall": 73,
+    "potential": 73,
+    "team": "Leeds United"
+  },
+  {
+    "name": "Stefan Bajcetic",
+    "position": "CDM,CM,CB",
+    "age": 20,
+    "overall": 73,
+    "potential": 83,
+    "team": "Liverpool"
+  },
+  {
+    "name": "A. Heaven",
+    "position": "CB,LB",
+    "age": 18,
+    "overall": 73,
+    "potential": 85,
+    "team": "Manchester United"
+  },
+  {
+    "name": "J. Lascelles",
+    "position": "CB",
+    "age": 31,
+    "overall": 73,
+    "potential": 73,
+    "team": "Newcastle United"
+  },
+  {
+    "name": "E. Krafth",
+    "position": "CB,RB,RM",
+    "age": 30,
+    "overall": 73,
+    "potential": 73,
+    "team": "Newcastle United"
+  },
+  {
+    "name": "W. Boly",
+    "position": "CB",
+    "age": 34,
+    "overall": 73,
+    "potential": 73,
+    "team": "Nottingham Forest"
+  },
+  {
+    "name": "J. McAtee",
+    "position": "RM,CM,RW",
+    "age": 22,
+    "overall": 73,
+    "potential": 81,
+    "team": "Nottingham Forest"
+  },
+  {
+    "name": "Pablo Felipe",
+    "position": "ST",
+    "age": 21,
+    "overall": 73,
+    "potential": 81,
+    "team": "West Ham United"
+  },
+  {
+    "name": "F. Potts",
+    "position": "CDM,CM",
+    "age": 21,
+    "overall": 73,
+    "potential": 80,
+    "team": "West Ham United"
+  },
+  {
+    "name": "S. Magassa",
+    "position": "CDM,CM,CB",
+    "age": 21,
+    "overall": 73,
+    "potential": 80,
+    "team": "West Ham United"
+  },
+  {
+    "name": "A. Patterson",
+    "position": "GK",
+    "age": 25,
+    "overall": 73,
+    "potential": 78,
+    "team": "Sunderland"
+  },
+  {
+    "name": "D. Neil",
+    "position": "CDM,CM",
+    "age": 23,
+    "overall": 73,
+    "potential": 81,
+    "team": "Sunderland"
+  },
+  {
+    "name": "Fer López",
+    "position": "RW,RM",
+    "age": 21,
+    "overall": 73,
+    "potential": 82,
+    "team": "Wolverhampton Wanderers"
+  },
+  {
+    "name": "Rodrigo Gomes",
+    "position": "LW,LM,RM",
+    "age": 21,
+    "overall": 73,
+    "potential": 82,
+    "team": "Wolverhampton Wanderers"
+  },
+  {
+    "name": "D. Wolfe",
+    "position": "LB,LM",
+    "age": 23,
+    "overall": 73,
+    "potential": 78,
+    "team": "Wolverhampton Wanderers"
+  },
+  {
+    "name": "J. Laurent",
+    "position": "CDM,CM,CB",
+    "age": 30,
+    "overall": 73,
+    "potential": 73,
+    "team": "Burnley"
+  },
+  {
+    "name": "J. Worrall",
+    "position": "CB",
+    "age": 28,
+    "overall": 73,
+    "potential": 73,
+    "team": "Burnley"
+  },
+  {
+    "name": "A. Tuanzebe",
+    "position": "RB,CB,CDM",
+    "age": 27,
+    "overall": 73,
+    "potential": 73,
+    "team": "Burnley"
+  },
+  {
+    "name": "L. Foster",
+    "position": "ST,LM,CAM",
+    "age": 24,
+    "overall": 73,
+    "potential": 78,
+    "team": "Burnley"
+  },
+  {
+    "name": "M. Trésor",
+    "position": "LM,CAM,LW",
+    "age": 26,
+    "overall": 73,
+    "potential": 74,
+    "team": "Burnley"
+  },
+  {
+    "name": "B. Humphreys",
+    "position": "LB,CB,RB,CDM",
+    "age": 22,
+    "overall": 73,
+    "potential": 82,
+    "team": "Burnley"
+  },
+  {
+    "name": "C. Kostoulas",
+    "position": "ST,CAM,RM",
+    "age": 18,
+    "overall": 73,
+    "potential": 85,
+    "team": "Brighton & Hove Albion"
+  },
+  {
+    "name": "J. Steele",
+    "position": "GK",
+    "age": 34,
+    "overall": 73,
+    "potential": 73,
+    "team": "Brighton & Hove Albion"
+  },
+  {
+    "name": "J. Milner",
+    "position": "CDM,CM,RB",
+    "age": 39,
+    "overall": 73,
+    "potential": 73,
+    "team": "Brighton & Hove Albion"
+  },
+  {
+    "name": "A. Milambo",
+    "position": "CM,CAM",
+    "age": 20,
+    "overall": 73,
+    "potential": 85,
+    "team": "Brentford"
+  },
+  {
+    "name": "A. Smith",
+    "position": "RB,RM",
+    "age": 34,
+    "overall": 73,
+    "potential": 73,
+    "team": "AFC Bournemouth"
+  },
+  {
+    "name": "J. Hill",
+    "position": "CB,RB",
+    "age": 23,
+    "overall": 73,
+    "potential": 77,
+    "team": "AFC Bournemouth"
+  },
+  {
+    "name": "D. Fofana",
+    "position": "ST",
+    "age": 22,
+    "overall": 72,
+    "potential": 80,
+    "team": "Chelsea"
+  },
+  {
+    "name": "H. Armstrong",
+    "position": "CM,CDM",
+    "age": 18,
+    "overall": 72,
+    "potential": 85,
+    "team": "Everton"
+  },
+  {
+    "name": "M. Travers",
+    "position": "GK",
+    "age": 26,
+    "overall": 72,
+    "potential": 75,
+    "team": "Everton"
+  },
+  {
+    "name": "S. Byram",
+    "position": "LB,RB",
+    "age": 31,
+    "overall": 72,
+    "potential": 72,
+    "team": "Leeds United"
+  },
+  {
+    "name": "I. Meslier",
+    "position": "GK",
+    "age": 25,
+    "overall": 72,
+    "potential": 75,
+    "team": "Leeds United"
+  },
+  {
+    "name": "A. Gunn",
+    "position": "GK",
+    "age": 29,
+    "overall": 72,
+    "potential": 73,
+    "team": "Nottingham Forest"
+  },
+  {
+    "name": "L. O'Nien",
+    "position": "CB",
+    "age": 30,
+    "overall": 72,
+    "potential": 72,
+    "team": "Sunderland"
+  },
+  {
+    "name": "D. Cirkin",
+    "position": "LB",
+    "age": 23,
+    "overall": 72,
+    "potential": 78,
+    "team": "Sunderland"
+  },
+  {
+    "name": "E. Mayenda",
+    "position": "ST,RM,LM,RW",
+    "age": 20,
+    "overall": 72,
+    "potential": 82,
+    "team": "Sunderland"
+  },
+  {
+    "name": "C. Rigg",
+    "position": "CAM,CM,RM",
+    "age": 18,
+    "overall": 72,
+    "potential": 84,
+    "team": "Sunderland"
+  },
+  {
+    "name": "Y. Mosquera",
+    "position": "CB",
+    "age": 24,
+    "overall": 72,
+    "potential": 78,
+    "team": "Wolverhampton Wanderers"
+  },
+  {
+    "name": "H. Reed",
+    "position": "CDM,CM",
+    "age": 30,
+    "overall": 72,
+    "potential": 72,
+    "team": "Fulham FC"
+  },
+  {
+    "name": "H. Ekdal",
+    "position": "CB",
+    "age": 26,
+    "overall": 72,
+    "potential": 74,
+    "team": "Burnley"
+  },
+  {
+    "name": "A. Broja",
+    "position": "ST",
+    "age": 23,
+    "overall": 72,
+    "potential": 77,
+    "team": "Burnley"
+  },
+  {
+    "name": "L. Tchaouna",
+    "position": "RM,ST,RW",
+    "age": 21,
+    "overall": 72,
+    "potential": 79,
+    "team": "Burnley"
+  },
+  {
+    "name": "J. Canvot",
+    "position": "CB,CDM,CM",
+    "age": 18,
+    "overall": 72,
+    "potential": 84,
+    "team": "Crystal Palace"
+  },
+  {
+    "name": "B. Sosa",
+    "position": "LB,LM",
+    "age": 27,
+    "overall": 72,
+    "potential": 72,
+    "team": "Crystal Palace"
+  },
+  {
+    "name": "C. Riad",
+    "position": "CB",
+    "age": 22,
+    "overall": 72,
+    "potential": 81,
+    "team": "Crystal Palace"
+  },
+  {
+    "name": "J. Rak-Sakyi",
+    "position": "RW,RM",
+    "age": 22,
+    "overall": 72,
+    "potential": 78,
+    "team": "Crystal Palace"
+  },
+  {
+    "name": "S. Tzimas",
+    "position": "ST",
+    "age": 19,
+    "overall": 72,
+    "potential": 81,
+    "team": "Brighton & Hove Albion"
+  },
+  {
+    "name": "J. Dasilva",
+    "position": "CM,CDM",
+    "age": 26,
+    "overall": 72,
+    "potential": 73,
+    "team": "Brentford"
+  },
+  {
+    "name": "A. Tóth",
+    "position": "CM,CDM",
+    "age": 19,
+    "overall": 72,
+    "potential": 85,
+    "team": "AFC Bournemouth"
+  },
+  {
+    "name": "F. Forster",
+    "position": "GK",
+    "age": 37,
+    "overall": 72,
+    "potential": 72,
+    "team": "AFC Bournemouth"
+  },
+  {
+    "name": "T. George",
+    "position": "LM,RM,ST,LW",
+    "age": 19,
+    "overall": 71,
+    "potential": 84,
+    "team": "Chelsea"
+  },
+  {
+    "name": "Marc Guiu",
+    "position": "ST",
+    "age": 19,
+    "overall": 71,
+    "potential": 84,
+    "team": "Chelsea"
+  },
+  {
+    "name": "N. Patterson",
+    "position": "RB,RM",
+    "age": 23,
+    "overall": 71,
+    "potential": 76,
+    "team": "Everton"
+  },
+  {
+    "name": "F. Woodman",
+    "position": "GK",
+    "age": 28,
+    "overall": 71,
+    "potential": 71,
+    "team": "Liverpool"
+  },
+  {
+    "name": "W. Osula",
+    "position": "ST",
+    "age": 21,
+    "overall": 71,
+    "potential": 80,
+    "team": "Newcastle United"
+  },
+  {
+    "name": "John Victor",
+    "position": "GK",
+    "age": 29,
+    "overall": 71,
+    "potential": 71,
+    "team": "Nottingham Forest"
+  },
+  {
+    "name": "R. Mundle",
+    "position": "LW,LM,RW",
+    "age": 22,
+    "overall": 71,
+    "potential": 79,
+    "team": "Sunderland"
+  },
+  {
+    "name": "D. Bentley",
+    "position": "GK",
+    "age": 31,
+    "overall": 71,
+    "potential": 71,
+    "team": "Wolverhampton Wanderers"
+  },
+  {
+    "name": "J. Devenny",
+    "position": "CM,RW,LM,CDM",
+    "age": 21,
+    "overall": 71,
+    "potential": 78,
+    "team": "Crystal Palace"
+  },
+  {
+    "name": "V. Milosavljević",
+    "position": "CB",
+    "age": 18,
+    "overall": 71,
+    "potential": 84,
+    "team": "AFC Bournemouth"
+  },
+  {
+    "name": "B. Gannon-Doak",
+    "position": "RM,RW",
+    "age": 19,
+    "overall": 71,
+    "potential": 85,
+    "team": "AFC Bournemouth"
+  },
+  {
+    "name": "Alysson",
+    "position": "RM,RW",
+    "age": 19,
+    "overall": 70,
+    "potential": 83,
+    "team": "Aston Villa"
+  },
+  {
+    "name": "S. Coleman",
+    "position": "RB,RM",
+    "age": 36,
+    "overall": 70,
+    "potential": 70,
+    "team": "Everton"
+  },
+  {
+    "name": "O. Beck",
+    "position": "LB",
+    "age": 22,
+    "overall": 70,
+    "potential": 79,
+    "team": "Liverpool"
+  },
+  {
+    "name": "M. Bettinelli",
+    "position": "GK",
+    "age": 33,
+    "overall": 70,
+    "potential": 70,
+    "team": "Manchester City"
+  },
+  {
+    "name": "T. Collyer",
+    "position": "CDM,CM",
+    "age": 21,
+    "overall": 70,
+    "potential": 78,
+    "team": "Manchester United"
+  },
+  {
+    "name": "Souza",
+    "position": "LB,LM",
+    "age": 19,
+    "overall": 70,
+    "potential": 82,
+    "team": "Tottenham Hotspur"
+  },
+  {
+    "name": "K. Lamadrid",
+    "position": "LM,LW,CM",
+    "age": 21,
+    "overall": 70,
+    "potential": 79,
+    "team": "West Ham United"
+  },
+  {
+    "name": "O. Scarles",
+    "position": "LB,LM",
+    "age": 19,
+    "overall": 70,
+    "potential": 80,
+    "team": "West Ham United"
+  },
+  {
+    "name": "A. Barnes",
+    "position": "ST,CAM,CM",
+    "age": 35,
+    "overall": 70,
+    "potential": 70,
+    "team": "Burnley"
+  },
+  {
+    "name": "O. Sonne",
+    "position": "RB,LB,CM,RM",
+    "age": 24,
+    "overall": 70,
+    "potential": 75,
+    "team": "Burnley"
+  },
+  {
+    "name": "N. Clyne",
+    "position": "RB,CB,RM",
+    "age": 34,
+    "overall": 70,
+    "potential": 70,
+    "team": "Crystal Palace"
+  },
+  {
+    "name": "L. Barry",
+    "position": "LM,LW,ST",
+    "age": 22,
+    "overall": 69,
+    "potential": 77,
+    "team": "Aston Villa"
+  },
+  {
+    "name": "G. Leoni",
+    "position": "CB",
+    "age": 18,
+    "overall": 69,
+    "potential": 82,
+    "team": "Liverpool"
+  },
+  {
+    "name": "L. Koumas",
+    "position": "RM,LM,RW",
+    "age": 19,
+    "overall": 69,
+    "potential": 83,
+    "team": "Liverpool"
+  },
+  {
+    "name": "I. Poveda",
+    "position": "RW,RM,CM",
+    "age": 25,
+    "overall": 69,
+    "potential": 70,
+    "team": "Sunderland"
+  },
+  {
+    "name": "V. Hladký",
+    "position": "GK",
+    "age": 34,
+    "overall": 69,
+    "potential": 69,
+    "team": "Burnley"
+  },
+  {
+    "name": "H. Valdimarsson",
+    "position": "GK",
+    "age": 23,
+    "overall": 69,
+    "potential": 77,
+    "team": "Brentford"
+  },
+  {
+    "name": "G. Slonina",
+    "position": "GK",
+    "age": 21,
+    "overall": 68,
+    "potential": 80,
+    "team": "Chelsea"
+  },
+  {
+    "name": "C. Wiley",
+    "position": "LB,LM",
+    "age": 20,
+    "overall": 68,
+    "potential": 81,
+    "team": "Chelsea"
+  },
+  {
+    "name": "R. Ngumoha",
+    "position": "LM,LW",
+    "age": 16,
+    "overall": 68,
+    "potential": 88,
+    "team": "Liverpool"
+  },
+  {
+    "name": "M. Alleyne",
+    "position": "CB",
+    "age": 19,
+    "overall": 68,
+    "potential": 78,
+    "team": "Manchester City"
+  },
+  {
+    "name": "J. Ruddy",
+    "position": "GK",
+    "age": 38,
+    "overall": 68,
+    "potential": 68,
+    "team": "Newcastle United"
+  },
+  {
+    "name": "J. Ta Bi",
+    "position": "RM,RW",
+    "age": 20,
+    "overall": 68,
+    "potential": 80,
+    "team": "Sunderland"
+  },
+  {
+    "name": "Pedro Lima",
+    "position": "RB,RM",
+    "age": 19,
+    "overall": 68,
+    "potential": 83,
+    "team": "Wolverhampton Wanderers"
+  },
+  {
+    "name": "S. Benda",
+    "position": "GK",
+    "age": 26,
+    "overall": 68,
+    "potential": 71,
+    "team": "Fulham FC"
+  },
+  {
+    "name": "M. Weiß",
+    "position": "GK",
+    "age": 21,
+    "overall": 68,
+    "potential": 80,
+    "team": "Burnley"
+  },
+  {
+    "name": "A. Moran",
+    "position": "CAM,CM,RM",
+    "age": 21,
+    "overall": 68,
+    "potential": 78,
+    "team": "Brighton & Hove Albion"
+  },
+  {
+    "name": "T. Watson",
+    "position": "LM,RM,LW",
+    "age": 19,
+    "overall": 68,
+    "potential": 82,
+    "team": "Brighton & Hove Albion"
+  },
+  {
+    "name": "J. Soler",
+    "position": "LB,LM",
+    "age": 20,
+    "overall": 68,
+    "potential": 79,
+    "team": "AFC Bournemouth"
+  },
+  {
+    "name": "T. Heaton",
+    "position": "GK",
+    "age": 39,
+    "overall": 67,
+    "potential": 67,
+    "team": "Manchester United"
+  },
+  {
+    "name": "B. Austin",
+    "position": "GK",
+    "age": 26,
+    "overall": 67,
+    "potential": 71,
+    "team": "Tottenham Hotspur"
+  },
+  {
+    "name": "Mateus Mané",
+    "position": "RW,CAM,CM,RM",
+    "age": 17,
+    "overall": 67,
+    "potential": 83,
+    "team": "Wolverhampton Wanderers"
+  },
+  {
+    "name": "W. Dennis",
+    "position": "GK",
+    "age": 24,
+    "overall": 67,
+    "potential": 72,
+    "team": "AFC Bournemouth"
+  },
+  {
+    "name": "A. Aznou",
+    "position": "LB,CM",
+    "age": 19,
+    "overall": 66,
+    "potential": 82,
+    "team": "Everton"
+  },
+  {
+    "name": "S. Moore",
+    "position": "GK",
+    "age": 35,
+    "overall": 66,
+    "potential": 66,
+    "team": "Sunderland"
+  },
+  {
+    "name": "A. Alese",
+    "position": "LB,CB,CDM",
+    "age": 24,
+    "overall": 66,
+    "potential": 71,
+    "team": "Sunderland"
+  },
+  {
+    "name": "L. Hjelde",
+    "position": "LB,CB",
+    "age": 21,
+    "overall": 66,
+    "potential": 76,
+    "team": "Sunderland"
+  },
+  {
+    "name": "P. Maghoma",
+    "position": "CM,CDM",
+    "age": 24,
+    "overall": 66,
+    "potential": 72,
+    "team": "Brentford"
+  },
+  {
+    "name": "B. Burrowes",
+    "position": "RM,ST,RW",
+    "age": 17,
+    "overall": 65,
+    "potential": 82,
+    "team": "Aston Villa"
+  },
+  {
+    "name": "C. Ramsay",
+    "position": "RB,RM",
+    "age": 21,
+    "overall": 65,
+    "potential": 75,
+    "team": "Liverpool"
+  },
+  {
+    "name": "D. Mukasa",
+    "position": "CM,CAM",
+    "age": 17,
+    "overall": 65,
+    "potential": 83,
+    "team": "Manchester City"
+  },
+  {
+    "name": "C. Obi",
+    "position": "ST",
+    "age": 17,
+    "overall": 65,
+    "potential": 84,
+    "team": "Manchester United"
+  },
+  {
+    "name": "T. Fredricson",
+    "position": "CB",
+    "age": 20,
+    "overall": 65,
+    "potential": 78,
+    "team": "Manchester United"
+  },
+  {
+    "name": "S. Lacey",
+    "position": "RW,RM",
+    "age": 18,
+    "overall": 65,
+    "potential": 84,
+    "team": "Manchester United"
+  },
+  {
+    "name": "G. Abbott",
+    "position": "CM,CDM,CAM",
+    "age": 19,
+    "overall": 65,
+    "potential": 78,
+    "team": "Tottenham Hotspur"
+  },
+  {
+    "name": "D. Scarlett",
+    "position": "ST,LW,LM",
+    "age": 21,
+    "overall": 65,
+    "potential": 78,
+    "team": "Tottenham Hotspur"
+  },
+  {
+    "name": "M. Melia",
+    "position": "ST",
+    "age": 17,
+    "overall": 65,
+    "potential": 84,
+    "team": "Tottenham Hotspur"
+  },
+  {
+    "name": "A. Ba",
+    "position": "RW,LW,RM",
+    "age": 21,
+    "overall": 65,
+    "potential": 68,
+    "team": "Sunderland"
+  },
+  {
+    "name": "D. Imray",
+    "position": "RB,RM",
+    "age": 21,
+    "overall": 65,
+    "potential": 70,
+    "team": "Crystal Palace"
+  },
+  {
+    "name": "B. Arthur",
+    "position": "CB",
+    "age": 19,
+    "overall": 65,
+    "potential": 80,
+    "team": "Brentford"
+  },
+  {
+    "name": "Z. Redmond",
+    "position": "ST,RM,LM",
+    "age": 19,
+    "overall": 64,
+    "potential": 81,
+    "team": "Aston Villa"
+  },
+  {
+    "name": "B. Madjo",
+    "position": "ST",
+    "age": 16,
+    "overall": 64,
+    "potential": 81,
+    "team": "Aston Villa"
+  },
+  {
+    "name": "T. Sharman-Lowe",
+    "position": "GK",
+    "age": 22,
+    "overall": 64,
+    "potential": 75,
+    "team": "Chelsea"
+  },
+  {
+    "name": "T. King",
+    "position": "GK",
+    "age": 30,
+    "overall": 64,
+    "potential": 64,
+    "team": "Everton"
+  },
+  {
+    "name": "Á. Pécsi",
+    "position": "GK",
+    "age": 20,
+    "overall": 64,
+    "potential": 79,
+    "team": "Liverpool"
+  },
+  {
+    "name": "T. Nyoni",
+    "position": "CM,CAM,CDM",
+    "age": 18,
+    "overall": 64,
+    "potential": 84,
+    "team": "Liverpool"
+  },
+  {
+    "name": "D. León",
+    "position": "LB,LM",
+    "age": 18,
+    "overall": 64,
+    "potential": 83,
+    "team": "Manchester United"
+  },
+  {
+    "name": "A. Murphy",
+    "position": "LB,CB,LM",
+    "age": 21,
+    "overall": 64,
+    "potential": 78,
+    "team": "Newcastle United"
+  },
+  {
+    "name": "T. Chirewa",
+    "position": "LM,CAM,RM,LB",
+    "age": 21,
+    "overall": 64,
+    "potential": 74,
+    "team": "Wolverhampton Wanderers"
+  },
+  {
+    "name": "J. Banel",
+    "position": "LM,LW,RW",
+    "age": 20,
+    "overall": 64,
+    "potential": 77,
+    "team": "Burnley"
+  },
+  {
+    "name": "K. Dyer",
+    "position": "CM,CDM",
+    "age": 18,
+    "overall": 63,
+    "potential": 83,
+    "team": "Chelsea"
+  },
+  {
+    "name": "A. Cairns",
+    "position": "GK",
+    "age": 32,
+    "overall": 63,
+    "potential": 63,
+    "team": "Leeds United"
+  },
+  {
+    "name": "E. Wheatley",
+    "position": "ST",
+    "age": 19,
+    "overall": 63,
+    "potential": 79,
+    "team": "Manchester United"
+  },
+  {
+    "name": "J. Fletcher",
+    "position": "CM,CAM,CDM",
+    "age": 18,
+    "overall": 63,
+    "potential": 81,
+    "team": "Manchester United"
+  },
+  {
+    "name": "D. McNeilly",
+    "position": "ST",
+    "age": 19,
+    "overall": 63,
+    "potential": 80,
+    "team": "Nottingham Forest"
+  },
+  {
+    "name": "A. Dorrington",
+    "position": "CB",
+    "age": 20,
+    "overall": 63,
+    "potential": 78,
+    "team": "Tottenham Hotspur"
+  },
+  {
+    "name": "D. Lembikisa",
+    "position": "RB,RM",
+    "age": 21,
+    "overall": 63,
+    "potential": 71,
+    "team": "Wolverhampton Wanderers"
+  },
+  {
+    "name": "E. González",
+    "position": "LW,RW,CAM,LM",
+    "age": 20,
+    "overall": 63,
+    "potential": 77,
+    "team": "Wolverhampton Wanderers"
+  },
+  {
+    "name": "E. Agyei",
+    "position": "RM,RW",
+    "age": 20,
+    "overall": 63,
+    "potential": 75,
+    "team": "Burnley"
+  },
+  {
+    "name": "R. Matthews",
+    "position": "GK",
+    "age": 31,
+    "overall": 63,
+    "potential": 63,
+    "team": "Crystal Palace"
+  },
+  {
+    "name": "T. Adaramola",
+    "position": "LB,LM",
+    "age": 21,
+    "overall": 63,
+    "potential": 74,
+    "team": "Crystal Palace"
+  },
+  {
+    "name": "K. Furo",
+    "position": "ST",
+    "age": 18,
+    "overall": 63,
+    "potential": 83,
+    "team": "Brentford"
+  },
+  {
+    "name": "E. Balcombe",
+    "position": "GK",
+    "age": 25,
+    "overall": 63,
+    "potential": 68,
+    "team": "Brentford"
+  },
+  {
+    "name": "R. Donovan",
+    "position": "RM,CAM,RW",
+    "age": 18,
+    "overall": 63,
+    "potential": 77,
+    "team": "Brentford"
+  },
+  {
+    "name": "C. Crew",
+    "position": "CDM,CM",
+    "age": 19,
+    "overall": 62,
+    "potential": 80,
+    "team": "Leeds United"
+  },
+  {
+    "name": "S. Chambers",
+    "position": "CAM,RM,CM",
+    "age": 17,
+    "overall": 62,
+    "potential": 78,
+    "team": "Leeds United"
+  },
+  {
+    "name": "B. Mantato",
+    "position": "RW,LW,LB,RM",
+    "age": 17,
+    "overall": 62,
+    "potential": 83,
+    "team": "Manchester United"
+  },
+  {
+    "name": "M. Gillespie",
+    "position": "GK",
+    "age": 33,
+    "overall": 62,
+    "potential": 62,
+    "team": "Newcastle United"
+  },
+  {
+    "name": "M. Kanté",
+    "position": "CDM,CM",
+    "age": 19,
+    "overall": 62,
+    "potential": 76,
+    "team": "West Ham United"
+  },
+  {
+    "name": "J. Kusi-Asare",
+    "position": "ST",
+    "age": 17,
+    "overall": 62,
+    "potential": 84,
+    "team": "Fulham FC"
+  },
+  {
+    "name": "C. Kporha",
+    "position": "RB,RM",
+    "age": 18,
+    "overall": 62,
+    "potential": 78,
+    "team": "Crystal Palace"
+  },
+  {
+    "name": "R. Cardines",
+    "position": "RB,RM,LB",
+    "age": 19,
+    "overall": 62,
+    "potential": 75,
+    "team": "Crystal Palace"
+  },
+  {
+    "name": "T. McGill",
+    "position": "GK",
+    "age": 25,
+    "overall": 62,
+    "potential": 67,
+    "team": "Brighton & Hove Albion"
+  },
+  {
+    "name": "C. Vickers",
+    "position": "ST,LM,RM,CAM",
+    "age": 20,
+    "overall": 62,
+    "potential": 74,
+    "team": "Brighton & Hove Albion"
+  },
+  {
+    "name": "O. Bevan",
+    "position": "CB",
+    "age": 21,
+    "overall": 62,
+    "potential": 72,
+    "team": "AFC Bournemouth"
+  },
+  {
+    "name": "J. Jimoh-Aloba",
+    "position": "CAM,LM,CM",
+    "age": 18,
+    "overall": 61,
+    "potential": 79,
+    "team": "Aston Villa"
+  },
+  {
+    "name": "G. Hemmings",
+    "position": "CDM,CM,CAM",
+    "age": 18,
+    "overall": 61,
+    "potential": 80,
+    "team": "Aston Villa"
+  },
+  {
+    "name": "R. Williams",
+    "position": "CB",
+    "age": 24,
+    "overall": 61,
+    "potential": 67,
+    "team": "Liverpool"
+  },
+  {
+    "name": "J. Hugill",
+    "position": "ST",
+    "age": 21,
+    "overall": 61,
+    "potential": 64,
+    "team": "Manchester United"
+  },
+  {
+    "name": "Z. Abbott",
+    "position": "CB",
+    "age": 19,
+    "overall": 61,
+    "potential": 78,
+    "team": "Nottingham Forest"
+  },
+  {
+    "name": "L. Orford",
+    "position": "CDM,CM",
+    "age": 19,
+    "overall": 61,
+    "potential": 78,
+    "team": "West Ham United"
+  },
+  {
+    "name": "M. Aleksić",
+    "position": "CM,CAM,CDM",
+    "age": 19,
+    "overall": 61,
+    "potential": 76,
+    "team": "Sunderland"
+  },
+  {
+    "name": "H. Mustapha",
+    "position": "CAM,CM",
+    "age": 18,
+    "overall": 61,
+    "potential": 78,
+    "team": "Crystal Palace"
+  },
+  {
+    "name": "M. Sherif",
+    "position": "ST",
+    "age": 19,
+    "overall": 60,
+    "potential": 75,
+    "team": "Everton"
+  },
+  {
+    "name": "E. Campbell",
+    "position": "CB,LB",
+    "age": 20,
+    "overall": 60,
+    "potential": 75,
+    "team": "Everton"
+  },
+  {
+    "name": "H. Ogunneye",
+    "position": "RB",
+    "age": 19,
+    "overall": 60,
+    "potential": 76,
+    "team": "Manchester United"
+  },
+  {
+    "name": "S. Aljofree",
+    "position": "CB",
+    "age": 20,
+    "overall": 60,
+    "potential": 70,
+    "team": "Manchester United"
+  },
+  {
+    "name": "E. Mayers",
+    "position": "CB",
+    "age": 18,
+    "overall": 60,
+    "potential": 78,
+    "team": "West Ham United"
+  },
+  {
+    "name": "H. Jones",
+    "position": "CAM,CM",
+    "age": 20,
+    "overall": 60,
+    "potential": 74,
+    "team": "Sunderland"
+  },
+  {
+    "name": "J. Umolu",
+    "position": "ST",
+    "age": 19,
+    "overall": 60,
+    "potential": 70,
+    "team": "Crystal Palace"
+  },
+  {
+    "name": "R. Rees-Dottin",
+    "position": "ST",
+    "age": 19,
+    "overall": 60,
+    "potential": 75,
+    "team": "AFC Bournemouth"
+  },
+  {
+    "name": "S. Neave",
+    "position": "ST,CAM",
+    "age": 18,
+    "overall": 59,
+    "potential": 81,
+    "team": "Newcastle United"
+  },
+  {
+    "name": "D. Tanton",
+    "position": "RB",
+    "age": 21,
+    "overall": 59,
+    "potential": 69,
+    "team": "Fulham FC"
+  },
+  {
+    "name": "K. Rodney",
+    "position": "CDM,RB,CM",
+    "age": 20,
+    "overall": 59,
+    "potential": 69,
+    "team": "Crystal Palace"
+  },
+  {
+    "name": "J. Knight",
+    "position": "CM,CDM,CAM",
+    "age": 19,
+    "overall": 59,
+    "potential": 74,
+    "team": "Brighton & Hove Albion"
+  },
+  {
+    "name": "N. Oriola",
+    "position": "LM,RM,LW",
+    "age": 18,
+    "overall": 59,
+    "potential": 78,
+    "team": "Brighton & Hove Albion"
+  },
+  {
+    "name": "K. Smith",
+    "position": "CB",
+    "age": 20,
+    "overall": 58,
+    "potential": 66,
+    "team": "Aston Villa"
+  },
+  {
+    "name": "L. Shahar",
+    "position": "RB",
+    "age": 18,
+    "overall": 58,
+    "potential": 80,
+    "team": "Newcastle United"
+  },
+  {
+    "name": "M. Thompson",
+    "position": "GK",
+    "age": 20,
+    "overall": 58,
+    "potential": 68,
+    "team": "Newcastle United"
+  },
+  {
+    "name": "K. McAdam",
+    "position": "LB,LM",
+    "age": 20,
+    "overall": 58,
+    "potential": 67,
+    "team": "Nottingham Forest"
+  },
+  {
+    "name": "A. Abdullahi",
+    "position": "ST",
+    "age": 21,
+    "overall": 58,
+    "potential": 72,
+    "team": "Sunderland"
+  },
+  {
+    "name": "H. Griffiths",
+    "position": "CDM,CM",
+    "age": 21,
+    "overall": 58,
+    "potential": 67,
+    "team": "Wolverhampton Wanderers"
+  },
+  {
+    "name": "M. Dibley-Dias",
+    "position": "CM,CDM",
+    "age": 21,
+    "overall": 58,
+    "potential": 67,
+    "team": "Fulham FC"
+  },
+  {
+    "name": "J. Eyestone",
+    "position": "GK",
+    "age": 19,
+    "overall": 58,
+    "potential": 77,
+    "team": "Brentford"
+  },
+  {
+    "name": "E. Harrison",
+    "position": "GK",
+    "age": 19,
+    "overall": 57,
+    "potential": 72,
+    "team": "Manchester United"
+  },
+  {
+    "name": "M. Akinmboni",
+    "position": "CB",
+    "age": 18,
+    "overall": 57,
+    "potential": 75,
+    "team": "AFC Bournemouth"
+  },
+  {
+    "name": "D. Esapa Osong",
+    "position": "ST",
+    "age": 20,
+    "overall": 56,
+    "potential": 69,
+    "team": "Nottingham Forest"
+  },
+  {
+    "name": "C. Casper",
+    "position": "GK",
+    "age": 20,
+    "overall": 56,
+    "potential": 72,
+    "team": "Burnley"
+  },
+  {
+    "name": "S. Waller",
+    "position": "GK",
+    "age": 21,
+    "overall": 50,
+    "potential": 61,
+    "team": "Burnley"
+  },
+  {
+    "name": "Kepa",
+    "position": "GK",
+    "age": 30,
+    "overall": 79,
+    "potential": 79,
+    "team": "Arsenal"
+  },
+  {
+    "name": "J. Sancho",
+    "position": "LM,RM,LW",
+    "age": 25,
+    "overall": 79,
+    "potential": 81,
+    "team": "Aston Villa"
+  },
+  {
+    "name": "I. Maatsen",
+    "position": "LB,LM",
+    "age": 23,
+    "overall": 79,
+    "potential": 84,
+    "team": "Aston Villa"
+  },
+  {
+    "name": "Estêvão",
+    "position": "RM,CAM,RW",
+    "age": 18,
+    "overall": 79,
+    "potential": 89,
+    "team": "Chelsea"
+  },
+  {
+    "name": "W. Fofana",
+    "position": "CB",
+    "age": 24,
+    "overall": 79,
+    "potential": 82,
+    "team": "Chelsea"
+  },
+  {
+    "name": "M. Gusto",
+    "position": "RB,RM",
+    "age": 22,
+    "overall": 79,
+    "potential": 84,
+    "team": "Chelsea"
+  },
+  {
+    "name": "I. Gueye",
+    "position": "CDM,CM",
+    "age": 35,
+    "overall": 79,
+    "potential": 79,
+    "team": "Everton"
+  },
+  {
+    "name": "J. Branthwaite",
+    "position": "CB",
+    "age": 23,
+    "overall": 79,
+    "potential": 85,
+    "team": "Everton"
+  },
+  {
+    "name": "Lucas Perri",
+    "position": "GK",
+    "age": 27,
+    "overall": 79,
+    "potential": 81,
+    "team": "Leeds United"
+  },
+  {
+    "name": "J. Gomez",
+    "position": "CB,RB,LB,RM",
+    "age": 28,
+    "overall": 79,
+    "potential": 79,
+    "team": "Liverpool"
+  },
+  {
+    "name": "W. Endo",
+    "position": "CDM,CM",
+    "age": 32,
+    "overall": 79,
+    "potential": 79,
+    "team": "Liverpool"
+  },
+  {
+    "name": "C. Bradley",
+    "position": "RB,RM",
+    "age": 21,
+    "overall": 79,
+    "potential": 84,
+    "team": "Liverpool"
+  },
+  {
+    "name": "S. Ortega",
+    "position": "GK",
+    "age": 32,
+    "overall": 79,
+    "potential": 79,
+    "team": "Manchester City"
+  },
+  {
+    "name": "N. O'Reilly",
+    "position": "LB,CM",
+    "age": 20,
+    "overall": 79,
+    "potential": 85,
+    "team": "Manchester City"
+  },
+  {
+    "name": "A. Khusanov",
+    "position": "CB",
+    "age": 21,
+    "overall": 79,
+    "potential": 86,
+    "team": "Manchester City"
+  },
+  {
+    "name": "L. Shaw",
+    "position": "CB,LB,LM",
+    "age": 29,
+    "overall": 79,
+    "potential": 79,
+    "team": "Manchester United"
+  },
+  {
+    "name": "Amad",
+    "position": "CAM,RM,RB,CM",
+    "age": 22,
+    "overall": 79,
+    "potential": 85,
+    "team": "Manchester United"
+  },
+  {
+    "name": "S. Lammens",
+    "position": "GK",
+    "age": 22,
+    "overall": 79,
+    "potential": 87,
+    "team": "Manchester United"
+  },
+  {
+    "name": "K. Trippier",
+    "position": "RB,RM",
+    "age": 34,
+    "overall": 79,
+    "potential": 79,
+    "team": "Newcastle United"
+  },
+  {
+    "name": "A. Elanga",
+    "position": "RW,RM",
+    "age": 23,
+    "overall": 79,
+    "potential": 82,
+    "team": "Newcastle United"
+  },
+  {
+    "name": "Douglas Luiz",
+    "position": "CDM,CM",
+    "age": 27,
+    "overall": 79,
+    "potential": 79,
+    "team": "Nottingham Forest"
+  },
+  {
+    "name": "N. Domínguez",
+    "position": "CDM,CM",
+    "age": 27,
+    "overall": 79,
+    "potential": 80,
+    "team": "Nottingham Forest"
+  },
+  {
+    "name": "Richarlison",
+    "position": "ST,LW,LM",
+    "age": 28,
+    "overall": 79,
+    "potential": 79,
+    "team": "Tottenham Hotspur"
+  },
+  {
+    "name": "R. Kolo Muani",
+    "position": "ST",
+    "age": 26,
+    "overall": 79,
+    "potential": 80,
+    "team": "Tottenham Hotspur"
+  },
+  {
+    "name": "K. Danso",
+    "position": "CB",
+    "age": 26,
+    "overall": 79,
+    "potential": 82,
+    "team": "Tottenham Hotspur"
+  },
+  {
+    "name": "D. Spence",
+    "position": "LB,RB",
+    "age": 24,
+    "overall": 79,
+    "potential": 83,
+    "team": "Tottenham Hotspur"
+  },
+  {
+    "name": "D. Udogie",
+    "position": "LB,LM",
+    "age": 22,
+    "overall": 79,
+    "potential": 83,
+    "team": "Tottenham Hotspur"
+  }
+]

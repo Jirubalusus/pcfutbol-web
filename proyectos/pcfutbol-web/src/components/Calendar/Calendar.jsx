@@ -10,6 +10,7 @@ import {
 import { getPhaseForWeekCompat, getCupRoundForWeek } from '../../game/europeanCompetitions';
 import { getPlayerCompetition } from '../../game/europeanSeason';
 import { SA_MATCHDAY_WEEKS, ALL_SA_WEEKS, isSouthAmericanLeague, SA_COMPETITIONS } from '../../game/southAmericanCompetitions';
+import { getLeagueName } from '../../game/leagueTiers';
 import { getPlayerSACompetition, getSACalendar } from '../../game/southAmericanSeason';
 import './Calendar.scss';
 
@@ -444,7 +445,10 @@ export default function Calendar() {
       {/* Header */}
       <div className="calendar-v2__header">
         <h2><CalendarDays size={24} /> Calendario</h2>
-        <span className="season-badge">Temporada {state.currentSeason || 1}</span>
+        <div className="header-badges">
+          <span className="league-badge">{getLeagueName(state.leagueId)}</span>
+          <span className="season-badge">Temporada {state.currentSeason || 1}</span>
+        </div>
       </div>
 
       {/* Nav arrows + title */}

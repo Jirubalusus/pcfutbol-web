@@ -1,0 +1,2786 @@
+[
+  {
+    "name": "X. Shaqiri",
+    "overall": 78,
+    "potential": 78,
+    "position": "CAM, RW, ST, CM",
+    "age": 33,
+    "team": "FC Basel 1893"
+  },
+  {
+    "name": "M. Stevanović",
+    "overall": 75,
+    "potential": 75,
+    "position": "RM, CAM, RW",
+    "age": 34,
+    "team": "Servette FC"
+  },
+  {
+    "name": "T. Cognat",
+    "overall": 75,
+    "potential": 75,
+    "position": "CM, CDM, CAM",
+    "age": 27,
+    "team": "Servette FC"
+  },
+  {
+    "name": "B. Traoré",
+    "overall": 75,
+    "potential": 83,
+    "position": "LM, RM, LW",
+    "age": 22,
+    "team": "FC Basel 1893"
+  },
+  {
+    "name": "M. Hitz",
+    "overall": 74,
+    "potential": 74,
+    "position": "GK",
+    "age": 37,
+    "team": "FC Basel 1893"
+  },
+  {
+    "name": "D. Schmid",
+    "overall": 74,
+    "potential": 75,
+    "position": "LB, LM",
+    "age": 27,
+    "team": "FC Basel 1893"
+  },
+  {
+    "name": "E. Fernandes",
+    "overall": 74,
+    "potential": 74,
+    "position": "CDM, CB, CM",
+    "age": 29,
+    "team": "BSC Young Boys"
+  },
+  {
+    "name": "R. Steffen",
+    "overall": 74,
+    "potential": 74,
+    "position": "RM, RW, CAM",
+    "age": 33,
+    "team": "FC Lugano"
+  },
+  {
+    "name": "P. Otele",
+    "overall": 73,
+    "potential": 74,
+    "position": "LM, LW, ST",
+    "age": 26,
+    "team": "FC Basel 1893"
+  },
+  {
+    "name": "L. Zigi",
+    "overall": 73,
+    "potential": 75,
+    "position": "GK",
+    "age": 28,
+    "team": "FC St. Gallen 1879"
+  },
+  {
+    "name": "G. Wüthrich",
+    "overall": 73,
+    "potential": 73,
+    "position": "CB",
+    "age": 30,
+    "team": "BSC Young Boys"
+  },
+  {
+    "name": "C. Fassnacht",
+    "overall": 73,
+    "potential": 73,
+    "position": "RM, LM, ST, RW",
+    "age": 31,
+    "team": "BSC Young Boys"
+  },
+  {
+    "name": "J. Almada Monteiro",
+    "overall": 73,
+    "potential": 74,
+    "position": "LM, RM, CM, LW",
+    "age": 25,
+    "team": "BSC Young Boys"
+  },
+  {
+    "name": "Alvyn Sanches",
+    "overall": 73,
+    "potential": 84,
+    "position": "CAM, CM, ST",
+    "age": 22,
+    "team": "BSC Young Boys"
+  },
+  {
+    "name": "M. Zanotti",
+    "overall": 73,
+    "potential": 82,
+    "position": "RB, RM",
+    "age": 22,
+    "team": "FC Lugano"
+  },
+  {
+    "name": "J. Hammel",
+    "overall": 72,
+    "potential": 78,
+    "position": "GK",
+    "age": 24,
+    "team": "Grasshopper Club Zürich"
+  },
+  {
+    "name": "Y. Brecher",
+    "overall": 72,
+    "potential": 72,
+    "position": "GK",
+    "age": 32,
+    "team": "FC Zürich"
+  },
+  {
+    "name": "F. Daniliuc",
+    "overall": 72,
+    "potential": 78,
+    "position": "CB, RB",
+    "age": 24,
+    "team": "FC Basel 1893"
+  },
+  {
+    "name": "J. Duranville",
+    "overall": 72,
+    "potential": 85,
+    "position": "RM, LM, ST, RW",
+    "age": 19,
+    "team": "FC Basel 1893"
+  },
+  {
+    "name": "P. Loretz",
+    "overall": 72,
+    "potential": 82,
+    "position": "GK",
+    "age": 22,
+    "team": "FC Luzern"
+  },
+  {
+    "name": "L. Görtler",
+    "overall": 72,
+    "potential": 72,
+    "position": "CM, CDM",
+    "age": 31,
+    "team": "FC St. Gallen 1879"
+  },
+  {
+    "name": "A. Gigović",
+    "overall": 72,
+    "potential": 79,
+    "position": "CM, CAM, CDM",
+    "age": 23,
+    "team": "BSC Young Boys"
+  },
+  {
+    "name": "M. Keller",
+    "overall": 72,
+    "potential": 81,
+    "position": "GK",
+    "age": 22,
+    "team": "BSC Young Boys"
+  },
+  {
+    "name": "L. Bertone",
+    "overall": 72,
+    "potential": 72,
+    "position": "CDM, CM",
+    "age": 31,
+    "team": "FC Thun"
+  },
+  {
+    "name": "U. Bislimi",
+    "overall": 72,
+    "potential": 75,
+    "position": "CM, CAM, CDM",
+    "age": 25,
+    "team": "FC Lugano"
+  },
+  {
+    "name": "L. Leroy",
+    "overall": 71,
+    "potential": 76,
+    "position": "CDM, CM",
+    "age": 25,
+    "team": "FC Basel 1893"
+  },
+  {
+    "name": "K. Tsunemoto",
+    "overall": 71,
+    "potential": 72,
+    "position": "RB, RM",
+    "age": 26,
+    "team": "FC Basel 1893"
+  },
+  {
+    "name": "M. Di Giusto",
+    "overall": 71,
+    "potential": 75,
+    "position": "CAM, RM, ST, CM",
+    "age": 24,
+    "team": "FC Luzern"
+  },
+  {
+    "name": "L. Daschner",
+    "overall": 71,
+    "potential": 72,
+    "position": "CAM, CM, ST",
+    "age": 26,
+    "team": "FC St. Gallen 1879"
+  },
+  {
+    "name": "C. Bedia",
+    "overall": 71,
+    "potential": 71,
+    "position": "ST",
+    "age": 29,
+    "team": "BSC Young Boys"
+  },
+  {
+    "name": "R. Raveloson",
+    "overall": 71,
+    "potential": 71,
+    "position": "CM, CDM",
+    "age": 28,
+    "team": "BSC Young Boys"
+  },
+  {
+    "name": "D. Males",
+    "overall": 71,
+    "potential": 77,
+    "position": "RM, CAM, CM, RW",
+    "age": 24,
+    "team": "BSC Young Boys"
+  },
+  {
+    "name": "F. Fehr",
+    "overall": 71,
+    "potential": 74,
+    "position": "RB, RM",
+    "age": 25,
+    "team": "FC Thun"
+  },
+  {
+    "name": "K. Letica",
+    "overall": 71,
+    "potential": 73,
+    "position": "GK",
+    "age": 28,
+    "team": "FC Lausanne-Sport"
+  },
+  {
+    "name": "A. Grgić",
+    "overall": 71,
+    "potential": 71,
+    "position": "CDM, CM",
+    "age": 28,
+    "team": "FC Lugano"
+  },
+  {
+    "name": "A. Papadopoulos",
+    "overall": 71,
+    "potential": 75,
+    "position": "CB",
+    "age": 25,
+    "team": "FC Lugano"
+  },
+  {
+    "name": "K. Behrens",
+    "overall": 71,
+    "potential": 71,
+    "position": "ST",
+    "age": 34,
+    "team": "FC Lugano"
+  },
+  {
+    "name": "A. Saipi",
+    "overall": 71,
+    "potential": 77,
+    "position": "GK",
+    "age": 24,
+    "team": "FC Lugano"
+  },
+  {
+    "name": "I. Chouaref",
+    "overall": 71,
+    "potential": 74,
+    "position": "RM, ST, CAM, RW",
+    "age": 24,
+    "team": "FC Sion"
+  },
+  {
+    "name": "J. Mall",
+    "overall": 70,
+    "potential": 70,
+    "position": "GK",
+    "age": 34,
+    "team": "Servette FC"
+  },
+  {
+    "name": "S. Rouiller",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB",
+    "age": 34,
+    "team": "Servette FC"
+  },
+  {
+    "name": "F. Ayé",
+    "overall": 70,
+    "potential": 70,
+    "position": "ST",
+    "age": 28,
+    "team": "Servette FC"
+  },
+  {
+    "name": "A. Jallow",
+    "overall": 70,
+    "potential": 70,
+    "position": "RM, CAM, RW",
+    "age": 26,
+    "team": "Servette FC"
+  },
+  {
+    "name": "N. Palacio",
+    "overall": 70,
+    "potential": 77,
+    "position": "CDM, CM, CB",
+    "age": 24,
+    "team": "FC Zürich"
+  },
+  {
+    "name": "K. Koindredi",
+    "overall": 70,
+    "potential": 77,
+    "position": "CM, CDM, CAM",
+    "age": 23,
+    "team": "FC Basel 1893"
+  },
+  {
+    "name": "I. Salah",
+    "overall": 70,
+    "potential": 76,
+    "position": "LW, ST, LM",
+    "age": 23,
+    "team": "FC Basel 1893"
+  },
+  {
+    "name": "J. Adjetey",
+    "overall": 70,
+    "potential": 82,
+    "position": "CB",
+    "age": 21,
+    "team": "FC Basel 1893"
+  },
+  {
+    "name": "Jordi Quintillà",
+    "overall": 70,
+    "potential": 70,
+    "position": "CDM, CM, CB",
+    "age": 31,
+    "team": "FC St. Gallen 1879"
+  },
+  {
+    "name": "C. Boukhalfa",
+    "overall": 70,
+    "potential": 73,
+    "position": "CM, CAM, CDM",
+    "age": 26,
+    "team": "FC St. Gallen 1879"
+  },
+  {
+    "name": "C. Witzig",
+    "overall": 70,
+    "potential": 75,
+    "position": "CM, CAM, RW",
+    "age": 24,
+    "team": "FC St. Gallen 1879"
+  },
+  {
+    "name": "L. Benito",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB, LB",
+    "age": 33,
+    "team": "BSC Young Boys"
+  },
+  {
+    "name": "S. Lauper",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB, CDM, CM",
+    "age": 28,
+    "team": "BSC Young Boys"
+  },
+  {
+    "name": "T. Bair",
+    "overall": 70,
+    "potential": 73,
+    "position": "ST",
+    "age": 25,
+    "team": "FC Lausanne-Sport"
+  },
+  {
+    "name": "J. Roche",
+    "overall": 70,
+    "potential": 75,
+    "position": "CM, CDM",
+    "age": 24,
+    "team": "FC Lausanne-Sport"
+  },
+  {
+    "name": "A. Kendouci",
+    "overall": 70,
+    "potential": 73,
+    "position": "CM, RW, CAM, CDM",
+    "age": 26,
+    "team": "FC Lugano"
+  },
+  {
+    "name": "D. von Ballmoos",
+    "overall": 70,
+    "potential": 70,
+    "position": "GK",
+    "age": 30,
+    "team": "FC Lugano"
+  },
+  {
+    "name": "H. Delcroix",
+    "overall": 70,
+    "potential": 73,
+    "position": "CB, LB, CDM",
+    "age": 26,
+    "team": "FC Lugano"
+  },
+  {
+    "name": "N. Lavanchy",
+    "overall": 70,
+    "potential": 70,
+    "position": "RB",
+    "age": 31,
+    "team": "FC Sion"
+  },
+  {
+    "name": "A. Racioppi",
+    "overall": 70,
+    "potential": 74,
+    "position": "GK",
+    "age": 26,
+    "team": "FC Sion"
+  },
+  {
+    "name": "D. Rrudhani",
+    "overall": 70,
+    "potential": 72,
+    "position": "CAM, CM, RM, ST",
+    "age": 26,
+    "team": "FC Sion"
+  },
+  {
+    "name": "H. Mendes",
+    "overall": 69,
+    "potential": 70,
+    "position": "RB",
+    "age": 27,
+    "team": "Servette FC"
+  },
+  {
+    "name": "L. Fomba",
+    "overall": 69,
+    "potential": 70,
+    "position": "CDM, CM",
+    "age": 27,
+    "team": "Servette FC"
+  },
+  {
+    "name": "G. Morandi",
+    "overall": 69,
+    "potential": 72,
+    "position": "CAM, RM, LM, CM",
+    "age": 26,
+    "team": "Servette FC"
+  },
+  {
+    "name": "S. Mráz",
+    "overall": 69,
+    "potential": 69,
+    "position": "ST",
+    "age": 28,
+    "team": "Servette FC"
+  },
+  {
+    "name": "M. Broschinski",
+    "overall": 69,
+    "potential": 73,
+    "position": "ST",
+    "age": 24,
+    "team": "FC Basel 1893"
+  },
+  {
+    "name": "Metinho",
+    "overall": 69,
+    "potential": 80,
+    "position": "CDM, CM",
+    "age": 22,
+    "team": "FC Basel 1893"
+  },
+  {
+    "name": "F. van Breemen",
+    "overall": 69,
+    "potential": 80,
+    "position": "CB",
+    "age": 22,
+    "team": "FC Basel 1893"
+  },
+  {
+    "name": "A. Vallci",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB",
+    "age": 29,
+    "team": "FC St. Gallen 1879"
+  },
+  {
+    "name": "H. Vandermersch",
+    "overall": 69,
+    "potential": 72,
+    "position": "RB, RM",
+    "age": 26,
+    "team": "FC St. Gallen 1879"
+  },
+  {
+    "name": "J. Hadjam",
+    "overall": 69,
+    "potential": 77,
+    "position": "LB, LM",
+    "age": 22,
+    "team": "BSC Young Boys"
+  },
+  {
+    "name": "Genís",
+    "overall": 69,
+    "potential": 70,
+    "position": "CB, RB",
+    "age": 28,
+    "team": "FC Thun"
+  },
+  {
+    "name": "N. Steffen",
+    "overall": 69,
+    "potential": 75,
+    "position": "GK",
+    "age": 24,
+    "team": "FC Thun"
+  },
+  {
+    "name": "M. Poaty",
+    "overall": 69,
+    "potential": 69,
+    "position": "LB, LM",
+    "age": 27,
+    "team": "FC Lausanne-Sport"
+  },
+  {
+    "name": "F. Surdez",
+    "overall": 69,
+    "potential": 75,
+    "position": "LM, CAM, RM, LW",
+    "age": 23,
+    "team": "FC Sion"
+  },
+  {
+    "name": "Baltazar",
+    "overall": 69,
+    "potential": 73,
+    "position": "CDM, CM, LB, CB",
+    "age": 25,
+    "team": "FC Sion"
+  },
+  {
+    "name": "M. Ullmann",
+    "overall": 68,
+    "potential": 68,
+    "position": "LB, LM",
+    "age": 29,
+    "team": "Grasshopper Club Zürich"
+  },
+  {
+    "name": "D. Douline",
+    "overall": 68,
+    "potential": 68,
+    "position": "CDM, CM",
+    "age": 32,
+    "team": "Servette FC"
+  },
+  {
+    "name": "B. Mazikou",
+    "overall": 68,
+    "potential": 68,
+    "position": "LB, RB, CM",
+    "age": 29,
+    "team": "Servette FC"
+  },
+  {
+    "name": "D. Bronn",
+    "overall": 68,
+    "potential": 68,
+    "position": "CB",
+    "age": 30,
+    "team": "Servette FC"
+  },
+  {
+    "name": "L. Kamberi",
+    "overall": 68,
+    "potential": 71,
+    "position": "RB, CB, CDM",
+    "age": 25,
+    "team": "FC Zürich"
+  },
+  {
+    "name": "M. Phaëton",
+    "overall": 68,
+    "potential": 69,
+    "position": "LM, ST, LW",
+    "age": 25,
+    "team": "FC Zürich"
+  },
+  {
+    "name": "A. Ajeti",
+    "overall": 68,
+    "potential": 68,
+    "position": "ST",
+    "age": 28,
+    "team": "FC Basel 1893"
+  },
+  {
+    "name": "N. Vouilloz",
+    "overall": 68,
+    "potential": 76,
+    "position": "CB, RB, RM",
+    "age": 24,
+    "team": "FC Basel 1893"
+  },
+  {
+    "name": "P. Dorn",
+    "overall": 68,
+    "potential": 68,
+    "position": "RB, CM, RM",
+    "age": 28,
+    "team": "FC Luzern"
+  },
+  {
+    "name": "S. Knežević",
+    "overall": 68,
+    "potential": 69,
+    "position": "CB",
+    "age": 28,
+    "team": "FC Luzern"
+  },
+  {
+    "name": "L. Villiger",
+    "overall": 68,
+    "potential": 79,
+    "position": "ST",
+    "age": 22,
+    "team": "FC Luzern"
+  },
+  {
+    "name": "J. Stanić",
+    "overall": 68,
+    "potential": 73,
+    "position": "CB, RB, CDM",
+    "age": 26,
+    "team": "FC St. Gallen 1879"
+  },
+  {
+    "name": "C. Okoroji",
+    "overall": 68,
+    "potential": 68,
+    "position": "LB, LM",
+    "age": 28,
+    "team": "FC St. Gallen 1879"
+  },
+  {
+    "name": "D. Pech",
+    "overall": 68,
+    "potential": 77,
+    "position": "CM, CAM, CDM",
+    "age": 18,
+    "team": "BSC Young Boys"
+  },
+  {
+    "name": "A. Virginius",
+    "overall": 68,
+    "potential": 77,
+    "position": "LM, RM, ST, LW",
+    "age": 22,
+    "team": "BSC Young Boys"
+  },
+  {
+    "name": "R. Andrews",
+    "overall": 68,
+    "potential": 75,
+    "position": "RB, RM",
+    "age": 20,
+    "team": "BSC Young Boys"
+  },
+  {
+    "name": "S. Kapino",
+    "overall": 68,
+    "potential": 68,
+    "position": "GK",
+    "age": 31,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "K. Imeri",
+    "overall": 68,
+    "potential": 73,
+    "position": "CM, CAM, LM",
+    "age": 25,
+    "team": "FC Thun"
+  },
+  {
+    "name": "O. Custodio",
+    "overall": 68,
+    "potential": 68,
+    "position": "CM, CDM, RB, CAM",
+    "age": 30,
+    "team": "FC Lausanne-Sport"
+  },
+  {
+    "name": "K. Mouanga",
+    "overall": 68,
+    "potential": 72,
+    "position": "CB, RB",
+    "age": 24,
+    "team": "FC Lausanne-Sport"
+  },
+  {
+    "name": "A. Ajdini",
+    "overall": 68,
+    "potential": 71,
+    "position": "ST, LM, LW",
+    "age": 25,
+    "team": "FC Lausanne-Sport"
+  },
+  {
+    "name": "B. Soppy",
+    "overall": 68,
+    "potential": 75,
+    "position": "RB, RM, CM",
+    "age": 23,
+    "team": "FC Lausanne-Sport"
+  },
+  {
+    "name": "M. Al Saad",
+    "overall": 68,
+    "potential": 75,
+    "position": "RM, RW",
+    "age": 22,
+    "team": "FC Lausanne-Sport"
+  },
+  {
+    "name": "D. dos Santos",
+    "overall": 68,
+    "potential": 76,
+    "position": "CAM, CM, ST",
+    "age": 22,
+    "team": "FC Lugano"
+  },
+  {
+    "name": "M. Bottani",
+    "overall": 68,
+    "potential": 68,
+    "position": "LM, LW, CAM",
+    "age": 34,
+    "team": "FC Lugano"
+  },
+  {
+    "name": "E. Alioski",
+    "overall": 68,
+    "potential": 68,
+    "position": "LB, LM",
+    "age": 33,
+    "team": "FC Lugano"
+  },
+  {
+    "name": "L. Mai",
+    "overall": 68,
+    "potential": 72,
+    "position": "CB",
+    "age": 25,
+    "team": "FC Lugano"
+  },
+  {
+    "name": "Y. Cimignani",
+    "overall": 68,
+    "potential": 74,
+    "position": "RM, LM, LW, RW",
+    "age": 23,
+    "team": "FC Lugano"
+  },
+  {
+    "name": "C. Cassano",
+    "overall": 68,
+    "potential": 79,
+    "position": "CAM, ST, CM",
+    "age": 21,
+    "team": "FC Lugano"
+  },
+  {
+    "name": "B. Kololli",
+    "overall": 68,
+    "potential": 68,
+    "position": "LM, RM, ST, LW",
+    "age": 33,
+    "team": "FC Sion"
+  },
+  {
+    "name": "J. Frick",
+    "overall": 67,
+    "potential": 67,
+    "position": "GK",
+    "age": 32,
+    "team": "Servette FC"
+  },
+  {
+    "name": "Y. Severin",
+    "overall": 67,
+    "potential": 68,
+    "position": "CB, LB",
+    "age": 28,
+    "team": "Servette FC"
+  },
+  {
+    "name": "J. Guillemenot",
+    "overall": 67,
+    "potential": 67,
+    "position": "ST, LM, RM, LW",
+    "age": 27,
+    "team": "Servette FC"
+  },
+  {
+    "name": "B. Krasniqi",
+    "overall": 67,
+    "potential": 74,
+    "position": "CM, CAM, CDM",
+    "age": 24,
+    "team": "FC Zürich"
+  },
+  {
+    "name": "P. Keny",
+    "overall": 67,
+    "potential": 70,
+    "position": "ST, RW, LM, RM",
+    "age": 26,
+    "team": "FC Zürich"
+  },
+  {
+    "name": "A. Grbić",
+    "overall": 67,
+    "potential": 67,
+    "position": "ST",
+    "age": 28,
+    "team": "FC Luzern"
+  },
+  {
+    "name": "K. Spadanuda",
+    "overall": 67,
+    "potential": 67,
+    "position": "LM, LB",
+    "age": 28,
+    "team": "FC Luzern"
+  },
+  {
+    "name": "S. Ottiger",
+    "overall": 67,
+    "potential": 77,
+    "position": "RB, RM",
+    "age": 22,
+    "team": "FC Luzern"
+  },
+  {
+    "name": "A. Cigaņiks",
+    "overall": 67,
+    "potential": 67,
+    "position": "LB, LM",
+    "age": 28,
+    "team": "FC Luzern"
+  },
+  {
+    "name": "A. Bajrami",
+    "overall": 67,
+    "potential": 78,
+    "position": "CB, LB",
+    "age": 23,
+    "team": "FC Luzern"
+  },
+  {
+    "name": "T. Gaal",
+    "overall": 67,
+    "potential": 73,
+    "position": "CB",
+    "age": 24,
+    "team": "FC St. Gallen 1879"
+  },
+  {
+    "name": "C. Kleine-Bekel",
+    "overall": 67,
+    "potential": 74,
+    "position": "CB",
+    "age": 22,
+    "team": "FC St. Gallen 1879"
+  },
+  {
+    "name": "H. Lindner",
+    "overall": 67,
+    "potential": 67,
+    "position": "GK",
+    "age": 34,
+    "team": "BSC Young Boys"
+  },
+  {
+    "name": "S. Janko",
+    "overall": 67,
+    "potential": 67,
+    "position": "RB, RM",
+    "age": 29,
+    "team": "BSC Young Boys"
+  },
+  {
+    "name": "S. Córdova",
+    "overall": 67,
+    "potential": 67,
+    "position": "ST, CAM, CM",
+    "age": 27,
+    "team": "BSC Young Boys"
+  },
+  {
+    "name": "T. Golliard",
+    "overall": 67,
+    "potential": 73,
+    "position": "CAM, CM, RM",
+    "age": 22,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "R. Arnold",
+    "overall": 67,
+    "potential": 68,
+    "position": "CB, CDM, CM",
+    "age": 28,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "J. Bamert",
+    "overall": 67,
+    "potential": 70,
+    "position": "CB, RB",
+    "age": 27,
+    "team": "FC Thun"
+  },
+  {
+    "name": "F. Mollet",
+    "overall": 67,
+    "potential": 67,
+    "position": "CAM, CM, RM",
+    "age": 33,
+    "team": "FC Lausanne-Sport"
+  },
+  {
+    "name": "N. Beloko",
+    "overall": 67,
+    "potential": 71,
+    "position": "CM, CDM",
+    "age": 25,
+    "team": "FC Lausanne-Sport"
+  },
+  {
+    "name": "K. Sow",
+    "overall": 67,
+    "potential": 78,
+    "position": "CB",
+    "age": 22,
+    "team": "FC Lausanne-Sport"
+  },
+  {
+    "name": "M. Mahmoud",
+    "overall": 67,
+    "potential": 74,
+    "position": "CDM, CM",
+    "age": 25,
+    "team": "FC Lugano"
+  },
+  {
+    "name": "A. Kabacalman",
+    "overall": 67,
+    "potential": 67,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "FC Sion"
+  },
+  {
+    "name": "J. Lukembila",
+    "overall": 67,
+    "potential": 68,
+    "position": "LM, ST, LW",
+    "age": 25,
+    "team": "FC Sion"
+  },
+  {
+    "name": "K. Hajrizi",
+    "overall": 67,
+    "potential": 70,
+    "position": "CB",
+    "age": 26,
+    "team": "FC Sion"
+  },
+  {
+    "name": "L. Diack",
+    "overall": 67,
+    "potential": 72,
+    "position": "CDM, CM",
+    "age": 24,
+    "team": "FC Sion"
+  },
+  {
+    "name": "A. Abrashi",
+    "overall": 66,
+    "potential": 66,
+    "position": "CDM, CM",
+    "age": 35,
+    "team": "Grasshopper Club Zürich"
+  },
+  {
+    "name": "A. Diaby",
+    "overall": 66,
+    "potential": 72,
+    "position": "CB",
+    "age": 24,
+    "team": "Grasshopper Club Zürich"
+  },
+  {
+    "name": "L. Njoh",
+    "overall": 66,
+    "potential": 73,
+    "position": "LB, LM",
+    "age": 23,
+    "team": "Servette FC"
+  },
+  {
+    "name": "G. Ondoua",
+    "overall": 66,
+    "potential": 66,
+    "position": "CDM, CM, CB",
+    "age": 29,
+    "team": "Servette FC"
+  },
+  {
+    "name": "M. Burch",
+    "overall": 66,
+    "potential": 71,
+    "position": "CB",
+    "age": 24,
+    "team": "Servette FC"
+  },
+  {
+    "name": "A. Baron",
+    "overall": 66,
+    "potential": 66,
+    "position": "LB, CB, CDM",
+    "age": 32,
+    "team": "Servette FC"
+  },
+  {
+    "name": "J. Agbonifo",
+    "overall": 66,
+    "potential": 78,
+    "position": "RM, RW, LW",
+    "age": 19,
+    "team": "FC Basel 1893"
+  },
+  {
+    "name": "M. Soticek",
+    "overall": 66,
+    "potential": 81,
+    "position": "RW, LW, RM",
+    "age": 20,
+    "team": "FC Basel 1893"
+  },
+  {
+    "name": "S. Karweina",
+    "overall": 66,
+    "potential": 69,
+    "position": "ST, RM, CAM",
+    "age": 26,
+    "team": "FC Luzern"
+  },
+  {
+    "name": "J. von Moos",
+    "overall": 66,
+    "potential": 72,
+    "position": "RM, RW, ST",
+    "age": 24,
+    "team": "FC Luzern"
+  },
+  {
+    "name": "K. Csoboth",
+    "overall": 66,
+    "potential": 69,
+    "position": "LM, LW, RW",
+    "age": 25,
+    "team": "FC St. Gallen 1879"
+  },
+  {
+    "name": "M. Stevanović",
+    "overall": 66,
+    "potential": 73,
+    "position": "CM, CDM",
+    "age": 23,
+    "team": "FC St. Gallen 1879"
+  },
+  {
+    "name": "A. Baldé",
+    "overall": 66,
+    "potential": 74,
+    "position": "RW, LW, ST, RM",
+    "age": 22,
+    "team": "FC St. Gallen 1879"
+  },
+  {
+    "name": "E. Colley",
+    "overall": 66,
+    "potential": 67,
+    "position": "LW, CM, RW, LM",
+    "age": 25,
+    "team": "BSC Young Boys"
+  },
+  {
+    "name": "P. Kasami",
+    "overall": 66,
+    "potential": 66,
+    "position": "CM, CAM, CDM",
+    "age": 33,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "N. Burkart",
+    "overall": 66,
+    "potential": 67,
+    "position": "LM, RM, LW",
+    "age": 25,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "M. Martins",
+    "overall": 66,
+    "potential": 66,
+    "position": "CB, LB, RB",
+    "age": 30,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "R. Schneider",
+    "overall": 66,
+    "potential": 71,
+    "position": "CM, CAM, LW, CDM",
+    "age": 23,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "C. Ibayi",
+    "overall": 66,
+    "potential": 66,
+    "position": "ST",
+    "age": 29,
+    "team": "FC Thun"
+  },
+  {
+    "name": "M. Bürki",
+    "overall": 66,
+    "potential": 66,
+    "position": "CB, LB",
+    "age": 31,
+    "team": "FC Thun"
+  },
+  {
+    "name": "M. Käit",
+    "overall": 66,
+    "potential": 67,
+    "position": "CM, CDM",
+    "age": 27,
+    "team": "FC Thun"
+  },
+  {
+    "name": "B. Labeau",
+    "overall": 66,
+    "potential": 66,
+    "position": "ST, CAM",
+    "age": 29,
+    "team": "FC Thun"
+  },
+  {
+    "name": "N. Reichmuth",
+    "overall": 66,
+    "potential": 74,
+    "position": "CAM, CM, RM",
+    "age": 23,
+    "team": "FC Thun"
+  },
+  {
+    "name": "H. Mahou",
+    "overall": 66,
+    "potential": 67,
+    "position": "LM, RM, ST, LW",
+    "age": 25,
+    "team": "FC Lugano"
+  },
+  {
+    "name": "G. Koutsias",
+    "overall": 66,
+    "potential": 76,
+    "position": "ST",
+    "age": 21,
+    "team": "FC Lugano"
+  },
+  {
+    "name": "N. Hefti",
+    "overall": 66,
+    "potential": 69,
+    "position": "LB, LM",
+    "age": 25,
+    "team": "FC Sion"
+  },
+  {
+    "name": "J. Asp-Jensen",
+    "overall": 65,
+    "potential": 81,
+    "position": "LW, CAM, RW, LM",
+    "age": 19,
+    "team": "Grasshopper Club Zürich"
+  },
+  {
+    "name": "Óscar Clemente",
+    "overall": 65,
+    "potential": 66,
+    "position": "LM, RW, CM, LB",
+    "age": 26,
+    "team": "Grasshopper Club Zürich"
+  },
+  {
+    "name": "Lee Young Jun",
+    "overall": 65,
+    "potential": 76,
+    "position": "ST",
+    "age": 22,
+    "team": "Grasshopper Club Zürich"
+  },
+  {
+    "name": "L. Zvonarek",
+    "overall": 65,
+    "potential": 77,
+    "position": "CAM, CM",
+    "age": 20,
+    "team": "Grasshopper Club Zürich"
+  },
+  {
+    "name": "I. Beka",
+    "overall": 65,
+    "potential": 70,
+    "position": "CB",
+    "age": 25,
+    "team": "Grasshopper Club Zürich"
+  },
+  {
+    "name": "T. Magnin",
+    "overall": 65,
+    "potential": 72,
+    "position": "RB, CDM, LB, CM",
+    "age": 21,
+    "team": "Servette FC"
+  },
+  {
+    "name": "J. Segura",
+    "overall": 65,
+    "potential": 66,
+    "position": "CB",
+    "age": 28,
+    "team": "FC Zürich"
+  },
+  {
+    "name": "J. Perea",
+    "overall": 65,
+    "potential": 70,
+    "position": "ST",
+    "age": 25,
+    "team": "FC Zürich"
+  },
+  {
+    "name": "J. Markelo",
+    "overall": 65,
+    "potential": 74,
+    "position": "RM, RW",
+    "age": 22,
+    "team": "FC Zürich"
+  },
+  {
+    "name": "B. Freimann",
+    "overall": 65,
+    "potential": 80,
+    "position": "CB, LB, CDM",
+    "age": 19,
+    "team": "FC Luzern"
+  },
+  {
+    "name": "L. Winkler",
+    "overall": 65,
+    "potential": 74,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "FC Luzern"
+  },
+  {
+    "name": "T. Zoukrou",
+    "overall": 65,
+    "potential": 75,
+    "position": "CB, RB",
+    "age": 22,
+    "team": "BSC Young Boys"
+  },
+  {
+    "name": "L. Zuffi",
+    "overall": 65,
+    "potential": 65,
+    "position": "CDM, CM",
+    "age": 35,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "S. Sidler",
+    "overall": 65,
+    "potential": 66,
+    "position": "RB, LB, CB",
+    "age": 26,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "B. Stillhart",
+    "overall": 65,
+    "potential": 65,
+    "position": "CDM, RB, CB, CM",
+    "age": 31,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "D. Franke",
+    "overall": 65,
+    "potential": 66,
+    "position": "LB, CB",
+    "age": 26,
+    "team": "FC Thun"
+  },
+  {
+    "name": "J. Roth",
+    "overall": 65,
+    "potential": 72,
+    "position": "CDM, CM, RM",
+    "age": 24,
+    "team": "FC Thun"
+  },
+  {
+    "name": "M. Heule",
+    "overall": 65,
+    "potential": 71,
+    "position": "LB",
+    "age": 24,
+    "team": "FC Thun"
+  },
+  {
+    "name": "G. Diakité",
+    "overall": 65,
+    "potential": 80,
+    "position": "ST, LM",
+    "age": 19,
+    "team": "FC Lausanne-Sport"
+  },
+  {
+    "name": "T. Bergvall",
+    "overall": 65,
+    "potential": 77,
+    "position": "RB, LB, CM",
+    "age": 20,
+    "team": "FC Lausanne-Sport"
+  },
+  {
+    "name": "Martim Marques",
+    "overall": 65,
+    "potential": 78,
+    "position": "LB, LM",
+    "age": 21,
+    "team": "FC Lugano"
+  },
+  {
+    "name": "T. Berdayes",
+    "overall": 65,
+    "potential": 71,
+    "position": "RM, CAM, LM, RW",
+    "age": 23,
+    "team": "FC Sion"
+  },
+  {
+    "name": "D. Abels",
+    "overall": 64,
+    "potential": 64,
+    "position": "CB, RB, CM, CDM",
+    "age": 28,
+    "team": "Grasshopper Club Zürich"
+  },
+  {
+    "name": "N. Muci",
+    "overall": 64,
+    "potential": 73,
+    "position": "ST",
+    "age": 22,
+    "team": "Grasshopper Club Zürich"
+  },
+  {
+    "name": "C. Tsawa",
+    "overall": 64,
+    "potential": 77,
+    "position": "CM, CDM, CAM",
+    "age": 18,
+    "team": "FC Zürich"
+  },
+  {
+    "name": "L. Tramoni",
+    "overall": 64,
+    "potential": 72,
+    "position": "RM, RW",
+    "age": 22,
+    "team": "FC Zürich"
+  },
+  {
+    "name": "K. Rüegg",
+    "overall": 64,
+    "potential": 64,
+    "position": "RB, RM, CM",
+    "age": 26,
+    "team": "FC Basel 1893"
+  },
+  {
+    "name": "M. Cissé",
+    "overall": 64,
+    "potential": 75,
+    "position": "LB, LM, CM",
+    "age": 22,
+    "team": "FC Basel 1893"
+  },
+  {
+    "name": "J. Löfgren",
+    "overall": 64,
+    "potential": 66,
+    "position": "CB",
+    "age": 28,
+    "team": "FC Luzern"
+  },
+  {
+    "name": "L. Mühl",
+    "overall": 64,
+    "potential": 65,
+    "position": "CB",
+    "age": 28,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "F. Rohner",
+    "overall": 64,
+    "potential": 64,
+    "position": "RM, RB, ST, RW",
+    "age": 26,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "F. Momoh",
+    "overall": 64,
+    "potential": 69,
+    "position": "ST, LM, LW",
+    "age": 24,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "A. Hunziker",
+    "overall": 64,
+    "potential": 71,
+    "position": "ST",
+    "age": 22,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "L. Lüthi",
+    "overall": 64,
+    "potential": 72,
+    "position": "CB",
+    "age": 21,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "B. Beyer",
+    "overall": 64,
+    "potential": 64,
+    "position": "ST, RM, LM",
+    "age": 28,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "L. Dähler",
+    "overall": 64,
+    "potential": 69,
+    "position": "RB, RM",
+    "age": 24,
+    "team": "FC Thun"
+  },
+  {
+    "name": "L. Stewart",
+    "overall": 64,
+    "potential": 71,
+    "position": "ST",
+    "age": 22,
+    "team": "FC Thun"
+  },
+  {
+    "name": "B. Lekoueiry",
+    "overall": 64,
+    "potential": 75,
+    "position": "CAM, CM, ST",
+    "age": 20,
+    "team": "FC Lausanne-Sport"
+  },
+  {
+    "name": "B. Okoh",
+    "overall": 64,
+    "potential": 71,
+    "position": "CB",
+    "age": 22,
+    "team": "FC Lausanne-Sport"
+  },
+  {
+    "name": "Z. Brault-Guillard",
+    "overall": 64,
+    "potential": 65,
+    "position": "RB, RM",
+    "age": 26,
+    "team": "FC Lugano"
+  },
+  {
+    "name": "R. Nivokazi",
+    "overall": 64,
+    "potential": 67,
+    "position": "ST",
+    "age": 25,
+    "team": "FC Sion"
+  },
+  {
+    "name": "F. Ruberto",
+    "overall": 64,
+    "potential": 64,
+    "position": "GK",
+    "age": 32,
+    "team": "FC Sion"
+  },
+  {
+    "name": "Marquinhos Cipriano",
+    "overall": 64,
+    "potential": 65,
+    "position": "LB, LM",
+    "age": 26,
+    "team": "FC Sion"
+  },
+  {
+    "name": "T. Bouchlarhem",
+    "overall": 64,
+    "potential": 69,
+    "position": "LM, ST, LW",
+    "age": 24,
+    "team": "FC Sion"
+  },
+  {
+    "name": "I. Hassane",
+    "overall": 63,
+    "potential": 71,
+    "position": "CDM, CM, LB",
+    "age": 22,
+    "team": "Grasshopper Club Zürich"
+  },
+  {
+    "name": "S. Decarli",
+    "overall": 63,
+    "potential": 63,
+    "position": "CB",
+    "age": 33,
+    "team": "Grasshopper Club Zürich"
+  },
+  {
+    "name": "A. Arigoni",
+    "overall": 63,
+    "potential": 64,
+    "position": "RB, CB, LB, RM",
+    "age": 26,
+    "team": "Grasshopper Club Zürich"
+  },
+  {
+    "name": "T. Meyer",
+    "overall": 63,
+    "potential": 77,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Grasshopper Club Zürich"
+  },
+  {
+    "name": "U. Emmanuel",
+    "overall": 63,
+    "potential": 77,
+    "position": "LW, ST, LM",
+    "age": 20,
+    "team": "FC Zürich"
+  },
+  {
+    "name": "C. Kablan",
+    "overall": 63,
+    "potential": 63,
+    "position": "RB, LB",
+    "age": 30,
+    "team": "FC Zürich"
+  },
+  {
+    "name": "C. Ligue",
+    "overall": 63,
+    "potential": 75,
+    "position": "LB, CB, LM, CDM",
+    "age": 20,
+    "team": "FC Zürich"
+  },
+  {
+    "name": "V. Vasić",
+    "overall": 63,
+    "potential": 63,
+    "position": "GK",
+    "age": 35,
+    "team": "FC Luzern"
+  },
+  {
+    "name": "C. Konietzke",
+    "overall": 63,
+    "potential": 82,
+    "position": "CDM, CM",
+    "age": 19,
+    "team": "FC St. Gallen 1879"
+  },
+  {
+    "name": "B. Fazliji",
+    "overall": 63,
+    "potential": 68,
+    "position": "CDM, CB, CM",
+    "age": 26,
+    "team": "FC St. Gallen 1879"
+  },
+  {
+    "name": "M. Efekele",
+    "overall": 63,
+    "potential": 78,
+    "position": "RM, ST, RW",
+    "age": 20,
+    "team": "FC St. Gallen 1879"
+  },
+  {
+    "name": "F. Conte",
+    "overall": 63,
+    "potential": 76,
+    "position": "ST, RW",
+    "age": 20,
+    "team": "BSC Young Boys"
+  },
+  {
+    "name": "R. Buess",
+    "overall": 63,
+    "potential": 63,
+    "position": "ST",
+    "age": 32,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "A. Jankewitz",
+    "overall": 63,
+    "potential": 69,
+    "position": "CDM, CM",
+    "age": 23,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "V. Matoshi",
+    "overall": 63,
+    "potential": 71,
+    "position": "CM, CAM, RM, CDM",
+    "age": 21,
+    "team": "FC Thun"
+  },
+  {
+    "name": "E. Meichtry",
+    "overall": 63,
+    "potential": 73,
+    "position": "CAM, LM, CM",
+    "age": 19,
+    "team": "FC Thun"
+  },
+  {
+    "name": "V. Janjičić",
+    "overall": 63,
+    "potential": 66,
+    "position": "CDM, CM",
+    "age": 26,
+    "team": "FC Thun"
+  },
+  {
+    "name": "D. Kelvin",
+    "overall": 63,
+    "potential": 70,
+    "position": "CB",
+    "age": 23,
+    "team": "FC Lugano"
+  },
+  {
+    "name": "J. Kronig",
+    "overall": 63,
+    "potential": 68,
+    "position": "CB, LB, LM",
+    "age": 25,
+    "team": "FC Sion"
+  },
+  {
+    "name": "N. Sow",
+    "overall": 63,
+    "potential": 66,
+    "position": "CDM, CB, CM",
+    "age": 26,
+    "team": "FC Sion"
+  },
+  {
+    "name": "L. Chipperfield",
+    "overall": 63,
+    "potential": 72,
+    "position": "CM, RM, CAM, CDM",
+    "age": 21,
+    "team": "FC Sion"
+  },
+  {
+    "name": "L. Plange",
+    "overall": 62,
+    "potential": 70,
+    "position": "ST, RW, RM",
+    "age": 22,
+    "team": "Grasshopper Club Zürich"
+  },
+  {
+    "name": "L. Comenencia",
+    "overall": 62,
+    "potential": 73,
+    "position": "RB, CB, CDM",
+    "age": 21,
+    "team": "FC Zürich"
+  },
+  {
+    "name": "R. Dantas Fernandes",
+    "overall": 62,
+    "potential": 72,
+    "position": "LB, CDM, CM, LM",
+    "age": 22,
+    "team": "FC Luzern"
+  },
+  {
+    "name": "T. Ouattara",
+    "overall": 62,
+    "potential": 73,
+    "position": "LM, ST, RM, LW",
+    "age": 20,
+    "team": "FC St. Gallen 1879"
+  },
+  {
+    "name": "D. Ulrich",
+    "overall": 62,
+    "potential": 62,
+    "position": "RM, RB, LB",
+    "age": 27,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "S. Diaby",
+    "overall": 62,
+    "potential": 65,
+    "position": "LB",
+    "age": 25,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "S. Fofana",
+    "overall": 62,
+    "potential": 69,
+    "position": "LB, LM",
+    "age": 22,
+    "team": "FC Lausanne-Sport"
+  },
+  {
+    "name": "E. Pihlström",
+    "overall": 62,
+    "potential": 76,
+    "position": "LW, LM",
+    "age": 18,
+    "team": "FC Lugano"
+  },
+  {
+    "name": "R. Londja",
+    "overall": 62,
+    "potential": 75,
+    "position": "RM, RW",
+    "age": 19,
+    "team": "FC Sion"
+  },
+  {
+    "name": "A. Shala",
+    "overall": 62,
+    "potential": 69,
+    "position": "RW, LW, RM",
+    "age": 22,
+    "team": "FC Sion"
+  },
+  {
+    "name": "M. Salvi",
+    "overall": 61,
+    "potential": 61,
+    "position": "GK",
+    "age": 31,
+    "team": "FC Basel 1893"
+  },
+  {
+    "name": "D. Kacuri",
+    "overall": 61,
+    "potential": 70,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "FC Basel 1893"
+  },
+  {
+    "name": "T. Abe",
+    "overall": 61,
+    "potential": 68,
+    "position": "CDM, CM",
+    "age": 21,
+    "team": "FC Luzern"
+  },
+  {
+    "name": "T. Owusu",
+    "overall": 61,
+    "potential": 71,
+    "position": "CM, CDM, CAM",
+    "age": 22,
+    "team": "FC Luzern"
+  },
+  {
+    "name": "L. Watkowiak",
+    "overall": 61,
+    "potential": 62,
+    "position": "GK",
+    "age": 29,
+    "team": "FC St. Gallen 1879"
+  },
+  {
+    "name": "M. Gutbub",
+    "overall": 61,
+    "potential": 69,
+    "position": "ST, RW",
+    "age": 22,
+    "team": "FC Thun"
+  },
+  {
+    "name": "E. Rastoder",
+    "overall": 61,
+    "potential": 68,
+    "position": "ST",
+    "age": 23,
+    "team": "FC Thun"
+  },
+  {
+    "name": "T. Castella",
+    "overall": 61,
+    "potential": 61,
+    "position": "GK",
+    "age": 32,
+    "team": "FC Lausanne-Sport"
+  },
+  {
+    "name": "Dinis Rodrigues",
+    "overall": 61,
+    "potential": 72,
+    "position": "ST",
+    "age": 19,
+    "team": "FC Sion"
+  },
+  {
+    "name": "Keyan Varela",
+    "overall": 60,
+    "potential": 74,
+    "position": "LM, RM, LW",
+    "age": 19,
+    "team": "Servette FC"
+  },
+  {
+    "name": "D. Reverson",
+    "overall": 60,
+    "potential": 68,
+    "position": "ST, CAM, CM",
+    "age": 21,
+    "team": "FC Zürich"
+  },
+  {
+    "name": "M. Reichmuth",
+    "overall": 60,
+    "potential": 71,
+    "position": "CM, CDM, CAM",
+    "age": 21,
+    "team": "FC Zürich"
+  },
+  {
+    "name": "D. Ihendu",
+    "overall": 60,
+    "potential": 73,
+    "position": "CB",
+    "age": 19,
+    "team": "FC Zürich"
+  },
+  {
+    "name": "A. Vogt",
+    "overall": 60,
+    "potential": 72,
+    "position": "ST",
+    "age": 20,
+    "team": "FC St. Gallen 1879"
+  },
+  {
+    "name": "R. Smith",
+    "overall": 60,
+    "potential": 77,
+    "position": "LB",
+    "age": 18,
+    "team": "BSC Young Boys"
+  },
+  {
+    "name": "Stéphane Cueni",
+    "overall": 60,
+    "potential": 65,
+    "position": "CDM, CM, RM",
+    "age": 24,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "A. Durrer",
+    "overall": 60,
+    "potential": 65,
+    "position": "CDM, CB, CM",
+    "age": 23,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "Omar Janneh",
+    "overall": 60,
+    "potential": 77,
+    "position": "ST",
+    "age": 18,
+    "team": "FC Lausanne-Sport"
+  },
+  {
+    "name": "N. Butler-Oyedeji",
+    "overall": 60,
+    "potential": 67,
+    "position": "ST, CAM, LM",
+    "age": 22,
+    "team": "FC Lausanne-Sport"
+  },
+  {
+    "name": "G. Sigua",
+    "overall": 60,
+    "potential": 77,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "FC Lausanne-Sport"
+  },
+  {
+    "name": "G. Mulazzi",
+    "overall": 60,
+    "potential": 66,
+    "position": "RB, RM, LB",
+    "age": 22,
+    "team": "FC Sion"
+  },
+  {
+    "name": "W. Boteli",
+    "overall": 60,
+    "potential": 75,
+    "position": "ST",
+    "age": 18,
+    "team": "FC Sion"
+  },
+  {
+    "name": "Y. Bettkober",
+    "overall": 59,
+    "potential": 73,
+    "position": "CB, RB",
+    "age": 20,
+    "team": "Grasshopper Club Zürich"
+  },
+  {
+    "name": "F. Tsimba",
+    "overall": 59,
+    "potential": 72,
+    "position": "ST",
+    "age": 19,
+    "team": "Grasshopper Club Zürich"
+  },
+  {
+    "name": "D. Vujević",
+    "overall": 59,
+    "potential": 76,
+    "position": "CB",
+    "age": 18,
+    "team": "FC Zürich"
+  },
+  {
+    "name": "V. Nvendo",
+    "overall": 59,
+    "potential": 67,
+    "position": "ST",
+    "age": 21,
+    "team": "FC Zürich"
+  },
+  {
+    "name": "C. May",
+    "overall": 59,
+    "potential": 72,
+    "position": "CB",
+    "age": 18,
+    "team": "FC St. Gallen 1879"
+  },
+  {
+    "name": "E. Maluvunu",
+    "overall": 59,
+    "potential": 68,
+    "position": "RM, LM, RW",
+    "age": 20,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "B. Dansoko",
+    "overall": 59,
+    "potential": 59,
+    "position": "LW, LM",
+    "age": 29,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "N. Ziswiler",
+    "overall": 59,
+    "potential": 64,
+    "position": "GK",
+    "age": 25,
+    "team": "FC Thun"
+  },
+  {
+    "name": "N. Rupp",
+    "overall": 59,
+    "potential": 70,
+    "position": "CM, CAM, ST, CDM",
+    "age": 21,
+    "team": "FC Thun"
+  },
+  {
+    "name": "H. Abdallah",
+    "overall": 59,
+    "potential": 66,
+    "position": "RB",
+    "age": 22,
+    "team": "FC Lausanne-Sport"
+  },
+  {
+    "name": "Y. Sbai",
+    "overall": 59,
+    "potential": 67,
+    "position": "LB, LM, RM",
+    "age": 21,
+    "team": "FC Lugano"
+  },
+  {
+    "name": "M. Dubosson",
+    "overall": 59,
+    "potential": 68,
+    "position": "CB",
+    "age": 20,
+    "team": "FC Sion"
+  },
+  {
+    "name": "S. Krasniqi",
+    "overall": 58,
+    "potential": 70,
+    "position": "RM, RW",
+    "age": 20,
+    "team": "Grasshopper Club Zürich"
+  },
+  {
+    "name": "S. Stroscio",
+    "overall": 58,
+    "potential": 68,
+    "position": "LM, CDM, LB",
+    "age": 21,
+    "team": "Grasshopper Club Zürich"
+  },
+  {
+    "name": "S. Hodza",
+    "overall": 58,
+    "potential": 69,
+    "position": "RB, RM",
+    "age": 22,
+    "team": "FC Zürich"
+  },
+  {
+    "name": "T. Pfeiffer",
+    "overall": 58,
+    "potential": 70,
+    "position": "GK",
+    "age": 20,
+    "team": "FC Basel 1893"
+  },
+  {
+    "name": "Kaio Eduardo",
+    "overall": 58,
+    "potential": 70,
+    "position": "ST",
+    "age": 20,
+    "team": "FC Basel 1893"
+  },
+  {
+    "name": "M. Akahomen",
+    "overall": 58,
+    "potential": 75,
+    "position": "LB, CB",
+    "age": 17,
+    "team": "FC Basel 1893"
+  },
+  {
+    "name": "A. Vasović",
+    "overall": 58,
+    "potential": 75,
+    "position": "ST",
+    "age": 17,
+    "team": "FC Luzern"
+  },
+  {
+    "name": "Lucas Ferreira",
+    "overall": 58,
+    "potential": 77,
+    "position": "CAM, RM, CM",
+    "age": 18,
+    "team": "FC Luzern"
+  },
+  {
+    "name": "B. Neziri",
+    "overall": 58,
+    "potential": 66,
+    "position": "CDM, CB, CM",
+    "age": 22,
+    "team": "FC St. Gallen 1879"
+  },
+  {
+    "name": "A. Spagnoli",
+    "overall": 58,
+    "potential": 69,
+    "position": "GK",
+    "age": 20,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "T. Citherlet",
+    "overall": 58,
+    "potential": 68,
+    "position": "CB",
+    "age": 20,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "A. Balaruban",
+    "overall": 58,
+    "potential": 64,
+    "position": "LB, LM",
+    "age": 23,
+    "team": "FC Thun"
+  },
+  {
+    "name": "E. Kana-Biyik",
+    "overall": 58,
+    "potential": 78,
+    "position": "ST",
+    "age": 18,
+    "team": "FC Lausanne-Sport"
+  },
+  {
+    "name": "I. Maslarov",
+    "overall": 58,
+    "potential": 73,
+    "position": "CDM, CM",
+    "age": 18,
+    "team": "FC Lugano"
+  },
+  {
+    "name": "S. Diarrassouba",
+    "overall": 57,
+    "potential": 64,
+    "position": "CAM, LM, CM",
+    "age": 23,
+    "team": "Grasshopper Club Zürich"
+  },
+  {
+    "name": "L. Srdanović",
+    "overall": 57,
+    "potential": 71,
+    "position": "RB",
+    "age": 18,
+    "team": "Servette FC"
+  },
+  {
+    "name": "M. Ishuayed",
+    "overall": 57,
+    "potential": 74,
+    "position": "LM, LW",
+    "age": 18,
+    "team": "Servette FC"
+  },
+  {
+    "name": "N. Di Giusto",
+    "overall": 57,
+    "potential": 72,
+    "position": "CAM, CM",
+    "age": 20,
+    "team": "FC Zürich"
+  },
+  {
+    "name": "N. Volken",
+    "overall": 57,
+    "potential": 75,
+    "position": "LB, LM",
+    "age": 18,
+    "team": "FC Zürich"
+  },
+  {
+    "name": "I. Sauter",
+    "overall": 57,
+    "potential": 64,
+    "position": "CB, LB",
+    "age": 24,
+    "team": "FC Zürich"
+  },
+  {
+    "name": "D. Besio",
+    "overall": 57,
+    "potential": 71,
+    "position": "ST",
+    "age": 19,
+    "team": "FC St. Gallen 1879"
+  },
+  {
+    "name": "K. Thermoncy",
+    "overall": 57,
+    "potential": 70,
+    "position": "CB",
+    "age": 19,
+    "team": "BSC Young Boys"
+  },
+  {
+    "name": "D. Marzino",
+    "overall": 57,
+    "potential": 59,
+    "position": "GK",
+    "age": 28,
+    "team": "BSC Young Boys"
+  },
+  {
+    "name": "L. Sahitaj",
+    "overall": 57,
+    "potential": 65,
+    "position": "RB, CB",
+    "age": 21,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "J. Eicher",
+    "overall": 57,
+    "potential": 65,
+    "position": "GK",
+    "age": 21,
+    "team": "FC Thun"
+  },
+  {
+    "name": "E. Bruchez",
+    "overall": 57,
+    "potential": 74,
+    "position": "CAM, CM, CDM",
+    "age": 17,
+    "team": "FC Lausanne-Sport"
+  },
+  {
+    "name": "A. Llukes",
+    "overall": 57,
+    "potential": 77,
+    "position": "ST, RW, CAM",
+    "age": 16,
+    "team": "FC Sion"
+  },
+  {
+    "name": "N. Glaus",
+    "overall": 56,
+    "potential": 65,
+    "position": "GK",
+    "age": 23,
+    "team": "Grasshopper Club Zürich"
+  },
+  {
+    "name": "S. Huber",
+    "overall": 56,
+    "potential": 73,
+    "position": "GK",
+    "age": 19,
+    "team": "FC Zürich"
+  },
+  {
+    "name": "Y. Morozov",
+    "overall": 56,
+    "potential": 72,
+    "position": "GK",
+    "age": 18,
+    "team": "FC Zürich"
+  },
+  {
+    "name": "A. Tchamda",
+    "overall": 56,
+    "potential": 72,
+    "position": "CDM, CM",
+    "age": 18,
+    "team": "FC Zürich"
+  },
+  {
+    "name": "A. Onyegbule",
+    "overall": 56,
+    "potential": 73,
+    "position": "CAM, CM",
+    "age": 19,
+    "team": "FC Basel 1893"
+  },
+  {
+    "name": "N. Weibel",
+    "overall": 56,
+    "potential": 73,
+    "position": "CAM, CM",
+    "age": 18,
+    "team": "FC St. Gallen 1879"
+  },
+  {
+    "name": "J. Ruiz",
+    "overall": 56,
+    "potential": 68,
+    "position": "CB",
+    "age": 18,
+    "team": "FC St. Gallen 1879"
+  },
+  {
+    "name": "B. Dumrath",
+    "overall": 56,
+    "potential": 68,
+    "position": "GK",
+    "age": 21,
+    "team": "FC St. Gallen 1879"
+  },
+  {
+    "name": "J. Holder",
+    "overall": 56,
+    "potential": 67,
+    "position": "ST, RW",
+    "age": 20,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "S. Camara",
+    "overall": 56,
+    "potential": 72,
+    "position": "CB, LB",
+    "age": 18,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "S. Traoré",
+    "overall": 56,
+    "potential": 67,
+    "position": "ST",
+    "age": 20,
+    "team": "FC Lausanne-Sport"
+  },
+  {
+    "name": "D. Mina",
+    "overall": 56,
+    "potential": 68,
+    "position": "GK",
+    "age": 19,
+    "team": "FC Lugano"
+  },
+  {
+    "name": "N. Biner",
+    "overall": 56,
+    "potential": 70,
+    "position": "CB, CDM, CM",
+    "age": 18,
+    "team": "FC Sion"
+  },
+  {
+    "name": "S. Caillet",
+    "overall": 56,
+    "potential": 74,
+    "position": "GK",
+    "age": 18,
+    "team": "FC Sion"
+  },
+  {
+    "name": "L. Seji",
+    "overall": 55,
+    "potential": 67,
+    "position": "GK",
+    "age": 21,
+    "team": "Grasshopper Club Zürich"
+  },
+  {
+    "name": "S. Marques",
+    "overall": 55,
+    "potential": 69,
+    "position": "CM, RB, RM, CDM",
+    "age": 20,
+    "team": "Grasshopper Club Zürich"
+  },
+  {
+    "name": "M. Mardochée",
+    "overall": 55,
+    "potential": 71,
+    "position": "LW, LM",
+    "age": 18,
+    "team": "Servette FC"
+  },
+  {
+    "name": "M. Bangoura",
+    "overall": 55,
+    "potential": 68,
+    "position": "CDM, CM",
+    "age": 19,
+    "team": "FC Zürich"
+  },
+  {
+    "name": "C. Fiorini",
+    "overall": 55,
+    "potential": 71,
+    "position": "CDM, CM",
+    "age": 19,
+    "team": "FC Zürich"
+  },
+  {
+    "name": "I. Okafor",
+    "overall": 55,
+    "potential": 66,
+    "position": "CDM, CM, CB",
+    "age": 20,
+    "team": "FC Zürich"
+  },
+  {
+    "name": "D. Odera",
+    "overall": 55,
+    "potential": 72,
+    "position": "LW, LM",
+    "age": 17,
+    "team": "FC Zürich"
+  },
+  {
+    "name": "S. Walker",
+    "overall": 55,
+    "potential": 68,
+    "position": "LM, LB, LW",
+    "age": 19,
+    "team": "FC Zürich"
+  },
+  {
+    "name": "J. Bock",
+    "overall": 55,
+    "potential": 65,
+    "position": "GK",
+    "age": 21,
+    "team": "FC Luzern"
+  },
+  {
+    "name": "E. Owusu",
+    "overall": 55,
+    "potential": 65,
+    "position": "RW, RM",
+    "age": 20,
+    "team": "FC St. Gallen 1879"
+  },
+  {
+    "name": "T. Diethelm",
+    "overall": 55,
+    "potential": 70,
+    "position": "CB, LB",
+    "age": 18,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "C. Chiappetta",
+    "overall": 55,
+    "potential": 65,
+    "position": "LM, LW",
+    "age": 22,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "J. Zaugg",
+    "overall": 55,
+    "potential": 65,
+    "position": "GK",
+    "age": 19,
+    "team": "FC Thun"
+  },
+  {
+    "name": "T. Spycher",
+    "overall": 55,
+    "potential": 69,
+    "position": "GK",
+    "age": 21,
+    "team": "FC Thun"
+  },
+  {
+    "name": "S. N'Diaye",
+    "overall": 55,
+    "potential": 71,
+    "position": "CM, CDM, ST",
+    "age": 19,
+    "team": "FC Lausanne-Sport"
+  },
+  {
+    "name": "Š. Berbić",
+    "overall": 55,
+    "potential": 63,
+    "position": "GK",
+    "age": 23,
+    "team": "FC Lugano"
+  },
+  {
+    "name": "D. Paloschi",
+    "overall": 54,
+    "potential": 66,
+    "position": "CB",
+    "age": 19,
+    "team": "Grasshopper Club Zürich"
+  },
+  {
+    "name": "M. Aubert",
+    "overall": 54,
+    "potential": 67,
+    "position": "GK",
+    "age": 19,
+    "team": "Servette FC"
+  },
+  {
+    "name": "G. Stork",
+    "overall": 54,
+    "potential": 73,
+    "position": "CB, CDM",
+    "age": 18,
+    "team": "FC Zürich"
+  },
+  {
+    "name": "A. Bacanin",
+    "overall": 54,
+    "potential": 69,
+    "position": "CDM, CM",
+    "age": 18,
+    "team": "FC Basel 1893"
+  },
+  {
+    "name": "J. Matuanana",
+    "overall": 54,
+    "potential": 73,
+    "position": "LB",
+    "age": 17,
+    "team": "FC Luzern"
+  },
+  {
+    "name": "O. Mambwa",
+    "overall": 54,
+    "potential": 72,
+    "position": "LB",
+    "age": 16,
+    "team": "BSC Young Boys"
+  },
+  {
+    "name": "T. Okafor",
+    "overall": 54,
+    "potential": 71,
+    "position": "LB",
+    "age": 18,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "L. Mikulić",
+    "overall": 53,
+    "potential": 61,
+    "position": "CB",
+    "age": 20,
+    "team": "Grasshopper Club Zürich"
+  },
+  {
+    "name": "T. Lopes",
+    "overall": 53,
+    "potential": 73,
+    "position": "RM, RW",
+    "age": 18,
+    "team": "Servette FC"
+  },
+  {
+    "name": "M. Seiler",
+    "overall": 53,
+    "potential": 70,
+    "position": "CB, LB",
+    "age": 19,
+    "team": "BSC Young Boys"
+  },
+  {
+    "name": "N. Brogli",
+    "overall": 53,
+    "potential": 73,
+    "position": "GK",
+    "age": 17,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "L. Maksutaj",
+    "overall": 53,
+    "potential": 71,
+    "position": "CM, CDM",
+    "age": 18,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "E. Meili",
+    "overall": 53,
+    "potential": 70,
+    "position": "CB",
+    "age": 19,
+    "team": "FC Winterthur"
+  },
+  {
+    "name": "A. Ilic",
+    "overall": 53,
+    "potential": 73,
+    "position": "CM, CDM",
+    "age": 17,
+    "team": "FC Thun"
+  },
+  {
+    "name": "P. Creti",
+    "overall": 52,
+    "potential": 72,
+    "position": "RB",
+    "age": 16,
+    "team": "Grasshopper Club Zürich"
+  },
+  {
+    "name": "O. Kabwit",
+    "overall": 52,
+    "potential": 60,
+    "position": "RW, RM",
+    "age": 20,
+    "team": "FC Luzern"
+  },
+  {
+    "name": "M. Mantini",
+    "overall": 51,
+    "potential": 68,
+    "position": "CDM, CM",
+    "age": 17,
+    "team": "Grasshopper Club Zürich"
+  },
+  {
+    "name": "J. Atangana",
+    "overall": 51,
+    "potential": 69,
+    "position": "ST",
+    "age": 17,
+    "team": "Servette FC"
+  },
+  {
+    "name": "A. Vincent",
+    "overall": 51,
+    "potential": 71,
+    "position": "CM, CDM",
+    "age": 16,
+    "team": "Servette FC"
+  },
+  {
+    "name": "M. Zimmermann",
+    "overall": 51,
+    "potential": 72,
+    "position": "CM, CDM",
+    "age": 17,
+    "team": "FC Luzern"
+  },
+  {
+    "name": "E. Sadikaj",
+    "overall": 51,
+    "potential": 70,
+    "position": "CB",
+    "age": 17,
+    "team": "FC Luzern"
+  },
+  {
+    "name": "S. Wyss",
+    "overall": 50,
+    "potential": 65,
+    "position": "ST",
+    "age": 17,
+    "team": "FC Luzern"
+  },
+  {
+    "name": "J. Widmer",
+    "overall": 50,
+    "potential": 65,
+    "position": "GK",
+    "age": 17,
+    "team": "FC St. Gallen 1879"
+  },
+  {
+    "name": "N. Savonnier",
+    "overall": 50,
+    "potential": 74,
+    "position": "CB",
+    "age": 17,
+    "team": "FC Sion"
+  },
+  {
+    "name": "D. Xhemalija",
+    "overall": 48,
+    "potential": 66,
+    "position": "CDM, CM",
+    "age": 19,
+    "team": "FC Luzern"
+  }
+]

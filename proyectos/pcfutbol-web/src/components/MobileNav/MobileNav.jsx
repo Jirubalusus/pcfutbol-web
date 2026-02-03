@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
 import { useGame } from '../../context/GameContext';
+// Market is always open now
 import Settings from '../Settings/Settings';
 import './MobileNav.scss';
 
@@ -74,26 +75,33 @@ export default function MobileNav({ activeTab, onTabChange, onAdvanceWeek, onSim
             >
               <FastForward size={14} /> {simulating ? 'Simulando...' : 'Simular'}
             </button>
-            {showSimOptions && !simDisabled && (
-              <>
-                <div className="mobile-nav__sim-backdrop" onClick={() => setShowSimOptions(false)} />
-                <div className="mobile-nav__sim-dropdown">
-                  {[
-                    { weeks: 4, label: '4 semanas' },
-                    { weeks: 10, label: '10 semanas' },
-                    { weeks: 19, label: 'Media temporada' },
-                    { weeks: 38, label: 'Temporada completa' },
-                  ].map(opt => (
-                    <button
-                      key={opt.weeks}
-                      onClick={() => { onSimulate(opt.weeks); setShowSimOptions(false); }}
-                    >
-                      {opt.label}
-                    </button>
-                  ))}
-                </div>
-              </>
-            )}
+            {showSimOptions && !simDisabled && (() => {
+              const maxWeek = state.fixtures?.length > 0
+                ? Math.max(...state.fixtures.map(f => f.week)) : 38;
+              const halfSeason = Math.ceil(maxWeek / 2);
+              const pastHalf = state.currentWeek >= halfSeason;
+              const simOptions = [
+                { weeks: 3, label: '3 partidos' },
+                pastHalf
+                  ? { weeks: maxWeek - state.currentWeek + 1, label: 'Fin de temporada' }
+                  : { weeks: halfSeason - state.currentWeek, label: 'Media temporada' },
+              ];
+              return (
+                <>
+                  <div className="mobile-nav__sim-backdrop" onClick={() => setShowSimOptions(false)} />
+                  <div className="mobile-nav__sim-dropdown">
+                    {simOptions.map(opt => (
+                      <button
+                        key={opt.label}
+                        onClick={() => { onSimulate(opt.weeks); setShowSimOptions(false); }}
+                      >
+                        {opt.label}
+                      </button>
+                    ))}
+                  </div>
+                </>
+              );
+            })()}
           </div>
           <button className="mobile-nav__action-btn mobile-nav__action-btn--advance" onClick={onAdvanceWeek}>
             <SkipForward size={14} /> Avanzar

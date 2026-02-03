@@ -1,0 +1,4042 @@
+[
+  {
+    "name": "O. Dembélé",
+    "overall": 90,
+    "potential": 90,
+    "position": "ST, RW, CAM",
+    "age": 28,
+    "team": "Paris Saint-Germain"
+  },
+  {
+    "name": "Vitinha",
+    "overall": 90,
+    "potential": 92,
+    "position": "CM, CDM, CAM",
+    "age": 25,
+    "team": "Paris Saint-Germain"
+  },
+  {
+    "name": "A. Hakimi",
+    "overall": 89,
+    "potential": 90,
+    "position": "RB, RM",
+    "age": 26,
+    "team": "Paris Saint-Germain"
+  },
+  {
+    "name": "Marquinhos",
+    "overall": 87,
+    "potential": 87,
+    "position": "CB",
+    "age": 31,
+    "team": "Paris Saint-Germain"
+  },
+  {
+    "name": "K. Kvaratskhelia",
+    "overall": 87,
+    "potential": 90,
+    "position": "LW, RW, LM",
+    "age": 24,
+    "team": "Paris Saint-Germain"
+  },
+  {
+    "name": "Nuno Mendes",
+    "overall": 87,
+    "potential": 90,
+    "position": "LB, LM",
+    "age": 23,
+    "team": "Paris Saint-Germain"
+  },
+  {
+    "name": "W. Pacho",
+    "overall": 87,
+    "potential": 90,
+    "position": "CB",
+    "age": 23,
+    "team": "Paris Saint-Germain"
+  },
+  {
+    "name": "João Neves",
+    "overall": 87,
+    "potential": 92,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Paris Saint-Germain"
+  },
+  {
+    "name": "Fabián Ruiz",
+    "overall": 85,
+    "potential": 85,
+    "position": "CM, CDM",
+    "age": 29,
+    "team": "Paris Saint-Germain"
+  },
+  {
+    "name": "D. Doué",
+    "overall": 85,
+    "potential": 91,
+    "position": "RW, LW, CM, RM",
+    "age": 20,
+    "team": "Paris Saint-Germain"
+  },
+  {
+    "name": "B. Barcola",
+    "overall": 84,
+    "potential": 88,
+    "position": "LW, RW, LM",
+    "age": 22,
+    "team": "Paris Saint-Germain"
+  },
+  {
+    "name": "L. Chevalier",
+    "overall": 83,
+    "potential": 88,
+    "position": "GK",
+    "age": 23,
+    "team": "Paris Saint-Germain"
+  },
+  {
+    "name": "M. Greenwood",
+    "overall": 83,
+    "potential": 87,
+    "position": "RM, CAM, RW",
+    "age": 23,
+    "team": "Olympique de Marseille"
+  },
+  {
+    "name": "C. Tolisso",
+    "overall": 82,
+    "potential": 82,
+    "position": "CM, CDM, CAM",
+    "age": 30,
+    "team": "Olympique Lyonnais"
+  },
+  {
+    "name": "P. Aubameyang",
+    "overall": 82,
+    "potential": 82,
+    "position": "ST",
+    "age": 36,
+    "team": "Olympique de Marseille"
+  },
+  {
+    "name": "P. Højbjerg",
+    "overall": 82,
+    "potential": 82,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Olympique de Marseille"
+  },
+  {
+    "name": "G. Rulli",
+    "overall": 82,
+    "potential": 82,
+    "position": "GK",
+    "age": 33,
+    "team": "Olympique de Marseille"
+  },
+  {
+    "name": "B. Pavard",
+    "overall": 82,
+    "potential": 82,
+    "position": "CB",
+    "age": 29,
+    "team": "Olympique de Marseille"
+  },
+  {
+    "name": "D. Zakaria",
+    "overall": 81,
+    "potential": 81,
+    "position": "CDM, CM",
+    "age": 28,
+    "team": "AS Monaco"
+  },
+  {
+    "name": "L. Hernández",
+    "overall": 81,
+    "potential": 81,
+    "position": "LB, CB",
+    "age": 29,
+    "team": "Paris Saint-Germain"
+  },
+  {
+    "name": "W. Zaïre-Emery",
+    "overall": 81,
+    "potential": 88,
+    "position": "CM, CDM, RB, CAM",
+    "age": 19,
+    "team": "Paris Saint-Germain"
+  },
+  {
+    "name": "L. Balerdi",
+    "overall": 81,
+    "potential": 84,
+    "position": "CB",
+    "age": 26,
+    "team": "Olympique de Marseille"
+  },
+  {
+    "name": "N. Aguerd",
+    "overall": 81,
+    "potential": 82,
+    "position": "CB",
+    "age": 29,
+    "team": "Olympique de Marseille"
+  },
+  {
+    "name": "B. André",
+    "overall": 80,
+    "potential": 80,
+    "position": "CDM, CM",
+    "age": 34,
+    "team": "Lille OSC"
+  },
+  {
+    "name": "Alexsandro",
+    "overall": 80,
+    "potential": 84,
+    "position": "CB",
+    "age": 25,
+    "team": "Lille OSC"
+  },
+  {
+    "name": "M. Niakhaté",
+    "overall": 80,
+    "potential": 80,
+    "position": "CB",
+    "age": 29,
+    "team": "Olympique Lyonnais"
+  },
+  {
+    "name": "L. Hrádecký",
+    "overall": 80,
+    "potential": 80,
+    "position": "GK",
+    "age": 35,
+    "team": "AS Monaco"
+  },
+  {
+    "name": "M. Akliouche",
+    "overall": 80,
+    "potential": 86,
+    "position": "RM, CAM, RW",
+    "age": 23,
+    "team": "AS Monaco"
+  },
+  {
+    "name": "Lee Kang In",
+    "overall": 80,
+    "potential": 85,
+    "position": "RW, CM, RM",
+    "age": 24,
+    "team": "Paris Saint-Germain"
+  },
+  {
+    "name": "Gonçalo Ramos",
+    "overall": 80,
+    "potential": 84,
+    "position": "ST",
+    "age": 24,
+    "team": "Paris Saint-Germain"
+  },
+  {
+    "name": "I. Zabarnyi",
+    "overall": 80,
+    "potential": 85,
+    "position": "CB",
+    "age": 22,
+    "team": "Paris Saint-Germain"
+  },
+  {
+    "name": "B. Samba",
+    "overall": 80,
+    "potential": 80,
+    "position": "GK",
+    "age": 31,
+    "team": "Stade Rennais FC"
+  },
+  {
+    "name": "Q. Timber",
+    "overall": 80,
+    "potential": 85,
+    "position": "CM, CDM, CAM",
+    "age": 24,
+    "team": "Olympique de Marseille"
+  },
+  {
+    "name": "Igor Paixão",
+    "overall": 80,
+    "potential": 83,
+    "position": "LM, LW",
+    "age": 25,
+    "team": "Olympique de Marseille"
+  },
+  {
+    "name": "F. Thauvin",
+    "overall": 79,
+    "potential": 79,
+    "position": "RW, ST, RM",
+    "age": 32,
+    "team": "RC Lens"
+  },
+  {
+    "name": "D. Greif",
+    "overall": 79,
+    "potential": 82,
+    "position": "GK",
+    "age": 28,
+    "team": "Olympique Lyonnais"
+  },
+  {
+    "name": "A. Golovin",
+    "overall": 79,
+    "potential": 79,
+    "position": "LM, CAM, CM, LW",
+    "age": 29,
+    "team": "AS Monaco"
+  },
+  {
+    "name": "J. Clauss",
+    "overall": 79,
+    "potential": 79,
+    "position": "RB, RM",
+    "age": 32,
+    "team": "OGC Nice"
+  },
+  {
+    "name": "M. Safonov",
+    "overall": 79,
+    "potential": 83,
+    "position": "GK",
+    "age": 26,
+    "team": "Paris Saint-Germain"
+  },
+  {
+    "name": "V. Rongier",
+    "overall": 79,
+    "potential": 79,
+    "position": "CDM, CM",
+    "age": 30,
+    "team": "Stade Rennais FC"
+  },
+  {
+    "name": "F. Medina",
+    "overall": 79,
+    "potential": 83,
+    "position": "CB, LB",
+    "age": 26,
+    "team": "Olympique de Marseille"
+  },
+  {
+    "name": "A. Gouiri",
+    "overall": 79,
+    "potential": 84,
+    "position": "ST, CAM",
+    "age": 25,
+    "team": "Olympique de Marseille"
+  },
+  {
+    "name": "K. Trapp",
+    "overall": 79,
+    "potential": 79,
+    "position": "GK",
+    "age": 34,
+    "team": "Paris FC"
+  },
+  {
+    "name": "A. Thomasson",
+    "overall": 78,
+    "potential": 78,
+    "position": "CM, CAM",
+    "age": 31,
+    "team": "RC Lens"
+  },
+  {
+    "name": "O. Giroud",
+    "overall": 78,
+    "potential": 78,
+    "position": "ST",
+    "age": 38,
+    "team": "Lille OSC"
+  },
+  {
+    "name": "B. Özer",
+    "overall": 78,
+    "potential": 82,
+    "position": "GK",
+    "age": 25,
+    "team": "Lille OSC"
+  },
+  {
+    "name": "H. Haraldsson",
+    "overall": 78,
+    "potential": 84,
+    "position": "CAM, LM, CM",
+    "age": 22,
+    "team": "Lille OSC"
+  },
+  {
+    "name": "N. Tagliafico",
+    "overall": 78,
+    "potential": 78,
+    "position": "LB, LM",
+    "age": 32,
+    "team": "Olympique Lyonnais"
+  },
+  {
+    "name": "P. Šulc",
+    "overall": 78,
+    "potential": 81,
+    "position": "CAM, ST, RM",
+    "age": 24,
+    "team": "Olympique Lyonnais"
+  },
+  {
+    "name": "M. Fofana",
+    "overall": 78,
+    "potential": 86,
+    "position": "LM, LW",
+    "age": 20,
+    "team": "Olympique Lyonnais"
+  },
+  {
+    "name": "P. Pogba",
+    "overall": 78,
+    "potential": 78,
+    "position": "CM, CDM, CAM",
+    "age": 32,
+    "team": "AS Monaco"
+  },
+  {
+    "name": "E. Dier",
+    "overall": 78,
+    "potential": 78,
+    "position": "CB",
+    "age": 31,
+    "team": "AS Monaco"
+  },
+  {
+    "name": "T. Kehrer",
+    "overall": 78,
+    "potential": 79,
+    "position": "CB",
+    "age": 28,
+    "team": "AS Monaco"
+  },
+  {
+    "name": "T. Minamino",
+    "overall": 78,
+    "potential": 78,
+    "position": "LM, CAM, LW",
+    "age": 30,
+    "team": "AS Monaco"
+  },
+  {
+    "name": "L. Camara",
+    "overall": 78,
+    "potential": 85,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "AS Monaco"
+  },
+  {
+    "name": "Y. Diouf",
+    "overall": 78,
+    "potential": 83,
+    "position": "GK",
+    "age": 25,
+    "team": "OGC Nice"
+  },
+  {
+    "name": "Lucas Beraldo",
+    "overall": 78,
+    "potential": 83,
+    "position": "CB",
+    "age": 21,
+    "team": "Paris Saint-Germain"
+  },
+  {
+    "name": "M. Camara",
+    "overall": 78,
+    "potential": 79,
+    "position": "CM, CAM",
+    "age": 27,
+    "team": "Stade Rennais FC"
+  },
+  {
+    "name": "E. Emegha",
+    "overall": 78,
+    "potential": 83,
+    "position": "ST",
+    "age": 22,
+    "team": "RC Strasbourg Alsace"
+  },
+  {
+    "name": "G. Kondogbia",
+    "overall": 78,
+    "potential": 78,
+    "position": "CDM, CB",
+    "age": 32,
+    "team": "Olympique de Marseille"
+  },
+  {
+    "name": "G. Restes",
+    "overall": 78,
+    "potential": 85,
+    "position": "GK",
+    "age": 20,
+    "team": "Toulouse FC"
+  },
+  {
+    "name": "P. Lees-Melou",
+    "overall": 78,
+    "potential": 78,
+    "position": "CDM, CM",
+    "age": 32,
+    "team": "Paris FC"
+  },
+  {
+    "name": "J. Gradit",
+    "overall": 77,
+    "potential": 77,
+    "position": "CB",
+    "age": 32,
+    "team": "RC Lens"
+  },
+  {
+    "name": "R. Aguilar",
+    "overall": 77,
+    "potential": 77,
+    "position": "RB, RM",
+    "age": 32,
+    "team": "RC Lens"
+  },
+  {
+    "name": "M. Udol",
+    "overall": 77,
+    "potential": 77,
+    "position": "LB, LM, CB",
+    "age": 29,
+    "team": "RC Lens"
+  },
+  {
+    "name": "M. Sangaré",
+    "overall": 77,
+    "potential": 85,
+    "position": "CM, CDM, CAM",
+    "age": 23,
+    "team": "RC Lens"
+  },
+  {
+    "name": "R. Risser",
+    "overall": 77,
+    "potential": 85,
+    "position": "GK",
+    "age": 20,
+    "team": "RC Lens"
+  },
+  {
+    "name": "A. Mandi",
+    "overall": 77,
+    "potential": 77,
+    "position": "CB, RB, CDM",
+    "age": 33,
+    "team": "Lille OSC"
+  },
+  {
+    "name": "N. Bentaleb",
+    "overall": 77,
+    "potential": 77,
+    "position": "CDM, CM",
+    "age": 30,
+    "team": "Lille OSC"
+  },
+  {
+    "name": "A. Bouaddi",
+    "overall": 77,
+    "potential": 86,
+    "position": "CDM, CM",
+    "age": 17,
+    "team": "Lille OSC"
+  },
+  {
+    "name": "Clinton Mata",
+    "overall": 77,
+    "potential": 77,
+    "position": "CB",
+    "age": 32,
+    "team": "Olympique Lyonnais"
+  },
+  {
+    "name": "A. Maitland-Niles",
+    "overall": 77,
+    "potential": 77,
+    "position": "RB, RM, CDM",
+    "age": 27,
+    "team": "Olympique Lyonnais"
+  },
+  {
+    "name": "T. Morton",
+    "overall": 77,
+    "potential": 83,
+    "position": "CDM, CM",
+    "age": 22,
+    "team": "Olympique Lyonnais"
+  },
+  {
+    "name": "Endrick",
+    "overall": 77,
+    "potential": 88,
+    "position": "ST, RW, RM",
+    "age": 18,
+    "team": "Olympique Lyonnais"
+  },
+  {
+    "name": "Caio Henrique",
+    "overall": 77,
+    "potential": 77,
+    "position": "LB, LM",
+    "age": 27,
+    "team": "AS Monaco"
+  },
+  {
+    "name": "P. Köhn",
+    "overall": 77,
+    "potential": 80,
+    "position": "GK",
+    "age": 27,
+    "team": "AS Monaco"
+  },
+  {
+    "name": "M. Salisu",
+    "overall": 77,
+    "potential": 81,
+    "position": "CB",
+    "age": 26,
+    "team": "AS Monaco"
+  },
+  {
+    "name": "J. Teze",
+    "overall": 77,
+    "potential": 80,
+    "position": "RB, CM, RM",
+    "age": 25,
+    "team": "AS Monaco"
+  },
+  {
+    "name": "F. Balogun",
+    "overall": 77,
+    "potential": 82,
+    "position": "ST, CAM",
+    "age": 23,
+    "team": "AS Monaco"
+  },
+  {
+    "name": "Vanderson",
+    "overall": 77,
+    "potential": 83,
+    "position": "RB, RM, CM",
+    "age": 24,
+    "team": "AS Monaco"
+  },
+  {
+    "name": "M. Biereth",
+    "overall": 77,
+    "potential": 84,
+    "position": "ST",
+    "age": 22,
+    "team": "AS Monaco"
+  },
+  {
+    "name": "A. Lopes",
+    "overall": 77,
+    "potential": 77,
+    "position": "GK",
+    "age": 34,
+    "team": "FC Nantes"
+  },
+  {
+    "name": "C. Vanhoutte",
+    "overall": 77,
+    "potential": 80,
+    "position": "CDM, CM",
+    "age": 26,
+    "team": "OGC Nice"
+  },
+  {
+    "name": "M. Bard",
+    "overall": 77,
+    "potential": 81,
+    "position": "LB, LM, CB",
+    "age": 24,
+    "team": "OGC Nice"
+  },
+  {
+    "name": "B. Embolo",
+    "overall": 77,
+    "potential": 77,
+    "position": "ST",
+    "age": 28,
+    "team": "Stade Rennais FC"
+  },
+  {
+    "name": "S. Szymański",
+    "overall": 77,
+    "potential": 79,
+    "position": "CAM, CM, RW",
+    "age": 26,
+    "team": "Stade Rennais FC"
+  },
+  {
+    "name": "B. Chilwell",
+    "overall": 77,
+    "potential": 77,
+    "position": "LB, LM",
+    "age": 28,
+    "team": "RC Strasbourg Alsace"
+  },
+  {
+    "name": "V. Barco",
+    "overall": 77,
+    "potential": 84,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "RC Strasbourg Alsace"
+  },
+  {
+    "name": "Diego Moreira",
+    "overall": 77,
+    "potential": 83,
+    "position": "RM, LM, LB, RB",
+    "age": 20,
+    "team": "RC Strasbourg Alsace"
+  },
+  {
+    "name": "G. Doué",
+    "overall": 77,
+    "potential": 82,
+    "position": "RB, CB, RM",
+    "age": 22,
+    "team": "RC Strasbourg Alsace"
+  },
+  {
+    "name": "M. Sarr",
+    "overall": 77,
+    "potential": 84,
+    "position": "CB",
+    "age": 19,
+    "team": "RC Strasbourg Alsace"
+  },
+  {
+    "name": "Emerson",
+    "overall": 77,
+    "potential": 77,
+    "position": "LB, LM, LW",
+    "age": 30,
+    "team": "Olympique de Marseille"
+  },
+  {
+    "name": "M. O'Riley",
+    "overall": 77,
+    "potential": 81,
+    "position": "CAM, CM, CDM",
+    "age": 24,
+    "team": "Olympique de Marseille"
+  },
+  {
+    "name": "H. Traoré",
+    "overall": 77,
+    "potential": 80,
+    "position": "LM, CAM, LW",
+    "age": 25,
+    "team": "Olympique de Marseille"
+  },
+  {
+    "name": "T. Weah",
+    "overall": 77,
+    "potential": 78,
+    "position": "RM, RB, LM",
+    "age": 25,
+    "team": "Olympique de Marseille"
+  },
+  {
+    "name": "A. Vermeeren",
+    "overall": 77,
+    "potential": 87,
+    "position": "CM, CDM, CAM",
+    "age": 20,
+    "team": "Olympique de Marseille"
+  },
+  {
+    "name": "B. Chardonnet",
+    "overall": 77,
+    "potential": 77,
+    "position": "CB",
+    "age": 30,
+    "team": "Stade Brestois 29"
+  },
+  {
+    "name": "L. Ajorque",
+    "overall": 77,
+    "potential": 77,
+    "position": "ST",
+    "age": 31,
+    "team": "Stade Brestois 29"
+  },
+  {
+    "name": "H. Abdelli",
+    "overall": 77,
+    "potential": 79,
+    "position": "CAM, CM, CDM",
+    "age": 25,
+    "team": "Angers SCO"
+  },
+  {
+    "name": "M. Simon",
+    "overall": 77,
+    "potential": 77,
+    "position": "LW, LM",
+    "age": 29,
+    "team": "Paris FC"
+  },
+  {
+    "name": "H. Traoré",
+    "overall": 77,
+    "potential": 77,
+    "position": "RB, RM",
+    "age": 33,
+    "team": "Paris FC"
+  },
+  {
+    "name": "I. Kebbal",
+    "overall": 77,
+    "potential": 77,
+    "position": "RW, RM, CAM",
+    "age": 26,
+    "team": "Paris FC"
+  },
+  {
+    "name": "D. Léon",
+    "overall": 76,
+    "potential": 76,
+    "position": "GK",
+    "age": 32,
+    "team": "AJ Auxerre"
+  },
+  {
+    "name": "R. Faivre",
+    "overall": 76,
+    "potential": 76,
+    "position": "RM, RW",
+    "age": 26,
+    "team": "AJ Auxerre"
+  },
+  {
+    "name": "W. Saïd",
+    "overall": 76,
+    "potential": 76,
+    "position": "LW, ST, LM",
+    "age": 30,
+    "team": "RC Lens"
+  },
+  {
+    "name": "M. Sarr",
+    "overall": 76,
+    "potential": 79,
+    "position": "CB",
+    "age": 26,
+    "team": "RC Lens"
+  },
+  {
+    "name": "T. Meunier",
+    "overall": 76,
+    "potential": 76,
+    "position": "RB, RM",
+    "age": 33,
+    "team": "Lille OSC"
+  },
+  {
+    "name": "C. Mbemba",
+    "overall": 76,
+    "potential": 76,
+    "position": "CB",
+    "age": 30,
+    "team": "Lille OSC"
+  },
+  {
+    "name": "R. Perraud",
+    "overall": 76,
+    "potential": 76,
+    "position": "LB, LM",
+    "age": 27,
+    "team": "Lille OSC"
+  },
+  {
+    "name": "O. Sahraoui",
+    "overall": 76,
+    "potential": 81,
+    "position": "LM, CAM, LW",
+    "age": 24,
+    "team": "Lille OSC"
+  },
+  {
+    "name": "Tiago Santos",
+    "overall": 76,
+    "potential": 81,
+    "position": "RB, RM",
+    "age": 22,
+    "team": "Lille OSC"
+  },
+  {
+    "name": "Fernandez-Pardo",
+    "overall": 76,
+    "potential": 84,
+    "position": "LM, RM, LW",
+    "age": 20,
+    "team": "Lille OSC"
+  },
+  {
+    "name": "O. Mangala",
+    "overall": 76,
+    "potential": 78,
+    "position": "CDM, CM",
+    "age": 27,
+    "team": "Olympique Lyonnais"
+  },
+  {
+    "name": "T. Tessmann",
+    "overall": 76,
+    "potential": 82,
+    "position": "CDM, CM",
+    "age": 23,
+    "team": "Olympique Lyonnais"
+  },
+  {
+    "name": "G. Hein",
+    "overall": 76,
+    "potential": 76,
+    "position": "CAM, CM",
+    "age": 28,
+    "team": "FC Metz"
+  },
+  {
+    "name": "M. Abline",
+    "overall": 76,
+    "potential": 82,
+    "position": "ST, LW, RW, LM",
+    "age": 22,
+    "team": "FC Nantes"
+  },
+  {
+    "name": "Dante",
+    "overall": 76,
+    "potential": 76,
+    "position": "CB",
+    "age": 41,
+    "team": "OGC Nice"
+  },
+  {
+    "name": "M. Sanson",
+    "overall": 76,
+    "potential": 76,
+    "position": "CM, CAM",
+    "age": 30,
+    "team": "OGC Nice"
+  },
+  {
+    "name": "S. Diop",
+    "overall": 76,
+    "potential": 78,
+    "position": "LW, LM, CAM",
+    "age": 25,
+    "team": "OGC Nice"
+  },
+  {
+    "name": "H. Boudaoui",
+    "overall": 76,
+    "potential": 79,
+    "position": "CM, CDM",
+    "age": 25,
+    "team": "OGC Nice"
+  },
+  {
+    "name": "Y. Ndayishimiye",
+    "overall": 76,
+    "potential": 78,
+    "position": "CB, CDM, CM",
+    "age": 26,
+    "team": "OGC Nice"
+  },
+  {
+    "name": "M. Bombito",
+    "overall": 76,
+    "potential": 83,
+    "position": "CB",
+    "age": 25,
+    "team": "OGC Nice"
+  },
+  {
+    "name": "S. Mayulu",
+    "overall": 76,
+    "potential": 86,
+    "position": "CM, ST, CDM",
+    "age": 19,
+    "team": "Paris Saint-Germain"
+  },
+  {
+    "name": "E. Lepaul",
+    "overall": 76,
+    "potential": 81,
+    "position": "ST, CAM, CM",
+    "age": 25,
+    "team": "Stade Rennais FC"
+  },
+  {
+    "name": "P. Frankowski",
+    "overall": 76,
+    "potential": 76,
+    "position": "RB, RM",
+    "age": 30,
+    "team": "Stade Rennais FC"
+  },
+  {
+    "name": "S. Fofana",
+    "overall": 76,
+    "potential": 76,
+    "position": "CM, CDM, CAM",
+    "age": 30,
+    "team": "Stade Rennais FC"
+  },
+  {
+    "name": "L. Blas",
+    "overall": 76,
+    "potential": 76,
+    "position": "RM, RW, CAM",
+    "age": 27,
+    "team": "Stade Rennais FC"
+  },
+  {
+    "name": "L. Brassier",
+    "overall": 76,
+    "potential": 80,
+    "position": "CB",
+    "age": 25,
+    "team": "Stade Rennais FC"
+  },
+  {
+    "name": "Q. Merlin",
+    "overall": 76,
+    "potential": 82,
+    "position": "LB, LM",
+    "age": 23,
+    "team": "Stade Rennais FC"
+  },
+  {
+    "name": "J. Jacquet",
+    "overall": 76,
+    "potential": 85,
+    "position": "CB",
+    "age": 19,
+    "team": "Stade Rennais FC"
+  },
+  {
+    "name": "S. Nanasi",
+    "overall": 76,
+    "potential": 83,
+    "position": "CAM, LM, CM",
+    "age": 23,
+    "team": "RC Strasbourg Alsace"
+  },
+  {
+    "name": "I. Doukouré",
+    "overall": 76,
+    "potential": 82,
+    "position": "CB, CDM, CM",
+    "age": 21,
+    "team": "RC Strasbourg Alsace"
+  },
+  {
+    "name": "M. Penders",
+    "overall": 76,
+    "potential": 86,
+    "position": "GK",
+    "age": 19,
+    "team": "RC Strasbourg Alsace"
+  },
+  {
+    "name": "J. Panichelli",
+    "overall": 76,
+    "potential": 85,
+    "position": "ST",
+    "age": 22,
+    "team": "RC Strasbourg Alsace"
+  },
+  {
+    "name": "Y. Mvogo",
+    "overall": 76,
+    "potential": 76,
+    "position": "GK",
+    "age": 31,
+    "team": "FC Lorient"
+  },
+  {
+    "name": "L. Abergel",
+    "overall": 76,
+    "potential": 76,
+    "position": "CDM, CM",
+    "age": 32,
+    "team": "FC Lorient"
+  },
+  {
+    "name": "A. Murillo",
+    "overall": 76,
+    "potential": 76,
+    "position": "RB, CB, RM",
+    "age": 29,
+    "team": "Olympique de Marseille"
+  },
+  {
+    "name": "A. Gomes",
+    "overall": 76,
+    "potential": 81,
+    "position": "CAM, CM, CDM",
+    "age": 24,
+    "team": "Olympique de Marseille"
+  },
+  {
+    "name": "E. Nwaneri",
+    "overall": 76,
+    "potential": 87,
+    "position": "RW, CM, RM",
+    "age": 18,
+    "team": "Olympique de Marseille"
+  },
+  {
+    "name": "K. Lala",
+    "overall": 76,
+    "potential": 76,
+    "position": "RB, RM",
+    "age": 33,
+    "team": "Stade Brestois 29"
+  },
+  {
+    "name": "R. Del Castillo",
+    "overall": 76,
+    "potential": 76,
+    "position": "RM, RW",
+    "age": 29,
+    "team": "Stade Brestois 29"
+  },
+  {
+    "name": "H. Magnetti",
+    "overall": 76,
+    "potential": 78,
+    "position": "CDM, CM",
+    "age": 27,
+    "team": "Stade Brestois 29"
+  },
+  {
+    "name": "H. Koffi",
+    "overall": 76,
+    "potential": 78,
+    "position": "GK",
+    "age": 28,
+    "team": "Angers SCO"
+  },
+  {
+    "name": "R. Nicolaisen",
+    "overall": 76,
+    "potential": 78,
+    "position": "CB",
+    "age": 28,
+    "team": "Toulouse FC"
+  },
+  {
+    "name": "C. Cresswell",
+    "overall": 76,
+    "potential": 82,
+    "position": "CB",
+    "age": 22,
+    "team": "Toulouse FC"
+  },
+  {
+    "name": "M. Lopez",
+    "overall": 76,
+    "potential": 76,
+    "position": "CM, CDM",
+    "age": 27,
+    "team": "Paris FC"
+  },
+  {
+    "name": "L. Sinayoko",
+    "overall": 75,
+    "potential": 78,
+    "position": "ST, RM, CAM",
+    "age": 25,
+    "team": "AJ Auxerre"
+  },
+  {
+    "name": "K. Danois",
+    "overall": 75,
+    "potential": 83,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "AJ Auxerre"
+  },
+  {
+    "name": "O. Edouard",
+    "overall": 75,
+    "potential": 75,
+    "position": "ST",
+    "age": 27,
+    "team": "RC Lens"
+  },
+  {
+    "name": "A. Haidara",
+    "overall": 75,
+    "potential": 75,
+    "position": "CM, CDM",
+    "age": 27,
+    "team": "RC Lens"
+  },
+  {
+    "name": "S. Abdulhamid",
+    "overall": 75,
+    "potential": 77,
+    "position": "RB, RM",
+    "age": 25,
+    "team": "RC Lens"
+  },
+  {
+    "name": "S. Baidoo",
+    "overall": 75,
+    "potential": 83,
+    "position": "CB",
+    "age": 21,
+    "team": "RC Lens"
+  },
+  {
+    "name": "H. Igamane",
+    "overall": 75,
+    "potential": 83,
+    "position": "ST, CAM",
+    "age": 22,
+    "team": "Lille OSC"
+  },
+  {
+    "name": "André Gomes",
+    "overall": 75,
+    "potential": 75,
+    "position": "CDM, CM",
+    "age": 31,
+    "team": "Lille OSC"
+  },
+  {
+    "name": "Félix Correia",
+    "overall": 75,
+    "potential": 78,
+    "position": "LM, RM, LW",
+    "age": 24,
+    "team": "Lille OSC"
+  },
+  {
+    "name": "R. Descamps",
+    "overall": 75,
+    "potential": 76,
+    "position": "GK",
+    "age": 29,
+    "team": "Olympique Lyonnais"
+  },
+  {
+    "name": "E. Nuamah",
+    "overall": 75,
+    "potential": 82,
+    "position": "RM, RW",
+    "age": 21,
+    "team": "Olympique Lyonnais"
+  },
+  {
+    "name": "Ansu Fati",
+    "overall": 75,
+    "potential": 82,
+    "position": "LM, LW, ST",
+    "age": 22,
+    "team": "AS Monaco"
+  },
+  {
+    "name": "C. Mawissa",
+    "overall": 75,
+    "potential": 84,
+    "position": "CB, LB",
+    "age": 20,
+    "team": "AS Monaco"
+  },
+  {
+    "name": "R. Cabella",
+    "overall": 75,
+    "potential": 75,
+    "position": "LM, CAM, LW",
+    "age": 35,
+    "team": "FC Nantes"
+  },
+  {
+    "name": "D. Machado",
+    "overall": 75,
+    "potential": 75,
+    "position": "LB, LM",
+    "age": 31,
+    "team": "FC Nantes"
+  },
+  {
+    "name": "I. Sissoko",
+    "overall": 75,
+    "potential": 76,
+    "position": "CDM, CM",
+    "age": 27,
+    "team": "FC Nantes"
+  },
+  {
+    "name": "J. Boga",
+    "overall": 75,
+    "potential": 75,
+    "position": "LW, ST, LM",
+    "age": 28,
+    "team": "OGC Nice"
+  },
+  {
+    "name": "A. Abdi",
+    "overall": 75,
+    "potential": 75,
+    "position": "LB, LM",
+    "age": 31,
+    "team": "OGC Nice"
+  },
+  {
+    "name": "M. Cho",
+    "overall": 75,
+    "potential": 82,
+    "position": "RW, LW, ST, RM",
+    "age": 21,
+    "team": "OGC Nice"
+  },
+  {
+    "name": "A. Rouault",
+    "overall": 75,
+    "potential": 80,
+    "position": "CB",
+    "age": 24,
+    "team": "Stade Rennais FC"
+  },
+  {
+    "name": "M. Al Tamari",
+    "overall": 75,
+    "potential": 75,
+    "position": "LM, ST, LB, LW",
+    "age": 28,
+    "team": "Stade Rennais FC"
+  },
+  {
+    "name": "J. Enciso",
+    "overall": 75,
+    "potential": 84,
+    "position": "CAM, ST",
+    "age": 21,
+    "team": "RC Strasbourg Alsace"
+  },
+  {
+    "name": "C. Egan-Riley",
+    "overall": 75,
+    "potential": 82,
+    "position": "CB",
+    "age": 22,
+    "team": "Olympique de Marseille"
+  },
+  {
+    "name": "R. Majecki",
+    "overall": 75,
+    "potential": 78,
+    "position": "GK",
+    "age": 25,
+    "team": "Stade Brestois 29"
+  },
+  {
+    "name": "B. Locko",
+    "overall": 75,
+    "potential": 80,
+    "position": "LB, LM",
+    "age": 23,
+    "team": "Stade Brestois 29"
+  },
+  {
+    "name": "K. Doumbia",
+    "overall": 75,
+    "potential": 81,
+    "position": "CAM, CM",
+    "age": 22,
+    "team": "Stade Brestois 29"
+  },
+  {
+    "name": "A. Touré",
+    "overall": 75,
+    "potential": 75,
+    "position": "CDM, CM",
+    "age": 31,
+    "team": "Le Havre AC"
+  },
+  {
+    "name": "D. Sidibé",
+    "overall": 75,
+    "potential": 75,
+    "position": "RB, RM, CB",
+    "age": 32,
+    "team": "Toulouse FC"
+  },
+  {
+    "name": "A. Dønnum",
+    "overall": 75,
+    "potential": 75,
+    "position": "RM, LM, RW",
+    "age": 27,
+    "team": "Toulouse FC"
+  },
+  {
+    "name": "Y. Gboho",
+    "overall": 75,
+    "potential": 78,
+    "position": "LW, RW, CAM, LM",
+    "age": 24,
+    "team": "Toulouse FC"
+  },
+  {
+    "name": "J. Ikoné",
+    "overall": 75,
+    "potential": 75,
+    "position": "RW, RM",
+    "age": 27,
+    "team": "Paris FC"
+  },
+  {
+    "name": "G. Mensah",
+    "overall": 74,
+    "potential": 75,
+    "position": "LB, LM",
+    "age": 26,
+    "team": "AJ Auxerre"
+  },
+  {
+    "name": "C. Akpa",
+    "overall": 74,
+    "potential": 80,
+    "position": "CB",
+    "age": 23,
+    "team": "AJ Auxerre"
+  },
+  {
+    "name": "F. Sotoca",
+    "overall": 74,
+    "potential": 74,
+    "position": "ST, RW, CAM",
+    "age": 34,
+    "team": "RC Lens"
+  },
+  {
+    "name": "A. Sima",
+    "overall": 74,
+    "potential": 79,
+    "position": "LW, LM",
+    "age": 24,
+    "team": "RC Lens"
+  },
+  {
+    "name": "N. Mukau",
+    "overall": 74,
+    "potential": 82,
+    "position": "CDM, CM, CAM",
+    "age": 20,
+    "team": "Lille OSC"
+  },
+  {
+    "name": "H. Hateboer",
+    "overall": 74,
+    "potential": 74,
+    "position": "CB, RB, RM",
+    "age": 31,
+    "team": "Olympique Lyonnais"
+  },
+  {
+    "name": "Abner Vinícius",
+    "overall": 74,
+    "potential": 77,
+    "position": "LB, LM",
+    "age": 25,
+    "team": "Olympique Lyonnais"
+  },
+  {
+    "name": "Afonso Moreira",
+    "overall": 74,
+    "potential": 83,
+    "position": "LM, LW",
+    "age": 20,
+    "team": "Olympique Lyonnais"
+  },
+  {
+    "name": "K. Diatta",
+    "overall": 74,
+    "potential": 75,
+    "position": "RM, RW",
+    "age": 26,
+    "team": "AS Monaco"
+  },
+  {
+    "name": "F. Coquelin",
+    "overall": 74,
+    "potential": 74,
+    "position": "CM, CDM",
+    "age": 34,
+    "team": "FC Nantes"
+  },
+  {
+    "name": "M. Dupé",
+    "overall": 74,
+    "potential": 74,
+    "position": "GK",
+    "age": 32,
+    "team": "OGC Nice"
+  },
+  {
+    "name": "T. Moffi",
+    "overall": 74,
+    "potential": 77,
+    "position": "ST, RW, RM",
+    "age": 26,
+    "team": "OGC Nice"
+  },
+  {
+    "name": "E. Wahi",
+    "overall": 74,
+    "potential": 81,
+    "position": "ST",
+    "age": 22,
+    "team": "OGC Nice"
+  },
+  {
+    "name": "I. Mbaye",
+    "overall": 74,
+    "potential": 85,
+    "position": "RW, LW, RM",
+    "age": 17,
+    "team": "Paris Saint-Germain"
+  },
+  {
+    "name": "A. Seidu",
+    "overall": 74,
+    "potential": 79,
+    "position": "CB, RB",
+    "age": 25,
+    "team": "Stade Rennais FC"
+  },
+  {
+    "name": "M. Talbi",
+    "overall": 74,
+    "potential": 76,
+    "position": "CB",
+    "age": 27,
+    "team": "FC Lorient"
+  },
+  {
+    "name": "B. Meïté",
+    "overall": 74,
+    "potential": 79,
+    "position": "CB",
+    "age": 23,
+    "team": "FC Lorient"
+  },
+  {
+    "name": "N. Maupay",
+    "overall": 74,
+    "potential": 74,
+    "position": "ST",
+    "age": 28,
+    "team": "Olympique de Marseille"
+  },
+  {
+    "name": "U. Garcia",
+    "overall": 74,
+    "potential": 74,
+    "position": "LB, CB, LM",
+    "age": 29,
+    "team": "Olympique de Marseille"
+  },
+  {
+    "name": "J. de Lange",
+    "overall": 74,
+    "potential": 77,
+    "position": "GK",
+    "age": 27,
+    "team": "Olympique de Marseille"
+  },
+  {
+    "name": "L. Tousart",
+    "overall": 74,
+    "potential": 74,
+    "position": "CDM, CM",
+    "age": 28,
+    "team": "Stade Brestois 29"
+  },
+  {
+    "name": "J. Chotard",
+    "overall": 74,
+    "potential": 78,
+    "position": "CDM, CM",
+    "age": 23,
+    "team": "Stade Brestois 29"
+  },
+  {
+    "name": "J. Le Cardinal",
+    "overall": 74,
+    "potential": 76,
+    "position": "CB",
+    "age": 27,
+    "team": "Stade Brestois 29"
+  },
+  {
+    "name": "H. Belkebla",
+    "overall": 74,
+    "potential": 74,
+    "position": "CDM, CM",
+    "age": 31,
+    "team": "Angers SCO"
+  },
+  {
+    "name": "J. Lefort",
+    "overall": 74,
+    "potential": 74,
+    "position": "CB",
+    "age": 31,
+    "team": "Angers SCO"
+  },
+  {
+    "name": "S. Boufal",
+    "overall": 74,
+    "potential": 74,
+    "position": "CAM, LM, ST, CM",
+    "age": 31,
+    "team": "Le Havre AC"
+  },
+  {
+    "name": "G. Lloris",
+    "overall": 74,
+    "potential": 74,
+    "position": "CB",
+    "age": 29,
+    "team": "Le Havre AC"
+  },
+  {
+    "name": "A. Sangante",
+    "overall": 74,
+    "potential": 80,
+    "position": "CB, RB, CDM",
+    "age": 23,
+    "team": "Le Havre AC"
+  },
+  {
+    "name": "M. McKenzie",
+    "overall": 74,
+    "potential": 79,
+    "position": "CB",
+    "age": 26,
+    "team": "Toulouse FC"
+  },
+  {
+    "name": "C. Cásseres Jr",
+    "overall": 74,
+    "potential": 79,
+    "position": "CDM, CM",
+    "age": 25,
+    "team": "Toulouse FC"
+  },
+  {
+    "name": "M. Munetsi",
+    "overall": 74,
+    "potential": 74,
+    "position": "CM, CAM, CDM",
+    "age": 29,
+    "team": "Paris FC"
+  },
+  {
+    "name": "O. Nkambadio",
+    "overall": 74,
+    "potential": 82,
+    "position": "GK",
+    "age": 22,
+    "team": "Paris FC"
+  },
+  {
+    "name": "Otávio",
+    "overall": 74,
+    "potential": 79,
+    "position": "CB",
+    "age": 23,
+    "team": "Paris FC"
+  },
+  {
+    "name": "E. Owusu",
+    "overall": 73,
+    "potential": 74,
+    "position": "CDM, CM",
+    "age": 27,
+    "team": "AJ Auxerre"
+  },
+  {
+    "name": "D. Namaso",
+    "overall": 73,
+    "potential": 76,
+    "position": "LM, ST, CAM, LW",
+    "age": 24,
+    "team": "AJ Auxerre"
+  },
+  {
+    "name": "S. Diomandé",
+    "overall": 73,
+    "potential": 77,
+    "position": "CB",
+    "age": 24,
+    "team": "AJ Auxerre"
+  },
+  {
+    "name": "M. Guilavogui",
+    "overall": 73,
+    "potential": 73,
+    "position": "LW, ST, RW, LM",
+    "age": 27,
+    "team": "RC Lens"
+  },
+  {
+    "name": "C. Verdonk",
+    "overall": 73,
+    "potential": 73,
+    "position": "LB, CB",
+    "age": 28,
+    "team": "Lille OSC"
+  },
+  {
+    "name": "A. Bodart",
+    "overall": 73,
+    "potential": 76,
+    "position": "GK",
+    "age": 27,
+    "team": "Lille OSC"
+  },
+  {
+    "name": "N. Ngoy",
+    "overall": 73,
+    "potential": 82,
+    "position": "CB",
+    "age": 22,
+    "team": "Lille OSC"
+  },
+  {
+    "name": "A. Karabec",
+    "overall": 73,
+    "potential": 79,
+    "position": "RM, CAM, RW",
+    "age": 21,
+    "team": "Olympique Lyonnais"
+  },
+  {
+    "name": "W. Faes",
+    "overall": 73,
+    "potential": 74,
+    "position": "CB",
+    "age": 27,
+    "team": "AS Monaco"
+  },
+  {
+    "name": "G. Ilenikhena",
+    "overall": 73,
+    "potential": 82,
+    "position": "ST",
+    "age": 18,
+    "team": "AS Monaco"
+  },
+  {
+    "name": "Y. El Arabi",
+    "overall": 73,
+    "potential": 73,
+    "position": "ST",
+    "age": 38,
+    "team": "FC Nantes"
+  },
+  {
+    "name": "K. Amian",
+    "overall": 73,
+    "potential": 73,
+    "position": "RB, CB, RM",
+    "age": 27,
+    "team": "FC Nantes"
+  },
+  {
+    "name": "J. Lepenant",
+    "overall": 73,
+    "potential": 80,
+    "position": "CM, CAM, CDM",
+    "age": 22,
+    "team": "FC Nantes"
+  },
+  {
+    "name": "A. Bah",
+    "overall": 73,
+    "potential": 81,
+    "position": "CB",
+    "age": 19,
+    "team": "OGC Nice"
+  },
+  {
+    "name": "T. Ndombele",
+    "overall": 73,
+    "potential": 73,
+    "position": "CM, CDM",
+    "age": 28,
+    "team": "OGC Nice"
+  },
+  {
+    "name": "Tiago Gouveia",
+    "overall": 73,
+    "potential": 79,
+    "position": "RW, LW, LM, RM",
+    "age": 24,
+    "team": "OGC Nice"
+  },
+  {
+    "name": "M. Abdelmonem",
+    "overall": 73,
+    "potential": 76,
+    "position": "CB",
+    "age": 26,
+    "team": "OGC Nice"
+  },
+  {
+    "name": "D. Cissé",
+    "overall": 73,
+    "potential": 83,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "Stade Rennais FC"
+  },
+  {
+    "name": "G. Kamara",
+    "overall": 73,
+    "potential": 73,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Stade Rennais FC"
+  },
+  {
+    "name": "A. Omobamidele",
+    "overall": 73,
+    "potential": 78,
+    "position": "CB",
+    "age": 23,
+    "team": "RC Strasbourg Alsace"
+  },
+  {
+    "name": "K. Páez",
+    "overall": 73,
+    "potential": 84,
+    "position": "CAM, RM, CM",
+    "age": 18,
+    "team": "RC Strasbourg Alsace"
+  },
+  {
+    "name": "B. Nadir",
+    "overall": 73,
+    "potential": 80,
+    "position": "CM, CAM, CDM",
+    "age": 21,
+    "team": "Olympique de Marseille"
+  },
+  {
+    "name": "Mama Baldé",
+    "overall": 73,
+    "potential": 73,
+    "position": "LW, ST, LM",
+    "age": 29,
+    "team": "Stade Brestois 29"
+  },
+  {
+    "name": "O. Camara",
+    "overall": 73,
+    "potential": 80,
+    "position": "CB",
+    "age": 22,
+    "team": "Angers SCO"
+  },
+  {
+    "name": "I. Soumaré",
+    "overall": 73,
+    "potential": 76,
+    "position": "LM, ST, LW",
+    "age": 24,
+    "team": "Le Havre AC"
+  },
+  {
+    "name": "Y. Kechta",
+    "overall": 73,
+    "potential": 80,
+    "position": "CM, CAM, CDM",
+    "age": 23,
+    "team": "Le Havre AC"
+  },
+  {
+    "name": "J. Krasso",
+    "overall": 73,
+    "potential": 73,
+    "position": "ST, CAM",
+    "age": 27,
+    "team": "Paris FC"
+  },
+  {
+    "name": "E. Mbappé",
+    "overall": 72,
+    "potential": 82,
+    "position": "RM, CM, RW",
+    "age": 18,
+    "team": "Lille OSC"
+  },
+  {
+    "name": "R. Ghezzal",
+    "overall": 72,
+    "potential": 72,
+    "position": "RM, RW",
+    "age": 33,
+    "team": "Olympique Lyonnais"
+  },
+  {
+    "name": "B. Stambouli",
+    "overall": 72,
+    "potential": 72,
+    "position": "CDM, CM",
+    "age": 34,
+    "team": "FC Metz"
+  },
+  {
+    "name": "H. Diallo",
+    "overall": 72,
+    "potential": 72,
+    "position": "ST",
+    "age": 30,
+    "team": "FC Metz"
+  },
+  {
+    "name": "F. Ballo-Touré",
+    "overall": 72,
+    "potential": 72,
+    "position": "LB, LM",
+    "age": 28,
+    "team": "FC Metz"
+  },
+  {
+    "name": "J. Deminguet",
+    "overall": 72,
+    "potential": 72,
+    "position": "CM, CDM",
+    "age": 27,
+    "team": "FC Metz"
+  },
+  {
+    "name": "C. Sabaly",
+    "overall": 72,
+    "potential": 75,
+    "position": "ST, LM, RM, CAM",
+    "age": 26,
+    "team": "FC Metz"
+  },
+  {
+    "name": "G. Tsitaishvili",
+    "overall": 72,
+    "potential": 75,
+    "position": "RM, LM, RW",
+    "age": 24,
+    "team": "FC Metz"
+  },
+  {
+    "name": "K. Ouattara",
+    "overall": 72,
+    "potential": 80,
+    "position": "LB, LM",
+    "age": 20,
+    "team": "AS Monaco"
+  },
+  {
+    "name": "M. Mohamed",
+    "overall": 72,
+    "potential": 72,
+    "position": "ST",
+    "age": 27,
+    "team": "FC Nantes"
+  },
+  {
+    "name": "J. Mwanga",
+    "overall": 72,
+    "potential": 78,
+    "position": "CDM, CM",
+    "age": 22,
+    "team": "FC Nantes"
+  },
+  {
+    "name": "S. Abdul Samed",
+    "overall": 72,
+    "potential": 74,
+    "position": "CDM, CM",
+    "age": 25,
+    "team": "OGC Nice"
+  },
+  {
+    "name": "A. Mendy",
+    "overall": 72,
+    "potential": 81,
+    "position": "CB, RB, RM",
+    "age": 21,
+    "team": "OGC Nice"
+  },
+  {
+    "name": "T. Louchet",
+    "overall": 72,
+    "potential": 81,
+    "position": "RM, CM, RW",
+    "age": 22,
+    "team": "OGC Nice"
+  },
+  {
+    "name": "M. Amougou",
+    "overall": 72,
+    "potential": 82,
+    "position": "CM, CDM",
+    "age": 19,
+    "team": "RC Strasbourg Alsace"
+  },
+  {
+    "name": "L. Høgsberg",
+    "overall": 72,
+    "potential": 82,
+    "position": "CB",
+    "age": 19,
+    "team": "RC Strasbourg Alsace"
+  },
+  {
+    "name": "A. Avom Ebong",
+    "overall": 72,
+    "potential": 81,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "FC Lorient"
+  },
+  {
+    "name": "A. Kouassi",
+    "overall": 72,
+    "potential": 81,
+    "position": "LB, LM",
+    "age": 20,
+    "team": "FC Lorient"
+  },
+  {
+    "name": "S. El Mourabet",
+    "overall": 72,
+    "potential": 82,
+    "position": "CM, CDM",
+    "age": 19,
+    "team": "RC Strasbourg Alsace"
+  },
+  {
+    "name": "A. Tosin",
+    "overall": 72,
+    "potential": 73,
+    "position": "ST, CAM",
+    "age": 27,
+    "team": "FC Lorient"
+  },
+  {
+    "name": "S. Soumano",
+    "overall": 72,
+    "potential": 77,
+    "position": "ST",
+    "age": 24,
+    "team": "FC Lorient"
+  },
+  {
+    "name": "J. Dina Ebimbe",
+    "overall": 72,
+    "potential": 75,
+    "position": "RM, RW",
+    "age": 24,
+    "team": "Stade Brestois 29"
+  },
+  {
+    "name": "S. Coulibaly",
+    "overall": 72,
+    "potential": 80,
+    "position": "CB",
+    "age": 21,
+    "team": "Stade Brestois 29"
+  },
+  {
+    "name": "R. Labeau Lascary",
+    "overall": 72,
+    "potential": 79,
+    "position": "ST, RM, RW",
+    "age": 22,
+    "team": "Stade Brestois 29"
+  },
+  {
+    "name": "C. Arcus",
+    "overall": 72,
+    "potential": 72,
+    "position": "RB, RM",
+    "age": 29,
+    "team": "Angers SCO"
+  },
+  {
+    "name": "B. van den Boomen",
+    "overall": 72,
+    "potential": 72,
+    "position": "CM, CDM, CAM",
+    "age": 29,
+    "team": "Angers SCO"
+  },
+  {
+    "name": "L. Mouton",
+    "overall": 72,
+    "potential": 79,
+    "position": "CAM, CM",
+    "age": 23,
+    "team": "Angers SCO"
+  },
+  {
+    "name": "Y. Belkhdim",
+    "overall": 72,
+    "potential": 80,
+    "position": "CM, CDM, RM",
+    "age": 23,
+    "team": "Angers SCO"
+  },
+  {
+    "name": "J. Ekomié",
+    "overall": 72,
+    "potential": 79,
+    "position": "LB, LM",
+    "age": 21,
+    "team": "Angers SCO"
+  },
+  {
+    "name": "M. Diaw",
+    "overall": 72,
+    "potential": 72,
+    "position": "GK",
+    "age": 32,
+    "team": "Le Havre AC"
+  },
+  {
+    "name": "A. Seko",
+    "overall": 72,
+    "potential": 77,
+    "position": "CDM, CB, CM",
+    "age": 25,
+    "team": "Le Havre AC"
+  },
+  {
+    "name": "W. Kamanzi",
+    "overall": 72,
+    "potential": 77,
+    "position": "RB, RM, CM",
+    "age": 24,
+    "team": "Toulouse FC"
+  },
+  {
+    "name": "F. Magri",
+    "overall": 72,
+    "potential": 75,
+    "position": "ST, LW, RW",
+    "age": 25,
+    "team": "Toulouse FC"
+  },
+  {
+    "name": "M. Cafaro",
+    "overall": 72,
+    "potential": 72,
+    "position": "LW, RW, LM",
+    "age": 28,
+    "team": "Paris FC"
+  },
+  {
+    "name": "W. Geubbels",
+    "overall": 72,
+    "potential": 77,
+    "position": "ST",
+    "age": 23,
+    "team": "Paris FC"
+  },
+  {
+    "name": "M. Mbow",
+    "overall": 72,
+    "potential": 76,
+    "position": "CB",
+    "age": 25,
+    "team": "Paris FC"
+  },
+  {
+    "name": "L. Koleosho",
+    "overall": 72,
+    "potential": 79,
+    "position": "RW, LW, RM",
+    "age": 20,
+    "team": "Paris FC"
+  },
+  {
+    "name": "J. Casimir",
+    "overall": 71,
+    "potential": 76,
+    "position": "RM, ST, RW",
+    "age": 23,
+    "team": "AJ Auxerre"
+  },
+  {
+    "name": "J. Chávez",
+    "overall": 71,
+    "potential": 77,
+    "position": "LB, LM",
+    "age": 23,
+    "team": "RC Lens"
+  },
+  {
+    "name": "J. Fischer",
+    "overall": 71,
+    "potential": 77,
+    "position": "GK",
+    "age": 23,
+    "team": "FC Metz"
+  },
+  {
+    "name": "J. Gbamin",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB, CDM, CM",
+    "age": 29,
+    "team": "FC Metz"
+  },
+  {
+    "name": "K. Kouao",
+    "overall": 71,
+    "potential": 72,
+    "position": "RB, RM",
+    "age": 27,
+    "team": "FC Metz"
+  },
+  {
+    "name": "B. Traoré",
+    "overall": 71,
+    "potential": 76,
+    "position": "CDM, CM, CB",
+    "age": 23,
+    "team": "FC Metz"
+  },
+  {
+    "name": "L. Leroux",
+    "overall": 71,
+    "potential": 83,
+    "position": "CM, LB, CDM",
+    "age": 19,
+    "team": "FC Nantes"
+  },
+  {
+    "name": "B. Guirassy",
+    "overall": 71,
+    "potential": 82,
+    "position": "LW, RW, LM",
+    "age": 18,
+    "team": "FC Nantes"
+  },
+  {
+    "name": "P. Carlgren",
+    "overall": 71,
+    "potential": 71,
+    "position": "GK",
+    "age": 33,
+    "team": "FC Nantes"
+  },
+  {
+    "name": "C. Awaziem",
+    "overall": 71,
+    "potential": 72,
+    "position": "CB",
+    "age": 28,
+    "team": "FC Nantes"
+  },
+  {
+    "name": "I. Ganago",
+    "overall": 71,
+    "potential": 73,
+    "position": "ST",
+    "age": 26,
+    "team": "FC Nantes"
+  },
+  {
+    "name": "Kevin Carlos",
+    "overall": 71,
+    "potential": 76,
+    "position": "ST",
+    "age": 24,
+    "team": "OGC Nice"
+  },
+  {
+    "name": "I. Jansson",
+    "overall": 71,
+    "potential": 76,
+    "position": "LW, ST, CAM, LM",
+    "age": 23,
+    "team": "OGC Nice"
+  },
+  {
+    "name": "M. Meïté",
+    "overall": 71,
+    "potential": 83,
+    "position": "ST",
+    "age": 17,
+    "team": "Stade Rennais FC"
+  },
+  {
+    "name": "A. Ouattara",
+    "overall": 71,
+    "potential": 80,
+    "position": "RM, CM, RW",
+    "age": 19,
+    "team": "RC Strasbourg Alsace"
+  },
+  {
+    "name": "S. Sow",
+    "overall": 71,
+    "potential": 76,
+    "position": "CB",
+    "age": 22,
+    "team": "RC Strasbourg Alsace"
+  },
+  {
+    "name": "A. Sylla",
+    "overall": 71,
+    "potential": 79,
+    "position": "CB",
+    "age": 22,
+    "team": "RC Strasbourg Alsace"
+  },
+  {
+    "name": "J. Makengo",
+    "overall": 71,
+    "potential": 72,
+    "position": "CM, CAM, CDM",
+    "age": 27,
+    "team": "FC Lorient"
+  },
+  {
+    "name": "D. Yongwa",
+    "overall": 71,
+    "potential": 75,
+    "position": "LB, CB, LM",
+    "age": 24,
+    "team": "FC Lorient"
+  },
+  {
+    "name": "I. Touré",
+    "overall": 71,
+    "potential": 79,
+    "position": "CB",
+    "age": 22,
+    "team": "FC Lorient"
+  },
+  {
+    "name": "B. Dieng",
+    "overall": 71,
+    "potential": 75,
+    "position": "ST",
+    "age": 25,
+    "team": "FC Lorient"
+  },
+  {
+    "name": "J. Mvuka",
+    "overall": 71,
+    "potential": 78,
+    "position": "RM, RW",
+    "age": 22,
+    "team": "FC Lorient"
+  },
+  {
+    "name": "T. Le Bris",
+    "overall": 71,
+    "potential": 80,
+    "position": "RM, LM, RB",
+    "age": 22,
+    "team": "FC Lorient"
+  },
+  {
+    "name": "J. Diaz",
+    "overall": 71,
+    "potential": 79,
+    "position": "CB",
+    "age": 21,
+    "team": "Stade Brestois 29"
+  },
+  {
+    "name": "F. Hanin",
+    "overall": 71,
+    "potential": 71,
+    "position": "LB",
+    "age": 35,
+    "team": "Angers SCO"
+  },
+  {
+    "name": "J. Allevinah",
+    "overall": 71,
+    "potential": 71,
+    "position": "RM, LM, RW",
+    "age": 30,
+    "team": "Angers SCO"
+  },
+  {
+    "name": "L. Négo",
+    "overall": 71,
+    "potential": 71,
+    "position": "RB, RM",
+    "age": 34,
+    "team": "Le Havre AC"
+  },
+  {
+    "name": "A. Samatta",
+    "overall": 71,
+    "potential": 71,
+    "position": "ST",
+    "age": 32,
+    "team": "Le Havre AC"
+  },
+  {
+    "name": "R. Khadra",
+    "overall": 71,
+    "potential": 77,
+    "position": "CAM, LM, ST, CM",
+    "age": 23,
+    "team": "Le Havre AC"
+  },
+  {
+    "name": "É. Youté Kinkoué",
+    "overall": 71,
+    "potential": 77,
+    "position": "CB",
+    "age": 23,
+    "team": "Le Havre AC"
+  },
+  {
+    "name": "Emersonn",
+    "overall": 71,
+    "potential": 81,
+    "position": "ST, LW, LM",
+    "age": 20,
+    "team": "Toulouse FC"
+  },
+  {
+    "name": "T. De Smet",
+    "overall": 71,
+    "potential": 71,
+    "position": "LB",
+    "age": 27,
+    "team": "Paris FC"
+  },
+  {
+    "name": "A. Camara",
+    "overall": 71,
+    "potential": 71,
+    "position": "CM, CDM",
+    "age": 28,
+    "team": "Paris FC"
+  },
+  {
+    "name": "F. Sierralta",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB",
+    "age": 28,
+    "team": "AJ Auxerre"
+  },
+  {
+    "name": "S. Mara",
+    "overall": 70,
+    "potential": 77,
+    "position": "ST",
+    "age": 22,
+    "team": "AJ Auxerre"
+  },
+  {
+    "name": "M. Senaya",
+    "overall": 70,
+    "potential": 75,
+    "position": "RB, CB",
+    "age": 24,
+    "team": "AJ Auxerre"
+  },
+  {
+    "name": "I. Ganiou",
+    "overall": 70,
+    "potential": 82,
+    "position": "CB, RB, RM",
+    "age": 20,
+    "team": "RC Lens"
+  },
+  {
+    "name": "R. Fofana",
+    "overall": 70,
+    "potential": 80,
+    "position": "ST",
+    "age": 19,
+    "team": "RC Lens"
+  },
+  {
+    "name": "M. Gorgelin",
+    "overall": 70,
+    "potential": 70,
+    "position": "GK",
+    "age": 34,
+    "team": "RC Lens"
+  },
+  {
+    "name": "K. Merah",
+    "overall": 70,
+    "potential": 80,
+    "position": "CAM, CM",
+    "age": 18,
+    "team": "Olympique Lyonnais"
+  },
+  {
+    "name": "R. Kluivert",
+    "overall": 70,
+    "potential": 77,
+    "position": "CB",
+    "age": 24,
+    "team": "Olympique Lyonnais"
+  },
+  {
+    "name": "T. Yegbe",
+    "overall": 70,
+    "potential": 77,
+    "position": "CB",
+    "age": 24,
+    "team": "FC Metz"
+  },
+  {
+    "name": "M. Colin",
+    "overall": 70,
+    "potential": 70,
+    "position": "RB, LB, RM",
+    "age": 33,
+    "team": "FC Metz"
+  },
+  {
+    "name": "S. Sané",
+    "overall": 70,
+    "potential": 81,
+    "position": "CB",
+    "age": 21,
+    "team": "FC Metz"
+  },
+  {
+    "name": "N. Cozza",
+    "overall": 70,
+    "potential": 71,
+    "position": "LB, LM",
+    "age": 26,
+    "team": "FC Nantes"
+  },
+  {
+    "name": "K. Oppong",
+    "overall": 70,
+    "potential": 79,
+    "position": "CB",
+    "age": 21,
+    "team": "OGC Nice"
+  },
+  {
+    "name": "A. Ait Boudlal",
+    "overall": 70,
+    "potential": 82,
+    "position": "CB",
+    "age": 19,
+    "team": "Stade Rennais FC"
+  },
+  {
+    "name": "R. Nzingoula",
+    "overall": 70,
+    "potential": 78,
+    "position": "CDM, CM",
+    "age": 19,
+    "team": "RC Strasbourg Alsace"
+  },
+  {
+    "name": "M. Godo",
+    "overall": 70,
+    "potential": 80,
+    "position": "LM, RM, LW",
+    "age": 22,
+    "team": "RC Strasbourg Alsace"
+  },
+  {
+    "name": "S. Amo-Ameyaw",
+    "overall": 70,
+    "potential": 80,
+    "position": "CAM, RM, CM",
+    "age": 18,
+    "team": "RC Strasbourg Alsace"
+  },
+  {
+    "name": "B. Kamara",
+    "overall": 70,
+    "potential": 71,
+    "position": "GK",
+    "age": 28,
+    "team": "FC Lorient"
+  },
+  {
+    "name": "Igor Silva",
+    "overall": 70,
+    "potential": 70,
+    "position": "RB, CB, RM",
+    "age": 28,
+    "team": "FC Lorient"
+  },
+  {
+    "name": "P. Pagis",
+    "overall": 70,
+    "potential": 79,
+    "position": "CAM, LM, ST",
+    "age": 22,
+    "team": "FC Lorient"
+  },
+  {
+    "name": "P. Katseris",
+    "overall": 70,
+    "potential": 75,
+    "position": "RM, RB",
+    "age": 23,
+    "team": "FC Lorient"
+  },
+  {
+    "name": "N. Cadiou",
+    "overall": 70,
+    "potential": 73,
+    "position": "CDM, CM",
+    "age": 26,
+    "team": "FC Lorient"
+  },
+  {
+    "name": "M. Bamba",
+    "overall": 70,
+    "potential": 75,
+    "position": "ST",
+    "age": 23,
+    "team": "FC Lorient"
+  },
+  {
+    "name": "G. Coudert",
+    "overall": 70,
+    "potential": 74,
+    "position": "GK",
+    "age": 26,
+    "team": "Stade Brestois 29"
+  },
+  {
+    "name": "P. Mboup",
+    "overall": 70,
+    "potential": 79,
+    "position": "LM, ST, LW",
+    "age": 21,
+    "team": "Stade Brestois 29"
+  },
+  {
+    "name": "A. Sbaï",
+    "overall": 70,
+    "potential": 72,
+    "position": "LM, RM, LW",
+    "age": 24,
+    "team": "Angers SCO"
+  },
+  {
+    "name": "L. Raolisoa",
+    "overall": 70,
+    "potential": 74,
+    "position": "RB, RM",
+    "age": 25,
+    "team": "Angers SCO"
+  },
+  {
+    "name": "E. Biumla",
+    "overall": 70,
+    "potential": 80,
+    "position": "CB",
+    "age": 20,
+    "team": "Angers SCO"
+  },
+  {
+    "name": "S. Chérif",
+    "overall": 70,
+    "potential": 82,
+    "position": "ST, LM, LW",
+    "age": 18,
+    "team": "Angers SCO"
+  },
+  {
+    "name": "Y. Zouaoui",
+    "overall": 70,
+    "potential": 71,
+    "position": "LB, LM",
+    "age": 27,
+    "team": "Le Havre AC"
+  },
+  {
+    "name": "R. Ndiaye",
+    "overall": 70,
+    "potential": 75,
+    "position": "CM, CDM, CAM",
+    "age": 23,
+    "team": "Le Havre AC"
+  },
+  {
+    "name": "T. Pembélé",
+    "overall": 70,
+    "potential": 78,
+    "position": "RB, CB",
+    "age": 22,
+    "team": "Le Havre AC"
+  },
+  {
+    "name": "F. Doucouré",
+    "overall": 70,
+    "potential": 74,
+    "position": "RB, RM",
+    "age": 24,
+    "team": "Le Havre AC"
+  },
+  {
+    "name": "D. Methalie",
+    "overall": 70,
+    "potential": 81,
+    "position": "LB, LM",
+    "age": 19,
+    "team": "Toulouse FC"
+  },
+  {
+    "name": "K. Haug",
+    "overall": 70,
+    "potential": 74,
+    "position": "GK",
+    "age": 27,
+    "team": "Toulouse FC"
+  },
+  {
+    "name": "S. Hidalgo",
+    "overall": 70,
+    "potential": 81,
+    "position": "RW, CAM, RM",
+    "age": 20,
+    "team": "Toulouse FC"
+  },
+  {
+    "name": "V. Marchetti",
+    "overall": 70,
+    "potential": 70,
+    "position": "CM, CDM",
+    "age": 27,
+    "team": "Paris FC"
+  },
+  {
+    "name": "S. Chergui",
+    "overall": 70,
+    "potential": 73,
+    "position": "CB, RB, CDM",
+    "age": 26,
+    "team": "Paris FC"
+  },
+  {
+    "name": "A. Dioussé",
+    "overall": 69,
+    "potential": 70,
+    "position": "CDM, CM, CB",
+    "age": 27,
+    "team": "AJ Auxerre"
+  },
+  {
+    "name": "A. Bulatović",
+    "overall": 69,
+    "potential": 82,
+    "position": "CM, CDM",
+    "age": 18,
+    "team": "RC Lens"
+  },
+  {
+    "name": "R. Gurtner",
+    "overall": 69,
+    "potential": 69,
+    "position": "GK",
+    "age": 38,
+    "team": "RC Lens"
+  },
+  {
+    "name": "M. Broholm",
+    "overall": 69,
+    "potential": 81,
+    "position": "RM, RW",
+    "age": 20,
+    "team": "Lille OSC"
+  },
+  {
+    "name": "T. Tati",
+    "overall": 69,
+    "potential": 83,
+    "position": "CB",
+    "age": 17,
+    "team": "FC Nantes"
+  },
+  {
+    "name": "A. Youssif",
+    "overall": 69,
+    "potential": 74,
+    "position": "CB",
+    "age": 23,
+    "team": "FC Nantes"
+  },
+  {
+    "name": "F. Centonze",
+    "overall": 69,
+    "potential": 69,
+    "position": "RB, LB, RM",
+    "age": 29,
+    "team": "FC Nantes"
+  },
+  {
+    "name": "Q. Ndjantou",
+    "overall": 69,
+    "potential": 83,
+    "position": "LW, ST, CM, LM",
+    "age": 17,
+    "team": "Paris Saint-Germain"
+  },
+  {
+    "name": "G. Yassine",
+    "overall": 69,
+    "potential": 82,
+    "position": "RM, LM, RW",
+    "age": 19,
+    "team": "RC Strasbourg Alsace"
+  },
+  {
+    "name": "Rafael Luís",
+    "overall": 69,
+    "potential": 81,
+    "position": "CDM, CM",
+    "age": 20,
+    "team": "RC Strasbourg Alsace"
+  },
+  {
+    "name": "K. Johnsson",
+    "overall": 69,
+    "potential": 69,
+    "position": "GK",
+    "age": 35,
+    "team": "RC Strasbourg Alsace"
+  },
+  {
+    "name": "M. Oyedele",
+    "overall": 69,
+    "potential": 77,
+    "position": "CM, CDM, CAM",
+    "age": 20,
+    "team": "RC Strasbourg Alsace"
+  },
+  {
+    "name": "D. Karim",
+    "overall": 69,
+    "potential": 80,
+    "position": "CAM, CM, ST",
+    "age": 21,
+    "team": "FC Lorient"
+  },
+  {
+    "name": "A. Bamba",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB",
+    "age": 35,
+    "team": "Angers SCO"
+  },
+  {
+    "name": "P. Capelle",
+    "overall": 69,
+    "potential": 69,
+    "position": "CDM, CM",
+    "age": 38,
+    "team": "Angers SCO"
+  },
+  {
+    "name": "L. Mpasi",
+    "overall": 69,
+    "potential": 69,
+    "position": "GK",
+    "age": 30,
+    "team": "Le Havre AC"
+  },
+  {
+    "name": "L. Gourna-Douath",
+    "overall": 69,
+    "potential": 79,
+    "position": "CDM, CM",
+    "age": 21,
+    "team": "Le Havre AC"
+  },
+  {
+    "name": "P. Diop",
+    "overall": 69,
+    "potential": 78,
+    "position": "CDM, CM, CAM",
+    "age": 21,
+    "team": "Toulouse FC"
+  },
+  {
+    "name": "N. Sangui",
+    "overall": 69,
+    "potential": 78,
+    "position": "LB, CM, LM",
+    "age": 19,
+    "team": "Paris FC"
+  },
+  {
+    "name": "T. Kolodziejczak",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB",
+    "age": 33,
+    "team": "Paris FC"
+  },
+  {
+    "name": "A. Gory",
+    "overall": 69,
+    "potential": 69,
+    "position": "ST, RM, LM, CAM",
+    "age": 28,
+    "team": "Paris FC"
+  },
+  {
+    "name": "N. Ahamada",
+    "overall": 68,
+    "potential": 74,
+    "position": "CM, CAM, CDM",
+    "age": 23,
+    "team": "AJ Auxerre"
+  },
+  {
+    "name": "T. De Percin",
+    "overall": 68,
+    "potential": 74,
+    "position": "GK",
+    "age": 24,
+    "team": "AJ Auxerre"
+  },
+  {
+    "name": "L. Coulibaly",
+    "overall": 68,
+    "potential": 76,
+    "position": "RM, RW",
+    "age": 22,
+    "team": "AJ Auxerre"
+  },
+  {
+    "name": "L. Sy",
+    "overall": 68,
+    "potential": 77,
+    "position": "RB",
+    "age": 22,
+    "team": "AJ Auxerre"
+  },
+  {
+    "name": "O. El Azzouzi",
+    "overall": 68,
+    "potential": 73,
+    "position": "CDM, CM",
+    "age": 24,
+    "team": "AJ Auxerre"
+  },
+  {
+    "name": "A. Bermont",
+    "overall": 68,
+    "potential": 78,
+    "position": "LM, LB",
+    "age": 20,
+    "team": "RC Lens"
+  },
+  {
+    "name": "Mathys De Carvalho",
+    "overall": 68,
+    "potential": 79,
+    "position": "CDM, CM",
+    "age": 20,
+    "team": "Olympique Lyonnais"
+  },
+  {
+    "name": "S. Idumbo",
+    "overall": 68,
+    "potential": 80,
+    "position": "LM, LW",
+    "age": 20,
+    "team": "AS Monaco"
+  },
+  {
+    "name": "D. Tabibou",
+    "overall": 68,
+    "potential": 79,
+    "position": "CM, RM, CDM",
+    "age": 20,
+    "team": "FC Nantes"
+  },
+  {
+    "name": "Kwon Hyeok Kyu",
+    "overall": 68,
+    "potential": 75,
+    "position": "CDM, CM",
+    "age": 24,
+    "team": "FC Nantes"
+  },
+  {
+    "name": "M. Lahdo",
+    "overall": 68,
+    "potential": 76,
+    "position": "RW, RM",
+    "age": 22,
+    "team": "FC Nantes"
+  },
+  {
+    "name": "Renato Marin",
+    "overall": 68,
+    "potential": 82,
+    "position": "GK",
+    "age": 18,
+    "team": "Paris Saint-Germain"
+  },
+  {
+    "name": "B. Leroy",
+    "overall": 68,
+    "potential": 68,
+    "position": "GK",
+    "age": 36,
+    "team": "FC Lorient"
+  },
+  {
+    "name": "A. Faye",
+    "overall": 68,
+    "potential": 83,
+    "position": "CB",
+    "age": 20,
+    "team": "FC Lorient"
+  },
+  {
+    "name": "D. Guindo",
+    "overall": 68,
+    "potential": 73,
+    "position": "LB, LM",
+    "age": 22,
+    "team": "Stade Brestois 29"
+  },
+  {
+    "name": "L. Zogbé",
+    "overall": 68,
+    "potential": 78,
+    "position": "RB, LB",
+    "age": 20,
+    "team": "Stade Brestois 29"
+  },
+  {
+    "name": "G. Kyeremeh",
+    "overall": 68,
+    "potential": 71,
+    "position": "RM, LM, ST, RW",
+    "age": 25,
+    "team": "Le Havre AC"
+  },
+  {
+    "name": "M. Sauer",
+    "overall": 68,
+    "potential": 78,
+    "position": "CM, CAM, CDM",
+    "age": 21,
+    "team": "Toulouse FC"
+  },
+  {
+    "name": "A. Vossah",
+    "overall": 68,
+    "potential": 82,
+    "position": "CDM, CM",
+    "age": 17,
+    "team": "Toulouse FC"
+  },
+  {
+    "name": "A. Francis",
+    "overall": 68,
+    "potential": 74,
+    "position": "CM, CDM",
+    "age": 24,
+    "team": "Toulouse FC"
+  },
+  {
+    "name": "N. Dicko",
+    "overall": 68,
+    "potential": 68,
+    "position": "ST",
+    "age": 33,
+    "team": "Paris FC"
+  },
+  {
+    "name": "T. Ollila",
+    "overall": 68,
+    "potential": 71,
+    "position": "LB, LM",
+    "age": 25,
+    "team": "Paris FC"
+  },
+  {
+    "name": "F. Oppegård",
+    "overall": 67,
+    "potential": 76,
+    "position": "LB, LM",
+    "age": 22,
+    "team": "AJ Auxerre"
+  },
+  {
+    "name": "M. Caillard",
+    "overall": 67,
+    "potential": 67,
+    "position": "GK",
+    "age": 31,
+    "team": "Lille OSC"
+  },
+  {
+    "name": "N. Nartey",
+    "overall": 67,
+    "potential": 82,
+    "position": "CM, ST, CDM",
+    "age": 19,
+    "team": "Olympique Lyonnais"
+  },
+  {
+    "name": "A. Touré",
+    "overall": 67,
+    "potential": 81,
+    "position": "CDM, CM",
+    "age": 19,
+    "team": "FC Metz"
+  },
+  {
+    "name": "U. Mboula",
+    "overall": 67,
+    "potential": 76,
+    "position": "CB",
+    "age": 22,
+    "team": "FC Metz"
+  },
+  {
+    "name": "J. Asoro",
+    "overall": 67,
+    "potential": 68,
+    "position": "RM, ST, RW, RB",
+    "age": 26,
+    "team": "FC Metz"
+  },
+  {
+    "name": "U. Radaković",
+    "overall": 67,
+    "potential": 67,
+    "position": "CB",
+    "age": 31,
+    "team": "FC Nantes"
+  },
+  {
+    "name": "N. Adjei",
+    "overall": 67,
+    "potential": 76,
+    "position": "CB",
+    "age": 22,
+    "team": "FC Lorient"
+  },
+  {
+    "name": "H. Djibirin",
+    "overall": 67,
+    "potential": 78,
+    "position": "RM, RW",
+    "age": 18,
+    "team": "Angers SCO"
+  },
+  {
+    "name": "F. Mambimbi",
+    "overall": 67,
+    "potential": 72,
+    "position": "ST, LM, RM, CAM",
+    "age": 24,
+    "team": "Le Havre AC"
+  },
+  {
+    "name": "S. Ebonog",
+    "overall": 67,
+    "potential": 78,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Le Havre AC"
+  },
+  {
+    "name": "R. Riou",
+    "overall": 67,
+    "potential": 67,
+    "position": "GK",
+    "age": 37,
+    "team": "Paris FC"
+  },
+  {
+    "name": "J. Lopez",
+    "overall": 67,
+    "potential": 67,
+    "position": "LW, CAM, ST, LM",
+    "age": 33,
+    "team": "Paris FC"
+  },
+  {
+    "name": "P. Hamel",
+    "overall": 67,
+    "potential": 67,
+    "position": "ST",
+    "age": 31,
+    "team": "Paris FC"
+  },
+  {
+    "name": "Y. Lawson",
+    "overall": 66,
+    "potential": 77,
+    "position": "LB, LM",
+    "age": 20,
+    "team": "FC Metz"
+  },
+  {
+    "name": "M. Mbaye",
+    "overall": 66,
+    "potential": 76,
+    "position": "RM, RW",
+    "age": 21,
+    "team": "FC Metz"
+  },
+  {
+    "name": "G. Abuashvili",
+    "overall": 66,
+    "potential": 75,
+    "position": "LM, LW",
+    "age": 22,
+    "team": "FC Metz"
+  },
+  {
+    "name": "L. Michal",
+    "overall": 66,
+    "potential": 79,
+    "position": "LM, RM, LW",
+    "age": 20,
+    "team": "AS Monaco"
+  },
+  {
+    "name": "P. Brunner",
+    "overall": 66,
+    "potential": 79,
+    "position": "ST, LM",
+    "age": 19,
+    "team": "AS Monaco"
+  },
+  {
+    "name": "M. Coulibaly",
+    "overall": 66,
+    "potential": 77,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "AS Monaco"
+  },
+  {
+    "name": "G. Bernardeau",
+    "overall": 66,
+    "potential": 77,
+    "position": "CAM, RW, CM",
+    "age": 19,
+    "team": "OGC Nice"
+  },
+  {
+    "name": "N. Kamara",
+    "overall": 66,
+    "potential": 82,
+    "position": "CB",
+    "age": 18,
+    "team": "Paris Saint-Germain"
+  },
+  {
+    "name": "M. Nagida",
+    "overall": 66,
+    "potential": 80,
+    "position": "LB",
+    "age": 20,
+    "team": "Stade Rennais FC"
+  },
+  {
+    "name": "D. Bakola",
+    "overall": 66,
+    "potential": 81,
+    "position": "CAM, CM",
+    "age": 17,
+    "team": "Olympique de Marseille"
+  },
+  {
+    "name": "P. Peter",
+    "overall": 66,
+    "potential": 79,
+    "position": "ST",
+    "age": 17,
+    "team": "Angers SCO"
+  },
+  {
+    "name": "M. Courcoul",
+    "overall": 66,
+    "potential": 81,
+    "position": "CDM, CM, CB",
+    "age": 18,
+    "team": "Angers SCO"
+  },
+  {
+    "name": "J. Vignolo",
+    "overall": 66,
+    "potential": 78,
+    "position": "ST, RW",
+    "age": 18,
+    "team": "Toulouse FC"
+  },
+  {
+    "name": "Álex Domínguez",
+    "overall": 66,
+    "potential": 70,
+    "position": "GK",
+    "age": 26,
+    "team": "Toulouse FC"
+  },
+  {
+    "name": "N. Edjouma",
+    "overall": 66,
+    "potential": 79,
+    "position": "RW, CAM, RM",
+    "age": 19,
+    "team": "Toulouse FC"
+  },
+  {
+    "name": "R. Matondo",
+    "overall": 65,
+    "potential": 81,
+    "position": "CM, CDM",
+    "age": 17,
+    "team": "AJ Auxerre"
+  },
+  {
+    "name": "F. Sylla",
+    "overall": 65,
+    "potential": 78,
+    "position": "CM, CDM",
+    "age": 19,
+    "team": "RC Lens"
+  },
+  {
+    "name": "O. Touré",
+    "overall": 65,
+    "potential": 77,
+    "position": "CB",
+    "age": 20,
+    "team": "Lille OSC"
+  },
+  {
+    "name": "A. Laâziri",
+    "overall": 65,
+    "potential": 74,
+    "position": "LB, LM",
+    "age": 21,
+    "team": "Olympique Lyonnais"
+  },
+  {
+    "name": "P. Sy",
+    "overall": 65,
+    "potential": 68,
+    "position": "GK",
+    "age": 28,
+    "team": "FC Metz"
+  },
+  {
+    "name": "I. Sané",
+    "overall": 65,
+    "potential": 78,
+    "position": "ST",
+    "age": 20,
+    "team": "FC Metz"
+  },
+  {
+    "name": "A. Bamba",
+    "overall": 65,
+    "potential": 79,
+    "position": "CDM, CM",
+    "age": 18,
+    "team": "AS Monaco"
+  },
+  {
+    "name": "Y. Lienard",
+    "overall": 65,
+    "potential": 75,
+    "position": "GK",
+    "age": 22,
+    "team": "AS Monaco"
+  },
+  {
+    "name": "A. Mahamoud",
+    "overall": 65,
+    "potential": 74,
+    "position": "LW, ST, LM",
+    "age": 22,
+    "team": "FC Nantes"
+  },
+  {
+    "name": "M. Silistrie",
+    "overall": 65,
+    "potential": 77,
+    "position": "GK",
+    "age": 19,
+    "team": "Stade Rennais FC"
+  },
+  {
+    "name": "S. Bajic",
+    "overall": 65,
+    "potential": 73,
+    "position": "GK",
+    "age": 23,
+    "team": "RC Strasbourg Alsace"
+  },
+  {
+    "name": "M. Zinga",
+    "overall": 65,
+    "potential": 73,
+    "position": "GK",
+    "age": 23,
+    "team": "Angers SCO"
+  },
+  {
+    "name": "S. Alakouch",
+    "overall": 65,
+    "potential": 66,
+    "position": "RB, RM",
+    "age": 26,
+    "team": "Paris FC"
+  },
+  {
+    "name": "K. Antonio",
+    "overall": 64,
+    "potential": 79,
+    "position": "CB",
+    "age": 17,
+    "team": "RC Lens"
+  },
+  {
+    "name": "N. Čelik",
+    "overall": 64,
+    "potential": 78,
+    "position": "CB",
+    "age": 18,
+    "team": "RC Lens"
+  },
+  {
+    "name": "S. Diaoune",
+    "overall": 64,
+    "potential": 78,
+    "position": "LM, LW",
+    "age": 17,
+    "team": "Lille OSC"
+  },
+  {
+    "name": "M. Goffi",
+    "overall": 64,
+    "potential": 77,
+    "position": "CB, RB",
+    "age": 17,
+    "team": "Lille OSC"
+  },
+  {
+    "name": "E. Molebe",
+    "overall": 64,
+    "potential": 79,
+    "position": "ST",
+    "age": 17,
+    "team": "Olympique Lyonnais"
+  },
+  {
+    "name": "L. Diarra",
+    "overall": 64,
+    "potential": 74,
+    "position": "GK",
+    "age": 22,
+    "team": "Olympique Lyonnais"
+  },
+  {
+    "name": "A. Gomes Rodríguez",
+    "overall": 64,
+    "potential": 79,
+    "position": "ST",
+    "age": 17,
+    "team": "Olympique Lyonnais"
+  },
+  {
+    "name": "S. Doucouré",
+    "overall": 64,
+    "potential": 77,
+    "position": "CB",
+    "age": 20,
+    "team": "FC Nantes"
+  },
+  {
+    "name": "B. Deuff",
+    "overall": 64,
+    "potential": 79,
+    "position": "CDM, CM",
+    "age": 19,
+    "team": "FC Nantes"
+  },
+  {
+    "name": "Z. Diallo",
+    "overall": 64,
+    "potential": 75,
+    "position": "ST",
+    "age": 20,
+    "team": "OGC Nice"
+  },
+  {
+    "name": "N. Nsoki",
+    "overall": 64,
+    "potential": 80,
+    "position": "LW, RW, LM",
+    "age": 18,
+    "team": "Paris Saint-Germain"
+  },
+  {
+    "name": "N. Mukiele",
+    "overall": 64,
+    "potential": 78,
+    "position": "LM, ST, LW",
+    "age": 19,
+    "team": "Stade Rennais FC"
+  },
+  {
+    "name": "H. Makalou",
+    "overall": 64,
+    "potential": 81,
+    "position": "CDM, CM",
+    "age": 18,
+    "team": "Stade Brestois 29"
+  },
+  {
+    "name": "R. Messali",
+    "overall": 64,
+    "potential": 75,
+    "position": "RB, RM",
+    "age": 22,
+    "team": "Toulouse FC"
+  },
+  {
+    "name": "L. Gueye",
+    "overall": 64,
+    "potential": 64,
+    "position": "RW, RM",
+    "age": 27,
+    "team": "Paris FC"
+  },
+  {
+    "name": "T. Siwe",
+    "overall": 63,
+    "potential": 78,
+    "position": "CB",
+    "age": 20,
+    "team": "AJ Auxerre"
+  },
+  {
+    "name": "Rafael Fernandes",
+    "overall": 63,
+    "potential": 74,
+    "position": "CB",
+    "age": 23,
+    "team": "Lille OSC"
+  },
+  {
+    "name": "P. Cabral",
+    "overall": 63,
+    "potential": 78,
+    "position": "CDM, CM",
+    "age": 18,
+    "team": "AS Monaco"
+  },
+  {
+    "name": "A. Camara",
+    "overall": 63,
+    "potential": 77,
+    "position": "ST, CAM",
+    "age": 20,
+    "team": "FC Nantes"
+  },
+  {
+    "name": "Everton",
+    "overall": 63,
+    "potential": 77,
+    "position": "CDM, CM",
+    "age": 18,
+    "team": "OGC Nice"
+  },
+  {
+    "name": "M. Jangeal",
+    "overall": 63,
+    "potential": 79,
+    "position": "CAM, CM",
+    "age": 17,
+    "team": "Paris Saint-Germain"
+  },
+  {
+    "name": "L. Rosier",
+    "overall": 63,
+    "potential": 80,
+    "position": "LM, LW",
+    "age": 18,
+    "team": "Stade Rennais FC"
+  },
+  {
+    "name": "B. Fadiga",
+    "overall": 63,
+    "potential": 68,
+    "position": "CM, CAM, CDM",
+    "age": 24,
+    "team": "FC Lorient"
+  },
+  {
+    "name": "D. Mosengo",
+    "overall": 63,
+    "potential": 76,
+    "position": "CM, CDM",
+    "age": 18,
+    "team": "Le Havre AC"
+  },
+  {
+    "name": "K. Quetant",
+    "overall": 63,
+    "potential": 76,
+    "position": "ST, CAM",
+    "age": 18,
+    "team": "Le Havre AC"
+  },
+  {
+    "name": "M. Dao",
+    "overall": 63,
+    "potential": 77,
+    "position": "RW, ST, RM",
+    "age": 18,
+    "team": "Paris FC"
+  },
+  {
+    "name": "N. Buayi-Kiala",
+    "overall": 62,
+    "potential": 73,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "AJ Auxerre"
+  },
+  {
+    "name": "A. Diallo",
+    "overall": 62,
+    "potential": 75,
+    "position": "CM, CDM",
+    "age": 19,
+    "team": "RC Lens"
+  },
+  {
+    "name": "I. Jourdren",
+    "overall": 62,
+    "potential": 78,
+    "position": "GK",
+    "age": 16,
+    "team": "RC Lens"
+  },
+  {
+    "name": "A. Hamdani",
+    "overall": 62,
+    "potential": 79,
+    "position": "LM, LW",
+    "age": 16,
+    "team": "Olympique Lyonnais"
+  },
+  {
+    "name": "R. Himbert",
+    "overall": 62,
+    "potential": 78,
+    "position": "LW, RW, LM",
+    "age": 17,
+    "team": "Olympique Lyonnais"
+  },
+  {
+    "name": "B. Żelazowski",
+    "overall": 62,
+    "potential": 77,
+    "position": "GK",
+    "age": 20,
+    "team": "OGC Nice"
+  },
+  {
+    "name": "B. Mantsounga",
+    "overall": 62,
+    "potential": 74,
+    "position": "CB",
+    "age": 17,
+    "team": "OGC Nice"
+  },
+  {
+    "name": "A. Cissé",
+    "overall": 62,
+    "potential": 72,
+    "position": "CB",
+    "age": 19,
+    "team": "RC Strasbourg Alsace"
+  },
+  {
+    "name": "K. Abdallah",
+    "overall": 62,
+    "potential": 71,
+    "position": "RM, ST, RW",
+    "age": 19,
+    "team": "Olympique de Marseille"
+  },
+  {
+    "name": "Y. Sellami",
+    "overall": 62,
+    "potential": 77,
+    "position": "CM, CDM",
+    "age": 18,
+    "team": "Olympique de Marseille"
+  },
+  {
+    "name": "R. Le Guen",
+    "overall": 62,
+    "potential": 74,
+    "position": "CB",
+    "age": 18,
+    "team": "Stade Brestois 29"
+  },
+  {
+    "name": "S. Zagadou",
+    "overall": 62,
+    "potential": 77,
+    "position": "CB",
+    "age": 16,
+    "team": "Le Havre AC"
+  },
+  {
+    "name": "N. Obougou",
+    "overall": 62,
+    "potential": 74,
+    "position": "ST, RM, RW",
+    "age": 19,
+    "team": "Le Havre AC"
+  },
+  {
+    "name": "N. Wasbauer",
+    "overall": 62,
+    "potential": 74,
+    "position": "CB",
+    "age": 20,
+    "team": "Toulouse FC"
+  },
+  {
+    "name": "D. Zema",
+    "overall": 62,
+    "potential": 76,
+    "position": "RW, CAM, RM",
+    "age": 18,
+    "team": "Toulouse FC"
+  },
+  {
+    "name": "N. Lahmadi",
+    "overall": 62,
+    "potential": 72,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Toulouse FC"
+  },
+  {
+    "name": "C. Mélières",
+    "overall": 61,
+    "potential": 73,
+    "position": "RB",
+    "age": 20,
+    "team": "FC Metz"
+  },
+  {
+    "name": "D. Coulibaly",
+    "overall": 61,
+    "potential": 76,
+    "position": "CM, CDM",
+    "age": 16,
+    "team": "OGC Nice"
+  },
+  {
+    "name": "E. Legendre Quiñonez",
+    "overall": 61,
+    "potential": 77,
+    "position": "RM, RW",
+    "age": 17,
+    "team": "Stade Rennais FC"
+  },
+  {
+    "name": "T. Sanusi",
+    "overall": 61,
+    "potential": 82,
+    "position": "LW, RW, LM",
+    "age": 18,
+    "team": "FC Lorient"
+  },
+  {
+    "name": "J. Van Neck",
+    "overall": 61,
+    "potential": 74,
+    "position": "GK",
+    "age": 21,
+    "team": "Olympique de Marseille"
+  },
+  {
+    "name": "L. Machine",
+    "overall": 61,
+    "potential": 71,
+    "position": "ST",
+    "age": 19,
+    "team": "Angers SCO"
+  },
+  {
+    "name": "P. Argney",
+    "overall": 61,
+    "potential": 77,
+    "position": "GK",
+    "age": 19,
+    "team": "Le Havre AC"
+  },
+  {
+    "name": "G. Zohouri",
+    "overall": 61,
+    "potential": 76,
+    "position": "CM, CDM",
+    "age": 18,
+    "team": "Le Havre AC"
+  },
+  {
+    "name": "E. Koffi",
+    "overall": 61,
+    "potential": 75,
+    "position": "RM, RW",
+    "age": 19,
+    "team": "Le Havre AC"
+  },
+  {
+    "name": "I. Azizi",
+    "overall": 61,
+    "potential": 77,
+    "position": "LW, ST, LM",
+    "age": 17,
+    "team": "Toulouse FC"
+  },
+  {
+    "name": "S. Koumbassa",
+    "overall": 61,
+    "potential": 75,
+    "position": "CB",
+    "age": 18,
+    "team": "Toulouse FC"
+  },
+  {
+    "name": "E. Faty",
+    "overall": 61,
+    "potential": 76,
+    "position": "ST",
+    "age": 18,
+    "team": "Toulouse FC"
+  },
+  {
+    "name": "F. Efuele Ngoyala",
+    "overall": 61,
+    "potential": 74,
+    "position": "CB, CDM, CM",
+    "age": 20,
+    "team": "Toulouse FC"
+  },
+  {
+    "name": "J. Mangondo",
+    "overall": 60,
+    "potential": 76,
+    "position": "ST",
+    "age": 19,
+    "team": "FC Metz"
+  },
+  {
+    "name": "J. Stawiecki",
+    "overall": 60,
+    "potential": 77,
+    "position": "GK",
+    "age": 18,
+    "team": "AS Monaco"
+  },
+  {
+    "name": "M. Bley",
+    "overall": 60,
+    "potential": 73,
+    "position": "CAM, CM",
+    "age": 19,
+    "team": "FC Lorient"
+  },
+  {
+    "name": "T. Mmadi",
+    "overall": 60,
+    "potential": 76,
+    "position": "LM, CAM, LW",
+    "age": 18,
+    "team": "Olympique de Marseille"
+  },
+  {
+    "name": "T. Vermot",
+    "overall": 60,
+    "potential": 62,
+    "position": "GK",
+    "age": 28,
+    "team": "Olympique de Marseille"
+  },
+  {
+    "name": "E. Legros",
+    "overall": 59,
+    "potential": 74,
+    "position": "CB",
+    "age": 17,
+    "team": "AJ Auxerre"
+  },
+  {
+    "name": "R. Rodin",
+    "overall": 59,
+    "potential": 71,
+    "position": "ST",
+    "age": 19,
+    "team": "AJ Auxerre"
+  },
+  {
+    "name": "T. Negrel",
+    "overall": 59,
+    "potential": 70,
+    "position": "GK",
+    "age": 22,
+    "team": "AJ Auxerre"
+  },
+  {
+    "name": "G. Bakhouche",
+    "overall": 59,
+    "potential": 71,
+    "position": "CB, LB",
+    "age": 20,
+    "team": "Toulouse FC"
+  },
+  {
+    "name": "L. Mezerette",
+    "overall": 58,
+    "potential": 74,
+    "position": "GK",
+    "age": 18,
+    "team": "AJ Auxerre"
+  },
+  {
+    "name": "T. Devernois",
+    "overall": 58,
+    "potential": 75,
+    "position": "CM, CDM",
+    "age": 17,
+    "team": "AJ Auxerre"
+  },
+  {
+    "name": "M. Cissokho",
+    "overall": 58,
+    "potential": 73,
+    "position": "RM, RW",
+    "age": 17,
+    "team": "AJ Auxerre"
+  },
+  {
+    "name": "A. Mirbach",
+    "overall": 58,
+    "potential": 73,
+    "position": "GK",
+    "age": 20,
+    "team": "FC Nantes"
+  },
+  {
+    "name": "N. Jauny",
+    "overall": 58,
+    "potential": 71,
+    "position": "GK",
+    "age": 20,
+    "team": "Stade Brestois 29"
+  },
+  {
+    "name": "S. Diop",
+    "overall": 58,
+    "potential": 70,
+    "position": "ST",
+    "age": 20,
+    "team": "Stade Brestois 29"
+  },
+  {
+    "name": "M. Louër",
+    "overall": 58,
+    "potential": 72,
+    "position": "RB",
+    "age": 18,
+    "team": "Angers SCO"
+  },
+  {
+    "name": "N. Saïd Mchindra",
+    "overall": 58,
+    "potential": 70,
+    "position": "GK",
+    "age": 20,
+    "team": "Toulouse FC"
+  },
+  {
+    "name": "I. Guerti",
+    "overall": 57,
+    "potential": 69,
+    "position": "CAM, CM",
+    "age": 20,
+    "team": "FC Metz"
+  },
+  {
+    "name": "O. Pona",
+    "overall": 57,
+    "potential": 72,
+    "position": "GK",
+    "age": 19,
+    "team": "Angers SCO"
+  },
+  {
+    "name": "D. Sinaté",
+    "overall": 57,
+    "potential": 71,
+    "position": "LB",
+    "age": 19,
+    "team": "Angers SCO"
+  }
+]

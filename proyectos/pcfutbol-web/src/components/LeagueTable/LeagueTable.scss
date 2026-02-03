@@ -374,6 +374,19 @@
       color: #ffd700;
       margin-bottom: 8px;
       font-weight: 600;
+
+      &.tournament-champion {
+        background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05));
+        border: 1px solid rgba(255, 215, 0, 0.3);
+        border-radius: 8px;
+        padding: 8px 12px;
+
+        .final-score {
+          font-weight: 400;
+          font-size: 0.8rem;
+          opacity: 0.8;
+        }
+      }
     }
     
     .tournament-tab-buttons {

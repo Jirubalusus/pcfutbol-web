@@ -14,6 +14,7 @@ import { initializeSACompetitions } from '../../game/southAmericanSeason';
 import { getCupTeams, generateCupBracket } from '../../game/cupSystem';
 import {
   getLaLigaTeams, getSegundaTeams, getPrimeraRfefTeams, getSegundaRfefTeams,
+  getPrimeraRfefGroups, getSegundaRfefGroups,
   getPremierTeams, getSerieATeams, getBundesligaTeams, getLigue1Teams,
   getEredivisieTeams, getPrimeiraLigaTeams, getChampionshipTeams,
   getBelgianProTeams, getSuperLigTeams, getScottishPremTeams,
@@ -70,9 +71,9 @@ const ALL_LEAGUES = [
   { id: 'jLeague', getter: getJLeagueTeams, name: 'J1 League' },
 ];
 
-// Ligas que NO aplican para contrarreloj (tier muy bajo o sin grupos, o sin competiciones continentales claras)
-// Excluimos primeraRFEF y segundaRFEF por tener grupos
-const EXCLUDED_LEAGUES = ['primeraRFEF', 'segundaRFEF'];
+// Ligas que NO aplican para contrarreloj
+// primeraRFEF excluida (grupos manejados automáticamente para segundaRFEF)
+const EXCLUDED_LEAGUES = ['primeraRFEF'];
 
 function getAvgOverall(team) {
   if (!team?.players?.length) return 0;
@@ -136,22 +137,26 @@ export default function ContrarrelojSetup() {
   const candidates = useMemo(() => {
     const europePool = [];
     const saPool = [];
-    const restPool = [];
+
+    // Solo Europa y Sudamérica — las ligas de "Resto del Mundo" no participan en contrarreloj
+    const REST_OF_WORLD = new Set(['mls', 'saudiPro', 'ligaMX', 'jLeague']);
 
     for (const league of ALL_LEAGUES) {
       if (EXCLUDED_LEAGUES.includes(league.id)) continue;
+      if (REST_OF_WORLD.has(league.id)) continue;
       try {
         const teams = league.getter();
         if (!teams || teams.length === 0) continue;
         for (const team of teams) {
+          // Excluir filiales españoles (no pueden ascender a la misma liga que su primer equipo)
+          if (team.name && /\sB$/i.test(team.name.trim())) continue;
           const t = { ...team };
           ensureBudgetAndReputation(t, league.id);
           const tier = getLeagueTier(league.id);
           if (t.reputation <= 2 || tier >= 3) {
             const entry = { team: t, leagueId: league.id, leagueName: league.name, tier };
             if (SA_LEAGUES.has(league.id)) saPool.push(entry);
-            else if (!['mls', 'saudiPro', 'ligaMX', 'jLeague'].includes(league.id)) europePool.push(entry);
-            else restPool.push(entry);
+            else europePool.push(entry);
           }
         }
       } catch { /* skip */ }
@@ -161,7 +166,6 @@ export default function ContrarrelojSetup() {
     const shuffle = arr => arr.sort(() => Math.random() - 0.5);
     shuffle(europePool);
     shuffle(saPool);
-    shuffle(restPool);
 
     // Guarantee at least 1 Europe + 1 South America, fill rest randomly
     const picked = [];
@@ -169,7 +173,7 @@ export default function ContrarrelojSetup() {
     if (saPool.length > 0) picked.push(saPool.shift());
 
     // Combine remaining pools and fill up to 5
-    const remaining = shuffle([...europePool, ...saPool, ...restPool]);
+    const remaining = shuffle([...europePool, ...saPool]);
     while (picked.length < 5 && remaining.length > 0) {
       picked.push(remaining.shift());
     }
@@ -199,7 +203,33 @@ export default function ContrarrelojSetup() {
     // Get league teams for this league
     const leagueEntry = ALL_LEAGUES.find(l => l.id === leagueId);
     if (!leagueEntry) return;
-    const leagueTeams = leagueEntry.getter();
+    
+    // Handle group leagues (Segunda RFEF, Primera RFEF): find the team's group
+    const GROUP_LEAGUES = {
+      segundaRFEF: getSegundaRfefGroups,
+      primeraRFEF: getPrimeraRfefGroups
+    };
+    
+    let leagueTeams;
+    let playerGroupId = null;
+    
+    if (GROUP_LEAGUES[leagueId]) {
+      const groups = GROUP_LEAGUES[leagueId]();
+      // Find which group this team belongs to
+      for (const [groupId, groupData] of Object.entries(groups)) {
+        const groupTeams = groupData?.teams || groupData || [];
+        if (groupTeams.some(t => t.id === team.id)) {
+          leagueTeams = groupTeams;
+          playerGroupId = groupId;
+          break;
+        }
+      }
+      // Fallback: if team not found in any group, use all teams (shouldn't happen)
+      if (!leagueTeams) leagueTeams = leagueEntry.getter();
+    } else {
+      leagueTeams = leagueEntry.getter();
+    }
+    
     const leagueData = initializeLeague(leagueTeams, team.id);
 
     const stadiumInfo = getStadiumInfo(team.id, team.reputation);
@@ -219,17 +249,24 @@ export default function ContrarrelojSetup() {
         teamId: team.id,
         team: { ...team },
         leagueId,
+        group: playerGroupId,
         stadiumInfo,
         stadiumLevel,
         preseasonMatches: preseason?.matches || [],
         preseasonPhase: true,
-        gameMode: 'contrarreloj'
+        gameMode: 'contrarreloj',
+        _contrarrelojUserId: user?.uid || null
       }
     });
 
     dispatch({ type: 'SET_LEAGUE_TABLE', payload: leagueData.table });
     dispatch({ type: 'SET_FIXTURES', payload: leagueData.fixtures });
     dispatch({ type: 'SET_PLAYER_LEAGUE', payload: leagueId });
+    
+    // For group leagues, store the player's group ID
+    if (playerGroupId) {
+      dispatch({ type: 'SET_PLAYER_GROUP', payload: playerGroupId });
+    }
 
     // Load ALL league teams for the global transfer engine
     const allLeagueTeamsWithData = [];
@@ -247,7 +284,7 @@ export default function ContrarrelojSetup() {
     }
     dispatch({ type: 'UPDATE_LEAGUE_TEAMS', payload: allLeagueTeamsWithData });
 
-    const otherLeagues = initializeOtherLeagues(leagueId, null);
+    const otherLeagues = initializeOtherLeagues(leagueId, playerGroupId);
     dispatch({ type: 'SET_OTHER_LEAGUES', payload: otherLeagues });
 
     // Bootstrap continental competitions

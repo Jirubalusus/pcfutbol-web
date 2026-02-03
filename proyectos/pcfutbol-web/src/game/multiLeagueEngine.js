@@ -418,7 +418,7 @@ export const LEAGUE_CONFIG = {
     country: 'Chile',
     teams: 16,
     getTeams: getChileTeams,
-    format: 'apertura-clausura',
+    format: 'standard',
     zones: {
       libertadores: [1, 2],
       sudamericana: [3, 4],
@@ -444,7 +444,7 @@ export const LEAGUE_CONFIG = {
     country: 'Ecuador',
     teams: 16,
     getTeams: getEcuadorTeams,
-    format: 'apertura-clausura',
+    format: 'standard',
     zones: {
       libertadores: [1, 2],
       sudamericana: [3, 4],
@@ -605,6 +605,94 @@ export function computeAccumulatedTable(aperturaTable, clausuraTable) {
   });
   
   return sortTable(accumulated);
+}
+
+/**
+ * Returns the last week of the Clausura (last matchday of the full season)
+ */
+export function getLastClausuraWeek(totalTeams) {
+  return 2 * (totalTeams - 1); // N-1 apertura + N-1 clausura
+}
+
+/**
+ * Simulate the Apertura vs Clausura final (two-leg tie)
+ * Leg 1: Apertura champion (home) vs Clausura champion (away)
+ * Leg 2: Clausura champion (home) vs Apertura champion (away) — home advantage
+ * Tiebreak: away goals → if still tied, Clausura champion wins (sporting advantage)
+ *
+ * @param {string} aperturaChampId - Team ID of Apertura champion
+ * @param {string} clausuraChampId - Team ID of Clausura champion
+ * @param {Array} allTeams - All team objects for this league
+ * @returns {Object|null} Final result object
+ */
+export function simulateAperturaClausuraFinal(aperturaChampId, clausuraChampId, allTeams) {
+  const aperturaTeam = allTeams.find(t => t.id === aperturaChampId);
+  const clausuraTeam = allTeams.find(t => t.id === clausuraChampId);
+
+  if (!aperturaTeam || !clausuraTeam) return null;
+
+  // Leg 1: Apertura champion at home
+  const leg1 = simulateMatch(aperturaChampId, clausuraChampId, aperturaTeam, clausuraTeam, {
+    importance: 'final',
+    homeMorale: 85,
+    awayMorale: 85
+  });
+
+  // Leg 2: Clausura champion at home (home advantage in return leg)
+  const leg2 = simulateMatch(clausuraChampId, aperturaChampId, clausuraTeam, aperturaTeam, {
+    importance: 'final',
+    homeMorale: 85,
+    awayMorale: 85
+  });
+
+  // Aggregate scores
+  const aperturaTotal = leg1.homeScore + leg2.awayScore;
+  const clausuraTotal = leg1.awayScore + leg2.homeScore;
+
+  // Away goals: each team's goals scored away from home
+  const aperturaAwayGoals = leg2.awayScore; // Apertura scored away in leg 2
+  const clausuraAwayGoals = leg1.awayScore; // Clausura scored away in leg 1
+
+  let winner;
+  let winReason;
+
+  if (aperturaTotal > clausuraTotal) {
+    winner = aperturaChampId;
+    winReason = 'aggregate';
+  } else if (clausuraTotal > aperturaTotal) {
+    winner = clausuraChampId;
+    winReason = 'aggregate';
+  } else {
+    // Tied on aggregate — check away goals
+    if (aperturaAwayGoals > clausuraAwayGoals) {
+      winner = aperturaChampId;
+      winReason = 'awayGoals';
+    } else if (clausuraAwayGoals > aperturaAwayGoals) {
+      winner = clausuraChampId;
+      winReason = 'awayGoals';
+    } else {
+      // Still tied — Clausura champion wins (sporting advantage)
+      winner = clausuraChampId;
+      winReason = 'clausuraAdvantage';
+    }
+  }
+
+  return {
+    aperturaChampion: aperturaChampId,
+    aperturaChampionName: aperturaTeam.name || aperturaTeam.shortName || aperturaChampId,
+    clausuraChampion: clausuraChampId,
+    clausuraChampionName: clausuraTeam.name || clausuraTeam.shortName || clausuraChampId,
+    leg1: { home: aperturaChampId, away: clausuraChampId, homeScore: leg1.homeScore, awayScore: leg1.awayScore },
+    leg2: { home: clausuraChampId, away: aperturaChampId, homeScore: leg2.homeScore, awayScore: leg2.awayScore },
+    aggregate: { apertura: aperturaTotal, clausura: clausuraTotal },
+    awayGoals: { apertura: aperturaAwayGoals, clausura: clausuraAwayGoals },
+    winner,
+    winnerName: winner === aperturaChampId
+      ? (aperturaTeam.name || aperturaChampId)
+      : (clausuraTeam.name || clausuraChampId),
+    winReason,
+    hadFinal: true
+  };
 }
 
 /**
@@ -801,12 +889,50 @@ export function simulateOtherLeaguesWeek(otherLeagues, week) {
     });
     
     if (isAperturaClausura(leagueId)) {
+      // Check if clausura just ended (last matchday of the season)
+      let finalResult = leagueData.finalResult || null;
+      let champion = leagueData.champion || null;
+
+      if (currentTournament === 'clausura' && !finalResult) {
+        const lastWeek = getLastClausuraWeek(config.teams);
+        if (week === lastWeek) {
+          // Clausura ended — determine champions and play final if needed
+          const sortedApertura = aperturaTable ? sortTable([...aperturaTable]) : [];
+          const sortedClausura = sortTable([...updatedTable]);
+          const aperturaChampId = sortedApertura[0]?.teamId;
+          const clausuraChampId = sortedClausura[0]?.teamId;
+
+          if (aperturaChampId && clausuraChampId) {
+            if (aperturaChampId === clausuraChampId) {
+              // Same team won both — champion directly
+              champion = aperturaChampId;
+              finalResult = {
+                aperturaChampion: aperturaChampId,
+                aperturaChampionName: sortedApertura[0]?.teamName || aperturaChampId,
+                clausuraChampion: clausuraChampId,
+                clausuraChampionName: sortedClausura[0]?.teamName || clausuraChampId,
+                winner: aperturaChampId,
+                winnerName: sortedApertura[0]?.teamName || aperturaChampId,
+                winReason: 'sameChampion',
+                hadFinal: false
+              };
+            } else {
+              // Different champions — simulate two-leg final
+              finalResult = simulateAperturaClausuraFinal(aperturaChampId, clausuraChampId, teams);
+              champion = finalResult?.winner || null;
+            }
+          }
+        }
+      }
+
       updatedLeagues[leagueId] = {
         table: updatedTable,
         fixtures: updatedFixtures,
         accumulatedTable,
         aperturaTable,
-        currentTournament
+        currentTournament,
+        finalResult,
+        champion
       };
     } else {
       updatedLeagues[leagueId] = {

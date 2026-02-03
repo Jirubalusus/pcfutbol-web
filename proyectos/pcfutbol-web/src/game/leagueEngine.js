@@ -59,6 +59,42 @@ export const FORMATIONS = {
     positions: ['GK', 'RB', 'CB', 'CB', 'LB', 'RM', 'CM', 'CDM', 'CM', 'LM', 'ST'],
     style: { attack: 0.85, defense: 1.05, midfield: 1.2 },
     description: 'Dominio del centro del campo'
+  },
+  '4-3-3 (MCO)': {
+    name: '4-3-3 (MCO)',
+    positions: ['GK', 'RB', 'CB', 'CB', 'LB', 'CM', 'CM', 'CAM', 'RW', 'LW', 'ST'],
+    style: { attack: 1.15, defense: 0.9, midfield: 1.05 },
+    description: 'Mediapunta como enlace ofensivo'
+  },
+  '4-4-2 (Diamante)': {
+    name: '4-4-2 (Diamante)',
+    positions: ['GK', 'RB', 'CB', 'CB', 'LB', 'CDM', 'CM', 'CM', 'CAM', 'ST', 'ST'],
+    style: { attack: 1.1, defense: 0.95, midfield: 1.1 },
+    description: 'Rombo en el centro, potencia arriba'
+  },
+  '4-1-2-1-2': {
+    name: '4-1-2-1-2',
+    positions: ['GK', 'RB', 'CB', 'CB', 'LB', 'CDM', 'CM', 'CM', 'CAM', 'ST', 'ST'],
+    style: { attack: 1.1, defense: 1.0, midfield: 1.0 },
+    description: 'Estrecho, juego interior con 2 puntas'
+  },
+  '3-4-1-2': {
+    name: '3-4-1-2',
+    positions: ['GK', 'CB', 'CB', 'CB', 'RM', 'CM', 'CM', 'LM', 'CAM', 'ST', 'ST'],
+    style: { attack: 1.2, defense: 0.85, midfield: 1.05 },
+    description: 'Mediapunta con doble punta y carrileros'
+  },
+  '4-3-2-1': {
+    name: '4-3-2-1',
+    positions: ['GK', 'RB', 'CB', 'CB', 'LB', 'CDM', 'CM', 'CM', 'RW', 'LW', 'ST'],
+    style: { attack: 1.05, defense: 1.0, midfield: 1.05 },
+    description: 'Árbol de Navidad, compacto en ataque'
+  },
+  '5-2-3': {
+    name: '5-2-3',
+    positions: ['GK', 'RB', 'CB', 'CB', 'CB', 'LB', 'CM', 'CM', 'RW', 'ST', 'LW'],
+    style: { attack: 1.1, defense: 1.1, midfield: 0.85 },
+    description: 'Defensa sólida con tridente ofensivo'
   }
 };
 

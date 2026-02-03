@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { AlertTriangle, FileText, X, Check, XCircle, MessageSquare, RefreshCw, ClipboardList, Star } from 'lucide-react';
 import { useGame } from '../../context/GameContext';
+import { posToEN } from '../../game/positionNames';
 import { 
   PERSONALITIES, 
   SPECIAL_GOALS,
@@ -176,9 +177,10 @@ export default function Renewals() {
   };
   
   const getPositionColor = (pos) => {
-    if (pos === 'GK') return 'var(--color-warning)';
-    if (['RB', 'CB', 'LB'].includes(pos)) return '#3498db';
-    if (['CDM', 'CM', 'CAM'].includes(pos)) return 'var(--color-success)';
+    const p = posToEN(pos);
+    if (p === 'GK') return 'var(--color-warning)';
+    if (['RB', 'CB', 'LB'].includes(p)) return '#3498db';
+    if (['CDM', 'CM', 'CAM'].includes(p)) return 'var(--color-success)';
     return 'var(--color-danger)';
   };
   

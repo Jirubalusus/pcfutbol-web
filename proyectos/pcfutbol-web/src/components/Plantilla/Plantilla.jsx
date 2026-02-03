@@ -1,13 +1,17 @@
 import React, { useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { Check, Tag, ClipboardList, Bell, AlertCircle, Clock, Coins, Calendar, Cake, Flag, PenTool, UserMinus, CircleDollarSign, XCircle, X } from 'lucide-react';
 import { FORM_STATES } from '../../game/formSystem';
+import { posES, posToEN } from '../../game/positionNames';
+import { calculateMarketValue } from '../../game/globalTransferEngine';
 import './Plantilla.scss';
 
 // Constantes
 const WEEKS_PER_YEAR = 52;
 
 export default function Plantilla() {
+  const { t } = useTranslation();
   const { state, dispatch } = useGame();
   const [sortBy, setSortBy] = useState('salary'); // salary, contract, ovr, age
   const [selectedPlayer, setSelectedPlayer] = useState(null);
@@ -64,24 +68,22 @@ export default function Plantilla() {
   };
   
   const getPositionColor = (pos) => {
-    if (pos === 'GK') return '#ffd700';
-    if (['CB', 'RB', 'LB', 'RWB', 'LWB'].includes(pos)) return '#00d4ff';
-    if (['CDM', 'CM', 'CAM', 'RM', 'LM'].includes(pos)) return '#30d158';
+    const p = posToEN(pos);
+    if (p === 'GK') return '#ffd700';
+    if (['CB', 'RB', 'LB', 'RWB', 'LWB'].includes(p)) return '#00d4ff';
+    if (['CDM', 'CM', 'CAM', 'RM', 'LM'].includes(p)) return '#30d158';
     return '#ff453a';
   };
   
   const getContractStatus = (player) => {
     const years = player.contractYears ?? player.personality?.contractYears ?? 2;
-    if (years <= 0) return { status: 'expired', label: 'Expirado', color: '#ff453a' };
-    if (years <= 1) return { status: 'urgent', label: `${years} año`, color: '#ff9500' };
-    return { status: 'ok', label: `${years} años`, color: '#30d158' };
+    if (years <= 0) return { status: 'expired', label: t('plantilla.expired'), color: '#ff453a' };
+    if (years <= 1) return { status: 'urgent', label: t('plantilla.oneYear', { years }), color: '#ff9500' };
+    return { status: 'ok', label: t('plantilla.multipleYears', { years }), color: '#30d158' };
   };
   
   const getPlayerValue = (player) => {
-    // Valor estimado basado en overall, edad y posición
-    const baseValue = Math.pow(player.overall / 50, 3) * 500000;
-    const ageFactor = player.age <= 24 ? 1.3 : player.age <= 28 ? 1.1 : player.age <= 32 ? 0.8 : 0.5;
-    return Math.round(baseValue * ageFactor);
+    return calculateMarketValue(player, state.leagueId || state.playerLeagueId);
   };
   
   const getRenewalDemand = (player) => {
@@ -268,6 +270,37 @@ export default function Plantilla() {
     closeModal();
   };
   
+  const handleUnlist = (player) => {
+    setSelectedPlayer(player);
+    setActionModal({ type: 'unlist' });
+  };
+  
+  const confirmUnlist = () => {
+    if (!selectedPlayer) return;
+    
+    dispatch({
+      type: 'UPDATE_PLAYER',
+      payload: {
+        ...selectedPlayer,
+        transferListed: false,
+        askingPrice: undefined
+      }
+    });
+    
+    dispatch({
+      type: 'ADD_MESSAGE',
+      payload: {
+        id: Date.now(),
+        type: 'transfer',
+        title: `${selectedPlayer.name} retirado del mercado`,
+        content: `Ya no está disponible para la venta`,
+        date: `Semana ${state.currentWeek}`
+      }
+    });
+    
+    closeModal();
+  };
+  
   const confirmRelease = () => {
     if (!selectedPlayer || !actionModal) return;
     
@@ -327,8 +360,8 @@ export default function Plantilla() {
       {/* Header con finanzas */}
       <div className="plantilla__header">
         <div className="header-title">
-          <h2><ClipboardList size={16} /> Plantilla</h2>
-          <span className="player-count">{players.length} jugadores</span>
+          <h2><ClipboardList size={16} /> {t('plantilla.title')}</h2>
+          <span className="player-count">{players.length} {t('plantilla.players')}</span>
         </div>
         
         <div className="header-finances">
@@ -366,7 +399,7 @@ export default function Plantilla() {
                     setActionModal({ type: 'mobile-actions', player: p });
                   }
                 }}>
-                  <span className="pos" style={{ color: getPositionColor(p.position) }}>{p.position}</span>
+                  <span className="pos" style={{ color: getPositionColor(p.position) }}>{posES(p.position)}</span>
                   <span className="name">{p.name}</span>
                   <span className="reason">
                     {p.retiring ? <><AlertCircle size={12} /> Se retira</> 
@@ -385,28 +418,28 @@ export default function Plantilla() {
       
       {/* Ordenación */}
       <div className="plantilla__sort">
-        <span>Ordenar por:</span>
+        <span>{t('plantilla.sortBy')}:</span>
         <button className={sortBy === 'salary' ? 'active' : ''} onClick={() => setSortBy('salary')}>
-          <Coins size={12} /> Salario
+          <Coins size={12} /> {t('common.salary')}
         </button>
         <button className={sortBy === 'contract' ? 'active' : ''} onClick={() => setSortBy('contract')}>
-          <Calendar size={12} /> Contrato
+          <Calendar size={12} /> {t('common.contract')}
         </button>
         <button className={sortBy === 'ovr' ? 'active' : ''} onClick={() => setSortBy('ovr')}>
           ⭐ OVR
         </button>
         <button className={sortBy === 'age' ? 'active' : ''} onClick={() => setSortBy('age')}>
-          <Cake size={12} /> Edad
+          <Cake size={12} /> {t('common.age')}
         </button>
       </div>
       
       {/* Table header */}
       <div className="plantilla__table-header">
-        <span className="col-pos">POS</span>
-        <span className="col-name">JUGADOR</span>
+        <span className="col-pos">{t('common.position')}</span>
+        <span className="col-name">{t('plantilla.player')}</span>
         <span className="col-ovr">MED</span>
-        <span className="col-salary">SALARIO</span>
-        <span className="col-contract">CONTRATO</span>
+        <span className="col-salary">{t('common.salary')}</span>
+        <span className="col-contract">{t('common.contract')}</span>
       </div>
       
       {/* Lista de jugadores */}
@@ -431,13 +464,21 @@ export default function Plantilla() {
             >
               <div className="player-main">
                 <span className="pos" style={{ background: getPositionColor(player.position) }}>
-                  {player.position}
+                  {posES(player.position)}
                 </span>
                 <div className="info">
                   <span className="name">
                     {player.name}
                     {player.onLoan && <span className="tag-loan">🤝 EN CESIÓN</span>}
-                    {isTransferListed && !player.onLoan && <span className="tag-listed"><Tag size={12} /> En venta</span>}
+                    {isTransferListed && !player.onLoan && (
+                      <span 
+                        className="tag-listed tag-listed--clickable" 
+                        onClick={(e) => { e.stopPropagation(); handleUnlist(player); }}
+                        title="Click para quitar de venta"
+                      >
+                        🏷️ En venta
+                      </span>
+                    )}
                     {player.retiring && <span className="tag-retiring"><Flag size={12} /> Se retira</span>}
                   </span>
                   <span className="meta">{player.overall} OVR · {player.age} años</span>
@@ -478,9 +519,15 @@ export default function Plantilla() {
                     >
                       <PenTool size={14} />
                     </button>
-                    <button className="btn-sell" onClick={() => handleSell(player)} title="Poner en venta">
-                      <Tag size={14} />
-                    </button>
+                    {isTransferListed ? (
+                      <button className="btn-sell btn-sell--listed" onClick={() => handleUnlist(player)} title="Quitar de venta">
+                        🏷️
+                      </button>
+                    ) : (
+                      <button className="btn-sell" onClick={() => handleSell(player)} title="Poner en venta">
+                        <Tag size={14} />
+                      </button>
+                    )}
                     <button className="btn-release" onClick={() => handleRelease(player)} title="Liberar">
                       <UserMinus size={14} />
                     </button>
@@ -506,7 +553,7 @@ export default function Plantilla() {
                 <div className="modal-content">
                   <div className="player-summary">
                     <span className="pos" style={{ background: getPositionColor(selectedPlayer.position) }}>
-                      {selectedPlayer.position}
+                      {posES(selectedPlayer.position)}
                     </span>
                     <span className="ovr">{selectedPlayer.overall}</span>
                     <span className="age">{selectedPlayer.age} años</span>
@@ -526,9 +573,15 @@ export default function Plantilla() {
                         <button className="mobile-action-btn" onClick={() => { closeModal(); handleRenew(selectedPlayer); }} disabled={!wantsToRenew(selectedPlayer)}>
                           <PenTool size={14} /> Renovar contrato
                         </button>
-                        <button className="mobile-action-btn" onClick={() => { closeModal(); handleSell(selectedPlayer); }}>
-                          <Tag size={14} /> Poner en venta
-                        </button>
+                        {selectedPlayer.transferListed ? (
+                          <button className="mobile-action-btn mobile-action-btn--unlist" onClick={() => { closeModal(); handleUnlist(selectedPlayer); }}>
+                            🏷️ Quitar de venta
+                          </button>
+                        ) : (
+                          <button className="mobile-action-btn" onClick={() => { closeModal(); handleSell(selectedPlayer); }}>
+                            <Tag size={14} /> Poner en venta
+                          </button>
+                        )}
                         <button className="mobile-action-btn mobile-action-btn--danger" onClick={() => { closeModal(); handleRelease(selectedPlayer); }}>
                           <UserMinus size={14} /> Liberar jugador
                         </button>
@@ -557,7 +610,7 @@ export default function Plantilla() {
                 <div className="modal-content">
                   <div className="player-summary">
                     <span className="pos" style={{ background: getPositionColor(selectedPlayer.position) }}>
-                      {selectedPlayer.position}
+                      {posES(selectedPlayer.position)}
                     </span>
                     <span className="ovr">{selectedPlayer.overall}</span>
                     <span className="age">{selectedPlayer.age} años</span>
@@ -608,7 +661,7 @@ export default function Plantilla() {
                 <div className="modal-content">
                   <div className="player-summary">
                     <span className="pos" style={{ background: getPositionColor(selectedPlayer.position) }}>
-                      {selectedPlayer.position}
+                      {posES(selectedPlayer.position)}
                     </span>
                     <span className="ovr">{selectedPlayer.overall}</span>
                     <span className="age">{selectedPlayer.age} años</span>
@@ -646,6 +699,38 @@ export default function Plantilla() {
               </>
             )}
             
+            {/* QUITAR DE VENTA */}
+            {actionModal.type === 'unlist' && (
+              <>
+                <div className="modal-header unlist">
+                  <h3>🏷️ Quitar de venta a {selectedPlayer.name}</h3>
+                </div>
+                <div className="modal-content">
+                  <div className="player-summary">
+                    <span className="pos" style={{ background: getPositionColor(selectedPlayer.position) }}>
+                      {posES(selectedPlayer.position)}
+                    </span>
+                    <span className="ovr">{selectedPlayer.overall}</span>
+                    <span className="age">{selectedPlayer.age} años</span>
+                  </div>
+                  
+                  <div className="sell-info">
+                    <p>Este jugador está actualmente en la lista de transferibles. ¿Quieres retirarlo del mercado?</p>
+                    <p className="note">Dejará de recibir ofertas de otros equipos.</p>
+                  </div>
+                  
+                  <div className="modal-actions">
+                    <button className="btn-confirm" onClick={confirmUnlist}>
+                      ✅ Sí, quitar de venta
+                    </button>
+                    <button className="btn-cancel" onClick={closeModal}>
+                      Cancelar
+                    </button>
+                  </div>
+                </div>
+              </>
+            )}
+            
             {/* LIBERAR */}
             {actionModal.type === 'release' && (
               <>
@@ -655,7 +740,7 @@ export default function Plantilla() {
                 <div className="modal-content">
                   <div className="player-summary">
                     <span className="pos" style={{ background: getPositionColor(selectedPlayer.position) }}>
-                      {selectedPlayer.position}
+                      {posES(selectedPlayer.position)}
                     </span>
                     <span className="ovr">{selectedPlayer.overall}</span>
                     <span className="age">{selectedPlayer.age} años</span>

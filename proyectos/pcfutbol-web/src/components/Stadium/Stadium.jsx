@@ -203,7 +203,7 @@ export default function Stadium() {
     updateStadium({ seasonTicketPrice: newPrice });
   };
   
-  // Cerrar campaña de abonos (fijar precio y cantidad, cobrar ingresos)
+  // Cerrar campaña de abonos (fijar precio y cantidad — el cobro se realiza a final de temporada)
   const handleCloseCampaign = () => {
     if (!seasonTicketsCampaignOpen) return;
     const totalAbonados = calculatedSeasonTickets;
@@ -216,15 +216,14 @@ export default function Stadium() {
       seasonTicketIncomeCollected: totalSeasonTicketIncome
     });
     
-    // Cobrar ingresos de abonados inmediatamente (los aficionados pagan al abonarse)
-    dispatch({ type: 'UPDATE_MONEY', payload: totalSeasonTicketIncome });
+    // No cobrar ahora — los ingresos de abonados se cobran a final de temporada
     dispatch({
       type: 'ADD_MESSAGE',
       payload: {
         id: Date.now(),
         type: 'stadium',
         title: 'Campaña de abonos cerrada',
-        content: `${totalAbonados.toLocaleString()} abonados × €${seasonTicketPrice} = ${formatMoney(totalSeasonTicketIncome)} ingresados`,
+        content: `${totalAbonados.toLocaleString()} abonados × €${seasonTicketPrice} = ${formatMoney(totalSeasonTicketIncome)} (se cobrarán a final de temporada)`,
         date: `Semana ${state.currentWeek}`
       }
     });
@@ -252,7 +251,7 @@ export default function Stadium() {
       payload: {
         id: Date.now(),
         type: 'stadium',
-        title: 'Naming Rights',
+        title: 'Derechos de Nombre',
         content: `Acuerdo con ${sponsor.name}: €${(sponsor.offer/1000000).toFixed(1)}M/año por ${sponsor.duration} años`,
         date: `Semana ${state.currentWeek}`
       }
@@ -288,7 +287,7 @@ export default function Stadium() {
       payload: {
         id: Date.now(),
         type: 'stadium',
-        title: 'Naming cancelado',
+        title: 'Patrocinio cancelado',
         content: penalty > 0 
           ? `El estadio recupera su nombre original. Penalización pagada: €${(penalty / 1000000).toFixed(1)}M`
           : 'El estadio recupera su nombre original',
@@ -665,7 +664,7 @@ export default function Stadium() {
             </div>
           ) : (
             <>
-              <h3><Coins size={14} /> Ofertas de Naming Rights</h3>
+              <h3><Coins size={14} /> Ofertas de Naming</h3>
               <p className="hint">Vende el nombre del estadio por ingresos anuales</p>
               
               {availableSponsors.length > 0 ? (

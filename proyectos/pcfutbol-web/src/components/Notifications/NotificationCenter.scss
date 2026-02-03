@@ -4,9 +4,9 @@
 
 .notification-center {
   position: fixed;
-  top: 50%;
+  top: calc(env(safe-area-inset-top, 0px) + 16px);
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   z-index: 10001; // Above toast-container
   display: flex;
   flex-direction: column;
@@ -171,10 +171,10 @@
 
 @media (max-width: 768px) {
   .notification-center {
-    top: 50%;
+    top: calc(env(safe-area-inset-top, 0px) + 12px);
     left: 50%;
     right: auto;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     max-width: none;
     width: calc(100vw - 32px);
   }

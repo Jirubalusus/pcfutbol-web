@@ -1,0 +1,818 @@
+[
+  {
+    "name": "G. Valle",
+    "overall": 73,
+    "potential": 75,
+    "position": "GK",
+    "age": 29,
+    "team": "LDU Quito"
+  },
+  {
+    "name": "J. Contreras",
+    "overall": 72,
+    "potential": 72,
+    "position": "GK",
+    "age": 30,
+    "team": "Barcelona de Guayaquil"
+  },
+  {
+    "name": "R. Adé",
+    "overall": 72,
+    "potential": 72,
+    "position": "CB",
+    "age": 35,
+    "team": "LDU Quito"
+  },
+  {
+    "name": "J. Sornoza",
+    "overall": 72,
+    "potential": 72,
+    "position": "CAM, LW, CM",
+    "age": 31,
+    "team": "Independiente del Valle"
+  },
+  {
+    "name": "C. Spinelli",
+    "overall": 72,
+    "potential": 72,
+    "position": "ST",
+    "age": 28,
+    "team": "Independiente del Valle"
+  },
+  {
+    "name": "M. Carabajal",
+    "overall": 72,
+    "potential": 74,
+    "position": "CB",
+    "age": 28,
+    "team": "Independiente del Valle"
+  },
+  {
+    "name": "R. Schunke",
+    "overall": 72,
+    "potential": 72,
+    "position": "CB",
+    "age": 33,
+    "team": "Independiente del Valle"
+  },
+  {
+    "name": "P. Mercado",
+    "overall": 72,
+    "potential": 83,
+    "position": "CM, CAM, LM",
+    "age": 21,
+    "team": "Independiente del Valle"
+  },
+  {
+    "name": "R. Romo",
+    "overall": 72,
+    "potential": 72,
+    "position": "GK",
+    "age": 35,
+    "team": "Universidad Católica del Ecuador"
+  },
+  {
+    "name": "F. Cornejo",
+    "overall": 71,
+    "potential": 71,
+    "position": "CM, CDM, CAM",
+    "age": 29,
+    "team": "LDU Quito"
+  },
+  {
+    "name": "L. Quiñonez",
+    "overall": 71,
+    "potential": 71,
+    "position": "LB, CB, LM",
+    "age": 31,
+    "team": "LDU Quito"
+  },
+  {
+    "name": "G. Villar",
+    "overall": 71,
+    "potential": 73,
+    "position": "GK",
+    "age": 27,
+    "team": "Independiente del Valle"
+  },
+  {
+    "name": "A. Londoño",
+    "overall": 71,
+    "potential": 74,
+    "position": "RW, RM, ST",
+    "age": 24,
+    "team": "Universidad Católica del Ecuador"
+  },
+  {
+    "name": "B. Palacios",
+    "overall": 71,
+    "potential": 71,
+    "position": "ST",
+    "age": 30,
+    "team": "Universidad Católica del Ecuador"
+  },
+  {
+    "name": "G. Vallecilla",
+    "overall": 70,
+    "potential": 73,
+    "position": "CB, LB",
+    "age": 26,
+    "team": "Barcelona de Guayaquil"
+  },
+  {
+    "name": "B. Carabalí",
+    "overall": 70,
+    "potential": 70,
+    "position": "RB, LB, RM, LM",
+    "age": 27,
+    "team": "Barcelona de Guayaquil"
+  },
+  {
+    "name": "A. Domínguez",
+    "overall": 70,
+    "potential": 70,
+    "position": "GK",
+    "age": 38,
+    "team": "LDU Quito"
+  },
+  {
+    "name": "J. Quintero",
+    "overall": 70,
+    "potential": 70,
+    "position": "RB, RM",
+    "age": 35,
+    "team": "LDU Quito"
+  },
+  {
+    "name": "J. Medina",
+    "overall": 70,
+    "potential": 70,
+    "position": "ST",
+    "age": 30,
+    "team": "LDU Quito"
+  },
+  {
+    "name": "G. Villamíl",
+    "overall": 70,
+    "potential": 74,
+    "position": "CM, CAM",
+    "age": 24,
+    "team": "LDU Quito"
+  },
+  {
+    "name": "J. Méndez",
+    "overall": 70,
+    "potential": 70,
+    "position": "CDM, CM",
+    "age": 28,
+    "team": "Independiente del Valle"
+  },
+  {
+    "name": "J. Alcívar",
+    "overall": 70,
+    "potential": 74,
+    "position": "CDM, CM",
+    "age": 25,
+    "team": "Independiente del Valle"
+  },
+  {
+    "name": "M. Díaz",
+    "overall": 70,
+    "potential": 70,
+    "position": "CAM, CM",
+    "age": 34,
+    "team": "Universidad Católica del Ecuador"
+  },
+  {
+    "name": "J. Vergés",
+    "overall": 70,
+    "potential": 70,
+    "position": "CAM, ST, CM",
+    "age": 33,
+    "team": "Mushuc Runa"
+  },
+  {
+    "name": "M. Estrada",
+    "overall": 69,
+    "potential": 69,
+    "position": "ST",
+    "age": 29,
+    "team": "LDU Quito"
+  },
+  {
+    "name": "R. Mina",
+    "overall": 69,
+    "potential": 71,
+    "position": "CB",
+    "age": 25,
+    "team": "LDU Quito"
+  },
+  {
+    "name": "A. Alvarado",
+    "overall": 69,
+    "potential": 69,
+    "position": "CM, LM, LW, CAM",
+    "age": 26,
+    "team": "LDU Quito"
+  },
+  {
+    "name": "A. Rodríguez",
+    "overall": 69,
+    "potential": 70,
+    "position": "LM, RM, LW",
+    "age": 25,
+    "team": "Independiente del Valle"
+  },
+  {
+    "name": "L. Cangá",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB",
+    "age": 30,
+    "team": "Universidad Católica del Ecuador"
+  },
+  {
+    "name": "J. Cacciabue",
+    "overall": 69,
+    "potential": 70,
+    "position": "CDM, CM",
+    "age": 27,
+    "team": "Universidad Católica del Ecuador"
+  },
+  {
+    "name": "G. Anangonó",
+    "overall": 69,
+    "potential": 69,
+    "position": "RB, RM, CB",
+    "age": 27,
+    "team": "Universidad Católica del Ecuador"
+  },
+  {
+    "name": "B. Oyola",
+    "overall": 68,
+    "potential": 68,
+    "position": "LM, RM, CAM, LW",
+    "age": 29,
+    "team": "Barcelona de Guayaquil"
+  },
+  {
+    "name": "R. Briones",
+    "overall": 68,
+    "potential": 71,
+    "position": "LM, CM, RM, LW",
+    "age": 25,
+    "team": "Independiente del Valle"
+  },
+  {
+    "name": "L. Loor",
+    "overall": 68,
+    "potential": 75,
+    "position": "LB, LM",
+    "age": 24,
+    "team": "Independiente del Valle"
+  },
+  {
+    "name": "L. Zárate",
+    "overall": 68,
+    "potential": 73,
+    "position": "CB, RB",
+    "age": 25,
+    "team": "Independiente del Valle"
+  },
+  {
+    "name": "J. Fajardo",
+    "overall": 68,
+    "potential": 68,
+    "position": "ST, RM, RW",
+    "age": 31,
+    "team": "Universidad Católica del Ecuador"
+  },
+  {
+    "name": "E. Mejía",
+    "overall": 68,
+    "potential": 72,
+    "position": "LB, LM",
+    "age": 25,
+    "team": "Universidad Católica del Ecuador"
+  },
+  {
+    "name": "M. Alonso",
+    "overall": 68,
+    "potential": 68,
+    "position": "LM, RM, LW",
+    "age": 31,
+    "team": "Universidad Católica del Ecuador"
+  },
+  {
+    "name": "D. Quintero",
+    "overall": 68,
+    "potential": 70,
+    "position": "CB",
+    "age": 28,
+    "team": "Mushuc Runa"
+  },
+  {
+    "name": "A. Rangel",
+    "overall": 67,
+    "potential": 76,
+    "position": "CB, RB",
+    "age": 23,
+    "team": "Barcelona de Guayaquil"
+  },
+  {
+    "name": "A. Baredia",
+    "overall": 67,
+    "potential": 67,
+    "position": "CB, RB",
+    "age": 29,
+    "team": "Barcelona de Guayaquil"
+  },
+  {
+    "name": "F. Caicedo",
+    "overall": 67,
+    "potential": 67,
+    "position": "ST",
+    "age": 36,
+    "team": "Barcelona de Guayaquil"
+  },
+  {
+    "name": "B. Castillo",
+    "overall": 67,
+    "potential": 67,
+    "position": "RM, RB, RW",
+    "age": 29,
+    "team": "Barcelona de Guayaquil"
+  },
+  {
+    "name": "D. Arroyo",
+    "overall": 67,
+    "potential": 67,
+    "position": "CDM, CM, CB",
+    "age": 33,
+    "team": "Barcelona de Guayaquil"
+  },
+  {
+    "name": "Leonai",
+    "overall": 67,
+    "potential": 67,
+    "position": "CDM, CM",
+    "age": 30,
+    "team": "Barcelona de Guayaquil"
+  },
+  {
+    "name": "D. de la Cruz",
+    "overall": 67,
+    "potential": 73,
+    "position": "RB, RM",
+    "age": 21,
+    "team": "LDU Quito"
+  },
+  {
+    "name": "K. Minda",
+    "overall": 67,
+    "potential": 70,
+    "position": "CDM, CB, CM",
+    "age": 26,
+    "team": "LDU Quito"
+  },
+  {
+    "name": "G. Allala",
+    "overall": 67,
+    "potential": 68,
+    "position": "CB",
+    "age": 28,
+    "team": "LDU Quito"
+  },
+  {
+    "name": "J. Cazares",
+    "overall": 67,
+    "potential": 67,
+    "position": "CAM, CM",
+    "age": 33,
+    "team": "Independiente del Valle"
+  },
+  {
+    "name": "G. Cortéz",
+    "overall": 67,
+    "potential": 67,
+    "position": "LB, LM",
+    "age": 27,
+    "team": "Independiente del Valle"
+  },
+  {
+    "name": "J. Chancellor",
+    "overall": 67,
+    "potential": 67,
+    "position": "CB",
+    "age": 33,
+    "team": "Universidad Católica del Ecuador"
+  },
+  {
+    "name": "S. Tapiero",
+    "overall": 67,
+    "potential": 67,
+    "position": "CDM, CM",
+    "age": 33,
+    "team": "Mushuc Runa"
+  },
+  {
+    "name": "J. Dos Santos",
+    "overall": 67,
+    "potential": 67,
+    "position": "ST",
+    "age": 33,
+    "team": "Mushuc Runa"
+  },
+  {
+    "name": "Á. Gracia",
+    "overall": 67,
+    "potential": 67,
+    "position": "LB, LM",
+    "age": 36,
+    "team": "Mushuc Runa"
+  },
+  {
+    "name": "R. Formento",
+    "overall": 67,
+    "potential": 71,
+    "position": "GK",
+    "age": 25,
+    "team": "Mushuc Runa"
+  },
+  {
+    "name": "J. Rojas",
+    "overall": 66,
+    "potential": 66,
+    "position": "LM, LW, CAM",
+    "age": 27,
+    "team": "Barcelona de Guayaquil"
+  },
+  {
+    "name": "A. Alfárnez",
+    "overall": 66,
+    "potential": 66,
+    "position": "ST",
+    "age": 33,
+    "team": "Barcelona de Guayaquil"
+  },
+  {
+    "name": "N. Balloni",
+    "overall": 66,
+    "potential": 66,
+    "position": "CM, CDM",
+    "age": 29,
+    "team": "Barcelona de Guayaquil"
+  },
+  {
+    "name": "A. Cabeza",
+    "overall": 66,
+    "potential": 66,
+    "position": "ST",
+    "age": 28,
+    "team": "LDU Quito"
+  },
+  {
+    "name": "C. Medina",
+    "overall": 66,
+    "potential": 75,
+    "position": "CB, LB",
+    "age": 23,
+    "team": "Universidad Católica del Ecuador"
+  },
+  {
+    "name": "E. Clavijo",
+    "overall": 66,
+    "potential": 70,
+    "position": "CDM, CM, CAM",
+    "age": 25,
+    "team": "Universidad Católica del Ecuador"
+  },
+  {
+    "name": "R. Burbano",
+    "overall": 66,
+    "potential": 66,
+    "position": "RW, RM",
+    "age": 29,
+    "team": "Mushuc Runa"
+  },
+  {
+    "name": "L. Arce",
+    "overall": 66,
+    "potential": 66,
+    "position": "CDM, CM",
+    "age": 31,
+    "team": "Mushuc Runa"
+  },
+  {
+    "name": "G. Mina",
+    "overall": 66,
+    "potential": 66,
+    "position": "LB",
+    "age": 29,
+    "team": "Mushuc Runa"
+  },
+  {
+    "name": "C. Solano",
+    "overall": 65,
+    "potential": 65,
+    "position": "LM, LW",
+    "age": 26,
+    "team": "Barcelona de Guayaquil"
+  },
+  {
+    "name": "J. Arroyo",
+    "overall": 65,
+    "potential": 70,
+    "position": "RM, CAM, RW",
+    "age": 21,
+    "team": "Independiente del Valle"
+  },
+  {
+    "name": "F. Martínez",
+    "overall": 65,
+    "potential": 65,
+    "position": "CDM, CM, CAM, CB",
+    "age": 40,
+    "team": "Universidad Católica del Ecuador"
+  },
+  {
+    "name": "J. Lara",
+    "overall": 65,
+    "potential": 69,
+    "position": "GK",
+    "age": 26,
+    "team": "Universidad Católica del Ecuador"
+  },
+  {
+    "name": "Y. Vásquez",
+    "overall": 64,
+    "potential": 82,
+    "position": "ST, LM",
+    "age": 18,
+    "team": "Independiente del Valle"
+  },
+  {
+    "name": "A. Velasco",
+    "overall": 64,
+    "potential": 65,
+    "position": "CB",
+    "age": 28,
+    "team": "Independiente del Valle"
+  },
+  {
+    "name": "L. Moreno",
+    "overall": 64,
+    "potential": 79,
+    "position": "CDM, CM",
+    "age": 20,
+    "team": "Universidad Católica del Ecuador"
+  },
+  {
+    "name": "A. Pabón",
+    "overall": 64,
+    "potential": 65,
+    "position": "GK",
+    "age": 29,
+    "team": "Mushuc Runa"
+  },
+  {
+    "name": "C. Orejuela",
+    "overall": 64,
+    "potential": 64,
+    "position": "CAM, ST, RM, CM",
+    "age": 32,
+    "team": "Mushuc Runa"
+  },
+  {
+    "name": "B. Delgado",
+    "overall": 64,
+    "potential": 64,
+    "position": "LM, LW, RM",
+    "age": 29,
+    "team": "Mushuc Runa"
+  },
+  {
+    "name": "W. Vargas",
+    "overall": 63,
+    "potential": 63,
+    "position": "RB, LB",
+    "age": 28,
+    "team": "Barcelona de Guayaquil"
+  },
+  {
+    "name": "M. Díaz",
+    "overall": 63,
+    "potential": 68,
+    "position": "LM, RM, LW",
+    "age": 23,
+    "team": "LDU Quito"
+  },
+  {
+    "name": "J. Cuero",
+    "overall": 63,
+    "potential": 68,
+    "position": "RB, RM, CB",
+    "age": 24,
+    "team": "LDU Quito"
+  },
+  {
+    "name": "Y. Erique",
+    "overall": 63,
+    "potential": 70,
+    "position": "LB, LM",
+    "age": 22,
+    "team": "LDU Quito"
+  },
+  {
+    "name": "J. Lerma",
+    "overall": 63,
+    "potential": 84,
+    "position": "CAM, LM, LW, CM",
+    "age": 17,
+    "team": "Independiente del Valle"
+  },
+  {
+    "name": "D. Guagua",
+    "overall": 63,
+    "potential": 80,
+    "position": "CAM, CM, RM",
+    "age": 17,
+    "team": "Independiente del Valle"
+  },
+  {
+    "name": "J. Quiñones",
+    "overall": 63,
+    "potential": 68,
+    "position": "CB, LB, RB",
+    "age": 23,
+    "team": "Mushuc Runa"
+  },
+  {
+    "name": "N. Dávila",
+    "overall": 63,
+    "potential": 63,
+    "position": "CM, CDM, LM",
+    "age": 29,
+    "team": "Mushuc Runa"
+  },
+  {
+    "name": "F. Guerra",
+    "overall": 62,
+    "potential": 62,
+    "position": "CB",
+    "age": 33,
+    "team": "Barcelona de Guayaquil"
+  },
+  {
+    "name": "F. Mina",
+    "overall": 62,
+    "potential": 62,
+    "position": "RW, RM, ST",
+    "age": 26,
+    "team": "LDU Quito"
+  },
+  {
+    "name": "E. Pata",
+    "overall": 62,
+    "potential": 77,
+    "position": "LM, LW, RM",
+    "age": 20,
+    "team": "Independiente del Valle"
+  },
+  {
+    "name": "E. Caicedo",
+    "overall": 62,
+    "potential": 72,
+    "position": "ST",
+    "age": 20,
+    "team": "Mushuc Runa"
+  },
+  {
+    "name": "J. Gómez",
+    "overall": 61,
+    "potential": 81,
+    "position": "RM, RW, CAM",
+    "age": 18,
+    "team": "Barcelona de Guayaquil"
+  },
+  {
+    "name": "K. Pinargote",
+    "overall": 61,
+    "potential": 73,
+    "position": "GK",
+    "age": 22,
+    "team": "Barcelona de Guayaquil"
+  },
+  {
+    "name": "E. Bores",
+    "overall": 61,
+    "potential": 71,
+    "position": "GK",
+    "age": 22,
+    "team": "Independiente del Valle"
+  },
+  {
+    "name": "A. Rodríguez",
+    "overall": 61,
+    "potential": 72,
+    "position": "CAM, CM",
+    "age": 21,
+    "team": "Universidad Católica del Ecuador"
+  },
+  {
+    "name": "K. Peralta",
+    "overall": 61,
+    "potential": 61,
+    "position": "CB, RB",
+    "age": 28,
+    "team": "Mushuc Runa"
+  },
+  {
+    "name": "A. Zambrano",
+    "overall": 61,
+    "potential": 67,
+    "position": "CM, CDM",
+    "age": 23,
+    "team": "Mushuc Runa"
+  },
+  {
+    "name": "P. Durán",
+    "overall": 60,
+    "potential": 77,
+    "position": "RW, CAM, RM",
+    "age": 19,
+    "team": "LDU Quito"
+  },
+  {
+    "name": "A. Villa",
+    "overall": 60,
+    "potential": 68,
+    "position": "GK",
+    "age": 23,
+    "team": "LDU Quito"
+  },
+  {
+    "name": "R. Troya",
+    "overall": 60,
+    "potential": 71,
+    "position": "CDM, CM",
+    "age": 19,
+    "team": "Universidad Católica del Ecuador"
+  },
+  {
+    "name": "E. Castillo",
+    "overall": 59,
+    "potential": 76,
+    "position": "CDM, CM",
+    "age": 16,
+    "team": "LDU Quito"
+  },
+  {
+    "name": "E. Valencia",
+    "overall": 59,
+    "potential": 70,
+    "position": "LB, LM",
+    "age": 22,
+    "team": "Universidad Católica del Ecuador"
+  },
+  {
+    "name": "E. Ruiz",
+    "overall": 57,
+    "potential": 75,
+    "position": "LB",
+    "age": 19,
+    "team": "Independiente del Valle"
+  },
+  {
+    "name": "E. Valencia",
+    "overall": 57,
+    "potential": 63,
+    "position": "GK",
+    "age": 22,
+    "team": "Universidad Católica del Ecuador"
+  },
+  {
+    "name": "I. Mosquera",
+    "overall": 57,
+    "potential": 69,
+    "position": "CB",
+    "age": 21,
+    "team": "Universidad Católica del Ecuador"
+  },
+  {
+    "name": "S. Castro",
+    "overall": 57,
+    "potential": 58,
+    "position": "RM, RB, RW",
+    "age": 26,
+    "team": "Mushuc Runa"
+  },
+  {
+    "name": "M. Peralta",
+    "overall": 54,
+    "potential": 74,
+    "position": "GK",
+    "age": 17,
+    "team": "Independiente del Valle"
+  }
+]

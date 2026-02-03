@@ -1,0 +1,602 @@
+[
+  {
+    "name": "M. Cova",
+    "overall": 70,
+    "potential": 70,
+    "position": "CM, CDM, CAM",
+    "age": 32,
+    "team": "Deportivo Táchira"
+  },
+  {
+    "name": "J. Camargo",
+    "overall": 70,
+    "potential": 73,
+    "position": "GK",
+    "age": 27,
+    "team": "Deportivo Táchira"
+  },
+  {
+    "name": "C. Sosa",
+    "overall": 70,
+    "potential": 70,
+    "position": "CAM, RW, RM, CM",
+    "age": 29,
+    "team": "Deportivo Táchira"
+  },
+  {
+    "name": "R. Rosales",
+    "overall": 69,
+    "potential": 69,
+    "position": "RB, RM, LB",
+    "age": 36,
+    "team": "Deportivo Táchira"
+  },
+  {
+    "name": "J. Balza",
+    "overall": 69,
+    "potential": 69,
+    "position": "ST, CAM",
+    "age": 27,
+    "team": "Deportivo Táchira"
+  },
+  {
+    "name": "L. Bruera",
+    "overall": 69,
+    "potential": 72,
+    "position": "GK",
+    "age": 27,
+    "team": "Carabobo FC"
+  },
+  {
+    "name": "M. Pernía",
+    "overall": 69,
+    "potential": 74,
+    "position": "LB, CB, LM",
+    "age": 24,
+    "team": "Carabobo FC"
+  },
+  {
+    "name": "G. González",
+    "overall": 69,
+    "potential": 69,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Carabobo FC"
+  },
+  {
+    "name": "L. Mago",
+    "overall": 68,
+    "potential": 68,
+    "position": "CB, LB",
+    "age": 30,
+    "team": "Caracas FC"
+  },
+  {
+    "name": "M. Maidana",
+    "overall": 68,
+    "potential": 68,
+    "position": "CB, LB",
+    "age": 34,
+    "team": "Deportivo Táchira"
+  },
+  {
+    "name": "M. Núñez",
+    "overall": 68,
+    "potential": 73,
+    "position": "CDM, CM",
+    "age": 24,
+    "team": "Carabobo FC"
+  },
+  {
+    "name": "E. Tortolero",
+    "overall": 68,
+    "potential": 68,
+    "position": "RM, RW, CAM",
+    "age": 27,
+    "team": "Carabobo FC"
+  },
+  {
+    "name": "L. Aponte",
+    "overall": 68,
+    "potential": 68,
+    "position": "CB, RB",
+    "age": 31,
+    "team": "Carabobo FC"
+  },
+  {
+    "name": "M. Mbaye",
+    "overall": 68,
+    "potential": 71,
+    "position": "CB, LB",
+    "age": 27,
+    "team": "Academia Puerto Cabello"
+  },
+  {
+    "name": "M. Covea",
+    "overall": 67,
+    "potential": 67,
+    "position": "RW, CAM, RM",
+    "age": 31,
+    "team": "Caracas FC"
+  },
+  {
+    "name": "J. Yendis",
+    "overall": 67,
+    "potential": 68,
+    "position": "LB",
+    "age": 27,
+    "team": "Caracas FC"
+  },
+  {
+    "name": "F. Benítez",
+    "overall": 67,
+    "potential": 76,
+    "position": "GK",
+    "age": 21,
+    "team": "Caracas FC"
+  },
+  {
+    "name": "J. Requena",
+    "overall": 67,
+    "potential": 68,
+    "position": "CM, CDM",
+    "age": 26,
+    "team": "Deportivo Táchira"
+  },
+  {
+    "name": "J. Berríos",
+    "overall": 67,
+    "potential": 67,
+    "position": "RW, LW, RM",
+    "age": 28,
+    "team": "Carabobo FC"
+  },
+  {
+    "name": "E. Neira",
+    "overall": 67,
+    "potential": 71,
+    "position": "CB",
+    "age": 24,
+    "team": "Carabobo FC"
+  },
+  {
+    "name": "J. Pérez",
+    "overall": 67,
+    "potential": 68,
+    "position": "CM, LB, RM, CDM",
+    "age": 26,
+    "team": "Carabobo FC"
+  },
+  {
+    "name": "N. Rodríguez",
+    "overall": 67,
+    "potential": 70,
+    "position": "CB",
+    "age": 26,
+    "team": "Carabobo FC"
+  },
+  {
+    "name": "L. Romero",
+    "overall": 67,
+    "potential": 67,
+    "position": "GK",
+    "age": 34,
+    "team": "Academia Puerto Cabello"
+  },
+  {
+    "name": "H. Contreras",
+    "overall": 67,
+    "potential": 67,
+    "position": "CM, CDM",
+    "age": 36,
+    "team": "Academia Puerto Cabello"
+  },
+  {
+    "name": "G. Padrón",
+    "overall": 67,
+    "potential": 76,
+    "position": "LM, CM, CAM, LW",
+    "age": 22,
+    "team": "Academia Puerto Cabello"
+  },
+  {
+    "name": "F. La Mantía",
+    "overall": 66,
+    "potential": 67,
+    "position": "CB, CDM",
+    "age": 29,
+    "team": "Caracas FC"
+  },
+  {
+    "name": "L. Cano",
+    "overall": 66,
+    "potential": 66,
+    "position": "ST",
+    "age": 30,
+    "team": "Deportivo Táchira"
+  },
+  {
+    "name": "D. Saggiomo",
+    "overall": 66,
+    "potential": 67,
+    "position": "CAM, RW, LW, CM",
+    "age": 26,
+    "team": "Deportivo Táchira"
+  },
+  {
+    "name": "J. Ortíz",
+    "overall": 66,
+    "potential": 66,
+    "position": "RW, LW, LM, RM",
+    "age": 31,
+    "team": "Deportivo Táchira"
+  },
+  {
+    "name": "M. Guaramato",
+    "overall": 66,
+    "potential": 66,
+    "position": "RB, CB, LB, CDM",
+    "age": 31,
+    "team": "Carabobo FC"
+  },
+  {
+    "name": "J. Cedeño",
+    "overall": 66,
+    "potential": 66,
+    "position": "CM, CDM",
+    "age": 33,
+    "team": "Academia Puerto Cabello"
+  },
+  {
+    "name": "A. Araque",
+    "overall": 65,
+    "potential": 66,
+    "position": "GK",
+    "age": 29,
+    "team": "Deportivo Táchira"
+  },
+  {
+    "name": "C. Calzadilla",
+    "overall": 65,
+    "potential": 72,
+    "position": "CM, CDM, RB",
+    "age": 23,
+    "team": "Deportivo Táchira"
+  },
+  {
+    "name": "P. Bonilla",
+    "overall": 65,
+    "potential": 68,
+    "position": "RB",
+    "age": 25,
+    "team": "Carabobo FC"
+  },
+  {
+    "name": "D. Meza",
+    "overall": 65,
+    "potential": 65,
+    "position": "CAM, CM",
+    "age": 31,
+    "team": "Academia Puerto Cabello"
+  },
+  {
+    "name": "E. Peraza",
+    "overall": 65,
+    "potential": 65,
+    "position": "CB",
+    "age": 32,
+    "team": "Academia Puerto Cabello"
+  },
+  {
+    "name": "L. Casiani",
+    "overall": 65,
+    "potential": 72,
+    "position": "RB, RM",
+    "age": 23,
+    "team": "Academia Puerto Cabello"
+  },
+  {
+    "name": "P. Camacho",
+    "overall": 64,
+    "potential": 64,
+    "position": "CB, RB",
+    "age": 34,
+    "team": "Deportivo Táchira"
+  },
+  {
+    "name": "J. Castillo",
+    "overall": 64,
+    "potential": 72,
+    "position": "RW, LW, RM",
+    "age": 22,
+    "team": "Deportivo Táchira"
+  },
+  {
+    "name": "R. Guerrero",
+    "overall": 64,
+    "potential": 64,
+    "position": "RM, RW",
+    "age": 31,
+    "team": "Academia Puerto Cabello"
+  },
+  {
+    "name": "M. Vegas",
+    "overall": 63,
+    "potential": 75,
+    "position": "CDM, CM",
+    "age": 19,
+    "team": "Caracas FC"
+  },
+  {
+    "name": "L. Fioravanti",
+    "overall": 63,
+    "potential": 63,
+    "position": "CDM, CM",
+    "age": 33,
+    "team": "Deportivo Táchira"
+  },
+  {
+    "name": "D. Díaz",
+    "overall": 63,
+    "potential": 63,
+    "position": "CM, CAM, CDM",
+    "age": 35,
+    "team": "Deportivo Táchira"
+  },
+  {
+    "name": "F. López",
+    "overall": 63,
+    "potential": 70,
+    "position": "CM, LW, CDM",
+    "age": 22,
+    "team": "Carabobo FC"
+  },
+  {
+    "name": "R. Rojas",
+    "overall": 63,
+    "potential": 63,
+    "position": "ST",
+    "age": 32,
+    "team": "Academia Puerto Cabello"
+  },
+  {
+    "name": "E. Herrera",
+    "overall": 63,
+    "potential": 63,
+    "position": "GK",
+    "age": 32,
+    "team": "Academia Puerto Cabello"
+  },
+  {
+    "name": "L. Reinoso",
+    "overall": 62,
+    "potential": 75,
+    "position": "ST",
+    "age": 19,
+    "team": "Caracas FC"
+  },
+  {
+    "name": "W. Correa",
+    "overall": 62,
+    "potential": 76,
+    "position": "CAM, RW, CM",
+    "age": 19,
+    "team": "Caracas FC"
+  },
+  {
+    "name": "M. Fierro",
+    "overall": 62,
+    "potential": 62,
+    "position": "CB, RB, LB",
+    "age": 37,
+    "team": "Caracas FC"
+  },
+  {
+    "name": "J. Sánchez",
+    "overall": 62,
+    "potential": 75,
+    "position": "CB, LB, CDM",
+    "age": 19,
+    "team": "Deportivo Táchira"
+  },
+  {
+    "name": "D. Gil",
+    "overall": 62,
+    "potential": 70,
+    "position": "GK",
+    "age": 23,
+    "team": "Carabobo FC"
+  },
+  {
+    "name": "H. Linares",
+    "overall": 62,
+    "potential": 64,
+    "position": "LB, CB",
+    "age": 24,
+    "team": "Academia Puerto Cabello"
+  },
+  {
+    "name": "J. Duarte",
+    "overall": 61,
+    "potential": 71,
+    "position": "ST",
+    "age": 19,
+    "team": "Deportivo Táchira"
+  },
+  {
+    "name": "F. Ruíz",
+    "overall": 61,
+    "potential": 68,
+    "position": "RW, ST, RM",
+    "age": 22,
+    "team": "Carabobo FC"
+  },
+  {
+    "name": "J. Riasco",
+    "overall": 61,
+    "potential": 72,
+    "position": "ST",
+    "age": 21,
+    "team": "Carabobo FC"
+  },
+  {
+    "name": "Tony Shimaga",
+    "overall": 61,
+    "potential": 66,
+    "position": "CB, CDM",
+    "age": 25,
+    "team": "Academia Puerto Cabello"
+  },
+  {
+    "name": "M. Isah",
+    "overall": 61,
+    "potential": 68,
+    "position": "CM, CDM",
+    "age": 23,
+    "team": "Academia Puerto Cabello"
+  },
+  {
+    "name": "Á. Figueroa",
+    "overall": 60,
+    "potential": 74,
+    "position": "CM, LM, CAM, CDM",
+    "age": 20,
+    "team": "Caracas FC"
+  },
+  {
+    "name": "E. Tamiche",
+    "overall": 60,
+    "potential": 74,
+    "position": "CB",
+    "age": 20,
+    "team": "Deportivo Táchira"
+  },
+  {
+    "name": "P. Mollica",
+    "overall": 59,
+    "potential": 72,
+    "position": "RB, CB",
+    "age": 20,
+    "team": "Caracas FC"
+  },
+  {
+    "name": "G. Lozano",
+    "overall": 59,
+    "potential": 74,
+    "position": "CM, CDM",
+    "age": 18,
+    "team": "Deportivo Táchira"
+  },
+  {
+    "name": "D. Osorio",
+    "overall": 59,
+    "potential": 70,
+    "position": "ST",
+    "age": 20,
+    "team": "Academia Puerto Cabello"
+  },
+  {
+    "name": "S. Oduoye",
+    "overall": 58,
+    "potential": 72,
+    "position": "ST",
+    "age": 19,
+    "team": "Caracas FC"
+  },
+  {
+    "name": "J. Vegas",
+    "overall": 58,
+    "potential": 71,
+    "position": "GK",
+    "age": 20,
+    "team": "Caracas FC"
+  },
+  {
+    "name": "J. Rondón",
+    "overall": 58,
+    "potential": 70,
+    "position": "ST, LW",
+    "age": 19,
+    "team": "Caracas FC"
+  },
+  {
+    "name": "C. Vegas",
+    "overall": 58,
+    "potential": 70,
+    "position": "RW, RM",
+    "age": 18,
+    "team": "Caracas FC"
+  },
+  {
+    "name": "L. Zuñiga",
+    "overall": 58,
+    "potential": 69,
+    "position": "LW, RW, RM, LM",
+    "age": 21,
+    "team": "Deportivo Táchira"
+  },
+  {
+    "name": "F. Oliveros",
+    "overall": 58,
+    "potential": 71,
+    "position": "CB, LB",
+    "age": 20,
+    "team": "Carabobo FC"
+  },
+  {
+    "name": "Y. Rebolledo",
+    "overall": 58,
+    "potential": 69,
+    "position": "RB",
+    "age": 20,
+    "team": "Academia Puerto Cabello"
+  },
+  {
+    "name": "C. Martinez",
+    "overall": 57,
+    "potential": 71,
+    "position": "RW, LW, CAM, RM",
+    "age": 18,
+    "team": "Caracas FC"
+  },
+  {
+    "name": "M. Morigi",
+    "overall": 57,
+    "potential": 69,
+    "position": "CM, CDM",
+    "age": 18,
+    "team": "Caracas FC"
+  },
+  {
+    "name": "C. Velásquez",
+    "overall": 57,
+    "potential": 69,
+    "position": "RM, CM, RW",
+    "age": 20,
+    "team": "Academia Puerto Cabello"
+  },
+  {
+    "name": "A. Herrera",
+    "overall": 55,
+    "potential": 70,
+    "position": "RB, LB",
+    "age": 17,
+    "team": "Caracas FC"
+  },
+  {
+    "name": "S. Mendoza",
+    "overall": 55,
+    "potential": 67,
+    "position": "CM, CDM",
+    "age": 19,
+    "team": "Carabobo FC"
+  },
+  {
+    "name": "R. Alleyne",
+    "overall": 54,
+    "potential": 64,
+    "position": "GK",
+    "age": 20,
+    "team": "Academia Puerto Cabello"
+  }
+]

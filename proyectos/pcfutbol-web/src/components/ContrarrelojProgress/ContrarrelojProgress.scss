@@ -1,0 +1,274 @@
+.contrarreloj-progress {
+  animation: fadeIn 0.4s ease;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1.5rem;
+
+  // ==================
+  // HERO CARD
+  // ==================
+  &__hero {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.25rem 1.5rem;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(48, 209, 88, 0.05) 100%);
+    border: 1px solid rgba(0, 212, 255, 0.15);
+    border-radius: 16px;
+    margin-bottom: 1.5rem;
+
+    .hero-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 212, 255, 0.1);
+      border: 2px solid rgba(0, 212, 255, 0.3);
+      color: #00d4ff;
+      flex-shrink: 0;
+      animation: heroPulse 3s ease-in-out infinite;
+    }
+
+    .hero-info {
+      flex: 1;
+
+      h2 {
+        margin: 0;
+        font-size: 1.3rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        background: linear-gradient(135deg, #fff 0%, #8ec8ff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .hero-sub {
+        font-size: 0.8rem;
+        color: #667788;
+        font-weight: 600;
+        margin-top: 2px;
+      }
+    }
+
+    .hero-season {
+      text-align: center;
+      padding: 0.5rem 1rem;
+      background: rgba(0, 212, 255, 0.1);
+      border-radius: 12px;
+      border: 1px solid rgba(0, 212, 255, 0.2);
+
+      .season-num {
+        font-size: 1.8rem;
+        font-weight: 900;
+        color: #00d4ff;
+        line-height: 1;
+      }
+      .season-label {
+        font-size: 0.65rem;
+        color: #667788;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-weight: 700;
+      }
+    }
+  }
+
+  // ==================
+  // STATS ROW
+  // ==================
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+
+    .stat-card {
+      text-align: center;
+      padding: 0.75rem 0.5rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      overflow: hidden;
+      min-width: 0;
+
+      .stat-value {
+        font-size: 1.4rem;
+        font-weight: 900;
+        line-height: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        &--long {
+          font-size: 1rem;
+        }
+      }
+      .stat-label {
+        font-size: 0.65rem;
+        color: #667788;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+        font-weight: 600;
+        margin-top: 4px;
+      }
+
+      &--league .stat-value { color: #30d158; }
+      &--position .stat-value { color: #ffd60a; }
+      &--trophies .stat-value { color: #d4a017; }
+      &--goal .stat-value { color: #00d4ff; }
+    }
+  }
+
+  // ==================
+  // TIMELINE
+  // ==================
+  &__timeline-title {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #556677;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    padding-left: 4px;
+  }
+
+  &__timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+}
+
+// ==================
+// TIMELINE EVENTS
+// ==================
+.timeline-event {
+  display: flex;
+  gap: 1rem;
+  min-height: 52px;
+
+  &__line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40px;
+    flex-shrink: 0;
+  }
+
+  &__dot {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.04);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    color: #556;
+    flex-shrink: 0;
+    z-index: 1;
+    transition: all 0.3s ease;
+  }
+
+  &__connector {
+    width: 2px;
+    flex: 1;
+    min-height: 12px;
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0.5rem 0 1rem;
+    flex: 1;
+  }
+
+  &__title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #ccd;
+  }
+
+  &__detail {
+    font-size: 0.75rem;
+    color: #556677;
+    font-weight: 500;
+  }
+
+  // ==================
+  // COLOR VARIANTS
+  // ==================
+  &--blue .timeline-event__dot {
+    border-color: #4a90d9;
+    background: rgba(74, 144, 217, 0.12);
+    color: #4a90d9;
+  }
+
+  &--green .timeline-event__dot {
+    border-color: #2d8a4e;
+    background: rgba(45, 138, 78, 0.12);
+    color: #2d8a4e;
+  }
+  &--green .timeline-event__title { color: #30d158; }
+
+  &--red .timeline-event__dot {
+    border-color: #d94a4a;
+    background: rgba(217, 74, 74, 0.12);
+    color: #d94a4a;
+  }
+  &--red .timeline-event__title { color: #ff453a; }
+
+  &--gold .timeline-event__dot {
+    border-color: #d4a017;
+    background: rgba(212, 160, 23, 0.12);
+    color: #d4a017;
+  }
+  &--gold .timeline-event__title { color: #ffd60a; }
+
+  &--accent .timeline-event__dot {
+    border-color: #00d4ff;
+    background: rgba(0, 212, 255, 0.12);
+    color: #00d4ff;
+    box-shadow: 0 0 16px rgba(0, 212, 255, 0.2);
+  }
+  &--accent .timeline-event__title { color: #00d4ff; }
+  &--accent .timeline-event__content {
+    background: rgba(0, 212, 255, 0.04);
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem 0.75rem;
+    border: 1px solid rgba(0, 212, 255, 0.08);
+  }
+
+  &--dimmed .timeline-event__dot {
+    border-color: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.02);
+    color: #445;
+    border-style: dashed;
+  }
+  &--dimmed .timeline-event__title { color: #556; }
+  &--dimmed .timeline-event__connector { display: none; }
+
+  &--active .timeline-event__dot {
+    animation: activePulse 2.5s ease-in-out infinite;
+  }
+}
+
+@keyframes activePulse {
+  0%, 100% { box-shadow: 0 0 12px rgba(0, 212, 255, 0.2); }
+  50% { box-shadow: 0 0 24px rgba(0, 212, 255, 0.45); }
+}
+
+@keyframes heroPulse {
+  0%, 100% { box-shadow: 0 0 0 rgba(0, 212, 255, 0); }
+  50% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.2); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 
 import { useGame } from '../../context/GameContext';
+import { posES } from '../../game/positionNames';
 import CustomSelect from '../common/CustomSelect/CustomSelect';
 
 import {
@@ -161,7 +162,7 @@ export default function TransfersV2() {
 
         (team.players || []).forEach(p => {
 
-          players.push({ ...p, teamName: team.name, teamId: team.id });
+          players.push({ ...p, teamName: team.name, teamId: team.id, leagueId: team.leagueId });
 
         });
 
@@ -259,21 +260,17 @@ export default function TransfersV2() {
 
           <h1>Mercado de Fichajes</h1>
 
-          <div className={`window-status ${windowStatus.open ? 'open' : 'closed'}`}>
+          <div className="window-status open">
 
             <Clock size={16} />
 
             <span>
 
-              {windowStatus.open
+              {state.preseasonPhase
 
-                ? windowStatus.type === 'summer'
+                ? 'Pretemporada — Mercado ABIERTO'
 
-                  ? 'Pretemporada â€" Mercado ABIERTO'
-
-                  : `Jornada ${state.currentWeek} â€" Mercado de Invierno ABIERTO`
-
-                : `Jornada ${state.currentWeek || '-'} â€" Mercado CERRADO`}
+                : `Jornada ${state.currentWeek} — Mercado ABIERTO`}
 
             </span>
 
@@ -547,19 +544,15 @@ function ResumenTab({ windowStatus, summary, myTeam }) {
 
         <div className="status-info">
 
-          <h3>{windowStatus.open ? 'Mercado Abierto' : 'Mercado Cerrado'}</h3>
+          <h3>Mercado Abierto</h3>
 
           <p>
 
-            {windowStatus.open
+            {state.preseasonPhase
 
-              ? windowStatus.type === 'summer'
+              ? 'Estamos en pretemporada. ¡Aprovecha para fichar antes de que empiece la liga!'
 
-                ? 'Estamos en pretemporada. ¡Aprovecha para fichar antes de que empiece la liga!'
-
-                : '¡Se abre el mercado de invierno! Solo esta jornada para reforzar la plantilla.'
-
-              : 'El mercado de fichajes está cerrado. Próxima apertura en el mercado de invierno (mitad de liga).'}
+              : 'El mercado está siempre abierto. Ficha, cede y negocia cuando quieras.'}
 
           </p>
 
@@ -885,7 +878,7 @@ function BuscarTab({ players, searchQuery, setSearchQuery, filters, setFilters, 
 
               <div className="card-header">
 
-                <span className="position" data-pos={player.position}>{player.position}</span>
+                <span className="position" data-pos={player.position}>{posES(player.position)}</span>
 
                 <span className="overall">{player.overall}</span>
 
@@ -915,7 +908,7 @@ function BuscarTab({ players, searchQuery, setSearchQuery, filters, setFilters, 
 
                   <span>{player.age} años</span>
 
-                  <span className="value">{formatTransferPrice(player.value || player.marketValue || player.overall * 500000)}</span>
+                  <span className="value">{formatTransferPrice(calculateMarketValue(player, player.leagueId))}</span>
 
                 </div>
 
@@ -1094,6 +1087,18 @@ function OfertasRecibidasTab({ offers, incomingLoanOffers = [], myPlayers, dispa
             <DollarSign size={18} />
 
             <span>{formatTransferPrice(offer.amount)}</span>
+
+            {offer.expiryWeek && (
+
+              <span className="expiry-tag">
+
+                <Clock size={12} /> Caduca sem. {offer.expiryWeek}
+
+                {state.currentWeek >= offer.expiryWeek - 1 && <span className="urgent"> ⚠️</span>}
+
+              </span>
+
+            )}
 
           </div>
 
@@ -1365,81 +1370,71 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
     <div className="tab-ofertas">
 
-      {/* Transfer offers */}
+      {/* Transfer offers — dual response cards */}
 
-      {offers.length > 0 && <h4 className="section-title">Ofertas de traspaso</h4>}
+      {offers.length > 0 && <h4 className="section-title"><Target size={16} /> Ofertas de traspaso</h4>}
 
-      {offers.map((offer, i) => (
+      {offers.map((offer, i) => {
 
-        <div key={offer.id || i} className={`offer-card outgoing ${offer.status}`}>
+        const bothAccepted = offer.clubResponse === 'accepted' && offer.playerResponse === 'accepted';
 
-          <div className="offer-header">
+        const hasCounter = offer.clubResponse === 'countered';
 
-            <div className="to-team">
+        const isPending = offer.status === 'pending';
 
-              <Target size={20} />
+        const isResolved = offer.status === 'resolved';
 
-              <span>{offer.toTeam}</span>
+
+
+        return (
+
+          <div key={offer.id || i} className={`offer-card-v2 ${isPending ? 'pending' : ''} ${bothAccepted ? 'success' : ''}`}>
+
+            {/* Player header */}
+
+            <div className="offer-v2-header">
+
+              <span className="pos-badge" data-pos={offer.player?.position}>{posES(offer.player?.position)}</span>
+
+              <div className="offer-v2-info">
+
+                <span className="name">{offer.player?.name || offer.playerName}</span>
+
+                <span className="team">{offer.toTeam} · {offer.player?.age} años</span>
+
+              </div>
+
+              <span className="ovr-badge">{offer.player?.overall}</span>
 
             </div>
 
-            <span className={`status ${offer.status}`}>
 
-              {offer.status === 'pending' ? 'Pendiente' :
 
-               offer.status === 'accepted' ? 'Aceptada' :
+            {/* Amounts */}
 
-               offer.status === 'rejected' ? 'Rechazada' :
+            <div className="offer-v2-amounts">
 
-               offer.status === 'countered' ? 'Contraoferta' : offer.status}
+              <span><DollarSign size={14} /> {formatTransferPrice(offer.amount)}</span>
 
-            </span>
+              <span><Users size={14} /> {formatTransferPrice((offer.salaryOffer || 0) * 52)}/año</span>
 
-          </div>
+              <span className="week-tag">Sem. {offer.submittedWeek || '?'}</span>
 
-          <div className="offer-player">
+            </div>
 
-            <span className="position">{offer.player?.position}</span>
 
-            <span className="name">{offer.player?.name}</span>
 
-            <span className="overall">{offer.player?.overall}</span>
+            {/* Pending state */}
 
-          </div>
+            {isPending && (
 
-          <div className="offer-amount">
+              <div className="offer-v2-pending">
 
-            <DollarSign size={18} />
+                <Clock size={16} />
 
-            <span>{formatTransferPrice(offer.amount)}</span>
+                <span>⏳ Pendiente de respuesta — simula un partido</span>
 
-          </div>
-
-          <div className="offer-status-detail">
-
-            {offer.status === 'pending' && <span><Clock size={12} /> Esperando respuesta...</span>}
-
-            {offer.status === 'accepted' && <span className="success"><CheckCircle size={12} /> ¡Fichaje completado!</span>}
-
-            {offer.status === 'rejected' && <span className="rejected"><XCircle size={12} /> Oferta rechazada</span>}
-
-            {offer.status === 'countered' && (
-
-              <div className="counter-offer">
-
-                <span><RefreshCw size={12} /> Piden {formatTransferPrice(offer.counterAmount)}</span>
-
-                {budget >= offer.counterAmount && (
-
-                  <button className="btn-accept-counter" onClick={() => handleAcceptCounter(offer)}>
-
-                    <Check size={14} /> Aceptar
-
-                  </button>
-
-                )}
-
-                <button className="btn-withdraw" onClick={() => handleWithdraw(offer)}>
+                <button className="btn-withdraw-small" onClick={() => handleWithdraw(offer)}>
 
                   <X size={14} /> Retirar
 
@@ -1449,21 +1444,123 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
             )}
 
+
+
+            {/* Dual responses */}
+
+            {isResolved && (
+
+              <div className="offer-v2-responses">
+
+                <div className={`response-row ${offer.clubResponse}`}>
+
+                  <Building2 size={16} />
+
+                  <span className="response-label">Club</span>
+
+                  {offer.clubResponse === 'accepted' && <span className="response-result accepted"><CheckCircle size={14} /> Acepta</span>}
+
+                  {offer.clubResponse === 'rejected' && <span className="response-result rejected"><XCircle size={14} /> {offer.clubReason}</span>}
+
+                  {offer.clubResponse === 'countered' && <span className="response-result countered"><RefreshCw size={14} /> {offer.clubReason}</span>}
+
+                </div>
+
+                <div className={`response-row ${offer.playerResponse}`}>
+
+                  <UserCheck size={16} />
+
+                  <span className="response-label">Jugador</span>
+
+                  {offer.playerResponse === 'accepted' && <span className="response-result accepted"><CheckCircle size={14} /> Acepta</span>}
+
+                  {offer.playerResponse === 'rejected' && <span className="response-result rejected"><XCircle size={14} /> {offer.playerReason}</span>}
+
+                </div>
+
+              </div>
+
+            )}
+
+
+
+            {/* Result / Actions */}
+
+            {bothAccepted && (
+
+              <div className="offer-v2-result success">
+
+                <Sparkles size={16} /> ¡Fichaje completado!
+
+              </div>
+
+            )}
+
+
+
+            {hasCounter && offer.playerResponse === 'accepted' && (
+
+              <div className="offer-v2-counter">
+
+                <span>🔄 El club pide {formatTransferPrice(offer.clubCounterAmount)}</span>
+
+                <div className="counter-btns">
+
+                  {budget >= (offer.clubCounterAmount || 0) && (
+
+                    <button className="btn-accept-counter" onClick={() => handleAcceptCounter(offer)}>
+
+                      <Check size={14} /> Aceptar contraoferta
+
+                    </button>
+
+                  )}
+
+                  <button className="btn-withdraw" onClick={() => handleWithdraw(offer)}>
+
+                    <X size={14} /> Retirar
+
+                  </button>
+
+                </div>
+
+              </div>
+
+            )}
+
+
+
+            {hasCounter && offer.playerResponse === 'rejected' && (
+
+              <div className="offer-v2-result failed">
+
+                <XCircle size={16} /> El jugador rechazó, no se puede completar
+
+                <button className="btn-withdraw-small" onClick={() => handleWithdraw(offer)}>Eliminar</button>
+
+              </div>
+
+            )}
+
+
+
+            {isResolved && !bothAccepted && !hasCounter && (
+
+              <div className="offer-v2-result failed">
+
+                <XCircle size={16} /> Oferta rechazada
+
+                <button className="btn-withdraw-small" onClick={() => handleWithdraw(offer)}>Eliminar</button>
+
+              </div>
+
+            )}
+
           </div>
 
-          {offer.status === 'pending' && (
+        );
 
-            <button className="btn-withdraw-small" onClick={() => handleWithdraw(offer)}>
-
-              Retirar oferta
-
-            </button>
-
-          )}
-
-        </div>
-
-      ))}
+      })}
 
 
 
@@ -2101,7 +2198,7 @@ function ExplorarTab({ leagueTeams, myTeamId, playerLeagueId, onSelectPlayer, bl
 
               >
 
-                <span className="player-pos" data-pos={player.position}>{player.position}</span>
+                <span className="player-pos" data-pos={player.position}>{posES(player.position)}</span>
 
                 <span className="player-name">{player.name}</span>
 
@@ -2109,7 +2206,7 @@ function ExplorarTab({ leagueTeams, myTeamId, playerLeagueId, onSelectPlayer, bl
 
                 <span className="player-ovr">{player.overall}</span>
 
-                <span className="player-value">{formatTransferPrice(calculateMarketValue(player, playerLeagueId))}</span>
+                <span className="player-value">{formatTransferPrice(calculateMarketValue(player, selectedLeague))}</span>
 
                 {isBlocked && <span className="blocked-badge"><Ban size={14} /></span>}
 
@@ -2279,7 +2376,7 @@ function OjeadorTab({ myTeam, leagueTeams, scoutingLevel, budget, onSelectPlayer
 
                 >
 
-                  <div className="suggestion-pos" data-pos={player.position}>{player.position}</div>
+                  <div className="suggestion-pos" data-pos={player.position}>{posES(player.position)}</div>
 
                   <div className="suggestion-main">
 
@@ -2443,11 +2540,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
   const [playerCounter, setPlayerCounter] = useState(null);
 
-  const [negotiationRounds, setNegotiationRounds] = useState([]); // [{offer, counter}]
-
   const [isRivalry, setIsRivalry] = useState(false);
-
-  const [isFinalOffer, setIsFinalOffer] = useState(false);
 
 
 
@@ -2465,7 +2558,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
   // Datos del jugador
 
-  const marketValue = calculateMarketValue(player, state.leagueId);
+  const marketValue = calculateMarketValue(player, player.leagueId || state.leagueId);
 
   const currentSalary = player.salary || 50000;
 
@@ -2600,47 +2693,51 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
   // Derived negotiation values
 
-  const maxRounds = isRivalry ? 2 : 3;
-
-  const currentDisplayRound = clubStatus === 'counter' ? negotiationRounds.length : negotiationRounds.length + 1;
 
 
-
-  // Calcular probabilidad del club en tiempo real (usa valor con descuento ojeador)
+  // Calcular probabilidad del club en tiempo real (mismo cálculo que evaluateClubOffer)
 
   const clubProbability = useMemo(() => {
 
-    const ratio = offerAmount / effectiveMarketValue;
+    // Calcular askingPrice real (igual que en evaluateClubOffer)
 
-    let prob = 20;
+    const diff = calculateTransferDifficulty(
 
-    if (ratio >= 1.2) prob = 95;
+      player,
 
-    else if (ratio >= 1.1) prob = 85;
+      { name: player.teamName, id: player.teamId },
 
-    else if (ratio >= 1.0) prob = 70;
+      { name: state.team?.name, id: state.teamId }
 
-    else if (ratio >= 0.9) prob = 50;
+    );
 
-    else if (ratio >= 0.8) prob = 30;
+    const askingPrice = Math.round(effectiveMarketValue * diff.askingMultiplier);
 
-    else if (ratio >= 0.7) prob = 15;
-
-    else prob = 5;
+    const ratio = offerAmount / askingPrice;
 
 
 
-    // Ajustar por tier del vendedor
+    // Mapear ratio a probabilidad (refleja la lógica real de evaluateClubOffer)
 
-    if (sellerTier >= 3) prob -= 10;
+    let prob;
 
-    if (sellerTier >= 4) prob -= 10;
+    if (ratio >= 1.15) prob = 98;         // Acepta siempre
+
+    else if (ratio >= 0.95) prob = 80;     // 80% acepta
+
+    else if (ratio >= 0.80) prob = 55;     // Contraoferta probable, puede aceptar en rondas
+
+    else if (ratio >= 0.65) prob = 30;     // Contraoferta difícil
+
+    else if (ratio >= 0.50) prob = 10;     // Casi seguro rechaza
+
+    else prob = 2;                          // Oferta irrisoria → rechazo directo
 
 
 
-    return Math.max(5, Math.min(95, prob));
+    return Math.max(2, Math.min(98, prob));
 
-  }, [offerAmount, marketValue, sellerTier]);
+  }, [offerAmount, effectiveMarketValue, player, state.team, state.teamId]);
 
 
 
@@ -2821,9 +2918,6 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
   // Enviar solicitud de cesión
 
   const handleLoanRequest = () => {
-
-    if (!windowStatus.open) return;
-
     const check = canLoanPlayer(player, state, 'in');
 
     if (!check.canLoan) {
@@ -2902,7 +2996,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
               salary: player.salary || 50000,
 
-              value: player.value || player.marketValue || marketValue
+              value: marketValue
 
             },
 
@@ -2944,371 +3038,36 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
 
 
-  // Enviar oferta al club (con negociación dinámica por rondas)
-
-  const handleClubOffer = () => {
-
-    setClubStatus('negotiating');
-
-
-
-    setTimeout(() => {
-
-      const currentRound = negotiationRounds.length + 1;
-
-      const negotiationContext = {
-
-        round: currentRound,
-
-        previousOffers: negotiationRounds.map(r => r.offer),
-
-        previousCounter: negotiationRounds.length > 0 ? negotiationRounds[negotiationRounds.length - 1].counter : null
-
-      };
-
-
-
-      const response = evaluateClubOffer(
-
-        { amount: offerAmount },
-
-        { ...player, role: { name: 'Titular' } },
-
-        { name: player.teamName, id: player.teamId },
-
-        { name: myTeam?.name, id: state.teamId },
-
-        negotiationContext
-
-      );
-
-
-
-      // Guardar ronda
-
-      setNegotiationRounds(prev => [...prev, { offer: offerAmount, counter: response.counter || null }]);
-
-
-
-      if (response.accepted) {
-
-        setClubStatus('accepted');
-
-        setPlayerStatus('pending');
-
-      } else if (response.rejected) {
-
-        setClubStatus('rejected');
-
-        setFinalResult('failed');
-
-        setFailReason(response.reason || 'El club rechazó seguir negociando');
-
-      } else {
-
-        setClubStatus('counter');
-
-        setClubCounter(response.counter);
-
-        if (response.isFinalOffer) {
-
-          setIsFinalOffer(true);
-
-        }
-
-      }
-
-    }, 1200);
-
-  };
-
-
-
-  // Aceptar contraoferta
-
-  const handleAcceptCounter = () => {
-
-    setOfferAmount(clubCounter);
-
-    setClubStatus('accepted');
-
-    setPlayerStatus('pending');
-
-    setClubCounter(null);
-
-  };
-
-
-
-  // Rechazar contraoferta (sistema de rondas dinámico)
-
-  const handleRejectCounter = () => {
-
-    if (isFinalOffer) {
-
-      // Era "take it or leave it" → rechazo definitivo
-
-      setClubStatus('rejected');
-
-      setFinalResult('failed');
-
-      setFailReason('Rechazaste la oferta final del club');
-
-    } else if (negotiationRounds.length >= maxRounds) {
-
-      // Máximo de rondas alcanzado → rechazo definitivo
-
-      setClubStatus('rejected');
-
-      setFinalResult('failed');
-
-      setFailReason('El club rechaza seguir negociando');
-
-    } else {
-
-      // Aún quedan rondas → permitir nueva oferta
-
-      setClubStatus('pending');
-
-      setClubCounter(null);
-
-    }
-
-  };
-
-
-
-  // Enviar oferta al jugador
-
-  const handlePlayerOffer = () => {
-
-    setPlayerStatus('negotiating');
-
-
-
-    setTimeout(() => {
-
-      const response = evaluatePlayerOffer(
-
-        { salary: salaryOffer, contractYears },
-
-        { ...player, personality, salary: currentSalary },
-
-        { name: player.teamName },
-
-        { name: myTeam?.name }
-
-      );
-
-
-
-      if (response.accepted) {
-
-        setPlayerStatus('accepted');
-
-        setFinalResult('success');
-
-        completeTransfer();
-
-      } else {
-
-        // Contraoferta del jugador - siempre debe pedir MÁS de lo que ofreces
-
-        const baseSalary = response.requiredSalary || Math.round(salaryOffer * 1.3);
-
-        // Si el required es menor o igual a lo ofrecido, el problema no es dinero
-
-        // El jugador pide una prima extra por no convencerle el proyecto
-
-        const counterSalary = baseSalary <= salaryOffer
-
-          ? Math.round(salaryOffer * (1.2 + (response.tierDiff || 0) * 0.15)) // +20% mínimo, +15% extra por cada tier de diferencia
-
-          : baseSalary;
-
-
-
-        // Ajustar la razón si el salario no era el problema
-
-        let counterReason = response.reason;
-
-        if (baseSalary <= salaryOffer && counterSalary > salaryOffer) {
-
-          if (response.tierDiff > 0) {
-
-            counterReason = 'Necesita una prima extra para bajar de categoría';
-
-          } else {
-
-            counterReason = 'Pide una mejora salarial para compensar el cambio';
-
-          }
-
-        }
-
-
-
-        setPlayerCounter({ salary: counterSalary, reason: counterReason });
-
-        setPlayerStatus('counter');
-
-      }
-
-    }, 1200);
-
-  };
-
-
-
-  // Aceptar contraoferta del jugador
-
-  const handleAcceptPlayerCounter = () => {
-
-    setSalaryOffer(playerCounter.salary);
-
-    setPlayerStatus('accepted');
-
-    setFinalResult('success');
-
-    // Complete transfer with counter salary
-
-    const newPlayer = {
-
-      ...player,
-
-      personality,
-
-      salary: playerCounter.salary,
-
-      contractYears,
-
-      teamId: state.teamId
-
-    };
-
-    dispatch({ type: 'SIGN_PLAYER', payload: { player: newPlayer, fee: offerAmount } });
-
-    const updatedLeagueTeams = (state.leagueTeams || []).map(t => {
-
-      if (t.id === player.teamId) {
-
-        return { ...t, players: (t.players || []).filter(p => p.name !== player.name), budget: (t.budget || 50_000_000) + offerAmount };
-
-      }
-
-      return t;
-
-    });
-
-    dispatch({ type: 'UPDATE_LEAGUE_TEAMS', payload: updatedLeagueTeams });
-
-    dispatch({
-
-      type: 'ADD_MESSAGE',
-
-      payload: {
-
-        id: Date.now(), type: 'transfer', title: 'Fichaje completado',
-
-        content: `${player.name} es nuevo jugador. Coste: ${formatTransferPrice(offerAmount)}, Salario: ${formatTransferPrice(playerCounter.salary * 52)}/año`,
-
-        date: `Semana ${state.currentWeek}`
-
-      }
-
-    });
-
-    setPlayerCounter(null);
-
-  };
-
-
-
-  // Rechazar contraoferta del jugador
-
+  // Rechazar contraoferta del jugador (agente libre / pre-contrato)
   const handleRejectPlayerCounter = () => {
-
     setPlayerStatus('rejected');
-
     setFinalResult('failed');
-
     setFailReason('No se llegó a un acuerdo con el jugador');
-
     setPlayerCounter(null);
-
   };
 
-
-
-  // Hacer una última contraoferta al jugador
-
+  // Hacer una contraoferta al jugador (agente libre / pre-contrato)
   const handleCounterPlayerOffer = () => {
-
-    // User makes one last counter-offer (current salary input value)
-
     setPlayerStatus('negotiating');
-
     setPlayerCounter(null);
-
-
-
     setTimeout(() => {
-
       const response = evaluatePlayerOffer(
-
         { salary: salaryOffer, contractYears },
-
         { ...player, personality, salary: currentSalary },
-
         { name: player.teamName },
-
         { name: myTeam?.name }
-
       );
-
-
-
       if (response.accepted) {
-
         setPlayerStatus('accepted');
-
         setFinalResult('success');
-
-        completeTransfer();
-
+        completeFreeAgentTransfer();
       } else {
-
-        // This was the last chance - deal is off
-
         setPlayerStatus('rejected');
-
         setFinalResult('failed');
-
         setFailReason(response.reason || 'El jugador rechazó definitivamente');
-
       }
-
     }, 1200);
-
   };
-
-
-
-  // Reintentar con jugador
-
-  const handleRetryPlayer = () => {
-
-    setPlayerStatus('pending');
-
-    setFinalResult(null);
-
-    setFailReason('');
-
-    setPlayerCounter(null);
-
-  };
-
-
 
   // Oferta a jugador libre / pre-contrato
 
@@ -3536,86 +3295,6 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
 
 
-  // Completar transferencia
-
-  const completeTransfer = () => {
-
-    const newPlayer = {
-
-      ...player,
-
-      personality,
-
-      salary: salaryOffer,
-
-      contractYears,
-
-      teamId: state.teamId
-
-    };
-
-
-
-    dispatch({
-
-      type: 'SIGN_PLAYER',
-
-      payload: { player: newPlayer, fee: offerAmount }
-
-    });
-
-
-
-    const updatedLeagueTeams = (state.leagueTeams || []).map(t => {
-
-      if (t.id === player.teamId) {
-
-        return {
-
-          ...t,
-
-          players: (t.players || []).filter(p => p.name !== player.name),
-
-          budget: (t.budget || 50_000_000) + offerAmount
-
-        };
-
-      }
-
-      return t;
-
-    });
-
-
-
-    dispatch({ type: 'UPDATE_LEAGUE_TEAMS', payload: updatedLeagueTeams });
-
-
-
-    dispatch({
-
-      type: 'ADD_MESSAGE',
-
-      payload: {
-
-        id: Date.now(),
-
-        type: 'transfer',
-
-        title: 'Fichaje completado',
-
-        content: `${player.name} es nuevo jugador. Coste: ${formatTransferPrice(offerAmount)}, Salario: ${formatTransferPrice(salaryOffer * 52)}/año`,
-
-        date: `Semana ${state.currentWeek}`
-
-      }
-
-    });
-
-  };
-
-
-
   const canAfford = budget >= offerAmount;
 
 
@@ -3748,7 +3427,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
               <div className="card-top">
 
-                <span className="position-badge" data-pos={player.position}>{player.position}</span>
+                <span className="position-badge" data-pos={player.position}>{posES(player.position)}</span>
 
                 <span className="overall-badge">{player.overall}</span>
 
@@ -3880,7 +3559,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
             <div className="player-mobile-header">
 
-              <span className="pos-badge" data-pos={player.position}>{player.position}</span>
+              <span className="pos-badge" data-pos={player.position}>{posES(player.position)}</span>
 
               <div className="info">
 
@@ -3910,7 +3589,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                   className={`toggle-btn ${negotiationMode === 'transfer' ? 'active' : ''}`}
 
-                  onClick={() => { setNegotiationMode('transfer'); setClubStatus('pending'); setPlayerStatus('locked'); setFinalResult(null); setFailReason(''); setNegotiationRounds([]); setIsFinalOffer(false); setClubCounter(null); }}
+                  onClick={() => { setNegotiationMode('transfer'); setClubStatus('pending'); setPlayerStatus('locked'); setFinalResult(null); setFailReason(''); }}
 
                 >
 
@@ -3922,7 +3601,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                   className={`toggle-btn ${negotiationMode === 'loan' ? 'active' : ''}`}
 
-                  onClick={() => { setNegotiationMode('loan'); setClubStatus('pending'); setPlayerStatus('locked'); setFinalResult(null); setFailReason(''); setNegotiationRounds([]); setIsFinalOffer(false); setClubCounter(null); }}
+                  onClick={() => { setNegotiationMode('loan'); setClubStatus('pending'); setPlayerStatus('locked'); setFinalResult(null); setFailReason(''); }}
 
                 >
 
@@ -3936,7 +3615,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                     className={`toggle-btn ${negotiationMode === 'precontract' ? 'active' : ''}`}
 
-                    onClick={() => { setNegotiationMode('precontract'); setClubStatus('pending'); setPlayerStatus('pending'); setFinalResult(null); setFailReason(''); setNegotiationRounds([]); setIsFinalOffer(false); setClubCounter(null); }}
+                    onClick={() => { setNegotiationMode('precontract'); setClubStatus('pending'); setPlayerStatus('pending'); setFinalResult(null); setFailReason(''); }}
 
                   >
 
@@ -4144,11 +3823,11 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                     onClick={handleLoanRequest}
 
-                    disabled={!windowStatus.open || budget < loanFee}
+                    disabled={budget < loanFee}
 
                   >
 
-                    {!windowStatus.open ? <><Lock size={14} /> Mercado cerrado</> :
+                    {
 
                      budget < loanFee ? `Presupuesto insuficiente (${formatTransferPrice(budget)})` :
 
@@ -4178,425 +3857,253 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
 
 
-            {/* FLUJO NORMAL: CLUB + JUGADOR */}
+            {/* FLUJO NORMAL: OFERTA UNIFICADA (estilo PC Fútbol 5.0) */}
 
             {!isFreeAgent && negotiationMode === 'transfer' && (
 
-              <>
+              <div className="negotiation-section unified-offer-section">
 
-                {/* SECCIÑ"N CLUB */}
+                <div className="section-header">
 
-                <div className={`negotiation-section club-section ${clubStatus}`}>
+                  <div className="section-title">
 
-                  <div className="section-header">
+                    <Target size={18} />
 
-                    <div className="section-title">
+                    <span>Preparar Oferta</span>
 
-                      <Building2 size={18} />
-
-                      <span>Negociación con el Club</span>
-
-                      {isRivalry && <span className="rivalry-badge">⚔️ Rival directo</span>}
-
-                    </div>
-
-                    <div className={`status-badge ${clubStatus}`}>
-
-                      {clubStatus === 'pending' && <><Clock size={12} /> Pendiente</>}
-
-                      {clubStatus === 'negotiating' && <><Clock size={12} /> Negociando...</>}
-
-                      {clubStatus === 'accepted' && <><CheckCircle size={12} /> Aceptado</>}
-
-                      {clubStatus === 'rejected' && <><XCircle size={12} /> Rechazado</>}
-
-                      {clubStatus === 'counter' && <><RefreshCw size={12} /> Contraoferta</>}
-
-                    </div>
+                    {isRivalry && <span className="rivalry-badge">⚔️ Rival directo</span>}
 
                   </div>
 
-
-
-                  {/* Indicador de ronda */}
-
-                  {clubStatus !== 'accepted' && clubStatus !== 'rejected' && (
-
-                    <div className={`round-indicator ${currentDisplayRound >= maxRounds ? 'last-round' : ''}`}>
-
-                      <span>Ronda {currentDisplayRound}/{maxRounds}</span>
-
-                      {currentDisplayRound >= maxRounds && (
-
-                        <span className="last-round-warn">⚠️ Última oportunidad</span>
-
-                      )}
-
-                    </div>
-
-                  )}
+                </div>
 
 
 
-                  <div className="offer-row">
+                {/* Oferta al club */}
 
-                    <label>Oferta de traspaso</label>
+                <div className="offer-row">
 
-                    <MoneyInput
+                  <label><Building2 size={14} /> Traspaso al club</label>
 
-                      value={offerAmount}
+                  <MoneyInput
 
-                      onChange={(valOrFn) => setOfferAmount(prev => typeof valOrFn === 'function' ? valOrFn(prev) : valOrFn)}
+                    value={offerAmount}
 
-                      step={500000}
+                    onChange={(valOrFn) => setOfferAmount(prev => typeof valOrFn === 'function' ? valOrFn(prev) : valOrFn)}
 
-                      min={0}
+                    step={500000}
 
-                      max={state.money}
+                    min={0}
 
-                      disabled={clubStatus !== 'pending'}
+                    max={state.money}
 
-                    />
+                  />
+
+                </div>
+
+
+
+                <div className="probability-row">
+
+                  <span className="prob-label"><Building2 size={12} /> Club acepta</span>
+
+                  <div className="prob-bar-container">
+
+                    <div className="prob-bar" style={{ width: `${clubProbability}%`, background: getProbColor(clubProbability) }}></div>
 
                   </div>
 
+                  <span className="prob-value" style={{ color: getProbColor(clubProbability) }}>{clubProbability}%</span>
 
-
-                  <div className="probability-row">
-
-                    <span className="prob-label">Probabilidad de aceptación</span>
-
-                    <div className="prob-bar-container">
-
-                      <div
-
-                        className="prob-bar"
-
-                        style={{ width: `${clubProbability}%`, background: getProbColor(clubProbability) }}
-
-                      ></div>
-
-                    </div>
-
-                    <span className="prob-value" style={{ color: getProbColor(clubProbability) }}>{clubProbability}%</span>
-
-                  </div>
+                </div>
 
 
 
-                  {clubStatus === 'counter' && clubCounter && (
-
-                    <div className={`counter-offer-box ${isFinalOffer ? 'final-offer' : ''}`}>
-
-                      <span className="counter-label">{isFinalOffer ? 'Última oferta del club:' : 'Contraoferta del club:'}</span>
-
-                      <span className="counter-amount">{formatTransferPrice(clubCounter)}</span>
-
-                      {isFinalOffer && <span className="final-offer-warn">⚠️ Si rechazas, la negociación termina</span>}
-
-                      <div className="counter-actions">
-
-                        <button className="btn-counter-reject" onClick={handleRejectCounter}>
-
-                          {isFinalOffer ? 'Rechazar (definitivo)' : 'Rechazar'}
-
-                        </button>
-
-                        <button
-
-                          className="btn-counter-accept"
-
-                          onClick={handleAcceptCounter}
-
-                          disabled={budget < clubCounter}
-
-                        >
-
-                          {isFinalOffer ? 'Aceptar oferta final' : 'Aceptar'}
-
-                        </button>
-
-                      </div>
-
-                    </div>
-
-                  )}
+                <div className="offer-divider"></div>
 
 
 
-                  {clubStatus === 'rejected' && !finalResult && (
+                {/* Oferta al jugador */}
 
-                    <div className="rejected-box">
+                <div className="offer-row">
 
-                      <span>El club rechazó tu oferta. Prueba con una cantidad mayor.</span>
+                  <label><UserCheck size={14} /> Salario anual</label>
 
-                      <button className="btn-retry-small" onClick={() => { setClubStatus('pending'); setNegotiationRounds([]); setIsFinalOffer(false); }}>
+                  <MoneyInput
 
-                        Reintentar
+                    value={salaryOffer * 52}
+
+                    onChange={(valOrFn) => setSalaryOffer(prev => {
+
+                      const newAnnual = typeof valOrFn === 'function' ? valOrFn(prev * 52) : valOrFn;
+
+                      return Math.round(newAnnual / 52);
+
+                    })}
+
+                    step={100000}
+
+                    min={0}
+
+                    suffix="/año"
+
+                  />
+
+                  <span className="salary-hint">
+
+                    Mínimo estimado: {formatTransferPrice(requiredSalary * 52)}/año
+
+                  </span>
+
+                </div>
+
+
+
+                <div className="contract-row">
+
+                  <label>Duración contrato</label>
+
+                  <div className="contract-buttons">
+
+                    {[2, 3, 4, 5].map(y => (
+
+                      <button
+
+                        key={y}
+
+                        className={`contract-btn ${contractYears === y ? 'active' : ''}`}
+
+                        onClick={() => setContractYears(y)}
+
+                      >
+
+                        {y} años
 
                       </button>
 
-                    </div>
-
-                  )}
-
-                  {clubStatus === 'rejected' && finalResult && (
-
-                    <div className="rejected-box no-retry">
-
-                      <Ban size={18} />
-
-                      <span>El club se niega a negociar</span>
-
-                    </div>
-
-                  )}
-
-
-
-                  {clubStatus === 'pending' && (
-
-                    <button
-
-                      className="btn-send-club"
-
-                      onClick={handleClubOffer}
-
-                      disabled={!canAfford || !windowStatus.open}
-
-                    >
-
-                      {!windowStatus.open ? <><Lock size={14} /> Mercado cerrado</> : !canAfford ? `Presupuesto insuficiente (${formatTransferPrice(budget)})` : 'Enviar oferta al club'}
-
-                    </button>
-
-                  )}
-
-
-
-                  {clubStatus === 'negotiating' && (
-
-                    <div className="negotiating-indicator">
-
-                      <RefreshCw size={18} className="spinning" />
-
-                      <span>Esperando respuesta...</span>
-
-                    </div>
-
-                  )}
-
-                </div>
-
-
-
-                {/* SECCIÑ"N JUGADOR */}
-
-                <div className={`negotiation-section player-section ${playerStatus}`}>
-
-                  <div className="section-header">
-
-                    <div className="section-title">
-
-                      <UserCheck size={18} />
-
-                      <span>Negociación con el Jugador</span>
-
-                    </div>
-
-                    <div className={`status-badge ${playerStatus}`}>
-
-                      {playerStatus === 'locked' && <><Lock size={12} /> Bloqueado</>}
-
-                      {playerStatus === 'pending' && <><Clock size={12} /> Pendiente</>}
-
-                      {playerStatus === 'negotiating' && <><Clock size={12} /> Negociando...</>}
-
-                      {playerStatus === 'accepted' && <><CheckCircle size={12} /> Aceptado</>}
-
-                      {playerStatus === 'rejected' && <><XCircle size={12} /> Rechazado</>}
-
-                      {playerStatus === 'counter' && <><RefreshCw size={12} /> Contraoferta</>}
-
-                    </div>
+                    ))}
 
                   </div>
 
+                </div>
 
 
-                  {playerStatus === 'locked' && (
 
-                    <div className="locked-message">
+                <div className="probability-row">
 
-                      <span>Primero debes llegar a un acuerdo con el club</span>
+                  <span className="prob-label"><UserCheck size={12} /> Jugador acepta</span>
 
-                    </div>
+                  <div className="prob-bar-container">
 
-                  )}
+                    <div className="prob-bar" style={{ width: `${playerProbability}%`, background: getProbColor(playerProbability) }}></div>
 
+                  </div>
 
-
-                  {playerStatus !== 'locked' && (
-
-                    <>
-
-                      <div className="offer-row">
-
-                        <label>Salario anual</label>
-
-                        <MoneyInput
-
-                          value={salaryOffer * 52}
-
-                          onChange={(valOrFn) => setSalaryOffer(prev => {
-
-                            const newAnnual = typeof valOrFn === 'function' ? valOrFn(prev * 52) : valOrFn;
-
-                            return Math.round(newAnnual / 52);
-
-                          })}
-
-                          step={100000}
-
-                          min={0}
-
-                          disabled={playerStatus === 'negotiating' || playerStatus === 'accepted' || playerStatus === 'counter'}
-
-                          suffix="/año"
-
-                        />
-
-                        <span className="formatted-amount total-cost">
-
-                          Coste total: {formatTransferPrice(salaryOffer * 52 * contractYears)} ({contractYears} año{contractYears > 1 ? 's' : ''})
-
-                        </span>
-
-                        <span className="salary-hint">
-
-                          Mínimo estimado: {formatTransferPrice(requiredSalary * 52)}/año
-
-                          {tierDiff > 0 && ` (+${Math.round((requiredSalary/currentSalary - 1) * 100)}%)`}
-
-                        </span>
-
-                      </div>
-
-
-
-                      <div className="contract-row">
-
-                        <label>Duración contrato</label>
-
-                        <div className="contract-buttons">
-
-                          {[2, 3, 4, 5].map(y => (
-
-                            <button
-
-                              key={y}
-
-                              className={`contract-btn ${contractYears === y ? 'active' : ''}`}
-
-                              onClick={() => setContractYears(y)}
-
-                              disabled={playerStatus === 'negotiating' || playerStatus === 'accepted'}
-
-                            >
-
-                              {y} años
-
-                            </button>
-
-                          ))}
-
-                        </div>
-
-                      </div>
-
-
-
-                      <div className="probability-row">
-
-                        <span className="prob-label">Probabilidad de aceptación</span>
-
-                        <div className="prob-bar-container">
-
-                          <div
-
-                            className="prob-bar"
-
-                            style={{ width: `${playerProbability}%`, background: getProbColor(playerProbability) }}
-
-                          ></div>
-
-                        </div>
-
-                        <span className="prob-value" style={{ color: getProbColor(playerProbability) }}>{playerProbability}%</span>
-
-                      </div>
-
-
-
-                      {playerStatus === 'counter' && playerCounter && (
-
-                        <div className="counter-offer-box player-counter">
-
-                          <span className="counter-label">Contraoferta del jugador:</span>
-
-                          <span className="counter-amount">{formatTransferPrice(playerCounter.salary * 52)}/año</span>
-
-                          <span className="counter-total">Coste total: {formatTransferPrice(playerCounter.salary * 52 * contractYears)}</span>
-
-                          <p className="counter-reason">{playerCounter.reason}</p>
-
-                          <div className="counter-actions">
-
-                            <button className="btn-counter-reject" onClick={handleRejectPlayerCounter}>Rechazar</button>
-
-                            <button className="btn-counter-accept" onClick={handleCounterPlayerOffer}>Contraoferta</button>
-
-                            <button className="btn-counter-accept" onClick={handleAcceptPlayerCounter}>Aceptar</button>
-
-                          </div>
-
-                        </div>
-
-                      )}
-
-
-
-                      {playerStatus === 'pending' && (
-
-                        <button className="btn-send-player" onClick={handlePlayerOffer}>
-
-                          Presentar oferta al jugador
-
-                        </button>
-
-                      )}
-
-
-
-                      {playerStatus === 'negotiating' && (
-
-                        <div className="negotiating-indicator">
-
-                          <RefreshCw size={18} className="spinning" />
-
-                          <span>El jugador evalúa tu oferta...</span>
-
-                        </div>
-
-                      )}
-
-                    </>
-
-                  )}
+                  <span className="prob-value" style={{ color: getProbColor(playerProbability) }}>{playerProbability}%</span>
 
                 </div>
 
-              </>
+
+
+                {/* Resumen y botón de envío */}
+
+                <div className="offer-summary-box">
+
+                  <div className="summary-line">
+
+                    <span>💰 Coste total traspaso</span>
+
+                    <span className="amount">{formatTransferPrice(offerAmount)}</span>
+
+                  </div>
+
+                  <div className="summary-line">
+
+                    <span>📋 Coste total contrato</span>
+
+                    <span className="amount">{formatTransferPrice(salaryOffer * 52 * contractYears)}</span>
+
+                  </div>
+
+                  <div className="summary-line total">
+
+                    <span>📊 Inversión total</span>
+
+                    <span className="amount">{formatTransferPrice(offerAmount + salaryOffer * 52 * contractYears)}</span>
+
+                  </div>
+
+                </div>
+
+
+
+                <button
+
+                  className="btn-send-offer"
+
+                  onClick={() => {
+
+                    dispatch({
+
+                      type: 'ADD_OUTGOING_OFFER',
+
+                      payload: {
+
+                        id: Date.now(),
+
+                        playerName: player.name,
+
+                        player: { name: player.name, position: player.position, overall: player.overall, age: player.age },
+
+                        toTeam: player.teamName,
+
+                        toTeamId: player.teamId,
+
+                        amount: offerAmount,
+
+                        salaryOffer,
+
+                        contractYears,
+
+                        status: 'pending',
+
+                        submittedWeek: state.currentWeek
+
+                      }
+
+                    });
+
+                    dispatch({
+
+                      type: 'ADD_MESSAGE',
+
+                      payload: {
+
+                        id: Date.now(), type: 'transfer', title: '📨 Oferta enviada',
+
+                        content: `Oferta por ${player.name} (${player.teamName}): ${formatTransferPrice(offerAmount)} + ${formatTransferPrice(salaryOffer * 52)}/año`,
+
+                        date: `Semana ${state.currentWeek}`
+
+                      }
+
+                    });
+
+                    onClose();
+
+                  }}
+
+                  disabled={budget < offerAmount || offerAmount <= 0}
+
+                >
+
+                  <ArrowRight size={18} /> Enviar oferta
+
+                </button>
+
+                <p className="offer-hint">⏳ La respuesta llegará tras simular un partido. El importe se reserva de tu presupuesto.</p>
+
+              </div>
 
             )}
 

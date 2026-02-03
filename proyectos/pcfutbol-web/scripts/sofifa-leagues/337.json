@@ -1,0 +1,898 @@
+[
+  {
+    "name": "D. Viera",
+    "overall": 74,
+    "potential": 74,
+    "position": "CB",
+    "age": 34,
+    "team": "Libertad"
+  },
+  {
+    "name": "G. Olveira",
+    "overall": 73,
+    "potential": 73,
+    "position": "GK",
+    "age": 32,
+    "team": "Club Olimpia"
+  },
+  {
+    "name": "L. Melgarejo",
+    "overall": 73,
+    "potential": 73,
+    "position": "LW, LM, ST",
+    "age": 34,
+    "team": "Libertad"
+  },
+  {
+    "name": "J. Iturbe",
+    "overall": 73,
+    "potential": 73,
+    "position": "RM, ST, RW",
+    "age": 32,
+    "team": "Cerro Porteño"
+  },
+  {
+    "name": "C. Domínguez",
+    "overall": 73,
+    "potential": 73,
+    "position": "LM, RM, ST, LW",
+    "age": 30,
+    "team": "Cerro Porteño"
+  },
+  {
+    "name": "G. Velázquez",
+    "overall": 73,
+    "potential": 73,
+    "position": "CB, RB",
+    "age": 34,
+    "team": "Cerro Porteño"
+  },
+  {
+    "name": "I. Leguizamón",
+    "overall": 72,
+    "potential": 78,
+    "position": "LW, LM, RM",
+    "age": 22,
+    "team": "Club Olimpia"
+  },
+  {
+    "name": "M. Espinoza",
+    "overall": 72,
+    "potential": 72,
+    "position": "LB, LM",
+    "age": 27,
+    "team": "Libertad"
+  },
+  {
+    "name": "F. Fernández",
+    "overall": 72,
+    "potential": 72,
+    "position": "ST, CAM",
+    "age": 33,
+    "team": "Guaraní"
+  },
+  {
+    "name": "A. Manzur",
+    "overall": 72,
+    "potential": 77,
+    "position": "CM, CDM",
+    "age": 24,
+    "team": "Guaraní"
+  },
+  {
+    "name": "J. Torres",
+    "overall": 72,
+    "potential": 72,
+    "position": "ST",
+    "age": 28,
+    "team": "Cerro Porteño"
+  },
+  {
+    "name": "B. Riveros",
+    "overall": 72,
+    "potential": 72,
+    "position": "LB, LM",
+    "age": 27,
+    "team": "Cerro Porteño"
+  },
+  {
+    "name": "D. González",
+    "overall": 71,
+    "potential": 71,
+    "position": "ST, LM, CAM",
+    "age": 31,
+    "team": "Club Olimpia"
+  },
+  {
+    "name": "R. Morínigo",
+    "overall": 71,
+    "potential": 75,
+    "position": "GK",
+    "age": 26,
+    "team": "Libertad"
+  },
+  {
+    "name": "Á. Campuzano",
+    "overall": 71,
+    "potential": 71,
+    "position": "CDM, CM, CB",
+    "age": 30,
+    "team": "Libertad"
+  },
+  {
+    "name": "A. Martín Arias",
+    "overall": 71,
+    "potential": 71,
+    "position": "GK",
+    "age": 32,
+    "team": "Cerro Porteño"
+  },
+  {
+    "name": "I. Aliseda",
+    "overall": 71,
+    "potential": 73,
+    "position": "LM, ST, LW",
+    "age": 25,
+    "team": "Cerro Porteño"
+  },
+  {
+    "name": "M. Pérez",
+    "overall": 71,
+    "potential": 76,
+    "position": "CB, CDM, CM",
+    "age": 25,
+    "team": "Cerro Porteño"
+  },
+  {
+    "name": "R. Ortiz",
+    "overall": 70,
+    "potential": 70,
+    "position": "CDM, CB, CM",
+    "age": 35,
+    "team": "Club Olimpia"
+  },
+  {
+    "name": "R. Redes",
+    "overall": 70,
+    "potential": 71,
+    "position": "RW, RM",
+    "age": 25,
+    "team": "Club Olimpia"
+  },
+  {
+    "name": "I. Ramírez",
+    "overall": 70,
+    "potential": 70,
+    "position": "RB, RM",
+    "age": 30,
+    "team": "Libertad"
+  },
+  {
+    "name": "R. Rojas",
+    "overall": 70,
+    "potential": 70,
+    "position": "RB, CB",
+    "age": 29,
+    "team": "Libertad"
+  },
+  {
+    "name": "I. Franco",
+    "overall": 70,
+    "potential": 73,
+    "position": "RW, RM, LW",
+    "age": 25,
+    "team": "Libertad"
+  },
+  {
+    "name": "L. Sanabria",
+    "overall": 70,
+    "potential": 73,
+    "position": "CAM, CM, CDM",
+    "age": 25,
+    "team": "Libertad"
+  },
+  {
+    "name": "M. López Quintana",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB",
+    "age": 29,
+    "team": "Guaraní"
+  },
+  {
+    "name": "F. Domínguez",
+    "overall": 70,
+    "potential": 70,
+    "position": "RM, RB, CM, RW",
+    "age": 27,
+    "team": "Cerro Porteño"
+  },
+  {
+    "name": "J. Morel",
+    "overall": 70,
+    "potential": 71,
+    "position": "CDM, CM, CB",
+    "age": 27,
+    "team": "Cerro Porteño"
+  },
+  {
+    "name": "O. Barreto",
+    "overall": 69,
+    "potential": 71,
+    "position": "CB",
+    "age": 27,
+    "team": "Club Olimpia"
+  },
+  {
+    "name": "H. Fernández",
+    "overall": 69,
+    "potential": 69,
+    "position": "LM, LW, RW",
+    "age": 27,
+    "team": "Libertad"
+  },
+  {
+    "name": "N. Giménez",
+    "overall": 69,
+    "potential": 70,
+    "position": "CB, LB",
+    "age": 27,
+    "team": "Libertad"
+  },
+  {
+    "name": "D. Fernández",
+    "overall": 69,
+    "potential": 76,
+    "position": "LM, RM, LW",
+    "age": 22,
+    "team": "Guaraní"
+  },
+  {
+    "name": "S. Araujo",
+    "overall": 69,
+    "potential": 69,
+    "position": "ST, CAM",
+    "age": 33,
+    "team": "Cerro Porteño"
+  },
+  {
+    "name": "G. Giménez",
+    "overall": 69,
+    "potential": 69,
+    "position": "CDM, CM",
+    "age": 33,
+    "team": "Cerro Porteño"
+  },
+  {
+    "name": "A. Aguilar",
+    "overall": 68,
+    "potential": 68,
+    "position": "GK",
+    "age": 36,
+    "team": "Sportivo Luqueño"
+  },
+  {
+    "name": "H. Caballero",
+    "overall": 68,
+    "potential": 68,
+    "position": "CDM, CM, CB",
+    "age": 34,
+    "team": "Libertad"
+  },
+  {
+    "name": "A. Pérez",
+    "overall": 68,
+    "potential": 74,
+    "position": "GK",
+    "age": 24,
+    "team": "Guaraní"
+  },
+  {
+    "name": "L. Martínez",
+    "overall": 68,
+    "potential": 73,
+    "position": "CDM, CM",
+    "age": 25,
+    "team": "Guaraní"
+  },
+  {
+    "name": "R. Fernández",
+    "overall": 68,
+    "potential": 68,
+    "position": "GK",
+    "age": 37,
+    "team": "Cerro Porteño"
+  },
+  {
+    "name": "R. Piris da Motta",
+    "overall": 68,
+    "potential": 68,
+    "position": "CDM, CB, CM",
+    "age": 30,
+    "team": "Cerro Porteño"
+  },
+  {
+    "name": "C. Olmedo",
+    "overall": 67,
+    "potential": 76,
+    "position": "RB, RM",
+    "age": 22,
+    "team": "Club Olimpia"
+  },
+  {
+    "name": "W. González",
+    "overall": 67,
+    "potential": 67,
+    "position": "ST",
+    "age": 30,
+    "team": "Sportivo Luqueño"
+  },
+  {
+    "name": "H. Martínez",
+    "overall": 67,
+    "potential": 72,
+    "position": "CDM, CM, CAM",
+    "age": 25,
+    "team": "Libertad"
+  },
+  {
+    "name": "R. Torales",
+    "overall": 67,
+    "potential": 74,
+    "position": "ST",
+    "age": 24,
+    "team": "Guaraní"
+  },
+  {
+    "name": "A. Soñora",
+    "overall": 67,
+    "potential": 68,
+    "position": "CM, CAM, RM, CDM",
+    "age": 26,
+    "team": "Cerro Porteño"
+  },
+  {
+    "name": "L. Quintana",
+    "overall": 67,
+    "potential": 78,
+    "position": "CB",
+    "age": 20,
+    "team": "Cerro Porteño"
+  },
+  {
+    "name": "E. López",
+    "overall": 66,
+    "potential": 72,
+    "position": "LW, LM, ST",
+    "age": 23,
+    "team": "Club Olimpia"
+  },
+  {
+    "name": "A. Franco",
+    "overall": 66,
+    "potential": 70,
+    "position": "CM, CAM, CDM",
+    "age": 23,
+    "team": "Club Olimpia"
+  },
+  {
+    "name": "L. Comas",
+    "overall": 66,
+    "potential": 66,
+    "position": "LM, RM, CAM, LW",
+    "age": 30,
+    "team": "Sportivo Luqueño"
+  },
+  {
+    "name": "J. Recalde",
+    "overall": 66,
+    "potential": 66,
+    "position": "ST, CAM",
+    "age": 33,
+    "team": "Libertad"
+  },
+  {
+    "name": "D. Rodríguez",
+    "overall": 66,
+    "potential": 66,
+    "position": "RM, LM, RW",
+    "age": 27,
+    "team": "Guaraní"
+  },
+  {
+    "name": "G. Aguayo",
+    "overall": 66,
+    "potential": 80,
+    "position": "RM, RW",
+    "age": 20,
+    "team": "Cerro Porteño"
+  },
+  {
+    "name": "A. Luciatti",
+    "overall": 66,
+    "potential": 66,
+    "position": "CB, LB",
+    "age": 32,
+    "team": "Cerro Porteño"
+  },
+  {
+    "name": "L. Amarilla",
+    "overall": 66,
+    "potential": 66,
+    "position": "ST",
+    "age": 29,
+    "team": "Cerro Porteño"
+  },
+  {
+    "name": "W. Viera",
+    "overall": 66,
+    "potential": 75,
+    "position": "CDM, CM",
+    "age": 23,
+    "team": "Cerro Porteño"
+  },
+  {
+    "name": "F. Peralta",
+    "overall": 66,
+    "potential": 73,
+    "position": "CDM, CM",
+    "age": 22,
+    "team": "Cerro Porteño"
+  },
+  {
+    "name": "F. Millados",
+    "overall": 65,
+    "potential": 65,
+    "position": "RB, LB",
+    "age": 29,
+    "team": "Club Olimpia"
+  },
+  {
+    "name": "L. Dalsaro",
+    "overall": 65,
+    "potential": 65,
+    "position": "CDM, CB, CM",
+    "age": 29,
+    "team": "Club Olimpia"
+  },
+  {
+    "name": "F. Santander",
+    "overall": 65,
+    "potential": 65,
+    "position": "ST",
+    "age": 34,
+    "team": "Sportivo Luqueño"
+  },
+  {
+    "name": "Á. Benítez",
+    "overall": 65,
+    "potential": 65,
+    "position": "CDM, CM, CB",
+    "age": 29,
+    "team": "Sportivo Luqueño"
+  },
+  {
+    "name": "A. Villalba",
+    "overall": 65,
+    "potential": 68,
+    "position": "CB, RB",
+    "age": 26,
+    "team": "Sportivo Luqueño"
+  },
+  {
+    "name": "M. Jacquet",
+    "overall": 65,
+    "potential": 65,
+    "position": "CB",
+    "age": 30,
+    "team": "Libertad"
+  },
+  {
+    "name": "G. Aguilar",
+    "overall": 65,
+    "potential": 68,
+    "position": "ST",
+    "age": 25,
+    "team": "Libertad"
+  },
+  {
+    "name": "A. Barbotte",
+    "overall": 65,
+    "potential": 73,
+    "position": "RB, CB, RM",
+    "age": 23,
+    "team": "Guaraní"
+  },
+  {
+    "name": "T. Servín",
+    "overall": 65,
+    "potential": 78,
+    "position": "CB, LB",
+    "age": 22,
+    "team": "Guaraní"
+  },
+  {
+    "name": "J. Pérez",
+    "overall": 65,
+    "potential": 65,
+    "position": "RB",
+    "age": 31,
+    "team": "Guaraní"
+  },
+  {
+    "name": "G. Benítez",
+    "overall": 65,
+    "potential": 65,
+    "position": "LB, LM",
+    "age": 31,
+    "team": "Cerro Porteño"
+  },
+  {
+    "name": "T. Nezuñir",
+    "overall": 64,
+    "potential": 64,
+    "position": "CB",
+    "age": 29,
+    "team": "Club Olimpia"
+  },
+  {
+    "name": "S. Ocampos",
+    "overall": 64,
+    "potential": 70,
+    "position": "RB, RM",
+    "age": 23,
+    "team": "Sportivo Luqueño"
+  },
+  {
+    "name": "F. Benítez",
+    "overall": 64,
+    "potential": 66,
+    "position": "CDM, CM",
+    "age": 26,
+    "team": "Sportivo Luqueño"
+  },
+  {
+    "name": "M. Fernández",
+    "overall": 64,
+    "potential": 70,
+    "position": "LM, ST, RM, LW",
+    "age": 23,
+    "team": "Libertad"
+  },
+  {
+    "name": "I. Ramírez",
+    "overall": 64,
+    "potential": 72,
+    "position": "ST, RW",
+    "age": 21,
+    "team": "Guaraní"
+  },
+  {
+    "name": "M. Rodríguez",
+    "overall": 64,
+    "potential": 64,
+    "position": "GK",
+    "age": 35,
+    "team": "Guaraní"
+  },
+  {
+    "name": "G. Lozquiz",
+    "overall": 63,
+    "potential": 63,
+    "position": "ST, CAM",
+    "age": 33,
+    "team": "Club Olimpia"
+  },
+  {
+    "name": "R. Villalba",
+    "overall": 63,
+    "potential": 76,
+    "position": "RM, RW, LW",
+    "age": 19,
+    "team": "Libertad"
+  },
+  {
+    "name": "M. Suárez",
+    "overall": 62,
+    "potential": 72,
+    "position": "LB",
+    "age": 20,
+    "team": "Sportivo Luqueño"
+  },
+  {
+    "name": "B. Ayala",
+    "overall": 62,
+    "potential": 62,
+    "position": "LM, LW",
+    "age": 30,
+    "team": "Sportivo Luqueño"
+  },
+  {
+    "name": "R. Ríos",
+    "overall": 62,
+    "potential": 62,
+    "position": "CM, LM, CDM",
+    "age": 29,
+    "team": "Sportivo Luqueño"
+  },
+  {
+    "name": "A. Maidana",
+    "overall": 62,
+    "potential": 74,
+    "position": "LB",
+    "age": 19,
+    "team": "Guaraní"
+  },
+  {
+    "name": "R. Gómez",
+    "overall": 62,
+    "potential": 75,
+    "position": "RB",
+    "age": 19,
+    "team": "Cerro Porteño"
+  },
+  {
+    "name": "F. Insfrán",
+    "overall": 61,
+    "potential": 78,
+    "position": "GK",
+    "age": 19,
+    "team": "Club Olimpia"
+  },
+  {
+    "name": "S. Maldonado",
+    "overall": 61,
+    "potential": 63,
+    "position": "LB, CM, CDM",
+    "age": 25,
+    "team": "Sportivo Luqueño"
+  },
+  {
+    "name": "K. Pereira",
+    "overall": 61,
+    "potential": 70,
+    "position": "LM, RM, CAM, LW",
+    "age": 21,
+    "team": "Sportivo Luqueño"
+  },
+  {
+    "name": "Á. Aquino",
+    "overall": 61,
+    "potential": 66,
+    "position": "RB",
+    "age": 20,
+    "team": "Guaraní"
+  },
+  {
+    "name": "C. Miño",
+    "overall": 61,
+    "potential": 80,
+    "position": "ST, RM, LM, RW",
+    "age": 18,
+    "team": "Guaraní"
+  },
+  {
+    "name": "É. Páez",
+    "overall": 61,
+    "potential": 71,
+    "position": "RM, RW",
+    "age": 18,
+    "team": "Cerro Porteño"
+  },
+  {
+    "name": "L. Abreu",
+    "overall": 60,
+    "potential": 73,
+    "position": "CAM, ST, LM, CM",
+    "age": 21,
+    "team": "Club Olimpia"
+  },
+  {
+    "name": "L. Verza",
+    "overall": 60,
+    "potential": 65,
+    "position": "GK",
+    "age": 24,
+    "team": "Club Olimpia"
+  },
+  {
+    "name": "A. Fretes",
+    "overall": 60,
+    "potential": 76,
+    "position": "LB, LM",
+    "age": 19,
+    "team": "Libertad"
+  },
+  {
+    "name": "D. Espínola",
+    "overall": 60,
+    "potential": 71,
+    "position": "RM, RW",
+    "age": 18,
+    "team": "Cerro Porteño"
+  },
+  {
+    "name": "Á. Espínola",
+    "overall": 59,
+    "potential": 65,
+    "position": "GK",
+    "age": 22,
+    "team": "Sportivo Luqueño"
+  },
+  {
+    "name": "A. Troche",
+    "overall": 59,
+    "potential": 70,
+    "position": "RB",
+    "age": 21,
+    "team": "Libertad"
+  },
+  {
+    "name": "T. Fernández",
+    "overall": 59,
+    "potential": 73,
+    "position": "CB, CDM, CM",
+    "age": 17,
+    "team": "Libertad"
+  },
+  {
+    "name": "P. Coronel",
+    "overall": 59,
+    "potential": 71,
+    "position": "LM, LB",
+    "age": 18,
+    "team": "Guaraní"
+  },
+  {
+    "name": "G. Gómez",
+    "overall": 59,
+    "potential": 71,
+    "position": "CM, CDM",
+    "age": 17,
+    "team": "Guaraní"
+  },
+  {
+    "name": "A. Brizuela",
+    "overall": 58,
+    "potential": 68,
+    "position": "CB",
+    "age": 21,
+    "team": "Sportivo Luqueño"
+  },
+  {
+    "name": "J. Ramos",
+    "overall": 58,
+    "potential": 70,
+    "position": "LM, LW",
+    "age": 17,
+    "team": "Sportivo Luqueño"
+  },
+  {
+    "name": "F. Mongelos",
+    "overall": 58,
+    "potential": 68,
+    "position": "GK",
+    "age": 20,
+    "team": "Sportivo Luqueño"
+  },
+  {
+    "name": "P. Villalba",
+    "overall": 58,
+    "potential": 82,
+    "position": "LM, LW, CAM",
+    "age": 16,
+    "team": "Libertad"
+  },
+  {
+    "name": "R. Acuña Vera",
+    "overall": 58,
+    "potential": 74,
+    "position": "ST",
+    "age": 17,
+    "team": "Libertad"
+  },
+  {
+    "name": "Á. González",
+    "overall": 58,
+    "potential": 68,
+    "position": "GK",
+    "age": 22,
+    "team": "Libertad"
+  },
+  {
+    "name": "L. Rolón",
+    "overall": 58,
+    "potential": 69,
+    "position": "ST",
+    "age": 22,
+    "team": "Guaraní"
+  },
+  {
+    "name": "I. Marecos",
+    "overall": 58,
+    "potential": 72,
+    "position": "ST",
+    "age": 20,
+    "team": "Cerro Porteño"
+  },
+  {
+    "name": "N. Eliseche",
+    "overall": 58,
+    "potential": 69,
+    "position": "CDM, CM",
+    "age": 20,
+    "team": "Cerro Porteño"
+  },
+  {
+    "name": "A. Parra",
+    "overall": 57,
+    "potential": 65,
+    "position": "RM, RW",
+    "age": 22,
+    "team": "Sportivo Luqueño"
+  },
+  {
+    "name": "J. Paredes",
+    "overall": 57,
+    "potential": 64,
+    "position": "CB",
+    "age": 22,
+    "team": "Sportivo Luqueño"
+  },
+  {
+    "name": "S. del Valle",
+    "overall": 57,
+    "potential": 69,
+    "position": "CB",
+    "age": 20,
+    "team": "Libertad"
+  },
+  {
+    "name": "J. Bogarin",
+    "overall": 57,
+    "potential": 75,
+    "position": "LM, RM, LW",
+    "age": 17,
+    "team": "Libertad"
+  },
+  {
+    "name": "A. Ledesma",
+    "overall": 56,
+    "potential": 76,
+    "position": "CM, CDM",
+    "age": 16,
+    "team": "Club Olimpia"
+  },
+  {
+    "name": "E. Delmas",
+    "overall": 56,
+    "potential": 72,
+    "position": "CAM, RW, RM, CM",
+    "age": 18,
+    "team": "Club Olimpia"
+  },
+  {
+    "name": "R. Cáceres",
+    "overall": 56,
+    "potential": 68,
+    "position": "ST",
+    "age": 20,
+    "team": "Sportivo Luqueño"
+  },
+  {
+    "name": "V. Rojas",
+    "overall": 56,
+    "potential": 70,
+    "position": "GK",
+    "age": 20,
+    "team": "Libertad"
+  },
+  {
+    "name": "B. Escobar",
+    "overall": 55,
+    "potential": 65,
+    "position": "ST",
+    "age": 21,
+    "team": "Sportivo Luqueño"
+  }
+]

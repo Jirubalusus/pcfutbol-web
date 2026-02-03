@@ -1,0 +1,730 @@
+[
+  {
+    "name": "S. Coates",
+    "overall": 79,
+    "potential": 79,
+    "position": "CB",
+    "age": 34,
+    "team": "Club Nacional de Football"
+  },
+  {
+    "name": "N. López",
+    "overall": 76,
+    "potential": 76,
+    "position": "ST, RW, CAM, RM",
+    "age": 31,
+    "team": "Club Nacional de Football"
+  },
+  {
+    "name": "J. Millán",
+    "overall": 74,
+    "potential": 76,
+    "position": "CB, LB",
+    "age": 27,
+    "team": "Club Nacional de Football"
+  },
+  {
+    "name": "E. Del Carro",
+    "overall": 73,
+    "potential": 73,
+    "position": "GK",
+    "age": 33,
+    "team": "Peñarol"
+  },
+  {
+    "name": "B. Rasaldo",
+    "overall": 73,
+    "potential": 73,
+    "position": "CAM, LM, CM",
+    "age": 25,
+    "team": "Peñarol"
+  },
+  {
+    "name": "L. Boggio",
+    "overall": 73,
+    "potential": 76,
+    "position": "CM, CDM",
+    "age": 26,
+    "team": "Club Nacional de Football"
+  },
+  {
+    "name": "G. Hernandero",
+    "overall": 72,
+    "potential": 72,
+    "position": "CDM, CM",
+    "age": 33,
+    "team": "Peñarol"
+  },
+  {
+    "name": "Á. Sildero",
+    "overall": 72,
+    "potential": 72,
+    "position": "CB",
+    "age": 33,
+    "team": "Peñarol"
+  },
+  {
+    "name": "E. Rendelo",
+    "overall": 72,
+    "potential": 72,
+    "position": "RB",
+    "age": 33,
+    "team": "Peñarol"
+  },
+  {
+    "name": "F. Nieldo",
+    "overall": 72,
+    "potential": 72,
+    "position": "LB",
+    "age": 33,
+    "team": "Peñarol"
+  },
+  {
+    "name": "S. Acuestano",
+    "overall": 72,
+    "potential": 72,
+    "position": "ST",
+    "age": 37,
+    "team": "Peñarol"
+  },
+  {
+    "name": "F. Lecarnado",
+    "overall": 72,
+    "potential": 72,
+    "position": "RM, LM, RW",
+    "age": 29,
+    "team": "Club Nacional de Football"
+  },
+  {
+    "name": "L. Mejía",
+    "overall": 72,
+    "potential": 72,
+    "position": "GK",
+    "age": 34,
+    "team": "Club Nacional de Football"
+  },
+  {
+    "name": "C. Oliva",
+    "overall": 72,
+    "potential": 72,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Club Nacional de Football"
+  },
+  {
+    "name": "T. Zentena",
+    "overall": 71,
+    "potential": 71,
+    "position": "LM, ST, LW",
+    "age": 29,
+    "team": "Peñarol"
+  },
+  {
+    "name": "M. Bassedi",
+    "overall": 71,
+    "potential": 71,
+    "position": "RM, RW",
+    "age": 33,
+    "team": "Peñarol"
+  },
+  {
+    "name": "F. Dalsaro",
+    "overall": 71,
+    "potential": 71,
+    "position": "CM, CDM",
+    "age": 33,
+    "team": "Peñarol"
+  },
+  {
+    "name": "R. Alcoba",
+    "overall": 71,
+    "potential": 71,
+    "position": "ST",
+    "age": 29,
+    "team": "Club Nacional de Football"
+  },
+  {
+    "name": "E. Cubildas",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB",
+    "age": 29,
+    "team": "Peñarol"
+  },
+  {
+    "name": "G. Ardero",
+    "overall": 70,
+    "potential": 70,
+    "position": "CAM, CM",
+    "age": 29,
+    "team": "Peñarol"
+  },
+  {
+    "name": "R. Otero",
+    "overall": 70,
+    "potential": 70,
+    "position": "CAM, LM, LW, CM",
+    "age": 32,
+    "team": "Club Nacional de Football"
+  },
+  {
+    "name": "G. Carneiro",
+    "overall": 70,
+    "potential": 70,
+    "position": "ST, RW, RM",
+    "age": 29,
+    "team": "Club Nacional de Football"
+  },
+  {
+    "name": "A. Amado",
+    "overall": 70,
+    "potential": 75,
+    "position": "CM, CAM, CDM",
+    "age": 24,
+    "team": "Boston River"
+  },
+  {
+    "name": "A. Anello",
+    "overall": 70,
+    "potential": 75,
+    "position": "LW, LM",
+    "age": 23,
+    "team": "Boston River"
+  },
+  {
+    "name": "A. Salvamanos",
+    "overall": 70,
+    "potential": 70,
+    "position": "CDM, LB, CM",
+    "age": 29,
+    "team": "Cerro Largo"
+  },
+  {
+    "name": "K. Donadinna",
+    "overall": 70,
+    "potential": 70,
+    "position": "CM, CDM",
+    "age": 29,
+    "team": "Cerro Largo"
+  },
+  {
+    "name": "M. Brandero",
+    "overall": 70,
+    "potential": 70,
+    "position": "RM, RW",
+    "age": 29,
+    "team": "Cerro Largo"
+  },
+  {
+    "name": "J. Aterola",
+    "overall": 69,
+    "potential": 69,
+    "position": "LM, RM, LW",
+    "age": 29,
+    "team": "Peñarol"
+  },
+  {
+    "name": "G. Adelos",
+    "overall": 69,
+    "potential": 69,
+    "position": "ST",
+    "age": 33,
+    "team": "Peñarol"
+  },
+  {
+    "name": "G. Cotugno",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB, RB",
+    "age": 30,
+    "team": "Racing Club de Montevideo"
+  },
+  {
+    "name": "M. Ferreira",
+    "overall": 69,
+    "potential": 69,
+    "position": "LB, CB, LM",
+    "age": 33,
+    "team": "Racing Club de Montevideo"
+  },
+  {
+    "name": "A. Albarracín",
+    "overall": 69,
+    "potential": 77,
+    "position": "LW, RW, CAM, LM",
+    "age": 19,
+    "team": "Boston River"
+  },
+  {
+    "name": "J. Acosta",
+    "overall": 69,
+    "potential": 69,
+    "position": "RB",
+    "age": 31,
+    "team": "Boston River"
+  },
+  {
+    "name": "B. Antúnez",
+    "overall": 69,
+    "potential": 75,
+    "position": "GK",
+    "age": 22,
+    "team": "Boston River"
+  },
+  {
+    "name": "A. Lizañas",
+    "overall": 69,
+    "potential": 69,
+    "position": "RB",
+    "age": 25,
+    "team": "Cerro Largo"
+  },
+  {
+    "name": "D. Rocheredo",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB",
+    "age": 29,
+    "team": "Cerro Largo"
+  },
+  {
+    "name": "T. Bangera",
+    "overall": 68,
+    "potential": 68,
+    "position": "CB",
+    "age": 29,
+    "team": "Peñarol"
+  },
+  {
+    "name": "R. Peñazco",
+    "overall": 68,
+    "potential": 68,
+    "position": "RB",
+    "age": 33,
+    "team": "Peñarol"
+  },
+  {
+    "name": "N. Rodríguez",
+    "overall": 68,
+    "potential": 68,
+    "position": "RB, LB, CM",
+    "age": 33,
+    "team": "Club Nacional de Football"
+  },
+  {
+    "name": "E. Ancheta",
+    "overall": 68,
+    "potential": 71,
+    "position": "RB, RM",
+    "age": 26,
+    "team": "Club Nacional de Football"
+  },
+  {
+    "name": "E. Artaduaga",
+    "overall": 68,
+    "potential": 68,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Club Nacional de Football"
+  },
+  {
+    "name": "T. Espinosa",
+    "overall": 68,
+    "potential": 79,
+    "position": "LB, LM",
+    "age": 20,
+    "team": "Racing Club de Montevideo"
+  },
+  {
+    "name": "H. Silveira",
+    "overall": 68,
+    "potential": 68,
+    "position": "ST",
+    "age": 32,
+    "team": "Racing Club de Montevideo"
+  },
+  {
+    "name": "J. Varela",
+    "overall": 68,
+    "potential": 68,
+    "position": "CM, CDM",
+    "age": 37,
+    "team": "Racing Club de Montevideo"
+  },
+  {
+    "name": "F. Martínez",
+    "overall": 68,
+    "potential": 74,
+    "position": "LB",
+    "age": 24,
+    "team": "Boston River"
+  },
+  {
+    "name": "S. Altamiras",
+    "overall": 68,
+    "potential": 68,
+    "position": "LM, CAM, CM, LW",
+    "age": 29,
+    "team": "Cerro Largo"
+  },
+  {
+    "name": "E. Rescaro",
+    "overall": 68,
+    "potential": 68,
+    "position": "CAM, CM",
+    "age": 29,
+    "team": "Cerro Largo"
+  },
+  {
+    "name": "A. Menagas",
+    "overall": 68,
+    "potential": 68,
+    "position": "LB",
+    "age": 29,
+    "team": "Cerro Largo"
+  },
+  {
+    "name": "N. Carvanna",
+    "overall": 68,
+    "potential": 68,
+    "position": "CM, CDM",
+    "age": 29,
+    "team": "Cerro Largo"
+  },
+  {
+    "name": "A. Sirella",
+    "overall": 68,
+    "potential": 68,
+    "position": "GK",
+    "age": 37,
+    "team": "Cerro Largo"
+  },
+  {
+    "name": "D. Aedoz",
+    "overall": 68,
+    "potential": 68,
+    "position": "ST",
+    "age": 33,
+    "team": "Cerro Largo"
+  },
+  {
+    "name": "E. Resvaldo",
+    "overall": 68,
+    "potential": 68,
+    "position": "CB",
+    "age": 37,
+    "team": "Cerro Largo"
+  },
+  {
+    "name": "H. Sarnoga",
+    "overall": 67,
+    "potential": 67,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Peñarol"
+  },
+  {
+    "name": "I. Suárez",
+    "overall": 67,
+    "potential": 75,
+    "position": "GK",
+    "age": 23,
+    "team": "Club Nacional de Football"
+  },
+  {
+    "name": "N. Donadinna",
+    "overall": 67,
+    "potential": 67,
+    "position": "RB",
+    "age": 29,
+    "team": "Club Nacional de Football"
+  },
+  {
+    "name": "D. Bantelicia",
+    "overall": 67,
+    "potential": 67,
+    "position": "GK",
+    "age": 33,
+    "team": "Racing Club de Montevideo"
+  },
+  {
+    "name": "W. Cundumín",
+    "overall": 67,
+    "potential": 67,
+    "position": "RM, RW",
+    "age": 29,
+    "team": "Boston River"
+  },
+  {
+    "name": "P. Santirano",
+    "overall": 66,
+    "potential": 66,
+    "position": "GK",
+    "age": 29,
+    "team": "Peñarol"
+  },
+  {
+    "name": "R. Brazionis",
+    "overall": 66,
+    "potential": 73,
+    "position": "CB",
+    "age": 23,
+    "team": "Racing Club de Montevideo"
+  },
+  {
+    "name": "L. Garriazoz",
+    "overall": 66,
+    "potential": 66,
+    "position": "RB",
+    "age": 25,
+    "team": "Racing Club de Montevideo"
+  },
+  {
+    "name": "J. Pardaneos",
+    "overall": 66,
+    "potential": 66,
+    "position": "RM, LM, RW",
+    "age": 25,
+    "team": "Racing Club de Montevideo"
+  },
+  {
+    "name": "N. Sosa Sánchez",
+    "overall": 66,
+    "potential": 66,
+    "position": "ST, RM, RW",
+    "age": 29,
+    "team": "Racing Club de Montevideo"
+  },
+  {
+    "name": "A. Paillalev",
+    "overall": 66,
+    "potential": 66,
+    "position": "CB",
+    "age": 29,
+    "team": "Racing Club de Montevideo"
+  },
+  {
+    "name": "M. Rivero",
+    "overall": 66,
+    "potential": 76,
+    "position": "CB",
+    "age": 20,
+    "team": "Boston River"
+  },
+  {
+    "name": "M. González",
+    "overall": 66,
+    "potential": 66,
+    "position": "CB",
+    "age": 31,
+    "team": "Boston River"
+  },
+  {
+    "name": "E. Mereles",
+    "overall": 65,
+    "potential": 75,
+    "position": "LW, LM",
+    "age": 19,
+    "team": "Club Nacional de Football"
+  },
+  {
+    "name": "F. Muñoa",
+    "overall": 65,
+    "potential": 73,
+    "position": "LM, CM, LW",
+    "age": 21,
+    "team": "Boston River"
+  },
+  {
+    "name": "F. Rodríguez",
+    "overall": 65,
+    "potential": 65,
+    "position": "ST",
+    "age": 29,
+    "team": "Boston River"
+  },
+  {
+    "name": "A. González",
+    "overall": 65,
+    "potential": 73,
+    "position": "ST",
+    "age": 22,
+    "team": "Boston River"
+  },
+  {
+    "name": "P. Calione",
+    "overall": 64,
+    "potential": 77,
+    "position": "CB",
+    "age": 19,
+    "team": "Club Nacional de Football"
+  },
+  {
+    "name": "B. Arady",
+    "overall": 64,
+    "potential": 78,
+    "position": "LW, RW, LM",
+    "age": 18,
+    "team": "Club Nacional de Football"
+  },
+  {
+    "name": "F. Cairus",
+    "overall": 64,
+    "potential": 69,
+    "position": "CM, CDM, CAM",
+    "age": 25,
+    "team": "Racing Club de Montevideo"
+  },
+  {
+    "name": "B. Tomatis",
+    "overall": 64,
+    "potential": 74,
+    "position": "ST",
+    "age": 20,
+    "team": "Racing Club de Montevideo"
+  },
+  {
+    "name": "A. Simprende",
+    "overall": 64,
+    "potential": 64,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Cerro Largo"
+  },
+  {
+    "name": "E. Oreliénim",
+    "overall": 64,
+    "potential": 64,
+    "position": "RM, LM, RW",
+    "age": 29,
+    "team": "Cerro Largo"
+  },
+  {
+    "name": "R. Pezarano",
+    "overall": 64,
+    "potential": 64,
+    "position": "RB",
+    "age": 29,
+    "team": "Cerro Largo"
+  },
+  {
+    "name": "E. Da Silva",
+    "overall": 63,
+    "potential": 69,
+    "position": "RW, ST, CAM, RM",
+    "age": 24,
+    "team": "Racing Club de Montevideo"
+  },
+  {
+    "name": "J. O'Neil",
+    "overall": 63,
+    "potential": 69,
+    "position": "LB, LM",
+    "age": 23,
+    "team": "Boston River"
+  },
+  {
+    "name": "P. Rescondi",
+    "overall": 63,
+    "potential": 63,
+    "position": "CB, RB",
+    "age": 29,
+    "team": "Cerro Largo"
+  },
+  {
+    "name": "T. Viera",
+    "overall": 62,
+    "potential": 73,
+    "position": "CB, LB",
+    "age": 19,
+    "team": "Club Nacional de Football"
+  },
+  {
+    "name": "Á. Vázquez",
+    "overall": 62,
+    "potential": 71,
+    "position": "CM, CDM",
+    "age": 23,
+    "team": "Racing Club de Montevideo"
+  },
+  {
+    "name": "M. Gómez",
+    "overall": 62,
+    "potential": 74,
+    "position": "CB",
+    "age": 20,
+    "team": "Boston River"
+  },
+  {
+    "name": "M. Mancebo",
+    "overall": 62,
+    "potential": 67,
+    "position": "CB",
+    "age": 24,
+    "team": "Boston River"
+  },
+  {
+    "name": "L. Parraso",
+    "overall": 62,
+    "potential": 62,
+    "position": "RW, RM",
+    "age": 29,
+    "team": "Boston River"
+  },
+  {
+    "name": "F. Machado",
+    "overall": 61,
+    "potential": 70,
+    "position": "GK",
+    "age": 21,
+    "team": "Racing Club de Montevideo"
+  },
+  {
+    "name": "E. Galudio",
+    "overall": 61,
+    "potential": 61,
+    "position": "GK",
+    "age": 29,
+    "team": "Boston River"
+  },
+  {
+    "name": "G. Orzazabal",
+    "overall": 61,
+    "potential": 61,
+    "position": "ST, LW",
+    "age": 25,
+    "team": "Cerro Largo"
+  },
+  {
+    "name": "A. Scarone",
+    "overall": 60,
+    "potential": 74,
+    "position": "CAM, CM",
+    "age": 20,
+    "team": "Racing Club de Montevideo"
+  },
+  {
+    "name": "F. Dafonte",
+    "overall": 59,
+    "potential": 71,
+    "position": "CDM, CM",
+    "age": 20,
+    "team": "Boston River"
+  },
+  {
+    "name": "M. Acerval",
+    "overall": 59,
+    "potential": 59,
+    "position": "GK",
+    "age": 33,
+    "team": "Cerro Largo"
+  },
+  {
+    "name": "J. Bosca",
+    "overall": 55,
+    "potential": 66,
+    "position": "CDM, CM",
+    "age": 20,
+    "team": "Racing Club de Montevideo"
+  }
+]

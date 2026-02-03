@@ -1,0 +1,3546 @@
+[
+  {
+    "name": "H. Vanaken",
+    "overall": 81,
+    "potential": 81,
+    "position": "CAM, CM, CDM",
+    "age": 32,
+    "team": "Club Brugge KV"
+  },
+  {
+    "name": "C. Tzolis",
+    "overall": 81,
+    "potential": 87,
+    "position": "LM, LW",
+    "age": 23,
+    "team": "Club Brugge KV"
+  },
+  {
+    "name": "B. Heynen",
+    "overall": 79,
+    "potential": 79,
+    "position": "CDM, CM",
+    "age": 28,
+    "team": "KRC Genk"
+  },
+  {
+    "name": "C. Burgess",
+    "overall": 79,
+    "potential": 79,
+    "position": "CB",
+    "age": 33,
+    "team": "Union Saint-Gilloise"
+  },
+  {
+    "name": "A. Zorgane",
+    "overall": 79,
+    "potential": 81,
+    "position": "CDM, CM",
+    "age": 25,
+    "team": "Union Saint-Gilloise"
+  },
+  {
+    "name": "B. Mechele",
+    "overall": 78,
+    "potential": 78,
+    "position": "CB",
+    "age": 32,
+    "team": "Club Brugge KV"
+  },
+  {
+    "name": "R. Onyedika",
+    "overall": 78,
+    "potential": 85,
+    "position": "CDM, CM, CB",
+    "age": 24,
+    "team": "Club Brugge KV"
+  },
+  {
+    "name": "Z. El Ouahdi",
+    "overall": 78,
+    "potential": 85,
+    "position": "RB, RM, CM",
+    "age": 23,
+    "team": "KRC Genk"
+  },
+  {
+    "name": "C. Coosemans",
+    "overall": 77,
+    "potential": 77,
+    "position": "GK",
+    "age": 32,
+    "team": "RSC Anderlecht"
+  },
+  {
+    "name": "A. Bertaccini",
+    "overall": 77,
+    "potential": 81,
+    "position": "ST, CAM, LW, CM",
+    "age": 24,
+    "team": "RSC Anderlecht"
+  },
+  {
+    "name": "J. Ito",
+    "overall": 77,
+    "potential": 77,
+    "position": "RM, RW",
+    "age": 32,
+    "team": "KRC Genk"
+  },
+  {
+    "name": "D. Roef",
+    "overall": 77,
+    "potential": 77,
+    "position": "GK",
+    "age": 31,
+    "team": "KAA Gent"
+  },
+  {
+    "name": "K. Mac Allister",
+    "overall": 77,
+    "potential": 77,
+    "position": "CB",
+    "age": 27,
+    "team": "Union Saint-Gilloise"
+  },
+  {
+    "name": "V. Janssen",
+    "overall": 76,
+    "potential": 76,
+    "position": "ST, CAM, CM",
+    "age": 31,
+    "team": "Royal Antwerp FC"
+  },
+  {
+    "name": "J. Ordoñez",
+    "overall": 76,
+    "potential": 87,
+    "position": "CB",
+    "age": 21,
+    "team": "Club Brugge KV"
+  },
+  {
+    "name": "J. Steuckers",
+    "overall": 76,
+    "potential": 82,
+    "position": "RM, RW",
+    "age": 23,
+    "team": "KRC Genk"
+  },
+  {
+    "name": "M. Smets",
+    "overall": 76,
+    "potential": 84,
+    "position": "CB",
+    "age": 21,
+    "team": "KRC Genk"
+  },
+  {
+    "name": "D. Haspolat",
+    "overall": 76,
+    "potential": 82,
+    "position": "CDM, CM",
+    "age": 25,
+    "team": "KVC Westerlo"
+  },
+  {
+    "name": "P. David",
+    "overall": 76,
+    "potential": 81,
+    "position": "ST",
+    "age": 23,
+    "team": "Union Saint-Gilloise"
+  },
+  {
+    "name": "R. Schoofs",
+    "overall": 76,
+    "potential": 76,
+    "position": "CM, CDM, CAM",
+    "age": 31,
+    "team": "Union Saint-Gilloise"
+  },
+  {
+    "name": "Z. Van Den Bosch",
+    "overall": 75,
+    "potential": 85,
+    "position": "CB",
+    "age": 21,
+    "team": "Royal Antwerp FC"
+  },
+  {
+    "name": "S. Mignolet",
+    "overall": 75,
+    "potential": 75,
+    "position": "GK",
+    "age": 37,
+    "team": "Club Brugge KV"
+  },
+  {
+    "name": "T. Teuma",
+    "overall": 75,
+    "potential": 75,
+    "position": "CAM, CM",
+    "age": 31,
+    "team": "Standard de Liège"
+  },
+  {
+    "name": "J. Kayembe",
+    "overall": 75,
+    "potential": 75,
+    "position": "LB, CB, LM",
+    "age": 30,
+    "team": "KRC Genk"
+  },
+  {
+    "name": "Mujaid",
+    "overall": 75,
+    "potential": 81,
+    "position": "CB",
+    "age": 25,
+    "team": "KRC Genk"
+  },
+  {
+    "name": "A. Khalaili",
+    "overall": 75,
+    "potential": 86,
+    "position": "RM, RB, RW",
+    "age": 20,
+    "team": "Union Saint-Gilloise"
+  },
+  {
+    "name": "T. Hazard",
+    "overall": 74,
+    "potential": 74,
+    "position": "CAM, LW, RW, CM",
+    "age": 32,
+    "team": "RSC Anderlecht"
+  },
+  {
+    "name": "L. Augustinsson",
+    "overall": 74,
+    "potential": 74,
+    "position": "LB, LM",
+    "age": 31,
+    "team": "RSC Anderlecht"
+  },
+  {
+    "name": "M. Stroeykens",
+    "overall": 74,
+    "potential": 86,
+    "position": "CM, CAM, CDM",
+    "age": 20,
+    "team": "RSC Anderlecht"
+  },
+  {
+    "name": "D. Praet",
+    "overall": 74,
+    "potential": 74,
+    "position": "CAM, RM, CM",
+    "age": 31,
+    "team": "Royal Antwerp FC"
+  },
+  {
+    "name": "J. Seys",
+    "overall": 74,
+    "potential": 87,
+    "position": "LB, RB, LM",
+    "age": 20,
+    "team": "Club Brugge KV"
+  },
+  {
+    "name": "F. Lemaréchal",
+    "overall": 74,
+    "potential": 80,
+    "position": "CAM, CM",
+    "age": 21,
+    "team": "Club Brugge KV"
+  },
+  {
+    "name": "D. Eckert Ayensa",
+    "overall": 74,
+    "potential": 74,
+    "position": "ST, CAM, CM",
+    "age": 28,
+    "team": "Standard de Liège"
+  },
+  {
+    "name": "M. Epolo",
+    "overall": 74,
+    "potential": 86,
+    "position": "GK",
+    "age": 20,
+    "team": "Standard de Liège"
+  },
+  {
+    "name": "P. Pflücke",
+    "overall": 74,
+    "potential": 74,
+    "position": "RM, LM, LW, RW",
+    "age": 28,
+    "team": "Royal Charleroi Sporting Club"
+  },
+  {
+    "name": "P. Guiagon",
+    "overall": 74,
+    "potential": 79,
+    "position": "LM, RM, LW",
+    "age": 24,
+    "team": "Royal Charleroi Sporting Club"
+  },
+  {
+    "name": "A. Kadri",
+    "overall": 74,
+    "potential": 76,
+    "position": "CM, CAM, LM, CDM",
+    "age": 25,
+    "team": "KAA Gent"
+  },
+  {
+    "name": "R. Ito",
+    "overall": 74,
+    "potential": 74,
+    "position": "CAM, CM, ST",
+    "age": 27,
+    "team": "Sint-Truidense VV"
+  },
+  {
+    "name": "B. Reynolds",
+    "overall": 74,
+    "potential": 81,
+    "position": "RB, RM",
+    "age": 24,
+    "team": "KVC Westerlo"
+  },
+  {
+    "name": "K. Scherpen",
+    "overall": 74,
+    "potential": 79,
+    "position": "GK",
+    "age": 25,
+    "team": "Union Saint-Gilloise"
+  },
+  {
+    "name": "A. Ait El Hadj",
+    "overall": 74,
+    "potential": 79,
+    "position": "CAM, CM, LM",
+    "age": 23,
+    "team": "Union Saint-Gilloise"
+  },
+  {
+    "name": "C. Huerta",
+    "overall": 73,
+    "potential": 75,
+    "position": "LW, LM, RW",
+    "age": 24,
+    "team": "RSC Anderlecht"
+  },
+  {
+    "name": "D. Sikan",
+    "overall": 73,
+    "potential": 79,
+    "position": "ST, LW, CAM, LM",
+    "age": 24,
+    "team": "RSC Anderlecht"
+  },
+  {
+    "name": "K. Sardella",
+    "overall": 73,
+    "potential": 82,
+    "position": "RB, LB, RM",
+    "age": 23,
+    "team": "RSC Anderlecht"
+  },
+  {
+    "name": "Enric Llansana",
+    "overall": 73,
+    "potential": 80,
+    "position": "CDM, CM",
+    "age": 24,
+    "team": "RSC Anderlecht"
+  },
+  {
+    "name": "M. N'Diaye",
+    "overall": 73,
+    "potential": 81,
+    "position": "LB, LM",
+    "age": 23,
+    "team": "RSC Anderlecht"
+  },
+  {
+    "name": "T. Somers",
+    "overall": 73,
+    "potential": 74,
+    "position": "RM, CAM, RW",
+    "age": 26,
+    "team": "Royal Antwerp FC"
+  },
+  {
+    "name": "G. Nilsson",
+    "overall": 73,
+    "potential": 73,
+    "position": "ST",
+    "age": 28,
+    "team": "Club Brugge KV"
+  },
+  {
+    "name": "B. Meijer",
+    "overall": 73,
+    "potential": 81,
+    "position": "LB, LM",
+    "age": 22,
+    "team": "Club Brugge KV"
+  },
+  {
+    "name": "S. Van der Heyden",
+    "overall": 73,
+    "potential": 75,
+    "position": "CB",
+    "age": 27,
+    "team": "KAA Gent"
+  },
+  {
+    "name": "M. Delorge",
+    "overall": 73,
+    "potential": 83,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "KAA Gent"
+  },
+  {
+    "name": "L. Kokubo",
+    "overall": 73,
+    "potential": 79,
+    "position": "GK",
+    "age": 24,
+    "team": "Sint-Truidense VV"
+  },
+  {
+    "name": "A. Sayyadmanesh",
+    "overall": 73,
+    "potential": 78,
+    "position": "LM, RM, ST, LW",
+    "age": 24,
+    "team": "KVC Westerlo"
+  },
+  {
+    "name": "E. Bayram",
+    "overall": 73,
+    "potential": 84,
+    "position": "CB",
+    "age": 22,
+    "team": "KVC Westerlo"
+  },
+  {
+    "name": "E. Utkus",
+    "overall": 73,
+    "potential": 80,
+    "position": "CB, RB, CDM",
+    "age": 25,
+    "team": "Cercle Brugge KSV"
+  },
+  {
+    "name": "O. Niang",
+    "overall": 73,
+    "potential": 78,
+    "position": "LM, LB",
+    "age": 23,
+    "team": "Union Saint-Gilloise"
+  },
+  {
+    "name": "M. Rasmussen",
+    "overall": 73,
+    "potential": 73,
+    "position": "CM, CAM, CDM",
+    "age": 27,
+    "team": "Union Saint-Gilloise"
+  },
+  {
+    "name": "R. Sykes",
+    "overall": 73,
+    "potential": 76,
+    "position": "CB",
+    "age": 26,
+    "team": "Union Saint-Gilloise"
+  },
+  {
+    "name": "S. Schrijvers",
+    "overall": 73,
+    "potential": 73,
+    "position": "CM, CAM, CDM",
+    "age": 28,
+    "team": "Oud-Heverlee Leuven"
+  },
+  {
+    "name": "K. Mrabti",
+    "overall": 73,
+    "potential": 73,
+    "position": "CAM, CM, ST",
+    "age": 31,
+    "team": "KV Mechelen"
+  },
+  {
+    "name": "O. De Wolf",
+    "overall": 73,
+    "potential": 73,
+    "position": "GK",
+    "age": 28,
+    "team": "KV Mechelen"
+  },
+  {
+    "name": "Y. Verschaeren",
+    "overall": 72,
+    "potential": 78,
+    "position": "CM, CAM, RM, CDM",
+    "age": 23,
+    "team": "RSC Anderlecht"
+  },
+  {
+    "name": "G. Kerk",
+    "overall": 72,
+    "potential": 72,
+    "position": "RW, ST, LM, RM",
+    "age": 29,
+    "team": "Royal Antwerp FC"
+  },
+  {
+    "name": "D. Foulon",
+    "overall": 72,
+    "potential": 73,
+    "position": "LM, LB",
+    "age": 26,
+    "team": "Royal Antwerp FC"
+  },
+  {
+    "name": "L. Reis",
+    "overall": 72,
+    "potential": 75,
+    "position": "CM, CDM",
+    "age": 25,
+    "team": "Club Brugge KV"
+  },
+  {
+    "name": "N. Tresoldi",
+    "overall": 72,
+    "potential": 86,
+    "position": "ST",
+    "age": 20,
+    "team": "Club Brugge KV"
+  },
+  {
+    "name": "K. Sabbe",
+    "overall": 72,
+    "potential": 85,
+    "position": "RB, LB, RM",
+    "age": 20,
+    "team": "Club Brugge KV"
+  },
+  {
+    "name": "R. Vermant",
+    "overall": 72,
+    "potential": 83,
+    "position": "ST",
+    "age": 21,
+    "team": "Club Brugge KV"
+  },
+  {
+    "name": "Carlos Forbs",
+    "overall": 72,
+    "potential": 82,
+    "position": "RM, RW, LW",
+    "age": 21,
+    "team": "Club Brugge KV"
+  },
+  {
+    "name": "M. Fossey",
+    "overall": 72,
+    "potential": 72,
+    "position": "RB, RM",
+    "age": 26,
+    "team": "Standard de Liège"
+  },
+  {
+    "name": "G. Gallon",
+    "overall": 72,
+    "potential": 72,
+    "position": "GK",
+    "age": 32,
+    "team": "FCV Dender EH"
+  },
+  {
+    "name": "A. Ousou",
+    "overall": 72,
+    "potential": 76,
+    "position": "CB",
+    "age": 25,
+    "team": "Royal Charleroi Sporting Club"
+  },
+  {
+    "name": "K. Karetsas",
+    "overall": 72,
+    "potential": 86,
+    "position": "CAM, RW, CM",
+    "age": 17,
+    "team": "KRC Genk"
+  },
+  {
+    "name": "T. Lawal",
+    "overall": 72,
+    "potential": 78,
+    "position": "GK",
+    "age": 25,
+    "team": "KRC Genk"
+  },
+  {
+    "name": "Oh Hyeon Gyu",
+    "overall": 72,
+    "potential": 78,
+    "position": "ST",
+    "age": 24,
+    "team": "KRC Genk"
+  },
+  {
+    "name": "Y. Sor",
+    "overall": 72,
+    "potential": 77,
+    "position": "ST, LW, LM",
+    "age": 24,
+    "team": "KRC Genk"
+  },
+  {
+    "name": "J. Duverne",
+    "overall": 72,
+    "potential": 72,
+    "position": "CB, RB, LB",
+    "age": 27,
+    "team": "KAA Gent"
+  },
+  {
+    "name": "Hong Hyeon Seok",
+    "overall": 72,
+    "potential": 74,
+    "position": "CAM, CM",
+    "age": 26,
+    "team": "KAA Gent"
+  },
+  {
+    "name": "G. Magnée",
+    "overall": 72,
+    "potential": 73,
+    "position": "LM, RM, RB, LB",
+    "age": 25,
+    "team": "Cercle Brugge KSV"
+  },
+  {
+    "name": "O. Diakité",
+    "overall": 72,
+    "potential": 82,
+    "position": "ST",
+    "age": 21,
+    "team": "Cercle Brugge KSV"
+  },
+  {
+    "name": "R. Florucz",
+    "overall": 72,
+    "potential": 76,
+    "position": "RW, ST, RM",
+    "age": 24,
+    "team": "Union Saint-Gilloise"
+  },
+  {
+    "name": "B. Zeneli",
+    "overall": 72,
+    "potential": 79,
+    "position": "CM, CAM, CDM",
+    "age": 22,
+    "team": "Union Saint-Gilloise"
+  },
+  {
+    "name": "F. Leysen",
+    "overall": 72,
+    "potential": 79,
+    "position": "CB",
+    "age": 21,
+    "team": "Union Saint-Gilloise"
+  },
+  {
+    "name": "J. Erenbjerg",
+    "overall": 72,
+    "potential": 75,
+    "position": "CAM, RM, LM, CM",
+    "age": 25,
+    "team": "SV Zulte Waregem"
+  },
+  {
+    "name": "Y. Maziz",
+    "overall": 72,
+    "potential": 72,
+    "position": "CAM, CM",
+    "age": 27,
+    "team": "Oud-Heverlee Leuven"
+  },
+  {
+    "name": "B. Raman",
+    "overall": 72,
+    "potential": 72,
+    "position": "ST, RM, RW",
+    "age": 30,
+    "team": "KV Mechelen"
+  },
+  {
+    "name": "L. Lauberbach",
+    "overall": 72,
+    "potential": 72,
+    "position": "ST",
+    "age": 27,
+    "team": "KV Mechelen"
+  },
+  {
+    "name": "M. Konaté",
+    "overall": 72,
+    "potential": 72,
+    "position": "CDM, CM, CB",
+    "age": 31,
+    "team": "KV Mechelen"
+  },
+  {
+    "name": "M. van Brederode",
+    "overall": 72,
+    "potential": 80,
+    "position": "LM, CAM, LW",
+    "age": 21,
+    "team": "KV Mechelen"
+  },
+  {
+    "name": "N. Angulo",
+    "overall": 71,
+    "potential": 81,
+    "position": "LM, RM, LW",
+    "age": 22,
+    "team": "RSC Anderlecht"
+  },
+  {
+    "name": "B. Kouyaté",
+    "overall": 71,
+    "potential": 73,
+    "position": "CB",
+    "age": 28,
+    "team": "Royal Antwerp FC"
+  },
+  {
+    "name": "H. Vetlesen",
+    "overall": 71,
+    "potential": 74,
+    "position": "CDM, RW, CM",
+    "age": 25,
+    "team": "Club Brugge KV"
+  },
+  {
+    "name": "M. Ilaimaharitra",
+    "overall": 71,
+    "potential": 71,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Standard de Liège"
+  },
+  {
+    "name": "T. Henry",
+    "overall": 71,
+    "potential": 71,
+    "position": "ST",
+    "age": 30,
+    "team": "Standard de Liège"
+  },
+  {
+    "name": "M. El Hankouri",
+    "overall": 71,
+    "potential": 71,
+    "position": "LM, CM, ST, LW",
+    "age": 28,
+    "team": "Standard de Liège"
+  },
+  {
+    "name": "K. Van Den Kerkhof",
+    "overall": 71,
+    "potential": 71,
+    "position": "RM, RB",
+    "age": 29,
+    "team": "Royal Charleroi Sporting Club"
+  },
+  {
+    "name": "D. Heymans",
+    "overall": 71,
+    "potential": 74,
+    "position": "CAM, CM",
+    "age": 26,
+    "team": "KRC Genk"
+  },
+  {
+    "name": "M. Skóraś",
+    "overall": 71,
+    "potential": 74,
+    "position": "RM, LM, RW",
+    "age": 25,
+    "team": "KAA Gent"
+  },
+  {
+    "name": "A. Muja",
+    "overall": 71,
+    "potential": 71,
+    "position": "LM, RM, RW, LW",
+    "age": 26,
+    "team": "Sint-Truidense VV"
+  },
+  {
+    "name": "M. Fuseini",
+    "overall": 71,
+    "potential": 77,
+    "position": "ST, CAM",
+    "age": 23,
+    "team": "Union Saint-Gilloise"
+  },
+  {
+    "name": "N. Dussenne",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB",
+    "age": 33,
+    "team": "Oud-Heverlee Leuven"
+  },
+  {
+    "name": "T. Leysen",
+    "overall": 71,
+    "potential": 78,
+    "position": "GK",
+    "age": 23,
+    "team": "Oud-Heverlee Leuven"
+  },
+  {
+    "name": "Ł. Łakomy",
+    "overall": 71,
+    "potential": 76,
+    "position": "CM, CDM, CAM",
+    "age": 24,
+    "team": "Oud-Heverlee Leuven"
+  },
+  {
+    "name": "M. Rits",
+    "overall": 70,
+    "potential": 70,
+    "position": "CM, CDM",
+    "age": 31,
+    "team": "RSC Anderlecht"
+  },
+  {
+    "name": "A. Flips",
+    "overall": 70,
+    "potential": 71,
+    "position": "LM, CAM, RM, LW",
+    "age": 25,
+    "team": "RSC Anderlecht"
+  },
+  {
+    "name": "N. Saliba",
+    "overall": 70,
+    "potential": 79,
+    "position": "CM, CAM, CDM",
+    "age": 21,
+    "team": "RSC Anderlecht"
+  },
+  {
+    "name": "L. Hey",
+    "overall": 70,
+    "potential": 80,
+    "position": "CB",
+    "age": 22,
+    "team": "RSC Anderlecht"
+  },
+  {
+    "name": "N. Jackers",
+    "overall": 70,
+    "potential": 70,
+    "position": "GK",
+    "age": 27,
+    "team": "Club Brugge KV"
+  },
+  {
+    "name": "H. Siquet",
+    "overall": 70,
+    "potential": 78,
+    "position": "RM, RB",
+    "age": 22,
+    "team": "Club Brugge KV"
+  },
+  {
+    "name": "A. Stanković",
+    "overall": 70,
+    "potential": 82,
+    "position": "CDM, CM, CB",
+    "age": 19,
+    "team": "Club Brugge KV"
+  },
+  {
+    "name": "C. Nielsen",
+    "overall": 70,
+    "potential": 70,
+    "position": "CDM, CM",
+    "age": 31,
+    "team": "Standard de Liège"
+  },
+  {
+    "name": "T. Mohr",
+    "overall": 70,
+    "potential": 70,
+    "position": "LM, LB, LW",
+    "age": 29,
+    "team": "Standard de Liège"
+  },
+  {
+    "name": "T. Nkada",
+    "overall": 70,
+    "potential": 73,
+    "position": "ST",
+    "age": 25,
+    "team": "Standard de Liège"
+  },
+  {
+    "name": "R. Saïd",
+    "overall": 70,
+    "potential": 73,
+    "position": "LM, ST, LW",
+    "age": 25,
+    "team": "Standard de Liège"
+  },
+  {
+    "name": "B. Nsimba",
+    "overall": 70,
+    "potential": 74,
+    "position": "ST, CAM",
+    "age": 25,
+    "team": "FCV Dender EH"
+  },
+  {
+    "name": "R. Květ",
+    "overall": 70,
+    "potential": 70,
+    "position": "CM, ST, CDM, CAM",
+    "age": 27,
+    "team": "FCV Dender EH"
+  },
+  {
+    "name": "A. Bernier",
+    "overall": 70,
+    "potential": 70,
+    "position": "RM, ST, LM, RW",
+    "age": 27,
+    "team": "Royal Charleroi Sporting Club"
+  },
+  {
+    "name": "L. Blum",
+    "overall": 70,
+    "potential": 77,
+    "position": "RB, LB, RM",
+    "age": 23,
+    "team": "Royal Charleroi Sporting Club"
+  },
+  {
+    "name": "M. Delavallée",
+    "overall": 70,
+    "potential": 81,
+    "position": "GK",
+    "age": 21,
+    "team": "Royal Charleroi Sporting Club"
+  },
+  {
+    "name": "C. Keita",
+    "overall": 70,
+    "potential": 78,
+    "position": "CB",
+    "age": 22,
+    "team": "Royal Charleroi Sporting Club"
+  },
+  {
+    "name": "H. Van Crombrugge",
+    "overall": 70,
+    "potential": 70,
+    "position": "GK",
+    "age": 32,
+    "team": "KRC Genk"
+  },
+  {
+    "name": "N. Sattlberger",
+    "overall": 70,
+    "potential": 82,
+    "position": "CDM, CM",
+    "age": 21,
+    "team": "KRC Genk"
+  },
+  {
+    "name": "Y. Medina",
+    "overall": 70,
+    "potential": 84,
+    "position": "LB, LW, LM",
+    "age": 20,
+    "team": "KRC Genk"
+  },
+  {
+    "name": "I. Bangoura",
+    "overall": 70,
+    "potential": 80,
+    "position": "CDM, CM",
+    "age": 21,
+    "team": "KRC Genk"
+  },
+  {
+    "name": "Leonardo Lopes",
+    "overall": 70,
+    "potential": 71,
+    "position": "CM, CDM, CB",
+    "age": 26,
+    "team": "KAA Gent"
+  },
+  {
+    "name": "W. Kanga",
+    "overall": 70,
+    "potential": 71,
+    "position": "ST",
+    "age": 27,
+    "team": "KAA Gent"
+  },
+  {
+    "name": "M. Samoise",
+    "overall": 70,
+    "potential": 75,
+    "position": "RB, RM",
+    "age": 23,
+    "team": "KAA Gent"
+  },
+  {
+    "name": "A. Ito",
+    "overall": 70,
+    "potential": 72,
+    "position": "CDM, CM",
+    "age": 26,
+    "team": "KAA Gent"
+  },
+  {
+    "name": "S. Taniguchi",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB",
+    "age": 33,
+    "team": "Sint-Truidense VV"
+  },
+  {
+    "name": "A. Sissako",
+    "overall": 70,
+    "potential": 70,
+    "position": "CM, CDM, CB",
+    "age": 27,
+    "team": "Sint-Truidense VV"
+  },
+  {
+    "name": "R. Van Helden",
+    "overall": 70,
+    "potential": 79,
+    "position": "CB, RB, CDM",
+    "age": 22,
+    "team": "Sint-Truidense VV"
+  },
+  {
+    "name": "A. Piedfort",
+    "overall": 70,
+    "potential": 80,
+    "position": "CDM, CM",
+    "age": 20,
+    "team": "KVC Westerlo"
+  },
+  {
+    "name": "H. Van Der Bruggen",
+    "overall": 70,
+    "potential": 70,
+    "position": "CM, CDM",
+    "age": 32,
+    "team": "Cercle Brugge KSV"
+  },
+  {
+    "name": "D. Vanzeir",
+    "overall": 70,
+    "potential": 71,
+    "position": "ST, CAM",
+    "age": 27,
+    "team": "Cercle Brugge KSV"
+  },
+  {
+    "name": "Warleson",
+    "overall": 70,
+    "potential": 70,
+    "position": "GK",
+    "age": 28,
+    "team": "Cercle Brugge KSV"
+  },
+  {
+    "name": "C. Ravych",
+    "overall": 70,
+    "potential": 79,
+    "position": "CB, RB, LB, CDM",
+    "age": 22,
+    "team": "Cercle Brugge KSV"
+  },
+  {
+    "name": "L. Patris",
+    "overall": 70,
+    "potential": 75,
+    "position": "RM, RB",
+    "age": 24,
+    "team": "Union Saint-Gilloise"
+  },
+  {
+    "name": "J. Opoku",
+    "overall": 70,
+    "potential": 79,
+    "position": "LM, ST, RM, LW",
+    "age": 19,
+    "team": "SV Zulte Waregem"
+  },
+  {
+    "name": "M. Aké",
+    "overall": 70,
+    "potential": 71,
+    "position": "LM, RM, LW",
+    "age": 24,
+    "team": "SV Zulte Waregem"
+  },
+  {
+    "name": "A. Tanghe",
+    "overall": 70,
+    "potential": 72,
+    "position": "CB",
+    "age": 26,
+    "team": "SV Zulte Waregem"
+  },
+  {
+    "name": "T. Ominami",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB",
+    "age": 27,
+    "team": "Oud-Heverlee Leuven"
+  },
+  {
+    "name": "E. Pletinckx",
+    "overall": 70,
+    "potential": 77,
+    "position": "CB",
+    "age": 24,
+    "team": "Oud-Heverlee Leuven"
+  },
+  {
+    "name": "Nacho Miras",
+    "overall": 70,
+    "potential": 72,
+    "position": "GK",
+    "age": 27,
+    "team": "KV Mechelen"
+  },
+  {
+    "name": "F. Hammar",
+    "overall": 70,
+    "potential": 77,
+    "position": "CDM, CM, CB",
+    "age": 24,
+    "team": "KV Mechelen"
+  },
+  {
+    "name": "M. Belkheir",
+    "overall": 70,
+    "potential": 70,
+    "position": "RW, ST, RM",
+    "age": 26,
+    "team": "RAAL La Louvière"
+  },
+  {
+    "name": "M. Cvetković",
+    "overall": 69,
+    "potential": 84,
+    "position": "ST, LW",
+    "age": 18,
+    "team": "RSC Anderlecht"
+  },
+  {
+    "name": "T. Foket",
+    "overall": 69,
+    "potential": 69,
+    "position": "RB, RM",
+    "age": 30,
+    "team": "RSC Anderlecht"
+  },
+  {
+    "name": "M. Ashimeru",
+    "overall": 69,
+    "potential": 69,
+    "position": "CM, CDM",
+    "age": 27,
+    "team": "RSC Anderlecht"
+  },
+  {
+    "name": "Y. Özcan",
+    "overall": 69,
+    "potential": 83,
+    "position": "CB, LB, LM",
+    "age": 19,
+    "team": "RSC Anderlecht"
+  },
+  {
+    "name": "I. Camara",
+    "overall": 69,
+    "potential": 78,
+    "position": "LB, RM, RB, LM",
+    "age": 22,
+    "team": "RSC Anderlecht"
+  },
+  {
+    "name": "G. Bijl",
+    "overall": 69,
+    "potential": 69,
+    "position": "RB, CDM, CM",
+    "age": 29,
+    "team": "Royal Antwerp FC"
+  },
+  {
+    "name": "M. Diawara",
+    "overall": 69,
+    "potential": 77,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Royal Antwerp FC"
+  },
+  {
+    "name": "J. Spileers",
+    "overall": 69,
+    "potential": 82,
+    "position": "CB, RB, CDM",
+    "age": 20,
+    "team": "Club Brugge KV"
+  },
+  {
+    "name": "J. Homawoo",
+    "overall": 69,
+    "potential": 70,
+    "position": "CB",
+    "age": 27,
+    "team": "Standard de Liège"
+  },
+  {
+    "name": "I. Hautekiet",
+    "overall": 69,
+    "potential": 76,
+    "position": "CB",
+    "age": 23,
+    "team": "Standard de Liège"
+  },
+  {
+    "name": "K. Cools",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB",
+    "age": 27,
+    "team": "FCV Dender EH"
+  },
+  {
+    "name": "M. Sahi",
+    "overall": 69,
+    "potential": 74,
+    "position": "ST, CAM",
+    "age": 23,
+    "team": "FCV Dender EH"
+  },
+  {
+    "name": "M. Berte",
+    "overall": 69,
+    "potential": 77,
+    "position": "ST, RW, CAM",
+    "age": 23,
+    "team": "FCV Dender EH"
+  },
+  {
+    "name": "B. Goncalves",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB, LB",
+    "age": 28,
+    "team": "FCV Dender EH"
+  },
+  {
+    "name": "Y. Titraoui",
+    "overall": 69,
+    "potential": 79,
+    "position": "CDM, CAM, CM",
+    "age": 21,
+    "team": "Royal Charleroi Sporting Club"
+  },
+  {
+    "name": "I. Mbenza",
+    "overall": 69,
+    "potential": 69,
+    "position": "LM, ST, RM, LW",
+    "age": 29,
+    "team": "Royal Charleroi Sporting Club"
+  },
+  {
+    "name": "A. Scheidler",
+    "overall": 69,
+    "potential": 69,
+    "position": "ST",
+    "age": 27,
+    "team": "Royal Charleroi Sporting Club"
+  },
+  {
+    "name": "E. Camara",
+    "overall": 69,
+    "potential": 79,
+    "position": "CDM, CM, CB",
+    "age": 22,
+    "team": "Royal Charleroi Sporting Club"
+  },
+  {
+    "name": "N. Adedeji-Sternberg",
+    "overall": 69,
+    "potential": 85,
+    "position": "LM, LW",
+    "age": 20,
+    "team": "KRC Genk"
+  },
+  {
+    "name": "Tiago Araújo",
+    "overall": 69,
+    "potential": 73,
+    "position": "LM, LB",
+    "age": 24,
+    "team": "KAA Gent"
+  },
+  {
+    "name": "V. Musliu",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB",
+    "age": 30,
+    "team": "Sint-Truidense VV"
+  },
+  {
+    "name": "R. Neustädter",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB, CDM, CM",
+    "age": 37,
+    "team": "KVC Westerlo"
+  },
+  {
+    "name": "S. Sydorchuk",
+    "overall": 69,
+    "potential": 69,
+    "position": "CDM, CM",
+    "age": 34,
+    "team": "KVC Westerlo"
+  },
+  {
+    "name": "J. Alcócer",
+    "overall": 69,
+    "potential": 83,
+    "position": "LM, CAM, LB",
+    "age": 20,
+    "team": "KVC Westerlo"
+  },
+  {
+    "name": "P. Gerkens",
+    "overall": 69,
+    "potential": 69,
+    "position": "CM, CDM",
+    "age": 30,
+    "team": "Cercle Brugge KSV"
+  },
+  {
+    "name": "K. Rodríguez",
+    "overall": 69,
+    "potential": 73,
+    "position": "ST",
+    "age": 25,
+    "team": "Union Saint-Gilloise"
+  },
+  {
+    "name": "J. Vossen",
+    "overall": 69,
+    "potential": 69,
+    "position": "ST, CAM, RW",
+    "age": 36,
+    "team": "SV Zulte Waregem"
+  },
+  {
+    "name": "J. Kiilerich",
+    "overall": 69,
+    "potential": 73,
+    "position": "CB",
+    "age": 25,
+    "team": "SV Zulte Waregem"
+  },
+  {
+    "name": "B. Verstraete",
+    "overall": 69,
+    "potential": 69,
+    "position": "CM, CDM",
+    "age": 31,
+    "team": "Oud-Heverlee Leuven"
+  },
+  {
+    "name": "M. Maertens",
+    "overall": 69,
+    "potential": 69,
+    "position": "CAM, ST, CM",
+    "age": 30,
+    "team": "Oud-Heverlee Leuven"
+  },
+  {
+    "name": "Óscar Gil",
+    "overall": 69,
+    "potential": 69,
+    "position": "RB, RM",
+    "age": 27,
+    "team": "Oud-Heverlee Leuven"
+  },
+  {
+    "name": "T. Akimoto",
+    "overall": 69,
+    "potential": 69,
+    "position": "LB, LM, CB, CDM",
+    "age": 27,
+    "team": "Oud-Heverlee Leuven"
+  },
+  {
+    "name": "José Marsà",
+    "overall": 69,
+    "potential": 77,
+    "position": "CB, LM, LB",
+    "age": 23,
+    "team": "KV Mechelen"
+  },
+  {
+    "name": "T. Koudou",
+    "overall": 69,
+    "potential": 79,
+    "position": "RB, RM",
+    "age": 20,
+    "team": "KV Mechelen"
+  },
+  {
+    "name": "B. Bafdili",
+    "overall": 69,
+    "potential": 79,
+    "position": "CAM, CM, ST",
+    "age": 20,
+    "team": "KV Mechelen"
+  },
+  {
+    "name": "J. Liongola",
+    "overall": 69,
+    "potential": 70,
+    "position": "RM, LM, RB, RW",
+    "age": 25,
+    "team": "RAAL La Louvière"
+  },
+  {
+    "name": "M. Pau",
+    "overall": 69,
+    "potential": 71,
+    "position": "CM, RW, CDM",
+    "age": 25,
+    "team": "RAAL La Louvière"
+  },
+  {
+    "name": "M. Peano",
+    "overall": 69,
+    "potential": 71,
+    "position": "GK",
+    "age": 26,
+    "team": "RAAL La Louvière"
+  },
+  {
+    "name": "A. Beka Beka",
+    "overall": 69,
+    "potential": 77,
+    "position": "CDM, CM, CB",
+    "age": 24,
+    "team": "RAAL La Louvière"
+  },
+  {
+    "name": "M. Ilić",
+    "overall": 68,
+    "potential": 80,
+    "position": "CB",
+    "age": 21,
+    "team": "RSC Anderlecht"
+  },
+  {
+    "name": "M. Kana",
+    "overall": 68,
+    "potential": 76,
+    "position": "CB, CDM, CM",
+    "age": 22,
+    "team": "RSC Anderlecht"
+  },
+  {
+    "name": "G. Hairemans",
+    "overall": 68,
+    "potential": 68,
+    "position": "CAM, RW, CM",
+    "age": 33,
+    "team": "Royal Antwerp FC"
+  },
+  {
+    "name": "I. Babadi",
+    "overall": 68,
+    "potential": 84,
+    "position": "CAM, CM, LW",
+    "age": 20,
+    "team": "Royal Antwerp FC"
+  },
+  {
+    "name": "M. Diakhon",
+    "overall": 68,
+    "potential": 80,
+    "position": "RM, RW, LW",
+    "age": 19,
+    "team": "Club Brugge KV"
+  },
+  {
+    "name": "D. Bates",
+    "overall": 68,
+    "potential": 68,
+    "position": "CB",
+    "age": 28,
+    "team": "Standard de Liège"
+  },
+  {
+    "name": "D. Hrncar",
+    "overall": 68,
+    "potential": 68,
+    "position": "RB, RM",
+    "age": 27,
+    "team": "FCV Dender EH"
+  },
+  {
+    "name": "M. Verrips",
+    "overall": 68,
+    "potential": 68,
+    "position": "GK",
+    "age": 28,
+    "team": "FCV Dender EH"
+  },
+  {
+    "name": "F. Ferraro",
+    "overall": 68,
+    "potential": 77,
+    "position": "LB, LM, LW",
+    "age": 22,
+    "team": "FCV Dender EH"
+  },
+  {
+    "name": "J. Gaudin",
+    "overall": 68,
+    "potential": 73,
+    "position": "LB",
+    "age": 25,
+    "team": "Royal Charleroi Sporting Club"
+  },
+  {
+    "name": "M. Koné",
+    "overall": 68,
+    "potential": 75,
+    "position": "GK",
+    "age": 23,
+    "team": "Royal Charleroi Sporting Club"
+  },
+  {
+    "name": "J. Erabi",
+    "overall": 68,
+    "potential": 77,
+    "position": "ST",
+    "age": 22,
+    "team": "KRC Genk"
+  },
+  {
+    "name": "S. Mitrović",
+    "overall": 68,
+    "potential": 68,
+    "position": "CB",
+    "age": 35,
+    "team": "KAA Gent"
+  },
+  {
+    "name": "I. Sebaoui",
+    "overall": 68,
+    "potential": 73,
+    "position": "LM, LW",
+    "age": 23,
+    "team": "Sint-Truidense VV"
+  },
+  {
+    "name": "R. Vanwesemael",
+    "overall": 68,
+    "potential": 76,
+    "position": "RM, RB, CM",
+    "age": 23,
+    "team": "Sint-Truidense VV"
+  },
+  {
+    "name": "K. Van Langendonck",
+    "overall": 68,
+    "potential": 68,
+    "position": "GK",
+    "age": 36,
+    "team": "KVC Westerlo"
+  },
+  {
+    "name": "T. Van Den Keybus",
+    "overall": 68,
+    "potential": 73,
+    "position": "CDM, LM, RM, CM",
+    "age": 24,
+    "team": "KVC Westerlo"
+  },
+  {
+    "name": "Nacho Ferri",
+    "overall": 68,
+    "potential": 78,
+    "position": "ST",
+    "age": 20,
+    "team": "KVC Westerlo"
+  },
+  {
+    "name": "Nazinho",
+    "overall": 68,
+    "potential": 78,
+    "position": "LB, LM",
+    "age": 21,
+    "team": "Cercle Brugge KSV"
+  },
+  {
+    "name": "E. Diop",
+    "overall": 68,
+    "potential": 80,
+    "position": "LM, LW",
+    "age": 20,
+    "team": "Cercle Brugge KSV"
+  },
+  {
+    "name": "T. Claes",
+    "overall": 68,
+    "potential": 76,
+    "position": "CM, CDM, CAM",
+    "age": 21,
+    "team": "SV Zulte Waregem"
+  },
+  {
+    "name": "S. Gavriel",
+    "overall": 68,
+    "potential": 73,
+    "position": "RM, LM, RW",
+    "age": 23,
+    "team": "SV Zulte Waregem"
+  },
+  {
+    "name": "A. Ementa",
+    "overall": 68,
+    "potential": 77,
+    "position": "ST",
+    "age": 23,
+    "team": "SV Zulte Waregem"
+  },
+  {
+    "name": "T. Verlinden",
+    "overall": 68,
+    "potential": 68,
+    "position": "LM, CAM, LW",
+    "age": 25,
+    "team": "Oud-Heverlee Leuven"
+  },
+  {
+    "name": "W. Balikwisha",
+    "overall": 68,
+    "potential": 71,
+    "position": "CAM, CM",
+    "age": 26,
+    "team": "Oud-Heverlee Leuven"
+  },
+  {
+    "name": "C. Ikwuemesi",
+    "overall": 68,
+    "potential": 74,
+    "position": "ST",
+    "age": 23,
+    "team": "Oud-Heverlee Leuven"
+  },
+  {
+    "name": "T. St. Jago",
+    "overall": 68,
+    "potential": 72,
+    "position": "CB, RB",
+    "age": 25,
+    "team": "KV Mechelen"
+  },
+  {
+    "name": "M. Servais",
+    "overall": 68,
+    "potential": 78,
+    "position": "CM, RM, LM, CDM",
+    "age": 20,
+    "team": "KV Mechelen"
+  },
+  {
+    "name": "G. Diouf",
+    "overall": 68,
+    "potential": 79,
+    "position": "CB, LB, CDM",
+    "age": 21,
+    "team": "KV Mechelen"
+  },
+  {
+    "name": "W. Faye",
+    "overall": 68,
+    "potential": 68,
+    "position": "CB, RB",
+    "age": 31,
+    "team": "RAAL La Louvière"
+  },
+  {
+    "name": "N. De Cat",
+    "overall": 67,
+    "potential": 86,
+    "position": "CDM, CM",
+    "age": 16,
+    "team": "RSC Anderlecht"
+  },
+  {
+    "name": "M. Al Sahafi",
+    "overall": 67,
+    "potential": 77,
+    "position": "LW, ST, RW, LM",
+    "age": 21,
+    "team": "Royal Antwerp FC"
+  },
+  {
+    "name": "K. Corbanie",
+    "overall": 67,
+    "potential": 82,
+    "position": "RB, CDM, CB, CM",
+    "age": 20,
+    "team": "Royal Antwerp FC"
+  },
+  {
+    "name": "L. Audoor",
+    "overall": 67,
+    "potential": 78,
+    "position": "CDM, CM",
+    "age": 21,
+    "team": "Club Brugge KV"
+  },
+  {
+    "name": "G. Kyei",
+    "overall": 67,
+    "potential": 67,
+    "position": "ST",
+    "age": 29,
+    "team": "Standard de Liège"
+  },
+  {
+    "name": "L. Pirard",
+    "overall": 67,
+    "potential": 67,
+    "position": "GK",
+    "age": 30,
+    "team": "Standard de Liège"
+  },
+  {
+    "name": "D. Dierckx",
+    "overall": 67,
+    "potential": 77,
+    "position": "CB",
+    "age": 22,
+    "team": "Standard de Liège"
+  },
+  {
+    "name": "G. Dietsch",
+    "overall": 67,
+    "potential": 73,
+    "position": "GK",
+    "age": 24,
+    "team": "FCV Dender EH"
+  },
+  {
+    "name": "J. Kadiri",
+    "overall": 67,
+    "potential": 71,
+    "position": "ST",
+    "age": 25,
+    "team": "FCV Dender EH"
+  },
+  {
+    "name": "N. Mbamba",
+    "overall": 67,
+    "potential": 81,
+    "position": "CDM, CM, CB",
+    "age": 20,
+    "team": "FCV Dender EH"
+  },
+  {
+    "name": "M. Dean",
+    "overall": 67,
+    "potential": 76,
+    "position": "ST",
+    "age": 21,
+    "team": "KAA Gent"
+  },
+  {
+    "name": "M. Paskotši",
+    "overall": 67,
+    "potential": 74,
+    "position": "CB, RB, CDM",
+    "age": 22,
+    "team": "KAA Gent"
+  },
+  {
+    "name": "T. Vandenberghe",
+    "overall": 67,
+    "potential": 67,
+    "position": "GK",
+    "age": 32,
+    "team": "KAA Gent"
+  },
+  {
+    "name": "M. Sonko",
+    "overall": 67,
+    "potential": 78,
+    "position": "LM, RM, LW",
+    "age": 20,
+    "team": "KAA Gent"
+  },
+  {
+    "name": "R. Yamamoto",
+    "overall": 67,
+    "potential": 74,
+    "position": "CM, CDM",
+    "age": 23,
+    "team": "Sint-Truidense VV"
+  },
+  {
+    "name": "S. Ngoura",
+    "overall": 67,
+    "potential": 75,
+    "position": "ST",
+    "age": 20,
+    "team": "Cercle Brugge KSV"
+  },
+  {
+    "name": "K. Van de Perre",
+    "overall": 67,
+    "potential": 76,
+    "position": "CDM, CM",
+    "age": 21,
+    "team": "Union Saint-Gilloise"
+  },
+  {
+    "name": "L. Lemoine",
+    "overall": 67,
+    "potential": 69,
+    "position": "CB, RB",
+    "age": 27,
+    "team": "SV Zulte Waregem"
+  },
+  {
+    "name": "B. Gabriël",
+    "overall": 67,
+    "potential": 71,
+    "position": "GK",
+    "age": 26,
+    "team": "SV Zulte Waregem"
+  },
+  {
+    "name": "E. Lofolomo",
+    "overall": 67,
+    "potential": 70,
+    "position": "CDM, CM, CB",
+    "age": 25,
+    "team": "SV Zulte Waregem"
+  },
+  {
+    "name": "M. Prévot",
+    "overall": 67,
+    "potential": 67,
+    "position": "GK",
+    "age": 28,
+    "team": "Oud-Heverlee Leuven"
+  },
+  {
+    "name": "S. Kaba",
+    "overall": 67,
+    "potential": 67,
+    "position": "ST",
+    "age": 30,
+    "team": "Oud-Heverlee Leuven"
+  },
+  {
+    "name": "H. Bandé",
+    "overall": 67,
+    "potential": 67,
+    "position": "LW, RW, LM",
+    "age": 26,
+    "team": "KV Mechelen"
+  },
+  {
+    "name": "D. Lamego",
+    "overall": 67,
+    "potential": 73,
+    "position": "CB",
+    "age": 22,
+    "team": "RAAL La Louvière"
+  },
+  {
+    "name": "Y. Okou",
+    "overall": 67,
+    "potential": 76,
+    "position": "CB",
+    "age": 22,
+    "team": "RAAL La Louvière"
+  },
+  {
+    "name": "M. Kikkenborg",
+    "overall": 66,
+    "potential": 71,
+    "position": "GK",
+    "age": 25,
+    "team": "RSC Anderlecht"
+  },
+  {
+    "name": "T. Degreef",
+    "overall": 66,
+    "potential": 80,
+    "position": "CAM, RM, LM, CM",
+    "age": 20,
+    "team": "RSC Anderlecht"
+  },
+  {
+    "name": "J. Heekeren",
+    "overall": 66,
+    "potential": 72,
+    "position": "GK",
+    "age": 24,
+    "team": "RSC Anderlecht"
+  },
+  {
+    "name": "A. Valencia",
+    "overall": 66,
+    "potential": 76,
+    "position": "RM, RW",
+    "age": 21,
+    "team": "Royal Antwerp FC"
+  },
+  {
+    "name": "C. Scott",
+    "overall": 66,
+    "potential": 75,
+    "position": "CAM, RM, ST, CM",
+    "age": 23,
+    "team": "Royal Antwerp FC"
+  },
+  {
+    "name": "C. Sandra",
+    "overall": 66,
+    "potential": 77,
+    "position": "ST, RM, CAM",
+    "age": 21,
+    "team": "Club Brugge KV"
+  },
+  {
+    "name": "S. Doumbia",
+    "overall": 66,
+    "potential": 66,
+    "position": "LB",
+    "age": 28,
+    "team": "Standard de Liège"
+  },
+  {
+    "name": "N. Mehssatou",
+    "overall": 66,
+    "potential": 75,
+    "position": "CM, CDM, RB",
+    "age": 22,
+    "team": "Standard de Liège"
+  },
+  {
+    "name": "S. Marsoni",
+    "overall": 66,
+    "potential": 66,
+    "position": "RM, RB, RW",
+    "age": 29,
+    "team": "FCV Dender EH"
+  },
+  {
+    "name": "L. De Fougerolles",
+    "overall": 66,
+    "potential": 81,
+    "position": "CB",
+    "age": 19,
+    "team": "FCV Dender EH"
+  },
+  {
+    "name": "M. Nzita",
+    "overall": 66,
+    "potential": 69,
+    "position": "LB, LM",
+    "age": 25,
+    "team": "Royal Charleroi Sporting Club"
+  },
+  {
+    "name": "K. Nkuba",
+    "overall": 66,
+    "potential": 72,
+    "position": "RM, RB, RW",
+    "age": 23,
+    "team": "KRC Genk"
+  },
+  {
+    "name": "A. Omgba",
+    "overall": 66,
+    "potential": 73,
+    "position": "CAM, LW, CM",
+    "age": 22,
+    "team": "KAA Gent"
+  },
+  {
+    "name": "H. Goore",
+    "overall": 66,
+    "potential": 77,
+    "position": "ST",
+    "age": 19,
+    "team": "KAA Gent"
+  },
+  {
+    "name": "S. Shinkawa",
+    "overall": 66,
+    "potential": 81,
+    "position": "CAM, CM",
+    "age": 17,
+    "team": "Sint-Truidense VV"
+  },
+  {
+    "name": "S. Juklerød",
+    "overall": 66,
+    "potential": 66,
+    "position": "LB, LM",
+    "age": 31,
+    "team": "Sint-Truidense VV"
+  },
+  {
+    "name": "L. Mbe Soh",
+    "overall": 66,
+    "potential": 73,
+    "position": "CB",
+    "age": 24,
+    "team": "Sint-Truidense VV"
+  },
+  {
+    "name": "M. Fixelles",
+    "overall": 66,
+    "potential": 66,
+    "position": "CDM, CM, RM",
+    "age": 28,
+    "team": "KVC Westerlo"
+  },
+  {
+    "name": "K. Vaesen",
+    "overall": 66,
+    "potential": 72,
+    "position": "ST",
+    "age": 24,
+    "team": "KVC Westerlo"
+  },
+  {
+    "name": "B. Mpanzu",
+    "overall": 66,
+    "potential": 75,
+    "position": "LB, LM, CB",
+    "age": 21,
+    "team": "Cercle Brugge KSV"
+  },
+  {
+    "name": "M. Delanghe",
+    "overall": 66,
+    "potential": 74,
+    "position": "GK",
+    "age": 24,
+    "team": "Cercle Brugge KSV"
+  },
+  {
+    "name": "I. Diakité",
+    "overall": 66,
+    "potential": 78,
+    "position": "CB, RB, RM",
+    "age": 21,
+    "team": "Cercle Brugge KSV"
+  },
+  {
+    "name": "B. Nyssen",
+    "overall": 66,
+    "potential": 66,
+    "position": "RB",
+    "age": 27,
+    "team": "SV Zulte Waregem"
+  },
+  {
+    "name": "V. Damjanić",
+    "overall": 66,
+    "potential": 76,
+    "position": "CB",
+    "age": 19,
+    "team": "Oud-Heverlee Leuven"
+  },
+  {
+    "name": "C. Terho",
+    "overall": 66,
+    "potential": 77,
+    "position": "RM, LM, CAM, RB",
+    "age": 22,
+    "team": "Oud-Heverlee Leuven"
+  },
+  {
+    "name": "N. Nsingi",
+    "overall": 66,
+    "potential": 72,
+    "position": "ST",
+    "age": 24,
+    "team": "Oud-Heverlee Leuven"
+  },
+  {
+    "name": "R. Halhal",
+    "overall": 66,
+    "potential": 76,
+    "position": "CB",
+    "age": 22,
+    "team": "KV Mechelen"
+  },
+  {
+    "name": "M. Maisonneuve",
+    "overall": 66,
+    "potential": 67,
+    "position": "CB",
+    "age": 26,
+    "team": "RAAL La Louvière"
+  },
+  {
+    "name": "O. Maës",
+    "overall": 66,
+    "potential": 66,
+    "position": "CM, CDM",
+    "age": 26,
+    "team": "RAAL La Louvière"
+  },
+  {
+    "name": "J. Ito",
+    "overall": 66,
+    "potential": 66,
+    "position": "CM, CDM",
+    "age": 27,
+    "team": "RAAL La Louvière"
+  },
+  {
+    "name": "S. Lahssaini",
+    "overall": 66,
+    "potential": 66,
+    "position": "CM, CDM",
+    "age": 26,
+    "team": "RAAL La Louvière"
+  },
+  {
+    "name": "M. Riou",
+    "overall": 66,
+    "potential": 72,
+    "position": "CB",
+    "age": 24,
+    "team": "RAAL La Louvière"
+  },
+  {
+    "name": "B. Engels",
+    "overall": 65,
+    "potential": 65,
+    "position": "CB",
+    "age": 30,
+    "team": "Royal Antwerp FC"
+  },
+  {
+    "name": "V. Osuji",
+    "overall": 65,
+    "potential": 80,
+    "position": "CB",
+    "age": 19,
+    "team": "Club Brugge KV"
+  },
+  {
+    "name": "S. Campbell",
+    "overall": 65,
+    "potential": 82,
+    "position": "LW, RW, LM",
+    "age": 19,
+    "team": "Club Brugge KV"
+  },
+  {
+    "name": "Alejandro Granados",
+    "overall": 65,
+    "potential": 85,
+    "position": "CM, CAM, CDM",
+    "age": 19,
+    "team": "Club Brugge KV"
+  },
+  {
+    "name": "B. Bolingoli",
+    "overall": 65,
+    "potential": 65,
+    "position": "LB, LM, CM",
+    "age": 30,
+    "team": "Standard de Liège"
+  },
+  {
+    "name": "H. Lawrence",
+    "overall": 65,
+    "potential": 74,
+    "position": "CB, RB, LB, RM",
+    "age": 23,
+    "team": "Standard de Liège"
+  },
+  {
+    "name": "H. Sahabo",
+    "overall": 65,
+    "potential": 78,
+    "position": "CDM, CM, CAM",
+    "age": 20,
+    "team": "Standard de Liège"
+  },
+  {
+    "name": "L. Marijnissen",
+    "overall": 65,
+    "potential": 71,
+    "position": "CB, RB",
+    "age": 22,
+    "team": "FCV Dender EH"
+  },
+  {
+    "name": "N. Rôdes",
+    "overall": 65,
+    "potential": 66,
+    "position": "CDM, CM, CAM",
+    "age": 27,
+    "team": "FCV Dender EH"
+  },
+  {
+    "name": "R. Oratmangoen",
+    "overall": 65,
+    "potential": 65,
+    "position": "LM, CM, LB",
+    "age": 27,
+    "team": "FCV Dender EH"
+  },
+  {
+    "name": "F. Szymczak",
+    "overall": 65,
+    "potential": 73,
+    "position": "ST, RM, LM, CAM",
+    "age": 23,
+    "team": "Royal Charleroi Sporting Club"
+  },
+  {
+    "name": "J. Romsaas",
+    "overall": 65,
+    "potential": 79,
+    "position": "ST, CAM",
+    "age": 21,
+    "team": "Royal Charleroi Sporting Club"
+  },
+  {
+    "name": "A. Yokoyama",
+    "overall": 65,
+    "potential": 75,
+    "position": "LM, ST, LW",
+    "age": 22,
+    "team": "KRC Genk"
+  },
+  {
+    "name": "R. Mirisola",
+    "overall": 65,
+    "potential": 83,
+    "position": "ST, RW",
+    "age": 18,
+    "team": "KRC Genk"
+  },
+  {
+    "name": "H. Es-Saoubi",
+    "overall": 65,
+    "potential": 68,
+    "position": "CB",
+    "age": 24,
+    "team": "KAA Gent"
+  },
+  {
+    "name": "W. Janssens",
+    "overall": 65,
+    "potential": 65,
+    "position": "CB, RB, CDM",
+    "age": 29,
+    "team": "Sint-Truidense VV"
+  },
+  {
+    "name": "T. Hata",
+    "overall": 65,
+    "potential": 71,
+    "position": "LM, LB, RM, LW",
+    "age": 23,
+    "team": "Sint-Truidense VV"
+  },
+  {
+    "name": "D. Ourega",
+    "overall": 65,
+    "potential": 74,
+    "position": "LB, LM",
+    "age": 20,
+    "team": "KVC Westerlo"
+  },
+  {
+    "name": "N. De Wilde",
+    "overall": 65,
+    "potential": 73,
+    "position": "CDM, CM",
+    "age": 22,
+    "team": "Cercle Brugge KSV"
+  },
+  {
+    "name": "H. Jurado",
+    "overall": 65,
+    "potential": 74,
+    "position": "LM, RM, LW",
+    "age": 20,
+    "team": "Cercle Brugge KSV"
+  },
+  {
+    "name": "V. Chambaere",
+    "overall": 65,
+    "potential": 72,
+    "position": "GK",
+    "age": 22,
+    "team": "Union Saint-Gilloise"
+  },
+  {
+    "name": "Y. Cappelle",
+    "overall": 65,
+    "potential": 72,
+    "position": "LB, LM",
+    "age": 21,
+    "team": "SV Zulte Waregem"
+  },
+  {
+    "name": "S. Ujka",
+    "overall": 65,
+    "potential": 66,
+    "position": "CAM, CM",
+    "age": 26,
+    "team": "SV Zulte Waregem"
+  },
+  {
+    "name": "E. van der Gouw",
+    "overall": 65,
+    "potential": 69,
+    "position": "GK",
+    "age": 24,
+    "team": "SV Zulte Waregem"
+  },
+  {
+    "name": "E. Soglo",
+    "overall": 65,
+    "potential": 73,
+    "position": "LM, RM, LW",
+    "age": 19,
+    "team": "SV Zulte Waregem"
+  },
+  {
+    "name": "T. Vlietinck",
+    "overall": 65,
+    "potential": 65,
+    "position": "RM, RB",
+    "age": 27,
+    "team": "Oud-Heverlee Leuven"
+  },
+  {
+    "name": "H. Teklab",
+    "overall": 65,
+    "potential": 65,
+    "position": "LM, LB, LW",
+    "age": 26,
+    "team": "Oud-Heverlee Leuven"
+  },
+  {
+    "name": "D. Salifou",
+    "overall": 65,
+    "potential": 77,
+    "position": "CDM, CM",
+    "age": 22,
+    "team": "KV Mechelen"
+  },
+  {
+    "name": "T. Lutonda",
+    "overall": 65,
+    "potential": 70,
+    "position": "LB",
+    "age": 24,
+    "team": "RAAL La Louvière"
+  },
+  {
+    "name": "Darío Benavides",
+    "overall": 65,
+    "potential": 74,
+    "position": "RB, CB, RM",
+    "age": 22,
+    "team": "RAAL La Louvière"
+  },
+  {
+    "name": "Y. Tsunashima",
+    "overall": 64,
+    "potential": 67,
+    "position": "CB",
+    "age": 24,
+    "team": "Royal Antwerp FC"
+  },
+  {
+    "name": "Y. Thoelen",
+    "overall": 64,
+    "potential": 64,
+    "position": "GK",
+    "age": 34,
+    "team": "Royal Antwerp FC"
+  },
+  {
+    "name": "I. Karamoko",
+    "overall": 64,
+    "potential": 71,
+    "position": "CB, CDM, RB",
+    "age": 24,
+    "team": "Standard de Liège"
+  },
+  {
+    "name": "A. Abid",
+    "overall": 64,
+    "potential": 74,
+    "position": "RW, RM",
+    "age": 21,
+    "team": "Standard de Liège"
+  },
+  {
+    "name": "M. Sow",
+    "overall": 64,
+    "potential": 77,
+    "position": "CB, RB, CDM",
+    "age": 21,
+    "team": "Royal Charleroi Sporting Club"
+  },
+  {
+    "name": "A. Colassin",
+    "overall": 64,
+    "potential": 69,
+    "position": "CAM, ST, LM, CM",
+    "age": 24,
+    "team": "Royal Charleroi Sporting Club"
+  },
+  {
+    "name": "R. Merlen",
+    "overall": 64,
+    "potential": 70,
+    "position": "CM, CAM, CDM",
+    "age": 23,
+    "team": "Sint-Truidense VV"
+  },
+  {
+    "name": "A. Jungdal",
+    "overall": 64,
+    "potential": 69,
+    "position": "GK",
+    "age": 23,
+    "team": "KVC Westerlo"
+  },
+  {
+    "name": "L. Agyekum",
+    "overall": 64,
+    "potential": 75,
+    "position": "CM, RM, CDM",
+    "age": 21,
+    "team": "Cercle Brugge KSV"
+  },
+  {
+    "name": "I. Pavlic",
+    "overall": 64,
+    "potential": 70,
+    "position": "CM, CAM, CDM",
+    "age": 23,
+    "team": "Union Saint-Gilloise"
+  },
+  {
+    "name": "T. Hedl",
+    "overall": 64,
+    "potential": 70,
+    "position": "ST",
+    "age": 22,
+    "team": "SV Zulte Waregem"
+  },
+  {
+    "name": "N. Mituljikic",
+    "overall": 64,
+    "potential": 71,
+    "position": "RW, ST, CAM, RM",
+    "age": 22,
+    "team": "SV Zulte Waregem"
+  },
+  {
+    "name": "L. Bostyn",
+    "overall": 64,
+    "potential": 64,
+    "position": "GK",
+    "age": 31,
+    "team": "SV Zulte Waregem"
+  },
+  {
+    "name": "B. Kayo",
+    "overall": 64,
+    "potential": 72,
+    "position": "CM, CAM",
+    "age": 22,
+    "team": "Oud-Heverlee Leuven"
+  },
+  {
+    "name": "B. Antonio",
+    "overall": 64,
+    "potential": 72,
+    "position": "RM, RW",
+    "age": 22,
+    "team": "KV Mechelen"
+  },
+  {
+    "name": "S. Gueulette",
+    "overall": 64,
+    "potential": 66,
+    "position": "CDM, CM",
+    "age": 25,
+    "team": "RAAL La Louvière"
+  },
+  {
+    "name": "M. Benítez",
+    "overall": 63,
+    "potential": 74,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "Royal Antwerp FC"
+  },
+  {
+    "name": "M. Urinboev",
+    "overall": 63,
+    "potential": 74,
+    "position": "RW, CAM, RM",
+    "age": 20,
+    "team": "Royal Antwerp FC"
+  },
+  {
+    "name": "L. Kuavita",
+    "overall": 63,
+    "potential": 74,
+    "position": "CM, CAM",
+    "age": 21,
+    "team": "Standard de Liège"
+  },
+  {
+    "name": "B. Fredrick",
+    "overall": 63,
+    "potential": 78,
+    "position": "RB, RM",
+    "age": 20,
+    "team": "FCV Dender EH"
+  },
+  {
+    "name": "M. Viltard",
+    "overall": 63,
+    "potential": 72,
+    "position": "CDM, CM, CB",
+    "age": 22,
+    "team": "FCV Dender EH"
+  },
+  {
+    "name": "T. Defourny",
+    "overall": 63,
+    "potential": 63,
+    "position": "GK",
+    "age": 33,
+    "team": "Royal Charleroi Sporting Club"
+  },
+  {
+    "name": "T. De Vlieger",
+    "overall": 63,
+    "potential": 77,
+    "position": "CAM, CDM, CM",
+    "age": 19,
+    "team": "KAA Gent"
+  },
+  {
+    "name": "K. Peersman",
+    "overall": 63,
+    "potential": 73,
+    "position": "GK",
+    "age": 21,
+    "team": "KAA Gent"
+  },
+  {
+    "name": "J. Bernát",
+    "overall": 63,
+    "potential": 66,
+    "position": "CAM, CM, LM",
+    "age": 24,
+    "team": "KVC Westerlo"
+  },
+  {
+    "name": "E. Kakou",
+    "overall": 63,
+    "potential": 79,
+    "position": "CB, RB, RM",
+    "age": 20,
+    "team": "Cercle Brugge KSV"
+  },
+  {
+    "name": "M. Giger",
+    "overall": 63,
+    "potential": 72,
+    "position": "ST, LM, RM",
+    "age": 21,
+    "team": "Union Saint-Gilloise"
+  },
+  {
+    "name": "Guilherme Smith",
+    "overall": 63,
+    "potential": 71,
+    "position": "LW, RW, ST, LM",
+    "age": 22,
+    "team": "Union Saint-Gilloise"
+  },
+  {
+    "name": "G. François",
+    "overall": 63,
+    "potential": 63,
+    "position": "RM, RB, RW",
+    "age": 35,
+    "team": "Union Saint-Gilloise"
+  },
+  {
+    "name": "L. Willen",
+    "overall": 63,
+    "potential": 70,
+    "position": "CB, LB",
+    "age": 22,
+    "team": "SV Zulte Waregem"
+  },
+  {
+    "name": "K. Vanrafelghem",
+    "overall": 63,
+    "potential": 73,
+    "position": "ST, CAM",
+    "age": 21,
+    "team": "KV Mechelen"
+  },
+  {
+    "name": "I. Struyf",
+    "overall": 63,
+    "potential": 81,
+    "position": "CB",
+    "age": 17,
+    "team": "KV Mechelen"
+  },
+  {
+    "name": "M. Kireev",
+    "overall": 63,
+    "potential": 75,
+    "position": "CAM, ST, RW, CM",
+    "age": 20,
+    "team": "KV Mechelen"
+  },
+  {
+    "name": "A. Maamar",
+    "overall": 62,
+    "potential": 73,
+    "position": "RB, LM, RM",
+    "age": 20,
+    "team": "RSC Anderlecht"
+  },
+  {
+    "name": "S. Renders",
+    "overall": 62,
+    "potential": 84,
+    "position": "RB, RM",
+    "age": 17,
+    "team": "Royal Antwerp FC"
+  },
+  {
+    "name": "D. van den Heuvel",
+    "overall": 62,
+    "potential": 74,
+    "position": "GK",
+    "age": 22,
+    "team": "Club Brugge KV"
+  },
+  {
+    "name": "A. De Corte",
+    "overall": 62,
+    "potential": 78,
+    "position": "GK",
+    "age": 19,
+    "team": "Club Brugge KV"
+  },
+  {
+    "name": "A. Calut",
+    "overall": 62,
+    "potential": 73,
+    "position": "LB, LM",
+    "age": 22,
+    "team": "Standard de Liège"
+  },
+  {
+    "name": "M. Boukamir",
+    "overall": 62,
+    "potential": 75,
+    "position": "CB",
+    "age": 21,
+    "team": "Royal Charleroi Sporting Club"
+  },
+  {
+    "name": "J. Kongolo",
+    "overall": 62,
+    "potential": 79,
+    "position": "CB",
+    "age": 19,
+    "team": "KRC Genk"
+  },
+  {
+    "name": "J. Coppens",
+    "overall": 62,
+    "potential": 62,
+    "position": "GK",
+    "age": 34,
+    "team": "Sint-Truidense VV"
+  },
+  {
+    "name": "O. Diouf",
+    "overall": 62,
+    "potential": 71,
+    "position": "ST, RW, LW",
+    "age": 22,
+    "team": "Sint-Truidense VV"
+  },
+  {
+    "name": "A. Lapage",
+    "overall": 62,
+    "potential": 74,
+    "position": "CB",
+    "age": 20,
+    "team": "KVC Westerlo"
+  },
+  {
+    "name": "F. Goure",
+    "overall": 62,
+    "potential": 71,
+    "position": "ST",
+    "age": 23,
+    "team": "KVC Westerlo"
+  },
+  {
+    "name": "A. Ouattara",
+    "overall": 62,
+    "potential": 78,
+    "position": "ST, CAM",
+    "age": 20,
+    "team": "Cercle Brugge KSV"
+  },
+  {
+    "name": "D. Gomis",
+    "overall": 62,
+    "potential": 72,
+    "position": "CB, LB",
+    "age": 21,
+    "team": "Cercle Brugge KSV"
+  },
+  {
+    "name": "V. Konate",
+    "overall": 62,
+    "potential": 72,
+    "position": "LB, LM",
+    "age": 18,
+    "team": "Cercle Brugge KSV"
+  },
+  {
+    "name": "T. Nnadi",
+    "overall": 62,
+    "potential": 69,
+    "position": "CDM, CM",
+    "age": 22,
+    "team": "SV Zulte Waregem"
+  },
+  {
+    "name": "L. Golič",
+    "overall": 62,
+    "potential": 77,
+    "position": "CB",
+    "age": 19,
+    "team": "KV Mechelen"
+  },
+  {
+    "name": "R. Mitongo",
+    "overall": 61,
+    "potential": 81,
+    "position": "ST",
+    "age": 17,
+    "team": "Standard de Liège"
+  },
+  {
+    "name": "G. Mortensen",
+    "overall": 61,
+    "potential": 71,
+    "position": "LB",
+    "age": 21,
+    "team": "Standard de Liège"
+  },
+  {
+    "name": "K. Koton",
+    "overall": 61,
+    "potential": 72,
+    "position": "CM, CDM",
+    "age": 22,
+    "team": "FCV Dender EH"
+  },
+  {
+    "name": "L. Fortin",
+    "overall": 61,
+    "potential": 67,
+    "position": "GK",
+    "age": 23,
+    "team": "FCV Dender EH"
+  },
+  {
+    "name": "A. Palacios",
+    "overall": 61,
+    "potential": 72,
+    "position": "CB",
+    "age": 21,
+    "team": "KRC Genk"
+  },
+  {
+    "name": "L. Brughmans",
+    "overall": 61,
+    "potential": 82,
+    "position": "GK",
+    "age": 17,
+    "team": "KRC Genk"
+  },
+  {
+    "name": "A. Bibout",
+    "overall": 61,
+    "potential": 73,
+    "position": "ST",
+    "age": 20,
+    "team": "KRC Genk"
+  },
+  {
+    "name": "G. De Meyer",
+    "overall": 61,
+    "potential": 75,
+    "position": "RB, RM, LM",
+    "age": 18,
+    "team": "KAA Gent"
+  },
+  {
+    "name": "I. Delpupo",
+    "overall": 61,
+    "potential": 72,
+    "position": "CAM, CM",
+    "age": 22,
+    "team": "Sint-Truidense VV"
+  },
+  {
+    "name": "R. Laalaoui",
+    "overall": 61,
+    "potential": 74,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "KVC Westerlo"
+  },
+  {
+    "name": "S. Kimura",
+    "overall": 61,
+    "potential": 67,
+    "position": "CB",
+    "age": 23,
+    "team": "KVC Westerlo"
+  },
+  {
+    "name": "B. Haidara",
+    "overall": 61,
+    "potential": 76,
+    "position": "CB",
+    "age": 20,
+    "team": "KVC Westerlo"
+  },
+  {
+    "name": "Erick",
+    "overall": 61,
+    "potential": 73,
+    "position": "RM, RB",
+    "age": 21,
+    "team": "Cercle Brugge KSV"
+  },
+  {
+    "name": "M. Barry",
+    "overall": 61,
+    "potential": 72,
+    "position": "CB",
+    "age": 20,
+    "team": "Union Saint-Gilloise"
+  },
+  {
+    "name": "M. Sylla",
+    "overall": 61,
+    "potential": 69,
+    "position": "CB, CDM",
+    "age": 20,
+    "team": "Union Saint-Gilloise"
+  },
+  {
+    "name": "Cristian Makaté",
+    "overall": 61,
+    "potential": 68,
+    "position": "ST",
+    "age": 22,
+    "team": "Union Saint-Gilloise"
+  },
+  {
+    "name": "M. Biondic",
+    "overall": 61,
+    "potential": 69,
+    "position": "ST",
+    "age": 21,
+    "team": "Union Saint-Gilloise"
+  },
+  {
+    "name": "W. Paugain",
+    "overall": 61,
+    "potential": 65,
+    "position": "RB, RM",
+    "age": 23,
+    "team": "SV Zulte Waregem"
+  },
+  {
+    "name": "A. Barkarson",
+    "overall": 61,
+    "potential": 65,
+    "position": "LB, LM",
+    "age": 24,
+    "team": "SV Zulte Waregem"
+  },
+  {
+    "name": "R. Nyakossi",
+    "overall": 61,
+    "potential": 72,
+    "position": "CB",
+    "age": 21,
+    "team": "Oud-Heverlee Leuven"
+  },
+  {
+    "name": "M. Zekri",
+    "overall": 61,
+    "potential": 82,
+    "position": "LM, LW",
+    "age": 16,
+    "team": "KV Mechelen"
+  },
+  {
+    "name": "C. De Schrevel",
+    "overall": 61,
+    "potential": 68,
+    "position": "GK",
+    "age": 23,
+    "team": "RAAL La Louvière"
+  },
+  {
+    "name": "T. Vanhoutte",
+    "overall": 60,
+    "potential": 72,
+    "position": "GK",
+    "age": 21,
+    "team": "RSC Anderlecht"
+  },
+  {
+    "name": "F. Adekami",
+    "overall": 60,
+    "potential": 75,
+    "position": "CAM, LM, CM",
+    "age": 19,
+    "team": "Royal Antwerp FC"
+  },
+  {
+    "name": "T. Nozawa",
+    "overall": 60,
+    "potential": 70,
+    "position": "GK",
+    "age": 22,
+    "team": "Royal Antwerp FC"
+  },
+  {
+    "name": "B. Yameogo",
+    "overall": 60,
+    "potential": 74,
+    "position": "CB",
+    "age": 20,
+    "team": "Club Brugge KV"
+  },
+  {
+    "name": "B. Nguene",
+    "overall": 60,
+    "potential": 77,
+    "position": "ST, LW",
+    "age": 18,
+    "team": "Standard de Liège"
+  },
+  {
+    "name": "R. Asante",
+    "overall": 60,
+    "potential": 70,
+    "position": "RW, ST, RM",
+    "age": 21,
+    "team": "Royal Charleroi Sporting Club"
+  },
+  {
+    "name": "K. Goto",
+    "overall": 60,
+    "potential": 73,
+    "position": "ST, CAM",
+    "age": 20,
+    "team": "Sint-Truidense VV"
+  },
+  {
+    "name": "E. Bujupi",
+    "overall": 60,
+    "potential": 75,
+    "position": "ST",
+    "age": 18,
+    "team": "KVC Westerlo"
+  },
+  {
+    "name": "O. Adewumi",
+    "overall": 60,
+    "potential": 75,
+    "position": "CAM, RW, CM",
+    "age": 20,
+    "team": "Cercle Brugge KSV"
+  },
+  {
+    "name": "J. Mijatović",
+    "overall": 60,
+    "potential": 75,
+    "position": "ST",
+    "age": 19,
+    "team": "Oud-Heverlee Leuven"
+  },
+  {
+    "name": "D. Opoku",
+    "overall": 60,
+    "potential": 79,
+    "position": "RB",
+    "age": 17,
+    "team": "Oud-Heverlee Leuven"
+  },
+  {
+    "name": "A. Traoré",
+    "overall": 60,
+    "potential": 72,
+    "position": "ST",
+    "age": 18,
+    "team": "Oud-Heverlee Leuven"
+  },
+  {
+    "name": "W. George",
+    "overall": 60,
+    "potential": 67,
+    "position": "CM, CDM, CAM",
+    "age": 23,
+    "team": "Oud-Heverlee Leuven"
+  },
+  {
+    "name": "H. Özdemir",
+    "overall": 60,
+    "potential": 77,
+    "position": "ST, CAM",
+    "age": 19,
+    "team": "KV Mechelen"
+  },
+  {
+    "name": "P. Fall",
+    "overall": 60,
+    "potential": 71,
+    "position": "ST",
+    "age": 20,
+    "team": "RAAL La Louvière"
+  },
+  {
+    "name": "N. Gillot",
+    "overall": 60,
+    "potential": 65,
+    "position": "RB",
+    "age": 22,
+    "team": "RAAL La Louvière"
+  },
+  {
+    "name": "E. Dao",
+    "overall": 59,
+    "potential": 73,
+    "position": "ST, LW",
+    "age": 18,
+    "team": "RSC Anderlecht"
+  },
+  {
+    "name": "Z. Keita",
+    "overall": 59,
+    "potential": 72,
+    "position": "CB",
+    "age": 19,
+    "team": "RSC Anderlecht"
+  },
+  {
+    "name": "A. Verstraeten",
+    "overall": 59,
+    "potential": 74,
+    "position": "CB, LB",
+    "age": 19,
+    "team": "Royal Antwerp FC"
+  },
+  {
+    "name": "N. Moutha-Sebtaoui",
+    "overall": 59,
+    "potential": 70,
+    "position": "LB",
+    "age": 19,
+    "team": "FCV Dender EH"
+  },
+  {
+    "name": "M. El Âdfaoui",
+    "overall": 59,
+    "potential": 79,
+    "position": "CM, CAM, CDM",
+    "age": 17,
+    "team": "KAA Gent"
+  },
+  {
+    "name": "J. Mbalanda",
+    "overall": 59,
+    "potential": 70,
+    "position": "ST",
+    "age": 18,
+    "team": "Sint-Truidense VV"
+  },
+  {
+    "name": "T. Epailly",
+    "overall": 59,
+    "potential": 59,
+    "position": "LW, LM",
+    "age": 26,
+    "team": "RAAL La Louvière"
+  },
+  {
+    "name": "Y. Hamdaoui",
+    "overall": 58,
+    "potential": 82,
+    "position": "CM, RM, CDM",
+    "age": 17,
+    "team": "Royal Antwerp FC"
+  },
+  {
+    "name": "N. Devalckeneer",
+    "overall": 58,
+    "potential": 72,
+    "position": "GK",
+    "age": 21,
+    "team": "Royal Antwerp FC"
+  },
+  {
+    "name": "M. Horemans",
+    "overall": 58,
+    "potential": 78,
+    "position": "CAM, LM, CM",
+    "age": 19,
+    "team": "Royal Antwerp FC"
+  },
+  {
+    "name": "S. Assengue",
+    "overall": 58,
+    "potential": 71,
+    "position": "RB, RM",
+    "age": 20,
+    "team": "Standard de Liège"
+  },
+  {
+    "name": "D. Acquah",
+    "overall": 58,
+    "potential": 67,
+    "position": "CAM, CM",
+    "age": 22,
+    "team": "FCV Dender EH"
+  },
+  {
+    "name": "A. Boukamir",
+    "overall": 58,
+    "potential": 73,
+    "position": "CDM, CM",
+    "age": 18,
+    "team": "Royal Charleroi Sporting Club"
+  },
+  {
+    "name": "K. Matsuzawa",
+    "overall": 58,
+    "potential": 63,
+    "position": "CAM, CM",
+    "age": 24,
+    "team": "Sint-Truidense VV"
+  },
+  {
+    "name": "O. Jochmans",
+    "overall": 58,
+    "potential": 68,
+    "position": "GK",
+    "age": 22,
+    "team": "Oud-Heverlee Leuven"
+  },
+  {
+    "name": "L. Baert",
+    "overall": 58,
+    "potential": 70,
+    "position": "CB",
+    "age": 20,
+    "team": "KV Mechelen"
+  },
+  {
+    "name": "T. Van Ingelgom",
+    "overall": 58,
+    "potential": 79,
+    "position": "GK",
+    "age": 18,
+    "team": "KV Mechelen"
+  },
+  {
+    "name": "G. Vandeplas",
+    "overall": 57,
+    "potential": 73,
+    "position": "ST",
+    "age": 19,
+    "team": "Royal Antwerp FC"
+  },
+  {
+    "name": "M. Diop",
+    "overall": 57,
+    "potential": 71,
+    "position": "ST",
+    "age": 20,
+    "team": "KAA Gent"
+  },
+  {
+    "name": "A. Diriken",
+    "overall": 57,
+    "potential": 72,
+    "position": "CB, CDM",
+    "age": 21,
+    "team": "Sint-Truidense VV"
+  },
+  {
+    "name": "A. Nhaili",
+    "overall": 57,
+    "potential": 74,
+    "position": "CAM, LW, CM",
+    "age": 19,
+    "team": "Sint-Truidense VV"
+  },
+  {
+    "name": "S. Saito",
+    "overall": 57,
+    "potential": 65,
+    "position": "RW, RM",
+    "age": 20,
+    "team": "KVC Westerlo"
+  },
+  {
+    "name": "A. Bayo",
+    "overall": 57,
+    "potential": 67,
+    "position": "RW, LW, RM",
+    "age": 19,
+    "team": "Cercle Brugge KSV"
+  },
+  {
+    "name": "K. Kouassi",
+    "overall": 57,
+    "potential": 69,
+    "position": "RM, RW",
+    "age": 18,
+    "team": "Cercle Brugge KSV"
+  },
+  {
+    "name": "X. Martlé",
+    "overall": 57,
+    "potential": 68,
+    "position": "RM, LM, CM, RW",
+    "age": 21,
+    "team": "Cercle Brugge KSV"
+  },
+  {
+    "name": "B. Langenbick",
+    "overall": 57,
+    "potential": 67,
+    "position": "GK",
+    "age": 22,
+    "team": "Cercle Brugge KSV"
+  },
+  {
+    "name": "A. Dobbels",
+    "overall": 57,
+    "potential": 68,
+    "position": "GK",
+    "age": 20,
+    "team": "SV Zulte Waregem"
+  },
+  {
+    "name": "A. Traorè",
+    "overall": 57,
+    "potential": 62,
+    "position": "RM, LM, ST, RW",
+    "age": 22,
+    "team": "SV Zulte Waregem"
+  },
+  {
+    "name": "M. Lenaerts",
+    "overall": 57,
+    "potential": 76,
+    "position": "ST",
+    "age": 17,
+    "team": "KV Mechelen"
+  },
+  {
+    "name": "G. David",
+    "overall": 56,
+    "potential": 76,
+    "position": "ST",
+    "age": 18,
+    "team": "Royal Antwerp FC"
+  },
+  {
+    "name": "R. Adewusi",
+    "overall": 56,
+    "potential": 66,
+    "position": "ST",
+    "age": 20,
+    "team": "FCV Dender EH"
+  },
+  {
+    "name": "R. Smekens",
+    "overall": 56,
+    "potential": 67,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "KVC Westerlo"
+  },
+  {
+    "name": "I. Sakamoto",
+    "overall": 56,
+    "potential": 61,
+    "position": "CAM, ST, CM",
+    "age": 21,
+    "team": "KVC Westerlo"
+  },
+  {
+    "name": "T. Panduro",
+    "overall": 56,
+    "potential": 76,
+    "position": "CM, CDM, CAM",
+    "age": 17,
+    "team": "SV Zulte Waregem"
+  },
+  {
+    "name": "A. Willockx",
+    "overall": 56,
+    "potential": 74,
+    "position": "GK",
+    "age": 18,
+    "team": "KV Mechelen"
+  },
+  {
+    "name": "J. Afriyie",
+    "overall": 56,
+    "potential": 71,
+    "position": "LW, ST, LM",
+    "age": 18,
+    "team": "RAAL La Louvière"
+  },
+  {
+    "name": "O. Achihi",
+    "overall": 55,
+    "potential": 70,
+    "position": "LM, LW",
+    "age": 18,
+    "team": "Royal Antwerp FC"
+  },
+  {
+    "name": "N. Closset",
+    "overall": 55,
+    "potential": 68,
+    "position": "GK",
+    "age": 20,
+    "team": "Royal Charleroi Sporting Club"
+  },
+  {
+    "name": "H. Lambotte",
+    "overall": 55,
+    "potential": 70,
+    "position": "CB",
+    "age": 19,
+    "team": "Sint-Truidense VV"
+  },
+  {
+    "name": "M. Lendfers",
+    "overall": 55,
+    "potential": 74,
+    "position": "GK",
+    "age": 19,
+    "team": "Sint-Truidense VV"
+  },
+  {
+    "name": "O. Annell",
+    "overall": 55,
+    "potential": 65,
+    "position": "GK",
+    "age": 20,
+    "team": "KVC Westerlo"
+  },
+  {
+    "name": "I. Diabate",
+    "overall": 55,
+    "potential": 63,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "SV Zulte Waregem"
+  },
+  {
+    "name": "C. Souanga",
+    "overall": 55,
+    "potential": 75,
+    "position": "LB",
+    "age": 18,
+    "team": "Oud-Heverlee Leuven"
+  },
+  {
+    "name": "M. Azzouz",
+    "overall": 55,
+    "potential": 75,
+    "position": "CAM, CM",
+    "age": 18,
+    "team": "Oud-Heverlee Leuven"
+  },
+  {
+    "name": "A. Ouahabi",
+    "overall": 55,
+    "potential": 79,
+    "position": "CM, CDM",
+    "age": 16,
+    "team": "KV Mechelen"
+  },
+  {
+    "name": "M. Decoene",
+    "overall": 55,
+    "potential": 69,
+    "position": "CM, CDM, CB",
+    "age": 21,
+    "team": "KV Mechelen"
+  },
+  {
+    "name": "A. Tajaouart",
+    "overall": 54,
+    "potential": 64,
+    "position": "CM, CDM",
+    "age": 19,
+    "team": "RSC Anderlecht"
+  },
+  {
+    "name": "B. Nam James",
+    "overall": 54,
+    "potential": 66,
+    "position": "CM, CDM",
+    "age": 18,
+    "team": "Standard de Liège"
+  },
+  {
+    "name": "G. Kavlashvili",
+    "overall": 54,
+    "potential": 72,
+    "position": "GK",
+    "age": 18,
+    "team": "Union Saint-Gilloise"
+  },
+  {
+    "name": "M. Godfroid",
+    "overall": 52,
+    "potential": 66,
+    "position": "GK",
+    "age": 21,
+    "team": "Standard de Liège"
+  },
+  {
+    "name": "Q. Benaets",
+    "overall": 52,
+    "potential": 60,
+    "position": "RW, RM",
+    "age": 21,
+    "team": "Royal Charleroi Sporting Club"
+  },
+  {
+    "name": "A. Daali",
+    "overall": 51,
+    "potential": 58,
+    "position": "CAM, CM",
+    "age": 21,
+    "team": "FCV Dender EH"
+  },
+  {
+    "name": "J. Placias",
+    "overall": 51,
+    "potential": 71,
+    "position": "ST",
+    "age": 19,
+    "team": "KVC Westerlo"
+  },
+  {
+    "name": "I. Diaby",
+    "overall": 51,
+    "potential": 66,
+    "position": "CDM, CM",
+    "age": 18,
+    "team": "Cercle Brugge KSV"
+  },
+  {
+    "name": "S. Van Keymolen",
+    "overall": 51,
+    "potential": 62,
+    "position": "CAM, CM",
+    "age": 20,
+    "team": "SV Zulte Waregem"
+  }
+]

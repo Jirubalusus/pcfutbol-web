@@ -57,7 +57,7 @@ export async function saveGameToSlot(userId, slotIndex, gameState) {
     lastSaved: serverTimestamp(),
     // Summary for slot preview
     summary: {
-      teamName: gameState.team?.name || 'Unknown',
+      teamName: gameState.team?.name || 'Desconocido',
       teamId: gameState.teamId,
       season: gameState.currentSeason || 1,
       week: gameState.currentWeek || 1,

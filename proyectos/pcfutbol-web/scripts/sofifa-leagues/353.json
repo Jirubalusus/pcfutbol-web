@@ -1,0 +1,7386 @@
+[
+  {
+    "name": "Á. Di María",
+    "overall": 82,
+    "potential": 82,
+    "position": "RW, RM, CAM",
+    "age": 37,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "L. Paredes",
+    "overall": 80,
+    "potential": 80,
+    "position": "CM, CDM",
+    "age": 31,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "A. Martínez",
+    "overall": 79,
+    "potential": 79,
+    "position": "ST",
+    "age": 32,
+    "team": "Racing Club"
+  },
+  {
+    "name": "L. Zelarayán",
+    "overall": 79,
+    "potential": 79,
+    "position": "CAM, ST, LM",
+    "age": 33,
+    "team": "Belgrano de Córdoba"
+  },
+  {
+    "name": "A. Moreno",
+    "overall": 78,
+    "potential": 78,
+    "position": "CDM, CM",
+    "age": 26,
+    "team": "River Plate"
+  },
+  {
+    "name": "F. Muslera",
+    "overall": 78,
+    "potential": 78,
+    "position": "GK",
+    "age": 39,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "M. Moreno",
+    "overall": 78,
+    "potential": 78,
+    "position": "CAM, CM",
+    "age": 30,
+    "team": "Lanús"
+  },
+  {
+    "name": "F. Armani",
+    "overall": 77,
+    "potential": 77,
+    "position": "GK",
+    "age": 38,
+    "team": "River Plate"
+  },
+  {
+    "name": "M. Acuña",
+    "overall": 77,
+    "potential": 77,
+    "position": "LB, LM",
+    "age": 33,
+    "team": "River Plate"
+  },
+  {
+    "name": "Ander Herrera",
+    "overall": 77,
+    "potential": 77,
+    "position": "CDM, CM",
+    "age": 35,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "M. Merentiel",
+    "overall": 77,
+    "potential": 77,
+    "position": "ST",
+    "age": 29,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "S. Ascacíbar",
+    "overall": 77,
+    "potential": 77,
+    "position": "CDM, CM",
+    "age": 28,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "S. Sosa",
+    "overall": 77,
+    "potential": 79,
+    "position": "CB, CDM, CM",
+    "age": 26,
+    "team": "Racing Club"
+  },
+  {
+    "name": "R. Rey",
+    "overall": 77,
+    "potential": 77,
+    "position": "GK",
+    "age": 34,
+    "team": "Independiente"
+  },
+  {
+    "name": "É. Banega",
+    "overall": 77,
+    "potential": 77,
+    "position": "CM, CDM, CAM",
+    "age": 37,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "J. Quintero",
+    "overall": 76,
+    "potential": 76,
+    "position": "CAM, RW, CM",
+    "age": 32,
+    "team": "River Plate"
+  },
+  {
+    "name": "L. Martínez Quarta",
+    "overall": 76,
+    "potential": 76,
+    "position": "CB",
+    "age": 29,
+    "team": "River Plate"
+  },
+  {
+    "name": "G. Montiel",
+    "overall": 76,
+    "potential": 76,
+    "position": "RB, RM",
+    "age": 28,
+    "team": "River Plate"
+  },
+  {
+    "name": "A. Marchesín",
+    "overall": 76,
+    "potential": 76,
+    "position": "GK",
+    "age": 37,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "R. Battaglia",
+    "overall": 76,
+    "potential": 76,
+    "position": "CDM, CB, CM",
+    "age": 33,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "C. Palacios",
+    "overall": 76,
+    "potential": 79,
+    "position": "CAM, RM, LM, CM",
+    "age": 24,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "G. Carrillo",
+    "overall": 76,
+    "potential": 76,
+    "position": "ST",
+    "age": 34,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "J. Nardoni",
+    "overall": 76,
+    "potential": 80,
+    "position": "CM, CDM",
+    "age": 22,
+    "team": "Racing Club"
+  },
+  {
+    "name": "V. Malcorra",
+    "overall": 76,
+    "potential": 76,
+    "position": "CAM, CM, CDM",
+    "age": 37,
+    "team": "Independiente"
+  },
+  {
+    "name": "N. Losada",
+    "overall": 76,
+    "potential": 76,
+    "position": "GK",
+    "age": 32,
+    "team": "Lanús"
+  },
+  {
+    "name": "C. Ledesma",
+    "overall": 76,
+    "potential": 76,
+    "position": "GK",
+    "age": 32,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "F. Fattori",
+    "overall": 76,
+    "potential": 76,
+    "position": "CDM, CM, CB",
+    "age": 32,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "S. Villa",
+    "overall": 76,
+    "potential": 76,
+    "position": "ST, LM, LW, CAM",
+    "age": 29,
+    "team": "Independiente Rivadavia"
+  },
+  {
+    "name": "G. Herrera",
+    "overall": 76,
+    "potential": 76,
+    "position": "GK",
+    "age": 33,
+    "team": "Talleres"
+  },
+  {
+    "name": "L. Rivero",
+    "overall": 75,
+    "potential": 82,
+    "position": "CB, LB",
+    "age": 21,
+    "team": "River Plate"
+  },
+  {
+    "name": "S. Driussi",
+    "overall": 75,
+    "potential": 75,
+    "position": "ST, CAM",
+    "age": 29,
+    "team": "River Plate"
+  },
+  {
+    "name": "M. Salas",
+    "overall": 75,
+    "potential": 75,
+    "position": "ST, CAM",
+    "age": 27,
+    "team": "River Plate"
+  },
+  {
+    "name": "F. Colidio",
+    "overall": 75,
+    "potential": 76,
+    "position": "ST, LW, CAM",
+    "age": 25,
+    "team": "River Plate"
+  },
+  {
+    "name": "M. Viña",
+    "overall": 75,
+    "potential": 75,
+    "position": "LB",
+    "age": 27,
+    "team": "River Plate"
+  },
+  {
+    "name": "K. Castaño",
+    "overall": 75,
+    "potential": 76,
+    "position": "CM, CDM",
+    "age": 24,
+    "team": "River Plate"
+  },
+  {
+    "name": "L. Blanco",
+    "overall": 75,
+    "potential": 77,
+    "position": "LB, LM",
+    "age": 26,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "E. Zeballos",
+    "overall": 75,
+    "potential": 81,
+    "position": "LM, RM, RW, LW",
+    "age": 23,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "A. Costa",
+    "overall": 75,
+    "potential": 77,
+    "position": "CB, LB",
+    "age": 25,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "G. Neves",
+    "overall": 75,
+    "potential": 75,
+    "position": "CDM, CM",
+    "age": 27,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "C. Medina",
+    "overall": 75,
+    "potential": 79,
+    "position": "CM, CAM, LM",
+    "age": 23,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "M. Rojo",
+    "overall": 75,
+    "potential": 75,
+    "position": "CB",
+    "age": 35,
+    "team": "Racing Club"
+  },
+  {
+    "name": "F. Cambeses",
+    "overall": 75,
+    "potential": 78,
+    "position": "GK",
+    "age": 28,
+    "team": "Racing Club"
+  },
+  {
+    "name": "G. Rojas",
+    "overall": 75,
+    "potential": 75,
+    "position": "LM, LB, LW",
+    "age": 28,
+    "team": "Racing Club"
+  },
+  {
+    "name": "G. Martirena",
+    "overall": 75,
+    "potential": 76,
+    "position": "RM, RB, RW",
+    "age": 25,
+    "team": "Racing Club"
+  },
+  {
+    "name": "E. Mammana",
+    "overall": 75,
+    "potential": 75,
+    "position": "CB",
+    "age": 29,
+    "team": "Vélez Sarsfield"
+  },
+  {
+    "name": "R. Aliendro",
+    "overall": 75,
+    "potential": 75,
+    "position": "CM, CDM",
+    "age": 34,
+    "team": "Vélez Sarsfield"
+  },
+  {
+    "name": "T. Marchiori",
+    "overall": 75,
+    "potential": 75,
+    "position": "GK",
+    "age": 30,
+    "team": "Vélez Sarsfield"
+  },
+  {
+    "name": "J. Campaz",
+    "overall": 75,
+    "potential": 76,
+    "position": "LM, CAM, LW",
+    "age": 25,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "G. Lódico",
+    "overall": 75,
+    "potential": 76,
+    "position": "CM, CDM, LM",
+    "age": 27,
+    "team": "Instituto Atlético Central Córdoba"
+  },
+  {
+    "name": "H. López Muñoz",
+    "overall": 75,
+    "potential": 76,
+    "position": "CAM, RW, RM, CM",
+    "age": 24,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "A. Lescano",
+    "overall": 75,
+    "potential": 78,
+    "position": "CM, RW, CAM",
+    "age": 23,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "N. Fernández",
+    "overall": 75,
+    "potential": 75,
+    "position": "ST, LW, RW, LM",
+    "age": 29,
+    "team": "Belgrano de Córdoba"
+  },
+  {
+    "name": "R. Botta",
+    "overall": 75,
+    "potential": 75,
+    "position": "CAM, RM, CM",
+    "age": 35,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "D. Valoyes",
+    "overall": 75,
+    "potential": 75,
+    "position": "RM, LM, ST, RW",
+    "age": 28,
+    "team": "Talleres"
+  },
+  {
+    "name": "J. Romaña",
+    "overall": 74,
+    "potential": 77,
+    "position": "CB",
+    "age": 26,
+    "team": "San Lorenzo de Almagro"
+  },
+  {
+    "name": "N. Barrios",
+    "overall": 74,
+    "potential": 74,
+    "position": "LW, CAM, ST, LM",
+    "age": 27,
+    "team": "San Lorenzo de Almagro"
+  },
+  {
+    "name": "P. Díaz",
+    "overall": 74,
+    "potential": 74,
+    "position": "CB",
+    "age": 30,
+    "team": "River Plate"
+  },
+  {
+    "name": "F. Bustos",
+    "overall": 74,
+    "potential": 74,
+    "position": "RB, RM",
+    "age": 29,
+    "team": "River Plate"
+  },
+  {
+    "name": "F. Vera",
+    "overall": 74,
+    "potential": 75,
+    "position": "CDM, CM",
+    "age": 25,
+    "team": "River Plate"
+  },
+  {
+    "name": "G. Galoppo",
+    "overall": 74,
+    "potential": 74,
+    "position": "CM, CAM",
+    "age": 26,
+    "team": "River Plate"
+  },
+  {
+    "name": "E. Cavani",
+    "overall": 74,
+    "potential": 74,
+    "position": "ST",
+    "age": 38,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "A. Velasco",
+    "overall": 74,
+    "potential": 81,
+    "position": "LM, LW, CAM",
+    "age": 22,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "M. Braida",
+    "overall": 74,
+    "potential": 74,
+    "position": "LM, LB",
+    "age": 28,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "K. Zenón",
+    "overall": 74,
+    "potential": 80,
+    "position": "LM, CM, LW",
+    "age": 23,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "E. Cetré",
+    "overall": 74,
+    "potential": 74,
+    "position": "LM, LW",
+    "age": 27,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "T. Palacios",
+    "overall": 74,
+    "potential": 77,
+    "position": "RM, CAM, RW",
+    "age": 24,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "I. Fernández",
+    "overall": 74,
+    "potential": 74,
+    "position": "CM, CAM, CDM",
+    "age": 35,
+    "team": "Gimnasia y Esgrima La Plata"
+  },
+  {
+    "name": "D. Vergara",
+    "overall": 74,
+    "potential": 74,
+    "position": "LW, RM, LM",
+    "age": 28,
+    "team": "Racing Club"
+  },
+  {
+    "name": "F. Pardo",
+    "overall": 74,
+    "potential": 76,
+    "position": "CB",
+    "age": 28,
+    "team": "Racing Club"
+  },
+  {
+    "name": "R. Sánchez",
+    "overall": 74,
+    "potential": 74,
+    "position": "CM, CDM",
+    "age": 29,
+    "team": "Racing Club"
+  },
+  {
+    "name": "N. Colombo",
+    "overall": 74,
+    "potential": 75,
+    "position": "CB, RB, CDM",
+    "age": 26,
+    "team": "Racing Club"
+  },
+  {
+    "name": "M. Di Cesare",
+    "overall": 74,
+    "potential": 80,
+    "position": "CB",
+    "age": 23,
+    "team": "Racing Club"
+  },
+  {
+    "name": "A. García Basso",
+    "overall": 74,
+    "potential": 74,
+    "position": "CB",
+    "age": 33,
+    "team": "Racing Club"
+  },
+  {
+    "name": "E. Gómez",
+    "overall": 74,
+    "potential": 74,
+    "position": "LB, LM",
+    "age": 31,
+    "team": "Vélez Sarsfield"
+  },
+  {
+    "name": "B. Romero",
+    "overall": 74,
+    "potential": 74,
+    "position": "ST",
+    "age": 34,
+    "team": "Vélez Sarsfield"
+  },
+  {
+    "name": "Á. Montero",
+    "overall": 74,
+    "potential": 74,
+    "position": "GK",
+    "age": 30,
+    "team": "Vélez Sarsfield"
+  },
+  {
+    "name": "J. García",
+    "overall": 74,
+    "potential": 77,
+    "position": "RB, RM",
+    "age": 23,
+    "team": "Vélez Sarsfield"
+  },
+  {
+    "name": "M. Carrizo",
+    "overall": 74,
+    "potential": 83,
+    "position": "RM, RW, CAM",
+    "age": 19,
+    "team": "Vélez Sarsfield"
+  },
+  {
+    "name": "S. Montiel",
+    "overall": 74,
+    "potential": 75,
+    "position": "RM, LM, RW",
+    "age": 24,
+    "team": "Independiente"
+  },
+  {
+    "name": "K. Lomónaco",
+    "overall": 74,
+    "potential": 80,
+    "position": "CB",
+    "age": 23,
+    "team": "Independiente"
+  },
+  {
+    "name": "E. Salvio",
+    "overall": 74,
+    "potential": 74,
+    "position": "RM, LM, RW",
+    "age": 34,
+    "team": "Lanús"
+  },
+  {
+    "name": "R. Carrera",
+    "overall": 74,
+    "potential": 74,
+    "position": "LM, CM, LW",
+    "age": 31,
+    "team": "Lanús"
+  },
+  {
+    "name": "F. Petroli",
+    "overall": 74,
+    "potential": 74,
+    "position": "GK",
+    "age": 27,
+    "team": "Lanús"
+  },
+  {
+    "name": "S. Marcich",
+    "overall": 74,
+    "potential": 74,
+    "position": "LB, LM",
+    "age": 27,
+    "team": "Lanús"
+  },
+  {
+    "name": "R. Castillo",
+    "overall": 74,
+    "potential": 74,
+    "position": "ST, CAM",
+    "age": 26,
+    "team": "Lanús"
+  },
+  {
+    "name": "G. Arias",
+    "overall": 74,
+    "potential": 74,
+    "position": "GK",
+    "age": 37,
+    "team": "Newell's Old Boys"
+  },
+  {
+    "name": "C. Quintana",
+    "overall": 74,
+    "potential": 74,
+    "position": "CB",
+    "age": 37,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "F. Ibarra",
+    "overall": 74,
+    "potential": 77,
+    "position": "CDM, CM",
+    "age": 24,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "M. Roffo",
+    "overall": 74,
+    "potential": 80,
+    "position": "GK",
+    "age": 25,
+    "team": "Instituto Atlético Central Córdoba"
+  },
+  {
+    "name": "D. Rodríguez",
+    "overall": 74,
+    "potential": 74,
+    "position": "GK",
+    "age": 36,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "F. Álvarez",
+    "overall": 74,
+    "potential": 75,
+    "position": "CB",
+    "age": 25,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "L. Lozano",
+    "overall": 74,
+    "potential": 74,
+    "position": "RB, RM, RW",
+    "age": 26,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "A. Arce",
+    "overall": 74,
+    "potential": 74,
+    "position": "ST",
+    "age": 30,
+    "team": "Independiente Rivadavia"
+  },
+  {
+    "name": "L. Morales",
+    "overall": 74,
+    "potential": 74,
+    "position": "CB, RB",
+    "age": 34,
+    "team": "Belgrano de Córdoba"
+  },
+  {
+    "name": "M. Benítez",
+    "overall": 74,
+    "potential": 74,
+    "position": "CAM, RM, ST, CM",
+    "age": 31,
+    "team": "Atlético Tucumán"
+  },
+  {
+    "name": "M. Nervo",
+    "overall": 74,
+    "potential": 74,
+    "position": "CB",
+    "age": 34,
+    "team": "Huracán"
+  },
+  {
+    "name": "H. Galíndez",
+    "overall": 74,
+    "potential": 74,
+    "position": "GK",
+    "age": 38,
+    "team": "Huracán"
+  },
+  {
+    "name": "J. Rodríguez",
+    "overall": 74,
+    "potential": 74,
+    "position": "CB",
+    "age": 31,
+    "team": "Talleres"
+  },
+  {
+    "name": "I. Arce",
+    "overall": 74,
+    "potential": 74,
+    "position": "GK",
+    "age": 33,
+    "team": "Deportivo Riestra"
+  },
+  {
+    "name": "N. Tripichio",
+    "overall": 73,
+    "potential": 73,
+    "position": "RB, CM, CDM",
+    "age": 29,
+    "team": "San Lorenzo de Almagro"
+  },
+  {
+    "name": "G. Hernández",
+    "overall": 73,
+    "potential": 75,
+    "position": "CB",
+    "age": 27,
+    "team": "San Lorenzo de Almagro"
+  },
+  {
+    "name": "S. Lencina",
+    "overall": 73,
+    "potential": 80,
+    "position": "CAM, RW, CM",
+    "age": 19,
+    "team": "River Plate"
+  },
+  {
+    "name": "G. Pezzella",
+    "overall": 73,
+    "potential": 73,
+    "position": "CB",
+    "age": 34,
+    "team": "River Plate"
+  },
+  {
+    "name": "M. Meza",
+    "overall": 73,
+    "potential": 73,
+    "position": "CM, RW, LW, CDM",
+    "age": 32,
+    "team": "River Plate"
+  },
+  {
+    "name": "M. Borja",
+    "overall": 73,
+    "potential": 73,
+    "position": "ST",
+    "age": 32,
+    "team": "River Plate"
+  },
+  {
+    "name": "E. Centurión",
+    "overall": 73,
+    "potential": 74,
+    "position": "GK",
+    "age": 28,
+    "team": "River Plate"
+  },
+  {
+    "name": "J. Portillo",
+    "overall": 73,
+    "potential": 74,
+    "position": "CB, LB, CDM",
+    "age": 25,
+    "team": "River Plate"
+  },
+  {
+    "name": "T. Galván",
+    "overall": 73,
+    "potential": 74,
+    "position": "CAM, CM",
+    "age": 25,
+    "team": "River Plate"
+  },
+  {
+    "name": "N. Figal",
+    "overall": 73,
+    "potential": 73,
+    "position": "CB, RB, CDM",
+    "age": 31,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "T. Belmonte",
+    "overall": 73,
+    "potential": 76,
+    "position": "CDM, CM",
+    "age": 27,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "J. Barinaga",
+    "overall": 73,
+    "potential": 77,
+    "position": "RB, RM",
+    "age": 24,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "M. Giménez",
+    "overall": 73,
+    "potential": 73,
+    "position": "ST",
+    "age": 28,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "J. Sosa",
+    "overall": 73,
+    "potential": 73,
+    "position": "CM, CAM",
+    "age": 40,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "L. González Pirez",
+    "overall": 73,
+    "potential": 73,
+    "position": "CB",
+    "age": 33,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "S. Arzamendia",
+    "overall": 73,
+    "potential": 73,
+    "position": "LB, LM",
+    "age": 27,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "E. Piovi",
+    "overall": 73,
+    "potential": 73,
+    "position": "CDM, CM",
+    "age": 32,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "S. Núñez",
+    "overall": 73,
+    "potential": 74,
+    "position": "CB",
+    "age": 25,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "M. Zaracho",
+    "overall": 73,
+    "potential": 74,
+    "position": "CM, CAM, RM, CDM",
+    "age": 27,
+    "team": "Racing Club"
+  },
+  {
+    "name": "M. Lanzini",
+    "overall": 73,
+    "potential": 73,
+    "position": "CAM, LM, CM",
+    "age": 32,
+    "team": "Vélez Sarsfield"
+  },
+  {
+    "name": "D. Valdés",
+    "overall": 73,
+    "potential": 73,
+    "position": "CAM, CM",
+    "age": 31,
+    "team": "Vélez Sarsfield"
+  },
+  {
+    "name": "C. Baeza",
+    "overall": 73,
+    "potential": 73,
+    "position": "CDM, CM",
+    "age": 31,
+    "team": "Vélez Sarsfield"
+  },
+  {
+    "name": "G. Ávalos",
+    "overall": 73,
+    "potential": 73,
+    "position": "ST, CAM",
+    "age": 34,
+    "team": "Independiente"
+  },
+  {
+    "name": "C. Izquierdoz",
+    "overall": 73,
+    "potential": 73,
+    "position": "CB",
+    "age": 36,
+    "team": "Lanús"
+  },
+  {
+    "name": "W. Bou",
+    "overall": 73,
+    "potential": 73,
+    "position": "ST, CAM",
+    "age": 31,
+    "team": "Lanús"
+  },
+  {
+    "name": "C. González",
+    "overall": 73,
+    "potential": 73,
+    "position": "ST",
+    "age": 32,
+    "team": "Newell's Old Boys"
+  },
+  {
+    "name": "J. Broun",
+    "overall": 73,
+    "potential": 73,
+    "position": "GK",
+    "age": 39,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "F. Mallo",
+    "overall": 73,
+    "potential": 73,
+    "position": "CB",
+    "age": 30,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "A. Sández",
+    "overall": 73,
+    "potential": 76,
+    "position": "LB",
+    "age": 24,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "E. Pérez",
+    "overall": 73,
+    "potential": 73,
+    "position": "CDM, CB",
+    "age": 39,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "N. Oroz",
+    "overall": 73,
+    "potential": 73,
+    "position": "CM, RM, CDM",
+    "age": 31,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "T. Molina",
+    "overall": 73,
+    "potential": 73,
+    "position": "ST",
+    "age": 30,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "F. González Metilli",
+    "overall": 73,
+    "potential": 73,
+    "position": "CAM, CM, LM",
+    "age": 28,
+    "team": "Belgrano de Córdoba"
+  },
+  {
+    "name": "A. Molinas",
+    "overall": 73,
+    "potential": 78,
+    "position": "CAM, CM",
+    "age": 24,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "G. Martínez",
+    "overall": 73,
+    "potential": 73,
+    "position": "CAM, RW, LW, CM",
+    "age": 32,
+    "team": "Tigre"
+  },
+  {
+    "name": "M. Catalán",
+    "overall": 73,
+    "potential": 73,
+    "position": "CB, RB, CDM",
+    "age": 32,
+    "team": "Talleres"
+  },
+  {
+    "name": "M. Galarza",
+    "overall": 73,
+    "potential": 81,
+    "position": "CDM, CM",
+    "age": 23,
+    "team": "Talleres"
+  },
+  {
+    "name": "M. Borgogno",
+    "overall": 73,
+    "potential": 73,
+    "position": "GK",
+    "age": 26,
+    "team": "Platense"
+  },
+  {
+    "name": "L. Picco",
+    "overall": 73,
+    "potential": 73,
+    "position": "CDM, CM",
+    "age": 26,
+    "team": "Platense"
+  },
+  {
+    "name": "I. Vázquez",
+    "overall": 73,
+    "potential": 73,
+    "position": "CB",
+    "age": 28,
+    "team": "Platense"
+  },
+  {
+    "name": "B. Aguirre",
+    "overall": 72,
+    "potential": 81,
+    "position": "LW, LM, RM",
+    "age": 22,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "L. Di Lollo",
+    "overall": 72,
+    "potential": 80,
+    "position": "CB, RB, CDM",
+    "age": 21,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "J. Tobio Burgos",
+    "overall": 72,
+    "potential": 79,
+    "position": "LM, CAM, LW",
+    "age": 20,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "A. Castro",
+    "overall": 72,
+    "potential": 72,
+    "position": "CM, LM, CAM",
+    "age": 30,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "F. Rodríguez",
+    "overall": 72,
+    "potential": 74,
+    "position": "CB",
+    "age": 25,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "F. Farías",
+    "overall": 72,
+    "potential": 77,
+    "position": "ST, CAM, RM",
+    "age": 22,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "E. Meza",
+    "overall": 72,
+    "potential": 73,
+    "position": "RB, RM",
+    "age": 26,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "G. Benedetti",
+    "overall": 72,
+    "potential": 74,
+    "position": "LB, LM",
+    "age": 24,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "N. Insfrán",
+    "overall": 72,
+    "potential": 72,
+    "position": "GK",
+    "age": 30,
+    "team": "Gimnasia y Esgrima La Plata"
+  },
+  {
+    "name": "B. Zuculini",
+    "overall": 72,
+    "potential": 72,
+    "position": "CM, CDM",
+    "age": 32,
+    "team": "Racing Club"
+  },
+  {
+    "name": "T. Conechny",
+    "overall": 72,
+    "potential": 72,
+    "position": "LM, LW",
+    "age": 27,
+    "team": "Racing Club"
+  },
+  {
+    "name": "L. Magallán",
+    "overall": 72,
+    "potential": 72,
+    "position": "CB",
+    "age": 31,
+    "team": "Vélez Sarsfield"
+  },
+  {
+    "name": "A. Quirós",
+    "overall": 72,
+    "potential": 76,
+    "position": "CB",
+    "age": 23,
+    "team": "Vélez Sarsfield"
+  },
+  {
+    "name": "I. Marcone",
+    "overall": 72,
+    "potential": 72,
+    "position": "CDM, CM, CB",
+    "age": 35,
+    "team": "Independiente"
+  },
+  {
+    "name": "L. Godoy",
+    "overall": 72,
+    "potential": 72,
+    "position": "RB, RM",
+    "age": 30,
+    "team": "Independiente"
+  },
+  {
+    "name": "A. Cardozo",
+    "overall": 72,
+    "potential": 72,
+    "position": "CDM, CM, CB",
+    "age": 28,
+    "team": "Lanús"
+  },
+  {
+    "name": "J. Komar",
+    "overall": 72,
+    "potential": 72,
+    "position": "CB",
+    "age": 28,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "M. Martínez",
+    "overall": 72,
+    "potential": 72,
+    "position": "CDM, CM, CB",
+    "age": 32,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "M. Lovera",
+    "overall": 72,
+    "potential": 72,
+    "position": "LM, RM, CAM, LW",
+    "age": 26,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "E. Copetti",
+    "overall": 72,
+    "potential": 72,
+    "position": "ST, CAM, CM",
+    "age": 29,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "F. Navarro",
+    "overall": 72,
+    "potential": 73,
+    "position": "CDM, CM",
+    "age": 25,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "A. Veliz",
+    "overall": 72,
+    "potential": 79,
+    "position": "ST",
+    "age": 21,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "A. Luna",
+    "overall": 72,
+    "potential": 81,
+    "position": "CAM, ST, LM, CM",
+    "age": 21,
+    "team": "Instituto Atlético Central Córdoba"
+  },
+  {
+    "name": "F. Jara",
+    "overall": 72,
+    "potential": 72,
+    "position": "ST",
+    "age": 36,
+    "team": "Instituto Atlético Central Córdoba"
+  },
+  {
+    "name": "F. Alarcón",
+    "overall": 72,
+    "potential": 72,
+    "position": "CB",
+    "age": 31,
+    "team": "Instituto Atlético Central Córdoba"
+  },
+  {
+    "name": "B. Cortés",
+    "overall": 72,
+    "potential": 72,
+    "position": "GK",
+    "age": 30,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "J. Florentín",
+    "overall": 72,
+    "potential": 72,
+    "position": "CM, CDM",
+    "age": 28,
+    "team": "Independiente Rivadavia"
+  },
+  {
+    "name": "E. Rigoni",
+    "overall": 72,
+    "potential": 72,
+    "position": "RM, LM, ST, RW",
+    "age": 32,
+    "team": "Belgrano de Córdoba"
+  },
+  {
+    "name": "U. Sánchez",
+    "overall": 72,
+    "potential": 72,
+    "position": "RM, CM, LM, RW",
+    "age": 27,
+    "team": "Belgrano de Córdoba"
+  },
+  {
+    "name": "F. Rasmussen",
+    "overall": 72,
+    "potential": 72,
+    "position": "CB",
+    "age": 33,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "G. Abrego",
+    "overall": 72,
+    "potential": 75,
+    "position": "CM, CDM, CAM",
+    "age": 25,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "L. Di Plácido",
+    "overall": 72,
+    "potential": 72,
+    "position": "RB",
+    "age": 31,
+    "team": "Atlético Tucumán"
+  },
+  {
+    "name": "G. Suso",
+    "overall": 72,
+    "potential": 72,
+    "position": "CB",
+    "age": 34,
+    "team": "Atlético Tucumán"
+  },
+  {
+    "name": "D. Martínez",
+    "overall": 72,
+    "potential": 72,
+    "position": "CB, LB, CDM",
+    "age": 27,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "C. Fiermarin",
+    "overall": 72,
+    "potential": 75,
+    "position": "GK",
+    "age": 27,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "L. Gil",
+    "overall": 72,
+    "potential": 72,
+    "position": "CDM, CM, CAM",
+    "age": 34,
+    "team": "Huracán"
+  },
+  {
+    "name": "F. Pereyra",
+    "overall": 72,
+    "potential": 72,
+    "position": "CB",
+    "age": 35,
+    "team": "Huracán"
+  },
+  {
+    "name": "F. Waller",
+    "overall": 72,
+    "potential": 72,
+    "position": "LM, CM, LB, LW",
+    "age": 28,
+    "team": "Huracán"
+  },
+  {
+    "name": "M. Pittón",
+    "overall": 72,
+    "potential": 72,
+    "position": "CM, CDM",
+    "age": 30,
+    "team": "Club Atlético Unión"
+  },
+  {
+    "name": "M. Mansilla",
+    "overall": 72,
+    "potential": 72,
+    "position": "GK",
+    "age": 29,
+    "team": "Club Atlético Unión"
+  },
+  {
+    "name": "M. Del Blanco",
+    "overall": 72,
+    "potential": 83,
+    "position": "LB, CM, LM",
+    "age": 21,
+    "team": "Club Atlético Unión"
+  },
+  {
+    "name": "J. Palomino",
+    "overall": 72,
+    "potential": 72,
+    "position": "CB",
+    "age": 35,
+    "team": "Talleres"
+  },
+  {
+    "name": "M. Luna Diale",
+    "overall": 72,
+    "potential": 72,
+    "position": "CM, ST, CDM",
+    "age": 26,
+    "team": "Platense"
+  },
+  {
+    "name": "D. Herazo",
+    "overall": 71,
+    "potential": 71,
+    "position": "ST",
+    "age": 29,
+    "team": "San Lorenzo de Almagro"
+  },
+  {
+    "name": "L. Blondel",
+    "overall": 71,
+    "potential": 71,
+    "position": "RB, RM, CM",
+    "age": 28,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "W. Alarcón",
+    "overall": 71,
+    "potential": 76,
+    "position": "CM, CDM, LM",
+    "age": 24,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "L. Alario",
+    "overall": 71,
+    "potential": 71,
+    "position": "ST",
+    "age": 32,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "G. Conti",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB",
+    "age": 31,
+    "team": "Gimnasia y Esgrima La Plata"
+  },
+  {
+    "name": "P. Silva Torrejón",
+    "overall": 71,
+    "potential": 71,
+    "position": "LB, LM",
+    "age": 28,
+    "team": "Gimnasia y Esgrima La Plata"
+  },
+  {
+    "name": "E. Martínez",
+    "overall": 71,
+    "potential": 73,
+    "position": "CB, RB, CDM",
+    "age": 27,
+    "team": "Gimnasia y Esgrima La Plata"
+  },
+  {
+    "name": "A. Balboa",
+    "overall": 71,
+    "potential": 71,
+    "position": "ST",
+    "age": 31,
+    "team": "Racing Club"
+  },
+  {
+    "name": "V. Carboni",
+    "overall": 71,
+    "potential": 83,
+    "position": "CAM, ST, RM, CM",
+    "age": 20,
+    "team": "Racing Club"
+  },
+  {
+    "name": "S. Solari",
+    "overall": 71,
+    "potential": 71,
+    "position": "RW, RM, LM",
+    "age": 27,
+    "team": "Racing Club"
+  },
+  {
+    "name": "L. Robertone",
+    "overall": 71,
+    "potential": 71,
+    "position": "CM, CDM",
+    "age": 28,
+    "team": "Vélez Sarsfield"
+  },
+  {
+    "name": "F. Monzón",
+    "overall": 71,
+    "potential": 74,
+    "position": "ST, CAM",
+    "age": 24,
+    "team": "Vélez Sarsfield"
+  },
+  {
+    "name": "S. Valdéz",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB",
+    "age": 29,
+    "team": "Independiente"
+  },
+  {
+    "name": "R. Loaiza",
+    "overall": 71,
+    "potential": 71,
+    "position": "CDM, CM",
+    "age": 31,
+    "team": "Lanús"
+  },
+  {
+    "name": "L. Acosta",
+    "overall": 71,
+    "potential": 71,
+    "position": "GK",
+    "age": 30,
+    "team": "Lanús"
+  },
+  {
+    "name": "S. Salcedo",
+    "overall": 71,
+    "potential": 73,
+    "position": "CB",
+    "age": 27,
+    "team": "Newell's Old Boys"
+  },
+  {
+    "name": "A. Méndez",
+    "overall": 71,
+    "potential": 71,
+    "position": "RB, RM",
+    "age": 29,
+    "team": "Newell's Old Boys"
+  },
+  {
+    "name": "M. Coccaro",
+    "overall": 71,
+    "potential": 71,
+    "position": "ST",
+    "age": 27,
+    "team": "Newell's Old Boys"
+  },
+  {
+    "name": "A. Soto",
+    "overall": 71,
+    "potential": 71,
+    "position": "LB, LM, CDM",
+    "age": 31,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "E. Coronel",
+    "overall": 71,
+    "potential": 71,
+    "position": "RB, RM",
+    "age": 28,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "V. Pizarro",
+    "overall": 71,
+    "potential": 80,
+    "position": "CDM, CM",
+    "age": 22,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "H. De La Fuente",
+    "overall": 71,
+    "potential": 71,
+    "position": "RB",
+    "age": 28,
+    "team": "Instituto Atlético Central Córdoba"
+  },
+  {
+    "name": "G. Verón",
+    "overall": 71,
+    "potential": 74,
+    "position": "ST, CAM",
+    "age": 24,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "S. Prieto",
+    "overall": 71,
+    "potential": 71,
+    "position": "LB, CM",
+    "age": 32,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "L. Giaccone",
+    "overall": 71,
+    "potential": 74,
+    "position": "RM, LM, RW",
+    "age": 24,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "R. Macagno",
+    "overall": 71,
+    "potential": 71,
+    "position": "GK",
+    "age": 28,
+    "team": "Independiente Rivadavia"
+  },
+  {
+    "name": "L. López",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB",
+    "age": 35,
+    "team": "Belgrano de Córdoba"
+  },
+  {
+    "name": "L. Passerini",
+    "overall": 71,
+    "potential": 71,
+    "position": "ST",
+    "age": 30,
+    "team": "Belgrano de Córdoba"
+  },
+  {
+    "name": "T. Cardozo",
+    "overall": 71,
+    "potential": 72,
+    "position": "GK",
+    "age": 28,
+    "team": "Belgrano de Córdoba"
+  },
+  {
+    "name": "A. Sánchez",
+    "overall": 71,
+    "potential": 71,
+    "position": "CM, CDM",
+    "age": 26,
+    "team": "Belgrano de Córdoba"
+  },
+  {
+    "name": "N. Fernández",
+    "overall": 71,
+    "potential": 72,
+    "position": "CM, CDM, CAM",
+    "age": 27,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "S. Moyano",
+    "overall": 71,
+    "potential": 71,
+    "position": "GK",
+    "age": 34,
+    "team": "CA Aldosivi"
+  },
+  {
+    "name": "R. Ruiz Rodríguez",
+    "overall": 71,
+    "potential": 72,
+    "position": "RM, ST, RW",
+    "age": 25,
+    "team": "Atlético Tucumán"
+  },
+  {
+    "name": "D. Fernández",
+    "overall": 71,
+    "potential": 77,
+    "position": "CB",
+    "age": 24,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "L. González",
+    "overall": 71,
+    "potential": 76,
+    "position": "CM, CDM, CAM",
+    "age": 25,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "N. Paz",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB",
+    "age": 32,
+    "team": "Huracán"
+  },
+  {
+    "name": "S. Meza",
+    "overall": 71,
+    "potential": 77,
+    "position": "GK",
+    "age": 25,
+    "team": "Huracán"
+  },
+  {
+    "name": "J. Elías",
+    "overall": 71,
+    "potential": 71,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Tigre"
+  },
+  {
+    "name": "F. Fragapane",
+    "overall": 71,
+    "potential": 71,
+    "position": "LM, CAM, CM, LW",
+    "age": 32,
+    "team": "Club Atlético Unión"
+  },
+  {
+    "name": "C. Corvalán",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB, LB",
+    "age": 36,
+    "team": "Club Atlético Unión"
+  },
+  {
+    "name": "C. Tarragona",
+    "overall": 71,
+    "potential": 71,
+    "position": "ST",
+    "age": 34,
+    "team": "Club Atlético Unión"
+  },
+  {
+    "name": "G. Báez",
+    "overall": 71,
+    "potential": 71,
+    "position": "LB, LM",
+    "age": 29,
+    "team": "Talleres"
+  },
+  {
+    "name": "L. Angulo",
+    "overall": 71,
+    "potential": 82,
+    "position": "LM, RM, LW",
+    "age": 21,
+    "team": "Talleres"
+  },
+  {
+    "name": "L. Heredia",
+    "overall": 71,
+    "potential": 71,
+    "position": "ST, LW, LM",
+    "age": 29,
+    "team": "Platense"
+  },
+  {
+    "name": "A. Lotti",
+    "overall": 71,
+    "potential": 71,
+    "position": "ST, CAM, CM",
+    "age": 29,
+    "team": "Platense"
+  },
+  {
+    "name": "J. Gómez",
+    "overall": 71,
+    "potential": 71,
+    "position": "CM, CAM, CDM",
+    "age": 35,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "Y. Rak",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB",
+    "age": 31,
+    "team": "Barracas Central"
+  },
+  {
+    "name": "I. Tapia",
+    "overall": 71,
+    "potential": 72,
+    "position": "CAM, CM",
+    "age": 26,
+    "team": "Barracas Central"
+  },
+  {
+    "name": "F. Bruera",
+    "overall": 71,
+    "potential": 72,
+    "position": "ST",
+    "age": 26,
+    "team": "Barracas Central"
+  },
+  {
+    "name": "M. Reali",
+    "overall": 70,
+    "potential": 70,
+    "position": "LM, ST, RM, LW",
+    "age": 27,
+    "team": "San Lorenzo de Almagro"
+  },
+  {
+    "name": "E. Cerutti",
+    "overall": 70,
+    "potential": 70,
+    "position": "RM, LW, RW",
+    "age": 33,
+    "team": "San Lorenzo de Almagro"
+  },
+  {
+    "name": "J. Devecchi",
+    "overall": 70,
+    "potential": 71,
+    "position": "GK",
+    "age": 29,
+    "team": "San Lorenzo de Almagro"
+  },
+  {
+    "name": "M. Galarza",
+    "overall": 70,
+    "potential": 74,
+    "position": "CM, LM, CAM",
+    "age": 23,
+    "team": "River Plate"
+  },
+  {
+    "name": "M. Delgado",
+    "overall": 70,
+    "potential": 82,
+    "position": "CDM, CM, CB",
+    "age": 20,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "J. Ramírez",
+    "overall": 70,
+    "potential": 70,
+    "position": "CM, LM, CAM",
+    "age": 32,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "L. Janson",
+    "overall": 70,
+    "potential": 70,
+    "position": "LW, LM, ST",
+    "age": 30,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "N. Orsini",
+    "overall": 70,
+    "potential": 70,
+    "position": "ST, RW, CAM",
+    "age": 30,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "G. Maroni",
+    "overall": 70,
+    "potential": 71,
+    "position": "CAM, ST, LM, CM",
+    "age": 26,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "A. Martegani",
+    "overall": 70,
+    "potential": 75,
+    "position": "CM, CAM",
+    "age": 25,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "M. Pellegrino",
+    "overall": 70,
+    "potential": 79,
+    "position": "CB",
+    "age": 22,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "M. Amondarain",
+    "overall": 70,
+    "potential": 78,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "R. Funes Mori",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB",
+    "age": 34,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "L. Castro",
+    "overall": 70,
+    "potential": 70,
+    "position": "CAM, CM",
+    "age": 36,
+    "team": "Gimnasia y Esgrima La Plata"
+  },
+  {
+    "name": "E. Torres",
+    "overall": 70,
+    "potential": 75,
+    "position": "ST, CAM",
+    "age": 24,
+    "team": "Racing Club"
+  },
+  {
+    "name": "G. Gómez",
+    "overall": 70,
+    "potential": 70,
+    "position": "GK",
+    "age": 29,
+    "team": "Racing Club"
+  },
+  {
+    "name": "B. Rodríguez",
+    "overall": 70,
+    "potential": 79,
+    "position": "CM, CAM, LW, CDM",
+    "age": 21,
+    "team": "Racing Club"
+  },
+  {
+    "name": "J. Gordon",
+    "overall": 70,
+    "potential": 77,
+    "position": "RB",
+    "age": 21,
+    "team": "Vélez Sarsfield"
+  },
+  {
+    "name": "F. Pizzini",
+    "overall": 70,
+    "potential": 70,
+    "position": "RM, LM, RW",
+    "age": 31,
+    "team": "Vélez Sarsfield"
+  },
+  {
+    "name": "M. Santos",
+    "overall": 70,
+    "potential": 70,
+    "position": "ST",
+    "age": 32,
+    "team": "Vélez Sarsfield"
+  },
+  {
+    "name": "M. Pellegrini",
+    "overall": 70,
+    "potential": 73,
+    "position": "RM, LM, RW",
+    "age": 25,
+    "team": "Vélez Sarsfield"
+  },
+  {
+    "name": "N. Freire",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB",
+    "age": 31,
+    "team": "Independiente"
+  },
+  {
+    "name": "F. Mancuello",
+    "overall": 70,
+    "potential": 70,
+    "position": "CM, CAM, CDM",
+    "age": 36,
+    "team": "Independiente"
+  },
+  {
+    "name": "I. Pussetto",
+    "overall": 70,
+    "potential": 70,
+    "position": "ST",
+    "age": 29,
+    "team": "Independiente"
+  },
+  {
+    "name": "L. Cabral",
+    "overall": 70,
+    "potential": 70,
+    "position": "CAM, CM",
+    "age": 30,
+    "team": "Independiente"
+  },
+  {
+    "name": "W. Mazzantti",
+    "overall": 70,
+    "potential": 70,
+    "position": "RM, RW",
+    "age": 28,
+    "team": "Independiente"
+  },
+  {
+    "name": "F. Zabala",
+    "overall": 70,
+    "potential": 70,
+    "position": "LB, LM",
+    "age": 26,
+    "team": "Independiente"
+  },
+  {
+    "name": "M. Abaldo",
+    "overall": 70,
+    "potential": 78,
+    "position": "LM, RM, LW",
+    "age": 21,
+    "team": "Independiente"
+  },
+  {
+    "name": "J. Ruiz",
+    "overall": 70,
+    "potential": 78,
+    "position": "RW, LW, CAM, RM",
+    "age": 20,
+    "team": "Independiente"
+  },
+  {
+    "name": "L. Morales",
+    "overall": 70,
+    "potential": 71,
+    "position": "GK",
+    "age": 25,
+    "team": "Lanús"
+  },
+  {
+    "name": "J. Canale",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB",
+    "age": 28,
+    "team": "Lanús"
+  },
+  {
+    "name": "G. Pérez",
+    "overall": 70,
+    "potential": 73,
+    "position": "RB, CDM, RM",
+    "age": 24,
+    "team": "Lanús"
+  },
+  {
+    "name": "F. Peña Biafore",
+    "overall": 70,
+    "potential": 73,
+    "position": "CDM, CB",
+    "age": 24,
+    "team": "Lanús"
+  },
+  {
+    "name": "R. Dejesús",
+    "overall": 70,
+    "potential": 73,
+    "position": "CB",
+    "age": 24,
+    "team": "Lanús"
+  },
+  {
+    "name": "F. Watson",
+    "overall": 70,
+    "potential": 76,
+    "position": "CAM, LM, CM",
+    "age": 22,
+    "team": "Lanús"
+  },
+  {
+    "name": "F. Noguera",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB",
+    "age": 32,
+    "team": "Newell's Old Boys"
+  },
+  {
+    "name": "J. Espínola",
+    "overall": 70,
+    "potential": 70,
+    "position": "GK",
+    "age": 30,
+    "team": "Newell's Old Boys"
+  },
+  {
+    "name": "S. Vittor",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB",
+    "age": 36,
+    "team": "CA Banfield"
+  },
+  {
+    "name": "F. Sanguinetti",
+    "overall": 70,
+    "potential": 76,
+    "position": "GK",
+    "age": 24,
+    "team": "CA Banfield"
+  },
+  {
+    "name": "G. Ávila",
+    "overall": 70,
+    "potential": 73,
+    "position": "CB, LB",
+    "age": 23,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "J. Galván",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB, CDM",
+    "age": 33,
+    "team": "Instituto Atlético Central Córdoba"
+  },
+  {
+    "name": "F. Moyano",
+    "overall": 70,
+    "potential": 70,
+    "position": "CM, CDM",
+    "age": 27,
+    "team": "Instituto Atlético Central Córdoba"
+  },
+  {
+    "name": "R. Bentancourt",
+    "overall": 70,
+    "potential": 70,
+    "position": "ST",
+    "age": 32,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "L. Fernández",
+    "overall": 70,
+    "potential": 70,
+    "position": "ST, LW, LM",
+    "age": 34,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "E. Godoy",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB",
+    "age": 31,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "F. Mac Allister",
+    "overall": 70,
+    "potential": 70,
+    "position": "CDM, CM, CB",
+    "age": 29,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "L. Gómez",
+    "overall": 70,
+    "potential": 70,
+    "position": "RB, CM, LB",
+    "age": 29,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "M. Giménez",
+    "overall": 70,
+    "potential": 70,
+    "position": "ST, LW, LM",
+    "age": 26,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "E. Bonifacio",
+    "overall": 70,
+    "potential": 70,
+    "position": "RB, RM, LB",
+    "age": 31,
+    "team": "Independiente Rivadavia"
+  },
+  {
+    "name": "A. Spörle",
+    "overall": 70,
+    "potential": 70,
+    "position": "LB, LM",
+    "age": 29,
+    "team": "Belgrano de Córdoba"
+  },
+  {
+    "name": "A. Maldonado",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB",
+    "age": 27,
+    "team": "Belgrano de Córdoba"
+  },
+  {
+    "name": "B. Reyna",
+    "overall": 70,
+    "potential": 70,
+    "position": "LM, ST, RM, LW",
+    "age": 26,
+    "team": "Belgrano de Córdoba"
+  },
+  {
+    "name": "S. Longo",
+    "overall": 70,
+    "potential": 73,
+    "position": "CDM, CM, CB",
+    "age": 27,
+    "team": "Belgrano de Córdoba"
+  },
+  {
+    "name": "R. Ramírez",
+    "overall": 70,
+    "potential": 72,
+    "position": "GK",
+    "age": 28,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "V. Poggi",
+    "overall": 70,
+    "potential": 79,
+    "position": "CM, CDM",
+    "age": 22,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "L. Arce",
+    "overall": 70,
+    "potential": 70,
+    "position": "RB, RM",
+    "age": 27,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "M. Mendoza",
+    "overall": 70,
+    "potential": 81,
+    "position": "CB, RB, CDM",
+    "age": 20,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "G. Enrique",
+    "overall": 70,
+    "potential": 74,
+    "position": "RB",
+    "age": 25,
+    "team": "CA Aldosivi"
+  },
+  {
+    "name": "G. Ferrari",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB",
+    "age": 28,
+    "team": "Atlético Tucumán"
+  },
+  {
+    "name": "K. Ortiz",
+    "overall": 70,
+    "potential": 71,
+    "position": "CM, CDM",
+    "age": 24,
+    "team": "Atlético Tucumán"
+  },
+  {
+    "name": "R. Delgado",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB, LB",
+    "age": 35,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "M. Ledesma",
+    "overall": 70,
+    "potential": 70,
+    "position": "GK",
+    "age": 28,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "D. Barbona",
+    "overall": 70,
+    "potential": 70,
+    "position": "CAM, RM, CM",
+    "age": 30,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "J. López",
+    "overall": 70,
+    "potential": 73,
+    "position": "CDM, CM, CB",
+    "age": 25,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "L. Sequeira",
+    "overall": 70,
+    "potential": 70,
+    "position": "ST, RM, LM, RW",
+    "age": 30,
+    "team": "Huracán"
+  },
+  {
+    "name": "F. Vera",
+    "overall": 70,
+    "potential": 70,
+    "position": "RB, RM",
+    "age": 27,
+    "team": "Huracán"
+  },
+  {
+    "name": "J. Laso",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB",
+    "age": 34,
+    "team": "Tigre"
+  },
+  {
+    "name": "B. Leyes",
+    "overall": 70,
+    "potential": 77,
+    "position": "CDM, CM",
+    "age": 23,
+    "team": "Tigre"
+  },
+  {
+    "name": "J. Mosqueira",
+    "overall": 70,
+    "potential": 79,
+    "position": "CDM, CM, CB",
+    "age": 21,
+    "team": "Tigre"
+  },
+  {
+    "name": "A. Solari",
+    "overall": 70,
+    "potential": 70,
+    "position": "RM, RB, RW",
+    "age": 33,
+    "team": "Club Atlético Unión"
+  },
+  {
+    "name": "J. Palacios",
+    "overall": 70,
+    "potential": 70,
+    "position": "RM, CM, LM, RW",
+    "age": 26,
+    "team": "Club Atlético Unión"
+  },
+  {
+    "name": "B. Barticciotto",
+    "overall": 70,
+    "potential": 76,
+    "position": "LW, CAM, LM",
+    "age": 24,
+    "team": "Talleres"
+  },
+  {
+    "name": "J. Sforza",
+    "overall": 70,
+    "potential": 81,
+    "position": "CDM, CM",
+    "age": 23,
+    "team": "Talleres"
+  },
+  {
+    "name": "A. Martínez",
+    "overall": 70,
+    "potential": 70,
+    "position": "LW, RW, ST, LM",
+    "age": 27,
+    "team": "Talleres"
+  },
+  {
+    "name": "U. Ortegoza",
+    "overall": 70,
+    "potential": 70,
+    "position": "CM, CDM",
+    "age": 28,
+    "team": "Talleres"
+  },
+  {
+    "name": "B. Merlini",
+    "overall": 70,
+    "potential": 70,
+    "position": "RM, LM, CAM, RW",
+    "age": 29,
+    "team": "Platense"
+  },
+  {
+    "name": "M. Amarfil",
+    "overall": 70,
+    "potential": 73,
+    "position": "CM, CDM, RM",
+    "age": 23,
+    "team": "Platense"
+  },
+  {
+    "name": "I. Gómez",
+    "overall": 70,
+    "potential": 70,
+    "position": "CM, CAM, RM, CDM",
+    "age": 28,
+    "team": "Platense"
+  },
+  {
+    "name": "G. Mainero",
+    "overall": 70,
+    "potential": 70,
+    "position": "RM, RW",
+    "age": 30,
+    "team": "Platense"
+  },
+  {
+    "name": "A. Lagos",
+    "overall": 70,
+    "potential": 75,
+    "position": "RB, RM",
+    "age": 23,
+    "team": "Platense"
+  },
+  {
+    "name": "F. Zapiola",
+    "overall": 70,
+    "potential": 73,
+    "position": "LM, LW",
+    "age": 24,
+    "team": "Platense"
+  },
+  {
+    "name": "J. Saborido",
+    "overall": 70,
+    "potential": 70,
+    "position": "RB",
+    "age": 27,
+    "team": "Platense"
+  },
+  {
+    "name": "J. Insaurralde",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB",
+    "age": 40,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "R. Insua",
+    "overall": 70,
+    "potential": 70,
+    "position": "LB, LM",
+    "age": 27,
+    "team": "Barracas Central"
+  },
+  {
+    "name": "J. Herrera",
+    "overall": 70,
+    "potential": 70,
+    "position": "ST",
+    "age": 33,
+    "team": "Deportivo Riestra"
+  },
+  {
+    "name": "F. Altamirano",
+    "overall": 69,
+    "potential": 71,
+    "position": "GK",
+    "age": 29,
+    "team": "San Lorenzo de Almagro"
+  },
+  {
+    "name": "I. Subiabre",
+    "overall": 69,
+    "potential": 83,
+    "position": "LW, RW, LM",
+    "age": 18,
+    "team": "River Plate"
+  },
+  {
+    "name": "J. García",
+    "overall": 69,
+    "potential": 69,
+    "position": "GK",
+    "age": 38,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "M. Weigandt",
+    "overall": 69,
+    "potential": 72,
+    "position": "RB, RM, CM",
+    "age": 25,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "L. Brey",
+    "overall": 69,
+    "potential": 79,
+    "position": "GK",
+    "age": 22,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "G. Morales",
+    "overall": 69,
+    "potential": 78,
+    "position": "ST",
+    "age": 22,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "M. Miljević",
+    "overall": 69,
+    "potential": 74,
+    "position": "CAM, ST, LM, CM",
+    "age": 24,
+    "team": "Racing Club"
+  },
+  {
+    "name": "M. Barrios",
+    "overall": 69,
+    "potential": 70,
+    "position": "CM, CDM, CAM",
+    "age": 26,
+    "team": "Racing Club"
+  },
+  {
+    "name": "R. Piñeiro",
+    "overall": 69,
+    "potential": 70,
+    "position": "LM, LW",
+    "age": 26,
+    "team": "Vélez Sarsfield"
+  },
+  {
+    "name": "F. Díaz",
+    "overall": 69,
+    "potential": 75,
+    "position": "CDM, CM",
+    "age": 24,
+    "team": "Vélez Sarsfield"
+  },
+  {
+    "name": "R. Fernández Cedrés",
+    "overall": 69,
+    "potential": 69,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Independiente"
+  },
+  {
+    "name": "K. Lopez",
+    "overall": 69,
+    "potential": 72,
+    "position": "CM, CDM",
+    "age": 23,
+    "team": "Independiente"
+  },
+  {
+    "name": "T. Guidara",
+    "overall": 69,
+    "potential": 69,
+    "position": "RB, RM",
+    "age": 29,
+    "team": "Lanús"
+  },
+  {
+    "name": "M. Sepúlveda",
+    "overall": 69,
+    "potential": 72,
+    "position": "LB, CM, LM",
+    "age": 26,
+    "team": "Lanús"
+  },
+  {
+    "name": "J. Mosquera",
+    "overall": 69,
+    "potential": 72,
+    "position": "RB, CDM",
+    "age": 25,
+    "team": "Newell's Old Boys"
+  },
+  {
+    "name": "M. Fernández",
+    "overall": 69,
+    "potential": 76,
+    "position": "CDM, CM, CB",
+    "age": 24,
+    "team": "Newell's Old Boys"
+  },
+  {
+    "name": "R. Auzmendi",
+    "overall": 69,
+    "potential": 74,
+    "position": "ST",
+    "age": 24,
+    "team": "CA Banfield"
+  },
+  {
+    "name": "D. Arboleda",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB",
+    "age": 30,
+    "team": "CA Banfield"
+  },
+  {
+    "name": "M. Méndez",
+    "overall": 69,
+    "potential": 70,
+    "position": "ST",
+    "age": 26,
+    "team": "CA Banfield"
+  },
+  {
+    "name": "B. Sepúlveda",
+    "overall": 69,
+    "potential": 69,
+    "position": "ST",
+    "age": 32,
+    "team": "CA Banfield"
+  },
+  {
+    "name": "F. Castañeda",
+    "overall": 69,
+    "potential": 69,
+    "position": "RM, CAM, RW",
+    "age": 30,
+    "team": "CA Banfield"
+  },
+  {
+    "name": "N. Meriano",
+    "overall": 69,
+    "potential": 72,
+    "position": "CB, LB, CDM",
+    "age": 24,
+    "team": "CA Banfield"
+  },
+  {
+    "name": "E. Giménez",
+    "overall": 69,
+    "potential": 69,
+    "position": "RB, RM",
+    "age": 27,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "T. O'Connor",
+    "overall": 69,
+    "potential": 77,
+    "position": "CM, CDM, CAM",
+    "age": 21,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "J. Acevedo",
+    "overall": 69,
+    "potential": 69,
+    "position": "RM, LM, RW",
+    "age": 28,
+    "team": "Instituto Atlético Central Córdoba"
+  },
+  {
+    "name": "J. Méndez",
+    "overall": 69,
+    "potential": 69,
+    "position": "CM, CDM",
+    "age": 28,
+    "team": "Instituto Atlético Central Córdoba"
+  },
+  {
+    "name": "J. Córdoba",
+    "overall": 69,
+    "potential": 72,
+    "position": "RM, LM, ST, RW",
+    "age": 24,
+    "team": "Instituto Atlético Central Córdoba"
+  },
+  {
+    "name": "T. Ramírez",
+    "overall": 69,
+    "potential": 81,
+    "position": "CB",
+    "age": 18,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "M. Guillén",
+    "overall": 69,
+    "potential": 72,
+    "position": "RB, LB",
+    "age": 23,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "J. Elordi",
+    "overall": 69,
+    "potential": 69,
+    "position": "LB, LM",
+    "age": 30,
+    "team": "Independiente Rivadavia"
+  },
+  {
+    "name": "S. Studer",
+    "overall": 69,
+    "potential": 75,
+    "position": "CB",
+    "age": 22,
+    "team": "Independiente Rivadavia"
+  },
+  {
+    "name": "G. Ríos",
+    "overall": 69,
+    "potential": 69,
+    "position": "LM, RM, CM, LW",
+    "age": 26,
+    "team": "Independiente Rivadavia"
+  },
+  {
+    "name": "L. Bucca",
+    "overall": 69,
+    "potential": 69,
+    "position": "CM, RW, CAM, CDM",
+    "age": 26,
+    "team": "Independiente Rivadavia"
+  },
+  {
+    "name": "S. Moreyra",
+    "overall": 69,
+    "potential": 72,
+    "position": "CDM, CM, CB",
+    "age": 24,
+    "team": "Independiente Rivadavia"
+  },
+  {
+    "name": "A. Benítez",
+    "overall": 69,
+    "potential": 76,
+    "position": "RM, RB",
+    "age": 23,
+    "team": "Belgrano de Córdoba"
+  },
+  {
+    "name": "F. Ricca",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB, LB",
+    "age": 30,
+    "team": "Belgrano de Córdoba"
+  },
+  {
+    "name": "V. Burgoa",
+    "overall": 69,
+    "potential": 72,
+    "position": "LM, CAM, RM, LW",
+    "age": 24,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "B. Yáñez",
+    "overall": 69,
+    "potential": 75,
+    "position": "LM, CAM, RM, LW",
+    "age": 24,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "N. Ulariaga",
+    "overall": 69,
+    "potential": 76,
+    "position": "ST",
+    "age": 23,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "F. Altamira",
+    "overall": 69,
+    "potential": 75,
+    "position": "RM, RW, ST",
+    "age": 23,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "L. Rodríguez",
+    "overall": 69,
+    "potential": 69,
+    "position": "LB, LM",
+    "age": 31,
+    "team": "CA Aldosivi"
+  },
+  {
+    "name": "N. Breitenbruch",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB",
+    "age": 29,
+    "team": "CA Aldosivi"
+  },
+  {
+    "name": "N. Cordero",
+    "overall": 69,
+    "potential": 72,
+    "position": "ST",
+    "age": 26,
+    "team": "CA Aldosivi"
+  },
+  {
+    "name": "J. Novillo",
+    "overall": 69,
+    "potential": 72,
+    "position": "CB",
+    "age": 27,
+    "team": "CA Aldosivi"
+  },
+  {
+    "name": "M. Villa",
+    "overall": 69,
+    "potential": 69,
+    "position": "RB",
+    "age": 28,
+    "team": "Atlético Tucumán"
+  },
+  {
+    "name": "R. Tesuri",
+    "overall": 69,
+    "potential": 69,
+    "position": "RM, RB, RW",
+    "age": 29,
+    "team": "Atlético Tucumán"
+  },
+  {
+    "name": "E. Amor",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB",
+    "age": 30,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "R. Bogarín",
+    "overall": 69,
+    "potential": 69,
+    "position": "CAM, RM, RW, CM",
+    "age": 28,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "L. Amadé",
+    "overall": 69,
+    "potential": 74,
+    "position": "GK",
+    "age": 25,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "J. Gutiérrez",
+    "overall": 69,
+    "potential": 75,
+    "position": "LM, CAM, ST, LW",
+    "age": 23,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "A. Osorio",
+    "overall": 69,
+    "potential": 76,
+    "position": "ST, CAM",
+    "age": 23,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "L. Giménez",
+    "overall": 69,
+    "potential": 72,
+    "position": "ST, CAM",
+    "age": 25,
+    "team": "Huracán"
+  },
+  {
+    "name": "C. Ibañez",
+    "overall": 69,
+    "potential": 72,
+    "position": "LB",
+    "age": 26,
+    "team": "Huracán"
+  },
+  {
+    "name": "F. Zenobio",
+    "overall": 69,
+    "potential": 72,
+    "position": "GK",
+    "age": 25,
+    "team": "Tigre"
+  },
+  {
+    "name": "N. Banegas",
+    "overall": 69,
+    "potential": 69,
+    "position": "LB, LM",
+    "age": 28,
+    "team": "Tigre"
+  },
+  {
+    "name": "M. Estigarribia",
+    "overall": 69,
+    "potential": 69,
+    "position": "ST, RW, CAM",
+    "age": 30,
+    "team": "Club Atlético Unión"
+  },
+  {
+    "name": "N. Paz",
+    "overall": 69,
+    "potential": 76,
+    "position": "CB, RB, RM",
+    "age": 22,
+    "team": "Club Atlético Unión"
+  },
+  {
+    "name": "L. Sequeira",
+    "overall": 69,
+    "potential": 76,
+    "position": "CAM, CM, LM",
+    "age": 22,
+    "team": "Talleres"
+  },
+  {
+    "name": "T. Nasif",
+    "overall": 69,
+    "potential": 77,
+    "position": "ST",
+    "age": 21,
+    "team": "Platense"
+  },
+  {
+    "name": "A. Ocampo",
+    "overall": 69,
+    "potential": 69,
+    "position": "LM, ST, RM, LW",
+    "age": 27,
+    "team": "Platense"
+  },
+  {
+    "name": "S. Toloza",
+    "overall": 69,
+    "potential": 75,
+    "position": "CAM, CM",
+    "age": 22,
+    "team": "Platense"
+  },
+  {
+    "name": "J. Gauto",
+    "overall": 69,
+    "potential": 77,
+    "position": "RM, LM, CM, RW",
+    "age": 21,
+    "team": "Platense"
+  },
+  {
+    "name": "S. Quirós",
+    "overall": 69,
+    "potential": 76,
+    "position": "CB, LB",
+    "age": 22,
+    "team": "Platense"
+  },
+  {
+    "name": "J. Burrai",
+    "overall": 69,
+    "potential": 69,
+    "position": "GK",
+    "age": 34,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "L. Suárez",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB, LB",
+    "age": 30,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "C. Villalba",
+    "overall": 69,
+    "potential": 69,
+    "position": "CM, CDM",
+    "age": 26,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "G. González",
+    "overall": 69,
+    "potential": 75,
+    "position": "LM, LW, LB",
+    "age": 24,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "R. Orihuela",
+    "overall": 69,
+    "potential": 75,
+    "position": "CB, RB, RM",
+    "age": 24,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "J. Marabel",
+    "overall": 69,
+    "potential": 70,
+    "position": "ST",
+    "age": 27,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "A. Aguerre",
+    "overall": 69,
+    "potential": 69,
+    "position": "GK",
+    "age": 34,
+    "team": "Central Cordoba SdE"
+  },
+  {
+    "name": "D. Miloc",
+    "overall": 69,
+    "potential": 69,
+    "position": "CDM, CM, CB",
+    "age": 34,
+    "team": "Barracas Central"
+  },
+  {
+    "name": "G. Campi",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB",
+    "age": 34,
+    "team": "Barracas Central"
+  },
+  {
+    "name": "F. Mater",
+    "overall": 69,
+    "potential": 70,
+    "position": "RB, RM, CM",
+    "age": 26,
+    "team": "Barracas Central"
+  },
+  {
+    "name": "M. Barbieri",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB",
+    "age": 31,
+    "team": "Deportivo Riestra"
+  },
+  {
+    "name": "A. Díaz",
+    "overall": 69,
+    "potential": 73,
+    "position": "ST",
+    "age": 25,
+    "team": "Deportivo Riestra"
+  },
+  {
+    "name": "A. Cuello",
+    "overall": 68,
+    "potential": 72,
+    "position": "ST, LW, LM, CAM",
+    "age": 25,
+    "team": "San Lorenzo de Almagro"
+  },
+  {
+    "name": "A. Ruberto",
+    "overall": 68,
+    "potential": 80,
+    "position": "ST",
+    "age": 19,
+    "team": "River Plate"
+  },
+  {
+    "name": "J. Saralegui",
+    "overall": 68,
+    "potential": 76,
+    "position": "RM, CM, RW",
+    "age": 22,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "F. Iacovich",
+    "overall": 68,
+    "potential": 73,
+    "position": "GK",
+    "age": 23,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "M. Tagliamonte",
+    "overall": 68,
+    "potential": 68,
+    "position": "GK",
+    "age": 27,
+    "team": "Racing Club"
+  },
+  {
+    "name": "T. Rubio",
+    "overall": 68,
+    "potential": 80,
+    "position": "RB, CB, CDM",
+    "age": 20,
+    "team": "Racing Club"
+  },
+  {
+    "name": "T. Silvero",
+    "overall": 68,
+    "potential": 79,
+    "position": "CB, RB",
+    "age": 19,
+    "team": "Vélez Sarsfield"
+  },
+  {
+    "name": "N. Garayalde",
+    "overall": 68,
+    "potential": 71,
+    "position": "CM, CDM",
+    "age": 25,
+    "team": "Vélez Sarsfield"
+  },
+  {
+    "name": "J. Fedorco",
+    "overall": 68,
+    "potential": 69,
+    "position": "CB",
+    "age": 24,
+    "team": "Independiente"
+  },
+  {
+    "name": "L. Millán",
+    "overall": 68,
+    "potential": 78,
+    "position": "CM, CAM, RM",
+    "age": 19,
+    "team": "Independiente"
+  },
+  {
+    "name": "M. Valenzuela",
+    "overall": 68,
+    "potential": 68,
+    "position": "LB, LM",
+    "age": 26,
+    "team": "Independiente"
+  },
+  {
+    "name": "F. Paredes",
+    "overall": 68,
+    "potential": 68,
+    "position": "CB, RB, RM",
+    "age": 26,
+    "team": "Independiente"
+  },
+  {
+    "name": "L. Besozzi",
+    "overall": 68,
+    "potential": 75,
+    "position": "LM, RM, LW",
+    "age": 22,
+    "team": "Lanús"
+  },
+  {
+    "name": "L. Herrera",
+    "overall": 68,
+    "potential": 68,
+    "position": "LM, RM, CAM, LW",
+    "age": 29,
+    "team": "Newell's Old Boys"
+  },
+  {
+    "name": "M. Hoyos",
+    "overall": 68,
+    "potential": 68,
+    "position": "ST",
+    "age": 33,
+    "team": "Newell's Old Boys"
+  },
+  {
+    "name": "F. Orozco",
+    "overall": 68,
+    "potential": 74,
+    "position": "LM, LW, RW",
+    "age": 23,
+    "team": "Newell's Old Boys"
+  },
+  {
+    "name": "A. Alaniz",
+    "overall": 68,
+    "potential": 75,
+    "position": "ST, LM, LW",
+    "age": 23,
+    "team": "CA Banfield"
+  },
+  {
+    "name": "I. Abraham",
+    "overall": 68,
+    "potential": 68,
+    "position": "LB, LM",
+    "age": 27,
+    "team": "CA Banfield"
+  },
+  {
+    "name": "L. Ríos",
+    "overall": 68,
+    "potential": 71,
+    "position": "CM, CDM",
+    "age": 24,
+    "team": "CA Banfield"
+  },
+  {
+    "name": "G. Santilli",
+    "overall": 68,
+    "potential": 74,
+    "position": "GK",
+    "age": 23,
+    "team": "CA Banfield"
+  },
+  {
+    "name": "L. Mosevich",
+    "overall": 68,
+    "potential": 69,
+    "position": "CB",
+    "age": 28,
+    "team": "Instituto Atlético Central Córdoba"
+  },
+  {
+    "name": "D. Sosa",
+    "overall": 68,
+    "potential": 68,
+    "position": "LB, LM",
+    "age": 27,
+    "team": "Instituto Atlético Central Córdoba"
+  },
+  {
+    "name": "N. Guerra",
+    "overall": 68,
+    "potential": 69,
+    "position": "ST",
+    "age": 26,
+    "team": "Instituto Atlético Central Córdoba"
+  },
+  {
+    "name": "C. Bravo",
+    "overall": 68,
+    "potential": 68,
+    "position": "LB, LM",
+    "age": 28,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "C. Ferreira",
+    "overall": 68,
+    "potential": 68,
+    "position": "CAM, CM",
+    "age": 25,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "G. Florentín",
+    "overall": 68,
+    "potential": 68,
+    "position": "CM, CAM, CDM",
+    "age": 26,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "J. Gho",
+    "overall": 68,
+    "potential": 75,
+    "position": "LM, RM, LB",
+    "age": 22,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "K. Vázquez",
+    "overall": 68,
+    "potential": 73,
+    "position": "CM, CDM",
+    "age": 24,
+    "team": "Independiente Rivadavia"
+  },
+  {
+    "name": "I. Villalba",
+    "overall": 68,
+    "potential": 68,
+    "position": "CB",
+    "age": 30,
+    "team": "Independiente Rivadavia"
+  },
+  {
+    "name": "R. Atencio",
+    "overall": 68,
+    "potential": 77,
+    "position": "CAM, CM, RM",
+    "age": 23,
+    "team": "Independiente Rivadavia"
+  },
+  {
+    "name": "A. Leguizamón",
+    "overall": 68,
+    "potential": 68,
+    "position": "CB",
+    "age": 33,
+    "team": "Belgrano de Córdoba"
+  },
+  {
+    "name": "M. Sosa",
+    "overall": 68,
+    "potential": 74,
+    "position": "RW, CAM, RM",
+    "age": 23,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "E. Burgos",
+    "overall": 68,
+    "potential": 68,
+    "position": "CB",
+    "age": 33,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "S. Lomónaco",
+    "overall": 68,
+    "potential": 69,
+    "position": "ST, LM, RM, LW",
+    "age": 26,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "D. Barrea",
+    "overall": 68,
+    "potential": 74,
+    "position": "LM, RM, ST, LW",
+    "age": 23,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "M. Pino",
+    "overall": 68,
+    "potential": 69,
+    "position": "ST",
+    "age": 27,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "A. Werner",
+    "overall": 68,
+    "potential": 68,
+    "position": "GK",
+    "age": 29,
+    "team": "CA Aldosivi"
+  },
+  {
+    "name": "E. Rolón",
+    "overall": 68,
+    "potential": 68,
+    "position": "CDM, CM",
+    "age": 30,
+    "team": "CA Aldosivi"
+  },
+  {
+    "name": "I. Chicco",
+    "overall": 68,
+    "potential": 70,
+    "position": "GK",
+    "age": 29,
+    "team": "CA Aldosivi"
+  },
+  {
+    "name": "M. Da Luz",
+    "overall": 68,
+    "potential": 68,
+    "position": "RM, LM, RW",
+    "age": 30,
+    "team": "CA Aldosivi"
+  },
+  {
+    "name": "A. Sosa",
+    "overall": 68,
+    "potential": 77,
+    "position": "LM, RM, LW",
+    "age": 22,
+    "team": "CA Aldosivi"
+  },
+  {
+    "name": "A. Palavecino",
+    "overall": 68,
+    "potential": 76,
+    "position": "RM, CAM, LM, RW",
+    "age": 22,
+    "team": "CA Aldosivi"
+  },
+  {
+    "name": "Y. Cabral",
+    "overall": 68,
+    "potential": 68,
+    "position": "CB",
+    "age": 33,
+    "team": "Atlético Tucumán"
+  },
+  {
+    "name": "L. Ingolotti",
+    "overall": 68,
+    "potential": 73,
+    "position": "GK",
+    "age": 25,
+    "team": "Atlético Tucumán"
+  },
+  {
+    "name": "J. Domínguez",
+    "overall": 68,
+    "potential": 70,
+    "position": "CM, CDM",
+    "age": 25,
+    "team": "Atlético Tucumán"
+  },
+  {
+    "name": "J. Infante",
+    "overall": 68,
+    "potential": 68,
+    "position": "LB, LM",
+    "age": 29,
+    "team": "Atlético Tucumán"
+  },
+  {
+    "name": "N. Stefanelli",
+    "overall": 68,
+    "potential": 68,
+    "position": "CAM, LM, ST, CM",
+    "age": 30,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "E. Pereyra",
+    "overall": 68,
+    "potential": 71,
+    "position": "LB, LM",
+    "age": 26,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "D. Cáceres",
+    "overall": 68,
+    "potential": 68,
+    "position": "LB, LM",
+    "age": 27,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "J. Miritello",
+    "overall": 68,
+    "potential": 69,
+    "position": "ST",
+    "age": 26,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "Lenny Lobato",
+    "overall": 68,
+    "potential": 71,
+    "position": "LM, LW",
+    "age": 24,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "C. Pérez",
+    "overall": 68,
+    "potential": 77,
+    "position": "CDM, CM",
+    "age": 22,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "E. Ramírez",
+    "overall": 68,
+    "potential": 68,
+    "position": "ST, CAM, RM, CM",
+    "age": 28,
+    "team": "Huracán"
+  },
+  {
+    "name": "E. Ojeda",
+    "overall": 68,
+    "potential": 69,
+    "position": "CDM, CM",
+    "age": 27,
+    "team": "Huracán"
+  },
+  {
+    "name": "Ó. Cortés",
+    "overall": 68,
+    "potential": 74,
+    "position": "LM, LW",
+    "age": 21,
+    "team": "Huracán"
+  },
+  {
+    "name": "J. Bisanz",
+    "overall": 68,
+    "potential": 74,
+    "position": "LM, RM, ST, LW",
+    "age": 23,
+    "team": "Huracán"
+  },
+  {
+    "name": "F. Nadalín",
+    "overall": 68,
+    "potential": 68,
+    "position": "RB",
+    "age": 27,
+    "team": "Club Atlético San Martín"
+  },
+  {
+    "name": "A. Oviedo",
+    "overall": 68,
+    "potential": 68,
+    "position": "ST",
+    "age": 29,
+    "team": "Tigre"
+  },
+  {
+    "name": "D. Romero",
+    "overall": 68,
+    "potential": 76,
+    "position": "ST, CAM, CM",
+    "age": 22,
+    "team": "Tigre"
+  },
+  {
+    "name": "S. Medina",
+    "overall": 68,
+    "potential": 71,
+    "position": "LM, LB",
+    "age": 25,
+    "team": "Tigre"
+  },
+  {
+    "name": "E. Cabrera",
+    "overall": 68,
+    "potential": 76,
+    "position": "LM, CAM, ST, LW",
+    "age": 22,
+    "team": "Tigre"
+  },
+  {
+    "name": "S. González",
+    "overall": 68,
+    "potential": 76,
+    "position": "CM, CDM",
+    "age": 22,
+    "team": "Tigre"
+  },
+  {
+    "name": "B. Pittón",
+    "overall": 68,
+    "potential": 68,
+    "position": "LB, LM",
+    "age": 32,
+    "team": "Club Atlético Unión"
+  },
+  {
+    "name": "L. Vargas",
+    "overall": 68,
+    "potential": 79,
+    "position": "RB, RM",
+    "age": 20,
+    "team": "Club Atlético Unión"
+  },
+  {
+    "name": "M. Ortíz",
+    "overall": 68,
+    "potential": 68,
+    "position": "RM, RW, ST",
+    "age": 30,
+    "team": "Talleres"
+  },
+  {
+    "name": "A. Vigo",
+    "overall": 68,
+    "potential": 69,
+    "position": "RB, RM",
+    "age": 26,
+    "team": "Talleres"
+  },
+  {
+    "name": "R. Martínez",
+    "overall": 68,
+    "potential": 68,
+    "position": "ST, CAM",
+    "age": 29,
+    "team": "Talleres"
+  },
+  {
+    "name": "Rodrigo Guth",
+    "overall": 68,
+    "potential": 74,
+    "position": "CB",
+    "age": 24,
+    "team": "Talleres"
+  },
+  {
+    "name": "D. Zalazar",
+    "overall": 68,
+    "potential": 74,
+    "position": "RW, LM, RM",
+    "age": 23,
+    "team": "Talleres"
+  },
+  {
+    "name": "E. Raggio",
+    "overall": 68,
+    "potential": 71,
+    "position": "RB, CB",
+    "age": 23,
+    "team": "Platense"
+  },
+  {
+    "name": "J. Bay",
+    "overall": 68,
+    "potential": 68,
+    "position": "LB, LM",
+    "age": 32,
+    "team": "Platense"
+  },
+  {
+    "name": "H. Bobadilla",
+    "overall": 68,
+    "potential": 71,
+    "position": "ST",
+    "age": 24,
+    "team": "Platense"
+  },
+  {
+    "name": "M. Portillo",
+    "overall": 68,
+    "potential": 69,
+    "position": "CM, CDM",
+    "age": 25,
+    "team": "Platense"
+  },
+  {
+    "name": "T. Santamaría",
+    "overall": 68,
+    "potential": 78,
+    "position": "RB, RM",
+    "age": 22,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "M. García",
+    "overall": 68,
+    "potential": 69,
+    "position": "CDM, CM",
+    "age": 26,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "C. Zabala",
+    "overall": 68,
+    "potential": 70,
+    "position": "CDM, CM",
+    "age": 27,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "G. Díaz Núñez",
+    "overall": 68,
+    "potential": 71,
+    "position": "LB, LM",
+    "age": 25,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "F. Mansilla",
+    "overall": 68,
+    "potential": 71,
+    "position": "CB, LB",
+    "age": 26,
+    "team": "Central Cordoba SdE"
+  },
+  {
+    "name": "F. Tobio",
+    "overall": 68,
+    "potential": 68,
+    "position": "CB",
+    "age": 35,
+    "team": "Barracas Central"
+  },
+  {
+    "name": "N. Briasco",
+    "overall": 68,
+    "potential": 68,
+    "position": "LW, ST, RW, LM",
+    "age": 29,
+    "team": "Barracas Central"
+  },
+  {
+    "name": "N. Demartini",
+    "overall": 68,
+    "potential": 72,
+    "position": "CB, LB, CDM",
+    "age": 25,
+    "team": "Barracas Central"
+  },
+  {
+    "name": "J. Candia",
+    "overall": 68,
+    "potential": 68,
+    "position": "ST, RW, RM",
+    "age": 30,
+    "team": "Barracas Central"
+  },
+  {
+    "name": "C. Arce",
+    "overall": 68,
+    "potential": 68,
+    "position": "CDM, CM",
+    "age": 34,
+    "team": "Barracas Central"
+  },
+  {
+    "name": "N. Benegas",
+    "overall": 68,
+    "potential": 68,
+    "position": "ST, CAM",
+    "age": 29,
+    "team": "Deportivo Riestra"
+  },
+  {
+    "name": "E. Báez",
+    "overall": 67,
+    "potential": 78,
+    "position": "LB, LM",
+    "age": 20,
+    "team": "San Lorenzo de Almagro"
+  },
+  {
+    "name": "A. Gaich",
+    "overall": 67,
+    "potential": 70,
+    "position": "ST",
+    "age": 26,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "F. Corbalán",
+    "overall": 67,
+    "potential": 76,
+    "position": "RB",
+    "age": 21,
+    "team": "Gimnasia y Esgrima La Plata"
+  },
+  {
+    "name": "A. Auzmendi",
+    "overall": 67,
+    "potential": 67,
+    "position": "ST",
+    "age": 28,
+    "team": "Gimnasia y Esgrima La Plata"
+  },
+  {
+    "name": "I. Miramón",
+    "overall": 67,
+    "potential": 77,
+    "position": "CDM, CM",
+    "age": 22,
+    "team": "Gimnasia y Esgrima La Plata"
+  },
+  {
+    "name": "R. Giampaoli",
+    "overall": 67,
+    "potential": 72,
+    "position": "CB, RB",
+    "age": 25,
+    "team": "Gimnasia y Esgrima La Plata"
+  },
+  {
+    "name": "A. Max",
+    "overall": 67,
+    "potential": 67,
+    "position": "CDM, CM",
+    "age": 32,
+    "team": "Gimnasia y Esgrima La Plata"
+  },
+  {
+    "name": "J. Pérez",
+    "overall": 67,
+    "potential": 78,
+    "position": "CAM, RM, LM, CM",
+    "age": 20,
+    "team": "Gimnasia y Esgrima La Plata"
+  },
+  {
+    "name": "I. Rodríguez",
+    "overall": 67,
+    "potential": 72,
+    "position": "LM, CM, RM, LW",
+    "age": 23,
+    "team": "Racing Club"
+  },
+  {
+    "name": "T. Vecino",
+    "overall": 67,
+    "potential": 70,
+    "position": "ST",
+    "age": 26,
+    "team": "Vélez Sarsfield"
+  },
+  {
+    "name": "N. Morgantini",
+    "overall": 67,
+    "potential": 67,
+    "position": "RB, LB, RM",
+    "age": 30,
+    "team": "Lanús"
+  },
+  {
+    "name": "D. Aquino",
+    "overall": 67,
+    "potential": 77,
+    "position": "LM, LW",
+    "age": 20,
+    "team": "Lanús"
+  },
+  {
+    "name": "T. Adoryán",
+    "overall": 67,
+    "potential": 73,
+    "position": "LM, RM, LW",
+    "age": 23,
+    "team": "CA Banfield"
+  },
+  {
+    "name": "F. Frías",
+    "overall": 67,
+    "potential": 73,
+    "position": "CAM, ST, CM",
+    "age": 23,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "I. Erquiaga",
+    "overall": 67,
+    "potential": 68,
+    "position": "LB",
+    "age": 27,
+    "team": "Instituto Atlético Central Córdoba"
+  },
+  {
+    "name": "G. Cerato",
+    "overall": 67,
+    "potential": 67,
+    "position": "RB, RM, CM",
+    "age": 27,
+    "team": "Instituto Atlético Central Córdoba"
+  },
+  {
+    "name": "E. Viveros",
+    "overall": 67,
+    "potential": 73,
+    "position": "LW, LM, CM",
+    "age": 22,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "L. Sánchez",
+    "overall": 67,
+    "potential": 67,
+    "position": "LB, RB",
+    "age": 31,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "L. Costa",
+    "overall": 67,
+    "potential": 67,
+    "position": "CB, RB",
+    "age": 26,
+    "team": "Independiente Rivadavia"
+  },
+  {
+    "name": "L. Pastrán",
+    "overall": 67,
+    "potential": 71,
+    "position": "LM, LW, CAM",
+    "age": 23,
+    "team": "Belgrano de Córdoba"
+  },
+  {
+    "name": "T. Rossi",
+    "overall": 67,
+    "potential": 72,
+    "position": "CB",
+    "age": 26,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "L. Martínez Dupuy",
+    "overall": 67,
+    "potential": 74,
+    "position": "ST",
+    "age": 24,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "M. Ramírez",
+    "overall": 67,
+    "potential": 68,
+    "position": "LM, RM, LW",
+    "age": 26,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "F. Gino",
+    "overall": 67,
+    "potential": 67,
+    "position": "CM, CDM",
+    "age": 32,
+    "team": "CA Aldosivi"
+  },
+  {
+    "name": "R. González",
+    "overall": 67,
+    "potential": 70,
+    "position": "RB, RM",
+    "age": 25,
+    "team": "CA Aldosivi"
+  },
+  {
+    "name": "T. Fernández",
+    "overall": 67,
+    "potential": 67,
+    "position": "RM, CAM, RW",
+    "age": 26,
+    "team": "CA Aldosivi"
+  },
+  {
+    "name": "N. Guzmán",
+    "overall": 67,
+    "potential": 68,
+    "position": "LM, CM, LW",
+    "age": 25,
+    "team": "CA Aldosivi"
+  },
+  {
+    "name": "R. Bochi",
+    "overall": 67,
+    "potential": 67,
+    "position": "CDM, CM",
+    "age": 37,
+    "team": "CA Aldosivi"
+  },
+  {
+    "name": "R. Herrera",
+    "overall": 67,
+    "potential": 74,
+    "position": "CDM, CM",
+    "age": 24,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "L. Souto",
+    "overall": 67,
+    "potential": 68,
+    "position": "RB, RM",
+    "age": 26,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "L. Carrizo",
+    "overall": 67,
+    "potential": 68,
+    "position": "CB, LB, LM",
+    "age": 28,
+    "team": "Huracán"
+  },
+  {
+    "name": "P. García",
+    "overall": 67,
+    "potential": 68,
+    "position": "RM, LM, CAM, RW",
+    "age": 26,
+    "team": "Club Atlético San Martín"
+  },
+  {
+    "name": "T. Serrago",
+    "overall": 67,
+    "potential": 77,
+    "position": "LM, RM, LB",
+    "age": 21,
+    "team": "Tigre"
+  },
+  {
+    "name": "G. Soto",
+    "overall": 67,
+    "potential": 67,
+    "position": "RB, LB, RM",
+    "age": 31,
+    "team": "Tigre"
+  },
+  {
+    "name": "G. Guiffrey",
+    "overall": 67,
+    "potential": 68,
+    "position": "CB, LB",
+    "age": 27,
+    "team": "Tigre"
+  },
+  {
+    "name": "I. Russo",
+    "overall": 67,
+    "potential": 70,
+    "position": "ST, CAM, CM",
+    "age": 24,
+    "team": "Tigre"
+  },
+  {
+    "name": "M. Garay",
+    "overall": 67,
+    "potential": 68,
+    "position": "RB, RM, CM",
+    "age": 26,
+    "team": "Tigre"
+  },
+  {
+    "name": "A. Barrionuevo",
+    "overall": 67,
+    "potential": 67,
+    "position": "CB",
+    "age": 28,
+    "team": "Tigre"
+  },
+  {
+    "name": "T. Sultani",
+    "overall": 67,
+    "potential": 71,
+    "position": "GK",
+    "age": 27,
+    "team": "Tigre"
+  },
+  {
+    "name": "S. López",
+    "overall": 67,
+    "potential": 79,
+    "position": "LW, ST, RM, LM",
+    "age": 19,
+    "team": "Tigre"
+  },
+  {
+    "name": "E. Roldán",
+    "overall": 67,
+    "potential": 72,
+    "position": "CM, CDM",
+    "age": 24,
+    "team": "Club Atlético Unión"
+  },
+  {
+    "name": "V. Fascendini",
+    "overall": 67,
+    "potential": 75,
+    "position": "CB",
+    "age": 22,
+    "team": "Club Atlético Unión"
+  },
+  {
+    "name": "A. Schott",
+    "overall": 67,
+    "potential": 70,
+    "position": "RB, LB, RM",
+    "age": 25,
+    "team": "Talleres"
+  },
+  {
+    "name": "V. Depietri",
+    "overall": 67,
+    "potential": 70,
+    "position": "LW, RM, CAM, LM",
+    "age": 24,
+    "team": "Talleres"
+  },
+  {
+    "name": "B. Bustos",
+    "overall": 67,
+    "potential": 67,
+    "position": "GK",
+    "age": 28,
+    "team": "Platense"
+  },
+  {
+    "name": "G. Goñi",
+    "overall": 67,
+    "potential": 67,
+    "position": "CB",
+    "age": 26,
+    "team": "Platense"
+  },
+  {
+    "name": "P. Magnín",
+    "overall": 67,
+    "potential": 67,
+    "position": "ST, CAM, CM",
+    "age": 35,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "Y. Arismendi",
+    "overall": 67,
+    "potential": 67,
+    "position": "LB, LM, LW",
+    "age": 27,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "I. Pillud",
+    "overall": 67,
+    "potential": 67,
+    "position": "RB, CB, CDM",
+    "age": 39,
+    "team": "Central Cordoba SdE"
+  },
+  {
+    "name": "S. Cristóforo",
+    "overall": 67,
+    "potential": 67,
+    "position": "CDM, CM",
+    "age": 31,
+    "team": "Central Cordoba SdE"
+  },
+  {
+    "name": "M. Vera",
+    "overall": 67,
+    "potential": 67,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Central Cordoba SdE"
+  },
+  {
+    "name": "H. Tijanovich",
+    "overall": 67,
+    "potential": 67,
+    "position": "LM, ST, RM, LW",
+    "age": 29,
+    "team": "Central Cordoba SdE"
+  },
+  {
+    "name": "A. Maciel",
+    "overall": 67,
+    "potential": 67,
+    "position": "CB",
+    "age": 28,
+    "team": "Central Cordoba SdE"
+  },
+  {
+    "name": "E. Naya",
+    "overall": 67,
+    "potential": 73,
+    "position": "ST",
+    "age": 23,
+    "team": "Central Cordoba SdE"
+  },
+  {
+    "name": "M. Iacobellis",
+    "overall": 67,
+    "potential": 68,
+    "position": "RM, CAM, LM, RW",
+    "age": 25,
+    "team": "Central Cordoba SdE"
+  },
+  {
+    "name": "Y. Goitia",
+    "overall": 67,
+    "potential": 67,
+    "position": "CDM, CM, RB",
+    "age": 30,
+    "team": "Deportivo Riestra"
+  },
+  {
+    "name": "M. Insaurralde",
+    "overall": 66,
+    "potential": 67,
+    "position": "CM, CDM, RB",
+    "age": 26,
+    "team": "San Lorenzo de Almagro"
+  },
+  {
+    "name": "G. Costantini",
+    "overall": 66,
+    "potential": 77,
+    "position": "CDM, CM",
+    "age": 19,
+    "team": "River Plate"
+  },
+  {
+    "name": "J. Meza",
+    "overall": 66,
+    "potential": 82,
+    "position": "CM, RM, CDM",
+    "age": 17,
+    "team": "River Plate"
+  },
+  {
+    "name": "F. Pérez",
+    "overall": 66,
+    "potential": 75,
+    "position": "LM, RM, LW",
+    "age": 19,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "J. Guasone",
+    "overall": 66,
+    "potential": 69,
+    "position": "CB",
+    "age": 24,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "F. Di Biasi",
+    "overall": 66,
+    "potential": 77,
+    "position": "CDM, RM, CM",
+    "age": 20,
+    "team": "Gimnasia y Esgrima La Plata"
+  },
+  {
+    "name": "M. Torres",
+    "overall": 66,
+    "potential": 66,
+    "position": "ST",
+    "age": 27,
+    "team": "Gimnasia y Esgrima La Plata"
+  },
+  {
+    "name": "I. Mammini",
+    "overall": 66,
+    "potential": 75,
+    "position": "ST, CAM, CM",
+    "age": 22,
+    "team": "Gimnasia y Esgrima La Plata"
+  },
+  {
+    "name": "F. Torres",
+    "overall": 66,
+    "potential": 67,
+    "position": "RM, ST, RW",
+    "age": 26,
+    "team": "Gimnasia y Esgrima La Plata"
+  },
+  {
+    "name": "B. Barros Schelotto",
+    "overall": 66,
+    "potential": 69,
+    "position": "RB, RM",
+    "age": 25,
+    "team": "Gimnasia y Esgrima La Plata"
+  },
+  {
+    "name": "M. Zalazar",
+    "overall": 66,
+    "potential": 72,
+    "position": "LM, RM, CAM, LW",
+    "age": 24,
+    "team": "Gimnasia y Esgrima La Plata"
+  },
+  {
+    "name": "A. Fernández",
+    "overall": 66,
+    "potential": 72,
+    "position": "LW, RM, CAM, LM",
+    "age": 24,
+    "team": "Racing Club"
+  },
+  {
+    "name": "I. Andrada",
+    "overall": 66,
+    "potential": 73,
+    "position": "RB, RM",
+    "age": 22,
+    "team": "Vélez Sarsfield"
+  },
+  {
+    "name": "R. Rodríguez",
+    "overall": 66,
+    "potential": 74,
+    "position": "GK",
+    "age": 21,
+    "team": "Vélez Sarsfield"
+  },
+  {
+    "name": "L. Garzón",
+    "overall": 66,
+    "potential": 73,
+    "position": "GK",
+    "age": 21,
+    "team": "Vélez Sarsfield"
+  },
+  {
+    "name": "S. Coronel",
+    "overall": 66,
+    "potential": 71,
+    "position": "CAM, CM",
+    "age": 24,
+    "team": "Vélez Sarsfield"
+  },
+  {
+    "name": "J. Quiñónez",
+    "overall": 66,
+    "potential": 69,
+    "position": "CDM, CM",
+    "age": 27,
+    "team": "Independiente"
+  },
+  {
+    "name": "S. Careaga",
+    "overall": 66,
+    "potential": 72,
+    "position": "CM, CAM, CDM",
+    "age": 23,
+    "team": "Lanús"
+  },
+  {
+    "name": "G. Risso Patrón",
+    "overall": 66,
+    "potential": 66,
+    "position": "LB",
+    "age": 29,
+    "team": "Newell's Old Boys"
+  },
+  {
+    "name": "O. Salomón",
+    "overall": 66,
+    "potential": 71,
+    "position": "CB",
+    "age": 26,
+    "team": "Newell's Old Boys"
+  },
+  {
+    "name": "W. Barlasina",
+    "overall": 66,
+    "potential": 66,
+    "position": "GK",
+    "age": 27,
+    "team": "Newell's Old Boys"
+  },
+  {
+    "name": "M. Luciano",
+    "overall": 66,
+    "potential": 72,
+    "position": "LB",
+    "age": 21,
+    "team": "Newell's Old Boys"
+  },
+  {
+    "name": "M. Esponda",
+    "overall": 66,
+    "potential": 73,
+    "position": "CDM, CM, CB",
+    "age": 22,
+    "team": "Newell's Old Boys"
+  },
+  {
+    "name": "J. Alfaro",
+    "overall": 66,
+    "potential": 69,
+    "position": "RB, RM",
+    "age": 25,
+    "team": "CA Banfield"
+  },
+  {
+    "name": "S. Esquivel",
+    "overall": 66,
+    "potential": 76,
+    "position": "CDM, CM",
+    "age": 21,
+    "team": "CA Banfield"
+  },
+  {
+    "name": "G. Duarte",
+    "overall": 66,
+    "potential": 73,
+    "position": "RM, RW",
+    "age": 22,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "M. Fonseca",
+    "overall": 66,
+    "potential": 73,
+    "position": "ST",
+    "age": 24,
+    "team": "Instituto Atlético Central Córdoba"
+  },
+  {
+    "name": "G. Infantino",
+    "overall": 66,
+    "potential": 73,
+    "position": "RM, CM, RW",
+    "age": 22,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "T. Bottari",
+    "overall": 66,
+    "potential": 69,
+    "position": "CM, CDM",
+    "age": 24,
+    "team": "Independiente Rivadavia"
+  },
+  {
+    "name": "M. Fernandez",
+    "overall": 66,
+    "potential": 69,
+    "position": "CAM, CM",
+    "age": 24,
+    "team": "Independiente Rivadavia"
+  },
+  {
+    "name": "V. Ramis",
+    "overall": 66,
+    "potential": 66,
+    "position": "ST, LW, LM",
+    "age": 30,
+    "team": "Independiente Rivadavia"
+  },
+  {
+    "name": "F. Sartori",
+    "overall": 66,
+    "potential": 72,
+    "position": "ST",
+    "age": 22,
+    "team": "Independiente Rivadavia"
+  },
+  {
+    "name": "F. Milo",
+    "overall": 66,
+    "potential": 66,
+    "position": "LB",
+    "age": 33,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "J. Andrada",
+    "overall": 66,
+    "potential": 66,
+    "position": "CM, CDM",
+    "age": 30,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "T. Pozzo",
+    "overall": 66,
+    "potential": 69,
+    "position": "RM, LM, CAM, RW",
+    "age": 24,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "F. Leys",
+    "overall": 66,
+    "potential": 66,
+    "position": "CDM, CM",
+    "age": 31,
+    "team": "CA Aldosivi"
+  },
+  {
+    "name": "E. Iñíguez",
+    "overall": 66,
+    "potential": 66,
+    "position": "RB, LB",
+    "age": 28,
+    "team": "CA Aldosivi"
+  },
+  {
+    "name": "F. Román",
+    "overall": 66,
+    "potential": 66,
+    "position": "LB",
+    "age": 26,
+    "team": "CA Aldosivi"
+  },
+  {
+    "name": "G. Compagnucci",
+    "overall": 66,
+    "potential": 66,
+    "position": "RB, RM, CB, CDM",
+    "age": 33,
+    "team": "Atlético Tucumán"
+  },
+  {
+    "name": "E. Cannavó",
+    "overall": 66,
+    "potential": 74,
+    "position": "RB, RM, RW",
+    "age": 23,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "S. Rivero",
+    "overall": 66,
+    "potential": 77,
+    "position": "CM, LM, RM, CDM",
+    "age": 22,
+    "team": "Tigre"
+  },
+  {
+    "name": "R. Arias",
+    "overall": 66,
+    "potential": 66,
+    "position": "CB",
+    "age": 32,
+    "team": "Tigre"
+  },
+  {
+    "name": "J. Ludueña",
+    "overall": 66,
+    "potential": 73,
+    "position": "CB",
+    "age": 22,
+    "team": "Club Atlético Unión"
+  },
+  {
+    "name": "M. Cáceres",
+    "overall": 66,
+    "potential": 75,
+    "position": "CM, CDM",
+    "age": 22,
+    "team": "Talleres"
+  },
+  {
+    "name": "T. Guiacobini",
+    "overall": 66,
+    "potential": 76,
+    "position": "CDM, CB",
+    "age": 21,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "D. Churín",
+    "overall": 66,
+    "potential": 66,
+    "position": "ST",
+    "age": 35,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "S. Quiroga",
+    "overall": 66,
+    "potential": 66,
+    "position": "CAM, CM",
+    "age": 31,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "S. Moyano",
+    "overall": 66,
+    "potential": 66,
+    "position": "RB, RM",
+    "age": 27,
+    "team": "Central Cordoba SdE"
+  },
+  {
+    "name": "C. Vega",
+    "overall": 66,
+    "potential": 66,
+    "position": "CM, CDM",
+    "age": 31,
+    "team": "Central Cordoba SdE"
+  },
+  {
+    "name": "J. Pignani",
+    "overall": 66,
+    "potential": 73,
+    "position": "CB",
+    "age": 23,
+    "team": "Central Cordoba SdE"
+  },
+  {
+    "name": "R. Barrios",
+    "overall": 66,
+    "potential": 66,
+    "position": "RB, RM",
+    "age": 32,
+    "team": "Barracas Central"
+  },
+  {
+    "name": "N. Capraro",
+    "overall": 66,
+    "potential": 69,
+    "position": "CB",
+    "age": 27,
+    "team": "Barracas Central"
+  },
+  {
+    "name": "C. Paz",
+    "overall": 66,
+    "potential": 66,
+    "position": "CB, RB, CDM",
+    "age": 30,
+    "team": "Deportivo Riestra"
+  },
+  {
+    "name": "N. Watson",
+    "overall": 66,
+    "potential": 69,
+    "position": "CDM, CM, LM",
+    "age": 27,
+    "team": "Deportivo Riestra"
+  },
+  {
+    "name": "O. Gill",
+    "overall": 65,
+    "potential": 71,
+    "position": "GK",
+    "age": 25,
+    "team": "San Lorenzo de Almagro"
+  },
+  {
+    "name": "F. Perruzzi",
+    "overall": 65,
+    "potential": 72,
+    "position": "CDM, CM",
+    "age": 24,
+    "team": "San Lorenzo de Almagro"
+  },
+  {
+    "name": "T. Acosta",
+    "overall": 65,
+    "potential": 74,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "River Plate"
+  },
+  {
+    "name": "A. Obregón",
+    "overall": 65,
+    "potential": 76,
+    "position": "RB, RM",
+    "age": 19,
+    "team": "River Plate"
+  },
+  {
+    "name": "C. Jaime",
+    "overall": 65,
+    "potential": 77,
+    "position": "LW, CM, LM",
+    "age": 18,
+    "team": "River Plate"
+  },
+  {
+    "name": "M. Panaro",
+    "overall": 65,
+    "potential": 74,
+    "position": "LM, RM, RW, LW",
+    "age": 22,
+    "team": "Gimnasia y Esgrima La Plata"
+  },
+  {
+    "name": "M. Seoane",
+    "overall": 65,
+    "potential": 75,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "Gimnasia y Esgrima La Plata"
+  },
+  {
+    "name": "A. Forneris",
+    "overall": 65,
+    "potential": 74,
+    "position": "CDM, CM",
+    "age": 20,
+    "team": "Racing Club"
+  },
+  {
+    "name": "D. Tarzia",
+    "overall": 65,
+    "potential": 72,
+    "position": "LM, LW",
+    "age": 22,
+    "team": "Independiente"
+  },
+  {
+    "name": "J. Blázquez",
+    "overall": 65,
+    "potential": 70,
+    "position": "GK",
+    "age": 24,
+    "team": "Independiente"
+  },
+  {
+    "name": "A. Medina",
+    "overall": 65,
+    "potential": 77,
+    "position": "CDM, CM",
+    "age": 18,
+    "team": "Lanús"
+  },
+  {
+    "name": "M. González",
+    "overall": 65,
+    "potential": 73,
+    "position": "CDM, CM",
+    "age": 21,
+    "team": "Lanús"
+  },
+  {
+    "name": "J. Colmán",
+    "overall": 65,
+    "potential": 65,
+    "position": "LM, CAM, LW",
+    "age": 26,
+    "team": "Newell's Old Boys"
+  },
+  {
+    "name": "B. Cabrera",
+    "overall": 65,
+    "potential": 67,
+    "position": "CB",
+    "age": 28,
+    "team": "Newell's Old Boys"
+  },
+  {
+    "name": "J. Iribarren",
+    "overall": 65,
+    "potential": 72,
+    "position": "RB",
+    "age": 22,
+    "team": "CA Banfield"
+  },
+  {
+    "name": "T. Cervera",
+    "overall": 65,
+    "potential": 71,
+    "position": "ST, LW, LM",
+    "age": 22,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "F. Suárez",
+    "overall": 65,
+    "potential": 65,
+    "position": "ST, CAM",
+    "age": 31,
+    "team": "Instituto Atlético Central Córdoba"
+  },
+  {
+    "name": "M. Acosta",
+    "overall": 65,
+    "potential": 70,
+    "position": "GK",
+    "age": 23,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "A. Osella",
+    "overall": 65,
+    "potential": 66,
+    "position": "RB, CB, RM",
+    "age": 24,
+    "team": "Independiente Rivadavia"
+  },
+  {
+    "name": "B. Dadín",
+    "overall": 65,
+    "potential": 77,
+    "position": "ST",
+    "age": 19,
+    "team": "Independiente Rivadavia"
+  },
+  {
+    "name": "A. Ibacache",
+    "overall": 65,
+    "potential": 65,
+    "position": "LB, LM",
+    "age": 26,
+    "team": "Belgrano de Córdoba"
+  },
+  {
+    "name": "J. Morán",
+    "overall": 65,
+    "potential": 76,
+    "position": "LB, LM, LW",
+    "age": 18,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "F. Gerometta",
+    "overall": 65,
+    "potential": 67,
+    "position": "RB, RM",
+    "age": 25,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "M. Santiago",
+    "overall": 65,
+    "potential": 72,
+    "position": "CAM, CM, RM",
+    "age": 24,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "L. Chávez",
+    "overall": 65,
+    "potential": 68,
+    "position": "RM, ST, RW",
+    "age": 24,
+    "team": "CA Aldosivi"
+  },
+  {
+    "name": "C. Ferreira",
+    "overall": 65,
+    "potential": 72,
+    "position": "CB",
+    "age": 22,
+    "team": "Atlético Tucumán"
+  },
+  {
+    "name": "E. Ham",
+    "overall": 65,
+    "potential": 65,
+    "position": "CM, CAM, CDM",
+    "age": 31,
+    "team": "Atlético Tucumán"
+  },
+  {
+    "name": "T. Durso",
+    "overall": 65,
+    "potential": 68,
+    "position": "GK",
+    "age": 26,
+    "team": "Atlético Tucumán"
+  },
+  {
+    "name": "F. Nicola",
+    "overall": 65,
+    "potential": 71,
+    "position": "LM, CM, LW",
+    "age": 23,
+    "team": "Atlético Tucumán"
+  },
+  {
+    "name": "M. Miranda",
+    "overall": 65,
+    "potential": 70,
+    "position": "CAM, RM, LM, CM",
+    "age": 25,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "T. Escalante",
+    "overall": 65,
+    "potential": 68,
+    "position": "CM, CDM, CAM",
+    "age": 25,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "P. Pizarro",
+    "overall": 65,
+    "potential": 72,
+    "position": "CB, RB",
+    "age": 24,
+    "team": "Huracán"
+  },
+  {
+    "name": "D. Zabala",
+    "overall": 65,
+    "potential": 73,
+    "position": "CB, RB",
+    "age": 22,
+    "team": "Huracán"
+  },
+  {
+    "name": "G. Hachen",
+    "overall": 65,
+    "potential": 65,
+    "position": "CM, CDM",
+    "age": 34,
+    "team": "Club Atlético San Martín"
+  },
+  {
+    "name": "C. Lattanzio",
+    "overall": 65,
+    "potential": 65,
+    "position": "LM, CM, LW",
+    "age": 27,
+    "team": "Club Atlético San Martín"
+  },
+  {
+    "name": "M. Osores",
+    "overall": 65,
+    "potential": 67,
+    "position": "CB",
+    "age": 28,
+    "team": "Club Atlético San Martín"
+  },
+  {
+    "name": "T. Lecanda",
+    "overall": 65,
+    "potential": 74,
+    "position": "CB, RB, CDM",
+    "age": 23,
+    "team": "Tigre"
+  },
+  {
+    "name": "G. Piñeiro",
+    "overall": 65,
+    "potential": 68,
+    "position": "CAM, CM",
+    "age": 24,
+    "team": "Tigre"
+  },
+  {
+    "name": "S. Sánchez",
+    "overall": 65,
+    "potential": 70,
+    "position": "CDM, CM",
+    "age": 23,
+    "team": "Tigre"
+  },
+  {
+    "name": "M. Rodríguez",
+    "overall": 65,
+    "potential": 72,
+    "position": "CB",
+    "age": 22,
+    "team": "Club Atlético Unión"
+  },
+  {
+    "name": "D. Juárez",
+    "overall": 65,
+    "potential": 68,
+    "position": "ST, RM, LM",
+    "age": 23,
+    "team": "Club Atlético Unión"
+  },
+  {
+    "name": "B. Cuello",
+    "overall": 65,
+    "potential": 65,
+    "position": "LM, RM, LW",
+    "age": 27,
+    "team": "Club Atlético Unión"
+  },
+  {
+    "name": "T. González",
+    "overall": 65,
+    "potential": 76,
+    "position": "ST, LM",
+    "age": 22,
+    "team": "Club Atlético Unión"
+  },
+  {
+    "name": "R. Profini",
+    "overall": 65,
+    "potential": 74,
+    "position": "CDM, CB, CM",
+    "age": 21,
+    "team": "Club Atlético Unión"
+  },
+  {
+    "name": "L. Verde",
+    "overall": 65,
+    "potential": 74,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Club Atlético Unión"
+  },
+  {
+    "name": "M. Navarro",
+    "overall": 65,
+    "potential": 68,
+    "position": "LB, LM, CB, CM",
+    "age": 26,
+    "team": "Talleres"
+  },
+  {
+    "name": "J. Ardaiz",
+    "overall": 65,
+    "potential": 66,
+    "position": "ST",
+    "age": 26,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "F. Juárez",
+    "overall": 65,
+    "potential": 68,
+    "position": "CDM, CM",
+    "age": 26,
+    "team": "Central Cordoba SdE"
+  },
+  {
+    "name": "L. Marchi",
+    "overall": 65,
+    "potential": 65,
+    "position": "LB, LM",
+    "age": 28,
+    "team": "Central Cordoba SdE"
+  },
+  {
+    "name": "T. Porra",
+    "overall": 65,
+    "potential": 76,
+    "position": "LM, RM, CM, LB",
+    "age": 21,
+    "team": "Barracas Central"
+  },
+  {
+    "name": "N. Caro Torres",
+    "overall": 65,
+    "potential": 65,
+    "position": "CB",
+    "age": 30,
+    "team": "Deportivo Riestra"
+  },
+  {
+    "name": "I. Perruzzi",
+    "overall": 64,
+    "potential": 80,
+    "position": "CDM, CM",
+    "age": 20,
+    "team": "San Lorenzo de Almagro"
+  },
+  {
+    "name": "F. Flores",
+    "overall": 64,
+    "potential": 73,
+    "position": "CB, RB",
+    "age": 23,
+    "team": "San Lorenzo de Almagro"
+  },
+  {
+    "name": "J. James",
+    "overall": 64,
+    "potential": 71,
+    "position": "CB",
+    "age": 24,
+    "team": "San Lorenzo de Almagro"
+  },
+  {
+    "name": "J. Goyeneche",
+    "overall": 64,
+    "potential": 69,
+    "position": "ST",
+    "age": 24,
+    "team": "San Lorenzo de Almagro"
+  },
+  {
+    "name": "A. de la Cuesta",
+    "overall": 64,
+    "potential": 76,
+    "position": "CDM, CM",
+    "age": 19,
+    "team": "River Plate"
+  },
+  {
+    "name": "J. Freitas",
+    "overall": 64,
+    "potential": 75,
+    "position": "ST",
+    "age": 18,
+    "team": "River Plate"
+  },
+  {
+    "name": "R. Borzone",
+    "overall": 64,
+    "potential": 74,
+    "position": "GK",
+    "age": 20,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "N. Fernández",
+    "overall": 64,
+    "potential": 72,
+    "position": "LB, CB",
+    "age": 23,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "L. Mamut",
+    "overall": 64,
+    "potential": 75,
+    "position": "CM, LM, CAM",
+    "age": 21,
+    "team": "Gimnasia y Esgrima La Plata"
+  },
+  {
+    "name": "F. Prado",
+    "overall": 64,
+    "potential": 71,
+    "position": "LB, CB",
+    "age": 24,
+    "team": "Racing Club"
+  },
+  {
+    "name": "M. Quiroz",
+    "overall": 64,
+    "potential": 69,
+    "position": "CDM, CM",
+    "age": 23,
+    "team": "Racing Club"
+  },
+  {
+    "name": "M. Porcel",
+    "overall": 64,
+    "potential": 78,
+    "position": "LM, LW",
+    "age": 19,
+    "team": "Vélez Sarsfield"
+  },
+  {
+    "name": "R. Márquez",
+    "overall": 64,
+    "potential": 70,
+    "position": "LM, RM, LW",
+    "age": 23,
+    "team": "Independiente"
+  },
+  {
+    "name": "L. Lavagnino",
+    "overall": 64,
+    "potential": 74,
+    "position": "GK",
+    "age": 20,
+    "team": "Independiente"
+  },
+  {
+    "name": "A. Montero",
+    "overall": 64,
+    "potential": 65,
+    "position": "RB, RM",
+    "age": 27,
+    "team": "Newell's Old Boys"
+  },
+  {
+    "name": "F. García",
+    "overall": 64,
+    "potential": 64,
+    "position": "RM, RW",
+    "age": 28,
+    "team": "Newell's Old Boys"
+  },
+  {
+    "name": "S. Daniele",
+    "overall": 64,
+    "potential": 76,
+    "position": "CB",
+    "age": 19,
+    "team": "CA Banfield"
+  },
+  {
+    "name": "A. Módica",
+    "overall": 64,
+    "potential": 71,
+    "position": "ST",
+    "age": 22,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "G. Siri",
+    "overall": 64,
+    "potential": 71,
+    "position": "GK",
+    "age": 22,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "J. Cardozo",
+    "overall": 64,
+    "potential": 72,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "T. Muro",
+    "overall": 64,
+    "potential": 70,
+    "position": "RM, LM, CM, RW",
+    "age": 23,
+    "team": "Independiente Rivadavia"
+  },
+  {
+    "name": "E. Gómez Riga",
+    "overall": 64,
+    "potential": 69,
+    "position": "GK",
+    "age": 23,
+    "team": "Independiente Rivadavia"
+  },
+  {
+    "name": "G. Heredia",
+    "overall": 64,
+    "potential": 76,
+    "position": "RB, CM, RM",
+    "age": 20,
+    "team": "Belgrano de Córdoba"
+  },
+  {
+    "name": "J. Eseiza",
+    "overall": 64,
+    "potential": 73,
+    "position": "LB, LM",
+    "age": 23,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "A. Valverde",
+    "overall": 64,
+    "potential": 73,
+    "position": "CM, CDM",
+    "age": 23,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "M. Morello",
+    "overall": 64,
+    "potential": 70,
+    "position": "CDM, CM",
+    "age": 24,
+    "team": "CA Aldosivi"
+  },
+  {
+    "name": "L. Román",
+    "overall": 64,
+    "potential": 72,
+    "position": "RM, RW",
+    "age": 21,
+    "team": "Atlético Tucumán"
+  },
+  {
+    "name": "M. Duarte",
+    "overall": 64,
+    "potential": 71,
+    "position": "CM, CAM, LM",
+    "age": 23,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "J. Caicedo",
+    "overall": 64,
+    "potential": 64,
+    "position": "ST",
+    "age": 27,
+    "team": "Huracán"
+  },
+  {
+    "name": "F. Toloza",
+    "overall": 64,
+    "potential": 64,
+    "position": "ST",
+    "age": 31,
+    "team": "Club Atlético San Martín"
+  },
+  {
+    "name": "S. Gonzalez",
+    "overall": 64,
+    "potential": 64,
+    "position": "CAM, ST, CM",
+    "age": 33,
+    "team": "Club Atlético San Martín"
+  },
+  {
+    "name": "F. Bonansea",
+    "overall": 64,
+    "potential": 68,
+    "position": "GK",
+    "age": 27,
+    "team": "Club Atlético San Martín"
+  },
+  {
+    "name": "M. Fernández",
+    "overall": 64,
+    "potential": 74,
+    "position": "RM, RW",
+    "age": 20,
+    "team": "Tigre"
+  },
+  {
+    "name": "F. Álvarez",
+    "overall": 64,
+    "potential": 64,
+    "position": "LB, LM",
+    "age": 30,
+    "team": "Tigre"
+  },
+  {
+    "name": "G. Álvez",
+    "overall": 64,
+    "potential": 73,
+    "position": "RM, ST, LW, RW",
+    "age": 21,
+    "team": "Talleres"
+  },
+  {
+    "name": "G. Arturia",
+    "overall": 64,
+    "potential": 69,
+    "position": "CB",
+    "age": 25,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "J. Cabrera",
+    "overall": 64,
+    "potential": 68,
+    "position": "CB",
+    "age": 25,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "U. Delgado",
+    "overall": 64,
+    "potential": 72,
+    "position": "ST",
+    "age": 22,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "S. Morales",
+    "overall": 64,
+    "potential": 70,
+    "position": "CB, LB, CDM",
+    "age": 23,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "P. Monje",
+    "overall": 64,
+    "potential": 64,
+    "position": "CM, CDM",
+    "age": 28,
+    "team": "Deportivo Riestra"
+  },
+  {
+    "name": "F. Mino",
+    "overall": 64,
+    "potential": 66,
+    "position": "CB, RB, CDM",
+    "age": 25,
+    "team": "Deportivo Riestra"
+  },
+  {
+    "name": "P. Ramírez",
+    "overall": 64,
+    "potential": 69,
+    "position": "LB, RM, RB, CM",
+    "age": 25,
+    "team": "Deportivo Riestra"
+  },
+  {
+    "name": "N. Sansotre",
+    "overall": 64,
+    "potential": 64,
+    "position": "RB, CB, LB, RM",
+    "age": 31,
+    "team": "Deportivo Riestra"
+  },
+  {
+    "name": "D. Herrera",
+    "overall": 63,
+    "potential": 75,
+    "position": "CB, RB, CDM",
+    "age": 21,
+    "team": "San Lorenzo de Almagro"
+  },
+  {
+    "name": "T. Rodríguez Pagano",
+    "overall": 63,
+    "potential": 77,
+    "position": "LB",
+    "age": 19,
+    "team": "San Lorenzo de Almagro"
+  },
+  {
+    "name": "U. Giménez",
+    "overall": 63,
+    "potential": 74,
+    "position": "CB",
+    "age": 19,
+    "team": "River Plate"
+  },
+  {
+    "name": "S. Beltrán",
+    "overall": 63,
+    "potential": 73,
+    "position": "GK",
+    "age": 20,
+    "team": "River Plate"
+  },
+  {
+    "name": "C. Rey Domenech",
+    "overall": 63,
+    "potential": 80,
+    "position": "CDM, CM",
+    "age": 19,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "G. Gerzel",
+    "overall": 63,
+    "potential": 64,
+    "position": "LM, LW",
+    "age": 25,
+    "team": "Boca Juniors"
+  },
+  {
+    "name": "J. Zozaya",
+    "overall": 63,
+    "potential": 68,
+    "position": "GK",
+    "age": 23,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "M. Contrera",
+    "overall": 63,
+    "potential": 72,
+    "position": "ST",
+    "age": 20,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "M. Desábato",
+    "overall": 63,
+    "potential": 73,
+    "position": "CB",
+    "age": 20,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "J. Kadijevic",
+    "overall": 63,
+    "potential": 73,
+    "position": "GK",
+    "age": 21,
+    "team": "Gimnasia y Esgrima La Plata"
+  },
+  {
+    "name": "J. Merlo",
+    "overall": 63,
+    "potential": 75,
+    "position": "LW, LM",
+    "age": 19,
+    "team": "Gimnasia y Esgrima La Plata"
+  },
+  {
+    "name": "A. Steimbach",
+    "overall": 63,
+    "potential": 72,
+    "position": "RM, LM, RW",
+    "age": 22,
+    "team": "Gimnasia y Esgrima La Plata"
+  },
+  {
+    "name": "D. Mastrángelo",
+    "overall": 63,
+    "potential": 73,
+    "position": "CB, LM, LW",
+    "age": 22,
+    "team": "Gimnasia y Esgrima La Plata"
+  },
+  {
+    "name": "D. González",
+    "overall": 63,
+    "potential": 73,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "Racing Club"
+  },
+  {
+    "name": "B. Cabrera",
+    "overall": 63,
+    "potential": 70,
+    "position": "ST, RM",
+    "age": 22,
+    "team": "Lanús"
+  },
+  {
+    "name": "L. Regiardo",
+    "overall": 63,
+    "potential": 80,
+    "position": "CM, CDM",
+    "age": 18,
+    "team": "Newell's Old Boys"
+  },
+  {
+    "name": "L. Gomez",
+    "overall": 63,
+    "potential": 72,
+    "position": "CAM, RM, CM",
+    "age": 20,
+    "team": "CA Banfield"
+  },
+  {
+    "name": "F. Medina",
+    "overall": 63,
+    "potential": 76,
+    "position": "RW, RM",
+    "age": 21,
+    "team": "CA Banfield"
+  },
+  {
+    "name": "L. Piñero",
+    "overall": 63,
+    "potential": 77,
+    "position": "RM, RW",
+    "age": 17,
+    "team": "CA Banfield"
+  },
+  {
+    "name": "B. Oviedo",
+    "overall": 63,
+    "potential": 75,
+    "position": "CB, RB",
+    "age": 20,
+    "team": "CA Banfield"
+  },
+  {
+    "name": "F. Lo Celso",
+    "overall": 63,
+    "potential": 64,
+    "position": "LM, CM, CAM, LW",
+    "age": 25,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "M. Acosta",
+    "overall": 63,
+    "potential": 64,
+    "position": "CM, RM, CDM",
+    "age": 24,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "O. Garrido",
+    "overall": 63,
+    "potential": 63,
+    "position": "CM, RB, RM, CDM",
+    "age": 27,
+    "team": "Instituto Atlético Central Córdoba"
+  },
+  {
+    "name": "R. Riquelme",
+    "overall": 63,
+    "potential": 69,
+    "position": "CB",
+    "age": 23,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "J. Velázquez",
+    "overall": 63,
+    "potential": 72,
+    "position": "LM, LB, CM",
+    "age": 20,
+    "team": "Belgrano de Córdoba"
+  },
+  {
+    "name": "M. Vicentini",
+    "overall": 63,
+    "potential": 63,
+    "position": "GK",
+    "age": 34,
+    "team": "Belgrano de Córdoba"
+  },
+  {
+    "name": "T. Castro",
+    "overall": 63,
+    "potential": 72,
+    "position": "CM, RM, CDM",
+    "age": 22,
+    "team": "Belgrano de Córdoba"
+  },
+  {
+    "name": "B. Orosco",
+    "overall": 63,
+    "potential": 64,
+    "position": "CAM, ST, CM",
+    "age": 27,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "F. De La Vega",
+    "overall": 63,
+    "potential": 74,
+    "position": "ST",
+    "age": 22,
+    "team": "CA Aldosivi"
+  },
+  {
+    "name": "M. Brondo",
+    "overall": 63,
+    "potential": 69,
+    "position": "ST",
+    "age": 23,
+    "team": "Atlético Tucumán"
+  },
+  {
+    "name": "A. Portillo",
+    "overall": 63,
+    "potential": 66,
+    "position": "RB, RM, RW",
+    "age": 24,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "L. Lescano",
+    "overall": 63,
+    "potential": 72,
+    "position": "LB",
+    "age": 22,
+    "team": "Huracán"
+  },
+  {
+    "name": "M. Pérez",
+    "overall": 63,
+    "potential": 70,
+    "position": "ST",
+    "age": 24,
+    "team": "Huracán"
+  },
+  {
+    "name": "E. Luna",
+    "overall": 63,
+    "potential": 71,
+    "position": "ST, LW, RW",
+    "age": 23,
+    "team": "Huracán"
+  },
+  {
+    "name": "N. Funez",
+    "overall": 63,
+    "potential": 68,
+    "position": "ST",
+    "age": 24,
+    "team": "Club Atlético San Martín"
+  },
+  {
+    "name": "S. Jaurena",
+    "overall": 63,
+    "potential": 66,
+    "position": "CM, CAM, CDM",
+    "age": 25,
+    "team": "Club Atlético San Martín"
+  },
+  {
+    "name": "G. Rossi",
+    "overall": 63,
+    "potential": 72,
+    "position": "ST",
+    "age": 22,
+    "team": "Club Atlético San Martín"
+  },
+  {
+    "name": "V. Moreno",
+    "overall": 63,
+    "potential": 70,
+    "position": "LB, RB, LM",
+    "age": 22,
+    "team": "Tigre"
+  },
+  {
+    "name": "A. Colazo",
+    "overall": 63,
+    "potential": 65,
+    "position": "ST, RW, RM",
+    "age": 24,
+    "team": "Club Atlético Unión"
+  },
+  {
+    "name": "L. Meuli",
+    "overall": 63,
+    "potential": 69,
+    "position": "GK",
+    "age": 24,
+    "team": "Club Atlético Unión"
+  },
+  {
+    "name": "A. Alonso",
+    "overall": 63,
+    "potential": 66,
+    "position": "LM, LW",
+    "age": 24,
+    "team": "Platense"
+  },
+  {
+    "name": "B. Bosch",
+    "overall": 63,
+    "potential": 73,
+    "position": "RM, RW",
+    "age": 20,
+    "team": "Platense"
+  },
+  {
+    "name": "O. Gimenez",
+    "overall": 63,
+    "potential": 82,
+    "position": "CAM, RM, LM, CM",
+    "age": 18,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "M. Mónaco",
+    "overall": 63,
+    "potential": 70,
+    "position": "RM, CM, RW",
+    "age": 23,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "T. Ayala",
+    "overall": 63,
+    "potential": 69,
+    "position": "GK",
+    "age": 23,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "J. Contrera",
+    "overall": 63,
+    "potential": 72,
+    "position": "RM, CM, LM, RB",
+    "age": 22,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "L. Varaldo",
+    "overall": 63,
+    "potential": 72,
+    "position": "ST, CAM",
+    "age": 23,
+    "team": "Central Cordoba SdE"
+  },
+  {
+    "name": "A. Segovia",
+    "overall": 63,
+    "potential": 71,
+    "position": "RM, RW, CAM",
+    "age": 21,
+    "team": "Central Cordoba SdE"
+  },
+  {
+    "name": "F. Martínez",
+    "overall": 63,
+    "potential": 68,
+    "position": "RB, RM",
+    "age": 24,
+    "team": "Central Cordoba SdE"
+  },
+  {
+    "name": "A. Corveto",
+    "overall": 63,
+    "potential": 63,
+    "position": "GK",
+    "age": 29,
+    "team": "Barracas Central"
+  },
+  {
+    "name": "R. Sayavedra",
+    "overall": 63,
+    "potential": 63,
+    "position": "LB, LM, LW",
+    "age": 29,
+    "team": "Deportivo Riestra"
+  },
+  {
+    "name": "M. Bracamonte",
+    "overall": 63,
+    "potential": 65,
+    "position": "RB, LB, RM",
+    "age": 26,
+    "team": "Deportivo Riestra"
+  },
+  {
+    "name": "A. Alonso",
+    "overall": 63,
+    "potential": 64,
+    "position": "ST, CM, LM",
+    "age": 27,
+    "team": "Deportivo Riestra"
+  },
+  {
+    "name": "F. López",
+    "overall": 62,
+    "potential": 71,
+    "position": "RB",
+    "age": 22,
+    "team": "San Lorenzo de Almagro"
+  },
+  {
+    "name": "V. Escalante",
+    "overall": 62,
+    "potential": 75,
+    "position": "CAM, CM",
+    "age": 20,
+    "team": "San Lorenzo de Almagro"
+  },
+  {
+    "name": "E. Herrera",
+    "overall": 62,
+    "potential": 71,
+    "position": "RB, CB, RM",
+    "age": 22,
+    "team": "San Lorenzo de Almagro"
+  },
+  {
+    "name": "G. Trindade",
+    "overall": 62,
+    "potential": 70,
+    "position": "LB, LM",
+    "age": 21,
+    "team": "River Plate"
+  },
+  {
+    "name": "J. Pereyra",
+    "overall": 62,
+    "potential": 71,
+    "position": "LB",
+    "age": 20,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "A. Atum",
+    "overall": 62,
+    "potential": 73,
+    "position": "RM, RW",
+    "age": 19,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "J. Cortazzo",
+    "overall": 62,
+    "potential": 75,
+    "position": "CB",
+    "age": 19,
+    "team": "Gimnasia y Esgrima La Plata"
+  },
+  {
+    "name": "T. Andrada",
+    "overall": 62,
+    "potential": 75,
+    "position": "CAM, CM",
+    "age": 18,
+    "team": "Vélez Sarsfield"
+  },
+  {
+    "name": "N. Goitea",
+    "overall": 62,
+    "potential": 64,
+    "position": "CB",
+    "age": 28,
+    "team": "Newell's Old Boys"
+  },
+  {
+    "name": "E. Ocampo",
+    "overall": 62,
+    "potential": 75,
+    "position": "RM, RB",
+    "age": 21,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "U. Ciccioli",
+    "overall": 62,
+    "potential": 69,
+    "position": "RB",
+    "age": 21,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "F. Oviedo",
+    "overall": 62,
+    "potential": 70,
+    "position": "ST, RM, RW",
+    "age": 21,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "M. Gallardo",
+    "overall": 62,
+    "potential": 71,
+    "position": "CAM, CM",
+    "age": 21,
+    "team": "Instituto Atlético Central Córdoba"
+  },
+  {
+    "name": "M. Romero",
+    "overall": 62,
+    "potential": 69,
+    "position": "ST, RW, RM",
+    "age": 24,
+    "team": "Instituto Atlético Central Córdoba"
+  },
+  {
+    "name": "L. Gómez",
+    "overall": 62,
+    "potential": 70,
+    "position": "CM, LM, CDM",
+    "age": 21,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "K. Coronel",
+    "overall": 62,
+    "potential": 74,
+    "position": "RB, RM",
+    "age": 20,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "D. Porcel",
+    "overall": 62,
+    "potential": 72,
+    "position": "ST",
+    "age": 20,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "L. Quiroz",
+    "overall": 62,
+    "potential": 73,
+    "position": "CB",
+    "age": 21,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "A. Villalobos",
+    "overall": 62,
+    "potential": 73,
+    "position": "CM, CDM",
+    "age": 22,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "L. Pascual",
+    "overall": 62,
+    "potential": 73,
+    "position": "CM, CAM, LM, CDM",
+    "age": 21,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "S. Moya",
+    "overall": 62,
+    "potential": 75,
+    "position": "CB",
+    "age": 22,
+    "team": "CA Aldosivi"
+  },
+  {
+    "name": "E. Rodríguez",
+    "overall": 62,
+    "potential": 70,
+    "position": "ST, LW, RW",
+    "age": 21,
+    "team": "CA Aldosivi"
+  },
+  {
+    "name": "L. Falasco",
+    "overall": 62,
+    "potential": 70,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "CA Aldosivi"
+  },
+  {
+    "name": "T. Sives",
+    "overall": 62,
+    "potential": 70,
+    "position": "CAM, RM, LM, CM",
+    "age": 21,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "S. Luján",
+    "overall": 62,
+    "potential": 68,
+    "position": "RM, LM, RW",
+    "age": 23,
+    "team": "Huracán"
+  },
+  {
+    "name": "L. Pérez",
+    "overall": 62,
+    "potential": 76,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Huracán"
+  },
+  {
+    "name": "D. Mercado",
+    "overall": 62,
+    "potential": 62,
+    "position": "CDM, CM",
+    "age": 28,
+    "team": "Club Atlético San Martín"
+  },
+  {
+    "name": "Á. Marchese",
+    "overall": 62,
+    "potential": 72,
+    "position": "LB",
+    "age": 20,
+    "team": "Tigre"
+  },
+  {
+    "name": "N. Palavecino",
+    "overall": 62,
+    "potential": 70,
+    "position": "LM, CAM, LW",
+    "age": 22,
+    "team": "Club Atlético Unión"
+  },
+  {
+    "name": "Rick",
+    "overall": 62,
+    "potential": 63,
+    "position": "LW, RW, LM",
+    "age": 25,
+    "team": "Talleres"
+  },
+  {
+    "name": "T. Silva",
+    "overall": 62,
+    "potential": 69,
+    "position": "LB, LM",
+    "age": 22,
+    "team": "Platense"
+  },
+  {
+    "name": "G. Valdivia",
+    "overall": 62,
+    "potential": 65,
+    "position": "LM, LB, LW",
+    "age": 24,
+    "team": "Platense"
+  },
+  {
+    "name": "S. Salle",
+    "overall": 62,
+    "potential": 75,
+    "position": "RB, RM",
+    "age": 21,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "A. Quiroga",
+    "overall": 62,
+    "potential": 69,
+    "position": "CB, LB",
+    "age": 23,
+    "team": "Central Cordoba SdE"
+  },
+  {
+    "name": "K. Jappert",
+    "overall": 62,
+    "potential": 77,
+    "position": "CB, RB, CDM",
+    "age": 21,
+    "team": "Barracas Central"
+  },
+  {
+    "name": "M. Puig",
+    "overall": 62,
+    "potential": 65,
+    "position": "RM, CM, CDM, RW",
+    "age": 24,
+    "team": "Barracas Central"
+  },
+  {
+    "name": "S. Portillo",
+    "overall": 62,
+    "potential": 62,
+    "position": "ST",
+    "age": 31,
+    "team": "Deportivo Riestra"
+  },
+  {
+    "name": "Y. Murillo",
+    "overall": 62,
+    "potential": 62,
+    "position": "CB, RB",
+    "age": 31,
+    "team": "Deportivo Riestra"
+  },
+  {
+    "name": "E. Tovo",
+    "overall": 62,
+    "potential": 62,
+    "position": "CB",
+    "age": 33,
+    "team": "Deportivo Riestra"
+  },
+  {
+    "name": "G. Obredor",
+    "overall": 62,
+    "potential": 62,
+    "position": "ST, RW, LW",
+    "age": 28,
+    "team": "Deportivo Riestra"
+  },
+  {
+    "name": "J. Randazzo",
+    "overall": 62,
+    "potential": 62,
+    "position": "CB",
+    "age": 30,
+    "team": "Deportivo Riestra"
+  },
+  {
+    "name": "R. Gallo",
+    "overall": 62,
+    "potential": 67,
+    "position": "LB, CB, LM",
+    "age": 24,
+    "team": "Deportivo Riestra"
+  },
+  {
+    "name": "A. Ladstatter",
+    "overall": 61,
+    "potential": 78,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "San Lorenzo de Almagro"
+  },
+  {
+    "name": "G. Reyna",
+    "overall": 61,
+    "potential": 75,
+    "position": "CAM, LM, RM, CM",
+    "age": 18,
+    "team": "Racing Club"
+  },
+  {
+    "name": "E. Cardozo",
+    "overall": 61,
+    "potential": 66,
+    "position": "CAM, CM",
+    "age": 24,
+    "team": "Racing Club"
+  },
+  {
+    "name": "M. Arias",
+    "overall": 61,
+    "potential": 75,
+    "position": "ST",
+    "age": 18,
+    "team": "Vélez Sarsfield"
+  },
+  {
+    "name": "J. Giménez",
+    "overall": 61,
+    "potential": 73,
+    "position": "CB, RB, CDM",
+    "age": 19,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "A. Bravo",
+    "overall": 61,
+    "potential": 70,
+    "position": "CB, LB",
+    "age": 24,
+    "team": "Instituto Atlético Central Córdoba"
+  },
+  {
+    "name": "J. Lázaro",
+    "overall": 61,
+    "potential": 73,
+    "position": "CAM, RM, RW, CM",
+    "age": 21,
+    "team": "Instituto Atlético Central Córdoba"
+  },
+  {
+    "name": "G. Requena",
+    "overall": 61,
+    "potential": 68,
+    "position": "CB",
+    "age": 22,
+    "team": "Instituto Atlético Central Córdoba"
+  },
+  {
+    "name": "N. Arena",
+    "overall": 61,
+    "potential": 64,
+    "position": "CB, RB",
+    "age": 27,
+    "team": "Independiente Rivadavia"
+  },
+  {
+    "name": "S. Muñoz",
+    "overall": 61,
+    "potential": 61,
+    "position": "RM, LM, RW",
+    "age": 25,
+    "team": "Independiente Rivadavia"
+  },
+  {
+    "name": "S. Martínez",
+    "overall": 61,
+    "potential": 72,
+    "position": "CAM, CM",
+    "age": 21,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "N. Laméndola",
+    "overall": 61,
+    "potential": 61,
+    "position": "LM, RM, LW",
+    "age": 26,
+    "team": "Atlético Tucumán"
+  },
+  {
+    "name": "M. Brandán",
+    "overall": 61,
+    "potential": 62,
+    "position": "RB",
+    "age": 24,
+    "team": "Atlético Tucumán"
+  },
+  {
+    "name": "A. Hausch",
+    "overall": 61,
+    "potential": 71,
+    "position": "ST, LW",
+    "age": 22,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "M. Sosa",
+    "overall": 61,
+    "potential": 67,
+    "position": "LM, RM, LW",
+    "age": 23,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "B. Schamine",
+    "overall": 61,
+    "potential": 72,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "T. Peralta",
+    "overall": 61,
+    "potential": 79,
+    "position": "CAM, CM",
+    "age": 16,
+    "team": "Huracán"
+  },
+  {
+    "name": "L. Álvarez",
+    "overall": 61,
+    "potential": 61,
+    "position": "LB, LM",
+    "age": 29,
+    "team": "Club Atlético San Martín"
+  },
+  {
+    "name": "J. Marchio",
+    "overall": 61,
+    "potential": 68,
+    "position": "CB",
+    "age": 24,
+    "team": "Club Atlético San Martín"
+  },
+  {
+    "name": "J. Villalba",
+    "overall": 61,
+    "potential": 76,
+    "position": "CB",
+    "age": 19,
+    "team": "Tigre"
+  },
+  {
+    "name": "T. Fernández",
+    "overall": 61,
+    "potential": 69,
+    "position": "CB",
+    "age": 21,
+    "team": "Tigre"
+  },
+  {
+    "name": "D. Díaz",
+    "overall": 61,
+    "potential": 68,
+    "position": "ST",
+    "age": 23,
+    "team": "Club Atlético Unión"
+  },
+  {
+    "name": "E. Álvarez",
+    "overall": 61,
+    "potential": 66,
+    "position": "RB, LB",
+    "age": 24,
+    "team": "Club Atlético Unión"
+  },
+  {
+    "name": "M. Gómez",
+    "overall": 61,
+    "potential": 76,
+    "position": "CM, CDM, RB",
+    "age": 19,
+    "team": "Talleres"
+  },
+  {
+    "name": "F. Russo",
+    "overall": 61,
+    "potential": 62,
+    "position": "RM, RW",
+    "age": 24,
+    "team": "Platense"
+  },
+  {
+    "name": "J. Godoy",
+    "overall": 61,
+    "potential": 73,
+    "position": "LB, CB",
+    "age": 20,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "A. González",
+    "overall": 61,
+    "potential": 75,
+    "position": "ST",
+    "age": 20,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "L. Bursich",
+    "overall": 61,
+    "potential": 69,
+    "position": "GK",
+    "age": 22,
+    "team": "Central Cordoba SdE"
+  },
+  {
+    "name": "D. Barrera",
+    "overall": 61,
+    "potential": 72,
+    "position": "RM, RW",
+    "age": 21,
+    "team": "Central Cordoba SdE"
+  },
+  {
+    "name": "J. Flores",
+    "overall": 61,
+    "potential": 73,
+    "position": "LW, LM",
+    "age": 20,
+    "team": "Central Cordoba SdE"
+  },
+  {
+    "name": "R. González",
+    "overall": 61,
+    "potential": 67,
+    "position": "ST",
+    "age": 23,
+    "team": "Deportivo Riestra"
+  },
+  {
+    "name": "L. Landriel",
+    "overall": 61,
+    "potential": 61,
+    "position": "CM, RM, CDM",
+    "age": 28,
+    "team": "Deportivo Riestra"
+  },
+  {
+    "name": "F. Gulli",
+    "overall": 60,
+    "potential": 75,
+    "position": "CAM, CM",
+    "age": 19,
+    "team": "San Lorenzo de Almagro"
+  },
+  {
+    "name": "M. Zelaya",
+    "overall": 60,
+    "potential": 62,
+    "position": "CB",
+    "age": 28,
+    "team": "San Lorenzo de Almagro"
+  },
+  {
+    "name": "M. Hernandez",
+    "overall": 60,
+    "potential": 74,
+    "position": "ST",
+    "age": 20,
+    "team": "San Lorenzo de Almagro"
+  },
+  {
+    "name": "N. Arias",
+    "overall": 60,
+    "potential": 73,
+    "position": "RB, RM",
+    "age": 20,
+    "team": "San Lorenzo de Almagro"
+  },
+  {
+    "name": "E. Dall'Aglio",
+    "overall": 60,
+    "potential": 74,
+    "position": "CB",
+    "age": 20,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "J. de Asís",
+    "overall": 60,
+    "potential": 74,
+    "position": "ST",
+    "age": 19,
+    "team": "Gimnasia y Esgrima La Plata"
+  },
+  {
+    "name": "Á. Verón",
+    "overall": 60,
+    "potential": 78,
+    "position": "LM, RM, LW",
+    "age": 16,
+    "team": "Vélez Sarsfield"
+  },
+  {
+    "name": "E. Taborda",
+    "overall": 60,
+    "potential": 70,
+    "position": "LW, LM",
+    "age": 20,
+    "team": "Independiente"
+  },
+  {
+    "name": "O. Ontivero",
+    "overall": 60,
+    "potential": 72,
+    "position": "LB",
+    "age": 19,
+    "team": "Lanús"
+  },
+  {
+    "name": "J. Reinatti",
+    "overall": 60,
+    "potential": 70,
+    "position": "GK",
+    "age": 21,
+    "team": "Newell's Old Boys"
+  },
+  {
+    "name": "L. Palavecino",
+    "overall": 60,
+    "potential": 68,
+    "position": "CDM, CM",
+    "age": 21,
+    "team": "CA Banfield"
+  },
+  {
+    "name": "S. Beltrán",
+    "overall": 60,
+    "potential": 68,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "D. Fernández",
+    "overall": 60,
+    "potential": 67,
+    "position": "GK",
+    "age": 22,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "G. Cantizano",
+    "overall": 60,
+    "potential": 74,
+    "position": "CAM, CM",
+    "age": 18,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "L. Klimowicz",
+    "overall": 60,
+    "potential": 74,
+    "position": "ST",
+    "age": 21,
+    "team": "Instituto Atlético Central Córdoba"
+  },
+  {
+    "name": "E. Sittaro",
+    "overall": 60,
+    "potential": 64,
+    "position": "GK",
+    "age": 25,
+    "team": "Instituto Atlético Central Córdoba"
+  },
+  {
+    "name": "D. Crego",
+    "overall": 60,
+    "potential": 60,
+    "position": "LW, LM",
+    "age": 28,
+    "team": "Independiente Rivadavia"
+  },
+  {
+    "name": "J. Lucco",
+    "overall": 60,
+    "potential": 75,
+    "position": "CAM, ST, LM, CM",
+    "age": 19,
+    "team": "Belgrano de Córdoba"
+  },
+  {
+    "name": "J. Mavilla",
+    "overall": 60,
+    "potential": 64,
+    "position": "CAM, LM, CM",
+    "age": 25,
+    "team": "Belgrano de Córdoba"
+  },
+  {
+    "name": "J. Strumia",
+    "overall": 60,
+    "potential": 65,
+    "position": "GK",
+    "age": 25,
+    "team": "Belgrano de Córdoba"
+  },
+  {
+    "name": "I. Galván",
+    "overall": 60,
+    "potential": 66,
+    "position": "LB, LM",
+    "age": 22,
+    "team": "Atlético Tucumán"
+  },
+  {
+    "name": "S. Sosa",
+    "overall": 60,
+    "potential": 75,
+    "position": "CDM, CM",
+    "age": 20,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "J. Moreno",
+    "overall": 60,
+    "potential": 68,
+    "position": "CAM, CM",
+    "age": 20,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "S. Barrera",
+    "overall": 60,
+    "potential": 69,
+    "position": "ST",
+    "age": 22,
+    "team": "Club Atlético San Martín"
+  },
+  {
+    "name": "N. Pelaitay",
+    "overall": 60,
+    "potential": 60,
+    "position": "CDM, CM",
+    "age": 32,
+    "team": "Club Atlético San Martín"
+  },
+  {
+    "name": "M. Velazco",
+    "overall": 60,
+    "potential": 61,
+    "position": "GK",
+    "age": 30,
+    "team": "Club Atlético San Martín"
+  },
+  {
+    "name": "L. Monje",
+    "overall": 60,
+    "potential": 68,
+    "position": "RM, RW",
+    "age": 23,
+    "team": "Club Atlético San Martín"
+  },
+  {
+    "name": "F. Gomes Gerth",
+    "overall": 60,
+    "potential": 74,
+    "position": "GK",
+    "age": 21,
+    "team": "Club Atlético Unión"
+  },
+  {
+    "name": "L. Martínez",
+    "overall": 60,
+    "potential": 70,
+    "position": "GK",
+    "age": 23,
+    "team": "Talleres"
+  },
+  {
+    "name": "S. Fernández",
+    "overall": 60,
+    "potential": 77,
+    "position": "CB",
+    "age": 20,
+    "team": "Talleres"
+  },
+  {
+    "name": "S. Dalmasso",
+    "overall": 60,
+    "potential": 68,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "Platense"
+  },
+  {
+    "name": "M. Mendía",
+    "overall": 60,
+    "potential": 68,
+    "position": "CB",
+    "age": 21,
+    "team": "Platense"
+  },
+  {
+    "name": "F. Bussio",
+    "overall": 60,
+    "potential": 68,
+    "position": "CDM, CM",
+    "age": 21,
+    "team": "Platense"
+  },
+  {
+    "name": "J. Vallejos",
+    "overall": 60,
+    "potential": 67,
+    "position": "RB, RM",
+    "age": 22,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "M. Rosales",
+    "overall": 60,
+    "potential": 70,
+    "position": "RM, RB, RW",
+    "age": 20,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "A. Seyral",
+    "overall": 60,
+    "potential": 70,
+    "position": "CB",
+    "age": 20,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "B. Márquez",
+    "overall": 60,
+    "potential": 72,
+    "position": "ST",
+    "age": 20,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "M. Ramírez",
+    "overall": 60,
+    "potential": 60,
+    "position": "CDM, CM",
+    "age": 30,
+    "team": "Deportivo Riestra"
+  },
+  {
+    "name": "A. Dramisino",
+    "overall": 60,
+    "potential": 63,
+    "position": "RM, RW",
+    "age": 25,
+    "team": "Deportivo Riestra"
+  },
+  {
+    "name": "M. Clemente",
+    "overall": 59,
+    "potential": 69,
+    "position": "GK",
+    "age": 23,
+    "team": "San Lorenzo de Almagro"
+  },
+  {
+    "name": "F. Lorenzon",
+    "overall": 59,
+    "potential": 64,
+    "position": "CB",
+    "age": 24,
+    "team": "San Lorenzo de Almagro"
+  },
+  {
+    "name": "V. Acuña",
+    "overall": 59,
+    "potential": 73,
+    "position": "CAM, CM, CDM",
+    "age": 19,
+    "team": "Newell's Old Boys"
+  },
+  {
+    "name": "P. Altamirano",
+    "overall": 59,
+    "potential": 69,
+    "position": "CAM, CM",
+    "age": 20,
+    "team": "Newell's Old Boys"
+  },
+  {
+    "name": "A. Navarro",
+    "overall": 59,
+    "potential": 76,
+    "position": "ST",
+    "age": 18,
+    "team": "Newell's Old Boys"
+  },
+  {
+    "name": "D. Sotelo",
+    "overall": 59,
+    "potential": 70,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "Newell's Old Boys"
+  },
+  {
+    "name": "N. Claa",
+    "overall": 59,
+    "potential": 71,
+    "position": "GK",
+    "age": 20,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "C. Alessandria",
+    "overall": 59,
+    "potential": 63,
+    "position": "CB",
+    "age": 25,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "P. Albornoz",
+    "overall": 59,
+    "potential": 62,
+    "position": "GK",
+    "age": 25,
+    "team": "Atlético Tucumán"
+  },
+  {
+    "name": "F. Minerva",
+    "overall": 59,
+    "potential": 71,
+    "position": "LM, LW",
+    "age": 19,
+    "team": "Platense"
+  },
+  {
+    "name": "A. Molina",
+    "overall": 59,
+    "potential": 71,
+    "position": "ST",
+    "age": 19,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "J. Vallejos",
+    "overall": 59,
+    "potential": 66,
+    "position": "GK",
+    "age": 22,
+    "team": "Central Cordoba SdE"
+  },
+  {
+    "name": "J. Rattalino",
+    "overall": 58,
+    "potential": 70,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "San Lorenzo de Almagro"
+  },
+  {
+    "name": "D. Godoy",
+    "overall": 58,
+    "potential": 70,
+    "position": "ST",
+    "age": 19,
+    "team": "Vélez Sarsfield"
+  },
+  {
+    "name": "J. de Irastorza",
+    "overall": 58,
+    "potential": 68,
+    "position": "LB",
+    "age": 19,
+    "team": "Independiente"
+  },
+  {
+    "name": "G. Chiaverano",
+    "overall": 58,
+    "potential": 70,
+    "position": "RM, ST, RW",
+    "age": 20,
+    "team": "Newell's Old Boys"
+  },
+  {
+    "name": "K. Gutiérrez",
+    "overall": 58,
+    "potential": 70,
+    "position": "CM, CDM",
+    "age": 19,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "G. Abregú",
+    "overall": 58,
+    "potential": 58,
+    "position": "CM, CB, LB, CDM",
+    "age": 27,
+    "team": "Instituto Atlético Central Córdoba"
+  },
+  {
+    "name": "R. Hernandes",
+    "overall": 58,
+    "potential": 72,
+    "position": "CAM, CM",
+    "age": 20,
+    "team": "Belgrano de Córdoba"
+  },
+  {
+    "name": "L. Gutiérrez",
+    "overall": 58,
+    "potential": 69,
+    "position": "CAM, CM",
+    "age": 19,
+    "team": "Belgrano de Córdoba"
+  },
+  {
+    "name": "G. Tomasetti",
+    "overall": 58,
+    "potential": 65,
+    "position": "CDM, CM",
+    "age": 25,
+    "team": "Belgrano de Córdoba"
+  },
+  {
+    "name": "E. Quinteros",
+    "overall": 58,
+    "potential": 65,
+    "position": "CDM, CM",
+    "age": 25,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "A. Villarreal",
+    "overall": 58,
+    "potential": 71,
+    "position": "ST",
+    "age": 19,
+    "team": "CA Aldosivi"
+  },
+  {
+    "name": "F. Laurelli",
+    "overall": 58,
+    "potential": 66,
+    "position": "CB",
+    "age": 20,
+    "team": "CA Aldosivi"
+  },
+  {
+    "name": "L. Vallejo",
+    "overall": 58,
+    "potential": 66,
+    "position": "CB",
+    "age": 21,
+    "team": "Atlético Tucumán"
+  },
+  {
+    "name": "N. Roselli",
+    "overall": 58,
+    "potential": 71,
+    "position": "CB",
+    "age": 18,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "N. Durán",
+    "overall": 58,
+    "potential": 72,
+    "position": "GK",
+    "age": 21,
+    "team": "Huracán"
+  },
+  {
+    "name": "L. Acosta",
+    "overall": 58,
+    "potential": 73,
+    "position": "CAM, CM",
+    "age": 20,
+    "team": "Club Atlético San Martín"
+  },
+  {
+    "name": "G. Lucero",
+    "overall": 58,
+    "potential": 68,
+    "position": "LB",
+    "age": 21,
+    "team": "Club Atlético San Martín"
+  },
+  {
+    "name": "L. Fuster",
+    "overall": 58,
+    "potential": 72,
+    "position": "GK",
+    "age": 18,
+    "team": "Tigre"
+  },
+  {
+    "name": "C. Ingenthron",
+    "overall": 58,
+    "potential": 74,
+    "position": "LB",
+    "age": 17,
+    "team": "Platense"
+  },
+  {
+    "name": "Y. Casermeiro",
+    "overall": 58,
+    "potential": 65,
+    "position": "CB",
+    "age": 23,
+    "team": "Central Cordoba SdE"
+  },
+  {
+    "name": "B. Gerez",
+    "overall": 58,
+    "potential": 69,
+    "position": "ST",
+    "age": 18,
+    "team": "Central Cordoba SdE"
+  },
+  {
+    "name": "M. Pérez Curci",
+    "overall": 57,
+    "potential": 69,
+    "position": "CDM, CM",
+    "age": 19,
+    "team": "Independiente"
+  },
+  {
+    "name": "M. Gerez",
+    "overall": 57,
+    "potential": 69,
+    "position": "CDM, CM",
+    "age": 19,
+    "team": "Lanús"
+  },
+  {
+    "name": "S. Segovia",
+    "overall": 57,
+    "potential": 71,
+    "position": "CAM, CM",
+    "age": 18,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "I. Ovando",
+    "overall": 57,
+    "potential": 71,
+    "position": "CB",
+    "age": 18,
+    "team": "Rosario Central"
+  },
+  {
+    "name": "S. Cena",
+    "overall": 57,
+    "potential": 66,
+    "position": "CB",
+    "age": 20,
+    "team": "Independiente Rivadavia"
+  },
+  {
+    "name": "L. Godoy",
+    "overall": 57,
+    "potential": 64,
+    "position": "CM, CAM, CDM",
+    "age": 22,
+    "team": "Atlético Tucumán"
+  },
+  {
+    "name": "M. Cocca",
+    "overall": 57,
+    "potential": 61,
+    "position": "CB",
+    "age": 22,
+    "team": "Club Atlético San Martín"
+  },
+  {
+    "name": "F. Murillo",
+    "overall": 57,
+    "potential": 57,
+    "position": "RB",
+    "age": 28,
+    "team": "Club Atlético San Martín"
+  },
+  {
+    "name": "L. Bernabéu",
+    "overall": 57,
+    "potential": 65,
+    "position": "CB",
+    "age": 21,
+    "team": "Central Cordoba SdE"
+  },
+  {
+    "name": "G. Escudero",
+    "overall": 56,
+    "potential": 73,
+    "position": "CB",
+    "age": 18,
+    "team": "Racing Club"
+  },
+  {
+    "name": "F. Carrizo",
+    "overall": 56,
+    "potential": 70,
+    "position": "CAM, CM",
+    "age": 18,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "F. Jainikoski",
+    "overall": 56,
+    "potential": 71,
+    "position": "ST",
+    "age": 17,
+    "team": "Argentinos Juniors"
+  },
+  {
+    "name": "S. Lucero",
+    "overall": 56,
+    "potential": 72,
+    "position": "CB",
+    "age": 19,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "N. Iachetti",
+    "overall": 56,
+    "potential": 59,
+    "position": "CAM, CM",
+    "age": 25,
+    "team": "Club Atlético San Martín"
+  },
+  {
+    "name": "I. Guaraz",
+    "overall": 56,
+    "potential": 69,
+    "position": "ST, CM",
+    "age": 20,
+    "team": "Barracas Central"
+  },
+  {
+    "name": "T. Lavezzi",
+    "overall": 56,
+    "potential": 64,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Barracas Central"
+  },
+  {
+    "name": "B. Salinardi",
+    "overall": 55,
+    "potential": 77,
+    "position": "ST",
+    "age": 18,
+    "team": "San Lorenzo de Almagro"
+  },
+  {
+    "name": "L. Albarracin",
+    "overall": 55,
+    "potential": 75,
+    "position": "LW, RW, LM",
+    "age": 18,
+    "team": "Instituto Atlético Central Córdoba"
+  },
+  {
+    "name": "L. Mora",
+    "overall": 55,
+    "potential": 64,
+    "position": "CDM, CM",
+    "age": 20,
+    "team": "Huracán"
+  },
+  {
+    "name": "M. Ríos",
+    "overall": 55,
+    "potential": 67,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "Huracán"
+  },
+  {
+    "name": "B. Juncos",
+    "overall": 55,
+    "potential": 61,
+    "position": "RW, RM",
+    "age": 23,
+    "team": "Club Atlético San Martín"
+  },
+  {
+    "name": "R. Rúmbolo",
+    "overall": 55,
+    "potential": 62,
+    "position": "CAM, CM",
+    "age": 21,
+    "team": "Club Atlético San Martín"
+  },
+  {
+    "name": "L. Maldonado",
+    "overall": 54,
+    "potential": 59,
+    "position": "GK",
+    "age": 24,
+    "team": "Instituto Atlético Central Córdoba"
+  },
+  {
+    "name": "J. Insúa",
+    "overall": 54,
+    "potential": 68,
+    "position": "GK",
+    "age": 20,
+    "team": "Barracas Central"
+  },
+  {
+    "name": "W. Rivera",
+    "overall": 54,
+    "potential": 66,
+    "position": "LM, LW",
+    "age": 21,
+    "team": "Barracas Central"
+  },
+  {
+    "name": "I. López",
+    "overall": 54,
+    "potential": 54,
+    "position": "GK",
+    "age": 29,
+    "team": "Deportivo Riestra"
+  },
+  {
+    "name": "N. Brunet",
+    "overall": 53,
+    "potential": 58,
+    "position": "CB",
+    "age": 24,
+    "team": "Godoy Cruz"
+  },
+  {
+    "name": "J. Ingratti",
+    "overall": 53,
+    "potential": 57,
+    "position": "ST",
+    "age": 24,
+    "team": "Deportivo Riestra"
+  },
+  {
+    "name": "F. Guch",
+    "overall": 52,
+    "potential": 67,
+    "position": "LW, LM",
+    "age": 18,
+    "team": "Newell's Old Boys"
+  },
+  {
+    "name": "G. Zelarayán",
+    "overall": 52,
+    "potential": 66,
+    "position": "CAM, ST, LW, CM",
+    "age": 21,
+    "team": "Belgrano de Córdoba"
+  },
+  {
+    "name": "N. Sumavil",
+    "overall": 52,
+    "potential": 54,
+    "position": "GK",
+    "age": 25,
+    "team": "Platense"
+  },
+  {
+    "name": "J. Rentería",
+    "overall": 52,
+    "potential": 65,
+    "position": "RM, RW",
+    "age": 19,
+    "team": "Club Atlético Sarmiento"
+  },
+  {
+    "name": "P. Madero",
+    "overall": 52,
+    "potential": 53,
+    "position": "CDM, CM",
+    "age": 26,
+    "team": "Deportivo Riestra"
+  },
+  {
+    "name": "T. Gigena",
+    "overall": 51,
+    "potential": 61,
+    "position": "ST",
+    "age": 19,
+    "team": "Newell's Old Boys"
+  },
+  {
+    "name": "J. Russo",
+    "overall": 51,
+    "potential": 68,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Newell's Old Boys"
+  },
+  {
+    "name": "M. Garcia",
+    "overall": 51,
+    "potential": 68,
+    "position": "CM, CDM",
+    "age": 19,
+    "team": "CA Aldosivi"
+  },
+  {
+    "name": "I. Alastra",
+    "overall": 51,
+    "potential": 73,
+    "position": "ST",
+    "age": 17,
+    "team": "Talleres"
+  },
+  {
+    "name": "A. Stringa",
+    "overall": 51,
+    "potential": 51,
+    "position": "LW, LM",
+    "age": 29,
+    "team": "Deportivo Riestra"
+  },
+  {
+    "name": "Mauro Smarra",
+    "overall": 51,
+    "potential": 54,
+    "position": "CAM, CM",
+    "age": 26,
+    "team": "Deportivo Riestra"
+  },
+  {
+    "name": "N. Bolcato",
+    "overall": 50,
+    "potential": 57,
+    "position": "GK",
+    "age": 21,
+    "team": "Independiente Rivadavia"
+  },
+  {
+    "name": "M. Aguiar",
+    "overall": 50,
+    "potential": 70,
+    "position": "CAM, CM",
+    "age": 18,
+    "team": "Defensa y Justicia"
+  },
+  {
+    "name": "W. Núñez",
+    "overall": 49,
+    "potential": 58,
+    "position": "CAM, CM",
+    "age": 22,
+    "team": "Newell's Old Boys"
+  },
+  {
+    "name": "T. Cravero",
+    "overall": 49,
+    "potential": 58,
+    "position": "CM, CDM",
+    "age": 22,
+    "team": "Central Cordoba SdE"
+  },
+  {
+    "name": "L. Cornejo",
+    "overall": 48,
+    "potential": 61,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Estudiantes de La Plata"
+  },
+  {
+    "name": "J. Gómez Mattar",
+    "overall": 47,
+    "potential": 73,
+    "position": "CM, CDM",
+    "age": 16,
+    "team": "Newell's Old Boys"
+  }
+]

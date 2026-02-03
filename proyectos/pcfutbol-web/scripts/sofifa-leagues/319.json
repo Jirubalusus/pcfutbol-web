@@ -1,0 +1,682 @@
+[
+  {
+    "name": "L. Provod",
+    "overall": 79,
+    "potential": 79,
+    "position": "CAM, LW, RW, CM",
+    "age": 28,
+    "team": "SK Slavia Praha"
+  },
+  {
+    "name": "O. Dorley",
+    "overall": 78,
+    "potential": 81,
+    "position": "CDM, CM, LM",
+    "age": 26,
+    "team": "SK Slavia Praha"
+  },
+  {
+    "name": "L. Haraslín",
+    "overall": 78,
+    "potential": 78,
+    "position": "LW, RW, ST, LM",
+    "age": 29,
+    "team": "Sparta Praha"
+  },
+  {
+    "name": "V. Birmančević",
+    "overall": 77,
+    "potential": 77,
+    "position": "LW, ST, RW, LM",
+    "age": 27,
+    "team": "Sparta Praha"
+  },
+  {
+    "name": "P. Hrošovský",
+    "overall": 77,
+    "potential": 77,
+    "position": "CM, CAM, CDM",
+    "age": 33,
+    "team": "Viktoria Plzeň"
+  },
+  {
+    "name": "J. Staněk",
+    "overall": 76,
+    "potential": 76,
+    "position": "GK",
+    "age": 29,
+    "team": "SK Slavia Praha"
+  },
+  {
+    "name": "V. Kušej",
+    "overall": 76,
+    "potential": 78,
+    "position": "LW, RW, CAM, LM",
+    "age": 25,
+    "team": "SK Slavia Praha"
+  },
+  {
+    "name": "M. Sadílek",
+    "overall": 76,
+    "potential": 78,
+    "position": "CDM, CM",
+    "age": 26,
+    "team": "SK Slavia Praha"
+  },
+  {
+    "name": "T. Holeš",
+    "overall": 76,
+    "potential": 76,
+    "position": "CB, CDM",
+    "age": 32,
+    "team": "SK Slavia Praha"
+  },
+  {
+    "name": "I. Ogbu",
+    "overall": 75,
+    "potential": 78,
+    "position": "CB",
+    "age": 25,
+    "team": "SK Slavia Praha"
+  },
+  {
+    "name": "T. Chorý",
+    "overall": 75,
+    "potential": 75,
+    "position": "ST",
+    "age": 30,
+    "team": "SK Slavia Praha"
+  },
+  {
+    "name": "D. Zima",
+    "overall": 75,
+    "potential": 77,
+    "position": "CB",
+    "age": 24,
+    "team": "SK Slavia Praha"
+  },
+  {
+    "name": "P. Vindahl",
+    "overall": 75,
+    "potential": 77,
+    "position": "GK",
+    "age": 27,
+    "team": "Sparta Praha"
+  },
+  {
+    "name": "K. Kairinen",
+    "overall": 75,
+    "potential": 75,
+    "position": "CM, CDM",
+    "age": 26,
+    "team": "Sparta Praha"
+  },
+  {
+    "name": "A. Rrahmani",
+    "overall": 75,
+    "potential": 80,
+    "position": "ST",
+    "age": 24,
+    "team": "Sparta Praha"
+  },
+  {
+    "name": "M. Vydra",
+    "overall": 75,
+    "potential": 75,
+    "position": "ST",
+    "age": 33,
+    "team": "Viktoria Plzeň"
+  },
+  {
+    "name": "V. Jemelka",
+    "overall": 75,
+    "potential": 75,
+    "position": "CB, LB",
+    "age": 30,
+    "team": "Viktoria Plzeň"
+  },
+  {
+    "name": "S. Dweh",
+    "overall": 75,
+    "potential": 79,
+    "position": "CB",
+    "age": 23,
+    "team": "Viktoria Plzeň"
+  },
+  {
+    "name": "M. Chytil",
+    "overall": 74,
+    "potential": 75,
+    "position": "ST",
+    "age": 26,
+    "team": "SK Slavia Praha"
+  },
+  {
+    "name": "P. Kadeřábek",
+    "overall": 74,
+    "potential": 74,
+    "position": "RB, RM",
+    "age": 33,
+    "team": "Sparta Praha"
+  },
+  {
+    "name": "A. Sørensen",
+    "overall": 74,
+    "potential": 75,
+    "position": "CB",
+    "age": 29,
+    "team": "Sparta Praha"
+  },
+  {
+    "name": "F. Panák",
+    "overall": 74,
+    "potential": 74,
+    "position": "CB",
+    "age": 29,
+    "team": "Sparta Praha"
+  },
+  {
+    "name": "M. Ryneš",
+    "overall": 74,
+    "potential": 79,
+    "position": "LM, LB, LW",
+    "age": 24,
+    "team": "Sparta Praha"
+  },
+  {
+    "name": "Š. Chaloupek",
+    "overall": 73,
+    "potential": 79,
+    "position": "CB",
+    "age": 22,
+    "team": "SK Slavia Praha"
+  },
+  {
+    "name": "J. Bořil",
+    "overall": 73,
+    "potential": 73,
+    "position": "CB, LB, LM",
+    "age": 34,
+    "team": "SK Slavia Praha"
+  },
+  {
+    "name": "T. Vlček",
+    "overall": 73,
+    "potential": 76,
+    "position": "CB, RB",
+    "age": 24,
+    "team": "SK Slavia Praha"
+  },
+  {
+    "name": "M. Cham",
+    "overall": 73,
+    "potential": 75,
+    "position": "CAM, RM, CM",
+    "age": 24,
+    "team": "SK Slavia Praha"
+  },
+  {
+    "name": "D. Jurásek",
+    "overall": 73,
+    "potential": 75,
+    "position": "LB, LM",
+    "age": 24,
+    "team": "SK Slavia Praha"
+  },
+  {
+    "name": "D. Douděra",
+    "overall": 73,
+    "potential": 73,
+    "position": "RM, RB, RW",
+    "age": 27,
+    "team": "SK Slavia Praha"
+  },
+  {
+    "name": "E. Cobbaut",
+    "overall": 73,
+    "potential": 74,
+    "position": "CB",
+    "age": 27,
+    "team": "Sparta Praha"
+  },
+  {
+    "name": "J. Kuchta",
+    "overall": 73,
+    "potential": 73,
+    "position": "ST, RW, LW",
+    "age": 28,
+    "team": "Sparta Praha"
+  },
+  {
+    "name": "L. Červ",
+    "overall": 73,
+    "potential": 77,
+    "position": "CDM, CM",
+    "age": 24,
+    "team": "Viktoria Plzeň"
+  },
+  {
+    "name": "A. Memić",
+    "overall": 73,
+    "potential": 75,
+    "position": "RM, LM, RW",
+    "age": 24,
+    "team": "Viktoria Plzeň"
+  },
+  {
+    "name": "T. Ladra",
+    "overall": 73,
+    "potential": 73,
+    "position": "CAM, CM",
+    "age": 28,
+    "team": "Viktoria Plzeň"
+  },
+  {
+    "name": "D. Moses",
+    "overall": 72,
+    "potential": 77,
+    "position": "CM, RM, CDM",
+    "age": 21,
+    "team": "SK Slavia Praha"
+  },
+  {
+    "name": "J. Markovič",
+    "overall": 72,
+    "potential": 76,
+    "position": "GK",
+    "age": 23,
+    "team": "SK Slavia Praha"
+  },
+  {
+    "name": "J. Zelený",
+    "overall": 72,
+    "potential": 72,
+    "position": "CB, LB, LM",
+    "age": 32,
+    "team": "Sparta Praha"
+  },
+  {
+    "name": "P. Adu",
+    "overall": 72,
+    "potential": 77,
+    "position": "ST",
+    "age": 21,
+    "team": "Viktoria Plzeň"
+  },
+  {
+    "name": "J. Kopic",
+    "overall": 72,
+    "potential": 72,
+    "position": "RM, LM, RW",
+    "age": 35,
+    "team": "Viktoria Plzeň"
+  },
+  {
+    "name": "I. Schranz",
+    "overall": 71,
+    "potential": 71,
+    "position": "LM, RM, LW",
+    "age": 31,
+    "team": "SK Slavia Praha"
+  },
+  {
+    "name": "J. Mercado",
+    "overall": 71,
+    "potential": 79,
+    "position": "LW, LM, RW",
+    "age": 23,
+    "team": "Sparta Praha"
+  },
+  {
+    "name": "E. Uchenna",
+    "overall": 71,
+    "potential": 77,
+    "position": "CB",
+    "age": 21,
+    "team": "Sparta Praha"
+  },
+  {
+    "name": "P. Vydra",
+    "overall": 71,
+    "potential": 77,
+    "position": "CM, CDM, CB",
+    "age": 22,
+    "team": "Sparta Praha"
+  },
+  {
+    "name": "K. Spáčil",
+    "overall": 71,
+    "potential": 78,
+    "position": "CB, LB, LM",
+    "age": 22,
+    "team": "Viktoria Plzeň"
+  },
+  {
+    "name": "C. Souaré",
+    "overall": 71,
+    "potential": 76,
+    "position": "LM, LB, CM, LW",
+    "age": 22,
+    "team": "Viktoria Plzeň"
+  },
+  {
+    "name": "D. Hashioka",
+    "overall": 70,
+    "potential": 73,
+    "position": "RB, RM",
+    "age": 26,
+    "team": "SK Slavia Praha"
+  },
+  {
+    "name": "M. Andersen",
+    "overall": 70,
+    "potential": 71,
+    "position": "CM, CDM, CAM",
+    "age": 26,
+    "team": "Sparta Praha"
+  },
+  {
+    "name": "A. Irving",
+    "overall": 70,
+    "potential": 72,
+    "position": "CM, CAM, CDM",
+    "age": 25,
+    "team": "Sparta Praha"
+  },
+  {
+    "name": "L. Hejda",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB",
+    "age": 35,
+    "team": "Viktoria Plzeň"
+  },
+  {
+    "name": "O. Zmrzlý",
+    "overall": 69,
+    "potential": 69,
+    "position": "LB, LM",
+    "age": 26,
+    "team": "SK Slavia Praha"
+  },
+  {
+    "name": "E. Prekop",
+    "overall": 69,
+    "potential": 69,
+    "position": "ST, RW, LW, RM",
+    "age": 27,
+    "team": "SK Slavia Praha"
+  },
+  {
+    "name": "J. Grimaldo",
+    "overall": 69,
+    "potential": 79,
+    "position": "RW, LW, RM",
+    "age": 22,
+    "team": "Sparta Praha"
+  },
+  {
+    "name": "T. Slončík",
+    "overall": 69,
+    "potential": 76,
+    "position": "CAM, CM",
+    "age": 20,
+    "team": "Viktoria Plzeň"
+  },
+  {
+    "name": "D. Vašulín",
+    "overall": 69,
+    "potential": 69,
+    "position": "ST",
+    "age": 27,
+    "team": "Viktoria Plzeň"
+  },
+  {
+    "name": "Y. Mbodji",
+    "overall": 68,
+    "potential": 74,
+    "position": "LB, LM, CB",
+    "age": 21,
+    "team": "SK Slavia Praha"
+  },
+  {
+    "name": "J. Martinec",
+    "overall": 68,
+    "potential": 70,
+    "position": "CB",
+    "age": 27,
+    "team": "Sparta Praha"
+  },
+  {
+    "name": "S. Mannsverk",
+    "overall": 68,
+    "potential": 76,
+    "position": "CDM, CM",
+    "age": 23,
+    "team": "Sparta Praha"
+  },
+  {
+    "name": "M. Suchomel",
+    "overall": 68,
+    "potential": 74,
+    "position": "RB, RM, LM",
+    "age": 22,
+    "team": "Sparta Praha"
+  },
+  {
+    "name": "F. Wiegele",
+    "overall": 68,
+    "potential": 73,
+    "position": "GK",
+    "age": 24,
+    "team": "Viktoria Plzeň"
+  },
+  {
+    "name": "M. Doski",
+    "overall": 68,
+    "potential": 71,
+    "position": "LB, LM",
+    "age": 25,
+    "team": "Viktoria Plzeň"
+  },
+  {
+    "name": "D. Višinský",
+    "overall": 68,
+    "potential": 74,
+    "position": "LW, CAM, RW, LM",
+    "age": 22,
+    "team": "Viktoria Plzeň"
+  },
+  {
+    "name": "D. Krčík",
+    "overall": 68,
+    "potential": 70,
+    "position": "CB",
+    "age": 26,
+    "team": "Viktoria Plzeň"
+  },
+  {
+    "name": "M. Valenta",
+    "overall": 68,
+    "potential": 71,
+    "position": "CM, CAM, CDM",
+    "age": 25,
+    "team": "Viktoria Plzeň"
+  },
+  {
+    "name": "Y. Sanyang",
+    "overall": 67,
+    "potential": 79,
+    "position": "LW, LM, RW",
+    "age": 19,
+    "team": "SK Slavia Praha"
+  },
+  {
+    "name": "O. Kolář",
+    "overall": 67,
+    "potential": 67,
+    "position": "GK",
+    "age": 30,
+    "team": "SK Slavia Praha"
+  },
+  {
+    "name": "P. Ševčík",
+    "overall": 67,
+    "potential": 67,
+    "position": "CM, CDM",
+    "age": 31,
+    "team": "SK Slavia Praha"
+  },
+  {
+    "name": "A. Ševínský",
+    "overall": 67,
+    "potential": 74,
+    "position": "CB",
+    "age": 21,
+    "team": "Sparta Praha"
+  },
+  {
+    "name": "C. Kabongo",
+    "overall": 67,
+    "potential": 77,
+    "position": "ST",
+    "age": 21,
+    "team": "Viktoria Plzeň"
+  },
+  {
+    "name": "M. Tvrdoň",
+    "overall": 67,
+    "potential": 67,
+    "position": "GK",
+    "age": 30,
+    "team": "Viktoria Plzeň"
+  },
+  {
+    "name": "J. Paluska",
+    "overall": 67,
+    "potential": 74,
+    "position": "CB",
+    "age": 20,
+    "team": "Viktoria Plzeň"
+  },
+  {
+    "name": "H. Kante",
+    "overall": 66,
+    "potential": 75,
+    "position": "LB",
+    "age": 20,
+    "team": "SK Slavia Praha"
+  },
+  {
+    "name": "D. Javorček",
+    "overall": 65,
+    "potential": 70,
+    "position": "LB, LM",
+    "age": 22,
+    "team": "SK Slavia Praha"
+  },
+  {
+    "name": "S. Isife",
+    "overall": 65,
+    "potential": 74,
+    "position": "RM, RB, RW",
+    "age": 20,
+    "team": "SK Slavia Praha"
+  },
+  {
+    "name": "G. Kuol",
+    "overall": 65,
+    "potential": 75,
+    "position": "LW, LM, RW",
+    "age": 20,
+    "team": "Sparta Praha"
+  },
+  {
+    "name": "J. Surovčík",
+    "overall": 65,
+    "potential": 73,
+    "position": "GK",
+    "age": 23,
+    "team": "Sparta Praha"
+  },
+  {
+    "name": "A. Zeljković",
+    "overall": 65,
+    "potential": 72,
+    "position": "CDM, CM",
+    "age": 22,
+    "team": "Viktoria Plzeň"
+  },
+  {
+    "name": "A. Sojka",
+    "overall": 65,
+    "potential": 73,
+    "position": "CM, CDM",
+    "age": 22,
+    "team": "Viktoria Plzeň"
+  },
+  {
+    "name": "D. Teah",
+    "overall": 64,
+    "potential": 76,
+    "position": "CM, LM, CDM",
+    "age": 19,
+    "team": "SK Slavia Praha"
+  },
+  {
+    "name": "J. Panoš",
+    "overall": 64,
+    "potential": 77,
+    "position": "CAM, RW, CM",
+    "age": 17,
+    "team": "Viktoria Plzeň"
+  },
+  {
+    "name": "A. Kadlec",
+    "overall": 63,
+    "potential": 71,
+    "position": "RB, CB",
+    "age": 21,
+    "team": "Viktoria Plzeň"
+  },
+  {
+    "name": "Santiago Eneme",
+    "overall": 62,
+    "potential": 67,
+    "position": "CAM, LW, CM",
+    "age": 24,
+    "team": "Sparta Praha"
+  },
+  {
+    "name": "G. Sosseh",
+    "overall": 61,
+    "potential": 79,
+    "position": "CM, CDM",
+    "age": 18,
+    "team": "SK Slavia Praha"
+  },
+  {
+    "name": "M. Vojta",
+    "overall": 60,
+    "potential": 65,
+    "position": "ST",
+    "age": 21,
+    "team": "Sparta Praha"
+  },
+  {
+    "name": "M. Silhavy",
+    "overall": 57,
+    "potential": 72,
+    "position": "GK",
+    "age": 18,
+    "team": "Viktoria Plzeň"
+  },
+  {
+    "name": "D. Ťapaj",
+    "overall": 53,
+    "potential": 62,
+    "position": "GK",
+    "age": 21,
+    "team": "Viktoria Plzeň"
+  }
+]

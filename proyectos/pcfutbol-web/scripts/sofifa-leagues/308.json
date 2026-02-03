@@ -1,0 +1,4338 @@
+[
+  {
+    "name": "Diogo Costa",
+    "overall": 84,
+    "potential": 89,
+    "position": "GK",
+    "age": 25,
+    "team": "FC Porto"
+  },
+  {
+    "name": "V. Pavlidis",
+    "overall": 83,
+    "potential": 84,
+    "position": "ST, CAM",
+    "age": 26,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "Pedro Gonçalves",
+    "overall": 83,
+    "potential": 83,
+    "position": "LM, CAM, LW",
+    "age": 27,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "M. Hjulmand",
+    "overall": 83,
+    "potential": 86,
+    "position": "CDM, CM",
+    "age": 26,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "Rafa",
+    "overall": 82,
+    "potential": 82,
+    "position": "CAM, ST, LM",
+    "age": 32,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "D. Lukébakio",
+    "overall": 82,
+    "potential": 82,
+    "position": "RM, RW, LM",
+    "age": 27,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "Thiago Silva",
+    "overall": 82,
+    "potential": 82,
+    "position": "CB",
+    "age": 40,
+    "team": "FC Porto"
+  },
+  {
+    "name": "Trincão",
+    "overall": 82,
+    "potential": 84,
+    "position": "CAM, RM, RW, ST",
+    "age": 25,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "N. Otamendi",
+    "overall": 81,
+    "potential": 81,
+    "position": "CB",
+    "age": 37,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "Rui Silva",
+    "overall": 81,
+    "potential": 81,
+    "position": "GK",
+    "age": 31,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "Gonçalo Inácio",
+    "overall": 81,
+    "potential": 86,
+    "position": "CB",
+    "age": 23,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "Ricardo Horta",
+    "overall": 81,
+    "potential": 81,
+    "position": "CAM, LM, RM, CM",
+    "age": 30,
+    "team": "Sporting Clube de Braga"
+  },
+  {
+    "name": "F. Aursnes",
+    "overall": 80,
+    "potential": 80,
+    "position": "CM, RM, RB, CAM",
+    "age": 29,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "A. Trubin",
+    "overall": 80,
+    "potential": 87,
+    "position": "GK",
+    "age": 23,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "G. Sudakov",
+    "overall": 80,
+    "potential": 87,
+    "position": "CAM, CM, LM",
+    "age": 22,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "A. Varela",
+    "overall": 80,
+    "potential": 85,
+    "position": "CDM, CM",
+    "age": 23,
+    "team": "FC Porto"
+  },
+  {
+    "name": "J. Kiwior",
+    "overall": 80,
+    "potential": 85,
+    "position": "CB, LB",
+    "age": 25,
+    "team": "FC Porto"
+  },
+  {
+    "name": "O. Diomande",
+    "overall": 80,
+    "potential": 87,
+    "position": "CB",
+    "age": 21,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "R. Ríos",
+    "overall": 79,
+    "potential": 83,
+    "position": "CM, CDM",
+    "age": 25,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "Gabri Veiga",
+    "overall": 79,
+    "potential": 86,
+    "position": "CAM, CM, LM",
+    "age": 23,
+    "team": "FC Porto"
+  },
+  {
+    "name": "Samu",
+    "overall": 79,
+    "potential": 87,
+    "position": "ST",
+    "age": 21,
+    "team": "FC Porto"
+  },
+  {
+    "name": "L. Suárez",
+    "overall": 79,
+    "potential": 79,
+    "position": "ST",
+    "age": 27,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "R. Zalazar",
+    "overall": 79,
+    "potential": 82,
+    "position": "CAM, CM, LM",
+    "age": 25,
+    "team": "Sporting Clube de Braga"
+  },
+  {
+    "name": "Bruma",
+    "overall": 78,
+    "potential": 78,
+    "position": "LW, LM, CAM",
+    "age": 30,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "Tomás Araújo",
+    "overall": 78,
+    "potential": 86,
+    "position": "CB, RB",
+    "age": 23,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "António Silva",
+    "overall": 78,
+    "potential": 86,
+    "position": "CB",
+    "age": 21,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "L. de Jong",
+    "overall": 78,
+    "potential": 78,
+    "position": "ST",
+    "age": 34,
+    "team": "FC Porto"
+  },
+  {
+    "name": "J. Bednarek",
+    "overall": 78,
+    "potential": 78,
+    "position": "CB",
+    "age": 29,
+    "team": "FC Porto"
+  },
+  {
+    "name": "Pepê",
+    "overall": 78,
+    "potential": 78,
+    "position": "CAM, RM, RW, CM",
+    "age": 28,
+    "team": "FC Porto"
+  },
+  {
+    "name": "Francisco Moura",
+    "overall": 78,
+    "potential": 81,
+    "position": "LB, LM",
+    "age": 25,
+    "team": "FC Porto"
+  },
+  {
+    "name": "Borja Sainz",
+    "overall": 78,
+    "potential": 81,
+    "position": "LW, LM",
+    "age": 24,
+    "team": "FC Porto"
+  },
+  {
+    "name": "V. Froholdt",
+    "overall": 78,
+    "potential": 88,
+    "position": "CM, CDM, CAM",
+    "age": 19,
+    "team": "FC Porto"
+  },
+  {
+    "name": "Nuno Santos",
+    "overall": 78,
+    "potential": 78,
+    "position": "LM, LB, LW",
+    "age": 30,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "H. Morita",
+    "overall": 78,
+    "potential": 78,
+    "position": "CM, CDM",
+    "age": 30,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "Z. Debast",
+    "overall": 78,
+    "potential": 86,
+    "position": "CDM, CB, CM",
+    "age": 21,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "Geny Catamo",
+    "overall": 78,
+    "potential": 81,
+    "position": "RM, LM, CAM, RW",
+    "age": 24,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "A. Bah",
+    "overall": 77,
+    "potential": 77,
+    "position": "RB, RM",
+    "age": 27,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "E. Barrenechea",
+    "overall": 77,
+    "potential": 82,
+    "position": "CDM, CM",
+    "age": 24,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "Rodrigo Mora",
+    "overall": 77,
+    "potential": 89,
+    "position": "CAM, LW, CM, ST",
+    "age": 18,
+    "team": "FC Porto"
+  },
+  {
+    "name": "P. Rosario",
+    "overall": 77,
+    "potential": 77,
+    "position": "CDM, CM, CB",
+    "age": 28,
+    "team": "FC Porto"
+  },
+  {
+    "name": "Daniel Bragança",
+    "overall": 77,
+    "potential": 80,
+    "position": "CM, CDM, CAM",
+    "age": 26,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "Eduardo Quaresma",
+    "overall": 77,
+    "potential": 84,
+    "position": "CB, RB",
+    "age": 23,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "M. Araújo",
+    "overall": 77,
+    "potential": 80,
+    "position": "LM, LB, LW",
+    "age": 25,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "F. Ioannidis",
+    "overall": 77,
+    "potential": 80,
+    "position": "ST",
+    "age": 25,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "João Moutinho",
+    "overall": 77,
+    "potential": 77,
+    "position": "CM, CDM",
+    "age": 38,
+    "team": "Sporting Clube de Braga"
+  },
+  {
+    "name": "L. Barreiro",
+    "overall": 76,
+    "potential": 79,
+    "position": "CM, CDM, CAM",
+    "age": 25,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "N. Pérez",
+    "overall": 76,
+    "potential": 81,
+    "position": "CB",
+    "age": 25,
+    "team": "FC Porto"
+  },
+  {
+    "name": "Alberto Costa",
+    "overall": 76,
+    "potential": 85,
+    "position": "RB",
+    "age": 21,
+    "team": "FC Porto"
+  },
+  {
+    "name": "Matheus Reis",
+    "overall": 76,
+    "potential": 76,
+    "position": "LB, CB, LM, LW",
+    "age": 30,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "Geovany Quenda",
+    "overall": 76,
+    "potential": 88,
+    "position": "RM, LM, CAM, RW",
+    "age": 18,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "Clayton",
+    "overall": 76,
+    "potential": 77,
+    "position": "ST",
+    "age": 26,
+    "team": "Rio Ave FC"
+  },
+  {
+    "name": "Víctor Gómez",
+    "overall": 76,
+    "potential": 79,
+    "position": "RB, RM",
+    "age": 25,
+    "team": "Sporting Clube de Braga"
+  },
+  {
+    "name": "Leonardo Lelo",
+    "overall": 76,
+    "potential": 79,
+    "position": "LM, LB",
+    "age": 25,
+    "team": "Sporting Clube de Braga"
+  },
+  {
+    "name": "F. Ivanović",
+    "overall": 75,
+    "potential": 83,
+    "position": "ST, CAM",
+    "age": 21,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "A. Schjelderup",
+    "overall": 75,
+    "potential": 83,
+    "position": "LW, CAM, LM",
+    "age": 21,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "Martim Fernandes",
+    "overall": 75,
+    "potential": 85,
+    "position": "RB, RM",
+    "age": 19,
+    "team": "FC Porto"
+  },
+  {
+    "name": "William Gomes",
+    "overall": 75,
+    "potential": 85,
+    "position": "RW, LW, RM",
+    "age": 19,
+    "team": "FC Porto"
+  },
+  {
+    "name": "Stephen Eustáquio",
+    "overall": 75,
+    "potential": 75,
+    "position": "CDM, CM, CB",
+    "age": 28,
+    "team": "FC Porto"
+  },
+  {
+    "name": "G. Vagiannidis",
+    "overall": 75,
+    "potential": 81,
+    "position": "RB",
+    "age": 23,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "Lucas França",
+    "overall": 75,
+    "potential": 76,
+    "position": "GK",
+    "age": 29,
+    "team": "CD Nacional"
+  },
+  {
+    "name": "F. Grillitsch",
+    "overall": 75,
+    "potential": 75,
+    "position": "CM, CB, CDM",
+    "age": 29,
+    "team": "Sporting Clube de Braga"
+  },
+  {
+    "name": "S. Niakaté",
+    "overall": 75,
+    "potential": 78,
+    "position": "CB",
+    "age": 25,
+    "team": "Sporting Clube de Braga"
+  },
+  {
+    "name": "Vitor Carvalho",
+    "overall": 75,
+    "potential": 76,
+    "position": "CDM, CM, CB",
+    "age": 28,
+    "team": "Sporting Clube de Braga"
+  },
+  {
+    "name": "Alan",
+    "overall": 75,
+    "potential": 79,
+    "position": "CAM, CM",
+    "age": 25,
+    "team": "Moreirense FC"
+  },
+  {
+    "name": "A. Dedić",
+    "overall": 74,
+    "potential": 79,
+    "position": "RB, LB, RM",
+    "age": 22,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "Ricardo Mangas",
+    "overall": 74,
+    "potential": 74,
+    "position": "LM, LB, RM, LW",
+    "age": 27,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "G. Kochorashvili",
+    "overall": 74,
+    "potential": 77,
+    "position": "CM, CDM, LM, CAM",
+    "age": 26,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "Fresneda",
+    "overall": 74,
+    "potential": 82,
+    "position": "RB, RM, LB",
+    "age": 20,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "Gabriel Silva",
+    "overall": 74,
+    "potential": 83,
+    "position": "LW, ST, RM, LM",
+    "age": 23,
+    "team": "Santa Clara"
+  },
+  {
+    "name": "Paulo Oliveira",
+    "overall": 74,
+    "potential": 74,
+    "position": "CB",
+    "age": 33,
+    "team": "Sporting Clube de Braga"
+  },
+  {
+    "name": "Fran Navarro",
+    "overall": 74,
+    "potential": 74,
+    "position": "ST",
+    "age": 27,
+    "team": "Sporting Clube de Braga"
+  },
+  {
+    "name": "L. Hornicek",
+    "overall": 74,
+    "potential": 82,
+    "position": "GK",
+    "age": 22,
+    "team": "Sporting Clube de Braga"
+  },
+  {
+    "name": "R. Guitane",
+    "overall": 74,
+    "potential": 75,
+    "position": "RW, CAM, RM",
+    "age": 26,
+    "team": "GD Estoril Praia"
+  },
+  {
+    "name": "Sorriso",
+    "overall": 74,
+    "potential": 80,
+    "position": "RM, LM, RW",
+    "age": 24,
+    "team": "Famalicão"
+  },
+  {
+    "name": "J. de Haas",
+    "overall": 74,
+    "potential": 79,
+    "position": "CB",
+    "age": 25,
+    "team": "Famalicão"
+  },
+  {
+    "name": "Gustavo Sá",
+    "overall": 74,
+    "potential": 85,
+    "position": "CAM, CM",
+    "age": 20,
+    "team": "Famalicão"
+  },
+  {
+    "name": "Óscar Aranda",
+    "overall": 74,
+    "potential": 83,
+    "position": "LM, ST, RM, LW",
+    "age": 23,
+    "team": "Famalicão"
+  },
+  {
+    "name": "S. Dahl",
+    "overall": 73,
+    "potential": 82,
+    "position": "LB, LM",
+    "age": 22,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "Cláudio Ramos",
+    "overall": 73,
+    "potential": 73,
+    "position": "GK",
+    "age": 33,
+    "team": "FC Porto"
+  },
+  {
+    "name": "D. Prpić",
+    "overall": 73,
+    "potential": 84,
+    "position": "CB",
+    "age": 21,
+    "team": "FC Porto"
+  },
+  {
+    "name": "Lincoln",
+    "overall": 73,
+    "potential": 74,
+    "position": "CAM, LM, RW, CM",
+    "age": 26,
+    "team": "Alverca"
+  },
+  {
+    "name": "C. Miszta",
+    "overall": 73,
+    "potential": 81,
+    "position": "GK",
+    "age": 23,
+    "team": "Rio Ave FC"
+  },
+  {
+    "name": "Gabriel Batista",
+    "overall": 73,
+    "potential": 77,
+    "position": "GK",
+    "age": 27,
+    "team": "Santa Clara"
+  },
+  {
+    "name": "Vinícius Lopes",
+    "overall": 73,
+    "potential": 74,
+    "position": "RW, LW, RM",
+    "age": 26,
+    "team": "Santa Clara"
+  },
+  {
+    "name": "Samu",
+    "overall": 73,
+    "potential": 73,
+    "position": "CM, CAM, CDM",
+    "age": 29,
+    "team": "Vitória SC"
+  },
+  {
+    "name": "G. Konan",
+    "overall": 73,
+    "potential": 73,
+    "position": "LB, LM",
+    "age": 29,
+    "team": "Gil Vicente FC"
+  },
+  {
+    "name": "Gabri Martínez",
+    "overall": 73,
+    "potential": 80,
+    "position": "LM, RM, LW",
+    "age": 22,
+    "team": "Sporting Clube de Braga"
+  },
+  {
+    "name": "Joel Robles",
+    "overall": 73,
+    "potential": 73,
+    "position": "GK",
+    "age": 35,
+    "team": "GD Estoril Praia"
+  },
+  {
+    "name": "Pizzi",
+    "overall": 73,
+    "potential": 73,
+    "position": "CM, RM, CAM",
+    "age": 35,
+    "team": "GD Estoril Praia"
+  },
+  {
+    "name": "J. Holsgrove",
+    "overall": 73,
+    "potential": 75,
+    "position": "CM, CDM",
+    "age": 25,
+    "team": "GD Estoril Praia"
+  },
+  {
+    "name": "David Simão",
+    "overall": 73,
+    "potential": 73,
+    "position": "CM, CDM",
+    "age": 35,
+    "team": "FC Arouca"
+  },
+  {
+    "name": "Tiago Esgaio",
+    "overall": 73,
+    "potential": 73,
+    "position": "RB, LB, CB",
+    "age": 29,
+    "team": "FC Arouca"
+  },
+  {
+    "name": "I. De Arruabarrena",
+    "overall": 73,
+    "potential": 74,
+    "position": "GK",
+    "age": 28,
+    "team": "FC Arouca"
+  },
+  {
+    "name": "Rony Lopes",
+    "overall": 73,
+    "potential": 73,
+    "position": "RM, CAM, RW",
+    "age": 29,
+    "team": "CD Tondela"
+  },
+  {
+    "name": "J. Siebatcheu",
+    "overall": 73,
+    "potential": 73,
+    "position": "ST",
+    "age": 29,
+    "team": "CD Tondela"
+  },
+  {
+    "name": "Rúben Semedo",
+    "overall": 73,
+    "potential": 73,
+    "position": "CB",
+    "age": 31,
+    "team": "AVS Futebol SAD"
+  },
+  {
+    "name": "Manu Silva",
+    "overall": 72,
+    "potential": 81,
+    "position": "CDM, CB",
+    "age": 24,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "Y. Karamoh",
+    "overall": 72,
+    "potential": 72,
+    "position": "LM, RW, LW",
+    "age": 26,
+    "team": "FC Porto"
+  },
+  {
+    "name": "João Virgínia",
+    "overall": 72,
+    "potential": 75,
+    "position": "GK",
+    "age": 25,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "Chiquinho",
+    "overall": 72,
+    "potential": 73,
+    "position": "LM, LW, RW",
+    "age": 25,
+    "team": "Alverca"
+  },
+  {
+    "name": "J. Brabec",
+    "overall": 72,
+    "potential": 72,
+    "position": "CB",
+    "age": 32,
+    "team": "Rio Ave FC"
+  },
+  {
+    "name": "O. Richards",
+    "overall": 72,
+    "potential": 73,
+    "position": "LB",
+    "age": 27,
+    "team": "Rio Ave FC"
+  },
+  {
+    "name": "Matheus Araújo",
+    "overall": 72,
+    "potential": 79,
+    "position": "LB, LM, CB, CDM",
+    "age": 24,
+    "team": "Santa Clara"
+  },
+  {
+    "name": "João Mendes",
+    "overall": 72,
+    "potential": 77,
+    "position": "LB, LM",
+    "age": 25,
+    "team": "Vitória SC"
+  },
+  {
+    "name": "Luís Esteves",
+    "overall": 72,
+    "potential": 73,
+    "position": "CM, CAM, CDM",
+    "age": 27,
+    "team": "Gil Vicente FC"
+  },
+  {
+    "name": "Gabriel Veron",
+    "overall": 72,
+    "potential": 77,
+    "position": "RM, LM, RW",
+    "age": 22,
+    "team": "CD Nacional"
+  },
+  {
+    "name": "J. Gorby",
+    "overall": 72,
+    "potential": 80,
+    "position": "CDM, CM, CB",
+    "age": 22,
+    "team": "Sporting Clube de Braga"
+  },
+  {
+    "name": "A. Barišić",
+    "overall": 72,
+    "potential": 77,
+    "position": "CB",
+    "age": 24,
+    "team": "Sporting Clube de Braga"
+  },
+  {
+    "name": "D. Tıknaz",
+    "overall": 72,
+    "potential": 82,
+    "position": "CDM, CM, CB",
+    "age": 20,
+    "team": "Sporting Clube de Braga"
+  },
+  {
+    "name": "Gabriel Moscardo",
+    "overall": 72,
+    "potential": 82,
+    "position": "CDM, CM",
+    "age": 19,
+    "team": "Sporting Clube de Braga"
+  },
+  {
+    "name": "Maracás",
+    "overall": 72,
+    "potential": 72,
+    "position": "CB",
+    "age": 31,
+    "team": "Moreirense FC"
+  },
+  {
+    "name": "João Carvalho",
+    "overall": 72,
+    "potential": 72,
+    "position": "CAM, LW, CM",
+    "age": 28,
+    "team": "GD Estoril Praia"
+  },
+  {
+    "name": "Xeka",
+    "overall": 72,
+    "potential": 72,
+    "position": "CM, CDM",
+    "age": 30,
+    "team": "GD Estoril Praia"
+  },
+  {
+    "name": "A. Marqués",
+    "overall": 72,
+    "potential": 75,
+    "position": "ST",
+    "age": 24,
+    "team": "GD Estoril Praia"
+  },
+  {
+    "name": "Y. Begraoui",
+    "overall": 72,
+    "potential": 76,
+    "position": "ST, CAM, RM",
+    "age": 23,
+    "team": "GD Estoril Praia"
+  },
+  {
+    "name": "N. Mantl",
+    "overall": 72,
+    "potential": 77,
+    "position": "GK",
+    "age": 25,
+    "team": "FC Arouca"
+  },
+  {
+    "name": "Javi Sánchez",
+    "overall": 72,
+    "potential": 74,
+    "position": "CB",
+    "age": 28,
+    "team": "FC Arouca"
+  },
+  {
+    "name": "José Fontán",
+    "overall": 72,
+    "potential": 76,
+    "position": "CB, LB, CDM",
+    "age": 25,
+    "team": "FC Arouca"
+  },
+  {
+    "name": "José Fonte",
+    "overall": 72,
+    "potential": 72,
+    "position": "CB",
+    "age": 41,
+    "team": "Casa Pia"
+  },
+  {
+    "name": "Cassiano",
+    "overall": 72,
+    "potential": 72,
+    "position": "ST",
+    "age": 36,
+    "team": "Casa Pia"
+  },
+  {
+    "name": "G. Prestianni",
+    "overall": 71,
+    "potential": 83,
+    "position": "RM, CAM, RW",
+    "age": 19,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "Luis Guilherme",
+    "overall": 71,
+    "potential": 84,
+    "position": "RM, LM, CAM, RW",
+    "age": 19,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "Figueiredo",
+    "overall": 71,
+    "potential": 75,
+    "position": "LW, ST, LM",
+    "age": 23,
+    "team": "Alverca"
+  },
+  {
+    "name": "Sergi Gómez",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB",
+    "age": 33,
+    "team": "Alverca"
+  },
+  {
+    "name": "A. Ntoi",
+    "overall": 71,
+    "potential": 78,
+    "position": "CB, CM",
+    "age": 22,
+    "team": "Rio Ave FC"
+  },
+  {
+    "name": "M. Vrousai",
+    "overall": 71,
+    "potential": 72,
+    "position": "RB, RM",
+    "age": 26,
+    "team": "Rio Ave FC"
+  },
+  {
+    "name": "O. Pohlmann",
+    "overall": 71,
+    "potential": 78,
+    "position": "CAM, CM, LW",
+    "age": 24,
+    "team": "Rio Ave FC"
+  },
+  {
+    "name": "André Luiz",
+    "overall": 71,
+    "potential": 80,
+    "position": "RM, RW, LW",
+    "age": 23,
+    "team": "Rio Ave FC"
+  },
+  {
+    "name": "Sidney Lima",
+    "overall": 71,
+    "potential": 72,
+    "position": "CB",
+    "age": 28,
+    "team": "Santa Clara"
+  },
+  {
+    "name": "Frederico Venâncio",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB",
+    "age": 32,
+    "team": "Santa Clara"
+  },
+  {
+    "name": "Gustavo Silva",
+    "overall": 71,
+    "potential": 72,
+    "position": "LM, LW, ST",
+    "age": 26,
+    "team": "Vitória SC"
+  },
+  {
+    "name": "R. Abascal",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB",
+    "age": 31,
+    "team": "Vitória SC"
+  },
+  {
+    "name": "Telmo Arcanjo",
+    "overall": 71,
+    "potential": 76,
+    "position": "RM, RW",
+    "age": 24,
+    "team": "Vitória SC"
+  },
+  {
+    "name": "Murilo",
+    "overall": 71,
+    "potential": 71,
+    "position": "RM, LM, RW",
+    "age": 30,
+    "team": "Gil Vicente FC"
+  },
+  {
+    "name": "Zé Carlos",
+    "overall": 71,
+    "potential": 72,
+    "position": "RB",
+    "age": 26,
+    "team": "Gil Vicente FC"
+  },
+  {
+    "name": "Zé Vitor",
+    "overall": 71,
+    "potential": 77,
+    "position": "CB",
+    "age": 24,
+    "team": "CD Nacional"
+  },
+  {
+    "name": "J. Ramírez",
+    "overall": 71,
+    "potential": 72,
+    "position": "ST",
+    "age": 27,
+    "team": "CD Nacional"
+  },
+  {
+    "name": "B. Arrey-Mbi",
+    "overall": 71,
+    "potential": 81,
+    "position": "CB, LB, CDM",
+    "age": 22,
+    "team": "Sporting Clube de Braga"
+  },
+  {
+    "name": "G. Lagerbielke",
+    "overall": 71,
+    "potential": 75,
+    "position": "CB",
+    "age": 25,
+    "team": "Sporting Clube de Braga"
+  },
+  {
+    "name": "A. El Ouazzani",
+    "overall": 71,
+    "potential": 77,
+    "position": "ST, RM, RW",
+    "age": 23,
+    "team": "Sporting Clube de Braga"
+  },
+  {
+    "name": "Kiko Bondoso",
+    "overall": 71,
+    "potential": 71,
+    "position": "LM, LW, RM",
+    "age": 29,
+    "team": "Moreirense FC"
+  },
+  {
+    "name": "Ricard",
+    "overall": 71,
+    "potential": 75,
+    "position": "RB, RM",
+    "age": 25,
+    "team": "GD Estoril Praia"
+  },
+  {
+    "name": "Patrick de Paula",
+    "overall": 71,
+    "potential": 76,
+    "position": "CDM, CM",
+    "age": 25,
+    "team": "GD Estoril Praia"
+  },
+  {
+    "name": "A. Trezza",
+    "overall": 71,
+    "potential": 72,
+    "position": "RM, LM, ST, RW",
+    "age": 26,
+    "team": "FC Arouca"
+  },
+  {
+    "name": "Gustavo Garcia",
+    "overall": 71,
+    "potential": 78,
+    "position": "RB",
+    "age": 23,
+    "team": "Famalicão"
+  },
+  {
+    "name": "Gil Dias",
+    "overall": 71,
+    "potential": 71,
+    "position": "RM, RW, RB",
+    "age": 28,
+    "team": "Famalicão"
+  },
+  {
+    "name": "L. Carević",
+    "overall": 71,
+    "potential": 74,
+    "position": "GK",
+    "age": 26,
+    "team": "Famalicão"
+  },
+  {
+    "name": "Rodrigo Pinheiro",
+    "overall": 71,
+    "potential": 80,
+    "position": "RB, RM",
+    "age": 22,
+    "team": "Famalicão"
+  },
+  {
+    "name": "Ricardo Batista",
+    "overall": 71,
+    "potential": 71,
+    "position": "GK",
+    "age": 38,
+    "team": "Casa Pia"
+  },
+  {
+    "name": "S. Pérez",
+    "overall": 71,
+    "potential": 71,
+    "position": "CDM, CM",
+    "age": 32,
+    "team": "Casa Pia"
+  },
+  {
+    "name": "J. Livolant",
+    "overall": 71,
+    "potential": 71,
+    "position": "RW, LW, CAM, RM",
+    "age": 27,
+    "team": "Casa Pia"
+  },
+  {
+    "name": "D. Tchamba",
+    "overall": 71,
+    "potential": 74,
+    "position": "CB",
+    "age": 26,
+    "team": "Casa Pia"
+  },
+  {
+    "name": "L. Ofori",
+    "overall": 71,
+    "potential": 74,
+    "position": "CDM, CM",
+    "age": 27,
+    "team": "Casa Pia"
+  },
+  {
+    "name": "Larrazabal",
+    "overall": 71,
+    "potential": 71,
+    "position": "RM, RB",
+    "age": 27,
+    "team": "Casa Pia"
+  },
+  {
+    "name": "P. Sequeira",
+    "overall": 71,
+    "potential": 76,
+    "position": "GK",
+    "age": 26,
+    "team": "Casa Pia"
+  },
+  {
+    "name": "Henrique Araújo",
+    "overall": 70,
+    "potential": 77,
+    "position": "ST",
+    "age": 23,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "Samuel Soares",
+    "overall": 70,
+    "potential": 80,
+    "position": "GK",
+    "age": 23,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "Z. Sanusi",
+    "overall": 70,
+    "potential": 70,
+    "position": "LB",
+    "age": 28,
+    "team": "FC Porto"
+  },
+  {
+    "name": "D. Gül",
+    "overall": 70,
+    "potential": 82,
+    "position": "ST",
+    "age": 20,
+    "team": "FC Porto"
+  },
+  {
+    "name": "João Simões",
+    "overall": 70,
+    "potential": 82,
+    "position": "CM, CAM, CDM",
+    "age": 18,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "Chissumba",
+    "overall": 70,
+    "potential": 80,
+    "position": "LB, LM",
+    "age": 20,
+    "team": "Alverca"
+  },
+  {
+    "name": "Naves",
+    "overall": 70,
+    "potential": 80,
+    "position": "CB",
+    "age": 23,
+    "team": "Alverca"
+  },
+  {
+    "name": "Bernardo Schappo",
+    "overall": 70,
+    "potential": 72,
+    "position": "CB",
+    "age": 26,
+    "team": "Estrela da Amadora"
+  },
+  {
+    "name": "Jovane Cabral",
+    "overall": 70,
+    "potential": 70,
+    "position": "LW, ST, LM",
+    "age": 27,
+    "team": "Estrela da Amadora"
+  },
+  {
+    "name": "I. Stoica",
+    "overall": 70,
+    "potential": 78,
+    "position": "LM, ST, LW",
+    "age": 22,
+    "team": "Estrela da Amadora"
+  },
+  {
+    "name": "Marc Gual",
+    "overall": 70,
+    "potential": 70,
+    "position": "ST",
+    "age": 29,
+    "team": "Rio Ave FC"
+  },
+  {
+    "name": "J. Panzo",
+    "overall": 70,
+    "potential": 75,
+    "position": "CB",
+    "age": 24,
+    "team": "Rio Ave FC"
+  },
+  {
+    "name": "Adriano Firmino",
+    "overall": 70,
+    "potential": 75,
+    "position": "CDM, CM, CB",
+    "age": 25,
+    "team": "Santa Clara"
+  },
+  {
+    "name": "Nélson Oliveira",
+    "overall": 70,
+    "potential": 70,
+    "position": "ST",
+    "age": 33,
+    "team": "Vitória SC"
+  },
+  {
+    "name": "Miguel Maga",
+    "overall": 70,
+    "potential": 76,
+    "position": "RB, RM, CB",
+    "age": 22,
+    "team": "Vitória SC"
+  },
+  {
+    "name": "Daniel Figueira",
+    "overall": 70,
+    "potential": 74,
+    "position": "GK",
+    "age": 26,
+    "team": "Gil Vicente FC"
+  },
+  {
+    "name": "Santi García",
+    "overall": 70,
+    "potential": 77,
+    "position": "CM, CDM, CAM",
+    "age": 23,
+    "team": "Gil Vicente FC"
+  },
+  {
+    "name": "Liziero",
+    "overall": 70,
+    "potential": 70,
+    "position": "CM, CDM",
+    "age": 27,
+    "team": "CD Nacional"
+  },
+  {
+    "name": "Joel Silva",
+    "overall": 70,
+    "potential": 76,
+    "position": "CM, CDM, LM",
+    "age": 22,
+    "team": "CD Nacional"
+  },
+  {
+    "name": "Pau Víctor",
+    "overall": 70,
+    "potential": 77,
+    "position": "ST, RW, RM",
+    "age": 23,
+    "team": "Sporting Clube de Braga"
+  },
+  {
+    "name": "João Marques",
+    "overall": 70,
+    "potential": 76,
+    "position": "LW, CAM, CM, LM",
+    "age": 23,
+    "team": "Sporting Clube de Braga"
+  },
+  {
+    "name": "Dinis Pinto",
+    "overall": 70,
+    "potential": 75,
+    "position": "RB",
+    "age": 24,
+    "team": "Moreirense FC"
+  },
+  {
+    "name": "Diogo Travassos",
+    "overall": 70,
+    "potential": 82,
+    "position": "RB, LB, RM",
+    "age": 21,
+    "team": "Moreirense FC"
+  },
+  {
+    "name": "Pedro Amaral",
+    "overall": 70,
+    "potential": 70,
+    "position": "LB, LM, CB",
+    "age": 27,
+    "team": "GD Estoril Praia"
+  },
+  {
+    "name": "T. Fukui",
+    "overall": 70,
+    "potential": 81,
+    "position": "CM, CAM, CDM",
+    "age": 20,
+    "team": "FC Arouca"
+  },
+  {
+    "name": "Bebeto",
+    "overall": 70,
+    "potential": 70,
+    "position": "RB, CM, CDM",
+    "age": 35,
+    "team": "CD Tondela"
+  },
+  {
+    "name": "Rafa Soares",
+    "overall": 70,
+    "potential": 70,
+    "position": "LB, LM",
+    "age": 30,
+    "team": "Famalicão"
+  },
+  {
+    "name": "Rochinha",
+    "overall": 70,
+    "potential": 70,
+    "position": "LM, LW",
+    "age": 30,
+    "team": "Famalicão"
+  },
+  {
+    "name": "I. Zlobin",
+    "overall": 70,
+    "potential": 73,
+    "position": "GK",
+    "age": 28,
+    "team": "Famalicão"
+  },
+  {
+    "name": "T. van de Looi",
+    "overall": 70,
+    "potential": 75,
+    "position": "CDM, CM, CB",
+    "age": 25,
+    "team": "Famalicão"
+  },
+  {
+    "name": "João Goulart",
+    "overall": 70,
+    "potential": 74,
+    "position": "CB",
+    "age": 25,
+    "team": "Casa Pia"
+  },
+  {
+    "name": "Dailon Livramento",
+    "overall": 70,
+    "potential": 75,
+    "position": "ST, CAM, LW",
+    "age": 24,
+    "team": "Casa Pia"
+  },
+  {
+    "name": "Aderllan Santos",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB",
+    "age": 36,
+    "team": "AVS Futebol SAD"
+  },
+  {
+    "name": "Kiki",
+    "overall": 70,
+    "potential": 70,
+    "position": "LB, LM",
+    "age": 30,
+    "team": "AVS Futebol SAD"
+  },
+  {
+    "name": "Algobia",
+    "overall": 70,
+    "potential": 73,
+    "position": "CM, CDM",
+    "age": 26,
+    "team": "AVS Futebol SAD"
+  },
+  {
+    "name": "Gustavo Assunção",
+    "overall": 70,
+    "potential": 76,
+    "position": "CDM, CM",
+    "age": 25,
+    "team": "AVS Futebol SAD"
+  },
+  {
+    "name": "João Costa",
+    "overall": 69,
+    "potential": 69,
+    "position": "GK",
+    "age": 29,
+    "team": "FC Porto"
+  },
+  {
+    "name": "André Gomes",
+    "overall": 69,
+    "potential": 80,
+    "position": "GK",
+    "age": 20,
+    "team": "Alverca"
+  },
+  {
+    "name": "Renan Ribeiro",
+    "overall": 69,
+    "potential": 69,
+    "position": "GK",
+    "age": 35,
+    "team": "Estrela da Amadora"
+  },
+  {
+    "name": "Rodrigo Pinho",
+    "overall": 69,
+    "potential": 69,
+    "position": "ST, RW, RM",
+    "age": 34,
+    "team": "Estrela da Amadora"
+  },
+  {
+    "name": "K. Chamorro",
+    "overall": 69,
+    "potential": 75,
+    "position": "GK",
+    "age": 25,
+    "team": "Rio Ave FC"
+  },
+  {
+    "name": "N. Athanasiou",
+    "overall": 69,
+    "potential": 75,
+    "position": "LB, LM",
+    "age": 24,
+    "team": "Rio Ave FC"
+  },
+  {
+    "name": "G. Liavas",
+    "overall": 69,
+    "potential": 75,
+    "position": "CDM, CM",
+    "age": 24,
+    "team": "Rio Ave FC"
+  },
+  {
+    "name": "D. Špikić",
+    "overall": 69,
+    "potential": 69,
+    "position": "RW, RM, LW",
+    "age": 26,
+    "team": "Rio Ave FC"
+  },
+  {
+    "name": "B. Aguilera",
+    "overall": 69,
+    "potential": 79,
+    "position": "CM, CAM, CDM",
+    "age": 22,
+    "team": "Rio Ave FC"
+  },
+  {
+    "name": "T. Nikitscher",
+    "overall": 69,
+    "potential": 73,
+    "position": "CDM, CM, CB",
+    "age": 25,
+    "team": "Rio Ave FC"
+  },
+  {
+    "name": "Wendel Silva",
+    "overall": 69,
+    "potential": 74,
+    "position": "ST",
+    "age": 24,
+    "team": "Santa Clara"
+  },
+  {
+    "name": "Luís Rocha",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB",
+    "age": 38,
+    "team": "Santa Clara"
+  },
+  {
+    "name": "Diogo Calila",
+    "overall": 69,
+    "potential": 70,
+    "position": "RB, RM",
+    "age": 26,
+    "team": "Santa Clara"
+  },
+  {
+    "name": "Lucas Soares",
+    "overall": 69,
+    "potential": 70,
+    "position": "RB, RM",
+    "age": 27,
+    "team": "Santa Clara"
+  },
+  {
+    "name": "Pedro Ferreira",
+    "overall": 69,
+    "potential": 70,
+    "position": "CDM, CM",
+    "age": 27,
+    "team": "Santa Clara"
+  },
+  {
+    "name": "O. Lebedenko",
+    "overall": 69,
+    "potential": 70,
+    "position": "LB",
+    "age": 26,
+    "team": "Vitória SC"
+  },
+  {
+    "name": "Buatu",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB",
+    "age": 31,
+    "team": "Gil Vicente FC"
+  },
+  {
+    "name": "F. Cáseres",
+    "overall": 69,
+    "potential": 76,
+    "position": "CDM, CM, CB",
+    "age": 24,
+    "team": "Gil Vicente FC"
+  },
+  {
+    "name": "Ulisses Wilson",
+    "overall": 69,
+    "potential": 72,
+    "position": "CB",
+    "age": 25,
+    "team": "CD Nacional"
+  },
+  {
+    "name": "Lucas João",
+    "overall": 69,
+    "potential": 69,
+    "position": "ST",
+    "age": 31,
+    "team": "CD Nacional"
+  },
+  {
+    "name": "Paulinho Bóia",
+    "overall": 69,
+    "potential": 69,
+    "position": "LM, LW, RW",
+    "age": 27,
+    "team": "CD Nacional"
+  },
+  {
+    "name": "M. Dorgeles",
+    "overall": 69,
+    "potential": 81,
+    "position": "CM, CAM",
+    "age": 20,
+    "team": "Sporting Clube de Braga"
+  },
+  {
+    "name": "Benny",
+    "overall": 69,
+    "potential": 69,
+    "position": "LM, CAM, CDM, LB",
+    "age": 27,
+    "team": "Moreirense FC"
+  },
+  {
+    "name": "Cedric Teguia",
+    "overall": 69,
+    "potential": 75,
+    "position": "RM, LM, LW, RW",
+    "age": 23,
+    "team": "Moreirense FC"
+  },
+  {
+    "name": "Vasco Sousa",
+    "overall": 69,
+    "potential": 79,
+    "position": "CAM, CM, CDM",
+    "age": 22,
+    "team": "Moreirense FC"
+  },
+  {
+    "name": "K. Boma",
+    "overall": 69,
+    "potential": 76,
+    "position": "CB",
+    "age": 22,
+    "team": "GD Estoril Praia"
+  },
+  {
+    "name": "F. Bacher",
+    "overall": 69,
+    "potential": 73,
+    "position": "CB",
+    "age": 25,
+    "team": "GD Estoril Praia"
+  },
+  {
+    "name": "B. Kuipers",
+    "overall": 69,
+    "potential": 69,
+    "position": "LB, LM",
+    "age": 30,
+    "team": "FC Arouca"
+  },
+  {
+    "name": "N. Djouahra",
+    "overall": 69,
+    "potential": 70,
+    "position": "LM, RM, LW",
+    "age": 25,
+    "team": "FC Arouca"
+  },
+  {
+    "name": "Lee Hyun Ju",
+    "overall": 69,
+    "potential": 76,
+    "position": "CAM, RM, CM",
+    "age": 22,
+    "team": "FC Arouca"
+  },
+  {
+    "name": "Bernardo",
+    "overall": 69,
+    "potential": 78,
+    "position": "GK",
+    "age": 22,
+    "team": "CD Tondela"
+  },
+  {
+    "name": "João Afonso",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB",
+    "age": 35,
+    "team": "CD Tondela"
+  },
+  {
+    "name": "João Talocha",
+    "overall": 69,
+    "potential": 69,
+    "position": "LB, LM, LW",
+    "age": 35,
+    "team": "CD Tondela"
+  },
+  {
+    "name": "L. Realpe",
+    "overall": 69,
+    "potential": 77,
+    "position": "CB",
+    "age": 24,
+    "team": "Famalicão"
+  },
+  {
+    "name": "S. Elisor",
+    "overall": 69,
+    "potential": 72,
+    "position": "ST",
+    "age": 25,
+    "team": "Famalicão"
+  },
+  {
+    "name": "A. Joujou",
+    "overall": 69,
+    "potential": 75,
+    "position": "LM, RM, LW",
+    "age": 22,
+    "team": "Famalicão"
+  },
+  {
+    "name": "M. de Amorim",
+    "overall": 69,
+    "potential": 80,
+    "position": "CM, CAM, CDM",
+    "age": 20,
+    "team": "Famalicão"
+  },
+  {
+    "name": "I. Mandić",
+    "overall": 69,
+    "potential": 77,
+    "position": "GK",
+    "age": 22,
+    "team": "Casa Pia"
+  },
+  {
+    "name": "André Geraldes",
+    "overall": 69,
+    "potential": 69,
+    "position": "RB, RM",
+    "age": 34,
+    "team": "Casa Pia"
+  },
+  {
+    "name": "Kaique Rocha",
+    "overall": 69,
+    "potential": 78,
+    "position": "CB, RB",
+    "age": 24,
+    "team": "Casa Pia"
+  },
+  {
+    "name": "Tiago Morais",
+    "overall": 69,
+    "potential": 78,
+    "position": "LM, LW",
+    "age": 21,
+    "team": "Casa Pia"
+  },
+  {
+    "name": "Carlos Ponck",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB",
+    "age": 34,
+    "team": "AVS Futebol SAD"
+  },
+  {
+    "name": "Jaume Grau",
+    "overall": 69,
+    "potential": 69,
+    "position": "CM, CDM",
+    "age": 28,
+    "team": "AVS Futebol SAD"
+  },
+  {
+    "name": "João Gonçalves",
+    "overall": 69,
+    "potential": 75,
+    "position": "GK",
+    "age": 24,
+    "team": "AVS Futebol SAD"
+  },
+  {
+    "name": "C. Devenish",
+    "overall": 69,
+    "potential": 76,
+    "position": "CB, RB, CDM",
+    "age": 24,
+    "team": "AVS Futebol SAD"
+  },
+  {
+    "name": "Alisson",
+    "overall": 68,
+    "potential": 77,
+    "position": "LW, RW, LM",
+    "age": 22,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "S. Faye",
+    "overall": 68,
+    "potential": 77,
+    "position": "LW, LM, RW",
+    "age": 22,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "Diego Calai",
+    "overall": 68,
+    "potential": 81,
+    "position": "GK",
+    "age": 20,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "Matheus Mendes",
+    "overall": 68,
+    "potential": 70,
+    "position": "GK",
+    "age": 26,
+    "team": "Alverca"
+  },
+  {
+    "name": "S. Diarra",
+    "overall": 68,
+    "potential": 68,
+    "position": "RM, LM, RW",
+    "age": 26,
+    "team": "Alverca"
+  },
+  {
+    "name": "Serginho",
+    "overall": 68,
+    "potential": 71,
+    "position": "CM, CAM, CDM",
+    "age": 25,
+    "team": "Santa Clara"
+  },
+  {
+    "name": "J. Castillo",
+    "overall": 68,
+    "potential": 77,
+    "position": "GK",
+    "age": 22,
+    "team": "Vitória SC"
+  },
+  {
+    "name": "Charles",
+    "overall": 68,
+    "potential": 68,
+    "position": "GK",
+    "age": 31,
+    "team": "Vitória SC"
+  },
+  {
+    "name": "Óscar Rivas",
+    "overall": 68,
+    "potential": 75,
+    "position": "CB, CDM, CM",
+    "age": 25,
+    "team": "Vitória SC"
+  },
+  {
+    "name": "Beni",
+    "overall": 68,
+    "potential": 75,
+    "position": "CM, CDM",
+    "age": 23,
+    "team": "Vitória SC"
+  },
+  {
+    "name": "Gustavo Varela",
+    "overall": 68,
+    "potential": 79,
+    "position": "ST",
+    "age": 20,
+    "team": "Gil Vicente FC"
+  },
+  {
+    "name": "Bermejo",
+    "overall": 68,
+    "potential": 68,
+    "position": "RM, CAM, RW",
+    "age": 27,
+    "team": "Gil Vicente FC"
+  },
+  {
+    "name": "Hevertton",
+    "overall": 68,
+    "potential": 71,
+    "position": "RM, RB",
+    "age": 24,
+    "team": "Gil Vicente FC"
+  },
+  {
+    "name": "T. Touré",
+    "overall": 68,
+    "potential": 75,
+    "position": "LM, RM, LW",
+    "age": 22,
+    "team": "Gil Vicente FC"
+  },
+  {
+    "name": "Matheus Dias",
+    "overall": 68,
+    "potential": 76,
+    "position": "CDM, CM, CB",
+    "age": 23,
+    "team": "CD Nacional"
+  },
+  {
+    "name": "Witi",
+    "overall": 68,
+    "potential": 68,
+    "position": "LW, RW, LB, LM",
+    "age": 28,
+    "team": "CD Nacional"
+  },
+  {
+    "name": "José Gomes",
+    "overall": 68,
+    "potential": 68,
+    "position": "LB, LM",
+    "age": 28,
+    "team": "CD Nacional"
+  },
+  {
+    "name": "A. Bellaarouch",
+    "overall": 68,
+    "potential": 76,
+    "position": "GK",
+    "age": 23,
+    "team": "Sporting Clube de Braga"
+  },
+  {
+    "name": "André Ferreira",
+    "overall": 68,
+    "potential": 69,
+    "position": "GK",
+    "age": 29,
+    "team": "Moreirense FC"
+  },
+  {
+    "name": "André Lacximicant",
+    "overall": 68,
+    "potential": 73,
+    "position": "ST",
+    "age": 24,
+    "team": "GD Estoril Praia"
+  },
+  {
+    "name": "Ferro",
+    "overall": 68,
+    "potential": 68,
+    "position": "CB",
+    "age": 28,
+    "team": "GD Estoril Praia"
+  },
+  {
+    "name": "Alex Pinto",
+    "overall": 68,
+    "potential": 69,
+    "position": "RB",
+    "age": 26,
+    "team": "FC Arouca"
+  },
+  {
+    "name": "João Valido",
+    "overall": 68,
+    "potential": 71,
+    "position": "GK",
+    "age": 25,
+    "team": "FC Arouca"
+  },
+  {
+    "name": "A. Dante",
+    "overall": 68,
+    "potential": 73,
+    "position": "LB, LM",
+    "age": 24,
+    "team": "FC Arouca"
+  },
+  {
+    "name": "B. Mansilla",
+    "overall": 68,
+    "potential": 76,
+    "position": "RM, LM, LW, RW",
+    "age": 23,
+    "team": "FC Arouca"
+  },
+  {
+    "name": "Yellu Santiago",
+    "overall": 68,
+    "potential": 80,
+    "position": "CDM, CM",
+    "age": 21,
+    "team": "FC Arouca"
+  },
+  {
+    "name": "Pedro Santos",
+    "overall": 68,
+    "potential": 73,
+    "position": "CM, CAM, CDM",
+    "age": 24,
+    "team": "FC Arouca"
+  },
+  {
+    "name": "D. Nandín",
+    "overall": 68,
+    "potential": 76,
+    "position": "ST",
+    "age": 23,
+    "team": "FC Arouca"
+  },
+  {
+    "name": "Tiago Manso",
+    "overall": 68,
+    "potential": 71,
+    "position": "RB, CB, RM",
+    "age": 25,
+    "team": "CD Tondela"
+  },
+  {
+    "name": "Maranhão",
+    "overall": 68,
+    "potential": 69,
+    "position": "RW, LM, LW, RM",
+    "age": 26,
+    "team": "CD Tondela"
+  },
+  {
+    "name": "R. Vita",
+    "overall": 68,
+    "potential": 75,
+    "position": "LB",
+    "age": 24,
+    "team": "CD Tondela"
+  },
+  {
+    "name": "B. Medina",
+    "overall": 68,
+    "potential": 77,
+    "position": "CB",
+    "age": 23,
+    "team": "CD Tondela"
+  },
+  {
+    "name": "Tomané",
+    "overall": 68,
+    "potential": 68,
+    "position": "ST",
+    "age": 32,
+    "team": "AVS Futebol SAD"
+  },
+  {
+    "name": "Simão Bertelli",
+    "overall": 68,
+    "potential": 68,
+    "position": "GK",
+    "age": 31,
+    "team": "AVS Futebol SAD"
+  },
+  {
+    "name": "B. Akinsola",
+    "overall": 68,
+    "potential": 77,
+    "position": "LM, RM, ST, LW",
+    "age": 22,
+    "team": "AVS Futebol SAD"
+  },
+  {
+    "name": "Sidny Cabral",
+    "overall": 67,
+    "potential": 76,
+    "position": "RB, LB, RM",
+    "age": 22,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "João Rego",
+    "overall": 67,
+    "potential": 81,
+    "position": "CAM, RM, CM",
+    "age": 20,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "Rayan Lucas",
+    "overall": 67,
+    "potential": 82,
+    "position": "CDM, CM",
+    "age": 20,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "Salvador Blopa",
+    "overall": 67,
+    "potential": 82,
+    "position": "RM, RW, RB",
+    "age": 18,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "Diogo Martins",
+    "overall": 67,
+    "potential": 67,
+    "position": "CAM, CM",
+    "age": 28,
+    "team": "Alverca"
+  },
+  {
+    "name": "Alex Amorim",
+    "overall": 67,
+    "potential": 75,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Alverca"
+  },
+  {
+    "name": "Sandro Lima",
+    "overall": 67,
+    "potential": 67,
+    "position": "ST",
+    "age": 34,
+    "team": "Alverca"
+  },
+  {
+    "name": "Nabil Touaizi",
+    "overall": 67,
+    "potential": 70,
+    "position": "RM, RB, ST",
+    "age": 24,
+    "team": "Alverca"
+  },
+  {
+    "name": "M. Milovanović",
+    "overall": 67,
+    "potential": 77,
+    "position": "ST",
+    "age": 21,
+    "team": "Alverca"
+  },
+  {
+    "name": "Paulo Moreira",
+    "overall": 67,
+    "potential": 72,
+    "position": "CM, CAM, CDM",
+    "age": 25,
+    "team": "Estrela da Amadora"
+  },
+  {
+    "name": "I. Dramé",
+    "overall": 67,
+    "potential": 69,
+    "position": "CB",
+    "age": 26,
+    "team": "Estrela da Amadora"
+  },
+  {
+    "name": "Diogo Pinto",
+    "overall": 67,
+    "potential": 79,
+    "position": "GK",
+    "age": 21,
+    "team": "Estrela da Amadora"
+  },
+  {
+    "name": "F. Petrasso",
+    "overall": 67,
+    "potential": 76,
+    "position": "CB, RB, CDM",
+    "age": 23,
+    "team": "Rio Ave FC"
+  },
+  {
+    "name": "João Costa",
+    "overall": 67,
+    "potential": 71,
+    "position": "ST",
+    "age": 25,
+    "team": "Santa Clara"
+  },
+  {
+    "name": "Paulo Victor",
+    "overall": 67,
+    "potential": 73,
+    "position": "LB, LM",
+    "age": 24,
+    "team": "Santa Clara"
+  },
+  {
+    "name": "Welinton Torrão",
+    "overall": 67,
+    "potential": 68,
+    "position": "RW, LW, RM",
+    "age": 26,
+    "team": "Santa Clara"
+  },
+  {
+    "name": "Pedro Pacheco",
+    "overall": 67,
+    "potential": 68,
+    "position": "CB",
+    "age": 28,
+    "team": "Santa Clara"
+  },
+  {
+    "name": "Gustavo Klismahn",
+    "overall": 67,
+    "potential": 70,
+    "position": "CM, LM, CDM",
+    "age": 25,
+    "team": "Santa Clara"
+  },
+  {
+    "name": "Brenner",
+    "overall": 67,
+    "potential": 72,
+    "position": "LW, RW, LM",
+    "age": 23,
+    "team": "Santa Clara"
+  },
+  {
+    "name": "M. Mitrović",
+    "overall": 67,
+    "potential": 79,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Vitória SC"
+  },
+  {
+    "name": "M. Elimbi",
+    "overall": 67,
+    "potential": 76,
+    "position": "CB",
+    "age": 22,
+    "team": "Gil Vicente FC"
+  },
+  {
+    "name": "M. Fernández Benítez",
+    "overall": 67,
+    "potential": 75,
+    "position": "CAM, CM, LM",
+    "age": 22,
+    "team": "Gil Vicente FC"
+  },
+  {
+    "name": "C. Labidi",
+    "overall": 67,
+    "potential": 72,
+    "position": "CM, CDM",
+    "age": 24,
+    "team": "CD Nacional"
+  },
+  {
+    "name": "Léo Santos",
+    "overall": 67,
+    "potential": 70,
+    "position": "CB",
+    "age": 26,
+    "team": "CD Nacional"
+  },
+  {
+    "name": "L. Vallier",
+    "overall": 67,
+    "potential": 69,
+    "position": "LB, LM",
+    "age": 26,
+    "team": "CD Nacional"
+  },
+  {
+    "name": "Filipe Soares",
+    "overall": 67,
+    "potential": 70,
+    "position": "CM, CAM, CDM",
+    "age": 26,
+    "team": "CD Nacional"
+  },
+  {
+    "name": "Miguel Baeza",
+    "overall": 67,
+    "potential": 71,
+    "position": "CM, RM, CDM",
+    "age": 25,
+    "team": "CD Nacional"
+  },
+  {
+    "name": "Leandro Santos",
+    "overall": 67,
+    "potential": 81,
+    "position": "RB",
+    "age": 19,
+    "team": "Moreirense FC"
+  },
+  {
+    "name": "Caio Secco",
+    "overall": 67,
+    "potential": 67,
+    "position": "GK",
+    "age": 34,
+    "team": "Moreirense FC"
+  },
+  {
+    "name": "Fabrício Garcia",
+    "overall": 67,
+    "potential": 73,
+    "position": "LM, LW, RW",
+    "age": 24,
+    "team": "GD Estoril Praia"
+  },
+  {
+    "name": "Gonçalo Costa",
+    "overall": 67,
+    "potential": 72,
+    "position": "LB, LM",
+    "age": 25,
+    "team": "GD Estoril Praia"
+  },
+  {
+    "name": "Jandro Orellana",
+    "overall": 67,
+    "potential": 74,
+    "position": "CDM, CM",
+    "age": 24,
+    "team": "GD Estoril Praia"
+  },
+  {
+    "name": "Pablo Gozálbez",
+    "overall": 67,
+    "potential": 74,
+    "position": "CAM, LM, RM, CM",
+    "age": 24,
+    "team": "FC Arouca"
+  },
+  {
+    "name": "Barbero",
+    "overall": 67,
+    "potential": 68,
+    "position": "ST",
+    "age": 26,
+    "team": "FC Arouca"
+  },
+  {
+    "name": "B. Popović",
+    "overall": 67,
+    "potential": 70,
+    "position": "CB",
+    "age": 25,
+    "team": "FC Arouca"
+  },
+  {
+    "name": "Miguel Puche",
+    "overall": 67,
+    "potential": 73,
+    "position": "LM, ST, RM, LW",
+    "age": 24,
+    "team": "FC Arouca"
+  },
+  {
+    "name": "M. Rocha",
+    "overall": 67,
+    "potential": 73,
+    "position": "CB, RB",
+    "age": 24,
+    "team": "FC Arouca"
+  },
+  {
+    "name": "Ivan Cavaleiro",
+    "overall": 67,
+    "potential": 67,
+    "position": "LM, CAM, LW",
+    "age": 31,
+    "team": "CD Tondela"
+  },
+  {
+    "name": "Christian Marques",
+    "overall": 67,
+    "potential": 76,
+    "position": "CB",
+    "age": 22,
+    "team": "CD Tondela"
+  },
+  {
+    "name": "Hugo Félix",
+    "overall": 67,
+    "potential": 77,
+    "position": "RM, CAM, RW",
+    "age": 21,
+    "team": "CD Tondela"
+  },
+  {
+    "name": "Pedro Bondo",
+    "overall": 67,
+    "potential": 80,
+    "position": "LB",
+    "age": 20,
+    "team": "Famalicão"
+  },
+  {
+    "name": "Y. Oukili",
+    "overall": 67,
+    "potential": 72,
+    "position": "CM, CDM",
+    "age": 24,
+    "team": "Casa Pia"
+  },
+  {
+    "name": "X. Severina",
+    "overall": 67,
+    "potential": 73,
+    "position": "LW, LM",
+    "age": 24,
+    "team": "Casa Pia"
+  },
+  {
+    "name": "Miguel Sousa",
+    "overall": 67,
+    "potential": 68,
+    "position": "CAM, CM, RM",
+    "age": 26,
+    "team": "Casa Pia"
+  },
+  {
+    "name": "D. Duarte",
+    "overall": 67,
+    "potential": 76,
+    "position": "ST",
+    "age": 23,
+    "team": "AVS Futebol SAD"
+  },
+  {
+    "name": "Guillem Molina",
+    "overall": 67,
+    "potential": 72,
+    "position": "RB, CB, LB",
+    "age": 25,
+    "team": "AVS Futebol SAD"
+  },
+  {
+    "name": "Ó. Perea",
+    "overall": 67,
+    "potential": 75,
+    "position": "LM, LW",
+    "age": 19,
+    "team": "AVS Futebol SAD"
+  },
+  {
+    "name": "Diogo Prioste",
+    "overall": 66,
+    "potential": 79,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "J. Wynder",
+    "overall": 66,
+    "potential": 76,
+    "position": "CB",
+    "age": 20,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "O. Pietuszewski",
+    "overall": 66,
+    "potential": 80,
+    "position": "LM, LW, RM",
+    "age": 17,
+    "team": "FC Porto"
+  },
+  {
+    "name": "Alarcón",
+    "overall": 66,
+    "potential": 79,
+    "position": "LW, LM, RW",
+    "age": 21,
+    "team": "FC Porto"
+  },
+  {
+    "name": "Lucas Anjos",
+    "overall": 66,
+    "potential": 80,
+    "position": "ST, LW, CAM",
+    "age": 20,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "M. Clairicia",
+    "overall": 66,
+    "potential": 75,
+    "position": "ST",
+    "age": 22,
+    "team": "Alverca"
+  },
+  {
+    "name": "T. Moustier",
+    "overall": 66,
+    "potential": 73,
+    "position": "CM, CDM",
+    "age": 23,
+    "team": "Estrela da Amadora"
+  },
+  {
+    "name": "Robinho",
+    "overall": 66,
+    "potential": 75,
+    "position": "CM, CAM, CDM",
+    "age": 22,
+    "team": "Estrela da Amadora"
+  },
+  {
+    "name": "Jefferson Encada",
+    "overall": 66,
+    "potential": 67,
+    "position": "RB, RM, RW",
+    "age": 27,
+    "team": "Estrela da Amadora"
+  },
+  {
+    "name": "A. Marcus",
+    "overall": 66,
+    "potential": 67,
+    "position": "RM, RW, CM",
+    "age": 25,
+    "team": "Estrela da Amadora"
+  },
+  {
+    "name": "João Tomé",
+    "overall": 66,
+    "potential": 74,
+    "position": "RB, RM",
+    "age": 22,
+    "team": "Rio Ave FC"
+  },
+  {
+    "name": "João Graça",
+    "overall": 66,
+    "potential": 66,
+    "position": "CM, RW, CDM",
+    "age": 30,
+    "team": "Rio Ave FC"
+  },
+  {
+    "name": "N. Abbey",
+    "overall": 66,
+    "potential": 75,
+    "position": "CB, LB, CDM",
+    "age": 21,
+    "team": "Rio Ave FC"
+  },
+  {
+    "name": "Vando Félix",
+    "overall": 66,
+    "potential": 72,
+    "position": "LM, RM, LW",
+    "age": 22,
+    "team": "Vitória SC"
+  },
+  {
+    "name": "Miguel Nóbrega",
+    "overall": 66,
+    "potential": 72,
+    "position": "CB",
+    "age": 25,
+    "team": "Vitória SC"
+  },
+  {
+    "name": "Gonçalo Nogueira",
+    "overall": 66,
+    "potential": 77,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "Vitória SC"
+  },
+  {
+    "name": "Joelson Fernandes",
+    "overall": 66,
+    "potential": 75,
+    "position": "LM, RM, LW",
+    "age": 22,
+    "team": "Gil Vicente FC"
+  },
+  {
+    "name": "Espigares",
+    "overall": 66,
+    "potential": 77,
+    "position": "CB, RB",
+    "age": 20,
+    "team": "Gil Vicente FC"
+  },
+  {
+    "name": "Zé Carlos",
+    "overall": 66,
+    "potential": 73,
+    "position": "RB, CM",
+    "age": 23,
+    "team": "Gil Vicente FC"
+  },
+  {
+    "name": "Kaique Pereira",
+    "overall": 66,
+    "potential": 78,
+    "position": "GK",
+    "age": 22,
+    "team": "CD Nacional"
+  },
+  {
+    "name": "Daniel Júnior",
+    "overall": 66,
+    "potential": 73,
+    "position": "CAM, LW, CM",
+    "age": 23,
+    "team": "CD Nacional"
+  },
+  {
+    "name": "João Aurélio",
+    "overall": 66,
+    "potential": 66,
+    "position": "RB",
+    "age": 36,
+    "team": "CD Nacional"
+  },
+  {
+    "name": "Ivanildo Fernandes",
+    "overall": 66,
+    "potential": 66,
+    "position": "CB",
+    "age": 29,
+    "team": "CD Nacional"
+  },
+  {
+    "name": "Diego Rodrigues",
+    "overall": 66,
+    "potential": 81,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Sporting Clube de Braga"
+  },
+  {
+    "name": "Afonso Patrão",
+    "overall": 66,
+    "potential": 80,
+    "position": "ST, CAM, RW",
+    "age": 18,
+    "team": "Sporting Clube de Braga"
+  },
+  {
+    "name": "Tiago Sá",
+    "overall": 66,
+    "potential": 66,
+    "position": "GK",
+    "age": 30,
+    "team": "Sporting Clube de Braga"
+  },
+  {
+    "name": "J. Gower",
+    "overall": 66,
+    "potential": 80,
+    "position": "CM, CAM, CDM",
+    "age": 20,
+    "team": "Moreirense FC"
+  },
+  {
+    "name": "Álvaro Martínez",
+    "overall": 66,
+    "potential": 70,
+    "position": "LB, LM",
+    "age": 23,
+    "team": "Moreirense FC"
+  },
+  {
+    "name": "Mika",
+    "overall": 66,
+    "potential": 66,
+    "position": "GK",
+    "age": 34,
+    "team": "Moreirense FC"
+  },
+  {
+    "name": "Mateo Flores",
+    "overall": 66,
+    "potential": 79,
+    "position": "CDM, CM",
+    "age": 21,
+    "team": "FC Arouca"
+  },
+  {
+    "name": "Arnau Solà",
+    "overall": 66,
+    "potential": 75,
+    "position": "LB, LM",
+    "age": 22,
+    "team": "FC Arouca"
+  },
+  {
+    "name": "André Ceitil",
+    "overall": 66,
+    "potential": 66,
+    "position": "CDM, CM",
+    "age": 30,
+    "team": "CD Tondela"
+  },
+  {
+    "name": "Cícero",
+    "overall": 66,
+    "potential": 67,
+    "position": "CDM, CM",
+    "age": 28,
+    "team": "CD Tondela"
+  },
+  {
+    "name": "Hélder Tavares",
+    "overall": 66,
+    "potential": 66,
+    "position": "CDM, CM",
+    "age": 35,
+    "team": "CD Tondela"
+  },
+  {
+    "name": "S. Sithole",
+    "overall": 66,
+    "potential": 70,
+    "position": "CDM, CM",
+    "age": 26,
+    "team": "CD Tondela"
+  },
+  {
+    "name": "Cañizares",
+    "overall": 66,
+    "potential": 76,
+    "position": "GK",
+    "age": 23,
+    "team": "CD Tondela"
+  },
+  {
+    "name": "Rodrigo Conceição",
+    "overall": 66,
+    "potential": 69,
+    "position": "RB, RM, LM",
+    "age": 25,
+    "team": "CD Tondela"
+  },
+  {
+    "name": "K. Nsona",
+    "overall": 66,
+    "potential": 72,
+    "position": "LM, LW, RM",
+    "age": 23,
+    "team": "Casa Pia"
+  },
+  {
+    "name": "David Sousa",
+    "overall": 66,
+    "potential": 75,
+    "position": "CB",
+    "age": 23,
+    "team": "Casa Pia"
+  },
+  {
+    "name": "Rafael Brito",
+    "overall": 66,
+    "potential": 73,
+    "position": "CM, CDM",
+    "age": 23,
+    "team": "Casa Pia"
+  },
+  {
+    "name": "Roni",
+    "overall": 66,
+    "potential": 71,
+    "position": "CDM, CM",
+    "age": 26,
+    "team": "AVS Futebol SAD"
+  },
+  {
+    "name": "Adriel",
+    "overall": 66,
+    "potential": 72,
+    "position": "GK",
+    "age": 24,
+    "team": "AVS Futebol SAD"
+  },
+  {
+    "name": "Rafael Barbosa",
+    "overall": 66,
+    "potential": 66,
+    "position": "LM, CAM, LW",
+    "age": 29,
+    "team": "AVS Futebol SAD"
+  },
+  {
+    "name": "Pedro Lima",
+    "overall": 66,
+    "potential": 75,
+    "position": "CM, CAM, CDM",
+    "age": 22,
+    "team": "AVS Futebol SAD"
+  },
+  {
+    "name": "João Veloso",
+    "overall": 65,
+    "potential": 79,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "T. Pérez",
+    "overall": 65,
+    "potential": 79,
+    "position": "CDM, CM",
+    "age": 19,
+    "team": "FC Porto"
+  },
+  {
+    "name": "Flávio Gonçalves",
+    "overall": 65,
+    "potential": 80,
+    "position": "CAM, LW, CM",
+    "age": 18,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "J. Martinez",
+    "overall": 65,
+    "potential": 74,
+    "position": "CB, LB",
+    "age": 21,
+    "team": "Alverca"
+  },
+  {
+    "name": "Léo Chú",
+    "overall": 65,
+    "potential": 68,
+    "position": "LM, CAM, LW",
+    "age": 25,
+    "team": "Alverca"
+  },
+  {
+    "name": "K. Höög Jansson",
+    "overall": 65,
+    "potential": 70,
+    "position": "CM, CB, CDM",
+    "age": 24,
+    "team": "Estrela da Amadora"
+  },
+  {
+    "name": "Luan Patrick",
+    "overall": 65,
+    "potential": 74,
+    "position": "CB",
+    "age": 23,
+    "team": "Estrela da Amadora"
+  },
+  {
+    "name": "J. Lomboto",
+    "overall": 65,
+    "potential": 73,
+    "position": "CB, CDM",
+    "age": 23,
+    "team": "Rio Ave FC"
+  },
+  {
+    "name": "A. Ndoye",
+    "overall": 65,
+    "potential": 71,
+    "position": "ST",
+    "age": 23,
+    "team": "Vitória SC"
+  },
+  {
+    "name": "M. Bamba",
+    "overall": 65,
+    "potential": 78,
+    "position": "CDM, CM",
+    "age": 20,
+    "team": "Gil Vicente FC"
+  },
+  {
+    "name": "J. Mutombo",
+    "overall": 65,
+    "potential": 74,
+    "position": "RB, LB",
+    "age": 22,
+    "team": "Gil Vicente FC"
+  },
+  {
+    "name": "Carlos Eduardo",
+    "overall": 65,
+    "potential": 74,
+    "position": "ST",
+    "age": 22,
+    "team": "Gil Vicente FC"
+  },
+  {
+    "name": "André Sousa",
+    "overall": 65,
+    "potential": 65,
+    "position": "CDM, CM",
+    "age": 34,
+    "team": "CD Nacional"
+  },
+  {
+    "name": "Sandro Vidigal",
+    "overall": 65,
+    "potential": 82,
+    "position": "LW, RW, CAM, LM",
+    "age": 17,
+    "team": "Sporting Clube de Braga"
+  },
+  {
+    "name": "Yan Lincon",
+    "overall": 65,
+    "potential": 74,
+    "position": "ST",
+    "age": 22,
+    "team": "Moreirense FC"
+  },
+  {
+    "name": "Kiko",
+    "overall": 65,
+    "potential": 74,
+    "position": "LB, LM",
+    "age": 23,
+    "team": "Moreirense FC"
+  },
+  {
+    "name": "M. Stjepanović",
+    "overall": 65,
+    "potential": 75,
+    "position": "CDM, CM",
+    "age": 21,
+    "team": "Moreirense FC"
+  },
+  {
+    "name": "Rodri Alonso",
+    "overall": 65,
+    "potential": 74,
+    "position": "RM, CM, LM, RW",
+    "age": 22,
+    "team": "Moreirense FC"
+  },
+  {
+    "name": "Gilberto",
+    "overall": 65,
+    "potential": 75,
+    "position": "CB, RB, CDM",
+    "age": 21,
+    "team": "Moreirense FC"
+  },
+  {
+    "name": "Pedro Carvalho",
+    "overall": 65,
+    "potential": 73,
+    "position": "RB, RM",
+    "age": 22,
+    "team": "GD Estoril Praia"
+  },
+  {
+    "name": "E. van Ee",
+    "overall": 65,
+    "potential": 76,
+    "position": "CDM, CM",
+    "age": 21,
+    "team": "FC Arouca"
+  },
+  {
+    "name": "O. Fayed",
+    "overall": 65,
+    "potential": 75,
+    "position": "CB",
+    "age": 21,
+    "team": "FC Arouca"
+  },
+  {
+    "name": "Xabi Huarte",
+    "overall": 65,
+    "potential": 72,
+    "position": "CAM, CM",
+    "age": 24,
+    "team": "CD Tondela"
+  },
+  {
+    "name": "M. Aïko",
+    "overall": 65,
+    "potential": 69,
+    "position": "ST, RM, RW",
+    "age": 24,
+    "team": "CD Tondela"
+  },
+  {
+    "name": "Gabriel Souza",
+    "overall": 65,
+    "potential": 67,
+    "position": "GK",
+    "age": 28,
+    "team": "CD Tondela"
+  },
+  {
+    "name": "J. Hodge",
+    "overall": 65,
+    "potential": 74,
+    "position": "CDM, CM, CAM",
+    "age": 22,
+    "team": "CD Tondela"
+  },
+  {
+    "name": "E. Maviram",
+    "overall": 65,
+    "potential": 69,
+    "position": "LB",
+    "age": 24,
+    "team": "CD Tondela"
+  },
+  {
+    "name": "Pedro Santos",
+    "overall": 65,
+    "potential": 75,
+    "position": "RM, RW",
+    "age": 22,
+    "team": "Famalicão"
+  },
+  {
+    "name": "O. Mamageishvili",
+    "overall": 65,
+    "potential": 74,
+    "position": "CM, CDM",
+    "age": 22,
+    "team": "Famalicão"
+  },
+  {
+    "name": "U. Abubakar",
+    "overall": 65,
+    "potential": 77,
+    "position": "ST",
+    "age": 19,
+    "team": "Famalicão"
+  },
+  {
+    "name": "F. Benaissa-Yahia",
+    "overall": 65,
+    "potential": 72,
+    "position": "LB, LM",
+    "age": 23,
+    "team": "Casa Pia"
+  },
+  {
+    "name": "I. Mohamed",
+    "overall": 65,
+    "potential": 73,
+    "position": "CDM, CM, CB",
+    "age": 24,
+    "team": "Casa Pia"
+  },
+  {
+    "name": "Diogo Spencer",
+    "overall": 65,
+    "potential": 79,
+    "position": "RB, RM, LB",
+    "age": 21,
+    "team": "AVS Futebol SAD"
+  },
+  {
+    "name": "Gustavo",
+    "overall": 65,
+    "potential": 76,
+    "position": "CM, CDM",
+    "age": 22,
+    "team": "AVS Futebol SAD"
+  },
+  {
+    "name": "Paulo Vitor",
+    "overall": 65,
+    "potential": 71,
+    "position": "CB",
+    "age": 23,
+    "team": "AVS Futebol SAD"
+  },
+  {
+    "name": "Pedro Trigueira",
+    "overall": 65,
+    "potential": 65,
+    "position": "GK",
+    "age": 37,
+    "team": "AVS Futebol SAD"
+  },
+  {
+    "name": "L. Rivas",
+    "overall": 65,
+    "potential": 71,
+    "position": "LB, LM",
+    "age": 23,
+    "team": "AVS Futebol SAD"
+  },
+  {
+    "name": "T. Galletto",
+    "overall": 65,
+    "potential": 75,
+    "position": "CDM, CM, CB",
+    "age": 23,
+    "team": "AVS Futebol SAD"
+  },
+  {
+    "name": "Nuno Félix",
+    "overall": 64,
+    "potential": 75,
+    "position": "CDM, CM",
+    "age": 21,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "Diogo Ferreira",
+    "overall": 64,
+    "potential": 79,
+    "position": "GK",
+    "age": 18,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "Gonçalo Oliveira",
+    "overall": 64,
+    "potential": 79,
+    "position": "CB",
+    "age": 18,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "Gonçalo Sobral",
+    "overall": 64,
+    "potential": 79,
+    "position": "GK",
+    "age": 19,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "Francisco Silva",
+    "overall": 64,
+    "potential": 77,
+    "position": "GK",
+    "age": 19,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "C. Nuozzi",
+    "overall": 64,
+    "potential": 76,
+    "position": "LW, RW, LM",
+    "age": 19,
+    "team": "Alverca"
+  },
+  {
+    "name": "Gonçalo Esteves",
+    "overall": 64,
+    "potential": 72,
+    "position": "RB, RM",
+    "age": 21,
+    "team": "Alverca"
+  },
+  {
+    "name": "B. Meupiyou",
+    "overall": 64,
+    "potential": 74,
+    "position": "CB",
+    "age": 19,
+    "team": "Alverca"
+  },
+  {
+    "name": "David Grilo",
+    "overall": 64,
+    "potential": 64,
+    "position": "GK",
+    "age": 28,
+    "team": "Estrela da Amadora"
+  },
+  {
+    "name": "Ryan Carlos",
+    "overall": 64,
+    "potential": 69,
+    "position": "LB, LM",
+    "age": 23,
+    "team": "Estrela da Amadora"
+  },
+  {
+    "name": "Alan Godoy",
+    "overall": 64,
+    "potential": 75,
+    "position": "ST, LW, RW",
+    "age": 22,
+    "team": "Estrela da Amadora"
+  },
+  {
+    "name": "T. Bakoulas",
+    "overall": 64,
+    "potential": 79,
+    "position": "CDM, CM",
+    "age": 20,
+    "team": "Rio Ave FC"
+  },
+  {
+    "name": "Rafael Lobato",
+    "overall": 64,
+    "potential": 79,
+    "position": "RW, LW, RM",
+    "age": 19,
+    "team": "Rio Ave FC"
+  },
+  {
+    "name": "Alfonso Pastor",
+    "overall": 64,
+    "potential": 70,
+    "position": "GK",
+    "age": 24,
+    "team": "Rio Ave FC"
+  },
+  {
+    "name": "T. Medina",
+    "overall": 64,
+    "potential": 76,
+    "position": "CM, CAM, CDM",
+    "age": 21,
+    "team": "Rio Ave FC"
+  },
+  {
+    "name": "Fabio Blanco",
+    "overall": 64,
+    "potential": 75,
+    "position": "RM, LM, RW",
+    "age": 21,
+    "team": "Vitória SC"
+  },
+  {
+    "name": "T. Strata",
+    "overall": 64,
+    "potential": 73,
+    "position": "RB, LB, LM",
+    "age": 20,
+    "team": "Vitória SC"
+  },
+  {
+    "name": "A. Moreira",
+    "overall": 64,
+    "potential": 70,
+    "position": "RW, LW, RM",
+    "age": 24,
+    "team": "Gil Vicente FC"
+  },
+  {
+    "name": "Jota",
+    "overall": 64,
+    "potential": 64,
+    "position": "CM, CDM",
+    "age": 32,
+    "team": "CD Nacional"
+  },
+  {
+    "name": "Yanis da Rocha",
+    "overall": 64,
+    "potential": 78,
+    "position": "CDM, CM",
+    "age": 21,
+    "team": "Sporting Clube de Braga"
+  },
+  {
+    "name": "Michel",
+    "overall": 64,
+    "potential": 77,
+    "position": "CB",
+    "age": 22,
+    "team": "Moreirense FC"
+  },
+  {
+    "name": "N. Lominadze",
+    "overall": 64,
+    "potential": 71,
+    "position": "CM, CDM",
+    "age": 23,
+    "team": "GD Estoril Praia"
+  },
+  {
+    "name": "A. Tsoungui",
+    "overall": 64,
+    "potential": 75,
+    "position": "CB, CDM",
+    "age": 22,
+    "team": "GD Estoril Praia"
+  },
+  {
+    "name": "M. Turk",
+    "overall": 64,
+    "potential": 75,
+    "position": "GK",
+    "age": 21,
+    "team": "GD Estoril Praia"
+  },
+  {
+    "name": "S. Moudjatovic",
+    "overall": 64,
+    "potential": 69,
+    "position": "LW, LM",
+    "age": 23,
+    "team": "CD Tondela"
+  },
+  {
+    "name": "Yarlen",
+    "overall": 64,
+    "potential": 78,
+    "position": "RM, LM, RW",
+    "age": 19,
+    "team": "CD Tondela"
+  },
+  {
+    "name": "A. van der Heide",
+    "overall": 64,
+    "potential": 70,
+    "position": "LM, LW",
+    "age": 23,
+    "team": "CD Tondela"
+  },
+  {
+    "name": "I. Ba",
+    "overall": 64,
+    "potential": 77,
+    "position": "CB",
+    "age": 20,
+    "team": "Famalicão"
+  },
+  {
+    "name": "Y. Zabiri",
+    "overall": 64,
+    "potential": 79,
+    "position": "ST",
+    "age": 20,
+    "team": "Famalicão"
+  },
+  {
+    "name": "K. Osundina",
+    "overall": 64,
+    "potential": 74,
+    "position": "LW, RW, CAM, LM",
+    "age": 21,
+    "team": "Casa Pia"
+  },
+  {
+    "name": "Abdu Conté",
+    "overall": 64,
+    "potential": 65,
+    "position": "LB, LM",
+    "age": 27,
+    "team": "Casa Pia"
+  },
+  {
+    "name": "Clau Mendes",
+    "overall": 64,
+    "potential": 69,
+    "position": "ST, RM, LM",
+    "age": 24,
+    "team": "Casa Pia"
+  },
+  {
+    "name": "S. Bane",
+    "overall": 64,
+    "potential": 74,
+    "position": "CB",
+    "age": 21,
+    "team": "AVS Futebol SAD"
+  },
+  {
+    "name": "Neiva",
+    "overall": 64,
+    "potential": 70,
+    "position": "LW, LM",
+    "age": 24,
+    "team": "AVS Futebol SAD"
+  },
+  {
+    "name": "Anísio",
+    "overall": 63,
+    "potential": 85,
+    "position": "ST",
+    "age": 17,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "Diogo Fernandes",
+    "overall": 63,
+    "potential": 78,
+    "position": "GK",
+    "age": 20,
+    "team": "FC Porto"
+  },
+  {
+    "name": "José Silva",
+    "overall": 63,
+    "potential": 75,
+    "position": "RM, RB, LM",
+    "age": 19,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "Rômulo",
+    "overall": 63,
+    "potential": 76,
+    "position": "CB",
+    "age": 21,
+    "team": "Sporting CP"
+  },
+  {
+    "name": "I. James",
+    "overall": 63,
+    "potential": 74,
+    "position": "LB, LM",
+    "age": 20,
+    "team": "Alverca"
+  },
+  {
+    "name": "Felipe Lima",
+    "overall": 63,
+    "potential": 73,
+    "position": "ST",
+    "age": 19,
+    "team": "Alverca"
+  },
+  {
+    "name": "S. Abdulai",
+    "overall": 63,
+    "potential": 66,
+    "position": "CM, CDM",
+    "age": 26,
+    "team": "Alverca"
+  },
+  {
+    "name": "André Paulo",
+    "overall": 63,
+    "potential": 65,
+    "position": "GK",
+    "age": 28,
+    "team": "Alverca"
+  },
+  {
+    "name": "S. Baseya",
+    "overall": 63,
+    "potential": 75,
+    "position": "CB",
+    "age": 20,
+    "team": "Alverca"
+  },
+  {
+    "name": "S. Commey",
+    "overall": 63,
+    "potential": 72,
+    "position": "CB",
+    "age": 21,
+    "team": "Estrela da Amadora"
+  },
+  {
+    "name": "Jorge Meireles",
+    "overall": 63,
+    "potential": 77,
+    "position": "LW, RW, CM, LM",
+    "age": 21,
+    "team": "Estrela da Amadora"
+  },
+  {
+    "name": "Diogo Bezerra",
+    "overall": 63,
+    "potential": 72,
+    "position": "RW, LW, RM",
+    "age": 22,
+    "team": "Rio Ave FC"
+  },
+  {
+    "name": "Henrique Silva",
+    "overall": 63,
+    "potential": 77,
+    "position": "CB",
+    "age": 19,
+    "team": "Santa Clara"
+  },
+  {
+    "name": "Elias Manoel",
+    "overall": 63,
+    "potential": 70,
+    "position": "ST",
+    "age": 23,
+    "team": "Santa Clara"
+  },
+  {
+    "name": "O. Camara",
+    "overall": 63,
+    "potential": 74,
+    "position": "RW, LW, RM",
+    "age": 18,
+    "team": "Vitória SC"
+  },
+  {
+    "name": "Pablo Ruan",
+    "overall": 63,
+    "potential": 72,
+    "position": "ST, RW, RM",
+    "age": 22,
+    "team": "CD Nacional"
+  },
+  {
+    "name": "Fodé Pascoal",
+    "overall": 63,
+    "potential": 75,
+    "position": "CB",
+    "age": 20,
+    "team": "Sporting Clube de Braga"
+  },
+  {
+    "name": "Gonzalo Pastor",
+    "overall": 63,
+    "potential": 77,
+    "position": "RM, CAM, CM, RW",
+    "age": 19,
+    "team": "Famalicão"
+  },
+  {
+    "name": "Rodrigo Ribeiro",
+    "overall": 63,
+    "potential": 79,
+    "position": "CAM, CM",
+    "age": 19,
+    "team": "Famalicão"
+  },
+  {
+    "name": "Renan Santana",
+    "overall": 63,
+    "potential": 75,
+    "position": "CB",
+    "age": 20,
+    "team": "Famalicão"
+  },
+  {
+    "name": "Hugo Cunha",
+    "overall": 63,
+    "potential": 71,
+    "position": "GK",
+    "age": 23,
+    "team": "Famalicão"
+  },
+  {
+    "name": "Marcos Peña",
+    "overall": 63,
+    "potential": 77,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Famalicão"
+  },
+  {
+    "name": "K. Prieto",
+    "overall": 63,
+    "potential": 74,
+    "position": "RM, RB, RW",
+    "age": 22,
+    "team": "Casa Pia"
+  },
+  {
+    "name": "Kiki Silva",
+    "overall": 63,
+    "potential": 63,
+    "position": "RW, LW, RM",
+    "age": 27,
+    "team": "Casa Pia"
+  },
+  {
+    "name": "Rodrigo Rêgo",
+    "overall": 62,
+    "potential": 77,
+    "position": "RW, LW, RM",
+    "age": 20,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "Daniel Banjaqui",
+    "overall": 62,
+    "potential": 84,
+    "position": "RB",
+    "age": 17,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "Tomás Mendes",
+    "overall": 62,
+    "potential": 75,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Alverca"
+  },
+  {
+    "name": "Mateus",
+    "overall": 62,
+    "potential": 72,
+    "position": "GK",
+    "age": 23,
+    "team": "Alverca"
+  },
+  {
+    "name": "C. Onuoha",
+    "overall": 62,
+    "potential": 72,
+    "position": "ST",
+    "age": 20,
+    "team": "Estrela da Amadora"
+  },
+  {
+    "name": "Ni Rodrigues",
+    "overall": 62,
+    "potential": 70,
+    "position": "CB",
+    "age": 22,
+    "team": "Estrela da Amadora"
+  },
+  {
+    "name": "João Gastão",
+    "overall": 62,
+    "potential": 74,
+    "position": "ST, RW, RM",
+    "age": 18,
+    "team": "Estrela da Amadora"
+  },
+  {
+    "name": "E. Gueladan Doué",
+    "overall": 62,
+    "potential": 77,
+    "position": "CDM, CM",
+    "age": 19,
+    "team": "Estrela da Amadora"
+  },
+  {
+    "name": "K. Zoabi",
+    "overall": 62,
+    "potential": 76,
+    "position": "ST",
+    "age": 19,
+    "team": "Rio Ave FC"
+  },
+  {
+    "name": "Neneca",
+    "overall": 62,
+    "potential": 74,
+    "position": "GK",
+    "age": 21,
+    "team": "Santa Clara"
+  },
+  {
+    "name": "Djé Tavares",
+    "overall": 62,
+    "potential": 70,
+    "position": "CAM, CM",
+    "age": 22,
+    "team": "Santa Clara"
+  },
+  {
+    "name": "Kevyn Vinícius",
+    "overall": 62,
+    "potential": 76,
+    "position": "GK",
+    "age": 20,
+    "team": "CD Nacional"
+  },
+  {
+    "name": "Tiago Parente",
+    "overall": 62,
+    "potential": 72,
+    "position": "LB, LM",
+    "age": 21,
+    "team": "GD Estoril Praia"
+  },
+  {
+    "name": "Peixinho",
+    "overall": 62,
+    "potential": 71,
+    "position": "RW, CAM, RM",
+    "age": 21,
+    "team": "GD Estoril Praia"
+  },
+  {
+    "name": "K. Edwards",
+    "overall": 62,
+    "potential": 73,
+    "position": "ST",
+    "age": 21,
+    "team": "GD Estoril Praia"
+  },
+  {
+    "name": "R. Jansonas",
+    "overall": 62,
+    "potential": 74,
+    "position": "ST",
+    "age": 20,
+    "team": "FC Arouca"
+  },
+  {
+    "name": "Diogo Monteiro",
+    "overall": 62,
+    "potential": 74,
+    "position": "CB",
+    "age": 20,
+    "team": "FC Arouca"
+  },
+  {
+    "name": "Afonso Rodrigues",
+    "overall": 62,
+    "potential": 69,
+    "position": "LM, RM, LW",
+    "age": 22,
+    "team": "CD Tondela"
+  },
+  {
+    "name": "Gabriel Cabral",
+    "overall": 62,
+    "potential": 71,
+    "position": "GK",
+    "age": 22,
+    "team": "Famalicão"
+  },
+  {
+    "name": "R. Beney",
+    "overall": 62,
+    "potential": 76,
+    "position": "RW, ST, RM",
+    "age": 20,
+    "team": "Famalicão"
+  },
+  {
+    "name": "Ivan Lima",
+    "overall": 61,
+    "potential": 76,
+    "position": "LW, LM",
+    "age": 20,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "José Neto",
+    "overall": 61,
+    "potential": 83,
+    "position": "LB, LM",
+    "age": 17,
+    "team": "SL Benfica"
+  },
+  {
+    "name": "B. Caicedo",
+    "overall": 61,
+    "potential": 76,
+    "position": "RW, RM",
+    "age": 18,
+    "team": "FC Porto"
+  },
+  {
+    "name": "E. da Silva Moreira",
+    "overall": 61,
+    "potential": 78,
+    "position": "RM, RB, RW",
+    "age": 19,
+    "team": "Rio Ave FC"
+  },
+  {
+    "name": "A. Papakanellos",
+    "overall": 61,
+    "potential": 76,
+    "position": "RM, LM, CAM, RW",
+    "age": 19,
+    "team": "Rio Ave FC"
+  },
+  {
+    "name": "Rodrigo Mendes",
+    "overall": 61,
+    "potential": 71,
+    "position": "CB",
+    "age": 20,
+    "team": "Santa Clara"
+  },
+  {
+    "name": "Zé Franco",
+    "overall": 61,
+    "potential": 76,
+    "position": "LB, LM",
+    "age": 18,
+    "team": "Santa Clara"
+  },
+  {
+    "name": "Rodrigo Duarte",
+    "overall": 61,
+    "potential": 75,
+    "position": "RW, LW, RM",
+    "age": 19,
+    "team": "Vitória SC"
+  },
+  {
+    "name": "Miguel Nogueira",
+    "overall": 61,
+    "potential": 74,
+    "position": "CAM, CM",
+    "age": 20,
+    "team": "Vitória SC"
+  },
+  {
+    "name": "N. Saviolo",
+    "overall": 61,
+    "potential": 69,
+    "position": "LW, RW, LM",
+    "age": 21,
+    "team": "Vitória SC"
+  },
+  {
+    "name": "E. Julius Opara",
+    "overall": 61,
+    "potential": 73,
+    "position": "ST, CAM",
+    "age": 19,
+    "team": "Vitória SC"
+  },
+  {
+    "name": "Francisco Gonçalves",
+    "overall": 61,
+    "potential": 70,
+    "position": "CB",
+    "age": 21,
+    "team": "CD Nacional"
+  },
+  {
+    "name": "João Carvalho",
+    "overall": 61,
+    "potential": 72,
+    "position": "GK",
+    "age": 21,
+    "team": "Sporting Clube de Braga"
+  },
+  {
+    "name": "Landerson",
+    "overall": 61,
+    "potential": 74,
+    "position": "RW, LW, RM",
+    "age": 18,
+    "team": "Moreirense FC"
+  },
+  {
+    "name": "Luís Gomes",
+    "overall": 61,
+    "potential": 70,
+    "position": "CAM, CM",
+    "age": 21,
+    "team": "GD Estoril Praia"
+  },
+  {
+    "name": "Bernardo Lourenço",
+    "overall": 61,
+    "potential": 68,
+    "position": "CAM, CM",
+    "age": 22,
+    "team": "GD Estoril Praia"
+  },
+  {
+    "name": "O. Israelov",
+    "overall": 61,
+    "potential": 72,
+    "position": "CB",
+    "age": 20,
+    "team": "GD Estoril Praia"
+  },
+  {
+    "name": "Y. Rodríguez",
+    "overall": 61,
+    "potential": 70,
+    "position": "ST",
+    "age": 20,
+    "team": "CD Tondela"
+  },
+  {
+    "name": "Rafael Venâncio",
+    "overall": 61,
+    "potential": 76,
+    "position": "CB",
+    "age": 19,
+    "team": "Famalicão"
+  },
+  {
+    "name": "D. Gui",
+    "overall": 60,
+    "potential": 69,
+    "position": "CM, RM, CDM",
+    "age": 19,
+    "team": "Alverca"
+  },
+  {
+    "name": "Kauan Gomes",
+    "overall": 60,
+    "potential": 65,
+    "position": "RB",
+    "age": 20,
+    "team": "Alverca"
+  },
+  {
+    "name": "M. N'Diaye",
+    "overall": 60,
+    "potential": 65,
+    "position": "CB",
+    "age": 19,
+    "team": "Alverca"
+  },
+  {
+    "name": "Vasco Moreira",
+    "overall": 60,
+    "potential": 67,
+    "position": "CM, CDM",
+    "age": 24,
+    "team": "Alverca"
+  },
+  {
+    "name": "H. Dramé",
+    "overall": 60,
+    "potential": 63,
+    "position": "CB",
+    "age": 24,
+    "team": "Estrela da Amadora"
+  },
+  {
+    "name": "L. Antonetti",
+    "overall": 60,
+    "potential": 69,
+    "position": "ST, LW",
+    "age": 22,
+    "team": "Estrela da Amadora"
+  },
+  {
+    "name": "Cristian",
+    "overall": 60,
+    "potential": 66,
+    "position": "GK",
+    "age": 23,
+    "team": "Santa Clara"
+  },
+  {
+    "name": "Tiago Duarte",
+    "overall": 60,
+    "potential": 75,
+    "position": "LW, LM",
+    "age": 21,
+    "team": "Santa Clara"
+  },
+  {
+    "name": "Thiago Balieiro",
+    "overall": 60,
+    "potential": 73,
+    "position": "CB",
+    "age": 22,
+    "team": "Vitória SC"
+  },
+  {
+    "name": "Gui Beleza",
+    "overall": 60,
+    "potential": 70,
+    "position": "CDM, CM",
+    "age": 18,
+    "team": "Gil Vicente FC"
+  },
+  {
+    "name": "M. Nourani",
+    "overall": 60,
+    "potential": 66,
+    "position": "LM, RM, LW",
+    "age": 23,
+    "team": "CD Nacional"
+  },
+  {
+    "name": "Martim Watts",
+    "overall": 60,
+    "potential": 71,
+    "position": "RW, CAM, RM",
+    "age": 19,
+    "team": "CD Nacional"
+  },
+  {
+    "name": "Deivison",
+    "overall": 60,
+    "potential": 72,
+    "position": "CM, CDM",
+    "age": 19,
+    "team": "CD Nacional"
+  },
+  {
+    "name": "A. Nuñez",
+    "overall": 60,
+    "potential": 74,
+    "position": "RB",
+    "age": 20,
+    "team": "CD Nacional"
+  },
+  {
+    "name": "Afonso Assis",
+    "overall": 60,
+    "potential": 77,
+    "position": "CDM, CM",
+    "age": 18,
+    "team": "Moreirense FC"
+  },
+  {
+    "name": "J. Vinarčík",
+    "overall": 60,
+    "potential": 76,
+    "position": "GK",
+    "age": 19,
+    "team": "FC Arouca"
+  },
+  {
+    "name": "J. Rodríguez",
+    "overall": 60,
+    "potential": 76,
+    "position": "CM, CDM",
+    "age": 19,
+    "team": "CD Tondela"
+  },
+  {
+    "name": "Renato Nhaga",
+    "overall": 60,
+    "potential": 70,
+    "position": "CDM, CM",
+    "age": 18,
+    "team": "Casa Pia"
+  },
+  {
+    "name": "A. Soumare",
+    "overall": 59,
+    "potential": 64,
+    "position": "CDM, CM",
+    "age": 18,
+    "team": "Alverca"
+  },
+  {
+    "name": "G. Tunguliadi",
+    "overall": 59,
+    "potential": 72,
+    "position": "CB",
+    "age": 20,
+    "team": "Estrela da Amadora"
+  },
+  {
+    "name": "Alex Sola",
+    "overall": 59,
+    "potential": 68,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "Estrela da Amadora"
+  },
+  {
+    "name": "Gui",
+    "overall": 59,
+    "potential": 69,
+    "position": "GK",
+    "age": 19,
+    "team": "Vitória SC"
+  },
+  {
+    "name": "Diogo Sousa",
+    "overall": 59,
+    "potential": 69,
+    "position": "CDM, CM",
+    "age": 19,
+    "team": "Vitória SC"
+  },
+  {
+    "name": "Gui Freitas",
+    "overall": 59,
+    "potential": 68,
+    "position": "CDM, CM",
+    "age": 19,
+    "team": "Gil Vicente FC"
+  },
+  {
+    "name": "Lucão",
+    "overall": 59,
+    "potential": 67,
+    "position": "GK",
+    "age": 24,
+    "team": "Gil Vicente FC"
+  },
+  {
+    "name": "L. Bimai",
+    "overall": 59,
+    "potential": 71,
+    "position": "CB",
+    "age": 19,
+    "team": "GD Estoril Praia"
+  },
+  {
+    "name": "K. Baruti",
+    "overall": 59,
+    "potential": 74,
+    "position": "LW, LM",
+    "age": 19,
+    "team": "GD Estoril Praia"
+  },
+  {
+    "name": "Diogo Dias",
+    "overall": 59,
+    "potential": 69,
+    "position": "GK",
+    "age": 22,
+    "team": "GD Estoril Praia"
+  },
+  {
+    "name": "L. Bèye",
+    "overall": 59,
+    "potential": 76,
+    "position": "CAM, CM",
+    "age": 18,
+    "team": "Famalicão"
+  },
+  {
+    "name": "Khaly",
+    "overall": 59,
+    "potential": 68,
+    "position": "CB",
+    "age": 21,
+    "team": "Casa Pia"
+  },
+  {
+    "name": "André Miranda",
+    "overall": 58,
+    "potential": 82,
+    "position": "RW, LW, RM",
+    "age": 17,
+    "team": "FC Porto"
+  },
+  {
+    "name": "I. Julian",
+    "overall": 58,
+    "potential": 65,
+    "position": "LB",
+    "age": 19,
+    "team": "Alverca"
+  },
+  {
+    "name": "Otávio",
+    "overall": 58,
+    "potential": 71,
+    "position": "CB, LB",
+    "age": 19,
+    "team": "Estrela da Amadora"
+  },
+  {
+    "name": "João Afonso",
+    "overall": 58,
+    "potential": 73,
+    "position": "GK",
+    "age": 18,
+    "team": "Santa Clara"
+  },
+  {
+    "name": "Rica Rocha",
+    "overall": 58,
+    "potential": 67,
+    "position": "CDM, CM",
+    "age": 21,
+    "team": "Vitória SC"
+  },
+  {
+    "name": "Diogo Pereira",
+    "overall": 58,
+    "potential": 66,
+    "position": "CDM, CB, CM",
+    "age": 22,
+    "team": "Gil Vicente FC"
+  },
+  {
+    "name": "Rodrigo Rodrigues",
+    "overall": 58,
+    "potential": 70,
+    "position": "LM, RM, LW",
+    "age": 17,
+    "team": "Gil Vicente FC"
+  },
+  {
+    "name": "Gonçalo Maia",
+    "overall": 58,
+    "potential": 64,
+    "position": "CAM, CM",
+    "age": 19,
+    "team": "Gil Vicente FC"
+  },
+  {
+    "name": "Luís Semedo",
+    "overall": 58,
+    "potential": 67,
+    "position": "ST",
+    "age": 21,
+    "team": "Moreirense FC"
+  },
+  {
+    "name": "Tiago Brito",
+    "overall": 58,
+    "potential": 64,
+    "position": "CDM, CM",
+    "age": 21,
+    "team": "GD Estoril Praia"
+  },
+  {
+    "name": "Diego Tavares",
+    "overall": 58,
+    "potential": 70,
+    "position": "CB",
+    "age": 20,
+    "team": "CD Tondela"
+  },
+  {
+    "name": "António Machado",
+    "overall": 58,
+    "potential": 70,
+    "position": "CAM, RM, CM",
+    "age": 18,
+    "team": "AVS Futebol SAD"
+  },
+  {
+    "name": "Talisca",
+    "overall": 57,
+    "potential": 64,
+    "position": "CB",
+    "age": 22,
+    "team": "Alverca"
+  },
+  {
+    "name": "Alisson",
+    "overall": 57,
+    "potential": 67,
+    "position": "LW, ST, RW, LM",
+    "age": 20,
+    "team": "Estrela da Amadora"
+  },
+  {
+    "name": "A. Picornell",
+    "overall": 57,
+    "potential": 65,
+    "position": "GK",
+    "age": 21,
+    "team": "Gil Vicente FC"
+  }
+]

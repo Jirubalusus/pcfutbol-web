@@ -305,6 +305,22 @@ $white: #e8eaed;
               vertical-align: middle;
             }
             
+            .tag-listed--clickable {
+              cursor: pointer;
+              color: $orange;
+              background: rgba($orange, 0.15);
+              padding: 0.1rem 0.35rem;
+              border-radius: 3px;
+              font-weight: 600;
+              border: 1px solid rgba($orange, 0.3);
+              transition: all 0.2s;
+              
+              &:hover {
+                background: rgba($orange, 0.3);
+                border-color: rgba($orange, 0.5);
+              }
+            }
+            
             .tag-loan {
               color: #0a84ff;
               background: rgba(10, 132, 255, 0.15);
@@ -414,6 +430,12 @@ $white: #e8eaed;
             &:hover { transform: scale(1.1); }
             &.btn-renew:hover { background: rgba($green, 0.3); }
             &.btn-sell:hover { background: rgba($blue, 0.3); }
+            &.btn-sell--listed {
+              background: rgba($orange, 0.2);
+              border: 1px solid rgba($orange, 0.4);
+              font-size: 0.85rem;
+              &:hover { background: rgba($orange, 0.35); }
+            }
             &.btn-release:hover { background: rgba($red, 0.3); }
           }
           
@@ -517,6 +539,7 @@ $white: #e8eaed;
       &.renew { background: rgba($green, 0.1); }
       &.sell { background: rgba($blue, 0.1); }
       &.release { background: rgba($red, 0.1); }
+      &.unlist { background: rgba($orange, 0.1); }
     }
 
     .modal-content {
@@ -759,6 +782,7 @@ $white: #e8eaed;
     &:active { background: rgba(255, 255, 255, 0.12); }
     &:disabled { opacity: 0.35; cursor: not-allowed; }
     &--danger { color: $red; }
+    &--unlist { color: $orange; }
     &--cancel {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.12);

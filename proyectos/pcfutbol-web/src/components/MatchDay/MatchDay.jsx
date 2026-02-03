@@ -135,9 +135,9 @@ export default function MatchDay({ onComplete }) {
     // European match has team data embedded
     const eu = europeanMatchData;
     if (isHome) {
-      opponent = eu.awayTeam || eu.team2 || { teamId: opponentId, name: 'Unknown', reputation: 70 };
+      opponent = eu.awayTeam || eu.team2 || { teamId: opponentId, name: 'Desconocido', reputation: 70 };
     } else {
-      opponent = eu.homeTeam || eu.team1 || { teamId: opponentId, name: 'Unknown', reputation: 70 };
+      opponent = eu.homeTeam || eu.team1 || { teamId: opponentId, name: 'Desconocido', reputation: 70 };
     }
     // Normalize to match expected shape (id, name, shortName)
     if (!opponent.id && opponent.teamId) opponent = { ...opponent, id: opponent.teamId };

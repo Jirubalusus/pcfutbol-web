@@ -8,6 +8,11 @@ import { getTransferValueMultiplier } from './leagueTiers';
 
 /**
  * Calcular valor de mercado de un jugador
+ * 
+ * v2 — Curva de edad suavizada + posiciones multi-valor + suelo de calidad
+ * En el juego los ratings no bajan con la edad (a diferencia de la vida real),
+ * así que la penalización por edad debe ser más suave: solo refleja "años útiles
+ * restantes", no declive de habilidad.
  */
 export function calculateMarketValue(player, leagueId) {
   const overall = player.overall || 70;
@@ -30,33 +35,43 @@ export function calculateMarketValue(player, leagueId) {
   const upperVal = valueTable[upper] || lowerVal * 1.5;
   let baseValue = (lowerVal + (upperVal - lowerVal) * frac) * 1_000_000;
   
-  // Age modifier (peak at 27)
+  // ── Age modifier (peak 25-27, gradual decline) ──
+  // Softer than real life because game ratings are static
   let ageMod = 1;
-  if (age <= 18) ageMod = 1.8;
-  else if (age <= 20) ageMod = 1.6;
-  else if (age <= 23) ageMod = 1.4;
-  else if (age <= 26) ageMod = 1.2;
-  else if (age <= 28) ageMod = 1.0;
-  else if (age <= 30) ageMod = 0.8;
-  else if (age <= 32) ageMod = 0.55;
-  else if (age <= 34) ageMod = 0.3;
-  else ageMod = 0.15;
+  if (age <= 20) ageMod = 1.25;       // Youth premium (potential + years ahead)
+  else if (age <= 23) ageMod = 1.12;   // Rising talent
+  else if (age <= 26) ageMod = 1.05;   // Approaching peak
+  else if (age <= 28) ageMod = 1.0;    // Peak
+  else if (age <= 30) ageMod = 0.88;   // Still strong
+  else if (age <= 32) ageMod = 0.72;   // Veteran
+  else if (age <= 34) ageMod = 0.52;   // Late career
+  else if (age <= 36) ageMod = 0.35;   // Twilight
+  else ageMod = 0.20;                  // Legend tax
+
+  // Star quality floor — elite players retain minimum value regardless of age
+  // Prevents absurdity of 84-rated player being cheaper than 77-rated
+  if (overall >= 88) ageMod = Math.max(ageMod, 0.50);
+  else if (overall >= 85) ageMod = Math.max(ageMod, 0.40);
+  else if (overall >= 82) ageMod = Math.max(ageMod, 0.30);
   
-  // Position modifier
-  const posMod = {
+  // ── Position modifier ──
+  // Handle multi-position format from SoFIFA ("CAM,CM,LM" → use primary)
+  const POS_MULTIPLIERS = {
     ST: 1.3, CF: 1.25, RW: 1.2, LW: 1.2,
     CAM: 1.15, CM: 1.0, CDM: 0.95,
     CB: 0.9, RB: 0.85, LB: 0.85,
     RWB: 0.85, LWB: 0.85, RM: 1.0, LM: 1.0,
     GK: 0.7
-  }[player.position] || 1.0;
+  };
+  const primaryPos = (player.position || '').split(',')[0].trim();
+  const posMod = POS_MULTIPLIERS[primaryPos] || 1.0;
   
-  // Contract modifier
+  // ── Contract modifier (less aggressive) ──
   const contractYears = player.contractYears || 2;
   let contractMod = 1;
-  if (contractYears <= 1) contractMod = 0.5;
-  else if (contractYears <= 2) contractMod = 0.75;
-  else if (contractYears >= 5) contractMod = 1.15;
+  if (contractYears <= 1) contractMod = 0.60;       // was 0.50
+  else if (contractYears <= 2) contractMod = 0.80;   // was 0.75
+  else if (contractYears >= 5) contractMod = 1.10;   // was 1.15
   
   // Apply tier multiplier for league-specific market values
   const tierMult = leagueId ? getTransferValueMultiplier(leagueId) : 1.0;
@@ -693,17 +708,17 @@ export function createGlobalEngine(gameState) {
  * @param {boolean} options.preseasonPhase - Si estamos en pretemporada
  * @param {number} options.totalWeeks - Total de jornadas de liga (38 para 20 equipos)
  */
+export const WINTER_WINDOW_LENGTH = 3; // Duración del mercado de invierno en jornadas
+
+export function getWinterWindowRange(totalWeeks = 38) {
+  const start = Math.ceil(totalWeeks / 2); // jornada 19 para 38 jornadas
+  const end = start + WINTER_WINDOW_LENGTH - 1; // jornada 21
+  return { start, end };
+}
+
 export function isTransferWindowOpen(week, options = {}) {
-  const { preseasonPhase = false, totalWeeks = 38 } = options;
-  
-  // Mercado de verano: SOLO durante pretemporada
-  if (preseasonPhase) return { open: true, type: 'summer' };
-  
-  // Mercado de invierno: SOLO la jornada exacta de mitad de liga
-  const midWeek = Math.ceil(totalWeeks / 2); // jornada 19 para 38 jornadas
-  if (week === midWeek) return { open: true, type: 'winter' };
-  
-  return { open: false, type: null };
+  // Mercado SIEMPRE abierto — estilo PC Fútbol clásico
+  return { open: true, type: 'always' };
 }
 
 /**

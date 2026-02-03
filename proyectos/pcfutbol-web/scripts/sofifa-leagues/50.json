@@ -1,0 +1,2706 @@
+[
+  {
+    "name": "C. McGregor",
+    "overall": 79,
+    "potential": 79,
+    "position": "CDM, CM",
+    "age": 32,
+    "team": "Celtic"
+  },
+  {
+    "name": "C. Carter-Vickers",
+    "overall": 79,
+    "potential": 81,
+    "position": "CB",
+    "age": 27,
+    "team": "Celtic"
+  },
+  {
+    "name": "D. Maeda",
+    "overall": 79,
+    "potential": 79,
+    "position": "LW, ST, RW, LM",
+    "age": 27,
+    "team": "Celtic"
+  },
+  {
+    "name": "K. Schmeichel",
+    "overall": 78,
+    "potential": 78,
+    "position": "GK",
+    "age": 38,
+    "team": "Celtic"
+  },
+  {
+    "name": "A. Johnston",
+    "overall": 78,
+    "potential": 79,
+    "position": "RB, RM",
+    "age": 26,
+    "team": "Celtic"
+  },
+  {
+    "name": "K. Tierney",
+    "overall": 77,
+    "potential": 77,
+    "position": "LB",
+    "age": 28,
+    "team": "Celtic"
+  },
+  {
+    "name": "Jota",
+    "overall": 77,
+    "potential": 78,
+    "position": "LW, RW, LM",
+    "age": 26,
+    "team": "Celtic"
+  },
+  {
+    "name": "J. Tavernier",
+    "overall": 77,
+    "potential": 77,
+    "position": "RB, RM",
+    "age": 33,
+    "team": "Rangers FC"
+  },
+  {
+    "name": "N. Raskin",
+    "overall": 77,
+    "potential": 82,
+    "position": "CDM, CM",
+    "age": 24,
+    "team": "Rangers FC"
+  },
+  {
+    "name": "R. Hatate",
+    "overall": 76,
+    "potential": 76,
+    "position": "CM, CAM",
+    "age": 27,
+    "team": "Celtic"
+  },
+  {
+    "name": "J. Butland",
+    "overall": 76,
+    "potential": 76,
+    "position": "GK",
+    "age": 32,
+    "team": "Rangers FC"
+  },
+  {
+    "name": "L. Scales",
+    "overall": 75,
+    "potential": 77,
+    "position": "CB",
+    "age": 26,
+    "team": "Celtic"
+  },
+  {
+    "name": "L. Shankland",
+    "overall": 75,
+    "potential": 75,
+    "position": "ST, CAM",
+    "age": 29,
+    "team": "Hearts"
+  },
+  {
+    "name": "A. Skov Olsen",
+    "overall": 75,
+    "potential": 76,
+    "position": "RM, RW",
+    "age": 25,
+    "team": "Rangers FC"
+  },
+  {
+    "name": "A. Trusty",
+    "overall": 74,
+    "potential": 77,
+    "position": "CB",
+    "age": 26,
+    "team": "Celtic"
+  },
+  {
+    "name": "B. Nygren",
+    "overall": 74,
+    "potential": 80,
+    "position": "CM, RW, LW, CAM",
+    "age": 23,
+    "team": "Celtic"
+  },
+  {
+    "name": "J. Araujo",
+    "overall": 74,
+    "potential": 81,
+    "position": "RB",
+    "age": 23,
+    "team": "Celtic"
+  },
+  {
+    "name": "M. Balikwisha",
+    "overall": 74,
+    "potential": 80,
+    "position": "LW, LM",
+    "age": 24,
+    "team": "Celtic"
+  },
+  {
+    "name": "A. Engels",
+    "overall": 74,
+    "potential": 83,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "Celtic"
+  },
+  {
+    "name": "C. Devlin",
+    "overall": 74,
+    "potential": 77,
+    "position": "CDM, CM",
+    "age": 27,
+    "team": "Hearts"
+  },
+  {
+    "name": "D. Cornelius",
+    "overall": 74,
+    "potential": 76,
+    "position": "CB",
+    "age": 27,
+    "team": "Rangers FC"
+  },
+  {
+    "name": "O. Antman",
+    "overall": 74,
+    "potential": 80,
+    "position": "RM, LM, CAM, RW",
+    "age": 23,
+    "team": "Rangers FC"
+  },
+  {
+    "name": "M. Diomande",
+    "overall": 74,
+    "potential": 83,
+    "position": "CDM, CM",
+    "age": 23,
+    "team": "Rangers FC"
+  },
+  {
+    "name": "K. Iheanacho",
+    "overall": 73,
+    "potential": 73,
+    "position": "ST, CAM",
+    "age": 28,
+    "team": "Celtic"
+  },
+  {
+    "name": "S. Tounekti",
+    "overall": 73,
+    "potential": 80,
+    "position": "LW, LM",
+    "age": 22,
+    "team": "Celtic"
+  },
+  {
+    "name": "L. McCowan",
+    "overall": 73,
+    "potential": 73,
+    "position": "CM, CAM, CDM",
+    "age": 27,
+    "team": "Celtic"
+  },
+  {
+    "name": "Paulo Bernardo",
+    "overall": 73,
+    "potential": 80,
+    "position": "CM, CDM",
+    "age": 23,
+    "team": "Celtic"
+  },
+  {
+    "name": "B. Baningime",
+    "overall": 73,
+    "potential": 76,
+    "position": "CDM, CM, CB",
+    "age": 26,
+    "team": "Hearts"
+  },
+  {
+    "name": "A. Kyziridis",
+    "overall": 73,
+    "potential": 76,
+    "position": "LW, LM, RM",
+    "age": 24,
+    "team": "Hearts"
+  },
+  {
+    "name": "M. Moore",
+    "overall": 73,
+    "potential": 87,
+    "position": "LW, LM",
+    "age": 17,
+    "team": "Rangers FC"
+  },
+  {
+    "name": "J. Souttar",
+    "overall": 73,
+    "potential": 74,
+    "position": "CB",
+    "age": 28,
+    "team": "Rangers FC"
+  },
+  {
+    "name": "N. Bajrami",
+    "overall": 73,
+    "potential": 76,
+    "position": "CAM, LM, RW, CM",
+    "age": 26,
+    "team": "Rangers FC"
+  },
+  {
+    "name": "D. Sterling",
+    "overall": 73,
+    "potential": 76,
+    "position": "CB, LB, RB, CM",
+    "age": 25,
+    "team": "Rangers FC"
+  },
+  {
+    "name": "Danilo",
+    "overall": 73,
+    "potential": 75,
+    "position": "ST",
+    "age": 26,
+    "team": "Rangers FC"
+  },
+  {
+    "name": "D. Gassama",
+    "overall": 73,
+    "potential": 82,
+    "position": "LM, RM, LW",
+    "age": 21,
+    "team": "Rangers FC"
+  },
+  {
+    "name": "J. Forrest",
+    "overall": 72,
+    "potential": 72,
+    "position": "RW, RM",
+    "age": 33,
+    "team": "Celtic"
+  },
+  {
+    "name": "M. Saracchi",
+    "overall": 72,
+    "potential": 73,
+    "position": "LB, LM",
+    "age": 27,
+    "team": "Celtic"
+  },
+  {
+    "name": "T. Čvančara",
+    "overall": 72,
+    "potential": 76,
+    "position": "ST, RM, RW",
+    "age": 24,
+    "team": "Celtic"
+  },
+  {
+    "name": "A. Schwolow",
+    "overall": 72,
+    "potential": 72,
+    "position": "GK",
+    "age": 33,
+    "team": "Hearts"
+  },
+  {
+    "name": "C. Halkett",
+    "overall": 72,
+    "potential": 72,
+    "position": "CB",
+    "age": 30,
+    "team": "Hearts"
+  },
+  {
+    "name": "J. Rothwell",
+    "overall": 72,
+    "potential": 72,
+    "position": "CDM, CM",
+    "age": 30,
+    "team": "Rangers FC"
+  },
+  {
+    "name": "M. Aarons",
+    "overall": 72,
+    "potential": 75,
+    "position": "RB, LB, RM",
+    "age": 25,
+    "team": "Rangers FC"
+  },
+  {
+    "name": "C. Barron",
+    "overall": 72,
+    "potential": 81,
+    "position": "CDM, CM",
+    "age": 22,
+    "team": "Rangers FC"
+  },
+  {
+    "name": "S. Armstrong",
+    "overall": 71,
+    "potential": 71,
+    "position": "CM, CAM",
+    "age": 33,
+    "team": "Aberdeen"
+  },
+  {
+    "name": "A. Ralston",
+    "overall": 71,
+    "potential": 72,
+    "position": "RB, RM",
+    "age": 26,
+    "team": "Celtic"
+  },
+  {
+    "name": "F. Kent",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB",
+    "age": 29,
+    "team": "Hearts"
+  },
+  {
+    "name": "S. Findlay",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB",
+    "age": 29,
+    "team": "Hearts"
+  },
+  {
+    "name": "M. Boyle",
+    "overall": 71,
+    "potential": 71,
+    "position": "ST, RM, RW",
+    "age": 32,
+    "team": "Hibernian"
+  },
+  {
+    "name": "J. McGrath",
+    "overall": 71,
+    "potential": 71,
+    "position": "LM, CAM, CM, LW",
+    "age": 28,
+    "team": "Hibernian"
+  },
+  {
+    "name": "B. Miovski",
+    "overall": 71,
+    "potential": 74,
+    "position": "ST",
+    "age": 26,
+    "team": "Rangers FC"
+  },
+  {
+    "name": "Y. Chermiti",
+    "overall": 71,
+    "potential": 77,
+    "position": "ST",
+    "age": 21,
+    "team": "Rangers FC"
+  },
+  {
+    "name": "J. Brenet",
+    "overall": 71,
+    "potential": 71,
+    "position": "RB, RM",
+    "age": 31,
+    "team": "Livingston FC"
+  },
+  {
+    "name": "G. Shinnie",
+    "overall": 70,
+    "potential": 70,
+    "position": "CDM, CM, LB",
+    "age": 33,
+    "team": "Aberdeen"
+  },
+  {
+    "name": "D. Mitov",
+    "overall": 70,
+    "potential": 72,
+    "position": "GK",
+    "age": 28,
+    "team": "Aberdeen"
+  },
+  {
+    "name": "K. Nisbet",
+    "overall": 70,
+    "potential": 70,
+    "position": "ST",
+    "age": 28,
+    "team": "Aberdeen"
+  },
+  {
+    "name": "L. Clarkson",
+    "overall": 70,
+    "potential": 77,
+    "position": "CAM, CM, CDM",
+    "age": 23,
+    "team": "Aberdeen"
+  },
+  {
+    "name": "N. Milanović",
+    "overall": 70,
+    "potential": 74,
+    "position": "LM, RM, LW",
+    "age": 23,
+    "team": "Aberdeen"
+  },
+  {
+    "name": "Yang Hyun Jun",
+    "overall": 70,
+    "potential": 79,
+    "position": "RW, LW, RM",
+    "age": 23,
+    "team": "Celtic"
+  },
+  {
+    "name": "J. Kenny",
+    "overall": 70,
+    "potential": 77,
+    "position": "ST",
+    "age": 22,
+    "team": "Celtic"
+  },
+  {
+    "name": "Cláudio Braga",
+    "overall": 70,
+    "potential": 73,
+    "position": "ST, LM, RM, LW",
+    "age": 25,
+    "team": "Hearts"
+  },
+  {
+    "name": "G. Hanley",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB",
+    "age": 33,
+    "team": "Hibernian"
+  },
+  {
+    "name": "D. Barlaser",
+    "overall": 70,
+    "potential": 70,
+    "position": "CDM, CM",
+    "age": 28,
+    "team": "Hibernian"
+  },
+  {
+    "name": "R. Sallinger",
+    "overall": 70,
+    "potential": 70,
+    "position": "GK",
+    "age": 29,
+    "team": "Hibernian"
+  },
+  {
+    "name": "N. Djiga",
+    "overall": 70,
+    "potential": 78,
+    "position": "CB",
+    "age": 22,
+    "team": "Rangers FC"
+  },
+  {
+    "name": "N. Devlin",
+    "overall": 69,
+    "potential": 69,
+    "position": "RB, CB, LB",
+    "age": 31,
+    "team": "Aberdeen"
+  },
+  {
+    "name": "V. Sinisalo",
+    "overall": 69,
+    "potential": 77,
+    "position": "GK",
+    "age": 23,
+    "team": "Celtic"
+  },
+  {
+    "name": "S. Yamada",
+    "overall": 69,
+    "potential": 74,
+    "position": "ST, RW, RM",
+    "age": 25,
+    "team": "Celtic"
+  },
+  {
+    "name": "Ageu",
+    "overall": 69,
+    "potential": 74,
+    "position": "CM, CAM, CDM",
+    "age": 23,
+    "team": "Hearts"
+  },
+  {
+    "name": "B. Spittal",
+    "overall": 69,
+    "potential": 69,
+    "position": "LM, CM, CAM, LW",
+    "age": 29,
+    "team": "Hearts"
+  },
+  {
+    "name": "M. Steinwender",
+    "overall": 69,
+    "potential": 75,
+    "position": "CB, RB",
+    "age": 25,
+    "team": "Hearts"
+  },
+  {
+    "name": "M. Leonard",
+    "overall": 69,
+    "potential": 75,
+    "position": "CDM, CM, CAM, CB",
+    "age": 23,
+    "team": "Hearts"
+  },
+  {
+    "name": "É. Youan",
+    "overall": 69,
+    "potential": 70,
+    "position": "ST, LM, RM, CAM",
+    "age": 26,
+    "team": "Hibernian"
+  },
+  {
+    "name": "N. Cadden",
+    "overall": 69,
+    "potential": 69,
+    "position": "LM, LB, LW",
+    "age": 28,
+    "team": "Hibernian"
+  },
+  {
+    "name": "T. Klidje",
+    "overall": 69,
+    "potential": 76,
+    "position": "ST",
+    "age": 23,
+    "team": "Hibernian"
+  },
+  {
+    "name": "R. Matondo",
+    "overall": 69,
+    "potential": 72,
+    "position": "LM, LW, ST",
+    "age": 24,
+    "team": "Rangers FC"
+  },
+  {
+    "name": "T. Rommens",
+    "overall": 69,
+    "potential": 79,
+    "position": "LB, LM",
+    "age": 22,
+    "team": "Rangers FC"
+  },
+  {
+    "name": "W. Ferry",
+    "overall": 69,
+    "potential": 74,
+    "position": "LB, LM",
+    "age": 24,
+    "team": "Dundee United FC"
+  },
+  {
+    "name": "P. Bråtveit",
+    "overall": 68,
+    "potential": 70,
+    "position": "GK",
+    "age": 29,
+    "team": "Aberdeen"
+  },
+  {
+    "name": "S. Nilsen",
+    "overall": 68,
+    "potential": 68,
+    "position": "CDM, CM",
+    "age": 33,
+    "team": "Aberdeen"
+  },
+  {
+    "name": "A. Aouchiche",
+    "overall": 68,
+    "potential": 76,
+    "position": "CAM, LM, RW, CM",
+    "age": 22,
+    "team": "Aberdeen"
+  },
+  {
+    "name": "K. Tobers",
+    "overall": 68,
+    "potential": 73,
+    "position": "CB, CDM, CM",
+    "age": 24,
+    "team": "Aberdeen"
+  },
+  {
+    "name": "L. Cameron",
+    "overall": 68,
+    "potential": 77,
+    "position": "CM, CAM",
+    "age": 22,
+    "team": "Aberdeen"
+  },
+  {
+    "name": "T. Keskinen",
+    "overall": 68,
+    "potential": 74,
+    "position": "RM, LM, RW",
+    "age": 22,
+    "team": "Aberdeen"
+  },
+  {
+    "name": "L. Morrison",
+    "overall": 68,
+    "potential": 77,
+    "position": "CB",
+    "age": 22,
+    "team": "Aberdeen"
+  },
+  {
+    "name": "S. Welsh",
+    "overall": 68,
+    "potential": 73,
+    "position": "CB",
+    "age": 25,
+    "team": "Celtic"
+  },
+  {
+    "name": "D. Murray",
+    "overall": 68,
+    "potential": 78,
+    "position": "CB",
+    "age": 22,
+    "team": "Celtic"
+  },
+  {
+    "name": "H. Milne",
+    "overall": 68,
+    "potential": 68,
+    "position": "LB, RM",
+    "age": 28,
+    "team": "Hearts"
+  },
+  {
+    "name": "S. Kingsley",
+    "overall": 68,
+    "potential": 68,
+    "position": "LB, CB, LM",
+    "age": 30,
+    "team": "Hearts"
+  },
+  {
+    "name": "C. Nieuwenhof",
+    "overall": 68,
+    "potential": 75,
+    "position": "CM, CDM",
+    "age": 24,
+    "team": "Hearts"
+  },
+  {
+    "name": "J. Hoilett",
+    "overall": 68,
+    "potential": 68,
+    "position": "LM, RM, CAM, LW",
+    "age": 35,
+    "team": "Hibernian"
+  },
+  {
+    "name": "J. Newell",
+    "overall": 68,
+    "potential": 68,
+    "position": "CM, CDM",
+    "age": 32,
+    "team": "Hibernian"
+  },
+  {
+    "name": "R. Bushiri",
+    "overall": 68,
+    "potential": 71,
+    "position": "CB",
+    "age": 25,
+    "team": "Hibernian"
+  },
+  {
+    "name": "A. Stamatelopoulos",
+    "overall": 68,
+    "potential": 71,
+    "position": "ST",
+    "age": 26,
+    "team": "Motherwell FC"
+  },
+  {
+    "name": "T. Chukwuani",
+    "overall": 68,
+    "potential": 77,
+    "position": "CM, CDM",
+    "age": 22,
+    "team": "Rangers FC"
+  },
+  {
+    "name": "T. Aasgaard",
+    "overall": 68,
+    "potential": 75,
+    "position": "CM, CAM, ST",
+    "age": 23,
+    "team": "Rangers FC"
+  },
+  {
+    "name": "G. Carey",
+    "overall": 68,
+    "potential": 68,
+    "position": "CM, CAM, LW",
+    "age": 36,
+    "team": "Livingston FC"
+  },
+  {
+    "name": "J. Prior",
+    "overall": 68,
+    "potential": 69,
+    "position": "GK",
+    "age": 29,
+    "team": "Livingston FC"
+  },
+  {
+    "name": "M. O'Hara",
+    "overall": 68,
+    "potential": 68,
+    "position": "CM, CDM",
+    "age": 29,
+    "team": "St. Mirren"
+  },
+  {
+    "name": "M. Knoester",
+    "overall": 67,
+    "potential": 70,
+    "position": "CB",
+    "age": 26,
+    "team": "Aberdeen"
+  },
+  {
+    "name": "A. Jensen",
+    "overall": 67,
+    "potential": 74,
+    "position": "RB, RM",
+    "age": 23,
+    "team": "Aberdeen"
+  },
+  {
+    "name": "S. Bain",
+    "overall": 67,
+    "potential": 67,
+    "position": "GK",
+    "age": 33,
+    "team": "Falkirk"
+  },
+  {
+    "name": "C. Gordon",
+    "overall": 67,
+    "potential": 67,
+    "position": "GK",
+    "age": 42,
+    "team": "Hearts"
+  },
+  {
+    "name": "I. Chesnokov",
+    "overall": 67,
+    "potential": 68,
+    "position": "RW, RM, LW",
+    "age": 25,
+    "team": "Hearts"
+  },
+  {
+    "name": "A. Forrest",
+    "overall": 67,
+    "potential": 67,
+    "position": "LM, LW, RM",
+    "age": 28,
+    "team": "Hearts"
+  },
+  {
+    "name": "A. Manneh",
+    "overall": 67,
+    "potential": 69,
+    "position": "CDM, CM",
+    "age": 27,
+    "team": "Hibernian"
+  },
+  {
+    "name": "D. Levitt",
+    "overall": 67,
+    "potential": 72,
+    "position": "CM, CDM",
+    "age": 24,
+    "team": "Hibernian"
+  },
+  {
+    "name": "M. Kennedy",
+    "overall": 67,
+    "potential": 67,
+    "position": "LM, RM, RB, LW",
+    "age": 30,
+    "team": "Kilmarnock"
+  },
+  {
+    "name": "M. Stryjek",
+    "overall": 67,
+    "potential": 69,
+    "position": "GK",
+    "age": 28,
+    "team": "Kilmarnock"
+  },
+  {
+    "name": "L. Mayo",
+    "overall": 67,
+    "potential": 73,
+    "position": "CB, RB, CDM",
+    "age": 25,
+    "team": "Kilmarnock"
+  },
+  {
+    "name": "D. Watson",
+    "overall": 67,
+    "potential": 84,
+    "position": "CM, CDM, CAM",
+    "age": 20,
+    "team": "Kilmarnock"
+  },
+  {
+    "name": "C. Slattery",
+    "overall": 67,
+    "potential": 68,
+    "position": "CM, CDM, CAM",
+    "age": 26,
+    "team": "Motherwell FC"
+  },
+  {
+    "name": "R. Charles-Cook",
+    "overall": 67,
+    "potential": 67,
+    "position": "LM, ST, RM, LW",
+    "age": 28,
+    "team": "Motherwell FC"
+  },
+  {
+    "name": "L. Kelly",
+    "overall": 67,
+    "potential": 67,
+    "position": "GK",
+    "age": 29,
+    "team": "Rangers FC"
+  },
+  {
+    "name": "J. Meghoma",
+    "overall": 67,
+    "potential": 81,
+    "position": "LB, LM",
+    "age": 19,
+    "team": "Rangers FC"
+  },
+  {
+    "name": "D. Wilson",
+    "overall": 67,
+    "potential": 67,
+    "position": "CB",
+    "age": 33,
+    "team": "Livingston FC"
+  },
+  {
+    "name": "J. McCart",
+    "overall": 66,
+    "potential": 68,
+    "position": "CB, LB, CDM",
+    "age": 28,
+    "team": "Hearts"
+  },
+  {
+    "name": "J. Altena",
+    "overall": 66,
+    "potential": 77,
+    "position": "RB, CM",
+    "age": 21,
+    "team": "Hearts"
+  },
+  {
+    "name": "J. Obita",
+    "overall": 66,
+    "potential": 66,
+    "position": "LB, LM",
+    "age": 31,
+    "team": "Hibernian"
+  },
+  {
+    "name": "C. Cadden",
+    "overall": 66,
+    "potential": 66,
+    "position": "RB, RM",
+    "age": 28,
+    "team": "Hibernian"
+  },
+  {
+    "name": "W. O'Hora",
+    "overall": 66,
+    "potential": 67,
+    "position": "CB",
+    "age": 26,
+    "team": "Hibernian"
+  },
+  {
+    "name": "J. Iredale",
+    "overall": 66,
+    "potential": 66,
+    "position": "CB",
+    "age": 29,
+    "team": "Hibernian"
+  },
+  {
+    "name": "J. Mulligan",
+    "overall": 66,
+    "potential": 74,
+    "position": "CM, RM, RB, CDM",
+    "age": 22,
+    "team": "Hibernian"
+  },
+  {
+    "name": "R. Deas",
+    "overall": 66,
+    "potential": 71,
+    "position": "CB, LB, CDM",
+    "age": 25,
+    "team": "Kilmarnock"
+  },
+  {
+    "name": "J. McGhee",
+    "overall": 66,
+    "potential": 66,
+    "position": "RB, CB, CDM",
+    "age": 28,
+    "team": "Motherwell FC"
+  },
+  {
+    "name": "E. Watt",
+    "overall": 66,
+    "potential": 69,
+    "position": "CM, CDM",
+    "age": 25,
+    "team": "Motherwell FC"
+  },
+  {
+    "name": "L. Fadinger",
+    "overall": 66,
+    "potential": 70,
+    "position": "CM, CAM, CDM",
+    "age": 24,
+    "team": "Motherwell FC"
+  },
+  {
+    "name": "E. Just",
+    "overall": 66,
+    "potential": 69,
+    "position": "LW, LM, CAM",
+    "age": 25,
+    "team": "Motherwell FC"
+  },
+  {
+    "name": "T. Maswanhise",
+    "overall": 66,
+    "potential": 75,
+    "position": "LW, ST, RM, LM",
+    "age": 22,
+    "team": "Motherwell FC"
+  },
+  {
+    "name": "E. Fernandez",
+    "overall": 66,
+    "potential": 73,
+    "position": "CB",
+    "age": 23,
+    "team": "Rangers FC"
+  },
+  {
+    "name": "S. Murray",
+    "overall": 66,
+    "potential": 66,
+    "position": "ST",
+    "age": 33,
+    "team": "Dundee FC"
+  },
+  {
+    "name": "Y. Dhanda",
+    "overall": 66,
+    "potential": 67,
+    "position": "CAM, LM, CM",
+    "age": 26,
+    "team": "Dundee FC"
+  },
+  {
+    "name": "J. McCracken",
+    "overall": 66,
+    "potential": 70,
+    "position": "GK",
+    "age": 25,
+    "team": "Dundee FC"
+  },
+  {
+    "name": "V. Ševelj",
+    "overall": 66,
+    "potential": 72,
+    "position": "CDM, CM",
+    "age": 24,
+    "team": "Dundee United FC"
+  },
+  {
+    "name": "Panutche Camará",
+    "overall": 66,
+    "potential": 66,
+    "position": "CM, CAM, CDM",
+    "age": 28,
+    "team": "Dundee United FC"
+  },
+  {
+    "name": "R. Strain",
+    "overall": 66,
+    "potential": 66,
+    "position": "RB, RM",
+    "age": 28,
+    "team": "Dundee United FC"
+  },
+  {
+    "name": "Z. Sapsford",
+    "overall": 66,
+    "potential": 75,
+    "position": "ST, CAM, CM",
+    "age": 22,
+    "team": "Dundee United FC"
+  },
+  {
+    "name": "L. Stephenson",
+    "overall": 66,
+    "potential": 76,
+    "position": "RB, CM, RM",
+    "age": 21,
+    "team": "Dundee United FC"
+  },
+  {
+    "name": "S. Arfield",
+    "overall": 66,
+    "potential": 66,
+    "position": "CM, CAM",
+    "age": 36,
+    "team": "Livingston FC"
+  },
+  {
+    "name": "R. McGowan",
+    "overall": 66,
+    "potential": 66,
+    "position": "CB, CDM, CM",
+    "age": 35,
+    "team": "Livingston FC"
+  },
+  {
+    "name": "M. Sylla",
+    "overall": 66,
+    "potential": 66,
+    "position": "CDM, CM",
+    "age": 31,
+    "team": "Livingston FC"
+  },
+  {
+    "name": "A. Campbell",
+    "overall": 66,
+    "potential": 67,
+    "position": "CM, CAM, CDM",
+    "age": 26,
+    "team": "St. Mirren"
+  },
+  {
+    "name": "K. Baccus",
+    "overall": 66,
+    "potential": 67,
+    "position": "CM, CDM",
+    "age": 27,
+    "team": "St. Mirren"
+  },
+  {
+    "name": "K. Phillips",
+    "overall": 66,
+    "potential": 75,
+    "position": "CM, CDM",
+    "age": 23,
+    "team": "St. Mirren"
+  },
+  {
+    "name": "D. Polvara",
+    "overall": 65,
+    "potential": 66,
+    "position": "RM, CAM, CM, RB",
+    "age": 25,
+    "team": "Aberdeen"
+  },
+  {
+    "name": "A. Palaversa",
+    "overall": 65,
+    "potential": 70,
+    "position": "CDM, CM",
+    "age": 25,
+    "team": "Aberdeen"
+  },
+  {
+    "name": "K. Yengi",
+    "overall": 65,
+    "potential": 66,
+    "position": "ST, LM, RM, LW",
+    "age": 26,
+    "team": "Aberdeen"
+  },
+  {
+    "name": "G. Molloy",
+    "overall": 65,
+    "potential": 73,
+    "position": "CB",
+    "age": 23,
+    "team": "Aberdeen"
+  },
+  {
+    "name": "E. Kabangu",
+    "overall": 65,
+    "potential": 65,
+    "position": "ST, LW, LM",
+    "age": 27,
+    "team": "Hearts"
+  },
+  {
+    "name": "C. Borchgrevink",
+    "overall": 65,
+    "potential": 68,
+    "position": "RB, RM",
+    "age": 26,
+    "team": "Hearts"
+  },
+  {
+    "name": "O. McEntee",
+    "overall": 65,
+    "potential": 68,
+    "position": "CM, CB, RB, CDM",
+    "age": 24,
+    "team": "Hearts"
+  },
+  {
+    "name": "K. Bowie",
+    "overall": 65,
+    "potential": 74,
+    "position": "ST, CAM",
+    "age": 22,
+    "team": "Hibernian"
+  },
+  {
+    "name": "M. Watkins",
+    "overall": 65,
+    "potential": 65,
+    "position": "ST",
+    "age": 34,
+    "team": "Kilmarnock"
+  },
+  {
+    "name": "K. Magennis",
+    "overall": 65,
+    "potential": 66,
+    "position": "CM, RM, LM, CDM",
+    "age": 26,
+    "team": "Kilmarnock"
+  },
+  {
+    "name": "B. Lyons",
+    "overall": 65,
+    "potential": 65,
+    "position": "CM, RB, CDM",
+    "age": 28,
+    "team": "Kilmarnock"
+  },
+  {
+    "name": "L. Gordon",
+    "overall": 65,
+    "potential": 65,
+    "position": "CB",
+    "age": 29,
+    "team": "Motherwell FC"
+  },
+  {
+    "name": "E. Longelo",
+    "overall": 65,
+    "potential": 70,
+    "position": "LB, LM",
+    "age": 24,
+    "team": "Motherwell FC"
+  },
+  {
+    "name": "I. Said",
+    "overall": 65,
+    "potential": 73,
+    "position": "RW, LW, RM",
+    "age": 23,
+    "team": "Motherwell FC"
+  },
+  {
+    "name": "E. Hamilton",
+    "overall": 65,
+    "potential": 66,
+    "position": "CM, CAM, CDM",
+    "age": 26,
+    "team": "Dundee FC"
+  },
+  {
+    "name": "J. Eskesen",
+    "overall": 65,
+    "potential": 68,
+    "position": "CAM, CM, RM",
+    "age": 26,
+    "team": "Dundee United FC"
+  },
+  {
+    "name": "I. Dolček",
+    "overall": 65,
+    "potential": 68,
+    "position": "LM, LW, RW",
+    "age": 25,
+    "team": "Dundee United FC"
+  },
+  {
+    "name": "J. Bokila",
+    "overall": 65,
+    "potential": 65,
+    "position": "ST",
+    "age": 36,
+    "team": "Livingston FC"
+  },
+  {
+    "name": "M. Fraser",
+    "overall": 65,
+    "potential": 65,
+    "position": "CB",
+    "age": 31,
+    "team": "St. Mirren"
+  },
+  {
+    "name": "S. Tanser",
+    "overall": 65,
+    "potential": 65,
+    "position": "LB, LM",
+    "age": 30,
+    "team": "St. Mirren"
+  },
+  {
+    "name": "K. Etete",
+    "overall": 65,
+    "potential": 70,
+    "position": "ST",
+    "age": 23,
+    "team": "St. Mirren"
+  },
+  {
+    "name": "M. Lazetić",
+    "overall": 64,
+    "potential": 75,
+    "position": "ST, LM",
+    "age": 21,
+    "team": "Aberdeen"
+  },
+  {
+    "name": "C. Donovan",
+    "overall": 64,
+    "potential": 83,
+    "position": "RB, CB",
+    "age": 18,
+    "team": "Celtic"
+  },
+  {
+    "name": "O. Holm",
+    "overall": 64,
+    "potential": 73,
+    "position": "CM, CDM",
+    "age": 22,
+    "team": "Celtic"
+  },
+  {
+    "name": "L. Neilson",
+    "overall": 64,
+    "potential": 74,
+    "position": "CB, RB, CDM",
+    "age": 22,
+    "team": "Falkirk"
+  },
+  {
+    "name": "T. Magnússon",
+    "overall": 64,
+    "potential": 73,
+    "position": "CM, CAM, CDM",
+    "age": 22,
+    "team": "Hearts"
+  },
+  {
+    "name": "P. Kabore",
+    "overall": 64,
+    "potential": 70,
+    "position": "ST, RW, LW, RM",
+    "age": 23,
+    "team": "Hearts"
+  },
+  {
+    "name": "J. Wilson",
+    "overall": 64,
+    "potential": 83,
+    "position": "ST",
+    "age": 18,
+    "team": "Hearts"
+  },
+  {
+    "name": "J. Smith",
+    "overall": 64,
+    "potential": 64,
+    "position": "GK",
+    "age": 30,
+    "team": "Hibernian"
+  },
+  {
+    "name": "J. Campbell",
+    "overall": 64,
+    "potential": 67,
+    "position": "CAM, CM",
+    "age": 25,
+    "team": "Hibernian"
+  },
+  {
+    "name": "L. Polworth",
+    "overall": 64,
+    "potential": 64,
+    "position": "CM, CDM",
+    "age": 30,
+    "team": "Kilmarnock"
+  },
+  {
+    "name": "G. Kiltie",
+    "overall": 64,
+    "potential": 64,
+    "position": "LW, ST, CM, LM",
+    "age": 28,
+    "team": "Kilmarnock"
+  },
+  {
+    "name": "T. John-Jules",
+    "overall": 64,
+    "potential": 67,
+    "position": "ST, LW, CAM",
+    "age": 24,
+    "team": "Kilmarnock"
+  },
+  {
+    "name": "B. Anderson",
+    "overall": 64,
+    "potential": 65,
+    "position": "ST, RW, RM",
+    "age": 26,
+    "team": "Kilmarnock"
+  },
+  {
+    "name": "S. Nicholson",
+    "overall": 64,
+    "potential": 64,
+    "position": "RM, LM, RW",
+    "age": 30,
+    "team": "Motherwell FC"
+  },
+  {
+    "name": "A. Oxborough",
+    "overall": 64,
+    "potential": 65,
+    "position": "GK",
+    "age": 27,
+    "team": "Motherwell FC"
+  },
+  {
+    "name": "J. Koutroumbis",
+    "overall": 64,
+    "potential": 64,
+    "position": "RB, CB, CM",
+    "age": 27,
+    "team": "Motherwell FC"
+  },
+  {
+    "name": "C. Robertson",
+    "overall": 64,
+    "potential": 64,
+    "position": "CB, LB, CDM",
+    "age": 31,
+    "team": "Dundee FC"
+  },
+  {
+    "name": "P. Digby",
+    "overall": 64,
+    "potential": 64,
+    "position": "CDM, CM",
+    "age": 30,
+    "team": "Dundee FC"
+  },
+  {
+    "name": "D. Wright",
+    "overall": 64,
+    "potential": 64,
+    "position": "RB, RM, LB",
+    "age": 30,
+    "team": "Dundee FC"
+  },
+  {
+    "name": "B. Halliday",
+    "overall": 64,
+    "potential": 64,
+    "position": "RB, RM",
+    "age": 29,
+    "team": "Dundee FC"
+  },
+  {
+    "name": "K. Trapanovski",
+    "overall": 64,
+    "potential": 65,
+    "position": "LW, RW, LM",
+    "age": 25,
+    "team": "Dundee United FC"
+  },
+  {
+    "name": "N. Farrugia",
+    "overall": 64,
+    "potential": 65,
+    "position": "LM, RM, LB, LW",
+    "age": 26,
+    "team": "Dundee United FC"
+  },
+  {
+    "name": "R. Graham",
+    "overall": 64,
+    "potential": 73,
+    "position": "CB",
+    "age": 24,
+    "team": "Dundee United FC"
+  },
+  {
+    "name": "A. Shinnie",
+    "overall": 64,
+    "potential": 64,
+    "position": "CM, LW, ST, CDM",
+    "age": 35,
+    "team": "Livingston FC"
+  },
+  {
+    "name": "M. Mandron",
+    "overall": 64,
+    "potential": 64,
+    "position": "ST, CAM",
+    "age": 30,
+    "team": "St. Mirren"
+  },
+  {
+    "name": "D. John",
+    "overall": 64,
+    "potential": 64,
+    "position": "LB, RB, LM",
+    "age": 30,
+    "team": "St. Mirren"
+  },
+  {
+    "name": "L. Donnelly",
+    "overall": 64,
+    "potential": 64,
+    "position": "CM, CDM",
+    "age": 29,
+    "team": "St. Mirren"
+  },
+  {
+    "name": "A. Gogić",
+    "overall": 64,
+    "potential": 64,
+    "position": "CB, CDM, CM",
+    "age": 31,
+    "team": "St. Mirren"
+  },
+  {
+    "name": "J. Ayunga",
+    "overall": 64,
+    "potential": 64,
+    "position": "ST, RW, RM",
+    "age": 28,
+    "team": "St. Mirren"
+  },
+  {
+    "name": "J. Young",
+    "overall": 64,
+    "potential": 69,
+    "position": "ST, LM, LW",
+    "age": 23,
+    "team": "St. Mirren"
+  },
+  {
+    "name": "A. Montgomery",
+    "overall": 63,
+    "potential": 69,
+    "position": "LB, LM",
+    "age": 22,
+    "team": "Celtic"
+  },
+  {
+    "name": "B. Graham",
+    "overall": 63,
+    "potential": 63,
+    "position": "ST",
+    "age": 37,
+    "team": "Falkirk"
+  },
+  {
+    "name": "C. Miller",
+    "overall": 63,
+    "potential": 63,
+    "position": "LM, RM, CAM, LW",
+    "age": 27,
+    "team": "Falkirk"
+  },
+  {
+    "name": "B. Spencer",
+    "overall": 63,
+    "potential": 63,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Falkirk"
+  },
+  {
+    "name": "R. Fulton",
+    "overall": 63,
+    "potential": 65,
+    "position": "GK",
+    "age": 29,
+    "team": "Hearts"
+  },
+  {
+    "name": "T. Lowery",
+    "overall": 63,
+    "potential": 63,
+    "position": "CM, CDM, CAM",
+    "age": 27,
+    "team": "Kilmarnock"
+  },
+  {
+    "name": "D. Thompson",
+    "overall": 63,
+    "potential": 66,
+    "position": "LB, LM",
+    "age": 24,
+    "team": "Kilmarnock"
+  },
+  {
+    "name": "S. Tiffoney",
+    "overall": 63,
+    "potential": 64,
+    "position": "ST, LW, LM, CAM",
+    "age": 26,
+    "team": "Kilmarnock"
+  },
+  {
+    "name": "A. Halliday",
+    "overall": 63,
+    "potential": 63,
+    "position": "CM, CDM, LB",
+    "age": 33,
+    "team": "Motherwell FC"
+  },
+  {
+    "name": "P. McGinn",
+    "overall": 63,
+    "potential": 63,
+    "position": "CB",
+    "age": 34,
+    "team": "Motherwell FC"
+  },
+  {
+    "name": "S. O'Donnell",
+    "overall": 63,
+    "potential": 63,
+    "position": "RB, CB, RM, CDM",
+    "age": 33,
+    "team": "Motherwell FC"
+  },
+  {
+    "name": "F. Stuparević",
+    "overall": 63,
+    "potential": 66,
+    "position": "ST",
+    "age": 24,
+    "team": "Motherwell FC"
+  },
+  {
+    "name": "O. Priestman",
+    "overall": 63,
+    "potential": 74,
+    "position": "CM, CDM",
+    "age": 22,
+    "team": "Motherwell FC"
+  },
+  {
+    "name": "F. Curtis",
+    "overall": 63,
+    "potential": 84,
+    "position": "LW, RW, LM",
+    "age": 18,
+    "team": "Rangers FC"
+  },
+  {
+    "name": "C. Nsiala",
+    "overall": 63,
+    "potential": 76,
+    "position": "CB",
+    "age": 21,
+    "team": "Rangers FC"
+  },
+  {
+    "name": "R. Astley",
+    "overall": 63,
+    "potential": 70,
+    "position": "CB, RB, CDM",
+    "age": 23,
+    "team": "Dundee FC"
+  },
+  {
+    "name": "C. Congreve",
+    "overall": 63,
+    "potential": 68,
+    "position": "LM, RW, RM, LW",
+    "age": 21,
+    "team": "Dundee FC"
+  },
+  {
+    "name": "I. Pappoe",
+    "overall": 63,
+    "potential": 67,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "Dundee United FC"
+  },
+  {
+    "name": "C. Sibbald",
+    "overall": 63,
+    "potential": 63,
+    "position": "CM, CDM",
+    "age": 30,
+    "team": "Dundee United FC"
+  },
+  {
+    "name": "A. Fatah",
+    "overall": 63,
+    "potential": 78,
+    "position": "LM, LW",
+    "age": 21,
+    "team": "Dundee United FC"
+  },
+  {
+    "name": "B. Esselink",
+    "overall": 63,
+    "potential": 68,
+    "position": "CB",
+    "age": 25,
+    "team": "Dundee United FC"
+  },
+  {
+    "name": "J. Wanner",
+    "overall": 63,
+    "potential": 64,
+    "position": "LW, RW, ST, LM",
+    "age": 25,
+    "team": "Livingston FC"
+  },
+  {
+    "name": "C. Montaño",
+    "overall": 63,
+    "potential": 63,
+    "position": "LB, LM",
+    "age": 33,
+    "team": "Livingston FC"
+  },
+  {
+    "name": "S. Pittman",
+    "overall": 63,
+    "potential": 63,
+    "position": "CM, CAM, CDM",
+    "age": 32,
+    "team": "Livingston FC"
+  },
+  {
+    "name": "Mahamadou Susoho",
+    "overall": 63,
+    "potential": 78,
+    "position": "CDM, CM",
+    "age": 20,
+    "team": "Livingston FC"
+  },
+  {
+    "name": "S. George",
+    "overall": 63,
+    "potential": 66,
+    "position": "GK",
+    "age": 27,
+    "team": "St. Mirren"
+  },
+  {
+    "name": "C. McMenamin",
+    "overall": 63,
+    "potential": 63,
+    "position": "RW, RB, RM",
+    "age": 29,
+    "team": "St. Mirren"
+  },
+  {
+    "name": "T. Olusanya",
+    "overall": 62,
+    "potential": 62,
+    "position": "ST, RW, RM",
+    "age": 27,
+    "team": "Aberdeen"
+  },
+  {
+    "name": "C. Osmand",
+    "overall": 62,
+    "potential": 79,
+    "position": "ST",
+    "age": 19,
+    "team": "Celtic"
+  },
+  {
+    "name": "C. Donaldson",
+    "overall": 62,
+    "potential": 62,
+    "position": "CB",
+    "age": 30,
+    "team": "Falkirk"
+  },
+  {
+    "name": "D. Daniels",
+    "overall": 62,
+    "potential": 68,
+    "position": "ST",
+    "age": 23,
+    "team": "Kilmarnock"
+  },
+  {
+    "name": "J. Brandon",
+    "overall": 62,
+    "potential": 62,
+    "position": "RB, RM, CDM",
+    "age": 27,
+    "team": "Kilmarnock"
+  },
+  {
+    "name": "C. Hendry",
+    "overall": 62,
+    "potential": 62,
+    "position": "ST, CAM",
+    "age": 27,
+    "team": "Motherwell FC"
+  },
+  {
+    "name": "B. Koumetio",
+    "overall": 62,
+    "potential": 72,
+    "position": "CB, LB, CDM",
+    "age": 22,
+    "team": "Dundee FC"
+  },
+  {
+    "name": "A. Donnelly",
+    "overall": 62,
+    "potential": 70,
+    "position": "CB",
+    "age": 22,
+    "team": "Dundee FC"
+  },
+  {
+    "name": "C. Kerr",
+    "overall": 62,
+    "potential": 62,
+    "position": "RB",
+    "age": 29,
+    "team": "Livingston FC"
+  },
+  {
+    "name": "R. Muirhead",
+    "overall": 62,
+    "potential": 62,
+    "position": "ST, CAM",
+    "age": 29,
+    "team": "Livingston FC"
+  },
+  {
+    "name": "L. Smith",
+    "overall": 62,
+    "potential": 65,
+    "position": "RM, RW",
+    "age": 25,
+    "team": "Livingston FC"
+  },
+  {
+    "name": "E. Danso",
+    "overall": 62,
+    "potential": 69,
+    "position": "CDM, CM",
+    "age": 24,
+    "team": "Livingston FC"
+  },
+  {
+    "name": "R. Doohan",
+    "overall": 61,
+    "potential": 63,
+    "position": "GK",
+    "age": 27,
+    "team": "Celtic"
+  },
+  {
+    "name": "E. Williams",
+    "overall": 61,
+    "potential": 79,
+    "position": "LM, CAM, LW",
+    "age": 19,
+    "team": "Falkirk"
+  },
+  {
+    "name": "L. Henderson",
+    "overall": 61,
+    "potential": 62,
+    "position": "CB",
+    "age": 28,
+    "team": "Falkirk"
+  },
+  {
+    "name": "E. Ross",
+    "overall": 61,
+    "potential": 67,
+    "position": "LM, LW",
+    "age": 23,
+    "team": "Falkirk"
+  },
+  {
+    "name": "D. Tait",
+    "overall": 61,
+    "potential": 68,
+    "position": "CM, CDM, CAM",
+    "age": 23,
+    "team": "Falkirk"
+  },
+  {
+    "name": "S. Kerjota",
+    "overall": 61,
+    "potential": 67,
+    "position": "RW, RM",
+    "age": 23,
+    "team": "Hearts"
+  },
+  {
+    "name": "R. McKenzie",
+    "overall": 61,
+    "potential": 61,
+    "position": "LM, CAM, CM, LW",
+    "age": 31,
+    "team": "Kilmarnock"
+  },
+  {
+    "name": "K. Roos",
+    "overall": 61,
+    "potential": 61,
+    "position": "GK",
+    "age": 33,
+    "team": "Kilmarnock"
+  },
+  {
+    "name": "G. Stanger",
+    "overall": 61,
+    "potential": 68,
+    "position": "CB, RB",
+    "age": 24,
+    "team": "Kilmarnock"
+  },
+  {
+    "name": "J. Brown",
+    "overall": 61,
+    "potential": 62,
+    "position": "RB, RM",
+    "age": 27,
+    "team": "Kilmarnock"
+  },
+  {
+    "name": "Z. Williams",
+    "overall": 61,
+    "potential": 70,
+    "position": "CB, LB, LM",
+    "age": 21,
+    "team": "Kilmarnock"
+  },
+  {
+    "name": "J. Thomson",
+    "overall": 61,
+    "potential": 66,
+    "position": "CDM, CM",
+    "age": 25,
+    "team": "Kilmarnock"
+  },
+  {
+    "name": "T. Sparrow",
+    "overall": 61,
+    "potential": 67,
+    "position": "RM, RW, CM",
+    "age": 22,
+    "team": "Motherwell FC"
+  },
+  {
+    "name": "B. Rice",
+    "overall": 61,
+    "potential": 81,
+    "position": "CDM, CM",
+    "age": 18,
+    "team": "Rangers FC"
+  },
+  {
+    "name": "K. O'Hara",
+    "overall": 61,
+    "potential": 63,
+    "position": "GK",
+    "age": 29,
+    "team": "Dundee FC"
+  },
+  {
+    "name": "F. Robertson",
+    "overall": 61,
+    "potential": 70,
+    "position": "CM, LB, CDM",
+    "age": 22,
+    "team": "Dundee FC"
+  },
+  {
+    "name": "C. Jones",
+    "overall": 61,
+    "potential": 68,
+    "position": "CDM, CM",
+    "age": 24,
+    "team": "Dundee FC"
+  },
+  {
+    "name": "T. Yogane",
+    "overall": 61,
+    "potential": 74,
+    "position": "LM, LW",
+    "age": 19,
+    "team": "Dundee FC"
+  },
+  {
+    "name": "D. Naamo",
+    "overall": 61,
+    "potential": 70,
+    "position": "RB, RM, LM, RW",
+    "age": 20,
+    "team": "Dundee United FC"
+  },
+  {
+    "name": "N. Möller",
+    "overall": 61,
+    "potential": 70,
+    "position": "ST",
+    "age": 22,
+    "team": "Dundee United FC"
+  },
+  {
+    "name": "B. Fati",
+    "overall": 61,
+    "potential": 64,
+    "position": "LB",
+    "age": 25,
+    "team": "Livingston FC"
+  },
+  {
+    "name": "S. May",
+    "overall": 61,
+    "potential": 61,
+    "position": "ST, LM, LW",
+    "age": 32,
+    "team": "Livingston FC"
+  },
+  {
+    "name": "A. Denholm",
+    "overall": 61,
+    "potential": 72,
+    "position": "CM, CAM",
+    "age": 21,
+    "team": "Livingston FC"
+  },
+  {
+    "name": "D. Nlundulu",
+    "overall": 61,
+    "potential": 62,
+    "position": "ST",
+    "age": 26,
+    "team": "St. Mirren"
+  },
+  {
+    "name": "J. Richardson",
+    "overall": 61,
+    "potential": 66,
+    "position": "RB, RM, RW",
+    "age": 24,
+    "team": "St. Mirren"
+  },
+  {
+    "name": "T. Sobowale",
+    "overall": 61,
+    "potential": 63,
+    "position": "RB, CB, RM",
+    "age": 26,
+    "team": "St. Mirren"
+  },
+  {
+    "name": "J. Milne",
+    "overall": 60,
+    "potential": 70,
+    "position": "CB, RM, RB",
+    "age": 22,
+    "team": "Aberdeen"
+  },
+  {
+    "name": "L. McCann",
+    "overall": 60,
+    "potential": 63,
+    "position": "LB, LM",
+    "age": 25,
+    "team": "Falkirk"
+  },
+  {
+    "name": "K. Adams",
+    "overall": 60,
+    "potential": 65,
+    "position": "RB",
+    "age": 23,
+    "team": "Falkirk"
+  },
+  {
+    "name": "A. Nesbitt",
+    "overall": 60,
+    "potential": 60,
+    "position": "LM, CAM, LW",
+    "age": 28,
+    "team": "Falkirk"
+  },
+  {
+    "name": "S. Hart",
+    "overall": 60,
+    "potential": 60,
+    "position": "LB, CB, LM, CDM",
+    "age": 28,
+    "team": "Falkirk"
+  },
+  {
+    "name": "R. MacIver",
+    "overall": 60,
+    "potential": 63,
+    "position": "ST",
+    "age": 26,
+    "team": "Falkirk"
+  },
+  {
+    "name": "L. Marsh",
+    "overall": 60,
+    "potential": 69,
+    "position": "ST, CAM, CM",
+    "age": 21,
+    "team": "Falkirk"
+  },
+  {
+    "name": "M. Chaiwa",
+    "overall": 60,
+    "potential": 71,
+    "position": "CDM, CM, RB",
+    "age": 21,
+    "team": "Hibernian"
+  },
+  {
+    "name": "B. Brannan",
+    "overall": 60,
+    "potential": 77,
+    "position": "LB, RB, LM",
+    "age": 18,
+    "team": "Kilmarnock"
+  },
+  {
+    "name": "M. Dackers",
+    "overall": 60,
+    "potential": 66,
+    "position": "ST",
+    "age": 22,
+    "team": "Kilmarnock"
+  },
+  {
+    "name": "C. Ward",
+    "overall": 60,
+    "potential": 65,
+    "position": "GK",
+    "age": 24,
+    "team": "Motherwell FC"
+  },
+  {
+    "name": "Z. Robinson",
+    "overall": 60,
+    "potential": 67,
+    "position": "ST",
+    "age": 23,
+    "team": "Motherwell FC"
+  },
+  {
+    "name": "A. Hay",
+    "overall": 60,
+    "potential": 66,
+    "position": "ST",
+    "age": 21,
+    "team": "Dundee FC"
+  },
+  {
+    "name": "E. Ingram",
+    "overall": 60,
+    "potential": 71,
+    "position": "RB, CDM",
+    "age": 22,
+    "team": "Dundee FC"
+  },
+  {
+    "name": "J. Cotterill",
+    "overall": 60,
+    "potential": 69,
+    "position": "CM, RM, CDM",
+    "age": 20,
+    "team": "Dundee FC"
+  },
+  {
+    "name": "C. Reilly",
+    "overall": 60,
+    "potential": 66,
+    "position": "LM, RM, ST, LW",
+    "age": 23,
+    "team": "Dundee FC"
+  },
+  {
+    "name": "L. Graham",
+    "overall": 60,
+    "potential": 71,
+    "position": "CB, LB",
+    "age": 21,
+    "team": "Dundee FC"
+  },
+  {
+    "name": "K. Keresztes",
+    "overall": 60,
+    "potential": 65,
+    "position": "CB, LB",
+    "age": 25,
+    "team": "Dundee United FC"
+  },
+  {
+    "name": "M. Watters",
+    "overall": 60,
+    "potential": 60,
+    "position": "ST",
+    "age": 26,
+    "team": "Dundee United FC"
+  },
+  {
+    "name": "J. Hamilton",
+    "overall": 60,
+    "potential": 60,
+    "position": "GK",
+    "age": 31,
+    "team": "Livingston FC"
+  },
+  {
+    "name": "C. McLennan",
+    "overall": 60,
+    "potential": 61,
+    "position": "RM, LM, RW",
+    "age": 25,
+    "team": "Livingston FC"
+  },
+  {
+    "name": "M. Tait",
+    "overall": 60,
+    "potential": 74,
+    "position": "CM, CDM",
+    "age": 19,
+    "team": "Livingston FC"
+  },
+  {
+    "name": "M. Freckleton",
+    "overall": 60,
+    "potential": 68,
+    "position": "CB, LB, CDM",
+    "age": 21,
+    "team": "St. Mirren"
+  },
+  {
+    "name": "R. King",
+    "overall": 60,
+    "potential": 67,
+    "position": "CB",
+    "age": 23,
+    "team": "St. Mirren"
+  },
+  {
+    "name": "E. Gyamfi",
+    "overall": 59,
+    "potential": 69,
+    "position": "LM, LB, LW",
+    "age": 20,
+    "team": "Aberdeen"
+  },
+  {
+    "name": "P. Ambrose",
+    "overall": 59,
+    "potential": 67,
+    "position": "ST",
+    "age": 23,
+    "team": "Aberdeen"
+  },
+  {
+    "name": "K. Bilalović",
+    "overall": 59,
+    "potential": 72,
+    "position": "LW, RW, LM",
+    "age": 20,
+    "team": "Aberdeen"
+  },
+  {
+    "name": "H. Cartwright",
+    "overall": 59,
+    "potential": 71,
+    "position": "CDM, CM",
+    "age": 20,
+    "team": "Falkirk"
+  },
+  {
+    "name": "F. Lissah",
+    "overall": 59,
+    "potential": 71,
+    "position": "LB, CB, RB",
+    "age": 20,
+    "team": "Falkirk"
+  },
+  {
+    "name": "F. Pollock",
+    "overall": 59,
+    "potential": 73,
+    "position": "CAM, ST, CM",
+    "age": 21,
+    "team": "Hearts"
+  },
+  {
+    "name": "R. Molotnikov",
+    "overall": 59,
+    "potential": 76,
+    "position": "CAM, LM, CM",
+    "age": 19,
+    "team": "Hibernian"
+  },
+  {
+    "name": "J. Westley",
+    "overall": 59,
+    "potential": 72,
+    "position": "ST, LW, RM, LM",
+    "age": 20,
+    "team": "Dundee FC"
+  },
+  {
+    "name": "I. Iovu",
+    "overall": 59,
+    "potential": 65,
+    "position": "CB",
+    "age": 22,
+    "team": "Dundee United FC"
+  },
+  {
+    "name": "T. Yengi",
+    "overall": 59,
+    "potential": 64,
+    "position": "ST, LM, LW",
+    "age": 24,
+    "team": "Livingston FC"
+  },
+  {
+    "name": "R. Mullen",
+    "overall": 59,
+    "potential": 67,
+    "position": "GK",
+    "age": 24,
+    "team": "St. Mirren"
+  },
+  {
+    "name": "R. Idowu",
+    "overall": 59,
+    "potential": 66,
+    "position": "CAM, RW, CM",
+    "age": 23,
+    "team": "St. Mirren"
+  },
+  {
+    "name": "D. Lobban",
+    "overall": 58,
+    "potential": 75,
+    "position": "RM, CM, LM, RB",
+    "age": 19,
+    "team": "Aberdeen"
+  },
+  {
+    "name": "C. Allan",
+    "overall": 58,
+    "potential": 71,
+    "position": "CB, RB",
+    "age": 21,
+    "team": "Falkirk"
+  },
+  {
+    "name": "K. Wilson",
+    "overall": 58,
+    "potential": 71,
+    "position": "RM, RW",
+    "age": 20,
+    "team": "Falkirk"
+  },
+  {
+    "name": "M. Schjønning-Larsen",
+    "overall": 58,
+    "potential": 63,
+    "position": "LB, LM, RB, LW",
+    "age": 24,
+    "team": "Kilmarnock"
+  },
+  {
+    "name": "E. Beach",
+    "overall": 58,
+    "potential": 70,
+    "position": "GK",
+    "age": 21,
+    "team": "Kilmarnock"
+  },
+  {
+    "name": "E. Bjørgolfsson",
+    "overall": 58,
+    "potential": 62,
+    "position": "ST",
+    "age": 24,
+    "team": "Motherwell FC"
+  },
+  {
+    "name": "I. Samuels",
+    "overall": 58,
+    "potential": 67,
+    "position": "LB, LM",
+    "age": 22,
+    "team": "Dundee FC"
+  },
+  {
+    "name": "D. Richards",
+    "overall": 58,
+    "potential": 58,
+    "position": "GK",
+    "age": 31,
+    "team": "Dundee United FC"
+  },
+  {
+    "name": "J. Zimmerman",
+    "overall": 58,
+    "potential": 64,
+    "position": "RW, LW, ST, RM",
+    "age": 24,
+    "team": "Livingston FC"
+  },
+  {
+    "name": "D. Finlayson",
+    "overall": 58,
+    "potential": 63,
+    "position": "RB, CB",
+    "age": 24,
+    "team": "Livingston FC"
+  },
+  {
+    "name": "M. Dijksteel",
+    "overall": 58,
+    "potential": 62,
+    "position": "LM, CAM, LW",
+    "age": 23,
+    "team": "St. Mirren"
+  },
+  {
+    "name": "N. Suman",
+    "overall": 57,
+    "potential": 63,
+    "position": "GK",
+    "age": 25,
+    "team": "Aberdeen"
+  },
+  {
+    "name": "T. Oluwayemi",
+    "overall": 57,
+    "potential": 69,
+    "position": "GK",
+    "age": 22,
+    "team": "Celtic"
+  },
+  {
+    "name": "F. Yeats",
+    "overall": 57,
+    "potential": 65,
+    "position": "RB, CAM, LM",
+    "age": 21,
+    "team": "Falkirk"
+  },
+  {
+    "name": "B. Stewart",
+    "overall": 57,
+    "potential": 66,
+    "position": "ST",
+    "age": 21,
+    "team": "Falkirk"
+  },
+  {
+    "name": "G. Oliver",
+    "overall": 57,
+    "potential": 57,
+    "position": "ST",
+    "age": 29,
+    "team": "Falkirk"
+  },
+  {
+    "name": "J. Sneddon",
+    "overall": 57,
+    "potential": 60,
+    "position": "GK",
+    "age": 27,
+    "team": "Falkirk"
+  },
+  {
+    "name": "B. Parkinson",
+    "overall": 57,
+    "potential": 71,
+    "position": "ST, RW",
+    "age": 20,
+    "team": "Falkirk"
+  },
+  {
+    "name": "M. Johnson",
+    "overall": 57,
+    "potential": 71,
+    "position": "GK",
+    "age": 20,
+    "team": "Hibernian"
+  },
+  {
+    "name": "E. Schilte-Brown",
+    "overall": 57,
+    "potential": 72,
+    "position": "CB",
+    "age": 20,
+    "team": "Kilmarnock"
+  },
+  {
+    "name": "J. Bevan",
+    "overall": 57,
+    "potential": 63,
+    "position": "ST, RM, LM",
+    "age": 20,
+    "team": "Dundee FC"
+  },
+  {
+    "name": "S. Cleall-Harding",
+    "overall": 57,
+    "potential": 75,
+    "position": "CB",
+    "age": 19,
+    "team": "Dundee United FC"
+  },
+  {
+    "name": "T. Lang",
+    "overall": 56,
+    "potential": 58,
+    "position": "CB, RB",
+    "age": 28,
+    "team": "Falkirk"
+  },
+  {
+    "name": "K. Megwa",
+    "overall": 56,
+    "potential": 68,
+    "position": "RB",
+    "age": 21,
+    "team": "Hibernian"
+  },
+  {
+    "name": "L. Ross",
+    "overall": 56,
+    "potential": 69,
+    "position": "RM, ST, RW",
+    "age": 18,
+    "team": "Motherwell FC"
+  },
+  {
+    "name": "B. Kabongolo",
+    "overall": 56,
+    "potential": 65,
+    "position": "CB",
+    "age": 22,
+    "team": "Livingston FC"
+  },
+  {
+    "name": "F. Taylor",
+    "overall": 56,
+    "potential": 67,
+    "position": "CAM, CDM, CM",
+    "age": 22,
+    "team": "St. Mirren"
+  },
+  {
+    "name": "J. Calvin",
+    "overall": 56,
+    "potential": 63,
+    "position": "LW, RW, LM",
+    "age": 22,
+    "team": "St. Mirren"
+  },
+  {
+    "name": "M. Frame",
+    "overall": 55,
+    "potential": 72,
+    "position": "LB, LW",
+    "age": 19,
+    "team": "Aberdeen"
+  },
+  {
+    "name": "Z. McAllister",
+    "overall": 55,
+    "potential": 71,
+    "position": "CM, CDM",
+    "age": 17,
+    "team": "Motherwell FC"
+  },
+  {
+    "name": "D. Wells",
+    "overall": 55,
+    "potential": 65,
+    "position": "RW, LW, RM",
+    "age": 19,
+    "team": "Motherwell FC"
+  },
+  {
+    "name": "H. Sharp",
+    "overall": 55,
+    "potential": 63,
+    "position": "GK",
+    "age": 24,
+    "team": "Dundee FC"
+  },
+  {
+    "name": "J. Smith",
+    "overall": 55,
+    "potential": 65,
+    "position": "GK",
+    "age": 23,
+    "team": "Livingston FC"
+  },
+  {
+    "name": "E. Mooney",
+    "overall": 55,
+    "potential": 71,
+    "position": "RW, ST, RM",
+    "age": 17,
+    "team": "St. Mirren"
+  },
+  {
+    "name": "N. Hogarth",
+    "overall": 54,
+    "potential": 58,
+    "position": "GK",
+    "age": 23,
+    "team": "Falkirk"
+  },
+  {
+    "name": "O. Stirton",
+    "overall": 54,
+    "potential": 73,
+    "position": "ST",
+    "age": 18,
+    "team": "Dundee United FC"
+  },
+  {
+    "name": "R. Adams",
+    "overall": 54,
+    "potential": 63,
+    "position": "GK",
+    "age": 20,
+    "team": "Dundee United FC"
+  },
+  {
+    "name": "A. Tamm",
+    "overall": 54,
+    "potential": 59,
+    "position": "ST",
+    "age": 23,
+    "team": "Livingston FC"
+  },
+  {
+    "name": "S. Lawal",
+    "overall": 54,
+    "potential": 66,
+    "position": "CAM, CM",
+    "age": 21,
+    "team": "Livingston FC"
+  },
+  {
+    "name": "K. Kjartansson",
+    "overall": 53,
+    "potential": 67,
+    "position": "CDM, CM",
+    "age": 18,
+    "team": "Aberdeen"
+  },
+  {
+    "name": "K. Leslie",
+    "overall": 53,
+    "potential": 67,
+    "position": "RM, LM, RW",
+    "age": 20,
+    "team": "Kilmarnock"
+  },
+  {
+    "name": "M. Connelly",
+    "overall": 52,
+    "potential": 64,
+    "position": "GK",
+    "age": 22,
+    "team": "Motherwell FC"
+  },
+  {
+    "name": "S. Culbert",
+    "overall": 52,
+    "potential": 67,
+    "position": "ST",
+    "age": 19,
+    "team": "Livingston FC"
+  }
+]

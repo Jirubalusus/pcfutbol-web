@@ -5,6 +5,7 @@
 // Deadline Day, Cláusulas, Guerras de ofertas
 
 import { PERSONALITIES, evaluateTransferOffer, calculatePlayerHappiness } from './playerPersonality.js';
+import { calculateMarketValue as globalCalculateMarketValue } from './globalTransferEngine.js';
 
 // ============================================================
 // CONSTANTES Y CONFIGURACIÓN
@@ -1471,74 +1472,11 @@ export class TransferMarket {
   }
 
   /**
-   * Calcular valor de mercado (REALISTA 2026)
-   * Basado en valoraciones reales de Transfermarkt
+   * Calcular valor de mercado — delega a globalTransferEngine (fuente canónica)
    */
   calculateMarketValue(player) {
     if (!player) return 0;
-
-    // Tabla de referencia por overall (en millones)
-    // Basada en valores reales: Mbappe ~180M, Haaland ~180M, Bellingham ~150M
-    // Jugadores de 75 OVR suelen valer 5-15M
-    const valueTable = {
-      60: 0.2, 62: 0.35, 64: 0.5, 66: 0.8, 68: 1.2,
-      70: 2, 72: 3.5, 74: 6, 76: 10, 78: 18,
-      80: 30, 82: 45, 84: 65, 86: 90, 88: 120,
-      90: 150, 92: 180, 94: 220, 96: 280, 98: 350
-    };
-
-    // Interpolar valor base
-    const ovr = Math.max(60, Math.min(98, player.overall));
-    const lowerOvr = Math.floor(ovr / 2) * 2; // Redondear a par inferior
-    const upperOvr = Math.min(98, lowerOvr + 2);
-    const fraction = (ovr - lowerOvr) / 2;
-    
-    const lowerValue = valueTable[lowerOvr] || 0.1;
-    const upperValue = valueTable[upperOvr] || lowerValue * 1.5;
-    const baseValueMillions = lowerValue + (upperValue - lowerValue) * fraction;
-    const baseValue = baseValueMillions * 1000000;
-
-    // Modificador edad (CRÍTICO - la edad es el factor más importante)
-    let ageMod = 1;
-    if (player.age <= 18) ageMod = 1.8;       // Wonderkids premium
-    else if (player.age <= 20) ageMod = 1.6;  // Promesa confirmada
-    else if (player.age <= 23) ageMod = 1.4;  // Explosión
-    else if (player.age <= 26) ageMod = 1.2;  // Prime temprano
-    else if (player.age <= 28) ageMod = 1.0;  // Peak
-    else if (player.age <= 30) ageMod = 0.8;  // Madurez tardía
-    else if (player.age <= 32) ageMod = 0.55; // Declive
-    else if (player.age <= 34) ageMod = 0.3;  // Veterano
-    else ageMod = 0.15;                       // Leyenda
-
-    // Modificador posición (atacantes y mediapuntas más caros)
-    let posMod = 1;
-    if (player.position === 'ST') posMod = 1.2;
-    else if (['CAM', 'RW', 'LW'].includes(player.position)) posMod = 1.15;
-    else if (['CM'].includes(player.position)) posMod = 1.05;
-    else if (['CDM', 'CB'].includes(player.position)) posMod = 0.95;
-    else if (['RB', 'LB'].includes(player.position)) posMod = 0.85;
-    else if (player.position === 'GK') posMod = 0.65;
-
-    // Modificador contrato
-    const contractYears = player.contractYears || 2;
-    let contractMod = 1;
-    if (contractYears <= 1) contractMod = 0.5;
-    else if (contractYears <= 2) contractMod = 0.75;
-    else if (contractYears >= 5) contractMod = 1.15;
-    else if (contractYears >= 4) contractMod = 1.05;
-
-    // Modificador potencial (para jóvenes)
-    let potentialMod = 1;
-    if (player.age <= 23 && player.potential) {
-      const potentialGap = player.potential - player.overall;
-      if (potentialGap >= 10) potentialMod = 1.4;
-      else if (potentialGap >= 5) potentialMod = 1.2;
-    }
-
-    const finalValue = baseValue * ageMod * posMod * contractMod * potentialMod;
-    
-    // Mínimo 50K, máximo 400M
-    return Math.round(Math.max(50000, Math.min(400000000, finalValue)));
+    return globalCalculateMarketValue(player, null);
   }
 
   /**

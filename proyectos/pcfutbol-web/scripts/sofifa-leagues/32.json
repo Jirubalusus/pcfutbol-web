@@ -1,0 +1,4530 @@
+[
+  {
+    "name": "A. Colpani",
+    "overall": 77,
+    "potential": 77,
+    "position": "CAM, RM, ST",
+    "age": 26,
+    "team": "Monza"
+  },
+  {
+    "name": "A. Gómez",
+    "overall": 76,
+    "potential": 76,
+    "position": "LM, CAM, ST, LW",
+    "age": 37,
+    "team": "Calcio Padova"
+  },
+  {
+    "name": "M. Pessina",
+    "overall": 76,
+    "potential": 76,
+    "position": "CM, CAM, CDM",
+    "age": 28,
+    "team": "Monza"
+  },
+  {
+    "name": "J. Pohjanpalo",
+    "overall": 75,
+    "potential": 75,
+    "position": "ST",
+    "age": 30,
+    "team": "Palermo FC"
+  },
+  {
+    "name": "Dany Mota",
+    "overall": 75,
+    "potential": 75,
+    "position": "ST, CAM, CM",
+    "age": 27,
+    "team": "Monza"
+  },
+  {
+    "name": "Kike Pérez",
+    "overall": 74,
+    "potential": 74,
+    "position": "CM, CDM",
+    "age": 28,
+    "team": "Venezia"
+  },
+  {
+    "name": "G. Busio",
+    "overall": 74,
+    "potential": 81,
+    "position": "CM, CDM, CAM",
+    "age": 23,
+    "team": "Venezia"
+  },
+  {
+    "name": "F. Stanković",
+    "overall": 74,
+    "potential": 82,
+    "position": "GK",
+    "age": 23,
+    "team": "Venezia"
+  },
+  {
+    "name": "M. Coda",
+    "overall": 74,
+    "potential": 74,
+    "position": "ST",
+    "age": 36,
+    "team": "Sampdoria"
+  },
+  {
+    "name": "A. Barák",
+    "overall": 74,
+    "potential": 74,
+    "position": "CM, CAM",
+    "age": 30,
+    "team": "Sampdoria"
+  },
+  {
+    "name": "S. Esposito",
+    "overall": 74,
+    "potential": 78,
+    "position": "CDM, CM",
+    "age": 24,
+    "team": "Sampdoria"
+  },
+  {
+    "name": "A. Palumbo",
+    "overall": 74,
+    "potential": 74,
+    "position": "CAM, CM",
+    "age": 28,
+    "team": "Palermo FC"
+  },
+  {
+    "name": "T. Augello",
+    "overall": 74,
+    "potential": 74,
+    "position": "LB, LM",
+    "age": 30,
+    "team": "Palermo FC"
+  },
+  {
+    "name": "A. Izzo",
+    "overall": 74,
+    "potential": 74,
+    "position": "CB",
+    "age": 33,
+    "team": "Avellino"
+  },
+  {
+    "name": "G. Caprari",
+    "overall": 74,
+    "potential": 74,
+    "position": "CAM, ST, CM",
+    "age": 31,
+    "team": "Monza"
+  },
+  {
+    "name": "Hernani",
+    "overall": 74,
+    "potential": 74,
+    "position": "CDM, CM, CAM",
+    "age": 31,
+    "team": "Monza"
+  },
+  {
+    "name": "S. Birindelli",
+    "overall": 74,
+    "potential": 77,
+    "position": "RB, RM",
+    "age": 25,
+    "team": "Monza"
+  },
+  {
+    "name": "E. Gyasi",
+    "overall": 73,
+    "potential": 73,
+    "position": "RM, CAM, RB",
+    "age": 31,
+    "team": "Palermo FC"
+  },
+  {
+    "name": "M. Bani",
+    "overall": 73,
+    "potential": 73,
+    "position": "CB",
+    "age": 31,
+    "team": "Palermo FC"
+  },
+  {
+    "name": "G. Magnani",
+    "overall": 73,
+    "potential": 73,
+    "position": "CB",
+    "age": 29,
+    "team": "Palermo FC"
+  },
+  {
+    "name": "G. Castrovilli",
+    "overall": 73,
+    "potential": 73,
+    "position": "CM, CAM",
+    "age": 28,
+    "team": "SSC Bari"
+  },
+  {
+    "name": "A. Duncan",
+    "overall": 72,
+    "potential": 72,
+    "position": "CM, CDM, CAM",
+    "age": 32,
+    "team": "Venezia"
+  },
+  {
+    "name": "L. Zanimacchia",
+    "overall": 72,
+    "potential": 72,
+    "position": "RM, RB, LB, RW",
+    "age": 26,
+    "team": "Modena"
+  },
+  {
+    "name": "M. Brunori",
+    "overall": 72,
+    "potential": 72,
+    "position": "CAM, ST",
+    "age": 30,
+    "team": "Sampdoria"
+  },
+  {
+    "name": "M. Viti",
+    "overall": 72,
+    "potential": 81,
+    "position": "CB",
+    "age": 23,
+    "team": "Sampdoria"
+  },
+  {
+    "name": "J. Joronen",
+    "overall": 72,
+    "potential": 72,
+    "position": "GK",
+    "age": 32,
+    "team": "Palermo FC"
+  },
+  {
+    "name": "J. Segre",
+    "overall": 72,
+    "potential": 72,
+    "position": "CM, CAM, CDM",
+    "age": 28,
+    "team": "Palermo FC"
+  },
+  {
+    "name": "F. Ranocchia",
+    "overall": 72,
+    "potential": 77,
+    "position": "CM, CDM, CAM",
+    "age": 24,
+    "team": "Palermo FC"
+  },
+  {
+    "name": "C. Gomes",
+    "overall": 72,
+    "potential": 76,
+    "position": "CM, CDM, CAM",
+    "age": 24,
+    "team": "Palermo FC"
+  },
+  {
+    "name": "J. Le Douaron",
+    "overall": 72,
+    "potential": 72,
+    "position": "CAM, ST",
+    "age": 27,
+    "team": "Palermo FC"
+  },
+  {
+    "name": "G. Tutino",
+    "overall": 72,
+    "potential": 72,
+    "position": "ST, CAM",
+    "age": 28,
+    "team": "Avellino"
+  },
+  {
+    "name": "M. Pigliacelli",
+    "overall": 72,
+    "potential": 72,
+    "position": "GK",
+    "age": 32,
+    "team": "Catanzaro"
+  },
+  {
+    "name": "P. Iemmello",
+    "overall": 72,
+    "potential": 72,
+    "position": "ST",
+    "age": 33,
+    "team": "Catanzaro"
+  },
+  {
+    "name": "F. Di Francesco",
+    "overall": 72,
+    "potential": 72,
+    "position": "LW, LM",
+    "age": 31,
+    "team": "Catanzaro"
+  },
+  {
+    "name": "D. Bisoli",
+    "overall": 72,
+    "potential": 72,
+    "position": "CM, CDM",
+    "age": 31,
+    "team": "Cesena FC"
+  },
+  {
+    "name": "G. Zaro",
+    "overall": 72,
+    "potential": 72,
+    "position": "CB",
+    "age": 31,
+    "team": "Cesena FC"
+  },
+  {
+    "name": "F. Bardi",
+    "overall": 72,
+    "potential": 72,
+    "position": "GK",
+    "age": 33,
+    "team": "Mantova"
+  },
+  {
+    "name": "P. Ciurria",
+    "overall": 72,
+    "potential": 72,
+    "position": "CAM, RM, LM, CM",
+    "age": 30,
+    "team": "Monza"
+  },
+  {
+    "name": "A. Álvarez",
+    "overall": 72,
+    "potential": 78,
+    "position": "ST, CAM",
+    "age": 24,
+    "team": "Monza"
+  },
+  {
+    "name": "N. Schiavi",
+    "overall": 72,
+    "potential": 72,
+    "position": "CM, CDM",
+    "age": 30,
+    "team": "Carrarese"
+  },
+  {
+    "name": "D. Casiraghi",
+    "overall": 72,
+    "potential": 72,
+    "position": "CM, CAM",
+    "age": 32,
+    "team": "Südtirol"
+  },
+  {
+    "name": "M. Faraoni",
+    "overall": 71,
+    "potential": 71,
+    "position": "RM, RB",
+    "age": 33,
+    "team": "Pescara"
+  },
+  {
+    "name": "S. Desplanches",
+    "overall": 71,
+    "potential": 81,
+    "position": "GK",
+    "age": 22,
+    "team": "Pescara"
+  },
+  {
+    "name": "J. Yeboah",
+    "overall": 71,
+    "potential": 76,
+    "position": "ST, CAM",
+    "age": 25,
+    "team": "Venezia"
+  },
+  {
+    "name": "A. Adorante",
+    "overall": 71,
+    "potential": 74,
+    "position": "ST",
+    "age": 25,
+    "team": "Venezia"
+  },
+  {
+    "name": "L. Chichizola",
+    "overall": 71,
+    "potential": 71,
+    "position": "GK",
+    "age": 35,
+    "team": "Modena"
+  },
+  {
+    "name": "F. Zampano",
+    "overall": 71,
+    "potential": 71,
+    "position": "LB, RB, RM, LM",
+    "age": 31,
+    "team": "Modena"
+  },
+  {
+    "name": "T. Ebuehi",
+    "overall": 71,
+    "potential": 71,
+    "position": "RB, RM",
+    "age": 29,
+    "team": "Empoli"
+  },
+  {
+    "name": "Gerard Yepes",
+    "overall": 71,
+    "potential": 81,
+    "position": "CDM, CM, CB",
+    "age": 22,
+    "team": "Empoli"
+  },
+  {
+    "name": "J. Ferri",
+    "overall": 71,
+    "potential": 71,
+    "position": "CDM, CM",
+    "age": 33,
+    "team": "Sampdoria"
+  },
+  {
+    "name": "N. Ioannou",
+    "overall": 71,
+    "potential": 71,
+    "position": "LB, LM",
+    "age": 29,
+    "team": "Sampdoria"
+  },
+  {
+    "name": "L. Venuti",
+    "overall": 71,
+    "potential": 71,
+    "position": "RB, LB, CB, RM",
+    "age": 30,
+    "team": "Sampdoria"
+  },
+  {
+    "name": "A. Bellemo",
+    "overall": 71,
+    "potential": 71,
+    "position": "CM, CDM",
+    "age": 29,
+    "team": "Sampdoria"
+  },
+  {
+    "name": "F. Depaoli",
+    "overall": 71,
+    "potential": 71,
+    "position": "RB, RM",
+    "age": 28,
+    "team": "Sampdoria"
+  },
+  {
+    "name": "P. Ceccaroni",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB, LB",
+    "age": 29,
+    "team": "Palermo FC"
+  },
+  {
+    "name": "N. Pierozzi",
+    "overall": 71,
+    "potential": 76,
+    "position": "RB, RM, CB, RW",
+    "age": 23,
+    "team": "Palermo FC"
+  },
+  {
+    "name": "G. Maggiore",
+    "overall": 71,
+    "potential": 71,
+    "position": "CM, CDM, CAM",
+    "age": 27,
+    "team": "SSC Bari"
+  },
+  {
+    "name": "M. Dorval",
+    "overall": 71,
+    "potential": 76,
+    "position": "LB, LM",
+    "age": 24,
+    "team": "SSC Bari"
+  },
+  {
+    "name": "R. Insigne",
+    "overall": 71,
+    "potential": 71,
+    "position": "CAM, RM, RW, ST",
+    "age": 31,
+    "team": "Avellino"
+  },
+  {
+    "name": "G. Lapadula",
+    "overall": 71,
+    "potential": 71,
+    "position": "ST",
+    "age": 35,
+    "team": "Spezia"
+  },
+  {
+    "name": "K. Lasagna",
+    "overall": 71,
+    "potential": 71,
+    "position": "ST",
+    "age": 32,
+    "team": "Calcio Padova"
+  },
+  {
+    "name": "M. Castagnetti",
+    "overall": 71,
+    "potential": 71,
+    "position": "CDM, CM",
+    "age": 35,
+    "team": "Cesena FC"
+  },
+  {
+    "name": "C. Falletti",
+    "overall": 71,
+    "potential": 71,
+    "position": "CAM, ST, CM",
+    "age": 32,
+    "team": "Mantova"
+  },
+  {
+    "name": "K. Baldé",
+    "overall": 71,
+    "potential": 71,
+    "position": "ST, CAM",
+    "age": 30,
+    "team": "Monza"
+  },
+  {
+    "name": "Paulo Azzi",
+    "overall": 71,
+    "potential": 71,
+    "position": "LB, LM",
+    "age": 30,
+    "team": "Monza"
+  },
+  {
+    "name": "D. Thiam",
+    "overall": 71,
+    "potential": 74,
+    "position": "GK",
+    "age": 27,
+    "team": "Monza"
+  },
+  {
+    "name": "L. Ravanelli",
+    "overall": 71,
+    "potential": 71,
+    "position": "CB",
+    "age": 28,
+    "team": "Monza"
+  },
+  {
+    "name": "A. Carboni",
+    "overall": 71,
+    "potential": 76,
+    "position": "CB",
+    "age": 24,
+    "team": "Monza"
+  },
+  {
+    "name": "S. Zanon",
+    "overall": 71,
+    "potential": 75,
+    "position": "RM, RB",
+    "age": 23,
+    "team": "Carrarese"
+  },
+  {
+    "name": "S. Verdi",
+    "overall": 71,
+    "potential": 71,
+    "position": "CAM, ST, CM",
+    "age": 32,
+    "team": "Südtirol"
+  },
+  {
+    "name": "A. Gravillon",
+    "overall": 70,
+    "potential": 72,
+    "position": "CB",
+    "age": 27,
+    "team": "Pescara"
+  },
+  {
+    "name": "Casas",
+    "overall": 70,
+    "potential": 73,
+    "position": "ST",
+    "age": 25,
+    "team": "Venezia"
+  },
+  {
+    "name": "M. Svoboda",
+    "overall": 70,
+    "potential": 71,
+    "position": "CB",
+    "age": 26,
+    "team": "Venezia"
+  },
+  {
+    "name": "D. Fila",
+    "overall": 70,
+    "potential": 78,
+    "position": "ST",
+    "age": 22,
+    "team": "Venezia"
+  },
+  {
+    "name": "D. Adorni",
+    "overall": 70,
+    "potential": 70,
+    "position": "CB",
+    "age": 32,
+    "team": "Modena"
+  },
+  {
+    "name": "F. Di Mariano",
+    "overall": 70,
+    "potential": 70,
+    "position": "ST, RM, LM, CAM",
+    "age": 29,
+    "team": "Modena"
+  },
+  {
+    "name": "S. Santoro",
+    "overall": 70,
+    "potential": 72,
+    "position": "CM, CDM",
+    "age": 25,
+    "team": "Modena"
+  },
+  {
+    "name": "N. Pyyhtiä",
+    "overall": 70,
+    "potential": 77,
+    "position": "CM, CDM, CAM",
+    "age": 21,
+    "team": "Modena"
+  },
+  {
+    "name": "A. Fulignati",
+    "overall": 70,
+    "potential": 70,
+    "position": "GK",
+    "age": 30,
+    "team": "Empoli"
+  },
+  {
+    "name": "O. Abildgaard",
+    "overall": 70,
+    "potential": 70,
+    "position": "CM, CDM, CB",
+    "age": 29,
+    "team": "Sampdoria"
+  },
+  {
+    "name": "C. Gytkjær",
+    "overall": 70,
+    "potential": 70,
+    "position": "ST",
+    "age": 35,
+    "team": "SSC Bari"
+  },
+  {
+    "name": "A. Partipilo",
+    "overall": 70,
+    "potential": 70,
+    "position": "ST, RM, RW, CAM",
+    "age": 30,
+    "team": "SSC Bari"
+  },
+  {
+    "name": "L. Dickmann",
+    "overall": 70,
+    "potential": 70,
+    "position": "RB, RM",
+    "age": 28,
+    "team": "SSC Bari"
+  },
+  {
+    "name": "B. Radunović",
+    "overall": 70,
+    "potential": 70,
+    "position": "GK",
+    "age": 29,
+    "team": "Spezia"
+  },
+  {
+    "name": "F. Bandinelli",
+    "overall": 70,
+    "potential": 70,
+    "position": "CM, CAM",
+    "age": 30,
+    "team": "Spezia"
+  },
+  {
+    "name": "P. Wiśniewski",
+    "overall": 70,
+    "potential": 72,
+    "position": "CB",
+    "age": 26,
+    "team": "Spezia"
+  },
+  {
+    "name": "L. Crisetig",
+    "overall": 70,
+    "potential": 70,
+    "position": "CDM, CM",
+    "age": 32,
+    "team": "Calcio Padova"
+  },
+  {
+    "name": "C. Shpendi",
+    "overall": 70,
+    "potential": 79,
+    "position": "ST",
+    "age": 22,
+    "team": "Cesena FC"
+  },
+  {
+    "name": "G. Calò",
+    "overall": 70,
+    "potential": 70,
+    "position": "CDM, CM",
+    "age": 28,
+    "team": "Frosinone"
+  },
+  {
+    "name": "G. Leone",
+    "overall": 70,
+    "potential": 74,
+    "position": "CM, CDM",
+    "age": 24,
+    "team": "SS Juve Stabia"
+  },
+  {
+    "name": "M. Varnier",
+    "overall": 70,
+    "potential": 71,
+    "position": "CB",
+    "age": 27,
+    "team": "SS Juve Stabia"
+  },
+  {
+    "name": "J. Illanes",
+    "overall": 70,
+    "potential": 71,
+    "position": "CB",
+    "age": 28,
+    "team": "Carrarese"
+  },
+  {
+    "name": "M. Cicconi",
+    "overall": 70,
+    "potential": 70,
+    "position": "LM, LB, LW",
+    "age": 28,
+    "team": "Carrarese"
+  },
+  {
+    "name": "S. Molina",
+    "overall": 70,
+    "potential": 70,
+    "position": "RB, RM",
+    "age": 33,
+    "team": "Südtirol"
+  },
+  {
+    "name": "R. Brosco",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB",
+    "age": 34,
+    "team": "Pescara"
+  },
+  {
+    "name": "L. Valzania",
+    "overall": 69,
+    "potential": 69,
+    "position": "CM, CAM, CDM",
+    "age": 29,
+    "team": "Pescara"
+  },
+  {
+    "name": "D. Merola",
+    "overall": 69,
+    "potential": 69,
+    "position": "RW, RM",
+    "age": 25,
+    "team": "Pescara"
+  },
+  {
+    "name": "I. Doumbia",
+    "overall": 69,
+    "potential": 78,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "Venezia"
+  },
+  {
+    "name": "R. Haps",
+    "overall": 69,
+    "potential": 69,
+    "position": "LB, LM",
+    "age": 32,
+    "team": "Venezia"
+  },
+  {
+    "name": "B. Franjić",
+    "overall": 69,
+    "potential": 72,
+    "position": "CB, CDM, CM",
+    "age": 25,
+    "team": "Venezia"
+  },
+  {
+    "name": "C. Condé",
+    "overall": 69,
+    "potential": 74,
+    "position": "CM, CDM",
+    "age": 24,
+    "team": "Venezia"
+  },
+  {
+    "name": "J. Schingtienne",
+    "overall": 69,
+    "potential": 76,
+    "position": "CB",
+    "age": 22,
+    "team": "Venezia"
+  },
+  {
+    "name": "G. Defrel",
+    "overall": 69,
+    "potential": 69,
+    "position": "ST, CAM",
+    "age": 34,
+    "team": "Modena"
+  },
+  {
+    "name": "F. Gerli",
+    "overall": 69,
+    "potential": 69,
+    "position": "CM, CDM",
+    "age": 28,
+    "team": "Modena"
+  },
+  {
+    "name": "M. De Luca",
+    "overall": 69,
+    "potential": 70,
+    "position": "ST",
+    "age": 26,
+    "team": "Modena"
+  },
+  {
+    "name": "Pedro Mendes",
+    "overall": 69,
+    "potential": 71,
+    "position": "ST",
+    "age": 25,
+    "team": "Modena"
+  },
+  {
+    "name": "A. Sersanti",
+    "overall": 69,
+    "potential": 74,
+    "position": "CM, CDM",
+    "age": 23,
+    "team": "Modena"
+  },
+  {
+    "name": "S. Perisan",
+    "overall": 69,
+    "potential": 72,
+    "position": "GK",
+    "age": 27,
+    "team": "Empoli"
+  },
+  {
+    "name": "S. Elia",
+    "overall": 69,
+    "potential": 72,
+    "position": "RB, LB, RM",
+    "age": 26,
+    "team": "Empoli"
+  },
+  {
+    "name": "A. Ghion",
+    "overall": 69,
+    "potential": 72,
+    "position": "CM, CDM",
+    "age": 25,
+    "team": "Empoli"
+  },
+  {
+    "name": "R. Ilie",
+    "overall": 69,
+    "potential": 78,
+    "position": "LM, CM, CAM, LW",
+    "age": 22,
+    "team": "Empoli"
+  },
+  {
+    "name": "M. Curto",
+    "overall": 69,
+    "potential": 72,
+    "position": "CB",
+    "age": 26,
+    "team": "Empoli"
+  },
+  {
+    "name": "S. Romagnoli",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB",
+    "age": 35,
+    "team": "Sampdoria"
+  },
+  {
+    "name": "A. Ferrari",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB",
+    "age": 31,
+    "team": "Sampdoria"
+  },
+  {
+    "name": "L. Henderson",
+    "overall": 69,
+    "potential": 69,
+    "position": "CM, CAM",
+    "age": 29,
+    "team": "Sampdoria"
+  },
+  {
+    "name": "D. Hadžikadunić",
+    "overall": 69,
+    "potential": 71,
+    "position": "CB",
+    "age": 26,
+    "team": "Sampdoria"
+  },
+  {
+    "name": "G. Altare",
+    "overall": 69,
+    "potential": 72,
+    "position": "CB",
+    "age": 26,
+    "team": "Sampdoria"
+  },
+  {
+    "name": "S. Ghidotti",
+    "overall": 69,
+    "potential": 75,
+    "position": "GK",
+    "age": 25,
+    "team": "Sampdoria"
+  },
+  {
+    "name": "S. Pafundi",
+    "overall": 69,
+    "potential": 84,
+    "position": "CAM, ST",
+    "age": 19,
+    "team": "Sampdoria"
+  },
+  {
+    "name": "B. Bereszyński",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB, RB, RM",
+    "age": 32,
+    "team": "Palermo FC"
+  },
+  {
+    "name": "A. Blin",
+    "overall": 69,
+    "potential": 69,
+    "position": "CDM, CM",
+    "age": 28,
+    "team": "Palermo FC"
+  },
+  {
+    "name": "P. Peda",
+    "overall": 69,
+    "potential": 76,
+    "position": "CB",
+    "age": 23,
+    "team": "Palermo FC"
+  },
+  {
+    "name": "S. Diakité",
+    "overall": 69,
+    "potential": 74,
+    "position": "RB, CB, RM",
+    "age": 25,
+    "team": "Palermo FC"
+  },
+  {
+    "name": "G. Moncini",
+    "overall": 69,
+    "potential": 69,
+    "position": "ST",
+    "age": 29,
+    "team": "SSC Bari"
+  },
+  {
+    "name": "A. Cistana",
+    "overall": 69,
+    "potential": 71,
+    "position": "CB",
+    "age": 28,
+    "team": "SSC Bari"
+  },
+  {
+    "name": "M. Braunöder",
+    "overall": 69,
+    "potential": 76,
+    "position": "CM, CDM",
+    "age": 23,
+    "team": "SSC Bari"
+  },
+  {
+    "name": "M. Sala",
+    "overall": 69,
+    "potential": 72,
+    "position": "LB, LM",
+    "age": 26,
+    "team": "Avellino"
+  },
+  {
+    "name": "M. Sampirisi",
+    "overall": 69,
+    "potential": 69,
+    "position": "RB, CB, RM",
+    "age": 32,
+    "team": "Reggiana"
+  },
+  {
+    "name": "M. Portanova",
+    "overall": 69,
+    "potential": 74,
+    "position": "CM, CAM, LW",
+    "age": 25,
+    "team": "Reggiana"
+  },
+  {
+    "name": "D. Verde",
+    "overall": 69,
+    "potential": 69,
+    "position": "CAM, ST, RM",
+    "age": 29,
+    "team": "Spezia"
+  },
+  {
+    "name": "Á. Nagy",
+    "overall": 69,
+    "potential": 69,
+    "position": "CM, CDM",
+    "age": 30,
+    "team": "Spezia"
+  },
+  {
+    "name": "L. Vignali",
+    "overall": 69,
+    "potential": 69,
+    "position": "RB, CM",
+    "age": 29,
+    "team": "Spezia"
+  },
+  {
+    "name": "L. Sernicola",
+    "overall": 69,
+    "potential": 69,
+    "position": "LB, LM",
+    "age": 28,
+    "team": "Spezia"
+  },
+  {
+    "name": "S. Żurkowski",
+    "overall": 69,
+    "potential": 69,
+    "position": "CM, CAM",
+    "age": 27,
+    "team": "Spezia"
+  },
+  {
+    "name": "P. Hristov",
+    "overall": 69,
+    "potential": 71,
+    "position": "CB",
+    "age": 26,
+    "team": "Spezia"
+  },
+  {
+    "name": "A. Matějů",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB, RB, RM",
+    "age": 29,
+    "team": "Spezia"
+  },
+  {
+    "name": "A. Candela",
+    "overall": 69,
+    "potential": 74,
+    "position": "RB, RM",
+    "age": 25,
+    "team": "Spezia"
+  },
+  {
+    "name": "M. D'Alessandro",
+    "overall": 69,
+    "potential": 69,
+    "position": "LM, RM, LW",
+    "age": 34,
+    "team": "Catanzaro"
+  },
+  {
+    "name": "J. Petriccione",
+    "overall": 69,
+    "potential": 69,
+    "position": "CDM, CM",
+    "age": 30,
+    "team": "Catanzaro"
+  },
+  {
+    "name": "R. Oudin",
+    "overall": 69,
+    "potential": 69,
+    "position": "CAM, RW, RM, CM",
+    "age": 28,
+    "team": "Catanzaro"
+  },
+  {
+    "name": "M. Pompetti",
+    "overall": 69,
+    "potential": 72,
+    "position": "CM, CDM",
+    "age": 25,
+    "team": "Catanzaro"
+  },
+  {
+    "name": "M. Bortolussi",
+    "overall": 69,
+    "potential": 69,
+    "position": "ST",
+    "age": 29,
+    "team": "Calcio Padova"
+  },
+  {
+    "name": "C. Buonaiuto",
+    "overall": 69,
+    "potential": 69,
+    "position": "CAM, LM, LW, CM",
+    "age": 32,
+    "team": "Calcio Padova"
+  },
+  {
+    "name": "J. Klinsmann",
+    "overall": 69,
+    "potential": 69,
+    "position": "GK",
+    "age": 28,
+    "team": "Cesena FC"
+  },
+  {
+    "name": "S. Bastoni",
+    "overall": 69,
+    "potential": 69,
+    "position": "CM, CAM",
+    "age": 28,
+    "team": "Cesena FC"
+  },
+  {
+    "name": "R. Ciervo",
+    "overall": 69,
+    "potential": 74,
+    "position": "RM, RB",
+    "age": 23,
+    "team": "Cesena FC"
+  },
+  {
+    "name": "L. Mancuso",
+    "overall": 69,
+    "potential": 69,
+    "position": "CAM, ST, CM",
+    "age": 33,
+    "team": "Mantova"
+  },
+  {
+    "name": "D. Mensah",
+    "overall": 69,
+    "potential": 69,
+    "position": "ST, CAM",
+    "age": 33,
+    "team": "Mantova"
+  },
+  {
+    "name": "Pedro Obiang",
+    "overall": 69,
+    "potential": 69,
+    "position": "CDM, CM",
+    "age": 33,
+    "team": "Monza"
+  },
+  {
+    "name": "A. Petagna",
+    "overall": 69,
+    "potential": 69,
+    "position": "ST",
+    "age": 30,
+    "team": "Monza"
+  },
+  {
+    "name": "F. Delli Carri",
+    "overall": 69,
+    "potential": 72,
+    "position": "CB",
+    "age": 26,
+    "team": "Monza"
+  },
+  {
+    "name": "G. Caso",
+    "overall": 69,
+    "potential": 69,
+    "position": "CAM, CM",
+    "age": 26,
+    "team": "Monza"
+  },
+  {
+    "name": "M. Bellich",
+    "overall": 69,
+    "potential": 72,
+    "position": "CB",
+    "age": 26,
+    "team": "SS Juve Stabia"
+  },
+  {
+    "name": "M. Ruggero",
+    "overall": 69,
+    "potential": 73,
+    "position": "CB",
+    "age": 25,
+    "team": "SS Juve Stabia"
+  },
+  {
+    "name": "L. Candellone",
+    "overall": 69,
+    "potential": 69,
+    "position": "ST, CAM, CM",
+    "age": 27,
+    "team": "SS Juve Stabia"
+  },
+  {
+    "name": "N. Pietrangeli",
+    "overall": 69,
+    "potential": 76,
+    "position": "CB",
+    "age": 24,
+    "team": "Südtirol"
+  },
+  {
+    "name": "A. Masiello",
+    "overall": 69,
+    "potential": 69,
+    "position": "CB",
+    "age": 39,
+    "team": "Südtirol"
+  },
+  {
+    "name": "T. Fumagalli",
+    "overall": 69,
+    "potential": 74,
+    "position": "ST, CAM",
+    "age": 25,
+    "team": "Virtus Entella"
+  },
+  {
+    "name": "A. Franzoni",
+    "overall": 69,
+    "potential": 69,
+    "position": "CM, CAM",
+    "age": 28,
+    "team": "Virtus Entella"
+  },
+  {
+    "name": "A. Benali",
+    "overall": 69,
+    "potential": 69,
+    "position": "CM, CDM",
+    "age": 33,
+    "team": "Virtus Entella"
+  },
+  {
+    "name": "F. Pellacani",
+    "overall": 68,
+    "potential": 69,
+    "position": "CB",
+    "age": 27,
+    "team": "Pescara"
+  },
+  {
+    "name": "M. Dagasso",
+    "overall": 68,
+    "potential": 78,
+    "position": "CM, CAM",
+    "age": 21,
+    "team": "Pescara"
+  },
+  {
+    "name": "G. Letizia",
+    "overall": 68,
+    "potential": 68,
+    "position": "RB, LB, LM",
+    "age": 35,
+    "team": "Pescara"
+  },
+  {
+    "name": "F. Tsadjout",
+    "overall": 68,
+    "potential": 70,
+    "position": "ST",
+    "age": 25,
+    "team": "Pescara"
+  },
+  {
+    "name": "M. Šverko",
+    "overall": 68,
+    "potential": 70,
+    "position": "CB",
+    "age": 27,
+    "team": "Venezia"
+  },
+  {
+    "name": "E. Bohinen",
+    "overall": 68,
+    "potential": 71,
+    "position": "CM, CDM",
+    "age": 26,
+    "team": "Venezia"
+  },
+  {
+    "name": "B. Bjarkason",
+    "overall": 68,
+    "potential": 69,
+    "position": "RM, LM, LB, RB",
+    "age": 25,
+    "team": "Venezia"
+  },
+  {
+    "name": "A. Hainaut",
+    "overall": 68,
+    "potential": 72,
+    "position": "RB, RM",
+    "age": 23,
+    "team": "Venezia"
+  },
+  {
+    "name": "D. Tonoli",
+    "overall": 68,
+    "potential": 74,
+    "position": "CB",
+    "age": 22,
+    "team": "Modena"
+  },
+  {
+    "name": "E. Gliozzi",
+    "overall": 68,
+    "potential": 68,
+    "position": "ST",
+    "age": 29,
+    "team": "Modena"
+  },
+  {
+    "name": "L. Magnino",
+    "overall": 68,
+    "potential": 69,
+    "position": "CDM, CM",
+    "age": 27,
+    "team": "Modena"
+  },
+  {
+    "name": "B. Nieling",
+    "overall": 68,
+    "potential": 74,
+    "position": "CB",
+    "age": 22,
+    "team": "Modena"
+  },
+  {
+    "name": "N. Haas",
+    "overall": 68,
+    "potential": 68,
+    "position": "CM, CDM",
+    "age": 29,
+    "team": "Empoli"
+  },
+  {
+    "name": "P. Pellegri",
+    "overall": 68,
+    "potential": 73,
+    "position": "ST",
+    "age": 24,
+    "team": "Empoli"
+  },
+  {
+    "name": "M. Lovato",
+    "overall": 68,
+    "potential": 71,
+    "position": "CB",
+    "age": 25,
+    "team": "Empoli"
+  },
+  {
+    "name": "G. Coucke",
+    "overall": 68,
+    "potential": 72,
+    "position": "GK",
+    "age": 26,
+    "team": "Sampdoria"
+  },
+  {
+    "name": "S. Giordano",
+    "overall": 68,
+    "potential": 74,
+    "position": "LB, LM",
+    "age": 23,
+    "team": "Sampdoria"
+  },
+  {
+    "name": "T. Martinelli",
+    "overall": 68,
+    "potential": 79,
+    "position": "GK",
+    "age": 19,
+    "team": "Sampdoria"
+  },
+  {
+    "name": "A. Gomis",
+    "overall": 68,
+    "potential": 68,
+    "position": "GK",
+    "age": 31,
+    "team": "Palermo FC"
+  },
+  {
+    "name": "D. Veroli",
+    "overall": 68,
+    "potential": 79,
+    "position": "CB, LB, LM",
+    "age": 22,
+    "team": "Palermo FC"
+  },
+  {
+    "name": "F. Vicari",
+    "overall": 68,
+    "potential": 68,
+    "position": "CB",
+    "age": 30,
+    "team": "SSC Bari"
+  },
+  {
+    "name": "D. Nikolaou",
+    "overall": 68,
+    "potential": 71,
+    "position": "CB",
+    "age": 26,
+    "team": "SSC Bari"
+  },
+  {
+    "name": "M. Antonucci",
+    "overall": 68,
+    "potential": 69,
+    "position": "ST, CAM",
+    "age": 26,
+    "team": "SSC Bari"
+  },
+  {
+    "name": "T. Biasci",
+    "overall": 68,
+    "potential": 68,
+    "position": "ST",
+    "age": 30,
+    "team": "Avellino"
+  },
+  {
+    "name": "L. Šimić",
+    "overall": 68,
+    "potential": 69,
+    "position": "CB",
+    "age": 28,
+    "team": "Avellino"
+  },
+  {
+    "name": "D. Sounas",
+    "overall": 68,
+    "potential": 68,
+    "position": "CM, RM, CAM",
+    "age": 30,
+    "team": "Avellino"
+  },
+  {
+    "name": "C. Gondo",
+    "overall": 68,
+    "potential": 68,
+    "position": "ST",
+    "age": 28,
+    "team": "Reggiana"
+  },
+  {
+    "name": "L. Štulac",
+    "overall": 68,
+    "potential": 68,
+    "position": "CDM, CM",
+    "age": 30,
+    "team": "Reggiana"
+  },
+  {
+    "name": "M. Rover",
+    "overall": 68,
+    "potential": 68,
+    "position": "LM, RM, ST, LW",
+    "age": 26,
+    "team": "Reggiana"
+  },
+  {
+    "name": "E. Adamo",
+    "overall": 68,
+    "potential": 69,
+    "position": "RB, RM",
+    "age": 26,
+    "team": "Spezia"
+  },
+  {
+    "name": "M. Valoti",
+    "overall": 68,
+    "potential": 68,
+    "position": "CAM, CM",
+    "age": 31,
+    "team": "Spezia"
+  },
+  {
+    "name": "P. Beruatto",
+    "overall": 68,
+    "potential": 68,
+    "position": "LM, LB, CB",
+    "age": 26,
+    "team": "Spezia"
+  },
+  {
+    "name": "G. Aurelio",
+    "overall": 68,
+    "potential": 71,
+    "position": "LB, LM",
+    "age": 25,
+    "team": "Spezia"
+  },
+  {
+    "name": "G. Di Chiara",
+    "overall": 68,
+    "potential": 68,
+    "position": "LB, CB, LM",
+    "age": 31,
+    "team": "Catanzaro"
+  },
+  {
+    "name": "S. Pontisso",
+    "overall": 68,
+    "potential": 68,
+    "position": "CM, CDM",
+    "age": 28,
+    "team": "Catanzaro"
+  },
+  {
+    "name": "L. Pandolfi",
+    "overall": 68,
+    "potential": 68,
+    "position": "ST",
+    "age": 27,
+    "team": "Catanzaro"
+  },
+  {
+    "name": "D. Baselli",
+    "overall": 68,
+    "potential": 68,
+    "position": "CM, CDM",
+    "age": 33,
+    "team": "Calcio Padova"
+  },
+  {
+    "name": "P. Ghiglione",
+    "overall": 68,
+    "potential": 68,
+    "position": "RM, RB, RW",
+    "age": 28,
+    "team": "Calcio Padova"
+  },
+  {
+    "name": "A. Ciofi",
+    "overall": 68,
+    "potential": 69,
+    "position": "CB",
+    "age": 26,
+    "team": "Cesena FC"
+  },
+  {
+    "name": "T. Berti",
+    "overall": 68,
+    "potential": 77,
+    "position": "CM, CAM, CDM",
+    "age": 21,
+    "team": "Cesena FC"
+  },
+  {
+    "name": "M. Mangraviti",
+    "overall": 68,
+    "potential": 69,
+    "position": "CB",
+    "age": 27,
+    "team": "Cesena FC"
+  },
+  {
+    "name": "G. Frabotta",
+    "overall": 68,
+    "potential": 70,
+    "position": "LB, LM",
+    "age": 26,
+    "team": "Cesena FC"
+  },
+  {
+    "name": "A. Fiori",
+    "overall": 68,
+    "potential": 76,
+    "position": "LM, LW",
+    "age": 22,
+    "team": "Mantova"
+  },
+  {
+    "name": "D. Bragantini",
+    "overall": 68,
+    "potential": 77,
+    "position": "RM, RW",
+    "age": 21,
+    "team": "Mantova"
+  },
+  {
+    "name": "F. Ruocco",
+    "overall": 68,
+    "potential": 71,
+    "position": "LM, LW",
+    "age": 24,
+    "team": "Mantova"
+  },
+  {
+    "name": "Tiago Gonçalves",
+    "overall": 68,
+    "potential": 72,
+    "position": "LB, LM",
+    "age": 24,
+    "team": "Mantova"
+  },
+  {
+    "name": "M. Festa",
+    "overall": 68,
+    "potential": 68,
+    "position": "GK",
+    "age": 33,
+    "team": "Mantova"
+  },
+  {
+    "name": "R. Marchizza",
+    "overall": 68,
+    "potential": 68,
+    "position": "LB, CDM",
+    "age": 27,
+    "team": "Frosinone"
+  },
+  {
+    "name": "A. Raimondo",
+    "overall": 68,
+    "potential": 81,
+    "position": "ST",
+    "age": 21,
+    "team": "Frosinone"
+  },
+  {
+    "name": "N. Corrado",
+    "overall": 68,
+    "potential": 72,
+    "position": "LB, LM",
+    "age": 25,
+    "team": "Frosinone"
+  },
+  {
+    "name": "V. Antov",
+    "overall": 68,
+    "potential": 75,
+    "position": "CB",
+    "age": 24,
+    "team": "Monza"
+  },
+  {
+    "name": "M. Marić",
+    "overall": 68,
+    "potential": 68,
+    "position": "ST",
+    "age": 30,
+    "team": "Monza"
+  },
+  {
+    "name": "K. Piscopo",
+    "overall": 68,
+    "potential": 68,
+    "position": "CAM, CM",
+    "age": 27,
+    "team": "SS Juve Stabia"
+  },
+  {
+    "name": "F. Maistro",
+    "overall": 68,
+    "potential": 68,
+    "position": "CAM, CM, ST",
+    "age": 27,
+    "team": "SS Juve Stabia"
+  },
+  {
+    "name": "A. Gabrielloni",
+    "overall": 68,
+    "potential": 68,
+    "position": "ST",
+    "age": 30,
+    "team": "SS Juve Stabia"
+  },
+  {
+    "name": "A. Giorgini",
+    "overall": 68,
+    "potential": 75,
+    "position": "CB",
+    "age": 23,
+    "team": "SS Juve Stabia"
+  },
+  {
+    "name": "V. Fiorillo",
+    "overall": 68,
+    "potential": 68,
+    "position": "GK",
+    "age": 35,
+    "team": "Carrarese"
+  },
+  {
+    "name": "B. Salamon",
+    "overall": 68,
+    "potential": 68,
+    "position": "CB",
+    "age": 34,
+    "team": "Carrarese"
+  },
+  {
+    "name": "E. Torregrossa",
+    "overall": 68,
+    "potential": 68,
+    "position": "ST, CAM, CM",
+    "age": 33,
+    "team": "Carrarese"
+  },
+  {
+    "name": "M. Finotto",
+    "overall": 68,
+    "potential": 68,
+    "position": "ST, CAM, CM",
+    "age": 32,
+    "team": "Carrarese"
+  },
+  {
+    "name": "E. Zuelli",
+    "overall": 68,
+    "potential": 73,
+    "position": "CM, CDM",
+    "age": 23,
+    "team": "Carrarese"
+  },
+  {
+    "name": "F. Abiuso",
+    "overall": 68,
+    "potential": 76,
+    "position": "ST, CAM",
+    "age": 22,
+    "team": "Carrarese"
+  },
+  {
+    "name": "F. Veseli",
+    "overall": 68,
+    "potential": 68,
+    "position": "CB",
+    "age": 32,
+    "team": "Südtirol"
+  },
+  {
+    "name": "M. Adamonis",
+    "overall": 68,
+    "potential": 69,
+    "position": "GK",
+    "age": 28,
+    "team": "Südtirol"
+  },
+  {
+    "name": "R. Odogwu",
+    "overall": 68,
+    "potential": 68,
+    "position": "ST",
+    "age": 34,
+    "team": "Südtirol"
+  },
+  {
+    "name": "S. Colombi",
+    "overall": 68,
+    "potential": 68,
+    "position": "GK",
+    "age": 34,
+    "team": "Virtus Entella"
+  },
+  {
+    "name": "N. Karić",
+    "overall": 68,
+    "potential": 71,
+    "position": "CM, CDM",
+    "age": 25,
+    "team": "Virtus Entella"
+  },
+  {
+    "name": "O. Okwonkwo",
+    "overall": 67,
+    "potential": 67,
+    "position": "ST",
+    "age": 27,
+    "team": "Pescara"
+  },
+  {
+    "name": "F. Caligara",
+    "overall": 67,
+    "potential": 71,
+    "position": "CM, CDM",
+    "age": 25,
+    "team": "Pescara"
+  },
+  {
+    "name": "T. Corazza",
+    "overall": 67,
+    "potential": 77,
+    "position": "LB, LM",
+    "age": 21,
+    "team": "Pescara"
+  },
+  {
+    "name": "A. Plizzari",
+    "overall": 67,
+    "potential": 71,
+    "position": "GK",
+    "age": 25,
+    "team": "Venezia"
+  },
+  {
+    "name": "S. Korać",
+    "overall": 67,
+    "potential": 72,
+    "position": "CB",
+    "age": 23,
+    "team": "Venezia"
+  },
+  {
+    "name": "M. Cotali",
+    "overall": 67,
+    "potential": 67,
+    "position": "LM, LB",
+    "age": 28,
+    "team": "Modena"
+  },
+  {
+    "name": "C. Cauz",
+    "overall": 67,
+    "potential": 68,
+    "position": "CB",
+    "age": 28,
+    "team": "Modena"
+  },
+  {
+    "name": "Y. Massolin",
+    "overall": 67,
+    "potential": 76,
+    "position": "CM, CDM",
+    "age": 22,
+    "team": "Modena"
+  },
+  {
+    "name": "J. Ceesay",
+    "overall": 67,
+    "potential": 67,
+    "position": "RM, RB, CAM, RW",
+    "age": 27,
+    "team": "Empoli"
+  },
+  {
+    "name": "D. Degli Innocenti",
+    "overall": 67,
+    "potential": 72,
+    "position": "CM, CDM",
+    "age": 22,
+    "team": "Empoli"
+  },
+  {
+    "name": "M. Ricci",
+    "overall": 67,
+    "potential": 67,
+    "position": "CDM, CM",
+    "age": 31,
+    "team": "Sampdoria"
+  },
+  {
+    "name": "L. Benedetti",
+    "overall": 67,
+    "potential": 72,
+    "position": "CM, CAM",
+    "age": 25,
+    "team": "Sampdoria"
+  },
+  {
+    "name": "M. Çuni",
+    "overall": 67,
+    "potential": 72,
+    "position": "ST",
+    "age": 23,
+    "team": "Sampdoria"
+  },
+  {
+    "name": "S. Vulikić",
+    "overall": 67,
+    "potential": 74,
+    "position": "CB",
+    "age": 24,
+    "team": "Sampdoria"
+  },
+  {
+    "name": "L. Cherubini",
+    "overall": 67,
+    "potential": 76,
+    "position": "CAM, LM, RM, CM",
+    "age": 21,
+    "team": "Sampdoria"
+  },
+  {
+    "name": "L. Cerri",
+    "overall": 67,
+    "potential": 76,
+    "position": "ST",
+    "age": 22,
+    "team": "SSC Bari"
+  },
+  {
+    "name": "N. Bellomo",
+    "overall": 67,
+    "potential": 67,
+    "position": "CM, CAM",
+    "age": 34,
+    "team": "SSC Bari"
+  },
+  {
+    "name": "R. Pucino",
+    "overall": 67,
+    "potential": 67,
+    "position": "CB",
+    "age": 34,
+    "team": "SSC Bari"
+  },
+  {
+    "name": "M. Cerofolini",
+    "overall": 67,
+    "potential": 71,
+    "position": "GK",
+    "age": 26,
+    "team": "SSC Bari"
+  },
+  {
+    "name": "A. Meroni",
+    "overall": 67,
+    "potential": 68,
+    "position": "CB",
+    "age": 28,
+    "team": "SSC Bari"
+  },
+  {
+    "name": "E. Darboe",
+    "overall": 67,
+    "potential": 74,
+    "position": "CM, CDM",
+    "age": 24,
+    "team": "SSC Bari"
+  },
+  {
+    "name": "A. Iannarilli",
+    "overall": 67,
+    "potential": 67,
+    "position": "GK",
+    "age": 34,
+    "team": "Avellino"
+  },
+  {
+    "name": "A. Favilli",
+    "overall": 67,
+    "potential": 67,
+    "position": "ST",
+    "age": 28,
+    "team": "Avellino"
+  },
+  {
+    "name": "A. Papetti",
+    "overall": 67,
+    "potential": 77,
+    "position": "CB",
+    "age": 22,
+    "team": "Reggiana"
+  },
+  {
+    "name": "E. Soleri",
+    "overall": 67,
+    "potential": 67,
+    "position": "ST",
+    "age": 27,
+    "team": "Spezia"
+  },
+  {
+    "name": "D. Buglio",
+    "overall": 67,
+    "potential": 67,
+    "position": "CM, CDM",
+    "age": 27,
+    "team": "Catanzaro"
+  },
+  {
+    "name": "T. Cassandro",
+    "overall": 67,
+    "potential": 69,
+    "position": "RB, RM, CB",
+    "age": 25,
+    "team": "Catanzaro"
+  },
+  {
+    "name": "F. Pittarello",
+    "overall": 67,
+    "potential": 67,
+    "position": "ST, CAM",
+    "age": 28,
+    "team": "Catanzaro"
+  },
+  {
+    "name": "K. Varas",
+    "overall": 67,
+    "potential": 67,
+    "position": "CAM, CM, LM",
+    "age": 32,
+    "team": "Calcio Padova"
+  },
+  {
+    "name": "A. Capelli",
+    "overall": 67,
+    "potential": 67,
+    "position": "RM, RB",
+    "age": 28,
+    "team": "Calcio Padova"
+  },
+  {
+    "name": "M. Perrotta",
+    "overall": 67,
+    "potential": 67,
+    "position": "CB",
+    "age": 31,
+    "team": "Calcio Padova"
+  },
+  {
+    "name": "A. Barreca",
+    "overall": 67,
+    "potential": 67,
+    "position": "LB, LM",
+    "age": 30,
+    "team": "Calcio Padova"
+  },
+  {
+    "name": "F. Belli",
+    "overall": 67,
+    "potential": 67,
+    "position": "CB, RB",
+    "age": 31,
+    "team": "Calcio Padova"
+  },
+  {
+    "name": "T. Arrigoni",
+    "overall": 67,
+    "potential": 67,
+    "position": "CM, CDM",
+    "age": 31,
+    "team": "Cesena FC"
+  },
+  {
+    "name": "C. Bani",
+    "overall": 67,
+    "potential": 68,
+    "position": "LB, CM",
+    "age": 26,
+    "team": "Mantova"
+  },
+  {
+    "name": "V. Mantovani",
+    "overall": 67,
+    "potential": 67,
+    "position": "CB",
+    "age": 29,
+    "team": "Mantova"
+  },
+  {
+    "name": "N. Bonfanti",
+    "overall": 67,
+    "potential": 74,
+    "position": "ST",
+    "age": 23,
+    "team": "Mantova"
+  },
+  {
+    "name": "N. Buso",
+    "overall": 67,
+    "potential": 68,
+    "position": "LW, LM",
+    "age": 25,
+    "team": "Mantova"
+  },
+  {
+    "name": "E. Masciangelo",
+    "overall": 67,
+    "potential": 67,
+    "position": "LB, LM",
+    "age": 28,
+    "team": "Frosinone"
+  },
+  {
+    "name": "B. Kone",
+    "overall": 67,
+    "potential": 69,
+    "position": "CM, CDM",
+    "age": 25,
+    "team": "Frosinone"
+  },
+  {
+    "name": "I. Monterisi",
+    "overall": 67,
+    "potential": 76,
+    "position": "CB",
+    "age": 23,
+    "team": "Frosinone"
+  },
+  {
+    "name": "F. Gelli",
+    "overall": 67,
+    "potential": 67,
+    "position": "CM, CAM",
+    "age": 28,
+    "team": "Frosinone"
+  },
+  {
+    "name": "N. Galazzi",
+    "overall": 67,
+    "potential": 72,
+    "position": "CAM, CM",
+    "age": 24,
+    "team": "Monza"
+  },
+  {
+    "name": "S. Pizzignacco",
+    "overall": 67,
+    "potential": 75,
+    "position": "GK",
+    "age": 23,
+    "team": "Monza"
+  },
+  {
+    "name": "C. Pierobon",
+    "overall": 67,
+    "potential": 74,
+    "position": "CM, CAM, CDM",
+    "age": 23,
+    "team": "SS Juve Stabia"
+  },
+  {
+    "name": "N. Mosti",
+    "overall": 67,
+    "potential": 67,
+    "position": "CAM, CM",
+    "age": 27,
+    "team": "SS Juve Stabia"
+  },
+  {
+    "name": "L. Hasa",
+    "overall": 67,
+    "potential": 74,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "Carrarese"
+  },
+  {
+    "name": "F. Oliana",
+    "overall": 67,
+    "potential": 72,
+    "position": "CB",
+    "age": 26,
+    "team": "Carrarese"
+  },
+  {
+    "name": "M. Bleve",
+    "overall": 67,
+    "potential": 68,
+    "position": "GK",
+    "age": 29,
+    "team": "Carrarese"
+  },
+  {
+    "name": "M. Imperiale",
+    "overall": 67,
+    "potential": 70,
+    "position": "CB",
+    "age": 26,
+    "team": "Carrarese"
+  },
+  {
+    "name": "S. Tronchin",
+    "overall": 67,
+    "potential": 74,
+    "position": "CDM, CM",
+    "age": 22,
+    "team": "Südtirol"
+  },
+  {
+    "name": "D. Črnigoj",
+    "overall": 67,
+    "potential": 67,
+    "position": "CM, CAM",
+    "age": 29,
+    "team": "Südtirol"
+  },
+  {
+    "name": "G. Poluzzi",
+    "overall": 67,
+    "potential": 67,
+    "position": "GK",
+    "age": 37,
+    "team": "Südtirol"
+  },
+  {
+    "name": "M. Coulibaly",
+    "overall": 67,
+    "potential": 68,
+    "position": "CM, CDM",
+    "age": 26,
+    "team": "Südtirol"
+  },
+  {
+    "name": "F. Tait",
+    "overall": 67,
+    "potential": 67,
+    "position": "CM, CAM, CDM",
+    "age": 32,
+    "team": "Südtirol"
+  },
+  {
+    "name": "S. Davi",
+    "overall": 67,
+    "potential": 70,
+    "position": "LB, LM",
+    "age": 25,
+    "team": "Südtirol"
+  },
+  {
+    "name": "S. Merkaj",
+    "overall": 67,
+    "potential": 67,
+    "position": "ST",
+    "age": 27,
+    "team": "Südtirol"
+  },
+  {
+    "name": "R. Kofler",
+    "overall": 67,
+    "potential": 75,
+    "position": "CB",
+    "age": 20,
+    "team": "Südtirol"
+  },
+  {
+    "name": "S. Di Mario",
+    "overall": 67,
+    "potential": 76,
+    "position": "LB, LM",
+    "age": 20,
+    "team": "Virtus Entella"
+  },
+  {
+    "name": "I. Marconi",
+    "overall": 67,
+    "potential": 67,
+    "position": "CB",
+    "age": 35,
+    "team": "Virtus Entella"
+  },
+  {
+    "name": "A. Tiritiello",
+    "overall": 67,
+    "potential": 67,
+    "position": "CB",
+    "age": 30,
+    "team": "Virtus Entella"
+  },
+  {
+    "name": "F. Del Frate",
+    "overall": 67,
+    "potential": 68,
+    "position": "GK",
+    "age": 29,
+    "team": "Virtus Entella"
+  },
+  {
+    "name": "G. Corbo",
+    "overall": 66,
+    "potential": 69,
+    "position": "CB",
+    "age": 25,
+    "team": "Pescara"
+  },
+  {
+    "name": "R. Capellini",
+    "overall": 66,
+    "potential": 69,
+    "position": "CB",
+    "age": 25,
+    "team": "Pescara"
+  },
+  {
+    "name": "M. Venturi",
+    "overall": 66,
+    "potential": 69,
+    "position": "CB",
+    "age": 26,
+    "team": "Venezia"
+  },
+  {
+    "name": "N. Lella",
+    "overall": 66,
+    "potential": 71,
+    "position": "CM, CAM",
+    "age": 24,
+    "team": "Venezia"
+  },
+  {
+    "name": "R. Sagrado",
+    "overall": 66,
+    "potential": 77,
+    "position": "RM, RB",
+    "age": 21,
+    "team": "Venezia"
+  },
+  {
+    "name": "A. Pietrelli",
+    "overall": 66,
+    "potential": 69,
+    "position": "RM, RW, RB",
+    "age": 22,
+    "team": "Venezia"
+  },
+  {
+    "name": "M. Farji",
+    "overall": 66,
+    "potential": 79,
+    "position": "LM, CM, RW, LW",
+    "age": 21,
+    "team": "Venezia"
+  },
+  {
+    "name": "N. Obaretin",
+    "overall": 66,
+    "potential": 74,
+    "position": "CB",
+    "age": 22,
+    "team": "Empoli"
+  },
+  {
+    "name": "B. Moruzzi",
+    "overall": 66,
+    "potential": 74,
+    "position": "LB, LM",
+    "age": 20,
+    "team": "Empoli"
+  },
+  {
+    "name": "M. Nasti",
+    "overall": 66,
+    "potential": 75,
+    "position": "ST",
+    "age": 21,
+    "team": "Empoli"
+  },
+  {
+    "name": "S. Shpendi",
+    "overall": 66,
+    "potential": 74,
+    "position": "ST, CAM, CM",
+    "age": 22,
+    "team": "Empoli"
+  },
+  {
+    "name": "N. Ravaglia",
+    "overall": 66,
+    "potential": 66,
+    "position": "GK",
+    "age": 36,
+    "team": "Sampdoria"
+  },
+  {
+    "name": "A. Riccio",
+    "overall": 66,
+    "potential": 72,
+    "position": "CB",
+    "age": 23,
+    "team": "Sampdoria"
+  },
+  {
+    "name": "S. Giovane",
+    "overall": 66,
+    "potential": 75,
+    "position": "CM, CDM, CAM",
+    "age": 22,
+    "team": "Palermo FC"
+  },
+  {
+    "name": "A. Vasić",
+    "overall": 66,
+    "potential": 73,
+    "position": "CM, CAM",
+    "age": 23,
+    "team": "Palermo FC"
+  },
+  {
+    "name": "C. Patierno",
+    "overall": 66,
+    "potential": 66,
+    "position": "ST",
+    "age": 34,
+    "team": "Avellino"
+  },
+  {
+    "name": "T. Cancellotti",
+    "overall": 66,
+    "potential": 66,
+    "position": "RB, CB",
+    "age": 33,
+    "team": "Avellino"
+  },
+  {
+    "name": "M. Rigione",
+    "overall": 66,
+    "potential": 66,
+    "position": "CB",
+    "age": 34,
+    "team": "Avellino"
+  },
+  {
+    "name": "L. Palmiero",
+    "overall": 66,
+    "potential": 66,
+    "position": "CDM, CM",
+    "age": 29,
+    "team": "Avellino"
+  },
+  {
+    "name": "A. Seculin",
+    "overall": 66,
+    "potential": 66,
+    "position": "GK",
+    "age": 34,
+    "team": "Reggiana"
+  },
+  {
+    "name": "A. Novakovich",
+    "overall": 66,
+    "potential": 66,
+    "position": "ST",
+    "age": 28,
+    "team": "Reggiana"
+  },
+  {
+    "name": "D. Quaranta",
+    "overall": 66,
+    "potential": 67,
+    "position": "CB",
+    "age": 28,
+    "team": "Reggiana"
+  },
+  {
+    "name": "M. Bertagnoli",
+    "overall": 66,
+    "potential": 69,
+    "position": "CM, CDM",
+    "age": 26,
+    "team": "Reggiana"
+  },
+  {
+    "name": "L. Belardinelli",
+    "overall": 66,
+    "potential": 71,
+    "position": "CM, CDM",
+    "age": 24,
+    "team": "Reggiana"
+  },
+  {
+    "name": "V. Vlahović",
+    "overall": 66,
+    "potential": 79,
+    "position": "ST",
+    "age": 21,
+    "team": "Spezia"
+  },
+  {
+    "name": "G. Di Serio",
+    "overall": 66,
+    "potential": 71,
+    "position": "ST",
+    "age": 23,
+    "team": "Spezia"
+  },
+  {
+    "name": "N. Brighenti",
+    "overall": 66,
+    "potential": 66,
+    "position": "CB",
+    "age": 35,
+    "team": "Catanzaro"
+  },
+  {
+    "name": "M. Fortin",
+    "overall": 66,
+    "potential": 76,
+    "position": "GK",
+    "age": 21,
+    "team": "Calcio Padova"
+  },
+  {
+    "name": "P. Fusi",
+    "overall": 66,
+    "potential": 66,
+    "position": "CM, CDM",
+    "age": 27,
+    "team": "Calcio Padova"
+  },
+  {
+    "name": "C. Faedo",
+    "overall": 66,
+    "potential": 69,
+    "position": "CB, RB",
+    "age": 26,
+    "team": "Calcio Padova"
+  },
+  {
+    "name": "F. Sgarbi",
+    "overall": 66,
+    "potential": 68,
+    "position": "CB",
+    "age": 27,
+    "team": "Calcio Padova"
+  },
+  {
+    "name": "G. Favale",
+    "overall": 66,
+    "potential": 66,
+    "position": "LM, LB",
+    "age": 27,
+    "team": "Calcio Padova"
+  },
+  {
+    "name": "M. Francesconi",
+    "overall": 66,
+    "potential": 72,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "Cesena FC"
+  },
+  {
+    "name": "N. Radaelli",
+    "overall": 66,
+    "potential": 74,
+    "position": "RB, RM",
+    "age": 22,
+    "team": "Mantova"
+  },
+  {
+    "name": "D. Wieser",
+    "overall": 66,
+    "potential": 73,
+    "position": "CM, CAM, CDM",
+    "age": 23,
+    "team": "Mantova"
+  },
+  {
+    "name": "L. Andrenacci",
+    "overall": 66,
+    "potential": 66,
+    "position": "GK",
+    "age": 30,
+    "team": "Mantova"
+  },
+  {
+    "name": "S. Trimboli",
+    "overall": 66,
+    "potential": 75,
+    "position": "CDM, CM",
+    "age": 23,
+    "team": "Mantova"
+  },
+  {
+    "name": "F. Zuccon",
+    "overall": 66,
+    "potential": 75,
+    "position": "CM, CDM",
+    "age": 22,
+    "team": "Mantova"
+  },
+  {
+    "name": "G. Calvani",
+    "overall": 66,
+    "potential": 71,
+    "position": "CB",
+    "age": 21,
+    "team": "Frosinone"
+  },
+  {
+    "name": "G. Bracaglia",
+    "overall": 66,
+    "potential": 74,
+    "position": "CB, LB",
+    "age": 21,
+    "team": "Frosinone"
+  },
+  {
+    "name": "G. Cittadini",
+    "overall": 66,
+    "potential": 75,
+    "position": "CB",
+    "age": 23,
+    "team": "Frosinone"
+  },
+  {
+    "name": "I. Koutsoupias",
+    "overall": 66,
+    "potential": 71,
+    "position": "CM, CDM",
+    "age": 24,
+    "team": "Frosinone"
+  },
+  {
+    "name": "A. Oyono",
+    "overall": 66,
+    "potential": 71,
+    "position": "RB, LB, LM, RM",
+    "age": 24,
+    "team": "Frosinone"
+  },
+  {
+    "name": "F. Ghedjemis",
+    "overall": 66,
+    "potential": 70,
+    "position": "RW, RM",
+    "age": 22,
+    "team": "Frosinone"
+  },
+  {
+    "name": "A. Brorsson",
+    "overall": 66,
+    "potential": 69,
+    "position": "CB",
+    "age": 26,
+    "team": "Monza"
+  },
+  {
+    "name": "L. Carissoni",
+    "overall": 66,
+    "potential": 66,
+    "position": "CB, RB, LB, RM",
+    "age": 28,
+    "team": "SS Juve Stabia"
+  },
+  {
+    "name": "M. Frigerio",
+    "overall": 66,
+    "potential": 69,
+    "position": "CM, CDM",
+    "age": 23,
+    "team": "Südtirol"
+  },
+  {
+    "name": "H. El Kaouakibi",
+    "overall": 66,
+    "potential": 66,
+    "position": "RB, CB, RM",
+    "age": 27,
+    "team": "Südtirol"
+  },
+  {
+    "name": "A. Debenedetti",
+    "overall": 66,
+    "potential": 77,
+    "position": "ST",
+    "age": 21,
+    "team": "Virtus Entella"
+  },
+  {
+    "name": "F. Mezzoni",
+    "overall": 66,
+    "potential": 70,
+    "position": "RB, RM",
+    "age": 25,
+    "team": "Virtus Entella"
+  },
+  {
+    "name": "N. Squizzato",
+    "overall": 66,
+    "potential": 74,
+    "position": "CDM, CM",
+    "age": 23,
+    "team": "Virtus Entella"
+  },
+  {
+    "name": "Bernat Guiu",
+    "overall": 66,
+    "potential": 71,
+    "position": "ST, CAM",
+    "age": 24,
+    "team": "Virtus Entella"
+  },
+  {
+    "name": "M. Nichetti",
+    "overall": 66,
+    "potential": 66,
+    "position": "CDM, CM",
+    "age": 28,
+    "team": "Virtus Entella"
+  },
+  {
+    "name": "D. Bariti",
+    "overall": 66,
+    "potential": 66,
+    "position": "RM, RW",
+    "age": 33,
+    "team": "Virtus Entella"
+  },
+  {
+    "name": "L. Parodi",
+    "overall": 66,
+    "potential": 66,
+    "position": "CB",
+    "age": 30,
+    "team": "Virtus Entella"
+  },
+  {
+    "name": "L. Cuppone",
+    "overall": 66,
+    "potential": 66,
+    "position": "ST, LW, RW",
+    "age": 27,
+    "team": "Virtus Entella"
+  },
+  {
+    "name": "L. Sgarbi",
+    "overall": 65,
+    "potential": 70,
+    "position": "ST, LM, LW",
+    "age": 24,
+    "team": "Pescara"
+  },
+  {
+    "name": "G. Olzer",
+    "overall": 65,
+    "potential": 68,
+    "position": "CAM, CM, ST",
+    "age": 24,
+    "team": "Pescara"
+  },
+  {
+    "name": "E. Kraja",
+    "overall": 65,
+    "potential": 72,
+    "position": "CDM, CM",
+    "age": 24,
+    "team": "Pescara"
+  },
+  {
+    "name": "A. Sidibé",
+    "overall": 65,
+    "potential": 72,
+    "position": "CB",
+    "age": 23,
+    "team": "Venezia"
+  },
+  {
+    "name": "M. Compagnon",
+    "overall": 65,
+    "potential": 70,
+    "position": "RM, ST, RW",
+    "age": 23,
+    "team": "Venezia"
+  },
+  {
+    "name": "A. Dellavalle",
+    "overall": 65,
+    "potential": 78,
+    "position": "CB",
+    "age": 21,
+    "team": "Modena"
+  },
+  {
+    "name": "G. Beyuku",
+    "overall": 65,
+    "potential": 77,
+    "position": "RB, CB, RM",
+    "age": 19,
+    "team": "Modena"
+  },
+  {
+    "name": "A. Laidani",
+    "overall": 65,
+    "potential": 69,
+    "position": "GK",
+    "age": 22,
+    "team": "Modena"
+  },
+  {
+    "name": "B. Popov",
+    "overall": 65,
+    "potential": 80,
+    "position": "ST",
+    "age": 18,
+    "team": "Empoli"
+  },
+  {
+    "name": "E. Saporiti",
+    "overall": 65,
+    "potential": 72,
+    "position": "CAM, CM, ST",
+    "age": 23,
+    "team": "Empoli"
+  },
+  {
+    "name": "G. Guarino",
+    "overall": 65,
+    "potential": 78,
+    "position": "CB",
+    "age": 21,
+    "team": "Empoli"
+  },
+  {
+    "name": "T. Begić",
+    "overall": 65,
+    "potential": 73,
+    "position": "CM, CAM",
+    "age": 22,
+    "team": "Sampdoria"
+  },
+  {
+    "name": "F. Conti",
+    "overall": 65,
+    "potential": 74,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Sampdoria"
+  },
+  {
+    "name": "G. De Pieri",
+    "overall": 65,
+    "potential": 80,
+    "position": "RW, RM",
+    "age": 18,
+    "team": "SSC Bari"
+  },
+  {
+    "name": "E. Rao",
+    "overall": 65,
+    "potential": 76,
+    "position": "LW, LM",
+    "age": 19,
+    "team": "SSC Bari"
+  },
+  {
+    "name": "M. Verreth",
+    "overall": 65,
+    "potential": 66,
+    "position": "CM, CDM",
+    "age": 27,
+    "team": "SSC Bari"
+  },
+  {
+    "name": "G. Stabile",
+    "overall": 65,
+    "potential": 74,
+    "position": "CB",
+    "age": 20,
+    "team": "SSC Bari"
+  },
+  {
+    "name": "J. Kumi",
+    "overall": 65,
+    "potential": 78,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Avellino"
+  },
+  {
+    "name": "F. Missori",
+    "overall": 65,
+    "potential": 73,
+    "position": "RB",
+    "age": 21,
+    "team": "Avellino"
+  },
+  {
+    "name": "A. Cagnano",
+    "overall": 65,
+    "potential": 66,
+    "position": "LB, CB, LM",
+    "age": 27,
+    "team": "Avellino"
+  },
+  {
+    "name": "A. Fontanarosa",
+    "overall": 65,
+    "potential": 74,
+    "position": "CB, LB",
+    "age": 22,
+    "team": "Avellino"
+  },
+  {
+    "name": "M. Besaggio",
+    "overall": 65,
+    "potential": 73,
+    "position": "CM, CAM",
+    "age": 23,
+    "team": "Avellino"
+  },
+  {
+    "name": "G. Daffara",
+    "overall": 65,
+    "potential": 74,
+    "position": "GK",
+    "age": 20,
+    "team": "Avellino"
+  },
+  {
+    "name": "P. Rozzio",
+    "overall": 65,
+    "potential": 65,
+    "position": "CB",
+    "age": 32,
+    "team": "Reggiana"
+  },
+  {
+    "name": "A. Tripaldelli",
+    "overall": 65,
+    "potential": 66,
+    "position": "LB, LM",
+    "age": 26,
+    "team": "Reggiana"
+  },
+  {
+    "name": "T. Reinhart",
+    "overall": 65,
+    "potential": 68,
+    "position": "CM, CDM",
+    "age": 25,
+    "team": "Reggiana"
+  },
+  {
+    "name": "L. Libutti",
+    "overall": 65,
+    "potential": 65,
+    "position": "LB, CB",
+    "age": 27,
+    "team": "Reggiana"
+  },
+  {
+    "name": "N. Girma",
+    "overall": 65,
+    "potential": 71,
+    "position": "CAM, ST, CM",
+    "age": 23,
+    "team": "Reggiana"
+  },
+  {
+    "name": "K. Bozhanaj",
+    "overall": 65,
+    "potential": 69,
+    "position": "CAM, CM",
+    "age": 24,
+    "team": "Reggiana"
+  },
+  {
+    "name": "E. Motta",
+    "overall": 65,
+    "potential": 72,
+    "position": "GK",
+    "age": 20,
+    "team": "Reggiana"
+  },
+  {
+    "name": "G. Artistico",
+    "overall": 65,
+    "potential": 72,
+    "position": "ST",
+    "age": 22,
+    "team": "Spezia"
+  },
+  {
+    "name": "Fellipe Jack",
+    "overall": 65,
+    "potential": 78,
+    "position": "CB",
+    "age": 19,
+    "team": "Spezia"
+  },
+  {
+    "name": "M. Sarr",
+    "overall": 65,
+    "potential": 65,
+    "position": "GK",
+    "age": 28,
+    "team": "Spezia"
+  },
+  {
+    "name": "F. Cassata",
+    "overall": 65,
+    "potential": 65,
+    "position": "CM, CAM",
+    "age": 27,
+    "team": "Spezia"
+  },
+  {
+    "name": "M. Liberali",
+    "overall": 65,
+    "potential": 84,
+    "position": "RW, RM, CAM",
+    "age": 18,
+    "team": "Catanzaro"
+  },
+  {
+    "name": "E. Bashi",
+    "overall": 65,
+    "potential": 74,
+    "position": "CB",
+    "age": 19,
+    "team": "Catanzaro"
+  },
+  {
+    "name": "Matias Antonini",
+    "overall": 65,
+    "potential": 67,
+    "position": "CB",
+    "age": 27,
+    "team": "Catanzaro"
+  },
+  {
+    "name": "D. Bettella",
+    "overall": 65,
+    "potential": 70,
+    "position": "CB",
+    "age": 25,
+    "team": "Catanzaro"
+  },
+  {
+    "name": "P. Nuamah",
+    "overall": 65,
+    "potential": 75,
+    "position": "LM, CM, LW",
+    "age": 19,
+    "team": "Catanzaro"
+  },
+  {
+    "name": "C. Favasuli",
+    "overall": 65,
+    "potential": 76,
+    "position": "RM, LM, LB, RB",
+    "age": 21,
+    "team": "Catanzaro"
+  },
+  {
+    "name": "A. Cissè",
+    "overall": 65,
+    "potential": 78,
+    "position": "CAM, CM",
+    "age": 18,
+    "team": "Catanzaro"
+  },
+  {
+    "name": "A. Spagnoli",
+    "overall": 65,
+    "potential": 65,
+    "position": "ST",
+    "age": 30,
+    "team": "Calcio Padova"
+  },
+  {
+    "name": "C. Pastina",
+    "overall": 65,
+    "potential": 72,
+    "position": "CB",
+    "age": 24,
+    "team": "Calcio Padova"
+  },
+  {
+    "name": "J. Blesa",
+    "overall": 65,
+    "potential": 69,
+    "position": "ST",
+    "age": 24,
+    "team": "Cesena FC"
+  },
+  {
+    "name": "R. Celia",
+    "overall": 65,
+    "potential": 66,
+    "position": "LB, LM",
+    "age": 26,
+    "team": "Cesena FC"
+  },
+  {
+    "name": "M. Olivieri",
+    "overall": 65,
+    "potential": 66,
+    "position": "ST",
+    "age": 26,
+    "team": "Cesena FC"
+  },
+  {
+    "name": "T. Maggioni",
+    "overall": 65,
+    "potential": 69,
+    "position": "RB, RM",
+    "age": 23,
+    "team": "Mantova"
+  },
+  {
+    "name": "G. Fedel",
+    "overall": 65,
+    "potential": 68,
+    "position": "RB",
+    "age": 22,
+    "team": "Mantova"
+  },
+  {
+    "name": "S. Cella",
+    "overall": 65,
+    "potential": 72,
+    "position": "CB",
+    "age": 24,
+    "team": "Mantova"
+  },
+  {
+    "name": "K. Chrysopoulos",
+    "overall": 65,
+    "potential": 74,
+    "position": "CB",
+    "age": 22,
+    "team": "Mantova"
+  },
+  {
+    "name": "A. Vuković",
+    "overall": 65,
+    "potential": 74,
+    "position": "GK",
+    "age": 20,
+    "team": "Mantova"
+  },
+  {
+    "name": "J. Gelli",
+    "overall": 65,
+    "potential": 69,
+    "position": "CB",
+    "age": 24,
+    "team": "Frosinone"
+  },
+  {
+    "name": "M. Pisseri",
+    "overall": 65,
+    "potential": 65,
+    "position": "GK",
+    "age": 33,
+    "team": "Frosinone"
+  },
+  {
+    "name": "G. Kvernadze",
+    "overall": 65,
+    "potential": 74,
+    "position": "LW, LM",
+    "age": 22,
+    "team": "Frosinone"
+  },
+  {
+    "name": "L. Palmisani",
+    "overall": 65,
+    "potential": 72,
+    "position": "GK",
+    "age": 21,
+    "team": "Frosinone"
+  },
+  {
+    "name": "S. Fini",
+    "overall": 65,
+    "potential": 82,
+    "position": "RM, LM, ST, RW",
+    "age": 19,
+    "team": "Frosinone"
+  },
+  {
+    "name": "O. Forson",
+    "overall": 65,
+    "potential": 77,
+    "position": "RM, CAM, RW",
+    "age": 20,
+    "team": "Monza"
+  },
+  {
+    "name": "L. Lucchesi",
+    "overall": 65,
+    "potential": 76,
+    "position": "CB",
+    "age": 22,
+    "team": "Monza"
+  },
+  {
+    "name": "M. Mannini",
+    "overall": 65,
+    "potential": 78,
+    "position": "RB, CM",
+    "age": 18,
+    "team": "SS Juve Stabia"
+  },
+  {
+    "name": "O. Correia",
+    "overall": 65,
+    "potential": 69,
+    "position": "CDM, CM",
+    "age": 25,
+    "team": "SS Juve Stabia"
+  },
+  {
+    "name": "M. Dos Santos",
+    "overall": 65,
+    "potential": 69,
+    "position": "RM, RB",
+    "age": 23,
+    "team": "SS Juve Stabia"
+  },
+  {
+    "name": "A. Confente",
+    "overall": 65,
+    "potential": 67,
+    "position": "GK",
+    "age": 27,
+    "team": "SS Juve Stabia"
+  },
+  {
+    "name": "C. Dalle Mura",
+    "overall": 65,
+    "potential": 74,
+    "position": "CB",
+    "age": 23,
+    "team": "SS Juve Stabia"
+  },
+  {
+    "name": "K. Zeroli",
+    "overall": 65,
+    "potential": 78,
+    "position": "CM, CAM, CDM",
+    "age": 20,
+    "team": "SS Juve Stabia"
+  },
+  {
+    "name": "L. Capezzi",
+    "overall": 65,
+    "potential": 65,
+    "position": "CM, CDM",
+    "age": 30,
+    "team": "Carrarese"
+  },
+  {
+    "name": "F. Melegoni",
+    "overall": 65,
+    "potential": 66,
+    "position": "CAM, CM",
+    "age": 26,
+    "team": "Carrarese"
+  },
+  {
+    "name": "D. Bouah",
+    "overall": 65,
+    "potential": 70,
+    "position": "RM, RB",
+    "age": 23,
+    "team": "Carrarese"
+  },
+  {
+    "name": "N. Sekulov",
+    "overall": 65,
+    "potential": 74,
+    "position": "CAM, RM, LM, CM",
+    "age": 23,
+    "team": "Carrarese"
+  },
+  {
+    "name": "F. Distefano",
+    "overall": 65,
+    "potential": 76,
+    "position": "ST",
+    "age": 21,
+    "team": "Carrarese"
+  },
+  {
+    "name": "F. Ruggeri",
+    "overall": 65,
+    "potential": 76,
+    "position": "CB",
+    "age": 20,
+    "team": "Carrarese"
+  },
+  {
+    "name": "A. Mallamo",
+    "overall": 65,
+    "potential": 65,
+    "position": "CM, CDM",
+    "age": 26,
+    "team": "Südtirol"
+  },
+  {
+    "name": "E. Pecorino",
+    "overall": 65,
+    "potential": 71,
+    "position": "ST",
+    "age": 23,
+    "team": "Südtirol"
+  },
+  {
+    "name": "R. Turicchia",
+    "overall": 65,
+    "potential": 74,
+    "position": "LB, LM, CB",
+    "age": 22,
+    "team": "Virtus Entella"
+  },
+  {
+    "name": "M. Dalla Vecchia",
+    "overall": 65,
+    "potential": 75,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Virtus Entella"
+  },
+  {
+    "name": "A. Boccadamo",
+    "overall": 65,
+    "potential": 68,
+    "position": "RB, RM, LM",
+    "age": 25,
+    "team": "Virtus Entella"
+  },
+  {
+    "name": "M. Alborghetti",
+    "overall": 65,
+    "potential": 66,
+    "position": "RB",
+    "age": 26,
+    "team": "Virtus Entella"
+  },
+  {
+    "name": "T. Del Lungo",
+    "overall": 65,
+    "potential": 75,
+    "position": "CB",
+    "age": 21,
+    "team": "Virtus Entella"
+  },
+  {
+    "name": "L. Meazzi",
+    "overall": 64,
+    "potential": 69,
+    "position": "CM, CAM",
+    "age": 24,
+    "team": "Pescara"
+  },
+  {
+    "name": "S. Nador",
+    "overall": 64,
+    "potential": 69,
+    "position": "CB",
+    "age": 23,
+    "team": "Modena"
+  },
+  {
+    "name": "L. Ignacchiti",
+    "overall": 64,
+    "potential": 74,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "Empoli"
+  },
+  {
+    "name": "F. Bianchi",
+    "overall": 64,
+    "potential": 67,
+    "position": "ST, CAM",
+    "age": 25,
+    "team": "Empoli"
+  },
+  {
+    "name": "G. Corona",
+    "overall": 64,
+    "potential": 74,
+    "position": "ST",
+    "age": 21,
+    "team": "Palermo FC"
+  },
+  {
+    "name": "R. Russo",
+    "overall": 64,
+    "potential": 65,
+    "position": "CAM, ST, LW, CM",
+    "age": 26,
+    "team": "Avellino"
+  },
+  {
+    "name": "M. Armellino",
+    "overall": 64,
+    "potential": 64,
+    "position": "CM, CDM",
+    "age": 35,
+    "team": "Avellino"
+  },
+  {
+    "name": "L. D'Andrea",
+    "overall": 64,
+    "potential": 76,
+    "position": "RM, RW, CAM",
+    "age": 20,
+    "team": "Avellino"
+  },
+  {
+    "name": "P. Enrici",
+    "overall": 64,
+    "potential": 69,
+    "position": "CB",
+    "age": 24,
+    "team": "Avellino"
+  },
+  {
+    "name": "M. Lambourde",
+    "overall": 64,
+    "potential": 80,
+    "position": "RM, RW",
+    "age": 19,
+    "team": "Reggiana"
+  },
+  {
+    "name": "A. Romano",
+    "overall": 64,
+    "potential": 79,
+    "position": "CDM, CM",
+    "age": 19,
+    "team": "Spezia"
+  },
+  {
+    "name": "Jonathan Silva",
+    "overall": 64,
+    "potential": 75,
+    "position": "CM, RW, RM, CAM",
+    "age": 21,
+    "team": "Calcio Padova"
+  },
+  {
+    "name": "A. Sorrentino",
+    "overall": 64,
+    "potential": 72,
+    "position": "GK",
+    "age": 23,
+    "team": "Calcio Padova"
+  },
+  {
+    "name": "Siren Diao",
+    "overall": 64,
+    "potential": 78,
+    "position": "ST",
+    "age": 20,
+    "team": "Cesena FC"
+  },
+  {
+    "name": "M. Piacentini",
+    "overall": 64,
+    "potential": 67,
+    "position": "CB",
+    "age": 26,
+    "team": "Cesena FC"
+  },
+  {
+    "name": "R. Kouda",
+    "overall": 64,
+    "potential": 72,
+    "position": "CM, CAM",
+    "age": 22,
+    "team": "Mantova"
+  },
+  {
+    "name": "M. Zilli",
+    "overall": 64,
+    "potential": 69,
+    "position": "ST",
+    "age": 22,
+    "team": "Frosinone"
+  },
+  {
+    "name": "T. Battistella",
+    "overall": 64,
+    "potential": 71,
+    "position": "CM, CDM",
+    "age": 23,
+    "team": "SS Juve Stabia"
+  },
+  {
+    "name": "G. Morachioli",
+    "overall": 64,
+    "potential": 67,
+    "position": "CAM, ST, CM",
+    "age": 25,
+    "team": "SS Juve Stabia"
+  },
+  {
+    "name": "R. Burnete",
+    "overall": 64,
+    "potential": 75,
+    "position": "ST",
+    "age": 21,
+    "team": "SS Juve Stabia"
+  },
+  {
+    "name": "T. Rubino",
+    "overall": 64,
+    "potential": 76,
+    "position": "CAM, CM",
+    "age": 18,
+    "team": "Carrarese"
+  },
+  {
+    "name": "G. Parlanti",
+    "overall": 64,
+    "potential": 75,
+    "position": "CM, CAM, CDM",
+    "age": 21,
+    "team": "Carrarese"
+  },
+  {
+    "name": "N. Belloni",
+    "overall": 64,
+    "potential": 64,
+    "position": "LM, RM, LB",
+    "age": 30,
+    "team": "Carrarese"
+  },
+  {
+    "name": "J. Martini",
+    "overall": 64,
+    "potential": 73,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Südtirol"
+  },
+  {
+    "name": "Filipe Bordon",
+    "overall": 64,
+    "potential": 75,
+    "position": "CB",
+    "age": 20,
+    "team": "Südtirol"
+  },
+  {
+    "name": "K. Zedadka",
+    "overall": 64,
+    "potential": 69,
+    "position": "LB, LM",
+    "age": 25,
+    "team": "Südtirol"
+  },
+  {
+    "name": "F. Russo",
+    "overall": 64,
+    "potential": 76,
+    "position": "ST",
+    "age": 20,
+    "team": "Virtus Entella"
+  },
+  {
+    "name": "O. Siaulys",
+    "overall": 64,
+    "potential": 69,
+    "position": "GK",
+    "age": 25,
+    "team": "Virtus Entella"
+  },
+  {
+    "name": "D. Portanova",
+    "overall": 64,
+    "potential": 71,
+    "position": "CB",
+    "age": 24,
+    "team": "Virtus Entella"
+  },
+  {
+    "name": "R. Tonin",
+    "overall": 63,
+    "potential": 68,
+    "position": "ST",
+    "age": 24,
+    "team": "Pescara"
+  },
+  {
+    "name": "A. Oliveri",
+    "overall": 63,
+    "potential": 72,
+    "position": "RM, RB, RW",
+    "age": 22,
+    "team": "Pescara"
+  },
+  {
+    "name": "J. Brandes",
+    "overall": 63,
+    "potential": 76,
+    "position": "CDM, CB, CM",
+    "age": 21,
+    "team": "Pescara"
+  },
+  {
+    "name": "F. Carboni",
+    "overall": 63,
+    "potential": 72,
+    "position": "LB, LM",
+    "age": 22,
+    "team": "Empoli"
+  },
+  {
+    "name": "F. Reale",
+    "overall": 63,
+    "potential": 75,
+    "position": "CB, LB",
+    "age": 19,
+    "team": "Avellino"
+  },
+  {
+    "name": "L. Marson",
+    "overall": 63,
+    "potential": 66,
+    "position": "GK",
+    "age": 27,
+    "team": "Avellino"
+  },
+  {
+    "name": "D. Basili",
+    "overall": 63,
+    "potential": 72,
+    "position": "CAM, CM",
+    "age": 21,
+    "team": "Reggiana"
+  },
+  {
+    "name": "M. Suárez",
+    "overall": 63,
+    "potential": 74,
+    "position": "CM, RM, CDM",
+    "age": 21,
+    "team": "Reggiana"
+  },
+  {
+    "name": "Charlys",
+    "overall": 63,
+    "potential": 70,
+    "position": "CM, CDM",
+    "age": 21,
+    "team": "Reggiana"
+  },
+  {
+    "name": "L. Loria",
+    "overall": 63,
+    "potential": 68,
+    "position": "GK",
+    "age": 26,
+    "team": "Spezia"
+  },
+  {
+    "name": "M. Caprini",
+    "overall": 63,
+    "potential": 76,
+    "position": "LM, LW",
+    "age": 19,
+    "team": "Mantova"
+  },
+  {
+    "name": "F. Artioli",
+    "overall": 63,
+    "potential": 71,
+    "position": "CDM, CM, CB",
+    "age": 24,
+    "team": "Mantova"
+  },
+  {
+    "name": "J. Oyono",
+    "overall": 63,
+    "potential": 68,
+    "position": "RB, RM",
+    "age": 24,
+    "team": "Frosinone"
+  },
+  {
+    "name": "P. Boer",
+    "overall": 63,
+    "potential": 73,
+    "position": "GK",
+    "age": 23,
+    "team": "SS Juve Stabia"
+  },
+  {
+    "name": "G. Garofani",
+    "overall": 63,
+    "potential": 73,
+    "position": "GK",
+    "age": 22,
+    "team": "Carrarese"
+  },
+  {
+    "name": "D. Giannini",
+    "overall": 62,
+    "potential": 74,
+    "position": "CB",
+    "age": 20,
+    "team": "Pescara"
+  },
+  {
+    "name": "A. Di Nardo",
+    "overall": 62,
+    "potential": 62,
+    "position": "ST",
+    "age": 26,
+    "team": "Pescara"
+  },
+  {
+    "name": "S. Minelli",
+    "overall": 62,
+    "potential": 62,
+    "position": "GK",
+    "age": 31,
+    "team": "Venezia"
+  },
+  {
+    "name": "M. Palma",
+    "overall": 62,
+    "potential": 82,
+    "position": "CB",
+    "age": 17,
+    "team": "Sampdoria"
+  },
+  {
+    "name": "S. Girelli",
+    "overall": 62,
+    "potential": 67,
+    "position": "CM, CDM",
+    "age": 24,
+    "team": "Sampdoria"
+  },
+  {
+    "name": "F. Di Bartolo",
+    "overall": 62,
+    "potential": 74,
+    "position": "GK",
+    "age": 20,
+    "team": "Palermo FC"
+  },
+  {
+    "name": "M. Mané",
+    "overall": 62,
+    "potential": 72,
+    "position": "RB, RM",
+    "age": 21,
+    "team": "SSC Bari"
+  },
+  {
+    "name": "J. Sassi",
+    "overall": 62,
+    "potential": 69,
+    "position": "GK",
+    "age": 21,
+    "team": "Avellino"
+  },
+  {
+    "name": "A. Milani",
+    "overall": 62,
+    "potential": 76,
+    "position": "LB, LM, LW",
+    "age": 20,
+    "team": "Avellino"
+  },
+  {
+    "name": "M. Palumbo",
+    "overall": 62,
+    "potential": 69,
+    "position": "CM, CDM",
+    "age": 23,
+    "team": "Avellino"
+  },
+  {
+    "name": "S. Bonetti",
+    "overall": 62,
+    "potential": 68,
+    "position": "LB, CB",
+    "age": 20,
+    "team": "Reggiana"
+  },
+  {
+    "name": "D. Mascardi",
+    "overall": 62,
+    "potential": 72,
+    "position": "GK",
+    "age": 18,
+    "team": "Spezia"
+  },
+  {
+    "name": "F. Rispoli",
+    "overall": 62,
+    "potential": 74,
+    "position": "CM, CAM",
+    "age": 18,
+    "team": "Catanzaro"
+  },
+  {
+    "name": "J. Harder",
+    "overall": 62,
+    "potential": 75,
+    "position": "CM, CDM",
+    "age": 19,
+    "team": "Calcio Padova"
+  },
+  {
+    "name": "S. Russini",
+    "overall": 62,
+    "potential": 62,
+    "position": "LW, CAM, LM",
+    "age": 29,
+    "team": "Calcio Padova"
+  },
+  {
+    "name": "V. Magni",
+    "overall": 62,
+    "potential": 74,
+    "position": "RB, LB",
+    "age": 19,
+    "team": "Cesena FC"
+  },
+  {
+    "name": "F. Bertaccini",
+    "overall": 62,
+    "potential": 74,
+    "position": "CDM, CM",
+    "age": 18,
+    "team": "Cesena FC"
+  },
+  {
+    "name": "C. Bianay Balcot",
+    "overall": 62,
+    "potential": 72,
+    "position": "RB",
+    "age": 20,
+    "team": "Mantova"
+  },
+  {
+    "name": "A. Castellini",
+    "overall": 62,
+    "potential": 69,
+    "position": "CB",
+    "age": 22,
+    "team": "Mantova"
+  },
+  {
+    "name": "S. Mullen",
+    "overall": 62,
+    "potential": 74,
+    "position": "CB",
+    "age": 20,
+    "team": "Mantova"
+  },
+  {
+    "name": "M. Cichella",
+    "overall": 62,
+    "potential": 76,
+    "position": "CM, CDM",
+    "age": 19,
+    "team": "Frosinone"
+  },
+  {
+    "name": "L. Colombo",
+    "overall": 62,
+    "potential": 74,
+    "position": "CDM, CM",
+    "age": 20,
+    "team": "Monza"
+  },
+  {
+    "name": "K. Martins",
+    "overall": 62,
+    "potential": 74,
+    "position": "RW, RM",
+    "age": 20,
+    "team": "Monza"
+  },
+  {
+    "name": "A. Ciammaglichella",
+    "overall": 62,
+    "potential": 76,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "SS Juve Stabia"
+  },
+  {
+    "name": "A. Cacciamani",
+    "overall": 62,
+    "potential": 74,
+    "position": "RM, LM, LB, RB",
+    "age": 18,
+    "team": "SS Juve Stabia"
+  },
+  {
+    "name": "D. Mancini",
+    "overall": 62,
+    "potential": 74,
+    "position": "CB",
+    "age": 20,
+    "team": "Südtirol"
+  },
+  {
+    "name": "L. Moretti",
+    "overall": 62,
+    "potential": 69,
+    "position": "CB",
+    "age": 23,
+    "team": "Virtus Entella"
+  },
+  {
+    "name": "D. Ankeye",
+    "overall": 62,
+    "potential": 69,
+    "position": "ST",
+    "age": 23,
+    "team": "Virtus Entella"
+  },
+  {
+    "name": "I. Saio",
+    "overall": 61,
+    "potential": 69,
+    "position": "GK",
+    "age": 23,
+    "team": "Pescara"
+  },
+  {
+    "name": "F. Bagheria",
+    "overall": 61,
+    "potential": 67,
+    "position": "GK",
+    "age": 24,
+    "team": "Modena"
+  },
+  {
+    "name": "G. Indragoli",
+    "overall": 61,
+    "potential": 73,
+    "position": "CB",
+    "age": 21,
+    "team": "Empoli"
+  },
+  {
+    "name": "R. Burgio",
+    "overall": 61,
+    "potential": 66,
+    "position": "LB",
+    "age": 24,
+    "team": "SSC Bari"
+  },
+  {
+    "name": "R. Pagano",
+    "overall": 61,
+    "potential": 71,
+    "position": "CM, CAM",
+    "age": 20,
+    "team": "SSC Bari"
+  },
+  {
+    "name": "P. Pane",
+    "overall": 61,
+    "potential": 61,
+    "position": "GK",
+    "age": 35,
+    "team": "Avellino"
+  },
+  {
+    "name": "L. Mendicino",
+    "overall": 61,
+    "potential": 76,
+    "position": "CDM, CM",
+    "age": 19,
+    "team": "Reggiana"
+  },
+  {
+    "name": "C. Comotto",
+    "overall": 61,
+    "potential": 83,
+    "position": "CM, CDM",
+    "age": 17,
+    "team": "Spezia"
+  },
+  {
+    "name": "R. Frosinini",
+    "overall": 61,
+    "potential": 66,
+    "position": "RB",
+    "age": 24,
+    "team": "Catanzaro"
+  },
+  {
+    "name": "C. Marietta",
+    "overall": 61,
+    "potential": 68,
+    "position": "GK",
+    "age": 23,
+    "team": "Catanzaro"
+  },
+  {
+    "name": "L. Villa",
+    "overall": 61,
+    "potential": 74,
+    "position": "CB",
+    "age": 21,
+    "team": "Calcio Padova"
+  },
+  {
+    "name": "L. Di Maggio",
+    "overall": 61,
+    "potential": 76,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Calcio Padova"
+  },
+  {
+    "name": "A. Seghetti",
+    "overall": 61,
+    "potential": 72,
+    "position": "ST",
+    "age": 21,
+    "team": "Calcio Padova"
+  },
+  {
+    "name": "M. Guidi",
+    "overall": 61,
+    "potential": 68,
+    "position": "RB, CDM, RM",
+    "age": 21,
+    "team": "Cesena FC"
+  },
+  {
+    "name": "P. Amoran",
+    "overall": 61,
+    "potential": 74,
+    "position": "CB",
+    "age": 21,
+    "team": "Cesena FC"
+  },
+  {
+    "name": "T. Pittino",
+    "overall": 61,
+    "potential": 69,
+    "position": "CB",
+    "age": 20,
+    "team": "Mantova"
+  },
+  {
+    "name": "F. Paoletti",
+    "overall": 61,
+    "potential": 69,
+    "position": "CDM, CM",
+    "age": 22,
+    "team": "Mantova"
+  },
+  {
+    "name": "K. Barcella",
+    "overall": 61,
+    "potential": 71,
+    "position": "CM, CDM",
+    "age": 19,
+    "team": "Frosinone"
+  },
+  {
+    "name": "E. Vergani",
+    "overall": 61,
+    "potential": 66,
+    "position": "ST",
+    "age": 24,
+    "team": "Frosinone"
+  },
+  {
+    "name": "S. Kalaj",
+    "overall": 61,
+    "potential": 66,
+    "position": "CB",
+    "age": 25,
+    "team": "Frosinone"
+  },
+  {
+    "name": "M. Baldi",
+    "overall": 61,
+    "potential": 67,
+    "position": "RB, CB",
+    "age": 23,
+    "team": "SS Juve Stabia"
+  },
+  {
+    "name": "F. Accornero",
+    "overall": 61,
+    "potential": 73,
+    "position": "LW, CAM, LM",
+    "age": 21,
+    "team": "Carrarese"
+  },
+  {
+    "name": "N. Calabrese",
+    "overall": 61,
+    "potential": 70,
+    "position": "CB",
+    "age": 20,
+    "team": "Carrarese"
+  },
+  {
+    "name": "F. Davi",
+    "overall": 61,
+    "potential": 68,
+    "position": "LB, CB",
+    "age": 23,
+    "team": "Südtirol"
+  },
+  {
+    "name": "M. Grandi",
+    "overall": 60,
+    "potential": 60,
+    "position": "GK",
+    "age": 32,
+    "team": "Venezia"
+  },
+  {
+    "name": "L. Tosto",
+    "overall": 60,
+    "potential": 75,
+    "position": "CB",
+    "age": 19,
+    "team": "Empoli"
+  },
+  {
+    "name": "M. Gasparini",
+    "overall": 60,
+    "potential": 68,
+    "position": "GK",
+    "age": 23,
+    "team": "Empoli"
+  },
+  {
+    "name": "P. Avena",
+    "overall": 60,
+    "potential": 75,
+    "position": "LM, LB, CB",
+    "age": 17,
+    "team": "Palermo FC"
+  },
+  {
+    "name": "M. Pissardo",
+    "overall": 60,
+    "potential": 63,
+    "position": "GK",
+    "age": 27,
+    "team": "SSC Bari"
+  },
+  {
+    "name": "O. Urso",
+    "overall": 60,
+    "potential": 61,
+    "position": "CM, LM, LB, CDM",
+    "age": 26,
+    "team": "Reggiana"
+  },
+  {
+    "name": "A. Bozzolan",
+    "overall": 60,
+    "potential": 69,
+    "position": "LM, LB, LW",
+    "age": 21,
+    "team": "Reggiana"
+  },
+  {
+    "name": "G. Saro",
+    "overall": 60,
+    "potential": 66,
+    "position": "GK",
+    "age": 25,
+    "team": "Reggiana"
+  },
+  {
+    "name": "B. Verrengia",
+    "overall": 60,
+    "potential": 69,
+    "position": "CB, LB",
+    "age": 21,
+    "team": "Catanzaro"
+  },
+  {
+    "name": "E. Borrelli",
+    "overall": 60,
+    "potential": 71,
+    "position": "GK",
+    "age": 20,
+    "team": "Catanzaro"
+  },
+  {
+    "name": "L. Graziani",
+    "overall": 59,
+    "potential": 71,
+    "position": "CAM, CM",
+    "age": 20,
+    "team": "Pescara"
+  },
+  {
+    "name": "S. Kassama",
+    "overall": 59,
+    "potential": 74,
+    "position": "CB",
+    "age": 20,
+    "team": "SSC Bari"
+  },
+  {
+    "name": "A. Raychev",
+    "overall": 59,
+    "potential": 71,
+    "position": "RW, LW, RM",
+    "age": 19,
+    "team": "Frosinone"
+  },
+  {
+    "name": "F. Grosso",
+    "overall": 59,
+    "potential": 74,
+    "position": "CM, CAM",
+    "age": 18,
+    "team": "Frosinone"
+  },
+  {
+    "name": "S. Capolupo",
+    "overall": 59,
+    "potential": 74,
+    "position": "LM, LB",
+    "age": 19,
+    "team": "Monza"
+  },
+  {
+    "name": "A. Bakoune",
+    "overall": 59,
+    "potential": 69,
+    "position": "RB",
+    "age": 19,
+    "team": "Monza"
+  },
+  {
+    "name": "S. Mazzini",
+    "overall": 59,
+    "potential": 62,
+    "position": "GK",
+    "age": 26,
+    "team": "Carrarese"
+  },
+  {
+    "name": "I. Konaté",
+    "overall": 57,
+    "potential": 72,
+    "position": "ST",
+    "age": 19,
+    "team": "Empoli"
+  },
+  {
+    "name": "V. Colangiuli",
+    "overall": 57,
+    "potential": 71,
+    "position": "CAM, CM",
+    "age": 20,
+    "team": "SSC Bari"
+  },
+  {
+    "name": "D. Marfella",
+    "overall": 57,
+    "potential": 61,
+    "position": "GK",
+    "age": 25,
+    "team": "SSC Bari"
+  },
+  {
+    "name": "F. Vallarelli",
+    "overall": 57,
+    "potential": 66,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Reggiana"
+  },
+  {
+    "name": "M. Voltan",
+    "overall": 57,
+    "potential": 65,
+    "position": "GK",
+    "age": 22,
+    "team": "Calcio Padova"
+  },
+  {
+    "name": "A. Ndow",
+    "overall": 57,
+    "potential": 67,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Frosinone"
+  },
+  {
+    "name": "A. Bottaro",
+    "overall": 57,
+    "potential": 77,
+    "position": "CB",
+    "age": 18,
+    "team": "Virtus Entella"
+  },
+  {
+    "name": "L. Berardi",
+    "overall": 56,
+    "potential": 66,
+    "position": "LM, CM, LW",
+    "age": 20,
+    "team": "Pescara"
+  },
+  {
+    "name": "T. Campaniello",
+    "overall": 56,
+    "potential": 78,
+    "position": "ST",
+    "age": 17,
+    "team": "Empoli"
+  },
+  {
+    "name": "T. Casalino",
+    "overall": 56,
+    "potential": 67,
+    "position": "CM, CDM",
+    "age": 17,
+    "team": "Sampdoria"
+  },
+  {
+    "name": "O. Conté",
+    "overall": 56,
+    "potential": 77,
+    "position": "LW, LM",
+    "age": 18,
+    "team": "Reggiana"
+  },
+  {
+    "name": "G. Alesi",
+    "overall": 56,
+    "potential": 68,
+    "position": "RW, RM",
+    "age": 21,
+    "team": "Catanzaro"
+  },
+  {
+    "name": "J. Bacci",
+    "overall": 56,
+    "potential": 71,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Calcio Padova"
+  },
+  {
+    "name": "A. Boi",
+    "overall": 56,
+    "potential": 67,
+    "position": "CB",
+    "age": 20,
+    "team": "Calcio Padova"
+  },
+  {
+    "name": "L. Mouquet",
+    "overall": 56,
+    "potential": 66,
+    "position": "GK",
+    "age": 20,
+    "team": "Calcio Padova"
+  },
+  {
+    "name": "A. Siano",
+    "overall": 56,
+    "potential": 61,
+    "position": "GK",
+    "age": 24,
+    "team": "Cesena FC"
+  },
+  {
+    "name": "T. Marras",
+    "overall": 56,
+    "potential": 65,
+    "position": "RM, RW",
+    "age": 21,
+    "team": "Mantova"
+  },
+  {
+    "name": "A. Cichero",
+    "overall": 56,
+    "potential": 69,
+    "position": "ST",
+    "age": 18,
+    "team": "Frosinone"
+  },
+  {
+    "name": "D. Dixon",
+    "overall": 56,
+    "potential": 66,
+    "position": "ST, LM",
+    "age": 21,
+    "team": "Frosinone"
+  },
+  {
+    "name": "A. Mazza",
+    "overall": 56,
+    "potential": 68,
+    "position": "GK",
+    "age": 21,
+    "team": "Monza"
+  },
+  {
+    "name": "A. Signorini",
+    "overall": 56,
+    "potential": 61,
+    "position": "GK",
+    "age": 25,
+    "team": "SS Juve Stabia"
+  },
+  {
+    "name": "D. Lordkipanidze",
+    "overall": 56,
+    "potential": 68,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Carrarese"
+  },
+  {
+    "name": "D. Brik",
+    "overall": 56,
+    "potential": 71,
+    "position": "CDM, CM",
+    "age": 17,
+    "team": "Südtirol"
+  },
+  {
+    "name": "C. Sabatini",
+    "overall": 56,
+    "potential": 69,
+    "position": "CB",
+    "age": 18,
+    "team": "Südtirol"
+  },
+  {
+    "name": "E. Matteazzi",
+    "overall": 56,
+    "potential": 66,
+    "position": "CM, CDM",
+    "age": 20,
+    "team": "Virtus Entella"
+  },
+  {
+    "name": "E. Lolić",
+    "overall": 54,
+    "potential": 62,
+    "position": "GK",
+    "age": 21,
+    "team": "Frosinone"
+  },
+  {
+    "name": "D. Theiner",
+    "overall": 54,
+    "potential": 66,
+    "position": "GK",
+    "age": 21,
+    "team": "Südtirol"
+  },
+  {
+    "name": "M. Pezzolato",
+    "overall": 53,
+    "potential": 65,
+    "position": "GK",
+    "age": 21,
+    "team": "Modena"
+  },
+  {
+    "name": "E. Lorenzelli",
+    "overall": 53,
+    "potential": 72,
+    "position": "CDM, CM",
+    "age": 18,
+    "team": "Spezia"
+  },
+  {
+    "name": "A. Troise",
+    "overall": 53,
+    "potential": 62,
+    "position": "CM, CAM",
+    "age": 20,
+    "team": "Carrarese"
+  },
+  {
+    "name": "L. Ferretti",
+    "overall": 50,
+    "potential": 62,
+    "position": "GK",
+    "age": 21,
+    "team": "Cesena FC"
+  }
+]

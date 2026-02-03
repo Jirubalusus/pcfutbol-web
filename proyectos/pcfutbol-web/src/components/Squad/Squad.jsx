@@ -5,9 +5,9 @@ import './Squad.scss';
 
 // Helper function to normalize positions
 const normalizePosition = (pos) => {
-  const defenders = ['CB', 'LB', 'RB', 'LWB', 'RWB', 'DEF'];
-  const midfielders = ['CM', 'CDM', 'CAM', 'LM', 'RM', 'MED'];
-  const forwards = ['ST', 'CF', 'LW', 'RW', 'DEL'];
+  const defenders = ['CB', 'LB', 'RB', 'LWB', 'RWB', 'DEF', 'DFC', 'LD', 'LI', 'CRD', 'CRI', 'LTD', 'LTI'];
+  const midfielders = ['CM', 'CDM', 'CAM', 'LM', 'RM', 'MED', 'MC', 'MCD', 'MCO', 'MD', 'MI', 'MDD', 'MDI'];
+  const forwards = ['ST', 'CF', 'LW', 'RW', 'DEL', 'DC', 'SD', 'ED', 'EI', 'EDD', 'EDI', 'MP'];
   const goalkeepers = ['GK', 'POR'];
   
   if (goalkeepers.includes(pos)) return 'POR';
@@ -283,10 +283,17 @@ export default function Squad() {
             </span>
           </div>
           <div className="panel-stats">
-            {['speed', 'technique', 'passing', 'finishing', 'tackling', 'stamina'].map(stat => (
-              <div key={stat} className="panel-stat">
-                <span className="label">{stat.charAt(0).toUpperCase() + stat.slice(1)}</span>
-                <span className="value">{selectedPlayer[stat] || 70}</span>
+            {[
+              { key: 'speed', label: 'Velocidad' },
+              { key: 'technique', label: 'Técnica' },
+              { key: 'passing', label: 'Pase' },
+              { key: 'finishing', label: 'Remate' },
+              { key: 'tackling', label: 'Defensa' },
+              { key: 'stamina', label: 'Físico' }
+            ].map(stat => (
+              <div key={stat.key} className="panel-stat">
+                <span className="label">{stat.label}</span>
+                <span className="value">{selectedPlayer[stat.key] || 70}</span>
               </div>
             ))}
           </div>

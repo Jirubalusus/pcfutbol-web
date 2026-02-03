@@ -1,0 +1,63 @@
+{
+  "scrapeDate": "2026-02-03",
+  "dataSource": "SoFIFA EA FC 26 (Jan 27, 2026 update)",
+  "totalPlayers": 10842,
+  "leagues": {
+    "31": { "name": "Serie A", "country": "Italy", "count": 573, "pages": 10 },
+    "19": { "name": "Bundesliga", "country": "Germany", "count": 555, "pages": 10 },
+    "16": { "name": "Ligue 1", "country": "France", "count": 505, "pages": 9 },
+    "10": { "name": "Eredivisie", "country": "Netherlands", "count": 558, "pages": 10 },
+    "308": { "name": "Primeira Liga", "country": "Portugal", "count": 542, "pages": 10 },
+    "14": { "name": "Championship", "country": "England", "count": 726, "pages": 13 },
+    "4": { "name": "Belgian Pro League", "country": "Belgium", "count": 443, "pages": 8 },
+    "68": { "name": "Süper Lig", "country": "Turkey", "count": 473, "pages": 8 },
+    "50": { "name": "Scottish Premiership", "country": "Scotland", "count": 338, "pages": 6 },
+    "32": { "name": "Serie B", "country": "Italy", "count": 566, "pages": 10 },
+    "20": { "name": "2. Bundesliga", "country": "Germany", "count": 560, "pages": 10 },
+    "17": { "name": "Ligue 2", "country": "France", "count": 496, "pages": 9 },
+    "189": { "name": "Swiss Super League", "country": "Switzerland", "count": 348, "pages": 6 },
+    "80": { "name": "Austrian Bundesliga", "country": "Austria", "count": 342, "pages": 6 },
+    "63": { "name": "Greek Super League", "country": "Greece", "count": 124, "pages": 3 },
+    "1": { "name": "Danish Superliga", "country": "Denmark", "count": 331, "pages": 6 },
+    "317": { "name": "Croatian HNL", "country": "Croatia", "count": 58, "pages": 1 },
+    "319": { "name": "Czech Liga", "country": "Czech Republic", "count": 85, "pages": 2 },
+    "7": { "name": "Brasileirão Série A", "country": "Brazil", "count": 280, "pages": 5 },
+    "353": { "name": "Argentina Primera División", "country": "Argentina", "count": 923, "pages": 16 },
+    "350": { "name": "Saudi Pro League", "country": "Saudi Arabia", "count": 532, "pages": 9 },
+    "39": { "name": "MLS (Major League Soccer)", "country": "USA/Canada", "count": 693, "pages": 12, "note": "This is the real MLS with 30 teams" },
+    "336": { "name": "Liga BetPlay Dimayor", "country": "Colombia", "count": 89, "pages": 2, "note": "Previously misidentified as MLS" },
+    "335": { "name": "Primera División de Chile", "country": "Chile", "count": 123, "pages": 3 },
+    "337": { "name": "Primera División de Paraguay", "country": "Paraguay", "count": 112, "pages": 2 },
+    "338": { "name": "Primera División de Uruguay", "country": "Uruguay", "count": 91, "pages": 2 },
+    "2017": { "name": "División Profesional de Bolivia", "country": "Bolivia", "count": 80, "pages": 2 },
+    "2018": { "name": "LigaPro Serie A de Ecuador", "country": "Ecuador", "count": 102, "pages": 2 },
+    "2019": { "name": "Liga FUTVE de Venezuela", "country": "Venezuela", "count": 75, "pages": 2 },
+    "2020": { "name": "Liga 1 de Perú", "country": "Peru", "count": 119, "pages": 2 }
+  },
+  "alreadyScraped": {
+    "53": { "name": "LaLiga EA Sports", "country": "Spain" },
+    "54": { "name": "LaLiga Hypermotion", "country": "Spain" },
+    "13": { "name": "Premier League", "country": "England" }
+  },
+  "notInEAFC26": {
+    "341": { "name": "Liga MX", "country": "Mexico", "status": "NOT IN GAME - 0 players found" },
+    "349": { "name": "J1 League", "country": "Japan", "status": "NOT IN GAME - 0 players found" }
+  },
+  "pcfutbolLeaguesNotInEAFC26": [
+    "Primera RFEF (Spain 3rd tier) - NOT in EA FC 26",
+    "Segunda RFEF (Spain 4th tier) - NOT in EA FC 26",
+    "Liga MX (Mexico) - NOT in EA FC 26",
+    "J1 League (Japan) - NOT in EA FC 26"
+  ],
+  "unknownLeaguesResolved": {
+    "39": "MLS - Major League Soccer (USA/Canada) - 30 teams, 693 players",
+    "335": "Primera División de Chile - 6 teams, 123 players",
+    "336": "Liga BetPlay Dimayor (Colombia) - 4 teams, 89 players",
+    "337": "Primera División de Paraguay - 5 teams, 112 players",
+    "338": "Primera División de Uruguay - 5 teams, 91 players",
+    "2017": "División Profesional de Bolivia - 4 teams, 80 players",
+    "2018": "LigaPro Serie A de Ecuador - 5 teams, 102 players",
+    "2019": "Liga FUTVE de Venezuela - 4 teams, 75 players",
+    "2020": "Liga 1 de Perú - 6 teams, 119 players"
+  }
+}
