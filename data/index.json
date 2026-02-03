@@ -1,7 +1,7 @@
 {
   "version": "2025-26",
   "source": "Transfermarkt",
-  "lastUpdated": "2026-01-27T19:50:10.205Z",
+  "lastUpdated": "2026-02-03T13:14:12.394Z",
   "files": [
     "laliga.json",
     "laliga2.json",
@@ -15,6 +15,6 @@
   ],
   "stats": {
     "totalTeams": 248,
-    "totalPlayers": 5256
+    "totalPlayers": 5257
   }
 }
