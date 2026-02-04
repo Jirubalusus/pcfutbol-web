@@ -1,0 +1,17 @@
+{
+  "name": "PC Gaffer - Football Manager",
+  "short_name": "PC Gaffer",
+  "description": "The beautiful game, managed by you",
+  "start_url": "/pcfutbol-web/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0f1419",
+  "background_color": "#0f1419",
+  "icons": [
+    {
+      "src": "/pcfutbol-web/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
