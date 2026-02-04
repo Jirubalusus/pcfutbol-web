@@ -20,9 +20,9 @@
     <!-- PWA Manifest -->
     <link rel="manifest" href="/pcfutbol-web/manifest.json" />
     
-    <!-- Favicon -->
+    <!-- Favicon & Icons -->
     <link rel="icon" type="image/svg+xml" href="/pcfutbol-web/favicon.svg" />
-    <link rel="apple-touch-icon" href="/pcfutbol-web/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="192x192" href="/pcfutbol-web/icons/icon-192x192.png" />
     
     <!-- Preconnect to Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -30,10 +30,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
     
     <title>PC Gaffer</title>
-    <script type="module" crossorigin src="/pcfutbol-web/assets/index-PNPsZ3MU.js"></script>
-    <link rel="stylesheet" crossorigin href="/pcfutbol-web/assets/index-CjAnoFGc.css">
+    <script type="module" crossorigin src="/pcfutbol-web/assets/index-DZPYPrW0.js"></script>
+    <link rel="stylesheet" crossorigin href="/pcfutbol-web/assets/index-C5HlaJGR.css">
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/pcfutbol-web/sw.js');
+        });
+      }
+    </script>
   </body>
 </html>
