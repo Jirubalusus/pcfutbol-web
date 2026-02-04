@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { useGame } from '../../context/GameContext';
-import { posES } from '../../game/positionNames';
+import { translatePosition } from '../../game/positionNames';
 import CustomSelect from '../common/CustomSelect/CustomSelect';
 
 import {
@@ -18,7 +19,7 @@ import {
 
   Ban, Sparkles, CheckCircle, XCircle, Lock, AlertTriangle,
 
-  Trophy, Heart, Swords, ClipboardList, Globe, Home, Coins, Dumbbell, Scale
+  Trophy, Heart, Swords, ClipboardList, Globe, Home, Coins, Dumbbell, Scale, Trash2
 
 } from 'lucide-react';
 
@@ -87,7 +88,7 @@ import './TransfersV2.scss';
 
 
 export default function TransfersV2() {
-
+  const { t } = useTranslation();
   const { state, dispatch } = useGame();
 
   const [activeTab, setActiveTab] = useState('explorar');
@@ -234,15 +235,15 @@ export default function TransfersV2() {
 
   const tabs = [
 
-    { id: 'explorar', label: 'Explorar', icon: Building2 },
+    { id: 'explorar', label: t('transfers.explore'), icon: Building2 },
 
-    { id: 'ojeador', label: 'Ojeador', icon: Target },
+    { id: 'ojeador', label: t('transfers.scout'), icon: Target },
 
-    { id: 'buscar', label: 'Buscar', icon: Search },
+    { id: 'buscar', label: t('transfers.search'), icon: Search },
 
-    { id: 'recibidas', label: 'Recibidas', icon: Bell, badge: (state.incomingOffers?.filter(o => o.status === 'pending')?.length || 0) + (state.incomingLoanOffers?.filter(o => o.status === 'pending')?.length || 0) || undefined },
+    { id: 'recibidas', label: t('transfers.received'), icon: Bell, badge: (state.incomingOffers?.filter(o => o.status === 'pending')?.length || 0) + (state.incomingLoanOffers?.filter(o => o.status === 'pending')?.length || 0) || undefined },
 
-    { id: 'enviadas', label: 'Enviadas', icon: Briefcase, badge: state.outgoingOffers?.filter(o => o.status === 'pending')?.length },
+    { id: 'enviadas', label: t('transfers.sent'), icon: Briefcase, badge: state.outgoingOffers?.filter(o => o.status === 'pending')?.length },
 
   ];
 
@@ -258,7 +259,7 @@ export default function TransfersV2() {
 
         <div className="header-left">
 
-          <h1>Mercado de Fichajes</h1>
+          <h1>{t('transfers.title')}</h1>
 
           <div className="window-status open">
 
@@ -268,9 +269,9 @@ export default function TransfersV2() {
 
               {state.preseasonPhase
 
-                ? 'Pretemporada — Mercado ABIERTO'
+                ? t('transfers.preseasonOpen')
 
-                : `Jornada ${state.currentWeek} — Mercado ABIERTO`}
+                : t('transfers.matchdayOpen', { week: state.currentWeek })}
 
             </span>
 
@@ -284,7 +285,7 @@ export default function TransfersV2() {
 
             <DollarSign size={18} />
 
-            <span className="label">Presupuesto</span>
+            <span className="label">{t('common.budget')}</span>
 
             <span className="amount">{formatTransferPrice(state.money || 0)}</span>
 
@@ -878,7 +879,7 @@ function BuscarTab({ players, searchQuery, setSearchQuery, filters, setFilters, 
 
               <div className="card-header">
 
-                <span className="position" data-pos={player.position}>{posES(player.position)}</span>
+                <span className="position" data-pos={player.position}>{translatePosition(player.position)}</span>
 
                 <span className="overall">{player.overall}</span>
 
@@ -1366,15 +1367,37 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
 
 
+  // Ordenar: pendientes primero, luego resueltas (más recientes primero)
+  const sortedOffers = [...offers].sort((a, b) => {
+    if (a.status === 'pending' && b.status !== 'pending') return -1;
+    if (a.status !== 'pending' && b.status === 'pending') return 1;
+    return (b.submittedWeek || 0) - (a.submittedWeek || 0);
+  });
+
+  const hasResolved = offers.some(o => o.status === 'resolved');
+
+  const handleClearResolved = () => {
+    dispatch({ type: 'CLEAR_RESOLVED_OFFERS' });
+  };
+
   return (
 
     <div className="tab-ofertas">
 
       {/* Transfer offers — dual response cards */}
 
-      {offers.length > 0 && <h4 className="section-title"><Target size={16} /> Ofertas de traspaso</h4>}
+      {offers.length > 0 && (
+        <div className="section-title-row">
+          <h4 className="section-title"><Target size={16} /> Ofertas de traspaso</h4>
+          {hasResolved && (
+            <button className="btn-clear-resolved" onClick={handleClearResolved}>
+              <Trash2 size={14} /> Borrar
+            </button>
+          )}
+        </div>
+      )}
 
-      {offers.map((offer, i) => {
+      {sortedOffers.map((offer, i) => {
 
         const bothAccepted = offer.clubResponse === 'accepted' && offer.playerResponse === 'accepted';
 
@@ -1394,7 +1417,7 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
             <div className="offer-v2-header">
 
-              <span className="pos-badge" data-pos={offer.player?.position}>{posES(offer.player?.position)}</span>
+              <span className="pos-badge" data-pos={offer.player?.position}>{translatePosition(offer.player?.position)}</span>
 
               <div className="offer-v2-info">
 
@@ -2216,7 +2239,7 @@ function ExplorarTab({ leagueTeams, myTeamId, playerLeagueId, onSelectPlayer, bl
 
               >
 
-                <span className="player-pos" data-pos={player.position}>{posES(player.position)}</span>
+                <span className="player-pos" data-pos={player.position}>{translatePosition(player.position)}</span>
 
                 <span className="player-name">{player.name}</span>
 
@@ -2256,11 +2279,31 @@ function OjeadorTab({ myTeam, leagueTeams, scoutingLevel, budget, onSelectPlayer
 
   const [isLoading, setIsLoading] = useState(false);
 
+  const [selectedPosition, setSelectedPosition] = useState(null);
+
 
 
   const config = SCOUTING_LEVELS[scoutingLevel] || SCOUTING_LEVELS[0];
 
 
+
+  const POSITION_CHIPS = [
+    { en: 'GK', es: 'POR' },
+    { en: 'CB', es: 'DFC' },
+    { en: 'LB', es: 'LI' },
+    { en: 'RB', es: 'LD' },
+    { en: 'LWB', es: 'CRI' },
+    { en: 'RWB', es: 'CRD' },
+    { en: 'CDM', es: 'MCD' },
+    { en: 'CM', es: 'MC' },
+    { en: 'CAM', es: 'MCO' },
+    { en: 'LM', es: 'MI' },
+    { en: 'RM', es: 'MD' },
+    { en: 'LW', es: 'EI' },
+    { en: 'RW', es: 'ED' },
+    { en: 'ST', es: 'DC' },
+    { en: 'CF', es: 'SD' },
+  ];
 
   const handleGenerateSuggestions = () => {
 
@@ -2268,7 +2311,7 @@ function OjeadorTab({ myTeam, leagueTeams, scoutingLevel, budget, onSelectPlayer
 
     setTimeout(() => {
 
-      const result = generateScoutingSuggestions(myTeam, leagueTeams, scoutingLevel, budget);
+      const result = generateScoutingSuggestions(myTeam, leagueTeams, scoutingLevel, budget, selectedPosition);
 
       setSuggestions(result);
 
@@ -2312,7 +2355,39 @@ function OjeadorTab({ myTeam, leagueTeams, scoutingLevel, budget, onSelectPlayer
 
 
 
-      {/* Botón generar / refrescar */}
+      {/* Selector de posición */}
+
+      <div className="position-selector">
+
+        <span className="position-selector__label">Posición a buscar:</span>
+
+        <div className="position-selector__chips">
+
+          {POSITION_CHIPS.map(pos => (
+
+            <button
+
+              key={pos.en}
+
+              className={`pos-chip ${selectedPosition === pos.en ? 'pos-chip--active' : ''}`}
+
+              onClick={() => setSelectedPosition(selectedPosition === pos.en ? null : pos.en)}
+
+            >
+
+              {pos.es}
+
+            </button>
+
+          ))}
+
+        </div>
+
+      </div>
+
+
+
+      {/* Botón buscar */}
 
       <button
 
@@ -2334,23 +2409,13 @@ function OjeadorTab({ myTeam, leagueTeams, scoutingLevel, budget, onSelectPlayer
 
           </>
 
-        ) : suggestions ? (
-
-          <>
-
-            <RefreshCw size={18} />
-
-            Buscar nuevos jugadores
-
-          </>
-
         ) : (
 
           <>
 
             <Search size={18} />
 
-            Buscar jugadores
+            {selectedPosition ? `Buscar ${POSITION_CHIPS.find(p => p.en === selectedPosition)?.es || ''}` : 'Buscar jugadores'}
 
           </>
 
@@ -2394,7 +2459,7 @@ function OjeadorTab({ myTeam, leagueTeams, scoutingLevel, budget, onSelectPlayer
 
                 >
 
-                  <div className="suggestion-pos" data-pos={player.position}>{posES(player.position)}</div>
+                  <div className="suggestion-pos" data-pos={player.position}>{translatePosition(player.position)}</div>
 
                   <div className="suggestion-main">
 
@@ -3445,7 +3510,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
               <div className="card-top">
 
-                <span className="position-badge" data-pos={player.position}>{posES(player.position)}</span>
+                <span className="position-badge" data-pos={player.position}>{translatePosition(player.position)}</span>
 
                 <span className="overall-badge">{player.overall}</span>
 
@@ -3577,7 +3642,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
             <div className="player-mobile-header">
 
-              <span className="pos-badge" data-pos={player.position}>{posES(player.position)}</span>
+              <span className="pos-badge" data-pos={player.position}>{translatePosition(player.position)}</span>
 
               <div className="info">
 
@@ -3951,13 +4016,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                     value={salaryOffer * 52}
 
-                    onChange={(valOrFn) => setSalaryOffer(prev => {
-
-                      const newAnnual = typeof valOrFn === 'function' ? valOrFn(prev * 52) : valOrFn;
-
-                      return Math.round(newAnnual / 52);
-
-                    })}
+                    onChange={(val) => setSalaryOffer(Math.round(val / 52))}
 
                     step={100000}
 
@@ -4223,13 +4282,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                     value={salaryOffer * 52}
 
-                    onChange={(valOrFn) => setSalaryOffer(prev => {
-
-                      const newAnnual = typeof valOrFn === 'function' ? valOrFn(prev * 52) : valOrFn;
-
-                      return Math.round(newAnnual / 52);
-
-                    })}
+                    onChange={(val) => setSalaryOffer(Math.round(val / 52))}
 
                     step={100000}
 

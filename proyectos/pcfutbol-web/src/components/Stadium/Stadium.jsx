@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useEffect, Suspense, Component } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { 
   getLaLigaTeams, getSegundaTeams, getPrimeraRfefTeams, getSegundaRfefTeams,
@@ -25,7 +26,7 @@ class Stadium3DErrorBoundary extends Component {
       return (
         <div className="stadium-3d-fallback">
           <span><Building2 size={20} /></span>
-          <p>Vista 3D no disponible</p>
+          <p>{t('stadium.view3dNotAvailable')}</p>
         </div>
       );
     }
@@ -82,15 +83,16 @@ const NAMING_SPONSORS = [
   { id: 'tech', name: 'TechCorp', offer: 8000000, minPrestige: 5, duration: 5 }
 ];
 
-const SPECIAL_EVENTS = [
-  { id: 'friendly', name: 'Amistoso', icon: <FootballIcon size={16} />, income: 200000, grassDamage: 5, cooldown: 1 },
-  { id: 'concert', name: 'Concierto', icon: <Mic size={16} />, income: 500000, grassDamage: 20, cooldown: 3 },
-  { id: 'corporate', name: 'Evento Corporativo', icon: <Briefcase size={16} />, income: 150000, grassDamage: 3, cooldown: 1 },
-  { id: 'legends', name: 'Partido Leyendas', icon: <Trophy size={16} />, income: 400000, grassDamage: 8, cooldown: 2 }
+const SPECIAL_EVENTS_DATA = [
+  { id: 'friendly', icon: <FootballIcon size={16} />, income: 200000, grassDamage: 5, cooldown: 1 },
+  { id: 'concert', icon: <Mic size={16} />, income: 500000, grassDamage: 20, cooldown: 3 },
+  { id: 'corporate', icon: <Briefcase size={16} />, income: 150000, grassDamage: 3, cooldown: 1 },
+  { id: 'legends', icon: <Trophy size={16} />, income: 400000, grassDamage: 8, cooldown: 2 }
 ];
 
 // === COMPONENTE ===
 export default function Stadium() {
+  const { t } = useTranslation();
   const { state, dispatch } = useGame();
   const [activeTab, setActiveTab] = useState('general');
   const [isMobile, setIsMobile] = useState(getIsMobile);
@@ -222,8 +224,12 @@ export default function Stadium() {
       payload: {
         id: Date.now(),
         type: 'stadium',
-        title: 'Campaña de abonos cerrada',
-        content: `${totalAbonados.toLocaleString()} abonados × €${seasonTicketPrice} = ${formatMoney(totalSeasonTicketIncome)} (se cobrarán a final de temporada)`,
+        title: t('stadium.seasonTicketsClosed'),
+        content: t('stadium.seasonTicketsMessage', { 
+          count: totalAbonados.toLocaleString(), 
+          price: seasonTicketPrice, 
+          total: formatMoney(totalSeasonTicketIncome) 
+        }),
         date: `Semana ${state.currentWeek}`
       }
     });
@@ -251,8 +257,12 @@ export default function Stadium() {
       payload: {
         id: Date.now(),
         type: 'stadium',
-        title: 'Derechos de Nombre',
-        content: `Acuerdo con ${sponsor.name}: €${(sponsor.offer/1000000).toFixed(1)}M/año por ${sponsor.duration} años`,
+        title: t('stadium.namingRights'),
+        content: t('stadium.namingMessage', { 
+          sponsor: sponsor.name, 
+          amount: (sponsor.offer/1000000).toFixed(1), 
+          duration: sponsor.duration 
+        }),
         date: `Semana ${state.currentWeek}`
       }
     });
@@ -268,8 +278,8 @@ export default function Stadium() {
         payload: {
           id: Date.now(),
           type: 'warning',
-          title: 'Fondos insuficientes',
-          content: `Necesitas €${(penalty / 1000000).toFixed(1)}M para pagar la penalización por cancelar el contrato.`,
+          title: t('stadium.insufficientFunds'),
+          content: t('stadium.penaltyRequired', { amount: (penalty / 1000000).toFixed(1) }),
           date: `Semana ${state.currentWeek}`
         }
       });
@@ -287,10 +297,10 @@ export default function Stadium() {
       payload: {
         id: Date.now(),
         type: 'stadium',
-        title: 'Patrocinio cancelado',
+        title: t('stadium.sponsorshipCancelled'),
         content: penalty > 0 
-          ? `El estadio recupera su nombre original. Penalización pagada: €${(penalty / 1000000).toFixed(1)}M`
-          : 'El estadio recupera su nombre original',
+          ? t('stadium.stadiumNameRestored', { amount: (penalty / 1000000).toFixed(1) })
+          : t('stadium.stadiumNameRestoredFree'),
         date: `Semana ${state.currentWeek}`
       }
     });
@@ -311,7 +321,7 @@ export default function Stadium() {
         id: Date.now(),
         type: 'stadium',
         title: `${event.icon} ${event.name}`,
-        content: `Evento celebrado. Ingresos: €${(event.income/1000).toFixed(0)}K`,
+        content: t('stadium.eventHosted', { amount: (event.income/1000).toFixed(0) }),
         date: `Semana ${state.currentWeek}`
       }
     });
@@ -333,8 +343,8 @@ export default function Stadium() {
       payload: {
         id: Date.now(),
         type: 'stadium',
-        title: 'Estadio ampliado',
-        content: `Ahora es ${nextLevel.name} con ${nextLevel.capacity.toLocaleString()} asientos`,
+        title: t('stadium.stadiumUpgraded'),
+        content: t('stadium.nowStadium', { name: nextLevel.name, capacity: nextLevel.capacity.toLocaleString() }),
         date: `Semana ${state.currentWeek}`
       }
     });
@@ -426,7 +436,7 @@ export default function Stadium() {
       {!isMobile && (
         <div className="stadium-simple__3d-viewer">
           <Stadium3DErrorBoundary>
-            <Suspense fallback={<div className="stadium-3d-loading">Cargando estadio...</div>}>
+            <Suspense fallback={<div className="stadium-3d-loading">{t('stadium.loadingStadium')}</div>}>
               <Stadium3D 
                 level={level} 
                 naming={naming} 
@@ -441,24 +451,24 @@ export default function Stadium() {
       <div className="stadium-simple__header">
         <div className="stadium-info">
           <h1>{displayStadiumName}</h1>
-          <p>{currentLevel.name} • {capacity.toLocaleString()} asientos</p>
+          <p>{currentLevel.name} • {capacity.toLocaleString()} {t('stadium.seats')}</p>
         </div>
         <div className="stadium-stats">
           <div className="stat">
             <span className="value">+{((homeAdvantage - 1) * 100).toFixed(1)}%</span>
-            <span className="label">Factor cancha</span>
+            <span className="label">{t('stadium.homeAdvantage')}</span>
           </div>
           <div className="stat">
             <span className="value">{Math.round(occupancyRate * 100)}%</span>
-            <span className="label">Ocupación</span>
+            <span className="label">{t('stadium.occupation')}</span>
           </div>
           <div className="stat">
             <span className="value">{grassCondition}%</span>
-            <span className="label">Césped</span>
+            <span className="label">{t('stadium.grass')}</span>
           </div>
           <div className="stat highlight">
             <span className="value">{formatMoney(state.money)}</span>
-            <span className="label">Presupuesto</span>
+            <span className="label">{t('stadium.budget')}</span>
           </div>
         </div>
       </div>
@@ -466,13 +476,13 @@ export default function Stadium() {
       {/* Tabs simplificados */}
       <div className="stadium-simple__tabs">
         <button className={activeTab === 'general' ? 'active' : ''} onClick={() => setActiveTab('general')}>
-          <BarChart3 size={14} /> General
+          <BarChart3 size={14} /> {t('stadium.general')}
         </button>
         <button className={activeTab === 'sponsors' ? 'active' : ''} onClick={() => setActiveTab('sponsors')}>
-          <Coins size={14} /> Patrocinio
+          <Coins size={14} /> {t('stadium.sponsorship')}
         </button>
         <button className={activeTab === 'events' ? 'active' : ''} onClick={() => setActiveTab('events')}>
-          <Mic size={14} /> Eventos
+          <Mic size={14} /> {t('stadium.events')}
         </button>
       </div>
       
@@ -481,30 +491,30 @@ export default function Stadium() {
         <div className="stadium-simple__general">
           {/* Campaña de abonos */}
           <div className="card">
-            <h3><Ticket size={14} /> Campaña de Abonos</h3>
+            <h3><Ticket size={14} /> {t('stadium.seasonTicketCampaign')}</h3>
             {seasonTicketsCampaignOpen ? (
               <>
                 <p className="card-hint campaign-open">
-                  <Megaphone size={12} /> Campaña abierta hasta jornada {SEASON_TICKET_DEADLINE} (actual: {currentWeek})
+                  <Megaphone size={12} /> {t('stadium.campaignOpen', { deadline: SEASON_TICKET_DEADLINE, current: currentWeek })}
                 </p>
                 
                 {/* Precio del abono */}
                 <div className="season-price-section">
-                  <label>Precio del abono:</label>
+                  <label>{t('stadium.seasonTicketPrice')}</label>
                   <div className="price-control">
                     <button onClick={() => handleSeasonPriceChange(-50)}>-50€</button>
                     <span className="price-value">€{seasonTicketPrice}</span>
                     <button onClick={() => handleSeasonPriceChange(50)}>+50€</button>
                   </div>
-                  <p className="price-detail">{HOME_GAMES_PER_SEASON} partidos → {formatMoney(seasonTicketPrice / HOME_GAMES_PER_SEASON)}/partido</p>
+                  <p className="price-detail">{t('stadium.pricePerMatch', { matches: HOME_GAMES_PER_SEASON, pricePerMatch: formatMoney(seasonTicketPrice / HOME_GAMES_PER_SEASON) })}</p>
                 </div>
                 
                 {/* Previsión de abonados */}
                 <div className="season-preview">
-                  <label>Previsión de abonados:</label>
+                  <label>{t('stadium.expectedSubscribers')}</label>
                   <div className="abonados-info">
                     <span className="big-number">{calculatedSeasonTickets.toLocaleString()}</span>
-                    <span className="of-total">/ {maxSeasonTickets.toLocaleString()} máx</span>
+                    <span className="of-total">/ {maxSeasonTickets.toLocaleString()} {t('stadium.maxShort')}</span>
                   </div>
                   <div className="progress-bar">
                     <div className="fill" style={{ width: `${(calculatedSeasonTickets / maxSeasonTickets) * 100}%` }}></div>
@@ -518,30 +528,30 @@ export default function Stadium() {
                 
                 {/* Botón cerrar campaña */}
                 <button className="btn-close-campaign" onClick={handleCloseCampaign}>
-                  <Check size={14} /> Cerrar campaña y fijar abonados
+                  <Check size={14} /> {t('stadium.closeCampaign')}
                 </button>
               </>
             ) : (
               <div className="campaign-closed-card">
                 <div className="campaign-closed-header">
                   <span className="lock-icon"><Lock size={14} /></span>
-                  <span>Campaña cerrada</span>
+                  <span>{t('stadium.campaignClosed')}</span>
                 </div>
                 
                 <div className="campaign-closed-stats">
                   <div className="campaign-stat main">
                     <span className="stat-value">{seasonTickets.toLocaleString()}</span>
-                    <span className="stat-label">abonados</span>
+                    <span className="stat-label">{t('stadium.subscribers')}</span>
                   </div>
                   <div className="campaign-stat-divider"></div>
                   <div className="campaign-stat">
                     <span className="stat-value">€{stadium.seasonTicketPriceFinal || seasonTicketPrice}</span>
-                    <span className="stat-label">precio/abono</span>
+                    <span className="stat-label">{t('stadium.pricePerTicket')}</span>
                   </div>
                   <div className="campaign-stat-divider"></div>
                   <div className="campaign-stat">
                     <span className="stat-value">{formatMoney((seasonTickets || 0) * (stadium.seasonTicketPriceFinal || seasonTicketPrice))}</span>
-                    <span className="stat-label">ingresado</span>
+                    <span className="stat-label">{t('stadium.collected')}</span>
                   </div>
                 </div>
                 
@@ -549,7 +559,7 @@ export default function Stadium() {
                   <div className="bar-fill" style={{ width: `${Math.min(100, (seasonTickets / Math.floor(capacity * 0.8)) * 100)}%` }}></div>
                 </div>
                 <div className="campaign-closed-footer">
-                  <span>{Math.round((seasonTickets / capacity) * 100)}% del aforo abonado</span>
+                  <span>{t('stadium.ofCapacitySubscribed', { percent: Math.round((seasonTickets / capacity) * 100) })}</span>
                 </div>
               </div>
             )}
@@ -557,11 +567,11 @@ export default function Stadium() {
           
           {/* Precio entrada partido suelto */}
           <div className="card">
-            <h3><Ticket size={14} /> Precio Entrada</h3>
+            <h3><Ticket size={14} /> {t('stadium.ticketPrice')}</h3>
             <p className="card-hint">
               {ticketPriceLocked 
-                ? <><Lock size={12} /> Precio fijado para esta temporada. Solo para no abonados.</>
-                : 'Precio por partido para no abonados. Fija antes de que empiece la liga.'}
+                ? <><Lock size={12} /> {t('stadium.priceLocked')}</>
+                : t('stadium.setPriceBeforeLeague')}
             </p>
             
             <div className="price-control">
@@ -581,32 +591,32 @@ export default function Stadium() {
             {/* Ingresos acumulados esta temporada */}
             <div className="accumulated-income">
               <div className="accumulated-row">
-                <span className="label"><Coins size={12} /> Ingresos entradas acumulados</span>
+                <span className="label"><Coins size={12} /> {t('stadium.accumulatedTicketIncome')}</span>
                 <span className="value accumulated-value">{formatMoney(accumulatedTicketIncome)}</span>
               </div>
-              <p className="accumulated-hint">Solo entradas vendidas (sin abonados). Se cobra al finalizar la temporada.</p>
+              <p className="accumulated-hint">{t('stadium.onlyTicketsSold')}</p>
             </div>
             
             {/* Última jornada en casa */}
             {(stadium.lastMatchTicketSales != null || stadium.lastMatchIncome != null) && (
               <div className="last-match-info">
-                <h4><BarChart3 size={12} /> Última jornada en casa</h4>
+                <h4><BarChart3 size={12} /> {t('stadium.lastHomeMatchday')}</h4>
                 <div className="last-match-stats">
                   {stadium.lastMatchTicketSales != null && (
                     <div className="stat-row">
-                      <span className="label"><Ticket size={12} /> Entradas vendidas</span>
+                      <span className="label"><Ticket size={12} /> {t('stadium.ticketsSold')}</span>
                       <span className="value">{stadium.lastMatchTicketSales.toLocaleString()}</span>
                     </div>
                   )}
                   {stadium.lastMatchAttendance != null && (
                     <div className="stat-row">
-                      <span className="label"><Users size={12} /> Asistencia total</span>
+                      <span className="label"><Users size={12} /> {t('stadium.totalAttendance')}</span>
                       <span className="value">{stadium.lastMatchAttendance.toLocaleString()}</span>
                     </div>
                   )}
                   {stadium.lastMatchIncome != null && (
                     <div className="stat-row income">
-                      <span className="label"><Coins size={12} /> Ingresos entradas</span>
+                      <span className="label"><Coins size={12} /> {t('stadium.ticketIncome')}</span>
                       <span className="value">{formatMoney(stadium.lastMatchIncome)}</span>
                     </div>
                   )}
@@ -617,7 +627,7 @@ export default function Stadium() {
           
           {/* Césped */}
           <div className="card grass-card">
-            <h3><Sprout size={14} /> Estado del Césped</h3>
+            <h3><Sprout size={14} /> {t('stadium.grassCondition')}</h3>
             <div className="grass-bar">
               <div className={`fill ${grassCondition < 50 ? 'danger' : grassCondition < 70 ? 'warning' : ''}`} style={{ width: `${grassCondition}%` }}></div>
               <span className="grass-percent">{grassCondition}%</span>
@@ -625,19 +635,19 @@ export default function Stadium() {
             
             {/* Estado y efecto en lesiones */}
             <div className="grass-status">
-              {grassCondition >= 80 && <span className="status good"><Check size={12} /> Óptimo</span>}
-              {grassCondition >= 50 && grassCondition < 80 && <span className="status warning"><AlertTriangle size={12} /> Riesgo lesiones +{Math.round((100 - grassCondition) / 2)}%</span>}
-              {grassCondition < 50 && <span className="status danger"><XCircle size={12} /> Riesgo lesiones +{Math.round((100 - grassCondition))}%</span>}
+              {grassCondition >= 80 && <span className="status good"><Check size={12} /> {t('stadium.optimal')}</span>}
+              {grassCondition >= 50 && grassCondition < 80 && <span className="status warning"><AlertTriangle size={12} /> {t('stadium.injuryRisk', { percent: Math.round((100 - grassCondition) / 2) })}</span>}
+              {grassCondition < 50 && <span className="status danger"><XCircle size={12} /> {t('stadium.injuryRisk', { percent: Math.round((100 - grassCondition)) })}</span>}
             </div>
             
             <p className="grass-hint">
-              {grassCondition < 100 ? 'Recupera +5%/semana' : 'En perfectas condiciones'}
-              {grassCondition < 70 && ' • El mal estado aumenta lesiones de TUS jugadores'}
+              {grassCondition < 100 ? t('stadium.recovers') : t('stadium.perfectCondition')}
+              {grassCondition < 70 && ` • ${t('stadium.poorGrassWarning')}`}
             </p>
             
             {grassCondition < 70 && (
               <button className="repair-btn" onClick={handleRepairGrass} disabled={state.money < 200000}>
-                <Wrench size={14} /> Reparar césped ({formatMoney(200000)})
+                <Wrench size={14} /> {t('stadium.repairGrass', { cost: formatMoney(200000) })}
               </button>
             )}
           </div>
@@ -649,23 +659,23 @@ export default function Stadium() {
         <div className="stadium-simple__sponsors">
           {naming ? (
             <div className="current-sponsor">
-              <h3><Tag size={14} /> Patrocinador Actual</h3>
+              <h3><Tag size={14} /> {t('stadium.currentSponsor')}</h3>
               <div className="sponsor-info">
                 <span className="sponsor-name">{naming.name}</span>
-                <span className="sponsor-income">{formatMoney(naming.yearlyIncome)}/año</span>
-                <span className="sponsor-years">{naming.yearsLeft} años restantes</span>
+                <span className="sponsor-income">{formatMoney(naming.yearlyIncome)}{t('stadium.perYear')}</span>
+                <span className="sponsor-years">{t('stadium.yearsRemaining', { years: naming.yearsLeft })}</span>
               </div>
               <button className="cancel-btn" onClick={handleCancelNaming}>
-                Cancelar contrato
+                {t('stadium.cancelContract')}
               </button>
               <span className="cancel-warning">
-                <AlertTriangle size={12} /> Penalización: {formatMoney(Math.round(naming.yearlyIncome * naming.yearsLeft * 0.5))}
+                <AlertTriangle size={12} /> {t('stadium.penalty', { amount: formatMoney(Math.round(naming.yearlyIncome * naming.yearsLeft * 0.5)) })}
               </span>
             </div>
           ) : (
             <>
-              <h3><Coins size={14} /> Ofertas de Naming</h3>
-              <p className="hint">Vende el nombre del estadio por ingresos anuales</p>
+              <h3><Coins size={14} /> {t('stadium.namingOffers')}</h3>
+              <p className="hint">{t('stadium.sellStadiumName')}</p>
               
               {availableSponsors.length > 0 ? (
                 <div className="sponsors-list">
@@ -676,12 +686,12 @@ export default function Stadium() {
                         <span className="price">{formatMoney(sponsor.offer)}/año</span>
                         <span className="duration">{sponsor.duration} años</span>
                       </div>
-                      <button onClick={() => handleAcceptNaming(sponsor)}>Aceptar</button>
+                      <button onClick={() => handleAcceptNaming(sponsor)}>{t('stadium.accept')}</button>
                     </div>
                   ))}
                 </div>
               ) : (
-                <p className="no-offers">Mejora tu estadio para atraer patrocinadores</p>
+                <p className="no-offers">{t('stadium.upgradeForSponsors')}</p>
               )}
             </>
           )}
@@ -691,34 +701,34 @@ export default function Stadium() {
       {/* TAB: EVENTS */}
       {activeTab === 'events' && (
         <div className="stadium-simple__events">
-          <h3><Mic size={14} /> Organizar Eventos</h3>
-          <p className="hint">Genera ingresos extra (requiere 2 semanas entre eventos)</p>
+          <h3><Mic size={14} /> {t('stadium.organizeEvents')}</h3>
+          <p className="hint">{t('stadium.generateExtraIncome')}</p>
           
           {!canHostEvent && (
             <div className="cooldown-notice">
-              ⏳ Espera {2 - weeksSinceEvent} semana(s) más
+              ⏳ {t('stadium.waitMoreWeeks', { weeks: 2 - weeksSinceEvent })}
             </div>
           )}
           
           <div className="events-list">
-            {SPECIAL_EVENTS.map(event => (
+            {SPECIAL_EVENTS_DATA.map(event => (
               <div key={event.id} className={`event-item ${!canHostEvent ? 'disabled' : ''}`}>
                 <span className="event-icon">{event.icon}</span>
                 <div className="event-info">
-                  <span className="event-name">{event.name}</span>
+                  <span className="event-name">{t(`stadium.events.${event.id}`)}</span>
                   <span className="event-details">
-                    {formatMoney(event.income)} • Daño césped: -{event.grassDamage}%
+                    {formatMoney(event.income)} • {t('stadium.grassDamage', { percent: event.grassDamage })}
                   </span>
                 </div>
-                <button onClick={() => handleHostEvent(event)} disabled={!canHostEvent || grassCondition < 30}>
-                  Organizar
+                <button onClick={() => handleHostEvent({...event, name: t(`stadium.events.${event.id}`)}) } disabled={!canHostEvent || grassCondition < 30}>
+                  {t('stadium.organize')}
                 </button>
               </div>
             ))}
           </div>
           
           {grassCondition < 30 && (
-            <p className="grass-warning"><AlertTriangle size={12} /> Repara el césped antes de organizar eventos</p>
+            <p className="grass-warning"><AlertTriangle size={12} /> {t('stadium.repairGrassBeforeEvents')}</p>
           )}
         </div>
       )}

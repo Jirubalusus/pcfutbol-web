@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Briefcase, Mail, HeartPulse, FileText, Newspaper, Landmark, Trash2, Inbox, X } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import FootballIcon from '../icons/FootballIcon';
 import { useGame } from '../../context/GameContext';
 import './Messages.scss';
@@ -16,6 +17,7 @@ const MESSAGE_ICONS = {
 };
 
 export default function Messages() {
+  const { t } = useTranslation();
   const { state, dispatch } = useGame();
   const [selectedMessage, setSelectedMessage] = useState(null);
   
@@ -29,7 +31,7 @@ export default function Messages() {
   };
   
   const handleClearAll = () => {
-    if (window.confirm('¿Eliminar todos los mensajes?')) {
+    if (window.confirm(t('messages.deleteAllConfirm'))) {
       dispatch({ type: 'CLEAR_MESSAGES' });
       setSelectedMessage(null);
     }
@@ -38,10 +40,10 @@ export default function Messages() {
   return (
     <div className="messages">
       <div className="messages__header">
-        <h2>Bandeja de Entrada ({messages.length})</h2>
+        <h2>{t('messages.inbox')} ({messages.length})</h2>
         {messages.length > 0 && (
           <button className="messages__clear" onClick={handleClearAll}>
-            <Trash2 size={14} /> Borrar todo
+            <Trash2 size={14} /> {t('messages.deleteAll')}
           </button>
         )}
       </div>
@@ -49,7 +51,7 @@ export default function Messages() {
       {messages.length === 0 ? (
         <div className="messages__empty">
           <span className="icon"><Inbox size={22} /></span>
-          <p>No tienes mensajes</p>
+          <p>{t('messages.noMessages')}</p>
         </div>
       ) : (
         <div className="messages__content">
@@ -86,7 +88,7 @@ export default function Messages() {
                 className="messages__detail-close"
                 onClick={() => setSelectedMessage(null)}
               >
-                ← Volver a mensajes
+                ← {t('messages.backToMessages')}
               </button>
               <div className="messages__detail-header">
                 <span className="icon">
@@ -104,7 +106,7 @@ export default function Messages() {
                 className="messages__detail-delete"
                 onClick={() => handleDelete(selectedMessage.id)}
               >
-                Eliminar mensaje
+                {t('messages.deleteMessage')}
               </button>
             </div>
           )}

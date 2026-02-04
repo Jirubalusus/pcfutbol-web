@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { Award, Trophy, ChevronDown, ChevronUp, Shield, AlertTriangle } from 'lucide-react';
 import { getCupRoundName } from '../../game/cupSystem';
 import './Cup.scss';
 
 export default function Cup() {
+  const { t } = useTranslation();
   const { state } = useGame();
   const bracket = state.cupCompetition;
   const [expandedRound, setExpandedRound] = useState(null);
@@ -14,7 +16,7 @@ export default function Cup() {
       <div className="cup">
         <div className="cup__empty">
           <Award size={48} />
-          <p>No hay copa activa esta temporada</p>
+          <p>{t('cup.noCupActive')}</p>
         </div>
       </div>
     );
@@ -58,8 +60,8 @@ export default function Cup() {
         <div className="cup__title">
           <span className="cup__icon">{config?.icon || '🏆'}</span>
           <div>
-            <h2>{config?.name || 'Copa'}</h2>
-            <span className="cup__subtitle">Temporada {state.currentSeason || 1}</span>
+            <h2>{config?.name || t('cup.cup')}</h2>
+            <span className="cup__subtitle">{t('cup.season')} {state.currentSeason || 1}</span>
           </div>
         </div>
 
@@ -67,25 +69,25 @@ export default function Cup() {
         {winner && winner === playerTeamId && (
           <div className="cup__status cup__status--champion">
             <Trophy size={16} />
-            <span>¡Campeón!</span>
+            <span>{t('cup.champion')}</span>
           </div>
         )}
         {winner && winner !== playerTeamId && (
           <div className="cup__status cup__status--finished">
             <Shield size={16} />
-            <span>Copa finalizada</span>
+            <span>{t('cup.cupFinished')}</span>
           </div>
         )}
         {playerEliminated && !winner && eliminationRound !== null && (
           <div className="cup__status cup__status--eliminated">
             <AlertTriangle size={16} />
-            <span>Eliminado en {rounds[eliminationRound]?.name || `Ronda ${eliminationRound + 1}`}</span>
+            <span>{t('cup.eliminatedIn')} {rounds[eliminationRound]?.name || `${t('cup.round')} ${eliminationRound + 1}`}</span>
           </div>
         )}
         {!playerEliminated && !winner && (
           <div className="cup__status cup__status--active">
             <Award size={16} />
-            <span>En competición — {rounds[currentRound]?.name || 'Próxima ronda'}</span>
+            <span>{t('cup.inCompetition')} — {rounds[currentRound]?.name || t('cup.nextRound')}</span>
           </div>
         )}
       </div>
@@ -115,12 +117,12 @@ export default function Cup() {
                 <div className="cup__round-info">
                   <span className="cup__round-name">{round.name}</span>
                   <span className="cup__round-count">
-                    {round.matches.filter(m => !m.bye).length} partidos
+                    {round.matches.filter(m => !m.bye).length} {t('cup.matches')}
                     {round.matches.filter(m => m.bye).length > 0 && 
-                      ` · ${round.matches.filter(m => m.bye).length} exentos`}
+                      ` · ${round.matches.filter(m => m.bye).length} ${t('cup.exempt')}`}
                   </span>
                 </div>
-                {isCurrentRound && <span className="cup__round-badge">Actual</span>}
+                {isCurrentRound && <span className="cup__round-badge">{t('cup.current')}</span>}
                 {showMatches ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
               </button>
 
@@ -136,7 +138,7 @@ export default function Cup() {
                             </span>
                           </div>
                           <div className="cup__match-result">
-                            <span className="bye-tag">Exento</span>
+                            <span className="bye-tag">{t('cup.exempt')}</span>
                           </div>
                           <div className="cup__match-team cup__match-team--away">
                             <span className="team-name">—</span>
@@ -199,7 +201,7 @@ export default function Cup() {
         <div className="cup__winner">
           <Trophy size={32} />
           <div className="cup__winner-info">
-            <span className="cup__winner-label">Campeón</span>
+            <span className="cup__winner-label">{t('cup.champion')}</span>
             <span className="cup__winner-name">
               {rounds[rounds.length - 1]?.matches[0]?.homeTeam?.teamId === winner
                 ? rounds[rounds.length - 1]?.matches[0]?.homeTeam?.teamName

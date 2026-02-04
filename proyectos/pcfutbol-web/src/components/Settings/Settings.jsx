@@ -71,15 +71,15 @@ export default function Settings({ onClose }) {
   ];
 
   const difficultyOptions = [
-    { value: 'easy', label: t('settings.easy'), desc: 'IA menos agresiva, más dinero inicial' },
-    { value: 'normal', label: t('settings.normal'), desc: 'Experiencia equilibrada' },
-    { value: 'hard', label: t('settings.hard'), desc: 'IA muy competitiva, menos recursos' }
+    { value: 'easy', label: t('settings.easy'), desc: t('settings.difficultyEasyDesc') },
+    { value: 'normal', label: t('settings.normal'), desc: t('settings.difficultyNormalDesc') },
+    { value: 'hard', label: t('settings.hard'), desc: t('settings.difficultyHardDesc') }
   ];
 
   const speedOptions = [
-    { value: 'slow', label: 'Lenta', desc: 'Más tiempo para ver los partidos' },
-    { value: 'normal', label: t('settings.normal'), desc: 'Velocidad estándar' },
-    { value: 'fast', label: 'Rápida', desc: 'Partidos más cortos' }
+    { value: 'slow', label: t('settings.speedSlow'), desc: t('settings.speedSlowDesc') },
+    { value: 'normal', label: t('settings.normal'), desc: t('settings.speedNormalDesc') },
+    { value: 'fast', label: t('settings.speedFast'), desc: t('settings.speedFastDesc') }
   ];
 
   return (
@@ -109,48 +109,16 @@ export default function Settings({ onClose }) {
           </div>
         </section>
 
-        {/* Dificultad */}
-        <section className="settings__section">
-          <h3>{t('settings.difficulty')}</h3>
-          <div className="settings__options settings__options--cards">
-            {difficultyOptions.map(opt => (
-              <button
-                key={opt.value}
-                className={`settings__option-card ${settings.difficulty === opt.value ? 'active' : ''}`}
-                onClick={() => handleSettingChange('difficulty', opt.value)}
-              >
-                <span className="label">{opt.label}</span>
-                <span className="desc">{opt.desc}</span>
-              </button>
-            ))}
-          </div>
-        </section>
-
-        {/* Velocidad de partidos */}
-        <section className="settings__section">
-          <h3>Velocidad de Partidos</h3>
-          <div className="settings__options settings__options--cards">
-            {speedOptions.map(opt => (
-              <button
-                key={opt.value}
-                className={`settings__option-card ${settings.matchSpeed === opt.value ? 'active' : ''}`}
-                onClick={() => handleSettingChange('matchSpeed', opt.value)}
-              >
-                <span className="label">{opt.label}</span>
-                <span className="desc">{opt.desc}</span>
-              </button>
-            ))}
-          </div>
-        </section>
+        {/* Dificultad y Velocidad eliminadas - siempre normal */}
 
         {/* Toggles */}
         <section className="settings__section">
-          <h3>General</h3>
+          <h3>{t('settings.general')}</h3>
           <div className="settings__toggles">
             <div className="settings__toggle-item">
               <div className="info">
-                <span className="label">Autoguardado</span>
-                <span className="desc">Guarda automáticamente cada 5 minutos</span>
+                <span className="label">{t('settings.autosaveLabel')}</span>
+                <span className="desc">{t('settings.autosaveDesc')}</span>
               </div>
               <button
                 className={`settings__toggle ${settings.autoSave ? 'active' : ''}`}
@@ -160,102 +128,62 @@ export default function Settings({ onClose }) {
               </button>
             </div>
 
-            <div className="settings__toggle-item">
-              <div className="info">
-                <span className="label">Mostrar tutoriales</span>
-                <span className="desc">Ayudas y consejos durante el juego</span>
+          </div>
+        </section>
+
+        {/* Volumen */}
+        <section className="settings__section">
+          <h3>{t('settings.volume')}</h3>
+          <div className="settings__sliders">
+            <div className="settings__slider-item">
+              <div className="slider-header">
+                <span className="label"><Music size={14} /> {t('settings.music')}</span>
+                <span className="value">{settings.musicVolume}%</span>
               </div>
-              <button
-                className={`settings__toggle ${settings.showTutorials ? 'active' : ''}`}
-                onClick={() => handleSettingChange('showTutorials', !settings.showTutorials)}
-              >
-                <span className="toggle-knob"></span>
-              </button>
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value={settings.musicVolume}
+                onChange={(e) => handleSettingChange('musicVolume', parseInt(e.target.value))}
+              />
             </div>
 
-            <div className="settings__toggle-item">
-              <div className="info">
-                <span className="label">Sonido</span>
-                <span className="desc">Efectos de sonido y música</span>
+            <div className="settings__slider-item">
+              <div className="slider-header">
+                <span className="label"><Volume2 size={14} /> {t('settings.effects')}</span>
+                <span className="value">{settings.sfxVolume}%</span>
               </div>
-              <button
-                className={`settings__toggle ${settings.soundEnabled ? 'active' : ''}`}
-                onClick={() => handleSettingChange('soundEnabled', !settings.soundEnabled)}
-              >
-                <span className="toggle-knob"></span>
-              </button>
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value={settings.sfxVolume}
+                onChange={(e) => handleSettingChange('sfxVolume', parseInt(e.target.value))}
+              />
             </div>
           </div>
         </section>
 
-        {/* Volumen (si sonido está activado) */}
-        {settings.soundEnabled && (
-          <section className="settings__section">
-            <h3>Volumen</h3>
-            <div className="settings__sliders">
-              <div className="settings__slider-item">
-                <div className="slider-header">
-                  <span className="label"><Music size={14} /> Música</span>
-                  <span className="value">{settings.musicVolume}%</span>
-                </div>
-                <input
-                  type="range"
-                  min="0"
-                  max="100"
-                  value={settings.musicVolume}
-                  onChange={(e) => handleSettingChange('musicVolume', parseInt(e.target.value))}
-                />
-              </div>
-
-              <div className="settings__slider-item">
-                <div className="slider-header">
-                  <span className="label"><Volume2 size={14} /> Efectos</span>
-                  <span className="value">{settings.sfxVolume}%</span>
-                </div>
-                <input
-                  type="range"
-                  min="0"
-                  max="100"
-                  value={settings.sfxVolume}
-                  onChange={(e) => handleSettingChange('sfxVolume', parseInt(e.target.value))}
-                />
-              </div>
-            </div>
-          </section>
-        )}
-
         {/* Datos del juego */}
         <section className="settings__section">
-          <h3>Datos de Partida</h3>
+          <h3>{t('settings.gameData')}</h3>
           <div className="settings__actions">
             {state.gameStarted && (
-              <>
-                <button 
-                  className={`settings__action-btn save ${saveStatus ? saveStatus : ''}`}
-                  onClick={handleSaveGame}
-                  disabled={saveStatus === 'saving'}
-                >
-                  {saveStatus === 'saving' && <><Save size={14} /> Guardando...</>}
-                  {saveStatus === 'saved' && <><Check size={14} /> ¡Guardado!</>}
-                  {saveStatus === 'error' && <><XCircle size={14} /> Error al guardar</>}
-                  {!saveStatus && <><Save size={14} /> Guardar partida</>}
-                </button>
-
                 <button 
                   className={`settings__action-btn exit ${saveStatus === 'saving' ? 'disabled' : ''}`}
                   onClick={handleSaveAndExit}
                   disabled={saveStatus === 'saving'}
                 >
-                  <LogOut size={14} /> Guardar y salir
+                  <LogOut size={14} /> {t('settings.saveAndExit')}
                 </button>
-              </>
             )}
 
             <button 
               className="settings__action-btn danger"
               onClick={() => setShowResetConfirm(true)}
             >
-              <Trash2 size={14} /> Borrar datos y reiniciar
+              <Trash2 size={14} /> {t('settings.deleteAndReset')}
             </button>
           </div>
         </section>
@@ -263,9 +191,9 @@ export default function Settings({ onClose }) {
         {/* Info del juego */}
         <section className="settings__section settings__section--info">
           <div className="settings__game-info">
-            <p className="title">PC Fútbol Web Edition</p>
-            <p className="version">Versión 1.0.0</p>
-            <p className="credits">Un tributo al clásico PC Fútbol 5.0</p>
+            <p className="title">{t('settings.appTitle')}</p>
+            <p className="version">{t('settings.appVersion')}</p>
+            <p className="credits">{t('settings.appTribute')}</p>
           </div>
         </section>
       </div>
@@ -275,20 +203,20 @@ export default function Settings({ onClose }) {
         <div className="settings__modal-overlay" onClick={() => setShowResetConfirm(false)}>
           <div className="settings__modal" onClick={e => e.stopPropagation()}>
             <div className="modal-icon"><AlertTriangle size={22} /></div>
-            <h3>¿Borrar todos los datos?</h3>
-            <p>Esta acción eliminará tu partida guardada y no se puede deshacer.</p>
+            <h3>{t('settings.deleteConfirm')}</h3>
+            <p>{t('settings.deleteMessage')}</p>
             <div className="modal-actions">
               <button 
                 className="cancel"
                 onClick={() => setShowResetConfirm(false)}
               >
-                Cancelar
+                {t('common.cancel')}
               </button>
               <button 
                 className="confirm"
                 onClick={handleResetGame}
               >
-                Sí, borrar todo
+                {t('settings.yesDeleteAll')}
               </button>
             </div>
           </div>

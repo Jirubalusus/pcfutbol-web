@@ -5,7 +5,7 @@
 // Permite sorpresas controladas (~15% de upsets)
 // Empates más frecuentes entre equipos parejos
 
-import { FORMATIONS, TACTICS, calculateTeamStrength, getTacticalMatchupBonus } from './leagueEngine';
+import { FORMATIONS, TACTICS, calculateTeamStrength, getTacticalMatchupBonus } from './gameShared';
 
 // ============================================================
 // CONFIGURACIÓN DE REALISMO

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { GameProvider, useGame } from './context/GameContext';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { DataProvider } from './context/DataProvider';
@@ -10,11 +11,39 @@ import Office from './components/Office/Office';
 import ContrarrelojSetup from './components/ContrarrelojSetup/ContrarrelojSetup';
 import ContrarrelojEnd from './components/ContrarrelojEnd/ContrarrelojEnd';
 import Ranking from './components/Ranking/Ranking';
+import { useAudioManager } from './hooks/useAudioManager';
+import { useSoundEffects } from './hooks/useSoundEffects';
 import './index.css';
 
 function GameRouter() {
   const { state } = useGame();
   const { loading: authLoading } = useAuth();
+  
+  // Audio manager - detecta pantalla actual y reproduce música acorde
+  const isMatchScreen = state.playingMatch || state.pendingMatch;
+  const audioScreen = isMatchScreen ? 'matchDay'
+    : state.currentScreen === 'team_selection' ? 'teamSelection'
+    : state.currentScreen === 'contrarreloj_setup' ? 'contrarrelojSetup'
+    : state.currentScreen === 'office' ? 'default'
+    : 'menu';
+  useAudioManager(audioScreen, state.settings, state.preseasonPhase ? 'preseason' : 'season');
+  
+  // SFX - click global en botones
+  const { playClick, playToggle } = useSoundEffects(state.settings);
+  useEffect(() => {
+    const handleClick = (e) => {
+      const el = e.target.closest('button, a, [role="button"], .clickable');
+      if (!el) return;
+      // Toggle para switches
+      if (el.classList.contains('settings__toggle') || el.querySelector('.toggle-knob')) {
+        playToggle();
+      } else {
+        playClick();
+      }
+    };
+    document.addEventListener('click', handleClick, true);
+    return () => document.removeEventListener('click', handleClick, true);
+  }, [playClick, playToggle]);
   
   if (!state.loaded || authLoading) {
     return (

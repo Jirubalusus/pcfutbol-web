@@ -1,10 +1,12 @@
 import React from 'react';
 import { useGame } from '../../context/GameContext';
 import { UserX, Home } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import './ManagerFired.scss';
 
 export default function ManagerFired() {
   const { state, dispatch } = useGame();
+  const { t } = useTranslation();
   
   // In contrarreloj mode, redirect to ContrarrelojEnd
   if (state.gameMode === 'contrarreloj') {
@@ -33,34 +35,34 @@ export default function ManagerFired() {
           <UserX size={64} strokeWidth={1.5} />
         </div>
         
-        <h1>DESTITUIDO</h1>
+        <h1>{t('managerFired.title')}</h1>
         <h2>{state.team?.name}</h2>
         
         <p className="manager-fired__reason">
-          La junta directiva ha decidido prescindir de sus servicios como entrenador.
+          {state.managerFiredReason || t('managerFired.defaultReason')}
         </p>
         
         <div className="manager-fired__stats">
           <div className="stat">
-            <span className="label">Posición</span>
+            <span className="label">{t('ranking.position')}</span>
             <span className="value">{position}º</span>
           </div>
           <div className="stat">
-            <span className="label">Semana</span>
+            <span className="label">{t('common.week')}</span>
             <span className="value">{state.currentWeek}</span>
           </div>
           <div className="stat">
-            <span className="label">Puntos</span>
+            <span className="label">{t('leagueTable.points')}</span>
             <span className="value">{teamEntry?.points || 0}</span>
           </div>
           <div className="stat">
-            <span className="label">Balance</span>
+            <span className="label">{t('managerFired.balance')}</span>
             <span className="value">{teamEntry?.won || 0}V {teamEntry?.drawn || 0}E {teamEntry?.lost || 0}D</span>
           </div>
         </div>
         
         <div className="manager-fired__confidence">
-          <span className="label">Confianza de la directiva</span>
+          <span className="label">{t('managerFired.confidence')}</span>
           <div className="bar">
             <div className="fill" style={{ width: `${state.managerConfidence || 0}%` }} />
           </div>
@@ -69,7 +71,7 @@ export default function ManagerFired() {
         
         <button className="manager-fired__btn" onClick={handleBackToMenu}>
           <Home size={20} />
-          <span>Volver al Menú Principal</span>
+          <span>{t('managerFired.backToMenu')}</span>
         </button>
       </div>
     </div>

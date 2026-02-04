@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import {
   HeartPulse, Briefcase, Mail, FileText, Newspaper, Landmark,
@@ -14,34 +15,34 @@ import './NotificationCenter.scss';
 
 const NOTIFICATION_CONFIG = {
   // 🔴 Critical — always show, long duration
-  injury: { priority: 'critical', icon: HeartPulse, color: '#ff453a', duration: 5000, label: 'Lesión' },
-  board: { priority: 'critical', icon: Landmark, color: '#ff453a', duration: 5000, label: 'Directiva' },
-  fired: { priority: 'critical', icon: ShieldAlert, color: '#ff453a', duration: 6000, label: 'Despido' },
-  bankruptcy: { priority: 'critical', icon: AlertTriangle, color: '#ff453a', duration: 6000, label: 'Crisis' },
-  yellow: { priority: 'important', icon: AlertTriangle, color: '#ffcc00', duration: 3500, label: 'Tarjeta' },
-  red: { priority: 'critical', icon: ShieldAlert, color: '#ff453a', duration: 4000, label: 'Expulsión' },
+  injury: { priority: 'critical', icon: HeartPulse, color: '#ff453a', duration: 5000, labelKey: 'notifications.injury' },
+  board: { priority: 'critical', icon: Landmark, color: '#ff453a', duration: 5000, labelKey: 'notifications.board' },
+  fired: { priority: 'critical', icon: ShieldAlert, color: '#ff453a', duration: 6000, labelKey: 'notifications.fired' },
+  bankruptcy: { priority: 'critical', icon: AlertTriangle, color: '#ff453a', duration: 6000, labelKey: 'notifications.bankruptcy' },
+  yellow: { priority: 'important', icon: AlertTriangle, color: '#ffcc00', duration: 3500, labelKey: 'notifications.yellow' },
+  red: { priority: 'critical', icon: ShieldAlert, color: '#ff453a', duration: 4000, labelKey: 'notifications.red' },
 
   // 🟡 Important — auto-show, medium duration
-  transfer_offer: { priority: 'important', icon: Mail, color: '#ff9f0a', duration: 4000, label: 'Oferta' },
-  transfer: { priority: 'important', icon: Briefcase, color: '#0a84ff', duration: 4000, label: 'Fichaje' },
-  loan: { priority: 'important', icon: Handshake, color: '#bf5af2', duration: 4000, label: 'Cesión' },
-  contract: { priority: 'important', icon: FileText, color: '#ff9f0a', duration: 4000, label: 'Contrato' },
-  match_result: { priority: 'important', icon: FootballIcon, color: '#30d158', duration: 3500, label: 'Resultado' },
-  cup: { priority: 'important', icon: Trophy, color: '#ffd60a', duration: 4000, label: 'Copa' },
-  european: { priority: 'important', icon: Star, color: '#0a84ff', duration: 4000, label: 'Europa' },
-  southamerican: { priority: 'important', icon: Star, color: '#30d158', duration: 4000, label: 'Continental' },
-  retirement: { priority: 'important', icon: Users, color: '#8e8e93', duration: 4000, label: 'Retiro' },
-  offer: { priority: 'important', icon: DollarSign, color: '#30d158', duration: 4000, label: 'Oferta' },
+  transfer_offer: { priority: 'important', icon: Mail, color: '#ff9f0a', duration: 4000, labelKey: 'notifications.transferOffer' },
+  transfer: { priority: 'important', icon: Briefcase, color: '#0a84ff', duration: 4000, labelKey: 'notifications.transfer' },
+  loan: { priority: 'important', icon: Handshake, color: '#bf5af2', duration: 4000, labelKey: 'notifications.loan' },
+  contract: { priority: 'important', icon: FileText, color: '#ff9f0a', duration: 4000, labelKey: 'notifications.contract' },
+  match_result: { priority: 'important', icon: FootballIcon, color: '#30d158', duration: 3500, labelKey: 'notifications.matchResult' },
+  cup: { priority: 'important', icon: Trophy, color: '#ffd60a', duration: 4000, labelKey: 'notifications.cup' },
+  european: { priority: 'important', icon: Star, color: '#0a84ff', duration: 4000, labelKey: 'notifications.european' },
+  southamerican: { priority: 'important', icon: Star, color: '#30d158', duration: 4000, labelKey: 'notifications.southamerican' },
+  retirement: { priority: 'important', icon: Users, color: '#8e8e93', duration: 4000, labelKey: 'notifications.retirement' },
+  offer: { priority: 'important', icon: DollarSign, color: '#30d158', duration: 4000, labelKey: 'notifications.offer' },
 
   // 🟢 Info — auto-show, short duration
-  training: { priority: 'info', icon: TrendingUp, color: '#30d158', duration: 3000, label: 'Entreno' },
-  youth: { priority: 'info', icon: Zap, color: '#bf5af2', duration: 3500, label: 'Cantera' },
-  medical: { priority: 'info', icon: HeartPulse, color: '#30d158', duration: 3000, label: 'Médico' },
-  facility: { priority: 'info', icon: TrendingUp, color: '#0a84ff', duration: 3000, label: 'Instalación' },
-  news: { priority: 'info', icon: Newspaper, color: '#8e8e93', duration: 3000, label: 'Noticia' },
+  training: { priority: 'info', icon: TrendingUp, color: '#30d158', duration: 3000, labelKey: 'notifications.training' },
+  youth: { priority: 'info', icon: Zap, color: '#bf5af2', duration: 3500, labelKey: 'notifications.youth' },
+  medical: { priority: 'info', icon: HeartPulse, color: '#30d158', duration: 3000, labelKey: 'notifications.medical' },
+  facility: { priority: 'info', icon: TrendingUp, color: '#0a84ff', duration: 3000, labelKey: 'notifications.facility' },
+  news: { priority: 'info', icon: Newspaper, color: '#8e8e93', duration: 3000, labelKey: 'notifications.news' },
 
   // Default
-  default: { priority: 'info', icon: Mail, color: '#8e8e93', duration: 3000, label: 'Mensaje' }
+  default: { priority: 'info', icon: Mail, color: '#8e8e93', duration: 3000, labelKey: 'notifications.default' }
 };
 
 const PRIORITY_ORDER = { critical: 0, important: 1, info: 2 };
@@ -51,17 +52,21 @@ const MAX_VISIBLE = 3;
 // Max total in a batch (rest become "+N más")
 const MAX_BATCH = 5;
 
-function getConfig(type) {
-  return NOTIFICATION_CONFIG[type] || NOTIFICATION_CONFIG.default;
+function getConfig(type, t) {
+  const config = NOTIFICATION_CONFIG[type] || NOTIFICATION_CONFIG.default;
+  return {
+    ...config,
+    label: t(config.labelKey)
+  };
 }
 
 // ============================================================
 // NOTIFICATION TOAST COMPONENT
 // ============================================================
 
-function NotificationToast({ notification, onDismiss, index }) {
+function NotificationToast({ notification, onDismiss, index, t }) {
   const [exiting, setExiting] = useState(false);
-  const config = getConfig(notification.type);
+  const config = getConfig(notification.type, t);
   const IconComponent = config.icon;
   const timerRef = useRef(null);
 
@@ -122,7 +127,7 @@ function NotificationToast({ notification, onDismiss, index }) {
 // OVERFLOW INDICATOR
 // ============================================================
 
-function OverflowIndicator({ count, onDismiss }) {
+function OverflowIndicator({ count, onDismiss, t }) {
   const [exiting, setExiting] = useState(false);
 
   useEffect(() => {
@@ -139,8 +144,8 @@ function OverflowIndicator({ count, onDismiss }) {
         <ChevronDown size={16} />
       </div>
       <div className="notif-toast__content">
-        <span className="notif-toast__title">+{count} notificaciones más</span>
-        <span className="notif-toast__body">Revisa tu bandeja de entrada</span>
+        <span className="notif-toast__title">{t('notifications.moreNotifications', { count })}</span>
+        <span className="notif-toast__body">{t('notifications.checkInbox')}</span>
       </div>
     </div>
   );
@@ -151,6 +156,7 @@ function OverflowIndicator({ count, onDismiss }) {
 // ============================================================
 
 export default function NotificationCenter() {
+  const { t } = useTranslation();
   const { state } = useGame();
   const [activeToasts, setActiveToasts] = useState([]);
   const [overflow, setOverflow] = useState(0);
@@ -179,8 +185,8 @@ export default function NotificationCenter() {
     if (newMessages.length > 0) {
       // Sort by priority
       const sorted = [...newMessages].sort((a, b) => {
-        const pa = PRIORITY_ORDER[getConfig(a.type).priority] ?? 2;
-        const pb = PRIORITY_ORDER[getConfig(b.type).priority] ?? 2;
+        const pa = PRIORITY_ORDER[getConfig(a.type, t).priority] ?? 2;
+        const pb = PRIORITY_ORDER[getConfig(b.type, t).priority] ?? 2;
         return pa - pb;
       });
 
@@ -238,10 +244,11 @@ export default function NotificationCenter() {
           notification={toast}
           onDismiss={dismissToast}
           index={i}
+          t={t}
         />
       ))}
       {overflow > 0 && (
-        <OverflowIndicator count={overflow} onDismiss={dismissOverflow} />
+        <OverflowIndicator count={overflow} onDismiss={dismissOverflow} t={t} />
       )}
     </div>
   );

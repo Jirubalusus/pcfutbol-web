@@ -7,6 +7,7 @@ import {
   Clock,
   Circle
 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { getPhaseForWeekCompat, getCupRoundForWeek } from '../../game/europeanCompetitions';
 import { getPlayerCompetition } from '../../game/europeanSeason';
 import { SA_MATCHDAY_WEEKS, ALL_SA_WEEKS, isSouthAmericanLeague, SA_COMPETITIONS } from '../../game/southAmericanCompetitions';
@@ -16,6 +17,7 @@ import './Calendar.scss';
 
 export default function Calendar() {
   const { state } = useGame();
+  const { t } = useTranslation();
   const carouselRef = useRef(null);
 
   // ── Detect if player is in a South American league ──
@@ -378,13 +380,13 @@ export default function Calendar() {
         } else {
           pi = getPhaseForWeekCompat(selectedEntry.week, calendar);
         }
-        const defaultLabel = isInSALeague ? 'Sudamericana' : 'Europa';
+        const defaultLabel = isInSALeague ? t('calendar.southAmerican') : t('calendar.european');
         const phaseLabel = pi ? phaseFullLabels[pi.phase] || pi.phase : defaultLabel;
         const mdLabel = pi ? (pi.phase === 'league' ? String(pi.matchday) : (pi.total > 1 ? String(pi.matchday) : '')) : '';
         return { label: phaseLabel, sublabel: mdLabel || selectedEntry.label };
       }
-      case 'cup': return { label: 'Copa', sublabel: selectedEntry.fullLabel || selectedEntry.label };
-      default: return { label: 'Semana', sublabel: String(selectedEntry.week) };
+      case 'cup': return { label: t('calendar.cup'), sublabel: selectedEntry.fullLabel || selectedEntry.label };
+      default: return { label: t('calendar.week'), sublabel: String(selectedEntry.week) };
     }
   };
   const navTitle = getNavTitle();
@@ -503,7 +505,7 @@ export default function Calendar() {
         {/* ── European — all competitions ── */}
         {selectedEntry?.type === 'european' && (
           allEuropeanFixtures.length === 0 ? (
-            <div className="no-fixtures"><Circle size={48} /><p>{isInSALeague ? 'No hay partidos sudamericanos en esta jornada' : 'No hay partidos europeos en esta jornada'}</p></div>
+            <div className="no-fixtures"><Circle size={48} /><p>{isInSALeague ? t('calendar.noSouthAmericanMatches') : t('calendar.noEuropeanMatches')}</p></div>
           ) : allEuropeanFixtures.map(comp => (
             <div key={comp.compId} className="competition-section">
               <div className={`competition-badge competition-badge--${comp.cssClass}`}>
@@ -532,7 +534,7 @@ export default function Calendar() {
         {/* ── Cup — all matches ── */}
         {selectedEntry?.type === 'cup' && (
           allCupFixtures.length === 0 ? (
-            <div className="no-fixtures"><Circle size={48} /><p>No hay partidos de copa en esta ronda</p></div>
+            <div className="no-fixtures"><Circle size={48} /><p>{t('calendar.noCupMatches')}</p></div>
           ) : (
             <div className="competition-section">
               <div className="competition-badge competition-badge--cup">

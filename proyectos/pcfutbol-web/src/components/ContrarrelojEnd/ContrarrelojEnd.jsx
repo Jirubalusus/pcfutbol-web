@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { useAuth } from '../../context/AuthContext';
 import { saveRankingEntry, getRankingPosition } from '../../firebase/rankingService';
 import { getPromotionsToChampions } from '../../game/leagueTiers';
-import { posES } from '../../game/positionNames';
+import { translatePosition } from '../../game/positionNames';
 import { Trophy, Timer, UserX, DollarSign, Home, BarChart2, Star, Sparkles, Swords, Users, TrendingUp, Medal } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
 import './ContrarrelojEnd.scss';
 
 export default function ContrarrelojEnd() {
+  const { t } = useTranslation();
   const { state, dispatch } = useGame();
   const { user } = useAuth();
   const [saved, setSaved] = useState(false);
@@ -39,8 +41,8 @@ export default function ContrarrelojEnd() {
 
   // Competition winner name
   const compName = contrarreloj?.wonCompetition === 'libertadores'
-    ? 'Copa Libertadores'
-    : 'Champions League';
+    ? t('contrarrelojEnd.copaLibertadores')
+    : t('contrarrelojEnd.championsLeague');
 
   // Difficulty bonus (promotions needed from start league)
   const difficultyBonus = getPromotionsToChampions(contrarreloj?.startLeague || '');
@@ -50,8 +52,8 @@ export default function ContrarrelojEnd() {
   useEffect(() => {
     if (won && !saved && contrarreloj) {
       const entry = {
-        playerName: user?.displayName || user?.email?.split('@')[0] || 'Anónimo',
-        teamName: state.team?.name || contrarreloj.startTeam?.name || 'Desconocido',
+        playerName: user?.displayName || user?.email?.split('@')[0] || t('contrarrelojEnd.anonymous'),
+        teamName: state.team?.name || contrarreloj.startTeam?.name || t('common.unknown'),
         leagueName: contrarreloj.startLeague || '',
         seasonsPlayed: contrarreloj.seasonsPlayed || 1,
         trophies: contrarreloj.trophies || [],
@@ -102,24 +104,26 @@ export default function ContrarrelojEnd() {
                 {[...Array(6)].map((_, i) => <Sparkles key={i} size={16} className={`sparkle sparkle--${i}`} />)}
               </div>
             </div>
-            <h1 className="victory-title">¡CAMPEÓN!</h1>
+            <h1 className="victory-title">{t('contrarrelojEnd.champion')}</h1>
             <h2>{state.team?.name}</h2>
             <p className="contrarreloj-end__subtitle">
-              🏆 ¡{compName} conquistada!
+              🏆 {t('contrarrelojEnd.conquered', { competition: compName })}
             </p>
           </>
         ) : (
           <>
             {/* Defeat header */}
             <div className="contrarreloj-end__icon defeat-icon">
-              {loseReason === 'bankrupt' ? <DollarSign size={64} /> : <UserX size={64} />}
+              {loseReason === 'bankrupt' ? <DollarSign size={64} /> : loseReason === 'no_players' ? <UserX size={64} /> : <UserX size={64} />}
             </div>
-            <h1 className="defeat-title">FIN DEL JUEGO</h1>
+            <h1 className="defeat-title">{t('contrarrelojEnd.gameOver')}</h1>
             <h2>{state.team?.name}</h2>
             <p className="contrarreloj-end__subtitle">
               {loseReason === 'bankrupt'
-                ? '💸 Tu equipo ha entrado en bancarrota.'
-                : '📋 La directiva ha prescindido de tus servicios.'}
+                ? t('contrarrelojEnd.bankrupt')
+                : loseReason === 'no_players'
+                ? t('contrarrelojEnd.noPlayers')
+                : t('contrarrelojEnd.fired')}
             </p>
           </>
         )}
@@ -129,36 +133,36 @@ export default function ContrarrelojEnd() {
           <div className="contrarreloj-end__best-player">
             <Star size={16} className="star-icon" />
             <div className="player-info">
-              <span className="player-label">Mejor jugador</span>
+              <span className="player-label">{t('contrarrelojEnd.bestPlayer')}</span>
               <span className="player-name">{bestPlayer.name}</span>
-              <span className="player-detail">{posES(bestPlayer.position)} · {bestPlayer.overall} OVR · {bestPlayer.age} años</span>
+              <span className="player-detail">{translatePosition(bestPlayer.position)} · {bestPlayer.overall} OVR · {bestPlayer.age} {t('contrarrelojEnd.years')}</span>
             </div>
           </div>
         )}
 
         {/* Match stats */}
         <div className="contrarreloj-end__match-stats">
-          <h3><Swords size={14} /> Estadísticas de la run</h3>
+          <h3><Swords size={14} /> {t('contrarrelojEnd.runStats')}</h3>
           <div className="stats-grid">
             <div className="stat-item">
               <span className="stat-value">{totalMatches}</span>
-              <span className="stat-label">Partidos</span>
+              <span className="stat-label">{t('contrarrelojEnd.matches')}</span>
             </div>
             <div className="stat-item win">
               <span className="stat-value">{totalWins}</span>
-              <span className="stat-label">Victorias</span>
+              <span className="stat-label">{t('contrarrelojEnd.victories')}</span>
             </div>
             <div className="stat-item draw">
               <span className="stat-value">{totalDraws}</span>
-              <span className="stat-label">Empates</span>
+              <span className="stat-label">{t('contrarrelojEnd.draws')}</span>
             </div>
             <div className="stat-item loss">
               <span className="stat-value">{totalLosses}</span>
-              <span className="stat-label">Derrotas</span>
+              <span className="stat-label">{t('contrarrelojEnd.defeats')}</span>
             </div>
             <div className="stat-item rate">
               <span className="stat-value">{winRate}%</span>
-              <span className="stat-label">% Victoria</span>
+              <span className="stat-label">{t('contrarrelojEnd.winRate')}</span>
             </div>
           </div>
         </div>
@@ -166,7 +170,7 @@ export default function ContrarrelojEnd() {
         {/* Trophies */}
         {contrarreloj?.trophies?.length > 0 && (
           <div className="contrarreloj-end__trophies">
-            <h3><Trophy size={14} /> Palmarés ({contrarreloj.trophies.length})</h3>
+            <h3><Trophy size={14} /> {t('contrarrelojEnd.trophies')} ({contrarreloj.trophies.length})</h3>
             <div className="trophies-list">
               {contrarreloj.trophies.map((t, i) => (
                 <div key={i} className="trophy-item">
@@ -187,9 +191,9 @@ export default function ContrarrelojEnd() {
         <div className="contrarreloj-end__time">
           <Timer size={28} className="time-icon" />
           <div className="time-content">
-            <span className="time-label">{won ? 'Lo conseguiste en' : 'Duraste'}</span>
+            <span className="time-label">{won ? t('contrarrelojEnd.achievedIn') : t('contrarrelojEnd.lasted')}</span>
             <span className="time-value">{contrarreloj?.seasonsPlayed || 1}</span>
-            <span className="time-unit">temporada{(contrarreloj?.seasonsPlayed || 1) !== 1 ? 's' : ''}</span>
+            <span className="time-unit">{t('contrarrelojEnd.seasons', { count: contrarreloj?.seasonsPlayed || 1 })}</span>
           </div>
         </div>
 
@@ -231,11 +235,11 @@ export default function ContrarrelojEnd() {
         <div className="contrarreloj-end__actions">
           <button className="btn-ranking" onClick={handleRanking}>
             <BarChart2 size={18} />
-            <span>Ver Ranking</span>
+            <span>{t('contrarrelojEnd.seeRanking')}</span>
           </button>
           <button className="btn-menu" onClick={handleMenu}>
             <Home size={18} />
-            <span>Menú Principal</span>
+            <span>{t('sidebar.mainMenu')}</span>
           </button>
         </div>
       </div>

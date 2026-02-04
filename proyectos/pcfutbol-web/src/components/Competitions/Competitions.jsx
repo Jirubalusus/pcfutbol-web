@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { getPlayerCompetition } from '../../game/europeanSeason';
 import { getPlayerSACompetition } from '../../game/southAmericanSeason';
@@ -11,6 +12,7 @@ import { Award, Globe, Trophy } from 'lucide-react';
 import './Competitions.scss';
 
 export default function Competitions() {
+  const { t } = useTranslation();
   const { state } = useGame();
 
   const hasCup = !!state.cupCompetition;
@@ -54,8 +56,8 @@ export default function Competitions() {
 
   const hasContinental = isInSALeague ? hasSA : hasEuropean;
   const continentalPlaceholder = isInSALeague
-    ? 'Clasifícate en liga para jugar la Copa Libertadores o Sudamericana'
-    : 'Clasifícate en liga para jugar competiciones europeas';
+    ? t('competitions.qualifyForSouthAmerican')
+    : t('competitions.qualifyForEuropean');
 
   return (
     <div className="competitions">
@@ -79,7 +81,7 @@ export default function Competitions() {
         {activeTab === 'cup' && (hasCup ? <Cup /> : (
           <div className="competitions__placeholder">
             <Trophy size={48} strokeWidth={1.5} />
-            <p>La Copa comenzará durante la temporada</p>
+            <p>{t('competitions.cupWillStart')}</p>
           </div>
         ))}
         {activeTab === 'continental' && (

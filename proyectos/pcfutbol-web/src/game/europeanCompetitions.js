@@ -11,7 +11,7 @@
 
 export const CHAMPIONS_LEAGUE = {
   id: 'championsLeague',
-  name: 'UEFA Champions League',
+  name: 'Continental Champions Cup',
   shortName: 'Champions',
   icon: '🏆',
   color: '#1a237e',
@@ -32,8 +32,8 @@ export const CHAMPIONS_LEAGUE = {
 
 export const EUROPA_LEAGUE = {
   id: 'europaLeague',
-  name: 'UEFA Europa League',
-  shortName: 'Europa League',
+  name: 'Continental Shield',
+  shortName: 'Continental Shield',
   icon: '🥈',
   color: '#e65100',
   teamsCount: 32,
@@ -53,8 +53,8 @@ export const EUROPA_LEAGUE = {
 
 export const CONFERENCE_LEAGUE = {
   id: 'conferenceleague',
-  name: 'UEFA Conference League',
-  shortName: 'Conference',
+  name: 'Continental Trophy',
+  shortName: 'Continental Trophy',
   icon: '🥉',
   color: '#2e7d32',
   teamsCount: 32,
@@ -90,7 +90,7 @@ export const COMPETITIONS = {
 export const LEAGUE_SLOTS = {
   laliga: {
     leagueId: 'laliga',
-    name: 'La Liga',
+    name: 'Liga Ibérica',
     country: 'España',
     championsLeague: 4,
     europaLeague: 2,
@@ -98,7 +98,7 @@ export const LEAGUE_SLOTS = {
   },
   premierLeague: {
     leagueId: 'premierLeague',
-    name: 'Premier League',
+    name: 'First League',
     country: 'Inglaterra',
     championsLeague: 4,
     europaLeague: 2,
@@ -106,7 +106,7 @@ export const LEAGUE_SLOTS = {
   },
   serieA: {
     leagueId: 'serieA',
-    name: 'Serie A',
+    name: 'Calcio League',
     country: 'Italia',
     championsLeague: 4,
     europaLeague: 2,
@@ -114,7 +114,7 @@ export const LEAGUE_SLOTS = {
   },
   bundesliga: {
     leagueId: 'bundesliga',
-    name: 'Bundesliga',
+    name: 'Erste Liga',
     country: 'Alemania',
     championsLeague: 4,
     europaLeague: 2,
@@ -122,7 +122,7 @@ export const LEAGUE_SLOTS = {
   },
   ligue1: {
     leagueId: 'ligue1',
-    name: 'Ligue 1',
+    name: 'Division Première',
     country: 'Francia',
     championsLeague: 3,
     europaLeague: 1,
@@ -130,7 +130,7 @@ export const LEAGUE_SLOTS = {
   },
   eredivisie: {
     leagueId: 'eredivisie',
-    name: 'Eredivisie',
+    name: 'Dutch First',
     country: 'Países Bajos',
     championsLeague: 2,
     europaLeague: 2,
@@ -138,7 +138,7 @@ export const LEAGUE_SLOTS = {
   },
   primeiraLiga: {
     leagueId: 'primeiraLiga',
-    name: 'Primeira Liga',
+    name: 'Liga Lusitana',
     country: 'Portugal',
     championsLeague: 2,
     europaLeague: 2,
@@ -146,7 +146,7 @@ export const LEAGUE_SLOTS = {
   },
   belgianPro: {
     leagueId: 'belgianPro',
-    name: 'Jupiler Pro League',
+    name: 'Belgian First',
     country: 'Bélgica',
     championsLeague: 1,
     europaLeague: 3,
@@ -154,7 +154,7 @@ export const LEAGUE_SLOTS = {
   },
   superLig: {
     leagueId: 'superLig',
-    name: 'Süper Lig',
+    name: 'Anatolian League',
     country: 'Turquía',
     championsLeague: 1,
     europaLeague: 3,
@@ -162,7 +162,7 @@ export const LEAGUE_SLOTS = {
   },
   scottishPrem: {
     leagueId: 'scottishPrem',
-    name: 'Scottish Premiership',
+    name: 'Highland League',
     country: 'Escocia',
     championsLeague: 1,
     europaLeague: 2,
@@ -170,7 +170,7 @@ export const LEAGUE_SLOTS = {
   },
   austrianBundesliga: {
     leagueId: 'austrianBundesliga',
-    name: 'Bundesliga (AT)',
+    name: 'Erste Liga (AT)',
     country: 'Austria',
     championsLeague: 1,
     europaLeague: 2,
@@ -186,7 +186,7 @@ export const LEAGUE_SLOTS = {
   },
   swissSuperLeague: {
     leagueId: 'swissSuperLeague',
-    name: 'Super League (CH)',
+    name: 'Alpine League',
     country: 'Suiza',
     championsLeague: 1,
     europaLeague: 2,

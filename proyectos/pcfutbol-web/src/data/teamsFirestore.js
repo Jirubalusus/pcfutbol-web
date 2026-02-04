@@ -6,11 +6,7 @@
 import teamsService from '../firebase/teamsService';
 import { enrichSATeams } from './enrichSATeams';
 
-// Rest of World — local data (not in Firestore)
-import { mlsTeams } from './teams-mls';
-import { saudiTeams } from './teams-saudi';
-import { ligaMXTeams } from './teams-ligamx';
-import { jLeagueTeams } from './teams-jleague';
+// Rest of World — now loaded from Firebase (teams_v2)
 
 // ============================================================
 // Normalización de posiciones: inglés → español
@@ -142,25 +138,25 @@ export function getBoliviaTeams() { return BOLIVIA_TEAMS; }
 export function getVenezuelaTeams() { return VENEZUELA_TEAMS; }
 
 export const LEAGUES = {
-  laliga: { name: 'La Liga EA Sports', country: 'España' },
-  segunda: { name: 'La Liga Hypermotion', country: 'España' },
+  laliga: { name: 'Liga Ibérica', country: 'España' },
+  segunda: { name: 'Segunda Ibérica', country: 'España' },
   primeraRFEF: { name: 'Primera Federación', country: 'España' },
   segundaRFEF: { name: 'Segunda Federación', country: 'España' },
-  premierLeague: { name: 'Premier League', country: 'Inglaterra' },
-  ligue1: { name: 'Ligue 1', country: 'Francia' },
-  bundesliga: { name: 'Bundesliga', country: 'Alemania' },
-  serieA: { name: 'Serie A', country: 'Italia' },
-  eredivisie: { name: 'Eredivisie', country: 'Países Bajos' },
-  primeiraLiga: { name: 'Primeira Liga', country: 'Portugal' },
-  championship: { name: 'Championship', country: 'Inglaterra' },
-  belgianPro: { name: 'Jupiler Pro League', country: 'Bélgica' },
-  superLig: { name: 'Süper Lig', country: 'Turquía' },
-  scottishPrem: { name: 'Scottish Premiership', country: 'Escocia' },
-  serieB: { name: 'Serie B', country: 'Italia' },
-  bundesliga2: { name: '2. Bundesliga', country: 'Alemania' },
-  ligue2: { name: 'Ligue 2', country: 'Francia' },
-  swissSuperLeague: { name: 'Super League', country: 'Suiza' },
-  austrianBundesliga: { name: 'Bundesliga', country: 'Austria' },
+  premierLeague: { name: 'First League', country: 'Inglaterra' },
+  ligue1: { name: 'Division Première', country: 'Francia' },
+  bundesliga: { name: 'Erste Liga', country: 'Alemania' },
+  serieA: { name: 'Calcio League', country: 'Italia' },
+  eredivisie: { name: 'Dutch First', country: 'Países Bajos' },
+  primeiraLiga: { name: 'Liga Lusitana', country: 'Portugal' },
+  championship: { name: 'Second League', country: 'Inglaterra' },
+  belgianPro: { name: 'Belgian First', country: 'Bélgica' },
+  superLig: { name: 'Anatolian League', country: 'Turquía' },
+  scottishPrem: { name: 'Highland League', country: 'Escocia' },
+  serieB: { name: 'Calcio B', country: 'Italia' },
+  bundesliga2: { name: 'Zweite Liga', country: 'Alemania' },
+  ligue2: { name: 'Division Seconde', country: 'Francia' },
+  swissSuperLeague: { name: 'Alpine League', country: 'Suiza' },
+  austrianBundesliga: { name: 'Erste Liga', country: 'Austria' },
   greekSuperLeague: { name: 'Super League', country: 'Grecia' },
   danishSuperliga: { name: 'Superligaen', country: 'Dinamarca' },
   croatianLeague: { name: 'HNL', country: 'Croacia' },
@@ -196,7 +192,8 @@ export async function loadAllData() {
       const [laliga, laliga2, primeraRfef, segundaRfef, premier, seriea, bundesliga, ligue1,
              eredivisie, primeiraLiga, championship, belgianPro, superLig, scottishPrem,
              serieB, bundesliga2, ligue2, swiss, austrian, greek, danish, croatian, czech,
-             argentina, brasileirao, colombia, chile, uruguay, ecuador, paraguay, peru, bolivia, venezuela] = 
+             argentina, brasileirao, colombia, chile, uruguay, ecuador, paraguay, peru, bolivia, venezuela,
+             mls, saudi, ligamx, jleague] = 
         await Promise.all([
           teamsService.getTeamsByLeague('laliga'),
           teamsService.getTeamsByLeague('laliga2'),
@@ -231,14 +228,20 @@ export async function loadAllData() {
           teamsService.getTeamsByLeague('paraguayPrimera'),
           teamsService.getTeamsByLeague('peruLiga1'),
           teamsService.getTeamsByLeague('boliviaPrimera'),
-          teamsService.getTeamsByLeague('venezuelaPrimera')
+          teamsService.getTeamsByLeague('venezuelaPrimera'),
+          // Rest of World (now from Firebase)
+          teamsService.getTeamsByLeague('mls'),
+          teamsService.getTeamsByLeague('saudiProLeague'),
+          teamsService.getTeamsByLeague('ligaMX'),
+          teamsService.getTeamsByLeague('jLeague')
         ]);
 
       // Normalizar posiciones inglés → español en TODOS los datos de Firestore
       [laliga, laliga2, primeraRfef, segundaRfef, premier, seriea, bundesliga, ligue1,
        eredivisie, primeiraLiga, championship, belgianPro, superLig, scottishPrem,
        serieB, bundesliga2, ligue2, swiss, austrian, greek, danish, croatian, czech,
-       argentina, brasileirao, colombia, chile, uruguay, ecuador, paraguay, peru, bolivia, venezuela
+       argentina, brasileirao, colombia, chile, uruguay, ecuador, paraguay, peru, bolivia, venezuela,
+       mls, saudi, ligamx, jleague
       ].forEach(normalizePositions);
 
       // Actualizar arrays exportados (mutación in-place)
@@ -342,15 +345,15 @@ export async function loadAllData() {
       VENEZUELA_TEAMS.length = 0;
       VENEZUELA_TEAMS.push(...enrichSATeams(venezuela, 'venezuelaPrimera'));
 
-      // Rest of World — loaded from local static data (not in Firestore)
+      // Rest of World — now from Firebase too
       MLS_TEAMS.length = 0;
-      MLS_TEAMS.push(...mlsTeams);
+      MLS_TEAMS.push(...mls);
       SAUDI_TEAMS.length = 0;
-      SAUDI_TEAMS.push(...saudiTeams);
+      SAUDI_TEAMS.push(...saudi);
       LIGA_MX_TEAMS.length = 0;
-      LIGA_MX_TEAMS.push(...ligaMXTeams);
+      LIGA_MX_TEAMS.push(...ligamx);
       J_LEAGUE_TEAMS.length = 0;
-      J_LEAGUE_TEAMS.push(...jLeagueTeams);
+      J_LEAGUE_TEAMS.push(...jleague);
 
       // Organizar grupos de RFEF
       const primeraG1 = primeraRfef.slice(0, Math.ceil(primeraRfef.length / 2));
@@ -375,7 +378,7 @@ export async function loadAllData() {
         argentina.length + brasileirao.length + colombia.length + chile.length +
         uruguay.length + ecuador.length + paraguay.length + peru.length +
         bolivia.length + venezuela.length +
-        MLS_TEAMS.length + SAUDI_TEAMS.length + LIGA_MX_TEAMS.length + J_LEAGUE_TEAMS.length;
+        mls.length + saudi.length + ligamx.length + jleague.length;
       console.log(`✅ Datos cargados en ${Date.now() - start}ms (${totalTeams} equipos)`);
 
       return true;

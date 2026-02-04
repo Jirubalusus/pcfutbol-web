@@ -58,7 +58,7 @@ import {
 export const LEAGUE_CONFIG = {
   laliga: {
     id: 'laliga',
-    name: 'La Liga',
+    name: 'Liga Ibérica',
     country: 'España',
     teams: 20,
     getTeams: getLaLigaTeams,
@@ -128,7 +128,7 @@ export const LEAGUE_CONFIG = {
   },
   premierLeague: {
     id: 'premierLeague',
-    name: 'Premier League',
+    name: 'First League',
     country: 'Inglaterra',
     teams: 20,
     getTeams: getPremierTeams,
@@ -141,7 +141,7 @@ export const LEAGUE_CONFIG = {
   },
   serieA: {
     id: 'serieA',
-    name: 'Serie A',
+    name: 'Calcio League',
     country: 'Italia',
     teams: 20,
     getTeams: getSerieATeams,
@@ -154,7 +154,7 @@ export const LEAGUE_CONFIG = {
   },
   bundesliga: {
     id: 'bundesliga',
-    name: 'Bundesliga',
+    name: 'Erste Liga',
     country: 'Alemania',
     teams: 18,
     getTeams: getBundesligaTeams,
@@ -167,7 +167,7 @@ export const LEAGUE_CONFIG = {
   },
   ligue1: {
     id: 'ligue1',
-    name: 'Ligue 1',
+    name: 'Division Première',
     country: 'Francia',
     teams: 18,
     getTeams: getLigue1Teams,
@@ -257,7 +257,7 @@ export const LEAGUE_CONFIG = {
   },
   serieB: {
     id: 'serieB',
-    name: 'Serie B',
+    name: 'Calcio B',
     country: 'Italia',
     teams: 20,
     getTeams: getSerieBTeams,
@@ -269,7 +269,7 @@ export const LEAGUE_CONFIG = {
   },
   bundesliga2: {
     id: 'bundesliga2',
-    name: '2. Bundesliga',
+    name: 'Zweite Liga',
     country: 'Alemania',
     teams: 18,
     getTeams: getBundesliga2Teams,
@@ -281,7 +281,7 @@ export const LEAGUE_CONFIG = {
   },
   ligue2: {
     id: 'ligue2',
-    name: 'Ligue 2',
+    name: 'Division Seconde',
     country: 'Francia',
     teams: 18,
     getTeams: getLigue2Teams,
@@ -293,7 +293,7 @@ export const LEAGUE_CONFIG = {
   },
   swissSuperLeague: {
     id: 'swissSuperLeague',
-    name: 'Super League',
+    name: 'Alpine League',
     country: 'Suiza',
     teams: 12,
     getTeams: getSwissTeams,
@@ -306,7 +306,7 @@ export const LEAGUE_CONFIG = {
   },
   austrianBundesliga: {
     id: 'austrianBundesliga',
-    name: 'Bundesliga (AT)',
+    name: 'Erste Liga (AT)',
     country: 'Austria',
     teams: 12,
     getTeams: getAustrianTeams,

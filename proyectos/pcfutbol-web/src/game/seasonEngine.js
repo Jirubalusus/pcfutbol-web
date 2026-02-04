@@ -260,12 +260,12 @@ export function generateSeasonEndMessage(outcome, teamName, position) {
   let type = 'season_end';
 
   if (outcome.champions) {
-    title = '🏆 ¡Champions League!';
-    content = `¡Enhorabuena! ${teamName} ha terminado en ${position}ª posición y jugará la Champions League la próxima temporada.`;
+    title = '🏆 ¡Continental Champions Cup!';
+    content = `¡Enhorabuena! ${teamName} ha terminado en ${position}ª posición y jugará la Continental Champions Cup la próxima temporada.`;
     type = 'success';
   } else if (outcome.europaLeague) {
-    title = '🥈 Europa League';
-    content = `${teamName} ha terminado en ${position}ª posición y se ha clasificado para la Europa League.`;
+    title = '🥈 Continental Shield';
+    content = `${teamName} ha terminado en ${position}ª posición y se ha clasificado para la Continental Shield.`;
     type = 'success';
   } else if (outcome.conferenceLeague) {
     title = '🥉 Conference League';

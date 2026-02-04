@@ -39,6 +39,7 @@
     "gh-pages": "^6.3.0",
     "globals": "^16.5.0",
     "puppeteer-core": "^24.36.1",
+    "sharp": "^0.34.5",
     "vite": "^7.2.4"
   }
 }

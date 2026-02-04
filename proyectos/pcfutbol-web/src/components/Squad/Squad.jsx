@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { HeartPulse, X } from 'lucide-react';
 import { useGame } from '../../context/GameContext';
+import { translatePosition } from '../../game/positionNames';
 import './Squad.scss';
 
 // Helper function to normalize positions
@@ -10,17 +12,18 @@ const normalizePosition = (pos) => {
   const forwards = ['ST', 'CF', 'LW', 'RW', 'DEL', 'DC', 'SD', 'ED', 'EI', 'EDD', 'EDI', 'MP'];
   const goalkeepers = ['GK', 'POR'];
   
-  if (goalkeepers.includes(pos)) return 'POR';
+  if (goalkeepers.includes(pos)) return 'GK';
   if (defenders.includes(pos)) return 'DEF';
-  if (midfielders.includes(pos)) return 'MED';
-  if (forwards.includes(pos)) return 'DEL';
-  return 'MED'; // Default
+  if (midfielders.includes(pos)) return 'MID';
+  if (forwards.includes(pos)) return 'FWD';
+  return 'MID'; // Default
 };
 
 export default function Squad() {
+  const { t } = useTranslation();
   const { state } = useGame();
   const [selectedPlayer, setSelectedPlayer] = useState(null);
-  const [filter, setFilter] = useState('all'); // all, POR, DEF, MED, DEL
+  const [filter, setFilter] = useState('all'); // all, GK, DEF, MID, FWD
   
   const players = state.team?.players || [];
   
@@ -30,7 +33,7 @@ export default function Squad() {
     : players.filter(p => normalizePosition(p.position) === filter);
   
   // Sort by position then overall
-  const positionOrder = { POR: 0, DEF: 1, MED: 2, DEL: 3 };
+  const positionOrder = { GK: 0, DEF: 1, MID: 2, FWD: 3 };
   const sortedPlayers = [...filteredPlayers].sort((a, b) => {
     const posCompare = (positionOrder[normalizePosition(a.position)] || 99) - (positionOrder[normalizePosition(b.position)] || 99);
     if (posCompare !== 0) return posCompare;
@@ -56,10 +59,10 @@ export default function Squad() {
   const getPositionColor = (pos) => {
     const normalized = normalizePosition(pos);
     switch(normalized) {
-      case 'POR': return '#ffd700';
+      case 'GK': return '#ffd700';
       case 'DEF': return '#00d4ff';
-      case 'MED': return '#30d158';
-      case 'DEL': return '#ff453a';
+      case 'MID': return '#30d158';
+      case 'FWD': return '#ff453a';
       default: return '#888';
     }
   };
@@ -67,20 +70,31 @@ export default function Squad() {
   const getPositionName = (pos) => {
     const normalized = normalizePosition(pos);
     switch(normalized) {
-      case 'POR': return 'Portero';
-      case 'DEF': return 'Defensa';
-      case 'MED': return 'Centrocampista';
-      case 'DEL': return 'Delantero';
+      case 'GK': return t('squad.goalkeeper');
+      case 'DEF': return t('squad.defender');
+      case 'MID': return t('squad.midfielder');
+      case 'FWD': return t('squad.forward');
       default: return pos;
+    }
+  };
+
+  // Filter button labels (translated position group abbreviations)
+  const getFilterLabel = (key) => {
+    switch(key) {
+      case 'GK': return t('squad.gkShort');
+      case 'DEF': return t('squad.defShort');
+      case 'MID': return t('squad.midShort');
+      case 'FWD': return t('squad.fwdShort');
+      default: return key;
     }
   };
 
   const teamAvg = Math.round(players.reduce((sum, p) => sum + p.overall, 0) / players.length) || 0;
   const positionCounts = {
-    POR: players.filter(p => normalizePosition(p.position) === 'POR').length,
+    GK: players.filter(p => normalizePosition(p.position) === 'GK').length,
     DEF: players.filter(p => normalizePosition(p.position) === 'DEF').length,
-    MED: players.filter(p => normalizePosition(p.position) === 'MED').length,
-    DEL: players.filter(p => normalizePosition(p.position) === 'DEL').length,
+    MID: players.filter(p => normalizePosition(p.position) === 'MID').length,
+    FWD: players.filter(p => normalizePosition(p.position) === 'FWD').length,
   };
 
   // Mobile Detail View
@@ -91,32 +105,32 @@ export default function Squad() {
     return (
       <div className="squad squad--detail">
         <button className="squad__back-btn" onClick={handleBack}>
-          ← Volver a plantilla
+          ← {t('squad.backToSquad')}
         </button>
 
         <div className="squad__player-hero" style={{ '--pos-color': getPositionColor(p.position) }}>
-          <div className="hero-badge">{p.position}</div>
+          <div className="hero-badge">{translatePosition(p.position)}</div>
           <div className="hero-info">
             <h1>{p.name}</h1>
             <span className="hero-pos">{getPositionName(p.position)}</span>
           </div>
           <div className="hero-overall">
             <span className="number">{p.overall}</span>
-            <span className="label">MED</span>
+            <span className="label">OVR</span>
           </div>
         </div>
 
         {isInjured && (
           <div className="squad__injury-alert">
-            <HeartPulse size={14} /> Lesionado · {p.injuryWeeksLeft} semana{p.injuryWeeksLeft > 1 ? 's' : ''} de baja
+            <HeartPulse size={14} /> {t('squad.injuredWeeks', { weeks: p.injuryWeeksLeft })}
           </div>
         )}
 
         <div className="squad__stats-section">
-          <h3>Estadísticas</h3>
+          <h3>{t('formation.statistics')}</h3>
           
           <div className="stat-row">
-            <span className="stat-name">Velocidad</span>
+            <span className="stat-name">{t('squad.speed')}</span>
             <div className="stat-bar-container">
               <div className="stat-bar" style={{ width: `${p.speed || 70}%`, background: getStatColor(p.speed || 70) }}></div>
             </div>
@@ -124,7 +138,7 @@ export default function Squad() {
           </div>
           
           <div className="stat-row">
-            <span className="stat-name">Técnica</span>
+            <span className="stat-name">{t('squad.technique')}</span>
             <div className="stat-bar-container">
               <div className="stat-bar" style={{ width: `${p.technique || 70}%`, background: getStatColor(p.technique || 70) }}></div>
             </div>
@@ -132,7 +146,7 @@ export default function Squad() {
           </div>
           
           <div className="stat-row">
-            <span className="stat-name">Pase</span>
+            <span className="stat-name">{t('squad.passing')}</span>
             <div className="stat-bar-container">
               <div className="stat-bar" style={{ width: `${p.passing || 70}%`, background: getStatColor(p.passing || 70) }}></div>
             </div>
@@ -140,7 +154,7 @@ export default function Squad() {
           </div>
           
           <div className="stat-row">
-            <span className="stat-name">Remate</span>
+            <span className="stat-name">{t('squad.shooting')}</span>
             <div className="stat-bar-container">
               <div className="stat-bar" style={{ width: `${p.finishing || 70}%`, background: getStatColor(p.finishing || 70) }}></div>
             </div>
@@ -148,7 +162,7 @@ export default function Squad() {
           </div>
           
           <div className="stat-row">
-            <span className="stat-name">Defensa</span>
+            <span className="stat-name">{t('squad.defense')}</span>
             <div className="stat-bar-container">
               <div className="stat-bar" style={{ width: `${p.tackling || 70}%`, background: getStatColor(p.tackling || 70) }}></div>
             </div>
@@ -156,7 +170,7 @@ export default function Squad() {
           </div>
           
           <div className="stat-row">
-            <span className="stat-name">Físico</span>
+            <span className="stat-name">{t('squad.physical')}</span>
             <div className="stat-bar-container">
               <div className="stat-bar" style={{ width: `${p.stamina || 70}%`, background: getStatColor(p.stamina || 70) }}></div>
             </div>
@@ -166,15 +180,15 @@ export default function Squad() {
 
         <div className="squad__extra-info">
           <div className="info-item">
-            <span className="info-label">Dorsal</span>
+            <span className="info-label">{t('squad.number')}</span>
             <span className="info-value">#{p.number || '—'}</span>
           </div>
           <div className="info-item">
-            <span className="info-label">Moral</span>
+            <span className="info-label">{t('formation.morale')}</span>
             <span className="info-value">{p.morale || 75}%</span>
           </div>
           <div className="info-item">
-            <span className="info-label">Energía</span>
+            <span className="info-label">{t('formation.energy')}</span>
             <span className="info-value">{p.energy || 100}%</span>
           </div>
         </div>
@@ -187,12 +201,12 @@ export default function Squad() {
       {/* Header con stats del equipo */}
       <div className="squad__header">
         <div className="squad__team-info">
-          <h2>{state.team?.name || 'Mi Equipo'}</h2>
-          <span className="player-count">{players.length} jugadores</span>
+          <h2>{state.team?.name || t('squad.myTeam')}</h2>
+          <span className="player-count">{players.length} {t('plantilla.players')}</span>
         </div>
         <div className="squad__team-avg">
           <span className="avg-number">{teamAvg}</span>
-          <span className="avg-label">Media</span>
+          <span className="avg-label">{t('squad.average')}</span>
         </div>
       </div>
 
@@ -202,35 +216,35 @@ export default function Squad() {
           className={`filter-btn ${filter === 'all' ? 'active' : ''}`}
           onClick={() => setFilter('all')}
         >
-          Todos ({players.length})
+          {t('common.all')} ({players.length})
         </button>
         <button 
-          className={`filter-btn ${filter === 'POR' ? 'active' : ''}`}
-          onClick={() => setFilter('POR')}
-          style={{ '--filter-color': getPositionColor('POR') }}
+          className={`filter-btn ${filter === 'GK' ? 'active' : ''}`}
+          onClick={() => setFilter('GK')}
+          style={{ '--filter-color': getPositionColor('GK') }}
         >
-          POR ({positionCounts.POR})
+          {getFilterLabel('GK')} ({positionCounts.GK})
         </button>
         <button 
           className={`filter-btn ${filter === 'DEF' ? 'active' : ''}`}
           onClick={() => setFilter('DEF')}
           style={{ '--filter-color': getPositionColor('DEF') }}
         >
-          DEF ({positionCounts.DEF})
+          {getFilterLabel('DEF')} ({positionCounts.DEF})
         </button>
         <button 
-          className={`filter-btn ${filter === 'MED' ? 'active' : ''}`}
-          onClick={() => setFilter('MED')}
-          style={{ '--filter-color': getPositionColor('MED') }}
+          className={`filter-btn ${filter === 'MID' ? 'active' : ''}`}
+          onClick={() => setFilter('MID')}
+          style={{ '--filter-color': getPositionColor('MID') }}
         >
-          MED ({positionCounts.MED})
+          {getFilterLabel('MID')} ({positionCounts.MID})
         </button>
         <button 
-          className={`filter-btn ${filter === 'DEL' ? 'active' : ''}`}
-          onClick={() => setFilter('DEL')}
-          style={{ '--filter-color': getPositionColor('DEL') }}
+          className={`filter-btn ${filter === 'FWD' ? 'active' : ''}`}
+          onClick={() => setFilter('FWD')}
+          style={{ '--filter-color': getPositionColor('FWD') }}
         >
-          DEL ({positionCounts.DEL})
+          {getFilterLabel('FWD')} ({positionCounts.FWD})
         </button>
       </div>
 
@@ -250,7 +264,7 @@ export default function Squad() {
                 className="player-position"
                 style={{ background: getPositionColor(player.position) }}
               >
-                {player.position}
+                {translatePosition(player.position)}
               </div>
               
               <div className="player-info">
@@ -279,17 +293,17 @@ export default function Squad() {
           <div className="panel-overall">
             <span className="number">{selectedPlayer.overall}</span>
             <span className="pos" style={{ background: getPositionColor(selectedPlayer.position) }}>
-              {selectedPlayer.position}
+              {translatePosition(selectedPlayer.position)}
             </span>
           </div>
           <div className="panel-stats">
             {[
-              { key: 'speed', label: 'Velocidad' },
-              { key: 'technique', label: 'Técnica' },
-              { key: 'passing', label: 'Pase' },
-              { key: 'finishing', label: 'Remate' },
-              { key: 'tackling', label: 'Defensa' },
-              { key: 'stamina', label: 'Físico' }
+              { key: 'speed', label: t('squad.speed') },
+              { key: 'technique', label: t('squad.technique') },
+              { key: 'passing', label: t('squad.passing') },
+              { key: 'finishing', label: t('squad.shooting') },
+              { key: 'tackling', label: t('squad.defense') },
+              { key: 'stamina', label: t('squad.physical') }
             ].map(stat => (
               <div key={stat.key} className="panel-stat">
                 <span className="label">{stat.label}</span>

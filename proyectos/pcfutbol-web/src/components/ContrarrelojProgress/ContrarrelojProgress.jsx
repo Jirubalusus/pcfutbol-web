@@ -1,51 +1,17 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { Timer, Trophy, TrendingUp, TrendingDown, Star, Flag, MapPin, Crown } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
+import { LEAGUE_CONFIG } from '../../game/multiLeagueEngine';
 import './ContrarrelojProgress.scss';
 
-// League display names
-const LEAGUE_NAMES = {
-  laliga: 'La Liga',
-  segunda: 'La Liga Hypermotion',
-  primeraRFEF: 'Primera Federación',
-  segundaRFEF: 'Segunda Federación',
-  premierLeague: 'Premier League',
-  serieA: 'Serie A',
-  bundesliga: 'Bundesliga',
-  ligue1: 'Ligue 1',
-  eredivisie: 'Eredivisie',
-  primeiraLiga: 'Primeira Liga',
-  championship: 'Championship',
-  belgianPro: 'Jupiler Pro League',
-  superLig: 'Süper Lig',
-  scottishPrem: 'Scottish Premiership',
-  serieB: 'Serie B',
-  bundesliga2: '2. Bundesliga',
-  ligue2: 'Ligue 2',
-  swissSuperLeague: 'Super League (CH)',
-  austrianBundesliga: 'Bundesliga (AT)',
-  greekSuperLeague: 'Super League (GR)',
-  danishSuperliga: 'Superligaen',
-  croatianLeague: 'HNL',
-  czechLeague: 'Chance Liga',
-  argentinaPrimera: 'Liga Profesional',
-  brasileiraoA: 'Série A',
-  colombiaPrimera: 'Liga BetPlay',
-  chilePrimera: 'Primera División (CL)',
-  uruguayPrimera: 'Primera División (UY)',
-  ecuadorLigaPro: 'LigaPro',
-  paraguayPrimera: 'División de Honor',
-  peruLiga1: 'Liga 1',
-  boliviaPrimera: 'División Profesional',
-  venezuelaPrimera: 'Liga FUTVE',
-};
-
 function getLeagueName(leagueId) {
-  return LEAGUE_NAMES[leagueId] || leagueId;
+  return LEAGUE_CONFIG[leagueId]?.name || leagueId;
 }
 
 export default function ContrarrelojProgress() {
+  const { t } = useTranslation();
   const { state } = useGame();
   const data = state.contrarrelojData;
   if (!data) return null;
@@ -68,7 +34,7 @@ export default function ContrarrelojProgress() {
     type: 'start',
     season: 1,
     icon: <MapPin size={16} />,
-    title: 'Inicio del desafío',
+    title: t('contrarrelojProgress.challengeStart'),
     detail: `${data.startTeam?.name} — ${getLeagueName(data.startLeague)}`,
     color: 'blue'
   });
@@ -80,7 +46,7 @@ export default function ContrarrelojProgress() {
       type: 'season',
       season: s.season,
       icon: <FootballIcon size={16} />,
-      title: `Temporada ${s.season} — ${s.position}º de ${s.totalTeams}`,
+      title: t('contrarrelojProgress.seasonPosition', { season: s.season, position: s.position, total: s.totalTeams }),
       detail: s.leagueName || getLeagueName(s.league),
       color: 'neutral'
     });
@@ -91,8 +57,8 @@ export default function ContrarrelojProgress() {
         type: 'promotion',
         season: s.season,
         icon: <TrendingUp size={16} />,
-        title: '¡Ascenso!',
-        detail: `De ${getLeagueName(s.league)} a ${getLeagueName(s.promotedTo)}`,
+        title: t('contrarrelojProgress.promotion'),
+        detail: t('contrarrelojProgress.promotionDetail', { from: getLeagueName(s.league), to: getLeagueName(s.promotedTo) }),
         color: 'green'
       });
     }
@@ -103,8 +69,8 @@ export default function ContrarrelojProgress() {
         type: 'relegation',
         season: s.season,
         icon: <TrendingDown size={16} />,
-        title: 'Descenso',
-        detail: `De ${getLeagueName(s.league)} a ${getLeagueName(s.relegatedTo)}`,
+        title: t('contrarrelojProgress.relegation'),
+        detail: t('contrarrelojProgress.relegationDetail', { from: getLeagueName(s.league), to: getLeagueName(s.relegatedTo) }),
         color: 'red'
       });
     }
@@ -115,21 +81,21 @@ export default function ContrarrelojProgress() {
         type: 'european',
         season: s.season,
         icon: <Star size={16} />,
-        title: s.europeanComp || 'Competición continental',
-        detail: `Fase alcanzada: ${s.europeanPhase}`,
+        title: s.europeanComp || t('contrarrelojProgress.continentalCompetition'),
+        detail: t('contrarrelojProgress.phaseReached', { phase: s.europeanPhase }),
         color: 'gold'
       });
     }
 
     // Trophies this season
-    const seasonTrophies = trophies.filter(t => t.season === s.season);
-    for (const t of seasonTrophies) {
+    const seasonTrophies = trophies.filter(tr => tr.season === s.season);
+    for (const trophy of seasonTrophies) {
       events.push({
         type: 'trophy',
-        season: t.season,
+        season: trophy.season,
         icon: <Trophy size={16} />,
-        title: `🏆 ${t.name}`,
-        detail: `Temporada ${t.season}`,
+        title: t('contrarrelojProgress.trophyWon', { trophy: trophy.name }),
+        detail: t('contrarrelojProgress.seasonLabel', { season: trophy.season }),
         color: 'gold'
       });
     }
@@ -140,8 +106,8 @@ export default function ContrarrelojProgress() {
     type: 'current',
     season: currentSeason,
     icon: <Timer size={16} />,
-    title: `Temporada ${currentSeason} — EN CURSO`,
-    detail: `${currentLeague} · ${currentPos > 0 ? `${currentPos}º de ${totalTeams}` : 'Sin clasificación'}`,
+    title: t('contrarrelojProgress.currentSeason', { season: currentSeason }),
+    detail: `${currentLeague} · ${currentPos > 0 ? t('contrarrelojProgress.currentPosition', { position: currentPos, total: totalTeams }) : t('contrarrelojProgress.noClassification')}`,
     color: 'accent'
   });
 
@@ -149,14 +115,14 @@ export default function ContrarrelojProgress() {
   const isSA = ['argentinaPrimera', 'brasileiraoA', 'colombiaPrimera', 'chilePrimera',
     'uruguayPrimera', 'ecuadorLigaPro', 'paraguayPrimera', 'peruLiga1',
     'boliviaPrimera', 'venezuelaPrimera'].includes(data.startLeague);
-  const goalName = isSA ? 'Copa Libertadores' : 'Champions League';
+  const goalName = isSA ? t('contrarrelojProgress.copaLibertadores') : t('contrarrelojProgress.championsLeague');
 
   events.push({
     type: 'goal',
     season: null,
     icon: <Crown size={16} />,
-    title: `🎯 Ganar la ${goalName}`,
-    detail: data.won ? '¡CONSEGUIDO!' : '¿Cuántas temporadas necesitarás?',
+    title: t('contrarrelojProgress.winGoal', { competition: goalName }),
+    detail: data.won ? t('contrarrelojProgress.accomplished') : t('contrarrelojProgress.howManySeasonsQuestion'),
     color: data.won ? 'gold' : 'dimmed'
   });
 
@@ -168,12 +134,12 @@ export default function ContrarrelojProgress() {
           <Timer size={28} />
         </div>
         <div className="hero-info">
-          <h2>Camino a la Gloria</h2>
-          <span className="hero-sub">{data.startTeam?.name} — desde {getLeagueName(data.startLeague)}</span>
+          <h2>{t('contrarrelojProgress.roadToGlory')}</h2>
+          <span className="hero-sub">{data.startTeam?.name} — {t('contrarrelojProgress.startingFrom')} {getLeagueName(data.startLeague)}</span>
         </div>
         <div className="hero-season">
           <div className="season-num">{currentSeason}</div>
-          <div className="season-label">Temporada</div>
+          <div className="season-label">{t('contrarrelojProgress.seasonLabel', { season: currentSeason })}</div>
         </div>
       </div>
 
@@ -181,15 +147,15 @@ export default function ContrarrelojProgress() {
       <div className="contrarreloj-progress__stats">
         <div className="stat-card stat-card--league">
           <div className={`stat-value${currentLeague.length > 12 ? ' stat-value--long' : ''}`} title={currentLeague}>{currentLeague}</div>
-          <div className="stat-label">Liga actual</div>
+          <div className="stat-label">{t('contrarrelojProgress.currentLeague')}</div>
         </div>
         <div className="stat-card stat-card--position">
           <div className="stat-value">{currentPos > 0 ? `${currentPos}º` : '—'}</div>
-          <div className="stat-label">{totalTeams > 0 ? `de ${totalTeams}` : 'Posición'}</div>
+          <div className="stat-label">{totalTeams > 0 ? t('contrarrelojProgress.positionOf', { total: totalTeams }) : t('contrarrelojProgress.position')}</div>
         </div>
         <div className="stat-card stat-card--trophies">
           <div className="stat-value">{trophies.length}</div>
-          <div className="stat-label">Trofeos</div>
+          <div className="stat-label">{t('contrarrelojProgress.trophies')}</div>
         </div>
         <div className="stat-card stat-card--goal">
           <div className="stat-value">{isSA ? '🏆' : '⭐'}</div>
@@ -198,7 +164,7 @@ export default function ContrarrelojProgress() {
       </div>
 
       {/* Timeline */}
-      <div className="contrarreloj-progress__timeline-title">Cronología</div>
+      <div className="contrarreloj-progress__timeline-title">{t('contrarrelojProgress.timeline')}</div>
       <div className="contrarreloj-progress__timeline">
         {events.map((evt, idx) => (
           <div key={idx} className={`timeline-event timeline-event--${evt.color} ${evt.type === 'current' ? 'timeline-event--active' : ''}`}>

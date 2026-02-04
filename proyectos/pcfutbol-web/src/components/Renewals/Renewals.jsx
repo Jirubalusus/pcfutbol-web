@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { AlertTriangle, FileText, X, Check, XCircle, MessageSquare, RefreshCw, ClipboardList, Star } from 'lucide-react';
 import { useGame } from '../../context/GameContext';
 import { posToEN } from '../../game/positionNames';
@@ -12,6 +13,7 @@ import {
 import './Renewals.scss';
 
 export default function Renewals() {
+  const { t } = useTranslation();
   const { state, dispatch } = useGame();
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [renewalOffer, setRenewalOffer] = useState(null);
@@ -32,16 +34,16 @@ export default function Renewals() {
       
       if (contractYears <= 1) {
         urgency = 'high';
-        urgencyReason = 'Contrato expira pronto';
+        urgencyReason = t('renewals.contractExpiresSoon');
       } else if (wantsToLeave) {
         urgency = 'critical';
-        urgencyReason = 'Quiere irse';
+        urgencyReason = t('renewals.wantsToLeave');
       } else if (happiness <= 35) {
         urgency = 'high';
-        urgencyReason = 'Muy descontento';
+        urgencyReason = t('renewals.veryUnhappy');
       } else if (happiness <= 50) {
         urgency = 'medium';
-        urgencyReason = 'Descontento';
+        urgencyReason = t('renewals.unhappy');
       }
       
       return {
@@ -110,8 +112,8 @@ export default function Renewals() {
         payload: {
           id: Date.now(),
           type: 'renewal',
-          title: `${selectedPlayer.name} ha renovado`,
-          content: `Nuevo contrato: ${renewalOffer.years} años, ${formatMoney(renewalOffer.newSalary)}/sem`,
+          title: `${selectedPlayer.name} ${t('renewals.hasRenewed')}`,
+          content: t('renewals.newContractDetails', { years: renewalOffer.years, salary: formatMoney(renewalOffer.newSalary) }),
           date: `Semana ${state.currentWeek}`
         }
       });
@@ -158,8 +160,8 @@ export default function Renewals() {
         payload: {
           id: Date.now(),
           type: 'renewal',
-          title: `${selectedPlayer.name} rechaza renovar`,
-          content: `El jugador está descontento y quiere salir del club`,
+          title: `${selectedPlayer.name} ${t('renewals.refusesToRenew')}`,
+          content: t('renewals.playerUnhappyWantsOut'),
           date: `Semana ${state.currentWeek}`
         }
       });
@@ -197,9 +199,9 @@ export default function Renewals() {
   return (
     <div className="renewals">
       <div className="renewals__header">
-        <h2>Renovaciones de Contrato</h2>
+        <h2>{t('renewals.title')}</h2>
         <p className="renewals__subtitle">
-          Gestiona los contratos de tu plantilla
+          {t('renewals.subtitle')}
         </p>
       </div>
       
@@ -208,19 +210,19 @@ export default function Renewals() {
           <span className="count">
             {playersNeedingAttention.filter(p => p.urgency === 'critical').length}
           </span>
-          <span className="label">Quieren irse</span>
+          <span className="label">{t('renewals.wantToLeave')}</span>
         </div>
         <div className="summary-card high">
           <span className="count">
             {playersNeedingAttention.filter(p => p.urgency === 'high').length}
           </span>
-          <span className="label">Urgentes</span>
+          <span className="label">{t('renewals.urgent')}</span>
         </div>
         <div className="summary-card medium">
           <span className="count">
             {playersNeedingAttention.filter(p => p.urgency === 'medium').length}
           </span>
-          <span className="label">Descontentos</span>
+          <span className="label">{t('renewals.displeased')}</span>
         </div>
       </div>
       
@@ -254,29 +256,29 @@ export default function Renewals() {
                 </div>
                 <div className="stats">
                   <span className="ovr">{player.overall}</span>
-                  <span className="age">{player.age} años</span>
+                  <span className="age">{player.age} {t('renewals.years')}</span>
                 </div>
               </div>
               
               <div className="player-status">
                 <div className="status-item">
-                  <span className="label">Contrato</span>
+                  <span className="label">{t('renewals.contract')}</span>
                   <span className={`value ${player.contractYears <= 1 ? 'danger' : ''}`}>
-                    {player.contractYears} año{player.contractYears !== 1 ? 's' : ''}
+                    {player.contractYears} {player.contractYears === 1 ? t('renewals.year') : t('renewals.years')}
                   </span>
                 </div>
                 <div className="status-item">
-                  <span className="label">Salario</span>
+                  <span className="label">{t('renewals.salary')}</span>
                   <span className="value">{formatMoney(player.salary)}/sem</span>
                 </div>
                 <div className="status-item">
-                  <span className="label">Minutos</span>
+                  <span className="label">{t('renewals.minutes')}</span>
                   <span className={`value ${player.minutesPlayed < 40 ? 'danger' : ''}`}>
                     {Math.round(player.minutesPlayed)}%
                   </span>
                 </div>
                 <div className="status-item">
-                  <span className="label">Felicidad</span>
+                  <span className="label">{t('renewals.happiness')}</span>
                   <div className="happiness-bar">
                     <div 
                       className="fill" 
@@ -300,9 +302,9 @@ export default function Renewals() {
                   className="renew-btn"
                   onClick={() => startRenewal(player)}
                   disabled={player.retiring || player.contractYears > 2}
-                  title={player.retiring ? "Se retira" : player.contractYears > 2 ? "No necesita renovar (más de 2 años de contrato)" : "Negociar renovación"}
+                  title={player.retiring ? t('renewals.retiring') : player.contractYears > 2 ? t('renewals.noRenewalNeeded') : t('renewals.negotiateRenewal')}
                 >
-                  <FileText size={14} /> Negociar Renovación
+                  <FileText size={14} /> {t('renewals.negotiateRenewal')}
                 </button>
               </div>
             </div>
@@ -315,7 +317,7 @@ export default function Renewals() {
         <div className="renewals__modal-overlay">
           <div className="renewals__modal">
             <div className="modal-header">
-              <h3>Renovación: {selectedPlayer.name}</h3>
+              <h3>{t('renewals.renewal')}: {selectedPlayer.name}</h3>
               <button onClick={() => {
                 setSelectedPlayer(null);
                 setRenewalOffer(null);
@@ -357,19 +359,19 @@ export default function Renewals() {
                 
                 <div className="player-current">
                   <div className="stat">
-                    <span>Salario actual:</span>
+                    <span>{t('renewals.currentSalary')}</span>
                     <span>{formatMoney(selectedPlayer.salary)}/sem</span>
                   </div>
                   <div className="stat">
-                    <span>Contrato actual:</span>
-                    <span>{selectedPlayer.personality?.contractYears || 2} años</span>
+                    <span>{t('renewals.currentContract')}</span>
+                    <span>{selectedPlayer.personality?.contractYears || 2} {t('renewals.years')}</span>
                   </div>
                   <div className="stat">
-                    <span>Minutos jugados:</span>
+                    <span>{t('renewals.minutesPlayed')}</span>
                     <span>{Math.round(selectedPlayer.personality?.minutesPlayed || 50)}%</span>
                   </div>
                   <div className="stat">
-                    <span>Felicidad:</span>
+                    <span>{t('renewals.happiness')}:</span>
                     <span style={{ color: getHappinessColor(selectedPlayer.personality?.happiness || 50) }}>
                       {selectedPlayer.personality?.happiness || 50}%
                     </span>
@@ -378,10 +380,10 @@ export default function Renewals() {
                 
                 {renewalOffer.playerDemand?.conditions?.length > 0 && (
                   <div className="player-demands">
-                    <h4><AlertTriangle size={14} /> Condiciones del jugador:</h4>
+                    <h4><AlertTriangle size={14} /> {t('renewals.playerConditions')}</h4>
                     {renewalOffer.playerDemand.conditions.map((cond, i) => (
                       <div key={i} className={`demand ${cond.required ? 'required' : ''}`}>
-                        {cond.text} {cond.required && '(obligatorio)'}
+                        {cond.text} {cond.required && `(${t('renewals.required')})`}
                       </div>
                     ))}
                   </div>
@@ -392,9 +394,9 @@ export default function Renewals() {
               {negotiationResult && (
                 <div className={`negotiation-result ${negotiationResult.response}`}>
                   <h4>
-                    {negotiationResult.response === 'accept' && <><Check size={14} /> ¡Acepta la oferta!</>}
-                    {negotiationResult.response === 'negotiate' && <><MessageSquare size={14} /> Quiere negociar</>}
-                    {negotiationResult.response === 'reject' && <><XCircle size={14} /> Rechaza la oferta</>}
+                    {negotiationResult.response === 'accept' && <><Check size={14} /> {t('renewals.acceptsOffer')}</>}
+                    {negotiationResult.response === 'negotiate' && <><MessageSquare size={14} /> {t('renewals.wantsToNegotiate')}</>}
+                    {negotiationResult.response === 'reject' && <><XCircle size={14} /> {t('renewals.rejectsOffer')}</>}
                   </h4>
                   
                   <div className="reasons">

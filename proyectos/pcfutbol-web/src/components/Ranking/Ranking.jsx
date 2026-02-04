@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useGame } from '../../context/GameContext';
 import { loadRanking as fetchRanking, clearRanking as clearFirebaseRanking } from '../../firebase/rankingService';
 import { Trophy, ArrowLeft, Timer, Medal, Trash2, Calendar, Loader } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import './Ranking.scss';
 
 export default function Ranking() {
   const { dispatch } = useGame();
+  const { t } = useTranslation();
   const [ranking, setRanking] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -21,7 +23,7 @@ export default function Ranking() {
   };
 
   const handleClear = async () => {
-    if (window.confirm('¿Borrar todos los récords? Esta acción no se puede deshacer.')) {
+    if (window.confirm(t('ranking.confirmClear'))) {
       await clearFirebaseRanking();
       setRanking([]);
     }
@@ -53,18 +55,18 @@ export default function Ranking() {
       <div className="ranking__content">
         <div className="ranking__header">
           <button className="btn-back" onClick={() => dispatch({ type: 'SET_SCREEN', payload: 'main_menu' })}>
-            <ArrowLeft size={20} /> Menú
+            <ArrowLeft size={20} /> {t('common.back')}
           </button>
           <div className="header-title">
             <Trophy size={28} className="trophy-icon" />
             <div>
-              <h1>RÉCORDS</h1>
-              <p>Modo Contrarreloj — Los mejores tiempos</p>
+              <h1>{t('ranking.records')}</h1>
+              <p>{t('ranking.subtitle')}</p>
             </div>
           </div>
           {ranking.length > 0 && (
             <button className="btn-clear" onClick={handleClear}>
-              <Trash2 size={14} /> Borrar
+              <Trash2 size={14} /> {t('ranking.clear')}
             </button>
           )}
         </div>
@@ -72,15 +74,15 @@ export default function Ranking() {
         {loading ? (
           <div className="ranking__empty">
             <Loader size={48} className="empty-icon spinning" />
-            <h2>Cargando ranking...</h2>
+            <h2>{t('ranking.loading')}</h2>
           </div>
         ) : ranking.length === 0 ? (
           <div className="ranking__empty">
             <Timer size={48} className="empty-icon" />
-            <h2>Sin récords aún</h2>
-            <p>Completa el modo Contrarreloj para aparecer en el ranking.</p>
+            <h2>{t('ranking.noRecords')}</h2>
+            <p>{t('ranking.noRecordsDesc')}</p>
             <button className="btn-play" onClick={() => dispatch({ type: 'SET_SCREEN', payload: 'contrarreloj_setup' })}>
-              <Timer size={18} /> Jugar Contrarreloj
+              <Timer size={18} /> {t('ranking.playContrarreloj')}
             </button>
           </div>
         ) : (
@@ -89,13 +91,13 @@ export default function Ranking() {
               <thead>
                 <tr>
                   <th className="col-pos">#</th>
-                  <th className="col-player">Jugador</th>
-                  <th className="col-team">Equipo</th>
-                  <th className="col-score">Puntuación</th>
-                  <th className="col-seasons"><Timer size={14} /> Temp.</th>
-                  <th className="col-trophies"><Trophy size={14} /> Trofeos</th>
-                  <th className="col-comp">Competición</th>
-                  <th className="col-date"><Calendar size={14} /> Fecha</th>
+                  <th className="col-player">{t('ranking.player')}</th>
+                  <th className="col-team">{t('ranking.team')}</th>
+                  <th className="col-score">{t('ranking.score')}</th>
+                  <th className="col-seasons"><Timer size={14} /> {t('ranking.seasons')}</th>
+                  <th className="col-trophies"><Trophy size={14} /> {t('ranking.trophies')}</th>
+                  <th className="col-comp">{t('ranking.competition')}</th>
+                  <th className="col-date"><Calendar size={14} /> {t('ranking.date')}</th>
                 </tr>
               </thead>
               <tbody>
@@ -105,7 +107,7 @@ export default function Ranking() {
                       <Medal size={16} style={{ color: getMedalColor(idx + 1) }} />
                       <span>{idx + 1}</span>
                     </td>
-                    <td className="col-player">{entry.playerName || 'Anónimo'}</td>
+                    <td className="col-player">{entry.playerName || t('seasonEnd.anonymous')}</td>
                     <td className="col-team">
                       <span className="team-name">{entry.teamName}</span>
                       <span className="league-name">{entry.leagueName || ''}</span>

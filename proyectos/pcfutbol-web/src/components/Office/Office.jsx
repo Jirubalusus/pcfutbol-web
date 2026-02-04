@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
-import { posES } from '../../game/positionNames';
+import { translatePosition } from '../../game/positionNames';
 import { 
   getLaLigaTeams, getSegundaTeams, getPrimeraRfefTeams, getSegundaRfefTeams,
   getPremierTeams, getLigue1Teams, getBundesligaTeams, getSerieATeams,
@@ -77,6 +77,8 @@ export default function Office() {
   const [showInjuredWarning, setShowInjuredWarning] = useState(false);
   const [injuredInLineup, setInjuredInLineup] = useState([]);
   const [showSeasonEnd, setShowSeasonEnd] = useState(false);
+  const [noPlayersWarned, setNoPlayersWarned] = useState(false);
+  const [showNoPlayersWarning, setShowNoPlayersWarning] = useState(false);
   const isMobile = window.innerWidth <= 768;
   
   // Detectar si la temporada ha terminado
@@ -135,6 +137,26 @@ export default function Office() {
   };
 
   const handleAdvanceWeek = () => {
+    // Comprobar si hay suficientes jugadores (mínimo 11)
+    const totalPlayers = (state.team?.players || []).length;
+    if (totalPlayers < 11) {
+      if (noPlayersWarned) {
+        // Segundo intento sin fichar → Game Over
+        if (state.gameMode === 'contrarreloj') {
+          dispatch({ type: 'CONTRARRELOJ_LOSE', payload: { reason: 'no_players' } });
+        } else {
+          dispatch({ type: 'SET_MANAGER_FIRED', payload: { reason: t('office.notEnoughPlayers') } });
+        }
+        return;
+      }
+      // Primer aviso
+      setNoPlayersWarned(true);
+      setShowNoPlayersWarning(true);
+      return;
+    }
+    // Si ya tiene 11+, resetear el aviso
+    setNoPlayersWarned(false);
+
     // Comprobar si la temporada ha terminado
     if (seasonOver) {
       setShowSeasonEnd(true);
@@ -225,6 +247,12 @@ export default function Office() {
   
   const handleMatchComplete = (completedMatchType) => {
     setShowMatch(false);
+    
+    // Auto-save after every match (if autoSave enabled)
+    if (state.settings?.autoSave !== false) {
+      // Small delay to let dispatches settle before saving
+      setTimeout(() => saveGame(), 500);
+    }
     
     if (state.preseasonPhase) {
       // Avanzar semana de pretemporada
@@ -548,6 +576,11 @@ export default function Office() {
     
     setSimulating(false);
     
+    // Auto-save after simulation (if autoSave enabled)
+    if (state.settings?.autoSave !== false) {
+      setTimeout(() => saveGame(), 500);
+    }
+    
     // Si la temporada terminó, mostrar modal de fin de temporada
     if (seasonEnded) {
       setShowSeasonEnd(true);
@@ -556,9 +589,9 @@ export default function Office() {
         payload: {
           id: Date.now(),
           type: 'season',
-          title: 'Fin de Temporada',
-          content: `La temporada ha terminado después de ${weeksSimulated} semanas simuladas.`,
-          date: `Semana ${state.currentWeek + weeksSimulated}`
+          title: t('office.seasonEnd'),
+          content: t('office.seasonEndedAfterWeeks', { weeks: weeksSimulated }),
+          date: `${t('common.week')} ${state.currentWeek + weeksSimulated}`
         }
       });
     } else {
@@ -567,9 +600,9 @@ export default function Office() {
         payload: {
           id: Date.now(),
           type: 'simulation',
-          title: `Simuladas ${weeksSimulated} semanas`,
-          content: `Has avanzado hasta la semana ${state.currentWeek + weeksSimulated}`,
-          date: `Semana ${state.currentWeek + weeksSimulated}`
+          title: t('office.simulatedWeeks', { weeks: weeksSimulated }),
+          content: t('office.advancedToWeek', { week: state.currentWeek + weeksSimulated }),
+          date: `${t('common.week')} ${state.currentWeek + weeksSimulated}`
         }
       });
     }
@@ -823,6 +856,29 @@ export default function Office() {
   }
   
   // Modal de advertencia de lesionados en alineación
+  if (showNoPlayersWarning) {
+    const currentPlayers = (state.team?.players || []).length;
+    return (
+      <div className="office">
+        <div className="injured-warning-modal">
+          <div className="injured-warning-content">
+            <h2><AlertTriangle size={16} /> {t('office.insufficientSquad')}</h2>
+            <p>{t('office.onlyHavePlayers', { count: currentPlayers })}</p>
+            <p className="warning-hint">{t('office.goToTransfersWarning')}</p>
+            <div className="warning-buttons">
+              <button className="btn-primary" onClick={() => {
+                setShowNoPlayersWarning(false);
+                setActiveTab('transfers');
+              }}>
+                <Users size={16} /> {t('office.goToTransfers')}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if (showInjuredWarning) {
     return (
       <div className="office">
@@ -834,7 +890,7 @@ export default function Office() {
             <ul className="injured-list">
               {injuredInLineup.map(p => (
                 <li key={p.name}>
-                  <span className="pos">{posES(p.position)}</span>
+                  <span className="pos">{translatePosition(p.position)}</span>
                   <span className="name">{p.name}</span>
                   <span className="weeks"><HeartPulse size={14} /> {t('office.weeksOut', { weeks: p.injuryWeeksLeft })}</span>
                 </li>

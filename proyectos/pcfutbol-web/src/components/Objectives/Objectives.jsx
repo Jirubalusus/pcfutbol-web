@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { useGame } from '../../context/GameContext';
 import ContrarrelojProgress from '../ContrarrelojProgress/ContrarrelojProgress';
+import { useTranslation } from 'react-i18next';
 import {
   Target,
   Trophy,
@@ -25,6 +26,7 @@ import './Objectives.scss';
 
 export default function Objectives() {
   const { state } = useGame();
+  const { t } = useTranslation();
 
   // Modo contrarreloj: mostrar panel de progreso en vez de objetivos
   if (state.gameMode === 'contrarreloj') {
@@ -95,15 +97,15 @@ export default function Objectives() {
   const getPriorityConfig = (priority) => {
     switch (priority) {
       case 'critical':
-        return { icon: Flame, label: 'Crítico', color: '#ff453a' };
+        return { icon: Flame, label: t('objectives.critical'), color: '#ff453a' };
       case 'high':
-        return { icon: Zap, label: 'Principal', color: '#ff9f0a' };
+        return { icon: Zap, label: t('objectives.high'), color: '#ff9f0a' };
       case 'medium':
-        return { icon: Target, label: 'Secundario', color: '#0a84ff' };
+        return { icon: Target, label: t('objectives.medium'), color: '#0a84ff' };
       case 'low':
-        return { icon: FootballIcon, label: 'Opcional', color: '#8e8e93' };
+        return { icon: FootballIcon, label: t('objectives.low'), color: '#8e8e93' };
       default:
-        return { icon: FootballIcon, label: 'Objetivo', color: '#8e8e93' };
+        return { icon: FootballIcon, label: t('objectives.objective'), color: '#8e8e93' };
     }
   };
 
@@ -119,15 +121,15 @@ export default function Objectives() {
   const getStatusConfig = (status) => {
     switch (status) {
       case 'completed':
-        return { icon: CheckCircle2, label: 'Cumplido', color: '#30d158' };
+        return { icon: CheckCircle2, label: t('objectives.completed'), color: '#30d158' };
       case 'on-track':
-        return { icon: Clock, label: 'En camino', color: '#0a84ff' };
+        return { icon: Clock, label: t('objectives.onTrack'), color: '#0a84ff' };
       case 'warning':
-        return { icon: AlertTriangle, label: 'En riesgo', color: '#ff9f0a' };
+        return { icon: AlertTriangle, label: t('objectives.atRisk'), color: '#ff9f0a' };
       case 'danger':
-        return { icon: XCircle, label: 'Peligro', color: '#ff453a' };
+        return { icon: XCircle, label: t('objectives.danger'), color: '#ff453a' };
       default:
-        return { icon: Clock, label: 'Pendiente', color: '#8e8e93' };
+        return { icon: Clock, label: t('objectives.pending'), color: '#8e8e93' };
     }
   };
 
@@ -193,8 +195,8 @@ export default function Objectives() {
         <div className="header-title">
           <Target size={28} className="header-icon" />
           <div>
-            <h1>Objetivos de Temporada</h1>
-            <p className="subtitle">Temporada {state.currentSeason} · Semana {state.currentWeek}/38</p>
+            <h1>{t('objectives.seasonObjectives')}</h1>
+            <p className="subtitle">{t('office.seasonInfo', { season: state.currentSeason })} · {t('office.weekInfo', { week: state.currentWeek })}/38</p>
           </div>
         </div>
       </header>
@@ -205,7 +207,7 @@ export default function Objectives() {
           <CheckCircle2 size={24} />
           <div className="stat-content">
             <span className="stat-value">{stats.completed}/{stats.total}</span>
-            <span className="stat-label">Completados</span>
+            <span className="stat-label">{t('objectives.completed')}</span>
           </div>
         </div>
         
@@ -213,7 +215,7 @@ export default function Objectives() {
           <Trophy size={24} />
           <div className="stat-content">
             <span className="stat-value">{teamStats?.position || '-'}º</span>
-            <span className="stat-label">Posición</span>
+            <span className="stat-label">{t('ranking.position')}</span>
           </div>
         </div>
         
@@ -223,7 +225,7 @@ export default function Objectives() {
             <span className="stat-value">
               {teamStats?.goalDifference > 0 ? '+' : ''}{teamStats?.goalDifference || 0}
             </span>
-            <span className="stat-label">Dif. goles</span>
+            <span className="stat-label">{t('objectives.goalDifference')}</span>
           </div>
         </div>
         
@@ -231,7 +233,7 @@ export default function Objectives() {
           <Wallet size={24} />
           <div className="stat-content">
             <span className="stat-value">{formatMoney(state.money)}</span>
-            <span className="stat-label">Presupuesto</span>
+            <span className="stat-label">{t('objectives.budget')}</span>
           </div>
         </div>
       </div>
@@ -241,8 +243,7 @@ export default function Objectives() {
         <div className="objectives__alert">
           <AlertTriangle size={20} />
           <span>
-            <strong>{stats.atRisk} objetivo{stats.atRisk > 1 ? 's' : ''}</strong> en riesgo. 
-            Revisa tu estrategia para evitar penalizaciones.
+            <strong>{stats.atRisk} {t('objectives.objectivesAtRisk', { count: stats.atRisk })}</strong> {t('objectives.atRiskWarning')}
           </span>
         </div>
       )}
@@ -254,25 +255,25 @@ export default function Objectives() {
           className={`filter-btn ${filter === 'all' ? 'active' : ''}`}
           onClick={() => setFilter('all')}
         >
-          Todos ({stats.total})
+          {t('objectives.all')} ({stats.total})
         </button>
         <button 
           className={`filter-btn ${filter === 'completed' ? 'active' : ''}`}
           onClick={() => setFilter('completed')}
         >
-          <CheckCircle2 size={14} /> Cumplidos ({stats.completed})
+          <CheckCircle2 size={14} /> {t('objectives.completed')} ({stats.completed})
         </button>
         <button 
           className={`filter-btn ${filter === 'in-progress' ? 'active' : ''}`}
           onClick={() => setFilter('in-progress')}
         >
-          <Clock size={14} /> En progreso ({stats.inProgress})
+          <Clock size={14} /> {t('objectives.inProgress')} ({stats.inProgress})
         </button>
         <button 
           className={`filter-btn ${filter === 'at-risk' ? 'active' : ''}`}
           onClick={() => setFilter('at-risk')}
         >
-          <AlertTriangle size={14} /> En riesgo ({stats.atRisk})
+          <AlertTriangle size={14} /> {t('objectives.atRisk')} ({stats.atRisk})
         </button>
       </div>
 
@@ -281,7 +282,7 @@ export default function Objectives() {
         <section className="objectives__section">
           <h2 className="section-title">
             <Flame size={20} className="section-icon section-icon--critical" />
-            Objetivos Críticos
+            {t('objectives.criticalObjectives')}
           </h2>
           <div className="objectives__list">
             {criticalObjectives.map(obj => {
@@ -424,8 +425,8 @@ export default function Objectives() {
       {objectives.length === 0 && (
         <div className="objectives__empty">
           <Target size={48} />
-          <h3>Sin objetivos definidos</h3>
-          <p>Los objetivos de temporada se generarán al comenzar la liga.</p>
+          <h3>{t('objectives.noObjectives')}</h3>
+          <p>{t('objectives.objectivesWillGenerate')}</p>
         </div>
       )}
 

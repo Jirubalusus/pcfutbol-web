@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Globe, X } from 'lucide-react';
+import { LEAGUE_CONFIG } from '../../game/multiLeagueEngine';
 import './TransferMap.scss';
 
 const COUNTRIES = [
@@ -12,16 +13,10 @@ const COUNTRIES = [
   { id: 'portugal', name: 'Portugal', leagues: ['primeiraLiga'], x: 18, y: 58, flag: '🇵🇹' },
 ];
 
-const LEAGUE_NAMES = {
-  laliga: 'La Liga',
-  segunda: 'Segunda División',
-  premierLeague: 'Premier League',
-  ligue1: 'Ligue 1',
-  bundesliga: 'Bundesliga',
-  serieA: 'Serie A',
-  eredivisie: 'Eredivisie',
-  primeiraLiga: 'Primeira Liga',
-};
+// Build LEAGUE_NAMES from LEAGUE_CONFIG (single source of truth)
+const LEAGUE_NAMES = Object.fromEntries(
+  Object.entries(LEAGUE_CONFIG).map(([id, cfg]) => [id, cfg.name])
+);
 
 export default function TransferMap({ onSelectLeague, onClose }) {
   const [selectedCountry, setSelectedCountry] = useState(null);

@@ -1,4 +1,4 @@
-/* PC Fútbol Web - Apple + PS5 Design System */
+/* PC Gaffer - Apple + PS5 Design System */
 
 * {
   box-sizing: border-box;
@@ -11,7 +11,7 @@
   line-height: 1.5;
   font-weight: 400;
 
-  /* Color Scheme - Dark Blue (PC Fútbol style) */
+  /* Color Scheme - Dark Blue (PC Gaffer style) */
   color-scheme: dark;
   --color-bg-primary: #0c1424;
   --color-bg-secondary: #101a2e;

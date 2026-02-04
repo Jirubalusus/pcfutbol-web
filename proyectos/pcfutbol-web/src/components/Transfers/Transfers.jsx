@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useGame } from '../../context/GameContext';
-import { posES, posToEN } from '../../game/positionNames';
+import { translatePosition, posToEN } from '../../game/positionNames';
 import CustomSelect from '../common/CustomSelect/CustomSelect';
 import { 
   getLaLigaTeams,
@@ -24,6 +24,7 @@ import {
 import TransferMap from './TransferMap';
 import { Star, Circle, Zap, Globe, X, ShoppingCart, ClipboardList, DollarSign, Mail, Inbox, Search, Settings, Flame, AlertTriangle, Info, MessageSquare, Target, Calendar, Check, XCircle, CheckCircle } from 'lucide-react';
 import { getLeagueTier, getMaxTierJumpByAge, getPositionPerformanceMultiplier, getTransferValueMultiplier } from '../../game/leagueTiers';
+import { LEAGUE_CONFIG } from '../../game/multiLeagueEngine';
 import './Transfers.scss';
 import './TransferMap.scss';
 
@@ -1045,16 +1046,10 @@ export default function Transfers() {
     return <TransferMap onSelectLeague={handleLeagueSelect} onClose={() => setShowMap(false)} />;
   }
 
-  const LEAGUE_NAMES = {
-    laliga: '🇪🇸 La Liga',
-    segunda: '🇪🇸 Segunda',
-    premierLeague: '🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier',
-    ligue1: '🇫🇷 Ligue 1',
-    bundesliga: '🇩🇪 Bundesliga',
-    serieA: '🇮🇹 Serie A',
-    eredivisie: '🇳🇱 Eredivisie',
-    primeiraLiga: '🇵🇹 Liga Portugal',
-  };
+  const COUNTRY_FLAGS = { laliga: '🇪🇸', segunda: '🇪🇸', premierLeague: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', ligue1: '🇫🇷', bundesliga: '🇩🇪', serieA: '🇮🇹', eredivisie: '🇳🇱', primeiraLiga: '🇵🇹' };
+  const LEAGUE_NAMES = Object.fromEntries(
+    Object.entries(LEAGUE_CONFIG).filter(([id]) => COUNTRY_FLAGS[id]).map(([id, cfg]) => [id, `${COUNTRY_FLAGS[id]} ${cfg.name}`])
+  );
 
   return (
     <div className="transfers">
@@ -1199,7 +1194,7 @@ export default function Transfers() {
               >
                 <div className="player-main">
                   <span className="pos" style={{ color: getPositionColor(player.position) }}>
-                    {posES(player.position)}
+                    {translatePosition(player.position)}
                   </span>
                   <div className="details">
                     <span className="name">
@@ -1294,7 +1289,7 @@ export default function Transfers() {
               <div key={idx} className="transfers__player">
                 <div className="player-main">
                   <span className="pos" style={{ color: getPositionColor(player.position) }}>
-                    {posES(player.position)}
+                    {translatePosition(player.position)}
                   </span>
                   <div className="details">
                     <span className="name">{player.name}</span>
@@ -1441,7 +1436,7 @@ export default function Transfers() {
                       <div key={`loan_${idx}`} className="transfers__player loan-candidate">
                         <div className="player-main">
                           <span className="pos" style={{ color: getPositionColor(candidate.position) }}>
-                            {posES(candidate.position)}
+                            {translatePosition(candidate.position)}
                           </span>
                           <div className="details">
                             <span className="name">{candidate.name}</span>
@@ -1491,7 +1486,7 @@ export default function Transfers() {
                     <div key={loan.id} className="transfers__player loan-active">
                       <div className="player-main">
                         <span className="pos" style={{ color: getPositionColor(loan.playerData?.position || 'CM') }}>
-                          {posES(loan.playerData?.position) || '?'}
+                          {translatePosition(loan.playerData?.position) || '?'}
                         </span>
                         <div className="details">
                           <span className="name">{loan.playerData?.name || loan.playerId}</span>
@@ -1529,7 +1524,7 @@ export default function Transfers() {
                     <div key={loan.id} className="transfers__player loan-active received">
                       <div className="player-main">
                         <span className="pos" style={{ color: getPositionColor(loan.playerData?.position || 'CM') }}>
-                          {posES(loan.playerData?.position) || '?'}
+                          {translatePosition(loan.playerData?.position) || '?'}
                         </span>
                         <div className="details">
                           <span className="name">{loan.playerData?.name || loan.playerId}</span>
@@ -1590,7 +1585,7 @@ export default function Transfers() {
                       
                       <div className="offer-player">
                         <span className="pos" style={{ color: getPositionColor(offer.playerData?.position || 'CM') }}>
-                          {posES(offer.playerData?.position) || '?'}
+                          {translatePosition(offer.playerData?.position) || '?'}
                         </span>
                         <div className="player-info">
                           <span className="name">{offer.playerData?.name || offer.playerId}</span>
@@ -1645,7 +1640,7 @@ export default function Transfers() {
               <div className="negotiation-player">
                 <div className="player-summary">
                   <span className="pos" style={{ background: getPositionColor(loanNegotiation.candidate.position) }}>
-                    {posES(loanNegotiation.candidate.position)}
+                    {translatePosition(loanNegotiation.candidate.position)}
                   </span>
                   <div className="info">
                     <span className="name">{loanNegotiation.candidate.name}</span>
@@ -1735,7 +1730,7 @@ export default function Transfers() {
               <div className="player-card">
                 <div className="card-header">
                   <span className="pos" style={{ background: getPositionColor(selectedPlayer.position) }}>
-                    {posES(selectedPlayer.position)}
+                    {translatePosition(selectedPlayer.position)}
                   </span>
                   <span className="ovr">{selectedPlayer.overall}</span>
                 </div>
@@ -1814,7 +1809,7 @@ export default function Transfers() {
               <div className="negotiation-player">
                 <div className="player-summary">
                   <span className="pos" style={{ background: getPositionColor(negotiation.player.position) }}>
-                    {posES(negotiation.player.position)}
+                    {translatePosition(negotiation.player.position)}
                   </span>
                   <div className="info">
                     <span className="name">{negotiation.player.name}</span>

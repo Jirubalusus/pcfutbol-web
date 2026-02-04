@@ -6,6 +6,7 @@ import { LALIGA_TEAMS } from '../data/teamsFirestore';
 import { generateFacilityEvent, generateYouthPlayer, generateSonPlayer, applyEventChoice, FACILITY_SPECIALIZATIONS } from '../game/facilitiesSystem';
 import { assignRole } from '../game/playerRoles';
 import { GlobalTransferEngine, isTransferWindowOpen, formatTransferPrice, calculateMarketValue, TEAM_PROFILES } from '../game/globalTransferEngine';
+import { getPositionFit, getSlotPosition } from '../game/positionSystem';
 import { evaluateManager, generateWarningMessage } from '../game/managerEvaluation';
 import { generateSalary, applyTeamsSalaries } from '../game/salaryGenerator';
 import { getLeagueTier, getEconomyMultiplier } from '../game/leagueTiers';
@@ -21,6 +22,60 @@ import { updateWeeklyForm, updateMatchTracker, tickRejectedTransfers, generateIn
 import { generateLoanOffers, expireLoans, simulateAILoans, createLoan } from '../game/loanSystem';
 
 const GameContext = createContext();
+
+// ============================================================
+// LINEUP INTEGRITY — Asegurar que siempre hay 11 jugadores
+// Rellena huecos del lineup con los mejores disponibles
+// ============================================================
+function ensureFullLineup(lineup, players, formation) {
+  if (!lineup || !players || players.length < 11) return lineup;
+  
+  const FORMATION_SLOTS = {
+    '4-3-3':       ['GK','RB','CB1','CB2','LB','CM1','CDM','CM2','RW','ST','LW'],
+    '4-4-2':       ['GK','RB','CB1','CB2','LB','RM','CM1','CM2','LM','ST1','ST2'],
+    '4-2-3-1':     ['GK','RB','CB1','CB2','LB','CDM1','CDM2','RW','CAM','LW','ST'],
+    '3-5-2':       ['GK','CB1','CB2','CB3','RM','CM1','CDM','CM2','LM','ST1','ST2'],
+    '5-3-2':       ['GK','RB','CB1','CB2','CB3','LB','CM1','CDM','CM2','ST1','ST2'],
+    '4-1-4-1':     ['GK','RB','CB1','CB2','LB','CDM','RM','CM1','CM2','LM','ST'],
+    '3-4-3':       ['GK','CB1','CB2','CB3','RM','CM1','CM2','LM','RW','ST','LW'],
+    '5-4-1':       ['GK','RB','CB1','CB2','CB3','LB','RM','CM1','CM2','LM','ST'],
+    '4-5-1':       ['GK','RB','CB1','CB2','LB','RM','CM1','CDM','CM2','LM','ST'],
+    '4-3-3 (MCO)': ['GK','RB','CB1','CB2','LB','CM1','CM2','CAM','RW','ST','LW'],
+    '4-4-2 (Diamante)': ['GK','RB','CB1','CB2','LB','CDM','CM1','CM2','CAM','ST1','ST2'],
+    '4-1-2-1-2':   ['GK','RB','CB1','CB2','LB','CDM','CM1','CM2','CAM','ST1','ST2'],
+  };
+
+  const slots = FORMATION_SLOTS[formation] || FORMATION_SLOTS['4-3-3'];
+  const filledCount = Object.values(lineup).filter(Boolean).length;
+  
+  // Ya tiene 11, no hacer nada
+  if (filledCount >= 11) return lineup;
+  
+  const newLineup = { ...lineup };
+  const usedNames = new Set(Object.values(newLineup).map(p => p?.name).filter(Boolean));
+  const available = players.filter(p => !usedNames.has(p.name) && !p.injured && !p.suspended && !p.onLoan);
+  
+  // Rellenar slots vacíos
+  for (const slotId of slots) {
+    if (newLineup[slotId]) continue; // Ya ocupado
+    
+    const slotPos = getSlotPosition(slotId);
+    const best = available
+      .sort((a, b) => {
+        const fitA = getPositionFit(a.position, slotPos);
+        const fitB = getPositionFit(b.position, slotPos);
+        return (fitB.factor * b.overall) - (fitA.factor * a.overall);
+      })[0];
+    
+    if (best) {
+      newLineup[slotId] = best;
+      usedNames.add(best.name);
+      available.splice(available.indexOf(best), 1);
+    }
+  }
+  
+  return newLineup;
+}
 
 // Valor de mercado para ofertas — usa calculateMarketValue (globalTransferEngine)
 // NO aplica multiplicador de tier (las ofertas deben reflejar el valor real del jugador)
@@ -650,8 +705,8 @@ function gameReducer(state, action) {
           ...state.team,
           players: finalPlayers
         },
-        // Limpiar alineación y convocados
-        lineup: cleanedLineup,
+        // Limpiar alineación y convocados — asegurar 11 siempre
+        lineup: ensureFullLineup(cleanedLineup, finalPlayers, state.formation),
         convocados: (state.convocados || []).filter(name => playerNames.has(name)),
         // Cobrar ingresos acumulados de taquilla + abonados al final de temporada
         money: state.money + moneyChange + (state.stadium?.accumulatedTicketIncome ?? 0) + (state.stadium?.seasonTicketIncomeCollected ?? 0),
@@ -765,10 +820,10 @@ function gameReducer(state, action) {
                 if (!comp?.state) continue;
                 const teams = comp.state.teams || [];
                 if (teams.some(t => (t.teamId || t.id) === state.teamId)) {
-                  return name === 'championsLeague' ? 'Champions League'
-                    : name === 'europaLeague' ? 'Europa League'
-                    : name === 'conferenceleague' ? 'Conference League'
-                    : name === 'copaLibertadores' ? 'Copa Libertadores'
+                  return name === 'championsLeague' ? 'Continental Champions Cup'
+                    : name === 'europaLeague' ? 'Continental Shield'
+                    : name === 'conferenceleague' ? 'Continental Trophy'
+                    : name === 'copaLibertadores' ? 'South American Champions Cup'
                     : name === 'copaSudamericana' ? 'Copa Sudamericana'
                     : name;
                 }
@@ -879,11 +934,177 @@ function gameReducer(state, action) {
         }
       }
 
+      // ============================================================
+      // PROCESAR OFERTAS ENVIADAS (outgoing) EN PRETEMPORADA
+      // Misma lógica que ADVANCE_WEEK pero usando preseasonWeek
+      // ============================================================
+      const nextPreseasonWeek = (state.preseasonWeek || 1) + 1;
+      let resolvedPreseasonOutgoing = [...(state.outgoingOffers || [])];
+      let preseasonOfferMessages = [];
+      let preseasonMoneyReturned = 0;
+
+      resolvedPreseasonOutgoing = resolvedPreseasonOutgoing.map(offer => {
+        if (offer.status !== 'pending') return offer;
+
+        const weeksPending = nextPreseasonWeek - (offer.submittedWeek || nextPreseasonWeek);
+        const allTeams = state.leagueTeams || [];
+        const targetTeam = allTeams.find(t => t.id === offer.toTeamId);
+        const targetPlayer = targetTeam ? (targetTeam.players || []).find(p => p.name === offer.playerName) : null;
+
+        if (!targetTeam || !targetPlayer) {
+          preseasonMoneyReturned += offer.amount;
+          preseasonOfferMessages.push({
+            id: Date.now() + Math.random(), type: 'transfer',
+            title: `❌ Oferta cancelada: ${offer.playerName}`,
+            content: `${offer.playerName} ya no está disponible. Se devuelven ${formatTransferPrice(offer.amount)}`,
+            date: `Pretemporada`
+          });
+          return null;
+        }
+
+        const playerMarketValue = calculateMarketValue(targetPlayer, targetTeam.leagueId);
+        const offerRatio = offer.amount / playerMarketValue;
+        const expiryWeeks = offerRatio >= 0.90 ? 3 : offerRatio >= 0.70 ? 2 : 1;
+
+        if (weeksPending >= expiryWeeks) {
+          preseasonMoneyReturned += offer.amount;
+          preseasonOfferMessages.push({
+            id: Date.now() + Math.random(), type: 'transfer',
+            title: `⏰ Oferta expirada: ${offer.playerName}`,
+            content: `Tu oferta por ${offer.playerName} ha caducado sin respuesta. Se devuelven ${formatTransferPrice(offer.amount)}`,
+            date: `Pretemporada`
+          });
+          return null;
+        }
+
+        if (weeksPending < 1) return offer;
+
+        const isStarter = targetPlayer.overall >= (targetTeam.players || []).reduce((sum, p) => sum + p.overall, 0) / (targetTeam.players?.length || 1) + 3;
+
+        let clubResponse = 'rejected';
+        let clubReason = '';
+        let clubCounterAmount = null;
+
+        if (isStarter && offerRatio < 1.3) {
+          clubResponse = 'rejected';
+          clubReason = 'Titular indiscutible, no está en venta';
+        } else if (offerRatio >= 1.15) {
+          clubResponse = 'accepted';
+          clubReason = 'Oferta irrechazable';
+        } else if (offerRatio >= 0.90) {
+          if (Math.random() < 0.65) {
+            clubResponse = 'accepted';
+            clubReason = 'Oferta aceptada';
+          } else {
+            clubResponse = 'countered';
+            clubCounterAmount = Math.round(playerMarketValue * (1.05 + Math.random() * 0.15));
+            clubReason = `Piden ${formatTransferPrice(clubCounterAmount)}`;
+          }
+        } else if (offerRatio >= 0.70) {
+          if (Math.random() < 0.2) {
+            clubResponse = 'accepted';
+            clubReason = 'Necesitan liquidez';
+          } else if (Math.random() < 0.6) {
+            clubResponse = 'countered';
+            clubCounterAmount = Math.round(playerMarketValue * (1.1 + Math.random() * 0.2));
+            clubReason = `Piden ${formatTransferPrice(clubCounterAmount)}`;
+          } else {
+            clubReason = 'Oferta insuficiente';
+          }
+        } else {
+          clubReason = 'Oferta irrisoria';
+        }
+
+        let playerResponse = 'rejected';
+        let playerReason = '';
+        const requiredSalary = Math.round((targetPlayer.salary || 50000) * 1.1);
+
+        if (offer.salaryOffer >= requiredSalary * 1.2) {
+          playerResponse = 'accepted';
+          playerReason = 'Encantado con la propuesta';
+        } else if (offer.salaryOffer >= requiredSalary * 0.95) {
+          if (Math.random() < 0.7) {
+            playerResponse = 'accepted';
+            playerReason = 'Acepta el proyecto deportivo';
+          } else {
+            playerReason = 'Quiere un salario mayor';
+          }
+        } else if (offer.salaryOffer >= requiredSalary * 0.7) {
+          if (Math.random() < 0.25) {
+            playerResponse = 'accepted';
+            playerReason = 'Le convence el proyecto';
+          } else {
+            playerReason = 'Salario insuficiente';
+          }
+        } else {
+          playerReason = 'Oferta salarial irrisoria';
+        }
+
+        const bothAccepted = clubResponse === 'accepted' && playerResponse === 'accepted';
+        const icon = bothAccepted ? '✅' : clubResponse === 'countered' ? '🔄' : '❌';
+
+        preseasonOfferMessages.push({
+          id: Date.now() + Math.random(), type: 'transfer',
+          title: `${icon} Respuesta: ${offer.playerName}`,
+          content: bothAccepted
+            ? `¡${offer.playerName} ficha por tu equipo! Traspaso: ${formatTransferPrice(offer.amount)}`
+            : `🏢 Club: ${clubReason} · 👤 Jugador: ${playerReason}`,
+          date: `Pretemporada`
+        });
+
+        if (bothAccepted) {
+          // Fichaje — el jugador se añade al equipo
+          // (se manejará abajo)
+        } else if (clubResponse !== 'countered') {
+          preseasonMoneyReturned += offer.amount;
+        }
+
+        return {
+          ...offer,
+          status: 'resolved',
+          clubResponse, clubReason, clubCounterAmount,
+          playerResponse, playerReason,
+          resolvedWeek: nextPreseasonWeek,
+          expiryWeek: nextPreseasonWeek + 2
+        };
+      }).filter(Boolean);
+
+      // Procesar fichajes completados en pretemporada
+      let preseasonUpdatedPlayers = state.team ? [...state.team.players] : [];
+      let preseasonUpdatedLeagueTeams = [...(state.leagueTeams || [])];
+
+      resolvedPreseasonOutgoing.forEach(offer => {
+        if (offer.resolvedWeek === nextPreseasonWeek && offer.clubResponse === 'accepted' && offer.playerResponse === 'accepted') {
+          const targetTeam = preseasonUpdatedLeagueTeams.find(t => t.id === offer.toTeamId);
+          const targetPlayer = targetTeam ? (targetTeam.players || []).find(p => p.name === offer.playerName) : null;
+          if (targetPlayer) {
+            preseasonUpdatedPlayers.push({
+              ...targetPlayer,
+              salary: offer.salaryOffer,
+              contractYears: offer.contractYears || 4,
+              teamId: state.teamId,
+              morale: 80,
+              fitness: 100
+            });
+            preseasonUpdatedLeagueTeams = preseasonUpdatedLeagueTeams.map(t => {
+              if (t.id === offer.toTeamId) {
+                return { ...t, players: (t.players || []).filter(p => p.name !== offer.playerName), budget: (t.budget || 50_000_000) + offer.amount };
+              }
+              return t;
+            });
+          }
+        }
+      });
+
       return {
         ...state,
-        preseasonWeek: (state.preseasonWeek || 1) + 1,
+        preseasonWeek: nextPreseasonWeek,
         incomingOffers: preseasonIncomingOffers,
-        messages: [...preseasonMessages, ...state.messages].slice(0, 50)
+        outgoingOffers: resolvedPreseasonOutgoing,
+        money: (state.money || 0) + preseasonMoneyReturned,
+        team: state.team ? { ...state.team, players: preseasonUpdatedPlayers } : null,
+        leagueTeams: preseasonUpdatedLeagueTeams,
+        messages: [...preseasonOfferMessages, ...preseasonMessages, ...state.messages].slice(0, 50)
       };
     }
 
@@ -1054,13 +1275,16 @@ function gameReducer(state, action) {
         events.forEach(event => {
           if (event.type === 'transfer') {
             const t = event.data;
-            newTransferMessages.push({
-              id: Date.now() + Math.random(),
-              type: 'transfer',
-              title: '🔄 Fichaje confirmado',
-              content: `${t.player.name} (${t.player.position}, ${t.player.overall}) ficha por ${t.to.name} desde ${t.from.name} por ${formatTransferPrice(t.price)}`,
-              date: `Semana ${nextWeek}`
-            });
+            // Solo crear notificación si involucra al equipo del jugador
+            if (t.from?.id === state.teamId || t.to?.id === state.teamId) {
+              newTransferMessages.push({
+                id: Date.now() + Math.random(),
+                type: 'transfer',
+                title: '🔄 Fichaje confirmado',
+                content: `${t.player.name} (${t.player.position}, ${t.player.overall}) ficha por ${t.to.name} desde ${t.from.name} por ${formatTransferPrice(t.price)}`,
+                date: `Semana ${nextWeek}`
+              });
+            }
             marketSummary.recentTransfers = [event.data, ...(marketSummary.recentTransfers || [])].slice(0, 30);
             marketSummary.totalTransfers = (marketSummary.totalTransfers || 0) + 1;
             marketSummary.totalSpent = (marketSummary.totalSpent || 0) + t.price;
@@ -1605,20 +1829,11 @@ function gameReducer(state, action) {
         o.status !== 'pending' || (o.expiresAt && o.expiresAt > Date.now())
       );
 
-      // Simular cesiones IA
-      let aiLoanMessages = [];
+      // Simular cesiones IA (sin notificaciones — no son relevantes para el jugador)
       if (windowStatus.open && updatedLeagueTeams.length > 0) {
-        const aiLoanEvents = simulateAILoans(updatedLeagueTeams, state.teamId, updatedActiveLoans);
-        aiLoanEvents.forEach(event => {
-          aiLoanMessages.push({
-            id: Date.now() + Math.random(),
-            type: 'loan',
-            title: '🔄 Cesión IA',
-            content: `${event.player.name} (${event.player.position}, ${event.player.overall}) cedido de ${event.from.name} a ${event.to.name}`,
-            date: `Semana ${nextWeek}`
-          });
-        });
+        simulateAILoans(updatedLeagueTeams, state.teamId, updatedActiveLoans);
       }
+      const aiLoanMessages = [];
 
       // === FORM SYSTEM: Update match tracker and form ===
       // Update match tracker: who played this week?
@@ -1789,7 +2004,7 @@ function gameReducer(state, action) {
       }
 
       // ============================================================
-      // PROCESAR OFERTAS PENDIENTES DEL USUARIO (estilo PC Fútbol 5.0)
+      // PROCESAR OFERTAS PENDIENTES DEL USUARIO (estilo PC Gaffer)
       // Las ofertas se envían y se resuelven al simular un partido.
       // El dinero ya fue descontado al enviar. Se devuelve si rechazan.
       // Caducidad: 1-3 semanas según oferta. Ofertas expiradas → devuelven dinero.
@@ -2044,8 +2259,21 @@ function gameReducer(state, action) {
     case 'SET_TACTIC':
       return { ...state, tactic: action.payload };
 
+    case 'CLEAR_RESOLVED_OFFERS':
+      return {
+        ...state,
+        outgoingOffers: (state.outgoingOffers || []).filter(o => o.status === 'pending')
+      };
+
     case 'SET_LINEUP':
       return { ...state, lineup: action.payload };
+
+    case 'SET_MANAGER_FIRED':
+      return {
+        ...state,
+        managerFired: true,
+        managerFiredReason: action.payload?.reason || 'La directiva ha prescindido de tus servicios'
+      };
 
     case 'SET_CONVOCADOS':
       return { ...state, convocados: action.payload };
@@ -2232,7 +2460,7 @@ function gameReducer(state, action) {
       return {
         ...state,
         team: { ...state.team, players: updatedPlayers },
-        lineup: cleanedLineup,
+        lineup: ensureFullLineup(cleanedLineup, updatedPlayers, state.formation),
         money: state.money + offer.amount,
         leagueTeams: updatedLeagueTeams,
         incomingOffers: (state.incomingOffers || []).filter(o => o.id !== offer.id),
@@ -2468,14 +2696,23 @@ function gameReducer(state, action) {
         }
       };
 
-    case 'REMOVE_PLAYER':
+    case 'REMOVE_PLAYER': {
+      const remainingPlayers = state.team.players.filter(p => p.name !== action.payload);
+      const lineupAfterRemove = {};
+      if (state.lineup) {
+        Object.entries(state.lineup).forEach(([slot, p]) => {
+          if (p && p.name !== action.payload) {
+            lineupAfterRemove[slot] = p;
+          }
+        });
+      }
       return {
         ...state,
-        team: {
-          ...state.team,
-          players: state.team.players.filter(p => p.name !== action.payload)
-        }
+        team: { ...state.team, players: remainingPlayers },
+        lineup: ensureFullLineup(lineupAfterRemove, remainingPlayers, state.formation),
+        convocados: (state.convocados || []).filter(name => name !== action.payload)
       };
+    }
 
     case 'INJURE_PLAYER': {
       // Centro médico reduce tiempo de lesiones (nivel base + especialización recuperación)
@@ -2559,7 +2796,7 @@ function gameReducer(state, action) {
       return {
         ...state,
         team: { ...state.team, players: updatedPlayers },
-        lineup: lineupYellow
+        lineup: ensureFullLineup(lineupYellow, updatedPlayers, state.formation)
       };
     }
 
@@ -2598,7 +2835,7 @@ function gameReducer(state, action) {
       return {
         ...state,
         team: { ...state.team, players: updatedPlayers },
-        lineup: cleanedLineup_red
+        lineup: ensureFullLineup(cleanedLineup_red, updatedPlayers, state.formation)
       };
     }
 
@@ -2630,7 +2867,7 @@ function gameReducer(state, action) {
       return {
         ...state,
         team: { ...state.team, players: updatedPlayers },
-        lineup: cleanedLineup
+        lineup: ensureFullLineup(cleanedLineup, updatedPlayers, state.formation)
       };
     }
 
@@ -3004,7 +3241,7 @@ function gameReducer(state, action) {
             // WIN CONDITION: Champions League won!
             const existingTrophies = [...(state.contrarrelojData.trophies || []), {
               type: 'champions', season: state.currentSeason,
-              name: finalComp.config?.name || 'Champions League'
+              name: finalComp.config?.name || 'Continental Champions Cup'
             }];
             contrarrelojWinEu = {
               contrarrelojData: {
@@ -3177,7 +3414,7 @@ function gameReducer(state, action) {
             // WIN CONDITION: Copa Libertadores won!
             const existingTrophies = [...(state.contrarrelojData.trophies || []), {
               type: 'libertadores', season: state.currentSeason,
-              name: finalComp.config?.name || 'Copa Libertadores'
+              name: finalComp.config?.name || 'South American Champions Cup'
             }];
             contrarrelojWinSA = {
               contrarrelojData: {
@@ -3366,7 +3603,7 @@ function gameReducer(state, action) {
       return {
         ...state,
         team: { ...state.team, players: updatedPlayers },
-        lineup: cleanedLineup,
+        lineup: ensureFullLineup(cleanedLineup, updatedPlayers, state.formation),
         convocados: (state.convocados || []).filter(name => name !== player.name),
         money: state.money + loanFee,
         activeLoans: [...(state.activeLoans || []), loan],
@@ -3580,7 +3817,7 @@ function gameReducer(state, action) {
       return {
         ...state,
         team: { ...state.team, players: updatedPlayers },
-        lineup: cleanedLineup,
+        lineup: ensureFullLineup(cleanedLineup, updatedPlayers, state.formation),
         convocados: (state.convocados || []).filter(name => name !== offer.playerId),
         money: state.money + offer.loanFee,
         activeLoans: [...(state.activeLoans || []), loan],
@@ -3835,18 +4072,10 @@ export function GameProvider({ children }) {
     return () => clearTimeout(timeout);
   }, []);
 
-  // Auto-save every 2 minutes in local mode, 5 in Firebase
+  // Auto-save on state changes (debounced) — respects autoSave setting
   useEffect(() => {
-    if (state.gameStarted && state.gameMode !== 'contrarreloj') {
-      const interval = setInterval(saveGame, USE_LOCAL_STORAGE ? 2 * 60 * 1000 : 5 * 60 * 1000);
-      return () => clearInterval(interval);
-    }
-  }, [state.gameStarted, state.gameMode]);
-
-  // Save on state changes in local mode (debounced)
-  useEffect(() => {
-    if (USE_LOCAL_STORAGE && state.gameStarted && state.gameMode !== 'contrarreloj') {
-      const timeout = setTimeout(saveGame, 1000);
+    if (state.gameStarted && state.gameMode !== 'contrarreloj' && state.settings?.autoSave !== false) {
+      const timeout = setTimeout(saveGame, 2000);
       return () => clearTimeout(timeout);
     }
   }, [state.currentWeek, state.money, state.team]);

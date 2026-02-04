@@ -290,8 +290,24 @@
     }
   }
 
+  // Confirm overlay (modal on mobile)
+  &__confirm-overlay {
+    @media (max-width: 768px) {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 1.5rem;
+      animation: fadeIn 0.2s ease;
+    }
+  }
+
   // Confirm
   &__confirm {
+    position: relative;
     background: rgba(255, 215, 0, 0.05);
     border: 1px solid rgba(255, 215, 0, 0.25);
     border-radius: 12px;
@@ -301,9 +317,34 @@
     gap: 1.5rem;
     animation: fadeInUp 0.3s ease;
 
+    .confirm-close {
+      display: none;
+      @media (max-width: 768px) {
+        display: flex;
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        width: 32px;
+        height: 32px;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        border-radius: 8px;
+        color: #aaa;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+    }
+
     @media (max-width: 768px) {
       flex-direction: column;
       text-align: center;
+      background: linear-gradient(180deg, #1a2535 0%, #0d1117 100%);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      padding: 2rem 1.5rem;
+      width: 100%;
+      max-width: 340px;
     }
 
     .confirm-team {
@@ -387,6 +428,11 @@
 @keyframes pulseGlow {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.5; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes fadeInUp {

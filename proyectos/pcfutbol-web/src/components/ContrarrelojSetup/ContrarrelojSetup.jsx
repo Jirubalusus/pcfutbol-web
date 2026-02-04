@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { useAuth } from '../../context/AuthContext';
 import { getLeagueTier } from '../../game/leagueTiers';
@@ -119,6 +120,7 @@ function ensureBudgetAndReputation(team, leagueId) {
 }
 
 export default function ContrarrelojSetup() {
+  const { t } = useTranslation();
   const { dispatch } = useGame();
   const { user, isAuthenticated } = useAuth();
   const [selectedTeam, setSelectedTeam] = useState(null);
@@ -395,7 +397,7 @@ export default function ContrarrelojSetup() {
         id: Date.now(),
         type: 'contrarreloj',
         title: '⏱️ ¡Modo Contrarreloj activado!',
-        content: `Objetivo: ganar la ${isPlayerInSA ? 'Copa Libertadores' : 'Champions League'} con ${team.name} en el menor número de temporadas. ¡El reloj corre!`,
+        content: `Objetivo: ganar la ${isPlayerInSA ? 'South American Champions Cup' : 'Continental Champions Cup'} con ${team.name} en el menor número de temporadas. ¡El reloj corre!`,
         date: 'Semana 1'
       }
     });
@@ -414,13 +416,13 @@ export default function ContrarrelojSetup() {
         {/* Header */}
         <div className="contrarreloj-setup__header">
           <button className="btn-back" onClick={() => dispatch({ type: 'SET_SCREEN', payload: 'main_menu' })}>
-            <ArrowLeft size={20} /> Menú
+            <ArrowLeft size={20} /> {t('contrarrelojSetup.menu')}
           </button>
           <div className="header-title">
             <Timer size={32} className="timer-icon" />
             <div>
-              <h1>CONTRARRELOJ</h1>
-              <p className="subtitle">¿Puedes llegar a la cima del fútbol europeo/sudamericano?</p>
+              <h1>{t('contrarrelojSetup.title')}</h1>
+              <p className="subtitle">{t('contrarrelojSetup.subtitle')}</p>
             </div>
           </div>
         </div>
@@ -430,22 +432,22 @@ export default function ContrarrelojSetup() {
           <div className="challenge-card">
             <Trophy size={20} className="icon gold" />
             <div>
-              <strong>Objetivo</strong>
-              <span>Ganar la Champions League o Copa Libertadores</span>
+              <strong>{t('contrarrelojSetup.objective')}</strong>
+              <span>{t('contrarrelojSetup.winChampions')}</span>
             </div>
           </div>
           <div className="challenge-card">
             <AlertTriangle size={20} className="icon red" />
             <div>
-              <strong>Pierdes si</strong>
-              <span>Te despiden o tu presupuesto llega a negativo</span>
+              <strong>{t('contrarrelojSetup.losesIf')}</strong>
+              <span>{t('contrarrelojSetup.fired')}</span>
             </div>
           </div>
           <div className="challenge-card">
             <Zap size={20} className="icon amber" />
             <div>
-              <strong>Ranking</strong>
-              <span>El menor número de temporadas gana</span>
+              <strong>{t('contrarrelojSetup.ranking')}</strong>
+              <span>{t('contrarrelojSetup.fewestSeasons')}</span>
             </div>
           </div>
         </div>
@@ -453,9 +455,9 @@ export default function ContrarrelojSetup() {
         {/* Team selection */}
         <div className="contrarreloj-setup__teams">
           <div className="teams-header">
-            <h2>Elige tu desafío</h2>
+            <h2>{t('contrarrelojSetup.chooseChallenge')}</h2>
             <button className="btn-reroll" onClick={handleReroll}>
-              <RefreshCw size={16} /> Nuevos equipos
+              <RefreshCw size={16} /> {t('contrarrelojSetup.newTeams')}
             </button>
           </div>
 
@@ -484,7 +486,7 @@ export default function ContrarrelojSetup() {
                   <div className="team-card__stats">
                     <div className="stat">
                       <Users size={12} />
-                      <span>{avg} OVR</span>
+                      <span>{avg} {t('contrarrelojSetup.ovr')}</span>
                     </div>
                     <div className="stat">
                       <DollarSign size={12} />
@@ -502,30 +504,33 @@ export default function ContrarrelojSetup() {
           </div>
         </div>
 
-        {/* Selected team detail + start */}
+        {/* Selected team detail + start — modal on mobile */}
         {selectedTeam && (
-          <div className="contrarreloj-setup__confirm">
-            <div className="confirm-team">
-              <div className="badge-large"
-                style={{
-                  background: selectedTeam.colors?.primary || '#1a3a5a',
-                  color: selectedTeam.colors?.secondary || '#fff'
-                }}
-              >
-                {selectedTeam.shortName || selectedTeam.name?.slice(0, 3)}
+          <div className="contrarreloj-setup__confirm-overlay" onClick={() => setSelectedTeam(null)}>
+            <div className="contrarreloj-setup__confirm" onClick={e => e.stopPropagation()}>
+              <button className="confirm-close" onClick={() => setSelectedTeam(null)}>✕</button>
+              <div className="confirm-team">
+                <div className="badge-large"
+                  style={{
+                    background: selectedTeam.colors?.primary || '#1a3a5a',
+                    color: selectedTeam.colors?.secondary || '#fff'
+                  }}
+                >
+                  {selectedTeam.shortName || selectedTeam.name?.slice(0, 3)}
+                </div>
+                <div className="confirm-info">
+                  <h3>{selectedTeam.name}</h3>
+                  <p>{candidates.find(c => c.team.id === selectedTeam.id)?.leagueName}</p>
+                  <p className="target">
+                    {t('contrarrelojSetup.goal')} {isSouthAmericanLeague(selectedLeagueId) ? t('contrarrelojSetup.libertadores') : t('contrarrelojSetup.championsLeague')}
+                  </p>
+                </div>
               </div>
-              <div className="confirm-info">
-                <h3>{selectedTeam.name}</h3>
-                <p>{candidates.find(c => c.team.id === selectedTeam.id)?.leagueName}</p>
-                <p className="target">
-                  Meta: {isSouthAmericanLeague(selectedLeagueId) ? '🏆 Copa Libertadores' : '🏆 Champions League'}
-                </p>
-              </div>
+              <button className="btn-start" onClick={handleStart} disabled={starting}>
+                <Timer size={20} />
+                {starting ? t('contrarrelojSetup.starting') : t('contrarrelojSetup.acceptChallenge')}
+              </button>
             </div>
-            <button className="btn-start" onClick={handleStart} disabled={starting}>
-              <Timer size={20} />
-              {starting ? 'Iniciando...' : '¡ACEPTAR EL DESAFÍO!'}
-            </button>
           </div>
         )}
       </div>

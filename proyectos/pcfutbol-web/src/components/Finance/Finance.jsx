@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { useGame } from '../../context/GameContext';
+import { useTranslation } from 'react-i18next';
 import './Finance.scss';
 
 const WEEKS_PER_YEAR = 52;
@@ -14,6 +15,7 @@ const STADIUM_LEVELS = [
 
 export default function Finance() {
   const { state } = useGame();
+  const { t } = useTranslation();
   
   const formatMoney = (amount) => {
     if (amount === 0) return '€0';
@@ -118,58 +120,58 @@ export default function Finance() {
   return (
     <div className="finance">
       <div className="finance__header">
-        <h2>Banco</h2>
+        <h2>{t('finance.bank')}</h2>
         <div className="finance__budget">
-          <span className="label">Presupuesto actual</span>
+          <span className="label">{t('finance.currentBudget')}</span>
           <span className="amount">{formatMoneyPlain(finances.currentBudget)}</span>
         </div>
       </div>
       
       <div className="finance__section">
-        <h3>Temporada Actual</h3>
+        <h3>{t('finance.currentSeason')}</h3>
         
         <div className="finance__group">
-          <div className="finance__group-title income">Ingresos</div>
+          <div className="finance__group-title income">{t('finance.income')}</div>
           <FinanceRow 
-            label="Abonados (cobro fin temporada)" 
+            label={t('finance.seasonTickets')} 
             amount={finances.seasonTicketIncome}
-            detail={finances.seasonTickets > 0 ? `${finances.seasonTickets.toLocaleString()} × €${finances.seasonTicketPrice} — pendiente` : 'Sin campaña cerrada'}
+            detail={finances.seasonTickets > 0 ? `${finances.seasonTickets.toLocaleString()} × €${finances.seasonTicketPrice} — ${t('finance.pending')}` : t('finance.noCampaignClosed')}
           />
           <FinanceRow 
-            label="Entradas vendidas" 
+            label={t('finance.ticketsSold')} 
             amount={finances.accumulatedTicketIncome}
-            detail="Acumulado partidos jugados"
+            detail={t('finance.accumulatedMatches')}
           />
           {finances.namingIncome > 0 && (
-            <FinanceRow label="Naming del estadio" amount={finances.namingIncome} />
+            <FinanceRow label={t('finance.stadiumNaming')} amount={finances.namingIncome} />
           )}
           {finances.transferEarned > 0 && (
-            <FinanceRow label="Ventas de jugadores" amount={finances.transferEarned} />
+            <FinanceRow label={t('finance.playerSales')} amount={finances.transferEarned} />
           )}
           {finances.prizeIncome > 0 && (
-            <FinanceRow label="Premios y recompensas" amount={finances.prizeIncome} />
+            <FinanceRow label={t('finance.prizesRewards')} amount={finances.prizeIncome} />
           )}
         </div>
         
         <div className="finance__group">
-          <div className="finance__group-title expense">Gastos</div>
+          <div className="finance__group-title expense">{t('finance.expenses')}</div>
           <FinanceRow 
-            label="Salarios plantilla (fin temporada)" 
+            label={t('finance.squadSalaries')} 
             amount={-finances.annualSalaries}
-            detail={`${formatMoneyPlain(finances.weeklySalaries)}/sem × 52 sem — pendiente`}
+            detail={`${formatMoneyPlain(finances.weeklySalaries)}/sem × 52 sem — ${t('finance.pending')}`}
           />
           <FinanceRow 
-            label="Mantenimiento estadio" 
+            label={t('finance.stadiumMaintenance')} 
             amount={-finances.maintenanceCost}
             detail={finances.level}
           />
           {finances.transferSpent > 0 && (
-            <FinanceRow label="Fichajes" amount={-finances.transferSpent} />
+            <FinanceRow label={t('finance.signings')} amount={-finances.transferSpent} />
           )}
         </div>
         
         <div className="finance__total">
-          <span>Balance temporada</span>
+          <span>{t('finance.seasonBalance')}</span>
           <span className={finances.balance >= 0 ? 'positive' : 'negative'}>
             {formatMoney(finances.balance)}
           </span>

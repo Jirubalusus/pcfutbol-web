@@ -4,7 +4,7 @@ import { useGame } from '../../context/GameContext';
 import { useToast } from '../Toast/Toast';
 import { FORMATIONS, TACTICS, calculateTeamStrength } from '../../game/leagueEngine';
 import { getPositionFit, getSlotPosition, FIT_COLORS } from '../../game/positionSystem';
-import { posES, posToEN } from '../../game/positionNames';
+import { translatePosition, posToEN } from '../../game/positionNames';
 import { FORM_STATES } from '../../game/formSystem';
 import { Shield, Scale, Swords, Target, Zap, CheckCircle2, Settings, Dumbbell, Heart, AlertTriangle, Lock, Building2, TrendingUp, BarChart3, Activity, X, Check, HeartPulse, Square, Star, Trophy, Coins, Clock } from 'lucide-react';
 import './Formation.scss';
@@ -691,12 +691,12 @@ export default function Formation() {
           <div className="pcf-table">
             <div className="table-header titulares">
               <span className="col-num">Nº</span>
-              <span className="col-name">JUGADOR</span>
+              <span className="col-name">{t('plantilla.player')}</span>
               <span className="col-status"></span>
               {PLAYER_ATTRIBUTES.map(attr => (
                 <span key={attr.key} className="col-attr">{attr.short}</span>
               ))}
-              <span className="col-pos">POS</span>
+              <span className="col-pos">{t('common.position').substring(0, 3).toUpperCase()}</span>
             </div>
 
             <div className="table-body">
@@ -749,14 +749,14 @@ export default function Formation() {
                       <span
                         key={attr.key}
                         className={`col-attr ${fitClass || (adjOvr >= 80 ? 'high' : adjOvr <= 60 ? 'low' : '')} ${boostClass}`}
-                        title={hasBoosted ? `${player.overall} + ${player.postInjuryBonus} bonus rendimiento (${player.postInjuryWeeksLeft} sem)` : fit && fit.level !== 'perfect' ? `${player.overall} → ${adjOvr} (${posES(player.position)} jugando de ${posES(slotPos)})` : ''}
+                        title={hasBoosted ? `${player.overall} + ${player.postInjuryBonus} bonus (${player.postInjuryWeeksLeft}w)` : fit && fit.level !== 'perfect' ? `${player.overall} → ${adjOvr} (${translatePosition(player.position)} ${t('formation.playingAs')} ${translatePosition(slotPos)})` : ''}
                       >
                         {adjOvr}
                       </span>
                     );
                   })}
                   <span className="col-pos" style={getPositionStyle(slotPos || player.position)}>
-                    {posES(slotPos || player.position)}
+                    {translatePosition(slotPos || player.position)}
                   </span>
                 </div>
               )})}
@@ -819,7 +819,7 @@ export default function Formation() {
                     );
                   })}
                   <span className="col-pos" style={getPositionStyle(player.position)}>
-                    {posES(player.position)}
+                    {translatePosition(player.position)}
                   </span>
                 </div>
               )})}
@@ -882,7 +882,7 @@ export default function Formation() {
                     );
                   })}
                   <span className="col-pos" style={getPositionStyle(player.position)}>
-                    {posES(player.position)}
+                    {translatePosition(player.position)}
                   </span>
                 </div>
               )})}
@@ -957,15 +957,15 @@ export default function Formation() {
 
           {/* PARÁMETROS */}
           <div className="pcf-params">
-            <div className="params-header">PARÁMETROS</div>
+            <div className="params-header">{t('formation.parameters')}</div>
 
             <div className="params-section">
               <div className="param-item">
-                <span className="label">CALIFICACIÓN</span>
+                <span className="label">{t('formation.rating')}</span>
                 <span className="stars">{renderStars(getStarRating(teamStrength.overall))}</span>
               </div>
               <div className="param-item">
-                <span className="label">MEDIA EQUIPO</span>
+                <span className="label">{t('formation.teamAverage')}</span>
                 <span className="value big">{Math.round(teamStrength.overall)}</span>
               </div>
             </div>
@@ -1040,7 +1040,7 @@ export default function Formation() {
                       onClick={() => handlePlayerSelect(player)}
                     >
                       <span className="pos" style={{ color: getPositionColor(player.position) }}>
-                        {posES(player.position)}
+                        {translatePosition(player.position)}
                       </span>
                       <span className="name">{player.name}</span>
                       <span className="ovr">{player.overall}</span>
@@ -1359,7 +1359,7 @@ function InjuredModal({ onClose, players, facilities, dispatch, budget }) {
                   return (
                     <div key={player.name} className={`injured-player ${wasTreated ? 'treated' : ''}`}>
                       <div className="player-info">
-                        <span className="pos">{posES(player.position)}</span>
+                        <span className="pos">{translatePosition(player.position)}</span>
                         <span className="name">{player.name}</span>
                         <span className="ovr">{player.overall}</span>
                       </div>
@@ -1626,7 +1626,7 @@ function MiniPitch({ positions, isActive }) {
           <g key={i}>
             <circle cx={px} cy={py} r={isGK ? 3.5 : 3} fill={isActive ? (isGK ? '#ffd60a' : '#30d158') : (isGK ? '#aa8800' : '#446655')} />
             <text x={px} y={py + 7} textAnchor="middle" fontSize="4.5" fontWeight="bold" fill={isActive ? '#fff' : '#556'}>
-              {posES(pos.id)}
+              {translatePosition(pos.id)}
             </text>
           </g>
         );
@@ -1636,6 +1636,7 @@ function MiniPitch({ positions, isActive }) {
 }
 
 function TacticModal({ onClose, currentTactic, currentFormation, dispatch, onFormationChange }) {
+  const { t } = useTranslation();
   const [tactic, setTactic] = useState(currentTactic);
   const [formation, setFormation] = useState(currentFormation);
   const [showToast, setShowToast] = useState(false);
@@ -1668,7 +1669,7 @@ function TacticModal({ onClose, currentTactic, currentFormation, dispatch, onFor
   const selectedPositions = useMemo(() => {
     const fp = FORMATION_POSITIONS[formation];
     if (!fp) return [];
-    return fp.filter(p => p.id !== 'GK').map(p => posES(p.id));
+    return fp.filter(p => p.id !== 'GK').map(p => translatePosition(p.id));
   }, [formation]);
 
   const handleSave = () => {
@@ -1744,32 +1745,32 @@ function TacticModal({ onClose, currentTactic, currentFormation, dispatch, onFor
 
           {activeTab === 'tactic' && (
             <div className="tactic-options">
-              {tacticOptions.map(t => {
+              {tacticOptions.map(opt => {
                 const IconComponent = {
                   shield: Shield,
                   scale: Scale,
                   swords: Swords,
                   target: Target,
                   zap: Zap
-                }[t.iconType] || Settings;
+                }[opt.iconType] || Settings;
 
                 return (
                   <div
-                    key={t.id}
-                    className={`tactic-option ${tactic === t.id ? 'active' : ''}`}
-                    onClick={() => setTactic(t.id)}
-                    style={{ '--tactic-color': t.color }}
+                    key={opt.id}
+                    className={`tactic-option ${tactic === opt.id ? 'active' : ''}`}
+                    onClick={() => setTactic(opt.id)}
+                    style={{ '--tactic-color': opt.color }}
                   >
-                    <span className="icon" style={{ color: t.color }}>
+                    <span className="icon" style={{ color: opt.color }}>
                       <IconComponent size={24} />
                     </span>
                     <div className="info">
-                      <span className="name">{t.name}</span>
-                      <span className="desc">{t.desc}</span>
-                      <span className="bonus">{t.bonus}</span>
-                      {t.detail && <span className="detail">{t.detail}</span>}
+                      <span className="name">{opt.name}</span>
+                      <span className="desc">{opt.desc}</span>
+                      <span className="bonus">{opt.bonus}</span>
+                      {opt.detail && <span className="detail">{opt.detail}</span>}
                     </div>
-                    {tactic === t.id && <CheckCircle2 size={20} className="check" style={{ color: t.color }} />}
+                    {tactic === opt.id && <CheckCircle2 size={20} className="check" style={{ color: opt.color }} />}
                   </div>
                 );
               })}
@@ -1784,7 +1785,7 @@ function TacticModal({ onClose, currentTactic, currentFormation, dispatch, onFor
 
         {showToast && (
           <div className="tactic-toast">
-            <Check size={14} /> {formation} · {tacticOptions.find(t => t.id === tactic)?.name}
+            <Check size={14} /> {formation} · {tacticOptions.find(opt => opt.id === tactic)?.name}
           </div>
         )}
       </div>

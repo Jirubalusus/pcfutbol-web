@@ -290,21 +290,29 @@ $white: #e8eaed;
           min-width: 0;
           overflow: hidden;
 
+          .name-row {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            min-width: 0;
+          }
+
           .name {
-            display: block;
             font-weight: 600;
             font-size: 0.8rem;
             color: $white;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            flex-shrink: 1;
+            min-width: 0;
           }
 
           .player-tags {
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
             gap: 0.2rem;
-            margin-top: 0.15rem;
+            flex-shrink: 0;
 
             .tag-listed, .tag-retiring, .tag-loan {
               font-size: 0.6rem;

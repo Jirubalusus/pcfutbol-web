@@ -5,6 +5,7 @@
 // ============================================================
 
 import React, { useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { COMPETITIONS } from '../../game/europeanCompetitions';
 import { SA_COMPETITIONS } from '../../game/southAmericanCompetitions';
@@ -15,6 +16,7 @@ import { Trophy, Globe, Star, ChevronDown, ChevronUp, Award, Zap } from 'lucide-
 import './Europe.scss';
 
 export default function Europe() {
+  const { t } = useTranslation();
   const { state } = useGame();
   const [selectedComp, setSelectedComp] = useState(null);
   const [sortBy, setSortBy] = useState('points');
@@ -43,9 +45,9 @@ export default function Europe() {
       <div className="europe">
         <div className="europe__empty">
           <Globe size={48} strokeWidth={1.5} />
-          <h2>Competiciones Europeas</h2>
-          <p>No estás clasificado para competiciones europeas esta temporada.</p>
-          <p className="europe__hint">Termina en los primeros puestos de tu liga para clasificarte.</p>
+          <h2>{t('europe.title')}</h2>
+          <p>{t('europe.notQualified')}</p>
+          <p className="europe__hint">{t('europe.qualificationHint')}</p>
         </div>
       </div>
     );
@@ -114,13 +116,13 @@ export default function Europe() {
 
   const getPhaseLabel = (phase) => {
     const labels = {
-      league: 'Fase de Liga',
-      playoff: 'Playoffs',
-      r16: 'Octavos de Final',
-      qf: 'Cuartos de Final',
-      sf: 'Semifinales',
-      final: 'Final',
-      completed: 'Competición Finalizada'
+      league: t('europe.phases.league'),
+      playoff: t('europe.phases.playoff'),
+      r16: t('europe.phases.r16'),
+      qf: t('europe.phases.qf'),
+      sf: t('europe.phases.sf'),
+      final: t('europe.phases.final'),
+      completed: t('europe.phases.completed')
     };
     return labels[phase] || phase;
   };
@@ -151,7 +153,7 @@ export default function Europe() {
 
       {!activeComp && (
         <div className="europe__empty">
-          <p>Selecciona una competición</p>
+          <p>{t('europe.selectCompetition')}</p>
         </div>
       )}
 
@@ -167,7 +169,7 @@ export default function Europe() {
               <div className="europe__phase-badge">
                 {getPhaseLabel(activeComp.phase)}
                 {activeComp.phase === 'league' && activeComp.currentMatchday > 0 && (
-                  <span> — Jornada {activeComp.currentMatchday}/8</span>
+                  <span> — {t('europe.matchday', { current: activeComp.currentMatchday, total: 8 })}</span>
                 )}
               </div>
             </div>
@@ -176,12 +178,12 @@ export default function Europe() {
               <div className="europe__player-info">
                 <div className="europe__prize">
                   <Award size={16} />
-                  <span>Premios: {formatMoney(playerPrizeMoney)}</span>
+                  <span>{t('europe.prizes', { amount: formatMoney(playerPrizeMoney) })}</span>
                 </div>
                 {!playerAlive && activeComp.phase !== 'league' && (
                   <div className="europe__eliminated-badge">
                     <Zap size={14} />
-                    <span>Eliminado</span>
+                    <span>{t('europe.eliminated')}</span>
                   </div>
                 )}
               </div>
@@ -191,39 +193,39 @@ export default function Europe() {
           {/* Swiss League Table */}
           {(activeComp.phase === 'league' || sortedStandings.length > 0) && (
             <div className="europe__standings">
-              <h3>Clasificación — Fase de Liga</h3>
+              <h3>{t('europe.standings')}</h3>
               <div className="europe__table-wrapper">
                 <table className="europe__table">
                   <thead>
                     <tr>
                       <th className="pos">#</th>
                       <th className="team" onClick={() => handleSort('name')}>
-                        Equipo <SortIcon column="name" />
+                        {t('common.team')} <SortIcon column="name" />
                       </th>
-                      <th className="league-flag">Liga</th>
+                      <th className="league-flag">{t('common.league')}</th>
                       <th className="num" onClick={() => handleSort('played')}>
-                        PJ <SortIcon column="played" />
+                        {t('leagueTable.played')} <SortIcon column="played" />
                       </th>
                       <th className="num" onClick={() => handleSort('won')}>
-                        G <SortIcon column="won" />
+                        {t('leagueTable.won')} <SortIcon column="won" />
                       </th>
                       <th className="num" onClick={() => handleSort('drawn')}>
-                        E <SortIcon column="drawn" />
+                        {t('leagueTable.drawn')} <SortIcon column="drawn" />
                       </th>
                       <th className="num" onClick={() => handleSort('lost')}>
-                        P <SortIcon column="lost" />
+                        {t('leagueTable.lost')} <SortIcon column="lost" />
                       </th>
                       <th className="num" onClick={() => handleSort('gf')}>
-                        GF <SortIcon column="gf" />
+                        {t('leagueTable.goalsFor')} <SortIcon column="gf" />
                       </th>
                       <th className="num" onClick={() => handleSort('ga')}>
-                        GC <SortIcon column="ga" />
+                        {t('leagueTable.goalsAgainst')} <SortIcon column="ga" />
                       </th>
                       <th className="num" onClick={() => handleSort('gd')}>
-                        DG <SortIcon column="gd" />
+                        {t('leagueTable.goalDifference')} <SortIcon column="gd" />
                       </th>
                       <th className="num pts" onClick={() => handleSort('points')}>
-                        Pts <SortIcon column="points" />
+                        {t('leagueTable.points')} <SortIcon column="points" />
                       </th>
                     </tr>
                   </thead>
@@ -283,13 +285,13 @@ export default function Europe() {
               {/* Zone legend */}
               <div className="europe__legend">
                 <span className="legend-item direct">
-                  <span className="dot"></span> 1-8: Octavos directos
+                  <span className="dot"></span> {t('europe.legend.directQualification')}
                 </span>
                 <span className="legend-item playoff">
-                  <span className="dot"></span> 9-24: Playoffs
+                  <span className="dot"></span> {t('europe.legend.playoff')}
                 </span>
                 <span className="legend-item eliminated">
-                  <span className="dot"></span> 25-32: Eliminado
+                  <span className="dot"></span> {t('europe.legend.eliminated')}
                 </span>
               </div>
             </div>
@@ -298,7 +300,7 @@ export default function Europe() {
           {/* Knockout Bracket */}
           {activeComp.phase !== 'league' && activeComp.phase !== 'completed' && (
             <div className="europe__knockout">
-              <h3>Fase Eliminatoria — {getPhaseLabel(activeComp.phase)}</h3>
+              <h3>{t('europe.knockoutPhase', { phase: getPhaseLabel(activeComp.phase) })}</h3>
               {renderKnockoutPhase(activeComp, state.teamId)}
             </div>
           )}
@@ -307,12 +309,12 @@ export default function Europe() {
           {activeComp.phase === 'completed' && activeComp.finalResult && (
             <div className="europe__final-result">
               <Trophy size={32} />
-              <h3>¡{activeComp.config.name} — Campeón!</h3>
+              <h3>{t('europe.championTitle', { competition: activeComp.config.name })}</h3>
               <p className="europe__winner-name">
-                {activeComp.finalResult.winner?.teamName || 'Desconocido'}
+                {activeComp.finalResult.winner?.teamName || t('common.unknown')}
               </p>
               <p className="europe__final-score">
-                Final: {activeComp.finalResult.aggregate}
+                {t('europe.finalScore', { score: activeComp.finalResult.aggregate })}
               </p>
             </div>
           )}
@@ -320,7 +322,7 @@ export default function Europe() {
           {/* Recent Results */}
           {activeComp.results.length > 0 && (
             <div className="europe__results">
-              <h3>Últimos Resultados</h3>
+              <h3>{t('europe.recentResults')}</h3>
               <div className="europe__results-list">
                 {activeComp.results.slice(-12).reverse().map((r, idx) => {
                   const homeTeam = activeComp.teams.find(t => t.teamId === r.homeTeamId);
@@ -363,7 +365,7 @@ function renderKnockoutPhase(compState, playerTeamId) {
   );
 
   if (phasesToShow.length === 0) {
-    return <p className="europe__no-data">Pendiente de sorteo...</p>;
+    return <p className="europe__no-data">{t('europe.pendingDraw')}</p>;
   }
 
   return (
@@ -371,10 +373,10 @@ function renderKnockoutPhase(compState, playerTeamId) {
       {phasesToShow.map(phase => (
         <div key={phase} className="europe__bracket-round">
           <h4 className="europe__bracket-title">
-            {phase === 'playoff' ? 'Playoffs' :
-             phase === 'r16' ? 'Octavos' :
-             phase === 'qf' ? 'Cuartos' :
-             phase === 'sf' ? 'Semifinales' : 'Final'}
+            {phase === 'playoff' ? t('europe.phases.playoff') :
+             phase === 'r16' ? t('europe.phases.r16Short') :
+             phase === 'qf' ? t('europe.phases.qfShort') :
+             phase === 'sf' ? t('europe.phases.sfShort') : t('europe.phases.final')}
           </h4>
           <div className="europe__bracket-matchups">
             {phaseMatchups[phase].map((matchup, idx) => {
@@ -399,7 +401,7 @@ function renderKnockoutPhase(compState, playerTeamId) {
                   </div>
                   {hasResult && (
                     <div className="europe__matchup-agg">
-                      Agg: {matchup.aggregate}
+                      {t('europe.aggregate', { score: matchup.aggregate })}
                     </div>
                   )}
                 </div>

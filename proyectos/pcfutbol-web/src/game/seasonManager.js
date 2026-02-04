@@ -348,10 +348,10 @@ export function prepareNewSeason(currentState, seasonResult) {
  */
 export function getCompetitionName(qualification) {
   switch (qualification) {
-    case 'champions': return 'UEFA Champions League';
-    case 'europaLeague': return 'UEFA Europa League';
-    case 'conference': return 'UEFA Conference League';
-    case 'libertadores': return 'Copa Libertadores';
+    case 'champions': return 'Continental Champions Cup';
+    case 'europaLeague': return 'Continental Shield';
+    case 'conference': return 'Continental Trophy';
+    case 'libertadores': return 'South American Champions Cup';
     case 'sudamericana': return 'Copa Sudamericana';
     default: return null;
   }

@@ -4,32 +4,34 @@ import {
   Coins, Building2, Building, Wrench, Mail, FastForward, SkipForward,
   Settings as SettingsIcon, LogOut, X
 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import FootballIcon from '../icons/FootballIcon';
 import { useGame } from '../../context/GameContext';
 // Market is always open now
 import Settings from '../Settings/Settings';
 import './MobileNav.scss';
 
-const TABS = [
-  { id: 'overview', icon: <Home size={20} />, label: 'Inicio' },
-  { id: 'plantilla', icon: <Users size={20} />, label: 'Plantilla' },
-  { id: 'competitions', icon: <Award size={20} />, label: 'Compet.' },
-  { id: 'menu', icon: <Menu size={20} />, label: 'Más' },
-];
-
-const MENU_ITEMS = [
-  { id: 'formation', icon: <FootballIcon size={20} />, label: 'Formación' },
-  { id: 'objectives', icon: <Target size={20} />, label: 'Objetivos' },
-  { id: 'calendar', icon: <Calendar size={20} />, label: 'Calendario' },
-  { id: 'transfers', icon: <Coins size={20} />, label: 'Fichajes' },
-  { id: 'stadium', icon: <Building2 size={20} />, label: 'Estadio' },
-  { id: 'finance', icon: <Building size={20} />, label: 'Banco' },
-  { id: 'facilities', icon: <Wrench size={20} />, label: 'Instalaciones' },
-  { id: 'messages', icon: <Mail size={20} />, label: 'Mensajes' },
-];
-
 export default function MobileNav({ activeTab, onTabChange, onAdvanceWeek, onSimulate, simulating }) {
+  const { t } = useTranslation();
   const { state, dispatch } = useGame();
+  
+  const TABS = [
+    { id: 'overview', icon: <Home size={20} />, label: t('mobileNav.home') },
+    { id: 'plantilla', icon: <Users size={20} />, label: t('sidebar.squad') },
+    { id: 'competitions', icon: <Award size={20} />, label: t('mobileNav.competitions') },
+    { id: 'menu', icon: <Menu size={20} />, label: t('mobileNav.more') },
+  ];
+
+  const MENU_ITEMS = [
+    { id: 'formation', icon: <FootballIcon size={20} />, label: t('sidebar.formation') },
+    { id: 'objectives', icon: <Target size={20} />, label: t('sidebar.objectives') },
+    { id: 'calendar', icon: <Calendar size={20} />, label: t('sidebar.calendar') },
+    { id: 'transfers', icon: <Coins size={20} />, label: t('sidebar.transfers') },
+    { id: 'stadium', icon: <Building2 size={20} />, label: t('sidebar.stadium') },
+    { id: 'finance', icon: <Building size={20} />, label: t('sidebar.finance') },
+    { id: 'facilities', icon: <Wrench size={20} />, label: t('sidebar.facilities') },
+    { id: 'messages', icon: <Mail size={20} />, label: t('sidebar.messages') },
+  ];
   const [showMenu, setShowMenu] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [showSimOptions, setShowSimOptions] = useState(false);
@@ -73,7 +75,7 @@ export default function MobileNav({ activeTab, onTabChange, onAdvanceWeek, onSim
               onClick={() => !simDisabled && setShowSimOptions(!showSimOptions)}
               disabled={simDisabled}
             >
-              <FastForward size={14} /> {simulating ? 'Simulando...' : 'Simular'}
+              <FastForward size={14} /> {simulating ? t('office.simulating') : t('office.simulate')}
             </button>
             {showSimOptions && !simDisabled && (() => {
               const maxWeek = state.fixtures?.length > 0
@@ -81,10 +83,10 @@ export default function MobileNav({ activeTab, onTabChange, onAdvanceWeek, onSim
               const halfSeason = Math.ceil(maxWeek / 2);
               const pastHalf = state.currentWeek >= halfSeason;
               const simOptions = [
-                { weeks: 3, label: '3 partidos' },
+                { weeks: 3, label: t('office.threeMatches') },
                 pastHalf
-                  ? { weeks: maxWeek - state.currentWeek + 1, label: 'Fin de temporada' }
-                  : { weeks: halfSeason - state.currentWeek, label: 'Media temporada' },
+                  ? { weeks: maxWeek - state.currentWeek + 1, label: t('office.endOfSeason') }
+                  : { weeks: halfSeason - state.currentWeek, label: t('office.halfSeason') },
               ];
               return (
                 <>
@@ -104,7 +106,7 @@ export default function MobileNav({ activeTab, onTabChange, onAdvanceWeek, onSim
             })()}
           </div>
           <button className="mobile-nav__action-btn mobile-nav__action-btn--advance" onClick={onAdvanceWeek}>
-            <SkipForward size={14} /> Avanzar
+            <SkipForward size={14} /> {t('mobileNav.advance')}
           </button>
         </div>
 
@@ -131,7 +133,7 @@ export default function MobileNav({ activeTab, onTabChange, onAdvanceWeek, onSim
         <div className="mobile-menu" onClick={() => setShowMenu(false)}>
           <div className="mobile-menu__content" onClick={e => e.stopPropagation()}>
             <div className="mobile-menu__header">
-              <h3>Menú</h3>
+              <h3>{t('mobileNav.menu')}</h3>
               <button className="close-btn" onClick={() => setShowMenu(false)}><X size={16} /></button>
             </div>
 
@@ -154,14 +156,14 @@ export default function MobileNav({ activeTab, onTabChange, onAdvanceWeek, onSim
                 onClick={handleOpenSettings}
               >
                 <span className="icon"><SettingsIcon size={20} /></span>
-                <span className="label">Opciones</span>
+                <span className="label">{t('sidebar.options')}</span>
               </button>
               <button
                 className="mobile-menu__footer-btn mobile-menu__footer-btn--exit"
                 onClick={handleMainMenu}
               >
                 <span className="icon"><LogOut size={20} /></span>
-                <span className="label">Menú Principal</span>
+                <span className="label">{t('sidebar.mainMenu')}</span>
               </button>
             </div>
           </div>

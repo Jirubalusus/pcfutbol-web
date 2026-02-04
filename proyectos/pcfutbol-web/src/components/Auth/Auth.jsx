@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Mail, Lock, FileText, Key, FlaskConical } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import './Auth.scss';
 
 export default function Auth({ onBack }) {
+  const { t } = useTranslation();
   const [mode, setMode] = useState('login'); // login, register, reset, verify
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -38,16 +40,16 @@ export default function Auth({ onBack }) {
         await login(email, password);
       } else if (mode === 'register') {
         if (!displayName.trim()) {
-          setLocalError('Introduce un nombre de usuario');
+          setLocalError(t('auth.enterUsername'));
           setIsLoading(false);
           return;
         }
         await register(email, password, displayName);
         setMode('verify');
-        setSuccess('¡Cuenta creada! Revisa tu email para verificar tu cuenta.');
+        setSuccess(t('auth.accountCreated'));
       } else if (mode === 'reset') {
         await sendPasswordReset(email);
-        setSuccess('Email de recuperación enviado. Revisa tu bandeja de entrada.');
+        setSuccess(t('auth.passwordResetSent'));
       }
     } catch (err) {
       // Error is set in context
@@ -74,7 +76,7 @@ export default function Auth({ onBack }) {
     setIsLoading(true);
     try {
       await resendVerification();
-      setSuccess('Email de verificación reenviado');
+      setSuccess(t('auth.verificationResent'));
     } catch (err) {
       // Error is set in context
     }
@@ -85,7 +87,7 @@ export default function Auth({ onBack }) {
     setIsLoading(true);
     const verified = await checkEmailVerified();
     if (!verified) {
-      setLocalError('Email aún no verificado. Revisa tu bandeja de entrada.');
+      setLocalError(t('auth.emailNotVerified'));
     }
     setIsLoading(false);
   };
@@ -95,17 +97,17 @@ export default function Auth({ onBack }) {
     return (
       <div className="auth">
         <div className="auth__card">
-          <button className="auth__back" onClick={onBack}>← Volver</button>
+          <button className="auth__back" onClick={onBack}>← {t('common.back')}</button>
           
           <div className="auth__header">
             <div className="auth__icon"><Mail size={22} /></div>
-            <h2>Verifica tu email</h2>
+            <h2>{t('auth.verifyEmail')}</h2>
           </div>
 
           <div className="auth__verify-message">
-            <p>Hemos enviado un email de verificación a:</p>
+            <p>{t('auth.verificationSent')}</p>
             <p className="auth__email-display">{user?.email || email}</p>
-            <p>Haz clic en el enlace del email para activar tu cuenta.</p>
+            <p>{t('auth.clickLinkToActivate')}</p>
           </div>
 
           {(error || localError) && (
@@ -122,7 +124,7 @@ export default function Auth({ onBack }) {
               onClick={handleCheckVerification}
               disabled={isLoading}
             >
-              {isLoading ? 'Comprobando...' : 'Ya lo verifiqué'}
+              {isLoading ? t('auth.checking') : t('auth.alreadyVerified')}
             </button>
             
             <button 
@@ -130,7 +132,7 @@ export default function Auth({ onBack }) {
               onClick={handleResendVerification}
               disabled={isLoading}
             >
-              Reenviar email
+              {t('auth.resendEmail')}
             </button>
           </div>
         </div>
@@ -141,16 +143,16 @@ export default function Auth({ onBack }) {
   return (
     <div className="auth">
       <div className="auth__card">
-        <button className="auth__back" onClick={onBack}>← Volver</button>
+        <button className="auth__back" onClick={onBack}>← {t('common.back')}</button>
         
         <div className="auth__header">
           <div className="auth__icon">
             {mode === 'login' ? <Lock size={22} /> : mode === 'register' ? <FileText size={22} /> : <Key size={22} />}
           </div>
           <h2>
-            {mode === 'login' && 'Iniciar Sesión'}
-            {mode === 'register' && 'Crear Cuenta'}
-            {mode === 'reset' && 'Recuperar Contraseña'}
+            {mode === 'login' && t('auth.login')}
+            {mode === 'register' && t('auth.createAccount')}
+            {mode === 'reset' && t('auth.resetPassword')}
           </h2>
         </div>
 
@@ -167,7 +169,7 @@ export default function Auth({ onBack }) {
                 <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
                 <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
               </svg>
-              Continuar con Google
+              {t('auth.continueWithGoogle')}
             </button>
             
             <button 
@@ -175,45 +177,45 @@ export default function Auth({ onBack }) {
               onClick={loginAsGuest}
               disabled={isLoading}
             >
-              <FlaskConical size={14} /> Entrar como Invitado (Pruebas)
+              <FlaskConical size={14} /> {t('auth.enterAsGuest')}
             </button>
           </>
         )}
 
         {mode !== 'reset' && (
           <div className="auth__divider">
-            <span>o usa tu email</span>
+            <span>{t('auth.orUseEmail')}</span>
           </div>
         )}
 
         <form onSubmit={handleSubmit} className="auth__form">
           {mode === 'register' && (
             <div className="auth__field">
-              <label>Nombre de usuario</label>
+              <label>{t('auth.username')}</label>
               <input
                 type="text"
                 value={displayName}
                 onChange={(e) => setDisplayName(e.target.value)}
-                placeholder="Tu nombre en el juego"
+                placeholder={t('auth.usernamePlaceholder')}
                 required
               />
             </div>
           )}
 
           <div className="auth__field">
-            <label>Email</label>
+            <label>{t('auth.email')}</label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="tu@email.com"
+              placeholder={t('auth.emailPlaceholder')}
               required
             />
           </div>
 
           {mode !== 'reset' && (
             <div className="auth__field">
-              <label>Contraseña</label>
+              <label>{t('auth.password')}</label>
               <input
                 type="password"
                 value={password}
@@ -238,10 +240,10 @@ export default function Auth({ onBack }) {
             className="auth__btn auth__btn--primary"
             disabled={isLoading}
           >
-            {isLoading ? 'Cargando...' : (
-              mode === 'login' ? 'Entrar' :
-              mode === 'register' ? 'Crear cuenta' :
-              'Enviar email'
+            {isLoading ? t('common.loading') : (
+              mode === 'login' ? t('auth.enter') :
+              mode === 'register' ? t('auth.createAccount') :
+              t('auth.sendEmail')
             )}
           </button>
         </form>
@@ -250,23 +252,23 @@ export default function Auth({ onBack }) {
           {mode === 'login' && (
             <>
               <button onClick={() => { setMode('reset'); clearError(); setSuccess(''); }}>
-                ¿Olvidaste tu contraseña?
+                {t('auth.forgotPassword')}
               </button>
               <button onClick={() => { setMode('register'); clearError(); setSuccess(''); }}>
-                ¿No tienes cuenta? Regístrate
+                {t('auth.noAccount')}
               </button>
             </>
           )}
           
           {mode === 'register' && (
             <button onClick={() => { setMode('login'); clearError(); setSuccess(''); }}>
-              ¿Ya tienes cuenta? Inicia sesión
+              {t('auth.haveAccount')}
             </button>
           )}
           
           {mode === 'reset' && (
             <button onClick={() => { setMode('login'); clearError(); setSuccess(''); }}>
-              Volver a iniciar sesión
+              {t('auth.backToLogin')}
             </button>
           )}
         </div>

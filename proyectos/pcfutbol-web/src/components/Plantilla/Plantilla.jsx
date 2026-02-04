@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { Check, Tag, ClipboardList, Bell, AlertCircle, Clock, Coins, Calendar, Cake, Flag, PenTool, UserMinus, CircleDollarSign, XCircle, X } from 'lucide-react';
 import { FORM_STATES } from '../../game/formSystem';
-import { posES, posToEN } from '../../game/positionNames';
+import { translatePosition, posToEN } from '../../game/positionNames';
 import { calculateMarketValue } from '../../game/globalTransferEngine';
 import './Plantilla.scss';
 
@@ -366,13 +366,13 @@ export default function Plantilla() {
         
         <div className="header-finances">
           <div className="finance-box budget">
-            <span className="label">Presupuesto</span>
+            <span className="label">{t('plantilla.budget')}</span>
             <span className="value">{formatMoney(budget)}</span>
           </div>
           <div className="finance-box salary">
-            <span className="label">Masa salarial</span>
-            <span className="value">{formatMoney(totalYearlySalary)}/año</span>
-            <span className="yearly">{formatMoney(totalWeeklySalary)}/sem ({salaryPercentage}% del presupuesto)</span>
+            <span className="label">{t('plantilla.weeklySalary')}</span>
+            <span className="value">{formatMoney(totalYearlySalary)}{t('plantilla.perYear')}</span>
+            <span className="yearly">{formatMoney(totalWeeklySalary)}{t('plantilla.perWeek')} ({salaryPercentage}% {t('plantilla.ofBudget')})</span>
           </div>
         </div>
       </div>
@@ -382,7 +382,7 @@ export default function Plantilla() {
         <div className="plantilla__alerts">
           <div className="alert-header">
             <span className="alert-icon"><Bell size={14} /></span>
-            <span className="alert-title">{playersNeedingAttention.length} jugador{playersNeedingAttention.length > 1 ? 'es' : ''} requiere{playersNeedingAttention.length > 1 ? 'n' : ''} atención</span>
+            <span className="alert-title">{t('plantilla.playersNeedAttention', { count: playersNeedingAttention.length })}</span>
           </div>
           <div className="alert-list">
             {playersNeedingAttention.slice(0, 3).map(p => {
@@ -399,18 +399,18 @@ export default function Plantilla() {
                     setActionModal({ type: 'mobile-actions', player: p });
                   }
                 }}>
-                  <span className="pos" style={{ color: getPositionColor(p.position) }}>{posES(p.position)}</span>
+                  <span className="pos" style={{ color: getPositionColor(p.position) }}>{translatePosition(p.position)}</span>
                   <span className="name">{p.name}</span>
                   <span className="reason">
-                    {p.retiring ? <><AlertCircle size={12} /> Se retira</> 
-                      : wantsLeave ? <><AlertCircle size={12} /> Quiere irse</> 
+                    {p.retiring ? <><AlertCircle size={12} /> {t('plantilla.retiring')}</> 
+                      : wantsLeave ? <><AlertCircle size={12} /> {t('plantilla.wantsToLeaveAlert')}</> 
                       : <><Clock size={12} /> {contract.label}</>}
                   </span>
                 </div>
               );
             })}
             {playersNeedingAttention.length > 3 && (
-              <span className="more">+{playersNeedingAttention.length - 3} más</span>
+              <span className="more">{t('plantilla.more', { count: playersNeedingAttention.length - 3 })}</span>
             )}
           </div>
         </div>
@@ -464,26 +464,28 @@ export default function Plantilla() {
             >
               <div className="player-main">
                 <span className="pos" style={{ background: getPositionColor(player.position) }}>
-                  {posES(player.position)}
+                  {translatePosition(player.position)}
                 </span>
                 <div className="info">
-                  <span className="name">{player.name}</span>
-                  {(player.onLoan || isTransferListed || player.retiring) && (
-                    <div className="player-tags">
-                      {player.onLoan && <span className="tag-loan">🤝 EN CESIÓN</span>}
-                      {isTransferListed && !player.onLoan && (
-                        <span 
-                          className="tag-listed tag-listed--clickable" 
-                          onClick={(e) => { e.stopPropagation(); handleUnlist(player); }}
-                          title="Click para quitar de venta"
-                        >
-                          🏷️ En venta
-                        </span>
-                      )}
-                      {player.retiring && <span className="tag-retiring"><Flag size={12} /> Se retira</span>}
-                    </div>
-                  )}
-                  <span className="meta">{player.overall} OVR · {player.age} años</span>
+                  <div className="name-row">
+                    <span className="name">{player.name}</span>
+                    {(player.onLoan || isTransferListed || player.retiring) && (
+                      <div className="player-tags">
+                        {player.onLoan && <span className="tag-loan">🤝 {t('plantilla.onLoanTag')}</span>}
+                        {isTransferListed && !player.onLoan && (
+                          <span 
+                            className="tag-listed tag-listed--clickable" 
+                            onClick={(e) => { e.stopPropagation(); handleUnlist(player); }}
+                            title={t('plantilla.removeFromSale')}
+                          >
+                            🏷️ {t('plantilla.forSaleTag')}
+                          </span>
+                        )}
+                        {player.retiring && <span className="tag-retiring"><Flag size={12} /> {t('plantilla.retiring')}</span>}
+                      </div>
+                    )}
+                  </div>
+                  <span className="meta">{player.overall} OVR · {player.age} {t('plantilla.years')}</span>
                 </div>
               </div>
 
@@ -491,15 +493,15 @@ export default function Plantilla() {
               <span className="player-ovr-badge">{player.overall}</span>
               
               <div className="player-contract">
-                <span className="salary">{formatMoney(yearlySalary)}/año</span>
-                <span className="yearly">{formatMoney(totalContractCost)} total ({contractYears}a)</span>
+                <span className="salary">{formatMoney(yearlySalary)}{t('plantilla.perYear')}</span>
+                <span className="yearly">{formatMoney(totalContractCost)} {t('plantilla.total')} ({contractYears}{t('plantilla.years').charAt(0)})</span>
               </div>
               
               <div className="player-status">
                 <span className="contract" style={{ color: contract.color }}>
                   <Calendar size={12} /> {contract.label}
                 </span>
-                <span className={`renew-icon ${wantsToRenew(player) && !player.retiring ? '' : 'hidden'}`} title="Se puede renovar">
+                <span className={`renew-icon ${wantsToRenew(player) && !player.retiring ? '' : 'hidden'}`} title={t('plantilla.canRenew')}>
                   <PenTool size={12} />
                 </span>
               </div>
@@ -507,8 +509,8 @@ export default function Plantilla() {
               <div className="player-actions">
                 {player.onLoan ? (
                   <>
-                    <span className="loan-info-badge" title={`Cedido por ${player.loanFromTeam}`}>
-                      🤝 Cedido
+                    <span className="loan-info-badge" title={`${t('plantilla.loanedBadge')} - ${player.loanFromTeam}`}>
+                      🤝 {t('plantilla.loanedBadge')}
                     </span>
                   </>
                 ) : (
@@ -516,21 +518,21 @@ export default function Plantilla() {
                     <button 
                       className="btn-renew" 
                       onClick={() => handleRenew(player)} 
-                      title={player.retiring ? "El jugador ha anunciado su retiro" : !wantsToRenew(player) ? "El jugador no necesita renovar (le quedan más de 2 años)" : "Renovar"}
+                      title={player.retiring ? t('plantilla.playerRetiring') : !wantsToRenew(player) ? t('plantilla.cannotRenew') : t('plantilla.renew')}
                       disabled={!wantsToRenew(player)}
                     >
                       <PenTool size={14} />
                     </button>
                     {isTransferListed ? (
-                      <button className="btn-sell btn-sell--listed" onClick={() => handleUnlist(player)} title="Quitar de venta">
+                      <button className="btn-sell btn-sell--listed" onClick={() => handleUnlist(player)} title={t('plantilla.removeFromSale')}>
                         🏷️
                       </button>
                     ) : (
-                      <button className="btn-sell" onClick={() => handleSell(player)} title="Poner en venta">
+                      <button className="btn-sell" onClick={() => handleSell(player)} title={t('plantilla.putForSale')}>
                         <Tag size={14} />
                       </button>
                     )}
-                    <button className="btn-release" onClick={() => handleRelease(player)} title="Liberar">
+                    <button className="btn-release" onClick={() => handleRelease(player)} title={t('plantilla.release')}>
                       <UserMinus size={14} />
                     </button>
                   </>
@@ -555,40 +557,40 @@ export default function Plantilla() {
                 <div className="modal-content">
                   <div className="player-summary">
                     <span className="pos" style={{ background: getPositionColor(selectedPlayer.position) }}>
-                      {posES(selectedPlayer.position)}
+                      {translatePosition(selectedPlayer.position)}
                     </span>
                     <span className="ovr">{selectedPlayer.overall}</span>
-                    <span className="age">{selectedPlayer.age} años</span>
+                    <span className="age">{selectedPlayer.age} {t('plantilla.years')}</span>
                   </div>
                   <div className="mobile-action-list">
                     {selectedPlayer.onLoan ? (
                       <>
                         <div className="mobile-action-info">
-                          🤝 Jugador cedido por {selectedPlayer.loanFromTeam} — No se puede vender ni liberar
+                          🤝 {t('plantilla.loanedBy', { team: selectedPlayer.loanFromTeam })}
                         </div>
                         <button className="mobile-action-btn mobile-action-btn--cancel" onClick={closeModal}>
-                          <X size={14} /> Cerrar
+                          <X size={14} /> {t('common.close')}
                         </button>
                       </>
                     ) : (
                       <>
                         <button className="mobile-action-btn" onClick={() => { closeModal(); handleRenew(selectedPlayer); }} disabled={!wantsToRenew(selectedPlayer)}>
-                          <PenTool size={14} /> Renovar contrato
+                          <PenTool size={14} /> {t('plantilla.renewContract')}
                         </button>
                         {selectedPlayer.transferListed ? (
                           <button className="mobile-action-btn mobile-action-btn--unlist" onClick={() => { closeModal(); handleUnlist(selectedPlayer); }}>
-                            🏷️ Quitar de venta
+                            🏷️ {t('plantilla.removeFromSale')}
                           </button>
                         ) : (
                           <button className="mobile-action-btn" onClick={() => { closeModal(); handleSell(selectedPlayer); }}>
-                            <Tag size={14} /> Poner en venta
+                            <Tag size={14} /> {t('plantilla.putForSale')}
                           </button>
                         )}
                         <button className="mobile-action-btn mobile-action-btn--danger" onClick={() => { closeModal(); handleRelease(selectedPlayer); }}>
-                          <UserMinus size={14} /> Liberar jugador
+                          <UserMinus size={14} /> {t('plantilla.releasePlayerBtn')}
                         </button>
                         <button className="mobile-action-btn mobile-action-btn--cancel" onClick={closeModal}>
-                          <X size={14} /> Cancelar
+                          <X size={14} /> {t('common.cancel')}
                         </button>
                       </>
                     )}
@@ -607,46 +609,46 @@ export default function Plantilla() {
               return (
               <>
                 <div className="modal-header renew">
-                  <h3>Renovar a {selectedPlayer.name}</h3>
+                  <h3>{t('plantilla.renewPlayer', { name: selectedPlayer.name })}</h3>
                 </div>
                 <div className="modal-content">
                   <div className="player-summary">
                     <span className="pos" style={{ background: getPositionColor(selectedPlayer.position) }}>
-                      {posES(selectedPlayer.position)}
+                      {translatePosition(selectedPlayer.position)}
                     </span>
                     <span className="ovr">{selectedPlayer.overall}</span>
-                    <span className="age">{selectedPlayer.age} años</span>
+                    <span className="age">{selectedPlayer.age} {t('plantilla.years')}</span>
                   </div>
                   
                   <div className="comparison">
                     <div className="current">
-                      <span className="label">Contrato actual</span>
-                      <span className="salary">{formatMoney(currentYearlySalary)}/año</span>
-                      <span className="yearly">Total: {formatMoney(currentYearlySalary * currentContractYears)}</span>
-                      <span className="years">{currentContractYears} año{currentContractYears !== 1 ? 's' : ''}</span>
+                      <span className="label">{t('plantilla.currentContractLabel')}</span>
+                      <span className="salary">{formatMoney(currentYearlySalary)}{t('plantilla.perYear')}</span>
+                      <span className="yearly">{t('plantilla.total')}: {formatMoney(currentYearlySalary * currentContractYears)}</span>
+                      <span className="years">{currentContractYears} {t('plantilla.years')}</span>
                     </div>
                     <div className="arrow">→</div>
                     <div className="new">
-                      <span className="label">Pide</span>
-                      <span className="salary">{formatMoney(newYearlySalary)}/año</span>
-                      <span className="yearly">Total: {formatMoney(newYearlySalary * actionModal.demand.years)}</span>
-                      <span className="years">{actionModal.demand.years} años</span>
+                      <span className="label">{t('plantilla.demands')}</span>
+                      <span className="salary">{formatMoney(newYearlySalary)}{t('plantilla.perYear')}</span>
+                      <span className="yearly">{t('plantilla.total')}: {formatMoney(newYearlySalary * actionModal.demand.years)}</span>
+                      <span className="years">{actionModal.demand.years} {t('plantilla.years')}</span>
                     </div>
                   </div>
                   
                   <div className="impact">
-                    <span className="impact-label">Impacto en presupuesto:</span>
+                    <span className="impact-label">{t('plantilla.budgetImpact')}</span>
                     <span className={`impact-value ${salaryDiff > 0 ? 'negative' : 'positive'}`}>
-                      {salaryDiff > 0 ? '+' : ''}{formatMoney(salaryDiff)}/año
+                      {salaryDiff > 0 ? '+' : ''}{formatMoney(salaryDiff)}{t('plantilla.perYear')}
                     </span>
                   </div>
                   
                   <div className="modal-actions">
                     <button className="btn-confirm" onClick={confirmRenew}>
-                      Aceptar y renovar
+                      {t('plantilla.acceptAndRenew')}
                     </button>
                     <button className="btn-cancel" onClick={closeModal}>
-                      Cancelar
+                      {t('common.cancel')}
                     </button>
                   </div>
                 </div>
@@ -658,43 +660,43 @@ export default function Plantilla() {
             {actionModal.type === 'sell' && (
               <>
                 <div className="modal-header sell">
-                  <h3><Tag size={14} /> Poner en venta a {selectedPlayer.name}</h3>
+                  <h3><Tag size={14} /> {t('plantilla.sellPlayer', { name: selectedPlayer.name })}</h3>
                 </div>
                 <div className="modal-content">
                   <div className="player-summary">
                     <span className="pos" style={{ background: getPositionColor(selectedPlayer.position) }}>
-                      {posES(selectedPlayer.position)}
+                      {translatePosition(selectedPlayer.position)}
                     </span>
                     <span className="ovr">{selectedPlayer.overall}</span>
-                    <span className="age">{selectedPlayer.age} años</span>
+                    <span className="age">{selectedPlayer.age} {t('plantilla.years')}</span>
                   </div>
                   
                   <div className="sell-info">
                     <div className="value-box">
-                      <span className="label">Valor de mercado</span>
+                      <span className="label">{t('plantilla.marketValue')}</span>
                       <span className="value">{formatMoney(actionModal.value)}</span>
                     </div>
                     <div className="salary-box">
-                      <span className="label">Salario actual</span>
-                      <span className="value">{formatMoney((selectedPlayer.salary || 0) * WEEKS_PER_YEAR)}/año</span>
+                      <span className="label">{t('plantilla.currentSalary')}</span>
+                      <span className="value">{formatMoney((selectedPlayer.salary || 0) * WEEKS_PER_YEAR)}{t('plantilla.perYear')}</span>
                     </div>
                   </div>
                   
                   <div className="impact">
-                    <span className="impact-label"><Coins size={12} /> Si se vende:</span>
+                    <span className="impact-label"><Coins size={12} /> {t('plantilla.ifSold')}</span>
                     <span className="impact-value positive">
-                      +{formatMoney(actionModal.value)} + {formatMoney((selectedPlayer.salary || 0) * WEEKS_PER_YEAR)}/año ahorrados
+                      +{formatMoney(actionModal.value)} + {formatMoney((selectedPlayer.salary || 0) * WEEKS_PER_YEAR)}{t('plantilla.perYear')} {t('plantilla.savedSalary')}
                     </span>
                   </div>
                   
-                  <p className="note">El jugador aparecerá en el mercado. Otros equipos pueden hacer ofertas.</p>
+                  <p className="note">{t('plantilla.sellNote')}</p>
                   
                   <div className="modal-actions">
                     <button className="btn-confirm" onClick={confirmSell}>
-                      <Tag size={14} /> Poner en venta
+                      <Tag size={14} /> {t('plantilla.putForSale')}
                     </button>
                     <button className="btn-cancel" onClick={closeModal}>
-                      Cancelar
+                      {t('common.cancel')}
                     </button>
                   </div>
                 </div>
@@ -705,28 +707,28 @@ export default function Plantilla() {
             {actionModal.type === 'unlist' && (
               <>
                 <div className="modal-header unlist">
-                  <h3>🏷️ Quitar de venta a {selectedPlayer.name}</h3>
+                  <h3>🏷️ {t('plantilla.unlistPlayer', { name: selectedPlayer.name })}</h3>
                 </div>
                 <div className="modal-content">
                   <div className="player-summary">
                     <span className="pos" style={{ background: getPositionColor(selectedPlayer.position) }}>
-                      {posES(selectedPlayer.position)}
+                      {translatePosition(selectedPlayer.position)}
                     </span>
                     <span className="ovr">{selectedPlayer.overall}</span>
-                    <span className="age">{selectedPlayer.age} años</span>
+                    <span className="age">{selectedPlayer.age} {t('plantilla.years')}</span>
                   </div>
                   
                   <div className="sell-info">
-                    <p>Este jugador está actualmente en la lista de transferibles. ¿Quieres retirarlo del mercado?</p>
-                    <p className="note">Dejará de recibir ofertas de otros equipos.</p>
+                    <p>{t('plantilla.unlistQuestion')}</p>
+                    <p className="note">{t('plantilla.unlistNote')}</p>
                   </div>
                   
                   <div className="modal-actions">
                     <button className="btn-confirm" onClick={confirmUnlist}>
-                      ✅ Sí, quitar de venta
+                      ✅ {t('plantilla.confirmUnlist')}
                     </button>
                     <button className="btn-cancel" onClick={closeModal}>
-                      Cancelar
+                      {t('common.cancel')}
                     </button>
                   </div>
                 </div>
@@ -737,47 +739,47 @@ export default function Plantilla() {
             {actionModal.type === 'release' && (
               <>
                 <div className="modal-header release">
-                  <h3><UserMinus size={14} /> Liberar a {selectedPlayer.name}</h3>
+                  <h3><UserMinus size={14} /> {t('plantilla.releasePlayer', { name: selectedPlayer.name })}</h3>
                 </div>
                 <div className="modal-content">
                   <div className="player-summary">
                     <span className="pos" style={{ background: getPositionColor(selectedPlayer.position) }}>
-                      {posES(selectedPlayer.position)}
+                      {translatePosition(selectedPlayer.position)}
                     </span>
                     <span className="ovr">{selectedPlayer.overall}</span>
-                    <span className="age">{selectedPlayer.age} años</span>
+                    <span className="age">{selectedPlayer.age} {t('plantilla.years')}</span>
                   </div>
                   
                   <div className="warning-box danger">
                     <span className="warning-icon"><CircleDollarSign size={14} /></span>
                     <span className="warning-text">
-                      Debes pagar la indemnización por los {actionModal.contractYears} año{actionModal.contractYears > 1 ? 's' : ''} de contrato restantes.
+                      {t('plantilla.severanceWarning', { years: actionModal.contractYears })}
                     </span>
                   </div>
                   
                   <div className="impact">
-                    <span className="impact-label"><CircleDollarSign size={12} /> Indemnización a pagar:</span>
+                    <span className="impact-label"><CircleDollarSign size={12} /> {t('plantilla.severanceCost')}</span>
                     <span className="impact-value negative">
                       -{formatMoney(actionModal.severanceCost)}
                     </span>
                   </div>
                   
                   <div className="impact">
-                    <span className="impact-label"><Coins size={12} /> Ahorrarás en salarios:</span>
+                    <span className="impact-label"><Coins size={12} /> {t('plantilla.salarySaved')}</span>
                     <span className="impact-value positive">
-                      +{formatMoney(actionModal.yearlySaved)}/año
+                      +{formatMoney(actionModal.yearlySaved)}{t('plantilla.perYear')}
                     </span>
                   </div>
                   
                   {selectedPlayer.overall >= 75 && (
                     <div className="morale-warning">
-                      <span>Esto puede afectar la moral del vestuario</span>
+                      <span>{t('plantilla.moraleWarning')}</span>
                     </div>
                   )}
                   
                   {budget < actionModal.severanceCost && (
                     <div className="morale-warning">
-                      <span><XCircle size={12} /> No tienes suficiente dinero para la indemnización</span>
+                      <span><XCircle size={12} /> {t('plantilla.insufficientFunds')}</span>
                     </div>
                   )}
                   
@@ -787,10 +789,10 @@ export default function Plantilla() {
                       onClick={confirmRelease}
                       disabled={budget < actionModal.severanceCost}
                     >
-                      <UserMinus size={14} /> Pagar y liberar ({formatMoney(actionModal.severanceCost)})
+                      <UserMinus size={14} /> {t('plantilla.payAndRelease')} ({formatMoney(actionModal.severanceCost)})
                     </button>
                     <button className="btn-cancel" onClick={closeModal}>
-                      Cancelar
+                      {t('common.cancel')}
                     </button>
                   </div>
                 </div>

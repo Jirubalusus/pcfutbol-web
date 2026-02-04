@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { FolderOpen, Save, FolderCog, Trash2, PlusCircle, Play, ArrowLeft } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
 import { useAuth } from '../../context/AuthContext';
@@ -8,6 +9,7 @@ import './SaveSlots.scss';
 
 export default function SaveSlots({ mode = 'load', onBack, onSlotSelected }) {
   // mode: 'load' | 'save' | 'manage'
+  const { t } = useTranslation();
   const { user } = useAuth();
   const { state, dispatch } = useGame();
   const [slots, setSlots] = useState([]);
@@ -31,7 +33,7 @@ export default function SaveSlots({ mode = 'load', onBack, onSlotSelected }) {
       setSlots(saves);
     } catch (err) {
       console.error('Error loading saves:', err);
-      setError('Error al cargar las partidas');
+      setError(t('saveSlots.errorLoadGames'));
     }
     
     setLoading(false);
@@ -52,7 +54,7 @@ export default function SaveSlots({ mode = 'load', onBack, onSlotSelected }) {
       }
     } catch (err) {
       console.error('Error loading slot:', err);
-      setError('Error al cargar la partida');
+      setError(t('saveSlots.errorLoadGame'));
     }
     
     setActionLoading(null);
@@ -70,7 +72,7 @@ export default function SaveSlots({ mode = 'load', onBack, onSlotSelected }) {
       if (onSlotSelected) onSlotSelected(slotIndex);
     } catch (err) {
       console.error('Error saving slot:', err);
-      setError('Error al guardar la partida');
+      setError(t('saveSlots.errorSaveGame'));
     }
     
     setActionLoading(null);
@@ -88,7 +90,7 @@ export default function SaveSlots({ mode = 'load', onBack, onSlotSelected }) {
       await loadSlots();
     } catch (err) {
       console.error('Error deleting slot:', err);
-      setError('Error al eliminar la partida');
+      setError(t('saveSlots.errorDeleteGame'));
     }
     
     setActionLoading(null);
@@ -102,7 +104,7 @@ export default function SaveSlots({ mode = 'load', onBack, onSlotSelected }) {
   };
 
   const formatDate = (timestamp) => {
-    if (!timestamp) return 'Nunca';
+    if (!timestamp) return t('saveSlots.never');
     const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
     return date.toLocaleDateString('es-ES', {
       day: 'numeric',
@@ -127,7 +129,7 @@ export default function SaveSlots({ mode = 'load', onBack, onSlotSelected }) {
       <div className="save-slots">
         <div className="save-slots__loading">
           <div className="save-slots__spinner"><FootballIcon size={22} /></div>
-          <p>Cargando partidas...</p>
+          <p>{t('saveSlots.loadingGames')}</p>
         </div>
       </div>
     );
@@ -136,18 +138,18 @@ export default function SaveSlots({ mode = 'load', onBack, onSlotSelected }) {
   return (
     <div className="save-slots">
       <div className="save-slots__container">
-        <button className="save-slots__back" onClick={onBack}><ArrowLeft size={14} /> Volver</button>
+        <button className="save-slots__back" onClick={onBack}><ArrowLeft size={14} /> {t('saveSlots.back')}</button>
         
         <div className="save-slots__header">
           <h2>
-            {mode === 'load' && <><FolderOpen size={16} /> Cargar Partida</>}
-            {mode === 'save' && <><Save size={16} /> Guardar Partida</>}
-            {mode === 'manage' && <><FolderCog size={16} /> Gestionar Partidas</>}
+            {mode === 'load' && <><FolderOpen size={16} /> {t('saveSlots.loadGame')}</>}
+            {mode === 'save' && <><Save size={16} /> {t('saveSlots.saveGame')}</>}
+            {mode === 'manage' && <><FolderCog size={16} /> {t('saveSlots.manageGames')}</>}
           </h2>
           <p className="save-slots__subtitle">
-            {mode === 'load' && 'Selecciona una partida guardada o crea una nueva'}
-            {mode === 'save' && 'Elige un hueco para guardar tu progreso'}
-            {mode === 'manage' && 'Administra tus partidas guardadas'}
+            {mode === 'load' && t('saveSlots.selectOrCreate')}
+            {mode === 'save' && t('saveSlots.chooseSlot')}
+            {mode === 'manage' && t('saveSlots.manageSlots')}
           </p>
         </div>
 
@@ -160,7 +162,7 @@ export default function SaveSlots({ mode = 'load', onBack, onSlotSelected }) {
               className={`save-slots__slot ${slot.empty ? 'save-slots__slot--empty' : ''}`}
             >
               <div className="save-slots__slot-header">
-                <span className="save-slots__slot-number">Hueco {index + 1}</span>
+                <span className="save-slots__slot-number">{t('saveSlots.slot')} {index + 1}</span>
                 {!slot.empty && (
                   <span className="save-slots__slot-date">
                     {formatDate(slot.lastSaved)}
@@ -171,14 +173,14 @@ export default function SaveSlots({ mode = 'load', onBack, onSlotSelected }) {
               {slot.empty ? (
                 <div className="save-slots__slot-empty">
                   <div className="save-slots__empty-icon"><PlusCircle size={36} /></div>
-                  <p>Hueco vacío</p>
+                  <p>{t('saveSlots.emptySlot')}</p>
                   
                   {mode === 'load' && (
                     <button 
                       className="save-slots__btn save-slots__btn--new"
                       onClick={() => handleNewGame(index)}
                     >
-                      Nueva Partida
+                      {t('saveSlots.newGame')}
                     </button>
                   )}
                   
@@ -188,7 +190,7 @@ export default function SaveSlots({ mode = 'load', onBack, onSlotSelected }) {
                       onClick={() => handleSaveSlot(index)}
                       disabled={actionLoading === index}
                     >
-                      {actionLoading === index ? 'Guardando...' : 'Guardar aquí'}
+                      {actionLoading === index ? t('saveSlots.saving') : t('saveSlots.saveHere')}
                     </button>
                   )}
                 </div>
@@ -197,10 +199,10 @@ export default function SaveSlots({ mode = 'load', onBack, onSlotSelected }) {
                   <div className="save-slots__team-info">
                     <div className="save-slots__team-badge"><FootballIcon size={20} /></div>
                     <div className="save-slots__team-details">
-                      <h3>{slot.summary?.teamName || 'Equipo desconocido'}</h3>
+                      <h3>{slot.summary?.teamName || t('saveSlots.unknownTeam')}</h3>
                       <p>
-                        Temporada {slot.summary?.season || 1} · 
-                        Jornada {slot.summary?.week || 1}
+                        {t('common.season')} {slot.summary?.season || 1} · 
+                        {t('common.week')} {slot.summary?.week || 1}
                         {slot.summary?.position && ` · ${slot.summary.position}º`}
                       </p>
                     </div>
@@ -208,7 +210,7 @@ export default function SaveSlots({ mode = 'load', onBack, onSlotSelected }) {
                   
                   <div className="save-slots__stats">
                     <div className="save-slots__stat">
-                      <span className="label">Presupuesto</span>
+                      <span className="label">{t('common.budget')}</span>
                       <span className="value">{formatMoney(slot.summary?.money)}</span>
                     </div>
                   </div>
@@ -220,7 +222,7 @@ export default function SaveSlots({ mode = 'load', onBack, onSlotSelected }) {
                         onClick={() => handleLoadSlot(index)}
                         disabled={actionLoading === index}
                       >
-                        {actionLoading === index ? 'Cargando...' : <><Play size={14} /> Cargar</>}
+                        {actionLoading === index ? t('saveSlots.loading') : <><Play size={14} /> {t('saveSlots.load')}</>}
                       </button>
                     )}
                     
@@ -228,18 +230,18 @@ export default function SaveSlots({ mode = 'load', onBack, onSlotSelected }) {
                       <>
                         {confirmDelete === index ? (
                           <div className="save-slots__confirm">
-                            <p>¿Sobrescribir?</p>
+                            <p>{t('saveSlots.overwrite')}</p>
                             <button 
                               className="save-slots__btn save-slots__btn--danger"
                               onClick={() => handleSaveSlot(index)}
                             >
-                              Sí
+                              {t('common.yes')}
                             </button>
                             <button 
                               className="save-slots__btn save-slots__btn--cancel"
                               onClick={() => setConfirmDelete(null)}
                             >
-                              No
+                              {t('common.no')}
                             </button>
                           </div>
                         ) : (
@@ -248,7 +250,7 @@ export default function SaveSlots({ mode = 'load', onBack, onSlotSelected }) {
                             onClick={() => setConfirmDelete(index)}
                             disabled={actionLoading === index}
                           >
-                            <Save size={14} /> Guardar aquí
+                            <Save size={14} /> {t('saveSlots.saveHere')}
                           </button>
                         )}
                       </>
@@ -258,19 +260,19 @@ export default function SaveSlots({ mode = 'load', onBack, onSlotSelected }) {
                       <>
                         {confirmDelete === index ? (
                           <div className="save-slots__confirm">
-                            <p>¿Eliminar partida?</p>
+                            <p>{t('saveSlots.deleteGame')}</p>
                             <button 
                               className="save-slots__btn save-slots__btn--danger"
                               onClick={() => handleDeleteSlot(index)}
                               disabled={actionLoading === index}
                             >
-                              {actionLoading === index ? '...' : 'Sí'}
+                              {actionLoading === index ? t('common.loading') : t('common.yes')}
                             </button>
                             <button 
                               className="save-slots__btn save-slots__btn--cancel"
                               onClick={() => setConfirmDelete(null)}
                             >
-                              No
+                              {t('common.no')}
                             </button>
                           </div>
                         ) : (
@@ -280,7 +282,7 @@ export default function SaveSlots({ mode = 'load', onBack, onSlotSelected }) {
                               onClick={() => handleLoadSlot(index)}
                               disabled={actionLoading === index}
                             >
-                              <Play size={14} /> Cargar
+                              <Play size={14} /> {t('saveSlots.load')}
                             </button>
                             <button 
                               className="save-slots__btn save-slots__btn--delete"

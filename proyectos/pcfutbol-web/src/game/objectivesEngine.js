@@ -87,7 +87,7 @@ function getPositionObjective(tier, leagueId, totalTeams) {
   const objectives = {
     elite: {
       name: 'Clasificación a Champions',
-      description: 'Terminar entre los 4 primeros para clasificar a la Champions League',
+      description: 'Terminar entre los 4 primeros para clasificar a la Continental Champions Cup',
       target: 4,
       priority: 'critical',
       reward: 10000000,

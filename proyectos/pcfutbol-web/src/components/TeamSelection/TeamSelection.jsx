@@ -1,9 +1,10 @@
 import React, { useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { useAuth } from '../../context/AuthContext';
 import { saveGameToSlot } from '../../firebase/savesService';
 import { getLeagueTier } from '../../game/leagueTiers';
-import { posES } from '../../game/positionNames';
+import { translatePosition } from '../../game/positionNames';
 import { 
   getLaLigaTeams,
   getSegundaTeams,
@@ -157,47 +158,10 @@ function getLeagueGroups(leagueId) {
   }
 }
 
-const LEAGUE_NAMES = {
-  laliga: 'La Liga EA Sports',
-  segunda: 'La Liga Hypermotion',
-  primeraRFEF: 'Primera Federación',
-  segundaRFEF: 'Segunda Federación',
-  premierLeague: 'Premier League',
-  ligue1: 'Ligue 1',
-  bundesliga: 'Bundesliga',
-  serieA: 'Serie A',
-  eredivisie: 'Eredivisie',
-  primeiraLiga: 'Primeira Liga',
-  championship: 'Championship',
-  belgianPro: 'Jupiler Pro League',
-  superLig: 'Süper Lig',
-  scottishPrem: 'Scottish Premiership',
-  serieB: 'Serie B',
-  bundesliga2: '2. Bundesliga',
-  ligue2: 'Ligue 2',
-  swissSuperLeague: 'Super League (CH)',
-  austrianBundesliga: 'Bundesliga (AT)',
-  greekSuperLeague: 'Super League (GR)',
-  danishSuperliga: 'Superligaen',
-  croatianLeague: 'HNL',
-  czechLeague: 'Chance Liga',
-  // South America
-  argentinaPrimera: 'Liga Profesional',
-  brasileiraoA: 'Série A',
-  colombiaPrimera: 'Liga BetPlay',
-  chilePrimera: 'Primera División (CL)',
-  uruguayPrimera: 'Primera División (UY)',
-  ecuadorLigaPro: 'LigaPro',
-  paraguayPrimera: 'División de Honor',
-  peruLiga1: 'Liga 1',
-  boliviaPrimera: 'División Profesional',
-  venezuelaPrimera: 'Liga FUTVE',
-  // Rest of World
-  mls: 'Major League Soccer',
-  saudiPro: 'Saudi Pro League',
-  ligaMX: 'Liga MX',
-  jLeague: 'J1 League',
-};
+// Build LEAGUE_NAMES from LEAGUE_CONFIG (single source of truth)
+const LEAGUE_NAMES = Object.fromEntries(
+  Object.entries(LEAGUE_CONFIG).map(([id, cfg]) => [id, cfg.name])
+);
 
 // Ligas que tienen grupos
 const LEAGUES_WITH_GROUPS = ['primeraRFEF', 'segundaRFEF'];
@@ -213,6 +177,7 @@ const AVAILABLE_SEASONS = Array.from({ length: 22 }, (_, i) => {
 });
 
 export default function TeamSelection() {
+  const { t } = useTranslation();
   const { state, dispatch } = useGame();
   const { user, isAuthenticated } = useAuth();
   const [step, setStep] = useState(1);
@@ -575,7 +540,7 @@ export default function TeamSelection() {
         
         if (playerQualComp) {
           const compNames = {
-            copaLibertadores: 'Copa Libertadores',
+            copaLibertadores: 'South American Champions Cup',
             copaSudamericana: 'Copa Sudamericana'
           };
           dispatch({
@@ -661,9 +626,9 @@ export default function TeamSelection() {
         
         if (playerQualComp) {
           const compNames = {
-            championsLeague: 'Champions League',
-            europaLeague: 'Europa League',
-            conferenceleague: 'Conference League'
+            championsLeague: 'Continental Champions Cup',
+            europaLeague: 'Continental Shield',
+            conferenceleague: 'Continental Trophy'
           };
           dispatch({
             type: 'ADD_MESSAGE',
@@ -909,8 +874,8 @@ export default function TeamSelection() {
                             <div className="map-selection__league-info">
                               {leagueTeams.length > 0 
                                 ? hasGroupsForLeague 
-                                  ? `${numGroups} grupos • ${leagueTeams.length} equipos`
-                                  : `${leagueTeams.length} equipos`
+                                  ? t('teamSelection.groupsAndTeams', { groups: numGroups, teams: leagueTeams.length })
+                                  : t('teamSelection.teamsCount', { count: leagueTeams.length })
                                 : 'Próximamente'
                               }
                             </div>
@@ -961,8 +926,8 @@ export default function TeamSelection() {
                         {leagueTeams.length > 0 
                           ? hasGroupsForLeague 
                             ? `${numGroups} grupos • ${leagueTeams.length} equipos`
-                            : `${leagueTeams.length} equipos disponibles`
-                          : 'Próximamente'
+                            : t('teamSelection.teamsAvailable', { count: leagueTeams.length })
+                          : t('teamSelection.comingSoon')
                         }
                       </span>
                     </div>
@@ -977,7 +942,7 @@ export default function TeamSelection() {
         {/* GRUPOS */}
         {currentContent === 'groups' && selectedLeague && (
           <div className="groups-grid">
-            <h2><ClipboardList size={20} /> {LEAGUE_NAMES[selectedLeague]} - Selecciona un grupo</h2>
+            <h2><ClipboardList size={20} /> {LEAGUE_NAMES[selectedLeague]} - {t('teamSelection.selectGroup')}</h2>
             <div className="groups-list">
               {Object.entries(getLeagueGroups(selectedLeague) || {}).map(([groupId, group]) => (
                 <button
@@ -989,7 +954,7 @@ export default function TeamSelection() {
                   <div className="info">
                     <span className="name">{group.name}</span>
                     <span className="meta">
-                      {group.region ? `${group.region} • ` : ''}{group.teams.length} equipos
+                      {group.region ? `${group.region} • ` : ''}{t('teamSelection.teamsCount', { count: group.teams.length })}
                     </span>
                   </div>
                   <span className="arrow">→</span>
@@ -1009,13 +974,13 @@ export default function TeamSelection() {
                   {selectedCountry?.flag} {LEAGUE_NAMES[selectedLeague]}
                   {selectedGroup && ` - ${getLeagueGroups(selectedLeague)?.[selectedGroup]?.name}`}
                 </span>
-                <span className="team-count">{teams.length} equipos</span>
+                <span className="team-count">{t('teamSelection.teamsCount', { count: teams.length })}</span>
               </div>
               
               <div className="search-box">
                 <input
                   type="text"
-                  placeholder="Buscar equipo..."
+                  placeholder={t('teamSelection.searchTeam')}
                   value={searchTerm}
                   onChange={e => setSearchTerm(e.target.value)}
                 />
@@ -1082,22 +1047,22 @@ export default function TeamSelection() {
                   <div className="stats-grid">
                     <div className="stat-card">
                       <span className="icon"><Building2 size={16} /></span>
-                      <span className="label">Estadio</span>
-                      <span className="value">{selectedTeam.stadium || 'Municipal'}</span>
+                      <span className="label">{t('teamSelection.stadium')}</span>
+                      <span className="value">{selectedTeam.stadium || t('teamSelection.municipal')}</span>
                     </div>
                     <div className="stat-card">
                       <span className="icon"><Users size={16} /></span>
-                      <span className="label">Capacidad</span>
+                      <span className="label">{t('teamSelection.capacity')}</span>
                       <span className="value">{(selectedTeam.stadiumCapacity || 15000).toLocaleString()}</span>
                     </div>
                     <div className="stat-card">
                       <span className="icon"><DollarSign size={16} /></span>
-                      <span className="label">Presupuesto</span>
+                      <span className="label">{t('common.budget')}</span>
                       <span className="value highlight">{formatMoney(selectedTeam.budget)}</span>
                     </div>
                     <div className="stat-card">
                       <span className="icon"><Star size={16} /></span>
-                      <span className="label">Reputación</span>
+                      <span className="label">{t('teamSelection.reputation')}</span>
                       <span className="value">{selectedTeam.reputation || 70}/100</span>
                     </div>
                   </div>
@@ -1123,7 +1088,7 @@ export default function TeamSelection() {
                           .slice(0, 5)
                           .map((player, idx) => (
                             <div key={idx} className="player-row">
-                              <span className="pos">{posES(player.position)}</span>
+                              <span className="pos">{translatePosition(player.position)}</span>
                               <span className="name">{player.name}</span>
                               <span className="ovr">{player.overall}</span>
                             </div>
@@ -1191,7 +1156,7 @@ export default function TeamSelection() {
                             <span className="opponent-ovr">{match.opponent?.reputation || '??'} OVR</span>
                             {match.isPresentationMatch && (
                               <span className="presentation-badge">
-                                <Sparkles size={12} /> Presentación
+                                <Sparkles size={12} /> {t('teamSelection.presentation')}
                               </span>
                             )}
                           </li>
@@ -1211,14 +1176,14 @@ export default function TeamSelection() {
                   setSelectedPreseason(null);
                 }}
               >
-                Volver
+                {t('common.back')}
               </button>
               <button 
                 className="btn-confirm"
                 onClick={handleStartGame}
                 disabled={!selectedPreseason}
               >
-                Comenzar Temporada
+                {t('teamSelection.startSeason')}
                 <ChevronRight size={20} />
               </button>
             </div>

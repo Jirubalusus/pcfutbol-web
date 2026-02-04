@@ -1,21 +1,36 @@
 # HEARTBEAT.md
 
-## Estado: ✅ Sesión tarde 3 febrero
-**Última actualización:** 2026-02-03 17:15
+## Estado: 🔄 Google Play Console en progreso
+**Última actualización:** 2026-02-04 18:15
 
 ## Pendiente
-- 🔲 Firebase Security Rules para `contrarreloj_ranking` (allow read: all, write: authenticated) — Pol debe añadirlas
-- 🔲 Restricción API key de Firebase (Google Cloud Console)
-- 🔲 Firebase index para `getCountFromServer` con `where` en ranking position queries
-- 🔲 SoFIFA: Elche, Levante, Oviedo, Getafe, Alavés aparecen en LaLiga pero deberían estar en Segunda — viene del scrape de SoFIFA que los pone en lg=53
+- 🔲 Cambiar música oficina/gestión — Pol quiere algo "más PC Fútbol, más relajado"
+- 🔲 Firebase Security Rules para `contrarreloj_ranking`
+- 🔲 Restricción API key de Firebase
+- 🔄 Google Play Console — 10/13 declaraciones hechas, falta: seguridad datos (paso 3), categoría, ficha, precio 2.99€
+- 🔲 Screenshots para ficha Play Store
 
-## Completado tarde 3 febrero
-- ✅ Scrape completo SoFIFA EA FC 26: 33 ligas, 456 equipos, 12.654 jugadores
-- ✅ Premier League scrapeada (faltaba del primer scrape)
-- ✅ Firebase limpiado (919 teams + 36 leagues borrados) y re-subido desde cero
-- ✅ Ratings EA FC 26 oficiales (Isco 84, Alaba 81, Cancelo 84, Huijsen 82, Güler 82...)
-- ✅ Valores de mercado realistas (Mbappé €153M, Bellingham €182M, Courtois €24M)
-- ✅ Sin duplicados en Firebase (ATM/Madrid resuelto)
-- ✅ Sin equipos fantasma (Leganés/Las Palmas eliminados de LaLiga)
-- ✅ MLS y Saudi Pro League añadidas como ligas nuevas
-- ✅ Barrido traducciones: Score→Puntuación, GAME OVER→FIN DEL JUEGO, Naming Rights→Derechos de Nombre, W/D/L→V/E/D, stats Squad en español, Unknown→Desconocido
+## Completado 4 febrero
+- ✅ Fix crash circular dependency leagueEngine↔matchSimulationV2 (gameShared.js)
+- ✅ Traducciones completas: posiciones, Squad.jsx, Plantilla.jsx, Formation.jsx (~80 strings, 6 idiomas)
+- ✅ Settings simplificados (quitada Dificultad, Velocidad, Tutoriales)
+- ✅ Overflow scroll en panel Opciones
+- ✅ Sistema de audio: música por pantalla + SFX clicks en botones (todo CC0)
+- ✅ Música menú aprobada (synthwave-calm.mp3)
+- ✅ Quitado toggle Sonido de Settings (volumen siempre visible)
+- ✅ Quitado botón "Guardar partida" de Settings (solo "Guardar y salir")
+- ✅ Fix volumen 0% no silenciaba (música + SFX)
+- ✅ Auto-save después de cada partido simulado
+- ✅ Traducciones masivas: 15 componentes conectados a i18n (~150 strings, 6 idiomas)
+  - Ronda 1: ContrarrelojSetup, MainMenu, SaveSlots, MatchDay, Settings, Sidebar
+  - Ronda 2: MobileNav, ContrarrelojEnd, SeasonEnd
+  - Ronda 3: ManagerFired, Ranking, LeagueTable, Calendar, Objectives, Finance
+  - Ronda 4: Facilities, Training, Messages, Cup
+  - Ronda 5: Stadium, Renewals, Competitions, NotificationCenter
+  - Ronda 6: Auth, Office (restantes), TransfersV2, Europe, SouthAmerica, ContrarrelojProgress, TeamSelection
+- ✅ Renombrado completo para Google Play (11.320 cambios):
+  - Equipos ficticios estilo PES (Royal Zenith, Nova Blau, Azure United...)
+  - Jugadores 100% inventados con misma inicial/nacionalidad
+  - Estadios con nombres abstractos (Crown Arena, Grand Coliseum...)
+  - Ligas renombradas (Liga Ibérica, First League, Calcio League...)
+  - Competiciones renombradas (Continental Champions Cup, National Cup...)

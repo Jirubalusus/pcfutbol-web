@@ -1,5 +1,5 @@
 // ============================================================
-// PC FÚTBOL WEB - DATA PROVIDER
+// PC GAFFER - DATA PROVIDER
 // Carga datos de Firestore antes de renderizar la app
 // ============================================================
 
@@ -48,7 +48,7 @@ export function DataProvider({ children }) {
       <div className="pcf-loading-screen">
         <div className="loading-content">
           <div className="loading-logo">⚽</div>
-          <h1>PC FÚTBOL</h1>
+          <h1>PC GAFFER</h1>
           <p>WEB EDITION</p>
           <div className="loading-bar">
             <div className="loading-progress" style={{ width: `${progress}%` }}></div>

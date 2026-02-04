@@ -3,6 +3,7 @@ import { useGame } from '../../context/GameContext';
 import { Trophy, ChevronDown, ChevronUp, Globe, RefreshCw } from 'lucide-react';
 import { getLeagueTable, LEAGUE_CONFIG, initializeOtherLeagues, simulateOtherLeaguesWeek, isAperturaClausura, computeAccumulatedTable } from '../../game/multiLeagueEngine';
 import { sortTable } from '../../game/leagueEngine';
+import { useTranslation } from 'react-i18next';
 import CustomSelect from '../common/CustomSelect/CustomSelect';
 import './LeagueTable.scss';
 
@@ -10,7 +11,7 @@ import './LeagueTable.scss';
 const LEAGUE_ZONES = {
   // === ESPAÑA ===
   laliga: {
-    name: 'La Liga',
+    name: 'Liga Ibérica',
     champions: [1, 2, 3, 4],
     europaLeague: [5, 6],
     conference: [7],
@@ -43,7 +44,7 @@ const LEAGUE_ZONES = {
   },
   // === TOP 5 LIGAS ===
   premierLeague: {
-    name: 'Premier League',
+    name: 'First League',
     champions: [1, 2, 3, 4],
     europaLeague: [5],
     conference: [6, 7],
@@ -51,7 +52,7 @@ const LEAGUE_ZONES = {
     teams: 20
   },
   serieA: {
-    name: 'Serie A',
+    name: 'Calcio League',
     champions: [1, 2, 3, 4],
     europaLeague: [5, 6],
     conference: [7],
@@ -59,7 +60,7 @@ const LEAGUE_ZONES = {
     teams: 20
   },
   bundesliga: {
-    name: 'Bundesliga',
+    name: 'Erste Liga',
     champions: [1, 2, 3, 4],
     europaLeague: [5, 6],
     conference: [7],
@@ -67,7 +68,7 @@ const LEAGUE_ZONES = {
     teams: 18
   },
   ligue1: {
-    name: 'Ligue 1',
+    name: 'Division Première',
     champions: [1, 2, 3],
     europaLeague: [4],
     conference: [5],
@@ -76,28 +77,28 @@ const LEAGUE_ZONES = {
   },
   // === SEGUNDAS DIVISIONES ===
   championship: {
-    name: 'Championship',
+    name: 'Second League',
     promotion: [1, 2],
     playoff: [3, 4, 5, 6],
     relegation: [22, 23, 24],
     teams: 24
   },
   serieB: {
-    name: 'Serie B',
+    name: 'Calcio B',
     promotion: [1, 2],
     playoff: [3, 4, 5, 6, 7, 8],
     relegation: [18, 19, 20],
     teams: 20
   },
   bundesliga2: {
-    name: '2. Bundesliga',
+    name: 'Zweite Liga',
     promotion: [1, 2],
     playoff: [3],
     relegation: [16, 17, 18],
     teams: 18
   },
   ligue2: {
-    name: 'Ligue 2',
+    name: 'Division Seconde',
     promotion: [1, 2],
     playoff: [3, 4, 5],
     relegation: [16, 17, 18],
@@ -105,7 +106,7 @@ const LEAGUE_ZONES = {
   },
   // === OTRAS LIGAS EUROPEAS ===
   eredivisie: {
-    name: 'Eredivisie',
+    name: 'Dutch First',
     champions: [1],
     europaLeague: [2, 3],
     conference: [4],
@@ -113,7 +114,7 @@ const LEAGUE_ZONES = {
     teams: 18
   },
   primeiraLiga: {
-    name: 'Primeira Liga',
+    name: 'Liga Lusitana',
     champions: [1],
     europaLeague: [2, 3],
     conference: [4],
@@ -121,7 +122,7 @@ const LEAGUE_ZONES = {
     teams: 18
   },
   belgianPro: {
-    name: 'Jupiler Pro League',
+    name: 'Belgian First',
     champions: [1],
     europaLeague: [2],
     conference: [3],
@@ -129,7 +130,7 @@ const LEAGUE_ZONES = {
     teams: 16
   },
   superLig: {
-    name: 'Süper Lig',
+    name: 'Anatolian League',
     champions: [1],
     europaLeague: [2, 3],
     conference: [4],
@@ -137,7 +138,7 @@ const LEAGUE_ZONES = {
     teams: 18
   },
   scottishPrem: {
-    name: 'Scottish Premiership',
+    name: 'Highland League',
     champions: [1],
     europaLeague: [2],
     conference: [3],
@@ -145,7 +146,7 @@ const LEAGUE_ZONES = {
     teams: 12
   },
   swissSuperLeague: {
-    name: 'Super League',
+    name: 'Alpine League',
     champions: [1],
     europaLeague: [2],
     conference: [3],
@@ -153,7 +154,7 @@ const LEAGUE_ZONES = {
     teams: 12
   },
   austrianBundesliga: {
-    name: 'Bundesliga (AT)',
+    name: 'Erste Liga (AT)',
     champions: [1],
     europaLeague: [2],
     conference: [3],
@@ -286,6 +287,7 @@ const COUNTRY_FLAGS = {
 
 export default function LeagueTable() {
   const { state, dispatch } = useGame();
+  const { t } = useTranslation();
   const playerLeagueId = state.playerLeagueId || 'laliga';
   const [selectedLeague, setSelectedLeague] = useState(playerLeagueId);
   const [selectedGroup, setSelectedGroup] = useState(null);
@@ -490,7 +492,7 @@ export default function LeagueTable() {
       <div className="league-table-v2__header">
         <h2>
           <Trophy size={24} />
-          Clasificación
+          {t('leagueTable.title')}
         </h2>
         
         <div className="league-selector">
@@ -501,44 +503,44 @@ export default function LeagueTable() {
               setShowAllTeams(false);
               setSelectedGroup(null);
             }}
-            searchPlaceholder="Buscar liga..."
+            searchPlaceholder={t('leagueTable.searchLeague')}
             options={[
-              { group: 'España', icon: '🇪🇸', items: [
-                { value: 'laliga', label: 'La Liga' },
-                { value: 'segunda', label: 'Segunda División' },
+              { group: t('leagueTable.countries.spain'), icon: '🇪🇸', items: [
+                { value: 'laliga', label: 'Liga Ibérica' },
+                { value: 'segunda', label: 'Segunda Ibérica' },
                 { value: 'primeraRFEF', label: 'Primera Federación' },
                 { value: 'segundaRFEF', label: 'Segunda Federación' },
               ]},
-              { group: 'Inglaterra', icon: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', items: [
-                { value: 'premierLeague', label: 'Premier League' },
-                { value: 'championship', label: 'Championship' },
+              { group: t('leagueTable.countries.england'), icon: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', items: [
+                { value: 'premierLeague', label: 'First League' },
+                { value: 'championship', label: 'Second League' },
               ]},
-              { group: 'Italia', icon: '🇮🇹', items: [
-                { value: 'serieA', label: 'Serie A' },
-                { value: 'serieB', label: 'Serie B' },
+              { group: t('leagueTable.countries.italy'), icon: '🇮🇹', items: [
+                { value: 'serieA', label: 'Calcio League' },
+                { value: 'serieB', label: 'Calcio B' },
               ]},
-              { group: 'Alemania', icon: '🇩🇪', items: [
-                { value: 'bundesliga', label: 'Bundesliga' },
-                { value: 'bundesliga2', label: '2. Bundesliga' },
+              { group: t('leagueTable.countries.germany'), icon: '🇩🇪', items: [
+                { value: 'bundesliga', label: 'Erste Liga' },
+                { value: 'bundesliga2', label: 'Zweite Liga' },
               ]},
-              { group: 'Francia', icon: '🇫🇷', items: [
-                { value: 'ligue1', label: 'Ligue 1' },
-                { value: 'ligue2', label: 'Ligue 2' },
+              { group: t('leagueTable.countries.france'), icon: '🇫🇷', items: [
+                { value: 'ligue1', label: 'Division Première' },
+                { value: 'ligue2', label: 'Division Seconde' },
               ]},
-              { group: 'Resto de Europa', icon: '🌍', items: [
-                { value: 'eredivisie', icon: '🇳🇱', label: 'Eredivisie' },
-                { value: 'primeiraLiga', icon: '🇵🇹', label: 'Primeira Liga' },
-                { value: 'belgianPro', icon: '🇧🇪', label: 'Jupiler Pro League' },
-                { value: 'superLig', icon: '🇹🇷', label: 'Süper Lig' },
-                { value: 'scottishPrem', icon: '🏴󠁧󠁢󠁳󠁣󠁴󠁿', label: 'Scottish Prem' },
-                { value: 'swissSuperLeague', icon: '🇨🇭', label: 'Super League' },
-                { value: 'austrianBundesliga', icon: '🇦🇹', label: 'Bundesliga (AT)' },
+              { group: t('leagueTable.countries.restOfEurope'), icon: '🌍', items: [
+                { value: 'eredivisie', icon: '🇳🇱', label: 'Dutch First' },
+                { value: 'primeiraLiga', icon: '🇵🇹', label: 'Liga Lusitana' },
+                { value: 'belgianPro', icon: '🇧🇪', label: 'Belgian First' },
+                { value: 'superLig', icon: '🇹🇷', label: 'Anatolian League' },
+                { value: 'scottishPrem', icon: '🏴󠁧󠁢󠁳󠁣󠁴󠁿', label: 'Highland League' },
+                { value: 'swissSuperLeague', icon: '🇨🇭', label: 'Alpine League' },
+                { value: 'austrianBundesliga', icon: '🇦🇹', label: 'Erste Liga (AT)' },
                 { value: 'greekSuperLeague', icon: '🇬🇷', label: 'Super League' },
                 { value: 'danishSuperliga', icon: '🇩🇰', label: 'Superligaen' },
                 { value: 'croatianLeague', icon: '🇭🇷', label: 'HNL' },
                 { value: 'czechLeague', icon: '🇨🇿', label: 'Chance Liga' },
               ]},
-              { group: 'Sudamérica', icon: '🌎', items: [
+              { group: t('leagueTable.countries.southAmerica'), icon: '🌎', items: [
                 { value: 'argentinaPrimera', icon: '🇦🇷', label: 'Liga Profesional' },
                 { value: 'brasileiraoA', icon: '🇧🇷', label: 'Série A' },
                 { value: 'colombiaPrimera', icon: '🇨🇴', label: 'Liga BetPlay' },
@@ -558,7 +560,7 @@ export default function LeagueTable() {
       {/* Indicador si es la liga del jugador */}
       {isPlayerLeague && (
         <div className="league-table-v2__player-badge">
-          ⭐ Tu liga
+          ⭐ {t('leagueTable.yourLeague')}
         </div>
       )}
       
@@ -566,8 +568,8 @@ export default function LeagueTable() {
       {!hasData && (
         <div className="league-table-v2__no-data">
           <Globe size={48} />
-          <p>No hay datos disponibles para esta liga.</p>
-          <p className="hint">Los datos se generarán al avanzar en la temporada.</p>
+          <p>{t('leagueTable.noData')}</p>
+          <p className="hint">{t('leagueTable.noDataHint')}</p>
         </div>
       )}
       
@@ -580,7 +582,7 @@ export default function LeagueTable() {
               className={`group-tab ${selectedGroup === groupId ? 'active' : ''}`}
               onClick={() => { setSelectedGroup(groupId); setShowAllTeams(false); }}
             >
-              {groupId.replace('grupo', 'Grupo ')}
+              {t('leagueTable.group')} {groupId.replace('grupo', '')}
             </button>
           ))}
         </div>
@@ -598,19 +600,19 @@ export default function LeagueTable() {
             if (finalResult?.winner) {
               return (
                 <div className="tournament-indicator tournament-champion">
-                  🏆 Campeón: <strong>{finalResult.winnerName}</strong>
+                  🏆 {t('leagueTable.championLabel')}: <strong>{finalResult.winnerName}</strong>
                   {finalResult.hadFinal && (
                     <span className="final-score">
-                      {' '}(Ida: {finalResult.leg1?.homeScore}-{finalResult.leg1?.awayScore}, Vuelta: {finalResult.leg2?.homeScore}-{finalResult.leg2?.awayScore})
+                      {' '}({t('leagueTable.firstLeg')}: {finalResult.leg1?.homeScore}-{finalResult.leg1?.awayScore}, {t('leagueTable.secondLeg')}: {finalResult.leg2?.homeScore}-{finalResult.leg2?.awayScore})
                     </span>
                   )}
-                  {!finalResult.hadFinal && <span> — campeón de ambos torneos</span>}
+                  {!finalResult.hadFinal && <span> — {t('leagueTable.bothTournamentsChampion')}</span>}
                 </div>
               );
             }
             return (
               <div className="tournament-indicator">
-                🏆 {apclData?.currentTournament === 'apertura' ? 'Apertura' : 'Clausura'} en curso
+                🏆 {apclData?.currentTournament === 'apertura' ? t('leagueTable.apertura') : t('leagueTable.clausura')} {t('leagueTable.inProgress')}
               </div>
             );
           })()}
@@ -619,7 +621,7 @@ export default function LeagueTable() {
               className={`tournament-tab ${(tournamentTab === 'current' ? apclData?.currentTournament : tournamentTab) === 'apertura' ? 'active' : ''} ${apclData?.currentTournament === 'apertura' ? 'is-live' : ''}`}
               onClick={() => setTournamentTab('apertura')}
             >
-              Apertura
+              {t('leagueTable.apertura')}
               {apclData?.currentTournament === 'apertura' && <span className="live-dot" />}
             </button>
             <button
@@ -627,7 +629,7 @@ export default function LeagueTable() {
               onClick={() => setTournamentTab('clausura')}
               disabled={apclData?.currentTournament === 'apertura'}
             >
-              Clausura
+              {t('leagueTable.clausura')}
               {apclData?.currentTournament === 'clausura' && <span className="live-dot" />}
             </button>
             <button
@@ -635,7 +637,7 @@ export default function LeagueTable() {
               onClick={() => setTournamentTab('acumulada')}
               disabled={apclData?.currentTournament === 'apertura'}
             >
-              Acumulada
+              {t('leagueTable.acumulada')}
             </button>
           </div>
         </div>
@@ -647,42 +649,42 @@ export default function LeagueTable() {
           <div className="league-table-v2__legend">
             {leagueConfig.champions && showZones && (
               <span className="legend-item champions">
-                <span className="dot"></span> Champions League
+                <span className="dot"></span> {t('leagueTable.championsLeague')}
               </span>
             )}
             {leagueConfig.libertadores && showZones && (
               <span className="legend-item champions">
-                <span className="dot"></span> Libertadores
+                <span className="dot"></span> {t('leagueTable.libertadores')}
               </span>
             )}
             {leagueConfig.europaLeague && showZones && (
               <span className="legend-item europa">
-                <span className="dot"></span> Europa League
+                <span className="dot"></span> {t('leagueTable.europaLeague')}
               </span>
             )}
             {leagueConfig.sudamericana && showZones && (
               <span className="legend-item europa">
-                <span className="dot"></span> Sudamericana
+                <span className="dot"></span> {t('leagueTable.sudamericana')}
               </span>
             )}
             {leagueConfig.conference && showZones && (
               <span className="legend-item conference">
-                <span className="dot"></span> Conference League
+                <span className="dot"></span> {t('leagueTable.conferenceLeague')}
               </span>
             )}
             {leagueConfig.promotion && showZones && (
               <span className="legend-item promotion">
-                <span className="dot"></span> Ascenso directo
+                <span className="dot"></span> {t('leagueTable.promotion')}
               </span>
             )}
             {leagueConfig.playoff && showZones && (
               <span className="legend-item playoff">
-                <span className="dot"></span> Playoff ascenso
+                <span className="dot"></span> {t('leagueTable.playoffPromotion')}
               </span>
             )}
             {showZones && (
               <span className="legend-item relegation">
-                <span className="dot"></span> Descenso
+                <span className="dot"></span> {t('leagueTable.relegation')}
               </span>
             )}
           </div>
@@ -691,16 +693,16 @@ export default function LeagueTable() {
           <div className="league-table-v2__table">
             <div className="table-header">
               <span className="col-pos">#</span>
-              <span className="col-team">Equipo</span>
-              <span className="col-pj">PJ</span>
-              <span className="col-w">G</span>
-              <span className="col-d">E</span>
-              <span className="col-l">P</span>
-              <span className="col-gf">GF</span>
-              <span className="col-ga">GC</span>
-              <span className="col-gd">DIF</span>
-              <span className="col-pts">PTS</span>
-              <span className="col-form">Forma</span>
+              <span className="col-team">{t('leagueTable.team')}</span>
+              <span className="col-pj">{t('leagueTable.played')}</span>
+              <span className="col-w">{t('leagueTable.won')}</span>
+              <span className="col-d">{t('leagueTable.drawn')}</span>
+              <span className="col-l">{t('leagueTable.lost')}</span>
+              <span className="col-gf">{t('leagueTable.goalsFor')}</span>
+              <span className="col-ga">{t('leagueTable.goalsAgainst')}</span>
+              <span className="col-gd">{t('leagueTable.goalDifference')}</span>
+              <span className="col-pts">{t('leagueTable.points')}</span>
+              <span className="col-form">{t('leagueTable.form')}</span>
             </div>
             
             <div className="table-body">
@@ -744,7 +746,7 @@ export default function LeagueTable() {
                     <span className="col-form">
                       {(team.form || []).slice(-5).map((f, i) => (
                         <span key={i} className={`form-dot form-${f?.toLowerCase()}`}>
-                          {f === 'W' ? 'V' : f === 'L' ? 'D' : 'E'}
+                          {f === 'W' ? t('leagueTable.formW') : f === 'L' ? t('leagueTable.formL') : t('leagueTable.formD')}
                         </span>
                       ))}
                     </span>
@@ -780,7 +782,7 @@ export default function LeagueTable() {
                       <span className="col-pts">{activeTable[playerPosition - 1]?.points}</span>
                       <span className="col-form">
                         {(activeTable[playerPosition - 1]?.form || []).slice(-5).map((f, i) => (
-                          <span key={i} className={`form-dot form-${f?.toLowerCase()}`}>{f === 'W' ? 'V' : f === 'L' ? 'D' : 'E'}</span>
+                          <span key={i} className={`form-dot form-${f?.toLowerCase()}`}>{f === 'W' ? t('leagueTable.formW') : f === 'L' ? t('leagueTable.formL') : t('leagueTable.formD')}</span>
                         ))}
                       </span>
                     </div>
@@ -790,7 +792,7 @@ export default function LeagueTable() {
                 
                 <button className="show-more-btn" onClick={() => setShowAllTeams(true)}>
                   <ChevronDown size={16} />
-                  Ver todos los equipos ({activeTable.length})
+                  {t('leagueTable.showAllTeams', { count: activeTable.length })}
                 </button>
               </>
             )}
@@ -798,7 +800,7 @@ export default function LeagueTable() {
             {showAllTeams && activeTable.length > 10 && (
               <button className="show-more-btn" onClick={() => setShowAllTeams(false)}>
                 <ChevronUp size={16} />
-                Ver menos
+                {t('leagueTable.showLess')}
               </button>
             )}
           </div>

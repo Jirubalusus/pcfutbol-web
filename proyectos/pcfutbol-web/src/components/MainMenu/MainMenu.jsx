@@ -213,7 +213,7 @@ export default function MainMenu() {
           </div>
           <h1 className="main-menu__title">
             <span className="pc">P C</span>
-            <span className="futbol">{t('mainMenu.title').split(' ')[1] || 'FÚTBOL'}</span>
+            <span className="futbol">{t('mainMenu.title').split(' ')[1] || 'GAFFER'}</span>
           </h1>
           <div className="main-menu__edition">
             <span className="line"></span>
@@ -256,12 +256,12 @@ export default function MainMenu() {
               </span>
               <div className="text">
                 <span className="label">
-                  {isAuthenticated ? 'Jugar' : 'Iniciar Sesión'}
+                  {isAuthenticated ? t('mainMenu.playButton') : t('mainMenu.loginButton')}
                 </span>
                 <span className="sublabel">
                   {isAuthenticated 
-                    ? 'Cargar partida o crear nueva' 
-                    : 'Guarda tu progreso en la nube'
+                    ? t('mainMenu.loadOrCreate') 
+                    : t('mainMenu.saveProgress')
                   }
                 </span>
               </div>
@@ -284,8 +284,8 @@ export default function MainMenu() {
                   <Save size={20} />
                 </span>
                 <div className="text">
-                  <span className="label">Guardar Partida</span>
-                  <span className="sublabel">Guarda tu progreso actual</span>
+                  <span className="label">{t('mainMenu.saveCurrentGame')}</span>
+                  <span className="sublabel">{t('mainMenu.saveCurrentProgress')}</span>
                 </div>
                 <ChevronRight size={18} className="chevron" />
               </div>
@@ -303,11 +303,11 @@ export default function MainMenu() {
                   <Timer size={22} />
                 </span>
                 <div className="text">
-                  <span className="label">Contrarreloj</span>
+                  <span className="label">{t('mainMenu.contrarreloj')}</span>
                   <span className="sublabel">
                     {contrarrelojInfo.hasActive 
-                      ? `${contrarrelojInfo.summary?.teamName} · Temp. ${contrarrelojInfo.summary?.season}`
-                      : 'Llega a la Champions desde abajo'
+                      ? `${contrarrelojInfo.summary?.teamName} · ${t('common.season')} ${contrarrelojInfo.summary?.season}`
+                      : t('mainMenu.reachChampions')
                     }
                   </span>
                 </div>
@@ -323,7 +323,7 @@ export default function MainMenu() {
               style={{ '--delay': state.gameStarted ? '4' : '2' }}
             >
               <Trophy size={20} className="icon-svg" />
-              <span className="label">Récords</span>
+              <span className="label">{t('mainMenu.recordsButton')}</span>
             </button>
             
             <button 
@@ -332,7 +332,7 @@ export default function MainMenu() {
               style={{ '--delay': state.gameStarted ? '5' : '3' }}
             >
               <SettingsIcon size={20} className="icon-svg" />
-              <span className="label">Opciones</span>
+              <span className="label">{t('mainMenu.optionsButton')}</span>
             </button>
           </div>
         </nav>
@@ -344,13 +344,13 @@ export default function MainMenu() {
             <div className="contrarreloj-prompt__card">
               <div className="contrarreloj-prompt__header">
                 <Timer size={24} />
-                <h3>Contrarreloj activo</h3>
+                <h3>{t('mainMenu.contrarrelojActive')}</h3>
               </div>
               <div className="contrarreloj-prompt__info">
                 <p className="team-name">{contrarrelojInfo.summary?.teamName}</p>
                 <p className="details">
-                  Temporada {contrarrelojInfo.summary?.season} · 
-                  Jornada {contrarrelojInfo.summary?.week}
+                  {t('common.season')} {contrarrelojInfo.summary?.season} · 
+                  {t('common.week')} {contrarrelojInfo.summary?.week}
                   {contrarrelojInfo.summary?.trophies > 0 && ` · 🏆 ${contrarrelojInfo.summary.trophies}`}
                 </p>
               </div>
@@ -361,17 +361,17 @@ export default function MainMenu() {
                   disabled={loadingContrarreloj}
                 >
                   <Play size={18} />
-                  {loadingContrarreloj ? 'Cargando...' : 'Continuar'}
+                  {loadingContrarreloj ? t('common.loading') : t('common.continue')}
                 </button>
                 <button 
                   className="btn-new" 
                   onClick={handleContrarrelojNew}
                 >
-                  Nueva partida
+                  {t('mainMenu.newGame')}
                 </button>
               </div>
               <p className="contrarreloj-prompt__warning">
-                ⚠️ Empezar nueva partida borrará el progreso actual
+                {t('mainMenu.deleteWarning')}
               </p>
             </div>
           </div>
@@ -380,12 +380,12 @@ export default function MainMenu() {
         {!isAuthenticated && (
           <div className="main-menu__guest-notice">
             <Lightbulb size={14} className="notice-icon" />
-            <p>Inicia sesión para guardar tu progreso en la nube</p>
+            <p>{t('mainMenu.guestNotice')}</p>
           </div>
         )}
         
         <footer className="main-menu__footer">
-          <p>Un tributo al clásico PC Fútbol 5.0</p>
+          <p>{t('mainMenu.tribute')}</p>
         </footer>
       </div>
     </div>

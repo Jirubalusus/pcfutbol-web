@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
-import { posES } from '../../game/positionNames';
+import { translatePosition } from '../../game/positionNames';
 import { 
   FACILITY_SPECIALIZATIONS, 
   getMedicalTreatmentsAvailable,
@@ -12,128 +13,130 @@ import { getFacilityCostMultiplier, getEconomyMultiplier } from '../../game/leag
 import { Building2, Briefcase, Sprout, HeartPulse, Search, Coins, TrendingUp, Wrench, Zap, Target, Check, BarChart3, Stethoscope, Syringe, Clock } from 'lucide-react';
 import './Facilities.scss';
 
-const FACILITIES = [
+// Facility data with i18n keys (resolved at render time via getFacilities(t))
+const getFacilities = (t) => [
   { 
     id: 'stadium', 
-    name: 'Estadio', 
+    name: t('facilities.facilityNames.stadium'), 
     icon: <Building2 size={20} />, 
     category: 'income',
     color: '#4a9eff',
-    description: 'Capacidad y factor cancha',
+    description: t('facilities.facilityDescs.stadium'),
     hasSpec: false,
     levels: [
-      { name: 'Municipal', capacity: 8000 },
-      { name: 'Moderno', capacity: 18000 },
-      { name: 'Grande', capacity: 35000 },
-      { name: 'Élite', capacity: 55000 },
-      { name: 'Legendario', capacity: 80000 }
+      { name: t('facilities.levelNames.municipal'), capacity: 8000 },
+      { name: t('facilities.levelNames.modern'), capacity: 18000 },
+      { name: t('facilities.levelNames.large'), capacity: 35000 },
+      { name: t('facilities.levelNames.elite'), capacity: 55000 },
+      { name: t('facilities.levelNames.legendary'), capacity: 80000 }
     ],
     benefits: [
-      '8.000 asientos',
-      '18.000 asientos',
-      '35.000 asientos',
-      '55.000 asientos',
-      '80.000 asientos'
+      t('facilities.benefits.seats', { count: '8,000' }),
+      t('facilities.benefits.seats', { count: '18,000' }),
+      t('facilities.benefits.seats', { count: '35,000' }),
+      t('facilities.benefits.seats', { count: '55,000' }),
+      t('facilities.benefits.seats', { count: '80,000' })
     ],
     upgradeCost: [8000000, 25000000, 60000000, 120000000]
   },
   { 
     id: 'sponsorship', 
-    name: 'Comercial', 
+    name: t('facilities.facilityNames.sponsorship'), 
     icon: <Briefcase size={20} />, 
     category: 'income',
     color: '#ffd60a',
-    description: 'Ingresos por patrocinios',
+    description: t('facilities.facilityDescs.sponsorship'),
     hasSpec: false,
     levels: [
-      { name: 'Básico', income: 25000 },
-      { name: 'Activo', income: 70000 },
-      { name: 'Profesional', income: 140000 },
-      { name: 'Premium', income: 235000 }
+      { name: t('facilities.levelNames.basic'), income: 25000 },
+      { name: t('facilities.levelNames.active'), income: 70000 },
+      { name: t('facilities.levelNames.professional'), income: 140000 },
+      { name: t('facilities.levelNames.premium'), income: 235000 }
     ],
     benefits: [
-      '€1M/temporada',
-      '€3M/temporada',
-      '€6M/temporada',
-      '€10M/temporada'
+      '€1M/' + t('common.season').toLowerCase(),
+      '€3M/' + t('common.season').toLowerCase(),
+      '€6M/' + t('common.season').toLowerCase(),
+      '€10M/' + t('common.season').toLowerCase()
     ],
     upgradeCost: [2000000, 6000000, 18000000]
   },
   { 
     id: 'youth', 
-    name: 'Cantera', 
+    name: t('facilities.facilityNames.youth'), 
     icon: <Sprout size={20} />, 
     category: 'development',
     color: '#64d97b',
-    description: 'Genera jóvenes talentos',
+    description: t('facilities.facilityDescs.youth'),
     hasSpec: true,
     levels: [
-      { name: 'Básica', talentMax: 60 },
-      { name: 'Desarrollada', talentMax: 65 },
-      { name: 'Avanzada', talentMax: 70 },
-      { name: 'Élite', talentMax: 75 }
+      { name: t('facilities.levelNames.basic'), talentMax: 60 },
+      { name: t('facilities.levelNames.developed'), talentMax: 65 },
+      { name: t('facilities.levelNames.advanced'), talentMax: 70 },
+      { name: t('facilities.levelNames.elite'), talentMax: 75 }
     ],
     benefits: [
-      '1 canterano/temporada (50-60)',
-      '1 canterano/temporada (55-65)',
-      '1 canterano/temporada (58-70)',
-      '1 canterano/temporada (62-75)'
+      t('facilities.benefits.youthPlayer', { range: '50-60' }),
+      t('facilities.benefits.youthPlayer', { range: '55-65' }),
+      t('facilities.benefits.youthPlayer', { range: '58-70' }),
+      t('facilities.benefits.youthPlayer', { range: '62-75' })
     ],
     upgradeCost: [5000000, 15000000, 40000000]
   },
   { 
     id: 'medical', 
-    name: 'Centro Médico', 
+    name: t('facilities.facilityNames.medical'), 
     icon: <HeartPulse size={20} />, 
     category: 'support',
     color: '#ff6b6b',
-    description: 'Reduce tiempo de lesiones',
+    description: t('facilities.facilityDescs.medical'),
     hasSpec: true,
     levels: [
-      { name: 'Básico', reduction: 0 },
-      { name: 'Mejorado', reduction: 20 },
-      { name: 'Avanzado', reduction: 35 },
-      { name: 'Élite', reduction: 50 }
+      { name: t('facilities.levelNames.basic'), reduction: 0 },
+      { name: t('facilities.levelNames.improved'), reduction: 20 },
+      { name: t('facilities.levelNames.advanced'), reduction: 35 },
+      { name: t('facilities.levelNames.elite'), reduction: 50 }
     ],
     benefits: [
-      'Recuperación estándar',
-      '-20% lesiones • 1 tratamiento',
-      '-35% lesiones • 1 tratamiento',
-      '-50% lesiones • 2 tratamientos'
+      t('facilities.benefits.standardRecovery'),
+      t('facilities.benefits.injuryReduction', { percent: 20, treatments: 1 }),
+      t('facilities.benefits.injuryReduction', { percent: 35, treatments: 1 }),
+      t('facilities.benefits.injuryReduction', { percent: 50, treatments: 2 })
     ],
     upgradeCost: [3000000, 12000000, 35000000]
   },
   { 
     id: 'scouting', 
-    name: 'Ojeadores', 
+    name: t('facilities.facilityNames.scouting'), 
     icon: <Search size={20} />, 
     category: 'support',
     color: '#bf5af2',
-    description: 'Reduce costes de fichaje',
+    description: t('facilities.facilityDescs.scouting'),
     hasSpec: false,
     levels: [
-      { name: 'Local', discount: 0 },
-      { name: 'Nacional', discount: 10 },
-      { name: 'Europeo', discount: 20 },
-      { name: 'Mundial', discount: 30 }
+      { name: t('facilities.levelNames.local'), discount: 0 },
+      { name: t('facilities.levelNames.national'), discount: 10 },
+      { name: t('facilities.levelNames.european'), discount: 20 },
+      { name: t('facilities.levelNames.worldwide'), discount: 30 }
     ],
     benefits: [
-      'Sin ventaja en fichajes',
-      '-10% coste fichajes',
-      '-20% coste fichajes',
-      '-30% coste fichajes'
+      t('facilities.benefits.noTransferAdvantage'),
+      t('facilities.benefits.transferDiscount', { percent: 10 }),
+      t('facilities.benefits.transferDiscount', { percent: 20 }),
+      t('facilities.benefits.transferDiscount', { percent: 30 })
     ],
     upgradeCost: [2000000, 8000000, 20000000]
   },
 ];
 
 const CATEGORIES = {
-  income: { name: 'Ingresos', icon: <Coins size={14} />, color: '#ffd60a' },
-  development: { name: 'Desarrollo', icon: <TrendingUp size={14} />, color: '#30d158' },
-  support: { name: 'Soporte', icon: <Wrench size={14} />, color: '#bf5af2' }
+  income: { nameKey: 'facilities.categories.income', icon: <Coins size={14} />, color: '#ffd60a' },
+  development: { nameKey: 'facilities.categories.development', icon: <TrendingUp size={14} />, color: '#30d158' },
+  support: { nameKey: 'facilities.categories.support', icon: <Wrench size={14} />, color: '#bf5af2' }
 };
 
 export default function Facilities() {
+  const { t } = useTranslation();
   const { state, dispatch } = useGame();
   const [selectedFacility, setSelectedFacility] = useState(null);
   const [expandedCard, setExpandedCard] = useState(null);
@@ -142,6 +145,8 @@ export default function Facilities() {
   const facilitySpecs = state.facilitySpecs || {};
   const facilityStats = state.facilityStats || {};
   const pendingEvent = state.pendingEvent;
+  
+  const FACILITIES = useMemo(() => getFacilities(t), [t]);
   
   // Escalar costes de instalaciones y beneficios por tier de liga
   const scaledFacilities = useMemo(() => {
@@ -167,7 +172,7 @@ export default function Facilities() {
       }
       return scaled;
     });
-  }, [state.leagueId]);
+  }, [state.leagueId, FACILITIES]);
   
   // Nuevo sistema de slots médicos
   const medicalLevel = facilities.medical || 0;
@@ -219,9 +224,9 @@ export default function Facilities() {
       payload: {
         id: Date.now(),
         type: 'facility',
-        title: `${facility.name} mejorado`,
-        content: `Nivel: ${facility.levels[currentLevel + 1].name}. ${facility.benefits[currentLevel + 1]}`,
-        date: `Semana ${state.currentWeek}`
+        title: `${facility.name} ${t('facilities.upgraded')}`,
+        content: `${t('facilities.level')}: ${facility.levels[currentLevel + 1].name}. ${facility.benefits[currentLevel + 1]}`,
+        date: `${t('common.week')} ${state.currentWeek}`
       }
     });
   };
@@ -303,7 +308,7 @@ export default function Facilities() {
               ))}
             </div>
             <button className="modal-dismiss" onClick={handleDismissEvent}>
-              Ignorar
+              {t('facilities.ignore')}
             </button>
           </div>
         </div>
@@ -314,7 +319,7 @@ export default function Facilities() {
         <div className="facilities-v2__modal-overlay" onClick={() => setSelectedFacility(null)}>
           <div className="facilities-v2__modal facilities-v2__modal--spec" onClick={e => e.stopPropagation()}>
             <h3><Target size={14} /> {FACILITY_SPECIALIZATIONS[selectedFacility].name}</h3>
-            <p className="modal-subtitle">Elige la especialización (se bloqueará hasta la próxima temporada)</p>
+            <p className="modal-subtitle">{t('facilities.chooseSpecDesc')}</p>
             <div className="spec-grid">
               {FACILITY_SPECIALIZATIONS[selectedFacility].options.map(opt => {
                 const isSelected = facilitySpecs[selectedFacility] === opt.id;
@@ -333,7 +338,7 @@ export default function Facilities() {
               })}
             </div>
             <button className="modal-close" onClick={() => setSelectedFacility(null)}>
-              Cerrar
+              {t('common.close')}
             </button>
           </div>
         </div>
@@ -342,22 +347,22 @@ export default function Facilities() {
       {/* Header with summary */}
       <div className="facilities-v2__header">
         <div className="header-title">
-          <h2><Wrench size={16} /> Instalaciones</h2>
-          <p>Mejora tu club para competir al máximo nivel</p>
+          <h2><Wrench size={16} /> {t('facilities.title')}</h2>
+          <p>{t('facilities.subtitle')}</p>
         </div>
         <div className="header-stats">
           <div className="stat-box stat-box--income">
             <span className="stat-icon"><Coins size={14} /></span>
             <div className="stat-content">
               <span className="stat-value">{formatMoney(weeklyIncome * 43)}</span>
-              <span className="stat-label">Ingresos/temporada</span>
+              <span className="stat-label">{t('facilities.incomePerSeason')}</span>
             </div>
           </div>
           <div className="stat-box stat-box--budget">
             <span className="stat-icon"><Building2 size={14} /></span>
             <div className="stat-content">
               <span className="stat-value">{formatMoney(state.money)}</span>
-              <span className="stat-label">Presupuesto</span>
+              <span className="stat-label">{t('common.budget')}</span>
             </div>
           </div>
         </div>
@@ -369,15 +374,15 @@ export default function Facilities() {
           <div className="medical-header">
             <div className="medical-title">
               <span className="medical-icon"><HeartPulse size={16} /></span>
-              <h3>Enfermería</h3>
+              <h3>{t('facilities.medical.infirmary')}</h3>
             </div>
             <div className="medical-treatments">
               <span className="treatment-badge">
-                <Stethoscope size={12} /> Médicos: {treatmentsAvailable}/{totalSlots} disponibles
+                <Stethoscope size={12} /> {t('facilities.medical.doctors')}: {treatmentsAvailable}/{totalSlots} {t('facilities.medical.available')}
               </span>
               {medicalLevel > 0 && (
                 <span className="treatment-info">
-                  Cura: -{healingWeeks} sem | Coste: {formatMoney(treatmentCost)}
+                  {t('facilities.medical.heals')}: -{healingWeeks} {t('facilities.medical.weeks')} | {t('facilities.medical.cost')}: {formatMoney(treatmentCost)}
                 </span>
               )}
             </div>
@@ -385,7 +390,7 @@ export default function Facilities() {
           
           {injuredPlayers.length === 0 ? (
             <div className="medical-empty">
-              <span><Check size={14} /></span> Sin jugadores lesionados
+              <span><Check size={14} /></span> {t('facilities.medical.noInjured')}
             </div>
           ) : (
             <div className="medical-list">
@@ -397,26 +402,26 @@ export default function Facilities() {
                 return (
                   <div key={player.name} className={`medical-player ${hasDoctor ? 'treated' : ''}`}>
                     <div className="player-avatar">
-                      <span>{posES(player.position)}</span>
+                      <span>{translatePosition(player.position)}</span>
                     </div>
                     <div className="player-details">
                       <span className="player-name">{player.name}</span>
                       <span className="player-injury">
-                        <HeartPulse size={12} /> {player.injuryWeeksLeft} sem{player.injuryWeeksLeft > 1 ? 'anas' : 'ana'}
+                        <HeartPulse size={12} /> {player.injuryWeeksLeft} {t('facilities.medical.weeksShort')}{player.injuryWeeksLeft > 1 ? t('facilities.medical.weeksPlural') : t('facilities.medical.weeksSingular')}
                       </span>
                     </div>
                     {hasDoctor ? (
-                      <span className="player-badge treated"><Stethoscope size={12} /> En tratamiento</span>
+                      <span className="player-badge treated"><Stethoscope size={12} /> {t('facilities.medical.inTreatment')}</span>
                     ) : medicalLevel === 0 ? (
-                      <span className="player-badge minor">Sin centro médico</span>
+                      <span className="player-badge minor">{t('facilities.medical.noMedicalCenter')}</span>
                     ) : (
                       <button 
                         className="treat-button"
                         onClick={() => canTreat && handleTreatPlayer(player.name)}
                         disabled={!canTreat}
-                        title={!canTreat ? 'No hay médicos disponibles' : `Reducir a ${newWeeks} semanas`}
+                        title={!canTreat ? t('facilities.medical.noDoctorsAvailable') : `${t('facilities.medical.reduceTo')} ${newWeeks} ${t('facilities.medical.weeks')}`}
                       >
-                        <Syringe size={12} /> → {newWeeks} sem ({formatMoney(treatmentCost)})
+                        <Syringe size={12} /> → {newWeeks} {t('facilities.medical.weeksShort')} ({formatMoney(treatmentCost)})
                       </button>
                     )}
                   </div>
@@ -434,7 +439,7 @@ export default function Facilities() {
           <div key={categoryId} className="facilities-v2__category">
             <div className="category-header" style={{ '--cat-color': category.color }}>
               <span className="category-icon">{category.icon}</span>
-              <h3>{category.name}</h3>
+              <h3>{t(category.nameKey)}</h3>
             </div>
             
             <div className="category-grid">
@@ -492,7 +497,7 @@ export default function Facilities() {
                             className={`facility-card__spec ${facilitySpecsLocked[facility.id] ? 'locked' : ''} ${!spec ? 'pending' : ''}`}
                             onClick={() => !facilitySpecsLocked[facility.id] && setSelectedFacility(facility.id)}
                           >
-                            <span className="spec-label">Especialización:</span>
+                            <span className="spec-label">{t('facilities.specialization')}:</span>
                             {spec ? (
                               <>
                                 <span className="spec-value spec-value--active">
@@ -503,9 +508,9 @@ export default function Facilities() {
                             ) : (
                               <>
                                 <span className="spec-value spec-value--none">
-                                  <span className="spec-sparkle">✦</span> Sin elegir
+                                  <span className="spec-sparkle">✦</span> {t('facilities.notChosen')}
                                 </span>
-                                <span className="spec-edit">Elegir →</span>
+                                <span className="spec-edit">{t('facilities.choose')} →</span>
                               </>
                             )}
                           </div>
@@ -515,7 +520,7 @@ export default function Facilities() {
                         {canUpgrade ? (
                           <div className="facility-card__upgrade">
                             <div className="upgrade-info">
-                              <span className="upgrade-label">Siguiente nivel:</span>
+                              <span className="upgrade-label">{t('facilities.nextLevel')}:</span>
                               <span className="upgrade-name">{facility.levels[level + 1].name}</span>
                               <span className="upgrade-benefit">{facility.benefits[level + 1]}</span>
                             </div>
@@ -524,13 +529,13 @@ export default function Facilities() {
                               onClick={(e) => { e.stopPropagation(); handleUpgrade(facility); }}
                               disabled={!canAfford}
                             >
-                              <span className="upgrade-text">Mejorar</span>
+                              <span className="upgrade-text">{t('facilities.upgrade')}</span>
                               <span className="upgrade-cost">{formatMoney(upgradeCost)}</span>
                             </button>
                           </div>
                         ) : (
                           <div className="facility-card__maxed">
-                            Nivel Máximo
+                            {t('facilities.maxLevel')}
                           </div>
                         )}
                         
@@ -557,27 +562,27 @@ export default function Facilities() {
       {/* Impact Stats */}
       {(facilityStats.youth?.playersGenerated > 0 || facilityStats.medical?.weeksSaved > 0 || facilityStats.medical?.treatmentsApplied > 0) && (
         <div className="facilities-v2__impact">
-          <h3><BarChart3 size={14} /> Impacto de tus instalaciones</h3>
+          <h3><BarChart3 size={14} /> {t('facilities.impact.title')}</h3>
           <div className="impact-grid">
             {facilityStats.youth?.playersGenerated > 0 && (
               <div className="impact-item">
                 <span className="impact-icon"><Sprout size={14} /></span>
                 <span className="impact-value">{facilityStats.youth.playersGenerated}</span>
-                <span className="impact-label">Canteranos ({youthAvgOvr} OVR)</span>
+                <span className="impact-label">{t('facilities.impact.youth')} ({youthAvgOvr} OVR)</span>
               </div>
             )}
             {facilityStats.medical?.treatmentsApplied > 0 && (
               <div className="impact-item">
                 <span className="impact-icon"><Syringe size={12} /></span>
                 <span className="impact-value">{facilityStats.medical.treatmentsApplied}</span>
-                <span className="impact-label">Tratamientos</span>
+                <span className="impact-label">{t('facilities.impact.treatments')}</span>
               </div>
             )}
             {facilityStats.medical?.weeksSaved > 0 && (
               <div className="impact-item">
                 <span className="impact-icon"><Clock size={16} /></span>
                 <span className="impact-value">{facilityStats.medical.weeksSaved}</span>
-                <span className="impact-label">Semanas ahorradas</span>
+                <span className="impact-label">{t('facilities.impact.weeksSaved')}</span>
               </div>
             )}
           </div>

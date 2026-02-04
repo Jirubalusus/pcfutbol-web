@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { 
   getLaLigaTeams, getSegundaTeams, getPrimeraRfefTeams, getSegundaRfefTeams,
@@ -32,6 +33,7 @@ const getAllTeams = () => [
 ];
 
 export default function MatchDay({ onComplete }) {
+  const { t } = useTranslation();
   const { state, dispatch } = useGame();
   const [phase, setPhase] = useState('preview'); // preview, playing, result
   const [matchResult, setMatchResult] = useState(null);
@@ -40,7 +42,7 @@ export default function MatchDay({ onComplete }) {
   const eventsRef = useRef(null);
   
   // Helper: normalizar player de eventos (V2 devuelve {name}, V1 devuelve string)
-  const getPlayerName = (p) => typeof p === 'object' ? (p?.name || 'Desconocido') : (p || 'Desconocido');
+  const getPlayerName = (p) => typeof p === 'object' ? (p?.name || t('common.unknown')) : (p || t('common.unknown'));
   
   // Auto-scroll events list to bottom when new events appear
   useEffect(() => {
@@ -135,9 +137,9 @@ export default function MatchDay({ onComplete }) {
     // European match has team data embedded
     const eu = europeanMatchData;
     if (isHome) {
-      opponent = eu.awayTeam || eu.team2 || { teamId: opponentId, name: 'Desconocido', reputation: 70 };
+      opponent = eu.awayTeam || eu.team2 || { teamId: opponentId, name: t('common.unknown'), reputation: 70 };
     } else {
-      opponent = eu.homeTeam || eu.team1 || { teamId: opponentId, name: 'Desconocido', reputation: 70 };
+      opponent = eu.homeTeam || eu.team1 || { teamId: opponentId, name: t('common.unknown'), reputation: 70 };
     }
     // Normalize to match expected shape (id, name, shortName)
     if (!opponent.id && opponent.teamId) opponent = { ...opponent, id: opponent.teamId };
@@ -166,8 +168,8 @@ export default function MatchDay({ onComplete }) {
     return (
       <div className="match-day">
         <div className="match-day__no-match">
-          <p>No hay partido esta semana</p>
-          <button onClick={onComplete}>Continuar</button>
+          <p>{t('matchday.noMatchThisWeek')}</p>
+          <button onClick={onComplete}>{t('common.continue')}</button>
         </div>
       </div>
     );
@@ -672,13 +674,13 @@ export default function MatchDay({ onComplete }) {
   
   const getGoalTypeText = (type) => {
     switch (type) {
-      case 'golazo': return <><Flame size={14} /> ¡GOLAZO!</>;
+      case 'golazo': return <><Flame size={14} /> {t('matchday.golazo')}</>;
       case 'great_strike': return <><Star size={14} /> Gran disparo</>;
       case 'penalty': return '(Penalti)';
       case 'header': return '(Cabezazo)';
       case 'tap_in': return '(A placer)';
       case 'corner': return '(Córner)';
-      case 'late': return <><Flame size={14} /> ¡Gol en el descuento!</>;
+      case 'late': return <><Flame size={14} /> {t('matchday.lateGoal')}</>;
       default: return '';
     }
   };
@@ -801,7 +803,7 @@ export default function MatchDay({ onComplete }) {
                     {event.type === 'injury' && <HeartPulse size={16} className="icon-injury" />}
                   </span>
                   <span className="player">
-                    {typeof event.player === 'object' ? event.player?.name || 'Desconocido' : event.player}
+                    {typeof event.player === 'object' ? event.player?.name || t('common.unknown') : event.player}
                     {event.assist && <span className="assist"> (asist. {typeof event.assist === 'object' ? event.assist?.name : event.assist})</span>}
                     {event.type === 'goal' && event.goalType && <span className="goal-type"> {getGoalTypeText(event.goalType)}</span>}
                     {event.type === 'injury' && <span className="injury-info"> ({event.weeksOut} sem.)</span>}
@@ -847,7 +849,7 @@ export default function MatchDay({ onComplete }) {
           <div className={`match-day__result ${resultClass}`}>
             {/* Header badge */}
             <div className="result-header">
-              <span className="result-label">Resultado Final</span>
+              <span className="result-label">{t('matchday.finalResult')}</span>
               <span className={`result-badge ${resultClass}`}>{resultTag}</span>
             </div>
             
@@ -975,7 +977,7 @@ export default function MatchDay({ onComplete }) {
       )}
       {phase === 'playing' && matchResult && (
         <button className="match-day__skip-btn" onClick={skipToEnd}>
-          <SkipForward size={14} /> Saltar al final
+          <SkipForward size={14} /> {t('matchday.skipToEnd')}
         </button>
       )}
       {phase === 'result' && matchResult && (

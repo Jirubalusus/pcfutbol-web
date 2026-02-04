@@ -13,6 +13,13 @@ import {
   where
 } from 'firebase/firestore';
 
+// ============================================================
+// Collection names — v2 = renamed/fictional data
+// Original collections (teams, leagues) preserved for reference
+// ============================================================
+const TEAMS_COL = 'teams_v2';
+const LEAGUES_COL = 'leagues_v2';
+
 // Cache local para reducir lecturas
 const cache = {
   teams: new Map(),
@@ -34,7 +41,7 @@ export async function getLeagues() {
     return Array.from(cache.leagues.values());
   }
   
-  const snapshot = await getDocs(collection(db, 'leagues'));
+  const snapshot = await getDocs(collection(db, LEAGUES_COL));
   const leagues = [];
   
   snapshot.forEach(doc => {
@@ -52,7 +59,7 @@ export async function getLeague(leagueId) {
     return cache.leagues.get(leagueId);
   }
   
-  const docRef = doc(db, 'leagues', leagueId);
+  const docRef = doc(db, LEAGUES_COL, leagueId);
   const docSnap = await getDoc(docRef);
   
   if (docSnap.exists()) {
@@ -77,7 +84,7 @@ export async function getTeamsByLeague(leagueId) {
   
   // Query simple sin orderBy para evitar necesidad de índices
   const q = query(
-    collection(db, 'teams'),
+    collection(db, TEAMS_COL),
     where('league', '==', leagueId)
   );
   
@@ -102,7 +109,7 @@ export async function getTeam(teamId) {
     return cache.teams.get(teamId);
   }
   
-  const docRef = doc(db, 'teams', teamId);
+  const docRef = doc(db, TEAMS_COL, teamId);
   const docSnap = await getDoc(docRef);
   
   if (docSnap.exists()) {
@@ -203,7 +210,7 @@ export function clearCache() {
 }
 
 export async function getStats() {
-  const docRef = doc(db, 'metadata', 'stats');
+  const docRef = doc(db, 'metadata', 'stats_v2');
   const docSnap = await getDoc(docRef);
   return docSnap.exists() ? docSnap.data() : null;
 }

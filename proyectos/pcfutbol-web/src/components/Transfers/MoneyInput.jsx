@@ -17,6 +17,12 @@ export default function MoneyInput({ value, onChange, step = 500000, min = 0, ma
   const [holding, setHolding] = useState(null); // 'up' | 'down' | null
   const intervalRef = useRef(null);
   const tickCountRef = useRef(0);
+  const valueRef = useRef(value);
+  
+  // Keep ref in sync with prop
+  useEffect(() => {
+    valueRef.current = value;
+  }, [value]);
   
   // Formato: K por debajo de 1M, M a partir de 1M
   const formatDisplay = (val) => {
@@ -47,17 +53,22 @@ export default function MoneyInput({ value, onChange, step = 500000, min = 0, ma
     return clamped;
   }, [min, max]);
   
+  const applyChange = useCallback((direction, multiplier = 1) => {
+    const current = valueRef.current;
+    const s = getStep(current);
+    const newVal = direction === 'up' 
+      ? clamp(current + s * multiplier)
+      : clamp(current - s * multiplier);
+    valueRef.current = newVal;
+    onChange(newVal);
+  }, [clamp, onChange]);
+  
   const startHold = useCallback((direction) => {
     if (disabled) return;
     tickCountRef.current = 0;
     
-    // Primer click inmediato con step dinámico
-    const currentStep = getStep(value);
-    if (direction === 'up') {
-      onChange(clamp(value + currentStep));
-    } else {
-      onChange(clamp(value - currentStep));
-    }
+    // Primer click inmediato
+    applyChange(direction);
     
     setHolding(direction);
     
@@ -66,28 +77,17 @@ export default function MoneyInput({ value, onChange, step = 500000, min = 0, ma
       const interval = setInterval(() => {
         tickCountRef.current++;
         const ticks = tickCountRef.current;
-        // Aceleración suave: x1 hasta 15 ticks (~2.2s), x2 hasta 40 (~6s), x3 después
         let multiplier = 1;
         if (ticks > 40) multiplier = 3;
         else if (ticks > 15) multiplier = 2;
         
-        if (direction === 'up') {
-          onChange(v => {
-            const s = getStep(v);
-            return clamp(v + s * multiplier);
-          });
-        } else {
-          onChange(v => {
-            const s = getStep(v);
-            return clamp(v - s * multiplier);
-          });
-        }
+        applyChange(direction, multiplier);
       }, 150);
       intervalRef.current = interval;
     }, 500);
     
     intervalRef.current = timeout;
-  }, [disabled, value, step, clamp, onChange]);
+  }, [disabled, applyChange]);
   
   const stopHold = useCallback(() => {
     setHolding(null);

@@ -11,7 +11,7 @@
 
 export const COPA_LIBERTADORES = {
   id: 'copaLibertadores',
-  name: 'Copa Libertadores',
+  name: 'South American Champions Cup',
   shortName: 'Libertadores',
   icon: '🏆',
   color: '#1a237e',

@@ -12,7 +12,7 @@ import { simulateMatch } from './leagueEngine';
 // ============================================================
 
 export const CUP_CONFIGS = {
-  'España': { id: 'copaDelRey', name: 'Copa del Rey', icon: '👑', shortName: 'Copa' },
+  'España': { id: 'copaDelRey', name: 'National Cup', icon: '👑', shortName: 'Copa' },
   'Inglaterra': { id: 'faCup', name: 'FA Cup', icon: '🏆', shortName: 'FA Cup' },
   'Italia': { id: 'coppaItalia', name: 'Coppa Italia', icon: '🏆', shortName: 'Coppa' },
   'Alemania': { id: 'dfbPokal', name: 'DFB-Pokal', icon: '🏆', shortName: 'Pokal' },

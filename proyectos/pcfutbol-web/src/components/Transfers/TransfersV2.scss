@@ -874,6 +874,303 @@ $border-color: $card-border;
       }
     }
   }
+
+  .section-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+
+    .section-title {
+      margin-bottom: 0;
+    }
+
+    .btn-clear-resolved {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.35rem 0.7rem;
+      background: rgba($danger, 0.12);
+      border: 1px solid rgba($danger, 0.25);
+      border-radius: 6px;
+      color: $danger;
+      font-size: 0.72rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover {
+        background: rgba($danger, 0.22);
+        border-color: rgba($danger, 0.4);
+      }
+    }
+  }
+
+  // ============================================================
+  // OFFER CARD V2 — Ofertas enviadas
+  // ============================================================
+  .offer-card-v2 {
+    background: $card-bg;
+    border: 1px solid $card-border;
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    border-left: 3px solid $primary;
+    transition: border-color 0.2s;
+
+    &.pending {
+      border-left-color: $warning;
+    }
+
+    &.success {
+      border-left-color: $success;
+    }
+  }
+
+  .offer-v2-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+
+    .pos-badge {
+      padding: 0.2rem 0.5rem;
+      background: rgba($primary, 0.2);
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: $primary;
+      white-space: nowrap;
+    }
+
+    .offer-v2-info {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+
+      .name {
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: #fff;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .team {
+        font-size: 0.78rem;
+        color: $text-secondary;
+      }
+    }
+
+    .ovr-badge {
+      background: rgba($gold, 0.15);
+      color: $gold;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      min-width: 36px;
+      text-align: center;
+    }
+  }
+
+  .offer-v2-amounts {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.6rem 0.75rem;
+    background: rgba(255,255,255,0.03);
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+
+    span {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: $success;
+    }
+
+    .week-tag {
+      color: $text-secondary;
+      font-weight: 500;
+      font-size: 0.75rem;
+      margin-left: auto;
+    }
+  }
+
+  .offer-v2-pending {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.75rem;
+    background: rgba($warning, 0.08);
+    border: 1px solid rgba($warning, 0.2);
+    border-radius: 8px;
+    color: $warning;
+    font-size: 0.82rem;
+
+    span {
+      flex: 1;
+    }
+
+    .btn-withdraw-small {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.35rem 0.7rem;
+      background: rgba($danger, 0.15);
+      border: 1px solid rgba($danger, 0.3);
+      border-radius: 6px;
+      color: $danger;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+
+      &:hover {
+        background: rgba($danger, 0.25);
+      }
+    }
+  }
+
+  .offer-v2-responses {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 0.75rem;
+
+    .response-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      background: rgba(255,255,255,0.03);
+      border-radius: 8px;
+      font-size: 0.85rem;
+      color: $text-secondary;
+
+      .response-label {
+        font-weight: 600;
+        color: #fff;
+        min-width: 55px;
+      }
+
+      .response-result {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        font-weight: 600;
+
+        &.accepted { color: $success; }
+        &.rejected { color: $danger; }
+        &.countered { color: $primary; }
+      }
+    }
+  }
+
+  .offer-v2-result {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.75rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+
+    &.success {
+      background: rgba($success, 0.1);
+      border: 1px solid rgba($success, 0.25);
+      color: $success;
+    }
+
+    &.failed {
+      background: rgba($danger, 0.08);
+      border: 1px solid rgba($danger, 0.2);
+      color: $danger;
+
+      .btn-withdraw-small {
+        margin-left: auto;
+        padding: 0.3rem 0.6rem;
+        background: rgba($danger, 0.15);
+        border: 1px solid rgba($danger, 0.3);
+        border-radius: 6px;
+        color: $danger;
+        font-size: 0.72rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+
+        &:hover {
+          background: rgba($danger, 0.25);
+        }
+      }
+    }
+  }
+
+  .offer-v2-counter {
+    padding: 0.6rem 0.75rem;
+    background: rgba($primary, 0.08);
+    border: 1px solid rgba($primary, 0.2);
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: $primary;
+
+    span {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .counter-btns {
+      display: flex;
+      gap: 0.5rem;
+
+      .btn-accept-counter {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.3rem;
+        padding: 0.5rem;
+        background: rgba($success, 0.15);
+        border: 1px solid rgba($success, 0.3);
+        border-radius: 8px;
+        color: $success;
+        font-size: 0.82rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+
+        &:hover { background: rgba($success, 0.25); }
+      }
+
+      .btn-withdraw {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.3rem;
+        padding: 0.5rem 0.75rem;
+        background: rgba($danger, 0.15);
+        border: 1px solid rgba($danger, 0.3);
+        border-radius: 8px;
+        color: $danger;
+        font-size: 0.82rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+
+        &:hover { background: rgba($danger, 0.25); }
+      }
+    }
+  }
 }
 
 // ============================================================
@@ -3047,6 +3344,48 @@ $border-color: $card-border;
       font-size: 0.75rem;
       font-weight: 700;
       color: #fff;
+    }
+  }
+
+  .position-selector {
+    margin-bottom: 16px;
+
+    &__label {
+      display: block;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    &__chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .pos-chip {
+      padding: 5px 10px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.72rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+
+      &:hover {
+        background: rgba(255,255,255,0.1);
+        color: #fff;
+      }
+
+      &--active {
+        background: rgba(59, 130, 246, 0.25);
+        border-color: #3b82f6;
+        color: #3b82f6;
+        box-shadow: 0 0 8px rgba(59, 130, 246, 0.2);
+      }
     }
   }
 

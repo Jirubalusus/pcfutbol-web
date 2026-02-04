@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import Settings from '../Settings/Settings';
 import {
@@ -20,22 +21,23 @@ import {
 } from 'lucide-react';
 import './Sidebar.scss';
 
-const menuItems = [
-  { id: 'overview', icon: Home, label: 'Despacho' },
-  { id: 'plantilla', icon: Users, label: 'Plantilla' },
-  { id: 'formation', icon: ClipboardList, label: 'Alineación' },
-  { id: 'objectives', icon: Target, label: 'Objetivos' },
-  { id: 'calendar', icon: Calendar, label: 'Calendario' },
-  { id: 'transfers', icon: Briefcase, label: 'Fichajes' },
-  { id: 'competitions', icon: Award, label: 'Competiciones' },
-  { id: 'stadium', icon: Building2, label: 'Estadio' },
-  { id: 'finance', icon: Landmark, label: 'Banco' },
-  { id: 'facilities', icon: Wrench, label: 'Instalaciones' },
-  { id: 'messages', icon: Mail, label: 'Mensajes' },
-];
-
 export default function Sidebar({ activeTab, onTabChange }) {
+  const { t } = useTranslation();
   const { state, dispatch } = useGame();
+  
+  const menuItems = [
+    { id: 'overview', icon: Home, label: t('sidebar.office') },
+    { id: 'plantilla', icon: Users, label: t('sidebar.squad') },
+    { id: 'formation', icon: ClipboardList, label: t('sidebar.formation') },
+    { id: 'objectives', icon: Target, label: t('sidebar.objectives') },
+    { id: 'calendar', icon: Calendar, label: t('sidebar.calendar') },
+    { id: 'transfers', icon: Briefcase, label: t('sidebar.transfers') },
+    { id: 'competitions', icon: Award, label: t('sidebar.competitions') },
+    { id: 'stadium', icon: Building2, label: t('sidebar.stadium') },
+    { id: 'finance', icon: Landmark, label: t('sidebar.bank') },
+    { id: 'facilities', icon: Wrench, label: t('sidebar.facilities') },
+    { id: 'messages', icon: Mail, label: t('sidebar.messages') },
+  ];
   const [showSettings, setShowSettings] = useState(false);
   const lastSeenCountRef = useRef(0);
 
@@ -57,7 +59,7 @@ export default function Sidebar({ activeTab, onTabChange }) {
       <aside className="sidebar">
         <div className="sidebar__logo">
           <Gamepad2 className="sidebar__logo-icon" size={28} strokeWidth={2.5} />
-          <span className="sidebar__logo-text">PC Fútbol</span>
+          <span className="sidebar__logo-text">PC Gaffer</span>
         </div>
         
         <div className="sidebar__team">
@@ -92,11 +94,11 @@ export default function Sidebar({ activeTab, onTabChange }) {
             onClick={() => setShowSettings(true)}
           >
             <SettingsIcon size={18} strokeWidth={2} />
-            <span>Opciones</span>
+            <span>{t('sidebar.options')}</span>
           </button>
           <button className="sidebar__menu-btn" onClick={handleMainMenu}>
             <ChevronLeft size={18} strokeWidth={2} />
-            <span>Menú Principal</span>
+            <span>{t('sidebar.mainMenu')}</span>
           </button>
         </div>
       </aside>

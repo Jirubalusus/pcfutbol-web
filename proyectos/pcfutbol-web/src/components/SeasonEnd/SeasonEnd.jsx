@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import {
   Trophy,
@@ -59,6 +60,7 @@ import FootballIcon from '../icons/FootballIcon';
 import './SeasonEnd.scss';
 
 export default function SeasonEnd({ allTeams, onComplete }) {
+  const { t } = useTranslation();
   const { state, dispatch } = useGame();
   const playerLeagueId = state.playerLeagueId || 'laliga';
   
@@ -613,7 +615,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
             .find(c => qualifiedTeams[c].some(t => (t.teamId || t.id) === state.teamId));
 
           if (playerQualComp) {
-            const compNames = { copaLibertadores: 'Copa Libertadores', copaSudamericana: 'Copa Sudamericana' };
+            const compNames = { copaLibertadores: 'South American Champions Cup', copaSudamericana: 'Copa Sudamericana' };
             dispatch({
               type: 'ADD_MESSAGE',
               payload: {
@@ -669,7 +671,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
             .find(c => qualifiedTeams[c].some(t => (t.teamId || t.id) === state.teamId));
 
           if (playerQualComp) {
-            const compNames = { championsLeague: 'Champions League', europaLeague: 'Europa League', conferenceleague: 'Conference League' };
+            const compNames = { championsLeague: 'Continental Champions Cup', europaLeague: 'Continental Shield', conferenceleague: 'Continental Trophy' };
             dispatch({
               type: 'ADD_MESSAGE',
               payload: {
@@ -693,10 +695,10 @@ export default function SeasonEnd({ allTeams, onComplete }) {
   // === FASE FINAL APERTURA vs CLAUSURA ===
   if (phase === 'apcl_final' && pendingAPCLFinal) {
     const winReasonLabel = (reason) => {
-      if (reason === 'aggregate') return 'por resultado global';
-      if (reason === 'awayGoals') return 'por goles de visitante';
-      if (reason === 'clausuraAdvantage') return 'por ventaja deportiva (campeón del Clausura)';
-      if (reason === 'sameChampion') return 'campeón de ambos torneos';
+      if (reason === 'aggregate') return t('seasonEnd.byAggregate');
+      if (reason === 'awayGoals') return t('seasonEnd.byAwayGoals');
+      if (reason === 'clausuraAdvantage') return t('seasonEnd.byClausuraAdvantage');
+      if (reason === 'sameChampion') return t('seasonEnd.sameChampion');
       return '';
     };
     const playerIsApertura = state.teamId === pendingAPCLFinal.aperturaChampion;
@@ -708,8 +710,8 @@ export default function SeasonEnd({ allTeams, onComplete }) {
           <div className="modal-header">
             <Trophy size={32} className="header-icon playoff-icon" />
             <div>
-              <h1>Final {pendingAPCLFinal.leagueName || 'Liga'}</h1>
-              <p>Apertura vs Clausura — {apclLeg <= 2 ? (apclLeg === 1 ? 'Ida' : 'Vuelta') : 'Resultado'}</p>
+              <h1>{t('seasonEnd.finalTitle')} {pendingAPCLFinal.leagueName || t('seasonEnd.league')}</h1>
+              <p>{t('seasonEnd.aperturaVsClausura')} — {apclLeg <= 2 ? (apclLeg === 1 ? t('seasonEnd.firstLeg') : t('seasonEnd.secondLeg')) : t('seasonEnd.result')}</p>
             </div>
           </div>
 
