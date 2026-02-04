@@ -97,7 +97,7 @@ const initialState = {
   loaded: false,
 
   // Manager Name (for ranking - no real user data)
-  managerName: 'Gaffer',
+  managerName: `gaffer${Math.floor(Math.random() * 9000000000) + 1000000000}`,
 
   // Game State
   gameStarted: false,
