@@ -106,6 +106,17 @@
       letter-spacing: -0.02em;
     }
     
+    .office__manager-name {
+      font-size: 0.8rem;
+      color: var(--color-primary);
+      cursor: pointer;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+      &:hover {
+        opacity: 1;
+        text-decoration: underline;
+      }
+    }
     .office__season {
       font-size: 0.75rem;
       color: var(--color-text-tertiary);

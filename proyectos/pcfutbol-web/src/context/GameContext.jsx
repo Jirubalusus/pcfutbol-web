@@ -96,6 +96,9 @@ const initialState = {
   saveId: null,
   loaded: false,
 
+  // Manager Name (for ranking - no real user data)
+  managerName: 'Gaffer',
+
   // Game State
   gameStarted: false,
   currentWeek: 1,
@@ -410,6 +413,9 @@ function gameReducer(state, action) {
 
     case 'SET_SCREEN':
       return { ...state, currentScreen: action.payload };
+
+    case 'SET_MANAGER_NAME':
+      return { ...state, managerName: action.payload };
 
     case 'UPDATE_MONEY':
       return { ...state, money: state.money + action.payload };

@@ -52,7 +52,7 @@ export default function ContrarrelojEnd() {
   useEffect(() => {
     if (won && !saved && contrarreloj) {
       const entry = {
-        playerName: user?.displayName || user?.email?.split('@')[0] || t('contrarrelojEnd.anonymous'),
+        playerName: state.managerName || 'Gaffer',
         teamName: state.team?.name || contrarreloj.startTeam?.name || t('common.unknown'),
         leagueName: contrarreloj.startLeague || '',
         seasonsPlayed: contrarreloj.seasonsPlayed || 1,

@@ -74,6 +74,8 @@
     "simulating": "Simulando...",
     "seasonInfo": "Temporada {{season}}",
     "weekInfo": "Semana {{week}}",
+    "changeManagerName": "Nome do treinador (aparece no ranking):",
+    "clickToChangeName": "Clique para mudar o nome",
     "budget": "Orçamento",
     "teamValue": "Valor da Equipe",
     "stadiumCapacity": "Capacidade do Estádio",

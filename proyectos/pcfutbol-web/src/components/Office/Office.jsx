@@ -946,6 +946,18 @@ export default function Office() {
         <header className="office__header">
           <div className="office__team-info">
             <h1>{state.team?.name}</h1>
+            <span 
+              className="office__manager-name" 
+              onClick={() => {
+                const newName = window.prompt(t('office.changeManagerName'), state.managerName || 'Gaffer');
+                if (newName && newName.trim()) {
+                  dispatch({ type: 'SET_MANAGER_NAME', payload: newName.trim().slice(0, 20) });
+                }
+              }}
+              title={t('office.clickToChangeName')}
+            >
+              🧑‍💼 {state.managerName || 'Gaffer'}
+            </span>
             <span className="office__season">{t('office.seasonInfo', { season: state.currentSeason })} · {state.preseasonPhase ? t('office.preseason', { week: state.preseasonWeek, total: state.preseasonMatches?.length || 5 }) : t('office.weekInfo', { week: state.currentWeek })}</span>
           </div>
           
