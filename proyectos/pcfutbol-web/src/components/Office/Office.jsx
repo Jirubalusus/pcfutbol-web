@@ -347,7 +347,10 @@ export default function Office() {
         break;
       }
       
-      await new Promise(resolve => setTimeout(resolve, 50));
+      // Yield to UI every 5 weeks to keep it responsive (not every week)
+      if (i % 5 === 0) {
+        await new Promise(resolve => setTimeout(resolve, 0));
+      }
       weeksSimulated++;
       
       // Buscar partido del jugador en esta semana
@@ -569,10 +572,8 @@ export default function Office() {
     
     // Other leagues are now simulated inside ADVANCE_WEEK (GameContext)
     
-    // Avanzar semanas
-    for (let i = 0; i < weeksSimulated; i++) {
-      dispatch({ type: 'ADVANCE_WEEK' });
-    }
+    // Avanzar semanas — batch en un solo dispatch para evitar N re-renders
+    dispatch({ type: 'ADVANCE_WEEKS_BATCH', payload: { count: weeksSimulated } });
     
     setSimulating(false);
     

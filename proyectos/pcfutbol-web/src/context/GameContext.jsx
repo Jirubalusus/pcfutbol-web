@@ -2271,6 +2271,18 @@ function gameReducer(state, action) {
       };
     }
 
+    case 'ADVANCE_WEEKS_BATCH': {
+      // Run ADVANCE_WEEK N times in a single reducer call (1 re-render instead of N)
+      const count = action.payload?.count || 1;
+      let currentState = state;
+      for (let i = 0; i < count; i++) {
+        currentState = gameReducer(currentState, { type: 'ADVANCE_WEEK' });
+        // Early exit if manager fired, contrarreloj ended, or season screen changed
+        if (currentState.managerFired || currentState.contrarrelojData?.finished) break;
+      }
+      return currentState;
+    }
+
     case 'ADD_MESSAGE':
       return {
         ...state,

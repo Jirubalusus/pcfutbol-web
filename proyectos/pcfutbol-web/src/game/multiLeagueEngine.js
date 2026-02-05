@@ -818,6 +818,13 @@ export function simulateOtherLeaguesWeek(otherLeagues, week) {
       return;
     }
     
+    // Skip leagues with no unplayed fixtures this week (avoid unnecessary processing)
+    const hasFixturesThisWeek = leagueData.fixtures.some(f => f.week === week && !f.played);
+    if (!hasFixturesThisWeek && !isAperturaClausura(leagueId)) {
+      updatedLeagues[leagueId] = leagueData;
+      return;
+    }
+    
     if (!config) {
       updatedLeagues[leagueId] = leagueData;
       return;
@@ -828,6 +835,9 @@ export function simulateOtherLeaguesWeek(otherLeagues, week) {
       updatedLeagues[leagueId] = leagueData;
       return;
     }
+    
+    // Build team lookup map for O(1) access instead of O(n) .find()
+    const teamsMap = new Map(teams.map(t => [t.id, t]));
     
     // ---- Apertura-Clausura: Check if we need to reset table for Clausura ----
     let updatedTable = [...leagueData.table];
@@ -856,8 +866,8 @@ export function simulateOtherLeaguesWeek(otherLeagues, week) {
       // Solo simular partidos de esta semana que no se han jugado
       if (fixture.week !== week || fixture.played) return fixture;
       
-      const homeTeam = teams.find(t => t.id === fixture.homeTeam);
-      const awayTeam = teams.find(t => t.id === fixture.awayTeam);
+      const homeTeam = teamsMap.get(fixture.homeTeam);
+      const awayTeam = teamsMap.get(fixture.awayTeam);
       
       if (!homeTeam || !awayTeam) return fixture;
       
