@@ -546,7 +546,7 @@ export const ligue2Teams = [
   },
   {
     id: 'us-boulogne',
-    name: 'US Boulogne',
+    name: 'US Côte Nord',
     players: [
       { name: 'Adriano Gonçalves', position: 'POR', rating: 65 },
       { name: 'B. Ndiaye', position: 'POR', rating: 60 },

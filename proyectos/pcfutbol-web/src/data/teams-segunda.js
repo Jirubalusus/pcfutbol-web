@@ -106,7 +106,7 @@ export const segundaTeams = {
 
   // ========== UD ALMERÍA ==========
   almeria: {
-    name: 'UD Almería', shortName: 'ALM', city: 'Almería',
+    name: 'Indalo FC', shortName: 'ALM', city: 'Almería',
     stadium: 'Power Horse Stadium', stadiumCapacity: 15000,
     budget: 14000000, reputation: 68, league: 'segunda',
     colors: { primary: '#ED1C24', secondary: '#FFFFFF' },
@@ -192,7 +192,7 @@ export const segundaTeams = {
 
   // ========== CÁDIZ CF ==========
   cadiz: {
-    name: 'Cádiz CF', shortName: 'CAD', city: 'Cádiz',
+    name: 'Gaditano CF', shortName: 'CAD', city: 'Cádiz',
     stadium: 'Nuevo Mirandilla', stadiumCapacity: 20724,
     budget: 8000000, reputation: 66, league: 'segunda',
     colors: { primary: '#FFD700', secondary: '#004D98' },
@@ -534,7 +534,7 @@ export const segundaTeams = {
 
   // ========== CULTURAL LEONESA ==========
   cultural_leonesa: {
-    name: 'Cultural Leonesa', shortName: 'CUL', city: 'Esmeralda FC',
+    name: 'Legio FC', shortName: 'CUL', city: 'León',
     stadium: 'Reino de León', stadiumCapacity: 13354,
     budget: 3000000, reputation: 55, league: 'segunda',
     colors: { primary: '#FFFFFF', secondary: '#FF0000' },

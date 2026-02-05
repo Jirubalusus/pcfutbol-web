@@ -355,7 +355,7 @@ export const ligaMXTeams = [
   },
   {
     id: 'atletico-de-san-luis',
-    name: 'Atlético de San Luis',
+    name: 'San Luis FC',
     shortName: 'ASL',
     city: 'San Luis Potosí',
     colors: { primary: '#C8102E', secondary: '#002D72' },

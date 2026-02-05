@@ -1,5 +1,5 @@
-// ============================================================
-// PC FÚTBOL WEB - EQUIPOS SEGUNDA FEDERACIÓN 2025/26
+﻿// ============================================================
+// PC FÃšTBOL WEB - EQUIPOS SEGUNDA FEDERACIÃ“N 2025/26
 // Datos de Transfermarkt - Migrados de football-manager
 // ============================================================
 
@@ -30,7 +30,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Óscar de Frutos",
+        "name": "Ã“scar de Frutos",
         "position": "CB",
         "age": 26,
         "overall": 64,
@@ -41,7 +41,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Luis Quiñónez",
+        "name": "Luis QuiÃ±Ã³nez",
         "position": "LB",
         "age": 21,
         "overall": 64,
@@ -52,7 +52,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Marcos Sánchez",
+        "name": "Marcos SÃ¡nchez",
         "position": "RB",
         "age": 22,
         "overall": 64,
@@ -63,7 +63,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Álex Gil",
+        "name": "Ãlex Gil",
         "position": "LW",
         "age": 28,
         "overall": 64,
@@ -74,7 +74,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Jonatan González",
+        "name": "Jonatan GonzÃ¡lez",
         "position": "ST",
         "age": 26,
         "overall": 64,
@@ -85,7 +85,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Dani García",
+        "name": "Dani GarcÃ­a",
         "position": "ST",
         "age": 27,
         "overall": 64,
@@ -107,7 +107,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Iván Martínez",
+        "name": "IvÃ¡n MartÃ­nez",
         "position": "GK",
         "age": 29,
         "overall": 62,
@@ -140,7 +140,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Fermín Ruiz",
+        "name": "FermÃ­n Ruiz",
         "position": "LB",
         "age": 28,
         "overall": 62,
@@ -151,7 +151,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Alain García",
+        "name": "Alain GarcÃ­a",
         "position": "RB",
         "age": 27,
         "overall": 62,
@@ -173,7 +173,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Néstor Lucas",
+        "name": "NÃ©stor Lucas",
         "position": "CM",
         "age": 23,
         "overall": 62,
@@ -206,7 +206,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Héctor Peña",
+        "name": "HÃ©ctor PeÃ±a",
         "position": "RW",
         "age": 23,
         "overall": 62,
@@ -217,7 +217,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Alex Escardó",
+        "name": "Alex EscardÃ³",
         "position": "CAM",
         "age": 27,
         "overall": 62,
@@ -239,7 +239,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Miguel Ángel Abad",
+        "name": "Miguel Ãngel Abad",
         "position": "GK",
         "age": 22,
         "overall": 60,
@@ -261,7 +261,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Carlos Gutiérrez",
+        "name": "Carlos GutiÃ©rrez",
         "position": "CB",
         "age": 34,
         "overall": 57,
@@ -297,9 +297,9 @@ export const segundaRFEFGrupo1 = [
   },
   {
     "id": "depor_fabril",
-    "name": "Dépor Fabril",
-    "shortName": "DÉP",
-    "city": "Dépor Fabril",
+    "name": "DÃ©por Fabril",
+    "shortName": "DÃ‰P",
+    "city": "DÃ©por Fabril",
     "stadium": "Estadio Municipal",
     "stadiumCapacity": 5000,
     "budget": 4100000,
@@ -310,7 +310,7 @@ export const segundaRFEFGrupo1 = [
     },
     "players": [
       {
-        "name": "Mario Nájera",
+        "name": "Mario NÃ¡jera",
         "position": "CM",
         "age": 22,
         "overall": 66,
@@ -321,7 +321,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Fabián Urzain",
+        "name": "FabiÃ¡n Urzain",
         "position": "LW",
         "age": 21,
         "overall": 66,
@@ -354,7 +354,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Álex Marqués",
+        "name": "Ãlex MarquÃ©s",
         "position": "GK",
         "age": 20,
         "overall": 64,
@@ -365,7 +365,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Damián Canedo",
+        "name": "DamiÃ¡n Canedo",
         "position": "CB",
         "age": 22,
         "overall": 64,
@@ -409,7 +409,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Pablo García",
+        "name": "Pablo GarcÃ­a",
         "position": "RB",
         "age": 18,
         "overall": 64,
@@ -420,7 +420,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Noé Carrillo",
+        "name": "NoÃ© Carrillo",
         "position": "CM",
         "age": 19,
         "overall": 64,
@@ -431,7 +431,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Quique Fernández",
+        "name": "Quique FernÃ¡ndez",
         "position": "CM",
         "age": 22,
         "overall": 64,
@@ -464,7 +464,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Alioune Mané",
+        "name": "Alioune ManÃ©",
         "position": "LW",
         "age": 22,
         "overall": 64,
@@ -475,7 +475,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Pablo Cortés",
+        "name": "Pablo CortÃ©s",
         "position": "RW",
         "age": 21,
         "overall": 64,
@@ -486,7 +486,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Aarón Sánchez",
+        "name": "AarÃ³n SÃ¡nchez",
         "position": "CB",
         "age": 22,
         "overall": 62,
@@ -508,7 +508,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "David Domínguez",
+        "name": "David DomÃ­nguez",
         "position": "ST",
         "age": 20,
         "overall": 62,
@@ -519,7 +519,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Brais Suárez",
+        "name": "Brais SuÃ¡rez",
         "position": "GK",
         "age": 22,
         "overall": 60,
@@ -530,7 +530,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Rubén Vilela",
+        "name": "RubÃ©n Vilela",
         "position": "CB",
         "age": 20,
         "overall": 60,
@@ -541,7 +541,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Samu Fernández",
+        "name": "Samu FernÃ¡ndez",
         "position": "CB",
         "age": 18,
         "overall": 60,
@@ -574,7 +574,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Dani Estévez",
+        "name": "Dani EstÃ©vez",
         "position": "CM",
         "age": 19,
         "overall": 60,
@@ -585,7 +585,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Héctor Areosa",
+        "name": "HÃ©ctor Areosa",
         "position": "RW",
         "age": 19,
         "overall": 60,
@@ -610,9 +610,9 @@ export const segundaRFEFGrupo1 = [
   },
   {
     "id": "bergantinos_fc",
-    "name": "Bergantiños FC",
+    "name": "BergantiÃ±os FC",
     "shortName": "BER",
-    "city": "Bergantiños FC",
+    "city": "BergantiÃ±os FC",
     "stadium": "Estadio Municipal",
     "stadiumCapacity": 5000,
     "budget": 3000000,
@@ -700,7 +700,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Adolfo González",
+        "name": "Adolfo GonzÃ¡lez",
         "position": "RB",
         "age": 23,
         "overall": 62,
@@ -722,7 +722,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Diego González",
+        "name": "Diego GonzÃ¡lez",
         "position": "CM",
         "age": 26,
         "overall": 62,
@@ -744,7 +744,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Álex Pérez",
+        "name": "Ãlex PÃ©rez",
         "position": "LW",
         "age": 26,
         "overall": 62,
@@ -766,7 +766,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Darío Germil",
+        "name": "DarÃ­o Germil",
         "position": "ST",
         "age": 23,
         "overall": 62,
@@ -788,7 +788,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Román Noya",
+        "name": "RomÃ¡n Noya",
         "position": "GK",
         "age": 19,
         "overall": 60,
@@ -799,7 +799,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Miguel Peña",
+        "name": "Miguel PeÃ±a",
         "position": "RB",
         "age": 24,
         "overall": 60,
@@ -821,7 +821,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Koke Sáiz",
+        "name": "Koke SÃ¡iz",
         "position": "LW",
         "age": 25,
         "overall": 60,
@@ -870,7 +870,7 @@ export const segundaRFEFGrupo1 = [
     },
     "players": [
       {
-        "name": "Sergio Martínez",
+        "name": "Sergio MartÃ­nez",
         "position": "CM",
         "age": 18,
         "overall": 68,
@@ -892,7 +892,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro Jiménez",
+        "name": "Ãlvaro JimÃ©nez",
         "position": "GK",
         "age": 22,
         "overall": 64,
@@ -903,7 +903,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Laro Gómez",
+        "name": "Laro GÃ³mez",
         "position": "GK",
         "age": 19,
         "overall": 64,
@@ -914,7 +914,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Adrián Cagigal",
+        "name": "AdriÃ¡n Cagigal",
         "position": "CB",
         "age": 21,
         "overall": 64,
@@ -947,7 +947,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Diego Díaz",
+        "name": "Diego DÃ­az",
         "position": "CM",
         "age": 20,
         "overall": 64,
@@ -958,7 +958,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Asier García",
+        "name": "Asier GarcÃ­a",
         "position": "CM",
         "age": 19,
         "overall": 64,
@@ -969,7 +969,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Javi García",
+        "name": "Javi GarcÃ­a",
         "position": "RW",
         "age": 22,
         "overall": 64,
@@ -1002,7 +1002,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Ekain Díaz",
+        "name": "Ekain DÃ­az",
         "position": "RB",
         "age": 22,
         "overall": 62,
@@ -1013,7 +1013,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Mario Solórzano",
+        "name": "Mario SolÃ³rzano",
         "position": "CM",
         "age": 20,
         "overall": 62,
@@ -1024,7 +1024,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Manu Márquez",
+        "name": "Manu MÃ¡rquez",
         "position": "LW",
         "age": 21,
         "overall": 62,
@@ -1068,7 +1068,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Adrián Argos",
+        "name": "AdriÃ¡n Argos",
         "position": "RB",
         "age": 21,
         "overall": 60,
@@ -1090,7 +1090,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Manu González",
+        "name": "Manu GonzÃ¡lez",
         "position": "CM",
         "age": 20,
         "overall": 60,
@@ -1101,7 +1101,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Andrés Vallecillo",
+        "name": "AndrÃ©s Vallecillo",
         "position": "CM",
         "age": 19,
         "overall": 60,
@@ -1126,9 +1126,9 @@ export const segundaRFEFGrupo1 = [
   },
   {
     "id": "real_avila",
-    "name": "Real Ávila",
+    "name": "Real Ãvila",
     "shortName": "REA",
-    "city": "Real Ávila",
+    "city": "Real Ãvila",
     "stadium": "Estadio Municipal",
     "stadiumCapacity": 5000,
     "budget": 3100000,
@@ -1139,7 +1139,7 @@ export const segundaRFEFGrupo1 = [
     },
     "players": [
       {
-        "name": "Jesús del Amo",
+        "name": "JesÃºs del Amo",
         "position": "CB",
         "age": 26,
         "overall": 62,
@@ -1161,7 +1161,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Fer Díaz",
+        "name": "Fer DÃ­az",
         "position": "LB",
         "age": 26,
         "overall": 62,
@@ -1205,7 +1205,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Carlos Pérez",
+        "name": "Carlos PÃ©rez",
         "position": "CM",
         "age": 25,
         "overall": 62,
@@ -1216,7 +1216,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Luis Ángel Forcén",
+        "name": "Luis Ãngel ForcÃ©n",
         "position": "LW",
         "age": 25,
         "overall": 62,
@@ -1227,7 +1227,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Adri Carrión",
+        "name": "Adri CarriÃ³n",
         "position": "RW",
         "age": 23,
         "overall": 62,
@@ -1249,7 +1249,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Dani Sánchez",
+        "name": "Dani SÃ¡nchez",
         "position": "RW",
         "age": 20,
         "overall": 62,
@@ -1271,7 +1271,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Óscar López",
+        "name": "Ã“scar LÃ³pez",
         "position": "GK",
         "age": 27,
         "overall": 60,
@@ -1315,7 +1315,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Filipe Sissé",
+        "name": "Filipe SissÃ©",
         "position": "CM",
         "age": 24,
         "overall": 60,
@@ -1326,7 +1326,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Álex Moreno",
+        "name": "Ãlex Moreno",
         "position": "CM",
         "age": 25,
         "overall": 60,
@@ -1430,7 +1430,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Lucas Antañón",
+        "name": "Lucas AntaÃ±Ã³n",
         "position": "RW",
         "age": 22,
         "overall": 66,
@@ -1463,7 +1463,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Martín Lavilla",
+        "name": "MartÃ­n Lavilla",
         "position": "LB",
         "age": 20,
         "overall": 64,
@@ -1507,7 +1507,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Óscar de la Hera",
+        "name": "Ã“scar de la Hera",
         "position": "ST",
         "age": 21,
         "overall": 64,
@@ -1518,7 +1518,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Miguel Narváez",
+        "name": "Miguel NarvÃ¡ez",
         "position": "GK",
         "age": 23,
         "overall": 62,
@@ -1540,7 +1540,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Diego Menéndez",
+        "name": "Diego MenÃ©ndez",
         "position": "CM",
         "age": 20,
         "overall": 62,
@@ -1551,7 +1551,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Enzo Pérez",
+        "name": "Enzo PÃ©rez",
         "position": "CM",
         "age": 17,
         "overall": 62,
@@ -1584,7 +1584,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Adrián Lopes",
+        "name": "AdriÃ¡n Lopes",
         "position": "CB",
         "age": 20,
         "overall": 60,
@@ -1595,7 +1595,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Óscar Maza",
+        "name": "Ã“scar Maza",
         "position": "CB",
         "age": 21,
         "overall": 60,
@@ -1606,7 +1606,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Adrián Fernández",
+        "name": "AdriÃ¡n FernÃ¡ndez",
         "position": "RB",
         "age": 20,
         "overall": 60,
@@ -1639,7 +1639,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Diego Tejón",
+        "name": "Diego TejÃ³n",
         "position": "CM",
         "age": 24,
         "overall": 60,
@@ -1650,7 +1650,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Pablo Agudín",
+        "name": "Pablo AgudÃ­n",
         "position": "CM",
         "age": 18,
         "overall": 60,
@@ -1672,7 +1672,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Pelayo García",
+        "name": "Pelayo GarcÃ­a",
         "position": "ST",
         "age": 21,
         "overall": 60,
@@ -1743,7 +1743,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Oscar Marotías",
+        "name": "Oscar MarotÃ­as",
         "position": "CB",
         "age": 24,
         "overall": 62,
@@ -1754,7 +1754,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Iván Casado",
+        "name": "IvÃ¡n Casado",
         "position": "CB",
         "age": 32,
         "overall": 62,
@@ -1798,7 +1798,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Álex Gonpi",
+        "name": "Ãlex Gonpi",
         "position": "LW",
         "age": 25,
         "overall": 62,
@@ -1820,7 +1820,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Joan Pulpón",
+        "name": "Joan PulpÃ³n",
         "position": "LB",
         "age": 22,
         "overall": 60,
@@ -1853,7 +1853,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Raúl Carrasco",
+        "name": "RaÃºl Carrasco",
         "position": "CM",
         "age": 22,
         "overall": 60,
@@ -1864,7 +1864,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Davo Fernández",
+        "name": "Davo FernÃ¡ndez",
         "position": "RW",
         "age": 26,
         "overall": 60,
@@ -1875,7 +1875,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Dani Hernández",
+        "name": "Dani HernÃ¡ndez",
         "position": "CAM",
         "age": 33,
         "overall": 60,
@@ -1897,7 +1897,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "José Manuel Lara",
+        "name": "JosÃ© Manuel Lara",
         "position": "CM",
         "age": 29,
         "overall": 58,
@@ -1919,7 +1919,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Adrián Mancebo",
+        "name": "AdriÃ¡n Mancebo",
         "position": "RW",
         "age": 29,
         "overall": 58,
@@ -1968,7 +1968,7 @@ export const segundaRFEFGrupo1 = [
     },
     "players": [
       {
-        "name": "Ángel Carvajal",
+        "name": "Ãngel Carvajal",
         "position": "ST",
         "age": 21,
         "overall": 66,
@@ -2023,7 +2023,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Jesús Martínez",
+        "name": "JesÃºs MartÃ­nez",
         "position": "CM",
         "age": 21,
         "overall": 64,
@@ -2045,7 +2045,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "César Porras",
+        "name": "CÃ©sar Porras",
         "position": "LW",
         "age": 19,
         "overall": 64,
@@ -2056,7 +2056,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro de Pablo",
+        "name": "Ãlvaro de Pablo",
         "position": "GK",
         "age": 23,
         "overall": 62,
@@ -2078,7 +2078,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "José Luis Aranda",
+        "name": "JosÃ© Luis Aranda",
         "position": "CB",
         "age": 19,
         "overall": 62,
@@ -2089,7 +2089,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Alin Șerban",
+        "name": "Alin È˜erban",
         "position": "RB",
         "age": 22,
         "overall": 62,
@@ -2111,7 +2111,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Tommy Fernández",
+        "name": "Tommy FernÃ¡ndez",
         "position": "ST",
         "age": 19,
         "overall": 62,
@@ -2122,7 +2122,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Hugo Mantecón",
+        "name": "Hugo MantecÃ³n",
         "position": "GK",
         "age": 20,
         "overall": 60,
@@ -2166,7 +2166,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Yago Rodríguez",
+        "name": "Yago RodrÃ­guez",
         "position": "RB",
         "age": 20,
         "overall": 60,
@@ -2199,7 +2199,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Raúl González",
+        "name": "RaÃºl GonzÃ¡lez",
         "position": "CM",
         "age": 19,
         "overall": 60,
@@ -2237,7 +2237,7 @@ export const segundaRFEFGrupo1 = [
     },
     "players": [
       {
-        "name": "Breogán Sio",
+        "name": "BreogÃ¡n Sio",
         "position": "CB",
         "age": 21,
         "overall": 64,
@@ -2248,7 +2248,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Miguel Raimúndez",
+        "name": "Miguel RaimÃºndez",
         "position": "CB",
         "age": 22,
         "overall": 64,
@@ -2270,7 +2270,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Juan Rodríguez",
+        "name": "Juan RodrÃ­guez",
         "position": "CB",
         "age": 23,
         "overall": 62,
@@ -2281,7 +2281,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro Naveira",
+        "name": "Ãlvaro Naveira",
         "position": "LB",
         "age": 28,
         "overall": 62,
@@ -2292,7 +2292,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Roque González",
+        "name": "Roque GonzÃ¡lez",
         "position": "RB",
         "age": 23,
         "overall": 62,
@@ -2303,7 +2303,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Guille Pinín",
+        "name": "Guille PinÃ­n",
         "position": "CM",
         "age": 27,
         "overall": 62,
@@ -2314,7 +2314,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Álex Barba",
+        "name": "Ãlex Barba",
         "position": "CM",
         "age": 24,
         "overall": 62,
@@ -2325,7 +2325,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Hugo Rodríguez",
+        "name": "Hugo RodrÃ­guez",
         "position": "CM",
         "age": 22,
         "overall": 62,
@@ -2347,7 +2347,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Javi González",
+        "name": "Javi GonzÃ¡lez",
         "position": "RW",
         "age": 20,
         "overall": 62,
@@ -2369,7 +2369,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro Fernández",
+        "name": "Ãlvaro FernÃ¡ndez",
         "position": "CB",
         "age": 21,
         "overall": 60,
@@ -2391,7 +2391,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Nacho Fariña",
+        "name": "Nacho FariÃ±a",
         "position": "CM",
         "age": 27,
         "overall": 60,
@@ -2402,7 +2402,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Sergio Bernárdez",
+        "name": "Sergio BernÃ¡rdez",
         "position": "CM",
         "age": 21,
         "overall": 60,
@@ -2435,7 +2435,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Esteban Ruíz",
+        "name": "Esteban RuÃ­z",
         "position": "GK",
         "age": 30,
         "overall": 58,
@@ -2457,7 +2457,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Rareș Mezdrea",
+        "name": "RareÈ™ Mezdrea",
         "position": "CM",
         "age": 23,
         "overall": 58,
@@ -2479,7 +2479,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Alberto Domínguez",
+        "name": "Alberto DomÃ­nguez",
         "position": "GK",
         "age": 37,
         "overall": 55,
@@ -2490,7 +2490,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "David Añón",
+        "name": "David AÃ±Ã³n",
         "position": "RW",
         "age": 36,
         "overall": 55,
@@ -2517,7 +2517,7 @@ export const segundaRFEFGrupo1 = [
     },
     "players": [
       {
-        "name": "Nel González",
+        "name": "Nel GonzÃ¡lez",
         "position": "GK",
         "age": 20,
         "overall": 64,
@@ -2539,7 +2539,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Tomás Fuentes",
+        "name": "TomÃ¡s Fuentes",
         "position": "CB",
         "age": 22,
         "overall": 62,
@@ -2550,7 +2550,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Borja Álvarez",
+        "name": "Borja Ãlvarez",
         "position": "RB",
         "age": 31,
         "overall": 62,
@@ -2583,7 +2583,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Dennis Díaz",
+        "name": "Dennis DÃ­az",
         "position": "GK",
         "age": 33,
         "overall": 60,
@@ -2605,7 +2605,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Iñigo Villaldea",
+        "name": "IÃ±igo Villaldea",
         "position": "CM",
         "age": 24,
         "overall": 60,
@@ -2638,7 +2638,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Diego Díaz",
+        "name": "Diego DÃ­az",
         "position": "CAM",
         "age": 26,
         "overall": 60,
@@ -2649,7 +2649,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Oscar Fernández",
+        "name": "Oscar FernÃ¡ndez",
         "position": "ST",
         "age": 27,
         "overall": 60,
@@ -2671,7 +2671,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Berto González",
+        "name": "Berto GonzÃ¡lez",
         "position": "RB",
         "age": 24,
         "overall": 58,
@@ -2682,7 +2682,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Pelayo Pérez",
+        "name": "Pelayo PÃ©rez",
         "position": "CM",
         "age": 24,
         "overall": 58,
@@ -2775,7 +2775,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Liam López",
+        "name": "Liam LÃ³pez",
         "position": "CB",
         "age": 21,
         "overall": 62,
@@ -2797,7 +2797,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Juan López",
+        "name": "Juan LÃ³pez",
         "position": "CM",
         "age": 30,
         "overall": 62,
@@ -2830,7 +2830,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Lucas Suárez",
+        "name": "Lucas SuÃ¡rez",
         "position": "CM",
         "age": 24,
         "overall": 60,
@@ -2863,7 +2863,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Alex René Reyes",
+        "name": "Alex RenÃ© Reyes",
         "position": "CM",
         "age": 26,
         "overall": 60,
@@ -2874,7 +2874,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Pablo Pérez",
+        "name": "Pablo PÃ©rez",
         "position": "CM",
         "age": 32,
         "overall": 60,
@@ -2896,7 +2896,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Samu Pérez",
+        "name": "Samu PÃ©rez",
         "position": "LW",
         "age": 24,
         "overall": 60,
@@ -2929,7 +2929,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "David Ámez",
+        "name": "David Ãmez",
         "position": "RB",
         "age": 25,
         "overall": 58,
@@ -2940,7 +2940,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Iván González",
+        "name": "IvÃ¡n GonzÃ¡lez",
         "position": "CM",
         "age": 23,
         "overall": 58,
@@ -2951,7 +2951,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Adrián Torre",
+        "name": "AdriÃ¡n Torre",
         "position": "GK",
         "age": 36,
         "overall": 57,
@@ -2962,7 +2962,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Álex Menéndez",
+        "name": "Ãlex MenÃ©ndez",
         "position": "LB",
         "age": 34,
         "overall": 57,
@@ -2973,7 +2973,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Nacho López",
+        "name": "Nacho LÃ³pez",
         "position": "RB",
         "age": 38,
         "overall": 55,
@@ -2984,7 +2984,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Omar Álvarez",
+        "name": "Omar Ãlvarez",
         "position": "RW",
         "age": 35,
         "overall": 55,
@@ -3022,7 +3022,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Simón Luca Pérez",
+        "name": "SimÃ³n Luca PÃ©rez",
         "position": "LB",
         "age": 26,
         "overall": 62,
@@ -3033,7 +3033,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Noel González",
+        "name": "Noel GonzÃ¡lez",
         "position": "RB",
         "age": 21,
         "overall": 62,
@@ -3066,7 +3066,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Víctor Gamarra",
+        "name": "VÃ­ctor Gamarra",
         "position": "ST",
         "age": 22,
         "overall": 62,
@@ -3110,7 +3110,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Manu Núñez",
+        "name": "Manu NÃºÃ±ez",
         "position": "CM",
         "age": 27,
         "overall": 60,
@@ -3209,7 +3209,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Osián Vázquez",
+        "name": "OsiÃ¡n VÃ¡zquez",
         "position": "LW",
         "age": 23,
         "overall": 58,
@@ -3253,7 +3253,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Rufo Sánchez",
+        "name": "Rufo SÃ¡nchez",
         "position": "ST",
         "age": 39,
         "overall": 55,
@@ -3335,7 +3335,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Keko Vilariño",
+        "name": "Keko VilariÃ±o",
         "position": "CM",
         "age": 29,
         "overall": 62,
@@ -3346,7 +3346,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Miguel Clavería",
+        "name": "Miguel ClaverÃ­a",
         "position": "ST",
         "age": 22,
         "overall": 62,
@@ -3379,7 +3379,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Tomás Berardozzi",
+        "name": "TomÃ¡s Berardozzi",
         "position": "LB",
         "age": 23,
         "overall": 60,
@@ -3412,7 +3412,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "David Vilán",
+        "name": "David VilÃ¡n",
         "position": "LW",
         "age": 22,
         "overall": 60,
@@ -3423,7 +3423,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Iago Díaz",
+        "name": "Iago DÃ­az",
         "position": "RW",
         "age": 32,
         "overall": 60,
@@ -3434,7 +3434,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Alex Millán",
+        "name": "Alex MillÃ¡n",
         "position": "ST",
         "age": 24,
         "overall": 60,
@@ -3445,7 +3445,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Edu González",
+        "name": "Edu GonzÃ¡lez",
         "position": "ST",
         "age": 20,
         "overall": 60,
@@ -3456,7 +3456,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "César Pirot",
+        "name": "CÃ©sar Pirot",
         "position": "GK",
         "age": 23,
         "overall": 58,
@@ -3467,7 +3467,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Máximo Levrand",
+        "name": "MÃ¡ximo Levrand",
         "position": "CB",
         "age": 23,
         "overall": 58,
@@ -3489,7 +3489,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Jacobo Vilariño",
+        "name": "Jacobo VilariÃ±o",
         "position": "CM",
         "age": 26,
         "overall": 58,
@@ -3500,7 +3500,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Álex Boedo",
+        "name": "Ãlex Boedo",
         "position": "LW",
         "age": 26,
         "overall": 58,
@@ -3511,7 +3511,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Arona Sané",
+        "name": "Arona SanÃ©",
         "position": "RW",
         "age": 30,
         "overall": 58,
@@ -3536,9 +3536,9 @@ export const segundaRFEFGrupo1 = [
   },
   {
     "id": "ud_samano",
-    "name": "UD Sámano",
+    "name": "UD SÃ¡mano",
     "shortName": "UD ",
-    "city": "UD Sámano",
+    "city": "UD SÃ¡mano",
     "stadium": "Estadio Municipal",
     "stadiumCapacity": 5000,
     "budget": 1100000,
@@ -3571,7 +3571,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Álex Rasines",
+        "name": "Ãlex Rasines",
         "position": "RB",
         "age": 28,
         "overall": 62,
@@ -3615,7 +3615,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "César Girón",
+        "name": "CÃ©sar GirÃ³n",
         "position": "CM",
         "age": 23,
         "overall": 60,
@@ -3659,7 +3659,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Pedro Méndez",
+        "name": "Pedro MÃ©ndez",
         "position": "ST",
         "age": 21,
         "overall": 60,
@@ -3681,7 +3681,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Jon López",
+        "name": "Jon LÃ³pez",
         "position": "CB",
         "age": 26,
         "overall": 58,
@@ -3714,7 +3714,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Luis Gómez",
+        "name": "Luis GÃ³mez",
         "position": "CB",
         "age": 27,
         "overall": 58,
@@ -3758,7 +3758,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro Berzosa",
+        "name": "Ãlvaro Berzosa",
         "position": "CM",
         "age": 25,
         "overall": 58,
@@ -3780,7 +3780,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Jonás Ibañez",
+        "name": "JonÃ¡s IbaÃ±ez",
         "position": "LW",
         "age": 23,
         "overall": 58,
@@ -3818,7 +3818,7 @@ export const segundaRFEFGrupo1 = [
     },
     "players": [
       {
-        "name": "Enol Muñiz",
+        "name": "Enol MuÃ±iz",
         "position": "GK",
         "age": 22,
         "overall": 64,
@@ -3829,7 +3829,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Mateo González",
+        "name": "Mateo GonzÃ¡lez",
         "position": "CB",
         "age": 22,
         "overall": 64,
@@ -3840,7 +3840,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Enol González",
+        "name": "Enol GonzÃ¡lez",
         "position": "RB",
         "age": 22,
         "overall": 64,
@@ -3851,7 +3851,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Óscar Molina",
+        "name": "Ã“scar Molina",
         "position": "RW",
         "age": 22,
         "overall": 64,
@@ -3862,7 +3862,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "David Argüelles",
+        "name": "David ArgÃ¼elles",
         "position": "LB",
         "age": 24,
         "overall": 62,
@@ -3884,7 +3884,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Jesús Palomeque",
+        "name": "JesÃºs Palomeque",
         "position": "CB",
         "age": 24,
         "overall": 60,
@@ -3895,7 +3895,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro García",
+        "name": "Ãlvaro GarcÃ­a",
         "position": "LB",
         "age": 27,
         "overall": 60,
@@ -3906,7 +3906,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Pelayo Santoveña",
+        "name": "Pelayo SantoveÃ±a",
         "position": "LB",
         "age": 22,
         "overall": 60,
@@ -3972,7 +3972,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Ambo Cissé",
+        "name": "Ambo CissÃ©",
         "position": "CB",
         "age": 27,
         "overall": 58,
@@ -3983,7 +3983,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Riki Menéndez",
+        "name": "Riki MenÃ©ndez",
         "position": "RB",
         "age": 28,
         "overall": 58,
@@ -4005,7 +4005,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Isaac Sánchez",
+        "name": "Isaac SÃ¡nchez",
         "position": "CM",
         "age": 23,
         "overall": 58,
@@ -4071,7 +4071,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Omar Hernández",
+        "name": "Omar HernÃ¡ndez",
         "position": "CB",
         "age": 37,
         "overall": 55,
@@ -4098,7 +4098,7 @@ export const segundaRFEFGrupo1 = [
     },
     "players": [
       {
-        "name": "Marcos Riaño",
+        "name": "Marcos RiaÃ±o",
         "position": "GK",
         "age": 19,
         "overall": 64,
@@ -4120,7 +4120,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Iván Martínez",
+        "name": "IvÃ¡n MartÃ­nez",
         "position": "CB",
         "age": 20,
         "overall": 62,
@@ -4164,7 +4164,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Diego González",
+        "name": "Diego GonzÃ¡lez",
         "position": "GK",
         "age": 20,
         "overall": 60,
@@ -4197,7 +4197,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "David Hernáiz",
+        "name": "David HernÃ¡iz",
         "position": "LB",
         "age": 19,
         "overall": 60,
@@ -4252,7 +4252,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Jan Martínez",
+        "name": "Jan MartÃ­nez",
         "position": "CM",
         "age": 20,
         "overall": 60,
@@ -4334,7 +4334,7 @@ export const segundaRFEFGrupo1 = [
     },
     "players": [
       {
-        "name": "Dani Rodríguez",
+        "name": "Dani RodrÃ­guez",
         "position": "LB",
         "age": 22,
         "overall": 64,
@@ -4356,7 +4356,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Adrián Álvarez",
+        "name": "AdriÃ¡n Ãlvarez",
         "position": "CM",
         "age": 22,
         "overall": 62,
@@ -4389,7 +4389,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Dani Ceínos",
+        "name": "Dani CeÃ­nos",
         "position": "LB",
         "age": 25,
         "overall": 60,
@@ -4400,7 +4400,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Iván Barajas",
+        "name": "IvÃ¡n Barajas",
         "position": "CM",
         "age": 22,
         "overall": 60,
@@ -4411,7 +4411,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Álex Ribeiro",
+        "name": "Ãlex Ribeiro",
         "position": "RW",
         "age": 21,
         "overall": 60,
@@ -4433,7 +4433,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Martín Cascajo",
+        "name": "MartÃ­n Cascajo",
         "position": "GK",
         "age": 25,
         "overall": 58,
@@ -4455,7 +4455,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Miguel Ángel Manso",
+        "name": "Miguel Ãngel Manso",
         "position": "CB",
         "age": 25,
         "overall": 58,
@@ -4466,7 +4466,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Jesús Jiménez",
+        "name": "JesÃºs JimÃ©nez",
         "position": "CB",
         "age": 26,
         "overall": 58,
@@ -4477,7 +4477,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Jorge Sellés",
+        "name": "Jorge SellÃ©s",
         "position": "LB",
         "age": 25,
         "overall": 58,
@@ -4488,7 +4488,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Sergio Fernández",
+        "name": "Sergio FernÃ¡ndez",
         "position": "RB",
         "age": 29,
         "overall": 58,
@@ -4499,7 +4499,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Albertín",
+        "name": "AlbertÃ­n",
         "position": "CM",
         "age": 30,
         "overall": 58,
@@ -4532,7 +4532,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Javi Álvarez",
+        "name": "Javi Ãlvarez",
         "position": "LW",
         "age": 26,
         "overall": 58,
@@ -4543,7 +4543,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Ángel Cerveró",
+        "name": "Ãngel CerverÃ³",
         "position": "ST",
         "age": 23,
         "overall": 58,
@@ -4554,7 +4554,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "Mario Sánchez",
+        "name": "Mario SÃ¡nchez",
         "position": "ST",
         "age": 24,
         "overall": 58,
@@ -4565,7 +4565,7 @@ export const segundaRFEFGrupo1 = [
         "fitness": 100
       },
       {
-        "name": "David Álvarez",
+        "name": "David Ãlvarez",
         "position": "CM",
         "age": 38,
         "overall": 55,
@@ -4593,9 +4593,9 @@ export const segundaRFEFGrupo1 = [
 export const segundaRFEFGrupo2 = [
   {
     "id": "ud_logrones",
-    "name": "UD Logroñés",
+    "name": "UD LogroÃ±Ã©s",
     "shortName": "UD ",
-    "city": "UD Logroñés",
+    "city": "UD LogroÃ±Ã©s",
     "stadium": "Estadio Municipal",
     "stadiumCapacity": 5000,
     "budget": 3200000,
@@ -4628,7 +4628,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Miguel Marí",
+        "name": "Miguel MarÃ­",
         "position": "CM",
         "age": 28,
         "overall": 64,
@@ -4639,7 +4639,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Carlos Benítez",
+        "name": "Carlos BenÃ­tez",
         "position": "CM",
         "age": 23,
         "overall": 64,
@@ -4661,7 +4661,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Alex Cerdá",
+        "name": "Alex CerdÃ¡",
         "position": "CM",
         "age": 22,
         "overall": 64,
@@ -4716,7 +4716,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Álex Daza",
+        "name": "Ãlex Daza",
         "position": "GK",
         "age": 23,
         "overall": 62,
@@ -4760,7 +4760,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "José Val",
+        "name": "JosÃ© Val",
         "position": "RB",
         "age": 26,
         "overall": 62,
@@ -4837,7 +4837,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Iñaki Sáenz",
+        "name": "IÃ±aki SÃ¡enz",
         "position": "LB",
         "age": 37,
         "overall": 55,
@@ -4851,9 +4851,9 @@ export const segundaRFEFGrupo2 = [
   },
   {
     "id": "real_union",
-    "name": "Real Unión",
+    "name": "Real UniÃ³n",
     "shortName": "REA",
-    "city": "Real Unión",
+    "city": "Real UniÃ³n",
     "stadium": "Estadio Municipal",
     "stadiumCapacity": 5000,
     "budget": 4000000,
@@ -4864,7 +4864,7 @@ export const segundaRFEFGrupo2 = [
     },
     "players": [
       {
-        "name": "Álvaro Mateo",
+        "name": "Ãlvaro Mateo",
         "position": "LB",
         "age": 28,
         "overall": 64,
@@ -4875,7 +4875,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Javi Fontán",
+        "name": "Javi FontÃ¡n",
         "position": "RB",
         "age": 25,
         "overall": 64,
@@ -4908,7 +4908,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Martín Arruti",
+        "name": "MartÃ­n Arruti",
         "position": "CM",
         "age": 21,
         "overall": 64,
@@ -4930,7 +4930,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Unai García",
+        "name": "Unai GarcÃ­a",
         "position": "RW",
         "age": 24,
         "overall": 64,
@@ -4974,7 +4974,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "David Fernández",
+        "name": "David FernÃ¡ndez",
         "position": "CB",
         "age": 24,
         "overall": 62,
@@ -5029,7 +5029,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Santi Miguélez",
+        "name": "Santi MiguÃ©lez",
         "position": "ST",
         "age": 23,
         "overall": 62,
@@ -5084,7 +5084,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Beñat Gaubeka",
+        "name": "BeÃ±at Gaubeka",
         "position": "CM",
         "age": 26,
         "overall": 60,
@@ -5120,9 +5120,9 @@ export const segundaRFEFGrupo2 = [
   },
   {
     "id": "alaves_b",
-    "name": "Alavés B",
+    "name": "AlavÃ©s B",
     "shortName": "ALA",
-    "city": "Alavés B",
+    "city": "AlavÃ©s B",
     "stadium": "Estadio Municipal",
     "stadiumCapacity": 5000,
     "budget": 3500000,
@@ -5133,7 +5133,7 @@ export const segundaRFEFGrupo2 = [
     },
     "players": [
       {
-        "name": "Álvaro García",
+        "name": "Ãlvaro GarcÃ­a",
         "position": "CB",
         "age": 20,
         "overall": 66,
@@ -5144,7 +5144,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Egoitz Muñoz",
+        "name": "Egoitz MuÃ±oz",
         "position": "RB",
         "age": 21,
         "overall": 66,
@@ -5166,7 +5166,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Grégoire Swiderski",
+        "name": "GrÃ©goire Swiderski",
         "position": "GK",
         "age": 20,
         "overall": 64,
@@ -5177,7 +5177,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Rubén Montero",
+        "name": "RubÃ©n Montero",
         "position": "GK",
         "age": 20,
         "overall": 64,
@@ -5188,7 +5188,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Xanet Oláiz",
+        "name": "Xanet OlÃ¡iz",
         "position": "CB",
         "age": 20,
         "overall": 64,
@@ -5210,7 +5210,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Iván Garrido",
+        "name": "IvÃ¡n Garrido",
         "position": "CM",
         "age": 21,
         "overall": 64,
@@ -5243,7 +5243,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Aimar González",
+        "name": "Aimar GonzÃ¡lez",
         "position": "LW",
         "age": 22,
         "overall": 64,
@@ -5254,7 +5254,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Chema Aragües",
+        "name": "Chema AragÃ¼es",
         "position": "RW",
         "age": 22,
         "overall": 64,
@@ -5276,7 +5276,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Aitor Mañas",
+        "name": "Aitor MaÃ±as",
         "position": "ST",
         "age": 23,
         "overall": 64,
@@ -5287,7 +5287,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Sebastián Pino",
+        "name": "SebastiÃ¡n Pino",
         "position": "CB",
         "age": 22,
         "overall": 62,
@@ -5298,7 +5298,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Joseda Álvarez",
+        "name": "Joseda Ãlvarez",
         "position": "RB",
         "age": 25,
         "overall": 62,
@@ -5320,7 +5320,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Ander Sánchez",
+        "name": "Ander SÃ¡nchez",
         "position": "CM",
         "age": 22,
         "overall": 62,
@@ -5342,7 +5342,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Ibón Martinez",
+        "name": "IbÃ³n Martinez",
         "position": "LB",
         "age": 20,
         "overall": 60,
@@ -5375,7 +5375,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Izei Hernández",
+        "name": "Izei HernÃ¡ndez",
         "position": "LW",
         "age": 18,
         "overall": 60,
@@ -5386,7 +5386,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Juanma López",
+        "name": "Juanma LÃ³pez",
         "position": "RW",
         "age": 23,
         "overall": 60,
@@ -5468,7 +5468,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Aratz Barandiarán",
+        "name": "Aratz BarandiarÃ¡n",
         "position": "CB",
         "age": 22,
         "overall": 64,
@@ -5523,7 +5523,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Ieltxu García",
+        "name": "Ieltxu GarcÃ­a",
         "position": "RW",
         "age": 21,
         "overall": 64,
@@ -5545,7 +5545,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Iñigo Gomeza",
+        "name": "IÃ±igo Gomeza",
         "position": "CB",
         "age": 23,
         "overall": 62,
@@ -5567,7 +5567,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Jorge García",
+        "name": "Jorge GarcÃ­a",
         "position": "CM",
         "age": 32,
         "overall": 62,
@@ -5578,7 +5578,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Aitor Seguín",
+        "name": "Aitor SeguÃ­n",
         "position": "LW",
         "age": 30,
         "overall": 62,
@@ -5633,7 +5633,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Asier del Río",
+        "name": "Asier del RÃ­o",
         "position": "CM",
         "age": 22,
         "overall": 60,
@@ -5644,7 +5644,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Óscar Fernández",
+        "name": "Ã“scar FernÃ¡ndez",
         "position": "RW",
         "age": 30,
         "overall": 60,
@@ -5693,7 +5693,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Erik Vázquez",
+        "name": "Erik VÃ¡zquez",
         "position": "LW",
         "age": 19,
         "overall": 64,
@@ -5715,7 +5715,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Yoel Ramírez",
+        "name": "Yoel RamÃ­rez",
         "position": "GK",
         "age": 23,
         "overall": 62,
@@ -5759,7 +5759,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Asier Pérez",
+        "name": "Asier PÃ©rez",
         "position": "CB",
         "age": 22,
         "overall": 62,
@@ -5814,7 +5814,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Javier Albín",
+        "name": "Javier AlbÃ­n",
         "position": "CM",
         "age": 24,
         "overall": 62,
@@ -5836,7 +5836,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Iñigo Alayeto",
+        "name": "IÃ±igo Alayeto",
         "position": "LW",
         "age": 32,
         "overall": 62,
@@ -5924,7 +5924,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Edu García",
+        "name": "Edu GarcÃ­a",
         "position": "CM",
         "age": 35,
         "overall": 59,
@@ -5962,7 +5962,7 @@ export const segundaRFEFGrupo2 = [
     },
     "players": [
       {
-        "name": "Diego Suárez",
+        "name": "Diego SuÃ¡rez",
         "position": "LW",
         "age": 31,
         "overall": 64,
@@ -5984,7 +5984,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Jorge Adán",
+        "name": "Jorge AdÃ¡n",
         "position": "CB",
         "age": 30,
         "overall": 62,
@@ -5995,7 +5995,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro Meseguer",
+        "name": "Ãlvaro Meseguer",
         "position": "CB",
         "age": 33,
         "overall": 62,
@@ -6017,7 +6017,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Víctor Sanchís",
+        "name": "VÃ­ctor SanchÃ­s",
         "position": "RB",
         "age": 24,
         "overall": 62,
@@ -6028,7 +6028,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Alex Rodríguez",
+        "name": "Alex RodrÃ­guez",
         "position": "RB",
         "age": 23,
         "overall": 62,
@@ -6050,7 +6050,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "David Marín",
+        "name": "David MarÃ­n",
         "position": "CM",
         "age": 25,
         "overall": 62,
@@ -6083,7 +6083,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Iñaki Alberca",
+        "name": "IÃ±aki Alberca",
         "position": "LW",
         "age": 21,
         "overall": 62,
@@ -6094,7 +6094,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Iñigo López",
+        "name": "IÃ±igo LÃ³pez",
         "position": "ST",
         "age": 23,
         "overall": 62,
@@ -6127,7 +6127,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Diego López",
+        "name": "Diego LÃ³pez",
         "position": "CM",
         "age": 24,
         "overall": 60,
@@ -6138,7 +6138,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Álex Aguado",
+        "name": "Ãlex Aguado",
         "position": "CM",
         "age": 26,
         "overall": 60,
@@ -6171,7 +6171,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "José Manuel Pedrosa",
+        "name": "JosÃ© Manuel Pedrosa",
         "position": "LW",
         "age": 23,
         "overall": 58,
@@ -6185,9 +6185,9 @@ export const segundaRFEFGrupo2 = [
   },
   {
     "id": "sd_logrones",
-    "name": "SD Logroñés",
+    "name": "SD LogroÃ±Ã©s",
     "shortName": "SD ",
-    "city": "SD Logroñés",
+    "city": "SD LogroÃ±Ã©s",
     "stadium": "Estadio Municipal",
     "stadiumCapacity": 5000,
     "budget": 2700000,
@@ -6209,7 +6209,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Simón Lecea",
+        "name": "SimÃ³n Lecea",
         "position": "RB",
         "age": 25,
         "overall": 64,
@@ -6220,7 +6220,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Iván Hernando",
+        "name": "IvÃ¡n Hernando",
         "position": "CM",
         "age": 21,
         "overall": 64,
@@ -6231,7 +6231,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Iñigo Zubiri",
+        "name": "IÃ±igo Zubiri",
         "position": "CB",
         "age": 31,
         "overall": 62,
@@ -6264,7 +6264,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "David Sánchez",
+        "name": "David SÃ¡nchez",
         "position": "CM",
         "age": 27,
         "overall": 62,
@@ -6308,7 +6308,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Dani Fernández",
+        "name": "Dani FernÃ¡ndez",
         "position": "ST",
         "age": 24,
         "overall": 62,
@@ -6319,7 +6319,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Ander Fernández",
+        "name": "Ander FernÃ¡ndez",
         "position": "CB",
         "age": 20,
         "overall": 60,
@@ -6341,7 +6341,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Diego Núñez",
+        "name": "Diego NÃºÃ±ez",
         "position": "CM",
         "age": 23,
         "overall": 60,
@@ -6352,7 +6352,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Dani Santafé",
+        "name": "Dani SantafÃ©",
         "position": "CM",
         "age": 28,
         "overall": 60,
@@ -6363,7 +6363,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Iñaki Telletxea",
+        "name": "IÃ±aki Telletxea",
         "position": "CM",
         "age": 23,
         "overall": 60,
@@ -6385,7 +6385,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Moha Traoré",
+        "name": "Moha TraorÃ©",
         "position": "RW",
         "age": 31,
         "overall": 60,
@@ -6440,7 +6440,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Iván Fernández",
+        "name": "IvÃ¡n FernÃ¡ndez",
         "position": "GK",
         "age": 23,
         "overall": 58,
@@ -6500,7 +6500,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Iker Zubiría",
+        "name": "Iker ZubirÃ­a",
         "position": "LW",
         "age": 22,
         "overall": 64,
@@ -6511,7 +6511,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Hugo García",
+        "name": "Hugo GarcÃ­a",
         "position": "RW",
         "age": 20,
         "overall": 64,
@@ -6555,7 +6555,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Aitor Larrañaga",
+        "name": "Aitor LarraÃ±aga",
         "position": "CB",
         "age": 22,
         "overall": 62,
@@ -6588,7 +6588,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Óscar García",
+        "name": "Ã“scar GarcÃ­a",
         "position": "CM",
         "age": 21,
         "overall": 62,
@@ -6676,7 +6676,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Llorenç Ferrés",
+        "name": "LlorenÃ§ FerrÃ©s",
         "position": "RB",
         "age": 20,
         "overall": 60,
@@ -6687,7 +6687,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Jon López",
+        "name": "Jon LÃ³pez",
         "position": "CM",
         "age": 23,
         "overall": 60,
@@ -6709,7 +6709,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Miguel Álvarez",
+        "name": "Miguel Ãlvarez",
         "position": "ST",
         "age": 20,
         "overall": 60,
@@ -6769,7 +6769,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Javier Elías",
+        "name": "Javier ElÃ­as",
         "position": "LB",
         "age": 21,
         "overall": 62,
@@ -6813,7 +6813,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Adrián Zango",
+        "name": "AdriÃ¡n Zango",
         "position": "GK",
         "age": 20,
         "overall": 60,
@@ -6824,7 +6824,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Beñat Arratibel",
+        "name": "BeÃ±at Arratibel",
         "position": "CB",
         "age": 21,
         "overall": 60,
@@ -6835,7 +6835,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Asier Hernáiz",
+        "name": "Asier HernÃ¡iz",
         "position": "CB",
         "age": 19,
         "overall": 60,
@@ -6857,7 +6857,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Asier Sánchez",
+        "name": "Asier SÃ¡nchez",
         "position": "LW",
         "age": 22,
         "overall": 60,
@@ -6879,7 +6879,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Hodei Rodríguez",
+        "name": "Hodei RodrÃ­guez",
         "position": "RW",
         "age": 20,
         "overall": 60,
@@ -6912,7 +6912,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Julen Castañeda",
+        "name": "Julen CastaÃ±eda",
         "position": "LB",
         "age": 35,
         "overall": 59,
@@ -6994,7 +6994,7 @@ export const segundaRFEFGrupo2 = [
     },
     "players": [
       {
-        "name": "Carlos González",
+        "name": "Carlos GonzÃ¡lez",
         "position": "LB",
         "age": 22,
         "overall": 64,
@@ -7038,7 +7038,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Beñat Gómez",
+        "name": "BeÃ±at GÃ³mez",
         "position": "CB",
         "age": 21,
         "overall": 62,
@@ -7049,7 +7049,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Oier Kortázar",
+        "name": "Oier KortÃ¡zar",
         "position": "LB",
         "age": 20,
         "overall": 62,
@@ -7071,7 +7071,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Iñigo Baqué",
+        "name": "IÃ±igo BaquÃ©",
         "position": "ST",
         "age": 29,
         "overall": 62,
@@ -7082,7 +7082,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Gorka San Nicolás",
+        "name": "Gorka San NicolÃ¡s",
         "position": "GK",
         "age": 24,
         "overall": 60,
@@ -7137,7 +7137,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Unai Vélez",
+        "name": "Unai VÃ©lez",
         "position": "CM",
         "age": 23,
         "overall": 60,
@@ -7159,7 +7159,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Izan Gutiérrez",
+        "name": "Izan GutiÃ©rrez",
         "position": "CM",
         "age": 23,
         "overall": 60,
@@ -7274,7 +7274,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Germán Fernández",
+        "name": "GermÃ¡n FernÃ¡ndez",
         "position": "GK",
         "age": 25,
         "overall": 62,
@@ -7318,7 +7318,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "David Álvarez",
+        "name": "David Ãlvarez",
         "position": "RW",
         "age": 25,
         "overall": 62,
@@ -7329,7 +7329,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Óscar Jiménez",
+        "name": "Ã“scar JimÃ©nez",
         "position": "ST",
         "age": 24,
         "overall": 62,
@@ -7362,7 +7362,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Beñat Leiza",
+        "name": "BeÃ±at Leiza",
         "position": "LB",
         "age": 28,
         "overall": 60,
@@ -7373,7 +7373,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Muñi",
+        "name": "MuÃ±i",
         "position": "LB",
         "age": 21,
         "overall": 60,
@@ -7384,7 +7384,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Mario Sánchez",
+        "name": "Mario SÃ¡nchez",
         "position": "RB",
         "age": 23,
         "overall": 60,
@@ -7428,7 +7428,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Martín Lapeña",
+        "name": "MartÃ­n LapeÃ±a",
         "position": "CM",
         "age": 25,
         "overall": 60,
@@ -7450,7 +7450,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Adrián Turmo",
+        "name": "AdriÃ¡n Turmo",
         "position": "ST",
         "age": 25,
         "overall": 60,
@@ -7472,7 +7472,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Javi Díez",
+        "name": "Javi DÃ­ez",
         "position": "CM",
         "age": 24,
         "overall": 58,
@@ -7521,7 +7521,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Unai Ordóñez",
+        "name": "Unai OrdÃ³Ã±ez",
         "position": "GK",
         "age": 19,
         "overall": 64,
@@ -7532,7 +7532,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "David Ósipov",
+        "name": "David Ã“sipov",
         "position": "RB",
         "age": 20,
         "overall": 62,
@@ -7565,7 +7565,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Ander Peciña",
+        "name": "Ander PeciÃ±a",
         "position": "ST",
         "age": 19,
         "overall": 62,
@@ -7576,7 +7576,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Simón García",
+        "name": "SimÃ³n GarcÃ­a",
         "position": "GK",
         "age": 18,
         "overall": 60,
@@ -7598,7 +7598,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Álex Carril",
+        "name": "Ãlex Carril",
         "position": "CB",
         "age": 18,
         "overall": 60,
@@ -7609,7 +7609,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Beñat Larrea",
+        "name": "BeÃ±at Larrea",
         "position": "CB",
         "age": 19,
         "overall": 60,
@@ -7631,7 +7631,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Adrián Lekuna",
+        "name": "AdriÃ¡n Lekuna",
         "position": "LB",
         "age": 19,
         "overall": 60,
@@ -7642,7 +7642,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Dani Pérez",
+        "name": "Dani PÃ©rez",
         "position": "RB",
         "age": 19,
         "overall": 60,
@@ -7741,7 +7741,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Diego Fernández",
+        "name": "Diego FernÃ¡ndez",
         "position": "RW",
         "age": 19,
         "overall": 60,
@@ -7752,7 +7752,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Marcos Goñi",
+        "name": "Marcos GoÃ±i",
         "position": "ST",
         "age": 19,
         "overall": 60,
@@ -7779,7 +7779,7 @@ export const segundaRFEFGrupo2 = [
     },
     "players": [
       {
-        "name": "Javi Hernández",
+        "name": "Javi HernÃ¡ndez",
         "position": "CB",
         "age": 25,
         "overall": 62,
@@ -7790,7 +7790,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Jaime Requés",
+        "name": "Jaime RequÃ©s",
         "position": "CM",
         "age": 24,
         "overall": 62,
@@ -7801,7 +7801,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Álex Vela",
+        "name": "Ãlex Vela",
         "position": "CM",
         "age": 24,
         "overall": 62,
@@ -7812,7 +7812,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro Hermida",
+        "name": "Ãlvaro Hermida",
         "position": "RW",
         "age": 24,
         "overall": 62,
@@ -7834,7 +7834,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Héctor Espiérrez",
+        "name": "HÃ©ctor EspiÃ©rrez",
         "position": "CB",
         "age": null,
         "overall": 60,
@@ -7867,7 +7867,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Ángel Rueda",
+        "name": "Ãngel Rueda",
         "position": "RB",
         "age": 22,
         "overall": 60,
@@ -7889,7 +7889,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Alejandro Muñoz",
+        "name": "Alejandro MuÃ±oz",
         "position": "CM",
         "age": null,
         "overall": 60,
@@ -7900,7 +7900,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Víctor Charlez",
+        "name": "VÃ­ctor Charlez",
         "position": "LW",
         "age": 25,
         "overall": 60,
@@ -7955,7 +7955,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Iván Pérez",
+        "name": "IvÃ¡n PÃ©rez",
         "position": "CB",
         "age": 23,
         "overall": 58,
@@ -7966,7 +7966,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro Novials",
+        "name": "Ãlvaro Novials",
         "position": "CM",
         "age": 23,
         "overall": 58,
@@ -7977,7 +7977,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Kevin Sánchez",
+        "name": "Kevin SÃ¡nchez",
         "position": "LW",
         "age": 25,
         "overall": 58,
@@ -8015,7 +8015,7 @@ export const segundaRFEFGrupo2 = [
     },
     "players": [
       {
-        "name": "Javier Lizárraga",
+        "name": "Javier LizÃ¡rraga",
         "position": "CB",
         "age": 28,
         "overall": 62,
@@ -8026,7 +8026,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Hugo Terés",
+        "name": "Hugo TerÃ©s",
         "position": "CB",
         "age": 22,
         "overall": 62,
@@ -8059,7 +8059,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Ángel Fraga",
+        "name": "Ãngel Fraga",
         "position": "GK",
         "age": 29,
         "overall": 60,
@@ -8092,7 +8092,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Eloi Goñi",
+        "name": "Eloi GoÃ±i",
         "position": "CB",
         "age": 22,
         "overall": 60,
@@ -8103,7 +8103,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Víctor Ciáurriz",
+        "name": "VÃ­ctor CiÃ¡urriz",
         "position": "CB",
         "age": 21,
         "overall": 60,
@@ -8125,7 +8125,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Iker González",
+        "name": "Iker GonzÃ¡lez",
         "position": "RB",
         "age": 21,
         "overall": 60,
@@ -8169,7 +8169,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Iván Martínez",
+        "name": "IvÃ¡n MartÃ­nez",
         "position": "LW",
         "age": 27,
         "overall": 60,
@@ -8191,7 +8191,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Íñigo Morte",
+        "name": "ÃÃ±igo Morte",
         "position": "CB",
         "age": 25,
         "overall": 58,
@@ -8213,7 +8213,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Adrián Aranguren",
+        "name": "AdriÃ¡n Aranguren",
         "position": "CM",
         "age": 27,
         "overall": 58,
@@ -8224,7 +8224,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Xabi Goñi",
+        "name": "Xabi GoÃ±i",
         "position": "CM",
         "age": 24,
         "overall": 58,
@@ -8246,7 +8246,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Adrián Roncal",
+        "name": "AdriÃ¡n Roncal",
         "position": "RW",
         "age": 25,
         "overall": 58,
@@ -8350,7 +8350,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Beñat Almandoz",
+        "name": "BeÃ±at Almandoz",
         "position": "RB",
         "age": 23,
         "overall": 62,
@@ -8394,7 +8394,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Martín Artetxe",
+        "name": "MartÃ­n Artetxe",
         "position": "GK",
         "age": 30,
         "overall": 58,
@@ -8449,7 +8449,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Julen Etxeberría",
+        "name": "Julen EtxeberrÃ­a",
         "position": "CM",
         "age": 28,
         "overall": 58,
@@ -8460,7 +8460,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Beñat González",
+        "name": "BeÃ±at GonzÃ¡lez",
         "position": "CM",
         "age": 24,
         "overall": 58,
@@ -8504,7 +8504,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Beñat Eizagirre",
+        "name": "BeÃ±at Eizagirre",
         "position": "ST",
         "age": 26,
         "overall": 58,
@@ -8515,7 +8515,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Eñaut Mendia",
+        "name": "EÃ±aut Mendia",
         "position": "ST",
         "age": 26,
         "overall": 58,
@@ -8526,7 +8526,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Jon Gaztañaga",
+        "name": "Jon GaztaÃ±aga",
         "position": "CM",
         "age": 34,
         "overall": 55,
@@ -8540,9 +8540,9 @@ export const segundaRFEFGrupo2 = [
   },
   {
     "id": "naxara_cd",
-    "name": "Náxara CD",
-    "shortName": "NÁX",
-    "city": "Náxara CD",
+    "name": "NÃ¡xara CD",
+    "shortName": "NÃX",
+    "city": "NÃ¡xara CD",
     "stadium": "Estadio Municipal",
     "stadiumCapacity": 5000,
     "budget": 2300000,
@@ -8564,7 +8564,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Javier Caño",
+        "name": "Javier CaÃ±o",
         "position": "CB",
         "age": 20,
         "overall": 62,
@@ -8575,7 +8575,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro García",
+        "name": "Ãlvaro GarcÃ­a",
         "position": "CM",
         "age": 30,
         "overall": 62,
@@ -8586,7 +8586,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro Maiso",
+        "name": "Ãlvaro Maiso",
         "position": "CM",
         "age": 25,
         "overall": 60,
@@ -8597,7 +8597,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Marcos Ceña",
+        "name": "Marcos CeÃ±a",
         "position": "CM",
         "age": 20,
         "overall": 60,
@@ -8630,7 +8630,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Iván Villoslada",
+        "name": "IvÃ¡n Villoslada",
         "position": "RW",
         "age": 23,
         "overall": 60,
@@ -8652,7 +8652,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Hugo Martínez",
+        "name": "Hugo MartÃ­nez",
         "position": "ST",
         "age": 20,
         "overall": 60,
@@ -8685,7 +8685,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Juan García",
+        "name": "Juan GarcÃ­a",
         "position": "CB",
         "age": 27,
         "overall": 58,
@@ -8696,7 +8696,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Iñigo Ochoa",
+        "name": "IÃ±igo Ochoa",
         "position": "CB",
         "age": 25,
         "overall": 58,
@@ -8707,7 +8707,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Víctor Martínez",
+        "name": "VÃ­ctor MartÃ­nez",
         "position": "CB",
         "age": 27,
         "overall": 58,
@@ -8718,7 +8718,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Miguel Rodríguez",
+        "name": "Miguel RodrÃ­guez",
         "position": "LB",
         "age": 31,
         "overall": 58,
@@ -8729,7 +8729,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Izán Flaño",
+        "name": "IzÃ¡n FlaÃ±o",
         "position": "RB",
         "age": 24,
         "overall": 58,
@@ -8762,7 +8762,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Iker Landín",
+        "name": "Iker LandÃ­n",
         "position": "CM",
         "age": 25,
         "overall": 58,
@@ -8773,7 +8773,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Iván Rojo",
+        "name": "IvÃ¡n Rojo",
         "position": "RW",
         "age": 32,
         "overall": 58,
@@ -8795,7 +8795,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Toño",
+        "name": "ToÃ±o",
         "position": "GK",
         "age": 39,
         "overall": 55,
@@ -8822,7 +8822,7 @@ export const segundaRFEFGrupo2 = [
     },
     "players": [
       {
-        "name": "Sergio Ocón",
+        "name": "Sergio OcÃ³n",
         "position": "RB",
         "age": 22,
         "overall": 64,
@@ -8866,7 +8866,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Aitor Pérez",
+        "name": "Aitor PÃ©rez",
         "position": "RB",
         "age": 26,
         "overall": 60,
@@ -8888,7 +8888,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Alejandro Domínguez",
+        "name": "Alejandro DomÃ­nguez",
         "position": "CM",
         "age": 19,
         "overall": 60,
@@ -8932,7 +8932,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Gorka Alegría",
+        "name": "Gorka AlegrÃ­a",
         "position": "GK",
         "age": 28,
         "overall": 58,
@@ -8943,7 +8943,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Ander Ibáñez",
+        "name": "Ander IbÃ¡Ã±ez",
         "position": "GK",
         "age": 23,
         "overall": 58,
@@ -8954,7 +8954,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Iván Rubio",
+        "name": "IvÃ¡n Rubio",
         "position": "CB",
         "age": 27,
         "overall": 58,
@@ -8976,7 +8976,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro Santos",
+        "name": "Ãlvaro Santos",
         "position": "CB",
         "age": 25,
         "overall": 58,
@@ -8987,7 +8987,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Martín Salvador",
+        "name": "MartÃ­n Salvador",
         "position": "LB",
         "age": 24,
         "overall": 58,
@@ -9009,7 +9009,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Rubén Morillas",
+        "name": "RubÃ©n Morillas",
         "position": "CM",
         "age": 32,
         "overall": 58,
@@ -9020,7 +9020,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Iñigo Burusco",
+        "name": "IÃ±igo Burusco",
         "position": "LW",
         "age": 23,
         "overall": 58,
@@ -9031,7 +9031,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Iván Garrido",
+        "name": "IvÃ¡n Garrido",
         "position": "LW",
         "age": 31,
         "overall": 58,
@@ -9042,7 +9042,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Mario León",
+        "name": "Mario LeÃ³n",
         "position": "RW",
         "age": 33,
         "overall": 58,
@@ -9053,7 +9053,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Íñigo Jiménez",
+        "name": "ÃÃ±igo JimÃ©nez",
         "position": "RW",
         "age": 33,
         "overall": 58,
@@ -9064,7 +9064,7 @@ export const segundaRFEFGrupo2 = [
         "fitness": 100
       },
       {
-        "name": "Arturo Fernández",
+        "name": "Arturo FernÃ¡ndez",
         "position": "ST",
         "age": 31,
         "overall": 58,
@@ -9092,9 +9092,9 @@ export const segundaRFEFGrupo2 = [
 export const segundaRFEFGrupo3 = [
   {
     "id": "barca_atletic",
-    "name": "Barça Atlètic",
+    "name": "BarÃ§a AtlÃ¨tic",
     "shortName": "BAR",
-    "city": "Barça Atlètic",
+    "city": "BarÃ§a AtlÃ¨tic",
     "stadium": "Estadio Municipal",
     "stadiumCapacity": 5000,
     "budget": 3200000,
@@ -9105,7 +9105,7 @@ export const segundaRFEFGrupo3 = [
     },
     "players": [
       {
-        "name": "Guille Fernández",
+        "name": "Guille FernÃ¡ndez",
         "position": "CM",
         "age": 17,
         "overall": 74,
@@ -9116,7 +9116,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Toni Fernández",
+        "name": "Toni FernÃ¡ndez",
         "position": "RW",
         "age": 17,
         "overall": 74,
@@ -9138,7 +9138,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Tommy Marqués",
+        "name": "Tommy MarquÃ©s",
         "position": "CDM",
         "age": 19,
         "overall": 70,
@@ -9149,7 +9149,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Dani Rodríguez",
+        "name": "Dani RodrÃ­guez",
         "position": "RW",
         "age": 20,
         "overall": 70,
@@ -9171,7 +9171,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Andrés Cuenca",
+        "name": "AndrÃ©s Cuenca",
         "position": "CB",
         "age": 18,
         "overall": 68,
@@ -9182,7 +9182,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Juan Hernández",
+        "name": "Juan HernÃ¡ndez",
         "position": "CM",
         "age": 18,
         "overall": 68,
@@ -9204,7 +9204,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro Cortés",
+        "name": "Ãlvaro CortÃ©s",
         "position": "CB",
         "age": 20,
         "overall": 66,
@@ -9237,7 +9237,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Landry Farré",
+        "name": "Landry FarrÃ©",
         "position": "RB",
         "age": 19,
         "overall": 66,
@@ -9248,7 +9248,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Roger Martínez",
+        "name": "Roger MartÃ­nez",
         "position": "CM",
         "age": 21,
         "overall": 66,
@@ -9259,7 +9259,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Brian Fariñas",
+        "name": "Brian FariÃ±as",
         "position": "CM",
         "age": 19,
         "overall": 66,
@@ -9270,7 +9270,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Óscar Ureña",
+        "name": "Ã“scar UreÃ±a",
         "position": "LW",
         "age": 22,
         "overall": 66,
@@ -9281,7 +9281,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Víctor Barberá",
+        "name": "VÃ­ctor BarberÃ¡",
         "position": "ST",
         "age": 21,
         "overall": 66,
@@ -9380,7 +9380,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Joaquín Delgado",
+        "name": "JoaquÃ­n Delgado",
         "position": "ST",
         "age": 24,
         "overall": 62,
@@ -9391,7 +9391,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Òscar Gistau",
+        "name": "Ã’scar Gistau",
         "position": "ST",
         "age": 17,
         "overall": 62,
@@ -9451,7 +9451,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Iñaki Álvarez",
+        "name": "IÃ±aki Ãlvarez",
         "position": "GK",
         "age": 28,
         "overall": 64,
@@ -9473,7 +9473,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Javi Gómez",
+        "name": "Javi GÃ³mez",
         "position": "CB",
         "age": 23,
         "overall": 64,
@@ -9484,7 +9484,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Lucas Viña",
+        "name": "Lucas ViÃ±a",
         "position": "LB",
         "age": 29,
         "overall": 64,
@@ -9495,7 +9495,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Jordi Méndez",
+        "name": "Jordi MÃ©ndez",
         "position": "RB",
         "age": 29,
         "overall": 64,
@@ -9506,7 +9506,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Sergi García",
+        "name": "Sergi GarcÃ­a",
         "position": "CM",
         "age": 26,
         "overall": 64,
@@ -9528,7 +9528,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Alexis García",
+        "name": "Alexis GarcÃ­a",
         "position": "RW",
         "age": 28,
         "overall": 64,
@@ -9561,7 +9561,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Luis Martínez",
+        "name": "Luis MartÃ­nez",
         "position": "CB",
         "age": 32,
         "overall": 62,
@@ -9605,7 +9605,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Armand Vallés",
+        "name": "Armand VallÃ©s",
         "position": "RW",
         "age": 22,
         "overall": 62,
@@ -9627,7 +9627,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Raúl García-Alejo",
+        "name": "RaÃºl GarcÃ­a-Alejo",
         "position": "GK",
         "age": 23,
         "overall": 60,
@@ -9660,7 +9660,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Josep Señé",
+        "name": "Josep SeÃ±Ã©",
         "position": "CM",
         "age": 34,
         "overall": 59,
@@ -9698,7 +9698,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Adrián Beamonte",
+        "name": "AdriÃ¡n Beamonte",
         "position": "CB",
         "age": 21,
         "overall": 64,
@@ -9731,7 +9731,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Iván Biarge",
+        "name": "IvÃ¡n Biarge",
         "position": "GK",
         "age": 22,
         "overall": 62,
@@ -9753,7 +9753,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro Martín",
+        "name": "Ãlvaro MartÃ­n",
         "position": "CB",
         "age": 25,
         "overall": 62,
@@ -9775,7 +9775,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Ismael Estévez",
+        "name": "Ismael EstÃ©vez",
         "position": "CM",
         "age": 23,
         "overall": 62,
@@ -9786,7 +9786,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Josemi Castañeda",
+        "name": "Josemi CastaÃ±eda",
         "position": "CM",
         "age": 27,
         "overall": 62,
@@ -9797,7 +9797,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Sergio Cortés",
+        "name": "Sergio CortÃ©s",
         "position": "CM",
         "age": 32,
         "overall": 62,
@@ -9852,7 +9852,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Joel Rodríguez",
+        "name": "Joel RodrÃ­guez",
         "position": "ST",
         "age": 27,
         "overall": 62,
@@ -9885,7 +9885,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Cristhian Mármol",
+        "name": "Cristhian MÃ¡rmol",
         "position": "CM",
         "age": 20,
         "overall": 60,
@@ -9918,7 +9918,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Marcos Pérez",
+        "name": "Marcos PÃ©rez",
         "position": "GK",
         "age": 41,
         "overall": 55,
@@ -9945,7 +9945,7 @@ export const segundaRFEFGrupo3 = [
     },
     "players": [
       {
-        "name": "Abel Gambín",
+        "name": "Abel GambÃ­n",
         "position": "GK",
         "age": 22,
         "overall": 64,
@@ -9956,7 +9956,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "José Solbes",
+        "name": "JosÃ© Solbes",
         "position": "CB",
         "age": 26,
         "overall": 64,
@@ -9978,7 +9978,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Loren Fernández",
+        "name": "Loren FernÃ¡ndez",
         "position": "RB",
         "age": 27,
         "overall": 64,
@@ -10000,7 +10000,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Víctor Sala",
+        "name": "VÃ­ctor Sala",
         "position": "CM",
         "age": 22,
         "overall": 64,
@@ -10022,7 +10022,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Rubén Catalá",
+        "name": "RubÃ©n CatalÃ¡",
         "position": "ST",
         "age": 22,
         "overall": 64,
@@ -10033,7 +10033,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Jagoba Zárraga",
+        "name": "Jagoba ZÃ¡rraga",
         "position": "GK",
         "age": 28,
         "overall": 62,
@@ -10055,7 +10055,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Raúl González",
+        "name": "RaÃºl GonzÃ¡lez",
         "position": "CB",
         "age": 33,
         "overall": 62,
@@ -10066,7 +10066,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Adrián Lledó",
+        "name": "AdriÃ¡n LledÃ³",
         "position": "CM",
         "age": 28,
         "overall": 62,
@@ -10121,7 +10121,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Marcos Leganés",
+        "name": "Marcos LeganÃ©s",
         "position": "GK",
         "age": 21,
         "overall": 60,
@@ -10154,7 +10154,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Álex Alonso",
+        "name": "Ãlex Alonso",
         "position": "RB",
         "age": 21,
         "overall": 60,
@@ -10165,7 +10165,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Rubén Carretero",
+        "name": "RubÃ©n Carretero",
         "position": "RW",
         "age": 23,
         "overall": 60,
@@ -10187,7 +10187,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Guille Andrés",
+        "name": "Guille AndrÃ©s",
         "position": "ST",
         "age": 33,
         "overall": 60,
@@ -10258,7 +10258,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Rubén Moreno",
+        "name": "RubÃ©n Moreno",
         "position": "CM",
         "age": 21,
         "overall": 64,
@@ -10269,7 +10269,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Raúl Caballero",
+        "name": "RaÃºl Caballero",
         "position": "ST",
         "age": 25,
         "overall": 64,
@@ -10313,7 +10313,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Diego Martínez",
+        "name": "Diego MartÃ­nez",
         "position": "RB",
         "age": 30,
         "overall": 62,
@@ -10324,7 +10324,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Armando Corbalán",
+        "name": "Armando CorbalÃ¡n",
         "position": "CM",
         "age": 31,
         "overall": 62,
@@ -10346,7 +10346,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Adrián Pérez",
+        "name": "AdriÃ¡n PÃ©rez",
         "position": "CM",
         "age": 27,
         "overall": 62,
@@ -10434,7 +10434,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Héctor Mejía",
+        "name": "HÃ©ctor MejÃ­a",
         "position": "LB",
         "age": 21,
         "overall": 60,
@@ -10478,7 +10478,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Mario Genovés",
+        "name": "Mario GenovÃ©s",
         "position": "ST",
         "age": 22,
         "overall": 60,
@@ -10511,7 +10511,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Adrián Lois",
+        "name": "AdriÃ¡n Lois",
         "position": "CM",
         "age": 36,
         "overall": 55,
@@ -10538,7 +10538,7 @@ export const segundaRFEFGrupo3 = [
     },
     "players": [
       {
-        "name": "José Luis Català",
+        "name": "JosÃ© Luis CatalÃ ",
         "position": "CB",
         "age": 21,
         "overall": 64,
@@ -10560,7 +10560,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "José Ángel López",
+        "name": "JosÃ© Ãngel LÃ³pez",
         "position": "RB",
         "age": 19,
         "overall": 64,
@@ -10571,7 +10571,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Ferran Gómez",
+        "name": "Ferran GÃ³mez",
         "position": "CM",
         "age": 19,
         "overall": 64,
@@ -10593,7 +10593,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Alex Bombardó",
+        "name": "Alex BombardÃ³",
         "position": "CM",
         "age": 18,
         "overall": 64,
@@ -10637,7 +10637,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Llorenç Serred",
+        "name": "LlorenÃ§ Serred",
         "position": "GK",
         "age": 20,
         "overall": 62,
@@ -10681,7 +10681,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Miguel Londoño",
+        "name": "Miguel LondoÃ±o",
         "position": "CM",
         "age": 19,
         "overall": 62,
@@ -10725,7 +10725,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Pol Tristán",
+        "name": "Pol TristÃ¡n",
         "position": "GK",
         "age": 23,
         "overall": 60,
@@ -10747,7 +10747,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Marcos Fernández",
+        "name": "Marcos FernÃ¡ndez",
         "position": "LB",
         "age": 22,
         "overall": 60,
@@ -10758,7 +10758,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Carlos Sánchez",
+        "name": "Carlos SÃ¡nchez",
         "position": "RB",
         "age": 21,
         "overall": 60,
@@ -10813,7 +10813,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Rubén Aguilar",
+        "name": "RubÃ©n Aguilar",
         "position": "ST",
         "age": 19,
         "overall": 60,
@@ -10851,7 +10851,7 @@ export const segundaRFEFGrupo3 = [
     },
     "players": [
       {
-        "name": "Edu Frías",
+        "name": "Edu FrÃ­as",
         "position": "GK",
         "age": 27,
         "overall": 64,
@@ -10862,7 +10862,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Sebastián Arenas",
+        "name": "SebastiÃ¡n Arenas",
         "position": "GK",
         "age": 21,
         "overall": 64,
@@ -10884,7 +10884,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Téo James Michel",
+        "name": "TÃ©o James Michel",
         "position": "RW",
         "age": 21,
         "overall": 64,
@@ -10906,7 +10906,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Tomás Bourdal",
+        "name": "TomÃ¡s Bourdal",
         "position": "CB",
         "age": 27,
         "overall": 62,
@@ -10917,7 +10917,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Adrián López",
+        "name": "AdriÃ¡n LÃ³pez",
         "position": "LB",
         "age": 27,
         "overall": 62,
@@ -10939,7 +10939,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Raúl Castro",
+        "name": "RaÃºl Castro",
         "position": "RB",
         "age": 24,
         "overall": 62,
@@ -11027,7 +11027,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Juan Ramón",
+        "name": "Juan RamÃ³n",
         "position": "RB",
         "age": 21,
         "overall": 60,
@@ -11093,7 +11093,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Manel Martínez",
+        "name": "Manel MartÃ­nez",
         "position": "ST",
         "age": 33,
         "overall": 60,
@@ -11104,7 +11104,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Alex Sánchez",
+        "name": "Alex SÃ¡nchez",
         "position": "ST",
         "age": 21,
         "overall": 60,
@@ -11126,7 +11126,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Diego Jiménez",
+        "name": "Diego JimÃ©nez",
         "position": "CB",
         "age": 34,
         "overall": 57,
@@ -11164,7 +11164,7 @@ export const segundaRFEFGrupo3 = [
     },
     "players": [
       {
-        "name": "Pol Ballesté",
+        "name": "Pol BallestÃ©",
         "position": "GK",
         "age": 30,
         "overall": 62,
@@ -11197,7 +11197,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Joel Arumí",
+        "name": "Joel ArumÃ­",
         "position": "LB",
         "age": 25,
         "overall": 62,
@@ -11219,7 +11219,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Martí Soler",
+        "name": "MartÃ­ Soler",
         "position": "CM",
         "age": 27,
         "overall": 62,
@@ -11230,7 +11230,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Pau López",
+        "name": "Pau LÃ³pez",
         "position": "CM",
         "age": 30,
         "overall": 62,
@@ -11252,7 +11252,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Rubén Enri",
+        "name": "RubÃ©n Enri",
         "position": "ST",
         "age": 27,
         "overall": 62,
@@ -11274,7 +11274,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Jan Danés",
+        "name": "Jan DanÃ©s",
         "position": "GK",
         "age": 20,
         "overall": 60,
@@ -11296,7 +11296,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Guillem Barrés",
+        "name": "Guillem BarrÃ©s",
         "position": "CB",
         "age": 19,
         "overall": 60,
@@ -11329,7 +11329,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Guillem Farrés",
+        "name": "Guillem FarrÃ©s",
         "position": "CM",
         "age": 20,
         "overall": 60,
@@ -11362,7 +11362,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Albert López",
+        "name": "Albert LÃ³pez",
         "position": "RW",
         "age": 29,
         "overall": 58,
@@ -11373,7 +11373,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Carlos Martínez",
+        "name": "Carlos MartÃ­nez",
         "position": "ST",
         "age": 28,
         "overall": 58,
@@ -11409,9 +11409,9 @@ export const segundaRFEFGrupo3 = [
   },
   {
     "id": "atletic_lleida",
-    "name": "Atlètic Lleida",
+    "name": "AtlÃ¨tic Lleida",
     "shortName": "ATL",
-    "city": "Atlètic Lleida",
+    "city": "AtlÃ¨tic Lleida",
     "stadium": "Estadio Municipal",
     "stadiumCapacity": 5000,
     "budget": 1800000,
@@ -11455,7 +11455,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Quim Utgés",
+        "name": "Quim UtgÃ©s",
         "position": "ST",
         "age": 20,
         "overall": 64,
@@ -11466,7 +11466,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Daouda Koné",
+        "name": "Daouda KonÃ©",
         "position": "CB",
         "age": 22,
         "overall": 62,
@@ -11477,7 +11477,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Roger Alcalá",
+        "name": "Roger AlcalÃ¡",
         "position": "CB",
         "age": 21,
         "overall": 62,
@@ -11499,7 +11499,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Antonio Cotán",
+        "name": "Antonio CotÃ¡n",
         "position": "CM",
         "age": 30,
         "overall": 62,
@@ -11510,7 +11510,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Juan Agüero",
+        "name": "Juan AgÃ¼ero",
         "position": "RW",
         "age": 26,
         "overall": 62,
@@ -11532,7 +11532,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Borja López",
+        "name": "Borja LÃ³pez",
         "position": "CB",
         "age": 33,
         "overall": 60,
@@ -11576,7 +11576,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Marcel Samsó",
+        "name": "Marcel SamsÃ³",
         "position": "LW",
         "age": 22,
         "overall": 60,
@@ -11708,7 +11708,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Boris Garrós",
+        "name": "Boris GarrÃ³s",
         "position": "ST",
         "age": 37,
         "overall": 55,
@@ -11812,7 +11812,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Raúl Alarcón",
+        "name": "RaÃºl AlarcÃ³n",
         "position": "RB",
         "age": 20,
         "overall": 62,
@@ -11856,7 +11856,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Rubén Cebollada",
+        "name": "RubÃ©n Cebollada",
         "position": "GK",
         "age": 23,
         "overall": 60,
@@ -11889,7 +11889,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Aarón Fernández",
+        "name": "AarÃ³n FernÃ¡ndez",
         "position": "LW",
         "age": 23,
         "overall": 60,
@@ -11922,7 +11922,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Iván Estrecha",
+        "name": "IvÃ¡n Estrecha",
         "position": "ST",
         "age": 22,
         "overall": 60,
@@ -11933,7 +11933,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Lucas Acín",
+        "name": "Lucas AcÃ­n",
         "position": "CM",
         "age": 22,
         "overall": 60,
@@ -12015,7 +12015,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Enric García",
+        "name": "Enric GarcÃ­a",
         "position": "CM",
         "age": 19,
         "overall": 64,
@@ -12026,7 +12026,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Miguel Ángel Sánchez",
+        "name": "Miguel Ãngel SÃ¡nchez",
         "position": "CM",
         "age": 22,
         "overall": 64,
@@ -12147,7 +12147,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Biel Farrés",
+        "name": "Biel FarrÃ©s",
         "position": "CB",
         "age": 23,
         "overall": 60,
@@ -12180,7 +12180,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Mario González",
+        "name": "Mario GonzÃ¡lez",
         "position": "LB",
         "age": 20,
         "overall": 60,
@@ -12202,7 +12202,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Aimar García",
+        "name": "Aimar GarcÃ­a",
         "position": "CM",
         "age": 19,
         "overall": 60,
@@ -12213,7 +12213,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Nil Calderó",
+        "name": "Nil CalderÃ³",
         "position": "RW",
         "age": 20,
         "overall": 60,
@@ -12268,7 +12268,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Raúl Martínez",
+        "name": "RaÃºl MartÃ­nez",
         "position": "CM",
         "age": 23,
         "overall": 58,
@@ -12295,7 +12295,7 @@ export const segundaRFEFGrupo3 = [
     },
     "players": [
       {
-        "name": "Marcel Céspedes",
+        "name": "Marcel CÃ©spedes",
         "position": "LB",
         "age": 22,
         "overall": 64,
@@ -12328,7 +12328,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro Pacheco",
+        "name": "Ãlvaro Pacheco",
         "position": "GK",
         "age": 20,
         "overall": 62,
@@ -12339,7 +12339,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Lluís Recasens",
+        "name": "LluÃ­s Recasens",
         "position": "CB",
         "age": 23,
         "overall": 62,
@@ -12350,7 +12350,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Pol Fernández",
+        "name": "Pol FernÃ¡ndez",
         "position": "CB",
         "age": 22,
         "overall": 62,
@@ -12372,7 +12372,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Fran Carbià",
+        "name": "Fran CarbiÃ ",
         "position": "LW",
         "age": 33,
         "overall": 62,
@@ -12383,7 +12383,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Andy Alarcón",
+        "name": "Andy AlarcÃ³n",
         "position": "CB",
         "age": 26,
         "overall": 60,
@@ -12405,7 +12405,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Pol Fernández",
+        "name": "Pol FernÃ¡ndez",
         "position": "RB",
         "age": 22,
         "overall": 60,
@@ -12460,7 +12460,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Raúl Melo",
+        "name": "RaÃºl Melo",
         "position": "CB",
         "age": 23,
         "overall": 58,
@@ -12504,7 +12504,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Josep Ramón",
+        "name": "Josep RamÃ³n",
         "position": "ST",
         "age": 29,
         "overall": 58,
@@ -12526,7 +12526,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Ramón Folch",
+        "name": "RamÃ³n Folch",
         "position": "CM",
         "age": 36,
         "overall": 55,
@@ -12575,7 +12575,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Victor Méndez",
+        "name": "Victor MÃ©ndez",
         "position": "GK",
         "age": 25,
         "overall": 62,
@@ -12652,7 +12652,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Pau Mascaró",
+        "name": "Pau MascarÃ³",
         "position": "ST",
         "age": 21,
         "overall": 62,
@@ -12663,7 +12663,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Pau Socías",
+        "name": "Pau SocÃ­as",
         "position": "GK",
         "age": 22,
         "overall": 60,
@@ -12685,7 +12685,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Jorge García",
+        "name": "Jorge GarcÃ­a",
         "position": "CB",
         "age": 24,
         "overall": 60,
@@ -12729,7 +12729,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Sergi Martín",
+        "name": "Sergi MartÃ­n",
         "position": "LW",
         "age": 21,
         "overall": 60,
@@ -12751,7 +12751,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Álex Jaraiz",
+        "name": "Ãlex Jaraiz",
         "position": "RW",
         "age": 23,
         "overall": 60,
@@ -12762,7 +12762,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Rubén de Tomás",
+        "name": "RubÃ©n de TomÃ¡s",
         "position": "ST",
         "age": 25,
         "overall": 60,
@@ -12773,7 +12773,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Xisco Garí",
+        "name": "Xisco GarÃ­",
         "position": "CB",
         "age": 32,
         "overall": 58,
@@ -12831,9 +12831,9 @@ export const segundaRFEFGrupo3 = [
   },
   {
     "id": "cd_castellon_b",
-    "name": "CD Castellón B",
+    "name": "CD CastellÃ³n B",
     "shortName": "CD ",
-    "city": "CD Castellón B",
+    "city": "CD CastellÃ³n B",
     "stadium": "Estadio Municipal",
     "stadiumCapacity": 5000,
     "budget": 2400000,
@@ -12899,7 +12899,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Álex Alcira",
+        "name": "Ãlex Alcira",
         "position": "LB",
         "age": 22,
         "overall": 62,
@@ -12932,7 +12932,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Adrián Arapio",
+        "name": "AdriÃ¡n Arapio",
         "position": "CM",
         "age": 17,
         "overall": 62,
@@ -12976,7 +12976,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "David Sellés",
+        "name": "David SellÃ©s",
         "position": "CB",
         "age": 22,
         "overall": 60,
@@ -13042,7 +13042,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Dennis Almiñana",
+        "name": "Dennis AlmiÃ±ana",
         "position": "LW",
         "age": 20,
         "overall": 60,
@@ -13053,7 +13053,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Josep Díaz",
+        "name": "Josep DÃ­az",
         "position": "RW",
         "age": 20,
         "overall": 60,
@@ -13064,7 +13064,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Hugo Goñi",
+        "name": "Hugo GoÃ±i",
         "position": "ST",
         "age": 19,
         "overall": 60,
@@ -13075,7 +13075,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Fran Santamaría",
+        "name": "Fran SantamarÃ­a",
         "position": "ST",
         "age": 17,
         "overall": 60,
@@ -13157,7 +13157,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Martí Payeras",
+        "name": "MartÃ­ Payeras",
         "position": "CM",
         "age": 22,
         "overall": 64,
@@ -13190,7 +13190,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Marco Alarcón",
+        "name": "Marco AlarcÃ³n",
         "position": "RW",
         "age": 24,
         "overall": 62,
@@ -13223,7 +13223,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Marc García",
+        "name": "Marc GarcÃ­a",
         "position": "CB",
         "age": 23,
         "overall": 60,
@@ -13256,7 +13256,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Andrés García",
+        "name": "AndrÃ©s GarcÃ­a",
         "position": "ST",
         "age": 22,
         "overall": 60,
@@ -13289,7 +13289,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Joan Salvá",
+        "name": "Joan SalvÃ¡",
         "position": "CB",
         "age": 26,
         "overall": 58,
@@ -13311,7 +13311,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Gori López",
+        "name": "Gori LÃ³pez",
         "position": "CM",
         "age": 27,
         "overall": 58,
@@ -13322,7 +13322,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Alberto Fernández",
+        "name": "Alberto FernÃ¡ndez",
         "position": "ST",
         "age": 26,
         "overall": 58,
@@ -13426,7 +13426,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Carlos Sánchez",
+        "name": "Carlos SÃ¡nchez",
         "position": "RB",
         "age": 24,
         "overall": 62,
@@ -13448,7 +13448,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Gabi García",
+        "name": "Gabi GarcÃ­a",
         "position": "RW",
         "age": 22,
         "overall": 62,
@@ -13459,7 +13459,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Pablo Gálvez",
+        "name": "Pablo GÃ¡lvez",
         "position": "ST",
         "age": 24,
         "overall": 62,
@@ -13470,7 +13470,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Nacho Sánchez",
+        "name": "Nacho SÃ¡nchez",
         "position": "ST",
         "age": 25,
         "overall": 62,
@@ -13481,7 +13481,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Elias Ramírez",
+        "name": "Elias RamÃ­rez",
         "position": "GK",
         "age": 26,
         "overall": 60,
@@ -13514,7 +13514,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Adrià Nicoli",
+        "name": "AdriÃ  Nicoli",
         "position": "RB",
         "age": 25,
         "overall": 60,
@@ -13525,7 +13525,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Miquel Llabrés",
+        "name": "Miquel LlabrÃ©s",
         "position": "CM",
         "age": 25,
         "overall": 60,
@@ -13536,7 +13536,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Victor Lázaro",
+        "name": "Victor LÃ¡zaro",
         "position": "CM",
         "age": 22,
         "overall": 60,
@@ -13547,7 +13547,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Adrián Garrido",
+        "name": "AdriÃ¡n Garrido",
         "position": "LW",
         "age": 24,
         "overall": 60,
@@ -13558,7 +13558,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Javi Sánchez",
+        "name": "Javi SÃ¡nchez",
         "position": "RW",
         "age": 28,
         "overall": 60,
@@ -13580,7 +13580,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Xavi Bauzà",
+        "name": "Xavi BauzÃ ",
         "position": "CM",
         "age": 29,
         "overall": 58,
@@ -13591,7 +13591,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Javi Fernández",
+        "name": "Javi FernÃ¡ndez",
         "position": "CM",
         "age": 26,
         "overall": 58,
@@ -13602,7 +13602,7 @@ export const segundaRFEFGrupo3 = [
         "fitness": 100
       },
       {
-        "name": "Kevin García",
+        "name": "Kevin GarcÃ­a",
         "position": "CB",
         "age": 36,
         "overall": 55,
@@ -13632,7 +13632,7 @@ export const segundaRFEFGrupo4 = [
     },
     "players": [
       {
-        "name": "Fernando Román",
+        "name": "Fernando RomÃ¡n",
         "position": "CB",
         "age": 32,
         "overall": 64,
@@ -13643,7 +13643,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Aitor Puñal",
+        "name": "Aitor PuÃ±al",
         "position": "CB",
         "age": 26,
         "overall": 64,
@@ -13676,7 +13676,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro Hernáiz",
+        "name": "Ãlvaro HernÃ¡iz",
         "position": "LW",
         "age": 28,
         "overall": 64,
@@ -13687,7 +13687,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Ale Marín",
+        "name": "Ale MarÃ­n",
         "position": "RW",
         "age": 26,
         "overall": 64,
@@ -13698,7 +13698,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Julito Martínez",
+        "name": "Julito MartÃ­nez",
         "position": "RW",
         "age": 25,
         "overall": 64,
@@ -13731,7 +13731,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Javi Ramírez",
+        "name": "Javi RamÃ­rez",
         "position": "CB",
         "age": 30,
         "overall": 62,
@@ -13764,7 +13764,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Héctor Fernández",
+        "name": "HÃ©ctor FernÃ¡ndez",
         "position": "LB",
         "age": 22,
         "overall": 62,
@@ -13786,7 +13786,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Pablo Hernández",
+        "name": "Pablo HernÃ¡ndez",
         "position": "CM",
         "age": 25,
         "overall": 62,
@@ -13797,7 +13797,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Iván Moreno",
+        "name": "IvÃ¡n Moreno",
         "position": "RW",
         "age": 28,
         "overall": 62,
@@ -13830,7 +13830,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Nacho Martínez",
+        "name": "Nacho MartÃ­nez",
         "position": "CB",
         "age": 22,
         "overall": 60,
@@ -13841,7 +13841,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Álex Bueno",
+        "name": "Ãlex Bueno",
         "position": "CM",
         "age": 20,
         "overall": 60,
@@ -13874,7 +13874,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "José Ruiz",
+        "name": "JosÃ© Ruiz",
         "position": "RB",
         "age": 35,
         "overall": 57,
@@ -13888,9 +13888,9 @@ export const segundaRFEFGrupo4 = [
   },
   {
     "id": "aguilas_fc",
-    "name": "Águilas FC",
-    "shortName": "ÁGU",
-    "city": "Águilas FC",
+    "name": "Ãguilas FC",
+    "shortName": "ÃGU",
+    "city": "Ãguilas FC",
     "stadium": "Estadio Municipal",
     "stadiumCapacity": 5000,
     "budget": 3600000,
@@ -13901,7 +13901,7 @@ export const segundaRFEFGrupo4 = [
     },
     "players": [
       {
-        "name": "Antonio Sánchez",
+        "name": "Antonio SÃ¡nchez",
         "position": "CB",
         "age": 25,
         "overall": 64,
@@ -13912,7 +13912,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Héctor Martínez",
+        "name": "HÃ©ctor MartÃ­nez",
         "position": "LB",
         "age": 26,
         "overall": 64,
@@ -13956,7 +13956,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Christian Martínez",
+        "name": "Christian MartÃ­nez",
         "position": "ST",
         "age": 25,
         "overall": 64,
@@ -13978,7 +13978,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Uriel Jové",
+        "name": "Uriel JovÃ©",
         "position": "CB",
         "age": 26,
         "overall": 62,
@@ -14000,7 +14000,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "José Mas",
+        "name": "JosÃ© Mas",
         "position": "RB",
         "age": 27,
         "overall": 62,
@@ -14022,7 +14022,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Mateo Enríquez",
+        "name": "Mateo EnrÃ­quez",
         "position": "CM",
         "age": 24,
         "overall": 62,
@@ -14077,7 +14077,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Fer Martínez",
+        "name": "Fer MartÃ­nez",
         "position": "RW",
         "age": 21,
         "overall": 62,
@@ -14099,7 +14099,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Nico Rodríguez",
+        "name": "Nico RodrÃ­guez",
         "position": "GK",
         "age": 23,
         "overall": 60,
@@ -14132,7 +14132,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "José Salcedo",
+        "name": "JosÃ© Salcedo",
         "position": "GK",
         "age": 35,
         "overall": 59,
@@ -14159,7 +14159,7 @@ export const segundaRFEFGrupo4 = [
     },
     "players": [
       {
-        "name": "Héctor Oliva",
+        "name": "HÃ©ctor Oliva",
         "position": "GK",
         "age": 21,
         "overall": 64,
@@ -14181,7 +14181,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Mario Gómez",
+        "name": "Mario GÃ³mez",
         "position": "CB",
         "age": 31,
         "overall": 64,
@@ -14192,7 +14192,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Darío Lozano",
+        "name": "DarÃ­o Lozano",
         "position": "CB",
         "age": 21,
         "overall": 64,
@@ -14225,7 +14225,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Yerai Dávila",
+        "name": "Yerai DÃ¡vila",
         "position": "CM",
         "age": 22,
         "overall": 64,
@@ -14236,7 +14236,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "José Manuel Raigal",
+        "name": "JosÃ© Manuel Raigal",
         "position": "LW",
         "age": 26,
         "overall": 64,
@@ -14258,7 +14258,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Miguel Pérez",
+        "name": "Miguel PÃ©rez",
         "position": "RW",
         "age": 22,
         "overall": 64,
@@ -14269,7 +14269,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Joel Jiménez",
+        "name": "Joel JimÃ©nez",
         "position": "GK",
         "age": 26,
         "overall": 62,
@@ -14302,7 +14302,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "David Márquez",
+        "name": "David MÃ¡rquez",
         "position": "LB",
         "age": 21,
         "overall": 62,
@@ -14313,7 +14313,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro Espínola",
+        "name": "Ãlvaro EspÃ­nola",
         "position": "RB",
         "age": 26,
         "overall": 62,
@@ -14346,7 +14346,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Jesús Cambil",
+        "name": "JesÃºs Cambil",
         "position": "CM",
         "age": 26,
         "overall": 62,
@@ -14412,7 +14412,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Francis Ferrón",
+        "name": "Francis FerrÃ³n",
         "position": "ST",
         "age": 36,
         "overall": 57,
@@ -14426,9 +14426,9 @@ export const segundaRFEFGrupo4 = [
   },
   {
     "id": "recreativo",
-    "name": "Recreativo",
+    "name": "Colón Huelva",
     "shortName": "REC",
-    "city": "Recreativo",
+    "city": "Huelva",
     "stadium": "Estadio Municipal",
     "stadiumCapacity": 5000,
     "budget": 3300000,
@@ -14450,7 +14450,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "José Carlos Ramírez",
+        "name": "JosÃ© Carlos RamÃ­rez",
         "position": "CB",
         "age": 29,
         "overall": 64,
@@ -14461,7 +14461,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Leo Mascaró",
+        "name": "Leo MascarÃ³",
         "position": "CB",
         "age": 22,
         "overall": 64,
@@ -14494,7 +14494,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Alberto López",
+        "name": "Alberto LÃ³pez",
         "position": "LB",
         "age": 30,
         "overall": 62,
@@ -14505,7 +14505,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Álex Carrasco",
+        "name": "Ãlex Carrasco",
         "position": "RB",
         "age": 21,
         "overall": 62,
@@ -14516,7 +14516,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Iván Romero",
+        "name": "IvÃ¡n Romero",
         "position": "CM",
         "age": 22,
         "overall": 62,
@@ -14560,7 +14560,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Antonio Domínguez",
+        "name": "Antonio DomÃ­nguez",
         "position": "RW",
         "age": 32,
         "overall": 62,
@@ -14604,7 +14604,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Néstor Senra",
+        "name": "NÃ©stor Senra",
         "position": "RB",
         "age": 24,
         "overall": 60,
@@ -14659,7 +14659,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Álex Bernal",
+        "name": "Ãlex Bernal",
         "position": "CM",
         "age": 34,
         "overall": 59,
@@ -14840,7 +14840,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Sergio García",
+        "name": "Sergio GarcÃ­a",
         "position": "LW",
         "age": 29,
         "overall": 62,
@@ -14873,7 +14873,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro Barrero",
+        "name": "Ãlvaro Barrero",
         "position": "RW",
         "age": 27,
         "overall": 62,
@@ -14928,7 +14928,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Marcelo Villaça",
+        "name": "Marcelo VillaÃ§a",
         "position": "RB",
         "age": 31,
         "overall": 60,
@@ -14977,7 +14977,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "David Ballarín",
+        "name": "David BallarÃ­n",
         "position": "LW",
         "age": 28,
         "overall": 64,
@@ -15021,7 +15021,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "José Antonio Caro",
+        "name": "JosÃ© Antonio Caro",
         "position": "CB",
         "age": 32,
         "overall": 62,
@@ -15032,7 +15032,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Cristian Fernández",
+        "name": "Cristian FernÃ¡ndez",
         "position": "CB",
         "age": 33,
         "overall": 62,
@@ -15054,7 +15054,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Ramón Blázquez",
+        "name": "RamÃ³n BlÃ¡zquez",
         "position": "RB",
         "age": 28,
         "overall": 62,
@@ -15065,7 +15065,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Antonio Marín",
+        "name": "Antonio MarÃ­n",
         "position": "RB",
         "age": 29,
         "overall": 62,
@@ -15142,7 +15142,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro Díaz",
+        "name": "Ãlvaro DÃ­az",
         "position": "CB",
         "age": 20,
         "overall": 60,
@@ -15153,7 +15153,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Alberto González",
+        "name": "Alberto GonzÃ¡lez",
         "position": "LB",
         "age": 21,
         "overall": 60,
@@ -15186,7 +15186,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Samu Expósito",
+        "name": "Samu ExpÃ³sito",
         "position": "CM",
         "age": 21,
         "overall": 60,
@@ -15219,7 +15219,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Héber Pena",
+        "name": "HÃ©ber Pena",
         "position": "LW",
         "age": 36,
         "overall": 57,
@@ -15268,7 +15268,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Antón Quindimil",
+        "name": "AntÃ³n Quindimil",
         "position": "CB",
         "age": 26,
         "overall": 62,
@@ -15279,7 +15279,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Pelón Cabrera",
+        "name": "PelÃ³n Cabrera",
         "position": "CB",
         "age": 31,
         "overall": 62,
@@ -15290,7 +15290,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Álex Muñiz",
+        "name": "Ãlex MuÃ±iz",
         "position": "CB",
         "age": 21,
         "overall": 62,
@@ -15323,7 +15323,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Iván Robles",
+        "name": "IvÃ¡n Robles",
         "position": "RB",
         "age": 28,
         "overall": 62,
@@ -15334,7 +15334,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Adrián Tovar",
+        "name": "AdriÃ¡n Tovar",
         "position": "RB",
         "age": 22,
         "overall": 62,
@@ -15345,7 +15345,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Álex Ortolà",
+        "name": "Ãlex OrtolÃ ",
         "position": "CM",
         "age": 25,
         "overall": 62,
@@ -15356,7 +15356,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Álex Claverías",
+        "name": "Ãlex ClaverÃ­as",
         "position": "CM",
         "age": 25,
         "overall": 62,
@@ -15367,7 +15367,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "José Ángel Ayala",
+        "name": "JosÃ© Ãngel Ayala",
         "position": "CM",
         "age": 25,
         "overall": 62,
@@ -15422,7 +15422,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Matías Chavarría",
+        "name": "MatÃ­as ChavarrÃ­a",
         "position": "ST",
         "age": 31,
         "overall": 62,
@@ -15488,7 +15488,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Óscar Lorenzo",
+        "name": "Ã“scar Lorenzo",
         "position": "RW",
         "age": 25,
         "overall": 60,
@@ -15526,7 +15526,7 @@ export const segundaRFEFGrupo4 = [
     },
     "players": [
       {
-        "name": "Fran Árbol",
+        "name": "Fran Ãrbol",
         "position": "GK",
         "age": 19,
         "overall": 64,
@@ -15559,7 +15559,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Dani García",
+        "name": "Dani GarcÃ­a",
         "position": "CM",
         "age": 22,
         "overall": 64,
@@ -15570,7 +15570,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "José Naranjo",
+        "name": "JosÃ© Naranjo",
         "position": "ST",
         "age": 25,
         "overall": 64,
@@ -15581,7 +15581,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Ernestas Juškevičius",
+        "name": "Ernestas JuÅ¡keviÄius",
         "position": "GK",
         "age": 26,
         "overall": 62,
@@ -15636,7 +15636,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "José Antonio Soler",
+        "name": "JosÃ© Antonio Soler",
         "position": "RB",
         "age": 30,
         "overall": 62,
@@ -15647,7 +15647,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Willy Ibáñez",
+        "name": "Willy IbÃ¡Ã±ez",
         "position": "CM",
         "age": 25,
         "overall": 62,
@@ -15658,7 +15658,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro Martínez",
+        "name": "Ãlvaro MartÃ­nez",
         "position": "CM",
         "age": 25,
         "overall": 62,
@@ -15669,7 +15669,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Juan Hernández",
+        "name": "Juan HernÃ¡ndez",
         "position": "LW",
         "age": 31,
         "overall": 62,
@@ -15724,7 +15724,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Gabri López",
+        "name": "Gabri LÃ³pez",
         "position": "RW",
         "age": 26,
         "overall": 60,
@@ -15746,7 +15746,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Álex Peque",
+        "name": "Ãlex Peque",
         "position": "LW",
         "age": 32,
         "overall": 58,
@@ -15757,7 +15757,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Andrés Carrasco",
+        "name": "AndrÃ©s Carrasco",
         "position": "ST",
         "age": 37,
         "overall": 55,
@@ -15795,7 +15795,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Moisés Rodríguez",
+        "name": "MoisÃ©s RodrÃ­guez",
         "position": "CB",
         "age": 28,
         "overall": 64,
@@ -15806,7 +15806,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Zeki Díaz",
+        "name": "Zeki DÃ­az",
         "position": "LW",
         "age": 29,
         "overall": 64,
@@ -15817,7 +15817,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Ángel de la Calzada",
+        "name": "Ãngel de la Calzada",
         "position": "GK",
         "age": 31,
         "overall": 62,
@@ -15861,7 +15861,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Ismael Gutiérrez",
+        "name": "Ismael GutiÃ©rrez",
         "position": "CM",
         "age": 25,
         "overall": 62,
@@ -15872,7 +15872,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Jaime López",
+        "name": "Jaime LÃ³pez",
         "position": "CM",
         "age": 26,
         "overall": 62,
@@ -15894,7 +15894,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Hugo Díaz",
+        "name": "Hugo DÃ­az",
         "position": "CM",
         "age": 28,
         "overall": 62,
@@ -15916,7 +15916,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Javi Rodríguez",
+        "name": "Javi RodrÃ­guez",
         "position": "RW",
         "age": 28,
         "overall": 62,
@@ -15938,7 +15938,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Nané García",
+        "name": "NanÃ© GarcÃ­a",
         "position": "ST",
         "age": 30,
         "overall": 62,
@@ -15960,7 +15960,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Leo Vázquez",
+        "name": "Leo VÃ¡zquez",
         "position": "LB",
         "age": 21,
         "overall": 60,
@@ -16004,7 +16004,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Adri Rodríguez",
+        "name": "Adri RodrÃ­guez",
         "position": "CM",
         "age": 31,
         "overall": 58,
@@ -16015,7 +16015,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Josete Malagón",
+        "name": "Josete MalagÃ³n",
         "position": "CB",
         "age": 37,
         "overall": 55,
@@ -16042,7 +16042,7 @@ export const segundaRFEFGrupo4 = [
     },
     "players": [
       {
-        "name": "Ventura Gómez",
+        "name": "Ventura GÃ³mez",
         "position": "GK",
         "age": 20,
         "overall": 64,
@@ -16064,7 +16064,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Roberto Alarcón",
+        "name": "Roberto AlarcÃ³n",
         "position": "LW",
         "age": 31,
         "overall": 64,
@@ -16075,7 +16075,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "David Barceló",
+        "name": "David BarcelÃ³",
         "position": "LW",
         "age": 19,
         "overall": 64,
@@ -16097,7 +16097,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Álex Lázaro",
+        "name": "Ãlex LÃ¡zaro",
         "position": "GK",
         "age": 29,
         "overall": 62,
@@ -16119,7 +16119,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Manu Galán",
+        "name": "Manu GalÃ¡n",
         "position": "CB",
         "age": 27,
         "overall": 62,
@@ -16141,7 +16141,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Álex Macías",
+        "name": "Ãlex MacÃ­as",
         "position": "LB",
         "age": 24,
         "overall": 62,
@@ -16174,7 +16174,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Fran Viñuela",
+        "name": "Fran ViÃ±uela",
         "position": "RW",
         "age": 27,
         "overall": 62,
@@ -16196,7 +16196,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Óscar Zorrilla",
+        "name": "Ã“scar Zorrilla",
         "position": "RW",
         "age": 21,
         "overall": 62,
@@ -16240,7 +16240,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Simón Moreno",
+        "name": "SimÃ³n Moreno",
         "position": "ST",
         "age": 28,
         "overall": 60,
@@ -16251,7 +16251,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Rubén Mesa",
+        "name": "RubÃ©n Mesa",
         "position": "ST",
         "age": 34,
         "overall": 59,
@@ -16262,7 +16262,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Damián Petcoff",
+        "name": "DamiÃ¡n Petcoff",
         "position": "CM",
         "age": 35,
         "overall": 57,
@@ -16276,9 +16276,9 @@ export const segundaRFEFGrupo4 = [
   },
   {
     "id": "real_jaen_cf",
-    "name": "Real Jaén CF",
+    "name": "Real JaÃ©n CF",
     "shortName": "REA",
-    "city": "Real Jaén CF",
+    "city": "Real JaÃ©n CF",
     "stadium": "Estadio Municipal",
     "stadiumCapacity": 5000,
     "budget": 2800000,
@@ -16289,7 +16289,7 @@ export const segundaRFEFGrupo4 = [
     },
     "players": [
       {
-        "name": "José Carlos Crespo",
+        "name": "JosÃ© Carlos Crespo",
         "position": "LW",
         "age": 19,
         "overall": 64,
@@ -16300,7 +16300,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Adrian Fernández",
+        "name": "Adrian FernÃ¡ndez",
         "position": "RW",
         "age": 19,
         "overall": 64,
@@ -16344,7 +16344,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Alejandro Pavón",
+        "name": "Alejandro PavÃ³n",
         "position": "CB",
         "age": 25,
         "overall": 62,
@@ -16399,7 +16399,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Nacho Vizcaíno",
+        "name": "Nacho VizcaÃ­no",
         "position": "CM",
         "age": 20,
         "overall": 62,
@@ -16410,7 +16410,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Ñito González",
+        "name": "Ã‘ito GonzÃ¡lez",
         "position": "CM",
         "age": 33,
         "overall": 62,
@@ -16443,7 +16443,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Pablo García",
+        "name": "Pablo GarcÃ­a",
         "position": "ST",
         "age": 27,
         "overall": 62,
@@ -16454,7 +16454,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Ivan Breñé",
+        "name": "Ivan BreÃ±Ã©",
         "position": "ST",
         "age": 25,
         "overall": 62,
@@ -16465,7 +16465,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Álex Maroto",
+        "name": "Ãlex Maroto",
         "position": "ST",
         "age": 21,
         "overall": 62,
@@ -16487,7 +16487,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Pedro Fernández",
+        "name": "Pedro FernÃ¡ndez",
         "position": "CB",
         "age": 22,
         "overall": 60,
@@ -16509,7 +16509,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "José Álvarez",
+        "name": "JosÃ© Ãlvarez",
         "position": "CM",
         "age": 25,
         "overall": 60,
@@ -16520,7 +16520,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Manu López",
+        "name": "Manu LÃ³pez",
         "position": "CM",
         "age": 22,
         "overall": 60,
@@ -16635,7 +16635,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Jaime Fernández",
+        "name": "Jaime FernÃ¡ndez",
         "position": "ST",
         "age": 21,
         "overall": 64,
@@ -16646,7 +16646,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Guillermo Acín",
+        "name": "Guillermo AcÃ­n",
         "position": "GK",
         "age": 24,
         "overall": 62,
@@ -16657,7 +16657,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Borja Martí",
+        "name": "Borja MartÃ­",
         "position": "GK",
         "age": 21,
         "overall": 62,
@@ -16668,7 +16668,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Jordan Hernández",
+        "name": "Jordan HernÃ¡ndez",
         "position": "CB",
         "age": 29,
         "overall": 62,
@@ -16756,7 +16756,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Jorge Domínguez",
+        "name": "Jorge DomÃ­nguez",
         "position": "RW",
         "age": 25,
         "overall": 62,
@@ -16767,7 +16767,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Stéphane Emaná",
+        "name": "StÃ©phane EmanÃ¡",
         "position": "ST",
         "age": 31,
         "overall": 62,
@@ -16811,7 +16811,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Antonio Fernández",
+        "name": "Antonio FernÃ¡ndez",
         "position": "ST",
         "age": 27,
         "overall": 60,
@@ -16822,7 +16822,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Josema Gómez",
+        "name": "Josema GÃ³mez",
         "position": "CB",
         "age": 34,
         "overall": 59,
@@ -16915,7 +16915,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Manny Rodríguez",
+        "name": "Manny RodrÃ­guez",
         "position": "LB",
         "age": 27,
         "overall": 62,
@@ -16937,7 +16937,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Víctor López",
+        "name": "VÃ­ctor LÃ³pez",
         "position": "RB",
         "age": 21,
         "overall": 62,
@@ -16948,7 +16948,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "João Paulo",
+        "name": "JoÃ£o Paulo",
         "position": "CM",
         "age": 29,
         "overall": 62,
@@ -16970,7 +16970,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Álex Caramelo",
+        "name": "Ãlex Caramelo",
         "position": "LW",
         "age": 30,
         "overall": 62,
@@ -16981,7 +16981,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Diego Talaverón",
+        "name": "Diego TalaverÃ³n",
         "position": "ST",
         "age": 23,
         "overall": 62,
@@ -16992,7 +16992,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Ángel Hernández",
+        "name": "Ãngel HernÃ¡ndez",
         "position": "GK",
         "age": 21,
         "overall": 60,
@@ -17014,7 +17014,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Eu Gutiérrez",
+        "name": "Eu GutiÃ©rrez",
         "position": "LB",
         "age": 24,
         "overall": 60,
@@ -17047,7 +17047,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Pedro Peña",
+        "name": "Pedro PeÃ±a",
         "position": "CM",
         "age": 21,
         "overall": 60,
@@ -17058,7 +17058,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Isra García",
+        "name": "Isra GarcÃ­a",
         "position": "CM",
         "age": 21,
         "overall": 60,
@@ -17069,7 +17069,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "David Velázquez",
+        "name": "David VelÃ¡zquez",
         "position": "LW",
         "age": 24,
         "overall": 60,
@@ -17102,7 +17102,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Hugo Díaz",
+        "name": "Hugo DÃ­az",
         "position": "ST",
         "age": 37,
         "overall": 57,
@@ -17116,9 +17116,9 @@ export const segundaRFEFGrupo4 = [
   },
   {
     "id": "ud_almeria_b",
-    "name": "UD Almería B",
+    "name": "UD AlmerÃ­a B",
     "shortName": "UD ",
-    "city": "UD Almería B",
+    "city": "UD AlmerÃ­a B",
     "stadium": "Estadio Municipal",
     "stadiumCapacity": 5000,
     "budget": 1400000,
@@ -17140,7 +17140,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Miguel Operé",
+        "name": "Miguel OperÃ©",
         "position": "CB",
         "age": 24,
         "overall": 64,
@@ -17151,7 +17151,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Carlos Jiménez",
+        "name": "Carlos JimÃ©nez",
         "position": "CB",
         "age": 19,
         "overall": 64,
@@ -17162,7 +17162,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Vicente Agulló",
+        "name": "Vicente AgullÃ³",
         "position": "RB",
         "age": 21,
         "overall": 64,
@@ -17173,7 +17173,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Joan Gázquez",
+        "name": "Joan GÃ¡zquez",
         "position": "CM",
         "age": 21,
         "overall": 64,
@@ -17228,7 +17228,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Ayouba Koné",
+        "name": "Ayouba KonÃ©",
         "position": "CB",
         "age": 21,
         "overall": 62,
@@ -17272,7 +17272,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "José Manuel Romera",
+        "name": "JosÃ© Manuel Romera",
         "position": "CM",
         "age": 21,
         "overall": 62,
@@ -17283,7 +17283,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Juan Asirón",
+        "name": "Juan AsirÃ³n",
         "position": "CM",
         "age": 21,
         "overall": 62,
@@ -17294,7 +17294,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Marçal Casadevall",
+        "name": "MarÃ§al Casadevall",
         "position": "CM",
         "age": 22,
         "overall": 62,
@@ -17305,7 +17305,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Hugo Martín",
+        "name": "Hugo MartÃ­n",
         "position": "CM",
         "age": 21,
         "overall": 62,
@@ -17327,7 +17327,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Félix Pérez",
+        "name": "FÃ©lix PÃ©rez",
         "position": "LW",
         "age": 24,
         "overall": 62,
@@ -17338,7 +17338,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Nico Fernández",
+        "name": "Nico FernÃ¡ndez",
         "position": "RW",
         "age": 21,
         "overall": 62,
@@ -17360,7 +17360,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Jesús López",
+        "name": "JesÃºs LÃ³pez",
         "position": "GK",
         "age": 23,
         "overall": 60,
@@ -17371,7 +17371,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Luís Martins",
+        "name": "LuÃ­s Martins",
         "position": "RB",
         "age": 21,
         "overall": 60,
@@ -17420,7 +17420,7 @@ export const segundaRFEFGrupo4 = [
     },
     "players": [
       {
-        "name": "Óscar Sánchez",
+        "name": "Ã“scar SÃ¡nchez",
         "position": "GK",
         "age": 22,
         "overall": 64,
@@ -17442,7 +17442,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Matías Árbol",
+        "name": "MatÃ­as Ãrbol",
         "position": "GK",
         "age": 23,
         "overall": 62,
@@ -17453,7 +17453,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Álex Revuelta",
+        "name": "Ãlex Revuelta",
         "position": "CB",
         "age": 25,
         "overall": 62,
@@ -17464,7 +17464,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro Caro",
+        "name": "Ãlvaro Caro",
         "position": "RB",
         "age": 24,
         "overall": 62,
@@ -17475,7 +17475,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Álex Carrascal",
+        "name": "Ãlex Carrascal",
         "position": "CM",
         "age": 30,
         "overall": 62,
@@ -17486,7 +17486,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Jesús García",
+        "name": "JesÃºs GarcÃ­a",
         "position": "CM",
         "age": 19,
         "overall": 62,
@@ -17508,7 +17508,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "José Mari Ruiz",
+        "name": "JosÃ© Mari Ruiz",
         "position": "CM",
         "age": 23,
         "overall": 62,
@@ -17530,7 +17530,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Álex Fernández",
+        "name": "Ãlex FernÃ¡ndez",
         "position": "RW",
         "age": 22,
         "overall": 62,
@@ -17563,7 +17563,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Diego Rodríguez",
+        "name": "Diego RodrÃ­guez",
         "position": "ST",
         "age": 22,
         "overall": 62,
@@ -17585,7 +17585,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Álex Cortijo",
+        "name": "Ãlex Cortijo",
         "position": "CB",
         "age": 29,
         "overall": 60,
@@ -17607,7 +17607,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Antonio Fernández",
+        "name": "Antonio FernÃ¡ndez",
         "position": "CB",
         "age": 26,
         "overall": 60,
@@ -17629,7 +17629,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Ángel Arreola",
+        "name": "Ãngel Arreola",
         "position": "CB",
         "age": 24,
         "overall": 60,
@@ -17640,7 +17640,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Juan Durán",
+        "name": "Juan DurÃ¡n",
         "position": "RB",
         "age": 25,
         "overall": 60,
@@ -17673,7 +17673,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Raúl Rojas",
+        "name": "RaÃºl Rojas",
         "position": "LW",
         "age": 24,
         "overall": 60,
@@ -17684,7 +17684,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Matheo Sánchez",
+        "name": "Matheo SÃ¡nchez",
         "position": "LW",
         "age": 22,
         "overall": 60,
@@ -17744,7 +17744,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Manu Ramírez",
+        "name": "Manu RamÃ­rez",
         "position": "CM",
         "age": 29,
         "overall": 64,
@@ -17766,7 +17766,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Cristian Rodríguez",
+        "name": "Cristian RodrÃ­guez",
         "position": "GK",
         "age": 22,
         "overall": 62,
@@ -17843,7 +17843,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Ángel Cano",
+        "name": "Ãngel Cano",
         "position": "CB",
         "age": 30,
         "overall": 60,
@@ -17887,7 +17887,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Marco Manchón",
+        "name": "Marco ManchÃ³n",
         "position": "RW",
         "age": 23,
         "overall": 60,
@@ -17920,7 +17920,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Diego Díaz",
+        "name": "Diego DÃ­az",
         "position": "RW",
         "age": 30,
         "overall": 58,
@@ -17942,7 +17942,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Miguel Núñez",
+        "name": "Miguel NÃºÃ±ez",
         "position": "CM",
         "age": 38,
         "overall": 55,
@@ -17953,7 +17953,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Juanmi Callejón",
+        "name": "Juanmi CallejÃ³n",
         "position": "LW",
         "age": 38,
         "overall": 55,
@@ -17991,7 +17991,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Rafita Álvarez",
+        "name": "Rafita Ãlvarez",
         "position": "RB",
         "age": 22,
         "overall": 62,
@@ -18002,7 +18002,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Lalo Hernández",
+        "name": "Lalo HernÃ¡ndez",
         "position": "CM",
         "age": 26,
         "overall": 62,
@@ -18024,7 +18024,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "José Castillo",
+        "name": "JosÃ© Castillo",
         "position": "GK",
         "age": 21,
         "overall": 60,
@@ -18035,7 +18035,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Pedro González",
+        "name": "Pedro GonzÃ¡lez",
         "position": "LB",
         "age": 21,
         "overall": 60,
@@ -18057,7 +18057,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Carlos Ramírez",
+        "name": "Carlos RamÃ­rez",
         "position": "CM",
         "age": 25,
         "overall": 60,
@@ -18112,7 +18112,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Iván Vela",
+        "name": "IvÃ¡n Vela",
         "position": "CB",
         "age": 24,
         "overall": 58,
@@ -18123,7 +18123,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Jesús Pozo",
+        "name": "JesÃºs Pozo",
         "position": "CB",
         "age": 30,
         "overall": 58,
@@ -18178,7 +18178,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Isma García",
+        "name": "Isma GarcÃ­a",
         "position": "RW",
         "age": 26,
         "overall": 58,
@@ -18189,7 +18189,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Azael Martín",
+        "name": "Azael MartÃ­n",
         "position": "RW",
         "age": 23,
         "overall": 58,
@@ -18211,7 +18211,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Edu Chía",
+        "name": "Edu ChÃ­a",
         "position": "CB",
         "age": 37,
         "overall": 55,
@@ -18222,7 +18222,7 @@ export const segundaRFEFGrupo4 = [
         "fitness": 100
       },
       {
-        "name": "Marcos Pérez",
+        "name": "Marcos PÃ©rez",
         "position": "RB",
         "age": 36,
         "overall": 55,
@@ -18239,9 +18239,9 @@ export const segundaRFEFGrupo4 = [
 export const segundaRFEFGrupo5 = [
   {
     "id": "real_madrid_c",
-    "name": "Real Madrid C",
+    "name": "Royal Zenith C",
     "shortName": "REA",
-    "city": "Real Madrid C",
+    "city": "Madrid",
     "stadium": "Estadio Municipal",
     "stadiumCapacity": 5000,
     "budget": 2000000,
@@ -18252,7 +18252,7 @@ export const segundaRFEFGrupo5 = [
     },
     "players": [
       {
-        "name": "Adrián Arnu",
+        "name": "AdriÃ¡n Arnu",
         "position": "ST",
         "age": 18,
         "overall": 68,
@@ -18340,7 +18340,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro Leiva",
+        "name": "Ãlvaro Leiva",
         "position": "CAM",
         "age": 21,
         "overall": 64,
@@ -18395,7 +18395,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Ferran Quetglás",
+        "name": "Ferran QuetglÃ¡s",
         "position": "GK",
         "age": 20,
         "overall": 62,
@@ -18406,7 +18406,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Óscar Mesa",
+        "name": "Ã“scar Mesa",
         "position": "LB",
         "age": 19,
         "overall": 62,
@@ -18417,7 +18417,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Eric Gómez",
+        "name": "Eric GÃ³mez",
         "position": "LB",
         "age": 21,
         "overall": 62,
@@ -18428,7 +18428,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Carlos Rodríguez",
+        "name": "Carlos RodrÃ­guez",
         "position": "CM",
         "age": 21,
         "overall": 62,
@@ -18450,7 +18450,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Roberto Martín",
+        "name": "Roberto MartÃ­n",
         "position": "CM",
         "age": 19,
         "overall": 62,
@@ -18472,7 +18472,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Joan Mascaró",
+        "name": "Joan MascarÃ³",
         "position": "LW",
         "age": 20,
         "overall": 62,
@@ -18483,7 +18483,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro Ginés",
+        "name": "Ãlvaro GinÃ©s",
         "position": "ST",
         "age": 20,
         "overall": 62,
@@ -18494,7 +18494,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro González",
+        "name": "Ãlvaro GonzÃ¡lez",
         "position": "GK",
         "age": 18,
         "overall": 60,
@@ -18516,7 +18516,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Álex Pérez",
+        "name": "Ãlex PÃ©rez",
         "position": "CB",
         "age": 20,
         "overall": 60,
@@ -18527,7 +18527,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Liberto Navascués",
+        "name": "Liberto NavascuÃ©s",
         "position": "LB",
         "age": 18,
         "overall": 60,
@@ -18609,7 +18609,7 @@ export const segundaRFEFGrupo5 = [
     },
     "players": [
       {
-        "name": "Nono Gómez",
+        "name": "Nono GÃ³mez",
         "position": "GK",
         "age": 20,
         "overall": 64,
@@ -18620,7 +18620,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Andreu Hernández",
+        "name": "Andreu HernÃ¡ndez",
         "position": "CB",
         "age": 28,
         "overall": 64,
@@ -18653,7 +18653,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Álex Gil",
+        "name": "Ãlex Gil",
         "position": "CM",
         "age": 22,
         "overall": 64,
@@ -18675,7 +18675,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Pol Roigé",
+        "name": "Pol RoigÃ©",
         "position": "RW",
         "age": 31,
         "overall": 64,
@@ -18686,7 +18686,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Primi Férriz",
+        "name": "Primi FÃ©rriz",
         "position": "CB",
         "age": 29,
         "overall": 62,
@@ -18719,7 +18719,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Josiel Núñez",
+        "name": "Josiel NÃºÃ±ez",
         "position": "CM",
         "age": 32,
         "overall": 62,
@@ -18752,7 +18752,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Gorka Santamaría",
+        "name": "Gorka SantamarÃ­a",
         "position": "ST",
         "age": 30,
         "overall": 62,
@@ -18763,7 +18763,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Álex Alemán",
+        "name": "Ãlex AlemÃ¡n",
         "position": "ST",
         "age": 21,
         "overall": 62,
@@ -18840,7 +18840,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Marc Martínez",
+        "name": "Marc MartÃ­nez",
         "position": "CB",
         "age": 23,
         "overall": 58,
@@ -18922,7 +18922,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Badra Traoré",
+        "name": "Badra TraorÃ©",
         "position": "ST",
         "age": 19,
         "overall": 64,
@@ -18933,7 +18933,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Adri López",
+        "name": "Adri LÃ³pez",
         "position": "GK",
         "age": 27,
         "overall": 62,
@@ -18955,7 +18955,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Iñaki Olaortua",
+        "name": "IÃ±aki Olaortua",
         "position": "CB",
         "age": 32,
         "overall": 62,
@@ -18966,7 +18966,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "David López",
+        "name": "David LÃ³pez",
         "position": "CB",
         "age": 25,
         "overall": 62,
@@ -19054,7 +19054,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Mario Rodríguez",
+        "name": "Mario RodrÃ­guez",
         "position": "LW",
         "age": 28,
         "overall": 62,
@@ -19065,7 +19065,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro Sánchez",
+        "name": "Ãlvaro SÃ¡nchez",
         "position": "ST",
         "age": 32,
         "overall": 62,
@@ -19076,7 +19076,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Gianfranco Peña",
+        "name": "Gianfranco PeÃ±a",
         "position": "ST",
         "age": 25,
         "overall": 62,
@@ -19098,7 +19098,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Malam Camará",
+        "name": "Malam CamarÃ¡",
         "position": "CM",
         "age": 26,
         "overall": 60,
@@ -19142,7 +19142,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Jesús Ares",
+        "name": "JesÃºs Ares",
         "position": "RW",
         "age": 22,
         "overall": 60,
@@ -19164,7 +19164,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Ale Sánchez",
+        "name": "Ale SÃ¡nchez",
         "position": "RW",
         "age": 23,
         "overall": 58,
@@ -19175,7 +19175,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Quique González",
+        "name": "Quique GonzÃ¡lez",
         "position": "ST",
         "age": 35,
         "overall": 57,
@@ -19202,7 +19202,7 @@ export const segundaRFEFGrupo5 = [
     },
     "players": [
       {
-        "name": "Iván Buigues",
+        "name": "IvÃ¡n Buigues",
         "position": "GK",
         "age": 29,
         "overall": 64,
@@ -19213,7 +19213,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Rubén García",
+        "name": "RubÃ©n GarcÃ­a",
         "position": "RB",
         "age": 27,
         "overall": 64,
@@ -19224,7 +19224,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Ángel Sánchez",
+        "name": "Ãngel SÃ¡nchez",
         "position": "LW",
         "age": 28,
         "overall": 64,
@@ -19246,7 +19246,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Víctor Algisí",
+        "name": "VÃ­ctor AlgisÃ­",
         "position": "CB",
         "age": 30,
         "overall": 62,
@@ -19257,7 +19257,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Pedro Inglés",
+        "name": "Pedro InglÃ©s",
         "position": "CB",
         "age": 29,
         "overall": 62,
@@ -19268,7 +19268,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Álex Salto",
+        "name": "Ãlex Salto",
         "position": "CB",
         "age": 28,
         "overall": 62,
@@ -19290,7 +19290,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Juanma García",
+        "name": "Juanma GarcÃ­a",
         "position": "LB",
         "age": 29,
         "overall": 62,
@@ -19334,7 +19334,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "José Alonso Lara",
+        "name": "JosÃ© Alonso Lara",
         "position": "LW",
         "age": 25,
         "overall": 62,
@@ -19356,7 +19356,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Rubén Solano",
+        "name": "RubÃ©n Solano",
         "position": "ST",
         "age": 33,
         "overall": 62,
@@ -19367,7 +19367,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Víctor Real",
+        "name": "VÃ­ctor Real",
         "position": "GK",
         "age": 21,
         "overall": 60,
@@ -19389,7 +19389,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "David Rodríguez",
+        "name": "David RodrÃ­guez",
         "position": "CM",
         "age": 20,
         "overall": 60,
@@ -19455,7 +19455,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Héctor Ayodele",
+        "name": "HÃ©ctor Ayodele",
         "position": "CM",
         "age": 36,
         "overall": 55,
@@ -19482,7 +19482,7 @@ export const segundaRFEFGrupo5 = [
     },
     "players": [
       {
-        "name": "Mario González",
+        "name": "Mario GonzÃ¡lez",
         "position": "CM",
         "age": 27,
         "overall": 64,
@@ -19504,7 +19504,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Alberto Lejárraga",
+        "name": "Alberto LejÃ¡rraga",
         "position": "GK",
         "age": 30,
         "overall": 62,
@@ -19537,7 +19537,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "César Llopis",
+        "name": "CÃ©sar Llopis",
         "position": "CB",
         "age": 26,
         "overall": 62,
@@ -19548,7 +19548,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Jesús Ocaña",
+        "name": "JesÃºs OcaÃ±a",
         "position": "LB",
         "age": 28,
         "overall": 62,
@@ -19603,7 +19603,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Christian Díaz",
+        "name": "Christian DÃ­az",
         "position": "LW",
         "age": 28,
         "overall": 62,
@@ -19636,7 +19636,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Aarón Palomo",
+        "name": "AarÃ³n Palomo",
         "position": "CB",
         "age": 21,
         "overall": 60,
@@ -19647,7 +19647,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Álex Blanco",
+        "name": "Ãlex Blanco",
         "position": "RB",
         "age": 24,
         "overall": 60,
@@ -19658,7 +19658,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Iván García",
+        "name": "IvÃ¡n GarcÃ­a",
         "position": "RB",
         "age": 21,
         "overall": 60,
@@ -19773,7 +19773,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro Peregrina",
+        "name": "Ãlvaro Peregrina",
         "position": "CB",
         "age": 21,
         "overall": 64,
@@ -19806,7 +19806,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Javi Jiménez",
+        "name": "Javi JimÃ©nez",
         "position": "CM",
         "age": 21,
         "overall": 64,
@@ -19828,7 +19828,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Joselu Pérez",
+        "name": "Joselu PÃ©rez",
         "position": "ST",
         "age": 21,
         "overall": 64,
@@ -19839,7 +19839,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Martín Cuéllar",
+        "name": "MartÃ­n CuÃ©llar",
         "position": "ST",
         "age": 18,
         "overall": 64,
@@ -19894,7 +19894,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Hugo Solozábal",
+        "name": "Hugo SolozÃ¡bal",
         "position": "CM",
         "age": 22,
         "overall": 62,
@@ -19905,7 +19905,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Adrián Riquelme",
+        "name": "AdriÃ¡n Riquelme",
         "position": "CM",
         "age": 19,
         "overall": 62,
@@ -19916,7 +19916,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Rubén Torres",
+        "name": "RubÃ©n Torres",
         "position": "RW",
         "age": 23,
         "overall": 62,
@@ -19927,7 +19927,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Carlos León",
+        "name": "Carlos LeÃ³n",
         "position": "RW",
         "age": 21,
         "overall": 62,
@@ -19971,7 +19971,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Iván Surkov",
+        "name": "IvÃ¡n Surkov",
         "position": "CB",
         "age": 21,
         "overall": 60,
@@ -19993,7 +19993,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Damián Cáceres",
+        "name": "DamiÃ¡n CÃ¡ceres",
         "position": "CM",
         "age": 22,
         "overall": 60,
@@ -20040,7 +20040,7 @@ export const segundaRFEFGrupo5 = [
   },
   {
     "id": "cf_fuenlabrada",
-    "name": "CF Fuenlabrada",
+    "name": "Fuenla CF",
     "shortName": "CF ",
     "city": "CF Fuenlabrada",
     "stadium": "Estadio Municipal",
@@ -20086,7 +20086,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Ismael Fernández",
+        "name": "Ismael FernÃ¡ndez",
         "position": "ST",
         "age": 20,
         "overall": 64,
@@ -20097,7 +20097,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro Cortés",
+        "name": "Ãlvaro CortÃ©s",
         "position": "GK",
         "age": 27,
         "overall": 62,
@@ -20108,7 +20108,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Alex Garzón",
+        "name": "Alex GarzÃ³n",
         "position": "GK",
         "age": 22,
         "overall": 62,
@@ -20130,7 +20130,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Rubén del Valle",
+        "name": "RubÃ©n del Valle",
         "position": "LB",
         "age": 26,
         "overall": 62,
@@ -20163,7 +20163,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Raúl Pesca",
+        "name": "RaÃºl Pesca",
         "position": "LW",
         "age": 26,
         "overall": 62,
@@ -20229,7 +20229,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Pablo Ramírez",
+        "name": "Pablo RamÃ­rez",
         "position": "CB",
         "age": 22,
         "overall": 60,
@@ -20251,7 +20251,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro Arnedo",
+        "name": "Ãlvaro Arnedo",
         "position": "CM",
         "age": 29,
         "overall": 60,
@@ -20311,7 +20311,7 @@ export const segundaRFEFGrupo5 = [
     },
     "players": [
       {
-        "name": "Aarón Alonso",
+        "name": "AarÃ³n Alonso",
         "position": "GK",
         "age": 20,
         "overall": 62,
@@ -20322,7 +20322,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Iñaki León",
+        "name": "IÃ±aki LeÃ³n",
         "position": "CB",
         "age": 25,
         "overall": 62,
@@ -20333,7 +20333,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro Domínguez",
+        "name": "Ãlvaro DomÃ­nguez",
         "position": "CB",
         "age": 21,
         "overall": 62,
@@ -20344,7 +20344,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "José Currás",
+        "name": "JosÃ© CurrÃ¡s",
         "position": "RB",
         "age": 23,
         "overall": 62,
@@ -20355,7 +20355,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Benji Núñez",
+        "name": "Benji NÃºÃ±ez",
         "position": "RB",
         "age": 30,
         "overall": 62,
@@ -20388,7 +20388,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Adri Pérez",
+        "name": "Adri PÃ©rez",
         "position": "CM",
         "age": 30,
         "overall": 62,
@@ -20410,7 +20410,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Iván Ramos",
+        "name": "IvÃ¡n Ramos",
         "position": "ST",
         "age": 24,
         "overall": 62,
@@ -20421,7 +20421,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Jacobo Guzmán",
+        "name": "Jacobo GuzmÃ¡n",
         "position": "LB",
         "age": 24,
         "overall": 60,
@@ -20432,7 +20432,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "José Antonio Martín",
+        "name": "JosÃ© Antonio MartÃ­n",
         "position": "CM",
         "age": 20,
         "overall": 60,
@@ -20443,7 +20443,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Hugo López",
+        "name": "Hugo LÃ³pez",
         "position": "CM",
         "age": 19,
         "overall": 60,
@@ -20454,7 +20454,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Álex Toper",
+        "name": "Ãlex Toper",
         "position": "LW",
         "age": 23,
         "overall": 60,
@@ -20476,7 +20476,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Juanjo Chavalés",
+        "name": "Juanjo ChavalÃ©s",
         "position": "RW",
         "age": 32,
         "overall": 60,
@@ -20487,7 +20487,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Adrià Mercadal",
+        "name": "AdriÃ  Mercadal",
         "position": "ST",
         "age": 25,
         "overall": 60,
@@ -20531,7 +20531,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Sergio Gómez",
+        "name": "Sergio GÃ³mez",
         "position": "CM",
         "age": 35,
         "overall": 55,
@@ -20580,7 +20580,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Guido Fernández",
+        "name": "Guido FernÃ¡ndez",
         "position": "CB",
         "age": 22,
         "overall": 64,
@@ -20591,7 +20591,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Alex Herráiz",
+        "name": "Alex HerrÃ¡iz",
         "position": "CM",
         "age": 18,
         "overall": 64,
@@ -20690,7 +20690,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Ismael Muñoz",
+        "name": "Ismael MuÃ±oz",
         "position": "CB",
         "age": 20,
         "overall": 60,
@@ -20712,7 +20712,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro Miralles",
+        "name": "Ãlvaro Miralles",
         "position": "LB",
         "age": 18,
         "overall": 60,
@@ -20734,7 +20734,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Antonio Martínez",
+        "name": "Antonio MartÃ­nez",
         "position": "CM",
         "age": 19,
         "overall": 60,
@@ -20745,7 +20745,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Nico González",
+        "name": "Nico GonzÃ¡lez",
         "position": "CM",
         "age": 19,
         "overall": 60,
@@ -20756,7 +20756,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro Padilla",
+        "name": "Ãlvaro Padilla",
         "position": "LW",
         "age": 20,
         "overall": 60,
@@ -20778,7 +20778,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Álex Sánchez",
+        "name": "Ãlex SÃ¡nchez",
         "position": "RW",
         "age": 19,
         "overall": 60,
@@ -20789,7 +20789,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Didac Castellá",
+        "name": "Didac CastellÃ¡",
         "position": "CAM",
         "age": 21,
         "overall": 60,
@@ -20847,9 +20847,9 @@ export const segundaRFEFGrupo5 = [
   },
   {
     "id": "rsd_alcala",
-    "name": "RSD Alcalá",
+    "name": "RSD AlcalÃ¡",
     "shortName": "RSD",
-    "city": "RSD Alcalá",
+    "city": "RSD AlcalÃ¡",
     "stadium": "Estadio Municipal",
     "stadiumCapacity": 5000,
     "budget": 2500000,
@@ -20882,7 +20882,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro Santiago",
+        "name": "Ãlvaro Santiago",
         "position": "CB",
         "age": 23,
         "overall": 62,
@@ -20893,7 +20893,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Edu Viaña",
+        "name": "Edu ViaÃ±a",
         "position": "RB",
         "age": 25,
         "overall": 62,
@@ -20948,7 +20948,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Lacine Koné",
+        "name": "Lacine KonÃ©",
         "position": "ST",
         "age": 23,
         "overall": 62,
@@ -20959,7 +20959,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Javi Hernández",
+        "name": "Javi HernÃ¡ndez",
         "position": "ST",
         "age": 36,
         "overall": 61,
@@ -20981,7 +20981,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Marco López",
+        "name": "Marco LÃ³pez",
         "position": "LB",
         "age": 20,
         "overall": 60,
@@ -20992,7 +20992,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Aitor González",
+        "name": "Aitor GonzÃ¡lez",
         "position": "CM",
         "age": 24,
         "overall": 60,
@@ -21003,7 +21003,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Ángel Blanco",
+        "name": "Ãngel Blanco",
         "position": "CM",
         "age": 21,
         "overall": 60,
@@ -21014,7 +21014,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Jesús Arribas",
+        "name": "JesÃºs Arribas",
         "position": "CM",
         "age": 22,
         "overall": 60,
@@ -21025,7 +21025,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Izan González",
+        "name": "Izan GonzÃ¡lez",
         "position": "LW",
         "age": 28,
         "overall": 60,
@@ -21036,7 +21036,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Iván Robledo",
+        "name": "IvÃ¡n Robledo",
         "position": "RW",
         "age": 19,
         "overall": 60,
@@ -21047,7 +21047,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Samu Guillén",
+        "name": "Samu GuillÃ©n",
         "position": "ST",
         "age": 22,
         "overall": 60,
@@ -21058,7 +21058,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "David López",
+        "name": "David LÃ³pez",
         "position": "ST",
         "age": 21,
         "overall": 60,
@@ -21069,7 +21069,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Dani Marín",
+        "name": "Dani MarÃ­n",
         "position": "CB",
         "age": 25,
         "overall": 58,
@@ -21080,7 +21080,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Javi Jiménez",
+        "name": "Javi JimÃ©nez",
         "position": "CB",
         "age": 26,
         "overall": 58,
@@ -21091,7 +21091,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "David Castejón",
+        "name": "David CastejÃ³n",
         "position": "CB",
         "age": 23,
         "overall": 58,
@@ -21124,7 +21124,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Borja Sánchez",
+        "name": "Borja SÃ¡nchez",
         "position": "CM",
         "age": 38,
         "overall": 55,
@@ -21162,7 +21162,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "João Dias",
+        "name": "JoÃ£o Dias",
         "position": "CB",
         "age": 24,
         "overall": 62,
@@ -21173,7 +21173,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Axel Espínola",
+        "name": "Axel EspÃ­nola",
         "position": "CB",
         "age": 20,
         "overall": 62,
@@ -21195,7 +21195,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Álex Altube",
+        "name": "Ãlex Altube",
         "position": "ST",
         "age": 28,
         "overall": 62,
@@ -21206,7 +21206,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Jaime Pérez",
+        "name": "Jaime PÃ©rez",
         "position": "ST",
         "age": 21,
         "overall": 62,
@@ -21228,7 +21228,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Dani Simón",
+        "name": "Dani SimÃ³n",
         "position": "GK",
         "age": 23,
         "overall": 60,
@@ -21239,7 +21239,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro Calado",
+        "name": "Ãlvaro Calado",
         "position": "GK",
         "age": 22,
         "overall": 60,
@@ -21261,7 +21261,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Darío García",
+        "name": "DarÃ­o GarcÃ­a",
         "position": "CM",
         "age": 31,
         "overall": 60,
@@ -21283,7 +21283,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Mario Jiménez",
+        "name": "Mario JimÃ©nez",
         "position": "LW",
         "age": 23,
         "overall": 60,
@@ -21316,7 +21316,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Miguel García",
+        "name": "Miguel GarcÃ­a",
         "position": "CB",
         "age": 23,
         "overall": 58,
@@ -21338,7 +21338,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Angelito Auñón",
+        "name": "Angelito AuÃ±Ã³n",
         "position": "RB",
         "age": 30,
         "overall": 58,
@@ -21349,7 +21349,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Iván Quivira",
+        "name": "IvÃ¡n Quivira",
         "position": "CM",
         "age": 26,
         "overall": 58,
@@ -21360,7 +21360,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Rober Álvarez",
+        "name": "Rober Ãlvarez",
         "position": "LW",
         "age": 24,
         "overall": 58,
@@ -21371,7 +21371,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Jesús Cruz",
+        "name": "JesÃºs Cruz",
         "position": "CM",
         "age": 36,
         "overall": 57,
@@ -21420,7 +21420,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Joel Suárez",
+        "name": "Joel SuÃ¡rez",
         "position": "CB",
         "age": 22,
         "overall": 64,
@@ -21442,7 +21442,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Jesús Belza",
+        "name": "JesÃºs Belza",
         "position": "RB",
         "age": 21,
         "overall": 64,
@@ -21453,7 +21453,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Dani Álvarez",
+        "name": "Dani Ãlvarez",
         "position": "RW",
         "age": 20,
         "overall": 64,
@@ -21497,7 +21497,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Giovani García",
+        "name": "Giovani GarcÃ­a",
         "position": "RB",
         "age": 21,
         "overall": 62,
@@ -21519,7 +21519,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Yerover Gómez",
+        "name": "Yerover GÃ³mez",
         "position": "CM",
         "age": 20,
         "overall": 62,
@@ -21530,7 +21530,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Omar Sánchez",
+        "name": "Omar SÃ¡nchez",
         "position": "CM",
         "age": 21,
         "overall": 62,
@@ -21552,7 +21552,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Loren Sánchez",
+        "name": "Loren SÃ¡nchez",
         "position": "ST",
         "age": 22,
         "overall": 62,
@@ -21574,7 +21574,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Kimetz García",
+        "name": "Kimetz GarcÃ­a",
         "position": "CB",
         "age": 21,
         "overall": 60,
@@ -21596,7 +21596,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Adrián Toledo",
+        "name": "AdriÃ¡n Toledo",
         "position": "CM",
         "age": 22,
         "overall": 60,
@@ -21607,7 +21607,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Joel Pérez",
+        "name": "Joel PÃ©rez",
         "position": "CM",
         "age": 21,
         "overall": 60,
@@ -21629,7 +21629,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Ibrahim Baldé",
+        "name": "Ibrahim BaldÃ©",
         "position": "CM",
         "age": 22,
         "overall": 60,
@@ -21673,7 +21673,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Christian Hernández",
+        "name": "Christian HernÃ¡ndez",
         "position": "LW",
         "age": 20,
         "overall": 60,
@@ -21722,7 +21722,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Miguel López",
+        "name": "Miguel LÃ³pez",
         "position": "GK",
         "age": 20,
         "overall": 64,
@@ -21744,7 +21744,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Marco de las Sías",
+        "name": "Marco de las SÃ­as",
         "position": "CB",
         "age": 20,
         "overall": 64,
@@ -21766,7 +21766,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Diego Leitón",
+        "name": "Diego LeitÃ³n",
         "position": "CB",
         "age": 22,
         "overall": 62,
@@ -21799,7 +21799,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Diego Méndez",
+        "name": "Diego MÃ©ndez",
         "position": "CM",
         "age": 22,
         "overall": 62,
@@ -21843,7 +21843,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Adrián Molina",
+        "name": "AdriÃ¡n Molina",
         "position": "GK",
         "age": 20,
         "overall": 60,
@@ -21865,7 +21865,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Víctor Revuelto",
+        "name": "VÃ­ctor Revuelto",
         "position": "CB",
         "age": 21,
         "overall": 60,
@@ -21876,7 +21876,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Marco Román",
+        "name": "Marco RomÃ¡n",
         "position": "CM",
         "age": 19,
         "overall": 60,
@@ -21898,7 +21898,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "César Valero",
+        "name": "CÃ©sar Valero",
         "position": "CM",
         "age": 21,
         "overall": 60,
@@ -21909,7 +21909,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Iván Iñigo",
+        "name": "IvÃ¡n IÃ±igo",
         "position": "LW",
         "age": 21,
         "overall": 60,
@@ -21920,7 +21920,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Hugo Castaño",
+        "name": "Hugo CastaÃ±o",
         "position": "LW",
         "age": 19,
         "overall": 60,
@@ -21931,7 +21931,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Iván Alonso",
+        "name": "IvÃ¡n Alonso",
         "position": "RW",
         "age": 19,
         "overall": 60,
@@ -21953,7 +21953,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Ibra Cámara",
+        "name": "Ibra CÃ¡mara",
         "position": "CB",
         "age": 23,
         "overall": 58,
@@ -21997,7 +21997,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro Baladía",
+        "name": "Ãlvaro BaladÃ­a",
         "position": "LW",
         "age": 23,
         "overall": 58,
@@ -22008,7 +22008,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Pablo Sánchez",
+        "name": "Pablo SÃ¡nchez",
         "position": "LW",
         "age": 23,
         "overall": 58,
@@ -22046,7 +22046,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Román Fita",
+        "name": "RomÃ¡n Fita",
         "position": "LB",
         "age": 21,
         "overall": 62,
@@ -22068,7 +22068,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Martín Montesinos",
+        "name": "MartÃ­n Montesinos",
         "position": "GK",
         "age": 20,
         "overall": 60,
@@ -22134,7 +22134,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Rubén Murcia",
+        "name": "RubÃ©n Murcia",
         "position": "CM",
         "age": 23,
         "overall": 60,
@@ -22167,7 +22167,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "David Gómez",
+        "name": "David GÃ³mez",
         "position": "CM",
         "age": 21,
         "overall": 60,
@@ -22178,7 +22178,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Óscar Cantarero",
+        "name": "Ã“scar Cantarero",
         "position": "LW",
         "age": 22,
         "overall": 60,
@@ -22200,7 +22200,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Óscar Gonpi",
+        "name": "Ã“scar Gonpi",
         "position": "RW",
         "age": 24,
         "overall": 60,
@@ -22211,7 +22211,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Ticiano Pérez",
+        "name": "Ticiano PÃ©rez",
         "position": "ST",
         "age": 20,
         "overall": 60,
@@ -22233,7 +22233,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Ñete Morales",
+        "name": "Ã‘ete Morales",
         "position": "CB",
         "age": 23,
         "overall": 58,
@@ -22266,7 +22266,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Óscar Olmedilla",
+        "name": "Ã“scar Olmedilla",
         "position": "CM",
         "age": 23,
         "overall": 58,
@@ -22288,7 +22288,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro Guti",
+        "name": "Ãlvaro Guti",
         "position": "CM",
         "age": 25,
         "overall": 58,
@@ -22313,9 +22313,9 @@ export const segundaRFEFGrupo5 = [
   },
   {
     "id": "moscardo",
-    "name": "Moscardó",
+    "name": "MoscardÃ³",
     "shortName": "MOS",
-    "city": "Moscardó",
+    "city": "MoscardÃ³",
     "stadium": "Estadio Municipal",
     "stadiumCapacity": 5000,
     "budget": 1700000,
@@ -22337,7 +22337,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Isra Pérez",
+        "name": "Isra PÃ©rez",
         "position": "RB",
         "age": 25,
         "overall": 62,
@@ -22359,7 +22359,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "David Sánchez",
+        "name": "David SÃ¡nchez",
         "position": "CM",
         "age": 26,
         "overall": 62,
@@ -22381,7 +22381,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Guille Pérez",
+        "name": "Guille PÃ©rez",
         "position": "GK",
         "age": 29,
         "overall": 60,
@@ -22392,7 +22392,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Pablo Huélamo",
+        "name": "Pablo HuÃ©lamo",
         "position": "GK",
         "age": 22,
         "overall": 60,
@@ -22414,7 +22414,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Adrián Jiménez",
+        "name": "AdriÃ¡n JimÃ©nez",
         "position": "CB",
         "age": 33,
         "overall": 60,
@@ -22425,7 +22425,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Álex Campos",
+        "name": "Ãlex Campos",
         "position": "CB",
         "age": 19,
         "overall": 60,
@@ -22582,9 +22582,9 @@ export const segundaRFEFGrupo5 = [
   },
   {
     "id": "socuellamos",
-    "name": "Socuéllamos",
+    "name": "SocuÃ©llamos",
     "shortName": "SOC",
-    "city": "Socuéllamos",
+    "city": "SocuÃ©llamos",
     "stadium": "Estadio Municipal",
     "stadiumCapacity": 5000,
     "budget": 1200000,
@@ -22628,7 +22628,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Plácido González",
+        "name": "PlÃ¡cido GonzÃ¡lez",
         "position": "CB",
         "age": 23,
         "overall": 60,
@@ -22639,7 +22639,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Sergio Pérez",
+        "name": "Sergio PÃ©rez",
         "position": "CB",
         "age": 26,
         "overall": 60,
@@ -22672,7 +22672,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Fran Callejón",
+        "name": "Fran CallejÃ³n",
         "position": "CM",
         "age": 27,
         "overall": 60,
@@ -22683,7 +22683,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Adrián Díaz",
+        "name": "AdriÃ¡n DÃ­az",
         "position": "CM",
         "age": 22,
         "overall": 60,
@@ -22694,7 +22694,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Manu Martínez",
+        "name": "Manu MartÃ­nez",
         "position": "CM",
         "age": 22,
         "overall": 60,
@@ -22705,7 +22705,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Iván Hujo",
+        "name": "IvÃ¡n Hujo",
         "position": "RW",
         "age": 25,
         "overall": 60,
@@ -22716,7 +22716,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Javi Verdú",
+        "name": "Javi VerdÃº",
         "position": "RW",
         "age": 26,
         "overall": 60,
@@ -22727,7 +22727,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "José Carlos",
+        "name": "JosÃ© Carlos",
         "position": "ST",
         "age": 22,
         "overall": 60,
@@ -22738,7 +22738,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Adri López",
+        "name": "Adri LÃ³pez",
         "position": "GK",
         "age": 27,
         "overall": 58,
@@ -22760,7 +22760,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Adrián Díaz",
+        "name": "AdriÃ¡n DÃ­az",
         "position": "LB",
         "age": 27,
         "overall": 58,
@@ -22771,7 +22771,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Álvaro Escobar",
+        "name": "Ãlvaro Escobar",
         "position": "RB",
         "age": 31,
         "overall": 58,
@@ -22793,7 +22793,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Miguel Rodrigáñez",
+        "name": "Miguel RodrigÃ¡Ã±ez",
         "position": "CM",
         "age": 24,
         "overall": 58,
@@ -22826,7 +22826,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Ángel Bernabé",
+        "name": "Ãngel BernabÃ©",
         "position": "GK",
         "age": 38,
         "overall": 55,
@@ -22837,7 +22837,7 @@ export const segundaRFEFGrupo5 = [
         "fitness": 100
       },
       {
-        "name": "Carlos García",
+        "name": "Carlos GarcÃ­a",
         "position": "RB",
         "age": 36,
         "overall": 55,
@@ -22868,3 +22868,4 @@ export const segundaRFEFGroups = {
   grupo4: segundaRFEFGrupo4,
   grupo5: segundaRFEFGrupo5
 };
+
