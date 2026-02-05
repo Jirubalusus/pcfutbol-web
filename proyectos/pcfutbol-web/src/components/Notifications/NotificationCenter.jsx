@@ -64,6 +64,39 @@ function getConfig(type, t) {
 // NOTIFICATION TOAST COMPONENT
 // ============================================================
 
+// Resolve i18n keys for messages (same logic as Messages.jsx)
+function resolveTitle(msg, t) {
+  if (msg.titleKey) {
+    const params = { ...msg.titleParams };
+    if (params) {
+      Object.keys(params).forEach(key => {
+        if (key.endsWith('Key') && typeof params[key] === 'string' && !key.endsWith('KeyParams')) {
+          const baseKey = key.slice(0, -3);
+          params[baseKey] = t(params[key], params[`${key}Params`]);
+        }
+      });
+    }
+    return t(msg.titleKey, params);
+  }
+  return msg.title;
+}
+
+function resolveContent(msg, t) {
+  if (msg.contentKey) {
+    const params = { ...msg.contentParams };
+    if (params) {
+      Object.keys(params).forEach(key => {
+        if (key.endsWith('Key') && typeof params[key] === 'string' && !key.endsWith('KeyParams')) {
+          const baseKey = key.slice(0, -3);
+          params[baseKey] = t(params[key], params[`${key}Params`]);
+        }
+      });
+    }
+    return t(msg.contentKey, params);
+  }
+  return msg.content;
+}
+
 function NotificationToast({ notification, onDismiss, index, t }) {
   const [exiting, setExiting] = useState(false);
   const config = getConfig(notification.type, t);
@@ -111,9 +144,9 @@ function NotificationToast({ notification, onDismiss, index, t }) {
       </div>
       <div className="notif-toast__content">
         <span className="notif-toast__label">{config.label}</span>
-        <span className="notif-toast__title">{notification.title}</span>
-        {notification.content && (
-          <span className="notif-toast__body">{notification.content}</span>
+        <span className="notif-toast__title">{resolveTitle(notification, t)}</span>
+        {(notification.content || notification.contentKey) && (
+          <span className="notif-toast__body">{resolveContent(notification, t)}</span>
         )}
       </div>
       <button className="notif-toast__close" onClick={(e) => { e.stopPropagation(); handleDismiss(); }}>
