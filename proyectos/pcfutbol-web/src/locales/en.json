@@ -1,4 +1,4 @@
-{
+﻿{
   "common": {
     "save": "Save",
     "cancel": "Cancel",
@@ -115,6 +115,9 @@
     "friendlyMatch": "Friendly {{week}}/5",
     "matchday": "Matchday {{week}}",
     "lastResults": "Last Results",
+    "form_W": "W",
+    "form_D": "D",
+    "form_L": "L",
     "noMatches": "No matches played",
     "mainObjective": "Main Objective",
     "viewAllObjectives": "View all objectives",
@@ -1504,3 +1507,4 @@
     "directChampionShort": "{{winner}} is the direct champion."
   }
 }
+

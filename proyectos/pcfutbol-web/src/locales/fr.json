@@ -115,6 +115,9 @@
     "friendlyMatch": "Amical {{week}}/5",
     "matchday": "Journée {{week}}",
     "lastResults": "Derniers Résultats",
+    "form_W": "V",
+    "form_D": "N",
+    "form_L": "D",
     "noMatches": "Aucun match joué",
     "mainObjective": "Objectif Principal",
     "viewAllObjectives": "Voir tous les objectifs",
@@ -1385,5 +1388,6 @@
     "directChampionShort": "{{winner}} est champion direct."
   }
 }
+
 
 

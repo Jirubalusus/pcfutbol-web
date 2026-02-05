@@ -115,6 +115,9 @@
     "friendlyMatch": "Freundschaftsspiel {{week}}/5",
     "matchday": "Spieltag {{week}}",
     "lastResults": "Letzte Ergebnisse",
+    "form_W": "S",
+    "form_D": "U",
+    "form_L": "N",
     "noMatches": "Keine Spiele gespielt",
     "mainObjective": "Hauptziel",
     "viewAllObjectives": "Alle Ziele anzeigen",
@@ -1384,5 +1387,6 @@
     "directChampionShort": "{{winner}} ist direkter Meister."
   }
 }
+
 
 

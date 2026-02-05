@@ -340,7 +340,10 @@ export default function Office() {
       ? Math.max(...currentFixtures.map(f => f.week)) 
       : 38;
     
-    for (let i = 0; i < numWeeks; i++) {
+    // Add safety margin to ensure all remaining weeks are covered
+    const effectiveNumWeeks = Math.max(numWeeks, maxWeek - currentWeek + 2);
+    
+    for (let i = 0; i < effectiveNumWeeks; i++) {
       // Comprobar si la temporada ha terminado
       if (currentWeek > maxWeek || isSeasonOver(currentFixtures, playerLeagueId)) {
         seasonEnded = true;
@@ -784,7 +787,7 @@ export default function Office() {
                 {teamStats?.form && teamStats.form.length > 0 ? (
                   teamStats.form.map((result, idx) => (
                     <span key={idx} className={`form-badge ${result.toLowerCase()}`}>
-                      {result}
+                      {t(`office.form_${result}`)}
                     </span>
                   ))
                 ) : (
@@ -986,9 +989,9 @@ export default function Office() {
                 <div className="office__sim-options">
                   <button onClick={() => handleSimulateWeeks(3)}>{t('office.threeMatches')}</button>
                   {isPastHalfSeason ? (
-                    <button onClick={() => handleSimulateWeeks(maxWeek - state.currentWeek + 1)}>{t('office.endOfSeason')}</button>
+                    <button onClick={() => handleSimulateWeeks(maxWeek - state.currentWeek + 2)}>{t('office.endOfSeason')}</button>
                   ) : (
-                    <button onClick={() => handleSimulateWeeks(halfSeason - state.currentWeek)}>{t('office.halfSeason')}</button>
+                    <button onClick={() => handleSimulateWeeks(halfSeason - state.currentWeek + 1)}>{t('office.halfSeason')}</button>
                   )}
                 </div>
               )}

@@ -115,6 +115,9 @@
     "friendlyMatch": "Amigável {{week}}/5",
     "matchday": "Jornada {{week}}",
     "lastResults": "Últimos Resultados",
+    "form_W": "V",
+    "form_D": "E",
+    "form_L": "D",
     "noMatches": "Nenhum jogo realizado",
     "mainObjective": "Objetivo Principal",
     "viewAllObjectives": "Ver todos os objetivos",
@@ -1384,5 +1387,6 @@
     "directChampionShort": "{{winner}} é campeão direto."
   }
 }
+
 
 
