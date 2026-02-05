@@ -26,8 +26,8 @@ export function generateSeasonObjectives(team, leagueId, leagueTable) {
     objectives.push({
       id: 'title_contender',
       type: 'league_position',
-      name: 'Luchar por el título',
-      description: 'Terminar entre los 2 primeros',
+      nameKey: 'objNames.titleContender',
+      descKey: 'objDescs.titleContender',
       target: 2,
       priority: 'high',
       reward: 5000000,
@@ -39,8 +39,8 @@ export function generateSeasonObjectives(team, leagueId, leagueTable) {
     objectives.push({
       id: 'goal_difference',
       type: 'goal_difference',
-      name: 'Diferencia de goles positiva',
-      description: 'Terminar la temporada con más goles a favor que en contra',
+      nameKey: 'objNames.goalDifference',
+      descKey: 'objDescs.goalDifference',
       target: 1,
       priority: 'medium',
       reward: 1000000,
@@ -52,8 +52,8 @@ export function generateSeasonObjectives(team, leagueId, leagueTable) {
   objectives.push({
     id: 'financial_stability',
     type: 'financial',
-    name: 'Estabilidad financiera',
-    description: 'No terminar la temporada en números rojos',
+    nameKey: 'objNames.financialStability',
+    descKey: 'objDescs.financialStability',
     target: 0,
     priority: 'high',
     reward: 2000000,
@@ -66,8 +66,8 @@ export function generateSeasonObjectives(team, leagueId, leagueTable) {
     objectives.push({
       id: 'youth_development',
       type: 'youth_minutes',
-      name: 'Desarrollo de cantera',
-      description: 'Dar minutos a jugadores jóvenes del club',
+      nameKey: 'objNames.youthDevelopment',
+      descKey: 'objDescs.youthDevelopment',
       target: 10, // partidos con jóvenes en el XI
       priority: 'low',
       reward: 500000,
@@ -86,32 +86,32 @@ function getPositionObjective(tier, leagueId, totalTeams) {
   
   const objectives = {
     elite: {
-      name: 'Clasificación a Champions',
-      description: 'Terminar entre los 4 primeros para clasificar a la Continental Champions Cup',
+      nameKey: 'objNames.championsQualification',
+      descKey: 'objDescs.championsQualification',
       target: 4,
       priority: 'critical',
       reward: 10000000,
       penalty: -5000000
     },
     high: {
-      name: 'Clasificación europea',
-      description: 'Terminar entre los 6 primeros para clasificar a competición europea',
+      nameKey: 'objNames.europeanQualification',
+      descKey: 'objDescs.europeanQualification',
       target: 6,
       priority: 'critical',
       reward: 5000000,
       penalty: -3000000
     },
     mid: {
-      name: 'Primera mitad de tabla',
-      description: 'Terminar en la primera mitad de la clasificación',
+      nameKey: 'objNames.topHalf',
+      descKey: 'objDescs.topHalf',
       target: Math.ceil(totalTeams / 2),
       priority: 'critical',
       reward: 2000000,
       penalty: -1000000
     },
     low: {
-      name: 'Evitar el descenso',
-      description: 'Mantener la categoría terminando fuera de puestos de descenso',
+      nameKey: 'objNames.avoidRelegation',
+      descKey: 'objDescs.avoidRelegation',
       target: totalTeams - 3, // últimos 3 descienden
       priority: 'critical',
       reward: 3000000,
@@ -124,8 +124,8 @@ function getPositionObjective(tier, leagueId, totalTeams) {
     return {
       id: 'league_position',
       type: 'league_position',
-      name: 'Ascenso',
-      description: 'Conseguir el ascenso a la categoría superior',
+      nameKey: 'objNames.promotion',
+      descKey: 'objDescs.promotion',
       target: leagueId === 'segunda' ? 2 : 4, // 2 primeros suben, playoff 3-6
       priority: 'critical',
       reward: 8000000,

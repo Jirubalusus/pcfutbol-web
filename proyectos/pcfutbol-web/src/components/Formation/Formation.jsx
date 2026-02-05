@@ -1302,6 +1302,7 @@ function _TrainingModal_REMOVED({ onClose, players, facilities, dispatch, curren
 // MODAL: LESIONADOS
 // ============================================================
 function InjuredModal({ onClose, players, facilities, dispatch, budget }) {
+  const { t } = useTranslation();
   const toast = useToast();
   const injuredPlayers = players.filter(p => p.injured && p.injuryWeeksLeft > 0);
   const medicalLevel = facilities?.medicalCenter || 1;
@@ -1332,7 +1333,7 @@ function InjuredModal({ onClose, players, facilities, dispatch, budget }) {
     <div className="pcf-modal-overlay" onClick={onClose}>
       <div className="pcf-modal pcf-modal--injured" onClick={e => e.stopPropagation()}>
         <div className="modal-header">
-          <h3><Heart size={20} style={{ marginRight: 8 }} /> Lesionados</h3>
+          <h3><Heart size={20} style={{ marginRight: 8 }} /> {t('formation.injured')}</h3>
           <button onClick={onClose}><X size={18} /></button>
         </div>
 
@@ -1340,7 +1341,7 @@ function InjuredModal({ onClose, players, facilities, dispatch, budget }) {
           {injuredPlayers.length === 0 ? (
             <div className="no-injured">
               <span className="icon"><Check size={14} /></span>
-              <p>No hay jugadores lesionados</p>
+              <p>{t('formation.noInjuredPlayers')}</p>
             </div>
           ) : (
             <>
@@ -1388,13 +1389,13 @@ function InjuredModal({ onClose, players, facilities, dispatch, budget }) {
           )}
 
           <div className="medical-info">
-            <span><Building2 size={14} style={{ marginRight: 4 }} /> Nivel centro médico: {medicalLevel}/5</span>
-            <span className="hint">Mejora las instalaciones para más tratamientos</span>
+            <span><Building2 size={14} style={{ marginRight: 4 }} /> {t('formation.medicalLevel', { level: medicalLevel })}</span>
+            <span className="hint">{t('formation.upgradeMedical')}</span>
           </div>
         </div>
 
         <div className="modal-footer">
-          <button className="btn-confirm" onClick={onClose}>Cerrar</button>
+          <button className="btn-confirm" onClick={onClose}>{t('common.close')}</button>
         </div>
       </div>
     </div>
@@ -1405,6 +1406,7 @@ function InjuredModal({ onClose, players, facilities, dispatch, budget }) {
 // MODAL: ESTADÍSTICAS
 // ============================================================
 function StatsModal({ onClose, players, team, leagueTable, teamId, playerSeasonStats }) {
+  const { t } = useTranslation();
   const [tab, setTab] = useState('equipo');
 
   // Stats del equipo
@@ -1455,15 +1457,15 @@ function StatsModal({ onClose, players, team, leagueTable, teamId, playerSeasonS
     <div className="pcf-modal-overlay" onClick={onClose}>
       <div className="pcf-modal pcf-modal--stats" onClick={e => e.stopPropagation()}>
         <div className="modal-header">
-          <h3><BarChart3 size={20} style={{ marginRight: 8 }} /> Estadísticas</h3>
+          <h3><BarChart3 size={20} style={{ marginRight: 8 }} /> {t('formation.statistics')}</h3>
           <button onClick={onClose}><X size={18} /></button>
         </div>
 
         <div className="modal-tabs">
-          <button className={tab === 'equipo' ? 'active' : ''} onClick={() => setTab('equipo')}>Equipo</button>
-          <button className={tab === 'temporada' ? 'active' : ''} onClick={() => setTab('temporada')}>Temporada</button>
-          <button className={tab === 'jugadores' ? 'active' : ''} onClick={() => setTab('jugadores')}>Jugadores</button>
-          <button className={tab === 'top' ? 'active' : ''} onClick={() => setTab('top')}>Top</button>
+          <button className={tab === 'equipo' ? 'active' : ''} onClick={() => setTab('equipo')}>{t('formation.statsTeam')}</button>
+          <button className={tab === 'temporada' ? 'active' : ''} onClick={() => setTab('temporada')}>{t('formation.statsSeason')}</button>
+          <button className={tab === 'jugadores' ? 'active' : ''} onClick={() => setTab('jugadores')}>{t('formation.statsPlayers')}</button>
+          <button className={tab === 'top' ? 'active' : ''} onClick={() => setTab('top')}>{t('formation.statsTop')}</button>
         </div>
 
         <div className="modal-body">
@@ -1471,19 +1473,19 @@ function StatsModal({ onClose, players, team, leagueTable, teamId, playerSeasonS
             <div className="stats-grid">
               <div className="stat-card">
                 <span className="value">{players.length}</span>
-                <span className="label">Jugadores</span>
+                <span className="label">{t('formation.players')}</span>
               </div>
               <div className="stat-card">
                 <span className="value">{avgOverall}</span>
-                <span className="label">Media OVR</span>
+                <span className="label">{t('formation.avgOVR')}</span>
               </div>
               <div className="stat-card">
                 <span className="value">{avgAge}</span>
-                <span className="label">Edad media</span>
+                <span className="label">{t('formation.avgAge')}</span>
               </div>
               <div className="stat-card">
                 <span className="value">€{(totalValue/1000000).toFixed(1)}M</span>
-                <span className="label">Valor plantilla</span>
+                <span className="label">{t('formation.squadValue')}</span>
               </div>
             </div>
           )}
@@ -1491,31 +1493,31 @@ function StatsModal({ onClose, players, team, leagueTable, teamId, playerSeasonS
           {tab === 'temporada' && (
             <div className="season-stats">
               <div className="stats-row">
-                <span className="label">Partidos</span>
+                <span className="label">{t('formation.matches')}</span>
                 <span className="value">{stats.played}</span>
               </div>
               <div className="stats-row">
-                <span className="label">Victorias</span>
+                <span className="label">{t('formation.wins')}</span>
                 <span className="value win">{stats.won}</span>
               </div>
               <div className="stats-row">
-                <span className="label">Empates</span>
+                <span className="label">{t('formation.draws')}</span>
                 <span className="value draw">{stats.drawn}</span>
               </div>
               <div className="stats-row">
-                <span className="label">Derrotas</span>
+                <span className="label">{t('formation.losses')}</span>
                 <span className="value loss">{stats.lost}</span>
               </div>
               <div className="stats-row">
-                <span className="label">Goles a favor</span>
+                <span className="label">{t('formation.goalsFor')}</span>
                 <span className="value">{stats.goalsFor}</span>
               </div>
               <div className="stats-row">
-                <span className="label">Goles en contra</span>
+                <span className="label">{t('formation.goalsAgainst')}</span>
                 <span className="value">{stats.goalsAgainst}</span>
               </div>
               <div className="stats-row highlight">
-                <span className="label">Diferencia</span>
+                <span className="label">{t('formation.goalDiff')}</span>
                 <span className={`value ${stats.goalsFor - stats.goalsAgainst >= 0 ? 'positive' : 'negative'}`}>
                   {stats.goalsFor - stats.goalsAgainst >= 0 ? '+' : ''}{stats.goalsFor - stats.goalsAgainst}
                 </span>
@@ -1551,7 +1553,7 @@ function StatsModal({ onClose, players, team, leagueTable, teamId, playerSeasonS
               )}
               {topAppearances.length > 0 && (
                 <div className="top-section">
-                  <h4>Más partidos</h4>
+                  <h4>{t('formation.mostMatches')}</h4>
                   {topAppearances.map(([name, s], i) => (
                     <div key={name} className="top-row">
                       <span className="rank">{i + 1}</span>
@@ -1562,7 +1564,7 @@ function StatsModal({ onClose, players, team, leagueTable, teamId, playerSeasonS
                 </div>
               )}
               {topScorers.length === 0 && topAssisters.length === 0 && topAppearances.length === 0 && (
-                <p style={{ color: '#8899aa', textAlign: 'center', padding: '2rem 0' }}>Sin estadísticas aún - juega partidos para generar datos</p>
+                <p style={{ color: '#8899aa', textAlign: 'center', padding: '2rem 0' }}>{t('formation.noStatsYet')}</p>
               )}
             </div>
           )}
@@ -1570,7 +1572,7 @@ function StatsModal({ onClose, players, team, leagueTable, teamId, playerSeasonS
           {tab === 'top' && (
             <div className="top-players">
               <div className="top-section">
-                <h4><Trophy size={14} /> Mejor valorados</h4>
+                <h4><Trophy size={14} /> {t('formation.topRated')}</h4>
                 {topOverall.map((p, i) => (
                   <div key={p.name} className="top-row">
                     <span className="rank">{i + 1}</span>
@@ -1580,7 +1582,7 @@ function StatsModal({ onClose, players, team, leagueTable, teamId, playerSeasonS
                 ))}
               </div>
               <div className="top-section">
-                <h4><Coins size={14} /> Más valiosos</h4>
+                <h4><Coins size={14} /> {t('formation.mostValuable')}</h4>
                 {topValue.map((p, i) => (
                   <div key={p.name} className="top-row">
                     <span className="rank">{i + 1}</span>
@@ -1594,7 +1596,7 @@ function StatsModal({ onClose, players, team, leagueTable, teamId, playerSeasonS
         </div>
 
         <div className="modal-footer">
-          <button className="btn-confirm" onClick={onClose}>Cerrar</button>
+          <button className="btn-confirm" onClick={onClose}>{t('common.close')}</button>
         </div>
       </div>
     </div>
@@ -1658,11 +1660,11 @@ function TacticModal({ onClose, currentTactic, currentFormation, dispatch, onFor
   ];
 
   const tacticOptions = [
-    { id: 'defensive', name: 'Defensiva', desc: 'Muro atrás, pocas ocasiones', iconType: 'shield', bonus: '+40% defensa, -40% ataque', detail: 'Fuerte vs Equilibrada · Débil vs Posesión y Ofensiva', color: '#0a84ff' },
-    { id: 'balanced', name: 'Equilibrada', desc: 'Sin sorpresas, sin riesgos', iconType: 'scale', bonus: 'Sin modificadores', detail: 'No tiene ventajas ni desventajas tácticas', color: '#8e8e93' },
-    { id: 'attacking', name: 'Ofensiva', desc: 'A por todas, riesgo alto', iconType: 'swords', bonus: '+35% ataque, -30% defensa', detail: 'Fuerte vs Defensiva · Débil vs Contra y Presión', color: '#ff453a' },
-    { id: 'possession', name: 'Posesión', desc: 'Dominar el balón y cansar', iconType: 'target', bonus: '+30% posesión, +10% defensa', detail: 'Fuerte vs Contra · Débil vs Presión alta', color: '#30d158' },
-    { id: 'counter', name: 'Contraataque', desc: 'Ceder balón, matar a la contra', iconType: 'zap', bonus: '+20% ataque, +15% defensa, -25% posesión', detail: 'Fuerte vs Ofensiva y Presión · Débil vs Posesión', color: '#ff9f0a' },
+    { id: 'defensive', name: t('formation.tacDefensive'), desc: t('formation.tacDefensiveDesc'), iconType: 'shield', bonus: t('formation.tacDefensiveBonus'), detail: t('formation.tacDefensiveDetail'), color: '#0a84ff' },
+    { id: 'balanced', name: t('formation.tacBalanced'), desc: t('formation.tacBalancedDesc'), iconType: 'scale', bonus: t('formation.tacBalancedBonus'), detail: t('formation.tacBalancedDetail'), color: '#8e8e93' },
+    { id: 'attacking', name: t('formation.tacAttacking'), desc: t('formation.tacAttackingDesc'), iconType: 'swords', bonus: t('formation.tacAttackingBonus'), detail: t('formation.tacAttackingDetail'), color: '#ff453a' },
+    { id: 'possession', name: t('formation.tacPossession'), desc: t('formation.tacPossessionDesc'), iconType: 'target', bonus: t('formation.tacPossessionBonus'), detail: t('formation.tacPossessionDetail'), color: '#30d158' },
+    { id: 'counter', name: t('formation.tacCounter'), desc: t('formation.tacCounterDesc'), iconType: 'zap', bonus: t('formation.tacCounterBonus'), detail: t('formation.tacCounterDetail'), color: '#ff9f0a' },
   ];
 
   // Posiciones únicas de la formación seleccionada (sin GK)
@@ -1779,8 +1781,8 @@ function TacticModal({ onClose, currentTactic, currentFormation, dispatch, onFor
         </div>
 
         <div className="modal-footer">
-          <button className="btn-cancel" onClick={onClose}>Cancelar</button>
-          <button className="btn-confirm" onClick={handleSave}>Aplicar</button>
+          <button className="btn-cancel" onClick={onClose}>{t('common.cancel')}</button>
+          <button className="btn-confirm" onClick={handleSave}>{t('formation.apply')}</button>
         </div>
 
         {showToast && (

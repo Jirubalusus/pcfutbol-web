@@ -84,36 +84,36 @@ export function getTierData(tier) {
 
 export const PLAYER_PERSONALITIES = {
   ambitious: {
-    name: 'Ambicioso',
+    name: 'Ambicioso', nameKey: 'transfers.persAmbitious',
     icon: '🔥',
-    desc: 'Quiere jugar en los mejores equipos',
+    desc: 'Quiere jugar en los mejores equipos', descKey: 'transfers.persDescAmbitious',
     tierUpBonus: 0.3,      // +30% chance si sube de tier
     tierDownPenalty: -0.4, // -40% chance si baja de tier
     moneyInfluence: 0.3,   // El dinero influye poco
     loyaltyFactor: 0.5     // Poca lealtad
   },
   loyal: {
-    name: 'Leal',
+    name: 'Leal', nameKey: 'transfers.persLoyal',
     icon: '💙',
-    desc: 'Muy difícil que deje su club',
+    desc: 'Muy difícil que deje su club', descKey: 'transfers.persDescLoyal',
     tierUpBonus: 0.1,
     tierDownPenalty: -0.2,
     moneyInfluence: 0.2,
     loyaltyFactor: 1.5     // Muy leal, difícil moverle
   },
   mercenary: {
-    name: 'Mercenario',
+    name: 'Mercenario', nameKey: 'transfers.persMercenary',
     icon: '💰',
-    desc: 'Solo le importa el dinero',
+    desc: 'Solo le importa el dinero', descKey: 'transfers.persDescMercenary',
     tierUpBonus: 0.1,
     tierDownPenalty: 0.0,  // No le importa bajar si le pagan
     moneyInfluence: 0.9,   // El dinero lo es todo
     loyaltyFactor: 0.3
   },
   homesick: {
-    name: 'Familiar',
+    name: 'Familiar', nameKey: 'transfers.persHomesick',
     icon: '🏠',
-    desc: 'Prefiere estar cerca de casa',
+    desc: 'Prefiere estar cerca de casa', descKey: 'transfers.persDescHomesick',
     tierUpBonus: 0.0,
     tierDownPenalty: -0.1,
     moneyInfluence: 0.4,
@@ -121,18 +121,18 @@ export const PLAYER_PERSONALITIES = {
     prefersLocal: true     // Bonus si el equipo es de su país
   },
   professional: {
-    name: 'Profesional',
+    name: 'Profesional', nameKey: 'transfers.persProfessional',
     icon: '⚖️',
-    desc: 'Evalúa todo con equilibrio',
+    desc: 'Evalúa todo con equilibrio', descKey: 'transfers.persDescProfessional',
     tierUpBonus: 0.15,
     tierDownPenalty: -0.15,
     moneyInfluence: 0.5,
     loyaltyFactor: 0.8
   },
   adventurous: {
-    name: 'Aventurero',
+    name: 'Aventurero', nameKey: 'transfers.persAdventurous',
     icon: '🌍',
-    desc: 'Le gusta cambiar de aires',
+    desc: 'Le gusta cambiar de aires', descKey: 'transfers.persDescAdventurous',
     tierUpBonus: 0.2,
     tierDownPenalty: 0.05, // Incluso acepta bajar por la experiencia
     moneyInfluence: 0.4,
@@ -996,24 +996,24 @@ export function calculateTransferDifficulty(player, sellingTeam, buyingTeam) {
   score = Math.max(5, Math.min(95, score));
   
   // === MAPEAR SCORE A DIFICULTAD ===
-  let difficulty, color;
+  let difficulty, difficultyKey, color;
   if (score >= 75) {
-    difficulty = 'Muy Fácil';
+    difficulty = 'Muy Fácil'; difficultyKey = 'transfers.veryEasy';
     color = '#30d158';
   } else if (score >= 60) {
-    difficulty = 'Fácil';
+    difficulty = 'Fácil'; difficultyKey = 'transfers.easy';
     color = '#30d158';
   } else if (score >= 40) {
-    difficulty = 'Normal';
+    difficulty = 'Normal'; difficultyKey = 'transfers.normal';
     color = '#ffd60a';
   } else if (score >= 25) {
-    difficulty = 'Difícil';
+    difficulty = 'Difícil'; difficultyKey = 'transfers.hard';
     color = '#ff9f0a';
   } else if (score >= 12) {
-    difficulty = 'Muy Difícil';
+    difficulty = 'Muy Difícil'; difficultyKey = 'transfers.veryHard';
     color = '#ff453a';
   } else {
-    difficulty = 'Casi Imposible';
+    difficulty = 'Casi Imposible'; difficultyKey = 'transfers.almostImpossible';
     color = '#ff453a';
   }
   
@@ -1024,7 +1024,7 @@ export function calculateTransferDifficulty(player, sellingTeam, buyingTeam) {
   // score 5  → mult 1.70 (necesitas +70%)
   const askingMultiplier = 1.70 - (score / 100) * 0.75; // Rango: 0.95 a 1.70
   
-  return { difficulty, color, percentage: score, tierDiff, askingMultiplier };
+  return { difficulty, difficultyKey, color, percentage: score, tierDiff, askingMultiplier };
 }
 
 export default {

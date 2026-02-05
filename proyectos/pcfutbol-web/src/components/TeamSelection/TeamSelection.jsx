@@ -707,9 +707,9 @@ export default function TeamSelection() {
         payload: {
           id: Date.now() + 1,
           type: 'objectives',
-          title: 'Objetivos de temporada',
-          content: `La directiva espera: ${criticalObj.name}. ${criticalObj.description}.`,
-          date: 'Semana 1'
+          title: t('objectives.seasonObjectives'),
+          content: `${t('objectives.boardExpects')}: ${criticalObj.nameKey ? t(criticalObj.nameKey) : criticalObj.name}. ${criticalObj.descKey ? t(criticalObj.descKey) : criticalObj.description}.`,
+          date: `${t('common.week')} 1`
         }
       });
     }

@@ -1366,7 +1366,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
                   ) : (
                     <XCircle size={18} className="icon-failed" />
                   )}
-                  <span className="name">{obj.name}</span>
+                  <span className="name">{obj.nameKey ? t(obj.nameKey) : obj.name}</span>
                   <span className={`amount ${obj.status === 'completed' ? 'positive' : 'negative'}`}>
                     {obj.status === 'completed' ? '+' : ''}{formatMoney(obj.amount || 0)}
                   </span>

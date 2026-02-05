@@ -37,6 +37,10 @@ export default function Objectives() {
   const [filter, setFilter] = useState('all'); // all, completed, in-progress, at-risk
   const [expandedId, setExpandedId] = useState(null);
   
+  // Helper: resolve translatable objective name/description
+  const objName = (obj) => obj.nameKey ? t(obj.nameKey) : (obj.name || '');
+  const objDesc = (obj) => obj.descKey ? t(obj.descKey) : (obj.description || '');
+  
   const teamStats = useMemo(() => {
     const teamData = state.leagueTable?.find(t => t.teamId === state.teamId);
     if (!teamData) return null;
@@ -306,14 +310,14 @@ export default function Objectives() {
                     
                     <div className="objective-content">
                       <div className="objective-header">
-                        <h3 className="objective-name">{obj.name}</h3>
+                        <h3 className="objective-name">{objName(obj)}</h3>
                         <div className="objective-status" style={{ '--status-color': statusConfig.color }}>
                           <StatusIcon size={16} />
                           <span>{statusConfig.label}</span>
                         </div>
                       </div>
                       
-                      <p className="objective-desc">{obj.description}</p>
+                      <p className="objective-desc">{objDesc(obj)}</p>
                       
                       <div className="objective-progress">
                         <div className="progress-bar">
@@ -391,7 +395,7 @@ export default function Objectives() {
                   
                   <div className="objective-content">
                     <div className="objective-header">
-                      <h3 className="objective-name">{obj.name}</h3>
+                      <h3 className="objective-name">{objName(obj)}</h3>
                       <span 
                         className="priority-badge" 
                         style={{ '--priority-color': priorityConfig.color }}

@@ -659,9 +659,9 @@ function gameReducer(state, action) {
         retirementMessages.push({
           id: Date.now() + idx + 0.5,
           type: 'retirement',
-          title: `Se retira: ${retired.name}`,
-          content: `${retired.name} (${retired.position}, ${retired.overall} OVR) se retira del fútbol profesional`,
-          date: `Fin Temporada ${state.currentSeason}`
+          titleKey: 'gameMessages.playerRetiredTitle', titleParams: { player: retired.name },
+          contentKey: 'gameMessages.playerRetired', contentParams: { player: retired.name, position: retired.position, overall: retired.overall },
+          dateKey: 'gameMessages.endOfSeason', dateParams: { season: state.currentSeason }
         });
       });
       retirementSons.forEach((son, idx) => {
@@ -771,7 +771,7 @@ function gameReducer(state, action) {
         incomingLoanOffers: [],
         // Mensajes: retiros + hijos + cesiones
         messages: [...retirementMessages, ...loanExpireMessages.map(m => ({
-          id: Date.now() + Math.random(), type: 'loan', title: m.title || 'Cesión', content: m.content || '', date: `Fin Temporada ${state.currentSeason}`
+          id: Date.now() + Math.random(), type: 'loan', titleKey: m.titleKey || 'gameMessages.loan', title: m.title || 'Loan', content: m.content || '', dateKey: 'gameMessages.endOfSeason', dateParams: { season: state.currentSeason }
         }))].slice(0, 50),
         // Form system reset
         playerForm: generateInitialForm(
@@ -895,9 +895,9 @@ function gameReducer(state, action) {
 
             preseasonMessages.push({
               id: Date.now() + Math.random(), type: 'offer',
-              title: '📩 Oferta por jugador en venta',
-              content: `${buyer.name} ofrece ${formatTransferPrice(offerAmt)} por ${listedPlayer.name}`,
-              date: `Pretemporada`
+              titleKey: 'gameMessages.offerForListedPlayer',
+              contentKey: 'gameMessages.offerContent', contentParams: { buyer: buyer.name, amount: formatTransferPrice(offerAmt), player: listedPlayer.name },
+              dateKey: 'gameMessages.preseason'
             });
           }
         }
@@ -931,9 +931,9 @@ function gameReducer(state, action) {
 
               preseasonMessages.push({
                 id: Date.now() + Math.random(), type: 'offer',
-                title: '📩 Nueva oferta recibida',
-                content: `${buyer.name} ofrece ${formatTransferPrice(offerAmt)} por ${targetPlayer.name}`,
-                date: `Pretemporada`
+                titleKey: 'gameMessages.newOfferReceived',
+                contentKey: 'gameMessages.offerContent', contentParams: { buyer: buyer.name, amount: formatTransferPrice(offerAmt), player: targetPlayer.name },
+                dateKey: 'gameMessages.preseason'
               });
             }
           }
@@ -961,9 +961,9 @@ function gameReducer(state, action) {
           preseasonMoneyReturned += offer.amount;
           preseasonOfferMessages.push({
             id: Date.now() + Math.random(), type: 'transfer',
-            title: `❌ Oferta cancelada: ${offer.playerName}`,
-            content: `${offer.playerName} ya no está disponible. Se devuelven ${formatTransferPrice(offer.amount)}`,
-            date: `Pretemporada`
+            titleKey: 'gameMessages.offerCancelled', titleParams: { player: offer.playerName },
+            contentKey: 'gameMessages.playerUnavailableRefund', contentParams: { player: offer.playerName, amount: formatTransferPrice(offer.amount) },
+            dateKey: 'gameMessages.preseason'
           });
           return null;
         }
@@ -978,7 +978,7 @@ function gameReducer(state, action) {
             id: Date.now() + Math.random(), type: 'transfer',
             title: `⏰ Oferta expirada: ${offer.playerName}`,
             content: `Tu oferta por ${offer.playerName} ha caducado sin respuesta. Se devuelven ${formatTransferPrice(offer.amount)}`,
-            date: `Pretemporada`
+            dateKey: 'gameMessages.preseason'
           });
           return null;
         }
@@ -1055,7 +1055,7 @@ function gameReducer(state, action) {
           content: bothAccepted
             ? `¡${offer.playerName} ficha por tu equipo! Traspaso: ${formatTransferPrice(offer.amount)}`
             : `🏢 Club: ${clubReason} · 👤 Jugador: ${playerReason}`,
-          date: `Pretemporada`
+          dateKey: 'gameMessages.preseason'
         });
 
         if (bothAccepted) {
@@ -1229,9 +1229,9 @@ function gameReducer(state, action) {
         newMessages.push({
           id: Date.now(),
           type: 'youth',
-          title: '🌱 Nuevo canterano',
-          content: `La cantera (${specName}) ha promocionado a ${youthPlayer.name} (${youthPlayer.position}, ${youthPlayer.overall} OVR, ${youthPlayer.age} años)`,
-          date: `Fin Temporada ${state.currentSeason}`
+          titleKey: 'gameMessages.newYouthPlayer',
+          contentKey: 'gameMessages.youthPlayerContent', contentParams: { spec: specName, player: youthPlayer.name, position: youthPlayer.position, overall: youthPlayer.overall, age: youthPlayer.age },
+          dateKey: 'gameMessages.endOfSeason', dateParams: { season: state.currentSeason }
         });
       }
 
@@ -1286,9 +1286,9 @@ function gameReducer(state, action) {
               newTransferMessages.push({
                 id: Date.now() + Math.random(),
                 type: 'transfer',
-                title: '🔄 Fichaje confirmado',
-                content: `${t.player.name} (${t.player.position}, ${t.player.overall}) ficha por ${t.to.name} desde ${t.from.name} por ${formatTransferPrice(t.price)}`,
-                date: `Semana ${nextWeek}`
+                titleKey: 'gameMessages.transferConfirmed',
+                contentKey: 'gameMessages.transferConfirmedContent', contentParams: { player: t.player.name, position: t.player.position, overall: t.player.overall, toTeam: t.to.name, fromTeam: t.from.name, price: formatTransferPrice(t.price) },
+                dateKey: 'gameMessages.weekDate', dateParams: { week: nextWeek }
               });
             }
             marketSummary.recentTransfers = [event.data, ...(marketSummary.recentTransfers || [])].slice(0, 30);
@@ -1374,9 +1374,9 @@ function gameReducer(state, action) {
             newTransferMessages.push({
               id: Date.now() + Math.random(),
               type: 'offer',
-              title: '📩 Nueva oferta recibida',
-              content: `${buyer.name} ofrece ${formatTransferPrice(offerAmount)} por ${targetPlayer.name}`,
-              date: isPreseason ? `Pretemporada` : `Semana ${nextWeek}`
+              titleKey: 'gameMessages.newOfferReceived',
+              contentKey: 'gameMessages.offerContent', contentParams: { buyer: buyer.name, amount: formatTransferPrice(offerAmount), player: targetPlayer.name },
+              dateKey: isPreseason ? 'gameMessages.preseason' : 'gameMessages.weekDate', dateParams: isPreseason ? {} : { week: nextWeek }
             });
           }
         }
@@ -1424,9 +1424,9 @@ function gameReducer(state, action) {
               newTransferMessages.push({
                 id: Date.now() + Math.random(),
                 type: 'offer',
-                title: '📩 Nueva oferta recibida',
-                content: `${buyer.name} ofrece ${formatTransferPrice(offerAmount)} por ${targetPlayer.name}`,
-                date: `Pretemporada`
+                titleKey: 'gameMessages.newOfferReceived',
+                contentKey: 'gameMessages.offerContent', contentParams: { buyer: buyer.name, amount: formatTransferPrice(offerAmount), player: targetPlayer.name },
+                dateKey: 'gameMessages.preseason'
               });
             }
           }
@@ -1496,25 +1496,26 @@ function gameReducer(state, action) {
             newTransferMessages.push({
               id: Date.now() + Math.random(),
               type: 'offer',
-              title: '📩 Oferta por jugador en venta',
-              content: `${buyer.name} ofrece ${formatTransferPrice(offerAmt)} por ${listedPlayer.name}`,
-              date: `Semana ${nextWeek}`
+              titleKey: 'gameMessages.offerForListedPlayer',
+              contentKey: 'gameMessages.offerContent', contentParams: { buyer: buyer.name, amount: formatTransferPrice(offerAmt), player: listedPlayer.name },
+              dateKey: 'gameMessages.weekDate', dateParams: { week: nextWeek }
             });
           }
         }
       }
 
       // Limpiar ofertas recibidas expiradas (por semana o por timestamp)
+      const expiredIncomingMessages = [];
       const expiredIncoming = newIncomingOffers.filter(o =>
         o.status === 'pending' && ((o.expiryWeek && nextWeek >= o.expiryWeek) || (o.expiresAt && o.expiresAt <= Date.now()))
       );
       if (expiredIncoming.length > 0) {
         expiredIncoming.forEach(o => {
-          offerMessages.push({
+          expiredIncomingMessages.push({
             id: Date.now() + Math.random(), type: 'offer',
-            title: `⏰ Oferta expirada`,
-            content: `La oferta de ${o.fromTeam} por ${o.player?.name} ha caducado`,
-            date: `Semana ${nextWeek}`
+            titleKey: 'gameMessages.offerExpired',
+            contentKey: 'gameMessages.offerExpiredContent', contentParams: { team: o.fromTeam, player: o.player?.name },
+            dateKey: 'gameMessages.weekDate', dateParams: { week: nextWeek }
           });
         });
       }
@@ -1631,7 +1632,7 @@ function gameReducer(state, action) {
         type: m.type || 'european',
         title: m.title,
         content: m.content,
-        date: `Semana ${nextWeek}`
+        dateKey: 'gameMessages.weekDate', dateParams: { week: nextWeek }
       }));
 
       // ============================================================
@@ -1708,7 +1709,7 @@ function gameReducer(state, action) {
         type: m.type || 'southamerican',
         title: m.title,
         content: m.content,
-        date: `Semana ${nextWeek}`
+        dateKey: 'gameMessages.weekDate', dateParams: { week: nextWeek }
       }));
 
       // ============================================================
@@ -1761,7 +1762,7 @@ function gameReducer(state, action) {
                 type: 'cup',
                 title: `${updatedCupCompetition.config?.icon || '🏆'} ${updatedCupCompetition.config?.shortName || 'Copa'}`,
                 content: `Tu equipo pasa directamente a la siguiente ronda (exento)`,
-                date: `Semana ${nextWeek}`
+                dateKey: 'gameMessages.weekDate', dateParams: { week: nextWeek }
               });
             }
           }
@@ -1778,7 +1779,7 @@ function gameReducer(state, action) {
               content: updatedCupCompetition.winner === state.teamId
                 ? `¡Tu equipo ha ganado la ${updatedCupCompetition.config?.name || 'Copa'}!`
                 : `La ${updatedCupCompetition.config?.name || 'Copa'} ha sido ganada por ${winnerName}`,
-              date: `Semana ${nextWeek}`
+              dateKey: 'gameMessages.weekDate', dateParams: { week: nextWeek }
             });
           }
         }
@@ -1822,9 +1823,9 @@ function gameReducer(state, action) {
             loanOfferMessages.push({
               id: Date.now() + Math.random(),
               type: 'loan',
-              title: '📩 Oferta de cesión recibida',
-              content: `${offer.toTeamName} quiere llevarse a ${offer.playerData.name} en cesión. Fee: â'¬${(offer.loanFee / 1_000_000).toFixed(1)}M`,
-              date: `Semana ${nextWeek}`
+              titleKey: 'gameMessages.loanOfferReceived',
+              contentKey: 'gameMessages.loanOfferContent', contentParams: { team: offer.toTeamName, player: offer.playerData.name, fee: `€${(offer.loanFee / 1_000_000).toFixed(1)}M` },
+              dateKey: 'gameMessages.weekDate', dateParams: { week: nextWeek }
             });
           });
         }
@@ -1933,9 +1934,9 @@ function gameReducer(state, action) {
                 apclFinalMessages.push({
                   id: Date.now() + 500,
                   type: 'league',
-                  title: '🏆 ¡Campeón de Liga!',
-                  content: `${sortedApertura[0]?.teamName} gana Apertura y Clausura y es campeón directo de la ${LEAGUE_CONFIG[state.playerLeagueId]?.name || 'Liga'}.`,
-                  date: `Semana ${nextWeek}`
+                  titleKey: 'gameMessages.leagueChampion',
+                  contentKey: 'gameMessages.directChampion', contentParams: { team: sortedApertura[0]?.teamName, league: LEAGUE_CONFIG[state.playerLeagueId]?.name || 'Liga' },
+                  dateKey: 'gameMessages.weekDate', dateParams: { week: nextWeek }
                 });
               } else if (playerIsFinalTeam) {
                 // Player is in the final â€" set pending for interactive play
@@ -1953,9 +1954,9 @@ function gameReducer(state, action) {
                 apclFinalMessages.push({
                   id: Date.now() + 500,
                   type: 'league',
-                  title: '⚽ Final Apertura vs Clausura',
-                  content: `¡Tu equipo jugará la final de la ${LEAGUE_CONFIG[state.playerLeagueId]?.name || 'Liga'}! ${sortedApertura[0]?.teamName} (Apertura) vs ${sortedClausura[0]?.teamName} (Clausura).`,
-                  date: `Semana ${nextWeek}`
+                  titleKey: 'gameMessages.aperturaClausuraFinal',
+                  contentKey: 'gameMessages.aperturaClausuraFinalContent', contentParams: { league: LEAGUE_CONFIG[state.playerLeagueId]?.name || 'Liga', apertura: sortedApertura[0]?.teamName, clausura: sortedClausura[0]?.teamName },
+                  dateKey: 'gameMessages.weekDate', dateParams: { week: nextWeek }
                 });
               } else {
                 // Player is NOT in the final â€" auto-simulate
@@ -1970,7 +1971,7 @@ function gameReducer(state, action) {
                     type: 'league',
                     title: '🏆 Final Apertura vs Clausura',
                     content: `${aperturaClausuraFinal.winnerName} gana la final de la ${LEAGUE_CONFIG[state.playerLeagueId]?.name || 'Liga'} ${winReasonText}. Ida: ${aperturaClausuraFinal.leg1.homeScore}-${aperturaClausuraFinal.leg1.awayScore}, Vuelta: ${aperturaClausuraFinal.leg2.homeScore}-${aperturaClausuraFinal.leg2.awayScore}.`,
-                    date: `Semana ${nextWeek}`
+                    dateKey: 'gameMessages.weekDate', dateParams: { week: nextWeek }
                   });
                 }
               }
@@ -2032,7 +2033,7 @@ function gameReducer(state, action) {
               id: Date.now() + Math.random(), type: 'transfer',
               title: `⏰ Contraoferta expirada: ${offer.playerName}`,
               content: `La contraoferta por ${offer.playerName} ha caducado. Se devuelven ${formatTransferPrice(offer.amount)}`,
-              date: `Semana ${nextWeek}`
+              dateKey: 'gameMessages.weekDate', dateParams: { week: nextWeek }
             });
             return null;
           }
@@ -2048,9 +2049,9 @@ function gameReducer(state, action) {
           moneyReturned += offer.amount;
           offerMessages.push({
             id: Date.now() + Math.random(), type: 'transfer',
-            title: `❌ Oferta cancelada: ${offer.playerName}`,
-            content: `${offer.playerName} ya no está disponible. Se devuelven ${formatTransferPrice(offer.amount)}`,
-            date: `Semana ${nextWeek}`
+            titleKey: 'gameMessages.offerCancelled', titleParams: { player: offer.playerName },
+            contentKey: 'gameMessages.playerUnavailableRefund', contentParams: { player: offer.playerName, amount: formatTransferPrice(offer.amount) },
+            dateKey: 'gameMessages.weekDate', dateParams: { week: nextWeek }
           });
           return null;
         }
@@ -2067,7 +2068,7 @@ function gameReducer(state, action) {
             id: Date.now() + Math.random(), type: 'transfer',
             title: `⏰ Oferta expirada: ${offer.playerName}`,
             content: `Tu oferta por ${offer.playerName} ha caducado sin respuesta. Se devuelven ${formatTransferPrice(offer.amount)}`,
-            date: `Semana ${nextWeek}`
+            dateKey: 'gameMessages.weekDate', dateParams: { week: nextWeek }
           });
           return null;
         }
@@ -2161,7 +2162,7 @@ function gameReducer(state, action) {
           content: bothAccepted
             ? `¡${offer.playerName} ficha por tu equipo! Traspaso: ${formatTransferPrice(offer.amount)}`
             : `🏢 Club: ${clubReason} · 👤 Jugador: ${playerReason}`,
-          date: `Semana ${nextWeek}`
+          dateKey: 'gameMessages.weekDate', dateParams: { week: nextWeek }
         });
 
         // Si ambos aceptan → fichaje completado (dinero ya descontado)
@@ -2207,7 +2208,7 @@ function gameReducer(state, action) {
         weeklyExpenses: salaryExpenses,
         team: state.team ? { ...state.team, players: updatedPlayers } : null,
         stadium: updatedStadium,
-        messages: [...offerMessages, ...apclFinalMessages, ...cupMessages, ...formattedEuropeanMessages, ...formattedSAMessages, ...newTransferMessages, ...loanOfferMessages, ...aiLoanMessages, ...newMessages, ...state.messages].slice(0, 50),
+        messages: [...expiredIncomingMessages, ...offerMessages, ...apclFinalMessages, ...cupMessages, ...formattedEuropeanMessages, ...formattedSAMessages, ...newTransferMessages, ...loanOfferMessages, ...aiLoanMessages, ...newMessages, ...state.messages].slice(0, 50),
         outgoingOffers: resolvedOutgoingOffers,
         pendingEvent: newEvent || state.pendingEvent,
         facilityStats: {
@@ -2475,7 +2476,7 @@ function gameReducer(state, action) {
           type: 'transfer',
           title: '✅ Venta completada',
           content: `Has vendido a ${offer.player.name} al ${offer.fromTeam} por ${formatTransferPrice(offer.amount)}`,
-          date: `Semana ${state.currentWeek}`
+          dateKey: 'gameMessages.weekDate', dateParams: { week: state.currentWeek }
         }, ...state.messages].slice(0, 50)
       };
     }
@@ -2519,7 +2520,7 @@ function gameReducer(state, action) {
             type: 'offer',
             title: '🔄 Contraoferta aceptada',
             content: `${offer.fromTeam} acepta pagar ${formatTransferPrice(counterAmount)} por ${offer.player.name}`,
-            date: `Semana ${state.currentWeek}`
+            dateKey: 'gameMessages.weekDate', dateParams: { week: state.currentWeek }
           }, ...state.messages].slice(0, 50)
         };
       } else {
@@ -2533,7 +2534,7 @@ function gameReducer(state, action) {
             type: 'offer',
             title: '❌ Contraoferta rechazada',
             content: `${offer.fromTeam} no acepta tu contraoferta de ${formatTransferPrice(counterAmount)} por ${offer.player.name}`,
-            date: `Semana ${state.currentWeek}`
+            dateKey: 'gameMessages.weekDate', dateParams: { week: state.currentWeek }
           }, ...state.messages].slice(0, 50)
         };
       }
@@ -2618,9 +2619,9 @@ function gameReducer(state, action) {
           messages: [{
             id: Date.now(),
             type: 'transfer',
-            title: '✅ Fichaje completado',
-            content: `¡${targetPlayer.name} es nuevo jugador del equipo! Coste: ${formatTransferPrice(offer.amount)}`,
-            date: `Semana ${state.currentWeek}`
+            titleKey: 'gameMessages.transferComplete',
+            contentKey: 'gameMessages.transferCompleteContent', contentParams: { player: targetPlayer.name, cost: formatTransferPrice(offer.amount) },
+            dateKey: 'gameMessages.weekDate', dateParams: { week: state.currentWeek }
           }, ...state.messages].slice(0, 50)
         };
       }
@@ -2667,9 +2668,9 @@ function gameReducer(state, action) {
         messages: [{
           id: Date.now(),
           type: 'transfer',
-          title: '✅ Fichaje completado',
-          content: `¡${targetPlayer.name} es nuevo jugador del equipo! Contraoferta aceptada: ${formatTransferPrice(finalAmount)}`,
-          date: `Semana ${state.currentWeek}`
+          titleKey: 'gameMessages.transferComplete',
+          contentKey: 'gameMessages.transferCompleteCounterContent', contentParams: { player: targetPlayer.name, cost: formatTransferPrice(finalAmount) },
+          dateKey: 'gameMessages.weekDate', dateParams: { week: state.currentWeek }
         }, ...state.messages].slice(0, 50)
       };
     }
@@ -2968,9 +2969,9 @@ function gameReducer(state, action) {
         messages: [{
           id: Date.now(),
           type: 'medical',
-          title: '💉 Tratamiento aplicado',
-          content: `${playerName} ha recibido tratamiento. Lesión reducida de ${oldWeeks} a ${newWeeks} semanas. Coste: €${(cost/1000000).toFixed(1)}M`,
-          date: `Semana ${state.currentWeek}`
+          titleKey: 'gameMessages.treatmentApplied',
+          contentKey: 'gameMessages.medicalTreatment', contentParams: { player: playerName, oldWeeks, newWeeks, cost: `€${(cost/1000000).toFixed(1)}M` },
+          dateKey: 'gameMessages.weekDate', dateParams: { week: state.currentWeek }
         }, ...state.messages].slice(0, 50)
       };
     }
@@ -3228,7 +3229,7 @@ function gameReducer(state, action) {
         type: 'european',
         title: `${finalComp.config.icon} Ingresos europeos`,
         content: `${finalComp.config.shortName}: +â'¬${(newPrize / 1_000_000).toFixed(1)}M`,
-        date: `Semana ${state.currentWeek}`
+        dateKey: 'gameMessages.weekDate', dateParams: { week: state.currentWeek }
       }] : [];
 
       const fmtAdvanceMessages = advanceMessages.map(m => ({
@@ -3236,7 +3237,7 @@ function gameReducer(state, action) {
         type: 'european',
         title: m.title,
         content: m.content,
-        date: `Semana ${state.currentWeek}`
+        dateKey: 'gameMessages.weekDate', dateParams: { week: state.currentWeek }
       }));
 
       // â"€â"€ CONTRARRELOJ: Check European competition wins â"€â"€
@@ -3300,7 +3301,7 @@ function gameReducer(state, action) {
         type: 'european',
         title: m.title,
         content: m.content,
-        date: `Semana ${state.currentWeek}`
+        dateKey: 'gameMessages.weekDate', dateParams: { week: state.currentWeek }
       }));
 
       let newPendingMatch = state.pendingEuropeanMatch;
@@ -3401,7 +3402,7 @@ function gameReducer(state, action) {
         type: 'southamerican',
         title: `${finalComp.config.icon} Ingresos continentales`,
         content: `${finalComp.config.shortName}: +$${(newPrize / 1_000_000).toFixed(1)}M USD`,
-        date: `Semana ${state.currentWeek}`
+        dateKey: 'gameMessages.weekDate', dateParams: { week: state.currentWeek }
       }] : [];
 
       const fmtAdvanceMessages = advanceMessages.map(m => ({
@@ -3409,7 +3410,7 @@ function gameReducer(state, action) {
         type: 'southamerican',
         title: m.title,
         content: m.content,
-        date: `Semana ${state.currentWeek}`
+        dateKey: 'gameMessages.weekDate', dateParams: { week: state.currentWeek }
       }));
 
       // â"€â"€ CONTRARRELOJ: Check SA competition wins â"€â"€
@@ -3513,7 +3514,7 @@ function gameReducer(state, action) {
           type: 'cup',
           title: `${updatedBracket.config?.icon || '🏆'} ${updatedBracket.config?.shortName || 'Copa'}: ${state.team.name} ${playerScore} - ${rivalScore} ${rivalName || 'Rival'}`,
           content: won ? '¡Clasificado para la siguiente ronda!' : 'Eliminado de la copa',
-          date: `Semana ${state.currentWeek}`
+          dateKey: 'gameMessages.weekDate', dateParams: { week: state.currentWeek }
         });
       }
 
@@ -3523,9 +3524,9 @@ function gameReducer(state, action) {
         cupMessages.push({
           id: Date.now() + 1,
           type: 'cup',
-          title: `${updatedBracket.config?.icon || '🏆'} ¡¡CAMPEÃ"N DE LA ${(updatedBracket.config?.name || 'Copa').toUpperCase()}!!`,
-          content: `¡${state.team.name} ha ganado la ${updatedBracket.config?.name || 'Copa'}!`,
-          date: `Semana ${state.currentWeek}`
+          titleKey: 'gameMessages.cupChampionTitle', titleParams: { icon: updatedBracket.config?.icon || '🏆', cup: (updatedBracket.config?.name || 'Cup').toUpperCase() },
+          contentKey: 'gameMessages.cupChampionContent', contentParams: { team: state.team.name, cup: updatedBracket.config?.name || 'Cup' },
+          dateKey: 'gameMessages.weekDate', dateParams: { week: state.currentWeek }
         });
         // Contrarreloj: record cup trophy
         if (state.gameMode === 'contrarreloj' && state.contrarrelojData) {
@@ -3619,7 +3620,7 @@ function gameReducer(state, action) {
           type: 'loan',
           title: '📤 Jugador cedido',
           content: `${player.name} cedido al ${toTeamName}. Fee: ${formatTransferPrice(loanFee)}${purchaseOption ? ` | Opción de compra: ${formatTransferPrice(purchaseOption)}` : ''}`,
-          date: `Semana ${state.currentWeek}`
+          dateKey: 'gameMessages.weekDate', dateParams: { week: state.currentWeek }
         }, ...state.messages].slice(0, 50)
       };
     }
@@ -3670,9 +3671,9 @@ function gameReducer(state, action) {
         messages: [{
           id: Date.now(),
           type: 'loan',
-          title: '📥 Jugador recibido en cesión',
-          content: `${player.name} llega cedido desde ${fromTeamName}. Fee: ${formatTransferPrice(loanFee)}${purchaseOption ? ` | Opción de compra: ${formatTransferPrice(purchaseOption)}` : ''}`,
-          date: `Semana ${state.currentWeek}`
+          titleKey: 'gameMessages.playerReceivedOnLoan',
+          contentKey: 'gameMessages.playerReceivedOnLoanContent', contentParams: { player: player.name, team: fromTeamName, fee: formatTransferPrice(loanFee), option: purchaseOption ? formatTransferPrice(purchaseOption) : '' },
+          dateKey: 'gameMessages.weekDate', dateParams: { week: state.currentWeek }
         }, ...state.messages].slice(0, 50)
       };
     }
@@ -3706,7 +3707,7 @@ function gameReducer(state, action) {
         type: m.type,
         title: m.title,
         content: m.content,
-        date: `Fin Temporada ${state.currentSeason}`
+        dateKey: 'gameMessages.endOfSeason', dateParams: { season: state.currentSeason }
       }));
 
       return {
@@ -3767,9 +3768,9 @@ function gameReducer(state, action) {
         messages: [{
           id: Date.now(),
           type: 'transfer',
-          title: '✅ Opción de compra ejecutada',
-          content: `${loan.playerData?.name || loan.playerId} fichado en propiedad por ${formatTransferPrice(loan.purchaseOption)}`,
-          date: `Semana ${state.currentWeek}`
+          titleKey: 'gameMessages.purchaseOptionExecuted',
+          contentKey: 'gameMessages.purchaseOptionContent', contentParams: { player: loan.playerData?.name || loan.playerId, amount: formatTransferPrice(loan.purchaseOption) },
+          dateKey: 'gameMessages.weekDate', dateParams: { week: state.currentWeek }
         }, ...state.messages].slice(0, 50)
       };
     }
@@ -3832,9 +3833,9 @@ function gameReducer(state, action) {
         messages: [{
           id: Date.now(),
           type: 'loan',
-          title: '📤 Cesión aceptada',
+          titleKey: 'gameMessages.loanAccepted',
           content: `${player.name} cedido al ${offer.toTeamName}. Fee: ${formatTransferPrice(offer.loanFee)}`,
-          date: `Semana ${state.currentWeek}`
+          dateKey: 'gameMessages.weekDate', dateParams: { week: state.currentWeek }
         }, ...state.messages].slice(0, 50)
       };
     }
@@ -3871,7 +3872,7 @@ function gameReducer(state, action) {
           content: finalResult.hadFinal
             ? `${finalResult.winnerName} gana la final. Ida: ${finalResult.leg1?.homeScore}-${finalResult.leg1?.awayScore}, Vuelta: ${finalResult.leg2?.homeScore}-${finalResult.leg2?.awayScore}.`
             : `${finalResult.winnerName} es campeón directo.`,
-          date: `Semana ${state.currentWeek}`
+          dateKey: 'gameMessages.weekDate', dateParams: { week: state.currentWeek }
         }, ...state.messages].slice(0, 50)
       };
     }

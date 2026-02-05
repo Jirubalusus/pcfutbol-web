@@ -794,7 +794,7 @@ export default function Office() {
           </div>
           
           <div className="office__grid-right">
-            {state.seasonObjectives?.length > 0 && (
+            {state.seasonObjectives?.length > 0 && state.gameMode !== 'contrarreloj' && (
               <div className="office__objective-preview" onClick={() => setActiveTab('objectives')}>
                 <h3>
                   <Target size={18} strokeWidth={2} />
@@ -815,8 +815,8 @@ export default function Office() {
                   return (
                     <div className={`objective-item objective-item--${status}`}>
                       <div className="objective-info">
-                        <span className="objective-name">{criticalObj.name}</span>
-                        <span className="objective-desc">{criticalObj.description}</span>
+                        <span className="objective-name">{criticalObj.nameKey ? t(criticalObj.nameKey) : criticalObj.name}</span>
+                        <span className="objective-desc">{criticalObj.descKey ? t(criticalObj.descKey) : criticalObj.description}</span>
                       </div>
                       <div className="objective-progress">
                         <div className="progress-bar">

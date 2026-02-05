@@ -22,6 +22,43 @@ export default function Messages() {
   const [selectedMessage, setSelectedMessage] = useState(null);
   
   const messages = state.messages || [];
+
+  // i18n helpers: translate keys at render time, fall back to raw fields for old saves
+  const getTitle = (msg) => {
+    if (msg.titleKey) {
+      const params = { ...msg.titleParams };
+      // Auto-translate params ending in 'Key' (nested translation keys)
+      if (params) {
+        Object.keys(params).forEach(key => {
+          if (key.endsWith('Key') && typeof params[key] === 'string' && !key.endsWith('KeyParams')) {
+            const baseKey = key.slice(0, -3);
+            params[baseKey] = t(params[key], params[`${key}Params`]);
+          }
+        });
+      }
+      return t(msg.titleKey, params);
+    }
+    return msg.title;
+  };
+  const getContent = (msg) => {
+    if (msg.contentKey) {
+      const params = { ...msg.contentParams };
+      if (params) {
+        Object.keys(params).forEach(key => {
+          if (key.endsWith('Key') && typeof params[key] === 'string' && !key.endsWith('KeyParams')) {
+            const baseKey = key.slice(0, -3);
+            params[baseKey] = t(params[key], params[`${key}Params`]);
+          }
+        });
+      }
+      return t(msg.contentKey, params);
+    }
+    return msg.content;
+  };
+  const getDate = (msg) => {
+    if (msg.dateKey) return t(msg.dateKey, msg.dateParams);
+    return msg.date;
+  };
   
   const handleDelete = (messageId) => {
     dispatch({ type: 'DELETE_MESSAGE', payload: messageId });
@@ -66,8 +103,8 @@ export default function Messages() {
                   {MESSAGE_ICONS[msg.type] || MESSAGE_ICONS.default}
                 </span>
                 <div className="messages__item-content">
-                  <span className="title">{msg.title}</span>
-                  <span className="date">{msg.date}</span>
+                  <span className="title">{getTitle(msg)}</span>
+                  <span className="date">{getDate(msg)}</span>
                 </div>
                 <button 
                   className="messages__delete"
@@ -95,12 +132,12 @@ export default function Messages() {
                   {MESSAGE_ICONS[selectedMessage.type] || MESSAGE_ICONS.default}
                 </span>
                 <div className="info">
-                  <h3>{selectedMessage.title}</h3>
-                  <span className="date">{selectedMessage.date}</span>
+                  <h3>{getTitle(selectedMessage)}</h3>
+                  <span className="date">{getDate(selectedMessage)}</span>
                 </div>
               </div>
               <div className="messages__detail-body">
-                <p>{selectedMessage.content}</p>
+                <p>{getContent(selectedMessage)}</p>
               </div>
               <button 
                 className="messages__detail-delete"

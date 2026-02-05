@@ -396,9 +396,12 @@ export default function ContrarrelojSetup() {
       payload: {
         id: Date.now(),
         type: 'contrarreloj',
-        title: '⏱️ ¡Modo Contrarreloj activado!',
-        content: `Objetivo: ganar la ${isPlayerInSA ? 'South American Champions Cup' : 'Continental Champions Cup'} con ${team.name} en el menor número de temporadas. ¡El reloj corre!`,
-        date: 'Semana 1'
+        title: `⏱️ ${t('contrarreloj.activated')}`,
+        content: t('contrarreloj.objectiveMessage', {
+          competition: isPlayerInSA ? t('contrarreloj.southAmericanCup') : t('contrarreloj.continentalCup'),
+          team: team.name
+        }),
+        date: `${t('common.week')} 1`
       }
     });
   };

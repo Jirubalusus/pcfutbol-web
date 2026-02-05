@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 
 import { useGame } from '../../context/GameContext';
 import { translatePosition } from '../../game/positionNames';
@@ -175,7 +176,7 @@ export default function TransfersV2() {
 
     (state.freeAgents || []).forEach(p => {
 
-      players.push({ ...p, teamName: 'Libre', teamId: null, isFreeAgent: true });
+      players.push({ ...p, teamName: t('transfers.freeAgent'), teamId: null, isFreeAgent: true });
 
     });
 
@@ -528,6 +529,7 @@ export default function TransfersV2() {
 // ============================================================
 
 function ResumenTab({ windowStatus, summary, myTeam }) {
+  const { t } = useTranslation();
 
   return (
 
@@ -545,15 +547,15 @@ function ResumenTab({ windowStatus, summary, myTeam }) {
 
         <div className="status-info">
 
-          <h3>Mercado Abierto</h3>
+          <h3>{t('transfers.marketOpen')}</h3>
 
           <p>
 
             {state.preseasonPhase
 
-              ? 'Estamos en pretemporada. ¡Aprovecha para fichar antes de que empiece la liga!'
+              ? t('transfers.preseasonMsg')
 
-              : 'El mercado está siempre abierto. Ficha, cede y negocia cuando quieras.'}
+              : t('transfers.marketAlwaysOpen')}
 
           </p>
 
@@ -573,7 +575,7 @@ function ResumenTab({ windowStatus, summary, myTeam }) {
 
           <div className="stat-value">{summary.totalTransfers || 0}</div>
 
-          <div className="stat-label">Fichajes Totales</div>
+          <div className="stat-label">{t('transfers.totalTransfers')}</div>
 
         </div>
 
@@ -583,7 +585,7 @@ function ResumenTab({ windowStatus, summary, myTeam }) {
 
           <div className="stat-value">{formatTransferPrice(summary.totalSpent || 0)}</div>
 
-          <div className="stat-label">Dinero Movido</div>
+          <div className="stat-label">{t('transfers.moneyMoved')}</div>
 
         </div>
 
@@ -593,7 +595,7 @@ function ResumenTab({ windowStatus, summary, myTeam }) {
 
           <div className="stat-value">{summary.activeRumors?.length || 0}</div>
 
-          <div className="stat-label">Rumores Activos</div>
+          <div className="stat-label">{t('transfers.activeRumors')}</div>
 
         </div>
 
@@ -605,7 +607,7 @@ function ResumenTab({ windowStatus, summary, myTeam }) {
 
       <div className="section">
 
-        <h3><TrendingUp size={18} /> Últimos Fichajes</h3>
+        <h3><TrendingUp size={18} /> {t('transfers.recentTransfers')}</h3>
 
         <div className="transfers-list">
 
@@ -643,7 +645,7 @@ function ResumenTab({ windowStatus, summary, myTeam }) {
 
             <div className="empty-state">
 
-              <p>No hay fichajes recientes</p>
+              <p>{t('transfers.noRecentTransfers')}</p>
 
             </div>
 
@@ -659,7 +661,7 @@ function ResumenTab({ windowStatus, summary, myTeam }) {
 
       <div className="section">
 
-        <h3><Newspaper size={18} /> Rumores del Mercado</h3>
+        <h3><Newspaper size={18} /> {t('transfers.marketRumors')}</h3>
 
         <div className="rumors-list">
 
@@ -673,7 +675,7 @@ function ResumenTab({ windowStatus, summary, myTeam }) {
 
                 <span className={`reliability ${r.reliability > 60 ? 'high' : r.reliability > 40 ? 'medium' : 'low'}`}>
 
-                  {r.reliability}% fiable
+                  {t('transfers.reliable', { pct: r.reliability })}
 
                 </span>
 
@@ -687,7 +689,7 @@ function ResumenTab({ windowStatus, summary, myTeam }) {
 
             <div className="empty-state">
 
-              <p>No hay rumores activos</p>
+              <p>{t('transfers.noActiveRumors')}</p>
 
             </div>
 
@@ -712,6 +714,7 @@ function ResumenTab({ windowStatus, summary, myTeam }) {
 // ============================================================
 
 function BuscarTab({ players, searchQuery, setSearchQuery, filters, setFilters, showFilters, setShowFilters, onSelectPlayer, budget, blockedPlayers = [] }) {
+  const { t } = useTranslation();
 
   return (
 
@@ -729,7 +732,7 @@ function BuscarTab({ players, searchQuery, setSearchQuery, filters, setFilters, 
 
             type="text"
 
-            placeholder="Buscar jugador por nombre..."
+            placeholder={t('transfers.searchPlaceholder')}
 
             value={searchQuery}
 
@@ -759,7 +762,7 @@ function BuscarTab({ players, searchQuery, setSearchQuery, filters, setFilters, 
 
           <Filter size={18} />
 
-          Filtros
+          {t('transfers.filters')}
 
         </button>
 
@@ -775,7 +778,7 @@ function BuscarTab({ players, searchQuery, setSearchQuery, filters, setFilters, 
 
           <div className="filter-group">
 
-            <label>Posición</label>
+            <label>{t('transfers.position')}</label>
 
             <CustomSelect
               compact
@@ -783,11 +786,11 @@ function BuscarTab({ players, searchQuery, setSearchQuery, filters, setFilters, 
               onChange={(val) => setFilters({...filters, position: val})}
               searchable={false}
               options={[
-                { value: 'all', label: 'Todas' },
-                { value: 'GK', label: 'Portero' },
-                { value: 'DEF', label: 'Defensa' },
-                { value: 'MID', label: 'Centrocampista' },
-                { value: 'FWD', label: 'Delantero' },
+                { value: 'all', label: t('transfers.posAll') },
+                { value: 'GK', label: t('transfers.posGK') },
+                { value: 'DEF', label: t('transfers.posDEF') },
+                { value: 'MID', label: t('transfers.posMID') },
+                { value: 'FWD', label: t('transfers.posFWD') },
               ]}
             />
 
@@ -795,7 +798,7 @@ function BuscarTab({ players, searchQuery, setSearchQuery, filters, setFilters, 
 
           <div className="filter-group">
 
-            <label>Edad: {filters.ageMin} - {filters.ageMax}</label>
+            <label>{t('transfers.ageRange', { min: filters.ageMin, max: filters.ageMax })}</label>
 
             <input
 
@@ -813,7 +816,7 @@ function BuscarTab({ players, searchQuery, setSearchQuery, filters, setFilters, 
 
           <div className="filter-group">
 
-            <label>OVR mínimo: {filters.ovrMin}</label>
+            <label>{t('transfers.minOVR', { ovr: filters.ovrMin })}</label>
 
             <input
 
@@ -843,7 +846,7 @@ function BuscarTab({ players, searchQuery, setSearchQuery, filters, setFilters, 
 
               />
 
-              Solo jugadores libres
+              {t('transfers.freeAgentsOnly')}
 
             </label>
 
@@ -895,7 +898,7 @@ function BuscarTab({ players, searchQuery, setSearchQuery, filters, setFilters, 
 
                   {player.isFreeAgent ? (
 
-                    <span className="free-badge">LIBRE</span>
+                    <span className="free-badge">{t('transfers.free')}</span>
 
                   ) : (
 
@@ -907,17 +910,17 @@ function BuscarTab({ players, searchQuery, setSearchQuery, filters, setFilters, 
 
                 <div className="meta">
 
-                  <span>{player.age} años</span>
+                  <span>{player.age} {t('transfers.years')}</span>
 
                   <span className="value">{formatTransferPrice(calculateMarketValue(player, player.leagueId))}</span>
 
                 </div>
 
-                {isBlocked && <span className="blocked-label">Bloqueado esta temporada</span>}
+                {isBlocked && <span className="blocked-label">{t('transfers.blockedThisSeason')}</span>}
 
                 {!isBlocked && !player.isFreeAgent && (player.contractYears || 0) <= 1 && (
 
-                  <span className="contract-expiring">Fin de contrato</span>
+                  <span className="contract-expiring">{t('transfers.contractExpiring')}</span>
 
                 )}
 
@@ -946,6 +949,7 @@ function BuscarTab({ players, searchQuery, setSearchQuery, filters, setFilters, 
 // ============================================================
 
 function OfertasRecibidasTab({ offers, incomingLoanOffers = [], myPlayers, dispatch, state }) {
+  const { t } = useTranslation();
 
   const pendingOffers = offers.filter(o => o.status === 'pending');
 
@@ -995,9 +999,9 @@ function OfertasRecibidasTab({ offers, incomingLoanOffers = [], myPlayers, dispa
 
         payload: {
 
-          id: Date.now(), type: 'warning', title: 'ï¸ No se puede ceder',
+          id: Date.now(), type: 'warning', title: t('transfers.cannotLoan'),
 
-          content: check.errors.join('. '), date: `Semana ${state.currentWeek}`
+          content: check.errors.join('. '), date: `${t('transfers.weekShort', { week: state.currentWeek })}`
 
         }
 
@@ -1029,9 +1033,9 @@ function OfertasRecibidasTab({ offers, incomingLoanOffers = [], myPlayers, dispa
 
         <Bell size={48} className="empty-icon" />
 
-        <h3>Sin ofertas recibidas</h3>
+        <h3>{t('transfers.noOffersReceived')}</h3>
 
-        <p>Ningún club ha mostrado interés en tus jugadores... por ahora.</p>
+        <p>{t('transfers.noInterestYet')}</p>
 
       </div>
 
@@ -1047,7 +1051,7 @@ function OfertasRecibidasTab({ offers, incomingLoanOffers = [], myPlayers, dispa
 
       {/* Ofertas de traspaso pendientes */}
 
-      {pendingOffers.length > 0 && <h4 className="section-title">Ofertas de traspaso pendientes</h4>}
+      {pendingOffers.length > 0 && <h4 className="section-title">{t('transfers.pendingTransferOffers')}</h4>}
 
       {pendingOffers.map((offer, i) => (
 
@@ -1065,9 +1069,9 @@ function OfertasRecibidasTab({ offers, incomingLoanOffers = [], myPlayers, dispa
 
             <div className="offer-badges">
 
-              <span className="offer-type-badge transfer">Traspaso</span>
+              <span className="offer-type-badge transfer">{t('transfers.transferBadge')}</span>
 
-              <span className={`status ${offer.status}`}>Pendiente</span>
+              <span className={`status ${offer.status}`}>{t('transfers.pending')}</span>
 
             </div>
 
@@ -1093,7 +1097,7 @@ function OfertasRecibidasTab({ offers, incomingLoanOffers = [], myPlayers, dispa
 
               <span className="expiry-tag">
 
-                <Clock size={12} /> Caduca sem. {offer.expiryWeek}
+                <Clock size={12} /> {t('transfers.expiresWeek', { week: offer.expiryWeek })}
 
                 {state.currentWeek >= offer.expiryWeek - 1 && <span className="urgent"> ⚠️</span>}
 
@@ -1107,19 +1111,19 @@ function OfertasRecibidasTab({ offers, incomingLoanOffers = [], myPlayers, dispa
 
             <button className="btn-accept" onClick={() => handleAccept(offer)}>
 
-              <Check size={16} /> Aceptar
+              <Check size={16} /> {t('transfers.accept')}
 
             </button>
 
             <button className="btn-counter" onClick={() => handleCounter(offer)}>
 
-              <ArrowLeftRight size={16} /> Pedir más
+              <ArrowLeftRight size={16} /> {t('transfers.askMore')}
 
             </button>
 
             <button className="btn-reject" onClick={() => handleReject(offer)}>
 
-              <X size={16} /> Rechazar
+              <X size={16} /> {t('transfers.reject')}
 
             </button>
 
@@ -1133,7 +1137,7 @@ function OfertasRecibidasTab({ offers, incomingLoanOffers = [], myPlayers, dispa
 
       {/* Ofertas de cesión pendientes */}
 
-      {pendingLoanOffers.length > 0 && <h4 className="section-title">Ofertas de cesión pendientes</h4>}
+      {pendingLoanOffers.length > 0 && <h4 className="section-title">{t('transfers.pendingLoanOffers')}</h4>}
 
       {pendingLoanOffers.map((offer, i) => (
 
@@ -1151,9 +1155,9 @@ function OfertasRecibidasTab({ offers, incomingLoanOffers = [], myPlayers, dispa
 
             <div className="offer-badges">
 
-              <span className="offer-type-badge loan">Cesión</span>
+              <span className="offer-type-badge loan">{t('transfers.loanBadge')}</span>
 
-              <span className="status pending">Pendiente</span>
+              <span className="status pending">{t('transfers.pending')}</span>
 
             </div>
 
@@ -1173,7 +1177,7 @@ function OfertasRecibidasTab({ offers, incomingLoanOffers = [], myPlayers, dispa
 
             <div className="loan-term">
 
-              <span className="term-label">Fee de cesión</span>
+              <span className="term-label">{t('transfers.loanFee')}</span>
 
               <span className="term-value">{formatTransferPrice(offer.loanFee)}</span>
 
@@ -1181,7 +1185,7 @@ function OfertasRecibidasTab({ offers, incomingLoanOffers = [], myPlayers, dispa
 
             <div className="loan-term">
 
-              <span className="term-label">Salario receptor</span>
+              <span className="term-label">{t('transfers.receiverSalary')}</span>
 
               <span className="term-value">{Math.round(offer.salaryShare * 100)}%</span>
 
@@ -1191,7 +1195,7 @@ function OfertasRecibidasTab({ offers, incomingLoanOffers = [], myPlayers, dispa
 
               <div className="loan-term">
 
-                <span className="term-label">Opción de compra</span>
+                <span className="term-label">{t('transfers.purchaseOption')}</span>
 
                 <span className="term-value">{formatTransferPrice(offer.purchaseOption)}</span>
 
@@ -1205,13 +1209,13 @@ function OfertasRecibidasTab({ offers, incomingLoanOffers = [], myPlayers, dispa
 
             <button className="btn-accept" onClick={() => handleAcceptLoanOffer(offer)}>
 
-              <Check size={16} /> Aceptar
+              <Check size={16} /> {t('transfers.accept')}
 
             </button>
 
             <button className="btn-reject" onClick={() => handleRejectLoanOffer(offer)}>
 
-              <X size={16} /> Rechazar
+              <X size={16} /> {t('transfers.reject')}
 
             </button>
 
@@ -1223,7 +1227,7 @@ function OfertasRecibidasTab({ offers, incomingLoanOffers = [], myPlayers, dispa
 
 
 
-      {pastOffers.length > 0 && <h4 className="section-title past">Historial</h4>}
+      {pastOffers.length > 0 && <h4 className="section-title past">{t('transfers.history')}</h4>}
 
       {pastOffers.slice(0, 5).map((offer, i) => (
 
@@ -1241,7 +1245,7 @@ function OfertasRecibidasTab({ offers, incomingLoanOffers = [], myPlayers, dispa
 
             <span className={`status ${offer.status}`}>
 
-              {offer.status === 'rejected' ? 'Rechazada' : offer.status}
+              {offer.status === 'rejected' ? t('transfers.rejected') : offer.status}
 
             </span>
 
@@ -1280,6 +1284,7 @@ function OfertasRecibidasTab({ offers, incomingLoanOffers = [], myPlayers, dispa
 // ============================================================
 
 function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, state }) {
+  const { t } = useTranslation();
 
   const handleAcceptCounter = (offer) => {
 
@@ -1327,11 +1332,11 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
         payload: {
 
-          id: Date.now(), type: 'warning', title: 'ï¸ No se puede ejecutar',
+          id: Date.now(), type: 'warning', title: t('transfers.cannotExecute'),
 
-          content: loan.purchaseOption ? 'Presupuesto insuficiente' : 'Esta cesión no tiene opción de compra',
+          content: loan.purchaseOption ? t('transfers.insufficientBudget') : t('transfers.noPurchaseOption'),
 
-          date: `Semana ${state?.currentWeek}`
+          date: `${t('transfers.weekShort', { week: state?.currentWeek })}`
 
         }
 
@@ -1355,9 +1360,9 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
         <Briefcase size={48} className="empty-icon" />
 
-        <h3>Sin ofertas ni cesiones</h3>
+        <h3>{t('transfers.noSentOffers')}</h3>
 
-        <p>No tienes ofertas activas ni cesiones. ¡Busca jugadores para reforzar tu equipo!</p>
+        <p>{t('transfers.noSentOffersDesc')}</p>
 
       </div>
 
@@ -1388,10 +1393,10 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
       {offers.length > 0 && (
         <div className="section-title-row">
-          <h4 className="section-title"><Target size={16} /> Ofertas de traspaso</h4>
+          <h4 className="section-title"><Target size={16} /> {t('transfers.transferOffers')}</h4>
           {hasResolved && (
             <button className="btn-clear-resolved" onClick={handleClearResolved}>
-              <Trash2 size={14} /> Borrar
+              <Trash2 size={14} /> {t('transfers.clear')}
             </button>
           )}
         </div>
@@ -1423,7 +1428,7 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
                 <span className="name">{offer.player?.name || offer.playerName}</span>
 
-                <span className="team">{offer.toTeam} · {offer.player?.age} años</span>
+                <span className="team">{offer.toTeam} · {offer.player?.age} {t('transfers.years')}</span>
 
               </div>
 
@@ -1439,9 +1444,9 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
               <span><DollarSign size={14} /> {formatTransferPrice(offer.amount)}</span>
 
-              <span><Users size={14} /> {formatTransferPrice((offer.salaryOffer || 0) * 52)}/año</span>
+              <span><Users size={14} /> {formatTransferPrice((offer.salaryOffer || 0) * 52)}/{t('transfers.year')}</span>
 
-              <span className="week-tag">Sem. {offer.submittedWeek || '?'}</span>
+              <span className="week-tag">{t('transfers.weekShort', { week: offer.submittedWeek || '?' })}</span>
 
             </div>
 
@@ -1455,11 +1460,11 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
                 <Clock size={16} />
 
-                <span>⏳ Pendiente de respuesta — simula un partido</span>
+                <span>{t('transfers.pendingResponse')}</span>
 
                 <button className="btn-withdraw-small" onClick={() => handleWithdraw(offer)}>
 
-                  <X size={14} /> Retirar
+                  <X size={14} /> {t('transfers.withdraw')}
 
                 </button>
 
@@ -1479,9 +1484,9 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
                   <Building2 size={16} />
 
-                  <span className="response-label">Club</span>
+                  <span className="response-label">{t('transfers.club')}</span>
 
-                  {offer.clubResponse === 'accepted' && <span className="response-result accepted"><CheckCircle size={14} /> Acepta</span>}
+                  {offer.clubResponse === 'accepted' && <span className="response-result accepted"><CheckCircle size={14} /> {t('transfers.accepts')}</span>}
 
                   {offer.clubResponse === 'rejected' && <span className="response-result rejected"><XCircle size={14} /> {offer.clubReason}</span>}
 
@@ -1493,9 +1498,9 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
                   <UserCheck size={16} />
 
-                  <span className="response-label">Jugador</span>
+                  <span className="response-label">{t('transfers.playerLabel')}</span>
 
-                  {offer.playerResponse === 'accepted' && <span className="response-result accepted"><CheckCircle size={14} /> Acepta</span>}
+                  {offer.playerResponse === 'accepted' && <span className="response-result accepted"><CheckCircle size={14} /> {t('transfers.accepts')}</span>}
 
                   {offer.playerResponse === 'rejected' && <span className="response-result rejected"><XCircle size={14} /> {offer.playerReason}</span>}
 
@@ -1513,7 +1518,7 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
               <div className="offer-v2-result success">
 
-                <Sparkles size={16} /> ¡Fichaje completado!
+                <Sparkles size={16} /> {t('transfers.transferCompleted')}
 
               </div>
 
@@ -1525,7 +1530,7 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
               <div className="offer-v2-counter">
 
-                <span>🔄 El club pide {formatTransferPrice(offer.clubCounterAmount)}</span>
+                <span>🔄 {t('transfers.clubAsks', { amount: formatTransferPrice(offer.clubCounterAmount) })}</span>
 
                 <div className="counter-btns">
 
@@ -1533,7 +1538,7 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
                     <button className="btn-accept-counter" onClick={() => handleAcceptCounter(offer)}>
 
-                      <Check size={14} /> Aceptar contraoferta
+                      <Check size={14} /> {t('transfers.acceptCounter')}
 
                     </button>
 
@@ -1541,7 +1546,7 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
                   <button className="btn-withdraw" onClick={() => handleWithdraw(offer)}>
 
-                    <X size={14} /> Retirar
+                    <X size={14} /> {t('transfers.withdraw')}
 
                   </button>
 
@@ -1557,9 +1562,9 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
               <div className="offer-v2-result failed">
 
-                <XCircle size={16} /> El jugador rechazó, no se puede completar
+                <XCircle size={16} /> {t('transfers.playerRejectedCantComplete')}
 
-                <button className="btn-withdraw-small" onClick={() => handleWithdraw(offer)}>Eliminar</button>
+                <button className="btn-withdraw-small" onClick={() => handleWithdraw(offer)}>{t('transfers.deleteBtn')}</button>
 
               </div>
 
@@ -1571,9 +1576,9 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
               <div className="offer-v2-result failed">
 
-                <XCircle size={16} /> Oferta rechazada
+                <XCircle size={16} /> {t('transfers.offerRejected')}
 
-                <button className="btn-withdraw-small" onClick={() => handleWithdraw(offer)}>Eliminar</button>
+                <button className="btn-withdraw-small" onClick={() => handleWithdraw(offer)}>{t('transfers.deleteBtn')}</button>
 
               </div>
 
@@ -1595,7 +1600,7 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
           <h4 className="section-title loan-section-title">
 
-            <Handshake size={16} /> Jugadores cedidos
+            <Handshake size={16} /> {t('transfers.loanedOutPlayers')}
 
           </h4>
 
@@ -1607,9 +1612,9 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
                 <div className="la-header">
 
-                  <span className="la-direction out">ðŸ"¤ Cedido</span>
+                  <span className="la-direction out">ðŸ"¤ {t('transfers.loanedOut')}</span>
 
-                  <span className="la-weeks"><Clock size={14} /> {loan.weeksRemaining} sem.</span>
+                  <span className="la-weeks"><Clock size={14} /> {t('transfers.weeksShort', { weeks: loan.weeksRemaining })}</span>
 
                 </div>
 
@@ -1621,7 +1626,7 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
                     <span className="la-name">{loan.playerData?.name || loan.playerId}</span>
 
-                    <span className="la-team">ðŸ" En {loan.toTeamName}</span>
+                    <span className="la-team">ðŸ" {t('transfers.atTeam', { team: loan.toTeamName })}</span>
 
                   </div>
 
@@ -1635,7 +1640,7 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
                     <Target size={14} />
 
-                    <span>Opción de compra: {formatTransferPrice(loan.purchaseOption)}</span>
+                    <span>{t('transfers.purchaseOption')}: {formatTransferPrice(loan.purchaseOption)}</span>
 
                   </div>
 
@@ -1661,7 +1666,7 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
           <h4 className="section-title loan-section-title">
 
-            <Handshake size={16} /> Jugadores en cesión
+            <Handshake size={16} /> {t('transfers.loanedInPlayers')}
 
           </h4>
 
@@ -1673,9 +1678,9 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
                 <div className="la-header">
 
-                  <span className="la-direction in">ðŸ"¥ En cesión</span>
+                  <span className="la-direction in">📥 {t('transfers.onLoan')}</span>
 
-                  <span className="la-weeks"><Clock size={14} /> {loan.weeksRemaining} sem.</span>
+                  <span className="la-weeks"><Clock size={14} /> {t('transfers.weeksShort', { weeks: loan.weeksRemaining })}</span>
 
                 </div>
 
@@ -1687,7 +1692,7 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
                     <span className="la-name">{loan.playerData?.name || loan.playerId}</span>
 
-                    <span className="la-team">ðŸ  Propiedad de {loan.fromTeamName}</span>
+                    <span className="la-team">ðŸ  {t('transfers.ownedBy', { team: loan.fromTeamName })}</span>
 
                   </div>
 
@@ -1703,7 +1708,7 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
                       <Target size={14} />
 
-                      <span>Opción de compra: {formatTransferPrice(loan.purchaseOption)}</span>
+                      <span>{t('transfers.purchaseOptionAmount', { amount: formatTransferPrice(loan.purchaseOption) })}</span>
 
                     </div>
 
@@ -1717,7 +1722,7 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
                     >
 
-                      <DollarSign size={14} /> Comprar ({formatTransferPrice(loan.purchaseOption)})
+                      <DollarSign size={14} /> {t('transfers.buyAmount', { amount: formatTransferPrice(loan.purchaseOption) })}
 
                     </button>
 
@@ -1750,16 +1755,17 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 // ============================================================
 
 function NoticiasTab({ transfers, rumors }) {
+  const { t } = useTranslation();
 
   const allNews = [
 
-    ...(transfers || []).map(t => ({
+    ...(transfers || []).map(tr => ({
 
       type: 'transfer',
 
-      text: `${t.player?.name} ficha por ${t.to?.name} desde ${t.from?.name} por ${formatTransferPrice(t.price)}`,
+      text: t('transfers.newsTransferText', { player: tr.player?.name, to: tr.to?.name, from: tr.from?.name, price: formatTransferPrice(tr.price) }),
 
-      time: t.date,
+      time: tr.date,
 
       icon: 'transfer'
 
@@ -1787,7 +1793,7 @@ function NoticiasTab({ transfers, rumors }) {
 
     <div className="tab-noticias">
 
-      <h3><Zap size={20} /> Feed de Noticias</h3>
+      <h3><Zap size={20} /> {t('transfers.newsFeed')}</h3>
 
       <div className="news-feed">
 
@@ -1803,7 +1809,7 @@ function NoticiasTab({ transfers, rumors }) {
 
               {news.reliability && (
 
-                <span className="reliability">{news.reliability}% fiable</span>
+                <span className="reliability">{t('transfers.reliable', { pct: news.reliability })}</span>
 
               )}
 
@@ -1817,7 +1823,7 @@ function NoticiasTab({ transfers, rumors }) {
 
           <div className="empty-state">
 
-            <p>No hay noticias recientes</p>
+            <p>{t('transfers.noRecentNews')}</p>
 
           </div>
 
@@ -1880,6 +1886,7 @@ const LEAGUE_GROUPS = (() => {
 
 
 function ExplorarTab({ leagueTeams, myTeamId, playerLeagueId, onSelectPlayer, blockedPlayers = [] }) {
+  const { t } = useTranslation();
 
   const [selectedLeague, setSelectedLeague] = useState(null);
 
@@ -1921,19 +1928,19 @@ function ExplorarTab({ leagueTeams, myTeamId, playerLeagueId, onSelectPlayer, bl
 
           <button className={`continent-tab ${continent === 'eu' ? 'active' : ''}`} onClick={() => setContinent('eu')}>
 
-            <span>🌍</span> Europa
+            <span>🌍</span> {t('transfers.europe')}
 
           </button>
 
           <button className={`continent-tab ${continent === 'sa' ? 'active' : ''}`} onClick={() => setContinent('sa')}>
 
-            <span>🌎</span> Sudamérica
+            <span>🌎</span> {t('transfers.southAmerica')}
 
           </button>
 
           <button className={`continent-tab ${continent === 'world' ? 'active' : ''}`} onClick={() => setContinent('world')}>
 
-            <span>🌏</span> Resto del Mundo
+            <span>🌏</span> {t('transfers.restOfWorld')}
 
           </button>
 
@@ -1957,7 +1964,7 @@ function ExplorarTab({ leagueTeams, myTeamId, playerLeagueId, onSelectPlayer, bl
 
                     <span className="country-card-name">{group.country}</span>
 
-                    <span className="country-card-meta">{group.leagues.length} liga{group.leagues.length > 1 ? 's' : ''} · {totalTeams} equipos</span>
+                    <span className="country-card-meta">{t('transfers.leaguesMeta', { count: group.leagues.length, plural: group.leagues.length > 1 ? 's' : '', teams: totalTeams })}</span>
 
                   </div>
 
@@ -2039,7 +2046,7 @@ function ExplorarTab({ leagueTeams, myTeamId, playerLeagueId, onSelectPlayer, bl
 
             </h3>
 
-            <p>{teams.length} equipos</p>
+            <p>{t('transfers.nTeams', { count: teams.length })}</p>
 
           </div>
 
@@ -2059,7 +2066,7 @@ function ExplorarTab({ leagueTeams, myTeamId, playerLeagueId, onSelectPlayer, bl
 
               type="text"
 
-              placeholder="Buscar equipo..."
+              placeholder={t('transfers.searchTeamPlaceholder')}
 
               value={searchQuery}
 
@@ -2117,7 +2124,7 @@ function ExplorarTab({ leagueTeams, myTeamId, playerLeagueId, onSelectPlayer, bl
 
                 </div>
 
-                {isMine && <span className="tc-mine">Tu equipo</span>}
+                {isMine && <span className="tc-mine">{t('transfers.yourTeam')}</span>}
 
               </div>
 
@@ -2159,7 +2166,7 @@ function ExplorarTab({ leagueTeams, myTeamId, playerLeagueId, onSelectPlayer, bl
 
           </h3>
 
-          <p>{selectedTeam.players?.length || 0} jugadores · Media {selectedTeam.avgOverall || '??'}</p>
+          <p>{t('transfers.playersAvgOvr', { count: selectedTeam.players?.length || 0, avg: selectedTeam.avgOverall || '??' })}</p>
 
         </div>
 
@@ -2201,15 +2208,15 @@ function ExplorarTab({ leagueTeams, myTeamId, playerLeagueId, onSelectPlayer, bl
 
       <div className="squad-table-header">
 
-        <span className="col-pos">POS</span>
+        <span className="col-pos">{t('transfers.posHeader')}</span>
 
-        <span className="col-name">JUGADOR</span>
+        <span className="col-name">{t('transfers.playerHeader')}</span>
 
-        <span className="col-age">EDAD</span>
+        <span className="col-age">{t('transfers.age').toUpperCase()}</span>
 
-        <span className="col-ovr">OVR</span>
+        <span className="col-ovr">{t('transfers.ovrHeader')}</span>
 
-        <span className="col-value">VALOR</span>
+        <span className="col-value">{t('transfers.playerValue').toUpperCase()}</span>
 
       </div>
 
@@ -2274,6 +2281,7 @@ function ExplorarTab({ leagueTeams, myTeamId, playerLeagueId, onSelectPlayer, bl
 // ============================================================
 
 function OjeadorTab({ myTeam, leagueTeams, scoutingLevel, budget, onSelectPlayer, facilities, dispatch, blockedPlayers = [] }) {
+  const { t } = useTranslation();
 
   const [suggestions, setSuggestions] = useState(null);
 
@@ -2347,7 +2355,7 @@ function OjeadorTab({ myTeam, leagueTeams, scoutingLevel, budget, onSelectPlayer
 
           </div>
 
-          <div className="level-badge">Nv. {scoutingLevel}</div>
+          <div className="level-badge">{t('transfers.level')} {scoutingLevel}</div>
 
         </div>
 
@@ -2359,7 +2367,7 @@ function OjeadorTab({ myTeam, leagueTeams, scoutingLevel, budget, onSelectPlayer
 
       <div className="position-selector">
 
-        <span className="position-selector__label">Posición a buscar:</span>
+        <span className="position-selector__label">{t('transfers.positionToSearch')}:</span>
 
         <div className="position-selector__chips">
 
@@ -2405,7 +2413,7 @@ function OjeadorTab({ myTeam, leagueTeams, scoutingLevel, budget, onSelectPlayer
 
             <RefreshCw size={18} className="spinning" />
 
-            Analizando mercado...
+            {t('transfers.analyzingMarket')}
 
           </>
 
@@ -2415,7 +2423,7 @@ function OjeadorTab({ myTeam, leagueTeams, scoutingLevel, budget, onSelectPlayer
 
             <Search size={18} />
 
-            {selectedPosition ? `Buscar ${POSITION_CHIPS.find(p => p.en === selectedPosition)?.es || ''}` : 'Buscar jugadores'}
+            {selectedPosition ? t('transfers.searchSpecific', { pos: POSITION_CHIPS.find(p => p.en === selectedPosition)?.es || '' }) : t('transfers.searchPlayers')}
 
           </>
 
@@ -2433,7 +2441,7 @@ function OjeadorTab({ myTeam, leagueTeams, scoutingLevel, budget, onSelectPlayer
 
           <div className="suggestions-header">
 
-            <h4><Star size={16} /> {suggestions.suggestions.length} jugadores encontrados</h4>
+            <h4><Star size={16} /> {t('transfers.playersFound', { count: suggestions.suggestions.length })}</h4>
 
           </div>
 
@@ -2465,7 +2473,7 @@ function OjeadorTab({ myTeam, leagueTeams, scoutingLevel, budget, onSelectPlayer
 
                     <span className="name">{player.name}</span>
 
-                    <span className="meta">{player.teamName} · {player.age} años</span>
+                    <span className="meta">{player.teamName} · {player.age} {t('transfers.years')}</span>
 
                   </div>
 
@@ -2520,6 +2528,7 @@ function OjeadorTab({ myTeam, leagueTeams, scoutingLevel, budget, onSelectPlayer
 // ============================================================
 
 function NewsTicker({ transfers }) {
+  const { t } = useTranslation();
 
   const tickerItems = (transfers || []).slice(0, 10).map(t =>
 
@@ -2531,7 +2540,7 @@ function NewsTicker({ transfers }) {
 
   if (tickerItems.length === 0) {
 
-    tickerItems.push('Mercado de fichajes activo | Mantente atento a las novedades');
+    tickerItems.push(t('transfers.tickerMsg'));
 
   }
 
@@ -2545,7 +2554,7 @@ function NewsTicker({ transfers }) {
 
         <Zap size={14} />
 
-        ÚLTIMA HORA
+        {t('transfers.breakingNews')}
 
       </div>
 
@@ -2578,6 +2587,7 @@ function NewsTicker({ transfers }) {
 // ============================================================
 
 function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers = [], scoutingDiscount = 0 }) {
+  const { t } = useTranslation();
 
   const { state } = useGame();
 
@@ -2998,7 +3008,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
 
 
-  // Enviar solicitud de cesión
+  // {t('transfers.sendLoanRequest')}
 
   const handleLoanRequest = () => {
     const check = canLoanPlayer(player, state, 'in');
@@ -3011,9 +3021,9 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
         payload: {
 
-          id: Date.now(), type: 'warning', title: 'ï¸ Cesión no posible',
+          id: Date.now(), type: 'warning', title: t('transfers.loanNotPossible'),
 
-          content: check.errors.join('. '), date: `Semana ${state.currentWeek}`
+          content: check.errors.join('. '), date: `${t('transfers.weekShort', { week: state.currentWeek })}`
 
         }
 
@@ -3031,11 +3041,11 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
         payload: {
 
-          id: Date.now(), type: 'warning', title: 'ï¸ Presupuesto insuficiente',
+          id: Date.now(), type: 'warning', title: t('transfers.insufficientBudgetTitle'),
 
-          content: `Necesitas ${formatTransferPrice(loanFee)} para la fee de cesión`,
+          content: t('transfers.insufficientForLoanFee', { amount: formatTransferPrice(loanFee) }),
 
-          date: `Semana ${state.currentWeek}`
+          date: `${t('transfers.weekShort', { week: state.currentWeek })}`
 
         }
 
@@ -3107,7 +3117,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
         setFailReason(
 
-          `${player.teamName} no acepta ceder a ${player.name}. ${evaluation.reasons.filter(r => !r.positive).map(r => r.text).join('. ')}`
+          t('transfers.loanDenied', { team: player.teamName, player: player.name, reasons: evaluation.reasons.filter(r => !r.positive).map(r => r.text).join('. ') })
 
         );
 
@@ -3125,7 +3135,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
   const handleRejectPlayerCounter = () => {
     setPlayerStatus('rejected');
     setFinalResult('failed');
-    setFailReason('No se llegó a un acuerdo con el jugador');
+    setFailReason(t('transfers.noAgreementReached'));
     setPlayerCounter(null);
   };
 
@@ -3147,7 +3157,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
       } else {
         setPlayerStatus('rejected');
         setFinalResult('failed');
-        setFailReason(response.reason || 'El jugador rechazó definitivamente');
+        setFailReason(response.reason || t('transfers.playerRejectedDefinitely'));
       }
     }, 1200);
   };
@@ -3242,13 +3252,13 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
         let reason;
 
-        if (salaryRatio < 0.8) reason = 'La oferta salarial es insuficiente';
+        if (salaryRatio < 0.8) reason = t('transfers.insufficientSalaryOffer');
 
-        else if (bonusRatio < 0.5) reason = 'Espera una prima de fichaje mayor';
+        else if (bonusRatio < 0.5) reason = t('transfers.wantsHigherBonus');
 
-        else if (buyerTierNum <= 1 && player.overall >= 80) reason = 'No le convence el nivel del equipo';
+        else if (buyerTierNum <= 1 && player.overall >= 80) reason = t('transfers.teamLevelNotConvincing');
 
-        else reason = 'No le convence la oferta global';
+        else reason = t('transfers.overallOfferNotConvincing');
 
 
 
@@ -3268,9 +3278,9 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
         if (baseSalary <= salaryOffer) {
 
-          if (buyerTierNum <= 1 && player.overall >= 80) reason = 'Necesita más dinero para compensar el nivel del club';
+          if (buyerTierNum <= 1 && player.overall >= 80) reason = t('transfers.needsMoreMoney');
 
-          else reason = 'Pide una mejora económica para aceptar el cambio';
+          else reason = t('transfers.wantsFinancialImprovement');
 
         }
 
@@ -3364,11 +3374,11 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
         type: 'transfer',
 
-        title: isFreeAgent ? 'Agente libre fichado' : 'Pre-contrato firmado',
+        title: isFreeAgent ? t('transfers.freeAgentSigned') : t('transfers.preContractSigned'),
 
-        content: `${player.name} es nuevo jugador. Prima: ${formatTransferPrice(signingBonus)}, Salario: ${formatTransferPrice(salaryOffer * 52)}/año`,
+        content: t('transfers.playerJoined', { name: player.name, bonus: formatTransferPrice(signingBonus), salary: formatTransferPrice(salaryOffer * 52) }),
 
-        date: `Semana ${state.currentWeek}`
+        date: `${t('transfers.weekShort', { week: state.currentWeek })}`
 
       }
 
@@ -3422,7 +3432,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                   <div className="result-icon"><Sparkles size={48} /></div>
 
-                  <h2>{negotiationMode === 'loan' ? '¡CESIÑ"N!' : '¡FICHAJE!'}</h2>
+                  <h2>{negotiationMode === 'loan' ? t('transfers.loanSuccess') : t('transfers.signingSuccess')}</h2>
 
                   <p className="player-name">{player.name}</p>
 
@@ -3440,15 +3450,15 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                     {negotiationMode === 'loan' ? (
 
-                      <span><Calendar size={16} /> Temporada</span>
+                      <span><Calendar size={16} /> {t('transfers.seasonLabel')}</span>
 
                     ) : (
 
                       <>
 
-                        <span><Calendar size={16} /> {contractYears} años</span>
+                        <span><Calendar size={16} /> {contractYears} {t('transfers.years')}</span>
 
-                        <span><TrendingUp size={16} /> {formatTransferPrice(salaryOffer * 52 * contractYears)} total</span>
+                        <span><TrendingUp size={16} /> {formatTransferPrice(salaryOffer * 52 * contractYears)} {t('transfers.totalWord')}</span>
 
                       </>
 
@@ -3458,7 +3468,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                   <button className="result-btn success" onClick={() => onClose(false)}>
 
-                    <Check size={18} /> Cerrar
+                    <Check size={18} /> {t('transfers.close')}
 
                   </button>
 
@@ -3470,17 +3480,17 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                   <div className="result-icon"><XCircle size={48} /></div>
 
-                  <h2>FICHAJE FALLIDO</h2>
+                  <h2>{t('transfers.signingFailed')}</h2>
 
                   <p className="fail-reason">{failReason}</p>
 
-                  <p className="block-notice"><Ban size={14} /> No podrás negociar con este jugador hasta la próxima temporada</p>
+                  <p className="block-notice"><Ban size={14} /> {t('transfers.blockedUntilNextSeason')}</p>
 
                   <div className="result-actions">
 
                     <button className="result-btn close" onClick={() => onClose(true)}>
 
-                      Cerrar
+                      {t('transfers.close')}
 
                     </button>
 
@@ -3528,7 +3538,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                 <Building2 size={14} />
 
-                {isFreeAgent ? <span className="free-badge">AGENTE LIBRE</span> : player.teamName}
+                {isFreeAgent ? <span className="free-badge">{t('transfers.freeAgent')}</span> : player.teamName}
 
               </div>
 
@@ -3548,15 +3558,15 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
               <div className="stat-row">
 
-                <span className="stat-label">Edad</span>
+                <span className="stat-label">{t('transfers.age')}</span>
 
-                <span className="stat-value">{player.age} años</span>
+                <span className="stat-value">{player.age} {t('transfers.years')}</span>
 
               </div>
 
               <div className="stat-row">
 
-                <span className="stat-label">Valor</span>
+                <span className="stat-label">{t('transfers.playerValue')}</span>
 
                 <span className="stat-value">{formatTransferPrice(marketValue)}</span>
 
@@ -3564,17 +3574,17 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
               <div className="stat-row">
 
-                <span className="stat-label">Salario</span>
+                <span className="stat-label">{t('transfers.salary')}</span>
 
-                <span className="stat-value">{formatTransferPrice(currentSalary * 52)}/año</span>
+                <span className="stat-value">{formatTransferPrice(currentSalary * 52)}/{t('transfers.year')}</span>
 
               </div>
 
               <div className="stat-row">
 
-                <span className="stat-label">Contrato</span>
+                <span className="stat-label">{t('transfers.contract')}</span>
 
-                <span className="stat-value">{isFreeAgent ? 'Sin contrato' : `${player.contractYears || 2} años`}</span>
+                <span className="stat-value">{isFreeAgent ? t('transfers.noContract') : `${player.contractYears || 2} ${t('transfers.years')}`}</span>
 
               </div>
 
@@ -3588,9 +3598,9 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
               <div className="personality-text">
 
-                <span className="personality-name">{personalityData?.name || 'Profesional'}</span>
+                <span className="personality-name">{personalityData?.nameKey ? t(personalityData.nameKey) : (personalityData?.name || t('transfers.persProfessional'))}</span>
 
-                <span className="personality-desc">{personalityData?.desc}</span>
+                <span className="personality-desc">{personalityData?.descKey ? t(personalityData.descKey) : personalityData?.desc}</span>
 
               </div>
 
@@ -3604,9 +3614,9 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
               <div className="difficulty-header">
 
-                <span>Dificultad</span>
+                <span>{t('transfers.difficulty')}</span>
 
-                <span style={{ color: difficulty.color }}>{difficulty.difficulty}</span>
+                <span style={{ color: difficulty.color }}>{difficulty.difficultyKey ? t(difficulty.difficultyKey) : difficulty.difficulty}</span>
 
               </div>
 
@@ -3624,7 +3634,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
               {tierDiff > 0 && (
 
-                <span className="tier-warning"><AlertTriangle size={14} /> Baja {tierDiff} nivel{tierDiff > 1 ? 'es' : ''}</span>
+                <span className="tier-warning"><AlertTriangle size={14} /> {t('transfers.tierDropWarning', { count: tierDiff, plural: tierDiff > 1 ? 'es' : '' })}</span>
 
               )}
 
@@ -3650,7 +3660,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                 <span className="meta">
 
-                  {isFreeAgent ? 'Agente Libre' : player.teamName} · {player.age} años · {formatTransferPrice(marketValue)}
+                  {isFreeAgent ? t('transfers.freeAgentLabel') : player.teamName} · {player.age} {t('transfers.years')} · {formatTransferPrice(marketValue)}
 
                 </span>
 
@@ -3676,7 +3686,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                 >
 
-                  Fichaje
+                  {t('transfers.signing')}
 
                 </button>
 
@@ -3688,7 +3698,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                 >
 
-                  Cesión
+                  {t('transfers.loanToggle')}
 
                 </button>
 
@@ -3702,7 +3712,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                   >
 
-                    Pre-contrato
+                    {t('transfers.preContractToggle')}
 
                   </button>
 
@@ -3726,19 +3736,19 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                     <Handshake size={18} />
 
-                    <span>Solicitar Cesión</span>
+                    <span>{t('transfers.requestLoan')}</span>
 
                   </div>
 
                   <div className={`status-badge ${clubStatus}`}>
 
-                    {clubStatus === 'pending' && <><Clock size={12} /> Pendiente</>}
+                    {clubStatus === 'pending' && <><Clock size={12} /> {t('transfers.pending')}</>}
 
-                    {clubStatus === 'negotiating' && <><Clock size={12} /> Negociando...</>}
+                    {clubStatus === 'negotiating' && <><Clock size={12} /> {t('transfers.negotiating')}</>}
 
-                    {clubStatus === 'accepted' && <><CheckCircle size={12} /> Aceptada</>}
+                    {clubStatus === 'accepted' && <><CheckCircle size={12} /> {t('transfers.accepted')}</>}
 
-                    {clubStatus === 'rejected' && <><XCircle size={12} /> Rechazada</>}
+                    {clubStatus === 'rejected' && <><XCircle size={12} /> {t('transfers.rejected')}</>}
 
                   </div>
 
@@ -3748,7 +3758,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                 <div className="offer-row">
 
-                  <label>Fee de cesión</label>
+                  <label>{t('transfers.loanFee')}</label>
 
                   <MoneyInput
 
@@ -3772,7 +3782,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                 <div className="contract-row">
 
-                  <label>% salario que pago</label>
+                  <label>{t('transfers.salaryPercentLabel')}</label>
 
                   <div className="contract-buttons">
 
@@ -3800,7 +3810,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                   <span className="salary-hint">
 
-                    Pagarías {formatTransferPrice(Math.round((player.salary || 50000) * (loanSalaryShare / 100) * 52))}/año del salario
+                    {t('transfers.salaryPayHint', { amount: formatTransferPrice(Math.round((player.salary || 50000) * (loanSalaryShare / 100) * 52)) })}
 
                   </span>
 
@@ -3810,7 +3820,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                 <div className="offer-row">
 
-                  <label>Opción de compra</label>
+                  <label>{t('transfers.purchaseOptionLabel')}</label>
 
                   {loanHasPurchaseOption ? (
 
@@ -3832,7 +3842,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                     <div style={{ padding: '0.6rem 1rem', background: 'rgba(255,255,255,0.04)', border: '1px solid var(--border, #2a4a6a)', borderRadius: '8px', color: 'rgba(255,255,255,0.5)', textAlign: 'center', fontSize: '0.9rem' }}>
 
-                      Sin opción de compra
+                      {t('transfers.noPurchaseOption')}
 
                     </div>
 
@@ -3848,7 +3858,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                       disabled={clubStatus !== 'pending'}
 
-                    >Sin opción</button>
+                    >{t('transfers.noOption')}</button>
 
                     <button
 
@@ -3858,7 +3868,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                       disabled={clubStatus !== 'pending'}
 
-                    >90% valor</button>
+                    >90% {t('transfers.value')}</button>
 
                     <button
 
@@ -3868,7 +3878,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                       disabled={clubStatus !== 'pending'}
 
-                    >100% valor</button>
+                    >100% {t('transfers.value')}</button>
 
                   </div>
 
@@ -3878,7 +3888,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                 <div className="probability-row">
 
-                  <span className="prob-label">Probabilidad estimada</span>
+                  <span className="prob-label">{t('transfers.estimatedProbability')}</span>
 
                   <div className="prob-bar-container">
 
@@ -3912,9 +3922,9 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                     {
 
-                     budget < loanFee ? `Presupuesto insuficiente (${formatTransferPrice(budget)})` :
+                     budget < loanFee ? t('transfers.insufficientBudget', { amount: formatTransferPrice(budget) }) :
 
-                     'Enviar solicitud de cesión'}
+                     t('transfers.sendLoanRequest')}
 
                   </button>
 
@@ -3928,7 +3938,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                     <RefreshCw size={18} className="spinning" />
 
-                    <span>Esperando respuesta del club...</span>
+                    <span>{t('transfers.waitingClubResponse')}</span>
 
                   </div>
 
@@ -3952,9 +3962,9 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                     <Target size={18} />
 
-                    <span>Preparar Oferta</span>
+                    <span>{t('transfers.prepareOffer')}</span>
 
-                    {isRivalry && <span className="rivalry-badge">⚔️ Rival directo</span>}
+                    {isRivalry && <span className="rivalry-badge">⚔️ {t('transfers.directRival')}</span>}
 
                   </div>
 
@@ -3966,7 +3976,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                 <div className="offer-row">
 
-                  <label><Building2 size={14} /> Traspaso al club</label>
+                  <label><Building2 size={14} /> {t('transfers.transferToClub')}</label>
 
                   <MoneyInput
 
@@ -3988,7 +3998,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                 <div className="probability-row">
 
-                  <span className="prob-label"><Building2 size={12} /> Club acepta</span>
+                  <span className="prob-label"><Building2 size={12} /> {t('transfers.clubAccepts')}</span>
 
                   <div className="prob-bar-container">
 
@@ -4010,7 +4020,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                 <div className="offer-row">
 
-                  <label><UserCheck size={14} /> Salario anual</label>
+                  <label><UserCheck size={14} /> {t('transfers.annualSalary')}</label>
 
                   <MoneyInput
 
@@ -4022,13 +4032,13 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                     min={0}
 
-                    suffix="/año"
+                    suffix={`/${t('transfers.year')}`}
 
                   />
 
                   <span className="salary-hint">
 
-                    Mínimo estimado: {formatTransferPrice(requiredSalary * 52)}/año
+                    {t('transfers.minEstimated', { amount: formatTransferPrice(requiredSalary * 52) })}
 
                   </span>
 
@@ -4038,7 +4048,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                 <div className="contract-row">
 
-                  <label>Duración contrato</label>
+                  <label>{t('transfers.contractDuration')}</label>
 
                   <div className="contract-buttons">
 
@@ -4054,7 +4064,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                       >
 
-                        {y} años
+                        {y} {t('transfers.years')}
 
                       </button>
 
@@ -4068,7 +4078,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                 <div className="probability-row">
 
-                  <span className="prob-label"><UserCheck size={12} /> Jugador acepta</span>
+                  <span className="prob-label"><UserCheck size={12} /> {t('transfers.playerAccepts')}</span>
 
                   <div className="prob-bar-container">
 
@@ -4088,7 +4098,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                   <div className="summary-line">
 
-                    <span>💰 Coste total traspaso</span>
+                    <span>💰 {t('transfers.totalTransferCost')}</span>
 
                     <span className="amount">{formatTransferPrice(offerAmount)}</span>
 
@@ -4096,7 +4106,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                   <div className="summary-line">
 
-                    <span>📋 Coste total contrato</span>
+                    <span>📋 {t('transfers.totalContractCost')}</span>
 
                     <span className="amount">{formatTransferPrice(salaryOffer * 52 * contractYears)}</span>
 
@@ -4104,7 +4114,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                   <div className="summary-line total">
 
-                    <span>📊 Inversión total</span>
+                    <span>📊 {t('transfers.totalInvestment')}</span>
 
                     <span className="amount">{formatTransferPrice(offerAmount + salaryOffer * 52 * contractYears)}</span>
 
@@ -4156,11 +4166,11 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                       payload: {
 
-                        id: Date.now(), type: 'transfer', title: '📨 Oferta enviada',
+                        id: Date.now(), type: 'transfer', title: t('transfers.offerSentTitle'),
 
-                        content: `Oferta por ${player.name} (${player.teamName}): ${formatTransferPrice(offerAmount)} + ${formatTransferPrice(salaryOffer * 52)}/año`,
+                        content: t('transfers.offerSentContent', { name: player.name, team: player.teamName, amount: formatTransferPrice(offerAmount), salary: formatTransferPrice(salaryOffer * 52) }),
 
-                        date: `Semana ${state.currentWeek}`
+                        date: `${t('transfers.weekShort', { week: state.currentWeek })}`
 
                       }
 
@@ -4174,11 +4184,11 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                 >
 
-                  <ArrowRight size={18} /> Enviar oferta
+                  <ArrowRight size={18} /> {t('transfers.sendOffer')}
 
                 </button>
 
-                <p className="offer-hint">⏳ La respuesta llegará tras simular un partido. El importe se reserva de tu presupuesto.</p>
+                <p className="offer-hint">⏳ {t('transfers.responseAfterMatch')}</p>
 
               </div>
 
@@ -4198,23 +4208,23 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                     <UserCheck size={18} />
 
-                    <span>{isFreeAgent ? 'Negociación con Agente Libre' : 'Pre-contrato'}</span>
+                    <span>{isFreeAgent ? t('transfers.freeAgentNegotiation') : t('transfers.preContractSection')}</span>
 
                   </div>
 
                   <div className={`status-badge ${playerStatus}`}>
 
-                    {playerStatus === 'pending' && <><Clock size={12} /> Pendiente</>}
+                    {playerStatus === 'pending' && <><Clock size={12} /> {t('transfers.pending')}</>}
 
-                    {playerStatus === 'locked' && <><Clock size={12} /> Pendiente</>}
+                    {playerStatus === 'locked' && <><Clock size={12} /> {t('transfers.pending')}</>}
 
-                    {playerStatus === 'negotiating' && <><Clock size={12} /> Negociando...</>}
+                    {playerStatus === 'negotiating' && <><Clock size={12} /> {t('transfers.negotiating')}</>}
 
-                    {playerStatus === 'accepted' && <><CheckCircle size={12} /> Aceptado</>}
+                    {playerStatus === 'accepted' && <><CheckCircle size={12} /> {t('transfers.accepted')}</>}
 
-                    {playerStatus === 'rejected' && <><XCircle size={12} /> Rechazado</>}
+                    {playerStatus === 'rejected' && <><XCircle size={12} /> {t('transfers.rejected')}</>}
 
-                    {playerStatus === 'counter' && <><RefreshCw size={12} /> Contraoferta</>}
+                    {playerStatus === 'counter' && <><RefreshCw size={12} /> {t('transfers.counterOffer')}</>}
 
                   </div>
 
@@ -4226,9 +4236,9 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                   <div className="free-agent-info">
 
-                    <span className="free-badge-large">AGENTE LIBRE</span>
+                    <span className="free-badge-large">{t('transfers.freeAgent')}</span>
 
-                    <p>No hay que negociar con ningún club. Negocia directamente con el jugador ofreciendo una prima de fichaje y un salario.</p>
+                    <p>{t('transfers.freeAgentInfo')}</p>
 
                   </div>
 
@@ -4240,9 +4250,9 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                   <div className="free-agent-info pre-contract-info">
 
-                    <span className="pre-contract-badge">PRE-CONTRATO</span>
+                    <span className="pre-contract-badge">{t('transfers.preContractBadge')}</span>
 
-                    <p>Su contrato expira pronto. Puedes negociar directamente con él sin pagar traspaso. Se unirá a tu equipo cuando finalice su contrato.</p>
+                    <p>{t('transfers.preContractInfo')}</p>
 
                   </div>
 
@@ -4252,7 +4262,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                 <div className="offer-row">
 
-                  <label>Prima de fichaje</label>
+                  <label>{t('transfers.signingBonus')}</label>
 
                   <MoneyInput
 
@@ -4268,7 +4278,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                   />
 
-                  <span className="salary-hint">Sugerido: {formatTransferPrice(Math.round(marketValue * (isFreeAgent ? 0.15 : 0.1)))}</span>
+                  <span className="salary-hint">{t('transfers.suggested', { amount: formatTransferPrice(Math.round(marketValue * (isFreeAgent ? 0.15 : 0.1))) })}</span>
 
                 </div>
 
@@ -4276,7 +4286,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                 <div className="offer-row">
 
-                  <label>Salario anual</label>
+                  <label>{t('transfers.annualSalary')}</label>
 
                   <MoneyInput
 
@@ -4290,19 +4300,19 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                     disabled={playerStatus === 'negotiating' || playerStatus === 'accepted'}
 
-                    suffix="/año"
+                    suffix={`/${t('transfers.year')}`}
 
                   />
 
                   <span className="formatted-amount total-cost">
 
-                    Coste total: {formatTransferPrice(salaryOffer * 52 * contractYears)} ({contractYears} año{contractYears > 1 ? 's' : ''})
+                    {t('transfers.totalCostFormatted', { amount: formatTransferPrice(salaryOffer * 52 * contractYears), years: contractYears, plural: contractYears > 1 ? 's' : '' })}
 
                   </span>
 
                   <span className="salary-hint">
 
-                    Mínimo estimado: {formatTransferPrice(Math.round(requiredSalary * (isFreeAgent ? 1.3 : 1.15) * 52))}/año
+                    {t('transfers.minEstimated', { amount: formatTransferPrice(Math.round(requiredSalary * (isFreeAgent ? 1.3 : 1.15) * 52)) })}
 
                   </span>
 
@@ -4312,7 +4322,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                 <div className="contract-row">
 
-                  <label>Duración contrato</label>
+                  <label>{t('transfers.contractDuration')}</label>
 
                   <div className="contract-buttons">
 
@@ -4330,7 +4340,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                       >
 
-                        {y} años
+                        {y} {t('transfers.years')}
 
                       </button>
 
@@ -4344,7 +4354,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                 <div className="probability-row">
 
-                  <span className="prob-label">Probabilidad de aceptación</span>
+                  <span className="prob-label">{t('transfers.acceptanceProbability')}</span>
 
                   <div className="prob-bar-container">
 
@@ -4368,19 +4378,19 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                   <div className="counter-offer-box player-counter">
 
-                    <span className="counter-label">Contraoferta del jugador:</span>
+                    <span className="counter-label">{t('transfers.playerCounterLabel')}</span>
 
-                    <span className="counter-amount">{formatTransferPrice(playerCounter.salary * 52)}/año</span>
+                    <span className="counter-amount">{formatTransferPrice(playerCounter.salary * 52)}/{t('transfers.year')}</span>
 
-                    <span className="counter-total">Coste total: {formatTransferPrice(playerCounter.salary * 52 * contractYears)}</span>
+                    <span className="counter-total">{t('transfers.counterTotalCost', { amount: formatTransferPrice(playerCounter.salary * 52 * contractYears) })}</span>
 
                     <p className="counter-reason">{playerCounter.reason}</p>
 
                     <div className="counter-actions">
 
-                      <button className="btn-counter-reject" onClick={handleRejectPlayerCounter}>Rechazar</button>
+                      <button className="btn-counter-reject" onClick={handleRejectPlayerCounter}>{t('transfers.reject')}</button>
 
-                      <button className="btn-counter-accept" onClick={handleCounterPlayerOffer}>Contraoferta</button>
+                      <button className="btn-counter-accept" onClick={handleCounterPlayerOffer}>{t('transfers.counterOfferStatus')}</button>
 
                       <button className="btn-counter-accept" onClick={() => {
 
@@ -4394,7 +4404,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                         setPlayerCounter(null);
 
-                      }}>Aceptar</button>
+                      }}>{t('transfers.accept')}</button>
 
                     </div>
 
@@ -4406,9 +4416,9 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                 <div className="total-cost-row">
 
-                  <span className="cost-label">Coste total</span>
+                  <span className="cost-label">{t('transfers.totalCostLabel')}</span>
 
-                  <span className="cost-value">{formatTransferPrice(signingBonus)} + {formatTransferPrice(salaryOffer * 52)}/año Ñ- {contractYears} años</span>
+                  <span className="cost-value">{formatTransferPrice(signingBonus)} + {formatTransferPrice(salaryOffer * 52)}/{t('transfers.year')} × {contractYears} {t('transfers.years')}</span>
 
                 </div>
 
@@ -4426,7 +4436,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                   >
 
-                    {budget < signingBonus ? `Presupuesto insuficiente (${formatTransferPrice(budget)})` : isFreeAgent ? 'Presentar oferta' : 'Ofrecer pre-contrato'}
+                    {budget < signingBonus ? t('transfers.insufficientBudget', { amount: formatTransferPrice(budget) }) : isFreeAgent ? t('transfers.presentOffer') : t('transfers.offerPreContract')}
 
                   </button>
 
@@ -4440,7 +4450,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                     <RefreshCw size={18} className="spinning" />
 
-                    <span>El jugador evalúa tu oferta...</span>
+                    <span>{t('transfers.playerEvaluating')}</span>
 
                   </div>
 

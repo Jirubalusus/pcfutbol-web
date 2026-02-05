@@ -26,7 +26,7 @@ class Stadium3DErrorBoundary extends Component {
       return (
         <div className="stadium-3d-fallback">
           <span><Building2 size={20} /></span>
-          <p>{t('stadium.view3dNotAvailable')}</p>
+          <p>3D view not available</p>
         </div>
       );
     }
