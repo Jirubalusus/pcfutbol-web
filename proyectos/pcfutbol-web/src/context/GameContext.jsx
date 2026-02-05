@@ -703,6 +703,12 @@ function gameReducer(state, action) {
         return { ...team, players: [...active, ...sons] };
       });
 
+      // Calcular dinero final tras temporada
+      const seasonEndMoney = state.money + moneyChange + (state.stadium?.accumulatedTicketIncome ?? 0) + (state.stadium?.seasonTicketIncomeCollected ?? 0);
+
+      // Check bancarrota al final de temporada
+      const isBankruptAtSeasonEnd = seasonEndMoney < 0;
+
       return {
         ...state,
         currentSeason: state.currentSeason + 1,
@@ -715,7 +721,12 @@ function gameReducer(state, action) {
         lineup: ensureFullLineup(cleanedLineup, finalPlayers, state.formation),
         convocados: (state.convocados || []).filter(name => playerNames.has(name)),
         // Cobrar ingresos acumulados de taquilla + abonados al final de temporada
-        money: state.money + moneyChange + (state.stadium?.accumulatedTicketIncome ?? 0) + (state.stadium?.seasonTicketIncomeCollected ?? 0),
+        money: seasonEndMoney,
+        // Despido por bancarrota si el dinero es negativo tras temporada
+        managerFired: isBankruptAtSeasonEnd || state.managerFired,
+        managerFiredReason: isBankruptAtSeasonEnd
+          ? 'managerFired.bankruptReason'
+          : state.managerFiredReason,
         // Actualizar estadio: cobrar acumulado, resetear para nueva temporada, desbloquear precio
         stadium: {
           ...state.stadium,
@@ -790,6 +801,8 @@ function gameReducer(state, action) {
           const l = teamStats?.lost || 0;
           return {
           ...state.contrarrelojData,
+          // Si bancarrota al final de temporada, marcar como derrota en contrarreloj
+          ...(isBankruptAtSeasonEnd && !state.contrarrelojData.finished ? { won: false, finished: true, loseReason: 'bankrupt' } : {}),
           seasonsPlayed: (state.contrarrelojData.seasonsPlayed || 1) + 1,
           totalWins: (state.contrarrelojData.totalWins || 0) + w,
           totalDraws: (state.contrarrelojData.totalDraws || 0) + d,

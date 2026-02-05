@@ -39,7 +39,9 @@ export default function ManagerFired() {
         <h2>{state.team?.name}</h2>
         
         <p className="manager-fired__reason">
-          {state.managerFiredReason || t('managerFired.defaultReason')}
+          {state.managerFiredReason 
+            ? (state.managerFiredReason.startsWith('managerFired.') ? t(state.managerFiredReason) : state.managerFiredReason)
+            : t('managerFired.defaultReason')}
         </p>
         
         <div className="manager-fired__stats">

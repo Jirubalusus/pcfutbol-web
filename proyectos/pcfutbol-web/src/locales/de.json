@@ -1,4 +1,4 @@
-{
+﻿{
   "common": {
     "save": "Speichern",
     "cancel": "Abbrechen",
@@ -1217,7 +1217,8 @@
     "defaultReason": "Der Vorstand hat beschlossen, Sie von Ihren Trainerpflichten zu entbinden.",
     "balance": "Bilanz",
     "confidence": "Vorstandsvertrauen",
-    "backToMenu": "Zurück zum Hauptmenü"
+    "backToMenu": "Zurück zum Hauptmenü",
+    "bankruptReason": "Der Vorstand hat Sie entlassen, weil Sie den Verein in den Bankrott getrieben haben."
   },
   "auth": {
     "accountCreated": "Konto erstellt! überprüfen Sie Ihre E-Mail zur Kontobestátigung.",
@@ -1383,3 +1384,5 @@
     "directChampionShort": "{{winner}} ist direkter Meister."
   }
 }
+
+

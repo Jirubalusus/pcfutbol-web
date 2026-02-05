@@ -1,4 +1,4 @@
-{
+﻿{
   "common": {
     "save": "Guardar",
     "cancel": "Cancelar",
@@ -1217,7 +1217,8 @@
     "defaultReason": "A diretoria decidiu dispensar seus serviáos como treinador.",
     "balance": "Saldo",
     "confidence": "Confiança da diretoria",
-    "backToMenu": "Voltar ao Menu Principal"
+    "backToMenu": "Voltar ao Menu Principal",
+    "bankruptReason": "A diretoria te demitiu por levar o clube à falência."
   },
   "auth": {
     "accountCreated": "Conta criada! Verifique seu email para ativar sua conta.",
@@ -1383,3 +1384,5 @@
     "directChampionShort": "{{winner}} é campeão direto."
   }
 }
+
+

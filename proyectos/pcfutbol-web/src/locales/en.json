@@ -1337,7 +1337,8 @@
     "defaultReason": "The board has decided to relieve you of your coaching duties.",
     "balance": "Record",
     "confidence": "Board confidence",
-    "backToMenu": "Back to Main Menu"
+    "backToMenu": "Back to Main Menu",
+    "bankruptReason": "The board has fired you for driving the club into bankruptcy."
   },
   "auth": {
     "accountCreated": "Account created! Check your email to verify your account.",

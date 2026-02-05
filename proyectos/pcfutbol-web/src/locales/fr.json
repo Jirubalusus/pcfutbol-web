@@ -1,4 +1,4 @@
-{
+﻿{
   "common": {
     "save": "Sauvegarder",
     "cancel": "Annuler",
@@ -1218,7 +1218,8 @@
     "defaultReason": "Le conseil d'administration a décid· de vous relever de vos fonctions d'entraéneur.",
     "balance": "Bilan",
     "confidence": "Confiance du conseil",
-    "backToMenu": "Retour au Menu Principal"
+    "backToMenu": "Retour au Menu Principal",
+    "bankruptReason": "La direction vous a licencié pour avoir mené le club à la faillite."
   },
   "auth": {
     "accountCreated": "Compte cré· ! Vérifiez votre email pour activer votre compte.",
@@ -1384,3 +1385,5 @@
     "directChampionShort": "{{winner}} est champion direct."
   }
 }
+
+

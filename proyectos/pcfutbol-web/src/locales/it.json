@@ -1,4 +1,4 @@
-{
+﻿{
   "common": {
     "save": "Salva",
     "cancel": "Annulla",
@@ -1217,7 +1217,8 @@
     "defaultReason": "Il consiglio di amministrazione ha deciso di sollevarti dai tuoi doveri di allenatore.",
     "balance": "Bilancio",
     "confidence": "Fiducia del consiglio",
-    "backToMenu": "Torna al Menu Principale"
+    "backToMenu": "Torna al Menu Principale",
+    "bankruptReason": "La dirigenza ti ha licenziato per aver portato il club alla bancarotta."
   },
   "auth": {
     "accountCreated": "Account creato! Controlla la tua email per verificare il tuo account.",
@@ -1383,3 +1384,5 @@
     "directChampionShort": "{{winner}} è campione diretto."
   }
 }
+
+

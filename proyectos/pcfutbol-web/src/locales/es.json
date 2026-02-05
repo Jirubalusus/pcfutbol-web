@@ -1337,7 +1337,8 @@
     "defaultReason": "La junta directiva ha decidido prescindir de sus servicios como entrenador.",
     "balance": "Balance",
     "confidence": "Confianza de la directiva",
-    "backToMenu": "Volver al Men· Principal"
+    "backToMenu": "Volver al Menú Principal",
+    "bankruptReason": "La directiva te ha destituido por llevar al club a la bancarrota."
   },
   "auth": {
     "accountCreated": "¡Cuenta creada! Revisa tu email para verificar tu cuenta.",
