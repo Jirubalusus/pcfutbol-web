@@ -342,6 +342,8 @@ export default function TransfersV2() {
 
             myTeam={myTeam}
 
+            preseasonPhase={state.preseasonPhase}
+
           />
 
         )}
@@ -528,7 +530,7 @@ export default function TransfersV2() {
 
 // ============================================================
 
-function ResumenTab({ windowStatus, summary, myTeam }) {
+function ResumenTab({ windowStatus, summary, myTeam, preseasonPhase }) {
   const { t } = useTranslation();
 
   return (
@@ -551,7 +553,7 @@ function ResumenTab({ windowStatus, summary, myTeam }) {
 
           <p>
 
-            {state.preseasonPhase
+            {preseasonPhase
 
               ? t('transfers.preseasonMsg')
 

@@ -182,7 +182,7 @@ function simulateMatchLegacy(homeTeamId, awayTeamId, homeTeamData, awayTeamData,
 }
 
 // Simulación detallada minuto a minuto
-function simulateMatchMinuteByMinute(homeRating, awayRating, homeStrength, awayStrength, homeTeam, awayTeam, homeTactic, awayTactic, grassCondition = 100) {
+function simulateMatchMinuteByMinute(homeRating, awayRating, homeStrength, awayStrength, homeTeam, awayTeam, homeTactic, awayTactic, grassCondition = 100, options = {}) {
   const events = [];
   let homeScore = 0;
   let awayScore = 0;

@@ -196,7 +196,7 @@ export const ligue1Teams = [
   },
   {
     id: 'nice',
-    name: 'Côte d'Azur OGC',
+    name: "Côte d'Azur OGC",
     players: [
       { name: 'Yannick Delacroix', position: 'POR', rating: 77 },
       { name: 'Mathieu Dubois', position: 'POR', rating: 74 },

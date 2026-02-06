@@ -60,7 +60,7 @@ export const premierTeams = {
       createPlayer('J. Shelton', 'DFC', 31, 18, 82),
       createPlayer('N. Aalbers', 'DFC', 30, 18, 76),
       createPlayer('Raí Alcântara', 'LB', 24, 40, 82),
-      createPlayer('Nathan Osborne'Reilly', 'LB', 20, 40),
+      createPlayer("Nathan Osborne'Reilly", 'LB', 20, 40),
       createPlayer('M. Ndiaye', 'RB', 27, 38, 82),
       createPlayer('Raí Lacerda', 'RB', 21, 35, 84),
       createPlayer('Rachid', 'MCD', 29, 75, 85),
