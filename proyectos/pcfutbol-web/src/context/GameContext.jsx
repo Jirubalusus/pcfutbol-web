@@ -87,9 +87,13 @@ function getPlayerMarketValueForOffers(player) {
 }
 
 // Check if we should use local storage (dev mode or ?local=true)
+// On Capacitor (native), always use Firebase even though hostname is localhost
+const isCapacitor = typeof window !== 'undefined' && window.Capacitor && window.Capacitor.isNativePlatform;
 const USE_LOCAL_STORAGE =
-  window.location.search.includes('local=true') ||
-  window.location.hostname === 'localhost';
+  !isCapacitor && (
+    window.location.search.includes('local=true') ||
+    window.location.hostname === 'localhost'
+  );
 
 const initialState = {
   // User & Save

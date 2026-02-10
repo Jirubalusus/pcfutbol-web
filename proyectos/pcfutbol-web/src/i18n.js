@@ -1,5 +1,6 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
+import { saveLanguagePreference, loadLanguagePreference } from './firebase/authService';
 
 // Importar archivos de traducción
 import es from './locales/es.json';
@@ -18,8 +19,18 @@ const resources = {
   it: { translation: it }
 };
 
-// Obtener idioma guardado del localStorage o usar español por defecto
-const savedLanguage = localStorage.getItem('language') || 'es';
+// Idiomas soportados
+const supportedLngs = ['es', 'en', 'fr', 'de', 'pt', 'it'];
+
+// Detectar idioma del dispositivo/navegador
+function detectDeviceLanguage() {
+  const nav = navigator.language || navigator.userLanguage || 'es';
+  const code = nav.split('-')[0].toLowerCase(); // "es-ES" → "es"
+  return supportedLngs.includes(code) ? code : 'es';
+}
+
+// Obtener idioma guardado del localStorage o usar el del dispositivo
+const savedLanguage = localStorage.getItem('language') || detectDeviceLanguage();
 
 i18n
   .use(initReactI18next) // pasa i18n hacia react-i18next
@@ -41,9 +52,18 @@ i18n
     updateMissing: false,
   });
 
-// Escuchar cambios de idioma para guardar en localStorage
+// Escuchar cambios de idioma para guardar en localStorage + Firebase
 i18n.on('languageChanged', (lng) => {
   localStorage.setItem('language', lng);
+  saveLanguagePreference(lng); // guarda en Firebase si hay usuario logueado
 });
+
+// Cargar idioma de Firebase cuando el usuario hace login
+export async function syncLanguageFromFirebase() {
+  const lang = await loadLanguagePreference();
+  if (lang && supportedLngs.includes(lang)) {
+    i18n.changeLanguage(lang);
+  }
+}
 
 export default i18n;

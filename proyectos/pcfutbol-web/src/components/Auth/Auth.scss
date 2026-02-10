@@ -268,6 +268,80 @@
     flex-direction: column;
     gap: 12px;
   }
+
+
+// Google Play Games button (Android)
+  &__playgames {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px 24px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+    color: white;
+    margin-bottom: 24px;
+    min-height: 56px;
+
+    svg {
+      flex-shrink: 0;
+    }
+
+    &:hover:not(:disabled) {
+      background: linear-gradient(135deg, #5CBF60 0%, #3E8D42 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
+    }
+
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+  }
+
+  &__android-info {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+  }
+
+  &__android-benefits {
+    margin-top: 24px;
+    padding: 16px;
+    background: rgba(76, 175, 80, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(76, 175, 80, 0.2);
+
+    h4 {
+      color: #4CAF50;
+      margin: 0 0 12px 0;
+      font-size: 14px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 13px;
+        padding: 6px 0;
+      }
+    }
+  }
 }
 
 @media (max-width: 768px) {
@@ -289,6 +363,7 @@
 
     &__google,
     &__guest,
+    &__playgames,
     &__btn {
       min-height: 48px;
     }

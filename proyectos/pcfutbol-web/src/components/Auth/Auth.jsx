@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Mail, Lock, FileText, Key } from 'lucide-react';
+import { Mail, Lock, FileText, Key, Gamepad2 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
+import { isAndroid, isNative } from '../../services/platformAuth';
 import './Auth.scss';
 
 export default function Auth({ onBack }) {
@@ -13,10 +14,12 @@ export default function Auth({ onBack }) {
   const [localError, setLocalError] = useState('');
   const [success, setSuccess] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [platform, setPlatform] = useState('web');
 
   const { 
     login, 
     loginGoogle,
+    loginPlayGames,
     register, 
     sendPasswordReset, 
     resendVerification,
@@ -26,6 +29,11 @@ export default function Auth({ onBack }) {
     user,
     isEmailVerified
   } = useAuth();
+
+  // Always use web auth (Google + Email) - Play Games requires extra setup
+  useEffect(() => {
+    setPlatform('web');
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -71,6 +79,20 @@ export default function Auth({ onBack }) {
     setIsLoading(false);
   };
 
+  const handlePlayGamesLogin = async () => {
+    setLocalError('');
+    clearError();
+    setIsLoading(true);
+    
+    try {
+      await loginPlayGames();
+    } catch (err) {
+      setLocalError(err.message || 'Error al conectar con Google Play Games');
+    }
+    
+    setIsLoading(false);
+  };
+
   const handleResendVerification = async () => {
     setIsLoading(true);
     try {
@@ -91,7 +113,53 @@ export default function Auth({ onBack }) {
     setIsLoading(false);
   };
 
-  // Verification pending screen
+  // ANDROID: Show only Google Play Games login
+  if (platform === 'android') {
+    return (
+      <div className="auth">
+        <div className="auth__card">
+          <button className="auth__back" onClick={onBack}>← {t('common.back')}</button>
+          
+          <div className="auth__header">
+            <div className="auth__icon"><Gamepad2 size={22} /></div>
+            <h2>{t('auth.login')}</h2>
+          </div>
+
+          <div className="auth__android-info">
+            <p>Inicia sesión con tu cuenta de Google Play Games para guardar tu progreso y competir en los rankings.</p>
+          </div>
+
+          {(error || localError) && (
+            <div className="auth__error">{error || localError}</div>
+          )}
+
+          <button 
+            className="auth__playgames"
+            onClick={handlePlayGamesLogin}
+            disabled={isLoading}
+          >
+            <svg viewBox="0 0 24 24" width="24" height="24">
+              <path fill="#4CAF50" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+            <span>
+              {isLoading ? 'Conectando...' : 'Iniciar con Google Play Games'}
+            </span>
+          </button>
+
+          <div className="auth__android-benefits">
+            <h4>Beneficios:</h4>
+            <ul>
+              <li>✅ Guardado en la nube automático</li>
+              <li>🏆 Logros y rankings globales</li>
+              <li>🔄 Sincroniza entre dispositivos</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Verification pending screen (Web/PC only)
   if (mode === 'verify' || (user && !isEmailVerified)) {
     return (
       <div className="auth">
@@ -139,6 +207,7 @@ export default function Auth({ onBack }) {
     );
   }
 
+  // WEB/PC: Show full auth options (Google + Email/Password)
   return (
     <div className="auth">
       <div className="auth__card">

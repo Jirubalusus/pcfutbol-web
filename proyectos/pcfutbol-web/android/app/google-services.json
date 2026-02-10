@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "664376263748",
+    "project_id": "pcfutbol-web",
+    "storage_bucket": "pcfutbol-web.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:664376263748:android:1ea84a2964bef95db5e811",
+        "android_client_info": {
+          "package_name": "com.jirubalusus.pcgaffer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "664376263748-9s0h5cdt4od2q3eb5gf4eo2kki71vpdn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTxjfwIchjsd9wzb0vU9ViVTtYHWipJds"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "664376263748-9s0h5cdt4od2q3eb5gf4eo2kki71vpdn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

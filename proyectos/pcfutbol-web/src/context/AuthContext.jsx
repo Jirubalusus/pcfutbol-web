@@ -2,13 +2,15 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import { 
   onAuthChange, 
   loginWithEmail, 
-  loginWithGoogle, 
+  loginWithGoogle,
   registerWithEmail,
   logout as authLogout,
   resetPassword,
   resendVerificationEmail,
   refreshUser
 } from '../firebase/authService';
+import { PlatformAuth, isAndroid } from '../services/platformAuth';
+import { syncLanguageFromFirebase } from '../i18n';
 
 const AuthContext = createContext();
 
@@ -18,9 +20,13 @@ export function AuthProvider({ children }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const unsubscribe = onAuthChange((firebaseUser) => {
+    const unsubscribe = onAuthChange(async (firebaseUser) => {
       setUser(firebaseUser);
       setLoading(false);
+      if (firebaseUser) {
+        // Cargar idioma guardado en Firebase
+        await syncLanguageFromFirebase();
+      }
     });
 
     return () => unsubscribe();
@@ -43,7 +49,31 @@ export function AuthProvider({ children }) {
       const user = await loginWithGoogle();
       return user;
     } catch (err) {
-      setError(getErrorMessage(err.code));
+      console.error('Google login error:', err);
+      setError(err.code ? getErrorMessage(err.code) : (err.message || 'Error con Google Sign-In'));
+      throw err;
+    }
+  };
+
+  // Login with Google Play Games (Android only)
+  const loginPlayGames = async () => {
+    setError(null);
+    try {
+      const player = await PlatformAuth.signInWithPlayGames();
+      // Create a user-like object from Play Games player
+      const playGamesUser = {
+        uid: `playgames_${player.playerId}`,
+        displayName: player.displayName || 'Jugador',
+        email: null,
+        emailVerified: true, // Play Games accounts are verified
+        photoURL: player.iconImageUrl || null,
+        isPlayGames: true,
+        playerId: player.playerId
+      };
+      setUser(playGamesUser);
+      return playGamesUser;
+    } catch (err) {
+      setError(err.message || 'Error al conectar con Google Play Games');
       throw err;
     }
   };
@@ -54,7 +84,8 @@ export function AuthProvider({ children }) {
       const user = await registerWithEmail(email, password, displayName);
       return user;
     } catch (err) {
-      setError(getErrorMessage(err.code));
+      console.error('Register error:', err);
+      setError(err.code ? getErrorMessage(err.code) : (err.message || 'Error al registrar'));
       throw err;
     }
   };
@@ -124,8 +155,11 @@ export function AuthProvider({ children }) {
     isAuthenticated: !!user,
     isEmailVerified: user?.emailVerified || false,
     isGuest: user?.isGuest || false,
+    isPlayGames: user?.isPlayGames || false,
+    isAndroid: isAndroid(),
     login,
     loginGoogle,
+    loginPlayGames,
     loginAsGuest,
     register,
     logout,
@@ -166,5 +200,5 @@ function getErrorMessage(code) {
     'auth/network-request-failed': 'Error de conexión. Comprueba tu internet'
   };
   
-  return messages[code] || 'Error de autenticación';
+  return messages[code] || `Error: ${code || 'desconocido'}`;
 }

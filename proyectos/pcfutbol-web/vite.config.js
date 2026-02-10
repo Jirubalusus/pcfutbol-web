@@ -4,8 +4,8 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/pcfutbol-web/',
+  base: process.env.CAPACITOR_BUILD ? '/' : '/pcfutbol-web/',
   build: {
-    sourcemap: true, // Enable source maps for better error debugging
+    sourcemap: true,
   },
 })

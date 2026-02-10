@@ -1,0 +1,12 @@
+{
+  "appId": "com.jirubalusus.pcgaffer",
+  "appName": "PC Gaffer",
+  "webDir": "dist",
+  "plugins": {
+    "SocialLogin": {
+      "google": {
+        "webClientId": "664376263748-9s0h5cdt4od2q3eb5gf4eo2kki71vpdn.apps.googleusercontent.com"
+      }
+    }
+  }
+}

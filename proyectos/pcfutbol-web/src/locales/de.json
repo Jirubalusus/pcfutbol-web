@@ -43,8 +43,8 @@
   },
   "mainMenu": {
     "title": "PC GAFFER",
-    "subtitle": "WEB EDITION",
-    "season": "Saison 2025-2026",
+    "subtitle": "",
+    "season": "",
     "continueGame": "Spiel Fortsetzen",
     "play": "Spielen",
     "login": "Anmelden",
