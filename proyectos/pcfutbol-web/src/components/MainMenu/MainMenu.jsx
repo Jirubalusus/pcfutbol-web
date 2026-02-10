@@ -215,12 +215,16 @@ export default function MainMenu() {
             <span className="pc">P C</span>
             <span className="futbol">{t('mainMenu.title').split(' ')[1] || 'GAFFER'}</span>
           </h1>
-          <div className="main-menu__edition">
-            <span className="line"></span>
-            <span className="text">{t('mainMenu.subtitle')}</span>
-            <span className="line"></span>
-          </div>
-          <p className="main-menu__season">{t('mainMenu.season')}</p>
+          {t('mainMenu.subtitle') && !t('mainMenu.subtitle').includes('mainMenu.') && (
+            <div className="main-menu__edition">
+              <span className="line"></span>
+              <span className="text">{t('mainMenu.subtitle')}</span>
+              <span className="line"></span>
+            </div>
+          )}
+          {t('mainMenu.season') && !t('mainMenu.season').includes('mainMenu.') && (
+            <p className="main-menu__season">{t('mainMenu.season')}</p>
+          )}
         </div>
         
         <nav className="main-menu__nav">

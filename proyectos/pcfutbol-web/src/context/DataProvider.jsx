@@ -49,7 +49,6 @@ export function DataProvider({ children }) {
         <div className="loading-content">
           <div className="loading-logo">⚽</div>
           <h1>PC GAFFER</h1>
-          <p>WEB EDITION</p>
           <div className="loading-bar">
             <div className="loading-progress" style={{ width: `${progress}%` }}></div>
           </div>
