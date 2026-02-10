@@ -4158,6 +4158,50 @@ export function GameProvider({ children }) {
     };
   }, [state.currentWeek, state.currentSeason, state.money, state.contrarrelojData?.finished, state.gameMode]);
 
+  // ============================================================
+  // SAVE ON APP CLOSE / BACKGROUND (visibilitychange + Capacitor pause)
+  // Fires immediately (no debounce) so nothing is lost when user kills the app
+  // ============================================================
+  useEffect(() => {
+    const saveOnExit = () => {
+      if (
+        state.gameMode === 'contrarreloj' &&
+        state.gameStarted &&
+        state._contrarrelojUserId &&
+        !state.contrarrelojData?.finished
+      ) {
+        const saveData = { ...state };
+        delete saveData.loaded;
+        delete saveData._contrarrelojUserId;
+        // Use fire-and-forget — browser may kill the tab before promise resolves
+        saveContrarreloj(state._contrarrelojUserId, saveData).catch(() => {});
+      }
+      // Also save normal game mode
+      if (state.gameStarted && state.gameMode !== 'contrarreloj' && state.settings?.autoSave !== false) {
+        saveGame();
+      }
+    };
+
+    const handleVisibility = () => {
+      if (document.visibilityState === 'hidden') saveOnExit();
+    };
+
+    document.addEventListener('visibilitychange', handleVisibility);
+    window.addEventListener('beforeunload', saveOnExit);
+
+    // Capacitor App.pause event (Android background)
+    let appListener = null;
+    import('@capacitor/app').then(({ App }) => {
+      App.addListener('pause', saveOnExit).then(l => { appListener = l; }).catch(() => {});
+    }).catch(() => {}); // ignore if not available (web)
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibility);
+      window.removeEventListener('beforeunload', saveOnExit);
+      if (appListener) appListener.remove();
+    };
+  }, [state]);
+
   const value = {
     state,
     dispatch,
