@@ -8,9 +8,10 @@ import SaveSlots from '../SaveSlots/SaveSlots';
 import { hasActiveContrarreloj, getContrarrelojSave, deleteContrarrelojSave } from '../../firebase/contrarrelojSaveService';
 import { 
   Play, LogIn, LogOut, Save, Trophy, Settings as SettingsIcon, 
-  Lightbulb, User, Gamepad2, ChevronRight, Timer
+  Lightbulb, User, Gamepad2, ChevronRight, Timer, Package
 } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
+import EditionMode from '../EditionMode/EditionMode';
 import './MainMenu.scss';
 
 export default function MainMenu() {
@@ -28,6 +29,7 @@ export default function MainMenu() {
   const [contrarrelojInfo, setContrarrelojInfo] = useState({ hasActive: false, summary: null });
   const [showContrarrelojPrompt, setShowContrarrelojPrompt] = useState(false);
   const [loadingContrarreloj, setLoadingContrarreloj] = useState(false);
+  const [showEditionMode, setShowEditionMode] = useState(false);
   
   useEffect(() => {
     setTimeout(() => setAnimateIn(true), 100);
@@ -149,6 +151,26 @@ export default function MainMenu() {
     dispatch({ type: 'SET_SCREEN', payload: 'contrarreloj_setup' });
   };
   
+  if (showEditionMode) {
+    return (
+      <EditionMode 
+        onBack={() => setShowEditionMode(false)}
+        onEditionApplied={(edition) => {
+          // Clear all saves when applying/removing edition
+          dispatch({ type: 'RESET_GAME' });
+          if (user?.uid) {
+            import('../../firebase/contrarrelojSaveService').then(({ deleteContrarrelojSave }) => {
+              deleteContrarrelojSave(user.uid).catch(() => {});
+            });
+          }
+          setContrarrelojInfo({ hasActive: false, summary: null });
+          // Force page reload to apply new names
+          window.location.reload();
+        }}
+      />
+    );
+  }
+
   if (showSettings) {
     return (
       <div className="main-menu__settings-wrapper">
@@ -337,6 +359,15 @@ export default function MainMenu() {
             >
               <SettingsIcon size={20} className="icon-svg" />
               <span className="label">{t('mainMenu.optionsButton')}</span>
+            </button>
+
+            <button 
+              className="main-menu__btn main-menu__btn--small main-menu__btn--edition"
+              onClick={() => setShowEditionMode(true)}
+              style={{ '--delay': state.gameStarted ? '6' : '4' }}
+            >
+              <Package size={20} className="icon-svg" />
+              <span className="label">Edición</span>
             </button>
           </div>
         </nav>
