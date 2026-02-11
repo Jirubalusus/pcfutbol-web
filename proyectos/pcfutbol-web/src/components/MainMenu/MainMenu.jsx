@@ -336,31 +336,11 @@ export default function MainMenu() {
             </button>
           )}
 
-          {/* Ranked 1v1 - solo si autenticado */}
-          {isAuthenticated && (
-            <button
-              className="main-menu__btn main-menu__btn--ranked"
-              onClick={() => dispatch({ type: 'SET_SCREEN', payload: 'ranked' })}
-              style={{ '--delay': state.gameStarted ? '4' : '2' }}
-            >
-              <div className="main-menu__btn-content">
-                <span className="icon-wrapper icon-wrapper--ranked">
-                  <Gamepad2 size={24} className="icon-svg" />
-                </span>
-                <div className="text-content">
-                  <span className="label">⚔️ Ranked 1v1</span>
-                  <span className="sublabel">Juega online contra otro jugador</span>
-                </div>
-                <ChevronRight size={20} className="chevron" />
-              </div>
-            </button>
-          )}
-
           <div className="main-menu__secondary">
             <button 
               className="main-menu__btn main-menu__btn--small"
               onClick={() => dispatch({ type: 'SET_SCREEN', payload: 'ranking' })}
-              style={{ '--delay': state.gameStarted ? '5' : '3' }}
+              style={{ '--delay': state.gameStarted ? '4' : '2' }}
             >
               <Trophy size={20} className="icon-svg" />
               <span className="label">{t('mainMenu.recordsButton')}</span>
