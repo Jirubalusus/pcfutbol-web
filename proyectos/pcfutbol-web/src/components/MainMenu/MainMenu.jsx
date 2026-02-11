@@ -361,7 +361,7 @@ export default function MainMenu() {
               style={{ '--delay': state.gameStarted ? '6' : '4' }}
             >
               <Package size={20} className="icon-svg" />
-              <span className="label">Edición</span>
+              <span className="label">{t('mainMenu.editionButton')}</span>
               {getActiveEditionId() && <span className="main-menu__edition-badge">●</span>}
             </button>
           </div>

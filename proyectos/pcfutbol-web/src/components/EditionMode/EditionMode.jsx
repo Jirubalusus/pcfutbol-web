@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../context/AuthContext';
 import { 
   getEditions, 
@@ -12,6 +13,7 @@ import { Download, Check, Trash2, AlertTriangle, ArrowLeft, Package, Upload, Fil
 import './EditionMode.scss';
 
 export default function EditionMode({ onBack, onEditionApplied }) {
+  const { t } = useTranslation();
   const { user } = useAuth();
   const [editions, setEditions] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -85,7 +87,7 @@ export default function EditionMode({ onBack, onEditionApplied }) {
     try {
       const data = JSON.parse(importText);
       if (!data.name || !data.teams) {
-        setImportError('Formato inválido. Se requiere: { "name": "...", "teams": { ... } }');
+        setImportError(t('edition.invalidFormat'));
         return;
       }
       const teamCount = Object.keys(data.teams).length;
@@ -94,7 +96,7 @@ export default function EditionMode({ onBack, onEditionApplied }) {
       );
       setPreviewPack({ ...data, teamCount, playerCount });
     } catch (err) {
-      setImportError('JSON inválido: ' + err.message);
+      setImportError(t('edition.invalidJson') + ': ' + err.message);
     }
   };
 
@@ -108,11 +110,11 @@ export default function EditionMode({ onBack, onEditionApplied }) {
     }, user?.uid);
     
     if (pendingId) {
-      setImportSuccess('✅ Pack enviado para revisión. Será visible cuando el administrador lo apruebe.');
+      setImportSuccess('✅ ' + t('edition.submittedSuccess'));
       setImportText('');
       setPreviewPack(null);
     } else {
-      setImportError('Error al enviar el pack');
+      setImportError(t('edition.submitError'));
     }
   };
 
@@ -123,14 +125,14 @@ export default function EditionMode({ onBack, onEditionApplied }) {
       <div className="edition-mode__header">
         <button className="edition-mode__back" onClick={onBack}>
           <ArrowLeft size={20} />
-          <span>Volver</span>
+          <span>{t('edition.back')}</span>
         </button>
         <h1>
           <Package size={24} />
-          Modo Edición
+          {t('edition.title')}
         </h1>
         <p className="edition-mode__subtitle">
-          Personaliza nombres de equipos y jugadores con packs de la comunidad
+          {t('edition.subtitle')}
         </p>
       </div>
 
@@ -148,7 +150,7 @@ export default function EditionMode({ onBack, onEditionApplied }) {
           </div>
           <button onClick={handleRemove} className="edition-mode__remove-btn">
             <Trash2 size={14} />
-            Quitar
+            {t('edition.remove')}
           </button>
         </div>
       )}
@@ -156,20 +158,20 @@ export default function EditionMode({ onBack, onEditionApplied }) {
       {/* Warning */}
       <div className="edition-mode__warning">
         <AlertTriangle size={18} />
-        <p>Al aplicar o quitar un pack se <strong>borrarán todas las partidas guardadas</strong>. Los datos del juego se recargarán con los nuevos nombres.</p>
+        <p dangerouslySetInnerHTML={{ __html: t('edition.warning') }} />
       </div>
 
       {/* Editions list */}
       <div className="edition-mode__list">
-        <h2>📦 Packs disponibles</h2>
+        <h2>📦 {t('edition.availablePacks')}</h2>
         
         {loading ? (
-          <div className="edition-mode__loading">Cargando packs...</div>
+          <div className="edition-mode__loading">{t('edition.loading')}</div>
         ) : editions.length === 0 ? (
           <div className="edition-mode__empty">
             <FileText size={40} />
-            <p>No hay packs disponibles</p>
-            <p className="edition-mode__empty-hint">Los packs aparecerán aquí cuando sean aprobados</p>
+            <p>{t('edition.noPacks')}</p>
+            <p className="edition-mode__empty-hint">{t('edition.noPacksHint')}</p>
           </div>
         ) : (
           editions.map(edition => (
@@ -191,7 +193,7 @@ export default function EditionMode({ onBack, onEditionApplied }) {
                 {activeEdition === edition.id ? (
                   <div className="edition-mode__btn edition-mode__btn--active">
                     <Check size={16} />
-                    Activo
+                    {t('edition.active')}
                   </div>
                 ) : (
                   <button 
@@ -200,7 +202,7 @@ export default function EditionMode({ onBack, onEditionApplied }) {
                     disabled={applying === edition.id}
                   >
                     <Download size={16} />
-                    {applying === edition.id ? 'Aplicando...' : 'Aplicar'}
+                    {applying === edition.id ? t('edition.applying') : t('edition.apply')}
                   </button>
                 )}
               </div>
@@ -211,9 +213,9 @@ export default function EditionMode({ onBack, onEditionApplied }) {
 
       {/* Import/Submit section */}
       <div className="edition-mode__section">
-        <h2>📤 Enviar pack</h2>
+        <h2>📤 {t('edition.submitPack')}</h2>
         <p className="edition-mode__section-desc">
-          Crea tu propio pack y envíalo para revisión. Será visible para todos cuando se apruebe.
+          {t('edition.submitDesc')}
         </p>
         
         <button 
@@ -221,7 +223,7 @@ export default function EditionMode({ onBack, onEditionApplied }) {
           onClick={() => { setShowImport(!showImport); setPreviewPack(null); setImportError(''); setImportSuccess(''); }}
         >
           <Upload size={18} />
-          {showImport ? 'Cerrar' : 'Importar pack (JSON)'}
+          {showImport ? t('edition.close') : t('edition.importJson')}
         </button>
 
         {showImport && (
@@ -229,7 +231,7 @@ export default function EditionMode({ onBack, onEditionApplied }) {
             <textarea
               value={importText}
               onChange={(e) => { setImportText(e.target.value); setPreviewPack(null); }}
-              placeholder={'Pega aquí el JSON del pack...\n\nFormato:\n{\n  "name": "Mi Pack",\n  "description": "...",\n  "teams": {\n    "Nombre Ficticio": {\n      "name": "Nombre Real",\n      "players": { "Ficticio": "Real" }\n    }\n  }\n}'}
+              placeholder={t('edition.pasteJson') + '\n\n{\n  "name": "Mi Pack",\n  "teams": {\n    "Nombre Ficticio": {\n      "name": "Nombre Real",\n      "players": { "Ficticio": "Real" }\n    }\n  }\n}'}
               rows={10}
             />
             
@@ -243,7 +245,7 @@ export default function EditionMode({ onBack, onEditionApplied }) {
                 className="edition-mode__import-btn"
               >
                 <Eye size={16} />
-                Vista previa
+                {t('edition.preview')}
               </button>
             ) : (
               <div className="edition-mode__preview">
@@ -254,7 +256,7 @@ export default function EditionMode({ onBack, onEditionApplied }) {
                   <span>🏃 {previewPack.playerCount} jugadores</span>
                 </div>
                 <div className="edition-mode__preview-sample">
-                  <strong>Muestra:</strong>
+                  <strong>{t('edition.sample')}:</strong>
                   {Object.entries(previewPack.teams).slice(0, 3).map(([fictName, data]) => (
                     <div key={fictName} className="edition-mode__preview-team">
                       <span className="old">{fictName}</span>
@@ -267,13 +269,13 @@ export default function EditionMode({ onBack, onEditionApplied }) {
                   ))}
                   {Object.keys(previewPack.teams).length > 3 && (
                     <div className="edition-mode__preview-more">
-                      ...y {Object.keys(previewPack.teams).length - 3} equipos más
+                      {t('edition.andMore', { count: Object.keys(previewPack.teams).length - 3 })}
                     </div>
                   )}
                 </div>
                 <button onClick={handleSubmitPack} className="edition-mode__import-btn edition-mode__import-btn--submit">
                   <Shield size={16} />
-                  Enviar para revisión
+                  {t('edition.submitForReview')}
                 </button>
               </div>
             )}
@@ -288,22 +290,22 @@ export default function EditionMode({ onBack, onEditionApplied }) {
             <AlertTriangle size={40} className="edition-mode__dialog-icon" />
             {showConfirm.action === 'apply' ? (
               <>
-                <h3>¿Aplicar "{showConfirm.edition.name}"?</h3>
-                <p>Se borrarán <strong>todas las partidas guardadas</strong> (carrera y contrarreloj). Los nombres de equipos y jugadores se actualizarán.</p>
+                <h3>{t('edition.confirmApply', { name: showConfirm.edition.name })}</h3>
+                <p>{t('edition.confirmApplyDesc')}</p>
               </>
             ) : (
               <>
-                <h3>¿Quitar pack activo?</h3>
-                <p>Se borrarán <strong>todas las partidas guardadas</strong> y se volverá a los nombres por defecto.</p>
+                <h3>{t('edition.confirmRemove')}</h3>
+                <p>{t('edition.confirmRemoveDesc')}</p>
               </>
             )}
-            <p className="edition-mode__dialog-warning">Esta acción no se puede deshacer.</p>
+            <p className="edition-mode__dialog-warning">{t('edition.irreversible')}</p>
             <div className="edition-mode__dialog-buttons">
               <button onClick={() => setShowConfirm(null)} className="edition-mode__btn edition-mode__btn--cancel">
-                Cancelar
+                {t('edition.cancel')}
               </button>
               <button onClick={confirmAction} className="edition-mode__btn edition-mode__btn--confirm">
-                {showConfirm.action === 'apply' ? 'Aplicar y borrar partidas' : 'Quitar y borrar partidas'}
+                {showConfirm.action === 'apply' ? t('edition.applyAndDelete') : t('edition.removeAndDelete')}
               </button>
             </div>
           </div>
