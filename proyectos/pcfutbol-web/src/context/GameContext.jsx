@@ -414,6 +414,9 @@ function gameReducer(state, action) {
     case 'SET_SCREEN':
       return { ...state, currentScreen: action.payload };
 
+    case 'SET_RANKED_MATCH_ID':
+      return { ...state, rankedMatchId: action.payload };
+
     case 'SET_MANAGER_NAME':
       return { ...state, managerName: action.payload };
 

@@ -508,6 +508,28 @@
       }
     }
 
+    // Ranked button
+    &--ranked {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.05));
+      border-color: rgba(16, 185, 129, 0.25);
+
+      .icon-wrapper--ranked {
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(5, 150, 105, 0.15));
+        color: #10b981;
+      }
+
+      &:hover:not(:disabled) {
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.18), rgba(5, 150, 105, 0.1));
+        border-color: #10b981;
+        box-shadow: 0 8px 30px rgba(16, 185, 129, 0.15);
+
+        .icon-wrapper--ranked {
+          background: linear-gradient(135deg, rgba(16, 185, 129, 0.35), rgba(5, 150, 105, 0.25));
+          box-shadow: 0 0 16px rgba(16, 185, 129, 0.2);
+        }
+      }
+    }
+
     // Small buttons
     &--small {
       flex: 1;

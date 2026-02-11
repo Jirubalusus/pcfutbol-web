@@ -8,7 +8,7 @@ import SaveSlots from '../SaveSlots/SaveSlots';
 import { hasActiveContrarreloj, getContrarrelojSave, deleteContrarrelojSave } from '../../firebase/contrarrelojSaveService';
 import { 
   Play, LogIn, LogOut, Save, Trophy, Settings as SettingsIcon, 
-  Lightbulb, User, Gamepad2, ChevronRight, Timer
+  Lightbulb, User, Gamepad2, ChevronRight, Timer, Swords
 } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
 import './MainMenu.scss';
@@ -314,6 +314,25 @@ export default function MainMenu() {
                       : t('mainMenu.reachChampions')
                     }
                   </span>
+                </div>
+                <ChevronRight size={18} className="chevron" />
+              </div>
+            </button>
+          )}
+
+          {isAuthenticated && (
+            <button
+              className="main-menu__btn main-menu__btn--ranked"
+              onClick={() => dispatch({ type: 'SET_SCREEN', payload: 'ranked_lobby' })}
+              style={{ '--delay': state.gameStarted ? '4' : '2' }}
+            >
+              <div className="btn-content">
+                <span className="icon-wrapper icon-wrapper--ranked">
+                  <Swords size={22} />
+                </span>
+                <div className="text">
+                  <span className="label">Ranked 1v1</span>
+                  <span className="sublabel">Duelo de temporada competitivo</span>
                 </div>
                 <ChevronRight size={18} className="chevron" />
               </div>

@@ -1,0 +1,248 @@
+.ranked-lobby {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0a0f1a 0%, #0d1420 100%);
+  padding: 1.5rem;
+  padding-top: calc(env(safe-area-inset-top, 0px) + 1.5rem);
+  color: #e0e0e0;
+  max-width: 500px;
+  margin: 0 auto;
+
+  &__loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    gap: 1rem;
+    color: #10b981;
+    .spin { animation: spin 1s linear infinite; }
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+
+    h1 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #10b981;
+      margin: 0;
+    }
+  }
+
+  &__back {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    color: #e0e0e0;
+    padding: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    &:hover { background: rgba(255,255,255,0.1); }
+  }
+
+  // ── Rank Card ──
+  &__rank-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-left: 3px solid var(--tier-color, #10b981);
+    border-radius: 14px;
+    padding: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+
+    .rank-icon {
+      font-size: 2.5rem;
+      line-height: 1;
+    }
+
+    .rank-info {
+      flex: 1;
+
+      .rank-name {
+        display: block;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--tier-color, #10b981);
+        margin-bottom: 0.4rem;
+      }
+
+      .lp-bar {
+        height: 6px;
+        background: rgba(255,255,255,0.08);
+        border-radius: 3px;
+        overflow: hidden;
+        margin-bottom: 0.25rem;
+
+        .lp-fill {
+          height: 100%;
+          background: var(--tier-color, #10b981);
+          border-radius: 3px;
+          transition: width 0.5s ease;
+        }
+      }
+
+      .lp-text {
+        font-size: 0.75rem;
+        color: rgba(255,255,255,0.5);
+      }
+    }
+
+    .rank-stats {
+      display: flex;
+      gap: 0.25rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      .wins { color: #10b981; }
+      .losses { color: #ef4444; }
+      .sep { color: rgba(255,255,255,0.3); }
+    }
+  }
+
+  // ── Matchmaking ──
+  &__matchmaking {
+    margin-bottom: 1.5rem;
+  }
+
+  &__find-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.08));
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    border-radius: 14px;
+    color: #10b981;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.3), rgba(16, 185, 129, 0.15));
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+      transform: translateY(-1px);
+    }
+  }
+
+  &__searching {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    border-radius: 14px;
+
+    .searching-animation {
+      margin-bottom: 0.75rem;
+      color: #10b981;
+      .pulse { animation: pulse 1.5s ease-in-out infinite; }
+    }
+
+    p {
+      color: rgba(255,255,255,0.6);
+      margin: 0 0 1rem;
+      .time { color: #10b981; font-weight: 600; font-variant-numeric: tabular-nums; }
+    }
+
+    .cancel-btn {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.5);
+      padding: 0.5rem 1.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+      &:hover { color: #ef4444; border-color: rgba(239, 68, 68, 0.3); }
+    }
+  }
+
+  // ── Leaderboard Link ──
+  &__leaderboard-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    color: #e0e0e0;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    transition: all 0.2s;
+    font-size: 0.95rem;
+
+    svg:first-child { color: #fbbf24; }
+    span { flex: 1; text-align: left; }
+    svg:last-child { color: rgba(255,255,255,0.3); }
+
+    &:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.15);
+    }
+  }
+
+  // ── History ──
+  &__history {
+    h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.6);
+      margin: 0 0 0.75rem;
+    }
+
+    .empty {
+      color: rgba(255,255,255,0.3);
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .history-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .history-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.6rem 0.85rem;
+      background: rgba(255,255,255,0.03);
+      border-radius: 8px;
+      font-size: 0.85rem;
+      border-left: 3px solid transparent;
+
+      &.win { border-left-color: #10b981; .result { color: #10b981; } }
+      &.loss { border-left-color: #ef4444; .result { color: #ef4444; } }
+      &.draw { border-left-color: #fbbf24; .result { color: #fbbf24; } }
+
+      .result { font-weight: 700; width: 1.2rem; }
+      .rival { flex: 1; color: rgba(255,255,255,0.7); }
+      .score { color: rgba(255,255,255,0.5); font-variant-numeric: tabular-nums; }
+      .dc-icon { color: #ef4444; }
+    }
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.15); opacity: 0.7; }
+}
