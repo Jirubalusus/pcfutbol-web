@@ -4,19 +4,25 @@
  * Editions are stored in Firebase and cached in localStorage
  */
 import { db } from '../../firebase/config';
-import { collection, getDocs, doc, getDoc, setDoc, deleteDoc, query, orderBy } from 'firebase/firestore';
+import { collection, getDocs, doc, getDoc, setDoc, deleteDoc, query, where, orderBy } from 'firebase/firestore';
 
 const EDITIONS_COLLECTION = 'editions';
+const PENDING_COLLECTION = 'editions_pending'; // Packs pending review
 const ACTIVE_EDITION_KEY = 'pcgaffer_active_edition';
 
+// ============================================================
+// PUBLIC EDITIONS (approved)
+// ============================================================
+
 /**
- * Get all available edition packs from Firebase
+ * Get all approved edition packs
  */
 export async function getEditions() {
   try {
-    const q = query(collection(db, EDITIONS_COLLECTION), orderBy('name'));
-    const snapshot = await getDocs(q);
-    return snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
+    const snapshot = await getDocs(collection(db, EDITIONS_COLLECTION));
+    return snapshot.docs
+      .map(d => ({ id: d.id, ...d.data() }))
+      .sort((a, b) => (a.name || '').localeCompare(b.name || ''));
   } catch (err) {
     console.error('Error loading editions:', err);
     return [];
@@ -24,51 +30,117 @@ export async function getEditions() {
 }
 
 /**
- * Get a single edition pack by ID
+ * Get a single edition pack by ID (with caching)
  */
+let editionCache = {};
 export async function getEdition(editionId) {
+  if (editionCache[editionId]) return editionCache[editionId];
   try {
     const snap = await getDoc(doc(db, EDITIONS_COLLECTION, editionId));
     if (!snap.exists()) return null;
-    return { id: snap.id, ...snap.data() };
+    const edition = { id: snap.id, ...snap.data() };
+    editionCache[editionId] = edition;
+    return edition;
   } catch (err) {
     console.error('Error loading edition:', err);
     return null;
   }
 }
 
+export function clearEditionCache() {
+  editionCache = {};
+}
+
+// ============================================================
+// PENDING EDITIONS (user submissions, need admin approval)
+// ============================================================
+
 /**
- * Upload/save an edition pack to Firebase
+ * Submit a pack for review (goes to editions_pending)
  */
-export async function saveEdition(editionId, data) {
+export async function submitEdition(data, userId) {
   try {
+    const pendingId = `pending_${Date.now()}_${userId || 'anon'}`;
+    await setDoc(doc(db, PENDING_COLLECTION, pendingId), {
+      ...data,
+      submittedBy: userId || 'anonymous',
+      submittedAt: new Date().toISOString(),
+      status: 'pending' // pending | approved | rejected
+    });
+    return pendingId;
+  } catch (err) {
+    console.error('Error submitting edition:', err);
+    return null;
+  }
+}
+
+/**
+ * Get pending editions (admin only)
+ */
+export async function getPendingEditions() {
+  try {
+    const snapshot = await getDocs(collection(db, PENDING_COLLECTION));
+    return snapshot.docs
+      .map(d => ({ id: d.id, ...d.data() }))
+      .filter(d => d.status === 'pending')
+      .sort((a, b) => (b.submittedAt || '').localeCompare(a.submittedAt || ''));
+  } catch (err) {
+    console.error('Error loading pending editions:', err);
+    return [];
+  }
+}
+
+/**
+ * Approve a pending edition (move to public editions collection)
+ */
+export async function approveEdition(pendingId) {
+  try {
+    const snap = await getDoc(doc(db, PENDING_COLLECTION, pendingId));
+    if (!snap.exists()) return false;
+    
+    const data = snap.data();
+    const editionId = data.id || `edition_${Date.now()}`;
+    
+    // Copy to approved collection
     await setDoc(doc(db, EDITIONS_COLLECTION, editionId), {
       ...data,
-      updatedAt: new Date().toISOString()
+      id: editionId,
+      status: 'approved',
+      approvedAt: new Date().toISOString()
     });
+    
+    // Update pending status
+    await setDoc(doc(db, PENDING_COLLECTION, pendingId), {
+      ...data,
+      status: 'approved'
+    });
+    
     return true;
   } catch (err) {
-    console.error('Error saving edition:', err);
+    console.error('Error approving edition:', err);
     return false;
   }
 }
 
 /**
- * Delete an edition pack
+ * Reject a pending edition
  */
-export async function deleteEdition(editionId) {
+export async function rejectEdition(pendingId) {
   try {
-    await deleteDoc(doc(db, EDITIONS_COLLECTION, editionId));
+    await deleteDoc(doc(db, PENDING_COLLECTION, pendingId));
     return true;
   } catch (err) {
-    console.error('Error deleting edition:', err);
+    console.error('Error rejecting edition:', err);
     return false;
   }
 }
 
+// ============================================================
+// ACTIVE EDITION MANAGEMENT
+// ============================================================
+
 /**
- * Apply an edition pack — saves the edition ID as active
- * Returns the edition data with team/player mappings
+ * Set active edition (stored in localStorage for fast access)
  */
 export function setActiveEdition(editionId) {
   if (editionId) {
@@ -76,71 +148,53 @@ export function setActiveEdition(editionId) {
   } else {
     localStorage.removeItem(ACTIVE_EDITION_KEY);
   }
+  clearEditionCache();
 }
 
-/**
- * Get the currently active edition ID
- */
 export function getActiveEditionId() {
   return localStorage.getItem(ACTIVE_EDITION_KEY);
 }
 
-/**
- * Clear active edition (revert to default names)
- */
 export function clearActiveEdition() {
   localStorage.removeItem(ACTIVE_EDITION_KEY);
+  clearEditionCache();
 }
 
-/**
- * Apply edition mappings to a team object
- * Edition format:
- * {
- *   teams: {
- *     "real_madrid": {
- *       name: "Real Madrid CF",
- *       stadium: "Santiago Bernabéu",
- *       players: {
- *         "Teodoro Castaño": "Thibaut Courtois",
- *         "Kaique Monteiro": "Kylian Mbappé",
- *         ...
- *       }
- *     }
- *   }
- * }
- */
-export function applyEditionToTeam(team, teamId, edition) {
-  if (!edition?.teams?.[teamId]) return team;
-  
-  const editionTeam = edition.teams[teamId];
-  const result = { ...team };
-  
-  if (editionTeam.name) result.name = editionTeam.name;
-  if (editionTeam.shortName) result.shortName = editionTeam.shortName;
-  if (editionTeam.stadium) result.stadium = editionTeam.stadium;
-  
-  if (editionTeam.players && result.players) {
-    result.players = result.players.map(player => {
-      const newName = editionTeam.players[player.name];
-      if (newName) {
-        return { ...player, name: newName };
-      }
-      return player;
-    });
-  }
-  
-  return result;
-}
+// ============================================================
+// SAVE DELETION (when applying/removing edition)
+// ============================================================
 
 /**
- * Apply edition to all teams in a dataset
+ * Delete ALL saves for a user (career slots + contrarreloj)
  */
-export function applyEditionToAllTeams(teamsObj, edition) {
-  if (!edition?.teams) return teamsObj;
+export async function deleteAllSaves(userId) {
+  if (!userId) return;
   
-  const result = {};
-  for (const [teamId, team] of Object.entries(teamsObj)) {
-    result[teamId] = applyEditionToTeam(team, teamId, edition);
+  try {
+    // Delete contrarreloj save
+    const { deleteContrarrelojSave } = await import('../../firebase/contrarrelojSaveService');
+    await deleteContrarrelojSave(userId).catch(() => {});
+    
+    // Delete career save slots
+    const savesSnapshot = await getDocs(
+      query(collection(db, 'saves'), where('userId', '==', userId))
+    );
+    const deletePromises = savesSnapshot.docs.map(d => deleteDoc(d.ref));
+    await Promise.all(deletePromises);
+    
+    // Also try save slots collection
+    const slotsSnapshot = await getDocs(
+      query(collection(db, 'save_slots'), where('userId', '==', userId))
+    );
+    const slotDeletes = slotsSnapshot.docs.map(d => deleteDoc(d.ref));
+    await Promise.all(slotDeletes);
+    
+    // Clear localStorage saves
+    localStorage.removeItem('pcfutbol_local_save');
+    localStorage.removeItem('pcfutbol_saveId');
+    
+    console.log('🗑️ All saves deleted for user', userId);
+  } catch (err) {
+    console.error('Error deleting saves:', err);
   }
-  return result;
 }

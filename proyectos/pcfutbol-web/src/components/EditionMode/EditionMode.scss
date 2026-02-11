@@ -41,7 +41,7 @@
   &__active {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: space-between;
     background: rgba(0, 200, 100, 0.15);
     border: 1px solid rgba(0, 200, 100, 0.3);
     border-radius: 0.5rem;
@@ -49,6 +49,21 @@
     margin-bottom: 1rem;
     color: #66ffaa;
     font-size: 0.9rem;
+  }
+
+  &__active-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    strong { display: block; }
+  }
+
+  &__active-meta {
+    display: block;
+    font-size: 0.75rem;
+    color: #88ccaa;
+    margin-top: 2px;
   }
 
   &__remove-btn {
@@ -138,6 +153,61 @@
 
     &:disabled { opacity: 0.4; cursor: not-allowed; }
     &:hover:not(:disabled) { background: #3377dd; }
+  }
+
+  &__section-desc {
+    color: #667788;
+    font-size: 0.85rem;
+    margin: 0 0 0.75rem 0;
+  }
+
+  &__card-desc {
+    font-size: 0.85rem;
+    color: #8899aa;
+    margin: 0 0 0.4rem 0;
+  }
+
+  &__preview {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-top: 0.75rem;
+
+    h3 { margin: 0 0 0.25rem; color: #00d4ff; font-size: 1rem; }
+    p { margin: 0 0 0.5rem; color: #8899aa; font-size: 0.85rem; }
+  }
+
+  &__preview-sample {
+    margin-top: 0.75rem;
+    font-size: 0.8rem;
+
+    strong { color: #aabbcc; display: block; margin-bottom: 0.4rem; }
+  }
+
+  &__preview-team {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.2rem 0;
+    flex-wrap: wrap;
+
+    .old { color: #ff8888; text-decoration: line-through; }
+    .arrow { color: #667788; }
+    .new { color: #88ff88; font-weight: 500; }
+    .count { color: #667788; font-size: 0.75rem; }
+  }
+
+  &__preview-more {
+    color: #556677;
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+  }
+
+  &__import-btn--submit {
+    background: #228833 !important;
+    margin-top: 0.75rem;
+    &:hover:not(:disabled) { background: #33aa44 !important; }
   }
 
   &__error {

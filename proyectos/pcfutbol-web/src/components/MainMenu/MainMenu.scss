@@ -316,6 +316,18 @@
     }
   }
 
+  &__edition-badge {
+    color: #00cc66;
+    font-size: 0.6rem;
+    margin-left: -0.3rem;
+    animation: pulse-badge 2s infinite;
+  }
+
+  @keyframes pulse-badge {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
   &__season {
     color: var(--color-text-tertiary);
     font-size: 0.9rem;

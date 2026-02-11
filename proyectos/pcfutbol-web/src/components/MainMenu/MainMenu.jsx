@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
 import EditionMode from '../EditionMode/EditionMode';
+import { getActiveEditionId } from '../../data/editions/editionService';
 import './MainMenu.scss';
 
 export default function MainMenu() {
@@ -155,16 +156,9 @@ export default function MainMenu() {
     return (
       <EditionMode 
         onBack={() => setShowEditionMode(false)}
-        onEditionApplied={(edition) => {
-          // Clear all saves when applying/removing edition
-          dispatch({ type: 'RESET_GAME' });
-          if (user?.uid) {
-            import('../../firebase/contrarrelojSaveService').then(({ deleteContrarrelojSave }) => {
-              deleteContrarrelojSave(user.uid).catch(() => {});
-            });
-          }
-          setContrarrelojInfo({ hasActive: false, summary: null });
-          // Force page reload to apply new names
+        onEditionApplied={() => {
+          // EditionMode already handles save deletion
+          // Force full page reload to re-fetch data with new names
           window.location.reload();
         }}
       />
@@ -368,6 +362,7 @@ export default function MainMenu() {
             >
               <Package size={20} className="icon-svg" />
               <span className="label">Edición</span>
+              {getActiveEditionId() && <span className="main-menu__edition-badge">●</span>}
             </button>
           </div>
         </nav>
