@@ -530,6 +530,25 @@
       }
     }
 
+    // ProManager button
+    &--promanager {
+      .icon-wrapper--promanager {
+        background: linear-gradient(135deg, rgba(100, 149, 237, 0.25), rgba(65, 105, 225, 0.15));
+        color: #6495ed;
+      }
+
+      &:hover:not(:disabled) {
+        background: linear-gradient(135deg, rgba(100, 149, 237, 0.18), rgba(65, 105, 225, 0.1));
+        border-color: #6495ed;
+        box-shadow: 0 8px 30px rgba(100, 149, 237, 0.15);
+
+        .icon-wrapper--promanager {
+          background: linear-gradient(135deg, rgba(100, 149, 237, 0.35), rgba(65, 105, 225, 0.25));
+          box-shadow: 0 0 16px rgba(100, 149, 237, 0.2);
+        }
+      }
+    }
+
     // Small buttons
     &--small {
       flex: 1;

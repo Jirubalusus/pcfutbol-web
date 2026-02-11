@@ -1,0 +1,105 @@
+.pm-dashboard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #6495ed;
+    margin-bottom: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  &__section {
+    margin-bottom: 0.6rem;
+    &:last-child { margin-bottom: 0; }
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.75rem;
+    color: #8899aa;
+    margin-bottom: 0.3rem;
+
+    .value {
+      margin-left: auto;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+  }
+
+  &__bar {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 3px;
+    overflow: hidden;
+
+    &-fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 0.5s ease, background 0.3s;
+    }
+  }
+
+  &__msg {
+    font-size: 0.7rem;
+    margin: 0.25rem 0 0;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+
+    &--happy { color: #4ade80; }
+    &--neutral { color: #8899aa; }
+    &--concerned { color: #f59e0b; }
+    &--warning { color: #ef4444; font-weight: 600; }
+    &--fired { color: #ef4444; font-weight: 700; }
+  }
+
+  &__objective-text {
+    font-size: 0.8rem;
+    color: #f59e0b;
+    margin: 0;
+    padding: 0.3rem 0.5rem;
+    background: rgba(245, 158, 11, 0.08);
+    border-radius: 6px;
+  }
+
+  &__stats {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: space-around;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.15rem;
+
+      .num {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #fff;
+      }
+
+      .lbl {
+        font-size: 0.65rem;
+        color: #667788;
+        display: flex;
+        align-items: center;
+        gap: 0.2rem;
+      }
+    }
+  }
+}

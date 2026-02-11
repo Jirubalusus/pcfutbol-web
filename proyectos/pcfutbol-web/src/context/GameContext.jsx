@@ -2,6 +2,8 @@
 import { db } from '../firebase/config';
 import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import { saveContrarreloj, deleteContrarrelojSave } from '../firebase/contrarrelojSaveService';
+import { saveProManager, deleteProManagerSave } from '../firebase/proManagerService';
+import { calculateBoardConfidence } from '../game/proManagerEngine';
 import { LALIGA_TEAMS } from '../data/teamsFirestore';
 import { generateFacilityEvent, generateYouthPlayer, generateSonPlayer, applyEventChoice, FACILITY_SPECIALIZATIONS } from '../game/facilitiesSystem';
 import { assignRole } from '../game/playerRoles';
@@ -245,8 +247,9 @@ const initialState = {
   jobOffers: [],
 
   // Game Mode
-  gameMode: 'career', // 'career' | 'contrarreloj'
+  gameMode: 'career', // 'career' | 'contrarreloj' | 'promanager'
   contrarrelojData: null, // { seasonsPlayed, trophies, startTeam, startLeague, won, finished, loseReason, wonCompetition }
+  proManagerData: null, // { prestige, boardConfidence, objective, seasonsManaged, careerHistory, ... }
 
   // UI State
   currentScreen: 'main_menu',
@@ -416,6 +419,50 @@ function gameReducer(state, action) {
 
     case 'SET_RANKED_MATCH_ID':
       return { ...state, rankedMatchId: action.payload };
+
+    case 'SET_PROMANAGER_DATA':
+      return { ...state, proManagerData: action.payload };
+
+    case 'PROMANAGER_SWITCH_TEAM': {
+      // When accepting a new team offer in ProManager mode
+      const { team, leagueId, _proManagerUserId } = action.payload;
+      return {
+        ...initialState,
+        gameStarted: true,
+        gameMode: 'promanager',
+        proManagerData: state.proManagerData,
+        _proManagerUserId: _proManagerUserId || state._proManagerUserId,
+        teamId: team.id,
+        team: { ...team },
+        leagueId: leagueId,
+        leagueTier: leagueId ? getLeagueTier(leagueId) : 1,
+        money: team.budget || 5_000_000,
+        loaded: true,
+        currentScreen: 'office',
+        settings: state.settings,
+        managerName: state.managerName,
+      };
+    }
+
+    case 'UPDATE_PROMANAGER_CONFIDENCE': {
+      if (!state.proManagerData) return state;
+      const { boardConfidence, winStreak, lossStreak, totalMatches, totalWins, totalDraws, totalLosses } = action.payload;
+      return {
+        ...state,
+        proManagerData: {
+          ...state.proManagerData,
+          boardConfidence: boardConfidence ?? state.proManagerData.boardConfidence,
+          winStreak: winStreak ?? state.proManagerData.winStreak,
+          lossStreak: lossStreak ?? state.proManagerData.lossStreak,
+          totalMatches: totalMatches ?? state.proManagerData.totalMatches,
+          totalWins: totalWins ?? state.proManagerData.totalWins,
+          totalDraws: totalDraws ?? state.proManagerData.totalDraws,
+          totalLosses: totalLosses ?? state.proManagerData.totalLosses,
+        },
+        // Also update managerConfidence for the existing firing system
+        managerConfidence: boardConfidence ?? state.proManagerData.boardConfidence,
+      };
+    }
 
     case 'SET_MANAGER_NAME':
       return { ...state, managerName: action.payload };
@@ -4190,6 +4237,28 @@ export function GameProvider({ children }) {
   }, [state.gameMode, state.gameStarted, state._contrarrelojUserId, state.contrarrelojData?.finished]);
 
   // ============================================================
+  // PROMANAGER: Auto-save (debounced on week/season change)
+  // ============================================================
+  const proManagerSaveRef = useRef(null);
+  useEffect(() => {
+    if (state.gameMode !== 'promanager' || !state.gameStarted || !state._proManagerUserId) return;
+    if (state.proManagerData?.finished) {
+      deleteProManagerSave(state._proManagerUserId).catch(() => {});
+      return;
+    }
+    if (proManagerSaveRef.current) clearTimeout(proManagerSaveRef.current);
+    proManagerSaveRef.current = setTimeout(() => {
+      const saveData = { ...state };
+      delete saveData.loaded;
+      delete saveData._proManagerUserId;
+      saveProManager(state._proManagerUserId, saveData)
+        .then(() => console.log('💼 ProManager auto-saved'))
+        .catch(err => console.error('ProManager save error:', err));
+    }, 500);
+    return () => { if (proManagerSaveRef.current) clearTimeout(proManagerSaveRef.current); };
+  }, [state.currentWeek, state.currentSeason, state.money, state.team, state.leagueTable, state.proManagerData, state.gameMode, state.currentScreen]);
+
+  // ============================================================
   // SAVE ON APP CLOSE / BACKGROUND (visibilitychange + Capacitor pause)
   // Uses stateRef to always have the latest state
   // ============================================================
@@ -4208,7 +4277,19 @@ export function GameProvider({ children }) {
         saveContrarreloj(s._contrarrelojUserId, saveData).catch(() => {});
         console.log('⏱️ Contrarreloj save-on-exit triggered');
       }
-      if (s.gameStarted && s.gameMode !== 'contrarreloj' && s.settings?.autoSave !== false) {
+      if (
+        s.gameMode === 'promanager' &&
+        s.gameStarted &&
+        s._proManagerUserId &&
+        !s.proManagerData?.finished
+      ) {
+        const saveData = { ...s };
+        delete saveData.loaded;
+        delete saveData._proManagerUserId;
+        saveProManager(s._proManagerUserId, saveData).catch(() => {});
+        console.log('💼 ProManager save-on-exit triggered');
+      }
+      if (s.gameStarted && s.gameMode !== 'contrarreloj' && s.gameMode !== 'promanager' && s.settings?.autoSave !== false) {
         saveGame();
       }
     };

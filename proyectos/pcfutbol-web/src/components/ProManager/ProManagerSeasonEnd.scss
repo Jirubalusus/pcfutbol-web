@@ -1,0 +1,292 @@
+.pm-season-end {
+  min-height: 100dvh;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  &__bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+  }
+
+  &__gradient {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(100, 149, 237, 0.12) 0%, transparent 50%),
+      linear-gradient(180deg, #0a0f1a 0%, #0d1530 40%, #0a0f1a 100%);
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1.5rem;
+    padding-top: calc(env(safe-area-inset-top, 0px) + 1.5rem);
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 2rem);
+
+    @media (max-width: 768px) {
+      padding: 1rem;
+      padding-top: calc(env(safe-area-inset-top, 0px) + 1rem);
+    }
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+
+    h1 {
+      font-size: 1.3rem;
+      color: #fff;
+      margin: 0;
+    }
+    svg { color: #6495ed; }
+    .season-num {
+      font-size: 0.8rem;
+      color: #8899aa;
+      margin-left: auto;
+    }
+  }
+
+  &__card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+
+    h2 {
+      font-size: 1.1rem;
+      color: #fff;
+      margin: 0 0 0.75rem;
+    }
+
+    .stats-row {
+      display: flex;
+      justify-content: space-around;
+      gap: 0.5rem;
+
+      .stat {
+        text-align: center;
+        .label { display: block; font-size: 0.65rem; color: #667788; }
+        .value { display: block; font-size: 1rem; font-weight: 700; color: #fff; }
+      }
+    }
+  }
+
+  &__eval {
+    background: rgba(255, 255, 255, 0.03);
+    border: 2px solid #8899aa;
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+
+    .eval-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      .emoji { font-size: 1.5rem; }
+      h3 { font-size: 1rem; color: #fff; margin: 0; }
+    }
+
+    .objective-reminder {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.8rem;
+      color: #8899aa;
+      margin: 0.5rem 0 0;
+    }
+  }
+
+  &__prestige {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+
+    .prestige-label {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.8rem;
+      color: #8899aa;
+      margin-bottom: 0.5rem;
+      svg { color: #6495ed; }
+    }
+
+    .prestige-change {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 0.5rem;
+
+      .old { font-size: 1.2rem; color: #667788; }
+      svg { color: #556677; }
+      .new {
+        font-size: 1.3rem;
+        font-weight: 700;
+        transition: color 0.3s;
+        &.positive { color: #4ade80; }
+        &.negative { color: #ef4444; }
+      }
+      .delta {
+        font-size: 0.85rem;
+        &.positive { color: #4ade80; }
+        &.negative { color: #ef4444; }
+      }
+    }
+
+    .prestige-bar {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 3px;
+      overflow: hidden;
+
+      &__fill {
+        height: 100%;
+        background: #6495ed;
+        border-radius: 3px;
+        transition: width 1s ease;
+      }
+    }
+  }
+
+  .btn-next {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    width: 100%;
+    padding: 0.9rem;
+    background: linear-gradient(135deg, #4169e1, #6495ed);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    min-height: 48px;
+    transition: all 0.2s;
+    &:hover { filter: brightness(1.1); }
+  }
+
+  // Offers step
+  &__offers {
+    h2 {
+      font-size: 1.2rem;
+      color: #fff;
+      margin: 0 0 1rem;
+    }
+  }
+
+  &__renewal {
+    background: rgba(100, 149, 237, 0.08);
+    border: 1px solid rgba(100, 149, 237, 0.2);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+
+    h3 {
+      font-size: 0.9rem;
+      color: #fff;
+      margin: 0;
+    }
+
+    .btn-renew {
+      padding: 0.5rem 1.25rem;
+      background: #4169e1;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      min-height: 44px;
+      font-weight: 600;
+      transition: all 0.2s;
+      &:hover { filter: brightness(1.15); }
+    }
+  }
+
+  .offers-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .offer-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+
+    .offer-info {
+      flex: 1;
+      h4 { font-size: 0.95rem; color: #fff; margin: 0 0 0.15rem; }
+      .league { font-size: 0.7rem; color: #667788; }
+      .offer-objective {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        font-size: 0.75rem;
+        color: #f59e0b;
+        margin-top: 0.25rem;
+      }
+      .budget { font-size: 0.75rem; color: #4ade80; }
+    }
+
+    .btn-accept {
+      padding: 0.5rem 1rem;
+      background: rgba(74, 222, 128, 0.15);
+      color: #4ade80;
+      border: 1px solid rgba(74, 222, 128, 0.3);
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      min-height: 44px;
+      white-space: nowrap;
+      transition: all 0.2s;
+      &:hover { background: rgba(74, 222, 128, 0.25); }
+    }
+  }
+
+  .no-offers {
+    color: #667788;
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .btn-retire {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    width: 100%;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #8899aa;
+    border-radius: 10px;
+    cursor: pointer;
+    min-height: 44px;
+    margin-top: 0.75rem;
+    transition: all 0.2s;
+    &:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
+  }
+}

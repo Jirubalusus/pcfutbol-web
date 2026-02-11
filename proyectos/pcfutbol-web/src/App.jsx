@@ -14,6 +14,8 @@ import Ranking from './components/Ranking/Ranking';
 import RankedLobby from './components/Ranked/RankedLobby';
 import RankedMatch from './components/Ranked/RankedMatch';
 import RankedLeaderboard from './components/Ranked/RankedLeaderboard';
+import ProManagerSetup from './components/ProManager/ProManagerSetup';
+import ProManagerSeasonEnd from './components/ProManager/ProManagerSeasonEnd';
 import { useAudioManager } from './hooks/useAudioManager';
 import { useSoundEffects } from './hooks/useSoundEffects';
 import './index.css';
@@ -82,6 +84,10 @@ function GameRouter() {
             return <RankedMatch />;
           case 'ranked_leaderboard':
             return <RankedLeaderboard />;
+          case 'promanager_setup':
+            return <ProManagerSetup />;
+          case 'promanager_season_end':
+            return <ProManagerSeasonEnd />;
           default:
             return <MainMenu />;
         }

@@ -1505,6 +1505,53 @@
     "aperturaClausuraFinalResult": "🏆 Apertura vs Clausura Final",
     "aperturaClausuraFinalResultContent": "{{winner}} wins the {{league}} final. 1st leg: {{leg1Home}}-{{leg1Away}}, 2nd leg: {{leg2Home}}-{{leg2Away}}.",
     "directChampionShort": "{{winner}} is the direct champion."
+  },
+  "proManager": {
+    "title": "ProManager",
+    "menuSubtitle": "Manager career from the bottom",
+    "chooseCountry": "Choose a country to start your career",
+    "chooseTeam": "Choose a team to manage",
+    "leagues": "leagues",
+    "newOffers": "New offers",
+    "noOffers": "No offers available. Try another country.",
+    "startCareer": "Start Career",
+    "activeCareer": "Active Career",
+    "dashboard": "ProManager",
+    "boardConfidence": "Board Confidence",
+    "objective": "Objective",
+    "prestige": "Prestige",
+    "matches": "MP",
+    "wins": "W",
+    "titles": "Titles",
+    "board": {
+      "happy": "The board is delighted with your work.",
+      "neutral": "The board is monitoring your progress.",
+      "concerned": "The board is starting to question your decisions.",
+      "warning": "⚠️ The board is considering your dismissal!",
+      "fired": "The board has decided to relieve you of your duties."
+    },
+    "objectives": {
+      "winLeague": "Win the league",
+      "topTwo": "Finish in the Top 2",
+      "european": "Qualify for Europe (Top {{position}})",
+      "topHalf": "Top half of the table",
+      "avoidRelegation": "Avoid relegation",
+      "midTable": "Mid-table finish"
+    },
+    "seasonEnd": {
+      "title": "End of Season",
+      "champion": "Champion! Extraordinary season.",
+      "exceeded": "You've exceeded the board's expectations.",
+      "met": "Objective met. Good work.",
+      "close": "Close to the objective, but not enough.",
+      "failed": "You failed to meet the board's objective.",
+      "viewOffers": "View job offers",
+      "jobOffers": "Job Offers",
+      "renewWith": "Renew with {{team}}",
+      "renew": "Renew",
+      "noExternalOffers": "No external offers at this time.",
+      "retire": "Retire"
+    }
   }
 }
 

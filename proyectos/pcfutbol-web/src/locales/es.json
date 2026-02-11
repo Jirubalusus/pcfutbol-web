@@ -1505,5 +1505,52 @@
     "aperturaClausuraFinalResult": "🏆 Final Apertura vs Clausura",
     "aperturaClausuraFinalResultContent": "{{winner}} gana la final de la {{league}}. Ida: {{leg1Home}}-{{leg1Away}}, Vuelta: {{leg2Home}}-{{leg2Away}}.",
     "directChampionShort": "{{winner}} es campeón directo."
+  },
+  "proManager": {
+    "title": "ProManager",
+    "menuSubtitle": "Carrera de entrenador desde abajo",
+    "chooseCountry": "Elige un país para empezar tu carrera",
+    "chooseTeam": "Elige un equipo para dirigir",
+    "leagues": "ligas",
+    "newOffers": "Nuevas ofertas",
+    "noOffers": "No hay ofertas disponibles. Prueba otro país.",
+    "startCareer": "Iniciar Carrera",
+    "activeCareer": "Carrera activa",
+    "dashboard": "ProManager",
+    "boardConfidence": "Confianza de la directiva",
+    "objective": "Objetivo",
+    "prestige": "Prestigio",
+    "matches": "PJ",
+    "wins": "PG",
+    "titles": "Títulos",
+    "board": {
+      "happy": "La directiva está encantada con tu trabajo.",
+      "neutral": "La directiva sigue tu progreso con atención.",
+      "concerned": "La directiva empieza a cuestionar tus decisiones.",
+      "warning": "⚠️ ¡La directiva está considerando tu destitución!",
+      "fired": "La directiva ha decidido prescindir de tus servicios."
+    },
+    "objectives": {
+      "winLeague": "Ganar la liga",
+      "topTwo": "Terminar en el Top 2",
+      "european": "Clasificarse para Europa (Top {{position}})",
+      "topHalf": "Mitad superior de la tabla",
+      "avoidRelegation": "Evitar el descenso",
+      "midTable": "Mitad de tabla"
+    },
+    "seasonEnd": {
+      "title": "Fin de Temporada",
+      "champion": "¡Campeón! Temporada extraordinaria.",
+      "exceeded": "Has superado las expectativas de la directiva.",
+      "met": "Objetivo cumplido. Buen trabajo.",
+      "close": "Cerca del objetivo, pero no fue suficiente.",
+      "failed": "No has cumplido el objetivo de la directiva.",
+      "viewOffers": "Ver ofertas de trabajo",
+      "jobOffers": "Ofertas de trabajo",
+      "renewWith": "Renovar con {{team}}",
+      "renew": "Renovar",
+      "noExternalOffers": "No hay ofertas externas en este momento.",
+      "retire": "Retirarse"
+    }
   }
 }

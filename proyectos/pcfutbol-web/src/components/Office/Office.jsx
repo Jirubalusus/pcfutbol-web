@@ -48,6 +48,7 @@ import ManagerFired from '../ManagerFired/ManagerFired';
 import Europe from '../Europe/Europe';
 import Cup from '../Cup/Cup';
 import Competitions from '../Competitions/Competitions';
+import ProManagerDashboard from '../ProManager/ProManagerDashboard';
 import { isSeasonOver } from '../../game/seasonManager';
 import { getWinterWindowRange } from '../../game/globalTransferEngine';
 import { getPlayerCompetition, isTeamAlive } from '../../game/europeanSeason';
@@ -673,6 +674,7 @@ export default function Office() {
     
     return (
       <div className="office__overview">
+        {state.gameMode === 'promanager' && <ProManagerDashboard />}
         <div className="office__welcome">
           <h2>{t('office.welcome')}</h2>
           <p>{t('office.seasonInfo', { season: state.currentSeason })} · {state.preseasonPhase ? t('office.preseason', { week: state.preseasonWeek, total: state.preseasonMatches?.length || 5 }) : t('office.weekInfo', { week: state.currentWeek })}</p>
@@ -929,7 +931,10 @@ export default function Office() {
         allTeams={getAllTeams()} 
         onComplete={() => {
           setShowSeasonEnd(false);
-          // La nueva temporada se iniciará con los nuevos fixtures generados
+          // In ProManager mode, show the season end screen with offers
+          if (state.gameMode === 'promanager') {
+            dispatch({ type: 'SET_SCREEN', payload: 'promanager_season_end' });
+          }
         }}
       />
     );

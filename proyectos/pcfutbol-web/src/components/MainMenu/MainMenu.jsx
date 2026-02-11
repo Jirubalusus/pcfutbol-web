@@ -6,9 +6,10 @@ import Settings from '../Settings/Settings';
 import Auth from '../Auth/Auth';
 import SaveSlots from '../SaveSlots/SaveSlots';
 import { hasActiveContrarreloj, getContrarrelojSave, deleteContrarrelojSave } from '../../firebase/contrarrelojSaveService';
+import { hasActiveProManager, getProManagerSave, deleteProManagerSave } from '../../firebase/proManagerService';
 import { 
   Play, LogIn, LogOut, Save, Trophy, Settings as SettingsIcon, 
-  Lightbulb, User, Gamepad2, ChevronRight, Timer, Swords
+  Lightbulb, User, Gamepad2, ChevronRight, Timer, Swords, Briefcase
 } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
 import './MainMenu.scss';
@@ -28,6 +29,11 @@ export default function MainMenu() {
   const [contrarrelojInfo, setContrarrelojInfo] = useState({ hasActive: false, summary: null });
   const [showContrarrelojPrompt, setShowContrarrelojPrompt] = useState(false);
   const [loadingContrarreloj, setLoadingContrarreloj] = useState(false);
+  
+  // ProManager state
+  const [proManagerInfo, setProManagerInfo] = useState({ hasActive: false, summary: null });
+  const [showProManagerPrompt, setShowProManagerPrompt] = useState(false);
+  const [loadingProManager, setLoadingProManager] = useState(false);
   
   useEffect(() => {
     setTimeout(() => setAnimateIn(true), 100);
@@ -64,6 +70,32 @@ export default function MainMenu() {
       setContrarrelojInfo({ hasActive: false, summary: null });
     }
   }, [isAuthenticated, user?.uid, isContrarrelojInMemory]);
+
+  // Detect active ProManager
+  const isProManagerInMemory = state.gameStarted && state.gameMode === 'promanager' && !state.proManagerData?.finished;
+
+  useEffect(() => {
+    if (isProManagerInMemory) {
+      setProManagerInfo({
+        hasActive: true,
+        source: 'memory',
+        summary: {
+          teamName: state.team?.name || 'Unknown',
+          teamId: state.teamId,
+          season: state.proManagerData?.seasonsManaged || 1,
+          prestige: state.proManagerData?.prestige || 10,
+        }
+      });
+      return;
+    }
+    if (isAuthenticated && user?.uid) {
+      hasActiveProManager(user.uid)
+        .then(info => setProManagerInfo(info))
+        .catch(() => setProManagerInfo({ hasActive: false, summary: null }));
+    } else {
+      setProManagerInfo({ hasActive: false, summary: null });
+    }
+  }, [isAuthenticated, user?.uid, isProManagerInMemory]);
 
   // Cerrar Auth cuando el usuario se autentique
   useEffect(() => {
@@ -129,6 +161,52 @@ export default function MainMenu() {
     }
     setLoadingContrarreloj(false);
     setShowContrarrelojPrompt(false);
+  };
+
+  // ProManager handlers
+  const handleProManager = () => {
+    if (!isAuthenticated) {
+      setShowAuth(true);
+      return;
+    }
+    if (proManagerInfo.hasActive) {
+      setShowProManagerPrompt(true);
+    } else {
+      dispatch({ type: 'SET_SCREEN', payload: 'promanager_setup' });
+    }
+  };
+
+  const handleProManagerContinue = async () => {
+    if (isProManagerInMemory) {
+      dispatch({ type: 'SET_SCREEN', payload: 'office' });
+      setShowProManagerPrompt(false);
+      return;
+    }
+    if (!user?.uid) return;
+    setLoadingProManager(true);
+    try {
+      const saveData = await getProManagerSave(user.uid);
+      if (saveData) {
+        dispatch({ type: 'LOAD_SAVE', payload: { ...saveData, _proManagerUserId: user.uid } });
+        dispatch({ type: 'SET_SCREEN', payload: 'office' });
+      }
+    } catch (err) {
+      console.error('Error loading ProManager save:', err);
+    }
+    setLoadingProManager(false);
+    setShowProManagerPrompt(false);
+  };
+
+  const handleProManagerNew = async () => {
+    if (user?.uid) {
+      try { await deleteProManagerSave(user.uid); } catch { /* skip */ }
+    }
+    if (isProManagerInMemory) {
+      dispatch({ type: 'RESET_GAME' });
+    }
+    setProManagerInfo({ hasActive: false, summary: null });
+    setShowProManagerPrompt(false);
+    dispatch({ type: 'SET_SCREEN', payload: 'promanager_setup' });
   };
 
   const handleContrarrelojNew = async () => {
@@ -339,6 +417,30 @@ export default function MainMenu() {
             </button>
           )}
 
+          {isAuthenticated && (
+            <button
+              className="main-menu__btn main-menu__btn--promanager"
+              onClick={handleProManager}
+              style={{ '--delay': state.gameStarted ? '5' : '3' }}
+            >
+              <div className="btn-content">
+                <span className="icon-wrapper icon-wrapper--promanager">
+                  <Briefcase size={22} />
+                </span>
+                <div className="text">
+                  <span className="label">{t('proManager.title')}</span>
+                  <span className="sublabel">
+                    {proManagerInfo.hasActive
+                      ? `${proManagerInfo.summary?.teamName} · ${t('proManager.prestige')} ${proManagerInfo.summary?.prestige}`
+                      : t('proManager.menuSubtitle')
+                    }
+                  </span>
+                </div>
+                <ChevronRight size={18} className="chevron" />
+              </div>
+            </button>
+          )}
+
           <div className="main-menu__secondary">
             <button 
               className="main-menu__btn main-menu__btn--small"
@@ -390,6 +492,42 @@ export default function MainMenu() {
                   className="btn-new" 
                   onClick={handleContrarrelojNew}
                 >
+                  {t('mainMenu.newGame')}
+                </button>
+              </div>
+              <p className="contrarreloj-prompt__warning">
+                {t('mainMenu.deleteWarning')}
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* ProManager prompt */}
+        {showProManagerPrompt && (
+          <div className="main-menu__contrarreloj-prompt">
+            <div className="contrarreloj-prompt__overlay" onClick={() => setShowProManagerPrompt(false)} />
+            <div className="contrarreloj-prompt__card">
+              <div className="contrarreloj-prompt__header">
+                <Briefcase size={24} />
+                <h3>{t('proManager.activeCareer')}</h3>
+              </div>
+              <div className="contrarreloj-prompt__info">
+                <p className="team-name">{proManagerInfo.summary?.teamName}</p>
+                <p className="details">
+                  {t('common.season')} {proManagerInfo.summary?.season}
+                  {proManagerInfo.summary?.prestige != null && ` · ⭐ ${proManagerInfo.summary.prestige}`}
+                </p>
+              </div>
+              <div className="contrarreloj-prompt__actions">
+                <button
+                  className="btn-continue"
+                  onClick={handleProManagerContinue}
+                  disabled={loadingProManager}
+                >
+                  <Play size={18} />
+                  {loadingProManager ? t('common.loading') : t('common.continue')}
+                </button>
+                <button className="btn-new" onClick={handleProManagerNew}>
                   {t('mainMenu.newGame')}
                 </button>
               </div>

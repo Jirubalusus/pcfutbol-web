@@ -1,0 +1,293 @@
+@use "sass:math";
+
+.promanager-setup {
+  min-height: 100dvh;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+
+  &__bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+  }
+
+  &__gradient {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(100, 149, 237, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 40% at 100% 100%, rgba(65, 105, 225, 0.1) 0%, transparent 50%),
+      linear-gradient(180deg, #0a0f1a 0%, #0d1530 40%, #0a0f1a 100%);
+  }
+
+  &__particles {
+    position: absolute;
+    inset: 0;
+    .particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: #6495ed;
+      border-radius: 50%;
+      opacity: 0;
+      animation: pmFloatParticle 6s infinite;
+      @for $i from 0 through 5 {
+        &--#{$i} {
+          left: #{math.random(90)}#{"%"};
+          top: #{math.random(90)}#{"%"};
+          animation-delay: #{$i * 0.8}s;
+        }
+      }
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1.5rem;
+    padding-top: calc(env(safe-area-inset-top, 0px) + 1.5rem);
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 2rem);
+
+    @media (max-width: 768px) {
+      padding: 1rem;
+      padding-top: calc(env(safe-area-inset-top, 0px) + 1rem);
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #8899aa;
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      min-height: 44px;
+      transition: all 0.2s;
+      &:hover { background: rgba(255, 255, 255, 0.1); color: #fff; }
+    }
+
+    .header-info {
+      flex: 1;
+      h1 {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.4rem;
+        color: #fff;
+        margin: 0;
+        svg { color: #6495ed; }
+      }
+      p {
+        color: #8899aa;
+        font-size: 0.9rem;
+        margin: 0.25rem 0 0;
+      }
+    }
+  }
+
+  // Country selection
+  &__countries {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 0.75rem;
+
+    @media (max-width: 400px) {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+  }
+
+  .country-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 1rem 0.75rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #fff;
+    min-height: 44px;
+    position: relative;
+
+    &:hover, &:active {
+      background: rgba(100, 149, 237, 0.12);
+      border-color: rgba(100, 149, 237, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .country-flag {
+      font-size: 2rem;
+    }
+
+    .country-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .country-leagues {
+      font-size: 0.7rem;
+      color: #8899aa;
+    }
+
+    .chevron {
+      position: absolute;
+      right: 0.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #556677;
+    }
+  }
+
+  // Offers
+  &__offers {
+    .offers-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+
+      .country-badge {
+        font-size: 1rem;
+        color: #fff;
+        font-weight: 600;
+      }
+
+      .btn-reroll {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #8899aa;
+        padding: 0.4rem 0.75rem;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.8rem;
+        min-height: 44px;
+        transition: all 0.2s;
+        &:hover { background: rgba(255, 255, 255, 0.1); color: #fff; }
+      }
+    }
+
+    .no-offers {
+      color: #8899aa;
+      text-align: center;
+      padding: 2rem;
+    }
+  }
+
+  .offers-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .offer-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 2px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #fff;
+    text-align: left;
+    width: 100%;
+
+    &:hover { background: rgba(100, 149, 237, 0.08); }
+
+    &--selected {
+      border-color: #6495ed;
+      background: rgba(100, 149, 237, 0.12);
+    }
+
+    &__header {
+      h3 {
+        font-size: 1.05rem;
+        margin: 0;
+      }
+      .league-name {
+        font-size: 0.75rem;
+        color: #8899aa;
+      }
+    }
+
+    &__stats {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+
+      .stat {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        font-size: 0.8rem;
+        color: #aabbcc;
+        svg { color: #6495ed; }
+      }
+
+      .money { color: #4ade80; }
+    }
+
+    &__objective {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.8rem;
+      color: #f59e0b;
+      padding: 0.35rem 0.6rem;
+      background: rgba(245, 158, 11, 0.1);
+      border-radius: 6px;
+      width: fit-content;
+      svg { flex-shrink: 0; }
+    }
+  }
+
+  .btn-start {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 1rem;
+    margin-top: 1.25rem;
+    background: linear-gradient(135deg, #4169e1, #6495ed);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    min-height: 52px;
+    transition: all 0.2s;
+
+    &:hover:not(:disabled) { transform: translateY(-1px); filter: brightness(1.1); }
+    &:disabled { opacity: 0.5; cursor: not-allowed; }
+  }
+}
+
+@keyframes pmFloatParticle {
+  0%, 100% { opacity: 0; transform: translateY(0); }
+  50% { opacity: 0.6; transform: translateY(-20px); }
+}

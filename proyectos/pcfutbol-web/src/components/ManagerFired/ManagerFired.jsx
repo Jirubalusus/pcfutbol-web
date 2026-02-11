@@ -18,6 +18,15 @@ export default function ManagerFired() {
     return null;
   }
   
+  // In ProManager mode, go to season end with fired status
+  if (state.gameMode === 'promanager') {
+    if (state.proManagerData) {
+      dispatch({ type: 'SET_PROMANAGER_DATA', payload: { ...state.proManagerData, fired: true, boardConfidence: 0 } });
+    }
+    dispatch({ type: 'SET_SCREEN', payload: 'promanager_season_end' });
+    return null;
+  }
+  
   const handleBackToMenu = () => {
     dispatch({ type: 'RESET_GAME' });
     dispatch({ type: 'SET_SCREEN', payload: 'main_menu' });
