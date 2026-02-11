@@ -113,6 +113,12 @@ export default function RankedLobby() {
   const tier = player ? getTierByLP(player.totalLP || 0) : null;
   const lpInDiv = player ? getLPInDivision(player.totalLP || 0) : 0;
 
+  // If user logged out, go back to menu
+  if (!user?.uid) {
+    dispatch({ type: 'SET_SCREEN', payload: 'menu' });
+    return null;
+  }
+
   if (loading) {
     return (
       <div className="ranked-lobby">

@@ -48,6 +48,13 @@ export default function RankedMatch() {
   
   const matchId = state.rankedMatchId;
 
+  // If user logged out, go back to menu
+  useEffect(() => {
+    if (!user?.uid) {
+      dispatch({ type: 'SET_SCREEN', payload: 'menu' });
+    }
+  }, [user?.uid]);
+
   // Listen to match changes
   useEffect(() => {
     if (!matchId) return;

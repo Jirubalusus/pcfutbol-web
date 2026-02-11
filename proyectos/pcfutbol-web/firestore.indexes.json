@@ -1,0 +1,38 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "ranked_queue",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "status", "order": "ASCENDING" },
+        { "fieldPath": "joinedAt", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "ranked_players",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "totalLP", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "ranked_matches",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "player1.uid", "order": "ASCENDING" },
+        { "fieldPath": "phase", "order": "ASCENDING" },
+        { "fieldPath": "createdAt", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "ranked_matches",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "player2.uid", "order": "ASCENDING" },
+        { "fieldPath": "phase", "order": "ASCENDING" },
+        { "fieldPath": "createdAt", "order": "DESCENDING" }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

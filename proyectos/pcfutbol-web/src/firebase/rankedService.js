@@ -116,13 +116,12 @@ export function onQueueChange(uid, callback) {
   });
 }
 
-// Find closest LP opponent in queue
+// Find closest LP opponent in queue (simple query, no composite index needed)
 export async function findOpponent(uid, totalLP) {
+  // Simple query: just get all waiting entries (queue is small)
   const q = query(
     collection(db, QUEUE_COL),
     where('status', '==', 'waiting'),
-    orderBy('joinedAt', 'asc'),
-    limit(20)
   );
   const snap = await getDocs(q);
   let best = null;
@@ -733,27 +732,23 @@ export async function getLeaderboard(limitCount = 100) {
 
 // ── Match History ──
 export async function getMatchHistory(uid, limitCount = 20) {
-  // Firestore doesn't support OR queries easily, do 2 queries
+  // Simple queries without composite indexes
   try {
     const q1 = query(
       collection(db, MATCHES_COL),
       where('player1.uid', '==', uid),
-      where('phase', '==', 'results'),
-      orderBy('createdAt', 'desc'),
-      limit(limitCount)
+      limit(50)
     );
     const q2 = query(
       collection(db, MATCHES_COL),
       where('player2.uid', '==', uid),
-      where('phase', '==', 'results'),
-      orderBy('createdAt', 'desc'),
-      limit(limitCount)
+      limit(50)
     );
     const [s1, s2] = await Promise.all([getDocs(q1), getDocs(q2)]);
     const matches = [
       ...s1.docs.map(d => ({ id: d.id, ...d.data() })),
       ...s2.docs.map(d => ({ id: d.id, ...d.data() })),
-    ];
+    ].filter(m => m.phase === 'results'); // Filter client-side
     matches.sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
     return matches.slice(0, limitCount);
   } catch(e) {

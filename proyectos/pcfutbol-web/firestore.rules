@@ -15,6 +15,55 @@ service cloud.firestore {
       allow write: if false;
     }
 
+    // User saves: only own data
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    match /users/{userId}/{sub=**} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Contrarreloj saves: only own data
+    match /contrarreloj_saves/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Contrarreloj ranking: authenticated can read all, write own
+    match /contrarreloj_ranking/{docId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    // === RANKED 1v1 ===
+
+    // Ranked queue: authenticated users can manage their own entry
+    match /ranked_queue/{userId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && request.auth.uid == userId;
+      allow delete: if request.auth != null; // Allow removing opponent from queue on match creation
+    }
+
+    // Ranked matches: participants can read/write
+    match /ranked_matches/{matchId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null;
+      allow update: if request.auth != null;
+    }
+
+    // Ranked players: own profile read/write, others read
+    match /ranked_players/{userId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && request.auth.uid == userId;
+      allow update: if request.auth != null; // Allow LP updates from match results
+    }
+
+    // Editions
+    match /editions/{docId} {
+      allow read: if true;
+      allow create: if request.auth != null;
+    }
+
     // Default: deny everything else
     match /{document=**} {
       allow read, write: if false;
