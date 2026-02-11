@@ -15,6 +15,7 @@ import {
 import { simulateMatch, updateTable, simulateWeekMatches, calculateTeamStrength, FORMATIONS, TACTICS } from '../../game/leagueEngine';
 import { simulateOtherLeaguesWeek } from '../../game/multiLeagueEngine';
 import { calculateMatchAttendance, calculateMatchIncome } from '../../game/stadiumEconomy';
+import { calculateBoardConfidence } from '../../game/proManagerEngine';
 import { Flame, Star, Square, HeartPulse, Ticket, Building2, SkipForward, Circle } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
 import './MatchDay.scss';
@@ -544,9 +545,53 @@ export default function MatchDay({ onComplete }) {
       }
     });
     
-    // Add message (pretemporada y liga)
+    // Update ProManager board confidence after official matches
     const playerScore = isHome ? matchResult.homeScore : matchResult.awayScore;
     const opponentScore = isHome ? matchResult.awayScore : matchResult.homeScore;
+    
+    if (state.gameMode === 'promanager' && state.proManagerData && !isPreseason) {
+      const matchResultType = playerScore > opponentScore ? 'win' : playerScore < opponentScore ? 'loss' : 'draw';
+      const pm = state.proManagerData;
+      const leaguePos = (state.leagueTable?.findIndex(t => t.teamId === state.teamId) + 1) || 10;
+      const totalTeams = state.leagueTable?.length || 20;
+      
+      const newWinStreak = matchResultType === 'win' ? (pm.winStreak || 0) + 1 : 0;
+      const newLossStreak = matchResultType === 'loss' ? (pm.lossStreak || 0) + 1 : 0;
+      
+      const newConfidence = calculateBoardConfidence(pm.boardConfidence ?? 60, {
+        matchResult: matchResultType,
+        leaguePosition: leaguePos,
+        objective: pm.objective,
+        totalTeams,
+        winStreak: newWinStreak,
+        lossStreak: newLossStreak,
+      });
+      
+      dispatch({
+        type: 'UPDATE_PROMANAGER_CONFIDENCE',
+        payload: {
+          boardConfidence: newConfidence,
+          winStreak: newWinStreak,
+          lossStreak: newLossStreak,
+          totalMatches: (pm.totalMatches || 0) + 1,
+          totalWins: (pm.totalWins || 0) + (matchResultType === 'win' ? 1 : 0),
+          totalDraws: (pm.totalDraws || 0) + (matchResultType === 'draw' ? 1 : 0),
+          totalLosses: (pm.totalLosses || 0) + (matchResultType === 'loss' ? 1 : 0),
+        }
+      });
+      
+      // Check if fired (confidence <= 0)
+      if (newConfidence <= 0) {
+        dispatch({
+          type: 'SET_PROMANAGER_DATA',
+          payload: { ...pm, fired: true, boardConfidence: 0 }
+        });
+        dispatch({ type: 'SET_SCREEN', payload: 'promanager_season_end' });
+        return;
+      }
+    }
+
+    // Add message (pretemporada y liga)
     const resultText = playerScore > opponentScore ? '¡Victoria!' : 
                        playerScore < opponentScore ? 'Derrota' : 'Empate';
     

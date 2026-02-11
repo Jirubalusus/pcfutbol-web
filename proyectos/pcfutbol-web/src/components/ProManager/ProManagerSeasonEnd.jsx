@@ -6,7 +6,12 @@ import {
   evaluateSeason, updatePrestige, generateSeasonEndOffers,
   getSeasonEndConfidence, getBoardObjective
 } from '../../game/proManagerEngine';
-import { LEAGUE_CONFIG } from '../../game/multiLeagueEngine';
+import { LEAGUE_CONFIG, initializeOtherLeagues } from '../../game/multiLeagueEngine';
+import { initializeLeague } from '../../game/leagueEngine';
+import { getStadiumInfo, getStadiumLevel } from '../../data/stadiumCapacities';
+import { generatePreseasonOptions } from '../../game/seasonManager';
+import { getLeagueTier } from '../../game/leagueTiers';
+import { getCupTeams, generateCupBracket } from '../../game/cupSystem';
 import {
   getLaLigaTeams, getSegundaTeams, getPremierTeams, getSerieATeams,
   getBundesligaTeams, getLigue1Teams, getEredivisieTeams, getPrimeiraLigaTeams,
@@ -123,10 +128,29 @@ export default function ProManagerSeasonEnd() {
   };
 
   const handleAcceptOffer = (offer) => {
-    // This triggers a team change - dispatch new game with new team
-    const leagueId = offer.leagueId;
-    const objective = offer.objective;
+    const { team, leagueId, objective } = offer;
 
+    // Initialize league for the new team
+    const leagueEntry = Object.entries(LEAGUE_CONFIG).find(([id]) => id === leagueId);
+    if (!leagueEntry) return;
+    const [, config] = leagueEntry;
+    const getter = ALL_LEAGUE_GETTERS[leagueId] || config.getTeams;
+    if (!getter) return;
+
+    let leagueTeams;
+    try { leagueTeams = getter(); } catch { return; }
+
+    const leagueData = initializeLeague(leagueTeams, team.id);
+    const stadiumInfo = getStadiumInfo(team.id, team.reputation);
+    const stadiumLevel = getStadiumLevel(stadiumInfo.capacity);
+
+    // First switch team (resets state)
+    dispatch({
+      type: 'PROMANAGER_SWITCH_TEAM',
+      payload: { team, leagueId, _proManagerUserId: user?.uid || null }
+    });
+
+    // Set ProManager data with updated career history
     dispatch({
       type: 'SET_PROMANAGER_DATA',
       payload: {
@@ -138,7 +162,7 @@ export default function ProManagerSeasonEnd() {
         fired: false,
         winStreak: 0,
         lossStreak: 0,
-        currentTeamId: offer.team.id,
+        currentTeamId: team.id,
         currentLeagueId: leagueId,
         careerHistory: [...(pm.careerHistory || []), {
           season: pm.seasonsManaged || 1,
@@ -150,15 +174,22 @@ export default function ProManagerSeasonEnd() {
       }
     });
 
-    // Trigger team switch - the game context will handle this
-    dispatch({
-      type: 'PROMANAGER_SWITCH_TEAM',
-      payload: {
-        team: offer.team,
-        leagueId,
-        _proManagerUserId: user?.uid || null,
+    // Initialize league, fixtures, other leagues
+    dispatch({ type: 'SET_LEAGUE_TABLE', payload: leagueData.table });
+    dispatch({ type: 'SET_FIXTURES', payload: leagueData.fixtures });
+    dispatch({ type: 'SET_PLAYER_LEAGUE', payload: leagueId });
+
+    const otherLeagues = initializeOtherLeagues(leagueId, null);
+    dispatch({ type: 'SET_OTHER_LEAGUES', payload: otherLeagues });
+
+    // Cup
+    try {
+      const cupTeams = getCupTeams(leagueId, null, leagueTeams);
+      if (cupTeams?.length >= 4) {
+        const bracket = generateCupBracket(cupTeams, team.id);
+        dispatch({ type: 'INIT_CUP', payload: bracket });
       }
-    });
+    } catch { /* skip */ }
   };
 
   const handleRetire = () => {
