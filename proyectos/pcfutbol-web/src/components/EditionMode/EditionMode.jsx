@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../context/AuthContext';
 import { 
@@ -9,7 +9,7 @@ import {
   submitEdition,
   deleteAllSaves
 } from '../../data/editions/editionService';
-import { Download, Check, Trash2, AlertTriangle, ArrowLeft, Package, Upload, FileText, Shield, Eye } from 'lucide-react';
+import { Download, Check, Trash2, AlertTriangle, ArrowLeft, Package, Upload, FileText, Shield, Eye, Loader, RefreshCw, WifiOff } from 'lucide-react';
 import './EditionMode.scss';
 
 export default function EditionMode({ onBack, onEditionApplied }) {
@@ -17,6 +17,7 @@ export default function EditionMode({ onBack, onEditionApplied }) {
   const { user } = useAuth();
   const [editions, setEditions] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(null);
   const [applying, setApplying] = useState(null);
   const [showConfirm, setShowConfirm] = useState(null);
   const [activeEdition, setActiveEditionState] = useState(getActiveEditionId());
@@ -25,17 +26,30 @@ export default function EditionMode({ onBack, onEditionApplied }) {
   const [importError, setImportError] = useState('');
   const [importSuccess, setImportSuccess] = useState('');
   const [previewPack, setPreviewPack] = useState(null);
+  const [submitting, setSubmitting] = useState(false);
+
+  const loadEditions = useCallback(async () => {
+    setLoading(true);
+    setLoadError(null);
+    try {
+      if (!navigator.onLine) {
+        setLoadError('offline');
+        setLoading(false);
+        return;
+      }
+      const list = await getEditions();
+      setEditions(list);
+    } catch (err) {
+      console.error('Error loading editions:', err);
+      setLoadError('error');
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
   useEffect(() => {
     loadEditions();
-  }, []);
-
-  const loadEditions = async () => {
-    setLoading(true);
-    const list = await getEditions();
-    setEditions(list);
-    setLoading(false);
-  };
+  }, [loadEditions]);
 
   const handleApply = (edition) => {
     setShowConfirm({ action: 'apply', edition });
@@ -48,37 +62,43 @@ export default function EditionMode({ onBack, onEditionApplied }) {
   const confirmAction = async () => {
     if (!showConfirm) return;
     
-    if (showConfirm.action === 'apply') {
-      setApplying(showConfirm.edition.id);
-      
-      // Delete all saves
-      if (user?.uid) {
-        await deleteAllSaves(user.uid);
+    try {
+      if (showConfirm.action === 'apply') {
+        setApplying(showConfirm.edition.id);
+        
+        if (user?.uid) {
+          await deleteAllSaves(user.uid);
+        }
+        
+        setActiveEdition(showConfirm.edition.id);
+        setActiveEditionState(showConfirm.edition.id);
+        
+        setApplying(null);
+        setShowConfirm(null);
+        
+        if (onEditionApplied) {
+          onEditionApplied(showConfirm.edition);
+        }
+      } else if (showConfirm.action === 'remove') {
+        setApplying('removing');
+        
+        if (user?.uid) {
+          await deleteAllSaves(user.uid);
+        }
+        
+        clearActiveEdition();
+        setActiveEditionState(null);
+        setApplying(null);
+        setShowConfirm(null);
+        
+        if (onEditionApplied) {
+          onEditionApplied(null);
+        }
       }
-      
-      // Set active edition
-      setActiveEdition(showConfirm.edition.id);
-      setActiveEditionState(showConfirm.edition.id);
-      
+    } catch (err) {
+      console.error('Error during edition action:', err);
       setApplying(null);
       setShowConfirm(null);
-      
-      if (onEditionApplied) {
-        onEditionApplied(showConfirm.edition);
-      }
-    } else if (showConfirm.action === 'remove') {
-      // Delete all saves
-      if (user?.uid) {
-        await deleteAllSaves(user.uid);
-      }
-      
-      clearActiveEdition();
-      setActiveEditionState(null);
-      setShowConfirm(null);
-      
-      if (onEditionApplied) {
-        onEditionApplied(null);
-      }
     }
   };
 
@@ -90,9 +110,13 @@ export default function EditionMode({ onBack, onEditionApplied }) {
         setImportError(t('edition.invalidFormat'));
         return;
       }
+      if (Object.keys(data.teams).length === 0) {
+        setImportError(t('edition.noTeams'));
+        return;
+      }
       const teamCount = Object.keys(data.teams).length;
-      const playerCount = Object.values(data.teams).reduce((sum, t) => 
-        sum + (t.players ? Object.keys(t.players).length : 0), 0
+      const playerCount = Object.values(data.teams).reduce((sum, team) => 
+        sum + (team.players ? Object.keys(team.players).length : 0), 0
       );
       setPreviewPack({ ...data, teamCount, playerCount });
     } catch (err) {
@@ -101,20 +125,34 @@ export default function EditionMode({ onBack, onEditionApplied }) {
   };
 
   const handleSubmitPack = async () => {
-    if (!previewPack) return;
+    if (!previewPack || submitting) return;
     setImportError('');
+    setSubmitting(true);
     
-    const pendingId = await submitEdition({
-      ...previewPack,
-      id: previewPack.id || `pack_${Date.now()}`
-    }, user?.uid);
-    
-    if (pendingId) {
-      setImportSuccess('✅ ' + t('edition.submittedSuccess'));
-      setImportText('');
-      setPreviewPack(null);
-    } else {
+    try {
+      if (!navigator.onLine) {
+        setImportError(t('edition.offline'));
+        setSubmitting(false);
+        return;
+      }
+      
+      const pendingId = await submitEdition({
+        ...previewPack,
+        id: previewPack.id || `pack_${Date.now()}`
+      }, user?.uid);
+      
+      if (pendingId) {
+        setImportSuccess('✅ ' + t('edition.submittedSuccess'));
+        setImportText('');
+        setPreviewPack(null);
+      } else {
+        setImportError(t('edition.submitError'));
+      }
+    } catch (err) {
+      console.error('Error submitting pack:', err);
       setImportError(t('edition.submitError'));
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -144,8 +182,25 @@ export default function EditionMode({ onBack, onEditionApplied }) {
             <div>
               <strong>{activeEditionData.name}</strong>
               <span className="edition-mode__active-meta">
-                {activeEditionData.teamCount} equipos · {activeEditionData.playerCount} jugadores
+                {activeEditionData.teamCount} {t('edition.teams')} · {activeEditionData.playerCount} {t('edition.players')}
               </span>
+            </div>
+          </div>
+          <button onClick={handleRemove} className="edition-mode__remove-btn">
+            <Trash2 size={14} />
+            {t('edition.remove')}
+          </button>
+        </div>
+      )}
+
+      {/* Active edition indicator when data hasn't loaded yet */}
+      {activeEdition && !activeEditionData && !loading && (
+        <div className="edition-mode__active edition-mode__active--pending">
+          <div className="edition-mode__active-info">
+            <Check size={18} />
+            <div>
+              <strong>{activeEdition}</strong>
+              <span className="edition-mode__active-meta">{t('edition.active')}</span>
             </div>
           </div>
           <button onClick={handleRemove} className="edition-mode__remove-btn">
@@ -166,7 +221,28 @@ export default function EditionMode({ onBack, onEditionApplied }) {
         <h2>📦 {t('edition.availablePacks')}</h2>
         
         {loading ? (
-          <div className="edition-mode__loading">{t('edition.loading')}</div>
+          <div className="edition-mode__loading">
+            <Loader size={24} className="edition-mode__spinner" />
+            <p>{t('edition.loading')}</p>
+          </div>
+        ) : loadError === 'offline' ? (
+          <div className="edition-mode__empty edition-mode__empty--error">
+            <WifiOff size={40} />
+            <p>{t('edition.offlineMsg') || 'Sin conexión a internet'}</p>
+            <button className="edition-mode__retry-btn" onClick={loadEditions}>
+              <RefreshCw size={16} />
+              {t('edition.retry') || 'Reintentar'}
+            </button>
+          </div>
+        ) : loadError === 'error' ? (
+          <div className="edition-mode__empty edition-mode__empty--error">
+            <AlertTriangle size={40} />
+            <p>{t('edition.loadError') || 'Error al cargar los packs'}</p>
+            <button className="edition-mode__retry-btn" onClick={loadEditions}>
+              <RefreshCw size={16} />
+              {t('edition.retry') || 'Reintentar'}
+            </button>
+          </div>
         ) : editions.length === 0 ? (
           <div className="edition-mode__empty">
             <FileText size={40} />
@@ -174,40 +250,46 @@ export default function EditionMode({ onBack, onEditionApplied }) {
             <p className="edition-mode__empty-hint">{t('edition.noPacksHint')}</p>
           </div>
         ) : (
-          editions.map(edition => (
-            <div 
-              key={edition.id} 
-              className={`edition-mode__card ${activeEdition === edition.id ? 'edition-mode__card--active' : ''}`}
-            >
-              <div className="edition-mode__card-info">
-                <h3>{edition.name}</h3>
-                {edition.description && <p className="edition-mode__card-desc">{edition.description}</p>}
-                <div className="edition-mode__card-meta">
-                  <span>👤 {edition.author || 'PC Gaffer'}</span>
-                  <span>⚽ {edition.teamCount || '?'} equipos</span>
-                  <span>🏃 {edition.playerCount || '?'} jugadores</span>
-                  {edition.version && <span>v{edition.version}</span>}
+          <div className="edition-mode__cards">
+            {editions.map(edition => (
+              <div 
+                key={edition.id} 
+                className={`edition-mode__card ${activeEdition === edition.id ? 'edition-mode__card--active' : ''}`}
+              >
+                <div className="edition-mode__card-info">
+                  <h3>{edition.name}</h3>
+                  {edition.description && <p className="edition-mode__card-desc">{edition.description}</p>}
+                  <div className="edition-mode__card-meta">
+                    <span>👤 {edition.author || 'PC Gaffer'}</span>
+                    <span>⚽ {edition.teamCount || '?'} {t('edition.teams')}</span>
+                    <span>🏃 {edition.playerCount || '?'} {t('edition.players')}</span>
+                    {edition.version && <span>v{edition.version}</span>}
+                  </div>
+                </div>
+                <div className="edition-mode__card-actions">
+                  {activeEdition === edition.id ? (
+                    <div className="edition-mode__btn edition-mode__btn--active">
+                      <Check size={16} />
+                      {t('edition.active')}
+                    </div>
+                  ) : (
+                    <button 
+                      className="edition-mode__btn edition-mode__btn--apply"
+                      onClick={() => handleApply(edition)}
+                      disabled={applying === edition.id}
+                    >
+                      {applying === edition.id ? (
+                        <Loader size={16} className="edition-mode__spinner" />
+                      ) : (
+                        <Download size={16} />
+                      )}
+                      {applying === edition.id ? t('edition.applying') : t('edition.apply')}
+                    </button>
+                  )}
                 </div>
               </div>
-              <div className="edition-mode__card-actions">
-                {activeEdition === edition.id ? (
-                  <div className="edition-mode__btn edition-mode__btn--active">
-                    <Check size={16} />
-                    {t('edition.active')}
-                  </div>
-                ) : (
-                  <button 
-                    className="edition-mode__btn edition-mode__btn--apply"
-                    onClick={() => handleApply(edition)}
-                    disabled={applying === edition.id}
-                  >
-                    <Download size={16} />
-                    {applying === edition.id ? t('edition.applying') : t('edition.apply')}
-                  </button>
-                )}
-              </div>
-            </div>
-          ))
+            ))}
+          </div>
         )}
       </div>
 
@@ -230,9 +312,10 @@ export default function EditionMode({ onBack, onEditionApplied }) {
           <div className="edition-mode__import">
             <textarea
               value={importText}
-              onChange={(e) => { setImportText(e.target.value); setPreviewPack(null); }}
+              onChange={(e) => { setImportText(e.target.value); setPreviewPack(null); setImportError(''); }}
               placeholder={t('edition.pasteJson') + '\n\n{\n  "name": "Mi Pack",\n  "teams": {\n    "Nombre Ficticio": {\n      "name": "Nombre Real",\n      "players": { "Ficticio": "Real" }\n    }\n  }\n}'}
-              rows={10}
+              rows={8}
+              spellCheck={false}
             />
             
             {importError && <div className="edition-mode__error">{importError}</div>}
@@ -252,8 +335,8 @@ export default function EditionMode({ onBack, onEditionApplied }) {
                 <h3>{previewPack.name}</h3>
                 {previewPack.description && <p>{previewPack.description}</p>}
                 <div className="edition-mode__card-meta">
-                  <span>⚽ {previewPack.teamCount} equipos</span>
-                  <span>🏃 {previewPack.playerCount} jugadores</span>
+                  <span>⚽ {previewPack.teamCount} {t('edition.teams')}</span>
+                  <span>🏃 {previewPack.playerCount} {t('edition.players')}</span>
                 </div>
                 <div className="edition-mode__preview-sample">
                   <strong>{t('edition.sample')}:</strong>
@@ -263,7 +346,7 @@ export default function EditionMode({ onBack, onEditionApplied }) {
                       <span className="arrow">→</span>
                       <span className="new">{data.name || fictName}</span>
                       {data.players && (
-                        <span className="count">({Object.keys(data.players).length} jugadores)</span>
+                        <span className="count">({Object.keys(data.players).length} {t('edition.players')})</span>
                       )}
                     </div>
                   ))}
@@ -273,9 +356,17 @@ export default function EditionMode({ onBack, onEditionApplied }) {
                     </div>
                   )}
                 </div>
-                <button onClick={handleSubmitPack} className="edition-mode__import-btn edition-mode__import-btn--submit">
-                  <Shield size={16} />
-                  {t('edition.submitForReview')}
+                <button 
+                  onClick={handleSubmitPack} 
+                  className="edition-mode__import-btn edition-mode__import-btn--submit"
+                  disabled={submitting}
+                >
+                  {submitting ? (
+                    <Loader size={16} className="edition-mode__spinner" />
+                  ) : (
+                    <Shield size={16} />
+                  )}
+                  {submitting ? t('edition.applying') : t('edition.submitForReview')}
                 </button>
               </div>
             )}
@@ -285,8 +376,8 @@ export default function EditionMode({ onBack, onEditionApplied }) {
 
       {/* Confirm dialog */}
       {showConfirm && (
-        <div className="edition-mode__overlay">
-          <div className="edition-mode__dialog">
+        <div className="edition-mode__overlay" onClick={() => !applying && setShowConfirm(null)}>
+          <div className="edition-mode__dialog" onClick={e => e.stopPropagation()}>
             <AlertTriangle size={40} className="edition-mode__dialog-icon" />
             {showConfirm.action === 'apply' ? (
               <>
@@ -301,10 +392,21 @@ export default function EditionMode({ onBack, onEditionApplied }) {
             )}
             <p className="edition-mode__dialog-warning">{t('edition.irreversible')}</p>
             <div className="edition-mode__dialog-buttons">
-              <button onClick={() => setShowConfirm(null)} className="edition-mode__btn edition-mode__btn--cancel">
+              <button 
+                onClick={() => setShowConfirm(null)} 
+                className="edition-mode__btn edition-mode__btn--cancel"
+                disabled={!!applying}
+              >
                 {t('edition.cancel')}
               </button>
-              <button onClick={confirmAction} className="edition-mode__btn edition-mode__btn--confirm">
+              <button 
+                onClick={confirmAction} 
+                className="edition-mode__btn edition-mode__btn--confirm"
+                disabled={!!applying}
+              >
+                {applying ? (
+                  <Loader size={16} className="edition-mode__spinner" />
+                ) : null}
                 {showConfirm.action === 'apply' ? t('edition.applyAndDelete') : t('edition.removeAndDelete')}
               </button>
             </div>
