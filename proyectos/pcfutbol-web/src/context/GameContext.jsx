@@ -89,11 +89,7 @@ function getPlayerMarketValueForOffers(player) {
 // Check if we should use local storage (dev mode or ?local=true)
 // On Capacitor (native), always use Firebase even though hostname is localhost
 const isCapacitor = typeof window !== 'undefined' && window.Capacitor && window.Capacitor.isNativePlatform;
-const USE_LOCAL_STORAGE =
-  !isCapacitor && (
-    window.location.search.includes('local=true') ||
-    window.location.hostname === 'localhost'
-  );
+const USE_LOCAL_STORAGE = false; // Always use Firebase
 
 const initialState = {
   // User & Save
@@ -4141,22 +4137,22 @@ export function GameProvider({ children }) {
       return;
     }
 
-    // Debounce: wait 2s after last state change before saving
+    // Save immediately on week/season advance (debounce 500ms to batch rapid changes)
     if (contrarrelojSaveRef.current) clearTimeout(contrarrelojSaveRef.current);
     contrarrelojSaveRef.current = setTimeout(() => {
       const saveData = { ...state };
       delete saveData.loaded;
-      delete saveData._contrarrelojUserId; // don't persist the userId field in state
+      delete saveData._contrarrelojUserId;
 
       saveContrarreloj(state._contrarrelojUserId, saveData)
         .then(() => console.log('⏱️ Contrarreloj auto-saved to Firebase'))
         .catch(err => console.error('Error auto-saving contrarreloj:', err));
-    }, 2000);
+    }, 500);
 
     return () => {
       if (contrarrelojSaveRef.current) clearTimeout(contrarrelojSaveRef.current);
     };
-  }, [state.currentWeek, state.currentSeason, state.money, state.contrarrelojData?.finished, state.gameMode]);
+  }, [state.currentWeek, state.currentSeason, state.money, state.team, state.leagueTable, state.results, state.contrarrelojData?.finished, state.gameMode, state.currentScreen]);
 
   // ============================================================
   // Keep a ref to latest state so event listeners always have fresh data
