@@ -11,6 +11,7 @@ import Office from './components/Office/Office';
 import ContrarrelojSetup from './components/ContrarrelojSetup/ContrarrelojSetup';
 import ContrarrelojEnd from './components/ContrarrelojEnd/ContrarrelojEnd';
 import Ranking from './components/Ranking/Ranking';
+import RankedLobby from './components/Ranked/RankedLobby';
 import { useAudioManager } from './hooks/useAudioManager';
 import { useSoundEffects } from './hooks/useSoundEffects';
 import './index.css';
@@ -73,6 +74,8 @@ function GameRouter() {
             return <ContrarrelojEnd />;
           case 'ranking':
             return <Ranking />;
+          case 'ranked':
+            return <RankedLobby />;
           default:
             return <MainMenu />;
         }
