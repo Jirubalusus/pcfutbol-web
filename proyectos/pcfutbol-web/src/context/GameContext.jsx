@@ -4159,25 +4159,57 @@ export function GameProvider({ children }) {
   }, [state.currentWeek, state.currentSeason, state.money, state.contrarrelojData?.finished, state.gameMode]);
 
   // ============================================================
+  // Keep a ref to latest state so event listeners always have fresh data
+  // ============================================================
+  const stateRef = useRef(state);
+  stateRef.current = state;
+
+  // ============================================================
+  // CONTRARRELOJ: Periodic auto-save every 30 seconds
+  // ============================================================
+  useEffect(() => {
+    if (
+      state.gameMode !== 'contrarreloj' ||
+      !state.gameStarted ||
+      !state._contrarrelojUserId ||
+      state.contrarrelojData?.finished
+    ) return;
+
+    const interval = setInterval(() => {
+      const s = stateRef.current;
+      if (s.gameMode === 'contrarreloj' && s.gameStarted && s._contrarrelojUserId && !s.contrarrelojData?.finished) {
+        const saveData = { ...s };
+        delete saveData.loaded;
+        delete saveData._contrarrelojUserId;
+        saveContrarreloj(s._contrarrelojUserId, saveData)
+          .then(() => console.log('⏱️ Contrarreloj periodic save OK'))
+          .catch(err => console.error('Periodic save error:', err));
+      }
+    }, 30000);
+
+    return () => clearInterval(interval);
+  }, [state.gameMode, state.gameStarted, state._contrarrelojUserId, state.contrarrelojData?.finished]);
+
+  // ============================================================
   // SAVE ON APP CLOSE / BACKGROUND (visibilitychange + Capacitor pause)
-  // Fires immediately (no debounce) so nothing is lost when user kills the app
+  // Uses stateRef to always have the latest state
   // ============================================================
   useEffect(() => {
     const saveOnExit = () => {
+      const s = stateRef.current;
       if (
-        state.gameMode === 'contrarreloj' &&
-        state.gameStarted &&
-        state._contrarrelojUserId &&
-        !state.contrarrelojData?.finished
+        s.gameMode === 'contrarreloj' &&
+        s.gameStarted &&
+        s._contrarrelojUserId &&
+        !s.contrarrelojData?.finished
       ) {
-        const saveData = { ...state };
+        const saveData = { ...s };
         delete saveData.loaded;
         delete saveData._contrarrelojUserId;
-        // Use fire-and-forget — browser may kill the tab before promise resolves
-        saveContrarreloj(state._contrarrelojUserId, saveData).catch(() => {});
+        saveContrarreloj(s._contrarrelojUserId, saveData).catch(() => {});
+        console.log('⏱️ Contrarreloj save-on-exit triggered');
       }
-      // Also save normal game mode
-      if (state.gameStarted && state.gameMode !== 'contrarreloj' && state.settings?.autoSave !== false) {
+      if (s.gameStarted && s.gameMode !== 'contrarreloj' && s.settings?.autoSave !== false) {
         saveGame();
       }
     };
@@ -4188,19 +4220,21 @@ export function GameProvider({ children }) {
 
     document.addEventListener('visibilitychange', handleVisibility);
     window.addEventListener('beforeunload', saveOnExit);
+    window.addEventListener('pagehide', saveOnExit);
 
     // Capacitor App.pause event (Android background)
     let appListener = null;
     import('@capacitor/app').then(({ App }) => {
       App.addListener('pause', saveOnExit).then(l => { appListener = l; }).catch(() => {});
-    }).catch(() => {}); // ignore if not available (web)
+    }).catch(() => {});
 
     return () => {
       document.removeEventListener('visibilitychange', handleVisibility);
       window.removeEventListener('beforeunload', saveOnExit);
+      window.removeEventListener('pagehide', saveOnExit);
       if (appListener) appListener.remove();
     };
-  }, [state]);
+  }, []);
 
   const value = {
     state,
