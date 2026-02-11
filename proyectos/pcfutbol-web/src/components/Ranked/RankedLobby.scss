@@ -1,11 +1,15 @@
 .ranked-lobby {
-  min-height: 100vh;
+  min-height: 100dvh;
   background: linear-gradient(180deg, #0a0f1a 0%, #0d1420 100%);
-  padding: 1.5rem;
-  padding-top: calc(env(safe-area-inset-top, 0px) + 1.5rem);
+  padding: 1rem;
+  padding-top: calc(env(safe-area-inset-top, 0px) + 1rem);
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 1rem);
   color: #e0e0e0;
   max-width: 500px;
   margin: 0 auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  box-sizing: border-box;
 
   &__loading {
     display: flex;
@@ -41,8 +45,14 @@
     border-radius: 10px;
     color: #e0e0e0;
     padding: 8px;
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     transition: all 0.2s;
+    -webkit-tap-highlight-color: transparent;
     &:hover { background: rgba(255,255,255,0.1); }
   }
 
@@ -118,6 +128,7 @@
     justify-content: center;
     gap: 0.75rem;
     padding: 1rem;
+    min-height: 52px;
     background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.08));
     border: 1px solid rgba(16, 185, 129, 0.35);
     border-radius: 14px;
@@ -126,11 +137,16 @@
     font-weight: 700;
     cursor: pointer;
     transition: all 0.3s;
+    -webkit-tap-highlight-color: transparent;
 
     &:hover {
       background: linear-gradient(135deg, rgba(16, 185, 129, 0.3), rgba(16, 185, 129, 0.15));
       box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
       transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: scale(0.98);
     }
   }
 
@@ -158,10 +174,12 @@
       border: 1px solid rgba(255,255,255,0.15);
       color: rgba(255,255,255,0.5);
       padding: 0.5rem 1.5rem;
+      min-height: 44px;
       border-radius: 8px;
       cursor: pointer;
       font-size: 0.85rem;
       transition: all 0.2s;
+      -webkit-tap-highlight-color: transparent;
       &:hover { color: #ef4444; border-color: rgba(239, 68, 68, 0.3); }
     }
   }
@@ -173,6 +191,7 @@
     align-items: center;
     gap: 0.75rem;
     padding: 0.85rem 1rem;
+    min-height: 48px;
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 12px;
@@ -181,6 +200,7 @@
     margin-bottom: 1.5rem;
     transition: all 0.2s;
     font-size: 0.95rem;
+    -webkit-tap-highlight-color: transparent;
 
     svg:first-child { color: #fbbf24; }
     span { flex: 1; text-align: left; }

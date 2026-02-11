@@ -1,11 +1,15 @@
 .ranked-leaderboard {
-  min-height: 100vh;
+  min-height: 100dvh;
   background: linear-gradient(180deg, #0a0f1a 0%, #0d1420 100%);
-  padding: 1.5rem;
-  padding-top: calc(env(safe-area-inset-top, 0px) + 1.5rem);
+  padding: 1rem;
+  padding-top: calc(env(safe-area-inset-top, 0px) + 1rem);
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 1rem);
   color: #e0e0e0;
   max-width: 500px;
   margin: 0 auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  box-sizing: border-box;
 
   &__header {
     display: flex;
@@ -19,7 +23,13 @@
       border-radius: 10px;
       color: #e0e0e0;
       padding: 8px;
+      min-width: 44px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
       &:hover { background: rgba(255,255,255,0.1); }
     }
 
@@ -79,7 +89,8 @@
 
     .lb-info {
       flex: 1;
-      .lb-name { display: block; font-weight: 600; font-size: 0.9rem; }
+      min-width: 0;
+      .lb-name { display: block; font-weight: 600; font-size: 0.9rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
       .lb-tier-name { font-size: 0.75rem; }
     }
 

@@ -145,14 +145,18 @@ export default function RankedMatch() {
 
   const handleSubmitConfig = async () => {
     if (!matchId || !user?.uid) return;
-    const config = { formation, tactic, morale: 75 };
-    await submitRoundConfig(matchId, user.uid, config);
-    setConfigSubmitted(true);
-    
-    // Check if both players submitted
-    if (isPlayer1()) {
-      // Small delay to allow other player's data to sync
-      setTimeout(() => advancePhase(matchId).catch(console.error), 2000);
+    try {
+      const config = { formation, tactic, morale: 75 };
+      await submitRoundConfig(matchId, user.uid, config);
+      setConfigSubmitted(true);
+      
+      // Check if both players submitted
+      if (isPlayer1()) {
+        setTimeout(() => advancePhase(matchId).catch(console.error), 2000);
+      }
+    } catch (e) {
+      console.error('Error submitting config:', e);
+      alert('Error al enviar configuración. Inténtalo de nuevo.');
     }
   };
 

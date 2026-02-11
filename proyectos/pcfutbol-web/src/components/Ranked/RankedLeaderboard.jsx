@@ -11,11 +11,12 @@ export default function RankedLeaderboard() {
   const { dispatch } = useGame();
   const [players, setPlayers] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     getLeaderboard(100)
       .then(setPlayers)
-      .catch(console.error)
+      .catch((e) => { console.error(e); setError('Error al cargar la clasificación'); })
       .finally(() => setLoading(false));
   }, []);
 
@@ -30,6 +31,8 @@ export default function RankedLeaderboard() {
 
       {loading ? (
         <div className="ranked-leaderboard__loading">Cargando...</div>
+      ) : error ? (
+        <div className="ranked-leaderboard__empty">{error}</div>
       ) : players.length === 0 ? (
         <div className="ranked-leaderboard__empty">No hay jugadores aún.</div>
       ) : (

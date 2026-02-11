@@ -721,13 +721,18 @@ export async function claimDisconnectWin(matchId, uid) {
 
 // ── Leaderboard ──
 export async function getLeaderboard(limitCount = 100) {
-  const q = query(
-    collection(db, PLAYERS_COL),
-    orderBy('totalLP', 'desc'),
-    limit(limitCount)
-  );
-  const snap = await getDocs(q);
-  return snap.docs.map((d, i) => ({ id: d.id, rank: i + 1, ...d.data() }));
+  try {
+    const q = query(
+      collection(db, PLAYERS_COL),
+      orderBy('totalLP', 'desc'),
+      limit(limitCount)
+    );
+    const snap = await getDocs(q);
+    return snap.docs.map((d, i) => ({ id: d.id, rank: i + 1, ...d.data() }));
+  } catch (e) {
+    console.error('Error loading leaderboard:', e);
+    return [];
+  }
 }
 
 // ── Match History ──
