@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../context/AuthContext';
 import { useGame } from '../../context/GameContext';
@@ -14,8 +14,10 @@ export default function RankedTimer() {
   const [timeLeft, setTimeLeft] = useState(0);
   const [readyState, setReadyState] = useState({ player1: false, player2: false });
   const [settingReady, setSettingReady] = useState(false);
+  const advancingRef = useRef(false);
 
   const matchId = state.rankedMatchId;
+  const amPlayer1 = match?.player1?.uid === user?.uid;
 
   // Listen to match changes
   useEffect(() => {
@@ -31,7 +33,7 @@ export default function RankedTimer() {
     });
   }, [matchId]);
 
-  // Countdown timer
+  // Countdown timer + auto-advance at 0
   useEffect(() => {
     if (!match?.phaseDeadline) return;
     const tick = () => {
@@ -39,34 +41,30 @@ export default function RankedTimer() {
       const remaining = Math.max(0, Math.floor((deadline.getTime() - Date.now()) / 1000));
       setTimeLeft(remaining);
 
-      // Auto-advance when timer hits 0 (only player1 triggers)
-      if (remaining === 0 && isPlayer1() && ['round1', 'round2'].includes(match.phase)) {
-        advancePhase(matchId).catch(console.error);
+      if (remaining === 0 && amPlayer1 && !advancingRef.current && ['round1', 'round2'].includes(match.phase)) {
+        advancingRef.current = true;
+        advancePhase(matchId).catch(console.error).finally(() => { advancingRef.current = false; });
       }
     };
     tick();
     const interval = setInterval(tick, 1000);
     return () => clearInterval(interval);
-  }, [match?.phaseDeadline, match?.phase]);
+  }, [match?.phaseDeadline, match?.phase, amPlayer1, matchId]);
 
-  // Both ready → trigger simulation
+  // Both ready → trigger simulation immediately
   useEffect(() => {
-    if (!match || !matchId) return;
-    if (readyState.player1 && readyState.player2 && isPlayer1() && ['round1', 'round2'].includes(match.phase)) {
-      advancePhase(matchId).catch(console.error);
+    if (!match || !matchId || advancingRef.current) return;
+    if (readyState.player1 && readyState.player2 && amPlayer1 && ['round1', 'round2'].includes(match.phase)) {
+      advancingRef.current = true;
+      advancePhase(matchId).catch(console.error).finally(() => { advancingRef.current = false; });
     }
-  }, [readyState.player1, readyState.player2, match?.phase]);
-
-  const isPlayer1 = useCallback(() => match?.player1?.uid === user?.uid, [match, user]);
-  const getMyKey = useCallback(() => isPlayer1() ? 'player1' : 'player2', [match, user]);
-  const getRivalData = useCallback(() => isPlayer1() ? match?.player2 : match?.player1, [match, user]);
+  }, [readyState.player1, readyState.player2, match?.phase, amPlayer1, matchId]);
 
   const handleReady = async () => {
     if (!matchId || !user?.uid || settingReady) return;
     setSettingReady(true);
     try {
-      const playerNum = isPlayer1() ? 1 : 2;
-      await setReady(matchId, playerNum);
+      await setReady(matchId, amPlayer1 ? 1 : 2);
     } catch (e) {
       console.error('Error setting ready:', e);
     }
@@ -75,15 +73,14 @@ export default function RankedTimer() {
 
   if (!match || !['round1', 'round2'].includes(match.phase)) return null;
 
-  const myKey = getMyKey();
+  const myKey = amPlayer1 ? 'player1' : 'player2';
   const amReady = readyState[myKey];
   const readyCount = (readyState.player1 ? 1 : 0) + (readyState.player2 ? 1 : 0);
-  const rivalData = getRivalData();
-  const roundLabel = match.phase === 'round1' ? t('ranked.round1') : t('ranked.round2');
+  const rivalData = amPlayer1 ? match?.player2 : match?.player1;
+  const roundLabel = match.phase === 'round1' ? (t('ranked.round1') || 'RONDA 1 — PRIMERA VUELTA') : (t('ranked.round2') || 'RONDA 2 — SEGUNDA VUELTA');
 
   const formatTime = (s) => `${Math.floor(s / 60)}:${(s % 60).toString().padStart(2, '0')}`;
 
-  // Timer color class
   let timerClass = 'green';
   if (timeLeft <= 10) timerClass = 'red-pulse';
   else if (timeLeft <= 30) timerClass = 'red';
@@ -112,9 +109,9 @@ export default function RankedTimer() {
           disabled={amReady || settingReady}
         >
           {amReady ? (
-            <><Check size={16} /> {t('ranked.ready')}</>
+            <><Check size={16} /> {t('ranked.ready') || 'Listo'}</>
           ) : (
-            <><Zap size={16} /> {t('ranked.setReady')}</>
+            <><Zap size={16} /> {t('ranked.setReady') || 'Listo'}</>
           )}
         </button>
       </div>

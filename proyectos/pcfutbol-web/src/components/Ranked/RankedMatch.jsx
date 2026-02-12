@@ -9,10 +9,31 @@ import {
 import { getTierByLP, calculateMatchPoints, COMPETITION_POINTS } from './tierUtils';
 import { FORMATIONS, TACTICS } from '../../game/gameShared';
 import {
+  getLaLigaTeams, getSegundaTeams, getPremierTeams, getSerieATeams,
+  getBundesligaTeams, getLigue1Teams, getEredivisieTeams, getPrimeiraLigaTeams,
+  getChampionshipTeams, getBelgianProTeams, getSuperLigTeams, getScottishPremTeams,
+  getSerieBTeams, getBundesliga2Teams, getLigue2Teams, getArgentinaTeams,
+  getBrasileiraoTeams, getColombiaTeams, getChileTeams, getUruguayTeams, getLigaMXTeams,
+} from '../../data/teamsFirestore';
+import {
   Swords, Shield, Clock, Trophy, ChevronRight, AlertTriangle,
   Check, X, ArrowLeft, Star, Zap, Target, Users, Search,
   ChevronDown, Lock, Unlock, TrendingUp, Award
 } from 'lucide-react';
+
+const LEAGUE_TEAMS_GETTERS = {
+  laliga: getLaLigaTeams, segunda: getSegundaTeams,
+  premierLeague: getPremierTeams, serieA: getSerieATeams,
+  bundesliga: getBundesligaTeams, ligue1: getLigue1Teams,
+  eredivisie: getEredivisieTeams, primeiraLiga: getPrimeiraLigaTeams,
+  championship: getChampionshipTeams, belgianPro: getBelgianProTeams,
+  superLig: getSuperLigTeams, scottishPrem: getScottishPremTeams,
+  serieB: getSerieBTeams, bundesliga2: getBundesliga2Teams,
+  ligue2: getLigue2Teams, argentinaPrimera: getArgentinaTeams,
+  brasileiraoA: getBrasileiraoTeams, colombiaPrimera: getColombiaTeams,
+  chilePrimera: getChileTeams, uruguayPrimera: getUruguayTeams,
+  ligaMX: getLigaMXTeams,
+};
 import RankedResultsModal from './RankedResultsModal';
 import './RankedMatch.scss';
 
@@ -115,6 +136,23 @@ export default function RankedMatch() {
           gameMode: 'ranked',
         }
       });
+
+      // Load all league teams for the transfer market
+      const allLeagueTeams = [];
+      try {
+        for (const [lid, getter] of Object.entries(LEAGUE_TEAMS_GETTERS)) {
+          try {
+            const teams = getter();
+            for (const t of teams) {
+              allLeagueTeams.push({ ...t, leagueId: lid, budget: t.budget || 20_000_000 });
+            }
+          } catch { /* skip */ }
+        }
+      } catch { /* skip */ }
+      if (allLeagueTeams.length > 0) {
+        dispatch({ type: 'UPDATE_LEAGUE_TEAMS', payload: allLeagueTeams });
+      }
+
       dispatch({ type: 'SET_SCREEN', payload: 'office' });
     }
   }, [match?.phase, user?.uid]);
