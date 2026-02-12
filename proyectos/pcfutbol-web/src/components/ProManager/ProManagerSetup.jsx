@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { useAuth } from '../../context/AuthContext';
-import { COUNTRIES, generateInitialOffers, getBoardObjective } from '../../game/proManagerEngine';
+import { generateInitialOffers, getBoardObjective } from '../../game/proManagerEngine';
 import { getLeagueTier } from '../../game/leagueTiers';
 import { getStadiumInfo, getStadiumLevel } from '../../data/stadiumCapacities';
 import { initializeLeague } from '../../game/leagueEngine';
@@ -27,7 +27,7 @@ import {
   getParaguayTeams, getPeruTeams, getBoliviaTeams, getVenezuelaTeams,
   getMLSTeams, getSaudiTeams, getLigaMXTeams, getJLeagueTeams
 } from '../../data/teamsFirestore';
-import { ArrowLeft, Briefcase, Users, Star, Target, ChevronRight, RefreshCw } from 'lucide-react';
+import { ArrowLeft, Briefcase, Users, Star, Target } from 'lucide-react';
 import './ProManagerSetup.scss';
 
 const ALL_LEAGUE_GETTERS = {
@@ -97,37 +97,15 @@ export default function ProManagerSetup() {
   const { t } = useTranslation();
   const { dispatch } = useGame();
   const { user } = useAuth();
-  const [step, setStep] = useState('country'); // 'country' | 'offers'
-  const [selectedCountry, setSelectedCountry] = useState(null);
   const [selectedOffer, setSelectedOffer] = useState(null);
   const [starting, setStarting] = useState(false);
-  const [rerollKey, setRerollKey] = useState(0);
 
   const offers = useMemo(() => {
-    if (!selectedCountry) return [];
-    return generateInitialOffers(selectedCountry, 10, ALL_LEAGUE_GETTERS);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedCountry, rerollKey]);
-
-  const handleSelectCountry = (countryId) => {
-    setSelectedCountry(countryId);
-    setSelectedOffer(null);
-    setStep('offers');
-  };
-
-  const handleReroll = () => {
-    setSelectedOffer(null);
-    setRerollKey(k => k + 1);
-  };
+    return generateInitialOffers(null, 10, ALL_LEAGUE_GETTERS);
+  }, []);
 
   const handleBack = () => {
-    if (step === 'offers') {
-      setStep('country');
-      setSelectedCountry(null);
-      setSelectedOffer(null);
-    } else {
-      dispatch({ type: 'SET_SCREEN', payload: 'main_menu' });
-    }
+    dispatch({ type: 'SET_SCREEN', payload: 'main_menu' });
   };
 
   const handleStart = async () => {
@@ -260,8 +238,6 @@ export default function ProManagerSetup() {
     } catch { /* skip */ }
   };
 
-  const countryObj = COUNTRIES.find(c => c.id === selectedCountry);
-
   return (
     <div className="promanager-setup">
       <div className="promanager-setup__bg">
@@ -284,91 +260,62 @@ export default function ProManagerSetup() {
               <Briefcase size={24} />
               {t('proManager.title')}
             </h1>
-            <p>{step === 'country' ? t('proManager.chooseCountry') : t('proManager.chooseTeam')}</p>
+            <p>{t('proManager.chooseTeam')}</p>
           </div>
         </div>
 
-        {step === 'country' && (
-          <div className="promanager-setup__countries">
-            {COUNTRIES.map(country => (
-              <button
-                key={country.id}
-                className="country-card"
-                onClick={() => handleSelectCountry(country.id)}
-              >
-                <span className="country-flag">{country.flag}</span>
-                <span className="country-name">{country.name}</span>
-                <span className="country-leagues">
-                  {country.leagues.length} {country.leagues.length === 1 ? t('common.league') : t('proManager.leagues')}
-                </span>
-                <ChevronRight size={16} className="chevron" />
-              </button>
-            ))}
+        <div className="promanager-setup__offers">
+          {offers.length === 0 && (
+            <p className="no-offers">{t('proManager.noOffers')}</p>
+          )}
+
+          <div className="offers-grid">
+            {offers.map((offer, idx) => {
+              const avgOvr = getAvgOverall(offer.team);
+              const isSelected = selectedOffer?.team?.id === offer.team.id;
+              return (
+                <button
+                  key={offer.team.id + idx}
+                  className={`offer-card ${isSelected ? 'offer-card--selected' : ''}`}
+                  onClick={() => setSelectedOffer(offer)}
+                >
+                  <div className="offer-card__header">
+                    <h3>{offer.team.name}</h3>
+                    <span className="league-name">{offer.leagueName}</span>
+                  </div>
+                  <div className="offer-card__stats">
+                    <div className="stat">
+                      <Star size={14} />
+                      <span>{avgOvr} OVR</span>
+                    </div>
+                    <div className="stat">
+                      <Users size={14} />
+                      <span>{offer.team.players?.length || 0}</span>
+                    </div>
+                    <div className="stat">
+                      <span className="money">{formatMoney(offer.team.budget)}</span>
+                    </div>
+                  </div>
+                  <div className="offer-card__objective">
+                    <Target size={14} />
+                    <span>{t(offer.objective.label, offer.objective.labelParams)}</span>
+                  </div>
+                </button>
+              );
+            })}
           </div>
-        )}
 
-        {step === 'offers' && (
-          <div className="promanager-setup__offers">
-            <div className="offers-header">
-              <span className="country-badge">{countryObj?.flag} {countryObj?.name}</span>
-              <button className="btn-reroll" onClick={handleReroll}>
-                <RefreshCw size={16} />
-                {t('proManager.newOffers')}
-              </button>
-            </div>
-
-            {offers.length === 0 && (
-              <p className="no-offers">{t('proManager.noOffers')}</p>
-            )}
-
-            <div className="offers-grid">
-              {offers.map((offer, idx) => {
-                const avgOvr = getAvgOverall(offer.team);
-                const isSelected = selectedOffer?.team?.id === offer.team.id;
-                return (
-                  <button
-                    key={offer.team.id + idx}
-                    className={`offer-card ${isSelected ? 'offer-card--selected' : ''}`}
-                    onClick={() => setSelectedOffer(offer)}
-                  >
-                    <div className="offer-card__header">
-                      <h3>{offer.team.name}</h3>
-                      <span className="league-name">{offer.leagueName}</span>
-                    </div>
-                    <div className="offer-card__stats">
-                      <div className="stat">
-                        <Star size={14} />
-                        <span>{avgOvr} OVR</span>
-                      </div>
-                      <div className="stat">
-                        <Users size={14} />
-                        <span>{offer.team.players?.length || 0}</span>
-                      </div>
-                      <div className="stat">
-                        <span className="money">{formatMoney(offer.team.budget)}</span>
-                      </div>
-                    </div>
-                    <div className="offer-card__objective">
-                      <Target size={14} />
-                      <span>{t(offer.objective.label, offer.objective.labelParams)}</span>
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-
-            {selectedOffer && (
-              <button
-                className="btn-start"
-                onClick={handleStart}
-                disabled={starting}
-              >
-                <Briefcase size={20} />
-                {starting ? t('common.loading') : t('proManager.startCareer')}
-              </button>
-            )}
-          </div>
-        )}
+          {selectedOffer && (
+            <button
+              className="btn-start"
+              onClick={handleStart}
+              disabled={starting}
+            >
+              <Briefcase size={20} />
+              {starting ? t('common.loading') : t('proManager.startCareer')}
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

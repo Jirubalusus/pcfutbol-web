@@ -36,17 +36,14 @@ const TOP_LEAGUES = new Set(['laliga', 'premierLeague', 'serieA', 'bundesliga', 
 const MID_LEAGUES = new Set(['eredivisie', 'primeiraLiga', 'belgianPro', 'superLig', 'brasileiraoA', 'argentinaPrimera', 'ligaMX']);
 
 /**
- * Generate initial team offers for a country based on prestige
+ * Generate initial team offers from ALL leagues — 20 weak teams, no country filter
  */
 export function generateInitialOffers(country, prestige, allLeagueGetters) {
-  const countryData = COUNTRIES.find(c => c.id === country);
-  if (!countryData) return [];
-
   const pool = [];
-  for (const leagueId of countryData.leagues) {
-    const config = LEAGUE_CONFIG[leagueId];
-    if (!config) continue;
-    const getter = allLeagueGetters[leagueId];
+  
+  for (const [leagueId, config] of Object.entries(LEAGUE_CONFIG)) {
+    if (config.isGroupLeague) continue;
+    const getter = allLeagueGetters[leagueId] || config.getTeams;
     if (!getter) continue;
     
     try {
@@ -54,8 +51,8 @@ export function generateInitialOffers(country, prestige, allLeagueGetters) {
       if (!teams?.length) continue;
       for (const team of teams) {
         const avgOvr = getAvgOverall(team);
-        // Low prestige → only weak teams
-        const maxOvr = 60 + prestige * 0.3;
+        // Only weak teams (max OVR based on prestige, starts very low)
+        const maxOvr = 55 + prestige * 0.3;
         if (avgOvr <= maxOvr) {
           pool.push({ team, leagueId, leagueName: config.name });
         }
@@ -63,9 +60,9 @@ export function generateInitialOffers(country, prestige, allLeagueGetters) {
     } catch { /* skip */ }
   }
 
-  // Shuffle and pick 3
+  // Shuffle and pick 20
   const shuffled = pool.sort(() => Math.random() - 0.5);
-  return shuffled.slice(0, 3).map(entry => ({
+  return shuffled.slice(0, 20).map(entry => ({
     ...entry,
     objective: getBoardObjective(getAvgOverall(entry.team), entry.leagueId, entry.team),
   }));

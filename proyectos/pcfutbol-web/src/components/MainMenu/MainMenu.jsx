@@ -307,24 +307,7 @@ export default function MainMenu() {
         
         <nav className="main-menu__nav">
           {/* Continuar Partida — solo modo carrera (contrarreloj usa su propio botón) */}
-          {state.gameStarted && state.gameMode !== 'contrarreloj' && (
-            <button 
-              className="main-menu__btn main-menu__btn--continue"
-              onClick={handleContinue}
-              style={{ '--delay': '0' }}
-            >
-              <div className="btn-content">
-                <span className="icon-wrapper icon-wrapper--continue">
-                  <Play size={22} />
-                </span>
-                <div className="text">
-                  <span className="label">{t('mainMenu.continueGame')}</span>
-                  <span className="sublabel">{state.team?.name} · {t('common.week')} {state.currentWeek}</span>
-                </div>
-                <ChevronRight size={18} className="chevron" />
-              </div>
-            </button>
-          )}
+          {/* Continuar Partida — eliminado, todo se gestiona por modo */}
           
           <button 
             className="main-menu__btn main-menu__btn--primary"
@@ -351,28 +334,7 @@ export default function MainMenu() {
             </div>
           </button>
 
-          {/* Guardar Partida — solo modo carrera (NO contrarreloj) */}
-          {isAuthenticated && state.gameStarted && state.gameMode !== 'contrarreloj' && (
-            <button 
-              className="main-menu__btn main-menu__btn--save"
-              onClick={() => {
-                setSaveSlotsMode('save');
-                setShowSaveSlots(true);
-              }}
-              style={{ '--delay': '2' }}
-            >
-              <div className="btn-content">
-                <span className="icon-wrapper icon-wrapper--save">
-                  <Save size={20} />
-                </span>
-                <div className="text">
-                  <span className="label">{t('mainMenu.saveCurrentGame')}</span>
-                  <span className="sublabel">{t('mainMenu.saveCurrentProgress')}</span>
-                </div>
-                <ChevronRight size={18} className="chevron" />
-              </div>
-            </button>
-          )}
+          {/* Guardar Partida — eliminado, todo autoguardado en Firebase */}
           
           {isAuthenticated && (
             <button

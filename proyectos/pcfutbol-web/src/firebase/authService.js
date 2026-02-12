@@ -2,6 +2,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signInWithRedirect,
+  getRedirectResult,
   signInWithCredential,
   GoogleAuthProvider,
   signOut,
@@ -74,10 +76,23 @@ export async function loginWithGoogle() {
     return userCredential.user;
   }
   
-  const result = await signInWithPopup(auth, googleProvider);
-  const user = result.user;
-  await ensureUserDoc(user);
-  return user;
+  // Try popup first, fallback to redirect (for GitHub Pages / cross-origin issues)
+  try {
+    const result = await signInWithPopup(auth, googleProvider);
+    const user = result.user;
+    await ensureUserDoc(user);
+    return user;
+  } catch (popupError) {
+    console.warn('Popup failed, trying redirect:', popupError.code);
+    if (popupError.code === 'auth/popup-blocked' || 
+        popupError.code === 'auth/popup-closed-by-user' ||
+        popupError.code === 'auth/unauthorized-domain' ||
+        popupError.code === 'auth/internal-error') {
+      await signInWithRedirect(auth, googleProvider);
+      return null; // Will complete after redirect
+    }
+    throw popupError;
+  }
 }
 
 async function ensureUserDoc(user) {
@@ -113,6 +128,20 @@ export async function resendVerificationEmail() {
       handleCodeInApp: false
     });
   }
+}
+
+// Check for redirect result (called on app init)
+export async function checkRedirectResult() {
+  try {
+    const result = await getRedirectResult(auth);
+    if (result?.user) {
+      await ensureUserDoc(result.user);
+      return result.user;
+    }
+  } catch (e) {
+    console.warn('Redirect result error:', e);
+  }
+  return null;
 }
 
 // Auth state listener

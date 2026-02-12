@@ -420,6 +420,39 @@ function gameReducer(state, action) {
     case 'SET_RANKED_MATCH_ID':
       return { ...state, rankedMatchId: action.payload };
 
+    case 'LOAD_RANKED_TEAM': {
+      // Load a team into GameContext for ranked match Office usage
+      const { team, leagueId, leagueTable, money, formation: rFormation, tactic: rTactic, gameMode: rGM } = action.payload;
+      return {
+        ...state,
+        gameStarted: true,
+        gameMode: rGM || 'ranked',
+        teamId: team.id,
+        team: team,
+        leagueId: leagueId,
+        playerLeagueId: leagueId,
+        leagueTier: leagueId ? getLeagueTier(leagueId) : 1,
+        money: money || team.budget || team.transferBudget || 5000000,
+        formation: rFormation || '4-3-3',
+        tactic: rTactic || 'balanced',
+        leagueTable: leagueTable || [],
+        fixtures: [],
+        currentScreen: 'office',
+        currentWeek: 1,
+        currentSeason: 1,
+        messages: [],
+        seasonObjectives: [],
+        preseasonPhase: false,
+      };
+    }
+
+    case 'CLEAR_RANKED_TEAM':
+      return {
+        ...state,
+        gameMode: 'career',
+        rankedMatchId: null,
+      };
+
     case 'SET_PROMANAGER_DATA':
       return { ...state, proManagerData: action.payload };
 

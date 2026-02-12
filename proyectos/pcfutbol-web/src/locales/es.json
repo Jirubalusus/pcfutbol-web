@@ -1552,5 +1552,14 @@
       "noExternalOffers": "No hay ofertas externas en este momento.",
       "retire": "Retirarse"
     }
+  },
+  "ranked": {
+    "round1": "Ronda 1 — Primera vuelta",
+    "round2": "Ronda 2 — Segunda vuelta",
+    "ready": "Listo",
+    "setReady": "¡Listo!",
+    "waitingReady": "Esperando al rival...",
+    "readyStatus": "{{count}}/2",
+    "timerExpired": "Tiempo agotado"
   }
 }

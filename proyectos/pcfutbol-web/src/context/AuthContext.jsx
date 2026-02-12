@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { 
   onAuthChange, 
+  checkRedirectResult,
   loginWithEmail, 
   loginWithGoogle,
   registerWithEmail,
@@ -20,6 +21,9 @@ export function AuthProvider({ children }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // Check for Google redirect result on load
+    checkRedirectResult().catch(() => {});
+    
     const unsubscribe = onAuthChange(async (firebaseUser) => {
       setUser(firebaseUser);
       setLoading(false);

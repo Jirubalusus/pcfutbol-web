@@ -3,6 +3,10 @@
   min-height: 100vh;
   min-height: 100dvh;
   background: var(--color-bg-primary);
+
+  &--ranked {
+    padding-top: calc(env(safe-area-inset-top, 0px) + 52px);
+  }
   
   @media (max-width: 768px) {
     flex-direction: column;

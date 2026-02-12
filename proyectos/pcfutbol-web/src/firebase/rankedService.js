@@ -137,6 +137,29 @@ export async function findOpponent(uid, totalLP) {
   return best;
 }
 
+// Find an active match where this user is a participant (player1 or player2)
+export async function findMyActiveMatch(uid) {
+  // Check as player1
+  const q1 = query(collection(db, MATCHES_COL), where('player1.uid', '==', uid));
+  const snap1 = await getDocs(q1);
+  for (const d of snap1.docs) {
+    const data = d.data();
+    if (data.phase && data.phase !== 'results' && data.phase !== 'finished') {
+      return { id: d.id, ...data };
+    }
+  }
+  // Check as player2
+  const q2 = query(collection(db, MATCHES_COL), where('player2.uid', '==', uid));
+  const snap2 = await getDocs(q2);
+  for (const d of snap2.docs) {
+    const data = d.data();
+    if (data.phase && data.phase !== 'results' && data.phase !== 'finished') {
+      return { id: d.id, ...data };
+    }
+  }
+  return null;
+}
+
 // ============================================================
 // TEAM SELECTION — Pick 3 similar-level teams from a random league
 // ============================================================
@@ -408,6 +431,7 @@ export async function advancePhase(matchId) {
   
   if (nextPhase === 'round1') {
     update.phaseDeadline = Timestamp.fromDate(new Date(Date.now() + 180 * 1000));
+    update.ready = { player1: false, player2: false };
   } else if (nextPhase === 'simulating1') {
     // Run half season simulation
     try {
@@ -421,6 +445,7 @@ export async function advancePhase(matchId) {
     }
   } else if (nextPhase === 'round2') {
     update.phaseDeadline = Timestamp.fromDate(new Date(Date.now() + 180 * 1000));
+    update.ready = { player1: false, player2: false };
     // Unblock all transfers
     update.blockedTransfers = { player1: [], player2: [] };
   } else if (nextPhase === 'simulating2') {
@@ -766,6 +791,24 @@ export async function getMatchHistory(uid, limitCount = 20) {
 export function getLeagueTeamsForMatch(leagueId) {
   if (!isDataLoaded()) return [];
   return LEAGUE_TEAMS_MAP[leagueId]?.() || [];
+}
+
+// ── Ready System ──
+export async function setReady(matchId, playerNum) {
+  const matchRef = doc(db, MATCHES_COL, matchId);
+  const key = playerNum === 1 ? 'player1' : 'player2';
+  await updateDoc(matchRef, {
+    [`ready.${key}`]: true,
+    updatedAt: serverTimestamp(),
+  });
+}
+
+export function onReadyChange(matchId, callback) {
+  return onSnapshot(doc(db, MATCHES_COL, matchId), (snap) => {
+    if (snap.exists()) {
+      callback(snap.data().ready || { player1: false, player2: false });
+    }
+  });
 }
 
 // Legacy export for backward compatibility

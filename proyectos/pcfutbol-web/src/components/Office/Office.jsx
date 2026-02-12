@@ -67,6 +67,7 @@ import {
   AlertTriangle,
   HeartPulse
 } from 'lucide-react';
+import RankedTimer from '../Ranked/RankedTimer';
 import './Office.scss';
 
 export default function Office() {
@@ -81,6 +82,7 @@ export default function Office() {
   const [noPlayersWarned, setNoPlayersWarned] = useState(false);
   const [showNoPlayersWarning, setShowNoPlayersWarning] = useState(false);
   const isMobile = window.innerWidth <= 768;
+  const isRanked = state.gameMode === 'ranked' && !!state.rankedMatchId;
   
   // Detectar si la temporada ha terminado
   const playerLeagueId = state.playerLeagueId || 'laliga';
@@ -724,7 +726,7 @@ export default function Office() {
         </div>
         
         {/* Barra de confianza del míster */}
-        {!state.preseasonPhase && state.currentWeek > 5 && (
+        {!state.preseasonPhase && state.currentWeek > 5 && !isRanked && (
           <div className="office__confidence" style={{
             margin: '0 0 1.5rem',
             padding: '0.75rem 1rem',
@@ -800,7 +802,7 @@ export default function Office() {
           </div>
           
           <div className="office__grid-right">
-            {state.seasonObjectives?.length > 0 && state.gameMode !== 'contrarreloj' && (
+            {state.seasonObjectives?.length > 0 && state.gameMode !== 'contrarreloj' && !isRanked && (
               <div className="office__objective-preview" onClick={() => setActiveTab('objectives')}>
                 <h3>
                   <Target size={18} strokeWidth={2} />
@@ -840,7 +842,7 @@ export default function Office() {
               </div>
             )}
             
-            {state.messages.length > 0 && (
+            {state.messages.length > 0 && !isRanked && (
               <div className="office__recent-messages" onClick={() => setActiveTab('messages')}>
                 <h3>{t('office.recentMessages')}</h3>
                 {state.messages.slice(0, 3).map(msg => (
@@ -941,15 +943,24 @@ export default function Office() {
   }
   
   return (
-    <div className="office">
-      <Sidebar activeTab={activeTab} onTabChange={setActiveTab} />
-      <MobileNav 
+    <div className={`office ${isRanked ? 'office--ranked' : ''}`}>
+      {isRanked && <RankedTimer />}
+      <Sidebar activeTab={activeTab} onTabChange={setActiveTab} isRanked={isRanked} />
+      {!isRanked && <MobileNav 
         activeTab={activeTab} 
         onTabChange={setActiveTab} 
         onAdvanceWeek={handleAdvanceWeek}
         onSimulate={handleSimulateWeeks}
         simulating={simulating}
-      />
+      />}
+      {isRanked && <MobileNav 
+        activeTab={activeTab} 
+        onTabChange={setActiveTab} 
+        onAdvanceWeek={() => {}}
+        onSimulate={() => {}}
+        simulating={false}
+        isRanked={true}
+      />}
       
       <main className="office__main">
         <header className="office__header">
@@ -970,6 +981,7 @@ export default function Office() {
             <span className="office__season">{t('office.seasonInfo', { season: state.currentSeason })} · {state.preseasonPhase ? t('office.preseason', { week: state.preseasonWeek, total: state.preseasonMatches?.length || 5 }) : t('office.weekInfo', { week: state.currentWeek })}</span>
           </div>
           
+          {!isRanked && (
           <div className="office__actions">
             <div className="office__money">
               <span className="label">{t('office.budget')}</span>
@@ -1002,6 +1014,15 @@ export default function Office() {
               )}
             </div>
           </div>
+          )}
+          {isRanked && (
+            <div className="office__actions">
+              <div className="office__money">
+                <span className="label">{t('office.budget')}</span>
+                <span className="value">{formatMoney(state.money)}</span>
+              </div>
+            </div>
+          )}
         </header>
         
         <div className="office__content">

@@ -79,6 +79,45 @@ export default function RankedMatch() {
     }
   }, [match?.phase]);
 
+  // When round starts, load team into GameContext and show Office
+  useEffect(() => {
+    if (!match || !user?.uid) return;
+    if (match.phase === 'round1' || match.phase === 'round2') {
+      const myTeamId = match.player1?.uid === user.uid ? match.player1.team : match.player2.team;
+      if (!myTeamId) return;
+
+      // Load full team data from the league
+      const leagueTeams = getLeagueTeamsForMatch(match.leagueId);
+      const fullTeam = leagueTeams.find(t => t.id === myTeamId);
+      if (!fullTeam) return;
+
+      // Build a basic league table from match teams
+      const leagueTable = leagueTeams.map((t, i) => ({
+        teamId: t.id,
+        teamName: t.name,
+        played: 0, won: 0, drawn: 0, lost: 0,
+        goalsFor: 0, goalsAgainst: 0, goalDifference: 0, points: 0,
+      }));
+
+      // Use mid-season table if available (round2)
+      const simTable = match.phase === 'round2' && match.simulation1?.table
+        ? match.simulation1.table
+        : leagueTable;
+
+      dispatch({
+        type: 'LOAD_RANKED_TEAM',
+        payload: {
+          team: JSON.parse(JSON.stringify(fullTeam)),
+          leagueId: match.leagueId,
+          leagueTable: simTable,
+          money: fullTeam.transferBudget || fullTeam.budget || 5000000,
+          gameMode: 'ranked',
+        }
+      });
+      dispatch({ type: 'SET_SCREEN', payload: 'office' });
+    }
+  }, [match?.phase, user?.uid]);
+
   // Countdown timer
   useEffect(() => {
     if (!match?.phaseDeadline) return;
@@ -96,6 +135,16 @@ export default function RankedMatch() {
     const interval = setInterval(tick, 1000);
     return () => clearInterval(interval);
   }, [match?.phaseDeadline, match?.phase]);
+
+  // When simulation/results phase starts, ensure we're showing the RankedMatch screen
+  useEffect(() => {
+    if (!match) return;
+    if (['simulating1', 'simulating2', 'results', 'team_selection'].includes(match.phase)) {
+      if (state.currentScreen === 'office' && state.gameMode === 'ranked') {
+        dispatch({ type: 'SET_SCREEN', payload: 'ranked_match' });
+      }
+    }
+  }, [match?.phase]);
 
   // Auto-advance simulation phases
   useEffect(() => {

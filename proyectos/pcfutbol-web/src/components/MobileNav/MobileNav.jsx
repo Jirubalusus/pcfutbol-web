@@ -11,9 +11,11 @@ import { useGame } from '../../context/GameContext';
 import Settings from '../Settings/Settings';
 import './MobileNav.scss';
 
-export default function MobileNav({ activeTab, onTabChange, onAdvanceWeek, onSimulate, simulating }) {
+export default function MobileNav({ activeTab, onTabChange, onAdvanceWeek, onSimulate, simulating, isRanked }) {
   const { t } = useTranslation();
   const { state, dispatch } = useGame();
+  
+  const RANKED_HIDDEN = ['objectives', 'calendar', 'stadium', 'finance', 'facilities', 'messages'];
   
   const TABS = [
     { id: 'overview', icon: <Home size={20} />, label: t('mobileNav.home') },
@@ -38,7 +40,9 @@ export default function MobileNav({ activeTab, onTabChange, onAdvanceWeek, onSim
 
   const simDisabled = simulating || state.preseasonPhase || !!state.pendingEuropeanMatch || !!state.pendingSAMatch || !!state.pendingCupMatch;
   
-  const filteredMenuItems = MENU_ITEMS;
+  const filteredMenuItems = isRanked
+    ? MENU_ITEMS.filter(item => !RANKED_HIDDEN.includes(item.id))
+    : MENU_ITEMS;
 
   const handleTabClick = (tabId) => {
     if (tabId === 'menu') {
@@ -68,7 +72,7 @@ export default function MobileNav({ activeTab, onTabChange, onAdvanceWeek, onSim
   return (
     <>
       <nav className="mobile-nav">
-        <div className="mobile-nav__actions">
+        {!isRanked && <div className="mobile-nav__actions">
           <div className="mobile-nav__sim-wrapper">
             <button
               className="mobile-nav__action-btn mobile-nav__action-btn--sim"
@@ -108,7 +112,7 @@ export default function MobileNav({ activeTab, onTabChange, onAdvanceWeek, onSim
           <button className="mobile-nav__action-btn mobile-nav__action-btn--advance" onClick={onAdvanceWeek}>
             <SkipForward size={14} /> {t('mobileNav.advance')}
           </button>
-        </div>
+        </div>}
 
         <div className="mobile-nav__tabs">
           {TABS.map(tab => (

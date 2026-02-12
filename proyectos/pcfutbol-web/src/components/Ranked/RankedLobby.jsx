@@ -53,9 +53,19 @@ export default function RankedLobby() {
     let unsubQueue;
 
     // Listen for queue doc changes (e.g., matched by another player)
-    unsubQueue = onQueueChange(user.uid, (queueData) => {
-      if (!queueData && searching && !matchId) {
-        // We were removed from queue — might be matched
+    unsubQueue = onQueueChange(user.uid, async (queueData) => {
+      if (!queueData && searching && !matchId && !cancelled) {
+        // We were removed from queue — check if we were matched
+        try {
+          const { findMyActiveMatch } = await import('../../firebase/rankedService');
+          const activeMatch = await findMyActiveMatch(user.uid);
+          if (activeMatch && !cancelled) {
+            setMatchId(activeMatch.id);
+            setSearching(false);
+          }
+        } catch (e) {
+          console.error('Error checking active match:', e);
+        }
       }
     });
 

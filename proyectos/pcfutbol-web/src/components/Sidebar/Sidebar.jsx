@@ -21,11 +21,13 @@ import {
 } from 'lucide-react';
 import './Sidebar.scss';
 
-export default function Sidebar({ activeTab, onTabChange }) {
+export default function Sidebar({ activeTab, onTabChange, isRanked }) {
   const { t } = useTranslation();
   const { state, dispatch } = useGame();
   
-  const menuItems = [
+  const RANKED_HIDDEN_TABS = ['objectives', 'calendar', 'stadium', 'finance', 'facilities', 'messages'];
+  
+  const allMenuItems = [
     { id: 'overview', icon: Home, label: t('sidebar.office') },
     { id: 'plantilla', icon: Users, label: t('sidebar.squad') },
     { id: 'formation', icon: ClipboardList, label: t('sidebar.formation') },
@@ -38,6 +40,10 @@ export default function Sidebar({ activeTab, onTabChange }) {
     { id: 'facilities', icon: Wrench, label: t('sidebar.facilities') },
     { id: 'messages', icon: Mail, label: t('sidebar.messages') },
   ];
+  
+  const menuItems = isRanked
+    ? allMenuItems.filter(item => !RANKED_HIDDEN_TABS.includes(item.id))
+    : allMenuItems;
   const [showSettings, setShowSettings] = useState(false);
   const lastSeenCountRef = useRef(0);
 

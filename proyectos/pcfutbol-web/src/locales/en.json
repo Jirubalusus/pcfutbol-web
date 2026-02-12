@@ -1552,6 +1552,15 @@
       "noExternalOffers": "No external offers at this time.",
       "retire": "Retire"
     }
+  },
+  "ranked": {
+    "round1": "Round 1 — First Half",
+    "round2": "Round 2 — Second Half",
+    "ready": "Ready",
+    "setReady": "Ready!",
+    "waitingReady": "Waiting for opponent...",
+    "readyStatus": "{{count}}/2",
+    "timerExpired": "Time expired"
   }
 }
 
