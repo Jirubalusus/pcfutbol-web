@@ -1553,6 +1553,27 @@
       "retire": "Retire"
     }
   },
+  "rankedResults": {
+    "victory": "VICTORY!",
+    "defeat": "DEFEAT",
+    "draw": "DRAW",
+    "disconnectWin": "Victory by disconnection!",
+    "disconnectLoss": "Defeat by disconnection",
+    "myTeam": "My team",
+    "rivalTeam": "Rival",
+    "breakdown": "📊 Points Breakdown",
+    "you": "You",
+    "rival": "Rival",
+    "leagueChampion": "League Champion",
+    "cup": "Cup",
+    "superCup": "Super Cup",
+    "aboveRival": "Finished above rival",
+    "h2hWins": "H2H wins ({{count}})",
+    "h2h": "Head to Head",
+    "leaguePos": "League position: {{pos}}th ({{pts}} pts)",
+    "cupRound": "Cup: {{round}}",
+    "backToLobby": "Back to Lobby"
+  },
   "ranked": {
     "round1": "Round 1 — First Half",
     "round2": "Round 2 — Second Half",

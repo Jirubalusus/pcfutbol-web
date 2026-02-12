@@ -13,6 +13,7 @@ import {
   Check, X, ArrowLeft, Star, Zap, Target, Users, Search,
   ChevronDown, Lock, Unlock, TrendingUp, Award
 } from 'lucide-react';
+import RankedResultsModal from './RankedResultsModal';
 import './RankedMatch.scss';
 
 // Available formations and tactics for the UI
@@ -525,87 +526,7 @@ export default function RankedMatch() {
 
         {/* ── RESULTS ── */}
         {match.phase === 'results' && (
-          <div className="phase-results">
-            {match.results?.disconnection ? (
-              <div className="result-disconnection">
-                <AlertTriangle size={32} />
-                <h2>{match.winner === user.uid ? '🎉 ¡Victoria por desconexión!' : '😞 Derrota por desconexión'}</h2>
-              </div>
-            ) : (
-              <>
-                <div className={`result-banner ${match.winner === user.uid ? 'win' : !match.winner ? 'draw' : 'loss'}`}>
-                  <h2>
-                    {match.winner === user.uid ? '🎉 ¡VICTORIA!' : !match.winner ? '🤝 EMPATE' : '😞 DERROTA'}
-                  </h2>
-                </div>
-
-                <div className="results-scores">
-                  <div className={`score-card ${isPlayer1() ? 'me' : 'rival'}`}>
-                    <span className="team-name">{match.simulation2?.player1?.teamName || myTeamInfo?.name}</span>
-                    <span className="points">{match.results?.player1Points ?? '?'} pts</span>
-                  </div>
-                  <div className="score-divider">VS</div>
-                  <div className={`score-card ${!isPlayer1() ? 'me' : 'rival'}`}>
-                    <span className="team-name">{match.simulation2?.player2?.teamName || rivalTeamInfo?.name}</span>
-                    <span className="points">{match.results?.player2Points ?? '?'} pts</span>
-                  </div>
-                </div>
-
-                {/* Final standings */}
-                {match.simulation2?.table && (
-                  <div className="final-table">
-                    <h3>📊 Clasificación final</h3>
-                    <div className="mini-table full">
-                      {match.simulation2.table.map((t, i) => (
-                        <div key={t.teamId} className={`table-row ${t.teamId === myData?.team ? 'me' : t.teamId === rivalData?.team ? 'rival' : ''}`}>
-                          <span className="pos">{i + 1}</span>
-                          <span className="name">{t.teamName}</span>
-                          <span className="record">{t.won}V {t.drawn}E {t.lost}D</span>
-                          <span className="gd">{t.goalDifference > 0 ? '+' : ''}{t.goalDifference}</span>
-                          <span className="pts"><strong>{t.points}</strong></span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Point breakdown */}
-                {match.results?.simulation && (
-                  <div className="results-breakdown">
-                    <div className="breakdown-column">
-                      <h4>{isPlayer1() ? 'Tus puntos' : 'Rival'}</h4>
-                      {renderBreakdown(match.results.simulation.player1)}
-                    </div>
-                    <div className="breakdown-column">
-                      <h4>{!isPlayer1() ? 'Tus puntos' : 'Rival'}</h4>
-                      {renderBreakdown(match.results.simulation.player2)}
-                    </div>
-                  </div>
-                )}
-
-                {/* H2H Results */}
-                {match.results?.simulation && (
-                  <div className="h2h-results">
-                    <h3>⚔️ Enfrentamientos directos</h3>
-                    {(isPlayer1() ? match.results.simulation.player1 : match.results.simulation.player2)?.h2hResults?.map((r, i) => (
-                      <div key={i} className="h2h-match">
-                        <span>{r.home ? '🏠' : '✈️'}</span>
-                        <span>{r.goalsFor} - {r.goalsAgainst}</span>
-                        <span className={r.goalsFor > r.goalsAgainst ? 'win' : r.goalsFor < r.goalsAgainst ? 'loss' : 'draw'}>
-                          {r.goalsFor > r.goalsAgainst ? 'V' : r.goalsFor < r.goalsAgainst ? 'D' : 'E'}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </>
-            )}
-
-            <button className="back-btn" onClick={handleBackToLobby}>
-              <ArrowLeft size={18} />
-              <span>Volver al Lobby</span>
-            </button>
-          </div>
+          <RankedResultsModal match={match} onBackToLobby={handleBackToLobby} />
         )}
       </div>
     </div>

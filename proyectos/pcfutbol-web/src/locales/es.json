@@ -1553,6 +1553,27 @@
       "retire": "Retirarse"
     }
   },
+  "rankedResults": {
+    "victory": "¡VICTORIA!",
+    "defeat": "DERROTA",
+    "draw": "EMPATE",
+    "disconnectWin": "¡Victoria por desconexión!",
+    "disconnectLoss": "Derrota por desconexión",
+    "myTeam": "Mi equipo",
+    "rivalTeam": "Rival",
+    "breakdown": "📊 Desglose de puntos",
+    "you": "Tú",
+    "rival": "Rival",
+    "leagueChampion": "Campeón de Liga",
+    "cup": "Copa",
+    "superCup": "Supercopa",
+    "aboveRival": "Mejor posición que rival",
+    "h2hWins": "Victorias directas ({{count}})",
+    "h2h": "Enfrentamientos directos",
+    "leaguePos": "Posición liga: {{pos}}º ({{pts}} pts)",
+    "cupRound": "Copa: {{round}}",
+    "backToLobby": "Volver al Lobby"
+  },
   "ranked": {
     "round1": "Ronda 1 — Primera vuelta",
     "round2": "Ronda 2 — Segunda vuelta",
