@@ -369,7 +369,7 @@ export default function Facilities() {
       </div>
 
       {/* Medical Bay */}
-      {medicalLevel >= 2 && (
+      {medicalLevel >= 1 && (
         <div className="facilities-v2__medical-bay">
           <div className="medical-header">
             <div className="medical-title">

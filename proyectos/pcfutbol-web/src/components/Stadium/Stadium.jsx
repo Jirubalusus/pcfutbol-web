@@ -320,7 +320,7 @@ export default function Stadium() {
       payload: {
         id: Date.now(),
         type: 'stadium',
-        title: `${event.icon} ${event.name}`,
+        title: event.name,
         content: t('stadium.eventHosted', { amount: (event.income/1000).toFixed(0) }),
         date: `Semana ${state.currentWeek}`
       }

@@ -1059,9 +1059,9 @@ export default function Formation() {
         <InjuredModal
           onClose={() => setShowInjuredModal(false)}
           players={players}
-          facilities={state.team?.facilities}
+          facilities={state.facilities}
           dispatch={dispatch}
-          budget={state.team?.budget}
+          budget={state.money}
           medicalTreatmentsUsed={state.medicalTreatmentsUsed || 0}
         />
       )}
@@ -1306,7 +1306,7 @@ function InjuredModal({ onClose, players, facilities, dispatch, budget, medicalT
   const { t } = useTranslation();
   const toast = useToast();
   const injuredPlayers = players.filter(p => p.injured && p.injuryWeeksLeft > 0);
-  const medicalLevel = facilities?.medicalCenter || 1;
+  const medicalLevel = facilities?.medical || 0;
   const maxTreatments = medicalLevel + 1; // 2-6 tratamientos según nivel
   const [treatmentsUsed, setTreatmentsUsed] = useState(medicalTreatmentsUsed || 0);
   const [treatedPlayers, setTreatedPlayers] = useState([]); // Track tratados localmente
