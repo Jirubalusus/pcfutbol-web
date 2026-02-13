@@ -5,6 +5,7 @@
 
 import teamsService from '../firebase/teamsService';
 import { enrichSATeams } from './enrichSATeams';
+import { getActiveEditionId, getEdition } from './editions/editionService';
 
 // Rest of World — now loaded from Firebase (teams_v2)
 
@@ -136,6 +137,64 @@ export function getParaguayTeams() { return PARAGUAY_TEAMS; }
 export function getPeruTeams() { return PERU_TEAMS; }
 export function getBoliviaTeams() { return BOLIVIA_TEAMS; }
 export function getVenezuelaTeams() { return VENEZUELA_TEAMS; }
+
+/**
+ * Apply the active edition pack to all loaded team arrays
+ * Renames team names, stadium names, and player names in-place
+ */
+async function applyActiveEdition() {
+  const editionId = getActiveEditionId();
+  if (!editionId) return;
+
+  try {
+    const edition = await getEdition(editionId);
+    if (!edition?.teams) return;
+
+    // Apply to all team arrays
+    const allArrays = [
+      LALIGA_TEAMS, SEGUNDA_TEAMS, PRIMERA_RFEF_TEAMS, SEGUNDA_RFEF_TEAMS,
+      PREMIER_LEAGUE_TEAMS, SERIE_A_TEAMS, BUNDESLIGA_TEAMS, LIGUE1_TEAMS,
+      EREDIVISIE_TEAMS, PRIMEIRA_LIGA_TEAMS, CHAMPIONSHIP_TEAMS, BELGIAN_PRO_TEAMS,
+      SUPER_LIG_TEAMS, SCOTTISH_PREM_TEAMS, SERIE_B_TEAMS, BUNDESLIGA2_TEAMS,
+      LIGUE2_TEAMS, SWISS_TEAMS, AUSTRIAN_TEAMS, GREEK_TEAMS, DANISH_TEAMS,
+      CROATIAN_TEAMS, CZECH_TEAMS,
+      ARGENTINA_TEAMS, BRASILEIRAO_TEAMS, COLOMBIA_TEAMS, CHILE_TEAMS,
+      URUGUAY_TEAMS, ECUADOR_TEAMS, PARAGUAY_TEAMS, PERU_TEAMS,
+      BOLIVIA_TEAMS, VENEZUELA_TEAMS,
+      MLS_TEAMS, SAUDI_TEAMS, LIGA_MX_TEAMS, J_LEAGUE_TEAMS
+    ];
+
+    let renamedTeams = 0;
+    let renamedPlayers = 0;
+
+    for (const teamArray of allArrays) {
+      for (const team of teamArray) {
+        // Match by team id or by current name
+        const editionTeam = edition.teams[team.id] || edition.teams[team.name];
+        if (!editionTeam) continue;
+
+        renamedTeams++;
+        if (editionTeam.name) team.name = editionTeam.name;
+        if (editionTeam.shortName) team.shortName = editionTeam.shortName;
+        if (editionTeam.stadium) team.stadium = editionTeam.stadium;
+
+        if (editionTeam.players && team.players) {
+          for (const player of team.players) {
+            const newName = editionTeam.players[player.name];
+            if (newName) {
+              player.name = newName;
+              renamedPlayers++;
+            }
+          }
+        }
+      }
+    }
+
+    console.log(`📝 Edition "${edition.name}" applied: ${renamedTeams} teams, ${renamedPlayers} players renamed`);
+  } catch (err) {
+    console.error('Error applying edition:', err);
+  }
+}
 
 export const LEAGUES = {
   laliga: { name: 'Liga Ibérica', country: 'España' },
@@ -367,6 +426,9 @@ export async function loadAllData() {
       SEGUNDA_RFEF_GROUPS.grupo3.teams = segundaRfef.slice(groupSize * 2, groupSize * 3);
       SEGUNDA_RFEF_GROUPS.grupo4.teams = segundaRfef.slice(groupSize * 3, groupSize * 4);
       SEGUNDA_RFEF_GROUPS.grupo5.teams = segundaRfef.slice(groupSize * 4);
+
+      // Apply active edition pack (rename teams/players)
+      await applyActiveEdition();
 
       dataLoaded = true;
       const totalTeams = laliga.length + laliga2.length + primeraRfef.length + 

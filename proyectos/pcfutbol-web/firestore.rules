@@ -3,7 +3,7 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Leagues: read-only for everyone, write only from admin/scripts
+    // Leagues: read-only for everyone
     match /leagues/{leagueId} {
       allow read: if true;
       allow write: if false;
@@ -13,7 +13,7 @@ service cloud.firestore {
       allow write: if false;
     }
 
-    // Teams: read-only for everyone, write only from admin/scripts
+    // Teams: read-only for everyone
     match /teams/{teamId} {
       allow read: if true;
       allow write: if false;
@@ -36,7 +36,7 @@ service cloud.firestore {
       allow read, write: if request.auth != null && request.auth.uid == userId;
     }
 
-    // User saves: only own data
+    // User profiles
     match /users/{userId} {
       allow read, write: if request.auth != null && request.auth.uid == userId;
     }
@@ -44,12 +44,12 @@ service cloud.firestore {
       allow read, write: if request.auth != null && request.auth.uid == userId;
     }
 
-    // Contrarreloj saves: only own data
+    // Contrarreloj saves
     match /contrarreloj_saves/{userId} {
       allow read, write: if request.auth != null && request.auth.uid == userId;
     }
 
-    // Contrarreloj ranking: authenticated can read all, write own
+    // Contrarreloj ranking
     match /contrarreloj_ranking/{docId} {
       allow read: if request.auth != null;
       allow create: if request.auth != null;
@@ -58,31 +58,40 @@ service cloud.firestore {
 
     // === RANKED 1v1 ===
 
-    // Ranked queue: authenticated users can manage their own entry
+    // Ranked queue
     match /ranked_queue/{userId} {
       allow read: if request.auth != null;
-      allow write: if request.auth != null && request.auth.uid == userId;
-      allow delete: if request.auth != null; // Allow removing opponent from queue on match creation
+      allow write: if request.auth != null;
+      allow delete: if request.auth != null;
     }
 
-    // Ranked matches: participants can read/write
+    // Ranked matches
     match /ranked_matches/{matchId} {
       allow read: if request.auth != null;
       allow create: if request.auth != null;
       allow update: if request.auth != null;
     }
 
-    // Ranked players: own profile read/write, others read
+    // Ranked players
     match /ranked_players/{userId} {
-      allow read: if request.auth != null;
-      allow write: if request.auth != null && request.auth.uid == userId;
-      allow update: if request.auth != null; // Allow LP updates from match results
-    }
-
-    // Editions
-    match /editions/{docId} {
       allow read: if true;
       allow create: if request.auth != null;
+      allow update: if request.auth != null;
+    }
+
+    // === EDITIONS ===
+
+    // Editions (approved packs - public read)
+    match /editions/{editionId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // Editions pending review (user submissions)
+    match /editions_pending/{pendingId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null;
+      allow update, delete: if false;
     }
 
     // Default: deny everything else

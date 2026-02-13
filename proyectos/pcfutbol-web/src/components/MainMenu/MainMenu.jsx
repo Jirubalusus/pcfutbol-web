@@ -9,9 +9,11 @@ import { hasActiveContrarreloj, getContrarrelojSave, deleteContrarrelojSave } fr
 import { hasActiveProManager, getProManagerSave, deleteProManagerSave } from '../../firebase/proManagerService';
 import { 
   Play, LogIn, LogOut, Save, Trophy, Settings as SettingsIcon, 
-  Lightbulb, User, Gamepad2, ChevronRight, Timer, Swords, Briefcase
+  Lightbulb, User, Gamepad2, ChevronRight, Timer, Swords, Briefcase, Package
 } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
+import EditionMode from '../EditionMode/EditionMode';
+import { getActiveEditionId } from '../../data/editions/editionService';
 import './MainMenu.scss';
 
 export default function MainMenu() {
@@ -29,6 +31,7 @@ export default function MainMenu() {
   const [contrarrelojInfo, setContrarrelojInfo] = useState({ hasActive: false, summary: null });
   const [showContrarrelojPrompt, setShowContrarrelojPrompt] = useState(false);
   const [loadingContrarreloj, setLoadingContrarreloj] = useState(false);
+  const [showEditionMode, setShowEditionMode] = useState(false);
   
   // ProManager state
   const [proManagerInfo, setProManagerInfo] = useState({ hasActive: false, summary: null });
@@ -227,6 +230,19 @@ export default function MainMenu() {
     dispatch({ type: 'SET_SCREEN', payload: 'contrarreloj_setup' });
   };
   
+  if (showEditionMode) {
+    return (
+      <EditionMode 
+        onBack={() => setShowEditionMode(false)}
+        onEditionApplied={() => {
+          // EditionMode already handles save deletion
+          // Force full page reload to re-fetch data with new names
+          window.location.reload();
+        }}
+      />
+    );
+  }
+
   if (showSettings) {
     return (
       <div className="main-menu__settings-wrapper">
@@ -420,6 +436,16 @@ export default function MainMenu() {
             >
               <SettingsIcon size={20} className="icon-svg" />
               <span className="label">{t('mainMenu.optionsButton')}</span>
+            </button>
+
+            <button 
+              className="main-menu__btn main-menu__btn--small main-menu__btn--edition"
+              onClick={() => setShowEditionMode(true)}
+              style={{ '--delay': state.gameStarted ? '6' : '4' }}
+            >
+              <Package size={20} className="icon-svg" />
+              <span className="label">{t('mainMenu.editionButton')}</span>
+              {getActiveEditionId() && <span className="main-menu__edition-badge">●</span>}
             </button>
           </div>
         </nav>
