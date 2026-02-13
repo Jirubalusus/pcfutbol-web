@@ -1,0 +1,121 @@
+.nickname-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.3s ease;
+}
+
+.nickname-modal {
+  background: #1a1a2e;
+  border: 1px solid #2a2a4a;
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  width: 90%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  animation: slideUp 0.35s ease;
+
+  &__title {
+    font-size: 1.3rem;
+    color: #fff;
+    text-align: center;
+    margin: 0;
+  }
+
+  &__input-wrap {
+    display: flex;
+    width: 100%;
+    border: 2px solid #333;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+
+    &.valid {
+      border-color: #4caf50;
+    }
+    &.error {
+      border-color: #e74c3c;
+    }
+  }
+
+  &__input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    font-size: 1.1rem;
+    background: #0d0d1a;
+    color: #fff;
+    border: none;
+    outline: none;
+    font-family: inherit;
+
+    &::placeholder {
+      color: #666;
+    }
+  }
+
+  &__random {
+    padding: 0 1rem;
+    background: #0d0d1a;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: background 0.15s;
+
+    &:hover {
+      background: #1a1a2e;
+    }
+  }
+
+  &__error {
+    color: #e74c3c;
+    font-size: 0.85rem;
+    margin: 0;
+    align-self: flex-start;
+  }
+
+  &__confirm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #4caf50, #2e7d32);
+    color: #fff;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+
+    &:hover:not(:disabled) {
+      opacity: 0.9;
+    }
+    &:active:not(:disabled) {
+      transform: scale(0.97);
+    }
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}

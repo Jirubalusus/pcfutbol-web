@@ -1625,5 +1625,14 @@
     "waitingReady": "Esperando al rival...",
     "readyStatus": "{{count}}/2",
     "timerExpired": "Tiempo agotado"
+  },
+  "nickname": {
+    "title": "Elige tu nombre de manager",
+    "placeholder": "Tu nombre...",
+    "random": "Aleatorio",
+    "confirm": "Confirmar",
+    "tooShort": "Mínimo 3 caracteres",
+    "tooLong": "Máximo 20 caracteres",
+    "invalid": "Solo letras, números, _ y -"
   }
 }

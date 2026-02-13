@@ -11,7 +11,7 @@ import { Swords, Trophy, Search, ArrowLeft, Clock, ChevronRight, Wifi, WifiOff }
 import './RankedLobby.scss';
 
 export default function RankedLobby() {
-  const { user } = useAuth();
+  const { user, displayName: authDisplayName } = useAuth();
   const { dispatch } = useGame();
   const [player, setPlayer] = useState(null);
   const [searching, setSearching] = useState(false);
@@ -30,7 +30,7 @@ export default function RankedLobby() {
     if (!user?.uid) return;
     let unsub;
     (async () => {
-      await getOrCreatePlayer(user.uid, user.displayName || user.email?.split('@')[0]);
+      await getOrCreatePlayer(user.uid, authDisplayName || user.displayName || user.email?.split('@')[0]);
       unsub = onPlayerChange(user.uid, (data) => {
         setPlayer(data);
         setLoading(false);

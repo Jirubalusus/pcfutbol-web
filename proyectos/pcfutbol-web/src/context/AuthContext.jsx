@@ -10,6 +10,8 @@ import {
   resendVerificationEmail,
   refreshUser
 } from '../firebase/authService';
+import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { db } from '../firebase/config';
 import { PlatformAuth, isAndroid } from '../services/platformAuth';
 import { syncLanguageFromFirebase } from '../i18n';
 
@@ -19,6 +21,39 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [needsNickname, setNeedsNickname] = useState(false);
+  const [displayName, setDisplayNameState] = useState(null);
+
+  // Check if user has a displayName in Firestore
+  const checkNickname = async (uid) => {
+    if (!uid) return;
+    try {
+      const userDoc = await getDoc(doc(db, 'users', uid));
+      if (userDoc.exists() && userDoc.data().displayName) {
+        setDisplayNameState(userDoc.data().displayName);
+        setNeedsNickname(false);
+      } else {
+        setNeedsNickname(true);
+        setDisplayNameState(null);
+      }
+    } catch (e) {
+      console.error('Error checking nickname:', e);
+      setNeedsNickname(true);
+    }
+  };
+
+  // Save nickname to Firestore
+  const setNickname = async (name) => {
+    if (!user?.uid) return;
+    const userRef = doc(db, 'users', user.uid);
+    await setDoc(userRef, {
+      displayName: name,
+      email: user.email || null,
+      updatedAt: serverTimestamp(),
+    }, { merge: true });
+    setDisplayNameState(name);
+    setNeedsNickname(false);
+  };
 
   useEffect(() => {
     // Check for Google redirect result on load
@@ -30,6 +65,13 @@ export function AuthProvider({ children }) {
       if (firebaseUser) {
         // Cargar idioma guardado en Firebase
         await syncLanguageFromFirebase();
+        // Check nickname
+        if (!firebaseUser.isGuest) {
+          await checkNickname(firebaseUser.uid);
+        }
+      } else {
+        setNeedsNickname(false);
+        setDisplayNameState(null);
       }
     });
 
@@ -160,6 +202,9 @@ export function AuthProvider({ children }) {
     isEmailVerified: user?.emailVerified || false,
     isGuest: user?.isGuest || false,
     isPlayGames: user?.isPlayGames || false,
+    needsNickname,
+    displayName,
+    setNickname,
     isAndroid: isAndroid(),
     login,
     loginGoogle,

@@ -14,6 +14,7 @@ import Ranking from './components/Ranking/Ranking';
 import RankedLobby from './components/Ranked/RankedLobby';
 import RankedMatch from './components/Ranked/RankedMatch';
 import RankedLeaderboard from './components/Ranked/RankedLeaderboard';
+import NicknameModal from './components/NicknameModal/NicknameModal';
 import ProManagerSetup from './components/ProManager/ProManagerSetup';
 import ProManagerSeasonEnd from './components/ProManager/ProManagerSeasonEnd';
 import { useAudioManager } from './hooks/useAudioManager';
@@ -22,7 +23,7 @@ import './index.css';
 
 function GameRouter() {
   const { state } = useGame();
-  const { loading: authLoading } = useAuth();
+  const { loading: authLoading, needsNickname, setNickname, isAuthenticated, isEmailVerified } = useAuth();
   
   // Audio manager - detecta pantalla actual y reproduce música acorde
   const isMatchScreen = state.playingMatch || state.pendingMatch;
@@ -62,6 +63,10 @@ function GameRouter() {
   }
   
   const showNotifications = state.gameStarted && state.currentScreen === 'office';
+
+  if (isAuthenticated && isEmailVerified && needsNickname) {
+    return <NicknameModal onConfirm={setNickname} />;
+  }
 
   return (
     <>
