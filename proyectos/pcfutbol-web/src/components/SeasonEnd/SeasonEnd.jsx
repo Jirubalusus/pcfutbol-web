@@ -498,6 +498,33 @@ export default function SeasonEnd({ allTeams, onComplete }) {
       // European/SA champion is already handled in COMPLETE_EUROPEAN_MATCH / COMPLETE_SA_MATCH
     }
 
+    // Save final season stats for ProManager season end screen (before table resets)
+    if (state.gameMode === 'promanager' && state.proManagerData) {
+      const finalTeamEntry = state.leagueTable?.find(t => t.teamId === state.teamId);
+      const finalPosition = (state.leagueTable?.findIndex(t => t.teamId === state.teamId) + 1) || 1;
+      dispatch({
+        type: 'SET_PROMANAGER_DATA',
+        payload: {
+          ...state.proManagerData,
+          lastSeasonStats: {
+            position: finalPosition,
+            points: finalTeamEntry?.points || 0,
+            won: finalTeamEntry?.won || 0,
+            drawn: finalTeamEntry?.drawn || 0,
+            lost: finalTeamEntry?.lost || 0,
+            goalsFor: finalTeamEntry?.goalsFor || 0,
+            goalsAgainst: finalTeamEntry?.goalsAgainst || 0,
+            cupResult: state.cupCompetition?.playerEliminated 
+              ? `Eliminado en ${state.cupCompetition.rounds?.[state.cupCompetition.currentRound]?.name || 'copa'}`
+              : state.cupCompetition?.winner === state.teamId ? 'Campeón' : null,
+            europeanResult: state.europeanCompetitions ? 'Participó' : null,
+            league: state.playerLeagueId || 'laliga',
+            season: state.currentSeason || 1
+          }
+        }
+      });
+    }
+
     // Dispatch para iniciar nueva temporada
     dispatch({
       type: 'START_NEW_SEASON',

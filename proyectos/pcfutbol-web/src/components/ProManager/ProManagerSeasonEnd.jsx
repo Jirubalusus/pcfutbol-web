@@ -65,8 +65,9 @@ export default function ProManagerSeasonEnd() {
   const [selectedOffer, setSelectedOffer] = useState(null);
   const [animatedPrestige, setAnimatedPrestige] = useState(pm?.prestige || 10);
 
-  const position = (state.leagueTable?.findIndex(t => t.teamId === state.teamId) + 1) || 1;
-  const teamEntry = state.leagueTable?.find(t => t.teamId === state.teamId);
+  const lastStats = pm?.lastSeasonStats;
+  const position = lastStats?.position || (state.leagueTable?.findIndex(t => t.teamId === state.teamId) + 1) || 1;
+  const teamEntry = lastStats || state.leagueTable?.find(t => t.teamId === state.teamId);
 
   const seasonEval = useMemo(() => {
     return evaluateSeason(position, pm?.objective, state.cupResult);
@@ -182,6 +183,24 @@ export default function ProManagerSeasonEnd() {
     const otherLeagues = initializeOtherLeagues(leagueId, null);
     dispatch({ type: 'SET_OTHER_LEAGUES', payload: otherLeagues });
 
+    // Load all league teams for transfers
+    const allLeagueTeamsWithData = [];
+    for (const [lid, getter] of Object.entries(ALL_LEAGUE_GETTERS)) {
+      try {
+        const teams = getter();
+        for (const tt of teams) {
+          allLeagueTeamsWithData.push({
+            ...tt, id: tt.id, name: tt.name, players: tt.players || [],
+            budget: tt.budget || (tt.reputation > 4 ? 100_000_000 : tt.reputation > 3 ? 50_000_000 : 20_000_000),
+            leagueId: lid
+          });
+        }
+      } catch { /* skip */ }
+    }
+    if (allLeagueTeamsWithData.length > 0) {
+      dispatch({ type: 'UPDATE_LEAGUE_TEAMS', payload: allLeagueTeamsWithData });
+    }
+
     // Cup
     try {
       const cupTeams = getCupTeams(leagueId, null, leagueTeams);
@@ -246,6 +265,27 @@ export default function ProManagerSeasonEnd() {
                 </div>
               </div>
             </div>
+
+            {/* Season Achievements */}
+            {lastStats && (
+              <div className="pm-season-end__achievements">
+                {lastStats.cupResult && (
+                  <div className="achievement">🏆 Copa: {lastStats.cupResult}</div>
+                )}
+                {lastStats.europeanResult && (
+                  <div className="achievement">🌍 Competición europea: {lastStats.europeanResult}</div>
+                )}
+                {position === 1 && (
+                  <div className="achievement">🥇 ¡Campeón de liga!</div>
+                )}
+                {position <= 4 && position > 1 && (
+                  <div className="achievement">⭐ Top 4 en la liga</div>
+                )}
+                {(teamEntry?.goalsFor || 0) > 0 && (
+                  <div className="achievement">⚽ {teamEntry.goalsFor} goles a favor, {teamEntry.goalsAgainst} en contra</div>
+                )}
+              </div>
+            )}
 
             {/* Board Evaluation */}
             <div className="pm-season-end__eval" style={{ borderColor: evalColor }}>

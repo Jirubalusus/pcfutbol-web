@@ -52,7 +52,7 @@ export function generateInitialOffers(country, prestige, allLeagueGetters) {
       for (const team of teams) {
         const avgOvr = getAvgOverall(team);
         // Only weak teams (max OVR based on prestige, starts very low)
-        const maxOvr = 55 + prestige * 0.3;
+        const maxOvr = 68 + (prestige > 30 ? (prestige - 30) * 0.5 : 0);
         if (avgOvr <= maxOvr) {
           pool.push({ team, leagueId, leagueName: config.name });
         }
@@ -60,9 +60,9 @@ export function generateInitialOffers(country, prestige, allLeagueGetters) {
     } catch { /* skip */ }
   }
 
-  // Shuffle and pick 20
+  // Shuffle and pick 5
   const shuffled = pool.sort(() => Math.random() - 0.5);
-  return shuffled.slice(0, 20).map(entry => ({
+  return shuffled.slice(0, 5).map(entry => ({
     ...entry,
     objective: getBoardObjective(getAvgOverall(entry.team), entry.leagueId, entry.team),
   }));
@@ -253,6 +253,18 @@ export function generateSeasonEndOffers(prestige, currentLeagueId, currentTeamId
       if (eligible.length === 0) continue;
       const team = eligible[Math.floor(Math.random() * eligible.length)];
       
+      // Ensure team has budget and reputation
+      if (!team.budget) {
+        const avgOvr = getAvgOverall(team);
+        if (avgOvr >= 78) team.budget = 80_000_000 + Math.floor(Math.random() * 40_000_000);
+        else if (avgOvr >= 72) team.budget = 30_000_000 + Math.floor(Math.random() * 30_000_000);
+        else if (avgOvr >= 65) team.budget = 10_000_000 + Math.floor(Math.random() * 15_000_000);
+        else team.budget = 3_000_000 + Math.floor(Math.random() * 7_000_000);
+      }
+      if (!team.reputation) {
+        team.reputation = Math.min(5, Math.max(1, Math.round(getAvgOverall(team) / 16)));
+      }
+
       offers.push({
         team,
         leagueId,

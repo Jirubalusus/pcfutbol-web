@@ -7,6 +7,17 @@ import {
 } from 'firebase/firestore';
 import { getTierByLP, getTotalLP, calculateLPChange, DEFAULT_PLAYER_DATA, LP_PER_DIVISION, TIERS, calculateMatchPoints } from '../components/Ranked/tierUtils';
 
+// Strip undefined values from object (Firestore rejects undefined)
+function stripUndefined(obj) {
+  if (obj === null || typeof obj !== 'object') return obj;
+  if (Array.isArray(obj)) return obj.map(stripUndefined);
+  const clean = {};
+  for (const [k, v] of Object.entries(obj)) {
+    if (v !== undefined) clean[k] = typeof v === 'object' && v !== null && !(v instanceof Timestamp) ? stripUndefined(v) : v;
+  }
+  return clean;
+}
+
 // ── Collections ──
 const QUEUE_COL = 'ranked_queue';
 const MATCHES_COL = 'ranked_matches';
@@ -110,6 +121,21 @@ export async function leaveQueue(uid) {
   try { await deleteDoc(doc(db, QUEUE_COL, uid)); } catch(e) {}
 }
 
+// Abandon all active (non-finished) matches for this user before starting a new search
+export async function abandonActiveMatches(uid) {
+  const close = async (snap) => {
+    for (const d of snap.docs) {
+      const data = d.data();
+      if (data.phase && data.phase !== 'results' && data.phase !== 'finished') {
+        try { await updateDoc(d.ref, { phase: 'finished', winner: null, updatedAt: serverTimestamp() }); } catch {}
+      }
+    }
+  };
+  const q1 = query(collection(db, MATCHES_COL), where('player1.uid', '==', uid));
+  const q2 = query(collection(db, MATCHES_COL), where('player2.uid', '==', uid));
+  await Promise.all([close(await getDocs(q1)), close(await getDocs(q2))]);
+}
+
 export function onQueueChange(uid, callback) {
   return onSnapshot(doc(db, QUEUE_COL, uid), (snap) => {
     callback(snap.exists() ? { id: snap.id, ...snap.data() } : null);
@@ -138,26 +164,35 @@ export async function findOpponent(uid, totalLP) {
 }
 
 // Find an active match where this user is a participant (player1 or player2)
+// Only returns matches created in the last 30 minutes (older = abandoned)
 export async function findMyActiveMatch(uid) {
-  // Check as player1
+  const MAX_AGE_MS = 30 * 60 * 1000; // 30 minutes
+  const now = Date.now();
+
+  const checkDocs = async (snap) => {
+    for (const d of snap.docs) {
+      const data = d.data();
+      if (data.phase && data.phase !== 'results' && data.phase !== 'finished') {
+        // Check age — skip stale matches
+        const createdAt = data.createdAt?.toDate?.() || data.createdAt;
+        const age = createdAt ? now - new Date(createdAt).getTime() : Infinity;
+        if (age > MAX_AGE_MS) {
+          // Auto-close stale match
+          try { await updateDoc(d.ref, { phase: 'finished', updatedAt: serverTimestamp() }); } catch {}
+          continue;
+        }
+        return { id: d.id, ...data };
+      }
+    }
+    return null;
+  };
+
   const q1 = query(collection(db, MATCHES_COL), where('player1.uid', '==', uid));
-  const snap1 = await getDocs(q1);
-  for (const d of snap1.docs) {
-    const data = d.data();
-    if (data.phase && data.phase !== 'results' && data.phase !== 'finished') {
-      return { id: d.id, ...data };
-    }
-  }
-  // Check as player2
+  const result1 = await checkDocs(await getDocs(q1));
+  if (result1) return result1;
+
   const q2 = query(collection(db, MATCHES_COL), where('player2.uid', '==', uid));
-  const snap2 = await getDocs(q2);
-  for (const d of snap2.docs) {
-    const data = d.data();
-    if (data.phase && data.phase !== 'results' && data.phase !== 'finished') {
-      return { id: d.id, ...data };
-    }
-  }
-  return null;
+  return await checkDocs(await getDocs(q2));
 }
 
 // ============================================================
@@ -481,11 +516,11 @@ export async function advancePhase(matchId) {
         player2Points: p2Points,
         simulation: sim,
       };
-      update.winner = winner;
+      update.winner = winner || null; // Ensure no undefined
     }
   }
   
-  await updateDoc(matchRef, update);
+  await updateDoc(matchRef, stripUndefined(update));
   
   // If results, update player stats
   if (nextPhase === 'results' && update.results) {
@@ -520,17 +555,19 @@ async function runHalfSeasonSimulation(matchData) {
   );
   
   // Return serializable data (no full fixtures, just table + key stats)
+  // Include ALL teams so round2 can load the full table into GameContext
   return {
-    table: result.table.slice(0, 10).map(t => ({
+    table: result.table.map(t => ({
       teamId: t.teamId,
       teamName: t.teamName,
-      played: t.played,
-      won: t.won,
-      drawn: t.drawn,
-      lost: t.lost,
-      goalsFor: t.goalsFor,
-      goalsAgainst: t.goalsAgainst,
-      points: t.points,
+      played: t.played || 0,
+      won: t.won || 0,
+      drawn: t.drawn || 0,
+      lost: t.lost || 0,
+      goalsFor: t.goalsFor || 0,
+      goalsAgainst: t.goalsAgainst || 0,
+      goalDifference: (t.goalsFor || 0) - (t.goalsAgainst || 0),
+      points: t.points || 0,
     })),
     player1Position: result.table.findIndex(t => t.teamId === matchData.player1.team) + 1,
     player2Position: result.table.findIndex(t => t.teamId === matchData.player2.team) + 1,
@@ -567,17 +604,17 @@ async function runFullSeasonSimulation(matchData) {
   return {
     player1: fullResult.player1,
     player2: fullResult.player2,
-    table: fullResult.table.slice(0, 10).map(t => ({
+    table: fullResult.table.map(t => ({
       teamId: t.teamId,
       teamName: t.teamName,
-      played: t.played,
-      won: t.won,
-      drawn: t.drawn,
-      lost: t.lost,
-      goalsFor: t.goalsFor,
-      goalsAgainst: t.goalsAgainst,
-      goalDifference: t.goalDifference,
-      points: t.points,
+      played: t.played || 0,
+      won: t.won || 0,
+      drawn: t.drawn || 0,
+      lost: t.lost || 0,
+      goalsFor: t.goalsFor || 0,
+      goalsAgainst: t.goalsAgainst || 0,
+      goalDifference: t.goalDifference || 0,
+      points: t.points || 0,
     })),
   };
 }
@@ -585,31 +622,54 @@ async function runFullSeasonSimulation(matchData) {
 function generateFallbackSimulation(matchData) {
   // Fallback random simulation if real engine fails
   const rand = () => Math.floor(Math.random() * 4);
-  const pos1 = Math.floor(Math.random() * 20) + 1;
-  const pos2 = Math.floor(Math.random() * 20) + 1;
+  
+  // Build a proper fallback table from league teams
+  const leagueTeams = LEAGUE_TEAMS_MAP[matchData.leagueId]?.() || [];
+  const fallbackTable = leagueTeams.map(t => ({
+    teamId: t.id,
+    teamName: t.name,
+    played: 34,
+    won: Math.floor(Math.random() * 20) + 5,
+    drawn: Math.floor(Math.random() * 10),
+    lost: 0,
+    goalsFor: Math.floor(Math.random() * 40) + 30,
+    goalsAgainst: Math.floor(Math.random() * 40) + 20,
+    goalDifference: 0,
+    points: 0,
+  })).map(t => ({
+    ...t,
+    lost: t.played - t.won - t.drawn,
+    points: t.won * 3 + t.drawn,
+    goalDifference: t.goalsFor - t.goalsAgainst,
+  })).sort((a, b) => b.points - a.points || b.goalDifference - a.goalDifference);
+
+  const pos1 = Math.max(1, fallbackTable.findIndex(t => t.teamId === matchData.player1?.team) + 1) || Math.floor(Math.random() * 10) + 1;
+  const pos2 = Math.max(1, fallbackTable.findIndex(t => t.teamId === matchData.player2?.team) + 1) || Math.floor(Math.random() * 10) + 1;
   
   return {
     player1: {
-      teamId: matchData.player1.team,
-      teamName: matchData.teams?.find(t => t.id === matchData.player1.team)?.name || 'Equipo 1',
-      leaguePosition: pos1, leaguePoints: 90 - pos1 * 3,
+      teamId: matchData.player1?.team,
+      teamName: matchData.teams?.find(t => t.id === matchData.player1?.team)?.name || 'Equipo 1',
+      leaguePosition: pos1, leaguePoints: fallbackTable[pos1 - 1]?.points || (90 - pos1 * 3),
       liga: pos1 === 1, copa: Math.random() < 0.12,
+      cupRound: 'R1',
       championsLeague: false, europaLeague: false, conference: false,
       libertadores: false, sudamericana: false, supercopa: false,
       h2hResults: [{ goalsFor: rand(), goalsAgainst: rand() }],
       h2hWins: 0, finishedAboveRival: pos1 < pos2,
     },
     player2: {
-      teamId: matchData.player2.team,
-      teamName: matchData.teams?.find(t => t.id === matchData.player2.team)?.name || 'Equipo 2',
-      leaguePosition: pos2, leaguePoints: 90 - pos2 * 3,
+      teamId: matchData.player2?.team,
+      teamName: matchData.teams?.find(t => t.id === matchData.player2?.team)?.name || 'Equipo 2',
+      leaguePosition: pos2, leaguePoints: fallbackTable[pos2 - 1]?.points || (90 - pos2 * 3),
       liga: pos2 === 1, copa: Math.random() < 0.12,
+      cupRound: 'R1',
       championsLeague: false, europaLeague: false, conference: false,
       libertadores: false, sudamericana: false, supercopa: false,
       h2hResults: [{ goalsFor: rand(), goalsAgainst: rand() }],
       h2hWins: 0, finishedAboveRival: pos2 < pos1,
     },
-    table: [],
+    table: fallbackTable,
   };
 }
 
@@ -722,7 +782,7 @@ export async function checkDisconnect(matchId, uid) {
     const otherKey = data.player1.uid === uid ? 'player2Last' : 'player1Last';
     const lastPing = data.disconnectCheck?.[otherKey]?.toDate?.();
     if (!lastPing) return false;
-    return (Date.now() - lastPing.getTime()) > 30000;
+    return (Date.now() - lastPing.getTime()) > 15000; // 15s disconnect timeout
   } catch { return false; }
 }
 

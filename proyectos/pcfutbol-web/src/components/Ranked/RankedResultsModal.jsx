@@ -242,14 +242,25 @@ function BreakdownList({ sim, t }) {
   if (sim.sudamericana) items.push({ label: '🏆 Sudamericana', pts: 3 });
   if (sim.copa) items.push({ label: `🏆 ${t('rankedResults.cup')}`, pts: 3 });
   if (sim.supercopa) items.push({ label: `🏆 ${t('rankedResults.superCup')}`, pts: 1 });
+  // Cup round bonus (QF+)
+  const cupRoundPoints = { 'QF': 1, 'SF': 2, 'Final': 3 };
+  if (sim.cupRound && cupRoundPoints[sim.cupRound]) {
+    items.push({ label: `🏆 Copa: ${sim.cupRound}`, pts: cupRoundPoints[sim.cupRound] });
+  }
   if (sim.finishedAboveRival) items.push({ label: `📈 ${t('rankedResults.aboveRival')}`, pts: 2 });
-  if (sim.h2hWins > 0) items.push({ label: `⚔️ ${t('rankedResults.h2hWins', { count: sim.h2hWins })}`, pts: sim.h2hWins });
+  // H2H: recalculate from results if h2hWins is missing
+  let h2hWins = sim.h2hWins || 0;
+  if (!h2hWins && sim.h2hResults?.length > 0) {
+    h2hWins = sim.h2hResults.filter(r => r.goalsFor > r.goalsAgainst).length;
+  }
+  const h2hPts = Math.min(2, h2hWins);
+  if (h2hPts > 0) items.push({ label: `⚔️ ${t('rankedResults.h2hWins', { count: h2hWins })}`, pts: h2hPts });
 
   items.push({ label: `📊 ${t('rankedResults.leaguePos', { pos: sim.leaguePosition, pts: sim.leaguePoints })}`, pts: null });
   if (sim.europeanCompetition) {
     items.push({ label: `🌍 ${sim.europeanCompetition}: ${sim.europeanRound || '-'}`, pts: null });
   }
-  if (sim.cupRound) {
+  if (sim.cupRound && !cupRoundPoints[sim.cupRound]) {
     items.push({ label: `🏆 ${t('rankedResults.cupRound', { round: sim.cupRound })}`, pts: null });
   }
 

@@ -74,7 +74,16 @@ export const LEAGUE_MATCHDAYS = {
   bundesliga: 34,
   ligue1: 34,
   primeraRFEF: 38,
-  segundaRFEF: 34
+  segundaRFEF: 34,
+  ligaMX: 34,
+  championship: 46,
+  belgianPro: 30,
+  eredivisie: 34,
+  primeiraLiga: 34,
+  scottishPrem: 38,
+  serieB: 38,
+  bundesliga2: 34,
+  ligue2: 38,
 };
 
 /**

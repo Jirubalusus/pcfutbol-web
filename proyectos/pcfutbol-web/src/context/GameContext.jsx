@@ -1,6 +1,6 @@
 ﻿import React, { createContext, useContext, useReducer, useEffect, useRef } from 'react';
 import { db } from '../firebase/config';
-import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc, deleteDoc } from 'firebase/firestore';
 import { saveContrarreloj, deleteContrarrelojSave } from '../firebase/contrarrelojSaveService';
 import { saveProManager, deleteProManagerSave } from '../firebase/proManagerService';
 import { calculateBoardConfidence } from '../game/proManagerEngine';
@@ -318,7 +318,32 @@ function gameReducer(state, action) {
         }
       }
       
-      return { ...state, ...sanitized, loaded: true };
+      // Discard ranked saves — ranked matches are ephemeral, never persist
+      // Also detect saves that were stored during ranked mode before the guard existed
+      const isRankedSave = sanitized.gameMode === 'ranked' || sanitized.rankedMatchId ||
+        (sanitized.currentScreen === 'ranked_match' || sanitized.currentScreen === 'ranked_lobby');
+      if (isRankedSave) {
+        console.warn('⚠️ Discarding old ranked save — ranked matches are not persistent');
+        // Clean up: delete from Firebase and clear localStorage
+        try {
+          const oldSaveId = localStorage.getItem('pcfutbol_saveId');
+          if (oldSaveId) {
+            deleteDoc(doc(db, 'saves', oldSaveId)).catch(() => {});
+          }
+          localStorage.removeItem('pcfutbol_saveId');
+          localStorage.removeItem('pcfutbol_local_save');
+        } catch (e) { /* ignore cleanup errors */ }
+        return { ...state, loaded: true };
+      }
+
+      // Always clean up ranked fields when loading a non-ranked save
+      // This prevents ranked state from a previous session leaking into contrarreloj/career saves
+      const cleanRanked = !sanitized.rankedMatchId ? {
+        gameMode: sanitized.gameMode || sanitized._type || state.gameMode || 'career',
+        rankedMatchId: null,
+      } : {};
+
+      return { ...state, ...sanitized, ...cleanRanked, loaded: true };
     }
 
     case 'NEW_GAME': {
@@ -417,12 +442,28 @@ function gameReducer(state, action) {
     case 'SET_SCREEN':
       return { ...state, currentScreen: action.payload };
 
+    case 'SET_SIMULATING':
+      return { ...state, isSimulating: !!action.payload };
+
     case 'SET_RANKED_MATCH_ID':
       return { ...state, rankedMatchId: action.payload };
 
     case 'LOAD_RANKED_TEAM': {
-      // Load a team into GameContext for ranked match Office usage
+      // Load a team into GameContext for ranked match — show Office for round management
       const { team, leagueId, leagueTable, money, formation: rFormation, tactic: rTactic, gameMode: rGM } = action.payload;
+      // Sanitize leagueTable: ensure it's an array with proper fields
+      const sanitizedTable = (Array.isArray(leagueTable) ? leagueTable : []).map(t => ({
+        ...t,
+        played: t.played || 0,
+        won: t.won || 0,
+        drawn: t.drawn || 0,
+        lost: t.lost || 0,
+        goalsFor: t.goalsFor || 0,
+        goalsAgainst: t.goalsAgainst || 0,
+        goalDifference: t.goalDifference || (t.goalsFor || 0) - (t.goalsAgainst || 0),
+        points: t.points || 0,
+        isPlayer: t.teamId === team.id,
+      }));
       return {
         ...state,
         gameStarted: true,
@@ -433,13 +474,16 @@ function gameReducer(state, action) {
         playerLeagueId: leagueId,
         leagueTier: leagueId ? getLeagueTier(leagueId) : 1,
         money: money || team.budget || team.transferBudget || 5000000,
-        formation: rFormation || '4-3-3',
-        tactic: rTactic || 'balanced',
-        leagueTable: leagueTable || [],
+        formation: rFormation || state.formation || '4-3-3',
+        tactic: rTactic || state.tactic || 'balanced',
+        leagueTable: sanitizedTable,
         fixtures: [],
         currentScreen: 'office',
         currentWeek: 1,
         currentSeason: 1,
+        currentTournament: 'apertura',
+        aperturaTable: null,
+        cupCompetition: null,
         messages: [],
         seasonObjectives: [],
         preseasonPhase: false,
@@ -448,9 +492,11 @@ function gameReducer(state, action) {
 
     case 'CLEAR_RANKED_TEAM':
       return {
-        ...state,
-        gameMode: 'career',
-        rankedMatchId: null,
+        ...initialState,
+        loaded: true,
+        settings: state.settings,
+        managerName: state.managerName,
+        currentScreen: state.currentScreen,
       };
 
     case 'SET_PROMANAGER_DATA':
@@ -2363,6 +2409,16 @@ function gameReducer(state, action) {
         // Early exit if manager fired, contrarreloj ended, or season screen changed
         if (currentState.managerFired || currentState.contrarrelojData?.finished) break;
       }
+      // Auto-clear any pending matches left by the last ADVANCE_WEEK
+      // (they'll be auto-resolved on next ADVANCE_WEEK call anyway)
+      if (currentState.pendingCupMatch || currentState.pendingEuropeanMatch || currentState.pendingSAMatch) {
+        currentState = {
+          ...currentState,
+          pendingCupMatch: null,
+          pendingEuropeanMatch: null,
+          pendingSAMatch: null
+        };
+      }
       return currentState;
     }
 
@@ -2481,13 +2537,76 @@ function gameReducer(state, action) {
         globalMarket: action.payload
       };
 
-    case 'ADD_OUTGOING_OFFER':
+    case 'ADD_OUTGOING_OFFER': {
       // Descontar dinero al enviar la oferta (se devuelve si rechazan)
+      const newOffer = action.payload;
+
+      // === RANKED MODE: Instant resolution ===
+      if (state.gameMode === 'ranked') {
+        const targetTeam = (state.leagueTeams || []).find(t => t.id === newOffer.toTeamId);
+        const targetPlayer = targetTeam ? (targetTeam.players || []).find(p => p.name === newOffer.playerName) : null;
+        
+        if (!targetPlayer || !targetTeam) {
+          // Player not found — refund
+          return {
+            ...state,
+            outgoingOffers: [...(state.outgoingOffers || []), { ...newOffer, status: 'resolved', clubResponse: 'rejected', clubReason: 'Jugador no disponible', playerResponse: 'rejected', playerReason: '', resolvedWeek: state.currentWeek }],
+          };
+        }
+
+        const playerMarketValue = calculateMarketValue(targetPlayer, targetTeam.leagueId);
+        const offerRatio = newOffer.amount / playerMarketValue;
+        const isStarter = targetPlayer.overall >= (targetTeam.players || []).reduce((sum, p) => sum + p.overall, 0) / (targetTeam.players?.length || 1) + 3;
+
+        let clubResponse = 'rejected', clubReason = '', clubCounterAmount = null;
+        if (isStarter && offerRatio < 1.3) { clubResponse = 'rejected'; clubReason = 'Titular indiscutible'; }
+        else if (offerRatio >= 1.15) { clubResponse = 'accepted'; clubReason = 'Oferta irrechazable'; }
+        else if (offerRatio >= 0.90) { clubResponse = Math.random() < 0.65 ? 'accepted' : 'rejected'; clubReason = clubResponse === 'accepted' ? 'Oferta aceptada' : 'Oferta insuficiente'; }
+        else if (offerRatio >= 0.70) { clubResponse = Math.random() < 0.3 ? 'accepted' : 'rejected'; clubReason = clubResponse === 'accepted' ? 'Necesitan liquidez' : 'Oferta insuficiente'; }
+        else { clubReason = 'Oferta irrisoria'; }
+
+        const requiredSalary = Math.round((targetPlayer.salary || 50000) * 1.1);
+        let playerResponse = 'rejected', playerReason = '';
+        if (newOffer.salaryOffer >= requiredSalary * 0.95) { playerResponse = Math.random() < 0.75 ? 'accepted' : 'rejected'; playerReason = playerResponse === 'accepted' ? 'Acepta' : 'Quiere más salario'; }
+        else if (newOffer.salaryOffer >= requiredSalary * 0.7) { playerResponse = Math.random() < 0.3 ? 'accepted' : 'rejected'; playerReason = playerResponse === 'accepted' ? 'Le convence' : 'Salario insuficiente'; }
+        else { playerReason = 'Oferta salarial irrisoria'; }
+
+        const bothAccepted = clubResponse === 'accepted' && playerResponse === 'accepted';
+        const resolvedOffer = { ...newOffer, status: 'resolved', clubResponse, clubReason, clubCounterAmount, playerResponse, playerReason, resolvedWeek: state.currentWeek, expiryWeek: state.currentWeek + 2 };
+
+        let updatedPlayers = state.team ? [...state.team.players] : [];
+        let updatedLeagueTeams = [...(state.leagueTeams || [])];
+        let moneyChange = -(newOffer.amount || 0);
+
+        if (bothAccepted) {
+          updatedPlayers.push({ ...targetPlayer, salary: newOffer.salaryOffer, contractYears: newOffer.contractYears || 4, teamId: state.teamId, morale: 80, fitness: 100 });
+          updatedLeagueTeams = updatedLeagueTeams.map(t => t.id === newOffer.toTeamId ? { ...t, players: (t.players || []).filter(p => p.name !== newOffer.playerName), budget: (t.budget || 50_000_000) + newOffer.amount } : t);
+        } else {
+          moneyChange = 0; // Refund — don't deduct
+        }
+
+        // Block rejected players in ranked (can't re-offer same player this round)
+        const updatedBlocked = !bothAccepted 
+          ? [...(state.blockedPlayers || []), newOffer.playerName]
+          : (state.blockedPlayers || []);
+
+        return {
+          ...state,
+          outgoingOffers: [...(state.outgoingOffers || []), resolvedOffer],
+          money: state.money + moneyChange,
+          team: state.team ? { ...state.team, players: updatedPlayers } : null,
+          leagueTeams: updatedLeagueTeams,
+          blockedPlayers: updatedBlocked,
+          messages: [{ id: Date.now(), type: 'transfer', title: bothAccepted ? `✅ ${newOffer.playerName} fichado` : `❌ Oferta rechazada por ${newOffer.playerName}`, content: bothAccepted ? `Coste: ${formatTransferPrice(newOffer.amount)}` : `Club: ${clubReason}. Jugador: ${playerReason}`, date: `Semana ${state.currentWeek}` }, ...state.messages].slice(0, 50),
+        };
+      }
+
       return {
         ...state,
-        outgoingOffers: [...(state.outgoingOffers || []), action.payload],
-        money: state.money - (action.payload.amount || 0)
+        outgoingOffers: [...(state.outgoingOffers || []), newOffer],
+        money: state.money - (newOffer.amount || 0)
       };
+    }
 
     case 'UPDATE_OUTGOING_OFFER':
       return {
@@ -2804,8 +2923,8 @@ function gameReducer(state, action) {
     case 'UPDATE_TEAM':
       return { ...state, team: action.payload };
 
-    case 'UPDATE_PLAYER':
-      return {
+    case 'UPDATE_PLAYER': {
+      const updPlayerState = {
         ...state,
         team: {
           ...state.team,
@@ -2814,6 +2933,46 @@ function gameReducer(state, action) {
           )
         }
       };
+
+      // RANKED MODE: Instantly generate 1-2 AI offers when player is listed for sale
+      if (state.gameMode === 'ranked' && action.payload.transferListed && !state.team.players.find(p => p.name === action.payload.name)?.transferListed) {
+        const listedPlayer = action.payload;
+        const mktValue = listedPlayer.askingPrice || calculateMarketValue(listedPlayer, state.leagueId);
+        const allTeams = state.leagueTeams || [];
+        const potentialBuyers = allTeams.filter(t => t.id !== state.teamId && (t.budget || 0) >= mktValue * 0.3);
+        const numOffers = Math.random() < 0.5 ? 1 : 2;
+        const newOffers = [];
+        const usedBuyers = new Set();
+
+        for (let i = 0; i < numOffers && potentialBuyers.length > 0; i++) {
+          const availBuyers = potentialBuyers.filter(b => !usedBuyers.has(b.id));
+          if (availBuyers.length === 0) break;
+          const buyer = availBuyers[Math.floor(Math.random() * availBuyers.length)];
+          usedBuyers.add(buyer.id);
+          const offerAmt = Math.max(50_000, Math.round(mktValue * (0.75 + Math.random() * 0.50)));
+          newOffers.push({
+            id: `incoming_ranked_${Date.now()}_${i}_${Math.random().toString(36).substr(2, 6)}`,
+            player: { name: listedPlayer.name, position: listedPlayer.position, overall: listedPlayer.overall, age: listedPlayer.age },
+            fromTeam: buyer.name, fromTeamId: buyer.id,
+            amount: offerAmt, salaryOffer: Math.round((listedPlayer.salary || 50000) * 1.3),
+            status: 'pending', createdAt: Date.now(), expiresAt: Date.now() + 600_000 // 10min for ranked
+          });
+        }
+
+        if (newOffers.length > 0) {
+          const offerMsgs = newOffers.map(o => ({
+            id: Date.now() + Math.random(), type: 'offer',
+            title: `💰 ${o.fromTeam} quiere a ${listedPlayer.name}`,
+            content: `Oferta: ${formatTransferPrice(o.amount)}`,
+            date: `Ranked`
+          }));
+          updPlayerState.incomingOffers = [...(state.incomingOffers || []), ...newOffers];
+          updPlayerState.messages = [...offerMsgs, ...state.messages].slice(0, 50);
+        }
+      }
+
+      return updPlayerState;
+    }
 
     case 'REMOVE_PLAYER': {
       const remainingPlayers = state.team.players.filter(p => p.name !== action.payload);
@@ -4088,6 +4247,7 @@ export function GameProvider({ children }) {
   const saveGame = async () => {
     if (!state.gameStarted) return;
     if (state.gameMode === 'contrarreloj') return; // Contrarreloj uses its own auto-save
+    if (state.gameMode === 'ranked') return; // Ranked matches are never saved — ephemeral only
 
     const saveData = {
       ...state,

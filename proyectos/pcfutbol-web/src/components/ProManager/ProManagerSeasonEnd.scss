@@ -80,6 +80,21 @@
     }
   }
 
+  &__achievements {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+
+    .achievement {
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 8px;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.85rem;
+      color: #ccd;
+    }
+  }
+
   &__eval {
     background: rgba(255, 255, 255, 0.03);
     border: 2px solid #8899aa;

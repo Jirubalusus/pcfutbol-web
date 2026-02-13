@@ -15,6 +15,7 @@ export default function Competitions() {
   const { t } = useTranslation();
   const { state } = useGame();
 
+  const isRanked = state.gameMode === 'ranked';
   const hasCup = !!state.cupCompetition;
   const hasEuropean = !!state.europeanCompetitions?.initialized;
   const hasSA = !!state.saCompetitions?.initialized;
@@ -30,27 +31,30 @@ export default function Competitions() {
     return getPlayerSACompetition(state.saCompetitions, state.teamId);
   }, [state.saCompetitions, state.teamId]);
 
-  // Tab names - Liga, Copa, Continental always visible
+  // Tab names - Liga always visible; Copa and Continental hidden in ranked mode
   const tabs = useMemo(() => {
     const tabList = [];
     tabList.push({ id: 'liga', label: t('competitions.league'), icon: '🏟️' });
+    
     tabList.push({
       id: 'cup',
       label: state.cupCompetition?.config?.shortName || t('competitions.cup'),
       icon: state.cupCompetition?.config?.icon || '🏆'
     });
     
-    if (isInSALeague) {
-      const saLabel = playerSA?.state?.config?.shortName || t('competitions.continental');
-      const saIcon = playerSA?.state?.config?.icon || '🏆';
-      tabList.push({ id: 'continental', label: saLabel, icon: saIcon });
-    } else {
-      const euroLabel = playerEuropean?.state?.config?.shortName || t('competitions.europe');
-      const euroIcon = playerEuropean?.state?.config?.icon || '⭐';
-      tabList.push({ id: 'continental', label: euroLabel, icon: euroIcon });
+    if (!isRanked) {
+      if (isInSALeague) {
+        const saLabel = playerSA?.state?.config?.shortName || t('competitions.continental');
+        const saIcon = playerSA?.state?.config?.icon || '🏆';
+        tabList.push({ id: 'continental', label: saLabel, icon: saIcon });
+      } else {
+        const euroLabel = playerEuropean?.state?.config?.shortName || t('competitions.europe');
+        const euroIcon = playerEuropean?.state?.config?.icon || '⭐';
+        tabList.push({ id: 'continental', label: euroLabel, icon: euroIcon });
+      }
     }
     return tabList;
-  }, [state.cupCompetition, playerEuropean, playerSA, isInSALeague, t]);
+  }, [state.cupCompetition, playerEuropean, playerSA, isInSALeague, isRanked, t]);
 
   const [activeTab, setActiveTab] = useState('liga');
 

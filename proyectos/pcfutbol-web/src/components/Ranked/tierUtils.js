@@ -62,6 +62,7 @@ export const COMPETITION_POINTS = {
 };
 
 export function calculateMatchPoints(results) {
+  if (!results) return 0;
   let points = 0;
   // Competition trophies
   if (results.championsLeague) points += COMPETITION_POINTS.champions_league;
@@ -72,10 +73,19 @@ export function calculateMatchPoints(results) {
   if (results.sudamericana) points += COMPETITION_POINTS.sudamericana;
   if (results.copa) points += COMPETITION_POINTS.copa;
   if (results.supercopa) points += COMPETITION_POINTS.supercopa;
+  // Cup round bonus (reaching QF+)
+  const cupRoundPoints = { 'QF': 1, 'SF': 2, 'Final': 3 };
+  if (results.cupRound && cupRoundPoints[results.cupRound]) {
+    points += cupRoundPoints[results.cupRound];
+  }
   // League position bonus
   if (results.finishedAboveRival) points += 2;
-  // H2H bonus (max +2)
-  points += Math.min(2, results.h2hWins || 0);
+  // H2H bonus (max +2) — recalculate from h2hResults if h2hWins missing
+  let h2hWins = results.h2hWins || 0;
+  if (!h2hWins && results.h2hResults?.length > 0) {
+    h2hWins = results.h2hResults.filter(r => r.goalsFor > r.goalsAgainst).length;
+  }
+  points += Math.min(2, h2hWins);
   return points;
 }
 

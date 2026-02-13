@@ -38,7 +38,11 @@ export const CUP_CONFIGS = {
   'Paraguay': { id: 'copaParaguay', name: 'Copa Paraguay', icon: '🏆', shortName: 'Copa' },
   'Perú': { id: 'copaPeru', name: 'Copa Perú', icon: '🏆', shortName: 'Copa' },
   'Bolivia': { id: 'copaBolivia', name: 'Copa Bolivia', icon: '🏆', shortName: 'Copa' },
-  'Venezuela': { id: 'copaVenezuela', name: 'Copa Venezuela', icon: '🏆', shortName: 'Copa' }
+  'Venezuela': { id: 'copaVenezuela', name: 'Copa Venezuela', icon: '🏆', shortName: 'Copa' },
+  'México': { id: 'copaMX', name: 'Copa MX', icon: '🏆', shortName: 'Copa MX' },
+  'Japón': { id: 'emperorsCup', name: 'Emperor\'s Cup', icon: '🏆', shortName: 'Emperor\'s Cup' },
+  'Corea del Sur': { id: 'faKorea', name: 'FA Cup Korea', icon: '🏆', shortName: 'FA Cup' },
+  'Australia': { id: 'australiaCup', name: 'Australia Cup', icon: '🏆', shortName: 'Cup' }
 };
 
 // Ligas de grupos que NO cuentan para la copa (divisiones bajas de España)

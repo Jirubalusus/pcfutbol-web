@@ -8,6 +8,7 @@ import {
 } from '../../firebase/rankedService';
 import { getTierByLP, calculateMatchPoints, COMPETITION_POINTS } from './tierUtils';
 import { FORMATIONS, TACTICS } from '../../game/gameShared';
+import { getCupTeams, generateCupBracket } from '../../game/cupSystem';
 import {
   getLaLigaTeams, getSegundaTeams, getPremierTeams, getSerieATeams,
   getBundesligaTeams, getLigue1Teams, getEredivisieTeams, getPrimeiraLigaTeams,
@@ -137,6 +138,15 @@ export default function RankedMatch() {
         }
       });
 
+      // Initialize cup competition for ranked
+      try {
+        const cupData = getCupTeams(match.leagueId, fullTeam, {}, simTable);
+        if (cupData?.teams?.length >= 2) {
+          const cupBracket = generateCupBracket(cupData.teams, fullTeam.id);
+          if (cupBracket) dispatch({ type: 'INIT_CUP_COMPETITION', payload: cupBracket });
+        }
+      } catch { /* skip */ }
+
       // Load all league teams for the transfer market
       const allLeagueTeams = [];
       try {
@@ -153,11 +163,18 @@ export default function RankedMatch() {
         dispatch({ type: 'UPDATE_LEAGUE_TEAMS', payload: allLeagueTeams });
       }
 
-      dispatch({ type: 'SET_SCREEN', payload: 'office' });
+      // Stay on RankedMatch screen — don't navigate to Office
+      // RankedMatch has its own formation/tactic/transfer UI
     }
   }, [match?.phase, user?.uid]);
 
   // Countdown timer
+  const advanceTriggeredRef = useRef(false);
+  useEffect(() => {
+    // Reset the flag when phase changes
+    advanceTriggeredRef.current = false;
+  }, [match?.phase]);
+  
   useEffect(() => {
     if (!match?.phaseDeadline) return;
     const tick = () => {
@@ -165,8 +182,9 @@ export default function RankedMatch() {
       const remaining = Math.max(0, Math.floor((deadline.getTime() - Date.now()) / 1000));
       setTimeLeft(remaining);
       
-      // Auto-advance when timer hits 0
-      if (remaining === 0 && isPlayer1() && ['team_selection', 'round1', 'round2'].includes(match.phase)) {
+      // Auto-advance when timer hits 0 — only once per phase
+      if (remaining === 0 && !advanceTriggeredRef.current && ['team_selection', 'round1', 'round2'].includes(match.phase)) {
+        advanceTriggeredRef.current = true;
         advancePhase(matchId).catch(console.error);
       }
     };
@@ -178,17 +196,18 @@ export default function RankedMatch() {
   // When simulation/results phase starts, ensure we're showing the RankedMatch screen
   useEffect(() => {
     if (!match) return;
-    if (['simulating1', 'simulating2', 'results', 'team_selection'].includes(match.phase)) {
-      if (state.currentScreen === 'office' && state.gameMode === 'ranked') {
-        dispatch({ type: 'SET_SCREEN', payload: 'ranked_match' });
-      }
+    // Only pull back to ranked_match for non-office phases (team selection, simulation, results)
+    // During round1/round2, player should be in Office managing their team
+    if (state.currentScreen === 'office' && state.gameMode === 'ranked' &&
+        ['team_selection', 'simulating1', 'simulating2', 'results'].includes(match.phase)) {
+      dispatch({ type: 'SET_SCREEN', payload: 'ranked_match' });
     }
   }, [match?.phase]);
 
   // Auto-advance simulation phases
   useEffect(() => {
     if (!match || !matchId) return;
-    if ((match.phase === 'simulating1' || match.phase === 'simulating2') && isPlayer1()) {
+    if (match.phase === 'simulating1' || match.phase === 'simulating2') {
       const timer = setTimeout(() => {
         advancePhase(matchId).catch(console.error);
       }, 8000); // 8s to view simulation results
@@ -196,23 +215,53 @@ export default function RankedMatch() {
     }
   }, [match?.phase, matchId]);
 
-  // Heartbeat
+  // Heartbeat — send immediately + every 5s
   useEffect(() => {
-    if (!matchId || !user?.uid || !match || match.phase === 'results') return;
+    if (!matchId || !user?.uid || !match || match.phase === 'results' || match.phase === 'finished') return;
+    // Send immediately
+    sendHeartbeat(matchId, user.uid).catch(() => {});
     const interval = setInterval(() => {
       sendHeartbeat(matchId, user.uid).catch(() => {});
-    }, 10000);
+    }, 5000);
     return () => clearInterval(interval);
   }, [matchId, user?.uid, match?.phase]);
 
-  // Disconnect check
+  // Disconnect check — every 8s, 15s timeout
   useEffect(() => {
-    if (!matchId || !user?.uid || !match || match.phase === 'results') return;
+    if (!matchId || !user?.uid || !match || match.phase === 'results' || match.phase === 'finished') return;
     const interval = setInterval(async () => {
-      const dc = await checkDisconnect(matchId, user.uid);
-      if (dc) await claimDisconnectWin(matchId, user.uid);
-    }, 15000);
+      try {
+        const dc = await checkDisconnect(matchId, user.uid);
+        if (dc) await claimDisconnectWin(matchId, user.uid);
+      } catch { /* quota or network error, ignore */ }
+    }, 8000);
     return () => clearInterval(interval);
+  }, [matchId, user?.uid, match?.phase]);
+
+  // Detect page exit/navigation — mark as disconnected
+  useEffect(() => {
+    if (!matchId || !user?.uid || !match || match.phase === 'results' || match.phase === 'finished') return;
+    
+    const handleBeforeUnload = (e) => {
+      // Warn user about leaving during ranked match
+      e.preventDefault();
+      e.returnValue = '⚠️ Tienes una partida ranked en curso. Si sales, perderás por desconexión.';
+      return e.returnValue;
+    };
+    
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        // Returned — send heartbeat immediately
+        sendHeartbeat(matchId, user.uid).catch(() => {});
+      }
+    };
+    
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
   }, [matchId, user?.uid, match?.phase]);
 
   const isPlayer1 = useCallback(() => match?.player1?.uid === user?.uid, [match, user]);
@@ -238,10 +287,8 @@ export default function RankedMatch() {
       await submitRoundConfig(matchId, user.uid, config);
       setConfigSubmitted(true);
       
-      // Check if both players submitted
-      if (isPlayer1()) {
-        setTimeout(() => advancePhase(matchId).catch(console.error), 2000);
-      }
+      // Try to advance phase after submitting (any player can trigger)
+      setTimeout(() => advancePhase(matchId).catch(console.error), 2000);
     } catch (e) {
       console.error('Error submitting config:', e);
       alert('Error al enviar configuración. Inténtalo de nuevo.');
@@ -262,7 +309,7 @@ export default function RankedMatch() {
   };
 
   const handleBackToLobby = () => {
-    dispatch({ type: 'SET_RANKED_MATCH_ID', payload: null });
+    dispatch({ type: 'CLEAR_RANKED_TEAM' });
     dispatch({ type: 'SET_SCREEN', payload: 'ranked_lobby' });
   };
 
@@ -395,7 +442,7 @@ export default function RankedMatch() {
               <div className="midseason-box">
                 <h3>📊 Clasificación a media temporada</h3>
                 <div className="mini-table">
-                  {match.simulation1.table?.slice(0, 6).map((t, i) => (
+                  {match.simulation1.table?.map((t, i) => (
                     <div key={t.teamId} className={`table-row ${t.teamId === myData?.team ? 'me' : t.teamId === rivalData?.team ? 'rival' : ''}`}>
                       <span className="pos">{i + 1}</span>
                       <span className="name">{t.teamName}</span>
@@ -527,38 +574,78 @@ export default function RankedMatch() {
             <h2>{match.phase === 'simulating1' ? 'Simulando primera vuelta...' : 'Simulando temporada completa...'}</h2>
             
             {/* Show live standings during simulation */}
-            {match.phase === 'simulating1' && match.simulation1?.table && (
-              <div className="sim-standings">
-                <h3>Clasificación provisional</h3>
-                <div className="mini-table">
-                  {match.simulation1.table.slice(0, 8).map((t, i) => (
-                    <div key={t.teamId} className={`table-row ${t.teamId === myData?.team ? 'me' : t.teamId === rivalData?.team ? 'rival' : ''}`}>
-                      <span className="pos">{i + 1}</span>
-                      <span className="name">{t.teamName}</span>
-                      <span className="pts">{t.points}</span>
+            {(() => {
+              const sim = match.phase === 'simulating1' ? match.simulation1 : match.simulation2;
+              const isHalf = match.phase === 'simulating1';
+              if (!sim?.table) return <p className="sim-wait">Los partidos se están disputando...</p>;
+              
+              const myTeamId = myData?.team;
+              const rivalTeamId = rivalData?.team;
+              const myPos = sim.table.findIndex(t => t.teamId === myTeamId) + 1;
+              const rivalPos = sim.table.findIndex(t => t.teamId === rivalTeamId) + 1;
+              
+              // Get H2H and cup info from full sim (simulating2 only)
+              const myKey = isP1 ? 'player1' : 'player2';
+              const rivalKey = isP1 ? 'player2' : 'player1';
+              const mySim = sim[myKey];
+              const rivalSim = sim[rivalKey];
+              
+              return (
+                <>
+                  <div className="sim-standings">
+                    <h3>{isHalf ? 'Clasificación provisional' : 'Clasificación final'}</h3>
+                    <div className="mini-table">
+                      {sim.table.map((t, i) => (
+                        <div key={t.teamId} className={`table-row ${t.teamId === myTeamId ? 'me' : t.teamId === rivalTeamId ? 'rival' : ''}`}>
+                          <span className="pos">{i + 1}</span>
+                          <span className="name">{t.teamName}</span>
+                          <span className="pts">{t.points}</span>
+                          {!isHalf && <span className="gd">{t.goalDifference > 0 ? '+' : ''}{t.goalDifference}</span>}
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {match.phase === 'simulating2' && match.simulation2?.table && (
-              <div className="sim-standings">
-                <h3>Clasificación final</h3>
-                <div className="mini-table">
-                  {match.simulation2.table.slice(0, 10).map((t, i) => (
-                    <div key={t.teamId} className={`table-row ${t.teamId === myData?.team ? 'me' : t.teamId === rivalData?.team ? 'rival' : ''}`}>
-                      <span className="pos">{i + 1}</span>
-                      <span className="name">{t.teamName}</span>
-                      <span className="pts">{t.points}</span>
-                      <span className="gd">{t.goalDifference > 0 ? '+' : ''}{t.goalDifference}</span>
+                  </div>
+                  
+                  {/* Quick summary */}
+                  <div className="sim-summary">
+                    <div className="sim-summary-row">
+                      <div className="sim-summary-card me">
+                        <span className="summary-team">{myData?.displayName || 'TÚ'}</span>
+                        <span className="summary-pos">📊 {myPos}º</span>
+                        {mySim?.cupRound && <span className="summary-detail">🏆 Copa: {mySim.cupRound}</span>}
+                        {mySim?.europeanRound && <span className="summary-detail">🌍 {mySim.europeanCompetition}: {mySim.europeanRound}</span>}
+                        {mySim?.liga && <span className="summary-highlight">🏆 ¡Campeón!</span>}
+                        {mySim?.copa && <span className="summary-highlight">🏆 ¡Copa!</span>}
+                      </div>
+                      <div className="sim-summary-card rival">
+                        <span className="summary-team">{rivalData?.displayName || 'RIVAL'}</span>
+                        <span className="summary-pos">📊 {rivalPos}º</span>
+                        {rivalSim?.cupRound && <span className="summary-detail">🏆 Copa: {rivalSim.cupRound}</span>}
+                        {rivalSim?.europeanRound && <span className="summary-detail">🌍 {rivalSim.europeanCompetition}: {rivalSim.europeanRound}</span>}
+                        {rivalSim?.liga && <span className="summary-highlight">🏆 ¡Campeón!</span>}
+                        {rivalSim?.copa && <span className="summary-highlight">🏆 ¡Copa!</span>}
+                      </div>
                     </div>
-                  ))}
-                </div>
-              </div>
-            )}
-            
-            <p className="sim-wait">Los partidos se están disputando...</p>
+                    
+                    {/* H2H summary */}
+                    {mySim?.h2hResults?.length > 0 && (
+                      <div className="sim-h2h">
+                        <span className="h2h-label">⚔️ H2H:</span>
+                        {mySim.h2hResults.map((r, i) => (
+                          <span key={i} className={`h2h-result ${r.goalsFor > r.goalsAgainst ? 'win' : r.goalsFor < r.goalsAgainst ? 'loss' : 'draw'}`}>
+                            {r.goalsFor}-{r.goalsAgainst} {r.goalsFor > r.goalsAgainst ? 'V' : r.goalsFor < r.goalsAgainst ? 'D' : 'E'}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                    
+                    {myPos < rivalPos && <p className="sim-verdict win">📈 Vas por encima de tu rival</p>}
+                    {myPos > rivalPos && <p className="sim-verdict loss">📉 Tu rival va por encima</p>}
+                    {myPos === rivalPos && <p className="sim-verdict draw">🤝 Empatados en posición</p>}
+                  </div>
+                </>
+              );
+            })()}
           </div>
         )}
 

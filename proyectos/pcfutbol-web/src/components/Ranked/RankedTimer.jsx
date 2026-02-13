@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../context/AuthContext';
 import { useGame } from '../../context/GameContext';
-import { onMatchChange, setReady, onReadyChange, advancePhase } from '../../firebase/rankedService';
+import { onMatchChange, setReady, onReadyChange, advancePhase, submitRoundConfig } from '../../firebase/rankedService';
 import { Clock, Check, Zap } from 'lucide-react';
 import './RankedTimer.scss';
 
@@ -64,6 +64,9 @@ export default function RankedTimer() {
     if (!matchId || !user?.uid || settingReady) return;
     setSettingReady(true);
     try {
+      // Submit current formation/tactic config before marking ready
+      const config = { formation: state.formation || '4-3-3', tactic: state.tactic || 'balanced', morale: 75 };
+      await submitRoundConfig(matchId, user.uid, config);
       await setReady(matchId, amPlayer1 ? 1 : 2);
     } catch (e) {
       console.error('Error setting ready:', e);

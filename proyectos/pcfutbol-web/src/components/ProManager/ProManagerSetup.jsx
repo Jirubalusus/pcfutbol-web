@@ -101,7 +101,10 @@ export default function ProManagerSetup() {
   const [starting, setStarting] = useState(false);
 
   const offers = useMemo(() => {
-    return generateInitialOffers(null, 10, ALL_LEAGUE_GETTERS);
+    return generateInitialOffers(null, 10, ALL_LEAGUE_GETTERS).map(offer => {
+      ensureBudgetAndReputation(offer.team, offer.leagueId);
+      return offer;
+    });
   }, []);
 
   const handleBack = () => {

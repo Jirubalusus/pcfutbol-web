@@ -68,11 +68,14 @@ import {
   HeartPulse
 } from 'lucide-react';
 import RankedTimer from '../Ranked/RankedTimer';
+import { submitRoundConfig, advancePhase as advanceRankedPhase, onMatchChange } from '../../firebase/rankedService';
+import { useAuth } from '../../context/AuthContext';
 import './Office.scss';
 
 export default function Office() {
   const { t } = useTranslation();
   const { state, dispatch, saveGame } = useGame();
+  const { user } = useAuth();
   const [activeTab, setActiveTab] = useState('overview');
   const [showMatch, setShowMatch] = useState(false);
   const [simulating, setSimulating] = useState(false);
@@ -81,8 +84,41 @@ export default function Office() {
   const [showSeasonEnd, setShowSeasonEnd] = useState(false);
   const [noPlayersWarned, setNoPlayersWarned] = useState(false);
   const [showNoPlayersWarning, setShowNoPlayersWarning] = useState(false);
+  const [simProgress, setSimProgress] = useState(null); // { current, total, week }
   const isMobile = window.innerWidth <= 768;
   const isRanked = state.gameMode === 'ranked' && !!state.rankedMatchId;
+  const [rankedSubmitted, setRankedSubmitted] = useState(false);
+  
+  const handleRankedSubmit = async () => {
+    if (!state.rankedMatchId || rankedSubmitted || !user?.uid) return;
+    try {
+      const config = { formation: state.formation, tactic: state.tactic, morale: 75 };
+      await submitRoundConfig(state.rankedMatchId, user.uid, config);
+      setRankedSubmitted(true);
+      // Try to advance phase after a short delay
+      setTimeout(() => advanceRankedPhase(state.rankedMatchId).catch(() => {}), 2000);
+    } catch (e) {
+      console.error('Error submitting ranked config:', e);
+      alert(e.message);
+    }
+  };
+  
+  // Listen for ranked match phase changes while in Office
+  React.useEffect(() => {
+    if (!isRanked || !state.rankedMatchId) return;
+    const unsub = onMatchChange(state.rankedMatchId, (data) => {
+      if (!data) return;
+      // Redirect to RankedMatch for simulation/results phases
+      if (['simulating1', 'simulating2', 'results'].includes(data.phase)) {
+        dispatch({ type: 'SET_SCREEN', payload: 'ranked_match' });
+      }
+      // Reset submit button when phase changes to a new round
+      if (data.phase === 'round2') {
+        setRankedSubmitted(false);
+      }
+    });
+    return () => unsub();
+  }, [isRanked, state.rankedMatchId]);
   
   // Detectar si la temporada ha terminado
   const playerLeagueId = state.playerLeagueId || 'laliga';
@@ -140,6 +176,14 @@ export default function Office() {
   };
 
   const handleAdvanceWeek = () => {
+    console.log('🔄 handleAdvanceWeek called', { 
+      preseasonPhase: state.preseasonPhase, 
+      currentWeek: state.currentWeek,
+      fixturesLength: state.fixtures?.length,
+      teamId: state.teamId,
+      gameMode: state.gameMode,
+      seasonOver
+    });
     // Comprobar si hay suficientes jugadores (mínimo 11)
     const totalPlayers = (state.team?.players || []).length;
     if (totalPlayers < 11) {
@@ -211,7 +255,7 @@ export default function Office() {
       }
     }
     
-    const weekFixtures = state.fixtures.filter(f => f.week === state.currentWeek && !f.played);
+    const weekFixtures = (state.fixtures || []).filter(f => f.week === state.currentWeek && !f.played);
     const playerMatch = weekFixtures.find(f => 
       f.homeTeam === state.teamId || f.awayTeam === state.teamId
     );
@@ -322,6 +366,8 @@ export default function Office() {
     if (state.pendingSAMatch) return;
     
     setSimulating(true);
+    dispatch({ type: 'SET_SIMULATING', payload: true });
+    if (!isRanked) setSimProgress({ pct: 0, week: state.currentWeek });
     
     // Copia local del estado para ir actualizando
     let currentFixtures = [...state.fixtures];
@@ -343,8 +389,10 @@ export default function Office() {
       ? Math.max(...currentFixtures.map(f => f.week)) 
       : 38;
     
-    // Add safety margin to ensure all remaining weeks are covered
-    const effectiveNumWeeks = Math.max(numWeeks, maxWeek - currentWeek + 2);
+    // Only add safety margin for end-of-season simulation (numWeeks > halfSeason remaining)
+    const halfSeasonLocal = Math.ceil(maxWeek / 2);
+    const isEndOfSeasonSim = numWeeks > (halfSeasonLocal - currentWeek + 5);
+    const effectiveNumWeeks = isEndOfSeasonSim ? Math.max(numWeeks, maxWeek - currentWeek + 2) : numWeeks;
     
     for (let i = 0; i < effectiveNumWeeks; i++) {
       // Comprobar si la temporada ha terminado
@@ -353,9 +401,11 @@ export default function Office() {
         break;
       }
       
-      // Yield to UI every 5 weeks to keep it responsive (not every week)
-      if (i % 5 === 0) {
-        await new Promise(resolve => setTimeout(resolve, 0));
+      // Yield to UI every 2 weeks to keep progress bar smooth
+      // Phase 1 (local sim) = 0-50% of total progress
+      if (i % 2 === 0) {
+        if (!isRanked) setSimProgress({ pct: Math.round((i / effectiveNumWeeks) * 50), week: currentWeek });
+        await new Promise(resolve => setTimeout(resolve, 16));
       }
       weeksSimulated++;
       
@@ -578,10 +628,19 @@ export default function Office() {
     
     // Other leagues are now simulated inside ADVANCE_WEEK (GameContext)
     
-    // Avanzar semanas — batch en un solo dispatch para evitar N re-renders
-    dispatch({ type: 'ADVANCE_WEEKS_BATCH', payload: { count: weeksSimulated } });
+    // Avanzar semanas en chunks para no bloquear el UI
+    // Phase 2 (reducer) = 50-100% of total progress
+    const CHUNK_SIZE = 4;
+    for (let c = 0; c < weeksSimulated; c += CHUNK_SIZE) {
+      const chunk = Math.min(CHUNK_SIZE, weeksSimulated - c);
+      dispatch({ type: 'ADVANCE_WEEKS_BATCH', payload: { count: chunk } });
+      if (!isRanked) setSimProgress({ pct: 50 + Math.round(((c + chunk) / weeksSimulated) * 50), week: state.currentWeek + c + chunk });
+      await new Promise(resolve => setTimeout(resolve, 30));
+    }
     
     setSimulating(false);
+    dispatch({ type: 'SET_SIMULATING', payload: false });
+    setSimProgress(null);
     
     // Auto-save after simulation (if autoSave enabled)
     if (state.settings?.autoSave !== false) {
@@ -956,9 +1015,9 @@ export default function Office() {
       {isRanked && <MobileNav 
         activeTab={activeTab} 
         onTabChange={setActiveTab} 
-        onAdvanceWeek={() => {}}
+        onAdvanceWeek={handleRankedSubmit}
         onSimulate={() => {}}
-        simulating={false}
+        simulating={rankedSubmitted}
         isRanked={true}
       />}
       
@@ -1016,7 +1075,7 @@ export default function Office() {
           </div>
           )}
           {isRanked && (
-            <div className="office__actions">
+            <div className="office__actions office__actions--ranked">
               <div className="office__money">
                 <span className="label">{t('office.budget')}</span>
                 <span className="value">{formatMoney(state.money)}</span>
@@ -1029,6 +1088,26 @@ export default function Office() {
           {renderContent()}
         </div>
       </main>
+      
+      {/* Simulation Progress Modal */}
+      {simProgress && !isRanked && (
+        <div className="sim-modal-overlay">
+          <div className="sim-modal">
+            <div className="sim-modal__icon">⚽</div>
+            <h3 className="sim-modal__title">{t('office.simulating')}...</h3>
+            <p className="sim-modal__week">Semana {simProgress.week}</p>
+            <div className="sim-modal__bar-bg">
+              <div 
+                className="sim-modal__bar-fill" 
+                style={{ width: `${Math.min(100, simProgress.pct || 0)}%` }}
+              />
+            </div>
+            <p className="sim-modal__pct">
+              {Math.min(100, simProgress.pct || 0)}%
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

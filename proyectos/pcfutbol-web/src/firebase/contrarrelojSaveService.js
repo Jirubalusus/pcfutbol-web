@@ -74,16 +74,34 @@ export async function hasActiveContrarreloj(userId) {
 }
 
 /**
+ * Recursively strip undefined values from an object (Firebase rejects them)
+ */
+function stripUndefined(obj) {
+  if (obj === null || obj === undefined) return null;
+  if (Array.isArray(obj)) return obj.map(stripUndefined);
+  if (typeof obj === 'object' && obj.constructor === Object) {
+    const clean = {};
+    for (const [k, v] of Object.entries(obj)) {
+      if (v !== undefined) {
+        clean[k] = stripUndefined(v);
+      }
+    }
+    return clean;
+  }
+  return obj;
+}
+
+/**
  * Save contrarreloj game state (auto-save)
  */
 export async function saveContrarreloj(userId, gameState) {
   const saveId = getSaveId(userId);
-  const saveData = {
+  const saveData = stripUndefined({
     ...gameState,
     userId,
     lastSaved: serverTimestamp(),
     _type: 'contrarreloj'
-  };
+  });
 
   // Remove non-serializable / transient fields
   delete saveData.loaded;

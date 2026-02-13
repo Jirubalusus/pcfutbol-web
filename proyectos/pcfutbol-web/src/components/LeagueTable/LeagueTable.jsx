@@ -759,36 +759,51 @@ export default function LeagueTable() {
             {!showAllTeams && activeTable.length > 10 && (
               <>
                 {/* Mostrar posición del jugador si está fuera del top 10 */}
-                {isPlayerLeague && playerPosition > 10 && (
-                  <div className="player-position-indicator">
-                    <span className="dots">···</span>
-                    <div className={`table-row is-player ${getZone(playerPosition)}`}>
-                      <span className="col-pos">
-                        <span className={`pos-badge ${getZone(playerPosition)}`}>{playerPosition}</span>
-                      </span>
-                      <span className="col-team">
-                        <span className="team-badge">
-                          {getTeamInitials(activeTable[playerPosition - 1]?.teamName)}
-                        </span>
-                        <span className="team-name">{activeTable[playerPosition - 1]?.teamName}</span>
-                      </span>
-                      <span className="col-pj">{activeTable[playerPosition - 1]?.played || 0}</span>
-                      <span className="col-w">{activeTable[playerPosition - 1]?.won}</span>
-                      <span className="col-d">{activeTable[playerPosition - 1]?.drawn}</span>
-                      <span className="col-l">{activeTable[playerPosition - 1]?.lost}</span>
-                      <span className="col-gf">{activeTable[playerPosition - 1]?.goalsFor || 0}</span>
-                      <span className="col-ga">{activeTable[playerPosition - 1]?.goalsAgainst || 0}</span>
-                      <span className="col-gd">{activeTable[playerPosition - 1]?.goalDifference > 0 ? '+' : ''}{activeTable[playerPosition - 1]?.goalDifference}</span>
-                      <span className="col-pts">{activeTable[playerPosition - 1]?.points}</span>
-                      <span className="col-form">
-                        {(activeTable[playerPosition - 1]?.form || []).slice(-5).map((f, i) => (
-                          <span key={i} className={`form-dot form-${f?.toLowerCase()}`}>{f === 'W' ? t('leagueTable.formW') : f === 'L' ? t('leagueTable.formL') : t('leagueTable.formD')}</span>
-                        ))}
-                      </span>
+                {isPlayerLeague && playerPosition > 10 && (() => {
+                  const playerTeam = activeTable[playerPosition - 1];
+                  // Show teams around player (pos-1, player, pos+1) for context
+                  const surroundingIndices = [];
+                  if (playerPosition > 11) surroundingIndices.push(playerPosition - 2); // team above
+                  surroundingIndices.push(playerPosition - 1); // player
+                  if (playerPosition < activeTable.length) surroundingIndices.push(playerPosition); // team below
+                  
+                  return (
+                    <div className="player-position-indicator">
+                      <div className="separator-dots">···</div>
+                      {surroundingIndices.map(idx => {
+                        const team = activeTable[idx];
+                        if (!team) return null;
+                        const pos = idx + 1;
+                        return (
+                          <div key={idx} className={`table-row ${team.isPlayer ? 'is-player' : ''} ${getZone(pos)}`}>
+                            <span className="col-pos">
+                              <span className={`pos-badge ${getZone(pos)}`}>{pos}</span>
+                            </span>
+                            <span className="col-team">
+                              <span className="team-badge">
+                                {getTeamInitials(team.teamName)}
+                              </span>
+                              <span className="team-name">{team.teamName}</span>
+                            </span>
+                            <span className="col-pj">{team.played || 0}</span>
+                            <span className="col-w">{team.won || 0}</span>
+                            <span className="col-d">{team.drawn || 0}</span>
+                            <span className="col-l">{team.lost || 0}</span>
+                            <span className="col-gf">{team.goalsFor || 0}</span>
+                            <span className="col-ga">{team.goalsAgainst || 0}</span>
+                            <span className="col-gd">{(team.goalDifference || 0) > 0 ? '+' : ''}{team.goalDifference || 0}</span>
+                            <span className="col-pts">{team.points || 0}</span>
+                            <span className="col-form">
+                              {(team.form || []).slice(-5).map((f, i) => (
+                                <span key={i} className={`form-dot form-${f?.toLowerCase()}`}>{f === 'W' ? t('leagueTable.formW') : f === 'L' ? t('leagueTable.formL') : t('leagueTable.formD')}</span>
+                              ))}
+                            </span>
+                          </div>
+                        );
+                      })}
                     </div>
-                    <span className="dots">···</span>
-                  </div>
-                )}
+                  );
+                })()}
                 
                 <button className="show-more-btn" onClick={() => setShowAllTeams(true)}>
                   <ChevronDown size={16} />

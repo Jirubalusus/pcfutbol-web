@@ -196,6 +196,14 @@ export default function NotificationCenter() {
   const prevMessagesRef = useRef(state.messages || []);
   const processedIds = useRef(new Set());
 
+  // Clear all toasts when simulation starts
+  useEffect(() => {
+    if (state.isSimulating) {
+      setActiveToasts([]);
+      setOverflow(0);
+    }
+  }, [state.isSimulating]);
+
   const dismissToast = useCallback((id) => {
     setActiveToasts(prev => prev.filter(t => t.id !== id));
   }, []);
@@ -210,6 +218,12 @@ export default function NotificationCenter() {
     const currentMessages = state.messages || [];
 
     if (currentMessages === prevMessages) return;
+
+    // Suppress notifications during simulation
+    if (state.isSimulating) {
+      prevMessagesRef.current = currentMessages;
+      return;
+    }
 
     // Find new messages (they're prepended in the array)
     const prevIds = new Set(prevMessages.map(m => m.id));

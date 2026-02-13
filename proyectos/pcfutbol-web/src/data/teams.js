@@ -976,6 +976,8 @@ export function getTeamsByLeague(leagueId) {
   switch (leagueId) {
     case 'laliga': return LALIGA_TEAMS;
     case 'segunda': return SEGUNDA_TEAMS;
+    case 'primeraRFEF': return PRIMERA_RFEF_TEAMS;
+    case 'segundaRFEF': return SEGUNDA_RFEF_TEAMS;
     case 'premierLeague': return PREMIER_LEAGUE_TEAMS;
     case 'bundesliga': return BUNDESLIGA_TEAMS;
     case 'serieA': return SERIE_A_TEAMS;

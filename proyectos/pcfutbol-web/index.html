@@ -18,11 +18,11 @@
     <meta name="description" content="PC Gaffer - Football Manager Game" />
     
     <!-- PWA Manifest -->
-    <link rel="manifest" href="/pcfutbol-web/manifest.json" />
+    <link rel="manifest" href="manifest.json" />
     
     <!-- Favicon & Icons -->
-    <link rel="icon" type="image/svg+xml" href="/pcfutbol-web/favicon.svg" />
-    <link rel="apple-touch-icon" sizes="192x192" href="/pcfutbol-web/icons/icon-192x192.png" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="apple-touch-icon" sizes="192x192" href="icons/icon-192x192.png" />
     
     <!-- Preconnect to Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -35,10 +35,15 @@
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
     <script>
+      // Unregister old service workers to prevent stale cache issues
       if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/pcfutbol-web/sw.js');
+        navigator.serviceWorker.getRegistrations().then(regs => {
+          regs.forEach(r => r.unregister());
         });
+        // Clear caches too
+        if ('caches' in window) {
+          caches.keys().then(names => names.forEach(n => caches.delete(n)));
+        }
       }
     </script>
   </body>

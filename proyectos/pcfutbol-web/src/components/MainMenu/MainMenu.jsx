@@ -153,7 +153,7 @@ export default function MainMenu() {
     try {
       const saveData = await getContrarrelojSave(user.uid);
       if (saveData) {
-        dispatch({ type: 'LOAD_SAVE', payload: { ...saveData, _contrarrelojUserId: user.uid } });
+        dispatch({ type: 'LOAD_SAVE', payload: { ...saveData, _contrarrelojUserId: user.uid, gameMode: 'contrarreloj', rankedMatchId: null } });
         dispatch({ type: 'SET_SCREEN', payload: 'office' });
       }
     } catch (err) {
@@ -187,7 +187,7 @@ export default function MainMenu() {
     try {
       const saveData = await getProManagerSave(user.uid);
       if (saveData) {
-        dispatch({ type: 'LOAD_SAVE', payload: { ...saveData, _proManagerUserId: user.uid } });
+        dispatch({ type: 'LOAD_SAVE', payload: { ...saveData, _proManagerUserId: user.uid, gameMode: 'promanager', rankedMatchId: null } });
         dispatch({ type: 'SET_SCREEN', payload: 'office' });
       }
     } catch (err) {

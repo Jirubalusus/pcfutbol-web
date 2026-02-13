@@ -386,6 +386,83 @@
   h2 { font-size: 1.1rem; margin-bottom: 0.5rem; }
   .sim-wait { color: #6b7280; font-size: 0.85rem; margin-top: 1rem; }
 
+  .sim-summary {
+    margin-top: 1rem;
+    
+    .sim-summary-row {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .sim-summary-card {
+      flex: 1;
+      background: rgba(255,255,255,0.04);
+      border-radius: 8px;
+      padding: 0.6rem 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      border: 1px solid rgba(255,255,255,0.06);
+      
+      &.me { border-left: 3px solid #10b981; }
+      &.rival { border-left: 3px solid #ef4444; }
+      
+      .summary-team {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        opacity: 0.7;
+      }
+      .summary-pos {
+        font-size: 1.1rem;
+        font-weight: 700;
+      }
+      .summary-detail {
+        font-size: 0.75rem;
+        color: #9ca3af;
+      }
+      .summary-highlight {
+        font-size: 0.8rem;
+        color: #fbbf24;
+        font-weight: 600;
+      }
+    }
+    
+    .sim-h2h {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.5rem;
+      background: rgba(255,255,255,0.03);
+      border-radius: 6px;
+      font-size: 0.85rem;
+      
+      .h2h-label { font-weight: 600; }
+      .h2h-result {
+        padding: 0.15rem 0.4rem;
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 0.8rem;
+        &.win { background: rgba(16,185,129,0.15); color: #10b981; }
+        &.loss { background: rgba(239,68,68,0.15); color: #ef4444; }
+        &.draw { background: rgba(156,163,175,0.15); color: #9ca3af; }
+      }
+    }
+    
+    .sim-verdict {
+      text-align: center;
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
+      font-weight: 500;
+      &.win { color: #10b981; }
+      &.loss { color: #ef4444; }
+      &.draw { color: #9ca3af; }
+    }
+  }
+
   .sim-standings {
     margin-top: 1.5rem;
     background: rgba(255,255,255,0.03);

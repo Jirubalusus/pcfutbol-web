@@ -3,7 +3,8 @@ import { useAuth } from '../../context/AuthContext';
 import { useGame } from '../../context/GameContext';
 import {
   getOrCreatePlayer, onPlayerChange, joinQueue, leaveQueue,
-  onQueueChange, findOpponent, createMatch, getMatchHistory
+  onQueueChange, findOpponent, createMatch, getMatchHistory,
+  abandonActiveMatches
 } from '../../firebase/rankedService';
 import { getTierByLP, getLPInDivision } from './tierUtils';
 import { Swords, Trophy, Search, ArrowLeft, Clock, ChevronRight, Wifi, WifiOff } from 'lucide-react';
@@ -18,6 +19,11 @@ export default function RankedLobby() {
   const [history, setHistory] = useState([]);
   const [searchTime, setSearchTime] = useState(0);
   const [loading, setLoading] = useState(true);
+
+  // Clear any leftover ranked game state on mount
+  useEffect(() => {
+    dispatch({ type: 'CLEAR_RANKED_TEAM' });
+  }, []);
 
   // Load player data
   useEffect(() => {
@@ -70,17 +76,22 @@ export default function RankedLobby() {
     });
 
     // Poll for opponents every 3s
+    // Only the player with the LOWER uid creates the match to avoid duplicates
     const poll = setInterval(async () => {
       if (cancelled) return;
       try {
         const opponent = await findOpponent(user.uid, player?.totalLP || 0);
         if (opponent && !cancelled) {
-          const match = await createMatch(
-            { uid: user.uid, displayName: player?.displayName, totalLP: player?.totalLP || 0 },
-            opponent
-          );
-          setMatchId(match.id);
-          setSearching(false);
+          // Only create if our uid < opponent uid (deterministic: only one creates)
+          if (user.uid < opponent.id) {
+            const match = await createMatch(
+              { uid: user.uid, displayName: player?.displayName, totalLP: player?.totalLP || 0 },
+              opponent
+            );
+            setMatchId(match.id);
+            setSearching(false);
+          }
+          // else: wait for opponent to create, we'll detect via onQueueChange
         }
       } catch (e) {
         console.error('Matchmaking error:', e);
@@ -106,6 +117,8 @@ export default function RankedLobby() {
     if (!user?.uid || !player) return;
     setSearching(true);
     try {
+      // Close any stale matches before searching
+      await abandonActiveMatches(user.uid);
       await joinQueue(user.uid, player.displayName, player.totalLP || 0);
     } catch (e) {
       console.error('Error joining queue:', e);

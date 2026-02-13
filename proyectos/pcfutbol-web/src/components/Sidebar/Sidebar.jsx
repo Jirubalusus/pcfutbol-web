@@ -57,6 +57,9 @@ export default function Sidebar({ activeTab, onTabChange, isRanked }) {
   const unreadCount = Math.max(0, (state.messages || []).length - lastSeenCountRef.current);
   
   const handleMainMenu = () => {
+    if (isRanked) {
+      if (!window.confirm('⚠️ Si sales durante una partida ranked, perderás por desconexión. ¿Seguro?')) return;
+    }
     dispatch({ type: 'SET_SCREEN', payload: 'main_menu' });
   };
   
