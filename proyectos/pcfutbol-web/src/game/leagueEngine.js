@@ -212,6 +212,8 @@ function simulateMatchMinuteByMinute(homeRating, awayRating, homeStrength, awayS
   let intensity = 1.0;
   let homeRedCards = 0;
   let awayRedCards = 0;
+  let homeYellowCount = 0;
+  let awayYellowCount = 0;
   const homeYellows = new Set();
   const awayYellows = new Set();
   
@@ -338,11 +340,13 @@ function simulateMatchMinuteByMinute(homeRating, awayRating, homeStrength, awayS
       const player = selectCardPlayer(team);
       
       if (yellows.has(player.name)) {
-        // Segunda amarilla = roja
+        // Segunda amarilla = roja (count the yellow too)
+        if (isHome) homeYellowCount++; else awayYellowCount++;
         events.push({ type: 'red_card', team: isHome ? 'home' : 'away', minute, player: player.name, reason: 'Segunda amarilla' });
         if (isHome) homeRedCards++; else awayRedCards++;
         yellows.delete(player.name);
       } else {
+        if (isHome) homeYellowCount++; else awayYellowCount++;
         events.push({ type: 'yellow_card', team: isHome ? 'home' : 'away', minute, player: player.name });
         yellows.add(player.name);
       }
@@ -448,7 +452,7 @@ function simulateMatchMinuteByMinute(homeRating, awayRating, homeStrength, awayS
       shots: { home: homeShots, away: awayShotsTotal },
       shotsOnTarget: { home: homeShotsOnTarget, away: awayShotsOnTarget },
       corners: { home: homeCorners, away: awayCorners },
-      yellowCards: { home: homeYellows.size, away: awayYellows.size },
+      yellowCards: { home: homeYellowCount, away: awayYellowCount },
       redCards: { home: homeRedCards, away: awayRedCards }
     }
   };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useGame } from '../../context/GameContext';
 import { UserX, Home } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -8,22 +8,28 @@ export default function ManagerFired() {
   const { state, dispatch } = useGame();
   const { t } = useTranslation();
   
-  // In contrarreloj mode, redirect to ContrarrelojEnd
-  if (state.gameMode === 'contrarreloj') {
-    if (!state.contrarrelojData?.finished) {
-      dispatch({ type: 'CONTRARRELOJ_LOSE', payload: { reason: 'fired' } });
-    } else {
-      dispatch({ type: 'SET_SCREEN', payload: 'contrarreloj_end' });
+  // Redirect dispatches moved to useEffect to avoid dispatching during render
+  useEffect(() => {
+    if (state.gameMode === 'contrarreloj') {
+      if (!state.contrarrelojData?.finished) {
+        dispatch({ type: 'CONTRARRELOJ_LOSE', payload: { reason: 'fired' } });
+      } else {
+        dispatch({ type: 'SET_SCREEN', payload: 'contrarreloj_end' });
+      }
+      return;
     }
-    return null;
-  }
+    
+    if (state.gameMode === 'promanager') {
+      if (state.proManagerData) {
+        dispatch({ type: 'SET_PROMANAGER_DATA', payload: { ...state.proManagerData, fired: true, boardConfidence: 0 } });
+      }
+      dispatch({ type: 'SET_SCREEN', payload: 'promanager_season_end' });
+      return;
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
   
-  // In ProManager mode, go to season end with fired status
-  if (state.gameMode === 'promanager') {
-    if (state.proManagerData) {
-      dispatch({ type: 'SET_PROMANAGER_DATA', payload: { ...state.proManagerData, fired: true, boardConfidence: 0 } });
-    }
-    dispatch({ type: 'SET_SCREEN', payload: 'promanager_season_end' });
+  // Don't render anything for contrarreloj/promanager modes (effect will redirect)
+  if (state.gameMode === 'contrarreloj' || state.gameMode === 'promanager') {
     return null;
   }
   

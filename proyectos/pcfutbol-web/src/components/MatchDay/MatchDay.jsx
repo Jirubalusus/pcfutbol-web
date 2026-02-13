@@ -41,6 +41,7 @@ export default function MatchDay({ onComplete }) {
   const [eventIndex, setEventIndex] = useState(0);
   const [currentMinute, setCurrentMinute] = useState(0);
   const eventsRef = useRef(null);
+  const matchIntervalRef = useRef(null);
   
   // Helper: normalizar player de eventos (V2 devuelve {name}, V1 devuelve string)
   const getPlayerName = (p) => typeof p === 'object' ? (p?.name || t('common.unknown')) : (p || t('common.unknown'));
@@ -51,6 +52,16 @@ export default function MatchDay({ onComplete }) {
       eventsRef.current.scrollTop = eventsRef.current.scrollHeight;
     }
   }, [eventIndex]);
+  
+  // Cleanup interval on unmount
+  useEffect(() => {
+    return () => {
+      if (matchIntervalRef.current) {
+        clearInterval(matchIntervalRef.current);
+        matchIntervalRef.current = null;
+      }
+    };
+  }, []);
   
   // Buscar partido: Cup match → European match → pretemporada → liga
   let playerMatch;
@@ -298,7 +309,7 @@ export default function MatchDay({ onComplete }) {
     let minute = 0;
     let eventIdx = 0;
     
-    const matchInterval = setInterval(() => {
+    matchIntervalRef.current = setInterval(() => {
       minute += 3; // Jump 3 minutes each tick
       setCurrentMinute(Math.min(90, minute));
       
@@ -309,7 +320,8 @@ export default function MatchDay({ onComplete }) {
       }
       
       if (minute >= 95) {
-        clearInterval(matchInterval);
+        clearInterval(matchIntervalRef.current);
+        matchIntervalRef.current = null;
         setEventIndex(result.events.length);
         setTimeout(() => setPhase('result'), 500);
       }
@@ -325,6 +337,10 @@ export default function MatchDay({ onComplete }) {
   
   const skipToEnd = () => {
     if (matchResult) {
+      if (matchIntervalRef.current) {
+        clearInterval(matchIntervalRef.current);
+        matchIntervalRef.current = null;
+      }
       setCurrentMinute(90);
       setEventIndex(matchResult.events.length);
       setPhase('result');
@@ -469,6 +485,18 @@ export default function MatchDay({ onComplete }) {
           payload: { cards: euRedCards.map(e => ({ playerName: getPlayerName(e.player), reason: e.reason || 'Roja directa' })) }
         });
       }
+
+      // Track player season stats for European/SA matches
+      const euPlayerTeamSide = isHome ? 'home' : 'away';
+      const euOpponentGoals = isHome ? matchResult.awayScore : matchResult.homeScore;
+      dispatch({
+        type: 'UPDATE_PLAYER_SEASON_STATS',
+        payload: {
+          events: matchResult.events,
+          playerTeamSide: euPlayerTeamSide,
+          cleanSheet: euOpponentGoals === 0
+        }
+      });
 
       // v2: European/SA weeks are intercalated — no league match this week.
       // League fixtures have been remapped to non-European weeks.

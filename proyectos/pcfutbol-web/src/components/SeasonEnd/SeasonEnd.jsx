@@ -186,7 +186,12 @@ export default function SeasonEnd({ allTeams, onComplete }) {
   // Coste salarial anual (salario semanal × 52)
   const totalSalaryCost = useMemo(() => {
     const players = state.team?.players || [];
-    return players.reduce((sum, p) => sum + (p.salary || 0), 0) * 52;
+    return players.reduce((sum, p) => {
+      const baseSalary = p.salary || 0;
+      // For loaned players, only pay our share of their salary
+      const share = (p.onLoan && p.loanSalaryShare != null) ? p.loanSalaryShare : 1;
+      return sum + (baseSalary * share);
+    }, 0) * 52;
   }, [state.team?.players]);
   
   // Si el jugador ganó el playoff, actualizar su seasonResult (copia para no mutar)
@@ -1265,6 +1270,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
                   <div className="qualification-info">
                     <h3>Premios {euroCompName}</h3>
                     <p>Ingresos por competición europea: <strong>{formatMoney(totalEuropeanPrize)}</strong></p>
+                    <p style={{ fontSize: '0.8em', opacity: 0.7, marginTop: 4 }}>💡 Ya cobrados durante la temporada</p>
                   </div>
                 </div>
               );
@@ -1291,6 +1297,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
                   <div className="qualification-info">
                     <h3>Premios {saCompName}</h3>
                     <p>Ingresos por competición sudamericana: <strong>{formatMoney(totalSAPrize)}</strong></p>
+                    <p style={{ fontSize: '0.8em', opacity: 0.7, marginTop: 4 }}>💡 Ya cobrados durante la temporada</p>
                   </div>
                 </div>
               );
