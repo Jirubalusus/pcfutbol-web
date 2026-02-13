@@ -1062,6 +1062,7 @@ export default function Formation() {
           facilities={state.team?.facilities}
           dispatch={dispatch}
           budget={state.team?.budget}
+          medicalTreatmentsUsed={state.medicalTreatmentsUsed || 0}
         />
       )}
 
@@ -1301,13 +1302,13 @@ function _TrainingModal_REMOVED({ onClose, players, facilities, dispatch, curren
 // ============================================================
 // MODAL: LESIONADOS
 // ============================================================
-function InjuredModal({ onClose, players, facilities, dispatch, budget }) {
+function InjuredModal({ onClose, players, facilities, dispatch, budget, medicalTreatmentsUsed }) {
   const { t } = useTranslation();
   const toast = useToast();
   const injuredPlayers = players.filter(p => p.injured && p.injuryWeeksLeft > 0);
   const medicalLevel = facilities?.medicalCenter || 1;
   const maxTreatments = medicalLevel + 1; // 2-6 tratamientos según nivel
-  const [treatmentsUsed, setTreatmentsUsed] = useState(0);
+  const [treatmentsUsed, setTreatmentsUsed] = useState(medicalTreatmentsUsed || 0);
   const [treatedPlayers, setTreatedPlayers] = useState([]); // Track tratados localmente
   const treatmentCost = 500000; // €500k por tratamiento
   const weeksReduced = 1 + Math.floor(medicalLevel / 2);

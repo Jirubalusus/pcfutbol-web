@@ -247,7 +247,7 @@ export default function Stadium() {
       naming: {
         sponsorId: sponsor.id,
         name: sponsor.name,
-        yearsLeft: sponsor.duration,
+        yearsLeft: sponsor.duration - 1,
         yearlyIncome: sponsor.offer
       }
     });
@@ -337,6 +337,7 @@ export default function Stadium() {
   const handleUpgrade = () => {
     if (!nextLevel || state.money < nextLevel.upgradeCost) return;
     updateStadium({ level: level + 1 });
+    dispatch({ type: 'UPGRADE_FACILITY', payload: { facilityId: 'stadium', cost: 0 } });
     dispatch({ type: 'UPDATE_MONEY', payload: -nextLevel.upgradeCost });
     dispatch({
       type: 'ADD_MESSAGE',

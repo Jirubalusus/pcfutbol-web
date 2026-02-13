@@ -283,8 +283,21 @@ function isObjectiveCompleted(objective, seasonResult) {
       return seasonResult.goalDifference >= objective.target;
     case 'financial':
       return true; // Se evalúa con el presupuesto actual
+    case 'cup_round':
+      return (seasonResult.cupRound || 0) >= objective.target;
+    case 'european_qualification':
+      return !!seasonResult.europeanQualification;
+    case 'goals_scored':
+      return (seasonResult.goalsScored || 0) >= objective.target;
+    case 'goals_conceded':
+      return (seasonResult.goalsConceded || 0) <= objective.target;
+    case 'wins':
+      return (seasonResult.wins || 0) >= objective.target;
+    case 'unbeaten_run':
+      return (seasonResult.longestUnbeatenRun || 0) >= objective.target;
     default:
-      return false;
+      // Don't penalize unknown objective types — treat as completed
+      return true;
   }
 }
 
@@ -310,7 +323,9 @@ export function prepareNewSeason(currentState, seasonResult) {
       const contractYears = player.contractYears ?? player.personality?.contractYears ?? 2;
       return {
         ...player,
-        contractYears: contractYears - 1
+        contractYears: contractYears - 1,
+        transferListed: false,
+        askingPrice: undefined
       };
     })
     // Eliminar jugadores con contrato expirado (contractYears <= 0)

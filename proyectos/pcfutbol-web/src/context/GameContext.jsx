@@ -570,7 +570,8 @@ function gameReducer(state, action) {
       return {
         ...state,
         team: { ...state.team, players: updatedPlayers },
-        money: state.money - cost
+        money: state.money - cost,
+        medicalTreatmentsUsed: (state.medicalTreatmentsUsed || 0) + 1
       };
     }
 
@@ -1465,11 +1466,12 @@ function gameReducer(state, action) {
       // ============================================================
       let newIncomingOffers = [...(state.incomingOffers || [])];
 
+      const isBatchMode = action._batchMode || false;
       const isPreseason = state.preseasonPhase || false;
       // Pretemporada: 80% chance, temporada normal: 40% chance
       const offerChance = isPreseason ? 0.80 : 0.40;
 
-      if (windowStatus.open && state.team?.players && Math.random() < offerChance) {
+      if (!isBatchMode && windowStatus.open && state.team?.players && Math.random() < offerChance) {
         // Cuántas ofertas hoy: 1-4 (más probable 1-2)
         const roll = Math.random();
         const numOffers = roll < 0.45 ? 1 : roll < 0.75 ? 2 : roll < 0.92 ? 3 : 4;
@@ -1534,7 +1536,7 @@ function gameReducer(state, action) {
 
       // Pretemporada: garantizar mínimo ofertas si no han llegado suficientes
       // Genera 1-2 ofertas extra si esta semana no se generó ninguna
-      if (isPreseason && windowStatus.open && state.team?.players) {
+      if (!isBatchMode && isPreseason && windowStatus.open && state.team?.players) {
         const offersThisRound = newIncomingOffers.length - (state.incomingOffers || []).length;
         if (offersThisRound === 0) {
           // Forzar al menos 1 oferta en pretemporada
@@ -1588,7 +1590,7 @@ function gameReducer(state, action) {
       // Si un jugador está puesto en venta, SIEMPRE recibe al menos 1 oferta
       // No depende de ventana de mercado â€" si lo pones en venta, llegan ofertas
       // ============================================================
-      if (state.team?.players) {
+      if (!isBatchMode && state.team?.players) {
         const listedPlayers = state.team.players.filter(p => p.transferListed && !p.onLoan);
         console.log('[OFFERS] Listed players:', listedPlayers.length, 'LeagueTeams:', (state.leagueTeams || []).length, 'Window:', windowStatus.open);
         for (const listedPlayer of listedPlayers) {
@@ -2411,7 +2413,7 @@ function gameReducer(state, action) {
       const count = action.payload?.count || 1;
       let currentState = state;
       for (let i = 0; i < count; i++) {
-        currentState = gameReducer(currentState, { type: 'ADVANCE_WEEK' });
+        currentState = gameReducer(currentState, { type: 'ADVANCE_WEEK', _batchMode: true });
         // Early exit if manager fired, contrarreloj ended, or season screen changed
         if (currentState.managerFired || currentState.contrarrelojData?.finished) break;
       }
@@ -2492,7 +2494,8 @@ function gameReducer(state, action) {
           ...state.team,
           players: [...state.team.players, newPlayer]
         },
-        money: state.money - action.payload.fee
+        money: state.money - action.payload.fee,
+        transfersSpent: (state.transfersSpent || 0) + action.payload.fee
       };
     }
 
@@ -2503,7 +2506,8 @@ function gameReducer(state, action) {
           ...state.team,
           players: state.team.players.filter(p => p.name !== action.payload.playerName)
         },
-        money: state.money + action.payload.fee
+        money: state.money + action.payload.fee,
+        transfersEarned: (state.transfersEarned || 0) + action.payload.fee
       };
 
     case 'UPGRADE_FACILITY':
@@ -2706,6 +2710,7 @@ function gameReducer(state, action) {
         team: { ...state.team, players: updatedPlayers },
         lineup: ensureFullLineup(cleanedLineup, updatedPlayers, state.formation),
         money: state.money + offer.amount,
+        transfersEarned: (state.transfersEarned || 0) + offer.amount,
         leagueTeams: updatedLeagueTeams,
         incomingOffers: (state.incomingOffers || []).filter(o => o.id !== offer.id),
         messages: [{

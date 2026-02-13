@@ -264,6 +264,9 @@ export function generateCupBracket(teams, playerTeamId) {
   for (let i = 0; i < remaining.length; i += 2) {
     if (i + 1 < remaining.length) {
       paired.push({ home: remaining[i], away: remaining[i + 1] });
+    } else {
+      // Odd team gets a bye
+      paired.push({ home: remaining[i], away: null });
     }
   }
 
@@ -295,15 +298,17 @@ export function generateCupBracket(teams, playerTeamId) {
       });
       byeIdx++;
     } else if (pairIdx < paired.length) {
+      const pair = paired[pairIdx];
+      const isBye = pair.away === null;
       round1Matches.push({
         id: `cup_r0_m${i}`,
-        homeTeam: paired[pairIdx].home,
-        awayTeam: paired[pairIdx].away,
+        homeTeam: pair.home,
+        awayTeam: pair.away,
         homeScore: null,
         awayScore: null,
-        played: false,
-        bye: false,
-        winnerId: null
+        played: isBye,
+        bye: isBye,
+        winnerId: isBye ? pair.home.teamId : null
       });
       pairIdx++;
     }
