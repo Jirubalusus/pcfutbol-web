@@ -70,6 +70,9 @@ export default function RankedMatch() {
   const [leagueTeams, setLeagueTeams] = useState([]);
   
   const matchId = state.rankedMatchId;
+  
+  // BUG 8 fix: track previous leagueId to avoid redundant fetches
+  const prevLeagueIdRef = useRef(null);
 
   // If user logged out, go back to menu
   useEffect(() => {
@@ -84,8 +87,9 @@ export default function RankedMatch() {
     const unsub = onMatchChange(matchId, (data) => {
       setMatch(data);
       setLoading(false);
-      // Load league teams when match data arrives
-      if (data?.leagueId) {
+      // Load league teams when match data arrives (BUG 8: only when leagueId changes)
+      if (data?.leagueId && data.leagueId !== prevLeagueIdRef.current) {
+        prevLeagueIdRef.current = data.leagueId;
         const teams = getLeagueTeamsForMatch(data.leagueId);
         setLeagueTeams(teams);
       }
@@ -182,11 +186,7 @@ export default function RankedMatch() {
       const remaining = Math.max(0, Math.floor((deadline.getTime() - Date.now()) / 1000));
       setTimeLeft(remaining);
       
-      // Auto-advance when timer hits 0 — only once per phase
-      if (remaining === 0 && !advanceTriggeredRef.current && ['team_selection', 'round1', 'round2'].includes(match.phase)) {
-        advanceTriggeredRef.current = true;
-        advancePhase(matchId).catch(console.error);
-      }
+      // Timer display only — advance is handled by RankedTimer
     };
     tick();
     const interval = setInterval(tick, 1000);
@@ -204,11 +204,17 @@ export default function RankedMatch() {
     }
   }, [match?.phase]);
 
-  // Auto-advance simulation phases
+  // Auto-advance simulation phases (BUG 11 fix: guard ref)
+  const simAdvanceTriggeredRef = useRef(false);
+  useEffect(() => {
+    simAdvanceTriggeredRef.current = false;
+  }, [match?.phase]);
   useEffect(() => {
     if (!match || !matchId) return;
     if (match.phase === 'simulating1' || match.phase === 'simulating2') {
       const timer = setTimeout(() => {
+        if (simAdvanceTriggeredRef.current) return;
+        simAdvanceTriggeredRef.current = true;
         advancePhase(matchId).catch(console.error);
       }, 8000); // 8s to view simulation results
       return () => clearTimeout(timer);
@@ -585,8 +591,8 @@ export default function RankedMatch() {
               const rivalPos = sim.table.findIndex(t => t.teamId === rivalTeamId) + 1;
               
               // Get H2H and cup info from full sim (simulating2 only)
-              const myKey = isP1 ? 'player1' : 'player2';
-              const rivalKey = isP1 ? 'player2' : 'player1';
+              const myKey = isPlayer1() ? 'player1' : 'player2';
+              const rivalKey = isPlayer1() ? 'player2' : 'player1';
               const mySim = sim[myKey];
               const rivalSim = sim[rivalKey];
               

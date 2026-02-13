@@ -352,10 +352,13 @@ function simulateCup(allTeams, teamMap, p1Id, p2Id) {
         importance: roundNum >= 4 ? 'crucial' : 'normal'
       }, {}, null);
       
+      // BUG 13 fix: use homeScore/awayScore with fallback
+      const homeGoals = result.homeScore ?? result.homeGoals ?? 0;
+      const awayGoals = result.awayScore ?? result.awayGoals ?? 0;
       let winnerId;
-      if (result.homeGoals > result.awayGoals) {
+      if (homeGoals > awayGoals) {
         winnerId = homeId;
-      } else if (result.awayGoals > result.homeGoals) {
+      } else if (awayGoals > homeGoals) {
         winnerId = awayId;
       } else {
         // Penalties: 50/50 with slight home advantage
@@ -375,6 +378,32 @@ function simulateCup(allTeams, teamMap, p1Id, p2Id) {
   }
   
   return { winner: remaining[0] || null, runs };
+}
+
+// ============================================================
+// APPLY TRANSFERS TO TEAMS (BUG 6 fix)
+// Moves players between cloned teams based on recorded transfers
+// ============================================================
+export function applyTransfersToTeams(teams, matchData) {
+  const allTransfers = [
+    ...(matchData.transfers?.player1 || []),
+    ...(matchData.transfers?.player2 || []),
+  ];
+  const teamMap = {};
+  teams.forEach(t => { teamMap[t.name] = t; });
+  
+  for (const transfer of allTransfers) {
+    const fromTeam = teamMap[transfer.from];
+    const toTeam = teamMap[transfer.to];
+    if (!fromTeam || !toTeam) continue;
+    
+    const playerIdx = (fromTeam.players || []).findIndex(p => p.name === transfer.player);
+    if (playerIdx === -1) continue;
+    
+    const [player] = fromTeam.players.splice(playerIdx, 1);
+    if (!toTeam.players) toTeam.players = [];
+    toTeam.players.push(player);
+  }
 }
 
 // ============================================================

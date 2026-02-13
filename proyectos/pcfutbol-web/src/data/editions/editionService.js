@@ -33,13 +33,15 @@ export async function getEditions() {
  * Get a single edition pack by ID (with caching)
  */
 let editionCache = {};
+const CACHE_TTL_MS = 5 * 60 * 1000; // BUG 18 fix: 5 minute TTL
 export async function getEdition(editionId) {
-  if (editionCache[editionId]) return editionCache[editionId];
+  const cached = editionCache[editionId];
+  if (cached && (Date.now() - cached._ts) < CACHE_TTL_MS) return cached.data;
   try {
     const snap = await getDoc(doc(db, EDITIONS_COLLECTION, editionId));
     if (!snap.exists()) return null;
     const edition = { id: snap.id, ...snap.data() };
-    editionCache[editionId] = edition;
+    editionCache[editionId] = { data: edition, _ts: Date.now() };
     return edition;
   } catch (err) {
     console.error('Error loading edition:', err);
@@ -101,11 +103,11 @@ export async function approveEdition(pendingId) {
     const data = snap.data();
     const editionId = data.id || `edition_${Date.now()}`;
     
-    // Copy to approved collection
+    // BUG 16 fix: exclude submittedBy and status when copying to public collection
+    const { submittedBy, status, ...publicData } = data;
     await setDoc(doc(db, EDITIONS_COLLECTION, editionId), {
-      ...data,
+      ...publicData,
       id: editionId,
-      status: 'approved',
       approvedAt: new Date().toISOString()
     });
     

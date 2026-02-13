@@ -116,6 +116,7 @@ export default function Office() {
       if (data.phase === 'round2') {
         setRankedSubmitted(false);
       }
+      // Both-ready advance is handled by RankedTimer — no duplicate trigger here
     });
     return () => unsub();
   }, [isRanked, state.rankedMatchId]);

@@ -97,6 +97,8 @@ export default function EditionMode({ onBack, onEditionApplied }) {
       }
     } catch (err) {
       console.error('Error during edition action:', err);
+      // BUG 15 fix: show error feedback
+      alert(t('edition.actionError') || `Error: ${err.message || 'Error al aplicar la acción'}`);
       setApplying(null);
       setShowConfirm(null);
     }
@@ -136,10 +138,16 @@ export default function EditionMode({ onBack, onEditionApplied }) {
         return;
       }
       
-      const pendingId = await submitEdition({
-        ...previewPack,
-        id: previewPack.id || `pack_${Date.now()}`
-      }, user?.uid);
+      // BUG 19 fix: validate pack size before submitting to Firestore
+      const packToSubmit = { ...previewPack, id: previewPack.id || `pack_${Date.now()}` };
+      const packSize = JSON.stringify(packToSubmit).length;
+      if (packSize >= 900000) {
+        setImportError(t('edition.tooLarge') || `El pack es demasiado grande (${(packSize / 1000000).toFixed(2)}MB). Máximo ~900KB.`);
+        setSubmitting(false);
+        return;
+      }
+      
+      const pendingId = await submitEdition(packToSubmit, user?.uid);
       
       if (pendingId) {
         setImportSuccess('✅ ' + t('edition.submittedSuccess'));

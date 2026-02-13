@@ -375,8 +375,11 @@ export async function selectTeam(matchId, uid, teamId) {
 export async function submitRoundConfig(matchId, uid, config) {
   const matchRef = doc(db, MATCHES_COL, matchId);
   const snap = await getDoc(matchRef);
+  if (!snap.exists()) throw new Error('Match not found');
   const data = snap.data();
-  const playerKey = data.player1.uid === uid ? 'player1' : 'player2';
+  // BUG 5 fix: determine playerKey directly from uid comparison
+  const playerKey = data.player1?.uid === uid ? 'player1' : (data.player2?.uid === uid ? 'player2' : null);
+  if (!playerKey) throw new Error('Player not in this match');
   const roundKey = data.phase === 'round1' ? 'round1Data' : 'round2Data';
   
   await updateDoc(matchRef, {
@@ -447,9 +450,22 @@ export async function attemptRankedTransfer(matchId, uid, targetPlayerId, target
 // ============================================================
 export async function advancePhase(matchId) {
   const matchRef = doc(db, MATCHES_COL, matchId);
-  const snap = await getDoc(matchRef);
-  if (!snap.exists()) return;
-  const data = snap.data();
+  
+  // Step 1: Read current state inside a transaction to get a consistent snapshot
+  let data;
+  let currentPhase;
+  try {
+    data = await runTransaction(db, async (transaction) => {
+      const snap = await transaction.get(matchRef);
+      if (!snap.exists()) return null;
+      return snap.data();
+    });
+  } catch (e) {
+    console.error('advancePhase: error reading match:', e);
+    return;
+  }
+  if (!data) return;
+  currentPhase = data.phase;
   
   const transitions = {
     team_selection: 'round1',
@@ -459,9 +475,22 @@ export async function advancePhase(matchId) {
     simulating2: 'results',
   };
   
-  const nextPhase = transitions[data.phase];
+  const nextPhase = transitions[currentPhase];
   if (!nextPhase) return;
+
+  // For round→simulating transitions, check both players have submitted
+  if ((currentPhase === 'round1' || currentPhase === 'round2') && nextPhase.startsWith('simulating')) {
+    const roundKey = currentPhase === 'round1' ? 'round1Data' : 'round2Data';
+    const roundData = data[roundKey];
+    if (!roundData?.player1?.ready || !roundData?.player2?.ready) {
+      console.log(`⏳ advancePhase: waiting for both players (${roundKey})`, roundData?.player1?.ready, roundData?.player2?.ready);
+      return; // Wait for both
+    }
+  }
+
+  console.log(`🔄 advancePhase: ${currentPhase} → ${nextPhase}`);
   
+  // Step 2: Compute simulation results OUTSIDE transaction (async work)
   const update = { phase: nextPhase, updatedAt: serverTimestamp() };
   
   if (nextPhase === 'round1') {
@@ -511,16 +540,68 @@ export async function advancePhase(matchId) {
       else if (p1Results.leaguePosition < p2Results.leaguePosition) winner = data.player1.uid;
       else if (p2Results.leaguePosition < p1Results.leaguePosition) winner = data.player2.uid;
       
+      // BUG 4 fix: store LP changes in match results
+      const isDraw = !winner;
+      const hasEuropeanAdvantage = detectEuropeanAdvantage(data, sim);
+      const advantage = hasEuropeanAdvantage || { player1Advantage: 0, player2Advantage: 0 };
+      let p1LPChange = 0, p2LPChange = 0;
+      if (isDraw) {
+        p1LPChange = 5;
+        p2LPChange = 5;
+      } else {
+        const baseLPChange = calculateLPChange(
+          winner === data.player1.uid ? (data.player1.totalLP || 0) : (data.player2.totalLP || 0),
+          winner === data.player1.uid ? (data.player2.totalLP || 0) : (data.player1.totalLP || 0),
+          false
+        );
+        const winnerIsP1 = winner === data.player1.uid;
+        const winnerAdvantage = winnerIsP1 ? advantage.player1Advantage : advantage.player2Advantage;
+        let winnerLP = baseLPChange;
+        let loserLP = Math.ceil(baseLPChange * 0.7);
+        if (winnerAdvantage > 0) {
+          winnerLP = Math.max(8, baseLPChange - winnerAdvantage * 4);
+          loserLP = Math.max(5, loserLP - winnerAdvantage * 3);
+        } else if (winnerAdvantage < 0) {
+          winnerLP = Math.min(45, baseLPChange + Math.abs(winnerAdvantage) * 5);
+          loserLP = Math.max(3, loserLP - Math.abs(winnerAdvantage) * 2);
+        }
+        if (winnerIsP1) {
+          p1LPChange = winnerLP;
+          p2LPChange = -Math.min(loserLP, data.player2.totalLP || 0);
+        } else {
+          p2LPChange = winnerLP;
+          p1LPChange = -Math.min(loserLP, data.player1.totalLP || 0);
+        }
+      }
+      
       update.results = {
         player1Points: p1Points,
         player2Points: p2Points,
+        player1LPChange: p1LPChange,
+        player2LPChange: p2LPChange,
         simulation: sim,
       };
       update.winner = winner || null; // Ensure no undefined
     }
   }
   
-  await updateDoc(matchRef, stripUndefined(update));
+  // Step 3: Write with optimistic locking — verify phase hasn't changed
+  try {
+    await runTransaction(db, async (transaction) => {
+      const freshSnap = await transaction.get(matchRef);
+      if (!freshSnap.exists()) return;
+      const freshData = freshSnap.data();
+      // Optimistic lock: only write if phase hasn't been changed by another client
+      if (freshData.phase !== currentPhase) {
+        console.log(`⚠️ advancePhase: phase already changed (${freshData.phase} !== ${currentPhase}), aborting`);
+        return;
+      }
+      transaction.update(matchRef, stripUndefined(update));
+    });
+  } catch (e) {
+    console.error('advancePhase: error writing update:', e);
+    return;
+  }
   
   // If results, update player stats
   if (nextPhase === 'results' && update.results) {
@@ -538,12 +619,15 @@ export async function advancePhase(matchId) {
 // SIMULATION RUNNERS
 // ============================================================
 async function runHalfSeasonSimulation(matchData) {
-  const { simulateHalfSeason } = await import('../game/rankedSimulation');
+  const { simulateHalfSeason, applyTransfersToTeams } = await import('../game/rankedSimulation');
   const leagueTeams = LEAGUE_TEAMS_MAP[matchData.leagueId]?.();
   if (!leagueTeams || leagueTeams.length < 4) throw new Error('Not enough teams');
   
   // Deep clone teams to avoid mutation
   const teams = JSON.parse(JSON.stringify(leagueTeams));
+  
+  // BUG 6 fix: apply transfers before simulation
+  applyTransfersToTeams(teams, matchData);
   
   const result = simulateHalfSeason(
     teams,
@@ -577,11 +661,14 @@ async function runHalfSeasonSimulation(matchData) {
 }
 
 async function runFullSeasonSimulation(matchData) {
-  const { simulateHalfSeason, simulateFullSeason } = await import('../game/rankedSimulation');
+  const { simulateHalfSeason, simulateFullSeason, applyTransfersToTeams } = await import('../game/rankedSimulation');
   const leagueTeams = LEAGUE_TEAMS_MAP[matchData.leagueId]?.();
   if (!leagueTeams || leagueTeams.length < 4) throw new Error('Not enough teams');
   
   const teams = JSON.parse(JSON.stringify(leagueTeams));
+  
+  // BUG 6 fix: apply transfers before simulation
+  applyTransfersToTeams(teams, matchData);
   
   // Re-run full season (both halves) to get complete results
   const halfState = simulateHalfSeason(
@@ -593,12 +680,16 @@ async function runFullSeasonSimulation(matchData) {
     matchData.leagueId
   );
   
+  // BUG 9 fix: pass round2 configs for second half of season
+  const p1Round2Config = matchData.round2Data?.player1 || matchData.player1.config || {};
+  const p2Round2Config = matchData.round2Data?.player2 || matchData.player2.config || {};
+  
   const fullResult = simulateFullSeason(
     halfState, teams,
     matchData.player1.team,
     matchData.player2.team,
-    matchData.player1.config || {},
-    matchData.player2.config || {}
+    p1Round2Config,
+    p2Round2Config
   );
   
   return {
@@ -746,17 +837,19 @@ async function updatePlayerStats(uid1, uid2, winnerUid, lp1, lp2, europeanAdvant
     loserLP = Math.max(3, loserLP - Math.abs(winnerAdvantage) * 2);
   }
   
-  if (winnerIsP1) {
-    await Promise.all([
-      updateDoc(p1Ref, { wins: increment(1), totalLP: increment(winnerLP), updatedAt: serverTimestamp() }),
-      updateDoc(p2Ref, { losses: increment(1), totalLP: increment(-Math.min(loserLP, lp2)), updatedAt: serverTimestamp() }),
-    ]);
-  } else {
-    await Promise.all([
-      updateDoc(p2Ref, { wins: increment(1), totalLP: increment(winnerLP), updatedAt: serverTimestamp() }),
-      updateDoc(p1Ref, { losses: increment(1), totalLP: increment(-Math.min(loserLP, lp1)), updatedAt: serverTimestamp() }),
-    ]);
-  }
+  // BUG 14 fix: use transaction to ensure LP never goes negative
+  const winnerRef = winnerIsP1 ? p1Ref : p2Ref;
+  const loserRef = winnerIsP1 ? p2Ref : p1Ref;
+  
+  await runTransaction(db, async (transaction) => {
+    const loserSnap = await transaction.get(loserRef);
+    const loserData = loserSnap.exists() ? loserSnap.data() : {};
+    const currentLoserLP = loserData.totalLP || 0;
+    const lpToSubtract = Math.min(loserLP, currentLoserLP); // Never go below 0
+    
+    transaction.update(winnerRef, { wins: increment(1), totalLP: increment(winnerLP), updatedAt: serverTimestamp() });
+    transaction.update(loserRef, { losses: increment(1), totalLP: increment(-lpToSubtract), updatedAt: serverTimestamp() });
+  });
 }
 
 // ── Heartbeat (disconnect detection) ──
@@ -792,6 +885,7 @@ export async function claimDisconnectWin(matchId, uid) {
   if (!snap.exists()) return;
   const data = snap.data();
   if (data.phase === 'results') return;
+  if (data.winner) return; // BUG 7 fix: don't overwrite existing winner
   
   await updateDoc(matchRef, {
     phase: 'results',

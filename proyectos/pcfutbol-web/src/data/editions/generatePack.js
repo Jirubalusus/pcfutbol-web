@@ -59,14 +59,28 @@ export async function generateRealNamesPack() {
       if (v2Team.shortName !== realTeam.shortName) teamEntry.shortName = realTeam.shortName;
       if (v2Team.stadium !== realTeam.stadium) teamEntry.stadium = realTeam.stadium;
       
-      // Match players by position+age or by order
+      // BUG 17 fix: Match players by position + closest overall instead of index
       if (v2Team.players && realTeam.players) {
         const playerMap = {};
-        for (let i = 0; i < v2Team.players.length && i < realTeam.players.length; i++) {
-          const v2p = v2Team.players[i];
-          const rp = realTeam.players[i];
-          if (v2p.name !== rp.name) {
-            playerMap[v2p.name] = rp.name;
+        const usedRealPlayers = new Set();
+        for (const v2p of v2Team.players) {
+          // Find best match: same position, closest overall
+          let bestMatch = null;
+          let bestDiff = Infinity;
+          for (const rp of realTeam.players) {
+            if (usedRealPlayers.has(rp.name || rp.id)) continue;
+            const samePos = (v2p.position || '') === (rp.position || '');
+            const overallDiff = Math.abs((v2p.overall || 70) - (rp.overall || 70));
+            // Prioritize same position, then closest overall
+            const score = samePos ? overallDiff : overallDiff + 100;
+            if (score < bestDiff) {
+              bestDiff = score;
+              bestMatch = rp;
+            }
+          }
+          if (bestMatch && v2p.name !== bestMatch.name) {
+            playerMap[v2p.name] = bestMatch.name;
+            usedRealPlayers.add(bestMatch.name || bestMatch.id);
           }
         }
         if (Object.keys(playerMap).length > 0) {

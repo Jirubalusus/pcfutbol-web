@@ -26,13 +26,17 @@ export default function RankedResultsModal({ match, onBackToLobby }) {
   const isDraw = !match?.winner && !isDisconnection;
   const isLoss = !isWin && !isDraw;
 
-  // Calculate LP changes
+  // Calculate LP changes — prefer server-computed values (BUG 4 fix)
   const lpCalc = useMemo(() => {
     const myLP = myData?.totalLP || 0;
     const rivalLP = rivalData?.totalLP || 0;
 
+    // Use pre-computed LP changes from match results if available
+    const serverLPChange = isP1 ? match?.results?.player1LPChange : match?.results?.player2LPChange;
     let lpChange = 0;
-    if (isDisconnection) {
+    if (serverLPChange !== undefined && serverLPChange !== null) {
+      lpChange = serverLPChange;
+    } else if (isDisconnection) {
       lpChange = isWin ? 20 : -15;
     } else if (isDraw) {
       lpChange = 5;
