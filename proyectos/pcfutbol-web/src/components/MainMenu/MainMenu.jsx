@@ -302,7 +302,7 @@ export default function MainMenu() {
         <div className="main-menu__hero">
           <div className="main-menu__ball">
             <div className="main-menu__ball-inner">
-              <span className="hero-ball" role="img" aria-label="balón">⚽</span>
+              <img className="hero-ball-img" src="/ball.jpg" alt="balón" />
             </div>
           </div>
           <h1 className="main-menu__title">

@@ -250,6 +250,16 @@
         filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.3))
                drop-shadow(0 12px 24px rgba(0, 0, 0, 0.4));
       }
+
+      .hero-ball-img {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 50%;
+        display: block;
+        filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.3))
+               drop-shadow(0 12px 24px rgba(0, 0, 0, 0.4));
+      }
     }
   }
 
