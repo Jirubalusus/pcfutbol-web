@@ -79,16 +79,31 @@ export async function hasActiveProManager(userId) {
 /**
  * Save ProManager game state (auto-save)
  */
+function stripUndefined(obj) {
+  if (obj === null || obj === undefined) return null;
+  if (Array.isArray(obj)) return obj.map(stripUndefined);
+  if (typeof obj === 'object' && obj.constructor === Object) {
+    const clean = {};
+    for (const [k, v] of Object.entries(obj)) {
+      if (v !== undefined) clean[k] = stripUndefined(v);
+    }
+    return clean;
+  }
+  return obj;
+}
+
 export async function saveProManager(userId, gameState) {
   const saveId = getSaveId(userId);
-  const saveData = {
+  const saveData = stripUndefined({
     ...gameState,
     userId,
     lastSaved: serverTimestamp(),
     _type: 'promanager'
-  };
+  });
 
   delete saveData.loaded;
+  delete saveData.leagueTeams;
+  delete saveData.otherLeagues;
 
   await setDoc(doc(db, COLLECTION, saveId), saveData);
 }

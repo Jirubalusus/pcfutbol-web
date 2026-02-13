@@ -343,7 +343,7 @@ function gameReducer(state, action) {
         rankedMatchId: null,
       } : {};
 
-      return { ...state, ...sanitized, ...cleanRanked, loaded: true, _contrarrelojUserId: null, _proManagerUserId: null };
+      return { ...state, ...sanitized, ...cleanRanked, loaded: true, _contrarrelojUserId: sanitized._contrarrelojUserId || null, _proManagerUserId: sanitized._proManagerUserId || null };
     }
 
     case 'NEW_GAME': {
@@ -406,6 +406,7 @@ function gameReducer(state, action) {
         gameMode: incomingGameMode,
         contrarrelojData: contrarrelojInit,
         _contrarrelojUserId: incomingGameMode === 'contrarreloj' ? (action.payload._contrarrelojUserId || null) : null,
+        _proManagerUserId: incomingGameMode === 'promanager' ? (action.payload._proManagerUserId || null) : null,
         teamId: action.payload.teamId,
         team: teamWithRoles,
         leagueId: leagueId,
