@@ -39,7 +39,7 @@ const MID_LEAGUES = new Set(['eredivisie', 'primeiraLiga', 'belgianPro', 'superL
  * Generate initial team offers from ALL leagues — 20 weak teams, no country filter
  */
 export function generateInitialOffers(country, prestige, allLeagueGetters) {
-  const pool = [];
+  const allTeamsWithMeta = [];
   
   for (const [leagueId, config] of Object.entries(LEAGUE_CONFIG)) {
     if (config.isGroupLeague) continue;
@@ -51,20 +51,26 @@ export function generateInitialOffers(country, prestige, allLeagueGetters) {
       if (!teams?.length) continue;
       for (const team of teams) {
         const avgOvr = getAvgOverall(team);
-        // Only weak teams (max OVR based on prestige, starts very low)
-        const maxOvr = 68 + (prestige > 30 ? (prestige - 30) * 0.5 : 0);
-        if (avgOvr <= maxOvr) {
-          pool.push({ team, leagueId, leagueName: config.name });
-        }
+        allTeamsWithMeta.push({ team, leagueId, leagueName: config.name, avgOvr });
       }
     } catch { /* skip */ }
+  }
+
+  // Filter by prestige-based max OVR (generous threshold)
+  const maxOvr = 73 + (prestige > 30 ? (prestige - 30) * 0.5 : 0);
+  let pool = allTeamsWithMeta.filter(t => t.avgOvr <= maxOvr);
+
+  // Fallback: if not enough teams, pick the weakest available
+  if (pool.length < 5 && allTeamsWithMeta.length > 0) {
+    const sorted = [...allTeamsWithMeta].sort((a, b) => a.avgOvr - b.avgOvr);
+    pool = sorted.slice(0, Math.max(20, pool.length));
   }
 
   // Shuffle and pick 5
   const shuffled = pool.sort(() => Math.random() - 0.5);
   return shuffled.slice(0, 5).map(entry => ({
     ...entry,
-    objective: getBoardObjective(getAvgOverall(entry.team), entry.leagueId, entry.team),
+    objective: getBoardObjective(entry.avgOvr, entry.leagueId, entry.team),
   }));
 }
 
