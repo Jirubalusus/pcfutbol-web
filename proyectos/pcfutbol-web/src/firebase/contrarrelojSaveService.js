@@ -105,6 +105,8 @@ export async function saveContrarreloj(userId, gameState) {
 
   // Remove non-serializable / transient fields
   delete saveData.loaded;
+  delete saveData.leagueTeams;
+  delete saveData.otherLeagues;
 
   await setDoc(doc(db, COLLECTION, saveId), saveData);
 }

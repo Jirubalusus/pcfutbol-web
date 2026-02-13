@@ -890,7 +890,13 @@ export async function claimDisconnectWin(matchId, uid) {
   await updateDoc(matchRef, {
     phase: 'results',
     winner: uid,
-    results: { disconnection: true, player1Points: 0, player2Points: 0 },
+    results: {
+      disconnection: true,
+      player1Points: 0,
+      player2Points: 0,
+      player1LPChange: data.player1.uid === uid ? 20 : -15,
+      player2LPChange: data.player2.uid === uid ? 20 : -15,
+    },
     updatedAt: serverTimestamp(),
   });
   

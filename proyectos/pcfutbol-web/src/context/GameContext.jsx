@@ -62,7 +62,7 @@ function ensureFullLineup(lineup, players, formation) {
     if (newLineup[slotId]) continue; // Ya ocupado
     
     const slotPos = getSlotPosition(slotId);
-    const best = available
+    const best = [...available]
       .sort((a, b) => {
         const fitA = getPositionFit(a.position, slotPos);
         const fitB = getPositionFit(b.position, slotPos);
@@ -343,7 +343,7 @@ function gameReducer(state, action) {
         rankedMatchId: null,
       } : {};
 
-      return { ...state, ...sanitized, ...cleanRanked, loaded: true };
+      return { ...state, ...sanitized, ...cleanRanked, loaded: true, _contrarrelojUserId: null, _proManagerUserId: null };
     }
 
     case 'NEW_GAME': {
@@ -497,6 +497,7 @@ function gameReducer(state, action) {
         settings: state.settings,
         managerName: state.managerName,
         currentScreen: state.currentScreen,
+        rankedMatchId: null,
       };
 
     case 'SET_PROMANAGER_DATA':
@@ -520,6 +521,8 @@ function gameReducer(state, action) {
         currentScreen: 'office',
         settings: state.settings,
         managerName: state.managerName,
+        playerForm: Object.fromEntries((team.players || []).map(p => [p.name, { form: 70, arrows: 0 }])),
+        matchTracker: Object.fromEntries((team.players || []).map(p => [p.name, { consecutivePlayed: 0, weeksSincePlay: 3 }])),
       };
     }
 
@@ -922,6 +925,9 @@ function gameReducer(state, action) {
           (finalPlayers || []).map(p => [p.name, { consecutivePlayed: 0, weeksSincePlay: 3 }])
         ),
         rejectedTransfers: {},
+        // Preserve mode user IDs across seasons
+        _proManagerUserId: state._proManagerUserId,
+        _contrarrelojUserId: state._contrarrelojUserId,
         // Contrarreloj: increment seasons played + record season history + accumulate stats
         contrarrelojData: state.contrarrelojData ? (() => {
           const teamStats = state.leagueTable?.find(t => t.teamId === state.teamId);
@@ -4253,6 +4259,8 @@ export function GameProvider({ children }) {
       ...state,
       lastSaved: new Date().toISOString()
     };
+    delete saveData.leagueTeams;
+    delete saveData.otherLeagues;
 
     if (USE_LOCAL_STORAGE) {
       // Local storage mode
@@ -4386,6 +4394,8 @@ export function GameProvider({ children }) {
       const saveData = { ...state };
       delete saveData.loaded;
       delete saveData._contrarrelojUserId;
+      delete saveData.leagueTeams;
+      delete saveData.otherLeagues;
 
       saveContrarreloj(state._contrarrelojUserId, saveData)
         .then(() => console.log('⏱️ Contrarreloj auto-saved to Firebase'))
@@ -4420,6 +4430,8 @@ export function GameProvider({ children }) {
         const saveData = { ...s };
         delete saveData.loaded;
         delete saveData._contrarrelojUserId;
+        delete saveData.leagueTeams;
+        delete saveData.otherLeagues;
         saveContrarreloj(s._contrarrelojUserId, saveData)
           .then(() => console.log('⏱️ Contrarreloj periodic save OK'))
           .catch(err => console.error('Periodic save error:', err));
@@ -4444,6 +4456,8 @@ export function GameProvider({ children }) {
       const saveData = { ...state };
       delete saveData.loaded;
       delete saveData._proManagerUserId;
+      delete saveData.leagueTeams;
+      delete saveData.otherLeagues;
       saveProManager(state._proManagerUserId, saveData)
         .then(() => console.log('💼 ProManager auto-saved'))
         .catch(err => console.error('ProManager save error:', err));
@@ -4467,6 +4481,8 @@ export function GameProvider({ children }) {
         const saveData = { ...s };
         delete saveData.loaded;
         delete saveData._contrarrelojUserId;
+        delete saveData.leagueTeams;
+        delete saveData.otherLeagues;
         saveContrarreloj(s._contrarrelojUserId, saveData).catch(() => {});
         console.log('⏱️ Contrarreloj save-on-exit triggered');
       }
@@ -4479,11 +4495,27 @@ export function GameProvider({ children }) {
         const saveData = { ...s };
         delete saveData.loaded;
         delete saveData._proManagerUserId;
+        delete saveData.leagueTeams;
+        delete saveData.otherLeagues;
         saveProManager(s._proManagerUserId, saveData).catch(() => {});
         console.log('💼 ProManager save-on-exit triggered');
       }
       if (s.gameStarted && s.gameMode !== 'contrarreloj' && s.gameMode !== 'promanager' && s.settings?.autoSave !== false) {
-        saveGame();
+        // Use stateRef.current to avoid stale closure
+        const freshState = stateRef.current;
+        const exitSaveData = {
+          ...freshState,
+          lastSaved: new Date().toISOString()
+        };
+        delete exitSaveData.leagueTeams;
+        delete exitSaveData.otherLeagues;
+        if (USE_LOCAL_STORAGE) {
+          try { localStorage.setItem('pcfutbol_local_save', JSON.stringify(exitSaveData)); } catch (e) { /* ignore */ }
+        } else {
+          const saveId = freshState.saveId || generateSaveId();
+          exitSaveData.saveId = saveId;
+          try { setDoc(doc(db, 'saves', saveId), exitSaveData).catch(() => {}); localStorage.setItem('pcfutbol_saveId', saveId); } catch (e) { /* ignore */ }
+        }
       }
     };
 

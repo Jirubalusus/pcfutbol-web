@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { translatePosition } from '../../game/positionNames';
@@ -87,7 +87,17 @@ export default function Office() {
   const [simProgress, setSimProgress] = useState(null); // { current, total, week }
   const isMobile = window.innerWidth <= 768;
   const isRanked = state.gameMode === 'ranked' && !!state.rankedMatchId;
+  
+  // Memoize getAllTeams to avoid recalculating on every render
+  const allTeamsMemo = useMemo(() => getAllTeams(), [state.leagueTeams]);
   const [rankedSubmitted, setRankedSubmitted] = useState(false);
+  
+  // Regenerate leagueTeams if missing (e.g. loaded from save without them)
+  useEffect(() => {
+    if (state.gameStarted && (!state.leagueTeams || state.leagueTeams.length === 0)) {
+      dispatch({ type: 'UPDATE_LEAGUE_TEAMS', payload: getAllTeams() });
+    }
+  }, [state.gameStarted, state.leagueTeams]);
   
   const handleRankedSubmit = async () => {
     if (!state.rankedMatchId || rankedSubmitted || !user?.uid) return;
@@ -269,7 +279,7 @@ export default function Office() {
       weekFixturesCount: weekFixtures.length,
       weekFixtures: weekFixtures.slice(0, 3),
       playerMatch: playerMatch,
-      allTeamsCount: getAllTeams().length,
+      allTeamsCount: allTeamsMemo.length,
       seasonOver: seasonOver,
       pendingEuropeanMatch: state.pendingEuropeanMatch ? 'yes' : 'no'
     });
@@ -340,7 +350,7 @@ export default function Office() {
   };
   
   const simulateOtherMatches = (fixtures = state.fixtures, table = state.leagueTable, week = state.currentWeek) => {
-    const allTeams = getAllTeams().map(t => {
+    const allTeams = allTeamsMemo.map(t => {
       if (t.id === state.teamId) {
         return state.team;
       }
@@ -374,7 +384,7 @@ export default function Office() {
     let currentFixtures = [...state.fixtures];
     let currentTable = [...state.leagueTable];
     let currentWeek = state.currentWeek;
-    const allTeams = getAllTeams();
+    const allTeams = allTeamsMemo;
     let weeksSimulated = 0;
     let seasonEnded = false;
     
@@ -553,7 +563,7 @@ export default function Office() {
       }
       
       // Simular resto de partidos de la semana
-      const teamsWithPlayer = allTeams.map(t => t.id === state.teamId ? state.team : t);
+      const teamsWithPlayer = allTeamsMemo.map(t => t.id === state.teamId ? state.team : t);
       const otherResult = simulateWeekMatches(
         currentFixtures,
         currentTable,
@@ -990,7 +1000,7 @@ export default function Office() {
   if (showSeasonEnd) {
     return (
       <SeasonEnd 
-        allTeams={getAllTeams()} 
+        allTeams={allTeamsMemo} 
         onComplete={() => {
           setShowSeasonEnd(false);
           // In ProManager mode, show the season end screen with offers

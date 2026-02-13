@@ -41,7 +41,7 @@ export default function RankedTimer() {
       const remaining = Math.max(0, Math.floor((deadline.getTime() - Date.now()) / 1000));
       setTimeLeft(remaining);
 
-      if (remaining === 0 && amPlayer1 && !advancingRef.current && ['round1', 'round2'].includes(match.phase)) {
+      if (remaining === 0 && !advancingRef.current && ['round1', 'round2'].includes(match.phase)) {
         advancingRef.current = true;
         advancePhase(matchId).catch(console.error).finally(() => { advancingRef.current = false; });
       }
@@ -49,16 +49,16 @@ export default function RankedTimer() {
     tick();
     const interval = setInterval(tick, 1000);
     return () => clearInterval(interval);
-  }, [match?.phaseDeadline, match?.phase, amPlayer1, matchId]);
+  }, [match?.phaseDeadline, match?.phase, matchId]);
 
   // Both ready → trigger simulation immediately
   useEffect(() => {
     if (!match || !matchId || advancingRef.current) return;
-    if (readyState.player1 && readyState.player2 && amPlayer1 && ['round1', 'round2'].includes(match.phase)) {
+    if (readyState.player1 && readyState.player2 && !advancingRef.current && ['round1', 'round2'].includes(match.phase)) {
       advancingRef.current = true;
       advancePhase(matchId).catch(console.error).finally(() => { advancingRef.current = false; });
     }
-  }, [readyState.player1, readyState.player2, match?.phase, amPlayer1, matchId]);
+  }, [readyState.player1, readyState.player2, match?.phase, matchId]);
 
   const handleReady = async () => {
     if (!matchId || !user?.uid || settingReady) return;

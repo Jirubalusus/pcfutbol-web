@@ -189,11 +189,12 @@ export default function SeasonEnd({ allTeams, onComplete }) {
     return players.reduce((sum, p) => sum + (p.salary || 0), 0) * 52;
   }, [state.team?.players]);
   
-  // Si el jugador ganó el playoff, actualizar su seasonResult
+  // Si el jugador ganó el playoff, actualizar su seasonResult (copia para no mutar)
   const playerWonPlayoff = playoffBracket?.winner === state.teamId;
+  const mutableResult = { ...seasonResult };
   if (playerWonPlayoff) {
-    seasonResult.promotion = true;
-    seasonResult.playoff = false;
+    mutableResult.promotion = true;
+    mutableResult.playoff = false;
   }
   
   const formatMoney = (amount) => {
@@ -375,64 +376,46 @@ export default function SeasonEnd({ allTeams, onComplete }) {
     const newPlayerLeagueId = newSeasonData.newPlayerLeagueId || state.playerLeagueId || 'laliga';
     const newObjectives = generateSeasonObjectives(state.team, newPlayerLeagueId, newSeasonData.playerLeague.table);
     
-    // Mensaje si hubo cambio de liga
+    // Collect messages to dispatch AFTER START_NEW_SEASON (so they aren't wiped)
+    const pendingMessages = [];
     if (newSeasonData.changes.relegated.length > 0 || newSeasonData.changes.promoted.length > 0 || newSeasonData.changes.playoffWinner) {
-      // Mensaje de descensos
       if (newSeasonData.changes.relegated.length > 0) {
-        dispatch({
-          type: 'ADD_MESSAGE',
-          payload: {
-            id: Date.now(),
-            type: 'relegation',
-            title: 'Descensos a Segunda',
-            content: `Descienden: ${newSeasonData.changes.relegated.join(', ')}`,
-            date: `Fin Temporada ${state.currentSeason}`
-          }
+        pendingMessages.push({
+          id: Date.now(),
+          type: 'relegation',
+          title: 'Descensos a Segunda',
+          content: `Descienden: ${newSeasonData.changes.relegated.join(', ')}`,
+          date: `Fin Temporada ${state.currentSeason}`
         });
       }
-      
-      // Mensaje de ascensos directos
       if (newSeasonData.changes.promoted.length > 0) {
-        dispatch({
-          type: 'ADD_MESSAGE',
-          payload: {
-            id: Date.now() + 1,
-            type: 'promotion',
-            title: 'Ascensos directos a La Liga',
-            content: `Ascienden: ${newSeasonData.changes.promoted.join(', ')}`,
-            date: `Fin Temporada ${state.currentSeason}`
-          }
+        pendingMessages.push({
+          id: Date.now() + 1,
+          type: 'promotion',
+          title: 'Ascensos directos a La Liga',
+          content: `Ascienden: ${newSeasonData.changes.promoted.join(', ')}`,
+          date: `Fin Temporada ${state.currentSeason}`
         });
       }
-      
-      // Mensaje de ascenso por playoff
       if (newSeasonData.changes.playoffWinner) {
-        dispatch({
-          type: 'ADD_MESSAGE',
-          payload: {
-            id: Date.now() + 2,
-            type: 'promotion',
-            title: 'Ascenso por Playoff',
-            content: `${newSeasonData.changes.playoffWinner} gana el playoff y asciende a La Liga`,
-            date: `Fin Temporada ${state.currentSeason}`
-          }
+        pendingMessages.push({
+          id: Date.now() + 2,
+          type: 'promotion',
+          title: 'Ascenso por Playoff',
+          content: `${newSeasonData.changes.playoffWinner} gana el playoff y asciende a La Liga`,
+          date: `Fin Temporada ${state.currentSeason}`
         });
       }
-      
-      // Si el jugador cambió de liga
       if (newSeasonData.newPlayerLeagueId !== (state.playerLeagueId || 'laliga')) {
         const isPromotion = newSeasonData.newPlayerLeagueId === 'laliga';
-        dispatch({
-          type: 'ADD_MESSAGE',
-          payload: {
-            id: Date.now() + 2,
-            type: isPromotion ? 'promotion' : 'relegation',
-            title: isPromotion ? '¡ASCENSO!' : 'Descenso',
-            content: isPromotion 
-              ? `¡${state.team.name} jugará en La Liga la próxima temporada!`
-              : `${state.team.name} jugará en Segunda División la próxima temporada.`,
-            date: `Fin Temporada ${state.currentSeason}`
-          }
+        pendingMessages.push({
+          id: Date.now() + 3,
+          type: isPromotion ? 'promotion' : 'relegation',
+          title: isPromotion ? '¡ASCENSO!' : 'Descenso',
+          content: isPromotion 
+            ? `¡${state.team.name} jugará en La Liga la próxima temporada!`
+            : `${state.team.name} jugará en Segunda División la próxima temporada.`,
+          date: `Fin Temporada ${state.currentSeason}`
         });
       }
     }
@@ -529,7 +512,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
     dispatch({
       type: 'START_NEW_SEASON',
       payload: {
-        seasonResult,
+        seasonResult: mutableResult,
         objectiveRewards,
         europeanBonus,
         preseasonMatches: selectedPreseason.matches,
@@ -546,6 +529,11 @@ export default function SeasonEnd({ allTeams, onComplete }) {
     dispatch({
       type: 'SET_OTHER_LEAGUES',
       payload: newSeasonData.otherLeagues
+    });
+    
+    // Dispatch pending messages AFTER START_NEW_SEASON so they aren't wiped
+    pendingMessages.forEach(msg => {
+      dispatch({ type: 'ADD_MESSAGE', payload: msg });
     });
     
     // Actualizar liga del jugador si cambió
