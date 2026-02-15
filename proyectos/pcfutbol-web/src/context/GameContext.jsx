@@ -54,6 +54,23 @@ function ensureFullLineup(lineup, players, formation) {
   if (filledCount >= 11) return lineup;
   
   const newLineup = { ...lineup };
+  
+  // Eject injured, suspended, or loaned players from lineup
+  for (const slotId of Object.keys(newLineup)) {
+    const p = newLineup[slotId];
+    if (p && (p.injured || p.suspended || p.onLoan)) {
+      delete newLineup[slotId];
+    }
+  }
+  
+  // Also eject players no longer in the squad
+  const playerNames = new Set(players.map(p => p.name));
+  for (const slotId of Object.keys(newLineup)) {
+    if (newLineup[slotId] && !playerNames.has(newLineup[slotId].name)) {
+      delete newLineup[slotId];
+    }
+  }
+  
   const usedNames = new Set(Object.values(newLineup).map(p => p?.name).filter(Boolean));
   const available = players.filter(p => !usedNames.has(p.name) && !p.injured && !p.suspended && !p.onLoan);
   
@@ -281,7 +298,8 @@ function gameReducer(state, action) {
       // Array fields that Firestore might mangle
       ['leagueTable', 'fixtures', 'results', 'messages', 'transferOffers', 'playerMarket',
        'freeAgents', 'seasonObjectives', 'jobOffers', 'blockedPlayers', 'activeLoans',
-       'loanHistory', 'incomingLoanOffers', 'convocados', 'preseasonMatches'].forEach(key => {
+       'loanHistory', 'incomingLoanOffers', 'convocados', 'preseasonMatches',
+       'medicalSlots', 'outgoingOffers', 'incomingOffers'].forEach(key => {
         if (key in sanitized) sanitized[key] = _toArr(sanitized[key]) || [];
       });
       // Sanitize team.players
@@ -893,6 +911,10 @@ function gameReducer(state, action) {
         facilitySpecsLocked: {}, // Desbloquear especializaciones
         facilitySpecs: { youth: null, medical: null, training: null }, // Reset especializaciones
         playerSeasonStats: {},  // Reset para nueva temporada
+        // Reset financial tracking for new season
+        transfersSpent: 0,
+        transfersEarned: 0,
+        prizeIncome: 0,
         // Reset Apertura-Clausura state
         aperturaTable: null,
         currentTournament: 'apertura',
@@ -914,10 +936,10 @@ function gameReducer(state, action) {
         activeLoans: seasonRemainingLoans, // Solo quedan las compradas/no activas
         loanHistory: [...(state.loanHistory || []), ...seasonExpiredLoans],
         incomingLoanOffers: [],
-        // Mensajes: retiros + hijos + cesiones
+        // Mensajes: retiros + hijos + cesiones + preserve recent messages
         messages: [...retirementMessages, ...loanExpireMessages.map(m => ({
           id: Date.now() + Math.random(), type: 'loan', titleKey: m.titleKey || 'gameMessages.loan', title: m.title || 'Loan', content: m.content || '', dateKey: 'gameMessages.endOfSeason', dateParams: { season: state.currentSeason }
-        }))].slice(0, 50),
+        })), ...(state.messages || []).slice(0, 20)].slice(0, 50),
         // Form system reset
         playerForm: generateInitialForm(
           finalPlayers,
@@ -2414,7 +2436,8 @@ function gameReducer(state, action) {
         },
         // Evaluación del míster
         managerConfidence: managerEval.confidence,
-        managerFired: managerEval.fired,
+        managerFired: managerEval.fired || state.managerFired,
+        managerFiredReason: managerEval.fired ? (managerEval.reason || 'managerFired.defaultReason') : state.managerFiredReason,
         // European competitions
         europeanCompetitions: updatedEuropean,
         pendingEuropeanMatch,
