@@ -53,7 +53,7 @@ export const EUROPEAN_SPOTS = {
     playoffRelegation: [16]
   },
   // South American leagues (use libertadores/sudamericana instead of champions/europaLeague)
-  argentinaPrimera: { libertadores: [1, 2, 3, 4], sudamericana: [5, 6], relegation: [25, 26, 27, 28] },
+  argentinaPrimera: { libertadores: [1, 2, 3, 4], sudamericana: [5, 6], relegation: [27, 28, 29, 30] },
   brasileiraoA: { libertadores: [1, 2, 3, 4], sudamericana: [5, 6, 7, 8], relegation: [17, 18, 19, 20] },
   colombiaPrimera: { libertadores: [1, 2, 3], sudamericana: [4, 5, 6], relegation: [18, 19, 20] },
   chilePrimera: { libertadores: [1, 2], sudamericana: [3, 4], relegation: [14, 15, 16] },
@@ -62,7 +62,7 @@ export const EUROPEAN_SPOTS = {
   paraguayPrimera: { libertadores: [1], sudamericana: [2, 3], relegation: [11, 12] },
   peruLiga1: { libertadores: [1, 2], sudamericana: [3, 4], relegation: [16, 17, 18] },
   boliviaPrimera: { libertadores: [1], sudamericana: [2, 3], relegation: [14, 15, 16] },
-  venezuelaPrimera: { libertadores: [1, 2], sudamericana: [3, 4], relegation: [16, 17, 18] }
+  venezuelaPrimera: { libertadores: [1, 2], sudamericana: [3, 4], relegation: [12, 13, 14] }
 };
 
 // Número de jornadas por liga
@@ -80,10 +80,32 @@ export const LEAGUE_MATCHDAYS = {
   belgianPro: 30,
   eredivisie: 34,
   primeiraLiga: 34,
-  scottishPrem: 38,
+  scottishPrem: 22, // 12 teams = 22 matchdays (generateFixtures produces 11*2)
   serieB: 38,
   bundesliga2: 34,
-  ligue2: 38,
+  ligue2: 34, // 18 teams = 34 matchdays
+  // South American leagues
+  argentinaPrimera: 58, // 30 teams = 58 matchdays (29*2)
+  brasileiraoA: 38,     // 20 teams
+  colombiaPrimera: 38,  // 20 teams
+  chilePrimera: 30,     // 16 teams = 30 matchdays (15*2)
+  uruguayPrimera: 30,   // 16 teams
+  ecuadorLigaPro: 30,   // 16 teams
+  paraguayPrimera: 22,  // 12 teams
+  peruLiga1: 34,        // 18 teams
+  boliviaPrimera: 30,   // 16 teams
+  venezuelaPrimera: 26, // 14 teams = 26 matchdays (13*2)
+  // Other leagues
+  superLig: 36,             // 19 teams = 36 matchdays (odd teams handled by engine)
+  swissSuperLeague: 22,     // 12 teams
+  austrianBundesliga: 22,   // 12 teams
+  greekSuperLeague: 26,     // 14 teams
+  danishSuperliga: 22,      // 12 teams
+  croatianLeague: 18,       // 10 teams
+  czechLeague: 30,          // 16 teams
+  mls: 38,                  // 20 teams
+  saudiPro: 34,             // 18 teams
+  jLeague: 38,              // 20 teams
 };
 
 /**

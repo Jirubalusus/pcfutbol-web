@@ -1319,6 +1319,27 @@ function gameReducer(state, action) {
         );
       }
 
+      // Auto-resolve pending cup match (e.g. during batch simulation / simulate season)
+      let resolvedCup = state.cupCompetition;
+      if (state.pendingCupMatch && resolvedCup && !resolvedCup.playerEliminated) {
+        const pm = state.pendingCupMatch;
+        const homeRep = pm.homeTeam?.reputation || 70;
+        const awayRep = pm.awayTeam?.reputation || 70;
+        const diff = (homeRep + 5) - awayRep;
+        const hExp = 1.2 + diff * 0.02;
+        const aExp = 1.2 - diff * 0.02;
+        const hScore = Math.max(0, Math.round(hExp + (Math.random() * 2 - 1)));
+        const aScore = Math.max(0, Math.round(aExp + (Math.random() * 2 - 1)));
+        resolvedCup = completeCupMatch(
+          resolvedCup,
+          pm.roundIdx,
+          pm.matchIdx,
+          hScore,
+          aScore,
+          state.teamId
+        );
+      }
+
       // NO weekly income. All revenue (commercial, tickets, season tickets)
       // is accumulated and collected at end of season via START_NEW_SEASON.
       // Only player sales add money instantly.
@@ -1874,7 +1895,7 @@ function gameReducer(state, action) {
       // ============================================================
       // CUP COMPETITION â€" Check for cup matchday
       // ============================================================
-      let updatedCupCompetition = state.cupCompetition;
+      let updatedCupCompetition = resolvedCup || state.cupCompetition;
       let pendingCupMatch = null;
       let cupMessages = [];
 
@@ -2002,8 +2023,13 @@ function gameReducer(state, action) {
 
       // === FORM SYSTEM: Update match tracker and form ===
       // Update match tracker: who played this week?
-      // Players in convocados played, rest didn't
-      const playedThisWeek = state.convocados || [];
+      // Only count as "played" if there was actually a league match this week
+      // (check if any fixture for this week was played by the player's team)
+      const hadLeagueMatchThisWeek = (state.fixtures || []).some(
+        f => f.week === state.currentWeek && f.played &&
+        (f.homeTeam === state.teamId || f.awayTeam === state.teamId)
+      );
+      const playedThisWeek = hadLeagueMatchThisWeek ? (state.convocados || []) : [];
       const updatedTracker = updateMatchTracker(
         state.matchTracker || {},
         state.team?.players || [],
@@ -2423,16 +2449,12 @@ function gameReducer(state, action) {
         currentState = gameReducer(currentState, { type: 'ADVANCE_WEEK', _batchMode: true });
         // Early exit if manager fired, contrarreloj ended, or season screen changed
         if (currentState.managerFired || currentState.contrarrelojData?.finished) break;
-      }
-      // Auto-clear any pending matches left by the last ADVANCE_WEEK
-      // (they'll be auto-resolved on next ADVANCE_WEEK call anyway)
-      if (currentState.pendingCupMatch || currentState.pendingEuropeanMatch || currentState.pendingSAMatch) {
-        currentState = {
-          ...currentState,
-          pendingCupMatch: null,
-          pendingEuropeanMatch: null,
-          pendingSAMatch: null
-        };
+        // If a pending match was generated, run one more ADVANCE_WEEK to auto-resolve it
+        // (the auto-resolve code at the start of ADVANCE_WEEK handles European, SA, and cup)
+        if (currentState.pendingCupMatch || currentState.pendingEuropeanMatch || currentState.pendingSAMatch) {
+          currentState = gameReducer(currentState, { type: 'ADVANCE_WEEK', _batchMode: true });
+          if (currentState.managerFired || currentState.contrarrelojData?.finished) break;
+        }
       }
       return currentState;
     }
