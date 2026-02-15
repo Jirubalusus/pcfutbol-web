@@ -21,19 +21,19 @@
     gap: 0.75rem;
     padding: 1.25rem 1.5rem;
     border-bottom: 1px solid var(--color-glass-border);
-    background: linear-gradient(180deg, rgba(0, 212, 255, 0.05) 0%, transparent 100%);
+    background: linear-gradient(180deg, rgba(var(--color-accent-rgb), 0.05) 0%, transparent 100%);
   }
   
   &__logo-icon {
     color: var(--color-accent);
-    filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.4));
+    filter: drop-shadow(0 0 8px rgba(var(--color-accent-rgb), 0.4));
   }
   
   &__logo-text {
     font-size: 1.05rem;
     font-weight: 800;
     letter-spacing: -0.02em;
-    background: linear-gradient(135deg, var(--color-accent) 0%, #00ff88 100%);
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-success) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -45,14 +45,14 @@
     padding: 1rem;
     text-align: center;
     border-bottom: 1px solid var(--color-glass-border);
-    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.2) 100%);
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.1) 100%);
   }
   
   &__team-badge {
     width: 56px;
     height: 56px;
     margin: 0 auto 0.65rem;
-    background: linear-gradient(145deg, #2a8a4a, #1e6b38);
+    background: linear-gradient(145deg, rgba(var(--color-success-rgb), 0.6), rgba(var(--color-success-rgb), 0.4));
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -61,10 +61,10 @@
     font-size: 1.1rem;
     letter-spacing: 0.02em;
     box-shadow: 
-      0 4px 20px rgba(48, 209, 88, 0.25),
+      0 4px 20px rgba(var(--color-success-rgb), 0.25),
       inset 0 2px 0 rgba(255, 255, 255, 0.15),
       inset 0 -2px 0 rgba(0, 0, 0, 0.2);
-    border: 3px solid rgba(255, 255, 255, 0.1);
+    border: 3px solid var(--color-glass-border);
   }
   
   &__team-name {
@@ -84,7 +84,7 @@
     }
     
     &::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.1);
+      background: var(--color-glass-border);
       border-radius: 4px;
     }
   }
@@ -115,7 +115,7 @@
     }
     
     &.active {
-      background: linear-gradient(90deg, rgba(0, 212, 255, 0.12) 0%, transparent 100%);
+      background: linear-gradient(90deg, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 100%);
       color: var(--color-accent);
       
       &::before {
@@ -132,7 +132,7 @@
       
       .sidebar__item-icon {
         color: var(--color-accent);
-        filter: drop-shadow(0 0 6px rgba(0, 212, 255, 0.5));
+        filter: drop-shadow(0 0 6px rgba(var(--color-accent-rgb), 0.5));
       }
     }
   }
@@ -149,7 +149,7 @@
   
   &__badge {
     margin-left: auto;
-    background: linear-gradient(135deg, var(--color-danger), #ff6b6b);
+    background: linear-gradient(135deg, var(--color-danger), rgba(var(--color-danger-rgb), 0.7));
     color: var(--color-text-primary);
     font-size: 0.7rem;
     font-weight: 700;
@@ -164,8 +164,8 @@
   }
 
   @keyframes badgePulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(255, 69, 58, 0.4); }
-    50% { box-shadow: 0 0 0 6px rgba(255, 69, 58, 0); }
+    0%, 100% { box-shadow: 0 0 0 0 rgba(var(--color-danger-rgb), 0.4); }
+    50% { box-shadow: 0 0 0 6px rgba(var(--color-danger-rgb), 0); }
   }
   
   // Footer Buttons
@@ -198,7 +198,7 @@
     &:hover {
       background: var(--color-glass-border);
       color: var(--color-text-primary);
-      border-color: rgba(255, 255, 255, 0.1);
+      border-color: var(--color-glass-border);
     }
     
     &:active {
