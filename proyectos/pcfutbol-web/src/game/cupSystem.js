@@ -405,24 +405,27 @@ export function simulateCupRound(bracket, roundIdx, playerTeamId, allTeamsData) 
       match.awayTeam.teamId,
       homeData,
       awayData,
-      { homeMorale: 70, awayMorale: 70 }
+      { homeMorale: 70, awayMorale: 70, knockout: true }
     );
 
-    // En copa no hay empates: si empatan, se resuelve con prórroga/penaltis
+    // V2 with knockout:true handles extra time and penalties
     let homeScore = result.homeScore;
     let awayScore = result.awayScore;
     let winnerId;
+    let penalties = false;
 
-    if (homeScore === awayScore) {
-      // Simular "penaltis" — 50/50 con ligera ventaja para el mejor equipo
+    if (result.penalties) {
+      // V2 resolved via penalties
+      penalties = true;
+      winnerId = result.penalties.home > result.penalties.away
+        ? match.homeTeam.teamId : match.awayTeam.teamId;
+    } else if (homeScore === awayScore) {
+      // Fallback: shouldn't happen with knockout:true but just in case
       const homeRep = match.homeTeam.reputation || 70;
       const awayRep = match.awayTeam.reputation || 70;
       const homeChance = 0.5 + (homeRep - awayRep) / 200;
       winnerId = Math.random() < homeChance ? match.homeTeam.teamId : match.awayTeam.teamId;
-      // Marcar como penaltis en el resultado
-      if (winnerId === match.homeTeam.teamId) {
-        homeScore = homeScore + 0; // Mantener marcador original
-      }
+      penalties = true;
     } else {
       winnerId = homeScore > awayScore ? match.homeTeam.teamId : match.awayTeam.teamId;
     }
@@ -433,7 +436,9 @@ export function simulateCupRound(bracket, roundIdx, playerTeamId, allTeamsData) 
       awayScore,
       played: true,
       winnerId,
-      penalties: homeScore === awayScore
+      penalties,
+      extraTime: result.extraTime || false,
+      penaltiesDetail: result.penalties || null
     };
   }
 

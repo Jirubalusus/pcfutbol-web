@@ -124,7 +124,7 @@ export function calculateMatchStrength(team, formation, tactic, context = {}) {
   const baseRating = strength.effectiveOverall || strength.overall || 70;
   
   // Reputación del equipo (muy importante)
-  const reputation = team.reputation || 3;
+  const reputation = team.reputation || 70;
   const profile = getTeamProfile(reputation);
   
   // Factor de plantilla (calidad de suplentes)
@@ -202,15 +202,17 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
     awayLineup = null,     // Lineup personalizado del equipo visitante
     attendanceFillRate = 0.7,  // Ocupación del estadio (afecta factor cancha)
     grassCondition = 100,      // Estado del césped
+    homeForm: ctxHomeForm,     // Form data passed from leagueEngine
+    awayForm: ctxAwayForm,     // Form data passed from leagueEngine
     playerTeamForm = {},
     playerTeamId = null,
     medicalPrevention = 0,
     playerIsHome = null
   } = context;
   
-  // Determine which team gets the form data
-  const homeForm = homeTeamData.id === playerTeamId ? playerTeamForm : {};
-  const awayForm = awayTeamData.id === playerTeamId ? playerTeamForm : {};
+  // Use form data from context (set by leagueEngine), or fallback to playerTeamForm for backward compat
+  const homeForm = ctxHomeForm || (homeTeamData.id === playerTeamId ? playerTeamForm : {});
+  const awayForm = ctxAwayForm || (awayTeamData.id === playerTeamId ? playerTeamForm : {});
   
   // Calcular fuerzas ajustadas (con lineup del jugador si disponible)
   const homeStrength = calculateMatchStrength(homeTeamData, homeFormation, homeTactic, {
@@ -278,6 +280,11 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
   );
   
   // Stats del partido (tácticas afectan posesión, tiros, etc.)
+  // Derive card counts from events for consistency
+  const eventYellowsHome = events.filter(e => e.type === 'yellow_card' && e.team === 'home').length;
+  const eventYellowsAway = events.filter(e => e.type === 'yellow_card' && e.team === 'away').length;
+  const eventRedsHome = events.filter(e => e.type === 'red_card' && e.team === 'home').length;
+  const eventRedsAway = events.filter(e => e.type === 'red_card' && e.team === 'away').length;
   const stats = generateMatchStats(
     homeStrength,
     awayStrength,
@@ -285,7 +292,8 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
     awayScore,
     result,
     homeTactic,
-    awayTactic
+    awayTactic,
+    { yellowCards: { home: eventYellowsHome, away: eventYellowsAway }, redCards: { home: eventRedsHome, away: eventRedsAway } }
   );
   
   // Knockout mode: if draw, resolve with extra time then penalties
@@ -615,13 +623,14 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
  * Seleccionar goleador
  */
 function selectScorer(team, lineup) {
-  if (!team?.players) return { name: 'Desconocido' };
+  if (!team?.players) return { name: 'Unknown' };
   
-  const attackers = (lineup || team.players).filter(p => 
+  const available = (lineup || team.players).filter(p => !p.injured && !p.suspended);
+  const attackers = available.filter(p => 
     ['ST', 'CF', 'RW', 'LW', 'CAM'].includes(p.position)
   );
   
-  if (attackers.length === 0) return team.players[0] || { name: 'Desconocido' };
+  if (attackers.length === 0) return available[0] || team.players[0] || { name: 'Unknown' };
   
   // Ponderar por overall
   const totalOvr = attackers.reduce((sum, p) => sum + p.overall, 0);
@@ -636,14 +645,16 @@ function selectScorer(team, lineup) {
 }
 
 function selectRandomPlayer(team) {
-  if (!team?.players || team.players.length === 0) return { name: 'Desconocido' };
-  return { name: team.players[Math.floor(Math.random() * team.players.length)].name };
+  if (!team?.players || team.players.length === 0) return { name: 'Unknown' };
+  const available = team.players.filter(p => !p.injured && !p.suspended);
+  const pool = available.length > 0 ? available : team.players;
+  return { name: pool[Math.floor(Math.random() * pool.length)].name };
 }
 
 /**
  * Generar estadísticas del partido
  */
-function generateMatchStats(homeStrength, awayStrength, homeScore, awayScore, result, homeTactic = 'balanced', awayTactic = 'balanced') {
+function generateMatchStats(homeStrength, awayStrength, homeScore, awayScore, result, homeTactic = 'balanced', awayTactic = 'balanced', eventCards = null) {
   const homeTacticData = TACTICS[homeTactic] || TACTICS.balanced;
   const awayTacticData = TACTICS[awayTactic] || TACTICS.balanced;
   
@@ -664,14 +675,11 @@ function generateMatchStats(homeStrength, awayStrength, homeScore, awayScore, re
   const awayFoulMod = awayTactic === 'highPress' ? 1.4 : awayTactic === 'defensive' ? 1.2 : 1;
   const homeFouls = Math.round((10 + Math.floor(Math.random() * 6)) * homeFoulMod);
   const awayFouls = Math.round((10 + Math.floor(Math.random() * 6)) * awayFoulMod);
-  const homeYellows = Math.floor(homeFouls * (0.15 + Math.random() * 0.15));
-  const awayYellows = Math.floor(awayFouls * (0.15 + Math.random() * 0.15));
-  // Rojas: ~18% base por equipo por partido → ~7 rojas/temporada (realista)
-  // Tácticas agresivas aumentan probabilidad
-  const homeRedMod = homeTactic === 'highPress' ? 1.5 : homeTactic === 'defensive' ? 1.3 : 1;
-  const awayRedMod = awayTactic === 'highPress' ? 1.5 : awayTactic === 'defensive' ? 1.3 : 1;
-  const homeReds = Math.random() < (0.18 * homeRedMod) ? 1 : 0;
-  const awayReds = Math.random() < (0.18 * awayRedMod) ? 1 : 0;
+  // Use event-derived card counts for consistency, or fallback to generated
+  const homeYellows = eventCards?.yellowCards?.home ?? Math.floor(homeFouls * (0.15 + Math.random() * 0.15));
+  const awayYellows = eventCards?.yellowCards?.away ?? Math.floor(awayFouls * (0.15 + Math.random() * 0.15));
+  const homeReds = eventCards?.redCards?.home ?? (Math.random() < 0.18 ? 1 : 0);
+  const awayReds = eventCards?.redCards?.away ?? (Math.random() < 0.18 ? 1 : 0);
   
   return {
     possession: { home: Math.round(homePossession), away: Math.round(100 - homePossession) },
