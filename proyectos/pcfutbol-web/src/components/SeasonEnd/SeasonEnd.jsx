@@ -412,7 +412,11 @@ export default function SeasonEnd({ allTeams, onComplete }) {
         });
       }
       if (newSeasonData.newPlayerLeagueId !== (state.playerLeagueId || 'laliga')) {
-        const isPromotion = newSeasonData.newPlayerLeagueId === 'laliga';
+        // Detect promotion: moving to a higher tier league
+        const tierOrder = ['laliga', 'segunda', 'primeraRFEF', 'segundaRFEF'];
+        const oldTier = tierOrder.indexOf(state.playerLeagueId || 'laliga');
+        const newTier = tierOrder.indexOf(newSeasonData.newPlayerLeagueId);
+        const isPromotion = newTier >= 0 && oldTier >= 0 ? newTier < oldTier : newSeasonData.newPlayerLeagueId === 'laliga';
         pendingMessages.push({
           id: Date.now() + 3,
           type: isPromotion ? 'promotion' : 'relegation',

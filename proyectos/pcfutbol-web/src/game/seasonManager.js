@@ -18,12 +18,14 @@ export const EUROPEAN_SPOTS = {
     relegation: [20, 21, 22]
   },
   primeraRFEF: {
-    // Group league - per-group zones handled by groupLeagueEngine
-    promotion: [1],       // Per group: champion ascends
-    relegation: []        // Per group: last 2 descend (handled separately)
+    // Group league - per-group zones (dynamic relegation based on group size)
+    promotion: [1],       // Per group: champion ascends directly to Segunda
+    playoff: [2, 3, 4, 5], // Per group: playoff for additional promotion spot
+    relegationCount: 5    // Last 5 per group descend (positions calculated dynamically)
   },
   segundaRFEF: {
-    promotion: [1],       // Per group: champion ascends
+    promotion: [1],       // Per group: champion ascends to Primera RFEF
+    playoff: [2, 3, 4, 5], // Per group: playoff for additional promotion spot
     relegation: []        // No relegation (Tercera not in game)
   },
   premierLeague: {
@@ -154,6 +156,12 @@ export function getSeasonResult(table, teamId, leagueId = 'laliga') {
   // Determinar descenso
   if (spots.relegation?.includes(position)) {
     relegation = true;
+  } else if (spots.relegationCount && table.length > 0) {
+    // Dynamic relegation for group leagues (last N positions)
+    const totalTeams = table.length;
+    if (position > totalTeams - spots.relegationCount) {
+      relegation = true;
+    }
   }
   
   // Determinar ascenso (para ligas inferiores)
