@@ -794,13 +794,13 @@ $white: #e8eaed;
     transition: background 0.15s;
     min-height: 44px;
 
-    &:active { background: rgba(255, 255, 255, 0.12); }
+    &:active { background: var(--color-glass-border); }
     &:disabled { opacity: 0.35; cursor: not-allowed; }
     &--danger { color: $red; }
     &--unlist { color: $orange; }
     &--cancel {
       background: var(--color-glass);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid var(--color-glass-border);
       color: $gray;
       text-align: center;
       display: flex;

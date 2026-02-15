@@ -20,7 +20,7 @@
     background:
       radial-gradient(ellipse 80% 50% at 50% -20%, rgba(100, 149, 237, 0.15) 0%, transparent 50%),
       radial-gradient(ellipse 60% 40% at 100% 100%, rgba(65, 105, 225, 0.1) 0%, transparent 50%),
-      linear-gradient(180deg, #0a0f1a 0%, #0d1530 40%, #0a0f1a 100%);
+      linear-gradient(180deg, var(--color-bg-primary) 0%, #0d1530 40%, var(--color-bg-primary) 100%);
   }
 
   &__particles {
@@ -71,7 +71,7 @@
       align-items: center;
       gap: 0.3rem;
       background: var(--color-glass);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--color-glass-border);
       color: #8899aa;
       padding: 0.5rem 0.75rem;
       border-radius: 8px;
@@ -79,7 +79,7 @@
       font-size: 0.85rem;
       min-height: 44px;
       transition: all 0.2s;
-      &:hover { background: rgba(255, 255, 255, 0.1); color: var(--color-text-primary); }
+      &:hover { background: var(--color-glass-border); color: var(--color-text-primary); }
     }
 
     .header-info {
@@ -176,7 +176,7 @@
         align-items: center;
         gap: 0.3rem;
         background: var(--color-glass);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid var(--color-glass-border);
         color: #8899aa;
         padding: 0.4rem 0.75rem;
         border-radius: 8px;
@@ -184,7 +184,7 @@
         font-size: 0.8rem;
         min-height: 44px;
         transition: all 0.2s;
-        &:hover { background: rgba(255, 255, 255, 0.1); color: var(--color-text-primary); }
+        &:hover { background: var(--color-glass-border); color: var(--color-text-primary); }
       }
     }
 

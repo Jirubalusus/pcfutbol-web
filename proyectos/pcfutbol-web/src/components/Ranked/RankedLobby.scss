@@ -1,6 +1,6 @@
 .ranked-lobby {
   min-height: 100dvh;
-  background: linear-gradient(180deg, #0a0f1a 0%, #0d1420 100%);
+  background: linear-gradient(180deg, var(--color-bg-primary) 0%, #0d1420 100%);
   padding: 1rem;
   padding-top: calc(env(safe-area-inset-top, 0px) + 1rem);
   padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 1rem);
@@ -41,7 +41,7 @@
 
   &__back {
     background: var(--color-glass-border);
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid var(--color-glass-border);
     border-radius: 10px;
     color: #e0e0e0;
     padding: 8px;
@@ -53,7 +53,7 @@
     cursor: pointer;
     transition: all 0.2s;
     -webkit-tap-highlight-color: transparent;
-    &:hover { background: rgba(255,255,255,0.1); }
+    &:hover { background: var(--color-glass-border); }
   }
 
   // ── Rank Card ──
@@ -112,7 +112,7 @@
       font-weight: 600;
       .wins { color: #10b981; }
       .losses { color: #ef4444; }
-      .sep { color: rgba(255,255,255,0.3); }
+      .sep { color: var(--color-text-tertiary); }
     }
   }
 
@@ -171,7 +171,7 @@
 
     .cancel-btn {
       background: transparent;
-      border: 1px solid rgba(255,255,255,0.15);
+      border: 1px solid var(--color-glass-border);
       color: var(--color-text-secondary);
       padding: 0.5rem 1.5rem;
       min-height: 44px;
@@ -204,11 +204,11 @@
 
     svg:first-child { color: #fbbf24; }
     span { flex: 1; text-align: left; }
-    svg:last-child { color: rgba(255,255,255,0.3); }
+    svg:last-child { color: var(--color-text-tertiary); }
 
     &:hover {
       background: var(--color-glass-border);
-      border-color: rgba(255,255,255,0.15);
+      border-color: var(--color-glass-border);
     }
   }
 
@@ -224,7 +224,7 @@
     }
 
     .empty {
-      color: rgba(255,255,255,0.3);
+      color: var(--color-text-tertiary);
       font-size: 0.85rem;
       text-align: center;
       padding: 1rem;
@@ -251,7 +251,7 @@
       &.draw { border-left-color: #fbbf24; .result { color: #fbbf24; } }
 
       .result { font-weight: 700; width: 1.2rem; }
-      .rival { flex: 1; color: rgba(255,255,255,0.7); }
+      .rival { flex: 1; color: var(--color-text-secondary); }
       .score { color: var(--color-text-secondary); font-variant-numeric: tabular-nums; }
       .dc-icon { color: #ef4444; }
     }

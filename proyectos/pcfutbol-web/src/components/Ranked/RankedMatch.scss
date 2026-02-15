@@ -1,6 +1,6 @@
 .ranked-match {
   min-height: 100dvh;
-  background: linear-gradient(135deg, #0a0f1a 0%, #111827 50%, #0d1117 100%);
+  background: linear-gradient(135deg, var(--color-bg-primary) 0%, #111827 50%, #0d1117 100%);
   color: #e5e7eb;
   padding: 0.75rem;
   padding-top: calc(env(safe-area-inset-top, 0px) + 0.75rem);
@@ -207,7 +207,7 @@
     padding: 0.5rem 0.25rem;
     min-height: 44px;
     background: var(--color-glass);
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid var(--color-glass-border);
     border-radius: 6px;
     color: #d1d5db;
     font-size: 0.8rem;
@@ -230,7 +230,7 @@
     padding: 0.5rem;
     min-height: 52px;
     background: var(--color-glass);
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid var(--color-glass-border);
     border-radius: 8px;
     color: #d1d5db;
     cursor: pointer;
@@ -585,7 +585,7 @@
       justify-content: space-between;
       padding-top: 0.5rem;
       margin-top: 0.25rem;
-      border-top: 2px solid rgba(255,255,255,0.1);
+      border-top: 2px solid var(--color-glass-border);
       font-weight: 800;
       .pts { color: #fbbf24; font-size: 1rem; }
     }
@@ -620,7 +620,7 @@
     padding: 0.85rem;
     min-height: 48px;
     background: var(--color-glass-border);
-    border: 1px solid rgba(255,255,255,0.15);
+    border: 1px solid var(--color-glass-border);
     border-radius: 10px;
     color: #e5e7eb;
     font-size: 0.9rem;
@@ -628,7 +628,7 @@
     cursor: pointer;
     margin-top: 1rem;
     -webkit-tap-highlight-color: transparent;
-    &:hover { background: rgba(255,255,255,0.12); }
+    &:hover { background: var(--color-glass-border); }
     &:active { transform: scale(0.98); }
   }
 }

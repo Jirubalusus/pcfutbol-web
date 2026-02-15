@@ -262,7 +262,7 @@
       transition: background 0.15s;
 
       &:hover {
-        background: rgba(255, 255, 255, 0.02);
+        background: var(--color-glass);
       }
 
       &.is-player {
@@ -364,7 +364,7 @@
     border: 1px solid var(--color-glass-border);
     border-radius: 6px;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--color-glass);
 
     &.player {
       border-color: rgba(255, 193, 7, 0.3);
@@ -410,7 +410,7 @@
       padding: 0.2rem 0.6rem;
       font-size: 0.65rem;
       color: #8899aa;
-      background: rgba(255, 255, 255, 0.02);
+      background: var(--color-glass);
       text-align: center;
     }
   }
@@ -465,7 +465,7 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem 0.75rem;
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--color-glass);
     border-radius: 6px;
     font-size: 0.8rem;
     color: #c0c8d0;

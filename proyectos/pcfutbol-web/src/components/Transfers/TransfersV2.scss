@@ -1297,7 +1297,7 @@ $border-color: $card-border;
     position: absolute;
     top: 1rem;
     right: 1rem;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--color-glass-border);
     border: none;
     border-radius: 8px;
     padding: 0.5rem;
@@ -1637,7 +1637,7 @@ $border-color: $card-border;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255,255,255,0.1);
+    background: var(--color-glass-border);
     border: none;
     border-radius: 8px;
     color: $text-muted;
@@ -1646,7 +1646,7 @@ $border-color: $card-border;
     transition: all 0.2s;
     
     &:hover {
-      background: rgba(255,255,255,0.15);
+      background: var(--color-glass-border);
       color: $text;
     }
   }
@@ -1960,7 +1960,7 @@ $border-color: $card-border;
     
     .negotiation-section {
       padding: 1rem;
-      background: linear-gradient(180deg, var(--color-glass) 0%, rgba(255,255,255,0.02) 100%);
+      background: linear-gradient(180deg, var(--color-glass) 0%, var(--color-glass) 100%);
       border-radius: 14px;
       border: 1px solid var(--color-glass-border);
       transition: all 0.3s ease;
@@ -2017,7 +2017,7 @@ $border-color: $card-border;
           align-items: center;
           gap: 0.35rem;
           font-size: 0.78rem;
-          color: rgba(255, 255, 255, 0.55);
+          color: var(--color-text-secondary);
           margin-bottom: 0.4rem;
           font-weight: 600;
           text-transform: uppercase;
@@ -2067,7 +2067,7 @@ $border-color: $card-border;
           display: flex;
           align-items: center;
           background: rgba(0, 0, 0, 0.25);
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          border: 1px solid var(--color-glass-border);
           border-radius: 10px;
           overflow: hidden;
           
@@ -2084,7 +2084,7 @@ $border-color: $card-border;
             justify-content: center;
             background: var(--color-glass);
             border: none;
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--color-text-secondary);
             font-size: 1.4rem;
             font-weight: 700;
             cursor: pointer;
@@ -2093,7 +2093,7 @@ $border-color: $card-border;
             -webkit-user-select: none;
             
             &:hover:not(:disabled) {
-              background: rgba(255,255,255,0.1);
+              background: var(--color-glass-border);
               color: var(--color-text-primary);
             }
             &:active:not(:disabled), &.active {
@@ -2156,7 +2156,7 @@ $border-color: $card-border;
           align-items: center;
           gap: 0.35rem;
           font-size: 0.78rem;
-          color: rgba(255, 255, 255, 0.55);
+          color: var(--color-text-secondary);
           margin-bottom: 0.4rem;
           font-weight: 600;
           text-transform: uppercase;
@@ -2178,9 +2178,9 @@ $border-color: $card-border;
             flex: 1;
             padding: 0.55rem 0.4rem;
             background: var(--color-glass);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--color-glass-border);
             border-radius: 8px;
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--color-text-secondary);
             font-size: 0.8rem;
             font-weight: 600;
             cursor: pointer;
@@ -2477,7 +2477,7 @@ $border-color: $card-border;
           }
           
           &.total {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid var(--color-glass-border);
             margin-top: 0.3rem;
             padding-top: 0.5rem;
             font-weight: 700;
@@ -2563,7 +2563,7 @@ $border-color: $card-border;
       }
       
       &:hover:not(.active) {
-        color: rgba(255,255,255,0.7);
+        color: var(--color-text-secondary);
       }
     }
   }
@@ -2759,7 +2759,7 @@ $border-color: $card-border;
           font-size: 0.75rem;
           font-weight: 700;
           flex-shrink: 0;
-          background: rgba(255,255,255,0.1);
+          background: var(--color-glass-border);
           
           &[data-pos="GK"] { background: rgba(241, 196, 15, 0.2); color: #f1c40f; }
           &[data-pos="CB"], &[data-pos="RB"], &[data-pos="LB"], &[data-pos="RWB"], &[data-pos="LWB"] { background: rgba(52, 152, 219, 0.2); color: #3498db; }
@@ -2975,7 +2975,7 @@ $border-color: $card-border;
       align-items: center;
       gap: 0.6rem;
       padding: 0.6rem 0.75rem;
-      background: rgba(255,255,255,0.02);
+      background: var(--color-glass);
       border-bottom: 1px solid $card-border;
     }
 
@@ -3131,13 +3131,13 @@ $border-color: $card-border;
     border-bottom: 1px solid var(--color-glass-border);
     overflow-x: auto;
     scrollbar-width: thin;
-    scrollbar-color: rgba(255,255,255,0.15) transparent;
+    scrollbar-color: var(--color-glass-border) transparent;
     &::-webkit-scrollbar { height: 4px; }
     &::-webkit-scrollbar-track { background: transparent; }
     &::-webkit-scrollbar-thumb {
-      background: rgba(255,255,255,0.15);
+      background: var(--color-glass-border);
       border-radius: 2px;
-      &:hover { background: rgba(255,255,255,0.25); }
+      &:hover { background: var(--color-glass-border); }
     }
 
     .team-tab {
@@ -3367,7 +3367,7 @@ $border-color: $card-border;
     .pos-chip {
       padding: 5px 10px;
       background: var(--color-glass-border);
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid var(--color-glass-border);
       border-radius: 6px;
       color: var(--color-text-secondary);
       font-size: 0.72rem;
@@ -3376,7 +3376,7 @@ $border-color: $card-border;
       transition: all 0.15s;
 
       &:hover {
-        background: rgba(255,255,255,0.1);
+        background: var(--color-glass-border);
         color: var(--color-text-primary);
       }
 
@@ -3430,7 +3430,7 @@ $border-color: $card-border;
         gap: 8px;
         font-size: 0.95rem;
         font-weight: 600;
-        color: rgba(255,255,255,0.8);
+        color: var(--color-text-secondary);
       }
     }
   }
@@ -3466,7 +3466,7 @@ $border-color: $card-border;
       font-weight: 700;
       flex-shrink: 0;
       background: var(--color-glass-border);
-      color: rgba(255,255,255,0.7);
+      color: var(--color-text-secondary);
 
       &[data-pos="GK"] { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
       &[data-pos="CB"], &[data-pos="LB"], &[data-pos="RB"], &[data-pos="LWB"], &[data-pos="RWB"] {

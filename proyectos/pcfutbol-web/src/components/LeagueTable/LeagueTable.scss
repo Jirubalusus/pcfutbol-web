@@ -12,7 +12,7 @@
     .group-tab {
       padding: 8px 16px;
       border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      border: 1px solid var(--color-glass-border);
       background: var(--color-glass);
       color: #ccc;
       cursor: pointer;
@@ -21,7 +21,7 @@
       transition: all 0.2s;
 
       &:hover {
-        background: rgba(255, 255, 255, 0.1);
+        background: var(--color-glass-border);
         color: var(--color-text-primary);
       }
 
@@ -105,7 +105,7 @@
   }
 
   &__table {
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--color-glass);
     border-radius: 16px;
     overflow: hidden;
     border: 1px solid var(--color-glass);
@@ -180,7 +180,7 @@
           border-radius: 6px;
           font-weight: 700;
           font-size: 0.85rem;
-          background: rgba(255, 255, 255, 0.1);
+          background: var(--color-glass-border);
           color: var(--color-text-primary);
 
           @media (max-width: 768px) {
@@ -397,7 +397,7 @@
       background: var(--color-glass);
       border-radius: 10px;
       padding: 3px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--color-glass-border);
     }
     
     .tournament-tab {

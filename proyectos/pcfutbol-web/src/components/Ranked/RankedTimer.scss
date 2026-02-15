@@ -90,7 +90,7 @@
     padding: 0.5rem 1rem;
     min-height: 44px;
     min-width: 44px;
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--color-glass-border);
     border: 2px solid var(--color-text-tertiary);
     border-radius: 8px;
     color: var(--color-text-primary);
@@ -101,7 +101,7 @@
     -webkit-tap-highlight-color: transparent;
 
     &:hover:not(:disabled) {
-      background: rgba(255, 255, 255, 0.3);
+      background: var(--color-text-tertiary);
     }
     &:active:not(:disabled) {
       transform: scale(0.96);

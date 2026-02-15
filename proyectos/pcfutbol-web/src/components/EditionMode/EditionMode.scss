@@ -1,7 +1,7 @@
 .edition-mode {
   min-height: 100vh;
   min-height: 100dvh;
-  background: linear-gradient(180deg, #0a1628 0%, #0d1f3c 100%);
+  background: linear-gradient(180deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%);
   color: #e0e8f0;
   padding: 1rem;
   padding-top: calc(env(safe-area-inset-top, 0px) + 1rem);
@@ -172,7 +172,7 @@
     textarea {
       width: 100%;
       background: var(--color-glass);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      border: 1px solid var(--color-glass-border);
       border-radius: 0.5rem;
       color: #e0e8f0;
       padding: 0.75rem;
@@ -225,7 +225,7 @@
 
   &__preview {
     background: var(--color-glass);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--color-glass-border);
     border-radius: 0.5rem;
     padding: 1rem;
     margin-top: 0.75rem;
@@ -337,7 +337,7 @@
 
   &__card {
     background: var(--color-glass);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--color-glass-border);
     border-radius: 0.75rem;
     padding: 1rem;
     display: flex;
@@ -404,9 +404,9 @@
     }
 
     &--cancel {
-      background: rgba(255, 255, 255, 0.1);
+      background: var(--color-glass-border);
       color: #aabbcc;
-      &:hover { background: rgba(255, 255, 255, 0.15); }
+      &:hover { background: var(--color-glass-border); }
       &:disabled { opacity: 0.5; }
     }
 
@@ -442,7 +442,7 @@
 
   &__dialog {
     background: #1a2a44;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid var(--color-glass-border);
     border-radius: 1rem;
     padding: 1.5rem;
     max-width: 400px;

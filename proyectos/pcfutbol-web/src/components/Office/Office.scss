@@ -39,7 +39,7 @@
     align-items: center;
     justify-content: center;
     padding: 0.5rem 1rem;
-    background: linear-gradient(135deg, #0a1628 0%, #1a3a5c 50%, #0a1628 100%);
+    background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-tertiary) 50%, var(--color-bg-primary) 100%);
     border-bottom: 1px solid rgba(100, 180, 255, 0.25);
     color: #8ec8ff;
     font-size: 0.8rem;
@@ -195,7 +195,7 @@
     &:hover:not(:disabled) {
       background: var(--color-glass-border);
       color: var(--color-text-primary);
-      border-color: rgba(255, 255, 255, 0.15);
+      border-color: var(--color-glass-border);
     }
   }
   
@@ -351,7 +351,7 @@
     align-items: center;
     gap: 0.7rem;
     padding: 0.85rem 1rem;
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--color-glass);
     border: 1px solid var(--color-glass-border);
     border-radius: 12px;
     transition: all 0.2s ease;
@@ -363,7 +363,7 @@
     
     &:hover {
       background: var(--color-glass);
-      border-color: rgba(255, 255, 255, 0.1);
+      border-color: var(--color-glass-border);
       transform: translateY(-2px);
     }
     
@@ -476,7 +476,7 @@
   // NEXT MATCH
   // ==================
   &__next-match {
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--color-glass);
     border: 1px solid var(--color-glass-border);
     border-radius: 12px;
     padding: 1rem;
@@ -543,7 +543,7 @@
   // FORM / RESULTS
   // ==================
   &__form {
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--color-glass);
     border: 1px solid var(--color-glass-border);
     border-radius: 12px;
     padding: 1rem;
@@ -599,7 +599,7 @@
   // OBJECTIVES
   // ==================
   &__objective-preview {
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--color-glass);
     border: 1px solid var(--color-glass-border);
     border-radius: 12px;
     padding: 1rem;
@@ -627,7 +627,7 @@
 
     .objective-item {
       padding: 1rem 1.25rem;
-      background: rgba(255, 255, 255, 0.02);
+      background: var(--color-glass);
       border-radius: 12px;
       border-left: 4px solid var(--color-text-tertiary);
       margin-bottom: 0.75rem;
@@ -721,7 +721,7 @@
   // MESSAGES
   // ==================
   &__recent-messages {
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--color-glass);
     border: 1px solid var(--color-glass-border);
     border-radius: 12px;
     padding: 1rem;
@@ -729,7 +729,7 @@
     transition: all 0.2s ease;
     
     &:hover {
-      border-color: rgba(255, 255, 255, 0.1);
+      border-color: var(--color-glass-border);
       background: var(--color-glass);
     }
     
@@ -926,7 +926,7 @@
 
 .sim-modal {
   background: linear-gradient(135deg, #1a1f2e 0%, #111827 100%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--color-glass-border);
   border-radius: 16px;
   padding: 2rem 2.5rem;
   text-align: center;

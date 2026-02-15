@@ -56,7 +56,7 @@ $row-noconv-2: #4a4a4a;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(180deg, #2a4a6a 0%, #1a3a5a 100%);
+  background: linear-gradient(180deg, var(--color-glass-border) 0%, var(--color-bg-tertiary) 100%);
   border: 2px solid #4a6a8a;
   border-radius: 4px;
   padding: 0.5rem 1rem;
@@ -151,7 +151,7 @@ $row-noconv-2: #4a4a4a;
     
     select {
       padding: 0.4rem 0.6rem;
-      background: linear-gradient(180deg, #3a5a7a 0%, #2a4a6a 100%);
+      background: linear-gradient(180deg, var(--color-glass-border) 0%, var(--color-glass-border) 100%);
       border: 2px solid #5a7a9a;
       border-radius: 3px;
       color: $pcf-white;
@@ -205,7 +205,7 @@ $row-noconv-2: #4a4a4a;
 // ============================================================
 .pcf-table-container {
   background: linear-gradient(180deg, #1a2a3a 0%, #0a1a2a 100%);
-  border: 2px solid #3a5a7a;
+  border: 2px solid var(--color-glass-border);
   border-radius: 4px;
   overflow: hidden;
 }
@@ -237,7 +237,7 @@ $row-noconv-2: #4a4a4a;
 .pcf-tabs {
   display: flex;
   background: #0a1a2a;
-  border-bottom: 2px solid #3a5a7a;
+  border-bottom: 2px solid var(--color-glass-border);
   
   .tab {
     flex: 1;
@@ -252,11 +252,11 @@ $row-noconv-2: #4a4a4a;
     text-transform: uppercase;
     
     &:not(:last-child) {
-      border-right: 1px solid #3a5a7a;
+      border-right: 1px solid var(--color-glass-border);
     }
     
     &.active {
-      background: linear-gradient(180deg, #2a4a6a 0%, #1a3a5a 100%);
+      background: linear-gradient(180deg, var(--color-glass-border) 0%, var(--color-bg-tertiary) 100%);
       color: $pcf-gold;
     }
     
@@ -301,7 +301,7 @@ $row-noconv-2: #4a4a4a;
       max-height: 200px;
       overflow-y: auto;
       scrollbar-width: thin;
-      scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+      scrollbar-color: var(--color-glass-border) transparent;
       
       &::-webkit-scrollbar {
         width: 4px;
@@ -310,7 +310,7 @@ $row-noconv-2: #4a4a4a;
         background: transparent;
       }
       &::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.15);
+        background: var(--color-glass-border);
         border-radius: 4px;
       }
     }
@@ -351,7 +351,7 @@ $row-noconv-2: #4a4a4a;
     
     &.selected {
       background: linear-gradient(90deg, #d4a017, #e6b422) !important;
-      box-shadow: inset 0 0 10px rgba(255,255,255,0.3), 0 0 8px rgba(212, 160, 23, 0.5);
+      box-shadow: inset 0 0 10px var(--color-text-tertiary), 0 0 8px rgba(212, 160, 23, 0.5);
       
       .col-name, .col-num, .col-attr, .col-pos {
         color: #000 !important;
@@ -693,7 +693,7 @@ $row-noconv-2: #4a4a4a;
 // PARÁMETROS
 // ============================================================
 .pcf-params {
-  background: linear-gradient(180deg, #2a4a6a 0%, #1a3a5a 100%);
+  background: linear-gradient(180deg, var(--color-glass-border) 0%, var(--color-bg-tertiary) 100%);
   border: 2px solid #4a6a8a;
   border-radius: 4px;
   overflow: hidden;
@@ -704,7 +704,7 @@ $row-noconv-2: #4a4a4a;
   
   .params-header {
     padding: 0.4rem;
-    background: linear-gradient(180deg, #3a5a7a 0%, #2a4a6a 100%);
+    background: linear-gradient(180deg, var(--color-glass-border) 0%, var(--color-glass-border) 100%);
     color: $pcf-gold;
     font-size: 0.75rem;
     font-weight: 700;
@@ -910,7 +910,7 @@ $row-noconv-2: #4a4a4a;
 }
 
 .pcf-modal {
-  background: linear-gradient(180deg, #2a4a6a 0%, #1a3a5a 100%);
+  background: linear-gradient(180deg, var(--color-glass-border) 0%, var(--color-bg-tertiary) 100%);
   border: 3px solid #5a7a9a;
   border-radius: 6px;
   width: 100%;
@@ -930,7 +930,7 @@ $row-noconv-2: #4a4a4a;
     justify-content: space-between;
     align-items: center;
     padding: 0.75rem 1rem;
-    background: linear-gradient(180deg, #3a5a7a 0%, #2a4a6a 100%);
+    background: linear-gradient(180deg, var(--color-glass-border) 0%, var(--color-glass-border) 100%);
     border-bottom: 2px solid #5a7a9a;
     
     h3 {
@@ -945,10 +945,10 @@ $row-noconv-2: #4a4a4a;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: var(--color-glass-border);
+      border: 1px solid var(--color-glass-border);
       border-radius: 6px;
-      color: rgba(255, 255, 255, 0.7);
+      color: var(--color-text-secondary);
       font-size: 1rem;
       cursor: pointer;
       transition: all 0.15s ease;
@@ -974,7 +974,7 @@ $row-noconv-2: #4a4a4a;
     }
     
     &::-webkit-scrollbar-thumb {
-      background: #3a5a7a;
+      background: var(--color-glass-border);
       border-radius: 4px;
     }
   }
@@ -986,10 +986,10 @@ $row-noconv-2: #4a4a4a;
     padding: 0.75rem 1rem;
     cursor: pointer;
     transition: background 0.15s;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid var(--color-glass-border);
     
     &:hover {
-      background: rgba(255,255,255,0.1);
+      background: var(--color-glass-border);
     }
     
     &.compatible {
@@ -1110,7 +1110,7 @@ $row-noconv-2: #4a4a4a;
     display: flex;
     gap: 0.5rem;
     padding: 1rem;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid var(--color-glass-border);
     
     button {
       flex: 1;
@@ -1175,7 +1175,7 @@ $row-noconv-2: #4a4a4a;
     transition: all 0.2s;
     
     &:hover {
-      background: rgba(255,255,255,0.1);
+      background: var(--color-glass-border);
     }
     
     &.active {
@@ -1217,7 +1217,7 @@ $row-noconv-2: #4a4a4a;
     transition: all 0.2s;
     
     &:hover {
-      background: rgba(255,255,255,0.1);
+      background: var(--color-glass-border);
     }
     
     &.active {
@@ -1507,7 +1507,7 @@ $row-noconv-2: #4a4a4a;
     transition: all 0.2s;
     
     &:hover {
-      background: rgba(255,255,255,0.1);
+      background: var(--color-glass-border);
     }
     
     &.active {
@@ -1554,7 +1554,7 @@ $row-noconv-2: #4a4a4a;
 // Tabs formación/táctica
 .tactic-tabs {
   display: flex;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid var(--color-glass-border);
   padding: 0 16px;
   gap: 4px;
 
@@ -1617,7 +1617,7 @@ $row-noconv-2: #4a4a4a;
 
     &:hover {
       background: var(--color-glass-border);
-      border-color: rgba(255,255,255,0.15);
+      border-color: var(--color-glass-border);
     }
 
     &.active {
@@ -1689,7 +1689,7 @@ $row-noconv-2: #4a4a4a;
 .formation-selector {
   margin-bottom: 20px;
   padding-bottom: 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--color-glass-border);
 }
 
 // Toast de confirmaci�n
@@ -1790,7 +1790,7 @@ $row-noconv-2: #4a4a4a;
 .intensity-card {
   padding: 16px;
   background: var(--color-glass);
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  border: 2px solid var(--color-glass-border);
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.2s;
@@ -1873,7 +1873,7 @@ $row-noconv-2: #4a4a4a;
   max-width: 720px;
   background: linear-gradient(145deg, #1a1a2e 0%, #16213e 100%);
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--color-glass-border);
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
   overflow: hidden;
   
@@ -1893,7 +1893,7 @@ $row-noconv-2: #4a4a4a;
   align-items: center;
   padding: 20px 24px;
   background: rgba(0, 0, 0, 0.2);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--color-glass-border);
   
   @media (max-width: 768px) {
     padding: 16px;
@@ -1917,7 +1917,7 @@ $row-noconv-2: #4a4a4a;
   }
   
   .close-btn {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--color-glass-border);
     border: none;
     border-radius: 8px;
     padding: 8px;
@@ -2062,7 +2062,7 @@ $row-noconv-2: #4a4a4a;
   
   &:hover {
     transform: translateY(-4px);
-    border-color: rgba(255, 255, 255, 0.15);
+    border-color: var(--color-glass-border);
     
     .card-glow {
       opacity: 0.6;
@@ -2071,7 +2071,7 @@ $row-noconv-2: #4a4a4a;
   }
   
   &.active {
-    border-color: rgba(255, 255, 255, 0.3);
+    border-color: var(--color-text-tertiary);
     background: var(--color-glass-border);
     
     .card-glow {
@@ -2152,7 +2152,7 @@ $row-noconv-2: #4a4a4a;
   gap: 12px;
   padding: 16px 24px;
   background: rgba(0, 0, 0, 0.2);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--color-glass-border);
   
   @media (max-width: 768px) {
     padding: 12px 16px;
@@ -2176,11 +2176,11 @@ $row-noconv-2: #4a4a4a;
   }
   
   .btn-secondary {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--color-glass-border);
     color: var(--color-text-primary);
     
     &:hover {
-      background: rgba(255, 255, 255, 0.15);
+      background: var(--color-glass-border);
     }
   }
   

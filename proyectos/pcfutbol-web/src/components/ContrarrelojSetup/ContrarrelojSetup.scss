@@ -19,7 +19,7 @@
     background:
       radial-gradient(ellipse 80% 50% at 50% -20%, rgba(255, 215, 0, 0.12) 0%, transparent 50%),
       radial-gradient(ellipse 60% 40% at 100% 100%, rgba(245, 166, 35, 0.08) 0%, transparent 50%),
-      linear-gradient(180deg, #0a0f1a 0%, #1a1000 40%, #0d1420 100%);
+      linear-gradient(180deg, var(--color-bg-primary) 0%, #1a1000 40%, #0d1420 100%);
   }
 
   &__particles {
@@ -70,7 +70,7 @@
       align-items: center;
       gap: 0.3rem;
       background: var(--color-glass);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--color-glass-border);
       color: #8899aa;
       padding: 0.5rem 0.75rem;
       border-radius: 8px;
@@ -80,7 +80,7 @@
       transition: all 0.2s;
       flex-shrink: 0;
 
-      &:hover { background: rgba(255, 255, 255, 0.1); color: var(--color-text-primary); }
+      &:hover { background: var(--color-glass-border); color: var(--color-text-primary); }
     }
 
     .header-title {
@@ -328,7 +328,7 @@
         height: 32px;
         align-items: center;
         justify-content: center;
-        background: rgba(255, 255, 255, 0.1);
+        background: var(--color-glass-border);
         border: none;
         border-radius: 8px;
         color: #aaa;

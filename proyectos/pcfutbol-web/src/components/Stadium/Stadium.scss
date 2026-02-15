@@ -44,7 +44,7 @@
     gap: 0.75rem;
     margin-bottom: 1rem;
     padding: 0.85rem;
-    background: linear-gradient(135deg, #1a3a5c, #0d1f35);
+    background: linear-gradient(135deg, var(--color-bg-tertiary), var(--color-bg-secondary));
     border-radius: 12px;
     flex-wrap: wrap;
 
@@ -309,7 +309,7 @@
     .campaign-stat-divider {
       width: 1px;
       height: 36px;
-      background: rgba(255, 255, 255, 0.1);
+      background: var(--color-glass-border);
     }
 
     .campaign-closed-bar {
@@ -933,7 +933,7 @@
         .attraction-badge {
           margin-left: auto;
           padding: 0.25rem 0.75rem;
-          background: rgba(255, 255, 255, 0.1);
+          background: var(--color-glass-border);
           border-radius: 20px;
           font-size: 0.85rem;
 

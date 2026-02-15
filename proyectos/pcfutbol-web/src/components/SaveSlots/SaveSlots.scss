@@ -1,6 +1,6 @@
 .save-slots {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0a1628 0%, #1a2f4e 50%, #0d1f35 100%);
+  background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-tertiary) 50%, var(--color-bg-secondary) 100%);
   padding: 20px;
   display: flex;
   align-items: center;
@@ -27,7 +27,7 @@
 
     &:hover {
       color: var(--color-text-primary);
-      background: rgba(255, 255, 255, 0.1);
+      background: var(--color-glass-border);
     }
   }
 
@@ -62,7 +62,7 @@
 
   &__loading {
     text-align: center;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--color-text-secondary);
     padding: 60px 20px;
   }
 
@@ -162,7 +162,7 @@
   &__team-badge {
     width: 48px;
     height: 48px;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--color-glass-border);
     border-radius: 8px;
     display: flex;
     align-items: center;
@@ -227,7 +227,7 @@
     width: 100%;
 
     p {
-      color: rgba(255, 255, 255, 0.8);
+      color: var(--color-text-secondary);
       font-size: 14px;
       margin: 0;
       flex: 1;
@@ -293,12 +293,12 @@
     }
 
     &--cancel {
-      background: rgba(255, 255, 255, 0.1);
-      color: rgba(255, 255, 255, 0.8);
+      background: var(--color-glass-border);
+      color: var(--color-text-secondary);
       flex: 0;
 
       &:hover {
-        background: rgba(255, 255, 255, 0.15);
+        background: var(--color-glass-border);
       }
     }
 

@@ -48,14 +48,14 @@
   .intensity-card {
     padding: 24px;
     background: var(--color-glass);
-    border: 2px solid rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--color-glass-border);
     border-radius: 16px;
     cursor: pointer;
     transition: all 0.2s;
 
     &:hover:not(.disabled) {
       background: var(--color-glass-border);
-      border-color: rgba(255, 255, 255, 0.2);
+      border-color: var(--color-glass-border);
       transform: translateY(-2px);
     }
 
@@ -154,7 +154,7 @@
       padding: 16px;
       background: var(--color-glass);
       border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--color-glass-border);
 
       .icon {
         font-size: 1.5rem;

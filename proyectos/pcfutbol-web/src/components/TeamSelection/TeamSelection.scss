@@ -418,7 +418,7 @@ $pcf-text: #bdc3c7;
     align-items: center;
     gap: 1rem;
     padding: 1rem 1.25rem;
-    background: linear-gradient(180deg, #2a4a6a 0%, #1a3a5a 100%);
+    background: linear-gradient(180deg, var(--color-glass-border) 0%, var(--color-bg-tertiary) 100%);
     border: 2px solid #4a6a8a;
     border-radius: 6px;
     cursor: pointer;
@@ -427,7 +427,7 @@ $pcf-text: #bdc3c7;
     flex-shrink: 0;
     
     &:hover {
-      background: linear-gradient(180deg, #3a5a7a 0%, #2a4a6a 100%);
+      background: linear-gradient(180deg, var(--color-glass-border) 0%, var(--color-glass-border) 100%);
       border-color: $pcf-gold;
       transform: translateX(5px);
     }
@@ -505,7 +505,7 @@ $pcf-text: #bdc3c7;
     align-items: center;
     gap: 1rem;
     padding: 1rem 1.25rem;
-    background: linear-gradient(180deg, #2a4a6a 0%, #1a3a5a 100%);
+    background: linear-gradient(180deg, var(--color-glass-border) 0%, var(--color-bg-tertiary) 100%);
     border: 2px solid #4a6a8a;
     border-radius: 6px;
     cursor: pointer;
@@ -514,7 +514,7 @@ $pcf-text: #bdc3c7;
     flex-shrink: 0;
     
     &:hover:not(.disabled) {
-      background: linear-gradient(180deg, #3a5a7a 0%, #2a4a6a 100%);
+      background: linear-gradient(180deg, var(--color-glass-border) 0%, var(--color-glass-border) 100%);
       border-color: $pcf-gold;
       transform: translateX(5px);
     }
@@ -818,7 +818,7 @@ $pcf-text: #bdc3c7;
       justify-content: center;
       font-weight: 700;
       font-size: 0.7rem;
-      border: 2px solid rgba(255,255,255,0.3);
+      border: 2px solid var(--color-text-tertiary);
       box-shadow: 0 2px 4px rgba(0,0,0,0.3);
 
       @media (max-width: 768px) {
@@ -1178,7 +1178,7 @@ $pcf-text: #bdc3c7;
   padding: 32px;
   max-width: 1100px;
   width: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--color-glass-border);
   max-height: 90vh;
   overflow-y: auto;
 
@@ -1223,14 +1223,14 @@ $pcf-text: #bdc3c7;
 .preseason-card {
   padding: 20px;
   background: var(--color-glass);
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  border: 2px solid var(--color-glass-border);
   border-radius: 16px;
   cursor: pointer;
   transition: all 0.2s;
   
   &:hover {
     background: var(--color-glass-border);
-    border-color: rgba(255, 255, 255, 0.2);
+    border-color: var(--color-glass-border);
   }
   
   &.selected {
@@ -1317,15 +1317,15 @@ $pcf-text: #bdc3c7;
   
   .btn-back {
     padding: 14px 24px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: var(--color-glass-border);
+    border: 1px solid var(--color-glass-border);
     border-radius: 12px;
     color: var(--color-text-primary);
     font-size: 0.95rem;
     cursor: pointer;
     transition: all 0.2s;
     
-    &:hover { background: rgba(255, 255, 255, 0.15); }
+    &:hover { background: var(--color-glass-border); }
   }
   
   .btn-confirm {
@@ -1356,7 +1356,7 @@ $pcf-text: #bdc3c7;
   @media (max-width: 768px) {
     position: sticky;
     bottom: 0;
-    background: linear-gradient(to top, #0a1628 70%, transparent);
+    background: linear-gradient(to top, var(--color-bg-primary) 70%, transparent);
     padding: 16px 0 8px;
     margin: 0 -16px;
     padding-left: 16px;
