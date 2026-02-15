@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
-import { Check, Tag, ClipboardList, Bell, AlertCircle, Clock, Coins, Calendar, Cake, Flag, PenTool, UserMinus, CircleDollarSign, XCircle, X } from 'lucide-react';
+import { Check, Tag, ClipboardList, Bell, AlertCircle, Clock, Coins, Calendar, Cake, Flag, PenTool, UserMinus, CircleDollarSign, XCircle, X, Star } from 'lucide-react';
 import { FORM_STATES } from '../../game/formSystem';
 import { translatePosition, posToEN } from '../../game/positionNames';
 import { calculateMarketValue } from '../../game/globalTransferEngine';
@@ -426,7 +426,7 @@ export default function Plantilla() {
           <Calendar size={12} /> {t('common.contract')}
         </button>
         <button className={sortBy === 'ovr' ? 'active' : ''} onClick={() => setSortBy('ovr')}>
-          ⭐ OVR
+          <Star size={12} /> OVR
         </button>
         <button className={sortBy === 'age' ? 'active' : ''} onClick={() => setSortBy('age')}>
           <Cake size={12} /> {t('common.age')}

@@ -214,8 +214,8 @@ $white: #e8eaed;
   // ============================================================
   &__table-header {
     display: grid;
-    grid-template-columns: 32px 1fr 36px 80px 65px;
-    gap: 4px;
+    grid-template-columns: 40px 1fr 36px 72px 60px;
+    gap: 6px;
     padding: 0.4rem 0.5rem;
     background: darken($bg-card, 3%);
     border: 1px solid $border;
@@ -249,8 +249,8 @@ $white: #e8eaed;
 
     .player-row {
       display: grid;
-      grid-template-columns: 32px 1fr 36px 80px 65px;
-      gap: 4px;
+      grid-template-columns: 40px 1fr 36px 72px 60px;
+      gap: 6px;
       align-items: center;
       padding: 0.4rem 0.5rem;
       cursor: pointer;
