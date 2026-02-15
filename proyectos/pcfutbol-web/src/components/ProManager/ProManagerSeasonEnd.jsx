@@ -270,9 +270,6 @@ export default function ProManagerSeasonEnd() {
     const stadiumInfo = getStadiumInfo(team.id, team.reputation);
     const stadiumLevel = getStadiumLevel(stadiumInfo.capacity);
 
-    // Build all teams for preseason + transfers
-    const allTeamsFlat = [];
-
     // Generate preseason (auto-pick first)
     const preseasonOpts = generatePreseasonOptions(
       Object.entries(ALL_LEAGUE_GETTERS).reduce((acc, [, g]) => { try { acc.push(...g()); } catch {} return acc; }, []),
