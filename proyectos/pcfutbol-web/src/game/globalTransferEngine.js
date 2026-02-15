@@ -717,8 +717,14 @@ export function getWinterWindowRange(totalWeeks = 38) {
 }
 
 export function isTransferWindowOpen(week, options = {}) {
-  // Mercado SIEMPRE abierto — estilo PC Fútbol clásico
-  return { open: true, type: 'always' };
+  // Summer window: weeks 1-8, Winter window: weeks 20-24 (synced with Transfers.jsx)
+  if (week >= 1 && week <= 8) {
+    return { open: true, type: 'summer', isUrgent: week >= 7 };
+  }
+  if (week >= 20 && week <= 24) {
+    return { open: true, type: 'winter', isUrgent: week >= 23 };
+  }
+  return { open: false, type: 'closed' };
 }
 
 /**

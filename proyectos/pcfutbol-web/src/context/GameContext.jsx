@@ -2808,7 +2808,6 @@ function gameReducer(state, action) {
     case 'SELL_PLAYER': {
       // Minimum squad size check
       if ((state.team?.players?.length || 0) <= 14) return state;
-      // Add player to a random AI team in the same league
       const soldPlayerData = state.team?.players?.find(p => p.name === action.payload.playerName);
       const buyerTeamId = action.payload.buyerTeamId;
       const updatedLeagueTeamsSell = buyerTeamId && soldPlayerData ? (state.leagueTeams || []).map(t =>
@@ -2816,12 +2815,23 @@ function gameReducer(state, action) {
           ? { ...t, players: [...(t.players || []), { ...soldPlayerData, transferListed: false, contractYears: 4 }] }
           : t
       ) : state.leagueTeams;
+      // Clean lineup (filter out sold player)
+      const sellCleanedLineup = {};
+      if (state.lineup) {
+        Object.entries(state.lineup).forEach(([slot, p]) => {
+          if (p && p.name !== action.payload.playerName) {
+            sellCleanedLineup[slot] = p;
+          }
+        });
+      }
+      const sellUpdatedPlayers = state.team.players.filter(p => p.name !== action.payload.playerName);
       return {
         ...state,
         team: {
           ...state.team,
-          players: state.team.players.filter(p => p.name !== action.payload.playerName)
+          players: sellUpdatedPlayers
         },
+        lineup: ensureFullLineup(sellCleanedLineup, sellUpdatedPlayers, state.formation),
         leagueTeams: updatedLeagueTeamsSell,
         money: state.money + action.payload.fee,
         transfersEarned: (state.transfersEarned || 0) + action.payload.fee

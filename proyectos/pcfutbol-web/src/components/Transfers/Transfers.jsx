@@ -317,6 +317,7 @@ export default function Transfers() {
   const playerTier = getLeagueTier(state.leagueId);
   
   useEffect(() => {
+    if (state._batchMode) return;
     if (state.team?.players && state.currentWeek > 1 && transferWindow.isOpen) {
       const existingOfferCount = state.transferOffers?.length || 0;
       const stats = state.playerSeasonStats || {};
@@ -602,6 +603,60 @@ export default function Transfers() {
     
     const { player, offerAmount, offerSalary, promisedRole, contractYears, rounds, evaluation, aiCompetitors } = negotiation;
     
+    // Budget guard
+    if (state.money < offerAmount) {
+      dispatch({
+        type: 'ADD_MESSAGE',
+        payload: {
+          id: Date.now(),
+          type: 'transfer',
+          title: 'Fondos insuficientes',
+          content: `No tienes suficiente presupuesto para fichar a ${player.name} (necesitas ${formatMoney(offerAmount)}, tienes ${formatMoney(state.money)})`,
+          date: `Semana ${state.currentWeek}`
+        }
+      });
+      setNegotiation(null);
+      return;
+    }
+    
+    // Counter-offer accepted = done deal
+    if (negotiation.stage === 'final') {
+      dispatch({
+        type: 'SIGN_PLAYER',
+        payload: {
+          player: {
+            name: player.name,
+            position: player.position,
+            overall: player.overall,
+            age: player.age,
+            value: player.value,
+            salary: offerSalary,
+            personality: {
+              ...player.personality,
+              contractYears,
+              happiness: promisedRole === 'star' ? 85 : promisedRole === 'starter' ? 75 : 65,
+              minutesPlayed: PLAYER_ROLES[promisedRole]?.minutesPromise || 50,
+              loyaltyYears: 0
+            }
+          },
+          fee: offerAmount,
+          fromTeamId: player.teamId
+        }
+      });
+      dispatch({
+        type: 'ADD_MESSAGE',
+        payload: {
+          id: Date.now(),
+          type: 'transfer',
+          title: `¡Fichaje cerrado!`,
+          content: `${player.name} firma por ${formatMoney(offerAmount)} + ${formatMoney(offerSalary)}/sem (${contractYears} años)`,
+          date: `Semana ${state.currentWeek}`
+        }
+      });
+      setNegotiation(null);
+      return;
+    }
+    
     // Pagar cláusula = aceptación automática
     const paidClause = offerAmount >= player.releaseClause;
     
@@ -717,7 +772,7 @@ export default function Transfers() {
       
       setNegotiation(null);
     }
-  }, [negotiation, state.currentWeek, dispatch]);
+  }, [negotiation, state.currentWeek, state.money, dispatch]);
   
   const acceptCounter = useCallback(() => {
     if (!negotiation?.counterAmount) return;
