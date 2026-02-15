@@ -100,7 +100,7 @@ async function ensureUserDoc(user) {
   if (!userDoc.exists()) {
     await setDoc(doc(db, 'users', user.uid), {
       email: user.email,
-      displayName: user.displayName || user.email.split('@')[0],
+      displayName: user.displayName || user.email?.split('@')[0] || 'User',
       createdAt: serverTimestamp(),
       emailVerified: true
     });

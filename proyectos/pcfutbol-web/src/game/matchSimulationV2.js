@@ -169,7 +169,7 @@ export function calculateMatchStrength(team, formation, tactic, context = {}) {
  * Calcular profundidad de plantilla
  */
 function calculateSquadDepth(team) {
-  if (!team.players || team.players.length < 15) return 0.5;
+  if (!team.players || team.players.length <= 11) return 0.5;
   
   const starters = team.players.slice(0, 11).reduce((sum, p) => sum + (p.overall || 70), 0) / 11;
   const bench = team.players.slice(11, 18).reduce((sum, p) => sum + (p.overall || 65), 0) / Math.min(7, team.players.length - 11);
@@ -508,6 +508,7 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
   let awayGoalsLeft = awayScore;
   
   goalMinutes.forEach(minute => {
+    if (homeGoalsLeft + awayGoalsLeft <= 0) return; // Safety: no goals left to allocate
     // Decidir quién marca
     const homeChance = homeGoalsLeft / (homeGoalsLeft + awayGoalsLeft);
     const isHomeGoal = Math.random() < homeChance;

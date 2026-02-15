@@ -128,6 +128,10 @@ export default function EditionMode({ onBack, onEditionApplied }) {
 
   const handleSubmitPack = async () => {
     if (!previewPack || submitting) return;
+    if (!user?.uid) {
+      setImportError(t('edition.loginRequired') || 'Debes iniciar sesión');
+      return;
+    }
     setImportError('');
     setSubmitting(true);
     
