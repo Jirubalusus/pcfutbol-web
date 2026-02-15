@@ -262,7 +262,7 @@ export default function RankedMatch() {
     const handleBeforeUnload = (e) => {
       // Warn user about leaving during ranked match
       e.preventDefault();
-      e.returnValue = '⚠️ Tienes una partida ranked en curso. Si sales, perderás por desconexión.';
+      e.returnValue = t('ranked.exitWarning');
       return e.returnValue;
     };
     

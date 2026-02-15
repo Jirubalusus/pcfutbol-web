@@ -2253,9 +2253,10 @@ function gameReducer(state, action) {
 
           // Comprobar si hay ganador
           if (updatedCupCompetition.winner) {
-            const winnerName = updatedCupCompetition.rounds[updatedCupCompetition.rounds.length - 1]
-              ?.matches[0]?.winnerId === state.teamId
-              ? state.team?.name : 'otro equipo';
+            const finalMatch = updatedCupCompetition.rounds[updatedCupCompetition.rounds.length - 1]?.matches[0];
+            const winnerName = finalMatch?.winnerId === state.teamId
+              ? state.team?.name
+              : (finalMatch?.homeTeam?.name || finalMatch?.awayTeam?.name || '???');
             cupMessages.push({
               id: Date.now() + Math.random(),
               type: 'cup',

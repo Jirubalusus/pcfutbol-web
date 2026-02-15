@@ -102,7 +102,7 @@ function ensureBudgetAndReputation(team, leagueId) {
     ? team.players.reduce((s, p) => s + (p.overall || 0), 0) / team.players.length : 70;
   const totalValue = (team.players || []).reduce((sum, p) => sum + (p.value || 0), 0);
 
-  if (!team.reputation || team.reputation > 5) {
+  if (!team.reputation || team.reputation < 1 || team.reputation > 5) {
     if (avgOverall >= 82) team.reputation = 5;
     else if (avgOverall >= 78) team.reputation = 4;
     else if (avgOverall >= 73) team.reputation = 3;

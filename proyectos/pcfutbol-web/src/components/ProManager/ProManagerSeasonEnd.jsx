@@ -114,7 +114,7 @@ export default function ProManagerSeasonEnd() {
   const { t } = useTranslation();
   const { state, dispatch } = useGame();
   const { user } = useAuth();
-  const pm = state.proManagerData;
+  const pm = state.proManagerData || {};
   const [step, setStep] = useState('summary'); // 'summary' | 'offers'
   const [selectedOffer, setSelectedOffer] = useState(null);
   const [animatedPrestige, setAnimatedPrestige] = useState(pm?.prestige || 10);

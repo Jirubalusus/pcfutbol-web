@@ -765,12 +765,12 @@ export default function TeamSelection() {
   };
 
   const getDifficulty = (team) => {
-    if (!team?.budget) return { label: 'Normal', color: '#ffd60a', stars: 3 };
-    if (team.budget >= 150000000) return { label: 'Fácil', color: '#30d158', stars: 1 };
-    if (team.budget >= 80000000) return { label: 'Normal', color: '#ffd60a', stars: 2 };
-    if (team.budget >= 40000000) return { label: 'Medio', color: '#ff9f0a', stars: 3 };
-    if (team.budget >= 15000000) return { label: 'Difícil', color: '#ff6b35', stars: 4 };
-    return { label: 'Muy difícil', color: '#ff453a', stars: 5 };
+    if (!team?.budget) return { label: t('teamSelection.diffNormal'), color: '#ffd60a', stars: 3 };
+    if (team.budget >= 150000000) return { label: t('teamSelection.diffEasy'), color: '#30d158', stars: 1 };
+    if (team.budget >= 80000000) return { label: t('teamSelection.diffNormal'), color: '#ffd60a', stars: 2 };
+    if (team.budget >= 40000000) return { label: t('teamSelection.diffMedium'), color: '#ff9f0a', stars: 3 };
+    if (team.budget >= 15000000) return { label: t('teamSelection.diffHard'), color: '#ff6b35', stars: 4 };
+    return { label: t('teamSelection.diffVeryHard'), color: '#ff453a', stars: 5 };
   };
 
   const getAvgOverall = (team) => {
@@ -928,7 +928,7 @@ export default function TeamSelection() {
                       <span className="meta">
                         {leagueTeams.length > 0 
                           ? hasGroupsForLeague 
-                            ? `${numGroups} grupos • ${leagueTeams.length} equipos`
+                            ? t('teamSelection.groupsAndTeams', { groups: numGroups, teams: leagueTeams.length })
                             : t('teamSelection.teamsAvailable', { count: leagueTeams.length })
                           : t('teamSelection.comingSoon')
                         }
