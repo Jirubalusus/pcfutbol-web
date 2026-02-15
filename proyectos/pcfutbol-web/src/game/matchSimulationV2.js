@@ -203,7 +203,9 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
     attendanceFillRate = 0.7,  // Ocupación del estadio (afecta factor cancha)
     grassCondition = 100,      // Estado del césped
     playerTeamForm = {},
-    playerTeamId = null
+    playerTeamId = null,
+    medicalPrevention = 0,
+    playerIsHome = null
   } = context;
   
   // Determine which team gets the form data
@@ -271,7 +273,8 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
     awayTeamData,
     homeStrength,
     awayStrength,
-    referee
+    referee,
+    { grassCondition, medicalPrevention, playerIsHome }
   );
   
   // Stats del partido (tácticas afectan posesión, tiros, etc.)
@@ -497,7 +500,7 @@ function weightedRandom(options) {
 /**
  * Generar eventos del partido
  */
-function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStrength, awayStrength, referee) {
+function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStrength, awayStrength, referee, context = {}) {
   const events = [];
   const totalGoals = homeScore + awayScore;
   
@@ -566,6 +569,45 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
     }
   });
   
+  // Generate injuries (~12% chance per team per match, ~4-5 injuries per team per season)
+  const { grassCondition = 100, medicalPrevention = 0, playerIsHome = null } = context;
+  const baseInjuryChance = 0.12;
+  const grassPenalty = grassCondition < 100 ? (100 - grassCondition) / 300 : 0;
+
+  [homeTeam, awayTeam].forEach((team, idx) => {
+    const teamLabel = idx === 0 ? 'home' : 'away';
+    const isPlayerTeam = (teamLabel === 'home' && playerIsHome === true) || (teamLabel === 'away' && playerIsHome === false);
+    const prevention = isPlayerTeam ? medicalPrevention : 0;
+    const injuryChance = baseInjuryChance * (1 - prevention) * (teamLabel === 'home' ? (1 + grassPenalty) : 1);
+
+    if (Math.random() < injuryChance) {
+      const players = team.players?.filter(p => !p.injured && !p.suspended) || [];
+      if (players.length > 0) {
+        const injuredPlayer = players[Math.floor(Math.random() * players.length)];
+        const severityRoll = Math.random();
+        let weeksOut, severity;
+        if (severityRoll < 0.60) {
+          weeksOut = 1 + Math.floor(Math.random() * 2);
+          severity = 'minor';
+        } else if (severityRoll < 0.90) {
+          weeksOut = 2 + Math.floor(Math.random() * 3);
+          severity = 'moderate';
+        } else {
+          weeksOut = 4 + Math.floor(Math.random() * 5);
+          severity = 'severe';
+        }
+        events.push({
+          type: 'injury',
+          team: teamLabel,
+          minute: 10 + Math.floor(Math.random() * 75),
+          player: injuredPlayer.name,
+          weeksOut,
+          severity
+        });
+      }
+    }
+  });
+
   return events.sort((a, b) => a.minute - b.minute);
 }
 
