@@ -989,7 +989,12 @@
     "capacity": "Kapazität",
     "reputation": "Reputation",
     "presentation": "Prüsentation",
-    "startSeason": "Saison Beginnen"
+    "startSeason": "Saison Beginnen",
+    "diffEasy": "Leicht",
+    "diffNormal": "Normal",
+    "diffMedium": "Mittel",
+    "diffHard": "Schwer",
+    "diffVeryHard": "Sehr schwer"
   },
   "contrarreloj": {
     "title": "Zeitrennen-Modus",

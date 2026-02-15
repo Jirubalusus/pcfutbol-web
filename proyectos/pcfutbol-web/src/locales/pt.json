@@ -989,7 +989,12 @@
     "capacity": "Capacidade",
     "reputation": "Reputação",
     "presentation": "Apresentação",
-    "startSeason": "Comeáar Temporada"
+    "startSeason": "Comeáar Temporada",
+    "diffEasy": "Fácil",
+    "diffNormal": "Normal",
+    "diffMedium": "Médio",
+    "diffHard": "Difícil",
+    "diffVeryHard": "Muito difícil"
   },
   "contrarreloj": {
     "title": "Modo Contra o Relógio",

@@ -1068,7 +1068,12 @@
     "selectTeamFromList": "Selecciona un equipo de la lista",
     "preseasonTitle": "Pretemporada {{team}}",
     "chooseFriendlyPackage": "Elige tu paquete de amistosos",
-    "avgOvr": "Media"
+    "avgOvr": "Media",
+    "diffEasy": "Fácil",
+    "diffNormal": "Normal",
+    "diffMedium": "Medio",
+    "diffHard": "Difícil",
+    "diffVeryHard": "Muy difícil"
   },
   "contrarreloj": {
     "title": "Modo Contrarreloj",

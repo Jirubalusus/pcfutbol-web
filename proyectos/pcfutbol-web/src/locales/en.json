@@ -1082,7 +1082,12 @@
     "selectTeamFromList": "Select a team from the list",
     "preseasonTitle": "Preseason {{team}}",
     "chooseFriendlyPackage": "Choose your friendly package",
-    "avgOvr": "Average"
+    "avgOvr": "Average",
+    "diffEasy": "Easy",
+    "diffNormal": "Normal",
+    "diffMedium": "Medium",
+    "diffHard": "Hard",
+    "diffVeryHard": "Very Hard"
   },
   "contrarreloj": {
     "title": "Race Against Time Mode",

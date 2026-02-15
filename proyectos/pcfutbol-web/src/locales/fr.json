@@ -989,7 +989,12 @@
     "capacity": "Capacité",
     "reputation": "Réputation",
     "presentation": "Présentation",
-    "startSeason": "Commencer la Saison"
+    "startSeason": "Commencer la Saison",
+    "diffEasy": "Facile",
+    "diffNormal": "Normal",
+    "diffMedium": "Moyen",
+    "diffHard": "Difficile",
+    "diffVeryHard": "Très difficile"
   },
   "contrarreloj": {
     "title": "Mode Course Contre la Montre",

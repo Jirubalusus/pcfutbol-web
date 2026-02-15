@@ -989,7 +989,12 @@
     "capacity": "Capacità",
     "reputation": "Reputazione",
     "presentation": "Presentazione",
-    "startSeason": "Inizia Stagione"
+    "startSeason": "Inizia Stagione",
+    "diffEasy": "Facile",
+    "diffNormal": "Normale",
+    "diffMedium": "Medio",
+    "diffHard": "Difficile",
+    "diffVeryHard": "Molto difficile"
   },
   "contrarreloj": {
     "title": "Modalit· Contro il Tempo",
