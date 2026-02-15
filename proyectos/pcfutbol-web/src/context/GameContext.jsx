@@ -123,7 +123,7 @@ function getPlayerMarketValueForOffers(player) {
 // Check if we should use local storage (dev mode or ?local=true)
 // On Capacitor (native), always use Firebase even though hostname is localhost
 const isCapacitor = typeof window !== 'undefined' && window.Capacitor && window.Capacitor.isNativePlatform;
-const USE_LOCAL_STORAGE = false; // Always use Firebase
+// All saves use Firebase (localStorage only for saveId reference)
 
 const initialState = {
   // User & Save
@@ -4466,23 +4466,14 @@ export function GameProvider({ children }) {
   useEffect(() => {
     const loadInitialState = async () => {
       try {
-        if (USE_LOCAL_STORAGE) {
-          // Try to load from localStorage first
-          const loaded = loadLocalSave();
+        const existingSaveId = localStorage.getItem('pcfutbol_saveId');
+        if (existingSaveId) {
+          const loaded = await loadGame(existingSaveId);
           if (!loaded) {
             dispatch({ type: 'LOAD_SAVE', payload: { loaded: true } });
           }
         } else {
-          // Try Firebase
-          const existingSaveId = localStorage.getItem('pcfutbol_saveId');
-          if (existingSaveId) {
-            const loaded = await loadGame(existingSaveId);
-            if (!loaded) {
-              dispatch({ type: 'LOAD_SAVE', payload: { loaded: true } });
-            }
-          } else {
-            dispatch({ type: 'LOAD_SAVE', payload: { loaded: true } });
-          }
+          dispatch({ type: 'LOAD_SAVE', payload: { loaded: true } });
         }
       } catch (error) {
         console.error('Error loading initial state:', error);
@@ -4662,21 +4653,16 @@ export function GameProvider({ children }) {
         console.log('💼 ProManager save-on-exit triggered');
       }
       if (s.gameStarted && s.gameMode !== 'contrarreloj' && s.gameMode !== 'promanager' && s.gameMode !== 'ranked' && s.settings?.autoSave !== false) {
-        // Use stateRef.current to avoid stale closure
         const freshState = stateRef.current;
-        const exitSaveData = {
-          ...freshState,
+        const { leagueTeams: _lt, otherLeagues: _ol, ...compactExit } = freshState;
+        const saveId = freshState.saveId || generateSaveId();
+        const exitSaveData = JSON.parse(JSON.stringify({
+          ...compactExit,
+          saveId,
+          userId: auth.currentUser?.uid || freshState.userId,
           lastSaved: new Date().toISOString()
-        };
-        delete exitSaveData.leagueTeams;
-        delete exitSaveData.otherLeagues;
-        if (USE_LOCAL_STORAGE) {
-          try { localStorage.setItem('pcfutbol_local_save', JSON.stringify(exitSaveData)); } catch (e) { /* ignore */ }
-        } else {
-          const saveId = freshState.saveId || generateSaveId();
-          exitSaveData.saveId = saveId;
-          try { setDoc(doc(db, 'saves', saveId), exitSaveData).catch(() => {}); localStorage.setItem('pcfutbol_saveId', saveId); } catch (e) { /* ignore */ }
-        }
+        }));
+        try { setDoc(doc(db, 'saves', saveId), exitSaveData).catch(() => {}); localStorage.setItem('pcfutbol_saveId', saveId); } catch (e) { /* ignore */ }
       }
     };
 
