@@ -75,13 +75,59 @@ const STADIUM_LEVELS = [
   { name: 'Legendario', capacity: 80000, maintenance: 6000000, upgradeCost: 120000000, prestige: 5 } // €6M/año
 ];
 
-const NAMING_SPONSORS = [
-  { id: 'local', name: 'Banco Regional', offer: 500000, minPrestige: 1, duration: 3 },
-  { id: 'telecom', name: 'TeleCom Plus', offer: 1500000, minPrestige: 2, duration: 3 },
-  { id: 'car', name: 'AutoMotor', offer: 3000000, minPrestige: 3, duration: 5 },
-  { id: 'airline', name: 'FlyAir', offer: 5000000, minPrestige: 4, duration: 5 },
-  { id: 'tech', name: 'TechCorp', offer: 8000000, minPrestige: 5, duration: 5 }
-];
+// Dynamic sponsor name generation
+const SPONSOR_PREFIXES = ["Neo", "Ultra", "Meta", "Eco", "Digi", "Pro", "Sky", "Star", "Global", "Prime", "Max", "Nova", "Apex", "Core", "Flux"];
+const SPONSOR_CORES = ["Tech", "Net", "Com", "Corp", "Bank", "Air", "Auto", "Energy", "Health", "Build", "Sport", "Media", "Data", "Link", "Fin"];
+const SPONSOR_SUFFIXES = ["Plus", "Pro", "One", "360", "Group", "Solutions", "International", "Capital", "", "", ""];
+
+function generateSponsorName() {
+  const prefix = SPONSOR_PREFIXES[Math.floor(Math.random() * SPONSOR_PREFIXES.length)];
+  const core = SPONSOR_CORES[Math.floor(Math.random() * SPONSOR_CORES.length)];
+  const suffix = SPONSOR_SUFFIXES[Math.floor(Math.random() * SPONSOR_SUFFIXES.length)];
+  return `${prefix}${core} ${suffix}`.trim();
+}
+
+function generateNamingOffers(stadiumLevel, teamReputation = 70, leaguePosition = 10, totalTeams = 20) {
+  const LEVEL_RANGES = [
+    [300000, 1000000],   // Level 0-1
+    [300000, 1000000],   // Level 0-1
+    [1000000, 4000000],  // Level 2
+    [3000000, 8000000],  // Level 3
+    [5000000, 15000000], // Level 4
+    [8000000, 25000000], // Level 5
+  ];
+  const level = Math.max(0, Math.min(5, stadiumLevel));
+  const [minOffer, maxOffer] = LEVEL_RANGES[level];
+  
+  // Modifiers based on context
+  const positionFactor = 1 + (1 - (leaguePosition / totalTeams)) * 0.3; // top = +30%
+  const repFactor = 0.7 + (teamReputation / 100) * 0.6; // 70rep=1.12, 100rep=1.3
+  
+  const count = 2 + Math.floor(Math.random() * 2); // 2-3 offers
+  const offers = [];
+  const usedNames = new Set();
+  
+  for (let i = 0; i < count; i++) {
+    let name;
+    do { name = generateSponsorName(); } while (usedNames.has(name));
+    usedNames.add(name);
+    
+    const baseOffer = minOffer + Math.random() * (maxOffer - minOffer);
+    const variance = 0.8 + Math.random() * 0.4; // ±20%
+    const finalOffer = Math.round(baseOffer * positionFactor * repFactor * variance);
+    const duration = 2 + Math.floor(Math.random() * 4); // 2-5 years
+    
+    offers.push({
+      id: `sponsor_${Date.now()}_${i}`,
+      name,
+      offer: finalOffer,
+      duration,
+      minPrestige: 0
+    });
+  }
+  
+  return offers.sort((a, b) => b.offer - a.offer);
+}
 
 const SPECIAL_EVENTS_DATA = [
   { id: 'friendly', icon: <FootballIcon size={16} />, income: 200000, grassDamage: 5, cooldown: 1 },
@@ -152,7 +198,8 @@ export default function Stadium() {
   
   const grassCondition = stadium.grassCondition ?? 100;
   const naming = stadium.naming || null;
-  const lastEventWeek = stadium.lastEventWeek ?? 0;
+  const lastEventWeeks = stadium.lastEventWeeks || {};
+  const lastEventWeek = stadium.lastEventWeek ?? 0; // backward compat
   const seasonTicketIncome = (seasonTickets || 0) * seasonTicketPrice;
   const namingIncome = naming?.yearlyIncome ?? 0;
   const maintenanceCost = currentLevel?.maintenance || 500000; // Ya es anual
@@ -183,18 +230,21 @@ export default function Stadium() {
   const occupancyBonus = occupancyRate * 0.03;
   const homeAdvantage = 1 + (currentLevel.prestige * 0.01) + occupancyBonus;
   
-  // Cooldown eventos
-  const weeksSinceEvent = (state.currentWeek || 1) - lastEventWeek;
-  const canHostEvent = weeksSinceEvent >= 2;
+  // Cooldown eventos (per-type)
+  const canHostEventType = (event) => {
+    const lastWeek = lastEventWeeks[event.id] ?? lastEventWeek;
+    const weeksSince = (state.currentWeek || 1) - lastWeek;
+    return weeksSince >= (event.cooldown || 2);
+  };
   
   // Disponibles
-  const availableSponsors = NAMING_SPONSORS.filter(s => s.minPrestige <= currentLevel.prestige && !naming);
+  const availableSponsors = (stadium.availableNamingOffers || []).filter(s => !naming);
   
   // === HANDLERS ===
   const updateStadium = (updates) => {
     dispatch({
       type: 'UPDATE_STADIUM',
-      payload: { ...stadium, ...updates }
+      payload: updates
     });
   };
   
@@ -249,7 +299,8 @@ export default function Stadium() {
         name: sponsor.name,
         yearsLeft: sponsor.duration - 1,
         yearlyIncome: sponsor.offer
-      }
+      },
+      availableNamingOffers: [] // Clear offers after accepting
     });
     dispatch({ type: 'UPDATE_MONEY', payload: sponsor.offer });
     dispatch({
@@ -307,12 +358,16 @@ export default function Stadium() {
   };
   
   const handleHostEvent = (event) => {
-    if (!canHostEvent) return;
+    if (!canHostEventType(event)) return;
     
     const newGrass = Math.max(0, grassCondition - event.grassDamage);
     updateStadium({
       grassCondition: newGrass,
-      lastEventWeek: state.currentWeek || 1
+      lastEventWeeks: {
+        ...lastEventWeeks,
+        [event.id]: state.currentWeek || 1
+      },
+      lastEventWeek: state.currentWeek || 1 // backward compat
     });
     dispatch({ type: 'UPDATE_MONEY', payload: event.income });
     dispatch({
@@ -705,27 +760,28 @@ export default function Stadium() {
           <h3><Mic size={14} /> {t('stadium.organizeEvents')}</h3>
           <p className="hint">{t('stadium.generateExtraIncome')}</p>
           
-          {!canHostEvent && (
-            <div className="cooldown-notice">
-              ⏳ {t('stadium.waitMoreWeeks', { weeks: 2 - weeksSinceEvent })}
-            </div>
-          )}
-          
           <div className="events-list">
-            {SPECIAL_EVENTS_DATA.map(event => (
-              <div key={event.id} className={`event-item ${!canHostEvent ? 'disabled' : ''}`}>
+            {SPECIAL_EVENTS_DATA.map(event => {
+              const canHost = canHostEventType(event);
+              const lastWeek = lastEventWeeks[event.id] ?? lastEventWeek;
+              const weeksSince = (state.currentWeek || 1) - lastWeek;
+              const weeksLeft = Math.max(0, (event.cooldown || 2) - weeksSince);
+              return (
+              <div key={event.id} className={`event-item ${!canHost ? 'disabled' : ''}`}>
                 <span className="event-icon">{event.icon}</span>
                 <div className="event-info">
                   <span className="event-name">{t(`stadium.events.${event.id}`)}</span>
                   <span className="event-details">
                     {formatMoney(event.income)} • {t('stadium.grassDamage', { percent: event.grassDamage })}
+                    {!canHost && ` • ⏳ ${t('stadium.waitMoreWeeks', { weeks: weeksLeft })}`}
                   </span>
                 </div>
-                <button onClick={() => handleHostEvent({...event, name: t(`stadium.events.${event.id}`)}) } disabled={!canHostEvent || grassCondition < 30}>
+                <button onClick={() => handleHostEvent({...event, name: t(`stadium.events.${event.id}`)}) } disabled={!canHost || grassCondition < 30}>
                   {t('stadium.organize')}
                 </button>
               </div>
-            ))}
+              );
+            })}
           </div>
           
           {grassCondition < 30 && (

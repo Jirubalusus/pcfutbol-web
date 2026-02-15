@@ -973,7 +973,34 @@ function gameReducer(state, action) {
           seasonTicketsCampaignOpen: true, // Reabrir campaña de abonos
           seasonTicketsFinal: null,
           seasonTicketIncomeCollected: 0,
-          totalSeasonIncome: 0
+          totalSeasonIncome: 0,
+          // Generate new naming offers if no current deal
+          availableNamingOffers: !updatedNaming ? (() => {
+            const sLevel = state.facilities?.stadium ?? state.stadium?.level ?? 0;
+            const rep = state.team?.reputation || 70;
+            const pos = state.leagueTable?.findIndex(t => t.teamId === state.teamId) + 1 || 10;
+            const total = state.leagueTable?.length || 20;
+            const PREFIXES = ["Neo", "Ultra", "Meta", "Eco", "Digi", "Pro", "Sky", "Star", "Global", "Prime", "Max", "Nova", "Apex", "Core", "Flux"];
+            const CORES = ["Tech", "Net", "Com", "Corp", "Bank", "Air", "Auto", "Energy", "Health", "Build", "Sport", "Media", "Data", "Link", "Fin"];
+            const SUFFIXES = ["Plus", "Pro", "One", "360", "Group", "Solutions", "International", "Capital", "", "", ""];
+            const RANGES = [[300000,1000000],[300000,1000000],[1000000,4000000],[3000000,8000000],[5000000,15000000],[8000000,25000000]];
+            const lvl = Math.max(0, Math.min(5, sLevel));
+            const [mn, mx] = RANGES[lvl];
+            const pf = 1 + (1 - (pos / total)) * 0.3;
+            const rf = 0.7 + (rep / 100) * 0.6;
+            const cnt = 2 + Math.floor(Math.random() * 2);
+            const offers = [];
+            const used = new Set();
+            for (let i = 0; i < cnt; i++) {
+              let name;
+              do { name = `${PREFIXES[Math.floor(Math.random()*PREFIXES.length)]}${CORES[Math.floor(Math.random()*CORES.length)]} ${SUFFIXES[Math.floor(Math.random()*SUFFIXES.length)]}`.trim(); } while (used.has(name));
+              used.add(name);
+              const base = mn + Math.random() * (mx - mn);
+              const v = 0.8 + Math.random() * 0.4;
+              offers.push({ id: `sponsor_${Date.now()}_${i}`, name, offer: Math.round(base * pf * rf * v), duration: 2 + Math.floor(Math.random() * 4), minPrestige: 0 });
+            }
+            return offers.sort((a, b) => b.offer - a.offer);
+          })() : (state.stadium?.availableNamingOffers || []),
         },
         // Guardar partidos de pretemporada
         preseasonMatches: preseasonMatches,
@@ -1109,7 +1136,40 @@ function gameReducer(state, action) {
         preseasonWeek: 0,
         fixtures: newFixtures,
         leagueTable: newTable,
-        seasonObjectives: newObjectives
+        seasonObjectives: newObjectives,
+        stadium: {
+          ...state.stadium,
+          ticketPriceLocked: true,
+          seasonTicketsCampaignOpen: false,
+          seasonTicketsFinal: state.stadium?.seasonTicketsFinal ?? state.stadium?.seasonTickets ?? Math.floor((state.stadium?.realCapacity || 8000) * 0.4),
+          // Generate initial naming offers if none exist and no current deal
+          availableNamingOffers: (!state.stadium?.naming && !state.stadium?.availableNamingOffers?.length) ? (() => {
+            const sLevel = state.facilities?.stadium ?? state.stadium?.level ?? 0;
+            const rep = state.team?.reputation || 70;
+            const pos = state.leagueTable?.findIndex(t => t.teamId === state.teamId) + 1 || 10;
+            const total = state.leagueTable?.length || 20;
+            const PREFIXES = ["Neo", "Ultra", "Meta", "Eco", "Digi", "Pro", "Sky", "Star", "Global", "Prime", "Max", "Nova", "Apex", "Core", "Flux"];
+            const CORES = ["Tech", "Net", "Com", "Corp", "Bank", "Air", "Auto", "Energy", "Health", "Build", "Sport", "Media", "Data", "Link", "Fin"];
+            const SUFFIXES = ["Plus", "Pro", "One", "360", "Group", "Solutions", "International", "Capital", "", "", ""];
+            const RANGES = [[300000,1000000],[300000,1000000],[1000000,4000000],[3000000,8000000],[5000000,15000000],[8000000,25000000]];
+            const lvl = Math.max(0, Math.min(5, sLevel));
+            const [mn, mx] = RANGES[lvl];
+            const pf = 1 + (1 - (pos / total)) * 0.3;
+            const rf = 0.7 + (rep / 100) * 0.6;
+            const cnt = 2 + Math.floor(Math.random() * 2);
+            const offers = [];
+            const used = new Set();
+            for (let i = 0; i < cnt; i++) {
+              let name;
+              do { name = `${PREFIXES[Math.floor(Math.random()*PREFIXES.length)]}${CORES[Math.floor(Math.random()*CORES.length)]} ${SUFFIXES[Math.floor(Math.random()*SUFFIXES.length)]}`.trim(); } while (used.has(name));
+              used.add(name);
+              const base = mn + Math.random() * (mx - mn);
+              const v = 0.8 + Math.random() * 0.4;
+              offers.push({ id: `sponsor_${Date.now()}_${i}`, name, offer: Math.round(base * pf * rf * v), duration: 2 + Math.floor(Math.random() * 4), minPrestige: 0 });
+            }
+            return offers.sort((a, b) => b.offer - a.offer);
+          })() : (state.stadium?.availableNamingOffers || []),
+        }
       };
     }
 
@@ -1518,10 +1578,26 @@ function gameReducer(state, action) {
       const currentGrass = state.stadium?.grassCondition ?? 100;
       const newGrassCondition = Math.min(100, currentGrass + GRASS_RECOVERY_PER_WEEK);
 
+      // Auto-close season ticket campaign if deadline reached and still open
+      const SEASON_TICKET_DEADLINE = 4;
+      const advWeekNext = state.currentWeek + 1;
+      let stadiumCampaignUpdates = {};
+      if (advWeekNext >= SEASON_TICKET_DEADLINE && state.stadium?.seasonTicketsCampaignOpen) {
+        const stSeasonTickets = state.stadium?.seasonTickets ?? Math.floor((state.stadium?.realCapacity || 8000) * 0.4);
+        const stPrice = state.stadium?.seasonTicketPrice ?? 400;
+        stadiumCampaignUpdates = {
+          seasonTicketsCampaignOpen: false,
+          seasonTicketsFinal: stSeasonTickets,
+          seasonTicketPriceFinal: stPrice,
+          seasonTicketIncomeCollected: stSeasonTickets * stPrice,
+        };
+      }
+
       // Update stadium state
       const updatedStadium = state.stadium ? {
         ...state.stadium,
-        grassCondition: newGrassCondition
+        grassCondition: newGrassCondition,
+        ...stadiumCampaignUpdates
       } : state.stadium;
 
       // ============================================================
