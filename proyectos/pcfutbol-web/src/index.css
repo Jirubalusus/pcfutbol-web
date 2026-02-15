@@ -427,6 +427,139 @@ button {
   border-radius: var(--border-radius-lg);
 }
 
+/* === LIGHT THEME GLOBAL OVERRIDES === */
+/* These apply to ALL light themes (modern, glass) and fix contrast/visibility */
+
+[data-theme="modern"],
+[data-theme="glass"] {
+  /* Force light text colors to dark */
+  color: var(--color-text-primary);
+  
+  /* All card-like elements get proper light styling */
+  .office__card, .card, .glass-card, .stat-card, .finance-box,
+  .league-card, .country-card, .preseason-card, .intensity-card-v2,
+  .player-row, .fixture-card, .match-card, .team-card, 
+  .transfer-card, .offer-card, .renewal-card, .objective-card,
+  .notification-item, .message-item, .slot-card, .save-slot,
+  .formation-container, .lineup-table, .plantilla-container,
+  .settings-section, .settings-card {
+    background: rgba(255, 255, 255, 0.65) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+  }
+  
+  /* Tables and list rows */
+  tr, .table-row, .standing-row, .player-row {
+    border-color: rgba(0, 0, 0, 0.06) !important;
+  }
+  
+  /* Input fields */
+  input, select, textarea {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border-color: rgba(0, 0, 0, 0.12) !important;
+    color: var(--color-text-primary) !important;
+  }
+  
+  /* Buttons with glass bg */
+  .btn-glass, .btn-secondary {
+    background: rgba(255, 255, 255, 0.6) !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  /* Modal overlays */
+  .modal-overlay, .overlay,
+  .pcf-modal-overlay, .transfer-modal-overlay,
+  .player-modal-overlay, .preseason-modal-overlay {
+    background: rgba(0, 0, 0, 0.3) !important;
+  }
+  
+  /* Sidebar / Nav */
+  .sidebar, .mobile-nav {
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(16px) !important;
+    border-color: rgba(0, 0, 0, 0.08) !important;
+  }
+  
+  /* Bottom action bar */
+  .bottom-bar, .action-bar, .mobile-nav__bar {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
+  }
+  
+  /* Fix any remaining white text on light bg */
+  h1, h2, h3, h4, h5, h6, p, span, label, a, li, td, th, div {
+    color: inherit;
+  }
+
+  /* Auth card */
+  .auth__card {
+    background: rgba(255, 255, 255, 0.75) !important;
+    border-color: rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  /* Save slots */
+  .save-slots {
+    background: var(--color-bg-primary) !important;
+  }
+  .save-slots__slot, .save-slot {
+    background: rgba(255, 255, 255, 0.7) !important;
+    border-color: rgba(0, 0, 0, 0.08) !important;
+  }
+
+  /* Edition mode */
+  .edition-mode {
+    color: var(--color-text-primary) !important;
+  }
+
+  /* Main menu glow — reduce on light themes */
+  .main-menu__glow {
+    opacity: 0.3 !important;
+    filter: blur(80px) !important;
+  }
+
+  /* Main menu gradient — use lighter version */
+  .main-menu__gradient {
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(var(--color-accent-secondary-rgb), 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 40% at 100% 100%, rgba(var(--color-accent-rgb), 0.04) 0%, transparent 50%),
+      transparent !important;
+  }
+
+  /* Contrarreloj setup — override dark gradient */
+  .contrarreloj-setup__gradient {
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(255, 215, 0, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 40% at 100% 100%, rgba(245, 166, 35, 0.06) 0%, transparent 50%),
+      var(--color-bg-primary) !important;
+  }
+
+  /* Team selection — override hardcoded dark colors */
+  .pcf-team-select {
+    background: var(--color-bg-primary) !important;
+  }
+
+  /* Pro Manager setup gradient */
+  .promanager-setup__gradient {
+    background: var(--color-bg-primary) !important;
+  }
+
+  /* Loading screen */
+  .loading-screen {
+    background: var(--color-bg-primary) !important;
+    background-image: none !important;
+  }
+
+  /* Custom select dropdowns */
+  .custom-select__options,
+  .custom-select__dropdown {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+  }
+}
+
 /* ============================================================
    MOBILE GLOBAL OVERRIDES — Apple Minimalist Style
    Only affects screens ≤768px. Desktop untouched.
