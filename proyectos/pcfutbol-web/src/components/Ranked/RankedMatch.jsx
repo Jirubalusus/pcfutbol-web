@@ -20,7 +20,7 @@ import {
 import {
   Swords, Shield, Clock, Trophy, ChevronRight, AlertTriangle,
   Check, X, ArrowLeft, Star, Zap, Target, Users, Search,
-  ChevronDown, Lock, Unlock, TrendingUp, Award
+  ChevronDown, Lock, Unlock, TrendingUp, Award, Loader
 } from 'lucide-react';
 
 const LEAGUE_TEAMS_GETTERS = {
@@ -41,13 +41,21 @@ import './RankedMatch.scss';
 
 // Available formations and tactics for the UI
 const FORMATION_OPTIONS = ['4-3-3', '4-4-2', '3-5-2', '4-2-3-1', '5-3-2', '3-4-3', '4-5-1', '4-1-4-1'];
+const TACTIC_ICONS = {
+  attacking: Swords,
+  balanced: Shield,
+  defensive: Shield,
+  counter: Zap,
+  possession: Target,
+  pressing: TrendingUp,
+};
 const TACTIC_OPTIONS = [
-  { id: 'attacking', name: 'Ofensiva', icon: '⚔️' },
-  { id: 'balanced', name: 'Equilibrada', icon: '⚖️' },
-  { id: 'defensive', name: 'Defensiva', icon: '🛡️' },
-  { id: 'counter', name: 'Contraataque', icon: '🏃' },
-  { id: 'possession', name: 'Posesión', icon: '🎯' },
-  { id: 'pressing', name: 'Presión alta', icon: '🔥' },
+  { id: 'attacking', name: 'Ofensiva' },
+  { id: 'balanced', name: 'Equilibrada' },
+  { id: 'defensive', name: 'Defensiva' },
+  { id: 'counter', name: 'Contraataque' },
+  { id: 'possession', name: 'Posesión' },
+  { id: 'pressing', name: 'Presión alta' },
 ];
 
 export default function RankedMatch() {
@@ -434,7 +442,7 @@ export default function RankedMatch() {
         {/* ── ROUND 1 / ROUND 2 ── */}
         {(match.phase === 'round1' || match.phase === 'round2') && (
           <div className="phase-round">
-            <h2>📋 {match.phase === 'round1' ? t('ranked.firstHalf') : t('ranked.secondHalf')}</h2>
+            <h2><Users size={20} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 6 }} />{match.phase === 'round1' ? t('ranked.firstHalf') : t('ranked.secondHalf')}</h2>
             
             <div className="round-teams">
               <div className="my-team-card">
@@ -451,7 +459,7 @@ export default function RankedMatch() {
             {/* Mid-season standings (Round 2 only) */}
             {match.phase === 'round2' && match.simulation1 && (
               <div className="midseason-box">
-                <h3>📊 {t('ranked.midSeasonStandings')}</h3>
+                <h3><TrendingUp size={16} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 6 }} />{t('ranked.midSeasonStandings')}</h3>
                 <div className="mini-table">
                   {match.simulation1.table?.map((t, i) => (
                     <div key={t.teamId} className={`table-row ${t.teamId === myData?.team ? 'me' : t.teamId === rivalData?.team ? 'rival' : ''}`}>
@@ -468,7 +476,7 @@ export default function RankedMatch() {
             {/* Tactics Configuration */}
             {!configSubmitted ? (
               <div className="config-section">
-                <h3>⚙️ {t('ranked.configuration')}</h3>
+                <h3><Target size={16} style={{ display: 'inline', verticalAlign: 'middle', marginRight: 6 }} />{t('ranked.configuration')}</h3>
                 
                 <div className="config-row">
                   <label>{t('ranked.formation')}</label>
@@ -494,7 +502,7 @@ export default function RankedMatch() {
                         className={`tactic-btn ${tactic === t.id ? 'active' : ''}`}
                         onClick={() => setTactic(t.id)}
                       >
-                        <span className="tactic-icon">{t.icon}</span>
+                        <span className="tactic-icon">{React.createElement(TACTIC_ICONS[t.id] || Shield, { size: 18 })}</span>
                         <span className="tactic-name">{t.name}</span>
                       </button>
                     ))}
@@ -580,7 +588,7 @@ export default function RankedMatch() {
         {(match.phase === 'simulating1' || match.phase === 'simulating2') && (
           <div className="phase-simulating">
             <div className="sim-animation">
-              <div className="sim-ball">⚽</div>
+              <div className="sim-ball"><Loader size={36} style={{ animation: 'spin 1s linear infinite' }} /></div>
             </div>
             <h2>{match.phase === 'simulating1' ? t('ranked.simFirstHalf') : t('ranked.simFullSeason')}</h2>
             
@@ -622,26 +630,26 @@ export default function RankedMatch() {
                     <div className="sim-summary-row">
                       <div className="sim-summary-card me">
                         <span className="summary-team">{myData?.displayName || 'TÚ'}</span>
-                        <span className="summary-pos">📊 {myPos}º</span>
-                        {mySim?.cupRound && <span className="summary-detail">🏆 Copa: {mySim.cupRound}</span>}
-                        {mySim?.europeanRound && <span className="summary-detail">🌍 {mySim.europeanCompetition}: {mySim.europeanRound}</span>}
-                        {mySim?.liga && <span className="summary-highlight">🏆 {t('ranked.champion')}</span>}
-                        {mySim?.copa && <span className="summary-highlight">🏆 {t('ranked.cupWin')}</span>}
+                        <span className="summary-pos">#{myPos}</span>
+                        {mySim?.cupRound && <span className="summary-detail">Copa: {mySim.cupRound}</span>}
+                        {mySim?.europeanRound && <span className="summary-detail">{mySim.europeanCompetition}: {mySim.europeanRound}</span>}
+                        {mySim?.liga && <span className="summary-highlight">{t('ranked.champion')}</span>}
+                        {mySim?.copa && <span className="summary-highlight">{t('ranked.cupWin')}</span>}
                       </div>
                       <div className="sim-summary-card rival">
                         <span className="summary-team">{rivalData?.displayName || 'RIVAL'}</span>
-                        <span className="summary-pos">📊 {rivalPos}º</span>
-                        {rivalSim?.cupRound && <span className="summary-detail">🏆 Copa: {rivalSim.cupRound}</span>}
-                        {rivalSim?.europeanRound && <span className="summary-detail">🌍 {rivalSim.europeanCompetition}: {rivalSim.europeanRound}</span>}
-                        {rivalSim?.liga && <span className="summary-highlight">🏆 {t('ranked.champion')}</span>}
-                        {rivalSim?.copa && <span className="summary-highlight">🏆 {t('ranked.cupWin')}</span>}
+                        <span className="summary-pos">#{rivalPos}</span>
+                        {rivalSim?.cupRound && <span className="summary-detail">Copa: {rivalSim.cupRound}</span>}
+                        {rivalSim?.europeanRound && <span className="summary-detail">{rivalSim.europeanCompetition}: {rivalSim.europeanRound}</span>}
+                        {rivalSim?.liga && <span className="summary-highlight">{t('ranked.champion')}</span>}
+                        {rivalSim?.copa && <span className="summary-highlight">{t('ranked.cupWin')}</span>}
                       </div>
                     </div>
                     
                     {/* H2H summary */}
                     {mySim?.h2hResults?.length > 0 && (
                       <div className="sim-h2h">
-                        <span className="h2h-label">⚔️ H2H:</span>
+                        <span className="h2h-label">H2H:</span>
                         {mySim.h2hResults.map((r, i) => (
                           <span key={i} className={`h2h-result ${r.goalsFor > r.goalsAgainst ? 'win' : r.goalsFor < r.goalsAgainst ? 'loss' : 'draw'}`}>
                             {r.goalsFor}-{r.goalsAgainst} {r.goalsFor > r.goalsAgainst ? 'V' : r.goalsFor < r.goalsAgainst ? 'D' : 'E'}
@@ -650,9 +658,9 @@ export default function RankedMatch() {
                       </div>
                     )}
                     
-                    {myPos < rivalPos && <p className="sim-verdict win">📈 {t('ranked.aboveRival')}</p>}
-                    {myPos > rivalPos && <p className="sim-verdict loss">📉 {t('ranked.belowRival')}</p>}
-                    {myPos === rivalPos && <p className="sim-verdict draw">🤝 {t('ranked.tiedPosition')}</p>}
+                    {myPos < rivalPos && <p className="sim-verdict win">{t('ranked.aboveRival')}</p>}
+                    {myPos > rivalPos && <p className="sim-verdict loss">{t('ranked.belowRival')}</p>}
+                    {myPos === rivalPos && <p className="sim-verdict draw">{t('ranked.tiedPosition')}</p>}
                   </div>
                 </>
               );

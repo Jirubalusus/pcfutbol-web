@@ -378,9 +378,13 @@
 
   .sim-animation {
     margin-bottom: 1rem;
+    color: #10b981;
+    display: flex;
+    justify-content: center;
     .sim-ball {
-      font-size: 3rem;
-      animation: bounce-ball 0.8s ease infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
   h2 { font-size: 1.1rem; margin-bottom: 0.5rem; }

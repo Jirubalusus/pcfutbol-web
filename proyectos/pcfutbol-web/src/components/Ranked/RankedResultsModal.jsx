@@ -212,10 +212,10 @@ export default function RankedResultsModal({ match, onBackToLobby }) {
         {/* H2H */}
         {!isDisconnection && mySim?.h2hResults?.length > 0 && (
           <div className="h2h-section">
-            <h3>⚔️ {t('rankedResults.h2h')}</h3>
+            <h3>{t('rankedResults.h2h')}</h3>
             {mySim.h2hResults.map((r, i) => (
               <div key={i} className="h2h-row">
-                <span>{r.home ? '🏠' : '✈️'}</span>
+                <span style={{ fontSize: '0.75rem', color: '#9ca3af' }}>{r.home ? 'L' : 'V'}</span>
                 <span className="h2h-score">{r.goalsFor} - {r.goalsAgainst}</span>
                 <span className={`h2h-result ${r.goalsFor > r.goalsAgainst ? 'win' : r.goalsFor < r.goalsAgainst ? 'loss' : 'draw'}`}>
                   {r.goalsFor > r.goalsAgainst ? 'V' : r.goalsFor < r.goalsAgainst ? 'D' : 'E'}
@@ -238,34 +238,34 @@ export default function RankedResultsModal({ match, onBackToLobby }) {
 function BreakdownList({ sim, t }) {
   if (!sim) return null;
   const items = [];
-  if (sim.liga) items.push({ label: `🏆 ${t('rankedResults.leagueChampion')}`, pts: 6 });
-  if (sim.championsLeague) items.push({ label: '🏆 Champions League', pts: 10 });
-  if (sim.europaLeague) items.push({ label: '🏆 Europa League', pts: 5 });
-  if (sim.libertadores) items.push({ label: '🏆 Libertadores', pts: 5 });
-  if (sim.conference) items.push({ label: '🏆 Conference League', pts: 3 });
-  if (sim.sudamericana) items.push({ label: '🏆 Sudamericana', pts: 3 });
-  if (sim.copa) items.push({ label: `🏆 ${t('rankedResults.cup')}`, pts: 3 });
-  if (sim.supercopa) items.push({ label: `🏆 ${t('rankedResults.superCup')}`, pts: 1 });
+  if (sim.liga) items.push({ label: t('rankedResults.leagueChampion'), pts: 6 });
+  if (sim.championsLeague) items.push({ label: 'Champions League', pts: 10 });
+  if (sim.europaLeague) items.push({ label: 'Europa League', pts: 5 });
+  if (sim.libertadores) items.push({ label: 'Libertadores', pts: 5 });
+  if (sim.conference) items.push({ label: 'Conference League', pts: 3 });
+  if (sim.sudamericana) items.push({ label: 'Sudamericana', pts: 3 });
+  if (sim.copa) items.push({ label: t('rankedResults.cup'), pts: 3 });
+  if (sim.supercopa) items.push({ label: t('rankedResults.superCup'), pts: 1 });
   // Cup round bonus (QF+)
   const cupRoundPoints = { 'QF': 1, 'SF': 2, 'Final': 3 };
   if (sim.cupRound && cupRoundPoints[sim.cupRound]) {
-    items.push({ label: `🏆 Copa: ${sim.cupRound}`, pts: cupRoundPoints[sim.cupRound] });
+    items.push({ label: `Copa: ${sim.cupRound}`, pts: cupRoundPoints[sim.cupRound] });
   }
-  if (sim.finishedAboveRival) items.push({ label: `📈 ${t('rankedResults.aboveRival')}`, pts: 2 });
+  if (sim.finishedAboveRival) items.push({ label: t('rankedResults.aboveRival'), pts: 2 });
   // H2H: recalculate from results if h2hWins is missing
   let h2hWins = sim.h2hWins || 0;
   if (!h2hWins && sim.h2hResults?.length > 0) {
     h2hWins = sim.h2hResults.filter(r => r.goalsFor > r.goalsAgainst).length;
   }
   const h2hPts = Math.min(2, h2hWins);
-  if (h2hPts > 0) items.push({ label: `⚔️ ${t('rankedResults.h2hWins', { count: h2hWins })}`, pts: h2hPts });
+  if (h2hPts > 0) items.push({ label: t('rankedResults.h2hWins', { count: h2hWins }), pts: h2hPts });
 
-  items.push({ label: `📊 ${t('rankedResults.leaguePos', { pos: sim.leaguePosition, pts: sim.leaguePoints })}`, pts: null });
+  items.push({ label: t('rankedResults.leaguePos', { pos: sim.leaguePosition, pts: sim.leaguePoints }), pts: null });
   if (sim.europeanCompetition) {
-    items.push({ label: `🌍 ${sim.europeanCompetition}: ${sim.europeanRound || '-'}`, pts: null });
+    items.push({ label: `${sim.europeanCompetition}: ${sim.europeanRound || '-'}`, pts: null });
   }
   if (sim.cupRound && !cupRoundPoints[sim.cupRound]) {
-    items.push({ label: `🏆 ${t('rankedResults.cupRound', { round: sim.cupRound })}`, pts: null });
+    items.push({ label: t('rankedResults.cupRound', { round: sim.cupRound }), pts: null });
   }
 
   const total = items.reduce((sum, item) => sum + (item.pts || 0), 0);

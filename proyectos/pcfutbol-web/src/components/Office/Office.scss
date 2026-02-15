@@ -10,7 +10,7 @@
   
   @media (max-width: 768px) {
     flex-direction: column;
-    padding-bottom: 130px;
+    padding-bottom: 120px;
   }
   
   &__main {
@@ -941,14 +941,20 @@
   }
 
   &__icon {
-    font-size: 2.5rem;
     margin-bottom: 0.75rem;
-    animation: simBounce 1s ease-in-out infinite;
-    
-    @keyframes simBounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
+    color: var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__spinner {
+    animation: simSpin 1.2s linear infinite;
+  }
+
+  @keyframes simSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
   }
 
   &__title {

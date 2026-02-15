@@ -337,9 +337,7 @@ button {
     overflow-x: hidden !important;
   }
 
-  /* Base font already 15px — no change needed */
-
-  /* === GLOBAL CARD STYLE — Apple-like === */
+  /* === GLOBAL CARD STYLE — Consistent border-radius === */
   .office__card,
   .card,
   .glass-card,
@@ -350,9 +348,9 @@ button {
   .country-card,
   .preseason-card,
   .intensity-card-v2 {
-    border: none !important;
-    border-radius: 14px !important;
-    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    border-radius: 12px !important;
+    background: rgba(255, 255, 255, 0.03) !important;
   }
 
   /* === MODALS — Bottom sheet, Apple-style === */
@@ -372,9 +370,18 @@ button {
     box-shadow: 0 -4px 40px rgba(0, 0, 0, 0.5) !important;
   }
 
-  /* === BUTTONS — Rounded, no harsh borders === */
+  /* === BUTTONS — Proper touch targets === */
   button {
     -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Ensure minimum touch targets for interactive elements */
+  .sidebar__item,
+  .mobile-menu__item,
+  .transfers__tabs button,
+  .transfers-tabs .tab,
+  .league-table-v2__group-tabs .group-tab {
+    min-height: 44px !important;
   }
 
   /* === CONTENT AREAS — No overflow === */
@@ -471,5 +478,49 @@ button {
     -webkit-backdrop-filter: none;
   }
 
-  /* Font sizes now compact globally — no mobile overrides needed */
+  /* === CONSISTENT SPACING & TYPOGRAPHY === */
+  h1 { font-size: 1.25rem; }
+  h2 { font-size: 1.1rem; }
+  h3 { font-size: 0.95rem; }
+
+  /* === MATCH DAY — Fix bottom button overlap === */
+  .match-day {
+    padding-bottom: 100px;
+  }
+
+  /* === LEAGUE TABLE — Ensure readable on small screens === */
+  .league-table-v2 {
+    padding: 8px;
+  }
+
+  .league-table-v2__legend {
+    gap: 6px 10px;
+    padding: 8px 10px;
+    font-size: 0.75rem;
+  }
+
+  /* === OFFICE WELCOME — Compact on mobile === */
+  .office__welcome h2 {
+    font-size: 1.1rem;
+  }
+
+  .office__welcome p {
+    font-size: 0.8rem;
+  }
+
+  /* === CUP — Better mobile spacing === */
+  .cup {
+    padding: 0.75rem;
+  }
+
+  .cup__match-team .team-name {
+    max-width: 120px;
+    font-size: 0.75rem;
+  }
+
+  /* === RANKED RESULTS — Ensure it doesn't overflow === */
+  .ranked-results-card {
+    max-height: 90vh;
+    overflow-y: auto;
+  }
 }

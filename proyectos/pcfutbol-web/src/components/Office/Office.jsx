@@ -65,7 +65,8 @@ import {
   FastForward,
   ChevronRight,
   AlertTriangle,
-  HeartPulse
+  HeartPulse,
+  Loader
 } from 'lucide-react';
 import RankedTimer from '../Ranked/RankedTimer';
 import { submitRoundConfig, advancePhase as advanceRankedPhase, onMatchChange } from '../../firebase/rankedService';
@@ -1110,7 +1111,7 @@ export default function Office() {
       {simProgress && !isRanked && (
         <div className="sim-modal-overlay">
           <div className="sim-modal">
-            <div className="sim-modal__icon">⚽</div>
+            <div className="sim-modal__icon"><Loader size={40} className="sim-modal__spinner" /></div>
             <h3 className="sim-modal__title">{t('office.simulating')}...</h3>
             <p className="sim-modal__week">Semana {simProgress.week}</p>
             <div className="sim-modal__bar-bg">
