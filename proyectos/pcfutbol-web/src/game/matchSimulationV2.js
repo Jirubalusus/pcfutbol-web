@@ -529,20 +529,26 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
     const isHomeGoal = Math.random() < homeChance;
     
     if (isHomeGoal && homeGoalsLeft > 0) {
+      const scorer = selectScorer(homeTeam, homeStrength.strength?.lineup);
+      const assister = Math.random() > 0.30 ? selectAssister(homeTeam, homeStrength.strength?.lineup, scorer) : null;
       events.push({
         type: 'goal',
         team: 'home',
         minute,
-        player: selectScorer(homeTeam, homeStrength.strength?.lineup),
+        player: scorer,
+        assist: assister,
         goalType: minute > 85 ? 'late' : 'normal'
       });
       homeGoalsLeft--;
     } else if (awayGoalsLeft > 0) {
+      const scorer = selectScorer(awayTeam, awayStrength.strength?.lineup);
+      const assister = Math.random() > 0.30 ? selectAssister(awayTeam, awayStrength.strength?.lineup, scorer) : null;
       events.push({
         type: 'goal',
         team: 'away',
         minute,
-        player: selectScorer(awayTeam, awayStrength.strength?.lineup),
+        player: scorer,
+        assist: assister,
         goalType: minute > 85 ? 'late' : 'normal'
       });
       awayGoalsLeft--;
@@ -642,6 +648,34 @@ function selectScorer(team, lineup) {
   }
   
   return { name: attackers[0].name, position: attackers[0].position };
+}
+
+/**
+ * Seleccionar asistente (distinto al goleador)
+ */
+function selectAssister(team, lineup, scorer) {
+  if (!team?.players) return null;
+  const scorerName = scorer?.name || scorer;
+  const available = (lineup || team.players).filter(p => !p.injured && !p.suspended && p.name !== scorerName);
+  const assistPositions = ['CAM', 'CM', 'RW', 'LW', 'RB', 'LB', 'CDM', 'RM', 'LM', 'ST', 'CF'];
+  const candidates = available.filter(p => assistPositions.includes(p.position));
+  
+  if (candidates.length === 0) return available.length > 0 ? { name: available[0].name, position: available[0].position } : null;
+  
+  const weights = candidates.map(p => {
+    let weight = p.overall || 70;
+    if (['CAM', 'CM'].includes(p.position)) weight *= 1.5;
+    else if (['RW', 'LW'].includes(p.position)) weight *= 1.3;
+    return weight;
+  });
+  
+  const total = weights.reduce((a, b) => a + b, 0);
+  let rand = Math.random() * total;
+  for (let i = 0; i < candidates.length; i++) {
+    rand -= weights[i];
+    if (rand <= 0) return { name: candidates[i].name, position: candidates[i].position };
+  }
+  return { name: candidates[0].name, position: candidates[0].position };
 }
 
 function selectRandomPlayer(team) {

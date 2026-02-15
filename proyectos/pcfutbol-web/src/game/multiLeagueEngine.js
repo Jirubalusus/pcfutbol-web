@@ -875,9 +875,16 @@ export function simulateOtherLeaguesWeek(otherLeagues, week) {
       const homeEntry = updatedTable.find(t => t.teamId === fixture.homeTeam);
       const awayEntry = updatedTable.find(t => t.teamId === fixture.awayTeam);
       
+      // Add random tactics and momentum for AI variety (same as simulateWeekMatches)
+      const aiTactics = ['balanced', 'attacking', 'defensive', 'possession', 'counter'];
+      const pickTactic = () => aiTactics[Math.floor(Math.random() * aiTactics.length)];
       const result = simulateMatch(fixture.homeTeam, fixture.awayTeam, homeTeam, awayTeam, {
         homeMorale: homeEntry?.morale || 70,
-        awayMorale: awayEntry?.morale || 70
+        awayMorale: awayEntry?.morale || 70,
+        homeTactic: pickTactic(),
+        awayTactic: pickTactic(),
+        homeSeasonMomentum: homeEntry?.streak || 0,
+        awaySeasonMomentum: awayEntry?.streak || 0
       });
       
       // Actualizar tabla del torneo actual
