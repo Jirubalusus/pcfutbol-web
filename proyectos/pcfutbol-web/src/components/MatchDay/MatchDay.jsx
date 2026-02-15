@@ -13,6 +13,9 @@ import {
   getBoliviaTeams, getVenezuelaTeams
 } from '../../data/teamsFirestore';
 import { simulateMatch, updateTable, simulateWeekMatches, calculateTeamStrength, FORMATIONS, TACTICS } from '../../game/leagueEngine';
+
+// Helper: get short name from team object (fallback to first 3 chars of name)
+const getShort = (team) => team?.shortName || team?.name?.substring(0, 3)?.toUpperCase() || '???';
 import { simulateOtherLeaguesWeek } from '../../game/multiLeagueEngine';
 import { calculateMatchAttendance, calculateMatchIncome } from '../../game/stadiumEconomy';
 import { calculateBoardConfidence } from '../../game/proManagerEngine';
@@ -777,7 +780,7 @@ export default function MatchDay({ onComplete }) {
             <div className="match-day__teams">
               <div className={`match-day__team ${isHome ? 'player' : ''}`}>
                 {isHome ? <span className="home-tag">LOCAL</span> : <span className="tag-spacer" />}
-                <div className="badge">{isHome ? state.team.shortName : opponent.shortName}</div>
+                <div className="badge">{isHome ? getShort(state.team) : getShort(opponent)}</div>
                 <h3>{isHome ? state.team.name : opponent.name}</h3>
                 <div className="team-form">
                   {getFormText(isHome ? playerTableEntry?.form : opponentTableEntry?.form)}
@@ -788,7 +791,7 @@ export default function MatchDay({ onComplete }) {
               
               <div className={`match-day__team ${!isHome ? 'player' : ''}`}>
                 {!isHome ? <span className="away-tag">VISITANTE</span> : <span className="tag-spacer" />}
-                <div className="badge">{!isHome ? state.team.shortName : opponent.shortName}</div>
+                <div className="badge">{!isHome ? getShort(state.team) : getShort(opponent)}</div>
                 <h3>{!isHome ? state.team.name : opponent.name}</h3>
                 <div className="team-form">
                   {getFormText(!isHome ? playerTableEntry?.form : opponentTableEntry?.form)}
@@ -844,13 +847,13 @@ export default function MatchDay({ onComplete }) {
                 return (
                   <>
                     <div className="team">
-                      <span className="name">{isHome ? state.team.shortName : opponent.shortName}</span>
+                      <span className="name">{isHome ? getShort(state.team) : getShort(opponent)}</span>
                       <span className="score">{homeGoals}</span>
                     </div>
                     <span className="separator">-</span>
                     <div className="team">
                       <span className="score">{awayGoals}</span>
-                      <span className="name">{!isHome ? state.team.shortName : opponent.shortName}</span>
+                      <span className="name">{!isHome ? getShort(state.team) : getShort(opponent)}</span>
                     </div>
                   </>
                 );
@@ -889,9 +892,9 @@ export default function MatchDay({ onComplete }) {
         
         {phase === 'result' && matchResult && (() => {
           const homeName = isHome ? state.team.name : opponent.name;
-          const homeShort = isHome ? state.team.shortName : opponent.shortName;
+          const homeShort = isHome ? getShort(state.team) : getShort(opponent);
           const awayName = !isHome ? state.team.name : opponent.name;
-          const awayShort = !isHome ? state.team.shortName : opponent.shortName;
+          const awayShort = !isHome ? getShort(state.team) : getShort(opponent);
           const playerIsHome = isHome;
           const playerWon = playerIsHome 
             ? matchResult.homeScore > matchResult.awayScore 
