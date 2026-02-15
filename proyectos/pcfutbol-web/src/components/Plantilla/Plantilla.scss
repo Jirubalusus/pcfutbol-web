@@ -231,6 +231,7 @@ $white: #e8eaed;
       display: flex;
       align-items: center;
 
+      &.col-pos, &.col-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
       &.col-name { padding-left: 0.3rem; }
       &.col-ovr, &.col-salary, &.col-contract { justify-content: center; }
     }
