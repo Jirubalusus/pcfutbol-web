@@ -558,7 +558,7 @@ export function advanceCupBracket(bracket, roundIdx) {
           awayTeam: null,
           bye: true,
           played: true,
-          winnerId: winner1.id || winner1.teamId
+          winnerId: winner1.teamId || winner1.id
         };
       } else {
         updatedNextMatches[nextMatchIdx] = {

@@ -222,6 +222,7 @@ export default function TeamSelection() {
     const currentTier = getLeagueTier(selectedLeague);
     const budgetConfig = tierBudgets[currentTier] || tierBudgets[1];
     
+    rawTeams = rawTeams.map(t => ({ ...t })); // Clone to avoid mutating shared data
     rawTeams.forEach(team => {
       if (!team.budget || !team.reputation) {
         const totalValue = (team.players || []).reduce((sum, p) => sum + (p.value || 0), 0);
@@ -298,7 +299,9 @@ export default function TeamSelection() {
     // Se queda en step 2, pero ahora muestra equipos
   };
 
-  const handleSelectTeam = (team) => {
+  const handleSelectTeam = (originalTeam) => {
+    // Clone to avoid mutating shared data
+    const team = { ...originalTeam };
     // Ensure budget and reputation exist (scraped teams may lack these)
     // Budget escala por tier de liga
     if (!team.budget || !team.reputation) {

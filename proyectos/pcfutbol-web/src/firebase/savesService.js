@@ -50,8 +50,10 @@ export async function saveGameToSlot(userId, slotIndex, gameState) {
   }
   
   const saveId = getSaveId(userId, slotIndex);
+  // Strip large reconstructable data to stay under Firestore 1MB limit
+  const { leagueTeams, otherLeagues, ...compactState } = gameState;
   const saveData = {
-    ...gameState,
+    ...compactState,
     userId,
     slotIndex,
     lastSaved: serverTimestamp(),

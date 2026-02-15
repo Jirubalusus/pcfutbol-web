@@ -2559,10 +2559,12 @@ function gameReducer(state, action) {
         currentState = gameReducer(currentState, { type: 'ADVANCE_WEEK', _batchMode: true });
         // Early exit if manager fired, contrarreloj ended, or season screen changed
         if (currentState.managerFired || currentState.contrarrelojData?.finished || currentState.pendingAperturaClausuraFinal) break;
-        // If a pending match was generated, run one more ADVANCE_WEEK to auto-resolve it
-        // (the auto-resolve code at the start of ADVANCE_WEEK handles European, SA, and cup)
-        if (currentState.pendingCupMatch || currentState.pendingEuropeanMatch || currentState.pendingSAMatch) {
+        // If pending matches were generated, keep resolving until none remain
+        // (auto-resolve at start of ADVANCE_WEEK handles European, SA, and cup)
+        let resolveAttempts = 0;
+        while ((currentState.pendingCupMatch || currentState.pendingEuropeanMatch || currentState.pendingSAMatch) && resolveAttempts < 5) {
           currentState = gameReducer(currentState, { type: 'ADVANCE_WEEK', _batchMode: true });
+          resolveAttempts++;
           if (currentState.managerFired || currentState.contrarrelojData?.finished) break;
         }
       }
