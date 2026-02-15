@@ -252,7 +252,14 @@
     "mostValuable": "Más valiosos",
     "mostMatches": "Más partidos",
     "noStatsYet": "Sin estadísticas aún - juega partidos para generar datos",
-    "apply": "Aplicar"
+    "apply": "Aplicar",
+    "treatmentsAvailable": "Tratamientos disponibles: {{remaining}}/{{total}}",
+    "treatmentCost": "Coste por tratamiento: €{{cost}}K",
+    "weeksLeft": "{{count}} semana(s)",
+    "treated": "Tratado",
+    "treat": "Tratar",
+    "topScorers": "Goleadores",
+    "topAssisters": "Asistentes"
   },
   "plantilla": {
     "title": "Plantilla",

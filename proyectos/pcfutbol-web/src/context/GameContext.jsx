@@ -60,17 +60,16 @@ function ensureFullLineup(lineup, players, formation) {
     '4-3-3 (MCO)': ['GK','RB','CB1','CB2','LB','CM1','CM2','CAM','RW','ST','LW'],
     '4-4-2 (Diamante)': ['GK','RB','CB1','CB2','LB','CDM','CM1','CM2','CAM','ST1','ST2'],
     '4-1-2-1-2':   ['GK','RB','CB1','CB2','LB','CDM','CM1','CM2','CAM','ST1','ST2'],
+    '3-4-1-2':     ['GK','CB1','CB2','CB3','RM','CM1','CM2','LM','CAM','ST1','ST2'],
+    '4-3-2-1':     ['GK','RB','CB1','CB2','LB','CDM','CM1','CM2','RW','LW','ST'],
+    '5-2-3':       ['GK','RB','CB1','CB2','CB3','LB','CM1','CM2','RW','ST','LW'],
   };
 
   const slots = FORMATION_SLOTS[formation] || FORMATION_SLOTS['4-3-3'];
-  const filledCount = Object.values(lineup).filter(Boolean).length;
-  
-  // Ya tiene 11, no hacer nada
-  if (filledCount >= 11) return lineup;
   
   const newLineup = { ...lineup };
   
-  // Eject injured, suspended, or loaned players from lineup
+  // Eject injured, suspended, or loaned players from lineup FIRST
   for (const slotId of Object.keys(newLineup)) {
     const p = newLineup[slotId];
     if (p && (p.injured || p.suspended || p.onLoan)) {
@@ -84,6 +83,14 @@ function ensureFullLineup(lineup, players, formation) {
     if (newLineup[slotId] && !playerNames.has(newLineup[slotId].name)) {
       delete newLineup[slotId];
     }
+  }
+  
+  // After ejecting unavailable players, check if lineup is full
+  const filledCount = Object.values(newLineup).filter(Boolean).length;
+  if (filledCount >= 11) {
+    // Check if anything changed
+    const origCount = Object.values(lineup).filter(Boolean).length;
+    return filledCount === origCount ? lineup : newLineup;
   }
   
   const usedNames = new Set(Object.values(newLineup).map(p => p?.name).filter(Boolean));

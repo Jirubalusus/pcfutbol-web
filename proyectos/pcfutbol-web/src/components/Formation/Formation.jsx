@@ -1347,8 +1347,8 @@ function InjuredModal({ onClose, players, facilities, dispatch, budget, medicalT
           ) : (
             <>
               <div className="injured-info">
-                <span>Tratamientos disponibles: {maxTreatments - treatmentsUsed}/{maxTreatments}</span>
-                <span>Coste por tratamiento: €{(treatmentCost/1000).toFixed(0)}K</span>
+                <span>{t('formation.treatmentsAvailable', { remaining: maxTreatments - treatmentsUsed, total: maxTreatments })}</span>
+                <span>{t('formation.treatmentCost', { cost: (treatmentCost/1000).toFixed(0) })}</span>
               </div>
 
               <div className="injured-list">
@@ -1367,19 +1367,19 @@ function InjuredModal({ onClose, players, facilities, dispatch, budget, medicalT
                       </div>
                       <div className="injury-info">
                         <span className={`weeks ${wasTreated ? 'reduced' : ''}`}>
-                          <Clock size={12} /> {adjustedWeeks} semana{adjustedWeeks !== 1 ? 's' : ''}
+                          <Clock size={12} /> {t('formation.weeksLeft', { count: adjustedWeeks })}
                           {wasTreated && <span className="treat-badge"><Check size={10} /></span>}
                         </span>
                       </div>
                       {wasTreated ? (
-                        <span className="treated-label">Tratado</span>
+                        <span className="treated-label">{t('formation.treated')}</span>
                       ) : (
                         <button
                           className="btn-treat"
                           onClick={() => handleTreat(player)}
                           disabled={treatmentsUsed >= maxTreatments || budget < treatmentCost}
                         >
-                          Tratar
+                          {t('formation.treat')}
                         </button>
                       )}
                     </div>
@@ -1530,7 +1530,7 @@ function StatsModal({ onClose, players, team, leagueTable, teamId, playerSeasonS
             <div className="top-players">
               {topScorers.length > 0 && (
                 <div className="top-section">
-                  <h4>Goleadores</h4>
+                  <h4>{t('formation.topScorers')}</h4>
                   {topScorers.map(([name, s], i) => (
                     <div key={name} className="top-row">
                       <span className="rank">{i + 1}</span>
@@ -1542,7 +1542,7 @@ function StatsModal({ onClose, players, team, leagueTable, teamId, playerSeasonS
               )}
               {topAssisters.length > 0 && (
                 <div className="top-section">
-                  <h4>Asistentes</h4>
+                  <h4>{t('formation.topAssisters')}</h4>
                   {topAssisters.map(([name, s], i) => (
                     <div key={name} className="top-row">
                       <span className="rank">{i + 1}</span>

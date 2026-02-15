@@ -266,7 +266,14 @@
     "mostValuable": "Most valuable",
     "mostMatches": "Most matches",
     "noStatsYet": "No stats yet - play matches to generate data",
-    "apply": "Apply"
+    "apply": "Apply",
+    "treatmentsAvailable": "Treatments available: {{remaining}}/{{total}}",
+    "treatmentCost": "Cost per treatment: €{{cost}}K",
+    "weeksLeft": "{{count}} week(s)",
+    "treated": "Treated",
+    "treat": "Treat",
+    "topScorers": "Top scorers",
+    "topAssisters": "Top assisters"
   },
   "plantilla": {
     "title": "Squad",
