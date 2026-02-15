@@ -443,7 +443,17 @@ function gameReducer(state, action) {
         } catch (e) { console.warn('Failed to reconstruct otherLeagues:', e); }
       }
       
-      return { ...state, ...sanitized, ...cleanRanked, otherLeagues: otherLeaguesData || state.otherLeagues, loaded: true, _contrarrelojUserId: sanitized._contrarrelojUserId || null, _proManagerUserId: sanitized._proManagerUserId || null };
+      // Sanitize lineup on load: remove ghost players (sold/injured/suspended/missing)
+      const loadedState = { ...state, ...sanitized, ...cleanRanked, otherLeagues: otherLeaguesData || state.otherLeagues, loaded: true, _contrarrelojUserId: sanitized._contrarrelojUserId || null, _proManagerUserId: sanitized._proManagerUserId || null };
+      if (loadedState.lineup && loadedState.team?.players?.length >= 11) {
+        loadedState.lineup = ensureFullLineup(loadedState.lineup, loadedState.team.players, loadedState.formation || '4-3-3');
+      }
+      // Sanitize convocados: remove names not in team
+      if (loadedState.convocados?.length > 0 && loadedState.team?.players) {
+        const teamPlayerNames = new Set(loadedState.team.players.map(p => p.name));
+        loadedState.convocados = loadedState.convocados.filter(n => teamPlayerNames.has(n));
+      }
+      return loadedState;
     }
 
     case 'NEW_GAME': {
@@ -2869,6 +2879,7 @@ function gameReducer(state, action) {
           players: sellUpdatedPlayers
         },
         lineup: ensureFullLineup(sellCleanedLineup, sellUpdatedPlayers, state.formation),
+        convocados: (state.convocados || []).filter(n => n !== action.payload.playerName),
         leagueTeams: updatedLeagueTeamsSell,
         money: state.money + action.payload.fee,
         transfersEarned: (state.transfersEarned || 0) + action.payload.fee
@@ -3077,6 +3088,7 @@ function gameReducer(state, action) {
         ...state,
         team: { ...state.team, players: updatedPlayers },
         lineup: ensureFullLineup(cleanedLineup, updatedPlayers, state.formation),
+        convocados: (state.convocados || []).filter(n => n !== offer.player.name),
         money: state.money + offer.amount,
         transfersEarned: (state.transfersEarned || 0) + offer.amount,
         leagueTeams: updatedLeagueTeams,
@@ -3320,9 +3332,23 @@ function gameReducer(state, action) {
         }
         return p;
       });
+      // Eject injured player from lineup
+      const injuredName = action.payload.playerName;
+      let injureLineup = state.lineup || {};
+      const injuredInLineup = Object.entries(injureLineup).some(([_, p]) => p?.name === injuredName);
+      if (injuredInLineup) {
+        const cleanedInjureLineup = { ...injureLineup };
+        Object.keys(cleanedInjureLineup).forEach(slot => {
+          if (cleanedInjureLineup[slot]?.name === injuredName) {
+            delete cleanedInjureLineup[slot];
+          }
+        });
+        injureLineup = ensureFullLineup(cleanedInjureLineup, updatedPlayers, state.formation);
+      }
       return {
         ...state,
-        team: { ...state.team, players: updatedPlayers }
+        team: { ...state.team, players: updatedPlayers },
+        lineup: injureLineup
       };
     }
 
