@@ -1,5 +1,5 @@
 ﻿import React, { createContext, useContext, useReducer, useEffect, useRef } from 'react';
-import { db } from '../firebase/config';
+import { db, auth } from '../firebase/config';
 import { doc, getDoc, setDoc, updateDoc, deleteDoc } from 'firebase/firestore';
 import { saveContrarreloj, deleteContrarrelojSave } from '../firebase/contrarrelojSaveService';
 import { saveProManager, deleteProManagerSave } from '../firebase/proManagerService';
@@ -4407,33 +4407,24 @@ export function GameProvider({ children }) {
     if (state.gameMode === 'contrarreloj') return; // Contrarreloj uses its own auto-save
     if (state.gameMode === 'ranked') return; // Ranked matches are never saved — ephemeral only
 
+    const { leagueTeams, otherLeagues, ...compactState } = state;
+    const saveId = state.saveId || generateSaveId();
     const saveData = {
-      ...state,
+      ...compactState,
+      saveId,
+      userId: auth.currentUser?.uid || state.userId,
       lastSaved: new Date().toISOString()
     };
-    delete saveData.leagueTeams;
-    delete saveData.otherLeagues;
 
-    if (USE_LOCAL_STORAGE) {
-      // Local storage mode
-      try {
-        localStorage.setItem('pcfutbol_local_save', JSON.stringify(saveData));
-        console.log('💾 Game saved to localStorage!');
-      } catch (error) {
-        console.error('Error saving to localStorage:', error);
-      }
-    } else {
-      // Firebase mode
-      const saveId = state.saveId || generateSaveId();
-      saveData.saveId = saveId;
+    // Strip undefined values (Firebase rejects them)
+    const cleanSave = JSON.parse(JSON.stringify(saveData));
 
-      try {
-        await setDoc(doc(db, 'saves', saveId), saveData);
-        localStorage.setItem('pcfutbol_saveId', saveId);
-        console.log('☁️ Game saved to Firebase!');
-      } catch (error) {
-        console.error('Error saving game:', error);
-      }
+    try {
+      await setDoc(doc(db, 'saves', saveId), cleanSave);
+      localStorage.setItem('pcfutbol_saveId', saveId);
+      console.log('☁️ Game saved to Firebase!');
+    } catch (error) {
+      console.error('Error saving game:', error);
     }
   };
 
@@ -4616,6 +4607,24 @@ export function GameProvider({ children }) {
     }, 500);
     return () => { if (proManagerSaveRef.current) clearTimeout(proManagerSaveRef.current); };
   }, [state.currentWeek, state.currentSeason, state.money, state.team, state.leagueTable, state.proManagerData, state.gameMode, state.currentScreen]);
+
+  // Periodic ProManager save (every 30s) — matches contrarreloj pattern
+  useEffect(() => {
+    if (state.gameMode !== 'promanager' || !state.gameStarted || !state._proManagerUserId) return;
+    if (state.proManagerData?.finished) return;
+    const interval = setInterval(() => {
+      const s = stateRef.current;
+      if (s.gameMode === 'promanager' && s.gameStarted && s._proManagerUserId && !s.proManagerData?.finished) {
+        const saveData = { ...s };
+        delete saveData.loaded;
+        delete saveData._proManagerUserId;
+        delete saveData.leagueTeams;
+        delete saveData.otherLeagues;
+        saveProManager(s._proManagerUserId, saveData).catch(() => {});
+      }
+    }, 30000);
+    return () => clearInterval(interval);
+  }, [state.gameMode, state.gameStarted, state._proManagerUserId, state.proManagerData?.finished]);
 
   // ============================================================
   // SAVE ON APP CLOSE / BACKGROUND (visibilitychange + Capacitor pause)
