@@ -115,7 +115,7 @@ export default function Renewals() {
           type: 'renewal',
           title: `${selectedPlayer.name} ${t('renewals.hasRenewed')}`,
           content: t('renewals.newContractDetails', { years: renewalOffer.years, salary: formatMoney(renewalOffer.newSalary) }),
-          date: `Semana ${state.currentWeek}`
+          date: `${t('common.week')} ${state.currentWeek}`
         }
       });
       
@@ -163,7 +163,7 @@ export default function Renewals() {
           type: 'renewal',
           title: `${selectedPlayer.name} ${t('renewals.refusesToRenew')}`,
           content: t('renewals.playerUnhappyWantsOut'),
-          date: `Semana ${state.currentWeek}`
+          date: `${t('common.week')} ${state.currentWeek}`
         }
       });
     }
@@ -410,30 +410,30 @@ export default function Renewals() {
                   
                   {negotiationResult.response === 'negotiate' && negotiationResult.counterOffer && (
                     <div className="counter-offer">
-                      <h5>Contraoferta del jugador:</h5>
-                      <p>Salario: <strong>{formatMoney(negotiationResult.counterOffer.salary)}/sem</strong></p>
+                      <h5>{t('renewals.playerCounterOffer')}:</h5>
+                      <p>{t('renewals.salary')}: <strong>{formatMoney(negotiationResult.counterOffer.salary)}/{t('renewals.perWeek')}</strong></p>
                       {negotiationResult.counterOffer.promisedRole === 'starter' && (
-                        <p>Exige: <strong>Rol de titular</strong></p>
+                        <p>{t('renewals.demands')}: <strong>{t('renewals.starterRole')}</strong></p>
                       )}
                       <div className="counter-actions">
                         <button className="accept" onClick={acceptCounterOffer}>
-                          Aceptar contraoferta
+                          {t('renewals.acceptCounter')}
                         </button>
                         <button className="reject" onClick={rejectAndClose}>
-                          Abandonar negociación
+                          {t('renewals.abandonNegotiation')}
                         </button>
                       </div>
                     </div>
                   )}
                   
                   {negotiationResult.response === 'accept' && (
-                    <p className="success-msg">El jugador firmará el nuevo contrato</p>
+                    <p className="success-msg">{t('renewals.playerWillSign')}</p>
                   )}
                   
                   {negotiationResult.response === 'reject' && (
                     <div className="reject-actions">
-                      <p>El jugador no está interesado en renovar con estas condiciones.</p>
-                      <button onClick={rejectAndClose}>Cerrar</button>
+                      <p>{t('renewals.playerNotInterested')}</p>
+                      <button onClick={rejectAndClose}>{t('common.close')}</button>
                     </div>
                   )}
                 </div>
@@ -442,10 +442,10 @@ export default function Renewals() {
               {/* Offer Form */}
               {!negotiationResult && (
                 <div className="offer-form">
-                  <h4>Tu oferta</h4>
+                  <h4>{t('renewals.yourOffer')}</h4>
                   
                   <div className="form-group">
-                    <label>Nuevo salario semanal</label>
+                    <label>{t('renewals.newWeeklySalary')}</label>
                     <div className="input-row">
                       <button onClick={() => setRenewalOffer({
                         ...renewalOffer,
@@ -465,7 +465,7 @@ export default function Renewals() {
                   </div>
                   
                   <div className="form-group">
-                    <label>Duración del contrato</label>
+                    <label>{t('renewals.contractDuration')}</label>
                     <div className="years-selector">
                       {[1, 2, 3, 4, 5].map(y => (
                         <button 
@@ -473,48 +473,48 @@ export default function Renewals() {
                           className={renewalOffer.years === y ? 'active' : ''}
                           onClick={() => setRenewalOffer({ ...renewalOffer, years: y })}
                         >
-                          {y} año{y > 1 ? 's' : ''}
+                          {y} {y > 1 ? t('renewals.years') : t('renewals.year')}
                         </button>
                       ))}
                     </div>
                   </div>
                   
                   <div className="form-group">
-                    <label>Rol prometido</label>
+                    <label>{t('renewals.promisedRole')}</label>
                     <div className="role-selector">
                       <button 
                         className={renewalOffer.promisedRole === 'starter' ? 'active' : ''}
                         onClick={() => setRenewalOffer({ ...renewalOffer, promisedRole: 'starter' })}
                       >
-                        <Star size={14} /> Titular
+                        <Star size={14} /> {t('renewals.starter')}
                       </button>
                       <button 
                         className={renewalOffer.promisedRole === 'rotation' ? 'active' : ''}
                         onClick={() => setRenewalOffer({ ...renewalOffer, promisedRole: 'rotation' })}
                       >
-                        <RefreshCw size={14} /> Rotación
+                        <RefreshCw size={14} /> {t('renewals.rotation')}
                       </button>
                       <button 
                         className={renewalOffer.promisedRole === 'backup' ? 'active' : ''}
                         onClick={() => setRenewalOffer({ ...renewalOffer, promisedRole: 'backup' })}
                       >
-                        <ClipboardList size={14} /> Suplente
+                        <ClipboardList size={14} /> {t('renewals.backup')}
                       </button>
                     </div>
                   </div>
                   
                   <div className="offer-summary">
                     <p>
-                      <strong>Coste semanal:</strong> {formatMoney(renewalOffer.newSalary)}
+                      <strong>{t('renewals.weeklyCost')}:</strong> {formatMoney(renewalOffer.newSalary)}
                     </p>
                     <p>
-                      <strong>El jugador pide:</strong> {formatMoney(renewalOffer.playerDemand.salary)}/sem, 
-                      {renewalOffer.playerDemand.years} años
+                      <strong>{t('renewals.playerAsks')}:</strong> {formatMoney(renewalOffer.playerDemand.salary)}/{t('renewals.perWeek')}, 
+                      {renewalOffer.playerDemand.years} {t('renewals.years')}
                     </p>
                   </div>
                   
                   <button className="submit-btn" onClick={submitRenewalOffer}>
-                    Enviar Oferta
+                    {t('renewals.sendOffer')}
                   </button>
                 </div>
               )}

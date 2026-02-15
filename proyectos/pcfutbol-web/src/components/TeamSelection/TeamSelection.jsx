@@ -551,9 +551,9 @@ export default function TeamSelection() {
             payload: {
               id: Date.now() + 50,
               type: 'southamerican',
-              title: '¡Competición Continental!',
-              content: `Tu equipo jugará la ${compNames[playerQualComp]} esta temporada.`,
-              date: 'Semana 1'
+              titleKey: 'gameMessages.continentalCompetition',
+              contentKey: 'gameMessages.teamPlaysContinental', contentParams: { comp: compNames[playerQualComp] },
+              date: `${t('common.week')} 1`
             }
           });
         }
@@ -638,9 +638,9 @@ export default function TeamSelection() {
             payload: {
               id: Date.now() + 50,
               type: 'european',
-              title: '¡Competición Europea!',
-              content: `Tu equipo jugará la ${compNames[playerQualComp]} esta temporada.`,
-              date: 'Semana 1'
+              titleKey: 'gameMessages.continentalCompetition',
+              contentKey: 'gameMessages.teamPlaysContinental', contentParams: { comp: compNames[playerQualComp] },
+              date: `${t('common.week')} 1`
             }
           });
         }
@@ -697,9 +697,9 @@ export default function TeamSelection() {
       payload: {
         id: Date.now(),
         type: 'welcome',
-        title: '¡Bienvenido al club!',
-        content: `Has sido nombrado nuevo entrenador del ${selectedTeam.name}. La afición espera grandes cosas de ti.`,
-        date: 'Semana 1'
+        titleKey: 'gameMessages.welcomeTitle',
+        contentKey: 'gameMessages.welcomeContent', contentParams: { team: selectedTeam.name },
+        date: `${t('common.week')} 1`
       }
     });
     
@@ -723,9 +723,9 @@ export default function TeamSelection() {
         payload: {
           id: Date.now() + 2,
           type: 'cup',
-          title: `${cupBracket.config?.icon || '🏆'} ${cupBracket.config?.name || 'Copa'}`,
-          content: `Tu equipo participará en la ${cupBracket.config?.name || 'Copa Nacional'} esta temporada. ${cupBracket.rounds.length} rondas hasta la final.`,
-          date: 'Semana 1'
+          titleKey: 'gameMessages.cupParticipationTitle', titleParams: { icon: cupBracket.config?.icon || '🏆', cup: cupBracket.config?.name || 'Cup' },
+          contentKey: 'gameMessages.cupParticipationContent', contentParams: { cup: cupBracket.config?.name || 'Cup', rounds: cupBracket.rounds.length },
+          date: `${t('common.week')} 1`
         }
       });
     }
@@ -805,15 +805,15 @@ export default function TeamSelection() {
       <div className="pcf-ts-header">
         <div className="header-left">
           <button className="btn-back" onClick={handleBack}>
-            ‹ {step === 1 ? (selectedCountry ? 'Países' : 'Menú') : 'Atrás'}
+            ‹ {step === 1 ? (selectedCountry ? t('teamSelection.countries') : t('common.menu')) : t('common.back')}
           </button>
         </div>
         <div className="header-center">
-          <h1>SELECCIÓN DE EQUIPO</h1>
+          <h1>{t('teamSelection.title')}</h1>
         </div>
         <div className="header-right">
           <div className="step-indicator">
-            Paso {getVisualStep()} de {totalSteps}
+            {t('teamSelection.step', { current: getVisualStep(), total: totalSteps })}
           </div>
         </div>
       </div>
@@ -822,12 +822,12 @@ export default function TeamSelection() {
       <div className="pcf-ts-progress">
         <div className={`progress-step ${step >= 1 ? 'active' : ''}`}>
           <div className="step-num">1</div>
-          <div className="step-label">PAÍS / LIGA</div>
+          <div className="step-label">{t('teamSelection.countryLeague')}</div>
         </div>
         <div className={`progress-line ${step >= 2 ? 'active' : ''}`}></div>
         <div className={`progress-step ${step >= 2 ? 'active' : ''}`}>
           <div className="step-num">2</div>
-          <div className="step-label">EQUIPO</div>
+          <div className="step-label">{t('teamSelection.teamLabel')}</div>
         </div>
       </div>
 
@@ -879,7 +879,7 @@ export default function TeamSelection() {
                                 ? hasGroupsForLeague 
                                   ? t('teamSelection.groupsAndTeams', { groups: numGroups, teams: leagueTeams.length })
                                   : t('teamSelection.teamsCount', { count: leagueTeams.length })
-                                : 'Próximamente'
+                                : t('teamSelection.comingSoon')
                               }
                             </div>
                           </div>
@@ -895,7 +895,7 @@ export default function TeamSelection() {
                 <div className="map-selection__placeholder">
                   <div className="map-selection__placeholder-icon"><Map size={32} /></div>
                   <div className="map-selection__placeholder-text">
-                    Selecciona un país en el mapa
+                    {t('teamSelection.selectCountryOnMap')}
                   </div>
                 </div>
               )}
@@ -907,7 +907,7 @@ export default function TeamSelection() {
         {/* LIGAS */}
         {currentContent === 'leagues' && selectedCountry && (
           <div className="leagues-grid">
-            <h2>{selectedCountry.flag} Ligas de {selectedCountry.name}</h2>
+            <h2>{selectedCountry.flag} {t('teamSelection.leaguesOf', { country: selectedCountry.name })}</h2>
             <div className="leagues-list">
               {selectedCountry.leagues.map(leagueId => {
                 const leagueTeams = getLeagueTeams(leagueId);
@@ -1072,7 +1072,7 @@ export default function TeamSelection() {
 
                   {/* Dificultad */}
                   <div className="difficulty-bar">
-                    <span className="label">Dificultad:</span>
+                    <span className="label">{t('teamSelection.difficulty')}:</span>
                     <span 
                       className="difficulty-value"
                       style={{ color: getDifficulty(selectedTeam).color }}
@@ -1084,7 +1084,7 @@ export default function TeamSelection() {
                   {/* Plantilla destacada */}
                   {selectedTeam.players && selectedTeam.players.length > 0 && (
                     <div className="squad-preview">
-                      <h3><Star size={16} /> Jugadores destacados</h3>
+                      <h3><Star size={16} /> {t('teamSelection.topPlayers')}</h3>
                       <div className="players-list">
                         {selectedTeam.players
                           .sort((a, b) => b.overall - a.overall)
@@ -1098,20 +1098,20 @@ export default function TeamSelection() {
                           ))}
                       </div>
                       <div className="squad-total">
-                        <ClipboardList size={14} /> {selectedTeam.players.length} jugadores en plantilla
+                        <ClipboardList size={14} /> {t('teamSelection.playersInSquad', { count: selectedTeam.players.length })}
                       </div>
                     </div>
                   )}
 
                   {/* Botón comenzar */}
                   <button className="btn-start" onClick={handleShowPreseason}>
-                    <FootballIcon size={16} /> COMENZAR CON {selectedTeam.name?.toUpperCase()}
+                    <FootballIcon size={16} /> {t('teamSelection.startWith', { team: selectedTeam.name?.toUpperCase() })}
                   </button>
                 </div>
               ) : (
                 <div className="no-selection">
                   <span className="icon"><ChevronRight size={24} style={{transform:'rotate(180deg)'}} /></span>
-                  <p>Selecciona un equipo de la lista</p>
+                  <p>{t('teamSelection.selectTeamFromList')}</p>
                 </div>
               )}
             </div>
@@ -1126,8 +1126,8 @@ export default function TeamSelection() {
             <div className="preseason-header">
               <Calendar size={32} className="header-icon" />
               <div>
-                <h1>Pretemporada {selectedTeam?.name}</h1>
-                <p>Elige tu paquete de amistosos</p>
+                <h1>{t('teamSelection.preseasonTitle', { team: selectedTeam?.name })}</h1>
+                <p>{t('teamSelection.chooseFriendlyPackage')}</p>
               </div>
             </div>
             
@@ -1145,7 +1145,7 @@ export default function TeamSelection() {
                     <div className="card-header">
                       <FootballIcon size={20} />
                       <h3>{option.name}</h3>
-                      <span className="avg-ovr">Media: {avgOvr} OVR</span>
+                      <span className="avg-ovr">{t('teamSelection.avgOvr')}: {avgOvr}</span>
                     </div>
                     
                     <div className="matches-preview">

@@ -50,12 +50,12 @@ const TACTIC_ICONS = {
   pressing: TrendingUp,
 };
 const TACTIC_OPTIONS = [
-  { id: 'attacking', name: 'Ofensiva' },
-  { id: 'balanced', name: 'Equilibrada' },
-  { id: 'defensive', name: 'Defensiva' },
-  { id: 'counter', name: 'Contraataque' },
-  { id: 'possession', name: 'Posesión' },
-  { id: 'pressing', name: 'Presión alta' },
+  { id: 'attacking', nameKey: 'tactics.attacking' },
+  { id: 'balanced', nameKey: 'tactics.balanced' },
+  { id: 'defensive', nameKey: 'tactics.defensive' },
+  { id: 'counter', nameKey: 'tactics.counter' },
+  { id: 'possession', nameKey: 'tactics.possession' },
+  { id: 'pressing', nameKey: 'tactics.pressing' },
 ];
 
 export default function RankedMatch() {
@@ -496,14 +496,14 @@ export default function RankedMatch() {
                 <div className="config-row">
                   <label>{t('ranked.tactic')}</label>
                   <div className="tactic-grid">
-                    {TACTIC_OPTIONS.map(t => (
+                    {TACTIC_OPTIONS.map(tOpt => (
                       <button
-                        key={t.id}
-                        className={`tactic-btn ${tactic === t.id ? 'active' : ''}`}
-                        onClick={() => setTactic(t.id)}
+                        key={tOpt.id}
+                        className={`tactic-btn ${tactic === tOpt.id ? 'active' : ''}`}
+                        onClick={() => setTactic(tOpt.id)}
                       >
-                        <span className="tactic-icon">{React.createElement(TACTIC_ICONS[t.id] || Shield, { size: 18 })}</span>
-                        <span className="tactic-name">{t.name}</span>
+                        <span className="tactic-icon">{React.createElement(TACTIC_ICONS[tOpt.id] || Shield, { size: 18 })}</span>
+                        <span className="tactic-name">{t(tOpt.nameKey)}</span>
                       </button>
                     ))}
                   </div>
