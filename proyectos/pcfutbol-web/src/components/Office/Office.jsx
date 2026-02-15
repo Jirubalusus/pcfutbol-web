@@ -66,6 +66,7 @@ import {
   ChevronRight,
   AlertTriangle,
   HeartPulse,
+  UserRound,
   Loader
 } from 'lucide-react';
 import RankedTimer from '../Ranked/RankedTimer';
@@ -1053,7 +1054,7 @@ export default function Office() {
               }}
               title={t('office.clickToChangeName')}
             >
-              🧑‍💼 {state.managerName || 'Gaffer'}
+              <UserRound size={14} style={{ marginRight: 4, verticalAlign: 'middle' }} /> {state.managerName || 'Gaffer'}
             </span>
             <span className="office__season">{t('office.seasonInfo', { season: state.currentSeason })} · {state.preseasonPhase ? t('office.preseason', { week: state.preseasonWeek, total: state.preseasonMatches?.length || 5 }) : t('office.weekInfo', { week: state.currentWeek })}</span>
           </div>

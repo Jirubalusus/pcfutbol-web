@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+﻿import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { 
@@ -334,7 +334,7 @@ export default function MatchDay({ onComplete }) {
       console.error('🔴 Stack:', error.stack);
       // Fallback: show error state
       setPhase('preview');
-      alert('Error al simular el partido: ' + error.message);
+      alert(t('matchday.errorSimulating') + ': ' + error.message);
     }
   };
   
@@ -407,7 +407,7 @@ export default function MatchDay({ onComplete }) {
       if (playerRedCards.length > 0) {
         dispatch({
           type: 'ADD_RED_CARDS',
-          payload: { cards: playerRedCards.map(e => ({ playerName: getPlayerName(e.player), reason: e.reason || 'Roja directa' })) }
+          payload: { cards: playerRedCards.map(e => ({ playerName: getPlayerName(e.player), reason: e.reason || t('matchday.directRed') })) }
         });
       }
 
@@ -485,7 +485,7 @@ export default function MatchDay({ onComplete }) {
       if (euRedCards.length > 0) {
         dispatch({
           type: 'ADD_RED_CARDS',
-          payload: { cards: euRedCards.map(e => ({ playerName: getPlayerName(e.player), reason: e.reason || 'Roja directa' })) }
+          payload: { cards: euRedCards.map(e => ({ playerName: getPlayerName(e.player), reason: e.reason || t('matchday.directRed') })) }
         });
       }
 
@@ -685,7 +685,7 @@ export default function MatchDay({ onComplete }) {
           payload: {
             cards: playerRedCards.map(e => ({ 
               playerName: getPlayerName(e.player), 
-              reason: e.reason || 'Roja directa'
+              reason: e.reason || t('matchday.directRed')
             }))
           }
         });
@@ -741,28 +741,28 @@ export default function MatchDay({ onComplete }) {
   
   const getInjuryText = (severity) => {
     switch (severity) {
-      case 'minor': return 'Lesión leve';
-      case 'moderate': return 'Lesión moderada';
-      case 'serious': return 'Lesión grave';
-      default: return 'Lesión';
+      case 'minor': return t('matchday.injuryMinor');
+      case 'moderate': return t('matchday.injuryModerate');
+      case 'serious': return t('matchday.injurySerious');
+      default: return t('matchday.injuryGeneric');
     }
   };
   
   const getGoalTypeText = (type) => {
     switch (type) {
       case 'golazo': return <><Flame size={14} /> {t('matchday.golazo')}</>;
-      case 'great_strike': return <><Star size={14} /> Gran disparo</>;
-      case 'penalty': return '(Penalti)';
-      case 'header': return '(Cabezazo)';
-      case 'tap_in': return '(A placer)';
-      case 'corner': return '(Córner)';
+      case 'great_strike': return <><Star size={14} /> {t('matchday.goalTypeGreatStrike')}</>;
+      case 'penalty': return `(${t('matchday.goalTypePenalty')})`;
+      case 'header': return `(${t('matchday.goalTypeHeader')})`;
+      case 'tap_in': return `(${t('matchday.goalTypeTapIn')})`;
+      case 'corner': return `(${t('matchday.goalTypeCorner')})`;
       case 'late': return <><Flame size={14} /> {t('matchday.lateGoal')}</>;
       default: return '';
     }
   };
   
   const getFormText = (form) => {
-    if (!form || form.length === 0) return 'Sin datos';
+    if (!form || form.length === 0) return t('matchday.noFormData');
     return form.map((r, i) => (
       <span key={i} className={`form-item ${r.toLowerCase()}`}>{r}</span>
     ));
@@ -910,14 +910,14 @@ export default function MatchDay({ onComplete }) {
           // Stats with bar rendering helper
           const stats = matchResult.stats;
           const statRows = [
-            { label: 'Posesión', home: stats.possession.home, away: stats.possession.away, suffix: '%', isPercent: true },
-            { label: 'Tiros', home: stats.shots.home, away: stats.shots.away },
-            { label: 'A puerta', home: stats.shotsOnTarget.home, away: stats.shotsOnTarget.away },
-            { label: 'Córners', home: stats.corners.home, away: stats.corners.away },
-            { label: 'Faltas', home: stats.fouls?.home ?? 0, away: stats.fouls?.away ?? 0 },
-            { label: 'Amarillas', home: stats.yellowCards.home, away: stats.yellowCards.away, icon: <Square size={14} className="card-yellow" /> },
+            { label: t('matchday.possession'), home: stats.possession.home, away: stats.possession.away, suffix: '%', isPercent: true },
+            { label: t('matchday.shots'), home: stats.shots.home, away: stats.shots.away },
+            { label: t('matchday.shotsOnTarget'), home: stats.shotsOnTarget.home, away: stats.shotsOnTarget.away },
+            { label: t('matchday.corners'), home: stats.corners.home, away: stats.corners.away },
+            { label: t('matchday.fouls'), home: stats.fouls?.home ?? 0, away: stats.fouls?.away ?? 0 },
+            { label: t('matchday.yellowCard'), home: stats.yellowCards.home, away: stats.yellowCards.away, icon: <Square size={14} className="card-yellow" /> },
             ...(stats.redCards.home > 0 || stats.redCards.away > 0 
-              ? [{ label: 'Rojas', home: stats.redCards.home, away: stats.redCards.away, icon: <Square size={14} className="card-red" /> }] 
+              ? [{ label: t('matchday.redCard'), home: stats.redCards.home, away: stats.redCards.away, icon: <Square size={14} className="card-red" /> }] 
               : [])
           ];
           
