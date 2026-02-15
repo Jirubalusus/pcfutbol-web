@@ -390,6 +390,9 @@ export default function Office() {
     let weeksSimulated = 0;
     let seasonEnded = false;
     
+    // Track local team state so injuries are reflected in subsequent simulated weeks
+    let localTeamPlayers = state.team?.players ? state.team.players.map(p => ({ ...p })) : [];
+    
     // Track accumulated ticket income locally to avoid stale state overwrites
     let localAccumulatedIncome = state.stadium?.accumulatedTicketIncome ?? 0;
     
@@ -435,8 +438,9 @@ export default function Office() {
         const opponent = allTeams.find(t => t.id === opponentId);
         
         if (opponent) {
-          const homeTeamData = isHome ? state.team : opponent;
-          const awayTeamData = isHome ? opponent : state.team;
+          const localTeam = { ...state.team, players: localTeamPlayers };
+          const homeTeamData = isHome ? localTeam : opponent;
+          const awayTeamData = isHome ? opponent : localTeam;
           
           // Calcular asistencia si somos locales
           let attendanceFillRate = 0.7;
@@ -548,6 +552,12 @@ export default function Office() {
                   severity: injury.severity
                 }
               });
+              // Update local team state so subsequent weeks reflect injuries
+              localTeamPlayers = localTeamPlayers.map(p =>
+                p.name === injury.player
+                  ? { ...p, injured: true, injuryWeeksLeft: injury.weeksOut }
+                  : p
+              );
             });
           }
           
@@ -570,8 +580,20 @@ export default function Office() {
         }
       }
       
+      // Heal injuries locally each week (mirrors ADVANCE_WEEK)
+      localTeamPlayers = localTeamPlayers.map(p => {
+        if (p.injured && p.injuryWeeksLeft > 0) {
+          const left = p.injuryWeeksLeft - 1;
+          return left <= 0
+            ? { ...p, injured: false, injuryWeeksLeft: 0, injuryType: null }
+            : { ...p, injuryWeeksLeft: left };
+        }
+        return p;
+      });
+
       // Simular resto de partidos de la semana
-      const teamsWithPlayer = allTeamsMemo.map(t => t.id === state.teamId ? state.team : t);
+      const localTeamForOthers = { ...state.team, players: localTeamPlayers };
+      const teamsWithPlayer = allTeamsMemo.map(t => t.id === state.teamId ? localTeamForOthers : t);
       const otherResult = simulateWeekMatches(
         currentFixtures,
         currentTable,

@@ -11,7 +11,7 @@ export function initializeLeague(teams, playerTeamId) {
   const table = teams.map(team => ({
     teamId: team.id,
     teamName: team.name,
-    shortName: team.shortName,
+    shortName: team.shortName || team.name?.substring(0, 3).toUpperCase() || team.id,
     played: 0,
     won: 0,
     drawn: 0,

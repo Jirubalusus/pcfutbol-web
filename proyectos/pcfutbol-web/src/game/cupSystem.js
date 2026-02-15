@@ -458,7 +458,7 @@ export function simulateCupRound(bracket, roundIdx, playerTeamId, allTeamsData) 
  * @param {string} playerTeamId - ID del equipo del jugador
  * @returns {Object} Bracket actualizado
  */
-export function completeCupMatch(bracket, roundIdx, matchIdx, homeScore, awayScore, playerTeamId) {
+export function completeCupMatch(bracket, roundIdx, matchIdx, homeScore, awayScore, playerTeamId, penaltiesResult = null) {
   if (!bracket || !bracket.rounds[roundIdx]) return bracket;
 
   const match = bracket.rounds[roundIdx].matches[matchIdx];
@@ -468,11 +468,17 @@ export function completeCupMatch(bracket, roundIdx, matchIdx, homeScore, awaySco
   let penalties = false;
 
   if (homeScore === awayScore) {
-    // Penaltis: el jugador tiene 55% de probabilidad de ganar
-    const playerIsHome = match.homeTeam.teamId === playerTeamId;
-    winnerId = Math.random() < 0.55 ? playerTeamId :
-      (playerIsHome ? match.awayTeam.teamId : match.homeTeam.teamId);
     penalties = true;
+    if (penaltiesResult) {
+      // Use pre-calculated penalty result from match simulation
+      winnerId = penaltiesResult.home > penaltiesResult.away
+        ? match.homeTeam.teamId : match.awayTeam.teamId;
+    } else {
+      // Fallback: Penaltis: el jugador tiene 55% de probabilidad de ganar
+      const playerIsHome = match.homeTeam.teamId === playerTeamId;
+      winnerId = Math.random() < 0.55 ? playerTeamId :
+        (playerIsHome ? match.awayTeam.teamId : match.homeTeam.teamId);
+    }
   } else {
     winnerId = homeScore > awayScore ? match.homeTeam.teamId : match.awayTeam.teamId;
   }

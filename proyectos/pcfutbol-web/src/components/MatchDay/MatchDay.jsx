@@ -291,7 +291,9 @@ export default function MatchDay({ onComplete }) {
         awayLineup: isHome ? null : state.lineup,
         // Centro médico: especialización prevención reduce lesiones
         playerIsHome: isHome,
-        medicalPrevention: state.facilitySpecs?.medical === 'prevention' ? 0.30 : 0
+        medicalPrevention: state.facilitySpecs?.medical === 'prevention' ? 0.30 : 0,
+        // Cup/European knockout matches need extra time + penalties on draw
+        knockout: isCupMatch || isEuropeanMatch
       },
       state.playerForm || {},
       state.teamId
@@ -359,7 +361,9 @@ export default function MatchDay({ onComplete }) {
           roundIdx: cupMatchData.roundIdx,
           matchIdx: cupMatchData.matchIdx,
           homeScore: matchResult.homeScore,
-          awayScore: matchResult.awayScore
+          awayScore: matchResult.awayScore,
+          extraTime: matchResult.extraTime || false,
+          penalties: matchResult.penalties || null
         }
       });
 
@@ -423,6 +427,8 @@ export default function MatchDay({ onComplete }) {
         awayTeamId: playerMatch.awayTeam,
         homeScore: matchResult.homeScore,
         awayScore: matchResult.awayScore,
+        extraTime: matchResult.extraTime || false,
+        penalties: matchResult.penalties || null,
         events: matchResult.events || []
       };
 

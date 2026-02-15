@@ -281,9 +281,49 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
     awayTactic
   );
   
+  // Knockout mode: if draw, resolve with extra time then penalties
+  let extraTime = false;
+  let penalties = null;
+  let finalHomeScore = homeScore;
+  let finalAwayScore = awayScore;
+
+  if (context.knockout && homeScore === awayScore) {
+    extraTime = true;
+    // Extra time: ~30% chance someone scores, slight home advantage
+    const etRand = Math.random();
+    if (etRand < 0.18) {
+      // Home scores in extra time
+      finalHomeScore += 1;
+      const scorer = selectScorer(homeTeamData);
+      events.push({ type: 'goal', team: 'home', minute: 90 + Math.floor(Math.random() * 30) + 1, player: scorer?.name || '?', isExtraTime: true });
+    } else if (etRand < 0.30) {
+      // Away scores in extra time
+      finalAwayScore += 1;
+      const scorer = selectScorer(awayTeamData);
+      events.push({ type: 'goal', team: 'away', minute: 90 + Math.floor(Math.random() * 30) + 1, player: scorer?.name || '?', isExtraTime: true });
+    }
+
+    // If still draw after extra time → penalties
+    if (finalHomeScore === finalAwayScore) {
+      const homeRating = homeStrength.rating || 70;
+      const awayRating = awayStrength.rating || 70;
+      // Better team has slight edge in penalties (55/45 max)
+      const homeAdvantage = 0.5 + Math.min(0.05, (homeRating - awayRating) / 200);
+      const homeWinsPens = Math.random() < homeAdvantage;
+      const winnerGoals = Math.floor(Math.random() * 3) + 4; // 4-6 goals
+      const loserGoals = winnerGoals - (Math.floor(Math.random() * 2) + 1); // 1-2 fewer
+      penalties = {
+        home: homeWinsPens ? winnerGoals : loserGoals,
+        away: homeWinsPens ? loserGoals : winnerGoals
+      };
+    }
+  }
+
   return {
-    homeScore,
-    awayScore,
+    homeScore: finalHomeScore,
+    awayScore: finalAwayScore,
+    extraTime,
+    penalties,
     events,
     stats,
     debug: {

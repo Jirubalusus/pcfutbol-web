@@ -93,6 +93,7 @@ export default function Renewals() {
       const updatedPlayer = {
         ...selectedPlayer,
         salary: renewalOffer.newSalary,
+        contractYears: renewalOffer.years,
         personality: {
           ...selectedPlayer.personality,
           contractYears: renewalOffer.years,

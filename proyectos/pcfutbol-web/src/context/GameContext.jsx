@@ -322,6 +322,55 @@ function gameReducer(state, action) {
         sanitized.team = { ...sanitized.team, players: _toArr(sanitized.team.players) || [] };
       }
       
+      // Deep-sanitize cupCompetition nested arrays (rounds[].matches[])
+      if (sanitized.cupCompetition?.rounds) {
+        sanitized.cupCompetition = {
+          ...sanitized.cupCompetition,
+          rounds: _toArr(sanitized.cupCompetition.rounds)?.map(r => r ? {
+            ...r,
+            matches: _toArr(r.matches) || []
+          } : r) || []
+        };
+      }
+      // Deep-sanitize europeanCompetitions nested arrays
+      if (sanitized.europeanCompetitions?.competitions) {
+        const comps = sanitized.europeanCompetitions.competitions;
+        const sanitizedComps = {};
+        for (const [key, comp] of Object.entries(comps)) {
+          if (!comp) { sanitizedComps[key] = comp; continue; }
+          sanitizedComps[key] = {
+            ...comp,
+            standings: _toArr(comp.standings) || [],
+            results: _toArr(comp.results) || [],
+            matchdays: _toArr(comp.matchdays)?.map(md => _toArr(md) || []) || [],
+            knockoutRounds: comp.knockoutRounds ? _toArr(comp.knockoutRounds)?.map(r => r ? {
+              ...r,
+              matches: _toArr(r.matches) || []
+            } : r) : comp.knockoutRounds
+          };
+        }
+        sanitized.europeanCompetitions = { ...sanitized.europeanCompetitions, competitions: sanitizedComps };
+      }
+      // Deep-sanitize saCompetitions similarly
+      if (sanitized.saCompetitions?.competitions) {
+        const comps = sanitized.saCompetitions.competitions;
+        const sanitizedComps = {};
+        for (const [key, comp] of Object.entries(comps)) {
+          if (!comp) { sanitizedComps[key] = comp; continue; }
+          sanitizedComps[key] = {
+            ...comp,
+            standings: _toArr(comp.standings) || [],
+            results: _toArr(comp.results) || [],
+            matchdays: _toArr(comp.matchdays)?.map(md => _toArr(md) || []) || [],
+            knockoutRounds: comp.knockoutRounds ? _toArr(comp.knockoutRounds)?.map(r => r ? {
+              ...r,
+              matches: _toArr(r.matches) || []
+            } : r) : comp.knockoutRounds
+          };
+        }
+        sanitized.saCompetitions = { ...sanitized.saCompetitions, competitions: sanitizedComps };
+      }
+
       // === SALARY MIGRATION ===
       // Recalculate salaries if they don't match the current league tier.
       // Catches: old saves with broken formulas, promotions where salaries weren't updated, etc.
@@ -2083,7 +2132,13 @@ function gameReducer(state, action) {
         f => f.week === state.currentWeek && f.played &&
         (f.homeTeam === state.teamId || f.awayTeam === state.teamId)
       );
-      const playedThisWeek = hadLeagueMatchThisWeek ? (state.convocados || []) : [];
+      // Also count cup/european matches as "played" for form tracking
+      // Check if cup/european weeks correspond to current week (match was played before ADVANCE_WEEK)
+      const hadCupThisWeek = state.cupCompetition && isCupWeek(state.currentWeek, state.europeanCalendar);
+      const hadEuropeanThisWeek = state.europeanCompetitions && isEuropeanWeekDynamic(state.currentWeek, state.europeanCalendar);
+      const hadSAThisWeek = state.saCompetitions && isEuropeanWeekDynamic(state.currentWeek, state.europeanCalendar);
+      const hadAnyMatchThisWeek = hadLeagueMatchThisWeek || hadCupThisWeek || hadEuropeanThisWeek || hadSAThisWeek;
+      const playedThisWeek = hadAnyMatchThisWeek ? (state.convocados || []) : [];
       const updatedTracker = updateMatchTracker(
         state.matchTracker || {},
         state.team?.players || [],
@@ -3856,7 +3911,7 @@ function gameReducer(state, action) {
 
     case 'COMPLETE_CUP_MATCH': {
       // El jugador terminó su partido de copa
-      const { roundIdx, matchIdx, homeScore, awayScore } = action.payload;
+      const { roundIdx, matchIdx, homeScore, awayScore, penalties: penaltiesResult } = action.payload;
       if (!state.cupCompetition) return state;
 
       const updatedBracket = completeCupMatch(
@@ -3865,7 +3920,8 @@ function gameReducer(state, action) {
         matchIdx,
         homeScore,
         awayScore,
-        state.teamId
+        state.teamId,
+        penaltiesResult
       );
 
       const cupMessages = [];
