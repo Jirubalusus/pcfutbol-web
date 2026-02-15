@@ -847,13 +847,13 @@ export default function MatchDay({ onComplete }) {
                 return (
                   <>
                     <div className="team">
-                      <span className="name">{isHome ? getShort(state.team) : getShort(opponent)}</span>
+                      <span className="name">{isHome ? (state.team?.name || getShort(state.team)) : (opponent?.name || getShort(opponent))}</span>
                       <span className="score">{homeGoals}</span>
                     </div>
                     <span className="separator">-</span>
                     <div className="team">
                       <span className="score">{awayGoals}</span>
-                      <span className="name">{!isHome ? getShort(state.team) : getShort(opponent)}</span>
+                      <span className="name">{!isHome ? (state.team?.name || getShort(state.team)) : (opponent?.name || getShort(opponent))}</span>
                     </div>
                   </>
                 );
