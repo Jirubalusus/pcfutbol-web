@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
-import { Settings as SettingsIcon, X, Music, Volume2, Save, Check, XCircle, Trash2, AlertTriangle, LogOut, Globe } from 'lucide-react';
+import { Settings as SettingsIcon, X, Music, Volume2, Save, Check, XCircle, Trash2, AlertTriangle, LogOut, Globe, User, Pencil } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
+import { useAuth } from '../../context/AuthContext';
+import { updateProfile } from 'firebase/auth';
+import { auth } from '../../firebase/config';
 import './Settings.scss';
 
 export default function Settings({ onClose }) {
   const { t, i18n } = useTranslation();
   const { state, dispatch, saveGame } = useGame();
+  const { user } = useAuth();
+  const [editingName, setEditingName] = useState(false);
+  const [newName, setNewName] = useState(user?.displayName || '');
+  const [nameStatus, setNameStatus] = useState(null);
   const [settings, setSettings] = useState(state.settings || {
     difficulty: 'normal',
     matchSpeed: 'normal',
@@ -23,6 +30,23 @@ export default function Settings({ onClose }) {
     const newSettings = { ...settings, [key]: value };
     setSettings(newSettings);
     dispatch({ type: 'UPDATE_SETTINGS', payload: { [key]: value } });
+  };
+
+  const handleNameSave = async () => {
+    const trimmed = newName.trim();
+    if (!trimmed || trimmed.length < 2) { setNameStatus('tooShort'); return; }
+    if (trimmed.length > 24) { setNameStatus('tooLong'); return; }
+    setNameStatus('saving');
+    try {
+      await updateProfile(auth.currentUser, { displayName: trimmed });
+      setNameStatus('saved');
+      setEditingName(false);
+      setTimeout(() => setNameStatus(null), 2000);
+    } catch (e) {
+      console.error('Name update error:', e);
+      setNameStatus('error');
+      setTimeout(() => setNameStatus(null), 3000);
+    }
   };
 
   const handleLanguageChange = (langCode) => {
@@ -109,7 +133,45 @@ export default function Settings({ onClose }) {
           </div>
         </section>
 
-        {/* Dificultad y Velocidad eliminadas - siempre normal */}
+        {/* Nombre del manager */}
+        {user && (
+          <section className="settings__section">
+            <h3><User size={16} /> {t('settings.managerName')}</h3>
+            <div className="settings__name-editor">
+              {!editingName ? (
+                <div className="settings__name-display">
+                  <span className="current-name">{user.displayName || t('office.manager')}</span>
+                  <button className="settings__name-edit-btn" onClick={() => { setNewName(user.displayName || ''); setEditingName(true); }}>
+                    <Pencil size={14} /> {t('settings.changeName')}
+                  </button>
+                </div>
+              ) : (
+                <div className="settings__name-form">
+                  <input
+                    type="text"
+                    value={newName}
+                    onChange={e => setNewName(e.target.value)}
+                    maxLength={24}
+                    placeholder={t('settings.namePlaceholder')}
+                    autoFocus
+                  />
+                  <div className="settings__name-actions">
+                    <button className="cancel" onClick={() => { setEditingName(false); setNameStatus(null); }}>
+                      <X size={14} /> {t('common.cancel')}
+                    </button>
+                    <button className="confirm" onClick={handleNameSave} disabled={nameStatus === 'saving'}>
+                      <Check size={14} /> {nameStatus === 'saving' ? t('common.loading') : t('common.save')}
+                    </button>
+                  </div>
+                  {nameStatus === 'tooShort' && <p className="settings__name-error">{t('settings.nameTooShort')}</p>}
+                  {nameStatus === 'tooLong' && <p className="settings__name-error">{t('settings.nameTooLong')}</p>}
+                  {nameStatus === 'error' && <p className="settings__name-error">{t('settings.nameError')}</p>}
+                  {nameStatus === 'saved' && <p className="settings__name-success">{t('settings.nameSaved')}</p>}
+                </div>
+              )}
+            </div>
+          </section>
+        )}
 
         {/* Toggles */}
         <section className="settings__section">

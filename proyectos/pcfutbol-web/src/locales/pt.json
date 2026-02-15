@@ -890,6 +890,13 @@
   },
   "settings": {
     "title": "Opções",
+        "managerName": "Nome do treinador",
+    "changeName": "Alterar",
+    "namePlaceholder": "Seu nome...",
+    "nameTooShort": "Mínimo 2 caracteres",
+    "nameTooLong": "Máximo 24 caracteres",
+    "nameError": "Erro ao salvar",
+    "nameSaved": "Nome atualizado",
     "language": "Idioma",
     "graphics": "Gráficos",
     "sound": "Som",

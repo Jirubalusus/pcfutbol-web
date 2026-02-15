@@ -316,6 +316,84 @@
     }
   }
 
+  // Name editor
+  &__name-display {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background: var(--color-bg-tertiary);
+    border-radius: 8px;
+
+    .current-name {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+  }
+
+  &__name-edit-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: var(--color-accent);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    &:hover { opacity: 0.9; }
+  }
+
+  &__name-form {
+    input {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      background: var(--color-bg-tertiary);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      color: var(--color-text-primary);
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      &:focus { border-color: var(--color-accent); outline: none; }
+    }
+  }
+
+  &__name-actions {
+    display: flex;
+    gap: 8px;
+
+    button {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      min-height: 44px;
+
+      &.cancel { background: var(--color-bg-tertiary); color: var(--color-text-secondary); }
+      &.confirm { background: var(--color-accent); color: #fff; }
+      &:disabled { opacity: 0.5; }
+    }
+  }
+
+  &__name-error {
+    color: #ff453a;
+    font-size: 0.8rem;
+    margin-top: 0.4rem;
+  }
+
+  &__name-success {
+    color: #30d158;
+    font-size: 0.8rem;
+    margin-top: 0.4rem;
+  }
+
   // Game info
   &__game-info {
     padding: 1rem;

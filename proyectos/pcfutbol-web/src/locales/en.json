@@ -948,6 +948,13 @@
   },
   "settings": {
     "title": "Settings",
+        "managerName": "Manager name",
+    "changeName": "Change",
+    "namePlaceholder": "Your name...",
+    "nameTooShort": "Minimum 2 characters",
+    "nameTooLong": "Maximum 24 characters",
+    "nameError": "Error saving",
+    "nameSaved": "Name updated",
     "language": "Language",
     "graphics": "Graphics",
     "sound": "Sound",

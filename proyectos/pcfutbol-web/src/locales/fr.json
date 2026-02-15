@@ -890,6 +890,13 @@
   },
   "settings": {
     "title": "Options",
+        "managerName": "Nom du coach",
+    "changeName": "Modifier",
+    "namePlaceholder": "Votre nom...",
+    "nameTooShort": "Minimum 2 caractères",
+    "nameTooLong": "Maximum 24 caractères",
+    "nameError": "Erreur de sauvegarde",
+    "nameSaved": "Nom mis à jour",
     "language": "Langue",
     "graphics": "Graphiques",
     "sound": "Son",
