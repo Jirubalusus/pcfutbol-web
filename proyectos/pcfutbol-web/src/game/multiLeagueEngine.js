@@ -1356,13 +1356,21 @@ export function initializeNewSeasonWithPromotions(state, playerTeamId, playoffBr
       ? state.leagueTable
       : state.otherLeagues?.segunda?.table || [];
     
-    const primeraRFEFData = playerLeagueId === 'primeraRFEF'
-      ? (state.leagueGroupData || state.otherLeagues?.primeraRFEF)
-      : state.otherLeagues?.primeraRFEF;
+    // For RFEF group leagues, reconstruct full group data by merging player's group back in
+    const reconstructGroupData = (leagueId) => {
+      const otherData = state.otherLeagues?.[leagueId];
+      if (playerLeagueId !== leagueId || !state.playerGroupId) return otherData;
+      // Player's group data is in state.leagueTable/fixtures, other groups in otherLeagues
+      const fullGroups = { ...(otherData?.groups || {}) };
+      fullGroups[state.playerGroupId] = {
+        table: state.leagueTable || [],
+        fixtures: state.fixtures || []
+      };
+      return { isGroupLeague: true, groups: fullGroups, playerGroup: state.playerGroupId };
+    };
     
-    const segundaRFEFData = playerLeagueId === 'segundaRFEF'
-      ? (state.leagueGroupData || state.otherLeagues?.segundaRFEF)
-      : state.otherLeagues?.segundaRFEF;
+    const primeraRFEFData = reconstructGroupData('primeraRFEF');
+    const segundaRFEFData = reconstructGroupData('segundaRFEF');
     
     // Process LaLiga ↔ Segunda promotion/relegation (existing logic)
     let laligaSegundaChanges = { changes: { relegated: [], promoted: [], playoffWinner: '' } };

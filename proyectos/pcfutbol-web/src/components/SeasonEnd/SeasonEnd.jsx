@@ -141,7 +141,16 @@ export default function SeasonEnd({ allTeams, onComplete }) {
     if (rfefPlayoffBrackets) return;
     
     // Get group league data
-    const groupLeagueData = state.leagueGroupData || state.otherLeagues?.[playerLeagueId];
+    // Reconstruct full group data: merge player's group (state.leagueTable/fixtures) with other groups from otherLeagues
+    let groupLeagueData = state.otherLeagues?.[playerLeagueId];
+    if (state.playerGroupId && groupLeagueData) {
+      const fullGroups = { ...(groupLeagueData.groups || {}) };
+      fullGroups[state.playerGroupId] = {
+        table: state.leagueTable || [],
+        fixtures: state.fixtures || []
+      };
+      groupLeagueData = { isGroupLeague: true, groups: fullGroups, playerGroup: state.playerGroupId };
+    }
     if (!groupLeagueData?.groups) return;
     
     const rfefTeams = playerLeagueId === 'primeraRFEF' ? getPrimeraRfefTeams() : getSegundaRfefTeams();

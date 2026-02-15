@@ -18,7 +18,7 @@ import { simulateEuropeanMatchday, advanceEuropeanPhase, recordPlayerLeagueResul
 import { isSouthAmericanLeague } from '../game/southAmericanCompetitions';
 import { simulateSAMatchday, advanceSAPhase, recordPlayerSALeagueResult, recordPlayerSAKnockoutResult, getPlayerSACompetition } from '../game/southAmericanSeason';
 import { simulateCupRound, completeCupMatch, getCupRoundName } from '../game/cupSystem';
-import { simulateOtherLeaguesWeek, isAperturaClausura, getClausuraStartWeek, getLastClausuraWeek, simulateAperturaClausuraFinal, LEAGUE_CONFIG } from '../game/multiLeagueEngine';
+import { simulateOtherLeaguesWeek, isAperturaClausura, getClausuraStartWeek, getLastClausuraWeek, simulateAperturaClausuraFinal, LEAGUE_CONFIG, initializeOtherLeagues } from '../game/multiLeagueEngine';
 import { sortTable } from '../game/leagueEngine';
 import { updateWeeklyForm, updateMatchTracker, tickRejectedTransfers, generateInitialForm, generateAIForm, FORM_STATES, getFormMatchModifier } from '../game/formSystem';
 import { generateLoanOffers, expireLoans, simulateAILoans, createLoan } from '../game/loanSystem';
@@ -361,7 +361,18 @@ function gameReducer(state, action) {
         rankedMatchId: null,
       } : {};
 
-      return { ...state, ...sanitized, ...cleanRanked, loaded: true, _contrarrelojUserId: sanitized._contrarrelojUserId || null, _proManagerUserId: sanitized._proManagerUserId || null };
+      // Reconstruct otherLeagues if missing (stripped from saves to reduce size)
+      let otherLeaguesData = sanitized.otherLeagues;
+      if (!otherLeaguesData && sanitized.gameStarted) {
+        try {
+          otherLeaguesData = initializeOtherLeagues(
+            sanitized.playerLeagueId || sanitized.leagueId || 'laliga',
+            sanitized.playerGroupId || null
+          );
+        } catch (e) { console.warn('Failed to reconstruct otherLeagues:', e); }
+      }
+      
+      return { ...state, ...sanitized, ...cleanRanked, otherLeagues: otherLeaguesData || state.otherLeagues, loaded: true, _contrarrelojUserId: sanitized._contrarrelojUserId || null, _proManagerUserId: sanitized._proManagerUserId || null };
     }
 
     case 'NEW_GAME': {
@@ -534,6 +545,7 @@ function gameReducer(state, action) {
         teamId: team.id,
         team: { ...team },
         leagueId: leagueId,
+        playerLeagueId: leagueId,
         leagueTier: leagueId ? getLeagueTier(leagueId) : 1,
         money: team.budget || 5_000_000,
         loaded: true,
@@ -2471,7 +2483,7 @@ function gameReducer(state, action) {
       for (let i = 0; i < count; i++) {
         currentState = gameReducer(currentState, { type: 'ADVANCE_WEEK', _batchMode: true });
         // Early exit if manager fired, contrarreloj ended, or season screen changed
-        if (currentState.managerFired || currentState.contrarrelojData?.finished) break;
+        if (currentState.managerFired || currentState.contrarrelojData?.finished || currentState.pendingAperturaClausuraFinal) break;
         // If a pending match was generated, run one more ADVANCE_WEEK to auto-resolve it
         // (the auto-resolve code at the start of ADVANCE_WEEK handles European, SA, and cup)
         if (currentState.pendingCupMatch || currentState.pendingEuropeanMatch || currentState.pendingSAMatch) {

@@ -536,9 +536,9 @@ export default function Office() {
           
           // Note: During batch simulation, injuries from match events are NOT dispatched
           // individually because ADVANCE_WEEKS_BATCH will also process injuries via ADVANCE_WEEK,
-          // which would double-count them (heal 1 week immediately). Instead, we only dispatch
-          // injuries for single-week (non-batch) simulation.
-          if (numWeeks <= 1) {
+          // Always dispatch injuries — ADVANCE_WEEK heals by decrementing weeksLeft,
+          // which is correct: injury on week N gets 1 week healed on N+1.
+          {
             playerInjuries.forEach(injury => {
               dispatch({
                 type: 'INJURE_PLAYER',
