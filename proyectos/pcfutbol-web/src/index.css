@@ -137,6 +137,26 @@ body {
   }
 }
 
+/* === Midnight Theme === */
+[data-theme="midnight"] body {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 40% at 90% 100%, rgba(59, 130, 246, 0.06) 0%, transparent 40%);
+}
+
+[data-theme="midnight"] ::selection {
+  background: rgba(99, 102, 241, 0.4);
+  color: #fff;
+}
+
+[data-theme="midnight"] ::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.25);
+}
+
+[data-theme="midnight"] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.40);
+}
+
 /* === Glass Theme === */
 [data-theme="glass"] body {
   background:

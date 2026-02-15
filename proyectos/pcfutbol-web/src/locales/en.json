@@ -1013,7 +1013,8 @@
     "appearance": "Appearance",
     "themeClassic": "Classic",
     "themeModern": "Modern",
-    "themeGlass": "Glass"
+    "themeGlass": "Glass",
+    "themeMidnight": "Midnight"
   },
   "sidebar": {
     "office": "Office",

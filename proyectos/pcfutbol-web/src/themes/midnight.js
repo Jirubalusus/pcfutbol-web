@@ -1,0 +1,42 @@
+// Midnight — premium dark theme with deep blues and vibrant accents
+const midnight = {
+  id: 'midnight',
+  nameKey: 'settings.themeMidnight',
+  variables: {
+    '--color-bg-primary': '#0a0e1a',
+    '--color-bg-secondary': '#111827',
+    '--color-bg-tertiary': '#1a2235',
+    '--color-bg-card': 'rgba(30, 45, 75, 0.40)',
+    '--color-bg-card-hover': 'rgba(40, 60, 100, 0.45)',
+    '--color-glass': 'rgba(20, 35, 65, 0.50)',
+    '--color-glass-border': 'rgba(70, 100, 160, 0.18)',
+    '--backdrop-blur': 'blur(16px)',
+    '--color-accent': '#6366f1',
+    '--color-accent-rgb': '99, 102, 241',
+    '--color-accent-secondary': '#3b82f6',
+    '--color-accent-secondary-rgb': '59, 130, 246',
+    '--color-success': '#22c55e',
+    '--color-success-rgb': '34, 197, 94',
+    '--color-warning': '#f59e0b',
+    '--color-warning-rgb': '245, 158, 11',
+    '--color-danger': '#ef4444',
+    '--color-danger-rgb': '239, 68, 68',
+    '--color-text-primary': 'rgba(255, 255, 255, 0.95)',
+    '--color-text-secondary': 'rgba(255, 255, 255, 0.60)',
+    '--color-text-tertiary': 'rgba(255, 255, 255, 0.35)',
+    '--shadow-sm': '0 2px 8px rgba(0, 0, 0, 0.4)',
+    '--shadow-md': '0 4px 24px rgba(0, 0, 0, 0.5)',
+    '--shadow-lg': '0 8px 48px rgba(0, 0, 0, 0.6)',
+    '--shadow-glow': '0 0 30px rgba(99, 102, 241, 0.20)',
+    '--shadow-glow-success': '0 0 30px rgba(34, 197, 94, 0.20)',
+  },
+  colorScheme: 'dark',
+  preview: {
+    bg: '#0a0e1a',
+    card: '#1a2235',
+    accent: '#6366f1',
+    text: '#ffffff',
+  },
+};
+
+export default midnight;

@@ -960,7 +960,8 @@
     "appearance": "Aspetto",
     "themeClassic": "Classico",
     "themeModern": "Moderno",
-    "themeGlass": "Glass"
+    "themeGlass": "Glass",
+    "themeMidnight": "Midnight"
   },
   "sidebar": {
     "office": "Ufficio",

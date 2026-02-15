@@ -999,7 +999,8 @@
     "appearance": "Apariencia",
     "themeClassic": "Clásico",
     "themeModern": "Moderno",
-    "themeGlass": "Glass"
+    "themeGlass": "Glass",
+    "themeMidnight": "Midnight"
   },
   "sidebar": {
     "office": "Despacho",
