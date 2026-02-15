@@ -152,6 +152,8 @@
     "stillPlay": "Do you want to continue with the match?",
     "checkFormation": "Go to Formation and substitute the injured players before continuing.",
     "welcome": "Welcome, Manager",
+    "welcomeName": "Welcome, {{name}}",
+    "manager": "Manager",
     "preseason": "Preseason {{week}}/{{total}}",
     "players": "players",
     "boardConfidence": "Board confidence",

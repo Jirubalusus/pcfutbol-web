@@ -110,6 +110,8 @@
     "stillPlay": "Möchten Sie trotzdem mit dem Spiel fortfahren?",
     "checkFormation": "Gehen Sie zur Aufstellung und ersetzen Sie die verletzten Spieler, bevor Sie fortfahren.",
     "welcome": "Willkommen, Trainer",
+    "welcomeName": "Willkommen, {{name}}",
+    "manager": "Trainer",
     "preseason": "Vorbereitung {{week}}/{{total}}",
     "players": "Spieler",
     "boardConfidence": "Vertrauen der Vereinsführung",

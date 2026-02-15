@@ -110,6 +110,8 @@
     "stillPlay": "Voulez-vous continuer avec le match?",
     "checkFormation": "Allez · la Composition et remplacez les joueurs blessés avant de continuer.",
     "welcome": "Bienvenue, Entraéneur",
+    "welcomeName": "Bienvenue, {{name}}",
+    "manager": "Coach",
     "preseason": "Pré-saison {{week}}/{{total}}",
     "players": "joueurs",
     "boardConfidence": "Confiance de la direction",

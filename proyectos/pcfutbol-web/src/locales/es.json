@@ -138,6 +138,8 @@
     "stillPlay": "¿Quieres seguir con el partido?",
     "checkFormation": "Ve a Alineación y sustituye a los lesionados antes de continuar.",
     "welcome": "Bienvenido, Míster",
+    "welcomeName": "Bienvenido, {{name}}",
+    "manager": "Míster",
     "preseason": "Pretemporada {{week}}/{{total}}",
     "players": "jugadores",
     "boardConfidence": "Confianza de la directiva",

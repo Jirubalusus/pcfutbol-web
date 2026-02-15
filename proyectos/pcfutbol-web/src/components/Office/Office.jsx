@@ -756,7 +756,7 @@ export default function Office() {
       <div className="office__overview">
         {state.gameMode === 'promanager' && <ProManagerDashboard />}
         <div className="office__welcome">
-          <h2>{t('office.welcome')}</h2>
+          <h2>{t('office.welcomeName', { name: user?.displayName || t('office.manager') })}</h2>
           <p>{t('office.seasonInfo', { season: state.currentSeason })} · {state.preseasonPhase ? t('office.preseason', { week: state.preseasonWeek, total: state.preseasonMatches?.length || 5 }) : t('office.weekInfo', { week: state.currentWeek })}</p>
         </div>
         
