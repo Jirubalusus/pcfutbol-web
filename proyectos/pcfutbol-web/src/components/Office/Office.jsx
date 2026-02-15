@@ -454,7 +454,7 @@ export default function Office() {
             const teamPosition = currentTable.findIndex(t => t.teamId === state.teamId) + 1 || 10;
             const teamEntry = currentTable.find(t => t.teamId === state.teamId);
             
-            const leagueId = state.leagueId || 'laliga';
+            const leagueId = state.playerLeagueId || state.leagueId || 'laliga';
             const division = ['segunda', 'segundaRFEF', 'primeraRFEF'].includes(leagueId) ? 2 : 1;
             const teamPlayers = state.team?.players || [];
             const teamOvr = teamPlayers.length > 0 
@@ -499,7 +499,7 @@ export default function Office() {
             const tPrice = (stadium.ticketPrice ?? 30) + (stadium.matchPriceAdjust || 0);
             const sLevel = stadium.level ?? 0;
             
-            const leagueId = state.leagueId || 'laliga';
+            const leagueId = state.playerLeagueId || state.leagueId || 'laliga';
             const division = ['segunda', 'segundaRFEF', 'primeraRFEF'].includes(leagueId) ? 2 : 1;
             const teamPlayers = state.team?.players || [];
             const teamOvr = teamPlayers.length > 0 

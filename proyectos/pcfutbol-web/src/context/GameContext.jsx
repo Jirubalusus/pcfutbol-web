@@ -937,7 +937,8 @@ function gameReducer(state, action) {
       });
 
       // Calcular dinero final tras temporada
-      const seasonEndMoney = state.money + (moneyChange || 0) + (state.stadium?.accumulatedTicketIncome ?? 0) + (state.stadium?.seasonTicketIncomeCollected ?? 0);
+      const namingRightsIncome = updatedNaming ? (updatedNaming.yearlyIncome || 0) : 0;
+      const seasonEndMoney = state.money + (moneyChange || 0) + (state.stadium?.accumulatedTicketIncome ?? 0) + (state.stadium?.seasonTicketIncomeCollected ?? 0) + namingRightsIncome;
 
       // Check bancarrota al final de temporada
       const isBankruptAtSeasonEnd = seasonEndMoney < 0;
