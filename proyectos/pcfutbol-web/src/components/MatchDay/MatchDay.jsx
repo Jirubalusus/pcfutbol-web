@@ -876,7 +876,7 @@ export default function MatchDay({ onComplete }) {
             
             <div className="match-day__events" ref={eventsRef}>
               {matchResult.events.slice(0, eventIndex).map((event, idx) => (
-                <div key={idx} className={`match-day__event ${event.team} ${event.type} ${event.goalType || ''}`}>
+                <div key={idx} className={`match-day__event ${event.team} ${event.type} ${event.goalType || ''} ${event.type === 'goal' ? (event.team === (isHome ? 'home' : 'away') ? 'player-goal' : 'opponent-goal') : ''}`}>
                   <span className="minute">{event.minute}'</span>
                   <span className="icon">
                     {event.type === 'goal' && <Circle size={16} className="icon-goal" />}
@@ -1012,7 +1012,7 @@ export default function MatchDay({ onComplete }) {
                       : <HeartPulse size={16} className="icon-injury" />;
                     
                     return (
-                      <div key={idx} className={`timeline-event ${isHomeEvent ? 'home' : 'away'} ${event.type}`}>
+                      <div key={idx} className={`timeline-event ${isHomeEvent ? 'home' : 'away'} ${event.type} ${event.type === 'goal' ? (event.team === (playerIsHome ? 'home' : 'away') ? 'player-goal' : 'opponent-goal') : ''}`}>
                         <div className="event-minute">{event.minute}'</div>
                         <div className="event-line">
                           <div className="event-dot">{icon}</div>

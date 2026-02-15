@@ -352,6 +352,17 @@
 
     &.goal {
       background: rgba(48, 209, 88, 0.1);
+      
+      &.opponent-goal {
+        background: rgba(255, 69, 58, 0.1);
+        
+        .icon-goal {
+          color: #ff453a;
+          fill: #ff453a;
+          stroke: #cc362e;
+          filter: drop-shadow(0 0 3px rgba(255, 69, 58, 0.4));
+        }
+      }
     }
 
     &.golazo {
@@ -731,6 +742,16 @@
 
     &.goal {
       .event-player { color: var(--color-success); font-weight: 700; }
+      
+      &.opponent-goal {
+        .event-player { color: #ff453a; }
+        .icon-goal {
+          color: #ff453a;
+          fill: #ff453a;
+          stroke: #cc362e;
+          filter: drop-shadow(0 0 3px rgba(255, 69, 58, 0.4));
+        }
+      }
     }
 
     .event-minute {
