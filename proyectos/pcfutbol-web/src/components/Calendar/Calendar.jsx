@@ -132,7 +132,7 @@ export default function Calendar() {
       if (cupSet.has(w) && hasCup) {
         const cupNum = (cupWeeks || []).indexOf(w) + 1;
         const roundIdx = getCupRoundForWeek(w, calendar);
-        const roundName = (roundIdx !== null && state.cupCompetition.rounds?.[roundIdx]?.name) || `Ronda ${cupNum}`;
+        const roundName = (roundIdx !== null && state.cupCompetition.rounds?.[roundIdx]?.name) || t('calendar.round', { num: cupNum });
         const cupRoundPlayed = roundIdx !== null &&
           state.cupCompetition.rounds?.[roundIdx]?.matches?.some(m => m.played);
         let shortLabel = roundName;
@@ -333,8 +333,8 @@ export default function Calendar() {
   const stripName = (name) => {
     if (!name) return '???';
     return name
-      .replace(/^(FC |CF |CD |UD |RC |SD |CA |RCD )/, '')
-      .replace(/( CF| FC| CD| UD| Balompié| de Fútbol)$/, '')
+      .replace(/^(FC |CF |CD |UD |RC |SD |CA |RCD |SC |AC |AS |SS |US |SV |TSV |VfB |VfL |1\. |BSC |FK |SK |NK |GNK |IF |BK |AIK )/, '')
+      .replace(/( CF| FC| CD| UD| Balompié| de Fútbol| SK| FK| IF| BK)$/, '')
       .trim();
   };
 
@@ -365,10 +365,10 @@ export default function Calendar() {
 
   // ── Nav title ──
   const getNavTitle = () => {
-    if (!selectedEntry) return { label: 'Jornada', sublabel: '1' };
-    const phaseFullLabels = { league: 'Jornada', playoff: 'Playoff', r16: 'Octavos', qf: 'Cuartos', sf: 'Semi', final: 'Final' };
+    if (!selectedEntry) return { label: t('calendar.matchday'), sublabel: '1' };
+    const phaseFullLabels = { league: t('calendar.matchday'), playoff: t('calendar.playoff'), r16: t('calendar.r16'), qf: t('calendar.qf'), sf: t('calendar.sf'), final: t('calendar.final') };
     switch (selectedEntry.type) {
-      case 'league': return { label: 'Jornada', sublabel: String(selectedEntry.number) };
+      case 'league': return { label: t('calendar.matchday'), sublabel: String(selectedEntry.number) };
       case 'european': {
         let pi;
         if (isInSALeague) {
@@ -436,10 +436,10 @@ export default function Calendar() {
     <div className="calendar-v2">
       {/* Header */}
       <div className="calendar-v2__header">
-        <h2><CalendarDays size={24} /> Calendario</h2>
+        <h2><CalendarDays size={24} /> {t('calendar.title')}</h2>
         <div className="header-badges">
           <span className="league-badge">{getLeagueName(state.leagueId)}</span>
-          <span className="season-badge">Temporada {state.currentSeason || 1}</span>
+          <span className="season-badge">{t('calendar.season')} {state.currentSeason || 1}</span>
         </div>
       </div>
 
@@ -471,7 +471,7 @@ export default function Calendar() {
               entry.played && 'played'
             ].filter(Boolean).join(' ')}
             onClick={() => setSelectedIdx(idx)}
-            title={entry.type === 'cup' ? entry.fullLabel : entry.type === 'european' ? (isInSALeague ? `Sudamericana ${entry.label}` : `Europa ${entry.label}`) : `Jornada ${entry.number}`}
+            title={entry.type === 'cup' ? entry.fullLabel : entry.type === 'european' ? (isInSALeague ? `${t('calendar.southAmerican')} ${entry.label}` : `${t('calendar.european')} ${entry.label}`) : `${t('calendar.matchday')} ${entry.number}`}
           >
             {entry.label}
           </button>
@@ -484,7 +484,7 @@ export default function Calendar() {
         {/* ── League ── */}
         {selectedEntry?.type === 'league' && (
           weekFixtures.length === 0 ? (
-            <div className="no-fixtures"><Circle size={48} /><p>No hay partidos en esta jornada</p></div>
+            <div className="no-fixtures"><Circle size={48} /><p>{t('calendar.noMatches')}</p></div>
           ) : weekFixtures.map((fixture, idx) => {
             const pm = isPlayerMatch(fixture);
             const pr = getPlayerResult(fixture);
@@ -539,7 +539,7 @@ export default function Calendar() {
             <div className="competition-section">
               <div className="competition-badge competition-badge--cup">
                 <span className="comp-icon">{state.cupCompetition?.config?.icon || '🏆'}</span>
-                <span className="comp-name">{state.cupCompetition?.config?.shortName || 'Copa'}</span>
+                <span className="comp-name">{state.cupCompetition?.config?.shortName || t('calendar.cup')}</span>
                 <span className="comp-phase">{selectedEntry.fullLabel}</span>
               </div>
               {allCupFixtures.map((m, idx) => {

@@ -568,7 +568,15 @@
     "week": "Semana",
     "noEuropeanMatches": "Nenhuma partida europeia nesta rodada",
     "noSouthAmericanMatches": "Nenhuma partida sul-americana nesta rodada",
-    "noCupMatches": "Nenhuma partida de copa nesta rodada"
+    "noCupMatches": "Nenhuma partida de copa nesta rodada",
+    "season": "Temporada",
+    "noMatches": "Sem jogos nesta jornada",
+    "round": "Ronda {{num}}",
+    "r16": "Oitavos",
+    "qf": "Quartos",
+    "sf": "Meias",
+    "playoff": "Playoff",
+    "final": "Final"
   },
   "matchday": {
     "title": "Dia de Jogo",

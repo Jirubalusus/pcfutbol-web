@@ -568,7 +568,15 @@
     "week": "Settimana",
     "noEuropeanMatches": "Nessuna partita europea in questa giornata",
     "noSouthAmericanMatches": "Nessuna partita sudamericana in questa giornata",
-    "noCupMatches": "Nessuna partita di coppa in questo turno"
+    "noCupMatches": "Nessuna partita di coppa in questo turno",
+    "season": "Stagione",
+    "noMatches": "Nessuna partita in questa giornata",
+    "round": "Turno {{num}}",
+    "r16": "Ottavi",
+    "qf": "Quarti",
+    "sf": "Semifinali",
+    "playoff": "Playoff",
+    "final": "Finale"
   },
   "matchday": {
     "title": "Giorno della Partita",

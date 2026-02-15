@@ -612,7 +612,15 @@
     "week": "Week",
     "noEuropeanMatches": "No European matches this matchday",
     "noSouthAmericanMatches": "No South American matches this matchday",
-    "noCupMatches": "No cup matches this round"
+    "noCupMatches": "No cup matches this round",
+    "season": "Season",
+    "noMatches": "No matches this matchday",
+    "round": "Round {{num}}",
+    "r16": "Round of 16",
+    "qf": "Quarter-finals",
+    "sf": "Semi-finals",
+    "playoff": "Playoff",
+    "final": "Final"
   },
   "matchday": {
     "title": "Match Day",

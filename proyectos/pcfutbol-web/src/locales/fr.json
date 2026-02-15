@@ -568,7 +568,15 @@
     "week": "Semaine",
     "noEuropeanMatches": "Aucun match européen cette journée",
     "noSouthAmericanMatches": "Aucun match sud-américain cette journée",
-    "noCupMatches": "Aucun match de coupe ce tour"
+    "noCupMatches": "Aucun match de coupe ce tour",
+    "season": "Saison",
+    "noMatches": "Pas de matchs cette journée",
+    "round": "Tour {{num}}",
+    "r16": "Huitièmes",
+    "qf": "Quarts",
+    "sf": "Demis",
+    "playoff": "Barrage",
+    "final": "Finale"
   },
   "matchday": {
     "title": "Jour de Match",

@@ -568,7 +568,15 @@
     "week": "Woche",
     "noEuropeanMatches": "Keine europüischen Spiele an diesem Spieltag",
     "noSouthAmericanMatches": "Keine südamerikanischen Spiele an diesem Spieltag",
-    "noCupMatches": "Keine Pokalspiele in dieser Runde"
+    "noCupMatches": "Keine Pokalspiele in dieser Runde",
+    "season": "Saison",
+    "noMatches": "Keine Spiele an diesem Spieltag",
+    "round": "Runde {{num}}",
+    "r16": "Achtelfinale",
+    "qf": "Viertelfinale",
+    "sf": "Halbfinale",
+    "playoff": "Playoff",
+    "final": "Finale"
   },
   "matchday": {
     "title": "Spieltag",
