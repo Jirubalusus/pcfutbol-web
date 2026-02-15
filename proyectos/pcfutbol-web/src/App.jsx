@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { GameProvider, useGame } from './context/GameContext';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { DataProvider } from './context/DataProvider';
+import { ThemeProvider } from './context/ThemeContext';
 import { ToastProvider } from './components/Toast/Toast';
 import ErrorBoundary from './components/ErrorBoundary';
 import NotificationCenter from './components/Notifications/NotificationCenter';
@@ -104,6 +105,7 @@ function GameRouter() {
 function App() {
   return (
     <ErrorBoundary>
+      <ThemeProvider>
       <ToastProvider>
         <AuthProvider>
           <DataProvider>
@@ -113,6 +115,7 @@ function App() {
           </DataProvider>
         </AuthProvider>
       </ToastProvider>
+      </ThemeProvider>
     </ErrorBoundary>
   );
 }

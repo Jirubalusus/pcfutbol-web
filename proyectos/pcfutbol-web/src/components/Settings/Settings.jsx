@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { Settings as SettingsIcon, X, Music, Volume2, Save, Check, XCircle, Trash2, AlertTriangle, LogOut, Globe, User, Pencil } from 'lucide-react';
+import { Settings as SettingsIcon, X, Music, Volume2, Save, Check, XCircle, Trash2, AlertTriangle, LogOut, Globe, User, Pencil, Palette } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { useAuth } from '../../context/AuthContext';
+import { useTheme } from '../../context/ThemeContext';
+import { themeList } from '../../themes';
 import { updateProfile } from 'firebase/auth';
 import { auth } from '../../firebase/config';
 import './Settings.scss';
@@ -11,6 +13,7 @@ export default function Settings({ onClose }) {
   const { t, i18n } = useTranslation();
   const { state, dispatch, saveGame } = useGame();
   const { user } = useAuth();
+  const { themeId, changeTheme } = useTheme();
   const [editingName, setEditingName] = useState(false);
   const [newName, setNewName] = useState(user?.displayName || '');
   const [nameStatus, setNameStatus] = useState(null);
@@ -128,6 +131,33 @@ export default function Settings({ onClose }) {
               >
                 <span className="flag">{lang.flag}</span>
                 <span className="name">{lang.name}</span>
+              </button>
+            ))}
+          </div>
+        </section>
+
+        {/* Apariencia / Theme */}
+        <section className="settings__section">
+          <h3><Palette size={16} /> {t('settings.appearance')}</h3>
+          <div className="settings__theme-grid">
+            {themeList.map(theme => (
+              <button
+                key={theme.id}
+                className={`settings__theme-card ${themeId === theme.id ? 'active' : ''}`}
+                onClick={() => changeTheme(theme.id)}
+              >
+                <div className="theme-preview" style={{
+                  background: theme.preview.bg,
+                  borderColor: themeId === theme.id ? theme.preview.accent : 'transparent',
+                }}>
+                  <div className="theme-preview__card" style={{ background: theme.preview.card }}>
+                    <div className="theme-preview__line" style={{ background: theme.preview.text, opacity: 0.7 }} />
+                    <div className="theme-preview__line theme-preview__line--short" style={{ background: theme.preview.text, opacity: 0.4 }} />
+                  </div>
+                  <div className="theme-preview__accent" style={{ background: theme.preview.accent }} />
+                </div>
+                <span className="theme-name">{t(theme.nameKey)}</span>
+                {themeId === theme.id && <Check size={14} className="theme-check" />}
               </button>
             ))}
           </div>

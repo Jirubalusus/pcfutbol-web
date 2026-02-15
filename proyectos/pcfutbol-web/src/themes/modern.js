@@ -1,0 +1,42 @@
+// Modern Light — clean football management dashboard
+const modern = {
+  id: 'modern',
+  nameKey: 'settings.themeModern',
+  variables: {
+    '--color-bg-primary': '#e2e8de',
+    '--color-bg-secondary': '#f5f7f3',
+    '--color-bg-tertiary': '#eaefe7',
+    '--color-bg-card': 'rgba(255, 255, 255, 0.85)',
+    '--color-bg-card-hover': 'rgba(255, 255, 255, 0.95)',
+    '--color-glass': 'rgba(255, 255, 255, 0.70)',
+    '--color-glass-border': 'rgba(0, 0, 0, 0.08)',
+    '--backdrop-blur': 'blur(12px)',
+    '--color-accent': '#2d8a6e',
+    '--color-accent-rgb': '45, 138, 110',
+    '--color-accent-secondary': '#1a6b52',
+    '--color-accent-secondary-rgb': '26, 107, 82',
+    '--color-success': '#22a55b',
+    '--color-success-rgb': '34, 165, 91',
+    '--color-warning': '#e09f00',
+    '--color-warning-rgb': '224, 159, 0',
+    '--color-danger': '#dc3545',
+    '--color-danger-rgb': '220, 53, 69',
+    '--color-text-primary': 'rgba(26, 26, 46, 0.95)',
+    '--color-text-secondary': 'rgba(45, 45, 58, 0.65)',
+    '--color-text-tertiary': 'rgba(107, 114, 128, 0.80)',
+    '--shadow-sm': '0 1px 3px rgba(0, 0, 0, 0.08)',
+    '--shadow-md': '0 4px 12px rgba(0, 0, 0, 0.10)',
+    '--shadow-lg': '0 8px 30px rgba(0, 0, 0, 0.12)',
+    '--shadow-glow': '0 0 20px rgba(45, 138, 110, 0.15)',
+    '--shadow-glow-success': '0 0 20px rgba(34, 165, 91, 0.15)',
+  },
+  colorScheme: 'light',
+  preview: {
+    bg: '#e2e8de',
+    card: '#ffffff',
+    accent: '#2d8a6e',
+    text: '#1a1a2e',
+  },
+};
+
+export default modern;

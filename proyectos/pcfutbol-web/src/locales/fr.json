@@ -1,4 +1,4 @@
-{
+﻿{
   "common": {
     "save": "Sauvegarder",
     "cancel": "Annuler",
@@ -956,7 +956,10 @@
     "speedNormalDesc": "Vitesse standard",
     "speedFast": "Rapide",
     "speedFastDesc": "Matchs plus courts",
-    "yesDeleteAll": "Oui, tout supprimer"
+    "yesDeleteAll": "Oui, tout supprimer",
+    "appearance": "Apparence",
+    "themeClassic": "Classique",
+    "themeModern": "Moderne"
   },
   "sidebar": {
     "office": "Bureau",

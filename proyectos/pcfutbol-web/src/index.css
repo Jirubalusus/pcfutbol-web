@@ -101,6 +101,42 @@ body {
     radial-gradient(ellipse 60% 40% at 80% 100%, rgba(30, 100, 180, 0.15) 0%, transparent 40%);
 }
 
+/* Modern Light theme overrides */
+[data-theme="modern"] body {
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% -20%, rgba(45, 138, 110, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 80% 100%, rgba(45, 138, 110, 0.06) 0%, transparent 40%);
+}
+
+[data-theme="modern"] ::selection {
+  background: rgba(45, 138, 110, 0.3);
+  color: #1a1a2e;
+}
+
+[data-theme="modern"] ::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="modern"] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 768px) {
+  [data-theme="modern"] .office__card,
+  [data-theme="modern"] .card,
+  [data-theme="modern"] .glass-card,
+  [data-theme="modern"] .player-row,
+  [data-theme="modern"] .stat-card,
+  [data-theme="modern"] .finance-box,
+  [data-theme="modern"] .league-card,
+  [data-theme="modern"] .country-card,
+  [data-theme="modern"] .preseason-card,
+  [data-theme="modern"] .intensity-card-v2 {
+    background: var(--color-bg-card) !important;
+    border-color: var(--color-glass-border) !important;
+  }
+}
+
 #root {
   min-height: 100vh;
   min-height: 100dvh;
