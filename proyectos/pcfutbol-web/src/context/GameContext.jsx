@@ -884,7 +884,9 @@ function gameReducer(state, action) {
 
       // Generar "hijos" de jugadores retirados del equipo del jugador
       const retirementSons = retiringPlayers.map(retired => generateSonPlayer(retired));
-      const finalPlayers = [...updatedPlayers, ...retirementSons];
+      let finalPlayers = [...updatedPlayers, ...retirementSons];
+      // Clear tactical bonus when specs reset
+      finalPlayers = finalPlayers.map(p => ({ ...p, tacticalBonus: 0 }));
 
       // Mensajes de retiros e hijos
       const retirementMessages = [];
@@ -1506,7 +1508,10 @@ function gameReducer(state, action) {
 
       // Sponsorship weekly income based on facility level
       const sponsorLevel = state.facilities?.sponsorship || 0;
-      const sponsorWeeklyIncome = [0, 25000, 70000, 140000, 235000][sponsorLevel] || 0;
+      const baseSponsorIncome = [0, 25000, 70000, 140000, 235000][sponsorLevel] || 0;
+      // Scale by league tier - use facility cost multiplier for consistency
+      const sponsorMult = { laliga: 1.0, premierLeague: 1.2, serieA: 0.85, bundesliga: 0.9, ligue1: 0.8, segunda: 0.4, primeraRFEF: 0.15, segundaRFEF: 0.08 }[state.playerLeagueId] || 0.5;
+      const sponsorWeeklyIncome = Math.round(baseSponsorIncome * sponsorMult);
       const totalIncome = sponsorWeeklyIncome;
 
       // Salaries are NOT deducted weekly â€" they are paid at end of season
@@ -1550,6 +1555,54 @@ function gameReducer(state, action) {
       }) || [];
       // Free medical slots for healed players
       const updatedMedicalSlots = (state.medicalSlots || []).filter(name => !healedPlayerNames.includes(name));
+
+      // Apply weekly training
+      if (state.training?.intensity) {
+        const trainingType = state.training.type || 'balanced';
+        const intensity = state.training.intensity || 'normal';
+        const trainingFacilityLevel = state.facilities?.training || 0;
+        const intensityModifiers = { light: 0.5, normal: 1.0, intense: 1.5 };
+        const facilityBonuses = [0, 0.1, 0.2, 0.35];
+        const injuryRisks = { light: 0.02, normal: 0.05, intense: 0.12 };
+        const intensityMod = intensityModifiers[intensity] || 1.0;
+        const facilityBonus = facilityBonuses[trainingFacilityLevel] || 0;
+        let injuryRisk = injuryRisks[intensity] || 0.05;
+
+        const trainingSpec = state.facilitySpecs?.training;
+        const specEffects = trainingSpec === 'physical' ? { progressBonus: 0.15, injuryReduction: 0.5 }
+          : trainingSpec === 'tactical' ? { matchBonus: 0.02 }
+          : trainingSpec === 'technical' ? { youthProgressBonus: 0.3 }
+          : {};
+        if (specEffects.injuryReduction) injuryRisk *= (1 - specEffects.injuryReduction);
+
+        updatedPlayers = updatedPlayers.map(player => {
+          if (player.injured) return player;
+          const ageFactor = player.age <= 21 ? 1.5 : player.age <= 25 ? 1.2 : player.age <= 29 ? 1.0 : player.age <= 33 ? 0.6 : 0.3;
+          const levelFactor = player.overall < 70 ? 1.3 : player.overall < 75 ? 1.1 : player.overall < 80 ? 1.0 : player.overall < 85 ? 0.8 : 0.5;
+          let totalProgress = 0.05 * intensityMod * ageFactor * levelFactor * (1 + facilityBonus);
+          if (specEffects.progressBonus) totalProgress *= (1 + specEffects.progressBonus);
+          if (specEffects.youthProgressBonus && player.age <= 23) totalProgress *= (1 + specEffects.youthProgressBonus);
+
+          const currentProgress = player.trainingProgress || 0;
+          const newProgress = currentProgress + totalProgress;
+          let newOverall = player.overall;
+          let remainingProgress = newProgress;
+          if (newProgress >= 1.0) {
+            const pointsToAdd = Math.floor(newProgress);
+            const maxOvr = player.potential ? Math.min(99, player.potential + 2) : 99;
+            newOverall = Math.min(maxOvr, player.overall + pointsToAdd);
+            remainingProgress = newProgress - pointsToAdd;
+          }
+
+          const gotInjured = Math.random() < injuryRisk;
+          if (gotInjured) {
+            return { ...player, overall: newOverall, trainingProgress: remainingProgress, injured: true, injuryWeeksLeft: 1 + Math.floor(Math.random() * 2), injuryType: 'training' };
+          }
+
+          const tacticalUpdate = specEffects.matchBonus ? { tacticalBonus: specEffects.matchBonus } : {};
+          return { ...player, overall: newOverall, trainingProgress: remainingProgress, ...tacticalUpdate };
+        });
+      }
 
       // Generate youth players at end of season (week 38) using specialization
       const newYouthPlayers = [];
@@ -3440,104 +3493,8 @@ function gameReducer(state, action) {
       };
 
     case 'APPLY_TRAINING': {
-      // Aplicar efectos del entrenamiento a los jugadores
-      if (!state.team?.players || !state.training) return state;
-
-      const trainingType = state.training.type || 'balanced';
-      const intensity = state.training.intensity || 'normal';
-      const trainingFacilityLevel = state.facilities?.training || 0;
-
-      // Modificadores
-      const intensityModifiers = { light: 0.5, normal: 1.0, intense: 1.5 };
-      const facilityBonuses = [0, 0.1, 0.2, 0.35];
-      const injuryRisks = { light: 0.02, normal: 0.05, intense: 0.12 };
-
-      const intensityMod = intensityModifiers[intensity] || 1.0;
-      const facilityBonus = facilityBonuses[trainingFacilityLevel] || 0;
-      let injuryRisk = injuryRisks[intensity] || 0.05;
-
-      // Training specialization effects
-      const trainingSpec = state.facilitySpecs?.training;
-      const specEffects = trainingSpec === 'physical' ? { progressBonus: 0.15, injuryReduction: 0.5 }
-        : trainingSpec === 'tactical' ? { matchBonus: 0.02 }
-        : trainingSpec === 'technical' ? { youthProgressBonus: 0.3 }
-        : {};
-      if (specEffects.injuryReduction) {
-        injuryRisk *= (1 - specEffects.injuryReduction);
-      }
-
-      const trainedPlayers = state.team.players.map(player => {
-        // No entrenar jugadores lesionados
-        if (player.injured) return player;
-
-        // Factor de edad
-        const ageFactor = player.age <= 21 ? 1.5 :
-                          player.age <= 25 ? 1.2 :
-                          player.age <= 29 ? 1.0 :
-                          player.age <= 33 ? 0.6 : 0.3;
-
-        // Factor de nivel
-        const levelFactor = player.overall < 70 ? 1.3 :
-                            player.overall < 75 ? 1.1 :
-                            player.overall < 80 ? 1.0 :
-                            player.overall < 85 ? 0.8 : 0.5;
-
-        // Progresión base
-        const baseProgress = 0.05;
-        let totalProgress = baseProgress * intensityMod * ageFactor * levelFactor * (1 + facilityBonus);
-        // Physical spec: extra progress bonus
-        if (specEffects.progressBonus) {
-          totalProgress *= (1 + specEffects.progressBonus);
-        }
-        // Technical spec: youth bonus for players <= 23
-        if (specEffects.youthProgressBonus && player.age <= 23) {
-          totalProgress *= (1 + specEffects.youthProgressBonus);
-        }
-
-        // Aplicar progresión (acumulativa)
-        const currentProgress = player.trainingProgress || 0;
-        const newProgress = currentProgress + totalProgress;
-
-        // Subir media si acumula +1.0
-        let newOverall = player.overall;
-        let remainingProgress = newProgress;
-
-        if (newProgress >= 1.0) {
-          const pointsToAdd = Math.floor(newProgress);
-          const maxOvr = player.potential ? Math.min(99, player.potential + 2) : 99;
-          newOverall = Math.min(maxOvr, player.overall + pointsToAdd);
-          remainingProgress = newProgress - pointsToAdd;
-        }
-
-        // Comprobar lesión por entrenamiento
-        const gotInjured = Math.random() < injuryRisk;
-
-        if (gotInjured && !player.injured) {
-          return {
-            ...player,
-            overall: newOverall,
-            trainingProgress: remainingProgress,
-            injured: true,
-            injuryWeeksLeft: 1 + Math.floor(Math.random() * 2),
-            injuryType: 'training'
-          };
-        }
-
-        // Tactical spec: add match bonus
-        const tacticalUpdate = specEffects.matchBonus ? { tacticalBonus: specEffects.matchBonus } : {};
-
-        return {
-          ...player,
-          overall: newOverall,
-          trainingProgress: remainingProgress,
-          ...tacticalUpdate
-        };
-      });
-
-      return {
-        ...state,
-        team: { ...state.team, players: trainedPlayers }
-      };
+      // DEPRECATED: Training is now applied inline during ADVANCE_WEEK
+      return state;
     }
 
     case 'GENERATE_YOUTH_PLAYER': {

@@ -115,7 +115,8 @@ export function calculateMatchStrength(team, formation, tactic, context = {}) {
     seasonMomentum = 0, // -20 a +20 según racha de temporada
     customLineup = null, // Lineup personalizado del jugador
     attendanceFillRate = 0.7, // Ocupación del estadio
-    playerForm = {}     // Player form data
+    playerForm = {},     // Player form data
+    grassCondition = 100 // Estado del césped (0-100)
   } = context;
   
   // Base: media del 11 titular (usando lineup custom si disponible)
@@ -137,7 +138,8 @@ export function calculateMatchStrength(team, formation, tactic, context = {}) {
   const moraleBonus = (morale - 50) * 0.12;  // ±6 puntos por moral
   // Factor cancha: base 2 pts + hasta 6 pts extra según ocupación del estadio
   // Estadio lleno (100%) = +8 pts, medio vacío (30%) = +3.8 pts, vacío (10%) = +2.6 pts
-  const homeBonus = isHome ? 2 + (attendanceFillRate * 6) : 0;
+  const grassFactor = grassCondition >= 70 ? 1.0 : grassCondition >= 40 ? 0.85 : 0.7;
+  const homeBonus = isHome ? (2 + (attendanceFillRate * 6)) * grassFactor : 0;
   const momentumBonus = seasonMomentum * 0.3;  // ±6 puntos por racha
   
   // Rating final
@@ -199,6 +201,7 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
     homeLineup = null,     // Lineup personalizado del equipo local
     awayLineup = null,     // Lineup personalizado del equipo visitante
     attendanceFillRate = 0.7,  // Ocupación del estadio (afecta factor cancha)
+    grassCondition = 100,      // Estado del césped
     playerTeamForm = {},
     playerTeamId = null
   } = context;
@@ -214,6 +217,7 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
     seasonMomentum: homeSeasonMomentum,
     customLineup: homeLineup,
     attendanceFillRate,
+    grassCondition,
     playerForm: homeForm
   });
   
