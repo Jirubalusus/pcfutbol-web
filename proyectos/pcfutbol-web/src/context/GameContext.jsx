@@ -2544,7 +2544,9 @@ function gameReducer(state, action) {
         matchTracker: updatedTracker,
         rejectedTransfers: updatedRejected,
         // Expire old transfer offers (from Transfers.jsx incoming AI offers)
-        transferOffers: (state.transferOffers || []).filter(o => !o.expiresIn || o.expiresIn > state.currentWeek).map(o => o.expiresIn ? { ...o, expiresIn: o.expiresIn - 1 } : o),
+        transferOffers: (state.transferOffers || [])
+          .map(o => o.expiresIn != null ? { ...o, expiresIn: o.expiresIn - 1 } : o)
+          .filter(o => o.expiresIn == null || o.expiresIn > 0),
         // Cesiones
         activeLoans: updatedActiveLoans,
         incomingLoanOffers: updatedIncomingLoanOffers,

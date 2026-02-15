@@ -659,7 +659,8 @@ export default function Transfers() {
               loyaltyYears: 0
             }
           },
-          fee: offerAmount
+          fee: offerAmount,
+          fromTeamId: player.teamId
         }
       });
       
@@ -764,7 +765,7 @@ export default function Transfers() {
   
   // === MANEJO DE OFERTAS ENTRANTES ===
   const handleAcceptOffer = useCallback((offer) => {
-    dispatch({ type: 'SELL_PLAYER', payload: { playerName: offer.player, fee: offer.amount } });
+    dispatch({ type: 'SELL_PLAYER', payload: { playerName: offer.player, fee: offer.amount, buyerTeamId: offer.teamId } });
     dispatch({ type: 'REMOVE_TRANSFER_OFFER', payload: offer.id });
     dispatch({
       type: 'ADD_MESSAGE',
@@ -799,7 +800,7 @@ export default function Transfers() {
     
     if (Math.random() < acceptChance && offer.amount * 1.1 >= counterAmount * 0.9) {
       const finalAmount = Math.round((offer.amount * 1.05 + counterAmount * 0.95) / 2);
-      dispatch({ type: 'SELL_PLAYER', payload: { playerName: offer.player, fee: finalAmount } });
+      dispatch({ type: 'SELL_PLAYER', payload: { playerName: offer.player, fee: finalAmount, buyerTeamId: offer.teamId } });
       dispatch({ type: 'REMOVE_TRANSFER_OFFER', payload: offer.id });
       dispatch({
         type: 'ADD_MESSAGE',
@@ -1309,7 +1310,9 @@ export default function Transfers() {
                     className="sell-btn"
                     onClick={() => {
                       if (window.confirm(`¿Vender a ${player.name} por ${formatMoney(Math.round(player.value * 0.85))}?`)) {
-                        dispatch({ type: 'SELL_PLAYER', payload: { playerName: player.name, fee: Math.round(player.value * 0.85) } });
+                        const buyers = (state.leagueTeams || []).filter(t => t.id !== state.teamId);
+                        const buyerId = buyers.length > 0 ? buyers[Math.floor(Math.random() * buyers.length)].id : null;
+                        dispatch({ type: 'SELL_PLAYER', payload: { playerName: player.name, fee: Math.round(player.value * 0.85), buyerTeamId: buyerId } });
                       }
                     }}
                   >
