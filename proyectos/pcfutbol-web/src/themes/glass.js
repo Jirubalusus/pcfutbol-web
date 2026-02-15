@@ -1,0 +1,42 @@
+// Glass — glassmorphism theme with translucent panels, pastel gradients
+const glass = {
+  id: 'glass',
+  nameKey: 'settings.themeGlass',
+  variables: {
+    '--color-bg-primary': '#c8d5c3',
+    '--color-bg-secondary': 'rgba(255, 255, 255, 0.45)',
+    '--color-bg-tertiary': 'rgba(255, 255, 255, 0.30)',
+    '--color-bg-card': 'rgba(255, 255, 255, 0.35)',
+    '--color-bg-card-hover': 'rgba(255, 255, 255, 0.50)',
+    '--color-glass': 'rgba(255, 255, 255, 0.25)',
+    '--color-glass-border': 'rgba(255, 255, 255, 0.50)',
+    '--backdrop-blur': 'blur(20px)',
+    '--color-accent': '#2a9d8f',
+    '--color-accent-rgb': '42, 157, 143',
+    '--color-accent-secondary': '#264653',
+    '--color-accent-secondary-rgb': '38, 70, 83',
+    '--color-success': '#2d8a4e',
+    '--color-success-rgb': '45, 138, 78',
+    '--color-warning': '#e9a820',
+    '--color-warning-rgb': '233, 168, 32',
+    '--color-danger': '#d62828',
+    '--color-danger-rgb': '214, 40, 40',
+    '--color-text-primary': 'rgba(20, 30, 40, 0.92)',
+    '--color-text-secondary': 'rgba(30, 45, 60, 0.65)',
+    '--color-text-tertiary': 'rgba(40, 55, 70, 0.45)',
+    '--shadow-sm': '0 2px 8px rgba(0, 0, 0, 0.06)',
+    '--shadow-md': '0 4px 20px rgba(0, 0, 0, 0.08)',
+    '--shadow-lg': '0 8px 40px rgba(0, 0, 0, 0.10)',
+    '--shadow-glow': '0 0 30px rgba(42, 157, 143, 0.15)',
+    '--shadow-glow-success': '0 0 30px rgba(45, 138, 78, 0.15)',
+  },
+  colorScheme: 'light',
+  preview: {
+    bg: '#c8d5c3',
+    card: 'rgba(255, 255, 255, 0.45)',
+    accent: '#2a9d8f',
+    text: '#1a1e28',
+  },
+};
+
+export default glass;

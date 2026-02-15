@@ -137,6 +137,45 @@ body {
   }
 }
 
+/* === Glass Theme === */
+[data-theme="glass"] body {
+  background:
+    linear-gradient(135deg, #b8c9b0 0%, #d4dfd0 25%, #c2d4ca 50%, #d8d5e0 75%, #c8d5c3 100%);
+  background-attachment: fixed;
+}
+
+[data-theme="glass"] ::selection {
+  background: rgba(42, 157, 143, 0.3);
+  color: #1a1e28;
+}
+
+[data-theme="glass"] ::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="glass"] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.20);
+}
+
+@media (max-width: 768px) {
+  [data-theme="glass"] .office__card,
+  [data-theme="glass"] .card,
+  [data-theme="glass"] .glass-card,
+  [data-theme="glass"] .player-row,
+  [data-theme="glass"] .stat-card,
+  [data-theme="glass"] .finance-box,
+  [data-theme="glass"] .league-card,
+  [data-theme="glass"] .country-card,
+  [data-theme="glass"] .preseason-card,
+  [data-theme="glass"] .intensity-card-v2 {
+    background: rgba(255, 255, 255, 0.35) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-color: rgba(255, 255, 255, 0.50) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06) !important;
+  }
+}
+
 #root {
   min-height: 100vh;
   min-height: 100dvh;
