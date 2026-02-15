@@ -722,9 +722,16 @@ export function simulateWeekMatches(fixtures, table, week, playerTeamId, allTeam
     const awayEntry = updatedTable.find(t => t.teamId === fixture.awayTeam);
     
     // For AI vs AI matches, both teams are AI so no playerTeamForm needed
+    // Add random tactics and momentum for variety
+    const aiTactics = ['balanced', 'attacking', 'defensive', 'possession', 'counter'];
+    const pickTactic = () => aiTactics[Math.floor(Math.random() * aiTactics.length)];
     const result = simulateMatch(fixture.homeTeam, fixture.awayTeam, homeTeam, awayTeam, {
       homeMorale: homeEntry?.morale || 70,
-      awayMorale: awayEntry?.morale || 70
+      awayMorale: awayEntry?.morale || 70,
+      homeTactic: pickTactic(),
+      awayTactic: pickTactic(),
+      homeSeasonMomentum: homeEntry?.streak || 0,
+      awaySeasonMomentum: awayEntry?.streak || 0
     }, {}, null); // No player team, so both get AI form
     
     updatedTable = updateTable(updatedTable, fixture.homeTeam, fixture.awayTeam, result.homeScore, result.awayScore);

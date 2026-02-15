@@ -442,6 +442,10 @@ export default function Office() {
           const homeTeamData = isHome ? localTeam : opponent;
           const awayTeamData = isHome ? opponent : localTeam;
           
+          // Get table entries for morale
+          const teamEntry = currentTable.find(t => t.teamId === state.teamId);
+          const opponentEntry = currentTable.find(t => t.teamId === opponentId);
+          
           // Calcular asistencia si somos locales
           let attendanceFillRate = 0.7;
           if (isHome && state.stadium) {
@@ -485,7 +489,20 @@ export default function Office() {
             playerMatch.awayTeam,
             homeTeamData,
             awayTeamData,
-            { attendanceFillRate: isHome ? attendanceFillRate : 0.7, grassCondition: state.stadium?.grassCondition ?? 100, medicalPrevention: state.facilitySpecs?.medical === 'prevention' ? 0.30 : 0, playerIsHome: isHome },
+            {
+              homeFormation: isHome ? (state.formation || '4-3-3') : '4-3-3',
+              awayFormation: isHome ? '4-3-3' : (state.formation || '4-3-3'),
+              homeTactic: isHome ? (state.tactic || 'balanced') : 'balanced',
+              awayTactic: isHome ? 'balanced' : (state.tactic || 'balanced'),
+              homeMorale: isHome ? (teamEntry?.morale || 70) : (opponentEntry?.morale || 70),
+              awayMorale: isHome ? (opponentEntry?.morale || 70) : (teamEntry?.morale || 70),
+              homeLineup: isHome ? (state.lineup || null) : null,
+              awayLineup: isHome ? null : (state.lineup || null),
+              attendanceFillRate: isHome ? attendanceFillRate : 0.7,
+              grassCondition: state.stadium?.grassCondition ?? 100,
+              medicalPrevention: state.facilitySpecs?.medical === 'prevention' ? 0.30 : 0,
+              playerIsHome: isHome
+            },
             state.playerForm || {},
             state.teamId
           );
@@ -629,9 +646,22 @@ export default function Office() {
             const homeData = cupTeamsMap[cupHome.teamId] || { id: cupHome.teamId, name: cupHome.teamName, players: cupHome.players || [], reputation: cupHome.reputation || 70 };
             const awayData = cupTeamsMap[cupAway.teamId] || { id: cupAway.teamId, name: cupAway.teamName, players: cupAway.players || [], reputation: cupAway.reputation || 70 };
 
+            const cupIsHome = cupHome.teamId === state.teamId;
             const cupResult = simulateMatch(
               cupHome.teamId, cupAway.teamId, homeData, awayData,
-              { homeMorale: 70, awayMorale: 70, grassCondition: state.stadium?.grassCondition ?? 100, medicalPrevention: state.facilitySpecs?.medical === 'prevention' ? 0.30 : 0, playerIsHome: cupHome.teamId === state.teamId },
+              {
+                homeFormation: cupIsHome ? (state.formation || '4-3-3') : '4-3-3',
+                awayFormation: cupIsHome ? '4-3-3' : (state.formation || '4-3-3'),
+                homeTactic: cupIsHome ? (state.tactic || 'balanced') : 'balanced',
+                awayTactic: cupIsHome ? 'balanced' : (state.tactic || 'balanced'),
+                homeLineup: cupIsHome ? (state.lineup || null) : null,
+                awayLineup: cupIsHome ? null : (state.lineup || null),
+                homeMorale: 70, awayMorale: 70,
+                grassCondition: state.stadium?.grassCondition ?? 100,
+                medicalPrevention: state.facilitySpecs?.medical === 'prevention' ? 0.30 : 0,
+                playerIsHome: cupIsHome,
+                knockout: true
+              },
               state.playerForm || {}, state.teamId
             );
 

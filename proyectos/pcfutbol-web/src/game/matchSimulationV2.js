@@ -310,12 +310,12 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
       // Home scores in extra time
       finalHomeScore += 1;
       const scorer = selectScorer(homeTeamData);
-      events.push({ type: 'goal', team: 'home', minute: 90 + Math.floor(Math.random() * 30) + 1, player: scorer?.name || '?', isExtraTime: true });
+      events.push({ type: 'goal', team: 'home', minute: 90 + Math.floor(Math.random() * 30) + 1, player: scorer, isExtraTime: true });
     } else if (etRand < 0.30) {
       // Away scores in extra time
       finalAwayScore += 1;
       const scorer = selectScorer(awayTeamData);
-      events.push({ type: 'goal', team: 'away', minute: 90 + Math.floor(Math.random() * 30) + 1, player: scorer?.name || '?', isExtraTime: true });
+      events.push({ type: 'goal', team: 'away', minute: 90 + Math.floor(Math.random() * 30) + 1, player: scorer, isExtraTime: true });
     }
 
     // If still draw after extra time → penalties

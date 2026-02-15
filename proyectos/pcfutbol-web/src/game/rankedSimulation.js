@@ -3,7 +3,7 @@
 // Uses the real game engine (leagueEngine, cupSystem, etc.)
 // ============================================================
 
-import { initializeLeague, generateFixtures, simulateMatch } from './leagueEngine';
+import { initializeLeague, generateFixtures, simulateMatch, updateTable as leagueUpdateTable, sortTable as leagueSortTable } from './leagueEngine';
 import { generateAIForm } from './formSystem';
 import { calculateTeamStrength } from './gameShared';
 import { EUROPEAN_SPOTS, LEAGUE_MATCHDAYS } from './seasonManager';
@@ -17,7 +17,7 @@ export function simulateHalfSeason(leagueTeams, player1TeamId, player2TeamId, pl
   const midpoint = Math.floor(totalMatchdays / 2);
   
   // Initialize league
-  const { table, fixtures } = initializeLeague(leagueTeams, null); // no single playerTeamId
+  const { table: initialTable, fixtures: initialFixtures } = initializeLeague(leagueTeams, null); // no single playerTeamId
   
   // Build team lookup
   const teamMap = {};
@@ -26,16 +26,24 @@ export function simulateHalfSeason(leagueTeams, player1TeamId, player2TeamId, pl
   // H2H tracker
   const h2h = { player1: [], player2: [] };
   
-  // Simulate first half
-  const firstHalfFixtures = fixtures.filter(f => f.week <= midpoint);
+  // Use leagueEngine's updateTable (immutable, tracks morale/form/streaks)
+  let currentTable = initialTable;
+  const updatedFixtures = initialFixtures.map(f => ({ ...f })); // Clone fixtures to avoid mutation
   
-  for (const fixture of firstHalfFixtures) {
+  // Simulate first half
+  for (const fixture of updatedFixtures) {
+    if (fixture.week > midpoint || fixture.played) continue;
+    
     const homeTeam = teamMap[fixture.homeTeam];
     const awayTeam = teamMap[fixture.awayTeam];
     if (!homeTeam || !awayTeam) continue;
     
-    // Determine form/tactics for player teams
+    // Determine form/tactics for player teams, pass morale from table
+    const homeEntry = currentTable.find(t => t.teamId === fixture.homeTeam);
+    const awayEntry = currentTable.find(t => t.teamId === fixture.awayTeam);
     const context = buildMatchContext(fixture, homeTeam, awayTeam, player1TeamId, player2TeamId, player1Config, player2Config);
+    context.homeMorale = homeEntry?.morale || 70;
+    context.awayMorale = awayEntry?.morale || 70;
     
     let result;
     try {
@@ -48,24 +56,23 @@ export function simulateHalfSeason(leagueTeams, player1TeamId, player2TeamId, pl
       result = { homeScore: Math.floor(Math.random() * 3), awayScore: Math.floor(Math.random() * 3), events: [] };
     }
     
-    fixture.homeScore = result.homeScore ?? result.homeGoals ?? 0;
-    fixture.awayScore = result.awayScore ?? result.awayGoals ?? 0;
+    const homeScore = result.homeScore ?? result.homeGoals ?? 0;
+    const awayScore = result.awayScore ?? result.awayGoals ?? 0;
+    fixture.homeScore = homeScore;
+    fixture.awayScore = awayScore;
     fixture.played = true;
     fixture.events = result.events || [];
     
-    // Update table
-    updateTable(table, fixture);
+    // Update table using leagueEngine's immutable updateTable (tracks morale, form, streaks)
+    currentTable = leagueUpdateTable(currentTable, fixture.homeTeam, fixture.awayTeam, homeScore, awayScore);
     
     // Track H2H
     trackH2H(fixture, player1TeamId, player2TeamId, h2h);
   }
   
-  // Sort table
-  sortTable(table);
-  
   return {
-    table: table.map(t => ({ ...t })),
-    fixtures,
+    table: currentTable.map(t => ({ ...t })),
+    fixtures: updatedFixtures,
     h2h,
     midpoint,
     totalMatchdays,
@@ -78,20 +85,27 @@ export function simulateHalfSeason(leagueTeams, player1TeamId, player2TeamId, pl
 // Takes the state from half season and completes it
 // ============================================================
 export function simulateFullSeason(halfSeasonState, leagueTeams, player1TeamId, player2TeamId, player1Config, player2Config) {
-  const { table, fixtures, h2h, midpoint, totalMatchdays, leagueId } = halfSeasonState;
+  const { table: initialTable, fixtures, h2h, midpoint, totalMatchdays, leagueId } = halfSeasonState;
   
   const teamMap = {};
   leagueTeams.forEach(t => { teamMap[t.id] = t; });
   
-  // Simulate second half
-  const secondHalfFixtures = fixtures.filter(f => f.week > midpoint && !f.played);
+  // Use leagueEngine's immutable updateTable (tracks morale/form/streaks)
+  let currentTable = initialTable.map(t => ({ ...t }));
   
-  for (const fixture of secondHalfFixtures) {
+  // Simulate second half
+  for (const fixture of fixtures) {
+    if (fixture.week <= midpoint || fixture.played) continue;
+    
     const homeTeam = teamMap[fixture.homeTeam];
     const awayTeam = teamMap[fixture.awayTeam];
     if (!homeTeam || !awayTeam) continue;
     
+    const homeEntry = currentTable.find(t => t.teamId === fixture.homeTeam);
+    const awayEntry = currentTable.find(t => t.teamId === fixture.awayTeam);
     const context = buildMatchContext(fixture, homeTeam, awayTeam, player1TeamId, player2TeamId, player1Config, player2Config);
+    context.homeMorale = homeEntry?.morale || 70;
+    context.awayMorale = awayEntry?.morale || 70;
     
     let result;
     try {
@@ -104,16 +118,18 @@ export function simulateFullSeason(halfSeasonState, leagueTeams, player1TeamId, 
       result = { homeScore: Math.floor(Math.random() * 3), awayScore: Math.floor(Math.random() * 3), events: [] };
     }
     
-    fixture.homeScore = result.homeScore ?? result.homeGoals ?? 0;
-    fixture.awayScore = result.awayScore ?? result.awayGoals ?? 0;
+    const homeScore = result.homeScore ?? result.homeGoals ?? 0;
+    const awayScore = result.awayScore ?? result.awayGoals ?? 0;
+    fixture.homeScore = homeScore;
+    fixture.awayScore = awayScore;
     fixture.played = true;
     fixture.events = result.events || [];
     
-    updateTable(table, fixture);
+    currentTable = leagueUpdateTable(currentTable, fixture.homeTeam, fixture.awayTeam, homeScore, awayScore);
     trackH2H(fixture, player1TeamId, player2TeamId, h2h);
   }
   
-  sortTable(table);
+  const table = currentTable;
   
   // Determine league positions
   const p1Pos = table.findIndex(t => t.teamId === player1TeamId) + 1;
@@ -216,47 +232,8 @@ function buildMatchContext(fixture, homeTeam, awayTeam, p1Id, p2Id, p1Config, p2
   return context;
 }
 
-function updateTable(table, fixture) {
-  const home = table.find(t => t.teamId === fixture.homeTeam);
-  const away = table.find(t => t.teamId === fixture.awayTeam);
-  if (!home || !away) return;
-  
-  const hs = fixture.homeScore || 0;
-  const as = fixture.awayScore || 0;
-  
-  home.played = (home.played || 0) + 1;
-  away.played = (away.played || 0) + 1;
-  home.goalsFor = (home.goalsFor || 0) + hs;
-  home.goalsAgainst = (home.goalsAgainst || 0) + as;
-  away.goalsFor = (away.goalsFor || 0) + as;
-  away.goalsAgainst = (away.goalsAgainst || 0) + hs;
-  
-  if (hs > as) {
-    home.won = (home.won || 0) + 1;
-    home.points = (home.points || 0) + 3;
-    away.lost = (away.lost || 0) + 1;
-  } else if (hs < as) {
-    away.won = (away.won || 0) + 1;
-    away.points = (away.points || 0) + 3;
-    home.lost = (home.lost || 0) + 1;
-  } else {
-    home.drawn = (home.drawn || 0) + 1;
-    away.drawn = (away.drawn || 0) + 1;
-    home.points = (home.points || 0) + 1;
-    away.points = (away.points || 0) + 1;
-  }
-  
-  home.goalDifference = (home.goalsFor || 0) - (home.goalsAgainst || 0);
-  away.goalDifference = (away.goalsFor || 0) - (away.goalsAgainst || 0);
-}
-
-function sortTable(table) {
-  table.sort((a, b) => {
-    if (b.points !== a.points) return b.points - a.points;
-    if (b.goalDifference !== a.goalDifference) return b.goalDifference - a.goalDifference;
-    return b.goalsFor - a.goalsFor;
-  });
-}
+// NOTE: updateTable and sortTable removed — now using leagueEngine's immutable versions
+// which properly track morale, form, streaks, and home/away form.
 
 function trackH2H(fixture, p1Id, p2Id, h2h) {
   const isP1Home = fixture.homeTeam === p1Id && fixture.awayTeam === p2Id;
