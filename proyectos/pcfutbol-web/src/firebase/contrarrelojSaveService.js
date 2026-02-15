@@ -19,11 +19,25 @@ export async function getContrarrelojSave(userId) {
 
   // Sanitize Firestore arrays (same logic as savesService)
   const _toArr = (v) => {
-    if (Array.isArray(v)) return v;
+    if (Array.isArray(v)) return v.map(item => {
+      if (item && typeof item === 'object' && item._isArray) {
+        const len = item._length || Object.keys(item).filter(k => /^\d+$/.test(k)).length;
+        const arr = [];
+        for (let i = 0; i < len; i++) arr.push(item[i] !== undefined ? item[i] : null);
+        return arr;
+      }
+      return item;
+    });
     if (v && typeof v === 'object') {
       const keys = Object.keys(v);
       if (keys.length > 0 && keys.every(k => /^\d+$/.test(k))) {
         return keys.sort((a, b) => +a - +b).map(k => v[k]);
+      }
+      if (v._isArray) {
+        const len = v._length || Object.keys(v).filter(k => /^\d+$/.test(k)).length;
+        const arr = [];
+        for (let i = 0; i < len; i++) arr.push(v[i] !== undefined ? v[i] : null);
+        return arr;
       }
     }
     return v;
@@ -76,14 +90,26 @@ export async function hasActiveContrarreloj(userId) {
 /**
  * Recursively strip undefined values from an object (Firebase rejects them)
  */
-function stripUndefined(obj) {
+function stripUndefined(obj, depth = 0) {
   if (obj === null || obj === undefined) return null;
-  if (Array.isArray(obj)) return obj.map(stripUndefined);
+  if (Array.isArray(obj)) {
+    // Firestore doesn't support nested arrays — convert inner arrays to objects with numeric keys
+    return obj.map((item, i) => {
+      if (Array.isArray(item)) {
+        const mapped = {};
+        item.forEach((el, j) => { mapped[j] = stripUndefined(el, depth + 1); });
+        mapped._isArray = true;
+        mapped._length = item.length;
+        return mapped;
+      }
+      return stripUndefined(item, depth + 1);
+    });
+  }
   if (typeof obj === 'object' && obj.constructor === Object) {
     const clean = {};
     for (const [k, v] of Object.entries(obj)) {
       if (v !== undefined) {
-        clean[k] = stripUndefined(v);
+        clean[k] = stripUndefined(v, depth + 1);
       }
     }
     return clean;
