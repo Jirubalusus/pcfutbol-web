@@ -1746,7 +1746,12 @@
       "renewWith": "Renovar con {{team}}",
       "renew": "Renovar",
       "noExternalOffers": "No hay ofertas externas en este momento.",
-      "retire": "Retirarse"
+      "retire": "Retirarse",
+      "cupResult": "Copa: {{result}}",
+      "europeanResult": "Competición europea: {{result}}",
+      "leagueChampion": "¡Campeón de liga!",
+      "topFour": "Top 4 en la liga",
+      "goalsSummary": "{{goalsFor}} goles a favor, {{goalsAgainst}} en contra"
     }
   },
   "rankedResults": {

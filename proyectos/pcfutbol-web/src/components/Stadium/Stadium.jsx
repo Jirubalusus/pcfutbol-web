@@ -68,11 +68,11 @@ const HOME_GAMES_PER_SEASON = 19;
 const SEASON_TICKET_DISCOUNT = 0.35; // 35% descuento abonados
 
 const STADIUM_LEVELS = [
-  { name: 'Municipal', capacity: 8000, maintenance: 500000, upgradeCost: null, prestige: 1 },      // €500K/año
-  { name: 'Moderno', capacity: 18000, maintenance: 1200000, upgradeCost: 8000000, prestige: 2 },   // €1.2M/año
-  { name: 'Grande', capacity: 35000, maintenance: 2500000, upgradeCost: 25000000, prestige: 3 },   // €2.5M/año
-  { name: 'Élite', capacity: 55000, maintenance: 4000000, upgradeCost: 60000000, prestige: 4 },    // €4M/año
-  { name: 'Legendario', capacity: 80000, maintenance: 6000000, upgradeCost: 120000000, prestige: 5 } // €6M/año
+  { nameKey: 'facilities.levelNames.municipal', capacity: 8000, maintenance: 500000, upgradeCost: null, prestige: 1 },
+  { nameKey: 'facilities.levelNames.modern', capacity: 18000, maintenance: 1200000, upgradeCost: 8000000, prestige: 2 },
+  { nameKey: 'facilities.levelNames.large', capacity: 35000, maintenance: 2500000, upgradeCost: 25000000, prestige: 3 },
+  { nameKey: 'facilities.levelNames.elite', capacity: 55000, maintenance: 4000000, upgradeCost: 60000000, prestige: 4 },
+  { nameKey: 'facilities.levelNames.legendary', capacity: 80000, maintenance: 6000000, upgradeCost: 120000000, prestige: 5 }
 ];
 
 // Dynamic sponsor name generation
@@ -280,7 +280,7 @@ export default function Stadium() {
           price: seasonTicketPrice, 
           total: formatMoney(totalSeasonTicketIncome) 
         }),
-        date: `Semana ${state.currentWeek}`
+        date: `${t('common.week')} ${state.currentWeek}`
       }
     });
   };
@@ -314,7 +314,7 @@ export default function Stadium() {
           amount: (sponsor.offer/1000000).toFixed(1), 
           duration: sponsor.duration 
         }),
-        date: `Semana ${state.currentWeek}`
+        date: `\$\{t('common.week')\} \$\{state.currentWeek\}`
       }
     });
   };
@@ -331,7 +331,7 @@ export default function Stadium() {
           type: 'warning',
           title: t('stadium.insufficientFunds'),
           content: t('stadium.penaltyRequired', { amount: (penalty / 1000000).toFixed(1) }),
-          date: `Semana ${state.currentWeek}`
+          date: `\$\{t('common.week')\} \$\{state.currentWeek\}`
         }
       });
       return;
@@ -352,7 +352,7 @@ export default function Stadium() {
         content: penalty > 0 
           ? t('stadium.stadiumNameRestored', { amount: (penalty / 1000000).toFixed(1) })
           : t('stadium.stadiumNameRestoredFree'),
-        date: `Semana ${state.currentWeek}`
+        date: `\$\{t('common.week')\} \$\{state.currentWeek\}`
       }
     });
   };
@@ -377,7 +377,7 @@ export default function Stadium() {
         type: 'stadium',
         title: event.name,
         content: t('stadium.eventHosted', { amount: (event.income/1000).toFixed(0) }),
-        date: `Semana ${state.currentWeek}`
+        date: `\$\{t('common.week')\} \$\{state.currentWeek\}`
       }
     });
   };
@@ -400,8 +400,8 @@ export default function Stadium() {
         id: Date.now(),
         type: 'stadium',
         title: t('stadium.stadiumUpgraded'),
-        content: t('stadium.nowStadium', { name: nextLevel.name, capacity: nextLevel.capacity.toLocaleString() }),
-        date: `Semana ${state.currentWeek}`
+        content: t('stadium.nowStadium', { name: t(nextLevel.nameKey), capacity: nextLevel.capacity.toLocaleString() }),
+        date: `\$\{t('common.week')\} \$\{state.currentWeek\}`
       }
     });
   };
@@ -413,7 +413,7 @@ export default function Stadium() {
   };
   
   // Nombre del estadio (mantener nombre original + naming rights si hay sponsor)
-  const baseStadiumName = stadium.name || state.team?.stadium || `Estadio ${currentLevel.name}`;
+  const baseStadiumName = stadium.name || state.team?.stadium || `${t('stadium.title')} ${t(currentLevel.nameKey)}`;
   const displayStadiumName = naming 
     ? `${baseStadiumName} - ${naming.name} Arena` 
     : baseStadiumName;
@@ -507,7 +507,7 @@ export default function Stadium() {
       <div className="stadium-simple__header">
         <div className="stadium-info">
           <h1>{displayStadiumName}</h1>
-          <p>{currentLevel.name} • {capacity.toLocaleString()} {t('stadium.seats')}</p>
+          <p>{t(currentLevel.nameKey)} • {capacity.toLocaleString()} {t('stadium.seats')}</p>
         </div>
         <div className="stadium-stats">
           <div className="stat">
@@ -739,8 +739,8 @@ export default function Stadium() {
                     <div key={sponsor.id} className="sponsor-offer">
                       <div className="offer-info">
                         <span className="name">{sponsor.name}</span>
-                        <span className="price">{formatMoney(sponsor.offer)}/año</span>
-                        <span className="duration">{sponsor.duration} años</span>
+                        <span className="price">{formatMoney(sponsor.offer)}{t('stadium.perYear')}</span>
+                        <span className="duration">{t('stadium.yearsRemaining', { years: sponsor.duration })}</span>
                       </div>
                       <button onClick={() => handleAcceptNaming(sponsor)}>{t('stadium.accept')}</button>
                     </div>

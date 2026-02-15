@@ -601,7 +601,9 @@ function gameReducer(state, action) {
 
     case 'PROMANAGER_SWITCH_TEAM': {
       // When accepting a new team offer in ProManager mode
-      const { team, leagueId, _proManagerUserId } = action.payload;
+      const { team, leagueId, _proManagerUserId, stadiumInfo, stadiumLevel } = action.payload;
+      const switchStadiumInfo = stadiumInfo || { name: team.stadium || 'Stadium', capacity: 8000 };
+      const switchStadiumLevel = stadiumLevel ?? 0;
       return {
         ...initialState,
         gameStarted: true,
@@ -621,6 +623,21 @@ function gameReducer(state, action) {
         managerName: state.managerName,
         playerForm: generateInitialForm(team.players || []),
         matchTracker: Object.fromEntries((team.players || []).map(p => [p.name, { consecutivePlayed: 0, weeksSincePlay: 3 }])),
+        stadium: {
+          ...initialState.stadium,
+          level: switchStadiumLevel,
+          name: switchStadiumInfo.name,
+          realCapacity: switchStadiumInfo.capacity,
+          seasonTickets: Math.floor((switchStadiumInfo.capacity || 8000) * 0.4),
+          seasonTicketsFinal: null,
+          seasonTicketsCampaignOpen: true,
+          ticketPrice: 30,
+          grassCondition: 100
+        },
+        facilities: {
+          ...initialState.facilities,
+          stadium: switchStadiumLevel
+        },
       };
     }
 
@@ -1656,8 +1673,21 @@ function gameReducer(state, action) {
       const advWeekNext = state.currentWeek + 1;
       let stadiumCampaignUpdates = {};
       if (advWeekNext >= SEASON_TICKET_DEADLINE && state.stadium?.seasonTicketsCampaignOpen) {
-        const stSeasonTickets = state.stadium?.seasonTickets ?? Math.floor((state.stadium?.realCapacity || 8000) * 0.4);
+        // Calculate season tickets based on price and team quality (mirrors Stadium UI logic)
+        const stCapacity = state.stadium?.realCapacity || 8000;
+        const stMaxSeasonTickets = Math.floor(stCapacity * 0.8);
         const stPrice = state.stadium?.seasonTicketPrice ?? 400;
+        const stTeamPlayers = state.team?.players || [];
+        const stTeamOvr = stTeamPlayers.length > 0 ? stTeamPlayers.reduce((s, p) => s + (p.overall || 70), 0) / stTeamPlayers.length : 70;
+        const stRep = state.team?.reputation || 70;
+        // Simple demand model: base 50% fill, adjusted by price (cheaper=more), team quality, and reputation
+        const stPriceFactor = Math.max(0.3, Math.min(1.5, 1.0 - (stPrice - 400) / 800));
+        const stQualityFactor = 0.7 + (stTeamOvr / 100) * 0.6;
+        const stRepFactor = 0.7 + (stRep / 100) * 0.6;
+        const stSeasonTickets = Math.min(stMaxSeasonTickets, Math.max(
+          Math.floor(stCapacity * 0.1),
+          Math.round(stCapacity * 0.5 * stPriceFactor * stQualityFactor * stRepFactor)
+        ));
         stadiumCampaignUpdates = {
           seasonTicketsCampaignOpen: false,
           seasonTicketsFinal: stSeasonTickets,

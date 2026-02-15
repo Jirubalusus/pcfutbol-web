@@ -148,7 +148,7 @@ export default function ProManagerSeasonEnd() {
     // First switch team (resets state)
     dispatch({
       type: 'PROMANAGER_SWITCH_TEAM',
-      payload: { team, leagueId, _proManagerUserId: user?.uid || null }
+      payload: { team, leagueId, stadiumInfo, stadiumLevel, _proManagerUserId: user?.uid || null }
     });
 
     // Set ProManager data with updated career history
@@ -270,19 +270,19 @@ export default function ProManagerSeasonEnd() {
             {lastStats && (
               <div className="pm-season-end__achievements">
                 {lastStats.cupResult && (
-                  <div className="achievement">🏆 Copa: {lastStats.cupResult}</div>
+                  <div className="achievement">🏆 {t('proManager.seasonEnd.cupResult', { result: lastStats.cupResult })}</div>
                 )}
                 {lastStats.europeanResult && (
-                  <div className="achievement">🌍 Competición europea: {lastStats.europeanResult}</div>
+                  <div className="achievement">🌍 {t('proManager.seasonEnd.europeanResult', { result: lastStats.europeanResult })}</div>
                 )}
                 {position === 1 && (
-                  <div className="achievement">🥇 ¡Campeón de liga!</div>
+                  <div className="achievement">🥇 {t('proManager.seasonEnd.leagueChampion')}</div>
                 )}
                 {position <= 4 && position > 1 && (
-                  <div className="achievement">⭐ Top 4 en la liga</div>
+                  <div className="achievement">⭐ {t('proManager.seasonEnd.topFour')}</div>
                 )}
                 {(teamEntry?.goalsFor || 0) > 0 && (
-                  <div className="achievement">⚽ {teamEntry.goalsFor} goles a favor, {teamEntry.goalsAgainst} en contra</div>
+                  <div className="achievement">⚽ {t('proManager.seasonEnd.goalsSummary', { goalsFor: teamEntry.goalsFor, goalsAgainst: teamEntry.goalsAgainst })}</div>
                 )}
               </div>
             )}
