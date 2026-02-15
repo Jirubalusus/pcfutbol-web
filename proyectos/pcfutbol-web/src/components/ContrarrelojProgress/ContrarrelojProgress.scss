@@ -26,7 +26,7 @@
       justify-content: center;
       background: rgba(0, 212, 255, 0.1);
       border: 2px solid rgba(0, 212, 255, 0.3);
-      color: #00d4ff;
+      color: var(--color-accent);
       flex-shrink: 0;
       animation: heroPulse 3s ease-in-out infinite;
     }
@@ -62,7 +62,7 @@
       .season-num {
         font-size: 1.8rem;
         font-weight: 900;
-        color: #00d4ff;
+        color: var(--color-accent);
         line-height: 1;
       }
       .season-label {
@@ -87,8 +87,8 @@
     .stat-card {
       text-align: center;
       padding: 0.75rem 0.5rem;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: var(--color-glass);
+      border: 1px solid var(--color-glass-border);
       border-radius: 12px;
       overflow: hidden;
       min-width: 0;
@@ -114,10 +114,10 @@
         margin-top: 4px;
       }
 
-      &--league .stat-value { color: #30d158; }
-      &--position .stat-value { color: #ffd60a; }
+      &--league .stat-value { color: var(--color-success); }
+      &--position .stat-value { color: var(--color-warning); }
       &--trophies .stat-value { color: #d4a017; }
-      &--goal .stat-value { color: #00d4ff; }
+      &--goal .stat-value { color: var(--color-accent); }
     }
   }
 
@@ -165,7 +165,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.04);
+    background: var(--color-glass);
     border: 2px solid rgba(255, 255, 255, 0.1);
     color: #556;
     flex-shrink: 0;
@@ -177,7 +177,7 @@
     width: 2px;
     flex: 1;
     min-height: 12px;
-    background: rgba(255, 255, 255, 0.06);
+    background: var(--color-glass-border);
   }
 
   &__content {
@@ -214,29 +214,29 @@
     background: rgba(45, 138, 78, 0.12);
     color: #2d8a4e;
   }
-  &--green .timeline-event__title { color: #30d158; }
+  &--green .timeline-event__title { color: var(--color-success); }
 
   &--red .timeline-event__dot {
     border-color: #d94a4a;
     background: rgba(217, 74, 74, 0.12);
     color: #d94a4a;
   }
-  &--red .timeline-event__title { color: #ff453a; }
+  &--red .timeline-event__title { color: var(--color-danger); }
 
   &--gold .timeline-event__dot {
     border-color: #d4a017;
     background: rgba(212, 160, 23, 0.12);
     color: #d4a017;
   }
-  &--gold .timeline-event__title { color: #ffd60a; }
+  &--gold .timeline-event__title { color: var(--color-warning); }
 
   &--accent .timeline-event__dot {
-    border-color: #00d4ff;
+    border-color: var(--color-accent);
     background: rgba(0, 212, 255, 0.12);
-    color: #00d4ff;
+    color: var(--color-accent);
     box-shadow: 0 0 16px rgba(0, 212, 255, 0.2);
   }
-  &--accent .timeline-event__title { color: #00d4ff; }
+  &--accent .timeline-event__title { color: var(--color-accent); }
   &--accent .timeline-event__content {
     background: rgba(0, 212, 255, 0.04);
     border-radius: 8px;
@@ -245,7 +245,7 @@
   }
 
   &--dimmed .timeline-event__dot {
-    border-color: rgba(255, 255, 255, 0.08);
+    border-color: var(--color-glass-border);
     background: rgba(255, 255, 255, 0.02);
     color: #445;
     border-style: dashed;

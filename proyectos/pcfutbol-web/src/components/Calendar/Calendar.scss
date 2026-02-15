@@ -20,7 +20,7 @@
       align-items: center;
       gap: 10px;
       font-size: 1.25rem;
-      color: #fff;
+      color: var(--color-text-primary);
       margin: 0;
 
       svg { color: #0a84ff; }
@@ -37,7 +37,7 @@
       background: rgba(48, 209, 88, 0.1);
       border: 1px solid rgba(48, 209, 88, 0.3);
       border-radius: 20px;
-      color: #30d158;
+      color: var(--color-success);
       font-size: 0.85rem;
       font-weight: 600;
     }
@@ -70,10 +70,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255, 255, 255, 0.05);
+      background: var(--color-glass);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 10px;
-      color: #fff;
+      color: var(--color-text-primary);
       cursor: pointer;
       transition: all 0.2s;
 
@@ -84,7 +84,7 @@
     .nav-title {
       text-align: center;
       .week-label { display: block; font-size: 0.75rem; color: #8e8e93; text-transform: uppercase; }
-      .week-number { font-size: 1.5rem; font-weight: 700; color: #fff; }
+      .week-number { font-size: 1.5rem; font-weight: 700; color: var(--color-text-primary); }
     }
   }
 
@@ -115,7 +115,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255, 255, 255, 0.05);
+      background: var(--color-glass);
       border: 1px solid transparent;
       border-radius: 6px;
       color: #8e8e93;
@@ -132,38 +132,38 @@
         padding: 0 4px;
       }
 
-      &:hover { background: rgba(255, 255, 255, 0.1); color: #fff; }
+      &:hover { background: rgba(255, 255, 255, 0.1); color: var(--color-text-primary); }
 
-      &.selected { background: #0a84ff; color: #fff; font-weight: 600; }
-      &.current { border-color: #ffd60a; color: #ffd60a; }
-      &.played { color: #30d158; }
+      &.selected { background: #0a84ff; color: var(--color-text-primary); font-weight: 600; }
+      &.current { border-color: var(--color-warning); color: var(--color-warning); }
+      &.played { color: var(--color-success); }
 
       // Cup buttons
       &--cup {
         border-color: rgba(255, 159, 10, 0.3);
-        &.selected { background: #ff9f0a; border-color: #ff9f0a; color: #fff; }
-        &.played { color: #30d158; }
+        &.selected { background: #ff9f0a; border-color: #ff9f0a; color: var(--color-text-primary); }
+        &.played { color: var(--color-success); }
       }
 
       // European buttons (generic)
       &--european {
         border-color: rgba(255, 215, 0, 0.2);
-        &.selected { background: #c4a000; border-color: #c4a000; color: #fff; }
-        &.played { color: #30d158; }
+        &.selected { background: #c4a000; border-color: #c4a000; color: var(--color-text-primary); }
+        &.played { color: var(--color-success); }
       }
 
       // Competition-specific European colors
       &--champions {
         border-color: rgba(26, 86, 219, 0.3);
-        &.selected { background: #1a56db; border-color: #1a56db; color: #fff; }
+        &.selected { background: #1a56db; border-color: #1a56db; color: var(--color-text-primary); }
       }
       &--europa {
         border-color: rgba(230, 126, 34, 0.3);
-        &.selected { background: #e67e22; border-color: #e67e22; color: #fff; }
+        &.selected { background: #e67e22; border-color: #e67e22; color: var(--color-text-primary); }
       }
       &--conference {
         border-color: rgba(39, 174, 96, 0.3);
-        &.selected { background: #27ae60; border-color: #27ae60; color: #fff; }
+        &.selected { background: #27ae60; border-color: #27ae60; color: var(--color-text-primary); }
       }
     }
   }
@@ -216,7 +216,7 @@
       align-items: center;
       padding: 10px 16px;
       background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--color-glass);
       border-radius: 8px;
       transition: all 0.2s;
 
@@ -226,7 +226,7 @@
         gap: 0 6px;
       }
 
-      &:hover { background: rgba(255, 255, 255, 0.05); }
+      &:hover { background: var(--color-glass); }
       &.is-player {
         background: rgba(10, 132, 255, 0.06);
         border-color: rgba(10, 132, 255, 0.25);
@@ -283,9 +283,9 @@
           .separator { color: #555; font-weight: 400; }
           .home-score, .away-score { min-width: 18px; text-align: center; }
 
-          &.result-w .home-score, &.result-w .away-score { color: #fff; }
-          &.result-l .home-score, &.result-l .away-score { color: #ff453a; }
-          &.result-d .home-score, &.result-d .away-score { color: #ffd60a; }
+          &.result-w .home-score, &.result-w .away-score { color: var(--color-text-primary); }
+          &.result-l .home-score, &.result-l .away-score { color: var(--color-danger); }
+          &.result-d .home-score, &.result-d .away-score { color: var(--color-warning); }
         }
 
         .vs-badge {
@@ -313,9 +313,9 @@
           height: 8px;
           border-radius: 50%;
 
-          &.win { background: #30d158; }
-          &.loss { background: #ff453a; }
-          &.draw { background: #ffd60a; }
+          &.win { background: var(--color-success); }
+          &.loss { background: var(--color-danger); }
+          &.draw { background: var(--color-warning); }
           &.neutral { background: #636366; }
         }
 
@@ -325,8 +325,8 @@
           justify-content: center;
           color: #555;
 
-          &.pending { color: #ffd60a; }
-          &.missed { color: #ff453a; font-weight: 700; font-size: 0.8rem; }
+          &.pending { color: var(--color-warning); }
+          &.missed { color: var(--color-danger); font-weight: 700; font-size: 0.8rem; }
           &.upcoming { color: #444; }
         }
       }

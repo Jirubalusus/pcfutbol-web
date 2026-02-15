@@ -79,7 +79,7 @@
     }
 
     .stat {
-      background: rgba(255, 255, 255, 0.05);
+      background: var(--color-glass);
       border-radius: 8px;
       padding: 0.75rem 0.5rem;
 
@@ -95,7 +95,7 @@
         display: block;
         font-size: 1.1rem;
         font-weight: 700;
-        color: #fff;
+        color: var(--color-text-primary);
       }
     }
   }
@@ -140,7 +140,7 @@
     padding: 0.75rem 2rem;
     background: rgba(231, 76, 60, 0.15);
     border: 1px solid rgba(231, 76, 60, 0.4);
-    color: #fff;
+    color: var(--color-text-primary);
     border-radius: 8px;
     font-size: 1rem;
     cursor: pointer;

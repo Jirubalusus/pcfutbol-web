@@ -3,15 +3,15 @@
 // ============================================================
 
 $bg-dark: #0a1628;
-$bg-card: #152238;
+$bg-card: var(--color-bg-tertiary);
 $bg-row-odd: #1a2d45;
 $bg-row-even: #142435;
 $bg-row-hover: #1e3a58;
 $border: #2a4a6a;
 $gold: #ffd700;
-$green: #30d158;
+$green: var(--color-success);
 $orange: #ff9500;
-$red: #ff453a;
+$red: var(--color-danger);
 $blue: #0a84ff;
 $gray: #7a8a9a;
 $white: #e8eaed;
@@ -203,7 +203,7 @@ $white: #e8eaed;
 
       &.active {
         background: $blue;
-        color: #fff;
+        color: var(--color-text-primary);
         border-color: $blue;
       }
     }
@@ -284,7 +284,7 @@ $white: #e8eaed;
           border-radius: 4px;
           font-weight: 700;
           font-size: 0.65rem;
-          color: #fff;
+          color: var(--color-text-primary);
         }
 
         .info {
@@ -435,7 +435,7 @@ $white: #e8eaed;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.08);
+            background: var(--color-glass-border);
             border: none;
             border-radius: 6px;
             font-size: 0.9rem;
@@ -579,7 +579,7 @@ $white: #e8eaed;
           border-radius: 6px;
           font-weight: 700;
           font-size: 0.8rem;
-          color: #fff;
+          color: var(--color-text-primary);
         }
 
         .ovr {
@@ -738,7 +738,7 @@ $white: #e8eaed;
 
         .btn-confirm {
           background: $green;
-          color: #fff;
+          color: var(--color-text-primary);
           &.danger { background: $red; }
           &:hover { filter: brightness(1.1); }
         }
@@ -747,7 +747,7 @@ $white: #e8eaed;
           background: transparent;
           border: 1px solid $border;
           color: $gray;
-          &:hover { background: rgba(255, 255, 255, 0.05); }
+          &:hover { background: var(--color-glass); }
         }
       }
     }
@@ -788,8 +788,8 @@ $white: #e8eaed;
     font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.06);
-    color: #fff;
+    background: var(--color-glass-border);
+    color: var(--color-text-primary);
     text-align: left;
     transition: background 0.15s;
     min-height: 44px;
@@ -799,7 +799,7 @@ $white: #e8eaed;
     &--danger { color: $red; }
     &--unlist { color: $orange; }
     &--cancel {
-      background: rgba(255, 255, 255, 0.03);
+      background: var(--color-glass);
       border: 1px solid rgba(255, 255, 255, 0.12);
       color: $gray;
       text-align: center;
@@ -808,7 +808,7 @@ $white: #e8eaed;
       justify-content: center;
       gap: 0.4rem;
       margin-top: 0.25rem;
-      &:active { background: rgba(255, 255, 255, 0.08); }
+      &:active { background: var(--color-glass-border); }
     }
   }
   

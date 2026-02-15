@@ -18,7 +18,7 @@
     margin-bottom: 1.5rem;
 
     .back-btn {
-      background: rgba(255,255,255,0.06);
+      background: var(--color-glass-border);
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 10px;
       color: #e0e0e0;
@@ -46,7 +46,7 @@
   &__loading, &__empty {
     text-align: center;
     padding: 3rem;
-    color: rgba(255,255,255,0.4);
+    color: var(--color-text-tertiary);
   }
 
   &__list {
@@ -60,7 +60,7 @@
     align-items: center;
     gap: 0.65rem;
     padding: 0.7rem 0.85rem;
-    background: rgba(255,255,255,0.03);
+    background: var(--color-glass);
     border-radius: 10px;
     border: 1px solid transparent;
     transition: background 0.2s;
@@ -79,7 +79,7 @@
       text-align: center;
       font-weight: 700;
       font-size: 0.85rem;
-      color: rgba(255,255,255,0.4);
+      color: var(--color-text-tertiary);
       .gold { color: #ffd700; }
       .silver { color: #c0c0c0; }
       .bronze { color: #cd7f32; }
@@ -97,7 +97,7 @@
     .lb-stats {
       text-align: right;
       .lb-lp { display: block; font-weight: 700; font-size: 0.9rem; color: #10b981; }
-      .lb-record { display: block; font-size: 0.7rem; color: rgba(255,255,255,0.35); }
+      .lb-record { display: block; font-size: 0.7rem; color: var(--color-text-tertiary); }
     }
   }
 }

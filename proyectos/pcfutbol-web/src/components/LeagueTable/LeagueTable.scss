@@ -13,7 +13,7 @@
       padding: 8px 16px;
       border-radius: 8px;
       border: 1px solid rgba(255, 255, 255, 0.15);
-      background: rgba(255, 255, 255, 0.05);
+      background: var(--color-glass);
       color: #ccc;
       cursor: pointer;
       font-size: 0.85rem;
@@ -22,13 +22,13 @@
 
       &:hover {
         background: rgba(255, 255, 255, 0.1);
-        color: #fff;
+        color: var(--color-text-primary);
       }
 
       &.active {
         background: rgba(59, 130, 246, 0.3);
         border-color: rgba(59, 130, 246, 0.6);
-        color: #fff;
+        color: var(--color-text-primary);
       }
     }
   }
@@ -50,7 +50,7 @@
       align-items: center;
       gap: 10px;
       font-size: 1.25rem;
-      color: #fff;
+      color: var(--color-text-primary);
       margin: 0;
 
       svg {
@@ -74,7 +74,7 @@
     gap: 16px;
     margin-bottom: 16px;
     padding: 12px 16px;
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--color-glass);
     border-radius: 12px;
 
     @media (max-width: 768px) {
@@ -97,10 +97,10 @@
 
       &.champions .dot { background: #0a84ff; }
       &.europa .dot { background: #ff9500; }
-      &.conference .dot { background: #30d158; }
-      &.promotion .dot { background: #30d158; }
+      &.conference .dot { background: var(--color-success); }
+      &.promotion .dot { background: var(--color-success); }
       &.playoff .dot { background: #5856d6; }
-      &.relegation .dot { background: #ff453a; }
+      &.relegation .dot { background: var(--color-danger); }
     }
   }
 
@@ -108,7 +108,7 @@
     background: rgba(255, 255, 255, 0.02);
     border-radius: 16px;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--color-glass);
 
     @media (min-width: 769px) {
       overflow-x: auto;
@@ -120,7 +120,7 @@
       grid-template-columns: 50px 1fr 40px 40px 40px 40px 40px 40px 50px 50px 100px;
       gap: 8px;
       padding: 12px 16px;
-      background: rgba(255, 255, 255, 0.05);
+      background: var(--color-glass);
       font-size: 0.75rem;
       color: #8e8e93;
       text-transform: uppercase;
@@ -141,7 +141,7 @@
       grid-template-columns: 50px 1fr 40px 40px 40px 40px 40px 40px 50px 50px 100px;
       gap: 8px;
       padding: 12px 16px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid var(--color-glass);
       transition: background 0.2s;
       align-items: center;
 
@@ -154,7 +154,7 @@
       }
 
       &:hover {
-        background: rgba(255, 255, 255, 0.03);
+        background: var(--color-glass);
       }
 
       &:last-child {
@@ -181,7 +181,7 @@
           font-weight: 700;
           font-size: 0.85rem;
           background: rgba(255, 255, 255, 0.1);
-          color: #fff;
+          color: var(--color-text-primary);
 
           @media (max-width: 768px) {
             width: 20px;
@@ -195,10 +195,10 @@
       // Zonas - después de .pos-badge para mayor especificidad
       &.champions .col-pos .pos-badge { background: #0a84ff; }
       &.europa .col-pos .pos-badge { background: #ff9500; }
-      &.conference .col-pos .pos-badge { background: #30d158; }
-      &.promotion .col-pos .pos-badge { background: #30d158; }
+      &.conference .col-pos .pos-badge { background: var(--color-success); }
+      &.promotion .col-pos .pos-badge { background: var(--color-success); }
       &.playoff .col-pos .pos-badge { background: #5856d6; }
-      &.relegation .col-pos .pos-badge { background: #ff453a; }
+      &.relegation .col-pos .pos-badge { background: var(--color-danger); }
 
       .col-team {
         display: flex;
@@ -220,7 +220,7 @@
           border-radius: 8px;
           font-size: 0.7rem;
           font-weight: 700;
-          color: #fff;
+          color: var(--color-text-primary);
           flex-shrink: 0;
 
           @media (max-width: 768px) {
@@ -240,7 +240,7 @@
 
         .team-name {
           font-size: 0.9rem;
-          color: #fff;
+          color: var(--color-text-primary);
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -262,9 +262,9 @@
               height: 5px;
               border-radius: 2px;
 
-              &.form-w { background: #30d158; }
-              &.form-d { background: #ffd60a; }
-              &.form-l { background: #ff453a; }
+              &.form-w { background: var(--color-success); }
+              &.form-d { background: var(--color-warning); }
+              &.form-l { background: var(--color-danger); }
             }
           }
         }
@@ -284,8 +284,8 @@
         font-size: 0.85rem;
         text-align: center;
         
-        &.positive { color: #30d158; }
-        &.negative { color: #ff453a; }
+        &.positive { color: var(--color-success); }
+        &.negative { color: var(--color-danger); }
 
         @media (max-width: 768px) {
           font-size: 0.6rem;
@@ -295,7 +295,7 @@
       .col-pts {
         font-size: 1rem;
         font-weight: 700;
-        color: #fff;
+        color: var(--color-text-primary);
         text-align: center;
 
         @media (max-width: 768px) {
@@ -320,15 +320,15 @@
 
           &.form-w {
             background: rgba(48, 209, 88, 0.2);
-            color: #30d158;
+            color: var(--color-success);
           }
           &.form-d {
             background: rgba(255, 214, 10, 0.2);
-            color: #ffd60a;
+            color: var(--color-warning);
           }
           &.form-l {
             background: rgba(255, 69, 58, 0.2);
-            color: #ff453a;
+            color: var(--color-danger);
           }
         }
       }
@@ -394,7 +394,7 @@
     .tournament-tab-buttons {
       display: flex;
       gap: 4px;
-      background: rgba(255, 255, 255, 0.05);
+      background: var(--color-glass);
       border-radius: 10px;
       padding: 3px;
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -418,13 +418,13 @@
       gap: 6px;
       
       &:hover:not(:disabled) {
-        background: rgba(255, 255, 255, 0.08);
+        background: var(--color-glass-border);
         color: #ccc;
       }
       
       &.active {
         background: rgba(59, 130, 246, 0.3);
-        color: #fff;
+        color: var(--color-text-primary);
         box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
       }
       
@@ -437,7 +437,7 @@
         width: 6px;
         height: 6px;
         border-radius: 50%;
-        background: #30d158;
+        background: var(--color-success);
         animation: pulse-live 1.5s ease-in-out infinite;
       }
     }
@@ -479,7 +479,7 @@
     p {
       margin: 0 0 8px;
       font-size: 1rem;
-      color: #fff;
+      color: var(--color-text-primary);
     }
     
     .hint {

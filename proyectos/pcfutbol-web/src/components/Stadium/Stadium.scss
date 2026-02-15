@@ -59,7 +59,7 @@
         margin: 0 0 0.25rem;
         font-size: 1.25rem;
         font-weight: 700;
-        color: #fff;
+        color: var(--color-text-primary);
       }
 
       p {
@@ -90,7 +90,7 @@
           display: block;
           font-weight: 700;
           font-size: 1.1rem;
-          color: #fff;
+          color: var(--color-text-primary);
         }
 
         .label {
@@ -140,7 +140,7 @@
 
       &.active {
         background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
-        color: #fff;
+        color: var(--color-text-primary);
         border-color: transparent;
       }
     }
@@ -223,7 +223,7 @@
         gap: 0.75rem;
         justify-content: center;
         padding: 0.5rem;
-        background: rgba(255,255,255,0.03);
+        background: var(--color-glass);
         border-radius: 6px;
         
         span {
@@ -276,9 +276,9 @@
       align-items: center;
       justify-content: space-around;
       padding: 1rem 0.5rem;
-      background: rgba(255, 255, 255, 0.04);
+      background: var(--color-glass);
       border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--color-glass-border);
     }
 
     .campaign-stat {
@@ -289,13 +289,13 @@
 
       &.main .stat-value {
         font-size: 1.6rem;
-        color: #00d4ff;
+        color: var(--color-accent);
       }
 
       .stat-value {
         font-size: 1.1rem;
         font-weight: 700;
-        color: #fff;
+        color: var(--color-text-primary);
       }
 
       .stat-label {
@@ -315,13 +315,13 @@
     .campaign-closed-bar {
       margin-top: 0.75rem;
       height: 6px;
-      background: rgba(255, 255, 255, 0.08);
+      background: var(--color-glass-border);
       border-radius: 3px;
       overflow: hidden;
 
       .bar-fill {
         height: 100%;
-        background: linear-gradient(90deg, #00d4ff, #30d158);
+        background: linear-gradient(90deg, var(--color-accent), var(--color-success));
         border-radius: 3px;
         transition: width 0.5s ease;
       }
@@ -348,7 +348,7 @@
     .season-preview {
       margin-bottom: 1.5rem;
       padding: 1rem;
-      background: rgba(255,255,255,0.03);
+      background: var(--color-glass);
       border-radius: 8px;
       
       label {
@@ -365,7 +365,7 @@
       background: linear-gradient(135deg, var(--color-success), #27ae60);
       border: none;
       border-radius: 8px;
-      color: #fff;
+      color: var(--color-text-primary);
       font-weight: 700;
       font-size: 1rem;
       cursor: pointer;
@@ -402,7 +402,7 @@
         background: #243447;
         border: 1px solid var(--color-glass-border);
         border-radius: 8px;
-        color: #fff;
+        color: var(--color-text-primary);
         font-weight: 600;
         font-size: 1rem;
         cursor: pointer;
@@ -528,7 +528,7 @@
           transform: translate(-50%, -50%);
           font-weight: 700;
           font-size: 0.85rem;
-          color: #fff;
+          color: var(--color-text-primary);
           text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
         }
       }
@@ -559,7 +559,7 @@
         background: linear-gradient(135deg, #27ae60, #2ecc71);
         border: none;
         border-radius: 10px;
-        color: #fff;
+        color: var(--color-text-primary);
         font-weight: 600;
         cursor: pointer;
 
@@ -642,7 +642,7 @@
         background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
         border: none;
         border-radius: 10px;
-        color: #fff;
+        color: var(--color-text-primary);
         font-weight: 600;
         cursor: pointer;
 
@@ -719,7 +719,7 @@
         background: linear-gradient(135deg, #ff9500, #ff6b00);
         border: none;
         border-radius: 10px;
-        color: #fff;
+        color: var(--color-text-primary);
         min-height: 44px;
 
         @media (max-width: 768px) {
@@ -765,7 +765,7 @@
         justify-content: center;
         font-size: 1.5rem;
         font-weight: 700;
-        color: #fff;
+        color: var(--color-text-primary);
       }
 
       .level-info {
@@ -785,7 +785,7 @@
         border-radius: 20px;
         font-size: 0.7rem;
         font-weight: 600;
-        color: #fff;
+        color: var(--color-text-primary);
       }
     }
 
@@ -811,7 +811,7 @@
         background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
         border: none;
         border-radius: 10px;
-        color: #fff;
+        color: var(--color-text-primary);
         cursor: pointer;
 
         span:first-child { font-weight: 600; }
@@ -878,13 +878,13 @@
         &.done .dot {
           background: var(--color-success);
           border-color: var(--color-success);
-          color: #fff;
+          color: var(--color-text-primary);
         }
 
         &.current .dot {
           background: var(--color-accent);
           border-color: var(--color-accent);
-          color: #fff;
+          color: var(--color-text-primary);
           box-shadow: 0 0 10px var(--color-accent);
         }
       }
@@ -905,7 +905,7 @@
 
         .match-week {
           background: var(--color-accent);
-          color: #fff;
+          color: var(--color-text-primary);
           padding: 0.25rem 0.75rem;
           border-radius: 20px;
           font-size: 0.8rem;
@@ -939,7 +939,7 @@
 
           &.hot {
             background: linear-gradient(135deg, #ff6b35, #f7931a);
-            color: #fff;
+            color: var(--color-text-primary);
             font-weight: 600;
           }
         }
@@ -971,7 +971,7 @@
             background: #253649;
             border: 1px solid var(--color-glass-border);
             border-radius: 8px;
-            color: #fff;
+            color: var(--color-text-primary);
             font-weight: 600;
             cursor: pointer;
             transition: all 0.15s;
@@ -1009,7 +1009,7 @@
             .final-price {
               font-size: 1.25rem;
               font-weight: 700;
-              color: #fff;
+              color: var(--color-text-primary);
             }
           }
         }
@@ -1026,7 +1026,7 @@
           cursor: pointer;
 
           &:hover {
-            color: #fff;
+            color: var(--color-text-primary);
             border-color: var(--color-text-secondary);
           }
         }
@@ -1087,7 +1087,7 @@
               transform: translateY(-50%);
               font-size: 0.8rem;
               font-weight: 600;
-              color: #fff;
+              color: var(--color-text-primary);
               text-shadow: 0 1px 3px rgba(0,0,0,0.5);
             }
           }
@@ -1194,7 +1194,7 @@
           }
 
           strong {
-            color: #fff;
+            color: var(--color-text-primary);
           }
         }
       }
@@ -1232,7 +1232,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 0.5rem 0.75rem;
-      background: rgba(255, 255, 255, 0.03);
+      background: var(--color-glass);
       border-radius: 8px;
       
       .label {
@@ -1242,14 +1242,14 @@
       
       .value {
         font-weight: 600;
-        color: #fff;
+        color: var(--color-text-primary);
       }
       
       &.income {
         background: rgba(48, 209, 88, 0.1);
         
         .value {
-          color: #30d158;
+          color: var(--color-success);
         }
       }
     }

@@ -145,7 +145,7 @@ $pcf-text: #bdc3c7;
       .step-num {
         background: linear-gradient(135deg, $pcf-green, $pcf-green-light);
         border-color: $pcf-green;
-        color: white;
+        color: var(--color-text-primary);
         box-shadow: 0 0 12px rgba($pcf-green, 0.5);
       }
       
@@ -1079,7 +1079,7 @@ $pcf-text: #bdc3c7;
     background: linear-gradient(180deg, $pcf-green 0%, $pcf-green-dark 100%);
     border: none;
     border-radius: 8px;
-    color: white;
+    color: var(--color-text-primary);
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
@@ -1198,7 +1198,7 @@ $pcf-text: #bdc3c7;
   margin-bottom: 24px;
   
   .header-icon { color: #0a84ff; }
-  h1 { font-size: 1.5rem; color: #fff; margin: 0; }
+  h1 { font-size: 1.5rem; color: var(--color-text-primary); margin: 0; }
   p { color: #8e8e93; margin: 4px 0 0; }
 }
 
@@ -1222,14 +1222,14 @@ $pcf-text: #bdc3c7;
 
 .preseason-card {
   padding: 20px;
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--color-glass);
   border: 2px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   cursor: pointer;
   transition: all 0.2s;
   
   &:hover {
-    background: rgba(255, 255, 255, 0.06);
+    background: var(--color-glass-border);
     border-color: rgba(255, 255, 255, 0.2);
   }
   
@@ -1245,7 +1245,7 @@ $pcf-text: #bdc3c7;
     margin-bottom: 12px;
     
     svg { color: #0a84ff; flex-shrink: 0; }
-    h3 { color: #fff; font-size: 1.1rem; margin: 0; }
+    h3 { color: var(--color-text-primary); font-size: 1.1rem; margin: 0; }
     .avg-ovr {
       margin-left: auto;
       font-size: 0.8rem;
@@ -1272,13 +1272,13 @@ $pcf-text: #bdc3c7;
         align-items: center;
         gap: 8px;
         padding: 8px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        border-bottom: 1px solid var(--color-glass);
         font-size: 0.85rem;
         flex-wrap: wrap;
         
         &:last-child { border-bottom: none; }
         .match-location { color: #8e8e93; }
-        .opponent-name { flex: 1; color: #fff; min-width: 60px; }
+        .opponent-name { flex: 1; color: var(--color-text-primary); min-width: 60px; }
         .opponent-ovr { color: #8e8e93; font-size: 0.75rem; }
         
         .presentation-badge {
@@ -1287,7 +1287,7 @@ $pcf-text: #bdc3c7;
           gap: 4px;
           padding: 2px 8px;
           background: rgba(255, 214, 10, 0.2);
-          color: #ffd60a;
+          color: var(--color-warning);
           border-radius: 10px;
           font-size: 0.7rem;
           flex-shrink: 0;
@@ -1320,7 +1320,7 @@ $pcf-text: #bdc3c7;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 12px;
-    color: #fff;
+    color: var(--color-text-primary);
     font-size: 0.95rem;
     cursor: pointer;
     transition: all 0.2s;
@@ -1335,10 +1335,10 @@ $pcf-text: #bdc3c7;
     justify-content: center;
     gap: 8px;
     padding: 14px 24px;
-    background: linear-gradient(135deg, #30d158, #28a745);
+    background: linear-gradient(135deg, var(--color-success), #28a745);
     border: none;
     border-radius: 12px;
-    color: #fff;
+    color: var(--color-text-primary);
     font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;

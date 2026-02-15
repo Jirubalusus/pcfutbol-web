@@ -27,7 +27,7 @@
       align-items: center;
       gap: 0.5rem;
       font-size: 1.5rem;
-      color: #00d4ff;
+      color: var(--color-accent);
       margin: 0.5rem 0;
     }
   }
@@ -50,8 +50,8 @@
     padding: 0.5rem 0;
     min-height: 44px; // Touch-friendly
 
-    &:hover { color: #00d4ff; }
-    &:active { color: #00d4ff; }
+    &:hover { color: var(--color-accent); }
+    &:active { color: var(--color-accent); }
   }
 
   &__active {
@@ -171,7 +171,7 @@
     
     textarea {
       width: 100%;
-      background: rgba(255, 255, 255, 0.05);
+      background: var(--color-glass);
       border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 0.5rem;
       color: #e0e8f0;
@@ -198,7 +198,7 @@
     background: #2266cc;
     border: none;
     border-radius: 0.5rem;
-    color: white;
+    color: var(--color-text-primary);
     padding: 0.65rem 1.2rem;
     cursor: pointer;
     font-size: 0.9rem;
@@ -224,13 +224,13 @@
   }
 
   &__preview {
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--color-glass);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 0.5rem;
     padding: 1rem;
     margin-top: 0.75rem;
 
-    h3 { margin: 0 0 0.25rem; color: #00d4ff; font-size: 1rem; }
+    h3 { margin: 0 0 0.25rem; color: var(--color-accent); font-size: 1rem; }
     p { margin: 0 0 0.5rem; color: #8899aa; font-size: 0.85rem; }
   }
 
@@ -336,7 +336,7 @@
   }
 
   &__card {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--color-glass);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 0.75rem;
     padding: 1rem;
@@ -391,7 +391,7 @@
 
     &--apply {
       background: #2266cc;
-      color: white;
+      color: var(--color-text-primary);
       &:hover { background: #3377dd; }
       &:active { background: #1155bb; }
       &:disabled { opacity: 0.5; cursor: not-allowed; }
@@ -412,7 +412,7 @@
 
     &--confirm {
       background: #cc3333;
-      color: white;
+      color: var(--color-text-primary);
       &:hover { background: #dd4444; }
       &:active { background: #bb2222; }
       &:disabled { opacity: 0.5; }

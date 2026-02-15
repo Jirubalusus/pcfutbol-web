@@ -366,7 +366,7 @@
         
         &.minor {
           background: rgba(255, 214, 10, 0.15);
-          color: #ffd60a;
+          color: var(--color-warning);
         }
       }
       
@@ -375,7 +375,7 @@
         background: linear-gradient(135deg, #ff6b6b, #ee5555);
         border: none;
         border-radius: 8px;
-        color: white;
+        color: var(--color-text-primary);
         font-size: 0.8rem;
         font-weight: 600;
         cursor: pointer;
@@ -666,7 +666,7 @@
         background: linear-gradient(135deg, var(--facility-color, var(--color-accent)), rgba(0,0,0,0.3));
         border: none;
         border-radius: 10px;
-        color: white;
+        color: var(--color-text-primary);
         cursor: pointer;
         transition: all 0.2s;
         
@@ -732,7 +732,7 @@
           
           .level-num {
             background: var(--color-accent);
-            color: white;
+            color: var(--color-text-primary);
           }
         }
         

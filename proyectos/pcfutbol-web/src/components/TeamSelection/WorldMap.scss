@@ -81,7 +81,7 @@
   &__code {
     font-size: 11px;
     font-weight: 700;
-    color: #fff;
+    color: var(--color-text-primary);
     letter-spacing: 0.5px;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
     white-space: nowrap;
@@ -112,7 +112,7 @@
   
   &__title {
     text-align: center;
-    color: white;
+    color: var(--color-text-primary);
     font-size: 1.2rem;
     margin-bottom: 1rem;
   }
@@ -131,7 +131,7 @@
     letter-spacing: 0.5px;
     padding: 0.6rem 0.5rem 0.25rem;
     margin-top: 0.25rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid var(--color-glass-border);
   }
   
   &__item {
@@ -164,7 +164,7 @@
   &__name {
     flex: 1;
     font-weight: 600;
-    color: white;
+    color: var(--color-text-primary);
     font-size: 1rem;
   }
   

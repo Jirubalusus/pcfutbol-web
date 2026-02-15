@@ -149,7 +149,7 @@
     &--advance {
       background: linear-gradient(135deg, var(--color-accent-secondary), var(--color-accent));
       border: none;
-      color: #fff;
+      color: var(--color-text-primary);
       
       &:active {
         filter: brightness(0.9);

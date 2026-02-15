@@ -25,7 +25,7 @@
 
   &__title {
     font-size: 1.3rem;
-    color: #fff;
+    color: var(--color-text-primary);
     text-align: center;
     margin: 0;
   }
@@ -51,7 +51,7 @@
     padding: 0.75rem 1rem;
     font-size: 1.1rem;
     background: #0d0d1a;
-    color: #fff;
+    color: var(--color-text-primary);
     border: none;
     outline: none;
     font-family: inherit;
@@ -93,7 +93,7 @@
     border: none;
     border-radius: 10px;
     background: linear-gradient(135deg, #4caf50, #2e7d32);
-    color: #fff;
+    color: var(--color-text-primary);
     cursor: pointer;
     transition: opacity 0.2s, transform 0.1s;
 

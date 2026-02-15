@@ -101,7 +101,7 @@
     }
     
     .negative {
-      color: #ff453a;
+      color: var(--color-danger);
     }
   }
   
@@ -140,7 +140,7 @@
   transition: background 0.15s;
   
   &:hover {
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--color-glass);
   }
   
   &__label {
@@ -165,7 +165,7 @@
     }
     
     &.negative {
-      color: #ff453a;
+      color: var(--color-danger);
     }
   }
 }

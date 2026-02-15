@@ -43,7 +43,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.3rem;
-      background: rgba(255, 255, 255, 0.05);
+      background: var(--color-glass);
       border: 1px solid rgba(255, 255, 255, 0.1);
       color: #8899aa;
       padding: 0.5rem 0.75rem;
@@ -53,7 +53,7 @@
       min-height: 44px;
       transition: all 0.2s;
       flex-shrink: 0;
-      &:hover { background: rgba(255, 255, 255, 0.1); color: #fff; }
+      &:hover { background: rgba(255, 255, 255, 0.1); color: var(--color-text-primary); }
     }
 
     .header-title {
@@ -88,7 +88,7 @@
       gap: 0.3rem;
       background: rgba(255, 69, 58, 0.1);
       border: 1px solid rgba(255, 69, 58, 0.3);
-      color: #ff453a;
+      color: var(--color-danger);
       padding: 0.4rem 0.6rem;
       border-radius: 6px;
       cursor: pointer;
@@ -110,7 +110,7 @@
     }
 
     h2 {
-      color: #fff;
+      color: var(--color-text-primary);
       font-size: 1.3rem;
       margin-bottom: 0.5rem;
     }
@@ -172,7 +172,7 @@
 
     tbody {
       tr {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        border-bottom: 1px solid var(--color-glass);
         transition: background 0.15s;
 
         &:hover { background: rgba(255, 215, 0, 0.03); }
@@ -201,7 +201,7 @@
     }
 
     .col-team {
-      .team-name { display: block; color: #fff; font-weight: 600; }
+      .team-name { display: block; color: var(--color-text-primary); font-weight: 600; }
       .league-name { display: block; color: #667788; font-size: 0.75rem; }
     }
 
@@ -237,7 +237,7 @@
       text-align: center;
       .trophies-value {
         font-weight: 700;
-        color: #fff;
+        color: var(--color-text-primary);
         margin-right: 0.3rem;
       }
       .trophies-detail {

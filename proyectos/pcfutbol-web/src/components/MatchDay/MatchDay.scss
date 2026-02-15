@@ -126,7 +126,7 @@
 
     &.player .badge {
       background: linear-gradient(135deg, var(--color-accent-secondary), var(--color-accent));
-      color: #fff;
+      color: var(--color-text-primary);
       box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
     }
   }
@@ -195,7 +195,7 @@
     background: linear-gradient(135deg, var(--color-success), #28a745);
     border: none;
     border-radius: var(--border-radius-lg);
-    color: #fff;
+    color: var(--color-text-primary);
     font-size: 1.2rem;
     font-weight: 700;
     cursor: pointer;
@@ -357,8 +357,8 @@
         background: rgba(255, 69, 58, 0.1);
         
         .icon-goal {
-          color: #ff453a;
-          fill: #ff453a;
+          color: var(--color-danger);
+          fill: var(--color-danger);
           stroke: #cc362e;
           filter: drop-shadow(0 0 3px rgba(255, 69, 58, 0.4));
         }
@@ -385,8 +385,8 @@
       min-width: 20px;
       
       .icon-goal {
-        color: #30d158;
-        fill: #30d158;
+        color: var(--color-success);
+        fill: var(--color-success);
         stroke: #1a8a3a;
         filter: drop-shadow(0 0 3px rgba(48, 209, 88, 0.4));
       }
@@ -398,11 +398,11 @@
         border-radius: 2px;
         
         &--yellow {
-          background: #ffd60a;
+          background: var(--color-warning);
           box-shadow: 0 0 4px rgba(255, 214, 10, 0.5);
         }
         &--red {
-          background: #ff453a;
+          background: var(--color-danger);
           box-shadow: 0 0 4px rgba(255, 69, 58, 0.5);
         }
       }
@@ -488,7 +488,7 @@
       justify-content: center;
       font-size: 0.75rem;
       font-weight: 800;
-      color: #fff;
+      color: var(--color-text-primary);
 
       &.win { background: var(--color-success); }
       &.draw { background: var(--color-warning); color: #000; }
@@ -544,7 +544,7 @@
 
     &.is-player .team-badge {
       background: linear-gradient(135deg, var(--color-accent-secondary), var(--color-accent));
-      color: #fff;
+      color: var(--color-text-primary);
       box-shadow: 0 2px 16px rgba(0, 212, 255, 0.25);
     }
 
@@ -621,7 +621,7 @@
       padding: 0.4rem 0;
 
       &:not(:last-child) {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        border-bottom: 1px solid var(--color-glass);
       }
     }
 
@@ -652,7 +652,7 @@
       height: 4px;
       border-radius: 2px;
       overflow: hidden;
-      background: rgba(255, 255, 255, 0.05);
+      background: var(--color-glass);
 
       .bar {
         height: 100%;
@@ -685,12 +685,12 @@
     }
 
     .card-yellow {
-      color: #ffd60a;
-      fill: #ffd60a;
+      color: var(--color-warning);
+      fill: var(--color-warning);
     }
     .card-red {
-      color: #ff453a;
-      fill: #ff453a;
+      color: var(--color-danger);
+      fill: var(--color-danger);
     }
   }
 
@@ -737,17 +737,17 @@
     gap: 0.35rem;
 
     &:not(:last-child) {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      border-bottom: 1px solid var(--color-glass);
     }
 
     &.goal {
       .event-player { color: var(--color-success); font-weight: 700; }
       
       &.opponent-goal {
-        .event-player { color: #ff453a; }
+        .event-player { color: var(--color-danger); }
         .icon-goal {
-          color: #ff453a;
-          fill: #ff453a;
+          color: var(--color-danger);
+          fill: var(--color-danger);
           stroke: #cc362e;
           filter: drop-shadow(0 0 3px rgba(255, 69, 58, 0.4));
         }
@@ -774,8 +774,8 @@
       align-items: center;
       
       .icon-goal {
-        color: #30d158;
-        fill: #30d158;
+        color: var(--color-success);
+        fill: var(--color-success);
         stroke: #1a8a3a;
       }
       
@@ -785,8 +785,8 @@
         height: 14px;
         border-radius: 1.5px;
         
-        &--yellow { background: #ffd60a; }
-        &--red { background: #ff453a; }
+        &--yellow { background: var(--color-warning); }
+        &--red { background: var(--color-danger); }
       }
       
       .icon-injury { color: #ff9f0a; }
@@ -821,7 +821,7 @@
       .event-team-tag {
         font-size: 0.6rem;
         color: var(--color-text-tertiary);
-        background: rgba(255, 255, 255, 0.06);
+        background: var(--color-glass-border);
         padding: 1px 5px;
         border-radius: 3px;
         font-weight: 600;

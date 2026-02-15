@@ -20,7 +20,7 @@
     h1 {
       font-size: 1.25rem;
       font-weight: 700;
-      color: #fff;
+      color: var(--color-text-primary);
       margin: 0;
     }
     
@@ -49,13 +49,13 @@
   align-items: center;
   gap: 10px;
   padding: 12px;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--color-glass);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.2s;
   
   &:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--color-glass-border);
     transform: translateY(-2px);
   }
   
@@ -71,7 +71,7 @@
   .stat-value {
     font-size: 1.15rem;
     font-weight: 700;
-    color: #fff;
+    color: var(--color-text-primary);
     line-height: 1.2;
   }
   
@@ -82,13 +82,13 @@
     letter-spacing: 0.5px;
   }
   
-  &--completed svg { color: #30d158; }
-  &--position svg { color: #ffd60a; }
+  &--completed svg { color: var(--color-success); }
+  &--position svg { color: var(--color-warning); }
   &--positive {
-    svg, .stat-value { color: #30d158; }
+    svg, .stat-value { color: var(--color-success); }
   }
   &--negative {
-    svg, .stat-value { color: #ff453a; }
+    svg, .stat-value { color: var(--color-danger); }
   }
 }
 
@@ -109,7 +109,7 @@
   }
   
   span {
-    color: #fff;
+    color: var(--color-text-primary);
     font-size: 0.9rem;
     
     strong {
@@ -138,7 +138,7 @@
     align-items: center;
     gap: 6px;
     padding: 8px 14px;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--color-glass);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     color: #8e8e93;
@@ -149,7 +149,7 @@
     
     &:hover {
       background: rgba(255, 255, 255, 0.1);
-      color: #fff;
+      color: var(--color-text-primary);
     }
     
     &.active {
@@ -174,14 +174,14 @@
     gap: 10px;
     font-size: 1rem;
     font-weight: 600;
-    color: #fff;
+    color: var(--color-text-primary);
     margin-bottom: 16px;
     
     .section-icon {
       color: #8e8e93;
       
       &--critical {
-        color: #ff453a;
+        color: var(--color-danger);
       }
     }
   }
@@ -200,19 +200,19 @@
 
 // Objective Card
 .objective-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--color-glass);
+  border: 1px solid var(--color-glass-border);
   border-radius: 12px;
   padding: 16px;
   cursor: pointer;
   transition: all 0.2s;
   
   &:hover {
-    background: rgba(255, 255, 255, 0.06);
+    background: var(--color-glass-border);
   }
   
   &--completed {
-    border-left: 3px solid #30d158;
+    border-left: 3px solid var(--color-success);
   }
   
   &--on-track {
@@ -225,7 +225,7 @@
   }
   
   &--danger {
-    border-left: 3px solid #ff453a;
+    border-left: 3px solid var(--color-danger);
     background: rgba(255, 69, 58, 0.03);
   }
   
@@ -286,7 +286,7 @@
 .objective-name {
   font-size: 1.05rem;
   font-weight: 600;
-  color: #fff;
+  color: var(--color-text-primary);
   margin: 0;
 }
 
@@ -350,7 +350,7 @@
 .progress-value {
   font-size: 0.85rem;
   font-weight: 600;
-  color: #fff;
+  color: var(--color-text-primary);
   min-width: 40px;
   text-align: right;
 }
@@ -369,7 +369,7 @@
 .objective-details {
   margin-top: 16px;
   padding-top: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid var(--color-glass-border);
   
   .detail-row {
     display: flex;
@@ -406,16 +406,16 @@
   
   &--positive {
     background: rgba(48, 209, 88, 0.1);
-    color: #30d158;
+    color: var(--color-success);
     
-    svg { color: #30d158; }
+    svg { color: var(--color-success); }
   }
   
   &--negative {
     background: rgba(255, 69, 58, 0.1);
-    color: #ff453a;
+    color: var(--color-danger);
     
-    svg { color: #ff453a; }
+    svg { color: var(--color-danger); }
   }
 }
 
@@ -435,7 +435,7 @@
   }
   
   h3 {
-    color: #fff;
+    color: var(--color-text-primary);
     font-size: 1.1rem;
     margin: 0 0 8px;
   }
@@ -459,7 +459,7 @@
   margin-top: 24px;
   
   svg {
-    color: #ffd60a;
+    color: var(--color-warning);
     flex-shrink: 0;
     margin-top: 2px;
   }
@@ -471,7 +471,7 @@
     line-height: 1.5;
     
     strong {
-      color: #ffd60a;
+      color: var(--color-warning);
     }
   }
 }

@@ -40,7 +40,7 @@
   }
 
   &__back {
-    background: rgba(255,255,255,0.06);
+    background: var(--color-glass-border);
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 10px;
     color: #e0e0e0;
@@ -58,8 +58,8 @@
 
   // ── Rank Card ──
   &__rank-card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: var(--color-glass);
+    border: 1px solid var(--color-glass-border);
     border-left: 3px solid var(--tier-color, #10b981);
     border-radius: 14px;
     padding: 1.25rem;
@@ -86,7 +86,7 @@
 
       .lp-bar {
         height: 6px;
-        background: rgba(255,255,255,0.08);
+        background: var(--color-glass-border);
         border-radius: 3px;
         overflow: hidden;
         margin-bottom: 0.25rem;
@@ -101,7 +101,7 @@
 
       .lp-text {
         font-size: 0.75rem;
-        color: rgba(255,255,255,0.5);
+        color: var(--color-text-secondary);
       }
     }
 
@@ -153,7 +153,7 @@
   &__searching {
     text-align: center;
     padding: 1.5rem;
-    background: rgba(255,255,255,0.03);
+    background: var(--color-glass);
     border: 1px solid rgba(16, 185, 129, 0.2);
     border-radius: 14px;
 
@@ -164,7 +164,7 @@
     }
 
     p {
-      color: rgba(255,255,255,0.6);
+      color: var(--color-text-secondary);
       margin: 0 0 1rem;
       .time { color: #10b981; font-weight: 600; font-variant-numeric: tabular-nums; }
     }
@@ -172,7 +172,7 @@
     .cancel-btn {
       background: transparent;
       border: 1px solid rgba(255,255,255,0.15);
-      color: rgba(255,255,255,0.5);
+      color: var(--color-text-secondary);
       padding: 0.5rem 1.5rem;
       min-height: 44px;
       border-radius: 8px;
@@ -192,8 +192,8 @@
     gap: 0.75rem;
     padding: 0.85rem 1rem;
     min-height: 48px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: var(--color-glass);
+    border: 1px solid var(--color-glass-border);
     border-radius: 12px;
     color: #e0e0e0;
     cursor: pointer;
@@ -207,7 +207,7 @@
     svg:last-child { color: rgba(255,255,255,0.3); }
 
     &:hover {
-      background: rgba(255,255,255,0.06);
+      background: var(--color-glass-border);
       border-color: rgba(255,255,255,0.15);
     }
   }
@@ -219,7 +219,7 @@
       align-items: center;
       gap: 0.5rem;
       font-size: 0.95rem;
-      color: rgba(255,255,255,0.6);
+      color: var(--color-text-secondary);
       margin: 0 0 0.75rem;
     }
 
@@ -241,7 +241,7 @@
       align-items: center;
       gap: 0.75rem;
       padding: 0.6rem 0.85rem;
-      background: rgba(255,255,255,0.03);
+      background: var(--color-glass);
       border-radius: 8px;
       font-size: 0.85rem;
       border-left: 3px solid transparent;
@@ -252,7 +252,7 @@
 
       .result { font-weight: 700; width: 1.2rem; }
       .rival { flex: 1; color: rgba(255,255,255,0.7); }
-      .score { color: rgba(255,255,255,0.5); font-variant-numeric: tabular-nums; }
+      .score { color: var(--color-text-secondary); font-variant-numeric: tabular-nums; }
       .dc-icon { color: #ef4444; }
     }
   }

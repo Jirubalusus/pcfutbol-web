@@ -14,7 +14,7 @@
 
     h2 {
       font-size: 1.25rem;
-      color: #fff;
+      color: var(--color-text-primary);
       margin-bottom: 8px;
     }
 
@@ -47,14 +47,14 @@
 
   .intensity-card {
     padding: 24px;
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--color-glass);
     border: 2px solid rgba(255, 255, 255, 0.1);
     border-radius: 16px;
     cursor: pointer;
     transition: all 0.2s;
 
     &:hover:not(.disabled) {
-      background: rgba(255, 255, 255, 0.06);
+      background: var(--color-glass-border);
       border-color: rgba(255, 255, 255, 0.2);
       transform: translateY(-2px);
     }
@@ -83,7 +83,7 @@
       h3 {
         flex: 1;
         font-size: 1.2rem;
-        color: #fff;
+        color: var(--color-text-primary);
         margin: 0;
       }
 
@@ -131,7 +131,7 @@
           font-weight: 600;
 
           &.positive {
-            color: #30d158;
+            color: var(--color-success);
           }
 
           &.negative {
@@ -152,7 +152,7 @@
       align-items: center;
       gap: 12px;
       padding: 16px;
-      background: rgba(255, 255, 255, 0.03);
+      background: var(--color-glass);
       border-radius: 12px;
       border: 1px solid rgba(255, 255, 255, 0.1);
 
@@ -166,7 +166,7 @@
 
         .label {
           font-size: 0.9rem;
-          color: #fff;
+          color: var(--color-text-primary);
         }
 
         .value {

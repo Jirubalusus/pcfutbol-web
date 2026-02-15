@@ -43,7 +43,7 @@
 
     h1 {
       font-size: 1.3rem;
-      color: #fff;
+      color: var(--color-text-primary);
       margin: 0;
     }
     svg { color: #6495ed; }
@@ -55,15 +55,15 @@
   }
 
   &__card {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--color-glass);
+    border: 1px solid var(--color-glass-border);
     border-radius: 12px;
     padding: 1rem;
     margin-bottom: 1rem;
 
     h2 {
       font-size: 1.1rem;
-      color: #fff;
+      color: var(--color-text-primary);
       margin: 0 0 0.75rem;
     }
 
@@ -75,7 +75,7 @@
       .stat {
         text-align: center;
         .label { display: block; font-size: 0.65rem; color: #667788; }
-        .value { display: block; font-size: 1rem; font-weight: 700; color: #fff; }
+        .value { display: block; font-size: 1rem; font-weight: 700; color: var(--color-text-primary); }
       }
     }
   }
@@ -87,7 +87,7 @@
     margin-bottom: 1rem;
 
     .achievement {
-      background: rgba(255, 255, 255, 0.06);
+      background: var(--color-glass-border);
       border-radius: 8px;
       padding: 0.4rem 0.8rem;
       font-size: 0.85rem;
@@ -96,7 +96,7 @@
   }
 
   &__eval {
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--color-glass);
     border: 2px solid #8899aa;
     border-radius: 12px;
     padding: 1rem;
@@ -107,7 +107,7 @@
       align-items: center;
       gap: 0.5rem;
       .emoji { font-size: 1.5rem; }
-      h3 { font-size: 1rem; color: #fff; margin: 0; }
+      h3 { font-size: 1rem; color: var(--color-text-primary); margin: 0; }
     }
 
     .objective-reminder {
@@ -121,8 +121,8 @@
   }
 
   &__prestige {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--color-glass);
+    border: 1px solid var(--color-glass-border);
     border-radius: 12px;
     padding: 1rem;
     margin-bottom: 1rem;
@@ -161,7 +161,7 @@
 
     .prestige-bar {
       height: 6px;
-      background: rgba(255, 255, 255, 0.08);
+      background: var(--color-glass-border);
       border-radius: 3px;
       overflow: hidden;
 
@@ -182,7 +182,7 @@
     width: 100%;
     padding: 0.9rem;
     background: linear-gradient(135deg, #4169e1, #6495ed);
-    color: #fff;
+    color: var(--color-text-primary);
     border: none;
     border-radius: 12px;
     font-size: 1rem;
@@ -199,7 +199,7 @@
 
     h2 {
       font-size: 1.2rem;
-      color: #fff;
+      color: var(--color-text-primary);
       margin: 0 0 1rem;
     }
   }
@@ -218,14 +218,14 @@
 
     h3 {
       font-size: 0.9rem;
-      color: #fff;
+      color: var(--color-text-primary);
       margin: 0;
     }
 
     .btn-renew {
       padding: 0.5rem 1.25rem;
       background: #4169e1;
-      color: #fff;
+      color: var(--color-text-primary);
       border: none;
       border-radius: 8px;
       cursor: pointer;
@@ -248,14 +248,14 @@
     align-items: center;
     justify-content: space-between;
     gap: 0.75rem;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--color-glass);
+    border: 1px solid var(--color-glass-border);
     border-radius: 12px;
     padding: 0.75rem 1rem;
 
     .offer-info {
       flex: 1;
-      h4 { font-size: 0.95rem; color: #fff; margin: 0 0 0.15rem; }
+      h4 { font-size: 0.95rem; color: var(--color-text-primary); margin: 0 0 0.15rem; }
       .league { font-size: 0.7rem; color: #667788; }
       .offer-objective {
         display: flex;
@@ -310,7 +310,7 @@
     z-index: 10;
     backdrop-filter: blur(8px);
     transition: all 0.2s;
-    &:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
+    &:hover { background: var(--color-glass-border); color: var(--color-text-primary); }
   }
 
 }

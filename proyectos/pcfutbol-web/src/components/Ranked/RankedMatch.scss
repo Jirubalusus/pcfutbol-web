@@ -25,10 +25,10 @@
     align-items: center;
     justify-content: space-between;
     padding: 0.75rem;
-    background: rgba(255,255,255,0.03);
+    background: var(--color-glass);
     border-radius: 12px;
     margin-bottom: 0.75rem;
-    border: 1px solid rgba(255,255,255,0.06);
+    border: 1px solid var(--color-glass-border);
 
     .player-badge {
       display: flex;
@@ -95,8 +95,8 @@
     gap: 0.75rem;
     padding: 0.85rem;
     min-height: 60px;
-    background: rgba(255,255,255,0.04);
-    border: 2px solid rgba(255,255,255,0.08);
+    background: var(--color-glass);
+    border: 2px solid var(--color-glass-border);
     border-radius: 12px;
     cursor: pointer;
     transition: all 0.2s;
@@ -174,11 +174,11 @@
   }
 
   .midseason-box {
-    background: rgba(255,255,255,0.03);
+    background: var(--color-glass);
     border-radius: 10px;
     padding: 0.75rem;
     margin-bottom: 1rem;
-    border: 1px solid rgba(255,255,255,0.06);
+    border: 1px solid var(--color-glass-border);
     h3 { font-size: 0.85rem; margin-bottom: 0.5rem; }
   }
 
@@ -206,7 +206,7 @@
   .formation-btn {
     padding: 0.5rem 0.25rem;
     min-height: 44px;
-    background: rgba(255,255,255,0.05);
+    background: var(--color-glass);
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 6px;
     color: #d1d5db;
@@ -229,7 +229,7 @@
     align-items: center;
     padding: 0.5rem;
     min-height: 52px;
-    background: rgba(255,255,255,0.05);
+    background: var(--color-glass);
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 8px;
     color: #d1d5db;
@@ -248,14 +248,14 @@
     gap: 0.5rem;
     width: 100%;
     padding: 0.75rem;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: var(--color-glass);
+    border: 1px solid var(--color-glass-border);
     border-radius: 8px;
     color: #d1d5db;
     cursor: pointer;
     margin-bottom: 0.5rem;
     transition: all 0.15s;
-    &:hover { background: rgba(255,255,255,0.08); }
+    &:hover { background: var(--color-glass-border); }
     .rotated { transform: rotate(180deg); }
     span { flex: 1; text-align: left; font-weight: 600; }
   }
@@ -265,7 +265,7 @@
     border-radius: 10px;
     padding: 0.75rem;
     margin-bottom: 0.75rem;
-    border: 1px solid rgba(255,255,255,0.06);
+    border: 1px solid var(--color-glass-border);
     max-height: 350px;
     overflow-y: auto;
 
@@ -273,7 +273,7 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      background: rgba(255,255,255,0.05);
+      background: var(--color-glass);
       border-radius: 8px;
       padding: 0.5rem 0.75rem;
       margin-bottom: 0.5rem;
@@ -306,7 +306,7 @@
       align-items: center;
       gap: 0.5rem;
       padding: 0.5rem;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid var(--color-glass);
       &.blocked { opacity: 0.5; }
       &:last-child { border-bottom: none; }
       .player-info { flex: 1; }
@@ -323,7 +323,7 @@
         padding: 0.4rem 0.85rem;
         min-height: 36px;
         background: #10b981;
-        color: white;
+        color: var(--color-text-primary);
         border: none;
         border-radius: 6px;
         font-size: 0.75rem;
@@ -347,7 +347,7 @@
     padding: 0.85rem;
     min-height: 52px;
     background: linear-gradient(135deg, #10b981, #059669);
-    color: white;
+    color: var(--color-text-primary);
     border: none;
     border-radius: 10px;
     font-size: 1rem;
@@ -401,13 +401,13 @@
     
     .sim-summary-card {
       flex: 1;
-      background: rgba(255,255,255,0.04);
+      background: var(--color-glass);
       border-radius: 8px;
       padding: 0.6rem 0.75rem;
       display: flex;
       flex-direction: column;
       gap: 0.25rem;
-      border: 1px solid rgba(255,255,255,0.06);
+      border: 1px solid var(--color-glass-border);
       
       &.me { border-left: 3px solid #10b981; }
       &.rival { border-left: 3px solid #ef4444; }
@@ -440,7 +440,7 @@
       justify-content: center;
       gap: 0.5rem;
       padding: 0.5rem;
-      background: rgba(255,255,255,0.03);
+      background: var(--color-glass);
       border-radius: 6px;
       font-size: 0.85rem;
       
@@ -469,10 +469,10 @@
 
   .sim-standings {
     margin-top: 1.5rem;
-    background: rgba(255,255,255,0.03);
+    background: var(--color-glass);
     border-radius: 10px;
     padding: 0.75rem;
-    border: 1px solid rgba(255,255,255,0.06);
+    border: 1px solid var(--color-glass-border);
     h3 { font-size: 0.85rem; margin-bottom: 0.5rem; }
   }
 }
@@ -529,8 +529,8 @@
       flex: 1;
       padding: 1rem;
       border-radius: 10px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: var(--color-glass);
+      border: 1px solid var(--color-glass-border);
       .team-name { display: block; font-size: 0.85rem; margin-bottom: 0.25rem; }
       .points { font-size: 1.5rem; font-weight: 800; }
       &.me { border-color: rgba(16,185,129,0.3); .points { color: #10b981; } }
@@ -540,11 +540,11 @@
   }
 
   .final-table {
-    background: rgba(255,255,255,0.03);
+    background: var(--color-glass);
     border-radius: 10px;
     padding: 0.75rem;
     margin-bottom: 1rem;
-    border: 1px solid rgba(255,255,255,0.06);
+    border: 1px solid var(--color-glass-border);
     text-align: left;
     h3 { font-size: 0.85rem; margin-bottom: 0.5rem; }
   }
@@ -560,10 +560,10 @@
     }
 
     .breakdown-column {
-      background: rgba(255,255,255,0.03);
+      background: var(--color-glass);
       border-radius: 10px;
       padding: 0.75rem;
-      border: 1px solid rgba(255,255,255,0.06);
+      border: 1px solid var(--color-glass-border);
       h4 { font-size: 0.8rem; margin-bottom: 0.5rem; color: #d1d5db; }
     }
   }
@@ -575,7 +575,7 @@
       align-items: center;
       padding: 0.25rem 0;
       font-size: 0.75rem;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid var(--color-glass);
       &:last-child { border-bottom: none; }
       .label { flex: 1; }
       .pts { font-weight: 700; color: #10b981; }
@@ -592,11 +592,11 @@
   }
 
   .h2h-results {
-    background: rgba(255,255,255,0.03);
+    background: var(--color-glass);
     border-radius: 10px;
     padding: 0.75rem;
     margin-bottom: 1rem;
-    border: 1px solid rgba(255,255,255,0.06);
+    border: 1px solid var(--color-glass-border);
     h3 { font-size: 0.85rem; margin-bottom: 0.5rem; }
     .h2h-match {
       display: flex;
@@ -619,7 +619,7 @@
     width: 100%;
     padding: 0.85rem;
     min-height: 48px;
-    background: rgba(255,255,255,0.08);
+    background: var(--color-glass-border);
     border: 1px solid rgba(255,255,255,0.15);
     border-radius: 10px;
     color: #e5e7eb;

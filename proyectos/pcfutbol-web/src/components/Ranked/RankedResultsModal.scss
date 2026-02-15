@@ -16,7 +16,7 @@
   width: 100%;
   max-width: 480px;
   background: linear-gradient(145deg, #1a1f2e, #111827);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--color-glass-border);
   border-radius: 16px;
   padding: 1.25rem;
   overflow: hidden;
@@ -94,8 +94,8 @@
     text-align: center;
     padding: 0.75rem 0.5rem;
     border-radius: 10px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--color-glass);
+    border: 1px solid var(--color-glass-border);
 
     &.me { border-color: rgba(16, 185, 129, 0.3); }
     &.rival { border-color: rgba(239, 68, 68, 0.3); }
@@ -127,8 +127,8 @@
 
 // ── LP Section ──
 .lp-section {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--color-glass);
+  border: 1px solid var(--color-glass-border);
   border-radius: 12px;
   padding: 1rem;
   margin-bottom: 1rem;
@@ -197,7 +197,7 @@
 
 .lp-bar-bg {
   height: 14px;
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--color-glass-border);
   border-radius: 7px;
   overflow: hidden;
   position: relative;
@@ -269,8 +269,8 @@
   }
 
   .stats-col {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: var(--color-glass);
+    border: 1px solid var(--color-glass-border);
     border-radius: 10px;
     padding: 0.6rem;
 
@@ -292,7 +292,7 @@
     padding: 0.2rem 0;
     font-size: 0.7rem;
     color: #d1d5db;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid var(--color-glass);
     &:last-child { border-bottom: none; }
     .bd-label { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .bd-pts { font-weight: 700; color: #10b981; flex-shrink: 0; margin-left: 0.3rem; }
@@ -311,8 +311,8 @@
 
 // ── H2H ──
 .h2h-section {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--color-glass);
+  border: 1px solid var(--color-glass-border);
   border-radius: 10px;
   padding: 0.6rem;
   margin-bottom: 1rem;
@@ -346,7 +346,7 @@
   padding: 0.85rem;
   min-height: 48px;
   background: linear-gradient(135deg, #10b981, #059669);
-  color: white;
+  color: var(--color-text-primary);
   border: none;
   border-radius: 10px;
   font-size: 0.95rem;
