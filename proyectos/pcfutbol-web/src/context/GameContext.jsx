@@ -30,7 +30,22 @@ const GameContext = createContext();
 // Rellena huecos del lineup con los mejores disponibles
 // ============================================================
 function ensureFullLineup(lineup, players, formation) {
-  if (!lineup || !players || players.length < 11) return lineup;
+  if (!lineup || !players) return lineup;
+  
+  // Always clean ghost players (sold/injured) from lineup, even with < 11 players
+  if (players.length > 0) {
+    const validNames = new Set(players.filter(p => !p.injured && !p.suspended).map(p => p.name));
+    const cleaned = { ...lineup };
+    let didClean = false;
+    Object.entries(cleaned).forEach(([slot, p]) => {
+      if (p && p.name && !validNames.has(p.name)) {
+        cleaned[slot] = null;
+        didClean = true;
+      }
+    });
+    if (players.length < 11) return didClean ? cleaned : lineup;
+  }
+  if (players.length < 11) return lineup;
   
   const FORMATION_SLOTS = {
     '4-3-3':       ['GK','RB','CB1','CB2','LB','CM1','CDM','CM2','RW','ST','LW'],
