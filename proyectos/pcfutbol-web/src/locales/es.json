@@ -288,6 +288,7 @@
     "weeklySalary": "Masa salarial",
     "perYear": "/año",
     "perWeek": "/sem",
+    "vsCurrent": "vs actual",
     "ofBudget": "del presupuesto",
     "playersNeedAttention": "{{count}} jugador(es) requiere(n) atención",
     "retiring": "Se retira",
@@ -1051,7 +1052,22 @@
     "capacity": "Capacidad",
     "reputation": "Reputación",
     "presentation": "Presentación",
-    "startSeason": "Comenzar Temporada"
+    "startSeason": "Comenzar Temporada",
+    "title": "SELECCIÓN DE EQUIPO",
+    "countries": "Países",
+    "step": "Paso {{current}} de {{total}}",
+    "countryLeague": "PAÍS / LIGA",
+    "teamLabel": "EQUIPO",
+    "selectCountryOnMap": "Selecciona un país en el mapa",
+    "leaguesOf": "Ligas de {{country}}",
+    "difficulty": "Dificultad",
+    "topPlayers": "Jugadores destacados",
+    "playersInSquad": "{{count}} jugadores en plantilla",
+    "startWith": "COMENZAR CON {{team}}",
+    "selectTeamFromList": "Selecciona un equipo de la lista",
+    "preseasonTitle": "Pretemporada {{team}}",
+    "chooseFriendlyPackage": "Elige tu paquete de amistosos",
+    "avgOvr": "Media"
   },
   "contrarreloj": {
     "title": "Modo Contrarreloj",
@@ -1396,7 +1412,12 @@
     "hasRenewed": "ha renovado",
     "newContractDetails": "Nuevo contrato: {{years}} años, {{salary}}/sem",
     "refusesToRenew": "rechaza renovar",
-    "playerUnhappyWantsOut": "El jugador está descontento y quiere salir del club"
+    "playerUnhappyWantsOut": "El jugador está descontento y quiere salir del club",
+    "perWeek": "/sem",
+    "vsCurrent": "vs actual",
+    "acceptCounter": "Aceptar contraoferta",
+    "demands": "Exige",
+    "starterRole": "Rol de titular"
   },
   "competitions": {
     "title": "Competiciones",
@@ -1707,7 +1728,13 @@
     "playerLoanedContent": "{{player}} cedido al {{team}}. Fee: {{fee}}{{option}}",
     "aperturaClausuraFinalResult": "🏆 Final Apertura vs Clausura",
     "aperturaClausuraFinalResultContent": "{{winner}} gana la final de la {{league}}. Ida: {{leg1Home}}-{{leg1Away}}, Vuelta: {{leg2Home}}-{{leg2Away}}.",
-    "directChampionShort": "{{winner}} es campeón directo."
+    "directChampionShort": "{{winner}} es campeón directo.",
+    "welcomeTitle": "¡Bienvenido al club!",
+    "welcomeContent": "Has sido nombrado nuevo entrenador del {{team}}. La afición espera grandes cosas de ti.",
+    "continentalCompetition": "¡Competición Continental!",
+    "teamPlaysContinental": "Tu equipo jugará la {{comp}} esta temporada.",
+    "cupParticipationTitle": "{{icon}} {{cup}}",
+    "cupParticipationContent": "Tu equipo participará en la {{cup}} esta temporada. {{rounds}} rondas hasta la final."
   },
   "proManager": {
     "title": "ProManager",
@@ -1849,5 +1876,13 @@
     "tooShort": "Mínimo 3 caracteres",
     "tooLong": "Máximo 20 caracteres",
     "invalid": "Solo letras, números, _ y -"
+  },
+  "tactics": {
+    "attacking": "Ofensiva",
+    "balanced": "Equilibrada",
+    "defensive": "Defensiva",
+    "counter": "Contraataque",
+    "possession": "Posesión",
+    "pressing": "Presión alta"
   }
 }

@@ -302,6 +302,7 @@
     "weeklySalary": "Wage bill",
     "perYear": "/year",
     "perWeek": "/week",
+    "vsCurrent": "vs current",
     "ofBudget": "of budget",
     "playersNeedAttention": "{{count}} player(s) need(s) attention",
     "retiring": "Retiring",
@@ -1065,7 +1066,22 @@
     "capacity": "Capacity",
     "reputation": "Reputation",
     "presentation": "Presentation",
-    "startSeason": "Start Season"
+    "startSeason": "Start Season",
+    "title": "TEAM SELECTION",
+    "countries": "Countries",
+    "step": "Step {{current}} of {{total}}",
+    "countryLeague": "COUNTRY / LEAGUE",
+    "teamLabel": "TEAM",
+    "selectCountryOnMap": "Select a country on the map",
+    "leaguesOf": "Leagues of {{country}}",
+    "difficulty": "Difficulty",
+    "topPlayers": "Top Players",
+    "playersInSquad": "{{count}} players in squad",
+    "startWith": "START WITH {{team}}",
+    "selectTeamFromList": "Select a team from the list",
+    "preseasonTitle": "Preseason {{team}}",
+    "chooseFriendlyPackage": "Choose your friendly package",
+    "avgOvr": "Average"
   },
   "contrarreloj": {
     "title": "Race Against Time Mode",
@@ -1396,7 +1412,12 @@
     "hasRenewed": "has renewed",
     "newContractDetails": "New contract: {{years}} years, {{salary}}/week",
     "refusesToRenew": "refuses to renew",
-    "playerUnhappyWantsOut": "Player is unhappy and wants to leave the club"
+    "playerUnhappyWantsOut": "Player is unhappy and wants to leave the club",
+    "perWeek": "/week",
+    "vsCurrent": "vs current",
+    "acceptCounter": "Accept counter offer",
+    "demands": "Demands",
+    "starterRole": "Starter role"
   },
   "competitions": {
     "title": "Competitions",
@@ -1849,5 +1870,13 @@
     "tooShort": "Minimum 3 characters",
     "tooLong": "Maximum 20 characters",
     "invalid": "Only letters, numbers, _ and -"
+  },
+  "tactics": {
+    "attacking": "Attacking",
+    "balanced": "Balanced",
+    "defensive": "Defensive",
+    "counter": "Counter-attack",
+    "possession": "Possession",
+    "pressing": "High Press"
   }
 }

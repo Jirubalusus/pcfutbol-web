@@ -200,8 +200,8 @@ export function generatePreseasonOptions(allTeams, playerTeam, currentLeague) {
   // Shuffle completo
   const shuffled = [...availableTeams].sort(() => Math.random() - 0.5);
   
-  // Nombres para las 3 opciones
-  const optionNames = ['Opción A', 'Opción B', 'Opción C'];
+  // Option IDs (display names handled by i18n in components)
+  const optionNames = ['Option A', 'Option B', 'Option C'];
   
   // Generar 3 opciones completamente aleatorias, sin repetir rivales entre opciones
   const used = new Set();

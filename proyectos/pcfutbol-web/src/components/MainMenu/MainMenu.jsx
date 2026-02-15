@@ -52,7 +52,7 @@ export default function MainMenu() {
         hasActive: true,
         source: 'memory',
         summary: {
-          teamName: state.team?.name || 'Equipo desconocido',
+          teamName: state.team?.name || t('common.unknownTeam'),
           teamId: state.teamId,
           leagueId: state.leagueId || state.playerLeagueId,
           season: state.contrarrelojData?.seasonsPlayed || 1,

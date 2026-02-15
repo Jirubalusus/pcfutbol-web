@@ -2799,7 +2799,7 @@ function gameReducer(state, action) {
       return {
         ...state,
         managerFired: true,
-        managerFiredReason: action.payload?.reason || 'La directiva ha prescindido de tus servicios'
+        managerFiredReason: action.payload?.reason || 'managerFired.defaultReason'
       };
 
     case 'SET_CONVOCADOS':

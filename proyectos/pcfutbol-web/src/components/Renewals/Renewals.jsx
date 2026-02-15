@@ -270,7 +270,7 @@ export default function Renewals() {
                 </div>
                 <div className="status-item">
                   <span className="label">{t('renewals.salary')}</span>
-                  <span className="value">{formatMoney(player.salary)}/sem</span>
+                  <span className="value">{formatMoney(player.salary)}/{t('renewals.perWeek')}</span>
                 </div>
                 <div className="status-item">
                   <span className="label">{t('renewals.minutes')}</span>
@@ -338,15 +338,19 @@ export default function Renewals() {
                 </div>
                 
                 <div className="player-personality">
-                  {PERSONALITIES[selectedPlayer.personality?.type] && (
-                    <div className="trait">
-                      <span className="icon">{PERSONALITIES[selectedPlayer.personality.type].icon}</span>
-                      <div>
-                        <span className="name">{PERSONALITIES[selectedPlayer.personality.type].name}</span>
-                        <span className="desc">{PERSONALITIES[selectedPlayer.personality.type].description}</span>
+                  {(() => {
+                    const pType = PERSONALITIES[selectedPlayer.personality?.type || 'professional'];
+                    if (!pType) return null;
+                    return (
+                      <div className="trait">
+                        <span className="icon">{pType.icon}</span>
+                        <div>
+                          <span className="name">{pType.name}</span>
+                          <span className="desc">{pType.description}</span>
+                        </div>
                       </div>
-                    </div>
-                  )}
+                    );
+                  })()}
                   {selectedPlayer.personality?.specialGoal && SPECIAL_GOALS[selectedPlayer.personality.specialGoal] && (
                     <div className="trait special">
                       <span className="icon">{SPECIAL_GOALS[selectedPlayer.personality.specialGoal].icon}</span>
@@ -361,7 +365,7 @@ export default function Renewals() {
                 <div className="player-current">
                   <div className="stat">
                     <span>{t('renewals.currentSalary')}</span>
-                    <span>{formatMoney(selectedPlayer.salary)}/sem</span>
+                    <span>{formatMoney(selectedPlayer.salary)}/{t('renewals.perWeek')}</span>
                   </div>
                   <div className="stat">
                     <span>{t('renewals.currentContract')}</span>
@@ -458,7 +462,7 @@ export default function Renewals() {
                       })}>+10K</button>
                     </div>
                     <div className="compare">
-                      vs actual: {formatMoney(selectedPlayer.salary)} 
+                      {t('renewals.vsCurrent')}: {formatMoney(selectedPlayer.salary)} 
                       ({renewalOffer.newSalary > selectedPlayer.salary ? '+' : ''}
                       {Math.round((renewalOffer.newSalary - selectedPlayer.salary) / selectedPlayer.salary * 100)}%)
                     </div>

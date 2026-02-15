@@ -171,7 +171,6 @@ export default function ProManagerSetup() {
     });
 
     dispatch({ type: 'SET_LEAGUE_TABLE', payload: leagueData.table });
-    dispatch({ type: 'SET_FIXTURES', payload: leagueData.fixtures });
     dispatch({ type: 'SET_PLAYER_LEAGUE', payload: leagueId });
 
     // Load all league teams for transfers
@@ -232,13 +231,26 @@ export default function ProManagerSetup() {
     }
 
     // Cup
+    let cupRounds = 0;
     try {
       const cupData = getCupTeams(leagueId, team, {}, leagueTeams.map((t, i) => ({ teamId: t.id, teamName: t.name, leaguePosition: i + 1 })));
       if (cupData?.teams?.length >= 4) {
         const bracket = generateCupBracket(cupData.teams, team.id);
         dispatch({ type: 'INIT_CUP_COMPETITION', payload: bracket });
+        cupRounds = bracket.rounds?.length || 0;
       }
     } catch { /* skip */ }
+
+    // Build season calendar (intercalate European/Cup weeks with league)
+    const hasEuropean = !isPlayerInSA ? true : false; // SA also uses same calendar system
+    const hasContinental = isPlayerInSA || hasEuropean;
+    const totalLeagueMDs = leagueData.fixtures
+      ? Math.max(...leagueData.fixtures.map(f => f.week || 0), 0)
+      : (leagueTeams.length - 1) * 2;
+    const europeanCalendar = buildSeasonCalendar(totalLeagueMDs, { hasEuropean: hasContinental, cupRounds });
+    const remappedFixtures = remapFixturesForEuropean(leagueData.fixtures, europeanCalendar.leagueWeekMap);
+    dispatch({ type: 'SET_FIXTURES', payload: remappedFixtures });
+    dispatch({ type: 'SET_EUROPEAN_CALENDAR', payload: europeanCalendar });
   };
 
   return (

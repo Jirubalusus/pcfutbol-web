@@ -1166,7 +1166,7 @@ export default function Office() {
           <div className="sim-modal">
             <div className="sim-modal__icon"><Loader size={40} className="sim-modal__spinner" /></div>
             <h3 className="sim-modal__title">{t('office.simulating')}...</h3>
-            <p className="sim-modal__week">Semana {simProgress.week}</p>
+            <p className="sim-modal__week">{t('common.week')} {simProgress.week}</p>
             <div className="sim-modal__bar-bg">
               <div 
                 className="sim-modal__bar-fill" 

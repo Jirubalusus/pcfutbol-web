@@ -6,12 +6,17 @@ import {
   evaluateSeason, updatePrestige, generateSeasonEndOffers,
   getSeasonEndConfidence, getBoardObjective
 } from '../../game/proManagerEngine';
-import { LEAGUE_CONFIG, initializeOtherLeagues } from '../../game/multiLeagueEngine';
+import { LEAGUE_CONFIG, initializeOtherLeagues, initializeNewSeasonWithPromotions } from '../../game/multiLeagueEngine';
 import { initializeLeague } from '../../game/leagueEngine';
 import { getStadiumInfo, getStadiumLevel } from '../../data/stadiumCapacities';
-import { generatePreseasonOptions } from '../../game/seasonManager';
+import { generatePreseasonOptions, getSeasonResult } from '../../game/seasonManager';
+import { generateSeasonObjectives } from '../../game/objectivesEngine';
 import { getLeagueTier } from '../../game/leagueTiers';
 import { getCupTeams, generateCupBracket } from '../../game/cupSystem';
+import { qualifyTeamsForEurope, buildSeasonCalendar, remapFixturesForEuropean, LEAGUE_SLOTS } from '../../game/europeanCompetitions';
+import { initializeEuropeanCompetitions } from '../../game/europeanSeason';
+import { isSouthAmericanLeague, qualifyTeamsForSouthAmerica, SA_LEAGUE_SLOTS } from '../../game/southAmericanCompetitions';
+import { initializeSACompetitions } from '../../game/southAmericanSeason';
 import {
   getLaLigaTeams, getSegundaTeams, getPremierTeams, getSerieATeams,
   getBundesligaTeams, getLigue1Teams, getEredivisieTeams, getPrimeiraLigaTeams,
@@ -99,7 +104,7 @@ export default function ProManagerSeasonEnd() {
   const canRenew = seasonEval.result !== 'failed' && !pm?.fired;
 
   const handleRenew = () => {
-    // Stay with current team, update proManagerData
+    // Stay with current team — trigger full season transition
     const leagueId = state.playerLeagueId || state.leagueId;
     const objective = getBoardObjective(
       getAvgOverall(state.team), leagueId, state.team
@@ -124,7 +129,78 @@ export default function ProManagerSeasonEnd() {
         }]
       }
     });
-    // Continue to next season (SeasonEnd handles the START_NEW_SEASON)
+
+    // Build all teams for preseason
+    const allTeamsFlat = [];
+    for (const [lid, getter] of Object.entries(ALL_LEAGUE_GETTERS)) {
+      try { allTeamsFlat.push(...getter()); } catch { /* skip */ }
+    }
+
+    // Season result for transition
+    const seasonResult = getSeasonResult(state.leagueTable, state.teamId, leagueId);
+
+    // Process promotion/relegation
+    const newSeasonData = initializeNewSeasonWithPromotions(state, state.teamId, null, {});
+    const newPlayerLeagueId = newSeasonData.newPlayerLeagueId || leagueId;
+
+    // Generate preseason (auto-pick first option)
+    const preseasonOpts = generatePreseasonOptions(allTeamsFlat, state.team, newPlayerLeagueId);
+    const preseason = preseasonOpts[0];
+
+    // Generate new objectives
+    const newObjectives = generateSeasonObjectives(state.team, newPlayerLeagueId, newSeasonData.playerLeague.table);
+
+    // Cup
+    let cupBracket = null;
+    let cupRounds = 0;
+    try {
+      const cupData = getCupTeams(newPlayerLeagueId, state.team, newSeasonData.otherLeagues || state.otherLeagues, newSeasonData.playerLeague?.table);
+      if (cupData?.teams?.length >= 2) {
+        cupBracket = generateCupBracket(cupData.teams, state.teamId);
+        if (cupBracket) cupRounds = cupBracket.rounds.length;
+      }
+    } catch { /* skip */ }
+
+    // Season calendar
+    let finalFixtures = newSeasonData.playerLeague.fixtures;
+    let europeanCalendar = null;
+    try {
+      const totalLeagueMDs = finalFixtures.length > 0 ? Math.max(...finalFixtures.map(f => f.week)) : 38;
+      europeanCalendar = buildSeasonCalendar(totalLeagueMDs, { hasEuropean: !!seasonResult.qualification, cupRounds });
+      finalFixtures = remapFixturesForEuropean(finalFixtures, europeanCalendar.leagueWeekMap);
+    } catch { /* skip */ }
+
+    // Dispatch START_NEW_SEASON for full state transition
+    dispatch({
+      type: 'START_NEW_SEASON',
+      payload: {
+        seasonResult,
+        objectiveRewards: { netResult: 0, totalReward: 0, totalPenalty: 0, objectiveResults: [] },
+        europeanBonus: 0,
+        preseasonMatches: preseason?.matches || [],
+        moneyChange: 0,
+        newFixtures: finalFixtures,
+        newTable: newSeasonData.playerLeague.table,
+        newObjectives,
+        newPlayerLeagueId,
+        europeanCalendar
+      }
+    });
+
+    // Other leagues
+    dispatch({ type: 'SET_OTHER_LEAGUES', payload: newSeasonData.otherLeagues });
+
+    if (newPlayerLeagueId !== leagueId) {
+      dispatch({ type: 'SET_PLAYER_LEAGUE', payload: newPlayerLeagueId });
+    }
+
+    if (cupBracket) {
+      dispatch({ type: 'INIT_CUP_COMPETITION', payload: cupBracket });
+    }
+
+    // Continental competitions
+    _initContinentalComps(dispatch, newPlayerLeagueId, newSeasonData, state, allTeamsFlat, t);
+
     dispatch({ type: 'SET_SCREEN', payload: 'office' });
   };
 
@@ -177,7 +253,6 @@ export default function ProManagerSeasonEnd() {
 
     // Initialize league, fixtures, other leagues
     dispatch({ type: 'SET_LEAGUE_TABLE', payload: leagueData.table });
-    dispatch({ type: 'SET_FIXTURES', payload: leagueData.fixtures });
     dispatch({ type: 'SET_PLAYER_LEAGUE', payload: leagueId });
 
     const otherLeagues = initializeOtherLeagues(leagueId, null);
@@ -185,9 +260,11 @@ export default function ProManagerSeasonEnd() {
 
     // Load all league teams for transfers
     const allLeagueTeamsWithData = [];
-    for (const [lid, getter] of Object.entries(ALL_LEAGUE_GETTERS)) {
+    const allTeamsFlat = [];
+    for (const [lid, lgetter] of Object.entries(ALL_LEAGUE_GETTERS)) {
       try {
-        const teams = getter();
+        const teams = lgetter();
+        allTeamsFlat.push(...teams);
         for (const tt of teams) {
           allLeagueTeamsWithData.push({
             ...tt, id: tt.id, name: tt.name, players: tt.players || [],
@@ -201,14 +278,43 @@ export default function ProManagerSeasonEnd() {
       dispatch({ type: 'UPDATE_LEAGUE_TEAMS', payload: allLeagueTeamsWithData });
     }
 
+    // Season calendar + fixtures remap
+    let finalFixtures = leagueData.fixtures;
+    let europeanCalendar = null;
+    try {
+      const totalLeagueMDs = finalFixtures.length > 0 ? Math.max(...finalFixtures.map(f => f.week)) : 38;
+      europeanCalendar = buildSeasonCalendar(totalLeagueMDs, { hasEuropean: true, cupRounds: 0 });
+      finalFixtures = remapFixturesForEuropean(finalFixtures, europeanCalendar.leagueWeekMap);
+    } catch { /* skip */ }
+
+    dispatch({ type: 'SET_FIXTURES', payload: finalFixtures });
+    if (europeanCalendar) {
+      dispatch({ type: 'SET_EUROPEAN_CALENDAR', payload: europeanCalendar });
+    }
+
+    // Generate new objectives
+    const newObjectives = generateSeasonObjectives(team, leagueId, leagueData.table);
+    dispatch({ type: 'SET_SEASON_OBJECTIVES', payload: newObjectives });
+
+    // Generate preseason (auto-pick first)
+    const preseasonOpts = generatePreseasonOptions(allTeamsFlat, team, leagueId);
+    const preseason = preseasonOpts[0];
+    if (preseason) {
+      dispatch({ type: 'SET_PRESEASON', payload: { matches: preseason.matches, phase: true } });
+    }
+
     // Cup
     try {
-      const cupTeams = getCupTeams(leagueId, null, leagueTeams);
-      if (cupTeams?.length >= 4) {
-        const bracket = generateCupBracket(cupTeams, team.id);
-        dispatch({ type: 'INIT_CUP_COMPETITION', payload: bracket });
+      const cupData = getCupTeams(leagueId, team, otherLeagues, leagueData.table);
+      if (cupData?.teams?.length >= 2) {
+        const bracket = generateCupBracket(cupData.teams, team.id);
+        if (bracket) dispatch({ type: 'INIT_CUP_COMPETITION', payload: bracket });
       }
     } catch { /* skip */ }
+
+    // Continental competitions
+    const fakeNewSeasonData = { newPlayerLeagueId: leagueId, otherLeagues, playerLeague: { table: leagueData.table } };
+    _initContinentalComps(dispatch, leagueId, fakeNewSeasonData, state, allTeamsFlat, t);
   };
 
   const handleRetire = () => {
