@@ -439,6 +439,8 @@ function gameReducer(state, action) {
         teamId: action.payload.teamId,
         team: teamWithRoles,
         leagueId: leagueId,
+        playerLeagueId: leagueId,
+        playerGroupId: action.payload.group || null,
         leagueTier: leagueTier,
         money: teamWithRoles.budget,
         loaded: true,
@@ -775,11 +777,13 @@ function gameReducer(state, action) {
           suspensionType: null,
           retiring: willRetire,
           severeInjuryCount: 0, // Reset al inicio de temporada
-          // Limpiar flags de cesión
+          // Limpiar flags de cesión y traspasos
           onLoan: false,
           loanFromTeam: undefined,
           loanFromTeamId: undefined,
-          loanSalaryShare: undefined
+          loanSalaryShare: undefined,
+          transferListed: false,
+          askingPrice: undefined
         };
       }) || []);
 
@@ -868,7 +872,7 @@ function gameReducer(state, action) {
       });
 
       // Calcular dinero final tras temporada
-      const seasonEndMoney = state.money + moneyChange + (state.stadium?.accumulatedTicketIncome ?? 0) + (state.stadium?.seasonTicketIncomeCollected ?? 0);
+      const seasonEndMoney = state.money + (moneyChange || 0) + (state.stadium?.accumulatedTicketIncome ?? 0) + (state.stadium?.seasonTicketIncomeCollected ?? 0);
 
       // Check bancarrota al final de temporada
       const isBankruptAtSeasonEnd = seasonEndMoney < 0;
@@ -1408,7 +1412,8 @@ function gameReducer(state, action) {
       const newYouthPlayers = [];
       let updatedYouthStats = state.facilityStats?.youth || { playersGenerated: 0, totalOvr: 0 };
 
-      if (state.currentWeek === 38) {
+      const maxLeagueWeek = (state.fixtures || []).length > 0 ? Math.max(...state.fixtures.map(f => f.week)) : 38;
+      if (state.currentWeek === maxLeagueWeek) {
         const youthLevel = state.facilities?.youth || 0;
         const youthSpec = state.facilitySpecs?.youth || 'general';
         // Siempre 1 canterano por temporada â€" el nivel mejora su media
