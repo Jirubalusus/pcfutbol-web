@@ -2543,6 +2543,8 @@ function gameReducer(state, action) {
         playerForm: newForm,
         matchTracker: updatedTracker,
         rejectedTransfers: updatedRejected,
+        // Expire old transfer offers (from Transfers.jsx incoming AI offers)
+        transferOffers: (state.transferOffers || []).filter(o => !o.expiresIn || o.expiresIn > state.currentWeek).map(o => o.expiresIn ? { ...o, expiresIn: o.expiresIn - 1 } : o),
         // Cesiones
         activeLoans: updatedActiveLoans,
         incomingLoanOffers: updatedIncomingLoanOffers,
@@ -2628,29 +2630,50 @@ function gameReducer(state, action) {
       if (state.money < action.payload.fee) return state;
       const newPlayer = {
         ...action.payload.player,
+        transferListed: false,
         role: action.payload.player.role || assignRole(action.payload.player)
       };
+      // Remove player from selling team in leagueTeams
+      const fromTeamId = action.payload.fromTeamId || action.payload.player?.teamId;
+      const updatedLeagueTeamsSign = fromTeamId ? (state.leagueTeams || []).map(t =>
+        t.id === fromTeamId
+          ? { ...t, players: (t.players || []).filter(p => p.name !== newPlayer.name) }
+          : t
+      ) : state.leagueTeams;
       return {
         ...state,
         team: {
           ...state.team,
           players: [...state.team.players, newPlayer]
         },
+        leagueTeams: updatedLeagueTeamsSign,
         money: state.money - action.payload.fee,
         transfersSpent: (state.transfersSpent || 0) + action.payload.fee
       };
     }
 
-    case 'SELL_PLAYER':
+    case 'SELL_PLAYER': {
+      // Minimum squad size check
+      if ((state.team?.players?.length || 0) <= 14) return state;
+      // Add player to a random AI team in the same league
+      const soldPlayerData = state.team?.players?.find(p => p.name === action.payload.playerName);
+      const buyerTeamId = action.payload.buyerTeamId;
+      const updatedLeagueTeamsSell = buyerTeamId && soldPlayerData ? (state.leagueTeams || []).map(t =>
+        t.id === buyerTeamId
+          ? { ...t, players: [...(t.players || []), { ...soldPlayerData, transferListed: false, contractYears: 4 }] }
+          : t
+      ) : state.leagueTeams;
       return {
         ...state,
         team: {
           ...state.team,
           players: state.team.players.filter(p => p.name !== action.payload.playerName)
         },
+        leagueTeams: updatedLeagueTeamsSell,
         money: state.money + action.payload.fee,
         transfersEarned: (state.transfersEarned || 0) + action.payload.fee
       };
+    }
 
     case 'UPGRADE_FACILITY':
       return {
@@ -2843,7 +2866,7 @@ function gameReducer(state, action) {
         if (t.id === offer.fromTeamId) {
           return {
             ...t,
-            players: [...(t.players || []), { ...soldPlayer, teamId: t.id, contractYears: 4 }],
+            players: [...(t.players || []), { ...soldPlayer, teamId: t.id, contractYears: 4, transferListed: false, askingPrice: undefined }],
             budget: (t.budget || 50_000_000) - offer.amount
           };
         }
@@ -2927,94 +2950,8 @@ function gameReducer(state, action) {
       }
     }
 
-    case 'PROCESS_OUTGOING_OFFER': {
-      // Simular respuesta de la IA a oferta del usuario
-      const offer = action.payload;
-      const targetTeam = (state.leagueTeams || []).find(t => t.id === offer.toTeamId);
-      if (!targetTeam) return state;
-
-      const targetPlayer = (targetTeam.players || []).find(p => p.name === offer.player.name);
-      if (!targetPlayer) return state;
-
-      const marketValue = calculateMarketValue(targetPlayer, targetTeam.leagueId);
-      const offerRatio = offer.amount / marketValue;
-
-      // Decidir respuesta
-      let response = 'rejected';
-      let counterAmount = null;
-
-      if (offerRatio >= 1.1) {
-        // Oferta generosa - aceptar
-        response = 'accepted';
-      } else if (offerRatio >= 0.85) {
-        // Oferta razonable - 60% aceptar, 40% contraoferta
-        response = Math.random() < 0.6 ? 'accepted' : 'countered';
-        if (response === 'countered') {
-          counterAmount = Math.round(marketValue * (1.05 + Math.random() * 0.15));
-        }
-      } else if (offerRatio >= 0.7) {
-        // Oferta baja - 20% aceptar, 50% contraoferta, 30% rechazar
-        const roll = Math.random();
-        if (roll < 0.2) response = 'accepted';
-        else if (roll < 0.7) {
-          response = 'countered';
-          counterAmount = Math.round(marketValue * (1.1 + Math.random() * 0.2));
-        }
-      }
-      // Si < 0.7, queda rechazado
-
-      const updatedOffer = {
-        ...offer,
-        status: response,
-        counterAmount: counterAmount,
-        respondedAt: Date.now()
-      };
-
-      let newState = {
-        ...state,
-        outgoingOffers: (state.outgoingOffers || []).map(o =>
-          o.id === offer.id ? updatedOffer : o
-        )
-      };
-
-      // Si fue aceptada, completar la transferencia
-      if (response === 'accepted') {
-        const newPlayer = {
-          ...targetPlayer,
-          teamId: state.teamId,
-          contractYears: 4,
-          salary: Math.round((targetPlayer.salary || 50000) * 1.2)
-        };
-
-        newState = {
-          ...newState,
-          team: {
-            ...state.team,
-            players: [...state.team.players, newPlayer]
-          },
-          money: state.money - offer.amount,
-          leagueTeams: (state.leagueTeams || []).map(t => {
-            if (t.id === offer.toTeamId) {
-              return {
-                ...t,
-                players: (t.players || []).filter(p => p.name !== targetPlayer.name),
-                budget: (t.budget || 50_000_000) + offer.amount
-              };
-            }
-            return t;
-          }),
-          messages: [{
-            id: Date.now(),
-            type: 'transfer',
-            titleKey: 'gameMessages.transferComplete',
-            contentKey: 'gameMessages.transferCompleteContent', contentParams: { player: targetPlayer.name, cost: formatTransferPrice(offer.amount) },
-            dateKey: 'gameMessages.weekDate', dateParams: { week: state.currentWeek }
-          }, ...state.messages].slice(0, 50)
-        };
-      }
-
-      return newState;
-    }
+    // PROCESS_OUTGOING_OFFER removed — was dead code with double money deduction bug.
+    // Outgoing offer resolution is handled correctly in ADVANCE_WEEK (~line 2310).
 
     case 'ACCEPT_COUNTER_OFFER': {
       const offer = action.payload;
