@@ -1,16 +1,18 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../context/AuthContext';
 import { useGame } from '../../context/GameContext';
 import {
   getOrCreatePlayer, onPlayerChange, joinQueue, leaveQueue,
   onQueueChange, findOpponent, createMatch, getMatchHistory,
-  abandonActiveMatches
+  abandonActiveMatches, findAndCreateMatch
 } from '../../firebase/rankedService';
 import { getTierByLP, getLPInDivision } from './tierUtils';
 import { Swords, Trophy, Search, ArrowLeft, Clock, ChevronRight, Wifi, WifiOff } from 'lucide-react';
 import './RankedLobby.scss';
 
 export default function RankedLobby() {
+  const { t } = useTranslation();
   const { user, displayName: authDisplayName } = useAuth();
   const { dispatch } = useGame();
   const [player, setPlayer] = useState(null);
@@ -75,23 +77,14 @@ export default function RankedLobby() {
       }
     });
 
-    // Poll for opponents every 3s
-    // Only the player with the LOWER uid creates the match to avoid duplicates
+    // Poll for opponents every 3s using transactional matchmaking
     const poll = setInterval(async () => {
       if (cancelled) return;
       try {
-        const opponent = await findOpponent(user.uid, player?.totalLP || 0);
-        if (opponent && !cancelled) {
-          // Only create if our uid < opponent uid (deterministic: only one creates)
-          if (user.uid < opponent.id) {
-            const match = await createMatch(
-              { uid: user.uid, displayName: player?.displayName, totalLP: player?.totalLP || 0 },
-              opponent
-            );
-            setMatchId(match.id);
-            setSearching(false);
-          }
-          // else: wait for opponent to create, we'll detect via onQueueChange
+        const match = await findAndCreateMatch(user.uid, player?.displayName, player?.totalLP || 0);
+        if (match && !cancelled) {
+          setMatchId(match.id);
+          setSearching(false);
         }
       } catch (e) {
         console.error('Matchmaking error:', e);
@@ -147,7 +140,7 @@ export default function RankedLobby() {
       <div className="ranked-lobby">
         <div className="ranked-lobby__loading">
           <Swords size={32} className="spin" />
-          <p>Cargando perfil...</p>
+          <p>{t('ranked.loadingProfile')}</p>
         </div>
       </div>
     );
@@ -186,15 +179,15 @@ export default function RankedLobby() {
         {!searching ? (
           <button className="ranked-lobby__find-btn" onClick={handleFindMatch}>
             <Search size={22} />
-            <span>Buscar Partida</span>
+            <span>{t('ranked.findMatch')}</span>
           </button>
         ) : (
           <div className="ranked-lobby__searching">
             <div className="searching-animation">
               <Swords size={28} className="pulse" />
             </div>
-            <p>Buscando rival... <span className="time">{Math.floor(searchTime / 60)}:{(searchTime % 60).toString().padStart(2, '0')}</span></p>
-            <button className="cancel-btn" onClick={handleCancelSearch}>Cancelar</button>
+            <p>{t('ranked.searching')} <span className="time">{Math.floor(searchTime / 60)}:{(searchTime % 60).toString().padStart(2, '0')}</span></p>
+            <button className="cancel-btn" onClick={handleCancelSearch}>{t('ranked.cancel')}</button>
           </div>
         )}
       </div>
@@ -205,15 +198,15 @@ export default function RankedLobby() {
         onClick={() => dispatch({ type: 'SET_SCREEN', payload: 'ranked_leaderboard' })}
       >
         <Trophy size={18} />
-        <span>Clasificación Global</span>
+        <span>{t('ranked.globalRanking')}</span>
         <ChevronRight size={16} />
       </button>
 
       {/* Match History */}
       <div className="ranked-lobby__history">
-        <h3><Clock size={16} /> Historial Reciente</h3>
+        <h3><Clock size={16} /> {t('ranked.recentHistory')}</h3>
         {history.length === 0 ? (
-          <p className="empty">Aún no has jugado partidas ranked.</p>
+          <p className="empty">{t('ranked.noMatchesYet')}</p>
         ) : (
           <div className="history-list">
             {history.map(match => {

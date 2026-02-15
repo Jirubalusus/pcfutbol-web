@@ -263,6 +263,13 @@ const LEAGUE_ZONES = {
     sudamericana: [3, 4],
     relegation: [16, 17, 18],
     teams: 18
+  },
+  ligaMX: {
+    name: 'Liga MX',
+    libertadores: [1, 2, 3, 4],
+    sudamericana: [5, 6],
+    relegation: [16, 17, 18],
+    teams: 18
   }
 };
 
@@ -282,7 +289,8 @@ const COUNTRY_FLAGS = {
   argentinaPrimera: '🇦🇷', brasileiraoA: '🇧🇷', colombiaPrimera: '🇨🇴',
   chilePrimera: '🇨🇱', uruguayPrimera: '🇺🇾', ecuadorLigaPro: '🇪🇨',
   paraguayPrimera: '🇵🇾', peruLiga1: '🇵🇪', boliviaPrimera: '🇧🇴',
-  venezuelaPrimera: '🇻🇪'
+  venezuelaPrimera: '🇻🇪',
+  ligaMX: '🇲🇽'
 };
 
 export default function LeagueTable() {

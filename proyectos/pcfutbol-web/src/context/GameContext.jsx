@@ -1467,6 +1467,12 @@ function gameReducer(state, action) {
       // ============================================================
       let newIncomingOffers = [...(state.incomingOffers || [])];
 
+      // NOTE: This reducer uses Math.random() for transfers, injuries, form, etc.
+      // This is technically impure (violates React reducer conventions) and could cause
+      // issues with React strict mode double-invocation or concurrent features.
+      // Ideally, randomness should be moved to action payloads or use a seeded PRNG.
+      // In practice this works fine because we don't use strict mode double-invoke
+      // and the game state is not replayed. Skipping refactor for now.
       const isBatchMode = action._batchMode || false;
       const isPreseason = state.preseasonPhase || false;
       // Pretemporada: 80% chance, temporada normal: 40% chance
@@ -2608,7 +2614,7 @@ function gameReducer(state, action) {
           team: state.team ? { ...state.team, players: updatedPlayers } : null,
           leagueTeams: updatedLeagueTeams,
           blockedPlayers: updatedBlocked,
-          messages: [{ id: Date.now(), type: 'transfer', title: bothAccepted ? `✅ ${newOffer.playerName} fichado` : `❌ Oferta rechazada por ${newOffer.playerName}`, content: bothAccepted ? `Coste: ${formatTransferPrice(newOffer.amount)}` : `Club: ${clubReason}. Jugador: ${playerReason}`, date: `Semana ${state.currentWeek}` }, ...state.messages].slice(0, 50),
+          messages: [{ id: Date.now(), type: 'transfer', titleKey: bothAccepted ? 'ranked.transferAccepted' : 'ranked.transferRejected', titleParams: { player: newOffer.playerName }, contentKey: bothAccepted ? 'ranked.transferCost' : 'ranked.transferClubReason', contentParams: bothAccepted ? { price: formatTransferPrice(newOffer.amount) } : { reason: clubReason, playerReason: playerReason }, date: `Semana ${state.currentWeek}` }, ...state.messages].slice(0, 50),
         };
       }
 
@@ -2974,8 +2980,8 @@ function gameReducer(state, action) {
         if (newOffers.length > 0) {
           const offerMsgs = newOffers.map(o => ({
             id: Date.now() + Math.random(), type: 'offer',
-            title: `💰 ${o.fromTeam} quiere a ${listedPlayer.name}`,
-            content: `Oferta: ${formatTransferPrice(o.amount)}`,
+            titleKey: 'ranked.offerReceived', titleParams: { team: o.fromTeam, player: listedPlayer.name },
+            contentKey: 'ranked.offerAmount', contentParams: { price: formatTransferPrice(o.amount) },
             date: `Ranked`
           }));
           updPlayerState.incomingOffers = [...(state.incomingOffers || []), ...newOffers];
@@ -4506,7 +4512,7 @@ export function GameProvider({ children }) {
         saveProManager(s._proManagerUserId, saveData).catch(() => {});
         console.log('💼 ProManager save-on-exit triggered');
       }
-      if (s.gameStarted && s.gameMode !== 'contrarreloj' && s.gameMode !== 'promanager' && s.settings?.autoSave !== false) {
+      if (s.gameStarted && s.gameMode !== 'contrarreloj' && s.gameMode !== 'promanager' && s.gameMode !== 'ranked' && s.settings?.autoSave !== false) {
         // Use stateRef.current to avoid stale closure
         const freshState = stateRef.current;
         const exitSaveData = {

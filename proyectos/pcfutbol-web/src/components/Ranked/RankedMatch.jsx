@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../context/AuthContext';
 import { useGame } from '../../context/GameContext';
 import {
@@ -50,11 +51,13 @@ const TACTIC_OPTIONS = [
 ];
 
 export default function RankedMatch() {
+  const { t } = useTranslation();
   const { user } = useAuth();
   const { state, dispatch } = useGame();
   const [match, setMatch] = useState(null);
   const [timeLeft, setTimeLeft] = useState(0);
   const [selectedTeam, setSelectedTeam] = useState(null);
+  const [selecting, setSelecting] = useState(false);
   const [loading, setLoading] = useState(true);
   
   // Round config state
@@ -276,12 +279,14 @@ export default function RankedMatch() {
   const getMyKey = () => isPlayer1() ? 'player1' : 'player2';
 
   const handleSelectTeam = async (teamId) => {
-    if (!matchId || !user?.uid) return;
+    if (!matchId || !user?.uid || selecting) return;
+    setSelecting(true);
     setSelectedTeam(teamId);
     try {
       await selectTeam(matchId, user.uid, teamId);
     } catch (e) {
       setSelectedTeam(null);
+      setSelecting(false);
       alert(e.message);
     }
   };
@@ -352,7 +357,7 @@ export default function RankedMatch() {
       <div className="ranked-match">
         <div className="ranked-match__loading">
           <Swords size={32} className="spin" />
-          <p>Conectando a la partida...</p>
+          <p>{t('ranked.connectingMatch')}</p>
         </div>
       </div>
     );
@@ -373,7 +378,7 @@ export default function RankedMatch() {
         </div>
         <div className="vs">
           <Swords size={20} />
-          <span className="phase-label">{getPhaseLabel(match.phase)}</span>
+          <span className="phase-label">{getPhaseLabel(match.phase, t)}</span>
         </div>
         <div className="player-badge rival">
           <span className="tier">{getTierByLP(rivalData?.totalLP || 0)?.icon}</span>
@@ -394,8 +399,8 @@ export default function RankedMatch() {
         {match.phase === 'team_selection' && (
           <div className="phase-team-selection">
             <h2>🏟️ {match.leagueName}</h2>
-            <p className="subtitle">{match.leagueCountry} · {match.matchdays} jornadas</p>
-            <p className="hint">Elige tu equipo ({match.teams?.length} opciones)</p>
+            <p className="subtitle">{match.leagueCountry} · {match.matchdays} {t('ranked.matchdays')}</p>
+            <p className="hint">{t('ranked.chooseTeam', { count: match.teams?.length })}</p>
             <div className="team-grid">
               {match.teams?.map(team => {
                 const takenByRival = rivalData?.team === team.id;
@@ -414,14 +419,14 @@ export default function RankedMatch() {
                       <span className="team-stat">👥 {team.playerCount}</span>
                       <span className="team-stat">💰 {(team.budget / 1000000).toFixed(1)}M</span>
                     </div>
-                    {takenByRival && <span className="taken-label">⛔ Elegido por rival</span>}
+                    {takenByRival && <span className="taken-label">⛔ {t('ranked.chosenByRival')}</span>}
                     {isSelected && <Check size={18} className="check-icon" />}
                   </button>
                 );
               })}
             </div>
             {myData?.team && !rivalData?.team && (
-              <p className="waiting">⏳ Esperando a que el rival elija...</p>
+              <p className="waiting">⏳ {t('ranked.waitingRival')}</p>
             )}
           </div>
         )}
@@ -429,7 +434,7 @@ export default function RankedMatch() {
         {/* ── ROUND 1 / ROUND 2 ── */}
         {(match.phase === 'round1' || match.phase === 'round2') && (
           <div className="phase-round">
-            <h2>{match.phase === 'round1' ? '📋 Primera Vuelta' : '📋 Segunda Vuelta'}</h2>
+            <h2>📋 {match.phase === 'round1' ? t('ranked.firstHalf') : t('ranked.secondHalf')}</h2>
             
             <div className="round-teams">
               <div className="my-team-card">
@@ -446,7 +451,7 @@ export default function RankedMatch() {
             {/* Mid-season standings (Round 2 only) */}
             {match.phase === 'round2' && match.simulation1 && (
               <div className="midseason-box">
-                <h3>📊 Clasificación a media temporada</h3>
+                <h3>📊 {t('ranked.midSeasonStandings')}</h3>
                 <div className="mini-table">
                   {match.simulation1.table?.map((t, i) => (
                     <div key={t.teamId} className={`table-row ${t.teamId === myData?.team ? 'me' : t.teamId === rivalData?.team ? 'rival' : ''}`}>
@@ -463,10 +468,10 @@ export default function RankedMatch() {
             {/* Tactics Configuration */}
             {!configSubmitted ? (
               <div className="config-section">
-                <h3>⚙️ Configuración</h3>
+                <h3>⚙️ {t('ranked.configuration')}</h3>
                 
                 <div className="config-row">
-                  <label>Formación</label>
+                  <label>{t('ranked.formation')}</label>
                   <div className="formation-grid">
                     {FORMATION_OPTIONS.map(f => (
                       <button
@@ -481,7 +486,7 @@ export default function RankedMatch() {
                 </div>
 
                 <div className="config-row">
-                  <label>Táctica</label>
+                  <label>{t('ranked.tactic')}</label>
                   <div className="tactic-grid">
                     {TACTIC_OPTIONS.map(t => (
                       <button
@@ -499,7 +504,7 @@ export default function RankedMatch() {
                 {/* Transfer button */}
                 <button className="transfer-toggle" onClick={() => setShowTransfers(!showTransfers)}>
                   <Users size={18} />
-                  <span>Fichajes</span>
+                  <span>{t('ranked.transfers')}</span>
                   <ChevronDown size={16} className={showTransfers ? 'rotated' : ''} />
                 </button>
 
@@ -510,7 +515,7 @@ export default function RankedMatch() {
                       <Search size={16} />
                       <input
                         type="text"
-                        placeholder="Buscar jugador o equipo..."
+                        placeholder={t('ranked.searchPlayer')}
                         value={transferSearch}
                         onChange={e => setTransferSearch(e.target.value)}
                       />
@@ -534,23 +539,23 @@ export default function RankedMatch() {
                             </span>
                           </div>
                           {p.isBlocked ? (
-                            <span className="blocked-badge"><Lock size={14} /> Bloqueado</span>
+                            <span className="blocked-badge"><Lock size={14} /> {t('ranked.blocked')}</span>
                           ) : (
                             <button
                               className="sign-btn"
                               onClick={() => handleTransfer(p.name, p.teamId)}
                               disabled={transferLoading}
                             >
-                              Fichar
+                              {t('ranked.sign')}
                             </button>
                           )}
                         </div>
                       ))}
                       {transferSearch && transferablePlayers.length === 0 && (
-                        <p className="no-results">No se encontraron jugadores</p>
+                        <p className="no-results">{t('ranked.noPlayersFound')}</p>
                       )}
                       {!transferSearch && (
-                        <p className="no-results">Escribe para buscar jugadores</p>
+                        <p className="no-results">{t('ranked.typeToSearch')}</p>
                       )}
                     </div>
                   </div>
@@ -559,13 +564,13 @@ export default function RankedMatch() {
                 {/* Submit button */}
                 <button className="ready-btn" onClick={handleSubmitConfig}>
                   <Zap size={18} />
-                  <span>Confirmar y simular</span>
+                  <span>{t('ranked.confirmAndSimulate')}</span>
                 </button>
               </div>
             ) : (
               <div className="config-submitted">
                 <Check size={24} />
-                <p>Configuración enviada. Esperando al rival...</p>
+                <p>{t('ranked.configSent')}</p>
               </div>
             )}
           </div>
@@ -577,13 +582,13 @@ export default function RankedMatch() {
             <div className="sim-animation">
               <div className="sim-ball">⚽</div>
             </div>
-            <h2>{match.phase === 'simulating1' ? 'Simulando primera vuelta...' : 'Simulando temporada completa...'}</h2>
+            <h2>{match.phase === 'simulating1' ? t('ranked.simFirstHalf') : t('ranked.simFullSeason')}</h2>
             
             {/* Show live standings during simulation */}
             {(() => {
               const sim = match.phase === 'simulating1' ? match.simulation1 : match.simulation2;
               const isHalf = match.phase === 'simulating1';
-              if (!sim?.table) return <p className="sim-wait">Los partidos se están disputando...</p>;
+              if (!sim?.table) return <p className="sim-wait">{t('ranked.matchesPlaying')}</p>;
               
               const myTeamId = myData?.team;
               const rivalTeamId = rivalData?.team;
@@ -599,7 +604,7 @@ export default function RankedMatch() {
               return (
                 <>
                   <div className="sim-standings">
-                    <h3>{isHalf ? 'Clasificación provisional' : 'Clasificación final'}</h3>
+                    <h3>{isHalf ? t('ranked.provisionalStandings') : t('ranked.finalStandings')}</h3>
                     <div className="mini-table">
                       {sim.table.map((t, i) => (
                         <div key={t.teamId} className={`table-row ${t.teamId === myTeamId ? 'me' : t.teamId === rivalTeamId ? 'rival' : ''}`}>
@@ -620,16 +625,16 @@ export default function RankedMatch() {
                         <span className="summary-pos">📊 {myPos}º</span>
                         {mySim?.cupRound && <span className="summary-detail">🏆 Copa: {mySim.cupRound}</span>}
                         {mySim?.europeanRound && <span className="summary-detail">🌍 {mySim.europeanCompetition}: {mySim.europeanRound}</span>}
-                        {mySim?.liga && <span className="summary-highlight">🏆 ¡Campeón!</span>}
-                        {mySim?.copa && <span className="summary-highlight">🏆 ¡Copa!</span>}
+                        {mySim?.liga && <span className="summary-highlight">🏆 {t('ranked.champion')}</span>}
+                        {mySim?.copa && <span className="summary-highlight">🏆 {t('ranked.cupWin')}</span>}
                       </div>
                       <div className="sim-summary-card rival">
                         <span className="summary-team">{rivalData?.displayName || 'RIVAL'}</span>
                         <span className="summary-pos">📊 {rivalPos}º</span>
                         {rivalSim?.cupRound && <span className="summary-detail">🏆 Copa: {rivalSim.cupRound}</span>}
                         {rivalSim?.europeanRound && <span className="summary-detail">🌍 {rivalSim.europeanCompetition}: {rivalSim.europeanRound}</span>}
-                        {rivalSim?.liga && <span className="summary-highlight">🏆 ¡Campeón!</span>}
-                        {rivalSim?.copa && <span className="summary-highlight">🏆 ¡Copa!</span>}
+                        {rivalSim?.liga && <span className="summary-highlight">🏆 {t('ranked.champion')}</span>}
+                        {rivalSim?.copa && <span className="summary-highlight">🏆 {t('ranked.cupWin')}</span>}
                       </div>
                     </div>
                     
@@ -645,9 +650,9 @@ export default function RankedMatch() {
                       </div>
                     )}
                     
-                    {myPos < rivalPos && <p className="sim-verdict win">📈 Vas por encima de tu rival</p>}
-                    {myPos > rivalPos && <p className="sim-verdict loss">📉 Tu rival va por encima</p>}
-                    {myPos === rivalPos && <p className="sim-verdict draw">🤝 Empatados en posición</p>}
+                    {myPos < rivalPos && <p className="sim-verdict win">📈 {t('ranked.aboveRival')}</p>}
+                    {myPos > rivalPos && <p className="sim-verdict loss">📉 {t('ranked.belowRival')}</p>}
+                    {myPos === rivalPos && <p className="sim-verdict draw">🤝 {t('ranked.tiedPosition')}</p>}
                   </div>
                 </>
               );
@@ -664,54 +669,16 @@ export default function RankedMatch() {
   );
 }
 
-function getPhaseLabel(phase) {
-  const labels = {
-    team_selection: 'Selección de equipo',
-    round1: 'Ronda 1 — Primera vuelta',
-    simulating1: 'Simulando...',
-    round2: 'Ronda 2 — Segunda vuelta',
-    simulating2: 'Simulando...',
-    results: 'Resultados',
+function getPhaseLabel(phase, t) {
+  const keys = {
+    team_selection: 'ranked.teamSelection',
+    round1: 'ranked.round1Label',
+    simulating1: 'ranked.simulating',
+    round2: 'ranked.round2Label',
+    simulating2: 'ranked.simulating',
+    results: 'ranked.results',
   };
-  return labels[phase] || phase;
+  return keys[phase] ? t(keys[phase]) : phase;
 }
 
-function renderBreakdown(sim) {
-  if (!sim) return null;
-  const items = [];
-  if (sim.liga) items.push({ label: '🏆 Campeón de Liga', pts: 6 });
-  if (sim.championsLeague) items.push({ label: '🏆 Champions League', pts: 10 });
-  if (sim.europaLeague) items.push({ label: '🏆 Europa League', pts: 5 });
-  if (sim.libertadores) items.push({ label: '🏆 Libertadores', pts: 5 });
-  if (sim.conference) items.push({ label: '🏆 Conference League', pts: 3 });
-  if (sim.sudamericana) items.push({ label: '🏆 Sudamericana', pts: 3 });
-  if (sim.copa) items.push({ label: '🏆 Copa', pts: 3 });
-  if (sim.supercopa) items.push({ label: '🏆 Supercopa', pts: 1 });
-  if (sim.finishedAboveRival) items.push({ label: '📈 Mejor posición que rival', pts: 2 });
-  if (sim.h2hWins > 0) items.push({ label: `⚔️ Victorias directas (${sim.h2hWins})`, pts: sim.h2hWins });
-  
-  items.push({ label: `📊 Posición liga: ${sim.leaguePosition}º (${sim.leaguePoints} pts)`, pts: null });
-  if (sim.europeanCompetition) {
-    items.push({ label: `🌍 ${sim.europeanCompetition}: ${sim.europeanRound || '-'}`, pts: null });
-  }
-  if (sim.cupRound) {
-    items.push({ label: `🏆 Copa: ${sim.cupRound}`, pts: null });
-  }
-
-  const total = items.reduce((sum, item) => sum + (item.pts || 0), 0);
-
-  return (
-    <div className="breakdown-list">
-      {items.map((item, i) => (
-        <div key={i} className="breakdown-item">
-          <span className="label">{item.label}</span>
-          {item.pts !== null && <span className="pts">+{item.pts}</span>}
-        </div>
-      ))}
-      <div className="breakdown-total">
-        <span>TOTAL</span>
-        <span className="pts">{total}</span>
-      </div>
-    </div>
-  );
-}
+// renderBreakdown removed — dead code (results use RankedResultsModal instead)

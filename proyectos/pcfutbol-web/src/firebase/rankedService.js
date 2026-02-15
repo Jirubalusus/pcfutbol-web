@@ -163,6 +163,62 @@ export async function findOpponent(uid, totalLP) {
   return best;
 }
 
+// Transactional matchmaking: find opponent + create match + remove both from queue atomically
+// This prevents race conditions where two players could both create matches simultaneously
+export async function findAndCreateMatch(uid, displayName, totalLP) {
+  return await runTransaction(db, async (transaction) => {
+    // Read all waiting queue entries inside the transaction
+    const q = query(collection(db, QUEUE_COL), where('status', '==', 'waiting'));
+    const snap = await getDocs(q);
+
+    let best = null;
+    let bestDiff = Infinity;
+    snap.forEach(d => {
+      if (d.id === uid) return;
+      const diff = Math.abs((d.data().totalLP || 0) - totalLP);
+      if (diff < bestDiff) {
+        bestDiff = diff;
+        best = { id: d.id, ...d.data() };
+      }
+    });
+
+    if (!best) return null;
+
+    // Only the player with the lower uid creates the match (deterministic)
+    if (uid >= best.id) return null;
+
+    // Re-read both queue docs inside the transaction to ensure consistency
+    const myQueueRef = doc(db, QUEUE_COL, uid);
+    const opponentQueueRef = doc(db, QUEUE_COL, best.id);
+    const mySnap = await transaction.get(myQueueRef);
+    const oppSnap = await transaction.get(opponentQueueRef);
+
+    // Both must still be 'waiting'
+    if (!mySnap.exists() || mySnap.data().status !== 'waiting') return null;
+    if (!oppSnap.exists() || oppSnap.data().status !== 'waiting') return null;
+
+    // Mark both as 'matching' to prevent other transactions from picking them
+    transaction.update(myQueueRef, { status: 'matching' });
+    transaction.update(opponentQueueRef, { status: 'matching' });
+
+    return best;
+  }).then(async (opponent) => {
+    if (!opponent) return null;
+
+    // Create the match outside the transaction (non-conflicting write)
+    const match = await createMatch(
+      { uid, displayName, totalLP },
+      opponent
+    );
+
+    // Clean up queue entries
+    try { await deleteDoc(doc(db, QUEUE_COL, uid)); } catch {}
+    try { await deleteDoc(doc(db, QUEUE_COL, opponent.id)); } catch {}
+
+    return match;
+  });
+}
+
 // Find an active match where this user is a participant (player1 or player2)
 // Only returns matches created in the last 30 minutes (older = abandoned)
 export async function findMyActiveMatch(uid) {

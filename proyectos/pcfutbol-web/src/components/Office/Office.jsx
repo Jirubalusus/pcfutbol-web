@@ -532,16 +532,22 @@ export default function Office() {
             e.type === 'injury' && e.team === playerTeamSide
           ) || [];
           
-          playerInjuries.forEach(injury => {
-            dispatch({
-              type: 'INJURE_PLAYER',
-              payload: {
-                playerName: injury.player,
-                weeksOut: injury.weeksOut,
-                severity: injury.severity
-              }
+          // Note: During batch simulation, injuries from match events are NOT dispatched
+          // individually because ADVANCE_WEEKS_BATCH will also process injuries via ADVANCE_WEEK,
+          // which would double-count them (heal 1 week immediately). Instead, we only dispatch
+          // injuries for single-week (non-batch) simulation.
+          if (numWeeks <= 1) {
+            playerInjuries.forEach(injury => {
+              dispatch({
+                type: 'INJURE_PLAYER',
+                payload: {
+                  playerName: injury.player,
+                  weeksOut: injury.weeksOut,
+                  severity: injury.severity
+                }
+              });
             });
-          });
+          }
           
           // Actualizar fixtures
           currentFixtures = currentFixtures.map(f => {
