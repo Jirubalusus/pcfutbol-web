@@ -277,7 +277,7 @@ export function calculateRoleBonus(player, tactic, teammates) {
  * Calcula el overall efectivo de un jugador en un partido
  */
 export function getEffectiveOverall(player, tactic, teammates, morale = 75) {
-  const baseOverall = player.overall || 70;
+  const baseOverall = (player.overall || 70) + (player.postInjuryBonus || 0) + (player.tacticalBonus || 0);
   
   // Bonus de rol (oculto)
   const roleBonus = calculateRoleBonus(player, tactic, teammates);

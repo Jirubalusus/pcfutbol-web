@@ -144,7 +144,9 @@ function simulateMatchLegacy(homeTeamId, awayTeamId, homeTeamData, awayTeamData,
   // - Estadio a medias (50%): ~65% del bonus
   // - Estadio vacío (20%): ~35% del bonus
   const crowdFactor = 0.3 + (attendanceFillRate * 0.7);
-  const homeAdvantage = baseHomeAdvantage * crowdFactor;
+  // Grass condition reduces home advantage: <70 slight penalty, <40 bigger penalty
+  const grassFactor = grassCondition >= 70 ? 1.0 : grassCondition >= 40 ? 0.85 : 0.7;
+  const homeAdvantage = baseHomeAdvantage * crowdFactor * grassFactor;
   
   // Factor moral (rachas afectan MÁS)
   const homeMoraleFactor = 0.85 + (homeMorale / 100) * 0.3;

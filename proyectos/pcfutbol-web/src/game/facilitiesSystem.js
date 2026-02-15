@@ -6,6 +6,32 @@ import { getFacilityCostMultiplier } from './leagueTiers';
 
 // Especializaciones disponibles por instalación
 export const FACILITY_SPECIALIZATIONS = {
+  training: {
+    name: 'Entrenamiento',
+    options: [
+      { 
+        id: 'physical', 
+        name: 'Físico', 
+        icon: '💪',
+        description: 'Mayor progresión física, menos lesiones de entrenamiento',
+        effect: { progressBonus: 0.15, injuryReduction: 0.5 }
+      },
+      { 
+        id: 'tactical', 
+        name: 'Táctico', 
+        icon: '🧠',
+        description: 'Mejor rendimiento táctico en partidos',
+        effect: { matchBonus: 0.02 }
+      },
+      { 
+        id: 'technical', 
+        name: 'Técnico', 
+        icon: '⚽',
+        description: 'Mayor progresión para jóvenes (<23)',
+        effect: { youthProgressBonus: 0.3 }
+      }
+    ]
+  },
   youth: {
     name: 'Cantera',
     options: [

@@ -1504,24 +1504,39 @@ function gameReducer(state, action) {
         );
       }
 
-      // NO weekly income. All revenue (commercial, tickets, season tickets)
-      // is accumulated and collected at end of season via START_NEW_SEASON.
-      // Only player sales add money instantly.
-      const totalIncome = 0;
+      // Sponsorship weekly income based on facility level
+      const sponsorLevel = state.facilities?.sponsorship || 0;
+      const sponsorWeeklyIncome = [0, 25000, 70000, 140000, 235000][sponsorLevel] || 0;
+      const totalIncome = sponsorWeeklyIncome;
 
       // Salaries are NOT deducted weekly â€" they are paid at end of season
       // via START_NEW_SEASON (SeasonEnd calculates totalSalaryCost = weekly * 52)
       const salaryExpenses = 0;
 
       // Heal injuries - reduce weeks left by 1
+      const healedPlayerNames = [];
+      const hasPerformanceSpec = state.facilitySpecs?.medical === 'performance';
       let updatedPlayers = state.team?.players?.map(p => {
         if (p.injured && p.injuryWeeksLeft > 0) {
           const newWeeksLeft = p.injuryWeeksLeft - 1;
           if (newWeeksLeft <= 0) {
-            // Player healed - remove injury flags including treated
-            return { ...p, injured: false, injuryWeeksLeft: 0, injuryType: null, treated: false };
+            healedPlayerNames.push(p.name);
+            // Performance spec: players return with +2 OVR for 4 weeks
+            const postInjuryBoost = hasPerformanceSpec ? {
+              postInjuryBonus: 2,
+              postInjuryWeeksLeft: 4
+            } : {};
+            return { ...p, injured: false, injuryWeeksLeft: 0, injuryType: null, treated: false, ...postInjuryBoost };
           }
           return { ...p, injuryWeeksLeft: newWeeksLeft };
+        }
+        // Countdown postInjuryBonus
+        if (p.postInjuryWeeksLeft > 0) {
+          const weeksLeft = p.postInjuryWeeksLeft - 1;
+          if (weeksLeft <= 0) {
+            return { ...p, postInjuryBonus: 0, postInjuryWeeksLeft: 0 };
+          }
+          return { ...p, postInjuryWeeksLeft: weeksLeft };
         }
         // Clear resting status
         if (p.resting && p.restWeeks) {
@@ -1533,6 +1548,8 @@ function gameReducer(state, action) {
         }
         return p;
       }) || [];
+      // Free medical slots for healed players
+      const updatedMedicalSlots = (state.medicalSlots || []).filter(name => !healedPlayerNames.includes(name));
 
       // Generate youth players at end of season (week 38) using specialization
       const newYouthPlayers = [];
@@ -1542,13 +1559,16 @@ function gameReducer(state, action) {
       if (state.currentWeek === maxLeagueWeek) {
         const youthLevel = state.facilities?.youth || 0;
         const youthSpec = state.facilitySpecs?.youth || 'general';
-        // Siempre 1 canterano por temporada â€" el nivel mejora su media
-        const newPlayer = generateYouthPlayer(youthLevel, youthSpec);
-        newYouthPlayers.push(newPlayer);
-        updatedYouthStats = {
-          playersGenerated: updatedYouthStats.playersGenerated + 1,
-          totalOvr: updatedYouthStats.totalOvr + newPlayer.overall
-        };
+        // Level 3+ generates 2 canteranos per season
+        const youthCount = youthLevel >= 3 ? 2 : 1;
+        for (let i = 0; i < youthCount; i++) {
+          const newPlayer = generateYouthPlayer(youthLevel, youthSpec);
+          newYouthPlayers.push(newPlayer);
+          updatedYouthStats = {
+            playersGenerated: updatedYouthStats.playersGenerated + 1,
+            totalOvr: updatedYouthStats.totalOvr + newPlayer.overall
+          };
+        }
         updatedPlayers = [...updatedPlayers, ...newYouthPlayers];
       }
 
@@ -2590,6 +2610,7 @@ function gameReducer(state, action) {
           youth: updatedYouthStats
         },
         medicalTreatmentsUsed: 0, // Reset treatments each week
+        medicalSlots: updatedMedicalSlots,
         // Mercado global
         leagueTeams: updatedLeagueTeams,
         incomingOffers: newIncomingOffers,
@@ -3321,44 +3342,7 @@ function gameReducer(state, action) {
       };
     }
 
-    case 'HEAL_INJURIES': {
-      const currentSlots = state.medicalSlots || [];
-      const healed = [];
-      const hasPerformanceSpec = state.facilitySpecs?.medical === 'performance';
-
-      const healedPlayers = state.team.players.map(p => {
-        if (p.injured && p.injuryWeeksLeft > 0) {
-          const newWeeksLeft = p.injuryWeeksLeft - 1;
-          if (newWeeksLeft <= 0) {
-            healed.push(p.name);
-            // Rendimiento: jugadores vuelven con +2 OVR temporal por 4 semanas
-            const postInjuryBoost = hasPerformanceSpec ? {
-              postInjuryBonus: 2,
-              postInjuryWeeksLeft: 4
-            } : {};
-            return { ...p, injured: false, injuryWeeksLeft: 0, injuryType: null, treated: false, ...postInjuryBoost };
-          }
-          return { ...p, injuryWeeksLeft: newWeeksLeft };
-        }
-        // Reducir bonus post-lesión
-        if (p.postInjuryWeeksLeft > 0) {
-          const weeksLeft = p.postInjuryWeeksLeft - 1;
-          return weeksLeft <= 0
-            ? { ...p, postInjuryBonus: 0, postInjuryWeeksLeft: 0 }
-            : { ...p, postInjuryWeeksLeft: weeksLeft };
-        }
-        return p;
-      });
-
-      // Liberar slots de médicos de jugadores curados
-      const newSlots = currentSlots.filter(name => !healed.includes(name));
-
-      return {
-        ...state,
-        team: { ...state.team, players: healedPlayers },
-        medicalSlots: newSlots
-      };
-    }
+    // HEAL_INJURIES removed — logic integrated into ADVANCE_WEEK
 
     case 'APPLY_MEDICAL_TREATMENT': {
       // Nuevo sistema: cada médico se queda con el jugador hasta que se cure
@@ -3470,7 +3454,17 @@ function gameReducer(state, action) {
 
       const intensityMod = intensityModifiers[intensity] || 1.0;
       const facilityBonus = facilityBonuses[trainingFacilityLevel] || 0;
-      const injuryRisk = injuryRisks[intensity] || 0.05;
+      let injuryRisk = injuryRisks[intensity] || 0.05;
+
+      // Training specialization effects
+      const trainingSpec = state.facilitySpecs?.training;
+      const specEffects = trainingSpec === 'physical' ? { progressBonus: 0.15, injuryReduction: 0.5 }
+        : trainingSpec === 'tactical' ? { matchBonus: 0.02 }
+        : trainingSpec === 'technical' ? { youthProgressBonus: 0.3 }
+        : {};
+      if (specEffects.injuryReduction) {
+        injuryRisk *= (1 - specEffects.injuryReduction);
+      }
 
       const trainedPlayers = state.team.players.map(player => {
         // No entrenar jugadores lesionados
@@ -3490,7 +3484,15 @@ function gameReducer(state, action) {
 
         // Progresión base
         const baseProgress = 0.05;
-        const totalProgress = baseProgress * intensityMod * ageFactor * levelFactor * (1 + facilityBonus);
+        let totalProgress = baseProgress * intensityMod * ageFactor * levelFactor * (1 + facilityBonus);
+        // Physical spec: extra progress bonus
+        if (specEffects.progressBonus) {
+          totalProgress *= (1 + specEffects.progressBonus);
+        }
+        // Technical spec: youth bonus for players <= 23
+        if (specEffects.youthProgressBonus && player.age <= 23) {
+          totalProgress *= (1 + specEffects.youthProgressBonus);
+        }
 
         // Aplicar progresión (acumulativa)
         const currentProgress = player.trainingProgress || 0;
@@ -3521,10 +3523,14 @@ function gameReducer(state, action) {
           };
         }
 
+        // Tactical spec: add match bonus
+        const tacticalUpdate = specEffects.matchBonus ? { tacticalBonus: specEffects.matchBonus } : {};
+
         return {
           ...player,
           overall: newOverall,
-          trainingProgress: remainingProgress
+          trainingProgress: remainingProgress,
+          ...tacticalUpdate
         };
       });
 
