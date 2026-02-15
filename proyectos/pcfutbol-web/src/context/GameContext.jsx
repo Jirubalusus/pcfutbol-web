@@ -608,6 +608,7 @@ function gameReducer(state, action) {
         gameMode: 'promanager',
         proManagerData: state.proManagerData,
         _proManagerUserId: _proManagerUserId || state._proManagerUserId,
+        currentSeason: state.currentSeason, // Preserve career season count
         teamId: team.id,
         team: { ...team },
         leagueId: leagueId,
