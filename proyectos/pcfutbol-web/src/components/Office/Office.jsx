@@ -485,7 +485,7 @@ export default function Office() {
             playerMatch.awayTeam,
             homeTeamData,
             awayTeamData,
-            { attendanceFillRate: isHome ? attendanceFillRate : 0.7, grassCondition: state.stadium?.grassCondition ?? 100 },
+            { attendanceFillRate: isHome ? attendanceFillRate : 0.7, grassCondition: state.stadium?.grassCondition ?? 100, medicalPrevention: state.facilitySpecs?.medical === 'prevention' ? 0.30 : 0, playerIsHome: isHome },
             state.playerForm || {},
             state.teamId
           );
@@ -631,7 +631,7 @@ export default function Office() {
 
             const cupResult = simulateMatch(
               cupHome.teamId, cupAway.teamId, homeData, awayData,
-              { homeMorale: 70, awayMorale: 70, grassCondition: state.stadium?.grassCondition ?? 100 },
+              { homeMorale: 70, awayMorale: 70, grassCondition: state.stadium?.grassCondition ?? 100, medicalPrevention: state.facilitySpecs?.medical === 'prevention' ? 0.30 : 0, playerIsHome: cupHome.teamId === state.teamId },
               state.playerForm || {}, state.teamId
             );
 
