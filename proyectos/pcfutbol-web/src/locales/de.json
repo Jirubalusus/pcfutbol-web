@@ -40,7 +40,8 @@
     "money": "Geld",
     "budget": "Budget",
     "unknown": "Unbekannt",
-    "unknownTeam": "Unbekanntes Team"
+    "unknownTeam": "Unbekanntes Team",
+    "menu": "Menü"
   },
   "mainMenu": {
     "title": "PC GAFFER",
@@ -68,7 +69,10 @@
     "loginButton": "Anmelden",
     "saveCurrentGame": "Spiel speichern",
     "recordsButton": "Rekorde",
-    "optionsButton": "Optionen"
+    "optionsButton": "Optionen",
+    "editionButton": "Editor",
+    "ranked": "Ranked 1v1",
+    "rankedSubtitle": "Tritt gegen andere Spieler an"
   },
   "cup": {
     "noCupActive": "Kein Pokal aktiv diese Saison",
@@ -134,7 +138,9 @@
     "insufficientSquad": "Unzureichender Kader!",
     "onlyHavePlayers": "Sie haben nur <strong>{{count}} Spieler</strong>. Sie benötigen mindestens <strong>11</strong> um zu spielen.",
     "goToTransfersWarning": "Gehen Sie zum Transfermarkt und verpflichten Sie Spieler bevor Sie fortfahren. Wenn Sie versuchen erneut zu simulieren ohne 11 Spieler zu haben, <strong>verlieren Sie das Spiel</strong>.",
-    "goToTransfers": "Zu Transfers"
+    "goToTransfers": "Zu Transfers",
+    "manager": "Manager",
+    "welcomeName": "Willkommen, {{name}}"
   },
   "formation": {
     "title": "Aufstellung",
@@ -215,7 +221,14 @@
     "mostValuable": "Wertvollste",
     "mostMatches": "Meiste Spiele",
     "noStatsYet": "Noch keine Statistiken - spiele Partien um Daten zu generieren",
-    "apply": "Anwenden"
+    "apply": "Anwenden",
+    "topAssisters": "Beste Vorlagengeber",
+    "topScorers": "Beste Torschützen",
+    "treat": "Behandeln",
+    "treated": "Behandelt",
+    "treatmentCost": "Behandlungskosten",
+    "treatmentsAvailable": "Verfügbare Behandlungen",
+    "weeksLeft": "Wochen übrig"
   },
   "plantilla": {
     "title": "Kader",
@@ -541,7 +554,8 @@
     "persDescMercenary": "Nur Geld zählt",
     "persDescHomesick": "Bleibt lieber in der Nähe",
     "persDescProfessional": "Wägt alles ausgeglichen ab",
-    "persDescAdventurous": "Mag Veränderung"
+    "persDescAdventurous": "Mag Veränderung",
+    "newsTransferText": "Transfernachricht"
   },
   "calendar": {
     "title": "Kalender",
@@ -561,7 +575,15 @@
     "week": "Woche",
     "noEuropeanMatches": "Keine europüischen Spiele an diesem Spieltag",
     "noSouthAmericanMatches": "Keine südamerikanischen Spiele an diesem Spieltag",
-    "noCupMatches": "Keine Pokalspiele in dieser Runde"
+    "noCupMatches": "Keine Pokalspiele in dieser Runde",
+    "final": "Finale",
+    "noMatches": "Keine Spiele",
+    "playoff": "Playoff",
+    "qf": "Viertelfinale",
+    "r16": "Achtelfinale",
+    "round": "Runde",
+    "season": "Saison",
+    "sf": "Halbfinale"
   },
   "matchday": {
     "title": "Spieltag",
@@ -585,7 +607,19 @@
     "golazo": "TRAUMTOR!",
     "lateGoal": "Tor in der Nachspielzeit!",
     "finalResult": "Endergebnis",
-    "skipToEnd": "Zum Ende springen"
+    "skipToEnd": "Zum Ende springen",
+    "directRed": "Glatt Rot",
+    "errorSimulating": "Fehler bei der Spielsimulation",
+    "goalTypeCorner": "Tor nach Ecke",
+    "goalTypeGreatStrike": "Traumtor",
+    "goalTypeHeader": "Kopfballtor",
+    "goalTypePenalty": "Elfmetertor",
+    "goalTypeTapIn": "Abstauber",
+    "injuryGeneric": "Verletzung",
+    "injuryMinor": "Leichte Verletzung",
+    "injuryModerate": "Mittlere Verletzung",
+    "injurySerious": "Schwere Verletzung",
+    "noFormData": "Keine Aufstellungsdaten"
   },
   "leagueTable": {
     "title": "Tabelle",
@@ -779,12 +813,7 @@
     "loadingStadium": "Stadion wird geladen...",
     "general": "Allgemein",
     "sponsorship": "Sponsoring",
-    "events": {
-      "friendly": "Freundschaftsspiel",
-      "concert": "Konzert",
-      "corporate": "Firmenevent",
-      "legends": "Legendenspiel"
-    },
+    "events": "Events",
     "seasonTicketCampaign": "Dauerkarten-Kampagne",
     "campaignOpen": "Kampagne offen bis Spieltag {{deadline}} (aktuell: {{current}})",
     "seasonTicketPrice": "Dauerkarten-Preis:",
@@ -898,7 +927,14 @@
     "themeModern": "Modern",
     "themeGlass": "Glass",
     "themeMidnight": "Midnight",
-    "appearance": "Aussehen"
+    "appearance": "Aussehen",
+    "changeName": "Name ändern",
+    "managerName": "Managername",
+    "nameError": "Namensfehler",
+    "namePlaceholder": "Namen eingeben",
+    "nameSaved": "Name gespeichert",
+    "nameTooLong": "Name ist zu lang",
+    "nameTooShort": "Name ist zu kurz"
   },
   "sidebar": {
     "office": "Büro",
@@ -916,7 +952,8 @@
     "messages": "Nachrichten",
     "bank": "Bank",
     "options": "Optionen",
-    "mainMenu": "Hauptmenü"
+    "mainMenu": "Hauptmenü",
+    "rankedExitWarning": "Ranked-Spiel verlassen?"
   },
   "teamSelection": {
     "teamsAvailable": "{{count}} Teams verfügbar",
@@ -935,7 +972,22 @@
     "diffNormal": "Normal",
     "diffMedium": "Mittel",
     "diffHard": "Schwer",
-    "diffVeryHard": "Sehr schwer"
+    "diffVeryHard": "Sehr schwer",
+    "avgOvr": "Durchschn. OVR",
+    "chooseFriendlyPackage": "Freundschaftspaket wählen",
+    "countries": "Länder",
+    "countryLeague": "Landesliga",
+    "difficulty": "Schwierigkeit",
+    "leaguesOf": "Ligen von",
+    "playersInSquad": "Spieler im Kader",
+    "preseasonTitle": "Vorsaison",
+    "selectCountryOnMap": "Land auf der Karte auswählen",
+    "selectTeamFromList": "Team aus der Liste wählen",
+    "startWith": "Starten mit",
+    "step": "Schritt",
+    "teamLabel": "Team",
+    "title": "Teamauswahl",
+    "topPlayers": "Beste Spieler"
   },
   "contrarreloj": {
     "title": "Zeitrennen-Modus",
@@ -1087,7 +1139,10 @@
     "currentContract": "Aktueller Vertrag",
     "newContract": "Neuer Vertrag",
     "perWeek": "/Wo",
-    "vsCurrent": "vs aktuell:"
+    "vsCurrent": "vs aktuell:",
+    "acceptCounter": "Gegenangebot akzeptieren",
+    "demands": "Forderungen",
+    "starterRole": "Stammplatz"
   },
   "competitions": {
     "title": "Wettbewerbe",
@@ -1396,7 +1451,49 @@
     "directChampionShort": "{{winner}} ist direkter Meister."
   },
   "ranked": {
-    "exitWarning": "Du hast ein laufendes Ranked-Match. Wenn du gehst, verlierst du durch Trennung."
+    "exitWarning": "Du hast ein laufendes Ranked-Match. Wenn du gehst, verlierst du durch Trennung.",
+    "aboveRival": "Über dem Rivalen",
+    "belowRival": "Unter dem Rivalen",
+    "blocked": "Blockiert",
+    "cancel": "Abbrechen",
+    "champion": "Meister",
+    "chooseTeam": "Team wählen",
+    "chosenByRival": "Vom Rivalen gewählt",
+    "configSent": "Konfiguration gesendet",
+    "configuration": "Konfiguration",
+    "confirmAndSimulate": "Bestätigen und simulieren",
+    "connectingMatch": "Spiel wird verbunden...",
+    "cupWin": "Pokalsieg",
+    "finalStandings": "Endklassement",
+    "findMatch": "Spiel suchen",
+    "firstHalf": "Erste Halbzeit",
+    "formation": "Aufstellung",
+    "globalRanking": "Weltrangliste",
+    "leaderboardError": "Fehler beim Laden der Rangliste",
+    "loadingProfile": "Profil wird geladen...",
+    "matchdays": "Spieltage",
+    "matchesPlaying": "Laufende Spiele",
+    "midSeasonStandings": "Halbzeit-Klassement",
+    "noMatchesYet": "Noch keine Spiele",
+    "noPlayersFound": "Keine Spieler gefunden",
+    "noPlayersYet": "Noch keine Spieler",
+    "provisionalStandings": "Vorläufiges Klassement",
+    "ready": "Bereit",
+    "recentHistory": "Letzte Ergebnisse",
+    "round1": "Runde 1",
+    "round2": "Runde 2",
+    "searching": "Suche...",
+    "searchPlayer": "Spieler suchen",
+    "secondHalf": "Zweite Halbzeit",
+    "setReady": "Bereit melden",
+    "sign": "Verpflichten",
+    "simFirstHalf": "Erste Halbzeit simulieren",
+    "simFullSeason": "Komplette Saison simulieren",
+    "tactic": "Taktik",
+    "tiedPosition": "Gleichstand",
+    "transfers": "Transfers",
+    "typeToSearch": "Tippe zum Suchen",
+    "waitingRival": "Warte auf Rivalen..."
   },
   "lineup": {
     "treatmentsAvailable": "Behandlungen verfügbar",
@@ -1406,5 +1503,109 @@
     "treat": "Behandeln",
     "topScorers": "Torschützen",
     "topAssisters": "Assistgeber"
+  },
+  "edition": {
+    "actionError": "Fehler bei der Aktion",
+    "active": "Aktiv",
+    "andMore": "und mehr",
+    "apply": "Anwenden",
+    "applyAndDelete": "Anwenden und löschen",
+    "applying": "Wird angewendet...",
+    "availablePacks": "Verfügbare Packs",
+    "back": "Zurück",
+    "cancel": "Abbrechen",
+    "close": "Schließen",
+    "confirmApply": "Anwendung bestätigen",
+    "confirmApplyDesc": "Möchtest du dieses Pack wirklich anwenden?",
+    "confirmRemove": "Entfernung bestätigen",
+    "confirmRemoveDesc": "Möchtest du dieses Pack wirklich entfernen?",
+    "importJson": "JSON importieren",
+    "invalidFormat": "Ungültiges Format",
+    "invalidJson": "Ungültiges JSON",
+    "irreversible": "Diese Aktion ist unwiderruflich",
+    "loadError": "Fehler beim Laden",
+    "loading": "Laden...",
+    "loginRequired": "Anmeldung erforderlich",
+    "noPacks": "Keine Packs",
+    "noPacksHint": "Noch keine Editier-Packs verfügbar",
+    "noTeams": "Keine Teams",
+    "offline": "Offline",
+    "offlineMsg": "Internetverbindung für diese Funktion erforderlich",
+    "pasteJson": "JSON einfügen",
+    "players": "Spieler",
+    "preview": "Vorschau",
+    "remove": "Entfernen",
+    "removeAndDelete": "Entfernen und löschen",
+    "retry": "Wiederholen",
+    "sample": "Beispiel",
+    "submitDesc": "Pack zur Überprüfung einreichen",
+    "submitError": "Fehler beim Einreichen",
+    "submitForReview": "Zur Überprüfung einreichen",
+    "submitPack": "Pack einreichen",
+    "submittedSuccess": "Pack erfolgreich eingereicht",
+    "subtitle": "Kader und Spieler bearbeiten",
+    "teams": "Teams",
+    "title": "Editor",
+    "tooLarge": "Datei zu groß",
+    "warning": "Warnung"
+  },
+  "nickname": {
+    "confirm": "Bestätigen",
+    "invalid": "Ungültiger Name",
+    "placeholder": "Namen eingeben",
+    "random": "Zufällig",
+    "title": "Wähle deinen Managernamen",
+    "tooLong": "Name ist zu lang",
+    "tooShort": "Name ist zu kurz"
+  },
+  "proManager": {
+    "activeCareer": "Aktive Karriere",
+    "boardConfidence": "Vorstandsvertrauen",
+    "chooseTeam": "Team wählen",
+    "dashboard": "Übersicht",
+    "matches": "Spiele",
+    "menuSubtitle": "Profi-Karrieremodus",
+    "noOffers": "Keine Angebote",
+    "objective": "Ziel",
+    "prestige": "Prestige",
+    "seasonEnd": {
+      "cupResult": "Pokalergebnis",
+      "europeanResult": "Europäisches Ergebnis",
+      "goalsSummary": "Torzusammenfassung",
+      "jobOffers": "Jobangebote",
+      "leagueChampion": "Ligameister",
+      "noExternalOffers": "Keine externen Angebote",
+      "renew": "Verlängern",
+      "renewWith": "Verlängern mit",
+      "retire": "Zurücktreten",
+      "title": "Saisonende",
+      "topFour": "Top 4",
+      "viewOffers": "Angebote ansehen"
+    },
+    "startCareer": "Karriere starten",
+    "title": "Profi-Manager",
+    "titles": "Titel",
+    "wins": "Siege"
+  },
+  "rankedResults": {
+    "aboveRival": "Über dem Rivalen",
+    "backToLobby": "Zurück zur Lobby",
+    "breakdown": "Aufschlüsselung",
+    "cup": "Pokal",
+    "cupRound": "Pokalrunde",
+    "defeat": "Niederlage",
+    "disconnectLoss": "Niederlage durch Verbindungsabbruch",
+    "disconnectWin": "Sieg durch Verbindungsabbruch",
+    "draw": "Unentschieden",
+    "h2h": "Direkter Vergleich",
+    "h2hWins": "Direktvergleich-Siege",
+    "leagueChampion": "Ligameister",
+    "leaguePos": "Ligaposition",
+    "myTeam": "Mein Team",
+    "rival": "Rivale",
+    "rivalTeam": "Gegnerteam",
+    "superCup": "Supercup",
+    "victory": "Sieg",
+    "you": "Du"
   }
 }

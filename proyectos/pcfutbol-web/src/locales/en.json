@@ -40,7 +40,8 @@
     "money": "Money",
     "budget": "Budget",
     "unknown": "Unknown",
-    "unknownTeam": "Unknown team"
+    "unknownTeam": "Unknown team",
+    "menu": "Menu"
   },
   "mainMenu": {
     "title": "PC GAFFER",
@@ -68,7 +69,10 @@
     "loginButton": "Log In",
     "saveCurrentGame": "Save Game",
     "recordsButton": "Records",
-    "optionsButton": "Options"
+    "optionsButton": "Options",
+    "editionButton": "Editor",
+    "ranked": "Ranked 1v1",
+    "rankedSubtitle": "Compete against other players"
   },
   "cup": {
     "noCupActive": "No active cup this season",
@@ -134,7 +138,9 @@
     "insufficientSquad": "Insufficient squad!",
     "onlyHavePlayers": "You only have <strong>{{count}} players</strong>. You need a minimum of <strong>11</strong> to play.",
     "goToTransfersWarning": "Go to the transfer market and sign players before continuing. If you try to simulate again without having 11 players, <strong>you will lose the game</strong>.",
-    "goToTransfers": "Go to Transfers"
+    "goToTransfers": "Go to Transfers",
+    "manager": "Manager",
+    "welcomeName": "Welcome, {{name}}"
   },
   "formation": {
     "title": "Formation",
@@ -215,7 +221,14 @@
     "mostValuable": "Most valuable",
     "mostMatches": "Most matches",
     "noStatsYet": "No stats yet - play matches to generate data",
-    "apply": "Apply"
+    "apply": "Apply",
+    "topAssisters": "Top assisters",
+    "topScorers": "Top scorers",
+    "treat": "Treat",
+    "treated": "Treated",
+    "treatmentCost": "Treatment cost",
+    "treatmentsAvailable": "Treatments available",
+    "weeksLeft": "Weeks left"
   },
   "plantilla": {
     "title": "Squad",
@@ -541,7 +554,8 @@
     "persDescMercenary": "Only cares about money",
     "persDescHomesick": "Prefers to stay close to home",
     "persDescProfessional": "Evaluates everything with balance",
-    "persDescAdventurous": "Likes a change of scenery"
+    "persDescAdventurous": "Likes a change of scenery",
+    "newsTransferText": "Transfer news"
   },
   "calendar": {
     "title": "Calendar",
@@ -561,7 +575,15 @@
     "week": "Week",
     "noEuropeanMatches": "No European matches this matchday",
     "noSouthAmericanMatches": "No South American matches this matchday",
-    "noCupMatches": "No cup matches this round"
+    "noCupMatches": "No cup matches this round",
+    "final": "Final",
+    "noMatches": "No matches",
+    "playoff": "Playoff",
+    "qf": "Quarter-finals",
+    "r16": "Round of 16",
+    "round": "Round",
+    "season": "Season",
+    "sf": "Semi-finals"
   },
   "matchday": {
     "title": "Match Day",
@@ -586,7 +608,19 @@
     "lateGoal": "Late goal!",
     "finalResult": "Final Result",
     "skipToEnd": "Skip to end",
-    "noMatchThisWeek": "No match this week"
+    "noMatchThisWeek": "No match this week",
+    "directRed": "Straight red",
+    "errorSimulating": "Error simulating match",
+    "goalTypeCorner": "Goal from corner",
+    "goalTypeGreatStrike": "Great strike",
+    "goalTypeHeader": "Header goal",
+    "goalTypePenalty": "Penalty goal",
+    "goalTypeTapIn": "Tap-in",
+    "injuryGeneric": "Injury",
+    "injuryMinor": "Minor injury",
+    "injuryModerate": "Moderate injury",
+    "injurySerious": "Serious injury",
+    "noFormData": "No formation data"
   },
   "leagueTable": {
     "title": "League Table",
@@ -780,12 +814,7 @@
     "loadingStadium": "Loading stadium...",
     "general": "General",
     "sponsorship": "Sponsorship",
-    "events": {
-      "friendly": "Friendly Match",
-      "concert": "Concert",
-      "corporate": "Corporate Event",
-      "legends": "Legends Match"
-    },
+    "events": "Events",
     "seasonTicketCampaign": "Season Ticket Campaign",
     "campaignOpen": "Campaign open until matchday {{deadline}} (current: {{current}})",
     "seasonTicketPrice": "Season ticket price:",
@@ -923,7 +952,14 @@
     "themeModern": "Modern",
     "themeGlass": "Glass",
     "themeMidnight": "Midnight",
-    "appearance": "Appearance"
+    "appearance": "Appearance",
+    "changeName": "Change name",
+    "managerName": "Manager name",
+    "nameError": "Name error",
+    "namePlaceholder": "Enter your name",
+    "nameSaved": "Name saved",
+    "nameTooLong": "Name is too long",
+    "nameTooShort": "Name is too short"
   },
   "sidebar": {
     "office": "Office",
@@ -941,7 +977,8 @@
     "messages": "Messages",
     "bank": "Bank",
     "options": "Options",
-    "mainMenu": "Main Menu"
+    "mainMenu": "Main Menu",
+    "rankedExitWarning": "Leave ranked match?"
   },
   "saveSlots": {
     "back": "Back",
@@ -985,7 +1022,22 @@
     "diffNormal": "Normal",
     "diffMedium": "Medium",
     "diffHard": "Hard",
-    "diffVeryHard": "Very Hard"
+    "diffVeryHard": "Very Hard",
+    "avgOvr": "Avg OVR",
+    "chooseFriendlyPackage": "Choose friendly package",
+    "countries": "Countries",
+    "countryLeague": "Country league",
+    "difficulty": "Difficulty",
+    "leaguesOf": "Leagues of",
+    "playersInSquad": "Players in squad",
+    "preseasonTitle": "Pre-season",
+    "selectCountryOnMap": "Select a country on the map",
+    "selectTeamFromList": "Select a team from the list",
+    "startWith": "Start with",
+    "step": "Step",
+    "teamLabel": "Team",
+    "title": "Team Selection",
+    "topPlayers": "Top players"
   },
   "contrarreloj": {
     "title": "Race Against Time Mode",
@@ -1203,7 +1255,10 @@
     "refusesToRenew": "refuses to renew",
     "playerUnhappyWantsOut": "Player is unhappy and wants to leave the club",
     "perWeek": "/wk",
-    "vsCurrent": "vs current:"
+    "vsCurrent": "vs current:",
+    "acceptCounter": "Accept counter",
+    "demands": "Demands",
+    "starterRole": "Starter role"
   },
   "competitions": {
     "title": "Competitions",
@@ -1516,7 +1571,49 @@
     "directChampionShort": "{{winner}} is the direct champion."
   },
   "ranked": {
-    "exitWarning": "You have a ranked match in progress. If you leave, you'll lose by disconnection."
+    "exitWarning": "You have a ranked match in progress. If you leave, you'll lose by disconnection.",
+    "aboveRival": "Above rival",
+    "belowRival": "Below rival",
+    "blocked": "Blocked",
+    "cancel": "Cancel",
+    "champion": "Champion",
+    "chooseTeam": "Choose team",
+    "chosenByRival": "Chosen by rival",
+    "configSent": "Configuration sent",
+    "configuration": "Configuration",
+    "confirmAndSimulate": "Confirm and simulate",
+    "connectingMatch": "Connecting match...",
+    "cupWin": "Cup win",
+    "finalStandings": "Final standings",
+    "findMatch": "Find match",
+    "firstHalf": "First half",
+    "formation": "Formation",
+    "globalRanking": "Global ranking",
+    "leaderboardError": "Error loading leaderboard",
+    "loadingProfile": "Loading profile...",
+    "matchdays": "Matchdays",
+    "matchesPlaying": "Matches playing",
+    "midSeasonStandings": "Mid-season standings",
+    "noMatchesYet": "No matches yet",
+    "noPlayersFound": "No players found",
+    "noPlayersYet": "No players yet",
+    "provisionalStandings": "Provisional standings",
+    "ready": "Ready",
+    "recentHistory": "Recent history",
+    "round1": "Round 1",
+    "round2": "Round 2",
+    "searching": "Searching...",
+    "searchPlayer": "Search player",
+    "secondHalf": "Second half",
+    "setReady": "Set ready",
+    "sign": "Sign",
+    "simFirstHalf": "Simulate first half",
+    "simFullSeason": "Simulate full season",
+    "tactic": "Tactic",
+    "tiedPosition": "Tied position",
+    "transfers": "Transfers",
+    "typeToSearch": "Type to search",
+    "waitingRival": "Waiting for rival..."
   },
   "lineup": {
     "treatmentsAvailable": "Treatments available",
@@ -1526,5 +1623,109 @@
     "treat": "Treat",
     "topScorers": "Top Scorers",
     "topAssisters": "Top Assisters"
+  },
+  "edition": {
+    "actionError": "Error performing action",
+    "active": "Active",
+    "andMore": "and more",
+    "apply": "Apply",
+    "applyAndDelete": "Apply and delete",
+    "applying": "Applying...",
+    "availablePacks": "Available packs",
+    "back": "Back",
+    "cancel": "Cancel",
+    "close": "Close",
+    "confirmApply": "Confirm apply",
+    "confirmApplyDesc": "Are you sure you want to apply this pack?",
+    "confirmRemove": "Confirm removal",
+    "confirmRemoveDesc": "Are you sure you want to remove this pack?",
+    "importJson": "Import JSON",
+    "invalidFormat": "Invalid format",
+    "invalidJson": "Invalid JSON",
+    "irreversible": "This action is irreversible",
+    "loadError": "Error loading",
+    "loading": "Loading...",
+    "loginRequired": "Login required",
+    "noPacks": "No packs",
+    "noPacksHint": "No edition packs available yet",
+    "noTeams": "No teams",
+    "offline": "Offline",
+    "offlineMsg": "Internet connection required for this feature",
+    "pasteJson": "Paste JSON",
+    "players": "Players",
+    "preview": "Preview",
+    "remove": "Remove",
+    "removeAndDelete": "Remove and delete",
+    "retry": "Retry",
+    "sample": "Sample",
+    "submitDesc": "Submit your pack for review",
+    "submitError": "Error submitting",
+    "submitForReview": "Submit for review",
+    "submitPack": "Submit pack",
+    "submittedSuccess": "Pack submitted successfully",
+    "subtitle": "Edit squads and players",
+    "teams": "Teams",
+    "title": "Editor",
+    "tooLarge": "File too large",
+    "warning": "Warning"
+  },
+  "nickname": {
+    "confirm": "Confirm",
+    "invalid": "Invalid name",
+    "placeholder": "Enter your name",
+    "random": "Random",
+    "title": "Choose your manager name",
+    "tooLong": "Name is too long",
+    "tooShort": "Name is too short"
+  },
+  "proManager": {
+    "activeCareer": "Active career",
+    "boardConfidence": "Board confidence",
+    "chooseTeam": "Choose team",
+    "dashboard": "Dashboard",
+    "matches": "Matches",
+    "menuSubtitle": "Professional career mode",
+    "noOffers": "No offers",
+    "objective": "Objective",
+    "prestige": "Prestige",
+    "seasonEnd": {
+      "cupResult": "Cup result",
+      "europeanResult": "European result",
+      "goalsSummary": "Goals summary",
+      "jobOffers": "Job offers",
+      "leagueChampion": "League champion",
+      "noExternalOffers": "No external offers",
+      "renew": "Renew",
+      "renewWith": "Renew with",
+      "retire": "Retire",
+      "title": "End of season",
+      "topFour": "Top 4",
+      "viewOffers": "View offers"
+    },
+    "startCareer": "Start career",
+    "title": "Pro Manager",
+    "titles": "Titles",
+    "wins": "Wins"
+  },
+  "rankedResults": {
+    "aboveRival": "Above rival",
+    "backToLobby": "Back to lobby",
+    "breakdown": "Breakdown",
+    "cup": "Cup",
+    "cupRound": "Cup round",
+    "defeat": "Defeat",
+    "disconnectLoss": "Disconnect loss",
+    "disconnectWin": "Disconnect win",
+    "draw": "Draw",
+    "h2h": "Head to head",
+    "h2hWins": "H2H wins",
+    "leagueChampion": "League champion",
+    "leaguePos": "League position",
+    "myTeam": "My team",
+    "rival": "Rival",
+    "rivalTeam": "Rival team",
+    "superCup": "Super Cup",
+    "victory": "Victory",
+    "you": "You"
   }
 }

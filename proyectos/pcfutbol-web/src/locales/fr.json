@@ -40,7 +40,8 @@
     "money": "Argent",
     "budget": "Budget",
     "unknown": "Inconnu",
-    "unknownTeam": "Équipe inconnue"
+    "unknownTeam": "Équipe inconnue",
+    "menu": "Menu"
   },
   "mainMenu": {
     "title": "PC GAFFER",
@@ -68,7 +69,10 @@
     "loginButton": "Se connecter",
     "saveCurrentGame": "Sauvegarder",
     "recordsButton": "Records",
-    "optionsButton": "Options"
+    "optionsButton": "Options",
+    "editionButton": "Éditeur",
+    "ranked": "Ranked 1v1",
+    "rankedSubtitle": "Affrontez d'autres joueurs"
   },
   "cup": {
     "noCupActive": "Pas de coupe active cette saison",
@@ -134,7 +138,9 @@
     "insufficientSquad": "Effectif insuffisant !",
     "onlyHavePlayers": "Vous n'avez que <strong>{{count}} joueurs</strong>. Vous avez besoin d'un minimum de <strong>11</strong> pour jouer.",
     "goToTransfersWarning": "Allez au march· des transferts et signez des joueurs avant de continuer. Si vous tentez de simuler · nouveau sans avoir 11 joueurs, <strong>vous perdrez la partie</strong>.",
-    "goToTransfers": "Aller aux Transferts"
+    "goToTransfers": "Aller aux Transferts",
+    "manager": "Manager",
+    "welcomeName": "Bienvenue, {{name}}"
   },
   "formation": {
     "title": "Formation",
@@ -215,7 +221,14 @@
     "mostValuable": "Plus précieux",
     "mostMatches": "Plus de matchs",
     "noStatsYet": "Pas encore de stats - jouez des matchs pour générer des données",
-    "apply": "Appliquer"
+    "apply": "Appliquer",
+    "topAssisters": "Meilleurs passeurs",
+    "topScorers": "Meilleurs buteurs",
+    "treat": "Soigner",
+    "treated": "Soigné",
+    "treatmentCost": "Coût du traitement",
+    "treatmentsAvailable": "Traitements disponibles",
+    "weeksLeft": "Semaines restantes"
   },
   "plantilla": {
     "title": "Effectif",
@@ -541,7 +554,8 @@
     "persDescMercenary": "Seul l'argent compte",
     "persDescHomesick": "Préfère rester près de chez lui",
     "persDescProfessional": "Évalue tout avec équilibre",
-    "persDescAdventurous": "Aime changer d'air"
+    "persDescAdventurous": "Aime changer d'air",
+    "newsTransferText": "Nouvelle de transfert"
   },
   "calendar": {
     "title": "Calendrier",
@@ -561,7 +575,15 @@
     "week": "Semaine",
     "noEuropeanMatches": "Aucun match européen cette journée",
     "noSouthAmericanMatches": "Aucun match sud-américain cette journée",
-    "noCupMatches": "Aucun match de coupe ce tour"
+    "noCupMatches": "Aucun match de coupe ce tour",
+    "final": "Finale",
+    "noMatches": "Pas de matchs",
+    "playoff": "Barrage",
+    "qf": "Quarts de finale",
+    "r16": "Huitièmes de finale",
+    "round": "Tour",
+    "season": "Saison",
+    "sf": "Demi-finales"
   },
   "matchday": {
     "title": "Jour de Match",
@@ -586,7 +608,19 @@
     "lateGoal": "But dans les arréts de jeu!",
     "finalResult": "Résultat Final",
     "skipToEnd": "Aller · la fin",
-    "noMatchThisWeek": "Pas de match cette semaine"
+    "noMatchThisWeek": "Pas de match cette semaine",
+    "directRed": "Rouge direct",
+    "errorSimulating": "Erreur lors de la simulation",
+    "goalTypeCorner": "But sur corner",
+    "goalTypeGreatStrike": "Superbe frappe",
+    "goalTypeHeader": "But de la tête",
+    "goalTypePenalty": "But sur penalty",
+    "goalTypeTapIn": "But facile",
+    "injuryGeneric": "Blessure",
+    "injuryMinor": "Blessure légère",
+    "injuryModerate": "Blessure modérée",
+    "injurySerious": "Blessure grave",
+    "noFormData": "Pas de données de formation"
   },
   "leagueTable": {
     "title": "Classement",
@@ -780,12 +814,7 @@
     "loadingStadium": "Chargement du stade...",
     "general": "Général",
     "sponsorship": "Sponsoring",
-    "events": {
-      "friendly": "Match Amical",
-      "concert": "Concert",
-      "corporate": "événement d'Entreprise",
-      "legends": "Match des LÂgendes"
-    },
+    "events": "Événements",
     "seasonTicketCampaign": "Campagne d'Abonnements",
     "campaignOpen": "Campagne ouverte jusqu'· la journée {{deadline}} (actuelle: {{current}})",
     "seasonTicketPrice": "Prix de l'abonnement:",
@@ -899,7 +928,14 @@
     "themeModern": "Moderne",
     "themeGlass": "Glass",
     "themeMidnight": "Midnight",
-    "appearance": "Apparence"
+    "appearance": "Apparence",
+    "changeName": "Changer le nom",
+    "managerName": "Nom du manager",
+    "nameError": "Erreur de nom",
+    "namePlaceholder": "Entrez votre nom",
+    "nameSaved": "Nom sauvegardé",
+    "nameTooLong": "Le nom est trop long",
+    "nameTooShort": "Le nom est trop court"
   },
   "sidebar": {
     "office": "Bureau",
@@ -917,7 +953,8 @@
     "messages": "Messages",
     "bank": "Banque",
     "options": "Options",
-    "mainMenu": "Menu Principal"
+    "mainMenu": "Menu Principal",
+    "rankedExitWarning": "Quitter le match ranked ?"
   },
   "teamSelection": {
     "teamsAvailable": "{{count}} Équipes disponibles",
@@ -936,7 +973,22 @@
     "diffNormal": "Normal",
     "diffMedium": "Moyen",
     "diffHard": "Difficile",
-    "diffVeryHard": "Très difficile"
+    "diffVeryHard": "Très difficile",
+    "avgOvr": "Moy. OVR",
+    "chooseFriendlyPackage": "Choisir un package amical",
+    "countries": "Pays",
+    "countryLeague": "Ligue du pays",
+    "difficulty": "Difficulté",
+    "leaguesOf": "Ligues de",
+    "playersInSquad": "Joueurs dans l'effectif",
+    "preseasonTitle": "Pré-saison",
+    "selectCountryOnMap": "Sélectionnez un pays sur la carte",
+    "selectTeamFromList": "Sélectionnez une équipe dans la liste",
+    "startWith": "Commencer avec",
+    "step": "Étape",
+    "teamLabel": "Équipe",
+    "title": "Sélection d'équipe",
+    "topPlayers": "Meilleurs joueurs"
   },
   "contrarreloj": {
     "title": "Mode Course Contre la Montre",
@@ -1088,7 +1140,10 @@
     "currentContract": "Contrat Actuel",
     "newContract": "Nouveau Contrat",
     "perWeek": "/sem",
-    "vsCurrent": "vs actuel :"
+    "vsCurrent": "vs actuel :",
+    "acceptCounter": "Accepter la contre-offre",
+    "demands": "Exigences",
+    "starterRole": "Rôle de titulaire"
   },
   "competitions": {
     "title": "Compétitions",
@@ -1397,7 +1452,49 @@
     "directChampionShort": "{{winner}} est champion direct."
   },
   "ranked": {
-    "exitWarning": "Vous avez un match classé en cours. Si vous partez, vous perdrez par déconnexion."
+    "exitWarning": "Vous avez un match classé en cours. Si vous partez, vous perdrez par déconnexion.",
+    "aboveRival": "Au-dessus du rival",
+    "belowRival": "En dessous du rival",
+    "blocked": "Bloqué",
+    "cancel": "Annuler",
+    "champion": "Champion",
+    "chooseTeam": "Choisir une équipe",
+    "chosenByRival": "Choisi par le rival",
+    "configSent": "Configuration envoyée",
+    "configuration": "Configuration",
+    "confirmAndSimulate": "Confirmer et simuler",
+    "connectingMatch": "Connexion au match...",
+    "cupWin": "Victoire en coupe",
+    "finalStandings": "Classement final",
+    "findMatch": "Trouver un match",
+    "firstHalf": "Première mi-temps",
+    "formation": "Formation",
+    "globalRanking": "Classement mondial",
+    "leaderboardError": "Erreur de chargement du classement",
+    "loadingProfile": "Chargement du profil...",
+    "matchdays": "Journées",
+    "matchesPlaying": "Matchs en cours",
+    "midSeasonStandings": "Classement mi-saison",
+    "noMatchesYet": "Pas encore de matchs",
+    "noPlayersFound": "Aucun joueur trouvé",
+    "noPlayersYet": "Pas encore de joueurs",
+    "provisionalStandings": "Classement provisoire",
+    "ready": "Prêt",
+    "recentHistory": "Historique récent",
+    "round1": "Tour 1",
+    "round2": "Tour 2",
+    "searching": "Recherche...",
+    "searchPlayer": "Chercher un joueur",
+    "secondHalf": "Deuxième mi-temps",
+    "setReady": "Se déclarer prêt",
+    "sign": "Signer",
+    "simFirstHalf": "Simuler première mi-temps",
+    "simFullSeason": "Simuler saison complète",
+    "tactic": "Tactique",
+    "tiedPosition": "Égalité de position",
+    "transfers": "Transferts",
+    "typeToSearch": "Tapez pour chercher",
+    "waitingRival": "En attente du rival..."
   },
   "lineup": {
     "treatmentsAvailable": "Traitements disponibles",
@@ -1407,5 +1504,109 @@
     "treat": "Traiter",
     "topScorers": "Buteurs",
     "topAssisters": "Passeurs"
+  },
+  "edition": {
+    "actionError": "Erreur lors de l'action",
+    "active": "Actif",
+    "andMore": "et plus",
+    "apply": "Appliquer",
+    "applyAndDelete": "Appliquer et supprimer",
+    "applying": "Application en cours...",
+    "availablePacks": "Packs disponibles",
+    "back": "Retour",
+    "cancel": "Annuler",
+    "close": "Fermer",
+    "confirmApply": "Confirmer l'application",
+    "confirmApplyDesc": "Êtes-vous sûr de vouloir appliquer ce pack ?",
+    "confirmRemove": "Confirmer la suppression",
+    "confirmRemoveDesc": "Êtes-vous sûr de vouloir supprimer ce pack ?",
+    "importJson": "Importer JSON",
+    "invalidFormat": "Format invalide",
+    "invalidJson": "JSON invalide",
+    "irreversible": "Cette action est irréversible",
+    "loadError": "Erreur de chargement",
+    "loading": "Chargement...",
+    "loginRequired": "Connexion requise",
+    "noPacks": "Pas de packs",
+    "noPacksHint": "Pas encore de packs d'édition disponibles",
+    "noTeams": "Pas d'équipes",
+    "offline": "Hors ligne",
+    "offlineMsg": "Connexion internet requise pour cette fonctionnalité",
+    "pasteJson": "Coller JSON",
+    "players": "Joueurs",
+    "preview": "Aperçu",
+    "remove": "Supprimer",
+    "removeAndDelete": "Supprimer et effacer",
+    "retry": "Réessayer",
+    "sample": "Exemple",
+    "submitDesc": "Soumettez votre pack pour révision",
+    "submitError": "Erreur lors de l'envoi",
+    "submitForReview": "Soumettre pour révision",
+    "submitPack": "Soumettre le pack",
+    "submittedSuccess": "Pack soumis avec succès",
+    "subtitle": "Modifier les effectifs et joueurs",
+    "teams": "Équipes",
+    "title": "Éditeur",
+    "tooLarge": "Fichier trop volumineux",
+    "warning": "Attention"
+  },
+  "nickname": {
+    "confirm": "Confirmer",
+    "invalid": "Nom invalide",
+    "placeholder": "Entrez votre nom",
+    "random": "Aléatoire",
+    "title": "Choisissez votre nom de manager",
+    "tooLong": "Le nom est trop long",
+    "tooShort": "Le nom est trop court"
+  },
+  "proManager": {
+    "activeCareer": "Carrière active",
+    "boardConfidence": "Confiance du conseil",
+    "chooseTeam": "Choisir une équipe",
+    "dashboard": "Tableau de bord",
+    "matches": "Matchs",
+    "menuSubtitle": "Mode carrière professionnelle",
+    "noOffers": "Pas d'offres",
+    "objective": "Objectif",
+    "prestige": "Prestige",
+    "seasonEnd": {
+      "cupResult": "Résultat en coupe",
+      "europeanResult": "Résultat européen",
+      "goalsSummary": "Résumé des buts",
+      "jobOffers": "Offres d'emploi",
+      "leagueChampion": "Champion de ligue",
+      "noExternalOffers": "Pas d'offres externes",
+      "renew": "Renouveler",
+      "renewWith": "Renouveler avec",
+      "retire": "Prendre sa retraite",
+      "title": "Fin de saison",
+      "topFour": "Top 4",
+      "viewOffers": "Voir les offres"
+    },
+    "startCareer": "Démarrer la carrière",
+    "title": "Manager Pro",
+    "titles": "Titres",
+    "wins": "Victoires"
+  },
+  "rankedResults": {
+    "aboveRival": "Au-dessus du rival",
+    "backToLobby": "Retour au lobby",
+    "breakdown": "Détail",
+    "cup": "Coupe",
+    "cupRound": "Tour de coupe",
+    "defeat": "Défaite",
+    "disconnectLoss": "Défaite par déconnexion",
+    "disconnectWin": "Victoire par déconnexion",
+    "draw": "Match nul",
+    "h2h": "Confrontation directe",
+    "h2hWins": "Victoires en confrontation directe",
+    "leagueChampion": "Champion de ligue",
+    "leaguePos": "Position en ligue",
+    "myTeam": "Mon équipe",
+    "rival": "Rival",
+    "rivalTeam": "Équipe rivale",
+    "superCup": "Supercoupe",
+    "victory": "Victoire",
+    "you": "Vous"
   }
 }
