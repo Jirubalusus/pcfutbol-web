@@ -624,7 +624,7 @@ export function recordPlayerKnockoutResult(competitionState, matchResult, phase)
     state[key] = (state[key] || []).map(r => {
       // Match by team IDs (player is in one of the teams)
       const matchupTeamIds = [r.team1?.teamId, r.team2?.teamId];
-      if (matchupTeamIds.includes(matchResult.homeTeamId) || matchupTeamIds.includes(matchResult.awayTeamId)) {
+      if (matchupTeamIds.includes(matchResult.homeTeamId) && matchupTeamIds.includes(matchResult.awayTeamId)) {
         if (!r.winner) {
           // This is the player's unresolved matchup
           return { ...r, ...completedMatchup, id: r.id };

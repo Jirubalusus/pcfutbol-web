@@ -126,7 +126,7 @@ function getPositionObjective(tier, leagueId, totalTeams) {
       type: 'league_position',
       nameKey: 'objNames.promotion',
       descKey: 'objDescs.promotion',
-      target: leagueId === 'segunda' ? 2 : 4, // 2 primeros suben, playoff 3-6
+      target: leagueId === 'segunda' ? 6 : 5, // Segunda: top 6 (2 direct + 3-6 playoff), RFEF: top 5 (1 direct + 2-5 playoff)
       priority: 'critical',
       reward: 8000000,
       penalty: -2000000

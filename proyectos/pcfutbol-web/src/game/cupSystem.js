@@ -544,11 +544,23 @@ export function advanceCupBracket(bracket, roundIdx) {
       const winner1 = match1 ? getMatchWinner(match1) : null;
       const winner2 = match2 ? getMatchWinner(match2) : null;
 
-      updatedNextMatches[nextMatchIdx] = {
-        ...updatedNextMatches[nextMatchIdx],
-        homeTeam: winner1,
-        awayTeam: winner2
-      };
+      // If only one winner (odd matches), auto-advance as bye
+      if (winner1 && !winner2 && !match2) {
+        updatedNextMatches[nextMatchIdx] = {
+          ...updatedNextMatches[nextMatchIdx],
+          homeTeam: winner1,
+          awayTeam: null,
+          bye: true,
+          played: true,
+          winnerId: winner1.id || winner1.teamId
+        };
+      } else {
+        updatedNextMatches[nextMatchIdx] = {
+          ...updatedNextMatches[nextMatchIdx],
+          homeTeam: winner1,
+          awayTeam: winner2
+        };
+      }
     }
   }
 

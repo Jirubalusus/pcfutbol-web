@@ -2763,6 +2763,9 @@ function gameReducer(state, action) {
       const offer = action.payload;
       const soldPlayer = state.team.players.find(p => p.name === offer.player.name);
       if (!soldPlayer) return state;
+      
+      // Minimum squad size guard — can't sell if would go below 14 players
+      if (state.team.players.length <= 14) return state;
 
       // Quitar jugador del equipo
       const updatedPlayers = state.team.players.filter(p => p.name !== offer.player.name);

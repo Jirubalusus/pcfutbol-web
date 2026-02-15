@@ -498,7 +498,7 @@ export function recordPlayerSAKnockoutResult(competitionState, matchResult, phas
   } else {
     state[key] = (state[key] || []).map(r => {
       const matchupTeamIds = [r.team1?.teamId, r.team2?.teamId];
-      if (matchupTeamIds.includes(matchResult.homeTeamId) || matchupTeamIds.includes(matchResult.awayTeamId)) {
+      if (matchupTeamIds.includes(matchResult.homeTeamId) && matchupTeamIds.includes(matchResult.awayTeamId)) {
         if (!r.winner) {
           return { ...r, ...completedMatchup, id: r.id };
         }
