@@ -49,7 +49,7 @@ export const EUROPEAN_SPOTS = {
     champions: [1, 2, 3],
     europaLeague: [4],
     conference: [5],
-    relegation: [16, 17, 18],
+    relegation: [17, 18],
     playoffRelegation: [16]
   },
   // South American leagues (use libertadores/sudamericana instead of champions/europaLeague)

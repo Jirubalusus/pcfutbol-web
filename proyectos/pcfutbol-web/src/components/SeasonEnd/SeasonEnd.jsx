@@ -388,27 +388,27 @@ export default function SeasonEnd({ allTeams, onComplete }) {
         pendingMessages.push({
           id: Date.now(),
           type: 'relegation',
-          title: 'Descensos a Segunda',
-          content: `Descienden: ${newSeasonData.changes.relegated.join(', ')}`,
-          date: `Fin Temporada ${state.currentSeason}`
+          title: t('seasonEnd.msgRelegationTitle'),
+          content: t('seasonEnd.msgRelegated', { teams: newSeasonData.changes.relegated.join(', ') }),
+          date: t('seasonEnd.endOfSeasonDate', { season: state.currentSeason })
         });
       }
       if (newSeasonData.changes.promoted.length > 0) {
         pendingMessages.push({
           id: Date.now() + 1,
           type: 'promotion',
-          title: 'Ascensos directos a La Liga',
-          content: `Ascienden: ${newSeasonData.changes.promoted.join(', ')}`,
-          date: `Fin Temporada ${state.currentSeason}`
+          title: t('seasonEnd.msgPromotionTitle'),
+          content: t('seasonEnd.msgPromoted', { teams: newSeasonData.changes.promoted.join(', ') }),
+          date: t('seasonEnd.endOfSeasonDate', { season: state.currentSeason })
         });
       }
       if (newSeasonData.changes.playoffWinner) {
         pendingMessages.push({
           id: Date.now() + 2,
           type: 'promotion',
-          title: 'Ascenso por Playoff',
-          content: `${newSeasonData.changes.playoffWinner} gana el playoff y asciende a La Liga`,
-          date: `Fin Temporada ${state.currentSeason}`
+          title: t('seasonEnd.msgPlayoffPromotion'),
+          content: t('seasonEnd.msgPlayoffWinner', { team: newSeasonData.changes.playoffWinner }),
+          date: t('seasonEnd.endOfSeasonDate', { season: state.currentSeason })
         });
       }
       if (newSeasonData.newPlayerLeagueId !== (state.playerLeagueId || 'laliga')) {
@@ -416,11 +416,11 @@ export default function SeasonEnd({ allTeams, onComplete }) {
         pendingMessages.push({
           id: Date.now() + 3,
           type: isPromotion ? 'promotion' : 'relegation',
-          title: isPromotion ? '¡ASCENSO!' : 'Descenso',
+          title: isPromotion ? t('seasonEnd.msgPlayerPromotion') : t('seasonEnd.msgPlayerRelegation'),
           content: isPromotion 
-            ? `¡${state.team.name} jugará en La Liga la próxima temporada!`
-            : `${state.team.name} jugará en Segunda División la próxima temporada.`,
-          date: `Fin Temporada ${state.currentSeason}`
+            ? t('seasonEnd.msgTeamPromoted', { team: state.team.name })
+            : t('seasonEnd.msgTeamRelegated', { team: state.team.name }),
+          date: t('seasonEnd.endOfSeasonDate', { season: state.currentSeason })
         });
       }
     }
@@ -503,9 +503,9 @@ export default function SeasonEnd({ allTeams, onComplete }) {
             goalsFor: finalTeamEntry?.goalsFor || 0,
             goalsAgainst: finalTeamEntry?.goalsAgainst || 0,
             cupResult: state.cupCompetition?.playerEliminated 
-              ? `Eliminado en ${state.cupCompetition.rounds?.[state.cupCompetition.currentRound]?.name || 'copa'}`
-              : state.cupCompetition?.winner === state.teamId ? 'Campeón' : null,
-            europeanResult: state.europeanCompetitions ? 'Participó' : null,
+              ? t('seasonEnd.pmCupEliminated', { round: state.cupCompetition.rounds?.[state.cupCompetition.currentRound]?.name || 'copa' })
+              : state.cupCompetition?.winner === state.teamId ? t('seasonEnd.pmCupChampion') : null,
+            europeanResult: state.europeanCompetitions ? t('seasonEnd.pmEuropeanParticipated') : null,
             league: state.playerLeagueId || 'laliga',
             season: state.currentSeason || 1
           }
@@ -641,9 +641,9 @@ export default function SeasonEnd({ allTeams, onComplete }) {
               payload: {
                 id: Date.now() + 100,
                 type: 'southamerican',
-                title: `¡Competición Continental!`,
-                content: `Tu equipo jugará la ${compNames[playerQualComp]} la próxima temporada.`,
-                date: `Inicio Temporada ${state.currentSeason + 1}`
+                title: t('seasonEnd.msgContinentalComp'),
+                content: t('seasonEnd.msgTeamPlaysContinental', { comp: compNames[playerQualComp] }),
+                date: t('seasonEnd.startOfSeasonDate', { season: state.currentSeason + 1 })
               }
             });
           }
@@ -697,9 +697,9 @@ export default function SeasonEnd({ allTeams, onComplete }) {
               payload: {
                 id: Date.now() + 100,
                 type: 'european',
-                title: `¡Competición Europea!`,
-                content: `Tu equipo jugará la ${compNames[playerQualComp]} la próxima temporada.`,
-                date: `Inicio Temporada ${state.currentSeason + 1}`
+                title: t('seasonEnd.msgEuropeanComp'),
+                content: t('seasonEnd.msgTeamPlaysContinental', { comp: compNames[playerQualComp] }),
+                date: t('seasonEnd.startOfSeasonDate', { season: state.currentSeason + 1 })
               }
             });
           }
@@ -737,36 +737,36 @@ export default function SeasonEnd({ allTeams, onComplete }) {
 
           {/* Bracket visual */}
           <div className="playoff-bracket">
-            <h3><ClipboardList size={14} /> Campeón Apertura vs Campeón Clausura</h3>
+            <h3><ClipboardList size={14} /> {t('seasonEnd.aperturaChampVsClausuraChamp')}</h3>
             <div className="bracket-matches">
               {/* Leg 1 */}
               <div className={`bracket-match ${apclLeg1Result ? 'played' : ''}`}>
-                <span className="bracket-label">Ida</span>
+                <span className="bracket-label">{t('seasonEnd.leg1Label')}</span>
                 <div className="bracket-teams">
                   <span className={`team ${playerIsApertura ? 'player-team' : ''}`}>
-                    {pendingAPCLFinal.aperturaChampionName} <small>(Apertura)</small>
+                    {pendingAPCLFinal.aperturaChampionName} <small>({t('seasonEnd.apertura')})</small>
                   </span>
                   {apclLeg1Result && (
                     <span className="score">{apclLeg1Result.homeScore} - {apclLeg1Result.awayScore}</span>
                   )}
                   <span className={`team ${playerIsClausura ? 'player-team' : ''}`}>
-                    {pendingAPCLFinal.clausuraChampionName} <small>(Clausura)</small>
+                    {pendingAPCLFinal.clausuraChampionName} <small>({t('seasonEnd.clausura')})</small>
                   </span>
                 </div>
               </div>
 
               {/* Leg 2 */}
               <div className={`bracket-match ${apclLeg2Result ? 'played' : ''}`}>
-                <span className="bracket-label">Vuelta</span>
+                <span className="bracket-label">{t('seasonEnd.leg2Label')}</span>
                 <div className="bracket-teams">
                   <span className={`team ${playerIsClausura ? 'player-team' : ''}`}>
-                    {pendingAPCLFinal.clausuraChampionName} <small>(Clausura)</small>
+                    {pendingAPCLFinal.clausuraChampionName} <small>({t('seasonEnd.clausura')})</small>
                   </span>
                   {apclLeg2Result && (
                     <span className="score">{apclLeg2Result.homeScore} - {apclLeg2Result.awayScore}</span>
                   )}
                   <span className={`team ${playerIsApertura ? 'player-team' : ''}`}>
-                    {pendingAPCLFinal.aperturaChampionName} <small>(Apertura)</small>
+                    {pendingAPCLFinal.aperturaChampionName} <small>({t('seasonEnd.apertura')})</small>
                   </span>
                 </div>
               </div>
@@ -778,18 +778,18 @@ export default function SeasonEnd({ allTeams, onComplete }) {
             <div className={`playoff-result ${apclFinalResult.winner === state.teamId ? 'victory' : 'defeat'}`}>
               <h3>
                 {apclFinalResult.winner === state.teamId
-                  ? <><Sparkles size={14} /> ¡CAMPEÓN!</>
-                  : 'Subcampeón'}
+                  ? <><Sparkles size={14} /> {t('seasonEnd.championExclaim')}</>
+                  : t('seasonEnd.runnerUp')}
               </h3>
               <p className="result-score">
-                Global: {apclFinalResult.aperturaChampionName} {apclFinalResult.aggregate.apertura} - {apclFinalResult.aggregate.clausura} {apclFinalResult.clausuraChampionName}
+                {t('seasonEnd.aggregate')}: {apclFinalResult.aperturaChampionName} {apclFinalResult.aggregate.apertura} - {apclFinalResult.aggregate.clausura} {apclFinalResult.clausuraChampionName}
               </p>
               <p className="result-extra">{winReasonLabel(apclFinalResult.winReason)}</p>
               {apclFinalResult.winner === state.teamId && (
-                <p className="promotion-msg"><Trophy size={14} /> ¡{state.team?.name} es CAMPEÓN de la {pendingAPCLFinal.leagueName}!</p>
+                <p className="promotion-msg"><Trophy size={14} /> {t('seasonEnd.championOfLeague', { team: state.team?.name, league: pendingAPCLFinal.leagueName })}</p>
               )}
               <button className="btn-continue" onClick={handleAPCLContinue}>
-                Continuar <ChevronRight size={20} />
+                {t('seasonEnd.continueBtn')} <ChevronRight size={20} />
               </button>
             </div>
           )}
@@ -797,21 +797,21 @@ export default function SeasonEnd({ allTeams, onComplete }) {
           {/* Play next leg */}
           {!apclFinalResult && (
             <div className="playoff-next-match">
-              <h3><Zap size={14} /> {apclLeg === 1 ? 'Partido de ida' : 'Partido de vuelta'}</h3>
+              <h3><Zap size={14} /> {apclLeg === 1 ? t('seasonEnd.firstLegMatch') : t('seasonEnd.secondLegMatch')}</h3>
               <p className="next-match-info">
                 {apclLeg === 1
-                  ? <><strong>{pendingAPCLFinal.aperturaChampionName}</strong> <small>(Local)</small> vs <strong>{pendingAPCLFinal.clausuraChampionName}</strong></>
-                  : <><strong>{pendingAPCLFinal.clausuraChampionName}</strong> <small>(Local)</small> vs <strong>{pendingAPCLFinal.aperturaChampionName}</strong></>
+                  ? <><strong>{pendingAPCLFinal.aperturaChampionName}</strong> <small>{t('seasonEnd.local')}</small> vs <strong>{pendingAPCLFinal.clausuraChampionName}</strong></>
+                  : <><strong>{pendingAPCLFinal.clausuraChampionName}</strong> <small>{t('seasonEnd.local')}</small> vs <strong>{pendingAPCLFinal.aperturaChampionName}</strong></>
                 }
               </p>
               <p className="next-match-venue">
                 {(apclLeg === 1 && playerIsApertura) || (apclLeg === 2 && playerIsClausura)
-                  ? <><Home size={12} /> Jugamos en casa</>
-                  : <><Plane size={12} /> Jugamos fuera</>
+                  ? <><Home size={12} /> {t('seasonEnd.homeGame')}</>
+                  : <><Plane size={12} /> {t('seasonEnd.awayGame')}</>
                 }
               </p>
               <button className="btn-continue btn-play-match" onClick={handlePlayAPCLLeg}>
-                <FootballIcon size={14} /> Jugar partido <ChevronRight size={20} />
+                <FootballIcon size={14} /> {t('seasonEnd.playMatch')} <ChevronRight size={20} />
               </button>
             </div>
           )}
@@ -832,14 +832,14 @@ export default function SeasonEnd({ allTeams, onComplete }) {
           <div className="modal-header">
             <Zap size={32} className="header-icon playoff-icon" />
             <div>
-              <h1>Playoff de Ascenso</h1>
-              <p>{playoffBracket.phase === 'semifinals' ? 'Semifinales' : '¡FINAL!'}</p>
+              <h1>{t('seasonEnd.playoffDeAscenso')}</h1>
+              <p>{playoffBracket.phase === 'semifinals' ? t('seasonEnd.semisLabel') : t('seasonEnd.finalLabel')}</p>
             </div>
           </div>
           
           {/* Bracket visual */}
           <div className="playoff-bracket">
-            <h3><ClipboardList size={14} /> Cuadro de Playoff</h3>
+            <h3><ClipboardList size={14} /> {t('seasonEnd.playoffBracket')}</h3>
             <div className="bracket-matches">
               {playoffBracket.semifinals.map((semi, idx) => (
                 <div key={idx} className={`bracket-match ${semi.played ? 'played' : ''}`}>
@@ -851,8 +851,8 @@ export default function SeasonEnd({ allTeams, onComplete }) {
                     {semi.played && (
                       <span className="score">
                         {semi.result.homeScore} - {semi.result.awayScore}
-                        {semi.result.extraTime && !semi.result.penalties && ' (Prór.)'}
-                        {semi.result.penalties && ` (Pen: ${semi.result.penalties.homeGoals}-${semi.result.penalties.awayGoals})`}
+                        {semi.result.extraTime && !semi.result.penalties && ` (${t('seasonEnd.extraTimeShort')})`}
+                        {semi.result.penalties && ` (${t('seasonEnd.penShort')}: ${semi.result.penalties.homeGoals}-${semi.result.penalties.awayGoals})`}
                       </span>
                     )}
                     <span className={`team ${semi.result?.winnerId === semi.awayTeam.teamId ? 'winner' : ''} ${semi.awayTeam.teamId === state.teamId ? 'player-team' : ''}`}>
@@ -864,7 +864,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
               
               {playoffBracket.final.homeTeam && (
                 <div className={`bracket-match final-match ${playoffBracket.final.played ? 'played' : ''}`}>
-                  <span className="bracket-label"><Trophy size={14} /> Final</span>
+                  <span className="bracket-label"><Trophy size={14} /> {t('seasonEnd.finalBracketLabel')}</span>
                   <div className="bracket-teams">
                     <span className={`team ${playoffBracket.final.result?.winnerId === playoffBracket.final.homeTeam.teamId ? 'winner' : ''} ${playoffBracket.final.homeTeam.teamId === state.teamId ? 'player-team' : ''}`}>
                       {playoffBracket.final.homeTeam.teamName}
@@ -872,8 +872,8 @@ export default function SeasonEnd({ allTeams, onComplete }) {
                     {playoffBracket.final.played && (
                       <span className="score">
                         {playoffBracket.final.result.homeScore} - {playoffBracket.final.result.awayScore}
-                        {playoffBracket.final.result.extraTime && !playoffBracket.final.result.penalties && ' (Prór.)'}
-                        {playoffBracket.final.result.penalties && ` (Pen: ${playoffBracket.final.result.homeGoals}-${playoffBracket.final.result.awayGoals})`}
+                        {playoffBracket.final.result.extraTime && !playoffBracket.final.result.penalties && ` (${t('seasonEnd.extraTimeShort')})`}
+                        {playoffBracket.final.result.penalties && ` (${t('seasonEnd.penShort')}: ${playoffBracket.final.result.homeGoals}-${playoffBracket.final.result.awayGoals})`}
                       </span>
                     )}
                     <span className={`team ${playoffBracket.final.result?.winnerId === playoffBracket.final.awayTeam?.teamId ? 'winner' : ''} ${playoffBracket.final.awayTeam?.teamId === state.teamId ? 'player-team' : ''}`}>
@@ -888,26 +888,26 @@ export default function SeasonEnd({ allTeams, onComplete }) {
           {/* Resultado del último partido */}
           {playoffMatchResult && (
             <div className={`playoff-result ${playoffMatchResult.winnerId === state.teamId ? 'victory' : 'defeat'}`}>
-              <h3>{playoffMatchResult.winnerId === state.teamId ? <><Sparkles size={14} /> ¡Victoria!</> : 'Derrota'}</h3>
+              <h3>{playoffMatchResult.winnerId === state.teamId ? <><Sparkles size={14} /> {t('seasonEnd.victoryExclaim')}</> : t('seasonEnd.defeatLabel')}</h3>
               <p className="result-score">
                 {playoffMatchResult.homeTeamName} {playoffMatchResult.homeScore} - {playoffMatchResult.awayScore} {playoffMatchResult.awayTeamName}
               </p>
               {playoffMatchResult.extraTime && !playoffMatchResult.penalties && (
-                <p className="result-extra">Prórroga: {playoffMatchResult.finalHomeScore} - {playoffMatchResult.finalAwayScore}</p>
+                <p className="result-extra">{t('seasonEnd.extraTimeLabel')}: {playoffMatchResult.finalHomeScore} - {playoffMatchResult.finalAwayScore}</p>
               )}
               {playoffMatchResult.penalties && (
-                <p className="result-extra">Penaltis: {playoffMatchResult.penalties.homeGoals} - {playoffMatchResult.penalties.awayGoals}</p>
+                <p className="result-extra">{t('seasonEnd.penaltiesLabel')}: {playoffMatchResult.penalties.homeGoals} - {playoffMatchResult.penalties.awayGoals}</p>
               )}
               
               {playoffMatchResult.winnerId === state.teamId && playoffBracket.phase === 'completed' && (
-                <p className="promotion-msg"><Trophy size={14} /> ¡{state.team?.name} ASCIENDE A LA LIGA!</p>
+                <p className="promotion-msg"><Trophy size={14} /> {t('seasonEnd.teamAscends', { team: state.team?.name })}</p>
               )}
               {playerEliminated && (
-                <p className="elimination-msg">El equipo ha sido eliminado del playoff</p>
+                <p className="elimination-msg">{t('seasonEnd.eliminatedFromPlayoff')}</p>
               )}
               
               <button className="btn-continue" onClick={handlePlayoffContinue}>
-                Continuar <ChevronRight size={20} />
+                {t('seasonEnd.continueBtn')} <ChevronRight size={20} />
               </button>
             </div>
           )}
@@ -915,15 +915,15 @@ export default function SeasonEnd({ allTeams, onComplete }) {
           {/* Botón para jugar el siguiente partido */}
           {!playoffMatchResult && nextMatch && !playerEliminated && (
             <div className="playoff-next-match">
-              <h3><Zap size={14} /> Próximo partido</h3>
+              <h3><Zap size={14} /> {t('seasonEnd.nextMatchLabel')}</h3>
               <p className="next-match-info">
                 {nextMatch.label}: <strong>{nextMatch.homeTeam.teamName}</strong> vs <strong>{nextMatch.awayTeam.teamName}</strong>
               </p>
               <p className="next-match-venue">
-                {isPlayerHome ? <><Home size={12} /> Jugamos en casa</> : <><Plane size={12} /> Jugamos fuera</>}
+                {isPlayerHome ? <><Home size={12} /> {t('seasonEnd.homeGame')}</> : <><Plane size={12} /> {t('seasonEnd.awayGame')}</>}
               </p>
               <button className="btn-continue btn-play-match" onClick={handlePlayoffMatch}>
-                <FootballIcon size={14} /> Jugar partido <ChevronRight size={20} />
+                <FootballIcon size={14} /> {t('seasonEnd.playMatch')} <ChevronRight size={20} />
               </button>
             </div>
           )}
@@ -933,16 +933,16 @@ export default function SeasonEnd({ allTeams, onComplete }) {
             <div className="playoff-completed">
               {playoffBracket.phase === 'completed' && (
                 <>
-                  <h3><Trophy size={14} /> Playoff completado</h3>
+                  <h3><Trophy size={14} /> {t('seasonEnd.playoffCompletedLabel')}</h3>
                   {playoffBracket.winner === state.teamId ? (
-                    <p className="promotion-msg">¡{state.team?.name} ASCIENDE A LA LIGA!</p>
+                    <p className="promotion-msg">{t('seasonEnd.teamAscends', { team: state.team?.name })}</p>
                   ) : (
-                    <p>Ganador del playoff: {playoffBracket.final?.result?.winnerName}</p>
+                    <p>{t('seasonEnd.playoffWinnerLabel')}: {playoffBracket.final?.result?.winnerName}</p>
                   )}
                 </>
               )}
               <button className="btn-continue" onClick={() => setPhase('summary')}>
-                Ver resumen de temporada <ChevronRight size={20} />
+                {t('seasonEnd.viewSeasonSummary')} <ChevronRight size={20} />
               </button>
             </div>
           )}
@@ -959,7 +959,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
           <div className="modal-header">
             <Trophy size={32} className="header-icon" />
             <div>
-              <h1>Fin de Temporada {state.currentSeason}</h1>
+              <h1>{t('seasonEnd.seasonEndTitle', { season: state.currentSeason })}</h1>
               <p>{state.team?.name}</p>
             </div>
           </div>
@@ -968,31 +968,31 @@ export default function SeasonEnd({ allTeams, onComplete }) {
           <div className="final-position">
             <div className="position-badge">
               <span className="position-number">{seasonResult.position}º</span>
-              <span className="position-label">Posición Final</span>
+              <span className="position-label">{t('seasonEnd.finalPositionLabel')}</span>
             </div>
             
             <div className="season-stats">
               <div className="stat">
                 <span className="value">{seasonResult.points}</span>
-                <span className="label">Puntos</span>
+                <span className="label">{t('seasonEnd.pointsLabel')}</span>
               </div>
               <div className="stat">
                 <span className="value">{seasonResult.wins}</span>
-                <span className="label">Victorias</span>
+                <span className="label">{t('seasonEnd.winsLabel')}</span>
               </div>
               <div className="stat">
                 <span className="value">{seasonResult.draws}</span>
-                <span className="label">Empates</span>
+                <span className="label">{t('seasonEnd.drawsLabel')}</span>
               </div>
               <div className="stat">
                 <span className="value">{seasonResult.losses}</span>
-                <span className="label">Derrotas</span>
+                <span className="label">{t('seasonEnd.lossesLabel')}</span>
               </div>
               <div className="stat">
                 <span className={`value ${seasonResult.goalDifference >= 0 ? 'positive' : 'negative'}`}>
                   {seasonResult.goalDifference > 0 ? '+' : ''}{seasonResult.goalDifference}
                 </span>
-                <span className="label">Dif. Goles</span>
+                <span className="label">{t('seasonEnd.goalDiffLabel')}</span>
               </div>
             </div>
           </div>
@@ -1006,7 +1006,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
             let isChampion = false;
 
             if (cup.winner === state.teamId) {
-              cupResult = 'Campeón';
+              cupResult = t('seasonEnd.championLabel');
               isChampion = true;
             } else if (cup.playerEliminated) {
               // Find the round where the player lost
@@ -1022,7 +1022,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
                 }
                 if (cupResult) break;
               }
-              if (!cupResult) cupResult = 'Eliminado';
+              if (!cupResult) cupResult = t('seasonEnd.eliminatedLabel');
             } else {
               // Player still alive but cup not finished — find the furthest round reached
               let lastRoundPlayed = null;
@@ -1040,7 +1040,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
                 cupResult = lastRoundPlayed;
               } else {
                 // Didn't play any round — check if they had a bye in round 1
-                cupResult = cup.rounds[0]?.name || 'Participante';
+                cupResult = cup.rounds[0]?.name || t('seasonEnd.participantLabel');
               }
             }
 
@@ -1049,7 +1049,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
                 <Flag size={24} className="result-icon" />
                 <div className="result-info">
                   <h3>{cupIcon} {cupName}</h3>
-                  <p>{isChampion ? '🏆 ¡Campeón!' : cup.playerEliminated ? `Eliminado en ${cupResult}` : `Alcanzó: ${cupResult}`}</p>
+                  <p>{isChampion ? t('seasonEnd.cupChampion') : cup.playerEliminated ? t('seasonEnd.cupEliminatedIn', { round: cupResult }) : t('seasonEnd.cupReached', { round: cupResult })}</p>
                 </div>
               </div>
             );
@@ -1069,7 +1069,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
 
               // Won the final
               if (compState.finalResult?.winner?.teamId === state.teamId) {
-                result = 'Campeón';
+                result = t('seasonEnd.championLabel');
                 isChampion = true;
               } else {
                 // Check elimination in reverse order (from final backwards)
@@ -1077,17 +1077,17 @@ export default function SeasonEnd({ allTeams, onComplete }) {
                 if (compState.finalResult?.winner && compState.finalResult.winner.teamId !== state.teamId) {
                   const fm = compState.finalMatchup;
                   if (fm && (fm.team1?.teamId === state.teamId || fm.team2?.teamId === state.teamId)) {
-                    result = 'Final (Subcampeón)';
+                    result = t('seasonEnd.finalRunnerUp');
                   }
                 }
 
                 // Check knockout phases
                 if (!result) {
                   const phases = [
-                    { key: 'sfResults', name: 'Semifinales' },
-                    { key: 'qfResults', name: 'Cuartos de Final' },
-                    { key: 'r16Results', name: 'Octavos de Final' },
-                    { key: 'playoffResults', name: 'Playoff' }
+                    { key: 'sfResults', name: t('seasonEnd.semifinalsPhase') },
+                    { key: 'qfResults', name: t('seasonEnd.quarterFinalsPhase') },
+                    { key: 'r16Results', name: t('seasonEnd.roundOf16Phase') },
+                    { key: 'playoffResults', name: t('seasonEnd.playoffPhase') }
                   ];
                   for (const { key, name } of phases) {
                     const results = compState[key];
@@ -1114,7 +1114,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
                     // Find position in Swiss standings
                     const standing = compState.standings?.find(s => s.teamId === state.teamId);
                     const pos = standing ? compState.standings.indexOf(standing) + 1 : null;
-                    result = pos ? `Fase de Liga (${pos}º)` : 'Fase de Liga';
+                    result = pos ? t('seasonEnd.leaguePhasePos', { pos }) : t('seasonEnd.leaguePhase');
                   }
                 }
 
@@ -1126,12 +1126,12 @@ export default function SeasonEnd({ allTeams, onComplete }) {
                       .sort((a, b) => (b.points - a.points) || (b.goalDifference - a.goalDifference))
                       .findIndex(s => s.teamId === state.teamId) + 1;
                     if (compState.phase === 'league' || compState.currentMatchday < 8) {
-                      result = `Fase de Liga (${pos}º, J${compState.currentMatchday || 0}/8)`;
+                      result = t('seasonEnd.leaguePhasePosMatchday', { pos, matchday: compState.currentMatchday || 0 });
                     } else {
-                      result = `${pos}º en Fase de Liga`;
+                      result = t('seasonEnd.posInLeaguePhase', { pos });
                     }
                   } else {
-                    result = 'Participante';
+                    result = t('seasonEnd.participantLabel');
                   }
                 }
               }
@@ -1141,7 +1141,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
                   <Globe size={24} className="result-icon" />
                   <div className="result-info">
                     <h3>{icon} {compName}</h3>
-                    <p>{isChampion ? '🏆 ¡Campeón!' : result}</p>
+                    <p>{isChampion ? t('seasonEnd.cupChampion') : result}</p>
                   </div>
                 </div>
               );
@@ -1163,24 +1163,24 @@ export default function SeasonEnd({ allTeams, onComplete }) {
 
               // Won the final
               if (compState.finalResult?.winner?.teamId === state.teamId) {
-                result = 'Campeón';
+                result = t('seasonEnd.championLabel');
                 isChampion = true;
               } else {
                 // Lost in final
                 if (compState.finalResult?.winner && compState.finalResult.winner.teamId !== state.teamId) {
                   const fm = compState.finalMatchup;
                   if (fm && (fm.team1?.teamId === state.teamId || fm.team2?.teamId === state.teamId)) {
-                    result = 'Final (Subcampeón)';
+                    result = t('seasonEnd.finalRunnerUp');
                   }
                 }
 
                 // Check knockout phases
                 if (!result) {
                   const phases = [
-                    { key: 'sfResults', name: 'Semifinales' },
-                    { key: 'qfResults', name: 'Cuartos de Final' },
-                    { key: 'r16Results', name: 'Octavos de Final' },
-                    { key: 'playoffResults', name: 'Playoff' }
+                    { key: 'sfResults', name: t('seasonEnd.semifinalsPhase') },
+                    { key: 'qfResults', name: t('seasonEnd.quarterFinalsPhase') },
+                    { key: 'r16Results', name: t('seasonEnd.roundOf16Phase') },
+                    { key: 'playoffResults', name: t('seasonEnd.playoffPhase') }
                   ];
                   for (const { key, name } of phases) {
                     const results = compState[key];
@@ -1205,7 +1205,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
                   if (q?.eliminated?.some(t => t.teamId === state.teamId)) {
                     const standing = compState.standings?.find(s => s.teamId === state.teamId);
                     const pos = standing ? compState.standings.indexOf(standing) + 1 : null;
-                    result = pos ? `Fase de Liga (${pos}º)` : 'Fase de Liga';
+                    result = pos ? t('seasonEnd.leaguePhasePos', { pos }) : t('seasonEnd.leaguePhase');
                   }
                 }
 
@@ -1217,12 +1217,12 @@ export default function SeasonEnd({ allTeams, onComplete }) {
                       .sort((a, b) => (b.points - a.points) || (b.goalDifference - a.goalDifference))
                       .findIndex(s => s.teamId === state.teamId) + 1;
                     if (compState.phase === 'league' || compState.currentMatchday < 8) {
-                      result = `Fase de Liga (${pos}º, J${compState.currentMatchday || 0}/8)`;
+                      result = t('seasonEnd.leaguePhasePosMatchday', { pos, matchday: compState.currentMatchday || 0 });
                     } else {
-                      result = `${pos}º en Fase de Liga`;
+                      result = t('seasonEnd.posInLeaguePhase', { pos });
                     }
                   } else {
-                    result = 'Participante';
+                    result = t('seasonEnd.participantLabel');
                   }
                 }
               }
@@ -1232,7 +1232,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
                   <Globe size={24} className="result-icon" />
                   <div className="result-info">
                     <h3>{icon} {compName}</h3>
-                    <p>{isChampion ? '🏆 ¡Campeón!' : result}</p>
+                    <p>{isChampion ? t('seasonEnd.cupChampion') : result}</p>
                   </div>
                 </div>
               );
@@ -1245,8 +1245,8 @@ export default function SeasonEnd({ allTeams, onComplete }) {
             <div className="european-qualification">
               <Star size={24} className="star-icon" />
               <div className="qualification-info">
-                <h3>¡Clasificado para {competitionName}!</h3>
-                <p>Bonus de clasificación: <strong>{formatMoney(europeanBonus)}</strong></p>
+                <h3>{t('seasonEnd.qualifiedForComp', { competition: competitionName })}</h3>
+                <p>{t('seasonEnd.qualificationBonusLabel')}: <strong>{formatMoney(europeanBonus)}</strong></p>
               </div>
             </div>
           )}
@@ -1268,9 +1268,9 @@ export default function SeasonEnd({ allTeams, onComplete }) {
                 <div className="european-qualification" style={{ borderColor: 'rgba(46,125,50,0.3)' }}>
                   <Globe size={24} className="star-icon" style={{ color: '#66bb6a' }} />
                   <div className="qualification-info">
-                    <h3>Premios {euroCompName}</h3>
-                    <p>Ingresos por competición europea: <strong>{formatMoney(totalEuropeanPrize)}</strong></p>
-                    <p style={{ fontSize: '0.8em', opacity: 0.7, marginTop: 4 }}>💡 Ya cobrados durante la temporada</p>
+                    <h3>{t('seasonEnd.prizesComp', { comp: euroCompName })}</h3>
+                    <p>{t('seasonEnd.europeanCompIncome')}: <strong>{formatMoney(totalEuropeanPrize)}</strong></p>
+                    <p style={{ fontSize: '0.8em', opacity: 0.7, marginTop: 4 }}>{t('seasonEnd.alreadyCollected')}</p>
                   </div>
                 </div>
               );
@@ -1295,9 +1295,9 @@ export default function SeasonEnd({ allTeams, onComplete }) {
                 <div className="european-qualification" style={{ borderColor: 'rgba(46,125,50,0.3)' }}>
                   <Globe size={24} className="star-icon" style={{ color: '#66bb6a' }} />
                   <div className="qualification-info">
-                    <h3>Premios {saCompName}</h3>
-                    <p>Ingresos por competición sudamericana: <strong>{formatMoney(totalSAPrize)}</strong></p>
-                    <p style={{ fontSize: '0.8em', opacity: 0.7, marginTop: 4 }}>💡 Ya cobrados durante la temporada</p>
+                    <h3>{t('seasonEnd.prizesComp', { comp: saCompName })}</h3>
+                    <p>{t('seasonEnd.saCompIncome')}: <strong>{formatMoney(totalSAPrize)}</strong></p>
+                    <p style={{ fontSize: '0.8em', opacity: 0.7, marginTop: 4 }}>{t('seasonEnd.alreadyCollected')}</p>
                   </div>
                 </div>
               );
@@ -1309,32 +1309,32 @@ export default function SeasonEnd({ allTeams, onComplete }) {
           {(apclFinalResult || resolvedAPCLFinal) && (() => {
             const finalData = apclFinalResult || resolvedAPCLFinal;
             const playerWon = finalData.winner === state.teamId;
-            const winReasonText = finalData.winReason === 'aggregate' ? 'por resultado global'
-              : finalData.winReason === 'awayGoals' ? 'por goles de visitante'
-              : finalData.winReason === 'clausuraAdvantage' ? 'por ventaja deportiva'
-              : finalData.winReason === 'sameChampion' ? '(campeón de ambos torneos)' : '';
+            const winReasonText = finalData.winReason === 'aggregate' ? t('seasonEnd.byGlobalResult')
+              : finalData.winReason === 'awayGoals' ? t('seasonEnd.byAwayGoalsResult')
+              : finalData.winReason === 'clausuraAdvantage' ? t('seasonEnd.bySportingAdvantage')
+              : finalData.winReason === 'sameChampion' ? t('seasonEnd.bothTournamentsChampion') : '';
 
             return (
               <div className={`competition-result ${playerWon ? 'competition-result--champion' : ''}`}>
                 <Trophy size={24} className="result-icon" />
                 <div className="result-info">
-                  <h3>🏆 Final {LEAGUE_CONFIG[playerLeagueId]?.name || 'Liga'}</h3>
+                  <h3>🏆 {t('seasonEnd.apclFinalLabel', { league: LEAGUE_CONFIG[playerLeagueId]?.name || t('seasonEnd.league') })}</h3>
                   {finalData.hadFinal ? (
                     <>
                       <p>
-                        {finalData.aperturaChampionName} <small>(Apertura)</small> vs {finalData.clausuraChampionName} <small>(Clausura)</small>
+                        {finalData.aperturaChampionName} <small>({t('seasonEnd.apertura')})</small> vs {finalData.clausuraChampionName} <small>({t('seasonEnd.clausura')})</small>
                       </p>
                       <p>
-                        Ida: {finalData.leg1?.homeScore}-{finalData.leg1?.awayScore} | Vuelta: {finalData.leg2?.homeScore}-{finalData.leg2?.awayScore}
+                        {t('seasonEnd.legScore', { home1: finalData.leg1?.homeScore, away1: finalData.leg1?.awayScore, home2: finalData.leg2?.homeScore, away2: finalData.leg2?.awayScore })}
                       </p>
                       <p>
-                        <strong>Campeón: {finalData.winnerName}</strong> {winReasonText}
+                        <strong>{t('seasonEnd.championColon', { name: finalData.winnerName })}</strong> {winReasonText}
                       </p>
                     </>
                   ) : (
-                    <p><strong>{finalData.winnerName}</strong> gana Apertura y Clausura — campeón directo</p>
+                    <p>{t('seasonEnd.winsAperturaAndClausura', { name: finalData.winnerName })}</p>
                   )}
-                  {playerWon && <p>🏆 ¡Tu equipo es CAMPEÓN!</p>}
+                  {playerWon && <p>{t('seasonEnd.yourTeamIsChampion')}</p>}
                 </div>
               </div>
             );
@@ -1345,8 +1345,8 @@ export default function SeasonEnd({ allTeams, onComplete }) {
             <div className="european-qualification promotion-celebration">
               <Trophy size={24} className="star-icon" />
               <div className="qualification-info">
-                <h3><Sparkles size={16} /> ¡ASCENSO POR PLAYOFF!</h3>
-                <p>{state.team?.name} jugará en La Liga la próxima temporada</p>
+                <h3><Sparkles size={16} /> {t('seasonEnd.playoffPromotionTitle')}</h3>
+                <p>{t('seasonEnd.teamPlaysInLeague', { team: state.team?.name })}</p>
               </div>
             </div>
           )}
@@ -1354,13 +1354,13 @@ export default function SeasonEnd({ allTeams, onComplete }) {
           {/* Resultados del playoff de Segunda (solo si el jugador está en Segunda pero no en el playoff) */}
           {playoffBracket && playoffBracket.phase === 'completed' && !playerInPlayoff && playerLeagueId === 'segunda' && (
             <div className="playoff-summary-box">
-              <h3><Trophy size={14} /> Playoff de Ascenso (Segunda)</h3>
+              <h3><Trophy size={14} /> {t('seasonEnd.playoffDeAscensoSegunda')}</h3>
               <div className="playoff-summary-results">
                 {playoffBracket.semifinals.map((semi, idx) => (
                   <p key={idx}>{getPlayoffMatchSummary(semi)}</p>
                 ))}
                 <p className="final-result"><strong>{getPlayoffMatchSummary(playoffBracket.final)}</strong></p>
-                <p className="playoff-winner">Asciende: <strong>{playoffBracket.final.result?.winnerName}</strong></p>
+                <p className="playoff-winner">{t('seasonEnd.promoted')}: <strong>{playoffBracket.final.result?.winnerName}</strong></p>
               </div>
             </div>
           )}
@@ -1370,15 +1370,15 @@ export default function SeasonEnd({ allTeams, onComplete }) {
             <div className="relegation-warning">
               <TrendingDown size={24} />
               <div>
-                <h3>Descenso de categoría</h3>
-                <p>El equipo ha descendido a la división inferior</p>
+                <h3>{t('seasonEnd.relegationTitle')}</h3>
+                <p>{t('seasonEnd.relegationDesc')}</p>
               </div>
             </div>
           )}
           
           {/* Objetivos */}
           <div className="objectives-summary">
-            <h3><Target size={18} /> Objetivos de Temporada</h3>
+            <h3><Target size={18} /> {t('seasonEnd.seasonObjectivesTitle')}</h3>
             
             <div className="objectives-list">
               {objectiveRewards.objectiveResults.map((obj, idx) => (
@@ -1397,7 +1397,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
             </div>
             
             <div className="objectives-total">
-              <span>Balance de objetivos:</span>
+              <span>{t('seasonEnd.objectiveBalanceLabel')}</span>
               <span className={objectiveRewards.netResult >= 0 ? 'positive' : 'negative'}>
                 {objectiveRewards.netResult >= 0 ? '+' : ''}{formatMoney(objectiveRewards.netResult)}
               </span>
@@ -1407,29 +1407,29 @@ export default function SeasonEnd({ allTeams, onComplete }) {
           {/* Total */}
           <div className="season-total">
             <div className="total-row">
-              <span>Objetivos</span>
+              <span>{t('seasonEnd.objectivesFinance')}</span>
               <span className={objectiveRewards.netResult >= 0 ? 'positive' : 'negative'}>
                 {objectiveRewards.netResult >= 0 ? '+' : ''}{formatMoney(objectiveRewards.netResult)}
               </span>
             </div>
             {europeanBonus > 0 && (
               <div className="total-row">
-                <span>Bonus europeo</span>
+                <span>{t('seasonEnd.europeanBonusLabel')}</span>
                 <span className="positive">+{formatMoney(europeanBonus)}</span>
               </div>
             )}
             {(state.stadium?.accumulatedTicketIncome ?? 0) > 0 && (
               <div className="total-row">
-                <span><Ticket size={12} /> Entradas (acumulado)</span>
+                <span><Ticket size={12} /> {t('seasonEnd.ticketAccumulated')}</span>
                 <span className="positive">+{formatMoney(state.stadium?.accumulatedTicketIncome ?? 0)}</span>
               </div>
             )}
             <div className="total-row">
-              <span>Masa salarial</span>
+              <span>{t('seasonEnd.wageBill')}</span>
               <span className="negative">-{formatMoney(totalSalaryCost)}</span>
             </div>
             <div className="total-row total-row--final">
-              <span>Balance final</span>
+              <span>{t('seasonEnd.finalBalance')}</span>
               <span className={(objectiveRewards.netResult + europeanBonus + (state.stadium?.accumulatedTicketIncome ?? 0) - totalSalaryCost) >= 0 ? 'positive' : 'negative'}>
                 {(objectiveRewards.netResult + europeanBonus + (state.stadium?.accumulatedTicketIncome ?? 0) - totalSalaryCost) >= 0 ? '+' : ''}
                 {formatMoney(objectiveRewards.netResult + europeanBonus + (state.stadium?.accumulatedTicketIncome ?? 0) - totalSalaryCost)}
@@ -1438,7 +1438,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
           </div>
           
           <button className="btn-continue" onClick={() => setPhase('preseason')}>
-            Continuar a Pretemporada
+            {t('seasonEnd.continueToPreseason')}
             <ChevronRight size={20} />
           </button>
         </div>
@@ -1453,14 +1453,13 @@ export default function SeasonEnd({ allTeams, onComplete }) {
         <div className="modal-header">
           <Calendar size={32} className="header-icon" />
           <div>
-            <h1>Pretemporada {state.currentSeason + 1}</h1>
-            <p>Elige tu plan de preparación</p>
+            <h1>{t('seasonEnd.preseasonTitle', { season: state.currentSeason + 1 })}</h1>
+            <p>{t('seasonEnd.choosePlan')}</p>
           </div>
         </div>
         
         <p className="preseason-intro">
-          Selecciona uno de los siguientes paquetes de amistosos. 
-          El último partido siempre será en casa como presentación del equipo.
+          {t('seasonEnd.preseasonIntro')}
         </p>
         
         <div className="preseason-options">
@@ -1481,15 +1480,15 @@ export default function SeasonEnd({ allTeams, onComplete }) {
               
               <div className="card-details">
                 <span className={`difficulty difficulty--${option.difficulty}`}>
-                  Dificultad: {option.difficulty === 'high' ? 'Alta' : option.difficulty === 'medium' ? 'Media' : 'Baja'}
+                  {t('seasonEnd.difficultyLabel')}: {option.difficulty === 'high' ? t('seasonEnd.difficultyHigh') : option.difficulty === 'medium' ? t('seasonEnd.difficultyMedium') : t('seasonEnd.difficultyLow')}
                 </span>
                 <span className="earnings">
-                  Ingresos potenciales: {option.potentialEarnings}
+                  {t('seasonEnd.potentialEarnings')}: {option.potentialEarnings}
                 </span>
               </div>
               
               <div className="matches-preview">
-                <h4>Rivales:</h4>
+                <h4>{t('seasonEnd.rivalsLabel')}</h4>
                 <ul>
                   {option.matches.map((match, idx) => (
                     <li key={idx}>
@@ -1500,7 +1499,7 @@ export default function SeasonEnd({ allTeams, onComplete }) {
                       <span className="opponent-ovr">{match.opponent.reputation} OVR</span>
                       {match.isPresentationMatch && (
                         <span className="presentation-badge">
-                          <Sparkles size={12} /> Presentación
+                          <Sparkles size={12} /> {t('seasonEnd.presentationBadge')}
                         </span>
                       )}
                     </li>
@@ -1517,14 +1516,14 @@ export default function SeasonEnd({ allTeams, onComplete }) {
             className="btn-back" 
             onClick={() => setPhase('summary')}
           >
-            Volver
+            {t('seasonEnd.backBtn')}
           </button>
           <button 
             className="btn-confirm"
             onClick={handleConfirm}
             disabled={!selectedPreseason}
           >
-            Comenzar Pretemporada
+            {t('seasonEnd.startPreseason')}
             <ChevronRight size={20} />
           </button>
         </div>

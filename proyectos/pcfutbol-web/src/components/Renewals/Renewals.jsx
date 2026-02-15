@@ -24,7 +24,7 @@ export default function Renewals() {
   // Players needing renewal (contract <= 1 year or unhappy)
   const playersNeedingAttention = useMemo(() => {
     return players.map(player => {
-      const contractYears = player.personality?.contractYears || 2;
+      const contractYears = player.contractYears ?? 2;
       const happiness = player.personality?.happiness || 50;
       const wantsToLeave = player.personality?.wantsToLeave || false;
       const minutesPlayed = player.personality?.minutesPlayed || 50;

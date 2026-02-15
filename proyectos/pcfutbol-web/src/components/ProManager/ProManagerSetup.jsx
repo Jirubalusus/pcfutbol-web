@@ -204,12 +204,12 @@ export default function ProManagerSetup() {
           const teams = config.getTeams ? config.getTeams() : ALL_LEAGUE_GETTERS[lid]?.();
           if (!teams?.length) continue;
           bootstrapStandings[lid] = teams.map((t, i) => ({
-            teamId: t.id, teamName: t.name, points: 100 - i,
-            reputation: t.reputation || 3, leagueId: lid
+            teamId: t.id, teamName: t.name, shortName: t.shortName || '',
+            reputation: t.reputation || 70, overall: t.overall || 70, leaguePosition: i + 1
           }));
         }
         const qualified = qualifyTeamsForSouthAmerica(bootstrapStandings);
-        const saComps = initializeSACompetitions(qualified, team.id, leagueId);
+        const saComps = initializeSACompetitions(qualified);
         if (saComps) dispatch({ type: 'INIT_SA_COMPETITIONS', payload: saComps });
       } catch (e) { console.warn('SA comps init error:', e); }
     } else {
@@ -221,22 +221,22 @@ export default function ProManagerSetup() {
           const teams = config.getTeams ? config.getTeams() : ALL_LEAGUE_GETTERS[lid]?.();
           if (!teams?.length) continue;
           bootstrapStandings[lid] = teams.map((t, i) => ({
-            teamId: t.id, teamName: t.name, points: 100 - i,
-            reputation: t.reputation || 3, leagueId: lid
+            teamId: t.id, teamName: t.name, shortName: t.shortName || '',
+            reputation: t.reputation || 70, overall: t.overall || 70, leaguePosition: i + 1
           }));
         }
         const qualified = qualifyTeamsForEurope(bootstrapStandings);
-        const euroComps = initializeEuropeanCompetitions(qualified, team.id, leagueId);
+        const euroComps = initializeEuropeanCompetitions(qualified);
         if (euroComps) dispatch({ type: 'INIT_EUROPEAN_COMPETITIONS', payload: euroComps });
       } catch (e) { console.warn('Euro comps init error:', e); }
     }
 
     // Cup
     try {
-      const cupTeams = getCupTeams(leagueId, null, leagueTeams);
-      if (cupTeams?.length >= 4) {
-        const bracket = generateCupBracket(cupTeams, team.id);
-        dispatch({ type: 'INIT_CUP', payload: bracket });
+      const cupData = getCupTeams(leagueId, team, {}, leagueTeams.map((t, i) => ({ teamId: t.id, teamName: t.name, leaguePosition: i + 1 })));
+      if (cupData?.teams?.length >= 4) {
+        const bracket = generateCupBracket(cupData.teams, team.id);
+        dispatch({ type: 'INIT_CUP_COMPETITION', payload: bracket });
       }
     } catch { /* skip */ }
   };

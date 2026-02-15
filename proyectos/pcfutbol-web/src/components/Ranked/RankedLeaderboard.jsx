@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../context/AuthContext';
 import { useGame } from '../../context/GameContext';
 import { getLeaderboard } from '../../firebase/rankedService';
@@ -7,6 +8,7 @@ import { Trophy, ArrowLeft, Crown, Medal } from 'lucide-react';
 import './RankedLeaderboard.scss';
 
 export default function RankedLeaderboard() {
+  const { t } = useTranslation();
   const { user } = useAuth();
   const { dispatch } = useGame();
   const [players, setPlayers] = useState([]);
@@ -16,7 +18,7 @@ export default function RankedLeaderboard() {
   useEffect(() => {
     getLeaderboard(100)
       .then(setPlayers)
-      .catch((e) => { console.error(e); setError('Error al cargar la clasificación'); })
+      .catch((e) => { console.error(e); setError(t('ranked.leaderboardError')); })
       .finally(() => setLoading(false));
   }, []);
 
@@ -26,15 +28,15 @@ export default function RankedLeaderboard() {
         <button className="back-btn" onClick={() => dispatch({ type: 'SET_SCREEN', payload: 'ranked_lobby' })}>
           <ArrowLeft size={20} />
         </button>
-        <h1><Trophy size={22} /> Clasificación Global</h1>
+        <h1><Trophy size={22} /> {t('ranked.globalRanking')}</h1>
       </div>
 
       {loading ? (
-        <div className="ranked-leaderboard__loading">Cargando...</div>
+        <div className="ranked-leaderboard__loading">{t('common.loading')}</div>
       ) : error ? (
         <div className="ranked-leaderboard__empty">{error}</div>
       ) : players.length === 0 ? (
-        <div className="ranked-leaderboard__empty">No hay jugadores aún.</div>
+        <div className="ranked-leaderboard__empty">{t('ranked.noPlayersYet')}</div>
       ) : (
         <div className="ranked-leaderboard__list">
           {players.map((p, i) => {

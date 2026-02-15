@@ -463,10 +463,14 @@ export async function attemptRankedTransfer(matchId, uid, targetPlayerId, target
   if (!leagueTeams) return { success: false, reason: 'Error cargando equipos' };
   
   const myTeamId = data[playerKey].team;
-  const myTeam = leagueTeams.find(t => t.id === myTeamId);
-  const sellerTeam = leagueTeams.find(t => t.id === targetTeamId);
+  const myTeamOrig = leagueTeams.find(t => t.id === myTeamId);
+  const sellerTeamOrig = leagueTeams.find(t => t.id === targetTeamId);
   
-  if (!myTeam || !sellerTeam) return { success: false, reason: 'Equipo no encontrado' };
+  if (!myTeamOrig || !sellerTeamOrig) return { success: false, reason: 'Equipo no encontrado' };
+  
+  // Deep-clone to avoid corrupting shared LEAGUE_TEAMS_MAP data
+  const myTeam = JSON.parse(JSON.stringify(myTeamOrig));
+  const sellerTeam = JSON.parse(JSON.stringify(sellerTeamOrig));
   
   const player = sellerTeam.players?.find(p => p.name === targetPlayerId || p.id === targetPlayerId);
   if (!player) return { success: false, reason: 'Jugador no encontrado' };
@@ -476,7 +480,7 @@ export async function attemptRankedTransfer(matchId, uid, targetPlayerId, target
   const result = attemptTransfer(myTeam, sellerTeam, player, leagueTeams);
   
   if (result.success) {
-    // Execute the transfer in-memory (both players see it via Firestore)
+    // Execute the transfer on cloned data (original LEAGUE_TEAMS_MAP stays clean)
     executeTransfer(myTeam, sellerTeam, player);
     
     // Record in Firestore
@@ -538,9 +542,14 @@ export async function advancePhase(matchId) {
   if ((currentPhase === 'round1' || currentPhase === 'round2') && nextPhase.startsWith('simulating')) {
     const roundKey = currentPhase === 'round1' ? 'round1Data' : 'round2Data';
     const roundData = data[roundKey];
+    const deadlinePassed = data.phaseDeadline && data.phaseDeadline.toDate() <= new Date();
     if (!roundData?.player1?.ready || !roundData?.player2?.ready) {
-      console.log(`⏳ advancePhase: waiting for both players (${roundKey})`, roundData?.player1?.ready, roundData?.player2?.ready);
-      return; // Wait for both
+      if (!deadlinePassed) {
+        console.log(`⏳ advancePhase: waiting for both players (${roundKey})`, roundData?.player1?.ready, roundData?.player2?.ready);
+        return; // Wait for both — deadline not reached yet
+      }
+      // Deadline passed: force-advance with default configs for non-ready players
+      console.log(`⏰ advancePhase: deadline passed, force-advancing (${roundKey})`);
     }
   }
 
@@ -659,14 +668,13 @@ export async function advancePhase(matchId) {
     return;
   }
   
-  // If results, update player stats
+  // If results, update player stats using pre-calculated LP changes
   if (nextPhase === 'results' && update.results) {
-    const hasEuropeanAdvantage = detectEuropeanAdvantage(data, update.results.simulation);
     await updatePlayerStats(
       data.player1.uid, data.player2.uid,
       update.winner,
-      data.player1.totalLP || 0, data.player2.totalLP || 0,
-      hasEuropeanAdvantage
+      update.results.player1LPChange,
+      update.results.player2LPChange
     );
   }
 }
@@ -848,63 +856,35 @@ function detectEuropeanAdvantage(matchData, simulation) {
 // ============================================================
 // PLAYER STATS UPDATE (with LP fairness)
 // ============================================================
-async function updatePlayerStats(uid1, uid2, winnerUid, lp1, lp2, europeanAdvantage) {
+async function updatePlayerStats(uid1, uid2, winnerUid, p1LPChange, p2LPChange) {
   const isDraw = !winnerUid;
-  
-  // Base LP change from rank difference
-  let baseLPChange = calculateLPChange(
-    winnerUid === uid1 ? lp1 : lp2,
-    winnerUid === uid1 ? lp2 : lp1,
-    isDraw
-  );
-  
-  // Adjust LP based on European competition fairness
-  // If winner had European advantage: less LP gained, more lost
-  // If winner had disadvantage: more LP gained, less lost
-  const advantage = europeanAdvantage || { player1Advantage: 0, player2Advantage: 0 };
   
   const p1Ref = doc(db, PLAYERS_COL, uid1);
   const p2Ref = doc(db, PLAYERS_COL, uid2);
   
   if (isDraw) {
     await Promise.all([
-      updateDoc(p1Ref, { draws: increment(1), totalLP: increment(5), updatedAt: serverTimestamp() }),
-      updateDoc(p2Ref, { draws: increment(1), totalLP: increment(5), updatedAt: serverTimestamp() }),
+      updateDoc(p1Ref, { draws: increment(1), totalLP: increment(p1LPChange || 5), updatedAt: serverTimestamp() }),
+      updateDoc(p2Ref, { draws: increment(1), totalLP: increment(p2LPChange || 5), updatedAt: serverTimestamp() }),
     ]);
     return;
   }
   
-  // Winner LP: base ± advantage adjustment
   const winnerIsP1 = winnerUid === uid1;
-  const winnerAdvantage = winnerIsP1 ? advantage.player1Advantage : advantage.player2Advantage;
-  
-  // If winner had advantage (more European comps): reduce gain
-  // If winner had disadvantage: increase gain
-  let winnerLP = baseLPChange;
-  let loserLP = Math.ceil(baseLPChange * 0.7); // Losers lose ~70% of winner gain
-  
-  if (winnerAdvantage > 0) {
-    // Winner had more European comps — reduce reward
-    winnerLP = Math.max(8, baseLPChange - winnerAdvantage * 4);
-    loserLP = Math.max(5, loserLP - winnerAdvantage * 3);
-  } else if (winnerAdvantage < 0) {
-    // Winner had fewer European comps — increase reward
-    winnerLP = Math.min(45, baseLPChange + Math.abs(winnerAdvantage) * 5);
-    loserLP = Math.max(3, loserLP - Math.abs(winnerAdvantage) * 2);
-  }
-  
-  // BUG 14 fix: use transaction to ensure LP never goes negative
   const winnerRef = winnerIsP1 ? p1Ref : p2Ref;
   const loserRef = winnerIsP1 ? p2Ref : p1Ref;
+  const winnerLP = winnerIsP1 ? p1LPChange : p2LPChange;
+  const loserLP = winnerIsP1 ? p2LPChange : p1LPChange;
   
   await runTransaction(db, async (transaction) => {
     const loserSnap = await transaction.get(loserRef);
     const loserData = loserSnap.exists() ? loserSnap.data() : {};
     const currentLoserLP = loserData.totalLP || 0;
-    const lpToSubtract = Math.min(loserLP, currentLoserLP); // Never go below 0
+    // loserLP is already negative; clamp so LP doesn't go below 0
+    const lpChange = Math.max(loserLP, -currentLoserLP);
     
     transaction.update(winnerRef, { wins: increment(1), totalLP: increment(winnerLP), updatedAt: serverTimestamp() });
-    transaction.update(loserRef, { losses: increment(1), totalLP: increment(-lpToSubtract), updatedAt: serverTimestamp() });
+    transaction.update(loserRef, { losses: increment(1), totalLP: increment(lpChange), updatedAt: serverTimestamp() });
   });
 }
 
@@ -937,27 +917,37 @@ export async function checkDisconnect(matchId, uid) {
 
 export async function claimDisconnectWin(matchId, uid) {
   const matchRef = doc(db, MATCHES_COL, matchId);
-  const snap = await getDoc(matchRef);
-  if (!snap.exists()) return;
-  const data = snap.data();
-  if (data.phase === 'results') return;
-  if (data.winner) return; // BUG 7 fix: don't overwrite existing winner
+  let data;
+  try {
+    data = await runTransaction(db, async (transaction) => {
+      const snap = await transaction.get(matchRef);
+      if (!snap.exists()) return null;
+      const d = snap.data();
+      if (d.phase === 'results' || d.winner) return null; // Already resolved
+      
+      transaction.update(matchRef, {
+        phase: 'results',
+        winner: uid,
+        results: {
+          disconnection: true,
+          player1Points: 0,
+          player2Points: 0,
+          player1LPChange: d.player1.uid === uid ? 20 : -15,
+          player2LPChange: d.player2.uid === uid ? 20 : -15,
+        },
+        updatedAt: serverTimestamp(),
+      });
+      return d;
+    });
+  } catch (e) {
+    console.error('claimDisconnectWin transaction error:', e);
+    return;
+  }
+  if (!data) return;
   
-  await updateDoc(matchRef, {
-    phase: 'results',
-    winner: uid,
-    results: {
-      disconnection: true,
-      player1Points: 0,
-      player2Points: 0,
-      player1LPChange: data.player1.uid === uid ? 20 : -15,
-      player2LPChange: data.player2.uid === uid ? 20 : -15,
-    },
-    updatedAt: serverTimestamp(),
-  });
-  
-  const loserUid = data.player1.uid === uid ? data.player2.uid : data.player1.uid;
-  await updatePlayerStats(uid, loserUid, uid, data.player1.totalLP || 0, data.player2.totalLP || 0, null);
+  const p1LP = data.player1.uid === uid ? 20 : -15;
+  const p2LP = data.player2.uid === uid ? 20 : -15;
+  await updatePlayerStats(data.player1.uid, data.player2.uid, uid, p1LP, p2LP);
 }
 
 // ── Leaderboard ──

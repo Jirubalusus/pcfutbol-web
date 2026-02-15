@@ -387,8 +387,8 @@ export default function MainMenu() {
                   <Swords size={22} />
                 </span>
                 <div className="text">
-                  <span className="label">Ranked 1v1</span>
-                  <span className="sublabel">Duelo de temporada competitivo</span>
+                  <span className="label">{t('mainMenu.ranked')}</span>
+                  <span className="sublabel">{t('mainMenu.rankedSubtitle')}</span>
                 </div>
                 <ChevronRight size={18} className="chevron" />
               </div>

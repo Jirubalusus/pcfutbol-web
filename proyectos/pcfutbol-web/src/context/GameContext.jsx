@@ -540,7 +540,7 @@ function gameReducer(state, action) {
         currentScreen: 'office',
         settings: state.settings,
         managerName: state.managerName,
-        playerForm: Object.fromEntries((team.players || []).map(p => [p.name, { form: 70, arrows: 0 }])),
+        playerForm: generateInitialForm(team.players || []),
         matchTracker: Object.fromEntries((team.players || []).map(p => [p.name, { consecutivePlayed: 0, weeksSincePlay: 3 }])),
       };
     }
@@ -686,16 +686,16 @@ function gameReducer(state, action) {
         }
       });
 
-      // Record matches played for lineup players
-      const lineup = state.convocados || [];
-      lineup.forEach(name => {
+      // Record matches played for actual starters (11 lineup), not all convocados
+      const starters = Object.values(state.lineup || {}).filter(p => p).map(p => typeof p === 'string' ? p : p.name);
+      (starters.length > 0 ? starters : (state.convocados || [])).forEach(name => {
         if (!currentStats[name]) currentStats[name] = { goals: 0, assists: 0, cleanSheets: 0, matchesPlayed: 0, yellowCards: 0, redCards: 0, motm: 0 };
         currentStats[name].matchesPlayed++;
       });
 
       // Clean sheets for GK
       if (cleanSheet) {
-        const gk = state.team?.players?.find(p => p.position === 'GK' && lineup.includes(p.name));
+        const gk = state.team?.players?.find(p => p.position === 'GK' && starters.includes(p.name));
         if (gk && currentStats[gk.name]) {
           currentStats[gk.name].cleanSheets++;
         }
@@ -871,7 +871,7 @@ function gameReducer(state, action) {
         },
         // Limpiar alineación y convocados — asegurar 11 siempre
         lineup: ensureFullLineup(cleanedLineup, finalPlayers, state.formation),
-        convocados: (state.convocados || []).filter(name => playerNames.has(name)),
+        convocados: (state.convocados || []).filter(name => finalPlayerNames.has(name)),
         // Cobrar ingresos acumulados de taquilla + abonados al final de temporada
         money: seasonEndMoney,
         // Despido por bancarrota si el dinero es negativo tras temporada
@@ -3393,7 +3393,8 @@ function gameReducer(state, action) {
 
         if (newProgress >= 1.0) {
           const pointsToAdd = Math.floor(newProgress);
-          newOverall = Math.min(99, player.overall + pointsToAdd);
+          const maxOvr = player.potential ? Math.min(99, player.potential + 2) : 99;
+          newOverall = Math.min(maxOvr, player.overall + pointsToAdd);
           remainingProgress = newProgress - pointsToAdd;
         }
 

@@ -23,17 +23,26 @@ service cloud.firestore {
       allow write: if false;
     }
 
-    // Game saves: authenticated users can manage their own saves
+    // Game saves: authenticated users can manage their OWN saves
     match /saves/{saveId} {
-      allow read, write: if request.auth != null;
+      allow read, write: if request.auth != null && (
+        resource == null || resource.data.userId == request.auth.uid
+      );
+      allow create: if request.auth != null;
     }
     match /save_slots/{docId} {
-      allow read, write: if request.auth != null;
+      allow read, write: if request.auth != null && (
+        resource == null || resource.data.userId == request.auth.uid
+      );
+      allow create: if request.auth != null;
     }
 
-    // ProManager saves (document ID = userId + "_promanager")
+    // ProManager saves (document ID = uid_promanager)
     match /promanager_saves/{saveId} {
-      allow read, write: if request.auth != null;
+      allow read, write: if request.auth != null && (
+        resource == null || resource.data.userId == request.auth.uid
+      );
+      allow create: if request.auth != null;
     }
 
     // User profiles
@@ -53,30 +62,32 @@ service cloud.firestore {
     match /contrarreloj_ranking/{docId} {
       allow read: if request.auth != null;
       allow create: if request.auth != null;
-      allow delete: if request.auth != null;
+      allow delete: if request.auth != null && resource.data.userId == request.auth.uid;
     }
 
     // === RANKED 1v1 ===
 
-    // Ranked queue
+    // Ranked queue — only own entry
     match /ranked_queue/{userId} {
       allow read: if request.auth != null;
-      allow write: if request.auth != null;
-      allow delete: if request.auth != null;
+      allow write, delete: if request.auth != null && request.auth.uid == userId;
     }
 
-    // Ranked matches
+    // Ranked matches — only participants can update
     match /ranked_matches/{matchId} {
       allow read: if request.auth != null;
       allow create: if request.auth != null;
-      allow update: if request.auth != null;
+      allow update: if request.auth != null && (
+        resource.data.player1.uid == request.auth.uid ||
+        resource.data.player2.uid == request.auth.uid
+      );
     }
 
-    // Ranked players
+    // Ranked players — only own stats
     match /ranked_players/{userId} {
       allow read: if true;
       allow create: if request.auth != null;
-      allow update: if request.auth != null;
+      allow update: if request.auth != null && request.auth.uid == userId;
     }
 
     // === EDITIONS ===

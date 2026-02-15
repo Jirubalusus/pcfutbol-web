@@ -409,7 +409,7 @@ export default function Office() {
     
     for (let i = 0; i < effectiveNumWeeks; i++) {
       // Comprobar si la temporada ha terminado
-      if (currentWeek > maxWeek || isSeasonOver(currentFixtures, playerLeagueId)) {
+      if (currentWeek > maxWeek || isSeasonOver(currentFixtures, playerLeagueId) || state.pendingAperturaClausuraFinal) {
         seasonEnded = true;
         break;
       }

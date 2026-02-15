@@ -206,7 +206,7 @@ export default function ProManagerSeasonEnd() {
       const cupTeams = getCupTeams(leagueId, null, leagueTeams);
       if (cupTeams?.length >= 4) {
         const bracket = generateCupBracket(cupTeams, team.id);
-        dispatch({ type: 'INIT_CUP', payload: bracket });
+        dispatch({ type: 'INIT_CUP_COMPETITION', payload: bracket });
       }
     } catch { /* skip */ }
   };
