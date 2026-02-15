@@ -61,6 +61,55 @@ function formatMoney(amount) {
   return `€${(amount / 1000).toFixed(0)}K`;
 }
 
+/**
+ * Shared helper: initialize continental competitions for next season
+ */
+function _initContinentalComps(dispatch, newPlayerLeagueId, newSeasonData, state, allTeamsFlat, t) {
+  const isInSA = isSouthAmericanLeague(newPlayerLeagueId);
+  try {
+    const leagueStandings = {};
+    const allTeamsMap = {};
+    const playerTable = newSeasonData.playerLeague?.table || [];
+    if (playerTable.length > 0) leagueStandings[newPlayerLeagueId] = playerTable;
+
+    const otherLeagues = newSeasonData.otherLeagues || {};
+    for (const [lid, ld] of Object.entries(otherLeagues)) {
+      if (ld?.table?.length > 0 && lid !== newPlayerLeagueId) leagueStandings[lid] = ld.table;
+    }
+    allTeamsFlat.forEach(tt => { allTeamsMap[tt.id || tt.teamId] = tt; });
+
+    if (isInSA) {
+      const qualified = qualifyTeamsForSouthAmerica(leagueStandings, allTeamsMap);
+      const usedIds = new Set();
+      Object.values(qualified).forEach(teams => teams.forEach(tt => usedIds.add(tt.teamId)));
+      const remaining = allTeamsFlat.filter(tt => !usedIds.has(tt.id || tt.teamId) && isSouthAmericanLeague(tt.league || tt.leagueId || '')).sort((a, b) => (b.reputation || 0) - (a.reputation || 0));
+      for (const compId of ['copaLibertadores', 'copaSudamericana']) {
+        const needed = 32 - qualified[compId].length;
+        if (needed > 0) {
+          const fillers = remaining.splice(0, needed);
+          qualified[compId].push(...fillers.map(tt => ({ teamId: tt.id || tt.teamId, teamName: tt.name || tt.teamName, shortName: tt.shortName || '', league: tt.league || 'unknown', leaguePosition: 0, reputation: tt.reputation || 60, overall: tt.overall || 65, players: tt.players || [], ...tt })));
+        }
+      }
+      const saState = initializeSACompetitions(qualified);
+      if (saState) dispatch({ type: 'INIT_SA_COMPETITIONS', payload: saState });
+    } else {
+      const qualified = qualifyTeamsForEurope(leagueStandings, allTeamsMap);
+      const usedIds = new Set();
+      Object.values(qualified).forEach(teams => teams.forEach(tt => usedIds.add(tt.teamId)));
+      const remaining = allTeamsFlat.filter(tt => !usedIds.has(tt.id || tt.teamId)).sort((a, b) => (b.reputation || 0) - (a.reputation || 0));
+      for (const compId of ['championsLeague', 'europaLeague', 'conferenceleague']) {
+        const needed = 32 - qualified[compId].length;
+        if (needed > 0) {
+          const fillers = remaining.splice(0, needed);
+          qualified[compId].push(...fillers.map(tt => ({ teamId: tt.id || tt.teamId, teamName: tt.name || tt.teamName, shortName: tt.shortName || '', league: tt.league || 'unknown', leaguePosition: 0, reputation: tt.reputation || 60, overall: tt.overall || 65, players: tt.players || [], ...tt })));
+        }
+      }
+      const euroState = initializeEuropeanCompetitions(qualified);
+      if (euroState) dispatch({ type: 'INIT_EUROPEAN_COMPETITIONS', payload: euroState });
+    }
+  } catch (e) { console.warn('ProManager continental comps init error:', e); }
+}
+
 export default function ProManagerSeasonEnd() {
   const { t } = useTranslation();
   const { state, dispatch } = useGame();
@@ -221,10 +270,20 @@ export default function ProManagerSeasonEnd() {
     const stadiumInfo = getStadiumInfo(team.id, team.reputation);
     const stadiumLevel = getStadiumLevel(stadiumInfo.capacity);
 
+    // Build all teams for preseason + transfers
+    const allTeamsFlat = [];
+
+    // Generate preseason (auto-pick first)
+    const preseasonOpts = generatePreseasonOptions(
+      Object.entries(ALL_LEAGUE_GETTERS).reduce((acc, [, g]) => { try { acc.push(...g()); } catch {} return acc; }, []),
+      team, leagueId
+    );
+    const preseason = preseasonOpts[0];
+
     // First switch team (resets state)
     dispatch({
       type: 'PROMANAGER_SWITCH_TEAM',
-      payload: { team, leagueId, stadiumInfo, stadiumLevel, _proManagerUserId: user?.uid || null }
+      payload: { team, leagueId, stadiumInfo, stadiumLevel, _proManagerUserId: user?.uid || null, preseasonMatches: preseason?.matches || [] }
     });
 
     // Set ProManager data with updated career history
@@ -295,13 +354,6 @@ export default function ProManagerSeasonEnd() {
     // Generate new objectives
     const newObjectives = generateSeasonObjectives(team, leagueId, leagueData.table);
     dispatch({ type: 'SET_SEASON_OBJECTIVES', payload: newObjectives });
-
-    // Generate preseason (auto-pick first)
-    const preseasonOpts = generatePreseasonOptions(allTeamsFlat, team, leagueId);
-    const preseason = preseasonOpts[0];
-    if (preseason) {
-      dispatch({ type: 'SET_PRESEASON', payload: { matches: preseason.matches, phase: true } });
-    }
 
     // Cup
     try {

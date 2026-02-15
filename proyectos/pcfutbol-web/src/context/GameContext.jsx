@@ -618,7 +618,7 @@ function gameReducer(state, action) {
 
     case 'PROMANAGER_SWITCH_TEAM': {
       // When accepting a new team offer in ProManager mode
-      const { team, leagueId, _proManagerUserId, stadiumInfo, stadiumLevel } = action.payload;
+      const { team, leagueId, _proManagerUserId, stadiumInfo, stadiumLevel, preseasonMatches } = action.payload;
       const switchStadiumInfo = stadiumInfo || { name: team.stadium || 'Stadium', capacity: 8000 };
       const switchStadiumLevel = stadiumLevel ?? 0;
       return {
@@ -638,6 +638,9 @@ function gameReducer(state, action) {
         currentScreen: 'office',
         settings: state.settings,
         managerName: state.managerName,
+        preseasonMatches: preseasonMatches || [],
+        preseasonPhase: !!(preseasonMatches && preseasonMatches.length > 0),
+        preseasonWeek: 1,
         playerForm: generateInitialForm(team.players || []),
         matchTracker: Object.fromEntries((team.players || []).map(p => [p.name, { consecutivePlayed: 0, weeksSincePlay: 3 }])),
         stadium: {

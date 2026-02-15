@@ -39,6 +39,7 @@
     "year": "Year",
     "money": "Money",
     "budget": "Budget",
+    "menu": "Menu",
     "unknown": "Unknown"
   },
   "mainMenu": {
@@ -1728,7 +1729,13 @@
     "playerLoanedContent": "{{player}} loaned to {{team}}. Fee: {{fee}}{{option}}",
     "aperturaClausuraFinalResult": "🏆 Apertura vs Clausura Final",
     "aperturaClausuraFinalResultContent": "{{winner}} wins the {{league}} final. 1st leg: {{leg1Home}}-{{leg1Away}}, 2nd leg: {{leg2Home}}-{{leg2Away}}.",
-    "directChampionShort": "{{winner}} is the direct champion."
+    "directChampionShort": "{{winner}} is the direct champion.",
+    "welcomeTitle": "Welcome to the club!",
+    "welcomeContent": "You have been appointed as new manager of {{team}}. The fans expect great things from you.",
+    "continentalCompetition": "Continental Competition!",
+    "teamPlaysContinental": "Your team will play in the {{comp}} this season.",
+    "cupParticipationTitle": "{{icon}} {{cup}}",
+    "cupParticipationContent": "Your team will participate in the {{cup}} this season. {{rounds}} rounds to the final."
   },
   "proManager": {
     "title": "ProManager",
