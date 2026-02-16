@@ -275,20 +275,20 @@ export function advanceEuropeanPhase(competitionState, playerTeamId) {
       if (playerInDirect) {
         messages.push({
           type: 'european',
-          title: `${state.config.icon} ${state.config.shortName}`,
-          content: `¡Tu equipo se clasifica directamente para los octavos de final!`
+          titleKey: 'gameMessages.europeanQualifiedDirect', titleParams: { icon: state.config.icon, comp: state.config.shortName },
+        contentKey: 'gameMessages.europeanQualifiedDirectContent'
         });
       } else if (playerInPlayoff) {
         messages.push({
           type: 'european',
-          title: `${state.config.icon} ${state.config.shortName}`,
-          content: `Tu equipo jugará la ronda de playoffs para acceder a octavos.`
+          titleKey: 'gameMessages.europeanPlayoffs', titleParams: { icon: state.config.icon, comp: state.config.shortName },
+        contentKey: 'gameMessages.europeanPlayoffsContent'
         });
       } else if (playerEliminated) {
         messages.push({
           type: 'european',
-          title: `${state.config.icon} ${state.config.shortName}`,
-          content: `Tu equipo ha sido eliminado en la fase de liga.`
+          titleKey: 'gameMessages.europeanEliminated', titleParams: { icon: state.config.icon, comp: state.config.shortName },
+        contentKey: 'gameMessages.europeanEliminatedContent'
         });
       }
 
@@ -487,8 +487,8 @@ export function advanceEuropeanPhase(competitionState, playerTeamId) {
 
         messages.push({
           type: 'european',
-          title: `${state.config.icon} ${state.config.shortName} — ¡Final!`,
-          content: `${finalResult.winner?.teamName || 'Desconocido'} gana la ${state.config.name} (${finalResult.aggregate})`
+          titleKey: 'gameMessages.europeanFinal', titleParams: { icon: state.config.icon, comp: state.config.shortName },
+        contentKey: 'gameMessages.europeanFinalResult', contentParams: { winner: finalResult.winner?.teamName || '???', comp: state.config.name, aggregate: finalResult.aggregate }
         });
       }
       break;

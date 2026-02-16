@@ -1347,32 +1347,32 @@ function gameReducer(state, action) {
 
         if (isStarter && offerRatio < 1.3) {
           clubResponse = 'rejected';
-          clubReason = 'Titular indiscutible, no está en venta';
+          clubReason = 'gameMessages.clubReasonStarter';
         } else if (offerRatio >= 1.15) {
           clubResponse = 'accepted';
-          clubReason = 'Oferta irrechazable';
+          clubReason = 'gameMessages.clubReasonIrresistible';
         } else if (offerRatio >= 0.90) {
           if (Math.random() < 0.65) {
             clubResponse = 'accepted';
-            clubReason = 'Oferta aceptada';
+            clubReason = 'gameMessages.clubReasonAccepted';
           } else {
             clubResponse = 'countered';
             clubCounterAmount = Math.round(playerMarketValue * (1.05 + Math.random() * 0.15));
-            clubReason = `Piden ${formatTransferPrice(clubCounterAmount)}`;
+            clubReason = 'gameMessages.clubReasonCounter';
           }
         } else if (offerRatio >= 0.70) {
           if (Math.random() < 0.2) {
             clubResponse = 'accepted';
-            clubReason = 'Necesitan liquidez';
+            clubReason = 'gameMessages.clubReasonNeedMoney';
           } else if (Math.random() < 0.6) {
             clubResponse = 'countered';
             clubCounterAmount = Math.round(playerMarketValue * (1.1 + Math.random() * 0.2));
-            clubReason = `Piden ${formatTransferPrice(clubCounterAmount)}`;
+            clubReason = 'gameMessages.clubReasonCounter';
           } else {
-            clubReason = 'Oferta insuficiente';
+            clubReason = 'gameMessages.clubReasonInsufficient';
           }
         } else {
-          clubReason = 'Oferta irrisoria';
+          clubReason = 'gameMessages.clubReasonLaughable';
         }
 
         let playerResponse = 'rejected';
@@ -1381,23 +1381,23 @@ function gameReducer(state, action) {
 
         if (offer.salaryOffer >= requiredSalary * 1.2) {
           playerResponse = 'accepted';
-          playerReason = 'Encantado con la propuesta';
+          playerReason = 'gameMessages.playerReasonHappy';
         } else if (offer.salaryOffer >= requiredSalary * 0.95) {
           if (Math.random() < 0.7) {
             playerResponse = 'accepted';
-            playerReason = 'Acepta el proyecto deportivo';
+            playerReason = 'gameMessages.playerReasonProject';
           } else {
-            playerReason = 'Quiere un salario mayor';
+            playerReason = 'gameMessages.playerReasonMoreSalary';
           }
         } else if (offer.salaryOffer >= requiredSalary * 0.7) {
           if (Math.random() < 0.25) {
             playerResponse = 'accepted';
-            playerReason = 'Le convence el proyecto';
+            playerReason = 'gameMessages.playerReasonConvinced';
           } else {
-            playerReason = 'Salario insuficiente';
+            playerReason = 'gameMessages.playerReasonLowSalary';
           }
         } else {
-          playerReason = 'Oferta salarial irrisoria';
+          playerReason = 'gameMessages.playerReasonLaughableSalary';
         }
 
         const bothAccepted = clubResponse === 'accepted' && playerResponse === 'accepted';
@@ -1410,7 +1410,7 @@ function gameReducer(state, action) {
           contentKey: bothAccepted ? 'gameMessages.transferCompleteContent' : 'gameMessages.offerRejectedContent',
           contentParams: bothAccepted
             ? { player: offer.playerName, cost: formatTransferPrice(offer.amount) }
-            : { clubReason, playerReason },
+            : { clubReasonKey: clubReason, playerReasonKey: playerReason },
           dateKey: 'gameMessages.preseason'
         });
 
@@ -2115,8 +2115,8 @@ function gameReducer(state, action) {
       const formattedEuropeanMessages = europeanMessages.map(m => ({
         id: Date.now() + Math.random(),
         type: m.type || 'european',
-        title: m.title,
-        content: m.content,
+        ...(m.titleKey ? { titleKey: m.titleKey, titleParams: m.titleParams } : { title: m.title }),
+        ...(m.contentKey ? { contentKey: m.contentKey, contentParams: m.contentParams } : { content: m.content }),
         dateKey: 'gameMessages.weekDate', dateParams: { week: nextWeek }
       }));
 
@@ -2192,8 +2192,8 @@ function gameReducer(state, action) {
       const formattedSAMessages = saMessages.map(m => ({
         id: Date.now() + Math.random(),
         type: m.type || 'southamerican',
-        title: m.title,
-        content: m.content,
+        ...(m.titleKey ? { titleKey: m.titleKey, titleParams: m.titleParams } : { title: m.title }),
+        ...(m.contentKey ? { contentKey: m.contentKey, contentParams: m.contentParams } : { content: m.content }),
         dateKey: 'gameMessages.weekDate', dateParams: { week: nextWeek }
       }));
 
@@ -2687,7 +2687,7 @@ function gameReducer(state, action) {
           } else {
             clubResponse = 'countered';
             clubCounterAmount = Math.round(playerMarketValue * (1.05 + Math.random() * 0.15));
-            clubReason = `Piden ${formatTransferPrice(clubCounterAmount)}`;
+            clubReason = 'gameMessages.clubReasonCounter';
           }
         } else if (offerRatio >= 0.70) {
           if (Math.random() < 0.2) {
@@ -2696,7 +2696,7 @@ function gameReducer(state, action) {
           } else if (Math.random() < 0.6) {
             clubResponse = 'countered';
             clubCounterAmount = Math.round(playerMarketValue * (1.1 + Math.random() * 0.2));
-            clubReason = `Piden ${formatTransferPrice(clubCounterAmount)}`;
+            clubReason = 'gameMessages.clubReasonCounter';
           } else {
             clubReason = 'Oferta insuficiente';
           }
@@ -3082,7 +3082,7 @@ function gameReducer(state, action) {
           team: state.team ? { ...state.team, players: updatedPlayers } : null,
           leagueTeams: updatedLeagueTeams,
           blockedPlayers: updatedBlocked,
-          messages: [{ id: Date.now(), type: 'transfer', titleKey: bothAccepted ? 'ranked.transferAccepted' : 'ranked.transferRejected', titleParams: { player: newOffer.playerName }, contentKey: bothAccepted ? 'ranked.transferCost' : 'ranked.transferClubReason', contentParams: bothAccepted ? { price: formatTransferPrice(newOffer.amount) } : { reason: clubReason, playerReason: playerReason }, date: `Semana ${state.currentWeek}` }, ...state.messages].slice(0, 50),
+          messages: [{ id: Date.now(), type: 'transfer', titleKey: bothAccepted ? 'ranked.transferAccepted' : 'ranked.transferRejected', titleParams: { player: newOffer.playerName }, contentKey: bothAccepted ? 'ranked.transferCost' : 'ranked.transferClubReason', contentParams: bothAccepted ? { price: formatTransferPrice(newOffer.amount) } : { reason: clubReason, playerReason: playerReason }, dateKey: 'gameMessages.weekDate', dateParams: { week: state.currentWeek } }, ...state.messages].slice(0, 50),
         };
       }
 
@@ -3368,7 +3368,7 @@ function gameReducer(state, action) {
             id: Date.now() + Math.random(), type: 'offer',
             titleKey: 'ranked.offerReceived', titleParams: { team: o.fromTeam, player: listedPlayer.name },
             contentKey: 'ranked.offerAmount', contentParams: { price: formatTransferPrice(o.amount) },
-            date: `Ranked`
+            dateKey: 'gameMessages.ranked'
           }));
           updPlayerState.incomingOffers = [...(state.incomingOffers || []), ...newOffers];
           updPlayerState.messages = [...offerMsgs, ...state.messages].slice(0, 50);
@@ -3814,8 +3814,8 @@ function gameReducer(state, action) {
       const fmtAdvanceMessages = advanceMessages.map(m => ({
         id: Date.now() + Math.random(),
         type: 'european',
-        title: m.title,
-        content: m.content,
+        ...(m.titleKey ? { titleKey: m.titleKey, titleParams: m.titleParams } : { title: m.title }),
+        ...(m.contentKey ? { contentKey: m.contentKey, contentParams: m.contentParams } : { content: m.content }),
         dateKey: 'gameMessages.weekDate', dateParams: { week: state.currentWeek }
       }));
 
@@ -3878,8 +3878,8 @@ function gameReducer(state, action) {
       const fmtMessages = messages.map(m => ({
         id: Date.now() + Math.random(),
         type: 'european',
-        title: m.title,
-        content: m.content,
+        ...(m.titleKey ? { titleKey: m.titleKey, titleParams: m.titleParams } : { title: m.title }),
+        ...(m.contentKey ? { contentKey: m.contentKey, contentParams: m.contentParams } : { content: m.content }),
         dateKey: 'gameMessages.weekDate', dateParams: { week: state.currentWeek }
       }));
 
@@ -3987,8 +3987,8 @@ function gameReducer(state, action) {
       const fmtAdvanceMessages = advanceMessages.map(m => ({
         id: Date.now() + Math.random(),
         type: 'southamerican',
-        title: m.title,
-        content: m.content,
+        ...(m.titleKey ? { titleKey: m.titleKey, titleParams: m.titleParams } : { title: m.title }),
+        ...(m.contentKey ? { contentKey: m.contentKey, contentParams: m.contentParams } : { content: m.content }),
         dateKey: 'gameMessages.weekDate', dateParams: { week: state.currentWeek }
       }));
 
@@ -4288,8 +4288,8 @@ function gameReducer(state, action) {
       const formattedMessages = loanMessages.map(m => ({
         id: Date.now() + Math.random(),
         type: m.type,
-        title: m.title,
-        content: m.content,
+        ...(m.titleKey ? { titleKey: m.titleKey, titleParams: m.titleParams } : { title: m.title }),
+        ...(m.contentKey ? { contentKey: m.contentKey, contentParams: m.contentParams } : { content: m.content }),
         dateKey: 'gameMessages.endOfSeason', dateParams: { season: state.currentSeason }
       }));
 

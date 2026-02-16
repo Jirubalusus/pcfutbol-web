@@ -977,7 +977,7 @@ export default function Office() {
                 <h3>{t('office.recentMessages')}</h3>
                 {state.messages.slice(0, 3).map(msg => (
                   <div key={msg.id} className="office__message-preview">
-                    <span className="title">{msg.title}</span>
+                    <span className="title">{msg.titleKey ? t(msg.titleKey, msg.titleParams) : msg.title}</span>
                     <span className="date">{msg.date}</span>
                   </div>
                 ))}

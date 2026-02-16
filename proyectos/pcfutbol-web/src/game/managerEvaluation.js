@@ -62,10 +62,10 @@ export function evaluateManager(state) {
   const positionDiff = currentPosition - expectedPosition;
   if (positionDiff > 10) {
     confidenceChange -= 8;  // Muy por debajo: -8/semana
-    reasons.push(`Posición ${currentPosition}º (se esperaba top ${expectedPosition})`);
+    reasons.push({ key: 'gameMessages.reasonPosition', params: { position: currentPosition, expected: expectedPosition } });
   } else if (positionDiff > 6) {
     confidenceChange -= 5;
-    reasons.push(`Rendimiento por debajo de expectativas`);
+    reasons.push({ key: 'gameMessages.reasonUnderperformance' });
   } else if (positionDiff > 3) {
     confidenceChange -= 2;
   } else if (positionDiff <= 0) {
@@ -79,13 +79,13 @@ export function evaluateManager(state) {
   
   if (consecutiveLosses >= 5) {
     confidenceChange -= 15;
-    reasons.push(`${consecutiveLosses} derrotas consecutivas`);
+    reasons.push({ key: 'gameMessages.reasonConsecutiveLosses', params: { count: consecutiveLosses } });
   } else if (consecutiveLosses >= 4) {
     confidenceChange -= 10;
-    reasons.push(`${consecutiveLosses} derrotas seguidas`);
+    reasons.push({ key: 'gameMessages.reasonLossStreak', params: { count: consecutiveLosses } });
   } else if (consecutiveLosses >= 3) {
     confidenceChange -= 5;
-    reasons.push(`Mala racha de resultados`);
+    reasons.push({ key: 'gameMessages.reasonBadForm' });
   }
   
   // --- 3. Plantilla demasiado corta ---
@@ -94,22 +94,22 @@ export function evaluateManager(state) {
   
   if (totalPlayers < 14) {
     confidenceChange -= 12;
-    reasons.push(`Plantilla insuficiente (${totalPlayers} jugadores)`);
+    reasons.push({ key: 'gameMessages.reasonSmallSquad', params: { count: totalPlayers } });
   } else if (totalPlayers < 17) {
     confidenceChange -= 5;
-    reasons.push(`Plantilla muy corta (${totalPlayers} jugadores)`);
+    reasons.push({ key: 'gameMessages.reasonVerySmallSquad', params: { count: totalPlayers } });
   }
   
   if (availablePlayers < 11) {
     confidenceChange -= 15;
-    reasons.push(`Menos de 11 jugadores disponibles`);
+    reasons.push({ key: 'gameMessages.reasonNotEnoughPlayers' });
   }
   
   // --- 4. Zona de descenso ---
   const relegationZone = totalTeams - 2; // Últimos 3
   if (currentPosition >= relegationZone && currentWeek >= 15) {
     confidenceChange -= 8;
-    reasons.push(`En zona de descenso`);
+    reasons.push({ key: 'gameMessages.reasonRelegation' });
   }
   
   // --- 5. Victoria reciente da un respiro ---
@@ -123,7 +123,7 @@ export function evaluateManager(state) {
       confidence: 0,
       warning: 'critical',
       fired: true,
-      reason: 'La directiva te ha destituido por llevar al club a la bancarrota.',
+      reasonKey: 'gameMessages.firedBankruptcy',
       details: [`Presupuesto: €${Math.round(money / 1000)}K`]
     };
   }
@@ -140,27 +140,30 @@ export function evaluateManager(state) {
   
   let warning = null;
   let fired = false;
-  let reason = null;
+  let reasonKey = null;
+  let reasonParams = {};
   
   if (newConfidence <= 10) {
     // DESPIDO
     fired = true;
-    reason = reasons.length > 0 
-      ? `La directiva ha perdido la confianza. ${reasons[0]}.`
-      : 'Resultados deportivos insuficientes.';
+    reasonKey = reasons.length > 0 && reasons[0].key ? reasons[0].key : 'gameMessages.boardLostConfidence';
+    reasonParams = reasons.length > 0 && reasons[0].params ? reasons[0].params : {};
   } else if (newConfidence <= 25) {
     warning = 'critical';
-    reason = `⚠️ La directiva está muy descontenta. ${reasons[0] || 'Mejora los resultados urgentemente.'}`;
+    reasonKey = reasons.length > 0 && reasons[0].key ? reasons[0].key : 'gameMessages.boardVeryUnhappy';
+      reasonParams = reasons.length > 0 && reasons[0].params ? reasons[0].params : {};
   } else if (newConfidence <= 40) {
     warning = 'low';
-    reason = `La directiva empieza a impacientarse. ${reasons[0] || 'Se esperan mejores resultados.'}`;
+    reasonKey = reasons.length > 0 && reasons[0].key ? reasons[0].key : 'gameMessages.boardImpatient';
+      reasonParams = reasons.length > 0 && reasons[0].params ? reasons[0].params : {};
   }
   
   return {
     confidence: newConfidence,
     warning,
     fired,
-    reason,
+    reasonKey,
+    reasonParams,
     details: reasons
   };
 }

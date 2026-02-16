@@ -318,8 +318,8 @@ export function expireLoans(activeLoans, allTeams) {
     
     messages.push({
       type: 'loan',
-      title: '🔄 Cesión finalizada',
-      content: `${loan.playerData?.name || loan.playerId} vuelve a ${loan.fromTeamName} tras su cesión en ${loan.toTeamName}`
+      titleKey: 'gameMessages.loanExpired',
+        contentKey: 'gameMessages.loanExpiredContent', contentParams: { player: loan.playerData?.name || loan.playerId, from: loan.fromTeamName, to: loan.toTeamName }
     });
   }
   
