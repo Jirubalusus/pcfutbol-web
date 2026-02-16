@@ -1705,7 +1705,25 @@
     "startCareer": "Start career",
     "title": "Pro Manager",
     "titles": "Titles",
-    "wins": "Wins"
+    "wins": "Wins",
+    "board": {
+      "happy": "The board is delighted with you",
+      "neutral": "The board is satisfied",
+      "concerned": "The board is getting concerned",
+      "warning": "The board is very unhappy",
+      "fired": "The board has decided to sack you"
+    },
+    "objectives": {
+      "winLeague": "Win the league",
+      "topTwo": "Finish in the Top 2",
+      "european": "Qualify for Europe (Top {{position}})",
+      "topHalf": "Finish in the top half",
+      "midTable": "Mid-table finish",
+      "avoidRelegation": "Avoid relegation"
+    },
+    "newPartida": "New game",
+    "continueCareer": "Continue",
+    "warning": "Starting a new game will delete current progress"
   },
   "rankedResults": {
     "aboveRival": "Above rival",

@@ -1586,7 +1586,25 @@
     "startCareer": "Démarrer la carrière",
     "title": "Manager Pro",
     "titles": "Titres",
-    "wins": "Victoires"
+    "wins": "Victoires",
+    "board": {
+      "happy": "Le conseil est ravi de vous",
+      "neutral": "Le conseil est satisfait",
+      "concerned": "Le conseil commence à s'inquiéter",
+      "warning": "Le conseil est très mécontent",
+      "fired": "Le conseil a décidé de vous licencier"
+    },
+    "objectives": {
+      "winLeague": "Gagner le championnat",
+      "topTwo": "Finir dans le Top 2",
+      "european": "Se qualifier pour l'Europe (Top {{position}})",
+      "topHalf": "Finir dans la première moitié",
+      "midTable": "Milieu de tableau",
+      "avoidRelegation": "Éviter la relégation"
+    },
+    "newPartida": "Nouvelle partie",
+    "continueCareer": "Continuer",
+    "warning": "Commencer une nouvelle partie supprimera la progression actuelle"
   },
   "rankedResults": {
     "aboveRival": "Au-dessus du rival",

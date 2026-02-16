@@ -1585,7 +1585,25 @@
     "startCareer": "Inizia carriera",
     "title": "Manager Professionista",
     "titles": "Titoli",
-    "wins": "Vittorie"
+    "wins": "Vittorie",
+    "board": {
+      "happy": "La dirigenza è entusiasta di te",
+      "neutral": "La dirigenza è soddisfatta",
+      "concerned": "La dirigenza inizia a preoccuparsi",
+      "warning": "La dirigenza è molto scontenta",
+      "fired": "La dirigenza ha deciso di esoneriarti"
+    },
+    "objectives": {
+      "winLeague": "Vincere il campionato",
+      "topTwo": "Finire nei primi 2",
+      "european": "Qualificarsi per l'Europa (Top {{position}})",
+      "topHalf": "Finire nella prima metà",
+      "midTable": "Metà classifica",
+      "avoidRelegation": "Evitare la retrocessione"
+    },
+    "newPartida": "Nuova partita",
+    "continueCareer": "Continua",
+    "warning": "Iniziare una nuova partita cancellerà il progresso attuale"
   },
   "rankedResults": {
     "aboveRival": "Sopra il rivale",

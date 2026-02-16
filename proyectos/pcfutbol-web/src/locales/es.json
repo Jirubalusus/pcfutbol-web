@@ -1705,7 +1705,25 @@
     "startCareer": "Iniciar carrera",
     "title": "Mánager Profesional",
     "titles": "Títulos",
-    "wins": "Victorias"
+    "wins": "Victorias",
+    "board": {
+      "happy": "La directiva está encantada contigo",
+      "neutral": "La directiva está satisfecha",
+      "concerned": "La directiva empieza a preocuparse",
+      "warning": "La directiva está muy descontenta",
+      "fired": "La directiva ha decidido destituirte"
+    },
+    "objectives": {
+      "winLeague": "Ganar la liga",
+      "topTwo": "Acabar en el Top 2",
+      "european": "Clasificarse para Europa (Top {{position}})",
+      "topHalf": "Acabar en la mitad superior",
+      "midTable": "Mantener al equipo a media tabla",
+      "avoidRelegation": "Evitar el descenso"
+    },
+    "newPartida": "Nueva partida",
+    "continueCareer": "Continuar",
+    "warning": "Empezar nueva partida borrará el progreso actual"
   },
   "rankedResults": {
     "aboveRival": "Por encima del rival",

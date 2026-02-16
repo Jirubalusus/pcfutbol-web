@@ -1585,7 +1585,25 @@
     "startCareer": "Karriere starten",
     "title": "Profi-Manager",
     "titles": "Titel",
-    "wins": "Siege"
+    "wins": "Siege",
+    "board": {
+      "happy": "Der Vorstand ist begeistert von dir",
+      "neutral": "Der Vorstand ist zufrieden",
+      "concerned": "Der Vorstand macht sich Sorgen",
+      "warning": "Der Vorstand ist sehr unzufrieden",
+      "fired": "Der Vorstand hat dich entlassen"
+    },
+    "objectives": {
+      "winLeague": "Liga gewinnen",
+      "topTwo": "In den Top 2 abschließen",
+      "european": "Für Europa qualifizieren (Top {{position}})",
+      "topHalf": "In der oberen Hälfte abschließen",
+      "midTable": "Mittelfeld-Platzierung",
+      "avoidRelegation": "Abstieg vermeiden"
+    },
+    "newPartida": "Neues Spiel",
+    "continueCareer": "Fortsetzen",
+    "warning": "Ein neues Spiel löscht den aktuellen Fortschritt"
   },
   "rankedResults": {
     "aboveRival": "Über dem Rivalen",
