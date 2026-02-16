@@ -298,6 +298,270 @@ body {
   border-bottom-color: rgba(148,163,184,0.08) !important;
 }
 
+/* === FORMATION / ALINEACIÓN OVERRIDES === */
+[data-theme="modern"] .pcf-formation {
+  background: var(--color-bg-primary) !important;
+}
+
+[data-theme="modern"] .pcf-header {
+  background: rgba(255,255,255,0.7) !important;
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(148,163,184,0.15) !important;
+  border-radius: 16px !important;
+}
+
+[data-theme="modern"] .pcf-header__title h1 {
+  color: #1e293b !important;
+  text-shadow: none !important;
+}
+
+[data-theme="modern"] .pcf-header .team-badge {
+  border-color: rgba(148,163,184,0.3) !important;
+}
+
+[data-theme="modern"] .pcf-header .team-name,
+[data-theme="modern"] .pcf-header .date-display .value,
+[data-theme="modern"] .pcf-header .date-display .label {
+  color: #64748b !important;
+}
+
+[data-theme="modern"] .pcf-params {
+  background: rgba(255,255,255,0.7) !important;
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(148,163,184,0.15) !important;
+  border-radius: 16px !important;
+  color: #1e293b !important;
+}
+
+[data-theme="modern"] .pcf-params .params-header {
+  background: rgba(20,184,166,0.1) !important;
+  color: #0d9488 !important;
+  border-radius: 12px 12px 0 0 !important;
+}
+
+[data-theme="modern"] .pcf-params .param-item,
+[data-theme="modern"] .pcf-params .params-section {
+  color: #1e293b !important;
+}
+
+[data-theme="modern"] .pcf-section-header.convocados,
+[data-theme="modern"] .pcf-section-header.noconvocados {
+  background: rgba(20,184,166,0.1) !important;
+  color: #0d9488 !important;
+  border-color: rgba(148,163,184,0.15) !important;
+  border-radius: 8px !important;
+}
+
+[data-theme="modern"] .pcf-tabs {
+  background: rgba(255,255,255,0.6) !important;
+  border-color: rgba(148,163,184,0.15) !important;
+}
+
+[data-theme="modern"] .pcf-tabs .tab {
+  color: #64748b !important;
+  background: transparent !important;
+}
+
+[data-theme="modern"] .pcf-tabs .tab.active {
+  color: #0d9488 !important;
+  border-color: #14b8a6 !important;
+}
+
+[data-theme="modern"] .pcf-table .table-header {
+  background: rgba(255,255,255,0.5) !important;
+  color: #64748b !important;
+  border-color: rgba(148,163,184,0.15) !important;
+}
+
+[data-theme="modern"] .pcf-table .table-row {
+  background: rgba(255,255,255,0.4) !important;
+  border-color: rgba(148,163,184,0.08) !important;
+  color: #1e293b !important;
+}
+
+[data-theme="modern"] .pcf-table .table-row:nth-child(even) {
+  background: rgba(255,255,255,0.6) !important;
+}
+
+[data-theme="modern"] .pcf-table .table-row.selected {
+  background: rgba(20,184,166,0.15) !important;
+}
+
+[data-theme="modern"] .pcf-table .table-row:hover {
+  background: rgba(20,184,166,0.08) !important;
+}
+
+[data-theme="modern"] .pcf-buttons .pcf-btn {
+  background: rgba(255,255,255,0.7) !important;
+  color: #1e293b !important;
+  border: 1px solid rgba(148,163,184,0.2) !important;
+  border-radius: 12px !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+[data-theme="modern"] .pcf-buttons .pcf-btn:hover {
+  background: rgba(20,184,166,0.15) !important;
+  color: #0d9488 !important;
+}
+
+[data-theme="modern"] .pcf-sidebar {
+  background: rgba(255,255,255,0.5) !important;
+  border-color: rgba(148,163,184,0.15) !important;
+}
+
+[data-theme="modern"] .pcf-pitch {
+  border-radius: 12px !important;
+  border-color: rgba(148,163,184,0.15) !important;
+}
+
+/* Formation modals */
+[data-theme="modern"] .pcf-modal {
+  background: rgba(255,255,255,0.92) !important;
+  backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(148,163,184,0.15) !important;
+  border-radius: 20px !important;
+  color: #1e293b !important;
+}
+
+[data-theme="modern"] .pcf-modal .modal-header {
+  background: rgba(255,255,255,0.8) !important;
+  border-color: rgba(148,163,184,0.15) !important;
+}
+
+[data-theme="modern"] .pcf-modal .modal-header h3 {
+  color: #1e293b !important;
+}
+
+[data-theme="modern"] .pcf-modal-overlay {
+  background: rgba(0,0,0,0.3) !important;
+}
+
+[data-theme="modern"] .pcf-modal--tactic,
+[data-theme="modern"] .pcf-modal--injured,
+[data-theme="modern"] .pcf-modal--stats,
+[data-theme="modern"] .pcf-modal--training,
+[data-theme="modern"] .pcf-modal--training-v2 {
+  background: rgba(255,255,255,0.92) !important;
+  backdrop-filter: blur(16px) !important;
+  color: #1e293b !important;
+}
+
+[data-theme="modern"] .formation-visual-selector,
+[data-theme="modern"] .formation-selector,
+[data-theme="modern"] .tactic-option {
+  background: rgba(255,255,255,0.6) !important;
+  border: 1px solid rgba(148,163,184,0.15) !important;
+  border-radius: 12px !important;
+  color: #1e293b !important;
+}
+
+[data-theme="modern"] .pcf-content {
+  color: #1e293b !important;
+}
+
+[data-theme="modern"] .pcf-table-container {
+  background: transparent !important;
+}
+
+/* === MAIN MENU MODE BUTTONS === */
+[data-theme="modern"] .main-menu__mode-btn {
+  background: rgba(255,255,255,0.6) !important;
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(148,163,184,0.15) !important;
+  color: #1e293b !important;
+}
+
+[data-theme="modern"] .main-menu__mode-btn:hover {
+  background: rgba(255,255,255,0.8) !important;
+}
+
+/* === PLANTILLA ACTION ICONS === */
+[data-theme="modern"] .plantilla .player-actions button,
+[data-theme="modern"] .plantilla [class*="action"] button,
+[data-theme="modern"] .plantilla svg {
+  color: #64748b !important;
+  opacity: 0.8 !important;
+}
+
+[data-theme="modern"] .plantilla .player-actions button:hover,
+[data-theme="modern"] .plantilla [class*="action"] button:hover {
+  color: #14b8a6 !important;
+  opacity: 1 !important;
+}
+
+/* === BANK BALANCE === */
+[data-theme="modern"] .bank-balance,
+[data-theme="modern"] .bank__balance-row,
+[data-theme="modern"] [class*="balance-total"],
+[data-theme="modern"] [class*="bank-footer"] {
+  background: rgba(20,184,166,0.1) !important;
+  color: #1e293b !important;
+  border-radius: 12px !important;
+}
+
+/* === REMAINING DARK COMPONENT OVERRIDES === */
+/* CustomSelect */
+[data-theme="modern"] .custom-select__options,
+[data-theme="modern"] .custom-select__dropdown,
+[data-theme="modern"] [class*="custom-select"] {
+  background: rgba(255,255,255,0.95) !important;
+  border-color: rgba(148,163,184,0.2) !important;
+  color: #1e293b !important;
+}
+
+/* Facilities */
+[data-theme="modern"] .facilities,
+[data-theme="modern"] .facilities-v2 {
+  background: var(--color-bg-primary) !important;
+  color: #1e293b !important;
+}
+
+[data-theme="modern"] .facilities [class*="stat-box"],
+[data-theme="modern"] .facilities-v2 [class*="stat-box"] {
+  background: rgba(255,255,255,0.7) !important;
+  border: 1px solid rgba(148,163,184,0.15) !important;
+  border-radius: 12px !important;
+}
+
+/* ContrarrelojEnd */
+[data-theme="modern"] .contrarreloj-end,
+[data-theme="modern"] [class*="contrarreloj-end"] {
+  background: var(--color-bg-primary) !important;
+  color: #1e293b !important;
+}
+
+/* ContrarrelojSetup */
+[data-theme="modern"] .contrarreloj-setup,
+[data-theme="modern"] [class*="contrarreloj-setup"] {
+  background: var(--color-bg-primary) !important;
+  color: #1e293b !important;
+}
+
+/* EditionMode dark backgrounds */
+[data-theme="modern"] .edition-mode [class*="panel"],
+[data-theme="modern"] .edition-mode [class*="editor"] {
+  background: rgba(255,255,255,0.7) !important;
+  color: #1e293b !important;
+}
+
+/* Training modal v2 */
+[data-theme="modern"] .modal-header-v2 {
+  background: rgba(255,255,255,0.8) !important;
+  color: #1e293b !important;
+}
+
+[data-theme="modern"] .modal-body-v2 {
+  color: #1e293b !important;
+}
+
+[data-theme="modern"] .modal-footer-v2 {
+  background: rgba(255,255,255,0.8) !important;
+}
+
+[data-theme="modern"] .intensity-card-v2 {
+  color: #1e293b !important;
+}
+
 /* === Midnight Theme === */
 [data-theme="midnight"] body {
   background:
