@@ -980,19 +980,232 @@ button {
       var(--color-bg-primary) !important;
   }
 
-  /* Team selection — override hardcoded dark colors */
+  /* ======================================================
+     TEAM SELECTION — Full light override
+     ====================================================== */
   .pcf-team-select {
-    background: var(--color-bg-primary) !important;
+    background: #f0f4f8 !important;
+  }
+  .pcf-ts-header {
+    background: rgba(255,255,255,0.8) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-bottom: 1px solid rgba(148,163,184,0.15) !important;
+    color: #1e293b !important;
+  }
+  .pcf-ts-header h2,
+  .pcf-ts-header .btn-back,
+  .pcf-ts-header .btn-confirm {
+    color: #1e293b !important;
+  }
+  .pcf-ts-content {
+    background: transparent !important;
+  }
+  .teams-panel,
+  .teams-list {
+    background: rgba(255,255,255,0.5) !important;
+    backdrop-filter: blur(8px) !important;
+    color: #1e293b !important;
+  }
+  .teams-list .team-row,
+  .teams-list tr,
+  .teams-list li {
+    color: #1e293b !important;
+    border-color: rgba(148,163,184,0.1) !important;
+  }
+  .teams-list .team-row:hover,
+  .teams-list tr:hover,
+  .teams-list li:hover {
+    background: rgba(20,184,166,0.08) !important;
+  }
+  .teams-list .team-row.active,
+  .teams-list .team-row.selected,
+  .teams-list tr.selected {
+    background: rgba(20,184,166,0.12) !important;
+  }
+  .team-details,
+  .details-panel,
+  .no-selection {
+    background: rgba(255,255,255,0.6) !important;
+    backdrop-filter: blur(12px) !important;
+    color: #1e293b !important;
+    border-radius: 16px !important;
+  }
+  .stat-card {
+    background: rgba(255,255,255,0.7) !important;
+    border: 1px solid rgba(148,163,184,0.15) !important;
+    border-radius: 12px !important;
+    color: #1e293b !important;
+  }
+  .search-box,
+  .search-box input {
+    background: rgba(255,255,255,0.8) !important;
+    color: #1e293b !important;
+    border-color: rgba(148,163,184,0.2) !important;
+  }
+  .map-selection__panel {
+    background: rgba(255,255,255,0.6) !important;
+    backdrop-filter: blur(12px) !important;
+    color: #1e293b !important;
+  }
+  .map-selection__placeholder {
+    background: rgba(255,255,255,0.4) !important;
+    color: #64748b !important;
+  }
+  .step-num {
+    color: #1e293b !important;
+  }
+  .pcf-ts-progress {
+    background: rgba(255,255,255,0.6) !important;
+  }
+  .player-row {
+    color: #1e293b !important;
+  }
+  .btn-start,
+  .btn-confirm {
+    background: #14b8a6 !important;
+    color: white !important;
+    border-radius: 12px !important;
   }
 
-  /* Pro Manager setup gradient */
+  /* ======================================================
+     PRETEMPORADA MODAL — Light override
+     ====================================================== */
+  .preseason-modal-overlay {
+    background: rgba(0,0,0,0.3) !important;
+  }
+  .preseason-modal,
+  .preseason-options {
+    background: rgba(255,255,255,0.92) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    color: #1e293b !important;
+    border-radius: 20px !important;
+  }
+  .preseason-header {
+    color: #1e293b !important;
+  }
+  .preseason-card,
+  .group-card {
+    background: rgba(255,255,255,0.7) !important;
+    border: 1px solid rgba(148,163,184,0.15) !important;
+    border-radius: 16px !important;
+    color: #1e293b !important;
+    backdrop-filter: blur(8px) !important;
+  }
+  .preseason-actions .btn-start {
+    background: #14b8a6 !important;
+    color: white !important;
+    border-radius: 12px !important;
+  }
+
+  /* ======================================================
+     FORMATION / ALINEACIÓN — Full light override
+     ====================================================== */
+  .formation-wrapper,
+  .formation {
+    background: #f0f4f8 !important;
+  }
+  .pcf-lineup-header {
+    background: rgba(255,255,255,0.75) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(148,163,184,0.15) !important;
+    border-radius: 16px !important;
+    color: #1e293b !important;
+  }
+  .pcf-lineup-header * {
+    color: #1e293b !important;
+  }
+  .pcf-lineup-table {
+    background: rgba(255,255,255,0.6) !important;
+    border: 1px solid rgba(148,163,184,0.1) !important;
+    border-radius: 12px !important;
+  }
+  .pcf-lineup-table th {
+    background: rgba(148,163,184,0.08) !important;
+    color: #64748b !important;
+  }
+  .pcf-lineup-table tr {
+    border-color: rgba(148,163,184,0.08) !important;
+    color: #1e293b !important;
+  }
+  .pcf-lineup-table tr:nth-child(odd) {
+    background: rgba(255,255,255,0.4) !important;
+  }
+  .pcf-lineup-table tr:nth-child(even) {
+    background: rgba(255,255,255,0.2) !important;
+  }
+  .pcf-lineup-table tr:hover {
+    background: rgba(20,184,166,0.06) !important;
+  }
+  .pcf-params-panel {
+    background: rgba(255,255,255,0.7) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(148,163,184,0.15) !important;
+    border-radius: 16px !important;
+    color: #1e293b !important;
+  }
+  .pcf-params-panel * {
+    color: #1e293b !important;
+  }
+  .pcf-section-banner {
+    background: rgba(20,184,166,0.1) !important;
+    color: #0d9488 !important;
+    border: none !important;
+    border-radius: 8px !important;
+  }
+  .pcf-btn-panel {
+    background: rgba(255,255,255,0.7) !important;
+    color: #1e293b !important;
+    border: 1px solid rgba(148,163,184,0.2) !important;
+    border-radius: 12px !important;
+    backdrop-filter: blur(8px) !important;
+  }
+  .pcf-btn-panel:hover {
+    background: rgba(255,255,255,0.9) !important;
+  }
+  /* Tactics/Formation modal */
+  .pcf-modal {
+    background: rgba(255,255,255,0.92) !important;
+    backdrop-filter: blur(16px) !important;
+    border-radius: 20px !important;
+    color: #1e293b !important;
+  }
+  .pcf-modal * {
+    color: #1e293b !important;
+  }
+  .formation-preview-card {
+    background: rgba(255,255,255,0.6) !important;
+    border: 1px solid rgba(148,163,184,0.15) !important;
+    border-radius: 12px !important;
+  }
+  .stats-modal-content {
+    background: rgba(255,255,255,0.92) !important;
+    color: #1e293b !important;
+    border-radius: 16px !important;
+  }
+
+  /* ======================================================
+     PRO MANAGER SETUP — Light override
+     ====================================================== */
   .promanager-setup__gradient {
-    background: var(--color-bg-primary) !important;
+    background: #f0f4f8 !important;
+  }
+
+  /* ======================================================
+     CONTRARRELOJ SETUP — Light gradient
+     ====================================================== */
+  .contrarreloj-setup__gradient {
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(245,158,11,0.06) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 40% at 100% 100%, rgba(245,158,11,0.04) 0%, transparent 50%),
+      #f0f4f8 !important;
   }
 
   /* Loading screen */
   .loading-screen {
-    background: var(--color-bg-primary) !important;
+    background: #f0f4f8 !important;
     background-image: none !important;
   }
 
@@ -1000,7 +1213,19 @@ button {
   .custom-select__options,
   .custom-select__dropdown {
     background: rgba(255, 255, 255, 0.95) !important;
-    border-color: rgba(0, 0, 0, 0.1) !important;
+    border-color: rgba(148,163,184,0.15) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08) !important;
+  }
+
+  /* ======================================================
+     BANCO — Balance footer
+     ====================================================== */
+  .bank__balance-row,
+  [class*="balance-total"] {
+    background: rgba(20,184,166,0.08) !important;
+    color: #1e293b !important;
+    border-radius: 12px !important;
   }
 }
 
