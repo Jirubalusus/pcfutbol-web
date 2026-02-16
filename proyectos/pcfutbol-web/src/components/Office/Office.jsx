@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { translatePosition } from '../../game/positionNames';
@@ -18,17 +18,37 @@ import { simulateOtherLeaguesWeek } from '../../game/multiLeagueEngine';
 import { calculateMatchAttendance } from '../../game/stadiumEconomy';
 
 // Combine all teams for lookup - usando getters para obtener data actualizada
-const getAllTeams = () => [
-  ...getLaLigaTeams(), ...getSegundaTeams(), ...getPrimeraRfefTeams(), ...getSegundaRfefTeams(),
-  ...getPremierTeams(), ...getLigue1Teams(), ...getBundesligaTeams(), ...getSerieATeams(),
-  ...getEredivisieTeams(), ...getPrimeiraLigaTeams(), ...getChampionshipTeams(), ...getBelgianProTeams(),
-  ...getSuperLigTeams(), ...getScottishPremTeams(), ...getSerieBTeams(), ...getBundesliga2Teams(),
-  ...getLigue2Teams(), ...getSwissTeams(), ...getAustrianTeams(), ...getGreekTeams(),
-  ...getDanishTeams(), ...getCroatianTeams(), ...getCzechTeams(),
-  ...getArgentinaTeams(), ...getBrasileiraoTeams(), ...getColombiaTeams(), ...getChileTeams(),
-  ...getUruguayTeams(), ...getEcuadorTeams(), ...getParaguayTeams(), ...getPeruTeams(),
-  ...getBoliviaTeams(), ...getVenezuelaTeams()
+// Each team gets leagueId assigned (Firestore has 'league' field, game state uses 'leagueId')
+const LEAGUE_GETTERS = [
+  { id: 'laliga', fn: getLaLigaTeams }, { id: 'laliga2', fn: getSegundaTeams },
+  { id: 'primeraRFEF', fn: getPrimeraRfefTeams }, { id: 'segundaRFEF', fn: getSegundaRfefTeams },
+  { id: 'premier', fn: getPremierTeams }, { id: 'ligue1', fn: getLigue1Teams },
+  { id: 'bundesliga', fn: getBundesligaTeams }, { id: 'seriea', fn: getSerieATeams },
+  { id: 'eredivisie', fn: getEredivisieTeams }, { id: 'primeiraLiga', fn: getPrimeiraLigaTeams },
+  { id: 'championship', fn: getChampionshipTeams }, { id: 'belgianPro', fn: getBelgianProTeams },
+  { id: 'superLig', fn: getSuperLigTeams }, { id: 'scottishPrem', fn: getScottishPremTeams },
+  { id: 'serieB', fn: getSerieBTeams }, { id: 'bundesliga2', fn: getBundesliga2Teams },
+  { id: 'ligue2', fn: getLigue2Teams }, { id: 'swissSuperLeague', fn: getSwissTeams },
+  { id: 'austrianBundesliga', fn: getAustrianTeams }, { id: 'greekSuperLeague', fn: getGreekTeams },
+  { id: 'danishSuperliga', fn: getDanishTeams }, { id: 'croatianLeague', fn: getCroatianTeams },
+  { id: 'czechLeague', fn: getCzechTeams },
+  { id: 'argentinaPrimera', fn: getArgentinaTeams }, { id: 'brasileiraoA', fn: getBrasileiraoTeams },
+  { id: 'colombiaPrimera', fn: getColombiaTeams }, { id: 'chilePrimera', fn: getChileTeams },
+  { id: 'uruguayPrimera', fn: getUruguayTeams }, { id: 'ecuadorLigaPro', fn: getEcuadorTeams },
+  { id: 'paraguayPrimera', fn: getParaguayTeams }, { id: 'peruLiga1', fn: getPeruTeams },
+  { id: 'boliviaPrimera', fn: getBoliviaTeams }, { id: 'venezuelaPrimera', fn: getVenezuelaTeams },
 ];
+
+const getAllTeams = () => {
+  const result = [];
+  for (const { id, fn } of LEAGUE_GETTERS) {
+    const teams = fn();
+    for (const t of teams) {
+      result.push({ ...t, leagueId: t.leagueId || t.league || id });
+    }
+  }
+  return result;
+};
 import Sidebar from '../Sidebar/Sidebar';
 import MobileNav from '../MobileNav/MobileNav';
 import Plantilla from '../Plantilla/Plantilla';
@@ -69,6 +89,7 @@ import {
   UserRound,
   Loader
 } from 'lucide-react';
+import SimulationSummary from '../SimulationSummary/SimulationSummary';
 import RankedTimer from '../Ranked/RankedTimer';
 import { submitRoundConfig, advancePhase as advanceRankedPhase, onMatchChange } from '../../firebase/rankedService';
 import { useAuth } from '../../context/AuthContext';
@@ -87,6 +108,8 @@ export default function Office() {
   const [noPlayersWarned, setNoPlayersWarned] = useState(false);
   const [showNoPlayersWarning, setShowNoPlayersWarning] = useState(false);
   const [simProgress, setSimProgress] = useState(null); // { current, total, week }
+  const [simSummaryData, setSimSummaryData] = useState(null);
+  const snapshotRef = useRef(null); // stores pre-simulation snapshot
   const isMobile = window.innerWidth <= 768;
   const isRanked = state.gameMode === 'ranked' && !!state.rankedMatchId;
   
@@ -133,6 +156,23 @@ export default function Office() {
     return () => unsub();
   }, [isRanked, state.rankedMatchId]);
   
+  // Build simulation summary when week advances and snapshot exists (NOT for ranked)
+  useEffect(() => {
+    if (snapshotRef.current && !simulating && !isRanked) {
+      const snap = snapshotRef.current;
+      snapshotRef.current = null;
+      try {
+        const summary = buildSummaryData(snap, state, { simWeek: state.currentWeek - 1, weekRange: snap.weekRange });
+        // Only show if there's something interesting
+        if (summary.playerMatch || summary.newInjuries.length || summary.recovered.length || summary.leagueResults.length) {
+          setSimSummaryData(summary);
+        }
+      } catch (err) {
+        console.error('Error building simulation summary:', err);
+      }
+    }
+  }, [state.currentWeek, simulating]);
+
   // Detectar si la temporada ha terminado
   const playerLeagueId = state.playerLeagueId || 'laliga';
   const leagueIsOver = !state.preseasonPhase && state.fixtures?.length > 0 && isSeasonOver(state.fixtures, playerLeagueId);
@@ -186,6 +226,88 @@ export default function Office() {
     return players.filter(p => 
       lineupNames.includes(p.name) && p.suspended && p.suspensionMatches > 0
     );
+  };
+
+  // Snapshot state before simulation for comparison
+  const takeSnapshot = () => ({
+    players: (state.team?.players || []).map(p => ({ name: p.name, injured: p.injured, injuryWeeksLeft: p.injuryWeeksLeft || 0 })),
+    standing: state.leagueTable.findIndex(t => t.teamId === state.teamId) + 1,
+  });
+
+  // Build summary data by comparing before/after snapshots
+  const buildSummaryData = (snapshot, afterState, extras = {}) => {
+    const afterPlayers = afterState.team?.players || [];
+    const afterStanding = afterState.leagueTable.findIndex(t => t.teamId === afterState.teamId) + 1;
+
+    // New injuries: players who weren't injured before but are now
+    const prevInjuredSet = new Set(snapshot.players.filter(p => p.injured).map(p => p.name));
+    const newInjuries = afterPlayers
+      .filter(p => p.injured && p.injuryWeeksLeft > 0 && !prevInjuredSet.has(p.name))
+      .map(p => ({ name: p.name, weeksOut: p.injuryWeeksLeft }));
+
+    // Recovered: players who were injured before but aren't now
+    const recovered = snapshot.players
+      .filter(p => p.injured && p.injuryWeeksLeft > 0)
+      .map(p => p.name)
+      .filter(name => {
+        const after = afterPlayers.find(ap => ap.name === name);
+        return after && !after.injured;
+      });
+
+    // League results (current week fixtures that are played, excluding player's)
+    const currentWeekFixtures = (afterState.fixtures || []).filter(f =>
+      f.played && f.week === (extras.simWeek || afterState.currentWeek - 1)
+    );
+    const otherResults = currentWeekFixtures
+      .filter(f => f.homeTeam !== afterState.teamId && f.awayTeam !== afterState.teamId)
+      .slice(0, 5)
+      .map(f => {
+        const homeName = afterState.leagueTable.find(t => t.teamId === f.homeTeam)?.teamName || f.homeTeam;
+        const awayName = afterState.leagueTable.find(t => t.teamId === f.awayTeam)?.teamName || f.awayTeam;
+        return { homeTeam: homeName, awayTeam: awayName, homeScore: f.homeScore, awayScore: f.awayScore };
+      });
+
+    // Player match
+    const playerFixture = currentWeekFixtures.find(f =>
+      f.homeTeam === afterState.teamId || f.awayTeam === afterState.teamId
+    );
+    let playerMatch = extras.playerMatch || null;
+    if (!playerMatch && playerFixture) {
+      const isHome = playerFixture.homeTeam === afterState.teamId;
+      const homeName = afterState.leagueTable.find(t => t.teamId === playerFixture.homeTeam)?.teamName || playerFixture.homeTeam;
+      const awayName = afterState.leagueTable.find(t => t.teamId === playerFixture.awayTeam)?.teamName || playerFixture.awayTeam;
+      playerMatch = {
+        homeTeam: homeName, awayTeam: awayName,
+        homeScore: playerFixture.homeScore, awayScore: playerFixture.awayScore,
+        isHome, events: playerFixture.events || []
+      };
+    }
+
+    // Cards from match events
+    const cards = { yellow: [], red: [] };
+    if (playerFixture?.events) {
+      const playerSide = playerFixture.homeTeam === afterState.teamId ? 'home' : 'away';
+      playerFixture.events.forEach(e => {
+        if (e.team === playerSide) {
+          const playerName = typeof e.player === 'string' ? e.player : (e.player?.name || e.playerName || '?');
+          if (e.type === 'yellowCard' || e.type === 'yellow_card') cards.yellow.push(playerName);
+          if (e.type === 'redCard' || e.type === 'red_card') cards.red.push(playerName);
+        }
+      });
+    }
+
+    return {
+      playerMatch,
+      leagueResults: otherResults,
+      cupResult: extras.cupResult || null,
+      europeanResult: extras.europeanResult || null,
+      newInjuries,
+      recovered,
+      cards,
+      standingBefore: snapshot.standing,
+      standingAfter: afterStanding,
+      weekRange: extras.weekRange || null,
+    };
   };
 
   const handleAdvanceWeek = () => {
@@ -273,31 +395,31 @@ export default function Office() {
       f.homeTeam === state.teamId || f.awayTeam === state.teamId
     );
     
-    // DEBUG
-    console.log('handleAdvanceWeek DEBUG:', {
-      teamId: state.teamId,
-      currentWeek: state.currentWeek,
-      totalFixtures: state.fixtures?.length,
-      weekFixturesCount: weekFixtures.length,
-      weekFixtures: weekFixtures.slice(0, 3),
-      playerMatch: playerMatch,
-      allTeamsCount: allTeamsMemo.length,
-      seasonOver: seasonOver,
-      pendingEuropeanMatch: state.pendingEuropeanMatch ? 'yes' : 'no'
-    });
     
-    if (state.pendingCupMatch) {
-      // Cup match takes priority
+    // Helper: check if player's team is involved in a pending match
+    const isPlayerInMatch = (pm) => {
+      if (!pm) return false;
+      const ids = [pm.homeTeamId, pm.awayTeamId, pm.homeTeam?.teamId, pm.awayTeam?.teamId, pm.team1?.teamId, pm.team2?.teamId];
+      return ids.includes(state.teamId);
+    };
+
+    if (state.pendingCupMatch && isPlayerInMatch(state.pendingCupMatch)) {
+      // Cup match takes priority (only if player is involved)
       setShowMatch(true);
-    } else if (state.pendingEuropeanMatch) {
-      // European match takes priority (midweek before weekend league match)
+    } else if (state.pendingEuropeanMatch && isPlayerInMatch(state.pendingEuropeanMatch)) {
+      // European match takes priority (only if player is involved)
       setShowMatch(true);
-    } else if (state.pendingSAMatch) {
-      // SA match takes priority (same logic as European)
+    } else if (state.pendingSAMatch && isPlayerInMatch(state.pendingSAMatch)) {
+      // SA match takes priority (only if player is involved)
       setShowMatch(true);
+    } else if (state.pendingCupMatch || state.pendingEuropeanMatch || state.pendingSAMatch) {
+      // Pending match exists but player NOT involved — auto-resolve via ADVANCE_WEEK
+      snapshotRef.current = takeSnapshot();
+      dispatch({ type: 'ADVANCE_WEEK' });
     } else if (playerMatch) {
       setShowMatch(true);
     } else {
+      snapshotRef.current = takeSnapshot();
       const result = simulateOtherMatches();
       dispatch({ type: 'SET_FIXTURES', payload: result.fixtures });
       dispatch({ type: 'SET_LEAGUE_TABLE', payload: result.table });
@@ -329,6 +451,9 @@ export default function Office() {
       // - After a league match: we know fixtures were updated, skip stale check
       // - After cup/european: check if there's a pending league match (stale is OK here
       //   because the league fixture wasn't touched)
+      
+      // Capture snapshot before ADVANCE_WEEK for summary modal
+      snapshotRef.current = takeSnapshot();
       
       if (completedMatchType === 'league') {
         // League match done — MatchDay already simulated other matches and dispatched
@@ -377,6 +502,10 @@ export default function Office() {
     if (state.pendingCupMatch) return;
     if (state.pendingEuropeanMatch) return;
     if (state.pendingSAMatch) return;
+    
+    // Capture pre-simulation snapshot for summary
+    const preSimSnapshot = takeSnapshot();
+    preSimSnapshot.weekRange = { from: state.currentWeek, to: state.currentWeek + numWeeks };
     
     setSimulating(true);
     dispatch({ type: 'SET_SIMULATING', payload: true });
@@ -709,6 +838,9 @@ export default function Office() {
       await new Promise(resolve => setTimeout(resolve, 30));
     }
     
+    // Set snapshot for summary modal (useEffect will pick it up when state updates)
+    snapshotRef.current = preSimSnapshot;
+    
     setSimulating(false);
     dispatch({ type: 'SET_SIMULATING', payload: false });
     setSimProgress(null);
@@ -856,7 +988,7 @@ export default function Office() {
         </div>
         
         {/* Barra de confianza del míster */}
-        {!state.preseasonPhase && state.currentWeek > 5 && !isRanked && (
+        {!state.preseasonPhase && state.currentWeek > 5 && !isRanked && state.gameMode !== 'promanager' && (
           <div className="office__confidence" style={{
             margin: '0 0 1.5rem',
             padding: '0.75rem 1rem',
@@ -1159,6 +1291,11 @@ export default function Office() {
           {renderContent()}
         </div>
       </main>
+      
+      {/* Simulation Summary Modal */}
+      {simSummaryData && (
+        <SimulationSummary data={simSummaryData} onClose={() => setSimSummaryData(null)} />
+      )}
       
       {/* Simulation Progress Modal */}
       {simProgress && !isRanked && (

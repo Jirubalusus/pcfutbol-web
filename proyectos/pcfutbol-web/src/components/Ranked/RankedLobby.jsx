@@ -122,7 +122,7 @@ export default function RankedLobby() {
   const handleCancelSearch = async () => {
     setSearching(false);
     if (user?.uid) {
-      try { await leaveQueue(user.uid); } catch (e) {}
+      try { await leaveQueue(user.uid); } catch (e) { console.warn('Failed to leave queue:', e); }
     }
   };
 
@@ -152,7 +152,7 @@ export default function RankedLobby() {
         <button className="ranked-lobby__back" onClick={() => dispatch({ type: 'SET_SCREEN', payload: 'menu' })}>
           <ArrowLeft size={20} />
         </button>
-        <h1><Swords size={24} /> Ranked 1v1</h1>
+        <h1><Swords size={24} /> {t('ranked.title')}</h1>
       </div>
 
       {/* Rank Card */}

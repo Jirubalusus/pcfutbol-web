@@ -808,28 +808,28 @@ export default function MatchDay({ onComplete }) {
             <div className="match-day__comparison">
               <div className="comparison-row">
                 <span className="home-val">{Math.round(playerStrength.overall)}</span>
-                <span className="label">Fuerza Global</span>
+                <span className="label">{t('matchday.overallStrength')}</span>
                 <span className="away-val">{Math.round(opponentStrength.overall)}</span>
               </div>
               <div className="comparison-row">
                 <span className="home-val">{Math.round(isHome ? playerStrength.attack : opponentStrength.attack)}</span>
-                <span className="label">Ataque</span>
+                <span className="label">{t('matchday.attack')}</span>
                 <span className="away-val">{Math.round(isHome ? opponentStrength.attack : playerStrength.attack)}</span>
               </div>
               <div className="comparison-row">
                 <span className="home-val">{Math.round(isHome ? playerStrength.defense : opponentStrength.defense)}</span>
-                <span className="label">Defensa</span>
+                <span className="label">{t('matchday.defense')}</span>
                 <span className="away-val">{Math.round(isHome ? opponentStrength.defense : playerStrength.defense)}</span>
               </div>
             </div>
             
             <div className="match-day__tactics">
               <div className="tactic-info">
-                <span className="label">Tu formación:</span>
+                <span className="label">{t('matchday.yourFormation')}:</span>
                 <span className="value">{state.formation}</span>
               </div>
               <div className="tactic-info">
-                <span className="label">Tu táctica:</span>
+                <span className="label">{t('matchday.yourTactic')}:</span>
                 <span className="value">{TACTICS[state.tactic]?.name || 'Equilibrado'}</span>
               </div>
             </div>
@@ -869,7 +869,7 @@ export default function MatchDay({ onComplete }) {
             <div className="match-day__live-stats">
               <div className="stat">
                 <div className="bar home" style={{ width: `${matchResult.stats.possession.home}%` }}></div>
-                <span className="label">Posesión</span>
+                <span className="label">{t('matchday.possession')}</span>
                 <div className="bar away" style={{ width: `${matchResult.stats.possession.away}%` }}></div>
               </div>
             </div>
@@ -970,7 +970,7 @@ export default function MatchDay({ onComplete }) {
             
             {/* Stats with visual bars */}
             <div className="result-stats">
-              <h4>Estadísticas</h4>
+              <h4>{t('matchday.statistics')}</h4>
               {statRows.map((row, idx) => {
                 const total = (row.home + row.away) || 1;
                 const homePct = row.isPercent ? row.home : (row.home / total) * 100;

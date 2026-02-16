@@ -11,7 +11,7 @@ import './LeagueTable.scss';
 const LEAGUE_ZONES = {
   // === ESPAÑA ===
   laliga: {
-    name: 'Liga Ibérica',
+    nameKey: 'leagues.laliga',
     champions: [1, 2, 3, 4],
     europaLeague: [5, 6],
     conference: [7],
@@ -19,14 +19,14 @@ const LEAGUE_ZONES = {
     teams: 20
   },
   segunda: {
-    name: 'Segunda División',
+    nameKey: 'leagues.segunda',
     promotion: [1, 2],
     playoff: [3, 4, 5, 6],
     relegation: [19, 20, 21, 22],
     teams: 22
   },
   primeraRFEF: {
-    name: 'Primera Federación',
+    nameKey: 'leagues.primeraRFEF',
     isGroupLeague: true,
     promotion: [1],
     playoff: [2, 3, 4, 5],
@@ -35,7 +35,7 @@ const LEAGUE_ZONES = {
     teams: 0
   },
   segundaRFEF: {
-    name: 'Segunda Federación',
+    nameKey: 'leagues.segundaRFEF',
     isGroupLeague: true,
     promotion: [1],
     playoff: [2, 3, 4, 5],
@@ -44,7 +44,7 @@ const LEAGUE_ZONES = {
   },
   // === TOP 5 LIGAS ===
   premierLeague: {
-    name: 'First League',
+    nameKey: 'leagues.premierLeague',
     champions: [1, 2, 3, 4],
     europaLeague: [5],
     conference: [6, 7],
@@ -52,7 +52,7 @@ const LEAGUE_ZONES = {
     teams: 20
   },
   serieA: {
-    name: 'Calcio League',
+    nameKey: 'leagues.serieA',
     champions: [1, 2, 3, 4],
     europaLeague: [5, 6],
     conference: [7],
@@ -60,7 +60,7 @@ const LEAGUE_ZONES = {
     teams: 20
   },
   bundesliga: {
-    name: 'Erste Liga',
+    nameKey: 'leagues.bundesliga',
     champions: [1, 2, 3, 4],
     europaLeague: [5, 6],
     conference: [7],
@@ -68,7 +68,7 @@ const LEAGUE_ZONES = {
     teams: 18
   },
   ligue1: {
-    name: 'Division Première',
+    nameKey: 'leagues.ligue1',
     champions: [1, 2, 3],
     europaLeague: [4],
     conference: [5],
@@ -77,28 +77,28 @@ const LEAGUE_ZONES = {
   },
   // === SEGUNDAS DIVISIONES ===
   championship: {
-    name: 'Second League',
+    nameKey: 'leagues.championship',
     promotion: [1, 2],
     playoff: [3, 4, 5, 6],
     relegation: [22, 23, 24],
     teams: 24
   },
   serieB: {
-    name: 'Calcio B',
+    nameKey: 'leagues.serieB',
     promotion: [1, 2],
     playoff: [3, 4, 5, 6, 7, 8],
     relegation: [18, 19, 20],
     teams: 20
   },
   bundesliga2: {
-    name: 'Zweite Liga',
+    nameKey: 'leagues.bundesliga2',
     promotion: [1, 2],
     playoff: [3],
     relegation: [16, 17, 18],
     teams: 18
   },
   ligue2: {
-    name: 'Division Seconde',
+    nameKey: 'leagues.ligue2',
     promotion: [1, 2],
     playoff: [3, 4, 5],
     relegation: [16, 17, 18],
@@ -106,7 +106,7 @@ const LEAGUE_ZONES = {
   },
   // === OTRAS LIGAS EUROPEAS ===
   eredivisie: {
-    name: 'Dutch First',
+    nameKey: 'leagues.eredivisie',
     champions: [1],
     europaLeague: [2, 3],
     conference: [4],
@@ -114,7 +114,7 @@ const LEAGUE_ZONES = {
     teams: 18
   },
   primeiraLiga: {
-    name: 'Liga Lusitana',
+    nameKey: 'leagues.primeiraLiga',
     champions: [1],
     europaLeague: [2, 3],
     conference: [4],
@@ -122,7 +122,7 @@ const LEAGUE_ZONES = {
     teams: 18
   },
   belgianPro: {
-    name: 'Belgian First',
+    nameKey: 'leagues.belgianPro',
     champions: [1],
     europaLeague: [2],
     conference: [3],
@@ -130,7 +130,7 @@ const LEAGUE_ZONES = {
     teams: 16
   },
   superLig: {
-    name: 'Anatolian League',
+    nameKey: 'leagues.superLig',
     champions: [1],
     europaLeague: [2, 3],
     conference: [4],
@@ -138,7 +138,7 @@ const LEAGUE_ZONES = {
     teams: 18
   },
   scottishPrem: {
-    name: 'Highland League',
+    nameKey: 'leagues.scottishPrem',
     champions: [1],
     europaLeague: [2],
     conference: [3],
@@ -146,7 +146,7 @@ const LEAGUE_ZONES = {
     teams: 12
   },
   swissSuperLeague: {
-    name: 'Alpine League',
+    nameKey: 'leagues.swissSuperLeague',
     champions: [1],
     europaLeague: [2],
     conference: [3],
@@ -154,7 +154,7 @@ const LEAGUE_ZONES = {
     teams: 12
   },
   austrianBundesliga: {
-    name: 'Erste Liga (AT)',
+    nameKey: 'leagues.austrianBundesliga',
     champions: [1],
     europaLeague: [2],
     conference: [3],
@@ -162,7 +162,7 @@ const LEAGUE_ZONES = {
     teams: 12
   },
   greekSuperLeague: {
-    name: 'Super League',
+    nameKey: 'leagues.greekSuperLeague',
     champions: [1],
     europaLeague: [2],
     conference: [3],
@@ -170,7 +170,7 @@ const LEAGUE_ZONES = {
     teams: 14
   },
   danishSuperliga: {
-    name: 'Superligaen',
+    nameKey: 'leagues.danishSuperliga',
     champions: [1],
     europaLeague: [2],
     conference: [3],
@@ -178,7 +178,7 @@ const LEAGUE_ZONES = {
     teams: 12
   },
   croatianLeague: {
-    name: 'HNL',
+    nameKey: 'leagues.croatianLeague',
     champions: [1],
     europaLeague: [2],
     conference: [3],
@@ -186,7 +186,7 @@ const LEAGUE_ZONES = {
     teams: 10
   },
   czechLeague: {
-    name: 'Chance Liga',
+    nameKey: 'leagues.czechLeague',
     champions: [1],
     europaLeague: [2],
     conference: [3],
@@ -195,77 +195,77 @@ const LEAGUE_ZONES = {
   },
   // === SOUTH AMERICA ===
   argentinaPrimera: {
-    name: 'Liga Profesional',
+    nameKey: 'leagues.argentinaPrimera',
     libertadores: [1, 2, 3, 4],
     sudamericana: [5, 6],
     relegation: [25, 26, 27, 28],
     teams: 28
   },
   brasileiraoA: {
-    name: 'Série A',
+    nameKey: 'leagues.brasileiraoA',
     libertadores: [1, 2, 3, 4],
     sudamericana: [5, 6, 7, 8],
     relegation: [17, 18, 19, 20],
     teams: 20
   },
   colombiaPrimera: {
-    name: 'Liga BetPlay',
+    nameKey: 'leagues.colombiaPrimera',
     libertadores: [1, 2, 3],
     sudamericana: [4, 5, 6],
     relegation: [18, 19, 20],
     teams: 20
   },
   chilePrimera: {
-    name: 'Primera División (CL)',
+    nameKey: 'leagues.chilePrimera',
     libertadores: [1, 2],
     sudamericana: [3, 4],
     relegation: [14, 15, 16],
     teams: 16
   },
   uruguayPrimera: {
-    name: 'Primera División (UY)',
+    nameKey: 'leagues.uruguayPrimera',
     libertadores: [1, 2],
     sudamericana: [3, 4],
     relegation: [14, 15, 16],
     teams: 16
   },
   ecuadorLigaPro: {
-    name: 'LigaPro',
+    nameKey: 'leagues.ecuadorLigaPro',
     libertadores: [1, 2],
     sudamericana: [3, 4],
     relegation: [14, 15, 16],
     teams: 16
   },
   paraguayPrimera: {
-    name: 'División de Honor',
+    nameKey: 'leagues.paraguayPrimera',
     libertadores: [1],
     sudamericana: [2, 3],
     relegation: [11, 12],
     teams: 12
   },
   peruLiga1: {
-    name: 'Liga 1',
+    nameKey: 'leagues.peruLiga1',
     libertadores: [1, 2],
     sudamericana: [3, 4],
     relegation: [16, 17, 18],
     teams: 18
   },
   boliviaPrimera: {
-    name: 'División Profesional',
+    nameKey: 'leagues.boliviaPrimera',
     libertadores: [1],
     sudamericana: [2, 3],
     relegation: [14, 15, 16],
     teams: 16
   },
   venezuelaPrimera: {
-    name: 'Liga FUTVE',
+    nameKey: 'leagues.venezuelaPrimera',
     libertadores: [1, 2],
     sudamericana: [3, 4],
     relegation: [16, 17, 18],
     teams: 18
   },
   ligaMX: {
-    name: 'Liga MX',
+    nameKey: 'leagues.ligaMX',
     libertadores: [1, 2, 3, 4],
     sudamericana: [5, 6],
     relegation: [16, 17, 18],
@@ -477,7 +477,7 @@ export default function LeagueTable() {
   
   // Función para generar iniciales estilizadas
   const getTeamInitials = (name) => {
-    if (!name) return '??';
+    if (!name) return '—';
     const words = name.split(' ').filter(w => !['CF', 'FC', 'CD', 'UD', 'RC', 'SD', 'CA', 'Real', 'Atlético', 'Athletic', 'Deportivo'].includes(w));
     if (words.length === 0) return name.substring(0, 3).toUpperCase();
     if (words.length === 1) return words[0].substring(0, 3).toUpperCase();
@@ -514,51 +514,51 @@ export default function LeagueTable() {
             searchPlaceholder={t('leagueTable.searchLeague')}
             options={[
               { group: t('leagueTable.countries.spain'), icon: '🇪🇸', items: [
-                { value: 'laliga', label: 'Liga Ibérica' },
-                { value: 'segunda', label: 'Segunda Ibérica' },
-                { value: 'primeraRFEF', label: 'Primera Federación' },
-                { value: 'segundaRFEF', label: 'Segunda Federación' },
+                { value: 'laliga', label: t('leagues.laliga') },
+                { value: 'segunda', label: t('leagues.segunda') },
+                { value: 'primeraRFEF', label: t('leagues.primeraRFEF') },
+                { value: 'segundaRFEF', label: t('leagues.segundaRFEF') },
               ]},
               { group: t('leagueTable.countries.england'), icon: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', items: [
-                { value: 'premierLeague', label: 'First League' },
-                { value: 'championship', label: 'Second League' },
+                { value: 'premierLeague', label: t('leagues.premierLeague') },
+                { value: 'championship', label: t('leagues.championship') },
               ]},
               { group: t('leagueTable.countries.italy'), icon: '🇮🇹', items: [
-                { value: 'serieA', label: 'Calcio League' },
-                { value: 'serieB', label: 'Calcio B' },
+                { value: 'serieA', label: t('leagues.serieA') },
+                { value: 'serieB', label: t('leagues.serieB') },
               ]},
               { group: t('leagueTable.countries.germany'), icon: '🇩🇪', items: [
-                { value: 'bundesliga', label: 'Erste Liga' },
-                { value: 'bundesliga2', label: 'Zweite Liga' },
+                { value: 'bundesliga', label: t('leagues.bundesliga') },
+                { value: 'bundesliga2', label: t('leagues.bundesliga2') },
               ]},
               { group: t('leagueTable.countries.france'), icon: '🇫🇷', items: [
-                { value: 'ligue1', label: 'Division Première' },
-                { value: 'ligue2', label: 'Division Seconde' },
+                { value: 'ligue1', label: t('leagues.ligue1') },
+                { value: 'ligue2', label: t('leagues.ligue2') },
               ]},
               { group: t('leagueTable.countries.restOfEurope'), icon: '🌍', items: [
-                { value: 'eredivisie', icon: '🇳🇱', label: 'Dutch First' },
-                { value: 'primeiraLiga', icon: '🇵🇹', label: 'Liga Lusitana' },
-                { value: 'belgianPro', icon: '🇧🇪', label: 'Belgian First' },
-                { value: 'superLig', icon: '🇹🇷', label: 'Anatolian League' },
-                { value: 'scottishPrem', icon: '🏴󠁧󠁢󠁳󠁣󠁴󠁿', label: 'Highland League' },
-                { value: 'swissSuperLeague', icon: '🇨🇭', label: 'Alpine League' },
-                { value: 'austrianBundesliga', icon: '🇦🇹', label: 'Erste Liga (AT)' },
-                { value: 'greekSuperLeague', icon: '🇬🇷', label: 'Super League' },
-                { value: 'danishSuperliga', icon: '🇩🇰', label: 'Superligaen' },
-                { value: 'croatianLeague', icon: '🇭🇷', label: 'HNL' },
-                { value: 'czechLeague', icon: '🇨🇿', label: 'Chance Liga' },
+                { value: 'eredivisie', icon: '🇳🇱', label: t('leagues.eredivisie') },
+                { value: 'primeiraLiga', icon: '🇵🇹', label: t('leagues.primeiraLiga') },
+                { value: 'belgianPro', icon: '🇧🇪', label: t('leagues.belgianPro') },
+                { value: 'superLig', icon: '🇹🇷', label: t('leagues.superLig') },
+                { value: 'scottishPrem', icon: '🏴󠁧󠁢󠁳󠁣󠁴󠁿', label: t('leagues.scottishPrem') },
+                { value: 'swissSuperLeague', icon: '🇨🇭', label: t('leagues.swissSuperLeague') },
+                { value: 'austrianBundesliga', icon: '🇦🇹', label: t('leagues.austrianBundesliga') },
+                { value: 'greekSuperLeague', icon: '🇬🇷', label: t('leagues.greekSuperLeague') },
+                { value: 'danishSuperliga', icon: '🇩🇰', label: t('leagues.danishSuperliga') },
+                { value: 'croatianLeague', icon: '🇭🇷', label: t('leagues.croatianLeague') },
+                { value: 'czechLeague', icon: '🇨🇿', label: t('leagues.czechLeague') },
               ]},
               { group: t('leagueTable.countries.southAmerica'), icon: '🌎', items: [
-                { value: 'argentinaPrimera', icon: '🇦🇷', label: 'Liga Profesional' },
-                { value: 'brasileiraoA', icon: '🇧🇷', label: 'Série A' },
-                { value: 'colombiaPrimera', icon: '🇨🇴', label: 'Liga BetPlay' },
-                { value: 'chilePrimera', icon: '🇨🇱', label: 'Primera División' },
-                { value: 'uruguayPrimera', icon: '🇺🇾', label: 'Primera División' },
-                { value: 'ecuadorLigaPro', icon: '🇪🇨', label: 'LigaPro' },
-                { value: 'paraguayPrimera', icon: '🇵🇾', label: 'División de Honor' },
-                { value: 'peruLiga1', icon: '🇵🇪', label: 'Liga 1' },
-                { value: 'boliviaPrimera', icon: '🇧🇴', label: 'Div. Profesional' },
-                { value: 'venezuelaPrimera', icon: '🇻🇪', label: 'Liga FUTVE' },
+                { value: 'argentinaPrimera', icon: '🇦🇷', label: t('leagues.argentinaPrimera') },
+                { value: 'brasileiraoA', icon: '🇧🇷', label: t('leagues.brasileiraoA') },
+                { value: 'colombiaPrimera', icon: '🇨🇴', label: t('leagues.colombiaPrimera') },
+                { value: 'chilePrimera', icon: '🇨🇱', label: t('leagues.chilePrimera') },
+                { value: 'uruguayPrimera', icon: '🇺🇾', label: t('leagues.uruguayPrimera') },
+                { value: 'ecuadorLigaPro', icon: '🇪🇨', label: t('leagues.ecuadorLigaPro') },
+                { value: 'paraguayPrimera', icon: '🇵🇾', label: t('leagues.paraguayPrimera') },
+                { value: 'peruLiga1', icon: '🇵🇪', label: t('leagues.peruLiga1') },
+                { value: 'boliviaPrimera', icon: '🇧🇴', label: t('leagues.boliviaPrimera') },
+                { value: 'venezuelaPrimera', icon: '🇻🇪', label: t('leagues.venezuelaPrimera') },
               ]},
             ]}
           />
@@ -732,13 +732,6 @@ export default function LeagueTable() {
                       </span>
                       <span className="team-info">
                         <span className="team-name">{team.teamName}</span>
-                        {(team.form || []).length > 0 && (
-                          <span className="team-form-mobile">
-                            {(team.form || []).slice(-5).map((f, i) => (
-                              <span key={i} className={`form-pip form-${f?.toLowerCase()}`} />
-                            ))}
-                          </span>
-                        )}
                       </span>
                     </span>
                     <span className="col-pj">{team.played || 0}</span>

@@ -636,9 +636,9 @@ export default function Stadium() {
                     <div className="fill" style={{ width: `${(calculatedSeasonTickets / maxSeasonTickets) * 100}%` }}></div>
                   </div>
                   <div className="abonados-factors">
-                    <span title="Overall medio">⭐ {teamOverall}</span>
-                    <span title="Posición liga"><BarChart3 size={12} /> {teamPosition}º</span>
-                    <span title="Reputación"><Trophy size={12} /> {teamReputation}</span>
+                    <span title={t('stadium.avgOverall')}>⭐ {teamOverall}</span>
+                    <span title={t('stadium.leaguePosition')}><BarChart3 size={12} /> {teamPosition}º</span>
+                    <span title={t('stadium.reputation')}><Trophy size={12} /> {teamReputation}</span>
                   </div>
                 </div>
                 

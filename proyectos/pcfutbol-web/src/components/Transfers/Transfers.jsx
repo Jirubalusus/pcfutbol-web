@@ -25,6 +25,7 @@ import TransferMap from './TransferMap';
 import { Star, Circle, Zap, Globe, X, ShoppingCart, ClipboardList, DollarSign, Mail, Inbox, Search, Settings, Flame, AlertTriangle, Info, MessageSquare, Target, Calendar, Check, XCircle, CheckCircle } from 'lucide-react';
 import { getLeagueTier, getMaxTierJumpByAge, getPositionPerformanceMultiplier, getTransferValueMultiplier } from '../../game/leagueTiers';
 import { LEAGUE_CONFIG } from '../../game/multiLeagueEngine';
+import { useTranslation } from 'react-i18next';
 import './Transfers.scss';
 import './TransferMap.scss';
 
@@ -55,16 +56,16 @@ function getTeamsByLeague(league) {
 
 // === CONSTANTES DEL MERCADO ===
 const TRANSFER_WINDOWS = {
-  summer: { start: 1, end: 8, name: 'Mercado de Verano', urgent: 7 },
-  winter: { start: 20, end: 24, name: 'Mercado de Invierno', urgent: 23 }
+  summer: { start: 1, end: 8, nameKey: 'transfers.summerMarket', urgent: 7 },
+  winter: { start: 20, end: 24, nameKey: 'transfers.winterMarket', urgent: 23 }
 };
 
 const PLAYER_ROLES = {
-  star: { name: 'Estrella', icon: <Star size={14} style={{fill:'currentColor'}} />, minutesPromise: 90, salaryMultiplier: 1.3 },
-  starter: { name: 'Titular', icon: <Circle size={14} style={{fill:'#30d158',color:'#30d158'}} />, minutesPromise: 75, salaryMultiplier: 1.1 },
-  rotation: { name: 'Rotación', icon: <Circle size={14} style={{fill:'#ffd60a',color:'#ffd60a'}} />, minutesPromise: 50, salaryMultiplier: 1.0 },
-  backup: { name: 'Suplente', icon: <Circle size={14} style={{fill:'#ff9f0a',color:'#ff9f0a'}} />, minutesPromise: 25, salaryMultiplier: 0.9 },
-  youth: { name: 'Proyecto', icon: <Circle size={14} style={{fill:'#3498db',color:'#3498db'}} />, minutesPromise: 15, salaryMultiplier: 0.8 }
+  star: { nameKey: 'transfers.roleStar', icon: <Star size={14} style={{fill:'currentColor'}} />, minutesPromise: 90, salaryMultiplier: 1.3 },
+  starter: { nameKey: 'transfers.roleStarter', icon: <Circle size={14} style={{fill:'#30d158',color:'#30d158'}} />, minutesPromise: 75, salaryMultiplier: 1.1 },
+  rotation: { nameKey: 'transfers.roleRotation', icon: <Circle size={14} style={{fill:'#ffd60a',color:'#ffd60a'}} />, minutesPromise: 50, salaryMultiplier: 1.0 },
+  backup: { nameKey: 'transfers.roleBackup', icon: <Circle size={14} style={{fill:'#ff9f0a',color:'#ff9f0a'}} />, minutesPromise: 25, salaryMultiplier: 0.9 },
+  youth: { nameKey: 'transfers.roleYouth', icon: <Circle size={14} style={{fill:'#3498db',color:'#3498db'}} />, minutesPromise: 15, salaryMultiplier: 0.8 }
 };
 
 // === UTILIDADES ===
@@ -144,7 +145,7 @@ const getTransferWindow = (week) => {
   if (week >= TRANSFER_WINDOWS.winter.start && week <= TRANSFER_WINDOWS.winter.end) {
     return { ...TRANSFER_WINDOWS.winter, isOpen: true, isUrgent: week >= TRANSFER_WINDOWS.winter.urgent };
   }
-  return { name: 'Mercado Cerrado', isOpen: false, isUrgent: false };
+  return { nameKey: 'transfers.marketClosed', isOpen: false, isUrgent: false };
 };
 
 // === COMPONENTE PRINCIPAL ===
@@ -270,7 +271,7 @@ export default function Transfers() {
         age,
         value,
         salary: Math.round(value * 0.0018 + 8000),
-        teamName: 'Agente Libre',
+        teamName: 'Free Agent',
         teamShortName: 'FREE',
         askingPrice: 0,
         isFreeAgent: true,
@@ -811,7 +812,7 @@ export default function Transfers() {
       payload: {
         id: Date.now(),
         type: 'transfer',
-        title: `Agente libre fichado`,
+        title: t('transfers.freeAgentSignedTitle'),
         content: `${player.name} firma como agente libre (prima: ${formatMoney(totalCost)})`,
         date: `Semana ${state.currentWeek}`
       }
@@ -1112,19 +1113,19 @@ export default function Transfers() {
       {/* Header con estado del mercado */}
       <div className="transfers__header">
         <div className="transfers__title-section">
-          <h2>Mercado de Fichajes</h2>
+          <h2>{t('transfers.marketTitle')}</h2>
           <div className={`transfers__window ${transferWindow.isOpen ? 'open' : 'closed'} ${transferWindow.isUrgent ? 'urgent' : ''}`}>
             {transferWindow.isUrgent && <span className="urgent-icon"><Zap size={14} /></span>}
             {transferWindow.name}
-            {transferWindow.isUrgent && <span className="urgent-text">¡Últimos días!</span>}
+            {transferWindow.isUrgent && <span className="urgent-text">{t('transfers.lastDays')}</span>}
           </div>
         </div>
         <div className="transfers__header-actions">
           <button className="map-btn" onClick={() => setShowMap(true)}>
-            <Globe size={14} /> Explorar Mapa
+            <Globe size={14} /> {t('transfers.exploreMap')}
           </button>
           <div className="transfers__budget">
-            <span className="label">Presupuesto:</span>
+            <span className="label">{t('transfers.budget')}:</span>
             <span className="value">{formatMoney(state.money)}</span>
           </div>
         </div>
@@ -1133,9 +1134,9 @@ export default function Transfers() {
       {/* Filtro de liga activo */}
       {selectedLeague && (
         <div className="transfers__league-filter">
-          <span className="label">Filtrando por:</span>
+          <span className="label">{t('transfers.filteringBy')}:</span>
           <span className="league">{LEAGUE_NAMES[selectedLeague]}</span>
-          <button className="clear" onClick={() => setSelectedLeague(null)}><X size={14} /> Quitar filtro</button>
+          <button className="clear" onClick={() => setSelectedLeague(null)}><X size={14} /> {t('transfers.removeFilter')}</button>
         </div>
       )}
       
@@ -1386,8 +1387,8 @@ export default function Transfers() {
           {(!state.transferOffers || state.transferOffers.length === 0) ? (
             <div className="transfers__empty">
               <span className="icon"><Inbox size={20} /></span>
-              <p>No tienes ofertas pendientes</p>
-              <p className="hint">Las ofertas llegan durante las ventanas de mercado</p>
+              <p>{t('transfers.noPendingOffers')}</p>
+              <p className="hint">{t('transfers.offersArriveDuringWindows')}</p>
             </div>
           ) : (
             <div className="transfers__offers-list">
@@ -1476,13 +1477,13 @@ export default function Transfers() {
               {!transferWindow.isOpen ? (
                 <div className="transfers__empty">
                   <span className="icon">🔒</span>
-                  <p>El mercado está cerrado</p>
-                  <p className="hint">Las cesiones solo se pueden realizar durante ventanas de mercado</p>
+                  <p>{t('transfers.marketIsClosed')}</p>
+                  <p className="hint">{t('transfers.loansOnlyDuringWindows')}</p>
                 </div>
               ) : loanCandidates.length === 0 ? (
                 <div className="transfers__empty">
                   <span className="icon">🤷</span>
-                  <p>No hay jugadores disponibles para cesión</p>
+                  <p>{t('transfers.noLoanPlayersAvailable')}</p>
                 </div>
               ) : (
                 <>
@@ -1536,7 +1537,7 @@ export default function Transfers() {
               {myLoanedOut.length === 0 ? (
                 <div className="transfers__empty">
                   <span className="icon">📤</span>
-                  <p>No tienes jugadores cedidos a otros equipos</p>
+                  <p>{t('transfers.noLoanedOutPlayers')}</p>
                 </div>
               ) : (
                 <div className="transfers__list">
@@ -1574,7 +1575,7 @@ export default function Transfers() {
               {myLoanedIn.length === 0 ? (
                 <div className="transfers__empty">
                   <span className="icon">📥</span>
-                  <p>No tienes jugadores en cesión recibidos</p>
+                  <p>{t('transfers.noLoanedInPlayers')}</p>
                 </div>
               ) : (
                 <div className="transfers__list">
@@ -1624,8 +1625,8 @@ export default function Transfers() {
               {pendingLoanOffers.length === 0 ? (
                 <div className="transfers__empty">
                   <span className="icon"><Inbox size={20} /></span>
-                  <p>No tienes ofertas de cesión pendientes</p>
-                  <p className="hint">Otros equipos pueden querer llevarse a tus jugadores en cesión</p>
+                  <p>{t('transfers.noLoanOffersPending')}</p>
+                  <p className="hint">{t('transfers.loanOffersHint')}</p>
                 </div>
               ) : (
                 <div className="transfers__offers-list">
@@ -1636,7 +1637,7 @@ export default function Transfers() {
                           <span className="badge">🤝</span>
                           <div className="team-info">
                             <span className="name">{offer.toTeamName}</span>
-                            <span className="reputation">Quiere cesión</span>
+                            <span className="reputation">{t('transfers.wantsLoan')}</span>
                           </div>
                         </div>
                       </div>
@@ -1892,7 +1893,7 @@ export default function Transfers() {
               {negotiation.aiCompetitors?.length > 0 && (
                 <div className="competitors-warning">
                   <span className="icon"><AlertTriangle size={16} /></span>
-                  <span>Otros equipos interesados: {negotiation.aiCompetitors.map(c => c.shortName).join(', ')}</span>
+                  <span>{t('transfers.otherTeamsInterested')}: {negotiation.aiCompetitors.map(c => c.shortName).join(', ')}</span>
                 </div>
               )}
               
@@ -1934,7 +1935,7 @@ export default function Transfers() {
                     <p>El club pide <strong>{formatMoney(negotiation.counterAmount)}</strong></p>
                     <p>Salario: <strong>{formatMoney(negotiation.counterSalary)}/sem</strong></p>
                     {negotiation.counterRole !== negotiation.promisedRole && (
-                      <p>El jugador quiere ser <strong>{PLAYER_ROLES[negotiation.counterRole]?.name}</strong></p>
+                      <p>{t('transfers.playerWantsRole')} <strong>{t(PLAYER_ROLES[negotiation.counterRole]?.nameKey)}</strong></p>
                     )}
                   </div>
                   <div className="counter-actions">

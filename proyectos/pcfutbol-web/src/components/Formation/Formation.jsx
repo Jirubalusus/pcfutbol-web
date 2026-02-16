@@ -1150,36 +1150,36 @@ function _TrainingModal_REMOVED({ onClose, players, facilities, dispatch, curren
   const intensities = [
     {
       id: 'light',
-      name: 'Suave',
+      name: t('training.intensityLightName'),
       risk: 5,
       boost: '+0.6%',
       color: '#30d158',
       gradient: 'linear-gradient(135deg, #30d158 0%, #28a745 100%)',
       icon: Activity,
-      desc: 'Recuperación activa',
-      details: 'Ideal para veteranos y post-lesión. Menos carga física, prioriza técnica.'
+      desc: t('training.intensityLightDesc'),
+      details: t('training.intensityLightDetails')
     },
     {
       id: 'normal',
-      name: 'Normal',
+      name: t('training.intensityNormalName'),
       risk: 15,
       boost: '+1.1%',
       color: '#ffd60a',
       gradient: 'linear-gradient(135deg, #ffd60a 0%, #f0ad4e 100%)',
       icon: Dumbbell,
-      desc: 'Equilibrio perfecto',
-      details: 'Balance entre progresión y riesgo. Recomendado para la mayoría de plantillas.'
+      desc: t('training.intensityNormalDesc'),
+      details: t('training.intensityNormalDetails')
     },
     {
       id: 'intense',
-      name: 'Intenso',
+      name: t('training.intensityIntenseName'),
       risk: 30,
       boost: '+1.7%',
       color: '#ff453a',
       gradient: 'linear-gradient(135deg, #ff453a 0%, #dc3545 100%)',
       icon: Zap,
-      desc: 'Máximo rendimiento',
-      details: 'Para plantillas jóvenes con buen centro médico. Alto riesgo, alta recompensa.'
+      desc: t('training.intensityIntenseDesc'),
+      details: t('training.intensityIntenseDetails')
     },
   ];
 

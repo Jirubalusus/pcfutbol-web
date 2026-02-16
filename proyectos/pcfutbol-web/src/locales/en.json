@@ -72,7 +72,10 @@
     "optionsButton": "Options",
     "editionButton": "Editor",
     "ranked": "Ranked 1v1",
-    "rankedSubtitle": "Compete against other players"
+    "rankedSubtitle": "Compete against other players",
+    "tabSolo": "Single Player",
+    "tabMulti": "Multiplayer",
+    "moreModesComingSoon": "More modes coming soon..."
   },
   "cup": {
     "noCupActive": "No active cup this season",
@@ -140,7 +143,10 @@
     "goToTransfersWarning": "Go to the transfer market and sign players before continuing. If you try to simulate again without having 11 players, <strong>you will lose the game</strong>.",
     "goToTransfers": "Go to Transfers",
     "manager": "Manager",
-    "welcomeName": "Welcome, {{name}}"
+    "welcomeName": "Welcome, {{name}}",
+    "form_W": "W",
+    "form_D": "D",
+    "form_L": "L"
   },
   "formation": {
     "title": "Formation",
@@ -555,7 +561,34 @@
     "persDescHomesick": "Prefers to stay close to home",
     "persDescProfessional": "Evaluates everything with balance",
     "persDescAdventurous": "Likes a change of scenery",
-    "newsTransferText": "Transfer news"
+    "newsTransferText": "Transfer news",
+    "summerMarket": "Summer Market",
+    "winterMarket": "Winter Market",
+    "marketClosed": "Market Closed",
+    "marketTitle": "Transfer Market",
+    "roleStar": "Star",
+    "roleStarter": "Starter",
+    "roleRotation": "Rotation",
+    "roleBackup": "Backup",
+    "roleYouth": "Youth",
+    "lastDays": "Last days!",
+    "exploreMap": "Explore Map",
+    "budget": "Budget",
+    "freeAgentSignedTitle": "Free agent signed",
+    "noLoanedOutPlayers": "You have no players loaned out",
+    "noLoanOffersPending": "You have no pending loan offers",
+    "loanOffersHint": "Other clubs may want to loan your players",
+    "wantsLoan": "Wants loan",
+    "otherTeamsInterested": "Other teams interested",
+    "playerWantsRole": "The player wants to be",
+    "filteringBy": "Filtering by",
+    "removeFilter": "Remove filter",
+    "noPendingOffers": "You have no pending offers",
+    "offersArriveDuringWindows": "Offers arrive during transfer windows",
+    "noLoanedInPlayers": "You have no loaned-in players",
+    "noLoanPlayersAvailable": "No players available for loan",
+    "marketIsClosed": "The market is closed",
+    "loansOnlyDuringWindows": "Loans can only be made during transfer windows"
   },
   "calendar": {
     "title": "Calendar",
@@ -620,7 +653,13 @@
     "injuryMinor": "Minor injury",
     "injuryModerate": "Moderate injury",
     "injurySerious": "Serious injury",
-    "noFormData": "No formation data"
+    "noFormData": "No formation data",
+    "overallStrength": "Overall Strength",
+    "attack": "Attack",
+    "defense": "Defense",
+    "yourFormation": "Your formation",
+    "yourTactic": "Your tactic",
+    "statistics": "Statistics"
   },
   "leagueTable": {
     "title": "League Table",
@@ -903,7 +942,10 @@
     "grassDescGood": "The grass is in good condition",
     "grassDescRegular": "The grass needs attention",
     "grassDescBad": "The grass is in poor condition",
-    "grassDescTerrible": "The grass is destroyed"
+    "grassDescTerrible": "The grass is destroyed",
+    "avgOverall": "Average overall",
+    "leaguePosition": "League position",
+    "reputation": "Reputation"
   },
   "training": {
     "title": "Training Intensity",
@@ -937,7 +979,16 @@
         "name": "Intense",
         "description": "Maximum progression, higher injury risk."
       }
-    }
+    },
+    "intensityLightName": "Light",
+    "intensityLightDesc": "Active recovery",
+    "intensityLightDetails": "Ideal for veterans and post-injury. Less physical load, prioritizes technique.",
+    "intensityNormalName": "Normal",
+    "intensityNormalDesc": "Perfect balance",
+    "intensityNormalDetails": "Balance between progression and risk. Recommended for most squads.",
+    "intensityIntenseName": "Intense",
+    "intensityIntenseDesc": "Maximum performance",
+    "intensityIntenseDetails": "For young squads with good medical center. High risk, high reward."
   },
   "settings": {
     "title": "Settings",
@@ -1699,7 +1750,8 @@
     "transferAccepted": "✅ Transfer accepted: {{player}}",
     "transferRejected": "❌ Transfer rejected: {{player}}",
     "transferCost": "Cost: {{price}}",
-    "transferClubReason": "🏢 Club: {{reason}} · 👤 Player: {{playerReason}}"
+    "transferClubReason": "🏢 Club: {{reason}} · 👤 Player: {{playerReason}}",
+    "title": "Ranked 1v1"
   },
   "lineup": {
     "treatmentsAvailable": "Treatments available",
@@ -1786,7 +1838,12 @@
       "retire": "Retire",
       "title": "End of season",
       "topFour": "Top 4",
-      "viewOffers": "View offers"
+      "viewOffers": "View offers",
+      "failed": "You failed to meet the objectives",
+      "champion": "Champion! Objectives far exceeded",
+      "exceeded": "You exceeded expectations",
+      "met": "Objectives met",
+      "close": "You came close to meeting objectives"
     },
     "startCareer": "Start career",
     "title": "Pro Manager",
@@ -1831,5 +1888,73 @@
     "superCup": "Super Cup",
     "victory": "Victory",
     "you": "You"
+  },
+  "leagues": {
+    "laliga": "Iberian League",
+    "segunda": "Second Iberian",
+    "primeraRFEF": "Primera Federación",
+    "segundaRFEF": "Segunda Federación",
+    "premierLeague": "First League",
+    "championship": "Second League",
+    "serieA": "Calcio League",
+    "serieB": "Calcio B",
+    "bundesliga": "Erste Liga",
+    "bundesliga2": "Zweite Liga",
+    "ligue1": "Division Première",
+    "ligue2": "Division Seconde",
+    "eredivisie": "Dutch First",
+    "primeiraLiga": "Liga Lusitana",
+    "belgianPro": "Belgian First",
+    "superLig": "Anatolian League",
+    "scottishPrem": "Highland League",
+    "swissSuperLeague": "Alpine League",
+    "austrianBundesliga": "Erste Liga (AT)",
+    "greekSuperLeague": "Super League",
+    "danishSuperliga": "Superligaen",
+    "croatianLeague": "HNL",
+    "czechLeague": "Chance Liga",
+    "argentinaPrimera": "Liga Profesional",
+    "brasileiraoA": "Série A",
+    "colombiaPrimera": "Liga BetPlay",
+    "chilePrimera": "Primera División (CL)",
+    "uruguayPrimera": "Primera División (UY)",
+    "ecuadorLigaPro": "LigaPro",
+    "paraguayPrimera": "División de Honor",
+    "peruLiga1": "Liga 1",
+    "boliviaPrimera": "División Profesional",
+    "venezuelaPrimera": "Liga FUTVE",
+    "ligaMX": "Liga MX"
+  },
+  "countries": {
+    "spain": "Spain",
+    "england": "England",
+    "italy": "Italy",
+    "germany": "Germany",
+    "france": "France",
+    "netherlands": "Netherlands",
+    "portugal": "Portugal",
+    "belgium": "Belgium",
+    "turkey": "Turkey",
+    "scotland": "Scotland",
+    "switzerland": "Switzerland",
+    "austria": "Austria",
+    "greece": "Greece",
+    "denmark": "Denmark",
+    "croatia": "Croatia",
+    "czech": "Czech Republic",
+    "argentina": "Argentina",
+    "brazil": "Brazil",
+    "colombia": "Colombia",
+    "chile": "Chile",
+    "uruguay": "Uruguay",
+    "ecuador": "Ecuador",
+    "paraguay": "Paraguay",
+    "peru": "Peru",
+    "bolivia": "Bolivia",
+    "venezuela": "Venezuela",
+    "usa": "United States",
+    "saudiArabia": "Saudi Arabia",
+    "mexico": "Mexico",
+    "japan": "Japan"
   }
 }

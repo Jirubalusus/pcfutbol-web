@@ -72,7 +72,10 @@
     "optionsButton": "Opciones",
     "editionButton": "Editor",
     "ranked": "Ranked 1v1",
-    "rankedSubtitle": "Compite contra otros jugadores"
+    "rankedSubtitle": "Compite contra otros jugadores",
+    "tabSolo": "Un jugador",
+    "tabMulti": "Multijugador",
+    "moreModesComingSoon": "Más modos próximamente..."
   },
   "office": {
     "title": "Despacho",
@@ -126,7 +129,10 @@
     "goToTransfersWarning": "Ve al mercado de fichajes y ficha jugadores antes de continuar. Si vuelves a intentar simular sin tener 11 jugadores, <strong>perderás el juego</strong>.",
     "goToTransfers": "Ir a Fichajes",
     "manager": "Mánager",
-    "welcomeName": "Bienvenido, {{name}}"
+    "welcomeName": "Bienvenido, {{name}}",
+    "form_W": "V",
+    "form_D": "E",
+    "form_L": "D"
   },
   "formation": {
     "title": "Alineación",
@@ -541,7 +547,34 @@
     "persDescHomesick": "Prefiere estar cerca de casa",
     "persDescProfessional": "Evalúa todo con equilibrio",
     "persDescAdventurous": "Le gusta cambiar de aires",
-    "newsTransferText": "Noticia de fichaje"
+    "newsTransferText": "Noticia de fichaje",
+    "summerMarket": "Mercado de Verano",
+    "winterMarket": "Mercado de Invierno",
+    "marketClosed": "Mercado Cerrado",
+    "marketTitle": "Mercado de Fichajes",
+    "roleStar": "Estrella",
+    "roleStarter": "Titular",
+    "roleRotation": "Rotación",
+    "roleBackup": "Suplente",
+    "roleYouth": "Proyecto",
+    "lastDays": "¡Últimos días!",
+    "exploreMap": "Explorar Mapa",
+    "budget": "Presupuesto",
+    "freeAgentSignedTitle": "Agente libre fichado",
+    "noLoanedOutPlayers": "No tienes jugadores cedidos a otros equipos",
+    "noLoanOffersPending": "No tienes ofertas de cesión pendientes",
+    "loanOffersHint": "Otros equipos pueden querer llevarse a tus jugadores en cesión",
+    "wantsLoan": "Quiere cesión",
+    "otherTeamsInterested": "Otros equipos interesados",
+    "playerWantsRole": "El jugador quiere ser",
+    "filteringBy": "Filtrando por",
+    "removeFilter": "Quitar filtro",
+    "noPendingOffers": "No tienes ofertas pendientes",
+    "offersArriveDuringWindows": "Las ofertas llegan durante las ventanas de mercado",
+    "noLoanedInPlayers": "No tienes jugadores en cesión recibidos",
+    "noLoanPlayersAvailable": "No hay jugadores disponibles para cesión",
+    "marketIsClosed": "El mercado está cerrado",
+    "loansOnlyDuringWindows": "Las cesiones solo se pueden realizar durante ventanas de mercado"
   },
   "calendar": {
     "title": "Calendario",
@@ -606,7 +639,13 @@
     "injuryMinor": "Lesión leve",
     "injuryModerate": "Lesión moderada",
     "injurySerious": "Lesión grave",
-    "noFormData": "No hay datos de formación"
+    "noFormData": "No hay datos de formación",
+    "overallStrength": "Fuerza Global",
+    "attack": "Ataque",
+    "defense": "Defensa",
+    "yourFormation": "Tu formación",
+    "yourTactic": "Tu táctica",
+    "statistics": "Estadísticas"
   },
   "leagueTable": {
     "title": "Clasificación",
@@ -889,7 +928,10 @@
     "grassDescGood": "El césped está en buen estado",
     "grassDescRegular": "El césped necesita atención",
     "grassDescBad": "El césped está en mal estado",
-    "grassDescTerrible": "El césped está destrozado"
+    "grassDescTerrible": "El césped está destrozado",
+    "avgOverall": "Overall medio",
+    "leaguePosition": "Posición liga",
+    "reputation": "Reputación"
   },
   "training": {
     "title": "Intensidad de Entrenamiento",
@@ -923,7 +965,16 @@
         "name": "Intenso",
         "description": "Míxima progresión, mayor riesgo de lesiones."
       }
-    }
+    },
+    "intensityLightName": "Suave",
+    "intensityLightDesc": "Recuperación activa",
+    "intensityLightDetails": "Ideal para veteranos y post-lesión. Menos carga física, prioriza técnica.",
+    "intensityNormalName": "Normal",
+    "intensityNormalDesc": "Equilibrio perfecto",
+    "intensityNormalDetails": "Balance entre progresión y riesgo. Recomendado para la mayoría de plantillas.",
+    "intensityIntenseName": "Intenso",
+    "intensityIntenseDesc": "Máximo rendimiento",
+    "intensityIntenseDetails": "Para plantillas jóvenes con buen centro médico. Alto riesgo, alta recompensa."
   },
   "settings": {
     "title": "Opciones",
@@ -1203,7 +1254,7 @@
   "messages": {
     "title": "Mensajes",
     "inbox": "Bandeja de Entrada",
-    "unread": "No Leídos",
+    "unread": "sin leer",
     "all": "Todos",
     "transfers": "Traspasos",
     "injuries": "Lesiones",
@@ -1699,7 +1750,8 @@
     "transferAccepted": "✅ Traspaso aceptado: {{player}}",
     "transferRejected": "❌ Traspaso rechazado: {{player}}",
     "transferCost": "Coste: {{price}}",
-    "transferClubReason": "🏢 Club: {{reason}} · 👤 Jugador: {{playerReason}}"
+    "transferClubReason": "🏢 Club: {{reason}} · 👤 Jugador: {{playerReason}}",
+    "title": "Ranked 1v1"
   },
   "lineup": {
     "treatmentsAvailable": "Tratamientos disponibles",
@@ -1786,7 +1838,12 @@
       "retire": "Retirarse",
       "title": "Fin de temporada",
       "topFour": "Top 4",
-      "viewOffers": "Ver ofertas"
+      "viewOffers": "Ver ofertas",
+      "failed": "No has cumplido los objetivos",
+      "champion": "¡Campeón! Objetivo superado con creces",
+      "exceeded": "Has superado las expectativas",
+      "met": "Objetivos cumplidos",
+      "close": "Casi cumples los objetivos"
     },
     "startCareer": "Iniciar carrera",
     "title": "Mánager Profesional",
@@ -1831,5 +1888,90 @@
     "superCup": "Supercopa",
     "victory": "Victoria",
     "you": "Tú"
+  },
+  "simulation": {
+    "summary": "Resumen de jornada",
+    "summaryRange": "Resumen jornadas {{from}} - {{to}}",
+    "yourMatch": "Tu partido",
+    "leagueResults": "Resultados de liga",
+    "cupResults": "Copa",
+    "europeanResults": "Competición europea",
+    "injuries": "Lesiones",
+    "recovered": "Recuperados",
+    "cards": "Tarjetas",
+    "standing": "Clasificación",
+    "continue": "Continuar",
+    "weeksOut": "{{weeks}} sem. fuera",
+    "positionUp": "Subiste {{pos}} posiciones",
+    "positionDown": "Bajaste {{pos}} posiciones",
+    "positionSame": "Mantienes posición"
+  },
+  "leagues": {
+    "laliga": "Liga Ibérica",
+    "segunda": "Segunda Ibérica",
+    "primeraRFEF": "Primera Federación",
+    "segundaRFEF": "Segunda Federación",
+    "premierLeague": "First League",
+    "championship": "Second League",
+    "serieA": "Calcio League",
+    "serieB": "Calcio B",
+    "bundesliga": "Erste Liga",
+    "bundesliga2": "Zweite Liga",
+    "ligue1": "Division Première",
+    "ligue2": "Division Seconde",
+    "eredivisie": "Dutch First",
+    "primeiraLiga": "Liga Lusitana",
+    "belgianPro": "Belgian First",
+    "superLig": "Anatolian League",
+    "scottishPrem": "Highland League",
+    "swissSuperLeague": "Alpine League",
+    "austrianBundesliga": "Erste Liga (AT)",
+    "greekSuperLeague": "Super League",
+    "danishSuperliga": "Superligaen",
+    "croatianLeague": "HNL",
+    "czechLeague": "Chance Liga",
+    "argentinaPrimera": "Liga Profesional",
+    "brasileiraoA": "Série A",
+    "colombiaPrimera": "Liga BetPlay",
+    "chilePrimera": "Primera División (CL)",
+    "uruguayPrimera": "Primera División (UY)",
+    "ecuadorLigaPro": "LigaPro",
+    "paraguayPrimera": "División de Honor",
+    "peruLiga1": "Liga 1",
+    "boliviaPrimera": "División Profesional",
+    "venezuelaPrimera": "Liga FUTVE",
+    "ligaMX": "Liga MX"
+  },
+  "countries": {
+    "spain": "España",
+    "england": "Inglaterra",
+    "italy": "Italia",
+    "germany": "Alemania",
+    "france": "Francia",
+    "netherlands": "Países Bajos",
+    "portugal": "Portugal",
+    "belgium": "Bélgica",
+    "turkey": "Turquía",
+    "scotland": "Escocia",
+    "switzerland": "Suiza",
+    "austria": "Austria",
+    "greece": "Grecia",
+    "denmark": "Dinamarca",
+    "croatia": "Croacia",
+    "czech": "Chequia",
+    "argentina": "Argentina",
+    "brazil": "Brasil",
+    "colombia": "Colombia",
+    "chile": "Chile",
+    "uruguay": "Uruguay",
+    "ecuador": "Ecuador",
+    "paraguay": "Paraguay",
+    "peru": "Perú",
+    "bolivia": "Bolivia",
+    "venezuela": "Venezuela",
+    "usa": "Estados Unidos",
+    "saudiArabia": "Arabia Saudí",
+    "mexico": "México",
+    "japan": "Japón"
   }
 }
