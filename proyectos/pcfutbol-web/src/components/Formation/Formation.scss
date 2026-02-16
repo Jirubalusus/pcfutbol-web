@@ -3,22 +3,14 @@
 // ============================================================
 
 // Paleta de colores PC Fútbol
-$pcf-blue-dark: #0a1628;
-$pcf-blue-mid: #1a3a5c;
-$pcf-blue-light: #2a5a8c;
 $pcf-green-dark: #1a4d2e;
 $pcf-green-light: #2d7a4a;
 $pcf-yellow: #d4a017;
 $pcf-gold: #ffd700;
 $pcf-orange: #e67e22;
 $pcf-red: #c0392b;
-$pcf-white: #f0f0f0;
-$pcf-gray: #7f8c8d;
 
 // FILAS: Fondos neutros, solo POS tiene color
-$row-odd: #2a3a4a;           // Gris azulado oscuro (odd)
-$row-even: #1e2e3e;          // Gris azulado más oscuro (even)
-$row-hover: #3a4a5a;         // Hover
 
 // Colores solo para etiquetas de posición
 $pos-gk: #d4a017;            // Portero - Dorado
@@ -32,7 +24,7 @@ $row-noconv-2: #4a4a4a;
 
 .pcf-formation {
   min-height: 100vh;
-  background: linear-gradient(180deg, $pcf-blue-dark 0%, $pcf-blue-mid 50%, $pcf-blue-dark 100%);
+  background: var(--color-bg-primary);
   padding: 0.5rem;
   font-family: 'Segoe UI', Arial, sans-serif;
   overflow-x: hidden;
@@ -77,13 +69,13 @@ $row-noconv-2: #4a4a4a;
       justify-content: center;
       font-weight: bold;
       font-size: 1.2rem;
-      color: $pcf-blue-dark;
+      color: var(--color-bg-primary);
       border: 2px solid #fff;
     }
     
     .team-name {
       font-weight: 600;
-      color: $pcf-white;
+      color: var(--color-text-primary);
       font-size: 0.9rem;
       
       @media (max-width: 600px) {
@@ -116,13 +108,13 @@ $row-noconv-2: #4a4a4a;
       
       .label {
         font-size: 0.65rem;
-        color: $pcf-gray;
+        color: var(--color-text-secondary);
         text-transform: uppercase;
       }
       
       .value {
         font-size: 0.8rem;
-        color: $pcf-white;
+        color: var(--color-text-primary);
         text-transform: capitalize;
       }
     }
@@ -145,7 +137,7 @@ $row-noconv-2: #4a4a4a;
     
     label {
       font-size: 0.65rem;
-      color: $pcf-gray;
+      color: var(--color-text-secondary);
       text-transform: uppercase;
     }
     
@@ -154,7 +146,7 @@ $row-noconv-2: #4a4a4a;
       background: linear-gradient(180deg, var(--color-glass-border) 0%, var(--color-glass-border) 100%);
       border: 2px solid #5a7a9a;
       border-radius: 3px;
-      color: $pcf-white;
+      color: var(--color-text-primary);
       font-size: 0.85rem;
       cursor: pointer;
       min-width: 100px;
@@ -244,7 +236,7 @@ $row-noconv-2: #4a4a4a;
     padding: 0.6rem 0.5rem;
     background: transparent;
     border: none;
-    color: $pcf-gray;
+    color: var(--color-text-secondary);
     font-size: 0.75rem;
     font-weight: 600;
     cursor: pointer;
@@ -287,7 +279,7 @@ $row-noconv-2: #4a4a4a;
       }
       
       &.col-attr {
-        color: $pcf-white;
+        color: var(--color-text-primary);
         font-size: 0.75rem;
       }
     }
@@ -327,11 +319,11 @@ $row-noconv-2: #4a4a4a;
     align-items: center;
     
     // TODAS las filas: Fondo neutro, solo POS con color
-    &:nth-child(odd) { background: $row-odd; }
-    &:nth-child(even) { background: $row-even; }
+    &:nth-child(odd) { background: var(--color-bg-secondary); }
+    &:nth-child(even) { background: var(--color-bg-tertiary); }
     
     &:hover:not(.selected) {
-      background: $row-hover;
+      background: var(--color-bg-card-hover);
     }
     
     // Titulares - borde dorado sutil para distinguir
@@ -443,7 +435,7 @@ $row-noconv-2: #4a4a4a;
     
     span {
       font-size: 0.75rem;
-      color: $pcf-white;
+      color: var(--color-text-primary);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -726,7 +718,7 @@ $row-noconv-2: #4a4a4a;
       
       .label {
         font-size: 0.7rem;
-        color: $pcf-gray;
+        color: var(--color-text-secondary);
       }
       
       .stars {
@@ -737,7 +729,7 @@ $row-noconv-2: #4a4a4a;
       
       .value {
         font-weight: 700;
-        color: $pcf-white;
+        color: var(--color-text-primary);
         
         &.big {
           font-size: 1.4rem;
@@ -772,14 +764,14 @@ $row-noconv-2: #4a4a4a;
       
       .role-name {
         font-weight: 600;
-        color: $pcf-white;
+        color: var(--color-text-primary);
         font-size: 0.9rem;
       }
     }
     
     .role-desc {
       font-size: 0.7rem;
-      color: $pcf-gray;
+      color: var(--color-text-secondary);
       text-align: center;
       font-style: italic;
       margin-bottom: 0.5rem;
@@ -801,14 +793,14 @@ $row-noconv-2: #4a4a4a;
         .label {
           display: block;
           font-size: 0.6rem;
-          color: $pcf-gray;
+          color: var(--color-text-secondary);
           text-transform: uppercase;
         }
         
         .value {
           display: block;
           font-size: 0.8rem;
-          color: $pcf-white;
+          color: var(--color-text-primary);
           font-weight: 600;
         }
       }
@@ -826,7 +818,7 @@ $row-noconv-2: #4a4a4a;
         
         .label {
           font-size: 0.6rem;
-          color: $pcf-gray;
+          color: var(--color-text-secondary);
           width: 55px;
           text-align: right;
         }
@@ -873,7 +865,7 @@ $row-noconv-2: #4a4a4a;
     background: linear-gradient(180deg, $pcf-red 0%, #8a2920 100%);
     border: 2px solid #e04030;
     border-radius: 3px;
-    color: $pcf-white;
+    color: var(--color-text-primary);
     font-size: 0.65rem;
     font-weight: 600;
     cursor: pointer;
@@ -1038,7 +1030,7 @@ $row-noconv-2: #4a4a4a;
     }
     
     .name {
-      color: $pcf-white;
+      color: var(--color-text-primary);
       font-size: 0.9rem;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -1083,14 +1075,14 @@ $row-noconv-2: #4a4a4a;
   
   .modal-tabs {
     display: flex;
-    border-bottom: 2px solid $pcf-blue-mid;
+    border-bottom: 2px solid var(--color-bg-tertiary);
     
     button {
       flex: 1;
       padding: 0.75rem;
       background: transparent;
       border: none;
-      color: $pcf-gray;
+      color: var(--color-text-secondary);
       cursor: pointer;
       transition: all 0.2s;
       
@@ -1101,7 +1093,7 @@ $row-noconv-2: #4a4a4a;
       }
       
       &:hover:not(.active) {
-        color: $pcf-white;
+        color: var(--color-text-primary);
       }
     }
   }
@@ -1124,7 +1116,7 @@ $row-noconv-2: #4a4a4a;
     
     .btn-cancel {
       background: #3a4a5a;
-      color: $pcf-white;
+      color: var(--color-text-primary);
       
       &:hover {
         background: #4a5a6a;
@@ -1180,7 +1172,7 @@ $row-noconv-2: #4a4a4a;
     
     &.active {
       border-color: $pcf-gold;
-      background: rgba($pcf-gold, 0.1);
+      background: rgba(255, 215, 0, 0.1);
     }
     
     .icon {
@@ -1192,12 +1184,12 @@ $row-noconv-2: #4a4a4a;
     }
     
     .name {
-      color: $pcf-white;
+      color: var(--color-text-primary);
       font-weight: 600;
     }
     
     .desc {
-      color: $pcf-gray;
+      color: var(--color-text-secondary);
       font-size: 0.8rem;
     }
   }
@@ -1222,28 +1214,28 @@ $row-noconv-2: #4a4a4a;
     
     &.active {
       border-color: $pcf-gold;
-      background: rgba($pcf-gold, 0.1);
+      background: rgba(255, 215, 0, 0.1);
     }
     
     .name {
       display: block;
-      color: $pcf-white;
+      color: var(--color-text-primary);
       font-weight: 600;
       margin-bottom: 0.25rem;
     }
     
     .meta {
       display: block;
-      color: $pcf-gray;
+      color: var(--color-text-secondary);
       font-size: 0.7rem;
     }
   }
   
   .training-info {
     padding: 0.75rem;
-    background: rgba($pcf-blue-light, 0.3);
+    background: var(--color-glass);
     border-radius: 6px;
-    color: $pcf-white;
+    color: var(--color-text-primary);
     font-size: 0.85rem;
   }
 }
@@ -1261,7 +1253,7 @@ $row-noconv-2: #4a4a4a;
     }
     
     p {
-      color: $pcf-white;
+      color: var(--color-text-primary);
       font-size: 1rem;
     }
   }
@@ -1270,11 +1262,11 @@ $row-noconv-2: #4a4a4a;
     display: flex;
     justify-content: space-between;
     padding: 0.75rem;
-    background: rgba($pcf-blue-light, 0.3);
+    background: var(--color-glass);
     border-radius: 6px;
     margin-bottom: 1rem;
     font-size: 0.85rem;
-    color: $pcf-white;
+    color: var(--color-text-primary);
   }
   
   .injured-list {
@@ -1299,7 +1291,7 @@ $row-noconv-2: #4a4a4a;
       gap: 0.5rem;
       
       .pos {
-        background: $pcf-blue-light;
+        background: var(--color-bg-card-hover);
         color: var(--color-text-primary);
         padding: 0.2rem 0.4rem;
         border-radius: 4px;
@@ -1308,7 +1300,7 @@ $row-noconv-2: #4a4a4a;
       }
       
       .name {
-        color: $pcf-white;
+        color: var(--color-text-primary);
         font-weight: 500;
       }
       
@@ -1340,7 +1332,7 @@ $row-noconv-2: #4a4a4a;
       }
       
       &:disabled {
-        background: $pcf-gray;
+        background: var(--color-text-secondary);
         cursor: not-allowed;
       }
     }
@@ -1351,16 +1343,16 @@ $row-noconv-2: #4a4a4a;
     flex-direction: column;
     gap: 0.25rem;
     padding: 0.75rem;
-    background: rgba($pcf-blue-light, 0.3);
+    background: var(--color-glass);
     border-radius: 6px;
     
     span {
-      color: $pcf-white;
+      color: var(--color-text-primary);
       font-size: 0.85rem;
     }
     
     .hint {
-      color: $pcf-gray;
+      color: var(--color-text-secondary);
       font-size: 0.75rem;
     }
   }
@@ -1390,7 +1382,7 @@ $row-noconv-2: #4a4a4a;
     }
     
     .label {
-      color: $pcf-gray;
+      color: var(--color-text-secondary);
       font-size: 0.8rem;
       text-transform: uppercase;
     }
@@ -1411,12 +1403,12 @@ $row-noconv-2: #4a4a4a;
     border-radius: 6px;
     
     .label {
-      color: $pcf-white;
+      color: var(--color-text-primary);
     }
     
     .value {
       font-weight: 700;
-      color: $pcf-white;
+      color: var(--color-text-primary);
       
       &.win { color: $pcf-green-light; }
       &.draw { color: $pcf-gold; }
@@ -1426,8 +1418,8 @@ $row-noconv-2: #4a4a4a;
     }
     
     &.highlight {
-      background: rgba($pcf-gold, 0.1);
-      border: 1px solid rgba($pcf-gold, 0.3);
+      background: rgba(255, 215, 0, 0.1);
+      border: 1px solid rgba(255, 215, 0, 0.3);
     }
   }
   
@@ -1461,7 +1453,7 @@ $row-noconv-2: #4a4a4a;
     }
     
     .name {
-      color: $pcf-white;
+      color: var(--color-text-primary);
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -1478,10 +1470,10 @@ $row-noconv-2: #4a4a4a;
 .pcf-modal--tactic {
   .current-info {
     padding: 0.75rem;
-    background: rgba($pcf-blue-light, 0.3);
+    background: var(--color-glass);
     border-radius: 6px;
     margin-bottom: 1rem;
-    color: $pcf-white;
+    color: var(--color-text-primary);
     font-size: 0.9rem;
     
     strong {
@@ -1512,7 +1504,7 @@ $row-noconv-2: #4a4a4a;
     
     &.active {
       border-color: $pcf-gold;
-      background: rgba($pcf-gold, 0.1);
+      background: rgba(255, 215, 0, 0.1);
     }
     
     .icon {
@@ -1526,17 +1518,17 @@ $row-noconv-2: #4a4a4a;
       gap: 0.15rem;
       
       .name {
-        color: $pcf-white;
+        color: var(--color-text-primary);
         font-weight: 600;
       }
       
       .desc {
-        color: $pcf-gray;
+        color: var(--color-text-secondary);
         font-size: 0.8rem;
       }
       
       .style {
-        color: $pcf-blue-light;
+        color: var(--color-bg-card-hover);
         font-size: 0.75rem;
         font-style: italic;
       }

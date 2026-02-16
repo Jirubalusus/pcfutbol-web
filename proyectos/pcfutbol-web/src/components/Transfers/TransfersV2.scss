@@ -8,25 +8,15 @@ $success: var(--color-success);
 $warning: #ff9500;
 $danger: var(--color-danger);
 $gold: #ffd700;
-$dark-bg: #0a1628;
 $card-bg: var(--color-bg-tertiary);
-$card-border: #2a4a6a;
-$text-primary: #e8eaed;
-$text-secondary: #7a8a9a;
-
-// Aliases para compatibilidad
-$text: $text-primary;
-$text-muted: $text-secondary;
-$surface-light: #1a2d45;
-$surface-lighter: #1e3a58;
-$border-color: $card-border;
+// Variables removed - using CSS custom properties directly
 
 .transfers-v2 {
   display: flex;
   flex-direction: column;
   height: 100%;
-  background: linear-gradient(180deg, $dark-bg 0%, #071220 100%);
-  color: $text-primary;
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
   overflow: hidden;
 }
 
@@ -40,7 +30,7 @@ $border-color: $card-border;
   align-items: center;
   padding: 0.75rem 1rem;
   background: $card-bg;
-  border: 1px solid $card-border;
+  border: 1px solid var(--color-glass-border);
   border-radius: 8px;
   margin: 0.5rem 0.5rem 0;
 
@@ -68,8 +58,8 @@ $border-color: $card-border;
       }
 
       &.closed {
-        background: rgba($text-secondary, 0.15);
-        color: $text-secondary;
+        background: rgba(var(--color-text-secondary), 0.15);
+        color: var(--color-text-secondary);
       }
     }
   }
@@ -85,7 +75,7 @@ $border-color: $card-border;
       border-radius: 12px;
 
       .label {
-        color: $text-secondary;
+        color: var(--color-text-secondary);
         font-size: 0.8rem;
       }
 
@@ -124,9 +114,9 @@ $border-color: $card-border;
     gap: 0.4rem;
     padding: 0.5rem 0.85rem;
     background: $card-bg;
-    border: 1px solid $card-border;
+    border: 1px solid var(--color-glass-border);
     border-radius: 6px;
-    color: $text-secondary;
+    color: var(--color-text-secondary);
     font-size: 0.8rem;
     font-weight: 600;
     cursor: pointer;
@@ -135,7 +125,7 @@ $border-color: $card-border;
 
     &:hover {
       border-color: $primary;
-      color: $text-primary;
+      color: var(--color-text-primary);
     }
 
     &.active {
@@ -179,7 +169,7 @@ $border-color: $card-border;
     gap: 1rem;
     padding: 1.25rem;
     background: linear-gradient(135deg, $card-bg 0%, rgba($primary, 0.1) 100%);
-    border: 1px solid $card-border;
+    border: 1px solid var(--color-glass-border);
     border-radius: 16px;
     margin-bottom: 1.5rem;
 
@@ -193,12 +183,12 @@ $border-color: $card-border;
       background: rgba($primary, 0.2);
 
       svg.open { color: $success; }
-      svg.closed { color: $text-secondary; }
+      svg.closed { color: var(--color-text-secondary); }
     }
 
     .status-info {
       h3 { margin: 0 0 0.25rem; }
-      p { margin: 0; color: $text-secondary; font-size: 0.9rem; }
+      p { margin: 0; color: var(--color-text-secondary); font-size: 0.9rem; }
     }
   }
 
@@ -215,13 +205,13 @@ $border-color: $card-border;
       gap: 0.5rem;
       padding: 1.25rem;
       background: $card-bg;
-      border: 1px solid $card-border;
+      border: 1px solid var(--color-glass-border);
       border-radius: 12px;
       text-align: center;
 
       svg { color: $primary; }
       .stat-value { font-size: 1.5rem; font-weight: 700; }
-      .stat-label { color: $text-secondary; font-size: 0.8rem; }
+      .stat-label { color: var(--color-text-secondary); font-size: 0.8rem; }
     }
   }
 
@@ -234,7 +224,7 @@ $border-color: $card-border;
       gap: 0.5rem;
       margin: 0 0 1rem;
       font-size: 1rem;
-      color: $text-secondary;
+      color: var(--color-text-secondary);
     }
   }
 
@@ -250,7 +240,7 @@ $border-color: $card-border;
       gap: 1rem;
       padding: 0.75rem 1rem;
       background: $card-bg;
-      border: 1px solid $card-border;
+      border: 1px solid var(--color-glass-border);
       border-radius: 8px;
 
       .player-info {
@@ -275,10 +265,10 @@ $border-color: $card-border;
         align-items: center;
         gap: 0.5rem;
         font-size: 0.85rem;
-        color: $text-secondary;
+        color: var(--color-text-secondary);
 
         svg { color: $success; }
-        .to { color: $text-primary; }
+        .to { color: var(--color-text-primary); }
       }
 
       .price {
@@ -300,7 +290,7 @@ $border-color: $card-border;
       align-items: center;
       padding: 0.75rem 1rem;
       background: $card-bg;
-      border: 1px solid $card-border;
+      border: 1px solid var(--color-glass-border);
       border-radius: 8px;
 
       .rumor-text { flex: 1; }
@@ -321,7 +311,7 @@ $border-color: $card-border;
   .empty-state {
     padding: 2rem;
     text-align: center;
-    color: $text-secondary;
+    color: var(--color-text-secondary);
   }
 }
 
@@ -342,14 +332,14 @@ $border-color: $card-border;
       gap: 0.5rem;
       padding: 0.6rem 1rem;
       background: $card-bg;
-      border: 1px solid $card-border;
+      border: 1px solid var(--color-glass-border);
       border-radius: 10px;
 
       input {
         flex: 1;
         background: transparent;
         border: none;
-        color: $text-primary;
+        color: var(--color-text-primary);
         font-size: 0.95rem;
         outline: none;
       }
@@ -357,11 +347,11 @@ $border-color: $card-border;
       .clear-btn {
         background: transparent;
         border: none;
-        color: $text-secondary;
+        color: var(--color-text-secondary);
         cursor: pointer;
         padding: 0;
 
-        &:hover { color: $text-primary; }
+        &:hover { color: var(--color-text-primary); }
       }
     }
 
@@ -371,9 +361,9 @@ $border-color: $card-border;
       gap: 0.5rem;
       padding: 0.6rem 1rem;
       background: $card-bg;
-      border: 1px solid $card-border;
+      border: 1px solid var(--color-glass-border);
       border-radius: 10px;
-      color: $text-secondary;
+      color: var(--color-text-secondary);
       cursor: pointer;
       transition: all 0.2s;
 
@@ -391,7 +381,7 @@ $border-color: $card-border;
     gap: 1rem;
     padding: 1rem;
     background: $card-bg;
-    border: 1px solid $card-border;
+    border: 1px solid var(--color-glass-border);
     border-radius: 12px;
     margin-bottom: 1rem;
 
@@ -402,15 +392,15 @@ $border-color: $card-border;
 
       label {
         font-size: 0.85rem;
-        color: $text-secondary;
+        color: var(--color-text-secondary);
       }
 
       select, input[type="range"] {
         padding: 0.5rem;
         background: var(--color-glass);
-        border: 1px solid $card-border;
+        border: 1px solid var(--color-glass-border);
         border-radius: 6px;
-        color: $text-primary;
+        color: var(--color-text-primary);
       }
     }
   }
@@ -444,7 +434,7 @@ $border-color: $card-border;
 
     .player-card {
       background: $card-bg;
-      border: 1px solid $card-border;
+      border: 1px solid var(--color-glass-border);
       border-radius: 12px;
       overflow: hidden;
       cursor: pointer;
@@ -510,7 +500,7 @@ $border-color: $card-border;
 
         .team {
           margin: 0 0 0.5rem;
-          color: $text-secondary;
+          color: var(--color-text-secondary);
           font-size: 0.8rem;
         }
 
@@ -518,7 +508,7 @@ $border-color: $card-border;
           display: flex;
           justify-content: space-between;
           font-size: 0.8rem;
-          color: $text-secondary;
+          color: var(--color-text-secondary);
 
           span:last-child { color: $success; }
         }
@@ -541,18 +531,18 @@ $border-color: $card-border;
     text-align: center;
 
     .empty-icon {
-      color: $text-secondary;
+      color: var(--color-text-secondary);
       margin-bottom: 1rem;
       opacity: 0.5;
     }
 
     h3 { margin: 0 0 0.5rem; }
-    p { color: $text-secondary; }
+    p { color: var(--color-text-secondary); }
   }
 
   .offer-card {
     background: $card-bg;
-    border: 1px solid $card-border;
+    border: 1px solid var(--color-glass-border);
     border-radius: 12px;
     padding: 1rem;
     margin-bottom: 1rem;
@@ -653,7 +643,7 @@ $border-color: $card-border;
     }
 
     .offer-status-detail {
-      color: $text-secondary;
+      color: var(--color-text-secondary);
       font-size: 0.9rem;
     }
   }
@@ -690,8 +680,8 @@ $border-color: $card-border;
     gap: 0.75rem;
     padding: 0.5rem 0;
     margin-bottom: 0.75rem;
-    border-top: 1px solid rgba($card-border, 0.5);
-    border-bottom: 1px solid rgba($card-border, 0.5);
+    border-top: 1px solid var(--color-glass-border);
+    border-bottom: 1px solid var(--color-glass-border);
     
     .loan-term {
       display: flex;
@@ -700,7 +690,7 @@ $border-color: $card-border;
       
       .term-label {
         font-size: 0.7rem;
-        color: $text-secondary;
+        color: var(--color-text-secondary);
       }
       
       .term-value {
@@ -723,8 +713,8 @@ $border-color: $card-border;
     gap: 0.5rem;
     margin-top: 1.5rem;
     padding-top: 1rem;
-    border-top: 1px solid rgba($card-border, 0.5);
-    color: $text-secondary;
+    border-top: 1px solid var(--color-glass-border);
+    color: var(--color-text-secondary);
   }
   
   // Loan active cards (reused from old CesionesTab)
@@ -737,7 +727,7 @@ $border-color: $card-border;
 
   .loan-active-card {
     background: $card-bg;
-    border: 1px solid $card-border;
+    border: 1px solid var(--color-glass-border);
     border-radius: 10px;
     padding: 0.75rem 1rem;
     overflow: hidden;
@@ -769,7 +759,7 @@ $border-color: $card-border;
         align-items: center;
         gap: 0.35rem;
         font-size: 0.8rem;
-        color: $text-secondary;
+        color: var(--color-text-secondary);
         font-weight: 600;
       }
     }
@@ -787,7 +777,7 @@ $border-color: $card-border;
         font-weight: 700;
         border-radius: 4px;
         flex-shrink: 0;
-        background: $surface-lighter;
+        background: var(--color-bg-card-hover);
 
         &[data-pos="GK"] { background: rgba($gold, 0.2); color: $gold; }
         &[data-pos="CB"], &[data-pos="RB"], &[data-pos="LB"],
@@ -810,7 +800,7 @@ $border-color: $card-border;
         .la-team {
           display: block;
           font-size: 0.75rem;
-          color: $text-secondary;
+          color: var(--color-text-secondary);
         }
       }
 
@@ -828,9 +818,9 @@ $border-color: $card-border;
       gap: 0.5rem;
       margin-top: 0.5rem;
       padding-top: 0.5rem;
-      border-top: 1px solid rgba($card-border, 0.5);
+      border-top: 1px solid var(--color-glass-border);
       font-size: 0.8rem;
-      color: $text-secondary;
+      color: var(--color-text-secondary);
 
       svg { color: $primary; }
     }
@@ -838,7 +828,7 @@ $border-color: $card-border;
     .la-purchase-action {
       margin-top: 0.5rem;
       padding-top: 0.5rem;
-      border-top: 1px solid rgba($card-border, 0.5);
+      border-top: 1px solid var(--color-glass-border);
 
       .la-purchase-info {
         margin-top: 0;
@@ -911,7 +901,7 @@ $border-color: $card-border;
   // ============================================================
   .offer-card-v2 {
     background: $card-bg;
-    border: 1px solid $card-border;
+    border: 1px solid var(--color-glass-border);
     border-radius: 12px;
     padding: 1rem;
     margin-bottom: 0.75rem;
@@ -961,7 +951,7 @@ $border-color: $card-border;
 
       .team {
         font-size: 0.78rem;
-        color: $text-secondary;
+        color: var(--color-text-secondary);
       }
     }
 
@@ -997,7 +987,7 @@ $border-color: $card-border;
     }
 
     .week-tag {
-      color: $text-secondary;
+      color: var(--color-text-secondary);
       font-weight: 500;
       font-size: 0.75rem;
       margin-left: auto;
@@ -1054,7 +1044,7 @@ $border-color: $card-border;
       background: var(--color-glass);
       border-radius: 8px;
       font-size: 0.85rem;
-      color: $text-secondary;
+      color: var(--color-text-secondary);
 
       .response-label {
         font-weight: 600;
@@ -1196,7 +1186,7 @@ $border-color: $card-border;
       gap: 0.75rem;
       padding: 1rem;
       background: $card-bg;
-      border: 1px solid $card-border;
+      border: 1px solid var(--color-glass-border);
       border-radius: 10px;
 
       &.transfer { border-left: 3px solid $success; }
@@ -1289,7 +1279,7 @@ $border-color: $card-border;
   width: 100%;
   max-width: 450px;
   background: $card-bg;
-  border: 1px solid $card-border;
+  border: 1px solid var(--color-glass-border);
   border-radius: 16px;
   overflow: hidden;
 
@@ -1301,7 +1291,7 @@ $border-color: $card-border;
     border: none;
     border-radius: 8px;
     padding: 0.5rem;
-    color: $text-secondary;
+    color: var(--color-text-secondary);
     cursor: pointer;
     z-index: 10;
 
@@ -1352,7 +1342,7 @@ $border-color: $card-border;
 
       p {
         margin: 0;
-        color: $text-secondary;
+        color: var(--color-text-secondary);
         font-size: 0.9rem;
       }
     }
@@ -1377,7 +1367,7 @@ $border-color: $card-border;
       .label {
         display: block;
         font-size: 0.75rem;
-        color: $text-secondary;
+        color: var(--color-text-secondary);
         margin-bottom: 0.25rem;
       }
 
@@ -1400,7 +1390,7 @@ $border-color: $card-border;
       gap: 0.5rem;
       padding: 0.75rem 1rem;
       background: var(--color-glass);
-      border: 1px solid $card-border;
+      border: 1px solid var(--color-glass-border);
       border-radius: 10px;
       margin-bottom: 0.75rem;
 
@@ -1408,7 +1398,7 @@ $border-color: $card-border;
         flex: 1;
         background: transparent;
         border: none;
-        color: $text-primary;
+        color: var(--color-text-primary);
         font-size: 1.25rem;
         font-weight: 600;
         outline: none;
@@ -1625,7 +1615,7 @@ $border-color: $card-border;
   max-height: 90vh;
   background: linear-gradient(180deg, #1a1f2e 0%, #0d1117 100%);
   border-radius: 16px;
-  border: 1px solid $border-color;
+  border: 1px solid var(--color-glass-border);
   overflow: hidden;
   
   .modal-close-btn {
@@ -1640,14 +1630,14 @@ $border-color: $card-border;
     background: var(--color-glass-border);
     border: none;
     border-radius: 8px;
-    color: $text-muted;
+    color: var(--color-text-secondary);
     cursor: pointer;
     z-index: 10;
     transition: all 0.2s;
     
     &:hover {
       background: var(--color-glass-border);
-      color: $text;
+      color: var(--color-text-primary);
     }
   }
   
@@ -1691,13 +1681,13 @@ $border-color: $card-border;
       
       .player-name {
         font-size: 1.3rem;
-        color: $text-muted;
+        color: var(--color-text-secondary);
         margin-bottom: 1.5rem;
       }
       
       .fail-reason {
         font-size: 1rem;
-        color: $text-muted;
+        color: var(--color-text-secondary);
         margin-bottom: 1.5rem;
         max-width: 300px;
         margin-left: auto;
@@ -1777,7 +1767,7 @@ $border-color: $card-border;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    border-right: 1px solid $border-color;
+    border-right: 1px solid var(--color-glass-border);
     overflow-y: auto;
     
     .player-card {
@@ -1797,7 +1787,7 @@ $border-color: $card-border;
           border-radius: 4px;
           font-size: 0.75rem;
           font-weight: 700;
-          background: $surface-lighter;
+          background: var(--color-bg-card-hover);
           
           &[data-pos="GK"] { background: #f1c40f33; color: #f1c40f; }
           &[data-pos="CB"], &[data-pos="RB"], &[data-pos="LB"] { background: #3498db33; color: #3498db; }
@@ -1820,7 +1810,7 @@ $border-color: $card-border;
         width: 70px;
         height: 70px;
         margin: 0 auto 0.75rem;
-        background: linear-gradient(135deg, $surface-light 0%, $surface-lighter 100%);
+        background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-card-hover) 100%);
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -1829,7 +1819,7 @@ $border-color: $card-border;
         .avatar-letter {
           font-size: 2rem;
           font-weight: 700;
-          color: $text-muted;
+          color: var(--color-text-secondary);
         }
       }
       
@@ -1844,7 +1834,7 @@ $border-color: $card-border;
         justify-content: center;
         gap: 0.35rem;
         font-size: 0.85rem;
-        color: $text-muted;
+        color: var(--color-text-secondary);
       }
       
       .player-tier {
@@ -1853,7 +1843,7 @@ $border-color: $card-border;
         justify-content: center;
         gap: 0.35rem;
         font-size: 0.75rem;
-        color: $text-muted;
+        color: var(--color-text-secondary);
         margin-top: 0.35rem;
         
         .tier-dot {
@@ -1865,7 +1855,7 @@ $border-color: $card-border;
     }
     
     .player-stats {
-      background: $surface-light;
+      background: var(--color-bg-secondary);
       border-radius: 10px;
       padding: 0.75rem;
       
@@ -1873,13 +1863,13 @@ $border-color: $card-border;
         display: flex;
         justify-content: space-between;
         padding: 0.4rem 0;
-        border-bottom: 1px solid $border-color;
+        border-bottom: 1px solid var(--color-glass-border);
         
         &:last-child { border-bottom: none; }
         
         .stat-label {
           font-size: 0.8rem;
-          color: $text-muted;
+          color: var(--color-text-secondary);
         }
         
         .stat-value {
@@ -1894,7 +1884,7 @@ $border-color: $card-border;
       align-items: center;
       gap: 0.75rem;
       padding: 0.75rem;
-      background: $surface-light;
+      background: var(--color-bg-secondary);
       border-radius: 10px;
       
       .personality-icon {
@@ -1910,14 +1900,14 @@ $border-color: $card-border;
         
         .personality-desc {
           font-size: 0.75rem;
-          color: $text-muted;
+          color: var(--color-text-secondary);
         }
       }
     }
     
     .difficulty-indicator {
       padding: 0.75rem;
-      background: $surface-light;
+      background: var(--color-bg-secondary);
       border-radius: 10px;
       
       .difficulty-header {
@@ -1929,7 +1919,7 @@ $border-color: $card-border;
       
       .difficulty-bar-bg {
         height: 6px;
-        background: $surface-lighter;
+        background: var(--color-bg-card-hover);
         border-radius: 3px;
         overflow: hidden;
         
@@ -1975,7 +1965,7 @@ $border-color: $card-border;
         .locked-message {
           padding: 1rem;
           text-align: center;
-          color: $text-muted;
+          color: var(--color-text-secondary);
           font-size: 0.9rem;
         }
       }
@@ -2000,7 +1990,7 @@ $border-color: $card-border;
           font-size: 0.75rem;
           padding: 0.25rem 0.5rem;
           border-radius: 4px;
-          background: $surface-lighter;
+          background: var(--color-bg-card-hover);
           
           &.accepted { background: rgba($success, 0.2); color: $success; }
           &.rejected { background: rgba($danger, 0.2); color: $danger; }
@@ -2027,15 +2017,15 @@ $border-color: $card-border;
         .offer-input-wrapper {
           display: flex;
           align-items: center;
-          background: $dark-bg;
-          border: 1px solid $border-color;
+          background: var(--color-bg-primary);
+          border: 1px solid var(--color-glass-border);
           border-radius: 8px;
           overflow: hidden;
           
           .currency, .unit {
             padding: 0 0.75rem;
             font-size: 0.85rem;
-            color: $text-muted;
+            color: var(--color-text-secondary);
           }
           
           input {
@@ -2043,14 +2033,14 @@ $border-color: $card-border;
             padding: 0.6rem;
             background: transparent;
             border: none;
-            color: $text;
+            color: var(--color-text-primary);
             font-size: 1.1rem;
             font-weight: 600;
             text-align: center;
             outline: none;
             
             &:disabled {
-              color: $text-muted;
+              color: var(--color-text-secondary);
             }
           }
         }
@@ -2058,7 +2048,7 @@ $border-color: $card-border;
         .salary-hint {
           display: block;
           font-size: 0.7rem;
-          color: $text-muted;
+          color: var(--color-text-secondary);
           margin-top: 0.35rem;
         }
         
@@ -2166,7 +2156,7 @@ $border-color: $card-border;
         .salary-hint {
           display: block;
           font-size: 0.7rem;
-          color: $text-muted;
+          color: var(--color-text-secondary);
           margin-top: 0.35rem;
         }
         
@@ -2217,7 +2207,7 @@ $border-color: $card-border;
         
         .prob-label {
           font-size: 0.72rem;
-          color: $text-muted;
+          color: var(--color-text-secondary);
           white-space: nowrap;
           display: flex;
           align-items: center;
@@ -2291,8 +2281,8 @@ $border-color: $card-border;
           
           .btn-counter-reject {
             background: transparent;
-            border: 1px solid $border-color;
-            color: $text;
+            border: 1px solid var(--color-glass-border);
+            color: var(--color-text-primary);
             
             &:hover { background: rgba($danger, 0.2); border-color: $danger; }
           }
@@ -2360,7 +2350,7 @@ $border-color: $card-border;
         margin-bottom: 8px;
         font-size: 0.78rem;
         font-weight: 600;
-        color: $text-muted;
+        color: var(--color-text-secondary);
         
         &.last-round {
           background: rgba(var(--color-warning), 0.1);
@@ -2430,7 +2420,7 @@ $border-color: $card-border;
         &:disabled {
           opacity: 0.5;
           cursor: not-allowed;
-          background: $surface-lighter;
+          background: var(--color-bg-card-hover);
         }
       }
       
@@ -2451,7 +2441,7 @@ $border-color: $card-border;
       // Divider between club and player sections
       .offer-divider {
         height: 1px;
-        background: linear-gradient(90deg, transparent 0%, $border-color 50%, transparent 100%);
+        background: linear-gradient(90deg, transparent 0%, var(--color-glass-border) 50%, transparent 100%);
         margin: 0.5rem 0;
       }
       
@@ -2469,11 +2459,11 @@ $border-color: $card-border;
           align-items: center;
           padding: 0.3rem 0;
           font-size: 0.8rem;
-          color: $text-muted;
+          color: var(--color-text-secondary);
           
           .amount {
             font-weight: 600;
-            color: $text;
+            color: var(--color-text-primary);
           }
           
           &.total {
@@ -2521,7 +2511,7 @@ $border-color: $card-border;
         &:disabled {
           opacity: 0.45;
           cursor: not-allowed;
-          background: $surface-lighter;
+          background: var(--color-bg-card-hover);
         }
       }
       
@@ -2831,7 +2821,7 @@ $border-color: $card-border;
 .tab-explorar {
   .explorar-header {
     padding: 0.75rem 1rem;
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid var(--color-glass-border);
 
     h3 {
       display: flex;
@@ -2849,7 +2839,7 @@ $border-color: $card-border;
     }
 
     p {
-      color: $text-muted;
+      color: var(--color-text-secondary);
       font-size: 0.8rem;
       margin: 0;
     }
@@ -2865,14 +2855,14 @@ $border-color: $card-border;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: $surface-light;
+        background: var(--color-bg-secondary);
         border: none;
         border-radius: 8px;
-        color: $text;
+        color: var(--color-text-primary);
         cursor: pointer;
         flex-shrink: 0;
 
-        &:hover { background: $surface-lighter; }
+        &:hover { background: var(--color-bg-card-hover); }
       }
       
       .header-info {
@@ -2889,16 +2879,16 @@ $border-color: $card-border;
     gap: 0.5rem;
     margin: 0.5rem 0.75rem;
     padding: 0.45rem 0.75rem;
-    background: $surface-light;
-    border: 1px solid $card-border;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-glass-border);
     border-radius: 8px;
-    color: $text-muted;
+    color: var(--color-text-secondary);
 
     input {
       flex: 1;
       background: none;
       border: none;
-      color: $text;
+      color: var(--color-text-primary);
       font-size: 0.85rem;
       outline: none;
     }
@@ -2906,10 +2896,10 @@ $border-color: $card-border;
     .clear-btn {
       background: none;
       border: none;
-      color: $text-muted;
+      color: var(--color-text-secondary);
       cursor: pointer;
       padding: 0;
-      &:hover { color: $text; }
+      &:hover { color: var(--color-text-primary); }
     }
   }
 
@@ -2919,7 +2909,7 @@ $border-color: $card-border;
     display: flex;
     gap: 0.25rem;
     padding: 0.6rem 0.75rem;
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid var(--color-glass-border);
 
     .continent-tab {
       flex: 1;
@@ -2929,9 +2919,9 @@ $border-color: $card-border;
       gap: 0.4rem;
       padding: 0.55rem 0.75rem;
       background: transparent;
-      border: 1px solid $card-border;
+      border: 1px solid var(--color-glass-border);
       border-radius: 8px;
-      color: $text-muted;
+      color: var(--color-text-secondary);
       font-size: 0.85rem;
       font-weight: 600;
       cursor: pointer;
@@ -2942,7 +2932,7 @@ $border-color: $card-border;
       &.active {
         background: rgba($primary, 0.12);
         border-color: $primary;
-        color: $text;
+        color: var(--color-text-primary);
       }
     }
   }
@@ -2961,7 +2951,7 @@ $border-color: $card-border;
 
   .explorar-country-card {
     background: $card-bg;
-    border: 1px solid $card-border;
+    border: 1px solid var(--color-glass-border);
     border-radius: 10px;
     overflow: hidden;
     transition: border-color 0.15s;
@@ -2976,7 +2966,7 @@ $border-color: $card-border;
       gap: 0.6rem;
       padding: 0.6rem 0.75rem;
       background: var(--color-glass);
-      border-bottom: 1px solid $card-border;
+      border-bottom: 1px solid var(--color-glass-border);
     }
 
     .country-card-flag {
@@ -2997,12 +2987,12 @@ $border-color: $card-border;
     .country-card-name {
       font-size: 0.9rem;
       font-weight: 700;
-      color: $text;
+      color: var(--color-text-primary);
     }
 
     .country-card-meta {
       font-size: 0.7rem;
-      color: $text-muted;
+      color: var(--color-text-secondary);
     }
 
     .country-card-leagues {
@@ -3018,7 +3008,7 @@ $border-color: $card-border;
       background: none;
       border: none;
       border-bottom: 1px solid var(--color-glass);
-      color: $text;
+      color: var(--color-text-primary);
       cursor: pointer;
       transition: background 0.12s;
       text-align: left;
@@ -3040,7 +3030,7 @@ $border-color: $card-border;
         padding: 0.1rem 0.45rem;
         background: var(--color-glass-border);
         border-radius: 4px;
-        color: $text-muted;
+        color: var(--color-text-secondary);
       }
     }
   }
@@ -3057,7 +3047,7 @@ $border-color: $card-border;
       gap: 0.6rem;
       padding: 0.55rem 0.7rem;
       background: $card-bg;
-      border: 1px solid $card-border;
+      border: 1px solid var(--color-glass-border);
       border-radius: 8px;
       cursor: pointer;
       transition: all 0.15s;
@@ -3105,7 +3095,7 @@ $border-color: $card-border;
           align-items: center;
           gap: 0.5rem;
           font-size: 0.7rem;
-          color: $text-muted;
+          color: var(--color-text-secondary);
           margin-top: 1px;
 
           svg { flex-shrink: 0; }
@@ -3148,7 +3138,7 @@ $border-color: $card-border;
       background: var(--color-glass);
       border: 1px solid transparent;
       border-radius: 20px;
-      color: $text-secondary;
+      color: var(--color-text-secondary);
       font-size: 0.72rem;
       cursor: pointer;
       transition: all 0.15s;
@@ -3157,7 +3147,7 @@ $border-color: $card-border;
 
       &:hover:not(:disabled) {
         border-color: rgba($primary, 0.3);
-        color: $text-primary;
+        color: var(--color-text-primary);
       }
 
       &.active {
@@ -3192,10 +3182,10 @@ $border-color: $card-border;
     padding: 0.4rem 0.75rem;
     font-size: 0.65rem;
     font-weight: 600;
-    color: $text-muted;
+    color: var(--color-text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    border-bottom: 1px solid $card-border;
+    border-bottom: 1px solid var(--color-glass-border);
 
     .col-pos { width: 36px; text-align: center; }
     .col-name { flex: 1; }
@@ -3221,12 +3211,12 @@ $border-color: $card-border;
       gap: 0.75rem;
       padding: 0.55rem 0.75rem;
       border-radius: 0;
-      border-bottom: 1px solid rgba($card-border, 0.4);
+      border-bottom: 1px solid var(--color-glass-border);
       cursor: pointer;
       transition: background 0.12s;
 
-      &:nth-child(odd) { background: rgba($surface-light, 0.5); }
-      &:hover { background: $surface-lighter; }
+      &:nth-child(odd) { background: var(--color-glass); }
+      &:hover { background: var(--color-bg-card-hover); }
 
       .player-pos {
         width: 36px;
@@ -3235,7 +3225,7 @@ $border-color: $card-border;
         font-size: 0.7rem;
         font-weight: 600;
         border-radius: 4px;
-        background: $surface-lighter;
+        background: var(--color-bg-card-hover);
         flex-shrink: 0;
 
         &[data-pos="GK"] { background: #f1c40f22; color: #f1c40f; }
@@ -3258,7 +3248,7 @@ $border-color: $card-border;
 
       .player-age {
         font-size: 0.78rem;
-        color: $text-muted;
+        color: var(--color-text-secondary);
         width: 36px;
         text-align: center;
         flex-shrink: 0;
