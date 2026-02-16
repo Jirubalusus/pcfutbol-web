@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState, useMemo, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Globe as GlobeIcon } from 'lucide-react';
 import Globe from 'react-globe.gl';
 import './WorldMap.scss';
@@ -43,6 +44,7 @@ const COUNTRY_DATA = {
 const MOBILE_BREAKPOINT = 768;
 
 export default function WorldMap({ countries, selectedCountry, onCountryClick }) {
+  const { t } = useTranslation();
   const globeEl = useRef();
   const [size, setSize] = useState(400);
   const [isMobile, setIsMobile] = useState(false);
@@ -126,7 +128,7 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
       if (d?.id) onCountryClick(d.id);
     });
     // Tooltip on hover
-    el.title = `${d.name} — ${d.leagues} liga${d.leagues !== 1 ? 's' : ''}`;
+    el.title = `${d.name} — ${d.leagues}`;
     return el;
   }, [onCountryClick]);
 
@@ -142,11 +144,11 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
 
     return (
       <div className="countries-mobile">
-        <h3 className="countries-mobile__title"><GlobeIcon size={16} /> Selecciona un país</h3>
+        <h3 className="countries-mobile__title"><GlobeIcon size={16} /> {t('teamSelection.mobileSelectCountry')}</h3>
         <div className="countries-mobile__list">
           {europeCountries.length > 0 && (
             <>
-              <div className="countries-mobile__header">🌍 Europa</div>
+              <div className="countries-mobile__header">🌍 {t('teamSelection.continentEurope')}</div>
               {europeCountries.map(country => (
                 <button
                   key={country.id}
@@ -155,14 +157,14 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
                 >
                   <span className="countries-mobile__flag">{country.flag}</span>
                   <span className="countries-mobile__name">{country.name}</span>
-                  <span className="countries-mobile__leagues">{country.leagues.length} liga{country.leagues.length > 1 ? 's' : ''}</span>
+                  <span className="countries-mobile__leagues">{t('teamSelection.teamsCount', { count: country.leagues.length })}</span>
                 </button>
               ))}
             </>
           )}
           {saCountries.length > 0 && (
             <>
-              <div className="countries-mobile__header">🌎 Sudamérica</div>
+              <div className="countries-mobile__header">🌎 {t('teamSelection.continentSouthAmerica')}</div>
               {saCountries.map(country => (
                 <button
                   key={country.id}
@@ -171,14 +173,14 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
                 >
                   <span className="countries-mobile__flag">{country.flag}</span>
                   <span className="countries-mobile__name">{country.name}</span>
-                  <span className="countries-mobile__leagues">{country.leagues.length} liga{country.leagues.length > 1 ? 's' : ''}</span>
+                  <span className="countries-mobile__leagues">{t('teamSelection.teamsCount', { count: country.leagues.length })}</span>
                 </button>
               ))}
             </>
           )}
           {worldCountries.length > 0 && (
             <>
-              <div className="countries-mobile__header">🌏 Resto del Mundo</div>
+              <div className="countries-mobile__header">🌏 {t('teamSelection.continentRestOfWorld')}</div>
               {worldCountries.map(country => (
                 <button
                   key={country.id}
@@ -187,7 +189,7 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
                 >
                   <span className="countries-mobile__flag">{country.flag}</span>
                   <span className="countries-mobile__name">{country.name}</span>
-                  <span className="countries-mobile__leagues">{country.leagues.length} liga{country.leagues.length > 1 ? 's' : ''}</span>
+                  <span className="countries-mobile__leagues">{t('teamSelection.teamsCount', { count: country.leagues.length })}</span>
                 </button>
               ))}
             </>
@@ -218,7 +220,7 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
         atmosphereColor="lightskyblue"
         atmosphereAltitude={0.15}
       />
-      <p className="globe-hint">Arrastra para girar • Clic en un país</p>
+      <p className="globe-hint">{t('teamSelection.globeHint')}</p>
     </div>
   );
 }

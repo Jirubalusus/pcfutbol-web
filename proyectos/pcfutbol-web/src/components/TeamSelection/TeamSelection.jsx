@@ -661,7 +661,6 @@ export default function TeamSelection() {
     let cupBracket = null;
     let cupRounds = 0;
     try {
-      const otherLeagues = state.otherLeagues || {};
       const cupData = getCupTeams(selectedLeague, selectedTeam, otherLeagues, leagueData.table);
       if (cupData && cupData.teams.length >= 2) {
         cupBracket = generateCupBracket(cupData.teams, selectedTeam.id);
@@ -910,44 +909,6 @@ export default function TeamSelection() {
           </div>
         )}
 
-        {/* LIGAS */}
-        {currentContent === 'leagues' && selectedCountry && (
-          <div className="leagues-grid">
-            <h2>{selectedCountry.flag} {t('teamSelection.leaguesOf', { country: selectedCountry.name })}</h2>
-            <div className="leagues-list">
-              {selectedCountry.leagues.map(leagueId => {
-                const leagueTeams = getLeagueTeams(leagueId);
-                const hasGroupsForLeague = LEAGUES_WITH_GROUPS.includes(leagueId);
-                const groups = hasGroupsForLeague ? getLeagueGroups(leagueId) : null;
-                const numGroups = groups ? Object.keys(groups).length : 0;
-                
-                return (
-                  <button
-                    key={leagueId}
-                    className={`league-card ${leagueTeams.length === 0 ? 'disabled' : ''}`}
-                    onClick={() => leagueTeams.length > 0 && handleSelectLeague(leagueId)}
-                    disabled={leagueTeams.length === 0}
-                  >
-                    <div className="league-icon"><FootballIcon size={20} /></div>
-                    <div className="info">
-                      <span className="name">{LEAGUE_NAMES[leagueId]}</span>
-                      <span className="meta">
-                        {leagueTeams.length > 0 
-                          ? hasGroupsForLeague 
-                            ? t('teamSelection.groupsAndTeams', { groups: numGroups, teams: leagueTeams.length })
-                            : t('teamSelection.teamsAvailable', { count: leagueTeams.length })
-                          : t('teamSelection.comingSoon')
-                        }
-                      </span>
-                    </div>
-                    <span className="arrow">{leagueTeams.length > 0 ? <ChevronRight size={14} /> : <Lock size={14} />}</span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        )}
-
         {/* GRUPOS */}
         {currentContent === 'groups' && selectedLeague && (
           <div className="groups-grid">
@@ -996,6 +957,11 @@ export default function TeamSelection() {
               </div>
               
               <div className="teams-list">
+                {filteredTeams.length === 0 && (
+                  <div style={{ padding: '2rem', textAlign: 'center', color: '#95a5a6' }}>
+                    {searchTerm ? t('teamSelection.searchTeam') : t('teamSelection.noTeamsAvailable')}
+                  </div>
+                )}
                 {filteredTeams.map((team, idx) => {
                   const difficulty = getDifficulty(team);
                   const avgOvr = getAvgOverall(team);
@@ -1062,7 +1028,7 @@ export default function TeamSelection() {
                     <div className="stat-card">
                       <span className="icon"><Users size={16} /></span>
                       <span className="label">{t('teamSelection.capacity')}</span>
-                      <span className="value">{(selectedTeam.stadiumCapacity || 15000).toLocaleString()}</span>
+                      <span className="value">{(getStadiumInfo(selectedTeam.id, selectedTeam.reputation)?.capacity || selectedTeam.stadiumCapacity || 15000).toLocaleString()}</span>
                     </div>
                     <div className="stat-card">
                       <span className="icon"><DollarSign size={16} /></span>
