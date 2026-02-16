@@ -264,7 +264,7 @@ export const LEAGUE_CONFIG = {
     zones: {
       promotion: [1, 2],
       playoff: [3, 4, 5, 6, 7, 8],
-      relegation: [18, 19, 20]
+      relegation: [19, 20]
     }
   },
   bundesliga2: {
@@ -287,7 +287,7 @@ export const LEAGUE_CONFIG = {
     getTeams: getLigue2Teams,
     zones: {
       promotion: [1, 2],
-      playoff: [3, 4, 5],
+      playoff: [3],
       relegation: [16, 17, 18]
     }
   },

@@ -30,8 +30,8 @@ export const EUROPEAN_SPOTS = {
   },
   premierLeague: {
     champions: [1, 2, 3, 4],
-    europaLeague: [5, 6],
-    conference: [7],
+    europaLeague: [5],
+    conference: [6, 7],
     relegation: [18, 19, 20]
   },
   serieA: {
@@ -51,8 +51,107 @@ export const EUROPEAN_SPOTS = {
     champions: [1, 2, 3],
     europaLeague: [4],
     conference: [5],
-    relegation: [17, 18],
-    playoffRelegation: [16]
+    relegation: [16, 17, 18]
+  },
+  eredivisie: {
+    champions: [1, 2],
+    europaLeague: [3, 4],
+    conference: [5, 6, 7],
+    relegation: [16, 17, 18]
+  },
+  primeiraLiga: {
+    champions: [1, 2],
+    europaLeague: [3, 4],
+    conference: [5, 6, 7],
+    relegation: [16, 17, 18]
+  },
+  championship: {
+    promotion: [1, 2],
+    playoff: [3, 4, 5, 6],
+    relegation: [22, 23, 24]
+  },
+  belgianPro: {
+    champions: [1],
+    europaLeague: [2, 3, 4],
+    conference: [5, 6, 7],
+    relegation: [15, 16]
+  },
+  superLig: {
+    champions: [1],
+    europaLeague: [2, 3, 4],
+    conference: [5, 6, 7],
+    relegation: [17, 18, 19]
+  },
+  scottishPrem: {
+    champions: [1],
+    europaLeague: [2, 3],
+    conference: [4, 5],
+    relegation: [11, 12]
+  },
+  serieB: {
+    promotion: [1, 2],
+    playoff: [3, 4, 5, 6, 7, 8],
+    relegation: [19, 20]
+  },
+  bundesliga2: {
+    promotion: [1, 2],
+    playoff: [3],
+    relegation: [16, 17, 18]
+  },
+  ligue2: {
+    promotion: [1, 2],
+    playoff: [3],
+    relegation: [16, 17, 18]
+  },
+  swissSuperLeague: {
+    champions: [1],
+    europaLeague: [2, 3],
+    conference: [4, 5],
+    relegation: [11, 12]
+  },
+  austrianBundesliga: {
+    champions: [1],
+    europaLeague: [2, 3],
+    conference: [4, 5],
+    relegation: [11, 12]
+  },
+  greekSuperLeague: {
+    champions: [1],
+    europaLeague: [2, 3],
+    conference: [4, 5],
+    relegation: [13, 14]
+  },
+  danishSuperliga: {
+    champions: [1],
+    europaLeague: [2, 3],
+    conference: [4, 5],
+    relegation: [11, 12]
+  },
+  croatianLeague: {
+    champions: [1],
+    europaLeague: [2],
+    conference: [3, 4],
+    relegation: [9, 10]
+  },
+  czechLeague: {
+    champions: [1],
+    europaLeague: [2, 3],
+    conference: [4, 5, 6],
+    relegation: [15, 16]
+  },
+  mls: {
+    relegation: []
+  },
+  saudiPro: {
+    championsLeague: [1, 2, 3],
+    relegation: [16, 17, 18]
+  },
+  ligaMX: {
+    relegation: [17, 18]
+  },
+  jLeague: {
+    championsLeague: [1, 2, 3],
+    relegation: [18, 19, 20]
   },
   // South American leagues (use libertadores/sudamericana instead of champions/europaLeague)
   argentinaPrimera: { libertadores: [1, 2, 3, 4], sudamericana: [5, 6], relegation: [27, 28, 29, 30] },
