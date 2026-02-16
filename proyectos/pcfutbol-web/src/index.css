@@ -520,11 +520,18 @@ button {
     filter: blur(80px) !important;
   }
 
-  /* Ball image — blend dark background away on light themes */
+  /* Ball image — clip to circle and add light border on light themes */
   .hero-ball-img {
-    mix-blend-mode: multiply !important;
-    filter: drop-shadow(0 0 20px rgba(var(--color-accent-rgb), 0.2))
-           drop-shadow(0 8px 16px rgba(0, 0, 0, 0.15)) !important;
+    border-radius: 50% !important;
+    border: 3px solid rgba(var(--color-accent-rgb), 0.3) !important;
+    box-shadow: 0 0 30px rgba(var(--color-accent-rgb), 0.15),
+                0 8px 24px rgba(0, 0, 0, 0.1) !important;
+    filter: none !important;
+  }
+  
+  /* Hide dark glow behind ball */
+  .main-menu__ball .hero-ball {
+    filter: none !important;
   }
 
   /* Office header — use theme bg */

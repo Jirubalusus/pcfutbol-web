@@ -13,11 +13,14 @@ import {
 } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
 import EditionMode from '../EditionMode/EditionMode';
+import { useTheme } from '../../context/ThemeContext';
 import { getActiveEditionId } from '../../data/editions/editionService';
 import './MainMenu.scss';
 
 export default function MainMenu() {
   const { t } = useTranslation();
+  const { themeId, themes: themeList } = useTheme();
+  const isLightTheme = themeList[themeId]?.colorScheme === 'light';
   const { state, dispatch } = useGame();
   const { user, isAuthenticated, isEmailVerified, logout, loading: authLoading } = useAuth();
   const [animateIn, setAnimateIn] = useState(false);
@@ -302,7 +305,10 @@ export default function MainMenu() {
         <div className="main-menu__hero">
           <div className="main-menu__ball">
             <div className="main-menu__ball-inner">
-              <img className="hero-ball-img" src="/ball.jpg" alt="balón" />
+              {isLightTheme 
+                ? <span className="hero-ball" role="img" aria-label="balón">⚽</span>
+                : <img className="hero-ball-img" src="/ball.jpg" alt="balón" />
+              }
             </div>
           </div>
           <h1 className="main-menu__title">
