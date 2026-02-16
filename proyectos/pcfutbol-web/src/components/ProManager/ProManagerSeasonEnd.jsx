@@ -6,7 +6,7 @@ import {
   evaluateSeason, updatePrestige, generateSeasonEndOffers,
   getSeasonEndConfidence, getBoardObjective
 } from '../../game/proManagerEngine';
-import { LEAGUE_CONFIG, initializeOtherLeagues, initializeNewSeasonWithPromotions } from '../../game/multiLeagueEngine';
+import { LEAGUE_CONFIG, initializeOtherLeagues, initializeNewSeasonWithPromotions, completeRemainingLeagues } from '../../game/multiLeagueEngine';
 import { initializeLeague } from '../../game/leagueEngine';
 import { getStadiumInfo, getStadiumLevel } from '../../data/stadiumCapacities';
 import { generatePreseasonOptions, getSeasonResult } from '../../game/seasonManager';
@@ -188,8 +188,19 @@ export default function ProManagerSeasonEnd() {
     // Season result for transition
     const seasonResult = getSeasonResult(state.leagueTable, state.teamId, leagueId);
 
+    // Complete any unfinished other leagues before processing promotion/relegation
+    let completedState = state;
+    if (state.otherLeagues && Object.keys(state.otherLeagues).length > 0) {
+      try {
+        const completed = completeRemainingLeagues(state.otherLeagues, state.currentWeek);
+        completedState = { ...state, otherLeagues: completed };
+      } catch (e) {
+        console.warn('Error completing other leagues in ProManager season end:', e);
+      }
+    }
+
     // Process promotion/relegation
-    const newSeasonData = initializeNewSeasonWithPromotions(state, state.teamId, null, {});
+    const newSeasonData = initializeNewSeasonWithPromotions(completedState, state.teamId, null, {});
     const newPlayerLeagueId = newSeasonData.newPlayerLeagueId || leagueId;
 
     // Generate preseason (auto-pick first option)

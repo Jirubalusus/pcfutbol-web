@@ -963,6 +963,67 @@ export function simulateOtherLeaguesWeek(otherLeagues, week) {
 }
 
 /**
+ * Complete all remaining unplayed weeks for leagues that have more matchdays
+ * than the player's league. Called at season end to ensure all leagues finish.
+ * @param {Object} otherLeagues - Current state of other leagues
+ * @param {number} currentWeek - The last week that was simulated
+ * @returns {Object} - Updated other leagues with all remaining fixtures played
+ */
+export function completeRemainingLeagues(otherLeagues, currentWeek) {
+  const updatedLeagues = { ...otherLeagues };
+  
+  Object.entries(updatedLeagues).forEach(([leagueId, leagueData]) => {
+    if (!leagueData) return;
+    
+    // Handle group leagues
+    if (leagueData.isGroupLeague) {
+      if (!leagueData.groups) return;
+      let hasUnplayed = false;
+      Object.values(leagueData.groups).forEach(g => {
+        if (g.fixtures?.some(f => !f.played)) hasUnplayed = true;
+      });
+      if (!hasUnplayed) return;
+      
+      // Simulate remaining weeks for group league
+      const config = LEAGUE_CONFIG[leagueId];
+      const groupsTeams = config?.getGroups?.() || {};
+      let maxWeek = 0;
+      Object.values(leagueData.groups).forEach(g => {
+        (g.fixtures || []).forEach(f => { if (f.week > maxWeek) maxWeek = f.week; });
+      });
+      
+      let updated = leagueData;
+      for (let week = currentWeek + 1; week <= maxWeek; week++) {
+        try {
+          updated = simulateGroupLeagueWeek(updated, week, groupsTeams);
+        } catch (e) {
+          console.warn(`Error completing group league ${leagueId} week ${week}:`, e);
+        }
+      }
+      updatedLeagues[leagueId] = { ...updated, isGroupLeague: true };
+      return;
+    }
+    
+    // Standard/apertura-clausura leagues
+    if (!leagueData.fixtures || leagueData.fixtures.length === 0) return;
+    const hasUnplayed = leagueData.fixtures.some(f => !f.played);
+    if (!hasUnplayed) return;
+    
+    const maxWeek = Math.max(...leagueData.fixtures.map(f => f.week));
+    if (maxWeek <= currentWeek) return; // Already fully covered
+    
+    // Simulate remaining weeks
+    let tempLeagues = { [leagueId]: leagueData };
+    for (let week = currentWeek + 1; week <= maxWeek; week++) {
+      tempLeagues = simulateOtherLeaguesWeek(tempLeagues, week);
+    }
+    updatedLeagues[leagueId] = tempLeagues[leagueId];
+  });
+  
+  return updatedLeagues;
+}
+
+/**
  * Obtiene la clasificación de una liga específica
  * Para ligas de grupos, devuelve un objeto { grupo1: table, grupo2: table, ... }
  * Para ligas normales, devuelve un array
