@@ -2464,7 +2464,9 @@ function gameReducer(state, action) {
       if (isAperturaClausura(state.playerLeagueId)) {
         const playerConfig = LEAGUE_CONFIG[state.playerLeagueId];
         if (playerConfig) {
-          const clausuraStart = getClausuraStartWeek(playerConfig.teams);
+          const clausuraStartMD = getClausuraStartWeek(playerConfig.teams);
+          // When fixtures are remapped for European/SA calendar, compare against remapped week
+          const clausuraStart = state.europeanCalendar?.leagueWeekMap?.[clausuraStartMD - 1] ?? clausuraStartMD;
           if (nextWeek === clausuraStart && updatedCurrentTournament === 'apertura') {
             // Freeze Apertura table
             updatedAperturaTable = state.leagueTable.map(t => ({ ...t }));
@@ -2491,7 +2493,9 @@ function gameReducer(state, action) {
       if (isAperturaClausura(state.playerLeagueId) && updatedCurrentTournament === 'clausura' && !aperturaClausuraFinal && !pendingAperturaClausuraFinal) {
         const playerConfig = LEAGUE_CONFIG[state.playerLeagueId];
         if (playerConfig) {
-          const lastWeek = getLastClausuraWeek(playerConfig.teams);
+          const lastWeekMD = getLastClausuraWeek(playerConfig.teams);
+          // When fixtures are remapped for European/SA calendar, compare against remapped week
+          const lastWeek = state.europeanCalendar?.leagueWeekMap?.[lastWeekMD - 1] ?? lastWeekMD;
           // Detect: current week is the last clausura week (fixtures just played)
           // state.currentWeek is the week that was just played, nextWeek = currentWeek + 1
           if (state.currentWeek >= lastWeek) {

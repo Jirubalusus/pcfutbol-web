@@ -1078,14 +1078,14 @@ const LEAGUE_RELATIONS = {
   laliga: {
     relegatesTo: 'segunda',
     promotedFrom: 'segunda',
-    relegationSpots: 3, // Últimos 3 descienden
+    relegationSpots: 3, // Últimos 3 descienden (positions 18-20)
     promotionSpots: 2   // Primeros 2 de Segunda ascienden directo
   },
   segunda: {
     relegatesTo: 'primeraRFEF',
     promotedFrom: 'primeraRFEF',
     promotesTo: 'laliga',
-    relegationSpots: 3,  // Últimos 3 descienden a Primera RFEF
+    relegationSpots: 4,  // Últimos 4 descienden a Primera RFEF (positions 19-22)
     promotionSpots: 2
   },
   primeraRFEF: {

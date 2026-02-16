@@ -35,7 +35,7 @@ import {
 } from '../../game/seasonManager';
 import { qualifyTeamsForEurope, buildSeasonCalendar, buildEuropeanCalendar, remapFixturesForEuropean } from '../../game/europeanCompetitions';
 import { getCupTeams, generateCupBracket, CUP_CONFIGS } from '../../game/cupSystem';
-import { LEAGUE_CONFIG, isAperturaClausura, simulateAperturaClausuraFinal } from '../../game/multiLeagueEngine';
+import { LEAGUE_CONFIG, isAperturaClausura, simulateAperturaClausuraFinal, simulateOtherLeaguesWeek } from '../../game/multiLeagueEngine';
 import { initializeEuropeanCompetitions } from '../../game/europeanSeason';
 import { isSouthAmericanLeague, qualifyTeamsForSouthAmerica, SA_LEAGUE_SLOTS } from '../../game/southAmericanCompetitions';
 import { initializeSACompetitions } from '../../game/southAmericanSeason';
@@ -383,8 +383,31 @@ export default function SeasonEnd({ allTeams, onComplete }) {
       }
     }
     
+    // Complete any unfinished other leagues (e.g. Argentina 58 matchdays when player has 38+European)
+    let completedState = state;
+    if (state.otherLeagues && Object.keys(state.otherLeagues).length > 0) {
+      try {
+        const maxOtherWeek = Object.values(state.otherLeagues).reduce((max, ld) => {
+          if (ld.isGroupLeague) {
+            const groupMax = Object.values(ld.groups || {}).reduce((gm, gd) => {
+              return Math.max(gm, (gd.fixtures || []).reduce((m, f) => Math.max(m, f.week), 0));
+            }, 0);
+            return Math.max(max, groupMax);
+          }
+          return Math.max(max, (ld.fixtures || []).reduce((m, f) => Math.max(m, f.week), 0));
+        }, 0);
+        let tempOtherLeagues = state.otherLeagues;
+        for (let w = state.currentWeek + 1; w <= maxOtherWeek; w++) {
+          tempOtherLeagues = simulateOtherLeaguesWeek(tempOtherLeagues, w);
+        }
+        completedState = { ...state, otherLeagues: tempOtherLeagues };
+      } catch (e) {
+        console.warn('Error completing other leagues at season end:', e);
+      }
+    }
+
     // Procesar promoción/relegación y generar nuevas ligas (con playoff resuelto)
-    const newSeasonData = initializeNewSeasonWithPromotions(state, state.teamId, playoffBracket, rfefPlayoffOptions);
+    const newSeasonData = initializeNewSeasonWithPromotions(completedState, state.teamId, playoffBracket, rfefPlayoffOptions);
     
     // Generar nuevos objetivos para la nueva liga del jugador
     const newPlayerLeagueId = newSeasonData.newPlayerLeagueId || state.playerLeagueId || 'laliga';

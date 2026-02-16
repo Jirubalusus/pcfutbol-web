@@ -15,7 +15,7 @@ export const EUROPEAN_SPOTS = {
   segunda: {
     promotion: [1, 2],
     playoff: [3, 4, 5, 6],
-    relegation: [20, 21, 22]
+    relegation: [19, 20, 21, 22]
   },
   primeraRFEF: {
     // Group league - per-group zones (dynamic relegation based on group size)
@@ -98,7 +98,7 @@ export const LEAGUE_MATCHDAYS = {
   boliviaPrimera: 30,   // 16 teams
   venezuelaPrimera: 26, // 14 teams = 26 matchdays (13*2)
   // Other leagues
-  superLig: 36,             // 19 teams = 36 matchdays (odd teams handled by engine)
+  superLig: 38,             // 19 teams = 38 fixture weeks (20 after padding, 19 rounds × 2)
   swissSuperLeague: 22,     // 12 teams
   austrianBundesliga: 22,   // 12 teams
   greekSuperLeague: 26,     // 14 teams
