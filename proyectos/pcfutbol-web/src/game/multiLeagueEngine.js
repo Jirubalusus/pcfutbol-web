@@ -1103,8 +1103,60 @@ const LEAGUE_RELATIONS = {
     isGroupLeague: true,
     promotionPerGroup: 1,   // Campeón de cada grupo asciende a Primera RFEF
     relegationPerGroup: 0
+  },
+  // ============================================================
+  // NON-SPANISH LEAGUE PAIRS
+  // ============================================================
+  premierLeague: {
+    relegatesTo: 'championship',
+    promotedFrom: 'championship',
+    relegationSpots: 3,       // Positions 18,19,20 descend
+    directPromotionSpots: 2,  // Top 2 of Championship promote directly
+    playoffPositions: [3, 4, 5, 6] // 3rd-6th play playoff, winner promotes
+  },
+  championship: {
+    promotesTo: 'premierLeague',
+    relegatesTo: null,        // No third tier implemented
+    promotedFrom: null
+  },
+  serieA: {
+    relegatesTo: 'serieB',
+    promotedFrom: 'serieB',
+    relegationSpots: 3,       // Positions 18,19,20 descend
+    directPromotionSpots: 2,  // Top 2 of Serie B promote directly
+    playoffPositions: [3, 4, 5, 6, 7, 8] // 3rd-8th play playoff
+  },
+  serieB: {
+    promotesTo: 'serieA',
+    relegatesTo: null,
+    promotedFrom: null
+  },
+  bundesliga: {
+    relegatesTo: 'bundesliga2',
+    promotedFrom: 'bundesliga2',
+    directRelegationSpots: 2,   // Positions 17,18 descend directly
+    playoffRelegationPos: 16,   // 16th plays playoff vs 3rd of Bundesliga 2
+    directPromotionSpots: 2,    // Top 2 of Bundesliga 2 promote directly
+    playoffPromotionPos: 3      // 3rd of Bundesliga 2 plays playoff vs 16th of Bundesliga
+  },
+  bundesliga2: {
+    promotesTo: 'bundesliga',
+    relegatesTo: null,
+    promotedFrom: null
+  },
+  ligue1: {
+    relegatesTo: 'ligue2',
+    promotedFrom: 'ligue2',
+    directRelegationSpots: 2,   // Positions 17,18 descend directly
+    playoffRelegationPos: 16,   // 16th plays playoff vs 3rd of Ligue 2
+    directPromotionSpots: 2,    // Top 2 of Ligue 2 promote directly
+    playoffPromotionPos: 3      // 3rd of Ligue 2 plays playoff vs 16th of Ligue 1
+  },
+  ligue2: {
+    promotesTo: 'ligue1',
+    relegatesTo: null,
+    promotedFrom: null
   }
-  // Otras ligas europeas no tienen segunda división implementada
 };
 
 /**
@@ -1337,6 +1389,219 @@ function processRFEFPromotionRelegation(segundaTable, primeraRFEFData, segundaRF
   return changes;
 }
 
+// ============================================================
+// GENERIC PROMOTION/RELEGATION FOR NON-SPANISH LEAGUE PAIRS
+// ============================================================
+
+/**
+ * Non-Spanish league pairs definition for promotion/relegation processing.
+ * Each entry: { topLeague, bottomLeague, type, ...config }
+ *   type 'standard': directDown relegated, directUp promoted, playoffPositions for playoff winner
+ *   type 'playoff':  directDown relegated, playoffRelegationPos plays vs playoffPromotionPos, directUp promoted
+ */
+const LEAGUE_PAIRS = [
+  {
+    topLeague: 'premierLeague',
+    bottomLeague: 'championship',
+    type: 'standard',        // 3 down, 2 up + playoff(3-6)
+    directDown: 3,           // bottom 3 of top league
+    directUp: 2,             // top 2 of bottom league
+    playoffPositions: [3, 4, 5, 6]  // 3rd-6th of bottom league play playoff
+  },
+  {
+    topLeague: 'serieA',
+    bottomLeague: 'serieB',
+    type: 'standard',        // 3 down, 2 up + playoff(3-8)
+    directDown: 3,
+    directUp: 2,
+    playoffPositions: [3, 4, 5, 6, 7, 8]
+  },
+  {
+    topLeague: 'bundesliga',
+    bottomLeague: 'bundesliga2',
+    type: 'playoff',         // 2 down + 16th playoff, 2 up + 3rd playoff
+    directDown: 2,           // bottom 2 of top league descend
+    playoffRelegationPos: 16,// 16th of top league plays playoff
+    directUp: 2,             // top 2 of bottom league promote
+    playoffPromotionPos: 3   // 3rd of bottom league plays playoff
+  },
+  {
+    topLeague: 'ligue1',
+    bottomLeague: 'ligue2',
+    type: 'playoff',         // 2 down + 16th playoff, 2 up + 3rd playoff
+    directDown: 2,
+    playoffRelegationPos: 16,
+    directUp: 2,
+    playoffPromotionPos: 3
+  }
+];
+
+/**
+ * Simulate a single playoff match (two legs) between two teams.
+ * Returns the winner's teamId.
+ */
+function simulatePlayoffTwoLegs(team1Data, team2Data) {
+  if (!team1Data || !team2Data) return team1Data?.id || team2Data?.id || null;
+  
+  const leg1 = simulateMatch(team1Data.id, team2Data.id, team1Data, team2Data, {
+    importance: 'playoff', homeMorale: 80, awayMorale: 80
+  });
+  const leg2 = simulateMatch(team2Data.id, team1Data.id, team2Data, team1Data, {
+    importance: 'playoff', homeMorale: 80, awayMorale: 80
+  });
+  
+  const team1Total = leg1.homeScore + leg2.awayScore;
+  const team2Total = leg1.awayScore + leg2.homeScore;
+  
+  if (team1Total > team2Total) return team1Data.id;
+  if (team2Total > team1Total) return team2Data.id;
+  // Away goals
+  const team1Away = leg2.awayScore;
+  const team2Away = leg1.awayScore;
+  if (team1Away > team2Away) return team1Data.id;
+  if (team2Away > team1Away) return team2Data.id;
+  // Random tiebreak
+  return Math.random() > 0.5 ? team1Data.id : team2Data.id;
+}
+
+/**
+ * Simulate a mini playoff bracket for promotion (standard type).
+ * playoffPositions: array of 1-based positions (e.g. [3,4,5,6])
+ * Returns the winner teamId.
+ */
+function simulatePromotionPlayoffBracket(bottomTable, allTeams, playoffPositions) {
+  const entries = playoffPositions.map(pos => bottomTable[pos - 1]).filter(Boolean);
+  if (entries.length < 2) return entries[0]?.teamId || null;
+  
+  const getTeam = (teamId) => allTeams.find(t => t.id === teamId);
+  
+  if (entries.length === 4) {
+    // Standard 4-team bracket: 3v6, 4v5 → final
+    const semi1Winner = simulatePlayoffTwoLegs(getTeam(entries[0].teamId), getTeam(entries[3].teamId));
+    const semi2Winner = simulatePlayoffTwoLegs(getTeam(entries[1].teamId), getTeam(entries[2].teamId));
+    return simulatePlayoffTwoLegs(getTeam(semi1Winner), getTeam(semi2Winner));
+  }
+  
+  if (entries.length === 6) {
+    // Serie B style: 3v8, 4v7, 5v6 → then 3 winners play (best seed gets bye or round-robin sim)
+    // Simplified: quarter-final round → semi-final → final
+    const qf1Winner = simulatePlayoffTwoLegs(getTeam(entries[0].teamId), getTeam(entries[5].teamId)); // 3v8
+    const qf2Winner = simulatePlayoffTwoLegs(getTeam(entries[1].teamId), getTeam(entries[4].teamId)); // 4v7
+    const qf3Winner = simulatePlayoffTwoLegs(getTeam(entries[2].teamId), getTeam(entries[3].teamId)); // 5v6
+    // Semi: qf1 winner vs qf3 winner, qf2 gets bye to final (best remaining seed)
+    const semiWinner = simulatePlayoffTwoLegs(getTeam(qf1Winner), getTeam(qf3Winner));
+    return simulatePlayoffTwoLegs(getTeam(qf2Winner), getTeam(semiWinner));
+  }
+  
+  // Generic: just do sequential elimination
+  let currentWinner = getTeam(entries[0].teamId);
+  for (let i = 1; i < entries.length; i++) {
+    const winnerId = simulatePlayoffTwoLegs(currentWinner, getTeam(entries[i].teamId));
+    currentWinner = getTeam(winnerId);
+  }
+  return currentWinner?.id || null;
+}
+
+/**
+ * Process promotion/relegation for a single non-Spanish league pair.
+ * Returns { relegated, promoted, playoffWinner, newPlayerLeagueId (or null) }
+ */
+function processLeaguePairPromotionRelegation(pair, topTable, bottomTable, playerTeamId) {
+  const topConfig = LEAGUE_CONFIG[pair.topLeague];
+  const bottomConfig = LEAGUE_CONFIG[pair.bottomLeague];
+  if (!topConfig || !bottomConfig) return null;
+  
+  const allTopTeams = topConfig.getTeams();
+  const allBottomTeams = bottomConfig.getTeams();
+  const allTeams = [...allTopTeams, ...allBottomTeams];
+  const findTeam = (id) => allTeams.find(t => t.id === id);
+  
+  let relegatedIds = [];  // teams going down from top
+  let promotedIds = [];   // teams going up from bottom
+  let playoffWinnerId = null;
+  let playoffRelegationResult = null; // for 'playoff' type
+  
+  if (pair.type === 'standard') {
+    // Direct relegation: bottom N of top league
+    const topLen = topTable.length;
+    relegatedIds = topTable.slice(topLen - pair.directDown).map(t => t.teamId);
+    
+    // Direct promotion: top N of bottom league
+    promotedIds = bottomTable.slice(0, pair.directUp).map(t => t.teamId);
+    
+    // Playoff: positions play bracket, winner also promotes
+    if (pair.playoffPositions && pair.playoffPositions.length >= 2) {
+      playoffWinnerId = simulatePromotionPlayoffBracket(bottomTable, allTeams, pair.playoffPositions);
+      if (playoffWinnerId && !promotedIds.includes(playoffWinnerId)) {
+        promotedIds.push(playoffWinnerId);
+      }
+    }
+  } else if (pair.type === 'playoff') {
+    // Direct relegation: bottom N of top league
+    const topLen = topTable.length;
+    relegatedIds = topTable.slice(topLen - pair.directDown).map(t => t.teamId);
+    
+    // Direct promotion: top N of bottom league
+    promotedIds = bottomTable.slice(0, pair.directUp).map(t => t.teamId);
+    
+    // Relegation/Promotion playoff: 16th of top vs 3rd of bottom
+    const relegPlayoffTeamId = topTable[pair.playoffRelegationPos - 1]?.teamId;
+    const promPlayoffTeamId = bottomTable[pair.playoffPromotionPos - 1]?.teamId;
+    
+    if (relegPlayoffTeamId && promPlayoffTeamId) {
+      const winnerId = simulatePlayoffTwoLegs(findTeam(promPlayoffTeamId), findTeam(relegPlayoffTeamId));
+      if (winnerId === promPlayoffTeamId) {
+        // Bottom league team won → promotes, top league team relegates
+        promotedIds.push(promPlayoffTeamId);
+        relegatedIds.push(relegPlayoffTeamId);
+      }
+      // If top league team won, both stay in their leagues (no swap)
+      playoffRelegationResult = { winner: winnerId, topTeam: relegPlayoffTeamId, bottomTeam: promPlayoffTeamId };
+    }
+  }
+  
+  // Determine player league change
+  let newPlayerLeagueId = null;
+  if (relegatedIds.includes(playerTeamId)) {
+    newPlayerLeagueId = pair.bottomLeague;
+  } else if (promotedIds.includes(playerTeamId)) {
+    newPlayerLeagueId = pair.topLeague;
+  }
+  
+  // Build new team lists
+  const currentTopIds = topTable.map(t => t.teamId);
+  const currentBottomIds = bottomTable.map(t => t.teamId);
+  
+  const newTopIds = currentTopIds.filter(id => !relegatedIds.includes(id)).concat(promotedIds);
+  const newBottomIds = currentBottomIds.filter(id => !promotedIds.includes(id)).concat(relegatedIds);
+  
+  const newTopTeams = newTopIds.map(findTeam).filter(Boolean);
+  const newBottomTeams = newBottomIds.map(findTeam).filter(Boolean);
+  
+  return {
+    topLeague: pair.topLeague,
+    bottomLeague: pair.bottomLeague,
+    relegatedIds,
+    promotedIds,
+    playoffWinnerId,
+    playoffRelegationResult,
+    newPlayerLeagueId,
+    newTopTeams,
+    newBottomTeams,
+    changes: {
+      relegated: relegatedIds.map(id => {
+        const t = topTable.find(e => e.teamId === id);
+        return t?.teamName || findTeam(id)?.name || id;
+      }),
+      promoted: promotedIds.map(id => {
+        const t = bottomTable.find(e => e.teamId === id);
+        return t?.teamName || findTeam(id)?.name || id;
+      }),
+      playoffWinner: playoffWinnerId ? (findTeam(playoffWinnerId)?.name || playoffWinnerId) : null
+    }
+  };
+}
+
 /**
  * Inicializa una nueva temporada con los cambios de promoción/relegación
  * @param {Object} state - Estado actual del juego
@@ -1454,10 +1719,38 @@ export function initializeNewSeasonWithPromotions(state, playerTeamId, playoffBr
       newPlayerLeagueId = 'primeraRFEF';
     }
     
+    // === PROCESS NON-SPANISH LEAGUE PAIR PROMOTIONS ===
+    const nonSpanishOverrides = {};
+    const nonSpanishPairChanges = [];
+    
+    const getNonSpanishTable = (leagueId) => {
+      const ld = state.otherLeagues?.[leagueId];
+      if (!ld) return [];
+      if (ld.accumulatedTable && ld.accumulatedTable.length > 0) return ld.accumulatedTable;
+      return ld.table || [];
+    };
+    
+    for (const pair of LEAGUE_PAIRS) {
+      const topTable = getNonSpanishTable(pair.topLeague);
+      const bottomTable = getNonSpanishTable(pair.bottomLeague);
+      if (topTable.length === 0 || bottomTable.length === 0) continue;
+      
+      const pairResult = processLeaguePairPromotionRelegation(pair, topTable, bottomTable, null);
+      if (!pairResult) continue;
+      
+      nonSpanishOverrides[pair.topLeague] = pairResult.newTopTeams;
+      nonSpanishOverrides[pair.bottomLeague] = pairResult.newBottomTeams;
+      nonSpanishPairChanges.push({
+        topLeague: pair.topLeague,
+        bottomLeague: pair.bottomLeague,
+        ...pairResult.changes
+      });
+    }
+    
     // === INITIALIZE ALL LEAGUES ===
     const otherLeagues = {};
     
-    // Initialize non-Spanish leagues
+    // Initialize non-Spanish leagues (with team swaps from promotion/relegation)
     Object.keys(LEAGUE_CONFIG).forEach(leagueId => {
       if (spanishLeagues.includes(leagueId)) return;
       const config = LEAGUE_CONFIG[leagueId];
@@ -1470,7 +1763,7 @@ export function initializeNewSeasonWithPromotions(state, playerTeamId, playoffBr
           otherLeagues[leagueId] = { isGroupLeague: true, groups: {} };
         }
       } else {
-        const teams = config.getTeams();
+        const teams = nonSpanishOverrides[leagueId] || config.getTeams();
         if (teams && teams.length > 0) {
           const { table, fixtures } = initializeLeague(teams, null);
           if (isAperturaClausura(leagueId)) {
@@ -1567,12 +1860,108 @@ export function initializeNewSeasonWithPromotions(state, playerTeamId, playoffBr
     return result;
   }
   
-  // Para otras ligas europeas, simplemente reiniciamos sin cambios
-  const otherLeagues = initializeOtherLeagues(playerLeagueId, state.playerGroupId);
-  const config = LEAGUE_CONFIG[playerLeagueId];
+  // ============================================================
+  // NON-SPANISH LEAGUES: Process promotion/relegation for all pairs
+  // ============================================================
   
-  if (config?.isGroupLeague) {
-    const groupsData = config.getGroups();
+  // Helper to get a league's final table from state
+  const getLeagueFinalTable = (leagueId) => {
+    if (leagueId === playerLeagueId) return state.leagueTable || [];
+    const ld = state.otherLeagues?.[leagueId];
+    if (!ld) return [];
+    // For apertura-clausura leagues, use accumulated table
+    if (ld.accumulatedTable && ld.accumulatedTable.length > 0) return ld.accumulatedTable;
+    return ld.table || [];
+  };
+  
+  // Process all league pairs and collect results
+  const pairResults = [];
+  let newPlayerLeagueId = playerLeagueId;
+  
+  // Map of leagueId → new team list (overrides default getTeams)
+  const leagueTeamOverrides = {};
+  
+  for (const pair of LEAGUE_PAIRS) {
+    const topTable = getLeagueFinalTable(pair.topLeague);
+    const bottomTable = getLeagueFinalTable(pair.bottomLeague);
+    
+    if (topTable.length === 0 || bottomTable.length === 0) continue;
+    
+    const result = processLeaguePairPromotionRelegation(pair, topTable, bottomTable, playerTeamId);
+    if (!result) continue;
+    
+    pairResults.push(result);
+    
+    if (result.newPlayerLeagueId) {
+      newPlayerLeagueId = result.newPlayerLeagueId;
+    }
+    
+    leagueTeamOverrides[pair.topLeague] = result.newTopTeams;
+    leagueTeamOverrides[pair.bottomLeague] = result.newBottomTeams;
+  }
+  
+  // Build all changes for display
+  const allChanges = { relegated: [], promoted: [], playoffWinner: '', leaguePairChanges: [] };
+  for (const pr of pairResults) {
+    allChanges.leaguePairChanges.push({
+      topLeague: pr.topLeague,
+      bottomLeague: pr.bottomLeague,
+      ...pr.changes
+    });
+    // Also add to top-level arrays for backward compatibility with message display
+    if (pr.changes.relegated.length > 0) {
+      allChanges.relegated.push(...pr.changes.relegated);
+    }
+    if (pr.changes.promoted.length > 0) {
+      allChanges.promoted.push(...pr.changes.promoted);
+    }
+    if (pr.changes.playoffWinner && !allChanges.playoffWinner) {
+      allChanges.playoffWinner = pr.changes.playoffWinner;
+    }
+  }
+  
+  // Initialize all leagues with swapped teams
+  const otherLeagues = {};
+  
+  Object.keys(LEAGUE_CONFIG).forEach(leagueId => {
+    if (leagueId === newPlayerLeagueId) return; // player's league handled separately
+    const config = LEAGUE_CONFIG[leagueId];
+    
+    if (config.isGroupLeague) {
+      try {
+        const groupsData = config.getGroups();
+        const groupLeague = initializeGroupLeague(groupsData, null);
+        otherLeagues[leagueId] = { isGroupLeague: true, ...groupLeague };
+      } catch (e) {
+        otherLeagues[leagueId] = { isGroupLeague: true, groups: {} };
+      }
+      return;
+    }
+    
+    // Use overridden teams if promotion/relegation affected this league
+    const teams = leagueTeamOverrides[leagueId] || config.getTeams();
+    if (!teams || teams.length === 0) {
+      otherLeagues[leagueId] = { table: [], fixtures: [] };
+      return;
+    }
+    
+    const { table, fixtures } = initializeLeague(teams, null);
+    if (isAperturaClausura(leagueId)) {
+      otherLeagues[leagueId] = {
+        table, fixtures,
+        accumulatedTable: table.map(t => ({ ...t })),
+        aperturaTable: null, currentTournament: 'apertura'
+      };
+    } else {
+      otherLeagues[leagueId] = { table, fixtures };
+    }
+  });
+  
+  // Initialize player's league
+  const playerConfig = LEAGUE_CONFIG[newPlayerLeagueId];
+  
+  if (playerConfig?.isGroupLeague) {
+    const groupsData = playerConfig.getGroups();
     const playerLeagueData = initializeGroupLeague(groupsData, playerTeamId);
     const pg = playerLeagueData.playerGroup;
     const pgData = pg ? playerLeagueData.groups?.[pg] : null;
@@ -1584,18 +1973,32 @@ export function initializeNewSeasonWithPromotions(state, playerTeamId, playoffBr
         fixtures: pgData?.fixtures || []
       },
       otherLeagues,
-      newPlayerLeagueId: playerLeagueId,
-      changes: { relegated: [], promoted: [] }
+      newPlayerLeagueId,
+      changes: allChanges
     };
   }
   
-  const teams = config?.getTeams() || [];
-  const playerLeagueData = initializeLeague(teams, playerTeamId);
+  const playerTeams = leagueTeamOverrides[newPlayerLeagueId] || playerConfig?.getTeams() || [];
+  const playerLeagueData = initializeLeague(playerTeams, playerTeamId);
+  
+  if (isAperturaClausura(newPlayerLeagueId)) {
+    return {
+      playerLeague: {
+        ...playerLeagueData,
+        accumulatedTable: playerLeagueData.table.map(t => ({ ...t })),
+        aperturaTable: null,
+        currentTournament: 'apertura'
+      },
+      otherLeagues,
+      newPlayerLeagueId,
+      changes: allChanges
+    };
+  }
   
   return {
     playerLeague: playerLeagueData,
     otherLeagues,
-    newPlayerLeagueId: playerLeagueId,
-    changes: { relegated: [], promoted: [] }
+    newPlayerLeagueId,
+    changes: allChanges
   };
 }

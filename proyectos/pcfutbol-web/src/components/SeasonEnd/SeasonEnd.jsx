@@ -37,6 +37,7 @@ import { qualifyTeamsForEurope, buildSeasonCalendar, buildEuropeanCalendar, rema
 import { getCupTeams, generateCupBracket, CUP_CONFIGS } from '../../game/cupSystem';
 import { LEAGUE_CONFIG, isAperturaClausura, simulateAperturaClausuraFinal, simulateOtherLeaguesWeek } from '../../game/multiLeagueEngine';
 import { initializeEuropeanCompetitions } from '../../game/europeanSeason';
+import { getLeagueTier } from '../../game/leagueTiers';
 import { isSouthAmericanLeague, qualifyTeamsForSouthAmerica, SA_LEAGUE_SLOTS } from '../../game/southAmericanCompetitions';
 import { initializeSACompetitions } from '../../game/southAmericanSeason';
 import { initializeLeague, simulateMatch } from '../../game/leagueEngine';
@@ -445,10 +446,20 @@ export default function SeasonEnd({ allTeams, onComplete }) {
       }
       if (newSeasonData.newPlayerLeagueId !== (state.playerLeagueId || 'laliga')) {
         // Detect promotion: moving to a higher tier league
+        // Use tier system: tier 1 (elite) < tier 2 (major) etc. Lower tier number = higher division
         const tierOrder = ['laliga', 'segunda', 'primeraRFEF', 'segundaRFEF'];
-        const oldTier = tierOrder.indexOf(state.playerLeagueId || 'laliga');
-        const newTier = tierOrder.indexOf(newSeasonData.newPlayerLeagueId);
-        const isPromotion = newTier >= 0 && oldTier >= 0 ? newTier < oldTier : newSeasonData.newPlayerLeagueId === 'laliga';
+        const oldTierIdx = tierOrder.indexOf(state.playerLeagueId || 'laliga');
+        const newTierIdx = tierOrder.indexOf(newSeasonData.newPlayerLeagueId);
+        // For non-Spanish leagues, use LEAGUE_TIERS from leagueTiers
+        let isPromotion;
+        if (oldTierIdx >= 0 && newTierIdx >= 0) {
+          isPromotion = newTierIdx < oldTierIdx;
+        } else {
+          // Use tier-based detection for all leagues
+          const oldTier = getLeagueTier(state.playerLeagueId || 'laliga');
+          const newTier = getLeagueTier(newSeasonData.newPlayerLeagueId);
+          isPromotion = newTier < oldTier;
+        }
         pendingMessages.push({
           id: Date.now() + 3,
           type: isPromotion ? 'promotion' : 'relegation',
