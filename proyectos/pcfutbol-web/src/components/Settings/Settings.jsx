@@ -136,7 +136,7 @@ export default function Settings({ onClose }) {
           </div>
         </section>
 
-        {/* Apariencia / Theme */}
+        {/* Apariencia / Theme — oculto temporalmente hasta producción
         <section className="settings__section">
           <h3><Palette size={16} /> {t('settings.appearance')}</h3>
           <div className="settings__theme-grid">
@@ -162,6 +162,7 @@ export default function Settings({ onClose }) {
             ))}
           </div>
         </section>
+        */}
 
         {/* Nombre del manager */}
         {user && (

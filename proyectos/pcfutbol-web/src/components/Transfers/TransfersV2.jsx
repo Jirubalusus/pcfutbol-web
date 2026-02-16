@@ -2746,7 +2746,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
     setOfferAmount(roundTo100K(effectiveMarketValue * 0.95));
 
-    setSalaryOffer(roundTo100K(Math.max(requiredSalary * 1.1, 100000)));
+    setSalaryOffer(roundTo100K(Math.max(currentSalary, 100000)));
 
     setSigningBonus(roundTo100K(isFreeAgent ? effectiveMarketValue * 0.15 : effectiveMarketValue * 0.1));
 

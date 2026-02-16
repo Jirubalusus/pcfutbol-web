@@ -702,6 +702,36 @@ body {
   box-shadow: 0 4px 20px rgba(0,0,0,0.06) !important;
 }
 
+[data-theme="modern"] .main-menu__btn--primary {
+  background: linear-gradient(135deg, #0d9488, #14b8a6) !important;
+  border-color: #0d9488 !important;
+}
+[data-theme="modern"] .main-menu__btn--primary .text .label,
+[data-theme="modern"] .main-menu__btn--primary .text .sublabel {
+  color: #ffffff !important;
+}
+[data-theme="modern"] .main-menu__btn--primary .icon-wrapper {
+  background: rgba(255,255,255,0.2) !important;
+  color: #ffffff !important;
+}
+[data-theme="modern"] .main-menu__btn--primary .chevron {
+  color: rgba(255,255,255,0.7) !important;
+}
+
+[data-theme="modern"] .main-menu__btn:not(.main-menu__btn--primary) {
+  background: rgba(255,255,255,0.6) !important;
+  backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255,255,255,0.5) !important;
+  color: #1e293b !important;
+  border-radius: 16px !important;
+}
+[data-theme="modern"] .main-menu__btn:not(.main-menu__btn--primary) .text .label {
+  color: #1e293b !important;
+}
+[data-theme="modern"] .main-menu__btn:not(.main-menu__btn--primary) .text .sublabel {
+  color: #64748b !important;
+}
+
 [data-theme="modern"] .hero-ball-img {
   border-radius: 50% !important;
   border: 3px solid rgba(20,184,166,0.3) !important;
@@ -1309,13 +1339,13 @@ select:focus-visible {
   border: 0;
 }
 
-/* Safe area padding for notched devices and system bars */
+/* Safe area padding for notched devices — mobile only */
 @supports (padding: max(0px)) {
   body {
-    padding-top: max(24px, env(safe-area-inset-top));
-    padding-left: max(0px, env(safe-area-inset-left));
-    padding-right: max(0px, env(safe-area-inset-right));
-    padding-bottom: max(16px, env(safe-area-inset-bottom));
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
   }
 }
 

@@ -548,7 +548,8 @@ function gameReducer(state, action) {
         preseasonWeek: action.payload.preseasonPhase ? 1 : 0,
         playerForm: initialForm,
         matchTracker: initialTracker,
-        rejectedTransfers: {}
+        rejectedTransfers: {},
+        ...(action.payload.managerName ? { managerName: action.payload.managerName } : {})
       };
     }
 
@@ -2291,6 +2292,76 @@ function gameReducer(state, action) {
         return loan;
       });
 
+      // --- Loan salary deduction: deduct weekly salary share for incoming loans ---
+      let loanSalaryCost = 0;
+      for (const loan of updatedActiveLoans) {
+        if (loan.status === 'active' && loan.toTeamId === state.teamId) {
+          const weeklyShare = Math.round((loan.playerData?.salary || 0) * (loan.salaryShare || 0));
+          loanSalaryCost += weeklyShare;
+        }
+      }
+
+      // --- Handle mid-season loan expiry: return players when weeksRemaining <= 0 ---
+      const expiredMidSeason = updatedActiveLoans.filter(l => l.status === 'active' && l.weeksRemaining <= 0);
+      let loanExpiryMessages = [];
+      if (expiredMidSeason.length > 0) {
+        for (const loan of expiredMidSeason) {
+          // If we loaned IN this player, remove from our squad
+          if (loan.toTeamId === state.teamId) {
+            updatedPlayers = updatedPlayers.filter(p => p.name !== loan.playerId);
+            // Return player to owner in leagueTeams
+            updatedLeagueTeams = updatedLeagueTeams.map(t => {
+              if (t.id === loan.fromTeamId) {
+                const returnedPlayer = {
+                  ...(loan.playerData || {}),
+                  onLoan: false, loanFromTeam: undefined, loanFromTeamId: undefined,
+                  loanSalaryShare: undefined, teamId: loan.fromTeamId
+                };
+                return { ...t, players: [...(t.players || []), returnedPlayer] };
+              }
+              return t;
+            });
+          }
+          // If we loaned OUT this player, return to our squad
+          if (loan.fromTeamId === state.teamId) {
+            // Try to get updated stats from leagueTeams (player may have developed)
+            let returnedData = loan.playerData || {};
+            for (const t of updatedLeagueTeams) {
+              if (t.id === loan.toTeamId) {
+                const found = (t.players || []).find(p => p.name === loan.playerId);
+                if (found) {
+                  returnedData = { ...found };
+                  // Remove from that AI team
+                  updatedLeagueTeams = updatedLeagueTeams.map(lt =>
+                    lt.id === loan.toTeamId
+                      ? { ...lt, players: (lt.players || []).filter(p => p.name !== loan.playerId) }
+                      : lt
+                  );
+                }
+                break;
+              }
+            }
+            updatedPlayers = [...updatedPlayers, {
+              ...returnedData,
+              onLoan: false, loanFromTeam: undefined, loanFromTeamId: undefined,
+              loanSalaryShare: undefined, teamId: state.teamId
+            }];
+          }
+          loanExpiryMessages.push({
+            id: Date.now() + Math.random(),
+            type: 'loan',
+            titleKey: 'gameMessages.loanExpired',
+            contentKey: 'gameMessages.loanExpiredContent',
+            contentParams: { player: loan.playerData?.name || loan.playerId, from: loan.fromTeamName, to: loan.toTeamName },
+            dateKey: 'gameMessages.weekDate', dateParams: { week: nextWeek }
+          });
+        }
+        // Mark expired loans
+        updatedActiveLoans = updatedActiveLoans.map(l =>
+          l.status === 'active' && l.weeksRemaining <= 0 ? { ...l, status: 'expired' } : l
+        );
+      }
+
       // Generar ofertas de cesión entrantes (20% chance durante ventana de mercado)
       let updatedIncomingLoanOffers = [...(state.incomingLoanOffers || [])];
       let loanOfferMessages = [];
@@ -2320,11 +2391,31 @@ function gameReducer(state, action) {
         o.status !== 'pending' || (o.expiresAt && o.expiresAt > Date.now())
       );
 
-      // Simular cesiones IA (sin notificaciones — no son relevantes para el jugador)
+      // Simular cesiones IA y aplicar a leagueTeams
+      let aiLoanMessages = [];
       if (windowStatus.open && updatedLeagueTeams.length > 0) {
-        simulateAILoans(updatedLeagueTeams, state.teamId, updatedActiveLoans);
+        const aiLoanEvents = simulateAILoans(updatedLeagueTeams, state.teamId, updatedActiveLoans);
+        for (const evt of aiLoanEvents) {
+          // Apply AI loan: move player between AI teams
+          updatedLeagueTeams = updatedLeagueTeams.map(t => {
+            if (t.id === evt.from.id) {
+              return { ...t, players: (t.players || []).filter(p => p.name !== evt.player.name), budget: (t.budget || 50_000_000) + evt.loanFee };
+            }
+            if (t.id === evt.to.id) {
+              return { ...t, players: [...(t.players || []), { ...evt.player, onLoan: true, loanFromTeam: evt.from.name, loanFromTeamId: evt.from.id, teamId: evt.to.id }], budget: (t.budget || 50_000_000) - evt.loanFee };
+            }
+            return t;
+          });
+          updatedActiveLoans.push({
+            id: `ai_loan_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`,
+            playerId: evt.player.name, playerData: evt.player,
+            fromTeamId: evt.from.id, fromTeamName: evt.from.name,
+            toTeamId: evt.to.id, toTeamName: evt.to.name,
+            loanFee: evt.loanFee, salaryShare: 0.5, purchaseOption: null,
+            duration: 'season', startedAt: Date.now(), weeksRemaining: 38, status: 'active'
+          });
+        }
       }
-      const aiLoanMessages = [];
 
       // === FORM SYSTEM: Update match tracker and form ===
       // Update match tracker: who played this week?
@@ -2479,7 +2570,7 @@ function gameReducer(state, action) {
       // ============================================================
       // CONTRARRELOJ: Check bankrupt condition
       // ============================================================
-      let finalMoney = state.money + totalIncome - salaryExpenses;
+      let finalMoney = state.money + totalIncome - salaryExpenses - loanSalaryCost;
       let contrarrelojUpdate = state.contrarrelojData;
       let contrarrelojScreenOverride = null;
 
@@ -2703,10 +2794,10 @@ function gameReducer(state, action) {
         pendingAperturaClausuraFinal: pendingAperturaClausuraFinal,
         money: finalMoney,
         weeklyIncome: totalIncome,
-        weeklyExpenses: salaryExpenses,
+        weeklyExpenses: salaryExpenses + loanSalaryCost,
         team: state.team ? { ...state.team, players: updatedPlayers } : null,
         stadium: updatedStadium,
-        messages: [...expiredIncomingMessages, ...offerMessages, ...apclFinalMessages, ...cupMessages, ...formattedEuropeanMessages, ...formattedSAMessages, ...newTransferMessages, ...loanOfferMessages, ...aiLoanMessages, ...newMessages, ...state.messages].slice(0, 50),
+        messages: [...loanExpiryMessages, ...expiredIncomingMessages, ...offerMessages, ...apclFinalMessages, ...cupMessages, ...formattedEuropeanMessages, ...formattedSAMessages, ...newTransferMessages, ...loanOfferMessages, ...aiLoanMessages, ...newMessages, ...state.messages].slice(0, 50),
         outgoingOffers: resolvedOutgoingOffers,
         pendingEvent: newEvent || state.pendingEvent,
         facilityStats: {
@@ -4052,6 +4143,9 @@ function gameReducer(state, action) {
       // Ceder jugador propio a otro equipo
       const { player, toTeamId, toTeamName, loanFee, salaryShare, purchaseOption } = action.payload;
 
+      // Minimum squad check
+      if ((state.team.players || []).length <= 14) return state;
+
       // Quitar jugador de la plantilla
       const updatedPlayers = state.team.players.filter(p => p.name !== player.name);
 
@@ -4221,7 +4315,8 @@ function gameReducer(state, action) {
             loanFromTeam: undefined,
             loanFromTeamId: undefined,
             loanSalaryShare: undefined,
-            contractYears: 4 // Nuevo contrato
+            contractYears: 4, // Nuevo contrato
+            value: loan.purchaseOption, // Update value to purchase price
           };
         }
         return p;
@@ -4265,6 +4360,9 @@ function gameReducer(state, action) {
       const offer = action.payload;
       const player = state.team.players.find(p => p.name === offer.playerId);
       if (!player) return state;
+
+      // Minimum squad check: at least 14 players must remain
+      if ((state.team.players || []).length <= 14) return state;
 
       // Quitar jugador de la plantilla
       const updatedPlayers = state.team.players.filter(p => p.name !== offer.playerId);

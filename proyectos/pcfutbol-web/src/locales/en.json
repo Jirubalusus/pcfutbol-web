@@ -1572,7 +1572,9 @@
     "welcomeTitle": "👋 Welcome!",
     "welcomeContent": "Welcome to {{team}}! You are the new manager. Good luck!",
     "cupParticipationTitle": "🏆 Cup Participation",
-    "continentalCompetition": "🌍 Continental Competition"
+    "continentalCompetition": "🌍 Continental Competition",
+    "loanExpired": "🔄 Loan ended",
+    "loanExpiredContent": "{{player}} returns to {{from}} after loan at {{to}}"
   },
   "ranked": {
     "exitWarning": "You have a ranked match in progress. If you leave, you'll lose by disconnection.",

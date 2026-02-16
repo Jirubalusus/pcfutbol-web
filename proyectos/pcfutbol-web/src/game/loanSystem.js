@@ -382,14 +382,27 @@ export function createLoan(player, fromTeam, toTeam, loanFee, salaryShare, purch
 export function canLoanPlayer(player, state, direction = 'out') {
   const errors = [];
   
-  // Solo durante ventana de mercado
-  // (La verificación de ventana se hace en el componente, aquí verificamos el estado del jugador)
+  // Prevent loaning free agents (no team)
+  if (!player.teamId && !player.loanFromTeamId) {
+    errors.push('No se puede ceder un agente libre');
+  }
+  
+  // Prevent double loan (player already on loan being loaned again)
+  if (player.onLoan && direction === 'in') {
+    errors.push('Este jugador ya está cedido en otro equipo');
+  }
   
   if (direction === 'out') {
     // Ceder jugador propio
     if (player.injured) errors.push('No se puede ceder un jugador lesionado');
     if (player.suspended) errors.push('No se puede ceder un jugador sancionado');
     if (player.onLoan) errors.push('Este jugador ya está en cesión');
+    
+    // Minimum squad check: at least 14 players must remain
+    const currentSquadSize = (state.team?.players || []).length;
+    if (currentSquadSize <= 14) {
+      errors.push('Plantilla demasiado pequeña (mínimo 14 jugadores)');
+    }
   }
   
   if (direction === 'in') {

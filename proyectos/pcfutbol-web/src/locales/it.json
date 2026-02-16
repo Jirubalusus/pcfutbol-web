@@ -1452,7 +1452,9 @@
     "welcomeTitle": "👋 Benvenuto!",
     "welcomeContent": "Benvenuto al {{team}}! Sei il nuovo allenatore. Buona fortuna!",
     "cupParticipationTitle": "🏆 Partecipazione in Coppa",
-    "continentalCompetition": "🌍 Competizione Continentale"
+    "continentalCompetition": "🌍 Competizione Continentale",
+    "loanExpired": "🔄 Prestito terminato",
+    "loanExpiredContent": "{{player}} torna al {{from}} dopo il prestito al {{to}}"
   },
   "ranked": {
     "exitWarning": "Hai una partita classificata in corso. Se esci, perderai per disconnessione.",

@@ -383,6 +383,11 @@ export default function TeamSelection() {
     const stadiumInfo = getStadiumInfo(selectedTeam.id, selectedTeam.reputation);
     const stadiumLevel = getStadiumLevel(stadiumInfo.capacity);
     
+    // Use Firebase display name as manager name if available
+    const { getAuth } = await import('firebase/auth');
+    const authUser = getAuth().currentUser;
+    const managerName = authUser?.displayName || authUser?.email?.split('@')[0] || undefined;
+
     dispatch({ 
       type: 'NEW_GAME', 
       payload: { 
@@ -393,7 +398,8 @@ export default function TeamSelection() {
         stadiumInfo,
         stadiumLevel,
         preseasonMatches: selectedPreseason.matches,
-        preseasonPhase: true
+        preseasonPhase: true,
+        managerName
       } 
     });
     
