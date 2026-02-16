@@ -129,12 +129,37 @@ function generateNamingOffers(stadiumLevel, teamReputation = 70, leaguePosition 
   return offers.sort((a, b) => b.offer - a.offer);
 }
 
+// Base income is per 10K capacity — scales linearly with actual stadium capacity
+// riskChance: probability of reduced income (0-1), riskFactor: income multiplier when risk hits
 const SPECIAL_EVENTS_DATA = [
-  { id: 'friendly', icon: <FootballIcon size={16} />, income: 200000, grassDamage: 5, cooldown: 1 },
-  { id: 'concert', icon: <Mic size={16} />, income: 500000, grassDamage: 20, cooldown: 3 },
-  { id: 'corporate', icon: <Briefcase size={16} />, income: 150000, grassDamage: 3, cooldown: 1 },
-  { id: 'legends', icon: <Trophy size={16} />, income: 400000, grassDamage: 8, cooldown: 2 }
+  { id: 'friendly', icon: <FootballIcon size={16} />, baseIncomePer10K: 25000, grassDamage: 5, cooldown: 1, riskChance: 0.10, riskFactor: 0.5, reputationBoost: 1 },
+  { id: 'concert', icon: <Mic size={16} />, baseIncomePer10K: 65000, grassDamage: 20, cooldown: 3, riskChance: 0.15, riskFactor: 0.4, reputationBoost: 2 },
+  { id: 'corporate', icon: <Briefcase size={16} />, baseIncomePer10K: 20000, grassDamage: 3, cooldown: 1, riskChance: 0.05, riskFactor: 0.6, reputationBoost: 1 },
+  { id: 'legends', icon: <Trophy size={16} />, baseIncomePer10K: 50000, grassDamage: 8, cooldown: 2, riskChance: 0.10, riskFactor: 0.5, reputationBoost: 3 },
+  { id: 'motorShow', icon: <Briefcase size={16} />, baseIncomePer10K: 30000, grassDamage: 15, cooldown: 3, riskChance: 0.10, riskFactor: 0.5, reputationBoost: 1 },
+  { id: 'esports', icon: <Users size={16} />, baseIncomePer10K: 35000, grassDamage: 2, cooldown: 2, riskChance: 0.08, riskFactor: 0.6, reputationBoost: 2 },
+  { id: 'fanDay', icon: <Users size={16} />, baseIncomePer10K: 10000, grassDamage: 4, cooldown: 2, riskChance: 0.05, riskFactor: 0.7, reputationBoost: 3 },
+  { id: 'charity', icon: <Trophy size={16} />, baseIncomePer10K: 15000, grassDamage: 5, cooldown: 2, riskChance: 0.05, riskFactor: 0.7, reputationBoost: 4 },
+  { id: 'musicFestival', icon: <Mic size={16} />, baseIncomePer10K: 80000, grassDamage: 25, cooldown: 4, riskChance: 0.20, riskFactor: 0.3, reputationBoost: 2 },
 ];
+
+// Calculate event income scaled by stadium capacity
+function getEventIncome(event, stadiumCapacity) {
+  return Math.round(event.baseIncomePer10K * (stadiumCapacity / 10000));
+}
+
+// Get grass condition label
+function getGrassLabel(condition, t) {
+  if (condition > 90) return { text: t('stadium.grassExcellent'), desc: t('stadium.grassDescExcellent'), cls: 'excellent' };
+  if (condition > 70) return { text: t('stadium.grassGood'), desc: t('stadium.grassDescGood'), cls: 'good' };
+  if (condition > 50) return { text: t('stadium.grassRegular'), desc: t('stadium.grassDescRegular'), cls: 'regular' };
+  if (condition > 30) return { text: t('stadium.grassBad'), desc: t('stadium.grassDescBad'), cls: 'bad' };
+  return { text: t('stadium.grassTerrible'), desc: t('stadium.grassDescTerrible'), cls: 'terrible' };
+}
+
+// Grass treatment costs (cheaper than full repair, partial recovery)
+const GRASS_TREATMENT_COST = 80000;
+const GRASS_TREATMENT_RECOVERY = 25; // +25% grass
 
 // === COMPONENTE ===
 export default function Stadium() {
@@ -360,6 +385,16 @@ export default function Stadium() {
   const handleHostEvent = (event) => {
     if (!canHostEventType(event)) return;
     
+    // Scale income by stadium capacity
+    let income = getEventIncome(event, capacity);
+    
+    // Risk/reward: chance of incident reducing income
+    let incident = false;
+    if (Math.random() < (event.riskChance || 0)) {
+      income = Math.round(income * (event.riskFactor || 0.5));
+      incident = true;
+    }
+    
     const newGrass = Math.max(0, grassCondition - event.grassDamage);
     updateStadium({
       grassCondition: newGrass,
@@ -367,19 +402,37 @@ export default function Stadium() {
         ...lastEventWeeks,
         [event.id]: state.currentWeek || 1
       },
-      lastEventWeek: state.currentWeek || 1 // backward compat
+      lastEventWeek: state.currentWeek || 1
     });
-    dispatch({ type: 'UPDATE_MONEY', payload: event.income });
-    dispatch({
-      type: 'ADD_MESSAGE',
-      payload: {
-        id: Date.now(),
+    dispatch({ type: 'UPDATE_MONEY', payload: income });
+    
+    // Reputation boost for successful events
+    if (!incident && event.reputationBoost && state.team) {
+      dispatch({ type: 'UPDATE_REPUTATION', payload: event.reputationBoost });
+    }
+    
+    const messages = [];
+    messages.push({
+      id: Date.now(),
+      type: incident ? 'warning' : 'stadium',
+      title: event.name,
+      content: incident 
+        ? t('stadium.eventRiskReduced', { amount: (income/1000).toFixed(0) + 'K' })
+        : t('stadium.eventHosted', { amount: (income/1000).toFixed(0) }),
+      date: `${t('common.week')} ${state.currentWeek}`
+    });
+    
+    if (!incident && event.reputationBoost) {
+      messages.push({
+        id: Date.now() + 1,
         type: 'stadium',
         title: event.name,
-        content: t('stadium.eventHosted', { amount: (event.income/1000).toFixed(0) }),
-        date: `\$\{t('common.week')\} \$\{state.currentWeek\}`
-      }
-    });
+        content: t('stadium.eventReputationBoost', { points: event.reputationBoost }),
+        date: `${t('common.week')} ${state.currentWeek}`
+      });
+    }
+    
+    messages.forEach(msg => dispatch({ type: 'ADD_MESSAGE', payload: msg }));
   };
   
   const handleRepairGrass = () => {
@@ -387,6 +440,13 @@ export default function Stadium() {
     if (state.money < cost) return;
     updateStadium({ grassCondition: 100 });
     dispatch({ type: 'UPDATE_MONEY', payload: -cost });
+  };
+  
+  const handleGrassTreatment = () => {
+    if (state.money < GRASS_TREATMENT_COST) return;
+    const newGrass = Math.min(100, grassCondition + GRASS_TREATMENT_RECOVERY);
+    updateStadium({ grassCondition: newGrass });
+    dispatch({ type: 'UPDATE_MONEY', payload: -GRASS_TREATMENT_COST });
   };
   
   const handleUpgrade = () => {
@@ -538,7 +598,7 @@ export default function Stadium() {
           <Coins size={14} /> {t('stadium.sponsorship')}
         </button>
         <button className={activeTab === 'events' ? 'active' : ''} onClick={() => setActiveTab('events')}>
-          <Mic size={14} /> {t('stadium.events')}
+          <Mic size={14} /> {t('stadium.eventsTab')}
         </button>
       </div>
       
@@ -689,6 +749,16 @@ export default function Stadium() {
               <span className="grass-percent">{grassCondition}%</span>
             </div>
             
+            {/* Descriptive grass label */}
+            {(() => {
+              const gl = getGrassLabel(grassCondition, t);
+              return (
+                <div className={`grass-label grass-label--${gl.cls}`}>
+                  <strong>{gl.text}</strong> — {gl.desc}
+                </div>
+              );
+            })()}
+            
             {/* Estado y efecto en lesiones */}
             <div className="grass-status">
               {grassCondition >= 80 && <span className="status good"><Check size={12} /> {t('stadium.optimal')}</span>}
@@ -697,15 +767,27 @@ export default function Stadium() {
             </div>
             
             <p className="grass-hint">
-              {grassCondition < 100 ? t('stadium.recovers') : t('stadium.perfectCondition')}
+              {grassCondition < 100 ? `${t('stadium.recovers')} • ${t('stadium.grassNaturalRecovery', { percent: '2-3' })}` : t('stadium.perfectCondition')}
               {grassCondition < 70 && ` • ${t('stadium.poorGrassWarning')}`}
             </p>
             
-            {grassCondition < 70 && (
-              <button className="repair-btn" onClick={handleRepairGrass} disabled={state.money < 200000}>
-                <Wrench size={14} /> {t('stadium.repairGrass', { cost: formatMoney(200000) })}
-              </button>
-            )}
+            <div className="grass-actions">
+              {grassCondition < 100 && grassCondition >= 70 && (
+                <button className="treatment-btn" onClick={handleGrassTreatment} disabled={state.money < GRASS_TREATMENT_COST}>
+                  <Sprout size={14} /> {t('stadium.grassTreatment', { cost: formatMoney(GRASS_TREATMENT_COST) })}
+                </button>
+              )}
+              {grassCondition < 70 && (
+                <>
+                  <button className="treatment-btn" onClick={handleGrassTreatment} disabled={state.money < GRASS_TREATMENT_COST}>
+                    <Sprout size={14} /> {t('stadium.grassTreatment', { cost: formatMoney(GRASS_TREATMENT_COST) })}
+                  </button>
+                  <button className="repair-btn" onClick={handleRepairGrass} disabled={state.money < 200000}>
+                    <Wrench size={14} /> {t('stadium.repairGrass', { cost: formatMoney(200000) })}
+                  </button>
+                </>
+              )}
+            </div>
           </div>
         </div>
       )}
@@ -766,13 +848,15 @@ export default function Stadium() {
               const lastWeek = lastEventWeeks[event.id] ?? lastEventWeek;
               const weeksSince = (state.currentWeek || 1) - lastWeek;
               const weeksLeft = Math.max(0, (event.cooldown || 2) - weeksSince);
+              const scaledIncome = getEventIncome(event, capacity);
               return (
               <div key={event.id} className={`event-item ${!canHost ? 'disabled' : ''}`}>
                 <span className="event-icon">{event.icon}</span>
                 <div className="event-info">
                   <span className="event-name">{t(`stadium.events.${event.id}`)}</span>
                   <span className="event-details">
-                    {formatMoney(event.income)} • {t('stadium.grassDamage', { percent: event.grassDamage })}
+                    {formatMoney(scaledIncome)} • {t('stadium.grassDamage', { percent: event.grassDamage })}
+                    {event.riskChance > 0 && ` • ⚠️ ${Math.round(event.riskChance * 100)}%`}
                     {!canHost && ` • ⏳ ${t('stadium.waitMoreWeeks', { weeks: weeksLeft })}`}
                   </span>
                 </div>
