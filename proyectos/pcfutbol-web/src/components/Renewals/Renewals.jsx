@@ -99,7 +99,7 @@ export default function Renewals() {
           contractYears: renewalOffer.years,
           happiness: Math.min(100, (selectedPlayer.personality?.happiness || 50) + 15),
           wantsToLeave: false,
-          lastRenewalOffer: state.currentWeek
+          lastRenewalWeek: state.currentWeek
         }
       };
       
