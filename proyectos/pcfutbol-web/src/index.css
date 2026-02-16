@@ -520,6 +520,18 @@ button {
     filter: blur(80px) !important;
   }
 
+  /* Ball image — blend dark background away on light themes */
+  .hero-ball-img {
+    mix-blend-mode: multiply !important;
+    filter: drop-shadow(0 0 20px rgba(var(--color-accent-rgb), 0.2))
+           drop-shadow(0 8px 16px rgba(0, 0, 0, 0.15)) !important;
+  }
+
+  /* Office header — use theme bg */
+  .office__header {
+    background: var(--color-bg-secondary) !important;
+  }
+
   /* Main menu gradient — use lighter version */
   .main-menu__gradient {
     background:
