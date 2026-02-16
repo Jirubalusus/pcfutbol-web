@@ -1568,7 +1568,11 @@
     "playerLoanedContent": "{{player}} cedido al {{team}}. Fee: {{fee}}{{option}}",
     "aperturaClausuraFinalResult": "🏆 Final Apertura vs Clausura",
     "aperturaClausuraFinalResultContent": "{{winner}} gana la final de la {{league}}. Ida: {{leg1Home}}-{{leg1Away}}, Vuelta: {{leg2Home}}-{{leg2Away}}.",
-    "directChampionShort": "{{winner}} es campeón directo."
+    "directChampionShort": "{{winner}} es campeón directo.",
+    "welcomeTitle": "👋 ¡Bienvenido!",
+    "welcomeContent": "¡Bienvenido a {{team}}! Eres el nuevo entrenador. ¡Buena suerte!",
+    "cupParticipationTitle": "🏆 Participación en Copa",
+    "continentalCompetition": "🌍 Competición Continental"
   },
   "ranked": {
     "exitWarning": "Tienes una partida ranked en curso. Si sales, perderás por desconexión.",
