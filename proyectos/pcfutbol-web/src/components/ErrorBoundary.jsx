@@ -25,8 +25,6 @@ export default class ErrorBoundary extends React.Component {
 
   handleReset = () => {
     try {
-      localStorage.removeItem('pcfutbol_saveId');
-      localStorage.removeItem('pcfutbol_local_save');
       localStorage.removeItem('pcfutbol_pending_slot');
     } catch (e) { /* ignore */ }
     window.location.reload();

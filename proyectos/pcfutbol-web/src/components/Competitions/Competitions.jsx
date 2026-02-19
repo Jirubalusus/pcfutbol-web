@@ -8,7 +8,7 @@ import LeagueTable from '../LeagueTable/LeagueTable';
 import Cup from '../Cup/Cup';
 import Europe from '../Europe/Europe';
 import SouthAmerica from '../SouthAmerica/SouthAmerica';
-import { Award, Globe, Trophy } from 'lucide-react';
+import { Award, Globe, Trophy, Shield } from 'lucide-react';
 import './Competitions.scss';
 
 export default function Competitions() {
@@ -34,23 +34,21 @@ export default function Competitions() {
   // Tab names - Liga always visible; Copa and Continental hidden in ranked mode
   const tabs = useMemo(() => {
     const tabList = [];
-    tabList.push({ id: 'liga', label: t('competitions.league'), icon: '🏟️' });
+    tabList.push({ id: 'liga', label: t('competitions.league'), icon: <Shield size={16} /> });
     
     tabList.push({
       id: 'cup',
       label: state.cupCompetition?.config?.shortName || t('competitions.cup'),
-      icon: state.cupCompetition?.config?.icon || '🏆'
+      icon: <Trophy size={16} />
     });
     
     if (!isRanked) {
       if (isInSALeague) {
         const saLabel = playerSA?.state?.config?.shortName || t('competitions.continental');
-        const saIcon = playerSA?.state?.config?.icon || '🏆';
-        tabList.push({ id: 'continental', label: saLabel, icon: saIcon });
+        tabList.push({ id: 'continental', label: saLabel, icon: <Globe size={16} /> });
       } else {
         const euroLabel = playerEuropean?.state?.config?.shortName || t('competitions.europe');
-        const euroIcon = playerEuropean?.state?.config?.icon || '⭐';
-        tabList.push({ id: 'continental', label: euroLabel, icon: euroIcon });
+        tabList.push({ id: 'continental', label: euroLabel, icon: <Globe size={16} /> });
       }
     }
     return tabList;

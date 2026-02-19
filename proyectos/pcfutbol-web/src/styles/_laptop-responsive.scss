@@ -1,0 +1,130 @@
+// ── Laptop / Small viewport height adjustments ──
+// For screens with limited vertical space (laptops, small monitors)
+
+@media (max-height: 750px) {
+  // Header compaction
+  .office__header {
+    padding: 0.5rem 1rem !important;
+    gap: 0.5rem !important;
+
+    h1 { font-size: 0.95rem !important; }
+  }
+
+  // Sidebar compaction
+  .sidebar {
+    &__nav a {
+      padding: 0.45rem 0.75rem !important;
+      font-size: 0.8rem !important;
+    }
+  }
+
+  // Content area
+  .office__content {
+    padding: 0.5rem !important;
+  }
+
+  // Hero cards — reduce everywhere
+  .office__hero,
+  .messages__hero,
+  .transfers-hero,
+  .formation__hero,
+  .objectives-hero,
+  .calendar-hero,
+  .facilities-hero,
+  .finance-hero,
+  .stadium-hero {
+    padding: 0.65rem 0.85rem !important;
+    margin-bottom: 0.4rem !important;
+    border-radius: 10px !important;
+  }
+
+  .office__hero-stats {
+    gap: 0.5rem !important;
+  }
+
+  .office__hero-stat-value {
+    font-size: 1rem !important;
+  }
+
+  // Buttons
+  .office__save-btn,
+  .office__advance-btn,
+  .office__sim-btn {
+    padding: 0.55rem 0.85rem !important;
+    font-size: 0.85rem !important;
+    min-height: 40px !important;
+  }
+
+  // Mobile nav (bottom bar)
+  .mobile-nav {
+    padding: 0.35rem 0 !important;
+
+    &__label {
+      font-size: 0.6rem !important;
+    }
+  }
+
+  // Glass cards everywhere
+  .office__panel-card {
+    padding: 0.6rem !important;
+    margin-bottom: 0.3rem !important;
+  }
+
+  // Ranked
+  .phase-simulating,
+  .phase-results,
+  .phase-config {
+    padding-top: 0.75rem !important;
+
+    h2 { font-size: 0.95rem !important; }
+  }
+
+  .sim-standings {
+    padding: 0.5rem !important;
+  }
+
+  .mini-table .table-row {
+    padding: 0.25rem 0.4rem !important;
+    font-size: 0.75rem !important;
+  }
+
+  // League table
+  .league-table-v2 {
+    font-size: 0.75rem !important;
+  }
+
+  // Formation
+  .formation__hero {
+    min-height: auto !important;
+  }
+
+  // Transfer modal
+  .transfer-modal {
+    max-height: 85vh !important;
+  }
+}
+
+// Extra compact for very short viewports (< 650px height)
+@media (max-height: 650px) {
+  .office__header {
+    padding: 0.35rem 0.75rem !important;
+  }
+
+  .office__hero,
+  .messages__hero,
+  .transfers-hero {
+    padding: 0.5rem 0.75rem !important;
+  }
+
+  .office__hero-stat-value {
+    font-size: 0.9rem !important;
+  }
+
+  .office__save-btn,
+  .office__advance-btn,
+  .office__sim-btn {
+    padding: 0.45rem 0.7rem !important;
+    font-size: 0.8rem !important;
+    min-height: 36px !important;
+  }
+}

@@ -97,7 +97,27 @@ function resolveContent(msg, t) {
   return msg.content;
 }
 
-function NotificationToast({ notification, onDismiss, index, t }) {
+// Map notification type → sidebar tab for deep-linking
+const NOTIFICATION_NAV_MAP = {
+  transfer: 'transfers',
+  transfer_offer: 'transfers',
+  loan: 'transfers',
+  offer: 'transfers',
+  match_result: 'competitions',
+  injury: 'formation',
+  contract: 'formation',
+  retirement: 'plantilla',
+  cup: 'competitions',
+  european: 'competitions',
+  southamerican: 'competitions',
+  training: 'facilities',
+  youth: 'plantilla',
+  medical: 'formation',
+  board: 'overview',
+  news: 'messages',
+};
+
+function NotificationToast({ notification, onDismiss, onNavigate, index, t }) {
   const [exiting, setExiting] = useState(false);
   const config = getConfig(notification.type, t);
   const IconComponent = config.icon;
@@ -118,6 +138,14 @@ function NotificationToast({ notification, onDismiss, index, t }) {
     setTimeout(() => onDismiss(notification.id), 300);
   };
 
+  const handleClick = () => {
+    const targetTab = NOTIFICATION_NAV_MAP[notification.type];
+    if (targetTab && onNavigate) {
+      onNavigate(targetTab);
+    }
+    handleDismiss();
+  };
+
   // Touch swipe to dismiss
   const touchStart = useRef(null);
   const handleTouchStart = (e) => { touchStart.current = e.touches[0].clientX; };
@@ -131,8 +159,8 @@ function NotificationToast({ notification, onDismiss, index, t }) {
   return (
     <div
       className={`notif-toast notif-toast--${config.priority} ${exiting ? 'notif-toast--exit' : ''}`}
-      style={{ '--notif-color': config.color, '--index': index }}
-      onClick={handleDismiss}
+      style={{ '--notif-color': config.color, '--index': index, cursor: NOTIFICATION_NAV_MAP[notification.type] ? 'pointer' : 'default' }}
+      onClick={handleClick}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
@@ -190,7 +218,7 @@ function OverflowIndicator({ count, onDismiss, t }) {
 
 export default function NotificationCenter() {
   const { t } = useTranslation();
-  const { state } = useGame();
+  const { state, dispatch } = useGame();
   const [activeToasts, setActiveToasts] = useState([]);
   const [overflow, setOverflow] = useState(0);
   const prevMessagesRef = useRef(state.messages || []);
@@ -211,6 +239,10 @@ export default function NotificationCenter() {
   const dismissOverflow = useCallback(() => {
     setOverflow(0);
   }, []);
+
+  const navigateToTab = useCallback((tab) => {
+    dispatch({ type: 'NAVIGATE_TAB', payload: tab });
+  }, [dispatch]);
 
   // Watch for new messages
   useEffect(() => {
@@ -290,6 +322,7 @@ export default function NotificationCenter() {
           key={toast.id}
           notification={toast}
           onDismiss={dismissToast}
+          onNavigate={navigateToTab}
           index={i}
           t={t}
         />

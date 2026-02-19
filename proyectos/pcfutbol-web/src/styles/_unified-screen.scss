@@ -1,0 +1,291 @@
+// ============================================================
+// UNIFIED SCREEN LAYOUT — Desktop only (≥768px)
+// Apple-like centered container with consistent back button,
+// glass cards, and fade-in animation.
+// Mobile layout is NOT affected.
+// ============================================================
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (min-width: 768px) {
+  .unified-screen {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 2rem max(2rem, calc((100vw - 960px) / 2));
+    animation: fadeSlideUp 0.4s ease-out both;
+    min-height: 100vh;
+    box-sizing: border-box;
+
+    // ── Unified back button (pill, inside container, top-left) ──
+    > .btn-back,
+    > [class*="__header"] > .btn-back,
+    > [class*="__header"] > button.btn-back,
+    > [class*="__content"] > [class*="__header"] > .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      padding: 8px 18px;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-height: 36px;
+
+      &:hover {
+        background: rgba(255,255,255,0.14);
+        color: #fff;
+      }
+    }
+
+    // ── Glass card sections ──
+    .unified-glass-card {
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  // ────────────────────────────────────────────────────────────
+  // Per-screen overrides
+  // ────────────────────────────────────────────────────────────
+
+  // GloryMenu — add container structure
+  .glory-menu.unified-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    .glory-menu__back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      padding: 8px 18px;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-bottom: 1.5rem;
+
+      &:hover {
+        background: rgba(255,255,255,0.14);
+        color: #fff;
+      }
+    }
+
+    .glory-menu__content {
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 3rem 2.5rem;
+      max-width: 480px;
+      width: 100%;
+    }
+  }
+
+  // GlorySetup — pill back button, container card
+  .glory-setup.unified-screen {
+    .glory-setup__header .btn-back {
+      border-radius: 20px;
+      padding: 8px 18px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      width: auto;
+      height: auto;
+      color: rgba(255,255,255,0.7);
+
+      &:hover {
+        background: rgba(255,255,255,0.14);
+        color: #fff;
+      }
+    }
+
+    .glory-setup__content {
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+  }
+
+  // GloryCollection — wider container for desktop
+  .glory-collection.unified-screen {
+    max-width: 720px;
+
+    .glory-collection__header {
+      .glory-collection__back {
+        border-radius: 20px;
+        padding: 8px 18px;
+        width: auto;
+        height: auto;
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.12);
+        color: rgba(255,255,255,0.7);
+
+        &:hover {
+          background: rgba(255,255,255,0.14);
+          color: #fff;
+        }
+
+        // Add "Volver" text via pseudo-element
+        &::after {
+          content: 'Volver';
+          font-size: 0.85rem;
+          margin-left: 4px;
+        }
+      }
+    }
+
+    .glory-collection__grid {
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+    }
+  }
+
+  // Settings — container with card
+  .settings.unified-screen {
+    .settings__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+
+      .settings__close {
+        border-radius: 20px;
+        padding: 8px 18px;
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.12);
+        color: rgba(255,255,255,0.7);
+        width: auto;
+        height: auto;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+
+        &:hover {
+          background: rgba(255,255,255,0.14);
+          color: #fff;
+        }
+      }
+    }
+
+    .settings__content {
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 1.5rem;
+    }
+  }
+
+  // EditionMode
+  .edition-mode.unified-screen {
+    .edition-mode__header .btn-back {
+      border-radius: 20px;
+      padding: 8px 18px;
+    }
+
+    .edition-mode__list,
+    .edition-mode__section {
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  // Ranking (Records)
+  .ranking.unified-screen {
+    position: relative;
+
+    .ranking__content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .ranking__header .btn-back {
+      border-radius: 20px;
+      padding: 8px 18px;
+    }
+
+    .ranking__table-wrapper {
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 1rem;
+    }
+  }
+
+  // ProManagerSetup
+  .promanager-setup.unified-screen {
+    .promanager-setup__content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .promanager-setup__header .btn-back {
+      border-radius: 20px;
+      padding: 8px 18px;
+    }
+
+  }
+
+  // ContrarrelojSetup
+  .contrarreloj-setup.unified-screen {
+    .contrarreloj-setup__content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .contrarreloj-setup__header .btn-back {
+      border-radius: 20px;
+      padding: 8px 18px;
+    }
+
+    .contrarreloj-setup__challenge {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+  }
+
+  // SaveSlots
+  .save-slots.unified-screen {
+    .save-slots__container .btn-back {
+      border-radius: 20px;
+      padding: 8px 18px;
+    }
+
+    .save-slots__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+  }
+}

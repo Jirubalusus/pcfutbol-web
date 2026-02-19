@@ -225,6 +225,51 @@ export default function RankedResultsModal({ match, onBackToLobby }) {
           </div>
         )}
 
+        {/* League Table */}
+        {!isDisconnection && match?.results?.simulation?.table && (
+          <div className="results-table-section">
+            <h3>{t('rankedResults.finalStandings')}</h3>
+            <div className="mini-table">
+              {match.results.simulation.table.map((team, i) => (
+                <div key={team.teamId} className={`table-row ${team.teamId === myData?.team ? 'me' : team.teamId === rivalData?.team ? 'rival' : ''}`}>
+                  <span className="pos">{i + 1}</span>
+                  <span className="name">{team.teamName}</span>
+                  <span className="pts">{team.points}</span>
+                  <span className="gd">{team.goalDifference > 0 ? '+' : ''}{team.goalDifference}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Competitions Summary */}
+        {!isDisconnection && mySim && rivalSim && (
+          <div className="competitions-section">
+            <h3>{t('rankedResults.competitions')}</h3>
+            <div className="stats-columns">
+              <CompetitionsSummary sim={mySim} t={t} />
+              <CompetitionsSummary sim={rivalSim} t={t} />
+            </div>
+          </div>
+        )}
+
+        {/* Player Stats */}
+        {!isDisconnection && (mySim?.topScorers?.length > 0 || rivalSim?.topScorers?.length > 0) && (
+          <div className="player-stats-section">
+            <h3>{t('rankedResults.playerStats')}</h3>
+            <div className="stats-columns">
+              <div className="stats-col">
+                <h4>{mySim?.teamName || t('rankedResults.you')}</h4>
+                <TopStatsList sim={mySim} t={t} />
+              </div>
+              <div className="stats-col">
+                <h4>{rivalSim?.teamName || t('rankedResults.rival')}</h4>
+                <TopStatsList sim={rivalSim} t={t} />
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Back to Lobby */}
         <button className="lobby-btn" onClick={onBackToLobby}>
           <ArrowLeft size={18} />
@@ -282,6 +327,110 @@ function BreakdownList({ sim, t }) {
         <span>TOTAL</span>
         <span className="bd-pts">{total}</span>
       </div>
+    </div>
+  );
+}
+
+function CompetitionsSummary({ sim, t }) {
+  if (!sim) return null;
+  
+  const cupRoundLabels = {
+    'R1': 'Primera ronda', 'R2': 'Segunda ronda', 'R3': 'Tercera ronda',
+    'R16': 'Octavos', 'QF': 'Cuartos', 'SF': 'Semifinal', 'Final': 'Final',
+    'Group': 'Fase de grupos', 'Winner': '🏆 Campeón'
+  };
+
+  const items = [];
+  
+  // Liga
+  items.push({
+    icon: '🏟️',
+    label: t('rankedResults.leagueLabel'),
+    value: `${sim.leaguePosition}º (${sim.leaguePoints} pts)`,
+    highlight: sim.liga
+  });
+
+  // Copa
+  if (sim.cupRound) {
+    items.push({
+      icon: '🏆',
+      label: t('rankedResults.cup'),
+      value: sim.copa ? '🏆 Campeón' : (cupRoundLabels[sim.cupRound] || sim.cupRound),
+      highlight: sim.copa
+    });
+  }
+
+  // European / Continental
+  if (sim.europeanCompetition) {
+    const compNames = {
+      champions: 'Champions League',
+      europaLeague: 'Europa League', 
+      conference: 'Conference League',
+      libertadores: 'Copa Libertadores',
+      sudamericana: 'Copa Sudamericana'
+    };
+    const won = sim.championsLeague || sim.europaLeague || sim.conference || sim.libertadores || sim.sudamericana;
+    items.push({
+      icon: '🌍',
+      label: compNames[sim.europeanCompetition] || sim.europeanCompetition,
+      value: won ? '🏆 Campeón' : (cupRoundLabels[sim.europeanRound] || sim.europeanRound || '-'),
+      highlight: won
+    });
+  }
+
+  return (
+    <div className="stats-col">
+      <h4>{sim.teamName}</h4>
+      <div className="comp-list">
+        {items.map((item, i) => (
+          <div key={i} className={`comp-item ${item.highlight ? 'champion' : ''}`}>
+            <span className="comp-icon">{item.icon}</span>
+            <span className="comp-label">{item.label}</span>
+            <span className="comp-value">{item.value}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function TopStatsList({ sim, t }) {
+  if (!sim) return null;
+  return (
+    <div className="top-stats">
+      {sim.topScorers?.length > 0 && (
+        <div className="top-stat-group">
+          <span className="top-stat-label">⚽ {t('rankedResults.topScorers')}</span>
+          {sim.topScorers.map((p, i) => (
+            <div key={i} className="top-stat-row">
+              <span className="top-stat-name">{p.name}</span>
+              <span className="top-stat-value">{p.goals}</span>
+            </div>
+          ))}
+        </div>
+      )}
+      {sim.topAssists?.length > 0 && (
+        <div className="top-stat-group">
+          <span className="top-stat-label">🅰️ {t('rankedResults.topAssists')}</span>
+          {sim.topAssists.map((p, i) => (
+            <div key={i} className="top-stat-row">
+              <span className="top-stat-name">{p.name}</span>
+              <span className="top-stat-value">{p.assists}</span>
+            </div>
+          ))}
+        </div>
+      )}
+      {sim.topYellows?.length > 0 && (
+        <div className="top-stat-group">
+          <span className="top-stat-label">🟨 {t('rankedResults.topYellows')}</span>
+          {sim.topYellows.map((p, i) => (
+            <div key={i} className="top-stat-row">
+              <span className="top-stat-name">{p.name}</span>
+              <span className="top-stat-value">{p.yellows}</span>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

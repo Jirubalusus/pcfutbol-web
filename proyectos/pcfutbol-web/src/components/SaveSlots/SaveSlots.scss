@@ -1,5 +1,6 @@
 .save-slots {
   min-height: 100vh;
+  min-height: 100dvh;
   background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-tertiary) 50%, var(--color-bg-secondary) 100%);
   padding: 20px;
   display: flex;
@@ -10,25 +11,6 @@
     width: 100%;
     max-width: 900px;
     position: relative;
-  }
-
-  &__back {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: none;
-    border: none;
-    color: var(--color-text-secondary);
-    cursor: pointer;
-    font-size: 14px;
-    padding: 8px 12px;
-    border-radius: 6px;
-    transition: all 0.2s;
-
-    &:hover {
-      color: var(--color-text-primary);
-      background: var(--color-glass-border);
-    }
   }
 
   &__header {
@@ -311,28 +293,34 @@
 
 @media (max-width: 768px) {
   .save-slots {
-    padding: 12px;
+    padding: 10px;
     overflow-x: hidden;
 
     &__header {
-      margin-bottom: 24px;
+      margin-bottom: 16px;
+      padding-top: 12px;
 
       h2 {
-        font-size: 20px;
+        font-size: 18px;
       }
+    }
+
+    &__subtitle {
+      font-size: 13px;
     }
 
     &__grid {
       grid-template-columns: 1fr;
-      gap: 12px;
+      gap: 10px;
     }
 
     &__slot-content {
-      padding: 12px;
+      padding: 10px;
     }
 
     &__stats {
-      padding: 10px;
+      padding: 8px;
+      margin-bottom: 10px;
     }
   }
 }

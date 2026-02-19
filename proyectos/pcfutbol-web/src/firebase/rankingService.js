@@ -23,13 +23,6 @@ export async function saveRankingEntry(entry) {
     return docRef.id;
   } catch (err) {
     console.error('Error saving ranking entry:', err);
-    // Fallback to localStorage
-    try {
-      const data = localStorage.getItem('pcfutbol_contrarreloj_ranking');
-      const ranking = data ? JSON.parse(data) : [];
-      ranking.push({ ...entry, id: Date.now().toString() });
-      localStorage.setItem('pcfutbol_contrarreloj_ranking', JSON.stringify(ranking));
-    } catch { /* ignore */ }
     return null;
   }
 }
@@ -47,11 +40,6 @@ export async function loadRanking(maxEntries = 50) {
     const snapshot = await getDocs(q);
     const entries = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
     
-    // Multi-criteria sort (Firestore only supports single orderBy without index)
-    // 1. Menor score ponderado = mejor (score = temporadas - ascensos necesarios)
-    // 2. Más trofeos = mejor
-    // 3. Mayor % victorias = mejor
-    // 4. Menos partidos jugados = mejor
     entries.sort((a, b) => {
       const aScore = (a.seasonsPlayed || 0) - (a.difficultyBonus || 0);
       const bScore = (b.seasonsPlayed || 0) - (b.difficultyBonus || 0);
@@ -67,55 +55,34 @@ export async function loadRanking(maxEntries = 50) {
     return entries;
   } catch (err) {
     console.error('Error loading ranking:', err);
-    // Fallback to localStorage
-    try {
-      const data = localStorage.getItem('pcfutbol_contrarreloj_ranking');
-      return data ? JSON.parse(data) : [];
-    } catch {
-      return [];
-    }
+    return [];
   }
 }
 
 /**
  * Get ranking position for a given seasonsPlayed count.
- * Returns { position, total } — position is 1-indexed.
- * Players with fewer seasons are ranked higher.
  */
 export async function getRankingPosition(seasonsPlayed) {
   try {
     const col = collection(db, COLLECTION);
     
-    // Count entries with fewer seasons (better than us)
     const betterQuery = query(col, where('seasonsPlayed', '<', seasonsPlayed));
     const betterSnap = await getCountFromServer(betterQuery);
     const betterCount = betterSnap.data().count;
     
-    // Count entries with same seasons (tied)
     const sameQuery = query(col, where('seasonsPlayed', '==', seasonsPlayed));
     const sameSnap = await getCountFromServer(sameQuery);
     const sameCount = sameSnap.data().count;
     
-    // Total entries
     const totalSnap = await getCountFromServer(col);
     const total = totalSnap.data().count;
     
-    // Position: all better + half of tied (generous midpoint)
     const position = betterCount + Math.ceil(sameCount / 2);
     
     return { position: Math.max(1, position), total };
   } catch (err) {
     console.error('Error getting ranking position:', err);
-    // Fallback localStorage
-    try {
-      const data = localStorage.getItem('pcfutbol_contrarreloj_ranking');
-      const ranking = data ? JSON.parse(data) : [];
-      const sorted = ranking.sort((a, b) => a.seasonsPlayed - b.seasonsPlayed);
-      const idx = sorted.findIndex(e => e.seasonsPlayed >= seasonsPlayed);
-      return { position: idx >= 0 ? idx + 1 : sorted.length + 1, total: sorted.length };
-    } catch {
-      return { position: 1, total: 1 };
-    }
+    return { position: 1, total: 1 };
   }
 }
 
@@ -127,10 +94,8 @@ export async function clearRanking() {
     const snapshot = await getDocs(collection(db, COLLECTION));
     const deletePromises = snapshot.docs.map(d => deleteDoc(doc(db, COLLECTION, d.id)));
     await Promise.all(deletePromises);
-    localStorage.removeItem('pcfutbol_contrarreloj_ranking');
     console.log('🗑️ Ranking cleared');
   } catch (err) {
     console.error('Error clearing ranking:', err);
-    localStorage.removeItem('pcfutbol_contrarreloj_ranking');
   }
 }

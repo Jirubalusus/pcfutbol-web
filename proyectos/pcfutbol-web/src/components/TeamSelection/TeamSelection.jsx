@@ -56,7 +56,7 @@ import { initializeEuropeanCompetitions } from '../../game/europeanSeason';
 import { isSouthAmericanLeague, qualifyTeamsForSouthAmerica, SA_LEAGUE_SLOTS } from '../../game/southAmericanCompetitions';
 import { initializeSACompetitions } from '../../game/southAmericanSeason';
 import { getCupTeams, generateCupBracket } from '../../game/cupSystem';
-import { Calendar, Plane, Home, Sparkles, ChevronRight, Lock, Map, ClipboardList, Trophy, Building2, Users, DollarSign, Star } from 'lucide-react';
+import { Calendar, Plane, Home, Sparkles, ChevronRight, Lock, Map, ClipboardList, Trophy, Building2, Users, DollarSign, Star, ArrowLeft } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
 import WorldMap from './WorldMap';
 import './TeamSelection.scss';
@@ -810,7 +810,7 @@ export default function TeamSelection() {
       <div className="pcf-ts-header">
         <div className="header-left">
           <button className="btn-back" onClick={handleBack}>
-            ‹ {step === 1 ? (selectedCountry ? t('teamSelection.countries') : t('common.menu')) : t('common.back')}
+            <ArrowLeft size={16} /> {step === 1 ? (selectedCountry ? t('teamSelection.countries') : t('common.menu')) : t('common.back')}
           </button>
         </div>
         <div className="header-center">
@@ -1151,7 +1151,7 @@ export default function TeamSelection() {
                   setSelectedPreseason(null);
                 }}
               >
-                {t('common.back')}
+                <ArrowLeft size={16} /> {t('common.back')}
               </button>
               <button 
                 className="btn-confirm"

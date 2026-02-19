@@ -5,6 +5,7 @@
 
 import { calculateMarketValue, TEAM_PROFILES } from './globalTransferEngine';
 import { getClubTier, calculateTransferDifficulty, PLAYER_PERSONALITIES, assignPersonality } from './transferNegotiation';
+import { posToEN } from './positionNames';
 
 // ============================================================
 // CONFIGURACIÓN DEL OJEADOR
@@ -66,8 +67,9 @@ export function analyzeTeamNeeds(team, scoutingLevel = 0) {
   
   // Calcular actuales
   players.forEach(p => {
+    const normalizedPos = posToEN(p.position);
     for (const [groupKey, group] of Object.entries(positionGroups)) {
-      if (group.positions.includes(p.position)) {
+      if (group.positions.includes(normalizedPos)) {
         group.current++;
         group.avgOvr = (group.avgOvr * (group.current - 1) + p.overall) / group.current;
         break;
@@ -182,7 +184,8 @@ export function generateScoutingSuggestions(myTeam, allTeams, scoutingLevel = 0,
     };
     const validPositions = new Set(POSITION_GROUPS[positionFilter] || [positionFilter]);
     allPlayers = allPlayers.filter(p => {
-      const playerPos = (p.position || '').replace(/\d+$/, '').toUpperCase().trim();
+      const rawPos = (p.position || '').replace(/\d+$/, '').toUpperCase().trim();
+      const playerPos = posToEN(rawPos);
       return validPositions.has(playerPos);
     });
   }
@@ -198,8 +201,9 @@ export function generateScoutingSuggestions(myTeam, allTeams, scoutingLevel = 0,
     
     // Filtrar jugadores
     let filtered = allPlayers.filter(p => {
+      const pPos = posToEN(p.position);
       // Si ya hay filtro manual, no filtrar por necesidades
-      if (!positionFilter && neededPositions.size > 0 && !neededPositions.has(p.position)) {
+      if (!positionFilter && neededPositions.size > 0 && !neededPositions.has(pPos)) {
         // Permitir algunos jugadores de otras posiciones (20%)
         if (Math.random() > 0.2) return false;
       }

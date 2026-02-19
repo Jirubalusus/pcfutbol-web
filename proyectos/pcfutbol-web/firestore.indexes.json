@@ -9,13 +9,6 @@
       ]
     },
     {
-      "collectionGroup": "ranked_players",
-      "queryScope": "COLLECTION",
-      "fields": [
-        { "fieldPath": "totalLP", "order": "DESCENDING" }
-      ]
-    },
-    {
       "collectionGroup": "ranked_matches",
       "queryScope": "COLLECTION",
       "fields": [
@@ -34,5 +27,11 @@
       ]
     }
   ],
-  "fieldOverrides": []
+  "fieldOverrides": [
+    {
+      "collectionGroup": "editions",
+      "fieldPath": "teams",
+      "indexes": []
+    }
+  ]
 }

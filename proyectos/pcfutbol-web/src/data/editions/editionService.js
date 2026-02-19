@@ -191,10 +191,19 @@ export async function deleteAllSaves(userId) {
     const slotDeletes = slotsSnapshot.docs.map(d => deleteDoc(d.ref));
     await Promise.all(slotDeletes);
     
-    // Clear localStorage saves
-    localStorage.removeItem('pcfutbol_local_save');
-    localStorage.removeItem('pcfutbol_saveId');
+    // Delete promanager saves
+    const proSnapshot = await getDocs(
+      query(collection(db, 'promanager_saves'), where('userId', '==', userId))
+    );
+    const proDeletes = proSnapshot.docs.map(d => deleteDoc(d.ref));
+    await Promise.all(proDeletes);
     
+    // Delete glory save (uses doc ID pattern: userId_glory)
+    try { await deleteDoc(doc(db, 'glory_saves', `${userId}_glory`)); } catch (e) { /* ok */ }
+
+    // Delete glory unlocks
+    try { await deleteDoc(doc(db, 'glory_unlocks', userId)); } catch (e) { /* ok */ }
+
     console.log('🗑️ All saves deleted for user', userId);
   } catch (err) {
     console.error('Error deleting saves:', err);

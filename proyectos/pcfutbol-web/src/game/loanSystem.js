@@ -382,8 +382,9 @@ export function createLoan(player, fromTeam, toTeam, loanFee, salaryShare, purch
 export function canLoanPlayer(player, state, direction = 'out') {
   const errors = [];
   
-  // Prevent loaning free agents (no team)
-  if (!player.teamId && !player.loanFromTeamId) {
+  // Prevent loaning free agents (no team) — only for incoming loans
+  // For outgoing loans, the player is already in your squad so they're not a free agent
+  if (direction === 'in' && !player.teamId && !player.loanFromTeamId) {
     errors.push('No se puede ceder un agente libre');
   }
   

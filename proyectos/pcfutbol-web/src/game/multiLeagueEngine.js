@@ -1724,6 +1724,12 @@ export function initializeNewSeasonWithPromotions(state, playerTeamId, playoffBr
     const allSegundaRfefTeams = getSegundaRfefTeams();
     const allTeamsPool = [...allLaLigaTeams, ...allSegundaTeams, ...allPrimeraRfefTeams, ...allSegundaRfefTeams];
     
+    // Include the player's custom team (e.g. glory_team) in the pool so it's not lost
+    const playerTeamFromState = state.team;
+    if (playerTeamFromState && playerTeamFromState.id && !allTeamsPool.some(t => t.id === playerTeamFromState.id)) {
+      allTeamsPool.push(playerTeamFromState);
+    }
+    
     const findTeam = (id) => allTeamsPool.find(t => t.id === id);
     
     // New La Liga teams

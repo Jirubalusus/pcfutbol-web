@@ -2,6 +2,7 @@
   padding: 12px;
   max-width: 960px;
   margin: 0 auto;
+  animation: fadeInUp 0.4s ease both;
 
   &__group-tabs {
     display: flex;
@@ -11,24 +12,24 @@
 
     .group-tab {
       padding: 8px 16px;
-      border-radius: 8px;
-      border: 1px solid var(--color-glass-border);
-      background: var(--color-glass);
-      color: #ccc;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.04);
+      color: rgba(255, 255, 255, 0.45);
       cursor: pointer;
       font-size: 0.85rem;
-      font-weight: 500;
+      font-weight: 600;
       transition: all 0.2s;
 
       &:hover {
-        background: var(--color-glass-border);
+        background: rgba(255, 255, 255, 0.08);
         color: var(--color-text-primary);
       }
 
       &.active {
-        background: rgba(59, 130, 246, 0.3);
-        border-color: rgba(59, 130, 246, 0.6);
-        color: var(--color-text-primary);
+        background: rgba(0, 245, 160, 0.12);
+        border-color: rgba(0, 245, 160, 0.3);
+        color: #00f5a0;
       }
     }
   }
@@ -50,11 +51,13 @@
       align-items: center;
       gap: 10px;
       font-size: 1.25rem;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
       color: var(--color-text-primary);
       margin: 0;
 
       svg {
-        color: #ffd700;
+        color: #fbbf24;
       }
     }
 
@@ -74,8 +77,10 @@
     gap: 16px;
     margin-bottom: 16px;
     padding: 12px 16px;
-    background: var(--color-glass);
-    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    backdrop-filter: blur(16px);
 
     @media (max-width: 768px) {
       gap: 8px 12px;
@@ -87,7 +92,7 @@
       align-items: center;
       gap: 8px;
       font-size: 0.8rem;
-      color: #8e8e93;
+      color: rgba(255, 255, 255, 0.45);
 
       .dot {
         width: 10px;
@@ -95,20 +100,21 @@
         border-radius: 50%;
       }
 
-      &.champions .dot { background: #0a84ff; }
-      &.europa .dot { background: #ff9500; }
-      &.conference .dot { background: var(--color-success); }
-      &.promotion .dot { background: var(--color-success); }
-      &.playoff .dot { background: #5856d6; }
-      &.relegation .dot { background: var(--color-danger); }
+      &.champions .dot { background: #3b82f6; }
+      &.europa .dot { background: #f59e0b; }
+      &.conference .dot { background: #00f5a0; }
+      &.promotion .dot { background: #00f5a0; }
+      &.playoff .dot { background: #8b5cf6; }
+      &.relegation .dot { background: #ff4757; }
     }
   }
 
   &__table {
-    background: var(--color-glass);
+    background: rgba(255, 255, 255, 0.04);
     border-radius: 16px;
     overflow: hidden;
-    border: 1px solid var(--color-glass);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(16px);
 
     @media (min-width: 769px) {
       overflow-x: auto;
@@ -117,20 +123,21 @@
 
     .table-header {
       display: grid;
-      grid-template-columns: 50px 1fr 40px 40px 40px 40px 40px 40px 50px 50px 100px;
-      gap: 8px;
+      grid-template-columns: 40px minmax(120px, 1fr) 36px 36px 36px 36px 36px 36px 44px 44px 100px;
+      gap: 4px;
       padding: 12px 16px;
-      background: var(--color-glass);
+      background: rgba(255, 255, 255, 0.02);
       font-size: 0.75rem;
-      color: #8e8e93;
+      color: rgba(255, 255, 255, 0.3);
       text-transform: uppercase;
-      font-weight: 600;
+      font-weight: 700;
+      letter-spacing: 0.5px;
 
       @media (max-width: 768px) {
-        grid-template-columns: 24px 1fr 22px 22px 22px 30px 38px;
-        gap: 2px;
-        padding: 6px 6px;
-        font-size: 0.6rem;
+        grid-template-columns: 30px 1fr 26px 26px 26px 34px 44px;
+        gap: 3px;
+        padding: 8px 10px;
+        font-size: 0.75rem;
         
         .col-pj, .col-gf, .col-ga, .col-form { display: none; }
       }
@@ -138,23 +145,28 @@
 
     .table-row {
       display: grid;
-      grid-template-columns: 50px 1fr 40px 40px 40px 40px 40px 40px 50px 50px 100px;
-      gap: 8px;
-      padding: 12px 16px;
-      border-bottom: 1px solid var(--color-glass);
+      grid-template-columns: 40px minmax(120px, 1fr) 36px 36px 36px 36px 36px 36px 44px 44px 100px;
+      gap: 4px;
+      padding: 10px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
       transition: background 0.2s;
       align-items: center;
 
       @media (max-width: 768px) {
-        grid-template-columns: 24px 1fr 22px 22px 22px 30px 38px;
-        gap: 2px;
-        padding: 4px 6px;
+        grid-template-columns: 30px 1fr 26px 26px 26px 34px 44px;
+        gap: 3px;
+        padding: 7px 10px;
         
         .col-pj, .col-gf, .col-ga, .col-form { display: none; }
       }
 
+      // Alternating row backgrounds
+      &:nth-child(even) {
+        background: rgba(255, 255, 255, 0.02);
+      }
+
       &:hover {
-        background: var(--color-glass);
+        background: rgba(255, 255, 255, 0.05);
       }
 
       &:last-child {
@@ -162,11 +174,12 @@
       }
 
       &.is-player {
-        background: rgba(10, 132, 255, 0.1);
+        background: rgba(0, 245, 160, 0.06);
+        border-left: 3px solid #00f5a0;
         
         .team-name {
           font-weight: 700;
-          color: #0a84ff;
+          color: #00f5a0;
         }
       }
 
@@ -177,28 +190,28 @@
           justify-content: center;
           width: 28px;
           height: 28px;
-          border-radius: 6px;
+          border-radius: 8px;
           font-weight: 700;
           font-size: 0.85rem;
-          background: var(--color-glass-border);
+          background: rgba(255, 255, 255, 0.06);
           color: var(--color-text-primary);
 
           @media (max-width: 768px) {
-            width: 20px;
-            height: 20px;
-            font-size: 0.6rem;
-            border-radius: 3px;
+            width: 24px;
+            height: 24px;
+            font-size: 0.7rem;
+            border-radius: 6px;
           }
         }
       }
 
-      // Zonas - después de .pos-badge para mayor especificidad
-      &.champions .col-pos .pos-badge { background: #0a84ff; }
-      &.europa .col-pos .pos-badge { background: #ff9500; }
-      &.conference .col-pos .pos-badge { background: var(--color-success); }
-      &.promotion .col-pos .pos-badge { background: var(--color-success); }
-      &.playoff .col-pos .pos-badge { background: #5856d6; }
-      &.relegation .col-pos .pos-badge { background: var(--color-danger); }
+      // Zone colors
+      &.champions .col-pos .pos-badge { background: rgba(59, 130, 246, 0.25); color: #3b82f6; }
+      &.europa .col-pos .pos-badge { background: rgba(245, 158, 11, 0.25); color: #f59e0b; }
+      &.conference .col-pos .pos-badge { background: rgba(0, 245, 160, 0.2); color: #00f5a0; }
+      &.promotion .col-pos .pos-badge { background: rgba(0, 245, 160, 0.2); color: #00f5a0; }
+      &.playoff .col-pos .pos-badge { background: rgba(139, 92, 246, 0.25); color: #8b5cf6; }
+      &.relegation .col-pos .pos-badge { background: rgba(255, 71, 87, 0.25); color: #ff4757; }
 
       .col-team {
         display: flex;
@@ -216,7 +229,7 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          background: linear-gradient(135deg, #2a2f3e, #1a1f2e);
+          background: rgba(255, 255, 255, 0.06);
           border-radius: 8px;
           font-size: 0.7rem;
           font-weight: 700;
@@ -224,10 +237,10 @@
           flex-shrink: 0;
 
           @media (max-width: 768px) {
-            width: 20px;
-            height: 20px;
-            border-radius: 4px;
-            font-size: 0.45rem;
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            font-size: 0.55rem;
           }
         }
 
@@ -246,7 +259,7 @@
           text-overflow: ellipsis;
 
           @media (max-width: 768px) {
-            font-size: 0.7rem;
+            font-size: 0.8rem;
           }
         }
 
@@ -260,11 +273,11 @@
             .form-pip {
               width: 14px;
               height: 5px;
-              border-radius: 2px;
+              border-radius: 3px;
 
-              &.form-w { background: var(--color-success); }
-              &.form-d { background: var(--color-warning); }
-              &.form-l { background: var(--color-danger); }
+              &.form-w { background: #00f5a0; }
+              &.form-d { background: #fbbf24; }
+              &.form-l { background: #ff4757; }
             }
           }
         }
@@ -272,11 +285,11 @@
 
       .col-pj, .col-w, .col-d, .col-l, .col-gf, .col-ga {
         font-size: 0.85rem;
-        color: #8e8e93;
+        color: rgba(255, 255, 255, 0.45);
         text-align: center;
 
         @media (max-width: 768px) {
-          font-size: 0.6rem;
+          font-size: 0.75rem;
         }
       }
 
@@ -284,22 +297,23 @@
         font-size: 0.85rem;
         text-align: center;
         
-        &.positive { color: var(--color-success); }
-        &.negative { color: var(--color-danger); }
+        &.positive { color: #00f5a0; }
+        &.negative { color: #ff4757; }
 
         @media (max-width: 768px) {
-          font-size: 0.6rem;
+          font-size: 0.75rem;
         }
       }
 
       .col-pts {
         font-size: 1rem;
-        font-weight: 700;
+        font-weight: 800;
+        font-family: 'Outfit', sans-serif;
         color: var(--color-text-primary);
         text-align: center;
 
         @media (max-width: 768px) {
-          font-size: 0.7rem;
+          font-size: 0.85rem;
         }
       }
 
@@ -308,27 +322,31 @@
         gap: 4px;
         justify-content: flex-end;
 
+        @media (max-width: 768px) {
+          display: none !important;
+        }
+
         .form-dot {
           width: 22px;
           height: 22px;
           display: flex;
           align-items: center;
           justify-content: center;
-          border-radius: 4px;
+          border-radius: 6px;
           font-size: 0.65rem;
           font-weight: 700;
 
           &.form-w {
-            background: rgba(48, 209, 88, 0.2);
-            color: var(--color-success);
+            background: rgba(0, 245, 160, 0.15);
+            color: #00f5a0;
           }
           &.form-d {
-            background: rgba(255, 214, 10, 0.2);
-            color: var(--color-warning);
+            background: rgba(251, 191, 36, 0.15);
+            color: #fbbf24;
           }
           &.form-l {
-            background: rgba(255, 69, 58, 0.2);
-            color: var(--color-danger);
+            background: rgba(255, 71, 87, 0.15);
+            color: #ff4757;
           }
         }
       }
@@ -340,7 +358,7 @@
       .separator-dots {
         display: block;
         text-align: center;
-        color: #555;
+        color: rgba(255, 255, 255, 0.15);
         font-size: 0.85rem;
         padding: 6px 0;
         letter-spacing: 4px;
@@ -357,13 +375,14 @@
       padding: 12px;
       background: transparent;
       border: none;
-      color: #0a84ff;
+      color: #00f5a0;
       font-size: 0.85rem;
+      font-weight: 600;
       cursor: pointer;
       transition: background 0.2s;
 
       &:hover {
-        background: rgba(10, 132, 255, 0.1);
+        background: rgba(0, 245, 160, 0.06);
       }
     }
   }
@@ -373,14 +392,14 @@
     
     .tournament-indicator {
       font-size: 0.85rem;
-      color: #ffd700;
+      color: #fbbf24;
       margin-bottom: 8px;
       font-weight: 600;
 
       &.tournament-champion {
-        background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05));
-        border: 1px solid rgba(255, 215, 0, 0.3);
-        border-radius: 8px;
+        background: linear-gradient(135deg, rgba(251, 191, 36, 0.12), rgba(251, 191, 36, 0.04));
+        border: 1px solid rgba(251, 191, 36, 0.2);
+        border-radius: 12px;
         padding: 8px 12px;
 
         .final-score {
@@ -394,19 +413,19 @@
     .tournament-tab-buttons {
       display: flex;
       gap: 4px;
-      background: var(--color-glass);
-      border-radius: 10px;
-      padding: 3px;
-      border: 1px solid var(--color-glass-border);
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 14px;
+      padding: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
     }
     
     .tournament-tab {
       flex: 1;
       padding: 8px 12px;
-      border-radius: 8px;
+      border-radius: 10px;
       border: none;
       background: transparent;
-      color: #8e8e93;
+      color: rgba(255, 255, 255, 0.45);
       cursor: pointer;
       font-size: 0.82rem;
       font-weight: 600;
@@ -418,14 +437,14 @@
       gap: 6px;
       
       &:hover:not(:disabled) {
-        background: var(--color-glass-border);
-        color: #ccc;
+        background: rgba(255, 255, 255, 0.06);
+        color: rgba(255, 255, 255, 0.7);
       }
       
       &.active {
-        background: rgba(59, 130, 246, 0.3);
-        color: var(--color-text-primary);
-        box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
+        background: rgba(0, 245, 160, 0.12);
+        color: #00f5a0;
+        box-shadow: 0 2px 8px rgba(0, 245, 160, 0.15);
       }
       
       &:disabled {
@@ -437,7 +456,7 @@
         width: 6px;
         height: 6px;
         border-radius: 50%;
-        background: var(--color-success);
+        background: #00f5a0;
         animation: pulse-live 1.5s ease-in-out infinite;
       }
     }
@@ -453,10 +472,10 @@
     align-items: center;
     gap: 6px;
     padding: 6px 12px;
-    background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 165, 0, 0.2) 100%);
-    border: 1px solid rgba(255, 215, 0, 0.3);
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.15) 0%, rgba(251, 191, 36, 0.08) 100%);
+    border: 1px solid rgba(251, 191, 36, 0.25);
     border-radius: 20px;
-    color: #ffd700;
+    color: #fbbf24;
     font-size: 0.85rem;
     font-weight: 600;
     margin-bottom: 16px;
@@ -469,11 +488,11 @@
     justify-content: center;
     padding: 60px 20px;
     text-align: center;
-    color: #8e8e93;
+    color: rgba(255, 255, 255, 0.45);
     
     svg {
       margin-bottom: 16px;
-      opacity: 0.5;
+      opacity: 0.4;
     }
     
     p {
@@ -484,7 +503,7 @@
     
     .hint {
       font-size: 0.85rem;
-      color: #666;
+      color: rgba(255, 255, 255, 0.3);
     }
   }
 }

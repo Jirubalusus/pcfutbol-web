@@ -86,6 +86,11 @@ export default function Renewals() {
     };
     
     const result = evaluateRenewalOffer(selectedPlayer, teamContext, renewalOffer);
+    // Diplomat perk: players never reject renewals
+    if (state.gloryData?.perks?.diplomat && result.response === 'reject') {
+      result.response = 'accept';
+      result.message = 'El jugador acepta gracias a tu diplomacia.';
+    }
     setNegotiationResult(result);
     
     if (result.response === 'accept') {

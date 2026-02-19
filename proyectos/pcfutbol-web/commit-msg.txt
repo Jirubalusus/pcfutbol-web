@@ -1,1 +1,0 @@
-fix: TeamSelection audit - i18n interpolation, hardcoded strings, dead code, stale state, empty guard

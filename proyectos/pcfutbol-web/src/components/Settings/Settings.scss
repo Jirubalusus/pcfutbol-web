@@ -11,13 +11,17 @@
     padding: 1.25rem;
     border-bottom: 1px solid var(--color-glass-border);
 
+    @media (max-width: 768px) {
+      padding: 0.85rem;
+    }
+
     h2 {
       margin: 0;
       font-size: 1.4rem;
       font-weight: 600;
 
       @media (max-width: 768px) {
-        font-size: 1.25rem;
+        font-size: 1.1rem;
       }
     }
   }
@@ -62,8 +66,8 @@
     border-radius: var(--border-radius-xl);
 
     @media (max-width: 768px) {
-      padding: 1rem;
-      margin-bottom: 1rem;
+      padding: 0.75rem;
+      margin-bottom: 0.75rem;
     }
 
     h3 {
@@ -393,6 +397,57 @@
     color: var(--color-success);
     font-size: 0.8rem;
     margin-top: 0.4rem;
+  }
+
+  // Premium / Remove ads
+  &__premium-active {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: rgba(76, 175, 80, 0.15);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    border-radius: 10px;
+    color: #66bb6a;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  &__premium-desc {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    margin: 0 0 0.75rem;
+  }
+
+  &__premium-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__action-btn.premium {
+    background: linear-gradient(135deg, #43a047, #66bb6a);
+    color: #fff;
+    border: none;
+    font-weight: 600;
+
+    &:hover { filter: brightness(1.1); }
+  }
+
+  &__action-btn.restore {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--color-text-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    &:hover { background: rgba(255, 255, 255, 0.12); }
+  }
+
+  &__purchase-msg {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    &.success { color: #66bb6a; }
+    &.error { color: #ef5350; }
+    &.info { color: var(--color-text-secondary); }
   }
 
   // Game info

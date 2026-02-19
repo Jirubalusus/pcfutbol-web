@@ -245,6 +245,11 @@ export default function ContrarrelojSetup() {
     const preseasonOptions = generatePreseasonOptions(allTeamsFlat, team, leagueId);
     const preseason = preseasonOptions[0];
 
+    // Get manager name from Firebase Auth
+    const { getAuth } = await import('firebase/auth');
+    const authUser = getAuth().currentUser;
+    const managerName = authUser?.displayName || authUser?.email?.split('@')[0] || undefined;
+
     dispatch({
       type: 'NEW_GAME',
       payload: {
@@ -257,7 +262,8 @@ export default function ContrarrelojSetup() {
         preseasonMatches: preseason?.matches || [],
         preseasonPhase: true,
         gameMode: 'contrarreloj',
-        _contrarrelojUserId: user?.uid || null
+        _contrarrelojUserId: user?.uid || null,
+        managerName
       }
     });
 
@@ -407,7 +413,7 @@ export default function ContrarrelojSetup() {
   };
 
   return (
-    <div className="contrarreloj-setup">
+    <div className="contrarreloj-setup unified-screen">
       <div className="contrarreloj-setup__bg">
         <div className="contrarreloj-setup__gradient" />
         <div className="contrarreloj-setup__particles">
@@ -419,7 +425,7 @@ export default function ContrarrelojSetup() {
         {/* Header */}
         <div className="contrarreloj-setup__header">
           <button className="btn-back" onClick={() => dispatch({ type: 'SET_SCREEN', payload: 'main_menu' })}>
-            <ArrowLeft size={20} /> {t('contrarrelojSetup.menu')}
+            <ArrowLeft size={16} /> {t('contrarrelojSetup.menu')}
           </button>
           <div className="header-title">
             <Timer size={32} className="timer-icon" />

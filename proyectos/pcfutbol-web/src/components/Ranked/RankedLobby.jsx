@@ -7,8 +7,12 @@ import {
   onQueueChange, findOpponent, createMatch, getMatchHistory,
   abandonActiveMatches, findAndCreateMatch
 } from '../../firebase/rankedService';
+import {
+  joinDraftQueue, leaveDraftQueue, findAndCreateDraftMatch,
+  findMyActiveDraftMatch, onDraftQueueChange,
+} from '../../firebase/draftService';
 import { getTierByLP, getLPInDivision } from './tierUtils';
-import { Swords, Trophy, Search, ArrowLeft, Clock, ChevronRight, Wifi, WifiOff } from 'lucide-react';
+import { Swords, Trophy, Search, ArrowLeft, Clock, ChevronRight, Wifi, WifiOff, Users } from 'lucide-react';
 import './RankedLobby.scss';
 
 export default function RankedLobby() {
@@ -17,6 +21,7 @@ export default function RankedLobby() {
   const { dispatch } = useGame();
   const [player, setPlayer] = useState(null);
   const [searching, setSearching] = useState(false);
+  const [searchMode, setSearchMode] = useState(null); // '1v1' | 'draft'
   const [matchId, setMatchId] = useState(null);
   const [history, setHistory] = useState([]);
   const [searchTime, setSearchTime] = useState(0);
@@ -61,27 +66,48 @@ export default function RankedLobby() {
     let unsubQueue;
 
     // Listen for queue doc changes (e.g., matched by another player)
-    unsubQueue = onQueueChange(user.uid, async (queueData) => {
-      if (!queueData && searching && !matchId && !cancelled) {
-        // We were removed from queue — check if we were matched
-        try {
-          const { findMyActiveMatch } = await import('../../firebase/rankedService');
-          const activeMatch = await findMyActiveMatch(user.uid);
-          if (activeMatch && !cancelled) {
-            setMatchId(activeMatch.id);
-            setSearching(false);
+    if (searchMode === 'draft') {
+      // Exact same pattern as 1v1: listen to queue doc, when deleted → find active match
+      unsubQueue = onDraftQueueChange(user.uid, async (queueData) => {
+        if (!queueData && searching && !matchId && !cancelled) {
+          try {
+            const activeMatch = await findMyActiveDraftMatch(user.uid);
+            if (activeMatch && !cancelled) {
+              setMatchId(activeMatch.id);
+              setSearching(false);
+            }
+          } catch (e) {
+            console.error('Error checking active draft match:', e);
           }
-        } catch (e) {
-          console.error('Error checking active match:', e);
         }
-      }
-    });
+      });
+    } else {
+      unsubQueue = onQueueChange(user.uid, async (queueData) => {
+        if (!queueData && searching && !matchId && !cancelled) {
+          try {
+            const { findMyActiveMatch } = await import('../../firebase/rankedService');
+            const activeMatch = await findMyActiveMatch(user.uid);
+            if (activeMatch && !cancelled) {
+              setMatchId(activeMatch.id);
+              setSearching(false);
+            }
+          } catch (e) {
+            console.error('Error checking active match:', e);
+          }
+        }
+      });
+    }
 
     // Poll for opponents every 3s using transactional matchmaking
     const poll = setInterval(async () => {
       if (cancelled) return;
       try {
-        const match = await findAndCreateMatch(user.uid, player?.displayName, player?.totalLP || 0);
+        let match;
+        if (searchMode === 'draft') {
+          match = await findAndCreateDraftMatch(user.uid, player?.displayName, player?.totalLP || 0);
+        } else {
+          match = await findAndCreateMatch(user.uid, player?.displayName, player?.totalLP || 0);
+        }
         if (match && !cancelled) {
           setMatchId(match.id);
           setSearching(false);
@@ -96,34 +122,50 @@ export default function RankedLobby() {
       clearInterval(poll);
       unsubQueue?.();
     };
-  }, [searching, user?.uid, player?.totalLP, matchId]);
+  }, [searching, user?.uid, player?.totalLP, matchId, searchMode]);
 
   // Navigate to match when found
   useEffect(() => {
     if (matchId) {
-      dispatch({ type: 'SET_SCREEN', payload: 'ranked_match' });
+      if (searchMode === 'draft') {
+        dispatch({ type: 'SET_SCREEN', payload: 'ranked_draft' });
+      } else {
+        dispatch({ type: 'SET_SCREEN', payload: 'ranked_match' });
+      }
       dispatch({ type: 'SET_RANKED_MATCH_ID', payload: matchId });
     }
-  }, [matchId, dispatch]);
+  }, [matchId, dispatch, searchMode]);
 
-  const handleFindMatch = async () => {
+  const handleFindMatch = async (mode = '1v1') => {
     if (!user?.uid || !player) return;
     setSearching(true);
+    setSearchMode(mode);
     try {
-      // Close any stale matches before searching
-      await abandonActiveMatches(user.uid);
-      await joinQueue(user.uid, player.displayName, player.totalLP || 0);
+      if (mode === 'draft') {
+        await joinDraftQueue(user.uid, player.displayName, player.totalLP || 0);
+      } else {
+        await abandonActiveMatches(user.uid);
+        await joinQueue(user.uid, player.displayName, player.totalLP || 0);
+      }
     } catch (e) {
       console.error('Error joining queue:', e);
       setSearching(false);
+      setSearchMode(null);
     }
   };
 
   const handleCancelSearch = async () => {
     setSearching(false);
     if (user?.uid) {
-      try { await leaveQueue(user.uid); } catch (e) { console.warn('Failed to leave queue:', e); }
+      try {
+        if (searchMode === 'draft') {
+          await leaveDraftQueue(user.uid);
+        } else {
+          await leaveQueue(user.uid);
+        }
+      } catch (e) { console.warn('Failed to leave queue:', e); }
     }
+    setSearchMode(null);
   };
 
   const tier = player ? getTierByLP(player.totalLP || 0) : null;
@@ -149,8 +191,8 @@ export default function RankedLobby() {
   return (
     <div className="ranked-lobby">
       <div className="ranked-lobby__header">
-        <button className="ranked-lobby__back" onClick={() => dispatch({ type: 'SET_SCREEN', payload: 'menu' })}>
-          <ArrowLeft size={20} />
+        <button className="btn-back" onClick={() => dispatch({ type: 'SET_SCREEN', payload: 'menu' })}>
+          <ArrowLeft size={16} /> {t('common.back')}
         </button>
         <h1><Swords size={24} /> {t('ranked.title')}</h1>
       </div>
@@ -177,10 +219,16 @@ export default function RankedLobby() {
       {/* Find Match */}
       <div className="ranked-lobby__matchmaking">
         {!searching ? (
-          <button className="ranked-lobby__find-btn" onClick={handleFindMatch}>
-            <Search size={22} />
-            <span>{t('ranked.findMatch')}</span>
-          </button>
+          <div className="ranked-lobby__mode-buttons">
+            <button className="ranked-lobby__find-btn" onClick={() => handleFindMatch('1v1')}>
+              <Swords size={22} />
+              <span>1v1 Clásico</span>
+            </button>
+            <button className="ranked-lobby__find-btn ranked-lobby__find-btn--draft" onClick={() => handleFindMatch('draft')}>
+              <Users size={22} />
+              <span>Draft</span>
+            </button>
+          </div>
         ) : (
           <div className="ranked-lobby__searching">
             <div className="searching-animation">

@@ -2,11 +2,12 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { useToast } from '../Toast/Toast';
+import { TutorialModal, useTutorial } from '../Tutorial/Tutorial';
 import { FORMATIONS, TACTICS, calculateTeamStrength } from '../../game/leagueEngine';
 import { getPositionFit, getSlotPosition, FIT_COLORS } from '../../game/positionSystem';
 import { translatePosition, posToEN } from '../../game/positionNames';
 import { FORM_STATES } from '../../game/formSystem';
-import { Shield, Scale, Swords, Target, Zap, CheckCircle2, Settings, Dumbbell, Heart, AlertTriangle, Lock, Building2, TrendingUp, BarChart3, Activity, X, Check, HeartPulse, Square, Star, Trophy, Coins, Clock } from 'lucide-react';
+import { Shield, Scale, Swords, Target, Zap, CheckCircle2, Settings, Heart, AlertTriangle, Building2, TrendingUp, BarChart3, X, Check, HeartPulse, Square, Star, Trophy, Coins, Clock } from 'lucide-react';
 import './Formation.scss';
 
 // Posiciones del campo para cada formación
@@ -205,6 +206,32 @@ const FORMATION_POSITIONS = {
     { id: 'RW', x: 78, y: 25 },
     { id: 'ST', x: 50, y: 18 },
     { id: 'LW', x: 22, y: 25 },
+  ],
+  '2-3-5': [
+    { id: 'GK', x: 50, y: 90 },
+    { id: 'CB1', x: 35, y: 75 },
+    { id: 'CB2', x: 65, y: 75 },
+    { id: 'CM1', x: 25, y: 52 },
+    { id: 'CM2', x: 50, y: 48 },
+    { id: 'CM3', x: 75, y: 52 },
+    { id: 'LW', x: 10, y: 25 },
+    { id: 'CAM1', x: 35, y: 28 },
+    { id: 'CAM2', x: 65, y: 28 },
+    { id: 'RW', x: 90, y: 25 },
+    { id: 'ST', x: 50, y: 12 },
+  ],
+  '3-1-3-3': [
+    { id: 'GK', x: 50, y: 90 },
+    { id: 'CB1', x: 25, y: 75 },
+    { id: 'CB2', x: 50, y: 78 },
+    { id: 'CB3', x: 75, y: 75 },
+    { id: 'CDM', x: 50, y: 60 },
+    { id: 'LM', x: 15, y: 42 },
+    { id: 'CM', x: 50, y: 42 },
+    { id: 'RM', x: 85, y: 42 },
+    { id: 'LW', x: 20, y: 18 },
+    { id: 'ST', x: 50, y: 12 },
+    { id: 'RW', x: 80, y: 18 },
   ]
 };
 
@@ -224,6 +251,9 @@ const POSITION_COMPAT = {
   'RM': ['RM', 'RW', 'RB'],
   'LM': ['LM', 'LW', 'LB'],
   'CAM': ['CAM', 'CM', 'ST'],
+  'CAM1': ['CAM', 'CM', 'ST'],
+  'CAM2': ['CAM', 'CM', 'ST'],
+  'CM3': ['CM', 'CDM', 'CAM'],
   'RW': ['RW', 'RM', 'ST'],
   'LW': ['LW', 'LM', 'ST'],
   'ST': ['ST', 'CAM', 'RW', 'LW'],
@@ -239,6 +269,7 @@ const PLAYER_ATTRIBUTES = [
 export default function Formation() {
   const { t } = useTranslation();
   const { state, dispatch } = useGame();
+  const formationTutorial = useTutorial('formation');
   const [lineup, setLineup] = useState(state.lineup || {});
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [showModal, setShowModal] = useState(false);
@@ -267,7 +298,13 @@ export default function Formation() {
   }, [state.lineup]);
 
   // Guardar lineup en el estado global cuando cambia localmente
+  // Ref to skip initial mount dispatch (state.lineup is already in sync)
+  const isInitialMount = React.useRef(true);
   useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
     if (Object.keys(lineup).length > 0) {
       dispatch({ type: 'SET_LINEUP', payload: lineup });
     }
@@ -369,13 +406,6 @@ export default function Formation() {
     });
     return map;
   }, [lineup]);
-
-  // Cargar lineup del estado global al montar
-  useEffect(() => {
-    if (state.lineup && Object.keys(state.lineup).length > 0) {
-      setLineup(state.lineup);
-    }
-  }, []);
 
   // Auto-fill lineup al cargar (solo si no hay lineup guardado)
   useEffect(() => {
@@ -575,9 +605,38 @@ export default function Formation() {
   };
 
   const handleFormationChange = (e) => {
-    dispatch({ type: 'SET_FORMATION', payload: e.target.value });
-    setLineup({});
-    setTimeout(autoFillLineup, 100);
+    const newFormation = e.target.value;
+    dispatch({ type: 'SET_FORMATION', payload: newFormation });
+    // Auto-fill immediately with new formation positions
+    const newPositions = FORMATION_POSITIONS[newFormation] || FORMATION_POSITIONS['4-3-3'];
+    const newLineup = {};
+    const used = new Set();
+    newPositions.forEach(pos => {
+      const slotPos = getSlotPosition(pos.id);
+      const best = players
+        .filter(p => !used.has(p.name) && !p.injured && !p.suspended)
+        .sort((a, b) => {
+          const fitA = getPositionFit(a.position, slotPos);
+          const fitB = getPositionFit(b.position, slotPos);
+          return (fitB.factor * b.overall) - (fitA.factor * a.overall);
+        })[0];
+      if (best) { newLineup[pos.id] = best; used.add(best.name); }
+    });
+    setLineup(newLineup);
+    dispatch({ type: 'SET_LINEUP', payload: newLineup });
+    // Recalculate convocados
+    const newLineupNames = new Set(Object.values(newLineup).map(p => p?.name).filter(Boolean));
+    const currentConv = (state.convocados || []).filter(n => !newLineupNames.has(n));
+    if (currentConv.length < 5) {
+      const needed = 5 - currentConv.length;
+      const available = players
+        .filter(p => !newLineupNames.has(p.name) && !currentConv.includes(p.name) && !p.injured)
+        .sort((a, b) => b.overall - a.overall)
+        .slice(0, needed)
+        .map(p => p.name);
+      currentConv.push(...available);
+    }
+    dispatch({ type: 'SET_CONVOCADOS', payload: currentConv });
   };
 
   const handleTacticChange = (e) => {
@@ -666,6 +725,18 @@ export default function Formation() {
 
   return (
     <div className="pcf-formation">
+      {formationTutorial.shouldShow && (
+        <TutorialModal
+          id="formation"
+          steps={[
+            { selector: '.pcf-pitch', text: t('tutorial.formationPitch') },
+            { selector: '.pcf-table-container', text: t('tutorial.formationSwap') },
+            { selector: '.pcf-buttons', text: t('tutorial.formationButtons') },
+          ]}
+          onComplete={formationTutorial.markSeen}
+          onDismissAll={formationTutorial.dismissAll}
+        />
+      )}
       {/* HEADER */}
       <div className="pcf-header">
         <div className="pcf-header__team">
@@ -732,12 +803,12 @@ export default function Formation() {
                         </span>
                       );
                     })()}
-                    {player.injured && player.injuryWeeksLeft > 0 && <span className="status-icon injury"><HeartPulse size={12} />{player.injuryWeeksLeft}s</span>}
-                    {player.suspended && player.suspensionType === 'red' && <span className="status-icon red"><Square size={12} className="card-red" />{player.suspensionMatches}p</span>}
-                    {player.suspended && player.suspensionType === 'double_yellow' && <span className="status-icon red"><><Square size={12} className="card-yellow" /><Square size={12} className="card-yellow" /></>{player.suspensionMatches}p</span>}
-                    {player.suspended && player.suspensionType === 'yellow' && <span className="status-icon yellow"><Square size={12} className="card-yellow" />×5</span>}
-                    {!player.suspended && !player.injured && player.postInjuryBonus > 0 && player.postInjuryWeeksLeft > 0 && <span className="status-icon boost"><TrendingUp size={12} />{player.postInjuryWeeksLeft}s</span>}
-                    {!player.suspended && !player.injured && !(player.postInjuryBonus > 0 && player.postInjuryWeeksLeft > 0) && (player.yellowCards || 0) >= 4 && <span className="status-icon warning"><AlertTriangle size={12} /></span>}
+                    {player.injured && player.injuryWeeksLeft > 0 && <span className="status-icon injury"><HeartPulse size={14} /> {player.injuryWeeksLeft}sem</span>}
+                    {player.suspended && player.suspensionType === 'red' && <span className="status-icon red"><Square size={14} className="card-red" />{player.suspensionMatches}p</span>}
+                    {player.suspended && player.suspensionType === 'double_yellow' && <span className="status-icon red"><><Square size={14} className="card-yellow" /><Square size={14} className="card-yellow" /></>{player.suspensionMatches}p</span>}
+                    {player.suspended && player.suspensionType === 'yellow' && <span className="status-icon yellow"><Square size={14} className="card-yellow" />×5</span>}
+                    {!player.suspended && !player.injured && player.postInjuryBonus > 0 && player.postInjuryWeeksLeft > 0 && <span className="status-icon boost"><TrendingUp size={14} />{player.postInjuryWeeksLeft}sem</span>}
+                    {!player.suspended && !player.injured && !(player.postInjuryBonus > 0 && player.postInjuryWeeksLeft > 0) && (player.yellowCards || 0) >= 4 && <span className="status-icon warning"><AlertTriangle size={14} /></span>}
                   </span>
                   {PLAYER_ATTRIBUTES.map(attr => {
                     const baseOvr = player.overall + (player.postInjuryBonus || 0);
@@ -796,12 +867,12 @@ export default function Formation() {
                         </span>
                       );
                     })()}
-                    {player.injured && player.injuryWeeksLeft > 0 && <span className="status-icon injury"><HeartPulse size={12} />{player.injuryWeeksLeft}s</span>}
-                    {player.suspended && player.suspensionType === 'red' && <span className="status-icon red"><Square size={12} className="card-red" />{player.suspensionMatches}p</span>}
-                    {player.suspended && player.suspensionType === 'double_yellow' && <span className="status-icon red"><><Square size={12} className="card-yellow" /><Square size={12} className="card-yellow" /></>{player.suspensionMatches}p</span>}
-                    {player.suspended && player.suspensionType === 'yellow' && <span className="status-icon yellow"><Square size={12} className="card-yellow" />×5</span>}
-                    {!player.suspended && !player.injured && player.postInjuryBonus > 0 && player.postInjuryWeeksLeft > 0 && <span className="status-icon boost"><TrendingUp size={12} />{player.postInjuryWeeksLeft}s</span>}
-                    {!player.suspended && !player.injured && !(player.postInjuryBonus > 0 && player.postInjuryWeeksLeft > 0) && (player.yellowCards || 0) >= 4 && <span className="status-icon warning"><AlertTriangle size={12} /></span>}
+                    {player.injured && player.injuryWeeksLeft > 0 && <span className="status-icon injury"><HeartPulse size={14} /> {player.injuryWeeksLeft}sem</span>}
+                    {player.suspended && player.suspensionType === 'red' && <span className="status-icon red"><Square size={14} className="card-red" />{player.suspensionMatches}p</span>}
+                    {player.suspended && player.suspensionType === 'double_yellow' && <span className="status-icon red"><><Square size={14} className="card-yellow" /><Square size={14} className="card-yellow" /></>{player.suspensionMatches}p</span>}
+                    {player.suspended && player.suspensionType === 'yellow' && <span className="status-icon yellow"><Square size={14} className="card-yellow" />×5</span>}
+                    {!player.suspended && !player.injured && player.postInjuryBonus > 0 && player.postInjuryWeeksLeft > 0 && <span className="status-icon boost"><TrendingUp size={14} />{player.postInjuryWeeksLeft}sem</span>}
+                    {!player.suspended && !player.injured && !(player.postInjuryBonus > 0 && player.postInjuryWeeksLeft > 0) && (player.yellowCards || 0) >= 4 && <span className="status-icon warning"><AlertTriangle size={14} /></span>}
                   </span>
                   {PLAYER_ATTRIBUTES.map(attr => {
                     const boostedOvr = (player[attr.key] || player.overall) + (player.postInjuryBonus || 0);
@@ -859,12 +930,12 @@ export default function Formation() {
                         </span>
                       );
                     })()}
-                    {player.injured && player.injuryWeeksLeft > 0 && <span className="status-icon injury"><HeartPulse size={12} />{player.injuryWeeksLeft}s</span>}
-                    {player.suspended && player.suspensionType === 'red' && <span className="status-icon red"><Square size={12} className="card-red" />{player.suspensionMatches}p</span>}
-                    {player.suspended && player.suspensionType === 'double_yellow' && <span className="status-icon red"><><Square size={12} className="card-yellow" /><Square size={12} className="card-yellow" /></>{player.suspensionMatches}p</span>}
-                    {player.suspended && player.suspensionType === 'yellow' && <span className="status-icon yellow"><Square size={12} className="card-yellow" />×5</span>}
-                    {!player.suspended && !player.injured && player.postInjuryBonus > 0 && player.postInjuryWeeksLeft > 0 && <span className="status-icon boost"><TrendingUp size={12} />{player.postInjuryWeeksLeft}s</span>}
-                    {!player.suspended && !player.injured && !(player.postInjuryBonus > 0 && player.postInjuryWeeksLeft > 0) && (player.yellowCards || 0) >= 4 && <span className="status-icon warning"><AlertTriangle size={12} /></span>}
+                    {player.injured && player.injuryWeeksLeft > 0 && <span className="status-icon injury"><HeartPulse size={14} /> {player.injuryWeeksLeft}sem</span>}
+                    {player.suspended && player.suspensionType === 'red' && <span className="status-icon red"><Square size={14} className="card-red" />{player.suspensionMatches}p</span>}
+                    {player.suspended && player.suspensionType === 'double_yellow' && <span className="status-icon red"><><Square size={14} className="card-yellow" /><Square size={14} className="card-yellow" /></>{player.suspensionMatches}p</span>}
+                    {player.suspended && player.suspensionType === 'yellow' && <span className="status-icon yellow"><Square size={14} className="card-yellow" />×5</span>}
+                    {!player.suspended && !player.injured && player.postInjuryBonus > 0 && player.postInjuryWeeksLeft > 0 && <span className="status-icon boost"><TrendingUp size={14} />{player.postInjuryWeeksLeft}sem</span>}
+                    {!player.suspended && !player.injured && !(player.postInjuryBonus > 0 && player.postInjuryWeeksLeft > 0) && (player.yellowCards || 0) >= 4 && <span className="status-icon warning"><AlertTriangle size={14} /></span>}
                   </span>
                   {PLAYER_ATTRIBUTES.map(attr => {
                     const boostedOvr = (player[attr.key] || player.overall) + (player.postInjuryBonus || 0);
@@ -902,7 +973,9 @@ export default function Formation() {
             </div>
 
             {formationPositions.map(pos => {
-              const player = lineup[pos.id];
+              const lineupPlayer = lineup[pos.id];
+              // Use fresh player data from team (lineup stores snapshots that can go stale)
+              const player = lineupPlayer ? (players.find(p => p.name === lineupPlayer.name) || lineupPlayer) : null;
               const slotPos = getSlotPosition(pos.id);
               const fit = player ? getPositionFit(player.position, slotPos) : null;
               const baseOvr = (player?.overall || 0) + (player?.postInjuryBonus || 0);
@@ -1001,7 +1074,7 @@ export default function Formation() {
 
           {/* BOTONES */}
           <div className="pcf-buttons">
-            <button className="pcf-btn" onClick={() => setShowInjuredModal(true)}><Heart size={16} /> {t('formation.injured').toUpperCase()}</button>
+            <button className="pcf-btn" onClick={() => setShowInjuredModal(true)}><Heart size={20} /> {t('formation.injured').toUpperCase()}</button>
             <button className="pcf-btn" onClick={() => setShowStatsModal(true)}><BarChart3 size={16} /> {t('formation.statistics').toUpperCase()}</button>
             <button className="pcf-btn" onClick={() => setShowTacticModal(true)}><Target size={16} /> {t('formation.tactic').toUpperCase()}</button>
           </div>
@@ -1087,214 +1160,41 @@ export default function Formation() {
           dispatch={dispatch}
           onFormationChange={(newFormation) => {
             dispatch({ type: 'SET_FORMATION', payload: newFormation });
-            // Limpiar lineup y auto-rellenar con nueva formación
-            setLineup({});
-            setTimeout(() => {
-              const newLineup = {};
-              const used = new Set();
-              const newPositions = FORMATION_POSITIONS[newFormation] || FORMATION_POSITIONS['4-3-3'];
+            // Auto-fill immediately (no setTimeout race condition)
+            const newPositions = FORMATION_POSITIONS[newFormation] || FORMATION_POSITIONS['4-3-3'];
+            const newLineup = {};
+            const used = new Set();
 
-              newPositions.forEach(pos => {
-                const slotPos = getSlotPosition(pos.id);
-                const best = players
-                  .filter(p => !used.has(p.name) && !p.injured && !p.suspended)
-                  .sort((a, b) => {
-                    const fitA = getPositionFit(a.position, slotPos);
-                    const fitB = getPositionFit(b.position, slotPos);
-                    const scoreA = fitA.factor * a.overall;
-                    const scoreB = fitB.factor * b.overall;
-                    return scoreB - scoreA;
-                  })[0];
+            newPositions.forEach(pos => {
+              const slotPos = getSlotPosition(pos.id);
+              const best = players
+                .filter(p => !used.has(p.name) && !p.injured && !p.suspended)
+                .sort((a, b) => {
+                  const fitA = getPositionFit(a.position, slotPos);
+                  const fitB = getPositionFit(b.position, slotPos);
+                  return (fitB.factor * b.overall) - (fitA.factor * a.overall);
+                })[0];
+              if (best) { newLineup[pos.id] = best; used.add(best.name); }
+            });
 
-                if (best) {
-                  newLineup[pos.id] = best;
-                  used.add(best.name);
-                }
-              });
+            setLineup(newLineup);
+            dispatch({ type: 'SET_LINEUP', payload: newLineup });
 
-              setLineup(newLineup);
-              dispatch({ type: 'SET_LINEUP', payload: newLineup });
-
-              // Recalcular convocados: los de la lista manual que NO son titulares,
-              // + backfill de los mejores disponibles hasta llegar a 5
-              const newLineupNames = new Set(Object.values(newLineup).map(p => p?.name).filter(Boolean));
-              const currentConvocados = (state.convocados || []).filter(n => !newLineupNames.has(n));
-              if (currentConvocados.length < 5) {
-                const needed = 5 - currentConvocados.length;
-                const available = players
-                  .filter(p => !newLineupNames.has(p.name) && !currentConvocados.includes(p.name) && !p.injured)
-                  .sort((a, b) => b.overall - a.overall)
-                  .slice(0, needed)
-                  .map(p => p.name);
-                currentConvocados.push(...available);
-              }
-              dispatch({ type: 'SET_CONVOCADOS', payload: currentConvocados });
-            }, 50);
+            const newLineupNames = new Set(Object.values(newLineup).map(p => p?.name).filter(Boolean));
+            const currentConvocados = (state.convocados || []).filter(n => !newLineupNames.has(n));
+            if (currentConvocados.length < 5) {
+              const needed = 5 - currentConvocados.length;
+              const available = players
+                .filter(p => !newLineupNames.has(p.name) && !currentConvocados.includes(p.name) && !p.injured)
+                .sort((a, b) => b.overall - a.overall)
+                .slice(0, needed)
+                .map(p => p.name);
+              currentConvocados.push(...available);
+            }
+            dispatch({ type: 'SET_CONVOCADOS', payload: currentConvocados });
           }}
         />
       )}
-    </div>
-  );
-}
-
-// ============================================================
-// MODAL: ENTRENAMIENTO (Rediseñado)
-// ============================================================
-// TrainingModal removed - training system eliminated
-
-function _TrainingModal_REMOVED({ onClose, players, facilities, dispatch, currentIntensity }) {
-  const toast = useToast();
-  const [intensity, setIntensity] = useState(currentIntensity || 'normal');
-  const isLocked = currentIntensity !== null && currentIntensity !== undefined;
-
-  const intensities = [
-    {
-      id: 'light',
-      name: t('training.intensityLightName'),
-      risk: 5,
-      boost: '+0.6%',
-      color: '#30d158',
-      gradient: 'linear-gradient(135deg, #30d158 0%, #28a745 100%)',
-      icon: Activity,
-      desc: t('training.intensityLightDesc'),
-      details: t('training.intensityLightDetails')
-    },
-    {
-      id: 'normal',
-      name: t('training.intensityNormalName'),
-      risk: 15,
-      boost: '+1.1%',
-      color: '#ffd60a',
-      gradient: 'linear-gradient(135deg, #ffd60a 0%, #f0ad4e 100%)',
-      icon: Dumbbell,
-      desc: t('training.intensityNormalDesc'),
-      details: t('training.intensityNormalDetails')
-    },
-    {
-      id: 'intense',
-      name: t('training.intensityIntenseName'),
-      risk: 30,
-      boost: '+1.7%',
-      color: '#ff453a',
-      gradient: 'linear-gradient(135deg, #ff453a 0%, #dc3545 100%)',
-      icon: Zap,
-      desc: t('training.intensityIntenseDesc'),
-      details: t('training.intensityIntenseDetails')
-    },
-  ];
-
-  const facilityLevel = facilities?.training || 0;
-  const maxBoost = 1 + (facilityLevel * 0.1);
-
-  const handleConfirm = () => {
-    if (isLocked) {
-      onClose();
-      return;
-    }
-
-    const selectedIntensity = intensities.find(i => i.id === intensity);
-
-    dispatch({
-      type: 'SET_TRAINING',
-      payload: {
-        intensity,
-        lockedUntilPreseason: true
-      }
-    });
-
-    toast.success(`Intensidad fijada: ${selectedIntensity?.name} (hasta próxima pretemporada)`);
-    onClose();
-  };
-
-  return (
-    <div className="pcf-modal-overlay" onClick={onClose}>
-      <div className="pcf-modal pcf-modal--training-v2" onClick={e => e.stopPropagation()}>
-        <div className="modal-header-v2">
-          <div className="header-title">
-            <Dumbbell size={24} />
-            <h3>Intensidad de Entrenamiento</h3>
-          </div>
-          <button className="close-btn" onClick={onClose}><X size={20} /></button>
-        </div>
-
-        <div className="modal-body-v2">
-          {isLocked ? (
-            <div className="training-locked-v2">
-              <div className="locked-icon-container">
-                <Lock size={48} />
-              </div>
-              <h4>Intensidad bloqueada</h4>
-              <p>Has elegido <strong style={{ color: intensities.find(i => i.id === currentIntensity)?.color }}>
-                {intensities.find(i => i.id === currentIntensity)?.name}
-              </strong> para esta temporada.</p>
-              <p className="hint">Podrás cambiarla al inicio de la próxima pretemporada.</p>
-            </div>
-          ) : (
-            <>
-              <p className="training-subtitle">
-                Selecciona la intensidad de entrenamiento para toda la temporada.
-                Esta decisión es <strong>permanente</strong> hasta la próxima pretemporada.
-              </p>
-
-              <div className="intensity-grid">
-                {intensities.map(i => {
-                  const IconComponent = i.icon;
-                  return (
-                    <div
-                      key={i.id}
-                      className={`intensity-card-v2 ${intensity === i.id ? 'active' : ''}`}
-                      onClick={() => setIntensity(i.id)}
-                    >
-                      <div className="card-glow" style={{ background: i.gradient }}></div>
-                      <div className="card-content">
-                        <div className="card-icon" style={{ color: i.color }}>
-                          <IconComponent size={32} />
-                        </div>
-                        <div className="card-title">{i.name}</div>
-                        <div className="card-desc">{i.desc}</div>
-                        <div className="card-details">{i.details}</div>
-                        <div className="card-stats">
-                          <div className="stat-item positive">
-                            <TrendingUp size={14} />
-                            <span>Progresión: {i.boost}</span>
-                          </div>
-                          <div className="stat-item negative">
-                            <AlertTriangle size={14} />
-                            <span>Riesgo lesión: {i.risk}%</span>
-                          </div>
-                        </div>
-                        {intensity === i.id && (
-                          <div className="selected-badge">
-                            <Check size={16} />
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </>
-          )}
-
-          <div className="facility-info-v2">
-            <Building2 size={18} />
-            <span>Nivel instalaciones: <strong>{facilityLevel}/3</strong></span>
-            <span className="bonus">(×{maxBoost.toFixed(1)} bonus)</span>
-          </div>
-        </div>
-
-        <div className="modal-footer-v2">
-          <button className="btn-secondary" onClick={onClose}>
-            Cancelar
-          </button>
-          {!isLocked && (
-            <button className="btn-primary" onClick={handleConfirm}>
-              <Check size={18} />
-              Confirmar intensidad
-            </button>
-          )}
-        </div>
-      </div>
     </div>
   );
 }
@@ -1645,6 +1545,7 @@ function TacticModal({ onClose, currentTactic, currentFormation, dispatch, onFor
   const [showToast, setShowToast] = useState(false);
   const [activeTab, setActiveTab] = useState('formation');
 
+  const gloryFormations = state.gloryData?.unlockedFormations || [];
   const formationGroups = [
     {
       label: '4 Defensas',
@@ -1657,7 +1558,11 @@ function TacticModal({ onClose, currentTactic, currentFormation, dispatch, onFor
     {
       label: '5 Defensas',
       formations: ['5-3-2', '5-4-1', '5-2-3']
-    }
+    },
+    ...(gloryFormations.length > 0 ? [{
+      label: 'Secretas',
+      formations: gloryFormations
+    }] : [])
   ];
 
   const tacticOptions = [

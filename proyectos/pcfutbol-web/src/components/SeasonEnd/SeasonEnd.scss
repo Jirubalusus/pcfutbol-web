@@ -532,21 +532,6 @@
   display: flex;
   gap: 12px;
   
-  .btn-back {
-    padding: 14px 24px;
-    background: var(--color-glass-border);
-    border: 1px solid var(--color-glass-border);
-    border-radius: 12px;
-    color: var(--color-text-primary);
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: all 0.2s;
-    
-    &:hover {
-      background: var(--color-glass-border);
-    }
-  }
-  
   .btn-confirm {
     flex: 1;
     display: flex;
@@ -579,11 +564,11 @@
 @media (max-width: 768px) {
   .season-end {
     padding: 8px;
-    padding-bottom: 130px;
+    padding-bottom: 80px;
   }
 
   .season-end__modal {
-    padding: 14px;
+    padding: 12px;
     border-radius: 14px;
     max-width: calc(100vw - 16px);
     overflow-x: hidden;
@@ -597,27 +582,27 @@
   .final-position {
     flex-direction: column;
     text-align: center;
-    padding: 16px;
-    gap: 16px;
-    margin-bottom: 16px;
+    padding: 12px;
+    gap: 10px;
+    margin-bottom: 12px;
   }
   
   .position-badge .position-number {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 
   .season-stats {
     justify-content: center;
-    gap: 12px;
+    gap: 10px;
   }
 
   .objectives-summary {
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
 
   .season-total {
-    padding: 14px;
-    margin-bottom: 16px;
+    padding: 10px;
+    margin-bottom: 12px;
   }
   
   .preseason-options {

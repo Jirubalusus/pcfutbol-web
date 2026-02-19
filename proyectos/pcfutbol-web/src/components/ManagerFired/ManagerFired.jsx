@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useGame } from '../../context/GameContext';
 import { UserX, Home } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { deleteGlorySave } from '../../firebase/glorySaveService';
+import { auth } from '../../firebase/config';
 import './ManagerFired.scss';
 
 export default function ManagerFired() {
@@ -33,7 +35,14 @@ export default function ManagerFired() {
     return null;
   }
   
-  const handleBackToMenu = () => {
+  const handleBackToMenu = async () => {
+    // Delete glory save on firing
+    if (state.gameMode === 'glory') {
+      const uid = state._gloryUserId || auth.currentUser?.uid;
+      if (uid) {
+        try { await deleteGlorySave(uid); } catch (e) { console.error('Error deleting glory save:', e); }
+      }
+    }
     dispatch({ type: 'RESET_GAME' });
     dispatch({ type: 'SET_SCREEN', payload: 'main_menu' });
   };
@@ -76,14 +85,6 @@ export default function ManagerFired() {
             <span className="label">{t('managerFired.balance')}</span>
             <span className="value">{teamEntry?.won || 0}V {teamEntry?.drawn || 0}E {teamEntry?.lost || 0}D</span>
           </div>
-        </div>
-        
-        <div className="manager-fired__confidence">
-          <span className="label">{t('managerFired.confidence')}</span>
-          <div className="bar">
-            <div className="fill" style={{ width: `${state.managerConfidence || 0}%` }} />
-          </div>
-          <span className="value">{state.managerConfidence || 0}%</span>
         </div>
         
         <button className="manager-fired__btn" onClick={handleBackToMenu}>

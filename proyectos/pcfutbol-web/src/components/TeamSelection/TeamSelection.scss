@@ -31,6 +31,7 @@ $pcf-text: #bdc3c7;
   @media (max-width: 768px) {
     height: auto;
     min-height: 100vh;
+    min-height: 100dvh;
     max-height: none;
     overflow: visible;
     overflow-x: hidden;
@@ -81,24 +82,6 @@ $pcf-text: #bdc3c7;
     }
   }
   
-  .btn-back {
-    padding: 0.4rem 0.5rem;
-    background: transparent;
-    border: none;
-    color: $pcf-accent;
-    font-weight: 500;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: opacity 0.2s;
-    display: flex;
-    align-items: center;
-    gap: 0.15rem;
-    -webkit-tap-highlight-color: transparent;
-    
-    &:active {
-      opacity: 0.6;
-    }
-  }
 }
 
 // ============================================================

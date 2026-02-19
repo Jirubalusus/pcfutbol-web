@@ -17,7 +17,8 @@ import {
   Award,
   Settings as SettingsIcon,
   ChevronLeft,
-  Gamepad2
+  Gamepad2,
+  Mountain
 } from 'lucide-react';
 import './Sidebar.scss';
 
@@ -31,7 +32,7 @@ export default function Sidebar({ activeTab, onTabChange, isRanked }) {
     { id: 'overview', icon: Home, label: t('sidebar.office') },
     { id: 'plantilla', icon: Users, label: t('sidebar.squad') },
     { id: 'formation', icon: ClipboardList, label: t('sidebar.formation') },
-    { id: 'objectives', icon: Target, label: t('sidebar.objectives') },
+    { id: 'objectives', icon: Target, label: state.gameMode === 'glory' ? 'Directiva' : t('sidebar.objectives') },
     { id: 'calendar', icon: Calendar, label: t('sidebar.calendar') },
     { id: 'transfers', icon: Briefcase, label: t('sidebar.transfers') },
     { id: 'competitions', icon: Award, label: t('sidebar.competitions') },
@@ -41,20 +42,18 @@ export default function Sidebar({ activeTab, onTabChange, isRanked }) {
     { id: 'messages', icon: Mail, label: t('sidebar.messages') },
   ];
   
+  // Add Glory Perks tab for glory mode
+  if (state.gameMode === 'glory') {
+    allMenuItems.splice(3, 0, { id: 'glory_perks', icon: Mountain, label: 'Mejoras' });
+  }
+  
   const menuItems = isRanked
     ? allMenuItems.filter(item => !RANKED_HIDDEN_TABS.includes(item.id))
     : allMenuItems;
   const [showSettings, setShowSettings] = useState(false);
   const lastSeenCountRef = useRef(0);
 
-  // When user opens messages tab, mark all as "seen"
-  useEffect(() => {
-    if (activeTab === 'messages') {
-      lastSeenCountRef.current = (state.messages || []).length;
-    }
-  }, [activeTab, state.messages]);
-
-  const unreadCount = Math.max(0, (state.messages || []).length - lastSeenCountRef.current);
+  const unreadCount = (state.messages || []).filter(m => !m.read).length;
   
   const handleMainMenu = () => {
     if (isRanked) {

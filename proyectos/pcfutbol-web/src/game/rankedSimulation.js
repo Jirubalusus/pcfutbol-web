@@ -138,6 +138,43 @@ export function simulateFullSeason(halfSeasonState, leagueTeams, player1TeamId, 
   // Simulate cup (simplified: knockout bracket with real match engine)
   const cupResult = simulateCup(leagueTeams, teamMap, player1TeamId, player2TeamId);
   
+  // Accumulate player stats from all fixtures
+  const playerStats = {}; // { teamId: { playerName: { goals, assists, yellows } } }
+  for (const f of fixtures) {
+    if (!f.events) continue;
+    for (const ev of f.events) {
+      if (ev.type === 'goal' && ev.player) {
+        const teamId = ev.team === 'home' ? f.homeTeam : f.awayTeam;
+        if (!playerStats[teamId]) playerStats[teamId] = {};
+        if (!playerStats[teamId][ev.player]) playerStats[teamId][ev.player] = { goals: 0, assists: 0, yellows: 0 };
+        playerStats[teamId][ev.player].goals++;
+        if (ev.assist) {
+          if (!playerStats[teamId][ev.assist]) playerStats[teamId][ev.assist] = { goals: 0, assists: 0, yellows: 0 };
+          playerStats[teamId][ev.assist].assists++;
+        }
+      }
+      if (ev.type === 'yellow_card' && ev.player) {
+        const teamId = ev.team === 'home' ? f.homeTeam : f.awayTeam;
+        if (!playerStats[teamId]) playerStats[teamId] = {};
+        if (!playerStats[teamId][ev.player]) playerStats[teamId][ev.player] = { goals: 0, assists: 0, yellows: 0 };
+        playerStats[teamId][ev.player].yellows++;
+      }
+    }
+  }
+
+  const getTopStats = (teamId) => {
+    const stats = playerStats[teamId] || {};
+    const entries = Object.entries(stats);
+    return {
+      topScorers: entries.filter(([,s]) => s.goals > 0).sort((a,b) => b[1].goals - a[1].goals).slice(0, 3).map(([name, s]) => ({ name, goals: s.goals })),
+      topAssists: entries.filter(([,s]) => s.assists > 0).sort((a,b) => b[1].assists - a[1].assists).slice(0, 3).map(([name, s]) => ({ name, assists: s.assists })),
+      topYellows: entries.filter(([,s]) => s.yellows > 0).sort((a,b) => b[1].yellows - a[1].yellows).slice(0, 3).map(([name, s]) => ({ name, yellows: s.yellows })),
+    };
+  };
+
+  const p1Stats = getTopStats(player1TeamId);
+  const p2Stats = getTopStats(player2TeamId);
+
   // Determine European competition results based on league position
   // Only for leagues that have European/continental spots (not second divisions)
   const europeanSpots = EUROPEAN_SPOTS[leagueId] || {};
@@ -170,6 +207,7 @@ export function simulateFullSeason(halfSeasonState, leagueTeams, player1TeamId, 
       h2hWins: h2h.player1.filter(r => r.goalsFor > r.goalsAgainst).length,
       finishedAboveRival: p1Pos < p2Pos,
       cupRound: cupResult.runs[player1TeamId] || 'R1',
+      ...p1Stats,
     },
     player2: {
       teamId: player2TeamId,
@@ -190,6 +228,7 @@ export function simulateFullSeason(halfSeasonState, leagueTeams, player1TeamId, 
       h2hWins: h2h.player2.filter(r => r.goalsFor > r.goalsAgainst).length,
       finishedAboveRival: p2Pos < p1Pos,
       cupRound: cupResult.runs[player2TeamId] || 'R1',
+      ...p2Stats,
     }
   };
 }

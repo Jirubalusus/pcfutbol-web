@@ -97,6 +97,19 @@ export const FORMATIONS = {
     positions: ['GK', 'RB', 'CB', 'CB', 'CB', 'LB', 'CM', 'CM', 'RW', 'ST', 'LW'],
     style: { attack: 1.1, defense: 1.1, midfield: 0.85 },
     description: 'Defensa sólida con tridente ofensivo'
+  },
+  // Secret formations (Glory Mode - Tactical Wildcard)
+  '2-3-5': {
+    name: '2-3-5',
+    positions: ['GK', 'CB', 'CB', 'CM', 'CM', 'CM', 'LW', 'CAM', 'CAM', 'RW', 'ST'],
+    style: { attack: 1.6, defense: 0.5, midfield: 1.0 },
+    description: 'La formación clásica de los años 20. Ataque total, defensa inexistente'
+  },
+  '3-1-3-3': {
+    name: '3-1-3-3',
+    positions: ['GK', 'CB', 'CB', 'CB', 'CDM', 'LM', 'CM', 'RM', 'LW', 'ST', 'RW'],
+    style: { attack: 1.4, defense: 0.7, midfield: 1.0 },
+    description: 'Formación ultra-ofensiva con tridente y extremos libres'
   }
 };
 

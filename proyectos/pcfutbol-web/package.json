@@ -12,6 +12,7 @@
     "deploy": "gh-pages -d dist -r https://github.com/jirubalusus/pcfutbol-web.git"
   },
   "dependencies": {
+    "@capacitor-community/admob": "^8.0.0",
     "@capacitor/android": "^8.0.2",
     "@capacitor/app": "^8.0.0",
     "@capacitor/cli": "^8.0.2",
@@ -20,6 +21,7 @@
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.5.0",
     "firebase": "^12.8.0",
+    "firebase-admin": "^13.6.1",
     "i18next": "^25.8.0",
     "lucide-react": "^0.563.0",
     "playwright": "^1.58.0",

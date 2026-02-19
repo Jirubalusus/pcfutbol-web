@@ -23,10 +23,10 @@ const LEAGUE_STATS = {
 // Factor de "upset" - probabilidad de sorpresa según diferencia de nivel
 const UPSET_FACTORS = {
   huge: { diff: 25, upsetChance: 0.02 },      // Dif >25 pts: 2% upset (casi imposible)
-  large: { diff: 18, upsetChance: 0.06 },     // Dif 18-25: 6% upset
-  medium: { diff: 12, upsetChance: 0.12 },    // Dif 12-18: 12% upset
-  small: { diff: 6, upsetChance: 0.22 },      // Dif 6-12: 22% upset
-  tiny: { diff: 0, upsetChance: 0.38 }        // Dif <6: 38% upset (casi parejo)
+  large: { diff: 18, upsetChance: 0.05 },     // Dif 18-25: 5% upset
+  medium: { diff: 12, upsetChance: 0.10 },    // Dif 12-18: 10% upset
+  small: { diff: 6, upsetChance: 0.18 },      // Dif 6-12: 18% upset
+  tiny: { diff: 0, upsetChance: 0.30 }        // Dif <6: 30% upset (casi parejo)
 };
 
 // Perfiles de equipos según reputación
@@ -123,9 +123,13 @@ export function calculateMatchStrength(team, formation, tactic, context = {}) {
   const strength = calculateTeamStrength(team, formation, tactic, morale, customLineup, playerForm);
   const baseRating = strength.effectiveOverall || strength.overall || 70;
   
-  // Reputación del equipo (muy importante)
+  // Perfil de equipo: mezcla reputación con calidad real de plantilla
+  // Si la plantilla es mucho peor que la reputación, el perfil baja
   const reputation = team.reputation || 70;
-  const profile = getTeamProfile(reputation);
+  const ovrAsRep = Math.min(99, baseRating * 1.1); // OVR 70 → ~77 rep equiv, OVR 40 → ~44
+  // 70% peso al OVR real, 30% reputación histórica
+  const effectiveRep = ovrAsRep * 0.7 + reputation * 0.3;
+  const profile = getTeamProfile(effectiveRep);
   
   // Factor de plantilla (calidad de suplentes)
   const squadDepth = calculateSquadDepth(team);
@@ -239,8 +243,9 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
   
   // Diferencia de nivel (incluye bonus táctico)
   const ratingDiff = (homeStrength.rating + homeTacticalBonus) - (awayStrength.rating + awayTacticalBonus);
-  // Reputación en escala 0-100: multiplicador reducido para no dominar el cálculo
-  const reputationDiff = (homeStrength.reputation - awayStrength.reputation) * 0.5;
+  // Reputación: pequeño bonus solo con diferencias muy grandes (>20). OVR ya domina vía profile.
+  const rawRepDiff = homeStrength.reputation - awayStrength.reputation;
+  const reputationDiff = Math.abs(rawRepDiff) > 20 ? Math.sign(rawRepDiff) * (Math.abs(rawRepDiff) - 20) * 0.15 : 0;
   const totalDiff = ratingDiff + reputationDiff;
   
   // Determinar probabilidades base
@@ -258,7 +263,7 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
   const result = decideResult(homeWinProb, drawProb, awayWinProb, upsetFactor, isDerby);
   
   // Simular goles según resultado (tácticas afectan cantidad de goles)
-  const { homeScore, awayScore } = simulateGoals(
+  let { homeScore, awayScore } = simulateGoals(
     result,
     homeStrength,
     awayStrength,
@@ -267,6 +272,14 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
     awayTactic
   );
   
+  // Penalty Master perk: 30% chance of winning a penalty per match + always scores
+  if (context.penaltyMaster) {
+    if (Math.random() < 0.30) {
+      if (context.penaltyMaster === 'home') homeScore++;
+      else awayScore++;
+    }
+  }
+
   // Generar eventos del partido
   const events = generateMatchEvents(
     homeScore,
@@ -362,12 +375,12 @@ function calculateResultProbabilities(homeStrength, awayStrength, totalDiff, isD
   // Base: usar perfiles de equipo
   let homeWinBase = homeProfile.baseWinRate;
   let drawBase = (homeProfile.drawRate + awayProfile.drawRate) / 2;
-  let awayWinBase = awayProfile.baseWinRate * 0.6; // Visitante siempre más difícil
+  let awayWinBase = awayProfile.baseWinRate * 0.75; // Visitante algo más difícil (era 0.6, demasiado punitivo)
   
-  // Ajustar según diferencia de rating (más agresivo)
-  const diffFactor = totalDiff / 80; // Normalizar (era /100, ahora más impacto)
-  homeWinBase += diffFactor * 0.5;   // Era 0.35
-  awayWinBase -= diffFactor * 0.4;   // Era 0.25
+  // Ajustar según diferencia de rating — cuanto mayor la diff, más dominante el favorito
+  const diffFactor = totalDiff / 60; // Normalizar (más impacto que antes)
+  homeWinBase += diffFactor * 0.55;
+  awayWinBase -= diffFactor * 0.45;
   
   // Evitar negativos
   homeWinBase = Math.max(0.05, homeWinBase);
@@ -409,18 +422,16 @@ function calculateUpsetFactor(totalDiff) {
  * Decidir resultado del partido
  */
 function decideResult(homeWinProb, drawProb, awayWinProb, upsetFactor, isDerby) {
-  const roll = Math.random();
-  
-  // Check de upset primero
-  if (roll < upsetFactor * 0.5) {
-    // Posible upset - dar ventaja al más débil
-    return Math.random() > 0.6 ? -1 : 0; // Más probable empate que victoria visitante
+  // Separate roll for upset check — reduced from 0.5 to 0.35 to let quality teams dominate more
+  if (Math.random() < upsetFactor * 0.35) {
+    return Math.random() > 0.55 ? -1 : 0;
   }
   
-  // Resultado normal
-  if (roll < homeWinProb) return 1;       // Victoria local
-  if (roll < homeWinProb + drawProb) return 0;  // Empate
-  return -1;  // Victoria visitante
+  // Normal result roll
+  const roll = Math.random();
+  if (roll < homeWinProb) return 1;
+  if (roll < homeWinProb + drawProb) return 0;
+  return -1;
 }
 
 /**
@@ -682,7 +693,22 @@ function selectRandomPlayer(team) {
   if (!team?.players || team.players.length === 0) return { name: 'Unknown' };
   const available = team.players.filter(p => !p.injured && !p.suspended);
   const pool = available.length > 0 ? available : team.players;
-  return { name: pool[Math.floor(Math.random() * pool.length)].name };
+  // Prefer starters (first 11 or starter flag) — 85% chance starter, 15% sub
+  const starters = pool.filter(p => p.starter || p.isStarter);
+  const subs = pool.filter(p => !p.starter && !p.isStarter);
+  // If we have lineup info, weight towards starters
+  if (starters.length >= 7) {
+    const pickFromStarters = Math.random() < 0.85 || subs.length === 0;
+    const src = pickFromStarters ? starters : subs;
+    return { name: src[Math.floor(Math.random() * src.length)].name };
+  }
+  // Fallback: use first 11 by index as starters
+  const first11 = pool.slice(0, Math.min(11, pool.length));
+  const bench = pool.slice(11);
+  if (bench.length > 0 && Math.random() > 0.85) {
+    return { name: bench[Math.floor(Math.random() * bench.length)].name };
+  }
+  return { name: first11[Math.floor(Math.random() * first11.length)].name };
 }
 
 /**

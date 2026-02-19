@@ -172,15 +172,15 @@ export default function ContrarrelojEnd() {
           <div className="contrarreloj-end__trophies">
             <h3><Trophy size={14} /> {t('contrarrelojEnd.trophies')} ({contrarreloj.trophies.length})</h3>
             <div className="trophies-list">
-              {contrarreloj.trophies.map((t, i) => (
+              {contrarreloj.trophies.map((trophy, i) => (
                 <div key={i} className="trophy-item">
                   <span className="trophy-icon">
-                    {t.type === 'champions' || t.type === 'libertadores' ? '🏆' :
-                     t.type === 'league' ? '🏅' :
-                     t.type === 'cup' ? '🥇' : '🏆'}
+                    {trophy.type === 'champions' || trophy.type === 'libertadores' ? '🏆' :
+                     trophy.type === 'league' ? '🏅' :
+                     trophy.type === 'cup' ? '🥇' : '🏆'}
                   </span>
-                  <span className="trophy-name">{t.name}</span>
-                  <span className="trophy-season">T{t.season}</span>
+                  <span className="trophy-name">{trophy.name}</span>
+                  <span className="trophy-season">T{trophy.season}</span>
                 </div>
               ))}
             </div>

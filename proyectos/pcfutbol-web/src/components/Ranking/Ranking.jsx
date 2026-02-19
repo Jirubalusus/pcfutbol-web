@@ -47,7 +47,7 @@ export default function Ranking() {
   };
 
   return (
-    <div className="ranking">
+    <div className="ranking unified-screen">
       <div className="ranking__bg">
         <div className="ranking__gradient" />
       </div>
@@ -55,7 +55,7 @@ export default function Ranking() {
       <div className="ranking__content">
         <div className="ranking__header">
           <button className="btn-back" onClick={() => dispatch({ type: 'SET_SCREEN', payload: 'main_menu' })}>
-            <ArrowLeft size={20} /> {t('common.back')}
+            <ArrowLeft size={16} /> {t('common.back')}
           </button>
           <div className="header-title">
             <Trophy size={28} className="trophy-icon" />

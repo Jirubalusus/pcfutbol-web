@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Mail, Lock, FileText, Key, Gamepad2 } from 'lucide-react';
+import { Mail, Lock, FileText, Key, Gamepad2, ArrowLeft } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { isAndroid, isNative } from '../../services/platformAuth';
 import './Auth.scss';
@@ -87,7 +87,7 @@ export default function Auth({ onBack }) {
     try {
       await loginPlayGames();
     } catch (err) {
-      setLocalError(err.message || 'Error al conectar con Google Play Games');
+      setLocalError(err.message || t('auth.playGamesError'));
     }
     
     setIsLoading(false);
@@ -118,7 +118,7 @@ export default function Auth({ onBack }) {
     return (
       <div className="auth">
         <div className="auth__card">
-          <button className="auth__back" onClick={onBack}>← {t('common.back')}</button>
+          <button className="btn-back" onClick={onBack}><ArrowLeft size={16} /> {t('common.back')}</button>
           
           <div className="auth__header">
             <div className="auth__icon"><Gamepad2 size={22} /></div>
@@ -126,7 +126,7 @@ export default function Auth({ onBack }) {
           </div>
 
           <div className="auth__android-info">
-            <p>Inicia sesión con tu cuenta de Google Play Games para guardar tu progreso y competir en los rankings.</p>
+            <p>{t('auth.playGamesDesc')}</p>
           </div>
 
           {(error || localError) && (
@@ -142,7 +142,7 @@ export default function Auth({ onBack }) {
               <path fill="#4CAF50" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
             </svg>
             <span>
-              {isLoading ? 'Conectando...' : 'Iniciar con Google Play Games'}
+              {isLoading ? t('auth.connecting') : t('auth.loginPlayGames')}
             </span>
           </button>
 
@@ -159,12 +159,12 @@ export default function Auth({ onBack }) {
     );
   }
 
-  // Verification pending screen (Web/PC only)
-  if (mode === 'verify' || (user && !isEmailVerified)) {
+  // Verification pending screen (Web/PC only) — only show when explicitly navigated to verify mode
+  if (mode === 'verify') {
     return (
       <div className="auth">
         <div className="auth__card">
-          <button className="auth__back" onClick={onBack}>← {t('common.back')}</button>
+          <button className="btn-back" onClick={onBack}><ArrowLeft size={16} /> {t('common.back')}</button>
           
           <div className="auth__header">
             <div className="auth__icon"><Mail size={22} /></div>
@@ -201,6 +201,14 @@ export default function Auth({ onBack }) {
             >
               {t('auth.resendEmail')}
             </button>
+
+            <button 
+              className="auth__btn auth__btn--text"
+              onClick={onBack}
+              style={{ marginTop: 8, opacity: 0.7, fontSize: 13 }}
+            >
+              {t('auth.skipVerification', 'Continuar sin verificar')}
+            </button>
           </div>
         </div>
       </div>
@@ -211,7 +219,7 @@ export default function Auth({ onBack }) {
   return (
     <div className="auth">
       <div className="auth__card">
-        <button className="auth__back" onClick={onBack}>← {t('common.back')}</button>
+        <button className="btn-back" onClick={onBack}><ArrowLeft size={16} /> {t('common.back')}</button>
         
         <div className="auth__header">
           <div className="auth__icon">

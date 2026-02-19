@@ -8,6 +8,32 @@
  * Equipos medios → mitad de tabla
  * Equipos modestos → evitar descenso
  */
+/**
+ * Average OVR of the squad (top 11 players)
+ */
+function getTeamAverageOvr(team) {
+  const players = team?.players || [];
+  if (players.length === 0) return 55;
+  const sorted = [...players].sort((a, b) => (b.overall || 0) - (a.overall || 0));
+  const top11 = sorted.slice(0, Math.min(11, sorted.length));
+  return Math.round(top11.reduce((sum, p) => sum + (p.overall || 50), 0) / top11.length);
+}
+
+/**
+ * Expected position based on team OVR (for Glory Mode)
+ * A ~59 OVR team in Segunda RFEF should expect bottom half
+ */
+function getExpectedPositionByOvr(avgOvr, totalTeams = 20) {
+  if (avgOvr >= 75) return 1;
+  if (avgOvr >= 72) return 3;
+  if (avgOvr >= 69) return 5;
+  if (avgOvr >= 66) return 8;
+  if (avgOvr >= 63) return 12;
+  if (avgOvr >= 60) return 15;
+  if (avgOvr >= 57) return totalTeams - 2;  // Near bottom — just survive
+  return totalTeams;                         // Very weak — last place expected
+}
+
 function getExpectedPosition(teamReputation, totalTeams = 20) {
   if (teamReputation >= 90) return 1;   // Elite → campeón
   if (teamReputation >= 85) return 3;   // Top → top 3
@@ -38,22 +64,42 @@ export function evaluateManager(state) {
     currentWeek,
     preseasonPhase,
     managerConfidence = 75,
-    money = 0
+    money = 0,
+    gameMode
   } = state;
+  
+  const isGlory = gameMode === 'glory';
   
   // No evaluar durante pretemporada o primeras 5 jornadas
   if (preseasonPhase || currentWeek <= 5) {
     return { confidence: managerConfidence, warning: null, fired: false, reason: null };
   }
   
+  // Glory Mode: evaluate every 4 weeks instead of 3
+  if (isGlory && currentWeek % 4 !== 0) {
+    return { confidence: managerConfidence, warning: null, fired: false, reason: null };
+  }
+  
   const totalTeams = leagueTable?.length || 20;
   const teamEntry = leagueTable?.find(t => t.teamId === teamId);
   const currentPosition = leagueTable?.findIndex(t => t.teamId === teamId) + 1 || totalTeams;
-  const expectedPosition = getExpectedPosition(team?.reputation || 70, totalTeams);
+  
+  // Glory Mode: use team OVR to set expectations instead of reputation
+  let expectedPosition;
+  if (isGlory) {
+    const avgOvr = getTeamAverageOvr(team);
+    expectedPosition = getExpectedPositionByOvr(avgOvr, totalTeams);
+  } else {
+    expectedPosition = getExpectedPosition(team?.reputation || 70, totalTeams);
+  }
   
   // ============================================================
   // FACTORES DE CONFIANZA
   // ============================================================
+  
+  // Glory Mode: penalties at 80% intensity (tougher than before but not full)
+  const penaltyScale = isGlory ? 0.8 : 1.0;
+  const bonusScale = isGlory ? 1.2 : 1.0;
   
   let confidenceChange = 0;
   let reasons = [];
@@ -61,15 +107,15 @@ export function evaluateManager(state) {
   // --- 1. Posición vs esperada ---
   const positionDiff = currentPosition - expectedPosition;
   if (positionDiff > 10) {
-    confidenceChange -= 8;  // Muy por debajo: -8/semana
+    confidenceChange -= Math.round(8 * penaltyScale);
     reasons.push({ key: 'gameMessages.reasonPosition', params: { position: currentPosition, expected: expectedPosition } });
   } else if (positionDiff > 6) {
-    confidenceChange -= 5;
+    confidenceChange -= Math.round(5 * penaltyScale);
     reasons.push({ key: 'gameMessages.reasonUnderperformance' });
   } else if (positionDiff > 3) {
-    confidenceChange -= 2;
+    confidenceChange -= Math.round(2 * penaltyScale);
   } else if (positionDiff <= 0) {
-    confidenceChange += 2;  // Mejor de lo esperado
+    confidenceChange += Math.round(2 * bonusScale);  // Mejor de lo esperado
   }
   
   // --- 2. Racha de derrotas ---
@@ -78,13 +124,13 @@ export function evaluateManager(state) {
   const consecutiveLosses = countConsecutiveLosses(recentForm);
   
   if (consecutiveLosses >= 5) {
-    confidenceChange -= 15;
+    confidenceChange -= Math.round(15 * penaltyScale);
     reasons.push({ key: 'gameMessages.reasonConsecutiveLosses', params: { count: consecutiveLosses } });
   } else if (consecutiveLosses >= 4) {
-    confidenceChange -= 10;
+    confidenceChange -= Math.round(10 * penaltyScale);
     reasons.push({ key: 'gameMessages.reasonLossStreak', params: { count: consecutiveLosses } });
   } else if (consecutiveLosses >= 3) {
-    confidenceChange -= 5;
+    confidenceChange -= Math.round(5 * penaltyScale);
     reasons.push({ key: 'gameMessages.reasonBadForm' });
   }
   
@@ -93,28 +139,28 @@ export function evaluateManager(state) {
   const totalPlayers = team?.players?.length || 0;
   
   if (totalPlayers < 14) {
-    confidenceChange -= 12;
+    confidenceChange -= Math.round(12 * penaltyScale);
     reasons.push({ key: 'gameMessages.reasonSmallSquad', params: { count: totalPlayers } });
   } else if (totalPlayers < 17) {
-    confidenceChange -= 5;
+    confidenceChange -= Math.round(5 * penaltyScale);
     reasons.push({ key: 'gameMessages.reasonVerySmallSquad', params: { count: totalPlayers } });
   }
   
   if (availablePlayers < 11) {
-    confidenceChange -= 15;
+    confidenceChange -= Math.round(15 * penaltyScale);
     reasons.push({ key: 'gameMessages.reasonNotEnoughPlayers' });
   }
   
   // --- 4. Zona de descenso ---
   const relegationZone = totalTeams - 2; // Últimos 3
   if (currentPosition >= relegationZone && currentWeek >= 15) {
-    confidenceChange -= 8;
+    confidenceChange -= Math.round(8 * penaltyScale);
     reasons.push({ key: 'gameMessages.reasonRelegation' });
   }
   
   // --- 5. Victoria reciente da un respiro ---
   if (recentForm.length > 0 && recentForm[recentForm.length - 1] === 'W') {
-    confidenceChange += 3;
+    confidenceChange += Math.round(3 * bonusScale);
   }
   
   // --- 6. Presupuesto negativo (bancarrota) → despido inmediato ---

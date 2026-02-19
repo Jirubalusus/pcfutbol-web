@@ -196,6 +196,8 @@ export const LEAGUE_MATCHDAYS = {
   peruLiga1: 34,        // 18 teams
   boliviaPrimera: 30,   // 16 teams
   venezuelaPrimera: 26, // 14 teams = 26 matchdays (13*2)
+  // Draft league (20 teams = 38 matchdays)
+  draft: 38,
   // Other leagues
   superLig: 38,             // 19 teams = 38 fixture weeks (20 after padding, 19 rounds × 2)
   swissSuperLeague: 22,     // 12 teams
@@ -384,6 +386,7 @@ export function calculateSeasonRewards(objectives, seasonResult) {
   let totalPenalty = 0;
   const results = [];
   
+  if (!Array.isArray(objectives)) return { totalReward: 0, totalPenalty: 0, results: [] };
   objectives.forEach(obj => {
     const completed = isObjectiveCompleted(obj, seasonResult);
     

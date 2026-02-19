@@ -310,7 +310,7 @@ export default function RankedMatch() {
       setTimeout(() => advancePhase(matchId).catch(console.error), 2000);
     } catch (e) {
       console.error('Error submitting config:', e);
-      alert('Error al enviar configuración. Inténtalo de nuevo.');
+      alert(t('ranked.configError'));
     }
   };
 

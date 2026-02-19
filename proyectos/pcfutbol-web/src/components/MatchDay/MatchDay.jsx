@@ -1,6 +1,7 @@
 ﻿import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
+import { TutorialModal, useTutorial } from '../Tutorial/Tutorial';
 import { 
   getLaLigaTeams, getSegundaTeams, getPrimeraRfefTeams, getSegundaRfefTeams,
   getPremierTeams, getSerieATeams, getBundesligaTeams, getLigue1Teams,
@@ -21,6 +22,7 @@ import { calculateMatchAttendance, calculateMatchIncome } from '../../game/stadi
 import { calculateBoardConfidence } from '../../game/proManagerEngine';
 import { Flame, Star, Square, HeartPulse, Ticket, Building2, SkipForward, Circle } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
+import { useAdMobBanner } from '../../hooks/useAdMob';
 import './MatchDay.scss';
 
 // Función para obtener todos los equipos dinámicamente (todas las ligas)
@@ -39,12 +41,24 @@ const getAllTeams = () => [
 export default function MatchDay({ onComplete }) {
   const { t } = useTranslation();
   const { state, dispatch } = useGame();
+  const matchdayTutorial = useTutorial('matchday');
   const [phase, setPhase] = useState('preview'); // preview, playing, result
+  // AdMob banner: show during match (playing + result), hide on preview/unmount
+  const isPremium = state.premium === true;
+  useAdMobBanner(phase === 'playing' || phase === 'result', { isPremium });
   const [matchResult, setMatchResult] = useState(null);
   const [eventIndex, setEventIndex] = useState(0);
   const [currentMinute, setCurrentMinute] = useState(0);
   const eventsRef = useRef(null);
   const matchIntervalRef = useRef(null);
+  // Double or Nothing perk
+  const [betAmount, setBetAmount] = useState(0);
+  const [showBetUI, setShowBetUI] = useState(false);
+  const canBet = state.gloryData?.perks?.doubleOrNothing && state.money > 0;
+  // Achilles Heel perk
+  const [achillesTarget, setAchillesTarget] = useState(null);
+  const [showAchillesUI, setShowAchillesUI] = useState(false);
+  const canAchilles = state.gloryData?.perks?.achillesHeel;
   
   // Helper: normalizar player de eventos (V2 devuelve {name}, V1 devuelve string)
   const getPlayerName = (p) => typeof p === 'object' ? (p?.name || t('common.unknown')) : (p || t('common.unknown'));
@@ -219,8 +233,12 @@ export default function MatchDay({ onComplete }) {
           stamina: 80 + Math.floor(Math.random() * 15)
         }))
       };
-      const homeTeamData = isHome ? state.team : resolvedOpponent;
-      const awayTeamData = isHome ? resolvedOpponent : state.team;
+      // Achilles Heel: remove targeted player from opponent
+      const finalOpponent = achillesTarget
+        ? { ...resolvedOpponent, players: (resolvedOpponent.players || []).filter(p => p.name !== achillesTarget) }
+        : resolvedOpponent;
+      const homeTeamData = isHome ? state.team : finalOpponent;
+      const awayTeamData = isHome ? finalOpponent : state.team;
       
       console.log('🎮 Teams:', { homeTeamData: homeTeamData?.name, awayTeamData: awayTeamData?.name });
     
@@ -270,6 +288,15 @@ export default function MatchDay({ onComplete }) {
     // Pass formation and tactic context
     const grassCondition = isHome ? (state.stadium?.grassCondition ?? 100) : 100;
     
+    // Glory Mode perks: cursed stadium boosts home morale
+    const gloryPerks = state.gloryData?.perks || {};
+    let homeMorale = isHome ? (playerTableEntry?.morale || 70) : (opponentTableEntry?.morale || 70);
+    let awayMorale = isHome ? (opponentTableEntry?.morale || 70) : (playerTableEntry?.morale || 70);
+    if (gloryPerks.cursedStadium && isHome) {
+      homeMorale = Math.min(99, homeMorale + 20);
+      awayMorale = Math.max(30, awayMorale - 15);
+    }
+    
     console.log('🎮 About to simulateMatch...');
     const result = simulateMatch(
       playerMatch.homeTeam,
@@ -281,8 +308,8 @@ export default function MatchDay({ onComplete }) {
         awayFormation: isHome ? '4-3-3' : state.formation,
         homeTactic: isHome ? state.tactic : 'balanced',
         awayTactic: isHome ? 'balanced' : state.tactic,
-        homeMorale: isHome ? (playerTableEntry?.morale || 70) : (opponentTableEntry?.morale || 70),
-        awayMorale: isHome ? (opponentTableEntry?.morale || 70) : (playerTableEntry?.morale || 70),
+        homeMorale,
+        awayMorale,
         isDerby: false,
         importance: 'normal',
         attendanceFillRate: isHome ? attendanceFillRate : 0.7,
@@ -293,7 +320,9 @@ export default function MatchDay({ onComplete }) {
         playerIsHome: isHome,
         medicalPrevention: state.facilitySpecs?.medical === 'prevention' ? 0.30 : 0,
         // Cup/European knockout matches need extra time + penalties on draw
-        knockout: isCupMatch || isEuropeanMatch
+        knockout: isCupMatch || isEuropeanMatch,
+        // Penalty Master perk: player team gets penalty bonus
+        penaltyMaster: gloryPerks.penaltyMaster && isHome ? 'home' : gloryPerks.penaltyMaster && !isHome ? 'away' : null
       },
       state.playerForm || {},
       state.teamId
@@ -445,16 +474,14 @@ export default function MatchDay({ onComplete }) {
       // Add message
       const playerScore = isHome ? matchResult.homeScore : matchResult.awayScore;
       const opponentScore = isHome ? matchResult.awayScore : matchResult.homeScore;
-      const resultText = playerScore > opponentScore ? '¡Victoria!' :
-                         playerScore < opponentScore ? 'Derrota' : 'Empate';
       dispatch({
         type: 'ADD_MESSAGE',
         payload: {
           id: Date.now(),
           type: isSAMatch ? 'southamerican' : 'european',
-          title: `${europeanMatchData.competitionName || (isSAMatch ? 'Sudamericana' : 'Europa')}: ${state.team.name} ${playerScore} - ${opponentScore} ${opponent?.name || 'Rival'}`,
-          content: resultText,
-          date: `Semana ${state.currentWeek}`
+          title: `${europeanMatchData.competitionName || (isSAMatch ? 'Sudamericana' : 'Europa')}: ${state.team.name} ${playerScore} - ${opponentScore} ${opponent?.name || t('common.unknown')}`,
+          contentKey: playerScore > opponentScore ? 'matchday.resultWin' : playerScore < opponentScore ? 'matchday.resultLoss' : 'matchday.resultDraw',
+          dateKey: 'gameMessages.weekDate', dateParams: { week: state.currentWeek }
         }
       });
 
@@ -628,10 +655,47 @@ export default function MatchDay({ onComplete }) {
       }
     }
 
-    // Add message (pretemporada y liga)
-    const resultText = playerScore > opponentScore ? '¡Victoria!' : 
-                       playerScore < opponentScore ? 'Derrota' : 'Empate';
-    
+    // Glory perk: Lluvia de Millones — 50K per goal scored
+    if (state.gloryData?.perks?.goalBonus && playerScore > 0) {
+      dispatch({ type: 'UPDATE_MONEY', payload: playerScore * 50000 });
+    }
+
+    // Glory mode: track stats for milestone unlocks
+    if (state.gloryData) {
+      const prevStats = state.gloryData._stats || {};
+      const margin = playerScore - opponentScore;
+      const won = margin > 0;
+      // Estimate opponent avg OVR vs ours for upset tracking
+      const opponentAvgOvr = opponent?.players?.length > 0
+        ? Math.round(opponent.players.reduce((s, p) => s + (p.overall || 70), 0) / opponent.players.length) : 70;
+      const myAvgOvr = state.team?.players?.length > 0
+        ? Math.round(state.team.players.reduce((s, p) => s + (p.overall || 70), 0) / state.team.players.length) : 70;
+      const upsetMargin = won && opponentAvgOvr > myAvgOvr ? opponentAvgOvr - myAvgOvr : 0;
+
+      dispatch({
+        type: 'UPDATE_GLORY_STATE',
+        payload: {
+          gloryData: {
+            ...state.gloryData,
+            _stats: {
+              ...prevStats,
+              biggestWinMargin: Math.max(prevStats.biggestWinMargin || 0, won ? margin : 0),
+              biggestUpsetMargin: Math.max(prevStats.biggestUpsetMargin || 0, upsetMargin),
+              maxBudget: Math.max(prevStats.maxBudget || 0, state.money || 0),
+              bestPlayerOvr: Math.max(prevStats.bestPlayerOvr || 0, ...(state.team?.players || []).map(p => p.overall || 0)),
+              maxYouthPlayers: Math.max(prevStats.maxYouthPlayers || 0, (state.team?.players || []).filter(p => (p.age || 99) <= 21).length),
+            }
+          }
+        }
+      });
+    }
+
+    // Glory perk: Doble o Nada — bet resolution
+    if (betAmount > 0) {
+      const won = playerScore > opponentScore;
+      dispatch({ type: 'UPDATE_MONEY', payload: won ? betAmount : -betAmount });
+    }
+
     // Process injuries for player's team
     const playerInjuries = matchResult.events.filter(
       e => e.type === 'injury' && e.team === playerTeamSide
@@ -653,9 +717,9 @@ export default function MatchDay({ onComplete }) {
         payload: {
           id: Date.now() + Math.random(),
           type: 'injury',
-          title: `Lesión: ${injuredName}`,
-          content: `${injuredName} estará ${injury.weeksOut} semanas de baja (${getInjuryText(injury.severity)})`,
-          date: isPreseason ? `Pretemporada ${state.preseasonWeek}` : `Semana ${state.currentWeek}`
+          titleKey: 'gameMessages.injuryTitle', titleParams: { player: injuredName },
+          contentKey: 'gameMessages.injuryContent', contentParams: { player: injuredName, weeks: injury.weeksOut, severity: getInjuryText(injury.severity) },
+          dateKey: isPreseason ? 'gameMessages.preseason' : 'gameMessages.weekDate', dateParams: isPreseason ? {} : { week: state.currentWeek }
         }
       });
     });
@@ -734,9 +798,9 @@ export default function MatchDay({ onComplete }) {
         payload: {
           id: Date.now() + 0.1,
           type: 'stadium',
-          title: `Taquilla: ${att.ticketSales.toLocaleString()} entradas vendidas (${fillPercent}% aforo)`,
-          content: `Taquilla: €${(ticketIncome/1000).toFixed(0)}K + Consumiciones: €${(concessionIncome/1000).toFixed(0)}K | Acumulado temp.: €${((prevAccumulated + totalMatchIncome)/1000).toFixed(0)}K`,
-          date: `Semana ${state.currentWeek}`
+          titleKey: 'gameMessages.ticketSalesTitle', titleParams: { tickets: att.ticketSales.toLocaleString(), fill: fillPercent },
+          contentKey: 'gameMessages.ticketSalesContent', contentParams: { ticketIncome: `€${(ticketIncome/1000).toFixed(0)}K`, concessionIncome: `€${(concessionIncome/1000).toFixed(0)}K`, accumulated: `€${((prevAccumulated + totalMatchIncome)/1000).toFixed(0)}K` },
+          dateKey: 'gameMessages.weekDate', dateParams: { week: state.currentWeek }
         }
       });
     }
@@ -778,6 +842,14 @@ export default function MatchDay({ onComplete }) {
   
   return (
     <div className="match-day">
+      {matchdayTutorial.shouldShow && (
+        <TutorialModal
+          id="matchday"
+          steps={[{ text: t('tutorial.matchdayQuick') }]}
+          onComplete={matchdayTutorial.markSeen}
+          onDismissAll={matchdayTutorial.dismissAll}
+        />
+      )}
       <div className="match-day__content">
         {phase === 'preview' && (
           <div className="match-day__preview">
@@ -1042,7 +1114,7 @@ export default function MatchDay({ onComplete }) {
             )}
             {matchResult.events.length === 0 && (
               <div className="result-events empty">
-                <p>Partido sin incidencias destacadas</p>
+                <p>{t('matchday.noEvents')}</p>
               </div>
             )}
             
@@ -1052,11 +1124,80 @@ export default function MatchDay({ onComplete }) {
       </div>
 
       {/* Buttons rendered OUTSIDE animated containers to avoid transform breaking position:fixed */}
-      {phase === 'preview' && (
-        <button className="match-day__play-btn" onClick={simulateAndPlay}>
-          <FootballIcon size={14} /> Jugar Partido
-        </button>
+      {phase === 'preview' && canAchilles && opponent?.players?.length > 0 && (
+        <div className="match-day__bet-section">
+          {!showAchillesUI ? (
+            <button className="match-day__bet-toggle" style={{ borderColor: '#e53935' }} onClick={() => setShowAchillesUI(true)}>
+              Talón de Aquiles — Lesionar rival
+            </button>
+          ) : (
+            <div className="match-day__bet-ui" style={{ maxHeight: 200, overflowY: 'auto' }}>
+              <span className="match-day__bet-label">Elige un rival para lesionar:</span>
+              {(opponent.players || []).slice(0, 11).sort((a, b) => b.overall - a.overall).map((p, i) => (
+                <button
+                  key={i}
+                  onClick={() => { setAchillesTarget(p.name); setShowAchillesUI(false); }}
+                  style={{
+                    display: 'flex', justifyContent: 'space-between', width: '100%', padding: '6px 10px',
+                    background: achillesTarget === p.name ? 'rgba(229,57,53,0.2)' : 'rgba(255,255,255,0.05)',
+                    border: achillesTarget === p.name ? '1px solid #e53935' : '1px solid rgba(255,255,255,0.1)',
+                    borderRadius: 6, color: '#fff', cursor: 'pointer', fontSize: 12, marginBottom: 3
+                  }}
+                >
+                  <span>{p.name}</span>
+                  <span style={{ color: 'rgba(255,255,255,0.5)' }}>{p.position} · {p.overall}</span>
+                </button>
+              ))}
+            </div>
+          )}
+          {achillesTarget && !showAchillesUI && (
+            <span className="match-day__bet-hint" style={{ color: '#e53935' }}>
+              {achillesTarget} no jugará este partido
+            </span>
+          )}
+        </div>
       )}
+      {phase === 'preview' && canBet && (
+        <div className="match-day__bet-section">
+          {!showBetUI ? (
+            <button className="match-day__bet-toggle" onClick={() => setShowBetUI(true)}>
+              Doble o Nada — Apostar
+            </button>
+          ) : (
+            <div className="match-day__bet-ui">
+              <span className="match-day__bet-label">Apuesta: €{betAmount.toLocaleString()}</span>
+              <input
+                type="range"
+                min={0}
+                max={Math.min(state.money, 500000)}
+                step={10000}
+                value={betAmount}
+                onChange={e => setBetAmount(Number(e.target.value))}
+                className="match-day__bet-slider"
+              />
+              <span className="match-day__bet-hint">
+                {betAmount > 0 ? `Ganas: +€${betAmount.toLocaleString()} / Pierdes: -€${betAmount.toLocaleString()}` : 'Sin apuesta'}
+              </span>
+            </div>
+          )}
+        </div>
+      )}
+      {phase === 'preview' && (() => {
+        const lineupCount = Object.values(state.lineup || {}).filter(Boolean).length;
+        const canPlay = lineupCount >= 11;
+        return (
+          <>
+            {!canPlay && (
+              <div style={{ color: '#ff453a', fontSize: '0.85rem', textAlign: 'center', marginBottom: '0.5rem' }}>
+                {t('matchday.notEnoughPlayers', `Necesitas 11 titulares (tienes ${lineupCount}). Ajusta tu alineación.`)}
+              </div>
+            )}
+            <button className="match-day__play-btn" onClick={simulateAndPlay} disabled={!canPlay} style={!canPlay ? { opacity: 0.4, pointerEvents: 'none' } : {}}>
+              <FootballIcon size={14} /> {t('matchday.playMatch')}
+            </button>
+          </>
+        );
+      })()}
       {phase === 'playing' && matchResult && (
         <button className="match-day__skip-btn" onClick={skipToEnd}>
           <SkipForward size={14} /> {t('matchday.skipToEnd')}

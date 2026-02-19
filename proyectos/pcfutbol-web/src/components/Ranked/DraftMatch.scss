@@ -1,0 +1,1560 @@
+// ============================================================
+// RANKED DRAFT — Styles
+// ============================================================
+
+$primary: #3b82f6;
+$success: #22c55e;
+$danger: #ef4444;
+$warning: #f59e0b;
+
+// ── Main Container ──
+.draft-match {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: var(--color-bg-primary);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 0.75rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    flex-shrink: 0;
+    gap: 0.5rem;
+
+    @media (min-width: 500px) {
+      padding: 0.75rem 1.25rem;
+    }
+
+    .draft-timer {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+
+      &.urgent { color: $danger; animation: timerPulse 1s ease infinite; }
+      &.warning { color: $warning; }
+
+      svg { opacity: 0.6; }
+    }
+
+    .draft-phase {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.45);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+
+    .draft-ovr {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+
+      .ovr-label { color: rgba(255, 255, 255, 0.45); }
+      .ovr-value { font-weight: 700; color: #f0f6fc; }
+      .ovr-target { color: rgba(255, 255, 255, 0.3); }
+    }
+  }
+
+  &__content {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+
+// ── Formation Picker ──
+.formation-picker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  padding: 2rem 1rem;
+  gap: 2rem;
+
+  &__title {
+    text-align: center;
+
+    h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin: 0 0 0.25rem;
+
+      @media (min-width: 1200px) { font-size: 1.6rem; }
+    }
+
+    p {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.45);
+      margin: 0;
+
+      @media (min-width: 1200px) { font-size: 1rem; }
+    }
+  }
+
+  &__grid {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 700px;
+
+    @media (min-width: 1200px) {
+      gap: 1.5rem;
+      max-width: 900px;
+    }
+  }
+
+  &__card {
+    width: 180px;
+    padding: 1.5rem 1rem;
+    border-radius: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-align: center;
+
+    @media (min-width: 1200px) {
+      width: 220px;
+      padding: 2rem 1.25rem;
+    }
+
+    &:hover {
+      border-color: rgba($primary, 0.4);
+      transform: translateY(-4px);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    &.selected {
+      border-color: $primary;
+      background: rgba($primary, 0.1);
+      box-shadow: 0 0 30px rgba($primary, 0.2);
+      transform: translateY(-6px);
+    }
+
+    .formation-name {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.5px;
+
+      @media (min-width: 1200px) { font-size: 1.4rem; }
+    }
+
+    .formation-preview {
+      width: 100%;
+      aspect-ratio: 3/4;
+      position: relative;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 10px;
+      overflow: hidden;
+
+      .position-dot {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.4);
+        transform: translate(-50%, -50%);
+        transition: all 0.3s;
+      }
+    }
+
+    &.selected .formation-preview .position-dot {
+      background: $primary;
+      box-shadow: 0 0 8px rgba($primary, 0.5);
+    }
+  }
+
+  &__confirm {
+    padding: 0.85rem 2.5rem;
+    border-radius: 14px;
+    border: none;
+    background: $primary;
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &:hover:not(:disabled) { filter: brightness(1.1); box-shadow: 0 4px 20px rgba($primary, 0.3); }
+    &:active:not(:disabled) { transform: scale(0.98); }
+    &:disabled { opacity: 0.35; cursor: default; }
+  }
+}
+
+// ── Draft Board ──
+.draft-board {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0.5rem;
+
+  @media (min-width: 768px) {
+    align-items: center;
+    padding: 1rem;
+  }
+
+  &__field {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 2/3;
+    background: linear-gradient(175deg, #0d4a2b 0%, #0a3d23 30%, #0d4a2b 50%, #0a3d23 70%, #0d4a2b 100%);
+    border-radius: 20px;
+    overflow: visible;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+
+    @media (max-width: 500px) {
+      max-width: 100%;
+      border-radius: 16px;
+    }
+
+    @media (min-width: 1200px) {
+      max-width: 550px;
+    }
+
+    // Subtle grass stripes
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: repeating-linear-gradient(
+        180deg,
+        transparent 0px, transparent 36px,
+        rgba(255, 255, 255, 0.015) 36px, rgba(255, 255, 255, 0.015) 72px
+      );
+      pointer-events: none;
+    }
+  }
+
+  // Field markings — thinner, subtler
+  .field-markings {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .field-outline {
+    position: absolute;
+    inset: 5%;
+    border: 1.5px solid rgba(255, 255, 255, 0.18);
+    border-radius: 2px;
+  }
+
+  .field-center-line {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    right: 5%;
+    height: 1.5px;
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  .field-center-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20%;
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    border: 1.5px solid rgba(255, 255, 255, 0.18);
+    border-radius: 50%;
+  }
+
+  .field-center-dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+  }
+
+  .field-penalty-top {
+    position: absolute;
+    top: 5%;
+    left: 25%;
+    right: 25%;
+    height: 14%;
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    border-top: none;
+  }
+
+  .field-penalty-bottom {
+    position: absolute;
+    bottom: 5%;
+    left: 25%;
+    right: 25%;
+    height: 14%;
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    border-bottom: none;
+  }
+
+  .field-goal-top {
+    position: absolute;
+    top: 5%;
+    left: 37%;
+    right: 37%;
+    height: 5%;
+    border: 1.5px solid rgba(255, 255, 255, 0.12);
+    border-top: none;
+  }
+
+  .field-goal-bottom {
+    position: absolute;
+    bottom: 5%;
+    left: 37%;
+    right: 37%;
+    height: 5%;
+    border: 1.5px solid rgba(255, 255, 255, 0.12);
+    border-bottom: none;
+  }
+
+  // Picks counter
+  &__counter {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 5;
+    padding: 5px 12px;
+    border-radius: 100px;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.65);
+    letter-spacing: 0.3px;
+  }
+
+  &__slot {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    cursor: pointer;
+    transition: all 0.25s ease;
+
+    &.empty {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1.5px dashed rgba(255, 255, 255, 0.25);
+      background: rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+      @media (min-width: 500px) { width: 46px; height: 46px; }
+      @media (min-width: 1200px) { width: 54px; height: 54px; }
+
+      &:hover {
+        border-color: rgba(255, 255, 255, 0.5);
+        background: rgba(255, 255, 255, 0.08);
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+
+      &.active {
+        border-color: rgba(255, 255, 255, 0.8);
+        border-style: solid;
+        background: rgba(255, 255, 255, 0.12);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+        animation: slotPulse 2s ease infinite;
+      }
+
+      .slot-pos {
+        font-size: 0.58rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.5);
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+      }
+    }
+
+    &.filled {
+      width: 52px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+
+      @media (min-width: 500px) { width: 58px; }
+      @media (min-width: 1200px) { width: 66px; }
+
+      .slot-avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 2px solid;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.78rem;
+        font-weight: 800;
+        color: #fff;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255,255,255,0.1);
+        animation: slotAppear 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+        @media (min-width: 500px) { width: 42px; height: 42px; font-size: 0.85rem; }
+        @media (min-width: 1200px) { width: 48px; height: 48px; font-size: 0.95rem; }
+      }
+
+      .slot-name {
+        font-size: 0.5rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.9);
+        text-align: center;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+        letter-spacing: 0.1px;
+
+        @media (min-width: 500px) { font-size: 0.55rem; }
+      }
+    }
+  }
+
+  // Bench
+  &__bench {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    padding: 8px 12px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 0 0 16px 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+    @media (max-width: 500px) { border-radius: 0 0 16px 16px; }
+
+    .bench-slot {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      border: 1.5px dashed rgba(255, 255, 255, 0.2);
+      background: rgba(0, 0, 0, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+      &:hover { border-color: rgba(255, 255, 255, 0.4); background: rgba(255, 255, 255, 0.06); }
+      &.active { border-color: rgba(255, 255, 255, 0.7); border-style: solid; box-shadow: 0 0 12px rgba(255, 255, 255, 0.1); }
+
+      &.filled {
+        border-style: solid;
+        border-color: rgba(255, 255, 255, 0.15);
+        background: rgba(0, 0, 0, 0.25);
+
+        .bench-ovr { font-size: 0.72rem; font-weight: 700; color: rgba(255, 255, 255, 0.85); }
+      }
+
+      .bench-pos {
+        font-size: 0.5rem;
+        color: rgba(255, 255, 255, 0.35);
+        font-weight: 600;
+      }
+    }
+  }
+
+  // Synergy badges (bottom-left overlay)
+  &__synergy-badges {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .synergy-badge {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      padding: 4px 10px;
+      border-radius: 100px;
+      background: rgba(34, 197, 94, 0.15);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+      color: $success;
+      font-size: 0.6rem;
+      font-weight: 600;
+      animation: synergyPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+  }
+
+  // Synergy glow on connected players
+  &__slot.filled.synergy-linked .slot-avatar {
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.35), 0 0 12px rgba(34, 197, 94, 0.35), inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+
+  // Synergy bonus badge on slot
+  .slot-synergy {
+    position: absolute;
+    top: -4px;
+    right: -6px;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 1px 4px;
+    border-radius: 6px;
+    line-height: 1.2;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    animation: synergyPop 0.3s ease-out;
+    z-index: 2;
+  }
+
+  @keyframes synergyPop {
+    0% { transform: scale(0.7); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+}
+
+// ── Card Overlay (full-screen) ──
+.draft-card-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease;
+  padding: 1rem;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    width: 100%;
+    max-width: 560px;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  &__cards {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    width: 100%;
+
+    @media (max-width: 400px) {
+      gap: 0.5rem;
+    }
+
+    @media (min-width: 1200px) {
+      gap: 1.5rem;
+    }
+  }
+}
+
+// ── Big Draft Card ──
+.draft-big-card {
+  flex: 1;
+  min-width: 0;
+  max-width: 160px;
+  padding: 1.25rem 0.75rem;
+  border-radius: 14px;
+  border: 2px solid var(--card-color);
+  background: linear-gradient(160deg, rgba(17, 24, 39, 0.95) 0%, rgba(30, 41, 59, 0.95) 100%);
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s ease;
+  animation: cardSlideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+
+  @media (min-width: 500px) {
+    padding: 1.5rem 1rem;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 160px;
+    padding: 1.75rem 1.25rem;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 190px;
+    padding: 2rem 1.5rem;
+  }
+
+  &:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 0 30px color-mix(in srgb, var(--card-color) 30%, transparent);
+  }
+
+  &.picked {
+    animation: cardPick 0.4s ease forwards;
+  }
+
+  // Glow effect
+  &__glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 50% 50%, var(--card-color), transparent 60%);
+    opacity: 0.08;
+    pointer-events: none;
+  }
+
+  // Top color bar
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--card-color);
+  }
+
+  &__ovr {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--card-color);
+    line-height: 1;
+    margin-bottom: 0.2rem;
+    text-shadow: 0 2px 12px color-mix(in srgb, var(--card-color) 40%, transparent);
+
+    @media (min-width: 500px) { font-size: 2.2rem; }
+    @media (min-width: 1200px) { font-size: 2.8rem; }
+  }
+
+  &__pos {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.75rem;
+  }
+
+  &__name {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #f0f6fc;
+    margin-bottom: 0.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @media (min-width: 1200px) {
+      font-size: 0.95rem;
+    }
+  }
+
+  &__team {
+    font-size: 0.68rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 0.15rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__detail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    font-size: 0.58rem;
+    color: rgba(255, 255, 255, 0.35);
+    margin-bottom: 0.1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    span { white-space: nowrap; }
+  }
+
+  &__age {
+    font-size: 0.58rem;
+    color: rgba(255, 255, 255, 0.25);
+  }
+
+  &__synergy-badge {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: #fff;
+    font-size: 0.6rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 8px;
+    line-height: 1.3;
+    box-shadow: 0 2px 8px rgba(34, 197, 94, 0.4);
+    animation: synergyPop 0.3s ease-out;
+    z-index: 3;
+  }
+
+  &.has-synergy {
+    border-color: #22c55e;
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.2);
+  }
+}
+
+@keyframes cardSlideUp {
+  from { opacity: 0; transform: translateY(40px) scale(0.9); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes cardPick {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); box-shadow: 0 0 40px var(--card-color); }
+  100% { transform: scale(0.8); opacity: 0; }
+}
+
+@keyframes slotAppear {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+// ── Rival Reveal ──
+.rival-reveal {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__header {
+    text-align: center;
+    padding: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  &__title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.45);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  &__formation {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #f0f6fc;
+  }
+
+  .draft-board {
+    flex: 1;
+  }
+
+  // Reveal animation for slots
+  .reveal-slot {
+    &:not(.revealed) {
+      .slot-pos {
+        opacity: 0.3;
+      }
+    }
+
+    &.revealed.filled {
+      animation: revealPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+  }
+
+  &__footer {
+    padding: 0.75rem;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  &__continue {
+    padding: 0.85rem 2.5rem;
+    border-radius: 14px;
+    border: none;
+    background: $primary;
+    color: #fff;
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s;
+
+    &.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    &:hover { filter: brightness(1.1); }
+  }
+}
+
+@keyframes revealPop {
+  0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+  60% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+// ── Changes Overview (Screen 1: Table + Lineup) ──
+.changes-overview {
+  padding: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  &__title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  &__subtitle {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.4rem;
+  }
+
+  .mini-table {
+    max-height: 300px;
+    overflow-y: auto;
+
+    .table-row {
+      display: flex;
+      align-items: center;
+      padding: 0.35rem 0.6rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      font-size: 0.75rem;
+
+      &.me { background: rgba($primary, 0.12); border-radius: 6px; }
+      &.rival { background: rgba($danger, 0.08); border-radius: 6px; }
+
+      .pos { width: 24px; font-weight: 700; color: rgba(255, 255, 255, 0.4); }
+      .name { flex: 1; }
+      .pts { width: 36px; text-align: right; font-weight: 700; }
+      .gd { width: 36px; text-align: right; color: rgba(255, 255, 255, 0.4); font-size: 0.7rem; }
+    }
+  }
+
+  &__lineup {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    padding: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  &__player {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.25rem;
+    font-size: 0.8rem;
+
+    &.bench { opacity: 0.6; }
+
+    .player-pos-badge {
+      width: 32px;
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.45);
+      text-align: center;
+    }
+
+    .player-name { flex: 1; font-weight: 500; }
+    .player-ovr { font-weight: 700; min-width: 28px; text-align: right; }
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding-top: 0.5rem;
+  }
+
+  &__change-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.85rem;
+    border-radius: 14px;
+    border: 2px solid rgba($warning, 0.3);
+    background: rgba($warning, 0.08);
+    color: $warning;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover { background: rgba($warning, 0.15); border-color: rgba($warning, 0.5); }
+  }
+
+  &__confirm-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    width: 100%;
+    padding: 0.85rem;
+    border-radius: 14px;
+    border: none;
+    background: $success;
+    color: #fff;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover { filter: brightness(1.08); }
+    &:active { transform: scale(0.98); }
+  }
+}
+
+// ── Changes Field (Screen 2: Pitch) ──
+.changes-field {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0.75rem;
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0.4rem 0.6rem;
+    border-radius: 8px;
+    transition: all 0.2s;
+
+    &:hover { background: rgba(255, 255, 255, 0.06); color: #fff; }
+  }
+
+  &__remaining {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 100px;
+    background: rgba($warning, 0.15);
+    color: $warning;
+    font-size: 0.72rem;
+    font-weight: 600;
+  }
+
+  .draft-board {
+    flex: 1;
+  }
+
+  // Locked slot styling
+  .draft-board__slot.locked {
+    opacity: 0.5;
+    pointer-events: none;
+
+    .slot-lock {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #475569;
+      color: #fff;
+      font-size: 0.55rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__done {
+    padding: 0.75rem 1rem;
+  }
+}
+
+// ── Draft Results ──
+.draft-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100%;
+  padding: 0.75rem;
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
+  gap: 0.75rem;
+  animation: fadeIn 0.5s ease;
+
+  // Hero banner
+  &__hero {
+    width: 100%;
+    text-align: center;
+    padding: 1.25rem 1rem;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.12;
+      border-radius: inherit;
+    }
+
+    &.win {
+      background: linear-gradient(135deg, rgba($success, 0.15), rgba($success, 0.05));
+      border: 1px solid rgba($success, 0.2);
+      &::before { background: linear-gradient(135deg, $success, transparent); }
+      .hero-result-text { color: $success; }
+    }
+    &.draw {
+      background: linear-gradient(135deg, rgba($warning, 0.1), rgba($warning, 0.03));
+      border: 1px solid rgba($warning, 0.15);
+      .hero-result-text { color: $warning; }
+    }
+    &.loss {
+      background: linear-gradient(135deg, rgba($danger, 0.12), rgba($danger, 0.04));
+      border: 1px solid rgba($danger, 0.2);
+      .hero-result-text { color: $danger; }
+    }
+
+    .hero-result-text {
+      font-size: 1.6rem;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      animation: heroSlide 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .hero-lp {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+      padding: 0.3rem 1rem;
+      border-radius: 100px;
+      font-size: 1.1rem;
+      font-weight: 700;
+
+      &.positive { color: $success; background: rgba($success, 0.12); }
+      &.negative { color: $danger; background: rgba($danger, 0.12); }
+    }
+  }
+
+  @keyframes heroSlide {
+    from { opacity: 0; transform: translateY(-12px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  // Position cards
+  &__positions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+
+    .pos-vs {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.25);
+      text-transform: uppercase;
+    }
+
+    .pos-card {
+      flex: 1;
+      text-align: center;
+      padding: 0.75rem 0.5rem;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      transition: all 0.3s;
+
+      &.winner {
+        border-color: rgba($primary, 0.3);
+        background: rgba($primary, 0.06);
+      }
+
+      &__badge {
+        margin-bottom: 0.3rem;
+
+        .medal {
+          &.gold { color: #ffd700; filter: drop-shadow(0 0 4px rgba(255,215,0,0.4)); }
+          &.silver { color: #c0c0c0; filter: drop-shadow(0 0 4px rgba(192,192,192,0.3)); }
+          &.bronze { color: #cd7f32; filter: drop-shadow(0 0 4px rgba(205,127,50,0.3)); }
+        }
+        .pos-num {
+          font-size: 1.5rem;
+          font-weight: 900;
+          color: rgba(255, 255, 255, 0.6);
+        }
+      }
+
+      &__name {
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: #f0f6fc;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      &__stats {
+        font-size: 0.65rem;
+        color: rgba(255, 255, 255, 0.4);
+        margin-top: 0.15rem;
+      }
+
+      &__trophies {
+        font-size: 0.6rem;
+        margin-top: 0.25rem;
+        color: rgba(255, 255, 255, 0.55);
+      }
+    }
+  }
+
+  // Tabs
+  &__tabs {
+    display: flex;
+    width: 100%;
+    gap: 2px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    padding: 3px;
+
+    .results-tab {
+      flex: 1;
+      padding: 0.5rem 0.25rem;
+      border: none;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 0.68rem;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: all 0.2s;
+
+      &.active {
+        background: rgba(255, 255, 255, 0.08);
+        color: #f0f6fc;
+      }
+
+      &:hover:not(.active) { color: rgba(255, 255, 255, 0.65); }
+    }
+  }
+
+  // Body
+  &__body {
+    width: 100%;
+    animation: fadeIn 0.3s ease;
+  }
+
+  // Back button
+  &__back {
+    margin-top: 0.5rem;
+    padding: 0.85rem 2rem;
+    border-radius: 14px;
+    border: none;
+    background: $primary;
+    color: #fff;
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+
+    &:hover { filter: brightness(1.1); }
+  }
+}
+
+// ── Resumen tab ──
+.results-resumen {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  .resumen-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .resumen-stat {
+    padding: 0.65rem 0.75rem;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+
+    &__label {
+      font-size: 0.6rem;
+      color: rgba(255, 255, 255, 0.35);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      margin-bottom: 0.2rem;
+    }
+
+    &__value {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #f0f6fc;
+    }
+  }
+
+  .resumen-scorers {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    padding: 0.65rem 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+
+    &__title {
+      font-size: 0.65rem;
+      color: rgba(255, 255, 255, 0.35);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      margin-bottom: 0.4rem;
+    }
+
+    &__row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.2rem 0;
+      font-size: 0.78rem;
+
+      .scorer-name { color: rgba(255, 255, 255, 0.75); }
+      .scorer-goals { font-weight: 700; color: $success; }
+    }
+  }
+}
+
+// ── Tabla tab ──
+.results-tabla {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  .results-table-header, .results-table-row {
+    display: grid;
+    grid-template-columns: 30px 1fr 28px 24px 24px 24px 28px 28px 32px 34px;
+    align-items: center;
+    gap: 2px;
+    font-size: 0.68rem;
+    padding: 0.3rem 0.4rem;
+
+    @media (max-width: 420px) {
+      grid-template-columns: 26px 1fr 24px 20px 20px 20px 24px 24px 28px 30px;
+      font-size: 0.6rem;
+    }
+  }
+
+  .results-table-header {
+    color: rgba(255, 255, 255, 0.35);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.55rem;
+    letter-spacing: 0.3px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding-bottom: 0.4rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .results-table-body {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  .results-table-row {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 6px;
+    transition: background 0.15s;
+
+    &.me {
+      background: rgba($primary, 0.12);
+      border-left: 2px solid $primary;
+      .td-name { color: $primary; font-weight: 700; }
+    }
+
+    &.rival {
+      background: rgba($danger, 0.08);
+      border-left: 2px solid $danger;
+      .td-name { color: $danger; font-weight: 700; }
+    }
+
+    .td-pos {
+      text-align: center;
+      .medal {
+        width: 14px;
+        height: 14px;
+        &.gold { color: #ffd700; }
+        &.silver { color: #c0c0c0; }
+        &.bronze { color: #cd7f32; }
+      }
+      span { color: rgba(255, 255, 255, 0.4); font-weight: 600; }
+    }
+
+    .td-name {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-weight: 500;
+    }
+
+    .td-pts { font-weight: 800; text-align: right; }
+    .td-pj, .td-v, .td-e, .td-d, .td-gf, .td-gc, .td-dg { text-align: center; color: rgba(255, 255, 255, 0.55); }
+    .td-dg { font-size: 0.62rem; }
+  }
+}
+
+// ── H2H tab ──
+.results-h2h {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .h2h-summary {
+    text-align: center;
+    padding: 0.5rem;
+
+    .h2h-record {
+      font-size: 1rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+
+  .h2h-match {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 0.75rem;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+
+    &.win { border-left: 3px solid $success; }
+    &.loss { border-left: 3px solid $danger; }
+    &.draw { border-left: 3px solid $warning; }
+
+    &__teams {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex: 1;
+
+      .h2h-team {
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.65);
+        flex: 1;
+
+        &.away { text-align: right; }
+      }
+
+      .h2h-score {
+        font-size: 1rem;
+        font-weight: 800;
+        color: #f0f6fc;
+        min-width: 40px;
+        text-align: center;
+      }
+    }
+
+    &__badge {
+      margin-left: 0.5rem;
+
+      .badge-win {
+        display: inline-block;
+        width: 22px;
+        height: 22px;
+        line-height: 22px;
+        text-align: center;
+        border-radius: 6px;
+        font-size: 0.6rem;
+        font-weight: 800;
+        color: #fff;
+        background: $success;
+      }
+
+      .badge-loss {
+        @extend .badge-win;
+        background: $danger;
+      }
+
+      .badge-draw {
+        @extend .badge-win;
+        background: $warning;
+      }
+    }
+  }
+
+  .h2h-empty {
+    text-align: center;
+    padding: 1.5rem;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 0.82rem;
+  }
+}
+
+// ── Stats tab ──
+.results-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  .stats-section {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    padding: 0.65rem 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+
+    &__title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 0.4rem;
+    }
+  }
+
+  .stats-row {
+    display: flex;
+    align-items: center;
+    padding: 0.25rem 0;
+    font-size: 0.75rem;
+    gap: 0.5rem;
+    border-radius: 4px;
+
+    &.highlight-me { background: rgba($primary, 0.08); padding: 0.25rem 0.35rem; }
+    &.highlight-rival { background: rgba($danger, 0.06); padding: 0.25rem 0.35rem; }
+
+    .stats-rank {
+      width: 18px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.35);
+      text-align: center;
+    }
+
+    .stats-name {
+      flex: 1;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .stats-team {
+      font-size: 0.62rem;
+      color: rgba(255, 255, 255, 0.3);
+      max-width: 80px;
+      text-align: right;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .stats-value {
+      font-weight: 700;
+      color: #f0f6fc;
+      min-width: 30px;
+      text-align: right;
+    }
+  }
+}
+
+// ── Loading / Simulating ──
+.draft-simulating {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  gap: 1.5rem;
+
+  &__spinner {
+    width: 48px;
+    height: 48px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top-color: $primary;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  &__text {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 500;
+  }
+}
+
+// ── Animations ──
+@keyframes timerPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes slotPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba($primary, 0.3); }
+  50% { box-shadow: 0 0 30px rgba($primary, 0.5); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { HeartPulse, X } from 'lucide-react';
+import { HeartPulse, X, ArrowLeft } from 'lucide-react';
 import { useGame } from '../../context/GameContext';
 import { translatePosition } from '../../game/positionNames';
 import './Squad.scss';
@@ -104,8 +104,8 @@ export default function Squad() {
     
     return (
       <div className="squad squad--detail">
-        <button className="squad__back-btn" onClick={handleBack}>
-          ← {t('squad.backToSquad')}
+        <button className="btn-back" onClick={handleBack}>
+          <ArrowLeft size={16} /> {t('squad.backToSquad')}
         </button>
 
         <div className="squad__player-hero" style={{ '--pos-color': getPositionColor(p.position) }}>

@@ -14,17 +14,33 @@ import ContrarrelojEnd from './components/ContrarrelojEnd/ContrarrelojEnd';
 import Ranking from './components/Ranking/Ranking';
 import RankedLobby from './components/Ranked/RankedLobby';
 import RankedMatch from './components/Ranked/RankedMatch';
+import DraftMatch from './components/Ranked/DraftMatch';
 import RankedLeaderboard from './components/Ranked/RankedLeaderboard';
 import NicknameModal from './components/NicknameModal/NicknameModal';
 import ProManagerSetup from './components/ProManager/ProManagerSetup';
 import ProManagerSeasonEnd from './components/ProManager/ProManagerSeasonEnd';
+import GlorySetup from './components/GloryMode/GlorySetup';
+import GloryMenu from './components/GloryMode/GloryMenu';
 import { useAudioManager } from './hooks/useAudioManager';
 import { useSoundEffects } from './hooks/useSoundEffects';
+import { checkPremiumStatus } from './services/purchaseService';
 import './index.css';
+import './styles/_effects.scss';
+import './styles/_laptop-responsive.scss';
+import './styles/_unified-screen.scss';
 
 function GameRouter() {
-  const { state } = useGame();
+  const { state, dispatch } = useGame();
   const { loading: authLoading, needsNickname, setNickname, isAuthenticated, isEmailVerified } = useAuth();
+
+  // Check premium status (Google Play Billing) on native
+  useEffect(() => {
+    async function checkPremium() {
+      const isPremium = await checkPremiumStatus();
+      if (isPremium) dispatch({ type: 'SET_PREMIUM', payload: true });
+    }
+    if (!authLoading) checkPremium();
+  }, [authLoading, dispatch]);
   
   // Audio manager - detecta pantalla actual y reproduce música acorde
   const isMatchScreen = state.playingMatch || state.pendingMatch;
@@ -88,12 +104,21 @@ function GameRouter() {
             return <RankedLobby />;
           case 'ranked_match':
             return <RankedMatch />;
+          case 'ranked_draft':
+            return <DraftMatch
+              matchId={state.rankedMatchId}
+              onExit={() => dispatch({ type: 'SET_SCREEN', payload: 'ranked_lobby' })}
+            />;
           case 'ranked_leaderboard':
             return <RankedLeaderboard />;
           case 'promanager_setup':
             return <ProManagerSetup />;
           case 'promanager_season_end':
             return <ProManagerSeasonEnd />;
+          case 'glory_menu':
+            return <GloryMenu />;
+          case 'glory_setup':
+            return <GlorySetup />;
           default:
             return <MainMenu />;
         }

@@ -1,20 +1,26 @@
-// Stadium - Simplified Clean Design
+// Stadium - Premium Design (matching Finance style)
 
 .stadium-simple {
+  padding: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  // ═══ 3D VIEWER ═══
   &__3d-viewer {
-    margin-bottom: 1.5rem;
     border-radius: 16px;
     overflow: hidden;
     background: linear-gradient(135deg, #0a1929, #132f4c);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    
+
     .stadium-3d-loading {
       display: flex;
       align-items: center;
       justify-content: center;
       height: 300px;
       color: var(--color-text-secondary);
-      font-size: 1rem;
     }
 
     .stadium-3d-fallback {
@@ -24,259 +30,317 @@
       justify-content: center;
       height: 200px;
       color: var(--color-text-tertiary);
-      font-size: 1rem;
       gap: 0.5rem;
-      
-      span {
-        font-size: 3rem;
-      }
+      span { font-size: 3rem; }
     }
 
-    @media (max-width: 768px) {
-      height: 150px;
-    }
+    @media (max-width: 768px) { height: 150px; }
   }
-  
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-    padding: 0.85rem;
-    background: linear-gradient(135deg, var(--color-bg-tertiary), var(--color-bg-secondary));
-    border-radius: 12px;
-    flex-wrap: wrap;
 
-    @media (max-width: 768px) {
-      flex-direction: column;
-      padding: 0.75rem;
-      gap: 0.5rem;
+  // ═══ HERO HEADER ═══
+  &__header {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #1a2744 0%, #2a4a6b 50%, #1e3a5c 100%);
+    box-shadow: 0 8px 32px rgba(30, 80, 140, 0.2);
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 50%),
+        radial-gradient(circle at 20% 80%, rgba(255,255,255,0.03) 0%, transparent 50%);
+      pointer-events: none;
     }
 
     .stadium-info {
+      position: relative;
+      z-index: 1;
       h1 {
         margin: 0 0 0.25rem;
-        font-size: 1.25rem;
-        font-weight: 700;
-        color: var(--color-text-primary);
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: #fff;
       }
-
       p {
         margin: 0;
-        color: var(--color-text-tertiary);
-        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.85rem;
       }
     }
 
     .stadium-stats {
       display: flex;
-      gap: 1rem;
+      gap: 0.75rem;
       flex-wrap: wrap;
-
-      @media (max-width: 600px) {
-        width: 100%;
-        justify-content: space-between;
-      }
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      position: relative;
+      z-index: 1;
 
       .stat {
+        flex: 1 1 0;
+        min-width: 0;
         text-align: center;
-        padding: 0.5rem 1rem;
-        background: rgba(0, 0, 0, 0.3);
+        padding: 0.45rem 0.3rem;
+        background: rgba(255, 255, 255, 0.08);
         border-radius: 10px;
-        min-width: 70px;
+        backdrop-filter: blur(8px);
+        overflow: hidden;
 
         .value {
           display: block;
           font-weight: 700;
-          font-size: 1.1rem;
-          color: var(--color-text-primary);
+          font-size: 0.9rem;
+          color: #fff;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
-
         .label {
-          font-size: 0.7rem;
-          color: var(--color-text-tertiary);
+          font-size: 0.55rem;
+          color: rgba(255, 255, 255, 0.5);
           text-transform: uppercase;
+          letter-spacing: 0.3px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
-
         &.highlight {
-          background: rgba(48, 209, 88, 0.2);
-          .value { color: var(--color-success); }
+          background: rgba(48, 209, 88, 0.15);
+          .value { color: #6ee7b7; }
         }
       }
     }
   }
 
+  // ═══ TABS ═══
   &__tabs {
     display: flex;
-    gap: 0.5rem;
-    margin-bottom: 1.25rem;
+    gap: 0.4rem;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    padding-bottom: 2px;
-
     &::-webkit-scrollbar { display: none; }
 
     button {
-      padding: 0.75rem 1.25rem;
-      background: #1c2a3a;
+      flex: 1;
+      padding: 0.7rem 0.75rem;
+      background: var(--color-glass);
       border: 1px solid var(--color-glass-border);
       border-radius: 10px;
       color: var(--color-text-secondary);
-      font-size: 0.9rem;
-      font-weight: 500;
+      font-size: 0.8rem;
+      font-weight: 600;
       cursor: pointer;
       white-space: nowrap;
       transition: all 0.2s;
-      flex-shrink: 0;
-
-      @media (max-width: 768px) {
-        padding: 0.6rem 1rem;
-        font-size: 0.8rem;
-      }
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
 
       &:active { transform: scale(0.97); }
-
       &.active {
         background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
-        color: var(--color-text-primary);
+        color: #fff;
         border-color: transparent;
+        box-shadow: 0 4px 12px rgba(var(--color-accent-rgb, 0, 122, 255), 0.3);
       }
     }
   }
 
-  // === CARDS ===
+  // ═══ CARDS ═══
   .card {
-    background: #1c2a3a;
+    background: var(--color-glass);
     border: 1px solid var(--color-glass-border);
     border-radius: 14px;
-    padding: 1.25rem;
-    margin-bottom: 1rem;
+    padding: 1rem 1.1rem;
+    overflow: hidden;
 
     h3 {
-      margin: 0 0 0.5rem;
-      font-size: 1rem;
-      font-weight: 600;
+      margin: 0 0 0.75rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--color-text-primary);
     }
 
     .card-hint {
-      margin: 0 0 1rem;
+      margin: -0.5rem 0 0.75rem;
       color: var(--color-text-tertiary);
-      font-size: 0.85rem;
+      font-size: 0.78rem;
     }
   }
 
-  // === GENERAL TAB ===
+  // ═══ GENERAL TAB ═══
   &__general {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-direction: column;
     gap: 1rem;
-    align-items: stretch; // Both cards same height per row
 
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr;
+    // ── Season tickets campaign open ──
+    .campaign-open {
+      color: var(--color-success) !important;
+      font-weight: 600;
+      font-size: 0.8rem !important;
     }
 
-    > .card {
+    .season-price-section {
+      margin-bottom: 1.25rem;
+      label {
+        display: block;
+        font-size: 0.8rem;
+        color: var(--color-text-secondary);
+        margin-bottom: 0.4rem;
+      }
+    }
+
+    .price-control {
       display: flex;
-      flex-direction: column;
-      margin-bottom: 0; // Grid gap handles spacing
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+
+      button {
+        width: 52px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--color-glass-border);
+        border-radius: 10px;
+        color: var(--color-text-primary);
+        font-weight: 700;
+        font-size: 0.85rem;
+        cursor: pointer;
+        transition: background 0.15s;
+        &:active { transform: scale(0.95); }
+        &.locked, &:disabled { opacity: 0.3; cursor: not-allowed; &:active { transform: none; } }
+      }
+
+      .price-value {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: var(--color-warning);
+        min-width: 80px;
+        text-align: center;
+        font-variant-numeric: tabular-nums;
+      }
     }
 
-    .abonados-display, .abonados-control {
+    .price-detail {
+      text-align: center;
+      color: var(--color-text-tertiary);
+      font-size: 0.75rem;
+      margin: 0;
+    }
+
+    .season-preview {
+      margin-bottom: 1rem;
+      padding: 0.85rem;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 10px;
+      border: 1px solid var(--color-glass-border);
+
+      label {
+        display: block;
+        font-size: 0.75rem;
+        color: var(--color-text-tertiary);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 0.4rem;
+      }
+
       .abonados-info {
         display: flex;
         align-items: baseline;
-        gap: 0.5rem;
-        margin-bottom: 0.75rem;
-
+        gap: 0.4rem;
+        margin-bottom: 0.6rem;
         .big-number {
-          font-size: 2rem;
-          font-weight: 700;
+          font-size: 1.8rem;
+          font-weight: 800;
           color: var(--color-accent);
         }
-
         .of-total {
           color: var(--color-text-tertiary);
-          font-size: 0.9rem;
+          font-size: 0.8rem;
         }
       }
 
       .progress-bar {
-        height: 8px;
-        background: #243447;
-        border-radius: 4px;
+        height: 6px;
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 3px;
         overflow: hidden;
-        margin-bottom: 0.75rem;
-
+        margin-bottom: 0.6rem;
         .fill {
           height: 100%;
           background: linear-gradient(90deg, var(--color-accent), var(--color-success));
-          border-radius: 4px;
+          border-radius: 3px;
           transition: width 0.3s;
         }
       }
-      
+
       .abonados-factors {
         display: flex;
         gap: 0.75rem;
         justify-content: center;
-        padding: 0.5rem;
-        background: var(--color-glass);
-        border-radius: 6px;
-        
         span {
           display: inline-flex;
           align-items: center;
-          gap: 4px;
-          font-size: 0.85rem;
+          gap: 3px;
+          font-size: 0.78rem;
           color: var(--color-text-secondary);
-          cursor: help;
         }
       }
     }
-    
-    // Campaña de abonos
-    .campaign-open {
-      color: var(--color-success) !important;
-      font-weight: 600;
-    }
-    
-    .campaign-closed {
-      color: var(--color-text-tertiary) !important;
+
+    .btn-close-campaign {
+      width: 100%;
+      padding: 0.85rem;
+      background: linear-gradient(135deg, #10b981, #059669);
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+      &:active { transform: scale(0.98); }
     }
 
-    // ===== CAMPAÑA CERRADA (rediseño) =====
+    // ── Campaign closed ──
     .campaign-closed-card {
-      margin-top: 0.75rem;
-      flex: 1; // Fill remaining space in flex card
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      margin-top: 0.5rem;
     }
 
     .campaign-closed-header {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      font-size: 0.8rem;
+      gap: 0.4rem;
+      font-size: 0.7rem;
       color: var(--color-text-tertiary);
-      margin-bottom: 1rem;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-
-      .lock-icon {
-        font-size: 0.75rem;
-      }
+      margin-bottom: 0.75rem;
     }
 
     .campaign-closed-stats {
       display: flex;
       align-items: center;
       justify-content: space-around;
-      padding: 1rem 0.5rem;
-      background: var(--color-glass);
+      padding: 0.85rem 0.5rem;
+      background: rgba(255, 255, 255, 0.03);
       border-radius: 10px;
       border: 1px solid var(--color-glass-border);
     }
@@ -285,240 +349,101 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.25rem;
-
-      &.main .stat-value {
-        font-size: 1.6rem;
-        color: var(--color-accent);
-      }
-
-      .stat-value {
-        font-size: 1.1rem;
-        font-weight: 700;
-        color: var(--color-text-primary);
-      }
-
-      .stat-label {
-        font-size: 0.7rem;
-        color: var(--color-text-tertiary);
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-      }
+      gap: 0.2rem;
+      &.main .stat-value { font-size: 1.4rem; color: var(--color-accent); }
+      .stat-value { font-size: 1rem; font-weight: 700; color: var(--color-text-primary); }
+      .stat-label { font-size: 0.6rem; color: var(--color-text-tertiary); text-transform: uppercase; letter-spacing: 0.5px; }
     }
 
     .campaign-stat-divider {
       width: 1px;
-      height: 36px;
+      height: 32px;
       background: var(--color-glass-border);
     }
 
     .campaign-closed-bar {
-      margin-top: 0.75rem;
-      height: 6px;
+      margin-top: 0.6rem;
+      height: 4px;
       background: var(--color-glass-border);
-      border-radius: 3px;
+      border-radius: 2px;
       overflow: hidden;
-
       .bar-fill {
         height: 100%;
         background: linear-gradient(90deg, var(--color-accent), var(--color-success));
-        border-radius: 3px;
-        transition: width 0.5s ease;
+        border-radius: 2px;
       }
     }
 
     .campaign-closed-footer {
-      margin-top: 0.4rem;
+      margin-top: 0.3rem;
       text-align: right;
-      font-size: 0.72rem;
+      font-size: 0.65rem;
       color: var(--color-text-tertiary);
     }
-    
-    .season-price-section {
-      margin-bottom: 1.5rem;
-      
-      label {
-        display: block;
-        font-size: 0.9rem;
-        color: var(--color-text-secondary);
-        margin-bottom: 0.5rem;
-      }
-    }
-    
-    .season-preview {
-      margin-bottom: 1.5rem;
-      padding: 1rem;
-      background: var(--color-glass);
-      border-radius: 8px;
-      
-      label {
-        display: block;
-        font-size: 0.9rem;
-        color: var(--color-text-secondary);
-        margin-bottom: 0.5rem;
-      }
-    }
-    
-    .btn-close-campaign {
-      width: 100%;
-      padding: 1rem;
-      background: linear-gradient(135deg, var(--color-success), #27ae60);
-      border: none;
-      border-radius: 8px;
-      color: var(--color-text-primary);
-      font-weight: 700;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: transform 0.2s, opacity 0.2s;
-      
-      &:hover {
-        opacity: 0.9;
-      }
-      
-      &:active {
-        transform: scale(0.98);
-      }
-    }
-    
-    .locked-price {
-      text-align: center;
-      color: var(--color-text-secondary);
-      margin-top: 0.5rem;
-      
-      strong {
-        color: var(--color-warning);
-      }
-    }
 
-    .price-control {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 0.75rem;
-
-      button {
-        padding: 0.75rem 1.5rem;
-        background: #243447;
-        border: 1px solid var(--color-glass-border);
-        border-radius: 8px;
-        color: var(--color-text-primary);
-        font-weight: 600;
-        font-size: 1rem;
-        cursor: pointer;
-
-        &:active { transform: scale(0.95); }
-      }
-
-      .price-value {
-        font-size: 2rem;
-        font-weight: 700;
-        color: var(--color-warning);
-        min-width: 80px;
-        text-align: center;
-      }
-    }
-
-    .price-detail {
-      text-align: center;
-      color: var(--color-text-tertiary);
-      font-size: 0.85rem;
-      margin: 0;
-    }
-
-    .price-control button.locked,
-    .price-control button:disabled {
-      opacity: 0.35;
-      cursor: not-allowed;
-      &:active { transform: none; }
-    }
-
+    // ── Accumulated income ──
     .accumulated-income {
-      margin-top: 1rem;
-      padding: 0.75rem 1rem;
-      background: rgba(46, 204, 113, 0.08);
-      border: 1px solid rgba(46, 204, 113, 0.2);
-      border-radius: 8px;
+      margin-top: 0.85rem;
+      padding: 0.65rem 0.85rem;
+      background: rgba(48, 209, 88, 0.08);
+      border: 1px solid rgba(48, 209, 88, 0.15);
+      border-radius: 10px;
 
       .accumulated-row {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        .label { color: var(--color-text-secondary); font-size: 0.9rem; }
-        .accumulated-value {
-          font-size: 1.3rem;
-          font-weight: 700;
-          color: #2ecc71;
-        }
+        .label { color: var(--color-text-secondary); font-size: 0.8rem; display: flex; align-items: center; gap: 0.3rem; }
+        .accumulated-value { font-size: 1.15rem; font-weight: 700; color: var(--color-success); }
       }
-
-      .accumulated-hint {
-        margin: 0.25rem 0 0;
-        font-size: 0.75rem;
-        color: var(--color-text-tertiary);
-        text-align: right;
-      }
+      .accumulated-hint { margin: 0.2rem 0 0; font-size: 0.68rem; color: var(--color-text-tertiary); text-align: right; }
     }
 
-    .balance-card {
-      grid-column: span 2;
+    // ── Last home match ──
+    .last-match-info {
+      margin-top: 1rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
 
-      @media (max-width: 768px) {
-        grid-column: span 1;
-      }
+      h4 { font-size: 0.8rem; color: var(--color-text-secondary); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.3rem; }
 
-      .balance-rows {
+      .last-match-stats {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
-      }
+        gap: 0.35rem;
 
-      .balance-row {
-        display: flex;
-        justify-content: space-between;
-        padding: 0.6rem 0.75rem;
-        background: rgba(0, 0, 0, 0.2);
-        border-radius: 8px;
-        font-size: 0.95rem;
+        .stat-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0.4rem 0.65rem;
+          background: rgba(255, 255, 255, 0.03);
+          border-radius: 8px;
 
-        &.income span:last-child { color: var(--color-success); }
-        &.expense span:last-child { color: var(--color-danger); }
-
-        &.total {
-          margin-top: 0.5rem;
-          padding: 0.85rem;
-          font-weight: 700;
-          font-size: 1.1rem;
-          background: rgba(0, 0, 0, 0.3);
-
-          &.positive span:last-child { color: var(--color-success); }
-          &.negative span:last-child { color: var(--color-danger); }
+          .label { font-size: 0.78rem; color: var(--color-text-secondary); display: flex; align-items: center; gap: 0.3rem; }
+          .value { font-weight: 600; color: var(--color-text-primary); font-size: 0.85rem; }
+          &.income { background: rgba(48, 209, 88, 0.08); .value { color: var(--color-success); } }
         }
       }
     }
 
+    // ── Grass card ──
     .grass-card {
       .grass-bar {
         position: relative;
-        height: 24px;
-        background: #243447;
-        border-radius: 12px;
+        height: 20px;
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 10px;
         overflow: hidden;
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.6rem;
 
         .fill {
           height: 100%;
           background: linear-gradient(90deg, #c0392b, #f1c40f 30%, #27ae60 60%, #2ecc71);
-          border-radius: 12px;
+          border-radius: 10px;
           transition: width 0.3s;
-          
-          &.warning {
-            background: linear-gradient(90deg, #c0392b, #f39c12);
-          }
-          
-          &.danger {
-            background: #c0392b;
-          }
+          &.warning { background: linear-gradient(90deg, #c0392b, #f39c12); }
+          &.danger { background: #c0392b; }
         }
 
         .grass-percent {
@@ -527,76 +452,106 @@
           left: 50%;
           transform: translate(-50%, -50%);
           font-weight: 700;
-          font-size: 0.85rem;
-          color: var(--color-text-primary);
-          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-        }
-      }
-      
-      .grass-status {
-        margin-bottom: 0.5rem;
-        
-        .status {
-          font-size: 0.9rem;
-          font-weight: 600;
-          
-          &.good { color: var(--color-success); }
-          &.warning { color: var(--color-warning); }
-          &.danger { color: var(--color-error); }
+          font-size: 0.75rem;
+          color: #fff;
+          text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
         }
       }
 
-      .grass-hint {
-        margin: 0;
+      .grass-label {
+        font-size: 0.78rem;
+        margin-bottom: 0.5rem;
+        padding: 0.4rem 0.6rem;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.03);
+
+        &--excellent { color: var(--color-success); }
+        &--good { color: #6ee7b7; }
+        &--regular { color: var(--color-warning); }
+        &--bad { color: #fb923c; }
+        &--terrible { color: var(--color-danger); }
+      }
+
+      .grass-status {
+        margin-bottom: 0.4rem;
+        .status {
+          font-size: 0.8rem;
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+          gap: 0.3rem;
+          &.good { color: var(--color-success); }
+          &.warning { color: var(--color-warning); }
+          &.danger { color: var(--color-danger); }
+        }
+      }
+
+      .grass-hint { margin: 0 0 0.6rem; font-size: 0.75rem; color: var(--color-text-tertiary); }
+
+      .grass-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .treatment-btn, .repair-btn {
+        width: 100%;
+        padding: 0.75rem;
+        border: none;
+        border-radius: 10px;
+        color: #fff;
+        font-weight: 600;
         font-size: 0.85rem;
-        color: var(--color-text-secondary);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
+        &:disabled { opacity: 0.4; cursor: not-allowed; }
+        &:active:not(:disabled) { transform: scale(0.98); }
+      }
+
+      .treatment-btn {
+        background: linear-gradient(135deg, #059669, #10b981);
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
       }
 
       .repair-btn {
-        width: 100%;
-        margin-top: 0.75rem;
-        padding: 0.85rem;
-        background: linear-gradient(135deg, #27ae60, #2ecc71);
-        border: none;
-        border-radius: 10px;
-        color: var(--color-text-primary);
-        font-weight: 600;
-        cursor: pointer;
-
-        &:disabled { opacity: 0.5; cursor: not-allowed; }
+        background: linear-gradient(135deg, #0284c7, #0ea5e9);
+        box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
       }
     }
   }
 
-  // === SPONSORS TAB ===
+  // ═══ SPONSORS TAB ═══
   &__sponsors {
-    h3 { margin: 0 0 0.5rem; }
-    .hint { color: var(--color-text-tertiary); font-size: 0.9rem; margin-bottom: 1rem; }
+    h3 { margin: 0 0 0.5rem; font-size: 0.9rem; display: flex; align-items: center; gap: 0.4rem; }
+    .hint { color: var(--color-text-tertiary); font-size: 0.8rem; margin-bottom: 1rem; }
 
     .current-sponsor {
-      padding: 1.5rem;
-      background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(138, 43, 226, 0.1));
-      border: 1px solid var(--color-accent);
-      border-radius: 16px;
+      padding: 1.25rem;
+      background: linear-gradient(135deg, rgba(20, 184, 166, 0.08), rgba(99, 102, 241, 0.08));
+      border: 1px solid rgba(20, 184, 166, 0.2);
+      border-radius: 14px;
       text-align: center;
 
       .sponsor-info {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 0.4rem;
         margin-bottom: 1rem;
-
-        .sponsor-name { font-size: 1.5rem; font-weight: 700; }
-        .sponsor-income { font-size: 1.25rem; color: var(--color-success); font-weight: 600; }
-        .sponsor-years { color: var(--color-text-tertiary); }
+        .sponsor-name { font-size: 1.3rem; font-weight: 800; color: var(--color-text-primary); }
+        .sponsor-income { font-size: 1.1rem; color: var(--color-success); font-weight: 700; }
+        .sponsor-years { color: var(--color-text-tertiary); font-size: 0.85rem; }
       }
 
       .cancel-btn {
-        padding: 0.75rem 1.5rem;
-        background: rgba(255, 69, 58, 0.2);
-        border: 1px solid rgba(255, 69, 58, 0.4);
+        padding: 0.65rem 1.25rem;
+        background: rgba(239, 68, 68, 0.1);
+        border: 1px solid rgba(239, 68, 68, 0.25);
         border-radius: 10px;
         color: var(--color-danger);
+        font-size: 0.85rem;
         cursor: pointer;
       }
     }
@@ -611,8 +566,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1rem 1.25rem;
-      background: #1c2a3a;
+      padding: 1rem;
+      background: var(--color-glass);
       border: 1px solid var(--color-glass-border);
       border-radius: 12px;
 
@@ -620,32 +575,27 @@
         flex-direction: column;
         gap: 0.75rem;
         align-items: stretch;
-        
-        button {
-          width: 100%;
-          min-height: 44px;
-        }
+        button { width: 100%; min-height: 44px; }
       }
 
       .offer-info {
         display: flex;
         flex-direction: column;
-        gap: 0.25rem;
-
-        .name { font-weight: 600; }
-        .price { color: var(--color-success); font-weight: 700; font-size: 1.1rem; }
-        .duration { font-size: 0.85rem; color: var(--color-text-tertiary); }
+        gap: 0.2rem;
+        .name { font-weight: 700; font-size: 0.95rem; }
+        .price { color: var(--color-success); font-weight: 700; font-size: 1.05rem; }
+        .duration { font-size: 0.78rem; color: var(--color-text-tertiary); }
       }
 
       button {
-        padding: 0.75rem 1.5rem;
-        background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
+        padding: 0.65rem 1.25rem;
+        background: linear-gradient(135deg, #10b981, #059669);
         border: none;
         border-radius: 10px;
-        color: var(--color-text-primary);
+        color: #fff;
         font-weight: 600;
         cursor: pointer;
-
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
         &:active { transform: scale(0.97); }
       }
     }
@@ -654,604 +604,97 @@
       text-align: center;
       padding: 2rem;
       color: var(--color-text-tertiary);
-      background: rgba(0, 0, 0, 0.2);
+      background: rgba(255, 255, 255, 0.03);
       border-radius: 12px;
+      font-size: 0.85rem;
     }
   }
 
-  // === EVENTS TAB ===
+  // ═══ EVENTS TAB ═══
   &__events {
-    h3 { margin: 0 0 0.5rem; }
-    .hint { color: var(--color-text-tertiary); font-size: 0.9rem; margin-bottom: 1rem; }
-
-    .cooldown-notice {
-      padding: 1rem;
-      background: rgba(255, 214, 10, 0.1);
-      border: 1px solid rgba(255, 214, 10, 0.3);
-      border-radius: 12px;
-      color: var(--color-warning);
-      text-align: center;
-      margin-bottom: 1rem;
-    }
+    h3 { margin: 0 0 0.5rem; font-size: 0.9rem; display: flex; align-items: center; gap: 0.4rem; }
+    .hint { color: var(--color-text-tertiary); font-size: 0.8rem; margin-bottom: 1rem; }
 
     .events-list {
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
+      gap: 0.6rem;
     }
 
     .event-item {
       display: flex;
       align-items: center;
-      gap: 1rem;
-      padding: 1rem;
-      background: #1c2a3a;
+      gap: 0.75rem;
+      padding: 0.85rem;
+      background: var(--color-glass);
       border: 1px solid var(--color-glass-border);
       border-radius: 12px;
+      transition: opacity 0.2s;
 
-      @media (max-width: 768px) {
-        flex-wrap: wrap;
-        gap: 0.75rem;
-      }
-
-      &.disabled { opacity: 0.5; }
+      &.disabled { opacity: 0.4; }
 
       .event-icon {
-        font-size: 2rem;
-        width: 50px;
-        height: 50px;
-        background: rgba(0, 0, 0, 0.3);
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.06);
         border-radius: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-shrink: 0;
+        color: var(--color-text-secondary);
       }
 
       .event-info {
         flex: 1;
-
-        .event-name { display: block; font-weight: 600; margin-bottom: 0.25rem; }
-        .event-details { font-size: 0.85rem; color: var(--color-text-tertiary); }
+        min-width: 0;
+        .event-name { display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 0.15rem; }
+        .event-details { font-size: 0.72rem; color: var(--color-text-tertiary); display: block; }
       }
 
       button {
-        padding: 0.75rem 1.25rem;
-        background: linear-gradient(135deg, #ff9500, #ff6b00);
+        padding: 0.55rem 1rem;
+        background: linear-gradient(135deg, #f59e0b, #d97706);
         border: none;
-        border-radius: 10px;
-        color: var(--color-text-primary);
-        min-height: 44px;
-
-        @media (max-width: 768px) {
-          width: 100%;
-        }
+        border-radius: 8px;
+        color: #fff;
         font-weight: 600;
+        font-size: 0.8rem;
         cursor: pointer;
+        white-space: nowrap;
+        min-height: 40px;
+        box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);
+        @media (max-width: 768px) { width: 100%; }
+        &:disabled { opacity: 0.4; cursor: not-allowed; box-shadow: none; }
+        &:active:not(:disabled) { transform: scale(0.97); }
+      }
 
-        &:disabled { opacity: 0.5; cursor: not-allowed; }
+      @media (max-width: 768px) {
+        flex-wrap: wrap;
       }
     }
 
     .grass-warning {
-      margin-top: 1rem;
-      padding: 1rem;
-      background: rgba(255, 69, 58, 0.15);
-      border-radius: 12px;
+      margin-top: 0.75rem;
+      padding: 0.75rem;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      border-radius: 10px;
       color: var(--color-danger);
       text-align: center;
-    }
-  }
-
-  // === UPGRADE TAB ===
-  &__upgrade {
-    h3 { margin: 0 0 1rem; }
-
-    .current-level, .next-level {
+      font-size: 0.85rem;
       display: flex;
       align-items: center;
-      gap: 1rem;
-      padding: 1.25rem;
-      background: #1c2a3a;
-      border-radius: 14px;
-      position: relative;
-
-      .level-badge {
-        width: 50px;
-        height: 50px;
-        background: var(--color-success);
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--color-text-primary);
-      }
-
-      .level-info {
-        flex: 1;
-
-        .level-name { display: block; font-weight: 600; font-size: 1.1rem; }
-        .level-capacity { display: block; color: var(--color-text-tertiary); font-size: 0.9rem; }
-        .level-gain { display: block; color: var(--color-success); font-size: 0.85rem; margin-top: 0.25rem; }
-      }
-
-      .current-tag {
-        position: absolute;
-        top: -8px;
-        right: 16px;
-        padding: 0.3rem 0.75rem;
-        background: var(--color-success);
-        border-radius: 20px;
-        font-size: 0.7rem;
-        font-weight: 600;
-        color: var(--color-text-primary);
-      }
-    }
-
-    .next-level {
-      margin-top: 1rem;
-      border: 2px solid var(--color-accent);
-
-      .level-badge { background: var(--color-accent); }
-
-      .arrow {
-        position: absolute;
-        top: -20px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 1.25rem;
-      }
-
-      .upgrade-btn {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 0.85rem 1.5rem;
-        background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
-        border: none;
-        border-radius: 10px;
-        color: var(--color-text-primary);
-        cursor: pointer;
-
-        span:first-child { font-weight: 600; }
-        .cost { font-size: 0.9rem; opacity: 0.9; }
-
-        &:disabled { opacity: 0.5; cursor: not-allowed; }
-      }
-    }
-
-    .max-level {
-      margin-top: 1rem;
-      padding: 2rem;
-      background: rgba(48, 209, 88, 0.1);
-      border: 1px solid rgba(48, 209, 88, 0.3);
-      border-radius: 14px;
-      text-align: center;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--color-success);
-    }
-
-    .upgrade-roadmap {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 1.5rem;
-      padding: 1rem 0;
-      position: relative;
-
-      &::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 2rem;
-        right: 2rem;
-        height: 2px;
-        background: var(--color-glass-border);
-        transform: translateY(-50%);
-      }
-
-      .roadmap-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        position: relative;
-        z-index: 1;
-
-        .dot {
-          width: 28px;
-          height: 28px;
-          background: #1c2a3a;
-          border: 2px solid var(--color-glass-border);
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 0.75rem;
-          font-weight: 600;
-          margin-bottom: 0.5rem;
-        }
-
-        .name { font-size: 0.7rem; font-weight: 600; }
-        .cap { font-size: 0.65rem; color: var(--color-text-tertiary); }
-
-        &.done .dot {
-          background: var(--color-success);
-          border-color: var(--color-success);
-          color: var(--color-text-primary);
-        }
-
-        &.current .dot {
-          background: var(--color-accent);
-          border-color: var(--color-accent);
-          color: var(--color-text-primary);
-          box-shadow: 0 0 10px var(--color-accent);
-        }
-      }
-    }
-  }
-
-  // === TICKETS TAB - Precios dinámicos ===
-  &__tickets {
-    .next-match-card {
-      .match-info {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 1rem;
-        margin-bottom: 1.5rem;
-        padding-bottom: 1rem;
-        border-bottom: 1px solid var(--color-glass-border);
-
-        .match-week {
-          background: var(--color-accent);
-          color: var(--color-text-primary);
-          padding: 0.25rem 0.75rem;
-          border-radius: 20px;
-          font-size: 0.8rem;
-          font-weight: 600;
-        }
-
-        .match-teams {
-          display: flex;
-          align-items: center;
-          gap: 0.75rem;
-          font-size: 1.1rem;
-          font-weight: 600;
-
-          .vs {
-            color: var(--color-text-tertiary);
-            font-weight: 400;
-            font-size: 0.9rem;
-          }
-
-          .away-team {
-            color: var(--color-warning);
-          }
-        }
-
-        .attraction-badge {
-          margin-left: auto;
-          padding: 0.25rem 0.75rem;
-          background: var(--color-glass-border);
-          border-radius: 20px;
-          font-size: 0.85rem;
-
-          &.hot {
-            background: linear-gradient(135deg, #ff6b35, #f7931a);
-            color: var(--color-text-primary);
-            font-weight: 600;
-          }
-        }
-      }
-
-      .match-price-section {
-        margin-bottom: 1.5rem;
-
-        h4 {
-          margin: 0 0 0.25rem;
-          font-size: 0.95rem;
-        }
-
-        .hint {
-          margin: 0 0 1rem;
-          color: var(--color-text-tertiary);
-          font-size: 0.8rem;
-        }
-
-        .price-adjust {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 0.5rem;
-          flex-wrap: wrap;
-
-          button {
-            padding: 0.5rem 1rem;
-            background: #253649;
-            border: 1px solid var(--color-glass-border);
-            border-radius: 8px;
-            color: var(--color-text-primary);
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.15s;
-
-            &:active {
-              transform: scale(0.95);
-            }
-
-            &:hover {
-              background: var(--color-accent);
-            }
-          }
-
-          .price-display {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 0.5rem 1rem;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-            min-width: 120px;
-
-            .base-price {
-              font-size: 0.75rem;
-              color: var(--color-text-tertiary);
-            }
-
-            .adjust {
-              font-size: 0.85rem;
-              font-weight: 600;
-              &.up { color: var(--color-warning); }
-              &.down { color: var(--color-success); }
-            }
-
-            .final-price {
-              font-size: 1.25rem;
-              font-weight: 700;
-              color: var(--color-text-primary);
-            }
-          }
-        }
-
-        .reset-btn {
-          display: block;
-          margin: 0.75rem auto 0;
-          padding: 0.4rem 1rem;
-          background: transparent;
-          border: 1px solid var(--color-glass-border);
-          border-radius: 8px;
-          color: var(--color-text-secondary);
-          font-size: 0.8rem;
-          cursor: pointer;
-
-          &:hover {
-            color: var(--color-text-primary);
-            border-color: var(--color-text-secondary);
-          }
-        }
-      }
-
-      .attendance-prediction {
-        h4 {
-          margin: 0 0 1rem;
-          font-size: 0.95rem;
-        }
-
-        .prediction-stats {
-          margin-bottom: 1.25rem;
-
-          .prediction-main {
-            text-align: center;
-            margin-bottom: 1rem;
-
-            .predicted-number {
-              display: block;
-              font-size: 2.5rem;
-              font-weight: 700;
-              color: var(--color-accent);
-              line-height: 1;
-            }
-
-            .prediction-label {
-              display: block;
-              font-size: 0.85rem;
-              color: var(--color-text-secondary);
-              margin: 0.25rem 0;
-            }
-
-            .prediction-range {
-              font-size: 0.8rem;
-              color: var(--color-text-tertiary);
-            }
-          }
-
-          .fill-rate-bar {
-            position: relative;
-            height: 24px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 12px;
-            overflow: hidden;
-
-            .fill {
-              height: 100%;
-              background: linear-gradient(90deg, var(--color-accent), var(--color-success));
-              border-radius: 12px;
-              transition: width 0.3s ease;
-            }
-
-            .fill-percent {
-              position: absolute;
-              right: 10px;
-              top: 50%;
-              transform: translateY(-50%);
-              font-size: 0.8rem;
-              font-weight: 600;
-              color: var(--color-text-primary);
-              text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-            }
-          }
-        }
-
-        .factors-breakdown {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 0.5rem;
-          margin-bottom: 1.25rem;
-
-          .factor {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem 0.75rem;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-            flex: 1 1 calc(50% - 0.25rem);
-            min-width: 120px;
-
-            .factor-name {
-              font-size: 0.8rem;
-              color: var(--color-text-secondary);
-            }
-
-            .factor-value {
-              font-weight: 600;
-              font-size: 0.9rem;
-
-              &.positive { color: var(--color-success); }
-              &.negative { color: var(--color-error); }
-            }
-
-            &.derby {
-              background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(247, 147, 26, 0.2));
-              border: 1px solid rgba(255, 107, 53, 0.3);
-            }
-          }
-        }
-
-        .estimated-income {
-          background: rgba(0, 0, 0, 0.2);
-          border-radius: 10px;
-          padding: 1rem;
-
-          h4 {
-            margin: 0 0 0.75rem;
-          }
-
-          .income-breakdown {
-            .income-row {
-              display: flex;
-              justify-content: space-between;
-              padding: 0.4rem 0;
-              font-size: 0.9rem;
-
-              &:not(:last-child) {
-                border-bottom: 1px solid var(--color-glass-border);
-              }
-
-              &.total {
-                padding-top: 0.75rem;
-                margin-top: 0.25rem;
-                font-weight: 700;
-                font-size: 1rem;
-                color: var(--color-success);
-              }
-            }
-          }
-        }
-      }
-    }
-
-    .no-match {
-      text-align: center;
-      padding: 2rem;
-      color: var(--color-text-tertiary);
-
-      h3 {
-        color: var(--color-text-secondary);
-      }
-    }
-
-    .tips-card {
-      background: linear-gradient(135deg, #1a3040, #152535);
-
-      h3 {
-        margin-bottom: 1rem;
-      }
-
-      .tips-list {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-
-        li {
-          padding: 0.6rem 0;
-          font-size: 0.9rem;
-          color: var(--color-text-secondary);
-
-          &:not(:last-child) {
-            border-bottom: 1px solid var(--color-glass-border);
-          }
-
-          strong {
-            color: var(--color-text-primary);
-          }
-        }
-      }
+      justify-content: center;
+      gap: 0.4rem;
     }
   }
 }
 
 .cancel-warning {
   display: block;
-  margin-top: 8px;
-  font-size: 0.8rem;
-  color: #ff9f0a;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #f59e0b;
   text-align: center;
-}
-
-// Última jornada en casa
-.last-match-info {
-  margin-top: 1.5rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--color-glass-border);
-  
-  h4 {
-    font-size: 0.9rem;
-    color: var(--color-text-secondary);
-    margin-bottom: 0.75rem;
-  }
-  
-  .last-match-stats {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    
-    .stat-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.5rem 0.75rem;
-      background: var(--color-glass);
-      border-radius: 8px;
-      
-      .label {
-        font-size: 0.85rem;
-        color: var(--color-text-secondary);
-      }
-      
-      .value {
-        font-weight: 600;
-        color: var(--color-text-primary);
-      }
-      
-      &.income {
-        background: rgba(48, 209, 88, 0.1);
-        
-        .value {
-          color: var(--color-success);
-        }
-      }
-    }
-  }
 }

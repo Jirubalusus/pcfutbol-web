@@ -25,8 +25,8 @@ export default function RankedLeaderboard() {
   return (
     <div className="ranked-leaderboard">
       <div className="ranked-leaderboard__header">
-        <button className="back-btn" onClick={() => dispatch({ type: 'SET_SCREEN', payload: 'ranked_lobby' })}>
-          <ArrowLeft size={20} />
+        <button className="btn-back" onClick={() => dispatch({ type: 'SET_SCREEN', payload: 'ranked_lobby' })}>
+          <ArrowLeft size={16} /> {t('common.back')}
         </button>
         <h1><Trophy size={22} /> {t('ranked.globalRanking')}</h1>
       </div>

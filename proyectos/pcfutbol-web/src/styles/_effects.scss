@@ -1,0 +1,399 @@
+// ============================================================
+// GLOBAL MICRO-INTERACTIONS & EFFECTS
+// Premium sports app polish (FIFA / Football Manager style)
+// ============================================================
+
+// ── Keyframes ──────────────────────────────────────────────
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.92) translateY(8px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes subtlePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(var(--color-danger-rgb), 0.35); }
+  50%      { box-shadow: 0 0 0 6px rgba(var(--color-danger-rgb), 0); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(var(--color-accent-rgb), 0.15); }
+  50%      { box-shadow: 0 0 18px rgba(var(--color-accent-rgb), 0.35); }
+}
+
+@keyframes numberFlash {
+  0%   { background-color: transparent; }
+  20%  { background-color: rgba(var(--color-success-rgb), 0.2); }
+  100% { background-color: transparent; }
+}
+
+@keyframes staggerFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+@keyframes skeletonShimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+// ── Utility Classes ────────────────────────────────────────
+
+// Fade-in-up entrance for any element
+.fx-fade-in-up {
+  animation: fadeInUp 0.35s ease-out both;
+}
+
+// Staggered children entrance  
+.fx-stagger-children {
+  > * {
+    animation: staggerFadeIn 0.3s ease-out both;
+    @for $i from 1 through 20 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{$i * 0.04}s;
+      }
+    }
+  }
+}
+
+// Number highlight when value changes
+.fx-number-flash {
+  animation: numberFlash 0.6s ease-out;
+}
+
+// Skeleton loader placeholder
+.fx-skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.04) 25%,
+    rgba(255,255,255,0.08) 50%,
+    rgba(255,255,255,0.04) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.8s ease-in-out infinite;
+  border-radius: 8px;
+}
+
+// ── Global Button Polish ───────────────────────────────────
+
+button, .btn, [role="button"] {
+  transition: box-shadow 0.2s ease, background-color 0.2s ease, 
+              border-color 0.2s ease, color 0.2s ease, opacity 0.2s ease,
+              filter 0.2s ease;
+}
+
+// ── Card Hover Lift ────────────────────────────────────────
+
+.office__card,
+.glass-card,
+.office__panel-card,
+.office__next-match,
+.office__form,
+.office__objective-preview,
+.office__recent-messages,
+.stat-card,
+.finance-box,
+.fixture-card,
+.match-card,
+.transfer-card,
+.offer-card,
+.renewal-card,
+.objective-card,
+.message-item,
+.notification-item {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.25s ease,
+              background 0.25s ease;
+}
+
+// ── Table Row Hover ────────────────────────────────────────
+
+.pcf-table .table-row,
+.pcf-lineup-table tr,
+.league-table-v2 tr,
+.player-row,
+table tbody tr {
+  transition: background-color 0.15s ease, transform 0.15s ease;
+  
+  &:hover {
+    background-color: rgba(var(--color-accent-rgb), 0.06) !important;
+  }
+}
+
+// ── Modal & Overlay Animations ─────────────────────────────
+
+.modal-overlay,
+.overlay,
+.pcf-modal-overlay,
+.transfer-modal-overlay,
+.player-modal-overlay,
+.preseason-modal-overlay,
+.sim-modal-overlay,
+.injured-warning-modal,
+.nickname-overlay {
+  animation: overlayIn 0.2s ease-out;
+}
+
+.pcf-modal,
+.pcf-modal--tactic,
+.pcf-modal--injured,
+.pcf-modal--stats,
+.pcf-modal--training,
+.pcf-modal--training-v2,
+.modal-content,
+.injured-warning-content,
+.sim-modal,
+.contrarreloj-prompt__card {
+  animation: modalIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+// ── Status Badge Pulse ─────────────────────────────────────
+
+.sidebar__badge--pulse,
+.badge--injury,
+.badge--suspended,
+.badge--urgent,
+[class*="injury-badge"],
+[class*="suspension-badge"] {
+  animation: subtlePulse 2s ease-in-out infinite;
+}
+
+// ── Active Nav Glow ────────────────────────────────────────
+
+.sidebar__item.active {
+  transition: all 0.2s ease;
+  
+  &::before {
+    transition: all 0.25s ease;
+  }
+}
+
+.mobile-nav__tab.active .icon {
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s ease;
+}
+
+// ── Page Content Entrance ──────────────────────────────────
+
+.office__content > *:first-child {
+  animation: fadeInUp 0.3s ease-out both;
+}
+
+// ── Form Badge Entrance ────────────────────────────────────
+
+.office__form-badges .form-badge {
+  animation: fadeInScale 0.25s ease-out both;
+  
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.05}s;
+    }
+  }
+}
+
+// ── Hero Card Stats Stagger ────────────────────────────────
+
+.office__hero-stats .office__hero-stat {
+  animation: staggerFadeIn 0.3s ease-out both;
+  
+  @for $i from 1 through 8 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{0.1 + $i * 0.06}s;
+    }
+  }
+}
+
+// ── Grid Cards Stagger ─────────────────────────────────────
+
+.office__grid-left > *,
+.office__grid-right > * {
+  animation: staggerFadeIn 0.3s ease-out both;
+  
+  @for $i from 1 through 6 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{0.05 + $i * 0.06}s;
+    }
+  }
+}
+
+// ── Money Value Highlight ──────────────────────────────────
+
+.office__money .value {
+  transition: color 0.3s ease;
+  border-radius: 4px;
+  padding: 0 2px;
+}
+
+// ── Progress Bar Animations ────────────────────────────────
+
+.progress-fill,
+.office__panel-confidence-fill,
+.sim-modal__bar-fill {
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+// ── Hover Arrow Nudge (chevrons) ───────────────────────────
+
+[class*="chevron"],
+[class*="arrow"],
+.mode-card__arrow {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+// ── Focus Ring Enhancement ─────────────────────────────────
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-bg-primary), 0 0 0 4px var(--color-accent);
+  transition: box-shadow 0.15s ease;
+}
+
+// ── Sidebar Item Hover Enhancement ─────────────────────────
+
+.sidebar__item {
+  transition: all 0.2s ease;
+  
+  &:hover {
+    padding-left: 1.4rem;
+  }
+}
+
+// ── Mobile Nav Tab Active Bounce ───────────────────────────
+
+.mobile-nav__tab {
+  transition: all 0.2s ease;
+  
+  &.active {
+    .icon {
+      transform: scale(1.15);
+    }
+  }
+  
+  &:active {
+    transform: scale(0.92);
+  }
+}
+
+// ── Match Day Preview Entrance ─────────────────────────────
+
+.match-day__preview,
+.match-day__content {
+  animation: fadeInUp 0.4s ease-out both;
+}
+
+// ── Messages List Stagger ──────────────────────────────────
+
+.messages__list > * {
+  animation: staggerFadeIn 0.25s ease-out both;
+  
+  @for $i from 1 through 30 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.03}s;
+    }
+  }
+}
+
+// ── Settings Sections Stagger ──────────────────────────────
+
+.settings__content > * {
+  animation: staggerFadeIn 0.3s ease-out both;
+  
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.05}s;
+    }
+  }
+}
+
+// ── Formation Table Rows Stagger ───────────────────────────
+
+.pcf-table .table-row,
+.pcf-lineup-table tbody tr {
+  animation: staggerFadeIn 0.2s ease-out both;
+  
+  @for $i from 1 through 30 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.02}s;
+    }
+  }
+}
+
+// ── Transfers Tab Switch ───────────────────────────────────
+
+.transfers-v2__tab-content,
+.transfers-content {
+  animation: fadeInUp 0.25s ease-out both;
+}
+
+// ── League Table Row Highlight on Own Team ──────────────────
+
+.league-table-v2 .standing-row--own {
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+// ── Smooth scrollbar fade ──────────────────────────────────
+
+::-webkit-scrollbar {
+  transition: opacity 0.3s;
+}
+
+// ── Unified Back Button ────────────────────────────────────
+
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.7);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 36px;
+
+  &:hover {
+    background: rgba(255,255,255,0.1);
+    color: white;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+// ── Reduce motion for accessibility ────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

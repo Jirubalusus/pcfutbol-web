@@ -27,7 +27,7 @@ import {
   getParaguayTeams, getPeruTeams, getBoliviaTeams, getVenezuelaTeams,
   getMLSTeams, getSaudiTeams, getLigaMXTeams, getJLeagueTeams
 } from '../../data/teamsFirestore';
-import { ArrowLeft, Briefcase, Users, Star, Target } from 'lucide-react';
+import { ArrowLeft, Briefcase, Users, Star, Target, TrendingUp, Wallet, Shield } from 'lucide-react';
 import './ProManagerSetup.scss';
 
 const ALL_LEAGUE_GETTERS = {
@@ -135,6 +135,11 @@ export default function ProManagerSetup() {
     const preseasonOptions = generatePreseasonOptions(allTeamsFlat, team, leagueId);
     const preseason = preseasonOptions[0];
 
+    // Get manager name from Firebase Auth
+    const { getAuth } = await import('firebase/auth');
+    const authUser = getAuth().currentUser;
+    const managerName = authUser?.displayName || authUser?.email?.split('@')[0] || undefined;
+
     dispatch({
       type: 'NEW_GAME',
       payload: {
@@ -146,7 +151,8 @@ export default function ProManagerSetup() {
         preseasonMatches: preseason?.matches || [],
         preseasonPhase: true,
         gameMode: 'promanager',
-        _proManagerUserId: user?.uid || null
+        _proManagerUserId: user?.uid || null,
+        managerName
       }
     });
 
@@ -254,7 +260,7 @@ export default function ProManagerSetup() {
   };
 
   return (
-    <div className="promanager-setup">
+    <div className="promanager-setup unified-screen">
       <div className="promanager-setup__bg">
         <div className="promanager-setup__gradient" />
         <div className="promanager-setup__particles">
@@ -267,8 +273,7 @@ export default function ProManagerSetup() {
       <div className="promanager-setup__content">
         <div className="promanager-setup__header">
           <button className="btn-back" onClick={handleBack}>
-            <ArrowLeft size={18} />
-            <span>{t('common.back')}</span>
+            <ArrowLeft size={16} /> {t('common.back')}
           </button>
           <div className="header-info">
             <h1>
@@ -287,32 +292,48 @@ export default function ProManagerSetup() {
           <div className="offers-grid">
             {offers.map((offer, idx) => {
               const avgOvr = getAvgOverall(offer.team);
+              const tier = getLeagueTier(offer.leagueId);
+              const playerCount = offer.team.players?.length || 0;
               const isSelected = selectedOffer?.team?.id === offer.team.id;
+              const diffLabel = avgOvr >= 78 ? 'Fácil' : avgOvr >= 72 ? 'Normal' : avgOvr >= 66 ? 'Difícil' : 'Extremo';
+              const diffClass = avgOvr >= 78 ? 'easy' : avgOvr >= 72 ? 'normal' : avgOvr >= 66 ? 'hard' : 'extreme';
               return (
                 <button
                   key={offer.team.id + idx}
                   className={`offer-card ${isSelected ? 'offer-card--selected' : ''}`}
                   onClick={() => setSelectedOffer(offer)}
                 >
-                  <div className="offer-card__header">
-                    <h3>{offer.team.name}</h3>
-                    <span className="league-name">{offer.leagueName}</span>
+                  <div className="offer-card__top">
+                    <div className="offer-card__identity">
+                      <h3>{offer.team.name}</h3>
+                      <span className="league-name">{offer.leagueName}</span>
+                    </div>
+                    <span className={`offer-card__diff offer-card__diff--${diffClass}`}>{diffLabel}</span>
                   </div>
+
                   <div className="offer-card__stats">
-                    <div className="stat">
-                      <Star size={14} />
-                      <span>{avgOvr} OVR</span>
+                    <div className="stat-pill">
+                      <Shield size={13} />
+                      <span className="stat-value">{avgOvr}</span>
+                      <span className="stat-label">OVR</span>
                     </div>
-                    <div className="stat">
-                      <Users size={14} />
-                      <span>{offer.team.players?.length || 0}</span>
+                    <div className="stat-pill">
+                      <Users size={13} />
+                      <span className="stat-value">{playerCount}</span>
+                      <span className="stat-label">Plantilla</span>
                     </div>
-                    <div className="stat">
-                      <span className="money">{formatMoney(offer.team.budget)}</span>
+                    <div className="stat-pill stat-pill--money">
+                      <Wallet size={13} />
+                      <span className="stat-value">{formatMoney(offer.team.budget)}</span>
+                    </div>
+                    <div className="stat-pill">
+                      <TrendingUp size={13} />
+                      <span className="stat-value">Tier {tier}</span>
                     </div>
                   </div>
+
                   <div className="offer-card__objective">
-                    <Target size={14} />
+                    <Target size={13} />
                     <span>{t(offer.objective.label, offer.objective.labelParams)}</span>
                   </div>
                 </button>

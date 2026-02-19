@@ -5,6 +5,7 @@ import {
   Settings as SettingsIcon, LogOut, X
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { Mountain } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
 import { useGame } from '../../context/GameContext';
 // Market is always open now
@@ -26,7 +27,7 @@ export default function MobileNav({ activeTab, onTabChange, onAdvanceWeek, onSim
 
   const MENU_ITEMS = [
     { id: 'formation', icon: <FootballIcon size={20} />, label: t('sidebar.formation') },
-    { id: 'objectives', icon: <Target size={20} />, label: t('sidebar.objectives') },
+    { id: 'objectives', icon: <Target size={20} />, label: state.gameMode === 'glory' ? 'Directiva' : t('sidebar.objectives') },
     { id: 'calendar', icon: <Calendar size={20} />, label: t('sidebar.calendar') },
     { id: 'transfers', icon: <Coins size={20} />, label: t('sidebar.transfers') },
     { id: 'stadium', icon: <Building2 size={20} />, label: t('sidebar.stadium') },
@@ -34,12 +35,19 @@ export default function MobileNav({ activeTab, onTabChange, onAdvanceWeek, onSim
     { id: 'facilities', icon: <Wrench size={20} />, label: t('sidebar.facilities') },
     { id: 'messages', icon: <Mail size={20} />, label: t('sidebar.messages') },
   ];
+  
+  // Add Glory Perks for glory mode
+  if (state.gameMode === 'glory') {
+    MENU_ITEMS.splice(2, 0, { id: 'glory_perks', icon: <Mountain size={20} />, label: 'Mejoras' });
+  }
   const [showMenu, setShowMenu] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [showSimOptions, setShowSimOptions] = useState(false);
 
   const simDisabled = simulating || state.preseasonPhase || !!state.pendingEuropeanMatch || !!state.pendingSAMatch || !!state.pendingCupMatch;
   
+  const unreadCount = (state.messages || []).filter(m => !m.read).length;
+
   const filteredMenuItems = isRanked
     ? MENU_ITEMS.filter(item => !RANKED_HIDDEN.includes(item.id))
     : MENU_ITEMS;
@@ -125,7 +133,12 @@ export default function MobileNav({ activeTab, onTabChange, onAdvanceWeek, onSim
               }`}
               onClick={() => handleTabClick(tab.id)}
             >
-              <span className="icon">{tab.icon}</span>
+              <span className="icon">
+                {tab.icon}
+                {tab.id === 'menu' && unreadCount > 0 && (
+                  <span className="mobile-nav__dot" />
+                )}
+              </span>
               <span className="label">{tab.label}</span>
             </button>
           ))}
@@ -150,6 +163,9 @@ export default function MobileNav({ activeTab, onTabChange, onAdvanceWeek, onSim
                 >
                   <span className="icon">{item.icon}</span>
                   <span className="label">{item.label}</span>
+                  {item.id === 'messages' && unreadCount > 0 && (
+                    <span className="mobile-menu__badge">{unreadCount > 9 ? '9+' : unreadCount}</span>
+                  )}
                 </button>
               ))}
             </div>

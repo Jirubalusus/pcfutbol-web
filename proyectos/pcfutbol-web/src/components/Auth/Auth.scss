@@ -1,57 +1,120 @@
+// ============================================================
+// AUTH — Apple-inspired glass morphism login
+// ============================================================
+
+@keyframes authFadeIn {
+  from { opacity: 0; transform: translateY(24px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes authIconPulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50%      { transform: scale(1.08); opacity: 1; }
+}
+
+@keyframes authShimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes authShakeError {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
 .auth {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-tertiary) 50%, var(--color-bg-secondary) 100%);
   padding: 20px;
+  position: relative;
+  overflow: hidden;
 
-  &__card {
-    background: rgba(20, 40, 70, 0.9);
-    border-radius: 16px;
-    padding: 40px;
-    width: 100%;
-    max-width: 420px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(100, 150, 255, 0.1);
-    position: relative;
+  // Subtle radial glow behind card
+  &::before {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(74, 158, 255, 0.08) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
   }
 
-  &__back {
+  &__card {
+    background: rgba(15, 25, 50, 0.75);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border-radius: 24px;
+    padding: 48px 40px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow:
+      0 24px 80px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(255, 255, 255, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+    animation: authFadeIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    z-index: 1;
+  }
+
+  .btn-back {
     position: absolute;
     top: 16px;
     left: 16px;
-    background: none;
-    border: none;
-    color: var(--color-text-secondary);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
     cursor: pointer;
-    font-size: 14px;
-    padding: 8px 12px;
-    border-radius: 6px;
-    transition: all 0.2s;
+    transition: all 0.25s ease;
 
     &:hover {
-      color: var(--color-text-primary);
-      background: var(--color-glass-border);
+      background: rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.8);
     }
   }
 
   &__header {
     text-align: center;
-    margin-bottom: 32px;
+    margin-bottom: 36px;
+    margin-top: 8px;
 
     h2 {
-      color: var(--color-text-primary);
-      font-size: 24px;
+      color: #f0f6fc;
+      font-size: 1.6rem;
+      font-weight: 700;
       margin: 0;
+      letter-spacing: -0.02em;
     }
   }
 
   &__icon {
-    font-size: 48px;
-    margin-bottom: 16px;
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(74, 158, 255, 0.15) 0%, rgba(74, 158, 255, 0.05) 100%);
+    border: 1px solid rgba(74, 158, 255, 0.2);
+    color: #4a9eff;
+    animation: authIconPulse 3s ease-in-out infinite;
   }
 
+  // ── Google button ──
   &__google {
     width: 100%;
     display: flex;
@@ -59,78 +122,56 @@
     justify-content: center;
     gap: 12px;
     padding: 14px 20px;
-    background: white;
+    background: #fff;
     border: none;
-    border-radius: 8px;
-    font-size: 15px;
-    font-weight: 500;
-    color: #333;
-    cursor: pointer;
-    transition: all 0.2s;
-
-    &:hover:not(:disabled) {
-      background: #f5f5f5;
-      transform: translateY(-1px);
-    }
-
-    &:disabled {
-      opacity: 0.7;
-      cursor: not-allowed;
-    }
-
-    svg {
-      flex-shrink: 0;
-    }
-  }
-
-  &__guest {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 14px 20px;
-    margin-top: 12px;
-    background: linear-gradient(135deg, #ff9500 0%, #ff6b00 100%);
-    border: none;
-    border-radius: 8px;
-    font-size: 15px;
+    border-radius: 12px;
+    font-size: 0.9rem;
     font-weight: 600;
-    color: var(--color-text-primary);
+    color: #1f1f1f;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 
     &:hover:not(:disabled) {
-      background: linear-gradient(135deg, #ffaa30 0%, #ff8030 100%);
-      transform: translateY(-1px);
+      background: #f8f8f8;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
     }
 
     &:disabled {
-      opacity: 0.7;
+      opacity: 0.6;
       cursor: not-allowed;
     }
+
+    svg { flex-shrink: 0; }
   }
 
+  // ── Divider ──
   &__divider {
     display: flex;
     align-items: center;
-    margin: 24px 0;
-    color: var(--color-text-tertiary);
-    font-size: 13px;
+    margin: 28px 0;
+    color: rgba(255, 255, 255, 0.25);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 
     &::before,
     &::after {
       content: '';
       flex: 1;
       height: 1px;
-      background: var(--color-glass-border);
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
     }
 
-    span {
-      padding: 0 16px;
-    }
+    span { padding: 0 16px; }
   }
 
+  // ── Form ──
   &__form {
     display: flex;
     flex-direction: column;
@@ -143,124 +184,168 @@
     gap: 8px;
 
     label {
-      color: var(--color-text-secondary);
-      font-size: 14px;
-      font-weight: 500;
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
 
     input {
-      background: rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(100, 150, 255, 0.2);
-      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1.5px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
       padding: 14px 16px;
-      font-size: 15px;
-      color: var(--color-text-primary);
-      transition: all 0.2s;
+      font-size: 0.95rem;
+      color: #f0f6fc;
+      transition: all 0.3s ease;
+      -webkit-appearance: none;
 
       &::placeholder {
-        color: var(--color-text-tertiary);
+        color: rgba(255, 255, 255, 0.2);
       }
 
       &:focus {
         outline: none;
-        border-color: #4a9eff;
-        background: rgba(0, 0, 0, 0.4);
+        border-color: rgba(74, 158, 255, 0.5);
+        background: rgba(0, 0, 0, 0.35);
+        box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.1);
       }
     }
   }
 
+  // ── Error / Success ──
   &__error {
-    background: rgba(255, 100, 100, 0.15);
-    border: 1px solid rgba(255, 100, 100, 0.3);
-    border-radius: 8px;
+    background: rgba(255, 69, 58, 0.1);
+    border: 1px solid rgba(255, 69, 58, 0.2);
+    border-radius: 12px;
     padding: 12px 16px;
-    color: #ff8080;
-    font-size: 14px;
+    color: #ff6b6b;
+    font-size: 0.85rem;
     text-align: center;
+    animation: authShakeError 0.4s ease;
   }
 
   &__success {
-    background: rgba(100, 255, 150, 0.15);
-    border: 1px solid rgba(100, 255, 150, 0.3);
-    border-radius: 8px;
+    background: rgba(48, 209, 88, 0.1);
+    border: 1px solid rgba(48, 209, 88, 0.2);
+    border-radius: 12px;
     padding: 12px 16px;
-    color: #80ff99;
-    font-size: 14px;
+    color: #30d158;
+    font-size: 0.85rem;
     text-align: center;
   }
 
+  // ── Buttons ──
   &__btn {
     padding: 14px 24px;
-    border-radius: 8px;
-    font-size: 15px;
+    border-radius: 12px;
+    font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     border: none;
+    position: relative;
+    overflow: hidden;
 
     &--primary {
-      background: linear-gradient(135deg, #4a9eff 0%, #2d7dd2 100%);
-      color: var(--color-text-primary);
+      background: linear-gradient(135deg, #4a9eff 0%, #2563eb 100%);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(74, 158, 255, 0.25);
 
       &:hover:not(:disabled) {
-        background: linear-gradient(135deg, #5aabff 0%, #3d8de2 100%);
-        transform: translateY(-1px);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(74, 158, 255, 0.35);
+      }
+
+      &:active:not(:disabled) {
+        transform: translateY(0);
+      }
+
+      // Shimmer effect on hover
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
+        background-size: 200% 100%;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      &:hover::after {
+        opacity: 1;
+        animation: authShimmer 1.5s ease infinite;
       }
     }
 
     &--secondary {
-      background: var(--color-glass-border);
-      color: var(--color-text-secondary);
-      border: 1px solid var(--color-glass-border);
+      background: rgba(255, 255, 255, 0.06);
+      color: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.1);
 
       &:hover:not(:disabled) {
-        background: var(--color-glass-border);
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+      }
+    }
+
+    &--text {
+      background: none;
+      color: rgba(255, 255, 255, 0.4);
+      padding: 8px;
+      font-size: 0.8rem;
+
+      &:hover {
+        color: rgba(255, 255, 255, 0.7);
       }
     }
 
     &:disabled {
-      opacity: 0.6;
+      opacity: 0.5;
       cursor: not-allowed;
+      transform: none !important;
     }
   }
 
+  // ── Links ──
   &__links {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 12px;
-    margin-top: 24px;
+    margin-top: 28px;
 
     button {
       background: none;
       border: none;
-      color: #4a9eff;
-      font-size: 14px;
+      color: rgba(74, 158, 255, 0.8);
+      font-size: 0.85rem;
       cursor: pointer;
-      transition: color 0.2s;
+      transition: all 0.2s;
+      padding: 4px 8px;
+      border-radius: 6px;
 
       &:hover {
-        color: #7ab8ff;
-        text-decoration: underline;
+        color: #4a9eff;
+        background: rgba(74, 158, 255, 0.08);
       }
     }
   }
 
+  // ── Verify screen ──
   &__verify-message {
     text-align: center;
-    color: var(--color-text-secondary);
-    line-height: 1.6;
-    margin-bottom: 24px;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.7;
+    margin-bottom: 28px;
 
-    p {
-      margin: 8px 0;
-    }
+    p { margin: 8px 0; }
   }
 
   &__email-display {
     color: #4a9eff;
-    font-weight: 600;
-    font-size: 16px;
+    font-weight: 700;
+    font-size: 1.05rem;
   }
 
   &__verify-actions {
@@ -269,8 +354,7 @@
     gap: 12px;
   }
 
-
-// Google Play Games button (Android)
+  // ── Play Games (Android) ──
   &__playgames {
     width: 100%;
     display: flex;
@@ -279,55 +363,54 @@
     gap: 12px;
     padding: 16px 24px;
     border: none;
-    border-radius: 12px;
-    font-size: 16px;
+    border-radius: 14px;
+    font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
-    color: var(--color-text-primary);
+    color: #fff;
     margin-bottom: 24px;
     min-height: 56px;
+    box-shadow: 0 4px 16px rgba(76, 175, 80, 0.25);
 
-    svg {
-      flex-shrink: 0;
-    }
+    svg { flex-shrink: 0; }
 
     &:hover:not(:disabled) {
-      background: linear-gradient(135deg, #5CBF60 0%, #3E8D42 100%);
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
+      box-shadow: 0 8px 24px rgba(76, 175, 80, 0.35);
     }
 
     &:disabled {
-      opacity: 0.7;
+      opacity: 0.6;
       cursor: not-allowed;
-      transform: none;
     }
   }
 
   &__android-info {
     text-align: center;
-    color: var(--color-text-secondary);
-    font-size: 14px;
-    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.85rem;
+    line-height: 1.7;
     margin-bottom: 24px;
     padding: 16px;
-    background: var(--color-glass);
-    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
   }
 
   &__android-benefits {
     margin-top: 24px;
     padding: 16px;
-    background: rgba(76, 175, 80, 0.1);
-    border-radius: 8px;
-    border: 1px solid rgba(76, 175, 80, 0.2);
+    background: rgba(76, 175, 80, 0.06);
+    border-radius: 12px;
+    border: 1px solid rgba(76, 175, 80, 0.15);
 
     h4 {
       color: #4CAF50;
       margin: 0 0 12px 0;
-      font-size: 14px;
+      font-size: 0.85rem;
+      font-weight: 600;
     }
 
     ul {
@@ -336,36 +419,68 @@
       margin: 0;
 
       li {
-        color: var(--color-text-secondary);
-        font-size: 13px;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.8rem;
         padding: 6px 0;
       }
     }
   }
+
+  // ── Guest button ──
+  &__guest {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 20px;
+    margin-top: 12px;
+    background: linear-gradient(135deg, #ff9500 0%, #ff6b00 100%);
+    border: none;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(255, 149, 0, 0.25);
+
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255, 149, 0, 0.35);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
 }
 
+// ── Mobile ──
 @media (max-width: 768px) {
   .auth {
     padding: 12px;
+    align-items: flex-start;
+    padding-top: 10vh;
+
+    &::before { display: none; }
 
     &__card {
-      padding: 20px;
-      max-width: calc(100vw - 24px);
+      padding: 32px 24px;
+      border-radius: 20px;
+      max-width: 100%;
     }
 
-    &__header h2 {
-      font-size: 20px;
+    &__header {
+      margin-bottom: 28px;
+      h2 { font-size: 1.4rem; }
     }
 
     &__icon {
-      font-size: 40px;
-    }
-
-    &__google,
-    &__guest,
-    &__playgames,
-    &__btn {
-      min-height: 48px;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
     }
   }
 }

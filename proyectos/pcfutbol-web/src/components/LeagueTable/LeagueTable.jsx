@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useGame } from '../../context/GameContext';
+import { TutorialModal, useTutorial } from '../Tutorial/Tutorial';
 import { Trophy, ChevronDown, ChevronUp, Globe, RefreshCw } from 'lucide-react';
 import { getLeagueTable, LEAGUE_CONFIG, initializeOtherLeagues, simulateOtherLeaguesWeek, isAperturaClausura, computeAccumulatedTable } from '../../game/multiLeagueEngine';
 import { sortTable } from '../../game/leagueEngine';
@@ -296,9 +297,17 @@ const COUNTRY_FLAGS = {
 export default function LeagueTable() {
   const { state, dispatch } = useGame();
   const { t } = useTranslation();
+  const leagueTableTutorial = useTutorial('leagueTable');
   const playerLeagueId = state.playerLeagueId || 'laliga';
   const [selectedLeague, setSelectedLeague] = useState(playerLeagueId);
-  const [selectedGroup, setSelectedGroup] = useState(null);
+  // For group leagues, auto-initialize selectedGroup to playerGroupId
+  const [selectedGroup, setSelectedGroup] = useState(() => {
+    const zones = LEAGUE_ZONES[playerLeagueId];
+    if (zones?.isGroupLeague && state.playerGroupId) {
+      return state.playerGroupId;
+    }
+    return null;
+  });
   const [showAllTeams, setShowAllTeams] = useState(false);
   const [tournamentTab, setTournamentTab] = useState('current'); // 'apertura' | 'clausura' | 'acumulada' | 'current'
   
@@ -496,6 +505,14 @@ export default function LeagueTable() {
 
   return (
     <div className="league-table-v2">
+      {leagueTableTutorial.shouldShow && (
+        <TutorialModal
+          id="leagueTable"
+          steps={[{ text: t('tutorial.leagueTableQuick') }]}
+          onComplete={leagueTableTutorial.markSeen}
+          onDismissAll={leagueTableTutorial.dismissAll}
+        />
+      )}
       {/* Header con selector de liga */}
       <div className="league-table-v2__header">
         <h2>

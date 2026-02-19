@@ -235,7 +235,7 @@ export default function Plantilla() {
         id: Date.now(),
         type: 'contract',
         title: `${selectedPlayer.name} ha renovado`,
-        content: `Nuevo contrato: ${newYears} años, ${formatMoney(newSalary)}/sem`,
+        content: `Nuevo contrato: ${newYears} años, ${formatMoney(newSalary * 52)}/año`,
         date: `Semana ${state.currentWeek}`
       }
     });
@@ -357,22 +357,26 @@ export default function Plantilla() {
 
   return (
     <div className="plantilla">
-      {/* Header con finanzas */}
-      <div className="plantilla__header">
-        <div className="header-title">
-          <h2><ClipboardList size={16} /> {t('plantilla.title')}</h2>
-          <span className="player-count">{players.length} {t('plantilla.players')}</span>
-        </div>
-        
-        <div className="header-finances">
-          <div className="finance-box budget">
-            <span className="label">{t('plantilla.budget')}</span>
-            <span className="value">{formatMoney(budget)}</span>
+      {/* Hero Header */}
+      <div className="plantilla__hero">
+        <div className="plantilla__hero-bg" />
+        <div className="plantilla__hero-content">
+          <div className="plantilla__hero-icon">
+            <ClipboardList size={28} />
           </div>
-          <div className="finance-box salary">
-            <span className="label">{t('plantilla.weeklySalary')}</span>
-            <span className="value">{formatMoney(totalYearlySalary)}{t('plantilla.perYear')}</span>
-            <span className="yearly">{formatMoney(totalWeeklySalary)}{t('plantilla.perWeek')} ({salaryPercentage}% {t('plantilla.ofBudget')})</span>
+          <div className="plantilla__hero-info">
+            <span className="plantilla__hero-label">{t('plantilla.title')}</span>
+            <span className="plantilla__hero-count">{players.length} {t('plantilla.players')}</span>
+          </div>
+        </div>
+        <div className="plantilla__hero-stats">
+          <div className="plantilla__hero-stat budget">
+            <span className="stat-label">{t('plantilla.budget')}</span>
+            <span className="stat-value">{formatMoney(budget)}</span>
+          </div>
+          <div className="plantilla__hero-stat salary">
+            <span className="stat-label">{t('plantilla.yearlySalary')}</span>
+            <span className="stat-value">{formatMoney(totalYearlySalary)}{t('plantilla.perYear')}</span>
           </div>
         </div>
       </div>

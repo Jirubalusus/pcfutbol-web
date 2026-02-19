@@ -171,11 +171,10 @@ export default function EditionMode({ onBack, onEditionApplied }) {
   const activeEditionData = editions.find(e => e.id === activeEdition);
 
   return (
-    <div className="edition-mode">
+    <div className="edition-mode unified-screen">
       <div className="edition-mode__header">
-        <button className="edition-mode__back" onClick={onBack}>
-          <ArrowLeft size={20} />
-          <span>{t('edition.back')}</span>
+        <button className="btn-back" onClick={onBack}>
+          <ArrowLeft size={16} /> {t('edition.back')}
         </button>
         <h1>
           <Package size={24} />

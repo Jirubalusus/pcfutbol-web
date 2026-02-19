@@ -6,8 +6,9 @@ import com.getcapacitor.BridgeActivity;
 public class MainActivity extends BridgeActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        // Register the PlayGames plugin
+        // Register plugins
         registerPlugin(PlayGamesPlugin.class);
+        registerPlugin(BillingPlugin.class);
         super.onCreate(savedInstanceState);
     }
 }

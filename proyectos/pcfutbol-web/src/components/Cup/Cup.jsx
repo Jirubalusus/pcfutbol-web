@@ -175,7 +175,10 @@ export default function Cup() {
                           {match.played ? (
                             <span className={`score ${matchHasPlayer ? (playerWon ? 'win' : 'loss') : ''}`}>
                               {match.homeScore} - {match.awayScore}
-                              {match.penalties && <span className="pen">(P)</span>}
+                              {match.penalties && match.penaltiesDetail && (
+                                <span className="pen">({match.penaltiesDetail.home}-{match.penaltiesDetail.away} pen.)</span>
+                              )}
+                              {match.penalties && !match.penaltiesDetail && <span className="pen">(P)</span>}
                             </span>
                           ) : (
                             <span className="vs">vs</span>

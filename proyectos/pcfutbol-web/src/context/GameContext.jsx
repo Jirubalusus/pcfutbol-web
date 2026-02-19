@@ -1,8 +1,11 @@
 ﻿import React, { createContext, useContext, useReducer, useEffect, useRef } from 'react';
 import { db, auth } from '../firebase/config';
+import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc, setDoc, updateDoc, deleteDoc } from 'firebase/firestore';
 import { saveContrarreloj, deleteContrarrelojSave } from '../firebase/contrarrelojSaveService';
 import { saveProManager, deleteProManagerSave } from '../firebase/proManagerService';
+import { saveGlory, deleteGlorySave } from '../firebase/glorySaveService';
+import { loadUserSettings, saveUserSettings } from '../firebase/settingsService';
 import { calculateBoardConfidence } from '../game/proManagerEngine';
 import { LALIGA_TEAMS } from '../data/teamsFirestore';
 import { generateFacilityEvent, generateYouthPlayer, generateSonPlayer, applyEventChoice, FACILITY_SPECIALIZATIONS } from '../game/facilitiesSystem';
@@ -29,23 +32,20 @@ const GameContext = createContext();
 // LINEUP INTEGRITY — Asegurar que siempre hay 11 jugadores
 // Rellena huecos del lineup con los mejores disponibles
 // ============================================================
-function ensureFullLineup(lineup, players, formation) {
+export function ensureFullLineup(lineup, players, formation) {
   if (!lineup || !players) return lineup;
   
-  // Always clean ghost players (sold/injured) from lineup, even with < 11 players
+  // Always clean ghost players (sold/injured/suspended) from lineup
   if (players.length > 0) {
     const validNames = new Set(players.filter(p => !p.injured && !p.suspended).map(p => p.name));
-    const cleaned = { ...lineup };
-    let didClean = false;
-    Object.entries(cleaned).forEach(([slot, p]) => {
+    Object.entries(lineup).forEach(([slot, p]) => {
       if (p && p.name && !validNames.has(p.name)) {
-        cleaned[slot] = null;
-        didClean = true;
+        lineup = { ...lineup };
+        lineup[slot] = null;
       }
     });
-    if (players.length < 11) return didClean ? cleaned : lineup;
   }
-  if (players.length < 11) return lineup;
+  // Don't bail early — always try to fill empty slots even with small squads
   
   const FORMATION_SLOTS = {
     '4-3-3':       ['GK','RB','CB1','CB2','LB','CM1','CDM','CM2','RW','ST','LW'],
@@ -130,7 +130,7 @@ function getPlayerMarketValueForOffers(player) {
 // Check if we should use local storage (dev mode or ?local=true)
 // On Capacitor (native), always use Firebase even though hostname is localhost
 const isCapacitor = typeof window !== 'undefined' && window.Capacitor && window.Capacitor.isNativePlatform;
-// All saves use Firebase (localStorage only for saveId reference)
+// All saves use Firebase — no localStorage for game data
 
 const initialState = {
   // User & Save
@@ -413,14 +413,11 @@ function gameReducer(state, action) {
         (sanitized.currentScreen === 'ranked_match' || sanitized.currentScreen === 'ranked_lobby');
       if (isRankedSave) {
         console.warn('⚠️ Discarding old ranked save — ranked matches are not persistent');
-        // Clean up: delete from Firebase and clear localStorage
+        // Clean up: delete from Firebase
         try {
-          const oldSaveId = localStorage.getItem('pcfutbol_saveId');
-          if (oldSaveId) {
-            deleteDoc(doc(db, 'saves', oldSaveId)).catch(() => {});
+          if (sanitized.saveId) {
+            deleteDoc(doc(db, 'saves', sanitized.saveId)).catch(() => {});
           }
-          localStorage.removeItem('pcfutbol_saveId');
-          localStorage.removeItem('pcfutbol_local_save');
         } catch (e) { /* ignore cleanup errors */ }
         return { ...state, loaded: true };
       }
@@ -444,7 +441,7 @@ function gameReducer(state, action) {
       }
       
       // Sanitize lineup on load: remove ghost players (sold/injured/suspended/missing)
-      const loadedState = { ...state, ...sanitized, ...cleanRanked, otherLeagues: otherLeaguesData || state.otherLeagues, loaded: true, _contrarrelojUserId: sanitized._contrarrelojUserId || null, _proManagerUserId: sanitized._proManagerUserId || null };
+      const loadedState = { ...state, ...sanitized, ...cleanRanked, otherLeagues: otherLeaguesData || state.otherLeagues, loaded: true, _contrarrelojUserId: sanitized._contrarrelojUserId || null, _proManagerUserId: sanitized._proManagerUserId || null, _gloryUserId: sanitized._gloryUserId || null };
       if (loadedState.lineup && loadedState.team?.players?.length >= 11) {
         loadedState.lineup = ensureFullLineup(loadedState.lineup, loadedState.team.players, loadedState.formation || '4-3-3');
       }
@@ -549,12 +546,28 @@ function gameReducer(state, action) {
         playerForm: initialForm,
         matchTracker: initialTracker,
         rejectedTransfers: {},
-        ...(action.payload.managerName ? { managerName: action.payload.managerName } : {})
+        managerName: action.payload.managerName || state.managerName || initialState.managerName,
+        // Glory mode: start with higher confidence (80 instead of 75)
+        ...(incomingGameMode === 'glory' ? { managerConfidence: 80 } : {}),
+        // Glory mode data
+        gloryData: incomingGameMode === 'glory' ? (action.payload.gloryData || null) : null,
       };
     }
 
     case 'SET_SCREEN':
       return { ...state, currentScreen: action.payload };
+
+    case 'SET_SAVE_SLOT':
+      return { ...state, _saveSlotIndex: action.payload };
+
+    case 'SET_GLORY_USER_ID':
+      return { ...state, _gloryUserId: action.payload };
+
+    case 'NAVIGATE_TAB':
+      return { ...state, pendingTab: action.payload };
+
+    case 'CLEAR_PENDING_TAB':
+      return { ...state, pendingTab: null };
 
     case 'SET_SIMULATING':
       return { ...state, isSimulating: !!action.payload };
@@ -622,6 +635,24 @@ function gameReducer(state, action) {
       const { team, leagueId, _proManagerUserId, stadiumInfo, stadiumLevel, preseasonMatches } = action.payload;
       const switchStadiumInfo = stadiumInfo || { name: team.stadium || 'Stadium', capacity: 8000 };
       const switchStadiumLevel = stadiumLevel ?? 0;
+      // Generate contract based on age (same logic as NEW_GAME)
+      const _genContract = (age) => {
+        if (age <= 21) return Math.floor(Math.random() * 3) + 3;
+        if (age <= 25) return Math.floor(Math.random() * 3) + 3;
+        if (age <= 28) return Math.floor(Math.random() * 3) + 2;
+        if (age <= 32) return Math.floor(Math.random() * 2) + 2;
+        return Math.floor(Math.random() * 2) + 1;
+      };
+      // Assign roles, contracts and salaries to all players (mirrors NEW_GAME logic)
+      const switchTeamWithRoles = {
+        ...team,
+        players: (team.players || []).map(player => ({
+          ...player,
+          role: player.role || assignRole(player),
+          contractYears: player.contractYears ?? _genContract(player.age || 25),
+          salary: generateSalary(player, leagueId)
+        }))
+      };
       return {
         ...initialState,
         gameStarted: true,
@@ -630,7 +661,7 @@ function gameReducer(state, action) {
         _proManagerUserId: _proManagerUserId || state._proManagerUserId,
         currentSeason: state.currentSeason, // Preserve career season count
         teamId: team.id,
-        team: { ...team },
+        team: switchTeamWithRoles,
         leagueId: leagueId,
         playerLeagueId: leagueId,
         leagueTier: leagueId ? getLeagueTier(leagueId) : 1,
@@ -642,8 +673,8 @@ function gameReducer(state, action) {
         preseasonMatches: preseasonMatches || [],
         preseasonPhase: !!(preseasonMatches && preseasonMatches.length > 0),
         preseasonWeek: 1,
-        playerForm: generateInitialForm(team.players || []),
-        matchTracker: Object.fromEntries((team.players || []).map(p => [p.name, { consecutivePlayed: 0, weeksSincePlay: 3 }])),
+        playerForm: generateInitialForm(switchTeamWithRoles.players || []),
+        matchTracker: Object.fromEntries((switchTeamWithRoles.players || []).map(p => [p.name, { consecutivePlayed: 0, weeksSincePlay: 3 }])),
         stadium: {
           ...initialState.stadium,
           level: switchStadiumLevel,
@@ -684,6 +715,99 @@ function gameReducer(state, action) {
 
     case 'SET_MANAGER_NAME':
       return { ...state, managerName: action.payload };
+
+    case 'SET_PREMIUM':
+      return { ...state, premium: action.payload };
+
+    case 'START_GLORY_MODE':
+      return { ...state, ...action.payload, currentScreen: 'office', gameStarted: true, gameMode: 'glory' };
+
+    case 'UPDATE_GLORY_STATE':
+      return { ...state, ...action.payload };
+
+    case 'GLORY_REPLAY_MATCH': {
+      // Second Chance perk: undo the last played match and let the user replay it
+      if (!state.gloryData?.perks?.secondChance || (state.gloryData?.replaysLeft || 0) <= 0) {
+        return state;
+      }
+      const teamId = state.teamId;
+      const playedMatches = (state.fixtures || [])
+        .filter(f => f.played && (f.homeTeam === teamId || f.awayTeam === teamId))
+        .sort((a, b) => b.week - a.week);
+      
+      if (playedMatches.length === 0) return state;
+      
+      const lastMatch = playedMatches[0];
+      const isHome = lastMatch.homeTeam === teamId;
+      const playerGoals = isHome ? lastMatch.homeScore : lastMatch.awayScore;
+      const rivalGoals = isHome ? lastMatch.awayScore : lastMatch.homeScore;
+      
+      // Only allow replay on a loss
+      if (playerGoals >= rivalGoals) return state;
+      
+      // Revert the fixture to unplayed
+      const revertedFixtures = state.fixtures.map(f => {
+        if (f.id === lastMatch.id) {
+          return { ...f, played: false, homeScore: null, awayScore: null, events: [] };
+        }
+        return f;
+      });
+      
+      // Revert league table stats for this match
+      const revertedTable = state.leagueTable.map(t => {
+        if (t.teamId === lastMatch.homeTeam) {
+          const goals = lastMatch.homeScore;
+          const against = lastMatch.awayScore;
+          const won = goals > against ? 1 : 0;
+          const drawn = goals === against ? 1 : 0;
+          const lost = goals < against ? 1 : 0;
+          const pts = won * 3 + drawn;
+          return {
+            ...t,
+            played: Math.max(0, t.played - 1),
+            won: Math.max(0, t.won - won),
+            drawn: Math.max(0, t.drawn - drawn),
+            lost: Math.max(0, t.lost - lost),
+            goalsFor: Math.max(0, t.goalsFor - goals),
+            goalsAgainst: Math.max(0, t.goalsAgainst - against),
+            goalDifference: Math.max(0, t.goalsFor - goals) - Math.max(0, t.goalsAgainst - against),
+            points: Math.max(0, t.points - pts),
+          };
+        }
+        if (t.teamId === lastMatch.awayTeam) {
+          const goals = lastMatch.awayScore;
+          const against = lastMatch.homeScore;
+          const won = goals > against ? 1 : 0;
+          const drawn = goals === against ? 1 : 0;
+          const lost = goals < against ? 1 : 0;
+          const pts = won * 3 + drawn;
+          return {
+            ...t,
+            played: Math.max(0, t.played - 1),
+            won: Math.max(0, t.won - won),
+            drawn: Math.max(0, t.drawn - drawn),
+            lost: Math.max(0, t.lost - lost),
+            goalsFor: Math.max(0, t.goalsFor - goals),
+            goalsAgainst: Math.max(0, t.goalsAgainst - against),
+            goalDifference: Math.max(0, t.goalsFor - goals) - Math.max(0, t.goalsAgainst - against),
+            points: Math.max(0, t.points - pts),
+          };
+        }
+        return t;
+      });
+      
+      // Go back to the match week
+      return {
+        ...state,
+        fixtures: revertedFixtures,
+        leagueTable: sortTable(revertedTable),
+        currentWeek: lastMatch.week,
+        gloryData: {
+          ...state.gloryData,
+          replaysLeft: (state.gloryData.replaysLeft || 1) - 1,
+        },
+      };
+    }
 
     case 'UPDATE_MONEY':
       return { ...state, money: state.money + action.payload };
@@ -826,7 +950,14 @@ function gameReducer(state, action) {
 
       // === PROCESAR CESIONES AL FINAL DE TEMPORADA ===
       const currentLoans = state.activeLoans || [];
-      const { expiredLoans: seasonExpiredLoans, remainingLoans: seasonRemainingLoans, messages: loanExpireMessages } = expireLoans(currentLoans, state.leagueTeams);
+      const { expiredLoans: seasonExpiredLoans, remainingLoans: seasonRemainingLoans, messages: allLoanExpireMessages } = expireLoans(currentLoans, state.leagueTeams);
+      // Only show loan messages involving the player's team
+      const myTeamId = state.teamId;
+      const myExpiredLoans = seasonExpiredLoans.filter(l => l.fromTeamId === myTeamId || l.toTeamId === myTeamId);
+      const loanExpireMessages = allLoanExpireMessages.filter((_, i) => {
+        const loan = seasonExpiredLoans[i];
+        return loan && (loan.fromTeamId === myTeamId || loan.toTeamId === myTeamId);
+      });
 
       // Función para calcular si un jugador decide retirarse
       const checkRetirement = (player, newAge) => {
@@ -890,12 +1021,21 @@ function gameReducer(state, action) {
         };
       }) || []);
 
+      // Glory mode: auto-renew all contracts (players don't leave via contract expiry)
+      const isGlory = state.gameMode === 'glory';
+      const renewedPlayers = isGlory
+        ? evolvedPlayers.map(p => ({ ...p, contractYears: Math.max(p.contractYears, 2) }))
+        : evolvedPlayers;
+
+      // Glory mode: reset confidence to 90 each season (fresh start)
+      const gloryConfidenceReset = isGlory ? 80 : undefined;
+
       // Capturar jugadores que se van (retiro o fin contrato) para generar "hijos"
-      const departingPlayers = evolvedPlayers.filter(p => p.contractYears <= 0 || p.retiring);
-      const retiringPlayers = evolvedPlayers.filter(p => p.retiring);
+      const departingPlayers = renewedPlayers.filter(p => p.contractYears <= 0 || p.retiring);
+      const retiringPlayers = renewedPlayers.filter(p => p.retiring);
 
       // Filtrar: solo quedan los activos
-      const updatedPlayers = evolvedPlayers.filter(player => player.contractYears > 0 && !player.retiring);
+      const updatedPlayers = renewedPlayers.filter(player => player.contractYears > 0 && !player.retiring);
 
       // Limpiar lineup de jugadores que ya no están en la plantilla
       const playerNames = new Set(updatedPlayers.map(p => p.name));
@@ -1001,6 +1141,7 @@ function gameReducer(state, action) {
         managerFiredReason: isBankruptAtSeasonEnd
           ? 'managerFired.bankruptReason'
           : state.managerFiredReason,
+        ...(gloryConfidenceReset ? { managerConfidence: gloryConfidenceReset } : {}),
         // Actualizar estadio: cobrar acumulado, resetear para nueva temporada, desbloquear precio
         stadium: {
           ...state.stadium,
@@ -1044,8 +1185,8 @@ function gameReducer(state, action) {
         },
         // Guardar partidos de pretemporada
         preseasonMatches: preseasonMatches,
-        preseasonPhase: true,
-        preseasonWeek: 1,
+        preseasonPhase: !!(preseasonMatches && preseasonMatches.length > 0),
+        preseasonWeek: (preseasonMatches && preseasonMatches.length > 0) ? 1 : 0,
         // Usar nuevos fixtures y tabla generados
         leagueTable: newTable || [],
         fixtures: newFixtures || [],
@@ -1324,18 +1465,6 @@ function gameReducer(state, action) {
 
         const playerMarketValue = calculateMarketValue(targetPlayer, targetTeam.leagueId);
         const offerRatio = offer.amount / playerMarketValue;
-        const expiryWeeks = offerRatio >= 0.90 ? 3 : offerRatio >= 0.70 ? 2 : 1;
-
-        if (weeksPending >= expiryWeeks) {
-          preseasonMoneyReturned += offer.amount;
-          preseasonOfferMessages.push({
-            id: Date.now() + Math.random(), type: 'transfer',
-            titleKey: 'gameMessages.offerExpiredPlayer', titleParams: { player: offer.playerName },
-            contentKey: 'gameMessages.offerExpiredRefund', contentParams: { player: offer.playerName, amount: formatTransferPrice(offer.amount) },
-            dateKey: 'gameMessages.preseason'
-          });
-          return null;
-        }
 
         if (weeksPending < 1) return offer;
 
@@ -1440,10 +1569,11 @@ function gameReducer(state, action) {
           const targetTeam = preseasonUpdatedLeagueTeams.find(t => t.id === offer.toTeamId);
           const targetPlayer = targetTeam ? (targetTeam.players || []).find(p => p.name === offer.playerName) : null;
           if (targetPlayer) {
+            const _secretClause = state.gloryData?.perks?.secretClause;
             preseasonUpdatedPlayers.push({
               ...targetPlayer,
-              salary: offer.salaryOffer,
-              contractYears: offer.contractYears || 4,
+              salary: _secretClause ? Math.round((offer.salaryOffer || 0) * 0.7) : offer.salaryOffer,
+              contractYears: (offer.contractYears || 4) + (_secretClause ? 2 : 0),
               teamId: state.teamId,
               morale: 80,
               fitness: 100
@@ -1549,7 +1679,8 @@ function gameReducer(state, action) {
       const baseSponsorIncome = [0, 25000, 70000, 140000, 235000][sponsorLevel] || 0;
       // Scale by league tier - use facility cost multiplier for consistency
       const sponsorMult = { laliga: 1.0, premierLeague: 1.2, serieA: 0.85, bundesliga: 0.9, ligue1: 0.8, segunda: 0.4, primeraRFEF: 0.15, segundaRFEF: 0.08 }[state.playerLeagueId] || 0.5;
-      const sponsorWeeklyIncome = Math.round(baseSponsorIncome * sponsorMult);
+      const glorySponsorMult = state.gloryData?.sponsorMultiplier || 1;
+      const sponsorWeeklyIncome = Math.round(baseSponsorIncome * sponsorMult * glorySponsorMult);
       const totalIncome = sponsorWeeklyIncome;
 
       // Salaries are NOT deducted weekly â€" they are paid at end of season
@@ -1557,10 +1688,17 @@ function gameReducer(state, action) {
       const salaryExpenses = 0;
 
       // Heal injuries - reduce weeks left by 1
+      // Skip players injured THIS week (injuredAtWeek === currentWeek) — they just got hurt
+      // in the match that was played before this ADVANCE_WEEK. Without this guard,
+      // 1-week injuries would be cleared instantly and the player would miss 0 matches.
       const healedPlayerNames = [];
       const hasPerformanceSpec = state.facilitySpecs?.medical === 'performance';
       let updatedPlayers = state.team?.players?.map(p => {
         if (p.injured && p.injuryWeeksLeft > 0) {
+          // Don't heal injuries that were just set this week (match injuries)
+          if (p.injuredAtWeek === state.currentWeek) {
+            return { ...p, injuredAtWeek: undefined }; // Clear flag so next week heals normally
+          }
           const newWeeksLeft = p.injuryWeeksLeft - 1;
           if (newWeeksLeft <= 0) {
             healedPlayerNames.push(p.name);
@@ -1569,9 +1707,9 @@ function gameReducer(state, action) {
               postInjuryBonus: 2,
               postInjuryWeeksLeft: 4
             } : {};
-            return { ...p, injured: false, injuryWeeksLeft: 0, injuryType: null, treated: false, ...postInjuryBoost };
+            return { ...p, injured: false, injuryWeeksLeft: 0, injuryType: null, injuredAtWeek: undefined, treated: false, ...postInjuryBoost };
           }
-          return { ...p, injuryWeeksLeft: newWeeksLeft };
+          return { ...p, injuryWeeksLeft: newWeeksLeft, injuredAtWeek: undefined };
         }
         // Countdown postInjuryBonus
         if (p.postInjuryWeeksLeft > 0) {
@@ -1787,9 +1925,9 @@ function gameReducer(state, action) {
 
       // ============================================================
       // OFERTAS ENTRANTES POR JUGADORES DEL USUARIO
-      // 40% probabilidad base por día (80% en pretemporada)
-      // Puede generar 1-4 ofertas cuando se activa
-      // Pretemporada: mínimo 3-5 ofertas garantizadas en total
+      // 15% probabilidad base por jornada (50% en pretemporada)
+      // Puede generar 1-3 ofertas cuando se activa (normalmente 1)
+      // Pretemporada: 35% extra chance si no llegó ninguna esa ronda
       // ============================================================
       let newIncomingOffers = [...(state.incomingOffers || [])];
 
@@ -1801,13 +1939,13 @@ function gameReducer(state, action) {
       // and the game state is not replayed. Skipping refactor for now.
       const isBatchMode = action._batchMode || false;
       const isPreseason = state.preseasonPhase || false;
-      // Pretemporada: 80% chance, temporada normal: 40% chance
-      const offerChance = isPreseason ? 0.80 : 0.40;
+      // Pretemporada: 50% chance, temporada normal: 15% chance
+      const offerChance = isPreseason ? 0.50 : 0.15;
 
       if (!isBatchMode && windowStatus.open && state.team?.players && Math.random() < offerChance) {
-        // Cuántas ofertas hoy: 1-4 (más probable 1-2)
+        // Cuántas ofertas hoy: 1-2 (raramente 3)
         const roll = Math.random();
-        const numOffers = roll < 0.45 ? 1 : roll < 0.75 ? 2 : roll < 0.92 ? 3 : 4;
+        const numOffers = roll < 0.65 ? 1 : roll < 0.92 ? 2 : 3;
 
         // Cualquier jugador puede recibir ofertas (no filtrar por OVR)
         const eligiblePlayers = state.team.players
@@ -1869,10 +2007,10 @@ function gameReducer(state, action) {
 
       // Pretemporada: garantizar mínimo ofertas si no han llegado suficientes
       // Genera 1-2 ofertas extra si esta semana no se generó ninguna
-      if (!isBatchMode && isPreseason && windowStatus.open && state.team?.players) {
+      if (!isBatchMode && isPreseason && windowStatus.open && state.team?.players && Math.random() < 0.35) {
         const offersThisRound = newIncomingOffers.length - (state.incomingOffers || []).length;
         if (offersThisRound === 0) {
-          // Forzar al menos 1 oferta en pretemporada
+          // 35% chance de forzar 1 oferta extra en pretemporada si no llegó ninguna
           const eligibleForced = state.team.players
             .filter(p => !p.injured && !p.onLoan)
             .sort(() => Math.random() - 0.5);
@@ -2572,34 +2710,12 @@ function gameReducer(state, action) {
       }
 
       // ============================================================
-      // CONTRARRELOJ: Check bankrupt condition
+      // CONTRARRELOJ: Bankrupt/fired check moved AFTER offer processing
+      // so that refunded transfer money is accounted for (BUG-01 fix)
       // ============================================================
       let finalMoney = state.money + totalIncome - salaryExpenses - loanSalaryCost;
       let contrarrelojUpdate = state.contrarrelojData;
       let contrarrelojScreenOverride = null;
-
-      if (state.gameMode === 'contrarreloj' && contrarrelojUpdate && !contrarrelojUpdate.finished) {
-        // Bankrupt check
-        if (finalMoney < 0) {
-          contrarrelojUpdate = {
-            ...contrarrelojUpdate,
-            won: false,
-            finished: true,
-            loseReason: 'bankrupt'
-          };
-          contrarrelojScreenOverride = 'contrarreloj_end';
-        }
-        // Fired check
-        else if (managerEval.fired) {
-          contrarrelojUpdate = {
-            ...contrarrelojUpdate,
-            won: false,
-            finished: true,
-            loseReason: 'fired'
-          };
-          contrarrelojScreenOverride = 'contrarreloj_end';
-        }
-      }
 
       // ============================================================
       // PROCESAR OFERTAS PENDIENTES DEL USUARIO (estilo PC Gaffer)
@@ -2631,43 +2747,29 @@ function gameReducer(state, action) {
           return offer;
         }
 
-        // Calcular caducidad: ofertas altas (>90% valor) = 3 sem, medias = 2 sem, bajas = 1 sem
+        // Resolve outgoing offers after 1 week — always get a response (accepted/rejected/counter)
         const weeksPending = nextWeek - (offer.submittedWeek || nextWeek);
-        const targetTeam = updatedLeagueTeams.find(t => t.id === offer.toTeamId);
-        const targetPlayer = targetTeam ? (targetTeam.players || []).find(p => p.name === offer.playerName) : null;
-
-        if (!targetTeam || !targetPlayer) {
-          moneyReturned += offer.amount;
-          offerMessages.push({
-            id: Date.now() + Math.random(), type: 'transfer',
-            titleKey: 'gameMessages.offerCancelled', titleParams: { player: offer.playerName },
-            contentKey: 'gameMessages.playerUnavailableRefund', contentParams: { player: offer.playerName, amount: formatTransferPrice(offer.amount) },
-            dateKey: 'gameMessages.weekDate', dateParams: { week: nextWeek }
-          });
-          return null;
-        }
-
-        const playerMarketValue = calculateMarketValue(targetPlayer, targetTeam.leagueId);
-        const offerRatio = offer.amount / playerMarketValue;
-        // Caducidad: ofertas generosas = 3 sem, razonables = 2 sem, bajas = 1 sem
-        const expiryWeeks = offerRatio >= 0.90 ? 3 : offerRatio >= 0.70 ? 2 : 1;
-
-        // ¿Ha expirado?
-        if (weeksPending >= expiryWeeks) {
-          moneyReturned += offer.amount;
-          offerMessages.push({
-            id: Date.now() + Math.random(), type: 'transfer',
-            titleKey: 'gameMessages.offerExpiredPlayer', titleParams: { player: offer.playerName },
-            contentKey: 'gameMessages.offerExpiredRefund', contentParams: { player: offer.playerName, amount: formatTransferPrice(offer.amount) },
-            dateKey: 'gameMessages.weekDate', dateParams: { week: nextWeek }
-          });
-          return null;
-        }
 
         // Solo resolver tras al menos 1 semana de espera
         if (weeksPending < 1) return offer;
 
-        const isStarter = targetPlayer.overall >= (targetTeam.players || []).reduce((sum, p) => sum + p.overall, 0) / (targetTeam.players?.length || 1) + 3;
+        const targetTeam = updatedLeagueTeams.find(t => t.id === offer.toTeamId);
+        const targetPlayer = targetTeam ? (targetTeam.players || []).find(p => p.name === offer.playerName) : null;
+
+        // If team/player not found in leagueTeams, use offer data to still process
+        const fallbackPlayer = offer.player || { name: offer.playerName, overall: 70, salary: 50000 };
+        const resolvePlayer = targetPlayer || fallbackPlayer;
+        const resolveTeamLeague = targetTeam?.leagueId || offer.fromLeague || state.playerLeagueId;
+
+        const playerMarketValue = targetPlayer 
+          ? calculateMarketValue(targetPlayer, resolveTeamLeague)
+          : (offer.amount * 1.1);
+        const offerRatio = offer.amount / playerMarketValue;
+
+        const teamPlayers = targetTeam?.players || [];
+        const isStarter = teamPlayers.length > 0 
+          ? resolvePlayer.overall >= teamPlayers.reduce((sum, p) => sum + p.overall, 0) / teamPlayers.length + 3
+          : resolvePlayer.overall >= 75; // Fallback when team data not available
 
         // --- RESPUESTA DEL CLUB ---
         let clubResponse = 'rejected';
@@ -2676,14 +2778,14 @@ function gameReducer(state, action) {
 
         if (isStarter && offerRatio < 1.3) {
           clubResponse = 'rejected';
-          clubReason = 'Titular indiscutible, no está en venta';
+          clubReason = 'gameMessages.clubReasonStarter';
         } else if (offerRatio >= 1.15) {
           clubResponse = 'accepted';
-          clubReason = 'Oferta irrechazable';
+          clubReason = 'gameMessages.clubReasonIrresistible';
         } else if (offerRatio >= 0.90) {
           if (Math.random() < 0.65) {
             clubResponse = 'accepted';
-            clubReason = 'Oferta aceptada';
+            clubReason = 'gameMessages.clubReasonAccepted';
           } else {
             clubResponse = 'countered';
             clubCounterAmount = Math.round(playerMarketValue * (1.05 + Math.random() * 0.15));
@@ -2692,42 +2794,42 @@ function gameReducer(state, action) {
         } else if (offerRatio >= 0.70) {
           if (Math.random() < 0.2) {
             clubResponse = 'accepted';
-            clubReason = 'Necesitan liquidez';
+            clubReason = 'gameMessages.clubReasonNeedMoney';
           } else if (Math.random() < 0.6) {
             clubResponse = 'countered';
             clubCounterAmount = Math.round(playerMarketValue * (1.1 + Math.random() * 0.2));
             clubReason = 'gameMessages.clubReasonCounter';
           } else {
-            clubReason = 'Oferta insuficiente';
+            clubReason = 'gameMessages.clubReasonInsufficient';
           }
         } else {
-          clubReason = 'Oferta irrisoria';
+          clubReason = 'gameMessages.clubReasonLaughable';
         }
 
         // --- RESPUESTA DEL JUGADOR ---
         let playerResponse = 'rejected';
         let playerReason = '';
-        const requiredSalary = Math.round((targetPlayer.salary || 50000) * 1.1);
+        const requiredSalaryForOffer = Math.round((resolvePlayer.salary || 50000) * 1.1);
 
-        if (offer.salaryOffer >= requiredSalary * 1.2) {
+        if (offer.salaryOffer >= requiredSalaryForOffer * 1.2) {
           playerResponse = 'accepted';
-          playerReason = 'Encantado con la propuesta';
-        } else if (offer.salaryOffer >= requiredSalary * 0.95) {
+          playerReason = 'gameMessages.playerReasonHappy';
+        } else if (offer.salaryOffer >= requiredSalaryForOffer * 0.95) {
           if (Math.random() < 0.7) {
             playerResponse = 'accepted';
-            playerReason = 'Acepta el proyecto deportivo';
+            playerReason = 'gameMessages.playerReasonProject';
           } else {
-            playerReason = 'Quiere un salario mayor';
+            playerReason = 'gameMessages.playerReasonMoreSalary';
           }
-        } else if (offer.salaryOffer >= requiredSalary * 0.7) {
+        } else if (offer.salaryOffer >= requiredSalaryForOffer * 0.7) {
           if (Math.random() < 0.25) {
             playerResponse = 'accepted';
-            playerReason = 'Le convence el proyecto';
+            playerReason = 'gameMessages.playerReasonConvinced';
           } else {
-            playerReason = 'Salario insuficiente';
+            playerReason = 'gameMessages.playerReasonLowSalary';
           }
         } else {
-          playerReason = 'Oferta salarial irrisoria';
+          playerReason = 'gameMessages.playerReasonLaughableSalary';
         }
 
         // Resultado final
@@ -2754,27 +2856,30 @@ function gameReducer(state, action) {
           contentKey: bothAccepted ? 'gameMessages.transferCompleteContent' : 'gameMessages.offerRejectedContent',
           contentParams: bothAccepted
             ? { player: offer.playerName, cost: formatTransferPrice(offer.amount) }
-            : { clubReason, playerReason },
+            : { clubReasonKey: clubReason, playerReasonKey: playerReason },
           dateKey: 'gameMessages.weekDate', dateParams: { week: nextWeek }
         });
 
         // Si ambos aceptan → fichaje completado (dinero ya descontado)
         if (bothAccepted) {
+          const _sc = state.gloryData?.perks?.secretClause;
           const newPlayer = {
-            ...targetPlayer,
-            salary: offer.salaryOffer,
-            contractYears: offer.contractYears || 4,
+            ...resolvePlayer,
+            salary: _sc ? Math.round((offer.salaryOffer || 0) * 0.7) : offer.salaryOffer,
+            contractYears: (offer.contractYears || 4) + (_sc ? 2 : 0),
             teamId: state.teamId,
             morale: 80,
             fitness: 100
           };
           updatedPlayers = [...updatedPlayers, newPlayer];
-          updatedLeagueTeams = updatedLeagueTeams.map(t => {
-            if (t.id === offer.toTeamId) {
-              return { ...t, players: (t.players || []).filter(p => p.name !== offer.playerName), budget: (t.budget || 50_000_000) + offer.amount };
-            }
-            return t;
-          });
+          if (targetTeam) {
+            updatedLeagueTeams = updatedLeagueTeams.map(t => {
+              if (t.id === offer.toTeamId) {
+                return { ...t, players: (t.players || []).filter(p => p.name !== offer.playerName), budget: (t.budget || 50_000_000) + offer.amount };
+              }
+              return t;
+            });
+          }
         } else {
           // Rechazado por alguno → devolver dinero (salvo contraoferta pendiente)
           if (clubResponse !== 'countered') {
@@ -2787,6 +2892,29 @@ function gameReducer(state, action) {
 
       // Aplicar dinero devuelto
       finalMoney += moneyReturned;
+
+      // ============================================================
+      // CONTRARRELOJ: Check bankrupt/fired AFTER refunds (BUG-01 fix)
+      // ============================================================
+      if (state.gameMode === 'contrarreloj' && contrarrelojUpdate && !contrarrelojUpdate.finished) {
+        if (finalMoney < 0) {
+          contrarrelojUpdate = {
+            ...contrarrelojUpdate,
+            won: false,
+            finished: true,
+            loseReason: 'bankrupt'
+          };
+          contrarrelojScreenOverride = 'contrarreloj_end';
+        } else if (managerEval.fired) {
+          contrarrelojUpdate = {
+            ...contrarrelojUpdate,
+            won: false,
+            finished: true,
+            loseReason: 'fired'
+          };
+          contrarrelojScreenOverride = 'contrarreloj_end';
+        }
+      }
 
       return {
         ...state,
@@ -3044,17 +3172,17 @@ function gameReducer(state, action) {
         const isStarter = targetPlayer.overall >= (targetTeam.players || []).reduce((sum, p) => sum + p.overall, 0) / (targetTeam.players?.length || 1) + 3;
 
         let clubResponse = 'rejected', clubReason = '', clubCounterAmount = null;
-        if (isStarter && offerRatio < 1.3) { clubResponse = 'rejected'; clubReason = 'Titular indiscutible'; }
-        else if (offerRatio >= 1.15) { clubResponse = 'accepted'; clubReason = 'Oferta irrechazable'; }
-        else if (offerRatio >= 0.90) { clubResponse = Math.random() < 0.65 ? 'accepted' : 'rejected'; clubReason = clubResponse === 'accepted' ? 'Oferta aceptada' : 'Oferta insuficiente'; }
-        else if (offerRatio >= 0.70) { clubResponse = Math.random() < 0.3 ? 'accepted' : 'rejected'; clubReason = clubResponse === 'accepted' ? 'Necesitan liquidez' : 'Oferta insuficiente'; }
-        else { clubReason = 'Oferta irrisoria'; }
+        if (isStarter && offerRatio < 1.3) { clubResponse = 'rejected'; clubReason = 'gameMessages.clubReasonStarter'; }
+        else if (offerRatio >= 1.15) { clubResponse = 'accepted'; clubReason = 'gameMessages.clubReasonIrresistible'; }
+        else if (offerRatio >= 0.90) { clubResponse = Math.random() < 0.65 ? 'accepted' : 'rejected'; clubReason = clubResponse === 'accepted' ? 'gameMessages.clubReasonAccepted' : 'gameMessages.clubReasonInsufficient'; }
+        else if (offerRatio >= 0.70) { clubResponse = Math.random() < 0.3 ? 'accepted' : 'rejected'; clubReason = clubResponse === 'accepted' ? 'gameMessages.clubReasonNeedMoney' : 'gameMessages.clubReasonInsufficient'; }
+        else { clubReason = 'gameMessages.clubReasonLaughable'; }
 
         const requiredSalary = Math.round((targetPlayer.salary || 50000) * 1.1);
         let playerResponse = 'rejected', playerReason = '';
-        if (newOffer.salaryOffer >= requiredSalary * 0.95) { playerResponse = Math.random() < 0.75 ? 'accepted' : 'rejected'; playerReason = playerResponse === 'accepted' ? 'Acepta' : 'Quiere más salario'; }
-        else if (newOffer.salaryOffer >= requiredSalary * 0.7) { playerResponse = Math.random() < 0.3 ? 'accepted' : 'rejected'; playerReason = playerResponse === 'accepted' ? 'Le convence' : 'Salario insuficiente'; }
-        else { playerReason = 'Oferta salarial irrisoria'; }
+        if (newOffer.salaryOffer >= requiredSalary * 0.95) { playerResponse = Math.random() < 0.75 ? 'accepted' : 'rejected'; playerReason = playerResponse === 'accepted' ? 'gameMessages.playerReasonHappy' : 'gameMessages.playerReasonMoreSalary'; }
+        else if (newOffer.salaryOffer >= requiredSalary * 0.7) { playerResponse = Math.random() < 0.3 ? 'accepted' : 'rejected'; playerReason = playerResponse === 'accepted' ? 'gameMessages.playerReasonConvinced' : 'gameMessages.playerReasonLowSalary'; }
+        else { playerReason = 'gameMessages.playerReasonLaughableSalary'; }
 
         const bothAccepted = clubResponse === 'accepted' && playerResponse === 'accepted';
         const resolvedOffer = { ...newOffer, status: 'resolved', clubResponse, clubReason, clubCounterAmount, playerResponse, playerReason, resolvedWeek: state.currentWeek, expiryWeek: state.currentWeek + 2 };
@@ -3086,10 +3214,12 @@ function gameReducer(state, action) {
         };
       }
 
+      // Ensure submittedWeek is always set (needed for offer resolution timing)
+      const safeOffer = { ...newOffer, submittedWeek: newOffer.submittedWeek || state.currentWeek || 1 };
       return {
         ...state,
-        outgoingOffers: [...(state.outgoingOffers || []), newOffer],
-        money: state.money - (newOffer.amount || 0)
+        outgoingOffers: [...(state.outgoingOffers || []), safeOffer],
+        money: state.money - (safeOffer.amount || 0)
       };
     }
 
@@ -3156,7 +3286,7 @@ function gameReducer(state, action) {
       if (!soldPlayer) return state;
       
       // Minimum squad size guard — can't sell if would go below 14 players
-      if (state.team.players.length <= 14) return state;
+      if ((state.team?.players?.length || 0) <= 14) return state;
 
       // Quitar jugador del equipo
       const updatedPlayers = state.team.players.filter(p => p.name !== offer.player.name);
@@ -3191,7 +3321,7 @@ function gameReducer(state, action) {
         money: state.money + offer.amount,
         transfersEarned: (state.transfersEarned || 0) + offer.amount,
         leagueTeams: updatedLeagueTeams,
-        incomingOffers: (state.incomingOffers || []).filter(o => o.id !== offer.id),
+        incomingOffers: (state.incomingOffers || []).map(o => o.id === offer.id ? { ...o, status: 'accepted' } : o),
         messages: [{
           id: Date.now(),
           type: 'transfer',
@@ -3235,28 +3365,16 @@ function gameReducer(state, action) {
           ...state,
           incomingOffers: (state.incomingOffers || []).map(o =>
             o.id === offer.id ? { ...o, amount: counterAmount, status: 'pending', counterAccepted: true } : o
-          ),
-          messages: [{
-            id: Date.now(),
-            type: 'offer',
-            titleKey: 'gameMessages.counterOfferAccepted',
-            contentKey: 'gameMessages.counterOfferAcceptedContent', contentParams: { team: offer.fromTeam, amount: formatTransferPrice(counterAmount), player: offer.player.name },
-            dateKey: 'gameMessages.weekDate', dateParams: { week: state.currentWeek }
-          }, ...state.messages].slice(0, 50)
+          )
+          // No ADD_MESSAGE here — user sees the result directly in the Transfers UI
         };
       } else {
         return {
           ...state,
           incomingOffers: (state.incomingOffers || []).map(o =>
             o.id === offer.id ? { ...o, status: 'rejected', counterRejected: true } : o
-          ),
-          messages: [{
-            id: Date.now(),
-            type: 'offer',
-            titleKey: 'gameMessages.counterOfferRejected',
-            contentKey: 'gameMessages.counterOfferRejectedContent', contentParams: { team: offer.fromTeam, amount: formatTransferPrice(counterAmount), player: offer.player.name },
-            dateKey: 'gameMessages.weekDate', dateParams: { week: state.currentWeek }
-          }, ...state.messages].slice(0, 50)
+          )
+          // No ADD_MESSAGE here — user sees the result directly in the Transfers UI
         };
       }
     }
@@ -3311,6 +3429,12 @@ function gameReducer(state, action) {
     }
 
     // RECORD_MATCH_INCOME removed â€" income is accumulated via UPDATE_STADIUM dispatches
+
+    case 'MARK_MESSAGE_READ':
+      return {
+        ...state,
+        messages: state.messages.map(m => m.id === action.payload ? { ...m, read: true } : m)
+      };
 
     case 'DELETE_MESSAGE':
       return {
@@ -3397,13 +3521,19 @@ function gameReducer(state, action) {
     }
 
     case 'INJURE_PLAYER': {
+      console.log('🏥 INJURE_PLAYER dispatched:', action.payload.playerName, 'weeksOut:', action.payload.weeksOut);
       // Centro médico reduce tiempo de lesiones (nivel base + especialización recuperación)
       const medicalLevel = state.facilities?.medical || 0;
       const medicalReduction = [0, 0.20, 0.35, 0.50][medicalLevel];
       const recoverySpecBonus = state.facilitySpecs?.medical === 'recovery' ? 0.50 : 0;
       const totalReduction = Math.min(0.75, medicalReduction + recoverySpecBonus); // Cap 75%
       const baseWeeks = action.payload.weeksOut;
-      const reducedWeeks = Math.max(1, Math.round(baseWeeks * (1 - totalReduction)));
+      let reducedWeeks = Math.max(1, Math.round(baseWeeks * (1 - totalReduction)));
+      
+      // Glory Mode: Dr. Milagros perk — injuries never last more than 1 week
+      if (state.gloryData?.perks?.drMiracles) {
+        reducedWeeks = 1;
+      }
 
       // Lesión grave = más de 6 semanas
       const isSevere = baseWeeks >= 6;
@@ -3424,6 +3554,7 @@ function gameReducer(state, action) {
             ...p,
             injured: true,
             injuryWeeksLeft: reducedWeeks,
+            injuredAtWeek: state.currentWeek, // Flag: skip first ADVANCE_WEEK heal
             injuryType: action.payload.severity,
             severeInjuryCount: newSevereCount,
             retiring: willRetire
@@ -3443,12 +3574,40 @@ function gameReducer(state, action) {
           }
         });
         injureLineup = ensureFullLineup(cleanedInjureLineup, updatedPlayers, state.formation);
+        console.log('🏥 Ejected', injuredName, 'from lineup. Slots before:', Object.keys(state.lineup || {}).length, 'after:', Object.keys(injureLineup).length);
       }
+      const injuredPlayer = updatedPlayers.find(p => p.name === injuredName);
+      console.log('🏥 Player state after INJURE:', injuredPlayer?.name, 'injured:', injuredPlayer?.injured, 'weeksLeft:', injuredPlayer?.injuryWeeksLeft);
       return {
         ...state,
         team: { ...state.team, players: updatedPlayers },
         lineup: injureLineup
       };
+    }
+
+    case 'SYNC_BATCH_INJURIES': {
+      // After batch simulation, sync injury state from local tracking to fix double-healing.
+      // Local sim tracks injuries accurately (healing only after the week they occurred),
+      // while ADVANCE_WEEKS_BATCH over-heals by applying N weeks of healing to all injuries.
+      const syncPlayers = action.payload.players || [];
+      if (syncPlayers.length === 0 || !state.team?.players) return state;
+      const syncMap = new Map(syncPlayers.map(p => [p.name, p]));
+      const syncedPlayers = state.team.players.map(p => {
+        const sync = syncMap.get(p.name);
+        if (!sync) return p;
+        // Only override match-related injury state; preserve training injuries from ADVANCE_WEEK
+        // if the local sim didn't track them (local sim didn't know about training injuries)
+        // A player injured in local sim: use local values
+        // A player NOT injured in local sim but injured in reducer: keep reducer values (training injury)
+        if (sync.injured) {
+          return { ...p, injured: true, injuryWeeksLeft: sync.injuryWeeksLeft, injuryType: sync.injuryType };
+        }
+        // Local says not injured — but if reducer has a training injury, keep it
+        if (p.injured && p.injuryType === 'training') return p;
+        // Otherwise sync the healed state
+        return { ...p, injured: false, injuryWeeksLeft: 0, injuryType: null };
+      });
+      return { ...state, team: { ...state.team, players: syncedPlayers } };
     }
 
     case 'ADD_YELLOW_CARDS': {
@@ -3498,6 +3657,8 @@ function gameReducer(state, action) {
 
     case 'ADD_RED_CARDS': {
       // payload: { cards: [{ playerName: string, reason: string }] }
+      // Gladiator perk: immunity to red cards
+      if (state.gloryData?.perks?.gladiator) return state;
       // Doble amarilla = 1 partido, Roja directa = 2 partidos
       const redCards = action.payload.cards || [];
       if (redCards.length === 0) return state;
@@ -3627,6 +3788,42 @@ function gameReducer(state, action) {
         }, ...state.messages].slice(0, 50)
       };
     }
+
+    case 'MARK_TUTORIAL_SEEN': {
+      const tutorialsSeen = { ...(state.settings.tutorialsSeen || {}), [action.payload.id]: true };
+      // If all key tutorials seen, mark completed
+      const allSeen = ['office', 'formation', 'transfers', 'matchday', 'leagueTable'].every(k => tutorialsSeen[k]);
+      return {
+        ...state,
+        settings: {
+          ...state.settings,
+          tutorialsSeen,
+          ...(allSeen ? { tutorialCompleted: true } : {})
+        }
+      };
+    }
+
+    case 'DISMISS_TUTORIALS':
+      return {
+        ...state,
+        settings: {
+          ...state.settings,
+          tutorialDismissed: true
+        }
+      };
+
+    case 'ENABLE_TUTORIALS':
+      return {
+        ...state,
+        settings: {
+          ...state.settings,
+          tutorialDismissed: false,
+          tutorialCompleted: false,
+          tutorialsSeen: {},
+          welcomeShown: false,
+          showTutorials: true
+        }
+      };
 
     case 'UPDATE_SETTINGS':
       return {
@@ -4431,7 +4628,16 @@ function gameReducer(state, action) {
       const offer = action.payload;
       return {
         ...state,
-        incomingLoanOffers: (state.incomingLoanOffers || []).filter(o => o.id !== offer.id)
+        incomingLoanOffers: (state.incomingLoanOffers || []).filter(o => o.id !== offer.id),
+        loanHistory: [...(state.loanHistory || []), { ...offer, status: 'rejected', direction: 'incoming', resolvedWeek: state.currentWeek }],
+        messages: [{
+          id: Date.now(),
+          type: 'loan',
+          titleKey: 'gameMessages.loanRejected',
+          contentKey: 'gameMessages.loanRejectedContent',
+          contentParams: { player: offer.playerId || offer.playerName, team: offer.toTeamName || offer.fromTeamName },
+          dateKey: 'gameMessages.weekDate', dateParams: { week: state.currentWeek }
+        }, ...state.messages].slice(0, 50)
       };
     }
 
@@ -4537,8 +4743,6 @@ function gameReducer(state, action) {
     }
 
     case 'RESET_GAME':
-      localStorage.removeItem('pcfutbol_saveId');
-      localStorage.removeItem('pcfutbol_local_save');
       return {
         ...initialState,
         loaded: true,
@@ -4559,19 +4763,35 @@ export function GameProvider({ children }) {
     return 'save_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
   };
 
-  // Save game - uses localStorage in dev mode, Firebase in production
+  // Save game - always Firebase
   const saveGame = async () => {
     if (!state.gameStarted) return;
     if (state.gameMode === 'contrarreloj') return; // Contrarreloj uses its own auto-save
     if (state.gameMode === 'ranked') return; // Ranked matches are never saved — ephemeral only
+    if (state.gameMode === 'glory') return; // Glory uses its own auto-save
+
+    const userId = auth.currentUser?.uid || state.userId;
+    if (!userId) return;
 
     const { leagueTeams, otherLeagues, ...compactState } = state;
-    const saveId = state.saveId || generateSaveId();
+    
+    // Always save to a slot so SaveSlots can find it
+    const slotIndex = state._saveSlotIndex ?? 0;
+    const saveId = `${userId}_slot_${slotIndex}`;
     const saveData = {
       ...compactState,
       saveId,
-      userId: auth.currentUser?.uid || state.userId,
-      lastSaved: new Date().toISOString()
+      userId,
+      slotIndex,
+      lastSaved: new Date().toISOString(),
+      summary: {
+        teamName: state.team?.name || 'Desconocido',
+        teamId: state.teamId,
+        season: state.currentSeason || 1,
+        week: state.currentWeek || 1,
+        money: state.money || 0,
+        gameMode: state.gameMode || 'career',
+      }
     };
 
     // Strip undefined values (Firebase rejects them)
@@ -4579,27 +4799,13 @@ export function GameProvider({ children }) {
 
     try {
       await setDoc(doc(db, 'saves', saveId), cleanSave);
-      localStorage.setItem('pcfutbol_saveId', saveId);
-      console.log('☁️ Game saved to Firebase!');
+      // Remember slot for future saves
+      if (state._saveSlotIndex === undefined) {
+        dispatch({ type: 'SET_SAVE_SLOT', payload: slotIndex });
+      }
+      console.log(`☁️ Game saved to slot ${slotIndex}!`);
     } catch (error) {
       console.error('Error saving game:', error);
-    }
-  };
-
-  // Load game from localStorage
-  const loadLocalSave = () => {
-    try {
-      const saved = localStorage.getItem('pcfutbol_local_save');
-      if (saved) {
-        const data = JSON.parse(saved);
-        dispatch({ type: 'LOAD_SAVE', payload: data });
-        console.log('💾 Game loaded from localStorage!');
-        return true;
-      }
-      return false;
-    } catch (error) {
-      console.error('Error loading from localStorage:', error);
-      return false;
     }
   };
 
@@ -4620,37 +4826,55 @@ export function GameProvider({ children }) {
     }
   };
 
-  // Check for existing save on load
+  // Always start at main menu — load user settings from Firebase, then mark loaded
+  // Load settings + manager name on mount (or when auth restores)
   useEffect(() => {
-    const loadInitialState = async () => {
-      try {
-        const existingSaveId = localStorage.getItem('pcfutbol_saveId');
-        if (existingSaveId) {
-          const loaded = await loadGame(existingSaveId);
-          if (!loaded) {
-            dispatch({ type: 'LOAD_SAVE', payload: { loaded: true } });
+    let unsubscribe;
+    let initialized = false;
+
+    const syncUser = async (user) => {
+      const uid = user?.uid;
+      if (uid) {
+        if (!initialized) {
+          const saved = await loadUserSettings(uid);
+          if (saved) {
+            dispatch({ type: 'UPDATE_SETTINGS', payload: saved });
           }
-        } else {
-          dispatch({ type: 'LOAD_SAVE', payload: { loaded: true } });
         }
-      } catch (error) {
-        console.error('Error loading initial state:', error);
+        // Sync manager name: Firestore > Auth displayName > random default
+        try {
+          const profileDoc = await getDoc(doc(db, 'user_profiles', uid));
+          if (profileDoc.exists() && profileDoc.data().managerName) {
+            dispatch({ type: 'SET_MANAGER_NAME', payload: profileDoc.data().managerName });
+          } else if (user.displayName) {
+            dispatch({ type: 'SET_MANAGER_NAME', payload: user.displayName });
+          }
+        } catch (e) {
+          if (user.displayName) {
+            dispatch({ type: 'SET_MANAGER_NAME', payload: user.displayName });
+          }
+        }
+      }
+      if (!initialized) {
+        initialized = true;
         dispatch({ type: 'LOAD_SAVE', payload: { loaded: true } });
       }
     };
 
-    // Timeout de seguridad para no quedarse cargando forever
-    const timeout = setTimeout(() => {
-      if (!state.loaded) {
-        console.warn('Loading timeout, going to main menu');
-        dispatch({ type: 'LOAD_SAVE', payload: { loaded: true } });
-      }
-    }, 3000);
-
-    loadInitialState();
-
-    return () => clearTimeout(timeout);
+    unsubscribe = onAuthStateChanged(auth, syncUser);
+    return () => unsubscribe?.();
   }, []);
+
+  // Persist settings to Firebase when they change
+  const settingsRef = useRef(state.settings);
+  useEffect(() => {
+    if (JSON.stringify(state.settings) === JSON.stringify(settingsRef.current)) return;
+    settingsRef.current = state.settings;
+    const uid = auth.currentUser?.uid;
+    if (uid) {
+      saveUserSettings(uid, state.settings);
+    }
+  }, [state.settings]);
 
   // Auto-save on state changes (debounced) — respects autoSave setting
   useEffect(() => {
@@ -4776,6 +5000,43 @@ export function GameProvider({ children }) {
   }, [state.gameMode, state.gameStarted, state._proManagerUserId, state.proManagerData?.finished]);
 
   // ============================================================
+  // GLORY MODE AUTO-SAVE (Firebase)
+  // ============================================================
+  const glorySaveRef = useRef(null);
+  useEffect(() => {
+    if (state.gameMode !== 'glory' || !state.gameStarted || !state._gloryUserId) return;
+    if (glorySaveRef.current) clearTimeout(glorySaveRef.current);
+    glorySaveRef.current = setTimeout(() => {
+      const saveData = { ...state };
+      delete saveData.loaded;
+      delete saveData._gloryUserId;
+      delete saveData.leagueTeams;
+      delete saveData.otherLeagues;
+      saveGlory(state._gloryUserId, saveData)
+        .then(() => console.log('🏔️ Glory auto-saved'))
+        .catch(err => console.error('Glory save error:', err));
+    }, 500);
+    return () => { if (glorySaveRef.current) clearTimeout(glorySaveRef.current); };
+  }, [state.currentWeek, state.currentSeason, state.money, state.team, state.leagueTable, state.gloryData, state.gameMode, state.currentScreen]);
+
+  // Periodic Glory save (every 30s)
+  useEffect(() => {
+    if (state.gameMode !== 'glory' || !state.gameStarted || !state._gloryUserId) return;
+    const interval = setInterval(() => {
+      const s = stateRef.current;
+      if (s.gameMode === 'glory' && s.gameStarted && s._gloryUserId) {
+        const saveData = { ...s };
+        delete saveData.loaded;
+        delete saveData._gloryUserId;
+        delete saveData.leagueTeams;
+        delete saveData.otherLeagues;
+        saveGlory(s._gloryUserId, saveData).catch(() => {});
+      }
+    }, 30000);
+    return () => clearInterval(interval);
+  }, [state.gameMode, state.gameStarted, state._gloryUserId]);
+
+  // ============================================================
   // SAVE ON APP CLOSE / BACKGROUND (visibilitychange + Capacitor pause)
   // Uses stateRef to always have the latest state
   // ============================================================
@@ -4810,17 +5071,39 @@ export function GameProvider({ children }) {
         saveProManager(s._proManagerUserId, saveData).catch(() => {});
         console.log('💼 ProManager save-on-exit triggered');
       }
-      if (s.gameStarted && s.gameMode !== 'contrarreloj' && s.gameMode !== 'promanager' && s.gameMode !== 'ranked' && s.settings?.autoSave !== false) {
+      if (s.gameMode === 'glory' && s.gameStarted && s._gloryUserId) {
+        const saveData = { ...s };
+        delete saveData.loaded;
+        delete saveData._gloryUserId;
+        delete saveData.leagueTeams;
+        delete saveData.otherLeagues;
+        saveGlory(s._gloryUserId, saveData).catch(() => {});
+        console.log('🏔️ Glory save-on-exit triggered');
+      }
+      if (s.gameStarted && s.gameMode !== 'contrarreloj' && s.gameMode !== 'promanager' && s.gameMode !== 'glory' && s.gameMode !== 'ranked' && s.settings?.autoSave !== false) {
         const freshState = stateRef.current;
-        const { leagueTeams: _lt, otherLeagues: _ol, ...compactExit } = freshState;
-        const saveId = freshState.saveId || generateSaveId();
-        const exitSaveData = JSON.parse(JSON.stringify({
-          ...compactExit,
-          saveId,
-          userId: auth.currentUser?.uid || freshState.userId,
-          lastSaved: new Date().toISOString()
-        }));
-        try { setDoc(doc(db, 'saves', saveId), exitSaveData).catch(() => {}); localStorage.setItem('pcfutbol_saveId', saveId); } catch (e) { /* ignore */ }
+        const userId = auth.currentUser?.uid || freshState.userId;
+        if (userId) {
+          const { leagueTeams: _lt, otherLeagues: _ol, ...compactExit } = freshState;
+          const slotIndex = freshState._saveSlotIndex ?? 0;
+          const saveId = `${userId}_slot_${slotIndex}`;
+          const exitSaveData = JSON.parse(JSON.stringify({
+            ...compactExit,
+            saveId,
+            userId,
+            slotIndex,
+            lastSaved: new Date().toISOString(),
+            summary: {
+              teamName: freshState.team?.name || 'Desconocido',
+              teamId: freshState.teamId,
+              season: freshState.currentSeason || 1,
+              week: freshState.currentWeek || 1,
+              money: freshState.money || 0,
+              gameMode: freshState.gameMode || 'career',
+            }
+          }));
+          try { setDoc(doc(db, 'saves', saveId), exitSaveData).catch(() => {}); } catch (e) { /* ignore */ }
+        }
       }
     };
 

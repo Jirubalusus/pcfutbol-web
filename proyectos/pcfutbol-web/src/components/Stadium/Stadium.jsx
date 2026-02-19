@@ -339,7 +339,7 @@ export default function Stadium() {
           amount: (sponsor.offer/1000000).toFixed(1), 
           duration: sponsor.duration 
         }),
-        date: `\$\{t('common.week')\} \$\{state.currentWeek\}`
+        date: `${t('common.week')} ${state.currentWeek}`
       }
     });
   };
@@ -356,7 +356,7 @@ export default function Stadium() {
           type: 'warning',
           title: t('stadium.insufficientFunds'),
           content: t('stadium.penaltyRequired', { amount: (penalty / 1000000).toFixed(1) }),
-          date: `\$\{t('common.week')\} \$\{state.currentWeek\}`
+          date: `${t('common.week')} ${state.currentWeek}`
         }
       });
       return;
@@ -377,7 +377,7 @@ export default function Stadium() {
         content: penalty > 0 
           ? t('stadium.stadiumNameRestored', { amount: (penalty / 1000000).toFixed(1) })
           : t('stadium.stadiumNameRestoredFree'),
-        date: `\$\{t('common.week')\} \$\{state.currentWeek\}`
+        date: `${t('common.week')} ${state.currentWeek}`
       }
     });
   };
@@ -461,7 +461,7 @@ export default function Stadium() {
         type: 'stadium',
         title: t('stadium.stadiumUpgraded'),
         content: t('stadium.nowStadium', { name: t(nextLevel.nameKey), capacity: nextLevel.capacity.toLocaleString() }),
-        date: `\$\{t('common.week')\} \$\{state.currentWeek\}`
+        date: `${t('common.week')} ${state.currentWeek}`
       }
     });
   };

@@ -23,8 +23,8 @@ android {
         applicationId "com.jirubalusus.pcgaffer"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 15
-        versionName "1.14"
+        versionCode 17
+        versionName "1.16"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {
              // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
@@ -60,6 +60,8 @@ dependencies {
     
     // Google Play Games Services SDK
     implementation 'com.google.android.gms:play-services-games-v2:20.1.2'
+    // Google Play Billing
+    implementation 'com.android.billingclient:billing:7.1.1'
 }
 
 apply from: 'capacitor.build.gradle'

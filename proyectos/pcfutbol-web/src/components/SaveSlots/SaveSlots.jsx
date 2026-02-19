@@ -33,7 +33,11 @@ export default function SaveSlots({ mode = 'load', onBack, onSlotSelected }) {
       setSlots(saves);
     } catch (err) {
       console.error('Error loading saves:', err);
-      setError(t('saveSlots.errorLoadGames'));
+      if (err?.code === 'permission-denied' || err?.message?.includes('permissions')) {
+        setError(t('saveSlots.emailNotVerified', 'Verifica tu email para acceder a las partidas guardadas. Revisa tu bandeja de entrada.'));
+      } else {
+        setError(t('saveSlots.errorLoadGames'));
+      }
     }
     
     setLoading(false);
@@ -49,6 +53,13 @@ export default function SaveSlots({ mode = 'load', onBack, onSlotSelected }) {
       const saveData = await loadGameFromSlot(user.uid, slotIndex);
       if (saveData) {
         dispatch({ type: 'LOAD_SAVE', payload: saveData });
+        dispatch({ type: 'SET_SAVE_SLOT', payload: slotIndex });
+        // Sync manager name from Firebase Auth (source of truth over saved gaffer... defaults)
+        const { getAuth } = await import('firebase/auth');
+        const displayName = getAuth().currentUser?.displayName;
+        if (displayName) {
+          dispatch({ type: 'SET_MANAGER_NAME', payload: displayName });
+        }
         dispatch({ type: 'SET_SCREEN', payload: 'office' });
         if (onSlotSelected) onSlotSelected(slotIndex);
       }
@@ -126,7 +137,7 @@ export default function SaveSlots({ mode = 'load', onBack, onSlotSelected }) {
 
   if (loading) {
     return (
-      <div className="save-slots">
+      <div className="save-slots unified-screen">
         <div className="save-slots__loading">
           <div className="save-slots__spinner"><FootballIcon size={22} /></div>
           <p>{t('saveSlots.loadingGames')}</p>
@@ -136,9 +147,9 @@ export default function SaveSlots({ mode = 'load', onBack, onSlotSelected }) {
   }
 
   return (
-    <div className="save-slots">
+    <div className="save-slots unified-screen">
       <div className="save-slots__container">
-        <button className="save-slots__back" onClick={onBack}><ArrowLeft size={14} /> {t('saveSlots.back')}</button>
+        <button className="btn-back" onClick={onBack}><ArrowLeft size={16} /> {t('saveSlots.back')}</button>
         
         <div className="save-slots__header">
           <h2>

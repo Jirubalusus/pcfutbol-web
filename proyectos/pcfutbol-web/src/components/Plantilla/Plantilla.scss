@@ -21,85 +21,105 @@ $blue: #0a84ff;
   // ============================================================
   // HEADER
   // ============================================================
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: var(--color-bg-tertiary);
-    border: 1px solid var(--color-glass-border);
-    border-radius: 8px;
-    padding: 0.75rem 1rem;
-    margin-bottom: 0.5rem;
+  &__hero {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    padding: 1.25rem;
+    margin-bottom: 0.75rem;
+    background: linear-gradient(135deg, #0f4c3a 0%, #1a7a5a 50%, #0d6b4a 100%);
+    box-shadow: 0 8px 32px rgba(16, 185, 129, 0.2);
 
-    @media (max-width: 768px) {
-      flex-direction: column;
-      gap: 0.5rem;
-      padding: 0.6rem;
+    &-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 50%),
+        radial-gradient(circle at 20% 80%, rgba(255,255,255,0.03) 0%, transparent 50%);
+      pointer-events: none;
     }
 
-    .header-title {
-      h2 {
-        margin: 0;
-        font-size: 1.1rem;
-        font-weight: 700;
-        color: $gold;
-      }
-      .player-count {
-        color: var(--color-text-secondary);
-        font-size: 0.8rem;
-      }
-    }
-
-    .header-finances {
+    &-content {
       display: flex;
-      gap: 0.5rem;
+      align-items: center;
+      gap: 1rem;
+      position: relative;
+      z-index: 1;
+    }
 
-      @media (max-width: 768px) {
-        width: 100%;
+    &-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-label {
+      font-size: 0.7rem;
+      color: rgba(255, 255, 255, 0.6);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    &-count {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+    }
+
+    &-stats {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      position: relative;
+      z-index: 1;
+    }
+
+    &-stat {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0.4rem;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+
+      .stat-label {
+        font-size: 0.6rem;
+        color: rgba(255, 255, 255, 0.5);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .stat-value {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #fff;
       }
 
-      .finance-box {
-        padding: 0.6rem 1rem;
-        background: rgba(0, 0, 0, 0.3);
-        border: 1px solid var(--color-glass-border);
-        border-radius: 6px;
-        text-align: center;
-
-        @media (max-width: 768px) {
-          flex: 1;
-          padding: 0.5rem;
-        }
-
-        .label {
-          display: block;
-          font-size: 0.65rem;
-          color: var(--color-text-secondary);
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-          margin-bottom: 0.15rem;
-        }
-
-        .value {
-          display: block;
-          font-size: 1.1rem;
-          font-weight: 700;
-
-          @media (max-width: 768px) {
-            font-size: 0.95rem;
-          }
-        }
-
-        .yearly {
-          display: block;
-          font-size: 0.7rem;
-          color: var(--color-text-secondary);
-        }
-
-        &.budget .value { color: $green; }
-        &.salary .value { color: $orange; }
-      }
+      &.budget .stat-value { color: #6ee7b7; }
+      &.salary .stat-value { color: #fca5a5; }
     }
   }
+
+  &__header {
+    display: none;
+  }
+
+  // old header removed
 
   // ============================================================
   // ALERTS

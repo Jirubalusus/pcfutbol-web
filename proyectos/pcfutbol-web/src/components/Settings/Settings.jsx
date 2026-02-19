@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
-import { Settings as SettingsIcon, X, Music, Volume2, Save, Check, XCircle, Trash2, AlertTriangle, LogOut, Globe, User, Pencil, Palette } from 'lucide-react';
+import { Settings as SettingsIcon, X, Music, Volume2, Save, Check, XCircle, Trash2, AlertTriangle, LogOut, Globe, User, Pencil, Palette, ShieldCheck, RefreshCw } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { Capacitor } from '@capacitor/core';
 import { useGame } from '../../context/GameContext';
 import { useAuth } from '../../context/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
 import { themeList } from '../../themes';
 import { updateProfile } from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
+import { db } from '../../firebase/config';
 import { auth } from '../../firebase/config';
+import { deleteAllSaves } from '../../data/editions/editionService';
+import { purchaseRemoveAds, restorePurchases } from '../../services/purchaseService';
+// Uses native Google Play Billing via custom Capacitor plugin
 import './Settings.scss';
 
 export default function Settings({ onClose }) {
@@ -27,6 +33,46 @@ export default function Settings({ onClose }) {
     sfxVolume: 80
   });
   const [showResetConfirm, setShowResetConfirm] = useState(false);
+  const [purchaseStatus, setPurchaseStatus] = useState(null); // null, 'loading', 'success', 'error', 'cancelled'
+  const isNative = Capacitor.isNativePlatform();
+  const isPremium = state.premium === true;
+
+  const handlePurchaseRemoveAds = async () => {
+    setPurchaseStatus('loading');
+    try {
+      const result = await purchaseRemoveAds();
+      if (result.success) {
+        dispatch({ type: 'SET_PREMIUM', payload: true });
+        setPurchaseStatus('success');
+      } else if (result.error === 'cancelled') {
+        setPurchaseStatus(null);
+      } else {
+        setPurchaseStatus('error');
+        setTimeout(() => setPurchaseStatus(null), 3000);
+      }
+    } catch (e) {
+      console.error('Purchase error:', e);
+      setPurchaseStatus('error');
+      setTimeout(() => setPurchaseStatus(null), 3000);
+    }
+  };
+
+  const handleRestorePurchases = async () => {
+    setPurchaseStatus('loading');
+    try {
+      const isPrem = await restorePurchases();
+      if (isPrem) {
+        dispatch({ type: 'SET_PREMIUM', payload: true });
+        setPurchaseStatus('success');
+      } else {
+        setPurchaseStatus('noRestore');
+        setTimeout(() => setPurchaseStatus(null), 3000);
+      }
+    } catch (e) {
+      setPurchaseStatus('error');
+      setTimeout(() => setPurchaseStatus(null), 3000);
+    }
+  };
   const [saveStatus, setSaveStatus] = useState(null);
 
   const handleSettingChange = (key, value) => {
@@ -42,6 +88,11 @@ export default function Settings({ onClose }) {
     setNameStatus('saving');
     try {
       await updateProfile(auth.currentUser, { displayName: trimmed });
+      // Also persist to Firestore for cross-device/cookie-clear persistence
+      if (auth.currentUser?.uid) {
+        await setDoc(doc(db, 'user_profiles', auth.currentUser.uid), { managerName: trimmed }, { merge: true });
+      }
+      dispatch({ type: 'SET_MANAGER_NAME', payload: trimmed });
       setNameStatus('saved');
       setEditingName(false);
       setTimeout(() => setNameStatus(null), 2000);
@@ -82,7 +133,11 @@ export default function Settings({ onClose }) {
     }
   };
 
-  const handleResetGame = () => {
+  const handleResetGame = async () => {
+    // Delete all saves from Firebase
+    if (user?.uid) {
+      try { await deleteAllSaves(user.uid); } catch (e) { console.error('Error deleting saves:', e); }
+    }
     dispatch({ type: 'RESET_GAME' });
     setShowResetConfirm(false);
     onClose?.();
@@ -110,7 +165,7 @@ export default function Settings({ onClose }) {
   ];
 
   return (
-    <div className="settings">
+    <div className="settings unified-screen">
       <div className="settings__header">
         <h2><SettingsIcon size={16} /> {t('settings.title')}</h2>
         {onClose && (
@@ -171,8 +226,8 @@ export default function Settings({ onClose }) {
             <div className="settings__name-editor">
               {!editingName ? (
                 <div className="settings__name-display">
-                  <span className="current-name">{user.displayName || t('office.manager')}</span>
-                  <button className="settings__name-edit-btn" onClick={() => { setNewName(user.displayName || ''); setEditingName(true); }}>
+                  <span className="current-name">{state.managerName || user?.displayName || t('office.manager')}</span>
+                  <button className="settings__name-edit-btn" onClick={() => { setNewName(state.managerName || user?.displayName || ''); setEditingName(true); }}>
                     <Pencil size={14} /> {t('settings.changeName')}
                   </button>
                 </div>
@@ -221,6 +276,27 @@ export default function Settings({ onClose }) {
               </button>
             </div>
 
+            {/* Game tutorials toggle — hidden for now
+            <div className="settings__toggle-item">
+              <div className="info">
+                <span className="label">{t('settings.gameTutorials')}</span>
+                <span className="desc">{t('settings.gameTutorialsDesc')}</span>
+              </div>
+              <button
+                className={`settings__toggle ${settings.showTutorials !== false ? 'active' : ''}`}
+                onClick={() => {
+                  const newVal = settings.showTutorials === false;
+                  handleSettingChange('showTutorials', newVal);
+                  if (newVal) {
+                    dispatch({ type: 'ENABLE_TUTORIALS' });
+                  }
+                }}
+              >
+                <span className="toggle-knob"></span>
+              </button>
+            </div>
+            */}
+
           </div>
         </section>
 
@@ -257,6 +333,54 @@ export default function Settings({ onClose }) {
             </div>
           </div>
         </section>
+
+        {/* Quitar anuncios / Premium */}
+        {isNative && (
+          <section className="settings__section">
+            <h3><ShieldCheck size={16} /> {t('settings.removeAds', 'Quitar anuncios')}</h3>
+            {isPremium ? (
+              <div className="settings__premium-active">
+                <Check size={16} />
+                <span>{t('settings.premiumActive', '¡Sin anuncios! Gracias por tu apoyo 💚')}</span>
+              </div>
+            ) : (
+              <div className="settings__premium-purchase">
+                <p className="settings__premium-desc">
+                  {t('settings.removeAdsDesc', 'Elimina todos los anuncios del juego con un único pago.')}
+                </p>
+                <div className="settings__premium-actions">
+                  <button
+                    className="settings__action-btn premium"
+                    onClick={handlePurchaseRemoveAds}
+                    disabled={purchaseStatus === 'loading'}
+                  >
+                    <ShieldCheck size={14} />
+                    {purchaseStatus === 'loading'
+                      ? t('common.loading', 'Cargando...')
+                      : t('settings.buyRemoveAds', 'Quitar anuncios — 0,99€')}
+                  </button>
+                  <button
+                    className="settings__action-btn restore"
+                    onClick={handleRestorePurchases}
+                    disabled={purchaseStatus === 'loading'}
+                  >
+                    <RefreshCw size={14} />
+                    {t('settings.restorePurchases', 'Restaurar compras')}
+                  </button>
+                </div>
+                {purchaseStatus === 'success' && (
+                  <p className="settings__purchase-msg success">{t('settings.purchaseSuccess', '¡Compra realizada! Anuncios eliminados.')}</p>
+                )}
+                {purchaseStatus === 'error' && (
+                  <p className="settings__purchase-msg error">{t('settings.purchaseError', 'Error en la compra. Inténtalo de nuevo.')}</p>
+                )}
+                {purchaseStatus === 'noRestore' && (
+                  <p className="settings__purchase-msg info">{t('settings.noRestore', 'No se encontraron compras previas.')}</p>
+                )}
+              </div>
+            )}
+          </section>
+        )}
 
         {/* Datos del juego */}
         <section className="settings__section">

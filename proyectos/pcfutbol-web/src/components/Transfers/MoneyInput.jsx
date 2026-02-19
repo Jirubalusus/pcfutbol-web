@@ -1,54 +1,49 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 
 /**
- * MoneyInput - Input de dinero con formato M y botones +/- con aceleración suave
- * 
- * Props:
- * - value: valor en unidades (ej: 2500000)
- * - onChange: callback con nuevo valor
- * - step: incremento base (ej: 500000 para 0.5M, 100000 para 0.1M)
- * - min: mínimo (default 0)
- * - max: máximo opcional
- * - disabled: desactivar
- * - suffix: texto después del valor (ej: "/sem")
- * - prefix: texto antes (ej: "€")
+ * MoneyInput - Input de dinero con botones +/- y aceleración suave
  */
 export default function MoneyInput({ value, onChange, step = 500000, min = 0, max, disabled, suffix = '', prefix = '€' }) {
-  const [holding, setHolding] = useState(null); // 'up' | 'down' | null
+  const [holding, setHolding] = useState(null);
   const intervalRef = useRef(null);
+  const timeoutRef = useRef(null);
   const tickCountRef = useRef(0);
   const valueRef = useRef(value);
   
-  // Keep ref in sync with prop
   useEffect(() => {
     valueRef.current = value;
   }, [value]);
   
-  // Formato: K por debajo de 1M, M a partir de 1M
   const formatDisplay = (val) => {
+    if (val == null || isNaN(val)) return '0';
     if (val < 1_000_000) {
       return `${Math.round(val / 1000)}K`;
     }
     const m = val / 1_000_000;
     if (m >= 100) return `${Math.round(m)}M`;
-    // Mostrar decimal solo si lo hay
     const fixed1 = m.toFixed(1);
     const fixed2 = m.toFixed(2);
     if (fixed2.endsWith('0')) return `${fixed1}M`;
     return `${fixed2}M`;
   };
   
-  // Step dinámico proporcional al valor actual
+  // Smart step: proportional to current value, snaps to nice numbers
   const getStep = (currentVal) => {
-    if (currentVal < 1_000_000) return 50_000;     // <1M  → 50K
-    if (currentVal < 5_000_000) return 100_000;     // 1-5M → 100K
-    if (currentVal < 20_000_000) return 250_000;    // 5-20M → 250K
-    if (currentVal < 50_000_000) return 500_000;    // 20-50M → 500K
-    return 1_000_000;                               // 50M+ → 1M
+    if (currentVal < 500_000) return 50_000;          // <500K → 50K steps
+    if (currentVal < 2_000_000) return 100_000;        // 500K-2M → 100K
+    if (currentVal < 10_000_000) return 500_000;       // 2M-10M → 500K
+    if (currentVal < 50_000_000) return 1_000_000;     // 10M-50M → 1M
+    if (currentVal < 100_000_000) return 2_000_000;    // 50M-100M → 2M
+    return 5_000_000;                                   // 100M+ → 5M
   };
   
   const clamp = useCallback((val) => {
     let clamped = Math.max(min, val);
+    if (max !== undefined) clamped = Math.min(max, clamped);
+    // Round to step to avoid weird decimals
+    const s = getStep(clamped);
+    clamped = Math.round(clamped / s) * s;
+    clamped = Math.max(min, clamped);
     if (max !== undefined) clamped = Math.min(max, clamped);
     return clamped;
   }, [min, max]);
@@ -59,53 +54,68 @@ export default function MoneyInput({ value, onChange, step = 500000, min = 0, ma
     const newVal = direction === 'up' 
       ? clamp(current + s * multiplier)
       : clamp(current - s * multiplier);
-    valueRef.current = newVal;
-    onChange(newVal);
+    if (newVal !== current) {
+      valueRef.current = newVal;
+      onChange(newVal);
+    }
   }, [clamp, onChange]);
   
   const startHold = useCallback((direction) => {
     if (disabled) return;
     tickCountRef.current = 0;
     
-    // Primer click inmediato
+    // First click — immediate
     applyChange(direction);
-    
     setHolding(direction);
     
-    // Hold: empieza después de 500ms, intervalo 150ms, aceleración suave
-    const timeout = setTimeout(() => {
-      const interval = setInterval(() => {
+    // Hold: starts after 400ms, interval 120ms, smooth acceleration
+    timeoutRef.current = setTimeout(() => {
+      timeoutRef.current = null;
+      intervalRef.current = setInterval(() => {
         tickCountRef.current++;
         const ticks = tickCountRef.current;
         let multiplier = 1;
-        if (ticks > 40) multiplier = 3;
+        if (ticks > 30) multiplier = 4;
         else if (ticks > 15) multiplier = 2;
         
         applyChange(direction, multiplier);
-      }, 150);
-      intervalRef.current = interval;
-    }, 500);
-    
-    intervalRef.current = timeout;
+      }, 120);
+    }, 400);
   }, [disabled, applyChange]);
   
   const stopHold = useCallback(() => {
     setHolding(null);
     tickCountRef.current = 0;
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
     if (intervalRef.current) {
-      clearTimeout(intervalRef.current);
       clearInterval(intervalRef.current);
       intervalRef.current = null;
     }
   }, []);
   
+  // Global mouseup/touchend to catch releases outside the button
+  useEffect(() => {
+    const handleGlobalUp = () => {
+      if (holding) stopHold();
+    };
+    window.addEventListener('mouseup', handleGlobalUp);
+    window.addEventListener('touchend', handleGlobalUp);
+    window.addEventListener('touchcancel', handleGlobalUp);
+    return () => {
+      window.removeEventListener('mouseup', handleGlobalUp);
+      window.removeEventListener('touchend', handleGlobalUp);
+      window.removeEventListener('touchcancel', handleGlobalUp);
+    };
+  }, [holding, stopHold]);
+  
   // Cleanup on unmount
   useEffect(() => {
     return () => {
-      if (intervalRef.current) {
-        clearTimeout(intervalRef.current);
-        clearInterval(intervalRef.current);
-      }
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      if (intervalRef.current) clearInterval(intervalRef.current);
     };
   }, []);
   
@@ -116,7 +126,7 @@ export default function MoneyInput({ value, onChange, step = 500000, min = 0, ma
         onMouseDown={() => startHold('down')}
         onMouseUp={stopHold}
         onMouseLeave={stopHold}
-        onTouchStart={() => startHold('down')}
+        onTouchStart={(e) => { e.preventDefault(); startHold('down'); }}
         onTouchEnd={stopHold}
         disabled={disabled || value <= min}
       >
@@ -132,7 +142,7 @@ export default function MoneyInput({ value, onChange, step = 500000, min = 0, ma
         onMouseDown={() => startHold('up')}
         onMouseUp={stopHold}
         onMouseLeave={stopHold}
-        onTouchStart={() => startHold('up')}
+        onTouchStart={(e) => { e.preventDefault(); startHold('up'); }}
         onTouchEnd={stopHold}
         disabled={disabled || (max !== undefined && value >= max)}
       >

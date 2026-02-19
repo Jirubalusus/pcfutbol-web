@@ -488,13 +488,31 @@ export function completeCupMatch(bracket, roundIdx, matchIdx, homeScore, awaySco
     winnerId = homeScore > awayScore ? match.homeTeam.teamId : match.awayTeam.teamId;
   }
 
+  // Generate penalty detail if penalties occurred
+  let penaltiesDetail = null;
+  if (penalties) {
+    if (penaltiesResult) {
+      penaltiesDetail = penaltiesResult;
+    } else {
+      // Generate realistic penalty scores (e.g. 4-3, 5-4, 3-1)
+      const winnerPen = Math.random() < 0.5 ? 5 : 4;
+      const loserPen = winnerPen - 1 - Math.floor(Math.random() * 2); // 1-2 less
+      const homeIsWinner = winnerId === match.homeTeam.teamId;
+      penaltiesDetail = {
+        home: homeIsWinner ? winnerPen : Math.max(loserPen, 1),
+        away: homeIsWinner ? Math.max(loserPen, 1) : winnerPen
+      };
+    }
+  }
+
   const updatedMatch = {
     ...match,
     homeScore,
     awayScore,
     played: true,
     winnerId,
-    penalties
+    penalties,
+    penaltiesDetail
   };
 
   const updatedRounds = [...bracket.rounds];

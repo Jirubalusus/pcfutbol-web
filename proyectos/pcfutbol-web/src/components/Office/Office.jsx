@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useGame } from '../../context/GameContext';
+import { useGame, ensureFullLineup } from '../../context/GameContext';
+import { useAds } from '../../hooks/useAds';
 import { translatePosition } from '../../game/positionNames';
 import { 
   getLaLigaTeams, getSegundaTeams, getPrimeraRfefTeams, getSegundaRfefTeams,
@@ -11,7 +12,7 @@ import {
   getDanishTeams, getCroatianTeams, getCzechTeams,
   getArgentinaTeams, getBrasileiraoTeams, getColombiaTeams, getChileTeams,
   getUruguayTeams, getEcuadorTeams, getParaguayTeams, getPeruTeams,
-  getBoliviaTeams, getVenezuelaTeams
+  getBoliviaTeams, getVenezuelaTeams, getSegundaRfefGroups
 } from '../../data/teamsFirestore';
 import { simulateWeekMatches, simulateMatch, updateTable } from '../../game/leagueEngine';
 import { simulateOtherLeaguesWeek } from '../../game/multiLeagueEngine';
@@ -64,6 +65,8 @@ import MatchDay from '../MatchDay/MatchDay';
 import Training from '../Training/Training';
 import Objectives from '../Objectives/Objectives';
 import SeasonEnd from '../SeasonEnd/SeasonEnd';
+import GlorySeasonEnd from '../GloryMode/GlorySeasonEnd';
+import GloryPerks from '../GloryMode/GloryPerks';
 import ManagerFired from '../ManagerFired/ManagerFired';
 import Europe from '../Europe/Europe';
 import Cup from '../Cup/Cup';
@@ -87,17 +90,26 @@ import {
   AlertTriangle,
   HeartPulse,
   UserRound,
-  Loader
+  Loader,
+  CalendarDays,
+  Shield,
+  Star,
+  Award,
+  MessageSquare,
+  BarChart3,
+  Gauge
 } from 'lucide-react';
 import SimulationSummary from '../SimulationSummary/SimulationSummary';
 import RankedTimer from '../Ranked/RankedTimer';
 import { submitRoundConfig, advancePhase as advanceRankedPhase, onMatchChange } from '../../firebase/rankedService';
 import { useAuth } from '../../context/AuthContext';
+import { WelcomeModal, TutorialModal, useTutorial } from '../Tutorial/Tutorial';
 import './Office.scss';
 
 export default function Office() {
   const { t } = useTranslation();
   const { state, dispatch, saveGame } = useGame();
+  const { maybeShowInterstitial } = useAds(state.isPremium);
   const { user } = useAuth();
   const [activeTab, setActiveTab] = useState('overview');
   const [showMatch, setShowMatch] = useState(false);
@@ -105,11 +117,25 @@ export default function Office() {
   const [showInjuredWarning, setShowInjuredWarning] = useState(false);
   const [injuredInLineup, setInjuredInLineup] = useState([]);
   const [showSeasonEnd, setShowSeasonEnd] = useState(false);
+  const [showGlorySeasonEnd, setShowGlorySeasonEnd] = useState(false);
+  const [gloryFinalPosition, setGloryFinalPosition] = useState(1);
   const [noPlayersWarned, setNoPlayersWarned] = useState(false);
   const [showNoPlayersWarning, setShowNoPlayersWarning] = useState(false);
   const [simProgress, setSimProgress] = useState(null); // { current, total, week }
   const [simSummaryData, setSimSummaryData] = useState(null);
   const snapshotRef = useRef(null); // stores pre-simulation snapshot
+  
+  // Tutorial system
+  const officeTutorial = useTutorial('office');
+  
+  // Watch for pending tab navigation (from notifications / messages deep-link)
+  useEffect(() => {
+    if (state.pendingTab) {
+      setActiveTab(state.pendingTab);
+      dispatch({ type: 'CLEAR_PENDING_TAB' });
+    }
+  }, [state.pendingTab]);
+
   const isMobile = window.innerWidth <= 768;
   const isRanked = state.gameMode === 'ranked' && !!state.rankedMatchId;
   
@@ -120,7 +146,31 @@ export default function Office() {
   // Regenerate leagueTeams if missing (e.g. loaded from save without them)
   useEffect(() => {
     if (state.gameStarted && (!state.leagueTeams || state.leagueTeams.length === 0)) {
-      dispatch({ type: 'UPDATE_LEAGUE_TEAMS', payload: getAllTeams() });
+      const teams = getAllTeams();
+      // Glory mode: ensure glory_team is in the pool (it's not in Firestore)
+      // Also inject group rivals from leagueTable so transfers work
+      if (state.gameMode === 'glory') {
+        if (state.team && !teams.some(t => t.id === state.teamId)) {
+          teams.push({ ...state.team, leagueId: state.playerLeagueId || 'segundaRFEF' });
+        }
+        // Add group rivals that may not be in the flat Firestore list
+        const groupTeamIds = new Set((state.leagueTable || []).map(e => e.teamId));
+        const existingIds = new Set(teams.map(t => t.id));
+        // Find group rivals from Segunda RFEF groups
+        try {
+          const groups = getSegundaRfefGroups();
+          const groupId = state.playerGroupId;
+          if (groupId && groups[groupId]?.teams) {
+            for (const t of groups[groupId].teams) {
+              if (!existingIds.has(t.id)) {
+                teams.push({ ...t, leagueId: 'segundaRFEF' });
+                existingIds.add(t.id);
+              }
+            }
+          }
+        } catch (e) { /* skip */ }
+      }
+      dispatch({ type: 'UPDATE_LEAGUE_TEAMS', payload: teams });
     }
   }, [state.gameStarted, state.leagueTeams]);
   
@@ -156,15 +206,17 @@ export default function Office() {
     return () => unsub();
   }, [isRanked, state.rankedMatchId]);
   
-  // Build simulation summary when week advances and snapshot exists (NOT for ranked)
+  // Build simulation summary when batch sim completes (3+ weeks only, NOT single advance)
   useEffect(() => {
     if (snapshotRef.current && !simulating && !isRanked) {
       const snap = snapshotRef.current;
       snapshotRef.current = null;
+      // Only show summary for batch sims (3+ weeks), not single advance
+      const isBatch = snap.weekRange && (snap.weekRange.to - snap.weekRange.from) >= 3;
+      if (!isBatch) return;
       try {
         const summary = buildSummaryData(snap, state, { simWeek: state.currentWeek - 1, weekRange: snap.weekRange });
-        // Only show if there's something interesting
-        if (summary.playerMatch || summary.newInjuries.length || summary.recovered.length || summary.leagueResults.length) {
+        if (summary.playerMatch || summary.batchPlayerResults || summary.newInjuries.length || summary.recovered.length || summary.leagueResults.length) {
           setSimSummaryData(summary);
         }
       } catch (err) {
@@ -254,11 +306,22 @@ export default function Office() {
         return after && !after.injured;
       });
 
-    // League results (current week fixtures that are played, excluding player's)
-    const currentWeekFixtures = (afterState.fixtures || []).filter(f =>
-      f.played && f.week === (extras.simWeek || afterState.currentWeek - 1)
-    );
-    const otherResults = currentWeekFixtures
+    // League results — if weekRange exists (batch sim), gather ALL weeks; otherwise just last week
+    const weekFrom = extras.weekRange?.from;
+    const weekTo = extras.weekRange?.to;
+    const isBatchSim = weekFrom != null && weekTo != null && (weekTo - weekFrom) > 1;
+    
+    const simmedFixtures = (afterState.fixtures || []).filter(f => {
+      if (!f.played) return false;
+      if (isBatchSim) return f.week >= weekFrom && f.week < weekTo;
+      return f.week === (extras.simWeek || afterState.currentWeek - 1);
+    });
+
+    // For batch: show last 5 other results from the LAST week only
+    const lastWeekFixtures = isBatchSim
+      ? simmedFixtures.filter(f => f.week === weekTo - 1)
+      : simmedFixtures;
+    const otherResults = lastWeekFixtures
       .filter(f => f.homeTeam !== afterState.teamId && f.awayTeam !== afterState.teamId)
       .slice(0, 5)
       .map(f => {
@@ -267,10 +330,29 @@ export default function Office() {
         return { homeTeam: homeName, awayTeam: awayName, homeScore: f.homeScore, awayScore: f.awayScore };
       });
 
-    // Player match
-    const playerFixture = currentWeekFixtures.find(f =>
+    // Player matches — for batch sim, collect ALL player results
+    const playerFixtures = simmedFixtures.filter(f =>
       f.homeTeam === afterState.teamId || f.awayTeam === afterState.teamId
     );
+    const playerFixture = playerFixtures.length > 0 ? playerFixtures[playerFixtures.length - 1] : null;
+    
+    // Build batch player results summary (W/D/L + GF/GA)
+    let batchPlayerResults = null;
+    if (isBatchSim && playerFixtures.length > 1) {
+      let wins = 0, draws = 0, losses = 0, goalsFor = 0, goalsAgainst = 0;
+      const matchResults = [];
+      playerFixtures.forEach(f => {
+        const isHome = f.homeTeam === afterState.teamId;
+        const gf = isHome ? f.homeScore : f.awayScore;
+        const ga = isHome ? f.awayScore : f.homeScore;
+        goalsFor += gf; goalsAgainst += ga;
+        if (gf > ga) wins++; else if (gf < ga) losses++; else draws++;
+        const oppId = isHome ? f.awayTeam : f.homeTeam;
+        const oppName = afterState.leagueTable.find(t => t.teamId === oppId)?.teamName || oppId;
+        matchResults.push({ opponent: oppName, gf, ga, week: f.week });
+      });
+      batchPlayerResults = { wins, draws, losses, goalsFor, goalsAgainst, total: playerFixtures.length, matches: matchResults };
+    }
     let playerMatch = extras.playerMatch || null;
     if (!playerMatch && playerFixture) {
       const isHome = playerFixture.homeTeam === afterState.teamId;
@@ -298,6 +380,7 @@ export default function Office() {
 
     return {
       playerMatch,
+      batchPlayerResults,
       leagueResults: otherResults,
       cupResult: extras.cupResult || null,
       europeanResult: extras.europeanResult || null,
@@ -317,7 +400,13 @@ export default function Office() {
       fixturesLength: state.fixtures?.length,
       teamId: state.teamId,
       gameMode: state.gameMode,
-      seasonOver
+      seasonOver,
+      leagueIsOver,
+      fixturesAtWeek: (state.fixtures || []).filter(f => f.week === state.currentWeek).length,
+      unplayedAtWeek: (state.fixtures || []).filter(f => f.week === state.currentWeek && !f.played).length,
+      playerMatchAtWeek: (state.fixtures || []).filter(f => f.week === state.currentWeek && !f.played && (f.homeTeam === state.teamId || f.awayTeam === state.teamId)).length,
+      firstFixtureWeek: state.fixtures?.length > 0 ? Math.min(...state.fixtures.map(f => f.week)) : 'N/A',
+      preseasonWeek: state.preseasonWeek,
     });
     // Comprobar si hay suficientes jugadores (mínimo 11)
     const totalPlayers = (state.team?.players || []).length;
@@ -341,8 +430,19 @@ export default function Office() {
 
     // Comprobar si la temporada ha terminado
     if (seasonOver) {
-      setShowSeasonEnd(true);
-      return;
+      // Safety: don't trigger season end if no fixtures have been played
+      const anyPlayed = (state.fixtures || []).some(f => f.played);
+      if (!anyPlayed) {
+        console.warn('⚠️ seasonOver=true but no fixtures played — skipping season end');
+      } else {
+        // Capture final league position for glory mode before SeasonEnd resets table
+        if (state.gameMode === 'glory') {
+          const pos = (state.leagueTable?.findIndex(t => t.teamId === state.teamId) + 1) || 1;
+          setGloryFinalPosition(pos > 0 ? pos : 1);
+        }
+        setShowSeasonEnd(true);
+        return;
+      }
     }
     
     // Comprobar si hay lesionados en la alineación
@@ -373,8 +473,12 @@ export default function Office() {
   const proceedAdvanceWeek = () => {
     // Doble check de fin de temporada
     if (seasonOver) {
-      setShowSeasonEnd(true);
-      return;
+      const anyPlayed = (state.fixtures || []).some(f => f.played);
+      if (anyPlayed) {
+        setShowSeasonEnd(true);
+        return;
+      }
+      console.warn('⚠️ proceedAdvanceWeek: seasonOver but no fixtures played, continuing...');
     }
     
     // Si estamos en pretemporada, jugar partido amistoso
@@ -522,6 +626,15 @@ export default function Office() {
     // Track local team state so injuries are reflected in subsequent simulated weeks
     let localTeamPlayers = state.team?.players ? state.team.players.map(p => ({ ...p })) : [];
     
+    // Track local lineup so injured/suspended players are ejected for subsequent weeks
+    let localLineup = state.lineup ? { ...state.lineup } : {};
+    
+    // Medical reduction (mirrors INJURE_PLAYER reducer logic)
+    const medicalLevel = state.facilities?.medical || 0;
+    const medicalReduction = [0, 0.20, 0.35, 0.50][medicalLevel];
+    const recoverySpecBonus = state.facilitySpecs?.medical === 'recovery' ? 0.50 : 0;
+    const totalMedicalReduction = Math.min(0.75, medicalReduction + recoverySpecBonus);
+    
     // Track accumulated ticket income locally to avoid stale state overwrites
     let localAccumulatedIncome = state.stadium?.accumulatedTicketIncome ?? 0;
     
@@ -625,8 +738,8 @@ export default function Office() {
               awayTactic: isHome ? 'balanced' : (state.tactic || 'balanced'),
               homeMorale: isHome ? (teamEntry?.morale || 70) : (opponentEntry?.morale || 70),
               awayMorale: isHome ? (opponentEntry?.morale || 70) : (teamEntry?.morale || 70),
-              homeLineup: isHome ? (state.lineup || null) : null,
-              awayLineup: isHome ? null : (state.lineup || null),
+              homeLineup: isHome ? (localLineup || null) : null,
+              awayLineup: isHome ? null : (localLineup || null),
               attendanceFillRate: isHome ? attendanceFillRate : 0.7,
               grassCondition: state.stadium?.grassCondition ?? 100,
               medicalPrevention: state.facilitySpecs?.medical === 'prevention' ? 0.30 : 0,
@@ -684,8 +797,6 @@ export default function Office() {
             e.type === 'injury' && e.team === playerTeamSide
           ) || [];
           
-          // Note: During batch simulation, injuries from match events are NOT dispatched
-          // individually because ADVANCE_WEEKS_BATCH will also process injuries via ADVANCE_WEEK,
           // Always dispatch injuries — ADVANCE_WEEK heals by decrementing weeksLeft,
           // which is correct: injury on week N gets 1 week healed on N+1.
           {
@@ -699,11 +810,86 @@ export default function Office() {
                 }
               });
               // Update local team state so subsequent weeks reflect injuries
+              // Apply medical reduction to match INJURE_PLAYER reducer
+              const reducedWeeksLocal = Math.max(1, Math.round(injury.weeksOut * (1 - totalMedicalReduction)));
               localTeamPlayers = localTeamPlayers.map(p =>
                 p.name === injury.player
-                  ? { ...p, injured: true, injuryWeeksLeft: injury.weeksOut }
+                  ? { ...p, injured: true, injuryWeeksLeft: reducedWeeksLocal, injuredThisWeek: true }
                   : p
               );
+              // Eject injured player from local lineup
+              Object.keys(localLineup).forEach(slot => {
+                if (localLineup[slot]?.name === injury.player) {
+                  delete localLineup[slot];
+                }
+              });
+            });
+            // Auto-fill empty lineup slots after injury ejections
+            localLineup = ensureFullLineup(localLineup, localTeamPlayers, state.formation);
+          }
+          
+          // ── CARDS & SUSPENSIONS (batch simulation) ──
+          // 1. Serve existing suspensions (decrement before this match)
+          dispatch({ type: 'SERVE_SUSPENSIONS' });
+          localTeamPlayers = localTeamPlayers.map(p => {
+            if (!p.suspended || !p.suspensionMatches) return p;
+            const remaining = p.suspensionMatches - 1;
+            if (remaining <= 0) {
+              return { ...p, suspended: false, suspensionType: null, suspensionMatches: 0 };
+            }
+            return { ...p, suspensionMatches: remaining };
+          });
+
+          // 2. Process yellow cards
+          const _gpn = (p) => typeof p === 'object' ? (p?.name || 'Unknown') : (p || 'Unknown');
+          const playerYellowCards = (result.events || []).filter(
+            e => e.type === 'yellow_card' && e.team === playerTeamSide
+          );
+          if (playerYellowCards.length > 0) {
+            dispatch({
+              type: 'ADD_YELLOW_CARDS',
+              payload: { cards: playerYellowCards.map(e => ({ playerName: _gpn(e.player) })) }
+            });
+            // Track locally
+            playerYellowCards.forEach(e => {
+              const name = _gpn(e.player);
+              localTeamPlayers = localTeamPlayers.map(p => {
+                if (p.name !== name) return p;
+                const newYellows = (p.yellowCards || 0) + 1;
+                if (newYellows >= 5) {
+                  // Eject suspended player from local lineup
+                  Object.keys(localLineup).forEach(slot => {
+                    if (localLineup[slot]?.name === name) delete localLineup[slot];
+                  });
+                  return { ...p, yellowCards: 0, suspended: true, suspensionType: 'yellow', suspensionMatches: 1 };
+                }
+                return { ...p, yellowCards: newYellows };
+              });
+            });
+          }
+
+          // 3. Process red cards
+          const playerRedCards = (result.events || []).filter(
+            e => e.type === 'red_card' && e.team === playerTeamSide
+          );
+          if (playerRedCards.length > 0) {
+            dispatch({
+              type: 'ADD_RED_CARDS',
+              payload: { cards: playerRedCards.map(e => ({ playerName: _gpn(e.player), reason: e.reason || 'Roja directa' })) }
+            });
+            // Track locally
+            playerRedCards.forEach(e => {
+              const name = _gpn(e.player);
+              const isDoubleYellow = e.reason === 'Segunda amarilla';
+              const matchesBanned = isDoubleYellow ? 1 : 2;
+              localTeamPlayers = localTeamPlayers.map(p => {
+                if (p.name !== name) return p;
+                return { ...p, suspended: true, suspensionType: isDoubleYellow ? 'double_yellow' : 'red', suspensionMatches: matchesBanned };
+              });
+              // Eject suspended player from local lineup
+              Object.keys(localLineup).forEach(slot => {
+                if (localLineup[slot]?.name === name) delete localLineup[slot];
+              });
             });
           }
           
@@ -727,8 +913,12 @@ export default function Office() {
       }
       
       // Heal injuries locally each week (mirrors ADVANCE_WEEK)
+      // Skip players injured THIS iteration (injuredThisWeek flag) — same fix as reducer
       localTeamPlayers = localTeamPlayers.map(p => {
         if (p.injured && p.injuryWeeksLeft > 0) {
+          if (p.injuredThisWeek) {
+            return { ...p, injuredThisWeek: false }; // Clear flag, heal next iteration
+          }
           const left = p.injuryWeeksLeft - 1;
           return left <= 0
             ? { ...p, injured: false, injuryWeeksLeft: 0, injuryType: null }
@@ -783,8 +973,8 @@ export default function Office() {
                 awayFormation: cupIsHome ? '4-3-3' : (state.formation || '4-3-3'),
                 homeTactic: cupIsHome ? (state.tactic || 'balanced') : 'balanced',
                 awayTactic: cupIsHome ? 'balanced' : (state.tactic || 'balanced'),
-                homeLineup: cupIsHome ? (state.lineup || null) : null,
-                awayLineup: cupIsHome ? null : (state.lineup || null),
+                homeLineup: cupIsHome ? (localLineup || null) : null,
+                awayLineup: cupIsHome ? null : (localLineup || null),
                 homeMorale: 70, awayMorale: 70,
                 grassCondition: state.stadium?.grassCondition ?? 100,
                 medicalPrevention: state.facilitySpecs?.medical === 'prevention' ? 0.30 : 0,
@@ -835,8 +1025,21 @@ export default function Office() {
       const chunk = Math.min(CHUNK_SIZE, weeksSimulated - c);
       dispatch({ type: 'ADVANCE_WEEKS_BATCH', payload: { count: chunk } });
       if (!isRanked) setSimProgress({ pct: 50 + Math.round(((c + chunk) / weeksSimulated) * 50), week: state.currentWeek + c + chunk });
-      await new Promise(resolve => setTimeout(resolve, 30));
+      await new Promise(resolve => setTimeout(resolve, 50));
     }
+    
+    // Sync injury state from local simulation to fix double-healing
+    // (ADVANCE_WEEKS_BATCH healed injuries N times, but injuries created mid-sim
+    // should only be healed for weeks after they occurred — localTeamPlayers has the correct state)
+    const injurySync = localTeamPlayers
+      .filter(p => p.injured || p.injuryWeeksLeft > 0 || localTeamPlayers.find(lp => lp.name === p.name)?.injured !== undefined)
+      .map(p => ({ name: p.name, injured: p.injured, injuryWeeksLeft: p.injuryWeeksLeft || 0, injuryType: p.injuryType || null }));
+    if (injurySync.length > 0) {
+      dispatch({ type: 'SYNC_BATCH_INJURIES', payload: { players: injurySync } });
+    }
+    
+    // Sync lineup from local state (injured/suspended players were ejected locally)
+    dispatch({ type: 'SET_LINEUP', payload: localLineup });
     
     // Set snapshot for summary modal (useEffect will pick it up when state updates)
     snapshotRef.current = preSimSnapshot;
@@ -844,6 +1047,7 @@ export default function Office() {
     setSimulating(false);
     dispatch({ type: 'SET_SIMULATING', payload: false });
     setSimProgress(null);
+    maybeShowInterstitial(); // Show ad every 4th simulation
     
     // Auto-save after simulation (if autoSave enabled)
     if (state.settings?.autoSave !== false) {
@@ -907,6 +1111,8 @@ export default function Office() {
         return <Cup />;
       case 'messages':
         return <Messages />;
+      case 'glory_perks':
+        return <GloryPerks />;
       default:
         return renderOverview();
     }
@@ -935,120 +1141,160 @@ export default function Office() {
         (f.homeTeam === state.teamId || f.awayTeam === state.teamId)
       );
     }
+
+    const confidenceColor = state.managerConfidence > 60 ? '#2ecc71' : state.managerConfidence > 40 ? '#f39c12' : state.managerConfidence > 25 ? '#e67e22' : '#e74c3c';
     
     return (
       <div className="office__overview">
         {state.gameMode === 'promanager' && <ProManagerDashboard />}
-        <div className="office__welcome">
-          <h2>{t('office.welcomeName', { name: user?.displayName || t('office.manager') })}</h2>
-          <p>{t('office.seasonInfo', { season: state.currentSeason })} · {state.preseasonPhase ? t('office.preseason', { week: state.preseasonWeek, total: state.preseasonMatches?.length || 5 }) : t('office.weekInfo', { week: state.currentWeek })}</p>
-        </div>
-        
-        <div className="office__cards">
-          <div className="office__card office__card--position">
-            <div className="office__card-icon">
-              <Trophy size={28} strokeWidth={2} />
+
+        {/* ── Hero Card ── */}
+        <div className="office__hero">
+          <div className="office__hero-radial" />
+          <div className="office__hero-top">
+            <div className="office__hero-icon">
+              <UserRound size={26} strokeWidth={1.8} />
             </div>
-            <div className="office__card-content">
-              <span className="label">{t('leagueTable.position')}</span>
-              <span className="value">{position}º</span>
+            <div className="office__hero-text">
+              <h2>{t('office.welcomeName', { name: state.managerName || t('office.manager') })}</h2>
+              <p>{t('office.seasonInfo', { season: state.currentSeason })} · {state.preseasonPhase ? t('office.preseason', { week: state.preseasonWeek, total: state.preseasonMatches?.length || 5 }) : t('office.weekInfo', { week: state.currentWeek })}</p>
             </div>
           </div>
-          
-          <div className="office__card office__card--points">
-            <div className="office__card-icon">
-              <TrendingUp size={28} strokeWidth={2} />
+          <div className="office__hero-stats">
+            {!state.preseasonPhase && state.currentWeek > 5 && !isRanked && state.gameMode !== 'promanager' && (
+              <div className="office__hero-stat">
+                <Gauge size={15} />
+                <span className="office__hero-stat-value" style={{ color: confidenceColor }}>{state.managerConfidence}%</span>
+                <span className="office__hero-stat-label">{t('office.boardConfidence')}</span>
+              </div>
+            )}
+            <div className="office__hero-stat">
+              <Trophy size={15} />
+              <span className="office__hero-stat-value">{position}º</span>
+              <span className="office__hero-stat-label">{t('leagueTable.position')}</span>
             </div>
-            <div className="office__card-content">
-              <span className="label">{t('leagueTable.points')}</span>
-              <span className="value">{teamStats?.points || 0}</span>
+            <div className="office__hero-stat">
+              <TrendingUp size={15} />
+              <span className="office__hero-stat-value">{teamStats?.points || 0}</span>
+              <span className="office__hero-stat-label">{t('leagueTable.points')}</span>
             </div>
-          </div>
-          
-          <div className="office__card office__card--budget">
-            <div className="office__card-icon">
-              <Wallet size={28} strokeWidth={2} />
-            </div>
-            <div className="office__card-content">
-              <span className="label">{t('office.budget')}</span>
-              <span className="value">{formatMoney(state.money)}</span>
-            </div>
-          </div>
-          
-          <div className="office__card office__card--squad">
-            <div className="office__card-icon">
-              <Users size={28} strokeWidth={2} />
-            </div>
-            <div className="office__card-content">
-              <span className="label">{t('plantilla.title')}</span>
-              <span className="value">{state.team?.players?.length || 0}</span>
-              <span className="sublabel">{t('office.players')}</span>
+            <div className="office__hero-stat">
+              <Wallet size={15} />
+              <span className="office__hero-stat-value">{formatMoney(state.money)}</span>
+              <span className="office__hero-stat-label">{t('office.budget')}</span>
             </div>
           </div>
         </div>
-        
-        {/* Barra de confianza del míster */}
+
+        {/* ── Board Panel Card ── */}
         {!state.preseasonPhase && state.currentWeek > 5 && !isRanked && state.gameMode !== 'promanager' && (
-          <div className="office__confidence" style={{
-            margin: '0 0 1.5rem',
-            padding: '0.75rem 1rem',
-            background: state.managerConfidence <= 25 ? 'rgba(231,76,60,0.12)' : 'rgba(255,255,255,0.03)',
-            borderRadius: '8px',
-            border: state.managerConfidence <= 25 ? '1px solid rgba(231,76,60,0.3)' : '1px solid rgba(255,255,255,0.06)'
-          }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.4rem' }}>
-              <span style={{ fontSize: '0.75rem', color: '#8899aa', textTransform: 'uppercase', letterSpacing: '1px' }}>
-                {state.managerConfidence <= 25 ? <><AlertTriangle size={12} />{' '}</> : ''}{t('office.boardConfidence')}
-              </span>
-              <span style={{ 
-                fontSize: '0.85rem', fontWeight: 700,
-                color: state.managerConfidence > 60 ? '#2ecc71' : state.managerConfidence > 40 ? '#f39c12' : state.managerConfidence > 25 ? '#e67e22' : '#e74c3c'
-              }}>
-                {state.managerConfidence}%
-              </span>
+          <div className="office__panel-card">
+            <div className="office__panel-header">
+              <div className="office__panel-header-icon"><Shield size={16} /></div>
+              <span>Panel</span>
             </div>
-            <div style={{ height: '6px', background: 'rgba(255,255,255,0.08)', borderRadius: '3px', overflow: 'hidden' }}>
-              <div style={{
-                height: '100%', borderRadius: '3px', transition: 'width 0.5s, background 0.5s',
-                width: `${state.managerConfidence}%`,
-                background: state.managerConfidence > 60 ? '#2ecc71' : state.managerConfidence > 40 ? '#f39c12' : state.managerConfidence > 25 ? '#e67e22' : '#e74c3c'
-              }} />
+            <div className="office__panel-body">
+              <div className="office__panel-confidence">
+                <div className="office__panel-confidence-row">
+                  <span className="office__panel-confidence-label">
+                    {state.managerConfidence <= 25 && <AlertTriangle size={12} />}
+                    {t('office.boardConfidence')}
+                  </span>
+                  <span className="office__panel-confidence-value" style={{ color: confidenceColor }}>{state.managerConfidence}%</span>
+                </div>
+                <div className="office__panel-confidence-track">
+                  <div className="office__panel-confidence-fill" style={{ width: `${state.managerConfidence}%`, background: confidenceColor }} />
+                </div>
+              </div>
+
+              {state.seasonObjectives?.length > 0 && state.gameMode !== 'contrarreloj' && (() => {
+                const criticalObj = state.seasonObjectives.find(o => o.priority === 'critical');
+                if (!criticalObj) return null;
+                return (
+                  <div className="office__panel-objective">
+                    <Target size={14} />
+                    <span>{criticalObj.nameKey ? t(criticalObj.nameKey) : criticalObj.name}</span>
+                  </div>
+                );
+              })()}
+
+              {state.teamPrestige !== undefined && (
+                <div className="office__panel-prestige">
+                  <Star size={14} />
+                  <span className="office__panel-prestige-label">{t('office.prestige') || 'Prestigio'}</span>
+                  <span className="office__panel-prestige-value">{state.teamPrestige}</span>
+                </div>
+              )}
+
+              <div className="office__panel-stats">
+                <div className="office__panel-stat-item">
+                  <div className="office__panel-stat-icon" style={{ background: 'rgba(0,212,255,0.12)', color: '#00d4ff' }}><BarChart3 size={15} /></div>
+                  <div className="office__panel-stat-info">
+                    <span className="office__panel-stat-val">{teamStats?.played || 0}</span>
+                    <span className="office__panel-stat-lbl">{t('leagueTable.played')}</span>
+                  </div>
+                </div>
+                <div className="office__panel-stat-item">
+                  <div className="office__panel-stat-icon" style={{ background: 'rgba(48,209,88,0.12)', color: '#30d158' }}><Award size={15} /></div>
+                  <div className="office__panel-stat-info">
+                    <span className="office__panel-stat-val">{teamStats?.won || 0}</span>
+                    <span className="office__panel-stat-lbl">{t('leagueTable.won')}</span>
+                  </div>
+                </div>
+                <div className="office__panel-stat-item">
+                  <div className="office__panel-stat-icon" style={{ background: 'rgba(255,215,0,0.12)', color: '#ffd700' }}><Trophy size={15} /></div>
+                  <div className="office__panel-stat-info">
+                    <span className="office__panel-stat-val">{state.titlesWon || 0}</span>
+                    <span className="office__panel-stat-lbl">{t('office.titles') || 'Títulos'}</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         )}
         
         <div className="office__grid">
           <div className="office__grid-left">
+            {/* ── Next Match Card ── */}
             {nextMatch && (
               <div className="office__next-match">
-                <h3>{t('office.nextMatch')}</h3>
-                <span className="office__match-week">
-                  {nextMatch.isPreseason ? t('office.friendlyMatch', { week: nextMatch.week }) : t('office.matchday', { week: nextMatch.week })}
-                </span>
-                <div className="office__match-preview">
-                  <div className="team home">
-                    <span className="name">
-                      {nextMatch.isPreseason 
-                        ? (nextMatch.homeTeamName || nextMatch.homeTeam)
-                        : (nextMatch.homeTeam === state.teamId ? state.team.name : 
-                          state.leagueTable.find(t => t.teamId === nextMatch.homeTeam)?.teamName)}
-                    </span>
-                  </div>
-                  <div className="vs">{t('office.vs')}</div>
-                  <div className="team away">
-                    <span className="name">
-                      {nextMatch.isPreseason
-                        ? (nextMatch.awayTeamName || nextMatch.awayTeam)
-                        : (nextMatch.awayTeam === state.teamId ? state.team.name : 
-                          state.leagueTable.find(t => t.teamId === nextMatch.awayTeam)?.teamName)}
-                    </span>
+                <div className="office__glass-header">
+                  <CalendarDays size={16} />
+                  <span>{t('office.nextMatch')}</span>
+                </div>
+                <div className="office__next-match-body">
+                  <span className="office__match-week-badge">
+                    {nextMatch.isPreseason ? t('office.friendlyMatch', { week: nextMatch.week }) : t('office.matchday', { week: nextMatch.week })}
+                  </span>
+                  <div className="office__match-preview">
+                    <div className="team home">
+                      <span className="name">
+                        {nextMatch.isPreseason 
+                          ? (nextMatch.homeTeamName || nextMatch.homeTeam)
+                          : (nextMatch.homeTeam === state.teamId ? state.team.name : 
+                            state.leagueTable.find(t => t.teamId === nextMatch.homeTeam)?.teamName)}
+                      </span>
+                    </div>
+                    <div className="vs-pill">{t('office.vs')}</div>
+                    <div className="team away">
+                      <span className="name">
+                        {nextMatch.isPreseason
+                          ? (nextMatch.awayTeamName || nextMatch.awayTeam)
+                          : (nextMatch.awayTeam === state.teamId ? state.team.name : 
+                            state.leagueTable.find(t => t.teamId === nextMatch.awayTeam)?.teamName)}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
             )}
             
+            {/* ── Last Results Card ── */}
             <div className="office__form">
-              <h3>{t('office.lastResults')}</h3>
+              <div className="office__glass-header">
+                <BarChart3 size={16} />
+                <span>{t('office.lastResults')}</span>
+              </div>
               <div className="office__form-badges">
                 {teamStats?.form && teamStats.form.length > 0 ? (
                   teamStats.form.map((result, idx) => (
@@ -1064,12 +1310,13 @@ export default function Office() {
           </div>
           
           <div className="office__grid-right">
+            {/* ── Objectives Preview Card ── */}
             {state.seasonObjectives?.length > 0 && state.gameMode !== 'contrarreloj' && !isRanked && (
               <div className="office__objective-preview" onClick={() => setActiveTab('objectives')}>
-                <h3>
-                  <Target size={18} strokeWidth={2} />
+                <div className="office__glass-header">
+                  <Target size={16} />
                   <span>{t('office.mainObjective')}</span>
-                </h3>
+                </div>
                 {(() => {
                   const criticalObj = state.seasonObjectives.find(o => o.priority === 'critical');
                   if (!criticalObj) return null;
@@ -1104,13 +1351,17 @@ export default function Office() {
               </div>
             )}
             
+            {/* ── Messages Preview Card ── */}
             {state.messages.length > 0 && !isRanked && (
               <div className="office__recent-messages" onClick={() => setActiveTab('messages')}>
-                <h3>{t('office.recentMessages')}</h3>
+                <div className="office__glass-header">
+                  <MessageSquare size={16} />
+                  <span>{t('office.recentMessages')}</span>
+                </div>
                 {state.messages.slice(0, 3).map(msg => (
                   <div key={msg.id} className="office__message-preview">
                     <span className="title">{msg.titleKey ? t(msg.titleKey, msg.titleParams) : msg.title}</span>
-                    <span className="date">{msg.date}</span>
+                    <span className="date">{msg.dateKey ? t(msg.dateKey, msg.dateParams) : msg.date}</span>
                   </div>
                 ))}
               </div>
@@ -1190,14 +1441,37 @@ export default function Office() {
   
   // Modal de fin de temporada
   if (showSeasonEnd) {
+    if (showGlorySeasonEnd) {
+      return (
+        <GlorySeasonEnd
+          leaguePosition={gloryFinalPosition}
+          onComplete={() => {
+            snapshotRef.current = null;
+            setSimSummaryData(null);
+            setShowSeasonEnd(false);
+            setShowGlorySeasonEnd(false);
+          }}
+        />
+      );
+    }
     return (
       <SeasonEnd 
         allTeams={allTeamsMemo} 
         onComplete={() => {
-          setShowSeasonEnd(false);
-          // In ProManager mode, show the season end screen with offers
-          if (state.gameMode === 'promanager') {
-            dispatch({ type: 'SET_SCREEN', payload: 'promanager_season_end' });
+          if (state.gameMode === 'glory') {
+            // Store final position from the season that just ended
+            // (leagueTable may still have previous season data at this point)
+            const pos = state.gloryData?._finalPosition || 
+              (state.leagueTable?.findIndex(t => t.teamId === state.teamId) + 1) || 1;
+            setGloryFinalPosition(pos > 0 ? pos : 1);
+            snapshotRef.current = null;
+            setSimSummaryData(null);
+            setShowGlorySeasonEnd(true);
+          } else {
+            setShowSeasonEnd(false);
+            if (state.gameMode === 'promanager') {
+              dispatch({ type: 'SET_SCREEN', payload: 'promanager_season_end' });
+            }
           }
         }}
       />
@@ -1228,18 +1502,6 @@ export default function Office() {
         <header className="office__header">
           <div className="office__team-info">
             <h1>{state.team?.name}</h1>
-            <span 
-              className="office__manager-name" 
-              onClick={() => {
-                const newName = window.prompt(t('office.changeManagerName'), state.managerName || 'Gaffer');
-                if (newName && newName.trim()) {
-                  dispatch({ type: 'SET_MANAGER_NAME', payload: newName.trim().slice(0, 20) });
-                }
-              }}
-              title={t('office.clickToChangeName')}
-            >
-              <UserRound size={14} style={{ marginRight: 4, verticalAlign: 'middle' }} /> {state.managerName || 'Gaffer'}
-            </span>
             <span className="office__season">{t('office.seasonInfo', { season: state.currentSeason })} · {state.preseasonPhase ? t('office.preseason', { week: state.preseasonWeek, total: state.preseasonMatches?.length || 5 }) : t('office.weekInfo', { week: state.currentWeek })}</span>
           </div>
           
@@ -1297,6 +1559,26 @@ export default function Office() {
         <SimulationSummary data={simSummaryData} onClose={() => setSimSummaryData(null)} />
       )}
       
+      {/* Tutorial Modals */}
+      {officeTutorial.showWelcome && activeTab === 'overview' && (
+        <WelcomeModal
+          onAccept={officeTutorial.acceptWelcome}
+          onDecline={officeTutorial.declineWelcome}
+        />
+      )}
+      {officeTutorial.shouldShow && activeTab === 'overview' && !officeTutorial.showWelcome && (
+        <TutorialModal
+          id="office"
+          steps={[
+            { selector: '.sidebar__nav, .sidebar', text: t('tutorial.officeNav') },
+            { selector: '.office__advance-btn', text: t('tutorial.officeSimulate') },
+            { selector: '.office__hero-stats', text: t('tutorial.officeBudget') },
+          ]}
+          onComplete={officeTutorial.markSeen}
+          onDismissAll={officeTutorial.dismissAll}
+        />
+      )}
+
       {/* Simulation Progress Modal */}
       {simProgress && !isRanked && (
         <div className="sim-modal-overlay">
