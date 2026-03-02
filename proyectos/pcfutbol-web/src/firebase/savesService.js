@@ -51,7 +51,19 @@ export async function saveGameToSlot(userId, slotIndex, gameState) {
   
   const saveId = getSaveId(userId, slotIndex);
   // Strip large reconstructable data to stay under Firestore 1MB limit
-  const { leagueTeams, otherLeagues, ...compactState } = gameState;
+  const { leagueTeams, otherLeagues, europeanCompetitions, saCompetitions,
+    cupCompetition, playerMarket, freeAgents, ...compactState } = gameState;
+  // Keep only unplayed fixtures (BUG-02)
+  if (Array.isArray(compactState.fixtures)) {
+    compactState.fixtures = compactState.fixtures.filter(f => !f.played);
+  }
+  // Keep only summary stats from results
+  if (Array.isArray(compactState.results) && compactState.results.length > 0) {
+    compactState.results = compactState.results.map(r => ({
+      week: r.week, homeTeamId: r.homeTeamId, awayTeamId: r.awayTeamId,
+      homeGoals: r.homeGoals, awayGoals: r.awayGoals, played: r.played,
+    }));
+  }
   const saveData = {
     ...compactState,
     userId,
@@ -105,6 +117,12 @@ export async function loadGameFromSlot(userId, slotIndex) {
         ? pk.sort((a, b) => +a - +b).map(k => data.team.players[k])
         : [];
     }
+    // Defaults for stripped reconstructible fields (BUG-02)
+    if (!data.europeanCompetitions) data.europeanCompetitions = null;
+    if (!data.saCompetitions) data.saCompetitions = null;
+    if (!data.cupCompetition) data.cupCompetition = null;
+    if (!data.playerMarket) data.playerMarket = [];
+    if (!data.freeAgents) data.freeAgents = [];
     return data;
   }
   

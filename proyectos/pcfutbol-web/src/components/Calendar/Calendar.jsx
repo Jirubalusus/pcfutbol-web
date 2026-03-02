@@ -13,6 +13,7 @@ import { getPlayerCompetition } from '../../game/europeanSeason';
 import { SA_MATCHDAY_WEEKS, ALL_SA_WEEKS, isSouthAmericanLeague, SA_COMPETITIONS } from '../../game/southAmericanCompetitions';
 import { getLeagueName } from '../../game/leagueTiers';
 import { getPlayerSACompetition, getSACalendar } from '../../game/southAmericanSeason';
+import TeamCrest from '../TeamCrest/TeamCrest';
 import './Calendar.scss';
 
 export default function Calendar() {
@@ -392,10 +393,11 @@ export default function Calendar() {
   const navTitle = getNavTitle();
 
   // ── Render fixture card (reusable) ──
-  const renderFixtureCard = (key, { homeName, awayName, homeIsPlayer, awayIsPlayer, played, homeScore, awayScore, playerResult, statusType, extraClass, penalties }) => (
+  const renderFixtureCard = (key, { homeName, awayName, homeIsPlayer, awayIsPlayer, played, homeScore, awayScore, playerResult, statusType, extraClass, penalties, homeTeamId, awayTeamId }) => (
     <div key={key} className={`fixture-card ${homeIsPlayer || awayIsPlayer ? 'is-player' : ''} ${played ? 'played' : ''} ${extraClass || ''}`}>
       <div className={`team home ${homeIsPlayer ? 'is-you' : ''}`}>
         <span className="team-name">{homeName}</span>
+        {homeTeamId && <TeamCrest teamId={homeTeamId} size={20} />}
       </div>
       <div className="match-center">
         {played ? (
@@ -410,6 +412,7 @@ export default function Calendar() {
         )}
       </div>
       <div className={`team away ${awayIsPlayer ? 'is-you' : ''}`}>
+        {awayTeamId && <TeamCrest teamId={awayTeamId} size={20} />}
         <span className="team-name">{awayName}</span>
       </div>
       <div className="match-status">
@@ -497,7 +500,9 @@ export default function Calendar() {
               homeScore: fixture.homeScore,
               awayScore: fixture.awayScore,
               playerResult: pr,
-              statusType: getStatusType()
+              statusType: getStatusType(),
+              homeTeamId: fixture.homeTeam,
+              awayTeamId: fixture.awayTeam
             });
           })
         )}
@@ -524,7 +529,9 @@ export default function Calendar() {
                   awayScore: f.awayScore,
                   playerResult: pr,
                   statusType: getStatusType(),
-                  extraClass: `euro-fixture euro-fixture--${comp.cssClass}`
+                  extraClass: `euro-fixture euro-fixture--${comp.cssClass}`,
+                  homeTeamId: f.homeTeamId,
+                  awayTeamId: f.awayTeamId
                 });
               })}
             </div>
@@ -553,7 +560,9 @@ export default function Calendar() {
                     homeScore: null, awayScore: null,
                     playerResult: m.isPlayer ? 'W' : null,
                     statusType: 'played',
-                    extraClass: 'cup-fixture'
+                    extraClass: 'cup-fixture',
+                    homeTeamId: m.homeTeam?.teamId,
+                    awayTeamId: null
                   });
                 }
                 const isWin = m.isPlayer && m.winnerId === state.teamId;
@@ -570,7 +579,9 @@ export default function Calendar() {
                   playerResult: pr,
                   statusType: getStatusType(),
                   extraClass: 'cup-fixture',
-                  penalties: m.penalties
+                  penalties: m.penalties,
+                  homeTeamId: m.homeTeam?.teamId,
+                  awayTeamId: m.awayTeam?.teamId
                 });
               })}
             </div>

@@ -118,7 +118,7 @@ export async function joinQueue(uid, displayName, totalLP) {
 }
 
 export async function leaveQueue(uid) {
-  try { await deleteDoc(doc(db, QUEUE_COL, uid)); } catch(e) {}
+  try { await deleteDoc(doc(db, QUEUE_COL, uid)); } catch (e) { console.warn('Cleanup error:', e); }
 }
 
 // Abandon all active (non-finished) matches for this user before starting a new search
@@ -899,7 +899,7 @@ export async function sendHeartbeat(matchId, uid) {
     await updateDoc(matchRef, {
       [`disconnectCheck.${playerKey}`]: serverTimestamp(),
     });
-  } catch(e) {}
+  } catch (e) { console.warn('Cleanup error:', e); }
 }
 
 export async function checkDisconnect(matchId, uid) {

@@ -16,7 +16,7 @@ import {
 } from '../../data/teamsFirestore';
 import { simulateWeekMatches, simulateMatch, updateTable } from '../../game/leagueEngine';
 import { simulateOtherLeaguesWeek } from '../../game/multiLeagueEngine';
-import { calculateMatchAttendance } from '../../game/stadiumEconomy';
+import { calculateMatchAttendance, calculateServicesIncome, STADIUM_SERVICES } from '../../game/stadiumEconomy';
 
 // Combine all teams for lookup - usando getters para obtener data actualizada
 // Each team gets leagueId assigned (Firestore has 'league' field, game state uses 'leagueId')
@@ -104,12 +104,13 @@ import RankedTimer from '../Ranked/RankedTimer';
 import { submitRoundConfig, advancePhase as advanceRankedPhase, onMatchChange } from '../../firebase/rankedService';
 import { useAuth } from '../../context/AuthContext';
 import { WelcomeModal, TutorialModal, useTutorial } from '../Tutorial/Tutorial';
+import TeamCrest from '../TeamCrest/TeamCrest';
 import './Office.scss';
 
 export default function Office() {
   const { t } = useTranslation();
   const { state, dispatch, saveGame } = useGame();
-  const { maybeShowInterstitial } = useAds(state.isPremium);
+  const { maybeShowInterstitial } = useAds(state.premium);
   const { user } = useAuth();
   const [activeTab, setActiveTab] = useState('overview');
   const [showMatch, setShowMatch] = useState(false);
@@ -124,6 +125,8 @@ export default function Office() {
   const [simProgress, setSimProgress] = useState(null); // { current, total, week }
   const [simSummaryData, setSimSummaryData] = useState(null);
   const snapshotRef = useRef(null); // stores pre-simulation snapshot
+  const stateRef = useRef(state); // keeps fresh state for async callbacks (#7, #9-10)
+  stateRef.current = state;
   
   // Tutorial system
   const officeTutorial = useTutorial('office');
@@ -136,6 +139,7 @@ export default function Office() {
     }
   }, [state.pendingTab]);
 
+  // NOTE: Not reactive to window resizes, but fine — only affects initial layout. (#23)
   const isMobile = window.innerWidth <= 768;
   const isRanked = state.gameMode === 'ranked' && !!state.rankedMatchId;
   
@@ -184,7 +188,7 @@ export default function Office() {
       setTimeout(() => advanceRankedPhase(state.rankedMatchId).catch(() => {}), 2000);
     } catch (e) {
       console.error('Error submitting ranked config:', e);
-      alert(e.message);
+      import('sileo').then(({ sileo: s }) => s.error({ title: e.message }));
     }
   };
   
@@ -287,6 +291,7 @@ export default function Office() {
   });
 
   // Build summary data by comparing before/after snapshots
+  // NOTE: snapshot.lineup may be stale if lineup changed mid-sim. Minor — only affects summary display. (#22)
   const buildSummaryData = (snapshot, afterState, extras = {}) => {
     const afterPlayers = afterState.team?.players || [];
     const afterStanding = afterState.leagueTable.findIndex(t => t.teamId === afterState.teamId) + 1;
@@ -327,7 +332,7 @@ export default function Office() {
       .map(f => {
         const homeName = afterState.leagueTable.find(t => t.teamId === f.homeTeam)?.teamName || f.homeTeam;
         const awayName = afterState.leagueTable.find(t => t.teamId === f.awayTeam)?.teamName || f.awayTeam;
-        return { homeTeam: homeName, awayTeam: awayName, homeScore: f.homeScore, awayScore: f.awayScore };
+        return { homeTeam: homeName, awayTeam: awayName, homeTeamId: f.homeTeam, awayTeamId: f.awayTeam, homeScore: f.homeScore, awayScore: f.awayScore };
       });
 
     // Player matches — for batch sim, collect ALL player results
@@ -365,18 +370,51 @@ export default function Office() {
       };
     }
 
-    // Cards from match events
-    const cards = { yellow: [], red: [] };
-    if (playerFixture?.events) {
-      const playerSide = playerFixture.homeTeam === afterState.teamId ? 'home' : 'away';
-      playerFixture.events.forEach(e => {
-        if (e.team === playerSide) {
-          const playerName = typeof e.player === 'string' ? e.player : (e.player?.name || e.playerName || '?');
-          if (e.type === 'yellowCard' || e.type === 'yellow_card') cards.yellow.push(playerName);
-          if (e.type === 'redCard' || e.type === 'red_card') cards.red.push(playerName);
+    // Cards from ALL player match events (batch or single)
+    // Track counts per player + suspension info
+    const yellowMap = {}; // { name: { count, suspended, missesWeek } }
+    const redMap = {};    // { name: { count, missesWeek } }
+    const fixturesToScan = isBatchSim ? playerFixtures : (playerFixture ? [playerFixture] : []);
+    fixturesToScan.forEach(f => {
+      const playerSide = f.homeTeam === afterState.teamId ? 'home' : 'away';
+      (f.events || []).forEach(e => {
+        if (e.team !== playerSide) return;
+        const playerName = typeof e.player === 'string' ? e.player : (e.player?.name || e.playerName || '?');
+        if (e.type === 'yellowCard' || e.type === 'yellow_card') {
+          if (!yellowMap[playerName]) yellowMap[playerName] = { count: 0, suspended: false, missesWeek: null };
+          yellowMap[playerName].count++;
+        }
+        if (e.type === 'redCard' || e.type === 'red_card') {
+          if (!redMap[playerName]) redMap[playerName] = { count: 0, missesWeek: null };
+          redMap[playerName].count++;
         }
       });
-    }
+    });
+    // Check suspensions: player who accumulated yellows or got red
+    const currentWeek = afterState.currentWeek || 1;
+    afterPlayers.forEach(p => {
+      if (p.suspended) {
+        const missesWeek = p.suspensionMatchesLeft === 1 ? currentWeek : currentWeek;
+        const alreadyPlayed = afterState.fixtures?.some(f => f.week === currentWeek && f.played);
+        if (yellowMap[p.name]) {
+          yellowMap[p.name].suspended = true;
+          yellowMap[p.name].missesWeek = missesWeek;
+          yellowMap[p.name].alreadyPlayed = alreadyPlayed;
+        }
+        if (redMap[p.name]) {
+          redMap[p.name].missesWeek = missesWeek;
+          redMap[p.name].alreadyPlayed = alreadyPlayed;
+        }
+        // If suspended but not in our card maps (accumulated from before), add to yellow
+        if (!yellowMap[p.name] && !redMap[p.name] && p.suspensionType === 'yellow') {
+          yellowMap[p.name] = { count: 0, suspended: true, missesWeek, alreadyPlayed };
+        }
+      }
+    });
+    const cards = {
+      yellow: Object.entries(yellowMap).map(([name, info]) => ({ name, ...info })),
+      red: Object.entries(redMap).map(([name, info]) => ({ name, ...info })),
+    };
 
     return {
       playerMatch,
@@ -565,9 +603,11 @@ export default function Office() {
         dispatch({ type: 'ADVANCE_WEEK' });
       } else {
         // Cup or European match done — check if there's still a league match this week
-        const weekFixtures = state.fixtures.filter(f => f.week === state.currentWeek && !f.played);
+        // Use stateRef to get fresh state after dispatches from MatchDay (#9-10)
+        const freshState = stateRef.current;
+        const weekFixtures = freshState.fixtures.filter(f => f.week === freshState.currentWeek && !f.played);
         const leagueMatch = weekFixtures.find(f => 
-          f.homeTeam === state.teamId || f.awayTeam === state.teamId
+          f.homeTeam === freshState.teamId || f.awayTeam === freshState.teamId
         );
         
         if (leagueMatch) {
@@ -637,6 +677,8 @@ export default function Office() {
     
     // Track accumulated ticket income locally to avoid stale state overwrites
     let localAccumulatedIncome = state.stadium?.accumulatedTicketIncome ?? 0;
+    let localAccumulatedServicesIncome = state.stadium?.accumulatedServicesIncome ?? 0;
+    let localServicesBreakdown = { ...(state.stadium?.accumulatedServicesBreakdown || { catering: 0, merchandise: 0, parking: 0, events: 0, vip: 0 }) };
     
     // Track cup competition locally (avoids losing pendingCupMatch across ADVANCE_WEEKs)
     let localCupCompetition = state.cupCompetition ? { ...state.cupCompetition } : null;
@@ -654,7 +696,7 @@ export default function Office() {
     
     for (let i = 0; i < effectiveNumWeeks; i++) {
       // Comprobar si la temporada ha terminado
-      if (currentWeek > maxWeek || isSeasonOver(currentFixtures, playerLeagueId) || state.pendingAperturaClausuraFinal) {
+      if (currentWeek > maxWeek || isSeasonOver(currentFixtures, playerLeagueId) || stateRef.current.pendingAperturaClausuraFinal) {
         seasonEnded = true;
         break;
       }
@@ -785,10 +827,32 @@ export default function Office() {
             const tktIncome = att.ticketSales * tPrice;
             const concRate = 8 + (sLevel * 2);
             const concIncome = att.attendance * concRate;
+            const svcIncome = calculateServicesIncome(stadium.services, att.attendance, true);
+            // Track per-service breakdown
+            if (stadium.services) {
+              for (const [sKey, sCfg] of Object.entries(STADIUM_SERVICES)) {
+                const sLvl = stadium.services[sKey] || 0;
+                if (sLvl <= 0) continue;
+                const ld = sCfg.levels[sLvl];
+                if (!ld) continue;
+                if (sCfg.type === 'perSpectator') localServicesBreakdown[sKey] = (localServicesBreakdown[sKey] || 0) + Math.round(ld.rate * att.attendance);
+                else if (sCfg.type === 'perWeek') localServicesBreakdown[sKey] = (localServicesBreakdown[sKey] || 0) + ld.rate;
+                else if (sCfg.type === 'perMatch') localServicesBreakdown[sKey] = (localServicesBreakdown[sKey] || 0) + ld.rate;
+              }
+            }
             const totalIncome = tktIncome + concIncome;
             
             // Acumular ingresos localmente (evita stale state overwrites)
             localAccumulatedIncome += totalIncome;
+            // Services income tracked separately (paid at end of season)
+            localAccumulatedServicesIncome += svcIncome;
+          } else if (state.stadium?.services) {
+            // Away week: still collect events income (fixed weekly)
+            const eventsLevel = state.stadium.services.events || 0;
+            const eventsRates = [0, 10000, 25000, 50000];
+            const awayEventsIncome = eventsRates[eventsLevel] || 0;
+            localAccumulatedServicesIncome += awayEventsIncome;
+            if (awayEventsIncome > 0) localServicesBreakdown.events = (localServicesBreakdown.events || 0) + awayEventsIncome;
           }
           
           // Aplicar lesiones del equipo del jugador
@@ -1011,6 +1075,8 @@ export default function Office() {
         type: 'UPDATE_STADIUM',
         payload: {
           accumulatedTicketIncome: localAccumulatedIncome,
+          accumulatedServicesIncome: localAccumulatedServicesIncome,
+          accumulatedServicesBreakdown: localServicesBreakdown,
           ticketPriceLocked: true
         }
       });
@@ -1047,7 +1113,7 @@ export default function Office() {
     setSimulating(false);
     dispatch({ type: 'SET_SIMULATING', payload: false });
     setSimProgress(null);
-    maybeShowInterstitial(); // Show ad every 4th simulation
+    maybeShowInterstitial(); // Show interstitial ad after simulation (free users only)
     
     // Auto-save after simulation (if autoSave enabled)
     if (state.settings?.autoSave !== false) {
@@ -1373,7 +1439,7 @@ export default function Office() {
   };
   
   if (showMatch) {
-    return <MatchDay onComplete={handleMatchComplete} />;
+    return <MatchDay onComplete={handleMatchComplete} onBack={() => setShowMatch(false)} />;
   }
   
   // Modal de advertencia de lesionados en alineación
@@ -1501,7 +1567,7 @@ export default function Office() {
       <main className="office__main">
         <header className="office__header">
           <div className="office__team-info">
-            <h1>{state.team?.name}</h1>
+            <h1><TeamCrest teamId={state.teamId} size={24} /> {state.team?.name}</h1>
             <span className="office__season">{t('office.seasonInfo', { season: state.currentSeason })} · {state.preseasonPhase ? t('office.preseason', { week: state.preseasonWeek, total: state.preseasonMatches?.length || 5 }) : t('office.weekInfo', { week: state.currentWeek })}</span>
           </div>
           
@@ -1513,7 +1579,7 @@ export default function Office() {
             </div>
             
             <button 
-              className="office__advance-btn" 
+              className={`office__advance-btn${!simulating ? ' btn-pulse' : ''}`}
               onClick={handleAdvanceWeek}
               disabled={simulating}
             >

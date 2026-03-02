@@ -165,7 +165,7 @@ export default function Settings({ onClose }) {
   ];
 
   return (
-    <div className="settings unified-screen">
+    <div className="settings unified-screen fade-in-up">
       <div className="settings__header">
         <h2><SettingsIcon size={16} /> {t('settings.title')}</h2>
         {onClose && (
@@ -259,8 +259,8 @@ export default function Settings({ onClose }) {
           </section>
         )}
 
-        {/* Toggles */}
-        <section className="settings__section">
+        {/* Toggles — only when logged in */}
+        {user && <section className="settings__section">
           <h3>{t('settings.general')}</h3>
           <div className="settings__toggles">
             <div className="settings__toggle-item">
@@ -298,7 +298,7 @@ export default function Settings({ onClose }) {
             */}
 
           </div>
-        </section>
+        </section>}
 
         {/* Volumen */}
         <section className="settings__section">
@@ -382,8 +382,8 @@ export default function Settings({ onClose }) {
           </section>
         )}
 
-        {/* Datos del juego */}
-        <section className="settings__section">
+        {/* Datos del juego — only when logged in */}
+        {user && <section className="settings__section">
           <h3>{t('settings.gameData')}</h3>
           <div className="settings__actions">
             {state.gameStarted && (
@@ -403,7 +403,7 @@ export default function Settings({ onClose }) {
               <Trash2 size={14} /> {t('settings.deleteAndReset')}
             </button>
           </div>
-        </section>
+        </section>}
 
         {/* Info del juego */}
         <section className="settings__section settings__section--info">

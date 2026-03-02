@@ -129,12 +129,53 @@ export async function saveContrarreloj(userId, gameState) {
     _type: 'contrarreloj'
   });
 
-  // Remove non-serializable / transient fields
+  // Remove non-serializable / transient / heavy fields to stay under 1MB
   delete saveData.loaded;
   delete saveData.leagueTeams;
   delete saveData.otherLeagues;
+  delete saveData.matchLog;
+  delete saveData.cupCompetition;
+  delete saveData.europeanCompetition;
+  delete saveData.europeanCompetitions;
+  delete saveData.saCompetitions;
+  delete saveData.playerMarket;
+  delete saveData.freeAgents;
+  // Keep only unplayed fixtures
+  if (Array.isArray(saveData.fixtures)) {
+    saveData.fixtures = saveData.fixtures.filter(f => !f.played);
+  }
+  // Compact results to summary only
+  if (Array.isArray(saveData.results) && saveData.results.length > 0) {
+    saveData.results = saveData.results.map(r => ({
+      week: r.week, homeTeamId: r.homeTeamId, awayTeamId: r.awayTeamId,
+      homeGoals: r.homeGoals, awayGoals: r.awayGoals, played: r.played,
+    }));
+  }
+  // Strip heavy per-player fields
+  if (saveData.team?.players) {
+    saveData.team = { ...saveData.team, players: saveData.team.players.map(p => {
+      const { matchHistory, seasonStats, ...rest } = p;
+      return rest;
+    })};
+  }
+  // Cap transferHistory and seasonHistory to last 3 seasons
+  if (Array.isArray(saveData.transferHistory)) saveData.transferHistory = saveData.transferHistory.slice(-50);
+  if (Array.isArray(saveData.seasonHistory)) saveData.seasonHistory = saveData.seasonHistory.slice(-5);
 
-  await setDoc(doc(db, COLLECTION, saveId), saveData);
+  // Final deep clean: ensure no undefined values survive (Firestore rejects them)
+  const deepClean = (o) => {
+    if (o === null || o === undefined) return null;
+    if (Array.isArray(o)) return o.map(deepClean);
+    if (typeof o === 'object' && o.constructor === Object) {
+      const c = {};
+      for (const [k, v] of Object.entries(o)) {
+        if (v !== undefined) c[k] = deepClean(v);
+      }
+      return c;
+    }
+    return o;
+  };
+  await setDoc(doc(db, COLLECTION, saveId), deepClean(saveData));
 }
 
 /**

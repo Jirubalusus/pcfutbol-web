@@ -60,7 +60,7 @@ export async function joinDraftQueue(uid, displayName, totalLP) {
 }
 
 export async function leaveDraftQueue(uid) {
-  try { await deleteDoc(doc(db, DRAFT_QUEUE_COL, uid)); } catch (e) {}
+  try { await deleteDoc(doc(db, DRAFT_QUEUE_COL, uid)); } catch (e) { console.warn('Cleanup error:', e); }
 }
 
 // ── Queue Listener (mirrors rankedService.onQueueChange) ──
@@ -532,7 +532,7 @@ export async function sendDraftHeartbeat(matchId, uid) {
     await updateDoc(matchRef, {
       [`heartbeats.${uid}`]: serverTimestamp(),
     });
-  } catch (e) {}
+  } catch (e) { console.warn('Cleanup error:', e); }
 }
 
 export async function checkDraftDisconnect(matchId, uid) {

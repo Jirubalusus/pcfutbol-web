@@ -7,6 +7,7 @@ import { ToastProvider } from './components/Toast/Toast';
 import ErrorBoundary from './components/ErrorBoundary';
 import NotificationCenter from './components/Notifications/NotificationCenter';
 import MainMenu from './components/MainMenu/MainMenu';
+import NicknameModal from './components/NicknameModal/NicknameModal';
 import TeamSelection from './components/TeamSelection/TeamSelection';
 import Office from './components/Office/Office';
 import ContrarrelojSetup from './components/ContrarrelojSetup/ContrarrelojSetup';
@@ -16,11 +17,11 @@ import RankedLobby from './components/Ranked/RankedLobby';
 import RankedMatch from './components/Ranked/RankedMatch';
 import DraftMatch from './components/Ranked/DraftMatch';
 import RankedLeaderboard from './components/Ranked/RankedLeaderboard';
-import NicknameModal from './components/NicknameModal/NicknameModal';
 import ProManagerSetup from './components/ProManager/ProManagerSetup';
 import ProManagerSeasonEnd from './components/ProManager/ProManagerSeasonEnd';
 import GlorySetup from './components/GloryMode/GlorySetup';
 import GloryMenu from './components/GloryMode/GloryMenu';
+import WorldCup from './components/WorldCup/WorldCup';
 import { useAudioManager } from './hooks/useAudioManager';
 import { useSoundEffects } from './hooks/useSoundEffects';
 import { checkPremiumStatus } from './services/purchaseService';
@@ -42,7 +43,7 @@ function GameRouter() {
     if (!authLoading) checkPremium();
   }, [authLoading, dispatch]);
   
-  // Audio manager - detecta pantalla actual y reproduce música acorde
+  // Audio manager
   const isMatchScreen = state.playingMatch || state.pendingMatch;
   const audioScreen = isMatchScreen ? 'matchDay'
     : state.currentScreen === 'team_selection' ? 'teamSelection'
@@ -51,13 +52,12 @@ function GameRouter() {
     : 'menu';
   useAudioManager(audioScreen, state.settings, state.preseasonPhase ? 'preseason' : 'season');
   
-  // SFX - click global en botones
+  // SFX
   const { playClick, playToggle } = useSoundEffects(state.settings);
   useEffect(() => {
     const handleClick = (e) => {
       const el = e.target.closest('button, a, [role="button"], .clickable');
       if (!el) return;
-      // Toggle para switches
       if (el.classList.contains('settings__toggle') || el.querySelector('.toggle-knob')) {
         playToggle();
       } else {
@@ -119,6 +119,9 @@ function GameRouter() {
             return <GloryMenu />;
           case 'glory_setup':
             return <GlorySetup />;
+          case 'worldcup_setup':
+          case 'worldcup':
+            return <WorldCup onExit={() => dispatch({ type: 'SET_SCREEN', payload: 'main_menu' })} />;
           default:
             return <MainMenu />;
         }

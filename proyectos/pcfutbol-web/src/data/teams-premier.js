@@ -503,7 +503,7 @@ export const premierTeams = {
       createPlayer('Matthijs Kuiper', 'DFC', 33, 4, 69),
       createPlayer('V. Masson', 'LB', 26, 25, 79),
       createPlayer('Abdou Appiah', 'LB', 19, 7, 75),
-      createPlayer('Jacques Masson'Brien', 'RB', 24, 16),
+      createPlayer("Jacques Masson'Brien", 'RB', 24, 16),
       createPlayer('N. Palacios', 'RB', 24, 10, 73),
       createPlayer('S. Cardoso', 'RB', 37, 0.3, 60),
       createPlayer('J. Geerts', 'MCD', 24, 25, 79),

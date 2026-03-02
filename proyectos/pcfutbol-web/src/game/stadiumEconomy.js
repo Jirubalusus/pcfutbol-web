@@ -367,6 +367,121 @@ export function estimateSeasonTicketDemand(currentSeasonTickets, maxSeasonTicket
   return Math.max(0, Math.min(maxSeasonTickets, Math.round(newDemand)));
 }
 
+// === STADIUM SERVICES CONFIG ===
+// Services unlock at certain stadium levels and can be upgraded further as stadium grows.
+// maxLevel per stadium: stadiumLevel + 1 for base services, capped by service max.
+// 
+// Stadium levels: 0=Municipal(8K), 1=Moderno(18K), 2=Grande(35K), 3=Élite(55K), 4=Legendario(80K)
+//
+// Unlock requirements (minStadiumLevel):
+//   catering(0), parking(0), merchandise(1), events(2), vip(3)
+//
+// Max service level = min(levels.length-1, stadiumLevel - minStadiumLevel + 1)
+// e.g. catering: stadium 0→max1, stadium 1→max2, stadium 2→max3, stadium 3→max4, stadium 4→max5
+// e.g. vip:      stadium 3→max1, stadium 4→max2
+
+export const STADIUM_SERVICES = {
+  catering: {
+    icon: '🍔',
+    minStadiumLevel: 0,
+    // ROI ~2 seasons at first-unlock stadium
+    levels: [
+      null, // level 0 = not built
+      { rate: 1, cost: 200000 },       // Municipal: basic food stand
+      { rate: 2, cost: 800000 },       // Moderno: proper restaurant area
+      { rate: 3.5, cost: 2500000 },    // Grande: multiple food courts
+      { rate: 5, cost: 6000000 },      // Élite: premium dining
+      { rate: 7, cost: 15000000 }      // Legendario: gourmet experience
+    ],
+    type: 'perSpectator'
+  },
+  parking: {
+    icon: '🅿️',
+    minStadiumLevel: 0,
+    levels: [
+      null,
+      { rate: 0.5, cost: 100000 },    // Basic parking lot
+      { rate: 1, cost: 400000 },       // Organized parking
+      { rate: 1.8, cost: 1200000 },    // Multi-level parking
+      { rate: 2.8, cost: 3500000 },    // Premium parking complex
+      { rate: 4, cost: 8000000 }       // VIP parking + valet
+    ],
+    type: 'perSpectator'
+  },
+  merchandise: {
+    icon: '🛍️',
+    minStadiumLevel: 1, // Requires Moderno
+    levels: [
+      null,
+      { rate: 1, cost: 500000 },       // Small shop
+      { rate: 2, cost: 1500000 },      // Official store
+      { rate: 3.5, cost: 4000000 },    // Megastore
+      { rate: 5, cost: 10000000 }      // Flagship + online integration
+    ],
+    type: 'perSpectator'
+  },
+  events: {
+    icon: '🎤',
+    minStadiumLevel: 2, // Requires Grande
+    levels: [
+      null,
+      { rate: 12000, cost: 1000000 },  // Basic event hosting
+      { rate: 30000, cost: 3500000 },   // Full event facilities
+      { rate: 55000, cost: 8000000 }    // World-class venue
+    ],
+    type: 'perWeek'
+  },
+  vip: {
+    icon: '📺',
+    minStadiumLevel: 3, // Requires Élite
+    levels: [
+      null,
+      { rate: 50000, cost: 2500000 },  // Basic VIP boxes
+      { rate: 120000, cost: 8000000 }   // Luxury suites
+    ],
+    type: 'perMatch'
+  }
+};
+
+/**
+ * Get the maximum service level allowed for a given stadium level
+ */
+export function getMaxServiceLevel(serviceKey, stadiumLevel) {
+  const config = STADIUM_SERVICES[serviceKey];
+  if (!config) return 0;
+  if (stadiumLevel < config.minStadiumLevel) return 0;
+  return Math.min(config.levels.length - 1, stadiumLevel - config.minStadiumLevel + 1);
+}
+
+/**
+ * Calculate stadium services income for a given week/match
+ * @param {Object} services - { catering: 0-3, merchandise: 0-3, ... }
+ * @param {number} attendance - total attendance for this match
+ * @param {boolean} isHome - whether player's team is home
+ * @returns {number} total services income
+ */
+export function calculateServicesIncome(services, attendance, isHome) {
+  if (!services) return 0;
+  let total = 0;
+  
+  for (const [key, config] of Object.entries(STADIUM_SERVICES)) {
+    const level = services[key] || 0;
+    if (level <= 0) continue;
+    const levelData = config.levels[level];
+    if (!levelData) continue;
+    
+    if (config.type === 'perSpectator' && isHome) {
+      total += levelData.rate * attendance;
+    } else if (config.type === 'perWeek') {
+      total += levelData.rate; // always, regardless of home/away
+    } else if (config.type === 'perMatch' && isHome) {
+      total += levelData.rate;
+    }
+  }
+  
+  return Math.round(total);
+}
+
 /**
  * Genera predicción de asistencia para el próximo partido
  * (para mostrar en UI)

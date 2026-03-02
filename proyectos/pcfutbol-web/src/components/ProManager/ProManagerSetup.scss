@@ -243,6 +243,9 @@
     &__identity {
       flex: 1;
       min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
       h3 {
         font-size: 1rem;
         font-weight: 600;
@@ -257,6 +260,11 @@
         color: rgba(255, 255, 255, 0.4);
         font-weight: 400;
         letter-spacing: 0.02em;
+      }
+
+      &-text {
+        min-width: 0;
+        flex: 1;
       }
     }
 

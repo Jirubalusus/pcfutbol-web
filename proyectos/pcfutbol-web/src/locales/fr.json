@@ -1,4 +1,4 @@
-﻿{
+{
   "common": {
     "save": "Sauvegarder",
     "cancel": "Annuler",
@@ -75,6 +75,7 @@
     "rankedSubtitle": "Affrontez d'autres joueurs",
     "tabSolo": "Solo",
     "tabMulti": "Multijoueur",
+    "comingSoon": "Prochainement...",
     "moreModesComingSoon": "Plus de modes bientôt..."
   },
   "cup": {
@@ -817,7 +818,7 @@
       "municipal": "Municipal",
       "modern": "Moderne",
       "large": "Grand",
-      "elite": "élite",
+      "elite": "Élite",
       "legendary": "LÂgendaire",
       "basic": "Basique",
       "active": "Actif",
@@ -868,7 +869,7 @@
     "seasonTicketCampaign": "Campagne d'Abonnements",
     "campaignOpen": "Campagne ouverte jusqu'· la journée {{deadline}} (actuelle: {{current}})",
     "seasonTicketPrice": "Prix de l'abonnement:",
-    "pricePerMatch": "{{matches}} matchs ? {{pricePerMatch}}/match",
+    "pricePerMatch": "{{matches}} matchs · {{pricePerMatch}}/match",
     "expectedSubscribers": "Abonnés prévus:",
     "maxShort": "max",
     "closeCampaign": "Fermer la campagne et fixer les abonnés",
@@ -924,6 +925,14 @@
     "eventHosted": "événement organisé. Revenus: €{{amount}}K",
     "stadiumUpgraded": "Stade agrandi",
     "nowStadium": "Maintenant c'est {{name}} avec {{capacity}} places",
+    "underConstruction": "En construction",
+    "constructionStarted": "Agrandissement du stade lancé !",
+    "constructionReady": "L'agrandissement sera prêt la saison prochaine",
+    "constructionComplete": "Agrandissement du stade terminé !",
+    "newCapacity": "Nouvelle capacité : {{capacity}}",
+    "buildingTo": "Agrandissement vers {{name}}",
+    "currentlyBuilding": "En construction...",
+    "targetCapacity": "Capacité cible : {{capacity}}",
     "seats": "places",
     "insufficientFunds": "Fonds insuffisants",
     "penaltyRequired": "Vous avez besoin de €{{amount}}M pour payer la pénalit· d'annulation du contrat.",
@@ -946,7 +955,26 @@
     "grassDescTerrible": "La pelouse est détruite",
     "avgOverall": "Moyenne générale",
     "leaguePosition": "Position en ligue",
-    "reputation": "Réputation"
+    "reputation": "Réputation",
+    "services": "Services du Stade",
+    "servicesHint": "Gérez les services du stade pour générer des revenus supplémentaires les jours de match",
+    "serviceCatering": "Restauration",
+    "serviceMerchandise": "Boutique Officielle",
+    "serviceParking": "Parking",
+    "serviceEvents": "Événements & Location",
+    "serviceVip": "Loges VIP",
+    "serviceLevel": "Niveau {{level}}",
+    "serviceNotBuilt": "Non construit",
+    "serviceBuild": "Construire",
+    "serviceUpgrade": "Améliorer",
+    "servicePerSpectator": "€{{amount}}/spectateur",
+    "servicePerWeek": "{{amount}}/semaine",
+    "servicePerMatch": "{{amount}}/match",
+    "serviceIncome": "Revenus des Services",
+    "spectatorShort": "spec",
+    "matchShort": "match",
+    "serviceRequires": "Nécessite stade {{stadium}}",
+    "serviceUpgradeStadium": "Améliorez le stade pour +niveaux"
   },
   "training": {
     "title": "Entraénement",
@@ -966,15 +994,15 @@
     "intensityIntenseName": "Intense",
     "intensityIntenseDesc": "Performance maximale",
     "intensityIntenseDetails": "Pour les effectifs jeunes avec bon centre médical. Risque élevé, récompense élevée.",
-                     "intensityLocked":  "Intensity set: {{name}} (until next preseason)",
-                     "intensityLockedTitle":  "Intensity locked",
-                     "intensityLockedDesc1":  "You chose",
-                     "intensityLockedDesc2":  "for this season.",
-                     "intensityLockedHint":  "You can change it at the start of next preseason.",
-                     "intensitySubtitle1":  "Select the training intensity for the entire season.",
-                     "intensitySubtitle2":  "This decision is permanent until the next preseason.",
-                     "progression":  "Progression",
-                     "confirmIntensity":  "Confirm intensity"
+    "intensityLocked": "Intensity set: {{name}} (until next preseason)",
+    "intensityLockedTitle": "Intensity locked",
+    "intensityLockedDesc1": "You chose",
+    "intensityLockedDesc2": "for this season.",
+    "intensityLockedHint": "You can change it at the start of next preseason.",
+    "intensitySubtitle1": "Select the training intensity for the entire season.",
+    "intensitySubtitle2": "This decision is permanent until the next preseason.",
+    "progression": "Progression",
+    "confirmIntensity": "Confirm intensity"
   },
   "settings": {
     "title": "Options",
@@ -1148,8 +1176,8 @@
     "objectiveBalance": "Bilan des objectifs",
     "europeanBonus": "Bonus européen",
     "continue": "Continuer",
-    "playMatch":  "Jouer le match",
-                      "noEvents":  "Match without notable incidents",
+    "playMatch": "Jouer le match",
+    "noEvents": "Match without notable incidents",
     "nextMatch": "Prochain match",
     "homeGame": "Nous jouons · domicile",
     "awayGame": "Nous jouons · l'extérieur",
@@ -1297,13 +1325,13 @@
     "noObjectives": "Pas d'objectifs définis",
     "objectivesWillGenerate": "Les objectifs de saison seront générés au début de la ligue.",
     "boardExpects": "La direction attend",
-                       "positionExplanation":  "Current position: {{position}}th | Target: Top {{target}}",
-                       "goalDiffExplanation":  "Current difference: {{current}} | Target: {{target}}",
-                       "financialExplanation":  "Budget: {{budget}} | Target: Keep positive balance",
-                       "noResults":  "No results",
-                       "noResultsDesc":  "No objectives match the selected filter.",
-                       "tip":  "Tip",
-                       "tipContent":  "Meeting critical objectives is essential to keep your job. Good performance can attract offers from bigger clubs."
+    "positionExplanation": "Current position: {{position}}th | Target: Top {{target}}",
+    "goalDiffExplanation": "Current difference: {{current}} | Target: {{target}}",
+    "financialExplanation": "Budget: {{budget}} | Target: Keep positive balance",
+    "noResults": "No results",
+    "noResultsDesc": "No objectives match the selected filter.",
+    "tip": "Tip",
+    "tipContent": "Meeting critical objectives is essential to keep your job. Good performance can attract offers from bigger clubs."
   },
   "objNames": {
     "championsQualification": "Qualification en Champions",
@@ -1471,6 +1499,7 @@
     "facility": "Installation",
     "news": "Actualités",
     "default": "Message",
+    "multipleNotifications": "{{count}} notifications",
     "moreNotifications": "+{{count}} notifications supplémentaires",
     "checkInbox": "Vérifiez votre boîte de réception"
   },
@@ -1599,10 +1628,10 @@
     "haveAccount": "Déj· un compte ? Connectez-vous",
     "backToLogin": "Retour · la connexion",
     "enterUsername": "Entrez un nom d'utilisateur",
-                 "playGamesError":  "Error connecting to Google Play Games",
-                 "playGamesDesc":  "Sign in with your Google Play Games account to save your progress and compete in rankings.",
-                 "connecting":  "Connecting...",
-                 "loginPlayGames":  "Sign in with Google Play Games"
+    "playGamesError": "Error connecting to Google Play Games",
+    "playGamesDesc": "Sign in with your Google Play Games account to save your progress and compete in rankings.",
+    "connecting": "Connecting...",
+    "loginPlayGames": "Sign in with Google Play Games"
   },
   "europe": {
     "title": "Compétitions Européennes",
@@ -1888,7 +1917,7 @@
     "teams": "Équipes",
     "title": "Éditeur",
     "tooLarge": "Fichier trop volumineux",
-    "warning": "Attention"
+    "warning": "Appliquer un pack <strong>supprimera vos sauvegardes actuelles</strong>"
   },
   "nickname": {
     "confirm": "Confirmer",

@@ -59,6 +59,7 @@ import { getCupTeams, generateCupBracket } from '../../game/cupSystem';
 import { Calendar, Plane, Home, Sparkles, ChevronRight, Lock, Map, ClipboardList, Trophy, Building2, Users, DollarSign, Star, ArrowLeft } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
 import WorldMap from './WorldMap';
+import TeamCrest from '../TeamCrest/TeamCrest';
 import './TeamSelection.scss';
 import './WorldMap.scss';
 
@@ -412,6 +413,27 @@ export default function TeamSelection() {
       dispatch({ type: 'SET_PLAYER_GROUP', payload: selectedGroup });
     }
     
+    // ============================================================
+    // DEFERRED HEAVY INITIALIZATION
+    // Run after React has rendered the office screen to avoid blocking UI
+    // ============================================================
+    const _selTeam = selectedTeam;
+    const _selLeague = selectedLeague;
+    const _selGroup = selectedGroup;
+    const _hasGroups = hasGroups;
+    const _leagueData = leagueData;
+    const _t = t;
+    const _isAuth = isAuthenticated;
+    const _user = user;
+    setTimeout(async () => {
+      try {
+        await _deferredInit(dispatch, _selTeam, _selLeague, _selGroup, _hasGroups, _leagueData, _t, _isAuth, _user);
+      } catch (e) { console.error('Deferred init error:', e); }
+    }, 100);
+  };
+  
+  // Heavy init that runs after the game screen is shown
+  async function _deferredInit(dispatch, selectedTeam, selectedLeague, selectedGroup, hasGroups, leagueData, t, isAuthenticated, user) {
     // Guardar TODOS los equipos de TODAS las ligas para el mercado global y el explorador
     const allLeagueIds = [
       { id: 'laliga', getter: getLaLigaTeams },
@@ -471,7 +493,7 @@ export default function TeamSelection() {
     }
     dispatch({ type: 'UPDATE_LEAGUE_TEAMS', payload: allLeagueTeamsWithData });
     
-    // Inicializar otras ligas para poder verlas en la clasificación
+    // Initialize other leagues (now runs deferred via setTimeout)
     const otherLeagues = initializeOtherLeagues(selectedLeague, hasGroups ? selectedGroup : null);
     dispatch({ type: 'SET_OTHER_LEAGUES', payload: otherLeagues });
     
@@ -974,15 +996,7 @@ export default function TeamSelection() {
                       onClick={() => handleSelectTeam(team)}
                     >
                       <span className="team-num">{idx + 1}</span>
-                      <div 
-                        className="team-badge"
-                        style={{ 
-                          background: team.colors?.primary || '#1a3a5a',
-                          color: team.colors?.secondary || '#fff'
-                        }}
-                      >
-                        {team.shortName?.slice(0, 3) || team.name?.slice(0, 3)}
-                      </div>
+                      <TeamCrest teamId={team.id} size={28} />
                       <div className="team-info">
                         <span className="name">{team.name}</span>
                         <span className="city">{team.city}</span>
@@ -1010,7 +1024,7 @@ export default function TeamSelection() {
                     }}
                   >
                     <div className="badge-large">
-                      {selectedTeam.shortName || selectedTeam.name?.slice(0, 3)}
+                      <TeamCrest teamId={selectedTeam.id} size={64} />
                     </div>
                     <div className="team-title">
                       <h2>{selectedTeam.name}</h2>
@@ -1023,7 +1037,7 @@ export default function TeamSelection() {
                     <div className="stat-card">
                       <span className="icon"><Building2 size={16} /></span>
                       <span className="label">{t('teamSelection.stadium')}</span>
-                      <span className="value">{selectedTeam.stadium || t('teamSelection.municipal')}</span>
+                      <span className="value">{getStadiumInfo(selectedTeam.id, selectedTeam.reputation)?.name || selectedTeam.stadium || t('teamSelection.municipal')}</span>
                     </div>
                     <div className="stat-card">
                       <span className="icon"><Users size={16} /></span>

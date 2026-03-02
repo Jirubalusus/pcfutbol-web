@@ -948,8 +948,8 @@ export const CZECH_TEAMS = czechTeams || [];
 export const LEAGUES = {
   laliga: { id: 'laliga', name: 'Liga Ibérica', country: 'spain', level: 1 },
   segunda: { id: 'segunda', name: 'Segunda Ibérica', country: 'spain', level: 2 },
-  primeraRFEF: { id: 'primeraRFEF', name: 'Primera RFEF', country: 'spain', level: 3 },
-  segundaRFEF: { id: 'segundaRFEF', name: 'Segunda RFEF', country: 'spain', level: 4 },
+  primeraRFEF: { id: 'primeraRFEF', name: 'Tercera Ibérica', country: 'spain', level: 3 },
+  segundaRFEF: { id: 'segundaRFEF', name: 'Cuarta Ibérica', country: 'spain', level: 4 },
   premierLeague: { id: 'premierLeague', name: 'First League', country: 'england', level: 1 },
   bundesliga: { id: 'bundesliga', name: 'Erste Liga', country: 'germany', level: 1 },
   serieA: { id: 'serieA', name: 'Calcio League', country: 'italy', level: 1 },

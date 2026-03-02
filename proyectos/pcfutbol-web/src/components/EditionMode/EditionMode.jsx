@@ -66,6 +66,7 @@ export default function EditionMode({ onBack, onEditionApplied }) {
       if (showConfirm.action === 'apply') {
         setApplying(showConfirm.edition.id);
         
+        // Delete all saves — edition change can cause team/player conflicts
         if (user?.uid) {
           await deleteAllSaves(user.uid);
         }
@@ -82,6 +83,7 @@ export default function EditionMode({ onBack, onEditionApplied }) {
       } else if (showConfirm.action === 'remove') {
         setApplying('removing');
         
+        // Delete all saves — edition change can cause team/player conflicts
         if (user?.uid) {
           await deleteAllSaves(user.uid);
         }
@@ -98,7 +100,7 @@ export default function EditionMode({ onBack, onEditionApplied }) {
     } catch (err) {
       console.error('Error during edition action:', err);
       // BUG 15 fix: show error feedback
-      alert(t('edition.actionError') || `Error: ${err.message || 'Error al aplicar la acción'}`);
+      import('sileo').then(({ sileo }) => sileo.error({ title: t('edition.actionError') || `Error: ${err.message || 'Error al aplicar la acción'}` }));
       setApplying(null);
       setShowConfirm(null);
     }

@@ -5,6 +5,8 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  background: transparent;
+  position: relative;
 
   // ═══ HERO BUDGET CARD ═══
   &__hero {
@@ -199,6 +201,23 @@
 
       &.positive { color: var(--color-success); }
       &.negative { color: var(--color-danger); }
+    }
+
+    &--clickable {
+      cursor: pointer;
+      &:hover { background: rgba(255, 255, 255, 0.06); }
+    }
+
+    &--sub {
+      padding-left: 2.5rem;
+      opacity: 0.85;
+      .finance__line-icon {
+        width: 24px;
+        height: 24px;
+        border-radius: 6px;
+      }
+      .finance__line-label { font-size: 0.78rem; }
+      .finance__line-amount { font-size: 0.82rem; }
     }
   }
 

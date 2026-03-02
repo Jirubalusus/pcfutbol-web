@@ -219,7 +219,7 @@ export function selectBestLineup(players, requiredPositions) {
 }
 
 // ============== CÁLCULO DE FUERZA DEL EQUIPO ==============
-export function calculateTeamStrength(team, formation = '4-3-3', tactic = 'balanced', teamMorale = 70, customLineup = null, playerForm = {}) {
+export function calculateTeamStrength(team, formation = '4-3-3', tactic = 'balanced', teamMorale = 70, customLineup = null, playerForm = {}, benchPlayers = null) {
   if (!team || !team.players || team.players.length === 0) {
     return { overall: team?.reputation || 50, attack: 50, midfield: 50, defense: 50, goalkeeper: 50, lineup: [] };
   }
@@ -294,15 +294,27 @@ export function calculateTeamStrength(team, formation = '4-3-3', tactic = 'balan
     }
   });
   
+  // Bench contribution: convocados add ~15% of their average quality as depth bonus
+  let benchBonus = 0;
+  if (benchPlayers && benchPlayers.length > 0) {
+    const benchAvg = benchPlayers.reduce((sum, p) => {
+      const rating = getEffectiveRating(p, tactic, benchPlayers, teamMorale, playerForm[p.name] || 'normal');
+      return sum + rating;
+    }, 0) / benchPlayers.length;
+    // Bench contributes 15% of the difference between bench avg and 60 (baseline)
+    benchBonus = (benchAvg - 60) * 0.15;
+  }
+
   return {
     overall: visualOverall,
-    effectiveOverall: Math.min(99, effectiveOverall + starBonus + synergyBonus),
+    effectiveOverall: Math.min(99, effectiveOverall + starBonus + synergyBonus + benchBonus),
     attack: finalAttack,
     midfield: finalMidfield,
     defense: finalDefense,
     goalkeeper: effectiveGoalkeeper,
     lineup,
     starPlayers: effectiveStarPlayers,
-    synergyBonus: Math.round(synergyBonus * 10) / 10
+    synergyBonus: Math.round(synergyBonus * 10) / 10,
+    benchBonus: Math.round(benchBonus * 10) / 10
   };
 }

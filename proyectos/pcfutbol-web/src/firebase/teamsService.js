@@ -200,6 +200,31 @@ export async function searchPlayers(searchTerm, filters = {}) {
 }
 
 // ============================================================
+// BULK LOAD — single query for all teams
+// ============================================================
+
+export async function getAllTeamsBulk() {
+  const snapshot = await getDocs(collection(db, TEAMS_COL));
+  const byLeague = {};
+  
+  snapshot.forEach(d => {
+    const data = { id: d.id, ...d.data() };
+    const league = data.league || 'unknown';
+    if (!byLeague[league]) byLeague[league] = [];
+    byLeague[league].push(data);
+  });
+  
+  // Sort each league by avgOverall and cache
+  for (const [leagueId, teams] of Object.entries(byLeague)) {
+    teams.sort((a, b) => (b.avgOverall || 0) - (a.avgOverall || 0));
+    cache.teams.set(`league_${leagueId}`, teams);
+  }
+  cache.timestamp = Date.now();
+  
+  return byLeague;
+}
+
+// ============================================================
 // UTILIDADES
 // ============================================================
 
@@ -228,5 +253,6 @@ export default {
   getPlayersByTeam,
   searchPlayers,
   clearCache,
-  getStats
+  getStats,
+  getAllTeamsBulk
 };

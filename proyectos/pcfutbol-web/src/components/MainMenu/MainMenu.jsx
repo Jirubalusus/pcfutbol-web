@@ -4,13 +4,13 @@ import { useGame } from '../../context/GameContext';
 import { useAuth } from '../../context/AuthContext';
 import Settings from '../Settings/Settings';
 import Auth from '../Auth/Auth';
-import SaveSlots from '../SaveSlots/SaveSlots';
+import { hasActiveCareer, getCareerSave, deleteCareerSave } from '../../firebase/careerSaveService';
 import { hasActiveContrarreloj, getContrarrelojSave, deleteContrarrelojSave } from '../../firebase/contrarrelojSaveService';
 import { hasActiveProManager, getProManagerSave, deleteProManagerSave } from '../../firebase/proManagerService';
 import { hasActiveGlory, getGlorySave, deleteGlorySave } from '../../firebase/glorySaveService';
 import { 
   Play, LogIn, LogOut, Save, Trophy, Settings as SettingsIcon, 
-  Lightbulb, User, Gamepad2, ChevronRight, Timer, Swords, Briefcase, Package, Mountain
+  Lightbulb, User, Gamepad2, ChevronRight, Timer, Swords, Briefcase, Package, Mountain, Globe
 } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
 import EditionMode from '../EditionMode/EditionMode';
@@ -28,9 +28,12 @@ export default function MainMenu() {
   const [showSettings, setShowSettings] = useState(false);
   const [menuTab, setMenuTab] = useState('solo');
   const [showAuth, setShowAuth] = useState(false);
-  const [showSaveSlots, setShowSaveSlots] = useState(false);
-  const [saveSlotsMode, setSaveSlotsMode] = useState('load');
   const [loggingOut, setLoggingOut] = useState(false);
+  
+  // Career state
+  const [careerInfo, setCareerInfo] = useState({ hasActive: false, summary: null });
+  const [showCareerPrompt, setShowCareerPrompt] = useState(false);
+  const [loadingCareer, setLoadingCareer] = useState(false);
   
   // Contrarreloj state
   const [contrarrelojInfo, setContrarrelojInfo] = useState({ hasActive: false, summary: null });
@@ -136,6 +139,33 @@ export default function MainMenu() {
     }
   }, [isAuthenticated, user?.uid, isGloryInMemory]);
 
+  // Detect active Career
+  const isCareerInMemory = state.gameStarted && (!state.gameMode || state.gameMode === 'career');
+
+  useEffect(() => {
+    if (isCareerInMemory) {
+      setCareerInfo({
+        hasActive: true,
+        source: 'memory',
+        summary: {
+          teamName: state.team?.name || 'Equipo desconocido',
+          teamId: state.teamId,
+          season: state.currentSeason || 1,
+          week: state.currentWeek || 1,
+          money: state.money || 0
+        }
+      });
+      return;
+    }
+    if (isAuthenticated && user?.uid) {
+      hasActiveCareer(user.uid)
+        .then(info => setCareerInfo(info))
+        .catch(() => setCareerInfo({ hasActive: false, summary: null }));
+    } else {
+      setCareerInfo({ hasActive: false, summary: null });
+    }
+  }, [isAuthenticated, user?.uid, isCareerInMemory]);
+
   // Cerrar Auth cuando el usuario se autentique
   useEffect(() => {
     if (isAuthenticated && showAuth) {
@@ -144,18 +174,52 @@ export default function MainMenu() {
   }, [isAuthenticated, showAuth]);
   
   const handlePlay = () => {
-    if (isAuthenticated) {
-      setSaveSlotsMode('load');
-      setShowSaveSlots(true);
-    } else {
+    if (!isAuthenticated) {
       setShowAuth(true);
+      return;
+    }
+    if (careerInfo.hasActive) {
+      setShowCareerPrompt(true);
+    } else {
+      dispatch({ type: 'SET_SCREEN', payload: 'team_selection' });
     }
   };
   
-  const handleContinue = () => {
-    if (state.gameStarted) {
+  const handleCareerContinue = async () => {
+    if (isCareerInMemory) {
       dispatch({ type: 'SET_SCREEN', payload: 'office' });
+      setShowCareerPrompt(false);
+      return;
     }
+    if (!user?.uid) return;
+    setLoadingCareer(true);
+    try {
+      const saveData = await getCareerSave(user.uid);
+      if (saveData) {
+        dispatch({ type: 'LOAD_SAVE', payload: { ...saveData, gameMode: 'career', rankedMatchId: null } });
+        const { getAuth } = await import('firebase/auth');
+        const dn = getAuth().currentUser?.displayName;
+        if (dn) dispatch({ type: 'SET_MANAGER_NAME', payload: dn });
+        dispatch({ type: 'SET_SCREEN', payload: 'office' });
+      }
+    } catch (err) {
+      console.error('Error loading career save:', err);
+    }
+    setLoadingCareer(false);
+    setShowCareerPrompt(false);
+  };
+
+  const handleCareerNew = () => {
+    // Navigate immediately, delete save in background
+    if (user?.uid) {
+      deleteCareerSave(user.uid).catch(err => console.error('Error deleting old career save:', err));
+    }
+    if (isCareerInMemory) {
+      dispatch({ type: 'RESET_GAME' });
+    }
+    setCareerInfo({ hasActive: false, summary: null });
+    setShowCareerPrompt(false);
+    dispatch({ type: 'SET_SCREEN', payload: 'team_selection' });
   };
 
   const handleLogout = async () => {
@@ -244,9 +308,9 @@ export default function MainMenu() {
     setShowProManagerPrompt(false);
   };
 
-  const handleProManagerNew = async () => {
+  const handleProManagerNew = () => {
     if (user?.uid) {
-      try { await deleteProManagerSave(user.uid); } catch { /* skip */ }
+      deleteProManagerSave(user.uid).catch(() => {});
     }
     if (isProManagerInMemory) {
       dispatch({ type: 'RESET_GAME' });
@@ -289,9 +353,9 @@ export default function MainMenu() {
     setShowGloryPrompt(false);
   };
 
-  const handleGloryNew = async () => {
+  const handleGloryNew = () => {
     if (user?.uid) {
-      try { await deleteGlorySave(user.uid); } catch { /* skip */ }
+      deleteGlorySave(user.uid).catch(() => {});
     }
     if (isGloryInMemory) {
       dispatch({ type: 'RESET_GAME' });
@@ -301,16 +365,10 @@ export default function MainMenu() {
     dispatch({ type: 'SET_SCREEN', payload: 'glory_setup' });
   };
 
-  const handleContrarrelojNew = async () => {
-    // Delete old contrarreloj save (Firebase + reset in-memory state)
+  const handleContrarrelojNew = () => {
     if (user?.uid) {
-      try {
-        await deleteContrarrelojSave(user.uid);
-      } catch (err) {
-        console.error('Error deleting old contrarreloj save:', err);
-      }
+      deleteContrarrelojSave(user.uid).catch(() => {});
     }
-    // Reset game state if current game is contrarreloj
     if (isContrarrelojInMemory) {
       dispatch({ type: 'RESET_GAME' });
     }
@@ -332,27 +390,13 @@ export default function MainMenu() {
     );
   }
 
-  if (showSettings) {
-    return (
-      <div className="main-menu__settings-wrapper">
-        <Settings onClose={() => setShowSettings(false)} />
-      </div>
-    );
-  }
+  /* Settings rendered as overlay below, not early return */
 
   if (showAuth) {
     return <Auth onBack={() => setShowAuth(false)} />;
   }
 
-  if (showSaveSlots) {
-    return (
-      <SaveSlots 
-        mode={saveSlotsMode} 
-        onBack={() => setShowSaveSlots(false)}
-        onSlotSelected={() => setShowSaveSlots(false)}
-      />
-    );
-  }
+  /* SaveSlots removed — career uses single save like other modes */
   
   return (
     <div className={`main-menu ${animateIn ? 'animate-in' : ''}`}>
@@ -432,12 +476,14 @@ export default function MainMenu() {
                 >
                   <Gamepad2 size={16} /> {t('mainMenu.tabSolo')}
                 </button>
-                <button 
-                  className={`main-menu__tab ${menuTab === 'multi' ? 'active' : ''}`}
-                  onClick={() => setMenuTab('multi')}
-                >
-                  <Swords size={16} /> {t('mainMenu.tabMulti')}
-                </button>
+                <div className="main-menu__tab-wrapper main-menu__tab-wrapper--disabled" title={t('mainMenu.comingSoon')}>
+                  <button 
+                    className={`main-menu__tab`}
+                    disabled
+                  >
+                    <Swords size={16} /> {t('mainMenu.tabMulti')}
+                  </button>
+                </div>
               </div>
 
               {/* Solo modes */}
@@ -448,7 +494,12 @@ export default function MainMenu() {
                     <div className="mode-card__icon"><Gamepad2 size={24} /></div>
                     <div className="mode-card__info">
                       <span className="mode-card__name">{t('mainMenu.playButton')}</span>
-                      <span className="mode-card__desc">{t('mainMenu.loadOrCreate')}</span>
+                      <span className="mode-card__desc">
+                        {careerInfo.hasActive
+                          ? `${careerInfo.summary?.teamName} · ${t('common.season')} ${careerInfo.summary?.season}`
+                          : t('mainMenu.loadOrCreate')
+                        }
+                      </span>
                     </div>
                     <ChevronRight size={18} className="mode-card__arrow" />
                   </button>
@@ -496,6 +547,16 @@ export default function MainMenu() {
                     </div>
                     <ChevronRight size={18} className="mode-card__arrow" />
                   </button>
+
+                  {/* Modo Mundial */}
+                  <button className="main-menu__mode-card" onClick={() => dispatch({ type: 'SET_SCREEN', payload: 'worldcup_setup' })}>
+                    <div className="mode-card__icon mode-card__icon--worldcup"><Globe size={24} /></div>
+                    <div className="mode-card__info">
+                      <span className="mode-card__name">Modo Mundial</span>
+                      <span className="mode-card__desc">Dirige tu selección. Eventos estilo Reigns.</span>
+                    </div>
+                    <ChevronRight size={18} className="mode-card__arrow" />
+                  </button>
                 </div>
               )}
 
@@ -520,6 +581,7 @@ export default function MainMenu() {
           )}
 
           <div className="main-menu__secondary">
+            {isAuthenticated && (
             <button 
               className="main-menu__btn main-menu__btn--small"
               onClick={() => dispatch({ type: 'SET_SCREEN', payload: 'ranking' })}
@@ -527,6 +589,7 @@ export default function MainMenu() {
               <Trophy size={20} className="icon-svg" />
               <span className="label">{t('mainMenu.recordsButton')}</span>
             </button>
+            )}
             
             <button 
               className="main-menu__btn main-menu__btn--small"
@@ -543,11 +606,49 @@ export default function MainMenu() {
             >
               <Package size={20} className="icon-svg" />
               <span className="label">{t('mainMenu.editionButton')}</span>
-              {getActiveEditionId() && <span className="main-menu__edition-badge">●</span>}
             </button>
             )}
           </div>
         </nav>
+
+        {/* Career prompt: Continuar / Nueva partida */}
+        {showCareerPrompt && (
+          <div className="main-menu__contrarreloj-prompt">
+            <div className="contrarreloj-prompt__overlay" onClick={() => setShowCareerPrompt(false)} />
+            <div className="contrarreloj-prompt__card">
+              <div className="contrarreloj-prompt__header">
+                <Gamepad2 size={24} />
+                <h3>{t('mainMenu.careerActive') || 'Carrera Libre en curso'}</h3>
+              </div>
+              <div className="contrarreloj-prompt__info">
+                <p className="team-name">{careerInfo.summary?.teamName}</p>
+                <p className="details">
+                  {t('common.season')} {careerInfo.summary?.season} · 
+                  {t('common.week')} {careerInfo.summary?.week}
+                </p>
+              </div>
+              <div className="contrarreloj-prompt__actions">
+                <button 
+                  className="btn-continue" 
+                  onClick={handleCareerContinue}
+                  disabled={loadingCareer}
+                >
+                  <Play size={18} />
+                  {loadingCareer ? t('common.loading') : t('common.continue')}
+                </button>
+                <button 
+                  className="btn-new" 
+                  onClick={handleCareerNew}
+                >
+                  {t('mainMenu.newGame')}
+                </button>
+              </div>
+              <p className="contrarreloj-prompt__warning">
+                {t('mainMenu.deleteWarning')}
+              </p>
+            </div>
+          </div>
+        )}
 
         {/* Contrarreloj prompt: Continuar / Nueva partida */}
         {showContrarrelojPrompt && (
@@ -670,6 +771,13 @@ export default function MainMenu() {
           <p>{t('mainMenu.tribute')}</p>
         </footer>
       </div>
+
+      {showSettings && (
+        <div className="main-menu__settings-wrapper">
+          <Settings onClose={() => setShowSettings(false)} />
+        </div>
+      )}
+
     </div>
   );
 }

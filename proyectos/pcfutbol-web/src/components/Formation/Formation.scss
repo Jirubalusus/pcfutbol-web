@@ -647,7 +647,13 @@
   .pcf-btn {
     padding: 0.6rem 0.3rem;
     min-width: 0;
-    overflow: hidden;
+    overflow: visible;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+
+    svg { flex-shrink: 0; }
 
     @media (max-width: 768px) {
       padding: 0.45rem 0.4rem;

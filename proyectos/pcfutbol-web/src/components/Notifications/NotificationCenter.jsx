@@ -4,78 +4,53 @@ import { useGame } from '../../context/GameContext';
 import {
   HeartPulse, Briefcase, Mail, FileText, Newspaper, Landmark,
   Trophy, AlertTriangle, ShieldAlert, TrendingUp, Handshake,
-  DollarSign, Star, Zap, Users, X, ChevronDown
+  DollarSign, Star, Zap, Users, X, ChevronDown, ChevronUp, Bell
 } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
 import './NotificationCenter.scss';
 
 // ============================================================
-// NOTIFICATION PRIORITY & CONFIG
+// CONFIG
 // ============================================================
 
 const NOTIFICATION_CONFIG = {
-  // 🔴 Critical — always show, long duration
-  injury: { priority: 'critical', icon: HeartPulse, color: '#ff453a', duration: 5000, labelKey: 'notifications.injury' },
-  board: { priority: 'critical', icon: Landmark, color: '#ff453a', duration: 5000, labelKey: 'notifications.board' },
-  fired: { priority: 'critical', icon: ShieldAlert, color: '#ff453a', duration: 6000, labelKey: 'notifications.fired' },
-  bankruptcy: { priority: 'critical', icon: AlertTriangle, color: '#ff453a', duration: 6000, labelKey: 'notifications.bankruptcy' },
-  yellow: { priority: 'important', icon: AlertTriangle, color: '#ffcc00', duration: 3500, labelKey: 'notifications.yellow' },
-  red: { priority: 'critical', icon: ShieldAlert, color: '#ff453a', duration: 4000, labelKey: 'notifications.red' },
-
-  // 🟡 Important — auto-show, medium duration
-  transfer_offer: { priority: 'important', icon: Mail, color: '#ff9f0a', duration: 4000, labelKey: 'notifications.transferOffer' },
-  transfer: { priority: 'important', icon: Briefcase, color: '#0a84ff', duration: 4000, labelKey: 'notifications.transfer' },
-  loan: { priority: 'important', icon: Handshake, color: '#bf5af2', duration: 4000, labelKey: 'notifications.loan' },
-  contract: { priority: 'important', icon: FileText, color: '#ff9f0a', duration: 4000, labelKey: 'notifications.contract' },
-  match_result: { priority: 'important', icon: FootballIcon, color: '#30d158', duration: 3500, labelKey: 'notifications.matchResult' },
-  cup: { priority: 'important', icon: Trophy, color: '#ffd60a', duration: 4000, labelKey: 'notifications.cup' },
-  european: { priority: 'important', icon: Star, color: '#0a84ff', duration: 4000, labelKey: 'notifications.european' },
-  southamerican: { priority: 'important', icon: Star, color: '#30d158', duration: 4000, labelKey: 'notifications.southamerican' },
-  retirement: { priority: 'important', icon: Users, color: '#8e8e93', duration: 4000, labelKey: 'notifications.retirement' },
-  offer: { priority: 'important', icon: DollarSign, color: '#30d158', duration: 4000, labelKey: 'notifications.offer' },
-
-  // 🟢 Info — auto-show, short duration
-  training: { priority: 'info', icon: TrendingUp, color: '#30d158', duration: 3000, labelKey: 'notifications.training' },
-  youth: { priority: 'info', icon: Zap, color: '#bf5af2', duration: 3500, labelKey: 'notifications.youth' },
-  medical: { priority: 'info', icon: HeartPulse, color: '#30d158', duration: 3000, labelKey: 'notifications.medical' },
-  facility: { priority: 'info', icon: TrendingUp, color: '#0a84ff', duration: 3000, labelKey: 'notifications.facility' },
-  news: { priority: 'info', icon: Newspaper, color: '#8e8e93', duration: 3000, labelKey: 'notifications.news' },
-
-  // Default
-  default: { priority: 'info', icon: Mail, color: '#8e8e93', duration: 3000, labelKey: 'notifications.default' }
+  injury:         { icon: HeartPulse,    color: '#ff453a', labelKey: 'notifications.injury' },
+  board:          { icon: Landmark,      color: '#ff453a', labelKey: 'notifications.board' },
+  fired:          { icon: ShieldAlert,   color: '#ff453a', labelKey: 'notifications.fired' },
+  bankruptcy:     { icon: AlertTriangle, color: '#ff453a', labelKey: 'notifications.bankruptcy' },
+  yellow:         { icon: AlertTriangle, color: '#ffcc00', labelKey: 'notifications.yellow' },
+  red:            { icon: ShieldAlert,   color: '#ff453a', labelKey: 'notifications.red' },
+  transfer_offer: { icon: Mail,          color: '#ff9f0a', labelKey: 'notifications.transferOffer' },
+  transfer:       { icon: Briefcase,     color: '#0a84ff', labelKey: 'notifications.transfer' },
+  loan:           { icon: Handshake,     color: '#bf5af2', labelKey: 'notifications.loan' },
+  contract:       { icon: FileText,      color: '#ff9f0a', labelKey: 'notifications.contract' },
+  match_result:   { icon: FootballIcon,  color: '#30d158', labelKey: 'notifications.matchResult' },
+  cup:            { icon: Trophy,        color: '#ffd60a', labelKey: 'notifications.cup' },
+  european:       { icon: Star,          color: '#0a84ff', labelKey: 'notifications.european' },
+  southamerican:  { icon: Star,          color: '#30d158', labelKey: 'notifications.southamerican' },
+  retirement:     { icon: Users,         color: '#8e8e93', labelKey: 'notifications.retirement' },
+  offer:          { icon: DollarSign,    color: '#30d158', labelKey: 'notifications.offer' },
+  training:       { icon: TrendingUp,    color: '#30d158', labelKey: 'notifications.training' },
+  youth:          { icon: Zap,           color: '#bf5af2', labelKey: 'notifications.youth' },
+  medical:        { icon: HeartPulse,    color: '#30d158', labelKey: 'notifications.medical' },
+  facility:       { icon: TrendingUp,    color: '#0a84ff', labelKey: 'notifications.facility' },
+  stadium:        { icon: Landmark,      color: '#0a84ff', labelKey: 'notifications.facility' },
+  news:           { icon: Newspaper,     color: '#8e8e93', labelKey: 'notifications.news' },
+  warning:        { icon: AlertTriangle, color: '#ff9f0a', labelKey: 'notifications.default' },
+  default:        { icon: Mail,          color: '#8e8e93', labelKey: 'notifications.default' },
 };
 
-const PRIORITY_ORDER = { critical: 0, important: 1, info: 2 };
-
-// Max toasts visible at once
-const MAX_VISIBLE = 3;
-// Max total in a batch (rest become "+N más")
-const MAX_BATCH = 5;
-
-function getConfig(type, t) {
-  const config = NOTIFICATION_CONFIG[type] || NOTIFICATION_CONFIG.default;
-  return {
-    ...config,
-    label: t(config.labelKey)
-  };
+function getConfig(type) {
+  return NOTIFICATION_CONFIG[type] || NOTIFICATION_CONFIG.default;
 }
 
-// ============================================================
-// NOTIFICATION TOAST COMPONENT
-// ============================================================
-
-// Resolve i18n keys for messages (same logic as Messages.jsx)
 function resolveTitle(msg, t) {
   if (msg.titleKey) {
     const params = { ...msg.titleParams };
-    if (params) {
-      Object.keys(params).forEach(key => {
-        if (key.endsWith('Key') && typeof params[key] === 'string' && !key.endsWith('KeyParams')) {
-          const baseKey = key.slice(0, -3);
-          params[baseKey] = t(params[key], params[`${key}Params`]);
-        }
-      });
-    }
+    if (params) Object.keys(params).forEach(k => {
+      if (k.endsWith('Key') && typeof params[k] === 'string' && !k.endsWith('KeyParams'))
+        params[k.slice(0, -3)] = t(params[k], params[`${k}Params`]);
+    });
     return t(msg.titleKey, params);
   }
   return msg.title;
@@ -84,252 +59,183 @@ function resolveTitle(msg, t) {
 function resolveContent(msg, t) {
   if (msg.contentKey) {
     const params = { ...msg.contentParams };
-    if (params) {
-      Object.keys(params).forEach(key => {
-        if (key.endsWith('Key') && typeof params[key] === 'string' && !key.endsWith('KeyParams')) {
-          const baseKey = key.slice(0, -3);
-          params[baseKey] = t(params[key], params[`${key}Params`]);
-        }
-      });
-    }
+    if (params) Object.keys(params).forEach(k => {
+      if (k.endsWith('Key') && typeof params[k] === 'string' && !k.endsWith('KeyParams'))
+        params[k.slice(0, -3)] = t(params[k], params[`${k}Params`]);
+    });
     return t(msg.contentKey, params);
   }
   return msg.content;
 }
 
-// Map notification type → sidebar tab for deep-linking
-const NOTIFICATION_NAV_MAP = {
-  transfer: 'transfers',
-  transfer_offer: 'transfers',
-  loan: 'transfers',
-  offer: 'transfers',
-  match_result: 'competitions',
-  injury: 'formation',
-  contract: 'formation',
-  retirement: 'plantilla',
-  cup: 'competitions',
-  european: 'competitions',
-  southamerican: 'competitions',
-  training: 'facilities',
-  youth: 'plantilla',
-  medical: 'formation',
-  board: 'overview',
-  news: 'messages',
-};
-
-function NotificationToast({ notification, onDismiss, onNavigate, index, t }) {
-  const [exiting, setExiting] = useState(false);
-  const config = getConfig(notification.type, t);
-  const IconComponent = config.icon;
-  const timerRef = useRef(null);
-
-  useEffect(() => {
-    timerRef.current = setTimeout(() => {
-      setExiting(true);
-      setTimeout(() => onDismiss(notification.id), 300);
-    }, config.duration);
-
-    return () => clearTimeout(timerRef.current);
-  }, [notification.id, config.duration, onDismiss]);
-
-  const handleDismiss = () => {
-    clearTimeout(timerRef.current);
-    setExiting(true);
-    setTimeout(() => onDismiss(notification.id), 300);
-  };
-
-  const handleClick = () => {
-    const targetTab = NOTIFICATION_NAV_MAP[notification.type];
-    if (targetTab && onNavigate) {
-      onNavigate(targetTab);
-    }
-    handleDismiss();
-  };
-
-  // Touch swipe to dismiss
-  const touchStart = useRef(null);
-  const handleTouchStart = (e) => { touchStart.current = e.touches[0].clientX; };
-  const handleTouchEnd = (e) => {
-    if (touchStart.current === null) return;
-    const diff = e.changedTouches[0].clientX - touchStart.current;
-    if (Math.abs(diff) > 80) handleDismiss();
-    touchStart.current = null;
-  };
-
-  return (
-    <div
-      className={`notif-toast notif-toast--${config.priority} ${exiting ? 'notif-toast--exit' : ''}`}
-      style={{ '--notif-color': config.color, '--index': index, cursor: NOTIFICATION_NAV_MAP[notification.type] ? 'pointer' : 'default' }}
-      onClick={handleClick}
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-    >
-      <div className="notif-toast__icon">
-        {typeof IconComponent === 'function' && IconComponent.$$typeof
-          ? <IconComponent size={16} />
-          : <IconComponent size={16} />
-        }
-      </div>
-      <div className="notif-toast__content">
-        <span className="notif-toast__label">{config.label}</span>
-        <span className="notif-toast__title">{resolveTitle(notification, t)}</span>
-        {(notification.content || notification.contentKey) && (
-          <span className="notif-toast__body">{resolveContent(notification, t)}</span>
-        )}
-      </div>
-      <button className="notif-toast__close" onClick={(e) => { e.stopPropagation(); handleDismiss(); }}>
-        <X size={14} />
-      </button>
-    </div>
-  );
-}
-
 // ============================================================
-// OVERFLOW INDICATOR
+// COMPONENT
 // ============================================================
 
-function OverflowIndicator({ count, onDismiss, t }) {
-  const [exiting, setExiting] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setExiting(true);
-      setTimeout(onDismiss, 300);
-    }, 4000);
-    return () => clearTimeout(timer);
-  }, [onDismiss]);
-
-  return (
-    <div className={`notif-toast notif-toast--overflow ${exiting ? 'notif-toast--exit' : ''}`} onClick={onDismiss}>
-      <div className="notif-toast__icon" style={{ '--notif-color': '#8e8e93' }}>
-        <ChevronDown size={16} />
-      </div>
-      <div className="notif-toast__content">
-        <span className="notif-toast__title">{t('notifications.moreNotifications', { count })}</span>
-        <span className="notif-toast__body">{t('notifications.checkInbox')}</span>
-      </div>
-    </div>
-  );
-}
-
-// ============================================================
-// MAIN NOTIFICATION CENTER
-// ============================================================
+const AUTO_DISMISS_MS = 4000;
 
 export default function NotificationCenter() {
   const { t } = useTranslation();
-  const { state, dispatch } = useGame();
-  const [activeToasts, setActiveToasts] = useState([]);
-  const [overflow, setOverflow] = useState(0);
+  const { state } = useGame();
   const prevMessagesRef = useRef(state.messages || []);
   const processedIds = useRef(new Set());
+  const [batch, setBatch] = useState([]);
+  const [expanded, setExpanded] = useState(false);
+  const [exiting, setExiting] = useState(false);
+  const dismissTimer = useRef(null);
+  const batchRef = useRef(batch);
+  batchRef.current = batch;
 
-  // Clear all toasts when simulation starts
+  // Stable dismiss — no stale closures
+  const dismiss = useCallback(() => {
+    clearTimeout(dismissTimer.current);
+    if (batchRef.current.length === 0) return;
+    setExiting(true);
+    setTimeout(() => {
+      setBatch([]);
+      setExpanded(false);
+      setExiting(false);
+    }, 300);
+  }, []);
+
+  // Clear all when simulation starts or week advances
   useEffect(() => {
-    if (state.isSimulating) {
-      setActiveToasts([]);
-      setOverflow(0);
+    if (state.isSimulating) dismiss();
+  }, [state.isSimulating, dismiss]);
+
+  // Clear on week advance
+  const weekRef = useRef(state.currentWeek);
+  useEffect(() => {
+    if (state.currentWeek !== weekRef.current) {
+      weekRef.current = state.currentWeek;
+      clearTimeout(dismissTimer.current);
+      setBatch([]);
+      setExpanded(false);
+      setExiting(false);
+      processedIds.current.clear();
     }
-  }, [state.isSimulating]);
+  }, [state.currentWeek]);
 
-  const dismissToast = useCallback((id) => {
-    setActiveToasts(prev => prev.filter(t => t.id !== id));
-  }, []);
-
-  const dismissOverflow = useCallback(() => {
-    setOverflow(0);
-  }, []);
-
-  const navigateToTab = useCallback((tab) => {
-    dispatch({ type: 'NAVIGATE_TAB', payload: tab });
-  }, [dispatch]);
+  // Schedule auto-dismiss (call imperatively, not from useEffect)
+  const scheduleAutoDismiss = useCallback(() => {
+    clearTimeout(dismissTimer.current);
+    dismissTimer.current = setTimeout(dismiss, AUTO_DISMISS_MS);
+  }, [dismiss]);
 
   // Watch for new messages
   useEffect(() => {
-    const prevMessages = prevMessagesRef.current;
-    const currentMessages = state.messages || [];
+    const prev = prevMessagesRef.current;
+    const current = state.messages || [];
+    if (current === prev) return;
 
-    if (currentMessages === prevMessages) return;
-
-    // Suppress notifications during simulation
     if (state.isSimulating) {
-      prevMessagesRef.current = currentMessages;
+      prevMessagesRef.current = current;
       return;
     }
 
-    // Find new messages (they're prepended in the array)
-    const prevIds = new Set(prevMessages.map(m => m.id));
-    const newMessages = currentMessages.filter(m => !prevIds.has(m.id) && !processedIds.current.has(m.id));
+    const prevIds = new Set(prev.map(m => m.id));
+    const newMsgs = current.filter(m => !prevIds.has(m.id) && !processedIds.current.has(m.id));
 
-    if (newMessages.length > 0) {
-      // Sort by priority
-      const sorted = [...newMessages].sort((a, b) => {
-        const pa = PRIORITY_ORDER[getConfig(a.type, t).priority] ?? 2;
-        const pb = PRIORITY_ORDER[getConfig(b.type, t).priority] ?? 2;
-        return pa - pb;
-      });
-
-      // Take top N for toasts
-      const toShow = sorted.slice(0, MAX_BATCH);
-      const remaining = sorted.length - MAX_BATCH;
-
-      // Only show MAX_VISIBLE as full toasts
-      const toasts = toShow.slice(0, MAX_VISIBLE);
-      const extraCount = toShow.length - MAX_VISIBLE + Math.max(0, remaining);
-
-      // Mark all as processed
-      newMessages.forEach(m => processedIds.current.add(m.id));
-
-      // Stagger toast appearance
-      toasts.forEach((msg, i) => {
-        setTimeout(() => {
-          setActiveToasts(prev => {
-            // Don't exceed MAX_VISIBLE
-            const next = [...prev, msg];
-            if (next.length > MAX_VISIBLE) return next.slice(-MAX_VISIBLE);
-            return next;
-          });
-        }, i * 200);
-      });
-
-      if (extraCount > 0) {
-        setTimeout(() => {
-          setOverflow(extraCount);
-        }, toasts.length * 200 + 300);
-      }
+    if (newMsgs.length > 0) {
+      newMsgs.forEach(m => processedIds.current.add(m.id));
+      setExiting(false);
+      setExpanded(false);
+      setBatch(newMsgs);
+      // Start auto-dismiss for new batch
+      clearTimeout(dismissTimer.current);
+      dismissTimer.current = setTimeout(dismiss, AUTO_DISMISS_MS);
     }
 
-    prevMessagesRef.current = currentMessages;
-  }, [state.messages]);
+    prevMessagesRef.current = current;
+  }, [state.messages, state.isSimulating, dismiss]);
 
-  // Cleanup old processed IDs periodically
+  // Cleanup processed IDs
   useEffect(() => {
     const interval = setInterval(() => {
-      if (processedIds.current.size > 200) {
-        const arr = Array.from(processedIds.current);
-        processedIds.current = new Set(arr.slice(-100));
-      }
+      if (processedIds.current.size > 200)
+        processedIds.current = new Set(Array.from(processedIds.current).slice(-100));
     }, 60000);
     return () => clearInterval(interval);
   }, []);
 
-  if (activeToasts.length === 0 && overflow === 0) return null;
+  if (batch.length === 0) return null;
+
+  const isSingle = batch.length === 1;
+  const firstMsg = batch[0];
+  const firstConfig = getConfig(firstMsg.type);
+
+  const handleClick = () => {
+    const willExpand = !expanded;
+    if (isSingle) {
+      if (resolveContent(firstMsg, t)) {
+        setExpanded(willExpand);
+      } else return;
+    } else {
+      setExpanded(willExpand);
+    }
+    // Expanding → pause timer; Collapsing → dismiss immediately
+    if (willExpand) {
+      clearTimeout(dismissTimer.current);
+    } else {
+      dismiss();
+    }
+  };
 
   return (
-    <div className="notification-center">
-      {activeToasts.map((toast, i) => (
-        <NotificationToast
-          key={toast.id}
-          notification={toast}
-          onDismiss={dismissToast}
-          onNavigate={navigateToTab}
-          index={i}
-          t={t}
-        />
-      ))}
-      {overflow > 0 && (
-        <OverflowIndicator count={overflow} onDismiss={dismissOverflow} t={t} />
-      )}
+    <div className={`nc ${exiting ? 'nc--exit' : ''}`}>
+      <div className="nc__toast" onClick={handleClick}>
+        {/* Header */}
+        <div className="nc__header">
+          <div className="nc__icon" style={{ '--nc-color': isSingle ? firstConfig.color : '#0a84ff' }}>
+            {isSingle
+              ? React.createElement(firstConfig.icon, { size: 15 })
+              : <Bell size={15} />
+            }
+          </div>
+          <div className="nc__title">
+            {isSingle
+              ? resolveTitle(firstMsg, t)
+              : t('notifications.multipleNotifications', { count: batch.length })
+            }
+          </div>
+          {(!isSingle || resolveContent(firstMsg, t)) && (
+            <div className="nc__chevron">
+              {expanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+            </div>
+          )}
+          <button className="nc__close" onClick={e => { e.stopPropagation(); dismiss(); }}>
+            <X size={14} />
+          </button>
+        </div>
+
+        {/* Expanded content */}
+        {expanded && (
+          <div className="nc__body">
+            {isSingle ? (
+              <div className="nc__single-content">
+                {resolveContent(firstMsg, t)}
+              </div>
+            ) : (
+              <div className="nc__list">
+                {batch.map((msg, i) => {
+                  const cfg = getConfig(msg.type);
+                  return (
+                    <div key={msg.id || i} className="nc__item">
+                      <span className="nc__dot" style={{ backgroundColor: cfg.color }} />
+                      <div className="nc__item-text">
+                        <span className="nc__item-title">{resolveTitle(msg, t)}</span>
+                        {resolveContent(msg, t) && (
+                          <span className="nc__item-desc">{resolveContent(msg, t)}</span>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

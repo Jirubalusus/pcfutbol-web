@@ -1,4 +1,4 @@
-﻿{
+{
   "common": {
     "save": "Save",
     "cancel": "Cancel",
@@ -75,6 +75,7 @@
     "rankedSubtitle": "Compete against other players",
     "tabSolo": "Single Player",
     "tabMulti": "Multiplayer",
+    "comingSoon": "Coming soon...",
     "moreModesComingSoon": "More modes coming soon..."
   },
   "cup": {
@@ -871,7 +872,7 @@
     "seasonTicketCampaign": "Season Ticket Campaign",
     "campaignOpen": "Campaign open until matchday {{deadline}} (current: {{current}})",
     "seasonTicketPrice": "Season ticket price:",
-    "pricePerMatch": "{{matches}} matches ? {{pricePerMatch}}/match",
+    "pricePerMatch": "{{matches}} matches · {{pricePerMatch}}/match",
     "expectedSubscribers": "Expected subscribers:",
     "maxShort": "max",
     "closeCampaign": "Close campaign and fix subscribers",
@@ -927,6 +928,14 @@
     "eventHosted": "Event held. Income: €{{amount}}K",
     "stadiumUpgraded": "Stadium expanded",
     "nowStadium": "Now it's {{name}} with {{capacity}} seats",
+    "underConstruction": "Under Construction",
+    "constructionStarted": "Stadium upgrade started!",
+    "constructionReady": "The expansion will be ready next season",
+    "constructionComplete": "Stadium expansion complete!",
+    "newCapacity": "New capacity: {{capacity}}",
+    "buildingTo": "Expanding to {{name}}",
+    "currentlyBuilding": "Currently building...",
+    "targetCapacity": "Target capacity: {{capacity}}",
     "seats": "seats",
     "insufficientFunds": "Insufficient funds",
     "penaltyRequired": "You need €{{amount}}M to pay the penalty for cancelling the contract.",
@@ -949,7 +958,26 @@
     "grassDescTerrible": "The grass is destroyed",
     "avgOverall": "Average overall",
     "leaguePosition": "League position",
-    "reputation": "Reputation"
+    "reputation": "Reputation",
+    "services": "Stadium Services",
+    "servicesHint": "Manage stadium services to generate additional match-day income",
+    "serviceCatering": "Food & Drinks",
+    "serviceMerchandise": "Official Store",
+    "serviceParking": "Parking",
+    "serviceEvents": "Events & Rental",
+    "serviceVip": "VIP Boxes",
+    "serviceLevel": "Level {{level}}",
+    "serviceNotBuilt": "Not built",
+    "serviceBuild": "Build",
+    "serviceUpgrade": "Upgrade",
+    "servicePerSpectator": "€{{amount}}/spectator",
+    "servicePerWeek": "{{amount}}/week",
+    "servicePerMatch": "{{amount}}/match",
+    "serviceIncome": "Services Income",
+    "spectatorShort": "spec",
+    "matchShort": "match",
+    "serviceRequires": "Requires {{stadium}} stadium",
+    "serviceUpgradeStadium": "Upgrade stadium for +levels"
   },
   "training": {
     "title": "Training Intensity",
@@ -1547,6 +1575,7 @@
     "facility": "Facility",
     "news": "News",
     "default": "Message",
+    "multipleNotifications": "{{count}} notifications",
     "moreNotifications": "+{{count}} more notifications",
     "checkInbox": "Check your inbox"
   },
@@ -1950,7 +1979,7 @@
     "teams": "Teams",
     "title": "Editor",
     "tooLarge": "File too large",
-    "warning": "Warning"
+    "warning": "Applying a pack will <strong>delete your current saved games</strong>"
   },
   "nickname": {
     "confirm": "Confirm",

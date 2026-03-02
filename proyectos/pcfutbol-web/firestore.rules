@@ -18,9 +18,8 @@ service cloud.firestore {
     
     // Saves: slot-based IDs (userId_slot_N) or legacy random IDs
     match /saves/{saveId} {
-      // Read: allow if doc starts with user's uid (slot pattern) or if doc exists and belongs to user
-      allow get: if request.auth != null;
-      allow list: if request.auth != null;
+      allow get: if request.auth != null && resource.data.userId == request.auth.uid;
+      allow list: if request.auth != null && resource.data.userId == request.auth.uid;
       allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
       allow update, delete: if request.auth != null && resource.data.userId == request.auth.uid;
     }
@@ -31,14 +30,32 @@ service cloud.firestore {
     }
 
     match /glory_saves/{saveId} {
-      allow get: if request.auth != null;
+      allow get: if request.auth != null && resource.data.userId == request.auth.uid;
+      allow list: if request.auth != null && resource.data.userId == request.auth.uid;
+      allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if request.auth != null && resource.data.userId == request.auth.uid;
+    }
+    
+    // Career saves: single save per user
+    match /career_saves/{saveId} {
+      allow get: if request.auth != null && resource.data.userId == request.auth.uid;
+      allow list: if request.auth != null && resource.data.userId == request.auth.uid;
+      allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if request.auth != null && resource.data.userId == request.auth.uid;
+    }
+    
+    // Contrarreloj saves: own saves only
+    match /contrarreloj_saves/{saveId} {
+      allow get: if request.auth != null && resource.data.userId == request.auth.uid;
+      allow list: if request.auth != null && resource.data.userId == request.auth.uid;
       allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
       allow update, delete: if request.auth != null && resource.data.userId == request.auth.uid;
     }
     
     // ProManager saves: own saves only
     match /promanager_saves/{saveId} {
-      allow get: if request.auth != null;
+      allow get: if request.auth != null && resource.data.userId == request.auth.uid;
+      allow list: if request.auth != null && resource.data.userId == request.auth.uid;
       allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
       allow update, delete: if request.auth != null && resource.data.userId == request.auth.uid;
     }
@@ -75,20 +92,30 @@ service cloud.firestore {
     
     match /ranked_matches/{matchId} {
       allow read: if request.auth != null;
-      allow write: if request.auth != null;
+      allow create: if request.auth != null;
+      allow update, delete: if request.auth != null
+        && (resource.data.player1.uid == request.auth.uid
+            || resource.data.player2.uid == request.auth.uid);
     }
     
     match /ranked_queue/{docId} {
-      allow read, write: if request.auth != null;
+      allow read: if request.auth != null;
+      allow create: if request.auth != null && request.auth.uid == docId;
+      allow update, delete: if request.auth != null && request.auth.uid == docId;
     }
     
     match /draft_matches/{matchId} {
       allow read: if request.auth != null;
-      allow write: if request.auth != null;
+      allow create: if request.auth != null;
+      allow update, delete: if request.auth != null
+        && (resource.data.player1.uid == request.auth.uid
+            || resource.data.player2.uid == request.auth.uid);
     }
     
     match /draft_queue/{docId} {
-      allow read, write: if request.auth != null;
+      allow read: if request.auth != null;
+      allow create: if request.auth != null && request.auth.uid == docId;
+      allow update, delete: if request.auth != null && request.auth.uid == docId;
     }
     
     // Legacy collections: public read-only

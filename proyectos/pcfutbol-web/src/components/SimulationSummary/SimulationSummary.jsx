@@ -5,6 +5,7 @@ import {
   HeartPulse, CreditCard, TrendingUp, TrendingDown, Minus,
   ArrowRight, CircleAlert, CircleCheck, X
 } from 'lucide-react';
+import TeamCrest from '../TeamCrest/TeamCrest';
 import './SimulationSummary.scss';
 
 /**
@@ -107,9 +108,9 @@ export default function SimulationSummary({ data, onClose }) {
               <div className="sim-summary__results">
                 {leagueResults.map((m, i) => (
                   <div key={i} className="sim-summary__match sim-summary__match--small">
-                    <span className="team">{String(m.homeTeam || '')}</span>
+                    <span className="team">{m.homeTeamId && <TeamCrest teamId={m.homeTeamId} size={16} />} {String(m.homeTeam || '')}</span>
                     <span className="score">{m.homeScore ?? 0} - {m.awayScore ?? 0}</span>
-                    <span className="team">{String(m.awayTeam || '')}</span>
+                    <span className="team">{m.awayTeamId && <TeamCrest teamId={m.awayTeamId} size={16} />} {String(m.awayTeam || '')}</span>
                   </div>
                 ))}
               </div>
@@ -171,18 +172,50 @@ export default function SimulationSummary({ data, onClose }) {
           {(cards.yellow.length > 0 || cards.red.length > 0) && (
             <Section title={t('simulation.cards')} icon={<CreditCard size={18} />} variant="warning">
               <ul className="sim-summary__list sim-summary__list--cards">
-                {cards.yellow.map((name, i) => (
-                  <li key={`y${i}`}>
-                    <span className="card-icon card-icon--yellow" />
-                    <span className="name">{name}</span>
-                  </li>
-                ))}
-                {cards.red.map((name, i) => (
-                  <li key={`r${i}`}>
-                    <span className="card-icon card-icon--red" />
-                    <span className="name">{name}</span>
-                  </li>
-                ))}
+                {cards.yellow.map((card, i) => {
+                  // Support both old format (string) and new format (object)
+                  const name = typeof card === 'string' ? card : card.name;
+                  const count = typeof card === 'object' ? card.count : 1;
+                  const suspended = typeof card === 'object' && card.suspended;
+                  const missesWeek = typeof card === 'object' ? card.missesWeek : null;
+                  const alreadyPlayed = typeof card === 'object' ? card.alreadyPlayed : false;
+                  return (
+                    <li key={`y${i}`}>
+                      <span className="card-icon card-icon--yellow" />
+                      <span className="name">{name}</span>
+                      {count > 1 && <span className="card-count">×{count}</span>}
+                      {suspended && (
+                        <span className="card-suspension">
+                          {alreadyPlayed
+                            ? t('simulation.missedMatchday', { week: missesWeek, defaultValue: `(se perdió la jornada ${missesWeek})` })
+                            : t('simulation.missesNextMatch', { defaultValue: '(se pierde el próximo partido)' })
+                          }
+                        </span>
+                      )}
+                    </li>
+                  );
+                })}
+                {cards.red.map((card, i) => {
+                  const name = typeof card === 'string' ? card : card.name;
+                  const count = typeof card === 'object' ? card.count : 1;
+                  const missesWeek = typeof card === 'object' ? card.missesWeek : null;
+                  const alreadyPlayed = typeof card === 'object' ? card.alreadyPlayed : false;
+                  return (
+                    <li key={`r${i}`}>
+                      <span className="card-icon card-icon--red" />
+                      <span className="name">{name}</span>
+                      {count > 1 && <span className="card-count">×{count}</span>}
+                      {missesWeek && (
+                        <span className="card-suspension">
+                          {alreadyPlayed
+                            ? t('simulation.missedMatchday', { week: missesWeek, defaultValue: `(se perdió la jornada ${missesWeek})` })
+                            : t('simulation.missesNextMatch', { defaultValue: '(se pierde el próximo partido)' })
+                          }
+                        </span>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </Section>
           )}

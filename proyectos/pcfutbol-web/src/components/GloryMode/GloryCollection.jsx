@@ -88,7 +88,7 @@ export default function GloryCollection({ unlockedCards = [], completedMilestone
                 <span className="glory-collection__cell-name">{card.name}</span>
               )}
               {!unlocked && (
-                <span className="glory-collection__cell-lock"><Lock size={12} /></span>
+                <span className="glory-collection__cell-name" style={{ color: 'rgba(255,255,255,0.3)' }}>???</span>
               )}
             </button>
           );

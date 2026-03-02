@@ -33,7 +33,7 @@ export default function PackGenerator() {
       id: 'real_names_2025_26',
       name: 'Competición 2025/2026',
       description: 'Nombres reales de equipos y jugadores — Temporada 2025/2026',
-      author: 'PC Gaffer',
+      author: 'Oficial',
       version: '1.0',
       teams: {}
     };

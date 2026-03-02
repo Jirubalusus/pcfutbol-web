@@ -28,6 +28,7 @@ import {
   getMLSTeams, getSaudiTeams, getLigaMXTeams, getJLeagueTeams
 } from '../../data/teamsFirestore';
 import { ArrowLeft, Briefcase, Users, Star, Target, TrendingUp, Wallet, Shield } from 'lucide-react';
+import TeamCrest from '../TeamCrest/TeamCrest';
 import './ProManagerSetup.scss';
 
 const ALL_LEAGUE_GETTERS = {
@@ -305,8 +306,11 @@ export default function ProManagerSetup() {
                 >
                   <div className="offer-card__top">
                     <div className="offer-card__identity">
-                      <h3>{offer.team.name}</h3>
-                      <span className="league-name">{offer.leagueName}</span>
+                      <TeamCrest teamId={offer.team.id} size={36} />
+                      <div className="offer-card__identity-text">
+                        <h3>{offer.team.name}</h3>
+                        <span className="league-name">{offer.leagueName}</span>
+                      </div>
                     </div>
                     <span className={`offer-card__diff offer-card__diff--${diffClass}`}>{diffLabel}</span>
                   </div>

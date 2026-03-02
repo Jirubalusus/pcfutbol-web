@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { Award, Trophy, ChevronDown, ChevronUp, Shield, AlertTriangle } from 'lucide-react';
 import { getCupRoundName } from '../../game/cupSystem';
+import TeamCrest from '../TeamCrest/TeamCrest';
 import './Cup.scss';
 
 export default function Cup() {
@@ -133,6 +134,7 @@ export default function Cup() {
                       return (
                         <div key={matchIdx} className={`cup__match cup__match--bye ${isPlayerTeam(match.homeTeam) ? 'cup__match--player' : ''}`}>
                           <div className="cup__match-team cup__match-team--home">
+                            {match.homeTeam?.teamId && <TeamCrest teamId={match.homeTeam.teamId} size={20} />}
                             <span className={`team-name ${isPlayerTeam(match.homeTeam) ? 'is-player' : ''}`}>
                               {getTeamDisplayName(match.homeTeam)}
                             </span>
@@ -167,6 +169,7 @@ export default function Cup() {
                     return (
                       <div key={matchIdx} className={`cup__match ${matchHasPlayer ? 'cup__match--player' : ''} ${match.played ? 'cup__match--played' : ''}`}>
                         <div className={`cup__match-team cup__match-team--home ${homeWon ? 'winner' : ''}`}>
+                          {match.homeTeam?.teamId && <TeamCrest teamId={match.homeTeam.teamId} size={20} />}
                           <span className={`team-name ${homeIsPlayer ? 'is-player' : ''}`}>
                             {getTeamDisplayName(match.homeTeam)}
                           </span>
@@ -185,6 +188,7 @@ export default function Cup() {
                           )}
                         </div>
                         <div className={`cup__match-team cup__match-team--away ${awayWon ? 'winner' : ''}`}>
+                          {match.awayTeam?.teamId && <TeamCrest teamId={match.awayTeam.teamId} size={20} />}
                           <span className={`team-name ${awayIsPlayer ? 'is-player' : ''}`}>
                             {getTeamDisplayName(match.awayTeam)}
                           </span>

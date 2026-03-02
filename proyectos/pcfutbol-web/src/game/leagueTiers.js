@@ -336,3 +336,55 @@ export const LEAGUE_NAMES = {
 export function getLeagueName(leagueId) {
   return LEAGUE_NAMES[leagueId] || leagueId || 'Liga';
 }
+
+// ============================================================
+// ECONOMY SCALING BY TIER — Ticket prices, commercial income, maintenance
+// ============================================================
+
+/**
+ * Precio base de entrada según tier de liga.
+ * @param {string} leagueId
+ * @returns {number} Precio en €
+ */
+export function getBaseTicketPrice(leagueId) {
+  const tier = getLeagueTier(leagueId);
+  return { 1: 40, 2: 25, 3: 18, 4: 12, 5: 8 }[tier] ?? 18;
+}
+
+/**
+ * Precio base del abono de temporada según tier.
+ * @param {string} leagueId
+ * @returns {number} Precio en €
+ */
+export function getBaseSeasonTicketPrice(leagueId) {
+  const tier = getLeagueTier(leagueId);
+  return { 1: 500, 2: 350, 3: 250, 4: 150, 5: 80 }[tier] ?? 250;
+}
+
+/**
+ * Ingreso comercial base semanal (sin instalación de patrocinio).
+ * Todo club tiene algo de ingresos comerciales.
+ * @param {string} leagueId
+ * @returns {number} € por semana
+ */
+export function getBaseCommercialIncome(leagueId) {
+  const tier = getLeagueTier(leagueId);
+  return { 1: 15000, 2: 8000, 3: 4000, 4: 2000, 5: 800 }[tier] ?? 4000;
+}
+
+/**
+ * Rango de precios de entrada para el slider de Stadium.jsx.
+ * @param {string} leagueId
+ * @returns {{ min: number, max: number }}
+ */
+export function getTicketPriceRange(leagueId) {
+  const tier = getLeagueTier(leagueId);
+  const ranges = {
+    1: { min: 15, max: 150 },
+    2: { min: 10, max: 80 },
+    3: { min: 5, max: 60 },
+    4: { min: 3, max: 40 },
+    5: { min: 2, max: 25 },
+  };
+  return ranges[tier] ?? ranges[3];
+}

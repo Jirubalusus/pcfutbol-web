@@ -520,6 +520,13 @@
       color: var(--color-success);
       font-weight: 600;
     }
+    
+    &__construction {
+      font-size: 0.7rem;
+      color: #ffa500;
+      font-weight: 600;
+      margin-top: 0.25rem;
+    }
 
     &__arrow {
       color: var(--color-text-tertiary);

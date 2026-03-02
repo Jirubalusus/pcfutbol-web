@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { Check, Tag, ClipboardList, Bell, AlertCircle, Clock, Coins, Calendar, Cake, Flag, PenTool, UserMinus, CircleDollarSign, XCircle, X, Star } from 'lucide-react';
@@ -356,7 +357,7 @@ export default function Plantilla() {
   };
 
   return (
-    <div className="plantilla">
+    <div className="plantilla fade-in-up">
       {/* Hero Header */}
       <div className="plantilla__hero">
         <div className="plantilla__hero-bg" />
@@ -548,7 +549,7 @@ export default function Plantilla() {
       </div>
       
       {/* Modal de acción */}
-      {actionModal && selectedPlayer && (
+      {actionModal && selectedPlayer && createPortal(
         <div className="plantilla__modal-overlay" onClick={closeModal}>
           <div className="plantilla__modal" onClick={e => e.stopPropagation()}>
 
@@ -803,7 +804,8 @@ export default function Plantilla() {
               </>
             )}
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );

@@ -23,13 +23,26 @@ export function generatePlayoffBracket(table, allTeams) {
     return null;
   }
   
-  // Buscar datos completos de cada equipo
-  const getTeamData = (teamId) => allTeams.find(t => t.id === teamId);
+  // Buscar datos completos de cada equipo (fallback: build minimal from table entry)
+  const getTeamData = (entry) => {
+    const found = allTeams.find(t => t.id === entry.teamId);
+    if (found) return found;
+    // Fallback: construct minimal team data from table entry so playoffs don't break
+    return {
+      id: entry.teamId,
+      name: entry.teamName || entry.teamId,
+      shortName: entry.shortName || entry.teamName || entry.teamId,
+      overall: entry.overall || 65,
+      reputation: entry.reputation || 60,
+      players: entry.players || [],
+      tactics: entry.tactics || { formation: '4-4-2' }
+    };
+  };
   
-  const team3 = { ...playoffEntries[0], teamData: getTeamData(playoffEntries[0].teamId), seed: 3 };
-  const team4 = { ...playoffEntries[1], teamData: getTeamData(playoffEntries[1].teamId), seed: 4 };
-  const team5 = { ...playoffEntries[2], teamData: getTeamData(playoffEntries[2].teamId), seed: 5 };
-  const team6 = { ...playoffEntries[3], teamData: getTeamData(playoffEntries[3].teamId), seed: 6 };
+  const team3 = { ...playoffEntries[0], teamData: getTeamData(playoffEntries[0]), seed: 3 };
+  const team4 = { ...playoffEntries[1], teamData: getTeamData(playoffEntries[1]), seed: 4 };
+  const team5 = { ...playoffEntries[2], teamData: getTeamData(playoffEntries[2]), seed: 5 };
+  const team6 = { ...playoffEntries[3], teamData: getTeamData(playoffEntries[3]), seed: 6 };
   
   return {
     semifinals: [
@@ -73,8 +86,23 @@ export function simulatePlayoffMatch(homeEntry, awayEntry) {
   const awayTeam = awayEntry.teamData;
   
   if (!homeTeam || !awayTeam) {
-    console.error('Missing team data for playoff match');
-    return null;
+    console.error('Missing team data for playoff match', homeEntry.teamId, awayEntry.teamId);
+    // Generate a synthetic result based on seeds/table position
+    const homeOvr = homeEntry.overall || homeEntry.teamData?.overall || 65;
+    const awayOvr = awayEntry.overall || awayEntry.teamData?.overall || 65;
+    const diff = (homeOvr - awayOvr) / 100 + 0.1; // slight home advantage
+    const homeWins = Math.random() < (0.5 + diff);
+    const winnerId = homeWins ? homeEntry.teamId : awayEntry.teamId;
+    return {
+      homeScore: homeWins ? 1 : 0, awayScore: homeWins ? 0 : 1,
+      finalHomeScore: homeWins ? 1 : 0, finalAwayScore: homeWins ? 0 : 1,
+      extraTime: false, penalties: null, winnerId,
+      winnerName: homeWins ? (homeEntry.teamName || homeEntry.teamId) : (awayEntry.teamName || awayEntry.teamId),
+      loserName: homeWins ? (awayEntry.teamName || awayEntry.teamId) : (homeEntry.teamName || homeEntry.teamId),
+      events: [],
+      homeTeamName: homeEntry.teamName || homeEntry.teamId,
+      awayTeamName: awayEntry.teamName || awayEntry.teamId
+    };
   }
   
   const result = simulateMatch(
@@ -198,6 +226,7 @@ function simulatePenalties(homeEntry, awayEntry) {
  * @returns {Object} bracket actualizado
  */
 export function advancePlayoffBracket(bracket, matchId, result) {
+  if (!result) return bracket; // Safety: skip if match couldn't be simulated
   const updated = JSON.parse(JSON.stringify(bracket));
   
   if (matchId === 'semi1' || matchId === 'semi2') {
@@ -365,12 +394,21 @@ export function generateGroupPlayoffBracket(groupTable, allTeams, groupId) {
     return null;
   }
   
-  const getTeamData = (teamId) => allTeams.find(t => t.id === teamId);
+  const getTeamData = (entry) => {
+    const found = allTeams.find(t => t.id === entry.teamId);
+    if (found) return found;
+    return {
+      id: entry.teamId, name: entry.teamName || entry.teamId,
+      shortName: entry.shortName || entry.teamName || entry.teamId,
+      overall: entry.overall || 65, reputation: entry.reputation || 60,
+      players: entry.players || [], tactics: entry.tactics || { formation: '4-4-2' }
+    };
+  };
   
-  const team2 = { ...playoffEntries[0], teamData: getTeamData(playoffEntries[0].teamId), seed: 2 };
-  const team3 = { ...playoffEntries[1], teamData: getTeamData(playoffEntries[1].teamId), seed: 3 };
-  const team4 = { ...playoffEntries[2], teamData: getTeamData(playoffEntries[2].teamId), seed: 4 };
-  const team5 = { ...playoffEntries[3], teamData: getTeamData(playoffEntries[3].teamId), seed: 5 };
+  const team2 = { ...playoffEntries[0], teamData: getTeamData(playoffEntries[0]), seed: 2 };
+  const team3 = { ...playoffEntries[1], teamData: getTeamData(playoffEntries[1]), seed: 3 };
+  const team4 = { ...playoffEntries[2], teamData: getTeamData(playoffEntries[2]), seed: 4 };
+  const team5 = { ...playoffEntries[3], teamData: getTeamData(playoffEntries[3]), seed: 5 };
   
   return {
     groupId,
@@ -475,6 +513,7 @@ export function simulateGroupPlayoff(bracket) {
  * Avanza bracket de grupo: identifica semi1/semi2/final por el id del match
  */
 export function advanceGroupPlayoffBracket(bracket, matchId, result) {
+  if (!result) return bracket;
   const updated = JSON.parse(JSON.stringify(bracket));
   
   // Determinar si es semi1, semi2 o final

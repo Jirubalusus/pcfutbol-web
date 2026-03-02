@@ -225,10 +225,8 @@ export default function GlorySeasonEnd({ leaguePosition, onComplete }) {
           className="glory-season-end__btn"
           onClick={() => {
             if (phase === 'summary') {
-              // Show random event first (if available), then reveals, then cards
-              if (event) {
-                setPhase('event');
-              } else if (newUnlocks.length > 0) {
+              // Skip events — go straight to reveals or cards
+              if (newUnlocks.length > 0) {
                 setPhase('reveal');
               } else {
                 setPhase('cards');

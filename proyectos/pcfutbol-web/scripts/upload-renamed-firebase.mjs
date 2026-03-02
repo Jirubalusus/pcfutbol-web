@@ -31,8 +31,8 @@ const METADATA_DOC = 'stats_v2';
 const LEAGUE_DEFS = {
   laliga:             { json: 'laliga.json',             name: 'Liga Ibérica',          country: 'España' },
   laliga2:            { json: 'laliga2.json',            name: 'Segunda Ibérica',       country: 'España' },
-  'primera-rfef':     { json: 'primera-rfef.json',       name: 'Primera Federación',    country: 'España' },
-  'segunda-rfef':     { json: 'segunda-rfef.json',       name: 'Segunda Federación',    country: 'España' },
+  'primera-rfef':     { json: 'primera-rfef.json',       name: 'Tercera Ibérica',       country: 'España' },
+  'segunda-rfef':     { json: 'segunda-rfef.json',       name: 'Cuarta Ibérica',        country: 'España' },
   premier:            { json: 'premier.json',            name: 'First League',           country: 'Inglaterra' },
   seriea:             { json: 'seriea.json',             name: 'Calcio League',          country: 'Italia' },
   bundesliga:         { json: 'bundesliga.json',         name: 'Erste Liga',             country: 'Alemania' },

@@ -78,6 +78,7 @@ import {
 
 } from '../../game/loanSystem';
 
+import TeamCrest from '../TeamCrest/TeamCrest';
 import './TransfersV2.scss';
 
 
@@ -275,7 +276,7 @@ export default function TransfersV2() {
 
   return (
 
-    <div className="transfers-v2">
+    <div className="transfers-v2 fade-in-up">
 
       {transfersTutorial.shouldShow && (
         <TutorialModal
@@ -456,6 +457,8 @@ export default function TransfersV2() {
             budget={state.money}
 
             blockedPlayers={effectiveBlocked}
+
+            hasFutureScout={!!state.gloryData?.perks?.futureScout}
 
           />
 
@@ -752,7 +755,7 @@ function ResumenTab({ windowStatus, summary, myTeam, preseasonPhase }) {
 
 // ============================================================
 
-function BuscarTab({ players, searchQuery, setSearchQuery, filters, setFilters, showFilters, setShowFilters, onSelectPlayer, budget, blockedPlayers = [] }) {
+function BuscarTab({ players, searchQuery, setSearchQuery, filters, setFilters, showFilters, setShowFilters, onSelectPlayer, budget, blockedPlayers = [], hasFutureScout = false }) {
   const { t } = useTranslation();
 
   return (
@@ -925,7 +928,7 @@ function BuscarTab({ players, searchQuery, setSearchQuery, filters, setFilters, 
 
                 <span className="overall">{player.overall}</span>
 
-                {state.gloryData?.perks?.futureScout && player.potential && (
+                {hasFutureScout && player.potential && (
                   <span className="potential-badge" title="Potencial">{player.potential}</span>
                 )}
 
@@ -945,7 +948,10 @@ function BuscarTab({ players, searchQuery, setSearchQuery, filters, setFilters, 
 
                   ) : (
 
-                    player.teamName
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                      {player.teamId && <TeamCrest teamId={player.teamId} size={18} />}
+                      {player.teamName}
+                    </span>
 
                   )}
 
@@ -1134,7 +1140,7 @@ function OfertasRecibidasTab({ offers, incomingLoanOffers = [], myPlayers, dispa
 
           <div className="offer-amount">
 
-            <span className="amount-value">€{formatTransferPrice(offer.amount)}</span>
+            <span className="amount-value">{formatTransferPrice(offer.amount)}</span>
 
             {offer.expiryWeek && (
 
@@ -1896,9 +1902,9 @@ function NoticiasTab({ transfers, rumors }) {
 
 // PaÃ­ses por continente para detectar zona
 
-const SA_COUNTRIES = new Set(['Argentina', 'Brasil', 'Colombia', 'Chile', 'Uruguay', 'Ecuador', 'Paraguay', 'PerÃº', 'Bolivia', 'Venezuela']);
+const SA_COUNTRIES = new Set(['Argentina', 'Brasil', 'Colombia', 'Chile', 'Uruguay', 'Ecuador', 'Paraguay', 'Perú', 'Bolivia', 'Venezuela']);
 
-const WORLD_COUNTRIES = new Set(['Estados Unidos', 'Arabia SaudÃ­', 'MÃ©xico', 'JapÃ³n']);
+const WORLD_COUNTRIES = new Set(['Estados Unidos', 'Arabia Saudí', 'México', 'Japón']);
 
 function getContinent(country) {
 
@@ -2151,11 +2157,7 @@ function ExplorarTab({ leagueTeams, myTeamId, playerLeagueId, onSelectPlayer, bl
 
               >
 
-                <div className="tc-badge" style={{ background: team.colors?.primary || `hsl(${(team.name?.charCodeAt(0) || 0) * 7 % 360}, 50%, 35%)` }}>
-
-                  {team.shortName?.slice(0, 3) || team.name?.slice(0, 3)}
-
-                </div>
+                <TeamCrest teamId={team.id} size={28} />
 
                 <div className="tc-info">
 
@@ -4204,22 +4206,6 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
                         status: 'pending',
 
                         submittedWeek: state.currentWeek
-
-                      }
-
-                    });
-
-                    dispatch({
-
-                      type: 'ADD_MESSAGE',
-
-                      payload: {
-
-                        id: Date.now(), type: 'transfer', title: t('transfers.offerSentTitle'),
-
-                        content: t('transfers.offerSentContent', { name: player.name, team: player.teamName, amount: formatTransferPrice(offerAmount), salary: formatTransferPrice(salaryOffer * 52) }),
-
-                        date: `${t('transfers.weekShort', { week: state.currentWeek })}`
 
                       }
 

@@ -28,18 +28,23 @@ export function initializeLeague(teams, playerTeamId) {
     morale: 70 // 0-100
   }));
   
-  const fixtures = generateFixtures(teams);
+  const fixtures = generateFixtures(teams, playerTeamId);
   
   return { table, fixtures };
 }
 
 // ============== GENERACIÓN DE CALENDARIO ==============
-export function generateFixtures(teams) {
+export function generateFixtures(teams, playerTeamId = null) {
   const teamIds = teams.map(t => t.id);
   const n = teamIds.length;
   const fixtures = [];
   
+  // Shuffle team order so home/away pattern varies each new game
   const teamList = [...teamIds];
+  for (let i = teamList.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [teamList[i], teamList[j]] = [teamList[j], teamList[i]];
+  }
   if (n % 2 !== 0) teamList.push(null);
   
   const numTeams = teamList.length;
@@ -88,6 +93,29 @@ export function generateFixtures(teams) {
   );
   
   secondHalf.forEach(roundMatches => fixtures.push(...roundMatches));
+  
+  // Enforce home/away alternation for player's team in first half
+  // Check consecutive same-venue runs and swap where needed
+  if (playerTeamId) {
+    const playerFixtures = fixtures.filter(f => f.homeTeam === playerTeamId || f.awayTeam === playerTeamId);
+    for (let i = 1; i < playerFixtures.length; i++) {
+      const prev = playerFixtures[i - 1];
+      const curr = playerFixtures[i];
+      const prevHome = prev.homeTeam === playerTeamId;
+      const currHome = curr.homeTeam === playerTeamId;
+      // If same venue twice in a row, swap current match
+      if (prevHome === currHome) {
+        const idx = fixtures.indexOf(curr);
+        if (idx !== -1) {
+          fixtures[idx] = {
+            ...curr,
+            homeTeam: curr.awayTeam,
+            awayTeam: curr.homeTeam
+          };
+        }
+      }
+    }
+  }
   
   return fixtures;
 }

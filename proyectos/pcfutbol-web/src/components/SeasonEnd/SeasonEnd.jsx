@@ -61,6 +61,7 @@ import {
   advanceGroupPlayoffBracket
 } from '../../game/playoffEngine';
 import FootballIcon from '../icons/FootballIcon';
+import Confetti from '../Confetti/Confetti';
 import './SeasonEnd.scss';
 
 export default function SeasonEnd({ allTeams, onComplete }) {
@@ -1273,8 +1274,10 @@ export default function SeasonEnd({ allTeams, onComplete }) {
   
   // === Fase 1: Resumen de temporada ===
   if (phase === 'summary') {
+    const isLeagueChampion = seasonResult.position === 1;
     return (
       <div className="season-end">
+        {isLeagueChampion && <Confetti count={65} />}
         <div className="season-end__modal">
           <div className="modal-header">
             <Trophy size={32} className="header-icon" />

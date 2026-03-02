@@ -1,0 +1,156 @@
+.resource-bars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    position: relative;
+    min-width: 0;
+    transition: border-color 0.3s, box-shadow 0.3s;
+
+    &--critical {
+      border-color: rgba(239, 68, 68, 0.4);
+      box-shadow: 0 0 8px rgba(239, 68, 68, 0.15);
+      animation: criticalPulse 2s ease-in-out infinite;
+    }
+  }
+
+  @keyframes criticalPulse {
+    0%, 100% { box-shadow: 0 0 8px rgba(239, 68, 68, 0.15); }
+    50% { box-shadow: 0 0 14px rgba(239, 68, 68, 0.3); }
+  }
+
+  &__icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  &__value {
+    font-size: 0.95rem;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+    transition: transform 0.2s ease;
+
+    &--changed {
+      animation: valueBounce 0.35s ease;
+    }
+  }
+
+  @keyframes valueBounce {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+
+  &__mini-bar {
+    width: 28px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  &__mini-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.6s ease;
+  }
+
+  &__delta {
+    font-size: 0.6rem;
+    font-weight: 800;
+    position: absolute;
+    top: -6px;
+    right: 4px;
+    animation: deltaFloat 1.5s ease forwards;
+    pointer-events: none;
+
+    &--positive { color: #4afa7f; }
+    &--negative { color: #ff6b6b; }
+  }
+
+  @keyframes deltaFloat {
+    0% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-12px); }
+  }
+
+  // Hide labels on small screens, show icon + number only
+  &__label {
+    display: none;
+  }
+
+  @media (min-width: 600px) {
+    gap: 0.5rem;
+
+    &__item {
+      padding: 0.35rem 0.7rem;
+    }
+
+    &__label {
+      display: block;
+      font-size: 0.55rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: rgba(255, 255, 255, 0.35);
+    }
+  }
+
+  @media (max-width: 480px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.3rem;
+    padding: 0.4rem 0.6rem;
+
+    &__item {
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 380px) {
+    gap: 0.25rem;
+    padding: 0.35rem 0.5rem;
+
+    &__item {
+      padding: 0.25rem 0.4rem;
+      gap: 0.25rem;
+    }
+
+    &__icon-wrap {
+      width: 18px;
+      height: 18px;
+    }
+
+    &__value {
+      font-size: 0.8rem;
+    }
+
+    &__mini-bar {
+      width: 20px;
+    }
+  }
+}

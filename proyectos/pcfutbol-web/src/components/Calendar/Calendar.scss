@@ -265,6 +265,7 @@
       .team {
         display: flex;
         align-items: center;
+        gap: 6px;
         min-width: 0;
 
         &.home { justify-content: flex-end; text-align: right; }

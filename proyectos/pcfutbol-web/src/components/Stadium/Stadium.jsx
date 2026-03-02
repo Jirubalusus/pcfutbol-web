@@ -40,9 +40,13 @@ import {
   calculateSeasonTickets,
   calculatePriceFactor,
   calculateFairPrice,
+  calculateServicesIncome,
   PRICE_CONFIG,
-  BIG_TEAMS
+  BIG_TEAMS,
+  STADIUM_SERVICES,
+  getMaxServiceLevel
 } from '../../game/stadiumEconomy';
+import { getFacilityCostMultiplier, getBaseTicketPrice, getBaseSeasonTicketPrice, getTicketPriceRange } from '../../game/leagueTiers';
 import { Building2, Mic, Briefcase, Trophy, Ticket, Coins, BarChart3, Megaphone, Users, Sprout, Check, AlertTriangle, XCircle, Lock, Wrench, Tag } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
 import './Stadium.scss';
@@ -181,8 +185,8 @@ export default function Stadium() {
   const level = Math.max(0, Math.min(STADIUM_LEVELS.length - 1, rawLevel));
   const currentLevel = STADIUM_LEVELS[level];
   const nextLevel = STADIUM_LEVELS[level + 1];
-  // Usar capacidad real si está disponible, sino la del nivel
-  const capacity = stadium.realCapacity || currentLevel?.capacity || 8000;
+  // Usar la mayor capacidad entre la real y la del nivel (upgrades amplían el estadio)
+  const capacity = Math.max(stadium.realCapacity || 0, currentLevel?.capacity || 8000);
   
   // Sistema de abonos por temporada
   const currentWeek = state.currentWeek || 1;
@@ -190,8 +194,8 @@ export default function Stadium() {
   
   // Estado de la campaña de abonos
   const seasonTicketsCampaignOpen = stadium.seasonTicketsCampaignOpen ?? (currentWeek <= SEASON_TICKET_DEADLINE);
-  const seasonTicketPrice = stadium.seasonTicketPrice ?? 400; // Precio mientras campaña abierta
-  const ticketPrice = stadium.ticketPrice ?? 30; // Precio entrada partido suelto
+  const seasonTicketPrice = stadium.seasonTicketPrice ?? getBaseSeasonTicketPrice(state.leagueId || state.playerLeagueId || 'laliga'); // Precio mientras campaña abierta
+  const ticketPrice = stadium.ticketPrice ?? getBaseTicketPrice(state.leagueId || state.playerLeagueId || 'laliga'); // Precio entrada partido suelto
   const ticketPriceLocked = stadium.ticketPriceLocked ?? false; // Se bloquea al empezar la liga
   const accumulatedTicketIncome = stadium.accumulatedTicketIncome ?? 0; // Ingresos acumulados (se cobran a final de temporada)
   
@@ -227,7 +231,7 @@ export default function Stadium() {
   const lastEventWeek = stadium.lastEventWeek ?? 0; // backward compat
   const seasonTicketIncome = (seasonTickets || 0) * seasonTicketPrice;
   const namingIncome = naming?.yearlyIncome ?? 0;
-  const maintenanceCost = currentLevel?.maintenance || 500000; // Ya es anual
+  const maintenanceCost = Math.round((currentLevel?.maintenance || 500000) * getFacilityCostMultiplier(state.leagueId || state.playerLeagueId || 'laliga')); // Anual, escalado por tier
   // Precio justo dinámico según contexto del equipo
   const playerLeagueId = state.playerLeagueId || 'laliga';
   const division = ['segunda', 'segundaRFEF', 'primeraRFEF'].includes(playerLeagueId) ? 2 : 1;
@@ -311,9 +315,10 @@ export default function Stadium() {
   };
   
   // Precio entrada partido (solo ajustable en pretemporada, bloqueado durante la temporada)
+  const ticketRange = getTicketPriceRange(state.leagueId || state.playerLeagueId || 'laliga');
   const handleTicketPriceChange = (delta) => {
     if (ticketPriceLocked) return;
-    const newPrice = Math.max(5, Math.min(150, ticketPrice + delta)); // Mínimo 5€, máximo 150€
+    const newPrice = Math.max(ticketRange.min, Math.min(ticketRange.max, ticketPrice + delta));
     updateStadium({ ticketPrice: newPrice });
   };
   
@@ -449,18 +454,26 @@ export default function Stadium() {
     dispatch({ type: 'UPDATE_MONEY', payload: -GRASS_TREATMENT_COST });
   };
   
+  const isUnderConstruction = !!stadium.construction;
+  
   const handleUpgrade = () => {
-    if (!nextLevel || state.money < nextLevel.upgradeCost) return;
-    updateStadium({ level: level + 1 });
-    dispatch({ type: 'UPGRADE_FACILITY', payload: { facilityId: 'stadium', cost: 0 } });
+    if (!nextLevel || state.money < nextLevel.upgradeCost || isUnderConstruction) return;
+    // Don't upgrade immediately — enter construction state
+    updateStadium({
+      construction: {
+        targetLevel: level + 1,
+        targetCapacity: nextLevel.capacity,
+        startedSeason: state.currentSeason
+      }
+    });
     dispatch({ type: 'UPDATE_MONEY', payload: -nextLevel.upgradeCost });
     dispatch({
       type: 'ADD_MESSAGE',
       payload: {
         id: Date.now(),
         type: 'stadium',
-        title: t('stadium.stadiumUpgraded'),
-        content: t('stadium.nowStadium', { name: t(nextLevel.nameKey), capacity: nextLevel.capacity.toLocaleString() }),
+        title: t('stadium.constructionStarted'),
+        content: t('stadium.constructionReady'),
         date: `${t('common.week')} ${state.currentWeek}`
       }
     });
@@ -546,8 +559,39 @@ export default function Stadium() {
     updateStadium({ matchPriceAdjust: 0 });
   };
 
+  // Stadium services
+  const services = stadium.services || {};
+  const costMult = getFacilityCostMultiplier(state.leagueId || state.playerLeagueId || 'laliga');
+  
+  const SERVICE_KEYS = ['catering', 'merchandise', 'parking', 'events', 'vip'];
+  const SERVICE_NAMES = {
+    catering: 'stadium.serviceCatering',
+    merchandise: 'stadium.serviceMerchandise',
+    parking: 'stadium.serviceParking',
+    events: 'stadium.serviceEvents',
+    vip: 'stadium.serviceVip'
+  };
+  
+  const handleUpgradeService = (serviceKey) => {
+    const currentLv = services[serviceKey] || 0;
+    const maxLv = getMaxServiceLevel(serviceKey, level);
+    if (currentLv >= maxLv) return;
+    const nextLv = currentLv + 1;
+    const config = STADIUM_SERVICES[serviceKey];
+    const cost = Math.round(config.levels[nextLv].cost * costMult);
+    if (state.money < cost) return;
+    
+    updateStadium({
+      services: {
+        ...services,
+        [serviceKey]: nextLv
+      }
+    });
+    dispatch({ type: 'UPDATE_MONEY', payload: -cost });
+  };
+
   return (
-    <div className="stadium-simple">
+    <div className="stadium-simple fade-in-up">
       {/* Visor 3D del estadio — skip on mobile to avoid WebGL crashes */}
       {!isMobile && (
         <div className="stadium-simple__3d-viewer">
@@ -568,6 +612,17 @@ export default function Stadium() {
         <div className="stadium-info">
           <h1>{displayStadiumName}</h1>
           <p>{t(currentLevel.nameKey)} • {capacity.toLocaleString()} {t('stadium.seats')}</p>
+          {isUnderConstruction && (
+            <div className="construction-badge">
+              <span className="construction-icon">🚧</span>
+              <span className="construction-text">
+                {t('stadium.underConstruction')} — {t('stadium.buildingTo', { name: t(STADIUM_LEVELS[stadium.construction.targetLevel]?.nameKey || '') })}
+              </span>
+              <span className="construction-target">
+                {t('stadium.targetCapacity', { capacity: stadium.construction.targetCapacity.toLocaleString() })}
+              </span>
+            </div>
+          )}
         </div>
         <div className="stadium-stats">
           <div className="stat">
@@ -596,6 +651,9 @@ export default function Stadium() {
         </button>
         <button className={activeTab === 'sponsors' ? 'active' : ''} onClick={() => setActiveTab('sponsors')}>
           <Coins size={14} /> {t('stadium.sponsorship')}
+        </button>
+        <button className={activeTab === 'services' ? 'active' : ''} onClick={() => setActiveTab('services')}>
+          <Building2 size={14} /> {t('stadium.services')}
         </button>
         <button className={activeTab === 'events' ? 'active' : ''} onClick={() => setActiveTab('events')}>
           <Mic size={14} /> {t('stadium.eventsTab')}
@@ -833,6 +891,95 @@ export default function Stadium() {
               )}
             </>
           )}
+        </div>
+      )}
+      
+      {/* TAB: SERVICES */}
+      {activeTab === 'services' && (
+        <div className="stadium-simple__services">
+          <h3><Building2 size={14} /> {t('stadium.services')}</h3>
+          <p className="hint">{t('stadium.servicesHint', 'Manage stadium services to generate additional match-day income')}</p>
+          
+          <div className="stadium-services-grid">
+            {SERVICE_KEYS.map(key => {
+              const config = STADIUM_SERVICES[key];
+              const currentLv = services[key] || 0;
+              const maxLv = getMaxServiceLevel(key, level);
+              const locked = maxLv === 0; // Not unlocked yet
+              const nextLv = currentLv + 1;
+              const hasNext = nextLv <= maxLv;
+              const nextCost = hasNext ? Math.round(config.levels[nextLv].cost * costMult) : 0;
+              const canAfford = state.money >= nextCost;
+              const currentRate = currentLv > 0 ? config.levels[currentLv].rate : 0;
+              const nextRate = hasNext ? config.levels[nextLv].rate : null;
+              const isMaxForStadium = currentLv >= maxLv && currentLv > 0;
+              const canUnlockMore = currentLv >= maxLv && maxLv < config.levels.length - 1;
+              
+              const STADIUM_NAMES = ['Municipal', 'Moderno', 'Grande', 'Élite', 'Legendario'];
+              const unlockStadiumName = STADIUM_NAMES[config.minStadiumLevel] || '';
+              
+              const rateLabel = config.type === 'perSpectator' 
+                ? t('stadium.servicePerSpectator', { amount: currentRate })
+                : config.type === 'perWeek'
+                  ? t('stadium.servicePerWeek', { amount: formatMoney(currentRate) })
+                  : t('stadium.servicePerMatch', { amount: formatMoney(currentRate) });
+              
+              return (
+                <div key={key} className={`service-card service-card--${key}${locked ? ' service-card--locked' : ''}`}>
+                  <div className="service-card__icon">{config.icon}</div>
+                  <div className="service-card__info">
+                    <span className="service-card__name">{t(SERVICE_NAMES[key])}</span>
+                    {locked ? (
+                      <span className="service-card__locked">
+                        🔒 {t('stadium.serviceRequires', { stadium: unlockStadiumName })}
+                      </span>
+                    ) : (
+                      <>
+                        <span className="service-card__level">
+                          {currentLv > 0 
+                            ? t('stadium.serviceLevel', { level: currentLv })
+                            : t('stadium.serviceNotBuilt')}
+                        </span>
+                        {currentLv > 0 && (
+                          <span className="service-card__rate">{rateLabel}</span>
+                        )}
+                        {hasNext && nextRate && (
+                          <span className="service-card__next">
+                            {config.type === 'perSpectator'
+                              ? `→ €${nextRate}/${t('stadium.spectatorShort', 'spec')}`
+                              : config.type === 'perWeek'
+                                ? `→ ${formatMoney(nextRate)}/${t('common.week', 'sem')}`
+                                : `→ ${formatMoney(nextRate)}/${t('stadium.matchShort', 'match')}`}
+                          </span>
+                        )}
+                      </>
+                    )}
+                  </div>
+                  {!locked && (
+                    <div className="service-card__level-dots">
+                      {Array.from({ length: config.levels.length - 1 }, (_, i) => i + 1).map(lv => (
+                        <span key={lv} className={`dot ${lv <= currentLv ? 'filled' : ''} ${lv > maxLv ? 'locked' : ''}`} />
+                      ))}
+                    </div>
+                  )}
+                  {locked ? null : hasNext ? (
+                    <button 
+                      className="service-card__btn"
+                      onClick={() => handleUpgradeService(key)}
+                      disabled={!canAfford}
+                    >
+                      {currentLv === 0 ? t('stadium.serviceBuild') : t('stadium.serviceUpgrade')}
+                      <span className="cost">{formatMoney(nextCost)}</span>
+                    </button>
+                  ) : isMaxForStadium && canUnlockMore ? (
+                    <span className="service-card__max">{t('stadium.serviceUpgradeStadium', 'Mejora estadio para +niveles')}</span>
+                  ) : (
+                    <span className="service-card__max">MAX</span>
+                  )}
+                </div>
+              );
+            })}
+          </div>
         </div>
       )}
       

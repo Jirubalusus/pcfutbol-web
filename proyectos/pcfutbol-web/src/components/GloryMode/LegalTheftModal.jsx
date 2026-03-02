@@ -58,7 +58,7 @@ export default function LegalTheftModal({ onClose }) {
     const halfPrice = Math.round(selectedPlayer.marketValue * 0.5);
     
     if (halfPrice > state.money) {
-      alert('No tienes suficiente presupuesto');
+      import('sileo').then(({ sileo }) => sileo.warning({ title: 'No tienes suficiente presupuesto' }));
       return;
     }
 

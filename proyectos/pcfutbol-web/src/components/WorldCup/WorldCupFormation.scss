@@ -1,0 +1,467 @@
+// WorldCupFormation - extends Formation.scss with WC-specific styles
+// The base layout uses .pcf-formation, .pcf-content, .pcf-table, etc. from Formation.scss
+
+.wcf-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-bottom: 5rem;
+}
+
+// ── Buffs bar (WC-specific) ──
+.wcf__buffs-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.7rem;
+
+  @media (max-width: 600px) {
+    justify-content: center;
+  }
+}
+
+.wcf__buff-tag {
+  font-size: 0.65rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 6px;
+  white-space: nowrap;
+
+  &--team { background: rgba(59, 130, 246, 0.15); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.15); }
+  &--player { background: rgba(34, 197, 94, 0.15); color: #86efac; border: 1px solid rgba(34, 197, 94, 0.15); }
+  &--conflict { background: rgba(234, 179, 8, 0.15); color: #fde047; border: 1px solid rgba(234, 179, 8, 0.15); }
+}
+
+// ── Formation tabs (WC-specific: inline buttons instead of modal) ──
+.wcf-formation-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  width: 100%;
+  padding: 0.25rem 0;
+
+  .pcf-btn {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.55);
+    transition: all 0.2s ease;
+    letter-spacing: 0.02em;
+
+    &:hover, &:active {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    &.active {
+      background: rgba(48, 209, 88, 0.12) !important;
+      border-color: rgba(48, 209, 88, 0.5) !important;
+      color: #30d158 !important;
+      box-shadow: 0 0 12px rgba(48, 209, 88, 0.15), inset 0 0 8px rgba(48, 209, 88, 0.05);
+    }
+
+    &.locked {
+      opacity: 0.3;
+      cursor: not-allowed;
+      background: rgba(255, 255, 255, 0.02);
+      border-color: rgba(255, 255, 255, 0.06);
+
+      .lock-icon {
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+// ── Formation tabs stagger entrance ──
+.wcf-formation-tabs .pcf-btn {
+  animation: wcfTabSlideIn 0.3s ease-out both;
+  animation-delay: calc(var(--i, 0) * 50ms);
+
+  @keyframes wcfTabSlideIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+// ── Spy button ──
+.wcf-spy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.65rem 1rem;
+  background: rgba(20, 184, 166, 0.08);
+  border: 1px solid rgba(20, 184, 166, 0.25);
+  border-radius: 10px;
+  color: #14b8a6;
+  font-weight: 700;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 0.5rem;
+  animation: wcfAttentionPulse 2.5s ease-in-out infinite;
+
+  &:hover {
+    background: rgba(20, 184, 166, 0.15);
+    border-color: rgba(20, 184, 166, 0.4);
+    animation: none;
+  }
+}
+
+@keyframes wcfAttentionPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.2); }
+  50% { box-shadow: 0 0 0 6px rgba(20, 184, 166, 0), 0 0 12px rgba(20, 184, 166, 0.1); }
+}
+
+// ── Spy Modal ──
+.wcf-spy-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.wcf-spy-modal {
+  width: 100%;
+  max-width: 380px;
+  max-height: 85vh;
+  overflow-y: auto;
+  background: var(--color-bg-primary, #0c0f14);
+  border: 1px solid rgba(20, 184, 166, 0.2);
+  border-radius: 16px;
+  padding: 1.25rem;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+
+    h3 {
+      flex: 1;
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 800;
+      color: #14b8a6;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+  }
+
+  &__close {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    padding: 0.2rem;
+    &:hover { color: rgba(255, 255, 255, 0.7); }
+  }
+
+  &__team {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  &__team-name {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.9);
+    display: block;
+  }
+
+  &__team-rating {
+    font-size: 0.8rem;
+    color: #ffd700;
+  }
+
+  &__section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  &__label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  &__style {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  &__lineup {
+    margin-bottom: 1rem;
+  }
+
+  &__player {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0;
+    font-size: 0.78rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+
+    &:last-child { border-bottom: none; }
+  }
+
+  &__player-pos {
+    font-size: 0.65rem;
+    font-weight: 700;
+    min-width: 2rem;
+    text-align: center;
+  }
+
+  &__player-name {
+    flex: 1;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  &__player-ovr {
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.85);
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__suggestion {
+    background: rgba(20, 184, 166, 0.06);
+    border: 1px solid rgba(20, 184, 166, 0.15);
+    border-radius: 12px;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  &__suggestion-header {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0.4rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #14b8a6;
+  }
+
+  &__suggestion-text {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+
+    strong {
+      color: rgba(255, 255, 255, 0.9);
+    }
+  }
+
+  &__close-btn {
+    width: 100%;
+    padding: 0.6rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 600;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.06);
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+}
+
+// ── Prediction Modal ──
+.wcf-prediction-modal {
+  width: 100%;
+  max-width: 380px;
+  background: var(--color-bg-primary, #0c0f14);
+  border: 1px solid rgba(48, 209, 88, 0.2);
+  border-radius: 16px;
+  padding: 1.25rem;
+}
+
+.wcf-prediction-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.wcf-prediction-team {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.85);
+  min-width: 0;
+  overflow: hidden;
+
+  span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.wcf-prediction-score {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.wcf-prediction-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+  padding: 0;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  &:active {
+    transform: scale(0.92);
+  }
+}
+
+.wcf-prediction-num {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #fff;
+  min-width: 2rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.wcf-prediction-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.wcf-prediction-confirm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #30d158, #28a745);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background: linear-gradient(135deg, #28a745, #1e7e34);
+    box-shadow: 0 4px 12px rgba(48, 209, 88, 0.3);
+  }
+}
+
+@media (max-width: 600px) {
+  .wcf-spy-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+  .wcf-spy-modal {
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: 16px 16px 0 0;
+  }
+}
+
+// ── Prediction confirm pulse ──
+.wcf-prediction-confirm {
+  animation: wcfAttentionPulse 2.5s ease-in-out infinite;
+  &:hover { animation: none; }
+}
+
+// ── Play Match button (WC-specific) ──
+.wcf-play-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: calc(100% - 2rem);
+  max-width: 1100px;
+  padding: 0.85rem 1.5rem;
+  background: linear-gradient(135deg, #14b8a6, #0d9488);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 90;
+
+  &:hover:not(:disabled) {
+    background: linear-gradient(135deg, #0d9488, #0a7c73);
+    box-shadow: 0 4px 16px rgba(20, 184, 166, 0.3);
+  }
+
+  &:active:not(:disabled) {
+    opacity: 0.9;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}

@@ -25,8 +25,13 @@ export function DataProvider({ children }) {
 
     async function init() {
       try {
-        setProgress(10);
+        setProgress(20);
+        // Animate progress while loading
+        const interval = setInterval(() => {
+          setProgress(p => p < 85 ? p + Math.random() * 8 : p);
+        }, 200);
         const success = await loadAllData();
+        clearInterval(interval);
         setProgress(100);
         
         if (!success) {

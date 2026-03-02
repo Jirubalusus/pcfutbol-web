@@ -20,17 +20,9 @@ const LEAGUES_COL = 'leagues_v2';
 
 // Only the leagues we need to update
 const LEAGUES_TO_UPLOAD = {
-  greekSuperLeague:   { json: 'greekSuperLeague.json',   name: 'Super League',          country: 'Grecia' },
-  czechLeague:        { json: 'czechLeague.json',         name: 'Chance Liga',           country: 'Chequia' },
-  croatianLeague:     { json: 'croatianLeague.json',      name: 'HNL',                   country: 'Croacia' },
-  colombiaPrimera:    { json: 'colombiaPrimera.json',     name: 'Liga BetPlay',          country: 'Colombia' },
-  chilePrimera:       { json: 'chilePrimera.json',        name: 'Primera División',      country: 'Chile' },
-  uruguayPrimera:     { json: 'uruguayPrimera.json',      name: 'Primera División',      country: 'Uruguay' },
-  ecuadorLigaPro:     { json: 'ecuadorLigaPro.json',      name: 'LigaPro',               country: 'Ecuador' },
-  paraguayPrimera:    { json: 'paraguayPrimera.json',     name: 'División de Honor',     country: 'Paraguay' },
-  peruLiga1:          { json: 'peruLiga1.json',           name: 'Liga 1',                country: 'Perú' },
-  boliviaPrimera:     { json: 'boliviaPrimera.json',      name: 'División Profesional',  country: 'Bolivia' },
-  venezuelaPrimera:   { json: 'venezuelaPrimera.json',    name: 'Liga FUTVE',            country: 'Venezuela' },
+  laliga2:            { json: 'laliga2.json',             name: 'Segunda Ibérica',       country: 'España' },
+  'primera-rfef':     { json: 'primera-rfef.json',        name: 'Tercera Ibérica',       country: 'España' },
+  'segunda-rfef':     { json: 'segunda-rfef.json',        name: 'Cuarta Ibérica',        country: 'España' },
 };
 
 function toSlug(name) {
@@ -87,8 +79,9 @@ async function main() {
       continue;
     }
 
-    const teams = JSON.parse(readFileSync(jsonPath, 'utf-8'));
-    if (!Array.isArray(teams) || teams.length === 0) {
+    const raw = JSON.parse(readFileSync(jsonPath, 'utf-8'));
+    const teams = Array.isArray(raw) ? raw : (raw.allTeams || []);
+    if (teams.length === 0) {
       console.log(`  ⚠️  ${leagueId}: empty data`);
       continue;
     }

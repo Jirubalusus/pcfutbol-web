@@ -1,12 +1,12 @@
 ﻿// ============================================================
-// PC FÃšTBOL WEB - EQUIPOS SEGUNDA FEDERACIÃ“N 2025/26
+// PC FÃšTBOL WEB - EQUIPOS CUARTA IBÉRICA 2025/26
 // Datos de Transfermarkt - Migrados de football-manager
 // ============================================================
 
 export const segundaRFEFGrupo1 = [
   {
     "id": "cd_numancia",
-    "name": "CD Numancia",
+    "name": "Duero CD",
     "shortName": "CD ",
     "city": "CD Numancia",
     "stadium": "Estadio Municipal",
@@ -297,7 +297,7 @@ export const segundaRFEFGrupo1 = [
   },
   {
     "id": "depor_fabril",
-    "name": "DÃ©por Fabril",
+    "name": "Oceanus Fabril",
     "shortName": "DÃ‰P",
     "city": "DÃ©por Fabril",
     "stadium": "Estadio Municipal",
@@ -610,7 +610,7 @@ export const segundaRFEFGrupo1 = [
   },
   {
     "id": "bergantinos_fc",
-    "name": "BergantiÃ±os FC",
+    "name": "Costa da Morte FC",
     "shortName": "BER",
     "city": "BergantiÃ±os FC",
     "stadium": "Estadio Municipal",
@@ -857,7 +857,7 @@ export const segundaRFEFGrupo1 = [
   },
   {
     "id": "rayo_cantabria",
-    "name": "Rayo Cantabria",
+    "name": "Sentinel Cantabria",
     "shortName": "RAY",
     "city": "Rayo Cantabria",
     "stadium": "Estadio Municipal",
@@ -1126,7 +1126,7 @@ export const segundaRFEFGrupo1 = [
   },
   {
     "id": "real_avila",
-    "name": "Real Ãvila",
+    "name": "Muralla Abulense",
     "shortName": "REA",
     "city": "Real Ãvila",
     "stadium": "Estadio Municipal",
@@ -1395,7 +1395,7 @@ export const segundaRFEFGrupo1 = [
   },
   {
     "id": "oviedo_vetusta",
-    "name": "Oviedo Vetusta",
+    "name": "Ashfield Vetusta",
     "shortName": "OVI",
     "city": "Oviedo Vetusta",
     "stadium": "Estadio Municipal",
@@ -1686,7 +1686,7 @@ export const segundaRFEFGrupo1 = [
   },
   {
     "id": "salamanca_cf",
-    "name": "Salamanca CF",
+    "name": "Charro CF",
     "shortName": "SAL",
     "city": "Salamanca CF",
     "stadium": "Estadio Municipal",
@@ -1955,7 +1955,7 @@ export const segundaRFEFGrupo1 = [
   },
   {
     "id": "valladolid_prom",
-    "name": "Valladolid Prom",
+    "name": "Meseta Promesas",
     "shortName": "VAL",
     "city": "Valladolid Prom",
     "stadium": "Estadio Municipal",
@@ -2224,7 +2224,7 @@ export const segundaRFEFGrupo1 = [
   },
   {
     "id": "coruxo_fc",
-    "name": "Coruxo FC",
+    "name": "Viguense FC",
     "shortName": "COR",
     "city": "Coruxo FC",
     "stadium": "Estadio Municipal",
@@ -2504,7 +2504,7 @@ export const segundaRFEFGrupo1 = [
   },
   {
     "id": "marino_luanco",
-    "name": "Marino Luanco",
+    "name": "Puerto Luanco",
     "shortName": "MAR",
     "city": "Marino Luanco",
     "stadium": "Estadio Municipal",
@@ -2740,7 +2740,7 @@ export const segundaRFEFGrupo1 = [
   },
   {
     "id": "up_langreo",
-    "name": "UP Langreo",
+    "name": "Nalón UP",
     "shortName": "UP ",
     "city": "UP Langreo",
     "stadium": "Estadio Municipal",
@@ -2998,7 +2998,7 @@ export const segundaRFEFGrupo1 = [
   },
   {
     "id": "ud_ourense",
-    "name": "UD Ourense",
+    "name": "Barbaña UD",
     "shortName": "UD ",
     "city": "UD Ourense",
     "stadium": "Estadio Municipal",
@@ -3267,7 +3267,7 @@ export const segundaRFEFGrupo1 = [
   },
   {
     "id": "sd_sarriana",
-    "name": "SD Sarriana",
+    "name": "Ribeira SD",
     "shortName": "SD ",
     "city": "SD Sarriana",
     "stadium": "Estadio Municipal",
@@ -3536,7 +3536,7 @@ export const segundaRFEFGrupo1 = [
   },
   {
     "id": "ud_samano",
-    "name": "UD SÃ¡mano",
+    "name": "Castro UD",
     "shortName": "UD ",
     "city": "UD SÃ¡mano",
     "stadium": "Estadio Municipal",
@@ -3805,7 +3805,7 @@ export const segundaRFEFGrupo1 = [
   },
   {
     "id": "cd_lealtad",
-    "name": "CD Lealtad",
+    "name": "Villaviciosa CD",
     "shortName": "CD ",
     "city": "CD Lealtad",
     "stadium": "Estadio Municipal",
@@ -4085,7 +4085,7 @@ export const segundaRFEFGrupo1 = [
   },
   {
     "id": "burgos_promesas",
-    "name": "Burgos Promesas",
+    "name": "Citadel Promesas",
     "shortName": "BUR",
     "city": "Burgos Promesas",
     "stadium": "Estadio Municipal",
@@ -4321,7 +4321,7 @@ export const segundaRFEFGrupo1 = [
   },
   {
     "id": "astorga",
-    "name": "Astorga",
+    "name": "Maragato CF",
     "shortName": "AST",
     "city": "Astorga",
     "stadium": "Estadio Municipal",
@@ -4593,7 +4593,7 @@ export const segundaRFEFGrupo1 = [
 export const segundaRFEFGrupo2 = [
   {
     "id": "ud_logrones",
-    "name": "UD LogroÃ±Ã©s",
+    "name": "Briones UD",
     "shortName": "UD ",
     "city": "UD LogroÃ±Ã©s",
     "stadium": "Estadio Municipal",
@@ -4851,7 +4851,7 @@ export const segundaRFEFGrupo2 = [
   },
   {
     "id": "real_union",
-    "name": "Real UniÃ³n",
+    "name": "Bidasoa CF",
     "shortName": "REA",
     "city": "Real UniÃ³n",
     "stadium": "Estadio Municipal",
@@ -5120,7 +5120,7 @@ export const segundaRFEFGrupo2 = [
   },
   {
     "id": "alaves_b",
-    "name": "AlavÃ©s B",
+    "name": "Rioja Deportivo B",
     "shortName": "ALA",
     "city": "AlavÃ©s B",
     "stadium": "Estadio Municipal",
@@ -5422,7 +5422,7 @@ export const segundaRFEFGrupo2 = [
   },
   {
     "id": "sestao_river",
-    "name": "Sestao River",
+    "name": "Nervión River",
     "shortName": "SES",
     "city": "Sestao River",
     "stadium": "Estadio Municipal",
@@ -5669,7 +5669,7 @@ export const segundaRFEFGrupo2 = [
   },
   {
     "id": "cd_tudelano",
-    "name": "CD Tudelano",
+    "name": "Ribera CD",
     "shortName": "CD ",
     "city": "CD Tudelano",
     "stadium": "Estadio Municipal",
@@ -5949,7 +5949,7 @@ export const segundaRFEFGrupo2 = [
   },
   {
     "id": "utebo_fc",
-    "name": "Utebo FC",
+    "name": "Alfocea FC",
     "shortName": "UTE",
     "city": "Utebo FC",
     "stadium": "Estadio Municipal",
@@ -6185,7 +6185,7 @@ export const segundaRFEFGrupo2 = [
   },
   {
     "id": "sd_logrones",
-    "name": "SD LogroÃ±Ã©s",
+    "name": "Cidacos SD",
     "shortName": "SD ",
     "city": "SD LogroÃ±Ã©s",
     "stadium": "Estadio Municipal",
@@ -6454,7 +6454,7 @@ export const segundaRFEFGrupo2 = [
   },
   {
     "id": "sd_eibar_b",
-    "name": "SD Eibar B",
+    "name": "SD Cobalt B",
     "shortName": "SD ",
     "city": "SD Eibar B",
     "stadium": "Estadio Municipal",
@@ -6734,7 +6734,7 @@ export const segundaRFEFGrupo2 = [
   },
   {
     "id": "sd_amorebieta",
-    "name": "SD Amorebieta",
+    "name": "Zornotza SD",
     "shortName": "SD ",
     "city": "SD Amorebieta",
     "stadium": "Estadio Municipal",
@@ -6981,7 +6981,7 @@ export const segundaRFEFGrupo2 = [
   },
   {
     "id": "gernika",
-    "name": "Gernika",
+    "name": "Roble CF",
     "shortName": "GER",
     "city": "Gernika",
     "stadium": "Estadio Municipal",
@@ -7239,7 +7239,7 @@ export const segundaRFEFGrupo2 = [
   },
   {
     "id": "sd_ejea",
-    "name": "SD Ejea",
+    "name": "Cinco Villas SD",
     "shortName": "SD ",
     "city": "SD Ejea",
     "stadium": "Estadio Municipal",
@@ -7497,7 +7497,7 @@ export const segundaRFEFGrupo2 = [
   },
   {
     "id": "cd_basconia",
-    "name": "CD Basconia",
+    "name": "Basauri CD",
     "shortName": "CD ",
     "city": "CD Basconia",
     "stadium": "Estadio Municipal",
@@ -7766,7 +7766,7 @@ export const segundaRFEFGrupo2 = [
   },
   {
     "id": "cd_ebro",
-    "name": "CD Ebro",
+    "name": "Delta CD",
     "shortName": "CD ",
     "city": "CD Ebro",
     "stadium": "Estadio Municipal",
@@ -8002,7 +8002,7 @@ export const segundaRFEFGrupo2 = [
   },
   {
     "id": "ud_mutilvera",
-    "name": "UD Mutilvera",
+    "name": "Aranguren UD",
     "shortName": "UD ",
     "city": "UD Mutilvera",
     "stadium": "Estadio Municipal",
@@ -8271,7 +8271,7 @@ export const segundaRFEFGrupo2 = [
   },
   {
     "id": "sd_beasain",
-    "name": "SD Beasain",
+    "name": "Goierri SD",
     "shortName": "SD ",
     "city": "SD Beasain",
     "stadium": "Estadio Municipal",
@@ -8540,7 +8540,7 @@ export const segundaRFEFGrupo2 = [
   },
   {
     "id": "naxara_cd",
-    "name": "NÃ¡xara CD",
+    "name": "Najerilla CD",
     "shortName": "NÃX",
     "city": "NÃ¡xara CD",
     "stadium": "Estadio Municipal",
@@ -8809,7 +8809,7 @@ export const segundaRFEFGrupo2 = [
   },
   {
     "id": "cd_alfaro",
-    "name": "CD Alfaro",
+    "name": "Alhama CD",
     "shortName": "CD ",
     "city": "CD Alfaro",
     "stadium": "Estadio Municipal",
@@ -9092,7 +9092,7 @@ export const segundaRFEFGrupo2 = [
 export const segundaRFEFGrupo3 = [
   {
     "id": "barca_atletic",
-    "name": "BarÃ§a AtlÃ¨tic",
+    "name": "Nova Blau AtlÃ¨tic",
     "shortName": "BAR",
     "city": "BarÃ§a AtlÃ¨tic",
     "stadium": "Estadio Municipal",
@@ -9427,7 +9427,7 @@ export const segundaRFEFGrupo3 = [
   },
   {
     "id": "sant_andreu",
-    "name": "Sant Andreu",
+    "name": "Meridiana CF",
     "shortName": "SAN",
     "city": "Sant Andreu",
     "stadium": "Estadio Municipal",
@@ -9674,7 +9674,7 @@ export const segundaRFEFGrupo3 = [
   },
   {
     "id": "terrassa_fc",
-    "name": "Terrassa FC",
+    "name": "Vallparadís FC",
     "shortName": "TER",
     "city": "Terrassa FC",
     "stadium": "Estadio Municipal",
@@ -9932,7 +9932,7 @@ export const segundaRFEFGrupo3 = [
   },
   {
     "id": "cd_alcoyano",
-    "name": "CD Alcoyano",
+    "name": "Serpis CD",
     "shortName": "CD ",
     "city": "CD Alcoyano",
     "stadium": "Estadio Municipal",
@@ -10212,7 +10212,7 @@ export const segundaRFEFGrupo3 = [
   },
   {
     "id": "torrent",
-    "name": "Torrent",
+    "name": "Horta CF",
     "shortName": "TOR",
     "city": "Torrent",
     "stadium": "Estadio Municipal",
@@ -10525,7 +10525,7 @@ export const segundaRFEFGrupo3 = [
   },
   {
     "id": "rcd_espanyol_b",
-    "name": "RCD Espanyol B",
+    "name": "Periquito B",
     "shortName": "RCD",
     "city": "RCD Espanyol B",
     "stadium": "Estadio Municipal",
@@ -10838,7 +10838,7 @@ export const segundaRFEFGrupo3 = [
   },
   {
     "id": "cd_ibiza",
-    "name": "CD Ibiza",
+    "name": "Isla Blanca CD",
     "shortName": "CD ",
     "city": "CD Ibiza",
     "stadium": "Estadio Municipal",
@@ -11151,7 +11151,7 @@ export const segundaRFEFGrupo3 = [
   },
   {
     "id": "ue_olot",
-    "name": "UE Olot",
+    "name": "Garrotxa UE",
     "shortName": "UE ",
     "city": "UE Olot",
     "stadium": "Estadio Municipal",
@@ -11409,7 +11409,7 @@ export const segundaRFEFGrupo3 = [
   },
   {
     "id": "atletic_lleida",
-    "name": "AtlÃ¨tic Lleida",
+    "name": "Segre AtlÃ¨tic",
     "shortName": "ATL",
     "city": "AtlÃ¨tic Lleida",
     "stadium": "Estadio Municipal",
@@ -11722,7 +11722,7 @@ export const segundaRFEFGrupo3 = [
   },
   {
     "id": "ud_barbastro",
-    "name": "UD Barbastro",
+    "name": "Somontano UD",
     "shortName": "UD ",
     "city": "UD Barbastro",
     "stadium": "Estadio Municipal",
@@ -11969,7 +11969,7 @@ export const segundaRFEFGrupo3 = [
   },
   {
     "id": "girona_fc_b",
-    "name": "Girona FC B",
+    "name": "Terra Brava B",
     "shortName": "GIR",
     "city": "Girona FC B",
     "stadium": "Estadio Municipal",
@@ -12282,7 +12282,7 @@ export const segundaRFEFGrupo3 = [
   },
   {
     "id": "reus_fcr",
-    "name": "Reus FCR",
+    "name": "Gaudí FCR",
     "shortName": "REU",
     "city": "Reus FCR",
     "stadium": "Estadio Municipal",
@@ -12540,7 +12540,7 @@ export const segundaRFEFGrupo3 = [
   },
   {
     "id": "ue_porreres",
-    "name": "UE Porreres",
+    "name": "Pla UE",
     "shortName": "UE ",
     "city": "UE Porreres",
     "stadium": "Estadio Municipal",
@@ -12831,7 +12831,7 @@ export const segundaRFEFGrupo3 = [
   },
   {
     "id": "cd_castellon_b",
-    "name": "CD CastellÃ³n B",
+    "name": "Rampart B",
     "shortName": "CD ",
     "city": "CD CastellÃ³n B",
     "stadium": "Estadio Municipal",
@@ -13111,7 +13111,7 @@ export const segundaRFEFGrupo3 = [
   },
   {
     "id": "ud_poblense",
-    "name": "UD Poblense",
+    "name": "Sa Pobla UD",
     "shortName": "UD ",
     "city": "UD Poblense",
     "stadium": "Estadio Municipal",
@@ -13369,7 +13369,7 @@ export const segundaRFEFGrupo3 = [
   },
   {
     "id": "ce_andratx",
-    "name": "CE Andratx",
+    "name": "Tramuntana CE",
     "shortName": "CE ",
     "city": "CE Andratx",
     "stadium": "Estadio Municipal",
@@ -13619,7 +13619,7 @@ export const segundaRFEFGrupo3 = [
 export const segundaRFEFGrupo4 = [
   {
     "id": "ucam_murcia",
-    "name": "UCAM Murcia",
+    "name": "Académica Murcia",
     "shortName": "UCA",
     "city": "UCAM Murcia",
     "stadium": "Estadio Municipal",
@@ -13888,7 +13888,7 @@ export const segundaRFEFGrupo4 = [
   },
   {
     "id": "aguilas_fc",
-    "name": "Ãguilas FC",
+    "name": "Bahía del Sur FC",
     "shortName": "ÃGU",
     "city": "Ãguilas FC",
     "stadium": "Estadio Municipal",
@@ -14146,7 +14146,7 @@ export const segundaRFEFGrupo4 = [
   },
   {
     "id": "cdu_malacitano",
-    "name": "CDU Malacitano",
+    "name": "CDU Boquerones",
     "shortName": "CDU",
     "city": "CDU Malacitano",
     "stadium": "Estadio Municipal",
@@ -14706,7 +14706,7 @@ export const segundaRFEFGrupo4 = [
   },
   {
     "id": "xerez_deportivo",
-    "name": "Xerez Deportivo",
+    "name": "Ceret Deportivo",
     "shortName": "XER",
     "city": "Xerez Deportivo",
     "stadium": "Estadio Municipal",
@@ -14942,7 +14942,7 @@ export const segundaRFEFGrupo4 = [
   },
   {
     "id": "cd_estepona_fs",
-    "name": "CD Estepona FS",
+    "name": "Selwo CD",
     "shortName": "CD ",
     "city": "CD Estepona FS",
     "stadium": "Estadio Municipal",
@@ -15233,7 +15233,7 @@ export const segundaRFEFGrupo4 = [
   },
   {
     "id": "ud_melilla",
-    "name": "UD Melilla",
+    "name": "Rusadir UD",
     "shortName": "UD ",
     "city": "UD Melilla",
     "stadium": "Estadio Municipal",
@@ -15513,7 +15513,7 @@ export const segundaRFEFGrupo4 = [
   },
   {
     "id": "lorca_deportiva",
-    "name": "Lorca Deportiva",
+    "name": "Guadalentín Deportiva",
     "shortName": "LOR",
     "city": "Lorca Deportiva",
     "stadium": "Estadio Municipal",
@@ -15771,7 +15771,7 @@ export const segundaRFEFGrupo4 = [
   },
   {
     "id": "xerez_cd",
-    "name": "Xerez CD",
+    "name": "Frontera CD",
     "shortName": "XER",
     "city": "Xerez CD",
     "stadium": "Estadio Municipal",
@@ -16029,7 +16029,7 @@ export const segundaRFEFGrupo4 = [
   },
   {
     "id": "minera",
-    "name": "Minera",
+    "name": "Sierra Minera CF",
     "shortName": "MIN",
     "city": "Minera",
     "stadium": "Estadio Municipal",
@@ -16276,7 +16276,7 @@ export const segundaRFEFGrupo4 = [
   },
   {
     "id": "real_jaen_cf",
-    "name": "Real JaÃ©n CF",
+    "name": "Olivo CF",
     "shortName": "REA",
     "city": "Real JaÃ©n CF",
     "stadium": "Estadio Municipal",
@@ -16611,7 +16611,7 @@ export const segundaRFEFGrupo4 = [
   },
   {
     "id": "yeclano",
-    "name": "Yeclano",
+    "name": "Altiplano CF",
     "shortName": "YEC",
     "city": "Yeclano",
     "stadium": "Estadio Municipal",
@@ -16858,7 +16858,7 @@ export const segundaRFEFGrupo4 = [
   },
   {
     "id": "linares",
-    "name": "Linares",
+    "name": "Cástulo CF",
     "shortName": "LIN",
     "city": "Linares",
     "stadium": "Estadio Municipal",
@@ -17116,7 +17116,7 @@ export const segundaRFEFGrupo4 = [
   },
   {
     "id": "ud_almeria_b",
-    "name": "UD AlmerÃ­a B",
+    "name": "Indalo B",
     "shortName": "UD ",
     "city": "UD AlmerÃ­a B",
     "stadium": "Estadio Municipal",
@@ -17407,7 +17407,7 @@ export const segundaRFEFGrupo4 = [
   },
   {
     "id": "ca_antoniano",
-    "name": "CA Antoniano",
+    "name": "Sevillano CA",
     "shortName": "CA ",
     "city": "CA Antoniano",
     "stadium": "Estadio Municipal",
@@ -17720,7 +17720,7 @@ export const segundaRFEFGrupo4 = [
   },
   {
     "id": "cd_extremadura",
-    "name": "CD Extremadura",
+    "name": "Dehesa CD",
     "shortName": "CD ",
     "city": "CD Extremadura",
     "stadium": "Estadio Municipal",
@@ -17967,7 +17967,7 @@ export const segundaRFEFGrupo4 = [
   },
   {
     "id": "puente_genil_fc",
-    "name": "Puente Genil FC",
+    "name": "Pontano FC",
     "shortName": "PUE",
     "city": "Puente Genil FC",
     "stadium": "Estadio Municipal",
@@ -18596,7 +18596,7 @@ export const segundaRFEFGrupo5 = [
   },
   {
     "id": "cf_intercity",
-    "name": "CF Intercity",
+    "name": "Interurbano CF",
     "shortName": "CF ",
     "city": "CF Intercity",
     "stadium": "Estadio Municipal",
@@ -18876,7 +18876,7 @@ export const segundaRFEFGrupo5 = [
   },
   {
     "id": "ub_conquense",
-    "name": "UB Conquense",
+    "name": "Júcar UB",
     "shortName": "UB ",
     "city": "UB Conquense",
     "stadium": "Estadio Municipal",
@@ -19189,7 +19189,7 @@ export const segundaRFEFGrupo5 = [
   },
   {
     "id": "orihuela_cf",
-    "name": "Orihuela CF",
+    "name": "Segura CF",
     "shortName": "ORI",
     "city": "Orihuela CF",
     "stadium": "Estadio Municipal",
@@ -19469,7 +19469,7 @@ export const segundaRFEFGrupo5 = [
   },
   {
     "id": "ud_sanse",
-    "name": "UD Sanse",
+    "name": "Reyes UD",
     "shortName": "UD ",
     "city": "UD Sanse",
     "stadium": "Estadio Municipal",
@@ -19716,7 +19716,7 @@ export const segundaRFEFGrupo5 = [
   },
   {
     "id": "getafe_cf_b",
-    "name": "Getafe CF B",
+    "name": "Centauro B",
     "shortName": "GET",
     "city": "Getafe CF B",
     "stadium": "Estadio Municipal",
@@ -20040,7 +20040,7 @@ export const segundaRFEFGrupo5 = [
   },
   {
     "id": "cf_fuenlabrada",
-    "name": "Fuenla CF",
+    "name": "Loranca CF",
     "shortName": "CF ",
     "city": "CF Fuenlabrada",
     "stadium": "Estadio Municipal",
@@ -20298,7 +20298,7 @@ export const segundaRFEFGrupo5 = [
   },
   {
     "id": "cd_coria",
-    "name": "CD Coria",
+    "name": "Alagón CD",
     "shortName": "CD ",
     "city": "CD Coria",
     "stadium": "Estadio Municipal",
@@ -20545,7 +20545,7 @@ export const segundaRFEFGrupo5 = [
   },
   {
     "id": "elche_ilicitano",
-    "name": "Elche Ilicitano",
+    "name": "Palm Grove Ilicitano",
     "shortName": "ELC",
     "city": "Elche Ilicitano",
     "stadium": "Estadio Municipal",
@@ -20847,7 +20847,7 @@ export const segundaRFEFGrupo5 = [
   },
   {
     "id": "rsd_alcala",
-    "name": "RSD AlcalÃ¡",
+    "name": "Complutense RSD",
     "shortName": "RSD",
     "city": "RSD AlcalÃ¡",
     "stadium": "Estadio Municipal",
@@ -21138,7 +21138,7 @@ export const segundaRFEFGrupo5 = [
   },
   {
     "id": "navalcarnero",
-    "name": "Navalcarnero",
+    "name": "Encinar CF",
     "shortName": "NAV",
     "city": "Navalcarnero",
     "stadium": "Estadio Municipal",
@@ -21396,7 +21396,7 @@ export const segundaRFEFGrupo5 = [
   },
   {
     "id": "cd_tenerife_b",
-    "name": "CD Tenerife B",
+    "name": "Volcán Insular B",
     "shortName": "CD ",
     "city": "CD Tenerife B",
     "stadium": "Estadio Municipal",
@@ -21698,7 +21698,7 @@ export const segundaRFEFGrupo5 = [
   },
   {
     "id": "rayo_b",
-    "name": "Rayo B",
+    "name": "Barrio B",
     "shortName": "RAY",
     "city": "Rayo B",
     "stadium": "Estadio Municipal",
@@ -22022,7 +22022,7 @@ export const segundaRFEFGrupo5 = [
   },
   {
     "id": "quintanar_rey",
-    "name": "Quintanar Rey",
+    "name": "Mancha CF",
     "shortName": "QUI",
     "city": "Quintanar Rey",
     "stadium": "Estadio Municipal",
@@ -22313,7 +22313,7 @@ export const segundaRFEFGrupo5 = [
   },
   {
     "id": "moscardo",
-    "name": "MoscardÃ³",
+    "name": "Usera CF",
     "shortName": "MOS",
     "city": "MoscardÃ³",
     "stadium": "Estadio Municipal",
@@ -22582,7 +22582,7 @@ export const segundaRFEFGrupo5 = [
   },
   {
     "id": "socuellamos",
-    "name": "SocuÃ©llamos",
+    "name": "Viñedo CF",
     "shortName": "SOC",
     "city": "SocuÃ©llamos",
     "stadium": "Estadio Municipal",

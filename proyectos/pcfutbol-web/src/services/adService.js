@@ -9,7 +9,7 @@ const IS_NATIVE = Capacitor.isNativePlatform();
 // AdMob IDs
 const ADMOB_APP_ID = 'ca-app-pub-1594664200775140~8239730162';
 const ADMOB_BANNER_ID = 'ca-app-pub-1594664200775140/7410688638';
-const ADMOB_INTERSTITIAL_ID = ''; // TODO: add interstitial ID
+const ADMOB_INTERSTITIAL_ID = 'ca-app-pub-1594664200775140/4839261087';
 
 let admobPlugin = null;
 let initialized = false;
@@ -98,7 +98,6 @@ export async function prepareInterstitial() {
  */
 export async function maybeShowInterstitial() {
   simCount++;
-  if (simCount % 4 !== 0) return false; // Show every 4th simulation
   
   if (IS_NATIVE && admobPlugin && interstitialLoaded) {
     try {

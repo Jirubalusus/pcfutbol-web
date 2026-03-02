@@ -1,0 +1,210 @@
+.wc-result {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  background: var(--color-bg-primary, #0c0f14);
+  opacity: 0;
+  transform: scale(0.97);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+
+  &--visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  &__confetti {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10;
+    overflow: hidden;
+  }
+
+  &__confetti-piece {
+    position: absolute;
+    top: -10px;
+    width: 7px;
+    height: 7px;
+    border-radius: 1px;
+    animation: confettiFall linear forwards;
+
+    @keyframes confettiFall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    z-index: 5;
+    text-align: center;
+  }
+
+  &__icon-wrap {
+    animation: iconBounce 0.6s ease both 0.2s;
+  }
+
+  @keyframes iconBounce {
+    0% { transform: scale(0) rotate(-10deg); opacity: 0; }
+    50% { transform: scale(1.2) rotate(3deg); }
+    70% { transform: scale(0.95) rotate(-1deg); }
+    100% { transform: scale(1) rotate(0); opacity: 1; }
+  }
+
+  &__big-icon {
+    font-size: 4rem;
+    display: block;
+  }
+
+  &__trophy-animation {
+    animation: trophyRise 0.8s ease both 0.4s;
+  }
+
+  @keyframes trophyRise {
+    0% { transform: translateY(40px) scale(0); opacity: 0; }
+    60% { transform: translateY(-8px) scale(1.1); opacity: 1; }
+    80% { transform: translateY(3px) scale(0.97); }
+    100% { transform: translateY(0) scale(1); opacity: 1; }
+  }
+
+  &__trophy {
+    color: #f59e0b;
+    filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.5));
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin: 0;
+    line-height: 1.2;
+    max-width: 350px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+
+    .wc-result--champion & { color: #f59e0b; }
+    .wc-result--eliminated & { color: rgba(255, 255, 255, 0.6); }
+    .wc-result--fired &, .wc-result--mutiny & { color: #ef4444; }
+  }
+
+  &__team-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  &__team-flag { font-size: 2.2rem; }
+  &__team-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  &__stats {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: resultStatIn 0.4s ease-out both;
+
+    &:nth-child(1) { animation-delay: 0.5s; }
+    &:nth-child(2) { animation-delay: 0.6s; }
+    &:nth-child(3) { animation-delay: 0.7s; }
+    &:nth-child(4) { animation-delay: 0.8s; }
+  }
+
+  @keyframes resultStatIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  &__stat-value {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.9);
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__stat-label {
+    font-size: 0.6rem;
+    color: rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: 0.75rem;
+    animation: resultActionsIn 0.4s ease-out both 1s;
+  }
+
+  @keyframes resultActionsIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.7rem 1.25rem;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+
+    &--primary {
+      background: #14b8a6;
+      color: #fff;
+
+      &:hover { background: #0d9488; box-shadow: 0 4px 16px rgba(20, 184, 166, 0.3); }
+    }
+
+    &--secondary {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.5);
+
+      &:hover { border-color: rgba(255, 255, 255, 0.15); color: rgba(255, 255, 255, 0.8); }
+    }
+  }
+
+  @media (max-width: 600px) {
+    padding: 1.25rem 1rem;
+
+    &__big-icon { font-size: 3rem; }
+    &__title { font-size: 1.2rem; max-width: 300px; }
+    &__team-flag { font-size: 1.8rem; }
+    &__team-name { font-size: 1rem; }
+
+    &__stats { gap: 1rem; }
+    &__stat-value { font-size: 1.2rem; }
+    &__stat-label { font-size: 0.55rem; }
+
+    &__actions { flex-direction: column; width: 100%; gap: 0.5rem; }
+    &__btn {
+      width: 100%;
+      justify-content: center;
+      padding: 0.7rem 1rem;
+      font-size: 0.85rem;
+      min-height: 44px;
+    }
+  }
+}

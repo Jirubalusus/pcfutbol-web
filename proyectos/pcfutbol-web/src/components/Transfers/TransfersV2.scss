@@ -18,6 +18,8 @@ $teal: #14b8a6;
   height: 100%;
   color: var(--color-text-primary);
   overflow: hidden;
+  background: transparent;
+  position: relative;
 }
 
 // ============================================================
@@ -648,6 +650,7 @@ $teal: #14b8a6;
     border-radius: 14px;
     padding: 0;
     overflow: hidden;
+    margin-bottom: 10px;
     transition: background 0.2s;
 
     &:hover {
@@ -1640,8 +1643,14 @@ $teal: #14b8a6;
 
 @media (max-width: 768px) {
   .transfers-v2 {
+    height: auto;
+    overflow: visible;
     overflow-x: hidden;
     max-width: 100vw;
+  }
+
+  .transfers-content {
+    overflow: visible;
   }
 
   .transfers-header {
@@ -3081,6 +3090,8 @@ $teal: #14b8a6;
       align-items: center;
       justify-content: center;
       gap: 0.4rem;
+
+      svg { flex-shrink: 0; }
       padding: 0.55rem 0.75rem;
       background: transparent;
       border: 1px solid var(--color-glass-border);
@@ -3367,8 +3378,8 @@ $teal: #14b8a6;
   // === LISTA DE JUGADORES ===
   .squad-list {
     padding: 0;
-    max-height: calc(100vh - 380px);
-    overflow-y: auto;
+    flex: 1;
+    overflow-y: visible;
 
     .squad-player {
       display: flex;

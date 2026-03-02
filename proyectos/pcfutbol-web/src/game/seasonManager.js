@@ -4,6 +4,18 @@
 
 import { evolvePlayer } from './seasonEngine.js';
 
+// Leagues that are the lowest tier in their pyramid — no relegation destination exists in-game
+const BOTTOM_TIER_LEAGUES = new Set([
+  'serieB', 'bundesliga2', 'ligue2', 'championship', 'segundaRFEF',
+  'swissSuperLeague', 'austrianBundesliga', 'greekSuperLeague',
+  'danishSuperliga', 'croatianLeague', 'czechLeague',
+  'mls', 'saudiPro', 'ligaMX', 'jLeague',
+  'argentinaPrimera', 'brasileiraoA', 'colombiaPrimera', 'chilePrimera',
+  'uruguayPrimera', 'ecuadorLigaPro', 'paraguayPrimera', 'peruLiga1',
+  'boliviaPrimera', 'venezuelaPrimera',
+  'belgianPro', 'superLig', 'scottishPrem', 'eredivisie', 'primeiraLiga'
+]);
+
 // Configuración de competiciones europeas por liga
 export const EUROPEAN_SPOTS = {
   laliga: {
@@ -254,14 +266,16 @@ export function getSeasonResult(table, teamId, leagueId = 'laliga') {
     qualification = 'conference';
   }
   
-  // Determinar descenso
-  if (spots.relegation?.includes(position)) {
-    relegation = true;
-  } else if (spots.relegationCount && table.length > 0) {
-    // Dynamic relegation for group leagues (last N positions)
-    const totalTeams = table.length;
-    if (position > totalTeams - spots.relegationCount) {
+  // Determinar descenso (only if there's an actual lower league in the game)
+  if (!BOTTOM_TIER_LEAGUES.has(leagueId)) {
+    if (spots.relegation?.includes(position)) {
       relegation = true;
+    } else if (spots.relegationCount && table.length > 0) {
+      // Dynamic relegation for group leagues (last N positions)
+      const totalTeams = table.length;
+      if (position > totalTeams - spots.relegationCount) {
+        relegation = true;
+      }
     }
   }
   

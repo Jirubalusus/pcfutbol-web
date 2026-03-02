@@ -1,7 +1,7 @@
 ﻿import React, { createContext, useContext, useReducer, useEffect, useRef } from 'react';
 import { db, auth } from '../firebase/config';
 import { onAuthStateChanged } from 'firebase/auth';
-import { doc, getDoc, setDoc, updateDoc, deleteDoc } from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore';
 import { saveContrarreloj, deleteContrarrelojSave } from '../firebase/contrarrelojSaveService';
 import { saveProManager, deleteProManagerSave } from '../firebase/proManagerService';
 import { saveGlory, deleteGlorySave } from '../firebase/glorySaveService';
@@ -14,7 +14,7 @@ import { GlobalTransferEngine, isTransferWindowOpen, formatTransferPrice, calcul
 import { getPositionFit, getSlotPosition } from '../game/positionSystem';
 import { evaluateManager, generateWarningMessage } from '../game/managerEvaluation';
 import { generateSalary, applyTeamsSalaries } from '../game/salaryGenerator';
-import { getLeagueTier, getEconomyMultiplier } from '../game/leagueTiers';
+import { getLeagueTier, getEconomyMultiplier, getBaseTicketPrice, getBaseSeasonTicketPrice, getBaseCommercialIncome } from '../game/leagueTiers';
 import { evolvePlayer } from '../game/seasonEngine';
 import { isEuropeanWeekDynamic, getPhaseForWeekCompat, isCupWeek, getCupRoundForWeek, EUROPEAN_MATCHDAY_WEEKS } from '../game/europeanCompetitions';
 import { simulateEuropeanMatchday, advanceEuropeanPhase, recordPlayerLeagueResult, recordPlayerKnockoutResult, getPlayerCompetition } from '../game/europeanSeason';
@@ -34,18 +34,6 @@ const GameContext = createContext();
 // ============================================================
 export function ensureFullLineup(lineup, players, formation) {
   if (!lineup || !players) return lineup;
-  
-  // Always clean ghost players (sold/injured/suspended) from lineup
-  if (players.length > 0) {
-    const validNames = new Set(players.filter(p => !p.injured && !p.suspended).map(p => p.name));
-    Object.entries(lineup).forEach(([slot, p]) => {
-      if (p && p.name && !validNames.has(p.name)) {
-        lineup = { ...lineup };
-        lineup[slot] = null;
-      }
-    });
-  }
-  // Don't bail early — always try to fill empty slots even with small squads
   
   const FORMATION_SLOTS = {
     '4-3-3':       ['GK','RB','CB1','CB2','LB','CM1','CDM','CM2','RW','ST','LW'],
@@ -69,18 +57,15 @@ export function ensureFullLineup(lineup, players, formation) {
   
   const newLineup = { ...lineup };
   
-  // Eject injured, suspended, or loaned players from lineup FIRST
+  // Eject injured, suspended, loaned, or removed players from lineup
+  // IMPORTANT: Check current player state from `players` array, NOT the stale
+  // snapshot stored in the lineup (lineup copies can have outdated injured/suspended flags)
+  const playerMap = new Map(players.map(p => [p.name, p]));
   for (const slotId of Object.keys(newLineup)) {
-    const p = newLineup[slotId];
-    if (p && (p.injured || p.suspended || p.onLoan)) {
-      delete newLineup[slotId];
-    }
-  }
-  
-  // Also eject players no longer in the squad
-  const playerNames = new Set(players.map(p => p.name));
-  for (const slotId of Object.keys(newLineup)) {
-    if (newLineup[slotId] && !playerNames.has(newLineup[slotId].name)) {
+    const lineupEntry = newLineup[slotId];
+    if (!lineupEntry) continue;
+    const currentPlayer = playerMap.get(lineupEntry.name);
+    if (!currentPlayer || currentPlayer.injured || currentPlayer.suspended || currentPlayer.onLoan) {
       delete newLineup[slotId];
     }
   }
@@ -96,9 +81,11 @@ export function ensureFullLineup(lineup, players, formation) {
   const usedNames = new Set(Object.values(newLineup).map(p => p?.name).filter(Boolean));
   const available = players.filter(p => !usedNames.has(p.name) && !p.injured && !p.suspended && !p.onLoan);
   
+  // Guard: if fewer than 11 available players total, fill what we can (#11)
   // Rellenar slots vacíos
   for (const slotId of slots) {
     if (newLineup[slotId]) continue; // Ya ocupado
+    if (available.length === 0) break; // No more available players
     
     const slotPos = getSlotPosition(slotId);
     const best = [...available]
@@ -206,7 +193,8 @@ const initialState = {
     ticketPrice: 30, // Precio medio por entrada
     grassCondition: 100,
     naming: null, // { sponsorId, name, yearsLeft, yearlyIncome }
-    lastEventWeek: 0
+    lastEventWeek: 0,
+    services: {} // Stadium services: { catering: 0-3, merchandise: 0-3, parking: 0-3, events: 0-3, vip: 0-3 }
   },
 
   // League Data
@@ -299,6 +287,10 @@ const initialState = {
   rejectedTransfers: {}     // { [playerName]: { weeksLeft, totalWeeks, quality } }
 };
 
+// NOTE: This reducer is intentionally impure — it uses Math.random() and Date.now() in several
+// cases (ADVANCE_WEEK, COUNTER_INCOMING_OFFER, stadium naming offers, etc.). Refactoring all
+// randomness into action payloads would be a large, risky change. This works because we don't
+// use React strict mode double-invoke and game state is never replayed. (Bugs #3, #13, #14)
 function gameReducer(state, action) {
   switch (action.type) {
     case 'LOAD_SAVE': {
@@ -413,12 +405,7 @@ function gameReducer(state, action) {
         (sanitized.currentScreen === 'ranked_match' || sanitized.currentScreen === 'ranked_lobby');
       if (isRankedSave) {
         console.warn('⚠️ Discarding old ranked save — ranked matches are not persistent');
-        // Clean up: delete from Firebase
-        try {
-          if (sanitized.saveId) {
-            deleteDoc(doc(db, 'saves', sanitized.saveId)).catch(() => {});
-          }
-        } catch (e) { /* ignore cleanup errors */ }
+        // Skip cleanup deleteDoc — we don't know which collection it came from (#18)
         return { ...state, loaded: true };
       }
 
@@ -532,7 +519,8 @@ function gameReducer(state, action) {
           seasonTickets: Math.floor((stadiumInfo.capacity || 8000) * 0.4),
           seasonTicketsFinal: null, // Se fija al cerrar la campaña
           seasonTicketsCampaignOpen: true,
-          ticketPrice: 30,
+          ticketPrice: getBaseTicketPrice(leagueId),
+          seasonTicketPrice: getBaseSeasonTicketPrice(leagueId),
           grassCondition: 100
         },
         facilities: {
@@ -683,7 +671,8 @@ function gameReducer(state, action) {
           seasonTickets: Math.floor((switchStadiumInfo.capacity || 8000) * 0.4),
           seasonTicketsFinal: null,
           seasonTicketsCampaignOpen: true,
-          ticketPrice: 30,
+          ticketPrice: getBaseTicketPrice(leagueId),
+          seasonTicketPrice: getBaseSeasonTicketPrice(leagueId),
           grassCondition: 100
         },
         facilities: {
@@ -762,15 +751,17 @@ function gameReducer(state, action) {
           const drawn = goals === against ? 1 : 0;
           const lost = goals < against ? 1 : 0;
           const pts = won * 3 + drawn;
+          const newGF = Math.max(0, t.goalsFor - goals);
+          const newGA = Math.max(0, t.goalsAgainst - against);
           return {
             ...t,
             played: Math.max(0, t.played - 1),
             won: Math.max(0, t.won - won),
             drawn: Math.max(0, t.drawn - drawn),
             lost: Math.max(0, t.lost - lost),
-            goalsFor: Math.max(0, t.goalsFor - goals),
-            goalsAgainst: Math.max(0, t.goalsAgainst - against),
-            goalDifference: Math.max(0, t.goalsFor - goals) - Math.max(0, t.goalsAgainst - against),
+            goalsFor: newGF,
+            goalsAgainst: newGA,
+            goalDifference: newGF - newGA,
             points: Math.max(0, t.points - pts),
           };
         }
@@ -781,15 +772,17 @@ function gameReducer(state, action) {
           const drawn = goals === against ? 1 : 0;
           const lost = goals < against ? 1 : 0;
           const pts = won * 3 + drawn;
+          const newGF = Math.max(0, t.goalsFor - goals);
+          const newGA = Math.max(0, t.goalsAgainst - against);
           return {
             ...t,
             played: Math.max(0, t.played - 1),
             won: Math.max(0, t.won - won),
             drawn: Math.max(0, t.drawn - drawn),
             lost: Math.max(0, t.lost - lost),
-            goalsFor: Math.max(0, t.goalsFor - goals),
-            goalsAgainst: Math.max(0, t.goalsAgainst - against),
-            goalDifference: Math.max(0, t.goalsFor - goals) - Math.max(0, t.goalsAgainst - against),
+            goalsFor: newGF,
+            goalsAgainst: newGA,
+            goalDifference: newGF - newGA,
             points: Math.max(0, t.points - pts),
           };
         }
@@ -1048,8 +1041,25 @@ function gameReducer(state, action) {
         });
       }
 
+      // === Complete stadium construction if in progress ===
+      let constructionCompleteMessages = [];
+      let completedConstruction = null;
+      if (state.stadium?.construction) {
+        completedConstruction = state.stadium.construction;
+        constructionCompleteMessages.push({
+          id: Date.now() + 0.91,
+          type: 'stadium',
+          titleKey: 'stadium.constructionComplete',
+          contentKey: 'stadium.newCapacity',
+          contentParams: { capacity: completedConstruction.targetCapacity.toLocaleString() },
+          dateKey: 'gameMessages.startOfSeason',
+          dateParams: { season: state.currentSeason + 1 }
+        });
+      }
+
       // Actualizar patrocinio (naming rights) - reducir años
       let updatedNaming = state.stadium?.naming;
+      console.log('🏟️ START_NEW_SEASON naming:', JSON.stringify(updatedNaming));
       if (updatedNaming && updatedNaming.yearsLeft > 0) {
         updatedNaming = {
           ...updatedNaming,
@@ -1057,6 +1067,9 @@ function gameReducer(state, action) {
         };
         if (updatedNaming.yearsLeft <= 0) {
           updatedNaming = null;
+          console.log('🏟️ Naming expired, set to null');
+        } else {
+          console.log('🏟️ Naming renewed, yearsLeft:', updatedNaming.yearsLeft);
         }
       }
 
@@ -1091,7 +1104,8 @@ function gameReducer(state, action) {
       const finalPlayerNames = new Set(finalPlayers.map(p => p.name));
 
       // === ENVEJECER Y GENERAR HIJOS EN EQUIPOS IA (leagueTeams) ===
-      const updatedLeagueTeamsForSeason = (state.leagueTeams || []).map(team => {
+      const leagueTeams = state.leagueTeams || [];
+      const updatedLeagueTeamsForSeason = leagueTeams.map(team => {
         if (team.id === state.teamId) return team; // Skip player's team (already handled)
         if (!team.players || team.players.length === 0) return team;
 
@@ -1118,7 +1132,8 @@ function gameReducer(state, action) {
 
       // Calcular dinero final tras temporada
       const namingRightsIncome = updatedNaming ? (updatedNaming.yearlyIncome || 0) : 0;
-      const seasonEndMoney = state.money + (moneyChange || 0) + (state.stadium?.accumulatedTicketIncome ?? 0) + (state.stadium?.seasonTicketIncomeCollected ?? 0) + namingRightsIncome;
+      const servicesSeasonIncome = state.stadium?.accumulatedServicesIncome ?? 0;
+      const seasonEndMoney = state.money + (moneyChange || 0) + (state.stadium?.accumulatedTicketIncome ?? 0) + (state.stadium?.seasonTicketIncomeCollected ?? 0) + namingRightsIncome + servicesSeasonIncome;
 
       // Check bancarrota al final de temporada
       const isBankruptAtSeasonEnd = seasonEndMoney < 0;
@@ -1143,10 +1158,14 @@ function gameReducer(state, action) {
           : state.managerFiredReason,
         ...(gloryConfidenceReset ? { managerConfidence: gloryConfidenceReset } : {}),
         // Actualizar estadio: cobrar acumulado, resetear para nueva temporada, desbloquear precio
+        // Apply construction completion to facilities level
+        ...(completedConstruction ? { facilities: { ...state.facilities, stadium: completedConstruction.targetLevel } } : {}),
         stadium: {
           ...state.stadium,
           naming: updatedNaming,
           accumulatedTicketIncome: 0,    // Reset: nueva temporada empieza de cero
+          accumulatedServicesIncome: 0,  // Reset: servicios cobrados
+          accumulatedServicesBreakdown: { catering: 0, merchandise: 0, parking: 0, events: 0, vip: 0 },
           ticketPriceLocked: false,       // Desbloquear precio para la nueva temporada
           lastMatchAttendance: null,
           lastMatchTicketSales: null,
@@ -1155,6 +1174,12 @@ function gameReducer(state, action) {
           seasonTicketsFinal: null,
           seasonTicketIncomeCollected: 0,
           totalSeasonIncome: 0,
+          // Complete construction if in progress
+          ...(completedConstruction ? {
+            level: completedConstruction.targetLevel,
+            realCapacity: completedConstruction.targetCapacity,
+            construction: null
+          } : {}),
           // Generate new naming offers if no current deal
           availableNamingOffers: !updatedNaming ? (() => {
             const sLevel = state.facilities?.stadium ?? state.stadium?.level ?? 0;
@@ -1227,8 +1252,8 @@ function gameReducer(state, action) {
         loanHistory: [...(state.loanHistory || []), ...seasonExpiredLoans],
         incomingLoanOffers: [],
         // Mensajes: retiros + hijos + cesiones + preserve recent messages
-        messages: [...retirementMessages, ...loanExpireMessages.map(m => ({
-          id: Date.now() + Math.random(), type: 'loan', titleKey: m.titleKey || 'gameMessages.loan', title: m.title || 'Loan', content: m.content || '', dateKey: 'gameMessages.endOfSeason', dateParams: { season: state.currentSeason }
+        messages: [...constructionCompleteMessages, ...retirementMessages, ...loanExpireMessages.map(m => ({
+          id: Date.now().toString(36) + Math.random().toString(36).slice(2), type: 'loan', titleKey: m.titleKey || 'gameMessages.loan', title: m.title || 'Loan', content: m.content || '', dateKey: 'gameMessages.endOfSeason', dateParams: { season: state.currentSeason }
         })), ...(state.messages || []).slice(0, 20)].slice(0, 50),
         // Form system reset
         playerForm: generateInitialForm(
@@ -1268,7 +1293,8 @@ function gameReducer(state, action) {
             relegated: !!seasonResult?.relegation,
             relegatedTo: seasonResult?.relegation ? (action.payload.newPlayerLeagueId || null) : null,
             europeanPhase: (() => {
-              // Extract best european/SA phase reached from current state
+              // Extract best european/SA phase reached from the ending season's state.
+              // Uses state.europeanCompetitions (pre-reset) intentionally — records history before clearing. (#25)
               const comps = state.europeanCompetitions || state.saCompetitions;
               if (!comps) return null;
               for (const comp of Object.values(comps)) {
@@ -1355,6 +1381,8 @@ function gameReducer(state, action) {
     }
 
     case 'ADVANCE_PRESEASON_WEEK': {
+      // TODO: This case duplicates much of ADVANCE_WEEK logic (transfers, offers, etc.).
+      // Ideally should be refactored to share code, but too risky to change now. (#12)
       // Generar ofertas por jugadores en venta durante pretemporada
       let preseasonIncomingOffers = [...(state.incomingOffers || [])];
       let preseasonMessages = [];
@@ -1389,7 +1417,7 @@ function gameReducer(state, action) {
             });
 
             preseasonMessages.push({
-              id: Date.now() + Math.random(), type: 'offer',
+              id: Date.now().toString(36) + Math.random().toString(36).slice(2), type: 'offer',
               titleKey: 'gameMessages.offerForListedPlayer',
               contentKey: 'gameMessages.offerContent', contentParams: { buyer: buyer.name, amount: formatTransferPrice(offerAmt), player: listedPlayer.name },
               dateKey: 'gameMessages.preseason'
@@ -1425,7 +1453,7 @@ function gameReducer(state, action) {
               usedNames.add(targetPlayer.name);
 
               preseasonMessages.push({
-                id: Date.now() + Math.random(), type: 'offer',
+                id: Date.now().toString(36) + Math.random().toString(36).slice(2), type: 'offer',
                 titleKey: 'gameMessages.newOfferReceived',
                 contentKey: 'gameMessages.offerContent', contentParams: { buyer: buyer.name, amount: formatTransferPrice(offerAmt), player: targetPlayer.name },
                 dateKey: 'gameMessages.preseason'
@@ -1455,7 +1483,7 @@ function gameReducer(state, action) {
         if (!targetTeam || !targetPlayer) {
           preseasonMoneyReturned += offer.amount;
           preseasonOfferMessages.push({
-            id: Date.now() + Math.random(), type: 'transfer',
+            id: Date.now().toString(36) + Math.random().toString(36).slice(2), type: 'transfer',
             titleKey: 'gameMessages.offerCancelled', titleParams: { player: offer.playerName },
             contentKey: 'gameMessages.playerUnavailableRefund', contentParams: { player: offer.playerName, amount: formatTransferPrice(offer.amount) },
             dateKey: 'gameMessages.preseason'
@@ -1533,7 +1561,7 @@ function gameReducer(state, action) {
         const icon = bothAccepted ? '✅' : clubResponse === 'countered' ? '🔄' : '❌';
 
         preseasonOfferMessages.push({
-          id: Date.now() + Math.random(), type: 'transfer',
+          id: Date.now().toString(36) + Math.random().toString(36).slice(2), type: 'transfer',
           titleKey: bothAccepted ? 'gameMessages.transferComplete' : 'gameMessages.offerResponse',
           titleParams: { player: offer.playerName, icon },
           contentKey: bothAccepted ? 'gameMessages.transferCompleteContent' : 'gameMessages.offerRejectedContent',
@@ -1674,13 +1702,20 @@ function gameReducer(state, action) {
         );
       }
 
-      // Sponsorship weekly income based on facility level
+      // Commercial weekly income: base by tier + flat facility bonus (same for all tiers)
       const sponsorLevel = state.facilities?.sponsorship || 0;
-      const baseSponsorIncome = [0, 25000, 70000, 140000, 235000][sponsorLevel] || 0;
-      // Scale by league tier - use facility cost multiplier for consistency
-      const sponsorMult = { laliga: 1.0, premierLeague: 1.2, serieA: 0.85, bundesliga: 0.9, ligue1: 0.8, segunda: 0.4, primeraRFEF: 0.15, segundaRFEF: 0.08 }[state.playerLeagueId] || 0.5;
+      const baseCommercial = getBaseCommercialIncome(state.leagueId);
+      const facilityBonus = [0, 8000, 53000, 158000, 316000, 527000][sponsorLevel] || 0;
       const glorySponsorMult = state.gloryData?.sponsorMultiplier || 1;
-      const sponsorWeeklyIncome = Math.round(baseSponsorIncome * sponsorMult * glorySponsorMult);
+      const sponsorWeeklyIncome = Math.round((baseCommercial + facilityBonus) * glorySponsorMult);
+      
+      // Events service income (perWeek type) — accumulated for season end
+      let eventsWeeklyIncome = 0;
+      const eventsLevel = state.stadium?.services?.events || 0;
+      if (eventsLevel > 0) {
+        const eventsRates = [0, 12000, 30000, 55000];
+        eventsWeeklyIncome = eventsRates[eventsLevel] || 0;
+      }
       const totalIncome = sponsorWeeklyIncome;
 
       // Salaries are NOT deducted weekly â€" they are paid at end of season
@@ -1835,7 +1870,7 @@ function gameReducer(state, action) {
         // Calculate season tickets based on price and team quality (mirrors Stadium UI logic)
         const stCapacity = state.stadium?.realCapacity || 8000;
         const stMaxSeasonTickets = Math.floor(stCapacity * 0.8);
-        const stPrice = state.stadium?.seasonTicketPrice ?? 400;
+        const stPrice = state.stadium?.seasonTicketPrice ?? getBaseSeasonTicketPrice(state.leagueId);
         const stTeamPlayers = state.team?.players || [];
         const stTeamOvr = stTeamPlayers.length > 0 ? stTeamPlayers.reduce((s, p) => s + (p.overall || 70), 0) / stTeamPlayers.length : 70;
         const stRep = state.team?.reputation || 70;
@@ -1856,10 +1891,20 @@ function gameReducer(state, action) {
       }
 
       // Update stadium state
+      // Accumulate events (perWeek) service income each week
+      const eventsServiceUpdate = eventsWeeklyIncome > 0 ? {
+        accumulatedServicesIncome: (state.stadium?.accumulatedServicesIncome ?? 0) + eventsWeeklyIncome,
+        accumulatedServicesBreakdown: {
+          ...(state.stadium?.accumulatedServicesBreakdown || { catering: 0, merchandise: 0, parking: 0, events: 0, vip: 0 }),
+          events: ((state.stadium?.accumulatedServicesBreakdown?.events) || 0) + eventsWeeklyIncome
+        }
+      } : {};
+
       const updatedStadium = state.stadium ? {
         ...state.stadium,
         grassCondition: newGrassCondition,
-        ...stadiumCampaignUpdates
+        ...stadiumCampaignUpdates,
+        ...eventsServiceUpdate
       } : state.stadium;
 
       // ============================================================
@@ -1900,7 +1945,7 @@ function gameReducer(state, action) {
             // Solo crear notificación si involucra al equipo del jugador
             if (t.from?.id === state.teamId || t.to?.id === state.teamId) {
               newTransferMessages.push({
-                id: Date.now() + Math.random(),
+                id: Date.now().toString(36) + Math.random().toString(36).slice(2),
                 type: 'transfer',
                 titleKey: 'gameMessages.transferConfirmed',
                 contentKey: 'gameMessages.transferConfirmedContent', contentParams: { player: t.player.name, position: t.player.position, overall: t.player.overall, toTeam: t.to.name, fromTeam: t.from.name, price: formatTransferPrice(t.price) },
@@ -1938,6 +1983,8 @@ function gameReducer(state, action) {
       // In practice this works fine because we don't use strict mode double-invoke
       // and the game state is not replayed. Skipping refactor for now.
       const isBatchMode = action._batchMode || false;
+      // NOTE: state.leagueTeams below may be stale when called from ADVANCE_WEEKS_BATCH,
+      // but this only affects AI transfer offers which is acceptable. (#19)
       const isPreseason = state.preseasonPhase || false;
       // Pretemporada: 50% chance, temporada normal: 15% chance
       const offerChance = isPreseason ? 0.50 : 0.15;
@@ -1995,7 +2042,7 @@ function gameReducer(state, action) {
             usedNames.add(targetPlayer.name);
 
             newTransferMessages.push({
-              id: Date.now() + Math.random(),
+              id: Date.now().toString(36) + Math.random().toString(36).slice(2),
               type: 'offer',
               titleKey: 'gameMessages.newOfferReceived',
               contentKey: 'gameMessages.offerContent', contentParams: { buyer: buyer.name, amount: formatTransferPrice(offerAmount), player: targetPlayer.name },
@@ -2045,7 +2092,7 @@ function gameReducer(state, action) {
               });
 
               newTransferMessages.push({
-                id: Date.now() + Math.random(),
+                id: Date.now().toString(36) + Math.random().toString(36).slice(2),
                 type: 'offer',
                 titleKey: 'gameMessages.newOfferReceived',
                 contentKey: 'gameMessages.offerContent', contentParams: { buyer: buyer.name, amount: formatTransferPrice(offerAmount), player: targetPlayer.name },
@@ -2117,7 +2164,7 @@ function gameReducer(state, action) {
             newIncomingOffers.push(listedOffer);
 
             newTransferMessages.push({
-              id: Date.now() + Math.random(),
+              id: Date.now().toString(36) + Math.random().toString(36).slice(2),
               type: 'offer',
               titleKey: 'gameMessages.offerForListedPlayer',
               contentKey: 'gameMessages.offerContent', contentParams: { buyer: buyer.name, amount: formatTransferPrice(offerAmt), player: listedPlayer.name },
@@ -2135,7 +2182,7 @@ function gameReducer(state, action) {
       if (expiredIncoming.length > 0) {
         expiredIncoming.forEach(o => {
           expiredIncomingMessages.push({
-            id: Date.now() + Math.random(), type: 'offer',
+            id: Date.now().toString(36) + Math.random().toString(36).slice(2), type: 'offer',
             titleKey: 'gameMessages.offerExpired',
             contentKey: 'gameMessages.offerExpiredContent', contentParams: { team: o.fromTeam, player: o.player?.name },
             dateKey: 'gameMessages.weekDate', dateParams: { week: nextWeek }
@@ -2211,7 +2258,7 @@ function gameReducer(state, action) {
             // BUT only if player doesn't have a pending match this matchday
             if (phaseInfo.matchday === 8 && updatedState.currentMatchday >= 8 && !playerMatch) {
               const advanced = advanceEuropeanPhase(updatedState, state.teamId);
-              updatedEuropean.competitions[compId] = advanced.updatedState;
+              updatedEuropean = { ...updatedEuropean, competitions: { ...updatedEuropean.competitions, [compId]: advanced.updatedState } };
               europeanMessages.push(...advanced.messages);
               if (advanced.playerMatch) {
                 pendingEuropeanMatch = {
@@ -2251,7 +2298,7 @@ function gameReducer(state, action) {
 
       // Format European messages
       const formattedEuropeanMessages = europeanMessages.map(m => ({
-        id: Date.now() + Math.random(),
+        id: Date.now().toString(36) + Math.random().toString(36).slice(2),
         type: m.type || 'european',
         ...(m.titleKey ? { titleKey: m.titleKey, titleParams: m.titleParams } : { title: m.title }),
         ...(m.contentKey ? { contentKey: m.contentKey, contentParams: m.contentParams } : { content: m.content }),
@@ -2328,7 +2375,7 @@ function gameReducer(state, action) {
       }
 
       const formattedSAMessages = saMessages.map(m => ({
-        id: Date.now() + Math.random(),
+        id: Date.now().toString(36) + Math.random().toString(36).slice(2),
         type: m.type || 'southamerican',
         ...(m.titleKey ? { titleKey: m.titleKey, titleParams: m.titleParams } : { title: m.title }),
         ...(m.contentKey ? { contentKey: m.contentKey, contentParams: m.contentParams } : { content: m.content }),
@@ -2381,7 +2428,7 @@ function gameReducer(state, action) {
             );
             if (playerHadBye) {
               cupMessages.push({
-                id: Date.now() + Math.random(),
+                id: Date.now().toString(36) + Math.random().toString(36).slice(2),
                 type: 'cup',
                 titleKey: 'gameMessages.cupByeTitle', titleParams: { icon: updatedCupCompetition.config?.icon || '🏆', cup: updatedCupCompetition.config?.shortName || 'Cup' },
                 contentKey: 'gameMessages.cupByeContent',
@@ -2397,7 +2444,7 @@ function gameReducer(state, action) {
               ? state.team?.name
               : (finalMatch?.homeTeam?.name || finalMatch?.awayTeam?.name || '???');
             cupMessages.push({
-              id: Date.now() + Math.random(),
+              id: Date.now().toString(36) + Math.random().toString(36).slice(2),
               type: 'cup',
               titleKey: 'gameMessages.cupFinishedTitle', titleParams: { icon: updatedCupCompetition.config?.icon || '🏆', cup: updatedCupCompetition.config?.name || 'Cup' },
               contentKey: updatedCupCompetition.winner === state.teamId ? 'gameMessages.cupWonContent' : 'gameMessages.cupWonByOther',
@@ -2486,7 +2533,7 @@ function gameReducer(state, action) {
             }];
           }
           loanExpiryMessages.push({
-            id: Date.now() + Math.random(),
+            id: Date.now().toString(36) + Math.random().toString(36).slice(2),
             type: 'loan',
             titleKey: 'gameMessages.loanExpired',
             contentKey: 'gameMessages.loanExpiredContent',
@@ -2514,7 +2561,7 @@ function gameReducer(state, action) {
           updatedIncomingLoanOffers = [...updatedIncomingLoanOffers, ...newLoanOffers];
           newLoanOffers.forEach(offer => {
             loanOfferMessages.push({
-              id: Date.now() + Math.random(),
+              id: Date.now().toString(36) + Math.random().toString(36).slice(2),
               type: 'loan',
               titleKey: 'gameMessages.loanOfferReceived',
               contentKey: 'gameMessages.loanOfferContent', contentParams: { team: offer.toTeamName, player: offer.playerData.name, fee: `€${(offer.loanFee / 1_000_000).toFixed(1)}M` },
@@ -2569,11 +2616,15 @@ function gameReducer(state, action) {
       const hadEuropeanThisWeek = state.europeanCompetitions && isEuropeanWeekDynamic(state.currentWeek, state.europeanCalendar);
       const hadSAThisWeek = state.saCompetitions && isEuropeanWeekDynamic(state.currentWeek, state.europeanCalendar);
       const hadAnyMatchThisWeek = hadLeagueMatchThisWeek || hadCupThisWeek || hadEuropeanThisWeek || hadSAThisWeek;
-      const playedThisWeek = hadAnyMatchThisWeek ? (state.convocados || []) : [];
+      // Separate starters (lineup) from bench (convocados minus lineup)
+      const lineupNames = hadAnyMatchThisWeek ? Object.values(state.lineup || {}).map(s => s?.name).filter(Boolean) : [];
+      const convocadoNames = hadAnyMatchThisWeek ? (state.convocados || []) : [];
+      const benchNames = convocadoNames.filter(n => !lineupNames.includes(n));
       const updatedTracker = updateMatchTracker(
         state.matchTracker || {},
         state.team?.players || [],
-        playedThisWeek
+        lineupNames,
+        benchNames
       );
 
       // Tick rejected transfer penalties
@@ -2737,7 +2788,7 @@ function gameReducer(state, action) {
           if (offer.status === 'resolved' && offer.clubResponse === 'countered' && offer.resolvedWeek && nextWeek - offer.resolvedWeek > 2) {
             moneyReturned += offer.amount;
             offerMessages.push({
-              id: Date.now() + Math.random(), type: 'transfer',
+              id: Date.now().toString(36) + Math.random().toString(36).slice(2), type: 'transfer',
               titleKey: 'gameMessages.counterOfferExpired', titleParams: { player: offer.playerName },
               contentKey: 'gameMessages.counterOfferExpiredContent', contentParams: { player: offer.playerName, amount: formatTransferPrice(offer.amount) },
               dateKey: 'gameMessages.weekDate', dateParams: { week: nextWeek }
@@ -2849,7 +2900,7 @@ function gameReducer(state, action) {
         // Generar mensaje
         const icon = bothAccepted ? '✅' : clubResponse === 'countered' ? '🔄' : '❌';
         offerMessages.push({
-          id: Date.now() + Math.random(),
+          id: Date.now().toString(36) + Math.random().toString(36).slice(2),
           type: 'transfer',
           titleKey: bothAccepted ? 'gameMessages.transferComplete' : 'gameMessages.offerResponse',
           titleParams: { player: offer.playerName, icon },
@@ -2927,7 +2978,7 @@ function gameReducer(state, action) {
         money: finalMoney,
         weeklyIncome: totalIncome,
         weeklyExpenses: salaryExpenses + loanSalaryCost,
-        team: state.team ? { ...state.team, players: updatedPlayers } : null,
+        team: state.team ? (() => { const suspPlayers = updatedPlayers.filter(p => p.suspended); if (suspPlayers.length > 0) console.log('🔴 ADVANCE_WEEK preserving suspended:', suspPlayers.map(p => `${p.name}(${p.suspensionMatches}p)`)); return { ...state.team, players: updatedPlayers }; })() : null,
         stadium: updatedStadium,
         messages: [...loanExpiryMessages, ...expiredIncomingMessages, ...offerMessages, ...apclFinalMessages, ...cupMessages, ...formattedEuropeanMessages, ...formattedSAMessages, ...newTransferMessages, ...loanOfferMessages, ...aiLoanMessages, ...newMessages, ...state.messages].slice(0, 50),
         outgoingOffers: resolvedOutgoingOffers,
@@ -2983,6 +3034,8 @@ function gameReducer(state, action) {
 
     case 'ADVANCE_WEEKS_BATCH': {
       // Run ADVANCE_WEEK N times in a single reducer call (1 re-render instead of N)
+      // NOTE: Injuries/cards dispatched individually by Office during batch sim may overlap
+      // with ADVANCE_WEEK healing. Office syncs the correct state via SYNC_BATCH_INJURIES after.
       const count = action.payload?.count || 1;
       let currentState = state;
       for (let i = 0; i < count; i++) {
@@ -3080,7 +3133,7 @@ function gameReducer(state, action) {
     }
 
     case 'SELL_PLAYER': {
-      // Minimum squad size check
+      // Minimum squad size check — NOTE: threshold varies across cases (14 here, 15 elsewhere). Minor UX inconsistency. (#21)
       if ((state.team?.players?.length || 0) <= 14) return state;
       const soldPlayerData = state.team?.players?.find(p => p.name === action.payload.playerName);
       const buyerTeamId = action.payload.buyerTeamId;
@@ -3135,6 +3188,7 @@ function gameReducer(state, action) {
     }
 
     case 'UPDATE_STADIUM':
+      if ('naming' in action.payload) console.log('🏟️ UPDATE_STADIUM naming:', JSON.stringify(action.payload.naming));
       return {
         ...state,
         stadium: { ...state.stadium, ...action.payload }
@@ -3489,7 +3543,7 @@ function gameReducer(state, action) {
 
         if (newOffers.length > 0) {
           const offerMsgs = newOffers.map(o => ({
-            id: Date.now() + Math.random(), type: 'offer',
+            id: Date.now().toString(36) + Math.random().toString(36).slice(2), type: 'offer',
             titleKey: 'ranked.offerReceived', titleParams: { team: o.fromTeam, player: listedPlayer.name },
             contentKey: 'ranked.offerAmount', contentParams: { price: formatTransferPrice(o.amount) },
             dateKey: 'gameMessages.ranked'
@@ -3658,16 +3712,20 @@ function gameReducer(state, action) {
     case 'ADD_RED_CARDS': {
       // payload: { cards: [{ playerName: string, reason: string }] }
       // Gladiator perk: immunity to red cards
-      if (state.gloryData?.perks?.gladiator) return state;
+      if (state.gloryData?.perks?.gladiator) { console.log('🔴 ADD_RED_CARDS blocked by gladiator perk'); return state; }
       // Doble amarilla = 1 partido, Roja directa = 2 partidos
       const redCards = action.payload.cards || [];
+      console.log('🔴 ADD_RED_CARDS received:', JSON.stringify(redCards));
       if (redCards.length === 0) return state;
 
       const suspendedNames_red = new Set(redCards.map(c => c.playerName));
+      console.log('🔴 Players to suspend:', [...suspendedNames_red]);
+      console.log('🔴 All player names in roster:', state.team.players.map(p => p.name));
 
       const updatedPlayers = state.team.players.map(p => {
         const card = redCards.find(c => c.playerName === p.name);
         if (!card) return p;
+        console.log('🔴 MATCH FOUND:', p.name, '→ suspended=true, matches=', card.reason === 'Segunda amarilla' ? 1 : 2);
 
         const isDoubleYellow = card.reason === 'Segunda amarilla';
         const matchesBanned = isDoubleYellow ? 1 : 2; // Doble amarilla = 1, Roja directa = 2
@@ -3699,6 +3757,8 @@ function gameReducer(state, action) {
     case 'SERVE_SUSPENSIONS': {
       // Llamar ANTES de cada partido oficial: decrementa 1 partido a cada sancionado
       // Los que llegan a 0 quedan libres
+      const beforeSusp = state.team.players.filter(p => p.suspended);
+      console.log('🔴 SERVE_SUSPENSIONS called. Currently suspended:', beforeSusp.map(p => `${p.name}(${p.suspensionMatches}p, ${p.suspensionType})`));
       const updatedPlayers = state.team.players.map(p => {
         if (!p.suspended || !p.suspensionMatches) return p;
 
@@ -4009,7 +4069,7 @@ function gameReducer(state, action) {
       }] : [];
 
       const fmtAdvanceMessages = advanceMessages.map(m => ({
-        id: Date.now() + Math.random(),
+        id: Date.now().toString(36) + Math.random().toString(36).slice(2),
         type: 'european',
         ...(m.titleKey ? { titleKey: m.titleKey, titleParams: m.titleParams } : { title: m.title }),
         ...(m.contentKey ? { contentKey: m.contentKey, contentParams: m.contentParams } : { content: m.content }),
@@ -4073,7 +4133,7 @@ function gameReducer(state, action) {
       european.competitions[compId] = updatedState;
 
       const fmtMessages = messages.map(m => ({
-        id: Date.now() + Math.random(),
+        id: Date.now().toString(36) + Math.random().toString(36).slice(2),
         type: 'european',
         ...(m.titleKey ? { titleKey: m.titleKey, titleParams: m.titleParams } : { title: m.title }),
         ...(m.contentKey ? { contentKey: m.contentKey, contentParams: m.contentParams } : { content: m.content }),
@@ -4182,7 +4242,7 @@ function gameReducer(state, action) {
       }] : [];
 
       const fmtAdvanceMessages = advanceMessages.map(m => ({
-        id: Date.now() + Math.random(),
+        id: Date.now().toString(36) + Math.random().toString(36).slice(2),
         type: 'southamerican',
         ...(m.titleKey ? { titleKey: m.titleKey, titleParams: m.titleParams } : { title: m.title }),
         ...(m.contentKey ? { contentKey: m.contentKey, contentParams: m.contentParams } : { content: m.content }),
@@ -4483,7 +4543,7 @@ function gameReducer(state, action) {
 
       // Formatear mensajes
       const formattedMessages = loanMessages.map(m => ({
-        id: Date.now() + Math.random(),
+        id: Date.now().toString(36) + Math.random().toString(36).slice(2),
         type: m.type,
         ...(m.titleKey ? { titleKey: m.titleKey, titleParams: m.titleParams } : { title: m.title }),
         ...(m.contentKey ? { contentKey: m.contentKey, contentParams: m.contentParams } : { content: m.content }),
@@ -4763,7 +4823,7 @@ export function GameProvider({ children }) {
     return 'save_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
   };
 
-  // Save game - always Firebase
+  // Save game - always Firebase (single career save)
   const saveGame = async () => {
     if (!state.gameStarted) return;
     if (state.gameMode === 'contrarreloj') return; // Contrarreloj uses its own auto-save
@@ -4773,50 +4833,35 @@ export function GameProvider({ children }) {
     const userId = auth.currentUser?.uid || state.userId;
     if (!userId) return;
 
-    const { leagueTeams, otherLeagues, ...compactState } = state;
-    
-    // Always save to a slot so SaveSlots can find it
-    const slotIndex = state._saveSlotIndex ?? 0;
-    const saveId = `${userId}_slot_${slotIndex}`;
-    const saveData = {
-      ...compactState,
-      saveId,
-      userId,
-      slotIndex,
-      lastSaved: new Date().toISOString(),
-      summary: {
-        teamName: state.team?.name || 'Desconocido',
-        teamId: state.teamId,
-        season: state.currentSeason || 1,
-        week: state.currentWeek || 1,
-        money: state.money || 0,
-        gameMode: state.gameMode || 'career',
-      }
-    };
-
-    // Strip undefined values (Firebase rejects them)
-    const cleanSave = JSON.parse(JSON.stringify(saveData));
-
     try {
-      await setDoc(doc(db, 'saves', saveId), cleanSave);
-      // Remember slot for future saves
-      if (state._saveSlotIndex === undefined) {
-        dispatch({ type: 'SET_SAVE_SLOT', payload: slotIndex });
+      if (state.gameMode === 'promanager') {
+        await saveProManager(userId, state);
+        console.log('☁️ ProManager saved!');
+      } else {
+        const { saveCareer } = await import('../firebase/careerSaveService');
+        await saveCareer(userId, state);
+        console.log('☁️ Career saved!');
       }
-      console.log(`☁️ Game saved to slot ${slotIndex}!`);
     } catch (error) {
       console.error('Error saving game:', error);
     }
   };
 
-  // Load game from Firestore
+  // Load game from Firestore (career_saves collection)
   const loadGame = async (saveId) => {
     try {
-      const docRef = doc(db, 'saves', saveId);
-      const docSnap = await getDoc(docRef);
-
-      if (docSnap.exists()) {
-        dispatch({ type: 'LOAD_SAVE', payload: docSnap.data() });
+      // Try career_saves first, fall back to legacy saves collection
+      const careerRef = doc(db, 'career_saves', saveId);
+      const careerSnap = await getDoc(careerRef);
+      if (careerSnap.exists()) {
+        dispatch({ type: 'LOAD_SAVE', payload: careerSnap.data() });
+        return true;
+      }
+      // Fallback: legacy saves collection
+      const legacyRef = doc(db, 'saves', saveId);
+      const legacySnap = await getDoc(legacyRef);
+      if (legacySnap.exists()) {
+        dispatch({ type: 'LOAD_SAVE', payload: legacySnap.data() });
         return true;
       }
       return false;
@@ -4841,6 +4886,13 @@ export function GameProvider({ children }) {
             dispatch({ type: 'UPDATE_SETTINGS', payload: saved });
           }
         }
+        // Check premium status (remove ads purchase)
+        try {
+          const { checkPremiumStatus } = await import('../services/purchaseService');
+          const isPremium = await checkPremiumStatus();
+          if (isPremium) dispatch({ type: 'SET_PREMIUM', payload: true });
+        } catch (e) { /* not native, ignore */ }
+
         // Sync manager name: Firestore > Auth displayName > random default
         try {
           const profileDoc = await getDoc(doc(db, 'user_profiles', uid));
@@ -4908,11 +4960,8 @@ export function GameProvider({ children }) {
     if (contrarrelojSaveRef.current) clearTimeout(contrarrelojSaveRef.current);
     contrarrelojSaveRef.current = setTimeout(() => {
       const saveData = { ...state };
-      delete saveData.loaded;
       delete saveData._contrarrelojUserId;
-      delete saveData.leagueTeams;
-      delete saveData.otherLeagues;
-
+      // Heavy fields stripped in contrarrelojSaveService.saveContrarreloj
       saveContrarreloj(state._contrarrelojUserId, saveData)
         .then(() => console.log('⏱️ Contrarreloj auto-saved to Firebase'))
         .catch(err => console.error('Error auto-saving contrarreloj:', err));
@@ -4963,7 +5012,9 @@ export function GameProvider({ children }) {
   const proManagerSaveRef = useRef(null);
   useEffect(() => {
     if (state.gameMode !== 'promanager' || !state.gameStarted || !state._proManagerUserId) return;
-    if (state.proManagerData?.finished) {
+    // NOTE: proManagerData.finished is currently never set (#20). The managerFired state
+    // handles ProManager game-over. This guard is defensive for future use.
+    if (state.proManagerData?.finished || state.managerFired) {
       deleteProManagerSave(state._proManagerUserId).catch(() => {});
       return;
     }
@@ -5040,6 +5091,14 @@ export function GameProvider({ children }) {
   // SAVE ON APP CLOSE / BACKGROUND (visibilitychange + Capacitor pause)
   // Uses stateRef to always have the latest state
   // ============================================================
+  // Pre-import save modules so they're ready synchronously on beforeunload
+  const careerSaveRef = useRef(null);
+  const capacitorAppRef = useRef(null);
+  useEffect(() => {
+    import('../firebase/careerSaveService').then(mod => { careerSaveRef.current = mod; }).catch(() => {});
+    import('@capacitor/app').then(mod => { capacitorAppRef.current = mod; }).catch(() => {});
+  }, []);
+
   useEffect(() => {
     const saveOnExit = () => {
       const s = stateRef.current;
@@ -5084,25 +5143,11 @@ export function GameProvider({ children }) {
         const freshState = stateRef.current;
         const userId = auth.currentUser?.uid || freshState.userId;
         if (userId) {
-          const { leagueTeams: _lt, otherLeagues: _ol, ...compactExit } = freshState;
-          const slotIndex = freshState._saveSlotIndex ?? 0;
-          const saveId = `${userId}_slot_${slotIndex}`;
-          const exitSaveData = JSON.parse(JSON.stringify({
-            ...compactExit,
-            saveId,
-            userId,
-            slotIndex,
-            lastSaved: new Date().toISOString(),
-            summary: {
-              teamName: freshState.team?.name || 'Desconocido',
-              teamId: freshState.teamId,
-              season: freshState.currentSeason || 1,
-              week: freshState.currentWeek || 1,
-              money: freshState.money || 0,
-              gameMode: freshState.gameMode || 'career',
-            }
-          }));
-          try { setDoc(doc(db, 'saves', saveId), exitSaveData).catch(() => {}); } catch (e) { /* ignore */ }
+          // Use pre-imported careerSaveService (writes to career_saves with stripUndefined)
+          if (careerSaveRef.current) {
+            careerSaveRef.current.saveCareer(userId, freshState).catch(() => {});
+          }
+          console.log('💾 Career save-on-exit triggered (career_saves)');
         }
       }
     };
@@ -5117,11 +5162,19 @@ export function GameProvider({ children }) {
 
     // Capacitor App.pause event (Android background)
     let appListener = null;
-    import('@capacitor/app').then(({ App }) => {
-      App.addListener('pause', saveOnExit).then(l => { appListener = l; }).catch(() => {});
-    }).catch(() => {});
+    let isMounted = true;
+    if (capacitorAppRef.current) {
+      const { App } = capacitorAppRef.current;
+      App.addListener('pause', saveOnExit).then(l => { if (isMounted) appListener = l; else l.remove(); }).catch(() => {});
+    } else {
+      import('@capacitor/app').then(({ App }) => {
+        if (!isMounted) return;
+        App.addListener('pause', saveOnExit).then(l => { if (isMounted) appListener = l; else l.remove(); }).catch(() => {});
+      }).catch(() => {});
+    }
 
     return () => {
+      isMounted = false;
       document.removeEventListener('visibilitychange', handleVisibility);
       window.removeEventListener('beforeunload', saveOnExit);
       window.removeEventListener('pagehide', saveOnExit);

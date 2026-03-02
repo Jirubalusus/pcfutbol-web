@@ -116,11 +116,12 @@ export function calculateMatchStrength(team, formation, tactic, context = {}) {
     customLineup = null, // Lineup personalizado del jugador
     attendanceFillRate = 0.7, // Ocupación del estadio
     playerForm = {},     // Player form data
-    grassCondition = 100 // Estado del césped (0-100)
+    grassCondition = 100, // Estado del césped (0-100)
+    benchPlayers = null  // Convocados no titulares (banquillo)
   } = context;
   
-  // Base: media del 11 titular (usando lineup custom si disponible)
-  const strength = calculateTeamStrength(team, formation, tactic, morale, customLineup, playerForm);
+  // Base: media del 11 titular + bench contribution (usando lineup custom si disponible)
+  const strength = calculateTeamStrength(team, formation, tactic, morale, customLineup, playerForm, benchPlayers);
   const baseRating = strength.effectiveOverall || strength.overall || 70;
   
   // Perfil de equipo: mezcla reputación con calidad real de plantilla
@@ -211,7 +212,8 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
     playerTeamForm = {},
     playerTeamId = null,
     medicalPrevention = 0,
-    playerIsHome = null
+    playerIsHome = null,
+    playerBenchPlayers = null
   } = context;
   
   // Use form data from context (set by leagueEngine), or fallback to playerTeamForm for backward compat
@@ -226,7 +228,8 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
     customLineup: homeLineup,
     attendanceFillRate,
     grassCondition,
-    playerForm: homeForm
+    playerForm: homeForm,
+    benchPlayers: playerIsHome === true ? playerBenchPlayers : null
   });
   
   const awayStrength = calculateMatchStrength(awayTeamData, awayFormation, awayTactic, {
@@ -234,7 +237,8 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
     isHome: false,
     seasonMomentum: awaySeasonMomentum,
     customLineup: awayLineup,
-    playerForm: awayForm
+    playerForm: awayForm,
+    benchPlayers: playerIsHome === false ? playerBenchPlayers : null
   });
   
   // Bonus por matchup táctico (piedra-papel-tijera)
@@ -347,6 +351,9 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
     }
   }
 
+  // ── MOTM (Man of the Match) calculation ──
+  const motm = calculateMOTM(events, finalHomeScore, finalAwayScore, homeTeamData, awayTeamData);
+
   return {
     homeScore: finalHomeScore,
     awayScore: finalAwayScore,
@@ -354,6 +361,7 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
     penalties,
     events,
     stats,
+    motm,
     debug: {
       homeRating: homeStrength.rating,
       awayRating: awayStrength.rating,
@@ -362,6 +370,74 @@ export function simulateMatchV2(homeTeamId, awayTeamId, homeTeamData, awayTeamDa
       probabilities: { homeWinProb, drawProb, awayWinProb },
       result: result === 1 ? 'homeWin' : result === 0 ? 'draw' : 'awayWin'
     }
+  };
+}
+
+/**
+ * Calculate Man of the Match from events
+ */
+function calculateMOTM(events, homeScore, awayScore, homeTeamData, awayTeamData) {
+  const scores = {};
+  const playerMeta = {}; // track goals, assists per player
+
+  for (const e of events) {
+    const pName = typeof e.player === 'object' ? e.player?.name : e.player;
+    if (!pName) continue;
+    const key = `${e.team}::${pName}`;
+    if (!scores[key]) scores[key] = 0;
+    if (!playerMeta[key]) playerMeta[key] = { name: pName, team: e.team, goals: 0, assists: 0 };
+
+    if (e.type === 'goal') { scores[key] += 3; playerMeta[key].goals++; }
+    if (e.type === 'yellow_card') scores[key] -= 1;
+    if (e.type === 'red_card') scores[key] -= 3;
+
+    // Assists
+    if (e.type === 'goal' && e.assist) {
+      const aName = typeof e.assist === 'object' ? e.assist?.name : e.assist;
+      if (aName) {
+        const aKey = `${e.team}::${aName}`;
+        if (!scores[aKey]) scores[aKey] = 0;
+        if (!playerMeta[aKey]) playerMeta[aKey] = { name: aName, team: e.team, goals: 0, assists: 0 };
+        scores[aKey] += 2;
+        playerMeta[aKey].assists++;
+      }
+    }
+  }
+
+  // Clean sheet bonus for GK (approximate: if team conceded 0)
+  const addGKBonus = (teamData, team, conceded) => {
+    if (conceded === 0 && teamData?.players?.length) {
+      const gk = teamData.players.find(p => p.position === 'GK' || p.position === 'POR');
+      if (gk) {
+        const key = `${team}::${gk.name}`;
+        if (!scores[key]) scores[key] = 0;
+        if (!playerMeta[key]) playerMeta[key] = { name: gk.name, team, goals: 0, assists: 0 };
+        scores[key] += 2;
+      }
+    }
+  };
+  addGKBonus(homeTeamData, 'home', awayScore);
+  addGKBonus(awayTeamData, 'away', homeScore);
+
+  // Pick best
+  let bestKey = null;
+  let bestScore = -Infinity;
+  for (const [key, score] of Object.entries(scores)) {
+    if (score > bestScore) { bestScore = score; bestKey = key; }
+  }
+
+  if (!bestKey || bestScore <= 0) return null;
+
+  const meta = playerMeta[bestKey];
+  // Rating: base 7.0 + 0.3 per point, capped at 10
+  const rating = Math.min(10, +(7.0 + bestScore * 0.3).toFixed(1));
+
+  return {
+    name: meta.name,
+    team: meta.team,
+    goals: meta.goals,
+    assists: meta.assists,
+    rating
   };
 }
 
@@ -569,19 +645,44 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
   // Añadir tarjetas (2-4 amarillas, 0-1 rojas)
   const yellowCount = 2 + Math.floor(Math.random() * 3);
   const strictness = referee === 'strict' ? 1.5 : referee === 'lenient' ? 0.6 : 1;
+  const playersWithYellow = new Set(); // Track players who already have a yellow
   
   for (let i = 0; i < Math.floor(yellowCount * strictness); i++) {
     const isHome = Math.random() > 0.5;
     const team = isHome ? homeTeam : awayTeam;
-    events.push({
-      type: 'yellow_card',
-      team: isHome ? 'home' : 'away',
-      minute: Math.floor(Math.random() * 90) + 1,
-      player: selectRandomPlayer(team)
-    });
+    const teamLabel = isHome ? 'home' : 'away';
+    const player = selectRandomPlayer(team);
+    const playerKey = `${teamLabel}-${player}`;
+    const minute = Math.floor(Math.random() * 90) + 1;
+    
+    if (playersWithYellow.has(playerKey)) {
+      // Second yellow → red card (double yellow)
+      events.push({
+        type: 'yellow_card',
+        team: teamLabel,
+        minute,
+        player
+      });
+      events.push({
+        type: 'red_card',
+        team: teamLabel,
+        minute,
+        player,
+        isSecondYellow: true,
+        reason: 'Segunda amarilla'
+      });
+    } else {
+      playersWithYellow.add(playerKey);
+      events.push({
+        type: 'yellow_card',
+        team: teamLabel,
+        minute,
+        player
+      });
+    }
   }
   
-  // Rojas: cada equipo tiene ~18% de probabilidad por partido (~7/temporada, realista)
+  // Rojas directas: cada equipo tiene ~18% de probabilidad por partido (~7/temporada, realista)
   [homeTeam, awayTeam].forEach((team, idx) => {
     const teamLabel = idx === 0 ? 'home' : 'away';
     if (Math.random() < 0.18 * strictness) {
@@ -589,7 +690,8 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
         type: 'red_card',
         team: teamLabel,
         minute: 25 + Math.floor(Math.random() * 60),
-        player: selectRandomPlayer(team)
+        player: selectRandomPlayer(team),
+        isSecondYellow: false
       });
     }
   });

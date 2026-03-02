@@ -6,6 +6,7 @@ import { getLeagueTable, LEAGUE_CONFIG, initializeOtherLeagues, simulateOtherLea
 import { sortTable } from '../../game/leagueEngine';
 import { useTranslation } from 'react-i18next';
 import CustomSelect from '../common/CustomSelect/CustomSelect';
+import TeamCrest from '../TeamCrest/TeamCrest';
 import './LeagueTable.scss';
 
 // Configuración de zonas por liga
@@ -744,9 +745,7 @@ export default function LeagueTable() {
                       <span className={`pos-badge ${zone}`}>{position}</span>
                     </span>
                     <span className="col-team">
-                      <span className="team-badge">
-                        {getTeamInitials(team.teamName)}
-                      </span>
+                      <TeamCrest teamId={team.teamId} size={20} />
                       <span className="team-info">
                         <span className="team-name">{team.teamName}</span>
                       </span>
@@ -798,9 +797,7 @@ export default function LeagueTable() {
                               <span className={`pos-badge ${getZone(pos)}`}>{pos}</span>
                             </span>
                             <span className="col-team">
-                              <span className="team-badge">
-                                {getTeamInitials(team.teamName)}
-                              </span>
+                              <TeamCrest teamId={team.teamId} size={20} />
                               <span className="team-name">{team.teamName}</span>
                             </span>
                             <span className="col-pj">{team.played || 0}</span>

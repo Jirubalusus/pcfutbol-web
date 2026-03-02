@@ -1,0 +1,1077 @@
+{
+  "1-fsv-mainz-05": {
+    "primary": "#c3002f",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "ac-milan": {
+    "primary": "#fb090b",
+    "secondary": "#000000",
+    "pattern": "stripes"
+  },
+  "academia-fc": {
+    "primary": "#009e49",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "afc-bournemouth": {
+    "primary": "#da291c",
+    "secondary": "#000000",
+    "pattern": "stripes"
+  },
+  "alaves_b": {
+    "primary": "#003da5",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "alb-laliga2": {
+    "primary": "#ffffff",
+    "secondary": "#e53027",
+    "pattern": "solid"
+  },
+  "alianza-united": {
+    "primary": "#003da5",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "alm-laliga2": {
+    "primary": "#e53027",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "always-ready-club": {
+    "primary": "#e53027",
+    "secondary": "#000000",
+    "pattern": "solid"
+  },
+  "america-real": {
+    "primary": "#e53027",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "antequera_cf": {
+    "primary": "#003da5",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "argentinos-juniors": {
+    "primary": "#e53027",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "arsenal": {
+    "primary": "#ef0107",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "as-monaco": {
+    "primary": "#e7192e",
+    "secondary": "#ffffff",
+    "pattern": "diagonal"
+  },
+  "aston-villa": {
+    "primary": "#670e36",
+    "secondary": "#95bfe5",
+    "pattern": "solid"
+  },
+  "atalanta": {
+    "primary": "#1e71b8",
+    "secondary": "#000000",
+    "pattern": "stripes"
+  },
+  "athletic-club": {
+    "primary": "#ee2523",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "atletico-madrid": {
+    "primary": "#cb3524",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "atletico-mineiro": {
+    "primary": "#000000",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "atletico-sc": {
+    "primary": "#009e49",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "atletico-tucuman": {
+    "primary": "#003da5",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "bahia": {
+    "primary": "#003da5",
+    "secondary": "#e53027",
+    "pattern": "stripes"
+  },
+  "banda-oriental-atletico": {
+    "primary": "#ffd700",
+    "secondary": "#009e49",
+    "pattern": "solid"
+  },
+  "barca_atletic": {
+    "primary": "#a50044",
+    "secondary": "#004d98",
+    "pattern": "stripes"
+  },
+  "barracas-central": {
+    "primary": "#e53027",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "barranquilla-athletic": {
+    "primary": "#e53027",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "bayer-04-leverkusen": {
+    "primary": "#e32221",
+    "secondary": "#000000",
+    "pattern": "solid"
+  },
+  "belgrano-de-cordoba": {
+    "primary": "#87ceeb",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "betis_deportivo": {
+    "primary": "#00954c",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "bilbao_athletic": {
+    "primary": "#ee2523",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "blooming-sport": {
+    "primary": "#003da5",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "boca-juniors": {
+    "primary": "#003da5",
+    "secondary": "#ffd700",
+    "pattern": "horiz"
+  },
+  "bolivar-fc": {
+    "primary": "#003da5",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "bologna": {
+    "primary": "#1a2f68",
+    "secondary": "#a21c26",
+    "pattern": "stripes"
+  },
+  "borussia-dortmund": {
+    "primary": "#fde100",
+    "secondary": "#000000",
+    "pattern": "solid"
+  },
+  "borussia-monchengladbach": {
+    "primary": "#000000",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "botafogo": {
+    "primary": "#000000",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "brentford": {
+    "primary": "#e30613",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "brighton-hove-albion": {
+    "primary": "#0057b8",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "bucaramanga-real": {
+    "primary": "#ffd700",
+    "secondary": "#009e49",
+    "pattern": "solid"
+  },
+  "bur-laliga2": {
+    "primary": "#000000",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "burgos_promesas": {
+    "primary": "#000000",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "ca-aldosivi": {
+    "primary": "#009e49",
+    "secondary": "#ffd700",
+    "pattern": "solid"
+  },
+  "ca-banfield": {
+    "primary": "#009e49",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "ca-osasuna": {
+    "primary": "#d91a21",
+    "secondary": "#00275e",
+    "pattern": "solid"
+  },
+  "cad-laliga2": {
+    "primary": "#ffe400",
+    "secondary": "#003da5",
+    "pattern": "solid"
+  },
+  "cali-cf": {
+    "primary": "#009e49",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "carabobo-fc": {
+    "primary": "#8b0000",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "caracas-club": {
+    "primary": "#e53027",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "cas-laliga2": {
+    "primary": "#000000",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "cd_castellon_b": {
+    "primary": "#000000",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "cd_ebro": {
+    "primary": "#003da5",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "cd_eldense": {
+    "primary": "#003da5",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "cd_numancia": {
+    "primary": "#009e49",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "cd_tenerife": {
+    "primary": "#003da5",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "cd_tudelano": {
+    "primary": "#e53027",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "celta_fortuna": {
+    "primary": "#8ac3ee",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "central-cordoba-sde": {
+    "primary": "#000000",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "cerro-sc": {
+    "primary": "#003da5",
+    "secondary": "#e53027",
+    "pattern": "solid"
+  },
+  "cf_intercity": {
+    "primary": "#e53027",
+    "secondary": "#000000",
+    "pattern": "solid"
+  },
+  "cf_talavera": {
+    "primary": "#003da5",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "chelsea": {
+    "primary": "#034694",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "club-atletico-sarmiento": {
+    "primary": "#009e49",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "club-atletico-union": {
+    "primary": "#e53027",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "concepcion-club": {
+    "primary": "#ffffff",
+    "secondary": "#000000",
+    "pattern": "solid"
+  },
+  "coquimbo-united": {
+    "primary": "#ffd700",
+    "secondary": "#000000",
+    "pattern": "solid"
+  },
+  "cor-laliga2": {
+    "primary": "#009e49",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "corinthians": {
+    "primary": "#000000",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "cristal-fc": {
+    "primary": "#87ceeb",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "cruzeiro": {
+    "primary": "#003da5",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "crystal-palace": {
+    "primary": "#1b458f",
+    "secondary": "#c4122e",
+    "pattern": "stripes"
+  },
+  "cusco-club": {
+    "primary": "#ffd700",
+    "secondary": "#003da5",
+    "pattern": "solid"
+  },
+  "defensa-y-justicia": {
+    "primary": "#009e49",
+    "secondary": "#ffd700",
+    "pattern": "solid"
+  },
+  "defensor-athletic": {
+    "primary": "#6b1f6e",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "dep-laliga2": {
+    "primary": "#003da5",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "depor_fabril": {
+    "primary": "#003da5",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "deportivo-alaves": {
+    "primary": "#003da5",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "deportivo-athletic": {
+    "primary": "#ffa500",
+    "secondary": "#000000",
+    "pattern": "solid"
+  },
+  "deportivo-riestra": {
+    "primary": "#e53027",
+    "secondary": "#000000",
+    "pattern": "solid"
+  },
+  "eib-laliga2": {
+    "primary": "#8c1d40",
+    "secondary": "#003da5",
+    "pattern": "stripes"
+  },
+  "eintracht-frankfurt": {
+    "primary": "#000000",
+    "secondary": "#e1000f",
+    "pattern": "solid"
+  },
+  "elche-cf": {
+    "primary": "#009e49",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "esmeraldas-club": {
+    "primary": "#ffd700",
+    "secondary": "#000000",
+    "pattern": "solid"
+  },
+  "estudiantes-de-la-plata": {
+    "primary": "#e53027",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "everton": {
+    "primary": "#003399",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "fc-barcelona": {
+    "primary": "#a50044",
+    "secondary": "#004d98",
+    "pattern": "stripes"
+  },
+  "fc-bayern-munchen": {
+    "primary": "#dc052d",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "fc-nantes": {
+    "primary": "#fce500",
+    "secondary": "#009e49",
+    "pattern": "solid"
+  },
+  "fc_cartagena": {
+    "primary": "#000000",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "fiorentina": {
+    "primary": "#482e92",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "flamengo": {
+    "primary": "#e53027",
+    "secondary": "#000000",
+    "pattern": "horiz"
+  },
+  "fluminense": {
+    "primary": "#8b0000",
+    "secondary": "#009e49",
+    "pattern": "horiz"
+  },
+  "fortaleza": {
+    "primary": "#ffffff",
+    "secondary": "#000000",
+    "pattern": "solid"
+  },
+  "fulham-fc": {
+    "primary": "#ffffff",
+    "secondary": "#000000",
+    "pattern": "solid"
+  },
+  "getafe-cf": {
+    "primary": "#004fa3",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "getafe_cf_b": {
+    "primary": "#004fa3",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "gimnasia-y-esgrima-la-plata": {
+    "primary": "#003da5",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "girona-fc": {
+    "primary": "#cd2534",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "girona_fc_b": {
+    "primary": "#cd2534",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "godoy-cruz": {
+    "primary": "#ffffff",
+    "secondary": "#000000",
+    "pattern": "solid"
+  },
+  "gra-laliga2": {
+    "primary": "#e53027",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "gremio": {
+    "primary": "#003da5",
+    "secondary": "#87ceeb",
+    "pattern": "stripes"
+  },
+  "guabira-fc": {
+    "primary": "#e53027",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "guarani-fc": {
+    "primary": "#ffd700",
+    "secondary": "#000000",
+    "pattern": "stripes"
+  },
+  "hercules_cf": {
+    "primary": "#003da5",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "hue-laliga2": {
+    "primary": "#003da5",
+    "secondary": "#e53027",
+    "pattern": "solid"
+  },
+  "huracan": {
+    "primary": "#ffffff",
+    "secondary": "#003da5",
+    "pattern": "solid"
+  },
+  "ibague-fc": {
+    "primary": "#ffd700",
+    "secondary": "#8b0000",
+    "pattern": "solid"
+  },
+  "independiente": {
+    "primary": "#e53027",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "independiente-fc": {
+    "primary": "#000000",
+    "secondary": "#ffd700",
+    "pattern": "solid"
+  },
+  "independiente-rivadavia": {
+    "primary": "#003da5",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "instituto-atletico-central-cordoba": {
+    "primary": "#e53027",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "inter": {
+    "primary": "#009fe3",
+    "secondary": "#000000",
+    "pattern": "stripes"
+  },
+  "internacional": {
+    "primary": "#e53027",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "ipswich-town": {
+    "primary": "#0044aa",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "juventus": {
+    "primary": "#000000",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "lanus": {
+    "primary": "#8b0000",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "lazio": {
+    "primary": "#87d8f7",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "leicester-city": {
+    "primary": "#003090",
+    "secondary": "#fdbe11",
+    "pattern": "solid"
+  },
+  "levante-ud": {
+    "primary": "#003da5",
+    "secondary": "#e53027",
+    "pattern": "stripes"
+  },
+  "libertad-athletic": {
+    "primary": "#ffffff",
+    "secondary": "#000000",
+    "pattern": "stripes"
+  },
+  "lille-osc": {
+    "primary": "#e53027",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "linares": {
+    "primary": "#003da5",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "liverpool": {
+    "primary": "#c8102e",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "mal-laliga2": {
+    "primary": "#007fc8",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "manchester-city": {
+    "primary": "#6cabdd",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "manchester-united": {
+    "primary": "#da291c",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "manizales-fc": {
+    "primary": "#ffffff",
+    "secondary": "#009e49",
+    "pattern": "solid"
+  },
+  "medellin-fc": {
+    "primary": "#e53027",
+    "secondary": "#003da5",
+    "pattern": "solid"
+  },
+  "melgar-athletic": {
+    "primary": "#e53027",
+    "secondary": "#000000",
+    "pattern": "solid"
+  },
+  "merida_ad": {
+    "primary": "#009e49",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "millonarios-atletico": {
+    "primary": "#003da5",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "mir-laliga2": {
+    "primary": "#e53027",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "nacional-athletic": {
+    "primary": "#003da5",
+    "secondary": "#e53027",
+    "pattern": "solid"
+  },
+  "nacional-real": {
+    "primary": "#ffffff",
+    "secondary": "#000000",
+    "pattern": "solid"
+  },
+  "napoli": {
+    "primary": "#12a0d7",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "newcastle-united": {
+    "primary": "#000000",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "newells-old-boys": {
+    "primary": "#e53027",
+    "secondary": "#000000",
+    "pattern": "half"
+  },
+  "nottingham-forest": {
+    "primary": "#dd0000",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "ogc-nice": {
+    "primary": "#000000",
+    "secondary": "#e53027",
+    "pattern": "stripes"
+  },
+  "ohiggins-club": {
+    "primary": "#87ceeb",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "olympique-de-marseille": {
+    "primary": "#2faee0",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "olympique-lyonnais": {
+    "primary": "#ffffff",
+    "secondary": "#1b4f9b",
+    "pattern": "solid"
+  },
+  "oriente-sc": {
+    "primary": "#ffd700",
+    "secondary": "#000000",
+    "pattern": "solid"
+  },
+  "osasuna_b": {
+    "primary": "#d91a21",
+    "secondary": "#00275e",
+    "pattern": "solid"
+  },
+  "oviedo_vetusta": {
+    "primary": "#003da5",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "palmeiras": {
+    "primary": "#006437",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "paris-saint-germain": {
+    "primary": "#004170",
+    "secondary": "#da291c",
+    "pattern": "solid"
+  },
+  "platense": {
+    "primary": "#8b4513",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "ponferradina": {
+    "primary": "#003da5",
+    "secondary": "#ffe400",
+    "pattern": "solid"
+  },
+  "quiteno-united": {
+    "primary": "#ffffff",
+    "secondary": "#003da5",
+    "pattern": "solid"
+  },
+  "rac-laliga2": {
+    "primary": "#009e49",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "racing-club": {
+    "primary": "#6cabdd",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "racing-sc": {
+    "primary": "#003da5",
+    "secondary": "#000000",
+    "pattern": "solid"
+  },
+  "racing_ferrol": {
+    "primary": "#009e49",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "rayo-vallecano": {
+    "primary": "#ffffff",
+    "secondary": "#e53027",
+    "pattern": "diagonal"
+  },
+  "rayo_b": {
+    "primary": "#ffffff",
+    "secondary": "#e53027",
+    "pattern": "diagonal"
+  },
+  "rb-leipzig": {
+    "primary": "#dd0741",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "rc-celta": {
+    "primary": "#8ac3ee",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "rc-lens": {
+    "primary": "#ffe400",
+    "secondary": "#e53027",
+    "pattern": "solid"
+  },
+  "rc-strasbourg-alsace": {
+    "primary": "#003da5",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "rcd-espanyol": {
+    "primary": "#007fc8",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "rcd-mallorca": {
+    "primary": "#e20613",
+    "secondary": "#000000",
+    "pattern": "half"
+  },
+  "rcd_espanyol_b": {
+    "primary": "#007fc8",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "real-betis-balompie": {
+    "primary": "#00954c",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "real-madrid": {
+    "primary": "#ffffff",
+    "secondary": "#d4af37",
+    "pattern": "solid"
+  },
+  "real-oviedo": {
+    "primary": "#003da5",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "real-sociedad": {
+    "primary": "#003da5",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "real_aviles": {
+    "primary": "#e53027",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "real_madrid_c": {
+    "primary": "#ffffff",
+    "secondary": "#d4af37",
+    "pattern": "solid"
+  },
+  "real_murcia": {
+    "primary": "#e53027",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "recreativo": {
+    "primary": "#003da5",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "rio-de-la-plata-fc": {
+    "primary": "#ffd700",
+    "secondary": "#000000",
+    "pattern": "stripes"
+  },
+  "river-plate": {
+    "primary": "#ffffff",
+    "secondary": "#e53027",
+    "pattern": "diagonal"
+  },
+  "rm_castilla": {
+    "primary": "#ffffff",
+    "secondary": "#d4af37",
+    "pattern": "solid"
+  },
+  "roma": {
+    "primary": "#9e1b32",
+    "secondary": "#f0bc42",
+    "pattern": "solid"
+  },
+  "rosario-central": {
+    "primary": "#003da5",
+    "secondary": "#ffd700",
+    "pattern": "stripes"
+  },
+  "rsb-laliga2": {
+    "primary": "#003da5",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "san-lorenzo-de-almagro": {
+    "primary": "#003da5",
+    "secondary": "#e53027",
+    "pattern": "horiz"
+  },
+  "santa-fe-fc": {
+    "primary": "#e53027",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "santiago-fc": {
+    "primary": "#003da5",
+    "secondary": "#e53027",
+    "pattern": "solid"
+  },
+  "sao-paulo": {
+    "primary": "#ffffff",
+    "secondary": "#e53027",
+    "pattern": "horiz"
+  },
+  "sc-freiburg": {
+    "primary": "#e30613",
+    "secondary": "#000000",
+    "pattern": "solid"
+  },
+  "sd_eibar_b": {
+    "primary": "#8c1d40",
+    "secondary": "#003da5",
+    "pattern": "stripes"
+  },
+  "sevilla-fc": {
+    "primary": "#ffffff",
+    "secondary": "#d40023",
+    "pattern": "solid"
+  },
+  "southampton": {
+    "primary": "#d71920",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "spo-laliga2": {
+    "primary": "#e53027",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "stade-rennais-fc": {
+    "primary": "#e53027",
+    "secondary": "#000000",
+    "pattern": "solid"
+  },
+  "strongest-athletic": {
+    "primary": "#ffd700",
+    "secondary": "#000000",
+    "pattern": "stripes"
+  },
+  "tachira-sc": {
+    "primary": "#ffd700",
+    "secondary": "#000000",
+    "pattern": "solid"
+  },
+  "talleres": {
+    "primary": "#003da5",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "tigre": {
+    "primary": "#003da5",
+    "secondary": "#e53027",
+    "pattern": "stripes"
+  },
+  "torino": {
+    "primary": "#8b0000",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "tottenham-hotspur": {
+    "primary": "#ffffff",
+    "secondary": "#132257",
+    "pattern": "solid"
+  },
+  "trinidense-atletico": {
+    "primary": "#e53027",
+    "secondary": "#003da5",
+    "pattern": "solid"
+  },
+  "tsg-1899-hoffenheim": {
+    "primary": "#1961b5",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "ucam_murcia": {
+    "primary": "#e53027",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "ud_sanse": {
+    "primary": "#003da5",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "unionistas_cf": {
+    "primary": "#000000",
+    "secondary": "#ffe400",
+    "pattern": "solid"
+  },
+  "universitario-deportivo": {
+    "primary": "#8b0000",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "valencia-cf": {
+    "primary": "#ffffff",
+    "secondary": "#ee3524",
+    "pattern": "solid"
+  },
+  "valladolid_prom": {
+    "primary": "#6b1f6e",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "valparaiso-atletico": {
+    "primary": "#003da5",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "vasco-da-gama": {
+    "primary": "#000000",
+    "secondary": "#ffffff",
+    "pattern": "diagonal"
+  },
+  "velez-sarsfield": {
+    "primary": "#ffffff",
+    "secondary": "#003da5",
+    "pattern": "solid"
+  },
+  "vfl-wolfsburg": {
+    "primary": "#65b32e",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  },
+  "villarreal-cf": {
+    "primary": "#fde607",
+    "secondary": "#005187",
+    "pattern": "solid"
+  },
+  "villarreal_cf_b": {
+    "primary": "#fde607",
+    "secondary": "#005187",
+    "pattern": "solid"
+  },
+  "vitoria": {
+    "primary": "#e53027",
+    "secondary": "#000000",
+    "pattern": "stripes"
+  },
+  "vll-laliga2": {
+    "primary": "#6b1f6e",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "west-ham-united": {
+    "primary": "#7a263a",
+    "secondary": "#1bb1e7",
+    "pattern": "solid"
+  },
+  "wolverhampton-wanderers": {
+    "primary": "#fdb913",
+    "secondary": "#000000",
+    "pattern": "solid"
+  },
+  "xerez_cd": {
+    "primary": "#003da5",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "xerez_deportivo": {
+    "primary": "#003da5",
+    "secondary": "#ffffff",
+    "pattern": "stripes"
+  },
+  "zar-laliga2": {
+    "primary": "#003da5",
+    "secondary": "#ffffff",
+    "pattern": "solid"
+  }
+}

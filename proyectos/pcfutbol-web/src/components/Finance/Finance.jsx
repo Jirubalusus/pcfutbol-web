@@ -1,11 +1,14 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useGame } from '../../context/GameContext';
 import { useTranslation } from 'react-i18next';
 import { 
   Landmark, TrendingUp, TrendingDown, Wallet, Users, 
   Building2, ShoppingCart, Trophy, Ticket, BadgeDollarSign,
-  ArrowUpRight, ArrowDownRight, Minus
+  ArrowUpRight, ArrowDownRight, Minus, Store, ChevronDown, ChevronRight
 } from 'lucide-react';
+import { STADIUM_SERVICES } from '../../game/stadiumEconomy';
+import { getBaseCommercialIncome, getFacilityCostMultiplier } from '../../game/leagueTiers';
+import AnimatedNumber from '../AnimatedNumber/AnimatedNumber';
 import './Finance.scss';
 
 const WEEKS_PER_YEAR = 52;
@@ -49,11 +52,27 @@ export default function Finance() {
     const namingIncome = stadium.naming?.yearlyIncome ?? 0;
     const transferEarned = state.transfersEarned ?? 0;
     const prizeIncome = state.prizeIncome ?? 0;
-    const totalIncome = seasonTicketIncome + accumulatedTicketIncome + namingIncome + transferEarned + prizeIncome;
+    
+    // Commercial weekly income (matches GameContext ADVANCE_WEEK logic)
+    const sponsorLevel = state.facilities?.sponsorship || 0;
+    const baseCommercial = getBaseCommercialIncome(state.leagueId);
+    const facilityBonus = [0, 8000, 53000, 158000, 316000, 527000][sponsorLevel] || 0;
+    const glorySponsorMult = state.gloryData?.sponsorMultiplier || 1;
+    const sponsorWeekly = Math.round((baseCommercial + facilityBonus) * glorySponsorMult);
+    // Sponsorship is paid every ADVANCE_WEEK (including cup/european weeks)
+    // Use total calendar weeks (max week number in fixtures) for accurate projection
+    const totalCalendarWeeks = (state.fixtures || []).length > 0 ? Math.max(...state.fixtures.map(f => f.week || 0)) : 38;
+    const sponsorAnnualIncome = sponsorWeekly * totalCalendarWeeks;
+    
+    // Stadium services income (accumulated, paid at end of season)
+    const accumulatedServicesIncome = stadium.accumulatedServicesIncome ?? 0;
+    const servicesBreakdown = stadium.accumulatedServicesBreakdown || {};
+    
+    const totalIncome = seasonTicketIncome + accumulatedTicketIncome + namingIncome + transferEarned + prizeIncome + sponsorAnnualIncome + accumulatedServicesIncome;
     
     const weeklySalaries = players.reduce((sum, p) => sum + (p.salary || 0), 0);
     const annualSalaries = weeklySalaries * WEEKS_PER_YEAR;
-    const maintenanceCost = currentLevel?.maintenance || 500000;
+    const maintenanceCost = Math.round((currentLevel?.maintenance || 500000) * getFacilityCostMultiplier(state.leagueId));
     const transferSpent = state.transfersSpent ?? 0;
     const totalExpenses = annualSalaries + maintenanceCost + transferSpent;
     const balance = totalIncome - totalExpenses;
@@ -64,6 +83,8 @@ export default function Finance() {
       seasonTickets, seasonTicketPrice, seasonTicketIncome,
       accumulatedTicketIncome, namingIncome,
       maintenanceCost, transferSpent, transferEarned, prizeIncome,
+      sponsorAnnualIncome, sponsorWeekly, totalCalendarWeeks,
+      accumulatedServicesIncome, servicesBreakdown,
       totalIncome, totalExpenses, balance,
       level: currentLevel?.name || 'Municipal'
     };
@@ -71,10 +92,11 @@ export default function Finance() {
   
   const incomeItems = [
     { icon: <Ticket size={16} />, label: t('finance.seasonTickets'), amount: finances.seasonTicketIncome, detail: finances.seasonTickets > 0 ? `${finances.seasonTickets.toLocaleString()} × €${finances.seasonTicketPrice}` : null },
-    { icon: <Users size={16} />, label: t('finance.ticketsSold'), amount: finances.accumulatedTicketIncome, detail: t('finance.accumulatedMatches') },
+    { icon: <Users size={16} />, label: t('finance.ticketsSold'), amount: finances.accumulatedTicketIncome + finances.accumulatedServicesIncome, detail: t('finance.accumulatedMatches'), expandable: true },
     finances.namingIncome > 0 && { icon: <BadgeDollarSign size={16} />, label: t('finance.stadiumNaming'), amount: finances.namingIncome },
     finances.transferEarned > 0 && { icon: <ShoppingCart size={16} />, label: t('finance.playerSales'), amount: finances.transferEarned },
     finances.prizeIncome > 0 && { icon: <Trophy size={16} />, label: t('finance.prizesRewards'), amount: finances.prizeIncome },
+    { icon: <Building2 size={16} />, label: t('facilities.facilityNames.sponsorship', 'Comercial'), amount: finances.sponsorAnnualIncome, detail: `${fmt(finances.sponsorWeekly)}/${t('common.week', 'sem')} × ${finances.totalCalendarWeeks}` },
   ].filter(Boolean);
   
   const expenseItems = [
@@ -83,10 +105,21 @@ export default function Finance() {
     finances.transferSpent > 0 && { icon: <ShoppingCart size={16} />, label: t('finance.signings'), amount: finances.transferSpent },
   ].filter(Boolean);
 
+  const [servicesOpen, setServicesOpen] = useState(false);
+  
+  const SERVICE_LABELS = {
+    catering: t('stadium.serviceCatering', 'Restauración'),
+    merchandise: t('stadium.serviceMerchandise', 'Tienda Oficial'),
+    parking: t('stadium.serviceParking', 'Aparcamiento'),
+    events: t('stadium.serviceEvents', 'Eventos y Alquiler'),
+    vip: t('stadium.serviceVip', 'Palcos VIP'),
+  };
+  const SERVICE_ICONS = { catering: '🍔', merchandise: '🛍️', parking: '🅿️', events: '🎤', vip: '📺' };
+
   const balanceTrend = finances.balance > 0 ? 'positive' : finances.balance < 0 ? 'negative' : 'neutral';
   
   return (
-    <div className="finance">
+    <div className="finance fade-in-up">
       {/* Hero Budget Card */}
       <div className="finance__hero">
         <div className="finance__hero-bg" />
@@ -96,7 +129,7 @@ export default function Finance() {
           </div>
           <div className="finance__hero-info">
             <span className="finance__hero-label">{t('finance.currentBudget')}</span>
-            <span className="finance__hero-amount">{fmt(finances.currentBudget)}</span>
+            <span className="finance__hero-amount"><AnimatedNumber value={finances.currentBudget} prefix="€" /></span>
           </div>
         </div>
         <div className="finance__hero-stats">
@@ -120,14 +153,40 @@ export default function Finance() {
         </div>
         <div className="finance__card-body">
           {incomeItems.map((item, i) => (
-            <div key={i} className="finance__line">
-              <div className="finance__line-icon income">{item.icon}</div>
-              <div className="finance__line-info">
-                <span className="finance__line-label">{item.label}</span>
-                {item.detail && <span className="finance__line-detail">{item.detail}</span>}
+            <React.Fragment key={i}>
+              <div className={`finance__line${item.expandable ? ' finance__line--clickable' : ''}`}
+                   onClick={item.expandable ? () => setServicesOpen(o => !o) : undefined}>
+                <div className="finance__line-icon income">{item.icon}</div>
+                <div className="finance__line-info">
+                  <span className="finance__line-label">
+                    {item.expandable && (servicesOpen ? <ChevronDown size={14} style={{marginRight:4,verticalAlign:'middle'}} /> : <ChevronRight size={14} style={{marginRight:4,verticalAlign:'middle'}} />)}
+                    {item.label}
+                  </span>
+                  {item.detail && <span className="finance__line-detail">{item.detail}</span>}
+                </div>
+                <span className="finance__line-amount positive">+{fmt(item.amount)}</span>
               </div>
-              <span className="finance__line-amount positive">+{fmt(item.amount)}</span>
-            </div>
+              {item.expandable && servicesOpen && (
+                <>
+                  <div className="finance__line finance__line--sub">
+                    <div className="finance__line-icon income"><Ticket size={14} /></div>
+                    <div className="finance__line-info">
+                      <span className="finance__line-label">{t('finance.ticketsSold')}</span>
+                    </div>
+                    <span className="finance__line-amount positive">+{fmt(finances.accumulatedTicketIncome)}</span>
+                  </div>
+                  {Object.entries(finances.servicesBreakdown).filter(([,v]) => v > 0).map(([key, amount]) => (
+                    <div key={key} className="finance__line finance__line--sub">
+                      <div className="finance__line-icon income"><span style={{fontSize:14}}>{SERVICE_ICONS[key]}</span></div>
+                      <div className="finance__line-info">
+                        <span className="finance__line-label">{SERVICE_LABELS[key] || key}</span>
+                      </div>
+                      <span className="finance__line-amount positive">+{fmt(amount)}</span>
+                    </div>
+                  ))}
+                </>
+              )}
+            </React.Fragment>
           ))}
         </div>
       </div>
@@ -159,7 +218,7 @@ export default function Finance() {
           {balanceTrend === 'positive' ? <TrendingUp size={20} /> : balanceTrend === 'negative' ? <TrendingDown size={20} /> : <Minus size={20} />}
         </div>
         <span className="finance__balance-label">{t('finance.seasonBalance')}</span>
-        <span className="finance__balance-amount">{fmtSigned(finances.balance)}</span>
+        <span className="finance__balance-amount">{finances.balance >= 0 ? '+' : '-'}<AnimatedNumber value={Math.abs(finances.balance)} prefix="€" /></span>
       </div>
     </div>
   );

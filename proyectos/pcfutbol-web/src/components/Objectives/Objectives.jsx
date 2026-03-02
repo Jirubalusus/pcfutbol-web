@@ -197,7 +197,7 @@ export default function Objectives() {
   }, [state.team?.players]);
 
   return (
-    <div className="objectives">
+    <div className="objectives fade-in-up">
       {/* Glory Mode: Board Panel */}
       {isGlory && (
         <div className="objectives__board">

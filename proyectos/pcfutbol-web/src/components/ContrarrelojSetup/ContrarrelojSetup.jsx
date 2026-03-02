@@ -29,6 +29,7 @@ import {
 } from '../../data/teamsFirestore';
 import { Timer, ArrowLeft, RefreshCw, Zap, Users, DollarSign, Star, ChevronRight, Trophy, AlertTriangle } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
+import TeamCrest from '../TeamCrest/TeamCrest';
 import './ContrarrelojSetup.scss';
 
 // Liga → getter (names pulled from LEAGUE_CONFIG to match renamed leagues)
@@ -480,14 +481,7 @@ export default function ContrarrelojSetup() {
                   className={`team-card ${isSelected ? 'selected' : ''}`}
                   onClick={() => handleSelect(c)}
                 >
-                  <div className="team-card__badge"
-                    style={{
-                      background: c.team.colors?.primary || '#1a3a5a',
-                      color: c.team.colors?.secondary || '#fff'
-                    }}
-                  >
-                    {c.team.shortName?.slice(0, 3) || c.team.name?.slice(0, 3)}
-                  </div>
+                  <TeamCrest teamId={c.team.id} size={32} />
                   <div className="team-card__info">
                     <span className="name">{c.team.name}</span>
                     <span className="league">{c.leagueName}</span>
@@ -519,14 +513,7 @@ export default function ContrarrelojSetup() {
             <div className="contrarreloj-setup__confirm" onClick={e => e.stopPropagation()}>
               <button className="confirm-close" onClick={() => setSelectedTeam(null)}>✕</button>
               <div className="confirm-team">
-                <div className="badge-large"
-                  style={{
-                    background: selectedTeam.colors?.primary || '#1a3a5a',
-                    color: selectedTeam.colors?.secondary || '#fff'
-                  }}
-                >
-                  {selectedTeam.shortName || selectedTeam.name?.slice(0, 3)}
-                </div>
+                <TeamCrest teamId={selectedTeam.id} size={56} />
                 <div className="confirm-info">
                   <h3>{selectedTeam.name}</h3>
                   <p>{candidates.find(c => c.team.id === selectedTeam.id)?.leagueName}</p>

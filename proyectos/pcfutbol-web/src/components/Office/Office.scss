@@ -10,7 +10,7 @@
   
   @media (max-width: 768px) {
     flex-direction: column;
-    padding-bottom: 80px;
+    padding-bottom: 130px; // Space for action bar (~56px) + MobileNav (~64px) + safe margin
   }
   
   &__main {
@@ -19,6 +19,11 @@
     flex-direction: column;
     min-height: 100vh;
     min-height: 100dvh;
+
+    @media (max-width: 768px) {
+      min-height: auto;
+      padding-bottom: 130px;
+    }
     
     @media (min-width: 769px) {
       margin-left: 260px;

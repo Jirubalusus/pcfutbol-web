@@ -9,7 +9,7 @@ import {
   getMedicalHealingWeeks,
   getMedicalTreatmentCost
 } from '../../game/facilitiesSystem';
-import { getFacilityCostMultiplier, getEconomyMultiplier } from '../../game/leagueTiers';
+import { getFacilityCostMultiplier, getBaseCommercialIncome } from '../../game/leagueTiers';
 import { Building2, Briefcase, Sprout, HeartPulse, Search, Coins, TrendingUp, Wrench, Zap, Target, Check, BarChart3, Stethoscope, Syringe, Clock } from 'lucide-react';
 import './Facilities.scss';
 
@@ -47,19 +47,16 @@ const getFacilities = (t) => [
     color: '#ffd60a',
     description: t('facilities.facilityDescs.sponsorship'),
     hasSpec: false,
+    flatCost: true, // No tier scaling on costs
     levels: [
-      { name: t('facilities.levelNames.basic'), income: 25000 },
-      { name: t('facilities.levelNames.active'), income: 70000 },
-      { name: t('facilities.levelNames.professional'), income: 140000 },
-      { name: t('facilities.levelNames.premium'), income: 235000 }
+      { name: t('facilities.levelNames.basic') },      // Level 0: base commercial
+      { name: t('facilities.levelNames.active') },      // Level 1: €300K/temp
+      { name: t('facilities.levelNames.professional') }, // Level 2: €2M/temp
+      { name: t('facilities.levelNames.premium') },      // Level 3: €6M/temp
+      { name: t('facilities.levelNames.legendary') } // Level 4: €20M/temp
     ],
-    benefits: [
-      '€1M/' + t('common.season').toLowerCase(),
-      '€3M/' + t('common.season').toLowerCase(),
-      '€6M/' + t('common.season').toLowerCase(),
-      '€10M/' + t('common.season').toLowerCase()
-    ],
-    upgradeCost: [2000000, 6000000, 18000000]
+    benefits: [], // Computed dynamically in scaledFacilities
+    upgradeCost: [500000, 3000000, 15000000, 50000000]
   },
   { 
     id: 'youth', 
@@ -151,23 +148,25 @@ export default function Facilities() {
   // Escalar costes de instalaciones y beneficios por tier de liga
   const scaledFacilities = useMemo(() => {
     const costMult = getFacilityCostMultiplier(state.leagueId);
-    const econMult = state.leagueId ? getEconomyMultiplier(state.leagueId) : 1.0;
     const formatScaled = (amount) => {
       if (amount >= 1000000) return `€${(amount / 1000000).toFixed(1)}M`;
       if (amount >= 1000) return `€${Math.round(amount / 1000)}K`;
       return `€${amount}`;
     };
+    const baseCommercial = getBaseCommercialIncome(state.leagueId);
     return FACILITIES.map(f => {
       const scaled = {
         ...f,
-        upgradeCost: f.upgradeCost.map(c => Math.round(c * costMult))
+        // Sponsorship: flat costs (no tier scaling). Others: scale by tier.
+        upgradeCost: f.flatCost ? [...f.upgradeCost] : f.upgradeCost.map(c => Math.round(c * costMult))
       };
-      // Comercial: mismos valores para todas las ligas (no escala)
+      // Comercial: show total weekly income (base + bonus) at each level
       if (f.id === 'sponsorship') {
-        const baseIncomes = [25000, 70000, 140000, 235000]; // weekly
-        scaled.benefits = baseIncomes.map(w => {
-          const annual = Math.round(w * 38);
-          return `${formatScaled(annual)}/temporada`;
+        const facilityBonuses = [0, 8000, 53000, 158000, 316000, 527000]; // index 0 = no upgrade
+        scaled.benefits = facilityBonuses.map(bonus => {
+          const totalWeekly = baseCommercial + bonus;
+          const annual = Math.round(totalWeekly * 38);
+          return `${formatScaled(totalWeekly)}/sem (${formatScaled(annual)}/temp)`;
         });
       }
       return scaled;
@@ -198,6 +197,8 @@ export default function Facilities() {
     return sponsorIncome;
   };
   
+  const stadiumUnderConstruction = !!state.stadium?.construction;
+  
   const handleUpgrade = (facility) => {
     const currentLevel = facilities[facility.id] || 0;
     const maxLevel = facility.levels.length - 1;
@@ -206,18 +207,38 @@ export default function Facilities() {
     const cost = facility.upgradeCost[currentLevel];
     if (state.money < cost) return;
     
+    // Stadium uses construction system — don't upgrade immediately
+    if (facility.id === 'stadium') {
+      if (stadiumUnderConstruction) return; // Can't upgrade while constructing
+      const newCapacity = facility.levels[currentLevel + 1]?.capacity || 8000;
+      dispatch({
+        type: 'UPDATE_STADIUM',
+        payload: {
+          construction: {
+            targetLevel: currentLevel + 1,
+            targetCapacity: newCapacity,
+            startedSeason: state.currentSeason
+          }
+        }
+      });
+      dispatch({ type: 'UPDATE_MONEY', payload: -cost });
+      dispatch({
+        type: 'ADD_MESSAGE',
+        payload: {
+          id: Date.now(),
+          type: 'stadium',
+          title: t('stadium.constructionStarted'),
+          content: t('stadium.constructionReady'),
+          date: `${t('common.week')} ${state.currentWeek}`
+        }
+      });
+      return;
+    }
+    
     dispatch({
       type: 'UPGRADE_FACILITY',
       payload: { facilityId: facility.id, cost }
     });
-    
-    // Si es el estadio, también actualizar state.stadium.level para sincronizar
-    if (facility.id === 'stadium') {
-      dispatch({
-        type: 'UPDATE_STADIUM',
-        payload: { ...(state.stadium || {}), level: currentLevel + 1 }
-      });
-    }
     
     dispatch({
       type: 'ADD_MESSAGE',
@@ -446,7 +467,8 @@ export default function Facilities() {
               {categoryFacilities.map(facility => {
                 const level = facilities[facility.id] || 0;
                 const maxLevel = facility.levels.length - 1;
-                const canUpgrade = level < maxLevel;
+                const isStadiumBuilding = facility.id === 'stadium' && stadiumUnderConstruction;
+                const canUpgrade = level < maxLevel && !isStadiumBuilding;
                 const upgradeCost = canUpgrade ? facility.upgradeCost[level] : null;
                 const canAfford = upgradeCost && state.money >= upgradeCost;
                 const spec = getSpecForFacility(facility.id);
@@ -482,6 +504,12 @@ export default function Facilities() {
                         <div className="facility-card__benefit">
                           {facility.benefits[level]}
                         </div>
+                        
+                        {isStadiumBuilding && (
+                          <div className="facility-card__construction">
+                            🚧 {t('stadium.currentlyBuilding')} → {facility.levels[state.stadium.construction.targetLevel]?.name}
+                          </div>
+                        )}
                       </div>
                       
                       <div className="facility-card__arrow">
@@ -532,6 +560,10 @@ export default function Facilities() {
                               <span className="upgrade-text">{t('facilities.upgrade')}</span>
                               <span className="upgrade-cost">{formatMoney(upgradeCost)}</span>
                             </button>
+                          </div>
+                        ) : isStadiumBuilding ? (
+                          <div className="facility-card__building">
+                            🚧 {t('stadium.currentlyBuilding', 'En construcción...')}
                           </div>
                         ) : (
                           <div className="facility-card__maxed">

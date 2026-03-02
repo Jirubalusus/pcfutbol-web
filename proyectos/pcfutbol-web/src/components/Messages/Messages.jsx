@@ -99,7 +99,7 @@ export default function Messages() {
   };
   
   return (
-    <div className="messages">
+    <div className="messages fade-in-up">
       {/* Hero */}
       <div className="messages__hero">
         <div className="messages__hero-icon"><Mail size={24} /></div>

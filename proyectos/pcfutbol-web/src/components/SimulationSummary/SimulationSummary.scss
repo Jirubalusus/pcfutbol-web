@@ -213,11 +213,19 @@
     }
 
     &--cards {
+      li {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
       .card-icon {
         display: inline-block;
         width: 10px;
         height: 14px;
         border-radius: 2px;
+        flex-shrink: 0;
 
         &--yellow {
           background: #f1c40f;
@@ -226,6 +234,20 @@
         &--red {
           background: #e74c3c;
         }
+      }
+
+      .card-count {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: #f1c40f;
+        margin-left: -4px;
+      }
+
+      .card-suspension {
+        font-size: 0.7rem;
+        color: #ff6b6b;
+        font-style: italic;
+        opacity: 0.85;
       }
     }
   }

@@ -1,0 +1,515 @@
+.wc-pen {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--color-bg-primary, #0c0f14);
+  color: var(--color-text-primary, #e2e8f0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.25rem;
+
+  h2 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-align: center;
+    margin: 0 0 0.4rem;
+    color: #f59e0b;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  p {
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 0.8rem;
+    text-align: center;
+    margin: 0 0 0.75rem;
+  }
+
+  // ─── Select phase ───
+  &__select {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  &__taker-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    max-height: 50vh;
+    overflow-y: auto;
+    margin-bottom: 0.75rem;
+  }
+
+  &__taker {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.65rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.02);
+    color: inherit;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover { border-color: rgba(255, 255, 255, 0.12); background: rgba(255, 255, 255, 0.04); }
+    &--selected {
+      border-color: rgba(20, 184, 166, 0.4);
+      background: rgba(20, 184, 166, 0.06);
+    }
+  }
+
+  &__taker-order {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #14b8a6;
+    color: #000;
+    font-weight: 800;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  &__taker-name { flex: 1; font-size: 0.8rem; display: flex; align-items: center; }
+  &__taker-rating { font-weight: 700; color: #f59e0b; font-size: 0.8rem; flex-shrink: 0; }
+
+  &__taker-ovr {
+    display: inline-block;
+    margin-left: 0.4rem;
+    padding: 0.1rem 0.35rem;
+    background: rgba(245, 158, 11, 0.15);
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #f59e0b;
+    vertical-align: middle;
+  }
+
+  &__gk-info {
+    text-align: center;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 0.5rem;
+    padding: 0.3rem 0.6rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 6px;
+  }
+
+  &__confirm {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 12px;
+    border: none;
+    background: #14b8a6;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover:not(:disabled) { background: #0d9488; box-shadow: 0 4px 12px rgba(20, 184, 166, 0.25); }
+    &:disabled { opacity: 0.4; cursor: not-allowed; }
+  }
+
+  // ─── Shooting phase ───
+  &__shooting {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  &__scoreboard {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  &__team {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+  }
+
+  &__team-label { font-size: 0.7rem; color: rgba(255, 255, 255, 0.35); }
+  &__team-score { font-size: 1.8rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+  &__vs { font-size: 1.2rem; font-weight: 700; color: rgba(255, 255, 255, 0.2); padding-top: 1rem; }
+
+  &__dots {
+    display: flex;
+    gap: 0.2rem;
+    align-items: center;
+  }
+
+  &__dot {
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &--scored { animation: dotBounce 0.3s ease; }
+  }
+
+  @keyframes dotBounce {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+
+  // ─── Sudden Death ───
+  &__sudden-death {
+    padding: 0.35rem 1rem;
+    background: rgba(239, 68, 68, 0.12);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 8px;
+    color: #ef4444;
+    font-weight: 800;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    animation: suddenDeathPulse 1.5s ease-in-out infinite;
+    text-shadow: 0 0 8px rgba(239, 68, 68, 0.4);
+  }
+
+  @keyframes suddenDeathPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.2); }
+    50% { box-shadow: 0 0 16px 4px rgba(239, 68, 68, 0.15); }
+  }
+
+  // ─── Hints ───
+  &__hint {
+    text-align: center;
+    font-size: 0.75rem;
+    font-style: italic;
+    color: rgba(20, 184, 166, 0.7);
+    padding: 0.3rem 0.8rem;
+    background: rgba(20, 184, 166, 0.06);
+    border: 1px solid rgba(20, 184, 166, 0.12);
+    border-radius: 6px;
+    animation: hintFadeIn 0.4s ease;
+
+    &--gk {
+      color: rgba(245, 158, 11, 0.7);
+      background: rgba(245, 158, 11, 0.06);
+      border-color: rgba(245, 158, 11, 0.12);
+    }
+  }
+
+  @keyframes hintFadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  // ─── Decisive moment ───
+  &__decisive {
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #f59e0b;
+    padding: 0.3rem 0.8rem;
+    background: rgba(245, 158, 11, 0.08);
+    border: 1px solid rgba(245, 158, 11, 0.2);
+    border-radius: 8px;
+    animation: decisivePulse 1s ease-in-out infinite;
+  }
+
+  @keyframes decisivePulse {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; text-shadow: 0 0 8px rgba(245, 158, 11, 0.5); }
+  }
+
+  // ─── Power bar ───
+  &__power {
+    width: 100%;
+    max-width: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    padding: 1rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  &__power-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    animation: powerPulse 0.8s ease-in-out infinite;
+  }
+
+  @keyframes powerPulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+
+  &__power-track {
+    position: relative;
+    width: 100%;
+    height: 28px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.06);
+    overflow: hidden;
+  }
+
+  &__power-zones {
+    position: absolute;
+    inset: 0;
+    display: flex;
+  }
+
+  &__power-zone {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+
+    &--red { background: rgba(239, 68, 68, 0.2); }
+    &--yellow { background: rgba(234, 179, 8, 0.15); }
+    &--green { background: rgba(34, 197, 94, 0.15); }
+  }
+
+  &__power-needle {
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    width: 4px;
+    border-radius: 2px;
+    transform: translateX(-50%);
+    transition: background 0.1s;
+    box-shadow: 0 0 6px currentColor;
+  }
+
+  &__power-value {
+    font-size: 1.2rem;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+    transition: color 0.1s;
+  }
+
+  // ─── Kick area ───
+  &__kick {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    width: 100%;
+  }
+
+  &__taker-info {
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  &__choose-text {
+    margin: 0;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  // ─── Goal visual ───
+  &__goal {
+    position: relative;
+    width: 100%;
+    max-width: 280px;
+    aspect-ratio: 3 / 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  &__ball {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.8rem;
+    z-index: 5;
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.3, 1);
+
+    &--left { transform: translate(-200%, -180%) scale(0.8); }
+    &--center { transform: translate(-50%, -200%) scale(0.8); }
+    &--right { transform: translate(100%, -180%) scale(0.8); }
+  }
+
+  &__goal-frame {
+    display: flex;
+    gap: 1px;
+    height: 70%;
+    border: 4px solid rgba(255, 255, 255, 0.85);
+    border-bottom: none;
+    border-radius: 3px 3px 0 0;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.02);
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 12px 12px;
+  }
+
+  &__zone {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg-primary, #0c0f14);
+    border: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.7rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:last-child { border-right: none; }
+
+    &:hover {
+      background: rgba(20, 184, 166, 0.1);
+      color: #14b8a6;
+    }
+  }
+
+  &__turn-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #14b8a6;
+    display: block;
+    margin-bottom: 0.1rem;
+
+    &--gk { color: #f59e0b; }
+  }
+
+  &__gk {
+    position: absolute;
+    bottom: 35%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.6rem;
+    z-index: 4;
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.3, 1);
+
+    &--left { transform: translate(-200%, -20%); }
+    &--center { transform: translate(-50%, -30%); }
+    &--right { transform: translate(100%, -20%); }
+  }
+
+  &__zone--gk {
+    &:hover {
+      background: rgba(245, 158, 11, 0.1);
+      color: #f59e0b;
+    }
+  }
+
+  &__suspense {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  &__flash {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.8rem;
+    font-weight: 900;
+    padding: 0.4rem 1.5rem;
+    border-radius: 12px;
+    z-index: 100;
+    animation: flashIn 0.3s ease;
+    letter-spacing: 0.05em;
+
+    &--goal { background: rgba(245, 158, 11, 0.9); color: #000; }
+    &--saved { background: rgba(239, 68, 68, 0.85); color: #fff; }
+    &--miss { background: rgba(100, 100, 100, 0.85); color: #fff; }
+  }
+
+  @keyframes flashIn {
+    from { opacity: 0; transform: translate(-50%, -50%) scale(0.6); }
+    to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  }
+
+  // ─── Result ───
+  &__result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    min-height: 60vh;
+    animation: resultAppear 0.4s ease;
+
+    &--win h2 { color: #f59e0b; -webkit-text-fill-color: #f59e0b; }
+    &--lose h2 { color: #ef4444; -webkit-text-fill-color: #ef4444; }
+  }
+
+  &__result-score {
+    font-size: 2.5rem;
+    font-weight: 900;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__result-dots {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+  }
+
+  @keyframes resultAppear {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  // ─── Mobile ───
+  @media (max-width: 600px) {
+    padding: 0.75rem;
+
+    h2 { font-size: 1rem; }
+    p { font-size: 0.75rem; }
+
+    &__select { max-width: 100%; }
+    &__taker-list { max-height: 45vh; }
+    &__taker { padding: 0.45rem 0.5rem; min-height: 44px; }
+    &__taker-name { font-size: 0.75rem; }
+    &__confirm { padding: 0.7rem; font-size: 0.9rem; min-height: 44px; }
+
+    &__shooting { max-width: 100%; }
+    &__scoreboard { gap: 0.5rem; }
+    &__team-score { font-size: 1.5rem; }
+    &__vs { font-size: 1rem; padding-top: 0.7rem; }
+    &__taker-info { font-size: 0.85rem; }
+
+    &__goal { max-width: 240px; }
+    &__goal-frame { border-width: 3px; }
+    &__zone { font-size: 0.65rem; min-height: 44px; }
+    &__ball { font-size: 1.5rem; }
+    &__gk { font-size: 1.3rem; }
+
+    &__flash { font-size: 1.4rem; padding: 0.35rem 1.2rem; }
+    &__result-score { font-size: 2rem; }
+
+    &__power { max-width: 100%; padding: 0.75rem; }
+    &__power-value { font-size: 1rem; }
+    &__hint { font-size: 0.7rem; }
+    &__sudden-death { font-size: 0.7rem; }
+  }
+}

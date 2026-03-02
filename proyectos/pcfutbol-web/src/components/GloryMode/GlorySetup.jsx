@@ -100,9 +100,8 @@ export default function GlorySetup() {
       },
     });
 
-    // Set league table and fixtures
+    // Set league table (fixtures set later after European calendar remapping — #24)
     dispatch({ type: 'SET_LEAGUE_TABLE', payload: leagueData.table });
-    dispatch({ type: 'SET_FIXTURES', payload: leagueData.fixtures });
     dispatch({ type: 'SET_PLAYER_LEAGUE', payload: 'segundaRFEF' });
     dispatch({ type: 'SET_PLAYER_GROUP', payload: randomGroupKey });
 
@@ -191,7 +190,11 @@ export default function GlorySetup() {
       const remappedFixtures = remapFixturesForEuropean(leagueData.fixtures, europeanCalendar.leagueWeekMap);
       dispatch({ type: 'SET_FIXTURES', payload: remappedFixtures });
       dispatch({ type: 'SET_EUROPEAN_CALENDAR', payload: europeanCalendar });
-    } catch (e) { console.warn('Glory calendar init error:', e); }
+    } catch (e) {
+      console.warn('Glory calendar init error:', e);
+      // Fallback: set original fixtures without European remapping
+      dispatch({ type: 'SET_FIXTURES', payload: leagueData.fixtures });
+    }
 
     // Set glory user ID for auto-save
     if (user?.uid) {

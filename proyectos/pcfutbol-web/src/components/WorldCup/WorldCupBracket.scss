@@ -1,0 +1,366 @@
+.wc-bracket {
+  margin: 0.5rem 0;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.6) 0%, rgba(30, 41, 59, 0.3) 100%);
+  border-radius: 12px;
+  padding: 0.25rem 0;
+
+  &__scroll {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    padding: 0.75rem 0.5rem;
+    min-height: 280px;
+
+    &::-webkit-scrollbar { height: 3px; }
+    &::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.08); border-radius: 2px; }
+  }
+
+  &__side {
+    display: flex;
+    align-items: center;
+    gap: 0;
+
+    &--left {
+      .wc-bracket__match-wrapper {
+        position: relative;
+        // Right connector line from each match
+        &::after {
+          content: '';
+          position: absolute;
+          right: -8px;
+          top: 50%;
+          width: 8px;
+          height: 1px;
+          background: rgba(255, 255, 255, 0.15);
+        }
+      }
+      // Vertical merge lines for R16→QF
+      .wc-bracket__round--r16 {
+        .wc-bracket__match-wrapper:nth-child(odd)::before {
+          content: '';
+          position: absolute;
+          right: -8px;
+          top: 50%;
+          bottom: -50%;
+          width: 1px;
+          background: rgba(255, 255, 255, 0.12);
+        }
+        .wc-bracket__match-wrapper:nth-child(even)::before {
+          content: '';
+          position: absolute;
+          right: -8px;
+          top: -50%;
+          bottom: 50%;
+          width: 1px;
+          background: rgba(255, 255, 255, 0.12);
+        }
+      }
+      // QF→SF merge
+      .wc-bracket__round--qf {
+        .wc-bracket__match-wrapper:first-child::before {
+          content: '';
+          position: absolute;
+          right: -8px;
+          top: 50%;
+          height: calc(50% + 1rem);
+          width: 1px;
+          background: rgba(255, 255, 255, 0.12);
+        }
+        .wc-bracket__match-wrapper:last-child::before {
+          content: '';
+          position: absolute;
+          right: -8px;
+          bottom: 50%;
+          height: calc(50% + 1rem);
+          width: 1px;
+          background: rgba(255, 255, 255, 0.12);
+        }
+        // Left input connector
+        .wc-bracket__match-wrapper::after {
+          right: -8px;
+        }
+      }
+      // SF→Final
+      .wc-bracket__round--sf .wc-bracket__match-wrapper::after {
+        right: -8px;
+      }
+    }
+
+    &--right {
+
+      .wc-bracket__match-wrapper {
+        position: relative;
+        // Left connector line from each match
+        &::after {
+          content: '';
+          position: absolute;
+          left: -8px;
+          top: 50%;
+          width: 8px;
+          height: 1px;
+          background: rgba(255, 255, 255, 0.15);
+        }
+      }
+      // Vertical merge lines for R16→QF (mirrored)
+      .wc-bracket__round--r16 {
+        .wc-bracket__match-wrapper:nth-child(odd)::before {
+          content: '';
+          position: absolute;
+          left: -8px;
+          top: 50%;
+          bottom: -50%;
+          width: 1px;
+          background: rgba(255, 255, 255, 0.12);
+        }
+        .wc-bracket__match-wrapper:nth-child(even)::before {
+          content: '';
+          position: absolute;
+          left: -8px;
+          top: -50%;
+          bottom: 50%;
+          width: 1px;
+          background: rgba(255, 255, 255, 0.12);
+        }
+      }
+      // QF→SF merge
+      .wc-bracket__round--qf {
+        .wc-bracket__match-wrapper:first-child::before {
+          content: '';
+          position: absolute;
+          left: -8px;
+          top: 50%;
+          height: calc(50% + 1rem);
+          width: 1px;
+          background: rgba(255, 255, 255, 0.12);
+        }
+        .wc-bracket__match-wrapper:last-child::before {
+          content: '';
+          position: absolute;
+          left: -8px;
+          bottom: 50%;
+          height: calc(50% + 1rem);
+          width: 1px;
+          background: rgba(255, 255, 255, 0.12);
+        }
+      }
+    }
+  }
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    padding: 0 4px;
+  }
+
+  &__round-label {
+    font-size: 0.55rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.3);
+    margin-bottom: 0.4rem;
+    text-align: center;
+
+    &--final {
+      color: #f59e0b;
+      font-size: 0.65rem;
+      text-shadow: 0 0 8px rgba(245, 158, 11, 0.4);
+    }
+  }
+
+  &__center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 0.5rem;
+    flex-shrink: 0;
+  }
+
+  // Trophy SVG
+  .wc-trophy-svg {
+    filter: drop-shadow(0 0 12px rgba(245, 158, 11, 0.35));
+    animation: trophyPulse 3s ease-in-out infinite;
+  }
+
+  @keyframes trophyPulse {
+    0%, 100% { filter: drop-shadow(0 0 12px rgba(245, 158, 11, 0.35)); transform: translateY(0); }
+    50% { filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.55)); transform: translateY(-4px); }
+  }
+
+  @keyframes bracketMatchIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes bracketCurrentPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.2); }
+    50% { box-shadow: 0 0 12px 2px rgba(20, 184, 166, 0.15); }
+  }
+
+  &__round {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+
+    &--r16 {
+      gap: 0.25rem;
+      .wc-bracket__match { animation-delay: 0s; }
+    }
+    &--qf {
+      gap: 1.5rem;
+      .wc-bracket__match { animation-delay: 0.15s; }
+    }
+    &--sf {
+      gap: 3rem;
+      .wc-bracket__match { animation-delay: 0.3s; }
+    }
+  }
+
+  &__match-wrapper {
+    position: relative;
+  }
+
+  &__match {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 0.25rem 0.4rem;
+    min-width: 110px;
+    position: relative;
+    font-size: 0.7rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    animation: bracketMatchIn 0.4s ease-out both;
+
+    &:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    &--current {
+      animation: bracketMatchIn 0.4s ease-out both, bracketCurrentPulse 2s ease-in-out infinite;
+      border-color: rgba(20, 184, 166, 0.4);
+    }
+
+    &--empty {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.2);
+      min-height: 44px;
+      font-size: 0.6rem;
+    }
+
+    &--final {
+      min-width: 130px;
+      padding: 0.35rem 0.5rem;
+      font-size: 0.8rem;
+      border: 1.5px solid rgba(245, 158, 11, 0.4);
+      background: rgba(245, 158, 11, 0.06);
+      box-shadow: 0 0 16px rgba(245, 158, 11, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+      .wc-bracket__name { font-size: 0.75rem; }
+      .wc-bracket__score { font-size: 0.8rem; }
+    }
+  }
+
+  &__team {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.15rem 0;
+
+    &:not(:last-child) { border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+
+    &--player {
+      .wc-bracket__name { color: #14b8a6; font-weight: 700; }
+      background: rgba(20, 184, 166, 0.06);
+      border-radius: 4px;
+      padding-left: 0.15rem;
+    }
+
+    &--winner {
+      .wc-bracket__name {
+        font-weight: 800;
+        color: rgba(255, 255, 255, 0.95);
+      }
+      .wc-bracket__score {
+        color: #f59e0b;
+        font-weight: 800;
+        text-shadow: 0 0 6px rgba(245, 158, 11, 0.3);
+      }
+    }
+  }
+
+  &__flag { font-size: 0.85rem; flex-shrink: 0; line-height: 1; }
+
+  &__name {
+    flex: 1;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 500;
+    font-size: 0.68rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__score {
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.85);
+    min-width: 14px;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-size: 0.72rem;
+  }
+
+  &__vs {
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.5rem;
+    color: rgba(255, 255, 255, 0.2);
+    font-weight: 700;
+  }
+
+  &__pen {
+    display: block;
+    text-align: center;
+    font-size: 0.5rem;
+    color: rgba(255, 255, 255, 0.25);
+    margin-top: 0.1rem;
+  }
+
+  @media (max-width: 600px) {
+    margin: 0.25rem 0;
+
+    &__scroll {
+      padding: 0.5rem 0.25rem;
+      min-height: 240px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    &__match {
+      min-width: 90px;
+      padding: 0.2rem 0.3rem;
+      font-size: 0.63rem;
+
+      &--empty { min-height: 38px; font-size: 0.55rem; }
+      &--final { min-width: 110px; font-size: 0.72rem; }
+    }
+
+    &__flag { font-size: 0.7rem; }
+    &__name { font-size: 0.6rem; max-width: 52px; }
+    &__score { font-size: 0.63rem; }
+    &__center { padding: 0 0.3rem; }
+
+    .wc-trophy-svg { width: 60px; height: 75px; }
+
+    &__round--qf { gap: 1rem; }
+    &__round--sf { gap: 2rem; }
+  }
+}

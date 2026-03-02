@@ -198,6 +198,9 @@ export async function deleteAllSaves(userId) {
     const proDeletes = proSnapshot.docs.map(d => deleteDoc(d.ref));
     await Promise.all(proDeletes);
     
+    // Delete career save
+    try { await deleteDoc(doc(db, 'career_saves', `${userId}_career`)); } catch (e) { /* ok */ }
+
     // Delete glory save (uses doc ID pattern: userId_glory)
     try { await deleteDoc(doc(db, 'glory_saves', `${userId}_glory`)); } catch (e) { /* ok */ }
 

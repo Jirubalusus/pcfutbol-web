@@ -295,7 +295,7 @@ export default function RankedMatch() {
     } catch (e) {
       setSelectedTeam(null);
       setSelecting(false);
-      alert(e.message);
+      import('sileo').then(({ sileo: s }) => s.error({ title: e.message }));
     }
   };
 
@@ -310,7 +310,7 @@ export default function RankedMatch() {
       setTimeout(() => advancePhase(matchId).catch(console.error), 2000);
     } catch (e) {
       console.error('Error submitting config:', e);
-      alert(t('ranked.configError'));
+      import('sileo').then(({ sileo: s }) => s.error({ title: t('ranked.configError') }));
     }
   };
 

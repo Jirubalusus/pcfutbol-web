@@ -68,7 +68,6 @@ export async function saveGlory(userId, gameState) {
   const saveData = JSON.parse(JSON.stringify({
     ...gameState,
     userId,
-    lastSaved: new Date().toISOString(),
     _type: 'glory'
   }));
 
@@ -76,6 +75,9 @@ export async function saveGlory(userId, gameState) {
   delete saveData.leagueTeams;
   delete saveData.otherLeagues;
   delete saveData._gloryUserId;
+
+  // Apply serverTimestamp after JSON round-trip (sentinel can't survive stringify)
+  saveData.lastSaved = serverTimestamp();
 
   await setDoc(doc(db, COLLECTION, saveId), saveData);
 }

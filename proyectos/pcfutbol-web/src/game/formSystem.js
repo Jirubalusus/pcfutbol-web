@@ -41,12 +41,14 @@ export function getPlayerConsistency(player, isCaptain = false) {
 /**
  * Calcula la TENDENCIA BASE de forma según ciclo juego/descanso.
  * 
- * @param {number} consecutivePlayed - Partidos seguidos jugados
- * @param {number} weeksSincePlay - Semanas sin jugar
+ * @param {number} consecutivePlayed - Partidos seguidos jugado como titular
+ * @param {number} weeksSincePlay - Semanas sin jugar como titular
+ * @param {number} consecutiveBench - Partidos seguidos como convocado (banquillo)
+ * @param {number} weeksSinceSquad - Semanas sin estar ni convocado
  * @returns {number} Índice base en FORM_ORDER (0=terrible, 4=excellent)
  */
-function getBaseTendency(consecutivePlayed, weeksSincePlay) {
-  // Caso: jugador está jugando partidos
+function getBaseTendency(consecutivePlayed, weeksSincePlay, consecutiveBench = 0, weeksSinceSquad = 0) {
+  // Caso 1: jugador TITULAR — jugando partidos
   if (weeksSincePlay === 0 || consecutivePlayed > 0) {
     if (consecutivePlayed <= 3) return 3;    // 1-3 partidos: buena (fresco, con ritmo)
     if (consecutivePlayed <= 5) return 2.5;  // 4-5: normal-buena
@@ -55,12 +57,21 @@ function getBaseTendency(consecutivePlayed, weeksSincePlay) {
     return 0.5;                               // 10+: terrible (quemado)
   }
   
-  // Caso: jugador está descansando
-  if (weeksSincePlay <= 2) return 3.5;   // 1-2 sem: buena-excelente (hambriento)
-  if (weeksSincePlay <= 4) return 4;     // 3-4 sem: excelente (muy fresco, con ganas)
-  if (weeksSincePlay <= 6) return 3;     // 5-6 sem: buena (empieza a perder ritmo)
-  if (weeksSincePlay <= 8) return 2;     // 7-8 sem: normal 
-  return 1;                               // 9+ sem: baja (desconectado)
+  // Caso 2: jugador CONVOCADO (banquillo) — no juega pero está activo
+  // Sube ganas lentamente ya que participa como revulsivo
+  if (consecutiveBench > 0) {
+    if (consecutiveBench <= 2) return 3;     // 1-2 partidos banco: buena
+    if (consecutiveBench <= 4) return 3.5;   // 3-4: buena-excelente (quiere jugar)
+    if (consecutiveBench <= 6) return 3.5;   // 5-6: se mantiene con ganas
+    return 3;                                 // 7+: se estabiliza
+  }
+  
+  // Caso 3: jugador NO CONVOCADO — no juega nada, ganas suben rápido
+  if (weeksSinceSquad <= 1) return 3;        // 1 sem: buena (aún tiene ritmo reciente)
+  if (weeksSinceSquad <= 3) return 4;        // 2-3 sem: excelente (hambriento, quiere demostrar)
+  if (weeksSinceSquad <= 5) return 3.5;      // 4-5 sem: buena-excelente (pierde algo de ritmo)
+  if (weeksSinceSquad <= 7) return 2.5;      // 6-7 sem: normal-buena
+  return 1.5;                                 // 8+ sem: baja (desconectado)
 }
 
 /**
@@ -117,7 +128,7 @@ export function updateWeeklyForm(currentForm, players, matchTracker, context) {
     
     // === CALCULATE FORM FROM PLAY/REST CYCLE (con inercia) ===
     
-    const baseTendency = getBaseTendency(tracker.consecutivePlayed, tracker.weeksSincePlay);
+    const baseTendency = getBaseTendency(tracker.consecutivePlayed, tracker.weeksSincePlay, tracker.consecutiveBench || 0, tracker.weeksSinceSquad || 0);
     
     // INERCIA: mezclar tendencia nueva con forma anterior
     // 60% tendencia nueva + 40% forma anterior = cambios graduales
@@ -151,28 +162,44 @@ export function updateWeeklyForm(currentForm, players, matchTracker, context) {
 
 /**
  * Actualiza el matchTracker después de un partido.
- * @param {object} tracker - { [playerName]: { consecutivePlayed, weeksSincePlay } }
+ * @param {object} tracker - { [playerName]: { consecutivePlayed, weeksSincePlay, consecutiveBench, weeksSinceSquad } }
  * @param {array} allPlayers - Todos los jugadores de la plantilla
- * @param {array} playedNames - Nombres de jugadores que jugaron (convocados/lineup)
+ * @param {array} starterNames - Nombres de titulares (jugaron el partido)
+ * @param {array} benchNames - Nombres de convocados NO titulares (banquillo)
  * @returns {object} Tracker actualizado
  */
-export function updateMatchTracker(tracker, allPlayers, playedNames) {
+export function updateMatchTracker(tracker, allPlayers, starterNames, benchNames = []) {
   const updated = {};
-  const playedSet = new Set(playedNames || []);
+  const starterSet = new Set(starterNames || []);
+  const benchSet = new Set(benchNames || []);
   
   allPlayers.forEach(player => {
     const name = player.name;
-    const prev = tracker[name] || { consecutivePlayed: 0, weeksSincePlay: 4 }; // Default: 4 weeks rest
+    const prev = tracker[name] || { consecutivePlayed: 0, weeksSincePlay: 4, consecutiveBench: 0, weeksSinceSquad: 4 };
     
-    if (playedSet.has(name)) {
+    if (starterSet.has(name)) {
+      // Titular: jugó el partido
       updated[name] = {
         consecutivePlayed: prev.consecutivePlayed + 1,
-        weeksSincePlay: 0
+        weeksSincePlay: 0,
+        consecutiveBench: 0,
+        weeksSinceSquad: 0
       };
-    } else {
+    } else if (benchSet.has(name)) {
+      // Convocado (banquillo): no jugó pero está en la convocatoria
       updated[name] = {
         consecutivePlayed: 0,
-        weeksSincePlay: prev.weeksSincePlay + 1
+        weeksSincePlay: prev.weeksSincePlay + 1,
+        consecutiveBench: (prev.consecutiveBench || 0) + 1,
+        weeksSinceSquad: 0
+      };
+    } else {
+      // No convocado: ni juega ni está en convocatoria
+      updated[name] = {
+        consecutivePlayed: 0,
+        weeksSincePlay: prev.weeksSincePlay + 1,
+        consecutiveBench: 0,
+        weeksSinceSquad: (prev.weeksSinceSquad || 0) + 1
       };
     }
   });

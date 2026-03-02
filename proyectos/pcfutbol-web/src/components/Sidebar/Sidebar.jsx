@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
+import TeamCrest from '../TeamCrest/TeamCrest';
 import Settings from '../Settings/Settings';
 import {
   Home,
@@ -17,7 +18,6 @@ import {
   Award,
   Settings as SettingsIcon,
   ChevronLeft,
-  Gamepad2,
   Mountain
 } from 'lucide-react';
 import './Sidebar.scss';
@@ -65,14 +65,34 @@ export default function Sidebar({ activeTab, onTabChange, isRanked }) {
   return (
     <>
       <aside className="sidebar">
-        <div className="sidebar__logo">
-          <Gamepad2 className="sidebar__logo-icon" size={28} strokeWidth={2.5} />
+        <div className="sidebar__logo" onClick={() => dispatch({ type: 'SET_SCREEN', payload: 'main_menu' })} style={{ cursor: 'pointer' }}>
+          <svg className="sidebar__logo-icon" width="28" height="28" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="48" fill="none" stroke="currentColor" strokeWidth="4"/>
+            <polygon points="50,22 61,30 57,43 43,43 39,30" fill="currentColor"/>
+            <polygon points="27,58 22,45 32,36 42,44 37,57" fill="currentColor"/>
+            <polygon points="73,58 78,45 68,36 58,44 63,57" fill="currentColor"/>
+            <polygon points="38,72 42,61 55,61 62,72 55,78 42,78" fill="currentColor"/>
+            <path d="M50,2 L50,22" stroke="currentColor" strokeWidth="3"/>
+            <path d="M61,30 L82,18" stroke="currentColor" strokeWidth="3"/>
+            <path d="M78,45 L98,42" stroke="currentColor" strokeWidth="3"/>
+            <path d="M73,58 L88,74" stroke="currentColor" strokeWidth="3"/>
+            <path d="M62,72 L68,92" stroke="currentColor" strokeWidth="3"/>
+            <path d="M42,78 L32,92" stroke="currentColor" strokeWidth="3"/>
+            <path d="M27,58 L12,74" stroke="currentColor" strokeWidth="3"/>
+            <path d="M22,45 L2,42" stroke="currentColor" strokeWidth="3"/>
+            <path d="M32,36 L18,18" stroke="currentColor" strokeWidth="3"/>
+            <path d="M39,30 L50,22 L61,30" stroke="currentColor" strokeWidth="2" fill="none"/>
+            <path d="M57,43 L58,44 L68,36 L78,45" stroke="currentColor" strokeWidth="2" fill="none"/>
+            <path d="M63,57 L62,61 L62,72" stroke="currentColor" strokeWidth="2" fill="none"/>
+            <path d="M38,72 L42,61 L37,57" stroke="currentColor" strokeWidth="2" fill="none"/>
+            <path d="M27,58 L22,45 L32,36 L43,43 L42,44" stroke="currentColor" strokeWidth="2" fill="none"/>
+          </svg>
           <span className="sidebar__logo-text">PC Gaffer</span>
         </div>
         
         <div className="sidebar__team">
           <div className="sidebar__team-badge">
-            {state.team?.shortName || '???'}
+            <TeamCrest teamId={state.teamId} size={48} />
           </div>
           <span className="sidebar__team-name">{state.team?.name}</span>
         </div>

@@ -1,0 +1,168 @@
+.wc-mid {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+  }
+
+  &__card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 380px;
+    background: var(--color-bg-primary, #0c0f14);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 1.25rem;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+    animation: midAppear 0.4s ease both;
+    text-align: center;
+  }
+
+  @keyframes midAppear {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  &__minute {
+    display: inline-block;
+    padding: 0.25rem 0.7rem;
+    background: #ef4444;
+    color: #fff;
+    font-weight: 800;
+    font-size: 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.6rem;
+  }
+
+  &__title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 0.4rem;
+  }
+
+  &__desc {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.45);
+    margin: 0 0 1rem;
+    line-height: 1.5;
+  }
+
+  &__players {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  &__player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 0.6rem;
+    border-radius: 12px;
+    min-width: 75px;
+
+    &--starter {
+      background: rgba(239, 68, 68, 0.06);
+      border: 1px solid rgba(239, 68, 68, 0.15);
+      color: #fca5a5;
+    }
+
+    &--sub {
+      background: rgba(34, 197, 94, 0.06);
+      border: 1px solid rgba(34, 197, 94, 0.15);
+      color: #86efac;
+    }
+  }
+
+  &__player-name {
+    font-size: 0.7rem;
+    font-weight: 600;
+    max-width: 75px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__player-tag { font-size: 1.1rem; }
+
+  &__swap-icon {
+    color: rgba(255, 255, 255, 0.2);
+  }
+
+  &__choices {
+    display: flex;
+    gap: 0.5rem;
+
+    &--chosen { pointer-events: none; }
+  }
+
+  &__choice {
+    flex: 1;
+    padding: 0.7rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    color: #e2e8f0;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    &--selected {
+      border-color: rgba(20, 184, 166, 0.4) !important;
+      background: rgba(20, 184, 166, 0.08) !important;
+    }
+
+    &--dimmed { opacity: 0.15; }
+    &:disabled { cursor: default; }
+  }
+
+  &__choice-emoji { font-size: 1.3rem; }
+  &__choice-title { font-weight: 700; font-size: 0.8rem; }
+  &__choice-desc { font-size: 0.65rem; color: rgba(255, 255, 255, 0.35); }
+
+  @media (max-width: 600px) {
+    padding: 0.5rem;
+
+    &__card {
+      max-width: 100%;
+      padding: 1rem;
+      border-radius: 14px;
+    }
+
+    &__minute { font-size: 0.9rem; padding: 0.2rem 0.6rem; }
+    &__title { font-size: 0.9rem; }
+    &__desc { font-size: 0.8rem; margin-bottom: 0.75rem; }
+
+    &__players { gap: 0.5rem; flex-wrap: wrap; justify-content: center; }
+    &__player { min-width: 65px; padding: 0.5rem; }
+    &__player-name { font-size: 0.65rem; max-width: 65px; }
+
+    &__choices { gap: 0.4rem; }
+    &__choice { padding: 0.6rem; min-height: 44px; border-radius: 10px; }
+    &__choice-emoji { font-size: 1.1rem; }
+    &__choice-title { font-size: 0.75rem; }
+  }
+}

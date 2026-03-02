@@ -353,7 +353,7 @@ export const segundaTeams = {
 
   // ========== FC ANDORRA ==========
   andorra: {
-    name: 'FC Andorra', shortName: 'AND', city: 'Andorra la Vella',
+    name: 'Pirenaica CF', shortName: 'AND', city: 'Andorra la Vella',
     stadium: 'Estadi Nacional', stadiumCapacity: 3306,
     budget: 5000000, reputation: 58, league: 'segunda',
     colors: { primary: '#003366', secondary: '#FFD700' },
@@ -507,7 +507,7 @@ export const segundaTeams = {
 
   // ========== AD CEUTA ==========
   ceuta: {
-    name: 'AD Ceuta FC', shortName: 'CEU', city: 'Ceuta',
+    name: 'Estrecho AD', shortName: 'CEU', city: 'Ceuta',
     stadium: 'Alfonso Murube', stadiumCapacity: 6590,
     budget: 3000000, reputation: 55, league: 'segunda',
     colors: { primary: '#005BAC', secondary: '#FFFFFF' },
@@ -560,7 +560,7 @@ export const segundaTeams = {
 
   // ========== REAL SOCIEDAD B ==========
   real_sociedad_b: {
-    name: 'Real Sociedad B', shortName: 'RSB', city: 'San Sebastián',
+    name: 'Coastal Reale B', shortName: 'RSB', city: 'San Sebastián',
     stadium: 'Zubieta', stadiumCapacity: 2500,
     budget: 3000000, reputation: 55, league: 'segunda',
     colors: { primary: '#0067B1', secondary: '#FFFFFF' },
