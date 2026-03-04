@@ -1,0 +1,325 @@
+.city-mode {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #0D1B2A;
+  z-index: 100;
+  overflow: hidden;
+}
+
+// HUD
+.city-hud {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  z-index: 10;
+
+  &__top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, transparent 100%);
+    pointer-events: auto;
+  }
+
+  &__back {
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: background 0.2s;
+
+    &:hover { background: rgba(255,255,255,0.25); }
+  }
+
+  &__info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__team {
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  }
+
+  &__meta {
+    color: rgba(255,255,255,0.7);
+    font-size: 11px;
+  }
+
+  &__stats {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  &__money {
+    background: rgba(255,215,0,0.2);
+    color: #FFD700;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__position {
+    background: rgba(255,255,255,0.15);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  &__teleport {
+    position: absolute;
+    bottom: 80px;
+    right: 16px;
+    background: rgba(21, 101, 192, 0.85);
+    border: 2px solid rgba(255,255,255,0.3);
+    color: white;
+    padding: 10px 16px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    pointer-events: auto;
+    backdrop-filter: blur(8px);
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s;
+
+    &:hover {
+      background: rgba(21, 101, 192, 1);
+      transform: scale(1.05);
+    }
+  }
+
+  &__notif-badge {
+    background: #FF5722;
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+  }
+
+  &__controls {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.5);
+    font-size: 11px;
+    pointer-events: none;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+}
+
+// Minimap
+.city-minimap {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid rgba(255,255,255,0.3);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  z-index: 10;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+
+  @media (max-width: 768px) {
+    width: 80px !important;
+    height: 80px !important;
+    bottom: 140px;
+    
+    svg {
+      width: 80px;
+      height: 80px;
+    }
+  }
+}
+
+// Touch Joystick
+.city-joystick {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  z-index: 15;
+  touch-action: none;
+
+  @media (min-width: 769px) {
+    display: none;
+  }
+
+  &__base {
+    width: 100px;
+    height: 100px;
+    background: rgba(255,255,255,0.1);
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+  }
+
+  &__knob {
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.4);
+    border-radius: 50%;
+    transition: none;
+    will-change: transform;
+  }
+}
+
+.city-enter-btn {
+  position: absolute;
+  bottom: 50px;
+  right: 30px;
+  z-index: 15;
+
+  @media (min-width: 769px) {
+    display: none;
+  }
+
+  button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(76, 175, 80, 0.85);
+    border: 2px solid rgba(255,255,255,0.4);
+    color: white;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+    cursor: pointer;
+
+    &:active {
+      background: rgba(56, 142, 60, 1);
+      transform: scale(0.9);
+    }
+  }
+}
+
+// Teleport Menu
+.teleport-menu {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(13, 27, 42, 0.95);
+  border: 2px solid rgba(255,255,255,0.2);
+  border-radius: 16px;
+  padding: 20px;
+  z-index: 20;
+  backdrop-filter: blur(16px);
+  max-width: 400px;
+  width: 90vw;
+
+  &__title {
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+
+    @media (max-width: 400px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__item {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px;
+    padding: 12px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    color: white;
+    transition: all 0.2s;
+    position: relative;
+
+    &:hover {
+      background: rgba(255,255,255,0.15);
+      transform: translateY(-2px);
+    }
+  }
+
+  &__icon {
+    font-size: 24px;
+  }
+
+  &__label {
+    font-size: 10px;
+    text-align: center;
+    opacity: 0.8;
+  }
+
+  &__badge {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background: #FF5722;
+    color: white;
+    font-size: 9px;
+    font-weight: 700;
+    min-width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__close {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.6);
+    font-size: 20px;
+    cursor: pointer;
+
+    &:hover { color: white; }
+  }
+}

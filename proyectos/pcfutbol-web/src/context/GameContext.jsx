@@ -543,7 +543,13 @@ function gameReducer(state, action) {
     }
 
     case 'SET_SCREEN':
-      return { ...state, currentScreen: action.payload };
+      return { ...state, currentScreen: action.payload, _cityBypass: action.payload !== 'office' ? false : state._cityBypass };
+
+    case 'SET_CITY_BYPASS':
+      return { ...state, _cityBypass: action.payload };
+
+    case 'SET_OFFICE_TAB':
+      return { ...state, pendingTab: action.payload, _cityBypass: true };
 
     case 'SET_SAVE_SLOT':
       return { ...state, _saveSlotIndex: action.payload };

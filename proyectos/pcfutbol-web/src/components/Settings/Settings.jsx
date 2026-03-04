@@ -276,6 +276,19 @@ export default function Settings({ onClose }) {
               </button>
             </div>
 
+            <div className="settings__toggle-item">
+              <div className="info">
+                <span className="label">🏙️ {t('settings.cityMode3D', 'Modo 3D Ciudad')}</span>
+                <span className="desc">{t('settings.cityMode3DDesc', 'Explora tu ciudad en 3D isométrico en vez del menú clásico')}</span>
+              </div>
+              <button
+                className={`settings__toggle ${settings.cityMode3D ? 'active' : ''}`}
+                onClick={() => handleSettingChange('cityMode3D', !settings.cityMode3D)}
+              >
+                <span className="toggle-knob"></span>
+              </button>
+            </div>
+
             {/* Game tutorials toggle — hidden for now
             <div className="settings__toggle-item">
               <div className="info">

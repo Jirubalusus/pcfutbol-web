@@ -25,6 +25,8 @@ import WorldCup from './components/WorldCup/WorldCup';
 import { useAudioManager } from './hooks/useAudioManager';
 import { useSoundEffects } from './hooks/useSoundEffects';
 import { checkPremiumStatus } from './services/purchaseService';
+import { lazy, Suspense } from 'react';
+const CityMode = lazy(() => import('./components/City3D/CityMode'));
 import './index.css';
 import './styles/_effects.scss';
 import './styles/_laptop-responsive.scss';
@@ -93,6 +95,13 @@ function GameRouter() {
           case 'team_selection':
             return <TeamSelection />;
           case 'office':
+            if (state.settings?.cityMode3D && !state._cityBypass) {
+              return (
+                <Suspense fallback={<div className="loading-screen"><div className="loading-content"><h1>🏙️</h1><p>Cargando ciudad...</p></div></div>}>
+                  <CityMode onExitCity={() => dispatch({ type: 'SET_CITY_BYPASS', payload: true })} />
+                </Suspense>
+              );
+            }
             return <Office />;
           case 'contrarreloj_setup':
             return <ContrarrelojSetup />;
