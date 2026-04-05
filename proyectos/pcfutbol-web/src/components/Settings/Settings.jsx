@@ -87,11 +87,22 @@ export default function Settings({ onClose }) {
     if (trimmed.length > 24) { setNameStatus('tooLong'); return; }
     setNameStatus('saving');
     try {
-      await updateProfile(auth.currentUser, { displayName: trimmed });
-      // Also persist to Firestore for cross-device/cookie-clear persistence
-      if (auth.currentUser?.uid) {
-        await setDoc(doc(db, 'user_profiles', auth.currentUser.uid), { managerName: trimmed }, { merge: true });
+      const uid = user?.uid || auth.currentUser?.uid;
+      const isGuestUser = user?.isGuest;
+
+      if (!isGuestUser && auth.currentUser) {
+        await updateProfile(auth.currentUser, { displayName: trimmed });
       }
+
+      // Persist manager name for cross-device loading.
+      // Keep both collections in sync because different parts of the app read from each one.
+      if (uid) {
+        await Promise.all([
+          setDoc(doc(db, 'user_profiles', uid), { managerName: trimmed }, { merge: true }),
+          setDoc(doc(db, 'users', uid), { displayName: trimmed }, { merge: true })
+        ]);
+      }
+
       dispatch({ type: 'SET_MANAGER_NAME', payload: trimmed });
       setNameStatus('saved');
       setEditingName(false);

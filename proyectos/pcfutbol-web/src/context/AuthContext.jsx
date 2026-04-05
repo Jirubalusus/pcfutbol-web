@@ -138,9 +138,11 @@ export function AuthProvider({ children }) {
 
   const logout = async () => {
     setError(null);
-    // Si es usuario invitado, solo limpiar el estado local
-    if (user?.isGuest) {
+    // Usuarios sin sesión Firebase real: limpiar estado local
+    if (user?.isGuest || user?.isPlayGames) {
       setUser(null);
+      setNeedsNickname(false);
+      setDisplayNameState(null);
       return;
     }
     try {
