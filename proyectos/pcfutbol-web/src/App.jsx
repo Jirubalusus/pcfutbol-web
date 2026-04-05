@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { GameProvider, useGame } from './context/GameContext';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { DataProvider } from './context/DataProvider';
@@ -9,24 +9,24 @@ import NotificationCenter from './components/Notifications/NotificationCenter';
 import MainMenu from './components/MainMenu/MainMenu';
 import NicknameModal from './components/NicknameModal/NicknameModal';
 import TeamSelection from './components/TeamSelection/TeamSelection';
-import Office from './components/Office/Office';
-import ContrarrelojSetup from './components/ContrarrelojSetup/ContrarrelojSetup';
-import ContrarrelojEnd from './components/ContrarrelojEnd/ContrarrelojEnd';
-import Ranking from './components/Ranking/Ranking';
-import RankedLobby from './components/Ranked/RankedLobby';
-import RankedMatch from './components/Ranked/RankedMatch';
-import DraftMatch from './components/Ranked/DraftMatch';
-import RankedLeaderboard from './components/Ranked/RankedLeaderboard';
-import ProManagerSetup from './components/ProManager/ProManagerSetup';
-import ProManagerSeasonEnd from './components/ProManager/ProManagerSeasonEnd';
-import GlorySetup from './components/GloryMode/GlorySetup';
-import GloryMenu from './components/GloryMode/GloryMenu';
-import WorldCup from './components/WorldCup/WorldCup';
 import { useAudioManager } from './hooks/useAudioManager';
 import { useSoundEffects } from './hooks/useSoundEffects';
 import { checkPremiumStatus } from './services/purchaseService';
-import { lazy, Suspense } from 'react';
+
+const Office = lazy(() => import('./components/Office/Office'));
 const CityMode = lazy(() => import('./components/City3D/CityMode'));
+const ContrarrelojSetup = lazy(() => import('./components/ContrarrelojSetup/ContrarrelojSetup'));
+const ContrarrelojEnd = lazy(() => import('./components/ContrarrelojEnd/ContrarrelojEnd'));
+const Ranking = lazy(() => import('./components/Ranking/Ranking'));
+const RankedLobby = lazy(() => import('./components/Ranked/RankedLobby'));
+const RankedMatch = lazy(() => import('./components/Ranked/RankedMatch'));
+const DraftMatch = lazy(() => import('./components/Ranked/DraftMatch'));
+const RankedLeaderboard = lazy(() => import('./components/Ranked/RankedLeaderboard'));
+const ProManagerSetup = lazy(() => import('./components/ProManager/ProManagerSetup'));
+const ProManagerSeasonEnd = lazy(() => import('./components/ProManager/ProManagerSeasonEnd'));
+const GlorySetup = lazy(() => import('./components/GloryMode/GlorySetup'));
+const GloryMenu = lazy(() => import('./components/GloryMode/GloryMenu'));
+const WorldCup = lazy(() => import('./components/WorldCup/WorldCup'));
 import './index.css';
 import './styles/_effects.scss';
 import './styles/_laptop-responsive.scss';
@@ -87,54 +87,81 @@ function GameRouter() {
     return <NicknameModal onConfirm={setNickname} />;
   }
 
+  const renderScreen = () => {
+    switch (state.currentScreen) {
+      case 'team_selection':
+        return <TeamSelection />;
+      case 'office':
+        if (state.settings?.cityMode3D && !state._cityBypass) {
+          return <CityMode onExitCity={() => dispatch({ type: 'SET_CITY_BYPASS', payload: true })} />;
+        }
+        return <Office />;
+      case 'contrarreloj_setup':
+        return <ContrarrelojSetup />;
+      case 'contrarreloj_end':
+        return <ContrarrelojEnd />;
+      case 'ranking':
+        return <Ranking />;
+      case 'ranked_lobby':
+        return <RankedLobby />;
+      case 'ranked_match':
+        return <RankedMatch />;
+      case 'ranked_draft':
+        return <DraftMatch
+          matchId={state.rankedMatchId}
+          onExit={() => dispatch({ type: 'SET_SCREEN', payload: 'ranked_lobby' })}
+        />;
+      case 'ranked_leaderboard':
+        return <RankedLeaderboard />;
+      case 'promanager_setup':
+        return <ProManagerSetup />;
+      case 'promanager_season_end':
+        return <ProManagerSeasonEnd />;
+      case 'glory_menu':
+        return <GloryMenu />;
+      case 'glory_setup':
+        return <GlorySetup />;
+      case 'worldcup_setup':
+      case 'worldcup':
+        return <WorldCup onExit={() => dispatch({ type: 'SET_SCREEN', payload: 'main_menu' })} />;
+      default:
+        return <MainMenu />;
+    }
+  };
+
+  const getLoadingMessage = () => {
+    if (state.currentScreen === 'office' && state.settings?.cityMode3D && !state._cityBypass) {
+      return { icon: '🏙️', text: 'Cargando ciudad...' };
+    }
+
+    const loadingMessages = {
+      office: { icon: '🏢', text: 'Cargando oficina...' },
+      contrarreloj_setup: { icon: '⏱️', text: 'Cargando contrarreloj...' },
+      contrarreloj_end: { icon: '🏁', text: 'Cargando resultados...' },
+      ranking: { icon: '🏆', text: 'Cargando ranking...' },
+      ranked_lobby: { icon: '🎯', text: 'Cargando lobby...' },
+      ranked_match: { icon: '⚔️', text: 'Cargando partido ranked...' },
+      ranked_draft: { icon: '🃏', text: 'Cargando draft...' },
+      ranked_leaderboard: { icon: '📊', text: 'Cargando clasificación...' },
+      promanager_setup: { icon: '💼', text: 'Cargando Pro Manager...' },
+      promanager_season_end: { icon: '📈', text: 'Cargando fin de temporada...' },
+      glory_menu: { icon: '🌟', text: 'Cargando Glory Mode...' },
+      glory_setup: { icon: '⚙️', text: 'Cargando configuración...' },
+      worldcup_setup: { icon: '🌍', text: 'Cargando Mundial...' },
+      worldcup: { icon: '🌍', text: 'Cargando Mundial...' }
+    };
+
+    return loadingMessages[state.currentScreen] || { icon: '⚽', text: 'Cargando...' };
+  };
+
+  const loadingState = getLoadingMessage();
+
   return (
     <>
       {showNotifications && <NotificationCenter />}
-      {(() => {
-        switch (state.currentScreen) {
-          case 'team_selection':
-            return <TeamSelection />;
-          case 'office':
-            if (state.settings?.cityMode3D && !state._cityBypass) {
-              return (
-                <Suspense fallback={<div className="loading-screen"><div className="loading-content"><h1>🏙️</h1><p>Cargando ciudad...</p></div></div>}>
-                  <CityMode onExitCity={() => dispatch({ type: 'SET_CITY_BYPASS', payload: true })} />
-                </Suspense>
-              );
-            }
-            return <Office />;
-          case 'contrarreloj_setup':
-            return <ContrarrelojSetup />;
-          case 'contrarreloj_end':
-            return <ContrarrelojEnd />;
-          case 'ranking':
-            return <Ranking />;
-          case 'ranked_lobby':
-            return <RankedLobby />;
-          case 'ranked_match':
-            return <RankedMatch />;
-          case 'ranked_draft':
-            return <DraftMatch
-              matchId={state.rankedMatchId}
-              onExit={() => dispatch({ type: 'SET_SCREEN', payload: 'ranked_lobby' })}
-            />;
-          case 'ranked_leaderboard':
-            return <RankedLeaderboard />;
-          case 'promanager_setup':
-            return <ProManagerSetup />;
-          case 'promanager_season_end':
-            return <ProManagerSeasonEnd />;
-          case 'glory_menu':
-            return <GloryMenu />;
-          case 'glory_setup':
-            return <GlorySetup />;
-          case 'worldcup_setup':
-          case 'worldcup':
-            return <WorldCup onExit={() => dispatch({ type: 'SET_SCREEN', payload: 'main_menu' })} />;
-          default:
-            return <MainMenu />;
-        }
-      })()}
+      <Suspense fallback={<div className="loading-screen"><div className="loading-content"><h1>{loadingState.icon}</h1><p>{loadingState.text}</p></div></div>}>
+        {renderScreen()}
+      </Suspense>
     </>
   );
 }
