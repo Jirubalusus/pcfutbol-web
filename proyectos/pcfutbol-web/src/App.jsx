@@ -8,11 +8,10 @@ import ErrorBoundary from './components/ErrorBoundary';
 import NotificationCenter from './components/Notifications/NotificationCenter';
 import MainMenu from './components/MainMenu/MainMenu';
 import NicknameModal from './components/NicknameModal/NicknameModal';
-import TeamSelection from './components/TeamSelection/TeamSelection';
 import { useAudioManager } from './hooks/useAudioManager';
 import { useSoundEffects } from './hooks/useSoundEffects';
-import { checkPremiumStatus } from './services/purchaseService';
 
+const TeamSelection = lazy(() => import('./components/TeamSelection/TeamSelection'));
 const Office = lazy(() => import('./components/Office/Office'));
 const CityMode = lazy(() => import('./components/City3D/CityMode'));
 const ContrarrelojSetup = lazy(() => import('./components/ContrarrelojSetup/ContrarrelojSetup'));
@@ -39,8 +38,13 @@ function GameRouter() {
   // Check premium status (Google Play Billing) on native
   useEffect(() => {
     async function checkPremium() {
-      const isPremium = await checkPremiumStatus();
-      if (isPremium) dispatch({ type: 'SET_PREMIUM', payload: true });
+      try {
+        const { checkPremiumStatus } = await import('./services/purchaseService');
+        const isPremium = await checkPremiumStatus();
+        if (isPremium) dispatch({ type: 'SET_PREMIUM', payload: true });
+      } catch {
+        // Non-native platforms can skip billing bootstrap
+      }
     }
     if (!authLoading) checkPremium();
   }, [authLoading, dispatch]);

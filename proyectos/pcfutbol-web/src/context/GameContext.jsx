@@ -6,10 +6,8 @@ import { saveContrarreloj, deleteContrarrelojSave } from '../firebase/contrarrel
 import { saveProManager, deleteProManagerSave } from '../firebase/proManagerService';
 import { saveGlory, deleteGlorySave } from '../firebase/glorySaveService';
 import { saveCareer } from '../firebase/careerSaveService';
-import { checkPremiumStatus } from '../services/purchaseService';
 import { loadUserSettings, saveUserSettings } from '../firebase/settingsService';
 import { calculateBoardConfidence } from '../game/proManagerEngine';
-import { LALIGA_TEAMS } from '../data/teamsFirestore';
 import { generateFacilityEvent, generateYouthPlayer, generateSonPlayer, applyEventChoice, FACILITY_SPECIALIZATIONS } from '../game/facilitiesSystem';
 import { assignRole } from '../game/playerRoles';
 import { GlobalTransferEngine, isTransferWindowOpen, formatTransferPrice, calculateMarketValue, TEAM_PROFILES } from '../game/globalTransferEngine';
@@ -4895,6 +4893,7 @@ export function GameProvider({ children }) {
         }
         // Check premium status (remove ads purchase)
         try {
+          const { checkPremiumStatus } = await import('../services/purchaseService');
           const isPremium = await checkPremiumStatus();
           if (isPremium) dispatch({ type: 'SET_PREMIUM', payload: true });
         } catch (e) { /* not native, ignore */ }
