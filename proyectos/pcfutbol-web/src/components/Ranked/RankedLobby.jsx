@@ -5,7 +5,7 @@ import { useGame } from '../../context/GameContext';
 import {
   getOrCreatePlayer, onPlayerChange, joinQueue, leaveQueue,
   onQueueChange, findOpponent, createMatch, getMatchHistory,
-  abandonActiveMatches, findAndCreateMatch
+  abandonActiveMatches, findAndCreateMatch, findMyActiveMatch
 } from '../../firebase/rankedService';
 import {
   joinDraftQueue, leaveDraftQueue, findAndCreateDraftMatch,
@@ -85,7 +85,6 @@ export default function RankedLobby() {
       unsubQueue = onQueueChange(user.uid, async (queueData) => {
         if (!queueData && searching && !matchId && !cancelled) {
           try {
-            const { findMyActiveMatch } = await import('../../firebase/rankedService');
             const activeMatch = await findMyActiveMatch(user.uid);
             if (activeMatch && !cancelled) {
               setMatchId(activeMatch.id);

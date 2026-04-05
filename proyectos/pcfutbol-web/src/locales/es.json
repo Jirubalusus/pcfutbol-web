@@ -62,6 +62,7 @@
     "reachChampions": "Llega a la Champions desde abajo",
     "guestNotice": "Inicia sesión para guardar tu progreso en la nube",
     "tribute": "The beautiful game, managed by you",
+    "supportUs": "Apoya el proyecto",
     "contrarrelojActive": "Contrarreloj activo",
     "newGame": "Nueva partida",
     "deleteWarning": "⚠️ Empezar nueva partida borrará el progreso actual",
@@ -290,7 +291,9 @@
     "canRenew": "Se puede renovar",
     "cannotRenew": "El jugador no necesita renovar (le quedan más de 2 años)",
     "playerRetiring": "El jugador ha anunciado su retiro",
-    "yearlySalary": "Masa salarial"
+    "yearlySalary": "Masa salarial",
+    "weeksShort": "sem",
+    "matchesShort": "p"
   },
   "transfers": {
     "title": "Fichajes",
@@ -1884,6 +1887,12 @@
     "ranked": "Ranked",
     "injuryTitle": "🏥 Lesión: {{player}}",
     "injuryContent": "{{player}} estará {{weeks}} semanas de baja ({{severity}})",
+    "doubleYellowTitle": "🟨🟨 Doble amarilla: {{player}}",
+    "doubleYellowContent": "{{player}} vio la doble amarilla y será suspendido {{matches}} partido(s)",
+    "redCardTitle": "🟥 Roja directa: {{player}}",
+    "redCardContent": "{{player}} fue expulsado y será suspendido {{matches}} partido(s)",
+    "yellowWarningTitle": "⚠️ Peligro de sanción: {{player}}",
+    "yellowWarningContent": "{{player}} acumula 4 amarillas. Una más y será suspendido 1 partido",
     "ticketSalesTitle": "🎟️ Taquilla: {{tickets}} entradas ({{fill}}% aforo)",
     "ticketSalesContent": "Taquilla: {{ticketIncome}} + Consumiciones: {{concessionIncome}} | Acumulado: {{accumulated}}"
   },

@@ -62,6 +62,7 @@
     "reachChampions": "Reach Champions League from the bottom",
     "guestNotice": "Log in to save your progress in the cloud",
     "tribute": "The beautiful game, managed by you",
+    "supportUs": "Support the project",
     "contrarrelojActive": "Race Against Time Active",
     "newGame": "New Game",
     "deleteWarning": "?? Starting a new game will delete current progress",
@@ -303,7 +304,9 @@
     "canRenew": "Can be renewed",
     "cannotRenew": "Player doesn't need renewal (more than 2 years left)",
     "playerRetiring": "Player has announced retirement",
-    "yearlySalary": "Wage bill"
+    "yearlySalary": "Wage bill",
+    "weeksShort": "wk",
+    "matchesShort": "m"
   },
   "transfers": {
     "title": "Transfers",
@@ -1871,6 +1874,12 @@
     "ranked": "Ranked",
     "injuryTitle": "🏥 Injury: {{player}}",
     "injuryContent": "{{player}} will be out for {{weeks}} weeks ({{severity}})",
+    "doubleYellowTitle": "🟨🟨 Double yellow: {{player}}",
+    "doubleYellowContent": "{{player}} received a double yellow and will be suspended for {{matches}} match(es)",
+    "redCardTitle": "🟥 Straight red: {{player}}",
+    "redCardContent": "{{player}} was sent off and will be suspended for {{matches}} match(es)",
+    "yellowWarningTitle": "⚠️ Booking danger: {{player}}",
+    "yellowWarningContent": "{{player}} has 4 yellow cards. One more and they'll be suspended for 1 match",
     "ticketSalesTitle": "🎟️ Tickets: {{tickets}} sold ({{fill}}% capacity)",
     "ticketSalesContent": "Tickets: {{ticketIncome}} + Concessions: {{concessionIncome}} | Accumulated: {{accumulated}}"
   },

@@ -5,6 +5,7 @@
  */
 import { db } from '../../firebase/config';
 import { collection, getDocs, doc, getDoc, setDoc, deleteDoc, query, where, orderBy } from 'firebase/firestore';
+import { deleteContrarrelojSave } from '../../firebase/contrarrelojSaveService';
 
 const EDITIONS_COLLECTION = 'editions';
 const PENDING_COLLECTION = 'editions_pending'; // Packs pending review
@@ -174,7 +175,6 @@ export async function deleteAllSaves(userId) {
   
   try {
     // Delete contrarreloj save
-    const { deleteContrarrelojSave } = await import('../../firebase/contrarrelojSaveService');
     await deleteContrarrelojSave(userId).catch(() => {});
     
     // Delete career save slots

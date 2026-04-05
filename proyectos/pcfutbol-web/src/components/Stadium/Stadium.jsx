@@ -231,7 +231,7 @@ export default function Stadium() {
   const lastEventWeek = stadium.lastEventWeek ?? 0; // backward compat
   const seasonTicketIncome = (seasonTickets || 0) * seasonTicketPrice;
   const namingIncome = naming?.yearlyIncome ?? 0;
-  const maintenanceCost = Math.round((currentLevel?.maintenance || 500000) * getFacilityCostMultiplier(state.leagueId || state.playerLeagueId || 'laliga')); // Anual, escalado por tier
+  const maintenanceCost = currentLevel?.maintenance || 500000; // Anual, precio fijo universal
   // Precio justo dinámico según contexto del equipo
   const playerLeagueId = state.playerLeagueId || 'laliga';
   const division = ['segunda', 'segundaRFEF', 'primeraRFEF'].includes(playerLeagueId) ? 2 : 1;
@@ -561,8 +561,6 @@ export default function Stadium() {
 
   // Stadium services
   const services = stadium.services || {};
-  const costMult = getFacilityCostMultiplier(state.leagueId || state.playerLeagueId || 'laliga');
-  
   const SERVICE_KEYS = ['catering', 'merchandise', 'parking', 'events', 'vip'];
   const SERVICE_NAMES = {
     catering: 'stadium.serviceCatering',
@@ -578,7 +576,7 @@ export default function Stadium() {
     if (currentLv >= maxLv) return;
     const nextLv = currentLv + 1;
     const config = STADIUM_SERVICES[serviceKey];
-    const cost = Math.round(config.levels[nextLv].cost * costMult);
+    const cost = config.levels[nextLv].cost;
     if (state.money < cost) return;
     
     updateStadium({
@@ -691,7 +689,7 @@ export default function Stadium() {
                     <span className="of-total">/ {maxSeasonTickets.toLocaleString()} {t('stadium.maxShort')}</span>
                   </div>
                   <div className="progress-bar">
-                    <div className="fill" style={{ width: `${(calculatedSeasonTickets / maxSeasonTickets) * 100}%` }}></div>
+                    <div className="fill" style={{ width: `${(calculatedSeasonTickets / (maxSeasonTickets || 1)) * 100}%` }}></div>
                   </div>
                   <div className="abonados-factors">
                     <span title={t('stadium.avgOverall')}>⭐ {teamOverall}</span>
@@ -908,7 +906,7 @@ export default function Stadium() {
               const locked = maxLv === 0; // Not unlocked yet
               const nextLv = currentLv + 1;
               const hasNext = nextLv <= maxLv;
-              const nextCost = hasNext ? Math.round(config.levels[nextLv].cost * costMult) : 0;
+              const nextCost = hasNext ? config.levels[nextLv].cost : 0;
               const canAfford = state.money >= nextCost;
               const currentRate = currentLv > 0 ? config.levels[currentLv].rate : 0;
               const nextRate = hasNext ? config.levels[nextLv].rate : null;

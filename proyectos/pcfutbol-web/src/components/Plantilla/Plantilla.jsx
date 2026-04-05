@@ -458,7 +458,7 @@ export default function Plantilla() {
           const isTransferListed = player.transferListed;
           
           return (
-            <div key={player.name} className={`player-row ${attention ? 'attention' : ''} ${isTransferListed ? 'listed' : ''}`}
+            <div key={player.name} className={`player-row ${attention ? 'attention' : ''} ${isTransferListed ? 'listed' : ''} ${player.injured ? 'injured' : ''} ${player.suspended ? 'suspended' : ''}`}
               onClick={(e) => {
                 // On mobile, tap row to open action sheet
                 if (window.innerWidth <= 768 && !e.target.closest('.player-actions')) {
@@ -488,6 +488,20 @@ export default function Plantilla() {
                         )}
                         {player.retiring && <span className="tag-retiring"><Flag size={12} /> {t('plantilla.retiring')}</span>}
                       </div>
+                    )}
+                    {/* Injury & suspension indicators */}
+                    {player.injured && player.injuryWeeksLeft > 0 && (
+                      <span className="tag-injury">🏥 {player.injuryWeeksLeft} {t('plantilla.weeksShort', 'sem')}</span>
+                    )}
+                    {player.suspended && (
+                      <span className={`tag-suspended ${player.suspensionType === 'red' ? 'tag-suspended--red' : 'tag-suspended--yellow'}`}>
+                        {player.suspensionType === 'red' ? '🟥' : '🟨'} {player.suspensionMatches}{t('plantilla.matchesShort', 'p')}
+                      </span>
+                    )}
+                    {!player.suspended && (player.yellowCards || 0) > 0 && (
+                      <span className={`tag-yellows ${(player.yellowCards || 0) >= 4 ? 'tag-yellows--danger' : ''}`}>
+                        🟨 {player.yellowCards}/5
+                      </span>
                     )}
                   </div>
                   <span className="meta">{player.overall} OVR · {player.age} {t('plantilla.years')}</span>

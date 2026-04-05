@@ -645,15 +645,20 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
   // Añadir tarjetas (2-4 amarillas, 0-1 rojas)
   const yellowCount = 2 + Math.floor(Math.random() * 3);
   const strictness = referee === 'strict' ? 1.5 : referee === 'lenient' ? 0.6 : 1;
-  const playersWithYellow = new Set(); // Track players who already have a yellow
+  const playersWithYellow = new Set(); // Track players who already have a yellow (by team-name key)
+  const sentOff = new Set(); // Players sent off can't get more cards
   
   for (let i = 0; i < Math.floor(yellowCount * strictness); i++) {
     const isHome = Math.random() > 0.5;
     const team = isHome ? homeTeam : awayTeam;
     const teamLabel = isHome ? 'home' : 'away';
     const player = selectRandomPlayer(team);
-    const playerKey = `${teamLabel}-${player}`;
+    const playerName = typeof player === 'object' ? player.name : player;
+    const playerKey = `${teamLabel}-${playerName}`;
     const minute = Math.floor(Math.random() * 90) + 1;
+    
+    // Skip if player was already sent off
+    if (sentOff.has(playerKey)) continue;
     
     if (playersWithYellow.has(playerKey)) {
       // Second yellow → red card (double yellow)
@@ -671,6 +676,7 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
         isSecondYellow: true,
         reason: 'Segunda amarilla'
       });
+      sentOff.add(playerKey);
     } else {
       playersWithYellow.add(playerKey);
       events.push({
@@ -682,17 +688,23 @@ function generateMatchEvents(homeScore, awayScore, homeTeam, awayTeam, homeStren
     }
   }
   
-  // Rojas directas: cada equipo tiene ~18% de probabilidad por partido (~7/temporada, realista)
+  // Rojas directas: ~8% chance per team (~3/temporada, realista)
   [homeTeam, awayTeam].forEach((team, idx) => {
     const teamLabel = idx === 0 ? 'home' : 'away';
-    if (Math.random() < 0.18 * strictness) {
-      events.push({
-        type: 'red_card',
-        team: teamLabel,
-        minute: 25 + Math.floor(Math.random() * 60),
-        player: selectRandomPlayer(team),
-        isSecondYellow: false
-      });
+    if (Math.random() < 0.08 * strictness) {
+      const player = selectRandomPlayer(team);
+      const playerName = typeof player === 'object' ? player.name : player;
+      const playerKey = `${teamLabel}-${playerName}`;
+      if (!sentOff.has(playerKey)) {
+        events.push({
+          type: 'red_card',
+          team: teamLabel,
+          minute: 25 + Math.floor(Math.random() * 60),
+          player,
+          isSecondYellow: false
+        });
+        sentOff.add(playerKey);
+      }
     }
   });
   

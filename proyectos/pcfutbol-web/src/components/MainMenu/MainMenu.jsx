@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { getAuth } from 'firebase/auth';
 import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { useAuth } from '../../context/AuthContext';
@@ -10,7 +11,7 @@ import { hasActiveProManager, getProManagerSave, deleteProManagerSave } from '..
 import { hasActiveGlory, getGlorySave, deleteGlorySave } from '../../firebase/glorySaveService';
 import { 
   Play, LogIn, LogOut, Save, Trophy, Settings as SettingsIcon, 
-  Lightbulb, User, Gamepad2, ChevronRight, Timer, Swords, Briefcase, Package, Mountain, Globe
+  Lightbulb, User, Gamepad2, ChevronRight, Timer, Briefcase, Package, Mountain, Globe
 } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
 import EditionMode from '../EditionMode/EditionMode';
@@ -26,7 +27,6 @@ export default function MainMenu() {
   const { user, isAuthenticated, isEmailVerified, logout, loading: authLoading } = useAuth();
   const [animateIn, setAnimateIn] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
-  const [menuTab, setMenuTab] = useState('solo');
   const [showAuth, setShowAuth] = useState(false);
   const [loggingOut, setLoggingOut] = useState(false);
   
@@ -197,7 +197,6 @@ export default function MainMenu() {
       const saveData = await getCareerSave(user.uid);
       if (saveData) {
         dispatch({ type: 'LOAD_SAVE', payload: { ...saveData, gameMode: 'career', rankedMatchId: null } });
-        const { getAuth } = await import('firebase/auth');
         const dn = getAuth().currentUser?.displayName;
         if (dn) dispatch({ type: 'SET_MANAGER_NAME', payload: dn });
         dispatch({ type: 'SET_SCREEN', payload: 'office' });
@@ -258,7 +257,6 @@ export default function MainMenu() {
       if (saveData) {
         dispatch({ type: 'LOAD_SAVE', payload: { ...saveData, _contrarrelojUserId: user.uid, gameMode: 'contrarreloj', rankedMatchId: null } });
         // Sync manager name from Firebase Auth
-        const { getAuth } = await import('firebase/auth');
         const dn = getAuth().currentUser?.displayName;
         if (dn) dispatch({ type: 'SET_MANAGER_NAME', payload: dn });
         dispatch({ type: 'SET_SCREEN', payload: 'office' });
@@ -296,8 +294,7 @@ export default function MainMenu() {
       if (saveData) {
         dispatch({ type: 'LOAD_SAVE', payload: { ...saveData, _proManagerUserId: user.uid, gameMode: 'promanager', rankedMatchId: null } });
         // Sync manager name from Firebase Auth
-        const { getAuth: getAuth2 } = await import('firebase/auth');
-        const dn2 = getAuth2().currentUser?.displayName;
+        const dn2 = getAuth().currentUser?.displayName;
         if (dn2) dispatch({ type: 'SET_MANAGER_NAME', payload: dn2 });
         dispatch({ type: 'SET_SCREEN', payload: 'office' });
       }
@@ -341,8 +338,7 @@ export default function MainMenu() {
       const saveData = await getGlorySave(user.uid);
       if (saveData) {
         dispatch({ type: 'LOAD_SAVE', payload: { ...saveData, _gloryUserId: user.uid, gameMode: 'glory', rankedMatchId: null } });
-        const { getAuth: getAuth3 } = await import('firebase/auth');
-        const dn3 = getAuth3().currentUser?.displayName;
+        const dn3 = getAuth().currentUser?.displayName;
         if (dn3) dispatch({ type: 'SET_MANAGER_NAME', payload: dn3 });
         dispatch({ type: 'SET_SCREEN', payload: 'office' });
       }
@@ -468,144 +464,102 @@ export default function MainMenu() {
             </button>
           ) : (
             <>
-              {/* Tab selector */}
-              <div className="main-menu__tabs">
-                <button 
-                  className={`main-menu__tab ${menuTab === 'solo' ? 'active' : ''}`}
-                  onClick={() => setMenuTab('solo')}
-                >
-                  <Gamepad2 size={16} /> {t('mainMenu.tabSolo')}
-                </button>
-                <div className="main-menu__tab-wrapper main-menu__tab-wrapper--disabled" title={t('mainMenu.comingSoon')}>
-                  <button 
-                    className={`main-menu__tab`}
-                    disabled
-                  >
-                    <Swords size={16} /> {t('mainMenu.tabMulti')}
-                  </button>
+              {/* Hero: Carrera */}
+              <button className="main-menu__mode-card main-menu__mode-card--hero" onClick={handlePlay}>
+                <div className="mode-card__icon"><Gamepad2 size={28} /></div>
+                <div className="mode-card__info">
+                  <span className="mode-card__name">{t('mainMenu.playButton')}</span>
+                  <span className="mode-card__desc">
+                    {careerInfo.hasActive
+                      ? `${careerInfo.summary?.teamName} · ${t('common.season')} ${careerInfo.summary?.season} · ${t('common.week')} ${careerInfo.summary?.week}`
+                      : t('mainMenu.loadOrCreate')
+                    }
+                  </span>
                 </div>
-              </div>
+                <ChevronRight size={20} className="mode-card__arrow" />
+              </button>
 
-              {/* Solo modes */}
-              {menuTab === 'solo' && (
-                <div className="main-menu__modes">
-                  {/* Carrera */}
-                  <button className="main-menu__mode-card" onClick={handlePlay}>
-                    <div className="mode-card__icon"><Gamepad2 size={24} /></div>
-                    <div className="mode-card__info">
-                      <span className="mode-card__name">{t('mainMenu.playButton')}</span>
-                      <span className="mode-card__desc">
-                        {careerInfo.hasActive
-                          ? `${careerInfo.summary?.teamName} · ${t('common.season')} ${careerInfo.summary?.season}`
-                          : t('mainMenu.loadOrCreate')
-                        }
-                      </span>
-                    </div>
-                    <ChevronRight size={18} className="mode-card__arrow" />
-                  </button>
-
-                  {/* Contrarreloj */}
-                  <button className="main-menu__mode-card" onClick={handleContrarreloj}>
-                    <div className="mode-card__icon mode-card__icon--contrarreloj"><Timer size={24} /></div>
-                    <div className="mode-card__info">
-                      <span className="mode-card__name">{t('mainMenu.contrarreloj')}</span>
-                      <span className="mode-card__desc">
-                        {contrarrelojInfo.hasActive 
-                          ? `${contrarrelojInfo.summary?.teamName} · ${t('common.season')} ${contrarrelojInfo.summary?.season}`
-                          : t('mainMenu.reachChampions')
-                        }
-                      </span>
-                    </div>
-                    <ChevronRight size={18} className="mode-card__arrow" />
-                  </button>
-
-                  {/* Mánager Profesional */}
-                  <button className="main-menu__mode-card" onClick={handleProManager}>
-                    <div className="mode-card__icon mode-card__icon--promanager"><Briefcase size={24} /></div>
-                    <div className="mode-card__info">
-                      <span className="mode-card__name">{t('proManager.title')}</span>
-                      <span className="mode-card__desc">
-                        {proManagerInfo.hasActive
-                          ? `${proManagerInfo.summary?.teamName} · ${t('proManager.prestige')} ${proManagerInfo.summary?.prestige}`
-                          : t('proManager.menuSubtitle')
-                        }
-                      </span>
-                    </div>
-                    <ChevronRight size={18} className="mode-card__arrow" />
-                  </button>
-
-                  {/* Camino a la Gloria */}
-                  <button className="main-menu__mode-card" onClick={handleGlory}>
-                    <div className="mode-card__icon mode-card__icon--glory"><Mountain size={24} /></div>
-                    <div className="mode-card__info">
-                      <span className="mode-card__name">Camino a la Gloria</span>
-                      <span className="mode-card__desc">
-                        {gloryInfo.hasActive 
-                          ? `${gloryInfo.summary?.teamName} · Temporada ${gloryInfo.summary?.season || 1}`
-                          : 'Crea tu club desde cero. Roguelike con cartas.'}
-                      </span>
-                    </div>
-                    <ChevronRight size={18} className="mode-card__arrow" />
-                  </button>
-
-                  {/* Modo Mundial */}
-                  <button className="main-menu__mode-card" onClick={() => dispatch({ type: 'SET_SCREEN', payload: 'worldcup_setup' })}>
-                    <div className="mode-card__icon mode-card__icon--worldcup"><Globe size={24} /></div>
-                    <div className="mode-card__info">
-                      <span className="mode-card__name">Modo Mundial</span>
-                      <span className="mode-card__desc">Dirige tu selección. Eventos estilo Reigns.</span>
-                    </div>
-                    <ChevronRight size={18} className="mode-card__arrow" />
-                  </button>
-                </div>
-              )}
-
-              {/* Multi modes */}
-              {menuTab === 'multi' && (
-                <div className="main-menu__modes">
-                  <button className="main-menu__mode-card" onClick={() => dispatch({ type: 'SET_SCREEN', payload: 'ranked_lobby' })}>
-                    <div className="mode-card__icon mode-card__icon--ranked"><Swords size={24} /></div>
-                    <div className="mode-card__info">
-                      <span className="mode-card__name">{t('mainMenu.ranked')}</span>
-                      <span className="mode-card__desc">{t('mainMenu.rankedSubtitle')}</span>
-                    </div>
-                    <ChevronRight size={18} className="mode-card__arrow" />
-                  </button>
-
-                  <div className="main-menu__coming-soon">
-                    <p>{t('mainMenu.moreModesComingSoon')}</p>
+              {/* Secondary modes grid */}
+              <div className="main-menu__modes-grid">
+                {/* Contrarreloj */}
+                <button className="main-menu__mode-card main-menu__mode-card--compact" onClick={handleContrarreloj}>
+                  <div className="mode-card__icon mode-card__icon--contrarreloj"><Timer size={20} /></div>
+                  <div className="mode-card__info">
+                    <span className="mode-card__name">{t('mainMenu.contrarreloj')}</span>
+                    <span className="mode-card__desc">
+                      {contrarrelojInfo.hasActive 
+                        ? `${contrarrelojInfo.summary?.teamName}`
+                        : t('mainMenu.reachChampions')
+                      }
+                    </span>
                   </div>
-                </div>
-              )}
+                </button>
+
+                {/* Mánager Profesional */}
+                <button className="main-menu__mode-card main-menu__mode-card--compact" onClick={handleProManager}>
+                  <div className="mode-card__icon mode-card__icon--promanager"><Briefcase size={20} /></div>
+                  <div className="mode-card__info">
+                    <span className="mode-card__name">{t('proManager.title')}</span>
+                    <span className="mode-card__desc">
+                      {proManagerInfo.hasActive
+                        ? `${proManagerInfo.summary?.teamName}`
+                        : t('proManager.menuSubtitle')
+                      }
+                    </span>
+                  </div>
+                </button>
+
+                {/* Camino a la Gloria */}
+                <button className="main-menu__mode-card main-menu__mode-card--compact" onClick={handleGlory}>
+                  <div className="mode-card__icon mode-card__icon--glory"><Mountain size={20} /></div>
+                  <div className="mode-card__info">
+                    <span className="mode-card__name">Camino a la Gloria</span>
+                    <span className="mode-card__desc">
+                      {gloryInfo.hasActive 
+                        ? `${gloryInfo.summary?.teamName}`
+                        : 'Roguelike con cartas'}
+                    </span>
+                  </div>
+                </button>
+
+                {/* Modo Mundial */}
+                <button className="main-menu__mode-card main-menu__mode-card--compact" onClick={() => dispatch({ type: 'SET_SCREEN', payload: 'worldcup_setup' })}>
+                  <div className="mode-card__icon mode-card__icon--worldcup"><Globe size={20} /></div>
+                  <div className="mode-card__info">
+                    <span className="mode-card__name">Modo Mundial</span>
+                    <span className="mode-card__desc">Dirige tu selección</span>
+                  </div>
+                </button>
+              </div>
             </>
           )}
 
           <div className="main-menu__secondary">
             {isAuthenticated && (
             <button 
-              className="main-menu__btn main-menu__btn--small"
+              className="main-menu__btn main-menu__btn--icon"
               onClick={() => dispatch({ type: 'SET_SCREEN', payload: 'ranking' })}
+              title={t('mainMenu.recordsButton')}
             >
-              <Trophy size={20} className="icon-svg" />
-              <span className="label">{t('mainMenu.recordsButton')}</span>
+              <Trophy size={18} className="icon-svg" />
             </button>
             )}
             
             <button 
-              className="main-menu__btn main-menu__btn--small"
+              className="main-menu__btn main-menu__btn--icon"
               onClick={() => setShowSettings(true)}
+              title={t('mainMenu.optionsButton')}
             >
-              <SettingsIcon size={20} className="icon-svg" />
-              <span className="label">{t('mainMenu.optionsButton')}</span>
+              <SettingsIcon size={18} className="icon-svg" />
             </button>
 
             {isAuthenticated && (
             <button 
-              className="main-menu__btn main-menu__btn--small main-menu__btn--edition"
+              className="main-menu__btn main-menu__btn--icon"
               onClick={() => setShowEditionMode(true)}
+              title={t('mainMenu.editionButton')}
             >
-              <Package size={20} className="icon-svg" />
-              <span className="label">{t('mainMenu.editionButton')}</span>
+              <Package size={18} className="icon-svg" />
             </button>
             )}
           </div>
@@ -769,6 +723,14 @@ export default function MainMenu() {
         
         <footer className="main-menu__footer">
           <p>{t('mainMenu.tribute')}</p>
+          <a 
+            href="https://buymeacoffee.com/jirubalusus" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="main-menu__bmc-link"
+          >
+            ☕ {t('mainMenu.supportUs', 'Support the project')}
+          </a>
         </footer>
       </div>
 

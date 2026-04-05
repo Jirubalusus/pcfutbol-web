@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { getAuth } from 'firebase/auth';
 import { useTranslation } from 'react-i18next';
 import { FolderOpen, Save, FolderCog, Trash2, PlusCircle, Play, ArrowLeft } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
@@ -55,7 +56,6 @@ export default function SaveSlots({ mode = 'load', onBack, onSlotSelected }) {
         dispatch({ type: 'LOAD_SAVE', payload: saveData });
         dispatch({ type: 'SET_SAVE_SLOT', payload: slotIndex });
         // Sync manager name from Firebase Auth (source of truth over saved gaffer... defaults)
-        const { getAuth } = await import('firebase/auth');
         const displayName = getAuth().currentUser?.displayName;
         if (displayName) {
           dispatch({ type: 'SET_MANAGER_NAME', payload: displayName });

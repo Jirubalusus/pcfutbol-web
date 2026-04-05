@@ -62,8 +62,6 @@ function getPerkStatus(cardId, state) {
       return { status: 'Aplicado', desc: 'Tu portero titular recibió +15 OVR', };
     case 'max_speed':
       return { status: 'Aplicado', desc: 'Delanteros +10 velocidad, -5 defensa' };
-    case 'diplomat':
-      return { status: 'Activo', desc: 'Los jugadores nunca rechazan renovaciones', active: true };
     case 'fame':
       return { status: 'Activo', desc: `Ingresos por sponsors x${gloryData.sponsorMultiplier || 2}`, active: true };
     case 'golden_academy':

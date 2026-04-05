@@ -553,6 +553,18 @@
       font-size: 0.8rem;
       color: var(--color-text-secondary);
     }
+
+    .event-team {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--color-text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      opacity: 0.6;
+      min-width: 32px;
+      text-align: right;
+      flex-shrink: 0;
+    }
   }
 
   &__skip-btn {

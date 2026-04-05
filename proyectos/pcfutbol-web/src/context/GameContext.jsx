@@ -1,10 +1,12 @@
-﻿import React, { createContext, useContext, useReducer, useEffect, useRef } from 'react';
+import React, { createContext, useContext, useReducer, useEffect, useRef } from 'react';
 import { db, auth } from '../firebase/config';
 import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 import { saveContrarreloj, deleteContrarrelojSave } from '../firebase/contrarrelojSaveService';
 import { saveProManager, deleteProManagerSave } from '../firebase/proManagerService';
 import { saveGlory, deleteGlorySave } from '../firebase/glorySaveService';
+import { saveCareer } from '../firebase/careerSaveService';
+import { checkPremiumStatus } from '../services/purchaseService';
 import { loadUserSettings, saveUserSettings } from '../firebase/settingsService';
 import { calculateBoardConfidence } from '../game/proManagerEngine';
 import { LALIGA_TEAMS } from '../data/teamsFirestore';
@@ -171,7 +173,7 @@ const initialState = {
     medical: null,
     training: null
   },
-  facilitySpecsLocked: {},  // { youth: true, medical: true } â†' bloqueado hasta nueva temporada
+  facilitySpecsLocked: {},  // { youth: true, medical: true } → bloqueado hasta nueva temporada
 
   // Facility Stats (para feedback)
   facilityStats: {
@@ -300,7 +302,7 @@ function gameReducer(state, action) {
       const _toArr = (v) => {
         if (Array.isArray(v)) return v;
         if (v && typeof v === 'object' && !Array.isArray(v)) {
-          // Firestore object-with-numeric-keys â†' array
+          // Firestore object-with-numeric-keys → array
           const keys = Object.keys(v);
           if (keys.length > 0 && keys.every(k => /^\d+$/.test(k))) {
             return keys.sort((a, b) => +a - +b).map(k => v[k]);
@@ -1638,7 +1640,7 @@ function gameReducer(state, action) {
       // ============================================================
       // AUTO-RESOLVE pending European/SA matches (e.g. during simulate season)
       // If ADVANCE_WEEK is called while a pendingEuropeanMatch/pendingSAMatch
-      // exists, the player didn't play it interactively â†' auto-simulate.
+      // exists, the player didn't play it interactively → auto-simulate.
       // ============================================================
       let resolvedEuropean = state.europeanCompetitions;
       let resolvedSA = state.saCompetitions;
@@ -1724,7 +1726,7 @@ function gameReducer(state, action) {
       }
       const totalIncome = sponsorWeeklyIncome;
 
-      // Salaries are NOT deducted weekly â€" they are paid at end of season
+      // Salaries are NOT deducted weekly — they are paid at end of season
       // via START_NEW_SEASON (SeasonEnd calculates totalSalaryCost = weekly * 52)
       const salaryExpenses = 0;
 
@@ -2112,7 +2114,7 @@ function gameReducer(state, action) {
       // ============================================================
       // OFERTAS GARANTIZADAS PARA JUGADORES EN VENTA (transferListed)
       // Si un jugador está puesto en venta, SIEMPRE recibe al menos 1 oferta
-      // No depende de ventana de mercado â€" si lo pones en venta, llegan ofertas
+      // No depende de ventana de mercado — si lo pones en venta, llegan ofertas
       // ============================================================
       if (!isBatchMode && state.team?.players) {
         const listedPlayers = state.team.players.filter(p => p.transferListed && !p.onLoan);
@@ -2147,7 +2149,7 @@ function gameReducer(state, action) {
             }
 
             const mktValue = getPlayerMarketValueForOffers(listedPlayer);
-            // Oferta razonable: 80-120% del valor de mercado (mínimo â'¬50K)
+            // Oferta razonable: 80-120% del valor de mercado (mínimo €50K)
             const offerAmt = Math.max(50_000, Math.round(mktValue * (0.80 + Math.random() * 0.40)));
 
             const listedOffer = {
@@ -2223,7 +2225,7 @@ function gameReducer(state, action) {
       }
 
       // ============================================================
-      // EUROPEAN COMPETITIONS â€" Check for European matchday
+      // EUROPEAN COMPETITIONS — Check for European matchday
       // v2: Uses dynamic calendar (intercalated weeks) when available
       // ============================================================
       let updatedEuropean = resolvedEuropean;
@@ -2260,7 +2262,7 @@ function gameReducer(state, action) {
               };
             }
 
-            // Check if league phase is over (matchday 8) â†' advance
+            // Check if league phase is over (matchday 8) → advance
             // BUT only if player doesn't have a pending match this matchday
             if (phaseInfo.matchday === 8 && updatedState.currentMatchday >= 8 && !playerMatch) {
               const advanced = advanceEuropeanPhase(updatedState, state.teamId);
@@ -2277,7 +2279,7 @@ function gameReducer(state, action) {
             }
           }
         } else if (phaseInfo) {
-          // Knockout phase weeks â€" advance competition phases
+          // Knockout phase weeks — advance competition phases
           for (const [compId, compState] of Object.entries(updatedEuropean.competitions)) {
             if (!compState || compState.phase === 'completed' || compState.phase === 'league') continue;
 
@@ -2312,7 +2314,7 @@ function gameReducer(state, action) {
       }));
 
       // ============================================================
-      // SOUTH AMERICAN COMPETITIONS â€" Same intercalated week check
+      // SOUTH AMERICAN COMPETITIONS — Same intercalated week check
       // Uses the same calendar system (hasEuropean flag triggers SA weeks too)
       // ============================================================
       let updatedSA = resolvedSA;
@@ -2389,7 +2391,7 @@ function gameReducer(state, action) {
       }));
 
       // ============================================================
-      // CUP COMPETITION â€" Check for cup matchday
+      // CUP COMPETITION — Check for cup matchday
       // ============================================================
       let updatedCupCompetition = resolvedCup || state.cupCompetition;
       let pendingCupMatch = null;
@@ -2694,7 +2696,7 @@ function gameReducer(state, action) {
           // Detect: current week is the last clausura week (fixtures just played)
           // state.currentWeek is the week that was just played, nextWeek = currentWeek + 1
           if (state.currentWeek >= lastWeek) {
-            // Clausura just ended â€" determine Apertura & Clausura champions
+            // Clausura just ended — determine Apertura & Clausura champions
             const sortedApertura = updatedAperturaTable ? sortTable([...updatedAperturaTable]) : [];
             const sortedClausura = sortTable([...updatedLeagueTable]);
             const aperturaChampId = sortedApertura[0]?.teamId;
@@ -2705,7 +2707,7 @@ function gameReducer(state, action) {
               const playerIsFinalTeam = (playerTeamId === aperturaChampId || playerTeamId === clausuraChampId);
 
               if (aperturaChampId === clausuraChampId) {
-                // Same team won both â€" champion directly
+                // Same team won both — champion directly
                 aperturaClausuraFinal = {
                   aperturaChampion: aperturaChampId,
                   aperturaChampionName: sortedApertura[0]?.teamName || aperturaChampId,
@@ -2724,7 +2726,7 @@ function gameReducer(state, action) {
                   dateKey: 'gameMessages.weekDate', dateParams: { week: nextWeek }
                 });
               } else if (playerIsFinalTeam) {
-                // Player is in the final â€" set pending for interactive play
+                // Player is in the final — set pending for interactive play
                 const allTeams = playerConfig.getTeams();
                 const aperturaTeam = allTeams.find(t => t.id === aperturaChampId);
                 const clausuraTeam = allTeams.find(t => t.id === clausuraChampId);
@@ -2744,7 +2746,7 @@ function gameReducer(state, action) {
                   dateKey: 'gameMessages.weekDate', dateParams: { week: nextWeek }
                 });
               } else {
-                // Player is NOT in the final â€" auto-simulate
+                // Player is NOT in the final — auto-simulate
                 const allTeams = playerConfig.getTeams();
                 aperturaClausuraFinal = simulateAperturaClausuraFinal(aperturaChampId, clausuraChampId, allTeams);
                 if (aperturaClausuraFinal) {
@@ -3488,7 +3490,7 @@ function gameReducer(state, action) {
       };
     }
 
-    // RECORD_MATCH_INCOME removed â€" income is accumulated via UPDATE_STADIUM dispatches
+    // RECORD_MATCH_INCOME removed — income is accumulated via UPDATE_STADIUM dispatches
 
     case 'MARK_MESSAGE_READ':
       return {
@@ -4023,7 +4025,7 @@ function gameReducer(state, action) {
         }
       };
 
-      // After recording league matchday 8, trigger phase advancement (leagueâ†'playoff)
+      // After recording league matchday 8, trigger phase advancement (league→playoff)
       let advanceMessages = [];
       let newPendingMatch = null;
       if (phase === 'league' && matchday === 8 && updatedComp.currentMatchday >= 8) {
@@ -4041,7 +4043,7 @@ function gameReducer(state, action) {
       }
 
       // After recording knockout result, try to advance the phase
-      // (e.g., after player completes playoff match â†' advance to R16 draw)
+      // (e.g., after player completes playoff match → advance to R16 draw)
       if (phase !== 'league') {
         const currentComp = updatedEuropean.competitions[competitionId];
         const advanced = advanceEuropeanPhase(currentComp, state.teamId);
@@ -4082,7 +4084,7 @@ function gameReducer(state, action) {
         dateKey: 'gameMessages.weekDate', dateParams: { week: state.currentWeek }
       }));
 
-      // â"€â"€ CONTRARRELOJ: Check European competition wins â"€â"€
+      // ── CONTRARRELOJ: Check European competition wins ──
       let contrarrelojWinEu = {};
       if (state.gameMode === 'contrarreloj' && state.contrarrelojData && !state.contrarrelojData.finished) {
         if (finalComp.phase === 'completed' && finalComp.finalResult?.winner?.teamId === state.teamId) {
@@ -4103,7 +4105,7 @@ function gameReducer(state, action) {
               currentScreen: 'contrarreloj_end'
             };
           } else {
-            // Europa League / Conference League â€" record trophy but don't win contrarreloj
+            // Europa League / Conference League — record trophy but don't win contrarreloj
             const trophyType = competitionId === 'europaLeague' ? 'europaLeague' : 'conference';
             contrarrelojWinEu = {
               contrarrelojData: {
@@ -4255,7 +4257,7 @@ function gameReducer(state, action) {
         dateKey: 'gameMessages.weekDate', dateParams: { week: state.currentWeek }
       }));
 
-      // â"€â"€ CONTRARRELOJ: Check SA competition wins â"€â"€
+      // ── CONTRARRELOJ: Check SA competition wins ──
       let contrarrelojWinSA = {};
       if (state.gameMode === 'contrarreloj' && state.contrarrelojData && !state.contrarrelojData.finished) {
         if (finalComp.phase === 'completed' && finalComp.finalResult?.winner?.teamId === state.teamId) {
@@ -4276,7 +4278,7 @@ function gameReducer(state, action) {
               currentScreen: 'contrarreloj_end'
             };
           } else {
-            // Copa Sudamericana â€" record trophy but don't win contrarreloj
+            // Copa Sudamericana — record trophy but don't win contrarreloj
             contrarrelojWinSA = {
               contrarrelojData: {
                 ...state.contrarrelojData,
@@ -4434,7 +4436,7 @@ function gameReducer(state, action) {
         loanFee, salaryShare, purchaseOption
       );
 
-      // Actualizar leagueTeams â€" añadir jugador al equipo receptor
+      // Actualizar leagueTeams — añadir jugador al equipo receptor
       const updatedLeagueTeams = (state.leagueTeams || []).map(t => {
         if (t.id === toTeamId) {
           const loanedPlayer = {
@@ -4496,7 +4498,7 @@ function gameReducer(state, action) {
         loanFee, salaryShare, purchaseOption
       );
 
-      // Actualizar leagueTeams â€" quitar jugador del equipo propietario
+      // Actualizar leagueTeams — quitar jugador del equipo propietario
       const updatedLeagueTeams = (state.leagueTeams || []).map(t => {
         if (t.id === fromTeamId) {
           return {
@@ -4566,7 +4568,7 @@ function gameReducer(state, action) {
     }
 
     case 'EXERCISE_LOAN_PURCHASE': {
-      // Ejecutar opción de compra â€" convierte cesión en traspaso definitivo
+      // Ejecutar opción de compra — convierte cesión en traspaso definitivo
       const { loanId } = action.payload;
       const loan = (state.activeLoans || []).find(l => l.id === loanId);
 
@@ -4594,7 +4596,7 @@ function gameReducer(state, action) {
         l.id === loanId ? { ...l, status: 'purchased' } : l
       );
 
-      // Actualizar leagueTeams â€" dar dinero al equipo propietario
+      // Actualizar leagueTeams — dar dinero al equipo propietario
       const updatedLeagueTeams = (state.leagueTeams || []).map(t => {
         if (t.id === loan.fromTeamId) {
           return {
@@ -4623,7 +4625,7 @@ function gameReducer(state, action) {
     }
 
     case 'ACCEPT_LOAN_OFFER': {
-      // Aceptar oferta de cesión entrante â€" ceder jugador propio
+      // Aceptar oferta de cesión entrante — ceder jugador propio
       const offer = action.payload;
       const player = state.team.players.find(p => p.name === offer.playerId);
       if (!player) return state;
@@ -4718,7 +4720,7 @@ function gameReducer(state, action) {
       return { ...state, aperturaTable: action.payload };
 
     case 'COMPLETE_APCL_FINAL': {
-      // Player played the final interactively â€" store the result
+      // Player played the final interactively — store the result
       const finalResult = action.payload; // { winner, winnerName, leg1, leg2, ... }
       return {
         ...state,
@@ -4844,7 +4846,6 @@ export function GameProvider({ children }) {
         await saveProManager(userId, state);
         console.log('☁️ ProManager saved!');
       } else {
-        const { saveCareer } = await import('../firebase/careerSaveService');
         await saveCareer(userId, state);
         console.log('☁️ Career saved!');
       }
@@ -4894,7 +4895,6 @@ export function GameProvider({ children }) {
         }
         // Check premium status (remove ads purchase)
         try {
-          const { checkPremiumStatus } = await import('../services/purchaseService');
           const isPremium = await checkPremiumStatus();
           if (isPremium) dispatch({ type: 'SET_PREMIUM', payload: true });
         } catch (e) { /* not native, ignore */ }
@@ -4954,7 +4954,7 @@ export function GameProvider({ children }) {
       !state._contrarrelojUserId
     ) return;
 
-    // Don't save finished runs â€" delete the save instead
+    // Don't save finished runs — delete the save instead
     if (state.contrarrelojData?.finished) {
       deleteContrarrelojSave(state._contrarrelojUserId).catch(err =>
         console.error('Error deleting contrarreloj save:', err)
@@ -5098,10 +5098,10 @@ export function GameProvider({ children }) {
   // Uses stateRef to always have the latest state
   // ============================================================
   // Pre-import save modules so they're ready synchronously on beforeunload
-  const careerSaveRef = useRef(null);
+  const careerSaveModule = { saveCareer }; // Already statically imported
+  const careerSaveRef = useRef(careerSaveModule);
   const capacitorAppRef = useRef(null);
   useEffect(() => {
-    import('../firebase/careerSaveService').then(mod => { careerSaveRef.current = mod; }).catch(() => {});
     import('@capacitor/app').then(mod => { capacitorAppRef.current = mod; }).catch(() => {});
   }, []);
 

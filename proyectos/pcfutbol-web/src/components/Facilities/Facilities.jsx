@@ -37,7 +37,7 @@ const getFacilities = (t) => [
       t('facilities.benefits.seats', { count: '55,000' }),
       t('facilities.benefits.seats', { count: '80,000' })
     ],
-    upgradeCost: [8000000, 25000000, 60000000, 120000000]
+    upgradeCost: [12000000, 40000000, 90000000, 200000000]
   },
   { 
     id: 'sponsorship', 
@@ -47,16 +47,15 @@ const getFacilities = (t) => [
     color: '#ffd60a',
     description: t('facilities.facilityDescs.sponsorship'),
     hasSpec: false,
-    flatCost: true, // No tier scaling on costs
     levels: [
-      { name: t('facilities.levelNames.basic') },      // Level 0: base commercial
-      { name: t('facilities.levelNames.active') },      // Level 1: €300K/temp
-      { name: t('facilities.levelNames.professional') }, // Level 2: €2M/temp
-      { name: t('facilities.levelNames.premium') },      // Level 3: €6M/temp
-      { name: t('facilities.levelNames.legendary') } // Level 4: €20M/temp
+      { name: t('facilities.levelNames.basic') },
+      { name: t('facilities.levelNames.active') },
+      { name: t('facilities.levelNames.professional') },
+      { name: t('facilities.levelNames.premium') },
+      { name: t('facilities.levelNames.legendary') }
     ],
     benefits: [], // Computed dynamically in scaledFacilities
-    upgradeCost: [500000, 3000000, 15000000, 50000000]
+    upgradeCost: [1500000, 6000000, 25000000, 70000000]
   },
   { 
     id: 'youth', 
@@ -78,7 +77,7 @@ const getFacilities = (t) => [
       t('facilities.benefits.youthPlayer', { range: '58-70' }),
       t('facilities.benefits.youthPlayer', { range: '62-75' })
     ],
-    upgradeCost: [5000000, 15000000, 40000000]
+    upgradeCost: [8000000, 28000000, 65000000]
   },
   { 
     id: 'medical', 
@@ -100,7 +99,7 @@ const getFacilities = (t) => [
       t('facilities.benefits.injuryReduction', { percent: 35, treatments: 1 }),
       t('facilities.benefits.injuryReduction', { percent: 50, treatments: 2 })
     ],
-    upgradeCost: [3000000, 12000000, 35000000]
+    upgradeCost: [5000000, 18000000, 45000000]
   },
   { 
     id: 'scouting', 
@@ -122,7 +121,7 @@ const getFacilities = (t) => [
       t('facilities.benefits.transferDiscount', { percent: 20 }),
       t('facilities.benefits.transferDiscount', { percent: 30 })
     ],
-    upgradeCost: [2000000, 8000000, 20000000]
+    upgradeCost: [4000000, 15000000, 40000000]
   },
 ];
 
@@ -146,8 +145,8 @@ export default function Facilities() {
   const FACILITIES = useMemo(() => getFacilities(t), [t]);
   
   // Escalar costes de instalaciones y beneficios por tier de liga
+  // Universal pricing — no tier multipliers
   const scaledFacilities = useMemo(() => {
-    const costMult = getFacilityCostMultiplier(state.leagueId);
     const formatScaled = (amount) => {
       if (amount >= 1000000) return `€${(amount / 1000000).toFixed(1)}M`;
       if (amount >= 1000) return `€${Math.round(amount / 1000)}K`;
@@ -155,14 +154,10 @@ export default function Facilities() {
     };
     const baseCommercial = getBaseCommercialIncome(state.leagueId);
     return FACILITIES.map(f => {
-      const scaled = {
-        ...f,
-        // Sponsorship: flat costs (no tier scaling). Others: scale by tier.
-        upgradeCost: f.flatCost ? [...f.upgradeCost] : f.upgradeCost.map(c => Math.round(c * costMult))
-      };
+      const scaled = { ...f };
       // Comercial: show total weekly income (base + bonus) at each level
       if (f.id === 'sponsorship') {
-        const facilityBonuses = [0, 8000, 53000, 158000, 316000, 527000]; // index 0 = no upgrade
+        const facilityBonuses = [0, 8000, 53000, 158000, 316000, 527000];
         scaled.benefits = facilityBonuses.map(bonus => {
           const totalWeekly = baseCommercial + bonus;
           const annual = Math.round(totalWeekly * 38);
@@ -193,8 +188,10 @@ export default function Facilities() {
     // Solo patrocinios dan ingreso fijo semanal
     // El estadio genera ingresos por taquilla (ver pestaña Estadio)
     const sponsorLevel = facilities.sponsorship || 0;
-    const sponsorIncome = scaledFacilities[1].levels[sponsorLevel].income;
-    return sponsorIncome;
+    const baseCommercial = getBaseCommercialIncome(state.leagueId);
+    const facilityBonuses = [0, 8000, 53000, 158000, 316000, 527000];
+    const bonus = facilityBonuses[sponsorLevel] || 0;
+    return baseCommercial + bonus;
   };
   
   const stadiumUnderConstruction = !!state.stadium?.construction;

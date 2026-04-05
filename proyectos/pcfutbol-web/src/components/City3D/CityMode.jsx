@@ -14,6 +14,25 @@ import { TouchJoystick } from './TouchJoystick';
 import { getCityLevel, BUILDING_CONFIGS } from './cityData';
 import './CityMode.scss';
 
+class CityErrorBoundary extends React.Component {
+  constructor(props) { super(props); this.state = { error: null }; }
+  static getDerivedStateFromError(error) { return { error }; }
+  render() {
+    if (this.state.error) {
+      return (
+        <div style={{ position:'fixed', inset:0, background:'#0D1B2A', color:'white', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', zIndex:200, padding:20, textAlign:'center' }}>
+          <h2>⚠️ Error en Modo 3D</h2>
+          <p style={{ opacity:0.7, maxWidth:400 }}>{this.state.error?.message || 'Error desconocido'}</p>
+          <button onClick={this.props.onExit} style={{ marginTop:20, padding:'10px 24px', background:'#1565C0', border:'none', color:'white', borderRadius:8, cursor:'pointer', fontSize:14 }}>
+            Volver al menú clásico
+          </button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
 export default function CityMode({ onExitCity }) {
   const { state, dispatch } = useGame();
   const { t } = useTranslation();
@@ -88,6 +107,7 @@ export default function CityMode({ onExitCity }) {
   }, []);
 
   return (
+    <CityErrorBoundary onExit={onExitCity}>
     <div className="city-mode">
       <Canvas
         shadows
@@ -155,5 +175,6 @@ export default function CityMode({ onExitCity }) {
         </div>
       )}
     </div>
+    </CityErrorBoundary>
   );
 }

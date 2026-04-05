@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { getAuth } from 'firebase/auth';
 import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { useAuth } from '../../context/AuthContext';
@@ -137,7 +138,6 @@ export default function ProManagerSetup() {
     const preseason = preseasonOptions[0];
 
     // Get manager name from Firebase Auth
-    const { getAuth } = await import('firebase/auth');
     const authUser = getAuth().currentUser;
     const managerName = authUser?.displayName || authUser?.email?.split('@')[0] || undefined;
 

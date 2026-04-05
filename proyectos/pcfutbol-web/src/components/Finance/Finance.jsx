@@ -72,7 +72,7 @@ export default function Finance() {
     
     const weeklySalaries = players.reduce((sum, p) => sum + (p.salary || 0), 0);
     const annualSalaries = weeklySalaries * WEEKS_PER_YEAR;
-    const maintenanceCost = Math.round((currentLevel?.maintenance || 500000) * getFacilityCostMultiplier(state.leagueId));
+    const maintenanceCost = currentLevel?.maintenance || 500000;
     const transferSpent = state.transfersSpent ?? 0;
     const totalExpenses = annualSalaries + maintenanceCost + transferSpent;
     const balance = totalIncome - totalExpenses;

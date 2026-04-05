@@ -117,6 +117,14 @@ export default function Sidebar({ activeTab, onTabChange, isRanked }) {
         </nav>
         
         <div className="sidebar__footer">
+          <a 
+            href="https://buymeacoffee.com/jirubalusus" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="sidebar__bmc-link"
+          >
+            ☕ {t('mainMenu.supportUs', 'Support the project')}
+          </a>
           <button 
             className="sidebar__settings-btn" 
             onClick={() => setShowSettings(true)}

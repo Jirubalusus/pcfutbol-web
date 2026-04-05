@@ -789,7 +789,48 @@ export default function MatchDay({ onComplete, onBack }) {
             }))
           }
         });
+        // Notify player about suspensions
+        playerRedCards.forEach(e => {
+          const pName = getPlayerName(e.player);
+          const isDoubleYellow = e.reason === 'Segunda amarilla';
+          const matches = isDoubleYellow ? 1 : 2;
+          dispatch({
+            type: 'ADD_MESSAGE',
+            payload: {
+              id: Date.now() + Math.random(),
+              type: 'discipline',
+              titleKey: isDoubleYellow ? 'gameMessages.doubleYellowTitle' : 'gameMessages.redCardTitle',
+              titleParams: { player: pName },
+              contentKey: isDoubleYellow ? 'gameMessages.doubleYellowContent' : 'gameMessages.redCardContent',
+              contentParams: { player: pName, matches },
+              dateKey: 'gameMessages.weekDate',
+              dateParams: { week: state.currentWeek }
+            }
+          });
+        });
       }
+
+      // Notify about yellow accumulation danger (4/5)
+      playerYellowCards.forEach(e => {
+        const pName = getPlayerName(e.player);
+        const player = state.team?.players?.find(p => p.name === pName);
+        const newYellows = (player?.yellowCards || 0) + 1;
+        if (newYellows === 4) {
+          dispatch({
+            type: 'ADD_MESSAGE',
+            payload: {
+              id: Date.now() + Math.random(),
+              type: 'discipline',
+              titleKey: 'gameMessages.yellowWarningTitle',
+              titleParams: { player: pName },
+              contentKey: 'gameMessages.yellowWarningContent',
+              contentParams: { player: pName },
+              dateKey: 'gameMessages.weekDate',
+              dateParams: { week: state.currentWeek }
+            }
+          });
+        }
+      });
     }
 
     // Ingresos por taquilla si jugamos en casa (liga + pretemporada)
@@ -995,7 +1036,11 @@ export default function MatchDay({ onComplete, onBack }) {
             </div>
             
             <div className="match-day__events" ref={eventsRef}>
-              {matchResult.events.slice(0, eventIndex).map((event, idx) => (
+              {matchResult.events.slice(0, eventIndex).map((event, idx) => {
+                const eventTeamName = event.team === 'home'
+                  ? (isHome ? getShort(state.team) : getShort(opponent))
+                  : (isHome ? getShort(opponent) : getShort(state.team));
+                return (
                 <div key={idx} className={`match-day__event ${event.team} ${event.type} ${event.goalType || ''} ${event.type === 'goal' ? (event.team === (isHome ? 'home' : 'away') ? 'player-goal' : 'opponent-goal') : ''}`}>
                   <span className="minute">{event.minute}'</span>
                   <span className="icon">
@@ -1010,8 +1055,10 @@ export default function MatchDay({ onComplete, onBack }) {
                     {event.type === 'goal' && event.goalType && <span className="goal-type"> {getGoalTypeText(event.goalType)}</span>}
                     {event.type === 'injury' && <span className="injury-info"> ({event.weeksOut} sem.)</span>}
                   </span>
+                  <span className="event-team">{eventTeamName}</span>
                 </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         )}

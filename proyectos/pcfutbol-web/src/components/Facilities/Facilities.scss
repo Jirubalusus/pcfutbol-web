@@ -211,10 +211,19 @@
       align-items: center;
       gap: 0.6rem;
       padding: 0.65rem 0.85rem;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 12px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      animation: statSlideUp 0.5s ease both;
+
+      &:nth-child(2) { animation-delay: 0.1s; }
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      }
 
       .stat-icon { color: rgba(255, 255, 255, 0.7); }
 
@@ -224,19 +233,34 @@
       }
 
       .stat-value {
-        font-size: 1.05rem;
-        font-weight: 700;
+        font-size: 1.1rem;
+        font-weight: 800;
         color: #6ee7b7;
+        letter-spacing: -0.3px;
       }
 
       .stat-label {
-        font-size: 0.65rem;
+        font-size: 0.62rem;
         color: rgba(255, 255, 255, 0.5);
         text-transform: uppercase;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.8px;
+        font-weight: 600;
       }
 
-      &--budget .stat-value { color: #93c5fd; }
+      &--income {
+        border-left: 3px solid #ffd60a;
+        .stat-icon { color: #ffd60a; }
+      }
+      &--budget {
+        border-left: 3px solid #93c5fd;
+        .stat-value { color: #93c5fd; }
+        .stat-icon { color: #93c5fd; }
+      }
+    }
+
+    @keyframes statSlideUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   }
 
@@ -399,19 +423,30 @@
     .category-header {
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.5rem;
       margin-bottom: 0.6rem;
-      padding: 0 0.25rem;
+      padding: 0.2rem 0.25rem;
+      position: relative;
+
+      &::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(90deg, var(--cat-color, rgba(255,255,255,0.15)), transparent);
+        opacity: 0.4;
+        margin-left: 0.5rem;
+      }
 
       .category-icon { color: var(--cat-color); }
 
       h3 {
         margin: 0;
-        font-size: 0.8rem;
-        font-weight: 700;
+        font-size: 0.78rem;
+        font-weight: 800;
         color: var(--cat-color, var(--color-text-secondary));
         text-transform: uppercase;
-        letter-spacing: 0.5px;
+        letter-spacing: 1px;
+        white-space: nowrap;
       }
     }
 
@@ -428,13 +463,27 @@
     border: 1px solid var(--color-glass-border);
     border-radius: 14px;
     overflow: hidden;
-    transition: all 0.2s;
+    transition: all 0.3s ease;
+    animation: cardFadeIn 0.4s ease both;
 
-    &:hover { border-color: rgba(255, 255, 255, 0.12); }
+    @for $i from 1 through 6 {
+      &:nth-child(#{$i}) { animation-delay: #{$i * 0.08}s; }
+    }
+
+    &:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    }
 
     &.expanded {
       border-color: var(--facility-color, #14b8a6);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2), 0 0 0 1px var(--facility-color, #14b8a6);
+    }
+
+    @keyframes cardFadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     &__main {
@@ -452,13 +501,19 @@
       position: relative;
       width: 44px;
       height: 44px;
-      background: linear-gradient(135deg, var(--facility-color, #14b8a6), rgba(0,0,0,0.2));
+      background: linear-gradient(135deg, var(--facility-color, #14b8a6), rgba(0,0,0,0.3));
       border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
       color: #fff;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      transition: box-shadow 0.3s ease;
+
+      .facility-card:hover & {
+        box-shadow: 0 4px 16px color-mix(in srgb, var(--facility-color, #14b8a6) 30%, transparent);
+      }
     }
 
     &__icon { font-size: 1.25rem; }
@@ -504,15 +559,35 @@
 
       .level-segment {
         flex: 1;
-        height: 4px;
+        height: 5px;
         background: rgba(255, 255, 255, 0.06);
-        border-radius: 2px;
-        transition: all 0.3s;
+        border-radius: 3px;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
 
         &.filled {
           background: var(--facility-color, #14b8a6);
+          box-shadow: 0 0 6px color-mix(in srgb, var(--facility-color, #14b8a6) 40%, transparent);
+
+          &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 3s infinite;
+          }
         }
       }
+    }
+
+    @keyframes shimmer {
+      0% { left: -100%; }
+      50% { left: 100%; }
+      100% { left: 100%; }
     }
 
     &__benefit {
@@ -536,11 +611,11 @@
     &__expanded {
       padding: 0 1rem 1rem;
       border-top: 1px solid var(--color-glass-border);
-      animation: expandIn 0.2s ease;
+      animation: expandIn 0.3s ease;
 
       @keyframes expandIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
+        from { opacity: 0; transform: translateY(-8px); }
+        to { opacity: 1; transform: translateY(0); }
       }
     }
 

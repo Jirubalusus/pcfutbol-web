@@ -8,7 +8,7 @@ import LeagueTable from '../LeagueTable/LeagueTable';
 import Cup from '../Cup/Cup';
 import Europe from '../Europe/Europe';
 import SouthAmerica from '../SouthAmerica/SouthAmerica';
-import { Award, Globe, Trophy, Shield } from 'lucide-react';
+import { Globe, Trophy, Shield } from 'lucide-react';
 import './Competitions.scss';
 
 export default function Competitions() {

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Mail, Lock, FileText, Key, Gamepad2, ArrowLeft } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
-import { isAndroid, isNative } from '../../services/platformAuth';
+import { isNative } from '../../services/platformAuth';
 import './Auth.scss';
 
 export default function Auth({ onBack }) {

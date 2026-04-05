@@ -276,6 +276,15 @@ $blue: #0a84ff;
       &:hover { background: var(--color-bg-card-hover); }
       &:last-child { border-bottom: none; }
 
+      &.injured {
+        opacity: 0.6;
+        .name { text-decoration: line-through; text-decoration-color: #ff453a; }
+      }
+      &.suspended {
+        opacity: 0.6;
+        .name { text-decoration: line-through; text-decoration-color: #ffd60a; }
+      }
+
       &.attention {
         border-left: 3px solid $orange;
       }
@@ -356,6 +365,49 @@ $blue: #0a84ff;
               border-radius: 3px;
               font-weight: 600;
               border: 1px solid rgba(10, 132, 255, 0.3);
+            }
+          }
+
+          .tag-injury {
+            font-size: 0.6rem;
+            color: #ff453a;
+            background: rgba(255, 69, 58, 0.15);
+            padding: 0.1rem 0.35rem;
+            border-radius: 3px;
+            font-weight: 600;
+            border: 1px solid rgba(255, 69, 58, 0.3);
+          }
+
+          .tag-suspended {
+            font-size: 0.6rem;
+            font-weight: 600;
+            padding: 0.1rem 0.35rem;
+            border-radius: 3px;
+
+            &--red {
+              color: #ff453a;
+              background: rgba(255, 69, 58, 0.15);
+              border: 1px solid rgba(255, 69, 58, 0.3);
+            }
+            &--yellow {
+              color: #ffd60a;
+              background: rgba(255, 214, 10, 0.15);
+              border: 1px solid rgba(255, 214, 10, 0.3);
+            }
+          }
+
+          .tag-yellows {
+            font-size: 0.6rem;
+            color: var(--color-text-tertiary);
+            padding: 0.1rem 0.35rem;
+            border-radius: 3px;
+            font-weight: 500;
+
+            &--danger {
+              color: #ffd60a;
+              background: rgba(255, 214, 10, 0.12);
+              border: 1px solid rgba(255, 214, 10, 0.25);
+              font-weight: 700;
             }
           }
 

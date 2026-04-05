@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { getAuth } from 'firebase/auth';
 import { useAuth } from '../../context/AuthContext';
 import { useGame } from '../../context/GameContext';
 import { Mountain, Play, BookOpen, ArrowLeft, Loader } from 'lucide-react';
@@ -79,7 +80,6 @@ export default function GloryMenu() {
       const saveData = await getGlorySave(user.uid);
       if (saveData) {
         dispatch({ type: 'LOAD_SAVE', payload: { ...saveData, _gloryUserId: user.uid, gameMode: 'glory', rankedMatchId: null } });
-        const { getAuth } = await import('firebase/auth');
         const dn = getAuth().currentUser?.displayName;
         if (dn) dispatch({ type: 'SET_MANAGER_NAME', payload: dn });
         dispatch({ type: 'SET_SCREEN', payload: 'office' });

@@ -479,8 +479,7 @@ export function getMedicalHealingWeeks(medicalLevel) {
 // Coste por tratamiento según nivel (más nivel = menos coste)
 export function getMedicalTreatmentCost(medicalLevel, leagueId) {
   const costPerLevel = [500000, 500000, 400000, 300000, 200000, 100000]; // €500K a €100K
-  const mult = getFacilityCostMultiplier(leagueId);
-  return Math.round((costPerLevel[medicalLevel] || 500000) * mult);
+  return costPerLevel[medicalLevel] || 500000;
 }
 
 // Calcula tratamientos médicos disponibles (slots totales - slots ocupados)
@@ -536,7 +535,7 @@ export function applyEventChoice(state, event, choiceId) {
   let messages = [];
   
   // Verificar si hay coste - escalar por tier
-  const scaledCost = choice.cost ? Math.round(choice.cost * getFacilityCostMultiplier(state.leagueId)) : 0;
+  const scaledCost = choice.cost || 0;
   if (scaledCost && state.money < scaledCost) {
     return { 
       ...state, 

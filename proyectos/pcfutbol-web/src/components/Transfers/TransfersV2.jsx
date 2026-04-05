@@ -528,7 +528,7 @@ export default function TransfersV2() {
 
           onClose={(blockPlayer) => {
 
-            // Si el fichaje fallÃ³, bloquear al jugador
+            // Si el fichaje falló, bloquear al jugador
 
             if (blockPlayer && selectedPlayer) {
 
@@ -607,7 +607,7 @@ function ResumenTab({ windowStatus, summary, myTeam, preseasonPhase }) {
 
 
 
-      {/* Stats rÃ¡pidos */}
+      {/* Stats rápidos */}
 
       <div className="quick-stats">
 
@@ -645,7 +645,7 @@ function ResumenTab({ windowStatus, summary, myTeam, preseasonPhase }) {
 
 
 
-      {/* Ãšltimos fichajes */}
+      {/* Últimos fichajes */}
 
       <div className="section">
 
@@ -762,7 +762,7 @@ function BuscarTab({ players, searchQuery, setSearchQuery, filters, setFilters, 
 
     <div className="tab-buscar">
 
-      {/* Barra de bÃºsqueda */}
+      {/* Barra de búsqueda */}
 
       <div className="search-bar">
 
@@ -1148,7 +1148,7 @@ function OfertasRecibidasTab({ offers, incomingLoanOffers = [], myPlayers, dispa
 
                 <Clock size={12} /> {t('transfers.expiresWeek', { week: offer.expiryWeek })}
 
-                {state.currentWeek >= offer.expiryWeek - 1 && <span className="urgent"> âš ï¸</span>}
+                {state.currentWeek >= offer.expiryWeek - 1 && <span className="urgent"> ⚠️</span>}
 
               </span>
 
@@ -1425,7 +1425,7 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
 
 
-  // Ordenar: pendientes primero, luego resueltas (mÃ¡s recientes primero)
+  // Ordenar: pendientes primero, luego resueltas (más recientes primero)
   const sortedOffers = [...offers].sort((a, b) => {
     if (a.status === 'pending' && b.status !== 'pending') return -1;
     if (a.status !== 'pending' && b.status === 'pending') return 1;
@@ -1442,7 +1442,7 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
     <div className="tab-ofertas">
 
-      {/* Transfer offers â€" dual response cards */}
+      {/* Transfer offers — dual response cards */}
 
       {offers.length > 0 && (
         <div className="section-title-row">
@@ -1481,7 +1481,7 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
                 <span className="name">{offer.player?.name || offer.playerName}</span>
 
-                <span className="team">{offer.toTeam} Â· {offer.player?.age} {t('transfers.years')}</span>
+                <span className="team">{offer.toTeam} · {offer.player?.age} {t('transfers.years')}</span>
 
               </div>
 
@@ -1583,7 +1583,7 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
               <div className="offer-v2-counter">
 
-                <span>ðŸ"" {t('transfers.clubAsks', { amount: formatTransferPrice(offer.clubCounterAmount) })}</span>
+                <span>📄 {t('transfers.clubAsks', { amount: formatTransferPrice(offer.clubCounterAmount) })}</span>
 
                 <div className="counter-btns">
 
@@ -1665,7 +1665,7 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
                 <div className="la-header">
 
-                  <span className="la-direction out">Ã°Å¸"Â¤ {t('transfers.loanedOut')}</span>
+                  <span className="la-direction out">ðŸ"¤ {t('transfers.loanedOut')}</span>
 
                   <span className="la-weeks"><Clock size={14} /> {t('transfers.weeksShort', { weeks: loan.weeksRemaining })}</span>
 
@@ -1679,7 +1679,7 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
                     <span className="la-name">{loan.playerData?.name || loan.playerId}</span>
 
-                    <span className="la-team">Ã°Å¸"Â {t('transfers.atTeam', { team: loan.toTeamName })}</span>
+                    <span className="la-team">ðŸ" {t('transfers.atTeam', { team: loan.toTeamName })}</span>
 
                   </div>
 
@@ -1731,7 +1731,7 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
                 <div className="la-header">
 
-                  <span className="la-direction in">ðŸ"¥ {t('transfers.onLoan')}</span>
+                  <span className="la-direction in">📥 {t('transfers.onLoan')}</span>
 
                   <span className="la-weeks"><Clock size={14} /> {t('transfers.weeksShort', { weeks: loan.weeksRemaining })}</span>
 
@@ -1745,7 +1745,7 @@ function MisOfertasTab({ offers, dispatch, budget, activeLoans = [], teamId, sta
 
                     <span className="la-name">{loan.playerData?.name || loan.playerId}</span>
 
-                    <span className="la-team">Ã°Å¸Â  {t('transfers.ownedBy', { team: loan.fromTeamName })}</span>
+                    <span className="la-team">ðŸ  {t('transfers.ownedBy', { team: loan.fromTeamName })}</span>
 
                   </div>
 
@@ -1900,7 +1900,7 @@ function NoticiasTab({ transfers, rumors }) {
 
 
 
-// PaÃ­ses por continente para detectar zona
+// Países por continente para detectar zona
 
 const SA_COUNTRIES = new Set(['Argentina', 'Brasil', 'Colombia', 'Chile', 'Uruguay', 'Ecuador', 'Paraguay', 'Perú', 'Bolivia', 'Venezuela']);
 
@@ -1918,7 +1918,7 @@ function getContinent(country) {
 
 
 
-// Agrupar ligas por paÃ­s para la vista de exploraciÃ³n
+// Agrupar ligas por país para la vista de exploración
 
 const LEAGUE_GROUPS = (() => {
 
@@ -1969,7 +1969,7 @@ function ExplorarTab({ leagueTeams, myTeamId, playerLeagueId, onSelectPlayer, bl
 
 
 
-  // Vista de ligas Ã¢€" grid compacto por continente
+  // Vista de ligas — grid compacto por continente
 
   if (!selectedLeague) {
 
@@ -2191,7 +2191,7 @@ function ExplorarTab({ leagueTeams, myTeamId, playerLeagueId, onSelectPlayer, bl
 
 
 
-  // Vista de plantilla del equipo Ã¢€" con navegaciÃ³n lateral de equipos
+  // Vista de plantilla del equipo — con navegación lateral de equipos
 
   return (
 
@@ -2223,7 +2223,7 @@ function ExplorarTab({ leagueTeams, myTeamId, playerLeagueId, onSelectPlayer, bl
 
 
 
-      {/* Tabs de equipos (navegaciÃ³n rÃ¡pida) */}
+      {/* Tabs de equipos (navegación rápida) */}
 
       <div className="teams-tabs">
 
@@ -2416,7 +2416,7 @@ function OjeadorTab({ myTeam, leagueTeams, scoutingLevel, budget, onSelectPlayer
 
 
 
-      {/* Selector de posiciÃ³n */}
+      {/* Selector de posición */}
 
       <div className="position-selector">
 
@@ -2448,7 +2448,7 @@ function OjeadorTab({ myTeam, leagueTeams, scoutingLevel, budget, onSelectPlayer
 
 
 
-      {/* BotÃ³n buscar */}
+      {/* Botón buscar */}
 
       <button
 
@@ -2526,7 +2526,7 @@ function OjeadorTab({ myTeam, leagueTeams, scoutingLevel, budget, onSelectPlayer
 
                     <span className="name">{player.name}</span>
 
-                    <span className="meta">{player.teamName} Â· {player.age} {t('transfers.years')}</span>
+                    <span className="meta">{player.teamName} · {player.age} {t('transfers.years')}</span>
 
                   </div>
 
@@ -2572,7 +2572,7 @@ function OjeadorTab({ myTeam, leagueTeams, scoutingLevel, budget, onSelectPlayer
 
 
 
-// CesionesTab removed Ã¢€" loan functionality merged into Recibidas, Enviadas, and PlayerModal
+// CesionesTab removed — loan functionality merged into Recibidas, Enviadas, and PlayerModal
 
 // ============================================================
 
@@ -2585,7 +2585,7 @@ function NewsTicker({ transfers }) {
 
   const tickerItems = (transfers || []).slice(0, 10).map(t =>
 
-    `${t.player?.name} Ã¢â€ ' ${t.to?.name} (${formatTransferPrice(t.price)})`
+    `${t.player?.name} → ${t.to?.name} (${formatTransferPrice(t.price)})`
 
   );
 
@@ -2635,7 +2635,7 @@ function NewsTicker({ transfers }) {
 
 // ============================================================
 
-// MODAL: NEGOCIACIÃ'"N DE FICHAJE - DISEÃ''O TODO EN UNO
+// MODAL: NEGOCIACIÓN DE FICHAJE - DISEÑO TODO EN UNO
 
 // ============================================================
 
@@ -2662,7 +2662,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
 
 
-  // Estados de negociaciÃ³n
+  // Estados de negociación
 
   const [offerAmount, setOfferAmount] = useState(0);
 
@@ -2711,7 +2711,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
 
 
-  // Personalidad memoizada Ã¢€" assignPersonality ahora es determinista (seeded por nombre)
+  // Personalidad memoizada — assignPersonality ahora es determinista (seeded por nombre)
 
   // pero useMemo evita recalcular en cada render igualmente
 
@@ -2725,7 +2725,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
 
 
-  // Tipo de negociaciÃ³n
+  // Tipo de negociación
 
   const isFreeAgent = player.isFreeAgent || false;
 
@@ -2844,7 +2844,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
 
 
-  // Calcular probabilidad del club en tiempo real (mismo cÃ¡lculo que evaluateClubOffer)
+  // Calcular probabilidad del club en tiempo real (mismo cálculo que evaluateClubOffer)
 
   const clubProbability = useMemo(() => {
 
@@ -2869,11 +2869,11 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
 
     // Smooth probability curve (no jumps)
-    // ratio 0.0 → 0%, 0.5 → 5%, 0.75 → 25%, 0.9 → 60%, 1.0 → 85%, 1.15 → 98%
+    // ratio 0.0 ? 0%, 0.5 ? 5%, 0.75 ? 25%, 0.9 ? 60%, 1.0 ? 85%, 1.15 ? 98%
     let prob;
     if (ratio <= 0.3) prob = 1;
     else if (ratio <= 1.2) {
-      // Smooth S-curve mapped: 0.3→1, 0.5→5, 0.7→20, 0.85→50, 0.95→75, 1.0→85, 1.15→98
+      // Smooth S-curve mapped: 0.3?1, 0.5?5, 0.7?20, 0.85?50, 0.95?75, 1.0?85, 1.15?98
       const t = (ratio - 0.3) / 0.9; // normalize 0.3-1.2 to 0-1
       prob = Math.round(1 + 97 * Math.pow(t, 2.2));
     }
@@ -3231,7 +3231,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
 
 
-      // Salario esperado (libres piden mÃ¡s)
+      // Salario esperado (libres piden más)
 
       const freeAgentMultiplier = isFreeAgent ? 1.3 : 1.15;
 
@@ -3313,19 +3313,19 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
 
 
-        // La contraoferta siempre debe ser MÃS que lo ofrecido
+        // La contraoferta siempre debe ser MÁS que lo ofrecido
 
         const baseSalary = Math.round(expectedSalary * 1.1);
 
         const counterSalary = baseSalary <= salaryOffer
 
-          ? Math.round(salaryOffer * 1.25) // Pide al menos un 25% mÃ¡s
+          ? Math.round(salaryOffer * 1.25) // Pide al menos un 25% más
 
           : baseSalary;
 
 
 
-        // Ajustar razÃ³n si el salario era suficiente
+        // Ajustar razón si el salario era suficiente
 
         if (baseSalary <= salaryOffer) {
 
@@ -3695,7 +3695,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
 
 
-          {/* COLUMNA DERECHA: NEGOCIACIÃ'"N */}
+          {/* COLUMNA DERECHA: NEGOCIACIÓN */}
 
           <div className="negotiation-column">
 
@@ -3711,7 +3711,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                 <span className="meta">
 
-                  {isFreeAgent ? t('transfers.freeAgentLabel') : player.teamName} Â· {player.age} {t('transfers.years')} Â· {formatTransferPrice(marketValue)}
+                  {isFreeAgent ? t('transfers.freeAgentLabel') : player.teamName} · {player.age} {t('transfers.years')} · {formatTransferPrice(marketValue)}
 
                 </span>
 
@@ -3723,7 +3723,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
 
 
-            {/* TOGGLE FICHAJE / CESIÃ'"N / PRE-CONTRATO */}
+            {/* TOGGLE FICHAJE / CESIÓN / PRE-CONTRATO */}
 
             {!isFreeAgent && (
 
@@ -3775,7 +3775,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
 
 
-            {/* FLUJO CESIÃ'"N */}
+            {/* FLUJO CESIÓN */}
 
             {!isFreeAgent && negotiationMode === 'loan' && (
 
@@ -4001,7 +4001,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
 
 
-            {/* FLUJO NORMAL: OFERTA UNIFICADA (estilo PC FÃºtbol 5.0) */}
+            {/* FLUJO NORMAL: OFERTA UNIFICADA (estilo PC Fútbol 5.0) */}
 
             {!isFreeAgent && negotiationMode === 'transfer' && (
 
@@ -4015,7 +4015,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                     <span>{t('transfers.prepareOffer')}</span>
 
-                    {isRivalry && <span className="rivalry-badge">âš"ï¸ {t('transfers.directRival')}</span>}
+                    {isRivalry && <span className="rivalry-badge">⚔️ {t('transfers.directRival')}</span>}
 
                   </div>
 
@@ -4143,13 +4143,13 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
 
 
-                {/* Resumen y botÃ³n de envÃ­o */}
+                {/* Resumen y botón de envío */}
 
                 <div className="offer-summary-box">
 
                   <div className="summary-line">
 
-                    <span>ðŸ'° {t('transfers.totalTransferCost')}</span>
+                    <span>💰 {t('transfers.totalTransferCost')}</span>
 
                     <span className="amount">{formatTransferPrice(offerAmount)}</span>
 
@@ -4157,7 +4157,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                   <div className="summary-line">
 
-                    <span>ðŸ"‹ {t('transfers.totalContractCost')}</span>
+                    <span>📊 {t('transfers.totalContractCost')}</span>
 
                     <span className="amount">{formatTransferPrice(salaryOffer * 52 * contractYears)}</span>
 
@@ -4165,7 +4165,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                   <div className="summary-line total">
 
-                    <span>ðŸ"Š {t('transfers.totalInvestment')}</span>
+                    <span>💵 {t('transfers.totalInvestment')}</span>
 
                     <span className="amount">{formatTransferPrice(offerAmount + salaryOffer * 52 * contractYears)}</span>
 
@@ -4223,7 +4223,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                 </button>
 
-                <p className="offer-hint">â³ {t('transfers.responseAfterMatch')}</p>
+                <p className="offer-hint">⏳ {t('transfers.responseAfterMatch')}</p>
 
               </div>
 
@@ -4453,7 +4453,7 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
 
                   <span className="cost-label">{t('transfers.totalCostLabel')}</span>
 
-                  <span className="cost-value">{formatTransferPrice(signingBonus)} + {formatTransferPrice(salaryOffer * 52)}/{t('transfers.year')} Ã- {contractYears} {t('transfers.years')}</span>
+                  <span className="cost-value">{formatTransferPrice(signingBonus)} + {formatTransferPrice(salaryOffer * 52)}/{t('transfers.year')} × {contractYears} {t('transfers.years')}</span>
 
                 </div>
 
