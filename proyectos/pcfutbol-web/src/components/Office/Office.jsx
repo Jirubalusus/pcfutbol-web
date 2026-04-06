@@ -679,6 +679,7 @@ export default function Office() {
     let localAccumulatedIncome = state.stadium?.accumulatedTicketIncome ?? 0;
     let localAccumulatedServicesIncome = state.stadium?.accumulatedServicesIncome ?? 0;
     let localServicesBreakdown = { ...(state.stadium?.accumulatedServicesBreakdown || { catering: 0, merchandise: 0, parking: 0, events: 0, vip: 0 }) };
+    let localGoalBonusMoney = 0;
     
     // Track cup competition locally (avoids losing pendingCupMatch across ADVANCE_WEEKs)
     let localCupCompetition = state.cupCompetition ? { ...state.cupCompetition } : null;
@@ -790,6 +791,11 @@ export default function Office() {
             state.playerForm || {},
             state.teamId
           );
+
+          const playerGoalsScored = isHome ? result.homeScore : result.awayScore;
+          if (state.gloryData?.perks?.goalBonus && playerGoalsScored > 0) {
+            localGoalBonusMoney += playerGoalsScored * 50000;
+          }
           
           // Ingresos de taquilla si somos locales (ACUMULAR, no dar directo)
           if (isHome && state.stadium) {
@@ -1106,6 +1112,19 @@ export default function Office() {
     
     // Sync lineup from local state (injured/suspended players were ejected locally)
     dispatch({ type: 'SET_LINEUP', payload: localLineup });
+
+    if (localGoalBonusMoney > 0) {
+      dispatch({ type: 'UPDATE_MONEY', payload: localGoalBonusMoney });
+      dispatch({
+        type: 'UPDATE_GLORY_STATE',
+        payload: {
+          gloryData: {
+            ...state.gloryData,
+            goalBonusEarned: (state.gloryData?.goalBonusEarned || 0) + localGoalBonusMoney,
+          }
+        }
+      });
+    }
     
     // Set snapshot for summary modal (useEffect will pick it up when state updates)
     snapshotRef.current = preSimSnapshot;

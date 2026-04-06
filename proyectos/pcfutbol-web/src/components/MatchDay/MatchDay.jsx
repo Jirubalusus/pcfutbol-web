@@ -683,7 +683,17 @@ export default function MatchDay({ onComplete, onBack }) {
 
     // Glory perk: Lluvia de Millones — 50K per goal scored
     if (state.gloryData?.perks?.goalBonus && playerScore > 0) {
-      dispatch({ type: 'UPDATE_MONEY', payload: playerScore * 50000 });
+      const goalBonusMoney = playerScore * 50000;
+      dispatch({ type: 'UPDATE_MONEY', payload: goalBonusMoney });
+      dispatch({
+        type: 'UPDATE_GLORY_STATE',
+        payload: {
+          gloryData: {
+            ...state.gloryData,
+            goalBonusEarned: (state.gloryData?.goalBonusEarned || 0) + goalBonusMoney,
+          }
+        }
+      });
     }
 
     // Glory mode: track stats for milestone unlocks

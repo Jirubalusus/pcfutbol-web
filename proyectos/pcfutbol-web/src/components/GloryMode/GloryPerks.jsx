@@ -82,8 +82,14 @@ function getPerkStatus(cardId, state) {
         : { status: '1 uso disponible', desc: 'Intercambia un jugador por uno rival', active: true };
     case 'secret_clause':
       return { status: 'Activo', desc: 'Fichajes: +2 años contrato, -30% salario', active: true };
-    case 'goal_bonus':
-      return { status: 'Activo', desc: '+50.000€ por cada gol que metes', active: true };
+    case 'goal_bonus': {
+      const earned = gloryData.goalBonusEarned || 0;
+      return {
+        status: 'Activo',
+        desc: `+50.000€ por gol · Ganado: ${earned.toLocaleString('es-ES')}€`,
+        active: true
+      };
+    }
     case 'gladiator':
       return { status: 'Activo', desc: 'Tus jugadores son inmunes a rojas', active: true };
     case 'second_chance': {
