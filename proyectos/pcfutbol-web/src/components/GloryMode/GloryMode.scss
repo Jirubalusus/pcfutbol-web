@@ -510,16 +510,16 @@
     }
 
     &--diamond {
-      border-color: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.06);
       box-shadow:
         0 16px 36px rgba(0, 0, 0, 0.42),
-        inset 0 1px 0 rgba(255, 255, 255, 0.12),
-        inset 0 -8px 14px rgba(0, 0, 0, 0.14);
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        inset 0 -8px 14px rgba(0, 0, 0, 0.12);
 
       &::after {
-        inset: 2px;
+        inset: 4px;
         border-width: 1px;
-        opacity: 0.55;
+        opacity: 0.18;
       }
     }
   }
@@ -552,14 +552,14 @@
   }
 
   &__crest--diamond &__ring {
-    inset: 12%;
-    border-color: rgba(255, 255, 255, 0.10);
-    opacity: 0.35;
+    inset: 14%;
+    border-color: rgba(255, 255, 255, 0.06);
+    opacity: 0.16;
   }
 
   &__crest--diamond &__shine {
-    inset: 14% 18%;
-    opacity: 0.5;
+    inset: 18% 22%;
+    opacity: 0.18;
   }
 
   &__icon {
