@@ -25,6 +25,7 @@ import { simulateOtherLeaguesWeek, isAperturaClausura, getClausuraStartWeek, get
 import { sortTable } from '../game/leagueEngine';
 import { updateWeeklyForm, updateMatchTracker, tickRejectedTransfers, generateInitialForm, generateAIForm, FORM_STATES, getFormMatchModifier } from '../game/formSystem';
 import { generateLoanOffers, expireLoans, simulateAILoans, createLoan } from '../game/loanSystem';
+import { checkPremiumStatus } from '../services/purchaseService';
 
 const GameContext = createContext();
 
@@ -4893,7 +4894,6 @@ export function GameProvider({ children }) {
         }
         // Check premium status (remove ads purchase)
         try {
-          const { checkPremiumStatus } = await import('../services/purchaseService');
           const isPremium = await checkPremiumStatus();
           if (isPremium) dispatch({ type: 'SET_PREMIUM', payload: true });
         } catch (e) { /* not native, ignore */ }

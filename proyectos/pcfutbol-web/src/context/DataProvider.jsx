@@ -4,7 +4,6 @@
 // ============================================================
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { loadAllData, isDataLoaded } from '../data/teamsFirestore';
 
 const DataContext = createContext();
 
@@ -13,39 +12,50 @@ export function useData() {
 }
 
 export function DataProvider({ children }) {
-  const [loading, setLoading] = useState(!isDataLoaded());
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    if (isDataLoaded()) {
-      setLoading(false);
-      return;
-    }
+    let interval;
 
     async function init() {
       try {
+        const teamsModule = await import('../data/teamsFirestore');
+
+        if (teamsModule.isDataLoaded()) {
+          setProgress(100);
+          setLoading(false);
+          return;
+        }
+
         setProgress(20);
         // Animate progress while loading
-        const interval = setInterval(() => {
+        interval = setInterval(() => {
           setProgress(p => p < 85 ? p + Math.random() * 8 : p);
         }, 200);
-        const success = await loadAllData();
-        clearInterval(interval);
+
+        const success = await teamsModule.loadAllData();
         setProgress(100);
-        
+
         if (!success) {
           setError('Error cargando datos del juego');
         }
-        
+
         setLoading(false);
       } catch (err) {
         setError(err.message);
         setLoading(false);
+      } finally {
+        if (interval) clearInterval(interval);
       }
     }
 
     init();
+
+    return () => {
+      if (interval) clearInterval(interval);
+    };
   }, []);
 
   if (loading) {
