@@ -40,7 +40,7 @@ function BadgePreview({ badge, size = 100 }) {
   return (
     <div className="badge-preview" style={{ width: size * 1.45, height: size * 1.45 }}>
       <div
-        className="badge-preview__crest"
+        className={`badge-preview__crest badge-preview__crest--${shape}`}
         style={{
           ...shapeStyles[shape],
           background: `linear-gradient(160deg, ${color1} 0%, ${color1} 48%, ${color2} 48%, ${color2} 100%)`,
