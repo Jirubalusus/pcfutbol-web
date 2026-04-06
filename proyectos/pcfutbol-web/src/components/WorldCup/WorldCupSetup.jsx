@@ -70,7 +70,6 @@ export default function WorldCupSetup({ onSelectTeam, onBack }) {
   const [previewTeam, setPreviewTeam] = useState(null);
   const [animateIn, setAnimateIn] = useState(false);
   const gridRef = useRef(null);
-  const overlayRef = useRef(null);
 
   useEffect(() => {
     fetch('/data/national-teams.json')
@@ -81,6 +80,8 @@ export default function WorldCupSetup({ onSelectTeam, onBack }) {
       })
       .catch(() => setTeams([]));
   }, []);
+
+  const displayName = useCallback((team) => lang === 'es' ? team.nameEs : team.name, [lang]);
 
   const filtered = useMemo(() => {
     let result = teams.filter(team => {
@@ -104,9 +105,7 @@ export default function WorldCupSetup({ onSelectTeam, onBack }) {
     });
 
     return result;
-  }, [teams, search, confFilter, diffFilter, sortBy, lang]);
-
-  const displayName = useCallback((team) => lang === 'es' ? team.nameEs : team.name, [lang]);
+  }, [teams, search, confFilter, diffFilter, sortBy, displayName]);
 
   const getStyleLabel = useCallback((style) => {
     if (!style) return '';
@@ -128,10 +127,6 @@ export default function WorldCupSetup({ onSelectTeam, onBack }) {
     setPreviewTeam(null);
   }, []);
 
-  const handleOverlayClick = useCallback((e) => {
-    if (e.target === overlayRef.current) closePreview();
-  }, [closePreview]);
-
   const handleConfirm = useCallback(() => {
     if (previewTeam) onSelectTeam(previewTeam);
   }, [previewTeam, onSelectTeam]);
@@ -141,242 +136,260 @@ export default function WorldCupSetup({ onSelectTeam, onBack }) {
 
   return (
     <div className={`wcs ${animateIn ? 'wcs--visible' : ''}`}>
-      {/* Sticky header */}
-      <div className="wcs__header">
-        <div className="wcs__hero-card">
-          <div className="wcs__header-top">
-            {onBack && (
-              <button className="wcs__back" onClick={onBack}>
-                <ArrowLeft size={20} /> {t.back}
-              </button>
-            )}
-            <div className="wcs__hero-inline">
-              <Trophy size={24} className="wcs__trophy-sm" />
-              <div className="wcs__hero-copy">
-                <h1 className="wcs__title">{ui.worldCup}</h1>
-                <p className="wcs__subtitle">{ui.selectTeam}</p>
+      <div className="wcs__shell">
+        <div className="wcs__header">
+          <div className="wcs__header-main">
+            <div className="wcs__header-topline">
+              {onBack && (
+                <button className="wcs__back" onClick={onBack}>
+                  <ArrowLeft size={18} /> {t.back}
+                </button>
+              )}
+              <div className="wcs__header-kicker">
+                <Trophy size={16} className="wcs__trophy-sm" />
+                <span>{ui.worldCup}</span>
+              </div>
+            </div>
+
+            <div className="wcs__title-row">
+              <div className="wcs__title-block">
+                <h1 className="wcs__title">{ui.selectTeam}</h1>
+                <p className="wcs__subtitle">{t.tapToInspect}</p>
+              </div>
+              <div className="wcs__header-stats">
+                <div className="wcs__status-pill">
+                  <ShieldCheck size={14} />
+                  <span>{filtered.length} {t.teamsAvailable}</span>
+                </div>
+                {previewTeam && (
+                  <div className="wcs__status-pill wcs__status-pill--selected">
+                    <FlagIcon teamId={previewTeam.id} size={16} />
+                    <span>{displayName(previewTeam)}</span>
+                  </div>
+                )}
               </div>
             </div>
           </div>
 
-          <div className="wcs__toolbar">
-            <div className="wcs__search">
-              <Search size={18} />
-              <input
-                type="text"
-                placeholder={t.search}
-                value={search}
-                onChange={e => setSearch(e.target.value)}
-              />
-              {search && (
-                <button className="wcs__search-clear" onClick={() => setSearch('')} aria-label={t.clear}>
-                  <X size={16} />
+          <div className="wcs__controls-card">
+            <div className="wcs__controls-head">
+              <div className="wcs__controls-title">
+                <SlidersHorizontal size={16} />
+                <span>{t.filters}</span>
+              </div>
+              {hasActiveFilters && (
+                <button
+                  className="wcs__reset"
+                  onClick={() => {
+                    setSearch('');
+                    setConfFilter('ALL');
+                    setDiffFilter('all');
+                    setSortBy('ranking');
+                  }}
+                >
+                  {t.clear}
                 </button>
               )}
             </div>
 
-            <div className="wcs__status-row">
-              <div className="wcs__status-pill">
-                <ShieldCheck size={14} />
-                <span>{filtered.length} {t.teamsAvailable}</span>
+            <div className="wcs__controls-grid">
+              <div className="wcs__search">
+                <Search size={18} />
+                <input
+                  type="text"
+                  placeholder={t.search}
+                  value={search}
+                  onChange={e => setSearch(e.target.value)}
+                />
+                {search && (
+                  <button className="wcs__search-clear" onClick={() => setSearch('')} aria-label={t.clear}>
+                    <X size={16} />
+                  </button>
+                )}
               </div>
-              <div className="wcs__status-hint">{t.tapToInspect}</div>
+
+              <div className="wcs__control-strip">
+                <div className="wcs__control-group wcs__control-group--conf">
+                  <span className="wcs__control-label">Confederación</span>
+                  <div className="wcs__conf-scroll">
+                    {CONFEDERATIONS.map(key => (
+                      <button
+                        key={key}
+                        className={`wcs__conf-btn ${confFilter === key ? 'wcs__conf-btn--active' : ''}`}
+                        onClick={() => setConfFilter(key)}
+                      >
+                        {CONF_EMOJI[key]} {key === 'ALL' ? t.all : key}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="wcs__control-group">
+                  <span className="wcs__control-label">{t.difficulty}</span>
+                  <div className="wcs__diff-filters">
+                    {['all', 'easy', 'medium', 'hard'].map(d => (
+                      <button
+                        key={d}
+                        className={`wcs__diff-btn ${diffFilter === d ? 'wcs__diff-btn--active' : ''}`}
+                        onClick={() => setDiffFilter(d)}
+                      >
+                        {d === 'all' ? t.all : `${DIFF_EMOJI[d]} ${t[d]}`}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <label className="wcs__sort-wrap">
+                  <span className="wcs__control-label">{t.sort}</span>
+                  <select className="wcs__sort" value={sortBy} onChange={e => setSortBy(e.target.value)}>
+                    <option value="ranking">{t.ranking}</option>
+                    <option value="rating">{t.rating}</option>
+                    <option value="name">{t.name}</option>
+                    <option value="difficulty">{t.difficulty}</option>
+                  </select>
+                </label>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="wcs__controls-card">
-          <div className="wcs__controls-head">
-            <div className="wcs__controls-title">
-              <SlidersHorizontal size={16} />
-              <span>{t.filters}</span>
+        <div className="wcs__content">
+          <section className="wcs__board">
+            <div className="wcs__results-bar">
+              <span className="wcs__results-title">
+                {search ? `${t.resultsFor} “${search}”` : ui.selectTeam}
+              </span>
+              <span className="wcs__results-count">{filtered.length}</span>
             </div>
-            {hasActiveFilters && (
-              <button
-                className="wcs__reset"
-                onClick={() => {
-                  setSearch('');
-                  setConfFilter('ALL');
-                  setDiffFilter('all');
-                  setSortBy('ranking');
-                }}
-              >
-                {t.clear}
-              </button>
-            )}
-          </div>
 
-          <div className="wcs__control-group">
-            <span className="wcs__control-label">Confederación</span>
-            <div className="wcs__conf-scroll">
-              {CONFEDERATIONS.map(key => (
+            <div className="wcs__grid" ref={gridRef}>
+              {filtered.map((team, idx) => (
                 <button
-                  key={key}
-                  className={`wcs__conf-btn ${confFilter === key ? 'wcs__conf-btn--active' : ''}`}
-                  onClick={() => setConfFilter(key)}
+                  key={team.id}
+                  className={`wcs__card ${previewTeam?.id === team.id ? 'wcs__card--selected' : ''}`}
+                  style={{ animationDelay: `${Math.min(idx, 20) * 30}ms` }}
+                  onClick={() => handleCardClick(team)}
                 >
-                  {CONF_EMOJI[key]} {key === 'ALL' ? t.all : key}
+                  <div className="wcs__card-flag-wrap">
+                    <FlagIcon teamId={team.id} size={40} className="wcs__card-flag" />
+                    <span className="wcs__card-rank">#{team.fifaRanking}</span>
+                  </div>
+
+                  <div className="wcs__card-copy">
+                    <span className="wcs__card-name">{displayName(team)}</span>
+                    <span className="wcs__card-conf">{team.confederation}</span>
+                  </div>
+
+                  <div className="wcs__card-footer">
+                    <div className="wcs__card-rating-block">
+                      <span className="wcs__card-rating-value">{team.rating}</span>
+                      <RatingStars rating={team.rating} size={12} />
+                    </div>
+                    <span className="wcs__card-style">{getStyleLabel(team.style)}</span>
+                  </div>
                 </button>
               ))}
+              {filtered.length === 0 && (
+                <div className="wcs__empty">🔍 {t.search}</div>
+              )}
             </div>
-          </div>
+          </section>
 
-          <div className="wcs__filter-row">
-            <div className="wcs__control-group wcs__control-group--grow">
-              <span className="wcs__control-label">{t.difficulty}</span>
-              <div className="wcs__diff-filters">
-                {['all', 'easy', 'medium', 'hard'].map(d => (
-                  <button
-                    key={d}
-                    className={`wcs__diff-btn ${diffFilter === d ? 'wcs__diff-btn--active' : ''}`}
-                    onClick={() => setDiffFilter(d)}
-                  >
-                    {d === 'all' ? t.all : `${DIFF_EMOJI[d]} ${t[d]}`}
+          <aside className={`wcs__detail ${previewTeam ? 'wcs__detail--active' : ''}`}>
+            {previewTeam ? (
+              <div className="wcs__preview">
+                <div className="wcs__preview-top">
+                  <div className="wcs__preview-eyebrow">{ui.worldCup}</div>
+                  <button className="wcs__preview-close" onClick={closePreview} aria-label={t.clear}>
+                    <X size={18} />
                   </button>
-                ))}
-              </div>
-            </div>
-            <label className="wcs__sort-wrap">
-              <span className="wcs__control-label">{t.sort}</span>
-              <select className="wcs__sort" value={sortBy} onChange={e => setSortBy(e.target.value)}>
-                <option value="ranking">{t.ranking}</option>
-                <option value="rating">{t.rating}</option>
-                <option value="name">{t.name}</option>
-                <option value="difficulty">{t.difficulty}</option>
-              </select>
-            </label>
-          </div>
-        </div>
-      </div>
-
-      <div className="wcs__results-bar">
-        <span className="wcs__results-title">
-          {search ? `${t.resultsFor} “${search}”` : ui.selectTeam}
-        </span>
-        <span className="wcs__results-count">{filtered.length}</span>
-      </div>
-
-      {/* Team grid */}
-      <div className="wcs__grid" ref={gridRef}>
-        {filtered.map((team, idx) => (
-          <button
-            key={team.id}
-            className={`wcs__card ${previewTeam?.id === team.id ? 'wcs__card--selected' : ''}`}
-            style={{ animationDelay: `${Math.min(idx, 20) * 30}ms` }}
-            onClick={() => handleCardClick(team)}
-          >
-            <div className="wcs__card-top">
-              <div className="wcs__card-identity">
-                <FlagIcon teamId={team.id} size={32} className="wcs__card-flag" />
-                <div className="wcs__card-copy">
-                  <span className="wcs__card-name">{displayName(team)}</span>
-                  <span className="wcs__card-conf">{team.confederation}</span>
                 </div>
-              </div>
-              <span className="wcs__card-rank">#{team.fifaRanking}</span>
-            </div>
-            <div className="wcs__card-body">
-              <div className="wcs__card-rating-row">
-                <RatingStars rating={team.rating} size={12} />
-                <span className="wcs__card-rating-value">{team.rating}</span>
-              </div>
-              <div className="wcs__card-meta">
-                <span className="wcs__card-style">{getStyleLabel(team.style)}</span>
-                <span className={`wcs__card-diff wcs__card-diff--${getDifficulty(team.rating)}`}>
-                  {getDiffLabel(team.rating)}
-                </span>
-              </div>
-            </div>
-          </button>
-        ))}
-        {filtered.length === 0 && (
-          <div className="wcs__empty">🔍 {t.search}</div>
-        )}
-      </div>
 
-      {/* Preview panel (bottom sheet) */}
-      {previewTeam && (
-        <div className="wcs__overlay" ref={overlayRef} onClick={handleOverlayClick}>
-          <div className="wcs__preview">
-            <div className="wcs__preview-handle" />
-            <button className="wcs__preview-close" onClick={closePreview}>
-              <X size={22} />
-            </button>
-
-            {/* Team header */}
-            <div className="wcs__preview-header">
-              <FlagIcon teamId={previewTeam.id} size={48} className="wcs__preview-flag" />
-              <div className="wcs__preview-info">
-                <h2 className="wcs__preview-name">{displayName(previewTeam)}</h2>
-                <div className="wcs__preview-meta">
-                  <span className="wcs__preview-conf">{previewTeam.confederation}</span>
-                  <span className="wcs__preview-rank">#{previewTeam.fifaRanking} {t.fifaRanking}</span>
-                </div>
-                <RatingStars rating={previewTeam.rating} size={16} />
-              </div>
-            </div>
-
-            {/* Stats grid */}
-            <div className="wcs__preview-stats">
-              <div className="wcs__stat">
-                <span className="wcs__stat-label">{t.difficulty}</span>
-                <span className={`wcs__stat-value wcs__stat-value--${getDifficulty(previewTeam.rating)}`}>
-                  {getDiffLabel(previewTeam.rating)}
-                </span>
-              </div>
-              <div className="wcs__stat">
-                <span className="wcs__stat-label">{t.style}</span>
-                <span className="wcs__stat-value">{getStyleLabel(previewTeam.style)}</span>
-              </div>
-              <div className="wcs__stat">
-                <span className="wcs__stat-label">{t.avgRating}</span>
-                <span className="wcs__stat-value">
-                  <TrendingUp size={14} /> {stats?.avgRating || '—'}
-                </span>
-              </div>
-              <div className="wcs__stat">
-                <span className="wcs__stat-label">{t.squad}</span>
-                <span className="wcs__stat-value">
-                  <Users size={14} /> {previewTeam.players?.length || 0}
-                </span>
-              </div>
-            </div>
-
-            {/* Star player */}
-            {stats?.starPlayer && (
-              <div className="wcs__preview-star">
-                <span className="wcs__preview-star-badge">⭐ {ui.starPlayer}</span>
-                <div className="wcs__preview-star-info">
-                  <span className="wcs__preview-star-name">{stats.starPlayer.name}</span>
-                  <span className="wcs__preview-star-pos">{stats.starPlayer.position}</span>
-                  <span className="wcs__preview-star-rating">{stats.starPlayer.rating}</span>
-                </div>
-              </div>
-            )}
-
-            {/* Top 3 players */}
-            {stats?.top3?.length > 0 && (
-              <div className="wcs__preview-top3">
-                <h3 className="wcs__preview-section-title">{t.topPlayers}</h3>
-                {stats.top3.map((p, i) => (
-                  <div key={i} className="wcs__preview-player">
-                    <span className="wcs__preview-player-rank">{i + 1}</span>
-                    <span className="wcs__preview-player-name">{p.name}</span>
-                    <span className="wcs__preview-player-pos">{p.position}</span>
-                    <span className="wcs__preview-player-rating">{p.rating}</span>
+                <div className="wcs__preview-hero">
+                  <div className="wcs__preview-identity">
+                    <FlagIcon teamId={previewTeam.id} size={56} className="wcs__preview-flag" />
+                    <div className="wcs__preview-info">
+                      <h2 className="wcs__preview-name">{displayName(previewTeam)}</h2>
+                      <div className="wcs__preview-meta">
+                        <span className="wcs__preview-conf">{previewTeam.confederation}</span>
+                        <span className="wcs__preview-rank">#{previewTeam.fifaRanking} {t.fifaRanking}</span>
+                      </div>
+                    </div>
                   </div>
-                ))}
+
+                  <div className="wcs__preview-rating">
+                    <span className="wcs__preview-rating-number">{previewTeam.rating}</span>
+                    <RatingStars rating={previewTeam.rating} size={16} />
+                  </div>
+                </div>
+
+                <div className="wcs__preview-stats">
+                  <div className="wcs__stat">
+                    <span className="wcs__stat-label">{t.difficulty}</span>
+                    <span className={`wcs__stat-value wcs__stat-value--${getDifficulty(previewTeam.rating)}`}>
+                      {getDiffLabel(previewTeam.rating)}
+                    </span>
+                  </div>
+                  <div className="wcs__stat">
+                    <span className="wcs__stat-label">{t.style}</span>
+                    <span className="wcs__stat-value">{getStyleLabel(previewTeam.style)}</span>
+                  </div>
+                  <div className="wcs__stat">
+                    <span className="wcs__stat-label">{t.avgRating}</span>
+                    <span className="wcs__stat-value">
+                      <TrendingUp size={14} /> {stats?.avgRating || '—'}
+                    </span>
+                  </div>
+                  <div className="wcs__stat">
+                    <span className="wcs__stat-label">{t.squad}</span>
+                    <span className="wcs__stat-value">
+                      <Users size={14} /> {previewTeam.players?.length || 0}
+                    </span>
+                  </div>
+                </div>
+
+                {stats?.starPlayer && (
+                  <div className="wcs__preview-star">
+                    <span className="wcs__preview-star-badge">⭐ {ui.starPlayer}</span>
+                    <div className="wcs__preview-star-info">
+                      <span className="wcs__preview-star-name">{stats.starPlayer.name}</span>
+                      <span className="wcs__preview-star-pos">{stats.starPlayer.position}</span>
+                      <span className="wcs__preview-star-rating">{stats.starPlayer.rating}</span>
+                    </div>
+                  </div>
+                )}
+
+                {stats?.top3?.length > 0 && (
+                  <div className="wcs__preview-top3">
+                    <h3 className="wcs__preview-section-title">{t.topPlayers}</h3>
+                    {stats.top3.map((p, i) => (
+                      <div key={i} className="wcs__preview-player">
+                        <span className="wcs__preview-player-rank">{i + 1}</span>
+                        <span className="wcs__preview-player-name">{p.name}</span>
+                        <span className="wcs__preview-player-pos">{p.position}</span>
+                        <span className="wcs__preview-player-rating">{p.rating}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                <button className="wcs__preview-confirm" onClick={handleConfirm}>
+                  {t.confirm} — {displayName(previewTeam)} <FlagIcon teamId={previewTeam.id} size={20} />
+                  <ChevronRight size={20} />
+                </button>
+              </div>
+            ) : (
+              <div className="wcs__detail-placeholder">
+                <div className="wcs__detail-placeholder-icon">
+                  <Trophy size={24} />
+                </div>
+                <h2 className="wcs__detail-placeholder-title">{ui.selectTeam}</h2>
+                <p className="wcs__detail-placeholder-text">{t.tapToInspect}</p>
               </div>
             )}
-
-            {/* Confirm button */}
-            <button className="wcs__preview-confirm" onClick={handleConfirm}>
-              {t.confirm} — {displayName(previewTeam)} <FlagIcon teamId={previewTeam.id} size={20} />
-              <ChevronRight size={20} />
-            </button>
-          </div>
+          </aside>
         </div>
-      )}
+      </div>
     </div>
   );
 }
