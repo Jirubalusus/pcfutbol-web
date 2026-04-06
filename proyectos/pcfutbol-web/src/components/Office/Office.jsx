@@ -90,7 +90,6 @@ import {
   AlertTriangle,
   HeartPulse,
   UserRound,
-  Loader,
   CalendarDays,
   Shield,
   Star,
@@ -105,6 +104,7 @@ import { submitRoundConfig, advancePhase as advanceRankedPhase, onMatchChange } 
 import { useAuth } from '../../context/AuthContext';
 import { WelcomeModal, TutorialModal, useTutorial } from '../Tutorial/Tutorial';
 import TeamCrest from '../TeamCrest/TeamCrest';
+import LoadingIndicator from '../common/LoadingIndicator';
 import './Office.scss';
 
 export default function Office() {
@@ -1649,7 +1649,7 @@ export default function Office() {
       {simProgress && !isRanked && (
         <div className="sim-modal-overlay">
           <div className="sim-modal">
-            <div className="sim-modal__icon"><Loader size={40} className="sim-modal__spinner" /></div>
+            <div className="sim-modal__icon"><LoadingIndicator size="lg" /></div>
             <h3 className="sim-modal__title">{t('office.simulating')}...</h3>
             <p className="sim-modal__week">{t('common.week')} {simProgress.week}</p>
             <div className="sim-modal__bar-bg">

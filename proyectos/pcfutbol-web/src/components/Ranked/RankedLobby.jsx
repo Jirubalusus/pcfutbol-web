@@ -13,6 +13,7 @@ import {
 } from '../../firebase/draftService';
 import { getTierByLP, getLPInDivision } from './tierUtils';
 import { Swords, Trophy, Search, ArrowLeft, Clock, ChevronRight, Wifi, WifiOff, Users } from 'lucide-react';
+import LoadingIndicator from '../common/LoadingIndicator';
 import './RankedLobby.scss';
 
 export default function RankedLobby() {
@@ -180,8 +181,7 @@ export default function RankedLobby() {
     return (
       <div className="ranked-lobby">
         <div className="ranked-lobby__loading">
-          <Swords size={32} className="spin" />
-          <p>{t('ranked.loadingProfile')}</p>
+          <LoadingIndicator size="lg" label={t('ranked.loadingProfile')} />
         </div>
       </div>
     );

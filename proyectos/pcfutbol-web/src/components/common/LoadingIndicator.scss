@@ -1,0 +1,61 @@
+.loading-indicator {
+  --loader-size: 28px;
+  --loader-border: 2px;
+  --loader-accent: var(--color-accent, #6ee7b7);
+  --loader-surface: rgba(255, 255, 255, 0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  &--sm {
+    --loader-size: 18px;
+    --loader-border: 2px;
+  }
+
+  &--md {
+    --loader-size: 28px;
+    --loader-border: 2px;
+  }
+
+  &--lg {
+    --loader-size: 42px;
+    --loader-border: 3px;
+  }
+
+  &__ring {
+    position: relative;
+    width: var(--loader-size);
+    height: var(--loader-size);
+    border-radius: 50%;
+    border: var(--loader-border) solid var(--loader-surface);
+    border-top-color: var(--loader-accent);
+    border-right-color: rgba(255, 255, 255, 0.32);
+    animation: loading-indicator-spin 0.85s linear infinite;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.03), 0 6px 18px rgba(0, 0, 0, 0.18);
+  }
+
+  &__core {
+    position: absolute;
+    inset: 50%;
+    width: 26%;
+    height: 26%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.75);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+  }
+
+  &__label {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+}
+
+@keyframes loading-indicator-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -20,8 +20,9 @@ import {
 import {
   Swords, Shield, Clock, Trophy, ChevronRight, AlertTriangle,
   Check, X, ArrowLeft, Star, Zap, Target, Users, Search,
-  ChevronDown, Lock, Unlock, TrendingUp, Award, Loader
+  ChevronDown, Lock, Unlock, TrendingUp, Award
 } from 'lucide-react';
+import LoadingIndicator from '../common/LoadingIndicator';
 
 const LEAGUE_TEAMS_GETTERS = {
   laliga: getLaLigaTeams, segunda: getSegundaTeams,
@@ -364,8 +365,7 @@ export default function RankedMatch() {
     return (
       <div className="ranked-match">
         <div className="ranked-match__loading">
-          <Swords size={32} className="spin" />
-          <p>{t('ranked.connectingMatch')}</p>
+          <LoadingIndicator size="lg" label={t('ranked.connectingMatch')} />
         </div>
       </div>
     );
@@ -588,7 +588,7 @@ export default function RankedMatch() {
         {(match.phase === 'simulating1' || match.phase === 'simulating2') && (
           <div className="phase-simulating">
             <div className="sim-animation">
-              <div className="sim-ball"><Loader size={36} style={{ animation: 'spin 1s linear infinite' }} /></div>
+              <div className="sim-ball"><LoadingIndicator size="lg" /></div>
             </div>
             <h2>{match.phase === 'simulating1' ? t('ranked.simFirstHalf') : t('ranked.simFullSeason')}</h2>
             

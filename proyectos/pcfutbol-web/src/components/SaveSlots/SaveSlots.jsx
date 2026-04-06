@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getAuth } from 'firebase/auth';
 import { useTranslation } from 'react-i18next';
 import { FolderOpen, Save, FolderCog, Trash2, PlusCircle, Play, ArrowLeft } from 'lucide-react';
-import FootballIcon from '../icons/FootballIcon';
+import LoadingIndicator from '../common/LoadingIndicator';
 import { useAuth } from '../../context/AuthContext';
 import { useGame } from '../../context/GameContext';
 import { getUserSaves, loadGameFromSlot, deleteSaveSlot, saveGameToSlot } from '../../firebase/savesService';
@@ -139,8 +139,7 @@ export default function SaveSlots({ mode = 'load', onBack, onSlotSelected }) {
     return (
       <div className="save-slots unified-screen">
         <div className="save-slots__loading">
-          <div className="save-slots__spinner"><FootballIcon size={22} /></div>
-          <p>{t('saveSlots.loadingGames')}</p>
+          <LoadingIndicator size="md" label={t('saveSlots.loadingGames')} />
         </div>
       </div>
     );

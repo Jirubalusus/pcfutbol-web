@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { getAuth } from 'firebase/auth';
 import { useAuth } from '../../context/AuthContext';
 import { useGame } from '../../context/GameContext';
-import { Mountain, Play, BookOpen, ArrowLeft, Loader } from 'lucide-react';
+import { Mountain, Play, BookOpen, ArrowLeft } from 'lucide-react';
+import LoadingIndicator from '../common/LoadingIndicator';
 import GloryCollection from './GloryCollection';
 import { getUnlockedCards } from '../../game/gloryUnlocks';
 import { getGlorySave, deleteGlorySave } from '../../firebase/glorySaveService';
@@ -136,8 +137,8 @@ export default function GloryMenu() {
         </p>
 
         {loading ? (
-          <div style={{ textAlign: 'center', padding: '2rem' }}>
-            <Loader size={24} className="spin" />
+          <div style={{ textAlign: 'center', padding: '2rem', display: 'flex', justifyContent: 'center' }}>
+            <LoadingIndicator size="md" />
           </div>
         ) : (
           <div className="glory-menu__buttons">

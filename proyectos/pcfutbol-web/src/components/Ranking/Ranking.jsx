@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useGame } from '../../context/GameContext';
 import { loadRanking as fetchRanking, clearRanking as clearFirebaseRanking } from '../../firebase/rankingService';
-import { Trophy, ArrowLeft, Timer, Medal, Trash2, Calendar, Loader } from 'lucide-react';
+import { Trophy, ArrowLeft, Timer, Medal, Trash2, Calendar } from 'lucide-react';
+import LoadingIndicator from '../common/LoadingIndicator';
 import { useTranslation } from 'react-i18next';
 import './Ranking.scss';
 
@@ -73,7 +74,7 @@ export default function Ranking() {
 
         {loading ? (
           <div className="ranking__empty">
-            <Loader size={48} className="empty-icon spinning" />
+            <LoadingIndicator size="lg" />
             <h2>{t('ranking.loading')}</h2>
           </div>
         ) : ranking.length === 0 ? (
