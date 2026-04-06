@@ -70,18 +70,7 @@ export default function BadgeEditor({ value, onChange }) {
 
   return (
     <div className="badge-editor">
-      <div className="badge-editor__hero">
-        <div className="badge-editor__hero-copy">
-          <span className="badge-editor__eyebrow">Club identity workshop</span>
-          <h4>Construye un escudo con presencia</h4>
-          <p>Define la silueta, la paleta y el símbolo principal de tu club sin tocar la estructura de datos original.</p>
-          <div className="badge-editor__specs">
-            <span><strong>Forma:</strong> {SHAPE_LABELS[badge.shape]}</span>
-            <span><strong>Primario:</strong> {badge.color1}</span>
-            <span><strong>Secundario:</strong> {badge.color2}</span>
-          </div>
-        </div>
-
+      <div className="badge-editor__hero badge-editor__hero--minimal">
         <div className="badge-editor__preview-stage">
           <div className="badge-editor__preview-frame">
             <div className="badge-editor__preview-meta">
