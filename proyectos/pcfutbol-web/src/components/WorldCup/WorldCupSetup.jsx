@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Trophy, Search, Star, ChevronRight, ArrowLeft, X, Users, TrendingUp } from 'lucide-react';
+import { Trophy, Search, Star, ChevronRight, ArrowLeft, X, Users, TrendingUp, SlidersHorizontal, ShieldCheck } from 'lucide-react';
 import { WORLD_CUP_UI_I18N } from '../../data/worldCupEventsI18n';
 import FlagIcon from './FlagIcon';
 import './WorldCupSetup.scss';
@@ -19,12 +19,12 @@ const STYLE_KEY_MAP = {
 };
 
 const DIFFICULTY_I18N = {
-  es: { hard: 'Difícil', medium: 'Media', easy: 'Fácil', all: 'Todas', search: 'Buscar selección...', confirm: 'Confirmar', back: 'Volver', ranking: 'Ranking', rating: 'Valoración', name: 'Nombre', difficulty: 'Dificultad', sortBy: 'Ordenar', squad: 'Plantilla', avgRating: 'Media', topPlayers: 'Mejores jugadores', fifaRanking: 'Ranking FIFA' },
-  en: { hard: 'Hard', medium: 'Medium', easy: 'Easy', all: 'All', search: 'Search nation...', confirm: 'Confirm', back: 'Back', ranking: 'Ranking', rating: 'Rating', name: 'Name', difficulty: 'Difficulty', sortBy: 'Sort', squad: 'Squad', avgRating: 'Average', topPlayers: 'Top players', fifaRanking: 'FIFA Ranking' },
-  fr: { hard: 'Difficile', medium: 'Moyen', easy: 'Facile', all: 'Toutes', search: 'Rechercher nation...', confirm: 'Confirmer', back: 'Retour', ranking: 'Classement', rating: 'Note', name: 'Nom', difficulty: 'Difficulté', sortBy: 'Trier', squad: 'Effectif', avgRating: 'Moyenne', topPlayers: 'Meilleurs joueurs', fifaRanking: 'Classement FIFA' },
-  de: { hard: 'Schwer', medium: 'Mittel', easy: 'Leicht', all: 'Alle', search: 'Nation suchen...', confirm: 'Bestätigen', back: 'Zurück', ranking: 'Ranking', rating: 'Bewertung', name: 'Name', difficulty: 'Schwierigkeit', sortBy: 'Sortieren', squad: 'Kader', avgRating: 'Durchschnitt', topPlayers: 'Top-Spieler', fifaRanking: 'FIFA-Ranking' },
-  pt: { hard: 'Difícil', medium: 'Médio', easy: 'Fácil', all: 'Todas', search: 'Pesquisar seleção...', confirm: 'Confirmar', back: 'Voltar', ranking: 'Ranking', rating: 'Avaliação', name: 'Nome', difficulty: 'Dificuldade', sortBy: 'Ordenar', squad: 'Plantel', avgRating: 'Média', topPlayers: 'Melhores jogadores', fifaRanking: 'Ranking FIFA' },
-  it: { hard: 'Difficile', medium: 'Medio', easy: 'Facile', all: 'Tutte', search: 'Cerca nazione...', confirm: 'Conferma', back: 'Indietro', ranking: 'Classifica', rating: 'Valutazione', name: 'Nome', difficulty: 'Difficoltà', sortBy: 'Ordina', squad: 'Rosa', avgRating: 'Media', topPlayers: 'Migliori giocatori', fifaRanking: 'Ranking FIFA' },
+  es: { hard: 'Difícil', medium: 'Media', easy: 'Fácil', all: 'Todas', search: 'Buscar selección...', confirm: 'Confirmar', back: 'Volver', ranking: 'Ranking', rating: 'Valoración', name: 'Nombre', difficulty: 'Dificultad', sortBy: 'Ordenar', squad: 'Plantilla', avgRating: 'Media', topPlayers: 'Mejores jugadores', fifaRanking: 'Ranking FIFA', filters: 'Filtros', sort: 'Orden', teamsAvailable: 'selecciones disponibles', tapToInspect: 'Toca una selección para ver detalles y confirmar', style: 'Estilo', resultsFor: 'Resultados para', clear: 'Limpiar' },
+  en: { hard: 'Hard', medium: 'Medium', easy: 'Easy', all: 'All', search: 'Search nation...', confirm: 'Confirm', back: 'Back', ranking: 'Ranking', rating: 'Rating', name: 'Name', difficulty: 'Difficulty', sortBy: 'Sort', squad: 'Squad', avgRating: 'Average', topPlayers: 'Top players', fifaRanking: 'FIFA Ranking', filters: 'Filters', sort: 'Sort', teamsAvailable: 'teams available', tapToInspect: 'Tap a nation to inspect details and confirm', style: 'Style', resultsFor: 'Results for', clear: 'Clear' },
+  fr: { hard: 'Difficile', medium: 'Moyen', easy: 'Facile', all: 'Toutes', search: 'Rechercher nation...', confirm: 'Confirmer', back: 'Retour', ranking: 'Classement', rating: 'Note', name: 'Nom', difficulty: 'Difficulté', sortBy: 'Trier', squad: 'Effectif', avgRating: 'Moyenne', topPlayers: 'Meilleurs joueurs', fifaRanking: 'Classement FIFA', filters: 'Filtres', sort: 'Tri', teamsAvailable: 'sélections disponibles', tapToInspect: 'Touchez une sélection pour voir ses détails', style: 'Style', resultsFor: 'Résultats pour', clear: 'Effacer' },
+  de: { hard: 'Schwer', medium: 'Mittel', easy: 'Leicht', all: 'Alle', search: 'Nation suchen...', confirm: 'Bestätigen', back: 'Zurück', ranking: 'Ranking', rating: 'Bewertung', name: 'Name', difficulty: 'Schwierigkeit', sortBy: 'Sortieren', squad: 'Kader', avgRating: 'Durchschnitt', topPlayers: 'Top-Spieler', fifaRanking: 'FIFA-Ranking', filters: 'Filter', sort: 'Sortierung', teamsAvailable: 'Teams verfügbar', tapToInspect: 'Tippe ein Team an, um Details zu sehen', style: 'Stil', resultsFor: 'Ergebnisse für', clear: 'Zurücksetzen' },
+  pt: { hard: 'Difícil', medium: 'Médio', easy: 'Fácil', all: 'Todas', search: 'Pesquisar seleção...', confirm: 'Confirmar', back: 'Voltar', ranking: 'Ranking', rating: 'Avaliação', name: 'Nome', difficulty: 'Dificuldade', sortBy: 'Ordenar', squad: 'Plantel', avgRating: 'Média', topPlayers: 'Melhores jogadores', fifaRanking: 'Ranking FIFA', filters: 'Filtros', sort: 'Ordenação', teamsAvailable: 'seleções disponíveis', tapToInspect: 'Toque numa seleção para ver detalhes', style: 'Estilo', resultsFor: 'Resultados para', clear: 'Limpar' },
+  it: { hard: 'Difficile', medium: 'Medio', easy: 'Facile', all: 'Tutte', search: 'Cerca nazione...', confirm: 'Conferma', back: 'Indietro', ranking: 'Classifica', rating: 'Valutazione', name: 'Nome', difficulty: 'Difficoltà', sortBy: 'Ordina', squad: 'Rosa', avgRating: 'Media', topPlayers: 'Migliori giocatori', fifaRanking: 'Ranking FIFA', filters: 'Filtri', sort: 'Ordine', teamsAvailable: 'nazionali disponibili', tapToInspect: 'Tocca una nazionale per vedere i dettagli', style: 'Stile', resultsFor: 'Risultati per', clear: 'Pulisci' },
 };
 
 function getDifficulty(rating) {
@@ -137,73 +137,123 @@ export default function WorldCupSetup({ onSelectTeam, onBack }) {
   }, [previewTeam, onSelectTeam]);
 
   const stats = previewTeam ? getTeamStats(previewTeam) : null;
+  const hasActiveFilters = search || confFilter !== 'ALL' || diffFilter !== 'all' || sortBy !== 'ranking';
 
   return (
     <div className={`wcs ${animateIn ? 'wcs--visible' : ''}`}>
       {/* Sticky header */}
       <div className="wcs__header">
-        <div className="wcs__header-top">
-          {onBack && (
-            <button className="wcs__back" onClick={onBack}>
-              <ArrowLeft size={20} /> {t.back}
-            </button>
-          )}
-          <div className="wcs__hero-inline">
-            <Trophy size={24} className="wcs__trophy-sm" />
-            <h1 className="wcs__title">{ui.worldCup}</h1>
-          </div>
-        </div>
-        <p className="wcs__subtitle">{ui.selectTeam}</p>
-
-        {/* Search */}
-        <div className="wcs__search">
-          <Search size={18} />
-          <input
-            type="text"
-            placeholder={t.search}
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-          />
-          {search && (
-            <button className="wcs__search-clear" onClick={() => setSearch('')}>
-              <X size={16} />
-            </button>
-          )}
-        </div>
-
-        {/* Confederations - horizontal scroll */}
-        <div className="wcs__conf-scroll">
-          {CONFEDERATIONS.map(key => (
-            <button
-              key={key}
-              className={`wcs__conf-btn ${confFilter === key ? 'wcs__conf-btn--active' : ''}`}
-              onClick={() => setConfFilter(key)}
-            >
-              {CONF_EMOJI[key]} {key === 'ALL' ? t.all : key}
-            </button>
-          ))}
-        </div>
-
-        {/* Difficulty filter + Sort */}
-        <div className="wcs__filter-row">
-          <div className="wcs__diff-filters">
-            {['all', 'easy', 'medium', 'hard'].map(d => (
-              <button
-                key={d}
-                className={`wcs__diff-btn ${diffFilter === d ? 'wcs__diff-btn--active' : ''}`}
-                onClick={() => setDiffFilter(d)}
-              >
-                {d === 'all' ? t.all : `${DIFF_EMOJI[d]} ${t[d]}`}
+        <div className="wcs__hero-card">
+          <div className="wcs__header-top">
+            {onBack && (
+              <button className="wcs__back" onClick={onBack}>
+                <ArrowLeft size={20} /> {t.back}
               </button>
-            ))}
+            )}
+            <div className="wcs__hero-inline">
+              <Trophy size={24} className="wcs__trophy-sm" />
+              <div className="wcs__hero-copy">
+                <h1 className="wcs__title">{ui.worldCup}</h1>
+                <p className="wcs__subtitle">{ui.selectTeam}</p>
+              </div>
+            </div>
           </div>
-          <select className="wcs__sort" value={sortBy} onChange={e => setSortBy(e.target.value)}>
-            <option value="ranking">{t.ranking}</option>
-            <option value="rating">{t.rating}</option>
-            <option value="name">{t.name}</option>
-            <option value="difficulty">{t.difficulty}</option>
-          </select>
+
+          <div className="wcs__toolbar">
+            <div className="wcs__search">
+              <Search size={18} />
+              <input
+                type="text"
+                placeholder={t.search}
+                value={search}
+                onChange={e => setSearch(e.target.value)}
+              />
+              {search && (
+                <button className="wcs__search-clear" onClick={() => setSearch('')} aria-label={t.clear}>
+                  <X size={16} />
+                </button>
+              )}
+            </div>
+
+            <div className="wcs__status-row">
+              <div className="wcs__status-pill">
+                <ShieldCheck size={14} />
+                <span>{filtered.length} {t.teamsAvailable}</span>
+              </div>
+              <div className="wcs__status-hint">{t.tapToInspect}</div>
+            </div>
+          </div>
         </div>
+
+        <div className="wcs__controls-card">
+          <div className="wcs__controls-head">
+            <div className="wcs__controls-title">
+              <SlidersHorizontal size={16} />
+              <span>{t.filters}</span>
+            </div>
+            {hasActiveFilters && (
+              <button
+                className="wcs__reset"
+                onClick={() => {
+                  setSearch('');
+                  setConfFilter('ALL');
+                  setDiffFilter('all');
+                  setSortBy('ranking');
+                }}
+              >
+                {t.clear}
+              </button>
+            )}
+          </div>
+
+          <div className="wcs__control-group">
+            <span className="wcs__control-label">Confederación</span>
+            <div className="wcs__conf-scroll">
+              {CONFEDERATIONS.map(key => (
+                <button
+                  key={key}
+                  className={`wcs__conf-btn ${confFilter === key ? 'wcs__conf-btn--active' : ''}`}
+                  onClick={() => setConfFilter(key)}
+                >
+                  {CONF_EMOJI[key]} {key === 'ALL' ? t.all : key}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="wcs__filter-row">
+            <div className="wcs__control-group wcs__control-group--grow">
+              <span className="wcs__control-label">{t.difficulty}</span>
+              <div className="wcs__diff-filters">
+                {['all', 'easy', 'medium', 'hard'].map(d => (
+                  <button
+                    key={d}
+                    className={`wcs__diff-btn ${diffFilter === d ? 'wcs__diff-btn--active' : ''}`}
+                    onClick={() => setDiffFilter(d)}
+                  >
+                    {d === 'all' ? t.all : `${DIFF_EMOJI[d]} ${t[d]}`}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <label className="wcs__sort-wrap">
+              <span className="wcs__control-label">{t.sort}</span>
+              <select className="wcs__sort" value={sortBy} onChange={e => setSortBy(e.target.value)}>
+                <option value="ranking">{t.ranking}</option>
+                <option value="rating">{t.rating}</option>
+                <option value="name">{t.name}</option>
+                <option value="difficulty">{t.difficulty}</option>
+              </select>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div className="wcs__results-bar">
+        <span className="wcs__results-title">
+          {search ? `${t.resultsFor} “${search}”` : ui.selectTeam}
+        </span>
+        <span className="wcs__results-count">{filtered.length}</span>
       </div>
 
       {/* Team grid */}
@@ -216,15 +266,27 @@ export default function WorldCupSetup({ onSelectTeam, onBack }) {
             onClick={() => handleCardClick(team)}
           >
             <div className="wcs__card-top">
-              <FlagIcon teamId={team.id} size={32} className="wcs__card-flag" />
+              <div className="wcs__card-identity">
+                <FlagIcon teamId={team.id} size={32} className="wcs__card-flag" />
+                <div className="wcs__card-copy">
+                  <span className="wcs__card-name">{displayName(team)}</span>
+                  <span className="wcs__card-conf">{team.confederation}</span>
+                </div>
+              </div>
               <span className="wcs__card-rank">#{team.fifaRanking}</span>
             </div>
-            <span className="wcs__card-name">{displayName(team)}</span>
-            <RatingStars rating={team.rating} size={12} />
-            <span className="wcs__card-style">{getStyleLabel(team.style)}</span>
-            <span className={`wcs__card-diff wcs__card-diff--${getDifficulty(team.rating)}`}>
-              {getDiffLabel(team.rating)}
-            </span>
+            <div className="wcs__card-body">
+              <div className="wcs__card-rating-row">
+                <RatingStars rating={team.rating} size={12} />
+                <span className="wcs__card-rating-value">{team.rating}</span>
+              </div>
+              <div className="wcs__card-meta">
+                <span className="wcs__card-style">{getStyleLabel(team.style)}</span>
+                <span className={`wcs__card-diff wcs__card-diff--${getDifficulty(team.rating)}`}>
+                  {getDiffLabel(team.rating)}
+                </span>
+              </div>
+            </div>
           </button>
         ))}
         {filtered.length === 0 && (
@@ -263,7 +325,7 @@ export default function WorldCupSetup({ onSelectTeam, onBack }) {
                 </span>
               </div>
               <div className="wcs__stat">
-                <span className="wcs__stat-label">Estilo</span>
+                <span className="wcs__stat-label">{t.style}</span>
                 <span className="wcs__stat-value">{getStyleLabel(previewTeam.style)}</span>
               </div>
               <div className="wcs__stat">
