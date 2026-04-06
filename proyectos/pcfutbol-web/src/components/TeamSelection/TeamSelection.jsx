@@ -1,9 +1,7 @@
 import React, { useState, useMemo } from 'react';
-import { getAuth } from 'firebase/auth';
 import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { useAuth } from '../../context/AuthContext';
-import { saveGameToSlot } from '../../firebase/savesService';
 import { getLeagueTier } from '../../game/leagueTiers';
 import { translatePosition } from '../../game/positionNames';
 import { 
@@ -48,15 +46,7 @@ import {
   getJLeagueTeams
 } from '../../data/teamsFirestore';
 import { getStadiumInfo, getStadiumLevel } from '../../data/stadiumCapacities';
-import { initializeLeague } from '../../game/leagueEngine';
-import { initializeOtherLeagues, LEAGUE_CONFIG } from '../../game/multiLeagueEngine';
-import { generateSeasonObjectives } from '../../game/objectivesEngine';
-import { generatePreseasonOptions } from '../../game/seasonManager';
-import { qualifyTeamsForEurope, LEAGUE_SLOTS, buildSeasonCalendar, remapFixturesForEuropean } from '../../game/europeanCompetitions';
-import { initializeEuropeanCompetitions } from '../../game/europeanSeason';
 import { isSouthAmericanLeague, qualifyTeamsForSouthAmerica, SA_LEAGUE_SLOTS } from '../../game/southAmericanCompetitions';
-import { initializeSACompetitions } from '../../game/southAmericanSeason';
-import { getCupTeams, generateCupBracket } from '../../game/cupSystem';
 import { Calendar, Plane, Home, Sparkles, ChevronRight, Lock, Map, ClipboardList, Trophy, Building2, Users, DollarSign, Star, ArrowLeft } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
 import WorldMap from './WorldMap';
@@ -104,6 +94,69 @@ const REST_OF_WORLD_COUNTRIES = [
 ];
 
 const COUNTRIES = [...EUROPEAN_COUNTRIES, ...SOUTH_AMERICAN_COUNTRIES, ...REST_OF_WORLD_COUNTRIES];
+
+
+let seasonSetupModulesPromise;
+let preseasonModulesPromise;
+let saveModulesPromise;
+
+async function loadSeasonSetupModules() {
+  if (!seasonSetupModulesPromise) {
+    seasonSetupModulesPromise = Promise.all([
+      import('../../game/leagueEngine'),
+      import('../../game/objectivesEngine'),
+      import('../../game/europeanCompetitions'),
+      import('../../game/europeanSeason'),
+      import('../../game/southAmericanSeason'),
+      import('../../game/cupSystem'),
+      import('../../game/multiLeagueEngine')
+    ]).then(([
+      leagueEngine,
+      objectivesEngine,
+      europeanCompetitions,
+      europeanSeason,
+      southAmericanSeason,
+      cupSystem,
+      multiLeagueEngine
+    ]) => ({
+      initializeLeague: leagueEngine.initializeLeague,
+      generateSeasonObjectives: objectivesEngine.generateSeasonObjectives,
+      qualifyTeamsForEurope: europeanCompetitions.qualifyTeamsForEurope,
+      LEAGUE_SLOTS: europeanCompetitions.LEAGUE_SLOTS,
+      buildSeasonCalendar: europeanCompetitions.buildSeasonCalendar,
+      remapFixturesForEuropean: europeanCompetitions.remapFixturesForEuropean,
+      initializeEuropeanCompetitions: europeanSeason.initializeEuropeanCompetitions,
+      initializeSACompetitions: southAmericanSeason.initializeSACompetitions,
+      getCupTeams: cupSystem.getCupTeams,
+      generateCupBracket: cupSystem.generateCupBracket,
+      initializeOtherLeagues: multiLeagueEngine.initializeOtherLeagues,
+      LEAGUE_CONFIG: multiLeagueEngine.LEAGUE_CONFIG,
+    }));
+  }
+  return seasonSetupModulesPromise;
+}
+
+async function loadPreseasonModules() {
+  if (!preseasonModulesPromise) {
+    preseasonModulesPromise = import('../../game/seasonManager').then((seasonManager) => ({
+      generatePreseasonOptions: seasonManager.generatePreseasonOptions,
+    }));
+  }
+  return preseasonModulesPromise;
+}
+
+async function loadSaveModules() {
+  if (!saveModulesPromise) {
+    saveModulesPromise = Promise.all([
+      import('firebase/auth'),
+      import('../../firebase/savesService')
+    ]).then(([firebaseAuth, savesService]) => ({
+      getAuth: firebaseAuth.getAuth,
+      saveGameToSlot: savesService.saveGameToSlot,
+    }));
+  }
+  return saveModulesPromise;
+}
 
 // Función helper para obtener equipos de una liga
 function getLeagueTeams(leagueId) {
@@ -160,10 +213,46 @@ function getLeagueGroups(leagueId) {
   }
 }
 
-// Build LEAGUE_NAMES from LEAGUE_CONFIG (single source of truth)
-const LEAGUE_NAMES = Object.fromEntries(
-  Object.entries(LEAGUE_CONFIG).map(([id, cfg]) => [id, cfg.name])
-);
+// Local labels so TeamSelection doesn't need to pull multiLeagueEngine on first paint
+const LEAGUE_NAMES = {
+  laliga: 'LaLiga EA Sports',
+  segunda: 'LaLiga Hypermotion',
+  primeraRFEF: 'Primera RFEF',
+  segundaRFEF: 'Segunda RFEF',
+  premierLeague: 'Premier League',
+  championship: 'Championship',
+  serieA: 'Serie A',
+  serieB: 'Serie B',
+  bundesliga: 'Bundesliga',
+  bundesliga2: '2. Bundesliga',
+  ligue1: 'Ligue 1',
+  ligue2: 'Ligue 2',
+  eredivisie: 'Eredivisie',
+  primeiraLiga: 'Primeira Liga',
+  belgianPro: 'Belgian Pro League',
+  superLig: 'Super Lig',
+  scottishPrem: 'Scottish Premiership',
+  swissSuperLeague: 'Swiss Super League',
+  austrianBundesliga: 'Austrian Bundesliga',
+  greekSuperLeague: 'Greek Super League',
+  danishSuperliga: 'Danish Superliga',
+  croatianLeague: 'Croatian League',
+  czechLeague: 'Czech League',
+  argentinaPrimera: 'Liga Profesional Argentina',
+  brasileiraoA: 'Brasileirao',
+  colombiaPrimera: 'Liga BetPlay',
+  chilePrimera: 'Primera Division de Chile',
+  uruguayPrimera: 'Primera Division de Uruguay',
+  ecuadorLigaPro: 'LigaPro Ecuador',
+  paraguayPrimera: 'Primera Division Paraguay',
+  peruLiga1: 'Liga 1 Peru',
+  boliviaPrimera: 'Division Profesional Bolivia',
+  venezuelaPrimera: 'Liga FUTVE',
+  mls: 'Major League Soccer',
+  saudiPro: 'Saudi Pro League',
+  ligaMX: 'Liga MX',
+  jLeague: 'J1 League',
+};
 
 // Ligas que tienen grupos
 const LEAGUES_WITH_GROUPS = ['primeraRFEF', 'segundaRFEF'];
@@ -358,10 +447,10 @@ export default function TeamSelection() {
     ...getMLSTeams(), ...getSaudiTeams(), ...getLigaMXTeams(), ...getJLeagueTeams()
   ];
 
-  const handleShowPreseason = () => {
+  const handleShowPreseason = async () => {
     if (!selectedTeam || !selectedLeague) return;
     
-    // Generar opciones de pretemporada
+    const { generatePreseasonOptions } = await loadPreseasonModules();
     const allTeams = getAllTeamsForPreseason();
     const options = generatePreseasonOptions(allTeams, selectedTeam, selectedLeague);
     setPreseasonOptions(options);
@@ -379,15 +468,15 @@ export default function TeamSelection() {
       leagueTeams = getLeagueTeams(selectedLeague);
     }
     
+    const { initializeLeague } = await loadSeasonSetupModules();
     const leagueData = initializeLeague(leagueTeams, selectedTeam.id);
     
     // Obtener información del estadio real
     const stadiumInfo = getStadiumInfo(selectedTeam.id, selectedTeam.reputation);
     const stadiumLevel = getStadiumLevel(stadiumInfo.capacity);
     
-    // Use Firebase display name as manager name if available
-    const authUser = getAuth().currentUser;
-    const managerName = authUser?.displayName || authUser?.email?.split('@')[0] || undefined;
+    // Reuse auth context so Firebase auth isn't part of the critical path here
+    const managerName = user?.displayName || user?.email?.split('@')[0] || undefined;
 
     dispatch({ 
       type: 'NEW_GAME', 
@@ -434,6 +523,19 @@ export default function TeamSelection() {
   
   // Heavy init that runs after the game screen is shown
   async function _deferredInit(dispatch, selectedTeam, selectedLeague, selectedGroup, hasGroups, leagueData, t, isAuthenticated, user) {
+    const {
+      generateSeasonObjectives,
+      qualifyTeamsForEurope,
+      LEAGUE_SLOTS,
+      buildSeasonCalendar,
+      remapFixturesForEuropean,
+      initializeEuropeanCompetitions,
+      initializeSACompetitions,
+      getCupTeams,
+      generateCupBracket,
+      initializeOtherLeagues,
+      LEAGUE_CONFIG,
+    } = await loadSeasonSetupModules();
     // Guardar TODOS los equipos de TODAS las ligas para el mercado global y el explorador
     const allLeagueIds = [
       { id: 'laliga', getter: getLaLigaTeams },
@@ -759,9 +861,14 @@ export default function TeamSelection() {
 
     // Si hay un slot pendiente y usuario autenticado, guardar automáticamente
     const pendingSlot = localStorage.getItem('pcfutbol_pending_slot');
-    if (pendingSlot !== null && isAuthenticated && user) {
-      const slotIndex = parseInt(pendingSlot, 10);
+    if (pendingSlot !== null && isAuthenticated && user?.uid) {
+      const slotIndex = Number.parseInt(pendingSlot, 10);
       localStorage.removeItem('pcfutbol_pending_slot');
+
+      if (!Number.isInteger(slotIndex) || slotIndex < 0) {
+        console.warn('Ignoring invalid pending save slot:', pendingSlot);
+        return;
+      }
       
       // Construir el estado inicial para guardar
       const initialGameState = {
@@ -777,6 +884,7 @@ export default function TeamSelection() {
       };
       
       try {
+        const { saveGameToSlot } = await loadSaveModules();
         await saveGameToSlot(user.uid, slotIndex, initialGameState);
         console.log(`💾 Partida guardada automáticamente en hueco ${slotIndex + 1}`);
       } catch (err) {
