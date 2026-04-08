@@ -236,15 +236,7 @@ export default function WorldCupSetup({ onSelectTeam, onBack }) {
                 ))}
               </div>
             </div>
-            <label className="wcs__sort-wrap">
-              <span className="wcs__control-label">{t.sort}</span>
-              <select className="wcs__sort" value={sortBy} onChange={e => setSortBy(e.target.value)}>
-                <option value="ranking">{t.ranking}</option>
-                <option value="rating">{t.rating}</option>
-                <option value="name">{t.name}</option>
-                <option value="difficulty">{t.difficulty}</option>
-              </select>
-            </label>
+
           </div>
         </div>
       </div>
