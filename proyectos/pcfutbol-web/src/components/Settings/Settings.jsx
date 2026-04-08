@@ -270,59 +270,7 @@ export default function Settings({ onClose }) {
           </section>
         )}
 
-        {/* Toggles — only when logged in */}
-        {user && <section className="settings__section">
-          <h3>{t('settings.general')}</h3>
-          <div className="settings__toggles">
-            <div className="settings__toggle-item">
-              <div className="info">
-                <span className="label">{t('settings.autosaveLabel')}</span>
-                <span className="desc">{t('settings.autosaveDesc')}</span>
-              </div>
-              <button
-                className={`settings__toggle ${settings.autoSave ? 'active' : ''}`}
-                onClick={() => handleSettingChange('autoSave', !settings.autoSave)}
-              >
-                <span className="toggle-knob"></span>
-              </button>
-            </div>
 
-            <div className="settings__toggle-item">
-              <div className="info">
-                <span className="label">🏙️ {t('settings.cityMode3D', 'Modo 3D Ciudad')}</span>
-                <span className="desc">{t('settings.cityMode3DDesc', 'Explora tu ciudad en 3D isométrico en vez del menú clásico')}</span>
-              </div>
-              <button
-                className={`settings__toggle ${settings.cityMode3D ? 'active' : ''}`}
-                onClick={() => handleSettingChange('cityMode3D', !settings.cityMode3D)}
-              >
-                <span className="toggle-knob"></span>
-              </button>
-            </div>
-
-            {/* Game tutorials toggle — hidden for now
-            <div className="settings__toggle-item">
-              <div className="info">
-                <span className="label">{t('settings.gameTutorials')}</span>
-                <span className="desc">{t('settings.gameTutorialsDesc')}</span>
-              </div>
-              <button
-                className={`settings__toggle ${settings.showTutorials !== false ? 'active' : ''}`}
-                onClick={() => {
-                  const newVal = settings.showTutorials === false;
-                  handleSettingChange('showTutorials', newVal);
-                  if (newVal) {
-                    dispatch({ type: 'ENABLE_TUTORIALS' });
-                  }
-                }}
-              >
-                <span className="toggle-knob"></span>
-              </button>
-            </div>
-            */}
-
-          </div>
-        </section>}
 
         {/* Volumen */}
         <section className="settings__section">
