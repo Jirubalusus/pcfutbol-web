@@ -2608,7 +2608,7 @@
 .glory-collection {
   min-height: 100vh;
   padding: 1rem;
-  max-width: 700px;
+  max-width: 1280px;
   margin: 0 auto;
   box-sizing: border-box;
   overflow-x: hidden;
@@ -2616,9 +2616,9 @@
   @media (min-width: 768px) {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 2rem;
-    max-width: 100%;
+    align-items: stretch;
+    padding: 1.5rem 2rem 2rem;
+    max-width: 1280px;
   }
 
   &__header {
@@ -2627,7 +2627,8 @@
     gap: 1rem;
     margin-bottom: 1rem;
     width: 100%;
-    max-width: 700px;
+    max-width: 1120px;
+    margin-inline: auto;
   }
 
   &__back {
@@ -2676,14 +2677,19 @@
   &__grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 8px;
+    gap: 10px;
     width: 100%;
-    max-width: 600px;
+    max-width: 1120px;
+    margin: 0 auto;
 
     @media (min-width: 768px) {
       grid-template-columns: repeat(6, 1fr);
       gap: 12px;
-      max-width: 700px;
+    }
+
+    @media (min-width: 1200px) {
+      grid-template-columns: repeat(8, 1fr);
+      gap: 14px;
     }
 
     @media (max-width: 600px) {
@@ -2699,7 +2705,7 @@
 
   &__cell {
     aspect-ratio: 1;
-    border-radius: 10px;
+    border-radius: 12px;
     border: 2px solid rgba(255,255,255,0.1);
     background: rgba(255,255,255,0.03);
     display: flex;
@@ -2709,8 +2715,13 @@
     gap: 4px;
     cursor: pointer;
     transition: all 0.15s;
-    padding: 6px 4px;
+    padding: 8px 6px;
     position: relative;
+
+    @media (min-width: 1200px) {
+      border-radius: 14px;
+      padding: 10px 8px;
+    }
 
     &--unlocked {
       &:hover { transform: scale(1.05); }
