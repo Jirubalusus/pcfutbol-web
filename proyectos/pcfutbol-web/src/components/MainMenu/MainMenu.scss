@@ -668,14 +668,26 @@
       aspect-ratio: auto;
 
       &.main-menu__mode-card--disabled {
-        opacity: 0.6;
+        opacity: 0.52;
         cursor: not-allowed;
-        filter: saturate(0.75);
+        filter: saturate(0.45) grayscale(0.18);
+        background: rgba(255, 255, 255, 0.018);
+        border-color: rgba(255, 255, 255, 0.045);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+
+        .mode-card__icon {
+          opacity: 0.72;
+        }
+
+        .mode-card__name,
+        .mode-card__desc {
+          opacity: 0.78;
+        }
 
         &:hover {
           transform: none;
-          border-color: rgba(255, 255, 255, 0.08);
-          box-shadow: none;
+          border-color: rgba(255, 255, 255, 0.045);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
         }
       }
 
