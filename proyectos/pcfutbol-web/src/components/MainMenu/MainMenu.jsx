@@ -523,11 +523,15 @@ export default function MainMenu() {
                 </button>
 
                 {/* Modo Mundial */}
-                <button className="main-menu__mode-card main-menu__mode-card--compact" onClick={() => dispatch({ type: 'SET_SCREEN', payload: 'worldcup_setup' })}>
+                <button
+                  className="main-menu__mode-card main-menu__mode-card--compact main-menu__mode-card--disabled"
+                  disabled
+                  title="Próximamente"
+                >
                   <div className="mode-card__icon mode-card__icon--worldcup"><Globe size={20} /></div>
                   <div className="mode-card__info">
                     <span className="mode-card__name">Modo Mundial</span>
-                    <span className="mode-card__desc">Dirige tu selección</span>
+                    <span className="mode-card__desc">Próximamente</span>
                   </div>
                 </button>
               </div>
