@@ -241,10 +241,10 @@
 
   &__settings-panel {
     background: var(--color-bg-secondary);
-    border: 1px solid var(--color-glass-border);
-    border-radius: 20px;
-    width: 100%;
-    max-width: 500px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 22px;
+    width: min(100%, 960px);
+    max-width: 960px;
     max-height: 90vh;
     display: flex;
     flex-direction: column;
@@ -254,6 +254,7 @@
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 
     @media (max-width: 768px) {
+      width: calc(100% - 1rem);
       max-height: 85vh;
       margin: 0 0.5rem;
     }
