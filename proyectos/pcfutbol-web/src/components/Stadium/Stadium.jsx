@@ -277,10 +277,17 @@ export default function Stadium() {
     });
   };
   
+  // Rango dinámico de campaña de abonos según liga
+  const baseSeasonTicketPrice = getBaseSeasonTicketPrice(state.leagueId || state.playerLeagueId || 'laliga');
+  const seasonTicketPriceRange = {
+    min: baseSeasonTicketPrice,
+    max: Math.max(baseSeasonTicketPrice * 4, baseSeasonTicketPrice + 200)
+  };
+
   // Precio del abono (solo si campaña abierta)
   const handleSeasonPriceChange = (delta) => {
     if (!seasonTicketsCampaignOpen) return;
-    const newPrice = Math.max(200, Math.min(1000, seasonTicketPrice + delta));
+    const newPrice = Math.max(seasonTicketPriceRange.min, Math.min(seasonTicketPriceRange.max, seasonTicketPrice + delta));
     updateStadium({ seasonTicketPrice: newPrice });
   };
   
