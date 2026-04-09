@@ -486,20 +486,47 @@ export default function Facilities() {
                       </div>
                       
                       <div className="facility-card__info">
-                        <h4>{facility.name}</h4>
-                        <p className="facility-card__desc">{facility.description}</p>
-                        
-                        <div className="facility-card__level-bar">
-                          {facility.levels.map((_, i) => (
-                            <div 
-                              key={i} 
-                              className={`level-segment ${i <= level ? 'filled' : ''}`}
-                            />
-                          ))}
+                        <div className="facility-card__topline">
+                          <span className="facility-card__category-pill">{t(category.nameKey)}</span>
+                          <span className={`facility-card__status ${isStadiumBuilding ? 'is-building' : level >= maxLevel ? 'is-maxed' : 'is-upgradeable'}`}>
+                            {isStadiumBuilding
+                              ? t('stadium.currentlyBuilding')
+                              : level >= maxLevel
+                                ? t('facilities.maxLevel')
+                                : t('facilities.nextLevel')}
+                          </span>
+                        </div>
+
+                        <div className="facility-card__title-row">
+                          <div>
+                            <h4>{facility.name}</h4>
+                            <p className="facility-card__desc">{facility.description}</p>
+                          </div>
+                          <div className="facility-card__tier">
+                            <span className="facility-card__tier-label">{t('facilities.level')}</span>
+                            <strong>{facility.levels[level].name}</strong>
+                          </div>
                         </div>
                         
-                        <div className="facility-card__benefit">
-                          {facility.benefits[level]}
+                        <div className="facility-card__progress-row">
+                          <div className="facility-card__level-bar">
+                            {facility.levels.map((_, i) => (
+                              <div 
+                                key={i} 
+                                className={`level-segment ${i <= level ? 'filled' : ''}`}
+                              />
+                            ))}
+                          </div>
+                          <div className="facility-card__progress-copy">
+                            <span>{level + 1}/{facility.levels.length}</span>
+                          </div>
+                        </div>
+                        
+                        <div className="facility-card__benefit-block">
+                          <span className="facility-card__benefit-label">{t('facilities.benefitsTitle', 'Current benefit')}</span>
+                          <div className="facility-card__benefit">
+                            {facility.benefits[level]}
+                          </div>
                         </div>
                         
                         {isStadiumBuilding && (
@@ -573,7 +600,12 @@ export default function Facilities() {
                           {facility.levels.map((lvl, i) => (
                             <div key={i} className={`level-item ${i <= level ? 'unlocked' : ''} ${i === level ? 'current' : ''}`}>
                               <span className="level-num">{i + 1}</span>
-                              <span className="level-name">{lvl.name}</span>
+                              <div className="level-copy">
+                                <span className="level-name">{lvl.name}</span>
+                                <span className="level-state">
+                                  {i === level ? t('common.current', 'Current') : i < level ? t('common.unlocked', 'Unlocked') : t('facilities.nextLevel', 'Next level')}
+                                </span>
+                              </div>
                               <span className="level-benefit">{facility.benefits[i]}</span>
                             </div>
                           ))}
