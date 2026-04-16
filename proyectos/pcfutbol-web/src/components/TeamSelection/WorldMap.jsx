@@ -26,6 +26,10 @@ const COUNTRY_DATA = {
   poland: { lat: 52.1, lng: 19.4, name: 'Polonia', code: 'PL', color: '#DC143C', continent: 'europe' },
   croatia: { lat: 45.1, lng: 15.2, name: 'Croacia', code: 'HR', color: '#FF3333', continent: 'europe' },
   czech: { lat: 49.8, lng: 15.5, name: 'Chequia', code: 'CZ', color: '#11457E', continent: 'europe' },
+  russia: { lat: 55.8, lng: 37.6, name: 'Rusia', code: 'RU', color: '#D52B1E', continent: 'europe' },
+  ukraine: { lat: 49.0, lng: 31.2, name: 'Ucrania', code: 'UA', color: '#FFD500', continent: 'europe' },
+  romania: { lat: 45.9, lng: 24.9, name: 'Rumania', code: 'RO', color: '#002B7F', continent: 'europe' },
+  hungary: { lat: 47.1, lng: 19.5, name: 'Hungría', code: 'HU', color: '#00853E', continent: 'europe' },
   // South America
   argentina: { lat: -34.6, lng: -58.4, name: 'Argentina', code: 'AR', color: '#75AADB', continent: 'southamerica' },
   brazil: { lat: -14.2, lng: -51.9, name: 'Brasil', code: 'BR', color: '#009739', continent: 'southamerica' },
@@ -42,6 +46,9 @@ const COUNTRY_DATA = {
   saudiArabia: { lat: 23.9, lng: 45.1, name: 'Arabia Saudí', code: 'SA', color: '#006C35', continent: 'world' },
   mexico: { lat: 23.6, lng: -102.6, name: 'México', code: 'MX', color: '#006847', continent: 'world' },
   japan: { lat: 36.2, lng: 138.3, name: 'Japón', code: 'JP', color: '#BC002D', continent: 'world' },
+  southKorea: { lat: 36.5, lng: 127.8, name: 'Corea del Sur', code: 'KR', color: '#003478', continent: 'world' },
+  australia: { lat: -25.3, lng: 133.8, name: 'Australia', code: 'AU', color: '#00843D', continent: 'world' },
+  southAfrica: { lat: -28.5, lng: 24.7, name: 'Sudáfrica', code: 'ZA', color: '#007A4D', continent: 'world' },
 };
 
 const MOBILE_BREAKPOINT = 768;

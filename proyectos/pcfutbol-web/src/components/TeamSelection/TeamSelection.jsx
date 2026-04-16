@@ -43,7 +43,19 @@ import {
   getMLSTeams,
   getSaudiTeams,
   getLigaMXTeams,
-  getJLeagueTeams
+  getJLeagueTeams,
+  getEliteserienTeams,
+  getAllsvenskanTeams,
+  getEkstraklasaTeams,
+  getEersteDivisieTeams,
+  getLigaPortugal2Teams,
+  getRussiaPremierTeams,
+  getUkrainePremierTeams,
+  getRomaniaSuperligaTeams,
+  getHungaryNBITeams,
+  getKLeague1Teams,
+  getALeagueMenTeams,
+  getSouthAfricaPSLTeams
 } from '../../data/teamsFirestore';
 import { getStadiumInfo, getStadiumLevel } from '../../data/stadiumCapacities';
 import { isSouthAmericanLeague, qualifyTeamsForSouthAmerica, SA_LEAGUE_SLOTS } from '../../game/southAmericanCompetitions';
@@ -60,8 +72,8 @@ const EUROPEAN_COUNTRIES = [
   { id: 'italy', nameKey: 'countries.italy', flag: '🇮🇹', leagues: ['serieA', 'serieB'] },
   { id: 'germany', nameKey: 'countries.germany', flag: '🇩🇪', leagues: ['bundesliga', 'bundesliga2'] },
   { id: 'france', nameKey: 'countries.france', flag: '🇫🇷', leagues: ['ligue1', 'ligue2'] },
-  { id: 'netherlands', nameKey: 'countries.netherlands', flag: '🇳🇱', leagues: ['eredivisie'] },
-  { id: 'portugal', nameKey: 'countries.portugal', flag: '🇵🇹', leagues: ['primeiraLiga'] },
+  { id: 'netherlands', nameKey: 'countries.netherlands', flag: '🇳🇱', leagues: ['eredivisie', 'eersteDivisie'] },
+  { id: 'portugal', nameKey: 'countries.portugal', flag: '🇵🇹', leagues: ['primeiraLiga', 'ligaPortugal2'] },
   { id: 'belgium', nameKey: 'countries.belgium', flag: '🇧🇪', leagues: ['belgianPro'] },
   { id: 'turkey', nameKey: 'countries.turkey', flag: '🇹🇷', leagues: ['superLig'] },
   { id: 'scotland', nameKey: 'countries.scotland', flag: 'SCO', flagVariant: 'code', leagues: ['scottishPrem'] },
@@ -74,6 +86,10 @@ const EUROPEAN_COUNTRIES = [
   { id: 'poland', nameKey: 'countries.poland', flag: '🇵🇱', leagues: ['ekstraklasa'] },
   { id: 'croatia', nameKey: 'countries.croatia', flag: '🇭🇷', leagues: ['croatianLeague'] },
   { id: 'czech', nameKey: 'countries.czech', flag: '🇨🇿', leagues: ['czechLeague'] },
+  { id: 'russia', nameKey: 'countries.russia', flag: '🇷🇺', leagues: ['russiaPremier'] },
+  { id: 'ukraine', nameKey: 'countries.ukraine', flag: '🇺🇦', leagues: ['ukrainePremier'] },
+  { id: 'romania', nameKey: 'countries.romania', flag: '🇷🇴', leagues: ['romaniaSuperliga'] },
+  { id: 'hungary', nameKey: 'countries.hungary', flag: '🇭🇺', leagues: ['hungaryNBI'] },
 ];
 
 const SOUTH_AMERICAN_COUNTRIES = [
@@ -94,6 +110,9 @@ const REST_OF_WORLD_COUNTRIES = [
   { id: 'saudiArabia', nameKey: 'countries.saudiArabia', flag: '🇸🇦', leagues: ['saudiPro'] },
   { id: 'mexico', nameKey: 'countries.mexico', flag: '🇲🇽', leagues: ['ligaMX'] },
   { id: 'japan', nameKey: 'countries.japan', flag: '🇯🇵', leagues: ['jLeague'] },
+  { id: 'southKorea', nameKey: 'countries.southKorea', flag: '🇰🇷', leagues: ['kLeague1'] },
+  { id: 'australia', nameKey: 'countries.australia', flag: '🇦🇺', leagues: ['aLeagueMen'] },
+  { id: 'southAfrica', nameKey: 'countries.southAfrica', flag: '🇿🇦', leagues: ['southAfricaPSL'] },
 ];
 
 const COUNTRIES = [...EUROPEAN_COUNTRIES, ...SOUTH_AMERICAN_COUNTRIES, ...REST_OF_WORLD_COUNTRIES];
@@ -203,6 +222,21 @@ function getLeagueTeams(leagueId) {
     case 'saudiPro': return getSaudiTeams();
     case 'ligaMX': return getLigaMXTeams();
     case 'jLeague': return getJLeagueTeams();
+    case 'kLeague1': return getKLeague1Teams();
+    case 'aLeagueMen': return getALeagueMenTeams();
+    case 'southAfricaPSL': return getSouthAfricaPSLTeams();
+    // Nordic + Central Europe
+    case 'eliteserien': return getEliteserienTeams();
+    case 'allsvenskan': return getAllsvenskanTeams();
+    case 'ekstraklasa': return getEkstraklasaTeams();
+    // Second divisions
+    case 'eersteDivisie': return getEersteDivisieTeams();
+    case 'ligaPortugal2': return getLigaPortugal2Teams();
+    // Eastern Europe
+    case 'russiaPremier': return getRussiaPremierTeams();
+    case 'ukrainePremier': return getUkrainePremierTeams();
+    case 'romaniaSuperliga': return getRomaniaSuperligaTeams();
+    case 'hungaryNBI': return getHungaryNBITeams();
     default: return [];
   }
 }
@@ -258,6 +292,15 @@ const LEAGUE_NAMES = {
   saudiPro: 'Saudi Pro League',
   ligaMX: 'Liga MX',
   jLeague: 'J1 League',
+  kLeague1: 'K League 1',
+  aLeagueMen: 'A-League Men',
+  southAfricaPSL: 'Betway Premiership',
+  eersteDivisie: 'Eerste Divisie',
+  ligaPortugal2: 'Liga Portugal 2',
+  russiaPremier: 'Russian Premier League',
+  ukrainePremier: 'Ukrainian Premier League',
+  romaniaSuperliga: 'SuperLiga Romania',
+  hungaryNBI: 'NB I Hungary',
 };
 
 // Ligas que tienen grupos
@@ -450,7 +493,15 @@ export default function TeamSelection() {
     ...getChileTeams(), ...getUruguayTeams(), ...getEcuadorTeams(),
     ...getParaguayTeams(), ...getPeruTeams(), ...getBoliviaTeams(), ...getVenezuelaTeams(),
     // Rest of World
-    ...getMLSTeams(), ...getSaudiTeams(), ...getLigaMXTeams(), ...getJLeagueTeams()
+    ...getMLSTeams(), ...getSaudiTeams(), ...getLigaMXTeams(), ...getJLeagueTeams(),
+    ...getKLeague1Teams(), ...getALeagueMenTeams(), ...getSouthAfricaPSLTeams(),
+    // Nordic + Central Europe
+    ...getEliteserienTeams(), ...getAllsvenskanTeams(), ...getEkstraklasaTeams(),
+    // Second divisions
+    ...getEersteDivisieTeams(), ...getLigaPortugal2Teams(),
+    // Eastern Europe
+    ...getRussiaPremierTeams(), ...getUkrainePremierTeams(),
+    ...getRomaniaSuperligaTeams(), ...getHungaryNBITeams()
   ];
 
   const handleShowPreseason = async () => {
@@ -586,6 +637,17 @@ export default function TeamSelection() {
       { id: 'saudiPro', getter: getSaudiTeams },
       { id: 'ligaMX', getter: getLigaMXTeams },
       { id: 'jLeague', getter: getJLeagueTeams },
+      { id: 'kLeague1', getter: getKLeague1Teams },
+      { id: 'aLeagueMen', getter: getALeagueMenTeams },
+      { id: 'southAfricaPSL', getter: getSouthAfricaPSLTeams },
+      // Second divisions
+      { id: 'eersteDivisie', getter: getEersteDivisieTeams },
+      { id: 'ligaPortugal2', getter: getLigaPortugal2Teams },
+      // Eastern Europe
+      { id: 'russiaPremier', getter: getRussiaPremierTeams },
+      { id: 'ukrainePremier', getter: getUkrainePremierTeams },
+      { id: 'romaniaSuperliga', getter: getRomaniaSuperligaTeams },
+      { id: 'hungaryNBI', getter: getHungaryNBITeams },
     ];
     
     const allLeagueTeamsWithData = [];

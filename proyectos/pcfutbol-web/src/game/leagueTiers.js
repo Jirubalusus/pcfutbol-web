@@ -94,6 +94,17 @@ export const LEAGUE_TIERS = {
   eersteDivisie:        { tier: 3, ...TIER_CONFIG[3] },
   ligaPortugal2:        { tier: 3, ...TIER_CONFIG[3] },
 
+  // === Tier 3: Standard - Eastern European top divisions ===
+  russiaPremier:        { tier: 3, ...TIER_CONFIG[3] },
+  ukrainePremier:       { tier: 3, ...TIER_CONFIG[3] },
+  romaniaSuperliga:     { tier: 3, ...TIER_CONFIG[3] },
+  hungaryNBI:           { tier: 3, ...TIER_CONFIG[3] },
+
+  // === Tier 3: Standard - Asia/Oceania/Africa top divisions ===
+  kLeague1:             { tier: 3, ...TIER_CONFIG[3], salaryMult: 0.05 },
+  aLeagueMen:           { tier: 3, ...TIER_CONFIG[3], salaryMult: 0.07 },
+  southAfricaPSL:       { tier: 3, ...TIER_CONFIG[3], salaryMult: 0.04 },
+
   // === Tier 5: Amateur - Segunda RFEF ===
   segundaRFEF:  { tier: 5, ...TIER_CONFIG[5] },
 };
@@ -146,6 +157,13 @@ export const PROMOTIONS_TO_CHAMPIONS = {
   ekstraklasa: 1,
   eersteDivisie: 2,
   ligaPortugal2: 2,
+  russiaPremier: 1,
+  ukrainePremier: 1,
+  romaniaSuperliga: 1,
+  hungaryNBI: 1,
+  kLeague1: 1,
+  aLeagueMen: 1,
+  southAfricaPSL: 1,
   // Sudamérica (primera división, necesitan clasificarse a Libertadores)
   argentinaPrimera: 1,
   brasileiraoA: 1,
@@ -350,6 +368,13 @@ export const LEAGUE_NAMES = {
   ekstraklasa: 'Vistula League',
   eersteDivisie: 'Dutch Second',
   ligaPortugal2: 'Liga Lusitana 2',
+  russiaPremier: 'Volga League',
+  ukrainePremier: 'Dnipro League',
+  romaniaSuperliga: 'Carpathian League',
+  hungaryNBI: 'Danube League',
+  kLeague1: 'Hanbando League',
+  aLeagueMen: 'Southern Cross League',
+  southAfricaPSL: 'Veld League',
 };
 
 export function getLeagueName(leagueId) {

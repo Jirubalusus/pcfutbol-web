@@ -1,0 +1,2802 @@
+[
+  {
+    "id": "zenit-saint-petersburg",
+    "name": "Neva FC",
+    "shortName": "NEV",
+    "city": "San Petersburgo",
+    "colors": {
+      "primary": "#0A2D6E",
+      "secondary": "#00B2E3"
+    },
+    "stadium": "Neva Arena",
+    "stadiumCapacity": 67800,
+    "reputation": 4,
+    "players": [
+      {
+        "name": "Lucas Gomes",
+        "position": "POR",
+        "age": 25,
+        "overall": 77,
+        "nationality": "Brasil",
+        "value": 1680000
+      },
+      {
+        "name": "Yuri Vasiliev",
+        "position": "POR",
+        "age": 30,
+        "overall": 68,
+        "nationality": "Rusia",
+        "value": 224000
+      },
+      {
+        "name": "Vadim Petrov",
+        "position": "DFC",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Ilya Morozov",
+        "position": "DFC",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Nikolai Novikov",
+        "position": "DFC",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Diogo Cavalcante",
+        "position": "DFC",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Dmitri Ivanov",
+        "position": "LB",
+        "age": 25,
+        "overall": 74,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Filip Đorđević",
+        "position": "RB",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Caio Gomes",
+        "position": "MCD",
+        "age": 21,
+        "overall": 75,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Vasyl Moroz",
+        "position": "MCD",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Dmitri Bogdanov",
+        "position": "MC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Pavel Kuznetsov",
+        "position": "MC",
+        "age": 22,
+        "overall": 75,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Filip Marković",
+        "position": "MC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Victor Adeyemi",
+        "position": "MCO",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Pavel Bogdanov",
+        "position": "EI",
+        "age": 28,
+        "overall": 75,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Ivan Zaytsev",
+        "position": "ED",
+        "age": 26,
+        "overall": 74,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Vladimir Zaytsev",
+        "position": "DC",
+        "age": 30,
+        "overall": 74,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Vinícius Moreira",
+        "position": "DC",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Vadim Vinogradov",
+        "position": "DC",
+        "age": 24,
+        "overall": 68,
+        "nationality": "Rusia",
+        "value": 224000
+      },
+      {
+        "name": "Kirill Sokolov",
+        "position": "MP",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Rusia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "spartak-moscow",
+    "name": "Red Diamonds FC",
+    "shortName": "RDM",
+    "city": "Moscú",
+    "colors": {
+      "primary": "#D50000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Diamond Arena",
+    "stadiumCapacity": 45360,
+    "reputation": 4,
+    "players": [
+      {
+        "name": "Andrei Kuznetsov",
+        "position": "POR",
+        "age": 30,
+        "overall": 77,
+        "nationality": "Rusia",
+        "value": 1680000
+      },
+      {
+        "name": "Daniel Almeida",
+        "position": "POR",
+        "age": 33,
+        "overall": 69,
+        "nationality": "Brasil",
+        "value": 224000
+      },
+      {
+        "name": "Ivan Smirnov",
+        "position": "DFC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Roman Vinogradov",
+        "position": "DFC",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Roman Morozov",
+        "position": "DFC",
+        "age": 24,
+        "overall": 74,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Obi Boateng",
+        "position": "DFC",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Ilya Kozlov",
+        "position": "LB",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Yegor Vasiliev",
+        "position": "RB",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Serhiy Kravchenko",
+        "position": "MCD",
+        "age": 31,
+        "overall": 74,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Sergei Novikov",
+        "position": "MCD",
+        "age": 30,
+        "overall": 74,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Maksim Ivanov",
+        "position": "MC",
+        "age": 26,
+        "overall": 75,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Nikolai Kuznetsov",
+        "position": "MC",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Anton Novikov",
+        "position": "MC",
+        "age": 28,
+        "overall": 74,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Pavel Vorobyov",
+        "position": "MCO",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Aleksei Lebedev",
+        "position": "EI",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Aleksei Kuznetsov",
+        "position": "ED",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Lucas Gomes",
+        "position": "DC",
+        "age": 25,
+        "overall": 76,
+        "nationality": "Brasil",
+        "value": 1680000
+      },
+      {
+        "name": "Ivan Ivanov",
+        "position": "DC",
+        "age": 19,
+        "overall": 74,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Kelechi Boateng",
+        "position": "DC",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Nigeria",
+        "value": 224000
+      },
+      {
+        "name": "Yuri Kozlov",
+        "position": "MP",
+        "age": 20,
+        "overall": 67,
+        "nationality": "Rusia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "cska-moscow",
+    "name": "Army Stars FC",
+    "shortName": "ARS",
+    "city": "Moscú",
+    "colors": {
+      "primary": "#D50000",
+      "secondary": "#003DA5"
+    },
+    "stadium": "Stars Arena",
+    "stadiumCapacity": 30000,
+    "reputation": 4,
+    "players": [
+      {
+        "name": "Anton Zaytsev",
+        "position": "POR",
+        "age": 28,
+        "overall": 76,
+        "nationality": "Rusia",
+        "value": 1680000
+      },
+      {
+        "name": "Sergei Golubev",
+        "position": "POR",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Rusia",
+        "value": 224000
+      },
+      {
+        "name": "Yuri Kozlov",
+        "position": "DFC",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Rusia",
+        "value": 224000
+      },
+      {
+        "name": "Ilya Lebedev",
+        "position": "DFC",
+        "age": 21,
+        "overall": 73,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Sergei Vinogradov",
+        "position": "DFC",
+        "age": 25,
+        "overall": 74,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Pavel Popov",
+        "position": "DFC",
+        "age": 21,
+        "overall": 74,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Maksim Smirnov",
+        "position": "LB",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Anton Kozlov",
+        "position": "RB",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Vladimir Volkov",
+        "position": "MCD",
+        "age": 21,
+        "overall": 75,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Kingsley Mensah",
+        "position": "MCD",
+        "age": 26,
+        "overall": 75,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Denis Smirnov",
+        "position": "MC",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Andrei Bogdanov",
+        "position": "MC",
+        "age": 23,
+        "overall": 75,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Oleg Zaytsev",
+        "position": "MC",
+        "age": 25,
+        "overall": 74,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Ilya Vinogradov",
+        "position": "MCO",
+        "age": 21,
+        "overall": 75,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Pedro Monteiro",
+        "position": "EI",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Vladimir Kozlov",
+        "position": "ED",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Anton Bogdanov",
+        "position": "DC",
+        "age": 21,
+        "overall": 74,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Oleksandr Tkachenko",
+        "position": "DC",
+        "age": 23,
+        "overall": 68,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Denis Novikov",
+        "position": "DC",
+        "age": 21,
+        "overall": 73,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Nikolai Ivanov",
+        "position": "MP",
+        "age": 22,
+        "overall": 67,
+        "nationality": "Rusia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "lokomotiv-moscow",
+    "name": "Railway FC",
+    "shortName": "RLW",
+    "city": "Moscú",
+    "colors": {
+      "primary": "#D00000",
+      "secondary": "#00853E"
+    },
+    "stadium": "Railway Arena",
+    "stadiumCapacity": 27320,
+    "reputation": 4,
+    "players": [
+      {
+        "name": "Marko Nikolić",
+        "position": "POR",
+        "age": 27,
+        "overall": 75,
+        "nationality": "Serbia",
+        "value": 840000
+      },
+      {
+        "name": "Igor Silva",
+        "position": "POR",
+        "age": 32,
+        "overall": 68,
+        "nationality": "Brasil",
+        "value": 224000
+      },
+      {
+        "name": "Petar Ivanović",
+        "position": "DFC",
+        "age": 25,
+        "overall": 74,
+        "nationality": "Serbia",
+        "value": 840000
+      },
+      {
+        "name": "Maksim Golubev",
+        "position": "DFC",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Vladimir Zaytsev",
+        "position": "DFC",
+        "age": 29,
+        "overall": 74,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Ilya Kuznetsov",
+        "position": "DFC",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Dmitri Golubev",
+        "position": "LB",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Rusia",
+        "value": 224000
+      },
+      {
+        "name": "Artyom Vorobyov",
+        "position": "RB",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Nikolai Kozlov",
+        "position": "MCD",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Pavel Vorobyov",
+        "position": "MCD",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Sergei Solovyov",
+        "position": "MC",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Pedro Almeida",
+        "position": "MC",
+        "age": 24,
+        "overall": 74,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Andrei Volkov",
+        "position": "MC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Vadim Vorobyov",
+        "position": "MCO",
+        "age": 29,
+        "overall": 76,
+        "nationality": "Rusia",
+        "value": 1680000
+      },
+      {
+        "name": "Nikola Radović",
+        "position": "EI",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Dmitri Solovyov",
+        "position": "ED",
+        "age": 28,
+        "overall": 75,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Sergei Golubev",
+        "position": "DC",
+        "age": 26,
+        "overall": 74,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Mikhail Zaytsev",
+        "position": "DC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Kirill Golubev",
+        "position": "DC",
+        "age": 29,
+        "overall": 74,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Sergei Popov",
+        "position": "MP",
+        "age": 21,
+        "overall": 66,
+        "nationality": "Rusia",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "dynamo-moscow",
+    "name": "Blue Thunder FC",
+    "shortName": "BLT",
+    "city": "Moscú",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Thunder Arena",
+    "stadiumCapacity": 26319,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Artyom Lebedev",
+        "position": "POR",
+        "age": 24,
+        "overall": 75,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Artyom Morozov",
+        "position": "POR",
+        "age": 25,
+        "overall": 68,
+        "nationality": "Rusia",
+        "value": 224000
+      },
+      {
+        "name": "Yuri Ivanov",
+        "position": "DFC",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Kirill Kuznetsov",
+        "position": "DFC",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Rusia",
+        "value": 224000
+      },
+      {
+        "name": "Yegor Sokolov",
+        "position": "DFC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Ilya Golubev",
+        "position": "DFC",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Yegor Petrov",
+        "position": "LB",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Oleh Boyko",
+        "position": "RB",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Yuri Golubev",
+        "position": "MCD",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Yuri Bogdanov",
+        "position": "MCD",
+        "age": 21,
+        "overall": 74,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Kirill Sokolov",
+        "position": "MC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Nikolai Pavlov",
+        "position": "MC",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Petar Ivanović",
+        "position": "MC",
+        "age": 29,
+        "overall": 74,
+        "nationality": "Serbia",
+        "value": 840000
+      },
+      {
+        "name": "Nikolai Novikov",
+        "position": "MCO",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Denis Smirnov",
+        "position": "EI",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Nikolai Vorobyov",
+        "position": "ED",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Oleg Volkov",
+        "position": "DC",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Daniel Gomes",
+        "position": "DC",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Brasil",
+        "value": 224000
+      },
+      {
+        "name": "Ivan Lebedev",
+        "position": "DC",
+        "age": 21,
+        "overall": 69,
+        "nationality": "Rusia",
+        "value": 224000
+      },
+      {
+        "name": "Petar Mitrović",
+        "position": "MP",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Serbia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "krasnodar",
+    "name": "Kuban Wolves FC",
+    "shortName": "KUB",
+    "city": "Krasnodar",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#00A651"
+    },
+    "stadium": "Kuban Arena",
+    "stadiumCapacity": 34291,
+    "reputation": 4,
+    "players": [
+      {
+        "name": "Denis Novikov",
+        "position": "POR",
+        "age": 29,
+        "overall": 78,
+        "nationality": "Rusia",
+        "value": 1680000
+      },
+      {
+        "name": "Maksim Golubev",
+        "position": "POR",
+        "age": 29,
+        "overall": 68,
+        "nationality": "Rusia",
+        "value": 224000
+      },
+      {
+        "name": "Nikolai Popov",
+        "position": "DFC",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Rusia",
+        "value": 224000
+      },
+      {
+        "name": "Nikolai Ivanov",
+        "position": "DFC",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Rusia",
+        "value": 224000
+      },
+      {
+        "name": "Vadim Smirnov",
+        "position": "DFC",
+        "age": 31,
+        "overall": 74,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Vladimir Lebedev",
+        "position": "DFC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Samuel Sarr",
+        "position": "LB",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Vladimir Novikov",
+        "position": "RB",
+        "age": 25,
+        "overall": 74,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Aleksei Bogdanov",
+        "position": "MCD",
+        "age": 24,
+        "overall": 75,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Mikhail Kuznetsov",
+        "position": "MCD",
+        "age": 21,
+        "overall": 75,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Ilya Kozlov",
+        "position": "MC",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Dmitri Solovyov",
+        "position": "MC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Oleg Lebedev",
+        "position": "MC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Artyom Kuznetsov",
+        "position": "MCO",
+        "age": 31,
+        "overall": 75,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Petar Ivanović",
+        "position": "EI",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Aleksei Zaytsev",
+        "position": "ED",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Thiago Pereira",
+        "position": "DC",
+        "age": 23,
+        "overall": 75,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Andrei Novikov",
+        "position": "DC",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Maksim Vinogradov",
+        "position": "DC",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Yegor Vorobyov",
+        "position": "MP",
+        "age": 25,
+        "overall": 66,
+        "nationality": "Rusia",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "rubin-kazan",
+    "name": "Tatar Ruby FC",
+    "shortName": "TRB",
+    "city": "Kazán",
+    "colors": {
+      "primary": "#006633",
+      "secondary": "#D00000"
+    },
+    "stadium": "Ak Bars Stadion",
+    "stadiumCapacity": 45379,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Aleksei Popov",
+        "position": "POR",
+        "age": 26,
+        "overall": 77,
+        "nationality": "Rusia",
+        "value": 1680000
+      },
+      {
+        "name": "Sergei Popov",
+        "position": "POR",
+        "age": 31,
+        "overall": 68,
+        "nationality": "Rusia",
+        "value": 224000
+      },
+      {
+        "name": "Anton Sokolov",
+        "position": "DFC",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Roman Vinogradov",
+        "position": "DFC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Marko Stojanović",
+        "position": "DFC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Ronaldo Gomes",
+        "position": "DFC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Andrei Novikov",
+        "position": "LB",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Rusia",
+        "value": 224000
+      },
+      {
+        "name": "Mikhail Kozlov",
+        "position": "RB",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Roman Lebedev",
+        "position": "MCD",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Diogo Silva",
+        "position": "MCD",
+        "age": 25,
+        "overall": 74,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Ilya Popov",
+        "position": "MC",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Yegor Vinogradov",
+        "position": "MC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Maksim Kuznetsov",
+        "position": "MC",
+        "age": 21,
+        "overall": 73,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Roman Morozov",
+        "position": "MCO",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Sergei Golubev",
+        "position": "EI",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Dmitri Petrov",
+        "position": "ED",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Dmitri Golubev",
+        "position": "DC",
+        "age": 21,
+        "overall": 76,
+        "nationality": "Rusia",
+        "value": 1680000
+      },
+      {
+        "name": "Kirill Smirnov",
+        "position": "DC",
+        "age": 20,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Ruslan Marchenko",
+        "position": "DC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Kirill Sokolov",
+        "position": "MP",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Rusia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "rostov",
+    "name": "Don River FC",
+    "shortName": "DON",
+    "city": "Rostov del Don",
+    "colors": {
+      "primary": "#FFD500",
+      "secondary": "#003DA5"
+    },
+    "stadium": "Don Arena",
+    "stadiumCapacity": 45000,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Andriy Ponomarenko",
+        "position": "POR",
+        "age": 26,
+        "overall": 76,
+        "nationality": "Ucrania",
+        "value": 1680000
+      },
+      {
+        "name": "Maksim Novikov",
+        "position": "POR",
+        "age": 26,
+        "overall": 66,
+        "nationality": "Rusia",
+        "value": 112000
+      },
+      {
+        "name": "Roman Vorobyov",
+        "position": "DFC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Anton Volkov",
+        "position": "DFC",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Nikolai Golubev",
+        "position": "DFC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Denis Zaytsev",
+        "position": "DFC",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Sergei Popov",
+        "position": "LB",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Fernando Martins",
+        "position": "RB",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Ivan Petrović",
+        "position": "MCD",
+        "age": 22,
+        "overall": 74,
+        "nationality": "Serbia",
+        "value": 840000
+      },
+      {
+        "name": "Yegor Petrov",
+        "position": "MCD",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Pavel Pavlov",
+        "position": "MC",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Mikhail Popov",
+        "position": "MC",
+        "age": 31,
+        "overall": 74,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Andrei Vorobyov",
+        "position": "MC",
+        "age": 22,
+        "overall": 74,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Vadim Vorobyov",
+        "position": "MCO",
+        "age": 25,
+        "overall": 74,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Yuri Solovyov",
+        "position": "EI",
+        "age": 29,
+        "overall": 74,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Kirill Vasiliev",
+        "position": "ED",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Artyom Vorobyov",
+        "position": "DC",
+        "age": 22,
+        "overall": 75,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Lucas Almeida",
+        "position": "DC",
+        "age": 28,
+        "overall": 68,
+        "nationality": "Brasil",
+        "value": 224000
+      },
+      {
+        "name": "Roman Kuznetsov",
+        "position": "DC",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Leandro Silva",
+        "position": "MP",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Brasil",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "dinamo-makhachkala",
+    "name": "Caspian FC",
+    "shortName": "CAS",
+    "city": "Majachkalá",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Caspian Arena",
+    "stadiumCapacity": 28500,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Dmitri Zaytsev",
+        "position": "POR",
+        "age": 29,
+        "overall": 74,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Pavel Solovyov",
+        "position": "POR",
+        "age": 27,
+        "overall": 68,
+        "nationality": "Rusia",
+        "value": 224000
+      },
+      {
+        "name": "Oleg Kozlov",
+        "position": "DFC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Dmitri Pavlov",
+        "position": "DFC",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Rusia",
+        "value": 224000
+      },
+      {
+        "name": "Mikhail Vinogradov",
+        "position": "DFC",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Rusia",
+        "value": 224000
+      },
+      {
+        "name": "Ilya Vasiliev",
+        "position": "DFC",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Samuel Traoré",
+        "position": "LB",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Artyom Ivanov",
+        "position": "RB",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Felipe Monteiro",
+        "position": "MCD",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Kirill Vorobyov",
+        "position": "MCD",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Dmitri Smirnov",
+        "position": "MC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Vladimir Sokolov",
+        "position": "MC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Ilya Bogdanov",
+        "position": "MC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Vladimir Lebedev",
+        "position": "MCO",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Bohdan Pylypenko",
+        "position": "EI",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Ivan Smirnov",
+        "position": "ED",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Matheus Ribeiro",
+        "position": "DC",
+        "age": 19,
+        "overall": 74,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Leandro Santos",
+        "position": "DC",
+        "age": 20,
+        "overall": 72,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Anton Vasiliev",
+        "position": "DC",
+        "age": 32,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Pavel Lebedev",
+        "position": "MP",
+        "age": 28,
+        "overall": 67,
+        "nationality": "Rusia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "akhmat-grozny",
+    "name": "Caucasus FC",
+    "shortName": "CAU",
+    "city": "Grozni",
+    "colors": {
+      "primary": "#00853E",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Caucasus Arena",
+    "stadiumCapacity": 30597,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Dmitri Zaytsev",
+        "position": "POR",
+        "age": 31,
+        "overall": 76,
+        "nationality": "Rusia",
+        "value": 1680000
+      },
+      {
+        "name": "Moses Traoré",
+        "position": "POR",
+        "age": 32,
+        "overall": 66,
+        "nationality": "Nigeria",
+        "value": 112000
+      },
+      {
+        "name": "Lucas Pereira",
+        "position": "DFC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Andrei Ivanov",
+        "position": "DFC",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Rusia",
+        "value": 224000
+      },
+      {
+        "name": "Kirill Zaytsev",
+        "position": "DFC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Aleksei Semyonov",
+        "position": "DFC",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Rusia",
+        "value": 224000
+      },
+      {
+        "name": "Oleg Zaytsev",
+        "position": "LB",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Aleksei Sokolov",
+        "position": "RB",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Roman Zaytsev",
+        "position": "MCD",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Dmitri Vasiliev",
+        "position": "MCD",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Vladimir Popov",
+        "position": "MC",
+        "age": 21,
+        "overall": 73,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Bruno Pereira",
+        "position": "MC",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Andrei Morozov",
+        "position": "MC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Nikolai Novikov",
+        "position": "MCO",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Thiago Rodrigues",
+        "position": "EI",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Vladimir Vasiliev",
+        "position": "ED",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Igor Oliveira",
+        "position": "DC",
+        "age": 22,
+        "overall": 74,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Vladimir Sokolov",
+        "position": "DC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Yegor Lebedev",
+        "position": "DC",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Sergei Volkov",
+        "position": "MP",
+        "age": 23,
+        "overall": 66,
+        "nationality": "Rusia",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "krylia-sovetov",
+    "name": "Wings of Volga FC",
+    "shortName": "WOV",
+    "city": "Samara",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Volga Arena",
+    "stadiumCapacity": 45918,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Kelechi Diop",
+        "position": "POR",
+        "age": 26,
+        "overall": 76,
+        "nationality": "Nigeria",
+        "value": 1680000
+      },
+      {
+        "name": "Yevhen Demchenko",
+        "position": "POR",
+        "age": 28,
+        "overall": 67,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Maksym Lytvynenko",
+        "position": "DFC",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Ucrania",
+        "value": 840000
+      },
+      {
+        "name": "Yegor Sokolov",
+        "position": "DFC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Nikolai Semyonov",
+        "position": "DFC",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Artyom Sokolov",
+        "position": "DFC",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Stefan Ivanović",
+        "position": "LB",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Serbia",
+        "value": 840000
+      },
+      {
+        "name": "Peter Sarr",
+        "position": "RB",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Anton Morozov",
+        "position": "MCD",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Maksim Volkov",
+        "position": "MCD",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Pavel Morozov",
+        "position": "MC",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Chinedu Mensah",
+        "position": "MC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Sergei Semyonov",
+        "position": "MC",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Pavel Popov",
+        "position": "MCO",
+        "age": 22,
+        "overall": 74,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Oleg Petrov",
+        "position": "EI",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Yuri Solovyov",
+        "position": "ED",
+        "age": 31,
+        "overall": 74,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Chinedu Boateng",
+        "position": "DC",
+        "age": 32,
+        "overall": 73,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Oleg Morozov",
+        "position": "DC",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Emeka Koné",
+        "position": "DC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Ilya Novikov",
+        "position": "MP",
+        "age": 22,
+        "overall": 67,
+        "nationality": "Rusia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "fakel-voronezh",
+    "name": "Torch FC",
+    "shortName": "TRC",
+    "city": "Vorónezh",
+    "colors": {
+      "primary": "#FFFFFF",
+      "secondary": "#003DA5"
+    },
+    "stadium": "Torch Stadion",
+    "stadiumCapacity": 32750,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Artyom Novikov",
+        "position": "POR",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Mikhail Zaytsev",
+        "position": "POR",
+        "age": 28,
+        "overall": 67,
+        "nationality": "Rusia",
+        "value": 224000
+      },
+      {
+        "name": "Ivan Radović",
+        "position": "DFC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Nikolai Ivanov",
+        "position": "DFC",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Rusia",
+        "value": 224000
+      },
+      {
+        "name": "Dmitri Lebedev",
+        "position": "DFC",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Rusia",
+        "value": 224000
+      },
+      {
+        "name": "Stefan Nikolić",
+        "position": "DFC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Ilya Vasiliev",
+        "position": "LB",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Mikhail Semyonov",
+        "position": "RB",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Rusia",
+        "value": 224000
+      },
+      {
+        "name": "Ebenezer Ouattara",
+        "position": "MCD",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Kirill Novikov",
+        "position": "MCD",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Sergei Morozov",
+        "position": "MC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Ilya Kozlov",
+        "position": "MC",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Sergei Semyonov",
+        "position": "MC",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Vladimir Lebedev",
+        "position": "MCO",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Pavel Bogdanov",
+        "position": "EI",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Sergei Zaytsev",
+        "position": "ED",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Felipe Souza",
+        "position": "DC",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Kirill Sokolov",
+        "position": "DC",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Denis Semyonov",
+        "position": "DC",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Rusia",
+        "value": 224000
+      },
+      {
+        "name": "Maksim Vorobyov",
+        "position": "MP",
+        "age": 27,
+        "overall": 67,
+        "nationality": "Rusia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "nizhny-novgorod",
+    "name": "Volga Delta FC",
+    "shortName": "VLD",
+    "city": "Nizhni Nóvgorod",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Nizhny Arena",
+    "stadiumCapacity": 44899,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Vladimir Bogdanov",
+        "position": "POR",
+        "age": 33,
+        "overall": 73,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Ivan Pavlov",
+        "position": "POR",
+        "age": 31,
+        "overall": 68,
+        "nationality": "Rusia",
+        "value": 224000
+      },
+      {
+        "name": "Nikolai Novikov",
+        "position": "DFC",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Kirill Volkov",
+        "position": "DFC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Roman Vorobyov",
+        "position": "DFC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Aleksei Vorobyov",
+        "position": "DFC",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Denis Vinogradov",
+        "position": "LB",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Fernando Pereira",
+        "position": "RB",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Anton Bogdanov",
+        "position": "MCD",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Miloš Đorđević",
+        "position": "MCD",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Serbia",
+        "value": 840000
+      },
+      {
+        "name": "Ivan Lebedev",
+        "position": "MC",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Pavel Sokolov",
+        "position": "MC",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Vladimir Morozov",
+        "position": "MC",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Kirill Novikov",
+        "position": "MCO",
+        "age": 29,
+        "overall": 74,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Pavel Volkov",
+        "position": "EI",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Yegor Semyonov",
+        "position": "ED",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Artyom Morozov",
+        "position": "DC",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Dmitri Bogdanov",
+        "position": "DC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Maksim Morozov",
+        "position": "DC",
+        "age": 21,
+        "overall": 68,
+        "nationality": "Rusia",
+        "value": 224000
+      },
+      {
+        "name": "Ivan Vorobyov",
+        "position": "MP",
+        "age": 32,
+        "overall": 69,
+        "nationality": "Rusia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "orenburg",
+    "name": "Steppe FC",
+    "shortName": "STP",
+    "city": "Oremburgo",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFD500"
+    },
+    "stadium": "Steppe Arena",
+    "stadiumCapacity": 10500,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Mikhail Vorobyov",
+        "position": "POR",
+        "age": 31,
+        "overall": 76,
+        "nationality": "Rusia",
+        "value": 1680000
+      },
+      {
+        "name": "Volodymyr Koval",
+        "position": "POR",
+        "age": 30,
+        "overall": 66,
+        "nationality": "Ucrania",
+        "value": 112000
+      },
+      {
+        "name": "Ivan Ivanović",
+        "position": "DFC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Ivan Kozlov",
+        "position": "DFC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Ivan Popov",
+        "position": "DFC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Aleksei Smirnov",
+        "position": "DFC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Vadim Semyonov",
+        "position": "LB",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Mikhail Kuznetsov",
+        "position": "RB",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Rusia",
+        "value": 224000
+      },
+      {
+        "name": "Ivan Sokolov",
+        "position": "MCD",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Nikolai Golubev",
+        "position": "MCD",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Yuri Kozlov",
+        "position": "MC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Ivan Smirnov",
+        "position": "MC",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Kirill Popov",
+        "position": "MC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Roman Lebedev",
+        "position": "MCO",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Ivan Petrović",
+        "position": "EI",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Yuri Pavlov",
+        "position": "ED",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Maksim Morozov",
+        "position": "DC",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Oleg Ivanov",
+        "position": "DC",
+        "age": 27,
+        "overall": 68,
+        "nationality": "Rusia",
+        "value": 224000
+      },
+      {
+        "name": "Aleksei Lebedev",
+        "position": "DC",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Nikolai Novikov",
+        "position": "MP",
+        "age": 21,
+        "overall": 69,
+        "nationality": "Rusia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "khimki",
+    "name": "Podmoscov FC",
+    "shortName": "PDM",
+    "city": "Jimki",
+    "colors": {
+      "primary": "#D50000",
+      "secondary": "#000000"
+    },
+    "stadium": "Arena Podmoscov",
+    "stadiumCapacity": 18636,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Maksim Smirnov",
+        "position": "POR",
+        "age": 31,
+        "overall": 76,
+        "nationality": "Rusia",
+        "value": 1680000
+      },
+      {
+        "name": "Ilya Golubev",
+        "position": "POR",
+        "age": 30,
+        "overall": 68,
+        "nationality": "Rusia",
+        "value": 224000
+      },
+      {
+        "name": "Mikhail Petrov",
+        "position": "DFC",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Artyom Pavlov",
+        "position": "DFC",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Vladimir Golubev",
+        "position": "DFC",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Dmitri Vinogradov",
+        "position": "DFC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Artem Kovalenko",
+        "position": "LB",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Ucrania",
+        "value": 224000
+      },
+      {
+        "name": "Vinícius Oliveira",
+        "position": "RB",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Dmitri Smirnov",
+        "position": "MCD",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Yuri Popov",
+        "position": "MCD",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Aleksei Pavlov",
+        "position": "MC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Artyom Vorobyov",
+        "position": "MC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Stefan Nikolić",
+        "position": "MC",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Serbia",
+        "value": 840000
+      },
+      {
+        "name": "Vadim Morozov",
+        "position": "MCO",
+        "age": 30,
+        "overall": 74,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Kirill Popov",
+        "position": "EI",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Ronaldo Cavalcante",
+        "position": "ED",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Denis Smirnov",
+        "position": "DC",
+        "age": 29,
+        "overall": 74,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Oleg Petrov",
+        "position": "DC",
+        "age": 20,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Andrei Kuznetsov",
+        "position": "DC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Mikhail Volkov",
+        "position": "MP",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Rusia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "sochi",
+    "name": "Coastline FC",
+    "shortName": "COA",
+    "city": "Sochi",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#00A651"
+    },
+    "stadium": "Fisht Arena",
+    "stadiumCapacity": 47659,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Nikolai Ivanov",
+        "position": "POR",
+        "age": 30,
+        "overall": 76,
+        "nationality": "Rusia",
+        "value": 1680000
+      },
+      {
+        "name": "Andrei Zaytsev",
+        "position": "POR",
+        "age": 29,
+        "overall": 68,
+        "nationality": "Rusia",
+        "value": 224000
+      },
+      {
+        "name": "Artyom Vorobyov",
+        "position": "DFC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Ivan Lebedev",
+        "position": "DFC",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Rusia",
+        "value": 224000
+      },
+      {
+        "name": "Stefan Jović",
+        "position": "DFC",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Serbia",
+        "value": 224000
+      },
+      {
+        "name": "Moses Traoré",
+        "position": "DFC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Denis Ivanov",
+        "position": "LB",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Nikolai Kuznetsov",
+        "position": "RB",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Sergei Semyonov",
+        "position": "MCD",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Pavel Semyonov",
+        "position": "MCD",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Roman Kozlov",
+        "position": "MC",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Artyom Morozov",
+        "position": "MC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Chinedu Ndiaye",
+        "position": "MC",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Mikhail Solovyov",
+        "position": "MCO",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Rusia",
+        "value": 420000
+      },
+      {
+        "name": "Sergei Morozov",
+        "position": "EI",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Rusia",
+        "value": 840000
+      },
+      {
+        "name": "Ruslan Vasylchenko",
+        "position": "ED",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Ucrania",
+        "value": 420000
+      },
+      {
+        "name": "Filip Đorđević",
+        "position": "DC",
+        "age": 24,
+        "overall": 75,
+        "nationality": "Serbia",
+        "value": 840000
+      },
+      {
+        "name": "Maksim Ivanov",
+        "position": "DC",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Rusia",
+        "value": 224000
+      },
+      {
+        "name": "Ronaldo Oliveira",
+        "position": "DC",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Pavel Zaytsev",
+        "position": "MP",
+        "age": 25,
+        "overall": 66,
+        "nationality": "Rusia",
+        "value": 112000
+      }
+    ]
+  }
+]

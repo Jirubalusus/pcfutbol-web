@@ -2184,7 +2184,14 @@
     "usa": "Estados Unidos",
     "saudiArabia": "Arabia Saudí",
     "mexico": "México",
-    "japan": "Japón"
+    "japan": "Japón",
+    "southKorea": "Corea del Sur",
+    "australia": "Australia",
+    "southAfrica": "Sudáfrica",
+    "russia": "Rusia",
+    "ukraine": "Ucrania",
+    "romania": "Rumania",
+    "hungary": "Hungría"
   },
   "tutorial": {
     "formationTitle": "Alineación",

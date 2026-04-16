@@ -2071,7 +2071,14 @@
     "usa": "Stati Uniti",
     "saudiArabia": "Arabia Saudita",
     "mexico": "Messico",
-    "japan": "Giappone"
+    "japan": "Giappone",
+    "southKorea": "Corea del Sud",
+    "australia": "Australia",
+    "southAfrica": "Sudafrica",
+    "russia": "Russia",
+    "ukraine": "Ucraina",
+    "romania": "Romania",
+    "hungary": "Ungheria"
   },
   "simulation": {
     "yourResults": "I tuoi risultati",

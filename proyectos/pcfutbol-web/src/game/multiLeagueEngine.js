@@ -56,7 +56,14 @@ import {
   getAllsvenskanTeams,
   getEkstraklasaTeams,
   getEersteDivisieTeams,
-  getLigaPortugal2Teams
+  getLigaPortugal2Teams,
+  getRussiaPremierTeams,
+  getUkrainePremierTeams,
+  getRomaniaSuperligaTeams,
+  getHungaryNBITeams,
+  getKLeague1Teams,
+  getALeagueMenTeams,
+  getSouthAfricaPSLTeams
 } from '../data/teamsFirestore';
 
 // Configuración de ligas
@@ -435,6 +442,94 @@ export const LEAGUE_CONFIG = {
       promotion: [1, 2],
       playoff: [3, 4, 5, 6],
       relegation: [17, 18]
+    }
+  },
+  russiaPremier: {
+    id: 'russiaPremier',
+    name: 'Volga League',
+    country: 'Rusia',
+    teams: 16,
+    getTeams: getRussiaPremierTeams,
+    zones: {
+      champions: [1],
+      europaLeague: [2, 3],
+      conference: [4, 5],
+      relegation: [15, 16]
+    }
+  },
+  ukrainePremier: {
+    id: 'ukrainePremier',
+    name: 'Dnipro League',
+    country: 'Ucrania',
+    teams: 16,
+    getTeams: getUkrainePremierTeams,
+    zones: {
+      champions: [1],
+      europaLeague: [2, 3],
+      conference: [4, 5],
+      relegation: [15, 16]
+    }
+  },
+  romaniaSuperliga: {
+    id: 'romaniaSuperliga',
+    name: 'Carpathian League',
+    country: 'Rumania',
+    teams: 16,
+    getTeams: getRomaniaSuperligaTeams,
+    zones: {
+      champions: [1],
+      europaLeague: [2, 3],
+      conference: [4, 5],
+      relegation: [15, 16]
+    }
+  },
+  hungaryNBI: {
+    id: 'hungaryNBI',
+    name: 'Danube League',
+    country: 'Hungría',
+    teams: 12,
+    getTeams: getHungaryNBITeams,
+    zones: {
+      champions: [1],
+      europaLeague: [2, 3],
+      conference: [4],
+      relegation: [11, 12]
+    }
+  },
+  kLeague1: {
+    id: 'kLeague1',
+    name: 'Hanbando League',
+    country: 'Corea del Sur',
+    teams: 12,
+    getTeams: getKLeague1Teams,
+    zones: {
+      champions: [1],
+      continentalCup: [2, 3],
+      relegation: [11, 12]
+    }
+  },
+  aLeagueMen: {
+    id: 'aLeagueMen',
+    name: 'Southern Cross League',
+    country: 'Australia',
+    teams: 12,
+    getTeams: getALeagueMenTeams,
+    zones: {
+      champions: [1],
+      continentalCup: [2, 3, 4, 5, 6],
+      relegation: []
+    }
+  },
+  southAfricaPSL: {
+    id: 'southAfricaPSL',
+    name: 'Veld League',
+    country: 'Sudáfrica',
+    teams: 16,
+    getTeams: getSouthAfricaPSLTeams,
+    zones: {
+      champions: [1],
+      continentalCup: [2, 3, 4],
+      relegation: [15, 16]
     }
   },
 

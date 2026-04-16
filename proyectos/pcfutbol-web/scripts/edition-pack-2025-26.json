@@ -38355,6 +38355,506 @@
       "name": "CS Marítimo",
       "shortName": "MAR",
       "stadium": "Estádio do Marítimo"
+    },
+    "Neva FC": {
+      "name": "FC Zenit Saint Petersburg",
+      "shortName": "ZEN",
+      "stadium": "Gazprom Arena"
+    },
+    "Red Diamonds FC": {
+      "name": "FC Spartak Moscow",
+      "shortName": "SPA",
+      "stadium": "Lukoil Arena"
+    },
+    "Army Stars FC": {
+      "name": "CSKA Moscow",
+      "shortName": "CSK",
+      "stadium": "VEB Arena"
+    },
+    "Railway FC": {
+      "name": "Lokomotiv Moscow",
+      "shortName": "LOK",
+      "stadium": "RZD Arena"
+    },
+    "Blue Thunder FC": {
+      "name": "Dynamo Moscow",
+      "shortName": "DYN",
+      "stadium": "VTB Arena"
+    },
+    "Kuban Wolves FC": {
+      "name": "FC Krasnodar",
+      "shortName": "KRA",
+      "stadium": "Ozon Arena"
+    },
+    "Tatar Ruby FC": {
+      "name": "FC Rubin Kazan",
+      "shortName": "RUB",
+      "stadium": "Ak Bars Arena"
+    },
+    "Don River FC": {
+      "name": "FC Rostov",
+      "shortName": "ROS",
+      "stadium": "Rostov Arena"
+    },
+    "Caspian FC": {
+      "name": "Dynamo Makhachkala",
+      "shortName": "DMK",
+      "stadium": "Anzhi Arena"
+    },
+    "Caucasus FC": {
+      "name": "FC Akhmat Grozny",
+      "shortName": "AKH",
+      "stadium": "Akhmat Arena"
+    },
+    "Wings of Volga FC": {
+      "name": "Krylia Sovetov Samara",
+      "shortName": "KRY",
+      "stadium": "Solidarnost Arena"
+    },
+    "Torch FC": {
+      "name": "FC Fakel Voronezh",
+      "shortName": "FAK",
+      "stadium": "Stadion Fakel"
+    },
+    "Volga Delta FC": {
+      "name": "Pari Nizhny Novgorod",
+      "shortName": "NIZ",
+      "stadium": "Nizhny Novgorod Stadion"
+    },
+    "Steppe FC": {
+      "name": "FC Orenburg",
+      "shortName": "ORE",
+      "stadium": "Gazovik Arena"
+    },
+    "Podmoscov FC": {
+      "name": "FC Khimki",
+      "shortName": "KHI",
+      "stadium": "Arena Khimki"
+    },
+    "Coastline FC": {
+      "name": "PFC Sochi",
+      "shortName": "SOC",
+      "stadium": "Fisht Olympic Stadion"
+    },
+    "Miners FC": {
+      "name": "FC Shakhtar Donetsk",
+      "shortName": "SHK",
+      "stadium": "Arena Lviv"
+    },
+    "Capital Dynamo FC": {
+      "name": "FC Dynamo Kyiv",
+      "shortName": "DYN",
+      "stadium": "NSC Olimpiyskiy"
+    },
+    "Steppe Town FC": {
+      "name": "FC Oleksandriya",
+      "shortName": "OLK",
+      "stadium": "KSK Nika"
+    },
+    "Ore Valley FC": {
+      "name": "FC Kryvbas Kryvyi Rih",
+      "shortName": "KRY",
+      "stadium": "Hirnyk Stadion"
+    },
+    "Dawn FC": {
+      "name": "FC Zorya Luhansk",
+      "shortName": "ZOR",
+      "stadium": "Slavutych-Arena"
+    },
+    "Vorskla River FC": {
+      "name": "FC Vorskla Poltava",
+      "shortName": "VOR",
+      "stadium": "Vorskla Stadion"
+    },
+    "Woodland FC": {
+      "name": "FC Polissya Zhytomyr",
+      "shortName": "POL",
+      "stadium": "Polissya Stadion"
+    },
+    "North Kyiv FC": {
+      "name": "FC Obolon Kyiv",
+      "shortName": "OBO",
+      "stadium": "Obolon Arena"
+    },
+    "Black Sea FC": {
+      "name": "FC Chornomorets Odesa",
+      "shortName": "CHN",
+      "stadium": "Chornomorets Stadion"
+    },
+    "Galicia FC": {
+      "name": "FC Rukh Lviv",
+      "shortName": "RUK",
+      "stadium": "Ukraina Stadion"
+    },
+    "Carpathian FC": {
+      "name": "FC Karpaty Lviv",
+      "shortName": "KAR",
+      "stadium": "Arena Lviv"
+    },
+    "Dnipro Bend FC": {
+      "name": "FC LNZ Cherkasy",
+      "shortName": "LNZ",
+      "stadium": "Central Stadion"
+    },
+    "Podillya FC": {
+      "name": "FC Epitsentr Kamianets-Podilskyi",
+      "shortName": "EPI",
+      "stadium": "Podillya Stadion"
+    },
+    "Kharkiv Metal FC": {
+      "name": "FC Metalist 1925 Kharkiv",
+      "shortName": "MET",
+      "stadium": "OSK Metalist"
+    },
+    "Volyn Oaks FC": {
+      "name": "NK Veres Rivne",
+      "shortName": "VER",
+      "stadium": "Avanhard Stadion"
+    },
+    "Inhulets FC": {
+      "name": "FC Inhulets Petrove",
+      "shortName": "INH",
+      "stadium": "Inhulets Stadion"
+    },
+    "Steaua Capitala FC": {
+      "name": "FCSB",
+      "shortName": "FCS",
+      "stadium": "Arena Națională"
+    },
+    "Feroviar FC": {
+      "name": "CFR Cluj",
+      "shortName": "CFR",
+      "stadium": "Dr. Constantin Rădulescu"
+    },
+    "Oltenia FC": {
+      "name": "Universitatea Craiova",
+      "shortName": "UCR",
+      "stadium": "Ion Oblemenco"
+    },
+    "Giulești FC": {
+      "name": "FC Rapid București",
+      "shortName": "RAP",
+      "stadium": "Rapid-Giulești"
+    },
+    "Red Dogs FC": {
+      "name": "Dinamo București",
+      "shortName": "DIN",
+      "stadium": "Arena Națională"
+    },
+    "Black Sea Coast FC": {
+      "name": "Farul Constanța",
+      "shortName": "FAR",
+      "stadium": "Central Stadion"
+    },
+    "Szekely FC": {
+      "name": "Sepsi OSK Sfântu Gheorghe",
+      "shortName": "SEP",
+      "stadium": "Sepsi Arena"
+    },
+    "Transilvania FC": {
+      "name": "AFC Hermannstadt",
+      "shortName": "HER",
+      "stadium": "Municipal Sibiu"
+    },
+    "Oil Wells FC": {
+      "name": "Petrolul Ploiești",
+      "shortName": "PET",
+      "stadium": "Ilie Oană"
+    },
+    "Ialomița FC": {
+      "name": "Unirea Slobozia",
+      "shortName": "UNI",
+      "stadium": "Municipal Slobozia"
+    },
+    "Mureș FC": {
+      "name": "UTA Arad",
+      "shortName": "UTA",
+      "stadium": "Francisc von Neuman"
+    },
+    "Steel FC": {
+      "name": "ASC Oțelul Galați",
+      "shortName": "OTE",
+      "stadium": "Oțelul Stadion"
+    },
+    "Moldavia FC": {
+      "name": "FC Politehnica Iași",
+      "shortName": "POL",
+      "stadium": "Emil Alexandrescu"
+    },
+    "Botoșani FC": {
+      "name": "FC Botoșani",
+      "shortName": "BOT",
+      "stadium": "Municipal Botoșani"
+    },
+    "Harghita FC": {
+      "name": "FK Csíkszereda Miercurea Ciuc",
+      "shortName": "CSI",
+      "stadium": "Municipal Miercurea"
+    },
+    "Capital Metals FC": {
+      "name": "CS Metaloglobus București",
+      "shortName": "MET",
+      "stadium": "Metaloglobus Stadion"
+    },
+    "Fradi FC": {
+      "name": "Ferencvárosi TC",
+      "shortName": "FER",
+      "stadium": "Groupama Arena"
+    },
+    "Felcsút Academy FC": {
+      "name": "Puskás Akadémia FC",
+      "shortName": "PUS",
+      "stadium": "Pancho Aréna"
+    },
+    "Lilas FC": {
+      "name": "Újpest FC",
+      "shortName": "UJP",
+      "stadium": "Szusza Ferenc"
+    },
+    "Loki FC": {
+      "name": "Debreceni VSC",
+      "shortName": "DVS",
+      "stadium": "Nagyerdei Stadion"
+    },
+    "Fehérvár Eagles FC": {
+      "name": "Fehérvár FC",
+      "shortName": "FEH",
+      "stadium": "MOL Aréna Sóstó"
+    },
+    "Atomvaros FC": {
+      "name": "Paksi FC",
+      "shortName": "PAK",
+      "stadium": "Fehérvári úti Stadion"
+    },
+    "Szabolcs FC": {
+      "name": "Kisvárda Master Good",
+      "shortName": "KIS",
+      "stadium": "Várkerti Stadion"
+    },
+    "Kékek FC": {
+      "name": "MTK Budapest",
+      "shortName": "MTK",
+      "stadium": "Hidegkuti Nándor"
+    },
+    "Borsod FC": {
+      "name": "Diósgyőri VTK",
+      "shortName": "DIO",
+      "stadium": "DVTK Stadion"
+    },
+    "Spartacus FC": {
+      "name": "Nyíregyháza Spartacus FC",
+      "shortName": "NYI",
+      "stadium": "Városi Stadion"
+    },
+    "Rába FC": {
+      "name": "Győri ETO FC",
+      "shortName": "GYO",
+      "stadium": "ETO Park"
+    },
+    "Zala FC": {
+      "name": "Zalaegerszegi TE",
+      "shortName": "ZTE",
+      "stadium": "ZTE Aréna"
+    },
+    "Taehwa Tigers FC": {
+      "name": "Ulsan HD FC",
+      "shortName": "ULS",
+      "stadium": "Munsu Football Stadion"
+    },
+    "Green Chariot FC": {
+      "name": "Jeonbuk Hyundai Motors",
+      "shortName": "JBK",
+      "stadium": "Jeonju World Cup Stadium"
+    },
+    "Capital Reds FC": {
+      "name": "FC Seoul",
+      "shortName": "SEO",
+      "stadium": "Seoul World Cup Stadium"
+    },
+    "Pohang Forge FC": {
+      "name": "Pohang Steelers",
+      "shortName": "POH",
+      "stadium": "Pohang Steel Yard"
+    },
+    "Alpine Bears FC": {
+      "name": "Gangwon FC",
+      "shortName": "GAN",
+      "stadium": "Chuncheon Songam Sports Town"
+    },
+    "Fortress City FC": {
+      "name": "Suwon FC",
+      "shortName": "SUW",
+      "stadium": "Suwon Sports Complex"
+    },
+    "Apsan FC": {
+      "name": "Daegu FC",
+      "shortName": "DGU",
+      "stadium": "DGB Daegu Bank Park"
+    },
+    "Honam Phoenix FC": {
+      "name": "Gwangju FC",
+      "shortName": "GWJ",
+      "stadium": "Gwangju Football Stadium"
+    },
+    "Hallasan FC": {
+      "name": "Jeju SK FC",
+      "shortName": "JEJ",
+      "stadium": "Jeju World Cup Stadium"
+    },
+    "Daejeon Citizen FC": {
+      "name": "Daejeon Hana Citizen",
+      "shortName": "DAE",
+      "stadium": "Daejeon World Cup Stadium"
+    },
+    "Anyang Purples FC": {
+      "name": "FC Anyang",
+      "shortName": "ANY",
+      "stadium": "Anyang Sports Complex"
+    },
+    "Gimcheon Military FC": {
+      "name": "Gimcheon Sangmu FC",
+      "shortName": "GIM",
+      "stadium": "Gimcheon Stadium"
+    },
+    "Southern Skyline FC": {
+      "name": "Melbourne City FC",
+      "shortName": "MCY",
+      "stadium": "AAMI Park"
+    },
+    "Big V FC": {
+      "name": "Melbourne Victory",
+      "shortName": "MLV",
+      "stadium": "AAMI Park"
+    },
+    "Sky Blues FC": {
+      "name": "Sydney FC",
+      "shortName": "SYD",
+      "stadium": "Allianz Stadium"
+    },
+    "West Wanderers FC": {
+      "name": "Western Sydney Wanderers",
+      "shortName": "WSW",
+      "stadium": "CommBank Stadium"
+    },
+    "Brisbane Lions FC": {
+      "name": "Brisbane Roar",
+      "shortName": "BRR",
+      "stadium": "Suncorp Stadium"
+    },
+    "Adelaide Reds FC": {
+      "name": "Adelaide United",
+      "shortName": "ADU",
+      "stadium": "Coopers Stadium"
+    },
+    "Western Glory FC": {
+      "name": "Perth Glory",
+      "shortName": "PER",
+      "stadium": "HBF Park"
+    },
+    "Coast Mariners FC": {
+      "name": "Central Coast Mariners",
+      "shortName": "CCM",
+      "stadium": "Industree Group Stadium"
+    },
+    "Hunter Jets FC": {
+      "name": "Newcastle Jets",
+      "shortName": "NWC",
+      "stadium": "McDonald Jones Stadium"
+    },
+    "Windy City Phoenix FC": {
+      "name": "Wellington Phoenix",
+      "shortName": "WEL",
+      "stadium": "Sky Stadium"
+    },
+    "Bulls FC": {
+      "name": "Macarthur FC",
+      "shortName": "MAC",
+      "stadium": "Campbelltown Stadium"
+    },
+    "Black Knights FC": {
+      "name": "Auckland FC",
+      "shortName": "AUK",
+      "stadium": "Go Media Stadium"
+    },
+    "Pretoria Brazilians FC": {
+      "name": "Mamelodi Sundowns",
+      "shortName": "MMS",
+      "stadium": "Loftus Versfeld"
+    },
+    "Buccaneers FC": {
+      "name": "Orlando Pirates",
+      "shortName": "ORP",
+      "stadium": "Orlando Stadium"
+    },
+    "Amakhosi FC": {
+      "name": "Kaizer Chiefs",
+      "shortName": "KZC",
+      "stadium": "FNB Stadium"
+    },
+    "Matsatsantsa FC": {
+      "name": "SuperSport United",
+      "shortName": "SSU",
+      "stadium": "Lucas Moripe Stadium"
+    },
+    "Limpopo Stars FC": {
+      "name": "Sekhukhune United",
+      "shortName": "SKU",
+      "stadium": "Peter Mokaba"
+    },
+    "Cape Winelands FC": {
+      "name": "Stellenbosch FC",
+      "shortName": "STE",
+      "stadium": "Athlone Stadium"
+    },
+    "Usuthu FC": {
+      "name": "AmaZulu FC",
+      "shortName": "AMZ",
+      "stadium": "Moses Mabhida"
+    },
+    "Polokwane Rise FC": {
+      "name": "Polokwane City",
+      "shortName": "POL",
+      "stadium": "Old Peter Mokaba"
+    },
+    "Chilli Boys FC": {
+      "name": "Chippa United",
+      "shortName": "CHI",
+      "stadium": "Nelson Mandela Bay"
+    },
+    "Thwihli Thwahla FC": {
+      "name": "Royal AM",
+      "shortName": "RAM",
+      "stadium": "Chatsworth Stadium"
+    },
+    "Rockets FC": {
+      "name": "TS Galaxy",
+      "shortName": "TSG",
+      "stadium": "Mbombela Stadium"
+    },
+    "Citizens FC": {
+      "name": "Cape Town City",
+      "shortName": "CTC",
+      "stadium": "DHL Stadium"
+    },
+    "Abafana Bes FC": {
+      "name": "Lamontville Golden Arrows",
+      "shortName": "ARR",
+      "stadium": "Princess Magogo"
+    },
+    "Bahlabane FC": {
+      "name": "Marumo Gallants",
+      "shortName": "MMG",
+      "stadium": "Old Peter Mokaba"
+    },
+    "Dikwena FC": {
+      "name": "Magesi FC",
+      "shortName": "MGS",
+      "stadium": "New Peter Mokaba"
+    },
+    "Bay Natives FC": {
+      "name": "Richards Bay FC",
+      "shortName": "RIB",
+      "stadium": "King Zwelithini"
     }
   },
   "leagues": {
@@ -38383,8 +38883,15 @@
     "Scandi League": "Allsvenskan",
     "Vistula League": "Ekstraklasa",
     "Dutch Second": "Eerste Divisie",
-    "Liga Lusitana 2": "Liga Portugal 2"
+    "Liga Lusitana 2": "Liga Portugal 2",
+    "Volga League": "Russian Premier League",
+    "Dnipro League": "Ukrainian Premier League",
+    "Carpathian League": "SuperLiga Romania",
+    "Danube League": "NB I Hungary",
+    "Hanbando League": "K League 1",
+    "Southern Cross League": "A-League Men",
+    "Veld League": "Betway Premiership"
   },
-  "teamCount": 1699,
+  "teamCount": 1799,
   "playerCount": 30552
 }

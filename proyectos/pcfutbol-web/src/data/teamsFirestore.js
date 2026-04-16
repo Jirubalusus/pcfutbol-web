@@ -78,6 +78,17 @@ export let EKSTRAKLASA_TEAMS = [];
 export let EERSTE_DIVISIE_TEAMS = [];
 export let LIGA_PORTUGAL_2_TEAMS = [];
 
+// Eastern Europe top divisions
+export let RUSSIA_PREMIER_TEAMS = [];
+export let UKRAINE_PREMIER_TEAMS = [];
+export let ROMANIA_SUPERLIGA_TEAMS = [];
+export let HUNGARY_NBI_TEAMS = [];
+
+// Additional Rest of World leagues
+export let K_LEAGUE_1_TEAMS = [];
+export let A_LEAGUE_MEN_TEAMS = [];
+export let SOUTH_AFRICA_PSL_TEAMS = [];
+
 // South American leagues
 export let ARGENTINA_TEAMS = [];
 export let BRASILEIRAO_TEAMS = [];
@@ -145,6 +156,17 @@ export function getEkstraklasaTeams() { return EKSTRAKLASA_TEAMS; }
 export function getEersteDivisieTeams() { return EERSTE_DIVISIE_TEAMS; }
 export function getLigaPortugal2Teams() { return LIGA_PORTUGAL_2_TEAMS; }
 
+// Eastern Europe getters
+export function getRussiaPremierTeams() { return RUSSIA_PREMIER_TEAMS; }
+export function getUkrainePremierTeams() { return UKRAINE_PREMIER_TEAMS; }
+export function getRomaniaSuperligaTeams() { return ROMANIA_SUPERLIGA_TEAMS; }
+export function getHungaryNBITeams() { return HUNGARY_NBI_TEAMS; }
+
+// Additional Rest of World getters
+export function getKLeague1Teams() { return K_LEAGUE_1_TEAMS; }
+export function getALeagueMenTeams() { return A_LEAGUE_MEN_TEAMS; }
+export function getSouthAfricaPSLTeams() { return SOUTH_AFRICA_PSL_TEAMS; }
+
 // South American getters
 export function getArgentinaTeams() { return ARGENTINA_TEAMS; }
 export function getBrasileiraoTeams() { return BRASILEIRAO_TEAMS; }
@@ -182,7 +204,10 @@ async function applyActiveEdition() {
       BOLIVIA_TEAMS, VENEZUELA_TEAMS,
       MLS_TEAMS, SAUDI_TEAMS, LIGA_MX_TEAMS, J_LEAGUE_TEAMS,
       ELITESERIEN_TEAMS, ALLSVENSKAN_TEAMS, EKSTRAKLASA_TEAMS,
-      EERSTE_DIVISIE_TEAMS, LIGA_PORTUGAL_2_TEAMS
+      EERSTE_DIVISIE_TEAMS, LIGA_PORTUGAL_2_TEAMS,
+      RUSSIA_PREMIER_TEAMS, UKRAINE_PREMIER_TEAMS,
+      ROMANIA_SUPERLIGA_TEAMS, HUNGARY_NBI_TEAMS,
+      K_LEAGUE_1_TEAMS, A_LEAGUE_MEN_TEAMS, SOUTH_AFRICA_PSL_TEAMS
     ];
 
     let renamedTeams = 0;
@@ -276,7 +301,16 @@ export const LEAGUES = {
   ekstraklasa: { name: 'Vistula League', country: 'Polonia' },
   // Second divisions
   eersteDivisie: { name: 'Dutch Second', country: 'Países Bajos' },
-  ligaPortugal2: { name: 'Liga Lusitana 2', country: 'Portugal' }
+  ligaPortugal2: { name: 'Liga Lusitana 2', country: 'Portugal' },
+  // Eastern Europe
+  russiaPremier: { name: 'Volga League', country: 'Rusia' },
+  ukrainePremier: { name: 'Dnipro League', country: 'Ucrania' },
+  romaniaSuperliga: { name: 'Carpathian League', country: 'Rumania' },
+  hungaryNBI: { name: 'Danube League', country: 'Hungría' },
+  // Rest of World additions
+  kLeague1: { name: 'Hanbando League', country: 'Corea del Sur' },
+  aLeagueMen: { name: 'Southern Cross League', country: 'Australia' },
+  southAfricaPSL: { name: 'Veld League', country: 'Sudáfrica' }
 };
 
 // Mapping: Firestore league ID → { array, enrich? }
@@ -325,6 +359,13 @@ const LEAGUE_MAP = {
   'ekstraklasa':        { arr: () => EKSTRAKLASA_TEAMS },
   'eersteDivisie':      { arr: () => EERSTE_DIVISIE_TEAMS },
   'ligaPortugal2':      { arr: () => LIGA_PORTUGAL_2_TEAMS },
+  'russiaPremier':      { arr: () => RUSSIA_PREMIER_TEAMS },
+  'ukrainePremier':     { arr: () => UKRAINE_PREMIER_TEAMS },
+  'romaniaSuperliga':   { arr: () => ROMANIA_SUPERLIGA_TEAMS },
+  'hungaryNBI':         { arr: () => HUNGARY_NBI_TEAMS },
+  'kLeague1':           { arr: () => K_LEAGUE_1_TEAMS },
+  'aLeagueMen':         { arr: () => A_LEAGUE_MEN_TEAMS },
+  'southAfricaPSL':     { arr: () => SOUTH_AFRICA_PSL_TEAMS },
   'segunda-rfef':       { arr: () => SEGUNDA_RFEF_TEAMS },
 };
 
@@ -479,6 +520,15 @@ export default {
   // Second divisions
   EERSTE_DIVISIE_TEAMS,
   LIGA_PORTUGAL_2_TEAMS,
+  // Eastern Europe
+  RUSSIA_PREMIER_TEAMS,
+  UKRAINE_PREMIER_TEAMS,
+  ROMANIA_SUPERLIGA_TEAMS,
+  HUNGARY_NBI_TEAMS,
+  // Rest of World additions
+  K_LEAGUE_1_TEAMS,
+  A_LEAGUE_MEN_TEAMS,
+  SOUTH_AFRICA_PSL_TEAMS,
   LEAGUES,
   freeAgents
 };

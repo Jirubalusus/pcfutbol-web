@@ -1,0 +1,2102 @@
+[
+  {
+    "id": "melbourne-city",
+    "name": "Southern Skyline FC",
+    "shortName": "SKY",
+    "city": "Melbourne",
+    "colors": {
+      "primary": "#6CABDD",
+      "secondary": "#000000"
+    },
+    "stadium": "AAMI Arena",
+    "stadiumCapacity": 30050,
+    "reputation": 4,
+    "players": [
+      {
+        "name": "André Rodrigues",
+        "position": "POR",
+        "age": 25,
+        "overall": 77,
+        "nationality": "Brasil",
+        "value": 1680000
+      },
+      {
+        "name": "Lachlan Kennedy",
+        "position": "POR",
+        "age": 31,
+        "overall": 68,
+        "nationality": "Australia",
+        "value": 224000
+      },
+      {
+        "name": "Valentin Roux",
+        "position": "DFC",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Francia",
+        "value": 224000
+      },
+      {
+        "name": "Kai Jones",
+        "position": "DFC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Ryan Hall",
+        "position": "DFC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Liam Dooley",
+        "position": "DFC",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Australia",
+        "value": 224000
+      },
+      {
+        "name": "Connor Thompson",
+        "position": "LB",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Australia",
+        "value": 224000
+      },
+      {
+        "name": "Kai Hall",
+        "position": "RB",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Australia",
+        "value": 224000
+      },
+      {
+        "name": "Harry Burns",
+        "position": "MCD",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Jamie Brown",
+        "position": "MCD",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Beau Jones",
+        "position": "MC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Callum Thompson",
+        "position": "MC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Liam Burns",
+        "position": "MC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Cameron Mackenzie",
+        "position": "MCO",
+        "age": 22,
+        "overall": 75,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Harry Murphy",
+        "position": "EI",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Connor Taylor",
+        "position": "ED",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Callum Hughes",
+        "position": "DC",
+        "age": 20,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Lachlan Smith",
+        "position": "DC",
+        "age": 32,
+        "overall": 72,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Connor Harrison",
+        "position": "DC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Jamie Kennedy",
+        "position": "MP",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Australia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "melbourne-victory",
+    "name": "Big V FC",
+    "shortName": "BGV",
+    "city": "Melbourne",
+    "colors": {
+      "primary": "#04143E",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Victory Arena",
+    "stadiumCapacity": 30050,
+    "reputation": 4,
+    "players": [
+      {
+        "name": "Lachlan Kennedy",
+        "position": "POR",
+        "age": 28,
+        "overall": 77,
+        "nationality": "Australia",
+        "value": 1680000
+      },
+      {
+        "name": "Kieran Williams",
+        "position": "POR",
+        "age": 29,
+        "overall": 67,
+        "nationality": "Australia",
+        "value": 224000
+      },
+      {
+        "name": "Vinícius Martins",
+        "position": "DFC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Dylan Brown",
+        "position": "DFC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Jamie Walker",
+        "position": "DFC",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Adrien Robert",
+        "position": "DFC",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Francia",
+        "value": 420000
+      },
+      {
+        "name": "Lachlan Jones",
+        "position": "LB",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Cameron Dooley",
+        "position": "RB",
+        "age": 26,
+        "overall": 74,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Jayden Campbell",
+        "position": "MCD",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Jamie Burns",
+        "position": "MCD",
+        "age": 30,
+        "overall": 74,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Kieran Wilson",
+        "position": "MC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Ryota Ito",
+        "position": "MC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Japón",
+        "value": 420000
+      },
+      {
+        "name": "Dylan Ryan",
+        "position": "MC",
+        "age": 23,
+        "overall": 75,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Beau Mackenzie",
+        "position": "MCO",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Diogo Santos",
+        "position": "EI",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Jack Thompson",
+        "position": "ED",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Nathan Taylor",
+        "position": "DC",
+        "age": 24,
+        "overall": 77,
+        "nationality": "Australia",
+        "value": 1680000
+      },
+      {
+        "name": "Jamie Dooley",
+        "position": "DC",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Carlos López",
+        "position": "DC",
+        "age": 19,
+        "overall": 73,
+        "nationality": "España",
+        "value": 840000
+      },
+      {
+        "name": "Jayden Kennedy",
+        "position": "MP",
+        "age": 32,
+        "overall": 66,
+        "nationality": "Australia",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "sydney-fc",
+    "name": "Sky Blues FC",
+    "shortName": "SKB",
+    "city": "Sídney",
+    "colors": {
+      "primary": "#6CABDD",
+      "secondary": "#04143E"
+    },
+    "stadium": "Harbour Arena",
+    "stadiumCapacity": 42512,
+    "reputation": 4,
+    "players": [
+      {
+        "name": "Kieran Wilson",
+        "position": "POR",
+        "age": 28,
+        "overall": 77,
+        "nationality": "Australia",
+        "value": 1680000
+      },
+      {
+        "name": "Nathan Hall",
+        "position": "POR",
+        "age": 33,
+        "overall": 68,
+        "nationality": "Australia",
+        "value": 224000
+      },
+      {
+        "name": "Jayden Thompson",
+        "position": "DFC",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Australia",
+        "value": 224000
+      },
+      {
+        "name": "Kieran Smith",
+        "position": "DFC",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Australia",
+        "value": 224000
+      },
+      {
+        "name": "Ryan Campbell",
+        "position": "DFC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Jayden Mackenzie",
+        "position": "DFC",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Australia",
+        "value": 224000
+      },
+      {
+        "name": "Harry Walker",
+        "position": "LB",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Australia",
+        "value": 224000
+      },
+      {
+        "name": "Nathan Ryan",
+        "position": "RB",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Yuma Nakamura",
+        "position": "MCD",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Japón",
+        "value": 420000
+      },
+      {
+        "name": "Nathan Fitzgerald",
+        "position": "MCD",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Jack Thompson",
+        "position": "MC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Pedro Barbosa",
+        "position": "MC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Kieran Walker",
+        "position": "MC",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Liam Brown",
+        "position": "MCO",
+        "age": 24,
+        "overall": 76,
+        "nationality": "Australia",
+        "value": 1680000
+      },
+      {
+        "name": "Jack Williams",
+        "position": "EI",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Blake Kennedy",
+        "position": "ED",
+        "age": 24,
+        "overall": 75,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "David Sánchez",
+        "position": "DC",
+        "age": 32,
+        "overall": 77,
+        "nationality": "España",
+        "value": 1680000
+      },
+      {
+        "name": "Brandon Smith",
+        "position": "DC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Dylan Taylor",
+        "position": "DC",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Lachlan Hall",
+        "position": "MP",
+        "age": 21,
+        "overall": 67,
+        "nationality": "Australia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "western-sydney",
+    "name": "West Wanderers FC",
+    "shortName": "WWN",
+    "city": "Parramatta",
+    "colors": {
+      "primary": "#D50000",
+      "secondary": "#000000"
+    },
+    "stadium": "CommBank Arena",
+    "stadiumCapacity": 30000,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Kieran Hughes",
+        "position": "POR",
+        "age": 29,
+        "overall": 74,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Kieran Clarke",
+        "position": "POR",
+        "age": 33,
+        "overall": 68,
+        "nationality": "Australia",
+        "value": 224000
+      },
+      {
+        "name": "Haru Kato",
+        "position": "DFC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Japón",
+        "value": 420000
+      },
+      {
+        "name": "Connor Taylor",
+        "position": "DFC",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Takumi Yoshida",
+        "position": "DFC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Japón",
+        "value": 420000
+      },
+      {
+        "name": "João Costa",
+        "position": "DFC",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Jayden Ryan",
+        "position": "LB",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Kai Wilson",
+        "position": "RB",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Australia",
+        "value": 224000
+      },
+      {
+        "name": "Jack Walker",
+        "position": "MCD",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Nathan Kennedy",
+        "position": "MCD",
+        "age": 22,
+        "overall": 74,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Benjamin Bertrand",
+        "position": "MC",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Francia",
+        "value": 420000
+      },
+      {
+        "name": "Kenta Nakamura",
+        "position": "MC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Japón",
+        "value": 420000
+      },
+      {
+        "name": "Connor Ryan",
+        "position": "MC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Liam Thompson",
+        "position": "MCO",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Ryan Fitzgerald",
+        "position": "EI",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Connor Thompson",
+        "position": "ED",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Riley Mackenzie",
+        "position": "DC",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Liam Campbell",
+        "position": "DC",
+        "age": 21,
+        "overall": 68,
+        "nationality": "Australia",
+        "value": 224000
+      },
+      {
+        "name": "Cameron Brown",
+        "position": "DC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Kieran Kennedy",
+        "position": "MP",
+        "age": 23,
+        "overall": 66,
+        "nationality": "Australia",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "brisbane-roar",
+    "name": "Brisbane Lions FC",
+    "shortName": "BRL",
+    "city": "Brisbane",
+    "colors": {
+      "primary": "#FF7F00",
+      "secondary": "#000000"
+    },
+    "stadium": "Suncorp Arena",
+    "stadiumCapacity": 52500,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Connor Wilson",
+        "position": "POR",
+        "age": 29,
+        "overall": 74,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Harry Walker",
+        "position": "POR",
+        "age": 26,
+        "overall": 66,
+        "nationality": "Australia",
+        "value": 112000
+      },
+      {
+        "name": "Ryan Smith",
+        "position": "DFC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Iván López",
+        "position": "DFC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "España",
+        "value": 840000
+      },
+      {
+        "name": "Adrien Moreau",
+        "position": "DFC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Francia",
+        "value": 420000
+      },
+      {
+        "name": "Jack Williams",
+        "position": "DFC",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Kai Campbell",
+        "position": "LB",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Kai Mackenzie",
+        "position": "RB",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Jamie Mackenzie",
+        "position": "MCD",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Brandon Ryan",
+        "position": "MCD",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Callum Ryan",
+        "position": "MC",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Jayden Smith",
+        "position": "MC",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Ryota Yoshida",
+        "position": "MC",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Japón",
+        "value": 420000
+      },
+      {
+        "name": "Brandon Taylor",
+        "position": "MCO",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Héctor Ruiz",
+        "position": "EI",
+        "age": 28,
+        "overall": 72,
+        "nationality": "España",
+        "value": 420000
+      },
+      {
+        "name": "Liam Clarke",
+        "position": "ED",
+        "age": 24,
+        "overall": 74,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Haru Kobayashi",
+        "position": "DC",
+        "age": 29,
+        "overall": 74,
+        "nationality": "Japón",
+        "value": 840000
+      },
+      {
+        "name": "Héctor Fernández",
+        "position": "DC",
+        "age": 28,
+        "overall": 68,
+        "nationality": "España",
+        "value": 224000
+      },
+      {
+        "name": "Brandon Fitzgerald",
+        "position": "DC",
+        "age": 20,
+        "overall": 68,
+        "nationality": "Australia",
+        "value": 224000
+      },
+      {
+        "name": "Riley Dooley",
+        "position": "MP",
+        "age": 29,
+        "overall": 68,
+        "nationality": "Australia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "adelaide-united",
+    "name": "Adelaide Reds FC",
+    "shortName": "ADR",
+    "city": "Adelaida",
+    "colors": {
+      "primary": "#D50000",
+      "secondary": "#000000"
+    },
+    "stadium": "Coopers Arena",
+    "stadiumCapacity": 16500,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Blake Harrison",
+        "position": "POR",
+        "age": 29,
+        "overall": 76,
+        "nationality": "Australia",
+        "value": 1680000
+      },
+      {
+        "name": "Brandon Clarke",
+        "position": "POR",
+        "age": 24,
+        "overall": 68,
+        "nationality": "Australia",
+        "value": 224000
+      },
+      {
+        "name": "Jack Harrison",
+        "position": "DFC",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Australia",
+        "value": 224000
+      },
+      {
+        "name": "Jayden Burns",
+        "position": "DFC",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Igor Silva",
+        "position": "DFC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Blake Hughes",
+        "position": "DFC",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Connor Dooley",
+        "position": "LB",
+        "age": 21,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Brandon Brown",
+        "position": "RB",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Beau Smith",
+        "position": "MCD",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Pablo Pérez",
+        "position": "MCD",
+        "age": 25,
+        "overall": 72,
+        "nationality": "España",
+        "value": 420000
+      },
+      {
+        "name": "Harry Clarke",
+        "position": "MC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Dylan Murphy",
+        "position": "MC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Connor Murphy",
+        "position": "MC",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Samuel Navarro",
+        "position": "MCO",
+        "age": 28,
+        "overall": 74,
+        "nationality": "España",
+        "value": 840000
+      },
+      {
+        "name": "Connor Campbell",
+        "position": "EI",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Mario Rodríguez",
+        "position": "ED",
+        "age": 31,
+        "overall": 73,
+        "nationality": "España",
+        "value": 840000
+      },
+      {
+        "name": "Connor Hughes",
+        "position": "DC",
+        "age": 20,
+        "overall": 76,
+        "nationality": "Australia",
+        "value": 1680000
+      },
+      {
+        "name": "Riley Taylor",
+        "position": "DC",
+        "age": 20,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Nathan Brown",
+        "position": "DC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Ryan Kennedy",
+        "position": "MP",
+        "age": 31,
+        "overall": 67,
+        "nationality": "Australia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "perth-glory",
+    "name": "Western Glory FC",
+    "shortName": "WSG",
+    "city": "Perth",
+    "colors": {
+      "primary": "#6B1B9A",
+      "secondary": "#FFD500"
+    },
+    "stadium": "HBF Arena",
+    "stadiumCapacity": 20500,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Ryan Brown",
+        "position": "POR",
+        "age": 32,
+        "overall": 77,
+        "nationality": "Australia",
+        "value": 1680000
+      },
+      {
+        "name": "Kieran Jones",
+        "position": "POR",
+        "age": 26,
+        "overall": 68,
+        "nationality": "Australia",
+        "value": 224000
+      },
+      {
+        "name": "Oliver Fitzgerald",
+        "position": "DFC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Iker Álvarez",
+        "position": "DFC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "España",
+        "value": 420000
+      },
+      {
+        "name": "Beau Kennedy",
+        "position": "DFC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Kai Clarke",
+        "position": "DFC",
+        "age": 21,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Mitchell Brown",
+        "position": "LB",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Cameron Hall",
+        "position": "RB",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Jayden Taylor",
+        "position": "MCD",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Jayden Williams",
+        "position": "MCD",
+        "age": 29,
+        "overall": 74,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Javier Rodríguez",
+        "position": "MC",
+        "age": 27,
+        "overall": 74,
+        "nationality": "España",
+        "value": 840000
+      },
+      {
+        "name": "Blake Hall",
+        "position": "MC",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Baptiste Garcia",
+        "position": "MC",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Francia",
+        "value": 420000
+      },
+      {
+        "name": "Sergio Álvarez",
+        "position": "MCO",
+        "age": 26,
+        "overall": 71,
+        "nationality": "España",
+        "value": 420000
+      },
+      {
+        "name": "Jamie Fitzgerald",
+        "position": "EI",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Mitchell Thompson",
+        "position": "ED",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Riley Fitzgerald",
+        "position": "DC",
+        "age": 26,
+        "overall": 76,
+        "nationality": "Australia",
+        "value": 1680000
+      },
+      {
+        "name": "Maxime Fournier",
+        "position": "DC",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Francia",
+        "value": 420000
+      },
+      {
+        "name": "Liam Jones",
+        "position": "DC",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Harry Murphy",
+        "position": "MP",
+        "age": 26,
+        "overall": 68,
+        "nationality": "Australia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "central-coast",
+    "name": "Coast Mariners FC",
+    "shortName": "CCM",
+    "city": "Gosford",
+    "colors": {
+      "primary": "#FFD500",
+      "secondary": "#002A5C"
+    },
+    "stadium": "Gosford Arena",
+    "stadiumCapacity": 20059,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Ronaldo Rodrigues",
+        "position": "POR",
+        "age": 31,
+        "overall": 75,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Jamie Brown",
+        "position": "POR",
+        "age": 25,
+        "overall": 67,
+        "nationality": "Australia",
+        "value": 224000
+      },
+      {
+        "name": "Jamie Fitzgerald",
+        "position": "DFC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Callum Hall",
+        "position": "DFC",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Australia",
+        "value": 224000
+      },
+      {
+        "name": "Callum Murphy",
+        "position": "DFC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Connor Kennedy",
+        "position": "DFC",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Kai Ryan",
+        "position": "LB",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Jayden Walker",
+        "position": "RB",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Liam Hall",
+        "position": "MCD",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Clément Martin",
+        "position": "MCD",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Francia",
+        "value": 420000
+      },
+      {
+        "name": "Beau Fitzgerald",
+        "position": "MC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Kieran Hall",
+        "position": "MC",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Blake Williams",
+        "position": "MC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Harry Dooley",
+        "position": "MCO",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Mitchell Clarke",
+        "position": "EI",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Brandon Taylor",
+        "position": "ED",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Beau Wilson",
+        "position": "DC",
+        "age": 28,
+        "overall": 76,
+        "nationality": "Australia",
+        "value": 1680000
+      },
+      {
+        "name": "Liam Dooley",
+        "position": "DC",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Lachlan Murphy",
+        "position": "DC",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Australia",
+        "value": 224000
+      },
+      {
+        "name": "Thomas Michel",
+        "position": "MP",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Francia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "newcastle-jets",
+    "name": "Hunter Jets FC",
+    "shortName": "HJT",
+    "city": "Newcastle",
+    "colors": {
+      "primary": "#FFD500",
+      "secondary": "#000000"
+    },
+    "stadium": "Hunter Arena",
+    "stadiumCapacity": 33000,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Blake Dooley",
+        "position": "POR",
+        "age": 32,
+        "overall": 74,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Oliver Taylor",
+        "position": "POR",
+        "age": 25,
+        "overall": 68,
+        "nationality": "Australia",
+        "value": 224000
+      },
+      {
+        "name": "Connor Murphy",
+        "position": "DFC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Felipe Cavalcante",
+        "position": "DFC",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Riley Fitzgerald",
+        "position": "DFC",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Beau Clarke",
+        "position": "DFC",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Australia",
+        "value": 224000
+      },
+      {
+        "name": "Cameron Thompson",
+        "position": "LB",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Harry Fitzgerald",
+        "position": "RB",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Jamie Clarke",
+        "position": "MCD",
+        "age": 24,
+        "overall": 74,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Beau Kennedy",
+        "position": "MCD",
+        "age": 21,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Carlos Álvarez",
+        "position": "MC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "España",
+        "value": 840000
+      },
+      {
+        "name": "Jamie Burns",
+        "position": "MC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Connor Walker",
+        "position": "MC",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Jamie Hughes",
+        "position": "MCO",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Connor Mackenzie",
+        "position": "EI",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Nathan Thompson",
+        "position": "ED",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Oliver Wilson",
+        "position": "DC",
+        "age": 31,
+        "overall": 76,
+        "nationality": "Australia",
+        "value": 1680000
+      },
+      {
+        "name": "Dylan Harrison",
+        "position": "DC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Lachlan Brown",
+        "position": "DC",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Harry Taylor",
+        "position": "MP",
+        "age": 21,
+        "overall": 67,
+        "nationality": "Australia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "wellington-phoenix",
+    "name": "Windy City Phoenix FC",
+    "shortName": "WCP",
+    "city": "Wellington",
+    "colors": {
+      "primary": "#FFD500",
+      "secondary": "#000000"
+    },
+    "stadium": "Sky Arena",
+    "stadiumCapacity": 34500,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Jayden Hughes",
+        "position": "POR",
+        "age": 25,
+        "overall": 75,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Kai Taylor",
+        "position": "POR",
+        "age": 27,
+        "overall": 67,
+        "nationality": "Australia",
+        "value": 224000
+      },
+      {
+        "name": "Jamie Wilson",
+        "position": "DFC",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Australia",
+        "value": 224000
+      },
+      {
+        "name": "Cameron Jones",
+        "position": "DFC",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Australia",
+        "value": 224000
+      },
+      {
+        "name": "Lachlan Burns",
+        "position": "DFC",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Cameron Wilson",
+        "position": "DFC",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Alexandre Garcia",
+        "position": "LB",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Francia",
+        "value": 420000
+      },
+      {
+        "name": "Valentin Girard",
+        "position": "RB",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Francia",
+        "value": 420000
+      },
+      {
+        "name": "Pablo González",
+        "position": "MCD",
+        "age": 25,
+        "overall": 72,
+        "nationality": "España",
+        "value": 420000
+      },
+      {
+        "name": "Kai Ryan",
+        "position": "MCD",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Riley Taylor",
+        "position": "MC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Ryan Burns",
+        "position": "MC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Adrián Moreno",
+        "position": "MC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "España",
+        "value": 420000
+      },
+      {
+        "name": "Jack Dooley",
+        "position": "MCO",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Connor Thompson",
+        "position": "EI",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Blake Hughes",
+        "position": "ED",
+        "age": 21,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Callum Fitzgerald",
+        "position": "DC",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Beau Dooley",
+        "position": "DC",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Víctor Ruiz",
+        "position": "DC",
+        "age": 32,
+        "overall": 69,
+        "nationality": "España",
+        "value": 224000
+      },
+      {
+        "name": "Mitchell Walker",
+        "position": "MP",
+        "age": 23,
+        "overall": 66,
+        "nationality": "Australia",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "macarthur-fc",
+    "name": "Bulls FC",
+    "shortName": "BLS",
+    "city": "Campbelltown",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#D50000"
+    },
+    "stadium": "Campbelltown Arena",
+    "stadiumCapacity": 20000,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Nathan Clarke",
+        "position": "POR",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Connor Fitzgerald",
+        "position": "POR",
+        "age": 26,
+        "overall": 67,
+        "nationality": "Australia",
+        "value": 224000
+      },
+      {
+        "name": "Thomas Simon",
+        "position": "DFC",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Francia",
+        "value": 420000
+      },
+      {
+        "name": "Brandon Harrison",
+        "position": "DFC",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Australia",
+        "value": 224000
+      },
+      {
+        "name": "Dylan Campbell",
+        "position": "DFC",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Oliver Hughes",
+        "position": "DFC",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Connor Ryan",
+        "position": "LB",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Australia",
+        "value": 224000
+      },
+      {
+        "name": "Callum Murphy",
+        "position": "RB",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Daniel Serrano",
+        "position": "MCD",
+        "age": 28,
+        "overall": 70,
+        "nationality": "España",
+        "value": 420000
+      },
+      {
+        "name": "Clément Leroy",
+        "position": "MCD",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Francia",
+        "value": 840000
+      },
+      {
+        "name": "Connor Brown",
+        "position": "MC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Liam Taylor",
+        "position": "MC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Ryan Hughes",
+        "position": "MC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Blake Mackenzie",
+        "position": "MCO",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Callum Williams",
+        "position": "EI",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Cameron Smith",
+        "position": "ED",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Lachlan Jones",
+        "position": "DC",
+        "age": 20,
+        "overall": 75,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Antoine Morel",
+        "position": "DC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Francia",
+        "value": 420000
+      },
+      {
+        "name": "Jayden Williams",
+        "position": "DC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Jamie Taylor",
+        "position": "MP",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Australia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "auckland-fc",
+    "name": "Black Knights FC",
+    "shortName": "BKN",
+    "city": "Auckland",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#003DA5"
+    },
+    "stadium": "Go Media Arena",
+    "stadiumCapacity": 25000,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Brandon Williams",
+        "position": "POR",
+        "age": 28,
+        "overall": 74,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Dylan Hall",
+        "position": "POR",
+        "age": 33,
+        "overall": 69,
+        "nationality": "Australia",
+        "value": 224000
+      },
+      {
+        "name": "Beau Murphy",
+        "position": "DFC",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Liam Burns",
+        "position": "DFC",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Australia",
+        "value": 224000
+      },
+      {
+        "name": "Oliver Thompson",
+        "position": "DFC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Riley Fitzgerald",
+        "position": "DFC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Jayden Smith",
+        "position": "LB",
+        "age": 21,
+        "overall": 69,
+        "nationality": "Australia",
+        "value": 224000
+      },
+      {
+        "name": "Óscar Martínez",
+        "position": "RB",
+        "age": 28,
+        "overall": 71,
+        "nationality": "España",
+        "value": 420000
+      },
+      {
+        "name": "Jack Burns",
+        "position": "MCD",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Jack Ryan",
+        "position": "MCD",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Jamie Kennedy",
+        "position": "MC",
+        "age": 21,
+        "overall": 74,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Kai Fitzgerald",
+        "position": "MC",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Mitchell Burns",
+        "position": "MC",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Kai Clarke",
+        "position": "MCO",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Jamie Murphy",
+        "position": "EI",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Nathan Walker",
+        "position": "ED",
+        "age": 30,
+        "overall": 74,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Riley Hall",
+        "position": "DC",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Australia",
+        "value": 840000
+      },
+      {
+        "name": "Nathan Hall",
+        "position": "DC",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Cameron Clarke",
+        "position": "DC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Australia",
+        "value": 420000
+      },
+      {
+        "name": "Hiroshi Suzuki",
+        "position": "MP",
+        "age": 24,
+        "overall": 67,
+        "nationality": "Japón",
+        "value": 224000
+      }
+    ]
+  }
+]

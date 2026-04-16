@@ -25,6 +25,13 @@ const LEAGUES = {
   ekstraklasa: (await import('./leagues-config/ekstraklasa.mjs')).default,
   eersteDivisie: (await import('./leagues-config/eerste-divisie.mjs')).default,
   ligaPortugal2: (await import('./leagues-config/liga-portugal-2.mjs')).default,
+  russiaPremier: (await import('./leagues-config/russia-premier.mjs')).default,
+  ukrainePremier: (await import('./leagues-config/ukraine-premier.mjs')).default,
+  romaniaSuperliga: (await import('./leagues-config/romania-superliga.mjs')).default,
+  hungaryNBI: (await import('./leagues-config/hungary-nbi.mjs')).default,
+  kLeague1: (await import('./leagues-config/south-korea-k1.mjs')).default,
+  aLeagueMen: (await import('./leagues-config/australia-aleague.mjs')).default,
+  southAfricaPSL: (await import('./leagues-config/south-africa-psl.mjs')).default,
 };
 
 // ── Position distribution for a 20-man squad ──
@@ -193,8 +200,48 @@ const POOLS = {
   },
   korea: {
     nationality: 'Corea del Sur',
-    first: ['Min-jun', 'Ji-ho', 'Seo-jun', 'Do-yun', 'Ji-woo', 'Joon-ho', 'Hyun-woo', 'Eun-woo', 'Tae-hyun', 'Sung-min'],
-    last: ['Kim', 'Lee', 'Park', 'Choi', 'Jung', 'Kang', 'Cho', 'Yoon', 'Jang', 'Lim']
+    first: ['Min-jun', 'Ji-ho', 'Seo-jun', 'Do-yun', 'Ji-woo', 'Joon-ho', 'Hyun-woo', 'Eun-woo', 'Tae-hyun', 'Sung-min', 'Sang-ho', 'Dong-hyun', 'Woo-jin', 'Young-soo', 'Jae-sung', 'Hyun-jun', 'Jin-woo', 'Seung-ho', 'Kyung-min', 'Chan-hee'],
+    last: ['Kim', 'Lee', 'Park', 'Choi', 'Jung', 'Kang', 'Cho', 'Yoon', 'Jang', 'Lim', 'Han', 'Oh', 'Shin', 'Seo', 'Kwon', 'Hwang', 'Ahn', 'Song', 'Hong', 'Moon']
+  },
+  russia: {
+    nationality: 'Rusia',
+    first: ['Ivan', 'Dmitri', 'Aleksei', 'Sergei', 'Andrei', 'Nikolai', 'Maksim', 'Vladimir', 'Yegor', 'Roman', 'Artyom', 'Kirill', 'Mikhail', 'Yuri', 'Pavel', 'Anton', 'Denis', 'Vadim', 'Oleg', 'Ilya'],
+    last: ['Ivanov', 'Smirnov', 'Kuznetsov', 'Popov', 'Sokolov', 'Lebedev', 'Kozlov', 'Novikov', 'Morozov', 'Petrov', 'Volkov', 'Solovyov', 'Vasiliev', 'Zaytsev', 'Pavlov', 'Semyonov', 'Golubev', 'Vinogradov', 'Bogdanov', 'Vorobyov']
+  },
+  ukraine: {
+    nationality: 'Ucrania',
+    first: ['Oleh', 'Andriy', 'Volodymyr', 'Serhiy', 'Yuriy', 'Bohdan', 'Mykola', 'Ihor', 'Taras', 'Vasyl', 'Dmytro', 'Maksym', 'Denys', 'Artem', 'Oleksandr', 'Pavlo', 'Roman', 'Yevhen', 'Vitaliy', 'Ruslan'],
+    last: ['Shevchenko', 'Boyko', 'Kovalenko', 'Koval', 'Oliynyk', 'Bondarenko', 'Tkachenko', 'Kravchenko', 'Moroz', 'Melnyk', 'Savchenko', 'Lysenko', 'Marchenko', 'Romanenko', 'Pylypenko', 'Ponomarenko', 'Vasylchenko', 'Demchenko', 'Popovych', 'Lytvynenko']
+  },
+  romania: {
+    nationality: 'Rumania',
+    first: ['Andrei', 'Cristian', 'Ionuț', 'Răzvan', 'Florin', 'Alexandru', 'Mihai', 'Bogdan', 'Vlad', 'Daniel', 'Cosmin', 'Marius', 'Dan', 'Sorin', 'Tudor', 'Valentin', 'Ciprian', 'Octavian', 'Horațiu', 'Nicolae'],
+    last: ['Popescu', 'Ionescu', 'Popa', 'Stoica', 'Constantin', 'Radu', 'Dumitrescu', 'Munteanu', 'Marin', 'Tudor', 'Stan', 'Dinu', 'Nistor', 'Barbu', 'Enache', 'Olteanu', 'Vlad', 'Cristea', 'Stancu', 'Matei']
+  },
+  hungary: {
+    nationality: 'Hungría',
+    first: ['László', 'Zoltán', 'István', 'József', 'Gábor', 'Attila', 'Tamás', 'Péter', 'Bence', 'Dávid', 'Krisztián', 'Ádám', 'Márk', 'Balázs', 'Roland', 'Viktor', 'Mihály', 'Dániel', 'Ferenc', 'Gergő'],
+    last: ['Nagy', 'Kovács', 'Tóth', 'Szabó', 'Horváth', 'Varga', 'Kiss', 'Molnár', 'Németh', 'Farkas', 'Balogh', 'Papp', 'Takács', 'Juhász', 'Lakatos', 'Mészáros', 'Oláh', 'Simon', 'Rácz', 'Fekete']
+  },
+  australia: {
+    nationality: 'Australia',
+    first: ['Jack', 'Riley', 'Jamie', 'Connor', 'Lachlan', 'Liam', 'Jayden', 'Harry', 'Brandon', 'Dylan', 'Mitchell', 'Ryan', 'Kieran', 'Callum', 'Cameron', 'Blake', 'Nathan', 'Beau', 'Kai', 'Oliver'],
+    last: ['Smith', 'Jones', 'Williams', 'Brown', 'Taylor', 'Wilson', 'Thompson', 'Walker', 'Hughes', 'Harrison', 'Burns', 'Kennedy', 'Clarke', 'Hall', 'Ryan', 'Campbell', 'Fitzgerald', 'Murphy', 'Dooley', 'Mackenzie']
+  },
+  southAfrica: {
+    nationality: 'Sudáfrica',
+    first: ['Thabo', 'Sipho', 'Bongani', 'Lungelo', 'Mandla', 'Sizwe', 'Tshepo', 'Teboho', 'Kagiso', 'Lebo', 'Siphelele', 'Mpho', 'Oupa', 'Themba', 'Sibusiso', 'Lucky', 'Njabulo', 'Percy', 'Keagan', 'Lyle'],
+    last: ['Dlamini', 'Nkosi', 'Mthembu', 'Zulu', 'Mokoena', 'Ngcobo', 'Khumalo', 'Mabaso', 'Sithole', 'Mokwena', 'Baloyi', 'Shabalala', 'Mabena', 'Mofokeng', 'Modise', 'Tshabalala', 'Hlatshwayo', 'Radebe', 'Maluleke', 'Jali']
+  },
+  china: {
+    nationality: 'China',
+    first: ['Wei', 'Lei', 'Jun', 'Ming', 'Yang', 'Chen', 'Hao', 'Feng', 'Kai', 'Bo'],
+    last: ['Wang', 'Li', 'Zhang', 'Liu', 'Chen', 'Yang', 'Zhao', 'Huang', 'Zhou', 'Wu']
+  },
+  senegal: {
+    nationality: 'Senegal',
+    first: ['Aliou', 'Ibrahima', 'Cheikh', 'Mamadou', 'Ousmane', 'Pape', 'Modou', 'Abdoulaye', 'Moussa', 'Lamine'],
+    last: ['Diop', 'Ndiaye', 'Sarr', 'Fall', 'Gueye', 'Cissé', 'Diouf', 'Sène', 'Ba', 'Mbaye']
   }
 };
 
@@ -210,6 +257,20 @@ function poolsForLeague(leagueKey) {
       return { home: POOLS.netherlands, imports: [POOLS.brasil, POOLS.africa, POOLS.spain, POOLS.japan] };
     case 'ligaPortugal2':
       return { home: POOLS.portugal, imports: [POOLS.brasil, POOLS.africa, POOLS.spain, POOLS.france] };
+    case 'russiaPremier':
+      return { home: POOLS.russia, imports: [POOLS.ukraine, POOLS.brasil, POOLS.serbia, POOLS.africa] };
+    case 'ukrainePremier':
+      return { home: POOLS.ukraine, imports: [POOLS.brasil, POOLS.serbia, POOLS.africa, POOLS.portugal] };
+    case 'romaniaSuperliga':
+      return { home: POOLS.romania, imports: [POOLS.serbia, POOLS.africa, POOLS.portugal, POOLS.france] };
+    case 'hungaryNBI':
+      return { home: POOLS.hungary, imports: [POOLS.serbia, POOLS.africa, POOLS.brasil, POOLS.france] };
+    case 'kLeague1':
+      return { home: POOLS.korea, imports: [POOLS.brasil, POOLS.japan, POOLS.africa, POOLS.china] };
+    case 'aLeagueMen':
+      return { home: POOLS.australia, imports: [POOLS.spain, POOLS.japan, POOLS.brasil, POOLS.france] };
+    case 'southAfricaPSL':
+      return { home: POOLS.southAfrica, imports: [POOLS.africa, POOLS.senegal, POOLS.brasil, POOLS.portugal] };
     default:
       return { home: POOLS.spain, imports: [POOLS.portugal, POOLS.france] };
   }

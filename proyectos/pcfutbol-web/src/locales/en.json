@@ -2143,7 +2143,14 @@
     "usa": "United States",
     "saudiArabia": "Saudi Arabia",
     "mexico": "Mexico",
-    "japan": "Japan"
+    "japan": "Japan",
+    "southKorea": "South Korea",
+    "australia": "Australia",
+    "southAfrica": "South Africa",
+    "russia": "Russia",
+    "ukraine": "Ukraine",
+    "romania": "Romania",
+    "hungary": "Hungary"
   },
   "simulation": {
     "yourResults": "Your results",
