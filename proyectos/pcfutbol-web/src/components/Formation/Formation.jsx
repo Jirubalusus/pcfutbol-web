@@ -9,6 +9,7 @@ import { translatePosition, posToEN } from '../../game/positionNames';
 import { FORM_STATES } from '../../game/formSystem';
 import { Shield, Scale, Swords, Target, Zap, CheckCircle2, Settings, Heart, AlertTriangle, Building2, TrendingUp, BarChart3, X, Check, HeartPulse, Square, Star, Trophy, Coins, Clock } from 'lucide-react';
 import TeamCrest from '../TeamCrest/TeamCrest';
+import PositionRoleIcon from '../common/PositionRoleIcon';
 import './Formation.scss';
 
 // Posiciones del campo para cada formación
@@ -768,6 +769,7 @@ export default function Formation() {
               {PLAYER_ATTRIBUTES.map(attr => (
                 <span key={attr.key} className="col-attr">{attr.short}</span>
               ))}
+              <span className="col-role">ROL</span>
               <span className="col-pos">{t('common.position').substring(0, 3).toUpperCase()}</span>
             </div>
 
@@ -825,6 +827,7 @@ export default function Formation() {
                       </span>
                     );
                   })}
+                  <span className="col-role"><PositionRoleIcon position={slotPos || player.position} /></span>
                   <span className="col-pos" style={getPositionStyle(slotPos || player.position)}>
                     {translatePosition(slotPos || player.position)}
                   </span>
@@ -886,6 +889,7 @@ export default function Formation() {
                     </span>
                     );
                   })}
+                  <span className="col-role"><PositionRoleIcon position={player.position} /></span>
                   <span className="col-pos" style={getPositionStyle(player.position)}>
                     {translatePosition(player.position)}
                   </span>
@@ -947,6 +951,7 @@ export default function Formation() {
                     </span>
                     );
                   })}
+                  <span className="col-role"><PositionRoleIcon position={player.position} /></span>
                   <span className="col-pos" style={getPositionStyle(player.position)}>
                     {translatePosition(player.position)}
                   </span>
