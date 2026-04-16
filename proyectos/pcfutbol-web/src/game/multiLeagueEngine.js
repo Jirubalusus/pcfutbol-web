@@ -51,7 +51,12 @@ import {
   getMLSTeams,
   getSaudiTeams,
   getLigaMXTeams,
-  getJLeagueTeams
+  getJLeagueTeams,
+  getEliteserienTeams,
+  getAllsvenskanTeams,
+  getEkstraklasaTeams,
+  getEersteDivisieTeams,
+  getLigaPortugal2Teams
 } from '../data/teamsFirestore';
 
 // Configuración de ligas
@@ -367,6 +372,69 @@ export const LEAGUE_CONFIG = {
       europaLeague: [2, 3],
       conference: [4, 5, 6],
       relegation: [15, 16]
+    }
+  },
+  eliteserien: {
+    id: 'eliteserien',
+    name: 'Fjord League',
+    country: 'Noruega',
+    teams: 16,
+    getTeams: getEliteserienTeams,
+    zones: {
+      champions: [1],
+      europaLeague: [2, 3],
+      conference: [4],
+      relegation: [15, 16]
+    }
+  },
+  allsvenskan: {
+    id: 'allsvenskan',
+    name: 'Scandi League',
+    country: 'Suecia',
+    teams: 16,
+    getTeams: getAllsvenskanTeams,
+    zones: {
+      champions: [1],
+      europaLeague: [2, 3],
+      conference: [4],
+      relegation: [15, 16]
+    }
+  },
+  ekstraklasa: {
+    id: 'ekstraklasa',
+    name: 'Vistula League',
+    country: 'Polonia',
+    teams: 18,
+    getTeams: getEkstraklasaTeams,
+    zones: {
+      champions: [1],
+      europaLeague: [2, 3],
+      conference: [4, 5],
+      relegation: [17, 18]
+    }
+  },
+  eersteDivisie: {
+    id: 'eersteDivisie',
+    name: 'Dutch Second',
+    country: 'Países Bajos',
+    teams: 20,
+    getTeams: getEersteDivisieTeams,
+    zones: {
+      promotion: [1, 2],
+      playoff: [3, 4, 5, 6, 7, 8],
+      relegation: [19, 20]
+    }
+  },
+  ligaPortugal2: {
+    id: 'ligaPortugal2',
+    name: 'Liga Lusitana 2',
+    country: 'Portugal',
+    teams: 18,
+    getTeams: getLigaPortugal2Teams,
+    zones: {
+      promotion: [1, 2],
+      playoff: [3, 4, 5, 6],
+      relegation: [17, 18]
     }
   },
 

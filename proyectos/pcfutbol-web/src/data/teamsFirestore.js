@@ -69,6 +69,15 @@ export let SAUDI_TEAMS = [];
 export let LIGA_MX_TEAMS = [];
 export let J_LEAGUE_TEAMS = [];
 
+// Nordic + Central Europe new tier-3 leagues
+export let ELITESERIEN_TEAMS = [];
+export let ALLSVENSKAN_TEAMS = [];
+export let EKSTRAKLASA_TEAMS = [];
+
+// Second divisions for existing European countries
+export let EERSTE_DIVISIE_TEAMS = [];
+export let LIGA_PORTUGAL_2_TEAMS = [];
+
 // South American leagues
 export let ARGENTINA_TEAMS = [];
 export let BRASILEIRAO_TEAMS = [];
@@ -127,6 +136,15 @@ export function getSaudiTeams() { return SAUDI_TEAMS; }
 export function getLigaMXTeams() { return LIGA_MX_TEAMS; }
 export function getJLeagueTeams() { return J_LEAGUE_TEAMS; }
 
+// Nordic + Central Europe getters
+export function getEliteserienTeams() { return ELITESERIEN_TEAMS; }
+export function getAllsvenskanTeams() { return ALLSVENSKAN_TEAMS; }
+export function getEkstraklasaTeams() { return EKSTRAKLASA_TEAMS; }
+
+// Second-division getters
+export function getEersteDivisieTeams() { return EERSTE_DIVISIE_TEAMS; }
+export function getLigaPortugal2Teams() { return LIGA_PORTUGAL_2_TEAMS; }
+
 // South American getters
 export function getArgentinaTeams() { return ARGENTINA_TEAMS; }
 export function getBrasileiraoTeams() { return BRASILEIRAO_TEAMS; }
@@ -162,7 +180,9 @@ async function applyActiveEdition() {
       ARGENTINA_TEAMS, BRASILEIRAO_TEAMS, COLOMBIA_TEAMS, CHILE_TEAMS,
       URUGUAY_TEAMS, ECUADOR_TEAMS, PARAGUAY_TEAMS, PERU_TEAMS,
       BOLIVIA_TEAMS, VENEZUELA_TEAMS,
-      MLS_TEAMS, SAUDI_TEAMS, LIGA_MX_TEAMS, J_LEAGUE_TEAMS
+      MLS_TEAMS, SAUDI_TEAMS, LIGA_MX_TEAMS, J_LEAGUE_TEAMS,
+      ELITESERIEN_TEAMS, ALLSVENSKAN_TEAMS, EKSTRAKLASA_TEAMS,
+      EERSTE_DIVISIE_TEAMS, LIGA_PORTUGAL_2_TEAMS
     ];
 
     let renamedTeams = 0;
@@ -249,7 +269,14 @@ export const LEAGUES = {
   mls: { name: 'Major League Soccer', country: 'USA' },
   saudiPro: { name: 'Saudi Pro League', country: 'Arabia Saudí' },
   ligaMX: { name: 'Liga MX', country: 'México' },
-  jLeague: { name: 'J1 League', country: 'Japón' }
+  jLeague: { name: 'J1 League', country: 'Japón' },
+  // Nordic + Central Europe
+  eliteserien: { name: 'Fjord League', country: 'Noruega' },
+  allsvenskan: { name: 'Scandi League', country: 'Suecia' },
+  ekstraklasa: { name: 'Vistula League', country: 'Polonia' },
+  // Second divisions
+  eersteDivisie: { name: 'Dutch Second', country: 'Países Bajos' },
+  ligaPortugal2: { name: 'Liga Lusitana 2', country: 'Portugal' }
 };
 
 // Mapping: Firestore league ID → { array, enrich? }
@@ -293,6 +320,11 @@ const LEAGUE_MAP = {
   'ligamx':             { arr: () => LIGA_MX_TEAMS },
   'jLeague':            { arr: () => J_LEAGUE_TEAMS },
   'jleague':            { arr: () => J_LEAGUE_TEAMS },
+  'eliteserien':        { arr: () => ELITESERIEN_TEAMS },
+  'allsvenskan':        { arr: () => ALLSVENSKAN_TEAMS },
+  'ekstraklasa':        { arr: () => EKSTRAKLASA_TEAMS },
+  'eersteDivisie':      { arr: () => EERSTE_DIVISIE_TEAMS },
+  'ligaPortugal2':      { arr: () => LIGA_PORTUGAL_2_TEAMS },
   'segunda-rfef':       { arr: () => SEGUNDA_RFEF_TEAMS },
 };
 
@@ -440,6 +472,13 @@ export default {
   SAUDI_TEAMS,
   LIGA_MX_TEAMS,
   J_LEAGUE_TEAMS,
+  // Nordic + Central Europe
+  ELITESERIEN_TEAMS,
+  ALLSVENSKAN_TEAMS,
+  EKSTRAKLASA_TEAMS,
+  // Second divisions
+  EERSTE_DIVISIE_TEAMS,
+  LIGA_PORTUGAL_2_TEAMS,
   LEAGUES,
   freeAgents
 };
