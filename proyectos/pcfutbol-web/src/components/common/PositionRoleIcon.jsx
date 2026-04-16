@@ -105,11 +105,11 @@ export default function PositionRoleIcon({
               fill="rgba(255,255,255,0.045)"
             />
           </pattern>
-          {/* Radial glow for the position ball (yellow) */}
+          {/* Radial glow for the position ball (vivid yellow, high punch) */}
           <radialGradient id={glowId} cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="rgba(255, 213, 74, 0.9)" />
-            <stop offset="60%" stopColor="rgba(255, 213, 74, 0.3)" />
-            <stop offset="100%" stopColor="rgba(255, 213, 74, 0)" />
+            <stop offset="0%" stopColor="rgba(255, 230, 0, 1)" />
+            <stop offset="45%" stopColor="rgba(255, 213, 0, 0.65)" />
+            <stop offset="100%" stopColor="rgba(255, 213, 0, 0)" />
           </radialGradient>
         </defs>
 
@@ -230,18 +230,33 @@ export default function PositionRoleIcon({
           />
         </g>
 
-        {/* Position highlight: yellow ball with glow + dark pip */}
+        {/* Position highlight: vivid yellow ball, halo ring + glow for punch */}
         <g className="pri-marker">
-          <circle cx={dotX} cy={dotY} r="11" fill={`url(#${glowId})`} />
+          <circle cx={dotX} cy={dotY} r="12" fill={`url(#${glowId})`} />
           <circle
             cx={dotX}
             cy={dotY}
-            r="4.4"
-            fill="#ffd54a"
-            stroke="#0a1410"
-            strokeWidth="1"
+            r="5.2"
+            fill="rgba(0,0,0,0.55)"
           />
-          <circle cx={dotX} cy={dotY} r="1.4" fill="#0a1410" />
+          <circle
+            cx={dotX}
+            cy={dotY}
+            r="4.6"
+            fill="#ffe600"
+            stroke="#ffffff"
+            strokeWidth="0.9"
+          />
+          <circle
+            cx={dotX}
+            cy={dotY}
+            r="4.6"
+            fill="none"
+            stroke="#0a1410"
+            strokeWidth="0.45"
+            strokeOpacity="0.85"
+          />
+          <circle cx={dotX} cy={dotY} r="1.3" fill="#0a1410" />
         </g>
       </svg>
     </span>

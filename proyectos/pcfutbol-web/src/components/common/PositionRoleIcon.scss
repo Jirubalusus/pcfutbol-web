@@ -16,6 +16,10 @@
   .pri-marker {
     transform-origin: center;
     animation: pri-pulse 2.4s ease-in-out infinite;
+    filter:
+      drop-shadow(0 0 1.2px rgba(255, 230, 0, 0.95))
+      drop-shadow(0 0 2.5px rgba(255, 213, 0, 0.7))
+      drop-shadow(0 1px 1.5px rgba(0, 0, 0, 0.55));
   }
 
   // Landscape pitch — sizes keep a ~7:5 aspect ratio so tables stay aligned.
@@ -40,9 +44,11 @@
 @keyframes pri-pulse {
   0%, 100% {
     opacity: 1;
+    transform: scale(1);
   }
   50% {
-    opacity: 0.85;
+    opacity: 0.92;
+    transform: scale(1.06);
   }
 }
 
