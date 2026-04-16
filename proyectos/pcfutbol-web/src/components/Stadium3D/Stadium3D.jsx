@@ -19,22 +19,49 @@ const PITCH_W = 105;
 const PITCH_H = 68;
 const LINE_COLOR = '#f2f2f2';
 const LINE_THICK = 0.22;
-const LINE_Y = 0.04;
+
+// Vertical decal stack — each layer is separated by a healthy gap to avoid
+// z-fighting at oblique camera angles. Decals also use negative polygonOffset
+// so the GPU biases them toward the camera, robustly preventing flicker even
+// when two layers share a Y value at a glancing angle.
+const Y_GROUND = 0;
+const Y_MID_GRASS = 0.05;
+const Y_PLAZA = 0.10;
+const Y_PLAZA_BAND = 0.12;
+const Y_ROAD = 0.14;
+const Y_PARKING = 0.16;
+const Y_PITCH_SURROUND = 0.20;
+const Y_PITCH_TRACK = 0.24;
+const Y_PITCH_BASE = 0.28;
+const Y_PITCH_STRIPES = 0.32;
+const LINE_Y = 0.38;
 
 function Line({ size, position }) {
   return (
     <mesh rotation={[-Math.PI / 2, 0, 0]} position={position} receiveShadow>
       <planeGeometry args={size} />
-      <meshStandardMaterial color={LINE_COLOR} roughness={0.6} />
+      <meshStandardMaterial
+        color={LINE_COLOR}
+        roughness={0.6}
+        polygonOffset
+        polygonOffsetFactor={-4}
+        polygonOffsetUnits={-4}
+      />
     </mesh>
   );
 }
 
-function Ring({ inner, outer, position, segments = 64, start = 0, length = Math.PI * 2 }) {
+function Ring({ inner, outer, position, segments = 96, start = 0, length = Math.PI * 2 }) {
   return (
     <mesh rotation={[-Math.PI / 2, 0, 0]} position={position} receiveShadow>
       <ringGeometry args={[inner, outer, segments, 1, start, length]} />
-      <meshStandardMaterial color={LINE_COLOR} roughness={0.6} />
+      <meshStandardMaterial
+        color={LINE_COLOR}
+        roughness={0.6}
+        polygonOffset
+        polygonOffsetFactor={-4}
+        polygonOffsetUnits={-4}
+      />
     </mesh>
   );
 }
@@ -43,7 +70,13 @@ function Spot({ position, radius = 0.25 }) {
   return (
     <mesh rotation={[-Math.PI / 2, 0, 0]} position={position} receiveShadow>
       <circleGeometry args={[radius, 20]} />
-      <meshStandardMaterial color={LINE_COLOR} roughness={0.6} />
+      <meshStandardMaterial
+        color={LINE_COLOR}
+        roughness={0.6}
+        polygonOffset
+        polygonOffsetFactor={-5}
+        polygonOffsetUnits={-5}
+      />
     </mesh>
   );
 }
@@ -200,30 +233,54 @@ function Pitch({ grassCondition = 100 }) {
   return (
     <group>
       {/* Grass surround (slightly larger, darker) */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.002, 0]} receiveShadow>
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, Y_PITCH_SURROUND, 0]} receiveShadow>
         <planeGeometry args={[PITCH_W + 14, PITCH_H + 14]} />
-        <meshStandardMaterial color={edgeColor} roughness={0.95} />
+        <meshStandardMaterial
+          color={edgeColor}
+          roughness={0.95}
+          polygonOffset
+          polygonOffsetFactor={-1}
+          polygonOffsetUnits={-1}
+        />
       </mesh>
       {/* Dirt track (athletics-style margin) */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.005, 0]} receiveShadow>
-        <ringGeometry args={[Math.hypot(PITCH_W / 2, PITCH_H / 2) + 3, Math.hypot(PITCH_W / 2, PITCH_H / 2) + 7, 48]} />
-        <meshStandardMaterial color="#9c6b3a" roughness={0.95} />
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, Y_PITCH_TRACK, 0]} receiveShadow>
+        <ringGeometry args={[Math.hypot(PITCH_W / 2, PITCH_H / 2) + 3, Math.hypot(PITCH_W / 2, PITCH_H / 2) + 7, 96]} />
+        <meshStandardMaterial
+          color="#9c6b3a"
+          roughness={0.95}
+          polygonOffset
+          polygonOffsetFactor={-2}
+          polygonOffsetUnits={-2}
+        />
       </mesh>
       {/* Pitch base */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.01, 0]} receiveShadow>
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, Y_PITCH_BASE, 0]} receiveShadow>
         <planeGeometry args={[PITCH_W, PITCH_H]} />
-        <meshStandardMaterial color={baseColor} roughness={0.9} />
+        <meshStandardMaterial
+          color={baseColor}
+          roughness={0.9}
+          polygonOffset
+          polygonOffsetFactor={-2}
+          polygonOffsetUnits={-2}
+        />
       </mesh>
       {/* Mow stripes */}
       {stripes.map((s, i) => (
         <mesh
           key={i}
           rotation={[-Math.PI / 2, 0, 0]}
-          position={[s.x, 0.018, 0]}
+          position={[s.x, Y_PITCH_STRIPES, 0]}
           receiveShadow
         >
           <planeGeometry args={[s.w, PITCH_H]} />
-          <meshStandardMaterial color={s.color} roughness={0.95} />
+          <meshStandardMaterial
+            color={s.color}
+            roughness={0.95}
+            polygonOffset
+            polygonOffsetFactor={-3}
+            polygonOffsetUnits={-3}
+          />
         </mesh>
       ))}
       <FieldMarkings />
@@ -269,9 +326,10 @@ function SeatedStand({
         <boxGeometry args={[width, 1.8, 0.5]} />
         <meshStandardMaterial color="#1a1a1a" roughness={0.9} />
       </mesh>
-      {/* Advertising boards */}
-      <mesh position={[0, 0.55, 0.28]} castShadow>
-        <boxGeometry args={[width * 0.98, 1.1, 0.06]} />
+      {/* Advertising boards — placed in front of the concourse wall with a
+          healthy gap so its back face never collides with the wall's front. */}
+      <mesh position={[0, 0.55, 0.38]} castShadow>
+        <boxGeometry args={[width * 0.98, 1.1, 0.08]} />
         <meshStandardMaterial
           color="#2b2b2b"
           emissive="#4a5e9e"
@@ -454,8 +512,9 @@ function House({ position, color, roofColor, height = 6, width = 8, depth = 8, r
         <coneGeometry args={[Math.max(width, depth) * 0.72, 2.6, 4]} />
         <meshStandardMaterial color={roofColor} roughness={0.8} />
       </mesh>
-      {/* Windows suggestion (emissive stripes) */}
-      <mesh position={[0, height * 0.55, depth / 2 + 0.01]}>
+      {/* Windows suggestion (emissive stripes) — sit clearly in front of the
+          facade with polygonOffset to prevent flicker at grazing angles. */}
+      <mesh position={[0, height * 0.55, depth / 2 + 0.06]}>
         <planeGeometry args={[width * 0.72, height * 0.35]} />
         <meshStandardMaterial
           color="#2a2d3a"
@@ -463,6 +522,9 @@ function House({ position, color, roofColor, height = 6, width = 8, depth = 8, r
           emissiveIntensity={0.35}
           roughness={0.25}
           metalness={0.3}
+          polygonOffset
+          polygonOffsetFactor={-2}
+          polygonOffsetUnits={-2}
         />
       </mesh>
     </group>
@@ -481,9 +543,10 @@ function Apartment({ position, color, height = 18, width = 10, depth = 10, rotat
         <boxGeometry args={[width + 0.4, 0.6, depth + 0.4]} />
         <meshStandardMaterial color={shade(color, 0.5)} roughness={0.9} />
       </mesh>
-      {/* Window grid - emissive stripes */}
+      {/* Window grid - emissive stripes, sit in front of the facade with
+          polygonOffset so they never z-fight with the building body. */}
       {[-1, 1].map((side) => (
-        <mesh key={side} position={[0, height / 2, (depth / 2 + 0.01) * side]}>
+        <mesh key={side} position={[0, height / 2, (depth / 2 + 0.08) * side]}>
           <planeGeometry args={[width * 0.85, height * 0.8]} />
           <meshStandardMaterial
             color="#1a1f2e"
@@ -491,6 +554,9 @@ function Apartment({ position, color, height = 18, width = 10, depth = 10, rotat
             emissiveIntensity={0.22}
             roughness={0.2}
             metalness={0.4}
+            polygonOffset
+            polygonOffsetFactor={-2}
+            polygonOffsetUnits={-2}
           />
         </mesh>
       ))}
@@ -592,54 +658,98 @@ function Surroundings({ stadiumRadius = 80 }) {
   return (
     <group>
       {/* Perimeter concourse / plaza (asphalt ring around the stadium) */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.003, 0]} receiveShadow>
-        <ringGeometry args={[stadiumRadius + 2, stadiumRadius + 28, 48]} />
-        <meshStandardMaterial color="#3a3d42" roughness={0.95} />
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, Y_PLAZA, 0]} receiveShadow>
+        <ringGeometry args={[stadiumRadius + 2, stadiumRadius + 28, 96]} />
+        <meshStandardMaterial
+          color="#3a3d42"
+          roughness={0.95}
+          polygonOffset
+          polygonOffsetFactor={-1}
+          polygonOffsetUnits={-1}
+        />
       </mesh>
-      {/* Plaza tile pattern hints (lighter ring) */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.004, 0]} receiveShadow>
-        <ringGeometry args={[stadiumRadius + 14, stadiumRadius + 16, 48]} />
-        <meshStandardMaterial color="#6a6d72" roughness={0.9} />
+      {/* Plaza tile pattern hints (lighter ring) — sits on top of the plaza,
+          separated in Y and pushed forward with polygonOffset so it never
+          z-fights with the asphalt ring below. */}
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, Y_PLAZA_BAND, 0]} receiveShadow>
+        <ringGeometry args={[stadiumRadius + 14, stadiumRadius + 16, 96]} />
+        <meshStandardMaterial
+          color="#6a6d72"
+          roughness={0.9}
+          polygonOffset
+          polygonOffsetFactor={-3}
+          polygonOffsetUnits={-3}
+        />
       </mesh>
       {/* Access road (wide asphalt strip) */}
       <mesh
         rotation={[-Math.PI / 2, 0, 0]}
-        position={[0, 0.004, -(stadiumRadius + 55)]}
+        position={[0, Y_ROAD, -(stadiumRadius + 55)]}
         receiveShadow
       >
         <planeGeometry args={[260, 12]} />
-        <meshStandardMaterial color="#2e3136" roughness={0.95} />
+        <meshStandardMaterial
+          color="#2e3136"
+          roughness={0.95}
+          polygonOffset
+          polygonOffsetFactor={-2}
+          polygonOffsetUnits={-2}
+        />
       </mesh>
       <mesh
         rotation={[-Math.PI / 2, 0, 0]}
-        position={[0, 0.004, stadiumRadius + 55]}
+        position={[0, Y_ROAD, stadiumRadius + 55]}
         receiveShadow
       >
         <planeGeometry args={[260, 12]} />
-        <meshStandardMaterial color="#2e3136" roughness={0.95} />
+        <meshStandardMaterial
+          color="#2e3136"
+          roughness={0.95}
+          polygonOffset
+          polygonOffsetFactor={-2}
+          polygonOffsetUnits={-2}
+        />
       </mesh>
       <mesh
         rotation={[-Math.PI / 2, 0, 0]}
-        position={[-(stadiumRadius + 55), 0.004, 0]}
+        position={[-(stadiumRadius + 55), Y_ROAD, 0]}
         receiveShadow
       >
         <planeGeometry args={[12, 260]} />
-        <meshStandardMaterial color="#2e3136" roughness={0.95} />
+        <meshStandardMaterial
+          color="#2e3136"
+          roughness={0.95}
+          polygonOffset
+          polygonOffsetFactor={-2}
+          polygonOffsetUnits={-2}
+        />
       </mesh>
       <mesh
         rotation={[-Math.PI / 2, 0, 0]}
-        position={[stadiumRadius + 55, 0.004, 0]}
+        position={[stadiumRadius + 55, Y_ROAD, 0]}
         receiveShadow
       >
         <planeGeometry args={[12, 260]} />
-        <meshStandardMaterial color="#2e3136" roughness={0.95} />
+        <meshStandardMaterial
+          color="#2e3136"
+          roughness={0.95}
+          polygonOffset
+          polygonOffsetFactor={-2}
+          polygonOffsetUnits={-2}
+        />
       </mesh>
 
       {/* Parking lot (north side) */}
-      <group position={[-60, 0.005, -(stadiumRadius + 40)]}>
+      <group position={[-60, Y_PARKING, -(stadiumRadius + 40)]}>
         <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
           <planeGeometry args={[70, 30]} />
-          <meshStandardMaterial color="#44474c" roughness={0.95} />
+          <meshStandardMaterial
+            color="#44474c"
+            roughness={0.95}
+            polygonOffset
+            polygonOffsetFactor={-2}
+            polygonOffsetUnits={-2}
+          />
         </mesh>
         {/* Parked car blobs */}
         {Array.from({ length: 18 }).map((_, i) => {
@@ -863,9 +973,10 @@ export default function Stadium3D({ level = 0, naming = null, grassCondition = 1
       }}
     >
       <Canvas
-        camera={{ position: [130, 85, 160], fov: 42 }}
+        camera={{ position: [130, 85, 160], fov: 42, near: 1, far: 1800 }}
         shadows
         dpr={[1, 1.6]}
+        gl={{ logarithmicDepthBuffer: true, antialias: true, powerPreference: 'high-performance' }}
       >
         {/* Sky + atmospheric fog for depth */}
         <Sky
@@ -900,24 +1011,35 @@ export default function Stadium3D({ level = 0, naming = null, grassCondition = 1
         />
 
         {/* Ground plane — extends to the horizon with grass tone */}
-        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]} receiveShadow>
+        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, Y_GROUND, 0]} receiveShadow>
           <planeGeometry args={[1600, 1600]} />
           <meshStandardMaterial color="#6f8a4c" roughness={0.95} />
         </mesh>
-        {/* Grass mid-ring */}
-        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.001, 0]} receiveShadow>
-          <ringGeometry args={[120, 300, 48]} />
-          <meshStandardMaterial color="#7a9a58" roughness={0.95} />
+        {/* Grass mid-ring — lifted well above the ground with polygonOffset
+            so it never z-fights with the infinite ground plane below. */}
+        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, Y_MID_GRASS, 0]} receiveShadow>
+          <ringGeometry args={[120, 300, 96]} />
+          <meshStandardMaterial
+            color="#7a9a58"
+            roughness={0.95}
+            polygonOffset
+            polygonOffsetFactor={-1}
+            polygonOffsetUnits={-1}
+          />
         </mesh>
 
         <Stadium level={level} naming={naming} grassCondition={grassCondition} />
 
+        {/* ContactShadows — sits below every decal layer with depthWrite off,
+            so it only darkens the base ground outside the stadium footprint
+            and never competes with the stacked pitch/plaza decals above. */}
         <ContactShadows
-          position={[0, 0.015, 0]}
-          opacity={0.45}
-          scale={320}
+          position={[0, Y_GROUND + 0.01, 0]}
+          opacity={0.4}
+          scale={240}
           blur={2.4}
-          far={60}
+          far={80}
+          frames={1}
         />
 
         <OrbitControls
