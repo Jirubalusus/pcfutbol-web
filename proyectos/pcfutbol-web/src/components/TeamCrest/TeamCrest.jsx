@@ -1,5 +1,7 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import teamColors from '../../data/teamColors.json';
+import { getActiveEditionId } from '../../data/editions/editionService';
+import { getEditionTeamAsset, normalizeTeamAssetKey } from '../../data/editions/editionAssetsService';
 import './TeamCrest.scss';
 
 function hashCode(str) {
@@ -12,6 +14,7 @@ function hashCode(str) {
 
 const FALLBACK_COLORS = ['#e63946','#457b9d','#2a9d8f','#e9c46a','#f4a261','#264653','#6a4c93','#1982c4'];
 const PATTERNS = ['solid','stripes','half','horiz','diagonal'];
+const officialCrestCache = new Map();
 
 function ShieldPath() {
   return (
@@ -80,12 +83,15 @@ function PatternFill({ pattern, primary, secondary }) {
           <circle cx="50" cy="55" r="28" fill={secondary} />
         </>
       );
-    default: // solid
+    default:
       return <rect x="0" y="0" width="100" height="120" fill={primary} />;
   }
 }
 
 export default function TeamCrest({ teamId, size = 40, className = '' }) {
+  const [officialCrestUrl, setOfficialCrestUrl] = useState(null);
+  const editionId = getActiveEditionId();
+
   const { primary, secondary, pattern } = useMemo(() => {
     const colors = teamColors[teamId];
     if (colors) {
@@ -103,7 +109,52 @@ export default function TeamCrest({ teamId, size = 40, className = '' }) {
     };
   }, [teamId]);
 
-  // Use a unique ID combining teamId with a stable suffix to avoid collisions
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadOfficialCrest() {
+      const editionId = getActiveEditionId();
+      const normalizedTeamKey = normalizeTeamAssetKey(teamId);
+      const cacheKey = `${editionId || 'none'}:${normalizedTeamKey}`;
+
+      if (!editionId || !normalizedTeamKey) {
+        setOfficialCrestUrl(null);
+        return;
+      }
+
+      if (officialCrestCache.has(cacheKey)) {
+        setOfficialCrestUrl(officialCrestCache.get(cacheKey));
+        return;
+      }
+
+      const asset = await getEditionTeamAsset(editionId, teamId);
+      const nextUrl = asset?.assetType === 'crest' && asset?.status !== 'archived' ? asset.downloadUrl || null : null;
+      officialCrestCache.set(cacheKey, nextUrl);
+
+      if (!cancelled) {
+        setOfficialCrestUrl(nextUrl);
+      }
+    }
+
+    loadOfficialCrest();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [teamId]);
+
+  if (officialCrestUrl) {
+    return (
+      <img
+        src={officialCrestUrl}
+        alt={teamId}
+        width={size}
+        height={size}
+        className={`team-crest team-crest--official ${className}`.trim()}
+      />
+    );
+  }
+
   const clipId = `shield-clip-${(teamId || 'unknown').replace(/[^a-zA-Z0-9-]/g, '_')}`;
   const gradientId = `shield-grad-${(teamId || 'unknown').replace(/[^a-zA-Z0-9-]/g, '_')}`;
 
@@ -127,17 +178,14 @@ export default function TeamCrest({ teamId, size = 40, className = '' }) {
       </defs>
       <g clipPath={`url(#${clipId})`}>
         <PatternFill pattern={pattern} primary={primary} secondary={secondary} />
-        {/* Gradient overlay for polish */}
         <rect x="0" y="0" width="100" height="120" fill={`url(#${gradientId})`} />
       </g>
-      {/* Shield outline */}
       <path
         d="M5,8 Q5,2 15,2 L85,2 Q95,2 95,8 L95,65 Q95,90 50,118 Q5,90 5,65 Z"
         fill="none"
         stroke="rgba(255,255,255,0.35)"
         strokeWidth="2.5"
       />
-      {/* Inner highlight */}
       <path
         d="M7,9 Q7,4 16,4 L84,4 Q93,4 93,9 L93,64 Q93,88 50,115 Q7,88 7,64 Z"
         fill="none"
