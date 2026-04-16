@@ -26,12 +26,34 @@ const POSITION_COORDS = {
   ST:  { x: 50, y: 12 },
 };
 
+const POSITION_ALIASES = {
+  POR: 'GK',
+  DFC: 'CB',
+  DC: 'ST',
+  MC: 'CM',
+  MCD: 'CDM',
+  MCO: 'CAM',
+  MI: 'LM',
+  MD: 'RM',
+  EI: 'LW',
+  ED: 'RW',
+};
+
+function normalizePosition(position) {
+  if (!position) return 'CM';
+  const raw = String(position).toUpperCase().trim();
+  if (!raw) return 'CM';
+
+  const direct = POSITION_ALIASES[raw] || raw;
+  if (POSITION_COORDS[direct]) return direct;
+
+  const first = raw.split(/[\s,/\-|]/)[0];
+  return POSITION_ALIASES[first] || first;
+}
+
 function resolveCoord(position) {
-  if (!position) return POSITION_COORDS.CM;
-  const key = String(position).toUpperCase().trim();
-  if (POSITION_COORDS[key]) return POSITION_COORDS[key];
-  const first = key.split(/[\s,/\-|]/)[0];
-  return POSITION_COORDS[first] || POSITION_COORDS.CM;
+  const key = normalizePosition(position);
+  return POSITION_COORDS[key] || POSITION_COORDS.CM;
 }
 
 /**
