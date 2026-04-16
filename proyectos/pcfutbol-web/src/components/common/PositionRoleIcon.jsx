@@ -36,8 +36,9 @@ function resolveCoord(position) {
 
 /**
  * Compact football-pitch icon that highlights where a player plays.
- * Renders an SVG with mow stripes, full markings, goals, arcs and a glowing
- * position dot. Designed to be used inside table cells or small panels.
+ * Renders a landscape SVG with mow stripes, full markings, goals, arcs and a
+ * glowing yellow position dot. Designed to be used inside table cells or small
+ * panels.
  */
 export default function PositionRoleIcon({
   position,
@@ -47,18 +48,19 @@ export default function PositionRoleIcon({
 }) {
   const { x, y } = useMemo(() => resolveCoord(position), [position]);
 
-  // Portrait pitch 100 x 140 (wider margin around markings for breathing room).
-  // All marking coords are kept proportional to FIFA-ish pitch ratios scaled down.
-  const W = 100;
-  const H = 140;
-  const MX = 6;   // horizontal margin
-  const MY = 8;   // vertical margin
-  const pw = W - MX * 2; // inner pitch width  = 88
-  const ph = H - MY * 2; // inner pitch height = 124
+  // Landscape pitch 140 x 100. Defending goal on the left, attacking goal on
+  // the right (standard tactical view, attack flows left → right).
+  const W = 140;
+  const H = 100;
+  const MX = 8;
+  const MY = 6;
+  const pw = W - MX * 2; // inner pitch width  = 124
+  const ph = H - MY * 2; // inner pitch height = 88
 
-  // Player dot position (data x/y in 0..100 mapped to inner pitch rect)
-  const dotX = MX + (x / 100) * pw;
-  const dotY = MY + (y / 100) * ph;
+  // Source coords use a portrait frame (y=0 attack/top, y=100 defense/bottom).
+  // Rotate 90° clockwise so that defense → left, attack → right.
+  const dotX = MX + ((100 - y) / 100) * pw;
+  const dotY = MY + (x / 100) * ph;
 
   const gradId = 'pri-grass';
   const stripeId = 'pri-stripes';
@@ -80,34 +82,34 @@ export default function PositionRoleIcon({
         focusable="false"
       >
         <defs>
-          {/* Darker grass base with subtle vertical tone variation */}
-          <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
+          {/* Darker grass base with subtle horizontal tone variation */}
+          <linearGradient id={gradId} x1="0" y1="0" x2="1" y2="0">
             <stop offset="0%" stopColor="#1f6b3a" />
             <stop offset="50%" stopColor="#1a5a32" />
             <stop offset="100%" stopColor="#174f2b" />
           </linearGradient>
-          {/* Seven horizontal mow stripes via repeating pattern */}
+          {/* Seven vertical mow stripes (perpendicular to pitch length) */}
           <pattern
             id={stripeId}
             x={MX}
             y={MY}
-            width={pw}
-            height={ph / 7}
+            width={pw / 7}
+            height={ph}
             patternUnits="userSpaceOnUse"
           >
             <rect
               x="0"
               y="0"
-              width={pw}
-              height={ph / 14}
+              width={pw / 14}
+              height={ph}
               fill="rgba(255,255,255,0.045)"
             />
           </pattern>
-          {/* Radial glow for the position dot */}
+          {/* Radial glow for the position ball (yellow) */}
           <radialGradient id={glowId} cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="rgba(0, 245, 160, 0.85)" />
-            <stop offset="60%" stopColor="rgba(0, 245, 160, 0.25)" />
-            <stop offset="100%" stopColor="rgba(0, 245, 160, 0)" />
+            <stop offset="0%" stopColor="rgba(255, 213, 74, 0.9)" />
+            <stop offset="60%" stopColor="rgba(255, 213, 74, 0.3)" />
+            <stop offset="100%" stopColor="rgba(255, 213, 74, 0)" />
           </radialGradient>
         </defs>
 
@@ -150,43 +152,48 @@ export default function PositionRoleIcon({
         >
           <rect x={MX} y={MY} width={pw} height={ph} />
 
-          {/* Halfway line */}
-          <line x1={MX} y1={MY + ph / 2} x2={MX + pw} y2={MY + ph / 2} />
+          {/* Halfway line (vertical) */}
+          <line x1={MX + pw / 2} y1={MY} x2={MX + pw / 2} y2={MY + ph} />
 
           {/* Center circle + spot */}
-          <circle cx={W / 2} cy={MY + ph / 2} r="9" />
+          <circle cx={MX + pw / 2} cy={MY + ph / 2} r="9" />
 
-          {/* Top penalty box (attacking end) */}
-          <rect x={MX + pw * 0.18} y={MY} width={pw * 0.64} height={ph * 0.14} />
-          {/* Top 6-yard box */}
+          {/* Left penalty box (defending end) */}
           <rect
-            x={MX + pw * 0.34}
-            y={MY}
-            width={pw * 0.32}
-            height={ph * 0.055}
+            x={MX}
+            y={MY + ph * 0.18}
+            width={pw * 0.14}
+            height={ph * 0.64}
           />
-          {/* Top penalty arc (the D) */}
+          {/* Left 6-yard box */}
+          <rect
+            x={MX}
+            y={MY + ph * 0.34}
+            width={pw * 0.055}
+            height={ph * 0.32}
+          />
+          {/* Left penalty arc (D opens to the right) */}
           <path
-            d={`M ${W / 2 - 5.5} ${MY + ph * 0.14} A 6 6 0 0 0 ${W / 2 + 5.5} ${MY + ph * 0.14}`}
+            d={`M ${MX + pw * 0.14} ${MY + ph / 2 - 5.5} A 6 6 0 0 1 ${MX + pw * 0.14} ${MY + ph / 2 + 5.5}`}
           />
 
-          {/* Bottom penalty box (defensive end) */}
+          {/* Right penalty box (attacking end) */}
           <rect
-            x={MX + pw * 0.18}
-            y={MY + ph - ph * 0.14}
-            width={pw * 0.64}
-            height={ph * 0.14}
+            x={MX + pw - pw * 0.14}
+            y={MY + ph * 0.18}
+            width={pw * 0.14}
+            height={ph * 0.64}
           />
-          {/* Bottom 6-yard box */}
+          {/* Right 6-yard box */}
           <rect
-            x={MX + pw * 0.34}
-            y={MY + ph - ph * 0.055}
-            width={pw * 0.32}
-            height={ph * 0.055}
+            x={MX + pw - pw * 0.055}
+            y={MY + ph * 0.34}
+            width={pw * 0.055}
+            height={ph * 0.32}
           />
-          {/* Bottom penalty arc */}
+          {/* Right penalty arc (D opens to the left) */}
           <path
-            d={`M ${W / 2 - 5.5} ${MY + ph - ph * 0.14} A 6 6 0 0 1 ${W / 2 + 5.5} ${MY + ph - ph * 0.14}`}
+            d={`M ${MX + pw - pw * 0.14} ${MY + ph / 2 - 5.5} A 6 6 0 0 0 ${MX + pw - pw * 0.14} ${MY + ph / 2 + 5.5}`}
           />
 
           {/* Corner arcs */}
@@ -198,39 +205,39 @@ export default function PositionRoleIcon({
           />
         </g>
 
-        {/* Spots (solid) */}
+        {/* Spots (solid): center + two penalty spots */}
         <g fill="rgba(255,255,255,0.85)">
-          <circle cx={W / 2} cy={MY + ph / 2} r="0.9" />
-          <circle cx={W / 2} cy={MY + ph * 0.105} r="0.75" />
-          <circle cx={W / 2} cy={MY + ph - ph * 0.105} r="0.75" />
+          <circle cx={MX + pw / 2} cy={MY + ph / 2} r="0.9" />
+          <circle cx={MX + pw * 0.105} cy={MY + ph / 2} r="0.75" />
+          <circle cx={MX + pw - pw * 0.105} cy={MY + ph / 2} r="0.75" />
         </g>
 
-        {/* Goals: small rects just outside touchlines */}
+        {/* Goals: small rects just outside touchlines (left + right) */}
         <g fill="rgba(255,255,255,0.7)" stroke="rgba(255,255,255,0.85)" strokeWidth="0.4">
           <rect
-            x={W / 2 - pw * 0.09}
-            y={MY - 2.2}
-            width={pw * 0.18}
-            height="2.2"
+            x={MX - 2.2}
+            y={MY + ph / 2 - ph * 0.09}
+            width="2.2"
+            height={ph * 0.18}
             rx="0.4"
           />
           <rect
-            x={W / 2 - pw * 0.09}
-            y={MY + ph}
-            width={pw * 0.18}
-            height="2.2"
+            x={MX + pw}
+            y={MY + ph / 2 - ph * 0.09}
+            width="2.2"
+            height={ph * 0.18}
             rx="0.4"
           />
         </g>
 
-        {/* Position highlight: glow + dot + center pip */}
+        {/* Position highlight: yellow ball with glow + dark pip */}
         <g className="pri-marker">
           <circle cx={dotX} cy={dotY} r="11" fill={`url(#${glowId})`} />
           <circle
             cx={dotX}
             cy={dotY}
             r="4.4"
-            fill="#00f5a0"
+            fill="#ffd54a"
             stroke="#0a1410"
             strokeWidth="1"
           />
