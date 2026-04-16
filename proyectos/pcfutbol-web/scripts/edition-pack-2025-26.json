@@ -33928,6 +33928,134 @@
       },
       "name": "Club Sportivo San Lorenzo",
       "city": "Club Sportivo San Lorenzo"
+    },
+    "Altiplano FC": {
+      "name": "Bolívar La Paz",
+      "city": "Bolívar La Paz"
+    },
+    "bolivar-fc": {
+      "name": "Bolívar La Paz",
+      "city": "Bolívar La Paz"
+    },
+    "Tigre Athletic": {
+      "name": "Club Always Ready",
+      "city": "Club Always Ready"
+    },
+    "strongest-athletic": {
+      "name": "Club Always Ready",
+      "city": "Club Always Ready"
+    },
+    "Aviador Real": {
+      "name": "Blooming Santa Cruz",
+      "city": "Blooming Santa Cruz"
+    },
+    "wilstermann-real": {
+      "name": "Blooming Santa Cruz",
+      "city": "Blooming Santa Cruz"
+    },
+    "Floreciente Sport": {
+      "name": "Club Deportivo Guabirá",
+      "city": "Club Deportivo Guabirá"
+    },
+    "blooming-sport": {
+      "name": "Club Deportivo Guabirá",
+      "city": "Club Deportivo Guabirá"
+    },
+    "Llano SC": {
+      "name": "The Strongest La Paz",
+      "city": "The Strongest La Paz"
+    },
+    "oriente-sc": {
+      "name": "The Strongest La Paz",
+      "city": "The Strongest La Paz"
+    },
+    "Potosino Real": {
+      "name": "San Antonio Bulo Bulo",
+      "city": "San Antonio Bulo Bulo"
+    },
+    "nacional-real": {
+      "name": "San Antonio Bulo Bulo",
+      "city": "San Antonio Bulo Bulo"
+    },
+    "Minero Real SC": {
+      "name": "CA Nacional Potosí",
+      "city": "CA Nacional Potosí"
+    },
+    "real-sc": {
+      "name": "CA Nacional Potosí",
+      "city": "CA Nacional Potosí"
+    },
+    "Atocha Real": {
+      "name": "Club Deportivo Oriente Petrolero",
+      "city": "Club Deportivo Oriente Petrolero"
+    },
+    "san-jose-real": {
+      "name": "Club Deportivo Oriente Petrolero",
+      "city": "Club Deportivo Oriente Petrolero"
+    },
+    "Zafrero FC": {
+      "name": "Gualberto Villarroel San José",
+      "city": "Gualberto Villarroel San José"
+    },
+    "guabira-fc": {
+      "name": "Gualberto Villarroel San José",
+      "city": "Gualberto Villarroel San José"
+    },
+    "Siempre Listo Club": {
+      "name": "Real Oruro",
+      "city": "Real Oruro"
+    },
+    "always-ready-club": {
+      "name": "Real Oruro",
+      "city": "Real Oruro"
+    },
+    "Pantanal Deportivo": {
+      "name": "Club A.B.B.",
+      "city": "Club A.B.B."
+    },
+    "royal-deportivo": {
+      "name": "Club A.B.B.",
+      "city": "Club A.B.B."
+    },
+    "Amanecer CF": {
+      "name": "Universitario de Vinto",
+      "city": "Universitario de Vinto"
+    },
+    "aurora-cf": {
+      "name": "Universitario de Vinto",
+      "city": "Universitario de Vinto"
+    },
+    "Académico Real": {
+      "name": "CD Real Tomayapo",
+      "city": "CD Real Tomayapo"
+    },
+    "universitario-real": {
+      "name": "CD Real Tomayapo",
+      "city": "CD Real Tomayapo"
+    },
+    "Tropical Atlético": {
+      "name": "Club Aurora",
+      "city": "Club Aurora"
+    },
+    "palmaflor-atletico": {
+      "name": "Club Aurora",
+      "city": "Club Aurora"
+    },
+    "Petrolero Deportivo": {
+      "name": "Club Independiente Petrolero",
+      "city": "Club Independiente Petrolero"
+    },
+    "independiente-deportivo": {
+      "name": "Club Independiente Petrolero",
+      "city": "Club Independiente Petrolero"
+    },
+    "Valle United": {
+      "name": "Real Potosí",
+      "city": "Real Potosí"
+    },
+    "vinto-united": {
+      "name": "Real Potosí",
+      "city": "Real Potosí"
     }
   },
   "leagues": {
