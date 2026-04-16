@@ -37915,6 +37915,446 @@
         "S. Torralba": "S. Tombakti"
       },
       "city": "Al-Riyadh SC"
+    },
+    "Nordlys FK": {
+      "name": "FK Bodø/Glimt",
+      "shortName": "BOD",
+      "stadium": "Aspmyra Stadion"
+    },
+    "Fjordbyen FK": {
+      "name": "Molde FK",
+      "shortName": "MOL",
+      "stadium": "Aker Stadion"
+    },
+    "Svartblå BK": {
+      "name": "Rosenborg BK",
+      "shortName": "RBK",
+      "stadium": "Lerkendal Stadion"
+    },
+    "Rødstorm FK": {
+      "name": "SK Brann",
+      "shortName": "BRA",
+      "stadium": "Brann Stadion"
+    },
+    "Langskip FK": {
+      "name": "Viking FK",
+      "shortName": "VIK",
+      "stadium": "SR-Bank Arena"
+    },
+    "Oslobyen IF": {
+      "name": "Vålerenga Fotball",
+      "shortName": "VIF",
+      "stadium": "Intility Arena"
+    },
+    "Festungby FK": {
+      "name": "Fredrikstad FK",
+      "shortName": "FFK",
+      "stadium": "Fredrikstad Stadion"
+    },
+    "Polarlys IL": {
+      "name": "Tromsø IL",
+      "shortName": "TIL",
+      "stadium": "Romssa Arena"
+    },
+    "Kanarifugl SK": {
+      "name": "Lillestrøm SK",
+      "shortName": "LSK",
+      "stadium": "Åråsen Stadion"
+    },
+    "Glomma FF": {
+      "name": "Sarpsborg 08 FF",
+      "shortName": "SAR",
+      "stadium": "Sarpsborg Stadion"
+    },
+    "Kystby FK": {
+      "name": "FK Haugesund",
+      "shortName": "FKH",
+      "stadium": "Haugesund Stadion"
+    },
+    "Marineblå IF": {
+      "name": "Strømsgodset IF",
+      "shortName": "SIF",
+      "stadium": "Marienlyst Stadion"
+    },
+    "Innlandet IL": {
+      "name": "HamKam",
+      "shortName": "HAM",
+      "stadium": "Briskeby Gressbane"
+    },
+    "Hovedstad KF": {
+      "name": "KFUM Oslo",
+      "shortName": "KFU",
+      "stadium": "Intility Arena"
+    },
+    "Kystland FK": {
+      "name": "Sandefjord Fotball",
+      "shortName": "SAN",
+      "stadium": "Release Arena"
+    },
+    "Havnebyen BK": {
+      "name": "Kristiansund BK",
+      "shortName": "KBK",
+      "stadium": "Kristiansund Stadion"
+    },
+    "Himmelblå FF": {
+      "name": "Malmö FF",
+      "shortName": "MFF",
+      "stadium": "Eleda Stadion"
+    },
+    "Svartguld IF": {
+      "name": "AIK Fotboll",
+      "shortName": "AIK",
+      "stadium": "Strawberry Arena"
+    },
+    "Bajenbyen IF": {
+      "name": "Hammarby IF",
+      "shortName": "HAM",
+      "stadium": "Tele2 Arena"
+    },
+    "Järnkamraterna IF": {
+      "name": "Djurgårdens IF",
+      "shortName": "DIF",
+      "stadium": "Strawberry Arena"
+    },
+    "Blåvitt IFK": {
+      "name": "IFK Göteborg",
+      "shortName": "IFK",
+      "stadium": "Gamla Ullevi"
+    },
+    "Gulkrage BK": {
+      "name": "BK Häcken",
+      "shortName": "HÄC",
+      "stadium": "Bravida Arena"
+    },
+    "Pekingen IFK": {
+      "name": "IFK Norrköping",
+      "shortName": "IFK",
+      "stadium": "PlatinumCars Arena"
+    },
+    "Strandby AIF": {
+      "name": "Mjällby AIF",
+      "shortName": "MAI",
+      "stadium": "Strandvallen"
+    },
+    "Gulmaktens IF": {
+      "name": "IF Elfsborg",
+      "shortName": "ELF",
+      "stadium": "Borås Arena"
+    },
+    "Östkust FF": {
+      "name": "Kalmar FF",
+      "shortName": "KFF",
+      "stadium": "Guldfågeln Arena"
+    },
+    "Blåvit BK": {
+      "name": "Halmstads BK",
+      "shortName": "HBK",
+      "stadium": "Örjans Vall"
+    },
+    "Makrill IF": {
+      "name": "GAIS",
+      "shortName": "GAI",
+      "stadium": "Gamla Ullevi"
+    },
+    "Västerort IF": {
+      "name": "IF Brommapojkarna",
+      "shortName": "BRO",
+      "stadium": "Grimsta IP"
+    },
+    "Brukorten IF": {
+      "name": "Degerfors IF",
+      "shortName": "DEG",
+      "stadium": "Stora Valla"
+    },
+    "Smålandsby IF": {
+      "name": "Östers IF",
+      "shortName": "OST",
+      "stadium": "Visma Arena"
+    },
+    "Himmelsljus IK": {
+      "name": "IK Sirius",
+      "shortName": "SIR",
+      "stadium": "Studenternas IP"
+    },
+    "Stolica FC": {
+      "name": "Legia Warszawa",
+      "shortName": "LEG",
+      "stadium": "Stadion Wojska Polskiego"
+    },
+    "Kolejorz FC": {
+      "name": "Lech Poznań",
+      "shortName": "LEC",
+      "stadium": "Enea Stadion"
+    },
+    "Czerwono-Niebieski FC": {
+      "name": "Raków Częstochowa",
+      "shortName": "RAK",
+      "stadium": "Stadion Miejski"
+    },
+    "Żółto-Czerwoni FC": {
+      "name": "Jagiellonia Białystok",
+      "shortName": "JAG",
+      "stadium": "Stadion Miejski"
+    },
+    "Portowiec FC": {
+      "name": "Pogoń Szczecin",
+      "shortName": "POG",
+      "stadium": "Stadion Miejski"
+    },
+    "Pasy FC": {
+      "name": "KS Cracovia",
+      "shortName": "CRA",
+      "stadium": "Stadion Cracovii"
+    },
+    "Biała Gwiazda FC": {
+      "name": "Wisła Kraków",
+      "shortName": "WIS",
+      "stadium": "Stadion Henryka Reymana"
+    },
+    "Wrocławianie FC": {
+      "name": "Śląsk Wrocław",
+      "shortName": "ŚLĄ",
+      "stadium": "Tarczyński Arena"
+    },
+    "Trójkolorowy FC": {
+      "name": "Górnik Zabrze",
+      "shortName": "GOR",
+      "stadium": "Arena Zabrze"
+    },
+    "Czerwoni FC": {
+      "name": "Piast Gliwice",
+      "shortName": "PIA",
+      "stadium": "Stadion Miejski"
+    },
+    "Koziołki FC": {
+      "name": "Motor Lublin",
+      "shortName": "MOT",
+      "stadium": "Arena Lublin"
+    },
+    "Łodzianie FC": {
+      "name": "Widzew Łódź",
+      "shortName": "WID",
+      "stadium": "Stadion Widzewa"
+    },
+    "Bałtyk FC": {
+      "name": "Lechia Gdańsk",
+      "shortName": "LEC",
+      "stadium": "Polsat Plus Arena"
+    },
+    "Zieloni FC": {
+      "name": "Radomiak Radom",
+      "shortName": "RAD",
+      "stadium": "Stadion Radomiaka"
+    },
+    "Śląscy FC": {
+      "name": "GKS Katowice",
+      "shortName": "GKS",
+      "stadium": "Stadion GKS Katowice"
+    },
+    "Pomarańczowi FC": {
+      "name": "Korona Kielce",
+      "shortName": "KOR",
+      "stadium": "Suzuki Arena"
+    },
+    "Wiejski FC": {
+      "name": "Bruk-Bet Termalica Nieciecza",
+      "shortName": "TER",
+      "stadium": "Stadion Bruk-Bet"
+    },
+    "Żółto-Niebiescy FC": {
+      "name": "Arka Gdynia",
+      "shortName": "ARK",
+      "stadium": "Stadion Miejski Gdynia"
+    },
+    "Vissersdorp FC": {
+      "name": "FC Volendam",
+      "shortName": "VOL",
+      "stadium": "Kras Stadion"
+    },
+    "Brabantstad FC": {
+      "name": "FC Den Bosch",
+      "shortName": "DBO",
+      "stadium": "De Vliert"
+    },
+    "Limburg JC": {
+      "name": "Roda JC Kerkrade",
+      "shortName": "ROD",
+      "stadium": "Parkstad Limburg Stadion"
+    },
+    "Maasstad VVV": {
+      "name": "VVV-Venlo",
+      "shortName": "VVV",
+      "stadium": "Covebo Stadion"
+    },
+    "Limburgs MVV": {
+      "name": "MVV Maastricht",
+      "shortName": "MVV",
+      "stadium": "Geusselt Stadion"
+    },
+    "Lichtstad FC": {
+      "name": "FC Eindhoven",
+      "shortName": "FCE",
+      "stadium": "Jan Louwers Stadion"
+    },
+    "Goffertstad FC": {
+      "name": "NEC Nijmegen",
+      "shortName": "NEC",
+      "stadium": "Goffertstadion"
+    },
+    "Drenthe FC": {
+      "name": "FC Emmen",
+      "shortName": "EMM",
+      "stadium": "De Oude Meerdijk"
+    },
+    "Zwart-Wit Sport": {
+      "name": "Helmond Sport",
+      "shortName": "HEL",
+      "stadium": "Lavans Stadion"
+    },
+    "Witte Leeuwen SC": {
+      "name": "SC Telstar",
+      "shortName": "TEL",
+      "stadium": "BUKO Stadion"
+    },
+    "Toekomst Jong FC": {
+      "name": "Jong Ajax",
+      "shortName": "JAA",
+      "stadium": "De Toekomst"
+    },
+    "Jong Lichtstad PSV": {
+      "name": "Jong PSV",
+      "shortName": "JPS",
+      "stadium": "De Herdgang"
+    },
+    "Domstad Jong FC": {
+      "name": "Jong Utrecht",
+      "shortName": "JUT",
+      "stadium": "Stadion Galgenwaard"
+    },
+    "Friesland SC": {
+      "name": "SC Cambuur",
+      "shortName": "CAM",
+      "stadium": "Cambuur Stadion"
+    },
+    "Kanaal TOP": {
+      "name": "TOP Oss",
+      "shortName": "OSS",
+      "stadium": "Frans Heesen Stadion"
+    },
+    "Kruikenstad FC": {
+      "name": "Willem II",
+      "shortName": "WIL",
+      "stadium": "Koning Willem II Stadion"
+    },
+    "Merwestad FC": {
+      "name": "FC Dordrecht",
+      "shortName": "DOR",
+      "stadium": "Krommedijk"
+    },
+    "Noorderkwartier Jong": {
+      "name": "Jong AZ",
+      "shortName": "JAZ",
+      "stadium": "AFAS Trainingscomplex"
+    },
+    "Kralingen Excelsior": {
+      "name": "Excelsior",
+      "shortName": "EXC",
+      "stadium": "Van Donge & De Roo Stadion"
+    },
+    "Superboeren FC": {
+      "name": "De Graafschap",
+      "shortName": "GRF",
+      "stadium": "De Vijverberg"
+    },
+    "Estudantina FC": {
+      "name": "Académica de Coimbra",
+      "shortName": "ACA",
+      "stadium": "Estádio Cidade de Coimbra"
+    },
+    "Matosinhos SC": {
+      "name": "Leixões SC",
+      "shortName": "LEI",
+      "stadium": "Estádio do Mar"
+    },
+    "Feira FC": {
+      "name": "CD Feirense",
+      "shortName": "FEI",
+      "stadium": "Estádio Marcolino de Castro"
+    },
+    "Convento FC": {
+      "name": "CD Mafra",
+      "shortName": "MAF",
+      "stadium": "Parque Desportivo"
+    },
+    "Tâmega FC": {
+      "name": "FC Penafiel",
+      "shortName": "PEN",
+      "stadium": "Estádio Municipal 25 de Abril"
+    },
+    "Oliveirense UD": {
+      "name": "UD Oliveirense",
+      "shortName": "OLI",
+      "stadium": "Estádio Carlos Osório"
+    },
+    "Beira Alta FC": {
+      "name": "CD Tondela",
+      "shortName": "TON",
+      "stadium": "Estádio João Cardoso"
+    },
+    "Leiria União": {
+      "name": "União de Leiria",
+      "shortName": "LEI",
+      "stadium": "Estádio Dr. Magalhães Pessoa"
+    },
+    "Paredinha FC": {
+      "name": "USC Paredes",
+      "shortName": "PAR",
+      "stadium": "Parque Rota dos Móveis"
+    },
+    "Torres Vedras FC": {
+      "name": "SCU Torreense",
+      "shortName": "TOR",
+      "stadium": "Estádio Manuel Marques"
+    },
+    "Lourosa FC": {
+      "name": "Lusitânia de Lourosa",
+      "shortName": "LUS",
+      "stadium": "Estádio do Lusitânia"
+    },
+    "Felgueiras FC": {
+      "name": "FC Felgueiras",
+      "shortName": "FEL",
+      "stadium": "Estádio Dr. Machado de Matos"
+    },
+    "Algarve SC": {
+      "name": "Portimonense SC",
+      "shortName": "POR",
+      "stadium": "Estádio Municipal"
+    },
+    "Cónegos FC": {
+      "name": "Moreirense FC",
+      "shortName": "MOR",
+      "stadium": "Parque Desportivo Comendador"
+    },
+    "Almeirim FC": {
+      "name": "União Almeirim",
+      "shortName": "ALM",
+      "stadium": "Estádio Complexo"
+    },
+    "Viseu Académico": {
+      "name": "Académico de Viseu",
+      "shortName": "VIS",
+      "stadium": "Estádio do Fontelo"
+    },
+    "Flavienses GD": {
+      "name": "GD Chaves",
+      "shortName": "CHA",
+      "stadium": "Estádio Municipal de Chaves"
+    },
+    "Ilha Marítimo": {
+      "name": "CS Marítimo",
+      "shortName": "MAR",
+      "stadium": "Estádio do Marítimo"
     }
   },
   "leagues": {
@@ -37938,8 +38378,13 @@
     "Super League": "Super League (Grecia)",
     "Superligaen": "Superligaen (Dinamarca)",
     "HNL": "HNL (Croacia)",
-    "Chance Liga": "Chance Liga (Chequia)"
+    "Chance Liga": "Chance Liga (Chequia)",
+    "Fjord League": "Eliteserien",
+    "Scandi League": "Allsvenskan",
+    "Vistula League": "Ekstraklasa",
+    "Dutch Second": "Eerste Divisie",
+    "Liga Lusitana 2": "Liga Portugal 2"
   },
-  "teamCount": 398,
-  "playerCount": 10189
+  "teamCount": 1699,
+  "playerCount": 30552
 }

@@ -1,0 +1,2802 @@
+[
+  {
+    "id": "bodo-glimt",
+    "name": "Nordlys FK",
+    "shortName": "NOR",
+    "city": "Bodø",
+    "colors": {
+      "primary": "#FFD500",
+      "secondary": "#000000"
+    },
+    "stadium": "Aspmyra Arena",
+    "stadiumCapacity": 8270,
+    "reputation": 4,
+    "players": [
+      {
+        "name": "Tobias Storm",
+        "position": "POR",
+        "age": 24,
+        "overall": 75,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Anders Haugen",
+        "position": "POR",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Vegard Myhre",
+        "position": "DFC",
+        "age": 31,
+        "overall": 74,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Håkon Strand",
+        "position": "DFC",
+        "age": 21,
+        "overall": 69,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Marius Pedersen",
+        "position": "DFC",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Sebastian Strand",
+        "position": "DFC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Marius Kristiansen",
+        "position": "LB",
+        "age": 26,
+        "overall": 74,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Henrik Kristiansen",
+        "position": "RB",
+        "age": 29,
+        "overall": 74,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Anders Ødegård",
+        "position": "MCD",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Jonas Solberg",
+        "position": "MCD",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Marius Ødegård",
+        "position": "MC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Olav Nilsen",
+        "position": "MC",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Sebastian Storm",
+        "position": "MC",
+        "age": 24,
+        "overall": 75,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Aron Lund",
+        "position": "MCO",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Fredrik Solberg",
+        "position": "EI",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Magnus Engen",
+        "position": "ED",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Sondre Aasen",
+        "position": "DC",
+        "age": 30,
+        "overall": 75,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Olav Sørensen",
+        "position": "DC",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Anders Dahl",
+        "position": "DC",
+        "age": 21,
+        "overall": 68,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Mats Solberg",
+        "position": "MP",
+        "age": 26,
+        "overall": 66,
+        "nationality": "Noruega",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "molde-fk",
+    "name": "Fjordbyen FK",
+    "shortName": "MOL",
+    "city": "Molde",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Fjord Stadion",
+    "stadiumCapacity": 11249,
+    "reputation": 4,
+    "players": [
+      {
+        "name": "Victor Okafor",
+        "position": "POR",
+        "age": 30,
+        "overall": 77,
+        "nationality": "Nigeria",
+        "value": 1680000
+      },
+      {
+        "name": "Henrik Berg",
+        "position": "POR",
+        "age": 25,
+        "overall": 68,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Marius Pedersen",
+        "position": "DFC",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Sondre Aasen",
+        "position": "DFC",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Lars Berg",
+        "position": "DFC",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Erik Strand",
+        "position": "DFC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Eirik Storm",
+        "position": "LB",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Erik Solberg",
+        "position": "RB",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Henrik Dahl",
+        "position": "MCD",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Tobias Dahl",
+        "position": "MCD",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Fredrik Fredriksen",
+        "position": "MC",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Sondre Olsen",
+        "position": "MC",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Jesper Jensen",
+        "position": "MC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Dinamarca",
+        "value": 420000
+      },
+      {
+        "name": "Kelechi Koné",
+        "position": "MCO",
+        "age": 25,
+        "overall": 76,
+        "nationality": "Nigeria",
+        "value": 1680000
+      },
+      {
+        "name": "Fredrik Bråten",
+        "position": "EI",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Sebastian Pedersen",
+        "position": "ED",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Sondre Hansen",
+        "position": "DC",
+        "age": 23,
+        "overall": 77,
+        "nationality": "Noruega",
+        "value": 1680000
+      },
+      {
+        "name": "Andreas Myhre",
+        "position": "DC",
+        "age": 19,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Sebastian Myhre",
+        "position": "DC",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Mikkel Jensen",
+        "position": "MP",
+        "age": 24,
+        "overall": 67,
+        "nationality": "Dinamarca",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "rosenborg-bk",
+    "name": "Svartblå BK",
+    "shortName": "SBK",
+    "city": "Trondheim",
+    "colors": {
+      "primary": "#FFFFFF",
+      "secondary": "#000000"
+    },
+    "stadium": "Lerkendal Arena",
+    "stadiumCapacity": 21166,
+    "reputation": 4,
+    "players": [
+      {
+        "name": "Emil Hedlund",
+        "position": "POR",
+        "age": 31,
+        "overall": 75,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Henrik Haugen",
+        "position": "POR",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Aron Myhre",
+        "position": "DFC",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Vegard Dahl",
+        "position": "DFC",
+        "age": 29,
+        "overall": 74,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Fredrik Aasen",
+        "position": "DFC",
+        "age": 21,
+        "overall": 69,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Fredrik Berg",
+        "position": "DFC",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Magnus Nilsen",
+        "position": "LB",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Kristian Bråten",
+        "position": "RB",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Eirik Sørensen",
+        "position": "MCD",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Jonas Møller",
+        "position": "MCD",
+        "age": 25,
+        "overall": 75,
+        "nationality": "Dinamarca",
+        "value": 840000
+      },
+      {
+        "name": "Eirik Johansen",
+        "position": "MC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Andreas Engen",
+        "position": "MC",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Eirik Myhre",
+        "position": "MC",
+        "age": 28,
+        "overall": 75,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Henrik Strand",
+        "position": "MCO",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Aron Sørensen",
+        "position": "EI",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Rafael Costa",
+        "position": "ED",
+        "age": 22,
+        "overall": 75,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Linus Svensson",
+        "position": "DC",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Andreas Storm",
+        "position": "DC",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Christian Christiansen",
+        "position": "DC",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Dinamarca",
+        "value": 420000
+      },
+      {
+        "name": "Kristian Johansen",
+        "position": "MP",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Noruega",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "brann",
+    "name": "Rødstorm FK",
+    "shortName": "RST",
+    "city": "Bergen",
+    "colors": {
+      "primary": "#D60000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Vestkysten Stadion",
+    "stadiumCapacity": 17824,
+    "reputation": 4,
+    "players": [
+      {
+        "name": "Marius Engen",
+        "position": "POR",
+        "age": 26,
+        "overall": 78,
+        "nationality": "Noruega",
+        "value": 1680000
+      },
+      {
+        "name": "Anders Engen",
+        "position": "POR",
+        "age": 32,
+        "overall": 67,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Vegard Ødegård",
+        "position": "DFC",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Jonas Lund",
+        "position": "DFC",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Jonas Ødegård",
+        "position": "DFC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Mathias Lund",
+        "position": "DFC",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Dinamarca",
+        "value": 840000
+      },
+      {
+        "name": "Andreas Storm",
+        "position": "LB",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Tobias Johansen",
+        "position": "RB",
+        "age": 30,
+        "overall": 74,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Jonas Olsen",
+        "position": "MCD",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Aron Hansen",
+        "position": "MCD",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Olav Fredriksen",
+        "position": "MC",
+        "age": 26,
+        "overall": 74,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Lars Dahl",
+        "position": "MC",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Fredrik Berg",
+        "position": "MC",
+        "age": 26,
+        "overall": 74,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Kristian Solberg",
+        "position": "MCO",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Tobias Myhre",
+        "position": "EI",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Sebastian Aasen",
+        "position": "ED",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Sebastian Kristiansen",
+        "position": "DC",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Simon Eriksen",
+        "position": "DC",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Dinamarca",
+        "value": 840000
+      },
+      {
+        "name": "Vegard Solberg",
+        "position": "DC",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Eirik Kristiansen",
+        "position": "MP",
+        "age": 23,
+        "overall": 67,
+        "nationality": "Noruega",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "viking-fk",
+    "name": "Langskip FK",
+    "shortName": "LSK",
+    "city": "Stavanger",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Drakkar Arena",
+    "stadiumCapacity": 15900,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Victor Ouattara",
+        "position": "POR",
+        "age": 33,
+        "overall": 76,
+        "nationality": "Nigeria",
+        "value": 1680000
+      },
+      {
+        "name": "Andreas Berg",
+        "position": "POR",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Olav Johansen",
+        "position": "DFC",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Martin Fredriksen",
+        "position": "DFC",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Sondre Aasen",
+        "position": "DFC",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Erik Hansen",
+        "position": "DFC",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Fredrik Pedersen",
+        "position": "LB",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Vegard Johansen",
+        "position": "RB",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Anders Berg",
+        "position": "MCD",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Håkon Olsen",
+        "position": "MCD",
+        "age": 26,
+        "overall": 74,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Håkon Ødegård",
+        "position": "MC",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Sondre Storm",
+        "position": "MC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Anders Lund",
+        "position": "MC",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Henrik Strand",
+        "position": "MCO",
+        "age": 31,
+        "overall": 75,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Kelechi Sarr",
+        "position": "EI",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Fredrik Lund",
+        "position": "ED",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Sebastian Solberg",
+        "position": "DC",
+        "age": 31,
+        "overall": 76,
+        "nationality": "Noruega",
+        "value": 1680000
+      },
+      {
+        "name": "Christian Jensen",
+        "position": "DC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Dinamarca",
+        "value": 420000
+      },
+      {
+        "name": "Magnus Storm",
+        "position": "DC",
+        "age": 32,
+        "overall": 68,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Henrik Fredriksen",
+        "position": "MP",
+        "age": 22,
+        "overall": 66,
+        "nationality": "Noruega",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "valerenga",
+    "name": "Oslobyen IF",
+    "shortName": "OSL",
+    "city": "Oslo",
+    "colors": {
+      "primary": "#00529B",
+      "secondary": "#D60000"
+    },
+    "stadium": "Intility Park",
+    "stadiumCapacity": 16555,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Eirik Bråten",
+        "position": "POR",
+        "age": 33,
+        "overall": 77,
+        "nationality": "Noruega",
+        "value": 1680000
+      },
+      {
+        "name": "Henrik Nilsen",
+        "position": "POR",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Fredrik Myhre",
+        "position": "DFC",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Magnus Ødegård",
+        "position": "DFC",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Erik Sørensen",
+        "position": "DFC",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Sondre Myhre",
+        "position": "DFC",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Lars Ødegård",
+        "position": "LB",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Oskar Eriksson",
+        "position": "RB",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Mats Olsen",
+        "position": "MCD",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Lars Engen",
+        "position": "MCD",
+        "age": 25,
+        "overall": 74,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Lars Larsson",
+        "position": "MC",
+        "age": 25,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Jonas Haugen",
+        "position": "MC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Martin Engen",
+        "position": "MC",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Henrik Aasen",
+        "position": "MCO",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Håkon Lund",
+        "position": "EI",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Andreas Dahl",
+        "position": "ED",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Erik Kristiansen",
+        "position": "DC",
+        "age": 28,
+        "overall": 74,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Anders Kristiansen",
+        "position": "DC",
+        "age": 19,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Håkon Berg",
+        "position": "DC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Jonas Olsen",
+        "position": "MP",
+        "age": 31,
+        "overall": 68,
+        "nationality": "Noruega",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "fredrikstad",
+    "name": "Festungby FK",
+    "shortName": "FES",
+    "city": "Fredrikstad",
+    "colors": {
+      "primary": "#D60000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Festung Stadion",
+    "stadiumCapacity": 12550,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Sondre Myhre",
+        "position": "POR",
+        "age": 33,
+        "overall": 76,
+        "nationality": "Noruega",
+        "value": 1680000
+      },
+      {
+        "name": "Erik Nilsen",
+        "position": "POR",
+        "age": 29,
+        "overall": 67,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Erik Pedersen",
+        "position": "DFC",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Erik Bergström",
+        "position": "DFC",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Magnus Lund",
+        "position": "DFC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Jonas Berg",
+        "position": "DFC",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Vegard Nilsen",
+        "position": "LB",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Fredrik Pedersen",
+        "position": "RB",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Marius Sørensen",
+        "position": "MCD",
+        "age": 26,
+        "overall": 74,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Martin Bråten",
+        "position": "MCD",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Eirik Storm",
+        "position": "MC",
+        "age": 28,
+        "overall": 74,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Mikael Hedlund",
+        "position": "MC",
+        "age": 26,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Matheus Pereira",
+        "position": "MC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Eirik Sørensen",
+        "position": "MCO",
+        "age": 29,
+        "overall": 75,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Kasper Thomsen",
+        "position": "EI",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Dinamarca",
+        "value": 420000
+      },
+      {
+        "name": "Felipe Gomes",
+        "position": "ED",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Felipe Araújo",
+        "position": "DC",
+        "age": 24,
+        "overall": 75,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Sondre Olsen",
+        "position": "DC",
+        "age": 21,
+        "overall": 68,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Sebastian Ødegård",
+        "position": "DC",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Fredrik Sørensen",
+        "position": "MP",
+        "age": 29,
+        "overall": 66,
+        "nationality": "Noruega",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "tromso-il",
+    "name": "Polarlys IL",
+    "shortName": "POL",
+    "city": "Tromsø",
+    "colors": {
+      "primary": "#D60000",
+      "secondary": "#003DA5"
+    },
+    "stadium": "Nordpark Arena",
+    "stadiumCapacity": 6859,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Oliver Eriksen",
+        "position": "POR",
+        "age": 26,
+        "overall": 75,
+        "nationality": "Dinamarca",
+        "value": 840000
+      },
+      {
+        "name": "Lars Sørensen",
+        "position": "POR",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Simon Hansen",
+        "position": "DFC",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Dinamarca",
+        "value": 420000
+      },
+      {
+        "name": "Jonas Olsen",
+        "position": "DFC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Martin Ødegård",
+        "position": "DFC",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Chinedu Traoré",
+        "position": "DFC",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Thiago Fernandes",
+        "position": "LB",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Moses Diop",
+        "position": "RB",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Magnus Myhre",
+        "position": "MCD",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Emil Eriksson",
+        "position": "MCD",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Caio Nascimento",
+        "position": "MC",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Eirik Storm",
+        "position": "MC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Marius Hansen",
+        "position": "MC",
+        "age": 28,
+        "overall": 74,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Lucas Fernandes",
+        "position": "MCO",
+        "age": 31,
+        "overall": 75,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Obi Koné",
+        "position": "EI",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Simon Lund",
+        "position": "ED",
+        "age": 24,
+        "overall": 74,
+        "nationality": "Dinamarca",
+        "value": 840000
+      },
+      {
+        "name": "Jonas Pedersen",
+        "position": "DC",
+        "age": 24,
+        "overall": 75,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Fernando Gomes",
+        "position": "DC",
+        "age": 20,
+        "overall": 73,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Tobias Storm",
+        "position": "DC",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Kingsley Ndiaye",
+        "position": "MP",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Nigeria",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "lillestrom",
+    "name": "Kanarifugl SK",
+    "shortName": "KAN",
+    "city": "Lillestrøm",
+    "colors": {
+      "primary": "#FFD500",
+      "secondary": "#000000"
+    },
+    "stadium": "Åråsen Park",
+    "stadiumCapacity": 12000,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Tobias Larsson",
+        "position": "POR",
+        "age": 28,
+        "overall": 75,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Sondre Johansen",
+        "position": "POR",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Sondre Strand",
+        "position": "DFC",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Henrik Hansen",
+        "position": "DFC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Lars Olsen",
+        "position": "DFC",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Pernille Pedersen",
+        "position": "DFC",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Dinamarca",
+        "value": 224000
+      },
+      {
+        "name": "Andreas Berg",
+        "position": "LB",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Olav Berg",
+        "position": "RB",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Erik Pedersen",
+        "position": "MCD",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Tobias Nielsen",
+        "position": "MCD",
+        "age": 23,
+        "overall": 74,
+        "nationality": "Dinamarca",
+        "value": 840000
+      },
+      {
+        "name": "Kristian Nilsen",
+        "position": "MC",
+        "age": 21,
+        "overall": 74,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Jonas Sørensen",
+        "position": "MC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Anders Myhre",
+        "position": "MC",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Henrik Ødegård",
+        "position": "MCO",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Sondre Bråten",
+        "position": "EI",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Pernille Sørensen",
+        "position": "ED",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Dinamarca",
+        "value": 420000
+      },
+      {
+        "name": "Jonas Aasen",
+        "position": "DC",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Lucas Araújo",
+        "position": "DC",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Lars Nilsen",
+        "position": "DC",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Lars Haugen",
+        "position": "MP",
+        "age": 22,
+        "overall": 67,
+        "nationality": "Noruega",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "sarpsborg-08",
+    "name": "Glomma FF",
+    "shortName": "GLO",
+    "city": "Sarpsborg",
+    "colors": {
+      "primary": "#002147",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Glomma Stadion",
+    "stadiumCapacity": 5000,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Magnus Pedersen",
+        "position": "POR",
+        "age": 30,
+        "overall": 74,
+        "nationality": "Dinamarca",
+        "value": 840000
+      },
+      {
+        "name": "Erik Kristiansen",
+        "position": "POR",
+        "age": 30,
+        "overall": 66,
+        "nationality": "Noruega",
+        "value": 112000
+      },
+      {
+        "name": "Andreas Hansen",
+        "position": "DFC",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Karl Larsson",
+        "position": "DFC",
+        "age": 21,
+        "overall": 69,
+        "nationality": "Suecia",
+        "value": 224000
+      },
+      {
+        "name": "Sondre Berg",
+        "position": "DFC",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Magnus Hansen",
+        "position": "DFC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Jonas Fredriksen",
+        "position": "LB",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Henrik Aasen",
+        "position": "RB",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Henrik Bråten",
+        "position": "MCD",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Diogo Moreira",
+        "position": "MCD",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Christian Hansen",
+        "position": "MC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Dinamarca",
+        "value": 420000
+      },
+      {
+        "name": "Erik Hansen",
+        "position": "MC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Lars Kristiansen",
+        "position": "MC",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Oskar Strömberg",
+        "position": "MCO",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Fredrik Johansen",
+        "position": "EI",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Erik Aasen",
+        "position": "ED",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Magnus Nilsen",
+        "position": "DC",
+        "age": 31,
+        "overall": 74,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Erik Olsen",
+        "position": "DC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Marius Storm",
+        "position": "DC",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Tobias Ødegård",
+        "position": "MP",
+        "age": 32,
+        "overall": 67,
+        "nationality": "Noruega",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "haugesund",
+    "name": "Kystby FK",
+    "shortName": "KYS",
+    "city": "Haugesund",
+    "colors": {
+      "primary": "#FFFFFF",
+      "secondary": "#000000"
+    },
+    "stadium": "Kystbyen Stadion",
+    "stadiumCapacity": 8760,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Anders Ødegård",
+        "position": "POR",
+        "age": 33,
+        "overall": 75,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Fredrik Sørensen",
+        "position": "POR",
+        "age": 30,
+        "overall": 67,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Fernando Ribeiro",
+        "position": "DFC",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Vegard Kristiansen",
+        "position": "DFC",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Håkon Lund",
+        "position": "DFC",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Anders Engen",
+        "position": "DFC",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Ronaldo Silva",
+        "position": "LB",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Jonas Fredriksen",
+        "position": "RB",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Magnus Strand",
+        "position": "MCD",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Eirik Myhre",
+        "position": "MCD",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Anders Kristiansen",
+        "position": "MC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Erik Aasen",
+        "position": "MC",
+        "age": 24,
+        "overall": 74,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Sondre Ødegård",
+        "position": "MC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Andreas Berg",
+        "position": "MCO",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Tobias Myhre",
+        "position": "EI",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Martin Johansen",
+        "position": "ED",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Håkon Engen",
+        "position": "DC",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Victor Diop",
+        "position": "DC",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Nigeria",
+        "value": 224000
+      },
+      {
+        "name": "Kristian Lund",
+        "position": "DC",
+        "age": 28,
+        "overall": 68,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Lars Berg",
+        "position": "MP",
+        "age": 32,
+        "overall": 68,
+        "nationality": "Noruega",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "strømsgodset",
+    "name": "Marineblå IF",
+    "shortName": "MBL",
+    "city": "Drammen",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Marinepark Stadion",
+    "stadiumCapacity": 8930,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Olav Dahl",
+        "position": "POR",
+        "age": 33,
+        "overall": 76,
+        "nationality": "Noruega",
+        "value": 1680000
+      },
+      {
+        "name": "Leandro Rodrigues",
+        "position": "POR",
+        "age": 32,
+        "overall": 69,
+        "nationality": "Brasil",
+        "value": 224000
+      },
+      {
+        "name": "Olav Johansen",
+        "position": "DFC",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Lars Bråten",
+        "position": "DFC",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Fredrik Kristiansen",
+        "position": "DFC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Sondre Olsen",
+        "position": "DFC",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Rasmus Poulsen",
+        "position": "LB",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Dinamarca",
+        "value": 420000
+      },
+      {
+        "name": "Fredrik Storm",
+        "position": "RB",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Henrik Berg",
+        "position": "MCD",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Diogo Rodrigues",
+        "position": "MCD",
+        "age": 28,
+        "overall": 74,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Andreas Strand",
+        "position": "MC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Martin Ødegård",
+        "position": "MC",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Martin Myhre",
+        "position": "MC",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Fredrik Myhre",
+        "position": "MCO",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Erik Ødegård",
+        "position": "EI",
+        "age": 31,
+        "overall": 74,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Sebastian Engen",
+        "position": "ED",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Victor Christiansen",
+        "position": "DC",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Dinamarca",
+        "value": 420000
+      },
+      {
+        "name": "Andreas Storm",
+        "position": "DC",
+        "age": 20,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Simon Johansson",
+        "position": "DC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Kelechi Koné",
+        "position": "MP",
+        "age": 31,
+        "overall": 67,
+        "nationality": "Nigeria",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "ham-kam",
+    "name": "Innlandet IL",
+    "shortName": "INN",
+    "city": "Hamar",
+    "colors": {
+      "primary": "#00854A",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Innlandet Gressbane",
+    "stadiumCapacity": 8150,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Henrik Strand",
+        "position": "POR",
+        "age": 27,
+        "overall": 75,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Jonas Berg",
+        "position": "POR",
+        "age": 24,
+        "overall": 68,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Henrik Lund",
+        "position": "DFC",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Tobias Aasen",
+        "position": "DFC",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Håkon Haugen",
+        "position": "DFC",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Håkon Bråten",
+        "position": "DFC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Andreas Bråten",
+        "position": "LB",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Jonas Engen",
+        "position": "RB",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Lars Ødegård",
+        "position": "MCD",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Marius Nilsen",
+        "position": "MCD",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Mats Fredriksen",
+        "position": "MC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Sebastian Haugen",
+        "position": "MC",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Lars Sørensen",
+        "position": "MC",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Henrik Bråten",
+        "position": "MCO",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Aron Fredriksen",
+        "position": "EI",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Pedro Barbosa",
+        "position": "ED",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Olav Haugen",
+        "position": "DC",
+        "age": 23,
+        "overall": 74,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Anders Lund",
+        "position": "DC",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Andreas Haugen",
+        "position": "DC",
+        "age": 20,
+        "overall": 68,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Henrik Sørensen",
+        "position": "MP",
+        "age": 19,
+        "overall": 68,
+        "nationality": "Noruega",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "kfum-oslo",
+    "name": "Hovedstad KF",
+    "shortName": "HVS",
+    "city": "Oslo",
+    "colors": {
+      "primary": "#FF9100",
+      "secondary": "#000000"
+    },
+    "stadium": "Hovedstad Arena",
+    "stadiumCapacity": 16555,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Anders Haugen",
+        "position": "POR",
+        "age": 25,
+        "overall": 76,
+        "nationality": "Noruega",
+        "value": 1680000
+      },
+      {
+        "name": "Marius Kristiansen",
+        "position": "POR",
+        "age": 28,
+        "overall": 68,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Alexander Andersson",
+        "position": "DFC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Aron Fredriksen",
+        "position": "DFC",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Kristian Solberg",
+        "position": "DFC",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Marius Pedersen",
+        "position": "DFC",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Henrik Fredriksen",
+        "position": "LB",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Sondre Hansen",
+        "position": "RB",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Martin Lund",
+        "position": "MCD",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Emeka Ouattara",
+        "position": "MCD",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Ebenezer Koné",
+        "position": "MC",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Olav Dahl",
+        "position": "MC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Jonas Pedersen",
+        "position": "MC",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Kingsley Boateng",
+        "position": "MCO",
+        "age": 29,
+        "overall": 74,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Anders Berg",
+        "position": "EI",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Marius Berg",
+        "position": "ED",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Sondre Kristiansen",
+        "position": "DC",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Andreas Nilsen",
+        "position": "DC",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Kingsley Okafor",
+        "position": "DC",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Olav Myhre",
+        "position": "MP",
+        "age": 19,
+        "overall": 68,
+        "nationality": "Noruega",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "sandefjord",
+    "name": "Kystland FK",
+    "shortName": "KSL",
+    "city": "Sandefjord",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Vestfold Arena",
+    "stadiumCapacity": 6500,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Eirik Solberg",
+        "position": "POR",
+        "age": 33,
+        "overall": 76,
+        "nationality": "Noruega",
+        "value": 1680000
+      },
+      {
+        "name": "Vegard Dahl",
+        "position": "POR",
+        "age": 33,
+        "overall": 68,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Magnus Pedersen",
+        "position": "DFC",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Martin Myhre",
+        "position": "DFC",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Fredrik Dahl",
+        "position": "DFC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Sondre Ødegård",
+        "position": "DFC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Fredrik Storm",
+        "position": "LB",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Aron Bråten",
+        "position": "RB",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Sondre Storm",
+        "position": "MCD",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Victor Christiansen",
+        "position": "MCD",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Dinamarca",
+        "value": 840000
+      },
+      {
+        "name": "Martin Solberg",
+        "position": "MC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Tobias Kristiansen",
+        "position": "MC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Fredrik Hansen",
+        "position": "MC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Tobias Sørensen",
+        "position": "MCO",
+        "age": 25,
+        "overall": 74,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Håkon Olsen",
+        "position": "EI",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Marius Olsen",
+        "position": "ED",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Jonas Sørensen",
+        "position": "DC",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Kristian Ødegård",
+        "position": "DC",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Fredrik Sørensen",
+        "position": "DC",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Matheus Rodrigues",
+        "position": "MP",
+        "age": 27,
+        "overall": 67,
+        "nationality": "Brasil",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "kristiansund-bk",
+    "name": "Havnebyen BK",
+    "shortName": "HAV",
+    "city": "Kristiansund",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFD500"
+    },
+    "stadium": "Havnebyen Stadion",
+    "stadiumCapacity": 4444,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Alexander Åberg",
+        "position": "POR",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Suecia",
+        "value": 840000
+      },
+      {
+        "name": "Rafael Martins",
+        "position": "POR",
+        "age": 31,
+        "overall": 67,
+        "nationality": "Brasil",
+        "value": 224000
+      },
+      {
+        "name": "Martin Hansen",
+        "position": "DFC",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Aron Haugen",
+        "position": "DFC",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Fredrik Lund",
+        "position": "DFC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Vegard Johansen",
+        "position": "DFC",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Leandro Almeida",
+        "position": "LB",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Brasil",
+        "value": 224000
+      },
+      {
+        "name": "Erik Strömberg",
+        "position": "RB",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Suecia",
+        "value": 420000
+      },
+      {
+        "name": "Andreas Ødegård",
+        "position": "MCD",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Fredrik Hansen",
+        "position": "MCD",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Håkon Nilsen",
+        "position": "MC",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Aron Storm",
+        "position": "MC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Henrik Solberg",
+        "position": "MC",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Martin Haugen",
+        "position": "MCO",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Henrik Aasen",
+        "position": "EI",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Kristian Lund",
+        "position": "ED",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Noruega",
+        "value": 420000
+      },
+      {
+        "name": "Eirik Berg",
+        "position": "DC",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Noruega",
+        "value": 840000
+      },
+      {
+        "name": "Vegard Berg",
+        "position": "DC",
+        "age": 30,
+        "overall": 68,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Magnus Storm",
+        "position": "DC",
+        "age": 31,
+        "overall": 68,
+        "nationality": "Noruega",
+        "value": 224000
+      },
+      {
+        "name": "Fredrik Johansen",
+        "position": "MP",
+        "age": 20,
+        "overall": 67,
+        "nationality": "Noruega",
+        "value": 224000
+      }
+    ]
+  }
+]

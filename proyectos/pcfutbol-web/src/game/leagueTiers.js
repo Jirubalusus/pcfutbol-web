@@ -85,6 +85,15 @@ export const LEAGUE_TIERS = {
   mls:                  { tier: 3, ...TIER_CONFIG[3], salaryMult: 0.08 },
   jLeague:              { tier: 3, ...TIER_CONFIG[3], salaryMult: 0.04 },
 
+  // === Tier 3: Standard - Nordic + Central Europe top divisions ===
+  eliteserien:          { tier: 3, ...TIER_CONFIG[3] },
+  allsvenskan:          { tier: 3, ...TIER_CONFIG[3] },
+  ekstraklasa:          { tier: 3, ...TIER_CONFIG[3] },
+
+  // === Tier 3: Standard - European second divisions (mid) ===
+  eersteDivisie:        { tier: 3, ...TIER_CONFIG[3] },
+  ligaPortugal2:        { tier: 3, ...TIER_CONFIG[3] },
+
   // === Tier 5: Amateur - Segunda RFEF ===
   segundaRFEF:  { tier: 5, ...TIER_CONFIG[5] },
 };
@@ -132,6 +141,11 @@ export const PROMOTIONS_TO_CHAMPIONS = {
   danishSuperliga: 1,
   croatianLeague: 1,
   czechLeague: 1,
+  eliteserien: 1,
+  allsvenskan: 1,
+  ekstraklasa: 1,
+  eersteDivisie: 2,
+  ligaPortugal2: 2,
   // Sudamérica (primera división, necesitan clasificarse a Libertadores)
   argentinaPrimera: 1,
   brasileiraoA: 1,
@@ -331,6 +345,11 @@ export const LEAGUE_NAMES = {
   saudiProLeague: 'Arabian League',
   ligaMX: 'Azteca League',
   jLeague: 'Sakura League',
+  eliteserien: 'Fjord League',
+  allsvenskan: 'Scandi League',
+  ekstraklasa: 'Vistula League',
+  eersteDivisie: 'Dutch Second',
+  ligaPortugal2: 'Liga Lusitana 2',
 };
 
 export function getLeagueName(leagueId) {
