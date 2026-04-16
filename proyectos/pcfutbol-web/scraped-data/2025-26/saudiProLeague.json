@@ -1,0 +1,200 @@
+[
+  {
+    "id": "tm-1114",
+    "name": "Al-Hilal SFC",
+    "slug": "al-hilal-riad",
+    "transfermarktId": "1114",
+    "teamUrl": "https://www.transfermarkt.es/al-hilal-riad/startseite/verein/1114/saison_id/2025",
+    "marketValueText": "208,40 mill. €",
+    "league": "saudiProLeague",
+    "season": "2025-26",
+    "rank": 1
+  },
+  {
+    "id": "tm-18487",
+    "name": "Al-Ahli SFC",
+    "slug": "al-ahli-dschidda",
+    "transfermarktId": "18487",
+    "teamUrl": "https://www.transfermarkt.es/al-ahli-dschidda/startseite/verein/18487/saison_id/2025",
+    "marketValueText": "173,83 mill. €",
+    "league": "saudiProLeague",
+    "season": "2025-26",
+    "rank": 2
+  },
+  {
+    "id": "tm-8023",
+    "name": "Al-Ittihad Club",
+    "slug": "al-ittihad-dschidda",
+    "transfermarktId": "8023",
+    "teamUrl": "https://www.transfermarkt.es/al-ittihad-dschidda/startseite/verein/8023/saison_id/2025",
+    "marketValueText": "162,60 mill. €",
+    "league": "saudiProLeague",
+    "season": "2025-26",
+    "rank": 3
+  },
+  {
+    "id": "tm-18544",
+    "name": "Al-Nassr FC",
+    "slug": "al-nasr-riad",
+    "transfermarktId": "18544",
+    "teamUrl": "https://www.transfermarkt.es/al-nasr-riad/startseite/verein/18544/saison_id/2025",
+    "marketValueText": "135,40 mill. €",
+    "league": "saudiProLeague",
+    "season": "2025-26",
+    "rank": 4
+  },
+  {
+    "id": "tm-26069",
+    "name": "Al-Qadsiah FC",
+    "slug": "al-qadisiyah-fc",
+    "transfermarktId": "26069",
+    "teamUrl": "https://www.transfermarkt.es/al-qadisiyah-fc/startseite/verein/26069/saison_id/2025",
+    "marketValueText": "118,08 mill. €",
+    "league": "saudiProLeague",
+    "season": "2025-26",
+    "rank": 5
+  },
+  {
+    "id": "tm-34911",
+    "name": "NEOM SC",
+    "slug": "al-suqoor",
+    "transfermarktId": "34911",
+    "teamUrl": "https://www.transfermarkt.es/al-suqoor/startseite/verein/34911/saison_id/2025",
+    "marketValueText": "84,15 mill. €",
+    "league": "saudiProLeague",
+    "season": "2025-26",
+    "rank": 6
+  },
+  {
+    "id": "tm-9840",
+    "name": "Al-Shabab FC",
+    "slug": "al-shabab-riad",
+    "transfermarktId": "9840",
+    "teamUrl": "https://www.transfermarkt.es/al-shabab-riad/startseite/verein/9840/saison_id/2025",
+    "marketValueText": "44,53 mill. €",
+    "league": "saudiProLeague",
+    "season": "2025-26",
+    "rank": 7
+  },
+  {
+    "id": "tm-28844",
+    "name": "Al-Taawoun FC",
+    "slug": "al-taawoun-fc",
+    "transfermarktId": "28844",
+    "teamUrl": "https://www.transfermarkt.es/al-taawoun-fc/startseite/verein/28844/saison_id/2025",
+    "marketValueText": "37,35 mill. €",
+    "league": "saudiProLeague",
+    "season": "2025-26",
+    "rank": 8
+  },
+  {
+    "id": "tm-7732",
+    "name": "Al-Ettifaq FC",
+    "slug": "al-ettifaq",
+    "transfermarktId": "7732",
+    "teamUrl": "https://www.transfermarkt.es/al-ettifaq/startseite/verein/7732/saison_id/2025",
+    "marketValueText": "32,08 mill. €",
+    "league": "saudiProLeague",
+    "season": "2025-26",
+    "rank": 9
+  },
+  {
+    "id": "tm-91427",
+    "name": "Al-Kholood Club",
+    "slug": "al-kholood",
+    "transfermarktId": "91427",
+    "teamUrl": "https://www.transfermarkt.es/al-kholood/startseite/verein/91427/saison_id/2025",
+    "marketValueText": "20,20 mill. €",
+    "league": "saudiProLeague",
+    "season": "2025-26",
+    "rank": 10
+  },
+  {
+    "id": "tm-27221",
+    "name": "Al-Fateh SC",
+    "slug": "al-fateh",
+    "transfermarktId": "27221",
+    "teamUrl": "https://www.transfermarkt.es/al-fateh/startseite/verein/27221/saison_id/2025",
+    "marketValueText": "17,85 mill. €",
+    "league": "saudiProLeague",
+    "season": "2025-26",
+    "rank": 11
+  },
+  {
+    "id": "tm-50531",
+    "name": "Al-Fayha FC",
+    "slug": "al-fayha-fc",
+    "transfermarktId": "50531",
+    "teamUrl": "https://www.transfermarkt.es/al-fayha-fc/startseite/verein/50531/saison_id/2025",
+    "marketValueText": "16,83 mill. €",
+    "league": "saudiProLeague",
+    "season": "2025-26",
+    "rank": 12
+  },
+  {
+    "id": "tm-32328",
+    "name": "Al-Najma SC",
+    "slug": "al-najma",
+    "transfermarktId": "32328",
+    "teamUrl": "https://www.transfermarkt.es/al-najma/startseite/verein/32328/saison_id/2025",
+    "marketValueText": "15,65 mill. €",
+    "league": "saudiProLeague",
+    "season": "2025-26",
+    "rank": 13
+  },
+  {
+    "id": "tm-71665",
+    "name": "Al-Okhdood Club",
+    "slug": "al-akhdoud-club",
+    "transfermarktId": "71665",
+    "teamUrl": "https://www.transfermarkt.es/al-akhdoud-club/startseite/verein/71665/saison_id/2025",
+    "marketValueText": "13,70 mill. €",
+    "league": "saudiProLeague",
+    "season": "2025-26",
+    "rank": 14
+  },
+  {
+    "id": "tm-6070",
+    "name": "Al-Khaleej FC",
+    "slug": "al-khaleej",
+    "transfermarktId": "6070",
+    "teamUrl": "https://www.transfermarkt.es/al-khaleej/startseite/verein/6070/saison_id/2025",
+    "marketValueText": "12,78 mill. €",
+    "league": "saudiProLeague",
+    "season": "2025-26",
+    "rank": 15
+  },
+  {
+    "id": "tm-31008",
+    "name": "Al-Riyadh SC",
+    "slug": "al-riad",
+    "transfermarktId": "31008",
+    "teamUrl": "https://www.transfermarkt.es/al-riad/startseite/verein/31008/saison_id/2025",
+    "marketValueText": "12,73 mill. €",
+    "league": "saudiProLeague",
+    "season": "2025-26",
+    "rank": 16
+  },
+  {
+    "id": "tm-50532",
+    "name": "Damac FC",
+    "slug": "damac-fc",
+    "transfermarktId": "50532",
+    "teamUrl": "https://www.transfermarkt.es/damac-fc/startseite/verein/50532/saison_id/2025",
+    "marketValueText": "12,55 mill. €",
+    "league": "saudiProLeague",
+    "season": "2025-26",
+    "rank": 17
+  },
+  {
+    "id": "tm-9131",
+    "name": "Al-Hazem SC",
+    "slug": "al-hazm",
+    "transfermarktId": "9131",
+    "teamUrl": "https://www.transfermarkt.es/al-hazm/startseite/verein/9131/saison_id/2025",
+    "marketValueText": "10,80 mill. €",
+    "league": "saudiProLeague",
+    "season": "2025-26",
+    "rank": 18
+  }
+]
