@@ -21,6 +21,9 @@ const COUNTRY_DATA = {
   austria: { lat: 47.5, lng: 14.5, name: 'Austria', code: 'AT', color: '#ED2939', continent: 'europe' },
   greece: { lat: 38.5, lng: 23.7, name: 'Grecia', code: 'GR', color: '#0D5EAF', continent: 'europe' },
   denmark: { lat: 56.0, lng: 10.0, name: 'Dinamarca', code: 'DK', color: '#C60C30', continent: 'europe' },
+  norway: { lat: 60.5, lng: 8.5, name: 'Noruega', code: 'NO', color: '#BA0C2F', continent: 'europe' },
+  sweden: { lat: 62.0, lng: 15.0, name: 'Suecia', code: 'SE', color: '#006AA7', continent: 'europe' },
+  poland: { lat: 52.1, lng: 19.4, name: 'Polonia', code: 'PL', color: '#DC143C', continent: 'europe' },
   croatia: { lat: 45.1, lng: 15.2, name: 'Croacia', code: 'HR', color: '#FF3333', continent: 'europe' },
   czech: { lat: 49.8, lng: 15.5, name: 'Chequia', code: 'CZ', color: '#11457E', continent: 'europe' },
   // South America
@@ -206,7 +209,7 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
         ref={globeEl}
         width={size}
         height={size}
-        globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
+        globeImageUrl="/textures/earth-night.jpg"
         backgroundColor="rgba(0,0,0,0)"
 
         // HTML markers — large clickable areas
