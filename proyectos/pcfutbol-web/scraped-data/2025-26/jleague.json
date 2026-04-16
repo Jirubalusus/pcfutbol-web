@@ -1,0 +1,222 @@
+[
+  {
+    "id": "tm-2241",
+    "name": "Kashima Antlers",
+    "slug": "kashima-antlers",
+    "transfermarktId": "2241",
+    "teamUrl": "https://www.transfermarkt.es/kashima-antlers/startseite/verein/2241/saison_id/2026",
+    "marketValueText": "0",
+    "league": "jleague",
+    "season": "2025-26",
+    "rank": 1
+  },
+  {
+    "id": "tm-21975",
+    "name": "Mito HollyHock",
+    "slug": "mito-hollyhock",
+    "transfermarktId": "21975",
+    "teamUrl": "https://www.transfermarkt.es/mito-hollyhock/startseite/verein/21975/saison_id/2026",
+    "marketValueText": "0",
+    "league": "jleague",
+    "season": "2025-26",
+    "rank": 2
+  },
+  {
+    "id": "tm-828",
+    "name": "Urawa Red Diamonds",
+    "slug": "urawa-red-diamonds",
+    "transfermarktId": "828",
+    "teamUrl": "https://www.transfermarkt.es/urawa-red-diamonds/startseite/verein/828/saison_id/2026",
+    "marketValueText": "0",
+    "league": "jleague",
+    "season": "2025-26",
+    "rank": 3
+  },
+  {
+    "id": "tm-672",
+    "name": "JEF United Chiba",
+    "slug": "jef-united-chiba",
+    "transfermarktId": "672",
+    "teamUrl": "https://www.transfermarkt.es/jef-united-chiba/startseite/verein/672/saison_id/2026",
+    "marketValueText": "0",
+    "league": "jleague",
+    "season": "2025-26",
+    "rank": 4
+  },
+  {
+    "id": "tm-6632",
+    "name": "Kashiwa Reysol",
+    "slug": "kashiwa-reysol",
+    "transfermarktId": "6632",
+    "teamUrl": "https://www.transfermarkt.es/kashiwa-reysol/startseite/verein/6632/saison_id/2026",
+    "marketValueText": "0",
+    "league": "jleague",
+    "season": "2025-26",
+    "rank": 5
+  },
+  {
+    "id": "tm-6631",
+    "name": "FC Tokyo",
+    "slug": "fc-tokyo",
+    "transfermarktId": "6631",
+    "teamUrl": "https://www.transfermarkt.es/fc-tokyo/startseite/verein/6631/saison_id/2026",
+    "marketValueText": "0",
+    "league": "jleague",
+    "season": "2025-26",
+    "rank": 6
+  },
+  {
+    "id": "tm-3734",
+    "name": "Tokyo Verdy",
+    "slug": "tokyo-verdy",
+    "transfermarktId": "3734",
+    "teamUrl": "https://www.transfermarkt.es/tokyo-verdy/startseite/verein/3734/saison_id/2026",
+    "marketValueText": "0",
+    "league": "jleague",
+    "season": "2025-26",
+    "rank": 7
+  },
+  {
+    "id": "tm-23568",
+    "name": "Machida Zelvia",
+    "slug": "machida-zelvia",
+    "transfermarktId": "23568",
+    "teamUrl": "https://www.transfermarkt.es/machida-zelvia/startseite/verein/23568/saison_id/2026",
+    "marketValueText": "0",
+    "league": "jleague",
+    "season": "2025-26",
+    "rank": 8
+  },
+  {
+    "id": "tm-9598",
+    "name": "Kawasaki Frontale",
+    "slug": "kawasaki-frontale",
+    "transfermarktId": "9598",
+    "teamUrl": "https://www.transfermarkt.es/kawasaki-frontale/startseite/verein/9598/saison_id/2026",
+    "marketValueText": "0",
+    "league": "jleague",
+    "season": "2025-26",
+    "rank": 9
+  },
+  {
+    "id": "tm-3828",
+    "name": "Yokohama F. Marinos",
+    "slug": "yokohama-f-marinos",
+    "transfermarktId": "3828",
+    "teamUrl": "https://www.transfermarkt.es/yokohama-f-marinos/startseite/verein/3828/saison_id/2026",
+    "marketValueText": "0",
+    "league": "jleague",
+    "season": "2025-26",
+    "rank": 10
+  },
+  {
+    "id": "tm-1062",
+    "name": "Shimizu S-Pulse",
+    "slug": "shimizu-s-pulse",
+    "transfermarktId": "1062",
+    "teamUrl": "https://www.transfermarkt.es/shimizu-s-pulse/startseite/verein/1062/saison_id/2026",
+    "marketValueText": "0",
+    "league": "jleague",
+    "season": "2025-26",
+    "rank": 11
+  },
+  {
+    "id": "tm-1066",
+    "name": "Nagoya Grampus",
+    "slug": "nagoya-grampus",
+    "transfermarktId": "1066",
+    "teamUrl": "https://www.transfermarkt.es/nagoya-grampus/startseite/verein/1066/saison_id/2026",
+    "marketValueText": "0",
+    "league": "jleague",
+    "season": "2025-26",
+    "rank": 12
+  },
+  {
+    "id": "tm-593",
+    "name": "Kyoto Sanga",
+    "slug": "kyoto-sanga",
+    "transfermarktId": "593",
+    "teamUrl": "https://www.transfermarkt.es/kyoto-sanga/startseite/verein/593/saison_id/2026",
+    "marketValueText": "0",
+    "league": "jleague",
+    "season": "2025-26",
+    "rank": 13
+  },
+  {
+    "id": "tm-596",
+    "name": "Gamba Osaka",
+    "slug": "gamba-osaka",
+    "transfermarktId": "596",
+    "teamUrl": "https://www.transfermarkt.es/gamba-osaka/startseite/verein/596/saison_id/2026",
+    "marketValueText": "0",
+    "league": "jleague",
+    "season": "2025-26",
+    "rank": 14
+  },
+  {
+    "id": "tm-1022",
+    "name": "Cerezo Osaka",
+    "slug": "cerezo-osaka",
+    "transfermarktId": "1022",
+    "teamUrl": "https://www.transfermarkt.es/cerezo-osaka/startseite/verein/1022/saison_id/2026",
+    "marketValueText": "0",
+    "league": "jleague",
+    "season": "2025-26",
+    "rank": 15
+  },
+  {
+    "id": "tm-3958",
+    "name": "Vissel Kobe",
+    "slug": "vissel-kobe",
+    "transfermarktId": "3958",
+    "teamUrl": "https://www.transfermarkt.es/vissel-kobe/startseite/verein/3958/saison_id/2026",
+    "marketValueText": "0",
+    "league": "jleague",
+    "season": "2025-26",
+    "rank": 16
+  },
+  {
+    "id": "tm-22171",
+    "name": "Fagiano Okayama",
+    "slug": "fagiano-okayama",
+    "transfermarktId": "22171",
+    "teamUrl": "https://www.transfermarkt.es/fagiano-okayama/startseite/verein/22171/saison_id/2026",
+    "marketValueText": "0",
+    "league": "jleague",
+    "season": "2025-26",
+    "rank": 17
+  },
+  {
+    "id": "tm-2697",
+    "name": "Sanfrecce Hiroshima",
+    "slug": "sanfrecce-hiroshima",
+    "transfermarktId": "2697",
+    "teamUrl": "https://www.transfermarkt.es/sanfrecce-hiroshima/startseite/verein/2697/saison_id/2026",
+    "marketValueText": "0",
+    "league": "jleague",
+    "season": "2025-26",
+    "rank": 18
+  },
+  {
+    "id": "tm-9597",
+    "name": "Avispa Fukuoka",
+    "slug": "avispa-fukuoka",
+    "transfermarktId": "9597",
+    "teamUrl": "https://www.transfermarkt.es/avispa-fukuoka/startseite/verein/9597/saison_id/2026",
+    "marketValueText": "0",
+    "league": "jleague",
+    "season": "2025-26",
+    "rank": 19
+  },
+  {
+    "id": "tm-23581",
+    "name": "V-Varen Nagasaki",
+    "slug": "v-varen-nagasaki",
+    "transfermarktId": "23581",
+    "teamUrl": "https://www.transfermarkt.es/v-varen-nagasaki/startseite/verein/23581/saison_id/2026",
+    "marketValueText": "0",
+    "league": "jleague",
+    "season": "2025-26",
+    "rank": 20
+  }
+]

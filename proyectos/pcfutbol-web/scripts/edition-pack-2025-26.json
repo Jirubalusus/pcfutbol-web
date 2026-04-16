@@ -36957,6 +36957,166 @@
       },
       "name": "Sporting Kansas City",
       "city": "Sporting Kansas City"
+    },
+    "Stag FC": {
+      "name": "Kashima Antlers",
+      "city": "Kashima Antlers"
+    },
+    "kashima-antlers": {
+      "name": "Kashima Antlers",
+      "city": "Kashima Antlers"
+    },
+    "Holly FC": {
+      "name": "Mito HollyHock",
+      "city": "Mito HollyHock"
+    },
+    "mito-hollyhock": {
+      "name": "Mito HollyHock",
+      "city": "Mito HollyHock"
+    },
+    "Crimson Diamonds": {
+      "name": "Urawa Red Diamonds",
+      "city": "Urawa Red Diamonds"
+    },
+    "urawa-red-diamonds": {
+      "name": "Urawa Red Diamonds",
+      "city": "Urawa Red Diamonds"
+    },
+    "Chiba United": {
+      "name": "JEF United Chiba",
+      "city": "JEF United Chiba"
+    },
+    "jef-united-chiba": {
+      "name": "JEF United Chiba",
+      "city": "JEF United Chiba"
+    },
+    "Sol Reysol": {
+      "name": "Kashiwa Reysol",
+      "city": "Kashiwa Reysol"
+    },
+    "kashiwa-reysol": {
+      "name": "Kashiwa Reysol",
+      "city": "Kashiwa Reysol"
+    },
+    "Capital FC": {
+      "name": "FC Tokyo",
+      "city": "FC Tokyo"
+    },
+    "fc-tokyo": {
+      "name": "FC Tokyo",
+      "city": "FC Tokyo"
+    },
+    "Verdy FC": {
+      "name": "Tokyo Verdy",
+      "city": "Tokyo Verdy"
+    },
+    "tokyo-verdy": {
+      "name": "Tokyo Verdy",
+      "city": "Tokyo Verdy"
+    },
+    "Zelvia FC": {
+      "name": "Machida Zelvia",
+      "city": "Machida Zelvia"
+    },
+    "machida-zelvia": {
+      "name": "Machida Zelvia",
+      "city": "Machida Zelvia"
+    },
+    "Frontale FC": {
+      "name": "Kawasaki Frontale",
+      "city": "Kawasaki Frontale"
+    },
+    "kawasaki-frontale": {
+      "name": "Kawasaki Frontale",
+      "city": "Kawasaki Frontale"
+    },
+    "Bay Marinos": {
+      "name": "Yokohama F. Marinos",
+      "city": "Yokohama F. Marinos"
+    },
+    "yokohama-f-marinos": {
+      "name": "Yokohama F. Marinos",
+      "city": "Yokohama F. Marinos"
+    },
+    "Shimizu Pulse": {
+      "name": "Shimizu S-Pulse",
+      "city": "Shimizu S-Pulse"
+    },
+    "shimizu-s-pulse": {
+      "name": "Shimizu S-Pulse",
+      "city": "Shimizu S-Pulse"
+    },
+    "Nagoya FC": {
+      "name": "Nagoya Grampus",
+      "city": "Nagoya Grampus"
+    },
+    "nagoya-grampus": {
+      "name": "Nagoya Grampus",
+      "city": "Nagoya Grampus"
+    },
+    "Kyoto FC": {
+      "name": "Kyoto Sanga",
+      "city": "Kyoto Sanga"
+    },
+    "kyoto-sanga": {
+      "name": "Kyoto Sanga",
+      "city": "Kyoto Sanga"
+    },
+    "Osaka Gamba": {
+      "name": "Gamba Osaka",
+      "city": "Gamba Osaka"
+    },
+    "gamba-osaka": {
+      "name": "Gamba Osaka",
+      "city": "Gamba Osaka"
+    },
+    "Osaka Cerezo": {
+      "name": "Cerezo Osaka",
+      "city": "Cerezo Osaka"
+    },
+    "cerezo-osaka": {
+      "name": "Cerezo Osaka",
+      "city": "Cerezo Osaka"
+    },
+    "Hyōgo FC": {
+      "name": "Vissel Kobe",
+      "city": "Vissel Kobe"
+    },
+    "vissel-kobe": {
+      "name": "Vissel Kobe",
+      "city": "Vissel Kobe"
+    },
+    "Okayama FC": {
+      "name": "Fagiano Okayama",
+      "city": "Fagiano Okayama"
+    },
+    "fagiano-okayama": {
+      "name": "Fagiano Okayama",
+      "city": "Fagiano Okayama"
+    },
+    "Hiroshima Arrows": {
+      "name": "Sanfrecce Hiroshima",
+      "city": "Sanfrecce Hiroshima"
+    },
+    "sanfrecce-hiroshima": {
+      "name": "Sanfrecce Hiroshima",
+      "city": "Sanfrecce Hiroshima"
+    },
+    "Fukuoka FC": {
+      "name": "Avispa Fukuoka",
+      "city": "Avispa Fukuoka"
+    },
+    "avispa-fukuoka": {
+      "name": "Avispa Fukuoka",
+      "city": "Avispa Fukuoka"
+    },
+    "Nagasaki FC": {
+      "name": "V-Varen Nagasaki",
+      "city": "V-Varen Nagasaki"
+    },
+    "v-varen-nagasaki": {
+      "name": "V-Varen Nagasaki",
+      "city": "V-Varen Nagasaki"
     }
   },
   "leagues": {
