@@ -1,0 +1,3502 @@
+[
+  {
+    "id": "ed-volendam",
+    "name": "Vissersdorp FC",
+    "shortName": "VIS",
+    "city": "Volendam",
+    "colors": {
+      "primary": "#FF7700",
+      "secondary": "#000000"
+    },
+    "stadium": "Haven Stadion",
+    "stadiumCapacity": 6442,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Daan Jansen",
+        "position": "POR",
+        "age": 24,
+        "overall": 74,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Sven Meijer",
+        "position": "POR",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Victor Boateng",
+        "position": "DFC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Caio Costa",
+        "position": "DFC",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Brasil",
+        "value": 224000
+      },
+      {
+        "name": "Niels Dekker",
+        "position": "DFC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Lars Peters",
+        "position": "DFC",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Igor Ribeiro",
+        "position": "LB",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Koen de Groot",
+        "position": "RB",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Tim van den Berg",
+        "position": "MCD",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Koen Bos",
+        "position": "MCD",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Tim Janssen",
+        "position": "MC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Ruud Bos",
+        "position": "MC",
+        "age": 21,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Thijs Visser",
+        "position": "MC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Ruud Jansen",
+        "position": "MCO",
+        "age": 23,
+        "overall": 75,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Thomas Mulder",
+        "position": "EI",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Peter Ndiaye",
+        "position": "ED",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Jurriën van Leeuwen",
+        "position": "DC",
+        "age": 25,
+        "overall": 74,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Luuk Janssen",
+        "position": "DC",
+        "age": 20,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Sven van Dijk",
+        "position": "DC",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Daan Dekker",
+        "position": "MP",
+        "age": 20,
+        "overall": 67,
+        "nationality": "Países Bajos",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "fc-den-bosch",
+    "name": "Brabantstad FC",
+    "shortName": "BRB",
+    "city": "Den Bosch",
+    "colors": {
+      "primary": "#D60000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "De Vliert Arena",
+    "stadiumCapacity": 8500,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "André Carvalho",
+        "position": "POR",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Jurriën Jansen",
+        "position": "POR",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Gijs Dekker",
+        "position": "DFC",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Sota Watanabe",
+        "position": "DFC",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Japón",
+        "value": 420000
+      },
+      {
+        "name": "Chinedu Koné",
+        "position": "DFC",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Ryan van Dijk",
+        "position": "DFC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Thijs Bos",
+        "position": "LB",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Finn van den Berg",
+        "position": "RB",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Sem Jansen",
+        "position": "MCD",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Sem van den Berg",
+        "position": "MCD",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Ryoma Tanaka",
+        "position": "MC",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Japón",
+        "value": 420000
+      },
+      {
+        "name": "Mees Brouwer",
+        "position": "MC",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Mario Díaz",
+        "position": "MC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "España",
+        "value": 420000
+      },
+      {
+        "name": "Ebenezer Koné",
+        "position": "MCO",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Finn Peters",
+        "position": "EI",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Joost Janssen",
+        "position": "ED",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Luuk Bos",
+        "position": "DC",
+        "age": 28,
+        "overall": 74,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Takumi Watanabe",
+        "position": "DC",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Japón",
+        "value": 420000
+      },
+      {
+        "name": "Thijs Smit",
+        "position": "DC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Thomas Mulder",
+        "position": "MP",
+        "age": 24,
+        "overall": 68,
+        "nationality": "Países Bajos",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "roda-jc",
+    "name": "Limburg JC",
+    "shortName": "LIM",
+    "city": "Kerkrade",
+    "colors": {
+      "primary": "#FFD500",
+      "secondary": "#000000"
+    },
+    "stadium": "Parkstad Arena",
+    "stadiumCapacity": 19979,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Luuk van Leeuwen",
+        "position": "POR",
+        "age": 28,
+        "overall": 74,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Joost Janssen",
+        "position": "POR",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Gijs van den Berg",
+        "position": "DFC",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Bram Bakker",
+        "position": "DFC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Mees de Wit",
+        "position": "DFC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Gijs Bakker",
+        "position": "DFC",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Ruud Vos",
+        "position": "LB",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Mees Bos",
+        "position": "RB",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Ruud Hendriks",
+        "position": "MCD",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Ryan Bos",
+        "position": "MCD",
+        "age": 24,
+        "overall": 74,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Carlos López",
+        "position": "MC",
+        "age": 24,
+        "overall": 74,
+        "nationality": "España",
+        "value": 840000
+      },
+      {
+        "name": "Mees van Leeuwen",
+        "position": "MC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Koen Vos",
+        "position": "MC",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Kelechi Boateng",
+        "position": "MCO",
+        "age": 29,
+        "overall": 75,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Daan de Wit",
+        "position": "EI",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Iván Álvarez",
+        "position": "ED",
+        "age": 25,
+        "overall": 74,
+        "nationality": "España",
+        "value": 840000
+      },
+      {
+        "name": "Shota Saito",
+        "position": "DC",
+        "age": 32,
+        "overall": 74,
+        "nationality": "Japón",
+        "value": 840000
+      },
+      {
+        "name": "Ruud de Jong",
+        "position": "DC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Jurriën Jansen",
+        "position": "DC",
+        "age": 32,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Jurriën Janssen",
+        "position": "MP",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "vvv-venlo",
+    "name": "Maasstad VVV",
+    "shortName": "MAA",
+    "city": "Venlo",
+    "colors": {
+      "primary": "#FFD500",
+      "secondary": "#000000"
+    },
+    "stadium": "Covebo Park",
+    "stadiumCapacity": 8000,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Joost de Groot",
+        "position": "POR",
+        "age": 32,
+        "overall": 76,
+        "nationality": "Países Bajos",
+        "value": 1680000
+      },
+      {
+        "name": "Sem Smit",
+        "position": "POR",
+        "age": 28,
+        "overall": 68,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Stijn Visser",
+        "position": "DFC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Jesse Bos",
+        "position": "DFC",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Ruud Jansen",
+        "position": "DFC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Lars van den Berg",
+        "position": "DFC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Luuk van Dijk",
+        "position": "LB",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Hiroshi Tanaka",
+        "position": "RB",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Japón",
+        "value": 420000
+      },
+      {
+        "name": "Kelechi Mensah",
+        "position": "MCD",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Finn Smit",
+        "position": "MCD",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Sven Brouwer",
+        "position": "MC",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Obi Koné",
+        "position": "MC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Thijs van Dijk",
+        "position": "MC",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Niels Brouwer",
+        "position": "MCO",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Sven Smit",
+        "position": "EI",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Rafael Moreira",
+        "position": "ED",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Javier Sánchez",
+        "position": "DC",
+        "age": 32,
+        "overall": 74,
+        "nationality": "España",
+        "value": 840000
+      },
+      {
+        "name": "Stijn van Leeuwen",
+        "position": "DC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Ryan Janssen",
+        "position": "DC",
+        "age": 26,
+        "overall": 68,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Ryan van Dijk",
+        "position": "MP",
+        "age": 28,
+        "overall": 67,
+        "nationality": "Países Bajos",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "mvv-maastricht",
+    "name": "Limburgs MVV",
+    "shortName": "LMV",
+    "city": "Maastricht",
+    "colors": {
+      "primary": "#D60000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Geusselt Arena",
+    "stadiumCapacity": 10000,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Hiroshi Yamamoto",
+        "position": "POR",
+        "age": 29,
+        "overall": 76,
+        "nationality": "Japón",
+        "value": 1680000
+      },
+      {
+        "name": "Sven Mulder",
+        "position": "POR",
+        "age": 30,
+        "overall": 66,
+        "nationality": "Países Bajos",
+        "value": 112000
+      },
+      {
+        "name": "Iván Navarro",
+        "position": "DFC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "España",
+        "value": 420000
+      },
+      {
+        "name": "Niels Bakker",
+        "position": "DFC",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Sven Visser",
+        "position": "DFC",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Thomas Bos",
+        "position": "DFC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Ruud Brouwer",
+        "position": "LB",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Ruud Bakker",
+        "position": "RB",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Joost Visser",
+        "position": "MCD",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Koen Vos",
+        "position": "MCD",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Gijs Visser",
+        "position": "MC",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Kenta Yoshida",
+        "position": "MC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Japón",
+        "value": 420000
+      },
+      {
+        "name": "Luuk van den Berg",
+        "position": "MC",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Tim Visser",
+        "position": "MCO",
+        "age": 21,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Gijs van Leeuwen",
+        "position": "EI",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Finn Smit",
+        "position": "ED",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Daan de Vries",
+        "position": "DC",
+        "age": 24,
+        "overall": 74,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Bram de Groot",
+        "position": "DC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Jesse Smit",
+        "position": "DC",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Víctor Ruiz",
+        "position": "MP",
+        "age": 32,
+        "overall": 66,
+        "nationality": "España",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "fc-eindhoven",
+    "name": "Lichtstad FC",
+    "shortName": "LST",
+    "city": "Eindhoven",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Jan Louwers Park",
+    "stadiumCapacity": 4200,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Niels de Groot",
+        "position": "POR",
+        "age": 31,
+        "overall": 76,
+        "nationality": "Países Bajos",
+        "value": 1680000
+      },
+      {
+        "name": "Luuk de Wit",
+        "position": "POR",
+        "age": 29,
+        "overall": 68,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Ebenezer Koné",
+        "position": "DFC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Ryan Dekker",
+        "position": "DFC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Ruud de Vries",
+        "position": "DFC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Finn Mulder",
+        "position": "DFC",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Sem de Vries",
+        "position": "LB",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Gijs van Dijk",
+        "position": "RB",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Tim de Groot",
+        "position": "MCD",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Jurriën Mulder",
+        "position": "MCD",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Jesse Vos",
+        "position": "MC",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Peter Koné",
+        "position": "MC",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Sven Bakker",
+        "position": "MC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Sem Peters",
+        "position": "MCO",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Thomas de Vries",
+        "position": "EI",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Sven Peters",
+        "position": "ED",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "André Araújo",
+        "position": "DC",
+        "age": 24,
+        "overall": 75,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Kenta Saito",
+        "position": "DC",
+        "age": 24,
+        "overall": 68,
+        "nationality": "Japón",
+        "value": 224000
+      },
+      {
+        "name": "Niels Visser",
+        "position": "DC",
+        "age": 28,
+        "overall": 68,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Tim Brouwer",
+        "position": "MP",
+        "age": 32,
+        "overall": 66,
+        "nationality": "Países Bajos",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "ed-nec",
+    "name": "Goffertstad FC",
+    "shortName": "GOF",
+    "city": "Nijmegen",
+    "colors": {
+      "primary": "#D60000",
+      "secondary": "#000000"
+    },
+    "stadium": "Goffert Arena",
+    "stadiumCapacity": 12500,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Ronaldo Cavalcante",
+        "position": "POR",
+        "age": 28,
+        "overall": 77,
+        "nationality": "Brasil",
+        "value": 1680000
+      },
+      {
+        "name": "Jurriën Bakker",
+        "position": "POR",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Finn Bakker",
+        "position": "DFC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Moses Adeyemi",
+        "position": "DFC",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Lars Visser",
+        "position": "DFC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Finn Smit",
+        "position": "DFC",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Lars Peters",
+        "position": "LB",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Victor Adeyemi",
+        "position": "RB",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Sota Watanabe",
+        "position": "MCD",
+        "age": 22,
+        "overall": 74,
+        "nationality": "Japón",
+        "value": 840000
+      },
+      {
+        "name": "Joost van den Berg",
+        "position": "MCD",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Kingsley Boateng",
+        "position": "MC",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Joost Jansen",
+        "position": "MC",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Victor Ndiaye",
+        "position": "MC",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Moses Sarr",
+        "position": "MCO",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Sergio Díaz",
+        "position": "EI",
+        "age": 24,
+        "overall": 74,
+        "nationality": "España",
+        "value": 840000
+      },
+      {
+        "name": "Iker Martínez",
+        "position": "ED",
+        "age": 26,
+        "overall": 71,
+        "nationality": "España",
+        "value": 420000
+      },
+      {
+        "name": "Ryan Meijer",
+        "position": "DC",
+        "age": 19,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Joost Hendriks",
+        "position": "DC",
+        "age": 20,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Jurriën Brouwer",
+        "position": "DC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Sven Mulder",
+        "position": "MP",
+        "age": 25,
+        "overall": 66,
+        "nationality": "Países Bajos",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "emmen",
+    "name": "Drenthe FC",
+    "shortName": "DRT",
+    "city": "Emmen",
+    "colors": {
+      "primary": "#D60000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Meerdijk Arena",
+    "stadiumCapacity": 8700,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Joost Bos",
+        "position": "POR",
+        "age": 31,
+        "overall": 76,
+        "nationality": "Países Bajos",
+        "value": 1680000
+      },
+      {
+        "name": "Stijn Janssen",
+        "position": "POR",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Niels van den Berg",
+        "position": "DFC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Ebenezer Koné",
+        "position": "DFC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Niels Hendriks",
+        "position": "DFC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Niels Meijer",
+        "position": "DFC",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Jesse Mulder",
+        "position": "LB",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Samuel Rodríguez",
+        "position": "RB",
+        "age": 31,
+        "overall": 72,
+        "nationality": "España",
+        "value": 420000
+      },
+      {
+        "name": "Luuk de Groot",
+        "position": "MCD",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Ryan Peters",
+        "position": "MCD",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Luuk Vos",
+        "position": "MC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Stijn van den Berg",
+        "position": "MC",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Ruud Jansen",
+        "position": "MC",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Jesse Vos",
+        "position": "MCO",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Thijs Bakker",
+        "position": "EI",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Finn Vos",
+        "position": "ED",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Ryan de Groot",
+        "position": "DC",
+        "age": 24,
+        "overall": 75,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Thomas Visser",
+        "position": "DC",
+        "age": 32,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Jurriën Bakker",
+        "position": "DC",
+        "age": 30,
+        "overall": 68,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Daan Bos",
+        "position": "MP",
+        "age": 20,
+        "overall": 66,
+        "nationality": "Países Bajos",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "helmond-sport",
+    "name": "Zwart-Wit Sport",
+    "shortName": "ZWS",
+    "city": "Helmond",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Lavans Park",
+    "stadiumCapacity": 4100,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Daan Smit",
+        "position": "POR",
+        "age": 33,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Luuk Hendriks",
+        "position": "POR",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Peter Mensah",
+        "position": "DFC",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Nigeria",
+        "value": 224000
+      },
+      {
+        "name": "Thomas Bos",
+        "position": "DFC",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Koen Bos",
+        "position": "DFC",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Lars Mulder",
+        "position": "DFC",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Jesse Jansen",
+        "position": "LB",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Sem van den Berg",
+        "position": "RB",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Kingsley Boateng",
+        "position": "MCD",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Kingsley Koné",
+        "position": "MCD",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Javier Álvarez",
+        "position": "MC",
+        "age": 21,
+        "overall": 73,
+        "nationality": "España",
+        "value": 840000
+      },
+      {
+        "name": "Finn Peters",
+        "position": "MC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Niels Janssen",
+        "position": "MC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Daan Bos",
+        "position": "MCO",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Joost Smit",
+        "position": "EI",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Sem Meijer",
+        "position": "ED",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Joost van den Berg",
+        "position": "DC",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Bram de Wit",
+        "position": "DC",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Sven Brouwer",
+        "position": "DC",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Carlos López",
+        "position": "MP",
+        "age": 24,
+        "overall": 66,
+        "nationality": "España",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "ed-telstar",
+    "name": "Witte Leeuwen SC",
+    "shortName": "WLW",
+    "city": "Velsen",
+    "colors": {
+      "primary": "#FFFFFF",
+      "secondary": "#000000"
+    },
+    "stadium": "BUKO Arena",
+    "stadiumCapacity": 3625,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Javier Muñoz",
+        "position": "POR",
+        "age": 26,
+        "overall": 76,
+        "nationality": "España",
+        "value": 1680000
+      },
+      {
+        "name": "Niels de Jong",
+        "position": "POR",
+        "age": 25,
+        "overall": 68,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Thijs de Groot",
+        "position": "DFC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Sven de Groot",
+        "position": "DFC",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Kingsley Traoré",
+        "position": "DFC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Joost Janssen",
+        "position": "DFC",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Peter Adeyemi",
+        "position": "LB",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Jesse Dekker",
+        "position": "RB",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Ryan van den Berg",
+        "position": "MCD",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Ruud Dekker",
+        "position": "MCD",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Niels Visser",
+        "position": "MC",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Jurriën Meijer",
+        "position": "MC",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Niels Dekker",
+        "position": "MC",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Lars Peters",
+        "position": "MCO",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Ruud de Jong",
+        "position": "EI",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Sem Jansen",
+        "position": "ED",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Luuk Mulder",
+        "position": "DC",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Ryan de Groot",
+        "position": "DC",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Felipe Moreira",
+        "position": "DC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Koen Vos",
+        "position": "MP",
+        "age": 31,
+        "overall": 68,
+        "nationality": "Países Bajos",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "jong-ajax",
+    "name": "Toekomst Jong FC",
+    "shortName": "TJA",
+    "city": "Ámsterdam",
+    "colors": {
+      "primary": "#D60000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "De Toekomst Park",
+    "stadiumCapacity": 2250,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Ryan Janssen",
+        "position": "POR",
+        "age": 29,
+        "overall": 77,
+        "nationality": "Países Bajos",
+        "value": 1680000
+      },
+      {
+        "name": "Jesse Vos",
+        "position": "POR",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Daan Meijer",
+        "position": "DFC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Luuk de Wit",
+        "position": "DFC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Niels de Groot",
+        "position": "DFC",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Tim van den Berg",
+        "position": "DFC",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Lars Janssen",
+        "position": "LB",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Mees van Leeuwen",
+        "position": "RB",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Bram de Groot",
+        "position": "MCD",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Shota Nakamura",
+        "position": "MCD",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Japón",
+        "value": 420000
+      },
+      {
+        "name": "Sven van Dijk",
+        "position": "MC",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Joost van Dijk",
+        "position": "MC",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Sven van Leeuwen",
+        "position": "MC",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Niels Visser",
+        "position": "MCO",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Mees Jansen",
+        "position": "EI",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Sem de Vries",
+        "position": "ED",
+        "age": 28,
+        "overall": 74,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Lars de Wit",
+        "position": "DC",
+        "age": 23,
+        "overall": 76,
+        "nationality": "Países Bajos",
+        "value": 1680000
+      },
+      {
+        "name": "Daan de Jong",
+        "position": "DC",
+        "age": 21,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Jurriën van Dijk",
+        "position": "DC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Niels van Leeuwen",
+        "position": "MP",
+        "age": 20,
+        "overall": 68,
+        "nationality": "Países Bajos",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "jong-psv",
+    "name": "Jong Lichtstad PSV",
+    "shortName": "JLS",
+    "city": "Eindhoven",
+    "colors": {
+      "primary": "#D60000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "De Herdgang Park",
+    "stadiumCapacity": 2500,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Stijn de Groot",
+        "position": "POR",
+        "age": 30,
+        "overall": 76,
+        "nationality": "Países Bajos",
+        "value": 1680000
+      },
+      {
+        "name": "Haru Kato",
+        "position": "POR",
+        "age": 29,
+        "overall": 67,
+        "nationality": "Japón",
+        "value": 224000
+      },
+      {
+        "name": "Jurriën Visser",
+        "position": "DFC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Stijn Vos",
+        "position": "DFC",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Tim Jansen",
+        "position": "DFC",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Daan Brouwer",
+        "position": "DFC",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Lars de Groot",
+        "position": "LB",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Jurriën Hendriks",
+        "position": "RB",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Mees de Wit",
+        "position": "MCD",
+        "age": 30,
+        "overall": 74,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Finn Vos",
+        "position": "MCD",
+        "age": 25,
+        "overall": 74,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Joost de Vries",
+        "position": "MC",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Shota Yoshida",
+        "position": "MC",
+        "age": 24,
+        "overall": 74,
+        "nationality": "Japón",
+        "value": 840000
+      },
+      {
+        "name": "Tim Dekker",
+        "position": "MC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Thomas de Vries",
+        "position": "MCO",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Gijs Hendriks",
+        "position": "EI",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Gijs Vos",
+        "position": "ED",
+        "age": 24,
+        "overall": 74,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Bram Bakker",
+        "position": "DC",
+        "age": 19,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Sem de Jong",
+        "position": "DC",
+        "age": 32,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Niels Bos",
+        "position": "DC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Takumi Yoshida",
+        "position": "MP",
+        "age": 27,
+        "overall": 67,
+        "nationality": "Japón",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "jong-utrecht",
+    "name": "Domstad Jong FC",
+    "shortName": "JDU",
+    "city": "Utrecht",
+    "colors": {
+      "primary": "#D60000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Galgenwaard Park",
+    "stadiumCapacity": 23750,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Sem Bos",
+        "position": "POR",
+        "age": 29,
+        "overall": 76,
+        "nationality": "Países Bajos",
+        "value": 1680000
+      },
+      {
+        "name": "Jurriën de Jong",
+        "position": "POR",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Daan de Groot",
+        "position": "DFC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Koen Janssen",
+        "position": "DFC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Gijs van den Berg",
+        "position": "DFC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Luuk Peters",
+        "position": "DFC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Mees Visser",
+        "position": "LB",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Stijn Bakker",
+        "position": "RB",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Thomas Peters",
+        "position": "MCD",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Kingsley Ndiaye",
+        "position": "MCD",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Álvaro Hernández",
+        "position": "MC",
+        "age": 23,
+        "overall": 73,
+        "nationality": "España",
+        "value": 840000
+      },
+      {
+        "name": "Tim Janssen",
+        "position": "MC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Mees Vos",
+        "position": "MC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Shota Suzuki",
+        "position": "MCO",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Japón",
+        "value": 420000
+      },
+      {
+        "name": "Koen de Wit",
+        "position": "EI",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Mees Bakker",
+        "position": "ED",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Sem Hendriks",
+        "position": "DC",
+        "age": 20,
+        "overall": 74,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Joost van Leeuwen",
+        "position": "DC",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Joost Meijer",
+        "position": "DC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Thijs de Jong",
+        "position": "MP",
+        "age": 19,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "cambuur",
+    "name": "Friesland SC",
+    "shortName": "FRI",
+    "city": "Leeuwarden",
+    "colors": {
+      "primary": "#FFD500",
+      "secondary": "#003DA5"
+    },
+    "stadium": "Cambuur Arena",
+    "stadiumCapacity": 10250,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Hiroshi Nakamura",
+        "position": "POR",
+        "age": 27,
+        "overall": 75,
+        "nationality": "Japón",
+        "value": 840000
+      },
+      {
+        "name": "Ryoma Yoshida",
+        "position": "POR",
+        "age": 30,
+        "overall": 68,
+        "nationality": "Japón",
+        "value": 224000
+      },
+      {
+        "name": "Sven Vos",
+        "position": "DFC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Kingsley Mensah",
+        "position": "DFC",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Stijn Visser",
+        "position": "DFC",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Finn Hendriks",
+        "position": "DFC",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Sem Bos",
+        "position": "LB",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Sota Saito",
+        "position": "RB",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Japón",
+        "value": 840000
+      },
+      {
+        "name": "Ryan van Dijk",
+        "position": "MCD",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Finn van Dijk",
+        "position": "MCD",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Mees de Wit",
+        "position": "MC",
+        "age": 22,
+        "overall": 74,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Jurriën Janssen",
+        "position": "MC",
+        "age": 28,
+        "overall": 74,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Álvaro Romero",
+        "position": "MC",
+        "age": 25,
+        "overall": 74,
+        "nationality": "España",
+        "value": 840000
+      },
+      {
+        "name": "Mees van Dijk",
+        "position": "MCO",
+        "age": 22,
+        "overall": 75,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Gijs de Groot",
+        "position": "EI",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Niels de Groot",
+        "position": "ED",
+        "age": 21,
+        "overall": 74,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Finn de Vries",
+        "position": "DC",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Thijs Peters",
+        "position": "DC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Gijs de Wit",
+        "position": "DC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Gabriel Martins",
+        "position": "MP",
+        "age": 25,
+        "overall": 68,
+        "nationality": "Brasil",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "vfv-oss",
+    "name": "Kanaal TOP",
+    "shortName": "KAN",
+    "city": "Oss",
+    "colors": {
+      "primary": "#FFD500",
+      "secondary": "#000000"
+    },
+    "stadium": "Frans Heesen Park",
+    "stadiumCapacity": 4700,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Joost Brouwer",
+        "position": "POR",
+        "age": 26,
+        "overall": 75,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Luuk Janssen",
+        "position": "POR",
+        "age": 31,
+        "overall": 68,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Obi Adeyemi",
+        "position": "DFC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Gijs Vos",
+        "position": "DFC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "João Monteiro",
+        "position": "DFC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Tim Hendriks",
+        "position": "DFC",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Ryan van den Berg",
+        "position": "LB",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Ebenezer Adeyemi",
+        "position": "RB",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Emeka Okafor",
+        "position": "MCD",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Nigeria",
+        "value": 840000
+      },
+      {
+        "name": "Bram de Groot",
+        "position": "MCD",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Thomas Mulder",
+        "position": "MC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Jesse Mulder",
+        "position": "MC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Raúl Ruiz",
+        "position": "MC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "España",
+        "value": 420000
+      },
+      {
+        "name": "Sven Janssen",
+        "position": "MCO",
+        "age": 28,
+        "overall": 74,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Daan Dekker",
+        "position": "EI",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Daan van den Berg",
+        "position": "ED",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Iván Hernández",
+        "position": "DC",
+        "age": 20,
+        "overall": 72,
+        "nationality": "España",
+        "value": 420000
+      },
+      {
+        "name": "Tim Brouwer",
+        "position": "DC",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Víctor Jiménez",
+        "position": "DC",
+        "age": 22,
+        "overall": 69,
+        "nationality": "España",
+        "value": 224000
+      },
+      {
+        "name": "Finn Bakker",
+        "position": "MP",
+        "age": 20,
+        "overall": 66,
+        "nationality": "Países Bajos",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "willem-ii",
+    "name": "Kruikenstad FC",
+    "shortName": "KRK",
+    "city": "Tilburg",
+    "colors": {
+      "primary": "#D60000",
+      "secondary": "#003DA5"
+    },
+    "stadium": "Koning Willem Arena",
+    "stadiumCapacity": 14500,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Lars van den Berg",
+        "position": "POR",
+        "age": 26,
+        "overall": 75,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Ryan Brouwer",
+        "position": "POR",
+        "age": 31,
+        "overall": 68,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Stijn de Jong",
+        "position": "DFC",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Tim Jansen",
+        "position": "DFC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Ryoma Yamamoto",
+        "position": "DFC",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Japón",
+        "value": 420000
+      },
+      {
+        "name": "Emeka Ndiaye",
+        "position": "DFC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Joost Vos",
+        "position": "LB",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Gijs de Jong",
+        "position": "RB",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Thijs de Vries",
+        "position": "MCD",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Mees Smit",
+        "position": "MCD",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Sven van Leeuwen",
+        "position": "MC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Thomas de Jong",
+        "position": "MC",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Koen de Wit",
+        "position": "MC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Bram Smit",
+        "position": "MCO",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Jesse Bos",
+        "position": "EI",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Ruud Meijer",
+        "position": "ED",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Stijn Visser",
+        "position": "DC",
+        "age": 21,
+        "overall": 75,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Sem Jansen",
+        "position": "DC",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Daan Smit",
+        "position": "DC",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Kingsley Adeyemi",
+        "position": "MP",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Nigeria",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "dordrecht",
+    "name": "Merwestad FC",
+    "shortName": "MER",
+    "city": "Dordrecht",
+    "colors": {
+      "primary": "#000000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Krommedijk Park",
+    "stadiumCapacity": 4100,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Finn Smit",
+        "position": "POR",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Daan Dekker",
+        "position": "POR",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Ryan van Leeuwen",
+        "position": "DFC",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Mees de Wit",
+        "position": "DFC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Jurriën van Leeuwen",
+        "position": "DFC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Sven de Wit",
+        "position": "DFC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Stijn Visser",
+        "position": "LB",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Lars Mulder",
+        "position": "RB",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Thomas van den Berg",
+        "position": "MCD",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Jorge Álvarez",
+        "position": "MCD",
+        "age": 30,
+        "overall": 73,
+        "nationality": "España",
+        "value": 840000
+      },
+      {
+        "name": "Sem Visser",
+        "position": "MC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Joost van den Berg",
+        "position": "MC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Sven Bos",
+        "position": "MC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Lars van Dijk",
+        "position": "MCO",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Jurriën Visser",
+        "position": "EI",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Daan Meijer",
+        "position": "ED",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Mees van Dijk",
+        "position": "DC",
+        "age": 19,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Mees de Groot",
+        "position": "DC",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Daan Visser",
+        "position": "DC",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Sven Janssen",
+        "position": "MP",
+        "age": 24,
+        "overall": 67,
+        "nationality": "Países Bajos",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "jong-az",
+    "name": "Noorderkwartier Jong",
+    "shortName": "JAZ",
+    "city": "Alkmaar",
+    "colors": {
+      "primary": "#D60000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "AFAS Training Park",
+    "stadiumCapacity": 2000,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Mees Bakker",
+        "position": "POR",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Jesse de Jong",
+        "position": "POR",
+        "age": 32,
+        "overall": 67,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Joost Mulder",
+        "position": "DFC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Finn Vos",
+        "position": "DFC",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Sem Vos",
+        "position": "DFC",
+        "age": 21,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Koen Dekker",
+        "position": "DFC",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Mees de Jong",
+        "position": "LB",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Joost Meijer",
+        "position": "RB",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Luuk Bos",
+        "position": "MCD",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Stijn Visser",
+        "position": "MCD",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Ebenezer Traoré",
+        "position": "MC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Bram de Groot",
+        "position": "MC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Moses Ndiaye",
+        "position": "MC",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Stijn van Dijk",
+        "position": "MCO",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Ruud Meijer",
+        "position": "EI",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Shota Saito",
+        "position": "ED",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Japón",
+        "value": 420000
+      },
+      {
+        "name": "Finn Bakker",
+        "position": "DC",
+        "age": 20,
+        "overall": 75,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "João Gomes",
+        "position": "DC",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Brasil",
+        "value": 224000
+      },
+      {
+        "name": "Felipe Moreira",
+        "position": "DC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Joost Janssen",
+        "position": "MP",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "ed-excelsior",
+    "name": "Kralingen Excelsior",
+    "shortName": "KRA",
+    "city": "Rotterdam",
+    "colors": {
+      "primary": "#D60000",
+      "secondary": "#000000"
+    },
+    "stadium": "Van Donge Arena",
+    "stadiumCapacity": 4500,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Thijs van Dijk",
+        "position": "POR",
+        "age": 33,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Finn Vos",
+        "position": "POR",
+        "age": 33,
+        "overall": 68,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "André Ferreira",
+        "position": "DFC",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Koen van den Berg",
+        "position": "DFC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Mees de Wit",
+        "position": "DFC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Sem van Dijk",
+        "position": "DFC",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Thiago Carvalho",
+        "position": "LB",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Daan Meijer",
+        "position": "RB",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Thijs van den Berg",
+        "position": "MCD",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Luuk Bakker",
+        "position": "MCD",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Lars Bakker",
+        "position": "MC",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Tim Meijer",
+        "position": "MC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Lars van den Berg",
+        "position": "MC",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Daan Hendriks",
+        "position": "MCO",
+        "age": 31,
+        "overall": 74,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Mees Mulder",
+        "position": "EI",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Ruud Dekker",
+        "position": "ED",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Joost Meijer",
+        "position": "DC",
+        "age": 30,
+        "overall": 75,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Daan Peters",
+        "position": "DC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Ruud Visser",
+        "position": "DC",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Sven Jansen",
+        "position": "MP",
+        "age": 28,
+        "overall": 66,
+        "nationality": "Países Bajos",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "graafschap",
+    "name": "Superboeren FC",
+    "shortName": "SPB",
+    "city": "Doetinchem",
+    "colors": {
+      "primary": "#0033A0",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "De Vijverberg Arena",
+    "stadiumCapacity": 12600,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Sem de Vries",
+        "position": "POR",
+        "age": 25,
+        "overall": 74,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Chinedu Ndiaye",
+        "position": "POR",
+        "age": 28,
+        "overall": 68,
+        "nationality": "Nigeria",
+        "value": 224000
+      },
+      {
+        "name": "Yuma Saito",
+        "position": "DFC",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Japón",
+        "value": 224000
+      },
+      {
+        "name": "Thomas Meijer",
+        "position": "DFC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Sven Mulder",
+        "position": "DFC",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Sem Mulder",
+        "position": "DFC",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Gijs van Leeuwen",
+        "position": "LB",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Sven Brouwer",
+        "position": "RB",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Países Bajos",
+        "value": 224000
+      },
+      {
+        "name": "Victor Sarr",
+        "position": "MCD",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Nigeria",
+        "value": 420000
+      },
+      {
+        "name": "Ryan Peters",
+        "position": "MCD",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Sem Peters",
+        "position": "MC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Finn Meijer",
+        "position": "MC",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Finn Bakker",
+        "position": "MC",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Joost Bakker",
+        "position": "MCO",
+        "age": 29,
+        "overall": 74,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Óscar Martínez",
+        "position": "EI",
+        "age": 25,
+        "overall": 72,
+        "nationality": "España",
+        "value": 420000
+      },
+      {
+        "name": "Ruud Peters",
+        "position": "ED",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Países Bajos",
+        "value": 840000
+      },
+      {
+        "name": "Óscar Sánchez",
+        "position": "DC",
+        "age": 31,
+        "overall": 75,
+        "nationality": "España",
+        "value": 840000
+      },
+      {
+        "name": "Jurriën Dekker",
+        "position": "DC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Daan Mulder",
+        "position": "DC",
+        "age": 19,
+        "overall": 70,
+        "nationality": "Países Bajos",
+        "value": 420000
+      },
+      {
+        "name": "Stijn Janssen",
+        "position": "MP",
+        "age": 26,
+        "overall": 68,
+        "nationality": "Países Bajos",
+        "value": 224000
+      }
+    ]
+  }
+]

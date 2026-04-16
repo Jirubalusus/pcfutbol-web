@@ -1,0 +1,3152 @@
+[
+  {
+    "id": "legia-warszawa",
+    "name": "Stolica FC",
+    "shortName": "STL",
+    "city": "Varsovia",
+    "colors": {
+      "primary": "#00853E",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Stadion Stolicy",
+    "stadiumCapacity": 31103,
+    "reputation": 4,
+    "players": [
+      {
+        "name": "Tomasz Lewandowski",
+        "position": "POR",
+        "age": 24,
+        "overall": 76,
+        "nationality": "Polonia",
+        "value": 1680000
+      },
+      {
+        "name": "Szymon Kwiatkowski",
+        "position": "POR",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Polonia",
+        "value": 224000
+      },
+      {
+        "name": "Kacper Wójcik",
+        "position": "DFC",
+        "age": 21,
+        "overall": 74,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Dawid Szymański",
+        "position": "DFC",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Polonia",
+        "value": 224000
+      },
+      {
+        "name": "Adrian Grabowski",
+        "position": "DFC",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Patryk Zieliński",
+        "position": "DFC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Paweł Kwiatkowski",
+        "position": "LB",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Adrian Woźniak",
+        "position": "RB",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Damian Kozłowski",
+        "position": "MCD",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Kamil Wójcik",
+        "position": "MCD",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Adrian Nowakowski",
+        "position": "MC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Piotr Dąbrowski",
+        "position": "MC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Marcin Grabowski",
+        "position": "MC",
+        "age": 26,
+        "overall": 75,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Krzysztof Grabowski",
+        "position": "MCO",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Kacper Kwiatkowski",
+        "position": "EI",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Kacper Wiśniewski",
+        "position": "ED",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Łukasz Grabowski",
+        "position": "DC",
+        "age": 25,
+        "overall": 76,
+        "nationality": "Polonia",
+        "value": 1680000
+      },
+      {
+        "name": "Fernando Ribeiro",
+        "position": "DC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Pedro Silva",
+        "position": "DC",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Marcin Nowakowski",
+        "position": "MP",
+        "age": 31,
+        "overall": 67,
+        "nationality": "Polonia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "lech-poznan",
+    "name": "Kolejorz FC",
+    "shortName": "KOL",
+    "city": "Poznań",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Enea Arena",
+    "stadiumCapacity": 43269,
+    "reputation": 4,
+    "players": [
+      {
+        "name": "Szymon Kwiatkowski",
+        "position": "POR",
+        "age": 26,
+        "overall": 78,
+        "nationality": "Polonia",
+        "value": 1680000
+      },
+      {
+        "name": "João Nascimento",
+        "position": "POR",
+        "age": 29,
+        "overall": 69,
+        "nationality": "Brasil",
+        "value": 224000
+      },
+      {
+        "name": "Adrian Dąbrowski",
+        "position": "DFC",
+        "age": 24,
+        "overall": 74,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Damian Dąbrowski",
+        "position": "DFC",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Krzysztof Grabowski",
+        "position": "DFC",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Mateusz Zieliński",
+        "position": "DFC",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Paweł Kowalczyk",
+        "position": "LB",
+        "age": 21,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "João Souza",
+        "position": "RB",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Krzysztof Woźniak",
+        "position": "MCD",
+        "age": 25,
+        "overall": 74,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Sebastian Kowalczyk",
+        "position": "MCD",
+        "age": 30,
+        "overall": 74,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Rafael Jesus",
+        "position": "MC",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Miloš Mitrović",
+        "position": "MC",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Dominik Dąbrowski",
+        "position": "MC",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Łukasz Kowalski",
+        "position": "MCO",
+        "age": 29,
+        "overall": 75,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Dawid Piotrowski",
+        "position": "EI",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Tomasz Kozłowski",
+        "position": "ED",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Dominik Piotrowski",
+        "position": "DC",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Paweł Kamiński",
+        "position": "DC",
+        "age": 32,
+        "overall": 74,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Michał Nowakowski",
+        "position": "DC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Kamil Kozłowski",
+        "position": "MP",
+        "age": 27,
+        "overall": 66,
+        "nationality": "Polonia",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "rakow-czestochowa",
+    "name": "Czerwono-Niebieski FC",
+    "shortName": "CZN",
+    "city": "Częstochowa",
+    "colors": {
+      "primary": "#D60000",
+      "secondary": "#003DA5"
+    },
+    "stadium": "Stadion Świętego Antoniego",
+    "stadiumCapacity": 5500,
+    "reputation": 4,
+    "players": [
+      {
+        "name": "Krzysztof Wiśniewski",
+        "position": "POR",
+        "age": 33,
+        "overall": 78,
+        "nationality": "Polonia",
+        "value": 1680000
+      },
+      {
+        "name": "Kamil Grabowski",
+        "position": "POR",
+        "age": 24,
+        "overall": 68,
+        "nationality": "Polonia",
+        "value": 224000
+      },
+      {
+        "name": "Kacper Szymański",
+        "position": "DFC",
+        "age": 23,
+        "overall": 74,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Wojciech Dąbrowski",
+        "position": "DFC",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Michał Jankowski",
+        "position": "DFC",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Krzysztof Piotrowski",
+        "position": "DFC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Francisco Sousa",
+        "position": "LB",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Dominik Kwiatkowski",
+        "position": "RB",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Paweł Nowak",
+        "position": "MCD",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Mateusz Kamiński",
+        "position": "MCD",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Michał Pawlak",
+        "position": "MC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Łukasz Kozłowski",
+        "position": "MC",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Sérgio Silva",
+        "position": "MC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Marcin Mazur",
+        "position": "MCO",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Patryk Kamiński",
+        "position": "EI",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Bruno Teixeira",
+        "position": "ED",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Jakub Kwiatkowski",
+        "position": "DC",
+        "age": 31,
+        "overall": 77,
+        "nationality": "Polonia",
+        "value": 1680000
+      },
+      {
+        "name": "Damian Nowakowski",
+        "position": "DC",
+        "age": 19,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Łukasz Jankowski",
+        "position": "DC",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Tomasz Krawczyk",
+        "position": "MP",
+        "age": 20,
+        "overall": 69,
+        "nationality": "Polonia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "jagiellonia-bialystok",
+    "name": "Żółto-Czerwoni FC",
+    "shortName": "ŻCZ",
+    "city": "Białystok",
+    "colors": {
+      "primary": "#FFD500",
+      "secondary": "#D60000"
+    },
+    "stadium": "Stadion Białostocki",
+    "stadiumCapacity": 22386,
+    "reputation": 4,
+    "players": [
+      {
+        "name": "Héctor Serrano",
+        "position": "POR",
+        "age": 27,
+        "overall": 78,
+        "nationality": "España",
+        "value": 1680000
+      },
+      {
+        "name": "Stefan Ivanović",
+        "position": "POR",
+        "age": 27,
+        "overall": 66,
+        "nationality": "Serbia",
+        "value": 112000
+      },
+      {
+        "name": "Krzysztof Dąbrowski",
+        "position": "DFC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Łukasz Krawczyk",
+        "position": "DFC",
+        "age": 30,
+        "overall": 74,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Bartosz Szymański",
+        "position": "DFC",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Polonia",
+        "value": 224000
+      },
+      {
+        "name": "Jakub Jankowski",
+        "position": "DFC",
+        "age": 29,
+        "overall": 74,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Piotr Nowakowski",
+        "position": "LB",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Adrian Kowalczyk",
+        "position": "RB",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Marko Pavlović",
+        "position": "MCD",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Dawid Piotrowski",
+        "position": "MCD",
+        "age": 27,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Michał Jankowski",
+        "position": "MC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Damian Grabowski",
+        "position": "MC",
+        "age": 22,
+        "overall": 74,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Gabriel Pereira",
+        "position": "MC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Jakub Nowakowski",
+        "position": "MCO",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Łukasz Dąbrowski",
+        "position": "EI",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Michał Krawczyk",
+        "position": "ED",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Marcin Dąbrowski",
+        "position": "DC",
+        "age": 28,
+        "overall": 76,
+        "nationality": "Polonia",
+        "value": 1680000
+      },
+      {
+        "name": "Paweł Szymański",
+        "position": "DC",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Polonia",
+        "value": 224000
+      },
+      {
+        "name": "Filip Đorđević",
+        "position": "DC",
+        "age": 19,
+        "overall": 68,
+        "nationality": "Serbia",
+        "value": 224000
+      },
+      {
+        "name": "Márcio Ribeiro",
+        "position": "MP",
+        "age": 30,
+        "overall": 68,
+        "nationality": "Brasil",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "pogon-szczecin",
+    "name": "Portowiec FC",
+    "shortName": "POR",
+    "city": "Szczecin",
+    "colors": {
+      "primary": "#63064A",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Stadion Nadmorski",
+    "stadiumCapacity": 21163,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Pedro Gomes",
+        "position": "POR",
+        "age": 25,
+        "overall": 77,
+        "nationality": "Brasil",
+        "value": 1680000
+      },
+      {
+        "name": "Dominik Kwiatkowski",
+        "position": "POR",
+        "age": 28,
+        "overall": 66,
+        "nationality": "Polonia",
+        "value": 112000
+      },
+      {
+        "name": "Dawid Kowalczyk",
+        "position": "DFC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Damian Mazur",
+        "position": "DFC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Bartosz Kowalczyk",
+        "position": "DFC",
+        "age": 28,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Víctor Martínez",
+        "position": "DFC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "España",
+        "value": 420000
+      },
+      {
+        "name": "Szymon Kowalczyk",
+        "position": "LB",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Kamil Nowakowski",
+        "position": "RB",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Polonia",
+        "value": 224000
+      },
+      {
+        "name": "Rafael Costa",
+        "position": "MCD",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Bartosz Zieliński",
+        "position": "MCD",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Tomasz Nowakowski",
+        "position": "MC",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Paweł Woźniak",
+        "position": "MC",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Wojciech Wójcik",
+        "position": "MC",
+        "age": 28,
+        "overall": 74,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Michał Piotrowski",
+        "position": "MCO",
+        "age": 21,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Jakub Lewandowski",
+        "position": "EI",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Łukasz Nowak",
+        "position": "ED",
+        "age": 28,
+        "overall": 74,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Wojciech Zieliński",
+        "position": "DC",
+        "age": 19,
+        "overall": 75,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Sebastian Nowak",
+        "position": "DC",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Adrian Mazur",
+        "position": "DC",
+        "age": 20,
+        "overall": 68,
+        "nationality": "Polonia",
+        "value": 224000
+      },
+      {
+        "name": "Sérgio Fernandes",
+        "position": "MP",
+        "age": 19,
+        "overall": 68,
+        "nationality": "Portugal",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "cracovia",
+    "name": "Pasy FC",
+    "shortName": "PAS",
+    "city": "Cracovia",
+    "colors": {
+      "primary": "#D60000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Stadion Pasów",
+    "stadiumCapacity": 15114,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Piotr Kozłowski",
+        "position": "POR",
+        "age": 32,
+        "overall": 75,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Kacper Lewandowski",
+        "position": "POR",
+        "age": 33,
+        "overall": 66,
+        "nationality": "Polonia",
+        "value": 112000
+      },
+      {
+        "name": "Szymon Nowak",
+        "position": "DFC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Diego Hernández",
+        "position": "DFC",
+        "age": 29,
+        "overall": 69,
+        "nationality": "España",
+        "value": 224000
+      },
+      {
+        "name": "Jakub Pawlak",
+        "position": "DFC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Kacper Dąbrowski",
+        "position": "DFC",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Paweł Szymański",
+        "position": "LB",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Mateusz Grabowski",
+        "position": "RB",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Stefan Mitrović",
+        "position": "MCD",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Serbia",
+        "value": 840000
+      },
+      {
+        "name": "Michał Kamiński",
+        "position": "MCD",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Jakub Jankowski",
+        "position": "MC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Dawid Nowakowski",
+        "position": "MC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Wojciech Krawczyk",
+        "position": "MC",
+        "age": 29,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Jakub Lewandowski",
+        "position": "MCO",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Michał Jankowski",
+        "position": "EI",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Luka Pavlović",
+        "position": "ED",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Óscar Muñoz",
+        "position": "DC",
+        "age": 30,
+        "overall": 76,
+        "nationality": "España",
+        "value": 1680000
+      },
+      {
+        "name": "Piotr Woźniak",
+        "position": "DC",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Adrian Piotrowski",
+        "position": "DC",
+        "age": 19,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Petar Ivanović",
+        "position": "MP",
+        "age": 22,
+        "overall": 66,
+        "nationality": "Serbia",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "wisla-krakow",
+    "name": "Biała Gwiazda FC",
+    "shortName": "BGW",
+    "city": "Cracovia",
+    "colors": {
+      "primary": "#FFFFFF",
+      "secondary": "#D60000"
+    },
+    "stadium": "Stadion Białej Gwiazdy",
+    "stadiumCapacity": 33326,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Patryk Zieliński",
+        "position": "POR",
+        "age": 25,
+        "overall": 74,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Adrian Nowakowski",
+        "position": "POR",
+        "age": 28,
+        "overall": 67,
+        "nationality": "Polonia",
+        "value": 224000
+      },
+      {
+        "name": "Szymon Krawczyk",
+        "position": "DFC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Gabriel Ferreira",
+        "position": "DFC",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Brasil",
+        "value": 224000
+      },
+      {
+        "name": "Dawid Szymański",
+        "position": "DFC",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Kacper Zieliński",
+        "position": "DFC",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Damian Nowakowski",
+        "position": "LB",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Kacper Szymański",
+        "position": "RB",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Bartosz Jankowski",
+        "position": "MCD",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Paweł Wiśniewski",
+        "position": "MCD",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Kamil Lewandowski",
+        "position": "MC",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Vasco Martins",
+        "position": "MC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Marcin Piotrowski",
+        "position": "MC",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Dominik Wójcik",
+        "position": "MCO",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Kamil Grabowski",
+        "position": "EI",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Mateusz Lewandowski",
+        "position": "ED",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Marcin Zieliński",
+        "position": "DC",
+        "age": 29,
+        "overall": 76,
+        "nationality": "Polonia",
+        "value": 1680000
+      },
+      {
+        "name": "Kacper Kwiatkowski",
+        "position": "DC",
+        "age": 32,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Bartosz Kowalski",
+        "position": "DC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Tomasz Nowak",
+        "position": "MP",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Polonia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "slask-wroclaw",
+    "name": "Wrocławianie FC",
+    "shortName": "WRO",
+    "city": "Wrocław",
+    "colors": {
+      "primary": "#00853E",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Tarczyński Park",
+    "stadiumCapacity": 42771,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Pedro Pereira",
+        "position": "POR",
+        "age": 29,
+        "overall": 76,
+        "nationality": "Brasil",
+        "value": 1680000
+      },
+      {
+        "name": "Tomasz Kozłowski",
+        "position": "POR",
+        "age": 26,
+        "overall": 68,
+        "nationality": "Polonia",
+        "value": 224000
+      },
+      {
+        "name": "Bartosz Kamiński",
+        "position": "DFC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Michał Jankowski",
+        "position": "DFC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Jakub Pawlak",
+        "position": "DFC",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Szymon Dąbrowski",
+        "position": "DFC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Rafael Cardoso",
+        "position": "LB",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Fernando Gomes",
+        "position": "RB",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Łukasz Jankowski",
+        "position": "MCD",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Paweł Kwiatkowski",
+        "position": "MCD",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Patryk Szymański",
+        "position": "MC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Szymon Lewandowski",
+        "position": "MC",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Sebastian Szymański",
+        "position": "MC",
+        "age": 28,
+        "overall": 74,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Łukasz Wójcik",
+        "position": "MCO",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Wojciech Kwiatkowski",
+        "position": "EI",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Petar Pavlović",
+        "position": "ED",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Krzysztof Dąbrowski",
+        "position": "DC",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Tomasz Wiśniewski",
+        "position": "DC",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Aleksandar Jović",
+        "position": "DC",
+        "age": 32,
+        "overall": 68,
+        "nationality": "Serbia",
+        "value": 224000
+      },
+      {
+        "name": "Marcin Kowalski",
+        "position": "MP",
+        "age": 23,
+        "overall": 68,
+        "nationality": "Polonia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "gornik-zabrze",
+    "name": "Trójkolorowy FC",
+    "shortName": "TRJ",
+    "city": "Zabrze",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFD500"
+    },
+    "stadium": "Arena Górnicza",
+    "stadiumCapacity": 24563,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Bruno Ribeiro",
+        "position": "POR",
+        "age": 33,
+        "overall": 75,
+        "nationality": "Portugal",
+        "value": 840000
+      },
+      {
+        "name": "Łukasz Mazur",
+        "position": "POR",
+        "age": 33,
+        "overall": 67,
+        "nationality": "Polonia",
+        "value": 224000
+      },
+      {
+        "name": "Dominik Grabowski",
+        "position": "DFC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Patryk Zieliński",
+        "position": "DFC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Stefan Mitrović",
+        "position": "DFC",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Michał Kwiatkowski",
+        "position": "DFC",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Bartosz Kozłowski",
+        "position": "LB",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Lucas Barbosa",
+        "position": "RB",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Tomasz Mazur",
+        "position": "MCD",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Marcin Kamiński",
+        "position": "MCD",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Patryk Kwiatkowski",
+        "position": "MC",
+        "age": 28,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Jorge López",
+        "position": "MC",
+        "age": 29,
+        "overall": 73,
+        "nationality": "España",
+        "value": 840000
+      },
+      {
+        "name": "Ivan Jović",
+        "position": "MC",
+        "age": 21,
+        "overall": 74,
+        "nationality": "Serbia",
+        "value": 840000
+      },
+      {
+        "name": "Tomasz Nowak",
+        "position": "MCO",
+        "age": 23,
+        "overall": 75,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Marcin Kwiatkowski",
+        "position": "EI",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Aleksandar Nikolić",
+        "position": "ED",
+        "age": 28,
+        "overall": 74,
+        "nationality": "Serbia",
+        "value": 840000
+      },
+      {
+        "name": "Pedro Souza",
+        "position": "DC",
+        "age": 28,
+        "overall": 74,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Michał Dąbrowski",
+        "position": "DC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Krzysztof Kamiński",
+        "position": "DC",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Polonia",
+        "value": 224000
+      },
+      {
+        "name": "Dawid Mazur",
+        "position": "MP",
+        "age": 22,
+        "overall": 67,
+        "nationality": "Polonia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "piast-gliwice",
+    "name": "Czerwoni FC",
+    "shortName": "CZR",
+    "city": "Gliwice",
+    "colors": {
+      "primary": "#D60000",
+      "secondary": "#003DA5"
+    },
+    "stadium": "Stadion Piastów",
+    "stadiumCapacity": 10037,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Tomasz Dąbrowski",
+        "position": "POR",
+        "age": 30,
+        "overall": 76,
+        "nationality": "Polonia",
+        "value": 1680000
+      },
+      {
+        "name": "Tomasz Woźniak",
+        "position": "POR",
+        "age": 28,
+        "overall": 67,
+        "nationality": "Polonia",
+        "value": 224000
+      },
+      {
+        "name": "Kacper Wójcik",
+        "position": "DFC",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Tomasz Pawlak",
+        "position": "DFC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Łukasz Nowakowski",
+        "position": "DFC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Kamil Kwiatkowski",
+        "position": "DFC",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Kacper Lewandowski",
+        "position": "LB",
+        "age": 31,
+        "overall": 69,
+        "nationality": "Polonia",
+        "value": 224000
+      },
+      {
+        "name": "Krzysztof Dąbrowski",
+        "position": "RB",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Francisco Teixeira",
+        "position": "MCD",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Kacper Kowalski",
+        "position": "MCD",
+        "age": 23,
+        "overall": 74,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Jakub Lewandowski",
+        "position": "MC",
+        "age": 29,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Patryk Woźniak",
+        "position": "MC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Piotr Kowalczyk",
+        "position": "MC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Piotr Szymański",
+        "position": "MCO",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Michał Piotrowski",
+        "position": "EI",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Damian Woźniak",
+        "position": "ED",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Bartosz Grabowski",
+        "position": "DC",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Szymon Zieliński",
+        "position": "DC",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Patryk Krawczyk",
+        "position": "DC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Matheus Barbosa",
+        "position": "MP",
+        "age": 19,
+        "overall": 69,
+        "nationality": "Brasil",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "motor-lublin",
+    "name": "Koziołki FC",
+    "shortName": "KZK",
+    "city": "Lublin",
+    "colors": {
+      "primary": "#003DA5",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Arena Koziołków",
+    "stadiumCapacity": 15500,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Pedro Moreira",
+        "position": "POR",
+        "age": 31,
+        "overall": 77,
+        "nationality": "Portugal",
+        "value": 1680000
+      },
+      {
+        "name": "Szymon Woźniak",
+        "position": "POR",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Polonia",
+        "value": 224000
+      },
+      {
+        "name": "Adrian Krawczyk",
+        "position": "DFC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Bartosz Kozłowski",
+        "position": "DFC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Wojciech Nowakowski",
+        "position": "DFC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Tomasz Kowalski",
+        "position": "DFC",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Szymon Wójcik",
+        "position": "LB",
+        "age": 21,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Marcin Wójcik",
+        "position": "RB",
+        "age": 27,
+        "overall": 69,
+        "nationality": "Polonia",
+        "value": 224000
+      },
+      {
+        "name": "Michał Nowak",
+        "position": "MCD",
+        "age": 21,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Dušan Đorđević",
+        "position": "MCD",
+        "age": 28,
+        "overall": 74,
+        "nationality": "Serbia",
+        "value": 840000
+      },
+      {
+        "name": "Kacper Wiśniewski",
+        "position": "MC",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Luka Nikolić",
+        "position": "MC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Bartosz Krawczyk",
+        "position": "MC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Marcin Kowalski",
+        "position": "MCO",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Dawid Jankowski",
+        "position": "EI",
+        "age": 25,
+        "overall": 74,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Mateusz Kowalski",
+        "position": "ED",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Kacper Krawczyk",
+        "position": "DC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Kacper Pawlak",
+        "position": "DC",
+        "age": 32,
+        "overall": 69,
+        "nationality": "Polonia",
+        "value": 224000
+      },
+      {
+        "name": "Adrian Mazur",
+        "position": "DC",
+        "age": 22,
+        "overall": 69,
+        "nationality": "Polonia",
+        "value": 224000
+      },
+      {
+        "name": "Igor Araújo",
+        "position": "MP",
+        "age": 32,
+        "overall": 66,
+        "nationality": "Brasil",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "widzew-lodz",
+    "name": "Łodzianie FC",
+    "shortName": "ŁOD",
+    "city": "Łódź",
+    "colors": {
+      "primary": "#D60000",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Stadion Łódzki",
+    "stadiumCapacity": 18018,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Rafael Moreira",
+        "position": "POR",
+        "age": 32,
+        "overall": 76,
+        "nationality": "Brasil",
+        "value": 1680000
+      },
+      {
+        "name": "Szymon Zieliński",
+        "position": "POR",
+        "age": 32,
+        "overall": 66,
+        "nationality": "Polonia",
+        "value": 112000
+      },
+      {
+        "name": "Adrian Nowakowski",
+        "position": "DFC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Szymon Pawlak",
+        "position": "DFC",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Damian Krawczyk",
+        "position": "DFC",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Piotr Wójcik",
+        "position": "DFC",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Bartosz Kozłowski",
+        "position": "LB",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Krzysztof Grabowski",
+        "position": "RB",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Jakub Kamiński",
+        "position": "MCD",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Adrian Kamiński",
+        "position": "MCD",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Kacper Nowak",
+        "position": "MC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Jakub Grabowski",
+        "position": "MC",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Dušan Nikolić",
+        "position": "MC",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Patryk Wiśniewski",
+        "position": "MCO",
+        "age": 28,
+        "overall": 75,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Szymon Krawczyk",
+        "position": "EI",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Tomasz Lewandowski",
+        "position": "ED",
+        "age": 23,
+        "overall": 74,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Tomasz Woźniak",
+        "position": "DC",
+        "age": 28,
+        "overall": 75,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Mateusz Dąbrowski",
+        "position": "DC",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Mateusz Mazur",
+        "position": "DC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Vasco Rodrigues",
+        "position": "MP",
+        "age": 20,
+        "overall": 66,
+        "nationality": "Portugal",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "lechia-gdansk",
+    "name": "Bałtyk FC",
+    "shortName": "BAL",
+    "city": "Gdańsk",
+    "colors": {
+      "primary": "#00853E",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Polsat Arena",
+    "stadiumCapacity": 41620,
+    "reputation": 3,
+    "players": [
+      {
+        "name": "Tomasz Zieliński",
+        "position": "POR",
+        "age": 30,
+        "overall": 74,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Dominik Nowakowski",
+        "position": "POR",
+        "age": 33,
+        "overall": 66,
+        "nationality": "Polonia",
+        "value": 112000
+      },
+      {
+        "name": "Mateusz Kowalczyk",
+        "position": "DFC",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Damian Zieliński",
+        "position": "DFC",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Vinícius Costa",
+        "position": "DFC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Marcin Grabowski",
+        "position": "DFC",
+        "age": 21,
+        "overall": 69,
+        "nationality": "Polonia",
+        "value": 224000
+      },
+      {
+        "name": "Kamil Nowak",
+        "position": "LB",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Kacper Krawczyk",
+        "position": "RB",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Polonia",
+        "value": 224000
+      },
+      {
+        "name": "Mateusz Jankowski",
+        "position": "MCD",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Kacper Wójcik",
+        "position": "MCD",
+        "age": 23,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Kamil Nowakowski",
+        "position": "MC",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Aleksandar Stojanović",
+        "position": "MC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Piotr Wójcik",
+        "position": "MC",
+        "age": 22,
+        "overall": 74,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Kacper Piotrowski",
+        "position": "MCO",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Marcin Kowalczyk",
+        "position": "EI",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Patryk Wójcik",
+        "position": "ED",
+        "age": 24,
+        "overall": 74,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Mateusz Wójcik",
+        "position": "DC",
+        "age": 24,
+        "overall": 76,
+        "nationality": "Polonia",
+        "value": 1680000
+      },
+      {
+        "name": "Dominik Kowalski",
+        "position": "DC",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Kamil Jankowski",
+        "position": "DC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Piotr Wiśniewski",
+        "position": "MP",
+        "age": 32,
+        "overall": 66,
+        "nationality": "Polonia",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "radomiak-radom",
+    "name": "Zieloni FC",
+    "shortName": "ZIE",
+    "city": "Radom",
+    "colors": {
+      "primary": "#00853E",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Stadion Zielonych",
+    "stadiumCapacity": 9500,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Piotr Zieliński",
+        "position": "POR",
+        "age": 24,
+        "overall": 74,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Piotr Kowalski",
+        "position": "POR",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Polonia",
+        "value": 224000
+      },
+      {
+        "name": "Patryk Wójcik",
+        "position": "DFC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Kacper Dąbrowski",
+        "position": "DFC",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Marcin Wójcik",
+        "position": "DFC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Sebastian Szymański",
+        "position": "DFC",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Polonia",
+        "value": 224000
+      },
+      {
+        "name": "Paweł Jankowski",
+        "position": "LB",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Sebastian Kamiński",
+        "position": "RB",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Krzysztof Kamiński",
+        "position": "MCD",
+        "age": 27,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Tomasz Nowakowski",
+        "position": "MCD",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Luka Stojanović",
+        "position": "MC",
+        "age": 31,
+        "overall": 73,
+        "nationality": "Serbia",
+        "value": 840000
+      },
+      {
+        "name": "Damian Kozłowski",
+        "position": "MC",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Dawid Mazur",
+        "position": "MC",
+        "age": 23,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Jakub Kamiński",
+        "position": "MCO",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Piotr Pawlak",
+        "position": "EI",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Ronaldo Martins",
+        "position": "ED",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Szymon Krawczyk",
+        "position": "DC",
+        "age": 30,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Patryk Woźniak",
+        "position": "DC",
+        "age": 32,
+        "overall": 68,
+        "nationality": "Polonia",
+        "value": 224000
+      },
+      {
+        "name": "Łukasz Kamiński",
+        "position": "DC",
+        "age": 32,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Dawid Zieliński",
+        "position": "MP",
+        "age": 20,
+        "overall": 66,
+        "nationality": "Polonia",
+        "value": 112000
+      }
+    ]
+  },
+  {
+    "id": "gks-katowice",
+    "name": "Śląscy FC",
+    "shortName": "SLK",
+    "city": "Katowice",
+    "colors": {
+      "primary": "#FFD500",
+      "secondary": "#003DA5"
+    },
+    "stadium": "Stadion Miejski",
+    "stadiumCapacity": 15000,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Jorge Hernández",
+        "position": "POR",
+        "age": 27,
+        "overall": 76,
+        "nationality": "España",
+        "value": 1680000
+      },
+      {
+        "name": "Łukasz Nowakowski",
+        "position": "POR",
+        "age": 31,
+        "overall": 66,
+        "nationality": "Polonia",
+        "value": 112000
+      },
+      {
+        "name": "Michał Piotrowski",
+        "position": "DFC",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Patryk Kowalski",
+        "position": "DFC",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Kacper Szymański",
+        "position": "DFC",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Marcin Wiśniewski",
+        "position": "DFC",
+        "age": 30,
+        "overall": 69,
+        "nationality": "Polonia",
+        "value": 224000
+      },
+      {
+        "name": "Fábio Fernandes",
+        "position": "LB",
+        "age": 26,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Pedro Araújo",
+        "position": "RB",
+        "age": 26,
+        "overall": 69,
+        "nationality": "Brasil",
+        "value": 224000
+      },
+      {
+        "name": "Caio Martins",
+        "position": "MCD",
+        "age": 30,
+        "overall": 73,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Tomasz Kowalczyk",
+        "position": "MCD",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Damian Wiśniewski",
+        "position": "MC",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Adrian Dąbrowski",
+        "position": "MC",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Gonçalo Pereira",
+        "position": "MC",
+        "age": 25,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Marcin Kozłowski",
+        "position": "MCO",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Bartosz Piotrowski",
+        "position": "EI",
+        "age": 24,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Ivan Mitrović",
+        "position": "ED",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Michał Szymański",
+        "position": "DC",
+        "age": 21,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Szymon Grabowski",
+        "position": "DC",
+        "age": 24,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Damian Piotrowski",
+        "position": "DC",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Kacper Wiśniewski",
+        "position": "MP",
+        "age": 19,
+        "overall": 68,
+        "nationality": "Polonia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "korona-kielce",
+    "name": "Pomarańczowi FC",
+    "shortName": "POM",
+    "city": "Kielce",
+    "colors": {
+      "primary": "#FF7700",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Arena Świętokrzyska",
+    "stadiumCapacity": 15550,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Szymon Zieliński",
+        "position": "POR",
+        "age": 33,
+        "overall": 75,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Krzysztof Nowak",
+        "position": "POR",
+        "age": 32,
+        "overall": 66,
+        "nationality": "Polonia",
+        "value": 112000
+      },
+      {
+        "name": "Bartosz Szymański",
+        "position": "DFC",
+        "age": 24,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Mateusz Dąbrowski",
+        "position": "DFC",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Wojciech Nowak",
+        "position": "DFC",
+        "age": 28,
+        "overall": 69,
+        "nationality": "Polonia",
+        "value": 224000
+      },
+      {
+        "name": "Dawid Piotrowski",
+        "position": "DFC",
+        "age": 23,
+        "overall": 69,
+        "nationality": "Polonia",
+        "value": 224000
+      },
+      {
+        "name": "Ivan Mitrović",
+        "position": "LB",
+        "age": 30,
+        "overall": 71,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Dawid Mazur",
+        "position": "RB",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Piotr Wiśniewski",
+        "position": "MCD",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Szymon Jankowski",
+        "position": "MCD",
+        "age": 31,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Bartosz Jankowski",
+        "position": "MC",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Damian Pawlak",
+        "position": "MC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Damian Zieliński",
+        "position": "MC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Dawid Kowalski",
+        "position": "MCO",
+        "age": 22,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Kacper Kowalczyk",
+        "position": "EI",
+        "age": 23,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Pedro Pereira",
+        "position": "ED",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Brasil",
+        "value": 420000
+      },
+      {
+        "name": "Pedro Fernandes",
+        "position": "DC",
+        "age": 27,
+        "overall": 75,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Paweł Kowalczyk",
+        "position": "DC",
+        "age": 20,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Szymon Kwiatkowski",
+        "position": "DC",
+        "age": 21,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Marko Petrović",
+        "position": "MP",
+        "age": 22,
+        "overall": 67,
+        "nationality": "Serbia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "termalica-nieciecza",
+    "name": "Wiejski FC",
+    "shortName": "WSK",
+    "city": "Nieciecza",
+    "colors": {
+      "primary": "#005B33",
+      "secondary": "#FFFFFF"
+    },
+    "stadium": "Stadion Wiejski",
+    "stadiumCapacity": 4700,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Bartosz Kowalczyk",
+        "position": "POR",
+        "age": 30,
+        "overall": 76,
+        "nationality": "Polonia",
+        "value": 1680000
+      },
+      {
+        "name": "Jakub Grabowski",
+        "position": "POR",
+        "age": 25,
+        "overall": 68,
+        "nationality": "Polonia",
+        "value": 224000
+      },
+      {
+        "name": "Łukasz Krawczyk",
+        "position": "DFC",
+        "age": 27,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Tomasz Dąbrowski",
+        "position": "DFC",
+        "age": 28,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Paweł Lewandowski",
+        "position": "DFC",
+        "age": 24,
+        "overall": 69,
+        "nationality": "Polonia",
+        "value": 224000
+      },
+      {
+        "name": "Patryk Pawlak",
+        "position": "DFC",
+        "age": 21,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Piotr Jankowski",
+        "position": "LB",
+        "age": 21,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Paweł Wiśniewski",
+        "position": "RB",
+        "age": 30,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Miloš Stojanović",
+        "position": "MCD",
+        "age": 25,
+        "overall": 70,
+        "nationality": "Serbia",
+        "value": 420000
+      },
+      {
+        "name": "Fábio Rodrigues",
+        "position": "MCD",
+        "age": 23,
+        "overall": 71,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Adrian Piotrowski",
+        "position": "MC",
+        "age": 27,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Krzysztof Wójcik",
+        "position": "MC",
+        "age": 26,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Adrian Lewandowski",
+        "position": "MC",
+        "age": 21,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Mateusz Kowalczyk",
+        "position": "MCO",
+        "age": 29,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Paweł Woźniak",
+        "position": "EI",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Michał Krawczyk",
+        "position": "ED",
+        "age": 22,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Sebastian Woźniak",
+        "position": "DC",
+        "age": 20,
+        "overall": 75,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Bartosz Lewandowski",
+        "position": "DC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Adrian Mazur",
+        "position": "DC",
+        "age": 27,
+        "overall": 68,
+        "nationality": "Polonia",
+        "value": 224000
+      },
+      {
+        "name": "Patryk Kowalczyk",
+        "position": "MP",
+        "age": 26,
+        "overall": 67,
+        "nationality": "Polonia",
+        "value": 224000
+      }
+    ]
+  },
+  {
+    "id": "arka-gdynia",
+    "name": "Żółto-Niebiescy FC",
+    "shortName": "ŻNB",
+    "city": "Gdynia",
+    "colors": {
+      "primary": "#FFD500",
+      "secondary": "#003DA5"
+    },
+    "stadium": "Stadion Portowy",
+    "stadiumCapacity": 15139,
+    "reputation": 2,
+    "players": [
+      {
+        "name": "Piotr Zieliński",
+        "position": "POR",
+        "age": 27,
+        "overall": 74,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Kacper Kowalczyk",
+        "position": "POR",
+        "age": 29,
+        "overall": 66,
+        "nationality": "Polonia",
+        "value": 112000
+      },
+      {
+        "name": "Mateusz Zieliński",
+        "position": "DFC",
+        "age": 28,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Bartosz Wiśniewski",
+        "position": "DFC",
+        "age": 21,
+        "overall": 69,
+        "nationality": "Polonia",
+        "value": 224000
+      },
+      {
+        "name": "Dawid Pawlak",
+        "position": "DFC",
+        "age": 25,
+        "overall": 69,
+        "nationality": "Polonia",
+        "value": 224000
+      },
+      {
+        "name": "Marcin Nowakowski",
+        "position": "DFC",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Michał Zieliński",
+        "position": "LB",
+        "age": 29,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Kamil Woźniak",
+        "position": "RB",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Kamil Kozłowski",
+        "position": "MCD",
+        "age": 31,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Marcin Grabowski",
+        "position": "MCD",
+        "age": 26,
+        "overall": 73,
+        "nationality": "Polonia",
+        "value": 840000
+      },
+      {
+        "name": "Diogo Sousa",
+        "position": "MC",
+        "age": 22,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Adrian Kowalczyk",
+        "position": "MC",
+        "age": 31,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Miguel Teixeira",
+        "position": "MC",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Portugal",
+        "value": 420000
+      },
+      {
+        "name": "Kacper Kwiatkowski",
+        "position": "MCO",
+        "age": 24,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Kamil Wójcik",
+        "position": "EI",
+        "age": 22,
+        "overall": 71,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Sebastian Kowalczyk",
+        "position": "ED",
+        "age": 25,
+        "overall": 72,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Daniel Martins",
+        "position": "DC",
+        "age": 25,
+        "overall": 73,
+        "nationality": "Brasil",
+        "value": 840000
+      },
+      {
+        "name": "Jakub Kamiński",
+        "position": "DC",
+        "age": 26,
+        "overall": 70,
+        "nationality": "Polonia",
+        "value": 420000
+      },
+      {
+        "name": "Víctor Rodríguez",
+        "position": "DC",
+        "age": 31,
+        "overall": 70,
+        "nationality": "España",
+        "value": 420000
+      },
+      {
+        "name": "Michał Woźniak",
+        "position": "MP",
+        "age": 32,
+        "overall": 69,
+        "nationality": "Polonia",
+        "value": 224000
+      }
+    ]
+  }
+]
