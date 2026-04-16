@@ -177,7 +177,7 @@ const MANUAL = {
   'atletico-bucaramanga': 'santa-fe-fc',
 
   // CHILE (fictional - positional)
-  'club-universidad-de-chile': 'atacama-real',  // andino-fc conflicts with colombia[0]
+  'club-universidad-de-chile': 'andino-fc-cl',  // andino-fc conflicts with colombia[0]
   'csd-colo-colo': 'cordillera-fc',
   'cd-universidad-catolica': 'pacifico-club',
   'cd-ohiggins': 'austral-fc',

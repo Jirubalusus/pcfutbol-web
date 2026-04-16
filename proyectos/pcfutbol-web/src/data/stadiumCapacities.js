@@ -205,6 +205,7 @@ export const STADIUM_CAPACITIES = {
   'santa-fe-fc': { name: 'Arena Estrella', capacity: 28000 },
 
   // === CHILE ===
+  'andino-fc-cl': { name: 'Campo Río', capacity: 45943 },
   'atacama-real': { name: 'Stadium El Bahía', capacity: 48665 },
   'cordillera-fc': { name: 'Estadio Municipal Gran', capacity: 47000 },
   'amazonas-sc': { name: 'Campo Imperial', capacity: 15000 },
