@@ -1,7 +1,11 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import teamColors from '../../data/teamColors.json';
 import { getActiveEditionId } from '../../data/editions/editionService';
-import { getEditionTeamAsset, normalizeTeamAssetKey } from '../../data/editions/editionAssetsService';
+import {
+  getCachedEditionTeamAsset,
+  getEditionTeamAsset,
+  normalizeTeamAssetKey
+} from '../../data/editions/editionAssetsService';
 import './TeamCrest.scss';
 
 function hashCode(str) {
@@ -14,7 +18,12 @@ function hashCode(str) {
 
 const FALLBACK_COLORS = ['#e63946','#457b9d','#2a9d8f','#e9c46a','#f4a261','#264653','#6a4c93','#1982c4'];
 const PATTERNS = ['solid','stripes','half','horiz','diagonal'];
-const officialCrestCache = new Map();
+
+function getOfficialCrestUrlFromAsset(asset) {
+  return asset?.assetType === 'crest' && asset?.status !== 'archived'
+    ? asset.downloadUrl || null
+    : null;
+}
 
 function ShieldPath() {
   return (
@@ -89,8 +98,12 @@ function PatternFill({ pattern, primary, secondary }) {
 }
 
 export default function TeamCrest({ teamId, size = 40, className = '' }) {
-  const [officialCrestUrl, setOfficialCrestUrl] = useState(null);
   const editionId = getActiveEditionId();
+  const normalizedTeamKey = normalizeTeamAssetKey(teamId);
+  const [officialCrestUrl, setOfficialCrestUrl] = useState(() => {
+    const cachedAsset = getCachedEditionTeamAsset(editionId, teamId);
+    return getOfficialCrestUrlFromAsset(cachedAsset);
+  });
 
   const { primary, secondary, pattern } = useMemo(() => {
     const colors = teamColors[teamId];
@@ -113,23 +126,20 @@ export default function TeamCrest({ teamId, size = 40, className = '' }) {
     let cancelled = false;
 
     async function loadOfficialCrest() {
-      const editionId = getActiveEditionId();
-      const normalizedTeamKey = normalizeTeamAssetKey(teamId);
-      const cacheKey = `${editionId || 'none'}:${normalizedTeamKey}`;
-
       if (!editionId || !normalizedTeamKey) {
         setOfficialCrestUrl(null);
         return;
       }
 
-      if (officialCrestCache.has(cacheKey)) {
-        setOfficialCrestUrl(officialCrestCache.get(cacheKey));
+      const cachedAsset = getCachedEditionTeamAsset(editionId, teamId);
+      const cachedUrl = getOfficialCrestUrlFromAsset(cachedAsset);
+      if (cachedUrl) {
+        setOfficialCrestUrl(cachedUrl);
         return;
       }
 
       const asset = await getEditionTeamAsset(editionId, teamId);
-      const nextUrl = asset?.assetType === 'crest' && asset?.status !== 'archived' ? asset.downloadUrl || null : null;
-      officialCrestCache.set(cacheKey, nextUrl);
+      const nextUrl = getOfficialCrestUrlFromAsset(asset);
 
       if (!cancelled) {
         setOfficialCrestUrl(nextUrl);
@@ -141,7 +151,7 @@ export default function TeamCrest({ teamId, size = 40, className = '' }) {
     return () => {
       cancelled = true;
     };
-  }, [teamId]);
+  }, [editionId, normalizedTeamKey, teamId]);
 
   if (officialCrestUrl) {
     return (

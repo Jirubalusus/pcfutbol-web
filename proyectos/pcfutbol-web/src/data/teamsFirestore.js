@@ -5,6 +5,7 @@
 
 import teamsService from '../firebase/teamsService';
 import { enrichSATeams } from './enrichSATeams';
+import { preloadEditionTeamAssets } from './editions/editionAssetsService';
 import { getActiveEditionId, getEdition } from './editions/editionService';
 
 // Rest of World — now loaded from Firebase (teams_v2)
@@ -196,6 +197,19 @@ async function applyActiveEdition() {
   }
 }
 
+async function preloadActiveEditionAssets() {
+  const editionId = getActiveEditionId();
+  if (!editionId) return;
+
+  try {
+    const startedAt = Date.now();
+    await preloadEditionTeamAssets(editionId);
+    console.log(`🛡️ Edition assets preloaded in ${Date.now() - startedAt}ms`);
+  } catch (error) {
+    console.error('Error preloading edition assets:', error);
+  }
+}
+
 export const LEAGUES = {
   laliga: { name: 'Liga Ibérica', country: 'España' },
   segunda: { name: 'Segunda Ibérica', country: 'España' },
@@ -360,6 +374,9 @@ export async function loadAllData() {
 
       // Apply active edition pack (rename teams/players)
       await applyActiveEdition();
+
+      // Preload official assets before the UI renders so pack crests do not flash
+      await preloadActiveEditionAssets();
 
       dataLoaded = true;
       console.log(`✅ Datos cargados en ${Date.now() - start}ms (${totalTeams} equipos)`);
