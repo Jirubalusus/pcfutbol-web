@@ -1,0 +1,139 @@
+[
+  {
+    "leagueKey": "southAfricaPSL",
+    "uploaded": 16,
+    "patchedNames": 16,
+    "blockers": [],
+    "mapping": [
+      {
+        "id": "mamelodi-sundowns",
+        "fakeName": "Pretoria Brazilians FC",
+        "realName": "Mamelodi Sundowns",
+        "tmId": "6356",
+        "matchedName": "Mamelodi Sundowns FC",
+        "score": 0.9
+      },
+      {
+        "id": "orlando-pirates",
+        "fakeName": "Buccaneers FC",
+        "realName": "Orlando Pirates",
+        "tmId": "2557",
+        "matchedName": "Orlando Pirates",
+        "score": 1
+      },
+      {
+        "id": "kaizer-chiefs",
+        "fakeName": "Amakhosi FC",
+        "realName": "Kaizer Chiefs",
+        "tmId": "568",
+        "matchedName": "Kaizer Chiefs",
+        "score": 1
+      },
+      {
+        "id": "supersport-united",
+        "fakeName": "Matsatsantsa FC",
+        "realName": "SuperSport United",
+        "tmId": "2891",
+        "matchedName": "SuperSport United",
+        "score": 1
+      },
+      {
+        "id": "sekhukhune-united",
+        "fakeName": "Limpopo Stars FC",
+        "realName": "Sekhukhune United",
+        "tmId": "85501",
+        "matchedName": "Sekhukhune United FC",
+        "score": 0.9
+      },
+      {
+        "id": "stellenbosch-fc",
+        "fakeName": "Cape Winelands FC",
+        "realName": "Stellenbosch FC",
+        "tmId": "23287",
+        "matchedName": "Stellenbosch FC",
+        "score": 1
+      },
+      {
+        "id": "amazulu",
+        "fakeName": "Usuthu FC",
+        "realName": "AmaZulu FC",
+        "tmId": "9370",
+        "matchedName": "AmaZulu FC",
+        "score": 1
+      },
+      {
+        "id": "polokwane-city",
+        "fakeName": "Polokwane Rise FC",
+        "realName": "Polokwane City",
+        "tmId": "21202",
+        "matchedName": "Polokwane City FC",
+        "score": 0.9
+      },
+      {
+        "id": "chippa-united",
+        "fakeName": "Chilli Boys FC",
+        "realName": "Chippa United",
+        "tmId": "31283",
+        "matchedName": "Chippa United",
+        "score": 1
+      },
+      {
+        "id": "royal-am",
+        "fakeName": "Thwihli Thwahla FC",
+        "realName": "Royal AM",
+        "tmId": "8607",
+        "matchedName": "(override tm=8607)",
+        "score": 1
+      },
+      {
+        "id": "ts-galaxy",
+        "fakeName": "Rockets FC",
+        "realName": "TS Galaxy",
+        "tmId": "67074",
+        "matchedName": "TS Galaxy FC",
+        "score": 0.9
+      },
+      {
+        "id": "cape-town-city",
+        "fakeName": "Citizens FC",
+        "realName": "Cape Town City",
+        "tmId": "2303",
+        "matchedName": "Cape Town City FC",
+        "score": 0.9
+      },
+      {
+        "id": "golden-arrows",
+        "fakeName": "Abafana Bes FC",
+        "realName": "Lamontville Golden Arrows",
+        "tmId": "7011",
+        "matchedName": "Lamontville Golden Arrows",
+        "score": 1
+      },
+      {
+        "id": "marumo-gallants",
+        "fakeName": "Bahlabane FC",
+        "realName": "Marumo Gallants",
+        "tmId": "61852",
+        "matchedName": "Marumo Gallants FC",
+        "score": 0.9
+      },
+      {
+        "id": "magesi-fc",
+        "fakeName": "Dikwena FC",
+        "realName": "Magesi FC",
+        "tmId": "54146",
+        "matchedName": "Magesi FC",
+        "score": 1
+      },
+      {
+        "id": "richards-bay",
+        "fakeName": "Bay Natives FC",
+        "realName": "Richards Bay FC",
+        "tmId": "12668",
+        "matchedName": "Richards Bay FC",
+        "score": 1
+      }
+    ],
+    "totalClubs": 16
+  }
+]

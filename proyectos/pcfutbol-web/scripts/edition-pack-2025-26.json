@@ -37918,940 +37918,2314 @@
     },
     "Nordlys FK": {
       "name": "FK Bodø/Glimt",
-      "shortName": "BOD",
-      "stadium": "Aspmyra Stadion"
+      "city": "FK Bodø/Glimt",
+      "stadium": "Aspmyra Stadion",
+      "shortName": "BOD"
     },
     "Fjordbyen FK": {
       "name": "Molde FK",
-      "shortName": "MOL",
-      "stadium": "Aker Stadion"
+      "city": "Molde FK",
+      "stadium": "Aker Stadion",
+      "shortName": "MOL"
     },
     "Svartblå BK": {
+      "city": "Rosenborg BK",
       "name": "Rosenborg BK",
       "shortName": "RBK",
       "stadium": "Lerkendal Stadion"
     },
     "Rødstorm FK": {
-      "name": "SK Brann",
       "shortName": "BRA",
-      "stadium": "Brann Stadion"
+      "stadium": "Brann Stadion",
+      "city": "SK Brann",
+      "name": "SK Brann"
     },
     "Langskip FK": {
+      "city": "Viking FK",
       "name": "Viking FK",
       "shortName": "VIK",
       "stadium": "SR-Bank Arena"
     },
     "Oslobyen IF": {
-      "name": "Vålerenga Fotball",
+      "stadium": "Intility Arena",
       "shortName": "VIF",
-      "stadium": "Intility Arena"
+      "city": "Vålerenga Fotball",
+      "name": "Vålerenga Fotball"
     },
     "Festungby FK": {
       "name": "Fredrikstad FK",
+      "city": "Fredrikstad FK",
       "shortName": "FFK",
       "stadium": "Fredrikstad Stadion"
     },
     "Polarlys IL": {
-      "name": "Tromsø IL",
+      "stadium": "Romssa Arena",
       "shortName": "TIL",
-      "stadium": "Romssa Arena"
+      "name": "Tromsø IL",
+      "city": "Tromsø IL"
     },
     "Kanarifugl SK": {
-      "name": "Lillestrøm SK",
+      "stadium": "Åråsen Stadion",
       "shortName": "LSK",
-      "stadium": "Åråsen Stadion"
+      "city": "Lillestrøm SK",
+      "name": "Lillestrøm SK"
     },
     "Glomma FF": {
-      "name": "Sarpsborg 08 FF",
+      "stadium": "Sarpsborg Stadion",
       "shortName": "SAR",
-      "stadium": "Sarpsborg Stadion"
+      "name": "Sarpsborg 08 FF",
+      "city": "Sarpsborg 08 FF"
     },
     "Kystby FK": {
-      "name": "FK Haugesund",
+      "stadium": "Haugesund Stadion",
       "shortName": "FKH",
-      "stadium": "Haugesund Stadion"
+      "city": "FK Haugesund",
+      "name": "FK Haugesund"
     },
     "Marineblå IF": {
-      "name": "Strømsgodset IF",
       "shortName": "SIF",
-      "stadium": "Marienlyst Stadion"
+      "stadium": "Marienlyst Stadion",
+      "name": "Strømsgodset IF",
+      "city": "Strømsgodset IF"
     },
     "Innlandet IL": {
-      "name": "HamKam",
+      "stadium": "Briskeby Gressbane",
       "shortName": "HAM",
-      "stadium": "Briskeby Gressbane"
+      "city": "HamKam",
+      "name": "HamKam"
     },
     "Hovedstad KF": {
       "name": "KFUM Oslo",
-      "shortName": "KFU",
-      "stadium": "Intility Arena"
+      "city": "KFUM Oslo",
+      "stadium": "Intility Arena",
+      "shortName": "KFU"
     },
     "Kystland FK": {
-      "name": "Sandefjord Fotball",
       "shortName": "SAN",
-      "stadium": "Release Arena"
+      "stadium": "Release Arena",
+      "name": "Sandefjord Fotball",
+      "city": "Sandefjord Fotball"
     },
     "Havnebyen BK": {
+      "city": "Kristiansund BK",
       "name": "Kristiansund BK",
       "shortName": "KBK",
       "stadium": "Kristiansund Stadion"
     },
     "Himmelblå FF": {
+      "stadium": "Eleda Stadion",
       "name": "Malmö FF",
       "shortName": "MFF",
-      "stadium": "Eleda Stadion"
+      "city": "Malmö FF"
     },
     "Svartguld IF": {
-      "name": "AIK Fotboll",
       "shortName": "AIK",
-      "stadium": "Strawberry Arena"
+      "name": "AIK Fotboll",
+      "stadium": "Strawberry Arena",
+      "city": "AIK Fotboll"
     },
     "Bajenbyen IF": {
-      "name": "Hammarby IF",
+      "stadium": "Tele2 Arena",
       "shortName": "HAM",
-      "stadium": "Tele2 Arena"
+      "name": "Hammarby IF",
+      "city": "Hammarby IF"
     },
     "Järnkamraterna IF": {
+      "city": "Djurgårdens IF",
       "name": "Djurgårdens IF",
       "shortName": "DIF",
       "stadium": "Strawberry Arena"
     },
     "Blåvitt IFK": {
+      "city": "IFK Göteborg",
+      "stadium": "Gamla Ullevi",
       "name": "IFK Göteborg",
-      "shortName": "IFK",
-      "stadium": "Gamla Ullevi"
+      "shortName": "IFK"
     },
     "Gulkrage BK": {
-      "name": "BK Häcken",
+      "city": "BK Häcken",
+      "stadium": "Bravida Arena",
       "shortName": "HÄC",
-      "stadium": "Bravida Arena"
+      "name": "BK Häcken"
     },
     "Pekingen IFK": {
+      "stadium": "PlatinumCars Arena",
       "name": "IFK Norrköping",
       "shortName": "IFK",
-      "stadium": "PlatinumCars Arena"
+      "city": "IFK Norrköping"
     },
     "Strandby AIF": {
+      "city": "Mjällby AIF",
       "name": "Mjällby AIF",
       "shortName": "MAI",
       "stadium": "Strandvallen"
     },
     "Gulmaktens IF": {
+      "city": "IF Elfsborg",
+      "stadium": "Borås Arena",
       "name": "IF Elfsborg",
-      "shortName": "ELF",
-      "stadium": "Borås Arena"
+      "shortName": "ELF"
     },
     "Östkust FF": {
+      "stadium": "Guldfågeln Arena",
       "name": "Kalmar FF",
       "shortName": "KFF",
-      "stadium": "Guldfågeln Arena"
+      "city": "Kalmar FF"
     },
     "Blåvit BK": {
+      "stadium": "Örjans Vall",
       "name": "Halmstads BK",
       "shortName": "HBK",
-      "stadium": "Örjans Vall"
+      "city": "Halmstads BK"
     },
     "Makrill IF": {
-      "name": "GAIS",
+      "city": "GAIS",
       "shortName": "GAI",
+      "name": "GAIS",
       "stadium": "Gamla Ullevi"
     },
     "Västerort IF": {
       "name": "IF Brommapojkarna",
       "shortName": "BRO",
-      "stadium": "Grimsta IP"
+      "stadium": "Grimsta IP",
+      "city": "IF Brommapojkarna"
     },
     "Brukorten IF": {
+      "city": "Degerfors IF",
+      "stadium": "Stora Valla",
       "name": "Degerfors IF",
-      "shortName": "DEG",
-      "stadium": "Stora Valla"
+      "shortName": "DEG"
     },
     "Smålandsby IF": {
-      "name": "Östers IF",
+      "stadium": "Visma Arena",
       "shortName": "OST",
-      "stadium": "Visma Arena"
+      "name": "Östers IF",
+      "city": "Östers IF"
     },
     "Himmelsljus IK": {
-      "name": "IK Sirius",
       "shortName": "SIR",
-      "stadium": "Studenternas IP"
+      "name": "IK Sirius",
+      "stadium": "Studenternas IP",
+      "city": "IK Sirius"
     },
     "Stolica FC": {
-      "name": "Legia Warszawa",
+      "city": "Legia Warszawa",
       "shortName": "LEG",
-      "stadium": "Stadion Wojska Polskiego"
+      "stadium": "Stadion Wojska Polskiego",
+      "name": "Legia Warszawa"
     },
     "Kolejorz FC": {
       "name": "Lech Poznań",
+      "stadium": "Enea Stadion",
       "shortName": "LEC",
-      "stadium": "Enea Stadion"
+      "city": "Lech Poznań"
     },
     "Czerwono-Niebieski FC": {
       "name": "Raków Częstochowa",
+      "stadium": "Stadion Miejski",
       "shortName": "RAK",
-      "stadium": "Stadion Miejski"
+      "city": "Raków Częstochowa"
     },
     "Żółto-Czerwoni FC": {
       "name": "Jagiellonia Białystok",
+      "stadium": "Stadion Miejski",
       "shortName": "JAG",
-      "stadium": "Stadion Miejski"
+      "city": "Jagiellonia Białystok"
     },
     "Portowiec FC": {
-      "name": "Pogoń Szczecin",
       "shortName": "POG",
+      "city": "Pogoń Szczecin",
+      "name": "Pogoń Szczecin",
       "stadium": "Stadion Miejski"
     },
     "Pasy FC": {
+      "stadium": "Stadion Cracovii",
       "name": "KS Cracovia",
-      "shortName": "CRA",
-      "stadium": "Stadion Cracovii"
+      "city": "KS Cracovia",
+      "shortName": "CRA"
     },
     "Biała Gwiazda FC": {
+      "stadium": "Stadion Henryka Reymana",
       "name": "Wisła Kraków",
-      "shortName": "WIS",
-      "stadium": "Stadion Henryka Reymana"
+      "city": "Wisła Kraków",
+      "shortName": "WIS"
     },
     "Wrocławianie FC": {
+      "stadium": "Tarczyński Arena",
       "name": "Śląsk Wrocław",
-      "shortName": "ŚLĄ",
-      "stadium": "Tarczyński Arena"
+      "city": "Śląsk Wrocław",
+      "shortName": "ŚLĄ"
     },
     "Trójkolorowy FC": {
+      "stadium": "Arena Zabrze",
       "name": "Górnik Zabrze",
-      "shortName": "GOR",
-      "stadium": "Arena Zabrze"
+      "city": "Górnik Zabrze",
+      "shortName": "GOR"
     },
     "Czerwoni FC": {
+      "stadium": "Stadion Miejski",
       "name": "Piast Gliwice",
-      "shortName": "PIA",
-      "stadium": "Stadion Miejski"
+      "city": "Piast Gliwice",
+      "shortName": "PIA"
     },
     "Koziołki FC": {
-      "name": "Motor Lublin",
+      "city": "Motor Lublin",
       "shortName": "MOT",
-      "stadium": "Arena Lublin"
+      "stadium": "Arena Lublin",
+      "name": "Motor Lublin"
     },
     "Łodzianie FC": {
       "name": "Widzew Łódź",
+      "stadium": "Stadion Widzewa",
       "shortName": "WID",
-      "stadium": "Stadion Widzewa"
+      "city": "Widzew Łódź"
     },
     "Bałtyk FC": {
+      "stadium": "Polsat Plus Arena",
       "name": "Lechia Gdańsk",
-      "shortName": "LEC",
-      "stadium": "Polsat Plus Arena"
+      "city": "Lechia Gdańsk",
+      "shortName": "LEC"
     },
     "Zieloni FC": {
-      "name": "Radomiak Radom",
       "shortName": "RAD",
+      "city": "Radomiak Radom",
+      "name": "Radomiak Radom",
       "stadium": "Stadion Radomiaka"
     },
     "Śląscy FC": {
       "name": "GKS Katowice",
+      "stadium": "Stadion GKS Katowice",
       "shortName": "GKS",
-      "stadium": "Stadion GKS Katowice"
+      "city": "GKS Katowice"
     },
     "Pomarańczowi FC": {
       "name": "Korona Kielce",
+      "stadium": "Suzuki Arena",
       "shortName": "KOR",
-      "stadium": "Suzuki Arena"
+      "city": "Korona Kielce"
     },
     "Wiejski FC": {
-      "name": "Bruk-Bet Termalica Nieciecza",
+      "city": "Bruk-Bet Termalica Nieciecza",
       "shortName": "TER",
-      "stadium": "Stadion Bruk-Bet"
+      "stadium": "Stadion Bruk-Bet",
+      "name": "Bruk-Bet Termalica Nieciecza"
     },
     "Żółto-Niebiescy FC": {
       "name": "Arka Gdynia",
+      "stadium": "Stadion Miejski Gdynia",
       "shortName": "ARK",
-      "stadium": "Stadion Miejski Gdynia"
+      "city": "Arka Gdynia"
     },
     "Vissersdorp FC": {
       "name": "FC Volendam",
-      "shortName": "VOL",
-      "stadium": "Kras Stadion"
+      "stadium": "Kras Stadion",
+      "city": "FC Volendam",
+      "shortName": "VOL"
     },
     "Brabantstad FC": {
-      "name": "FC Den Bosch",
+      "city": "FC Den Bosch",
       "shortName": "DBO",
+      "name": "FC Den Bosch",
       "stadium": "De Vliert"
     },
     "Limburg JC": {
-      "name": "Roda JC Kerkrade",
+      "city": "Roda JC Kerkrade",
       "shortName": "ROD",
+      "name": "Roda JC Kerkrade",
       "stadium": "Parkstad Limburg Stadion"
     },
     "Maasstad VVV": {
       "name": "VVV-Venlo",
-      "shortName": "VVV",
-      "stadium": "Covebo Stadion"
+      "stadium": "Covebo Stadion",
+      "city": "VVV-Venlo",
+      "shortName": "VVV"
     },
     "Limburgs MVV": {
       "name": "MVV Maastricht",
-      "shortName": "MVV",
-      "stadium": "Geusselt Stadion"
+      "stadium": "Geusselt Stadion",
+      "city": "MVV Maastricht",
+      "shortName": "MVV"
     },
     "Lichtstad FC": {
+      "stadium": "Jan Louwers Stadion",
       "name": "FC Eindhoven",
       "shortName": "FCE",
-      "stadium": "Jan Louwers Stadion"
+      "city": "FC Eindhoven"
     },
     "Goffertstad FC": {
-      "name": "NEC Nijmegen",
       "shortName": "NEC",
-      "stadium": "Goffertstadion"
+      "city": "NEC Nijmegen",
+      "stadium": "Goffertstadion",
+      "name": "NEC Nijmegen"
     },
     "Drenthe FC": {
+      "stadium": "De Oude Meerdijk",
       "name": "FC Emmen",
       "shortName": "EMM",
-      "stadium": "De Oude Meerdijk"
+      "city": "FC Emmen"
     },
     "Zwart-Wit Sport": {
+      "stadium": "Lavans Stadion",
       "name": "Helmond Sport",
       "shortName": "HEL",
-      "stadium": "Lavans Stadion"
+      "city": "Helmond Sport"
     },
     "Witte Leeuwen SC": {
+      "stadium": "BUKO Stadion",
       "name": "SC Telstar",
       "shortName": "TEL",
-      "stadium": "BUKO Stadion"
+      "city": "SC Telstar"
     },
     "Toekomst Jong FC": {
       "name": "Jong Ajax",
-      "shortName": "JAA",
-      "stadium": "De Toekomst"
+      "stadium": "De Toekomst",
+      "city": "Jong Ajax",
+      "shortName": "JAA"
     },
     "Jong Lichtstad PSV": {
       "name": "Jong PSV",
-      "shortName": "JPS",
-      "stadium": "De Herdgang"
+      "stadium": "De Herdgang",
+      "city": "Jong PSV",
+      "shortName": "JPS"
     },
     "Domstad Jong FC": {
-      "name": "Jong Utrecht",
       "shortName": "JUT",
-      "stadium": "Stadion Galgenwaard"
+      "city": "Jong Utrecht",
+      "stadium": "Stadion Galgenwaard",
+      "name": "Jong Utrecht"
     },
     "Friesland SC": {
-      "name": "SC Cambuur",
       "shortName": "CAM",
-      "stadium": "Cambuur Stadion"
+      "city": "SC Cambuur",
+      "stadium": "Cambuur Stadion",
+      "name": "SC Cambuur"
     },
     "Kanaal TOP": {
-      "name": "TOP Oss",
       "shortName": "OSS",
-      "stadium": "Frans Heesen Stadion"
+      "city": "TOP Oss",
+      "stadium": "Frans Heesen Stadion",
+      "name": "TOP Oss"
     },
     "Kruikenstad FC": {
       "name": "Willem II",
-      "shortName": "WIL",
-      "stadium": "Koning Willem II Stadion"
+      "stadium": "Koning Willem II Stadion",
+      "city": "Willem II",
+      "shortName": "WIL"
     },
     "Merwestad FC": {
+      "stadium": "Krommedijk",
       "name": "FC Dordrecht",
       "shortName": "DOR",
-      "stadium": "Krommedijk"
+      "city": "FC Dordrecht"
     },
     "Noorderkwartier Jong": {
+      "stadium": "AFAS Trainingscomplex",
       "name": "Jong AZ",
       "shortName": "JAZ",
-      "stadium": "AFAS Trainingscomplex"
+      "city": "Jong AZ"
     },
     "Kralingen Excelsior": {
-      "name": "Excelsior",
+      "city": "Excelsior",
       "shortName": "EXC",
+      "name": "Excelsior",
       "stadium": "Van Donge & De Roo Stadion"
     },
     "Superboeren FC": {
       "name": "De Graafschap",
-      "shortName": "GRF",
-      "stadium": "De Vijverberg"
+      "stadium": "De Vijverberg",
+      "city": "De Graafschap",
+      "shortName": "GRF"
     },
     "Estudantina FC": {
-      "name": "Académica de Coimbra",
       "shortName": "ACA",
-      "stadium": "Estádio Cidade de Coimbra"
+      "stadium": "Estádio Cidade de Coimbra",
+      "city": "Académica de Coimbra",
+      "name": "Académica de Coimbra"
     },
     "Matosinhos SC": {
-      "name": "Leixões SC",
+      "stadium": "Estádio do Mar",
       "shortName": "LEI",
-      "stadium": "Estádio do Mar"
+      "city": "Leixões SC",
+      "name": "Leixões SC"
     },
     "Feira FC": {
       "name": "CD Feirense",
-      "shortName": "FEI",
-      "stadium": "Estádio Marcolino de Castro"
+      "city": "CD Feirense",
+      "stadium": "Estádio Marcolino de Castro",
+      "shortName": "FEI"
     },
     "Convento FC": {
-      "name": "CD Mafra",
       "shortName": "MAF",
-      "stadium": "Parque Desportivo"
+      "stadium": "Parque Desportivo",
+      "city": "CD Mafra",
+      "name": "CD Mafra"
     },
     "Tâmega FC": {
-      "name": "FC Penafiel",
+      "stadium": "Estádio Municipal 25 de Abril",
       "shortName": "PEN",
-      "stadium": "Estádio Municipal 25 de Abril"
+      "city": "FC Penafiel",
+      "name": "FC Penafiel"
     },
     "Oliveirense UD": {
       "name": "UD Oliveirense",
+      "city": "UD Oliveirense",
       "shortName": "OLI",
       "stadium": "Estádio Carlos Osório"
     },
     "Beira Alta FC": {
-      "name": "CD Tondela",
+      "stadium": "Estádio João Cardoso",
       "shortName": "TON",
-      "stadium": "Estádio João Cardoso"
+      "city": "CD Tondela",
+      "name": "CD Tondela"
     },
     "Leiria União": {
+      "city": "União de Leiria",
       "name": "União de Leiria",
       "shortName": "LEI",
       "stadium": "Estádio Dr. Magalhães Pessoa"
     },
     "Paredinha FC": {
+      "city": "USC Paredes",
       "name": "USC Paredes",
       "shortName": "PAR",
       "stadium": "Parque Rota dos Móveis"
     },
     "Torres Vedras FC": {
       "name": "SCU Torreense",
+      "city": "SCU Torreense",
       "shortName": "TOR",
       "stadium": "Estádio Manuel Marques"
     },
     "Lourosa FC": {
+      "city": "Lusitânia de Lourosa",
       "name": "Lusitânia de Lourosa",
       "shortName": "LUS",
       "stadium": "Estádio do Lusitânia"
     },
     "Felgueiras FC": {
       "name": "FC Felgueiras",
+      "city": "FC Felgueiras",
       "shortName": "FEL",
       "stadium": "Estádio Dr. Machado de Matos"
     },
     "Algarve SC": {
+      "city": "Portimonense SC",
       "name": "Portimonense SC",
-      "shortName": "POR",
-      "stadium": "Estádio Municipal"
+      "stadium": "Estádio Municipal",
+      "shortName": "POR"
     },
     "Cónegos FC": {
-      "name": "Moreirense FC",
       "shortName": "MOR",
-      "stadium": "Parque Desportivo Comendador"
+      "stadium": "Parque Desportivo Comendador",
+      "city": "Moreirense FC",
+      "name": "Moreirense FC"
     },
     "Almeirim FC": {
+      "city": "União Almeirim",
       "name": "União Almeirim",
       "shortName": "ALM",
       "stadium": "Estádio Complexo"
     },
     "Viseu Académico": {
       "name": "Académico de Viseu",
+      "city": "Académico de Viseu",
       "shortName": "VIS",
       "stadium": "Estádio do Fontelo"
     },
     "Flavienses GD": {
       "name": "GD Chaves",
+      "city": "GD Chaves",
       "shortName": "CHA",
       "stadium": "Estádio Municipal de Chaves"
     },
     "Ilha Marítimo": {
+      "city": "CS Marítimo",
       "name": "CS Marítimo",
-      "shortName": "MAR",
-      "stadium": "Estádio do Marítimo"
+      "stadium": "Estádio do Marítimo",
+      "shortName": "MAR"
     },
     "Neva FC": {
+      "stadium": "Gazprom Arena",
       "name": "FC Zenit Saint Petersburg",
       "shortName": "ZEN",
-      "stadium": "Gazprom Arena"
+      "city": "FC Zenit Saint Petersburg"
     },
     "Red Diamonds FC": {
-      "name": "FC Spartak Moscow",
+      "city": "FC Spartak Moscow",
       "shortName": "SPA",
+      "name": "FC Spartak Moscow",
       "stadium": "Lukoil Arena"
     },
     "Army Stars FC": {
+      "stadium": "VEB Arena",
       "name": "CSKA Moscow",
       "shortName": "CSK",
-      "stadium": "VEB Arena"
+      "city": "CSKA Moscow"
     },
     "Railway FC": {
-      "name": "Lokomotiv Moscow",
       "shortName": "LOK",
-      "stadium": "RZD Arena"
+      "stadium": "RZD Arena",
+      "name": "Lokomotiv Moscow",
+      "city": "Lokomotiv Moscow"
     },
     "Blue Thunder FC": {
-      "name": "Dynamo Moscow",
       "shortName": "DYN",
-      "stadium": "VTB Arena"
+      "stadium": "VTB Arena",
+      "name": "Dynamo Moscow",
+      "city": "Dynamo Moscow"
     },
     "Kuban Wolves FC": {
-      "name": "FC Krasnodar",
+      "city": "FC Krasnodar",
       "shortName": "KRA",
+      "name": "FC Krasnodar",
       "stadium": "Ozon Arena"
     },
     "Tatar Ruby FC": {
-      "name": "FC Rubin Kazan",
+      "city": "FC Rubin Kazan",
       "shortName": "RUB",
+      "name": "FC Rubin Kazan",
       "stadium": "Ak Bars Arena"
     },
     "Don River FC": {
-      "name": "FC Rostov",
+      "city": "FC Rostov",
       "shortName": "ROS",
-      "stadium": "Rostov Arena"
+      "stadium": "Rostov Arena",
+      "name": "FC Rostov"
     },
     "Caspian FC": {
-      "name": "Dynamo Makhachkala",
+      "city": "Dynamo Makhachkala",
       "shortName": "DMK",
+      "name": "Dynamo Makhachkala",
       "stadium": "Anzhi Arena"
     },
     "Caucasus FC": {
       "name": "FC Akhmat Grozny",
+      "stadium": "Akhmat Arena",
       "shortName": "AKH",
-      "stadium": "Akhmat Arena"
+      "city": "FC Akhmat Grozny"
     },
     "Wings of Volga FC": {
-      "name": "Krylia Sovetov Samara",
+      "city": "Krylia Sovetov Samara",
       "shortName": "KRY",
-      "stadium": "Solidarnost Arena"
+      "stadium": "Solidarnost Arena",
+      "name": "Krylia Sovetov Samara"
     },
     "Torch FC": {
+      "city": "FC Fakel Voronezh",
+      "stadium": "Stadion Fakel",
       "name": "FC Fakel Voronezh",
-      "shortName": "FAK",
-      "stadium": "Stadion Fakel"
+      "shortName": "FAK"
     },
     "Volga Delta FC": {
-      "name": "Pari Nizhny Novgorod",
       "shortName": "NIZ",
-      "stadium": "Nizhny Novgorod Stadion"
+      "name": "Pari Nizhny Novgorod",
+      "stadium": "Nizhny Novgorod Stadion",
+      "city": "Pari Nizhny Novgorod"
     },
     "Steppe FC": {
       "name": "FC Orenburg",
+      "stadium": "Gazovik Arena",
       "shortName": "ORE",
-      "stadium": "Gazovik Arena"
+      "city": "FC Orenburg"
     },
     "Podmoscov FC": {
       "name": "FC Khimki",
+      "stadium": "Arena Khimki",
       "shortName": "KHI",
-      "stadium": "Arena Khimki"
+      "city": "FC Khimki"
     },
     "Coastline FC": {
-      "name": "PFC Sochi",
       "shortName": "SOC",
-      "stadium": "Fisht Olympic Stadion"
+      "stadium": "Fisht Olympic Stadion",
+      "name": "PFC Sochi",
+      "city": "PFC Sochi"
     },
     "Miners FC": {
-      "name": "FC Shakhtar Donetsk",
       "shortName": "SHK",
-      "stadium": "Arena Lviv"
+      "stadium": "Arena Lviv",
+      "city": "FC Shakhtar Donetsk",
+      "name": "FC Shakhtar Donetsk"
     },
     "Capital Dynamo FC": {
-      "name": "FC Dynamo Kyiv",
+      "city": "FC Dynamo Kyiv",
       "shortName": "DYN",
-      "stadium": "NSC Olimpiyskiy"
+      "stadium": "NSC Olimpiyskiy",
+      "name": "FC Dynamo Kyiv"
     },
     "Steppe Town FC": {
-      "name": "FC Oleksandriya",
+      "city": "FC Oleksandriya",
+      "stadium": "KSK Nika",
       "shortName": "OLK",
-      "stadium": "KSK Nika"
+      "name": "FC Oleksandriya"
     },
     "Ore Valley FC": {
       "name": "FC Kryvbas Kryvyi Rih",
       "shortName": "KRY",
-      "stadium": "Hirnyk Stadion"
+      "stadium": "Hirnyk Stadion",
+      "city": "FC Kryvbas Kryvyi Rih"
     },
     "Dawn FC": {
       "name": "FC Zorya Luhansk",
+      "city": "FC Zorya Luhansk",
       "shortName": "ZOR",
       "stadium": "Slavutych-Arena"
     },
     "Vorskla River FC": {
       "name": "FC Vorskla Poltava",
+      "city": "FC Vorskla Poltava",
       "shortName": "VOR",
       "stadium": "Vorskla Stadion"
     },
     "Woodland FC": {
-      "name": "FC Polissya Zhytomyr",
+      "city": "FC Polissya Zhytomyr",
+      "stadium": "Polissya Stadion",
       "shortName": "POL",
-      "stadium": "Polissya Stadion"
+      "name": "FC Polissya Zhytomyr"
     },
     "North Kyiv FC": {
       "name": "FC Obolon Kyiv",
-      "shortName": "OBO",
-      "stadium": "Obolon Arena"
+      "city": "FC Obolon Kyiv",
+      "stadium": "Obolon Arena",
+      "shortName": "OBO"
     },
     "Black Sea FC": {
-      "name": "FC Chornomorets Odesa",
+      "city": "FC Chornomorets Odesa",
       "shortName": "CHN",
-      "stadium": "Chornomorets Stadion"
+      "stadium": "Chornomorets Stadion",
+      "name": "FC Chornomorets Odesa"
     },
     "Galicia FC": {
       "name": "FC Rukh Lviv",
+      "stadium": "Ukraina Stadion",
       "shortName": "RUK",
-      "stadium": "Ukraina Stadion"
+      "players": {
+        "Matheus Ramos": "Miguel Román",
+        "Ismael Valderrama": "Iván Villar",
+        "Jacques Renard": "Javi Rodríguez",
+        "Yago Linhares": "Yoel Lago",
+        "Bruno Zabaleta": "Bryan Zaragoza",
+        "F. Castaño": "F. Cervi",
+        "Hugo Jurado": "Hugo Álvarez",
+        "J. Estrada": "J. El-Abdellaoui",
+        "Bernardo Silveira": "Borja Iglesias",
+        "Ivan Azevedo": "Iago Aspas",
+        "W. Monteiro": "I. Moriba",
+        "H. Salcedo": "Hugo Sotelo",
+        "Cristiano Duarte": "Carlos Domínguez",
+        "M. Fontes": "Manu Fernández",
+        "I. Ríos": "I. Radu",
+        "Murilo Ventura": "Marc Vidal",
+        "C. Sousa": "C. Starfelt",
+        "Patricio Dorrego": "Pablo Durán",
+        "M. Robledo": "M. Ristić",
+        "Fábio Ramos": "Ferran Jutglà",
+        "Miguel Almeida": "Marcos Alonso",
+        "J. Arévalo": "J. Aidoo",
+        "Mathieu": "Mingueza",
+        "I. Salcedo": "W. Swedberg",
+        "Henrique Baptista": "Hugo Burcio",
+        "Carlos": "Carreira",
+        "J. Robledo": "Javi Rueda"
+      },
+      "city": "FC Rukh Lviv"
     },
     "Carpathian FC": {
       "name": "FC Karpaty Lviv",
+      "city": "FC Karpaty Lviv",
       "shortName": "KAR",
       "stadium": "Arena Lviv"
     },
     "Dnipro Bend FC": {
       "name": "FC LNZ Cherkasy",
+      "city": "FC LNZ Cherkasy",
       "shortName": "LNZ",
       "stadium": "Central Stadion"
     },
     "Podillya FC": {
       "name": "FC Epitsentr Kamianets-Podilskyi",
-      "shortName": "EPI",
-      "stadium": "Podillya Stadion"
+      "city": "FC Epitsentr Kamianets-Podilskyi",
+      "stadium": "Podillya Stadion",
+      "shortName": "EPI"
     },
     "Kharkiv Metal FC": {
       "name": "FC Metalist 1925 Kharkiv",
-      "shortName": "MET",
-      "stadium": "OSK Metalist"
+      "city": "FC Metalist 1925 Kharkiv",
+      "stadium": "OSK Metalist",
+      "shortName": "MET"
     },
     "Volyn Oaks FC": {
-      "name": "NK Veres Rivne",
+      "stadium": "Avanhard Stadion",
       "shortName": "VER",
-      "stadium": "Avanhard Stadion"
+      "city": "NK Veres Rivne",
+      "name": "NK Veres Rivne"
     },
     "Inhulets FC": {
-      "name": "FC Inhulets Petrove",
+      "stadium": "Inhulets Stadion",
       "shortName": "INH",
-      "stadium": "Inhulets Stadion"
+      "city": "FC Inhulets Petrove",
+      "name": "FC Inhulets Petrove"
     },
     "Steaua Capitala FC": {
-      "name": "FCSB",
       "shortName": "FCS",
+      "name": "FCSB",
+      "city": "FCSB",
       "stadium": "Arena Națională"
     },
     "Feroviar FC": {
-      "name": "CFR Cluj",
       "shortName": "CFR",
+      "city": "CFR Cluj",
+      "name": "CFR Cluj",
       "stadium": "Dr. Constantin Rădulescu"
     },
     "Oltenia FC": {
-      "name": "Universitatea Craiova",
+      "stadium": "Ion Oblemenco",
       "shortName": "UCR",
-      "stadium": "Ion Oblemenco"
+      "name": "Universitatea Craiova",
+      "city": "Universitatea Craiova"
     },
     "Giulești FC": {
-      "name": "FC Rapid București",
       "shortName": "RAP",
+      "name": "FC Rapid București",
+      "city": "FC Rapid București",
       "stadium": "Rapid-Giulești"
     },
     "Red Dogs FC": {
-      "name": "Dinamo București",
       "shortName": "DIN",
+      "city": "Dinamo București",
+      "name": "Dinamo București",
       "stadium": "Arena Națională"
     },
     "Black Sea Coast FC": {
-      "name": "Farul Constanța",
       "shortName": "FAR",
+      "city": "Farul Constanța",
+      "name": "Farul Constanța",
       "stadium": "Central Stadion"
     },
     "Szekely FC": {
+      "city": "Sepsi OSK Sfântu Gheorghe",
       "name": "Sepsi OSK Sfântu Gheorghe",
       "shortName": "SEP",
       "stadium": "Sepsi Arena"
     },
     "Transilvania FC": {
+      "stadium": "Municipal Sibiu",
+      "city": "AFC Hermannstadt",
       "name": "AFC Hermannstadt",
-      "shortName": "HER",
-      "stadium": "Municipal Sibiu"
+      "shortName": "HER"
     },
     "Oil Wells FC": {
       "name": "Petrolul Ploiești",
+      "city": "Petrolul Ploiești",
       "shortName": "PET",
       "stadium": "Ilie Oană"
     },
     "Ialomița FC": {
+      "stadium": "Municipal Slobozia",
+      "city": "Unirea Slobozia",
       "name": "Unirea Slobozia",
-      "shortName": "UNI",
-      "stadium": "Municipal Slobozia"
+      "shortName": "UNI"
     },
     "Mureș FC": {
-      "name": "UTA Arad",
       "shortName": "UTA",
+      "name": "UTA Arad",
+      "city": "UTA Arad",
       "stadium": "Francisc von Neuman"
     },
     "Steel FC": {
-      "name": "ASC Oțelul Galați",
       "shortName": "OTE",
+      "name": "ASC Oțelul Galați",
+      "city": "ASC Oțelul Galați",
       "stadium": "Oțelul Stadion"
     },
     "Moldavia FC": {
+      "stadium": "Emil Alexandrescu",
       "name": "FC Politehnica Iași",
-      "shortName": "POL",
-      "stadium": "Emil Alexandrescu"
+      "city": "FC Politehnica Iași",
+      "shortName": "POL"
     },
     "Botoșani FC": {
-      "name": "FC Botoșani",
       "shortName": "BOT",
+      "city": "FC Botoșani",
+      "name": "FC Botoșani",
       "stadium": "Municipal Botoșani"
     },
     "Harghita FC": {
-      "name": "FK Csíkszereda Miercurea Ciuc",
       "shortName": "CSI",
+      "city": "FK Csíkszereda Miercurea Ciuc",
+      "name": "FK Csíkszereda Miercurea Ciuc",
       "stadium": "Municipal Miercurea"
     },
     "Capital Metals FC": {
-      "name": "CS Metaloglobus București",
+      "stadium": "Metaloglobus Stadion",
       "shortName": "MET",
-      "stadium": "Metaloglobus Stadion"
+      "name": "CS Metaloglobus București",
+      "city": "CS Metaloglobus București"
     },
     "Fradi FC": {
       "name": "Ferencvárosi TC",
       "shortName": "FER",
-      "stadium": "Groupama Arena"
+      "stadium": "Groupama Arena",
+      "city": "Ferencvárosi TC"
     },
     "Felcsút Academy FC": {
       "name": "Puskás Akadémia FC",
       "shortName": "PUS",
-      "stadium": "Pancho Aréna"
+      "stadium": "Pancho Aréna",
+      "city": "Puskás Akadémia FC"
     },
     "Lilas FC": {
       "name": "Újpest FC",
       "shortName": "UJP",
-      "stadium": "Szusza Ferenc"
+      "stadium": "Szusza Ferenc",
+      "city": "Újpest FC"
     },
     "Loki FC": {
       "name": "Debreceni VSC",
       "shortName": "DVS",
-      "stadium": "Nagyerdei Stadion"
+      "stadium": "Nagyerdei Stadion",
+      "city": "Debreceni VSC"
     },
     "Fehérvár Eagles FC": {
       "name": "Fehérvár FC",
       "shortName": "FEH",
-      "stadium": "MOL Aréna Sóstó"
+      "stadium": "MOL Aréna Sóstó",
+      "city": "Fehérvár FC"
     },
     "Atomvaros FC": {
       "name": "Paksi FC",
       "shortName": "PAK",
-      "stadium": "Fehérvári úti Stadion"
+      "stadium": "Fehérvári úti Stadion",
+      "city": "Paksi FC"
     },
     "Szabolcs FC": {
       "name": "Kisvárda Master Good",
       "shortName": "KIS",
-      "stadium": "Várkerti Stadion"
+      "stadium": "Várkerti Stadion",
+      "city": "Kisvárda Master Good"
     },
     "Kékek FC": {
       "name": "MTK Budapest",
       "shortName": "MTK",
-      "stadium": "Hidegkuti Nándor"
+      "stadium": "Hidegkuti Nándor",
+      "city": "MTK Budapest"
     },
     "Borsod FC": {
       "name": "Diósgyőri VTK",
       "shortName": "DIO",
-      "stadium": "DVTK Stadion"
+      "stadium": "DVTK Stadion",
+      "city": "Diósgyőri VTK"
     },
     "Spartacus FC": {
       "name": "Nyíregyháza Spartacus FC",
       "shortName": "NYI",
-      "stadium": "Városi Stadion"
+      "stadium": "Városi Stadion",
+      "city": "Nyíregyháza Spartacus FC"
     },
     "Rába FC": {
       "name": "Győri ETO FC",
       "shortName": "GYO",
-      "stadium": "ETO Park"
+      "stadium": "ETO Park",
+      "city": "Győri ETO FC"
     },
     "Zala FC": {
       "name": "Zalaegerszegi TE",
       "shortName": "ZTE",
-      "stadium": "ZTE Aréna"
+      "stadium": "ZTE Aréna",
+      "city": "Zalaegerszegi TE"
     },
     "Taehwa Tigers FC": {
       "name": "Ulsan HD FC",
       "shortName": "ULS",
-      "stadium": "Munsu Football Stadion"
+      "stadium": "Munsu Football Stadion",
+      "city": "Ulsan HD FC"
     },
     "Green Chariot FC": {
       "name": "Jeonbuk Hyundai Motors",
       "shortName": "JBK",
-      "stadium": "Jeonju World Cup Stadium"
+      "stadium": "Jeonju World Cup Stadium",
+      "city": "Jeonbuk Hyundai Motors"
     },
     "Capital Reds FC": {
       "name": "FC Seoul",
       "shortName": "SEO",
-      "stadium": "Seoul World Cup Stadium"
+      "stadium": "Seoul World Cup Stadium",
+      "city": "FC Seoul"
     },
     "Pohang Forge FC": {
       "name": "Pohang Steelers",
       "shortName": "POH",
-      "stadium": "Pohang Steel Yard"
+      "stadium": "Pohang Steel Yard",
+      "city": "Pohang Steelers"
     },
     "Alpine Bears FC": {
       "name": "Gangwon FC",
       "shortName": "GAN",
-      "stadium": "Chuncheon Songam Sports Town"
+      "stadium": "Chuncheon Songam Sports Town",
+      "city": "Gangwon FC"
     },
     "Fortress City FC": {
       "name": "Suwon FC",
       "shortName": "SUW",
-      "stadium": "Suwon Sports Complex"
+      "stadium": "Suwon Sports Complex",
+      "city": "Suwon FC"
     },
     "Apsan FC": {
       "name": "Daegu FC",
       "shortName": "DGU",
-      "stadium": "DGB Daegu Bank Park"
+      "stadium": "DGB Daegu Bank Park",
+      "city": "Daegu FC"
     },
     "Honam Phoenix FC": {
       "name": "Gwangju FC",
       "shortName": "GWJ",
-      "stadium": "Gwangju Football Stadium"
+      "stadium": "Gwangju Football Stadium",
+      "city": "Gwangju FC"
     },
     "Hallasan FC": {
       "name": "Jeju SK FC",
       "shortName": "JEJ",
-      "stadium": "Jeju World Cup Stadium"
+      "stadium": "Jeju World Cup Stadium",
+      "city": "Jeju SK FC"
     },
     "Daejeon Citizen FC": {
       "name": "Daejeon Hana Citizen",
       "shortName": "DAE",
-      "stadium": "Daejeon World Cup Stadium"
+      "stadium": "Daejeon World Cup Stadium",
+      "city": "Daejeon Hana Citizen"
     },
     "Anyang Purples FC": {
       "name": "FC Anyang",
       "shortName": "ANY",
-      "stadium": "Anyang Sports Complex"
+      "stadium": "Anyang Sports Complex",
+      "city": "FC Anyang"
     },
     "Gimcheon Military FC": {
       "name": "Gimcheon Sangmu FC",
       "shortName": "GIM",
-      "stadium": "Gimcheon Stadium"
+      "stadium": "Gimcheon Stadium",
+      "city": "Gimcheon Sangmu FC"
     },
     "Southern Skyline FC": {
       "name": "Melbourne City FC",
       "shortName": "MCY",
-      "stadium": "AAMI Park"
+      "stadium": "AAMI Park",
+      "city": "Melbourne City FC"
     },
     "Big V FC": {
       "name": "Melbourne Victory",
       "shortName": "MLV",
-      "stadium": "AAMI Park"
+      "stadium": "AAMI Park",
+      "city": "Melbourne Victory"
     },
     "Sky Blues FC": {
       "name": "Sydney FC",
       "shortName": "SYD",
-      "stadium": "Allianz Stadium"
+      "stadium": "Allianz Stadium",
+      "city": "Sydney FC"
     },
     "West Wanderers FC": {
       "name": "Western Sydney Wanderers",
       "shortName": "WSW",
-      "stadium": "CommBank Stadium"
+      "stadium": "CommBank Stadium",
+      "city": "Western Sydney Wanderers"
     },
     "Brisbane Lions FC": {
       "name": "Brisbane Roar",
       "shortName": "BRR",
-      "stadium": "Suncorp Stadium"
+      "stadium": "Suncorp Stadium",
+      "city": "Brisbane Roar"
     },
     "Adelaide Reds FC": {
       "name": "Adelaide United",
       "shortName": "ADU",
-      "stadium": "Coopers Stadium"
+      "stadium": "Coopers Stadium",
+      "city": "Adelaide United"
     },
     "Western Glory FC": {
       "name": "Perth Glory",
       "shortName": "PER",
-      "stadium": "HBF Park"
+      "stadium": "HBF Park",
+      "city": "Perth Glory"
     },
     "Coast Mariners FC": {
       "name": "Central Coast Mariners",
       "shortName": "CCM",
-      "stadium": "Industree Group Stadium"
+      "stadium": "Industree Group Stadium",
+      "city": "Central Coast Mariners"
     },
     "Hunter Jets FC": {
       "name": "Newcastle Jets",
       "shortName": "NWC",
-      "stadium": "McDonald Jones Stadium"
+      "stadium": "McDonald Jones Stadium",
+      "city": "Newcastle Jets"
     },
     "Windy City Phoenix FC": {
       "name": "Wellington Phoenix",
       "shortName": "WEL",
-      "stadium": "Sky Stadium"
+      "stadium": "Sky Stadium",
+      "city": "Wellington Phoenix"
     },
     "Bulls FC": {
       "name": "Macarthur FC",
       "shortName": "MAC",
-      "stadium": "Campbelltown Stadium"
+      "stadium": "Campbelltown Stadium",
+      "city": "Macarthur FC"
     },
     "Black Knights FC": {
       "name": "Auckland FC",
       "shortName": "AUK",
-      "stadium": "Go Media Stadium"
+      "stadium": "Go Media Stadium",
+      "city": "Auckland FC"
     },
     "Pretoria Brazilians FC": {
       "name": "Mamelodi Sundowns",
+      "stadium": "Loftus Versfeld",
       "shortName": "MMS",
-      "stadium": "Loftus Versfeld"
+      "city": "Mamelodi Sundowns"
     },
     "Buccaneers FC": {
+      "city": "Orlando Pirates",
       "name": "Orlando Pirates",
-      "shortName": "ORP",
-      "stadium": "Orlando Stadium"
+      "stadium": "Orlando Stadium",
+      "shortName": "ORP"
     },
     "Amakhosi FC": {
       "name": "Kaizer Chiefs",
       "shortName": "KZC",
-      "stadium": "FNB Stadium"
+      "stadium": "FNB Stadium",
+      "city": "Kaizer Chiefs"
     },
     "Matsatsantsa FC": {
-      "name": "SuperSport United",
       "shortName": "SSU",
-      "stadium": "Lucas Moripe Stadium"
+      "stadium": "Lucas Moripe Stadium",
+      "name": "SuperSport United",
+      "city": "SuperSport United"
     },
     "Limpopo Stars FC": {
-      "name": "Sekhukhune United",
+      "city": "Sekhukhune United",
+      "stadium": "Peter Mokaba",
       "shortName": "SKU",
-      "stadium": "Peter Mokaba"
+      "name": "Sekhukhune United"
     },
     "Cape Winelands FC": {
+      "city": "Stellenbosch FC",
       "name": "Stellenbosch FC",
       "shortName": "STE",
       "stadium": "Athlone Stadium"
     },
     "Usuthu FC": {
-      "name": "AmaZulu FC",
+      "city": "AmaZulu FC",
       "shortName": "AMZ",
-      "stadium": "Moses Mabhida"
+      "stadium": "Moses Mabhida",
+      "name": "AmaZulu FC"
     },
     "Polokwane Rise FC": {
-      "name": "Polokwane City",
       "shortName": "POL",
-      "stadium": "Old Peter Mokaba"
+      "stadium": "Old Peter Mokaba",
+      "name": "Polokwane City",
+      "city": "Polokwane City"
     },
     "Chilli Boys FC": {
-      "name": "Chippa United",
+      "city": "Chippa United",
       "shortName": "CHI",
-      "stadium": "Nelson Mandela Bay"
+      "stadium": "Nelson Mandela Bay",
+      "name": "Chippa United"
     },
     "Thwihli Thwahla FC": {
-      "name": "Royal AM",
+      "city": "Royal AM",
+      "stadium": "Chatsworth Stadium",
       "shortName": "RAM",
-      "stadium": "Chatsworth Stadium"
+      "name": "Royal AM"
     },
     "Rockets FC": {
       "name": "TS Galaxy",
+      "stadium": "Mbombela Stadium",
       "shortName": "TSG",
-      "stadium": "Mbombela Stadium"
+      "city": "TS Galaxy"
     },
     "Citizens FC": {
-      "name": "Cape Town City",
       "shortName": "CTC",
-      "stadium": "DHL Stadium"
+      "stadium": "DHL Stadium",
+      "name": "Cape Town City",
+      "city": "Cape Town City"
     },
     "Abafana Bes FC": {
+      "city": "Lamontville Golden Arrows",
       "name": "Lamontville Golden Arrows",
       "shortName": "ARR",
       "stadium": "Princess Magogo"
     },
     "Bahlabane FC": {
+      "city": "Marumo Gallants",
+      "name": "Marumo Gallants",
+      "stadium": "Old Peter Mokaba",
+      "shortName": "MMG"
+    },
+    "Dikwena FC": {
+      "city": "Magesi FC",
+      "stadium": "New Peter Mokaba",
+      "shortName": "MGS",
+      "name": "Magesi FC"
+    },
+    "Bay Natives FC": {
+      "shortName": "RIB",
+      "stadium": "King Zwelithini",
+      "name": "Richards Bay FC",
+      "city": "Richards Bay FC"
+    },
+    "bodo-glimt": {
+      "shortName": "BOD",
+      "stadium": "Aspmyra Stadion",
+      "name": "FK Bodø/Glimt",
+      "city": "FK Bodø/Glimt"
+    },
+    "molde-fk": {
+      "stadium": "Aker Stadion",
+      "shortName": "MOL",
+      "name": "Molde FK",
+      "city": "Molde FK"
+    },
+    "rosenborg-bk": {
+      "stadium": "Lerkendal Stadion",
+      "shortName": "RBK",
+      "name": "Rosenborg BK",
+      "city": "Rosenborg BK"
+    },
+    "brann": {
+      "city": "SK Brann",
+      "name": "SK Brann",
+      "shortName": "BRA",
+      "stadium": "Brann Stadion"
+    },
+    "viking-fk": {
+      "shortName": "VIK",
+      "stadium": "SR-Bank Arena",
+      "name": "Viking FK",
+      "city": "Viking FK"
+    },
+    "valerenga": {
+      "shortName": "VIF",
+      "stadium": "Intility Arena",
+      "city": "Vålerenga Fotball",
+      "name": "Vålerenga Fotball"
+    },
+    "fredrikstad": {
+      "city": "Fredrikstad FK",
+      "name": "Fredrikstad FK",
+      "shortName": "FFK",
+      "stadium": "Fredrikstad Stadion"
+    },
+    "tromso-il": {
+      "stadium": "Romssa Arena",
+      "shortName": "TIL",
+      "city": "Tromsø IL",
+      "name": "Tromsø IL"
+    },
+    "lillestrom": {
+      "city": "Lillestrøm SK",
+      "name": "Lillestrøm SK",
+      "shortName": "LSK",
+      "stadium": "Åråsen Stadion"
+    },
+    "sarpsborg-08": {
+      "shortName": "SAR",
+      "stadium": "Sarpsborg Stadion",
+      "city": "Sarpsborg 08 FF",
+      "name": "Sarpsborg 08 FF"
+    },
+    "haugesund": {
+      "stadium": "Haugesund Stadion",
+      "shortName": "FKH",
+      "name": "FK Haugesund",
+      "city": "FK Haugesund"
+    },
+    "strømsgodset": {
+      "city": "Strømsgodset IF",
+      "name": "Strømsgodset IF",
+      "shortName": "SIF",
+      "stadium": "Marienlyst Stadion"
+    },
+    "ham-kam": {
+      "city": "HamKam",
+      "name": "HamKam",
+      "stadium": "Briskeby Gressbane",
+      "shortName": "HAM"
+    },
+    "kfum-oslo": {
+      "name": "KFUM Oslo",
+      "city": "KFUM Oslo",
+      "stadium": "Intility Arena",
+      "shortName": "KFU"
+    },
+    "sandefjord": {
+      "name": "Sandefjord Fotball",
+      "city": "Sandefjord Fotball",
+      "shortName": "SAN",
+      "stadium": "Release Arena"
+    },
+    "kristiansund-bk": {
+      "name": "Kristiansund BK",
+      "city": "Kristiansund BK",
+      "stadium": "Kristiansund Stadion",
+      "shortName": "KBK"
+    },
+    "malmo-ff": {
+      "city": "Malmö FF",
+      "name": "Malmö FF",
+      "shortName": "MFF",
+      "stadium": "Eleda Stadion"
+    },
+    "aik-fotboll": {
+      "shortName": "AIK",
+      "name": "AIK Fotboll",
+      "stadium": "Strawberry Arena",
+      "city": "AIK Fotboll"
+    },
+    "hammarby-if": {
+      "stadium": "Tele2 Arena",
+      "name": "Hammarby IF",
+      "shortName": "HAM",
+      "city": "Hammarby IF"
+    },
+    "djurgarden-if": {
+      "name": "Djurgårdens IF",
+      "shortName": "DIF",
+      "stadium": "Strawberry Arena",
+      "city": "Djurgårdens IF"
+    },
+    "ifk-goteborg": {
+      "stadium": "Gamla Ullevi",
+      "shortName": "IFK",
+      "name": "IFK Göteborg",
+      "city": "IFK Göteborg"
+    },
+    "bk-hacken": {
+      "stadium": "Bravida Arena",
+      "name": "BK Häcken",
+      "shortName": "HÄC",
+      "city": "BK Häcken"
+    },
+    "ifk-norrkoping": {
+      "city": "IFK Norrköping",
+      "shortName": "IFK",
+      "name": "IFK Norrköping",
+      "stadium": "PlatinumCars Arena"
+    },
+    "mjallby-aif": {
+      "city": "Mjällby AIF",
+      "stadium": "Strandvallen",
+      "shortName": "MAI",
+      "name": "Mjällby AIF"
+    },
+    "elfsborg": {
+      "city": "IF Elfsborg",
+      "stadium": "Borås Arena",
+      "shortName": "ELF",
+      "name": "IF Elfsborg"
+    },
+    "kalmar-ff": {
+      "city": "Kalmar FF",
+      "stadium": "Guldfågeln Arena",
+      "shortName": "KFF",
+      "name": "Kalmar FF"
+    },
+    "halmstads-bk": {
+      "city": "Halmstads BK",
+      "stadium": "Örjans Vall",
+      "shortName": "HBK",
+      "name": "Halmstads BK"
+    },
+    "goteborg-if": {
+      "name": "GAIS",
+      "shortName": "GAI",
+      "stadium": "Gamla Ullevi",
+      "city": "GAIS"
+    },
+    "brommapojkarna": {
+      "city": "IF Brommapojkarna",
+      "stadium": "Grimsta IP",
+      "shortName": "BRO",
+      "name": "IF Brommapojkarna"
+    },
+    "degerfors-if": {
+      "shortName": "DEG",
+      "name": "Degerfors IF",
+      "stadium": "Stora Valla",
+      "city": "Degerfors IF"
+    },
+    "oster-if": {
+      "city": "Östers IF",
+      "stadium": "Visma Arena",
+      "name": "Östers IF",
+      "shortName": "OST"
+    },
+    "sirius-if": {
+      "shortName": "SIR",
+      "name": "IK Sirius",
+      "stadium": "Studenternas IP",
+      "city": "IK Sirius"
+    },
+    "legia-warszawa": {
+      "city": "Legia Warszawa",
+      "shortName": "LEG",
+      "stadium": "Stadion Wojska Polskiego",
+      "name": "Legia Warszawa"
+    },
+    "lech-poznan": {
+      "city": "Lech Poznań",
+      "shortName": "LEC",
+      "stadium": "Enea Stadion",
+      "name": "Lech Poznań"
+    },
+    "rakow-czestochowa": {
+      "shortName": "RAK",
+      "city": "Raków Częstochowa",
+      "name": "Raków Częstochowa",
+      "stadium": "Stadion Miejski"
+    },
+    "jagiellonia-bialystok": {
+      "city": "Jagiellonia Białystok",
+      "shortName": "JAG",
+      "stadium": "Stadion Miejski",
+      "name": "Jagiellonia Białystok"
+    },
+    "pogon-szczecin": {
+      "stadium": "Stadion Miejski",
+      "name": "Pogoń Szczecin",
+      "city": "Pogoń Szczecin",
+      "shortName": "POG"
+    },
+    "cracovia": {
+      "shortName": "CRA",
+      "city": "KS Cracovia",
+      "name": "KS Cracovia",
+      "stadium": "Stadion Cracovii"
+    },
+    "wisla-krakow": {
+      "shortName": "WIS",
+      "city": "Wisła Kraków",
+      "name": "Wisła Kraków",
+      "stadium": "Stadion Henryka Reymana"
+    },
+    "slask-wroclaw": {
+      "name": "Śląsk Wrocław",
+      "stadium": "Tarczyński Arena",
+      "shortName": "ŚLĄ",
+      "city": "Śląsk Wrocław"
+    },
+    "gornik-zabrze": {
+      "shortName": "GOR",
+      "city": "Górnik Zabrze",
+      "name": "Górnik Zabrze",
+      "stadium": "Arena Zabrze"
+    },
+    "piast-gliwice": {
+      "stadium": "Stadion Miejski",
+      "name": "Piast Gliwice",
+      "city": "Piast Gliwice",
+      "shortName": "PIA"
+    },
+    "motor-lublin": {
+      "stadium": "Arena Lublin",
+      "name": "Motor Lublin",
+      "city": "Motor Lublin",
+      "shortName": "MOT"
+    },
+    "widzew-lodz": {
+      "shortName": "WID",
+      "city": "Widzew Łódź",
+      "name": "Widzew Łódź",
+      "stadium": "Stadion Widzewa"
+    },
+    "lechia-gdansk": {
+      "city": "Lechia Gdańsk",
+      "shortName": "LEC",
+      "stadium": "Polsat Plus Arena",
+      "name": "Lechia Gdańsk"
+    },
+    "radomiak-radom": {
+      "name": "Radomiak Radom",
+      "stadium": "Stadion Radomiaka",
+      "shortName": "RAD",
+      "city": "Radomiak Radom"
+    },
+    "gks-katowice": {
+      "stadium": "Stadion GKS Katowice",
+      "name": "GKS Katowice",
+      "city": "GKS Katowice",
+      "shortName": "GKS"
+    },
+    "korona-kielce": {
+      "city": "Korona Kielce",
+      "shortName": "KOR",
+      "stadium": "Suzuki Arena",
+      "name": "Korona Kielce"
+    },
+    "termalica-nieciecza": {
+      "city": "Bruk-Bet Termalica Nieciecza",
+      "shortName": "TER",
+      "stadium": "Stadion Bruk-Bet",
+      "name": "Bruk-Bet Termalica Nieciecza"
+    },
+    "arka-gdynia": {
+      "shortName": "ARK",
+      "city": "Arka Gdynia",
+      "name": "Arka Gdynia",
+      "stadium": "Stadion Miejski Gdynia"
+    },
+    "ed-volendam": {
+      "name": "FC Volendam",
+      "stadium": "Kras Stadion",
+      "city": "FC Volendam",
+      "shortName": "VOL"
+    },
+    "fc-den-bosch": {
+      "shortName": "DBO",
+      "city": "FC Den Bosch",
+      "stadium": "De Vliert",
+      "name": "FC Den Bosch"
+    },
+    "roda-jc": {
+      "name": "Roda JC Kerkrade",
+      "stadium": "Parkstad Limburg Stadion",
+      "city": "Roda JC Kerkrade",
+      "shortName": "ROD"
+    },
+    "vvv-venlo": {
+      "shortName": "VVV",
+      "city": "VVV-Venlo",
+      "stadium": "Covebo Stadion",
+      "name": "VVV-Venlo"
+    },
+    "mvv-maastricht": {
+      "shortName": "MVV",
+      "city": "MVV Maastricht",
+      "stadium": "Geusselt Stadion",
+      "name": "MVV Maastricht"
+    },
+    "fc-eindhoven": {
+      "stadium": "Jan Louwers Stadion",
+      "name": "FC Eindhoven",
+      "shortName": "FCE",
+      "city": "FC Eindhoven"
+    },
+    "ed-nec": {
+      "shortName": "NEC",
+      "city": "NEC Nijmegen",
+      "stadium": "Goffertstadion",
+      "name": "NEC Nijmegen"
+    },
+    "emmen": {
+      "name": "FC Emmen",
+      "stadium": "De Oude Meerdijk",
+      "city": "FC Emmen",
+      "shortName": "EMM"
+    },
+    "helmond-sport": {
+      "city": "Helmond Sport",
+      "shortName": "HEL",
+      "name": "Helmond Sport",
+      "stadium": "Lavans Stadion"
+    },
+    "ed-telstar": {
+      "shortName": "TEL",
+      "city": "SC Telstar",
+      "stadium": "BUKO Stadion",
+      "name": "SC Telstar"
+    },
+    "jong-ajax": {
+      "name": "Jong Ajax",
+      "stadium": "De Toekomst",
+      "city": "Jong Ajax",
+      "shortName": "JAA"
+    },
+    "jong-psv": {
+      "shortName": "JPS",
+      "city": "Jong PSV",
+      "stadium": "De Herdgang",
+      "name": "Jong PSV"
+    },
+    "jong-utrecht": {
+      "city": "Jong Utrecht",
+      "shortName": "JUT",
+      "name": "Jong Utrecht",
+      "stadium": "Stadion Galgenwaard"
+    },
+    "cambuur": {
+      "city": "SC Cambuur",
+      "shortName": "CAM",
+      "name": "SC Cambuur",
+      "stadium": "Cambuur Stadion"
+    },
+    "vfv-oss": {
+      "stadium": "Frans Heesen Stadion",
+      "name": "TOP Oss",
+      "shortName": "OSS",
+      "city": "TOP Oss"
+    },
+    "willem-ii": {
+      "city": "Willem II",
+      "shortName": "WIL",
+      "name": "Willem II",
+      "stadium": "Koning Willem II Stadion"
+    },
+    "dordrecht": {
+      "name": "FC Dordrecht",
+      "stadium": "Krommedijk",
+      "city": "FC Dordrecht",
+      "shortName": "DOR"
+    },
+    "jong-az": {
+      "name": "Jong AZ",
+      "stadium": "AFAS Trainingscomplex",
+      "city": "Jong AZ",
+      "shortName": "JAZ"
+    },
+    "ed-excelsior": {
+      "stadium": "Van Donge & De Roo Stadion",
+      "name": "Excelsior",
+      "shortName": "EXC",
+      "city": "Excelsior"
+    },
+    "graafschap": {
+      "name": "De Graafschap",
+      "stadium": "De Vijverberg",
+      "city": "De Graafschap",
+      "shortName": "GRF"
+    },
+    "academica-coimbra": {
+      "shortName": "ACA",
+      "stadium": "Estádio Cidade de Coimbra",
+      "name": "Académica de Coimbra",
+      "city": "Académica de Coimbra"
+    },
+    "leixoes": {
+      "stadium": "Estádio do Mar",
+      "shortName": "LEI",
+      "name": "Leixões SC",
+      "city": "Leixões SC"
+    },
+    "feirense": {
+      "shortName": "FEI",
+      "stadium": "Estádio Marcolino de Castro",
+      "city": "CD Feirense",
+      "name": "CD Feirense"
+    },
+    "mafra": {
+      "name": "CD Mafra",
+      "city": "CD Mafra",
+      "shortName": "MAF",
+      "stadium": "Parque Desportivo"
+    },
+    "penafiel": {
+      "name": "FC Penafiel",
+      "city": "FC Penafiel",
+      "stadium": "Estádio Municipal 25 de Abril",
+      "shortName": "PEN"
+    },
+    "oliveirense": {
+      "shortName": "OLI",
+      "stadium": "Estádio Carlos Osório",
+      "city": "UD Oliveirense",
+      "name": "UD Oliveirense"
+    },
+    "tondela": {
+      "name": "CD Tondela",
+      "city": "CD Tondela",
+      "shortName": "TON",
+      "stadium": "Estádio João Cardoso"
+    },
+    "vilafranquense": {
+      "stadium": "Estádio Dr. Magalhães Pessoa",
+      "shortName": "LEI",
+      "name": "União de Leiria",
+      "city": "União de Leiria"
+    },
+    "paredes": {
+      "name": "USC Paredes",
+      "city": "USC Paredes",
+      "shortName": "PAR",
+      "stadium": "Parque Rota dos Móveis"
+    },
+    "torreense": {
+      "name": "SCU Torreense",
+      "city": "SCU Torreense",
+      "stadium": "Estádio Manuel Marques",
+      "shortName": "TOR"
+    },
+    "lusitania-lourosa": {
+      "name": "Lusitânia de Lourosa",
+      "city": "Lusitânia de Lourosa",
+      "shortName": "LUS",
+      "stadium": "Estádio do Lusitânia"
+    },
+    "felgueiras": {
+      "name": "FC Felgueiras",
+      "city": "FC Felgueiras",
+      "stadium": "Estádio Dr. Machado de Matos",
+      "shortName": "FEL"
+    },
+    "portimonense": {
+      "name": "Portimonense SC",
+      "city": "Portimonense SC",
+      "stadium": "Estádio Municipal",
+      "shortName": "POR"
+    },
+    "moreirense": {
+      "shortName": "MOR",
+      "stadium": "Parque Desportivo Comendador",
+      "name": "Moreirense FC",
+      "city": "Moreirense FC"
+    },
+    "uniao-almeirim": {
+      "stadium": "Estádio Complexo",
+      "shortName": "ALM",
+      "city": "União Almeirim",
+      "name": "União Almeirim"
+    },
+    "vitoria-guimaraes-b": {
+      "name": "Académico de Viseu",
+      "city": "Académico de Viseu",
+      "shortName": "VIS",
+      "stadium": "Estádio do Fontelo"
+    },
+    "chaves": {
+      "city": "GD Chaves",
+      "name": "GD Chaves",
+      "stadium": "Estádio Municipal de Chaves",
+      "shortName": "CHA"
+    },
+    "maritimo": {
+      "city": "CS Marítimo",
+      "name": "CS Marítimo",
+      "stadium": "Estádio do Marítimo",
+      "shortName": "MAR"
+    },
+    "zenit-saint-petersburg": {
+      "shortName": "ZEN",
+      "name": "FC Zenit Saint Petersburg",
+      "stadium": "Gazprom Arena",
+      "city": "FC Zenit Saint Petersburg"
+    },
+    "spartak-moscow": {
+      "city": "FC Spartak Moscow",
+      "stadium": "Lukoil Arena",
+      "name": "FC Spartak Moscow",
+      "shortName": "SPA"
+    },
+    "cska-moscow": {
+      "stadium": "VEB Arena",
+      "name": "CSKA Moscow",
+      "shortName": "CSK",
+      "city": "CSKA Moscow"
+    },
+    "lokomotiv-moscow": {
+      "city": "Lokomotiv Moscow",
+      "name": "Lokomotiv Moscow",
+      "stadium": "RZD Arena",
+      "shortName": "LOK"
+    },
+    "dynamo-moscow": {
+      "name": "Dynamo Moscow",
+      "stadium": "VTB Arena",
+      "shortName": "DYN",
+      "city": "Dynamo Moscow"
+    },
+    "krasnodar": {
+      "shortName": "KRA",
+      "name": "FC Krasnodar",
+      "stadium": "Ozon Arena",
+      "city": "FC Krasnodar"
+    },
+    "rubin-kazan": {
+      "shortName": "RUB",
+      "stadium": "Ak Bars Arena",
+      "name": "FC Rubin Kazan",
+      "city": "FC Rubin Kazan"
+    },
+    "rostov": {
+      "shortName": "ROS",
+      "stadium": "Rostov Arena",
+      "name": "FC Rostov",
+      "city": "FC Rostov"
+    },
+    "dinamo-makhachkala": {
+      "city": "Dynamo Makhachkala",
+      "shortName": "DMK",
+      "stadium": "Anzhi Arena",
+      "name": "Dynamo Makhachkala"
+    },
+    "akhmat-grozny": {
+      "city": "FC Akhmat Grozny",
+      "shortName": "AKH",
+      "stadium": "Akhmat Arena",
+      "name": "FC Akhmat Grozny"
+    },
+    "krylia-sovetov": {
+      "city": "Krylia Sovetov Samara",
+      "stadium": "Solidarnost Arena",
+      "name": "Krylia Sovetov Samara",
+      "shortName": "KRY"
+    },
+    "fakel-voronezh": {
+      "shortName": "FAK",
+      "name": "FC Fakel Voronezh",
+      "stadium": "Stadion Fakel",
+      "city": "FC Fakel Voronezh"
+    },
+    "nizhny-novgorod": {
+      "shortName": "NIZ",
+      "name": "Pari Nizhny Novgorod",
+      "stadium": "Nizhny Novgorod Stadion",
+      "city": "Pari Nizhny Novgorod"
+    },
+    "orenburg": {
+      "city": "FC Orenburg",
+      "shortName": "ORE",
+      "stadium": "Gazovik Arena",
+      "name": "FC Orenburg"
+    },
+    "khimki": {
+      "city": "FC Khimki",
+      "shortName": "KHI",
+      "name": "FC Khimki",
+      "stadium": "Arena Khimki"
+    },
+    "sochi": {
+      "stadium": "Fisht Olympic Stadion",
+      "name": "PFC Sochi",
+      "shortName": "SOC",
+      "city": "PFC Sochi"
+    },
+    "shakhtar-donetsk": {
+      "city": "FC Shakhtar Donetsk",
+      "shortName": "SHK",
+      "stadium": "Arena Lviv",
+      "name": "FC Shakhtar Donetsk"
+    },
+    "dynamo-kyiv": {
+      "name": "FC Dynamo Kyiv",
+      "shortName": "DYN",
+      "stadium": "NSC Olimpiyskiy",
+      "city": "FC Dynamo Kyiv"
+    },
+    "oleksandriya": {
+      "shortName": "OLK",
+      "stadium": "KSK Nika",
+      "city": "FC Oleksandriya",
+      "name": "FC Oleksandriya"
+    },
+    "kryvbas": {
+      "name": "FC Kryvbas Kryvyi Rih",
+      "shortName": "KRY",
+      "stadium": "Hirnyk Stadion",
+      "city": "FC Kryvbas Kryvyi Rih"
+    },
+    "zorya-luhansk": {
+      "city": "FC Zorya Luhansk",
+      "stadium": "Slavutych-Arena",
+      "shortName": "ZOR",
+      "name": "FC Zorya Luhansk"
+    },
+    "vorskla-poltava": {
+      "city": "FC Vorskla Poltava",
+      "shortName": "VOR",
+      "stadium": "Vorskla Stadion",
+      "name": "FC Vorskla Poltava"
+    },
+    "polissya": {
+      "name": "FC Polissya Zhytomyr",
+      "shortName": "POL",
+      "stadium": "Polissya Stadion",
+      "city": "FC Polissya Zhytomyr"
+    },
+    "obolon-kyiv": {
+      "city": "FC Obolon Kyiv",
+      "stadium": "Obolon Arena",
+      "shortName": "OBO",
+      "name": "FC Obolon Kyiv"
+    },
+    "chornomorets": {
+      "name": "FC Chornomorets Odesa",
+      "city": "FC Chornomorets Odesa",
+      "shortName": "CHN",
+      "stadium": "Chornomorets Stadion"
+    },
+    "rukh-lviv": {
+      "name": "FC Rukh Lviv",
+      "city": "FC Rukh Lviv",
+      "players": {
+        "Murilo Ventura": "Marc Vidal",
+        "M. Fontes": "Manu Fernández",
+        "I. Ríos": "I. Radu",
+        "Cristiano Duarte": "Carlos Domínguez",
+        "H. Salcedo": "Hugo Sotelo",
+        "W. Monteiro": "I. Moriba",
+        "J. Estrada": "J. El-Abdellaoui",
+        "Bernardo Silveira": "Borja Iglesias",
+        "Hugo Jurado": "Hugo Álvarez",
+        "Ivan Azevedo": "Iago Aspas",
+        "F. Castaño": "F. Cervi",
+        "Bruno Zabaleta": "Bryan Zaragoza",
+        "Yago Linhares": "Yoel Lago",
+        "Jacques Renard": "Javi Rodríguez",
+        "Matheus Ramos": "Miguel Román",
+        "Ismael Valderrama": "Iván Villar",
+        "J. Robledo": "Javi Rueda",
+        "Carlos": "Carreira",
+        "Henrique Baptista": "Hugo Burcio",
+        "Mathieu": "Mingueza",
+        "I. Salcedo": "W. Swedberg",
+        "J. Arévalo": "J. Aidoo",
+        "Miguel Almeida": "Marcos Alonso",
+        "Fábio Ramos": "Ferran Jutglà",
+        "M. Robledo": "M. Ristić",
+        "Patricio Dorrego": "Pablo Durán",
+        "C. Sousa": "C. Starfelt"
+      },
+      "shortName": "RUK",
+      "stadium": "Ukraina Stadion"
+    },
+    "karpaty-lviv": {
+      "city": "FC Karpaty Lviv",
+      "shortName": "KAR",
+      "stadium": "Arena Lviv",
+      "name": "FC Karpaty Lviv"
+    },
+    "lnz-cherkasy": {
+      "name": "FC LNZ Cherkasy",
+      "stadium": "Central Stadion",
+      "shortName": "LNZ",
+      "city": "FC LNZ Cherkasy"
+    },
+    "epitsentr": {
+      "name": "FC Epitsentr Kamianets-Podilskyi",
+      "shortName": "EPI",
+      "stadium": "Podillya Stadion",
+      "city": "FC Epitsentr Kamianets-Podilskyi"
+    },
+    "metalist-1925": {
+      "name": "FC Metalist 1925 Kharkiv",
+      "city": "FC Metalist 1925 Kharkiv",
+      "stadium": "OSK Metalist",
+      "shortName": "MET"
+    },
+    "veres-rivne": {
+      "name": "NK Veres Rivne",
+      "city": "NK Veres Rivne",
+      "stadium": "Avanhard Stadion",
+      "shortName": "VER"
+    },
+    "inhulets": {
+      "city": "FC Inhulets Petrove",
+      "shortName": "INH",
+      "stadium": "Inhulets Stadion",
+      "name": "FC Inhulets Petrove"
+    },
+    "fcsb": {
+      "stadium": "Arena Națională",
+      "shortName": "FCS",
+      "name": "FCSB",
+      "city": "FCSB"
+    },
+    "cfr-cluj": {
+      "shortName": "CFR",
+      "city": "CFR Cluj",
+      "name": "CFR Cluj",
+      "stadium": "Dr. Constantin Rădulescu"
+    },
+    "universitatea-craiova": {
+      "name": "Universitatea Craiova",
+      "city": "Universitatea Craiova",
+      "shortName": "UCR",
+      "stadium": "Ion Oblemenco"
+    },
+    "rapid-bucuresti": {
+      "city": "FC Rapid București",
+      "name": "FC Rapid București",
+      "shortName": "RAP",
+      "stadium": "Rapid-Giulești"
+    },
+    "dinamo-bucuresti": {
+      "stadium": "Arena Națională",
+      "shortName": "DIN",
+      "name": "Dinamo București",
+      "city": "Dinamo București"
+    },
+    "farul-constanta": {
+      "stadium": "Central Stadion",
+      "city": "Farul Constanța",
+      "name": "Farul Constanța",
+      "shortName": "FAR"
+    },
+    "sepsi-sfantu": {
+      "name": "Sepsi OSK Sfântu Gheorghe",
+      "city": "Sepsi OSK Sfântu Gheorghe",
+      "shortName": "SEP",
+      "stadium": "Sepsi Arena"
+    },
+    "hermannstadt": {
+      "stadium": "Municipal Sibiu",
+      "shortName": "HER",
+      "name": "AFC Hermannstadt",
+      "city": "AFC Hermannstadt"
+    },
+    "petrolul-ploiesti": {
+      "stadium": "Ilie Oană",
+      "shortName": "PET",
+      "city": "Petrolul Ploiești",
+      "name": "Petrolul Ploiești"
+    },
+    "unirea-slobozia": {
+      "name": "Unirea Slobozia",
+      "city": "Unirea Slobozia",
+      "shortName": "UNI",
+      "stadium": "Municipal Slobozia"
+    },
+    "uta-arad": {
+      "stadium": "Francisc von Neuman",
+      "city": "UTA Arad",
+      "name": "UTA Arad",
+      "shortName": "UTA"
+    },
+    "otelul-galati": {
+      "shortName": "OTE",
+      "city": "ASC Oțelul Galați",
+      "name": "ASC Oțelul Galați",
+      "stadium": "Oțelul Stadion"
+    },
+    "politehnica-iasi": {
+      "stadium": "Emil Alexandrescu",
+      "shortName": "POL",
+      "name": "FC Politehnica Iași",
+      "city": "FC Politehnica Iași"
+    },
+    "botosani": {
+      "stadium": "Municipal Botoșani",
+      "shortName": "BOT",
+      "city": "FC Botoșani",
+      "name": "FC Botoșani"
+    },
+    "csikszereda": {
+      "name": "FK Csíkszereda Miercurea Ciuc",
+      "city": "FK Csíkszereda Miercurea Ciuc",
+      "shortName": "CSI",
+      "stadium": "Municipal Miercurea"
+    },
+    "metaloglobus": {
+      "shortName": "MET",
+      "name": "CS Metaloglobus București",
+      "city": "CS Metaloglobus București",
+      "stadium": "Metaloglobus Stadion"
+    },
+    "ferencvaros": {
+      "name": "Ferencvárosi TC",
+      "shortName": "FER",
+      "stadium": "Groupama Arena",
+      "city": "Ferencvárosi TC"
+    },
+    "puskas-akademia": {
+      "name": "Puskás Akadémia FC",
+      "shortName": "PUS",
+      "stadium": "Pancho Aréna",
+      "city": "Puskás Akadémia FC"
+    },
+    "ujpest": {
+      "name": "Újpest FC",
+      "shortName": "UJP",
+      "stadium": "Szusza Ferenc",
+      "city": "Újpest FC"
+    },
+    "debrecen": {
+      "name": "Debreceni VSC",
+      "shortName": "DVS",
+      "stadium": "Nagyerdei Stadion",
+      "city": "Debreceni VSC"
+    },
+    "mol-fehervar": {
+      "name": "Fehérvár FC",
+      "shortName": "FEH",
+      "stadium": "MOL Aréna Sóstó",
+      "city": "Fehérvár FC"
+    },
+    "paks": {
+      "name": "Paksi FC",
+      "shortName": "PAK",
+      "stadium": "Fehérvári úti Stadion",
+      "city": "Paksi FC"
+    },
+    "kisvarda": {
+      "name": "Kisvárda Master Good",
+      "shortName": "KIS",
+      "stadium": "Várkerti Stadion",
+      "city": "Kisvárda Master Good"
+    },
+    "mtk-budapest": {
+      "name": "MTK Budapest",
+      "shortName": "MTK",
+      "stadium": "Hidegkuti Nándor",
+      "city": "MTK Budapest"
+    },
+    "diosgyor": {
+      "name": "Diósgyőri VTK",
+      "shortName": "DIO",
+      "stadium": "DVTK Stadion",
+      "city": "Diósgyőri VTK"
+    },
+    "nyiregyhaza": {
+      "name": "Nyíregyháza Spartacus FC",
+      "shortName": "NYI",
+      "stadium": "Városi Stadion",
+      "city": "Nyíregyháza Spartacus FC"
+    },
+    "gyor": {
+      "name": "Győri ETO FC",
+      "shortName": "GYO",
+      "stadium": "ETO Park",
+      "city": "Győri ETO FC"
+    },
+    "zalaegerszeg": {
+      "name": "Zalaegerszegi TE",
+      "shortName": "ZTE",
+      "stadium": "ZTE Aréna",
+      "city": "Zalaegerszegi TE"
+    },
+    "ulsan-hd": {
+      "name": "Ulsan HD FC",
+      "shortName": "ULS",
+      "stadium": "Munsu Football Stadion",
+      "city": "Ulsan HD FC"
+    },
+    "jeonbuk-motors": {
+      "name": "Jeonbuk Hyundai Motors",
+      "shortName": "JBK",
+      "stadium": "Jeonju World Cup Stadium",
+      "city": "Jeonbuk Hyundai Motors"
+    },
+    "fc-seoul": {
+      "name": "FC Seoul",
+      "shortName": "SEO",
+      "stadium": "Seoul World Cup Stadium",
+      "city": "FC Seoul"
+    },
+    "pohang-steelers": {
+      "name": "Pohang Steelers",
+      "shortName": "POH",
+      "stadium": "Pohang Steel Yard",
+      "city": "Pohang Steelers"
+    },
+    "gangwon-fc": {
+      "name": "Gangwon FC",
+      "shortName": "GAN",
+      "stadium": "Chuncheon Songam Sports Town",
+      "city": "Gangwon FC"
+    },
+    "suwon-fc": {
+      "name": "Suwon FC",
+      "shortName": "SUW",
+      "stadium": "Suwon Sports Complex",
+      "city": "Suwon FC"
+    },
+    "daegu-fc": {
+      "name": "Daegu FC",
+      "shortName": "DGU",
+      "stadium": "DGB Daegu Bank Park",
+      "city": "Daegu FC"
+    },
+    "gwangju-fc": {
+      "name": "Gwangju FC",
+      "shortName": "GWJ",
+      "stadium": "Gwangju Football Stadium",
+      "city": "Gwangju FC"
+    },
+    "jeju-sk": {
+      "name": "Jeju SK FC",
+      "shortName": "JEJ",
+      "stadium": "Jeju World Cup Stadium",
+      "city": "Jeju SK FC"
+    },
+    "daejeon-hana": {
+      "name": "Daejeon Hana Citizen",
+      "shortName": "DAE",
+      "stadium": "Daejeon World Cup Stadium",
+      "city": "Daejeon Hana Citizen"
+    },
+    "anyang": {
+      "name": "FC Anyang",
+      "shortName": "ANY",
+      "stadium": "Anyang Sports Complex",
+      "city": "FC Anyang"
+    },
+    "gimcheon-sangmu": {
+      "name": "Gimcheon Sangmu FC",
+      "shortName": "GIM",
+      "stadium": "Gimcheon Stadium",
+      "city": "Gimcheon Sangmu FC"
+    },
+    "melbourne-city": {
+      "name": "Melbourne City FC",
+      "shortName": "MCY",
+      "stadium": "AAMI Park",
+      "city": "Melbourne City FC"
+    },
+    "melbourne-victory": {
+      "name": "Melbourne Victory",
+      "shortName": "MLV",
+      "stadium": "AAMI Park",
+      "city": "Melbourne Victory"
+    },
+    "sydney-fc": {
+      "name": "Sydney FC",
+      "shortName": "SYD",
+      "stadium": "Allianz Stadium",
+      "city": "Sydney FC"
+    },
+    "western-sydney": {
+      "name": "Western Sydney Wanderers",
+      "shortName": "WSW",
+      "stadium": "CommBank Stadium",
+      "city": "Western Sydney Wanderers"
+    },
+    "brisbane-roar": {
+      "name": "Brisbane Roar",
+      "shortName": "BRR",
+      "stadium": "Suncorp Stadium",
+      "city": "Brisbane Roar"
+    },
+    "adelaide-united": {
+      "name": "Adelaide United",
+      "shortName": "ADU",
+      "stadium": "Coopers Stadium",
+      "city": "Adelaide United"
+    },
+    "perth-glory": {
+      "name": "Perth Glory",
+      "shortName": "PER",
+      "stadium": "HBF Park",
+      "city": "Perth Glory"
+    },
+    "central-coast": {
+      "name": "Central Coast Mariners",
+      "shortName": "CCM",
+      "stadium": "Industree Group Stadium",
+      "city": "Central Coast Mariners"
+    },
+    "newcastle-jets": {
+      "name": "Newcastle Jets",
+      "shortName": "NWC",
+      "stadium": "McDonald Jones Stadium",
+      "city": "Newcastle Jets"
+    },
+    "wellington-phoenix": {
+      "name": "Wellington Phoenix",
+      "shortName": "WEL",
+      "stadium": "Sky Stadium",
+      "city": "Wellington Phoenix"
+    },
+    "macarthur-fc": {
+      "name": "Macarthur FC",
+      "shortName": "MAC",
+      "stadium": "Campbelltown Stadium",
+      "city": "Macarthur FC"
+    },
+    "auckland-fc": {
+      "name": "Auckland FC",
+      "shortName": "AUK",
+      "stadium": "Go Media Stadium",
+      "city": "Auckland FC"
+    },
+    "mamelodi-sundowns": {
+      "city": "Mamelodi Sundowns",
+      "stadium": "Loftus Versfeld",
+      "shortName": "MMS",
+      "name": "Mamelodi Sundowns"
+    },
+    "orlando-pirates": {
+      "city": "Orlando Pirates",
+      "name": "Orlando Pirates",
+      "shortName": "ORP",
+      "stadium": "Orlando Stadium"
+    },
+    "kaizer-chiefs": {
+      "name": "Kaizer Chiefs",
+      "stadium": "FNB Stadium",
+      "shortName": "KZC",
+      "city": "Kaizer Chiefs"
+    },
+    "supersport-united": {
+      "name": "SuperSport United",
+      "shortName": "SSU",
+      "stadium": "Lucas Moripe Stadium",
+      "city": "SuperSport United"
+    },
+    "sekhukhune-united": {
+      "shortName": "SKU",
+      "stadium": "Peter Mokaba",
+      "name": "Sekhukhune United",
+      "city": "Sekhukhune United"
+    },
+    "stellenbosch-fc": {
+      "city": "Stellenbosch FC",
+      "name": "Stellenbosch FC",
+      "stadium": "Athlone Stadium",
+      "shortName": "STE"
+    },
+    "amazulu": {
+      "city": "AmaZulu FC",
+      "stadium": "Moses Mabhida",
+      "shortName": "AMZ",
+      "name": "AmaZulu FC"
+    },
+    "polokwane-city": {
+      "city": "Polokwane City",
+      "name": "Polokwane City",
+      "shortName": "POL",
+      "stadium": "Old Peter Mokaba"
+    },
+    "chippa-united": {
+      "city": "Chippa United",
+      "shortName": "CHI",
+      "stadium": "Nelson Mandela Bay",
+      "name": "Chippa United"
+    },
+    "royal-am": {
+      "city": "Royal AM",
+      "stadium": "Chatsworth Stadium",
+      "shortName": "RAM",
+      "name": "Royal AM"
+    },
+    "ts-galaxy": {
+      "city": "TS Galaxy",
+      "name": "TS Galaxy",
+      "stadium": "Mbombela Stadium",
+      "shortName": "TSG"
+    },
+    "cape-town-city": {
+      "name": "Cape Town City",
+      "shortName": "CTC",
+      "stadium": "DHL Stadium",
+      "city": "Cape Town City"
+    },
+    "golden-arrows": {
+      "name": "Lamontville Golden Arrows",
+      "stadium": "Princess Magogo",
+      "shortName": "ARR",
+      "city": "Lamontville Golden Arrows"
+    },
+    "marumo-gallants": {
+      "city": "Marumo Gallants",
       "name": "Marumo Gallants",
       "shortName": "MMG",
       "stadium": "Old Peter Mokaba"
     },
-    "Dikwena FC": {
-      "name": "Magesi FC",
+    "magesi-fc": {
+      "stadium": "New Peter Mokaba",
       "shortName": "MGS",
-      "stadium": "New Peter Mokaba"
+      "name": "Magesi FC",
+      "city": "Magesi FC"
     },
-    "Bay Natives FC": {
+    "richards-bay": {
+      "city": "Richards Bay FC",
       "name": "Richards Bay FC",
       "shortName": "RIB",
       "stadium": "King Zwelithini"
