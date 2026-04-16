@@ -35077,6 +35077,198 @@
         "Ignacio Delgado": "Diego Vargas"
       },
       "name": "Universidad de Chile"
+    },
+    "Águila Dorada FC": {
+      "name": "CF América",
+      "city": "CF América"
+    },
+    "cf-america": {
+      "name": "CF América",
+      "city": "CF América"
+    },
+    "Volcán Rojo FC": {
+      "name": "Deportivo Toluca FC",
+      "city": "Deportivo Toluca FC"
+    },
+    "deportivo-toluca": {
+      "name": "Deportivo Toluca FC",
+      "city": "Deportivo Toluca FC"
+    },
+    "Cruz Celeste": {
+      "name": "CD Cruz Azul",
+      "city": "CD Cruz Azul"
+    },
+    "cd-cruz-azul": {
+      "name": "CD Cruz Azul",
+      "city": "CD Cruz Azul"
+    },
+    "Tigre Regio FC": {
+      "name": "Tigres UANL",
+      "city": "Tigres UANL"
+    },
+    "tigres-uanl": {
+      "name": "Tigres UANL",
+      "city": "Tigres UANL"
+    },
+    "Tapatío FC": {
+      "city": "CD Guadalajara",
+      "name": "CD Guadalajara",
+      "players": {
+        "Nuno": "Neskes",
+        "Raí Teixeira": "Raúl Tavares",
+        "D. Gallardo": "Dani Gallardo",
+        "Jonas Guedes": "Javi Gómez",
+        "Daniel Valderrama": "Dani Vicente",
+        "Jacques Carpentier": "Jorge Casado",
+        "Aurelio Mendoza": "Agus Moreno",
+        "Aurelio Ceballos": "Alejandro Cañizo",
+        "Santiago Mendoza": "Samu Mayo",
+        "Davi Alcântara": "David Amigo",
+        "Teodoro Carrasco": "Toño Calvo",
+        "Kevin Carrasco": "Kike Cadete",
+        "Adrián Zabaleta": "Amador Zarco",
+        "S. Moraes": "Salifo Mendes",
+        "V. Robledo": "Víctor Rodríguez",
+        "J. Mendoza": "Julio Martínez",
+        "Marcos Medrano": "Miki Muñoz",
+        "P. Robledo": "Pablo Rojo",
+        "Joaquín Arroyo": "Javier Ablanque",
+        "Ulises Vázquez": "Unax Álvarez",
+        "P. Medrano": "Pablo Muñoz",
+        "Guilherme Pereira": "Guille Perero"
+      }
+    },
+    "deportivo-guadalajara": {
+      "players": {
+        "Guilherme Pereira": "Guille Perero",
+        "P. Medrano": "Pablo Muñoz",
+        "Marcos Medrano": "Miki Muñoz",
+        "P. Robledo": "Pablo Rojo",
+        "Ulises Vázquez": "Unax Álvarez",
+        "Joaquín Arroyo": "Javier Ablanque",
+        "Davi Alcântara": "David Amigo",
+        "Aurelio Ceballos": "Alejandro Cañizo",
+        "Santiago Mendoza": "Samu Mayo",
+        "Daniel Valderrama": "Dani Vicente",
+        "Aurelio Mendoza": "Agus Moreno",
+        "Jacques Carpentier": "Jorge Casado",
+        "Adrián Zabaleta": "Amador Zarco",
+        "S. Moraes": "Salifo Mendes",
+        "J. Mendoza": "Julio Martínez",
+        "V. Robledo": "Víctor Rodríguez",
+        "Teodoro Carrasco": "Toño Calvo",
+        "Kevin Carrasco": "Kike Cadete",
+        "D. Gallardo": "Dani Gallardo",
+        "Raí Teixeira": "Raúl Tavares",
+        "Nuno": "Neskes",
+        "Jonas Guedes": "Javi Gómez"
+      },
+      "name": "CD Guadalajara",
+      "city": "CD Guadalajara"
+    },
+    "Sierra FC": {
+      "name": "CF Monterrey",
+      "city": "CF Monterrey"
+    },
+    "cf-monterrey": {
+      "name": "CF Monterrey",
+      "city": "CF Monterrey"
+    },
+    "Minero FC": {
+      "name": "CF Pachuca",
+      "city": "CF Pachuca"
+    },
+    "cf-pachuca": {
+      "name": "CF Pachuca",
+      "city": "CF Pachuca"
+    },
+    "Xolos FC": {
+      "name": "Club Tijuana",
+      "city": "Club Tijuana"
+    },
+    "club-tijuana": {
+      "name": "Club Tijuana",
+      "city": "Club Tijuana"
+    },
+    "Puma Azul FC": {
+      "name": "Pumas UNAM",
+      "city": "Pumas UNAM"
+    },
+    "unam-pumas": {
+      "name": "Pumas UNAM",
+      "city": "Pumas UNAM"
+    },
+    "Esmeralda FC": {
+      "name": "Club León FC",
+      "city": "Club León FC"
+    },
+    "club-leon-fc": {
+      "name": "Club León FC",
+      "city": "Club León FC"
+    },
+    "Tuneros FC": {
+      "name": "Atlético de San Luis",
+      "city": "Atlético de San Luis"
+    },
+    "atletico-de-san-luis": {
+      "name": "Atlético de San Luis",
+      "city": "Atlético de San Luis"
+    },
+    "Rayo Eléctrico FC": {
+      "name": "Club Necaxa",
+      "city": "Club Necaxa"
+    },
+    "club-necaxa": {
+      "name": "Club Necaxa",
+      "city": "Club Necaxa"
+    },
+    "Laguna Verde FC": {
+      "name": "Santos Laguna",
+      "city": "Santos Laguna"
+    },
+    "santos-laguna": {
+      "name": "Santos Laguna",
+      "city": "Santos Laguna"
+    },
+    "Frontera FC": {
+      "name": "FC Juárez",
+      "city": "FC Juárez"
+    },
+    "fc-juarez": {
+      "name": "FC Juárez",
+      "city": "FC Juárez"
+    },
+    "Rojinegro FC": {
+      "name": "Atlas Guadalajara",
+      "city": "Atlas Guadalajara"
+    },
+    "atlas-guadalajara": {
+      "name": "Atlas Guadalajara",
+      "city": "Atlas Guadalajara"
+    },
+    "Gallos FC": {
+      "name": "Querétaro FC",
+      "city": "Querétaro FC"
+    },
+    "queretaro-fc": {
+      "name": "Querétaro FC",
+      "city": "Querétaro FC"
+    },
+    "Puebla FC": {
+      "name": "Club Puebla",
+      "city": "Club Puebla"
+    },
+    "puebla-fc": {
+      "name": "Club Puebla",
+      "city": "Club Puebla"
+    },
+    "Puerto FC": {
+      "name": "Mazatlán FC",
+      "city": "Mazatlán FC"
+    },
+    "mazatlan-fc": {
+      "name": "Mazatlán FC",
+      "city": "Mazatlán FC"
     }
   },
   "leagues": {

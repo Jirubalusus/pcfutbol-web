@@ -1,0 +1,200 @@
+[
+  {
+    "id": "tm-3631",
+    "name": "CF América",
+    "slug": "cf-america",
+    "transfermarktId": "3631",
+    "teamUrl": "https://www.transfermarkt.es/cf-america/startseite/verein/3631/saison_id/2025",
+    "marketValueText": "98,95 mill. €",
+    "league": "ligamx",
+    "season": "2025-26",
+    "rank": 1
+  },
+  {
+    "id": "tm-6711",
+    "name": "CD Guadalajara",
+    "slug": "deportivo-guadalajara",
+    "transfermarktId": "6711",
+    "teamUrl": "https://www.transfermarkt.es/deportivo-guadalajara/startseite/verein/6711/saison_id/2025",
+    "marketValueText": "85,65 mill. €",
+    "league": "ligamx",
+    "season": "2025-26",
+    "rank": 2
+  },
+  {
+    "id": "tm-1804",
+    "name": "Deportivo Toluca FC",
+    "slug": "deportivo-toluca",
+    "transfermarktId": "1804",
+    "teamUrl": "https://www.transfermarkt.es/deportivo-toluca/startseite/verein/1804/saison_id/2025",
+    "marketValueText": "84,95 mill. €",
+    "league": "ligamx",
+    "season": "2025-26",
+    "rank": 3
+  },
+  {
+    "id": "tm-3711",
+    "name": "CD Cruz Azul",
+    "slug": "cd-cruz-azul",
+    "transfermarktId": "3711",
+    "teamUrl": "https://www.transfermarkt.es/cd-cruz-azul/startseite/verein/3711/saison_id/2025",
+    "marketValueText": "82,60 mill. €",
+    "league": "ligamx",
+    "season": "2025-26",
+    "rank": 4
+  },
+  {
+    "id": "tm-7055",
+    "name": "Tigres UANL",
+    "slug": "tigres-uanl",
+    "transfermarktId": "7055",
+    "teamUrl": "https://www.transfermarkt.es/tigres-uanl/startseite/verein/7055/saison_id/2025",
+    "marketValueText": "73,45 mill. €",
+    "league": "ligamx",
+    "season": "2025-26",
+    "rank": 5
+  },
+  {
+    "id": "tm-2407",
+    "name": "CF Monterrey",
+    "slug": "cf-monterrey",
+    "transfermarktId": "2407",
+    "teamUrl": "https://www.transfermarkt.es/cf-monterrey/startseite/verein/2407/saison_id/2025",
+    "marketValueText": "64,70 mill. €",
+    "league": "ligamx",
+    "season": "2025-26",
+    "rank": 6
+  },
+  {
+    "id": "tm-7633",
+    "name": "Pumas UNAM",
+    "slug": "unam-pumas",
+    "transfermarktId": "7633",
+    "teamUrl": "https://www.transfermarkt.es/unam-pumas/startseite/verein/7633/saison_id/2025",
+    "marketValueText": "52,13 mill. €",
+    "league": "ligamx",
+    "season": "2025-26",
+    "rank": 7
+  },
+  {
+    "id": "tm-4035",
+    "name": "CF Pachuca",
+    "slug": "cf-pachuca",
+    "transfermarktId": "4035",
+    "teamUrl": "https://www.transfermarkt.es/cf-pachuca/startseite/verein/4035/saison_id/2025",
+    "marketValueText": "49,60 mill. €",
+    "league": "ligamx",
+    "season": "2025-26",
+    "rank": 8
+  },
+  {
+    "id": "tm-13353",
+    "name": "Club Tijuana",
+    "slug": "club-tijuana",
+    "transfermarktId": "13353",
+    "teamUrl": "https://www.transfermarkt.es/club-tijuana/startseite/verein/13353/saison_id/2025",
+    "marketValueText": "46,30 mill. €",
+    "league": "ligamx",
+    "season": "2025-26",
+    "rank": 9
+  },
+  {
+    "id": "tm-1146",
+    "name": "Club Necaxa",
+    "slug": "club-necaxa",
+    "transfermarktId": "1146",
+    "teamUrl": "https://www.transfermarkt.es/club-necaxa/startseite/verein/1146/saison_id/2025",
+    "marketValueText": "42,55 mill. €",
+    "league": "ligamx",
+    "season": "2025-26",
+    "rank": 10
+  },
+  {
+    "id": "tm-4941",
+    "name": "Club León FC",
+    "slug": "club-leon-fc",
+    "transfermarktId": "4941",
+    "teamUrl": "https://www.transfermarkt.es/club-leon-fc/startseite/verein/4941/saison_id/2025",
+    "marketValueText": "41,90 mill. €",
+    "league": "ligamx",
+    "season": "2025-26",
+    "rank": 11
+  },
+  {
+    "id": "tm-49283",
+    "name": "FC Juárez",
+    "slug": "fc-juarez",
+    "transfermarktId": "49283",
+    "teamUrl": "https://www.transfermarkt.es/fc-juarez/startseite/verein/49283/saison_id/2025",
+    "marketValueText": "40,80 mill. €",
+    "league": "ligamx",
+    "season": "2025-26",
+    "rank": 12
+  },
+  {
+    "id": "tm-40188",
+    "name": "Atlético de San Luis",
+    "slug": "atletico-de-san-luis",
+    "transfermarktId": "40188",
+    "teamUrl": "https://www.transfermarkt.es/atletico-de-san-luis/startseite/verein/40188/saison_id/2025",
+    "marketValueText": "38,55 mill. €",
+    "league": "ligamx",
+    "season": "2025-26",
+    "rank": 13
+  },
+  {
+    "id": "tm-1403",
+    "name": "Santos Laguna",
+    "slug": "santos-laguna",
+    "transfermarktId": "1403",
+    "teamUrl": "https://www.transfermarkt.es/santos-laguna/startseite/verein/1403/saison_id/2025",
+    "marketValueText": "31,05 mill. €",
+    "league": "ligamx",
+    "season": "2025-26",
+    "rank": 14
+  },
+  {
+    "id": "tm-8590",
+    "name": "Atlas Guadalajara",
+    "slug": "atlas-guadalajara",
+    "transfermarktId": "8590",
+    "teamUrl": "https://www.transfermarkt.es/atlas-guadalajara/startseite/verein/8590/saison_id/2025",
+    "marketValueText": "29,20 mill. €",
+    "league": "ligamx",
+    "season": "2025-26",
+    "rank": 15
+  },
+  {
+    "id": "tm-5662",
+    "name": "Club Puebla",
+    "slug": "puebla-fc",
+    "transfermarktId": "5662",
+    "teamUrl": "https://www.transfermarkt.es/puebla-fc/startseite/verein/5662/saison_id/2025",
+    "marketValueText": "24,25 mill. €",
+    "league": "ligamx",
+    "season": "2025-26",
+    "rank": 16
+  },
+  {
+    "id": "tm-4961",
+    "name": "Querétaro FC",
+    "slug": "queretaro-fc",
+    "transfermarktId": "4961",
+    "teamUrl": "https://www.transfermarkt.es/queretaro-fc/startseite/verein/4961/saison_id/2025",
+    "marketValueText": "21,00 mill. €",
+    "league": "ligamx",
+    "season": "2025-26",
+    "rank": 17
+  },
+  {
+    "id": "tm-82696",
+    "name": "Mazatlán FC",
+    "slug": "mazatlan-fc",
+    "transfermarktId": "82696",
+    "teamUrl": "https://www.transfermarkt.es/mazatlan-fc/startseite/verein/82696/saison_id/2025",
+    "marketValueText": "18,68 mill. €",
+    "league": "ligamx",
+    "season": "2025-26",
+    "rank": 18
+  }
+]
