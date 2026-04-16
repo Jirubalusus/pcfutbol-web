@@ -2,7 +2,7 @@
  * Building.jsx — Premium procedural cartoon buildings with cel-shading
  * Each building type has rich geometric detail: windows, doors, awnings, balconies, etc.
  */
-import React, { useRef, useMemo } from 'react';
+import React, { useRef, useMemo, useEffect } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
@@ -170,207 +170,669 @@ function Sign({ position, text, bgColor, textColor = '#FFFFFF', width = 1.5 }) {
   );
 }
 
+/* ─── STADIUM helpers ─── */
+function makeStadiumShape(halfX, halfZ, r) {
+  const rr = Math.max(0.01, Math.min(r, halfX - 0.01, halfZ - 0.01));
+  const s = new THREE.Shape();
+  s.moveTo(-halfX + rr, -halfZ);
+  s.lineTo(halfX - rr, -halfZ);
+  s.quadraticCurveTo(halfX, -halfZ, halfX, -halfZ + rr);
+  s.lineTo(halfX, halfZ - rr);
+  s.quadraticCurveTo(halfX, halfZ, halfX - rr, halfZ);
+  s.lineTo(-halfX + rr, halfZ);
+  s.quadraticCurveTo(-halfX, halfZ, -halfX, halfZ - rr);
+  s.lineTo(-halfX, -halfZ + rr);
+  s.quadraticCurveTo(-halfX, -halfZ, -halfX + rr, -halfZ);
+  return s;
+}
+
+function makeStadiumHole(halfX, halfZ, r) {
+  const rr = Math.max(0.01, Math.min(r, halfX - 0.01, halfZ - 0.01));
+  const p = new THREE.Path();
+  p.moveTo(-halfX + rr, -halfZ);
+  p.lineTo(halfX - rr, -halfZ);
+  p.quadraticCurveTo(halfX, -halfZ, halfX, -halfZ + rr);
+  p.lineTo(halfX, halfZ - rr);
+  p.quadraticCurveTo(halfX, halfZ, halfX - rr, halfZ);
+  p.lineTo(-halfX + rr, halfZ);
+  p.quadraticCurveTo(-halfX, halfZ, -halfX, halfZ - rr);
+  p.lineTo(-halfX, -halfZ + rr);
+  p.quadraticCurveTo(-halfX, -halfZ, -halfX + rr, -halfZ);
+  return p;
+}
+
+function makeStadiumRing(oX, oZ, oR, iX, iZ, iR, depth, segments = 6) {
+  const shape = makeStadiumShape(oX, oZ, oR);
+  shape.holes.push(makeStadiumHole(iX, iZ, iR));
+  const geo = new THREE.ExtrudeGeometry(shape, { depth, bevelEnabled: false, curveSegments: segments });
+  geo.rotateX(-Math.PI / 2);
+  return geo;
+}
+
+function makeStadiumSolid(oX, oZ, oR, depth, segments = 6) {
+  const shape = makeStadiumShape(oX, oZ, oR);
+  const geo = new THREE.ExtrudeGeometry(shape, { depth, bevelEnabled: false, curveSegments: segments });
+  geo.rotateX(-Math.PI / 2);
+  return geo;
+}
+
+function insideRoundedRect(x, z, halfX, halfZ, r) {
+  const ax = Math.abs(x), az = Math.abs(z);
+  if (ax > halfX || az > halfZ) return false;
+  if (ax <= halfX - r || az <= halfZ - r) return true;
+  const dx = ax - (halfX - r);
+  const dz = az - (halfZ - r);
+  return dx * dx + dz * dz <= r * r;
+}
+
+/* ─── STADIUM sub-components ─── */
+function PitchLine({ halfX, halfZ, y, thickness = 0.04 }) {
+  return (
+    <>
+      <mesh position={[0, y, -halfZ]} rotation={[-Math.PI / 2, 0, 0]}>
+        <planeGeometry args={[halfX * 2, thickness]} />
+        <meshBasicMaterial color="#FFFFFF" />
+      </mesh>
+      <mesh position={[0, y, halfZ]} rotation={[-Math.PI / 2, 0, 0]}>
+        <planeGeometry args={[halfX * 2, thickness]} />
+        <meshBasicMaterial color="#FFFFFF" />
+      </mesh>
+      <mesh position={[-halfX, y, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        <planeGeometry args={[thickness, halfZ * 2]} />
+        <meshBasicMaterial color="#FFFFFF" />
+      </mesh>
+      <mesh position={[halfX, y, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        <planeGeometry args={[thickness, halfZ * 2]} />
+        <meshBasicMaterial color="#FFFFFF" />
+      </mesh>
+    </>
+  );
+}
+
+function StadiumPitch({ halfX, halfZ, grassDark, grassLight }) {
+  const stripeCount = 12;
+  const stripeW = (halfX * 2) / stripeCount;
+  const lineY = 0.018;
+  return (
+    <group position={[0, 0.02, 0]}>
+      {/* Base pitch plane (receives shadow) */}
+      <mesh position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
+        <planeGeometry args={[halfX * 2 + 0.02, halfZ * 2 + 0.02]} />
+        <meshToonMaterial color={grassDark} />
+      </mesh>
+      {/* Striped mow pattern */}
+      {Array.from({ length: stripeCount }).map((_, i) => (
+        i % 2 === 1 && (
+          <mesh key={i} position={[-halfX + stripeW / 2 + i * stripeW, 0.005, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+            <planeGeometry args={[stripeW, halfZ * 2]} />
+            <meshToonMaterial color={grassLight} />
+          </mesh>
+        )
+      ))}
+      {/* Outer touchlines */}
+      <PitchLine halfX={halfX} halfZ={halfZ} y={lineY} />
+      {/* Half line */}
+      <mesh position={[0, lineY, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        <planeGeometry args={[0.04, halfZ * 2]} />
+        <meshBasicMaterial color="#FFFFFF" />
+      </mesh>
+      {/* Center circle */}
+      <mesh position={[0, lineY, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        <ringGeometry args={[0.72, 0.76, 32]} />
+        <meshBasicMaterial color="#FFFFFF" />
+      </mesh>
+      {/* Center spot */}
+      <mesh position={[0, lineY + 0.001, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        <circleGeometry args={[0.06, 12]} />
+        <meshBasicMaterial color="#FFFFFF" />
+      </mesh>
+      {/* Penalty boxes, 6-yard boxes, spots, arcs */}
+      {[-1, 1].map(side => {
+        const penHalfX = 0.9;
+        const penHalfZ = 1.2;
+        const sixHalfX = 0.38;
+        const sixHalfZ = 0.65;
+        const penSpotX = side * (halfX - 0.65);
+        const penArcX = side * (halfX - penHalfX * 2);
+        return (
+          <group key={side}>
+            {/* Penalty box lines (3 lines: inner vertical, front, back) */}
+            <mesh position={[side * (halfX - penHalfX * 2), lineY, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+              <planeGeometry args={[0.04, penHalfZ * 2]} />
+              <meshBasicMaterial color="#FFFFFF" />
+            </mesh>
+            <mesh position={[side * (halfX - penHalfX), lineY, -penHalfZ]} rotation={[-Math.PI / 2, 0, 0]}>
+              <planeGeometry args={[penHalfX * 2, 0.04]} />
+              <meshBasicMaterial color="#FFFFFF" />
+            </mesh>
+            <mesh position={[side * (halfX - penHalfX), lineY, penHalfZ]} rotation={[-Math.PI / 2, 0, 0]}>
+              <planeGeometry args={[penHalfX * 2, 0.04]} />
+              <meshBasicMaterial color="#FFFFFF" />
+            </mesh>
+            {/* 6-yard box */}
+            <mesh position={[side * (halfX - sixHalfX * 2), lineY, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+              <planeGeometry args={[0.04, sixHalfZ * 2]} />
+              <meshBasicMaterial color="#FFFFFF" />
+            </mesh>
+            <mesh position={[side * (halfX - sixHalfX), lineY, -sixHalfZ]} rotation={[-Math.PI / 2, 0, 0]}>
+              <planeGeometry args={[sixHalfX * 2, 0.04]} />
+              <meshBasicMaterial color="#FFFFFF" />
+            </mesh>
+            <mesh position={[side * (halfX - sixHalfX), lineY, sixHalfZ]} rotation={[-Math.PI / 2, 0, 0]}>
+              <planeGeometry args={[sixHalfX * 2, 0.04]} />
+              <meshBasicMaterial color="#FFFFFF" />
+            </mesh>
+            {/* Penalty spot */}
+            <mesh position={[penSpotX, lineY + 0.001, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+              <circleGeometry args={[0.05, 10]} />
+              <meshBasicMaterial color="#FFFFFF" />
+            </mesh>
+            {/* Penalty arc (half circle outside box) */}
+            <mesh position={[penArcX, lineY, 0]} rotation={[-Math.PI / 2, 0, side > 0 ? Math.PI / 2 : -Math.PI / 2]}>
+              <ringGeometry args={[0.35, 0.39, 20, 1, -Math.PI / 2, Math.PI]} />
+              <meshBasicMaterial color="#FFFFFF" />
+            </mesh>
+          </group>
+        );
+      })}
+      {/* Corner arcs */}
+      {[[-1, -1, 0], [1, -1, Math.PI / 2], [-1, 1, -Math.PI / 2], [1, 1, Math.PI]].map(([sx, sz, rot], i) => (
+        <mesh key={i} position={[sx * halfX, lineY, sz * halfZ]} rotation={[-Math.PI / 2, 0, rot]}>
+          <ringGeometry args={[0.11, 0.14, 10, 1, 0, Math.PI / 2]} />
+          <meshBasicMaterial color="#FFFFFF" />
+        </mesh>
+      ))}
+    </group>
+  );
+}
+
+function Goal({ position, facing }) {
+  const width = 1.15, height = 0.55, depth = 0.32;
+  return (
+    <group position={position}>
+      {/* Posts */}
+      <mesh position={[0, height / 2, -width / 2]} castShadow>
+        <cylinderGeometry args={[0.028, 0.028, height, 8]} />
+        <meshToonMaterial color="#FFFFFF" />
+      </mesh>
+      <mesh position={[0, height / 2, width / 2]} castShadow>
+        <cylinderGeometry args={[0.028, 0.028, height, 8]} />
+        <meshToonMaterial color="#FFFFFF" />
+      </mesh>
+      {/* Crossbar */}
+      <mesh position={[0, height, 0]} rotation={[Math.PI / 2, 0, 0]} castShadow>
+        <cylinderGeometry args={[0.028, 0.028, width + 0.04, 8]} />
+        <meshToonMaterial color="#FFFFFF" />
+      </mesh>
+      {/* Back stanchions (angled back) */}
+      <mesh position={[facing * depth, 0.025, -width / 2]}>
+        <cylinderGeometry args={[0.02, 0.02, 0.05, 6]} />
+        <meshToonMaterial color="#FFFFFF" />
+      </mesh>
+      <mesh position={[facing * depth, 0.025, width / 2]}>
+        <cylinderGeometry args={[0.02, 0.02, 0.05, 6]} />
+        <meshToonMaterial color="#FFFFFF" />
+      </mesh>
+      {/* Net volume hint (translucent box) */}
+      <mesh position={[facing * depth / 2, height / 2, 0]}>
+        <boxGeometry args={[depth, height, width]} />
+        <meshBasicMaterial color="#FFFFFF" transparent opacity={0.12} depthWrite={false} side={THREE.DoubleSide} />
+      </mesh>
+      {/* Net back face (more opaque) */}
+      <mesh position={[facing * depth, height / 2, 0]} rotation={[0, Math.PI / 2, 0]}>
+        <planeGeometry args={[width, height]} />
+        <meshBasicMaterial color="#FFFFFF" transparent opacity={0.3} side={THREE.DoubleSide} />
+      </mesh>
+      {/* Net horizontal guide lines (stripes) */}
+      {[0.33, 0.66].map((t, i) => (
+        <mesh key={i} position={[facing * depth, height * t, 0]} rotation={[Math.PI / 2, 0, 0]}>
+          <cylinderGeometry args={[0.006, 0.006, width, 4]} />
+          <meshBasicMaterial color="#FFFFFF" transparent opacity={0.55} />
+        </mesh>
+      ))}
+    </group>
+  );
+}
+
+function AdBoards({ halfX, halfZ, primaryHex, secondaryHex }) {
+  const count = 14;
+  const boardH = 0.22, boardT = 0.06;
+  const colors = [primaryHex, secondaryHex, '#FFFFFF', '#212121'];
+  return (
+    <group position={[0, boardH / 2 + 0.02, 0]}>
+      {[-1, 1].map(side => (
+        <group key={side} position={[0, 0, side * halfZ]}>
+          {Array.from({ length: count }).map((_, i) => {
+            const segW = (halfX * 2) / count;
+            const x = -halfX + segW / 2 + i * segW;
+            return (
+              <mesh key={i} position={[x, 0, 0]}>
+                <boxGeometry args={[segW - 0.02, boardH, boardT]} />
+                <meshToonMaterial color={colors[(i + (side > 0 ? 1 : 0)) % colors.length]} />
+              </mesh>
+            );
+          })}
+        </group>
+      ))}
+    </group>
+  );
+}
+
+function CrowdLayer({ positions, color }) {
+  const meshRef = useRef();
+  useEffect(() => {
+    if (!meshRef.current || positions.length === 0) return;
+    const dummy = new THREE.Object3D();
+    positions.forEach((p, i) => {
+      dummy.position.set(p.x, p.y, p.z);
+      dummy.rotation.set(0, p.rot, 0);
+      dummy.scale.set(1, p.scale || 1, 1);
+      dummy.updateMatrix();
+      meshRef.current.setMatrixAt(i, dummy.matrix);
+    });
+    meshRef.current.instanceMatrix.needsUpdate = true;
+    meshRef.current.count = positions.length;
+  }, [positions]);
+  if (positions.length === 0) return null;
+  return (
+    <instancedMesh ref={meshRef} args={[undefined, undefined, positions.length]}>
+      <boxGeometry args={[0.1, 0.16, 0.1]} />
+      <meshToonMaterial color={color} />
+    </instancedMesh>
+  );
+}
+
+function FloodlightTower({ position, flip = false }) {
+  const tallness = 7.2;
+  const tiltSign = flip ? -1 : 1;
+  return (
+    <group position={position} rotation={[0, flip ? Math.PI : 0, 0]}>
+      {/* Concrete base block */}
+      <mesh position={[0, 0.3, 0]} castShadow receiveShadow>
+        <boxGeometry args={[0.9, 0.6, 0.9]} />
+        <meshToonMaterial color="#455A64" />
+      </mesh>
+      {/* Base trim */}
+      <mesh position={[0, 0.62, 0]}>
+        <boxGeometry args={[1.0, 0.08, 1.0]} />
+        <meshToonMaterial color="#263238" />
+      </mesh>
+      {/* Tapered main pole */}
+      <mesh position={[0, tallness / 2 + 0.6, 0]} castShadow>
+        <cylinderGeometry args={[0.08, 0.2, tallness, 8]} />
+        <meshToonMaterial color="#78909C" />
+      </mesh>
+      {/* Mid collar */}
+      <mesh position={[0, tallness * 0.55 + 0.6, 0]}>
+        <cylinderGeometry args={[0.14, 0.14, 0.1, 8]} />
+        <meshToonMaterial color="#546E7A" />
+      </mesh>
+      {/* Light rig head */}
+      <group position={[0, tallness + 0.4, 0]}>
+        {/* Backplate (tilted to face pitch center) */}
+        <group rotation={[-0.35 * tiltSign, 0, 0]}>
+          <mesh castShadow>
+            <boxGeometry args={[2.2, 0.9, 0.18]} />
+            <meshToonMaterial color="#263238" />
+          </mesh>
+          {/* Light grid 4x2 */}
+          {Array.from({ length: 4 }).map((_, col) => (
+            Array.from({ length: 2 }).map((_, row) => (
+              <mesh key={`${col}-${row}`} position={[-0.75 + col * 0.5, 0.22 - row * 0.44, 0.12]}>
+                <boxGeometry args={[0.4, 0.34, 0.08]} />
+                <meshBasicMaterial color="#FFF59D" />
+              </mesh>
+            ))
+          ))}
+          {/* Top/bottom trim */}
+          <mesh position={[0, 0.5, 0.05]}>
+            <boxGeometry args={[2.25, 0.06, 0.1]} />
+            <meshToonMaterial color="#546E7A" />
+          </mesh>
+          <mesh position={[0, -0.5, 0.05]}>
+            <boxGeometry args={[2.25, 0.06, 0.1]} />
+            <meshToonMaterial color="#546E7A" />
+          </mesh>
+        </group>
+        {/* Angled support strut underneath the rig */}
+        <mesh position={[0, -0.45, 0.25 * tiltSign]} rotation={[0.6 * tiltSign, 0, 0]}>
+          <boxGeometry args={[0.08, 0.9, 0.08]} />
+          <meshToonMaterial color="#546E7A" />
+        </mesh>
+        <mesh position={[-0.9, -0.3, 0.15 * tiltSign]} rotation={[0.5 * tiltSign, 0, 0]}>
+          <boxGeometry args={[0.06, 0.7, 0.06]} />
+          <meshToonMaterial color="#546E7A" />
+        </mesh>
+        <mesh position={[0.9, -0.3, 0.15 * tiltSign]} rotation={[0.5 * tiltSign, 0, 0]}>
+          <boxGeometry args={[0.06, 0.7, 0.06]} />
+          <meshToonMaterial color="#546E7A" />
+        </mesh>
+      </group>
+      {/* Aviation warning light */}
+      <mesh position={[0, tallness + 1.0, 0]}>
+        <sphereGeometry args={[0.06, 6, 6]} />
+        <meshBasicMaterial color="#F44336" />
+      </mesh>
+      {/* Warm fill light toward pitch */}
+      <pointLight position={[0, tallness + 0.2, 0]} color="#FFF8E1" intensity={0.9} distance={18} decay={2} />
+    </group>
+  );
+}
+
+function StadiumGate({ position, rotation = 0 }) {
+  return (
+    <group position={position} rotation={[0, rotation, 0]}>
+      {/* Gate arch structure */}
+      <mesh position={[0, 2.55, 0]} castShadow>
+        <boxGeometry args={[3.6, 0.5, 0.6]} />
+        <meshToonMaterial color="#455A64" />
+      </mesh>
+      {/* Pillars */}
+      {[-1.6, 1.6].map((x, i) => (
+        <mesh key={i} position={[x, 1.25, 0]} castShadow>
+          <boxGeometry args={[0.32, 2.5, 0.6]} />
+          <meshToonMaterial color="#546E7A" />
+        </mesh>
+      ))}
+      {/* Turnstiles hint */}
+      {[-1.0, -0.3, 0.3, 1.0].map((x, i) => (
+        <mesh key={i} position={[x, 0.6, 0.28]} castShadow>
+          <boxGeometry args={[0.08, 1.2, 0.1]} />
+          <meshToonMaterial color="#37474F" />
+        </mesh>
+      ))}
+      {/* Dark opening */}
+      <mesh position={[0, 1.1, 0.29]}>
+        <planeGeometry args={[2.7, 2.2]} />
+        <meshBasicMaterial color="#0D1418" />
+      </mesh>
+      {/* Yellow gate number plate */}
+      <mesh position={[0, 2.55, 0.31]}>
+        <planeGeometry args={[0.6, 0.3]} />
+        <meshBasicMaterial color="#FFEB3B" />
+      </mesh>
+    </group>
+  );
+}
+
+function StadiumBanner({ position, primaryHex, rotation = 0 }) {
+  return (
+    <group position={position} rotation={[0, rotation, 0]}>
+      <mesh>
+        <planeGeometry args={[5.2, 0.7]} />
+        <meshToonMaterial color={primaryHex} />
+      </mesh>
+      <mesh position={[0, 0, 0.01]}>
+        <planeGeometry args={[4.2, 0.28]} />
+        <meshBasicMaterial color="#FFFFFF" transparent opacity={0.88} />
+      </mesh>
+    </group>
+  );
+}
+
+function FacadePillars({ halfX, halfZ, r, height, count, color }) {
+  const points = useMemo(() => {
+    const pts = [];
+    const straightX = halfX * 2 - r * 2;
+    const straightZ = halfZ * 2 - r * 2;
+    const arcLen = (Math.PI / 2) * r;
+    const totalPerimeter = 2 * straightX + 2 * straightZ + 4 * arcLen;
+    const step = totalPerimeter / count;
+    for (let i = 0; i < count; i++) {
+      let remaining = (i + 0.5) * step;
+      let p = null;
+      // Bottom straight (z = -halfZ), x goes -halfX+r to halfX-r
+      if (remaining < straightX) {
+        p = { x: -halfX + r + remaining, z: -halfZ };
+      } else {
+        remaining -= straightX;
+        if (remaining < arcLen) {
+          const a = remaining / r - Math.PI / 2;
+          p = { x: halfX - r + r * Math.cos(a), z: -halfZ + r + r * Math.sin(a) };
+        } else {
+          remaining -= arcLen;
+          if (remaining < straightZ) {
+            p = { x: halfX, z: -halfZ + r + remaining };
+          } else {
+            remaining -= straightZ;
+            if (remaining < arcLen) {
+              const a = remaining / r;
+              p = { x: halfX - r + r * Math.cos(a), z: halfZ - r + r * Math.sin(a) };
+            } else {
+              remaining -= arcLen;
+              if (remaining < straightX) {
+                p = { x: halfX - r - remaining, z: halfZ };
+              } else {
+                remaining -= straightX;
+                if (remaining < arcLen) {
+                  const a = remaining / r + Math.PI / 2;
+                  p = { x: -halfX + r + r * Math.cos(a), z: halfZ - r + r * Math.sin(a) };
+                } else {
+                  remaining -= arcLen;
+                  if (remaining < straightZ) {
+                    p = { x: -halfX, z: halfZ - r - remaining };
+                  } else {
+                    remaining -= straightZ;
+                    const a = remaining / r + Math.PI;
+                    p = { x: -halfX + r + r * Math.cos(a), z: -halfZ + r + r * Math.sin(a) };
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      pts.push(p);
+    }
+    return pts;
+  }, [halfX, halfZ, r, count]);
+  return (
+    <group>
+      {points.map((p, i) => (
+        <mesh key={i} position={[p.x, height / 2 + 0.3, p.z]} castShadow>
+          <boxGeometry args={[0.22, height, 0.22]} />
+          <meshToonMaterial color={color} />
+        </mesh>
+      ))}
+    </group>
+  );
+}
+
 /* ─── STADIUM ─── */
 function StadiumBuilding({ size, cityLevel, teamColors, visualData }) {
-  const stadiumScale = 1 + (cityLevel - 1) * 0.12 + (visualData.stadiumLevel || 0) * 0.08;
+  const stadiumScale = 1 + (cityLevel - 1) * 0.10 + (visualData.stadiumLevel || 0) * 0.06;
   const primaryHex = '#' + teamColors.primary.getHexString();
   const secondaryHex = '#' + teamColors.secondary.getHexString();
-  const tiers = Math.min(cityLevel, 3);
+  const grassDark = visualData.teamFitness > 70 ? '#2E7D32' : '#8D6E63';
+  const grassLight = visualData.teamFitness > 70 ? '#43A047' : '#A1887F';
+
+  // Rounded-rectangle stadium footprint dimensions (half-extents)
+  const OUT_X = 7.8, OUT_Z = 6.0, OUT_R = 2.0;
+  const SHELL_IN_X = 7.5, SHELL_IN_Z = 5.7, SHELL_IN_R = 1.85;
+  const T1_IN_X = 4.6, T1_IN_Z = 3.1, T1_IN_R = 0.9;
+  const T2_IN_X = 4.95, T2_IN_Z = 3.45, T2_IN_R = 1.05;
+  const T3_IN_X = 5.35, T3_IN_Z = 3.85, T3_IN_R = 1.2;
+  const ROOF_IN_X = 5.95, ROOF_IN_Z = 4.35, ROOF_IN_R = 1.4;
+  const PITCH_X = 4.2, PITCH_Z = 2.8;
+
+  const plinthGeo = useMemo(() => makeStadiumSolid(OUT_X + 0.35, OUT_Z + 0.35, OUT_R + 0.2, 0.3), []);
+  const plinthTrimGeo = useMemo(() => makeStadiumRing(OUT_X + 0.42, OUT_Z + 0.42, OUT_R + 0.25, OUT_X + 0.34, OUT_Z + 0.34, OUT_R + 0.19, 0.12), []);
+  const outerShellGeo = useMemo(() => makeStadiumRing(OUT_X, OUT_Z, OUT_R, SHELL_IN_X, SHELL_IN_Z, SHELL_IN_R, 4.1), []);
+  const shellBeltGeo = useMemo(() => makeStadiumRing(OUT_X + 0.02, OUT_Z + 0.02, OUT_R + 0.01, SHELL_IN_X, SHELL_IN_Z, SHELL_IN_R, 0.28), []);
+  const tier1Geo = useMemo(() => makeStadiumRing(SHELL_IN_X, SHELL_IN_Z, SHELL_IN_R, T1_IN_X, T1_IN_Z, T1_IN_R, 1.1), []);
+  const tier2Geo = useMemo(() => makeStadiumRing(SHELL_IN_X, SHELL_IN_Z, SHELL_IN_R, T2_IN_X, T2_IN_Z, T2_IN_R, 1.1), []);
+  const tier3Geo = useMemo(() => makeStadiumRing(SHELL_IN_X, SHELL_IN_Z, SHELL_IN_R, T3_IN_X, T3_IN_Z, T3_IN_R, 1.1), []);
+  const concourse12Geo = useMemo(() => makeStadiumRing(SHELL_IN_X, SHELL_IN_Z, SHELL_IN_R, T2_IN_X, T2_IN_Z, T2_IN_R, 0.14), []);
+  const concourse23Geo = useMemo(() => makeStadiumRing(SHELL_IN_X, SHELL_IN_Z, SHELL_IN_R, T3_IN_X, T3_IN_Z, T3_IN_R, 0.14), []);
+  const roofCanopyGeo = useMemo(() => makeStadiumRing(OUT_X + 0.45, OUT_Z + 0.45, OUT_R + 0.25, ROOF_IN_X, ROOF_IN_Z, ROOF_IN_R, 0.3), []);
+  const roofInnerTrimGeo = useMemo(() => makeStadiumRing(ROOF_IN_X + 0.2, ROOF_IN_Z + 0.2, ROOF_IN_R + 0.1, ROOF_IN_X, ROOF_IN_Z, ROOF_IN_R, 0.36), []);
+
+  // Crowd positions: place small boxes on the open ring areas of each tier.
+  const crowdGroups = useMemo(() => {
+    const tiers = [
+      { height: 1.48, inner: { x: T1_IN_X + 0.14, z: T1_IN_Z + 0.14, r: T1_IN_R + 0.05 } },
+      { height: 2.62, inner: { x: T2_IN_X + 0.14, z: T2_IN_Z + 0.14, r: T2_IN_R + 0.05 } },
+      { height: 3.78, inner: { x: T3_IN_X + 0.14, z: T3_IN_Z + 0.14, r: T3_IN_R + 0.05 } },
+    ];
+    const outer = { x: SHELL_IN_X - 0.18, z: SHELL_IN_Z - 0.18, r: Math.max(0.2, SHELL_IN_R - 0.12) };
+    const perGroup = [[], [], []];
+    const perTier = 95;
+    let rng = 0x1337;
+    const rand = () => {
+      rng = (rng * 1664525 + 1013904223) >>> 0;
+      return (rng >>> 0) / 0xFFFFFFFF;
+    };
+    tiers.forEach((tier) => {
+      let placed = 0;
+      let tries = 0;
+      while (placed < perTier && tries++ < perTier * 50) {
+        const x = (rand() * 2 - 1) * outer.x;
+        const z = (rand() * 2 - 1) * outer.z;
+        if (!insideRoundedRect(x, z, outer.x, outer.z, outer.r)) continue;
+        if (insideRoundedRect(x, z, tier.inner.x, tier.inner.z, tier.inner.r)) continue;
+        const g = placed % 3;
+        perGroup[g].push({
+          x,
+          y: tier.height + rand() * 0.1,
+          z,
+          rot: rand() * Math.PI * 2,
+          scale: 0.75 + rand() * 0.6,
+        });
+        placed++;
+      }
+    });
+    return perGroup;
+  }, []);
 
   return (
     <group scale={[stadiumScale, stadiumScale, stadiumScale]}>
-      {/* Base structure - outer wall */}
-      <mesh position={[0, 0.8, 0]} castShadow>
-        <cylinderGeometry args={[5, 5.5, 1.6, 24, 1, true]} />
-        <ToonMat color="#78909C" />
+      {/* ═══ Foundation plinth ═══ */}
+      <mesh geometry={plinthGeo} castShadow receiveShadow>
+        <meshToonMaterial color="#37474F" />
       </mesh>
-      {/* Decorative band at base */}
-      <mesh position={[0, 0.1, 0]}>
-        <cylinderGeometry args={[5.55, 5.6, 0.2, 24]} />
-        <ToonMat color="#546E7A" />
+      {/* Team-color trim band on plinth */}
+      <mesh geometry={plinthTrimGeo} position={[0, 0.22, 0]}>
+        <meshToonMaterial color={primaryHex} />
       </mesh>
 
-      {/* Multiple tiers of stands */}
-      {Array.from({ length: tiers }).map((_, tier) => (
-        <group key={tier}>
-          <mesh position={[0, 1.6 + tier * 1.0, 0]} castShadow>
-            <cylinderGeometry args={[5.0 - tier * 0.3, 4.5 - tier * 0.3, 0.9, 24, 1, true]} />
-            <ToonMat color={tier % 2 === 0 ? primaryHex : secondaryHex} />
-          </mesh>
-          {/* Seat rows (rings) */}
-          <mesh position={[0, 1.3 + tier * 1.0, 0]}>
-            <torusGeometry args={[4.7 - tier * 0.3, 0.04, 4, 24]} />
-            <ToonMat color="#B0BEC5" />
-          </mesh>
-        </group>
+      {/* ═══ Outer concrete shell ═══ */}
+      <mesh geometry={outerShellGeo} position={[0, 0.3, 0]} castShadow>
+        <meshToonMaterial color="#CFD8DC" />
+      </mesh>
+      {/* Accent belt around mid-height of shell */}
+      <mesh geometry={shellBeltGeo} position={[0, 2.0, 0]}>
+        <meshToonMaterial color={secondaryHex} />
+      </mesh>
+
+      {/* ═══ Stepped seating bowl ═══ */}
+      <mesh geometry={tier1Geo} position={[0, 0.3, 0]} castShadow>
+        <meshToonMaterial color={primaryHex} />
+      </mesh>
+      <mesh geometry={concourse12Geo} position={[0, 1.4, 0]}>
+        <meshToonMaterial color="#1A2530" />
+      </mesh>
+      <mesh geometry={tier2Geo} position={[0, 1.54, 0]} castShadow>
+        <meshToonMaterial color={secondaryHex} />
+      </mesh>
+      <mesh geometry={concourse23Geo} position={[0, 2.64, 0]}>
+        <meshToonMaterial color="#1A2530" />
+      </mesh>
+      <mesh geometry={tier3Geo} position={[0, 2.78, 0]} castShadow>
+        <meshToonMaterial color={primaryHex} />
+      </mesh>
+
+      {/* ═══ Roof canopy (overhangs inward) ═══ */}
+      <mesh geometry={roofCanopyGeo} position={[0, 3.95, 0]} castShadow>
+        <meshToonMaterial color="#455A64" />
+      </mesh>
+      {/* Interior roof trim in team color */}
+      <mesh geometry={roofInnerTrimGeo} position={[0, 3.93, 0]}>
+        <meshToonMaterial color={secondaryHex} />
+      </mesh>
+      {/* Roof front edge (slim cornice) */}
+      <mesh position={[0, 4.28, 0]}>
+        <torusGeometry args={[0.01, 0.01, 4, 4]} />
+        <meshBasicMaterial color="#000000" visible={false} />
+      </mesh>
+
+      {/* ═══ Crowd ═══ */}
+      <CrowdLayer positions={crowdGroups[0]} color={primaryHex} />
+      <CrowdLayer positions={crowdGroups[1]} color={secondaryHex} />
+      <CrowdLayer positions={crowdGroups[2]} color="#FFE0B2" />
+
+      {/* ═══ Facade vertical pilasters ═══ */}
+      <FacadePillars halfX={OUT_X + 0.02} halfZ={OUT_Z + 0.02} r={OUT_R + 0.01} height={3.9} count={32} color="#B0BEC5" />
+
+      {/* ═══ Pitch ═══ */}
+      <StadiumPitch halfX={PITCH_X} halfZ={PITCH_Z} grassDark={grassDark} grassLight={grassLight} />
+
+      {/* ═══ Goals (both ends) ═══ */}
+      <Goal position={[-PITCH_X, 0.03, 0]} facing={-1} />
+      <Goal position={[PITCH_X, 0.03, 0]} facing={1} />
+
+      {/* ═══ Ad boards along touchlines ═══ */}
+      <AdBoards halfX={PITCH_X + 0.2} halfZ={PITCH_Z + 0.18} primaryHex={primaryHex} secondaryHex={secondaryHex} />
+
+      {/* ═══ Floodlight towers (4 corners outside shell) ═══ */}
+      {[[-1, -1, false], [1, -1, true], [-1, 1, true], [1, 1, false]].map(([sx, sz, flip], i) => (
+        <FloodlightTower key={i} position={[sx * (OUT_X + 0.9), 0, sz * (OUT_Z + 0.9)]} flip={flip} />
       ))}
 
-      {/* Roof overhang for top tier */}
-      <mesh position={[0, 1.6 + tiers * 1.0, 0]} castShadow>
-        <cylinderGeometry args={[5.3, 4.8, 0.1, 24, 1, true]} />
-        <ToonMat color="#455A64" />
-      </mesh>
+      {/* ═══ Main entrance gates (long sides) ═══ */}
+      <StadiumGate position={[0, 0, OUT_Z + 0.4]} rotation={0} />
+      <StadiumGate position={[0, 0, -(OUT_Z + 0.4)]} rotation={Math.PI} />
 
-      {/* Field (green pitch) */}
-      <mesh position={[0, 0.05, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-        <circleGeometry args={[3.5, 24]} />
-        <ToonMat color={visualData.teamFitness > 70 ? '#2E7D32' : '#8D6E63'} />
-      </mesh>
-      {/* Pitch lines */}
-      <mesh position={[0, 0.06, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-        <ringGeometry args={[3.4, 3.45, 24]} />
-        <meshBasicMaterial color="#FFFFFF" />
-      </mesh>
-      <mesh position={[0, 0.06, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-        <ringGeometry args={[0.8, 0.85, 16]} />
-        <meshBasicMaterial color="#FFFFFF" />
-      </mesh>
-      {/* Center line */}
-      <mesh position={[0, 0.06, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-        <planeGeometry args={[7, 0.05]} />
-        <meshBasicMaterial color="#FFFFFF" />
-      </mesh>
+      {/* ═══ Stadium banners on outer shell ═══ */}
+      <StadiumBanner position={[0, 3.0, OUT_Z + 0.12]} primaryHex={primaryHex} />
+      <StadiumBanner position={[0, 3.0, -(OUT_Z + 0.12)]} primaryHex={primaryHex} rotation={Math.PI} />
 
-      {/* 4 Floodlight towers */}
-      {[[-4.5, 0, -4.5], [4.5, 0, -4.5], [-4.5, 0, 4.5], [4.5, 0, 4.5]].map((p, i) => (
-        <group key={i} position={p}>
-          {/* Tower base */}
-          <mesh position={[0, 0.2, 0]} castShadow>
-            <boxGeometry args={[0.5, 0.4, 0.5]} />
-            <ToonMat color="#616161" />
-          </mesh>
-          {/* Tower pole */}
-          <mesh position={[0, 3, 0]} castShadow>
-            <cylinderGeometry args={[0.08, 0.12, 5.5, 6]} />
-            <ToonMat color="#78909C" />
-          </mesh>
-          {/* Light array (cross beam) */}
-          <mesh position={[0, 5.5, 0]} castShadow>
-            <boxGeometry args={[1.2, 0.15, 0.15]} />
-            <ToonMat color="#546E7A" />
-          </mesh>
-          {/* Individual lights */}
-          {[-0.4, -0.15, 0.1, 0.35].map((lx, li) => (
-            <mesh key={li} position={[lx, 5.3, 0]}>
-              <boxGeometry args={[0.15, 0.1, 0.1]} />
-              <meshBasicMaterial color="#FFF9C4" />
-            </mesh>
-          ))}
-          {/* Light glow */}
-          <pointLight position={[0, 5.2, 0]} color="#FFF8E1" intensity={0.5} distance={8} />
-        </group>
-      ))}
-
-      {/* Entrance gates */}
-      {[0, Math.PI / 2, Math.PI, Math.PI * 1.5].map((angle, i) => {
-        const gx = Math.sin(angle) * 5.6;
-        const gz = Math.cos(angle) * 5.6;
-        return (
-          <group key={`gate${i}`} position={[gx, 0, gz]} rotation={[0, -angle, 0]}>
-            {/* Gate arch */}
-            <mesh position={[0, 0.8, 0]} castShadow>
-              <boxGeometry args={[1.2, 1.6, 0.3]} />
-              <ToonMat color="#455A64" />
-            </mesh>
-            {/* Gate opening */}
-            <mesh position={[0, 0.6, 0.1]}>
-              <boxGeometry args={[0.8, 1.2, 0.15]} />
-              <ToonMat color="#263238" />
-            </mesh>
-            {/* Gate pillars */}
-            {[-0.6, 0.6].map((x, pi) => (
-              <mesh key={pi} position={[x, 0.8, 0.05]} castShadow>
-                <boxGeometry args={[0.15, 1.6, 0.25]} />
-                <ToonMat color="#546E7A" />
-              </mesh>
-            ))}
-          </group>
-        );
-      })}
-
-      {/* Ticket booths */}
-      {[[-6.5, 0, 0], [6.5, 0, 0]].map((p, i) => (
-        <group key={`booth${i}`} position={p}>
-          <mesh position={[0, 0.6, 0]} castShadow>
-            <boxGeometry args={[0.8, 1.2, 0.8]} />
-            <ToonMat color="#FFF8E1" />
-          </mesh>
-          <mesh position={[0, 1.3, 0]}>
-            <boxGeometry args={[1.0, 0.08, 1.0]} />
-            <ToonMat color="#C62828" />
-          </mesh>
-          {/* Window */}
-          <mesh position={[0, 0.7, 0.41]}>
-            <planeGeometry args={[0.5, 0.4]} />
-            <meshBasicMaterial color="#90CAF9" transparent opacity={0.7} />
-          </mesh>
-        </group>
-      ))}
-
-      {/* Team banners/flags along perimeter */}
-      {Array.from({ length: 8 }).map((_, i) => {
-        const angle = (i / 8) * Math.PI * 2;
-        const bx = Math.sin(angle) * 6.2;
-        const bz = Math.cos(angle) * 6.2;
-        return (
-          <group key={`banner${i}`} position={[bx, 0, bz]} rotation={[0, -angle, 0]}>
-            <mesh position={[0, 2, 0]}>
-              <cylinderGeometry args={[0.025, 0.025, 2.5, 4]} />
-              <ToonMat color="#78909C" />
-            </mesh>
-            <mesh position={[0.25, 2.7, 0]}>
-              <planeGeometry args={[0.5, 0.7]} />
-              <ToonMat color={i % 2 === 0 ? primaryHex : secondaryHex} side={THREE.DoubleSide} />
-            </mesh>
-          </group>
-        );
-      })}
-
-      {/* Parking lot */}
-      <group position={[0, 0, 8]}>
-        <mesh position={[0, 0.01, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-          <planeGeometry args={[8, 3]} />
-          <meshToonMaterial color="#616161" />
+      {/* ═══ Parking lot ═══ */}
+      <group position={[0, 0, OUT_Z + 4.0]}>
+        <mesh position={[0, 0.01, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
+          <planeGeometry args={[11, 3.2]} />
+          <meshToonMaterial color="#455A64" />
         </mesh>
-        {/* Parked cars */}
-        {Array.from({ length: 6 }).map((_, i) => {
-          const carColors = ['#F44336', '#2196F3', '#4CAF50', '#FFC107', '#9C27B0', '#FF9800'];
+        {Array.from({ length: 7 }).map((_, i) => {
+          const carColors = ['#E53935', '#1E88E5', '#43A047', '#FDD835', '#8E24AA', '#FB8C00', '#ECEFF1'];
           return (
-            <group key={`car${i}`} position={[-3 + i * 1.2, 0, 0]}>
+            <group key={`car${i}`} position={[-4.5 + i * 1.5, 0, 0]}>
               <mesh position={[0, 0.2, 0]} castShadow>
-                <boxGeometry args={[0.8, 0.3, 0.45]} />
-                <ToonMat color={carColors[i]} />
+                <boxGeometry args={[0.85, 0.3, 0.45]} />
+                <meshToonMaterial color={carColors[i]} />
               </mesh>
-              <mesh position={[0, 0.38, 0]} castShadow>
-                <boxGeometry args={[0.5, 0.2, 0.4]} />
-                <ToonMat color={carColors[i]} />
+              <mesh position={[0, 0.4, 0]} castShadow>
+                <boxGeometry args={[0.52, 0.2, 0.42]} />
+                <meshToonMaterial color={carColors[i]} />
               </mesh>
-              {/* Wheels */}
               {[[-0.3, 0.08, 0.24], [0.3, 0.08, 0.24], [-0.3, 0.08, -0.24], [0.3, 0.08, -0.24]].map((wp, wi) => (
                 <mesh key={wi} position={wp}>
-                  <cylinderGeometry args={[0.08, 0.08, 0.04, 8]} rotation={[Math.PI / 2, 0, 0]} />
-                  <ToonMat color="#1A1A1A" />
+                  <cylinderGeometry args={[0.08, 0.08, 0.05, 8]} />
+                  <meshToonMaterial color="#1A1A1A" />
                 </mesh>
               ))}
+              {/* Windshield tint */}
+              <mesh position={[0.18, 0.4, 0]}>
+                <boxGeometry args={[0.08, 0.18, 0.4]} />
+                <meshBasicMaterial color="#90CAF9" transparent opacity={0.5} />
+              </mesh>
             </group>
           );
         })}
-        {/* Parking lines */}
-        {Array.from({ length: 7 }).map((_, i) => (
-          <mesh key={`pl${i}`} position={[-3.6 + i * 1.2, 0.02, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-            <planeGeometry args={[0.05, 2.5]} />
+        {Array.from({ length: 8 }).map((_, i) => (
+          <mesh key={`pl${i}`} position={[-5.25 + i * 1.5, 0.02, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+            <planeGeometry args={[0.06, 2.8]} />
             <meshBasicMaterial color="#FFFFFF" />
           </mesh>
         ))}
       </group>
 
-      {/* Ticket queues */}
+      {/* ═══ Ticket queues (grow with attendance) ═══ */}
       {visualData.attendance > 3000 && (
-        <group position={[0, 0, 6.5]}>
-          {Array.from({ length: Math.min(Math.floor(visualData.attendance / 800), 8) }).map((_, i) => (
-            <mesh key={i} position={[i * 0.35 - 1.2, 0.3, 0]} castShadow>
-              <capsuleGeometry args={[0.08, 0.3, 4, 6]} />
-              <ToonMat color={i % 2 === 0 ? primaryHex : secondaryHex} />
+        <group position={[0, 0, OUT_Z + 1.3]}>
+          {Array.from({ length: Math.min(Math.floor(visualData.attendance / 800), 12) }).map((_, i) => (
+            <mesh key={i} position={[i * 0.34 - 2.0, 0.28, (i % 3) * 0.08 - 0.08]} castShadow>
+              <capsuleGeometry args={[0.09, 0.32, 4, 6]} />
+              <meshToonMaterial color={i % 3 === 0 ? primaryHex : i % 3 === 1 ? secondaryHex : '#ECEFF1'} />
             </mesh>
           ))}
         </group>
