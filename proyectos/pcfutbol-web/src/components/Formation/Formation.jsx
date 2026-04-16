@@ -9,6 +9,7 @@ import { translatePosition, posToEN } from '../../game/positionNames';
 import { FORM_STATES } from '../../game/formSystem';
 import { Shield, Scale, Swords, Target, Zap, CheckCircle2, Settings, Heart, AlertTriangle, Building2, TrendingUp, BarChart3, X, Check, HeartPulse, Square, Star, Trophy, Coins, Clock } from 'lucide-react';
 import TeamCrest from '../TeamCrest/TeamCrest';
+import PositionRoleIcon from '../common/PositionRoleIcon';
 import './Formation.scss';
 
 // Posiciones del campo para cada formación
@@ -1045,6 +1046,11 @@ export default function Formation() {
                 {/* ROL DEL JUGADOR */}
                 {selectedPlayer.role && (
                   <div className="player-role">
+                    <PositionRoleIcon
+                      position={selectedPlayer.position}
+                      size="md"
+                      title={selectedPlayer.position}
+                    />
                     <span className="role-icon">{selectedPlayer.role.icon}</span>
                     <span className="role-name">{selectedPlayer.role.name}</span>
                   </div>
