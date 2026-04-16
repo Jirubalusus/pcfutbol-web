@@ -159,6 +159,21 @@
   
   &__flag {
     font-size: 1.75rem;
+
+    &--code {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 3rem;
+      padding: 0.35rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      line-height: 1;
+    }
   }
   
   &__name {

@@ -56,7 +56,7 @@ import './WorldMap.scss';
 
 const EUROPEAN_COUNTRIES = [
   { id: 'spain', nameKey: 'countries.spain', flag: '🇪🇸', leagues: ['laliga', 'segunda', 'primeraRFEF', 'segundaRFEF'] },
-  { id: 'england', nameKey: 'countries.england', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', leagues: ['premierLeague', 'championship'] },
+  { id: 'england', nameKey: 'countries.england', flag: 'ENG', flagVariant: 'code', leagues: ['premierLeague', 'championship'] },
   { id: 'italy', nameKey: 'countries.italy', flag: '🇮🇹', leagues: ['serieA', 'serieB'] },
   { id: 'germany', nameKey: 'countries.germany', flag: '🇩🇪', leagues: ['bundesliga', 'bundesliga2'] },
   { id: 'france', nameKey: 'countries.france', flag: '🇫🇷', leagues: ['ligue1', 'ligue2'] },
@@ -64,7 +64,7 @@ const EUROPEAN_COUNTRIES = [
   { id: 'portugal', nameKey: 'countries.portugal', flag: '🇵🇹', leagues: ['primeiraLiga'] },
   { id: 'belgium', nameKey: 'countries.belgium', flag: '🇧🇪', leagues: ['belgianPro'] },
   { id: 'turkey', nameKey: 'countries.turkey', flag: '🇹🇷', leagues: ['superLig'] },
-  { id: 'scotland', nameKey: 'countries.scotland', flag: '🏴󠁧󠁢󠁳󠁣󠁴󠁿', leagues: ['scottishPrem'] },
+  { id: 'scotland', nameKey: 'countries.scotland', flag: 'SCO', flagVariant: 'code', leagues: ['scottishPrem'] },
   { id: 'switzerland', nameKey: 'countries.switzerland', flag: '🇨🇭', leagues: ['swissSuperLeague'] },
   { id: 'austria', nameKey: 'countries.austria', flag: '🇦🇹', leagues: ['austrianBundesliga'] },
   { id: 'greece', nameKey: 'countries.greece', flag: '🇬🇷', leagues: ['greekSuperLeague'] },
@@ -990,7 +990,7 @@ export default function TeamSelection() {
               {selectedCountry ? (
                 <>
                   <div className="map-selection__title">
-                    <span className="flag">{selectedCountry.flag}</span>
+                    <span className={`flag ${selectedCountry.flagVariant === 'code' ? 'flag--code' : ''}`.trim()}>{selectedCountry.flag}</span>
                     {selectedCountry.name}
                   </div>
                   <div className="map-selection__leagues">
@@ -1071,7 +1071,7 @@ export default function TeamSelection() {
             <div className="teams-panel">
               <div className="panel-header">
                 <span className="league-name">
-                  {selectedCountry?.flag} {LEAGUE_NAMES[selectedLeague]}
+                  <span className={`league-country-flag ${selectedCountry?.flagVariant === 'code' ? 'league-country-flag--code' : ''}`.trim()}>{selectedCountry?.flag}</span> {LEAGUE_NAMES[selectedLeague]}
                   {selectedGroup && ` - ${getLeagueGroups(selectedLeague)?.[selectedGroup]?.name}`}
                 </span>
                 <span className="team-count">{t('teamSelection.teamsCount', { count: teams.length })}</span>

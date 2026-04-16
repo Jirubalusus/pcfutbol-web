@@ -8,7 +8,7 @@ import './WorldMap.scss';
 const COUNTRY_DATA = {
   // Europe
   spain: { lat: 40.0, lng: -4.0, name: 'España', code: 'ES', color: '#FF4444', continent: 'europe' },
-  england: { lat: 53.0, lng: -1.5, name: 'Reino Unido', code: 'UK', color: '#4466FF', continent: 'europe' },
+  england: { lat: 53.0, lng: -1.5, name: 'Inglaterra', code: 'ENG', color: '#4466FF', continent: 'europe' },
   germany: { lat: 51.0, lng: 10.0, name: 'Alemania', code: 'DE', color: '#FFCC00', continent: 'europe' },
   italy: { lat: 42.5, lng: 12.5, name: 'Italia', code: 'IT', color: '#33CC33', continent: 'europe' },
   france: { lat: 46.5, lng: 2.5, name: 'Francia', code: 'FR', color: '#5555FF', continent: 'europe' },
@@ -155,7 +155,7 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
                   className={`countries-mobile__item ${selectedCountry === country.id ? 'selected' : ''}`}
                   onClick={() => onCountryClick(country.id)}
                 >
-                  <span className="countries-mobile__flag">{country.flag}</span>
+                  <span className={`countries-mobile__flag ${country.flagVariant === 'code' ? 'countries-mobile__flag--code' : ''}`.trim()}>{country.flag}</span>
                   <span className="countries-mobile__name">{country.name}</span>
                   <span className="countries-mobile__leagues">{t('teamSelection.teamsCount', { count: country.leagues.length })}</span>
                 </button>
@@ -171,7 +171,7 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
                   className={`countries-mobile__item ${selectedCountry === country.id ? 'selected' : ''}`}
                   onClick={() => onCountryClick(country.id)}
                 >
-                  <span className="countries-mobile__flag">{country.flag}</span>
+                  <span className={`countries-mobile__flag ${country.flagVariant === 'code' ? 'countries-mobile__flag--code' : ''}`.trim()}>{country.flag}</span>
                   <span className="countries-mobile__name">{country.name}</span>
                   <span className="countries-mobile__leagues">{t('teamSelection.teamsCount', { count: country.leagues.length })}</span>
                 </button>
@@ -187,7 +187,7 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
                   className={`countries-mobile__item ${selectedCountry === country.id ? 'selected' : ''}`}
                   onClick={() => onCountryClick(country.id)}
                 >
-                  <span className="countries-mobile__flag">{country.flag}</span>
+                  <span className={`countries-mobile__flag ${country.flagVariant === 'code' ? 'countries-mobile__flag--code' : ''}`.trim()}>{country.flag}</span>
                   <span className="countries-mobile__name">{country.name}</span>
                   <span className="countries-mobile__leagues">{t('teamSelection.teamsCount', { count: country.leagues.length })}</span>
                 </button>

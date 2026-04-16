@@ -680,9 +680,13 @@ $pcf-text: #bdc3c7;
     flex-shrink: 0;
     
     .league-name {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
       font-weight: 600;
       color: $pcf-gold;
       font-size: 0.9rem;
+      min-width: 0;
     }
     
     .team-count {
@@ -691,6 +695,25 @@ $pcf-text: #bdc3c7;
       background: $pcf-bg-dark;
       padding: 0.2rem 0.6rem;
       border-radius: 12px;
+    }
+
+    .league-country-flag {
+      line-height: 1;
+      flex-shrink: 0;
+
+      &--code {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 2.6rem;
+        padding: 0.22rem 0.45rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+      }
     }
   }
   
