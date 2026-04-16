@@ -648,10 +648,12 @@ $pcf-text: #bdc3c7;
   grid-template-columns: 1fr 1fr;
   gap: 0;
   overflow: hidden;
+  min-height: 0;
   
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr auto;
+    grid-template-rows: minmax(0, 1fr) auto;
+    min-height: 0;
   }
 }
 
@@ -661,6 +663,7 @@ $pcf-text: #bdc3c7;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  min-height: 0;
   
   @media (max-width: 900px) {
     border-right: none;
@@ -719,12 +722,15 @@ $pcf-text: #bdc3c7;
   
   .teams-list {
     flex: 1;
+    min-height: 0;
     overflow-y: auto;
     padding: 0;
+    -webkit-overflow-scrolling: touch;
     
     @media (max-width: 768px) {
-      overflow-y: visible;
+      overflow-y: auto;
       padding-bottom: 1rem;
+      -webkit-overflow-scrolling: touch;
     }
     
     &::-webkit-scrollbar {
