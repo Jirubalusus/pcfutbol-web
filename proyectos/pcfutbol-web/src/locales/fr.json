@@ -1077,6 +1077,8 @@
     "comingSoon": "Prochainement",
     "groupsAndTeams": "{{groups}} groupes · {{teams}} équipes",
     "teamsCount": "{{count}} équipes",
+    "leaguesCount_one": "{{count}} ligue",
+    "leaguesCount_other": "{{count}} ligues",
     "selectGroup": "Sélectionnez un groupe",
     "searchTeam": "Rechercher une Équipe...",
     "stadium": "Stade",

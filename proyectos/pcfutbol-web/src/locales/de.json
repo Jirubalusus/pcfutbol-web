@@ -1076,6 +1076,8 @@
     "comingSoon": "Demnüchst",
     "groupsAndTeams": "{{groups}} Gruppen · {{teams}} Teams",
     "teamsCount": "{{count}} Teams",
+    "leaguesCount_one": "{{count}} Liga",
+    "leaguesCount_other": "{{count}} Ligen",
     "selectGroup": "Wühlen Sie eine Gruppe",
     "searchTeam": "Team suchen...",
     "stadium": "Stadion",

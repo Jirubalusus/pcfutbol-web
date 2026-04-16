@@ -157,7 +157,7 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
                 >
                   <span className={`countries-mobile__flag ${country.flagVariant === 'code' ? 'countries-mobile__flag--code' : ''}`.trim()}>{country.flag}</span>
                   <span className="countries-mobile__name">{country.name}</span>
-                  <span className="countries-mobile__leagues">{t('teamSelection.teamsCount', { count: country.leagues.length })}</span>
+                  <span className="countries-mobile__leagues">{t('teamSelection.leaguesCount', { count: country.leagues.length })}</span>
                 </button>
               ))}
             </>
@@ -173,7 +173,7 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
                 >
                   <span className={`countries-mobile__flag ${country.flagVariant === 'code' ? 'countries-mobile__flag--code' : ''}`.trim()}>{country.flag}</span>
                   <span className="countries-mobile__name">{country.name}</span>
-                  <span className="countries-mobile__leagues">{t('teamSelection.teamsCount', { count: country.leagues.length })}</span>
+                  <span className="countries-mobile__leagues">{t('teamSelection.leaguesCount', { count: country.leagues.length })}</span>
                 </button>
               ))}
             </>
@@ -189,7 +189,7 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
                 >
                   <span className={`countries-mobile__flag ${country.flagVariant === 'code' ? 'countries-mobile__flag--code' : ''}`.trim()}>{country.flag}</span>
                   <span className="countries-mobile__name">{country.name}</span>
-                  <span className="countries-mobile__leagues">{t('teamSelection.teamsCount', { count: country.leagues.length })}</span>
+                  <span className="countries-mobile__leagues">{t('teamSelection.leaguesCount', { count: country.leagues.length })}</span>
                 </button>
               ))}
             </>
