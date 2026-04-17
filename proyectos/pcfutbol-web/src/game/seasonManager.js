@@ -221,6 +221,23 @@ export const EUROPEAN_SPOTS = {
 };
 
 // Número de jornadas por liga
+export function getEuropeanSpotsForLeague(leagueId) {
+  return EUROPEAN_SPOTS[leagueId] || null;
+}
+
+export function getSeasonOutcomeFromSpots(position, leagueId) {
+  const spots = getEuropeanSpotsForLeague(leagueId);
+  if (!spots) return null;
+
+  return {
+    champions: !!spots.champions?.includes(position),
+    europaLeague: !!spots.europaLeague?.includes(position),
+    conferenceLeague: !!spots.conference?.includes(position),
+    libertadores: !!spots.libertadores?.includes(position),
+    sudamericana: !!spots.sudamericana?.includes(position)
+  };
+}
+
 export const LEAGUE_MATCHDAYS = {
   laliga: 38,
   segunda: 42,
@@ -288,7 +305,7 @@ export function isSeasonOver(fixtures, leagueId = 'laliga') {
 export function getSeasonResult(table, teamId, leagueId = 'laliga') {
   const position = table.findIndex(t => t.teamId === teamId) + 1;
   const teamData = table.find(t => t.teamId === teamId);
-  const spots = EUROPEAN_SPOTS[leagueId] || EUROPEAN_SPOTS.laliga;
+  const spots = getEuropeanSpotsForLeague(leagueId) || {};
   
   let qualification = null;
   let relegation = false;

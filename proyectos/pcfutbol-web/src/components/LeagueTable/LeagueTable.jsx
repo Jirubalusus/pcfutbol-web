@@ -4,6 +4,7 @@ import { TutorialModal, useTutorial } from '../Tutorial/Tutorial';
 import { Trophy, ChevronDown, ChevronUp, Globe, RefreshCw } from 'lucide-react';
 import { getLeagueTable, LEAGUE_CONFIG, initializeOtherLeagues, simulateOtherLeaguesWeek, isAperturaClausura, computeAccumulatedTable } from '../../game/multiLeagueEngine';
 import { sortTable } from '../../game/leagueEngine';
+import { getEuropeanSpotsForLeague } from '../../game/seasonManager';
 import { useTranslation } from 'react-i18next';
 import CustomSelect from '../common/CustomSelect/CustomSelect';
 import TeamCrest from '../TeamCrest/TeamCrest';
@@ -190,10 +191,66 @@ const LEAGUE_ZONES = {
   czechLeague: {
     nameKey: 'leagues.czechLeague',
     champions: [1],
-    europaLeague: [2],
-    conference: [3],
+    europaLeague: [2, 3],
+    conference: [4, 5, 6],
     relegation: [15, 16],
     teams: 16
+  },
+  eliteserien: {
+    nameKey: 'leagues.eliteserien',
+    champions: [1],
+    europaLeague: [2, 3],
+    conference: [4],
+    relegation: [15, 16],
+    teams: 16
+  },
+  allsvenskan: {
+    nameKey: 'leagues.allsvenskan',
+    champions: [1],
+    europaLeague: [2, 3],
+    conference: [4],
+    relegation: [15, 16],
+    teams: 16
+  },
+  ekstraklasa: {
+    nameKey: 'leagues.ekstraklasa',
+    champions: [1],
+    europaLeague: [2, 3],
+    conference: [4, 5],
+    relegation: [17, 18],
+    teams: 18
+  },
+  russiaPremier: {
+    nameKey: 'leagues.russiaPremier',
+    champions: [1],
+    europaLeague: [2, 3],
+    conference: [4, 5],
+    relegation: [15, 16],
+    teams: 16
+  },
+  ukrainePremier: {
+    nameKey: 'leagues.ukrainePremier',
+    champions: [1],
+    europaLeague: [2, 3],
+    conference: [4, 5],
+    relegation: [15, 16],
+    teams: 16
+  },
+  romaniaSuperliga: {
+    nameKey: 'leagues.romaniaSuperliga',
+    champions: [1],
+    europaLeague: [2, 3],
+    conference: [4, 5],
+    relegation: [15, 16],
+    teams: 16
+  },
+  hungaryNBI: {
+    nameKey: 'leagues.hungaryNBI',
+    champions: [1],
+    europaLeague: [2, 3],
+    conference: [4],
+    relegation: [11, 12],
+    teams: 12
   },
   // === SOUTH AMERICA ===
   argentinaPrimera: {
@@ -287,6 +344,8 @@ const COUNTRY_FLAGS = {
   swissSuperLeague: '🇨🇭', austrianBundesliga: '🇦🇹',
   greekSuperLeague: '🇬🇷', danishSuperliga: '🇩🇰',
   croatianLeague: '🇭🇷', czechLeague: '🇨🇿',
+  eliteserien: '🇳🇴', allsvenskan: '🇸🇪', ekstraklasa: '🇵🇱',
+  russiaPremier: '🇷🇺', ukrainePremier: '🇺🇦', romaniaSuperliga: '🇷🇴', hungaryNBI: '🇭🇺',
   // South America
   argentinaPrimera: '🇦🇷', brasileiraoA: '🇧🇷', colombiaPrimera: '🇨🇴',
   chilePrimera: '🇨🇱', uruguayPrimera: '🇺🇾', ecuadorLigaPro: '🇪🇨',
@@ -456,7 +515,9 @@ export default function LeagueTable() {
     setTournamentTab('current');
   }, [selectedLeague]);
   
-  const leagueConfig = LEAGUE_ZONES[selectedLeague] || LEAGUE_ZONES.laliga;
+  const baseLeagueConfig = LEAGUE_ZONES[selectedLeague] || {};
+  const dynamicEuropeanSpots = getEuropeanSpotsForLeague(selectedLeague) || {};
+  const leagueConfig = { ...baseLeagueConfig, ...dynamicEuropeanSpots };
   const isPlayerLeague = selectedLeague === playerLeagueId;
   const playerLeagueName = t(LEAGUE_ZONES[playerLeagueId]?.nameKey || 'leagues.laliga');
   
@@ -566,6 +627,13 @@ export default function LeagueTable() {
                 { value: 'danishSuperliga', icon: '🇩🇰', label: t('leagues.danishSuperliga') },
                 { value: 'croatianLeague', icon: '🇭🇷', label: t('leagues.croatianLeague') },
                 { value: 'czechLeague', icon: '🇨🇿', label: t('leagues.czechLeague') },
+                { value: 'eliteserien', icon: '🇳🇴', label: t('leagues.eliteserien') },
+                { value: 'allsvenskan', icon: '🇸🇪', label: t('leagues.allsvenskan') },
+                { value: 'ekstraklasa', icon: '🇵🇱', label: t('leagues.ekstraklasa') },
+                { value: 'russiaPremier', icon: '🇷🇺', label: t('leagues.russiaPremier') },
+                { value: 'ukrainePremier', icon: '🇺🇦', label: t('leagues.ukrainePremier') },
+                { value: 'romaniaSuperliga', icon: '🇷🇴', label: t('leagues.romaniaSuperliga') },
+                { value: 'hungaryNBI', icon: '🇭🇺', label: t('leagues.hungaryNBI') },
               ]},
               { group: t('leagueTable.countries.southAmerica'), icon: '🌎', items: [
                 { value: 'argentinaPrimera', icon: '🇦🇷', label: t('leagues.argentinaPrimera') },

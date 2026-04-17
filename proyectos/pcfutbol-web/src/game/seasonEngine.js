@@ -2,6 +2,7 @@
 // Gestiona ascensos, descensos y transición a nueva temporada
 
 import { generateSonPlayer } from './facilitiesSystem';
+import { getSeasonOutcomeFromSpots } from './seasonManager';
 
 // ============================================================
 // EVOLUCIÓN DE JUGADORES
@@ -194,12 +195,16 @@ export function calculateSeasonOutcome(position, leagueId, totalTeams) {
     newLeagueId: leagueId
   };
 
+  const europeanOutcome = getSeasonOutcomeFromSpots(position, leagueId);
+  if (europeanOutcome) {
+    outcome.champions = europeanOutcome.champions;
+    outcome.europaLeague = europeanOutcome.europaLeague;
+    outcome.conferenceLeague = europeanOutcome.conferenceLeague;
+  }
+
   // Ligas españolas
   if (leagueId === 'laliga') {
-    if (position <= 4) outcome.champions = true;
-    else if (position <= 5) outcome.europaLeague = true;
-    else if (position <= 6) outcome.conferenceLeague = true;
-    else if (position >= totalTeams - 2) {
+    if (position >= totalTeams - 2) {
       outcome.relegation = true;
       outcome.newLeagueId = 'segunda';
     }
@@ -234,18 +239,6 @@ export function calculateSeasonOutcome(position, leagueId, totalTeams) {
       outcome.playoff = true;
     }
     // No hay descenso desde Segunda RFEF en este juego
-  }
-  // Ligas internacionales top
-  else if (['premierLeague', 'bundesliga', 'serieA', 'ligue1'].includes(leagueId)) {
-    if (position <= 4) outcome.champions = true;
-    else if (position <= 5) outcome.europaLeague = true;
-    else if (position <= 6 || position === 7) outcome.conferenceLeague = true;
-    // Por ahora no hay descenso en ligas extranjeras
-  }
-  else if (['eredivisie', 'primeiraLiga'].includes(leagueId)) {
-    if (position <= 2) outcome.champions = true;
-    else if (position <= 3) outcome.champions = true; // Previa
-    else if (position <= 4) outcome.europaLeague = true;
   }
 
   return outcome;
