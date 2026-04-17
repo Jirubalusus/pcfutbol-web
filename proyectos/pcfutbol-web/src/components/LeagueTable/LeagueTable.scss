@@ -479,6 +479,11 @@
     font-size: 0.85rem;
     font-weight: 600;
     margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  &__player-badge-separator {
+    opacity: 0.7;
   }
   
   &__no-data {

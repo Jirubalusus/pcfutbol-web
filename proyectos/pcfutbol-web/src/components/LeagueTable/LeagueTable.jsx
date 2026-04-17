@@ -458,6 +458,7 @@ export default function LeagueTable() {
   
   const leagueConfig = LEAGUE_ZONES[selectedLeague] || LEAGUE_ZONES.laliga;
   const isPlayerLeague = selectedLeague === playerLeagueId;
+  const playerLeagueName = t(LEAGUE_ZONES[playerLeagueId]?.nameKey || 'leagues.laliga');
   
   // Determine effective active tab for zone display
   const effectiveTab = isAPCL 
@@ -586,7 +587,9 @@ export default function LeagueTable() {
       {/* Indicador si es la liga del jugador */}
       {isPlayerLeague && (
         <div className="league-table-v2__player-badge">
-          ⭐ {t('leagueTable.yourLeague')}
+          <span>⭐ {t('leagueTable.yourLeague')}</span>
+          <span className="league-table-v2__player-badge-separator">·</span>
+          <strong>{playerLeagueName}</strong>
         </div>
       )}
       
