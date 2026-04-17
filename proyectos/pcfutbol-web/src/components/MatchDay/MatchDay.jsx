@@ -214,12 +214,14 @@ export default function MatchDay({ onComplete, onBack }) {
       opponentId: opponentId
     };
     console.error('MatchDay Debug (early guard):', debugInfo);
-    
+
+    // Pass 'league' so Office advances the week and doesn't loop back here
+    // when the opponent can't be resolved (e.g. data loading incomplete).
     return (
       <div className="match-day fade-in-up">
         <div className="match-day__no-match">
           <p>{t('matchday.noMatchThisWeek')}</p>
-          <button onClick={onComplete}>{t('common.continue')}</button>
+          <button onClick={() => onComplete('league')}>{t('common.continue')}</button>
         </div>
       </div>
     );
