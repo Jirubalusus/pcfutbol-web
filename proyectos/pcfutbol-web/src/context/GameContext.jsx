@@ -388,7 +388,6 @@ function gameReducer(state, action) {
           const needsMigration = avgSalary < expectedAvg * 0.3;
           
           if (needsMigration) {
-            console.log(`⚡ Salary migration: avg ${Math.round(avgSalary)}/wk vs expected ${expectedAvg}/wk for ${leagueId}. Recalculating.`);
             sanitized.team = {
               ...sanitized.team,
               players: players.map(p => ({
@@ -866,7 +865,6 @@ function gameReducer(state, action) {
       // Recalculate salaries when league tier changes (promotion/relegation)
       let updatedTeam = state.team;
       if (newLeagueTier !== oldLeagueTier && state.team?.players?.length > 0) {
-        console.log(`⚡ League change: tier ${oldLeagueTier} → ${newLeagueTier}. Recalculating salaries for ${newLeagueId}`);
         updatedTeam = {
           ...state.team,
           players: state.team.players.map(p => ({
@@ -1066,7 +1064,6 @@ function gameReducer(state, action) {
 
       // Actualizar patrocinio (naming rights) - reducir años
       let updatedNaming = state.stadium?.naming;
-      console.log('🏟️ START_NEW_SEASON naming:', JSON.stringify(updatedNaming));
       if (updatedNaming && updatedNaming.yearsLeft > 0) {
         updatedNaming = {
           ...updatedNaming,
@@ -1074,9 +1071,6 @@ function gameReducer(state, action) {
         };
         if (updatedNaming.yearsLeft <= 0) {
           updatedNaming = null;
-          console.log('🏟️ Naming expired, set to null');
-        } else {
-          console.log('🏟️ Naming renewed, yearsLeft:', updatedNaming.yearsLeft);
         }
       }
 
@@ -2771,7 +2765,7 @@ function gameReducer(state, action) {
       // CONTRARRELOJ: Bankrupt/fired check moved AFTER offer processing
       // so that refunded transfer money is accounted for (BUG-01 fix)
       // ============================================================
-      let finalMoney = state.money + totalIncome - salaryExpenses - loanSalaryCost;
+      let finalMoney = (state.money || 0) + totalIncome - salaryExpenses - loanSalaryCost;
       let contrarrelojUpdate = state.contrarrelojData;
       let contrarrelojScreenOverride = null;
 
@@ -2985,7 +2979,7 @@ function gameReducer(state, action) {
         money: finalMoney,
         weeklyIncome: totalIncome,
         weeklyExpenses: salaryExpenses + loanSalaryCost,
-        team: state.team ? (() => { const suspPlayers = updatedPlayers.filter(p => p.suspended); if (suspPlayers.length > 0) console.log('🔴 ADVANCE_WEEK preserving suspended:', suspPlayers.map(p => `${p.name}(${p.suspensionMatches}p)`)); return { ...state.team, players: updatedPlayers }; })() : null,
+        team: state.team ? { ...state.team, players: updatedPlayers } : null,
         stadium: updatedStadium,
         messages: [...loanExpiryMessages, ...expiredIncomingMessages, ...offerMessages, ...apclFinalMessages, ...cupMessages, ...formattedEuropeanMessages, ...formattedSAMessages, ...newTransferMessages, ...loanOfferMessages, ...aiLoanMessages, ...newMessages, ...state.messages].slice(0, 50),
         outgoingOffers: resolvedOutgoingOffers,
@@ -3195,7 +3189,6 @@ function gameReducer(state, action) {
     }
 
     case 'UPDATE_STADIUM':
-      if ('naming' in action.payload) console.log('🏟️ UPDATE_STADIUM naming:', JSON.stringify(action.payload.naming));
       return {
         ...state,
         stadium: { ...state.stadium, ...action.payload }
@@ -3582,7 +3575,6 @@ function gameReducer(state, action) {
     }
 
     case 'INJURE_PLAYER': {
-      console.log('🏥 INJURE_PLAYER dispatched:', action.payload.playerName, 'weeksOut:', action.payload.weeksOut);
       // Centro médico reduce tiempo de lesiones (nivel base + especialización recuperación)
       const medicalLevel = state.facilities?.medical || 0;
       const medicalReduction = [0, 0.20, 0.35, 0.50][medicalLevel];
@@ -3635,10 +3627,7 @@ function gameReducer(state, action) {
           }
         });
         injureLineup = ensureFullLineup(cleanedInjureLineup, updatedPlayers, state.formation);
-        console.log('🏥 Ejected', injuredName, 'from lineup. Slots before:', Object.keys(state.lineup || {}).length, 'after:', Object.keys(injureLineup).length);
       }
-      const injuredPlayer = updatedPlayers.find(p => p.name === injuredName);
-      console.log('🏥 Player state after INJURE:', injuredPlayer?.name, 'injured:', injuredPlayer?.injured, 'weeksLeft:', injuredPlayer?.injuryWeeksLeft);
       return {
         ...state,
         team: { ...state.team, players: updatedPlayers },
@@ -3719,20 +3708,16 @@ function gameReducer(state, action) {
     case 'ADD_RED_CARDS': {
       // payload: { cards: [{ playerName: string, reason: string }] }
       // Gladiator perk: immunity to red cards
-      if (state.gloryData?.perks?.gladiator) { console.log('🔴 ADD_RED_CARDS blocked by gladiator perk'); return state; }
+      if (state.gloryData?.perks?.gladiator) return state;
       // Doble amarilla = 1 partido, Roja directa = 2 partidos
       const redCards = action.payload.cards || [];
-      console.log('🔴 ADD_RED_CARDS received:', JSON.stringify(redCards));
       if (redCards.length === 0) return state;
 
       const suspendedNames_red = new Set(redCards.map(c => c.playerName));
-      console.log('🔴 Players to suspend:', [...suspendedNames_red]);
-      console.log('🔴 All player names in roster:', state.team.players.map(p => p.name));
 
       const updatedPlayers = state.team.players.map(p => {
         const card = redCards.find(c => c.playerName === p.name);
         if (!card) return p;
-        console.log('🔴 MATCH FOUND:', p.name, '→ suspended=true, matches=', card.reason === 'Segunda amarilla' ? 1 : 2);
 
         const isDoubleYellow = card.reason === 'Segunda amarilla';
         const matchesBanned = isDoubleYellow ? 1 : 2; // Doble amarilla = 1, Roja directa = 2
@@ -3764,8 +3749,6 @@ function gameReducer(state, action) {
     case 'SERVE_SUSPENSIONS': {
       // Llamar ANTES de cada partido oficial: decrementa 1 partido a cada sancionado
       // Los que llegan a 0 quedan libres
-      const beforeSusp = state.team.players.filter(p => p.suspended);
-      console.log('🔴 SERVE_SUSPENSIONS called. Currently suspended:', beforeSusp.map(p => `${p.name}(${p.suspensionMatches}p, ${p.suspensionType})`));
       const updatedPlayers = state.team.players.map(p => {
         if (!p.suspended || !p.suspensionMatches) return p;
 
@@ -4843,10 +4826,8 @@ export function GameProvider({ children }) {
     try {
       if (state.gameMode === 'promanager') {
         await saveProManager(userId, state);
-        console.log('☁️ ProManager saved!');
       } else {
         await saveCareer(userId, state);
-        console.log('☁️ Career saved!');
       }
     } catch (error) {
       console.error('Error saving game:', error);
@@ -4968,7 +4949,6 @@ export function GameProvider({ children }) {
       delete saveData._contrarrelojUserId;
       // Heavy fields stripped in contrarrelojSaveService.saveContrarreloj
       saveContrarreloj(state._contrarrelojUserId, saveData)
-        .then(() => console.log('⏱️ Contrarreloj auto-saved to Firebase'))
         .catch(err => console.error('Error auto-saving contrarreloj:', err));
     }, 500);
 
@@ -5003,7 +4983,6 @@ export function GameProvider({ children }) {
         delete saveData.leagueTeams;
         delete saveData.otherLeagues;
         saveContrarreloj(s._contrarrelojUserId, saveData)
-          .then(() => console.log('⏱️ Contrarreloj periodic save OK'))
           .catch(err => console.error('Periodic save error:', err));
       }
     }, 30000);
@@ -5031,7 +5010,6 @@ export function GameProvider({ children }) {
       delete saveData.leagueTeams;
       delete saveData.otherLeagues;
       saveProManager(state._proManagerUserId, saveData)
-        .then(() => console.log('💼 ProManager auto-saved'))
         .catch(err => console.error('ProManager save error:', err));
     }, 500);
     return () => { if (proManagerSaveRef.current) clearTimeout(proManagerSaveRef.current); };
@@ -5069,7 +5047,6 @@ export function GameProvider({ children }) {
       delete saveData.leagueTeams;
       delete saveData.otherLeagues;
       saveGlory(state._gloryUserId, saveData)
-        .then(() => console.log('🏔️ Glory auto-saved'))
         .catch(err => console.error('Glory save error:', err));
     }, 500);
     return () => { if (glorySaveRef.current) clearTimeout(glorySaveRef.current); };
@@ -5119,7 +5096,6 @@ export function GameProvider({ children }) {
         delete saveData.leagueTeams;
         delete saveData.otherLeagues;
         saveContrarreloj(s._contrarrelojUserId, saveData).catch(() => {});
-        console.log('⏱️ Contrarreloj save-on-exit triggered');
       }
       if (
         s.gameMode === 'promanager' &&
@@ -5133,7 +5109,6 @@ export function GameProvider({ children }) {
         delete saveData.leagueTeams;
         delete saveData.otherLeagues;
         saveProManager(s._proManagerUserId, saveData).catch(() => {});
-        console.log('💼 ProManager save-on-exit triggered');
       }
       if (s.gameMode === 'glory' && s.gameStarted && s._gloryUserId) {
         const saveData = { ...s };
@@ -5142,7 +5117,6 @@ export function GameProvider({ children }) {
         delete saveData.leagueTeams;
         delete saveData.otherLeagues;
         saveGlory(s._gloryUserId, saveData).catch(() => {});
-        console.log('🏔️ Glory save-on-exit triggered');
       }
       if (s.gameStarted && s.gameMode !== 'contrarreloj' && s.gameMode !== 'promanager' && s.gameMode !== 'glory' && s.gameMode !== 'ranked' && s.settings?.autoSave !== false) {
         const freshState = stateRef.current;
@@ -5152,7 +5126,6 @@ export function GameProvider({ children }) {
           if (careerSaveRef.current) {
             careerSaveRef.current.saveCareer(userId, freshState).catch(() => {});
           }
-          console.log('💾 Career save-on-exit triggered (career_saves)');
         }
       }
     };
@@ -5193,6 +5166,10 @@ export function GameProvider({ children }) {
     saveGame,
     loadGame
   };
+
+  if (import.meta.env.DEV && typeof window !== 'undefined') {
+    window.__pcfGame = value;
+  }
 
   return (
     <GameContext.Provider value={value}>

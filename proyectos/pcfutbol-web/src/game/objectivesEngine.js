@@ -151,7 +151,9 @@ export function evaluateSeasonObjectives(objectives, teamStats, money) {
     switch (obj.type) {
       case 'league_position':
         completed = teamStats.position <= obj.target;
-        progress = Math.max(0, Math.min(100, (1 - (teamStats.position - 1) / obj.target) * 100));
+        progress = obj.target > 0
+          ? Math.max(0, Math.min(100, (1 - (teamStats.position - 1) / obj.target) * 100))
+          : 0;
         break;
         
       case 'goal_difference':
@@ -168,7 +170,9 @@ export function evaluateSeasonObjectives(objectives, teamStats, money) {
       case 'youth_minutes':
         const youthGames = teamStats.youthGames || 0;
         completed = youthGames >= obj.target;
-        progress = Math.min(100, (youthGames / obj.target) * 100);
+        progress = obj.target > 0
+          ? Math.min(100, (youthGames / obj.target) * 100)
+          : 0;
         break;
         
       default:
