@@ -9,7 +9,7 @@ import { getStadiumInfo, getStadiumLevel } from '../../data/stadiumCapacities';
 import { initializeLeague } from '../../game/leagueEngine';
 import { initializeOtherLeagues, LEAGUE_CONFIG } from '../../game/multiLeagueEngine';
 import { generatePreseasonOptions } from '../../game/seasonManager';
-import { qualifyTeamsForEurope, LEAGUE_SLOTS, buildSeasonCalendar, remapFixturesForEuropean } from '../../game/europeanCompetitions';
+import { qualifyTeamsForEurope, LEAGUE_SLOTS, buildSeasonCalendar, remapFixturesForEuropean, ensureEuropeanLeagueStandings } from '../../game/europeanCompetitions';
 import { initializeEuropeanCompetitions } from '../../game/europeanSeason';
 import { isSouthAmericanLeague, qualifyTeamsForSouthAmerica, SA_LEAGUE_SLOTS } from '../../game/southAmericanCompetitions';
 import { initializeSACompetitions } from '../../game/southAmericanSeason';
@@ -220,21 +220,16 @@ export default function ProManagerSetup() {
       } catch (e) { console.warn('SA comps init error:', e); }
     } else {
       try {
-        const bootstrapStandings = {};
-        for (const [lid, slots] of Object.entries(LEAGUE_SLOTS)) {
-          const config = LEAGUE_CONFIG[lid];
-          if (!config) continue;
-          const teams = config.getTeams ? config.getTeams() : ALL_LEAGUE_GETTERS[lid]?.();
-          if (!teams?.length) continue;
-          bootstrapStandings[lid] = teams.map((t, i) => ({
-            teamId: t.id, teamName: t.name, shortName: t.shortName || '',
-            reputation: t.reputation || 70, overall: t.overall || 70, leaguePosition: i + 1
-          }));
-        }
+        const bootstrapStandings = ensureEuropeanLeagueStandings(
+          {},
+          (lid) => LEAGUE_CONFIG[lid]?.getTeams?.() || ALL_LEAGUE_GETTERS[lid]?.()
+        );
         const qualified = qualifyTeamsForEurope(bootstrapStandings);
         const euroComps = initializeEuropeanCompetitions(qualified);
         if (euroComps) dispatch({ type: 'INIT_EUROPEAN_COMPETITIONS', payload: euroComps });
-      } catch (e) { console.warn('Euro comps init error:', e); }
+      } catch (e) {
+        console.error('Euro comps init error:', e);
+      }
     }
 
     // Cup

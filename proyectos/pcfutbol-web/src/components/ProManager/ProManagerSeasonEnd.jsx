@@ -13,7 +13,7 @@ import { generatePreseasonOptions, getSeasonResult } from '../../game/seasonMana
 import { generateSeasonObjectives } from '../../game/objectivesEngine';
 import { getLeagueTier } from '../../game/leagueTiers';
 import { getCupTeams, generateCupBracket } from '../../game/cupSystem';
-import { qualifyTeamsForEurope, buildSeasonCalendar, remapFixturesForEuropean, LEAGUE_SLOTS } from '../../game/europeanCompetitions';
+import { qualifyTeamsForEurope, buildSeasonCalendar, remapFixturesForEuropean, LEAGUE_SLOTS, ensureEuropeanLeagueStandings } from '../../game/europeanCompetitions';
 import { initializeEuropeanCompetitions } from '../../game/europeanSeason';
 import { isSouthAmericanLeague, qualifyTeamsForSouthAmerica, SA_LEAGUE_SLOTS } from '../../game/southAmericanCompetitions';
 import { initializeSACompetitions } from '../../game/southAmericanSeason';
@@ -93,11 +93,20 @@ function _initContinentalComps(dispatch, newPlayerLeagueId, newSeasonData, state
       const saState = initializeSACompetitions(qualified);
       if (saState) dispatch({ type: 'INIT_SA_COMPETITIONS', payload: saState });
     } else {
-      const qualified = qualifyTeamsForEurope(leagueStandings, allTeamsMap);
+      // Patch missing European leagues from LEAGUE_CONFIG.getTeams() so
+      // saves that predate a newly added league still build 32-team
+      // fields of real clubs instead of failing the qualification.
+      const patched = ensureEuropeanLeagueStandings(
+        leagueStandings,
+        (lid) => LEAGUE_CONFIG[lid]?.getTeams?.()
+      );
+      const qualified = qualifyTeamsForEurope(patched, allTeamsMap);
       const euroState = initializeEuropeanCompetitions(qualified);
       if (euroState) dispatch({ type: 'INIT_EUROPEAN_COMPETITIONS', payload: euroState });
     }
-  } catch (e) { console.warn('ProManager continental comps init error:', e); }
+  } catch (e) {
+    console.error('[ProManager] Continental competition init failed:', e);
+  }
 }
 
 export default function ProManagerSeasonEnd() {

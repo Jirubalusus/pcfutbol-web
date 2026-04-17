@@ -10,7 +10,7 @@ import { getSegundaRfefGroups } from '../../data/teamsFirestore';
 import { initializeLeague } from '../../game/leagueEngine';
 import { initializeOtherLeagues, LEAGUE_CONFIG } from '../../game/multiLeagueEngine';
 import { getCupTeams, generateCupBracket } from '../../game/cupSystem';
-import { qualifyTeamsForEurope, LEAGUE_SLOTS, buildSeasonCalendar, remapFixturesForEuropean } from '../../game/europeanCompetitions';
+import { qualifyTeamsForEurope, LEAGUE_SLOTS, buildSeasonCalendar, remapFixturesForEuropean, ensureEuropeanLeagueStandings } from '../../game/europeanCompetitions';
 import { initializeEuropeanCompetitions } from '../../game/europeanSeason';
 import { isSouthAmericanLeague, qualifyTeamsForSouthAmerica, SA_LEAGUE_SLOTS } from '../../game/southAmericanCompetitions';
 import { initializeSACompetitions } from '../../game/southAmericanSeason';
@@ -143,40 +143,20 @@ export default function GlorySetup() {
     } catch (e) { console.warn('Glory cup init error:', e); }
 
     try {
-      const bootstrapStandings = {};
       const allTeamsMap = {};
-      for (const [lid, slots] of Object.entries(LEAGUE_SLOTS)) {
-        const config = LEAGUE_CONFIG[lid];
-        if (!config) continue;
-        const teams = config.getTeams ? config.getTeams() : null;
-        if (!teams?.length) continue;
-        const sorted = [...teams].sort((a, b) => (b.reputation || 70) - (a.reputation || 70));
-        bootstrapStandings[lid] = sorted.map((t, idx) => ({
-          teamId: t.id || t.teamId, teamName: t.name || t.teamName,
-          shortName: t.shortName || '', reputation: t.reputation || 70,
-          overall: t.overall || 70, leaguePosition: idx + 1,
-        }));
-        teams.forEach(t => { allTeamsMap[t.id || t.teamId] = t; });
+      for (const lid of Object.keys(LEAGUE_SLOTS)) {
+        const teams = LEAGUE_CONFIG[lid]?.getTeams?.();
+        (teams || []).forEach(t => { allTeamsMap[t.id || t.teamId] = t; });
       }
+      const bootstrapStandings = ensureEuropeanLeagueStandings(
+        {},
+        (lid) => LEAGUE_CONFIG[lid]?.getTeams?.()
+      );
       const qualifiedTeams = qualifyTeamsForEurope(bootstrapStandings, allTeamsMap);
-      const usedTeamIds = new Set();
-      Object.values(qualifiedTeams).forEach(ts => ts.forEach(t => usedTeamIds.add(t.teamId)));
-      const available = Object.values(allTeamsMap).filter(t => !usedTeamIds.has(t.id || t.teamId)).sort((a, b) => (b.reputation || 0) - (a.reputation || 0));
-      for (const compId of ['championsLeague', 'europaLeague', 'conferenceleague']) {
-        const needed = 32 - (qualifiedTeams[compId]?.length || 0);
-        if (needed > 0) {
-          const fillers = available.splice(0, needed);
-          qualifiedTeams[compId].push(...fillers.map(t => ({
-            teamId: t.id || t.teamId, teamName: t.name || t.teamName,
-            shortName: t.shortName || '', league: t.league || 'unknown',
-            leaguePosition: 0, reputation: t.reputation || 60,
-            overall: t.overall || 65, players: t.players || [], ...t,
-          })));
-          fillers.forEach(t => usedTeamIds.add(t.id || t.teamId));
-        }
-      }
       dispatch({ type: 'INIT_EUROPEAN_COMPETITIONS', payload: initializeEuropeanCompetitions(qualifiedTeams) });
-    } catch (e) { console.warn('Glory Euro comps init error:', e); }
+    } catch (e) {
+      console.error('Glory Euro comps init error:', e);
+    }
 
     try {
       const totalLeagueMDs = leagueData.fixtures.length > 0

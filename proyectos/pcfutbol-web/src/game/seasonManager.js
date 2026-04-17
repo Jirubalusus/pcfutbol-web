@@ -3,6 +3,7 @@
 // ============================================================
 
 import { evolvePlayer } from './seasonEngine.js';
+import { LEAGUE_SLOTS, getEuropeanPositionsForLeague } from './europeanCompetitions.js';
 
 // Leagues that are the lowest tier in their pyramid — no relegation destination exists in-game
 const BOTTOM_TIER_LEAGUES = new Set([
@@ -16,183 +17,76 @@ const BOTTOM_TIER_LEAGUES = new Set([
   'belgianPro', 'superLig', 'scottishPrem', 'eredivisie', 'primeiraLiga'
 ]);
 
+// ============================================================
+// European league qualification positions are derived from
+// europeanCompetitions.LEAGUE_SLOTS to keep UI, season outcome and
+// actual competition draw aligned. Only non-European fields
+// (relegation / promotion / playoff / playoffRelegation) are
+// declared per-league here.
+// ============================================================
+const NON_EURO_SPOTS = {
+  // Spanish pyramid
+  segunda:      { promotion: [1, 2], playoff: [3, 4, 5, 6], relegation: [19, 20, 21, 22] },
+  primeraRFEF:  { promotion: [1], playoff: [2, 3, 4, 5], relegationCount: 5 },
+  segundaRFEF:  { promotion: [1], playoff: [2, 3, 4, 5], relegation: [] },
+  // English pyramid
+  championship: { promotion: [1, 2], playoff: [3, 4, 5, 6], relegation: [22, 23, 24] },
+  // Italian pyramid
+  serieB:       { promotion: [1, 2], playoff: [3, 4, 5, 6, 7, 8], relegation: [19, 20] },
+  // German pyramid
+  bundesliga2:  { promotion: [1, 2], playoff: [3], relegation: [16, 17, 18] },
+  // French pyramid
+  ligue2:       { promotion: [1, 2], playoff: [3], relegation: [16, 17, 18] },
+  // MLS / others: configured below
+};
+
+// League-specific relegation/playoff data for European top-flight leagues,
+// merged with the champions/europaLeague/conference positions derived from
+// LEAGUE_SLOTS.
+const EURO_LEAGUE_EXTRA = {
+  laliga:             { relegation: [18, 19, 20] },
+  premierLeague:      { relegation: [18, 19, 20] },
+  serieA:             { relegation: [18, 19, 20] },
+  bundesliga:         { relegation: [16, 17, 18], playoffRelegation: [16] },
+  ligue1:             { relegation: [16, 17, 18] },
+  eredivisie:         { relegation: [16, 17, 18] },
+  primeiraLiga:       { relegation: [16, 17, 18] },
+  belgianPro:         { relegation: [15, 16] },
+  superLig:           { relegation: [17, 18, 19] },
+  austrianBundesliga: { relegation: [11, 12] },
+  greekSuperLeague:   { relegation: [13, 14] },
+  scottishPrem:       { relegation: [11, 12] },
+  ukrainePremier:     { relegation: [15, 16] },
+  czechLeague:        { relegation: [15, 16] },
+  ekstraklasa:        { relegation: [17, 18] },
+  eliteserien:        { relegation: [15, 16] },
+  danishSuperliga:    { relegation: [11, 12] },
+  swissSuperLeague:   { relegation: [11, 12] },
+  croatianLeague:     { relegation: [9, 10] },
+  romaniaSuperliga:   { relegation: [15, 16] },
+  allsvenskan:        { relegation: [15, 16] },
+  hungaryNBI:         { relegation: [11, 12] },
+  russiaPremier:      { relegation: [15, 16] }
+};
+
+function buildEuropeanSpots() {
+  const out = { ...NON_EURO_SPOTS };
+  for (const leagueId of Object.keys(LEAGUE_SLOTS)) {
+    const positions = getEuropeanPositionsForLeague(leagueId);
+    const extra = EURO_LEAGUE_EXTRA[leagueId] || {};
+    out[leagueId] = {
+      champions: positions.champions,
+      europaLeague: positions.europaLeague,
+      conference: positions.conference,
+      ...extra
+    };
+  }
+  return out;
+}
+
 // Configuración de competiciones europeas por liga
 export const EUROPEAN_SPOTS = {
-  laliga: {
-    champions: [1, 2, 3, 4],
-    europaLeague: [5, 6],
-    conference: [7],
-    relegation: [18, 19, 20]
-  },
-  segunda: {
-    promotion: [1, 2],
-    playoff: [3, 4, 5, 6],
-    relegation: [19, 20, 21, 22]
-  },
-  primeraRFEF: {
-    // Group league - per-group zones (dynamic relegation based on group size)
-    promotion: [1],       // Per group: champion ascends directly to Segunda
-    playoff: [2, 3, 4, 5], // Per group: playoff for additional promotion spot
-    relegationCount: 5    // Last 5 per group descend (positions calculated dynamically)
-  },
-  segundaRFEF: {
-    promotion: [1],       // Per group: champion ascends to Primera RFEF
-    playoff: [2, 3, 4, 5], // Per group: playoff for additional promotion spot
-    relegation: []        // No relegation (Tercera not in game)
-  },
-  premierLeague: {
-    champions: [1, 2, 3, 4],
-    europaLeague: [5],
-    conference: [6, 7],
-    relegation: [18, 19, 20]
-  },
-  serieA: {
-    champions: [1, 2, 3, 4],
-    europaLeague: [5, 6],
-    conference: [7],
-    relegation: [18, 19, 20]
-  },
-  bundesliga: {
-    champions: [1, 2, 3, 4],
-    europaLeague: [5, 6],
-    conference: [7],
-    relegation: [16, 17, 18], // 16 va a playoff
-    playoffRelegation: [16]
-  },
-  ligue1: {
-    champions: [1, 2, 3],
-    europaLeague: [4],
-    conference: [5],
-    relegation: [16, 17, 18]
-  },
-  eredivisie: {
-    champions: [1, 2],
-    europaLeague: [3, 4],
-    conference: [5, 6, 7],
-    relegation: [16, 17, 18]
-  },
-  primeiraLiga: {
-    champions: [1, 2],
-    europaLeague: [3, 4],
-    conference: [5, 6, 7],
-    relegation: [16, 17, 18]
-  },
-  championship: {
-    promotion: [1, 2],
-    playoff: [3, 4, 5, 6],
-    relegation: [22, 23, 24]
-  },
-  belgianPro: {
-    champions: [1],
-    europaLeague: [2, 3, 4],
-    conference: [5, 6, 7],
-    relegation: [15, 16]
-  },
-  superLig: {
-    champions: [1],
-    europaLeague: [2, 3, 4],
-    conference: [5, 6, 7],
-    relegation: [17, 18, 19]
-  },
-  scottishPrem: {
-    champions: [1],
-    europaLeague: [2, 3],
-    conference: [4, 5],
-    relegation: [11, 12]
-  },
-  serieB: {
-    promotion: [1, 2],
-    playoff: [3, 4, 5, 6, 7, 8],
-    relegation: [19, 20]
-  },
-  bundesliga2: {
-    promotion: [1, 2],
-    playoff: [3],
-    relegation: [16, 17, 18]
-  },
-  ligue2: {
-    promotion: [1, 2],
-    playoff: [3],
-    relegation: [16, 17, 18]
-  },
-  swissSuperLeague: {
-    champions: [1],
-    europaLeague: [2, 3],
-    conference: [4, 5],
-    relegation: [11, 12]
-  },
-  austrianBundesliga: {
-    champions: [1],
-    europaLeague: [2, 3],
-    conference: [4, 5],
-    relegation: [11, 12]
-  },
-  greekSuperLeague: {
-    champions: [1],
-    europaLeague: [2, 3],
-    conference: [4, 5],
-    relegation: [13, 14]
-  },
-  danishSuperliga: {
-    champions: [1],
-    europaLeague: [2, 3],
-    conference: [4, 5],
-    relegation: [11, 12]
-  },
-  croatianLeague: {
-    champions: [1],
-    europaLeague: [2],
-    conference: [3, 4],
-    relegation: [9, 10]
-  },
-  czechLeague: {
-    champions: [1],
-    europaLeague: [2, 3],
-    conference: [4, 5, 6],
-    relegation: [15, 16]
-  },
-  eliteserien: {
-    champions: [1],
-    europaLeague: [2, 3],
-    conference: [4],
-    relegation: [15, 16]
-  },
-  allsvenskan: {
-    champions: [1],
-    europaLeague: [2, 3],
-    conference: [4],
-    relegation: [15, 16]
-  },
-  ekstraklasa: {
-    champions: [1],
-    europaLeague: [2, 3],
-    conference: [4, 5],
-    relegation: [17, 18]
-  },
-  russiaPremier: {
-    champions: [1],
-    europaLeague: [2, 3],
-    conference: [4, 5],
-    relegation: [15, 16]
-  },
-  ukrainePremier: {
-    champions: [1],
-    europaLeague: [2, 3],
-    conference: [4, 5],
-    relegation: [15, 16]
-  },
-  romaniaSuperliga: {
-    champions: [1],
-    europaLeague: [2, 3],
-    conference: [4, 5],
-    relegation: [15, 16]
-  },
-  hungaryNBI: {
-    champions: [1],
-    europaLeague: [2, 3],
-    conference: [4],
-    relegation: [11, 12]
-  },
+  ...buildEuropeanSpots(),
   mls: {
     relegation: []
   },
@@ -280,6 +174,14 @@ export const LEAGUE_MATCHDAYS = {
   mls: 38,                  // 20 teams
   saudiPro: 34,             // 18 teams
   jLeague: 38,              // 20 teams
+  // Eastern & northern European top-flights
+  eliteserien: 30,          // 16 teams
+  allsvenskan: 30,          // 16 teams
+  ekstraklasa: 34,          // 18 teams
+  russiaPremier: 30,        // 16 teams
+  ukrainePremier: 30,       // 16 teams
+  romaniaSuperliga: 30,     // 16 teams
+  hungaryNBI: 22,           // 12 teams
 };
 
 /**

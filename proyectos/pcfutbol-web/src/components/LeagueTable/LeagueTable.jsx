@@ -5,22 +5,60 @@ import { Trophy, ChevronDown, ChevronUp, Globe, RefreshCw } from 'lucide-react';
 import { getLeagueTable, LEAGUE_CONFIG, initializeOtherLeagues, simulateOtherLeaguesWeek, isAperturaClausura, computeAccumulatedTable } from '../../game/multiLeagueEngine';
 import { sortTable } from '../../game/leagueEngine';
 import { getEuropeanSpotsForLeague } from '../../game/seasonManager';
+import { getEuropeanPositionsForLeague } from '../../game/europeanCompetitions';
 import { useTranslation } from 'react-i18next';
 import CustomSelect from '../common/CustomSelect/CustomSelect';
 import TeamCrest from '../TeamCrest/TeamCrest';
 import './LeagueTable.scss';
 
-// Configuración de zonas por liga
+// Per-league zones for UI rendering. European top-flight positions are
+// derived from LEAGUE_SLOTS (europeanCompetitions) so the badges shown in
+// the table cannot drift from the qualification logic. Only non-European
+// fields (relegation, promotion, team count, etc.) live here.
+const EURO_ZONES_EXTRA = {
+  laliga:             { nameKey: 'leagues.laliga',             relegation: [18, 19, 20], teams: 20 },
+  premierLeague:      { nameKey: 'leagues.premierLeague',      relegation: [18, 19, 20], teams: 20 },
+  serieA:             { nameKey: 'leagues.serieA',             relegation: [18, 19, 20], teams: 20 },
+  bundesliga:         { nameKey: 'leagues.bundesliga',         relegation: [16, 17, 18], teams: 18 },
+  ligue1:             { nameKey: 'leagues.ligue1',             relegation: [16, 17, 18], teams: 18 },
+  eredivisie:         { nameKey: 'leagues.eredivisie',         relegation: [16, 17, 18], teams: 18 },
+  primeiraLiga:       { nameKey: 'leagues.primeiraLiga',       relegation: [16, 17, 18], teams: 18 },
+  belgianPro:         { nameKey: 'leagues.belgianPro',         relegation: [15, 16],     teams: 16 },
+  superLig:           { nameKey: 'leagues.superLig',           relegation: [17, 18, 19], teams: 19 },
+  austrianBundesliga: { nameKey: 'leagues.austrianBundesliga', relegation: [11, 12],     teams: 12 },
+  greekSuperLeague:   { nameKey: 'leagues.greekSuperLeague',   relegation: [13, 14],     teams: 14 },
+  scottishPrem:       { nameKey: 'leagues.scottishPrem',       relegation: [11, 12],     teams: 12 },
+  ukrainePremier:     { nameKey: 'leagues.ukrainePremier',     relegation: [15, 16],     teams: 16 },
+  czechLeague:        { nameKey: 'leagues.czechLeague',        relegation: [15, 16],     teams: 16 },
+  ekstraklasa:        { nameKey: 'leagues.ekstraklasa',        relegation: [17, 18],     teams: 18 },
+  eliteserien:        { nameKey: 'leagues.eliteserien',        relegation: [15, 16],     teams: 16 },
+  danishSuperliga:    { nameKey: 'leagues.danishSuperliga',    relegation: [11, 12],     teams: 12 },
+  swissSuperLeague:   { nameKey: 'leagues.swissSuperLeague',   relegation: [11, 12],     teams: 12 },
+  croatianLeague:     { nameKey: 'leagues.croatianLeague',     relegation: [9, 10],      teams: 10 },
+  romaniaSuperliga:   { nameKey: 'leagues.romaniaSuperliga',   relegation: [15, 16],     teams: 16 },
+  allsvenskan:        { nameKey: 'leagues.allsvenskan',        relegation: [15, 16],     teams: 16 },
+  hungaryNBI:         { nameKey: 'leagues.hungaryNBI',         relegation: [11, 12],     teams: 12 },
+  russiaPremier:      { nameKey: 'leagues.russiaPremier',      relegation: [15, 16],     teams: 16 }
+};
+
+function buildEuropeanZones() {
+  const zones = {};
+  for (const [leagueId, extra] of Object.entries(EURO_ZONES_EXTRA)) {
+    const positions = getEuropeanPositionsForLeague(leagueId) || { champions: [], europaLeague: [], conference: [] };
+    zones[leagueId] = {
+      ...extra,
+      champions: positions.champions,
+      europaLeague: positions.europaLeague,
+      conference: positions.conference
+    };
+  }
+  return zones;
+}
+
 const LEAGUE_ZONES = {
-  // === ESPAÑA ===
-  laliga: {
-    nameKey: 'leagues.laliga',
-    champions: [1, 2, 3, 4],
-    europaLeague: [5, 6],
-    conference: [7],
-    relegation: [18, 19, 20],
-    teams: 20
-  },
+  // === European top-flight leagues (zones derived from LEAGUE_SLOTS) ===
+  ...buildEuropeanZones(),
+  // === ESPAÑA (second & third tier) ===
   segunda: {
     nameKey: 'leagues.segunda',
     promotion: [1, 2],
@@ -45,40 +83,7 @@ const LEAGUE_ZONES = {
     relegation: [],
     teams: 0
   },
-  // === TOP 5 LIGAS ===
-  premierLeague: {
-    nameKey: 'leagues.premierLeague',
-    champions: [1, 2, 3, 4],
-    europaLeague: [5],
-    conference: [6, 7],
-    relegation: [18, 19, 20],
-    teams: 20
-  },
-  serieA: {
-    nameKey: 'leagues.serieA',
-    champions: [1, 2, 3, 4],
-    europaLeague: [5, 6],
-    conference: [7],
-    relegation: [18, 19, 20],
-    teams: 20
-  },
-  bundesliga: {
-    nameKey: 'leagues.bundesliga',
-    champions: [1, 2, 3, 4],
-    europaLeague: [5, 6],
-    conference: [7],
-    relegation: [16, 17, 18],
-    teams: 18
-  },
-  ligue1: {
-    nameKey: 'leagues.ligue1',
-    champions: [1, 2, 3],
-    europaLeague: [4],
-    conference: [5],
-    relegation: [16, 17, 18],
-    teams: 18
-  },
-  // === SEGUNDAS DIVISIONES ===
+  // === SEGUNDAS DIVISIONES EXTRANJERAS ===
   championship: {
     nameKey: 'leagues.championship',
     promotion: [1, 2],
@@ -106,151 +111,6 @@ const LEAGUE_ZONES = {
     playoff: [3, 4, 5],
     relegation: [16, 17, 18],
     teams: 18
-  },
-  // === OTRAS LIGAS EUROPEAS ===
-  eredivisie: {
-    nameKey: 'leagues.eredivisie',
-    champions: [1],
-    europaLeague: [2, 3],
-    conference: [4],
-    relegation: [16, 17, 18],
-    teams: 18
-  },
-  primeiraLiga: {
-    nameKey: 'leagues.primeiraLiga',
-    champions: [1],
-    europaLeague: [2, 3],
-    conference: [4],
-    relegation: [16, 17, 18],
-    teams: 18
-  },
-  belgianPro: {
-    nameKey: 'leagues.belgianPro',
-    champions: [1],
-    europaLeague: [2],
-    conference: [3],
-    relegation: [15, 16],
-    teams: 16
-  },
-  superLig: {
-    nameKey: 'leagues.superLig',
-    champions: [1],
-    europaLeague: [2, 3],
-    conference: [4],
-    relegation: [16, 17, 18],
-    teams: 18
-  },
-  scottishPrem: {
-    nameKey: 'leagues.scottishPrem',
-    champions: [1],
-    europaLeague: [2],
-    conference: [3],
-    relegation: [11, 12],
-    teams: 12
-  },
-  swissSuperLeague: {
-    nameKey: 'leagues.swissSuperLeague',
-    champions: [1],
-    europaLeague: [2],
-    conference: [3],
-    relegation: [11, 12],
-    teams: 12
-  },
-  austrianBundesliga: {
-    nameKey: 'leagues.austrianBundesliga',
-    champions: [1],
-    europaLeague: [2],
-    conference: [3],
-    relegation: [11, 12],
-    teams: 12
-  },
-  greekSuperLeague: {
-    nameKey: 'leagues.greekSuperLeague',
-    champions: [1],
-    europaLeague: [2],
-    conference: [3],
-    relegation: [13, 14],
-    teams: 14
-  },
-  danishSuperliga: {
-    nameKey: 'leagues.danishSuperliga',
-    champions: [1],
-    europaLeague: [2],
-    conference: [3],
-    relegation: [11, 12],
-    teams: 12
-  },
-  croatianLeague: {
-    nameKey: 'leagues.croatianLeague',
-    champions: [1],
-    europaLeague: [2],
-    conference: [3],
-    relegation: [9, 10],
-    teams: 10
-  },
-  czechLeague: {
-    nameKey: 'leagues.czechLeague',
-    champions: [1],
-    europaLeague: [2, 3],
-    conference: [4, 5, 6],
-    relegation: [15, 16],
-    teams: 16
-  },
-  eliteserien: {
-    nameKey: 'leagues.eliteserien',
-    champions: [1],
-    europaLeague: [2, 3],
-    conference: [4],
-    relegation: [15, 16],
-    teams: 16
-  },
-  allsvenskan: {
-    nameKey: 'leagues.allsvenskan',
-    champions: [1],
-    europaLeague: [2, 3],
-    conference: [4],
-    relegation: [15, 16],
-    teams: 16
-  },
-  ekstraklasa: {
-    nameKey: 'leagues.ekstraklasa',
-    champions: [1],
-    europaLeague: [2, 3],
-    conference: [4, 5],
-    relegation: [17, 18],
-    teams: 18
-  },
-  russiaPremier: {
-    nameKey: 'leagues.russiaPremier',
-    champions: [1],
-    europaLeague: [2, 3],
-    conference: [4, 5],
-    relegation: [15, 16],
-    teams: 16
-  },
-  ukrainePremier: {
-    nameKey: 'leagues.ukrainePremier',
-    champions: [1],
-    europaLeague: [2, 3],
-    conference: [4, 5],
-    relegation: [15, 16],
-    teams: 16
-  },
-  romaniaSuperliga: {
-    nameKey: 'leagues.romaniaSuperliga',
-    champions: [1],
-    europaLeague: [2, 3],
-    conference: [4, 5],
-    relegation: [15, 16],
-    teams: 16
-  },
-  hungaryNBI: {
-    nameKey: 'leagues.hungaryNBI',
-    champions: [1],
-    europaLeague: [2, 3],
-    conference: [4],
-    relegation: [11, 12],
-    teams: 12
   },
   // === SOUTH AMERICA ===
   argentinaPrimera: {

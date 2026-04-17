@@ -9,7 +9,7 @@ import { initializeLeague } from '../../game/leagueEngine';
 import { initializeOtherLeagues, LEAGUE_CONFIG } from '../../game/multiLeagueEngine';
 import { generateSeasonObjectives } from '../../game/objectivesEngine';
 import { generatePreseasonOptions } from '../../game/seasonManager';
-import { qualifyTeamsForEurope, LEAGUE_SLOTS, buildSeasonCalendar, remapFixturesForEuropean } from '../../game/europeanCompetitions';
+import { qualifyTeamsForEurope, LEAGUE_SLOTS, buildSeasonCalendar, remapFixturesForEuropean, ensureEuropeanLeagueStandings } from '../../game/europeanCompetitions';
 import { initializeEuropeanCompetitions } from '../../game/europeanSeason';
 import { isSouthAmericanLeague, qualifyTeamsForSouthAmerica, SA_LEAGUE_SLOTS } from '../../game/southAmericanCompetitions';
 import { initializeSACompetitions } from '../../game/southAmericanSeason';
@@ -337,40 +337,20 @@ export default function ContrarrelojSetup() {
       } catch (err) { console.error('Error bootstrapping SA comps:', err); }
     } else {
       try {
-        const bootstrapStandings = {};
         const allTeamsMap = {};
-        for (const [lid, slots] of Object.entries(LEAGUE_SLOTS)) {
-          const config = LEAGUE_CONFIG[lid];
-          if (!config?.getTeams) continue;
-          const lt = config.getTeams();
-          if (!lt?.length) continue;
-          const sorted = [...lt].sort((a, b) => (b.reputation || 70) - (a.reputation || 70));
-          bootstrapStandings[lid] = sorted.map((t, idx) => ({
-            teamId: t.id || t.teamId, teamName: t.name || t.teamName,
-            shortName: t.shortName || '', reputation: t.reputation || 70,
-            overall: t.overall || 70, leaguePosition: idx + 1
-          }));
-          lt.forEach(t => { allTeamsMap[t.id || t.teamId] = t; });
+        for (const lid of Object.keys(LEAGUE_SLOTS)) {
+          const lt = LEAGUE_CONFIG[lid]?.getTeams?.();
+          (lt || []).forEach(t => { allTeamsMap[t.id || t.teamId] = t; });
         }
+        const bootstrapStandings = ensureEuropeanLeagueStandings(
+          {},
+          (lid) => LEAGUE_CONFIG[lid]?.getTeams?.()
+        );
         const qualifiedTeams = qualifyTeamsForEurope(bootstrapStandings, allTeamsMap);
-        const usedTeamIds = new Set();
-        Object.values(qualifiedTeams).forEach(teams => teams.forEach(t => usedTeamIds.add(t.teamId)));
-        const available = Object.values(allTeamsMap).filter(t => !usedTeamIds.has(t.id || t.teamId)).sort((a, b) => (b.reputation || 0) - (a.reputation || 0));
-        for (const compId of ['championsLeague', 'europaLeague', 'conferenceleague']) {
-          const needed = 32 - qualifiedTeams[compId].length;
-          if (needed > 0) {
-            const fillers = available.splice(0, needed);
-            qualifiedTeams[compId].push(...fillers.map(t => ({
-              teamId: t.id || t.teamId, teamName: t.name || t.teamName,
-              shortName: t.shortName || '', league: t.league || 'unknown',
-              leaguePosition: 0, reputation: t.reputation || 60,
-              overall: t.overall || 65, players: t.players || [], ...t
-            })));
-            fillers.forEach(t => usedTeamIds.add(t.id || t.teamId));
-          }
-        }
         dispatch({ type: 'INIT_EUROPEAN_COMPETITIONS', payload: initializeEuropeanCompetitions(qualifiedTeams) });
-      } catch (err) { console.error('Error bootstrapping European comps:', err); }
+      } catch (err) {
+        console.error('Error bootstrapping European comps:', err);
+      }
     }
 
     // Cup competition

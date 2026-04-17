@@ -35,7 +35,7 @@ import {
   getEuropeanBonus,
   EUROPEAN_SPOTS
 } from '../../game/seasonManager';
-import { qualifyTeamsForEurope, LEAGUE_SLOTS, buildSeasonCalendar, buildEuropeanCalendar, remapFixturesForEuropean } from '../../game/europeanCompetitions';
+import { qualifyTeamsForEurope, LEAGUE_SLOTS, buildSeasonCalendar, buildEuropeanCalendar, remapFixturesForEuropean, ensureEuropeanLeagueStandings } from '../../game/europeanCompetitions';
 import { getCupTeams, generateCupBracket, CUP_CONFIGS } from '../../game/cupSystem';
 import { LEAGUE_CONFIG, isAperturaClausura, simulateAperturaClausuraFinal, simulateOtherLeaguesWeek } from '../../game/multiLeagueEngine';
 import { initializeEuropeanCompetitions } from '../../game/europeanSeason';
@@ -565,26 +565,22 @@ export default function SeasonEnd({ allTeams, onComplete }) {
       }
     } catch (e) { console.warn('Glory cup init error:', e); }
 
-    // European competitions for new season
+    // European competitions for new season (Glory bootstrap: no live tables yet)
     try {
-      const bootstrapStandings = {};
       const allTeamsMap = {};
-      for (const [lid] of Object.entries(LEAGUE_SLOTS)) {
-        const config = LEAGUE_CONFIG[lid];
-        if (!config) continue;
-        const teams = config.getTeams ? config.getTeams() : null;
-        if (!teams?.length) continue;
-        const sorted = [...teams].sort((a, b) => (b.reputation || 70) - (a.reputation || 70));
-        bootstrapStandings[lid] = sorted.map((t, idx) => ({
-          teamId: t.id || t.teamId, teamName: t.name || t.teamName,
-          shortName: t.shortName || '', reputation: t.reputation || 70,
-          overall: t.overall || 70, leaguePosition: idx + 1
-        }));
-        teams.forEach(t => { allTeamsMap[t.id || t.teamId] = t; });
+      for (const lid of Object.keys(LEAGUE_SLOTS)) {
+        const teams = LEAGUE_CONFIG[lid]?.getTeams?.();
+        (teams || []).forEach(t => { allTeamsMap[t.id || t.teamId] = t; });
       }
+      const bootstrapStandings = ensureEuropeanLeagueStandings(
+        {},
+        (lid) => LEAGUE_CONFIG[lid]?.getTeams?.()
+      );
       const qualifiedTeams = qualifyTeamsForEurope(bootstrapStandings, allTeamsMap);
       dispatch({ type: 'INIT_EUROPEAN_COMPETITIONS', payload: initializeEuropeanCompetitions(qualifiedTeams) });
-    } catch (e) { console.warn('Glory Euro comps init error:', e); }
+    } catch (e) {
+      console.error('Glory Euro comps init failed:', e);
+    }
 
     // Season calendar with European/cup weeks
     try {
@@ -956,7 +952,15 @@ export default function SeasonEnd({ allTeams, onComplete }) {
         }
       } else {
         // ── EUROPEAN COMPETITIONS ──
-        const qualifiedTeams = qualifyTeamsForEurope(leagueStandings, allTeamsMap);
+        // Patch missing LEAGUE_SLOTS leagues (e.g. saves that predate a
+        // newly added European league) with reputation-ordered real teams
+        // from LEAGUE_CONFIG so qualifyTeamsForEurope can always produce
+        // 32 teams per competition with real clubs.
+        const patchedStandings = ensureEuropeanLeagueStandings(
+          leagueStandings,
+          (lid) => LEAGUE_CONFIG[lid]?.getTeams?.()
+        );
+        const qualifiedTeams = qualifyTeamsForEurope(patchedStandings, allTeamsMap);
         const europeanState = initializeEuropeanCompetitions(qualifiedTeams);
         dispatch({ type: 'INIT_EUROPEAN_COMPETITIONS', payload: europeanState });
 
@@ -978,9 +982,9 @@ export default function SeasonEnd({ allTeams, onComplete }) {
         }
       }
     } catch (err) {
-      console.error('Error initializing continental competitions:', err);
+      console.error('[SeasonEnd] Continental competition init failed:', err);
     }
-    
+
     onComplete();
   };
   

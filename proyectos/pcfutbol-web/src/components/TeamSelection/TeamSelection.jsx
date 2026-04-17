@@ -144,6 +144,7 @@ async function loadSeasonSetupModules() {
       initializeLeague: leagueEngine.initializeLeague,
       generateSeasonObjectives: objectivesEngine.generateSeasonObjectives,
       qualifyTeamsForEurope: europeanCompetitions.qualifyTeamsForEurope,
+      ensureEuropeanLeagueStandings: europeanCompetitions.ensureEuropeanLeagueStandings,
       LEAGUE_SLOTS: europeanCompetitions.LEAGUE_SLOTS,
       buildSeasonCalendar: europeanCompetitions.buildSeasonCalendar,
       remapFixturesForEuropean: europeanCompetitions.remapFixturesForEuropean,
@@ -583,6 +584,7 @@ export default function TeamSelection() {
     const {
       generateSeasonObjectives,
       qualifyTeamsForEurope,
+      ensureEuropeanLeagueStandings,
       LEAGUE_SLOTS,
       buildSeasonCalendar,
       remapFixturesForEuropean,
@@ -764,64 +766,16 @@ export default function TeamSelection() {
     } else {
       // ── EUROPEAN COMPETITIONS ──
       try {
-        const bootstrapStandings = {};
         const allTeamsMap = {};
-        
-        for (const [leagueId, slots] of Object.entries(LEAGUE_SLOTS)) {
-          const config = LEAGUE_CONFIG[leagueId];
-          if (!config || !config.getTeams) continue;
-          
-          const leagueTeams = config.getTeams();
-          if (!leagueTeams || leagueTeams.length === 0) continue;
-          
-          const sorted = [...leagueTeams].sort((a, b) => 
-            (b.reputation || 70) - (a.reputation || 70)
-          );
-          
-          bootstrapStandings[leagueId] = sorted.map((t, idx) => ({
-            teamId: t.id || t.teamId,
-            teamName: t.name || t.teamName,
-            shortName: t.shortName || '',
-            reputation: t.reputation || 70,
-            overall: t.overall || 70,
-            leaguePosition: idx + 1
-          }));
-          
-          leagueTeams.forEach(t => {
-            allTeamsMap[t.id || t.teamId] = t;
-          });
+        for (const lid of Object.keys(LEAGUE_SLOTS)) {
+          const teams = LEAGUE_CONFIG[lid]?.getTeams?.();
+          (teams || []).forEach(tt => { allTeamsMap[tt.id || tt.teamId] = tt; });
         }
-        
-        const qualifiedTeams = qualifyTeamsForEurope(bootstrapStandings, allTeamsMap);
-        
-        const usedTeamIds = new Set();
-        Object.values(qualifiedTeams).forEach(teams => 
-          teams.forEach(t => usedTeamIds.add(t.teamId))
+        const bootstrapStandings = ensureEuropeanLeagueStandings(
+          {},
+          (lid) => LEAGUE_CONFIG[lid]?.getTeams?.()
         );
-        
-        const allAvailableTeams = Object.values(allTeamsMap)
-          .filter(t => !usedTeamIds.has(t.id || t.teamId))
-          .sort((a, b) => (b.reputation || 0) - (a.reputation || 0));
-        
-        for (const compId of ['championsLeague', 'europaLeague', 'conferenceleague']) {
-          const needed = 32 - qualifiedTeams[compId].length;
-          if (needed > 0) {
-            const fillers = allAvailableTeams.splice(0, needed);
-            qualifiedTeams[compId].push(...fillers.map(t => ({
-              teamId: t.id || t.teamId,
-              teamName: t.name || t.teamName,
-              shortName: t.shortName || '',
-              league: t.league || 'unknown',
-              leaguePosition: 0,
-              reputation: t.reputation || 60,
-              overall: t.overall || 65,
-              players: t.players || [],
-              ...t
-            })));
-            fillers.forEach(t => usedTeamIds.add(t.id || t.teamId));
-          }
-        }
-        
+        const qualifiedTeams = qualifyTeamsForEurope(bootstrapStandings, allTeamsMap);
         const europeanState = initializeEuropeanCompetitions(qualifiedTeams);
         dispatch({ type: 'INIT_EUROPEAN_COMPETITIONS', payload: europeanState });
         
