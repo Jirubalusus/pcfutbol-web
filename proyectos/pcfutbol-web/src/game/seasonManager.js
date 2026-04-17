@@ -151,6 +151,48 @@ export const EUROPEAN_SPOTS = {
     conference: [4, 5, 6],
     relegation: [15, 16]
   },
+  eliteserien: {
+    champions: [1],
+    europaLeague: [2, 3],
+    conference: [4],
+    relegation: [15, 16]
+  },
+  allsvenskan: {
+    champions: [1],
+    europaLeague: [2, 3],
+    conference: [4],
+    relegation: [15, 16]
+  },
+  ekstraklasa: {
+    champions: [1],
+    europaLeague: [2, 3],
+    conference: [4, 5],
+    relegation: [17, 18]
+  },
+  russiaPremier: {
+    champions: [1],
+    europaLeague: [2, 3],
+    conference: [4, 5],
+    relegation: [15, 16]
+  },
+  ukrainePremier: {
+    champions: [1],
+    europaLeague: [2, 3],
+    conference: [4, 5],
+    relegation: [15, 16]
+  },
+  romaniaSuperliga: {
+    champions: [1],
+    europaLeague: [2, 3],
+    conference: [4, 5],
+    relegation: [15, 16]
+  },
+  hungaryNBI: {
+    champions: [1],
+    europaLeague: [2, 3],
+    conference: [4],
+    relegation: [11, 12]
+  },
   mls: {
     relegation: []
   },
