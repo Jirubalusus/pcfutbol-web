@@ -94,16 +94,6 @@ function _initContinentalComps(dispatch, newPlayerLeagueId, newSeasonData, state
       if (saState) dispatch({ type: 'INIT_SA_COMPETITIONS', payload: saState });
     } else {
       const qualified = qualifyTeamsForEurope(leagueStandings, allTeamsMap);
-      const usedIds = new Set();
-      Object.values(qualified).forEach(teams => teams.forEach(tt => usedIds.add(tt.teamId)));
-      const remaining = allTeamsFlat.filter(tt => !usedIds.has(tt.id || tt.teamId)).sort((a, b) => (b.reputation || 0) - (a.reputation || 0));
-      for (const compId of ['championsLeague', 'europaLeague', 'conferenceleague']) {
-        const needed = 32 - qualified[compId].length;
-        if (needed > 0) {
-          const fillers = remaining.splice(0, needed);
-          qualified[compId].push(...fillers.map(tt => ({ teamId: tt.id || tt.teamId, teamName: tt.name || tt.teamName, shortName: tt.shortName || '', league: tt.league || 'unknown', leaguePosition: 0, reputation: tt.reputation || 60, overall: tt.overall || 65, players: tt.players || [], ...tt })));
-        }
-      }
       const euroState = initializeEuropeanCompetitions(qualified);
       if (euroState) dispatch({ type: 'INIT_EUROPEAN_COMPETITIONS', payload: euroState });
     }

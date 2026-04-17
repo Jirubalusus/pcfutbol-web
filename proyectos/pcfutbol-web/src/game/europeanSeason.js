@@ -31,11 +31,9 @@ export function initializeEuropeanCompetitions(qualifiedTeams) {
 
   for (const [compId, compConfig] of Object.entries(COMPETITIONS)) {
     const teams = qualifiedTeams[compId] || [];
-    
-    if (teams.length < 4) {
-      // Not enough teams, skip this competition
-      competitions[compId] = null;
-      continue;
+
+    if (teams.length !== compConfig.teamsCount) {
+      throw new Error(`European competition ${compId} expected ${compConfig.teamsCount} teams, got ${teams.length}`);
     }
 
     // Run Swiss draw

@@ -583,21 +583,6 @@ export default function SeasonEnd({ allTeams, onComplete }) {
         teams.forEach(t => { allTeamsMap[t.id || t.teamId] = t; });
       }
       const qualifiedTeams = qualifyTeamsForEurope(bootstrapStandings, allTeamsMap);
-      const usedTeamIds = new Set();
-      Object.values(qualifiedTeams).forEach(ts => ts.forEach(t => usedTeamIds.add(t.teamId)));
-      const available = Object.values(allTeamsMap).filter(t => !usedTeamIds.has(t.id || t.teamId)).sort((a, b) => (b.reputation || 0) - (a.reputation || 0));
-      for (const compId of ['championsLeague', 'europaLeague', 'conferenceleague']) {
-        const needed = 32 - (qualifiedTeams[compId]?.length || 0);
-        if (needed > 0) {
-          const fillers = available.splice(0, needed);
-          qualifiedTeams[compId].push(...fillers.map(t => ({
-            teamId: t.id || t.teamId, teamName: t.name || t.teamName,
-            shortName: t.shortName || '', league: t.league || 'unknown',
-            leaguePosition: 0, reputation: t.reputation || 60,
-            overall: t.overall || 65, players: t.players || [], ...t
-          })));
-        }
-      }
       dispatch({ type: 'INIT_EUROPEAN_COMPETITIONS', payload: initializeEuropeanCompetitions(qualifiedTeams) });
     } catch (e) { console.warn('Glory Euro comps init error:', e); }
 
@@ -972,58 +957,24 @@ export default function SeasonEnd({ allTeams, onComplete }) {
       } else {
         // ── EUROPEAN COMPETITIONS ──
         const qualifiedTeams = qualifyTeamsForEurope(leagueStandings, allTeamsMap);
-        
-        const totalQualified = qualifiedTeams.championsLeague.length + 
-                               qualifiedTeams.europaLeague.length + 
-                               qualifiedTeams.conferenceleague.length;
+        const europeanState = initializeEuropeanCompetitions(qualifiedTeams);
+        dispatch({ type: 'INIT_EUROPEAN_COMPETITIONS', payload: europeanState });
 
-        if (totalQualified >= 12) {
-          const usedTeamIds = new Set();
-          Object.values(qualifiedTeams).forEach(teams => 
-            teams.forEach(t => usedTeamIds.add(t.teamId))
-          );
+        const playerQualComp = ['championsLeague', 'europaLeague', 'conferenceleague']
+          .find(c => qualifiedTeams[c].some(t => (t.teamId || t.id) === state.teamId));
 
-          const remainingTeams = allTeams
-            .filter(t => !usedTeamIds.has(t.id || t.teamId))
-            .sort((a, b) => (b.reputation || 0) - (a.reputation || 0));
-
-          for (const compId of ['championsLeague', 'europaLeague', 'conferenceleague']) {
-            const needed = 32 - qualifiedTeams[compId].length;
-            if (needed > 0) {
-              const fillers = remainingTeams.splice(0, needed);
-              qualifiedTeams[compId].push(...fillers.map(t => ({
-                teamId: t.id || t.teamId,
-                teamName: t.name || t.teamName,
-                shortName: t.shortName || '',
-                league: t.league || 'unknown',
-                leaguePosition: 0,
-                reputation: t.reputation || 60,
-                overall: t.overall || 65,
-                players: t.players || [],
-                ...t
-              })));
+        if (playerQualComp) {
+          const compNames = { championsLeague: 'Continental Champions Cup', europaLeague: 'Continental Shield', conferenceleague: 'Continental Trophy' };
+          dispatch({
+            type: 'ADD_MESSAGE',
+            payload: {
+              id: Date.now() + 100,
+              type: 'european',
+              title: t('seasonEnd.msgEuropeanComp'),
+              content: t('seasonEnd.msgTeamPlaysContinental', { comp: compNames[playerQualComp] }),
+              date: t('seasonEnd.startOfSeasonDate', { season: state.currentSeason + 1 })
             }
-          }
-
-          const europeanState = initializeEuropeanCompetitions(qualifiedTeams);
-          dispatch({ type: 'INIT_EUROPEAN_COMPETITIONS', payload: europeanState });
-
-          const playerQualComp = ['championsLeague', 'europaLeague', 'conferenceleague']
-            .find(c => qualifiedTeams[c].some(t => (t.teamId || t.id) === state.teamId));
-
-          if (playerQualComp) {
-            const compNames = { championsLeague: 'Continental Champions Cup', europaLeague: 'Continental Shield', conferenceleague: 'Continental Trophy' };
-            dispatch({
-              type: 'ADD_MESSAGE',
-              payload: {
-                id: Date.now() + 100,
-                type: 'european',
-                title: t('seasonEnd.msgEuropeanComp'),
-                content: t('seasonEnd.msgTeamPlaysContinental', { comp: compNames[playerQualComp] }),
-                date: t('seasonEnd.startOfSeasonDate', { season: state.currentSeason + 1 })
-              }
-            });
-          }
+          });
         }
       }
     } catch (err) {
