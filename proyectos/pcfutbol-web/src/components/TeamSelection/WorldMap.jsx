@@ -132,13 +132,16 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
     const el = document.createElement('div');
     el.className = `globe-marker ${d.isSelected ? 'globe-marker--selected' : ''}`;
     el.style.setProperty('--marker-color', d.isSelected ? '#00FF88' : d.color);
-    el.innerHTML = `<span class="globe-marker__code">${d.code}</span>`;
+    el.innerHTML = `
+      <span class="globe-marker__pulse"></span>
+      <span class="globe-marker__dot"></span>
+      <span class="globe-marker__label">${d.code}</span>
+    `;
     el.addEventListener('click', (e) => {
       e.stopPropagation();
       if (d?.id) onCountryClick(d.id);
     });
-    // Tooltip on hover
-    el.title = `${d.name} — ${d.leagues}`;
+    el.title = `${d.name} · ${d.leagues} ligas`;
     return el;
   }, [onCountryClick]);
 
