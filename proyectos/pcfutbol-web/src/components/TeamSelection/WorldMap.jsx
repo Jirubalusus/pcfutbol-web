@@ -110,7 +110,7 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
         id: c.id,
         lat: data.lat,
         lng: data.lng,
-        name: c.name,
+        name: c.name || (c.nameKey ? t(c.nameKey) : data.name),
         flag: c.flag,
         code: data.code,
         color: data.color,
