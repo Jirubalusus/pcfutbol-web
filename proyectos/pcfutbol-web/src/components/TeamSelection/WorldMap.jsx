@@ -212,6 +212,8 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
     );
   }
 
+  const selectedCountryData = selectedCountry ? countries.find(c => c.id === selectedCountry) : null;
+
   // Desktop: 3D globe with HTML markers
   return (
     <div className="globe-wrapper">
@@ -233,6 +235,19 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
         atmosphereColor="lightskyblue"
         atmosphereAltitude={0.15}
       />
+      {selectedCountryData && (
+        <div className="globe-selection-card">
+          <div className="globe-selection-card__flag-wrap">
+            <span className={`globe-selection-card__flag ${selectedCountryData.flagVariant === 'code' ? 'globe-selection-card__flag--code' : ''}`.trim()}>
+              {selectedCountryData.flag}
+            </span>
+          </div>
+          <div className="globe-selection-card__content">
+            <strong>{selectedCountryData.name || (selectedCountryData.nameKey ? t(selectedCountryData.nameKey) : selectedCountryData.id)}</strong>
+            <span>{t('teamSelection.leaguesCount', { count: selectedCountryData.leagues.length })}</span>
+          </div>
+        </div>
+      )}
       <p className="globe-hint">{t('teamSelection.globeHint')}</p>
     </div>
   );
