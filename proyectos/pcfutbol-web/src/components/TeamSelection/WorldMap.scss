@@ -46,8 +46,8 @@
 // HTML markers on globe — compact dot + floating code pill
 .globe-marker {
   position: relative;
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -97,7 +97,7 @@
 
   &__pulse {
     position: absolute;
-    inset: -6px;
+    inset: -7px;
     border-radius: 999px;
     background: radial-gradient(circle, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.02) 55%, transparent 72%);
     opacity: 0;
@@ -107,8 +107,8 @@
   }
 
   &__dot {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     border-radius: 999px;
     background: var(--marker-color, #fff);
     border: 2px solid rgba(255, 255, 255, 0.75);
