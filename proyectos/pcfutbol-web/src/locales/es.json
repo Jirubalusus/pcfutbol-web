@@ -1631,7 +1631,8 @@
     "physical": "Físico",
     "number": "Dorsal",
     "myTeam": "Mi Equipo",
-    "average": "Media"
+    "average": "Media",
+    "alsoPlays": "También juega"
   },
   "mobileNav": {
     "home": "Inicio",

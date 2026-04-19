@@ -4,7 +4,7 @@ import { useGame } from '../../context/GameContext';
 import { useToast } from '../Toast/Toast';
 import { TutorialModal, useTutorial } from '../Tutorial/Tutorial';
 import { FORMATIONS, TACTICS, calculateTeamStrength } from '../../game/leagueEngine';
-import { getPositionFit, getSlotPosition, FIT_COLORS } from '../../game/positionSystem';
+import { getSlotPosition, FIT_COLORS, getBestPositionFit } from '../../game/positionSystem';
 import { translatePosition, posToEN } from '../../game/positionNames';
 import { FORM_STATES } from '../../game/formSystem';
 import { Shield, Scale, Swords, Target, Zap, CheckCircle2, Settings, Heart, AlertTriangle, Building2, TrendingUp, BarChart3, X, Check, HeartPulse, Square, Star, Trophy, Coins, Clock } from 'lucide-react';
@@ -426,8 +426,8 @@ export default function Formation() {
         .filter(p => !used.has(p.name) && !p.injured && !p.suspended)
         .sort((a, b) => {
           // Usar compatibilidad gradual (factor 0.0-1.0) para elegir mejor jugador
-          const fitA = getPositionFit(a.position, slotPos);
-          const fitB = getPositionFit(b.position, slotPos);
+          const fitA = getBestPositionFit(a, slotPos);
+          const fitB = getBestPositionFit(b, slotPos);
           // Puntuación: factor de posición × overall (así un 80 en posición perfecta > 85 fuera de posición)
           const scoreA = fitA.factor * a.overall;
           const scoreB = fitB.factor * b.overall;
@@ -618,8 +618,8 @@ export default function Formation() {
       const best = players
         .filter(p => !used.has(p.name) && !p.injured && !p.suspended)
         .sort((a, b) => {
-          const fitA = getPositionFit(a.position, slotPos);
-          const fitB = getPositionFit(b.position, slotPos);
+          const fitA = getBestPositionFit(a, slotPos);
+          const fitB = getBestPositionFit(b, slotPos);
           return (fitB.factor * b.overall) - (fitA.factor * a.overall);
         })[0];
       if (best) { newLineup[pos.id] = best; used.add(best.name); }
@@ -660,8 +660,10 @@ export default function Formation() {
     const effectivePos2 = slot2 ? getSlotPosition(slot2) : player2.position;
 
     // Bidireccional: ¿player2 puede jugar en pos1, o player1 en pos2?
-    const fit1 = getPositionFit(player2.position, effectivePos1);
-    const fit2 = getPositionFit(player1.position, effectivePos2);
+    // Usa best fit (primaria + secundarias) para que un MC con MCD secundario
+    // sea intercambiable con un MCD natural sin penalización absurda.
+    const fit1 = getBestPositionFit(player2, effectivePos1);
+    const fit2 = getBestPositionFit(player1, effectivePos2);
 
     return fit1.factor >= fit2.factor ? fit1 : fit2;
   };
@@ -779,7 +781,7 @@ export default function Formation() {
                 const isCompatible = selectedPlayer && !isSelected && isCompatibleSwap(selectedPlayer, player);
                 const slotId = playerSlotMap[player.name];
                 const slotPos = slotId ? getSlotPosition(slotId) : null;
-                const fit = slotPos ? getPositionFit(player.position, slotPos) : null;
+                const fit = slotPos ? getBestPositionFit(player, slotPos) : null;
                 const swapFit = isCompatible ? getSwapFit(selectedPlayer, player) : null;
                 const swapClass = swapFit ? (swapFit.level === 'perfect' ? 'swap-perfect' : swapFit.level === 'good' ? 'swap-good' : 'swap-decent') : '';
                 return (
@@ -977,7 +979,7 @@ export default function Formation() {
               // Use fresh player data from team (lineup stores snapshots that can go stale)
               const player = lineupPlayer ? (players.find(p => p.name === lineupPlayer.name) || lineupPlayer) : null;
               const slotPos = getSlotPosition(pos.id);
-              const fit = player ? getPositionFit(player.position, slotPos) : null;
+              const fit = player ? getBestPositionFit(player, slotPos) : null;
               const baseOvr = (player?.overall || 0) + (player?.postInjuryBonus || 0);
               const adjOvr = player && fit ? Math.round(baseOvr * fit.factor) : baseOvr || undefined;
               const borderColor = fit ? FIT_COLORS[fit.level] : '#fff';
@@ -1094,14 +1096,14 @@ export default function Formation() {
                 .filter(p => !p.injured && !p.suspended)
                 .sort((a, b) => {
                   const slotPos = getSlotPosition(selectedSlot);
-                  const fitA = getPositionFit(a.position, slotPos);
-                  const fitB = getPositionFit(b.position, slotPos);
+                  const fitA = getBestPositionFit(a, slotPos);
+                  const fitB = getBestPositionFit(b, slotPos);
                   if (fitB.factor !== fitA.factor) return fitB.factor - fitA.factor;
                   return b.overall - a.overall;
                 })
                 .map(player => {
                   const slotPos = getSlotPosition(selectedSlot);
-                  const fit = getPositionFit(player.position, slotPos);
+                  const fit = getBestPositionFit(player, slotPos);
                   const fitClass = fit.level === 'perfect' ? 'fit-perfect' :
                                    fit.level === 'good' ? 'fit-good' :
                                    fit.level === 'decent' ? 'fit-decent' : '';
@@ -1171,8 +1173,8 @@ export default function Formation() {
               const best = players
                 .filter(p => !used.has(p.name) && !p.injured && !p.suspended)
                 .sort((a, b) => {
-                  const fitA = getPositionFit(a.position, slotPos);
-                  const fitB = getPositionFit(b.position, slotPos);
+                  const fitA = getBestPositionFit(a, slotPos);
+                  const fitB = getBestPositionFit(b, slotPos);
                   return (fitB.factor * b.overall) - (fitA.factor * a.overall);
                 })[0];
               if (best) { newLineup[pos.id] = best; used.add(best.name); }

@@ -5,6 +5,7 @@ import { useGame } from '../../context/GameContext';
 import { Check, Tag, ClipboardList, Bell, AlertCircle, Clock, Coins, Calendar, Cake, Flag, PenTool, UserMinus, CircleDollarSign, XCircle, X, Star } from 'lucide-react';
 import { FORM_STATES } from '../../game/formSystem';
 import { translatePosition, posToEN } from '../../game/positionNames';
+import { getSecondaryPositions } from '../../game/positionSystem';
 import { calculateMarketValue } from '../../game/globalTransferEngine';
 import './Plantilla.scss';
 
@@ -471,6 +472,15 @@ export default function Plantilla() {
                 <span className="pos" style={{ background: getPositionColor(player.position) }}>
                   {translatePosition(player.position)}
                 </span>
+                {(() => {
+                  const secs = getSecondaryPositions(player);
+                  if (secs.length === 0) return null;
+                  return (
+                    <span className="pos-secondary" title={t('squad.alsoPlays')}>
+                      {secs.map(s => translatePosition(s)).join('/')}
+                    </span>
+                  );
+                })()}
                 <div className="info">
                   <div className="name-row">
                     <span className="name">{player.name}</span>

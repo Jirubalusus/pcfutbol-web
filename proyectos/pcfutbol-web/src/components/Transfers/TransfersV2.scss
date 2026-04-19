@@ -547,9 +547,21 @@ $teal: #14b8a6;
           &[data-pos="RM"], &[data-pos="LM"] { 
             background: rgba($success, 0.3); color: $success; 
           }
-          &[data-pos="ST"], &[data-pos="CF"], &[data-pos="RW"], &[data-pos="LW"] { 
-            background: rgba($danger, 0.3); color: $danger; 
+          &[data-pos="ST"], &[data-pos="CF"], &[data-pos="RW"], &[data-pos="LW"] {
+            background: rgba($danger, 0.3); color: $danger;
           }
+        }
+
+        .position-secondary {
+          padding: 0.2rem 0.4rem;
+          margin-left: 0.35rem;
+          border-radius: 4px;
+          font-size: 0.6rem;
+          font-weight: 600;
+          letter-spacing: 0.04em;
+          background: rgba(255, 255, 255, 0.06);
+          color: var(--color-text-tertiary);
+          border: 1px dashed rgba(255, 255, 255, 0.18);
         }
 
         .overall {
@@ -1972,8 +1984,16 @@ $teal: #14b8a6;
           &[data-pos="CDM"], &[data-pos="CM"], &[data-pos="CAM"] { background: #2ecc7133; color: #2ecc71; }
           &[data-pos="RM"], &[data-pos="LM"] { background: #2ecc7133; color: #2ecc71; }
           &[data-pos="RW"], &[data-pos="LW"], &[data-pos="ST"], &[data-pos="CF"] { background: #e74c3c33; color: #e74c3c; }
+
+          &.position-badge--secondary {
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--color-text-tertiary);
+            border: 1px dashed rgba(255, 255, 255, 0.18);
+            font-size: 0.65rem;
+            margin-left: 0.4rem;
+          }
         }
-        
+
         .overall-badge {
           background: linear-gradient(135deg, $primary, #0066d1);
           padding: 0.25rem 0.6rem;

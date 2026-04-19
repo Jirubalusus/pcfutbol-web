@@ -1541,7 +1541,8 @@
     "physical": "Physique",
     "number": "Numéro",
     "myTeam": "Mon Équipe",
-    "average": "Moyenne"
+    "average": "Moyenne",
+    "alsoPlays": "Joue aussi"
   },
   "saveSlots": {
     "back": "Retour",

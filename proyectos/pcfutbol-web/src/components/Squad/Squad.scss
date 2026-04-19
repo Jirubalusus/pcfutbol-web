@@ -171,6 +171,12 @@
         .injury-tag {
           color: var(--color-danger);
         }
+
+        .player-secondary {
+          color: var(--color-text-secondary);
+          font-weight: 600;
+          letter-spacing: 0.02em;
+        }
       }
     }
 

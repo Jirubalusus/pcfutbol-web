@@ -1540,7 +1540,8 @@
     "physical": "Fásico",
     "number": "Dorsal",
     "myTeam": "Minha Equipe",
-    "average": "Mádia"
+    "average": "Mádia",
+    "alsoPlays": "Também joga"
   },
   "saveSlots": {
     "back": "Voltar",

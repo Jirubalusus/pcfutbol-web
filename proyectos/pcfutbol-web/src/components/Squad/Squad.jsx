@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { HeartPulse, X, ArrowLeft } from 'lucide-react';
 import { useGame } from '../../context/GameContext';
 import { translatePosition } from '../../game/positionNames';
+import { getSecondaryPositions } from '../../game/positionSystem';
 import './Squad.scss';
 
 // Helper function to normalize positions
@@ -112,7 +113,18 @@ export default function Squad() {
           <div className="hero-badge">{translatePosition(p.position)}</div>
           <div className="hero-info">
             <h1>{p.name}</h1>
-            <span className="hero-pos">{getPositionName(p.position)}</span>
+            <span className="hero-pos">
+              {getPositionName(p.position)}
+              {(() => {
+                const secs = getSecondaryPositions(p);
+                if (secs.length === 0) return null;
+                return (
+                  <span className="hero-secondary">
+                    {' · '}{t('squad.alsoPlays')}: {secs.map(s => translatePosition(s)).join(' / ')}
+                  </span>
+                );
+              })()}
+            </span>
           </div>
           <div className="hero-overall">
             <span className="number">{p.overall}</span>
@@ -271,6 +283,15 @@ export default function Squad() {
                 <span className="player-name">{player.name}</span>
                 <span className="player-meta">
                   {getPositionName(player.position)}
+                  {(() => {
+                    const secs = getSecondaryPositions(player);
+                    if (secs.length === 0) return null;
+                    return (
+                      <span className="player-secondary" title={t('squad.alsoPlays')}>
+                        {' · '}{secs.map(s => translatePosition(s)).join(' / ')}
+                      </span>
+                    );
+                  })()}
                   {isInjured && <span className="injury-tag"> · <HeartPulse size={12} /> {player.injuryWeeksLeft}s</span>}
                 </span>
               </div>
@@ -295,6 +316,15 @@ export default function Squad() {
             <span className="pos" style={{ background: getPositionColor(selectedPlayer.position) }}>
               {translatePosition(selectedPlayer.position)}
             </span>
+            {(() => {
+              const secs = getSecondaryPositions(selectedPlayer);
+              if (secs.length === 0) return null;
+              return (
+                <span className="panel-secondary" title={t('squad.alsoPlays')}>
+                  {secs.map(s => translatePosition(s)).join(' / ')}
+                </span>
+              );
+            })()}
           </div>
           <div className="panel-stats">
             {[

@@ -1540,7 +1540,8 @@
     "physical": "Physis",
     "number": "Rückennummer",
     "myTeam": "Mein Team",
-    "average": "Durchschnitt"
+    "average": "Durchschnitt",
+    "alsoPlays": "Spielt auch"
   },
   "saveSlots": {
     "back": "Zurück",

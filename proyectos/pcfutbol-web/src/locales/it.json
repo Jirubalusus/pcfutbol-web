@@ -1540,7 +1540,8 @@
     "physical": "Fisico",
     "number": "Numero",
     "myTeam": "La Mia Squadra",
-    "average": "Media"
+    "average": "Media",
+    "alsoPlays": "Gioca anche"
   },
   "saveSlots": {
     "back": "Indietro",

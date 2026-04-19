@@ -1620,7 +1620,8 @@
     "physical": "Physical",
     "number": "Number",
     "myTeam": "My Team",
-    "average": "Average"
+    "average": "Average",
+    "alsoPlays": "Also plays"
   },
   "mobileNav": {
     "home": "Home",

@@ -5,7 +5,8 @@ import i18next from 'i18next';
 
 import { useGame } from '../../context/GameContext';
 import { TutorialModal, useTutorial } from '../Tutorial/Tutorial';
-import { translatePosition } from '../../game/positionNames';
+import { translatePosition, posToEN } from '../../game/positionNames';
+import { getSecondaryPositions, getAllPlayablePositions } from '../../game/positionSystem';
 import CustomSelect from '../common/CustomSelect/CustomSelect';
 
 import {
@@ -232,7 +233,9 @@ export default function TransfersV2() {
 
         };
 
-        if (!posMap[filters.position]?.includes(p.position)) return false;
+        const wanted = posMap[filters.position] || [];
+        const playable = getAllPlayablePositions(p);
+        if (!playable.some(code => wanted.includes(code))) return false;
 
       }
 
@@ -925,6 +928,16 @@ function BuscarTab({ players, searchQuery, setSearchQuery, filters, setFilters, 
               <div className="card-header">
 
                 <span className="position" data-pos={player.position}>{translatePosition(player.position)}</span>
+
+                {(() => {
+                  const secs = getSecondaryPositions(player);
+                  if (secs.length === 0) return null;
+                  return (
+                    <span className="position-secondary" title={t('squad.alsoPlays')}>
+                      {secs.map(s => translatePosition(s)).join('/')}
+                    </span>
+                  );
+                })()}
 
                 <span className="overall">{player.overall}</span>
 
@@ -3572,6 +3585,16 @@ function PlayerModal({ player, onClose, budget, dispatch, myTeam, blockedPlayers
               <div className="card-top">
 
                 <span className="position-badge" data-pos={player.position}>{translatePosition(player.position)}</span>
+
+                {(() => {
+                  const secs = getSecondaryPositions(player);
+                  if (secs.length === 0) return null;
+                  return (
+                    <span className="position-badge position-badge--secondary" title={t('squad.alsoPlays')}>
+                      {secs.map(s => translatePosition(s)).join(' / ')}
+                    </span>
+                  );
+                })()}
 
                 <span className="overall-badge">{player.overall}</span>
 
