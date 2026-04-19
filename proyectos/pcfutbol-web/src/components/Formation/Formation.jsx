@@ -4,7 +4,7 @@ import { useGame } from '../../context/GameContext';
 import { useToast } from '../Toast/Toast';
 import { TutorialModal, useTutorial } from '../Tutorial/Tutorial';
 import { FORMATIONS, TACTICS, calculateTeamStrength } from '../../game/leagueEngine';
-import { getSlotPosition, FIT_COLORS, getBestPositionFit } from '../../game/positionSystem';
+import { getSlotPosition, FIT_COLORS, getBestPositionFit, getSecondaryPositions } from '../../game/positionSystem';
 import { translatePosition, posToEN } from '../../game/positionNames';
 import { FORM_STATES } from '../../game/formSystem';
 import { Shield, Scale, Swords, Target, Zap, CheckCircle2, Settings, Heart, AlertTriangle, Building2, TrendingUp, BarChart3, X, Check, HeartPulse, Square, Star, Trophy, Coins, Clock } from 'lucide-react';
@@ -13,6 +13,11 @@ import PositionRoleIcon from '../common/PositionRoleIcon';
 import './Formation.scss';
 
 // Posiciones del campo para cada formación
+const formatPlayablePositions = (player) => {
+  const secondary = getSecondaryPositions(player).map(pos => translatePosition(pos));
+  return secondary.join('/');
+};
+
 const FORMATION_POSITIONS = {
   '4-3-3': [
     { id: 'GK', x: 50, y: 90 },
@@ -831,7 +836,8 @@ export default function Formation() {
                   })}
                   <span className="col-role"><PositionRoleIcon position={slotPos || player.position} /></span>
                   <span className="col-pos" style={getPositionStyle(slotPos || player.position)}>
-                    {translatePosition(slotPos || player.position)}
+                    <span className="col-pos__primary">{translatePosition(slotPos || player.position)}</span>
+                    <span className="col-pos__secondary">{formatPlayablePositions(player)}</span>
                   </span>
                 </div>
               )})}
@@ -893,7 +899,8 @@ export default function Formation() {
                   })}
                   <span className="col-role"><PositionRoleIcon position={player.position} /></span>
                   <span className="col-pos" style={getPositionStyle(player.position)}>
-                    {translatePosition(player.position)}
+                    <span className="col-pos__primary">{translatePosition(player.position)}</span>
+                    <span className="col-pos__secondary">{formatPlayablePositions(player)}</span>
                   </span>
                 </div>
               )})}
@@ -955,7 +962,8 @@ export default function Formation() {
                   })}
                   <span className="col-role"><PositionRoleIcon position={player.position} /></span>
                   <span className="col-pos" style={getPositionStyle(player.position)}>
-                    {translatePosition(player.position)}
+                    <span className="col-pos__primary">{translatePosition(player.position)}</span>
+                    <span className="col-pos__secondary">{formatPlayablePositions(player)}</span>
                   </span>
                 </div>
               )})}

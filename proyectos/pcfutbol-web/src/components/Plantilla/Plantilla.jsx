@@ -514,7 +514,18 @@ export default function Plantilla() {
                       </span>
                     )}
                   </div>
-                  <span className="meta">{player.overall} OVR · {player.age} {t('plantilla.years')}</span>
+                  <span className="meta">
+                    {player.overall} OVR · {player.age} {t('plantilla.years')}
+                    {(() => {
+                      const secs = getSecondaryPositions(player);
+                      if (secs.length === 0) return null;
+                      return (
+                        <span className="meta-secondary">
+                          {' · '}{secs.map(s => translatePosition(s)).join('/')}
+                        </span>
+                      );
+                    })()}
+                  </span>
                 </div>
               </div>
 

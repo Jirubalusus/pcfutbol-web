@@ -422,12 +422,21 @@ $blue: #0a84ff;
           }
 
           .meta {
-            display: none;
+            display: block;
+            font-size: 0.66rem;
+            color: var(--color-text-secondary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            .meta-secondary {
+              display: inline;
+              color: var(--color-text-tertiary);
+              font-weight: 600;
+            }
 
             @media (min-width: 769px) {
-              display: block;
               font-size: 0.75rem;
-              color: var(--color-text-secondary);
             }
           }
         }
@@ -557,14 +566,38 @@ $blue: #0a84ff;
       grid-template-columns: 36px 1fr 42px 100px 80px 100px;
       padding: 0.4rem 0.6rem;
 
+      .player-main {
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
+        grid-column: 1 / span 2;
+        min-width: 0;
+      }
+
       .player-main .pos {
         width: 36px;
         height: 26px;
         font-size: 0.7rem;
+        flex-shrink: 0;
+      }
+
+      .player-main .pos-secondary {
+        display: none;
+      }
+
+      .player-main .info {
+        min-width: 0;
       }
 
       .player-main .info .name {
         font-size: 0.82rem;
+      }
+
+      .player-main .info .meta-secondary {
+        display: inline;
+        color: var(--color-text-tertiary);
+        font-size: 0.68rem;
+        font-weight: 600;
       }
 
       .player-ovr-badge {
