@@ -213,6 +213,23 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
   }
 
   const selectedCountryData = selectedCountry ? countries.find(c => c.id === selectedCountry) : null;
+  const desktopCountryGroups = [
+    {
+      key: 'europe',
+      label: `🌍 ${t('teamSelection.continentEurope')}`,
+      items: countries.filter(c => COUNTRY_DATA[c.id]?.continent === 'europe')
+    },
+    {
+      key: 'southamerica',
+      label: `🌎 ${t('teamSelection.continentSouthAmerica')}`,
+      items: countries.filter(c => COUNTRY_DATA[c.id]?.continent === 'southamerica')
+    },
+    {
+      key: 'world',
+      label: `🌏 ${t('teamSelection.continentRestOfWorld')}`,
+      items: countries.filter(c => COUNTRY_DATA[c.id]?.continent === 'world')
+    }
+  ].filter(group => group.items.length > 0);
 
   // Desktop: 3D globe with HTML markers
   return (
@@ -248,6 +265,28 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
           </div>
         </div>
       )}
+
+      <div className="globe-quick-select">
+        {desktopCountryGroups.map(group => (
+          <div key={group.key} className="globe-quick-select__group">
+            <div className="globe-quick-select__header">{group.label}</div>
+            <div className="globe-quick-select__chips">
+              {group.items.map(country => (
+                <button
+                  key={country.id}
+                  type="button"
+                  className={`globe-quick-select__chip ${selectedCountry === country.id ? 'selected' : ''}`}
+                  onClick={() => onCountryClick(country.id)}
+                >
+                  <span className={`globe-quick-select__flag ${country.flagVariant === 'code' ? 'globe-quick-select__flag--code' : ''}`.trim()}>{country.flag}</span>
+                  <span className="globe-quick-select__name">{country.name || (country.nameKey ? t(country.nameKey) : country.id)}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
       <p className="globe-hint">{t('teamSelection.globeHint')}</p>
     </div>
   );
