@@ -64,6 +64,7 @@ import FootballIcon from '../icons/FootballIcon';
 import WorldMap from './WorldMap';
 import TeamCrest from '../TeamCrest/TeamCrest';
 import './TeamSelection.scss';
+import './_preseason_schedule_override.scss';
 import './WorldMap.scss';
 
 const EUROPEAN_COUNTRIES = [
@@ -330,6 +331,7 @@ export default function TeamSelection() {
   const [searchTerm, setSearchTerm] = useState('');
   const [showPreseason, setShowPreseason] = useState(false);
   const [selectedPreseason, setSelectedPreseason] = useState(null);
+  const [selectedPreseasonWeeks, setSelectedPreseasonWeeks] = useState({});
   const [preseasonOptions, setPreseasonOptions] = useState([]);
   
   // Determinar si la liga seleccionada tiene grupos
@@ -505,6 +507,19 @@ export default function TeamSelection() {
     ...getRomaniaSuperligaTeams(), ...getHungaryNBITeams()
   ];
 
+  const buildPreseasonFromWeeks = (weeksMap, options) => {
+    const weeks = Array.from({ length: 5 }, (_, i) => i + 1).map((week) => {
+      const selectedOptionIndex = weeksMap[week] ?? 0;
+      return options?.[selectedOptionIndex]?.matches?.find((match) => match.week === week);
+    }).filter(Boolean);
+
+    return weeks.length === 5 ? {
+      id: `custom_${Object.values(weeksMap).join('_')}`,
+      name: 'Custom preseason',
+      matches: weeks
+    } : null;
+  };
+
   const handleShowPreseason = async () => {
     if (!selectedTeam || !selectedLeague) return;
     
@@ -512,6 +527,9 @@ export default function TeamSelection() {
     const allTeams = getAllTeamsForPreseason();
     const options = generatePreseasonOptions(allTeams, selectedTeam, selectedLeague);
     setPreseasonOptions(options);
+    const initialWeeks = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+    setSelectedPreseasonWeeks(initialWeeks);
+    setSelectedPreseason(buildPreseasonFromWeeks(initialWeeks, options));
     setShowPreseason(true);
   };
   
@@ -1241,7 +1259,7 @@ export default function TeamSelection() {
       {/* Modal de Pretemporada */}
       {showPreseason && (
         <div className="preseason-modal-overlay">
-          <div className="preseason-modal">
+          <div className="preseason-modal preseason-modal--schedule">
             <div className="preseason-header">
               <Calendar size={32} className="header-icon" />
               <div>
@@ -1249,41 +1267,62 @@ export default function TeamSelection() {
                 <p>{t('teamSelection.chooseFriendlyPackage')}</p>
               </div>
             </div>
+
+            <div className="preseason-summary-card">
+              <h3>{t('teamSelection.preseasonSummaryTitle', { defaultValue: 'Calendario elegido' })}</h3>
+              <ul>
+                {selectedPreseason?.matches?.map((match) => (
+                  <li key={match.id}>
+                    <span>{t('teamSelection.weekLabel', { week: match.week, defaultValue: `Semana ${match.week}` })}</span>
+                    <strong>{match.opponent?.name || 'TBD'}</strong>
+                  </li>
+                ))}
+              </ul>
+              <div className="presentation-note">
+                <Sparkles size={14} /> {t('teamSelection.presentationHomeNote', { defaultValue: 'El último amistoso será la presentación en casa.' })}
+              </div>
+            </div>
             
-            <div className="preseason-options">
-              {preseasonOptions.map(option => {
-                const avgOvr = option.matches.length > 0
-                  ? Math.round(option.matches.reduce((s, m) => s + (m.opponent?.reputation || 0), 0) / option.matches.length)
-                  : 0;
+            <div className="preseason-weeks">
+              {Array.from({ length: 5 }, (_, i) => i + 1).map((week) => {
+                const choices = preseasonOptions.map((option, optionIndex) => ({
+                  optionIndex,
+                  match: option.matches?.find((m) => m.week === week)
+                })).filter(entry => entry.match);
+                const selectedOptionIndex = selectedPreseasonWeeks[week] ?? 0;
+
                 return (
-                  <div 
-                    key={option.id}
-                    className={`preseason-card ${selectedPreseason?.id === option.id ? 'selected' : ''}`}
-                    onClick={() => setSelectedPreseason(option)}
-                  >
-                    <div className="card-header">
-                      <FootballIcon size={20} />
-                      <h3>{option.name}</h3>
-                      <span className="avg-ovr">{t('teamSelection.avgOvr')}: {avgOvr}</span>
+                  <div key={week} className="preseason-week-card">
+                    <div className="week-header">
+                      <div>
+                        <h3>{t('teamSelection.weekLabel', { week, defaultValue: `Semana ${week}` })}</h3>
+                        <p>{week === 5 ? t('teamSelection.presentationSubtitle', { defaultValue: 'Último amistoso en casa' }) : t('teamSelection.chooseOneRival', { defaultValue: 'Elige un rival' })}</p>
+                      </div>
+                      <span className="week-badge">{week === 5 ? t('teamSelection.presentation', { defaultValue: 'Presentación' }) : t('teamSelection.pickOne', { defaultValue: 'Elige 1' })}</span>
                     </div>
-                    
-                    <div className="matches-preview">
-                      <ul>
-                        {option.matches.map((match, idx) => (
-                          <li key={idx}>
-                            <span className="match-location">
-                              {match.isHome ? <Home size={14} /> : <Plane size={14} />}
-                            </span>
-                            <span className="opponent-name">{match.opponent?.name || 'TBD'}</span>
-                            <span className="opponent-ovr">{match.opponent?.reputation || '??'} OVR</span>
-                            {match.isPresentationMatch && (
-                              <span className="presentation-badge">
-                                <Sparkles size={12} /> {t('teamSelection.presentation')}
-                              </span>
-                            )}
-                          </li>
-                        ))}
-                      </ul>
+
+                    <div className="week-matches">
+                      {choices.map(({ optionIndex, match }) => (
+                        <button
+                          type="button"
+                          key={`${week}-${optionIndex}`}
+                          className={`friendly-choice ${selectedOptionIndex === optionIndex ? 'selected' : ''}`}
+                          onClick={() => {
+                            const nextWeeks = { ...selectedPreseasonWeeks, [week]: optionIndex };
+                            setSelectedPreseasonWeeks(nextWeeks);
+                            setSelectedPreseason(buildPreseasonFromWeeks(nextWeeks, preseasonOptions));
+                          }}
+                        >
+                          <span className="friendly-main">
+                            <span className="friendly-name">{match.opponent?.name || 'TBD'}</span>
+                            <span className="friendly-meta">{match.isHome ? t('teamSelection.homeMatch', { defaultValue: 'En casa' }) : t('teamSelection.awayMatch', { defaultValue: 'Fuera' })} · {match.opponent?.reputation || '??'} OVR</span>
+                          </span>
+                          <span className="friendly-tags">
+                            {match.isPresentationMatch && <span className="presentation-badge"><Sparkles size={12} /> {t('teamSelection.presentation', { defaultValue: 'Presentación' })}</span>}
+                            <span className="pick-badge">{selectedOptionIndex === optionIndex ? t('common.selected', { defaultValue: 'Elegido' }) : t('common.choose', { defaultValue: 'Elegir' })}</span>
+                          </span>
+                        </button>
+                      ))}
                     </div>
                   </div>
                 );
@@ -1296,6 +1335,7 @@ export default function TeamSelection() {
                 onClick={() => {
                   setShowPreseason(false);
                   setSelectedPreseason(null);
+                  setSelectedPreseasonWeeks({});
                 }}
               >
                 <ArrowLeft size={16} /> {t('common.back')}

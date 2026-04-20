@@ -1,0 +1,206 @@
+.preseason-modal--schedule {
+  max-width: 960px;
+}
+
+.preseason-summary-card {
+  background: linear-gradient(180deg, rgba(124, 217, 146, 0.1), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(124, 217, 146, 0.18);
+  border-radius: 18px;
+  padding: 16px;
+  margin-bottom: 18px;
+
+  h3 {
+    margin: 0 0 10px;
+    color: #fff;
+    font-size: 1rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 10px;
+    display: grid;
+    gap: 8px;
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.9rem;
+
+      strong { color: #fff; }
+    }
+  }
+
+  .presentation-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: rgba(243, 201, 107, 0.1);
+    border: 1px solid rgba(243, 201, 107, 0.2);
+    color: #edd38d;
+    font-size: 0.85rem;
+  }
+}
+
+.preseason-weeks {
+  display: grid;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.preseason-week-card {
+  background: var(--color-glass);
+  border: 1px solid var(--color-glass-border);
+  border-radius: 18px;
+  padding: 14px;
+}
+
+.week-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 12px;
+
+  h3 {
+    margin: 0;
+    color: #fff;
+    font-size: 1rem;
+  }
+
+  p {
+    margin: 4px 0 0;
+    color: #9ca3af;
+    font-size: 0.82rem;
+  }
+}
+
+.week-badge {
+  flex-shrink: 0;
+  padding: 6px 8px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #9ca3af;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.week-matches {
+  display: grid;
+  gap: 10px;
+}
+
+.friendly-choice {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.03);
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+
+  &.selected {
+    background: linear-gradient(90deg, rgba(124,217,146,0.12), rgba(255,255,255,0.02));
+    border-color: rgba(124,217,146,0.22);
+    box-shadow: inset 3px 0 0 #7cd992;
+  }
+}
+
+.friendly-main {
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+}
+
+.friendly-name {
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.friendly-meta {
+  color: #9ca3af;
+  font-size: 0.78rem;
+}
+
+.friendly-tags {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.pick-badge,
+.presentation-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 999px;
+  padding: 5px 8px;
+  font-size: 0.66rem;
+  font-weight: 800;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.pick-badge {
+  background: rgba(255,255,255,0.05);
+  color: #e5e7eb;
+}
+
+.friendly-choice.selected .pick-badge {
+  background: rgba(124,217,146,0.12);
+  border-color: rgba(124,217,146,0.2);
+  color: #7cd992;
+}
+
+.presentation-badge {
+  background: rgba(243,201,107,0.1);
+  border-color: rgba(243,201,107,0.18);
+  color: #edd38d;
+}
+
+@media (max-width: 768px) {
+  .preseason-modal--schedule {
+    padding: 18px;
+    max-height: 100vh;
+    border-radius: 18px;
+  }
+
+  .week-header,
+  .friendly-choice {
+    align-items: flex-start;
+  }
+
+  .friendly-choice {
+    flex-direction: column;
+  }
+
+  .friendly-tags {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .preseason-actions {
+    position: sticky;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(20,24,36,0.15), rgba(20,24,36,0.96));
+    padding-top: 10px;
+    margin-top: 8px;
+  }
+}
