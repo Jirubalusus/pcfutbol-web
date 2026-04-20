@@ -469,18 +469,23 @@ export default function Plantilla() {
               }}
             >
               <div className="player-main">
-                <span className="pos" style={{ background: getPositionColor(player.position) }}>
-                  {translatePosition(player.position)}
+                <span className="pos-wrap">
+                  <span className="pos" style={{ background: getPositionColor(player.position) }}>
+                    {translatePosition(player.position)}
+                  </span>
+                  {(() => {
+                    const secs = getSecondaryPositions(player);
+                    if (secs.length === 0) return null;
+                    const labels = secs.map(s => translatePosition(s));
+                    return (
+                      <span className="pos-secondary" title={`${t('squad.alsoPlays')}: ${labels.join(', ')}`}>
+                        {labels.map(lbl => (
+                          <span key={lbl} className="pos-secondary__item">{lbl}</span>
+                        ))}
+                      </span>
+                    );
+                  })()}
                 </span>
-                {(() => {
-                  const secs = getSecondaryPositions(player);
-                  if (secs.length === 0) return null;
-                  return (
-                    <span className="pos-secondary" title={t('squad.alsoPlays')}>
-                      {secs.map(s => translatePosition(s)).join('/')}
-                    </span>
-                  );
-                })()}
                 <div className="info">
                   <div className="name-row">
                     <span className="name">{player.name}</span>
@@ -516,15 +521,6 @@ export default function Plantilla() {
                   </div>
                   <span className="meta">
                     {player.overall} OVR · {player.age} {t('plantilla.years')}
-                    {(() => {
-                      const secs = getSecondaryPositions(player);
-                      if (secs.length === 0) return null;
-                      return (
-                        <span className="meta-secondary">
-                          {' · '}{secs.map(s => translatePosition(s)).join('/')}
-                        </span>
-                      );
-                    })()}
                   </span>
                 </div>
               </div>

@@ -13,9 +13,8 @@ import PositionRoleIcon from '../common/PositionRoleIcon';
 import './Formation.scss';
 
 // Posiciones del campo para cada formación
-const formatPlayablePositions = (player) => {
-  const secondary = getSecondaryPositions(player).map(pos => translatePosition(pos));
-  return secondary.join('/');
+const getSecondaryPositionLabels = (player) => {
+  return getSecondaryPositions(player).map(pos => translatePosition(pos));
 };
 
 const FORMATION_POSITIONS = {
@@ -837,7 +836,17 @@ export default function Formation() {
                   <span className="col-role"><PositionRoleIcon position={slotPos || player.position} /></span>
                   <span className="col-pos" style={getPositionStyle(slotPos || player.position)}>
                     <span className="col-pos__primary">{translatePosition(slotPos || player.position)}</span>
-                    <span className="col-pos__secondary">{formatPlayablePositions(player)}</span>
+                    {(() => {
+                      const labels = getSecondaryPositionLabels(player);
+                      if (labels.length === 0) return null;
+                      return (
+                        <span className="col-pos__secondary" title={`${t('squad.alsoPlays')}: ${labels.join(', ')}`}>
+                          {labels.map(lbl => (
+                            <span key={lbl} className="col-pos__secondary-item">{lbl}</span>
+                          ))}
+                        </span>
+                      );
+                    })()}
                   </span>
                 </div>
               )})}
@@ -900,7 +909,17 @@ export default function Formation() {
                   <span className="col-role"><PositionRoleIcon position={player.position} /></span>
                   <span className="col-pos" style={getPositionStyle(player.position)}>
                     <span className="col-pos__primary">{translatePosition(player.position)}</span>
-                    <span className="col-pos__secondary">{formatPlayablePositions(player)}</span>
+                    {(() => {
+                      const labels = getSecondaryPositionLabels(player);
+                      if (labels.length === 0) return null;
+                      return (
+                        <span className="col-pos__secondary" title={`${t('squad.alsoPlays')}: ${labels.join(', ')}`}>
+                          {labels.map(lbl => (
+                            <span key={lbl} className="col-pos__secondary-item">{lbl}</span>
+                          ))}
+                        </span>
+                      );
+                    })()}
                   </span>
                 </div>
               )})}
@@ -963,7 +982,17 @@ export default function Formation() {
                   <span className="col-role"><PositionRoleIcon position={player.position} /></span>
                   <span className="col-pos" style={getPositionStyle(player.position)}>
                     <span className="col-pos__primary">{translatePosition(player.position)}</span>
-                    <span className="col-pos__secondary">{formatPlayablePositions(player)}</span>
+                    {(() => {
+                      const labels = getSecondaryPositionLabels(player);
+                      if (labels.length === 0) return null;
+                      return (
+                        <span className="col-pos__secondary" title={`${t('squad.alsoPlays')}: ${labels.join(', ')}`}>
+                          {labels.map(lbl => (
+                            <span key={lbl} className="col-pos__secondary-item">{lbl}</span>
+                          ))}
+                        </span>
+                      );
+                    })()}
                   </span>
                 </div>
               )})}
