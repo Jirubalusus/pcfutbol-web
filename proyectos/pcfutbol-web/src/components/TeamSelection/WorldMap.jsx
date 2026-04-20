@@ -266,27 +266,6 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
         </div>
       )}
 
-      <div className="globe-quick-select">
-        {desktopCountryGroups.map(group => (
-          <div key={group.key} className="globe-quick-select__group">
-            <div className="globe-quick-select__header">{group.label}</div>
-            <div className="globe-quick-select__chips">
-              {group.items.map(country => (
-                <button
-                  key={country.id}
-                  type="button"
-                  className={`globe-quick-select__chip ${selectedCountry === country.id ? 'selected' : ''}`}
-                  onClick={() => onCountryClick(country.id)}
-                >
-                  <span className={`globe-quick-select__flag ${country.flagVariant === 'code' ? 'globe-quick-select__flag--code' : ''}`.trim()}>{country.flag}</span>
-                  <span className="globe-quick-select__name">{country.name || (country.nameKey ? t(country.nameKey) : country.id)}</span>
-                </button>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-
       <p className="globe-hint">{t('teamSelection.globeHint')}</p>
     </div>
   );
