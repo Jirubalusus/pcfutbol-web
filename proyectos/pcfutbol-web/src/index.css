@@ -1238,12 +1238,6 @@ body {
   color: #1e293b !important;
 }
 
-/* --- Loading Screen --- */
-[data-theme="modern"] .loading-screen {
-  background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 20%, #f0f9ff 40%, #faf5ff 60%, #fdf2f8 80%, #f0fdf4 100%) !important;
-  background-image: none !important;
-}
-
 /* --- Generic Modal Overlays --- */
 [data-theme="modern"] .modal-overlay,
 [data-theme="modern"] .overlay,
@@ -1498,37 +1492,6 @@ button {
 .loading {
   opacity: 0.5;
   pointer-events: none;
-}
-
-/* Loading screen - PS5 Style */
-.loading-screen {
-  min-height: 100vh;
-  min-height: 100dvh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--color-bg-primary);
-  background-image: 
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0, 102, 255, 0.15) 0%, transparent 50%);
-}
-
-.loading-content {
-  text-align: center;
-  animation: fadeIn 0.6s var(--transition-normal);
-}
-
-.loading-content h1 {
-  font-size: 5rem;
-  margin: 0 0 1.5rem 0;
-  animation: pulse 2s ease-in-out infinite;
-}
-
-.loading-content p {
-  color: var(--color-text-secondary);
-  font-size: 1.1rem;
-  margin: 0;
-  font-weight: 500;
-  letter-spacing: 0.05em;
 }
 
 /* Disable hover effects on touch devices */
@@ -1907,12 +1870,6 @@ button {
       radial-gradient(ellipse 80% 50% at 50% -20%, rgba(245,158,11,0.06) 0%, transparent 50%),
       radial-gradient(ellipse 60% 40% at 100% 100%, rgba(245,158,11,0.04) 0%, transparent 50%),
       #f0f4f8 !important;
-  }
-
-  /* Loading screen */
-  .loading-screen {
-    background: #f0f4f8 !important;
-    background-image: none !important;
   }
 
   /* Custom select dropdowns */

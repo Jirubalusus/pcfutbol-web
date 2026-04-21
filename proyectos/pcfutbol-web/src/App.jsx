@@ -8,6 +8,7 @@ import ErrorBoundary from './components/ErrorBoundary';
 import NotificationCenter from './components/Notifications/NotificationCenter';
 import MainMenu from './components/MainMenu/MainMenu';
 import NicknameModal from './components/NicknameModal/NicknameModal';
+import PageLoader from './components/common/PageLoader';
 import { useAudioManager } from './hooks/useAudioManager';
 import { useSoundEffects } from './hooks/useSoundEffects';
 import { checkPremiumStatus } from './services/purchaseService';
@@ -75,14 +76,7 @@ function GameRouter() {
   }, [playClick, playToggle]);
   
   if (!state.loaded || authLoading) {
-    return (
-      <div className="loading-screen">
-        <div className="loading-content">
-          <h1>⚽</h1>
-          <p>Cargando...</p>
-        </div>
-      </div>
-    );
+    return <PageLoader label="Cargando" />;
   }
   
   const showNotifications = state.gameStarted && state.currentScreen === 'office';
@@ -133,37 +127,35 @@ function GameRouter() {
     }
   };
 
-  const getLoadingMessage = () => {
+  const getLoadingLabel = () => {
     if (state.currentScreen === 'office' && state.settings?.cityMode3D && !state._cityBypass) {
-      return { icon: '🏙️', text: 'Cargando ciudad...' };
+      return 'Cargando ciudad';
     }
 
-    const loadingMessages = {
-      office: { icon: '🏢', text: 'Cargando oficina...' },
-      contrarreloj_setup: { icon: '⏱️', text: 'Cargando contrarreloj...' },
-      contrarreloj_end: { icon: '🏁', text: 'Cargando resultados...' },
-      ranking: { icon: '🏆', text: 'Cargando ranking...' },
-      ranked_lobby: { icon: '🎯', text: 'Cargando lobby...' },
-      ranked_match: { icon: '⚔️', text: 'Cargando partido ranked...' },
-      ranked_draft: { icon: '🃏', text: 'Cargando draft...' },
-      ranked_leaderboard: { icon: '📊', text: 'Cargando clasificación...' },
-      promanager_setup: { icon: '💼', text: 'Cargando Pro Manager...' },
-      promanager_season_end: { icon: '📈', text: 'Cargando fin de temporada...' },
-      glory_menu: { icon: '🌟', text: 'Cargando Glory Mode...' },
-      glory_setup: { icon: '⚙️', text: 'Cargando configuración...' },
-      worldcup_setup: { icon: '🌍', text: 'Cargando Mundial...' },
-      worldcup: { icon: '🌍', text: 'Cargando Mundial...' }
+    const labels = {
+      office: 'Cargando oficina',
+      contrarreloj_setup: 'Cargando contrarreloj',
+      contrarreloj_end: 'Cargando resultados',
+      ranking: 'Cargando ranking',
+      ranked_lobby: 'Cargando lobby',
+      ranked_match: 'Cargando partido',
+      ranked_draft: 'Cargando draft',
+      ranked_leaderboard: 'Cargando clasificación',
+      promanager_setup: 'Cargando Pro Manager',
+      promanager_season_end: 'Cargando fin de temporada',
+      glory_menu: 'Cargando Glory Mode',
+      glory_setup: 'Cargando configuración',
+      worldcup_setup: 'Cargando Mundial',
+      worldcup: 'Cargando Mundial'
     };
 
-    return loadingMessages[state.currentScreen] || { icon: '⚽', text: 'Cargando...' };
+    return labels[state.currentScreen] || 'Cargando';
   };
-
-  const loadingState = getLoadingMessage();
 
   return (
     <>
       {showNotifications && <NotificationCenter />}
-      <Suspense fallback={<div className="loading-screen"><div className="loading-content"><h1>{loadingState.icon}</h1><p>{loadingState.text}</p></div></div>}>
+      <Suspense fallback={<PageLoader label={getLoadingLabel()} />}>
         {renderScreen()}
       </Suspense>
     </>

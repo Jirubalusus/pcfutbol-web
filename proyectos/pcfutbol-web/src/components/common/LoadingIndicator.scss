@@ -1,61 +1,83 @@
 .loading-indicator {
-  --loader-size: 28px;
-  --loader-border: 2px;
+  --loader-size: 36px;
   --loader-accent: var(--color-accent, #6ee7b7);
-  --loader-surface: rgba(255, 255, 255, 0.08);
+  --loader-line: rgba(255, 255, 255, 0.14);
+  --loader-line-soft: rgba(255, 255, 255, 0.07);
+  --loader-spot: rgba(255, 255, 255, 0.78);
+  --loader-label: rgba(255, 255, 255, 0.72);
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 14px;
 
-  &--sm {
-    --loader-size: 18px;
-    --loader-border: 2px;
-  }
+  &--sm { --loader-size: 22px; }
+  &--md { --loader-size: 36px; }
+  &--lg { --loader-size: 56px; }
+  &--xl { --loader-size: 84px; }
 
-  &--md {
-    --loader-size: 28px;
-    --loader-border: 2px;
-  }
-
-  &--lg {
-    --loader-size: 42px;
-    --loader-border: 3px;
-  }
-
-  &__ring {
-    position: relative;
+  &__mark {
     width: var(--loader-size);
     height: var(--loader-size);
-    border-radius: 50%;
-    border: var(--loader-border) solid var(--loader-surface);
-    border-top-color: var(--loader-accent);
-    border-right-color: rgba(255, 255, 255, 0.32);
-    animation: loading-indicator-spin 0.85s linear infinite;
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.03), 0 6px 18px rgba(0, 0, 0, 0.18);
+    display: block;
+    overflow: visible;
   }
 
-  &__core {
-    position: absolute;
-    inset: 50%;
-    width: 26%;
-    height: 26%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.75);
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+  &__ring-outer,
+  &__ring-inner {
+    fill: none;
+    stroke-linecap: round;
+  }
+
+  &__ring-outer {
+    stroke: var(--loader-line);
+    stroke-width: 1.4;
+  }
+
+  &__ring-inner {
+    stroke: var(--loader-line-soft);
+    stroke-width: 0.8;
+  }
+
+  &__spot {
+    fill: var(--loader-spot);
+  }
+
+  &__sweep {
+    fill: none;
+    stroke: var(--loader-accent);
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-dasharray: 22 104;
+    transform-origin: 24px 24px;
+    animation: loading-indicator-sweep 1.15s cubic-bezier(0.55, 0.1, 0.45, 0.95) infinite;
   }
 
   &__label {
-    color: rgba(255, 255, 255, 0.82);
-    font-size: 0.9rem;
+    color: var(--loader-label);
+    font-size: 0.78rem;
     font-weight: 600;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
   }
 }
 
-@keyframes loading-indicator-spin {
-  to {
-    transform: rotate(360deg);
+/* Light themes: tone down the line + label for better contrast on pale backgrounds */
+[data-theme="modern"] .loading-indicator,
+[data-theme="glass"] .loading-indicator {
+  --loader-line: rgba(15, 23, 42, 0.18);
+  --loader-line-soft: rgba(15, 23, 42, 0.08);
+  --loader-spot: rgba(15, 23, 42, 0.55);
+  --loader-label: rgba(15, 23, 42, 0.62);
+}
+
+@keyframes loading-indicator-sweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading-indicator__sweep {
+    animation-duration: 2.4s;
   }
 }

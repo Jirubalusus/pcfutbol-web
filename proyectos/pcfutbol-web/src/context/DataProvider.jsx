@@ -4,6 +4,7 @@
 // ============================================================
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import LoadingIndicator from '../components/common/LoadingIndicator';
 
 const DataContext = createContext();
 
@@ -66,21 +67,19 @@ export function DataProvider({ children }) {
         <div className="loading-orb loading-orb--2"></div>
         
         <div className="loading-content">
-          <div className="loading-icon">⚽</div>
+          <div className="loading-mark"><LoadingIndicator size="xl" /></div>
 
           <h1 className="loading-title">PC GAFFER</h1>
           <p className="loading-subtitle">FOOTBALL MANAGER</p>
-          
+
           <div className="loading-bar-wrapper">
             <div className="loading-bar">
-              <div className="loading-progress" style={{ width: `${progress}%` }}>
-                <div className="loading-shimmer"></div>
-              </div>
+              <div className="loading-progress" style={{ width: `${progress}%` }} />
             </div>
-            <span className="loading-percent">{progress}%</span>
+            <span className="loading-percent">{Math.round(progress)}%</span>
           </div>
-          
-          <p className="loading-text">Cargando datos de equipos...</p>
+
+          <p className="loading-text">Cargando datos de equipos</p>
         </div>
 
         <p className="loading-version">v1.16</p>
@@ -136,33 +135,27 @@ export function DataProvider({ children }) {
             to { opacity: 1; transform: translateY(0); }
           }
 
-          .loading-icon {
-            font-size: 64px;
-            margin-bottom: 24px;
-            animation: iconPulse 2.5s ease-in-out infinite;
-          }
-          @keyframes iconPulse {
-            0%, 100% { transform: scale(1) translateY(0); }
-            50% { transform: scale(1.05) translateY(-6px); }
+          .loading-mark {
+            margin-bottom: 28px;
+            display: flex;
+            justify-content: center;
           }
 
           .loading-title {
-            font-size: 40px;
-            font-weight: 800;
+            font-size: 34px;
+            font-weight: 700;
             margin: 0;
-            letter-spacing: 6px;
-            background: linear-gradient(135deg, #ffffff 0%, #00d4ff 50%, #00ff88 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            letter-spacing: 7px;
+            color: rgba(255,255,255,0.92);
           }
 
           .loading-subtitle {
-            font-size: 11px;
+            font-size: 10px;
             letter-spacing: 8px;
-            color: rgba(0,212,255,0.5);
-            margin: 6px 0 0;
+            color: rgba(255,255,255,0.38);
+            margin: 8px 0 0;
             font-weight: 500;
+            text-transform: uppercase;
           }
 
           .loading-bar-wrapper {
@@ -181,36 +174,26 @@ export function DataProvider({ children }) {
           }
           .loading-progress {
             height: 100%;
-            background: linear-gradient(90deg, #00d4ff, #00ff88);
+            background: rgba(255,255,255,0.78);
             border-radius: 4px;
             transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-          }
-          .loading-shimmer {
-            position: absolute;
-            top: 0; left: -100%; right: 0; bottom: 0;
-            width: 200%;
-            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
-            animation: shimmer 1.8s ease-in-out infinite;
-          }
-          @keyframes shimmer {
-            0% { transform: translateX(-50%); }
-            100% { transform: translateX(50%); }
           }
           .loading-percent {
             font-size: 11px;
-            color: rgba(255,255,255,0.3);
+            color: rgba(255,255,255,0.42);
             font-variant-numeric: tabular-nums;
             min-width: 28px;
             text-align: right;
+            letter-spacing: 0.04em;
           }
 
           .loading-text {
-            margin-top: 20px;
-            color: rgba(255,255,255,0.35);
-            font-size: 13px;
-            letter-spacing: 0.5px;
+            margin-top: 22px;
+            color: rgba(255,255,255,0.42);
+            font-size: 11px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            font-weight: 600;
           }
 
           .loading-version {
