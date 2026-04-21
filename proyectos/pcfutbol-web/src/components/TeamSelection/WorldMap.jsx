@@ -213,23 +213,6 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
   }
 
   const selectedCountryData = selectedCountry ? countries.find(c => c.id === selectedCountry) : null;
-  const desktopCountryGroups = [
-    {
-      key: 'europe',
-      label: `🌍 ${t('teamSelection.continentEurope')}`,
-      items: countries.filter(c => COUNTRY_DATA[c.id]?.continent === 'europe')
-    },
-    {
-      key: 'southamerica',
-      label: `🌎 ${t('teamSelection.continentSouthAmerica')}`,
-      items: countries.filter(c => COUNTRY_DATA[c.id]?.continent === 'southamerica')
-    },
-    {
-      key: 'world',
-      label: `🌏 ${t('teamSelection.continentRestOfWorld')}`,
-      items: countries.filter(c => COUNTRY_DATA[c.id]?.continent === 'world')
-    }
-  ].filter(group => group.items.length > 0);
 
   // Desktop: 3D globe with HTML markers
   return (
