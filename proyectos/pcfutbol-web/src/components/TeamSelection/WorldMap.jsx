@@ -90,6 +90,12 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
   useEffect(() => {
     if (globeEl.current) {
       globeEl.current.pointOfView({ lat: 48, lng: 5, altitude: 2.0 }, 0);
+      const material = globeEl.current.globeMaterial?.();
+      if (material) {
+        material.emissive.set('#20486d');
+        material.emissiveIntensity = 0.85;
+        material.shininess = 0.9;
+      }
     }
   }, []);
 
