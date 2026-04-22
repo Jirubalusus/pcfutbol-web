@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useGame } from '../../context/GameContext';
 import { useAuth } from '../../context/AuthContext';
@@ -330,6 +330,31 @@ export default function TeamSelection() {
   const [showPreseason, setShowPreseason] = useState(false);
   const [selectedPreseason, setSelectedPreseason] = useState(null);
   const [preseasonOptions, setPreseasonOptions] = useState([]);
+  const [isMobileTeamLayout, setIsMobileTeamLayout] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return window.innerWidth <= 900;
+  });
+  const [mobileTeamsView, setMobileTeamsView] = useState('list');
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return undefined;
+
+    const mediaQuery = window.matchMedia('(max-width: 900px)');
+    const updateMobileLayout = (event) => {
+      const matches = event.matches ?? mediaQuery.matches;
+      setIsMobileTeamLayout(matches);
+      if (!matches) {
+        setMobileTeamsView('list');
+      } else if (selectedTeam) {
+        setMobileTeamsView('details');
+      }
+    };
+
+    updateMobileLayout(mediaQuery);
+    mediaQuery.addEventListener('change', updateMobileLayout);
+
+    return () => mediaQuery.removeEventListener('change', updateMobileLayout);
+  }, [selectedTeam]);
   
   // Determinar si la liga seleccionada tiene grupos
   const hasGroups = selectedLeague && LEAGUES_WITH_GROUPS.includes(selectedLeague);
@@ -400,6 +425,11 @@ export default function TeamSelection() {
   }, [teams, searchTerm]);
   
   const handleBack = () => {
+    if (step === 2 && isMobileTeamLayout && mobileTeamsView === 'details') {
+      setMobileTeamsView('list');
+      return;
+    }
+
     if (step === 1) {
       // Si hay país seleccionado, deseleccionarlo primero (especialmente útil en móvil)
       if (selectedCountry) {
@@ -431,11 +461,15 @@ export default function TeamSelection() {
   const handleSelectLeague = (leagueId) => {
     setSelectedLeague(leagueId);
     setSelectedGroup(null);
+    setSelectedTeam(null);
+    setMobileTeamsView('list');
     setStep(2); // Ir a paso 2 (grupos o equipos)
   };
 
   const handleSelectGroup = (groupId) => {
     setSelectedGroup(groupId);
+    setSelectedTeam(null);
+    setMobileTeamsView('list');
     // Se queda en step 2, pero ahora muestra equipos
   };
 
@@ -477,6 +511,9 @@ export default function TeamSelection() {
       }
     }
     setSelectedTeam(team);
+    if (isMobileTeamLayout) {
+      setMobileTeamsView('details');
+    }
   };
   
   // Función para obtener todos los equipos de todas las ligas
@@ -999,6 +1036,9 @@ export default function TeamSelection() {
   };
   
   const currentContent = getCurrentStepContent();
+  const showMobileTeamTabs = currentContent === 'teams' && isMobileTeamLayout;
+  const teamsPanelClasses = `teams-panel${showMobileTeamTabs && mobileTeamsView === 'details' ? ' teams-panel--hidden-mobile' : ''}`;
+  const detailsPanelClasses = `details-panel${showMobileTeamTabs ? ' details-panel--mobile-tab' : ''}${showMobileTeamTabs && mobileTeamsView !== 'details' ? ' details-panel--hidden-mobile' : ''}`;
 
   // Calcular paso visual para el progress bar (simplificado)
   const getVisualStep = () => {
@@ -1138,8 +1178,28 @@ export default function TeamSelection() {
         {/* EQUIPOS */}
         {currentContent === 'teams' && (
           <div className="teams-layout">
+            {showMobileTeamTabs && (
+              <div className="teams-mobile-tabs">
+                <button
+                  type="button"
+                  className={`teams-mobile-tab ${mobileTeamsView === 'list' ? 'active' : ''}`}
+                  onClick={() => setMobileTeamsView('list')}
+                >
+                  {t('teamSelection.teamLabel')}
+                </button>
+                <button
+                  type="button"
+                  className={`teams-mobile-tab ${mobileTeamsView === 'details' ? 'active' : ''}`}
+                  onClick={() => selectedTeam && setMobileTeamsView('details')}
+                  disabled={!selectedTeam}
+                >
+                  Datos
+                </button>
+              </div>
+            )}
+
             {/* Panel izquierdo: Lista de equipos */}
-            <div className="teams-panel">
+            <div className={teamsPanelClasses}>
               <div className="panel-header">
                 <span className="league-name">
                   <span className={`league-country-flag ${selectedCountry?.flagVariant === 'code' ? 'league-country-flag--code' : ''}`.trim()}>{selectedCountry?.flag}</span> {LEAGUE_NAMES[selectedLeague]}
@@ -1191,7 +1251,7 @@ export default function TeamSelection() {
             </div>
             
             {/* Panel derecho: Detalles del equipo */}
-            <div className="details-panel">
+            <div className={detailsPanelClasses}>
               {selectedTeam ? (
                 <div className="team-details">
                   {/* Header del equipo */}
