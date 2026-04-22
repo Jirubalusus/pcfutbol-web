@@ -1112,7 +1112,14 @@
     "continentEurope": "Europe",
     "continentSouthAmerica": "Amérique du Sud",
     "continentRestOfWorld": "Reste du Monde",
-    "noTeamsAvailable": "Aucune équipe disponible pour cette ligue"
+    "noTeamsAvailable": "Aucune équipe disponible pour cette ligue",
+    "chooseCountry": "Choisis un pays",
+    "panelHelp": "Explore le globe et choisis un pays pour voir ses ligues",
+    "countrySummary_one": "{{leagues}} ligue · {{clubs}} clubs",
+    "countrySummary_other": "{{leagues}} ligues · {{clubs}} clubs",
+    "clubsCount_one": "{{count}} club",
+    "clubsCount_other": "{{count}} clubs",
+    "leaguesLabel": "Ligues disponibles"
   },
   "contrarreloj": {
     "title": "Mode Course Contre la Montre",

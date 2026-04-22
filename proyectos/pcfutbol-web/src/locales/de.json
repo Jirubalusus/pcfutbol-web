@@ -1111,7 +1111,14 @@
     "continentEurope": "Europa",
     "continentSouthAmerica": "Südamerika",
     "continentRestOfWorld": "Rest der Welt",
-    "noTeamsAvailable": "Keine Teams für diese Liga verfügbar"
+    "noTeamsAvailable": "Keine Teams für diese Liga verfügbar",
+    "chooseCountry": "Wähle ein Land",
+    "panelHelp": "Erkunde den Globus und wähle ein Land, um seine Ligen zu sehen",
+    "countrySummary_one": "{{leagues}} Liga · {{clubs}} Vereine",
+    "countrySummary_other": "{{leagues}} Ligen · {{clubs}} Vereine",
+    "clubsCount_one": "{{count}} Verein",
+    "clubsCount_other": "{{count}} Vereine",
+    "leaguesLabel": "Verfügbare Ligen"
   },
   "contrarreloj": {
     "title": "Zeitrennen-Modus",

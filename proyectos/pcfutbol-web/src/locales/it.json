@@ -1111,7 +1111,14 @@
     "continentEurope": "Europa",
     "continentSouthAmerica": "Sud America",
     "continentRestOfWorld": "Resto del Mondo",
-    "noTeamsAvailable": "Nessuna squadra disponibile per questa lega"
+    "noTeamsAvailable": "Nessuna squadra disponibile per questa lega",
+    "chooseCountry": "Scegli un paese",
+    "panelHelp": "Esplora il globo e seleziona un paese per vedere le sue leghe",
+    "countrySummary_one": "{{leagues}} lega · {{clubs}} club",
+    "countrySummary_other": "{{leagues}} leghe · {{clubs}} club",
+    "clubsCount_one": "{{count}} club",
+    "clubsCount_other": "{{count}} club",
+    "leaguesLabel": "Leghe disponibili"
   },
   "contrarreloj": {
     "title": "Modalit· Contro il Tempo",

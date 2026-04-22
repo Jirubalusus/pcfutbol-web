@@ -1169,7 +1169,14 @@
     "continentEurope": "Europe",
     "continentSouthAmerica": "South America",
     "continentRestOfWorld": "Rest of the World",
-    "noTeamsAvailable": "No teams available for this league"
+    "noTeamsAvailable": "No teams available for this league",
+    "chooseCountry": "Choose a country",
+    "panelHelp": "Explore the globe and pick a country to see its leagues",
+    "countrySummary_one": "{{leagues}} league · {{clubs}} clubs",
+    "countrySummary_other": "{{leagues}} leagues · {{clubs}} clubs",
+    "clubsCount_one": "{{count}} club",
+    "clubsCount_other": "{{count}} clubs",
+    "leaguesLabel": "Available leagues"
   },
   "contrarreloj": {
     "title": "Race Against Time Mode",

@@ -86,15 +86,15 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Center on Europe initially
+  // Center on Europe initially + sober material (deep charcoal, slight mint tint)
   useEffect(() => {
     if (globeEl.current) {
       globeEl.current.pointOfView({ lat: 48, lng: 5, altitude: 2.0 }, 0);
       const material = globeEl.current.globeMaterial?.();
       if (material) {
-        material.emissive.set('#20486d');
-        material.emissiveIntensity = 0.85;
-        material.shininess = 0.9;
+        material.emissive.set('#0e1a1e');
+        material.emissiveIntensity = 0.72;
+        material.shininess = 0.5;
       }
     }
   }, []);
@@ -151,7 +151,9 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
     return el;
   }, [onCountryClick]);
 
-  // Mobile view: grouped country list
+  const resolveName = useCallback((c) => c.nameKey ? t(c.nameKey) : (c.name || c.id), [t]);
+
+  // Mobile view: compact, sober grouped list (no globe)
   if (isMobile) {
     if (selectedCountry) {
       return null;
@@ -161,66 +163,47 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
     const saCountries = countries.filter(c => COUNTRY_DATA[c.id]?.continent === 'southamerica');
     const worldCountries = countries.filter(c => COUNTRY_DATA[c.id]?.continent === 'world');
 
+    const renderGroup = (label, list) => list.length > 0 && (
+      <section className="countries-mobile__group" key={label}>
+        <h4 className="countries-mobile__header">{label}</h4>
+        <div className="countries-mobile__items">
+          {list.map((country) => (
+            <button
+              key={country.id}
+              type="button"
+              className="countries-mobile__item"
+              onClick={() => onCountryClick(country.id)}
+            >
+              <span
+                className={`countries-mobile__flag ${country.flagVariant === 'code' ? 'countries-mobile__flag--code' : ''}`.trim()}
+                aria-hidden="true"
+              >
+                {country.flag}
+              </span>
+              <span className="countries-mobile__name">{resolveName(country)}</span>
+              <span className="countries-mobile__leagues">
+                {t('teamSelection.leaguesCount', { count: country.leagues.length })}
+              </span>
+            </button>
+          ))}
+        </div>
+      </section>
+    );
+
     return (
       <div className="countries-mobile">
-        <h3 className="countries-mobile__title"><GlobeIcon size={16} /> {t('teamSelection.mobileSelectCountry')}</h3>
-        <div className="countries-mobile__list">
-          {europeCountries.length > 0 && (
-            <>
-              <div className="countries-mobile__header">🌍 {t('teamSelection.continentEurope')}</div>
-              {europeCountries.map(country => (
-                <button
-                  key={country.id}
-                  className={`countries-mobile__item ${selectedCountry === country.id ? 'selected' : ''}`}
-                  onClick={() => onCountryClick(country.id)}
-                >
-                  <span className={`countries-mobile__flag ${country.flagVariant === 'code' ? 'countries-mobile__flag--code' : ''}`.trim()}>{country.flag}</span>
-                  <span className="countries-mobile__name">{country.name}</span>
-                  <span className="countries-mobile__leagues">{t('teamSelection.leaguesCount', { count: country.leagues.length })}</span>
-                </button>
-              ))}
-            </>
-          )}
-          {saCountries.length > 0 && (
-            <>
-              <div className="countries-mobile__header">🌎 {t('teamSelection.continentSouthAmerica')}</div>
-              {saCountries.map(country => (
-                <button
-                  key={country.id}
-                  className={`countries-mobile__item ${selectedCountry === country.id ? 'selected' : ''}`}
-                  onClick={() => onCountryClick(country.id)}
-                >
-                  <span className={`countries-mobile__flag ${country.flagVariant === 'code' ? 'countries-mobile__flag--code' : ''}`.trim()}>{country.flag}</span>
-                  <span className="countries-mobile__name">{country.name}</span>
-                  <span className="countries-mobile__leagues">{t('teamSelection.leaguesCount', { count: country.leagues.length })}</span>
-                </button>
-              ))}
-            </>
-          )}
-          {worldCountries.length > 0 && (
-            <>
-              <div className="countries-mobile__header">🌏 {t('teamSelection.continentRestOfWorld')}</div>
-              {worldCountries.map(country => (
-                <button
-                  key={country.id}
-                  className={`countries-mobile__item ${selectedCountry === country.id ? 'selected' : ''}`}
-                  onClick={() => onCountryClick(country.id)}
-                >
-                  <span className={`countries-mobile__flag ${country.flagVariant === 'code' ? 'countries-mobile__flag--code' : ''}`.trim()}>{country.flag}</span>
-                  <span className="countries-mobile__name">{country.name}</span>
-                  <span className="countries-mobile__leagues">{t('teamSelection.leaguesCount', { count: country.leagues.length })}</span>
-                </button>
-              ))}
-            </>
-          )}
+        <div className="countries-mobile__intro">
+          <GlobeIcon size={14} />
+          <span>{t('teamSelection.mobileSelectCountry')}</span>
         </div>
+        {renderGroup(t('teamSelection.continentEurope'), europeCountries)}
+        {renderGroup(t('teamSelection.continentSouthAmerica'), saCountries)}
+        {renderGroup(t('teamSelection.continentRestOfWorld'), worldCountries)}
       </div>
     );
   }
 
-  const selectedCountryData = selectedCountry ? countries.find(c => c.id === selectedCountry) : null;
-
-  // Desktop: 3D globe with HTML markers
+  // Desktop: 3D globe with HTML markers — no duplicate selection card (panel handles it)
   return (
     <div className="globe-wrapper">
       <Globe
@@ -229,33 +212,17 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
         height={size}
         globeImageUrl="/textures/earth-night.jpg"
         backgroundColor="rgba(0,0,0,0)"
-
-        // HTML markers — large clickable areas
         htmlElementsData={markersData}
         htmlLat="lat"
         htmlLng="lng"
         htmlAltitude={0.03}
         htmlElement={createMarkerElement}
         htmlTransitionDuration={300}
-
-        atmosphereColor="lightskyblue"
-        atmosphereAltitude={0.15}
+        atmosphereColor="#8fb5d1"
+        atmosphereAltitude={0.12}
       />
-      {selectedCountryData && (
-        <div className="globe-selection-card">
-          <div className="globe-selection-card__flag-wrap">
-            <span className={`globe-selection-card__flag ${selectedCountryData.flagVariant === 'code' ? 'globe-selection-card__flag--code' : ''}`.trim()}>
-              {selectedCountryData.flag}
-            </span>
-          </div>
-          <div className="globe-selection-card__content">
-            <strong>{selectedCountryData.name || (selectedCountryData.nameKey ? t(selectedCountryData.nameKey) : selectedCountryData.id)}</strong>
-            <span>{t('teamSelection.leaguesCount', { count: selectedCountryData.leagues.length })}</span>
-          </div>
-        </div>
-      )}
 
-      <p className="globe-hint">{t('teamSelection.globeHint')}</p>
+      <p className="globe-hint" aria-hidden="true">{t('teamSelection.globeHint')}</p>
     </div>
   );
 }
