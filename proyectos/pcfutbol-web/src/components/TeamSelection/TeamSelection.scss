@@ -613,62 +613,62 @@ $pcf-text: rgba(255,255,255,0.68);
   &__leagues {
     display: flex;
     flex-direction: column;
-    gap: 0;
+    gap: 0.5rem;
     padding-bottom: 1rem;
-
-    // league-row already styled; just ensure full width
-    .league-row {
-      padding-right: 0.25rem;
-    }
   }
 }
 
-// League row — clean, underline-on-hover editorial style
+// League row — sober selectable card, mirrors the in-game league/group picker
 .league-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.9rem;
   width: 100%;
-  padding: 0.95rem 0.5rem 0.95rem 0.25rem;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid var(--color-glass-border);
+  padding: 0.9rem 1.1rem;
+  background: var(--color-glass);
+  border: 1px solid var(--color-glass-border);
+  border-radius: 12px;
   cursor: pointer;
   text-align: left;
   color: var(--color-text-primary);
-  transition: transform var(--transition-fast), padding var(--transition-fast);
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
   position: relative;
 
-  &::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: var(--color-accent);
-    transform: scaleY(0);
-    transform-origin: center;
-    transition: transform var(--transition-fast);
+  @media (max-width: 500px) {
+    padding: 0.8rem 0.9rem;
+    border-radius: 10px;
   }
 
   @media (hover: hover) {
     &:hover:not(:disabled) {
-      padding-left: 0.85rem;
-
-      &::before { transform: scaleY(1); }
+      background: var(--color-bg-card-hover);
+      border-color: rgba(var(--color-accent-rgb), 0.35);
+      transform: translateX(3px);
 
       .league-row__arrow {
         color: var(--color-accent);
-        transform: translateX(3px);
+        transform: translateX(2px);
+      }
+
+      .league-row__name {
+        color: var(--color-accent);
       }
     }
   }
 
   &:active:not(:disabled) {
-    padding-left: 0.85rem;
-    &::before { transform: scaleY(1); }
+    background: rgba(var(--color-accent-rgb), 0.1);
+    border-color: rgba(var(--color-accent-rgb), 0.45);
+  }
+
+  &:focus-visible {
+    outline: none;
+    border-color: rgba(var(--color-accent-rgb), 0.5);
+    box-shadow: 0 0 0 3px rgba(var(--color-accent-rgb), 0.15);
   }
 
   &__text {
@@ -676,6 +676,7 @@ $pcf-text: rgba(255,255,255,0.68);
     flex-direction: column;
     gap: 0.2rem;
     min-width: 0;
+    flex: 1;
   }
 
   &__name {
@@ -687,6 +688,7 @@ $pcf-text: rgba(255,255,255,0.68);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    transition: color var(--transition-fast);
   }
 
   &__meta {
@@ -704,7 +706,9 @@ $pcf-text: rgba(255,255,255,0.68);
 
   &--locked {
     cursor: not-allowed;
-    opacity: 0.45;
+    opacity: 0.5;
+    background: transparent;
+    border-style: dashed;
 
     .league-row__name { color: var(--color-text-secondary); }
   }
