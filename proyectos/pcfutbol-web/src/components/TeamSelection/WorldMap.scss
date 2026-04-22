@@ -122,12 +122,12 @@
 
   &__label {
     position: absolute;
-    top: 16px;
+    top: 18px;
     left: 50%;
-    transform: translate(-50%, -4px) scale(0.9);
+    transform: translate(-50%, -4px) scale(0.92);
     opacity: 0;
-    min-width: 28px;
-    padding: 4px 8px;
+    min-width: 34px;
+    padding: 5px 10px;
     border-radius: 999px;
     background: rgba(8, 12, 18, 0.82);
     border: 1px solid rgba(255, 255, 255, 0.1);
