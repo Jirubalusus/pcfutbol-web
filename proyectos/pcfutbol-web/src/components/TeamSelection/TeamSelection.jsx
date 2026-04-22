@@ -59,7 +59,7 @@ import {
 } from '../../data/teamsFirestore';
 import { getStadiumInfo, getStadiumLevel } from '../../data/stadiumCapacities';
 import { isSouthAmericanLeague, qualifyTeamsForSouthAmerica, SA_LEAGUE_SLOTS } from '../../game/southAmericanCompetitions';
-import { Calendar, Plane, Home, Sparkles, ChevronRight, Lock, Map, ClipboardList, Trophy, Building2, Users, DollarSign, Star, ArrowLeft } from 'lucide-react';
+import { Calendar, Plane, Home, Sparkles, ChevronRight, Lock, ClipboardList, Trophy, Building2, Users, DollarSign, Star, ArrowLeft } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
 import WorldMap from './WorldMap';
 import TeamCrest from '../TeamCrest/TeamCrest';
@@ -1010,23 +1010,46 @@ export default function TeamSelection() {
 
       {/* CONTENIDO */}
       <div className="pcf-ts-content">
-        {/* PAÍSES - Mapa interactivo */}
-        {currentContent === 'countries' && (() => {
-          const selectedCountryName = selectedCountry
-            ? (selectedCountry.nameKey ? t(selectedCountry.nameKey) : selectedCountry.name)
-            : '';
-          const countryLeagues = selectedCountry?.leagues || [];
-          const totalClubs = countryLeagues.reduce((sum, lid) => sum + getLeagueTeams(lid).length, 0);
-          const playableLeagues = countryLeagues.filter(lid => getLeagueTeams(lid).length > 0).length;
+        {/* PAÍSES — dos vistas: (A) globo protagonista + rail pequeño · (B) escenario país + ligas */}
+        {currentContent === 'countries' && !selectedCountry && (() => {
+          const resolveCountryName = (c) => (c.nameKey ? t(c.nameKey) : c.name || c.id);
+          const europeCountries = EUROPEAN_COUNTRIES;
+          const saCountries = SOUTH_AMERICAN_COUNTRIES;
+          const worldCountries = REST_OF_WORLD_COUNTRIES;
+
+          const renderRailGroup = (label, list) => list.length > 0 && (
+            <section className="country-rail__group" key={label}>
+              <h4 className="country-rail__group-header">{label}</h4>
+              <div className="country-rail__items">
+                {list.map((country) => (
+                  <button
+                    key={country.id}
+                    type="button"
+                    className="country-rail__item"
+                    onClick={() => setSelectedCountry(country)}
+                  >
+                    <span
+                      className={`country-rail__flag ${country.flagVariant === 'code' ? 'country-rail__flag--code' : ''}`.trim()}
+                      aria-hidden="true"
+                    >
+                      {country.flag}
+                    </span>
+                    <span className="country-rail__name">{resolveCountryName(country)}</span>
+                    <ChevronRight size={14} className="country-rail__arrow" aria-hidden="true" />
+                  </button>
+                ))}
+              </div>
+            </section>
+          );
 
           return (
             <div className="map-selection">
-              <div className="map-selection__row">
-                {/* Globo */}
+              <div className="map-selection__row map-selection__row--globe">
+                {/* Globo protagonista */}
                 <div className="map-selection__map">
                   <WorldMap
                     countries={COUNTRIES}
-                    selectedCountry={selectedCountry?.id}
+                    selectedCountry={null}
                     onCountryClick={(countryId) => {
                       const country = COUNTRIES.find(c => c.id === countryId);
                       if (country) setSelectedCountry(country);
@@ -1034,78 +1057,97 @@ export default function TeamSelection() {
                   />
                 </div>
 
-                {/* Panel de ligas */}
-                <aside className="country-panel">
-                  {selectedCountry ? (
-                    <div className="country-panel__body fade-in-up" key={selectedCountry.id}>
-                      <div className="country-panel__eyebrow">
-                        <span
-                          className={`country-panel__flag ${selectedCountry.flagVariant === 'code' ? 'country-panel__flag--code' : ''}`.trim()}
-                          aria-hidden="true"
-                        >
-                          {selectedCountry.flag}
-                        </span>
-                        <span className="country-panel__eyebrow-label">{t('teamSelection.countries')}</span>
-                      </div>
-
-                      <h2 className="country-panel__name">{selectedCountryName}</h2>
-
-                      <p className="country-panel__summary">
-                        {t('teamSelection.countrySummary', {
-                          leagues: playableLeagues,
-                          clubs: totalClubs,
-                          count: playableLeagues,
-                        })}
-                      </p>
-
-                      <div className="country-panel__divider" aria-hidden="true" />
-
-                      <div className="country-panel__leagues-label">{t('teamSelection.leaguesLabel')}</div>
-
-                      <div className="country-panel__leagues">
-                        {countryLeagues.map((leagueId) => {
-                          const leagueTeams = getLeagueTeams(leagueId);
-                          const available = leagueTeams.length > 0;
-                          const hasGroupsForLeague = LEAGUES_WITH_GROUPS.includes(leagueId);
-                          const groups = hasGroupsForLeague ? getLeagueGroups(leagueId) : null;
-                          const numGroups = groups ? Object.keys(groups).length : 0;
-
-                          return (
-                            <button
-                              key={leagueId}
-                              type="button"
-                              className={`league-row ${available ? '' : 'league-row--locked'}`}
-                              onClick={() => available && handleSelectLeague(leagueId)}
-                              disabled={!available}
-                            >
-                              <div className="league-row__text">
-                                <span className="league-row__name">{LEAGUE_NAMES[leagueId]}</span>
-                                <span className="league-row__meta">
-                                  {available
-                                    ? hasGroupsForLeague
-                                      ? t('teamSelection.groupsAndTeams', { groups: numGroups, teams: leagueTeams.length })
-                                      : t('teamSelection.teamsCount', { count: leagueTeams.length })
-                                    : t('teamSelection.comingSoon')}
-                                </span>
-                              </div>
-                              <span className="league-row__arrow" aria-hidden="true">
-                                {available ? <ChevronRight size={16} /> : <Lock size={14} />}
-                              </span>
-                            </button>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="country-panel__placeholder">
-                      <div className="country-panel__placeholder-icon" aria-hidden="true">
-                        <Map size={28} />
-                      </div>
-                      <div className="country-panel__placeholder-title">{t('teamSelection.chooseCountry')}</div>
-                      <div className="country-panel__placeholder-text">{t('teamSelection.panelHelp')}</div>
-                    </div>
-                  )}
+                {/* Rail compacto de países (solo desktop; en mobile el WorldMap ya renderiza su lista) */}
+                <aside className="country-rail" aria-label={t('teamSelection.countries')}>
+                  <div className="country-rail__intro">
+                    <span className="country-rail__intro-eyebrow">{t('teamSelection.countries')}</span>
+                    <span className="country-rail__intro-hint">{t('teamSelection.chooseCountry')}</span>
+                  </div>
+                  <div className="country-rail__scroll">
+                    {renderRailGroup(t('teamSelection.continentEurope'), europeCountries)}
+                    {renderRailGroup(t('teamSelection.continentSouthAmerica'), saCountries)}
+                    {renderRailGroup(t('teamSelection.continentRestOfWorld'), worldCountries)}
+                  </div>
                 </aside>
+              </div>
+            </div>
+          );
+        })()}
+
+        {/* PAÍS SELECCIONADO — escenario centrado, sin globo, con ligas del país */}
+        {currentContent === 'countries' && selectedCountry && (() => {
+          const selectedCountryName = selectedCountry.nameKey
+            ? t(selectedCountry.nameKey)
+            : selectedCountry.name;
+          const countryLeagues = selectedCountry.leagues || [];
+          const totalClubs = countryLeagues.reduce((sum, lid) => sum + getLeagueTeams(lid).length, 0);
+          const playableLeagues = countryLeagues.filter(lid => getLeagueTeams(lid).length > 0).length;
+
+          return (
+            <div className="country-stage fade-in-up" key={selectedCountry.id}>
+              <div className="country-stage__inner">
+                <button
+                  type="button"
+                  className="country-stage__back"
+                  onClick={() => setSelectedCountry(null)}
+                >
+                  <ArrowLeft size={14} />
+                  <span>{t('teamSelection.countries')}</span>
+                </button>
+
+                <header className="country-stage__hero">
+                  <span
+                    className={`country-stage__flag ${selectedCountry.flagVariant === 'code' ? 'country-stage__flag--code' : ''}`.trim()}
+                    aria-hidden="true"
+                  >
+                    {selectedCountry.flag}
+                  </span>
+                  <span className="country-stage__eyebrow">{t('teamSelection.countries')}</span>
+                  <h2 className="country-stage__name">{selectedCountryName}</h2>
+                  <p className="country-stage__summary">
+                    {t('teamSelection.countrySummary', {
+                      leagues: playableLeagues,
+                      clubs: totalClubs,
+                      count: playableLeagues,
+                    })}
+                  </p>
+                </header>
+
+                <div className="country-stage__leagues-label">{t('teamSelection.leaguesLabel')}</div>
+
+                <div className="country-stage__leagues">
+                  {countryLeagues.map((leagueId) => {
+                    const leagueTeams = getLeagueTeams(leagueId);
+                    const available = leagueTeams.length > 0;
+                    const hasGroupsForLeague = LEAGUES_WITH_GROUPS.includes(leagueId);
+                    const groups = hasGroupsForLeague ? getLeagueGroups(leagueId) : null;
+                    const numGroups = groups ? Object.keys(groups).length : 0;
+
+                    return (
+                      <button
+                        key={leagueId}
+                        type="button"
+                        className={`league-row ${available ? '' : 'league-row--locked'}`}
+                        onClick={() => available && handleSelectLeague(leagueId)}
+                        disabled={!available}
+                      >
+                        <div className="league-row__text">
+                          <span className="league-row__name">{LEAGUE_NAMES[leagueId]}</span>
+                          <span className="league-row__meta">
+                            {available
+                              ? hasGroupsForLeague
+                                ? t('teamSelection.groupsAndTeams', { groups: numGroups, teams: leagueTeams.length })
+                                : t('teamSelection.teamsCount', { count: leagueTeams.length })
+                              : t('teamSelection.comingSoon')}
+                          </span>
+                        </div>
+                        <span className="league-row__arrow" aria-hidden="true">
+                          {available ? <ChevronRight size={16} /> : <Lock size={14} />}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           );

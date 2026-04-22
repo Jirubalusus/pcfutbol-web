@@ -70,15 +70,15 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
       } else if (width < 768) {
         setSize(Math.min(340, width * 0.55));
       } else if (width < 1200) {
-        // Medium desktop — use 55% of available left column width (~60% of screen)
-        const availableWidth = width * 0.55;
+        // Medium desktop — rail is narrow (~300px) so globe gets most of the row
+        const availableWidth = width - 320;
         const availableHeight = height - 160; // subtract header + progress bar
-        setSize(Math.min(520, availableWidth * 0.85, availableHeight * 0.8));
+        setSize(Math.min(640, availableWidth * 0.92, availableHeight * 0.9));
       } else {
-        // Large desktop — go big
-        const availableWidth = width * 0.55;
+        // Large desktop — globe protagonist
+        const availableWidth = width - 340;
         const availableHeight = height - 160;
-        setSize(Math.min(620, availableWidth * 0.85, availableHeight * 0.8));
+        setSize(Math.min(820, availableWidth * 0.92, availableHeight * 0.92));
       }
     };
     handleResize();
