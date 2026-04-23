@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+﻿import React, { useState, useMemo } from 'react';
 import { useGame } from '../../context/GameContext';
 import { useAuth } from '../../context/AuthContext';
 import { saveGameToSlot } from '../../firebase/savesService';
@@ -53,44 +53,53 @@ import { getCupTeams, generateCupBracket } from '../../game/cupSystem';
 import { Calendar, Plane, Home, Swords, Sparkles, ChevronRight, Lock, Map, ClipboardList, Trophy, Building2, Users, DollarSign, Star } from 'lucide-react';
 import FootballIcon from '../icons/FootballIcon';
 import WorldMap from './WorldMap';
+import CountryFlag from './CountryFlag';
+
 import './TeamSelection.scss';
 import './WorldMap.scss';
 
 const EUROPEAN_COUNTRIES = [
-  { id: 'spain', name: 'España', flag: '🇪🇸', leagues: ['laliga', 'segunda', 'primeraRFEF', 'segundaRFEF'] },
-  { id: 'england', name: 'Inglaterra', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', leagues: ['premierLeague', 'championship'] },
-  { id: 'italy', name: 'Italia', flag: '🇮🇹', leagues: ['serieA', 'serieB'] },
-  { id: 'germany', name: 'Alemania', flag: '🇩🇪', leagues: ['bundesliga', 'bundesliga2'] },
-  { id: 'france', name: 'Francia', flag: '🇫🇷', leagues: ['ligue1', 'ligue2'] },
-  { id: 'netherlands', name: 'Países Bajos', flag: '🇳🇱', leagues: ['eredivisie'] },
-  { id: 'portugal', name: 'Portugal', flag: '🇵🇹', leagues: ['primeiraLiga'] },
-  { id: 'belgium', name: 'Bélgica', flag: '🇧🇪', leagues: ['belgianPro'] },
-  { id: 'turkey', name: 'Turquía', flag: '🇹🇷', leagues: ['superLig'] },
-  { id: 'scotland', name: 'Escocia', flag: '🏴󠁧󠁢󠁳󠁣󠁴󠁿', leagues: ['scottishPrem'] },
-  { id: 'switzerland', name: 'Suiza', flag: '🇨🇭', leagues: ['swissSuperLeague'] },
-  { id: 'austria', name: 'Austria', flag: '🇦🇹', leagues: ['austrianBundesliga'] },
-  { id: 'greece', name: 'Grecia', flag: '🇬🇷', leagues: ['greekSuperLeague'] },
-  { id: 'denmark', name: 'Dinamarca', flag: '🇩🇰', leagues: ['danishSuperliga'] },
-  { id: 'croatia', name: 'Croacia', flag: '🇭🇷', leagues: ['croatianLeague'] },
-  { id: 'czech', name: 'Chequia', flag: '🇨🇿', leagues: ['czechLeague'] },
+  { id: 'spain', name: 'España', leagues: ['laliga', 'segunda', 'primeraRFEF', 'segundaRFEF'] },
+  { id: 'england', name: 'Inglaterra', leagues: ['premierLeague', 'championship'] },
+  { id: 'italy', name: 'Italia', leagues: ['serieA', 'serieB'] },
+  { id: 'germany', name: 'Alemania', leagues: ['bundesliga', 'bundesliga2'] },
+  { id: 'france', name: 'Francia', leagues: ['ligue1', 'ligue2'] },
+  { id: 'netherlands', name: 'Países Bajos', leagues: ['eredivisie'] },
+  { id: 'portugal', name: 'Portugal', leagues: ['primeiraLiga'] },
+  { id: 'belgium', name: 'Bélgica', leagues: ['belgianPro'] },
+  { id: 'turkey', name: 'Turquía', leagues: ['superLig'] },
+  { id: 'scotland', name: 'Escocia', leagues: ['scottishPrem'] },
+  { id: 'switzerland', name: 'Suiza', leagues: ['swissSuperLeague'] },
+  { id: 'austria', name: 'Austria', leagues: ['austrianBundesliga'] },
+  { id: 'greece', name: 'Grecia', leagues: ['greekSuperLeague'] },
+  { id: 'denmark', name: 'Dinamarca', leagues: ['danishSuperliga'] },
+  { id: 'norway', name: 'Noruega', leagues: ['eliteserien'] },
+  { id: 'sweden', name: 'Suecia', leagues: ['allsvenskan'] },
+  { id: 'poland', name: 'Polonia', leagues: ['ekstraklasa'] },
+  { id: 'croatia', name: 'Croacia', leagues: ['croatianLeague'] },
+  { id: 'czech', name: 'Rep. Checa', leagues: ['czechLeague'] },
+  { id: 'russia', name: 'Rusia', leagues: ['russiaPremier'] },
+  { id: 'ukraine', name: 'Ucrania', leagues: ['ukrainePremier'] },
+  { id: 'romania', name: 'Rumanía', leagues: ['romaniaSuperliga'] },
+  { id: 'hungary', name: 'Hungría', leagues: ['hungaryNBI'] },
 ];
 
 const SOUTH_AMERICAN_COUNTRIES = [
-  { id: 'argentina', name: 'Argentina', flag: '🇦🇷', leagues: ['argentinaPrimera'] },
-  { id: 'brazil', name: 'Brasil', flag: '🇧🇷', leagues: ['brasileiraoA'] },
-  { id: 'colombia', name: 'Colombia', flag: '🇨🇴', leagues: ['colombiaPrimera'] },
-  { id: 'chile', name: 'Chile', flag: '🇨🇱', leagues: ['chilePrimera'] },
-  { id: 'uruguay', name: 'Uruguay', flag: '🇺🇾', leagues: ['uruguayPrimera'] },
-  { id: 'ecuador', name: 'Ecuador', flag: '🇪🇨', leagues: ['ecuadorLigaPro'] },
-  { id: 'paraguay', name: 'Paraguay', flag: '🇵🇾', leagues: ['paraguayPrimera'] },
-  { id: 'peru', name: 'Perú', flag: '🇵🇪', leagues: ['peruLiga1'] },
-  { id: 'bolivia', name: 'Bolivia', flag: '🇧🇴', leagues: ['boliviaPrimera'] },
-  { id: 'venezuela', name: 'Venezuela', flag: '🇻🇪', leagues: ['venezuelaPrimera'] },
+  { id: 'argentina', name: 'Argentina', leagues: ['argentinaPrimera'] },
+  { id: 'brazil', name: 'Brasil', leagues: ['brasileiraoA'] },
+  { id: 'colombia', name: 'Colombia', leagues: ['colombiaPrimera'] },
+  { id: 'chile', name: 'Chile', leagues: ['chilePrimera'] },
+  { id: 'uruguay', name: 'Uruguay', leagues: ['uruguayPrimera'] },
+  { id: 'ecuador', name: 'Ecuador', leagues: ['ecuadorLigaPro'] },
+  { id: 'paraguay', name: 'Paraguay', leagues: ['paraguayPrimera'] },
+  { id: 'peru', name: 'Perú', leagues: ['peruLiga1'] },
+  { id: 'bolivia', name: 'Bolivia', leagues: ['boliviaPrimera'] },
+  { id: 'venezuela', name: 'Venezuela', leagues: ['venezuelaPrimera'] },
 ];
 
 const COUNTRIES = [...EUROPEAN_COUNTRIES, ...SOUTH_AMERICAN_COUNTRIES];
 
-// Función helper para obtener equipos de una liga
+// FunciÃ³n helper para obtener equipos de una liga
 function getLeagueTeams(leagueId) {
   switch(leagueId) {
     case 'laliga': return getLaLigaTeams();
@@ -131,7 +140,7 @@ function getLeagueTeams(leagueId) {
   }
 }
 
-// Función helper para obtener grupos
+// FunciÃ³n helper para obtener grupos
 function getLeagueGroups(leagueId) {
   switch(leagueId) {
     case 'primeraRFEF': return getPrimeraRfefGroups();
@@ -143,8 +152,8 @@ function getLeagueGroups(leagueId) {
 const LEAGUE_NAMES = {
   laliga: 'La Liga EA Sports',
   segunda: 'La Liga Hypermotion',
-  primeraRFEF: 'Primera Federación',
-  segundaRFEF: 'Segunda Federación',
+  primeraRFEF: 'Primera FederaciÃ³n',
+  segundaRFEF: 'Segunda FederaciÃ³n',
   premierLeague: 'Premier League',
   ligue1: 'Ligue 1',
   bundesliga: 'Bundesliga',
@@ -153,7 +162,7 @@ const LEAGUE_NAMES = {
   primeiraLiga: 'Primeira Liga',
   championship: 'Championship',
   belgianPro: 'Jupiler Pro League',
-  superLig: 'Süper Lig',
+  superLig: 'SÃ¼per Lig',
   scottishPrem: 'Scottish Premiership',
   serieB: 'Serie B',
   bundesliga2: '2. Bundesliga',
@@ -166,21 +175,21 @@ const LEAGUE_NAMES = {
   czechLeague: 'Chance Liga',
   // South America
   argentinaPrimera: 'Liga Profesional',
-  brasileiraoA: 'Série A',
+  brasileiraoA: 'SÃ©rie A',
   colombiaPrimera: 'Liga BetPlay',
-  chilePrimera: 'Primera División (CL)',
-  uruguayPrimera: 'Primera División (UY)',
+  chilePrimera: 'Primera DivisiÃ³n (CL)',
+  uruguayPrimera: 'Primera DivisiÃ³n (UY)',
   ecuadorLigaPro: 'LigaPro',
-  paraguayPrimera: 'División de Honor',
+  paraguayPrimera: 'DivisiÃ³n de Honor',
   peruLiga1: 'Liga 1',
-  boliviaPrimera: 'División Profesional',
+  boliviaPrimera: 'DivisiÃ³n Profesional',
   venezuelaPrimera: 'Liga FUTVE',
 };
 
 // Ligas que tienen grupos
 const LEAGUES_WITH_GROUPS = ['primeraRFEF', 'segundaRFEF'];
 
-// Generar lista de temporadas disponibles (2025-26 → 2004-05)
+// Generar lista de temporadas disponibles (2025-26 â†’ 2004-05)
 const AVAILABLE_SEASONS = Array.from({ length: 22 }, (_, i) => {
   const startYear = 2025 - i;
   return {
@@ -207,10 +216,10 @@ export default function TeamSelection() {
   // Determinar si la liga seleccionada tiene grupos
   const hasGroups = selectedLeague && LEAGUES_WITH_GROUPS.includes(selectedLeague);
   
-  // Calcular el número total de pasos (simplificado a 2)
+  // Calcular el nÃºmero total de pasos (simplificado a 2)
   const totalSteps = 2;
   
-  // Obtener equipos según liga y grupo (pre-calculando budget/reputation)
+  // Obtener equipos segÃºn liga y grupo (pre-calculando budget/reputation)
   const teams = useMemo(() => {
     let rawTeams = [];
     if (!selectedLeague) return rawTeams;
@@ -273,14 +282,14 @@ export default function TeamSelection() {
   
   const handleBack = () => {
     if (step === 1) {
-      // Si hay país seleccionado, deseleccionarlo primero (especialmente útil en móvil)
+      // Si hay paÃ­s seleccionado, deseleccionarlo primero (especialmente Ãºtil en mÃ³vil)
       if (selectedCountry) {
         setSelectedCountry(null);
       } else {
         dispatch({ type: 'SET_SCREEN', payload: 'main_menu' });
       }
     } else if (step === 2) {
-      // Si estamos viendo equipos después de grupos, volver a grupos
+      // Si estamos viendo equipos despuÃ©s de grupos, volver a grupos
       if (hasGroups && selectedGroup) {
         setSelectedGroup(null);
         setSelectedTeam(null);
@@ -296,7 +305,7 @@ export default function TeamSelection() {
 
   const handleSelectCountry = (country) => {
     setSelectedCountry(country);
-    // Solo selecciona el país, las ligas se muestran en el panel
+    // Solo selecciona el paÃ­s, las ligas se muestran en el panel
     // No avanza de paso
   };
 
@@ -349,7 +358,7 @@ export default function TeamSelection() {
     setSelectedTeam(team);
   };
   
-  // Función para obtener todos los equipos de todas las ligas
+  // FunciÃ³n para obtener todos los equipos de todas las ligas
   const getAllTeamsForPreseason = () => [
     ...getLaLigaTeams(), ...getSegundaTeams(), ...getPrimeraRfefTeams(), ...getSegundaRfefTeams(),
     ...getPremierTeams(), ...getSerieATeams(), ...getBundesligaTeams(), ...getLigue1Teams(),
@@ -377,7 +386,7 @@ export default function TeamSelection() {
   const handleStartGame = async () => {
     if (!selectedTeam || !selectedLeague || !selectedPreseason) return;
     
-    // Obtener equipos de la liga/grupo para la competición
+    // Obtener equipos de la liga/grupo para la competiciÃ³n
     let leagueTeams;
     if (hasGroups && selectedGroup) {
       leagueTeams = getLeagueGroups(selectedLeague)?.[selectedGroup]?.teams || [];
@@ -387,7 +396,7 @@ export default function TeamSelection() {
     
     const leagueData = initializeLeague(leagueTeams, selectedTeam.id);
     
-    // Obtener información del estadio real
+    // Obtener informaciÃ³n del estadio real
     const stadiumInfo = getStadiumInfo(selectedTeam.id, selectedTeam.reputation);
     const stadiumLevel = getStadiumLevel(stadiumInfo.capacity);
     
@@ -468,7 +477,7 @@ export default function TeamSelection() {
     }
     dispatch({ type: 'UPDATE_LEAGUE_TEAMS', payload: allLeagueTeamsWithData });
     
-    // Inicializar otras ligas para poder verlas en la clasificación
+    // Inicializar otras ligas para poder verlas en la clasificaciÃ³n
     const otherLeagues = initializeOtherLeagues(selectedLeague, hasGroups ? selectedGroup : null);
     dispatch({ type: 'SET_OTHER_LEAGUES', payload: otherLeagues });
     
@@ -478,7 +487,7 @@ export default function TeamSelection() {
     const isPlayerInSA = isSouthAmericanLeague(selectedLeague);
     
     if (isPlayerInSA) {
-      // ── SOUTH AMERICAN COMPETITIONS ──
+      // â”€â”€ SOUTH AMERICAN COMPETITIONS â”€â”€
       try {
         const bootstrapStandings = {};
         const allTeamsMap = {};
@@ -554,8 +563,8 @@ export default function TeamSelection() {
             payload: {
               id: Date.now() + 50,
               type: 'southamerican',
-              title: '¡Competición Continental!',
-              content: `Tu equipo jugará la ${compNames[playerQualComp]} esta temporada.`,
+              title: 'Â¡CompeticiÃ³n Continental!',
+              content: `Tu equipo jugarÃ¡ la ${compNames[playerQualComp]} esta temporada.`,
               date: 'Semana 1'
             }
           });
@@ -564,7 +573,7 @@ export default function TeamSelection() {
         console.error('Error bootstrapping SA competitions:', err);
       }
     } else {
-      // ── EUROPEAN COMPETITIONS ──
+      // â”€â”€ EUROPEAN COMPETITIONS â”€â”€
       try {
         const bootstrapStandings = {};
         const allTeamsMap = {};
@@ -641,8 +650,8 @@ export default function TeamSelection() {
             payload: {
               id: Date.now() + 50,
               type: 'european',
-              title: '¡Competición Europea!',
-              content: `Tu equipo jugará la ${compNames[playerQualComp]} esta temporada.`,
+              title: 'Â¡CompeticiÃ³n Europea!',
+              content: `Tu equipo jugarÃ¡ la ${compNames[playerQualComp]} esta temporada.`,
               date: 'Semana 1'
             }
           });
@@ -653,7 +662,7 @@ export default function TeamSelection() {
     }
     
     // ============================================================
-    // CUP COMPETITION — Initialize domestic cup (first season too!)
+    // CUP COMPETITION â€” Initialize domestic cup (first season too!)
     // ============================================================
     let cupBracket = null;
     let cupRounds = 0;
@@ -675,7 +684,7 @@ export default function TeamSelection() {
     }
 
     // ============================================================
-    // SEASON CALENDAR — Build and remap fixtures for European/Cup weeks
+    // SEASON CALENDAR â€” Build and remap fixtures for European/Cup weeks
     // ============================================================
     try {
       const hasEuropean = true; // European comps were just initialized above
@@ -700,8 +709,8 @@ export default function TeamSelection() {
       payload: {
         id: Date.now(),
         type: 'welcome',
-        title: '¡Bienvenido al club!',
-        content: `Has sido nombrado nuevo entrenador del ${selectedTeam.name}. La afición espera grandes cosas de ti.`,
+        title: 'Â¡Bienvenido al club!',
+        content: `Has sido nombrado nuevo entrenador del ${selectedTeam.name}. La aficiÃ³n espera grandes cosas de ti.`,
         date: 'Semana 1'
       }
     });
@@ -726,14 +735,14 @@ export default function TeamSelection() {
         payload: {
           id: Date.now() + 2,
           type: 'cup',
-          title: `${cupBracket.config?.icon || '🏆'} ${cupBracket.config?.name || 'Copa'}`,
-          content: `Tu equipo participará en la ${cupBracket.config?.name || 'Copa Nacional'} esta temporada. ${cupBracket.rounds.length} rondas hasta la final.`,
+          title: `${cupBracket.config?.icon || 'ðŸ†'} ${cupBracket.config?.name || 'Copa'}`,
+          content: `Tu equipo participarÃ¡ en la ${cupBracket.config?.name || 'Copa Nacional'} esta temporada. ${cupBracket.rounds.length} rondas hasta la final.`,
           date: 'Semana 1'
         }
       });
     }
 
-    // Si hay un slot pendiente y usuario autenticado, guardar automáticamente
+    // Si hay un slot pendiente y usuario autenticado, guardar automÃ¡ticamente
     const pendingSlot = localStorage.getItem('pcfutbol_pending_slot');
     if (pendingSlot !== null && isAuthenticated && user) {
       const slotIndex = parseInt(pendingSlot, 10);
@@ -754,7 +763,7 @@ export default function TeamSelection() {
       
       try {
         await saveGameToSlot(user.uid, slotIndex, initialGameState);
-        console.log(`💾 Partida guardada automáticamente en hueco ${slotIndex + 1}`);
+        console.log(`ðŸ’¾ Partida guardada automÃ¡ticamente en hueco ${slotIndex + 1}`);
       } catch (err) {
         console.error('Error guardando partida inicial:', err);
       }
@@ -762,18 +771,18 @@ export default function TeamSelection() {
   };
   
   const formatMoney = (amount) => {
-    if (!amount) return '€0';
-    if (amount >= 1000000) return `€${(amount / 1000000).toFixed(0)}M`;
-    return `€${(amount / 1000).toFixed(0)}K`;
+    if (!amount) return 'â‚¬0';
+    if (amount >= 1000000) return `â‚¬${(amount / 1000000).toFixed(0)}M`;
+    return `â‚¬${(amount / 1000).toFixed(0)}K`;
   };
 
   const getDifficulty = (team) => {
     if (!team?.budget) return { label: 'Normal', color: '#ffd60a', stars: 3 };
-    if (team.budget >= 150000000) return { label: 'Fácil', color: '#30d158', stars: 1 };
+    if (team.budget >= 150000000) return { label: 'FÃ¡cil', color: '#30d158', stars: 1 };
     if (team.budget >= 80000000) return { label: 'Normal', color: '#ffd60a', stars: 2 };
     if (team.budget >= 40000000) return { label: 'Medio', color: '#ff9f0a', stars: 3 };
-    if (team.budget >= 15000000) return { label: 'Difícil', color: '#ff6b35', stars: 4 };
-    return { label: 'Muy difícil', color: '#ff453a', stars: 5 };
+    if (team.budget >= 15000000) return { label: 'DifÃ­cil', color: '#ff6b35', stars: 4 };
+    return { label: 'Muy difÃ­cil', color: '#ff453a', stars: 5 };
   };
 
   const getAvgOverall = (team) => {
@@ -781,9 +790,9 @@ export default function TeamSelection() {
     return Math.round(team.players.reduce((sum, p) => sum + p.overall, 0) / team.players.length);
   };
 
-  // Determinar qué mostrar en cada paso (simplificado a 2 pasos)
+  // Determinar quÃ© mostrar en cada paso (simplificado a 2 pasos)
   const getCurrentStepContent = () => {
-    // PASO 1: Mapa con países + panel de ligas
+    // PASO 1: Mapa con paÃ­ses + panel de ligas
     if (step === 1) return 'countries';
     
     // PASO 2: Grupos (si aplica) o Equipos
@@ -808,11 +817,11 @@ export default function TeamSelection() {
       <div className="pcf-ts-header">
         <div className="header-left">
           <button className="btn-back" onClick={handleBack}>
-            ‹ {step === 1 ? (selectedCountry ? 'Países' : 'Menú') : 'Atrás'}
+            â€¹ {step === 1 ? (selectedCountry ? 'PaÃ­ses' : 'MenÃº') : 'AtrÃ¡s'}
           </button>
         </div>
         <div className="header-center">
-          <h1>SELECCIÓN DE EQUIPO</h1>
+          <h1>SELECCIÃ“N DE EQUIPO</h1>
         </div>
         <div className="header-right">
           <div className="step-indicator">
@@ -821,11 +830,11 @@ export default function TeamSelection() {
         </div>
       </div>
 
-      {/* PROGRESS BAR - Solo 2 pasos: País/Liga y Equipo */}
+      {/* PROGRESS BAR - Solo 2 pasos: PaÃ­s/Liga y Equipo */}
       <div className="pcf-ts-progress">
         <div className={`progress-step ${step >= 1 ? 'active' : ''}`}>
           <div className="step-num">1</div>
-          <div className="step-label">PAÍS / LIGA</div>
+          <div className="step-label">PAÃS / LIGA</div>
         </div>
         <div className={`progress-line ${step >= 2 ? 'active' : ''}`}></div>
         <div className={`progress-step ${step >= 2 ? 'active' : ''}`}>
@@ -836,12 +845,12 @@ export default function TeamSelection() {
 
       {/* CONTENIDO */}
       <div className="pcf-ts-content">
-        {/* PAÍSES - Mapa interactivo */}
+        {/* PAÃSES - Mapa interactivo */}
         {currentContent === 'countries' && (
           <div className="map-selection">
             {/* Row con mapa y panel */}
             <div className="map-selection__row">
-              {/* Globo unificado con todos los países */}
+              {/* Globo unificado con todos los paÃ­ses */}
               <div className="map-selection__map">
                 <WorldMap
                   countries={COUNTRIES}
@@ -853,7 +862,7 @@ export default function TeamSelection() {
                 />
               </div>
               
-              {/* Panel de ligas del país seleccionado */}
+              {/* Panel de ligas del paÃ­s seleccionado */}
               <div className="map-selection__panel">
               {selectedCountry ? (
                 <>
@@ -880,9 +889,9 @@ export default function TeamSelection() {
                             <div className="map-selection__league-info">
                               {leagueTeams.length > 0 
                                 ? hasGroupsForLeague 
-                                  ? `${numGroups} grupos • ${leagueTeams.length} equipos`
+                                  ? `${numGroups} grupos â€¢ ${leagueTeams.length} equipos`
                                   : `${leagueTeams.length} equipos`
-                                : 'Próximamente'
+                                : 'PrÃ³ximamente'
                               }
                             </div>
                           </div>
@@ -898,7 +907,7 @@ export default function TeamSelection() {
                 <div className="map-selection__placeholder">
                   <div className="map-selection__placeholder-icon"><Map size={32} /></div>
                   <div className="map-selection__placeholder-text">
-                    Selecciona un país en el mapa
+                    Selecciona un paÃ­s en el mapa
                   </div>
                 </div>
               )}
@@ -931,9 +940,9 @@ export default function TeamSelection() {
                       <span className="meta">
                         {leagueTeams.length > 0 
                           ? hasGroupsForLeague 
-                            ? `${numGroups} grupos • ${leagueTeams.length} equipos`
+                            ? `${numGroups} grupos â€¢ ${leagueTeams.length} equipos`
                             : `${leagueTeams.length} equipos disponibles`
-                          : 'Próximamente'
+                          : 'PrÃ³ximamente'
                         }
                       </span>
                     </div>
@@ -960,10 +969,10 @@ export default function TeamSelection() {
                   <div className="info">
                     <span className="name">{group.name}</span>
                     <span className="meta">
-                      {group.region ? `${group.region} • ` : ''}{group.teams.length} equipos
+                      {group.region ? `${group.region} â€¢ ` : ''}{group.teams.length} equipos
                     </span>
                   </div>
-                  <span className="arrow">→</span>
+                  <span className="arrow">â†’</span>
                 </button>
               ))}
             </div>
@@ -1068,7 +1077,7 @@ export default function TeamSelection() {
                     </div>
                     <div className="stat-card">
                       <span className="icon"><Star size={16} /></span>
-                      <span className="label">Reputación</span>
+                      <span className="label">ReputaciÃ³n</span>
                       <span className="value">{selectedTeam.reputation || 70}/100</span>
                     </div>
                   </div>
@@ -1106,7 +1115,7 @@ export default function TeamSelection() {
                     </div>
                   )}
 
-                  {/* Botón comenzar */}
+                  {/* BotÃ³n comenzar */}
                   <button className="btn-start" onClick={handleShowPreseason}>
                     <FootballIcon size={16} /> COMENZAR CON {selectedTeam.name?.toUpperCase()}
                   </button>
@@ -1130,13 +1139,13 @@ export default function TeamSelection() {
               <Calendar size={32} className="header-icon" />
               <div>
                 <h1>Pretemporada {selectedTeam?.name}</h1>
-                <p>Elige tu plan de preparación antes de comenzar la liga</p>
+                <p>Elige tu plan de preparaciÃ³n antes de comenzar la liga</p>
               </div>
             </div>
             
             <p className="preseason-intro">
               Selecciona uno de los siguientes paquetes de amistosos. 
-              El último partido siempre será en casa como presentación del equipo.
+              El Ãºltimo partido siempre serÃ¡ en casa como presentaciÃ³n del equipo.
             </p>
             
             <div className="preseason-options">
@@ -1176,7 +1185,7 @@ export default function TeamSelection() {
                           <span className="opponent-ovr">{match.opponent?.reputation || '??'} OVR</span>
                           {match.isPresentationMatch && (
                             <span className="presentation-badge">
-                              <Sparkles size={12} /> Presentación
+                              <Sparkles size={12} /> PresentaciÃ³n
                             </span>
                           )}
                         </li>
@@ -1213,3 +1222,5 @@ export default function TeamSelection() {
     </div>
   );
 }
+
+
