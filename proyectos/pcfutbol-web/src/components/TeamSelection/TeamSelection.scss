@@ -1,27 +1,27 @@
-﻿// ============================================================
-// PC FÃšTBOL WEB - SELECCIÃ“N DE EQUIPO (Estilo Vibrante)
+// ============================================================
+// PC FÚTBOL WEB - SELECCIÓN DE EQUIPO (Premium Dark)
 // ============================================================
 
-$pcf-bg-dark: #1a2634;
-$pcf-bg-mid: #243447;
-$pcf-bg-light: #2d4259;
-$pcf-accent: #3498db;
-$pcf-gold: #f1c40f;
+$pcf-bg-dark: #080c12;
+$pcf-bg-mid: #0e1319;
+$pcf-bg-light: #161d27;
+$pcf-accent: #1a8a4a;
+$pcf-gold: #c8a84e;
 $pcf-orange: #e67e22;
 $pcf-red: #e74c3c;
 $pcf-red-dark: #b93d30;
 $pcf-red-light: #eb6456;
-$pcf-green: #2ecc71;
-$pcf-green-dark: #25a85c;
-$pcf-green-light: #54d98b;
-$pcf-white: #ecf0f1;
-$pcf-gray: #95a5a6;
-$pcf-text: #bdc3c7;
+$pcf-green: #00e676;
+$pcf-green-dark: #00c853;
+$pcf-green-light: #69f0ae;
+$pcf-white: #d8dce0;
+$pcf-gray: #5a6a7a;
+$pcf-text: #8a9aaa;
 
 .pcf-team-select {
   height: 100vh;
   max-height: 100vh;
-  background: linear-gradient(135deg, $pcf-bg-dark 0%, $pcf-bg-mid 50%, $pcf-bg-dark 100%);
+  background: $pcf-bg-dark;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -31,6 +31,7 @@ $pcf-text: #bdc3c7;
   @media (max-width: 768px) {
     height: auto;
     min-height: 100vh;
+    min-height: 100dvh;
     max-height: none;
     overflow: visible;
     overflow-x: hidden;
@@ -44,66 +45,64 @@ $pcf-text: #bdc3c7;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.6rem 1rem;
-  background: linear-gradient(180deg, $pcf-bg-light 0%, $pcf-bg-mid 100%);
-  border-bottom: 2px solid $pcf-accent;
+  padding: 0.35rem 1rem;
+  background: rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba($pcf-green, 0.15);
   flex-shrink: 0;
-  
+
   .header-left {
     flex: 0 0 auto;
   }
-  
+
   .header-center {
     flex: 1;
     text-align: center;
-    
+
     h1 {
       margin: 0;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: $pcf-gold;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
-      letter-spacing: 2px;
-      
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: $pcf-gray;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+
       @media (max-width: 500px) {
-        font-size: 0.9rem;
+        font-size: 0.75rem;
         letter-spacing: 1px;
       }
     }
   }
-  
+
   .header-right {
     flex: 0 0 auto;
 
     .step-indicator {
-      color: $pcf-text;
-      font-size: 0.75rem;
+      color: $pcf-gray;
+      font-size: 0.65rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
   }
-  
+
   .btn-back {
     display: flex;
     align-items: center;
     gap: 0.35rem;
-    background: rgba(255, 255, 255, 0.07);
-    border: 1px solid rgba(255, 255, 255, 0.13);
-    border-radius: 8px;
-    color: $pcf-white;
-    padding: 0.4rem 0.75rem;
-    font-size: 0.85rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    color: $pcf-gray;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s;
     white-space: nowrap;
-    -webkit-tap-highlight-color: transparent;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.14);
-      border-color: rgba(255, 255, 255, 0.25);
-    }
-
-    &:active {
-      opacity: 0.6;
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba($pcf-green, 0.3);
+      color: $pcf-white;
     }
   }
 }
@@ -115,66 +114,69 @@ $pcf-text: #bdc3c7;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.6rem 1rem;
-  background: $pcf-bg-mid;
+  padding: 0.3rem 1rem;
+  background: rgba(0, 0, 0, 0.3);
   gap: 0;
   flex-shrink: 0;
-  
+  border-bottom: 1px solid rgba($pcf-green, 0.08);
+
   .progress-step {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.2rem;
-    
+    gap: 0.15rem;
+
     .step-num {
-      width: 28px;
-      height: 28px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
-      background: $pcf-bg-dark;
-      border: 2px solid $pcf-bg-light;
+      background: transparent;
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 700;
-      font-size: 0.8rem;
+      font-size: 0.65rem;
       color: $pcf-gray;
       transition: all 0.3s;
     }
-    
+
     .step-label {
-      font-size: 0.65rem;
-      color: $pcf-gray;
+      font-size: 0.55rem;
+      color: rgba(255, 255, 255, 0.2);
       font-weight: 600;
-      letter-spacing: 0.5px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
-    
+
     &.active {
       .step-num {
-        background: linear-gradient(135deg, $pcf-green, $pcf-green-light);
+        background: $pcf-green;
         border-color: $pcf-green;
-        color: white;
-        box-shadow: 0 0 12px rgba($pcf-green, 0.5);
+        color: #000;
+        box-shadow: 0 0 10px rgba($pcf-green, 0.4);
       }
-      
+
       .step-label {
-        color: $pcf-white;
+        color: $pcf-green;
       }
     }
   }
-  
+
   .progress-line {
-    width: 50px;
-    height: 3px;
-    background: $pcf-bg-dark;
+    width: 40px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
     margin: 0 0.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
     border-radius: 2px;
     transition: all 0.3s;
-    
+
     &.active {
-      background: linear-gradient(90deg, $pcf-green, $pcf-green-light);
+      background: $pcf-green;
+      box-shadow: 0 0 6px rgba($pcf-green, 0.3);
     }
-    
+
     @media (max-width: 500px) {
       width: 30px;
     }
@@ -197,7 +199,7 @@ $pcf-text: #bdc3c7;
 }
 
 // ============================================================
-// MAP SELECTION (Step 1 â€” two-column layout)
+// MAP SELECTION (Step 1 — two-column layout)
 // ============================================================
 .map-selection {
   flex: 1;
@@ -214,12 +216,12 @@ $pcf-text: #bdc3c7;
 .map-selection__row {
   flex: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 380px;
+  grid-template-columns: minmax(0, 1fr) 280px;
   min-height: 0;
   overflow: hidden;
 
   @media (max-width: 1200px) {
-    grid-template-columns: minmax(0, 1fr) 340px;
+    grid-template-columns: minmax(0, 1fr) 260px;
   }
 
   @media (max-width: 900px) {
@@ -233,31 +235,37 @@ $pcf-text: #bdc3c7;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 0;
   min-height: 0;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(20, 40, 60, 0.8) 0%,
-    transparent 70%
-  );
+  background: transparent;
+  position: relative;
 
   @media (max-width: 900px) {
     padding: 0.5rem;
     min-height: 300px;
+  }
+
+  // On mobile, WorldMap returns null when country is selected → collapse
+  @media (max-width: 768px) {
+    min-height: 0;
+    &:empty {
+      display: none;
+      padding: 0;
+    }
   }
 }
 
 .map-selection__panel {
   display: flex;
   flex-direction: column;
-  background: linear-gradient(180deg, rgba($pcf-bg-light, 0.6) 0%, $pcf-bg-dark 100%);
-  border-left: 1px solid rgba($pcf-accent, 0.2);
+  background: rgba(0, 0, 0, 0.6);
+  border-left: 1px solid rgba($pcf-green, 0.1);
   overflow-y: auto;
   padding: 0;
 
   @media (max-width: 900px) {
     border-left: none;
-    border-top: 1px solid rgba($pcf-accent, 0.2);
+    border-top: 1px solid rgba($pcf-green, 0.1);
     overflow-y: visible;
     padding-bottom: 1rem;
   }
@@ -266,96 +274,216 @@ $pcf-text: #bdc3c7;
 .map-selection__title {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 1.25rem;
-  font-size: 1.3rem;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  color: $pcf-white;
-  background: linear-gradient(180deg, $pcf-bg-light 0%, $pcf-bg-mid 100%);
-  border-bottom: 2px solid $pcf-accent;
+  color: $pcf-green;
+  background: rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid rgba($pcf-green, 0.15);
   flex-shrink: 0;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
 
   .flag {
-    font-size: 2rem;
+    font-size: 1.2rem;
+
+    &--code {
+      font-size: 0.65rem;
+      padding: 0.15rem 0.3rem;
+      background: rgba($pcf-green, 0.15);
+      border: 1px solid rgba($pcf-green, 0.25);
+      border-radius: 3px;
+      color: $pcf-green;
+    }
   }
 }
 
-// Old step-1 league-panel and placeholder styles removed (dead code from pre-3-step redesign)
+.map-selection__leagues {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0.35rem;
+  flex: 1;
+}
+
+.map-selection__league {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.5rem 0.6rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: left;
+  color: inherit;
+
+  &:hover:not(.disabled) {
+    background: rgba($pcf-green, 0.08);
+    border-color: rgba($pcf-green, 0.25);
+  }
+
+  &.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+}
+
+.map-selection__league-name {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: $pcf-white;
+}
+
+.map-selection__league-info {
+  font-size: 0.65rem;
+  color: $pcf-gray;
+  margin-top: 0.1rem;
+  font-family: 'Courier New', monospace;
+}
+
+.map-selection__league-arrow {
+  color: rgba($pcf-green, 0.5);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.map-selection__placeholder {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  text-align: center;
+
+  @media (max-width: 900px) {
+    display: none;
+  }
+}
+
+.map-selection__placeholder-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid rgba($pcf-green, 0.2);
+  color: rgba($pcf-green, 0.5);
+  animation: placeholderPulse 3s ease-in-out infinite;
+}
+
+.map-selection__placeholder-text {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.2);
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+}
+
+@keyframes placeholderPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba($pcf-green, 0.1);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 15px 3px rgba($pcf-green, 0.08);
+    transform: scale(1.03);
+  }
+}
 
 // Country list in right panel (desktop + mobile)
 .map-selection__countries {
   flex: 1;
   overflow-y: auto;
-  padding: 0.5rem 0.75rem;
+  padding: 0.25rem 0.35rem;
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 1px;
 }
 
 .map-selection__continent-header {
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   font-weight: 700;
-  color: $pcf-gray;
+  color: rgba($pcf-green, 0.6);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 0.6rem 0.25rem 0.2rem;
-  margin-top: 0.15rem;
-  border-bottom: 1px solid rgba($pcf-accent, 0.12);
+  letter-spacing: 1.5px;
+  padding: 0.5rem 0.4rem 0.2rem;
+  margin-top: 0.1rem;
+  border-bottom: 1px solid rgba($pcf-green, 0.08);
 
   &:first-child {
     margin-top: 0;
-    padding-top: 0.25rem;
+    padding-top: 0.2rem;
   }
 }
 
 .map-selection__country-card {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0.7rem 1rem;
-  background: linear-gradient(180deg, rgba(42, 74, 106, 0.45) 0%, rgba(26, 58, 90, 0.45) 100%);
-  border: 1px solid rgba(74, 106, 138, 0.35);
-  border-radius: 8px;
+  gap: 0.4rem;
+  padding: 0.35rem 0.5rem;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 2px;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.15s;
   text-align: left;
   color: inherit;
 
   &:hover {
-    background: linear-gradient(180deg, rgba(58, 90, 122, 0.65) 0%, rgba(42, 74, 106, 0.65) 100%);
-    border-color: $pcf-gold;
-    transform: translateX(3px);
+    background: rgba($pcf-green, 0.06);
+    border-color: rgba($pcf-green, 0.15);
   }
 }
 
 .map-selection__country-flag {
-  font-size: 1.6rem;
+  font-size: 1rem;
+  flex-shrink: 0;
 
   &--code {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 2.5rem;
-    padding: 0.2rem 0.45rem;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    font-size: 0.82rem;
+    min-width: 2rem;
+    padding: 0.1rem 0.3rem;
+    border-radius: 2px;
+    background: rgba($pcf-green, 0.08);
+    border: 1px solid rgba($pcf-green, 0.15);
+    font-size: 0.6rem;
     font-weight: 800;
     letter-spacing: 0.08em;
-    color: $pcf-white;
+    color: $pcf-green;
     line-height: 1;
   }
 }
 
+.map-selection__country-name {
+  flex: 1;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: $pcf-white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .map-selection__country-teams {
-  font-size: 0.82rem;
+  font-size: 0.6rem;
   color: $pcf-gray;
   flex-shrink: 0;
+  font-family: 'Courier New', monospace;
 }
 
 // ============================================================
-// PAÃSES
+// PAÍSES
 // ============================================================
 .countries-grid {
   flex: 1;
@@ -397,7 +525,7 @@ $pcf-text: #bdc3c7;
     align-items: center;
     gap: 1rem;
     padding: 1rem 1.25rem;
-    background: linear-gradient(180deg, #2a4a6a 0%, #1a3a5a 100%);
+    background: linear-gradient(180deg, var(--color-glass-border) 0%, var(--color-bg-tertiary) 100%);
     border: 2px solid #4a6a8a;
     border-radius: 6px;
     cursor: pointer;
@@ -406,7 +534,7 @@ $pcf-text: #bdc3c7;
     flex-shrink: 0;
     
     &:hover {
-      background: linear-gradient(180deg, #3a5a7a 0%, #2a4a6a 100%);
+      background: linear-gradient(180deg, var(--color-glass-border) 0%, var(--color-glass-border) 100%);
       border-color: $pcf-gold;
       transform: translateX(5px);
     }
@@ -484,7 +612,7 @@ $pcf-text: #bdc3c7;
     align-items: center;
     gap: 1rem;
     padding: 1rem 1.25rem;
-    background: linear-gradient(180deg, #2a4a6a 0%, #1a3a5a 100%);
+    background: linear-gradient(180deg, var(--color-glass-border) 0%, var(--color-bg-tertiary) 100%);
     border: 2px solid #4a6a8a;
     border-radius: 6px;
     cursor: pointer;
@@ -493,7 +621,7 @@ $pcf-text: #bdc3c7;
     flex-shrink: 0;
     
     &:hover:not(.disabled) {
-      background: linear-gradient(180deg, #3a5a7a 0%, #2a4a6a 100%);
+      background: linear-gradient(180deg, var(--color-glass-border) 0%, var(--color-glass-border) 100%);
       border-color: $pcf-gold;
       transform: translateX(5px);
     }
@@ -644,10 +772,47 @@ $pcf-text: #bdc3c7;
   grid-template-columns: 1fr 1fr;
   gap: 0;
   overflow: hidden;
+  min-height: 0;
   
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr auto;
+    grid-template-rows: auto minmax(0, 1fr);
+    min-height: 0;
+  }
+}
+
+.teams-mobile-tabs {
+  display: none;
+
+  @media (max-width: 900px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    padding: 0.65rem;
+    background: linear-gradient(180deg, $pcf-bg-light 0%, $pcf-bg-mid 100%);
+    border-bottom: 1px solid rgba($pcf-accent, 0.35);
+  }
+}
+
+.teams-mobile-tab {
+  border: 1px solid rgba($pcf-accent, 0.25);
+  background: rgba(0, 0, 0, 0.18);
+  color: $pcf-text;
+  border-radius: 10px;
+  padding: 0.75rem 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: all 0.2s ease;
+
+  &.active {
+    background: linear-gradient(180deg, rgba($pcf-green, 0.95) 0%, rgba($pcf-green-dark, 0.95) 100%);
+    color: var(--color-text-primary);
+    border-color: rgba($pcf-green-light, 0.8);
+    box-shadow: 0 0 0 1px rgba($pcf-green-light, 0.18);
+  }
+
+  &:disabled {
+    opacity: 0.45;
   }
 }
 
@@ -657,10 +822,15 @@ $pcf-text: #bdc3c7;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  min-height: 0;
   
   @media (max-width: 900px) {
     border-right: none;
     border-bottom: 1px solid $pcf-bg-light;
+
+    &.teams-panel--hidden-mobile {
+      display: none;
+    }
   }
   
   .panel-header {
@@ -673,9 +843,13 @@ $pcf-text: #bdc3c7;
     flex-shrink: 0;
     
     .league-name {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
       font-weight: 600;
       color: $pcf-gold;
       font-size: 0.9rem;
+      min-width: 0;
     }
     
     .team-count {
@@ -684,6 +858,25 @@ $pcf-text: #bdc3c7;
       background: $pcf-bg-dark;
       padding: 0.2rem 0.6rem;
       border-radius: 12px;
+    }
+
+    .league-country-flag {
+      line-height: 1;
+      flex-shrink: 0;
+
+      &--code {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 2.6rem;
+        padding: 0.22rem 0.45rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+      }
     }
   }
   
@@ -715,12 +908,15 @@ $pcf-text: #bdc3c7;
   
   .teams-list {
     flex: 1;
+    min-height: 0;
     overflow-y: auto;
     padding: 0;
+    -webkit-overflow-scrolling: touch;
     
     @media (max-width: 768px) {
-      overflow-y: visible;
+      overflow-y: auto;
       padding-bottom: 1rem;
+      -webkit-overflow-scrolling: touch;
     }
     
     &::-webkit-scrollbar {
@@ -797,7 +993,7 @@ $pcf-text: #bdc3c7;
       justify-content: center;
       font-weight: 700;
       font-size: 0.7rem;
-      border: 2px solid rgba(255,255,255,0.3);
+      border: 2px solid var(--color-text-tertiary);
       box-shadow: 0 2px 4px rgba(0,0,0,0.3);
 
       @media (max-width: 768px) {
@@ -870,6 +1066,14 @@ $pcf-text: #bdc3c7;
     max-height: none;
     overflow-y: auto;
     padding-bottom: 80px;
+
+    &.details-panel--hidden-mobile {
+      display: none;
+    }
+
+    &.details-panel--mobile-tab {
+      border-top: 1px solid rgba($pcf-accent, 0.2);
+    }
   }
 }
 
@@ -1058,7 +1262,7 @@ $pcf-text: #bdc3c7;
     background: linear-gradient(180deg, $pcf-green 0%, $pcf-green-dark 100%);
     border: none;
     border-radius: 8px;
-    color: white;
+    color: var(--color-text-primary);
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
@@ -1121,7 +1325,11 @@ $pcf-text: #bdc3c7;
   }
 }
 
-// duplicate placeholder removed
+.map-selection__placeholder {
+  @media (max-width: 900px) {
+    display: none;
+  }
+}
 
 @keyframes bounce {
   0%, 100% { transform: translateX(0); }
@@ -1153,7 +1361,7 @@ $pcf-text: #bdc3c7;
   padding: 32px;
   max-width: 1100px;
   width: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--color-glass-border);
   max-height: 90vh;
   overflow-y: auto;
 
@@ -1173,7 +1381,7 @@ $pcf-text: #bdc3c7;
   margin-bottom: 24px;
   
   .header-icon { color: #0a84ff; }
-  h1 { font-size: 1.5rem; color: #fff; margin: 0; }
+  h1 { font-size: 1.5rem; color: var(--color-text-primary); margin: 0; }
   p { color: #8e8e93; margin: 4px 0 0; }
 }
 
@@ -1197,15 +1405,15 @@ $pcf-text: #bdc3c7;
 
 .preseason-card {
   padding: 20px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: var(--color-glass);
+  border: 2px solid var(--color-glass-border);
   border-radius: 16px;
   cursor: pointer;
   transition: all 0.2s;
   
   &:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.2);
+    background: var(--color-glass-border);
+    border-color: var(--color-glass-border);
   }
   
   &.selected {
@@ -1219,35 +1427,14 @@ $pcf-text: #bdc3c7;
     gap: 12px;
     margin-bottom: 12px;
     
-    svg { color: #0a84ff; }
-    h3 { color: #fff; font-size: 1.1rem; margin: 0; }
-  }
-  
-  .card-description {
-    color: #8e8e93;
-    font-size: 0.85rem;
-    margin-bottom: 16px;
-    line-height: 1.4;
-  }
-  
-  .card-details {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 16px;
-    
-    .difficulty {
+    svg { color: #0a84ff; flex-shrink: 0; }
+    h3 { color: var(--color-text-primary); font-size: 1.1rem; margin: 0; }
+    .avg-ovr {
+      margin-left: auto;
       font-size: 0.8rem;
-      padding: 4px 10px;
-      border-radius: 12px;
-      width: fit-content;
-      
-      &--high { background: rgba(255, 69, 58, 0.2); color: #ff453a; }
-      &--medium { background: rgba(255, 159, 10, 0.2); color: #ff9f0a; }
-      &--low { background: rgba(48, 209, 88, 0.2); color: #30d158; }
+      color: #8e8e93;
+      white-space: nowrap;
     }
-    
-    .earnings { font-size: 0.85rem; color: #30d158; }
   }
   
   .matches-preview {
@@ -1268,13 +1455,13 @@ $pcf-text: #bdc3c7;
         align-items: center;
         gap: 8px;
         padding: 8px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        border-bottom: 1px solid var(--color-glass);
         font-size: 0.85rem;
         flex-wrap: wrap;
         
         &:last-child { border-bottom: none; }
         .match-location { color: #8e8e93; }
-        .opponent-name { flex: 1; color: #fff; min-width: 60px; }
+        .opponent-name { flex: 1; color: var(--color-text-primary); min-width: 60px; }
         .opponent-ovr { color: #8e8e93; font-size: 0.75rem; }
         
         .presentation-badge {
@@ -1283,7 +1470,7 @@ $pcf-text: #bdc3c7;
           gap: 4px;
           padding: 2px 8px;
           background: rgba(255, 214, 10, 0.2);
-          color: #ffd60a;
+          color: var(--color-warning);
           border-radius: 10px;
           font-size: 0.7rem;
           flex-shrink: 0;
@@ -1313,15 +1500,15 @@ $pcf-text: #bdc3c7;
   
   .btn-back {
     padding: 14px 24px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: var(--color-glass-border);
+    border: 1px solid var(--color-glass-border);
     border-radius: 12px;
-    color: #fff;
+    color: var(--color-text-primary);
     font-size: 0.95rem;
     cursor: pointer;
     transition: all 0.2s;
     
-    &:hover { background: rgba(255, 255, 255, 0.15); }
+    &:hover { background: var(--color-glass-border); }
   }
   
   .btn-confirm {
@@ -1331,10 +1518,10 @@ $pcf-text: #bdc3c7;
     justify-content: center;
     gap: 8px;
     padding: 14px 24px;
-    background: linear-gradient(135deg, #30d158, #28a745);
+    background: linear-gradient(135deg, var(--color-success), #28a745);
     border: none;
     border-radius: 12px;
-    color: #fff;
+    color: var(--color-text-primary);
     font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
@@ -1347,353 +1534,18 @@ $pcf-text: #bdc3c7;
     
     &:disabled { opacity: 0.5; cursor: not-allowed; }
   }
-}
-
-// Continent selector removed
-
-// ============================================================
-// COUNTRY PANEL LIST (Step 1 right panel)
-// ============================================================
-.countries-panel-list {
-  flex: 1;
-  overflow-y: auto;
-  padding: 0.5rem;
-
-  &__header {
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: $pcf-gray;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 0.75rem 0.5rem 0.35rem;
-    margin-top: 0.25rem;
-    border-bottom: 1px solid rgba($pcf-accent, 0.15);
-  }
-
-  &__item {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    width: 100%;
-    padding: 0.55rem 0.75rem;
-    background: transparent;
-    border: 1px solid transparent;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.15s;
-    text-align: left;
-
-    &:hover {
-      background: rgba($pcf-accent, 0.12);
-      border-color: rgba($pcf-accent, 0.3);
-    }
-  }
-
-  &__flag {
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: $pcf-white;
-    min-width: 28px;
-    text-align: center;
-  }
-
-  &__name {
-    flex: 1;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: $pcf-white;
-  }
-
-  &__leagues {
-    font-size: 0.75rem;
-    color: $pcf-gray;
-    white-space: nowrap;
-  }
-
-  &__arrow {
-    color: rgba($pcf-gold, 0.6);
-    flex-shrink: 0;
-  }
-}
-
-// ============================================================
-// LEAGUE STEP (Step 2 - full-width centered league cards)
-// ============================================================
-.leagues-step {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1.5rem;
-  overflow-y: auto;
-
+  
+  // Sticky en móvil
   @media (max-width: 768px) {
-    padding: 1rem 0.75rem;
-  }
-
-  &__header {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
-
-    .leagues-step__flag {
-      font-size: 1rem;
-      font-weight: 700;
-      color: $pcf-white;
-      background: rgba($pcf-accent, 0.15);
-      padding: 0.4rem 0.6rem;
-      border-radius: 6px;
-      border: 1px solid rgba($pcf-accent, 0.3);
-    }
-
-    h2 {
-      margin: 0;
-      color: $pcf-white;
-      font-size: 1.3rem;
-      font-weight: 700;
-    }
-  }
-
-  &__grid {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-    width: 100%;
-    max-width: 580px;
-  }
-
-  &__card {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem 1.25rem;
-    background: linear-gradient(180deg, rgba(42, 74, 106, 0.5) 0%, rgba(26, 58, 90, 0.5) 100%);
-    border: 2px solid rgba(74, 106, 138, 0.35);
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-align: left;
-    width: 100%;
-
-    &:hover:not(.disabled) {
-      background: linear-gradient(180deg, rgba(58, 90, 122, 0.7) 0%, rgba(42, 74, 106, 0.7) 100%);
-      border-color: $pcf-gold;
-      transform: translateX(4px);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-    }
-
-    &.disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
-  }
-
-  &__card-icon {
-    width: 48px;
-    height: 48px;
-    background: linear-gradient(135deg, $pcf-green, $pcf-green-dark);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    flex-shrink: 0;
-    box-shadow: 0 2px 8px rgba($pcf-green, 0.25);
-  }
-
-  &__card-info {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 0.15rem;
-  }
-
-  &__card-name {
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: $pcf-white;
-  }
-
-  &__card-meta {
-    font-size: 0.8rem;
-    color: $pcf-gray;
-  }
-
-  &__card-tier {
-    display: inline-block;
-    font-size: 0.65rem;
-    font-weight: 700;
-    color: $pcf-gold;
-    background: rgba($pcf-gold, 0.12);
-    padding: 0.15rem 0.5rem;
-    border-radius: 4px;
-    width: fit-content;
-    margin-top: 0.2rem;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-  }
-
-  &__card-arrow {
-    color: $pcf-gold;
-    flex-shrink: 0;
+    position: sticky;
+    bottom: 0;
+    background: linear-gradient(to top, var(--color-bg-primary) 70%, transparent);
+    padding: 16px 0 8px;
+    margin: 0 -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    z-index: 10;
   }
 }
 
-// ============================================================
-// PREMIUM OVR DISPLAY (Step 3 detail panel)
-// ============================================================
-.premium-ovr {
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-  padding: 1rem 1.2rem;
-  background: rgba(0, 0, 0, 0.25);
-  border-bottom: 1px solid rgba($pcf-accent, 0.15);
-
-  &__circle {
-    width: 72px;
-    height: 72px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, rgba($pcf-green, 0.2), rgba($pcf-accent, 0.15));
-    border: 3px solid $pcf-green;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    box-shadow: 0 0 20px rgba($pcf-green, 0.2);
-  }
-
-  &__number {
-    font-size: 1.8rem;
-    font-weight: 900;
-    color: $pcf-white;
-    line-height: 1;
-  }
-
-  &__label {
-    font-size: 0.6rem;
-    font-weight: 700;
-    color: $pcf-green;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-
-  &__meta {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-
-  &__difficulty {
-    font-weight: 700;
-    font-size: 0.95rem;
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-  }
-
-  &__stars {
-    display: inline-flex;
-    gap: 1px;
-  }
-
-  &__budget {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: $pcf-gold;
-  }
-}
-
-// ============================================================
-// COMPACT STATS GRID (Premium detail)
-// ============================================================
-.stats-grid.compact {
-  grid-template-columns: 1fr 1fr;
-  gap: 0.35rem;
-  padding: 0.6rem;
-
-  .stat-card {
-    padding: 0.45rem 0.5rem;
-    flex-direction: row;
-    gap: 0.4rem;
-    align-items: center;
-
-    .icon {
-      margin-bottom: 0;
-      font-size: 1rem;
-    }
-
-    .label {
-      font-size: 0.6rem;
-    }
-
-    .value {
-      font-size: 0.8rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-  }
-}
-
-// ============================================================
-// SLIM PLAYER ROWS (Premium detail)
-// ============================================================
-.squad-preview.slim {
-  h3 {
-    font-size: 0.85rem;
-    margin-bottom: 0.35rem;
-  }
-
-  .player-row.slim {
-    grid-template-columns: 36px 1fr 36px;
-    padding: 0.3rem 0.5rem;
-    font-size: 0.8rem;
-
-    .pos {
-      font-size: 0.75rem;
-    }
-
-    .name {
-      font-size: 0.8rem;
-    }
-
-    .ovr {
-      font-size: 0.85rem;
-      font-weight: 800;
-    }
-  }
-
-  .squad-total {
-    margin-top: 0.3rem;
-    padding-top: 0.3rem;
-    font-size: 0.75rem;
-  }
-}
-
-// ============================================================
-// PREMIUM TEAM DETAILS
-// ============================================================
-.team-details.premium {
-  .team-header {
-    padding: 1rem;
-
-    .badge-large {
-      width: 60px;
-      height: 60px;
-      font-size: 1.3rem;
-    }
-
-    .team-title h2 {
-      font-size: 1.25rem;
-    }
-
-    .team-title p {
-      font-size: 0.85rem;
-    }
-  }
-}
-
+// Continent selector removed — unified globe shows all countries
