@@ -1,2 +1,0 @@
-import{j as i}from"./react-three-DdjCKXML.js";function d({size:n="md",label:a=null,className:r=""}){return i.jsxs("div",{className:`loading-indicator loading-indicator--${n} ${r}`.trim(),children:[i.jsx("span",{className:"loading-indicator__ring","aria-hidden":"true",children:i.jsx("span",{className:"loading-indicator__core"})}),a?i.jsx("span",{className:"loading-indicator__label",children:a}):null]})}export{d as L};
-//# sourceMappingURL=LoadingIndicator-BZs7BRL9.js.map
