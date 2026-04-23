@@ -74,12 +74,13 @@ $pcf-text: #bdc3c7;
   
   .header-right {
     flex: 0 0 auto;
-    
+
     .step-indicator {
       color: $pcf-text;
       font-size: 0.75rem;
     }
   }
+<<<<<<< HEAD
   
   .btn-back {
     padding: 0.4rem 0.5rem;
@@ -97,6 +98,27 @@ $pcf-text: #bdc3c7;
     
     &:active {
       opacity: 0.6;
+=======
+
+  .btn-back {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 8px;
+    color: $pcf-white;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(255, 255, 255, 0.25);
+>>>>>>> c709c73 (Redesign team selection: country list panel, header button, grid layout)
     }
   }
 }
@@ -207,12 +229,12 @@ $pcf-text: #bdc3c7;
 .map-selection__row {
   flex: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 340px;
+  grid-template-columns: minmax(0, 1fr) 380px;
   min-height: 0;
   overflow: hidden;
 
   @media (max-width: 1200px) {
-    grid-template-columns: minmax(0, 1fr) 300px;
+    grid-template-columns: minmax(0, 1fr) 340px;
   }
 
   @media (max-width: 900px) {
@@ -274,6 +296,78 @@ $pcf-text: #bdc3c7;
 }
 
 // Old step-1 league-panel and placeholder styles removed (dead code from pre-3-step redesign)
+
+// Country list in right panel (desktop + mobile)
+.map-selection__countries {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.map-selection__continent-header {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: $pcf-gray;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.6rem 0.25rem 0.2rem;
+  margin-top: 0.15rem;
+  border-bottom: 1px solid rgba($pcf-accent, 0.12);
+
+  &:first-child {
+    margin-top: 0;
+    padding-top: 0.25rem;
+  }
+}
+
+.map-selection__country-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 1rem;
+  background: linear-gradient(180deg, rgba(42, 74, 106, 0.45) 0%, rgba(26, 58, 90, 0.45) 100%);
+  border: 1px solid rgba(74, 106, 138, 0.35);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+  color: inherit;
+
+  &:hover {
+    background: linear-gradient(180deg, rgba(58, 90, 122, 0.65) 0%, rgba(42, 74, 106, 0.65) 100%);
+    border-color: $pcf-gold;
+    transform: translateX(3px);
+  }
+}
+
+.map-selection__country-flag {
+  font-size: 1.6rem;
+
+  &--code {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.5rem;
+    padding: 0.2rem 0.45rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: $pcf-white;
+    line-height: 1;
+  }
+}
+
+.map-selection__country-teams {
+  font-size: 0.82rem;
+  color: $pcf-gray;
+  flex-shrink: 0;
+}
 
 // ============================================================
 // PAÃSES
