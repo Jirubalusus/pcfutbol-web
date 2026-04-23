@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Text, Environment, ContactShadows, Sky } from '@react-three/drei';
+import { OrbitControls, Text, ContactShadows, Sky } from '@react-three/drei';
 import * as THREE from 'three';
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -13,6 +13,24 @@ const shade = (hex, factor) => {
 };
 
 // ═══════════════════════════════════════════════════════════════════════════
+// Y-STRATIFICATION — each horizontal layer gets its own slab to avoid z-fighting
+// ═══════════════════════════════════════════════════════════════════════════
+const Y = {
+  ground:       0.000,
+  sidewalk:     0.010,
+  street:       0.018,
+  streetMark:   0.024,
+  plazaRing:    0.028,
+  plazaTile:    0.034,
+  parking:      0.030,
+  grassEdge:    0.040,
+  dirtTrack:    0.046,
+  pitchBase:    0.052,
+  mowStripe:    0.060,
+  pitchLines:   0.072,
+};
+
+// ═══════════════════════════════════════════════════════════════════════════
 // PITCH — striped grass, full FIFA markings, goals, corner flags
 // ═══════════════════════════════════════════════════════════════════════════
 const PITCH_W = 105;
@@ -20,48 +38,20 @@ const PITCH_H = 68;
 const LINE_COLOR = '#f2f2f2';
 const LINE_THICK = 0.22;
 
-// Vertical decal stack — each layer is separated by a healthy gap to avoid
-// z-fighting at oblique camera angles. Decals also use negative polygonOffset
-// so the GPU biases them toward the camera, robustly preventing flicker even
-// when two layers share a Y value at a glancing angle.
-const Y_GROUND = 0;
-const Y_MID_GRASS = 0.05;
-const Y_PLAZA = 0.10;
-const Y_PLAZA_BAND = 0.12;
-const Y_ROAD = 0.14;
-const Y_PARKING = 0.16;
-const Y_PITCH_SURROUND = 0.20;
-const Y_PITCH_TRACK = 0.24;
-const Y_PITCH_BASE = 0.28;
-const Y_PITCH_STRIPES = 0.32;
-const LINE_Y = 0.38;
-
 function Line({ size, position }) {
   return (
     <mesh rotation={[-Math.PI / 2, 0, 0]} position={position} receiveShadow>
       <planeGeometry args={size} />
-      <meshStandardMaterial
-        color={LINE_COLOR}
-        roughness={0.6}
-        polygonOffset
-        polygonOffsetFactor={-4}
-        polygonOffsetUnits={-4}
-      />
+      <meshStandardMaterial color={LINE_COLOR} roughness={0.6} />
     </mesh>
   );
 }
 
-function Ring({ inner, outer, position, segments = 96, start = 0, length = Math.PI * 2 }) {
+function Ring({ inner, outer, position, segments = 64, start = 0, length = Math.PI * 2 }) {
   return (
     <mesh rotation={[-Math.PI / 2, 0, 0]} position={position} receiveShadow>
       <ringGeometry args={[inner, outer, segments, 1, start, length]} />
-      <meshStandardMaterial
-        color={LINE_COLOR}
-        roughness={0.6}
-        polygonOffset
-        polygonOffsetFactor={-4}
-        polygonOffsetUnits={-4}
-      />
+      <meshStandardMaterial color={LINE_COLOR} roughness={0.6} />
     </mesh>
   );
 }
@@ -70,34 +60,24 @@ function Spot({ position, radius = 0.25 }) {
   return (
     <mesh rotation={[-Math.PI / 2, 0, 0]} position={position} receiveShadow>
       <circleGeometry args={[radius, 20]} />
-      <meshStandardMaterial
-        color={LINE_COLOR}
-        roughness={0.6}
-        polygonOffset
-        polygonOffsetFactor={-5}
-        polygonOffsetUnits={-5}
-      />
+      <meshStandardMaterial color={LINE_COLOR} roughness={0.6} />
     </mesh>
   );
 }
 
 function FieldMarkings() {
-  const y = LINE_Y;
+  const y = Y.pitchLines;
   const half = LINE_THICK / 2;
   return (
     <group>
-      {/* Perimeter */}
       <Line size={[PITCH_W, LINE_THICK]} position={[0, y, -PITCH_H / 2 + half]} />
       <Line size={[PITCH_W, LINE_THICK]} position={[0, y, PITCH_H / 2 - half]} />
       <Line size={[LINE_THICK, PITCH_H]} position={[-PITCH_W / 2 + half, y, 0]} />
       <Line size={[LINE_THICK, PITCH_H]} position={[PITCH_W / 2 - half, y, 0]} />
-      {/* Center line */}
       <Line size={[LINE_THICK, PITCH_H]} position={[0, y, 0]} />
-      {/* Center circle + spot */}
       <Ring inner={9.15 - half} outer={9.15 + half} position={[0, y, 0]} />
       <Spot position={[0, y, 0]} radius={0.3} />
 
-      {/* Penalty & goal areas on both ends */}
       {[-1, 1].map((side) => {
         const xEdge = side * (PITCH_W / 2);
         const xPenInner = xEdge - side * 16.5;
@@ -106,15 +86,12 @@ function FieldMarkings() {
         const goalCenterX = (xEdge + xGoalInner) / 2;
         return (
           <group key={side}>
-            {/* Penalty area box */}
             <Line size={[LINE_THICK, 40.3]} position={[xPenInner, y, 0]} />
             <Line size={[16.5, LINE_THICK]} position={[penCenterX, y, -20.15 + half]} />
             <Line size={[16.5, LINE_THICK]} position={[penCenterX, y, 20.15 - half]} />
-            {/* Goal area (6-yard box) */}
             <Line size={[LINE_THICK, 18.32]} position={[xGoalInner, y, 0]} />
             <Line size={[5.5, LINE_THICK]} position={[goalCenterX, y, -9.16 + half]} />
             <Line size={[5.5, LINE_THICK]} position={[goalCenterX, y, 9.16 - half]} />
-            {/* Penalty spot */}
             <Spot position={[xEdge - side * 11, y, 0]} radius={0.25} />
           </group>
         );
@@ -149,7 +126,6 @@ function CornerFlags() {
 }
 
 function Goal({ x, side }) {
-  // x = ±52.5, side = -1 (left goal, posts face +x) or +1 (right goal, posts face -x)
   const height = 2.44;
   const width = 7.32;
   const depth = 2.2;
@@ -157,7 +133,6 @@ function Goal({ x, side }) {
   const white = '#f5f5f5';
   return (
     <group position={[x, 0, 0]}>
-      {/* Posts */}
       <mesh position={[0, height / 2, -width / 2]} castShadow>
         <cylinderGeometry args={[postR, postR, height, 10]} />
         <meshStandardMaterial color={white} roughness={0.45} metalness={0.15} />
@@ -166,17 +141,14 @@ function Goal({ x, side }) {
         <cylinderGeometry args={[postR, postR, height, 10]} />
         <meshStandardMaterial color={white} roughness={0.45} metalness={0.15} />
       </mesh>
-      {/* Crossbar */}
       <mesh position={[0, height, 0]} rotation={[Math.PI / 2, 0, 0]} castShadow>
         <cylinderGeometry args={[postR, postR, width, 10]} />
         <meshStandardMaterial color={white} roughness={0.45} metalness={0.15} />
       </mesh>
-      {/* Back frame top */}
       <mesh position={[side * depth, height, 0]} rotation={[Math.PI / 2, 0, 0]}>
         <cylinderGeometry args={[postR * 0.7, postR * 0.7, width, 8]} />
         <meshStandardMaterial color={white} />
       </mesh>
-      {/* Net back panel */}
       <mesh position={[side * depth * 0.5, height / 2, 0]} rotation={[0, Math.PI / 2, 0]}>
         <planeGeometry args={[width, height]} />
         <meshStandardMaterial
@@ -185,11 +157,11 @@ function Goal({ x, side }) {
           opacity={0.35}
           side={THREE.DoubleSide}
           roughness={0.9}
+          depthWrite={false}
         />
       </mesh>
-      {/* Net top slope */}
       <mesh
-        position={[side * depth * 0.5, height + 0.001, 0]}
+        position={[side * depth * 0.5, height + 0.01, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
       >
         <planeGeometry args={[depth, width]} />
@@ -199,6 +171,7 @@ function Goal({ x, side }) {
           opacity={0.3}
           side={THREE.DoubleSide}
           roughness={0.9}
+          depthWrite={false}
         />
       </mesh>
     </group>
@@ -232,55 +205,27 @@ function Pitch({ grassCondition = 100 }) {
 
   return (
     <group>
-      {/* Grass surround (slightly larger, darker) */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, Y_PITCH_SURROUND, 0]} receiveShadow>
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, Y.grassEdge, 0]} receiveShadow>
         <planeGeometry args={[PITCH_W + 14, PITCH_H + 14]} />
-        <meshStandardMaterial
-          color={edgeColor}
-          roughness={0.95}
-          polygonOffset
-          polygonOffsetFactor={-1}
-          polygonOffsetUnits={-1}
-        />
+        <meshStandardMaterial color={edgeColor} roughness={0.95} />
       </mesh>
-      {/* Dirt track (athletics-style margin) */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, Y_PITCH_TRACK, 0]} receiveShadow>
-        <ringGeometry args={[Math.hypot(PITCH_W / 2, PITCH_H / 2) + 3, Math.hypot(PITCH_W / 2, PITCH_H / 2) + 7, 96]} />
-        <meshStandardMaterial
-          color="#9c6b3a"
-          roughness={0.95}
-          polygonOffset
-          polygonOffsetFactor={-2}
-          polygonOffsetUnits={-2}
-        />
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, Y.dirtTrack, 0]} receiveShadow>
+        <ringGeometry args={[Math.hypot(PITCH_W / 2, PITCH_H / 2) + 3, Math.hypot(PITCH_W / 2, PITCH_H / 2) + 7, 48]} />
+        <meshStandardMaterial color="#9c6b3a" roughness={0.95} />
       </mesh>
-      {/* Pitch base */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, Y_PITCH_BASE, 0]} receiveShadow>
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, Y.pitchBase, 0]} receiveShadow>
         <planeGeometry args={[PITCH_W, PITCH_H]} />
-        <meshStandardMaterial
-          color={baseColor}
-          roughness={0.9}
-          polygonOffset
-          polygonOffsetFactor={-2}
-          polygonOffsetUnits={-2}
-        />
+        <meshStandardMaterial color={baseColor} roughness={0.9} />
       </mesh>
-      {/* Mow stripes */}
       {stripes.map((s, i) => (
         <mesh
           key={i}
           rotation={[-Math.PI / 2, 0, 0]}
-          position={[s.x, Y_PITCH_STRIPES, 0]}
+          position={[s.x, Y.mowStripe, 0]}
           receiveShadow
         >
           <planeGeometry args={[s.w, PITCH_H]} />
-          <meshStandardMaterial
-            color={s.color}
-            roughness={0.95}
-            polygonOffset
-            polygonOffsetFactor={-3}
-            polygonOffsetUnits={-3}
-          />
+          <meshStandardMaterial color={s.color} roughness={0.95} />
         </mesh>
       ))}
       <FieldMarkings />
@@ -292,7 +237,7 @@ function Pitch({ grassCondition = 100 }) {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-// STANDS — stepped terraces with seat color variation
+// STANDS
 // ═══════════════════════════════════════════════════════════════════════════
 function SeatedStand({
   position,
@@ -311,7 +256,7 @@ function SeatedStand({
     const rows = [];
     for (let i = 0; i < rowCount; i++) {
       rows.push({
-        y: i * rowHeight + rowHeight / 2 + 1.2, // raised above concourse wall
+        y: i * rowHeight + rowHeight / 2 + 1.2,
         z: -(i + 0.5) * rowDepth - 1,
         color: i % 3 === 0 ? shade(color, 1.2) : i % 3 === 1 ? color : shade(color, 0.85),
       });
@@ -321,15 +266,12 @@ function SeatedStand({
 
   return (
     <group position={position} rotation={rotation}>
-      {/* Concourse wall (front, perimeter fence) */}
       <mesh position={[0, 0.9, 0]} castShadow receiveShadow>
         <boxGeometry args={[width, 1.8, 0.5]} />
         <meshStandardMaterial color="#1a1a1a" roughness={0.9} />
       </mesh>
-      {/* Advertising boards — placed in front of the concourse wall with a
-          healthy gap so its back face never collides with the wall's front. */}
-      <mesh position={[0, 0.55, 0.38]} castShadow>
-        <boxGeometry args={[width * 0.98, 1.1, 0.08]} />
+      <mesh position={[0, 0.55, 0.28]} castShadow>
+        <boxGeometry args={[width * 0.98, 1.1, 0.06]} />
         <meshStandardMaterial
           color="#2b2b2b"
           emissive="#4a5e9e"
@@ -337,14 +279,12 @@ function SeatedStand({
           roughness={0.4}
         />
       </mesh>
-      {/* Stepped seat rows */}
       {seatRows.map((r, i) => (
         <mesh key={i} position={[0, r.y, r.z]} castShadow receiveShadow>
           <boxGeometry args={[width, rowHeight, rowDepth + 0.05]} />
           <meshStandardMaterial color={r.color} roughness={0.85} />
         </mesh>
       ))}
-      {/* Mid-tier walkway stripe */}
       <mesh
         position={[0, rowCount * rowHeight * 0.5 + 1.2, -rowCount * rowDepth * 0.5 - 1]}
         castShadow
@@ -352,12 +292,10 @@ function SeatedStand({
         <boxGeometry args={[width, 0.15, rowDepth * 1.3]} />
         <meshStandardMaterial color="#d8d8d8" roughness={0.8} />
       </mesh>
-      {/* Outer back wall (exterior facade panel from this side) */}
       <mesh position={[0, height * 0.55 + 1.5, -depth - 1]} castShadow receiveShadow>
         <boxGeometry args={[width + 2, height * 1.3 + 3, 1.2]} />
         <meshStandardMaterial color={shade(color, 0.55)} roughness={0.75} metalness={0.1} />
       </mesh>
-      {/* Facade accent band */}
       <mesh position={[0, height * 1.2 + 3, -depth - 0.4]}>
         <boxGeometry args={[width + 2.1, 0.8, 0.4]} />
         <meshStandardMaterial
@@ -367,7 +305,6 @@ function SeatedStand({
           roughness={0.45}
         />
       </mesh>
-      {/* Roof */}
       {hasRoof && (
         <group>
           <mesh
@@ -382,12 +319,10 @@ function SeatedStand({
               roughness={0.35}
             />
           </mesh>
-          {/* Roof front truss */}
           <mesh position={[0, height + 3.5, 0.6]} castShadow>
             <boxGeometry args={[width + 1, 0.35, 0.35]} />
             <meshStandardMaterial color="#c8ccd4" metalness={0.7} roughness={0.25} />
           </mesh>
-          {/* Roof supports */}
           {[-0.3, 0.3].map((f, i) => (
             <mesh
               key={i}
@@ -412,12 +347,10 @@ function CornerInfill({ position, rotation, height, color, hasRoof }) {
   const width = 14;
   return (
     <group position={position} rotation={rotation}>
-      {/* Concourse wall */}
       <mesh position={[0, 0.9, 0]} castShadow>
         <boxGeometry args={[width, 1.8, 0.5]} />
         <meshStandardMaterial color="#1a1a1a" roughness={0.9} />
       </mesh>
-      {/* Stepped rows */}
       {Array.from({ length: rowCount }).map((_, i) => (
         <mesh
           key={i}
@@ -432,7 +365,6 @@ function CornerInfill({ position, rotation, height, color, hasRoof }) {
           />
         </mesh>
       ))}
-      {/* Outer wall */}
       <mesh
         position={[0, height * 0.55 + 1.5, -rowCount * rowDepth - 1.5]}
         castShadow
@@ -457,22 +389,18 @@ function CornerInfill({ position, rotation, height, color, hasRoof }) {
 function FloodlightTower({ position, height, intensity }) {
   return (
     <group position={position}>
-      {/* Concrete base */}
       <mesh position={[0, 0.6, 0]} castShadow receiveShadow>
         <boxGeometry args={[2.4, 1.2, 2.4]} />
         <meshStandardMaterial color="#4a4a4a" roughness={0.95} />
       </mesh>
-      {/* Pylon */}
       <mesh position={[0, height / 2 + 1.2, 0]} castShadow>
         <cylinderGeometry args={[0.35, 0.7, height, 8]} />
         <meshStandardMaterial color="#5a5e66" roughness={0.7} metalness={0.3} />
       </mesh>
-      {/* Crossbar */}
       <mesh position={[0, height + 1.2, 0]} castShadow>
         <boxGeometry args={[5, 0.3, 1.8]} />
         <meshStandardMaterial color="#3c4048" roughness={0.6} metalness={0.2} />
       </mesh>
-      {/* Lamp array */}
       {[-1.8, -0.6, 0.6, 1.8].map((x, i) => (
         <mesh key={i} position={[x, height + 1.5, 0]} castShadow>
           <boxGeometry args={[0.8, 0.5, 1.2]} />
@@ -484,7 +412,6 @@ function FloodlightTower({ position, height, intensity }) {
           />
         </mesh>
       ))}
-      {/* Actual light */}
       <pointLight
         position={[0, height + 1.8, 0]}
         intensity={intensity}
@@ -497,34 +424,27 @@ function FloodlightTower({ position, height, intensity }) {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-// SURROUNDINGS — ground, paths, parking, houses, trees
+// BUILDINGS — house and apartment primitives
 // ═══════════════════════════════════════════════════════════════════════════
 function House({ position, color, roofColor, height = 6, width = 8, depth = 8, rotation = 0 }) {
   return (
     <group position={position} rotation={[0, rotation, 0]}>
-      {/* Body */}
       <mesh position={[0, height / 2, 0]} castShadow receiveShadow>
         <boxGeometry args={[width, height, depth]} />
         <meshStandardMaterial color={color} roughness={0.85} />
       </mesh>
-      {/* Roof (pyramid via cone) */}
       <mesh position={[0, height + 1.3, 0]} rotation={[0, Math.PI / 4, 0]} castShadow>
         <coneGeometry args={[Math.max(width, depth) * 0.72, 2.6, 4]} />
         <meshStandardMaterial color={roofColor} roughness={0.8} />
       </mesh>
-      {/* Windows suggestion (emissive stripes) — sit clearly in front of the
-          facade with polygonOffset to prevent flicker at grazing angles. */}
-      <mesh position={[0, height * 0.55, depth / 2 + 0.06]}>
+      <mesh position={[0, height * 0.55, depth / 2 + 0.02]}>
         <planeGeometry args={[width * 0.72, height * 0.35]} />
         <meshStandardMaterial
           color="#2a2d3a"
           emissive="#ffd86b"
-          emissiveIntensity={0.35}
+          emissiveIntensity={0.3}
           roughness={0.25}
           metalness={0.3}
-          polygonOffset
-          polygonOffsetFactor={-2}
-          polygonOffsetUnits={-2}
         />
       </mesh>
     </group>
@@ -538,25 +458,19 @@ function Apartment({ position, color, height = 18, width = 10, depth = 10, rotat
         <boxGeometry args={[width, height, depth]} />
         <meshStandardMaterial color={color} roughness={0.8} />
       </mesh>
-      {/* Flat roof cap */}
       <mesh position={[0, height + 0.3, 0]} castShadow>
         <boxGeometry args={[width + 0.4, 0.6, depth + 0.4]} />
         <meshStandardMaterial color={shade(color, 0.5)} roughness={0.9} />
       </mesh>
-      {/* Window grid - emissive stripes, sit in front of the facade with
-          polygonOffset so they never z-fight with the building body. */}
       {[-1, 1].map((side) => (
-        <mesh key={side} position={[0, height / 2, (depth / 2 + 0.08) * side]}>
-          <planeGeometry args={[width * 0.85, height * 0.8]} />
+        <mesh key={side} position={[0, height / 2, (depth / 2 + 0.02) * side]}>
+          <planeGeometry args={[width * 0.85, height * 0.82]} />
           <meshStandardMaterial
             color="#1a1f2e"
             emissive="#a8c8ff"
             emissiveIntensity={0.22}
             roughness={0.2}
             metalness={0.4}
-            polygonOffset
-            polygonOffsetFactor={-2}
-            polygonOffsetUnits={-2}
           />
         </mesh>
       ))}
@@ -580,7 +494,7 @@ function Tree({ position, scale = 1 }) {
   );
 }
 
-// Deterministic LCG — returns a pure sequence for any seed
+// Deterministic LCG
 function seededSequence(seed, count) {
   const out = new Array(count);
   let s = seed >>> 0;
@@ -591,198 +505,342 @@ function seededSequence(seed, count) {
   return out;
 }
 
-function Surroundings({ stadiumRadius = 80 }) {
-  const houses = useMemo(() => {
-    const list = [];
-    const palette = ['#c4a67d', '#d6b89b', '#a89078', '#b89e80', '#d9c4a0', '#a38872'];
-    const roofs = ['#7a3a2a', '#8a4030', '#5c3024', '#6b3a28'];
-    const r1 = seededSequence(12345, 36 * 7);
-    let k = 0;
-    for (let i = 0; i < 36; i++) {
-      const angle = (i / 36) * Math.PI * 2 + r1[k++] * 0.12;
-      const r = 125 + r1[k++] * 55;
-      const x = Math.cos(angle) * r;
-      const z = Math.sin(angle) * r;
-      if (Math.abs(x) < stadiumRadius + 25 && Math.abs(z) < stadiumRadius + 25) {
-        k += 5;
-        continue;
-      }
-      list.push({
-        kind: 'house',
-        position: [x, 0, z],
-        color: palette[Math.floor(r1[k++] * palette.length)],
-        roof: roofs[Math.floor(r1[k++] * roofs.length)],
-        height: 5 + r1[k++] * 3,
-        width: 6 + r1[k++] * 4,
-        depth: 6 + r1[k++] * 4,
-        rotation: -angle + Math.PI / 2 + (r1[k - 1] - 0.5) * 0.4,
-      });
-    }
-    const aptColors = ['#8a95a8', '#a8b0c0', '#7a8494', '#9ea6b6', '#c8bfa8'];
-    const r2 = seededSequence(67890, 22 * 7);
-    let j = 0;
-    for (let i = 0; i < 22; i++) {
-      const angle = (i / 22) * Math.PI * 2 + r2[j++] * 0.2;
-      const r = 210 + r2[j++] * 70;
-      const x = Math.cos(angle) * r;
-      const z = Math.sin(angle) * r;
-      list.push({
-        kind: 'apt',
-        position: [x, 0, z],
-        color: aptColors[Math.floor(r2[j++] * aptColors.length)],
-        height: 14 + r2[j++] * 18,
-        width: 8 + r2[j++] * 6,
-        depth: 8 + r2[j++] * 6,
-        rotation: -angle + Math.PI / 2 + (r2[j++] - 0.5) * 0.3,
-      });
-    }
-    return list;
-  }, [stadiumRadius]);
+// ═══════════════════════════════════════════════════════════════════════════
+// SURROUNDINGS — coherent stadium district: plaza, ring road, grid streets,
+// city blocks, trees, park, parking — all aligned to cardinal axes.
+// ═══════════════════════════════════════════════════════════════════════════
+const DISTRICT_HALF = 260; // scene extent
 
-  const trees = useMemo(() => {
+function Surroundings({ stadiumRadius = 80 }) {
+  const plazaInner = stadiumRadius + 1;
+  const plazaOuter = stadiumRadius + 20;
+  const ringInner  = plazaOuter + 0.5;
+  const ringOuter  = plazaOuter + 11;
+  const cityStart  = ringOuter + 4;  // first building setback
+
+  const GRID_CELL = 24;
+  const BLOCK_SPAN = 3;              // cells per block
+  const STREET_WIDTH = 6;            // asphalt strip width
+
+  // ── City blocks: produce individual buildings on a deterministic grid ────
+  const buildings = useMemo(() => {
     const list = [];
-    const r3 = seededSequence(24680, 60 * 3);
-    let j = 0;
-    for (let i = 0; i < 60; i++) {
-      const angle = r3[j++] * Math.PI * 2;
-      const r = stadiumRadius + 12 + r3[j++] * 140;
-      const x = Math.cos(angle) * r;
-      const z = Math.sin(angle) * r;
-      const scale = 0.7 + r3[j++] * 0.9;
-      if (Math.abs(x) < stadiumRadius + 8 && Math.abs(z) < stadiumRadius + 8) continue;
-      list.push({ position: [x, 0, z], scale });
+    const rng = seededSequence(91117, 3000);
+    let k = 0;
+    const next = () => rng[(k++) % rng.length];
+
+    const housePalette = ['#c4a67d', '#d6b89b', '#a89078', '#b89e80', '#d9c4a0', '#a38872', '#bda58a', '#cdb798'];
+    const roofPalette  = ['#7a3a2a', '#8a4030', '#5c3024', '#6b3a28', '#834030'];
+    const aptPalette   = ['#8a95a8', '#a8b0c0', '#7a8494', '#9ea6b6', '#c8bfa8', '#b8a890'];
+
+    const gridRange = Math.floor(DISTRICT_HALF / GRID_CELL);
+
+    for (let gx = -gridRange; gx <= gridRange; gx++) {
+      for (let gz = -gridRange; gz <= gridRange; gz++) {
+        // Skip cells that fall on street lanes
+        if (gx % BLOCK_SPAN === 0) continue;
+        if (gz % BLOCK_SPAN === 0) continue;
+
+        const cx = gx * GRID_CELL;
+        const cz = gz * GRID_CELL;
+        const dist = Math.hypot(cx, cz);
+
+        // Exclusion: stadium + ring + access road corridor
+        if (dist < cityStart + GRID_CELL * 0.5) continue;
+        if (Math.abs(cx) < GRID_CELL * 0.6) continue; // N-S avenue clear
+        if (Math.abs(cz) < GRID_CELL * 0.6) continue; // E-W avenue clear
+        if (dist > DISTRICT_HALF - 10) continue;
+
+        // Park zone — southeast quadrant: leave a 3x3 block cluster empty
+        const inPark =
+          gx >= 4 && gx <= 7 && gz >= -7 && gz <= -4;
+        if (inPark) continue;
+
+        // Orientation: building faces the nearest cardinal street
+        // distance (in cells) to nearest horizontal (gz-parallel) street
+        const modX = ((gx % BLOCK_SPAN) + BLOCK_SPAN) % BLOCK_SPAN;
+        const modZ = ((gz % BLOCK_SPAN) + BLOCK_SPAN) % BLOCK_SPAN;
+        const distToXStreet = Math.min(modZ, BLOCK_SPAN - modZ); // vertical distance to an E-W street
+        const distToZStreet = Math.min(modX, BLOCK_SPAN - modX); // horizontal distance to a N-S street
+        const faceEW = distToXStreet <= distToZStreet; // face +/- Z
+        const rotation = faceEW ? 0 : Math.PI / 2;
+
+        // Building type: apartments closer in, houses further out
+        const downtown = dist < cityStart + 80;
+        const isApt = downtown ? next() < 0.7 : next() < 0.1;
+
+        const w = GRID_CELL * 0.72;
+        const d = GRID_CELL * 0.72;
+        if (isApt) {
+          list.push({
+            kind: 'apt',
+            position: [cx, 0, cz],
+            color: aptPalette[Math.floor(next() * aptPalette.length)],
+            height: downtown ? 16 + next() * 16 : 12 + next() * 8,
+            width: w,
+            depth: d,
+            rotation,
+          });
+        } else {
+          list.push({
+            kind: 'house',
+            position: [cx, 0, cz],
+            color: housePalette[Math.floor(next() * housePalette.length)],
+            roofColor: roofPalette[Math.floor(next() * roofPalette.length)],
+            height: 5 + next() * 2.5,
+            width: w * 0.9,
+            depth: d * 0.9,
+            rotation,
+          });
+        }
+      }
     }
     return list;
-  }, [stadiumRadius]);
+  }, [cityStart]);
+
+  // ── Street network: horizontal & vertical asphalt strips ────────────────
+  const streetLines = useMemo(() => {
+    const range = Math.floor(DISTRICT_HALF / GRID_CELL);
+    const len = range * GRID_CELL * 2;
+    const lines = [];
+    for (let g = -range; g <= range; g++) {
+      if (g % BLOCK_SPAN !== 0) continue;
+      const pos = g * GRID_CELL;
+      // Skip lines that overlap stadium interior
+      lines.push({ axis: 'x', pos, len, width: STREET_WIDTH });
+      lines.push({ axis: 'z', pos, len, width: STREET_WIDTH });
+    }
+    return lines;
+  }, []);
+
+  // ── Tree placement: intersections + park cluster + ring road edge ───────
+  const trees = useMemo(() => {
+    const r = seededSequence(77777, 400);
+    let k = 0;
+    const next = () => r[(k++) % r.length];
+    const list = [];
+    const range = Math.floor(DISTRICT_HALF / GRID_CELL);
+
+    // Trees along ring road (inside edge of city)
+    const ringTreeCount = 28;
+    for (let i = 0; i < ringTreeCount; i++) {
+      const a = (i / ringTreeCount) * Math.PI * 2;
+      const rad = ringOuter + 2.5;
+      const x = Math.cos(a) * rad;
+      const z = Math.sin(a) * rad;
+      if (Math.abs(x) < STREET_WIDTH + 4 || Math.abs(z) < STREET_WIDTH + 4) continue;
+      list.push({ position: [x, 0, z], scale: 0.85 + next() * 0.3 });
+    }
+
+    // Trees at block-corner intersections
+    for (let gx = -range; gx <= range; gx += BLOCK_SPAN) {
+      for (let gz = -range; gz <= range; gz += BLOCK_SPAN) {
+        const cx = gx * GRID_CELL;
+        const cz = gz * GRID_CELL;
+        const dist = Math.hypot(cx, cz);
+        if (dist < cityStart + 6) continue;
+        if (dist > DISTRICT_HALF - 12) continue;
+        if (Math.abs(cx) < GRID_CELL * 0.5 || Math.abs(cz) < GRID_CELL * 0.5) continue;
+        // Nudge into block corner, four per intersection
+        const off = GRID_CELL * 0.4;
+        [[ off,  off], [-off,  off], [ off, -off], [-off, -off]].forEach(([ox, oz]) => {
+          // only drop trees on ~half of corners, deterministic-ish
+          if (next() < 0.5) return;
+          list.push({
+            position: [cx + ox, 0, cz + oz],
+            scale: 0.6 + next() * 0.5,
+          });
+        });
+      }
+    }
+
+    // Dense park cluster (southeast quadrant)
+    for (let i = 0; i < 22; i++) {
+      const u = next();
+      const v = next();
+      const x = 4 * GRID_CELL + u * (GRID_CELL * 3);
+      const z = -7 * GRID_CELL + v * (GRID_CELL * 3);
+      list.push({ position: [x, 0, z], scale: 0.9 + next() * 0.5 });
+    }
+
+    return list;
+  }, [ringOuter, cityStart]);
+
+  // Parking lots (4 wedges between plaza and ring road, on diagonals)
+  const parkingLots = useMemo(() => {
+    const lots = [];
+    const offsets = [
+      [-1, -1], [1, -1], [-1, 1], [1, 1],
+    ];
+    offsets.forEach(([sx, sz], i) => {
+      const r = (plazaOuter + ringInner) / 2;
+      lots.push({
+        position: [sx * r * 0.72, Y.parking, sz * r * 0.72],
+        size: [28, 28],
+        rotation: 0,
+        key: i,
+      });
+    });
+    return lots;
+  }, [plazaOuter, ringInner]);
+
+  const carColors = ['#c83c3c', '#3c6ec8', '#3ca85a', '#e0e0e0', '#2b2b2b', '#d8a83a', '#8a8a8a'];
+
+  // Park ground patch (southeast)
+  const parkCenter = [5.5 * GRID_CELL, 0, -5.5 * GRID_CELL];
+  const parkSize = GRID_CELL * 3.2;
 
   return (
     <group>
-      {/* Perimeter concourse / plaza (asphalt ring around the stadium) */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, Y_PLAZA, 0]} receiveShadow>
-        <ringGeometry args={[stadiumRadius + 2, stadiumRadius + 28, 96]} />
-        <meshStandardMaterial
-          color="#3a3d42"
-          roughness={0.95}
-          polygonOffset
-          polygonOffsetFactor={-1}
-          polygonOffsetUnits={-1}
-        />
-      </mesh>
-      {/* Plaza tile pattern hints (lighter ring) — sits on top of the plaza,
-          separated in Y and pushed forward with polygonOffset so it never
-          z-fights with the asphalt ring below. */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, Y_PLAZA_BAND, 0]} receiveShadow>
-        <ringGeometry args={[stadiumRadius + 14, stadiumRadius + 16, 96]} />
-        <meshStandardMaterial
-          color="#6a6d72"
-          roughness={0.9}
-          polygonOffset
-          polygonOffsetFactor={-3}
-          polygonOffsetUnits={-3}
-        />
-      </mesh>
-      {/* Access road (wide asphalt strip) */}
-      <mesh
-        rotation={[-Math.PI / 2, 0, 0]}
-        position={[0, Y_ROAD, -(stadiumRadius + 55)]}
-        receiveShadow
-      >
-        <planeGeometry args={[260, 12]} />
-        <meshStandardMaterial
-          color="#2e3136"
-          roughness={0.95}
-          polygonOffset
-          polygonOffsetFactor={-2}
-          polygonOffsetUnits={-2}
-        />
-      </mesh>
-      <mesh
-        rotation={[-Math.PI / 2, 0, 0]}
-        position={[0, Y_ROAD, stadiumRadius + 55]}
-        receiveShadow
-      >
-        <planeGeometry args={[260, 12]} />
-        <meshStandardMaterial
-          color="#2e3136"
-          roughness={0.95}
-          polygonOffset
-          polygonOffsetFactor={-2}
-          polygonOffsetUnits={-2}
-        />
-      </mesh>
-      <mesh
-        rotation={[-Math.PI / 2, 0, 0]}
-        position={[-(stadiumRadius + 55), Y_ROAD, 0]}
-        receiveShadow
-      >
-        <planeGeometry args={[12, 260]} />
-        <meshStandardMaterial
-          color="#2e3136"
-          roughness={0.95}
-          polygonOffset
-          polygonOffsetFactor={-2}
-          polygonOffsetUnits={-2}
-        />
-      </mesh>
-      <mesh
-        rotation={[-Math.PI / 2, 0, 0]}
-        position={[stadiumRadius + 55, Y_ROAD, 0]}
-        receiveShadow
-      >
-        <planeGeometry args={[12, 260]} />
-        <meshStandardMaterial
-          color="#2e3136"
-          roughness={0.95}
-          polygonOffset
-          polygonOffsetFactor={-2}
-          polygonOffsetUnits={-2}
-        />
+      {/* Ground is painted green in <Stadium3D>. Here we add paved/urban layers. */}
+
+      {/* ─── Suburban sidewalk tone: large soft patch under city to hint blocks ─── */}
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, Y.sidewalk, 0]} receiveShadow>
+        <ringGeometry args={[cityStart, DISTRICT_HALF - 8, 48]} />
+        <meshStandardMaterial color="#7f7a6a" roughness={0.95} />
       </mesh>
 
-      {/* Parking lot (north side) */}
-      <group position={[-60, Y_PARKING, -(stadiumRadius + 40)]}>
-        <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
-          <planeGeometry args={[70, 30]} />
-          <meshStandardMaterial
-            color="#44474c"
-            roughness={0.95}
-            polygonOffset
-            polygonOffsetFactor={-2}
-            polygonOffsetUnits={-2}
-          />
-        </mesh>
-        {/* Parked car blobs */}
-        {Array.from({ length: 18 }).map((_, i) => {
-          const row = Math.floor(i / 9);
-          const col = i % 9;
-          const carColors = ['#c83c3c', '#3c6ec8', '#3ca85a', '#e0e0e0', '#2b2b2b', '#d8a83a'];
-          return (
-            <mesh
-              key={i}
-              position={[-30 + col * 7.5, 0.7, -10 + row * 20]}
-              castShadow
-            >
-              <boxGeometry args={[4.2, 1.4, 2]} />
-              <meshStandardMaterial
-                color={carColors[i % carColors.length]}
-                roughness={0.5}
-                metalness={0.3}
-              />
+      {/* ─── Stadium apron plaza (concrete ring) ─── */}
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, Y.plazaRing, 0]} receiveShadow>
+        <ringGeometry args={[plazaInner, plazaOuter, 64]} />
+        <meshStandardMaterial color="#8a8a8a" roughness={0.95} />
+      </mesh>
+      {/* Plaza accent band (lighter stripe) */}
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, Y.plazaTile, 0]} receiveShadow>
+        <ringGeometry args={[plazaOuter - 4, plazaOuter - 2.5, 64]} />
+        <meshStandardMaterial color="#b7b4ab" roughness={0.85} />
+      </mesh>
+
+      {/* ─── Ring road (asphalt) around the plaza ─── */}
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, Y.street, 0]} receiveShadow>
+        <ringGeometry args={[ringInner, ringOuter, 64]} />
+        <meshStandardMaterial color="#30333a" roughness={0.95} />
+      </mesh>
+      {/* Ring road center line (dashed look via thin lighter ring) */}
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, Y.streetMark, 0]}>
+        <ringGeometry args={[
+          (ringInner + ringOuter) / 2 - 0.08,
+          (ringInner + ringOuter) / 2 + 0.08,
+          64,
+        ]} />
+        <meshStandardMaterial color="#d6cf9a" roughness={0.8} />
+      </mesh>
+
+      {/* ─── Grid street network (asphalt strips) ─── */}
+      {streetLines.map((l, i) => {
+        const isX = l.axis === 'x';
+        // X-axis means street is a horizontal strip at z=pos → size = [len, width]
+        // Actually our loop naming is odd; axis 'x' means iterating along gx producing N-S streets at x=pos
+        // Let's standardize: axis 'x' = street running N-S (constant x, long along z)
+        const size = isX ? [l.width, l.len] : [l.len, l.width];
+        const pos = isX ? [l.pos, Y.street, 0] : [0, Y.street, l.pos];
+        // Dim the portion overlapping stadium by skipping visual rendering near center
+        // (cheaper than clipping — just draw full strips; stadium covers them)
+        return (
+          <group key={i}>
+            <mesh rotation={[-Math.PI / 2, 0, 0]} position={pos} receiveShadow>
+              <planeGeometry args={size} />
+              <meshStandardMaterial color="#2e3136" roughness={0.95} />
             </mesh>
-          );
-        })}
-      </group>
+            {/* Center dashed marking */}
+            <mesh
+              rotation={[-Math.PI / 2, 0, 0]}
+              position={[pos[0], Y.streetMark, pos[2]]}
+            >
+              <planeGeometry args={isX ? [0.18, l.len] : [l.len, 0.18]} />
+              <meshStandardMaterial color="#d6cf9a" roughness={0.85} />
+            </mesh>
+          </group>
+        );
+      })}
 
-      {/* Houses and apartments */}
-      {houses.map((h, i) =>
-        h.kind === 'house' ? (
-          <House key={i} {...h} roofColor={h.roof} />
+      {/* ─── Wider cardinal avenues (connect to stadium) ─── */}
+      {[
+        { pos: [0, Y.street, -(ringOuter + 12)], size: [40, 14] },
+        { pos: [0, Y.street,  (ringOuter + 12)], size: [40, 14] },
+        { pos: [-(ringOuter + 12), Y.street, 0], size: [14, 40] },
+        { pos: [ (ringOuter + 12), Y.street, 0], size: [14, 40] },
+      ].map((a, i) => (
+        <mesh key={i} rotation={[-Math.PI / 2, 0, 0]} position={a.pos} receiveShadow>
+          <planeGeometry args={a.size} />
+          <meshStandardMaterial color="#30333a" roughness={0.95} />
+        </mesh>
+      ))}
+
+      {/* ─── Parking lots (between plaza and ring road on diagonals) ─── */}
+      {parkingLots.map((lot) => (
+        <group key={lot.key} position={lot.position}>
+          <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
+            <planeGeometry args={lot.size} />
+            <meshStandardMaterial color="#44474c" roughness={0.95} />
+          </mesh>
+          {/* parking stripes */}
+          {Array.from({ length: 6 }).map((_, r) => (
+            <mesh
+              key={r}
+              rotation={[-Math.PI / 2, 0, 0]}
+              position={[0, 0.004, -lot.size[1] / 2 + 4 + r * 4]}
+            >
+              <planeGeometry args={[lot.size[0] * 0.9, 0.12]} />
+              <meshStandardMaterial color="#cfc38a" roughness={0.85} />
+            </mesh>
+          ))}
+          {/* parked cars */}
+          {Array.from({ length: 12 }).map((_, j) => {
+            const row = Math.floor(j / 6);
+            const col = j % 6;
+            return (
+              <mesh
+                key={j}
+                position={[-10 + col * 4, 0.7, -6 + row * 12]}
+                castShadow
+              >
+                <boxGeometry args={[3.6, 1.4, 1.8]} />
+                <meshStandardMaterial
+                  color={carColors[(j + lot.key * 3) % carColors.length]}
+                  roughness={0.5}
+                  metalness={0.3}
+                />
+              </mesh>
+            );
+          })}
+        </group>
+      ))}
+
+      {/* ─── Park (southeast quadrant) ─── */}
+      <mesh
+        rotation={[-Math.PI / 2, 0, 0]}
+        position={[parkCenter[0], Y.sidewalk + 0.002, parkCenter[2]]}
+        receiveShadow
+      >
+        <planeGeometry args={[parkSize, parkSize]} />
+        <meshStandardMaterial color="#5f8347" roughness={0.95} />
+      </mesh>
+      {/* Park pond */}
+      <mesh
+        rotation={[-Math.PI / 2, 0, 0]}
+        position={[parkCenter[0] + 6, Y.plazaRing, parkCenter[2] - 4]}
+      >
+        <circleGeometry args={[8, 32]} />
+        <meshStandardMaterial
+          color="#3a6b8c"
+          emissive="#27506a"
+          emissiveIntensity={0.2}
+          roughness={0.3}
+          metalness={0.35}
+        />
+      </mesh>
+
+      {/* ─── Buildings ─── */}
+      {buildings.map((b, i) =>
+        b.kind === 'house' ? (
+          <House key={i} {...b} />
         ) : (
-          <Apartment key={i} {...h} />
+          <Apartment key={i} {...b} />
         )
       )}
 
-      {/* Trees around stadium + lining streets */}
+      {/* ─── Trees ─── */}
       {trees.map((t, i) => (
         <Tree key={i} position={t.position} scale={t.scale} />
       ))}
@@ -847,7 +905,7 @@ function Stadium({ level = 0, naming = null, grassCondition = 100 }) {
   const endHeight = config.height * 0.85;
   const standColor = config.color;
 
-  const longSideOffset = PITCH_H / 2 + 4; // distance from pitch center to stand front
+  const longSideOffset = PITCH_H / 2 + 4;
   const shortSideOffset = PITCH_W / 2 + 4;
 
   const outerRadius = Math.hypot(shortSideOffset + config.standDepth, longSideOffset + config.standDepth);
@@ -856,7 +914,6 @@ function Stadium({ level = 0, naming = null, grassCondition = 100 }) {
     <group>
       <Pitch grassCondition={grassCondition} />
 
-      {/* Long-side stands (facing +Z and -Z, parallel to X axis) */}
       <SeatedStand
         position={[0, 0, -longSideOffset]}
         rotation={[0, 0, 0]}
@@ -876,7 +933,6 @@ function Stadium({ level = 0, naming = null, grassCondition = 100 }) {
         hasRoof={config.hasRoof}
       />
 
-      {/* End stands (behind goals) */}
       <SeatedStand
         position={[-shortSideOffset, 0, 0]}
         rotation={[0, Math.PI / 2, 0]}
@@ -896,7 +952,6 @@ function Stadium({ level = 0, naming = null, grassCondition = 100 }) {
         hasRoof={config.hasRoof}
       />
 
-      {/* Corner infills for higher levels */}
       {config.hasCorners && (
         <>
           {[
@@ -917,7 +972,6 @@ function Stadium({ level = 0, naming = null, grassCondition = 100 }) {
         </>
       )}
 
-      {/* Floodlight towers (at 4 corners, beyond corner infills) */}
       {config.hasLights && (
         <>
           {[
@@ -936,7 +990,6 @@ function Stadium({ level = 0, naming = null, grassCondition = 100 }) {
         </>
       )}
 
-      {/* Stadium naming — large illuminated sign on far end outer wall */}
       {naming && (
         <Text
           position={[0, sideHeight + 2.2, -longSideOffset - config.standDepth - 1.75]}
@@ -951,7 +1004,6 @@ function Stadium({ level = 0, naming = null, grassCondition = 100 }) {
         </Text>
       )}
 
-      {/* Surroundings — city around the stadium */}
       <Surroundings stadiumRadius={outerRadius + 6} />
     </group>
   );
@@ -964,81 +1016,76 @@ export default function Stadium3D({ level = 0, naming = null, grassCondition = 1
   return (
     <div
       style={{
+        position: 'relative',
         width: '100%',
         height: '100%',
-        minHeight: 340,
+        minHeight: 380,
+        aspectRatio: '16 / 10',
         borderRadius: '12px',
         overflow: 'hidden',
         background: 'linear-gradient(180deg, #b8d5ea 0%, #e6d7c3 100%)',
       }}
     >
       <Canvas
-        camera={{ position: [130, 85, 160], fov: 42, near: 1, far: 1800 }}
+        camera={{ position: [130, 90, 165], fov: 42 }}
         shadows
-        dpr={[1, 1.6]}
-        gl={{ logarithmicDepthBuffer: true, antialias: true, powerPreference: 'high-performance' }}
+        dpr={[1, 1.5]}
+        gl={{
+          antialias: true,
+          powerPreference: 'high-performance',
+          preserveDrawingBuffer: false,
+        }}
+        style={{ position: 'absolute', inset: 0, display: 'block' }}
+        onCreated={({ gl }) => {
+          gl.setClearColor('#b8d5ea', 1);
+        }}
       >
-        {/* Sky + atmospheric fog for depth */}
+        {/* Sky dome — single source of background to avoid Sky/Environment conflict */}
         <Sky
           distance={4500}
           sunPosition={[120, 80, -90]}
-          inclination={0.5}
-          azimuth={0.25}
           turbidity={6}
           rayleigh={1.2}
           mieCoefficient={0.008}
           mieDirectionalG={0.85}
         />
-        <fog attach="fog" args={['#d6dde6', 260, 620]} />
+        <fog attach="fog" args={['#d6dde6', 300, 680]} />
 
-        {/* Lighting — warm key light + soft ambient + sky fill */}
-        <ambientLight intensity={0.35} color="#cfd8e3" />
-        <hemisphereLight args={['#cfe4ff', '#c2a880', 0.55]} />
+        {/* Lighting */}
+        <ambientLight intensity={0.4} color="#cfd8e3" />
+        <hemisphereLight args={['#cfe4ff', '#a8a084', 0.5]} />
         <directionalLight
           position={[120, 160, 80]}
-          intensity={1.35}
+          intensity={1.3}
           color="#fff3d6"
           castShadow
           shadow-mapSize-width={2048}
           shadow-mapSize-height={2048}
-          shadow-camera-left={-220}
-          shadow-camera-right={220}
-          shadow-camera-top={220}
-          shadow-camera-bottom={-220}
+          shadow-camera-left={-240}
+          shadow-camera-right={240}
+          shadow-camera-top={240}
+          shadow-camera-bottom={-240}
           shadow-camera-near={1}
-          shadow-camera-far={500}
-          shadow-bias={-0.0005}
+          shadow-camera-far={520}
+          shadow-bias={-0.00015}
+          shadow-normalBias={0.04}
         />
 
-        {/* Ground plane — extends to the horizon with grass tone */}
-        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, Y_GROUND, 0]} receiveShadow>
-          <planeGeometry args={[1600, 1600]} />
+        {/* Ground — single base plane for the entire scene */}
+        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, Y.ground, 0]} receiveShadow>
+          <planeGeometry args={[1800, 1800]} />
           <meshStandardMaterial color="#6f8a4c" roughness={0.95} />
-        </mesh>
-        {/* Grass mid-ring — lifted well above the ground with polygonOffset
-            so it never z-fights with the infinite ground plane below. */}
-        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, Y_MID_GRASS, 0]} receiveShadow>
-          <ringGeometry args={[120, 300, 96]} />
-          <meshStandardMaterial
-            color="#7a9a58"
-            roughness={0.95}
-            polygonOffset
-            polygonOffsetFactor={-1}
-            polygonOffsetUnits={-1}
-          />
         </mesh>
 
         <Stadium level={level} naming={naming} grassCondition={grassCondition} />
 
-        {/* ContactShadows — sits below every decal layer with depthWrite off,
-            so it only darkens the base ground outside the stadium footprint
-            and never competes with the stacked pitch/plaza decals above. */}
         <ContactShadows
-          position={[0, Y_GROUND + 0.01, 0]}
-          opacity={0.4}
-          scale={240}
-          blur={2.4}
+          position={[0, Y.plazaRing + 0.002, 0]}
+          opacity={0.35}
+          scale={340}
+          blur={2.6}
           far={80}
+          resolution={1024}
           frames={1}
         />
 
@@ -1050,12 +1097,10 @@ export default function Stadium3D({ level = 0, naming = null, grassCondition = 1
           maxPolarAngle={Math.PI / 2.15}
           minPolarAngle={Math.PI / 6}
           autoRotate
-          autoRotateSpeed={0.35}
+          autoRotateSpeed={0.28}
           enableDamping
           dampingFactor={0.06}
         />
-
-        <Environment preset="sunset" />
       </Canvas>
     </div>
   );
