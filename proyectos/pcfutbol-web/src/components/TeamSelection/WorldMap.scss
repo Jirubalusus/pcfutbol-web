@@ -6,49 +6,56 @@
   flex: 1;
   min-height: 0;
   position: relative;
+  z-index: 2;
+  isolation: isolate;
 
-  // Strong green ambient glow behind the globe
+  // Wide, organic green halo — the "orb in space" backdrop
   &::before {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -52%);
-    width: 85%;
-    height: 85%;
+    width: 132%;
+    aspect-ratio: 1;
     background: radial-gradient(
-      circle,
-      rgba(0, 230, 118, 0.18) 0%,
-      rgba(0, 200, 83, 0.12) 25%,
-      rgba(0, 230, 118, 0.06) 45%,
-      rgba(0, 150, 60, 0.02) 65%,
-      transparent 80%
+      circle at 50% 50%,
+      rgba(0, 230, 118, 0.32) 0%,
+      rgba(0, 215, 110, 0.20) 12%,
+      rgba(0, 190, 95, 0.11) 24%,
+      rgba(0, 160, 80, 0.055) 38%,
+      rgba(0, 110, 55, 0.022) 54%,
+      rgba(0, 60, 30, 0.008) 68%,
+      transparent 82%
     );
     border-radius: 50%;
     pointer-events: none;
     z-index: 0;
-    filter: blur(10px);
+    filter: blur(26px);
+    animation: globeAura 12s ease-in-out infinite alternate;
   }
 
-  // Secondary outer glow ring
+  // Tight luminous inner bloom — gives the globe a lit core
   &::after {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -52%);
-    width: 95%;
-    height: 95%;
+    width: 76%;
+    aspect-ratio: 1;
     background: radial-gradient(
-      circle,
-      transparent 40%,
-      rgba(0, 230, 118, 0.04) 55%,
-      rgba(0, 230, 118, 0.02) 70%,
-      transparent 85%
+      circle at 50% 52%,
+      rgba(140, 255, 190, 0.22) 0%,
+      rgba(0, 230, 118, 0.13) 16%,
+      rgba(0, 200, 100, 0.05) 36%,
+      transparent 58%
     );
     border-radius: 50%;
     pointer-events: none;
     z-index: 0;
+    filter: blur(10px);
+    mix-blend-mode: screen;
   }
 
   canvas {
@@ -65,6 +72,11 @@
     position: relative;
     z-index: 1;
   }
+}
+
+@keyframes globeAura {
+  0%   { opacity: 0.92; transform: translate(-50%, -52%) scale(0.985); }
+  100% { opacity: 1;    transform: translate(-50%, -52%) scale(1.015); }
 }
 
 // HTML markers on globe — large click targets

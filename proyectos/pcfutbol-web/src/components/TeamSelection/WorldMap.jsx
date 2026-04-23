@@ -86,18 +86,30 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Center on Europe initially
+  // Center on Europe initially (slightly higher altitude for a more cinematic frame)
   useEffect(() => {
     if (globeEl.current) {
-      globeEl.current.pointOfView({ lat: 48, lng: 5, altitude: 2.0 }, 0);
+      globeEl.current.pointOfView({ lat: 46, lng: 8, altitude: 2.15 }, 0);
+      // Subtle idle auto-rotation for premium feel
+      const controls = globeEl.current.controls?.();
+      if (controls) {
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 0.25;
+        controls.enableZoom = false;
+      }
     }
   }, []);
 
-  // Zoom to selected country
+  // Zoom to selected country (and pause auto-rotation while focused)
   useEffect(() => {
-    if (globeEl.current && selectedCountry && COUNTRY_DATA[selectedCountry]) {
+    if (!globeEl.current) return;
+    const controls = globeEl.current.controls?.();
+    if (selectedCountry && COUNTRY_DATA[selectedCountry]) {
       const { lat, lng } = COUNTRY_DATA[selectedCountry];
       globeEl.current.pointOfView({ lat, lng, altitude: 1.6 }, 600);
+      if (controls) controls.autoRotate = false;
+    } else if (controls) {
+      controls.autoRotate = true;
     }
   }, [selectedCountry]);
 
@@ -230,8 +242,8 @@ export default function WorldMap({ countries, selectedCountry, onCountryClick })
         htmlElement={createMarkerElement}
         htmlTransitionDuration={300}
 
-        atmosphereColor="#00e676"
-        atmosphereAltitude={0.2}
+        atmosphereColor="#2bffb0"
+        atmosphereAltitude={0.28}
       />
       <p className="globe-hint">{t('teamSelection.globeHint')}</p>
     </div>
