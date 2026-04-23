@@ -80,26 +80,7 @@ $pcf-text: #bdc3c7;
       font-size: 0.75rem;
     }
   }
-<<<<<<< HEAD
   
-  .btn-back {
-    padding: 0.4rem 0.5rem;
-    background: transparent;
-    border: none;
-    color: $pcf-accent;
-    font-weight: 500;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: opacity 0.2s;
-    display: flex;
-    align-items: center;
-    gap: 0.15rem;
-    -webkit-tap-highlight-color: transparent;
-    
-    &:active {
-      opacity: 0.6;
-=======
-
   .btn-back {
     display: flex;
     align-items: center;
@@ -114,11 +95,15 @@ $pcf-text: #bdc3c7;
     cursor: pointer;
     transition: all 0.2s;
     white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
 
     &:hover {
       background: rgba(255, 255, 255, 0.14);
       border-color: rgba(255, 255, 255, 0.25);
->>>>>>> c709c73 (Redesign team selection: country list panel, header button, grid layout)
+    }
+
+    &:active {
+      opacity: 0.6;
     }
   }
 }
